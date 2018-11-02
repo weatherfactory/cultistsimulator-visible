@@ -1,95 +1,182 @@
 ﻿{
-"recipes": [
-{id: "workintrojob",
-label: "Ещё одна смена в госпитале",
-actionId: "work",
-requirements: {introjob:1},
-effects: {introjob: -1, health: 1, funds: 1},
-alternativerecipes: [{id:introdream,chance:100,additional:true}],
-description: "В середине смены главный портье подозвал меня. «Ваши услуги больше не требуются», — сказал он. — «Вот последнее жалованье».\n
-У меня больше нет работы. Впрочем, теперь я хотя бы могу немного отдохнуть и поправить Здоровье.\n
+recipes: [
+	{
+		requirements: 
+		{
+			introjob: "1",
+		},
+		craftable: "true",
+		warmup: "10",
+		label: "Ещё одна смена в госпитале",
+		startdescription: "Ещё одна смена: уборка тёмных холлов, доставка почты инвалидам с пустым взглядом, разгрузка трупов с каталок в подвале.",
+		id: "workintrojob",
+		actionId: "work",
+		description: "В середине смены главный портье подозвал меня. «Ваши услуги больше не требуются», — сказал он. — «Вот последнее жалованье».
+
+У меня больше нет работы. Впрочем, теперь я хотя бы могу немного отдохнуть и поправить Здоровье.
+
 [Доступны <b>Сны</b>.]",
-warmup:10,
-craftable: true
+		effects: 
+		{
+			introjob: "-1",
+			health: "1",
+			funds: "2",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "introdream",
+				chance: "100",
+				additional: "true",
+			},
+		],
 	},
 	{
-id: "introdream",
-label: "Вспомнить сны",
-actionId: "dream",
-requirements: {},
-effects: {passion:1,contentment:1},
-alternativerecipes: [{id:bequestcountdown,chance:100,additional:true}],
-startdescription: "Я снова вижу сны о сиянии под грязной кожей мира. Свет, проникающий через чёрный лес. Бледная дверь. Старик — ",
-description: "Это началось после разговора со стариком в госпитале. Он знал моё имя. Но теперь он мёртв. Пневмония. Почему он мне всё ещё снится? Что за кобальтовый свет в моих снах?\n
+		requirements: 
+		{
+		},
+		craftable: "false",
+		comments: "This is triggered from the intro work recipe only.",
+		warmup: "30",
+		label: "Вспомнить сны",
+		startdescription: "Я снова вижу сны о сиянии под грязной кожей мира. Свет, проникающий через чёрный лес. Бледная дверь. Старик — ",
+		id: "introdream",
+		actionId: "dream",
+		description: "Это началось после разговора со стариком в госпитале. Он знал моё имя. Но теперь он мёртв. Пневмония. Почему он мне всё ещё снится? Что за кобальтовый свет в моих снах?
+
 [Начало идти <b>Время</b>.]",
-warmup: 20,
-craftable: false,
-comments: "This is triggered from the intro work recipe only."
-    },
-
-	 { id: "bequestcountdown",
-        label: "Время проходит",
-        actionId: "time",
-        requirements: {},
-        alternativerecipes:
-		[{id: "bequestarrives", chance:100, additional: true}],
-        startdescription: "Чтобы жить, мне нужны Средства. Но, возможно, тяжёлые обстоятельства смогут вытолкнуть меня на тропинку к чему-то лучшему. Есть ли какой-то смысл в моих снах? Атмосфера изменилась.",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-        linked:[{id:"needs",chance:100}]
-    },
-		 {
-id: "bequestarrives",
-label: "Мне пришло наследство",
-actionId: "study",
-requirements: {},
-effects: {reason: 1,funds: 9,bequestintro:1},
-startdescription: "Письмо от душеприказчика. Старик в госпитале — тот, что мне снится — указал меня в завещании. Скоро узнаю подробности.",
-description: "Старик завещал мне некоторую сумму в деньгах и папку со странными бумагами — стихи, загадки, метафизические рассуждения. Впервые за месяцы мне есть к чему приложить Разум.\n
-[Доступно <b>Изучение</b>.]",
-warmup: 30,
-craftable: false,
-maxexecutions: 1,
-comments: "This makes the Study action available, and is triggered from intro only."
-    },
-{
-id: "studybequestreason",
-label: "Изучить Наследство, приложив Разум",
-actionId: "study",
-requirements: {bequestintro:1,reason:1},
-effects: {bequestintro: -1,ascensionenlightenmenta: 1, mapbookdealer: 1,fragmentlantern:1,contactintro:1},
-startdescription: "Я изучу каждую деталь с педантичным вниманием.",
-description: "Мой адресант в точности описывает мои сны! Я знаю эти имена — Дом, Лес, Часы, Слава. Им известны секреты за пределами времени, скрытые под кожей мира. <b>Во мне разгорается любопытство.</b> \n
-Есть заметка — указания на книжный магазин, не рекламирующий свои товары —\n",
-warmup: 30,
-craftable: true
-},
-	{
-id: "studybequestpassion",
-label: "Изучить Наследство, вложив Страсть",
-actionId: "study",
-requirements: {bequestintro:1,passion:1},
-effects: {bequestintro: -1,ascensionpowera: 1, mapbookdealer:1,fragmentforge:1,contactintro:1},
-startdescription: "Я буду читать, строить теории, бродить, делать зарисовки, изумлённо зарываться пальцами в волосы, вставать в возбуждении, сжиматься в отчаянии.",
-description: "Мой адресант в точности описывает мои сны! Я знаю эти имена — Дом, Лес, Часы, Слава. Я чувствую за ними силу, которой позавидуют генералы и короли. <b>Во мне горит новое желание.</b>\n
-Есть заметка — указания на книжный магазин, не рекламирующий свои товары —\n",
-warmup: 30,
-craftable: true
-    },
-
+		effects: 
+		{
+			contentment: "1",
+			passion: "1",
+		},
+		alternativerecipes: 
+		[
 			{
-        id: "studycontactintro",
-        label: "Найти возможного союзника",
-        actionId: "study",
-        requirements: {contactintro:1},
-		effects: {contactintro:-1,mystique:1},
-		alternativerecipes:	[{id: "findacquaintanceopentalk",chance:100, additional: true}],
-        startdescription: "У меня есть имя, описание, несколько дразнящих деталей... но в этом городе тысяча тысяч лиц.",
-        description: "Наконец-то у меня есть адрес! Я отправлю письмо и предложу встретиться. [Доступен <b>Разговор</b>.]",
-        warmup: 30,
-        craftable: true,
-		comments: "This is one way the Talk verb may be opened."
-    }
+				id: "bequestcountdown",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "bequestarrives",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "Время проходит",
+		startdescription: "Чтобы жить, мне нужны Средства. Но, возможно, тяжёлые обстоятельства смогут вытолкнуть меня на тропинку к чему-то лучшему. Есть ли какой-то смысл в моих снах? Атмосфера изменилась.",
+		id: "bequestcountdown",
+		description: ".",
+		actionId: "study",
+	},
+	{
+		requirements: 
+		{
+		},
+		craftable: "false",
+		comments: "This makes the Study action available, and is triggered from intro only.",
+		warmup: "30",
+		label: "Мне пришло наследство",
+		startdescription: "Письмо от душеприказчика. Старик в госпитале — тот, что мне снится — указал меня в завещании. Скоро узнаю подробности.",
+		id: "bequestarrives",
+		actionId: "study",
+		description: "Старик завещал мне некоторую сумму в деньгах и папку со странными бумагами — стихи, загадки, метафизические рассуждения. Впервые за месяцы мне есть к чему приложить Разум.
+
+[Доступно <b>Изучение</b>.]",
+		maxexecutions: "1",
+		effects: 
+		{
+			reason: "1",
+			funds: "9",
+			bequestintro: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			reason: "1",
+			bequestintro: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Изучить Наследство, приложив Разум",
+		startdescription: "Я изучу каждую деталь с педантичным вниманием.",
+		id: "studybequestreason",
+		actionId: "study",
+		description: "Мой адресант в точности описывает мои сны! Я знаю эти имена — Дом, Лес, Часы, Слава. Им известны секреты за пределами времени, скрытые под кожей мира. <b>Во мне разгорается любопытство.</b> 
+
+Есть заметка — указания на книжный магазин, не рекламирующий свои товары —
+",
+		effects: 
+		{
+			bequestintro: "-1",
+			fragmentlantern: "1",
+			ascensionenlightenmenta: "1",
+			mapbookdealer: "1",
+			contactintro: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			bequestintro: "1",
+			passion: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Изучить Наследство, вложив Страсть",
+		startdescription: "Я буду читать, строить теории, бродить, делать зарисовки, изумлённо зарываться пальцами в волосы, вставать в возбуждении, сжиматься в отчаянии.",
+		id: "studybequestpassion",
+		actionId: "study",
+		description: "Мой адресант в точности описывает мои сны! Я знаю эти имена — Дом, Лес, Часы, Слава. Я чувствую за ними силу, которой позавидуют генералы и короли. <b>Во мне горит новое желание.</b>
+
+Есть заметка — указания на книжный магазин, не рекламирующий свои товары —
+",
+		effects: 
+		{
+			bequestintro: "-1",
+			ascensionpowera: "1",
+			mapbookdealer: "1",
+			fragmentforge: "1",
+			contactintro: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			contactintro: "1",
+		},
+		craftable: "true",
+		comments: "This is one way the Talk verb may be opened.",
+		warmup: "30",
+		label: "Найти возможного союзника",
+		startdescription: "У меня есть имя, описание, несколько дразнящих деталей... но в этом городе тысяча тысяч лиц.",
+		id: "studycontactintro",
+		actionId: "study",
+		description: "Наконец-то у меня есть адрес! Я отправлю письмо и предложу встретиться. [Доступен <b>Разговор</b>.]",
+		effects: 
+		{
+			mystique: "1",
+			contactintro: "-1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "findacquaintanceopentalk",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
 ]
 }

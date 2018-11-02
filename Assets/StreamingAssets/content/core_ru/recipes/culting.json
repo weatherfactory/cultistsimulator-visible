@@ -1,606 +1,1409 @@
-﻿ {"recipes":
- [
- 
-
+﻿{
+recipes: [
 	{
-        id: "recruitindependentedge",
-        label: "Завербовать Смутьяна достижением великой силы Грани",
-        actionId: "talk",
-        requirements: {venerationedge: 1, independent:1, mortal:1,edge:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting:1},
-        startdescription: "Смутьян присоединится ко мне.",
-    description: "Мы приготовили нож для этого случая.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitindependentforge",
-        label: "Завербовать Смутьяна достижением великой силы Кузни",
-        actionId: "talk",
-        requirements: {venerationforge: 1,independent:1, mortal:1,forge:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Смутьян присоединится ко мне.",
-        description: "Следует возжечь огонь, чей жар опалит кожу наблюдающих.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitindependentgrail",
-        label: "Завербовать Смутьяна достижением великой силы Чаши",
-        actionId: "talk",
-        requirements: {venerationgrail: 1, independent:1, mortal:1,grail:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Смутьян присоединится ко мне.",
-        description: "Мы будем вместе; о как же мы будем вместе.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-			  	{
-        id: "recruitindependentheart",
-        label: "Завербовать Смутьяна достижением великой силы Сердца",
-        actionId: "talk",
-        requirements: {venerationheart: 1, independent:1, mortal:1,heart:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Смутьян присоединится ко мне.",
-        description: "Не остановится то, что начинаем сейчас.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-				  	{
-        id: "recruitindependentknock",
-        label: "Завербовать Смутьяна достижением великой силы Стука",
-        actionId: "talk",
-        requirements: {venerationknock: 1, independent:1, mortal:1,knock:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "Смутьян присоединится ко мне.",
-        description: "Это открытие всем нам запомнится навсегда.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-					  	{
-        id: "recruitindependentlantern",
-        label: "Завербовать Смутьяна достижением великой силы Лампады",
-        actionId: "talk",
-        requirements: {venerationlantern: 1, independent:1, mortal:1,lantern:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-               startdescription: "Смутьян присоединится ко мне.",
-        description: "Великий свет, за ним великая тьма.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-						  	{
-        id: "recruitindependentmoth",
-        label: "Завербовать Смутьяна достижением великой силы Мотылька",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,independent:1, mortal:1,moth:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "Смутьян присоединится ко мне.",
-        description: "Мы вместе сбросили кожу.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-
-							  	{
-        id: "recruitindependentwinter",
-        label: "Завербовать Смутьяна достижением великой силы Зимы",
-        actionId: "talk",
-        requirements: {venerationwinter: 1, independent:1, mortal:1,winter:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Смутьян присоединится ко мне.",
-        description: "Этой церемонии не нужны слова.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-	 	{
-        id: "recruitacquaintanceedge",
-        label: "Углубить Знакомство: вербовка силой Грани",
-        actionId: "talk",
-        requirements: {venerationedge: 1,acquaintance:1, follower:-1, mortal:1,edge:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting:1},
-        startdescription: "Мы готовы.",
-    description: "Прежде слов неофиту долженствует наточить лезвие ножа, чтоб резал отделённую нить. Аще же остроты не будет довольно, тем хуже.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitacquaintanceforge",
-        label: "Углубить Знакомство: вербовка силой Кузни",
-        actionId: "talk",
-        requirements: {venerationforge: 1,acquaintance:1,  follower:-1, mortal:1,forge:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Мы готовы.",
-        description: "Церемонии требуется ожог. Совсем небольшой; но эта мета останется на всю жизнь.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitacquaintancegrail",
-        label: "Углубить Знакомство: вербовка силой Чаши",
-        actionId: "talk",
-        requirements: {venerationgrail: 1, acquaintance:1, follower:-1, mortal:1,grail:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Мы готовы.",
-        description: "Неофит никогда не забудет этот вкус, познанный со мною.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-			  	{
-        id: "recruitacquaintanceheart",
-        label: "Углубить Знакомство: вербовка силой Сердца",
-        actionId: "talk",
-        requirements: {venerationheart: 1, acquaintance:1, follower:-1, mortal:1,heart:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Мы готовы.",
-        description: "Церемония звучна как гром в церкви. Я хорошо знаю её. Это мои собственные слова.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-				  	{
-        id: "recruitacquaintanceknock",
-        label: "Углубить Знакомство: вербовка силой Стука",
-        actionId: "talk",
-        requirements: {venerationknock: 1, acquaintance:1, follower:-1, mortal:1,knock:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "Мы готовы.",
-        description: "Совсем маленькая рана. В точности достаточная для дани уважения силам, что открывают.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-					  	{
-        id: "recruitacquaintancelantern",
-        label: "Углубить Знакомство: вербовка силой Лампады",
-        actionId: "talk",
-        requirements: {venerationlantern: 1, acquaintance:1, follower:-1, mortal:1,lantern:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-               startdescription: "Мы готовы.",
-        description: "Дюжина сияющих огней. В наших ритуалах нет места тени, и нет места милосердию.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-						  	{
-        id: "recruitacquaintancemoth",
-        label: "Углубить Знакомство: вербовка силой Мотылька",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,acquaintance:1,  follower:-1, mortal:1,moth:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "Мы готовы.",
-        description: "Мотылёк сбрасывает кожу. Неофиту предстоит сбросить лишь одежду и прошлое.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-
-							  	{
-        id: "recruitacquaintancewinter",
-        label: "Углубить Знакомство: вербовка силой Зимы",
-        actionId: "talk",
-        requirements: {venerationwinter: 1, acquaintance:1, follower:-1, mortal:1,winter:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "Мы готовы.",
-        description: "Я скажу только и в точности девять слов. Неофит не скажет ни одного.",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-	
-	
-	  	{
-        id: "promotetodiscipleedge",
-        label: "Повысить Неофита до Адепта силой Грани",
-        actionId: "talk",
-        requirements: {venerationedge: 1,follower:1, disciple:-1, independent:-1,mortal:1,edge:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple:1},
-        startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Мои шрамы — оружие. Через борьбу восстаём к победе. Нет поражения, кроме уничтожения. В свете Сияющей Грани мы знаем себя. Я посвящаю себя служению сильнейшему».",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promotetodiscipleforge",
-        label: "Повысить Неофита до Адепта силой Кузни",
-        actionId: "talk",
-        requirements: {venerationforge: 1,follower:1, disciple:-1, independent:-1,mortal:1,forge:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Меня уничтожили. Меня сотворили вновь. Теперь выжигаю свою кожу, и по сим знакам узнают меня. Я посвящаю себя пламени, и я не устрашусь любой перемены».",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promotetodisciplegrail",
-        label: "Повысить Неофита до Адепта силой Чаши",
-        actionId: "talk",
-        requirements: {venerationgrail: 1,follower:1, disciple:-1, independent:-1,mortal:1,grail:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "В боли мы рождены. В голоде мы приняты. В наслаждении мы поглощены. Здесь врата моего тела, и здесь Её обещание: не всё рождённое обречено разложиться. В память обещания мы вручаем себя Пиру.",
-        warmup: 60,
-        craftable: true
-    },
-			  	{
-        id: "promotetodiscipleheart",
-        label: "Повысить Неофита до Адепта силой Сердца",
-        actionId: "talk",
-        requirements: {venerationheart: 1,follower:1, disciple:-1, independent:-1,mortal:1,heart:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Мы уступаем голос грому. Мы уступаем ноги танцу. Мы уступаем кожу ночи. Неостановимы; неостановимы; неостановимы».",
-        warmup: 60,
-        craftable: true
-    },
-				  	{
-        id: "promotetodiscipleknock",
-        label: "Повысить Неофита до Адепта силой Стука",
-        actionId: "talk",
-        requirements: {venerationknock: 1,follower:1, disciple:-1, independent:-1,mortal:1,knock:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-             startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Той, что была плотью, я вручаю свои раны. Той, что была камнем, я вручаю это мгновение, когда старое „я“ отделяется от нового. Той, что пришла из Света, я вручаю свои секреты. Дверь открыта».",
-        warmup: 60,
-        craftable: true
-    },
-					  	{
-        id: "promotetodisciplelantern",
-        label: "Повысить Неофита до Адепта силой Лампады",
-        actionId: "talk",
-        requirements: {venerationlantern: 1,follower:1, disciple:-1, independent:-1,mortal:1,lantern:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-               startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Он направляет. Отныне ты — карта. Он освещает. Тьма была тобой. Он не сострадает. Ты перестанешь сострадать. Знание — наш компас, и к Славе наш путь».",
-        warmup: 60,
-        craftable: true
-    },
-						  	{
-        id: "promotetodisciplemoth",
-        label: "Повысить Неофита до Адепта силой Мотылька",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,follower:1, disciple:-1, independent:-1,mortal:1,moth:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-             startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Теперь ножницы, следом нож. Теперь дерево, следом кости. Теперь трепет луны, следом пятна на душе. Он был кровью, как будем и мы».",
-        warmup: 60,
-        craftable: true
-    },
-
-							  	{
-        id: "promotetodisciplewinter",
-        label: "Повысить Неофита до Адепта силой Зимы",
-        actionId: "talk",
-        requirements: {venerationwinter: 1,follower:1, disciple:-1, independent:-1,mortal:1,winter:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
-        description: "«Теперь прольёшь кровь, как пролита кровь Солнца. Теперь твоё прошлое не связано с будущим, как не связаны части разделённого Волка. Ты — в числе нерождённых. В конце твоей службы — лишь расточение. Восстань, в молчании».",
-        warmup: 60,
-        craftable: true
-    },
-	
-	
+		requirements: 
 		{
-        id: "promoteto_d_edge",
-        label: "Попытаться ввести Адепта в число Ассасинов",
-        actionId: "talk",
-        requirements: {cultedge_1: 1,follower:1,edge:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_edge:1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Как Львокузнец склонился перед Полковником, так ныне склоняюсь и я. Моя служба закончится в смерти, или в развязке сил».",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_forge",
-        label: "Попытаться ввести Адепта в число Меняющих",
-        actionId: "talk",
-        requirements: {cultforge_1: 1,follower:1,forge:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_forge: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Я молот и наковальня; я касание огня и благословение железа; я посвящаю себя последнему всесожжению».",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_grail",
-        label: "Попытаться ввести Адепта в число Распутников",
-        actionId: "talk",
-        requirements: {cultgrail_1: 1,follower:1,grail:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_grail: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Медью и Голубем, Той, кого мы жаждем и Той, кто жаждет нас, посвящаю себя бытию Пирующим и Пиром. Меня поглотят, так и я поглощу».",
-        warmup: 60,
-        craftable: true
-    },
-			  	{
-        id: "promoteto_d_heart",
-        label: "Попытаться ввести Адепта в число Тарантеллистов",
-        actionId: "talk",
-        requirements: {cultheart_1: 1,follower:1,heart:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_heart: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Сосной и Ножом, Барабаном и Кругом, посвящаю себя вести Танец, что не прекратится. Это моя служба, но в конце всего я служу лишь Танцу».",
-        warmup: 60,
-        craftable: true
-    },
-				  	{
-        id: "promoteto_d_knock",
-        label: "Попытаться ввести Адепта в число Ключей",
-        actionId: "talk",
-        requirements: {cultknock_1: 1,follower:1,knock:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_knock: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Больше нет замков. Больше нет дверей. Больше нет врат. Больше нет стен. Нет крепостей, закрытых предо мной. Нет стран, запрещённых мне. Нет закона, что сковал бы меня, кроме закона Матери. Я — Ключ, и таково моё применение».",
-        warmup: 60,
-        craftable: true
-    },
-					  	{
-        id: "promoteto_d_lantern",
-        label: "Попытаться ввести Адепта в число Пророков",
-        actionId: "talk",
-        requirements: {cultlantern_1: 1,follower:1,lantern:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_lantern: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Я даю обет указывать путь желающим и нежелающим. Я даю обет направлять. Я даю обет освещать. Я даю обет против милосердия. Я пройду по указанному пути, какой бы ни была цена».",
-        warmup: 60,
-        craftable: true
-    },
-						  	{
-        id: "promoteto_d_moth",
-        label: "Попытаться ввести Адепта в число Кожевенников",
-        actionId: "talk",
-        requirements: {cultmoth_1: 1,follower:1,moth:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_moth: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«Здесь было моё прошлое, но оно — не обо мне. Здесь мои облачения, и они отброшены. Здесь моя кожа, но она взята взаймы. Здесь моё имя — лишь повязка на глазах. Здесь Лес, где мы душим свет. Здесь меня видели, и здесь меня нет».",
-        warmup: 60,
-        craftable: true
-    },
-
-							  	{
-        id: "promoteto_d_winter",
-        label: "Попытаться ввести Адепта в число...",
-        actionId: "talk",
-        requirements: {cultwinter_1: 1,follower:1,winter:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_winter: 1},
-        startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
-        description: "«...?» «...?« «...?»
+			uqzachary: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Zachary?",
+		startdescription: "'If I'm not with the Bureau, I should be with you? That doesn't follow.'",
+		id: "recruitindependentzachary",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			uqspencer: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Spencer?",
+		startdescription: "'No. Not them. Not you. Just me.'",
+		id: "recruitindependentspencer",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			uqconnie: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Connie?",
+		startdescription: "I don't think so. A strange road, yes. But not that strange.",
+		id: "recruitindependentconnie",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			society: "1",
+			uqnatalia: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Natalia?",
+		startdescription: "'I don't think our doctrines converge.'",
+		id: "recruitindependentnatalia",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			mortal: "1",
+			resentment: "-1",
+			venerationedge: "1",
+			independent: "1",
+			tool: "1",
+			edge: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Грани",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentedge",
+		actionId: "talk",
+		description: "Мы приготовили нож для этого случая.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			forge: "21",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			venerationforge: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Кузни",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentforge",
+		actionId: "talk",
+		description: "Следует возжечь огонь, чей жар опалит кожу наблюдающих.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			grail: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Чаши",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentgrail",
+		actionId: "talk",
+		description: "Мы будем вместе; о как же мы будем вместе.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			heart: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Сердца",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentheart",
+		actionId: "talk",
+		description: "Не остановится то, что начинаем сейчас.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			knock: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Стука",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentknock",
+		actionId: "talk",
+		description: "Это открытие всем нам запомнится навсегда.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			venerationlantern: "1",
+			lantern: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Лампады",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentlantern",
+		actionId: "talk",
+		description: "Великий свет, за ним великая тьма.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			moth: "21",
+			resentment: "-1",
+			mortal: "1",
+			venerationmoth: "1",
+			independent: "1",
+			tool: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Мотылька",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentmoth",
+		actionId: "talk",
+		description: "Мы вместе сбросили кожу.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			winter: "21",
+			mortal: "1",
+			resentment: "-1",
+			tool: "1",
+			independent: "1",
+			venerationwinter: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Завербовать Смутьяна достижением великой силы Зимы",
+		startdescription: "Смутьян присоединится ко мне.",
+		id: "recruitindependentwinter",
+		actionId: "talk",
+		description: "Этой церемонии не нужны слова.",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			venerationedge: "1",
+			mortal: "1",
+			edge: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Грани",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintanceedge",
+		actionId: "talk",
+		description: "Прежде слов неофиту долженствует наточить лезвие ножа, чтоб резал отделённую нить. Аще же остроты не будет довольно, тем хуже.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			forge: "1",
+			mortal: "1",
+			venerationforge: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Кузни",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintanceforge",
+		actionId: "talk",
+		description: "Церемонии требуется ожог. Совсем небольшой; но эта мета останется на всю жизнь.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			acquaintance: "1",
+			grail: "1",
+			mortal: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Чаши",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintancegrail",
+		actionId: "talk",
+		description: "Неофит никогда не забудет этот вкус, познанный со мною.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			acquaintance: "1",
+			mortal: "1",
+			heart: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Сердца",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintanceheart",
+		actionId: "talk",
+		description: "Церемония звучна как гром в церкви. Я хорошо знаю её. Это мои собственные слова.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			acquaintance: "1",
+			mortal: "1",
+			knock: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Стука",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintanceknock",
+		actionId: "talk",
+		description: "Совсем маленькая рана. В точности достаточная для дани уважения силам, что открывают.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			venerationlantern: "1",
+			lantern: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Лампады",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintancelantern",
+		actionId: "talk",
+		description: "Дюжина сияющих огней. В наших ритуалах нет места тени, и нет места милосердию.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			moth: "1",
+			acquaintance: "1",
+			venerationmoth: "1",
+			mortal: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Мотылька",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintancemoth",
+		actionId: "talk",
+		description: "Мотылёк сбрасывает кожу. Неофиту предстоит сбросить лишь одежду и прошлое.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			winter: "1",
+			venerationwinter: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Углубить Знакомство: вербовка силой Зимы",
+		startdescription: "Мы готовы.",
+		id: "recruitacquaintancewinter",
+		actionId: "talk",
+		description: "Я скажу только и в точности девять слов. Неофит не скажет ни одного.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			mortal: "1",
+			follower: "1",
+			venerationedge: "1",
+			disciple: "-1",
+			independent: "-1",
+			edge: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Грани",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodiscipleedge",
+		actionId: "talk",
+		description: "«Мои шрамы — оружие. Через борьбу восстаём к победе. Нет поражения, кроме уничтожения. В свете Сияющей Грани мы знаем себя. Я посвящаю себя служению сильнейшему».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			forge: "7",
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			venerationforge: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Кузни",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodiscipleforge",
+		actionId: "talk",
+		description: "«Меня уничтожили. Меня сотворили вновь. Теперь выжигаю свою кожу, и по сим знакам узнают меня. Я посвящаю себя пламени, и я не устрашусь любой перемены».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			mortal: "1",
+			grail: "7",
+			disciple: "-1",
+			independent: "-1",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Чаши",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodisciplegrail",
+		actionId: "talk",
+		description: "В боли мы рождены. В голоде мы приняты. В наслаждении мы поглощены. Здесь врата моего тела, и здесь Её обещание: не всё рождённое обречено разложиться. В память обещания мы вручаем себя Пиру.",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			heart: "7",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Сердца",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodiscipleheart",
+		actionId: "talk",
+		description: "«Мы уступаем голос грому. Мы уступаем ноги танцу. Мы уступаем кожу ночи. Неостановимы; неостановимы; неостановимы».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			knock: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Стука",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodiscipleknock",
+		actionId: "talk",
+		description: "«Той, что была плотью, я вручаю свои раны. Той, что была камнем, я вручаю это мгновение, когда старое „я“ отделяется от нового. Той, что пришла из Света, я вручаю свои секреты. Дверь открыта».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			venerationlantern: "1",
+			lantern: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Лампады",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodisciplelantern",
+		actionId: "talk",
+		description: "«Он направляет. Отныне ты — карта. Он освещает. Тьма была тобой. Он не сострадает. Ты перестанешь сострадать. Знание — наш компас, и к Славе наш путь».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			moth: "7",
+			follower: "1",
+			mortal: "1",
+			venerationmoth: "1",
+			disciple: "-1",
+			independent: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Мотылька",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodisciplemoth",
+		actionId: "talk",
+		description: "«Теперь ножницы, следом нож. Теперь дерево, следом кости. Теперь трепет луны, следом пятна на душе. Он был кровью, как будем и мы».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			winter: "7",
+			mortal: "1",
+			disciple: "-1",
+			venerationwinter: "1",
+			independent: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "Повысить Неофита до Адепта силой Зимы",
+		startdescription: "Опустится на колени как неофит, встанет как адепт. Я лично наложу необходимые обеты.",
+		id: "promotetodisciplewinter",
+		actionId: "talk",
+		description: "«Теперь прольёшь кровь, как пролита кровь Солнца. Теперь твоё прошлое не связано с будущим, как не связаны части разделённого Волка. Ты — в числе нерождённых. В конце твоей службы — лишь расточение. Восстань, в молчании».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			cultedge_1: "1",
+			edge: "21",
+			exalted: "-1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_edge: "1",
+		},
+		label: "Попытаться ввести Адепта в число Ассасинов",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_edge",
+		actionId: "talk",
+		description: "«Как Львокузнец склонился перед Полковником, так ныне склоняюсь и я. Моя служба закончится в смерти, или в развязке сил».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			forge: "21",
+			cultforge_1: "1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_forge: "1",
+		},
+		label: "Попытаться ввести Адепта в число Меняющих",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_forge",
+		actionId: "talk",
+		description: "«Я молот и наковальня; я касание огня и благословение железа; я посвящаю себя последнему всесожжению».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			cultgrail_1: "1",
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			grail: "21",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_grail: "1",
+		},
+		label: "Попытаться ввести Адепта в число Распутников",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_grail",
+		actionId: "talk",
+		description: "«Медью и Голубем, Той, кого мы жаждем и Той, кто жаждет нас, посвящаю себя бытию Пирующим и Пиром. Меня поглотят, так и я поглощу».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			cultheart_1: "1",
+			heart: "21",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_heart: "1",
+		},
+		label: "Попытаться ввести Адепта в число Тарантеллистов",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_heart",
+		actionId: "talk",
+		description: "«Сосной и Ножом, Барабаном и Кругом, посвящаю себя вести Танец, что не прекратится. Это моя служба, но в конце всего я служу лишь Танцу».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			knock: "21",
+			cultknock_1: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_knock: "1",
+		},
+		label: "Попытаться ввести Адепта в число Ключей",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_knock",
+		actionId: "talk",
+		description: "«Больше нет замков. Больше нет дверей. Больше нет врат. Больше нет стен. Нет крепостей, закрытых предо мной. Нет стран, запрещённых мне. Нет закона, что сковал бы меня, кроме закона Матери. Я — Ключ, и таково моё применение».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			cultlantern_1: "1",
+			lantern: "21",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_lantern: "1",
+		},
+		label: "Попытаться ввести Адепта в число Пророков",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_lantern",
+		actionId: "talk",
+		description: "«Я даю обет указывать путь желающим и нежелающим. Я даю обет направлять. Я даю обет освещать. Я даю обет против милосердия. Я пройду по указанному пути, какой бы ни была цена».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			moth: "21",
+			cultmoth_1: "1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_moth: "1",
+		},
+		label: "Попытаться ввести Адепта в число Кожевенников",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_moth",
+		actionId: "talk",
+		description: "«Здесь было моё прошлое, но оно — не обо мне. Здесь мои облачения, и они отброшены. Здесь моя кожа, но она взята взаймы. Здесь моё имя — лишь повязка на глазах. Здесь Лес, где мы душим свет. Здесь меня видели, и здесь меня нет».",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			cultwinter_1: "1",
+			winter: "21",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_winter: "1",
+		},
+		label: "Попытаться ввести Адепта в число...",
+		startdescription: "Лишь редчайшие — те, кто более всех прочих пригодны к служению нашим мистериям — могут достигнуть этой вершины.",
+		id: "promoteto_d_winter",
+		actionId: "talk",
+		description: "«...?» «...?« «...?»
 		
 		«...»",
-        warmup: 60,
-        craftable: true
-    },
-	
-	
-	
-	
-	
-	
-	
-	  	{
-        id: "recruitacquaintanceclue",
-        label: "Углубить знакомство?",
-        actionId: "talk",
-        requirements: {society: 1,mortal: 1,follower:-1},
-        startdescription: "Возможно, в перспективе — неофит, если я добавлю что-то ещё.",
-        craftable: false,
-		hintonly: true
-    },
- 	
-	 	{
-        id: "cultfoundation",
-        label: "Выбор устоев",
-		alternativerecipes:
-		[{id: "cultfoundationedge", chance:100},
-		{id: "cultfoundationforge", chance:100},
-		{id: "cultfoundationgrail", chance:100},
-		{id: "cultfoundationheart", chance:100},
-		{id: "cultfoundationknock", chance:100},
-		{id: "cultfoundationlantern", chance:100},
-		{id: "cultfoundationmoth", chance:100},
-		{id: "cultfoundationsecrethistories", chance:100},
-		{id: "cultfoundationwinter", chance:100}],
-        actionId: "cult",
-        requirements: {},
-        effects: {},
-		slots: [{id:"Doctrine",label:"Доктрина",required: {lore: 1},description: "Чего мы ищем?"}],
-        startdescription: "Традиции и принуждения — старые, новые, или и те и другие. [Добавьте Знание, чтобы определить принципы, на которых основан ваш культ.]",
-        description: "",
-        warmup: 30,
-        craftable: false,
-		linked:[{id:"cultfoundation",chance:100}]
-    },
-			{
-	id: "cultfoundationedge",
-	label: "Основать Церковь Сияющей Грани",
-	actionId: "establishcult",
-	requirements: {edge: 1},
-	effects: {cultedge_1: 1},
-	startdescription: "Оккультное общество, посвящённое Часам борьбы и завоеваний.",
-		linked: [{id: "cultfoundation_health",chance:100}],
-	},
-			{
-	id: "cultfoundationforge",
-	label: "Основать Орден Неустрашимых",
-	actionId: "establishcult",
-	requirements: {forge: 1},
-	effects: {cultforge_1: 1},
-	startdescription: "Оккультное общество, посвящённое огню, который меняет и перековывает.",
-		linked: [{id: "cultfoundation_health",chance:100}],
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
 	},
 	{
-	id: "cultfoundationgrail",
-	label: "Основать Орден Кровавой Чаши",
-	actionId: "establishcult",
-	requirements: {grail: 1},
-	effects: {cultgrail_1: 1},
-	startdescription: "Оккультное общество, посвящённое мистериям рождения, крови и желаний.",
-		linked: [{id: "cultfoundation_passion",chance:100}],
-	},
+		id: "recruitacquaintanceclue",
+		craftable: "false",
+		startdescription: "Возможно, в перспективе — неофит, если я добавлю что-то ещё.",
+		requirements: 
 		{
-	id: "cultfoundationheart",
-	label: "Основать Безустанный Храм",
-	actionId: "establishcult",
-	requirements: {heart: 1},
-	effects: {cultheart_1: 1},
-	startdescription: "Оккультное общество, посвящённое барабанному ритму, который нескончаем.",
-		linked: [{id: "cultfoundation_passion",chance:100}],
+			follower: "-1",
+			society: "1",
+			mortal: "1",
+		},
+		label: "Углубить знакомство?",
+		hintonly: "true",
+		actionId: "talk",
 	},
+	{
+		linked: 
+		[
 			{
-	id: "cultfoundationknock",
-	label: "Основать Общество Святой Раны",
-	actionId: "establishcult",
-	requirements: {knock: 1},
-	effects: {cultknock_1: 1},
-
-	startdescription: "Оккультное общество, посвящённое Часам, отпирающим двери.",
-		linked: [{id: "cultfoundation_health",chance:100}],
-	},
+				id: "cultfoundation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "30",
+		label: "Выбор устоев",
+		startdescription: "Традиции и принуждения — старые, новые, или и те и другие. [Добавьте Знание, чтобы определить принципы, на которых основан ваш культ.]",
+		id: "cultfoundation",
+		actionId: "cult",
+		slots: 
+		[
+			{
+				id: "Doctrine",
+				required: 
 				{
-	id: "cultfoundationlantern",
-	label: "Основать Зеркало Славы",
-	actionId: "establishcult",
-	requirements: {lantern: 1},
-	effects: {cultlantern_1: 1},
-	startdescription: "Оккультное общество, посвящённое пониманию Света, протекающего из иных, более ярких, мест.",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+					lore: "1",
+				},
+				description: "Чего мы ищем?",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "cultfoundationedge",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationforge",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationgrail",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationheart",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationknock",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationlantern",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationmoth",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationsecrethistories",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationwinter",
+				chance: "100",
+			},
+		],
 	},
-					{
-	id: "cultfoundationmoth",
-	label: "Основать Клуб Диколесья",
-	actionId: "establishcult",
-	requirements: {moth: 1},
-	effects: {cultmoth_1: 1},
-	startdescription: "Оккультное общество, посвящённое хаосу и нежданным Часам.",
-		linked: [{id: "cultfoundation_passion",chance:100}],
+	{
+		id: "cultfoundationedge",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое Часам борьбы и завоеваний.",
+		requirements: 
+		{
+			edge: "1",
+		},
+		effects: 
+		{
+			cultedge_1: "1",
+		},
+		label: "Основать Церковь Сияющей Грани",
+		actionId: "establishcult",
 	},
-						{
-	id: "cultfoundationsecrethistories",
-	label: "Основать Общество св. Гидры",
-	actionId: "establishcult",
-	requirements: {secrethistories: 1},
-	effects: {cultsecrethistories_1: 1},
-	startdescription: "Оккультное общество, посвящённое изучению пяти Историй и многих тысяч полуреальных ответвлений от них",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+	{
+		id: "cultfoundationforge",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое огню, который меняет и перековывает.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		effects: 
+		{
+			cultforge_1: "1",
+		},
+		label: "Основать Орден Неустрашимых",
+		actionId: "establishcult",
 	},
-							{
-	id: "cultfoundationwinter",
-	label: "Основать Детей Молчания",
-	actionId: "establishcult",
-	requirements: {winter: 1},
-	effects: {cultwinter_1: 1},
-	startdescription: "Оккультное общество, посвящённое приходящему молчанию и завершающему холоду.",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+	{
+		id: "cultfoundationgrail",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое мистериям рождения, крови и желаний.",
+		requirements: 
+		{
+			grail: "1",
+		},
+		effects: 
+		{
+			cultgrail_1: "1",
+		},
+		label: "Основать Орден Кровавой Чаши",
+		actionId: "establishcult",
 	},
-								{
-	id: "cultfoundation_health",
-	label: "Жертва Крови",
-	actionId: "establishcult",
-	requirements: {injury:-1},
-	slots: [{id:"Health",label: "Моё Здоровье",required: {health: 1},description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить."}],
-	aspects: {damagehealth:1},
-	warmup:30,
-	startdescription: "Час, кому мы будем служить, требует боли. Мне необходимо отдать себя.",
-	description: "",
-	linked: [{id: "cultfoundation_health",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationheart",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое барабанному ритму, который нескончаем.",
+		requirements: 
+		{
+			heart: "1",
+		},
+		effects: 
+		{
+			cultheart_1: "1",
+		},
+		label: "Основать Безустанный Храм",
+		actionId: "establishcult",
 	},
-									{
-	id: "cultfoundation_reason",
-	label: "Ужасающая Ясность",
-	actionId: "establishcult",
-	requirements: {concentration:-1},
-	slots: [{id:"Reason",label: "Мой Разум",required: {reason: 1},description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить."}],
-	aspects: {fatiguing:1},
-	warmup:30,
-	startdescription: "Наше назначение требует понимания истин, леденящих душу. Мне необходимо отдать себя.",
-	description: "",
-	linked: [{id: "cultfoundation_reason",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationknock",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое Часам, отпирающим двери.",
+		requirements: 
+		{
+			knock: "1",
+		},
+		effects: 
+		{
+			cultknock_1: "1",
+		},
+		label: "Основать Общество Святой Раны",
+		actionId: "establishcult",
 	},
-	
-									{
-	id: "cultfoundation_passion",
-	label: "Дар Рвения",
-	actionId: "establishcult",
-	requirements: {passionexhausted:-1},
-	slots: [{id:"Passion",label: "Моя Страсть",required: {passion: 1},description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить."}],
-	aspects: {fatiguing:1},
-	warmup:30,
-	startdescription: "Час, кому мы будем служить, требует посвятить нашу страсть цели Часа. Мне необходимо отдать себя.",
-	description: "",
-	linked: [{id: "cultfoundation_passion",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationlantern",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое пониманию Света, протекающего из иных, более ярких, мест.",
+		requirements: 
+		{
+			lantern: "1",
+		},
+		effects: 
+		{
+			cultlantern_1: "1",
+		},
+		label: "Основать Зеркало Славы",
+		actionId: "establishcult",
 	},
-	
-	
-						{
-	id: "cultfoundation_firstrecruit",
-	label: "Рекрут",
-	actionId: "establishcult",
-	requirements: {follower:-1},
-	slots: [{id:"Recruit",label:"Рекрут",required: {mortal: 1},forbidden:{independent:1,prisoner:1,hunter:1,patron:1,hireling:1},description: "Последует за мной."}],
-	warmup:30,
-	startdescription: "Культ из одного человека — всего лишь необычная привычка. Мне нужен рекрут.",
-	aspects:{recruiting:1},
-	linked: [{id: "cultfoundation_firstrecruit",chance:100},
-	{id: "cultfoundation_complete",chance:100},
-	]
+	{
+		id: "cultfoundationmoth",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое хаосу и нежданным Часам.",
+		requirements: 
+		{
+			moth: "1",
+		},
+		effects: 
+		{
+			cultmoth_1: "1",
+		},
+		label: "Основать Клуб Диколесья",
+		actionId: "establishcult",
 	},
-	
-					{
-	id: "cultfoundation_complete",
-	label: "НАШ ПУТЬ НАЧИНАЕТСЯ.",
-	actionId: "establishcult",
-	effects: {generichq:1},
-	description: "Культ основан. Это шаг к большей силе. [Пользуйтесь культом, чтобы вербовать и повышать приспешников. В разговоре с приспешниками о культе можно отправлять их по делам культа.]"
+	{
+		id: "cultfoundationsecrethistories",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое изучению пяти Историй и многих тысяч полуреальных ответвлений от них",
+		requirements: 
+		{
+			secrethistories: "1",
+		},
+		effects: 
+		{
+			cultsecrethistories_1: "1",
+		},
+		label: "Основать Общество св. Гидры",
+		actionId: "establishcult",
 	},
-	
-	
+	{
+		id: "cultfoundationwinter",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "Оккультное общество, посвящённое приходящему молчанию и завершающему холоду.",
+		requirements: 
+		{
+			winter: "1",
+		},
+		effects: 
+		{
+			cultwinter_1: "1",
+		},
+		label: "Основать Детей Молчания",
+		actionId: "establishcult",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_fatigue",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			injury: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			damagehealth: "1",
+		},
+		label: "Жертва Крови",
+		startdescription: "Час, кому мы будем служить, требует боли. Мне необходимо отдать себя.",
+		id: "cultfoundation_health",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить.",
+				label: "Моё Здоровье",
+			},
+		],
+	},
+	{
+		id: "cultfoundation_fatigue",
+		comments: "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+		aspects: 
+		{
+			damagehealth: "1",
+		},
+		requirements: 
+		{
+			fatigue: "1",
+		},
+		linked: 
+		[
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		label: "A Sacrifice of Pain",
+		comment: "NEW",
+		actionId: "establishcult",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			concentration: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "Ужасающая Ясность",
+		startdescription: "Наше назначение требует понимания истин, леденящих душу. Мне необходимо отдать себя.",
+		id: "cultfoundation_reason",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Reason",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить.",
+				label: "Мой Разум",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			passionexhausted: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "Дар Рвения",
+		startdescription: "Час, кому мы будем служить, требует посвятить нашу страсть цели Часа. Мне необходимо отдать себя.",
+		id: "cultfoundation_passion",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Passion",
+				required: 
+				{
+					passion: "1",
+				},
+				description: "Мне следует отдать часть себя, чтобы почтить силу, которой мы будем служить.",
+				label: "Моя Страсть",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_complete",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Рекрут",
+		startdescription: "Культ из одного человека — всего лишь необычная привычка. Мне нужен рекрут.",
+		id: "cultfoundation_firstrecruit",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Recruit",
+				required: 
+				{
+					acquaintance: "1",
+				},
+				description: "Последует за мной.",
+				forbidden: 
+				{
+					patron: "1",
+					hireling: "1",
+					prisoner: "1",
+					independent: "1",
+					hunter: "1",
+				},
+				label: "Рекрут",
+			},
+		],
+	},
+	{
+		id: "cultfoundation_complete",
+		effects: 
+		{
+			generichq: "1",
+		},
+		description: "Культ основан. Это шаг к большей силе. [Пользуйтесь культом, чтобы вербовать и повышать приспешников. В разговоре с приспешниками о культе можно отправлять их по делам культа.]",
+		label: "НАШ ПУТЬ НАЧИНАЕТСЯ",
+		actionId: "establishcult",
+	},
 ]
 }

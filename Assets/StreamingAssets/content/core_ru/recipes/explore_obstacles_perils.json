@@ -1,531 +1,1219 @@
-﻿ {"recipes": [
-
-	
-	
+﻿{
+recipes: [
 	{
-	id: "explorevaultperil_treacherousground_encounter",
-	actionId:"explore",
-	label: "Коварная земля",
-	startdescription: "Зыбучая грязь, обманчивые трещины: земля голодна. Нам нужна Лампада, чтобы увидеть путь, или Кузня, чтобы проложить его.",
-	requirements: {peril_treacherousground:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
-	{id: "explorevaultperil_treacherousground_highforge",chance:100},
-	{id: "explorevaultperil_treacherousground_midlantern",chance:100},
-	{id: "explorevaultperil_treacherousground_midforge",chance:100},
-	{id: "explorevaultperil_treacherousground_lowlantern",chance:100},	
-	{id: "explorevaultperil_treacherousground_lowforge",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultperil_treacherousground_failure",chance:100}]
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			peril_treacherousground: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Коварная земля",
+		startdescription: "Зыбучая грязь, обманчивые трещины: земля голодна. Нам нужна Лампада, чтобы увидеть путь, или Кузня, чтобы проложить его.",
+		id: "explorevaultperil_treacherousground_encounter",
+		actionId: "explore",
+		slots: 
+		[
+			{
+				id: "Assistance",
+				required: 
+				{
+					follower: "1",
+					funds: "1",
+				},
+				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_highlantern",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_treacherousground_highforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_treacherousground_midlantern",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_treacherousground_midforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_treacherousground_lowlantern",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_treacherousground_lowforge",
+				chance: "100",
+			},
+		],
 	},
-	
-	{id:"explorevaultperil_treacherousground_highlantern",
-	actionId: "explore",
-	requirements:{lantern:10},
-	label:"Мы взываем к Дозорному, что направляет.",
-	startdescription: "Дозорный очистит наши взоры, и мы пройдём не споткнувшись.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-		{id:"explorevaultperil_treacherousground_midlantern",
-	actionId: "explore",
-	requirements:{lantern:5},
-	label:"Мы взываем к Дозорному, что освещает.",
-	startdescription: "Дозорный одолжит сияние нашим лампам, и они подсветят нам опасности, а мы избегнем их. Возможно.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultperil_treacherousground_lowlantern",
-	actionId: "explore",
-	requirements:{lantern:1},
-	label:"Мы взываем к Дозорному, что не сострадает.",
+	{
+		id: "explorevaultperil_treacherousground_highlantern",
+		startdescription: "Дозорный очистит наши взоры, и мы пройдём не споткнувшись.",
+		requirements: 
+		{
+			lantern: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Дозорному, что направляет.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_treacherousground_midlantern",
+		startdescription: "Дозорный одолжит сияние нашим лампам, и они подсветят нам опасности, а мы избегнем их. Возможно.",
+		requirements: 
+		{
+			lantern: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Дозорному, что освещает.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_treacherousground_lowlantern",
 		startdescription: "Дозорный немилосерден ни к нашим припятствиям, ни к нам самим. Если нам повезёт, мы сможем пройти дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_treacherousground_highforge",
-	actionId: "explore",
-	requirements:{forge:10},
-	label:"Мы взываем к Мадругаде, чей баланс неколебим.",
-	startdescription:"Мы призываем Мадругаду, Час Кузни равно как и Час Зимы. Мы пройдём дальше. Успех неизбежен.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_treacherousground_midforge",
-	actionId: "explore",
-	requirements:{forge:5},
-	label:"Мы взываем к Мадругаде, что унимает и подавляет.",
-	startdescription:"Мадругада — Час Кузни равно как и Час Зимы. Её сила может успокоить ненадёжную землю. Вероятно, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_treacherousground_lowforge",
-	actionId: "explore",
-	requirements:{forge:1},
-	label:"Мы взываем к Мадругаде, что приходит раньше Солнца.",
-	startdescription:"Мадругада — Час Кузни равно как и Час Зимы. Кузня придаёт силу, но туманы густы и цепки. Может быть, мы пройдём дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
-	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
-		  },
-	
+		requirements: 
+		{
+			lantern: "1",
+		},
+		description: ".",
+		linked: 
+		[
 			{
-	id: "explorevaultperil_treacherousground_success",
-	actionId:"explore",
-	label: "Коварная земля пройдена",
-	startdescription: "Мы заляпаны грязью и исцарапаны шипами, но прошли дальше.",
-	description: ".",
-	effects: {peril_treacherousground:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+				id: "explorevaultperil_treacherousground_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Дозорному, что не сострадает.",
+		actionId: "explore",
 	},
-	
-				{
-	id: "explorevaultperil_treacherousground_failure",
-	actionId:"explore",
-	label: "Земля голодна",
-	startdescription: "Многообещающая тропа обернулась коварной западнёй. Нам нужно вернуться и найти иной путь.",
-	description: ".",
-	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
-	
 	{
-	id: "explorevaultperil_forest_encounter",
-	actionId:"explore",
-	label: "Грозный лес",
-	startdescription: "Тьма под деревьями пока что тиха, но мы не одни здесь. Мотылёк проведёт нас, а Кузня очистит путь.",
-	requirements: {peril_forest:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultperil_forest_highmoth",chance:100},
-	{id: "explorevaultperil_forest_highforge",chance:100},
-	{id: "explorevaultperil_forest_midmoth",chance:100},
-	{id: "explorevaultperil_forest_midforge",chance:100},
-	{id: "explorevaultperil_forest_lowmoth",chance:100},	
-	{id: "explorevaultperil_forest_lowforge",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultperil_forest_failure",chance:100}]
+		id: "explorevaultperil_treacherousground_highforge",
+		startdescription: "Мы призываем Мадругаду, Час Кузни равно как и Час Зимы. Мы пройдём дальше. Успех неизбежен.",
+		requirements: 
+		{
+			forge: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, чей баланс неколебим.",
+		actionId: "explore",
 	},
-	
-	{id:"explorevaultperil_forest_highmoth",
-	actionId: "explore",
-	requirements:{moth:10},
-	label:"Мы взываем к Мотыльку, что ищет среди деревьев в Лесу.",
-	startdescription: "Лес под Обителью темнее, чем даже эти места. Мотылёк направит наши стопы.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:100},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-		{id:"explorevaultperil_forest_midmoth",
-	actionId: "explore",
-	requirements:{moth:5},
-	label:"Мы взываем к Мотыльку, что испещрён.",
-	startdescription: "Тени пятнают тропу. Возможно, именно этот путь дан нам Мотыльком. Возможно, так и есть. Возможно, мы пройдём дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:70},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultperil_forest_lowmoth",
-	actionId: "explore",
-	requirements:{moth:1},
-	label:"Мы взываем к Мотыльку, что бьётся под черепом.",
+	{
+		id: "explorevaultperil_treacherousground_midforge",
+		startdescription: "Мадругада — Час Кузни равно как и Час Зимы. Её сила может успокоить ненадёжную землю. Вероятно, мы справимся.",
+		requirements: 
+		{
+			forge: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, что унимает и подавляет.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_treacherousground_lowforge",
+		startdescription: "Мадругада — Час Кузни равно как и Час Зимы. Кузня придаёт силу, но туманы густы и цепки. Может быть, мы пройдём дальше.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_treacherousground_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_treacherousground_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, что приходит раньше Солнца.",
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Коварная земля пройдена",
+		startdescription: "Мы заляпаны грязью и исцарапаны шипами, но прошли дальше.",
+		id: "explorevaultperil_treacherousground_success",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_treacherousground: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Земля голодна",
+		startdescription: "Многообещающая тропа обернулась коварной западнёй. Нам нужно вернуться и найти иной путь.",
+		id: "explorevaultperil_treacherousground_failure",
+		description: ".",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "explorevault_casualty",
+				expulsion: 
+				{
+					filter: 
+					{
+						follower: "1",
+					},
+					limit: "1",
+				},
+				chance: "70",
+				additional: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			peril_forest: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Грозный лес",
+		startdescription: "Тьма под деревьями пока что тиха, но мы не одни здесь. Мотылёк проведёт нас, а Кузня очистит путь.",
+		id: "explorevaultperil_forest_encounter",
+		actionId: "explore",
+		slots: 
+		[
+			{
+				id: "Assistance",
+				required: 
+				{
+					follower: "1",
+					funds: "1",
+				},
+				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "explorevaultperil_forest_highmoth",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_forest_highforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_forest_midmoth",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_forest_midforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_forest_lowmoth",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_forest_lowforge",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "explorevaultperil_forest_highmoth",
+		startdescription: "Лес под Обителью темнее, чем даже эти места. Мотылёк направит наши стопы.",
+		requirements: 
+		{
+			moth: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мотыльку, что ищет среди деревьев в Лесу.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_forest_midmoth",
+		startdescription: "Тени пятнают тропу. Возможно, именно этот путь дан нам Мотыльком. Возможно, так и есть. Возможно, мы пройдём дальше.",
+		requirements: 
+		{
+			moth: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мотыльку, что испещрён.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_forest_lowmoth",
 		startdescription: "Мы призываем Мотылька на свою угрозу. Лес пульсирует мерцающими крыльями, мнящимися глазами. Если повезёт, мы пройдём дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:30},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_forest_highforge",
-	actionId: "explore",
-	requirements:{forge:10},
-	label:"Сталь и Огонь",
-	startdescription:"Кузня искусна, Кузня безжалостна. Мы пройдём дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:100},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_forest_midforge",
-	actionId: "explore",
-	requirements:{forge:5},
-	label:"Топор и Фонарь",
-	startdescription:"Лес поглощает нас, но мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:70},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_forest_lowforge",
-	actionId: "explore",
-	requirements:{forge:1},
-	label:"Одоление на закате",
-	startdescription:"Мы призываем силу Кузни и прорубаемся через деревья. Тяжкий путь. Может быть, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:30},
-	{id:"explorevaultperil_forest_failure",chance:100}]	  
-		  },
-	
+		requirements: 
+		{
+			moth: "1",
+		},
+		description: ".",
+		linked: 
+		[
 			{
-	id: "explorevaultperil_forest_success",
-	actionId:"explore",
-	label: "«Свет за деревьями...»",
-	startdescription: "Впереди что-то есть. Мы прошли через лес.",
-	description: ".",
-	effects: {peril_forest:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+				id: "explorevaultperil_forest_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мотыльку, что бьётся под черепом.",
+		actionId: "explore",
 	},
-	
-				{
-	id: "explorevaultperil_forest_failure",
-	actionId:"explore",
-	label: "Молчание сгущается",
-	startdescription: "Мы заблудились. Лес высится, упираясь в закатное небо. Звери леса бесшумны, но иногда мы замечаем их глаза.",
-	description: ".",
-	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	{
-	id: "explorevaultperil_mountains_encounter",
-	actionId:"explore",
-	label: "Горные перевалы",
-	startdescription: "Яростные горные пики врезаются в небо. Принцип Зимы может защитить нас от холода, принцип Кузни может проложить путь. Если у нас нет ни того, ни другого, экспедиция завершится провалом.",
-	requirements: {peril_mountains:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultperil_mountains_highwinter",chance:100},
-	{id: "explorevaultperil_mountains_highforge",chance:100},
-	{id: "explorevaultperil_mountains_midwinter",chance:100},
-	{id: "explorevaultperil_mountains_midforge",chance:100},
-	{id: "explorevaultperil_mountains_lowwinter",chance:100},	
-	{id: "explorevaultperil_mountains_lowforge",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultperil_mountains_failure",chance:100}]
+		id: "explorevaultperil_forest_highforge",
+		startdescription: "Кузня искусна, Кузня безжалостна. Мы пройдём дальше.",
+		requirements: 
+		{
+			forge: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Сталь и Огонь",
+		actionId: "explore",
 	},
-	
-	{id:"explorevaultperil_mountains_highwinter",
-	actionId: "explore",
-	requirements:{winter:10},
-	label:"Мы взываем к Мадругаде, чей баланс неколебим",
-	startdescription: "Час по имени Мадругада обитает в морозном воздухе. Она не даст нам упасть.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:100},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-		{id:"explorevaultperil_mountains_midwinter",
-	actionId: "explore",
-	requirements:{winter:5},
-	label:"Мы взываем к Мадругаде, что унимает и подавляет",
-	startdescription: "Мадругада сильна Зимой. Возможно, она укроет нас от лавин.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:70},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultperil_mountains_lowwinter",
-	actionId: "explore",
-	requirements:{winter:1},
-	label:"Мы взываем к Мадругаде, что приходит раньше Солнца.",
+	{
+		id: "explorevaultperil_forest_midforge",
+		startdescription: "Лес поглощает нас, но мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
+		requirements: 
+		{
+			forge: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Топор и Фонарь",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_forest_lowforge",
+		startdescription: "Мы призываем силу Кузни и прорубаемся через деревья. Тяжкий путь. Может быть, мы справимся.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_forest_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_forest_failure",
+				chance: "100",
+			},
+		],
+		label: "Одоление на закате",
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "«Свет за деревьями...»",
+		startdescription: "Впереди что-то есть. Мы прошли через лес.",
+		id: "explorevaultperil_forest_success",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_forest: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Молчание сгущается",
+		startdescription: "Мы заблудились. Лес высится, упираясь в закатное небо. Звери леса бесшумны, но иногда мы замечаем их глаза.",
+		id: "explorevaultperil_forest_failure",
+		description: ".",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "explorevault_casualty",
+				expulsion: 
+				{
+					filter: 
+					{
+						follower: "1",
+					},
+					limit: "1",
+				},
+				chance: "70",
+				additional: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			peril_mountains: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Горные перевалы",
+		startdescription: "Яростные горные пики врезаются в небо. Принцип Зимы может защитить нас от холода, принцип Кузни может проложить путь. Если у нас нет ни того, ни другого, экспедиция завершится провалом.",
+		id: "explorevaultperil_mountains_encounter",
+		actionId: "explore",
+		slots: 
+		[
+			{
+				id: "Assistance",
+				required: 
+				{
+					follower: "1",
+					funds: "1",
+				},
+				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "explorevaultperil_mountains_highwinter",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_mountains_highforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_mountains_midwinter",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_mountains_midforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_mountains_lowwinter",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_mountains_lowforge",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "explorevaultperil_mountains_highwinter",
+		startdescription: "Час по имени Мадругада обитает в морозном воздухе. Она не даст нам упасть.",
+		requirements: 
+		{
+			winter: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, чей баланс неколебим",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_mountains_midwinter",
+		startdescription: "Мадругада сильна Зимой. Возможно, она укроет нас от лавин.",
+		requirements: 
+		{
+			winter: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, что унимает и подавляет",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_mountains_lowwinter",
 		startdescription: "Часы перед рассветом священны для Мадругады, знающей Зиму. Если мы поднимемся в это время и призовём её, возможно, она защитит нас.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:30},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_mountains_highforge",
-	actionId: "explore",
-	requirements:{forge:10},
-	label:"Путь альпиниста",
-	startdescription:"Нашей силе Кузни знакомы многие ремесла. Мы пройдём дальше.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:100},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_mountains_midforge",
-	actionId: "explore",
-	requirements:{forge:5},
-	label:"Путь исследователя",
-	startdescription:"Мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:70},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_mountains_lowforge",
-	actionId: "explore",
-	requirements:{forge:1},
-	label:"Путь странника",
-	startdescription:"Приспешники Кузни практичны и умелы, но горы перед нами — мили оскаленного мёрзлого камня. Наша дорога сложна. Может быть, нам повезёт.",
-		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:30},
-	{id:"explorevaultperil_mountains_failure",chance:100}]	  
-		  },
-	
+		requirements: 
+		{
+			winter: "1",
+		},
+		description: ".",
+		linked: 
+		[
 			{
-	id: "explorevaultperil_mountains_success",
-	actionId:"explore",
-	label: "Через горные перевалы",
-	startdescription: "Дрожащие и обожжённые морозом, мы прошли через горы.",
-	description: ".",
-	effects: {peril_mountains:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+				id: "explorevaultperil_mountains_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Мадругаде, что приходит раньше Солнца.",
+		actionId: "explore",
 	},
-	
-				{
-	id: "explorevaultperil_mountains_failure",
-	actionId:"explore",
-	label: "Яростное эхо",
-	startdescription: "Оползни и лавины заставили нас отступить. Мы испробуем иной путь, если выживем.",
-	description: ".",
-	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
 	{
-	id: "explorevaultperil_desert_encounter",
-	actionId:"explore",
-	label: "Запустение",
-	startdescription: "Гигантская рыжая топка, едва сдерживаемая горизонтами. По ночам — леденящая пустошь звёзд. Нам надо идти с осторожностью, вооружившись Кузней, чтобы пролагать путь, или Чашей — чтобы утолять жажду.",
-	requirements: {peril_desert:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultperil_desert_highgrail",chance:100},
-	{id: "explorevaultperil_desert_highforge",chance:100},
-	{id: "explorevaultperil_desert_midgrail",chance:100},
-	{id: "explorevaultperil_desert_midforge",chance:100},
-	{id: "explorevaultperil_desert_lowgrail",chance:100},	
-	{id: "explorevaultperil_desert_lowforge",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultperil_desert_failure",chance:100}]
+		id: "explorevaultperil_mountains_highforge",
+		startdescription: "Нашей силе Кузни знакомы многие ремесла. Мы пройдём дальше.",
+		requirements: 
+		{
+			forge: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Путь альпиниста",
+		actionId: "explore",
 	},
-	
-	{id:"explorevaultperil_desert_highgrail",
-	actionId: "explore",
-	requirements:{grail:10},
-	label:"Мы взываем к Сестре-и-Ведьме, что жемчужны.",
-	startdescription: "Сестра-и-Ведьма проведёт нас через сухие места.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:100},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-		{id:"explorevaultperil_desert_midgrail",
-	actionId: "explore",
-	requirements:{grail:5},
-	label:"Мы взываем к Сестре-и-Ведьме, что неприкосновенны.",
-	startdescription: "Мы обратимся к Сестре-и-Ведьме за укрытием от жгучего солнца и от зеркал на горизонтах. Она должна провести нас.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:70},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultperil_desert_lowgrail",
-	actionId: "explore",
-	requirements:{grail:1},
-	label:"Мы взываем к Сестре-и-Ведьме, что неразделимы.",
+	{
+		id: "explorevaultperil_mountains_midforge",
+		startdescription: "Мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
+		requirements: 
+		{
+			forge: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Путь исследователя",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_mountains_lowforge",
+		startdescription: "Приспешники Кузни практичны и умелы, но горы перед нами — мили оскаленного мёрзлого камня. Наша дорога сложна. Может быть, нам повезёт.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_mountains_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_mountains_failure",
+				chance: "100",
+			},
+		],
+		label: "Путь странника",
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Через горные перевалы",
+		startdescription: "Дрожащие и обожжённые морозом, мы прошли через горы.",
+		id: "explorevaultperil_mountains_success",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_mountains: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Яростное эхо",
+		startdescription: "Оползни и лавины заставили нас отступить. Мы испробуем иной путь, если выживем.",
+		id: "explorevaultperil_mountains_failure",
+		description: ".",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "explorevault_casualty",
+				expulsion: 
+				{
+					filter: 
+					{
+						follower: "1",
+					},
+					limit: "1",
+				},
+				chance: "70",
+				additional: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			peril_desert: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Запустение",
+		startdescription: "Гигантская рыжая топка, едва сдерживаемая горизонтами. По ночам — леденящая пустошь звёзд. Нам надо идти с осторожностью, вооружившись Кузней, чтобы пролагать путь, или Чашей — чтобы утолять жажду.",
+		id: "explorevaultperil_desert_encounter",
+		actionId: "explore",
+		slots: 
+		[
+			{
+				id: "Assistance",
+				required: 
+				{
+					follower: "1",
+					funds: "1",
+				},
+				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "explorevaultperil_desert_highgrail",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_desert_highforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_desert_midgrail",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_desert_midforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_desert_lowgrail",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_desert_lowforge",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "explorevaultperil_desert_highgrail",
+		startdescription: "Сестра-и-Ведьма проведёт нас через сухие места.",
+		requirements: 
+		{
+			grail: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_desert_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что жемчужны.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_desert_midgrail",
+		startdescription: "Мы обратимся к Сестре-и-Ведьме за укрытием от жгучего солнца и от зеркал на горизонтах. Она должна провести нас.",
+		requirements: 
+		{
+			grail: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_desert_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что неприкосновенны.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_desert_lowgrail",
 		startdescription: "Мы обратимся к Сестре-и-Ведьме, чтобы не рассеяться в песчаных бурях сухой земли. Может быть, этого хватит.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:30},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_desert_highforge",
-	actionId: "explore",
-	requirements:{forge:10},
-	label:"Выжженный путь",
-	startdescription:"Умения Кузни поддержат нас и проведут через раскалённые камни к далёкой зелени. Мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:100},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_desert_midforge",
-	actionId: "explore",
-	requirements:{forge:5},
-	label:"Сухой путь",
-	startdescription:"Мы опытны, и Кузня сильна в нас. Мы должны найти путь через раскалённые камни к далёкой зелени.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:70},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_desert_lowforge",
-	actionId: "explore",
-	requirements:{forge:1},
-	label:"Безжалостный путь",
-	startdescription:"Приспешники Кузни практичны и умелы, но это пагубное место. Может быть, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:30},
-	{id:"explorevaultperil_desert_failure",chance:100}]	  
-		  },
-	
+		requirements: 
+		{
+			grail: "1",
+		},
+		description: ".",
+		linked: 
+		[
 			{
-	id: "explorevaultperil_desert_success",
-	actionId:"explore",
-	label: "Солнце в Сиянии",
-	startdescription: "Солнце садится. Мы оглядываемся на пересечённую нами опустошённую землю, на все цвета, которыми она покрыта в закатном сиянии. Ночь опускается. Мерцают звёзды. Ветер холодными ладонями касается наших лиц. Вперёд.",
-	description: ".",
-	effects: {peril_desert:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+				id: "explorevaultperil_desert_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что неразделимы.",
+		actionId: "explore",
 	},
-	
-				{
-	id: "explorevaultperil_desert_failure",
-	actionId:"explore",
-	label: "Солнце в Гневе",
-	startdescription: "День за днём солнце натягивает нашу кожу, иссушает наши рты, наполняет наши черепа яростным светом. Мы можем заблудиться. Возможно, мы уже заблудились.",
-	description: ".",
-	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
-	
-	
 	{
-	id: "explorevaultperil_sea_encounter",
-	actionId:"explore",
-	label: "Море вокруг Вечерних Островов",
-	startdescription: "Море, куда мы плывём, поражено штормами. Острова, что мы ищем, затеряны в углах неизвестных Историй. Нам понадобится Сердце, или Кузня, или оба принципа вместе.",
-	requirements: {peril_sea:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultperil_sea_highheart",chance:100},
-	{id: "explorevaultperil_sea_highforge",chance:100},
-	{id: "explorevaultperil_sea_midheart",chance:100},
-	{id: "explorevaultperil_sea_midforge",chance:100},
-	{id: "explorevaultperil_sea_lowheart",chance:100},	
-	{id: "explorevaultperil_sea_lowforge",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultperil_sea_failure",chance:100}]
-	},
-	
-	{id:"explorevaultperil_sea_highheart",
-	actionId: "explore",
-	requirements:{heart:10},
-	label:"Мы взываем к Сестре-и-Ведьме, что неприкосновенны.",
-	startdescription:"Бури поднимаются для Громокожи и утихают для Сестры. Верные слова сохранят нас в безопасности на морском пути.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:100},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-		{id:"explorevaultperil_sea_midheart",
-	actionId: "explore",
-	requirements:{heart:5},
-	label:"Мы взываем к Сестре-и-Ведьме, что неразделимы.",
-	startdescription:"Если налетит шторм, Сестра-и-Ведьма сохранит в целости наш корабль и нашу команду. Наверное.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:70},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultperil_sea_lowheart",
-	actionId: "explore",
-	requirements:{heart:1},
-	label:"Мы взываем к Сестре-и-Ведьме, что жемчужны.",
-	startdescription:"Сестра-и-Ведьма не принадлежат морю, но рядом с ним. Возможно, нам хватит этой защиты.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:30},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_sea_highforge",
-	actionId: "explore",
-	requirements:{forge:10},
-	label:"Уверенность Моряка",
-	startdescription:"Силе Кузни знакомы многие ремесла. Мы преодолеем это море.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:100},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_sea_midforge",
-	actionId: "explore",
-	requirements:{forge:5},
-	label:"Сила Моряка",
-	startdescription:"Мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:70},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultperil_sea_lowforge",
-	actionId: "explore",
-	requirements:{forge:1},
-	label:"Надежда Моряка",
-	startdescription:"Приспешники Кузни практичны и умелы, но это море обманчиво. Нам будет сложно удержать курс.",
-		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:30},
-	{id:"explorevaultperil_sea_failure",chance:100}]	  
-		  },
-	
+		id: "explorevaultperil_desert_highforge",
+		startdescription: "Умения Кузни поддержат нас и проведут через раскалённые камни к далёкой зелени. Мы справимся.",
+		requirements: 
+		{
+			forge: "10",
+		},
+		description: ".",
+		linked: 
+		[
 			{
-	id: "explorevaultperil_sea_success",
-	actionId:"explore",
-	label: "На дальнем берегу",
-	startdescription: "Иссечённые волнами, облитые морем, обожжённые солнцем, запятнанные солью. Но здесь.",
-	description: ".",
-	effects: {peril_sea:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+				id: "explorevaultperil_desert_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Выжженный путь",
+		actionId: "explore",
 	},
-	
+	{
+		id: "explorevaultperil_desert_midforge",
+		startdescription: "Мы опытны, и Кузня сильна в нас. Мы должны найти путь через раскалённые камни к далёкой зелени.",
+		requirements: 
+		{
+			forge: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_desert_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Сухой путь",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_desert_lowforge",
+		startdescription: "Приспешники Кузни практичны и умелы, но это пагубное место. Может быть, мы справимся.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_desert_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_desert_failure",
+				chance: "100",
+			},
+		],
+		label: "Безжалостный путь",
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Солнце в Сиянии",
+		startdescription: "Солнце садится. Мы оглядываемся на пересечённую нами опустошённую землю, на все цвета, которыми она покрыта в закатном сиянии. Ночь опускается. Мерцают звёзды. Ветер холодными ладонями касается наших лиц. Вперёд.",
+		id: "explorevaultperil_desert_success",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_desert: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Солнце в Гневе",
+		startdescription: "День за днём солнце натягивает нашу кожу, иссушает наши рты, наполняет наши черепа яростным светом. Мы можем заблудиться. Возможно, мы уже заблудились.",
+		id: "explorevaultperil_desert_failure",
+		description: ".",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "explorevault_casualty",
+				expulsion: 
 				{
-	id: "explorevaultperil_sea_failure",
-	actionId:"explore",
-	label: "Лабиринты соли и базальта",
-	startdescription: "Ещё один день, как нас треплет шторм. Мы, должно быть, недалеко. Но эти острова — сводящий с ума лабиринт, а места, что мы ищем, не найти ни на какой печатной карте.",
-	description: ".",
-	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
+					filter: 
+					{
+						follower: "1",
+					},
+					limit: "1",
+				},
+				chance: "70",
+				additional: "true",
+			},
+		],
 	},
-	
+	{
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			peril_sea: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Море вокруг Вечерних Островов",
+		startdescription: "Море, куда мы плывём, поражено штормами. Острова, что мы ищем, затеряны в углах неизвестных Историй. Нам понадобится Сердце, или Кузня, или оба принципа вместе.",
+		id: "explorevaultperil_sea_encounter",
+		actionId: "explore",
+		slots: 
+		[
+			{
+				id: "Assistance",
+				required: 
+				{
+					follower: "1",
+					funds: "1",
+				},
+				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "explorevaultperil_sea_highheart",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_sea_highforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_sea_midheart",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_sea_midforge",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_sea_lowheart",
+				chance: "100",
+			},
+			{
+				id: "explorevaultperil_sea_lowforge",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "explorevaultperil_sea_highheart",
+		startdescription: "Бури поднимаются для Громокожи и утихают для Сестры. Верные слова сохранят нас в безопасности на морском пути.",
+		requirements: 
+		{
+			heart: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что неприкосновенны.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_sea_midheart",
+		startdescription: "Если налетит шторм, Сестра-и-Ведьма сохранит в целости наш корабль и нашу команду. Наверное.",
+		requirements: 
+		{
+			heart: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что неразделимы.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_sea_lowheart",
+		startdescription: "Сестра-и-Ведьма не принадлежат морю, но рядом с ним. Возможно, нам хватит этой защиты.",
+		requirements: 
+		{
+			heart: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Мы взываем к Сестре-и-Ведьме, что жемчужны.",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_sea_highforge",
+		startdescription: "Силе Кузни знакомы многие ремесла. Мы преодолеем это море.",
+		requirements: 
+		{
+			forge: "10",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "90",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Уверенность Моряка",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_sea_midforge",
+		startdescription: "Мы опытны, и Кузня сильна в нас. Наверное, мы справимся.",
+		requirements: 
+		{
+			forge: "5",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "70",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Сила Моряка",
+		actionId: "explore",
+	},
+	{
+		id: "explorevaultperil_sea_lowforge",
+		startdescription: "Приспешники Кузни практичны и умелы, но это море обманчиво. Нам будет сложно удержать курс.",
+		requirements: 
+		{
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "explorevaultperil_sea_success",
+				chance: "30",
+			},
+			{
+				id: "explorevaultperil_sea_failure",
+				chance: "100",
+			},
+		],
+		label: "Надежда Моряка",
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "На дальнем берегу",
+		startdescription: "Иссечённые волнами, облитые морем, обожжённые солнцем, запятнанные солью. Но здесь.",
+		id: "explorevaultperil_sea_success",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_sea: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevaulttick",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "30",
+		label: "Лабиринты соли и базальта",
+		startdescription: "Ещё один день, как нас треплет шторм. Мы, должно быть, недалеко. Но эти острова — сводящий с ума лабиринт, а места, что мы ищем, не найти ни на какой печатной карте.",
+		id: "explorevaultperil_sea_failure",
+		description: ".",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "explorevault_casualty",
+				expulsion: 
+				{
+					filter: 
+					{
+						follower: "1",
+					},
+					limit: "1",
+				},
+				chance: "70",
+				additional: "true",
+			},
+		],
+	},
 ]
 }
-

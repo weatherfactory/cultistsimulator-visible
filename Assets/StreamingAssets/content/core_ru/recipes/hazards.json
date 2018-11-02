@@ -1,216 +1,853 @@
-﻿{"recipes": [
-
-	    {
-        id: "despairrisk",
-        label: "Мрачные мысли",
-        actionId: "despair",
-        requirements: {},
-        effects: {},
-		slots: [{id:"Shadows",label:"Тени",required: {inducesdespair:1}, greedy: true}],
-        startdescription: "Тёмные дни. Надо быть осторожнее и не дать прокрасться сомнениям. [Страх может вызвать истинное Отчаяние.]",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-		linked:[{id:"despairactive",chance:100},
-		{id:"despairdefeated",chance:100}]
-    },
-	{  id: "despairactive",
-        label: "ОТЧАЯНИЕ",
-        actionId: "despair",
-		requirements: {inducesdespair: 1},
+﻿{
+recipes: [
+	{
+		linked: 
+		[
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+			{
+				id: "despairdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "60",
+		label: "Мрачные мысли",
+		startdescription: "Тёмные дни. Надо быть осторожнее и не дать прокрасться сомнениям. [Страх может вызвать истинное Отчаяние.]",
+		id: "despairrisk",
+		actionId: "despair",
+		description: ".",
+		slots: 
+		[
+			{
+				id: "Shadows",
+				required: 
+				{
+					inducesdespair: "1",
+				},
+				greedy: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+			{
+				id: "despairdeath",
+				chance: "100",
+			},
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			inducesdespair: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "ОТЧАЯНИЕ",
 		startdescription: "Отчаяние — волк, пожирающий мысли. [Вы можете победить Отчаяние, питая его Довольством; или оно уничтожит вас, достигнув тройного Страха.]",
+		id: "despairactive",
+		actionId: "despair",
 		description: ".",
-		warmup: 60,
-		slots: [{id:"Thoughts",label:"Мысли",required: {contentment: 1,inducesdespair:1},greedy:true,noanim:true}],
-        craftable: false,
-		linked:[{id:"despairabate",chance:100},
-		{id:"despairdeath",chance:100},
-		{id:"despairactive",chance:100}]
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					contentment: "1",
+					inducesdespair: "1",
+				},
+				greedy: "true",
+				noanim: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "despairwarning",
+				chance: "100",
+			},
+		],
 	},
-
-	{  id: "despairabate",
-        label: "Отчаяние стихает",
-        actionId: "despair",
-		requirements: {contentment:1},
-		effects: {inducesdespair: -1,contentment:-1},
+	{
+		linked: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+			{
+				id: "despairdeath",
+				chance: "100",
+			},
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			contentment: "-1",
+			dread: "2",
+		},
+		comments: "This exists specifically for the burn image at 2 Dread.",
+		comment: "NEW",
+		label: "I Am Seeing Things!",
+		startdescription: "Despair pads close at my heels. The world is leached of light. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
+		id: "despairwarning",
+		description: ".",
+		actionId: "visions",
+		burnimage: "despair",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+			{
+				id: "despairdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			contentment: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		label: "Отчаяние стихает",
 		startdescription: "Память о лучших временах сдерживает волка. [Каждое Довольство уничтожает один Страх.]",
+		id: "despairabate",
+		actionId: "despair",
 		description: ".",
-		warmup: 10,
-        craftable: false,
-		linked:[{id:"despairactive",chance:100},
-		{id:"despairdefeated",chance:100}]
+		effects: 
+		{
+			contentment: "-1",
+			inducesdespair: "-1",
+		},
 	},
-		   {
-        id: "despairdeath",
-        label: "ОТЧАЯНИЕ ПОГЛОЩАЕТ МЕНЯ",
-        actionId: "despair",
-        requirements: {inducesdespair: 3},
-		slots: [{id:"Thoughts",label:"Мысли",required: {contentment: 1},greedy:true}],
-        effects: {},
-        startdescription: "Это почти конец — [Немедленно найдите Довольство, или всё кончится.]",
-        description: "Где найдут меня? Я не здесь.",
-        warmup: 60,
-        craftable: false,
-		alternativerecipes: [{id:"despairabate",chance:100}],
-		ending:"despairending",
-				signalEndingFlavour:Melancholy,
-		comments:"Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
-	
-    },
-	{  id: "despairdefeated",
-        label: "Облака расходятся",
-        actionId: "despair",
-		effects: {fleeting:1},
+	{
+		requirements: 
+		{
+			inducesdespair: "3",
+		},
+		craftable: "false",
+		comments: ""Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated".",
+		effects: 
+		{
+		},
+		warmup: "60",
+		ending: "despairending",
+		label: "ОТЧАЯНИЕ ПОГЛОЩАЕТ МЕНЯ",
+		startdescription: "Это почти конец — [Немедленно найдите Довольство, или всё кончится.]",
+		signalEndingFlavour: "Melancholy",
+		id: "despairdeath",
+		actionId: "despair",
+		description: "Где найдут меня? Я не здесь.",
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					contentment: "1",
+				},
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "despairdefeated",
+		craftable: "false",
 		startdescription: ".",
+		effects: 
+		{
+			fleeting: "1",
+		},
 		description: "Волк Отчаяния рыщет не здесь. [У этого Отчаяния нет корма-Страха. Пока что, на этом всё.]",
-        craftable: false
+		label: "Облака расходятся",
+		actionId: "despair",
 	},
-
-		    {
-        id: "visionsrisk",
-        label: "Дрожь в воздухе",
-        actionId: "visions",
-        requirements: {},
-        effects: {influencelantern:1},
-		slots: [{id:"Shadows",label:"Тени",required: {fascination:1}, greedy: true}],
-        startdescription: "Солнце дрожит как тень. Сны колышутся под поверхностью зеркал. Мне надо быть осторожнее и не ускользнуть из бодрствующего мира. [Очарование может привести к Видениям.]",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-		linked:[{id:"visionsactive",chance:100},
-		{id:"visionsdefeated",chance:100}]
-    },
-	{  id: "visionsactive",
-        label: "Мне мерещится",
-        actionId: "visions",
-		requirements: {fascination: 1},
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "Дрожь в воздухе",
+		startdescription: "Солнце дрожит как тень. Сны колышутся под поверхностью зеркал. Мне надо быть осторожнее и не ускользнуть из бодрствующего мира. [Очарование может привести к Видениям.]",
+		id: "visionsrisk",
+		actionId: "visions",
+		description: ".",
+		slots: 
+		[
+			{
+				id: "Shadows",
+				required: 
+				{
+					fascination: "1",
+				},
+				greedy: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "visionsdeath",
+				chance: "100",
+			},
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fascination: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "Мне мерещится",
 		startdescription: "Картины шепчут. Окна подмигивают. Я знаю, это только кажется, но где взять уверенность? [Победить Видения можно Страхом; иначе при тройном Очаровании вы полностью утратите себя.]",
+		id: "visionsactive",
+		actionId: "visions",
 		description: ".",
-		warmup: 60,
-		slots: [{id:"Thoughts",label:"Мысли",required: {dread: 1,fascination:1},greedy:true,noanim:true}],
-        craftable: false,
-		linked:[{id:"visionsabate",chance:100},
-		{id:"visionsdeath",chance:100},
-		{id:"visionsactive",chance:100}]
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					fascination: "1",
+					dread: "1",
+					fleeting: "1",
+				},
+				greedy: "true",
+				noanim: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "visionswarning",
+				chance: "100",
+			},
+		],
 	},
-	   {
-        id: "visionsdeath",
-        label: "Помогите — ",
-        actionId: "visions",
-        requirements: {fascination: 3},
-		slots: [{id:"Thoughts",label:"Мысли",required: {dread: 1},greedy:true}],
-        effects: {},
-        startdescription: "Что за свет, проступающий по краям всего? Слава приходит, но я не могу быть здесь, чтобы видеть её — [Немедленно найдите Страх, или всё кончится.]",
-        description: "Где найдут меня? Я не здесь.",
-        warmup: 60,
-        craftable: false,
-		alternativerecipes: [{id:"visionsabate",chance:100}],
-				signalEndingFlavour:Melancholy,
-		ending:"visionsending"
-	
-    },
-	{  id: "visionsabate",
-        label: "Видения гаснут",
-        actionId: "visions",
-		requirements: {dread:1},
-		effects: {fascination: -1,dread:-1},
+	{
+		linked: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				chance: "100",
+			},
+			{
+				id: "visionsdeath",
+				chance: "100",
+			},
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fascination: "2",
+			dread: "-1",
+			fleeting: "-1",
+		},
+		comments: "This exists specifically for the burn image at 2 Fascination.",
+		comment: "NEW",
+		label: "I Am Seeing Things!",
+		startdescription: "The world is dangerously bright. [You can defeat Visions with Dread or a Fleeting Memory; otherwise, you will lose yourself completely at Fascination 3.]",
+		id: "visionswarning",
+		description: ".",
+		actionId: "visions",
+		burnimage: "visions",
+	},
+	{
+		requirements: 
+		{
+			fascination: "3",
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "60",
+		ending: "visionsending",
+		label: "Помогите — ",
+		startdescription: "Что за свет, проступающий по краям всего? Слава приходит, но я не могу быть здесь, чтобы видеть её — [Немедленно найдите Страх, или всё кончится.]",
+		signalEndingFlavour: "Melancholy",
+		id: "visionsdeath",
+		actionId: "visions",
+		description: "Где найдут меня? Я не здесь.",
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					dread: "1",
+					fleeting: "1",
+				},
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			dread: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		label: "Видения гаснут",
 		startdescription: "Надёжность повседневности изгоняет призраков. Я привязываю себя к обычной жизни. [Каждый Страх сокрушает одно Очарование.]",
+		id: "visionsabate",
+		actionId: "visions",
 		description: ".",
-		warmup: 10,
-        craftable: false,
-		linked:[{id:"visionsactive",chance:100},
-		{id:"visionsdefeated",chance:100}]
+		effects: 
+		{
+			fascination: "-1",
+			dread: "-1",
+		},
 	},
-	{  id: "visionsdefeated",
-        label: "Мир как он есть",
-        actionId: "visions",
-		effects: {influencelantern:1},
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fleeting: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "10",
+		label: "Visions Abate",
+		startdescription: "The solidity of the everyday banishes phantoms. I tether myself to the everyday. [Each Fleeting Memory quells one Fascination.]",
+		id: "visionsabatefleeting",
+		actionId: "visions",
+		description: ".",
+		effects: 
+		{
+			fascination: "-1",
+			fleeting: "-1",
+		},
+	},
+	{
+		id: "visionsdefeated",
+		craftable: "false",
 		startdescription: ".",
+		effects: 
+		{
+			fleeting: "1",
+		},
 		description: "Зеркала гладки. Солнце надёжно. Слава отступает. Я в здравом рассудке, если это что-то значит. [Очарования не питают ваши Видения. Пока что, на этом всё.]",
-        craftable: false
+		label: "Мир как он есть",
+		actionId: "visions",
 	},
-	{id: "curse_dread_dormant",
-	label:"Спящее проклятие Сухой Души",
-	actionId: "curse_dread",
-	startdescription: "Проклятие Сухой Души ещё не действует.",
-	alternativerecipes: [{id: "curse_dread_active",chance:30}],
-	linked: [{id: "curse_dread_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_dread_active",
-	label:"Проклятие Сухой Души",
-	requirements: {dread:-1},
-	actionId: "curse_dread",
-	startdescription: "Проклятие Сухой Души опускается мягко, как морщинистая рука на плечо.",
-	description:"Мой череп скрипит. Цвета сереют.",
-	aspects: {damagereason:1},
-	slots: [{id:"Reason",label:"Разум",greedy:true,required:{reason:1}}],
-	linked: [{id: "curse_dread_active",chance:100}],
-	warmup:60
+	{
+		linked: 
+		[
+			{
+				id: "curse_dread_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "60",
+		label: "Спящее проклятие Сухой Души",
+		startdescription: "Проклятие Сухой Души ещё не действует.",
+		id: "curse_dread_dormant",
+		actionId: "curse_dread",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_dread_active",
+				chance: "30",
+			},
+		],
 	},
-		{id: "curse_visions_dormant",
-	label:"Спящее проклятие Пятого Глаза",
-	actionId: "curse_visions",
-	startdescription: "Проклятие Пятого Глаза ещё не действует.",
-	alternativerecipes: [{id: "curse_visions_active",chance:30}],
-	linked: [{id: "curse_visions_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_visions_active",
-	label:"Проклятие Пятого Глаза",
-	actionId: "curse_visions",
-	requirements: {fascination:-1},
-	startdescription: "Третий Глаз — миф или шишковидная железа. Четвёртый Глаз — Знак при определённых путях восхождения. Пятый Глаз открывается для меня сейчас.",
-	description:"Я не могу не видеть. Если я буду смотреть достаточно долго, я не захочу не видеть.",
-	aspects: {damagepassion:1},
-	slots: [{id:"Passion",label:"Страсть",greedy:true,required:{passion:1}}],
-	linked: [{id: "curse_visions_active",chance:100}],
-	warmup:60
+	{
+		linked: 
+		[
+			{
+				id: "curse_dread_active",
+				chance: "100",
+			},
+			{
+				id: "curse_dread_attempt_mitigation",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			reason: "-1",
+		},
+		warmup: "60",
+		label: "Проклятие Сухой Души",
+		startdescription: "Проклятие Сухой Души опускается мягко, как морщинистая рука на плечо.",
+		id: "curse_dread_active",
+		actionId: "curse_dread",
+		slots: 
+		[
+			{
+				id: "Reason",
+				greedy: "true",
+				required: 
+				{
+					reason: "1",
+				},
+				label: "Разум",
+			},
+		],
 	},
-			{id: "curse_affliction_dormant",
-	label:"Спящее проклятие Ползучего Дыхания",
-	actionId: "curse_health",
-	startdescription: "Время проклятия Ползучего Дыхания ещё не пришло.",
-	alternativerecipes: [{id: "curse_affliction_active",chance:30}],
-	linked: [{id: "curse_affliction_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_affliction_active",
-	label:"Проклятие Ползучего Дыхания",
-	actionId: "curse_affliction",
-	requirements: {decrepitude:-1},
-	startdescription:"Проклятие Ползучего Дыхания начинается с кашля — кашля, который вцепляется в глотку как сборщик налогов.",
-	description:"Каждое дыхание нашей жизни слабее предыдущего, пока не настанет время последнего вздоха. Процесс настолько нетороплив, что неощутим... если речь не о проклятии Ползучего Дыхания.",
-	aspects: {destroyhealth:1},
-	slots: [{id:"Health",label:"Здоровье",greedy:true,required:{health:1}}],
-	linked: [{id: "curse_affliction_active",chance:100}],
-	warmup:60
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			damagereason: "1",
+		},
+		label: "The Dry Soul Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the tunnel tightens around all I see. [Only if you have enough Heart influence will it be possible to turn aside the Curse.]",
+		id: "curse_dread_attempt_mitigation",
+		actionId: "curse_dread",
+		description: "My skull creaks. The light greys.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_dread_mitigation_successful",
+				chance: "100",
+			},
+		],
 	},
-	
-	
-	{id: "curse_nowhere_dormant",
-	label:"Что-то вернулось с нами",
-	actionId: "curse_nowhere",
-	startdescription: "Я вижу тонкое движение в мире — как помутнения, что можно заметить в глазу, но коварнее. Иногда я их слышу.",
-	alternativerecipes: [{id: "curse_nowhere_active",chance:30}],
-	linked: [{id: "curse_nowhere_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_nowhere_active",
-	label:"Черви в Мире",
-	actionId: "curse_nowhere",
-	requirements: {notoriety:-1},
-	startdescription: "В городе есть Черви. Их не видно, но притом их нельзя забыть. Они входят через отверстия в коже и делают то, что уместно Червям.",
-	description:"Мы бессильны. Если мы найдём останки, мы должны сжечь их и с предельным тщанием просеять пепел.",
-	effects:{mortal:-1,notoriety:1},
-	slots: [{id:"Someone",label:"Кто-то",greedy:true,required:{mortal:1}}],
-	linked: [{id: "curse_nowhere_active",chance:100}],
-	warmup:60
+	{
+		id: "curse_dread_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. Keep hppe alive until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My soul swells again. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_dread",
 	},
-
+	{
+		linked: 
+		[
+			{
+				id: "curse_visions_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "60",
+		label: "Спящее проклятие Пятого Глаза",
+		startdescription: "Проклятие Пятого Глаза ещё не действует.",
+		id: "curse_visions_dormant",
+		actionId: "curse_visions",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_visions_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_visions_active",
+				chance: "100",
+			},
+			{
+				id: "curse_visions_attempt_mitigation",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			passion: "-1",
+		},
+		warmup: "60",
+		label: "Проклятие Пятого Глаза",
+		startdescription: "Третий Глаз — миф или шишковидная железа. Четвёртый Глаз — Знак при определённых путях восхождения. Пятый Глаз открывается для меня сейчас.",
+		id: "curse_visions_active",
+		actionId: "curse_visions",
+		slots: 
+		[
+			{
+				id: "Passion",
+				greedy: "true",
+				required: 
+				{
+					passion: "1",
+				},
+				label: "Страсть",
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			damagepassion: "1",
+		},
+		label: "The Fifth Eye Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, will it be possible to turn aside the Curse.]",
+		id: "curse_visions_attempt_mitigation",
+		actionId: "curse_visions",
+		description: "I cannot stop seeing. If I look long enough, I will not wish to.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_visions_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_visions_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. I will close all my eyes until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My eyes are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_visions",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_affliction_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "60",
+		label: "Спящее проклятие Ползучего Дыхания",
+		startdescription: "Время проклятия Ползучего Дыхания ещё не пришло.",
+		id: "curse_affliction_dormant",
+		actionId: "curse_health",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_affliction_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_affliction_active",
+				chance: "100",
+			},
+			{
+				id: "curse_affliction_attempt_mitigation",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			health: "-1",
+		},
+		warmup: "60",
+		label: "Проклятие Ползучего Дыхания",
+		startdescription: "Проклятие Ползучего Дыхания начинается с кашля — кашля, который вцепляется в глотку как сборщик налогов.",
+		id: "curse_affliction_active",
+		actionId: "curse_affliction",
+		slots: 
+		[
+			{
+				id: "Health",
+				greedy: "true",
+				required: 
+				{
+					health: "1",
+				},
+				label: "Здоровье",
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			destroyhealth: "1",
+		},
+		label: "The Creeping Breath Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the life-pulse slows. [With enough Heart influence, will it be possible to turn aside the Curse.]",
+		id: "curse_affliction_attempt_mitigation",
+		actionId: "curse_affliction",
+		description: "Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_affliction_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_affliction_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. Suppress the cough until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My lungs are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_affliction",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_nowhere_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		warmup: "60",
+		label: "Что-то вернулось с нами",
+		startdescription: "Я вижу тонкое движение в мире — как помутнения, что можно заметить в глазу, но коварнее. Иногда я их слышу.",
+		id: "curse_nowhere_dormant",
+		actionId: "curse_nowhere",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_nowhere_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_nowhere_active",
+				chance: "100",
+			},
+			{
+				id: "curse_nowhere_attempt_mitigation",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			mortal: "-1",
+		},
+		warmup: "60",
+		label: "Черви в Мире",
+		startdescription: "В городе есть Черви. Их не видно, но притом их нельзя забыть. Они входят через отверстия в коже и делают то, что уместно Червям.",
+		id: "curse_nowhere_active",
+		actionId: "curse_nowhere",
+		slots: 
+		[
+			{
+				id: "Someone",
+				greedy: "true",
+				required: 
+				{
+					mortal: "1",
+				},
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			mortal: "-1",
+			dread: "1",
+			notoriety: "1",
+		},
+		warmup: "60",
+		label: "The Worms in the World: A Last Chance",
+		startdescription: "The Worms have found their way beneath the skin. This is the end. [It's possible to save this one only if you have a tremendous degree of Heart influence at your disposal.]",
+		id: "curse_nowhere_attempt_mitigation",
+		actionId: "curse_nowhere",
+		description: "When Worms take flesh, there is nothing to be done except destroy what remains - burn and sift with the utmost care.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_nowhere_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_nowhere_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Implore the lightning. Only the storm's own breath can save this one now.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "The absence of the Worms is like a curtain flung open. The air is rain-scent and ozone. Our fingers still tap to the Thunderskin's rhythms.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_nowhere",
+	},
 ]
 }

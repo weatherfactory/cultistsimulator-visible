@@ -1,424 +1,1982 @@
-﻿{"elements":
-    [	
+﻿{
+elements: [
 	{
-        id: "vaultcapital1",
-            label: "Резиденция Страткойна",
-            aspects:{vault:1,location:1,vaultcapital:1},
-			
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Дом мистера Страткойна, коллекционера редкостей. Страткойн не продаёт сокровища. Но достаточно изощрённый пособник может найти путь внутрь.",
-			unique:true
-        },
-								{
-        id: "vaultcapital2",
-            label: "Забытый митреум",
-            aspects:{vault:1,location:1,vaultcapital:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Искатели диковин уже побывали в этом древнем храме, но, возможно, где-то есть Скрытая дверь.",
-			unique:true
-        },
-				{
-        id: "vaultcapital3",
-            label: "Компания «Кейтер и Хиро»",
-            aspects:{vault:1,location:1,vaultcapital:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Место заброшено после взрыва, убившего обоих владельцев. Машины молчат, здание рассыпается как пустая скорлупа. При жизни мистер Кейтер расставлял по офису необычные безделушки. Может быть, ещё осталось что-то уникальное.",
-			unique:true
-        },
-				{
-        id: "vaultcapital4",
-            label: "Госпиталь св. Агнессы",
-            aspects:{vault:1,location:1,vaultcapital:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Здесь творили добрые дела — конечно, если не считать небольшого излишка ампутаций. Но ведь здешним обитателям не рады на городских улицах.",
-			unique:true
-        },
-				{
-        id: "vaultcapitaldefault",
-            label: "Проклятый плёс",
-            aspects:{vault:1,location:1,vaultcapital:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Склады ждут вдоль серых берегов гниющей реки. Может быть, мне удалось найти тот, где хранится необычное."
-        },
+		id: "vaultcapital1",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "Дом мистера Страткойна, коллекционера редкостей. Страткойн не продаёт сокровища. Но достаточно изощрённый пособник может найти путь внутрь.",
+		slots: 
+		[
 			{
-        id: "vaultshires1",
-            label: "Озеро Глэдвин",
-            aspects:{vault:1,location:1,vaultshires:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Под крутыми склонами берегов ждёт туман на озерной глади. До римлян здесь был двойной алтарь, и легенда о змее, посланной, чтобы его осквернить.",
-			unique:true
-        },
-								{
-        id: "vaultshires2",
-            label: "Болото Локвуд",
-            aspects:{vault:1,location:1,vaultshires:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Вонючая тьма болот кишит плодящейся жизнью. Молчаливые местные помнят о святых местах своих малых и тайных богов, тех, кто <i>отвечает</i> молитвам.",
-			unique:true
-        },
+				id: "expeditionmember",
+				required: 
 				{
-        id: "vaultshires3",
-            label: "Холм Клюворон",
-            aspects:{vault:1,location:1,vaultshires:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Древние племена оставили это место упокоения тому, кто в служении одному безжалостному Часу постепенно стал больше шрамом, чем человеком. Вход к нему запечатан связующими песнями и глиной, замешанной на крови.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
 				{
-        id: "vaultshires4",
-            label: "Разрыв Кеглина",
-            aspects:{vault:1,location:1,vaultshires:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Здесь римляне копали серебро, пока не дошли до запретной полости, где Имена хранили то, что не годится для солнечного света. После них, хоть проходы и рухнули, приходили многие. Некоторые не ушли.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultshiresdefault",
-            label: "Керишам",
-            aspects:{vault:1,location:1,vaultshires:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Пройдите через низины на берег, где серо-зелёная земля встречается с серостью Атлантики. Ищите вдоль дорог знаки, ведущие в Керишам. Непросто достичь его, даже тем, кто уже бывал в нём; жители Керишама оберегают свои секреты проклятьями, дубинами и дверьми на крепких засовах."
-        },
-		
-					{
-        id: "vaultcontinent1",
-            label: "Замок Равлен",
-            aspects:{vault:1,location:1,vaultcontinent:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "По любимым рассказам графов де Равлен они ведут свой род от <i>первого</i> Короля-Солнце. По иным рассказам они рыщут в лесах в волчьем облике. Их давно уже нет. Остались гниющие руины замка. Не все их злодеяния раскрыты.",
-			unique:true
-        },
-								{
-        id: "vaultcontinent2",
-            label: "Аббатство Фермье",
-            aspects:{vault:1,location:1,vaultcontinent:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Роберт Фермье направил большую часть своих омерзительных богатств на вклады в это гигантское аббатство, со всех сторон окруженное лесом. Его монахи не любят посетителей. Их служение не совсем ортодоксально. Они проводят определённый праздник жатвы с отвратительной живостью.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultcontinent3",
-            label: "Орфский лес",
-            aspects:{vault:1,location:1,vaultcontinent:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Дальше в лесу сосны растут всё гуще и толще, как шерсть на собачьей спине. Воздух глубинного леса забивает лёгкие пылью и смолой. Источник, приведший вас сюда, гласит, что на рассвете величайшее дерево, что высится в чёрном сердце леса, служит насестом огромного Ворона в маске.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Резиденция Страткойна",
+	},
+	{
+		id: "vaultcapital2",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "Искатели диковин уже побывали в этом древнем храме, но, возможно, где-то есть Скрытая дверь.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
 				{
-        id: "vaultcontinent4",
-            label: "Коллекция Вандершаафа",
-            aspects:{vault:1,location:1,vaultcontinent:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Тесный маленький музей в провинциальном городке, давно закрытый для посещений с момента странного экстаза, охватившего людей в комнате с прессованными цветами. Только очень любопытные обратят внимание на это место и тем более — на закрытый зал для хранения зловещих экспонатов.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
 				{
-        id: "vaultcontinentdefault",
-            label: "Несчётные Камни",
-            aspects:{vault:1,location:1,vaultcontinent:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Мегалиты, расставленые давно умершими жрецами, стоят в болезненно-ровных, безошибочно-точных рядах. Время стёрло почти все следы крови, но безлунными ночами местные жители подновляют те из них, что ещё видны. В скрытых камерах могут оставаться скрытые сокровища."
-        },
-		
-							{
-        id: "vaultlandbeyondforest1",
-            label: "Пещера свечей",
-            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "На каждом седьмом закате хитрец поднимается из деревни у подножия и обновляет свечи. Пол первого зала от входа покрыт скользким вонючим воском. Он утверждает, что свет отпугивает существо в глубине; но вероятнее, что оно просто слишком сыто жертвами, которые он приносит.",
-			unique:true
-        },
-								{
-        id: "vaultlandbeyondforest2",
-            label: "Цитадель воеводы",
-            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "В дни великой турецкой славы здесь правил сильный человек. Долгие годы он отвечал многим мольбам, пока жажда не одолела его самого. Мне стало известно, что в невскрытом убежище под замком могли остаться его сокровища и его жертвы.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultlandbeyondforest3",
-            label: "Вечный цирк Грюнвальд",
-            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Маленькая россыпь заплатанных шатров вокруг выбеленной фермы. Сгорбленные актёры дрожат под каплями дождя. Фрау Грюнвальд направила большое богатство на поддержку этого заведения: кто знает, почему или зачем? Актёры не любят посторонних, заходящих за кулисы.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultlandbeyondforest4",
-            label: "Башня Ревек",
-            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Остатки башни торчат как полусгнивший зуб. Кислота в воздухе въедается в кожу. Что бы ни разрушило это место, оно ещё здесь. Только один этаж над землёй, но мы подозреваем, что есть подземелье.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Забытый митреум",
+	},
+	{
+		id: "vaultcapital3",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "Место заброшено после взрыва, убившего обоих владельцев. Машины молчат, здание рассыпается как пустая скорлупа. При жизни мистер Кейтер расставлял по офису необычные безделушки. Может быть, ещё осталось что-то уникальное.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
 				{
-        id: "vaultlandbeyondforestdefault",
-            label: "Луга лисьих лилий",
-            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Запах лисьих лилий пробуждает дикие желания. Наверное, хорошо, что они растут только на такой высоте. Местные крестьяне отгоняют искателей сокровищ, но некоторые пришельцы поддаются голоду лисьих лилий, и оставляют сокровища среди своих костей; так замыкается круг."
-        },
-		
-		
-							{
-        id: "vaultrendingmountains1",
-            label: "Провалы Охотника",
-            aspects:{vault:1,location:1,vaultrendingmountains:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Рвущие Племена расширили эту систему пещер, прорыли шахты, насторожили ловушки. Это место казни, или, возможно, место испытаний. В любом случае, оно свято, и племена не хотят нас видеть. Если мы их переживём, в тесных туннелях нас ждёт ещё один ужас.",
-			unique:true
-        },
-								{
-        id: "vaultrendingmountains2",
-            label: "Хранитель снега",
-            aspects:{vault:1,location:1,vaultrendingmountains:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Горный храм зловещего вида. Яркие, как драгоценности, пятна скоплений грибов влажно блестят в снегу. Никто не был в храме вот уже поколение, но всё же внутри что-то движется.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
 				{
-        id: "vaultrendingmountains3",
-            label: "Глаз Икирмави",
-            aspects:{vault:1,location:1,vaultrendingmountains:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Мы прочли о султане, который жил восемьсот лет назад; он мог заснуть только под звёздным светом. Он повелел построить эту обсерваторию, чтобы звёзды верно отражались на потолке его спальни. К сожалению, те звёзды, что им удалось увидеть, были небезопасны для незащищённого человеческого разума. Наследник султана велел закрыть обсерваторию.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultrendingmountains4",
-            label: "Волчий мавзолей",
-            aspects:{vault:1,location:1,vaultrendingmountains:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Этот леденящий монумент был построен задолго до падения Рима. Каменные волки сторожат дверь. Внутренний зал высечен в скале и ждёт осколки Солнца на похоронной процессии, что была предсказана. Процессия не пришла, но Мёртвые всё же стремятся сюда.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultrendingmountainsdefault",
-            label: "Гробницы Королей-без-Тени",
-            aspects:{vault:1,location:1,vaultrendingmountains:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "В обнажившейся скале цвета львиной шкуры рабочие высекли гробницы для первых королей этих земель. Они хотели стать бессмертными, и, возможно, один из них достиг цели. Остальные лежат среди своих безделушек. Наследные стражи внимательно следят за ними."
-        },
-					{
-        id: "vaultloneandlevelsands1",
-            label: "Храм Расколотой Звезды",
-            aspects:{vault:1,location:1,vaultloneandlevelsands:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Это место было посвящено богам земли, пока одной зимней ночью его не разбил метеорит. Со временем служители вернулись на расколотые руины. Со временем метеорит сам стал объектом поклонения, приносящим сны. Старый алтарь мог уцелеть, где-то в глубине, под метеорным кратером.",
-			unique:true
-        },
-								{
-        id: "vaultloneandlevelsands2",
-            label: "Гробница Лагу",
-            aspects:{vault:1,location:1,vaultloneandlevelsands:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Приземистая плита из глинистого кирпича, некогда прямоугольная, а ныне скруглённая временем и песком, лежит среди безвестных барханов пустыни. Эта могила невзрачна, но Лагу считается бессмертным из Долгих, и никто из воров не проник в его гробницу.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Компания «Кейтер и Хиро»",
+	},
+	{
+		id: "vaultcapital4",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "Здесь творили добрые дела — конечно, если не считать небольшого излишка ампутаций. Но ведь здешним обитателям не рады на городских улицах.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
 				{
-        id: "vaultloneandlevelsands3",
-            label: "Мессана",
-            aspects:{vault:1,location:1,vaultloneandlevelsands:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Безмятежно процветающая деревня приютилась в изгибе реки; неожиданное пятно зелени на серых землях вокруг. Местные жители живут намного дольше обычного. Что они скрывают?",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
 				{
-        id: "vaultloneandlevelsands4",
-            label: "Храм Семи Витков",
-            aspects:{vault:1,location:1,vaultloneandlevelsands:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Осыпающийся храм в сыром ущелье. Кажется, он был построен в Третьей Истории, той, где много позднее Черви опустошили Европу; но сейчас он существует во всех Историях.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaultloneandlevelsandsdefault",
-            label: "Миа",
-            aspects:{vault:1,location:1,vaultloneandlevelsands:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Здесь был город. Мы можем зарыться в его остатки, как шакалы — в старые кости: дворцовые стены, погребенные дороги, расколотые фонтаны. Если повезёт, мы найдём знание мёртвых; если не повезёт — мёртвые найдут нас."
-        },
-		
-					{
-        id: "vaulteveningisles1",
-            label: "Вороний Остров",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Погасший вулкан возвышается над кипящим сплетением изумрудных джунглей. Бессмертные, повинные в наихудшем преступлении по своим законам, подлежат изгнанию сюда; здесь они спят, упиваются кровью и ломают кости неудачливых странников. За годы им, наверное, удалось набрать много интересных вещичек.",
-			unique:true
-        },
-								{
-        id: "vaulteveningisles2",
-            label: "Форт Герик",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Триста лет назад хищная империя захватила остров, богатый турмалинами. Ни империя, ни остров, не упоминаются ни в одной достойной внимания Истории. Тем не менее, крепость губернатора осталась. Возможно, остались его сокровища. И, если на то пошло, сам губернатор — тоже.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
 				{
-        id: "vaulteveningisles3",
-            label: "Остов Кристабель",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Морской змей влюбился в эту шхуну, но та не ответила на предложение, и змей раздавил её. Даже сейчас змей не отходит далеко от шхуны и украшает её останки оккультными сокровищами. Нам следует нырять с осторожностью.",
-			unique:true
-        },
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Госпиталь Святой Агнессы",
+	},
+	{
+		id: "vaultcapitaldefault",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "Склады ждут вдоль серых берегов гниющей реки. Может быть, мне удалось найти тот, где хранится необычное.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
 				{
-        id: "vaulteveningisles4",
-            label: "Монастырь Глубинной Двери св. Тентрето",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Монастырь угрюмо цепляется за самый обрыв скалы. Он давно рухнул бы в море, но — как мы прочли — монахи топят жертв в глубоком пещерном озере, чтобы Сестра-и-Ведьма хранила их от моря ещё один год, ещё один год.",
-			unique:true
-        },
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
 				{
-        id: "vaulteveningislesdefault",
-            label: "Полуденный Порт",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
-			slots:[
-			{id:"expeditionmember",label:"Лидер",description:"Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Ассистент",description:"Я могу добавить Приспешника, если считаю, что это будет полезно.",required:{follower:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Средства",description:"Для начала экспедиции мне нужны Средства.",required:{funds:1},actionId:"explore"},
-			{id:"expeditionfunds",label:"Ещё Средства",description:"Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",required:{funds:1},actionId:"explore"},
-			],
-            description: "Перед каждым бессмертным стоит выбор: поступить на службу к Часу, вновь стать смертным, или угаснуть. Маленький солнечный остров под названием Полуденный Порт — царство изгнанных бессмертных, отказавшихся от всех вариантов."
-        },
-
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Проклятый плёс",
+	},
+	{
+		id: "vaultshires1",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "Под крутыми склонами берегов ждёт туман на озерной глади. До римлян здесь был двойной алтарь, и легенда о змее, посланной, чтобы его осквернить.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Озеро Глэдвин",
+	},
+	{
+		id: "vaultshires2",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "Вонючая тьма болот кишит плодящейся жизнью. Молчаливые местные помнят о святых местах своих малых и тайных богов, тех, кто <i>отвечает</i> молитвам.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Болото Локвуд",
+	},
+	{
+		id: "vaultshires3",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "Древние племена оставили это место упокоения тому, кто в служении одному безжалостному Часу постепенно стал больше шрамом, чем человеком. Вход к нему запечатан связующими песнями и глиной, замешанной на крови.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Холм Клюворон",
+	},
+	{
+		id: "vaultshires4",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "Здесь римляне копали серебро, пока не дошли до запретной полости, где Имена хранили то, что не годится для солнечного света. После них, хоть проходы и рухнули, приходили многие. Некоторые не ушли.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Разрыв Кеглина",
+	},
+	{
+		id: "vaultshiresdefault",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "Пройдите через низины на берег, где серо-зелёная земля встречается с серостью Атлантики. Ищите вдоль дорог знаки, ведущие в Керишам. Непросто достичь его, даже тем, кто уже бывал в нём; жители Керишама оберегают свои секреты проклятьями, дубинами и дверьми на крепких засовах.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+			{
+				id: "sending",
+				required: 
+				{
+					sendingheartb: "1",
+					sendingmothb: "1",
+				},
+				description: "Now and then, the expedition might have another purpose.",
+				comment: "NEW",
+				label: "Sending",
+				actionId: "explore",
+			},
+		],
+		label: "Керишам",
+	},
+	{
+		id: "vaultcontinent1",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "По любимым рассказам графов де Равлен они ведут свой род от <i>первого</i> Короля-Солнце. По иным рассказам они рыщут в лесах в волчьем облике. Их давно уже нет. Остались гниющие руины замка. Не все их злодеяния раскрыты.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Замок Равлен",
+	},
+	{
+		id: "vaultcontinent2",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Роберт Фермье направил большую часть своих омерзительных богатств на вклады в это гигантское аббатство, со всех сторон окруженное лесом. Его монахи не любят посетителей. Их служение не совсем ортодоксально. Они проводят определённый праздник жатвы с отвратительной живостью.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Аббатство Фермье",
+	},
+	{
+		id: "vaultcontinent3",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Дальше в лесу сосны растут всё гуще и толще, как шерсть на собачьей спине. Воздух глубинного леса забивает лёгкие пылью и смолой. Источник, приведший вас сюда, гласит, что на рассвете величайшее дерево, что высится в чёрном сердце леса, служит насестом огромного Ворона в маске.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Орфский лес",
+	},
+	{
+		id: "vaultcontinent4",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Тесный маленький музей в провинциальном городке, давно закрытый для посещений с момента странного экстаза, охватившего людей в комнате с прессованными цветами. Только очень любопытные обратят внимание на это место и тем более — на закрытый зал для хранения зловещих экспонатов.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Коллекция Вандершаафа",
+	},
+	{
+		id: "vaultcontinentdefault",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Мегалиты, расставленые давно умершими жрецами, стоят в болезненно-ровных, безошибочно-точных рядах. Время стёрло почти все следы крови, но безлунными ночами местные жители подновляют те из них, что ещё видны. В скрытых камерах могут оставаться скрытые сокровища.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+			{
+				id: "sending",
+				required: 
+				{
+					sendingmothc: "1",
+					sendingheartc: "1",
+				},
+				description: "Now and then, the expedition might have another purpose.",
+				comment: "NEW",
+				label: "Sending",
+				actionId: "explore",
+			},
+		],
+		label: "Несчётные Камни",
+	},
+	{
+		id: "vaultlandbeyondforest1",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "На каждом седьмом закате хитрец поднимается из деревни у подножия и обновляет свечи. Пол первого зала от входа покрыт скользким вонючим воском. Он утверждает, что свет отпугивает существо в глубине; но вероятнее, что оно просто слишком сыто жертвами, которые он приносит.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Пещера свечей",
+	},
+	{
+		id: "vaultlandbeyondforest2",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "В дни великой турецкой славы здесь правил сильный человек. Долгие годы он отвечал многим мольбам, пока жажда не одолела его самого. Мне стало известно, что в невскрытом убежище под замком могли остаться его сокровища и его жертвы.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Цитадель воеводы",
+	},
+	{
+		id: "vaultlandbeyondforest3",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "Маленькая россыпь заплатанных шатров вокруг выбеленной фермы. Сгорбленные актёры дрожат под каплями дождя. Фрау Грюнвальд направила большое богатство на поддержку этого заведения: кто знает, почему или зачем? Актёры не любят посторонних, заходящих за кулисы.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Вечный цирк Грюнвальд",
+	},
+	{
+		id: "vaultlandbeyondforest4",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "Остатки башни торчат как полусгнивший зуб. Кислота в воздухе въедается в кожу. Что бы ни разрушило это место, оно ещё здесь. Только один этаж над землёй, но мы подозреваем, что есть подземелье.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Башня Ревек",
+	},
+	{
+		id: "vaultlandbeyondforestdefault",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "Запах лисьих лилий пробуждает дикие желания. Наверное, хорошо, что они растут только на такой высоте. Местные крестьяне отгоняют искателей сокровищ, но некоторые пришельцы поддаются голоду лисьих лилий, и оставляют сокровища среди своих костей; так замыкается круг.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+			{
+				id: "sending",
+				required: 
+				{
+					sendingheartd: "1",
+					sendingmothd: "1",
+				},
+				description: "Now and then, the expedition might have another purpose.",
+				comment: "NEW",
+				label: "Sending",
+				actionId: "explore",
+			},
+		],
+		label: "Луга лисьих лилий",
+	},
+	{
+		id: "vaultrendingmountains1",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultrendingmountains: "1",
+			location: "1",
+		},
+		description: "Рвущие Племена расширили эту систему пещер, прорыли шахты, насторожили ловушки. Это место казни, или, возможно, место испытаний. В любом случае, оно свято, и племена не хотят нас видеть. Если мы их переживём, в тесных туннелях нас ждёт ещё один ужас.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Провалы Охотника",
+	},
+	{
+		id: "vaultrendingmountains2",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultrendingmountains: "1",
+			location: "1",
+		},
+		description: "Горный храм зловещего вида. Яркие, как драгоценности, пятна скоплений грибов влажно блестят в снегу. Никто не был в храме вот уже поколение, но всё же внутри что-то движется.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Хранитель снега",
+	},
+	{
+		id: "vaultrendingmountains3",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultrendingmountains: "1",
+			location: "1",
+		},
+		description: "Мы прочли о султане, который жил восемьсот лет назад; он мог заснуть только под звёздным светом. Он повелел построить эту обсерваторию, чтобы звёзды верно отражались на потолке его спальни. К сожалению, те звёзды, что им удалось увидеть, были небезопасны для незащищённого человеческого разума. Наследник султана велел закрыть обсерваторию.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Глаз Икирмави",
+	},
+	{
+		id: "vaultrendingmountains4",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultrendingmountains: "1",
+			location: "1",
+		},
+		description: "Этот леденящий монумент был построен задолго до падения Рима. Каменные волки сторожат дверь. Внутренний зал высечен в скале и ждёт осколки Солнца на похоронной процессии, что была предсказана. Процессия не пришла, но Мёртвые всё же стремятся сюда.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Волчий мавзолей",
+	},
+	{
+		id: "vaultrendingmountainsdefault",
+		aspects: 
+		{
+			vault: "1",
+			vaultrendingmountains: "1",
+			location: "1",
+		},
+		description: "В обнажившейся скале цвета львиной шкуры рабочие высекли гробницы для первых королей этих земель. Они хотели стать бессмертными, и, возможно, один из них достиг цели. Остальные лежат среди своих безделушек. Наследные стражи внимательно следят за ними.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Гробницы Королей-без-Тени",
+	},
+	{
+		id: "vaultloneandlevelsands1",
+		unique: "true",
+		aspects: 
+		{
+			vaultloneandlevelsands: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Это место было посвящено богам земли, пока одной зимней ночью его не разбил метеорит. Со временем служители вернулись на расколотые руины. Со временем метеорит сам стал объектом поклонения, приносящим сны. Старый алтарь мог уцелеть, где-то в глубине, под метеорным кратером.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Храм Расколотой Звезды",
+	},
+	{
+		id: "vaultloneandlevelsands2",
+		unique: "true",
+		aspects: 
+		{
+			vaultloneandlevelsands: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Приземистая плита из глинистого кирпича, некогда прямоугольная, а ныне скруглённая временем и песком, лежит среди безвестных барханов пустыни. Эта могила невзрачна, но Лагу считается бессмертным из Долгих, и никто из воров не проник в его гробницу.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Гробница Лагу",
+	},
+	{
+		id: "vaultloneandlevelsands3",
+		unique: "true",
+		aspects: 
+		{
+			vaultloneandlevelsands: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Безмятежно процветающая деревня приютилась в изгибе реки; неожиданное пятно зелени на серых землях вокруг. Местные жители живут намного дольше обычного. Что они скрывают?",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Мессана",
+	},
+	{
+		id: "vaultloneandlevelsands4",
+		unique: "true",
+		aspects: 
+		{
+			vaultloneandlevelsands: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Осыпающийся храм в сыром ущелье. Кажется, он был построен в Третьей Истории, той, где много позднее Черви опустошили Европу; но сейчас он существует во всех Историях.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Храм Семи Витков",
+	},
+	{
+		id: "vaultloneandlevelsandsdefault",
+		aspects: 
+		{
+			vaultloneandlevelsands: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Здесь был город. Мы можем зарыться в его остатки, как шакалы — в старые кости: дворцовые стены, погребенные дороги, расколотые фонтаны. Если повезёт, мы найдём знание мёртвых; если не повезёт — мёртвые найдут нас.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+			{
+				id: "sending",
+				required: 
+				{
+					sendinghearte: "1",
+					sendingmothe: "1",
+				},
+				description: "Now and then, the expedition might have another purpose.",
+				comment: "NEW",
+				label: "Sending",
+				actionId: "explore",
+			},
+		],
+		label: "Миа",
+	},
+	{
+		id: "vaulteveningisles1",
+		unique: "true",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Погасший вулкан возвышается над кипящим сплетением изумрудных джунглей. Бессмертные, повинные в наихудшем преступлении по своим законам, подлежат изгнанию сюда; здесь они спят, упиваются кровью и ломают кости неудачливых странников. За годы им, наверное, удалось набрать много интересных вещичек.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Вороний Остров",
+	},
+	{
+		id: "vaulteveningisles2",
+		unique: "true",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Триста лет назад хищная империя захватила остров, богатый турмалинами. Ни империя, ни остров, не упоминаются ни в одной достойной внимания Истории. Тем не менее, крепость губернатора осталась. Возможно, остались его сокровища. И, если на то пошло, сам губернатор — тоже.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Форт Герик",
+	},
+	{
+		id: "vaulteveningisles3",
+		unique: "true",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Морской змей влюбился в эту шхуну, но та не ответила на предложение, и змей раздавил её. Даже сейчас змей не отходит далеко от шхуны и украшает её останки оккультными сокровищами. Нам следует нырять с осторожностью.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Остов Кристабель",
+	},
+	{
+		id: "vaulteveningisles4",
+		unique: "true",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Монастырь угрюмо цепляется за самый обрыв скалы. Он давно рухнул бы в море, но — как мы прочли — монахи топят жертв в глубоком пещерном озере, чтобы Сестра-и-Ведьма хранила их от моря ещё один год, ещё один год.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+		],
+		label: "Монастырь Глубинной Двери Св. Тентрето",
+	},
+	{
+		id: "vaulteveningislesdefault",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "Перед каждым бессмертным стоит выбор: поступить на службу к Часу, вновь стать смертным, или угаснуть. Маленький солнечный остров под названием Полуденный Порт — царство изгнанных бессмертных, отказавшихся от всех вариантов.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Для начала экспедиции мне нужен хотя бы один Приспешник. Позже смогу добавить ещё.",
+				label: "Лидер",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Я могу добавить Приспешника, если считаю, что это будет полезно.",
+				label: "Ассистент",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Для начала экспедиции мне нужны Средства.",
+				label: "Средства",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Сейчас я могу вложить ещё Средства, если мне кажется, что их не хватит.",
+				label: "Ещё Средства",
+				actionId: "explore",
+			},
+			{
+				id: "sending",
+				required: 
+				{
+					sendingheartf: "1",
+					sendingmothf: "1",
+				},
+				description: "Now and then, the expedition might have another purpose.",
+				comment: "NEW",
+				label: "Sending",
+				actionId: "explore",
+			},
+		],
+		label: "Полуденный Порт",
+	},
 ]
-};
+}

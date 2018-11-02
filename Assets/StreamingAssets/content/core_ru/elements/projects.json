@@ -1,124 +1,313 @@
-﻿{"elements":
-    [
-	{id: "project_upgrade_edge",
-	label: "Вникание в Грань",
-	description: "Я надеюсь улучшить знание Грани.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_edgetowinter",
-	label: "Извращение Грани в Зиму",
-	description: "Я принимаю, что спокойствие побеждает силу; я извращаю Грань в Зиму.",
-	aspects: {},
-	lifetime:1
+﻿{
+elements: [
+	{
+		id: "project_upgrade_edge",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь улучшить знание Грани.",
+		label: "Вникание в Грань",
+		lifetime: "1",
 	},
-	
-	
-		{id: "project_upgrade_forge",
-	label: "Вникание в Кузню",
-	description: "Я надеюсь углубить знание Кузни.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_forgetoedge",
-	label: "Извращение Кузни в Грань",
-	description: "Я извращаю Кузню в Грань.",
-	aspects: {},
-	lifetime:1
+	{
+		id: "project_subvert_edgetowinter",
+		aspects: 
+		{
+		},
+		description: "Я принимаю, что спокойствие побеждает силу; я извращаю Грань в Зиму.",
+		label: "Извращение Грани в Зиму",
+		lifetime: "1",
 	},
-	
-	
-	
-			{id: "project_upgrade_grail",
-	label: "Вникание в Чашу",
-	description: "Я надеюсь углубить знание Чаши.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_grailtomoth",
-	label: "Извращение Чаши в Мотылька",
-	description: "Я извращаю Чашу в Моталька.",
-	aspects: {},
-	lifetime:1
+	{
+		id: "project_upgrade_forge",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Кузни.",
+		label: "Вникание в Кузню",
+		lifetime: "1",
 	},
-	
-	
-	
-			{id: "project_upgrade_heart",
-	label: "Вникание в Сердце",
-	description: "Я надеюсь углубить знание Сердца.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_hearttograil",
+	{
+		id: "project_subvert_forgetoedge",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Кузню в Грань.",
+		label: "Извращение Кузни в Грань",
+		lifetime: "1",
+	},
+	{
+		id: "project_upgrade_grail",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Чаши.",
+		label: "Вникание в Чашу",
+		lifetime: "1",
+	},
+	{
+		id: "project_subvert_grailtomoth",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Чашу в Моталька.",
+		label: "Извращение Чаши в Мотылька",
+		lifetime: "1",
+	},
+	{
+		id: "project_upgrade_heart",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Сердца.",
+		label: "Вникание в Сердце",
+		lifetime: "1",
+	},
+	{
+		id: "project_subvert_hearttograil",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Сердце в Чашу.",
 		label: "Извращение Сердца в Чашу",
-	description: "Я извращаю Сердце в Чашу.",
-	aspects: {},
-	lifetime:1
+		lifetime: "1",
 	},
-	
-	
-			{id: "project_upgrade_subvert_knock",
-	label: "Вникание в Стук",
-	description: "Я углубляю понимание Стука.",
-	aspects: {},
-	lifetime:1
-	},	
-	
-	
-	
-			{id: "project_upgrade_lantern",
-	label: "Вникание в Лампаду",
-	description: "Я надеюсь углубить знание Лампады.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_lanterntoforge",
+	{
+		id: "project_upgrade_subvert_knock",
+		aspects: 
+		{
+		},
+		description: "Я углубляю понимание Стука.",
+		label: "Вникание в Стук",
+		lifetime: "1",
+	},
+	{
+		id: "project_upgrade_lantern",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Лампады.",
+		label: "Вникание в Лампаду",
+		lifetime: "1",
+	},
+	{
+		id: "project_subvert_lanterntoforge",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Лампаду в Кузню.",
 		label: "Извращение Лампады в Кузню",
-	description: "Я извращаю Лампаду в Кузню.",
-	aspects: {},
-	lifetime:1
+		lifetime: "1",
 	},
-	
-	
-	
-	
-			{id: "project_upgrade_moth",
-	label: "Вникание в Мотылька",
-	description: "Я надеюсь углубить знание Мотылька.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_mothtolantern",
-	label: "Извращение Мотылька в Лампаду",
-	description: "Я извращаю Мотылька в Лампаду.",
-	aspects: {},
-	lifetime:1	
+	{
+		id: "project_upgrade_moth",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Мотылька.",
+		label: "Вникание в Мотылька",
+		lifetime: "1",
 	},
-	
-	
-	
-	
-				{id: "project_upgrade_secrethistories",
-	label: "Вникание в Тайные Истории",
-	description: "Я надеюсь углубить знание Тайных Историй.",
-	aspects: {},
-	lifetime:1
-	},	
-	
-	
-	
-				{id: "project_upgrade_winter",
-	label: "Вникание в Зиму",
-	description: "Я надеюсь углубить знание Зимы.",
-	aspects: {},
-	lifetime:1
-	},	
-		{id: "project_subvert_wintertoheart",
-	label: "Извращение Зимы в Сердце",
-	description: "Я извращаю Зиму в Сердце.",
-	aspects: {},
-	lifetime:1
+	{
+		id: "project_subvert_mothtolantern",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Мотылька в Лампаду.",
+		label: "Извращение Мотылька в Лампаду",
+		lifetime: "1",
+	},
+	{
+		id: "project_upgrade_secrethistories",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Тайных Историй.",
+		label: "Вникание в Тайные Истории",
+		lifetime: "1",
+	},
+	{
+		id: "project_upgrade_winter",
+		aspects: 
+		{
+		},
+		description: "Я надеюсь углубить знание Зимы.",
+		label: "Вникание в Зиму",
+		lifetime: "1",
+	},
+	{
+		id: "project_subvert_wintertoheart",
+		aspects: 
+		{
+		},
+		description: "Я извращаю Зиму в Сердце.",
+		label: "Извращение Зимы в Сердце",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_edge",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Edge influence.",
+		icon: "project_upgrade_edge",
+		comment: "NEW",
+		label: "Augmenting a Edge influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_edgetowinter",
+		aspects: 
+		{
+		},
+		description: "I am acknowledging the victory of patience over strength, subverting my Edge influence to Winter influence.",
+		icon: "project_subvert_edgetowinter",
+		comment: "NEW",
+		label: "Subverting Edge to Winter",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_forge",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Forge influence.",
+		icon: "project_upgrade_forge",
+		comment: "NEW",
+		label: "Augmenting a Forge influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_forgetoedge",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Forge influence to Edge influence.",
+		icon: "project_subvert_forgetoedge",
+		comment: "NEW",
+		label: "Subverting Forge to Edge",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_grail",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Grail influence.",
+		icon: "project_upgrade_grail",
+		comment: "NEW",
+		label: "Augmenting a Grail influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_grailtomoth",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Grail influence to Moth influence.",
+		icon: "project_subvert_grailtomoth",
+		comment: "NEW",
+		label: "Subverting Grail influence to Moth",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_heart",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Heart influence.",
+		icon: "project_upgrade_heart",
+		comment: "NEW",
+		label: "Augmenting a Heart influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_hearttograil",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Heart influence to Grail influence.",
+		icon: "project_subvert_hearttograil",
+		comment: "NEW",
+		label: "Subverting Heart influence to Grail",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_subvert_knock",
+		aspects: 
+		{
+		},
+		description: "I am deepening my understanding of Knock influence.",
+		icon: "project_upgrade_subvert_knock",
+		comment: "NEW",
+		label: "Augmenting a Knock influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_lantern",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Lantern influence.",
+		icon: "project_upgrade_lantern",
+		comment: "NEW",
+		label: "Augmenting a Lantern influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_lanterntoforge",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Lantern influence to Forge influence.",
+		icon: "project_subvert_lanterntoforge",
+		comment: "NEW",
+		label: "Subverting Lantern influence to Forge",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_moth",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Moth influence.",
+		icon: "project_upgrade_moth",
+		comment: "NEW",
+		label: "Augmenting a Moth influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_mothtolantern",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Moth influence to Lantern influence",
+		icon: "project_subvert_mothtolantern",
+		comment: "NEW",
+		label: "Subverting Moth influence to Lantern",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_upgrade_winter",
+		aspects: 
+		{
+		},
+		description: "I hope to augment this Winter influence.",
+		icon: "project_upgrade_winter",
+		comment: "NEW",
+		label: "Augmenting a Winter influence",
+		lifetime: "1",
+	},
+	{
+		id: "project_influence_subvert_wintertoheart",
+		aspects: 
+		{
+		},
+		description: "I am subverting my Winter influence to Heart influence",
+		icon: "project_subvert_wintertoheart",
+		comment: "NEW",
+		label: "Subverting Winter influence to Heart",
+		lifetime: "1",
 	},
 ]
-};
+}

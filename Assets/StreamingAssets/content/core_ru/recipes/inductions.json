@@ -1,64 +1,133 @@
-﻿ {"recipes": [
+﻿{
+recipes: [
 	{
-        id: "heartinduction",
-        label: "Путь сердца",
-        actionId: "heartinduction",
-        effects: {vitality:1},
+		craftable: "false",
+		warmup: "30",
+		label: "Путь сердца",
 		startdescription: "Когда вовлекается аспект Сердца, я могу получить Бодрость.",
-        description: "Моё собственное сердце сегодня бьётся сильнее.",
-        warmup: 30,
-        craftable: false
-    },
+		id: "heartinduction",
+		actionId: "heartinduction",
+		description: "Моё собственное сердце сегодня бьётся сильнее.",
+		effects: 
 		{
-        id: "lanterninduction",
-        label: "Свет в черепе",
-        actionId: "lanterninduction",
-        effects: {erudition:1},
+			previtality: "1",
+		},
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "Свет в черепе",
 		startdescription: "Когда аспект Лампады проливает свет, я могу вновь подобрать затерянные крупицы знаний.",
-        description: "Разрозненные пыльные факты прояснились и соединились в моём мозгу. По крайней мере, временно.",
-        warmup: 30,
-        craftable: false
-    },
+		id: "lanterninduction",
+		actionId: "lanterninduction",
+		description: "Разрозненные пыльные факты прояснились и соединились в моём мозгу. По крайней мере, временно.",
+		effects: 
 		{
-        id: "mothinduction",
-        label: "Древнее, несчастное, дальнее",
-        actionId: "mothinduction",
-        effects: {restlessness:1},
+			preerudition: "1",
+		},
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "Древнее, несчастное, дальнее",
 		startdescription: "Мотылёк находит свет в темноте. Как и я.",
-        description: "Меня томят полуосознанные влечения.",
-        warmup: 30,
-        craftable: false
-    },
-			{
-        id: "grailinduction",
-        label: "За пределами желания",
-        actionId: "grailinduction",
-        effects: {glimmering:1},
+		id: "mothinduction",
+		actionId: "mothinduction",
+		description: "Меня томят полуосознанные влечения.",
+		effects: 
+		{
+			prerestlessness: "1",
+		},
+	},
+	{
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "The Dark, the Light",
+		startdescription: "Moth finds the light in the dark, and so do I.",
+		id: "mothglimmeringinduction",
+		actionId: "mothinduction",
+		description: "What could I be if I could be not this?",
+		effects: 
+		{
+			preglimmering: "1",
+		},
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "За пределами желания",
 		startdescription: "Удовлетворив желание, могу ли я усвоить хоть что-то из этого опыта?",
-        description: "Похоже на просветление.",
-        warmup: 30,
-        craftable: false
-    },
-				{
-        id: "dreadinduction",
-        label: "Ужасы ночи",
-        actionId: "dreadinduction",
-        effects: {dread:1},
+		id: "grailinduction",
+		actionId: "grailinduction",
+		description: "Похоже на просветление.",
+		effects: 
+		{
+			preglimmering: "1",
+		},
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "Ужасы ночи",
 		startdescription: "Я просыпаюсь в ночи. Мои ладони, моё лицо — в крупных каплях пота.",
-        description: "Сжатые кулаки медленно расслабляются. Я вновь ускользаю в сон. Но что-то остаётся, как паутина в углах комнаты.",
-        warmup: 60,
-        craftable: false
-    },
-	
-					{
-        id: "fascinationinduction",
-        label: "Новые цвета",
-        actionId: "fascinationinduction",
-        effects: {fascination:1},
+		id: "dreadinduction",
+		actionId: "dreadinduction",
+		description: "Сжатые кулаки медленно расслабляются. Я вновь ускользаю в сон. Но что-то остаётся, как паутина в углах комнаты.",
+		effects: 
+		{
+			predread: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			dread: "1",
+		},
+		craftable: "false",
+		comments: "Only triggers if there's already Dread in whatever called this.",
+		comment: "NEW",
+		warmup: "30",
+		label: "Night Terrors",
+		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
+		id: "dreadinduction_ifdread",
+		actionId: "dreadinduction",
+		description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
+		effects: 
+		{
+			predread: "1",
+		},
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "Новые цвета",
 		startdescription: "Я замечаю, что мир облекается в незнакомые мне цвета.",
-        description: "Я вижу то, что видеть не следует. Я знаю, это опасно. Но сложно сдержать влечение к этому.",
-        warmup: 60,
-        craftable: false
-    },
+		id: "fascinationinduction",
+		actionId: "fascinationinduction",
+		description: "Я вижу то, что видеть не следует. Я знаю, это опасно. Но сложно сдержать влечение к этому.",
+		effects: 
+		{
+			prefascination: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			fascination: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "New Colours",
+		startdescription: "I have begun to notice colours in the world for which I have no name.",
+		id: "fascinationinduction_iffascination",
+		actionId: "fascinationinduction",
+		description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
+		effects: 
+		{
+			prefascination: "1",
+		},
+	},
 ]
 }

@@ -1,1360 +1,3164 @@
-﻿{"elements":
-    [
-		 {
-        id: "auclair_a",
-            label: "Оклер, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "У Оклер есть черты учёных и тяжелобольных. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"auclair"
-        },
-										 {
-        id: "auclair_b",
-            label: "Оклер, неофит",
-            aspects:
-            {mortal: 1, follower: 1,winter: 2},
-            animFrames: 1,
-			description: "Оклер тиха, педантична и безжалостна.",
-			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
-			uniquenessgroup:"auclair"
-
-        },
-				 {
-        id: "auclair_c",
-            label: "Оклер, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,winter:5},
-            description: "Оклер говорит редко. Она осторожно подбирает слова. Даже её движения экономны. Она никогда не моргает.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
-			uniquenessgroup:"auclair"
-        },
-				 {
-        id: "auclair_d",
-            label: "Сухопарая и молчащая",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
-            description: "Воздух морозен, свечи оплывают, уличный шум приглушен. Здесь кто-то есть.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r},
-			uniquenessgroup:"auclair"
-        },
-		
-		
-			 {
-        id: "cat_a",
-            label: "Кэт Каро, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Кэт Каро, как она себя называет, выступает на сцене в образе медиума и гадалки. Возможно, её таланты глубже, чем кажется. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: cat_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"cat"
-        },
-										 {
-        id: "cat_b",
-            label: "Кэт Каро, неофит",
-            aspects:
-            {mortal: 1, follower: 1,lantern: 2},
-            animFrames: 1,
-			description: "Внимательная женщина с сияющим взглядом. Она идеально чётко помнит свои сны.",
-			xtriggers: {promotiontodisciple: cat_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p},
-			uniquenessgroup:"cat"
-
-        },
-		
-				 {
-        id: "cat_c",
-            label: "Кэт Каро, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,lantern:5},
-            description: "Она ещё иногда выступает на сцене. «Кэт Каро находит путь; Кэт Каро знает дорогу» — так гласят постеры.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_lantern: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p},
-			uniquenessgroup:"cat"
-        },
-				 {
-        id: "cat_d",
-            label: "Кэт Каро, Пророк",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
-            description: "Археологи находят сокровища в гробницах. Крестьяне собирают жатву с полей. Что же Кэт Каро извлечёт из сновидений?",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r},
-			uniquenessgroup:"cat"
-        },
-								 {
-        id: "clifton_a",
-            label: "«Папа» Клифтон, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Громогласный католик с неровной бородой, отошедший от канона и склонный к мистицизму. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: clifton_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"clifton"
-        },
-										 {
-        id: "clifton_b",
-            label: "«Папа» Клифтон, неофит",
-            aspects:
-            {mortal: 1, follower: 1,lantern: 2},
-            animFrames: 1,
-			description: "Теперь Клифтон творит новые молитвы, полные метафор о солнце. Он всё ещё гаркает как солдафон и пьёт как моряк.",
-			xtriggers: {promotiontodisciple: clifton_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p},
-			uniquenessgroup:"clifton"
-
-        },
-		
-				 {
-        id: "clifton_c",
-            label: "«Папа» Клифтон, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,lantern:5},
-            description: "Молитвы Клифтона усложнились. Его сияющие глаза широко открыты. Его голос — ещё громче.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p},
-			uniquenessgroup:"clifton"
-        },
-				 {
-        id: "clifton_d",
-            label: "Клифтон, Пророк",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
-            description: "Клифтон всё ещё читает молитвы, но теперь они искажены, как старые зеркала. Каждое утро он встаёт, чтобы встретить рассвет. Клифтон смотрит ему прямо в лицо и говорит в точности то, что видит.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r},
-			uniquenessgroup:"clifton"
-        },
-		
-			 {
-        id: "clovette_a",
-            label: "Кловетта, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Кловетта счастлива, и этому счастью ничего невозможно противопоставить. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: clovette_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"clovette"
-        },
-									 {
-        id: "clovette_b",
-            label: "Кловетта, неофит",
-            aspects:
-            {mortal: 1, follower: 1,heart: 2},
-            animFrames: 1,
-			description: "Убеждённость Кловетты в своём счастье теперь почти фанатична.",
-			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p},
-			uniquenessgroup:"clovette"
-        },
-				 {
-        id: "clovette_c",
-            label: "Кловетта, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,heart:5},
-            description: "Оптимизм Кловетты ужасает. Она несёт свою радость как молот.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_heart: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p},
-			uniquenessgroup:"clovette"
-        },
+﻿{
+elements: [
+	{
+		id: "auclair_a",
+		aspects: 
 		{
-        id: "clovette_d",
-            label: "Кловетта, Тарантеллист",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,heart:10},
-            description: "Кловетта всегда в движении. Она смеётся легко и открыто. Её улыбка — лунный серп.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
-			uniquenessgroup:"clovette"
-        },
-		 {
-        id: "dorothy_a",
-            label: "Дороти, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Дороти — энтузиаст, её манера подбора книг для чтения эклектична. Она восторженно ловит ваши намёки о тенях, скользящих под кожей мира. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: dorothy_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"dorothy"
-        },
-							 {
-        id: "dorothy_b",
-            label: "Дороти, неофит",
-            aspects:
-            {mortal: 1, follower: 1,heart: 2},
-            animFrames: 1,
-			description: "Дороти — энтузиаст, и мне удалось обратить этот энтузиазм на служение нашим целям.",
-			xtriggers: {promotiontodisciple: dorothy_c,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p},
-			uniquenessgroup:"dorothy"
-        },
-				 {
-        id: "dorothy_c",
-            label: "Дороти, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,heart:5},
-            description: "Энтузиазм Дороти стал одержимостью. Она не прервётся; и как же она любит танцевать.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p},
-			uniquenessgroup:"dorothy"
-        },
-				 {
-        id: "dorothy_d",
-            label: "Дороти, Тарантеллист",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,heart:10},
-            description: "Когда Дороти движется, мы слышим ритм. Когда она говорит, мы видим танец. Её убеждённость — её щит и оружие.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r},
-			uniquenessgroup:"dorothy"
-        },
-							 {
-        id: "elridge_a",
-            label: "Элридж, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Элегантный мужчина с безвкусными привычками. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"elridge"
-        },
-										 {
-        id: "elridge_b",
-            label: "Элридж, неофит",
-            aspects:
-            {mortal: 1, follower: 1,edge: 2},
-            animFrames: 1,
-			description: "Элридж почти научился не ковыряться в зубах ножом, когда разговаривает. Ему ещё предстоит научиться оставлять нож в сапоге.",
-			xtriggers: {promotiontodisciple: elridge_c,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p},
-			uniquenessgroup:"elridge"
-
-        },
-				 {
-        id: "elridge_c",
-            label: "Элридж, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,edge:5},
-            description: "Элридж спокойно ждёт, когда снова наступит время достать нож.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_edge: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p},
-			uniquenessgroup:"elridge"
-        },
-				 {
-        id: "elridge_d",
-            label: "Элридж, Ассасин",
-            aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
-            description: "На Элридже никогда нет ни капли крови. Ни капли.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r},
-			uniquenessgroup:"elridge"
-        },
-				 {
-        id: "enid_a",
-            label: "Энид, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Голос Энид мягок, и иногда её взгляд уплывает, не фокусируясь ни на чём заметном. Возможно, у вас с ней одни и те же сны. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: enid_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"enid"
-        },
-								 {
-        id: "enid_b",
-            label: "Энид, неофит",
-            aspects:
-            {mortal: 1, follower: 1, knock: 2},
-            animFrames: 1,
-			description: "Голос Энид мягок, и иногда её взгляд уплывает, не фокусируясь ни на чём заметном. Она видит то, что не видят другие.",
-			xtriggers: {promotiontodisciple: enid_c,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p},
-			uniquenessgroup:"enid"
-        },
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "У Оклер есть черты учёных и тяжелобольных. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqauclair",
+		animFrames: "1",
+		label: "Оклер, знакомая",
+		xtriggers: 
 		{
-        id: "enid_c",
-            label: "Энид, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,knock:5},
-            description: "Энид видит то, что не видят другие. Это затрудняет её, но крайне полезно.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_knock: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p},
-			uniquenessgroup:"enid"
-        },
-						 {
-        id: "enid_d",
-            label: "Энид, Ключ",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
-            description: "Энид видит прорези между вещами; она освоила искусство, и иногда оно позволяет ей вложить пальцы в такую прорезь.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r},
-			uniquenessgroup:"enid"
-        },
-		 {
-        id: "laidlaw_a",
-            label: "Лейдло, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Лейдло — технарь, механик, движимый необычным. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: laidlaw_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"laidlaw"
-        },
-										 {
-        id: "laidlaw_b",
-            label: "Лейдло, неофит",
-            aspects:
-            {mortal: 1, follower: 1,forge: 2},
-            animFrames: 1,
-			description: "Лейдло начал чувствовать, где лежит предел изощрённости, и понимать силу жертвоприношений.",
-			xtriggers: {promotiontodisciple: laidlaw_c,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p},
-			uniquenessgroup:"laidlaw"
-
-        },
-		
-				 {
-        id: "laidlaw_c",
-            label: "Лейдло, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,forge:5},
-            description: "Лейдло освоил более тонкие методы огня и меди, воска и кислоты.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_forge: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p},
-			uniquenessgroup:"laidlaw"
-        },
-				 {
-        id: "laidlaw_d",
-            label: "Лейдло, Меняющий",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
-            description: "Лейдло меняет форму сломанного — в необходимое.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r},
-			uniquenessgroup:"laidlaw"
-        },
-	
-				 {
-        id: "leo_a",
-            label: "Лео, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Лео — честный малый, заинтересованный в оккультизме. Он полагается на ваши намёки о незримых искусствах. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting:leo_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"leo"
-        },
-						 {
-        id: "leo_b",
-            label: "Лео, неофит",
-            aspects:
-            {mortal: 1, follower: 1,heart: 2},
-            animFrames: 1,
-			description: "Лео — честный малый, но вполне готов сделать что следует.",
-			xtriggers: {promotiontodisciple: leo_c,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p},
-			uniquenessgroup:"leo"
-        },
-						 {
-        id: "leo_c",
-            label: "Лео, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1, heart:5},
-            description: "Лео всё ещё стремится к добру и хранит настоящие ценности; но он знает, что ради защиты идеалов иногда приходится идти на сомнительные дела.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_heart:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p},
-			uniquenessgroup:"leo"
-        },
-					 {
-        id: "leo_d",
-            label: "Лео, Тарантеллист",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1, heart:10},
-            description: "Лео сохранит, во что бы то ни стало. Он не прервётся.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r},
-			uniquenessgroup:"leo"
-        },
-				 {
-        id: "neville_a",
-            label: "Невилл, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Невилл замирает перед началом речи и склонен нервно вздрагивать. Он всегда смеётся, когда ему кажется, что вы пошутили. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: neville_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"neville"
-        },
-					 {
-        id: "neville_b",
-            label: "Невилл, неофит",
-            aspects:
-            {mortal: 1, follower: 1, knock: 2},
-            animFrames: 1,
-			description: "Невилл замирает перед началом речи и склонен нервно вздрагивать. Он тонко чувствует глубину.",
-			xtriggers: {promotiontodisciple: neville_c,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p},
-			uniquenessgroup:"neville"
-        },
-						 {
-        id: "neville_c",
-            label: "Невилл, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,knock:5},
-            description: "Невилл бросает взгляды искоса, иногда его голос пронзителен. Он свободно говорит о своих снах.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_knock: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p},
-			uniquenessgroup:"neville"
-        },
-						 {
-        id: "neville_d",
-            label: "Невилл, Ключ",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
-            description: "В снах Невилл видит огрехи, которыми можно раскрыть мир и его пути.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r},
-			uniquenessgroup:"neville"
-        },
-		
-							 {
-        id: "porter_a",
-            label: "Портер, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "До суда Портер был парикмахером. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: porter_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"porter"
-        },
-										 {
-        id: "porter_b",
-            label: "Портер, неофит",
-            aspects:
-            {mortal: 1, follower: 1,moth: 2},
-            animFrames: 1,
-			description: "Портер направляет бритву и ножницы туда, где они полезны друзьям.",
-			xtriggers: {promotiontodisciple: porter_c,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p},
-			uniquenessgroup:"porter"
-
-        },
-				 {
-        id: "porter_c",
-            label: "Портер, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,moth:5},
-            description: "Портер остаётся незаметным, пока не готов.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_moth: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p},
-			uniquenessgroup:"porter"
-        },
-				 {
-        id: "porter_d",
-            label: "Портер, Кожевенник",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
-            description: "Портер, как паук, находится в самых неожиданных местах.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r},
-			uniquenessgroup:"porter"
-        },
-		
-			 {
-        id: "renira_a",
-            label: "Ренира, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Ренира трижды признана невиновной в трёх различных юрисдикциях. Видимо, её никогда не признают виновной ни в чём. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"renira"
-        },
-										 {
-        id: "renira_b",
-            label: "Ренира, неофит",
-            aspects:
-            {mortal: 1, follower: 1,grail: 2},
-            animFrames: 1,
-			description: "Ренира продолжает благоразумно утолять свои страсти, хотя её запросы несколько возросли.",
-			xtriggers: {promotiontodisciple: renira_c,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p},
-			uniquenessgroup:"renira"
-
-        },
-		
-				 {
-        id: "renira_c",
-            label: "Ренира, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,grail:5},
-            description: "Ренирой восхищены, где бы она ни была. Она отвечает тем, кто заслуживает её ответа.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_grail: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p},
-			uniquenessgroup:"renira"
-        },
-				 {
-        id: "renira_d",
-            label: "Ренира, Распутница",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,grail:10},
-            description: "Ренира почти ежедневно получает знаки внимания от поклонников. Иногда ей дарят цветы, иногда — посвящают сонеты. Драгоценные камни перемежаются дарами отчаяния, плотно упакованными в креповую бумагу со следами крови.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r},
-			uniquenessgroup:"renira"
-        },
-					 {
-        id: "rose_a",
-            label: "Роуз, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Роуз — лукавая леди; она видит в вас что-то необычное. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: rose_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"rose"
-        },
-					 {
-        id: "rose_b",
-            label: "Роуз, неофит",
-            aspects:
-            {mortal: 1, follower: 1,edge:2},
-            animFrames: 1,
-			description: "Роуз — лукавая, но верная леди.",
-			xtriggers: {promotiontodisciple: rose_c,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p},
-			uniquenessgroup:"rose"
-        },
-						 {
-        id: "rose_c",
-            label: "Роуз, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,edge:5},
-            description: "Коварство Роуз заточено и пронзает как острейшая игла.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_edge: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p},
-			uniquenessgroup:"rose"
-        },
-						 {
-        id: "rose_d",
-            label: "Роуз, Ассасин",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
-            description: "В ночь перед свиданием с Роуз её цель получит посылку с единственной желтой розой.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r},
-			uniquenessgroup:"rose"
-        },
-
-					 {
-        id: "saliba_a",
-            label: "Салиб, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Салиб — человек с чудовищными стремлениями. Он давно уже не получает удовольствия, следуя им, но успел научиться очень многому. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"saliba"
-        },
-										 {
-        id: "saliba_b",
-            label: "Салиб, неофит",
-            aspects:
-            {mortal: 1, follower: 1,grail: 2},
-            animFrames: 1,
-			description: "Салиб понимает кровь. Он ещё не понимает рождение.",
-			xtriggers: {promotiontodisciple: saliba_c,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p},
-			uniquenessgroup:"saliba"
-
-        },
-		
-				 {
-        id: "saliba_c",
-            label: "Салиб, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,grail:5},
-            description: "Салиб принимает наслаждения в комнате без окон. Его партнеры вновь и вновь приходят к нему, хотя с каждым разом от них остаётся всё меньше.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p},
-			uniquenessgroup:"saliba"
-        },
-				 {
-        id: "saliba_d",
-            label: "Салиб, Распутник",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,grail:10},
-            description: "Обаяние Салиба сокрушает как молот. Ужасающе сложно отказать его желаниям.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r},
-			uniquenessgroup:"saliba"
-        },
-					 {
-        id: "slee_a",
-            label: "Сли, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Крейг Сли, астроном и поэт-авангардист, увлёкся эзотерикой, когда его здоровье пошатнулось. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: slee_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"slee"
-        },
-										 {
-        id: "slee_b",
-            label: "Сли, неофит",
-            aspects:
-            {mortal: 1, follower: 1,lantern: 2},
-            animFrames: 1,
-			description: "Сли с энтузиазмом излагает свои теории всем, кто готов слушать; звёзды — это маленькие раны, Солнце — кровотечение Славы. Его поэзия ещё эксцентричнее, чем раньше.",
-			xtriggers: {promotiontodisciple: slee_c,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p},
-			uniquenessgroup:"slee"
-        },
-		
-				 {
-        id: "slee_c",
-            label: "Сли, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,lantern:5},
-            description: "Головные боли Сли почти смертельны, но его теории с каждым днём всё практичнее. Его поэзия тоже совершенствуется",
-			animFrames: 1,
-			xtriggers: {promotionto_d_lantern: slee_d,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p},
-			uniquenessgroup:"slee"
-        },
-				 {
-        id: "slee_d",
-            label: "Сли, Пророк",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
-            description: "Сли общается исключительно поэзией и математикой. В любом случае он убедителен, и всё сложнее найти различия между тем и другим.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r},
-			uniquenessgroup:"slee"
-        },
-		
-					 {
-        id: "sylvia_a",
-            label: "Сильвия, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Сильвия потеряла глаз в лесу, когда ей было девять лет. Ежегодно, на Сретение, она возвращается туда, где закопала его. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"sylvia"
-        },
-										 {
-        id: "sylvia_b",
-            label: "Сильвия, неофит",
-            aspects:
-            {mortal: 1, follower: 1,moth: 2},
-            animFrames: 1,
-			description: "Сильвия в деталях знакома с гребнями крыш, с тихой речной водой, с ирландским виски, и с малыми заклинаниями.",
-			xtriggers: {promotiontodisciple: sylvia_c,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p},
-			uniquenessgroup:"sylvia"
-
-        },
-				 {
-        id: "sylvia_c",
-            label: "Сильвия, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,moth:5},
-            description: "Любимый метод Сильвии — улыбнуться и закрыть глаз. Примечательно, насколько часто после этого её собеседник невольно и точно проговаривается о своих мыслях.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_moth: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p},
-			uniquenessgroup:"sylvia"
-        },
-				 {
-        id: "sylvia_d",
-            label: "Сильвия, Кожевенник",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
-            description: "Сильвия научилась выходить почти что до того как зайдёт. Иногда она оставляет мёртвые листья под подоконником. Иногда она пишет своё имя там, где его не найдут.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r},
-			uniquenessgroup:"sylvia"
-        },
-						 {
-        id: "tristan_a",
-            label: "Тристан, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Тристан не любит помех. Тристан решает вопросы. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: tristan_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"tristan"
-        },
-								 {
-        id: "tristan_b",
-            label: "Тристан, неофит",
-            aspects:
-            {mortal: 1, follower: 1,forge:2},
-            animFrames: 1,
-			description: "Тристан не любит помех; Тристан любит результаты.",
-						xtriggers: {promotiontodisciple: tristan_c,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p},
-			uniquenessgroup:"tristan"
-        },
-								 {
-        id: "tristan_c",
-            label: "Тристан, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,forge:5},
-            description: "Тристан сделает то, что необходимо. Чтобы создать, иногда вначале требуется разрушить.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_forge: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p},
-			uniquenessgroup:"tristan"
-        },
-								 {
-        id: "tristan_d",
-            label: "Тристан, Меняющий",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
-            description: "В другом веке Тристан мог бы стать кузнецом. В другой жизни Тристан мог бы делать бомбы.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r},
-			uniquenessgroup:"tristan"
-        },
-		
-					 {
-        id: "valciane_a",
-            label: "Вальчиана, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Вальчиана занята своим делом почти двадцать лет. Она никогда не брала себе помощников. Её руки ужасающе сильны. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"valciane"
-        },
-										 {
-        id: "valciane_b",
-            label: "Вальчиана, неофит",
-            aspects:
-            {mortal: 1, follower: 1,forge: 2},
-            animFrames: 1,
-			description: "Изобретательность Вальчианы безгранична, её хватка — сильнее, чем у кузнеца.",
-			xtriggers: {promotiontodisciple: valciane_c,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p},
-			uniquenessgroup:"valciane"
-
-        },
-		
-				 {
-        id: "valciane_c",
-            label: "Вальчиана, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,forge:5},
-            description: "Вальчиана — не машина. Мы практически уверены в этом, ведь по доверенным свидетельствам она иногда допускает очень человеческие ошибки.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_forge: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p},
-			uniquenessgroup:"valciane"
-        },
-				 {
-        id: "valciane_d",
-            label: "Вальчиана, Меняющая",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
-            description: "Вальчиана начала работать без инструментов. По её словам, «они мешают».",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r},
-			uniquenessgroup:"valciane"
-        },
-					 {
-        id: "victor_a",
-            label: "Виктор, знакомый",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Виктор — хитрый малый, он знает, когда выпадает необычная возможность. [Это знакомство можно углубить и получить приспешника.]",
-			animFrames: 1,
-			xtriggers: {recruiting: victor_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"victor"
-        },
-						 {
-        id: "victor_b",
-            label: "Виктор, неофит",
-            aspects:
-            {mortal: 1, follower: 1,edge:2},
-            animFrames: 1,
-			description: "Виктор — хитрый малый, но верный.",
-			xtriggers: {promotiontodisciple: victor_c,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p},
-			uniquenessgroup:"victor"
-        },
-						 {
-        id: "victor_c",
-            label: "Виктор, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,edge:5},
-            description: "Виктор заточил свою хитрость до предела, сделав её пронзающим клинком.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_edge: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p},
-			uniquenessgroup:"victor"
-        },
-				 {
-        id: "victor_d",
-            label: "Виктор, Ассасин",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
-            description: "Виктор любит знакомиться с жертвами, чтобы лично извиниться перед ними в последние секунды.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r},
-			uniquenessgroup:"victor"
-        },
-
-					 {
-        id: "violet_a",
-            label: "Виолет, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Виолет никогда не скупилась на время, чтобы ослабить боль умирающих. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"violet"
-        },
-										 {
-        id: "violet_b",
-            label: "Виолет",
-            aspects:
-            {mortal: 1, follower: 1,winter: 2},
-            animFrames: 1,
-			description: "Виолет любит рисовать. Она одарена, но не склонна гордиться этим. Она никогда не рисует людей. В мире их и без того достаточно.",
-			xtriggers: {promotiontodisciple: violet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p},
-			uniquenessgroup:"violet"
-
-        },
-		
-				 {
-        id: "violet_c",
-            label: "Виолет, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,winter:5},
-            description: "Виолет всегда крайне осторожна.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_winter: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p},
-			uniquenessgroup:"violet"
-        },
-				 {
-        id: "violet_d",
-            label: "Молчащая женщина с добрым лицом",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
-            description: "Теперь спи, и ни о чём не беспокойся.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r},
-			uniquenessgroup:"violet"
-        },
-	
-					 {
-        id: "ysabet_a",
-            label: "Изабет, знакомая",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Изабет всегда было уютнее всего под лунным светом. У неё отличное ночное зрение. Днём её зачастую не замечают. [Это знакомство можно углубить и получить приспешницу.]",
-			animFrames: 1,
-			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic},
-			uniquenessgroup:"ysabet"
-        },
-										 {
-        id: "ysabet_b",
-            label: "Изабет, неофит",
-            aspects:
-            {mortal: 1, follower: 1,moth: 2},
-            animFrames: 1,
-			description: "Изабет спит короткими приступами. Она встаёт на закате, чтобы сделать то, что Изабет делает.",
-			xtriggers: {promotiontodisciple: ysabet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p},
-			uniquenessgroup:"ysabet"
-
-        },
-				 {
-        id: "ysabet_c",
-            label: "Изабет, адепт",
-            aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,moth:5},
-            description: "Изабет была здесь, вот только что. Прямо здесь. Почти наверняка.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p},
-			uniquenessgroup:"ysabet"
-        },
-				 {
-        id: "ysabet_d",
-            label: "Изабет, Кожевенник",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
-            description: "Изабет уже никогда не лжёт. Ей это не нужно.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r},
-			uniquenessgroup:"ysabet"
-        },
-					 {
-        id: "auclair_p",
-            label: "Оклер, арестант",
-            aspects:
-            {mortal:1, prisoner:1,winter:5,grail:3,heart:3},
-            description: "Оклер не говорит и не ест.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"auclair"
-        },
-							 {
-        id: "cat_p",
-            label: "Кэт Каро, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
-            description: "Та, что называла себя «Кэт Каро», засыпает при любой возможности.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"cat"
-        },
-							 {
-        id: "clifton_p",
-            label: "«Папа» Клифтон, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
-            description: "Клифтон кричит и проклинает, но решётка надёжна, а стены прочны.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"clifton"
-        },
-			
-				 {
-        id: "clovette_p",
-            label: "Кловетта, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
-            description: "Кловетта ждёт, когда всё повернётся иначе.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"clovette"
-        },
-		 {
-        id: "dorothy_p",
-            label: "Дороти, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
-            description: "Постоянные увещевания Дороти действуют на нервы.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"dorothy"
-        },
-				 {
-        id: "enid_p",
-            label: "Энид, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
-            description: "Энид больше не говорит.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"enid"
-        },
-
-							 {
-        id: "elridge_p",
-            label: "Элридж, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
-            description: "Элриджу не разрешены ни ложка, ни тарелка. Даже острые овощи, возможно, не лучшая идея.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"elridge"
-        },
-							 {
-        id: "laidlaw_p",
-            label: "Лейдло, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
-            description: "Дверь Лейдло — на засове, а не на замке. Мы учитываем.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"laidlaw"
-        },
-						 {
-        id: "leo_p",
-            label: "Лео, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
-            description: "Лео не понимает, что он сделал не так.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"leo"
-        },
-				 {
-        id: "neville_p",
-            label: "Невилл, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
-            description: "Невилл плачет.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"neville"
-        },
-							 {
-        id: "porter_p",
-            label: "Портер, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
-            description: "Портер ждёт, недвижимый как ящер.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"porter"
-        },
-							 {
-        id: "renira_p",
-            label: "Ренира, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
-            description: "Ренира всегда находит, чем занять время.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"renira"
-        },
-		
-								 {
-        id: "rose_p",
-            label: "Роуз, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
-            description: "Роуз не сдалась. Думаю, она припрятала нож.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"rose"
-        },
-							 {
-        id: "slee_p",
-            label: "Сли, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
-            description: "Сли маниакально пишет стихи на стенах. Если мы не даём ему чернила, он находит, чем обойтись.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"slee"
-        },
-						 {
-        id: "tristan_p",
-            label: "Тристан, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
-            description: "Тристан выжмет из ситуации лучшее.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"tristan"
-        },
-							 {
-        id: "saliba_p",
-            label: "Салиб, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
-            description: "Гнев Салиба обжигает как лава под затвердевшим камнем.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"saliba"
-        },
-							 {
-        id: "sylvia_p",
-            label: "Сильвия, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
-            description: "Мы проверяем Сильвию каждый час, на всякий случай.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"sylvia"
-        },
-							 {
-        id: "valciane_p",
-            label: "Вальчиана, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
-            description: "Очень важно никогда не приближаться к Вальчиане на расстояние вытянутой руки.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"valciane"
-        },
-
-				 {
-        id: "victor_p",
-            label: "Виктор, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
-            description: "Глаза Виктора — колодцы ярости.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"victor"
-        },
-							 {
-        id: "violet_p",
-            label: "Виолет, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,winter:5},
-            description: "Виолет настаивает, что она в порядке. Она в порядке.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"violet"
-        },
-							 {
-        id: "ysabet_p",
-            label: "Изабет, арестант",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
-            description: "Если Изабет плачет, то без слёз.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"ysabet"
-        },
-						 {
-        id: "generic_a",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			animFrames: 1,
-			comments:"legacy element to keep saves valid",
-			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
-        },
-									 {
-        id: "generic_a_edge",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_edge}
-        },
-										 {
-        id: "generic_a_forge",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_forge}
-        },
-										 {
-        id: "generic_a_grail",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_grail}
-        },
-										 {
-        id: "generic_a_heart",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_heart}
-        },
-										 {
-        id: "generic_a_knock",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_knock}
-        },
-										 {
-        id: "generic_a_lantern",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_lantern}
-        },
-										 {
-        id: "generic_a_moth",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,recruiting:generic_b_moth}
-        },
-										 {
-        id: "generic_a_winter",
-            label: "Знакомец",
-            aspects:
-            {mortal: 1,acquaintance:1},
-            animFrames: 1,
-		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_winter}
-        },
+			rebellion: "auclair_r",
+			killmortal: "corpse",
+			recruiting: "auclair_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "auclair_b",
+		aspects: 
 		{
-        id: "generic_b",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			comments: "This is a legacy element to support older saves.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
-        },
-								 {
-        id: "generic_b_edge",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
-        },
-										 {
-        id: "generic_b_forge",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
-        },
-										 {
-        id: "generic_b_grail",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
-        },
-										 {
-        id: "generic_b_heart",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
-        },
-										 {
-        id: "generic_b_knock",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
-        },
-										 {
-        id: "generic_b_lantern",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
-        },
-										 {
-        id: "generic_b_moth",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_moth}
-        },
-										 {
-        id: "generic_b_winter",
-            label: "Пешка",
-            aspects:
-            {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
-			description: "Безусловная верность, но нехватка инициативы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
-        },
-										 {
-        id: "generic_c_edge",
-            label: "Крепкий адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:2},
-            animFrames: 1,
-			description: "Верность и мышцы.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-										 {
-        id: "generic_c_forge",
-            label: "Практичный адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
-            animFrames: 1,
-			description: "Верность и умелые руки.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-										 {
-        id: "generic_c_grail",
-            label: "Алчный адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
-            animFrames: 1,
-			description: "Верность, но жадность.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-										 {
-        id: "generic_c_heart",
-            label: "Жизнерадостный адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
-            animFrames: 1,
-			description: "Верность и песня на устах.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-								 {
-        id: "generic_c_knock",
-            label: "Ловкий адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
-            animFrames: 1,
-			description: "Верность и отмычки.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-
-										 {
-        id: "generic_c_lantern",
-            label: "Зоркий адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
-            animFrames: 1,
-			description: "Верность и острый глаз.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-												 {
-        id: "generic_c_moth",
-            label: "Странный адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
-            animFrames: 1,
-			description: "Верность и нотка безумия; даже по нашим меркам.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r},
-			lifetime:600,
-			decayTo: lunatic
-        },
-														 {
-        id: "generic_c_winter",
-            label: "Молчаливый адепт",
-            aspects:
-            {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
-            animFrames: 1,
-			description: "Верность и тишина зимней ночи.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
-        },
-
-						 {
-        id: "generic_p",
-            label: "Жертва предательства",
-            aspects:
-            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3},
-            description: "Вяло сетует на несчастную судьбу.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse"
-        },
-
-		]
-};
+			follower: "1",
+			winter: "2",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Оклер тиха, педантична и безжалостна.",
+		uniquenessgroup: "uqauclair",
+		animFrames: "1",
+		label: "Оклер, неофит",
+		xtriggers: 
+		{
+			rebellion: "auclair_r",
+			killmortal: "corpse",
+			capturefollower: "auclair_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "auclair_c",
+		},
+	},
+	{
+		id: "auclair_c",
+		aspects: 
+		{
+			follower: "1",
+			winter: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			potential: "1",
+		},
+		description: "Оклер говорит редко. Она осторожно подбирает слова. Даже её движения экономны. Она никогда не моргает.",
+		uniquenessgroup: "uqauclair",
+		animFrames: "1",
+		label: "Оклер, адепт",
+		xtriggers: 
+		{
+			rebellion: "auclair_r_c",
+			promotionto_d_winter: "auclair_d",
+			capturefollower: "auclair_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "auclair_d",
+		aspects: 
+		{
+			winter: "10",
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Воздух морозен, свечи оплывают, уличный шум приглушен. Здесь кто-то есть.",
+		uniquenessgroup: "uqauclair",
+		animFrames: "1",
+		label: "Сухопарая и молчащая",
+		xtriggers: 
+		{
+			rebellion: "auclair_r_d",
+			killmortal: "corpse",
+			capturefollower: "auclair_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "cat_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Кэт Каро, как она себя называет, выступает на сцене в образе медиума и гадалки. Возможно, её таланты глубже, чем кажется. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqcat",
+		animFrames: "1",
+		label: "Кэт Каро, знакомая",
+		xtriggers: 
+		{
+			rebellion: "cat_r",
+			killmortal: "corpse",
+			recruiting: "cat_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "cat_b",
+		aspects: 
+		{
+			follower: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "2",
+		},
+		description: "Внимательная женщина с сияющим взглядом. Она идеально чётко помнит свои сны.",
+		uniquenessgroup: "uqcat",
+		animFrames: "1",
+		label: "Кэт Каро, неофит",
+		xtriggers: 
+		{
+			rebellion: "cat_r",
+			killmortal: "corpse",
+			capturefollower: "cat_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "cat_c",
+		},
+	},
+	{
+		id: "cat_c",
+		aspects: 
+		{
+			follower: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "5",
+			potential: "1",
+		},
+		description: "Она ещё иногда выступает на сцене. «Кэт Каро находит путь; Кэт Каро знает дорогу» — так гласят постеры.",
+		uniquenessgroup: "uqcat",
+		animFrames: "1",
+		label: "Кэт Каро, адепт",
+		xtriggers: 
+		{
+			rebellion: "cat_r_c",
+			promotionto_d_lantern: "cat_d",
+			capturefollower: "cat_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "cat_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "10",
+		},
+		description: "Археологи находят сокровища в гробницах. Крестьяне собирают жатву с полей. Что же Кэт Каро извлечёт из сновидений?",
+		uniquenessgroup: "uqcat",
+		animFrames: "1",
+		label: "Кэт Каро, Пророк",
+		xtriggers: 
+		{
+			rebellion: "cat_r_d",
+			killmortal: "corpse",
+			capturefollower: "cat_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "clifton_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Громогласный католик с неровной бородой, отошедший от канона и склонный к мистицизму. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqclifton",
+		animFrames: "1",
+		label: "«Папа» Клифтон, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "clifton_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "clifton_b",
+		aspects: 
+		{
+			follower: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "2",
+		},
+		description: "Теперь Клифтон творит новые молитвы, полные метафор о солнце. Он всё ещё гаркает как солдафон и пьёт как моряк.",
+		uniquenessgroup: "uqclifton",
+		animFrames: "1",
+		label: "«Папа» Клифтон, неофит",
+		xtriggers: 
+		{
+			rebellion: "clifton_r",
+			killmortal: "corpse",
+			capturefollower: "clifton_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "clifton_c",
+		},
+	},
+	{
+		id: "clifton_c",
+		aspects: 
+		{
+			follower: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "5",
+			potential: "1",
+		},
+		description: "Молитвы Клифтона усложнились. Его сияющие глаза широко открыты. Его голос — ещё громче.",
+		uniquenessgroup: "uqclifton",
+		animFrames: "1",
+		label: "«Папа» Клифтон, адепт",
+		xtriggers: 
+		{
+			rebellion: "clifton_r_c",
+			promotionto_d_lantern: "clifton_d",
+			capturefollower: "clifton_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "clifton_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "10",
+		},
+		description: "Клифтон всё ещё читает молитвы, но теперь они искажены, как старые зеркала. Каждое утро он встаёт, чтобы встретить рассвет. Клифтон смотрит ему прямо в лицо и говорит в точности то, что видит.",
+		uniquenessgroup: "uqclifton",
+		animFrames: "1",
+		label: "Клифтон, Пророк",
+		xtriggers: 
+		{
+			rebellion: "clifton_r_d",
+			killmortal: "corpse",
+			capturefollower: "clifton_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "clovette_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "Кловетта счастлива, и этому счастью ничего невозможно противопоставить. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqclovette",
+		animFrames: "1",
+		label: "Кловетта, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "clovette_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "clovette_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+			heart: "2",
+		},
+		description: "Убеждённость Кловетты в своём счастье теперь почти фанатична.",
+		uniquenessgroup: "uqclovette",
+		animFrames: "1",
+		label: "Кловетта, неофит",
+		xtriggers: 
+		{
+			rebellion: "clovette_r",
+			killmortal: "corpse",
+			capturefollower: "clovette_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "clovette_c",
+		},
+	},
+	{
+		id: "clovette_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "5",
+			potential: "1",
+		},
+		description: "Оптимизм Кловетты ужасает. Она несёт свою радость как молот.",
+		uniquenessgroup: "uqclovette",
+		animFrames: "1",
+		label: "Кловетта, адепт",
+		xtriggers: 
+		{
+			rebellion: "clovette_r_c",
+			killmortal: "corpse",
+			capturefollower: "clovette_p",
+			promotionto_d_heart: "clovette_d",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "clovette_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "10",
+		},
+		description: "Кловетта всегда в движении. Она смеётся легко и открыто. Её улыбка — лунный серп.",
+		uniquenessgroup: "uqclovette",
+		animFrames: "1",
+		label: "Кловетта, Тарантеллист",
+		xtriggers: 
+		{
+			rebellion: "clovette_r_d",
+			killmortal: "corpse",
+			capturefollower: "clovette_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		uniquenessgroup: "uqconnie",
+		comment: "NEW",
+		icon: "connie_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			edge: "5",
+			disciple: "1",
+			mortal: "1",
+			grail: "4",
+		},
+		xtriggers: 
+		{
+			rebellion: "connie_r_c",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerf",
+			derangemortal: "lunatic",
+			promotionto_d_edge: "connie_d",
+		},
+		label: "Connie, a Disciple",
+		id: "connie_c",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqconnie",
+		comment: "NEW",
+		icon: "connie_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			edge: "10",
+			disciple: "1",
+			mortal: "1",
+			grail: "7",
+		},
+		xtriggers: 
+		{
+			rebellion: "connie_r_d",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerf",
+			derangemortal: "lunatic",
+		},
+		label: "Connie, a Conqueress",
+		id: "connie_d",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		id: "dorothy_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "Дороти — энтузиаст, её манера подбора книг для чтения эклектична. Она восторженно ловит ваши намёки о тенях, скользящих под кожей мира. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqdorothy",
+		animFrames: "1",
+		label: "Дороти, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "dorothy_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "dorothy_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+			heart: "2",
+		},
+		description: "Дороти — энтузиаст, и мне удалось обратить этот энтузиазм на служение нашим целям.",
+		uniquenessgroup: "uqdorothy",
+		animFrames: "1",
+		label: "Дороти, неофит",
+		xtriggers: 
+		{
+			rebellion: "dorothy_r",
+			killmortal: "corpse",
+			capturefollower: "dorothy_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "dorothy_c",
+		},
+	},
+	{
+		id: "dorothy_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "5",
+			potential: "1",
+		},
+		description: "Энтузиазм Дороти стал одержимостью. Она не прервётся; и как же она любит танцевать.",
+		uniquenessgroup: "uqdorothy",
+		animFrames: "1",
+		label: "Дороти, адепт",
+		xtriggers: 
+		{
+			rebellion: "dorothy_r_c",
+			killmortal: "corpse",
+			capturefollower: "dorothy_p",
+			promotionto_d_heart: "dorothy_d",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "dorothy_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "10",
+		},
+		description: "Когда Дороти движется, мы слышим ритм. Когда она говорит, мы видим танец. Её убеждённость — её щит и оружие.",
+		uniquenessgroup: "uqdorothy",
+		animFrames: "1",
+		label: "Дороти, Тарантеллист",
+		xtriggers: 
+		{
+			rebellion: "dorothy_r_d",
+			killmortal: "corpse",
+			capturefollower: "dorothy_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		uniquenessgroup: "uqdouglas",
+		comment: "NEW",
+		icon: "douglas_r",
+		aspects: 
+		{
+			follower: "1",
+			forge: "2",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			rebellion: "douglas_r",
+			killmortal: "corpse",
+			capturefollower: "douglas_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "douglas_c",
+		},
+		label: "Douglas, a believer",
+		id: "douglas_b",
+		description: "Douglas has exchanged the Force for the Forge.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqdouglas",
+		comment: "NEW",
+		icon: "douglas_r",
+		aspects: 
+		{
+			follower: "1",
+			forge: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		xtriggers: 
+		{
+			promotionto_d_forge: "douglas_d",
+			killmortal: "corpse",
+			capturefollower: "douglas_p",
+			derangemortal: "lunatic",
+			rebellion: "douglas_r_c",
+		},
+		label: "Douglas, a disciple",
+		id: "douglas_c",
+		description: "Douglas doesn't like hammers. They remind him of an Incident. But he uses what instruments he must.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqdouglas",
+		comment: "NEW",
+		icon: "douglas_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			forge: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			rebellion: "douglas_r_d",
+			killmortal: "corpse",
+			capturefollower: "douglas_p",
+			derangemortal: "lunatic",
+		},
+		label: "Douglas, a Shaper",
+		id: "douglas_d",
+		description: "Douglas has changed so much. His eyes glow like smithy windows in fog. His voice is the rattle of coal in the chute. His arm is long.",
+		animFrames: "1",
+	},
+	{
+		id: "elridge_a",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Элегантный мужчина с безвкусными привычками. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqelridge",
+		animFrames: "1",
+		label: "Элридж, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "elridge_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "elridge_b",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			edge: "2",
+			mortal: "1",
+		},
+		description: "Элридж почти научился не ковыряться в зубах ножом, когда разговаривает. Ему ещё предстоит научиться оставлять нож в сапоге.",
+		uniquenessgroup: "uqelridge",
+		animFrames: "1",
+		label: "Элридж, неофит",
+		xtriggers: 
+		{
+			rebellion: "elridge_r",
+			killmortal: "corpse",
+			capturefollower: "elridge_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "elridge_c",
+		},
+	},
+	{
+		id: "elridge_c",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			edge: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Элридж спокойно ждёт, когда снова наступит время достать нож.",
+		uniquenessgroup: "uqelridge",
+		animFrames: "1",
+		label: "Элридж, адепт",
+		xtriggers: 
+		{
+			rebellion: "elridge_r_c",
+			killmortal: "corpse",
+			capturefollower: "elridge_p",
+			derangemortal: "lunatic",
+			promotionto_d_edge: "elridge_d",
+		},
+	},
+	{
+		id: "elridge_d",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			exalted: "1",
+			edge: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "На Элридже никогда нет ни капли крови. Ни капли.",
+		uniquenessgroup: "uqelridge",
+		animFrames: "1",
+		label: "Элридж, Ассасин",
+		xtriggers: 
+		{
+			rebellion: "elridge_r_d",
+			killmortal: "corpse",
+			capturefollower: "elridge_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "enid_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Голос Энид мягок, и иногда её взгляд уплывает, не фокусируясь ни на чём заметном. Возможно, у вас с ней одни и те же сны. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqenid",
+		animFrames: "1",
+		label: "Энид, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "enid_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "enid_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustenlightenment: "1",
+			mortal: "1",
+			knock: "2",
+		},
+		description: "Голос Энид мягок, и иногда её взгляд уплывает, не фокусируясь ни на чём заметном. Она видит то, что не видят другие.",
+		uniquenessgroup: "uqenid",
+		animFrames: "1",
+		label: "Энид, неофит",
+		xtriggers: 
+		{
+			rebellion: "enid_r_c",
+			killmortal: "corpse",
+			capturefollower: "enid_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "enid_c",
+		},
+	},
+	{
+		id: "enid_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustenlightenment: "1",
+			disciple: "1",
+			mortal: "1",
+			knock: "5",
+			potential: "1",
+		},
+		description: "Энид видит то, что не видят другие. Это затрудняет её, но крайне полезно.",
+		uniquenessgroup: "uqenid",
+		animFrames: "1",
+		label: "Энид, адепт",
+		xtriggers: 
+		{
+			rebellion: "enid_r_d",
+			promotionto_d_knock: "enid_d",
+			capturefollower: "enid_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "enid_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustenlightenment: "1",
+			disciple: "1",
+			mortal: "1",
+			knock: "10",
+		},
+		description: "Энид видит прорези между вещами; она освоила искусство, и иногда оно позволяет ей вложить пальцы в такую прорезь.",
+		uniquenessgroup: "uqenid",
+		animFrames: "1",
+		label: "Энид, Ключ",
+		xtriggers: 
+		{
+			rebellion: "enid_r",
+			killmortal: "corpse",
+			capturefollower: "enid_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "laidlaw_a",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Лейдло — технарь, механик, движимый необычным. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqlaidlaw",
+		animFrames: "1",
+		label: "Лейдло, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "laidlaw_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "laidlaw_b",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "2",
+			mortal: "1",
+		},
+		description: "Лейдло начал чувствовать, где лежит предел изощрённости, и понимать силу жертвоприношений.",
+		uniquenessgroup: "uqlaidlaw",
+		animFrames: "1",
+		label: "Лейдло, неофит",
+		xtriggers: 
+		{
+			rebellion: "laidlaw_r",
+			killmortal: "corpse",
+			capturefollower: "laidlaw_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "laidlaw_c",
+		},
+	},
+	{
+		id: "laidlaw_c",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Лейдло освоил более тонкие методы огня и меди, воска и кислоты.",
+		uniquenessgroup: "uqlaidlaw",
+		animFrames: "1",
+		label: "Лейдло, адепт",
+		xtriggers: 
+		{
+			promotionto_d_forge: "laidlaw_d",
+			killmortal: "corpse",
+			capturefollower: "laidlaw_p",
+			derangemortal: "lunatic",
+			rebellion: "laidlaw_r_c",
+		},
+	},
+	{
+		id: "laidlaw_d",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			exalted: "1",
+			forge: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Лейдло меняет форму сломанного — в необходимое.",
+		uniquenessgroup: "uqlaidlaw",
+		animFrames: "1",
+		label: "Лейдло, Меняющий",
+		xtriggers: 
+		{
+			rebellion: "laidlaw_r_d",
+			killmortal: "corpse",
+			capturefollower: "laidlaw_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "leo_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "Лео — честный малый, заинтересованный в оккультизме. Он полагается на ваши намёки о незримых искусствах. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqleo",
+		animFrames: "1",
+		label: "Лео, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "leo_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "leo_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+			heart: "2",
+		},
+		description: "Лео — честный малый, но вполне готов сделать что следует.",
+		uniquenessgroup: "uqleo",
+		animFrames: "1",
+		label: "Лео, неофит",
+		xtriggers: 
+		{
+			rebellion: "leo_r",
+			killmortal: "corpse",
+			capturefollower: "leo_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "leo_c",
+		},
+	},
+	{
+		id: "leo_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "5",
+			potential: "1",
+		},
+		description: "Лео всё ещё стремится к добру и хранит настоящие ценности; но он знает, что ради защиты идеалов иногда приходится идти на сомнительные дела.",
+		uniquenessgroup: "uqleo",
+		animFrames: "1",
+		label: "Лео, адепт",
+		xtriggers: 
+		{
+			rebellion: "leo_r_c",
+			killmortal: "corpse",
+			capturefollower: "leo_p",
+			promotionto_d_heart: "leo_d",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "leo_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "10",
+		},
+		description: "Лео сохранит, во что бы то ни стало. Он не прервётся.",
+		uniquenessgroup: "uqleo",
+		animFrames: "1",
+		label: "Лео, Тарантеллист",
+		xtriggers: 
+		{
+			rebellion: "leo_r_d",
+			killmortal: "corpse",
+			capturefollower: "leo_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		uniquenessgroup: "uqnatalia",
+		comment: "NEW",
+		icon: "natalia_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			forge: "4",
+			disciple: "1",
+			mortal: "1",
+			lantern: "5",
+		},
+		xtriggers: 
+		{
+			rebellion: "natalia_r_c",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerf",
+			derangemortal: "lunatic",
+			promotionto_d_lantern: "natalia_d",
+		},
+		label: "Natalia, a Disciple",
+		id: "natalia_c",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqnatalia",
+		comment: "NEW",
+		icon: "natalia_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			forge: "7",
+			disciple: "1",
+			mortal: "1",
+			lantern: "10",
+		},
+		xtriggers: 
+		{
+			rebellion: "natalia_r_d",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerf",
+			derangemortal: "lunatic",
+		},
+		label: "Natalia, a Sage",
+		id: "natalia_d",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		id: "neville_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Невилл замирает перед началом речи и склонен нервно вздрагивать. Он всегда смеётся, когда ему кажется, что вы пошутили. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqneville",
+		animFrames: "1",
+		label: "Невилл, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "neville_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "neville_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustenlightenment: "1",
+			mortal: "1",
+			knock: "2",
+		},
+		description: "Невилл замирает перед началом речи и склонен нервно вздрагивать. Он тонко чувствует глубину.",
+		uniquenessgroup: "uqneville",
+		animFrames: "1",
+		label: "Невилл, неофит",
+		xtriggers: 
+		{
+			rebellion: "neville_r",
+			killmortal: "corpse",
+			capturefollower: "neville_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "neville_c",
+		},
+	},
+	{
+		id: "neville_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustenlightenment: "1",
+			disciple: "1",
+			mortal: "1",
+			knock: "5",
+			potential: "1",
+		},
+		description: "Невилл бросает взгляды искоса, иногда его голос пронзителен. Он свободно говорит о своих снах.",
+		uniquenessgroup: "uqneville",
+		animFrames: "1",
+		label: "Невилл, адепт",
+		xtriggers: 
+		{
+			rebellion: "neville_r_c",
+			promotionto_d_knock: "neville_d",
+			capturefollower: "neville_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "neville_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustenlightenment: "1",
+			disciple: "1",
+			mortal: "1",
+			knock: "10",
+		},
+		description: "В снах Невилл видит огрехи, которыми можно раскрыть мир и его пути.",
+		uniquenessgroup: "uqneville",
+		animFrames: "1",
+		label: "Невилл, Ключ",
+		xtriggers: 
+		{
+			rebellion: "neville_r_d",
+			killmortal: "corpse",
+			capturefollower: "neville_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "porter_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "До суда Портер был парикмахером. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqporter",
+		animFrames: "1",
+		label: "Портер, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "porter_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "porter_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "2",
+			mortal: "1",
+		},
+		description: "Портер направляет бритву и ножницы туда, где они полезны друзьям.",
+		uniquenessgroup: "uqporter",
+		animFrames: "1",
+		label: "Портер, неофит",
+		xtriggers: 
+		{
+			rebellion: "porter_r",
+			killmortal: "corpse",
+			capturefollower: "porter_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "porter_c",
+		},
+	},
+	{
+		id: "porter_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Портер остаётся незаметным, пока не готов.",
+		uniquenessgroup: "uqporter",
+		animFrames: "1",
+		label: "Портер, адепт",
+		xtriggers: 
+		{
+			rebellion: "porter_r_c",
+			killmortal: "corpse",
+			capturefollower: "porter_p",
+			derangemortal: "lunatic",
+			promotionto_d_moth: "porter_d",
+		},
+	},
+	{
+		id: "porter_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			moth: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Портер, как паук, находится в самых неожиданных местах.",
+		uniquenessgroup: "uqporter",
+		animFrames: "1",
+		label: "Портер, Кожевенник",
+		xtriggers: 
+		{
+			rebellion: "porter_r_d",
+			killmortal: "corpse",
+			capturefollower: "porter_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "renira_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Ренира трижды признана невиновной в трёх различных юрисдикциях. Видимо, её никогда не признают виновной ни в чём. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqrenira",
+		animFrames: "1",
+		label: "Ренира, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "renira_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "renira_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+			grail: "2",
+		},
+		description: "Ренира продолжает благоразумно утолять свои страсти, хотя её запросы несколько возросли.",
+		uniquenessgroup: "uqrenira",
+		animFrames: "1",
+		label: "Ренира, неофит",
+		xtriggers: 
+		{
+			rebellion: "renira_r",
+			killmortal: "corpse",
+			capturefollower: "renira_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "renira_c",
+		},
+	},
+	{
+		id: "renira_c",
+		aspects: 
+		{
+			follower: "1",
+			grail: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			potential: "1",
+		},
+		description: "Ренирой восхищены, где бы она ни была. Она отвечает тем, кто заслуживает её ответа.",
+		uniquenessgroup: "uqrenira",
+		animFrames: "1",
+		label: "Ренира, адепт",
+		xtriggers: 
+		{
+			rebellion: "renira_r_c",
+			killmortal: "corpse",
+			capturefollower: "renira_p",
+			promotionto_d_grail: "renira_d",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "renira_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			grail: "10",
+		},
+		description: "Ренира почти ежедневно получает знаки внимания от поклонников. Иногда ей дарят цветы, иногда — посвящают сонеты. Драгоценные камни перемежаются дарами отчаяния, плотно упакованными в креповую бумагу со следами крови.",
+		uniquenessgroup: "uqrenira",
+		animFrames: "1",
+		label: "Ренира, Распутница",
+		xtriggers: 
+		{
+			rebellion: "renira_r_d",
+			killmortal: "corpse",
+			capturefollower: "renira_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "rose_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Роуз — лукавая леди; она видит в вас что-то необычное. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqrose",
+		animFrames: "1",
+		label: "Роуз, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "rose_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "rose_b",
+		aspects: 
+		{
+			follower: "1",
+			edge: "2",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Роуз — лукавая, но верная леди.",
+		uniquenessgroup: "uqrose",
+		animFrames: "1",
+		label: "Роуз, неофит",
+		xtriggers: 
+		{
+			rebellion: "rose_r",
+			killmortal: "corpse",
+			capturefollower: "rose_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "rose_c",
+		},
+	},
+	{
+		id: "rose_c",
+		aspects: 
+		{
+			follower: "1",
+			edge: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			potential: "1",
+		},
+		description: "Коварство Роуз заточено и пронзает как острейшая игла.",
+		uniquenessgroup: "uqrose",
+		animFrames: "1",
+		label: "Роуз, адепт",
+		xtriggers: 
+		{
+			rebellion: "rose_r_c",
+			killmortal: "corpse",
+			capturefollower: "rose_p",
+			derangemortal: "lunatic",
+			promotionto_d_edge: "rose_d",
+		},
+	},
+	{
+		id: "rose_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			edge: "10",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+		},
+		description: "В ночь перед свиданием с Роуз её цель получит посылку с единственной желтой розой.",
+		uniquenessgroup: "uqrose",
+		animFrames: "1",
+		label: "Роуз, Ассасин",
+		xtriggers: 
+		{
+			rebellion: "rose_r_d",
+			killmortal: "corpse",
+			capturefollower: "rose_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "saliba_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Салиб — человек с чудовищными стремлениями. Он давно уже не получает удовольствия, следуя им, но успел научиться очень многому. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqsaliba",
+		animFrames: "1",
+		label: "Салиб, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "saliba_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "saliba_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+			grail: "2",
+		},
+		description: "Салиб понимает кровь. Он ещё не понимает рождение.",
+		uniquenessgroup: "uqsaliba",
+		animFrames: "1",
+		label: "Салиб, неофит",
+		xtriggers: 
+		{
+			rebellion: "saliba_r",
+			killmortal: "corpse",
+			capturefollower: "saliba_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "saliba_c",
+		},
+	},
+	{
+		id: "saliba_c",
+		aspects: 
+		{
+			follower: "1",
+			grail: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			potential: "1",
+		},
+		description: "Салиб принимает наслаждения в комнате без окон. Его партнеры вновь и вновь приходят к нему, хотя с каждым разом от них остаётся всё меньше.",
+		uniquenessgroup: "uqsaliba",
+		animFrames: "1",
+		label: "Салиб, адепт",
+		xtriggers: 
+		{
+			rebellion: "saliba_r_c",
+			killmortal: "corpse",
+			capturefollower: "saliba_p",
+			promotionto_d_grail: "saliba_d",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "saliba_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			grail: "10",
+		},
+		description: "Обаяние Салиба сокрушает как молот. Ужасающе сложно отказать его желаниям.",
+		uniquenessgroup: "uqsaliba",
+		animFrames: "1",
+		label: "Салиб, Распутник",
+		xtriggers: 
+		{
+			rebellion: "saliba_r_d",
+			killmortal: "corpse",
+			capturefollower: "saliba_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "slee_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+		},
+		description: "Крейг Сли, астроном и поэт-авангардист, увлёкся эзотерикой, когда его здоровье пошатнулось. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqslee",
+		animFrames: "1",
+		label: "Сли, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "slee_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "slee_b",
+		aspects: 
+		{
+			follower: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "2",
+		},
+		description: "Сли с энтузиазмом излагает свои теории всем, кто готов слушать; звёзды — это маленькие раны, Солнце — кровотечение Славы. Его поэзия ещё эксцентричнее, чем раньше.",
+		uniquenessgroup: "uqslee",
+		animFrames: "1",
+		label: "Сли, неофит",
+		xtriggers: 
+		{
+			rebellion: "slee_r",
+			killmortal: "corpse",
+			capturefollower: "slee_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "slee_c",
+		},
+	},
+	{
+		id: "slee_c",
+		aspects: 
+		{
+			follower: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "5",
+			potential: "1",
+		},
+		description: "Головные боли Сли почти смертельны, но его теории с каждым днём всё практичнее. Его поэзия тоже совершенствуется",
+		uniquenessgroup: "uqslee",
+		animFrames: "1",
+		label: "Сли, адепт",
+		xtriggers: 
+		{
+			rebellion: "slee_r_c",
+			promotionto_d_lantern: "slee_d",
+			capturefollower: "slee_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "slee_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustenlightenment: "1",
+			lantern: "10",
+		},
+		description: "Сли общается исключительно поэзией и математикой. В любом случае он убедителен, и всё сложнее найти различия между тем и другим.",
+		uniquenessgroup: "uqslee",
+		animFrames: "1",
+		label: "Сли, Пророк",
+		xtriggers: 
+		{
+			rebellion: "slee_r_d",
+			killmortal: "corpse",
+			capturefollower: "slee_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		uniquenessgroup: "uqspencer",
+		comment: "NEW",
+		icon: "spencer_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			moth: "4",
+			disciple: "1",
+			mortal: "1",
+			knock: "5",
+		},
+		xtriggers: 
+		{
+			rebellion: "spencer_r_c",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerm",
+			derangemortal: "lunatic",
+			promotionto_d_lantern: "spencer_d",
+		},
+		label: "Spencer, a Disciple",
+		id: "spencer_c",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqspencer",
+		comment: "NEW",
+		icon: "spencer_r",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			moth: "7",
+			disciple: "1",
+			mortal: "1",
+			knock: "10",
+		},
+		xtriggers: 
+		{
+			rebellion: "spencer_r_d",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerm",
+			derangemortal: "lunatic",
+		},
+		label: "Spencer, a Herald",
+		id: "spencer_d",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		id: "sylvia_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "Сильвия потеряла глаз в лесу, когда ей было девять лет. Ежегодно, на Сретение, она возвращается туда, где закопала его. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqsylvia",
+		animFrames: "1",
+		label: "Сильвия, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "sylvia_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "sylvia_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "2",
+			mortal: "1",
+		},
+		description: "Сильвия в деталях знакома с гребнями крыш, с тихой речной водой, с ирландским виски, и с малыми заклинаниями.",
+		uniquenessgroup: "uqsylvia",
+		animFrames: "1",
+		label: "Сильвия, неофит",
+		xtriggers: 
+		{
+			rebellion: "sylvia_r",
+			killmortal: "corpse",
+			capturefollower: "sylvia_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "sylvia_c",
+		},
+	},
+	{
+		id: "sylvia_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Любимый метод Сильвии — улыбнуться и закрыть глаз. Примечательно, насколько часто после этого её собеседник невольно и точно проговаривается о своих мыслях.",
+		uniquenessgroup: "uqsylvia",
+		animFrames: "1",
+		label: "Сильвия, адепт",
+		xtriggers: 
+		{
+			rebellion: "sylvia_r_c",
+			killmortal: "corpse",
+			capturefollower: "sylvia_p",
+			derangemortal: "lunatic",
+			promotionto_d_moth: "sylvia_d",
+		},
+	},
+	{
+		id: "sylvia_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			moth: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Сильвия научилась выходить почти что до того как зайдёт. Иногда она оставляет мёртвые листья под подоконником. Иногда она пишет своё имя там, где его не найдут.",
+		uniquenessgroup: "uqsylvia",
+		animFrames: "1",
+		label: "Сильвия, Кожевенник",
+		xtriggers: 
+		{
+			rebellion: "sylvia_r_d",
+			killmortal: "corpse",
+			capturefollower: "sylvia_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "tristan_a",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Тристан не любит помех. Тристан решает вопросы. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqtristan",
+		animFrames: "1",
+		label: "Тристан, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "tristan_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "tristan_b",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "2",
+			mortal: "1",
+		},
+		description: "Тристан не любит помех; Тристан любит результаты.",
+		uniquenessgroup: "uqtristan",
+		animFrames: "1",
+		label: "Тристан, неофит",
+		xtriggers: 
+		{
+			rebellion: "tristan_r",
+			killmortal: "corpse",
+			capturefollower: "tristan_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "tristan_c",
+		},
+	},
+	{
+		id: "tristan_c",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Тристан сделает то, что необходимо. Чтобы создать, иногда вначале требуется разрушить.",
+		uniquenessgroup: "uqtristan",
+		animFrames: "1",
+		label: "Тристан, адепт",
+		xtriggers: 
+		{
+			promotionto_d_forge: "tristan_d",
+			killmortal: "corpse",
+			capturefollower: "tristan_p",
+			derangemortal: "lunatic",
+			rebellion: "tristan_r_c",
+		},
+	},
+	{
+		id: "tristan_d",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			exalted: "1",
+			forge: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "В другом веке Тристан мог бы стать кузнецом. В другой жизни Тристан мог бы делать бомбы.",
+		uniquenessgroup: "uqtristan",
+		animFrames: "1",
+		label: "Тристан, Меняющий",
+		xtriggers: 
+		{
+			rebellion: "tristan_r_d",
+			killmortal: "corpse",
+			capturefollower: "tristan_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "valciane_a",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Вальчиана занята своим делом почти двадцать лет. Она никогда не брала себе помощников. Её руки ужасающе сильны. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqvalciane",
+		animFrames: "1",
+		label: "Вальчиана, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "valciane_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "valciane_b",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "2",
+			mortal: "1",
+		},
+		description: "Изобретательность Вальчианы безгранична, её хватка — сильнее, чем у кузнеца.",
+		uniquenessgroup: "uqvalciane",
+		animFrames: "1",
+		label: "Вальчиана, неофит",
+		xtriggers: 
+		{
+			rebellion: "valciane_r",
+			killmortal: "corpse",
+			capturefollower: "valciane_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "valciane_c",
+		},
+	},
+	{
+		id: "valciane_c",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			forge: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Вальчиана — не машина. Мы практически уверены в этом, ведь по доверенным свидетельствам она иногда допускает очень человеческие ошибки.",
+		uniquenessgroup: "uqvalciane",
+		animFrames: "1",
+		label: "Вальчиана, адепт",
+		xtriggers: 
+		{
+			promotionto_d_forge: "valciane_d",
+			killmortal: "corpse",
+			capturefollower: "valciane_p",
+			derangemortal: "lunatic",
+			rebellion: "valciane_r_c",
+		},
+	},
+	{
+		id: "valciane_d",
+		aspects: 
+		{
+			follower_lustpower: "1",
+			follower: "1",
+			exalted: "1",
+			forge: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Вальчиана начала работать без инструментов. По её словам, «они мешают».",
+		uniquenessgroup: "uqvalciane",
+		animFrames: "1",
+		label: "Вальчиана, Меняющая",
+		xtriggers: 
+		{
+			rebellion: "valciane_r_d",
+			killmortal: "corpse",
+			capturefollower: "valciane_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "victor_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Виктор — хитрый малый, он знает, когда выпадает необычная возможность. [Это знакомство можно углубить и получить приспешника.]",
+		uniquenessgroup: "uqvictor",
+		animFrames: "1",
+		label: "Виктор, знакомый",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "victor_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "victor_b",
+		aspects: 
+		{
+			follower: "1",
+			edge: "2",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Виктор — хитрый малый, но верный.",
+		uniquenessgroup: "uqvictor",
+		animFrames: "1",
+		label: "Виктор, неофит",
+		xtriggers: 
+		{
+			rebellion: "victor_r",
+			killmortal: "corpse",
+			capturefollower: "victor_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "victor_c",
+		},
+	},
+	{
+		id: "victor_c",
+		aspects: 
+		{
+			follower: "1",
+			edge: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			potential: "1",
+		},
+		description: "Виктор заточил свою хитрость до предела, сделав её пронзающим клинком.",
+		uniquenessgroup: "uqvictor",
+		animFrames: "1",
+		label: "Виктор, адепт",
+		xtriggers: 
+		{
+			rebellion: "victor_r_c",
+			killmortal: "corpse",
+			capturefollower: "victor_p",
+			derangemortal: "lunatic",
+			promotionto_d_edge: "victor_d",
+		},
+	},
+	{
+		id: "victor_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			edge: "10",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+		},
+		description: "Виктор любит знакомиться с жертвами, чтобы лично извиниться перед ними в последние секунды.",
+		uniquenessgroup: "uqvictor",
+		animFrames: "1",
+		label: "Виктор, Ассасин",
+		xtriggers: 
+		{
+			rebellion: "victor_r_d",
+			killmortal: "corpse",
+			capturefollower: "victor_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "violet_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustsensation: "1",
+			mortal: "1",
+		},
+		description: "Виолет никогда не скупилась на время, чтобы ослабить боль умирающих. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqviolet",
+		animFrames: "1",
+		label: "Виолет, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "violet_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "violet_b",
+		aspects: 
+		{
+			follower: "1",
+			winter: "2",
+			mortal: "1",
+			follower_lustsensation: "1",
+		},
+		description: "Виолет любит рисовать. Она одарена, но не склонна гордиться этим. Она никогда не рисует людей. В мире их и без того достаточно.",
+		uniquenessgroup: "uqviolet",
+		animFrames: "1",
+		label: "Виолет",
+		xtriggers: 
+		{
+			rebellion: "violet_r",
+			killmortal: "corpse",
+			capturefollower: "violet_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "violet_c",
+		},
+	},
+	{
+		id: "violet_c",
+		aspects: 
+		{
+			follower: "1",
+			winter: "5",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+			potential: "1",
+		},
+		description: "Виолет всегда крайне осторожна.",
+		uniquenessgroup: "uqviolet",
+		animFrames: "1",
+		label: "Виолет, адепт",
+		xtriggers: 
+		{
+			rebellion: "violet_r_c",
+			promotionto_d_winter: "violet_d",
+			capturefollower: "violet_p",
+			derangemortal: "lunatic",
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "violet_d",
+		aspects: 
+		{
+			winter: "10",
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			follower_lustsensation: "1",
+		},
+		description: "Теперь спи, и ни о чём не беспокойся.",
+		uniquenessgroup: "uqviolet",
+		animFrames: "1",
+		label: "Молчащая женщина с добрым лицом",
+		xtriggers: 
+		{
+			rebellion: "violet_r_d",
+			killmortal: "corpse",
+			capturefollower: "violet_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "ysabet_a",
+		aspects: 
+		{
+			acquaintance: "1",
+			follower_lustchange: "1",
+			mortal: "1",
+		},
+		description: "Изабет всегда было уютнее всего под лунным светом. У неё отличное ночное зрение. Днём её зачастую не замечают. [Это знакомство можно углубить и получить приспешницу.]",
+		uniquenessgroup: "uqysabet",
+		animFrames: "1",
+		label: "Изабет, знакомая",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			recruiting: "ysabet_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "ysabet_b",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "2",
+			mortal: "1",
+		},
+		description: "Изабет спит короткими приступами. Она встаёт на закате, чтобы сделать то, что Изабет делает.",
+		uniquenessgroup: "uqysabet",
+		animFrames: "1",
+		label: "Изабет, неофит",
+		xtriggers: 
+		{
+			rebellion: "ysabet_r",
+			killmortal: "corpse",
+			capturefollower: "ysabet_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "ysabet_c",
+		},
+	},
+	{
+		id: "ysabet_c",
+		aspects: 
+		{
+			follower: "1",
+			follower_lustchange: "1",
+			moth: "5",
+			disciple: "1",
+			mortal: "1",
+			potential: "1",
+		},
+		description: "Изабет была здесь, вот только что. Прямо здесь. Почти наверняка.",
+		uniquenessgroup: "uqysabet",
+		animFrames: "1",
+		label: "Изабет, адепт",
+		xtriggers: 
+		{
+			rebellion: "ysabet_r_c",
+			killmortal: "corpse",
+			capturefollower: "ysabet_p",
+			derangemortal: "lunatic",
+			promotionto_d_moth: "ysabet_d",
+		},
+	},
+	{
+		id: "ysabet_d",
+		aspects: 
+		{
+			follower: "1",
+			exalted: "1",
+			follower_lustchange: "1",
+			moth: "10",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Изабет уже никогда не лжёт. Ей это не нужно.",
+		uniquenessgroup: "uqysabet",
+		animFrames: "1",
+		label: "Изабет, Кожевенник",
+		xtriggers: 
+		{
+			rebellion: "ysabet_r_d",
+			killmortal: "corpse",
+			capturefollower: "ysabet_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		uniquenessgroup: "uqzachary",
+		comment: "NEW",
+		icon: "zachary_r",
+		aspects: 
+		{
+			winter: "5",
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			lantern: "4",
+		},
+		xtriggers: 
+		{
+			rebellion: "zachary_r_c",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerm",
+			promotionto_d_winter: "zachary_d",
+			derangemortal: "lunatic",
+		},
+		label: "Zachary, a Disciple",
+		id: "zachary_c",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqzachary",
+		comment: "NEW",
+		icon: "zachary_r",
+		aspects: 
+		{
+			winter: "10",
+			follower: "1",
+			exalted: "1",
+			disciple: "1",
+			mortal: "1",
+			lantern: "7",
+		},
+		xtriggers: 
+		{
+			rebellion: "zachary_r_d",
+			killmortal: "corpse",
+			capturefollower: "genericprisonerm",
+			derangemortal: "lunatic",
+		},
+		label: "Zachary, a Conclusion",
+		id: "zachary_d",
+		description: "[Not yet.]",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqauclair",
+		aspects: 
+		{
+			prisoner: "1",
+			winter: "5",
+			mortal: "1",
+			heart: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Оклер, арестант",
+		id: "auclair_p",
+		lifetime: "600",
+		description: "Оклер не говорит и не ест.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqcat",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "5",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Кэт Каро, арестант",
+		id: "cat_p",
+		lifetime: "600",
+		description: "Та, что называла себя «Кэт Каро», засыпает при любой возможности.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqclifton",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "5",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "«Папа» Клифтон, арестант",
+		id: "clifton_p",
+		lifetime: "600",
+		description: "Клифтон кричит и проклинает, но решётка надёжна, а стены прочны.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqclovette",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "5",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Кловетта, арестант",
+		id: "clovette_p",
+		lifetime: "600",
+		description: "Кловетта ждёт, когда всё повернётся иначе.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqdorothy",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "5",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Дороти, арестант",
+		id: "dorothy_p",
+		lifetime: "600",
+		description: "Постоянные увещевания Дороти действуют на нервы.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqdouglas",
+		comment: "NEW",
+		icon: "defaulthunterprisoner",
+		aspects: 
+		{
+			prisoner: "1",
+			forge: "5",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Douglas, a prisoner",
+		id: "douglas_p",
+		lifetime: "600",
+		description: "Douglas shakes his head sadly. 'Never thought I'd end on the wrong side of the bars. Should have listened to me old mum.'",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqenid",
+		aspects: 
+		{
+			knock: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Энид, арестант",
+		id: "enid_p",
+		lifetime: "600",
+		description: "Энид больше не говорит.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqelridge",
+		aspects: 
+		{
+			edge: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Элридж, арестант",
+		id: "elridge_p",
+		lifetime: "600",
+		description: "Элриджу не разрешены ни ложка, ни тарелка. Даже острые овощи, возможно, не лучшая идея.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqlaidlaw",
+		aspects: 
+		{
+			prisoner: "1",
+			forge: "5",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Лейдло, арестант",
+		id: "laidlaw_p",
+		lifetime: "600",
+		description: "Дверь Лейдло — на засове, а не на замке. Мы учитываем.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqleo",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "5",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Лео, арестант",
+		id: "leo_p",
+		lifetime: "600",
+		description: "Лео не понимает, что он сделал не так.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqneville",
+		aspects: 
+		{
+			knock: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Невилл, арестант",
+		id: "neville_p",
+		lifetime: "600",
+		description: "Невилл плачет.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqporter",
+		aspects: 
+		{
+			moth: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Портер, арестант",
+		id: "porter_p",
+		lifetime: "600",
+		description: "Портер ждёт, недвижимый как ящер.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqrenira",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "5",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Ренира, арестант",
+		id: "renira_p",
+		lifetime: "600",
+		description: "Ренира всегда находит, чем занять время.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqrose",
+		aspects: 
+		{
+			edge: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Роуз, арестант",
+		id: "rose_p",
+		lifetime: "600",
+		description: "Роуз не сдалась. Думаю, она припрятала нож.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqslee",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "5",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Сли, арестант",
+		id: "slee_p",
+		lifetime: "600",
+		description: "Сли маниакально пишет стихи на стенах. Если мы не даём ему чернила, он находит, чем обойтись.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqtristan",
+		aspects: 
+		{
+			prisoner: "1",
+			forge: "5",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Тристан, арестант",
+		id: "tristan_p",
+		lifetime: "600",
+		description: "Тристан выжмет из ситуации лучшее.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqsaliba",
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "5",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Салиб, арестант",
+		id: "saliba_p",
+		lifetime: "600",
+		description: "Гнев Салиба обжигает как лава под затвердевшим камнем.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqsylvia",
+		aspects: 
+		{
+			moth: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Сильвия, арестант",
+		id: "sylvia_p",
+		lifetime: "600",
+		description: "Мы проверяем Сильвию каждый час, на всякий случай.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqvalciane",
+		aspects: 
+		{
+			prisoner: "1",
+			forge: "5",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Вальчиана, арестант",
+		id: "valciane_p",
+		lifetime: "600",
+		description: "Очень важно никогда не приближаться к Вальчиане на расстояние вытянутой руки.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqvictor",
+		aspects: 
+		{
+			edge: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Виктор, арестант",
+		id: "victor_p",
+		lifetime: "600",
+		description: "Глаза Виктора — колодцы ярости.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqviolet",
+		aspects: 
+		{
+			prisoner: "1",
+			winter: "5",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Виолет, арестант",
+		id: "violet_p",
+		lifetime: "600",
+		description: "Виолет настаивает, что она в порядке. Она в порядке.",
+		animFrames: "1",
+	},
+	{
+		uniquenessgroup: "uqysabet",
+		aspects: 
+		{
+			moth: "5",
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Изабет, арестант",
+		id: "ysabet_p",
+		lifetime: "600",
+		description: "Если Изабет плачет, то без слёз.",
+		animFrames: "1",
+	},
+	{
+		id: "generic_a",
+		comments: "legacy element to keep saves valid",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_edge",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_edge",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_forge",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_forge",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_grail",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_grail",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_heart",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_heart",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_knock",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_knock",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_lantern",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_lantern",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_moth",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			recruiting: "generic_b_moth",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_a_winter",
+		aspects: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+		},
+		description: "Из этой глины можно вылепить полезный инструмент, но, вероятно, шедевра не выйдет. [Это знакомство можно углубить и получить приспешника]",
+		animFrames: "1",
+		label: "Знакомец",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			recruiting: "generic_b_winter",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_b",
+		comments: "This is a legacy element to support older saves.",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_knock",
+		},
+	},
+	{
+		id: "generic_b_edge",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_edge",
+		},
+	},
+	{
+		id: "generic_b_forge",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_forge",
+		},
+	},
+	{
+		id: "generic_b_grail",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_grail",
+		},
+	},
+	{
+		id: "generic_b_heart",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_heart",
+		},
+	},
+	{
+		id: "generic_b_knock",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_knock",
+		},
+	},
+	{
+		id: "generic_b_lantern",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_lantern",
+		},
+	},
+	{
+		id: "generic_b_moth",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_moth",
+		},
+	},
+	{
+		id: "generic_b_winter",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			mortal: "1",
+		},
+		description: "Безусловная верность, но нехватка инициативы.",
+		animFrames: "1",
+		label: "Пешка",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+			promotiontodisciple: "generic_c_winter",
+		},
+	},
+	{
+		id: "generic_c_edge",
+		aspects: 
+		{
+			follower: "1",
+			edge: "2",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Верность и мышцы.",
+		animFrames: "1",
+		label: "Крепкий адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_c_forge",
+		aspects: 
+		{
+			forge: "2",
+			follower: "1",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Верность и умелые руки.",
+		animFrames: "1",
+		label: "Практичный адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_c_grail",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+			grail: "2",
+		},
+		description: "Верность, но жадность.",
+		animFrames: "1",
+		label: "Алчный адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_c_heart",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+			heart: "2",
+		},
+		description: "Верность и песня на устах.",
+		animFrames: "1",
+		label: "Жизнерадостный адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_c_knock",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+			knock: "2",
+		},
+		description: "Верность и отмычки.",
+		animFrames: "1",
+		label: "Ловкий адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "generic_c_lantern",
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+			lantern: "2",
+		},
+		description: "Верность и острый глаз.",
+		animFrames: "1",
+		label: "Зоркий адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		aspects: 
+		{
+			follower: "1",
+			edge: "1",
+			moth: "2",
+			disciple: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+		decayTo: "lunatic",
+		label: "Странный адепт",
+		id: "generic_c_moth",
+		lifetime: "600",
+		description: "Верность и нотка безумия; даже по нашим меркам.",
+		animFrames: "1",
+	},
+	{
+		id: "generic_c_winter",
+		aspects: 
+		{
+			follower: "1",
+			winter: "2",
+			edge: "1",
+			disciple: "1",
+			mortal: "1",
+		},
+		description: "Верность и тишина зимней ночи.",
+		animFrames: "1",
+		label: "Молчаливый адепт",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+			killmortal: "corpse",
+			capturefollower: "generic_p",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		aspects: 
+		{
+			prisoner: "1",
+			mortal: "1",
+			heart: "3",
+			lantern: "3",
+			grail: "3",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+		decayTo: "corpse",
+		label: "Жертва предательства",
+		id: "generic_p",
+		lifetime: "600",
+		description: "Вяло сетует на несчастную судьбу.",
+		animFrames: "1",
+	},
+]
+}

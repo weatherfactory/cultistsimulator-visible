@@ -1,151 +1,382 @@
-﻿ {"recipes":
- [
- 	{
-	id: "studyupgrade_downgrade_lore_hint",
-	label: "Улучшить знание незримых искусств?",
-	actionId: "study",
-	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
-	startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Если я воспользуюсь Разумом, я проанализирую знание и разобью его на осколки меньшего уровня. Кроме того, я могу приложить знание иного аспекта и извратить его...",
-		craftable: false,
-		hintonly:true
-	},
-   	{
-	id: "studyupgradelore_hint",
-	label: "Улучшить знание незримых искусств?",
-	actionId: "study",
-	requirements: {lore:1},	
-	startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Кроме того, я могу приложить знание иного аспекта и извратить его...",
-		craftable: false,
-		hintonly:true
-	},
-	
-	  
- {id:"translatelatinhint",
- label:"Перевести с латыни?",
- actionId:"study",
- requirements:{textlatin:1},
- startdescription:"Моего знания латыни недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
- hintonly:true,
- craftable:false
- },
- {id:"translategreekhint",
- label:"Перевести с греческого языка?",
- actionId:"study",
- requirements:{textgreek:1},
- startdescription:"Моего знания греческого недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
- hintonly:true,
- craftable:false
- },
- 
- {id:"translatearamaichint",
- label:"Перевести с арамейского языка?",
- actionId:"study",
- requirements:{textaramaic:1},
- startdescription:"Моего знания арамейского недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
- hintonly:true,
- craftable:false
- },
- 
-   {id:"translatefucinehint",
- label:"Перевести с фуцинского языка?",
- actionId:"study",
- requirements:{textfucine:1},
- startdescription:"Фуцинский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
- hintonly:true,
- craftable:false
- },
-   {id:"translatephrygianhint",
- label:"Перевести с фригийского языка?",
- actionId:"study",
- requirements:{textphrygian:1},
- startdescription:"Фригийский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
- hintonly:true,
- craftable:false
- },
- 
-   {id:"translatemandaichint",
- label:"Перевести с глубокого мандейского языка?",
- actionId:"study",
- requirements:{textmandaic:1},
- startdescription:"Глубокий мандейский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
- hintonly:true,
- craftable:false
- },
-    {id:"translatevakh1int",
- label:"Перевести с ваки?",
- actionId:"study",
- requirements:{textvak:1},
- startdescription:"Вака незнакома мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
- hintonly:true,
- craftable:false
- },
- 
- 
+﻿{
+recipes: [
 	{
-        id: "increasehealthfurtherhint",
-        label: "Набраться Здоровья?",
-        actionId: "study",
-        requirements: {vitality:2},
-        startdescription: "Чем больше Здоровья я получаю, тем больше Бодрости мне нужно. [Используйте Навык Тела, чтобы набрать ещё больше Здоровья.]",
-
-        hintonly:true,
-        craftable: true
-    },
-			{
-        id: "increasereasonfurtherhint",
-        label: "Набраться Разума",
-        actionId: "study",
-        requirements: {erudition:2},
-        startdescription: "Чем больше Разума я получаю, тем больше Размышлений мне нужно. [Используйте Навык Учёности, чтобы набрать ещё больше Разума.]",
-
-        hintonly:true,
-        craftable: true
-    },
-	
+		id: "studyupgrade_downgrade_lore_hint",
+		craftable: "false",
+		startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Если я воспользуюсь Разумом, я проанализирую знание и разобью его на осколки меньшего уровня. Кроме того, я могу приложить знание иного аспекта и извратить его...",
+		requirements: 
 		{
-        id: "increasepassionfurtherhint",
-        label: "Набраться Страсти?",
-        actionId: "study",
-        requirements: {glimmering:2},
-        startdescription: "Чем больше Страсти я получаю, тем больше Мечтаний мне нужно. [Используйте Навык Воображения, чтобы набрать ещё больше Страсти.]",
-
-        hintonly:true,
-        craftable: true
-    },
-		
-		
+			secrethistories: "-1",
+			lantern: "-1",
+			heart: "-1",
+			forge: "-1",
+			winter: "-1",
+			grail: "-1",
+			knock: "-1",
+			moth: "-1",
+			edge: "-1",
+			lore: "1",
+		},
+		label: "Улучшить знание незримых искусств?",
+		hintonly: "true",
+		actionId: "study",
+	},
 	{
-        id: "increasehealthfurtherhint1",
-        label: "Набраться Здоровья?",
-        actionId: "study",
-        requirements: {vitality:1},
-        startdescription: "Одной не хватит.",
-
-        hintonly:true,
-        craftable: true
-    },
-			{
-        id: "increasereasonfurtherhint1",
-        label: "Набраться Разума?",
-        actionId: "study",
-        requirements: {erudition:1},
-        startdescription: "Одного не хватит.",
-
-        hintonly:true,
-        craftable: true
-    },
-	
+		id: "studyupgradelore_hint",
+		craftable: "false",
+		startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Кроме того, я могу приложить знание иного аспекта и извратить его...",
+		requirements: 
 		{
-        id: "increasepassionfurtherhint1",
-        label: "Набраться Страсти?",
-        actionId: "study",
-        requirements: {glimmering:1},
-        startdescription: "Одного не хватит.",
-
-        hintonly:true,
-        craftable: true
-    },
-
-	
+			healthskill: "-1",
+			lore: "1",
+		},
+		label: "Улучшить знание незримых искусств?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatelatinhint",
+		craftable: "false",
+		startdescription: "Моего знания латыни недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+		requirements: 
+		{
+			textlatin: "1",
+		},
+		label: "Перевести с латыни?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translategreekhint",
+		craftable: "false",
+		startdescription: "Моего знания греческого недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+		requirements: 
+		{
+			textgreek: "1",
+		},
+		label: "Перевести с греческого языка?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatearamaichint",
+		craftable: "false",
+		startdescription: "Моего знания арамейского недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+		requirements: 
+		{
+			textaramaic: "1",
+		},
+		label: "Перевести с арамейского языка?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatefucinehint",
+		craftable: "false",
+		startdescription: "Фуцинский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+		requirements: 
+		{
+			textfucine: "1",
+		},
+		label: "Перевести с фуцинского языка?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatephrygianhint",
+		craftable: "false",
+		startdescription: "Фригийский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+		requirements: 
+		{
+			textphrygian: "1",
+		},
+		label: "Перевести с фригийского языка?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatemandaichint",
+		craftable: "false",
+		startdescription: "Глубокий мандейский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+		requirements: 
+		{
+			textmandaic: "1",
+		},
+		label: "Перевести с глубокого мандейского языка?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatevakhint",
+		craftable: "false",
+		startdescription: "I don't know Vak; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+		requirements: 
+		{
+			textvak: "1",
+		},
+		comment: "NEW",
+		label: "Translate from Vak?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyincreasehealthskilld_wronglore",
+		craftable: "false",
+		startdescription: "Nothing in this lore will be of use here. I must choose something else.",
+		requirements: 
+		{
+			lore: "1",
+			skillhealthc: "1",
+			vitalityplus: "4",
+		},
+		comment: "NEW",
+		label: "Exercise the Body: Secret Techniques?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhint",
+		craftable: "false",
+		startdescription: "The more Health I gain, the more Vitality I'll need. [Use Skill: Physique to increase Health further.]",
+		requirements: 
+		{
+			vitality: "2",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhint",
+		craftable: "false",
+		startdescription: "The more Reason I gain, the more Erudition I'll need. [Use Skill: Scholarship to increase Reason further.]",
+		requirements: 
+		{
+			erudition: "2",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhint",
+		craftable: "false",
+		startdescription: "The more Passion I gain, the more Glimmering I'll need. [Use Skill: Imagination to increase Passion further.]",
+		requirements: 
+		{
+			glimmering: "2",
+		},
+		comment: "NEW",
+		label: "Increase my Passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyupgradeinfluenceshint2",
+		craftable: "false",
+		startdescription: "It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
+		requirements: 
+		{
+			healthskill: "-1",
+			reasonskill: "-1",
+			passionskill: "-1",
+			lore: "-1",
+			influence: "2",
+		},
+		comment: "NEW",
+		label: "Upgrade Influences?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			skillhealthc: "1",
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			healthskill: "1",
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Strength skill.",
+		requirements: 
+		{
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhint1",
+		craftable: "false",
+		startdescription: "I'll need more.",
+		requirements: 
+		{
+			vitality: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			eruditionplus: "1",
+			skillreasonc: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			reasonskill: "1",
+			eruditionplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Scholarship skill.",
+		requirements: 
+		{
+			eruditionplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhint1",
+		craftable: "false",
+		startdescription: "I'll need more than one.",
+		requirements: 
+		{
+			erudition: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			skillpassionc: "1",
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			passionskill: "1",
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Imagination skill.",
+		requirements: 
+		{
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhint1",
+		craftable: "false",
+		startdescription: "I'll need more than one.",
+		requirements: 
+		{
+			glimmering: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyrestlessnesshint",
+		craftable: "false",
+		startdescription: "To study, one must generally sit quite still. Restlessness is rarely the ally of scholarship.",
+		requirements: 
+		{
+			restlessness: "1",
+		},
+		comment: "NEW",
+		label: "Study Restlessness?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyupgradeinfluenceshint1",
+		craftable: "false",
+		startdescription: "It might be possible, with the right combination of Influences, to raise more power...",
+		requirements: 
+		{
+			influence: "1",
+		},
+		comment: "NEW",
+		label: "Upgrade Influences?",
+		hintonly: "true",
+		actionId: "study",
+	},
 ]
 }

@@ -1,271 +1,668 @@
 ﻿{
-"recipes": [
-{id: "workdetectivejob_start",
-label: "В участке",
-actionId: "work",
-requirements: {legacydetectivejob:1},
-aspects: {careeradvancement:1},
-effects: {LEVER_LastFollower:1,legacydetective_plotitem:1,funds:3,health:1},
-
-alternativerecipes: [{id:"needs",chance:100,additional:true},
-{id:"detectiveopendream",chance:100,additional:true}],
-startdescription: "Меня снова откомандировали в Бюро Подавления, государственную контору, работающую с «оккультными» преступлениями. О Бюро ходят дурные слухи.",
-description: "Бюро выявило проблемную личность и назначило меня вести её дело. От имени на папке перехватывает дыхание. Я помню ещё одно расследование; я помню его слишком хорошо...",
-warmup:10,
-craftable: true,
-linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
-},
-
-{id: "detectiveopendream",
-label: "Сновидения...",
-actionId: "dream",
-startdescription:"Бюро Подавления публикует меморандумы об опасностях снов. Каждую неделю выходит новый.",
-description:"«Сообщайте о снах про лунный свет. Сообщайте о снах про лес в окружении ночи. Держите шторы открытыми, чтобы просыпаться от солнечного света. Не стригите волосы перед сном. Никогда не спите перед треснувшим зеркалом».",
-effects: {passion:1},
-warmup:30,
-craftable: false
-},
-
-{id: "workdetectivejob_start_promote_lever_believer",
-label: "В участке",
-actionId:"work",
-aspects: {promotiontodisciple:1},
-craftable:false,
-linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:100}],
-},
-
-{id: "workdetectivejob_start_promote_lever_disciple",
-label: "В участке",
-actionId:"work",
-aspects: {promotionto_d_edge:1,
-promotionto_d_forge:1,
-promotionto_d_grail:1,
-promotionto_d_heart:1,
-promotionto_d_knock:1,
-promotionto_d_lantern:1,
-promotionto_d_moth:1,
-promotionto_d_winter:1,
-rebellion:1},
-linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
-craftable:false
-},
-{id: "workdetectivejob_start_rebellion",
-label: "В участке",
-actionId:"work",
-aspects: {rebellion:1},
-craftable:false
-},
-
-
-
-
-{id: "workdetectivejob_matured_investigate_hint",
-label: "Моё расследование?",
-actionId: "work",
-requirements: {legacydetectivejob_matured:1,suspicious:1},
-startdescription:"Если я приложу Разум к расследованию, то, возможно, узнаю больше о цели.",
-hintonly:true,
-craftable:false
-},
-
-{id: "workdetectivejob_matured_pursuepromotion",
-label: "Своего рода восхождение",
-actionId: "work",
-requirements: {legacydetectivejob_matured:1,favour:1},
-startdescription: "Теперь у меня есть заслуга перед властями. С её помощью я могу добиться повышения и войти в штат самого Бюро. [Это концовка малой победы.]",
-description: "Выход на концовку.",
-warmup:60,
-ending: "workvictoryb",
-		signalEndingFlavour:Grand,
-craftable: true},
-
-
-{id: "workdetectivejob_matured_investigate",
-label: "Моё расследование",
-actionId: "work",
-requirements: {legacydetectivejob_matured:1,suspicious:1,reason:1},
-alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true},
-{id:"workdetectivejob_matured_investigate_threereason_success",chance:100},
-{id:"workdetectivejob_matured_investigate_tworeason_success",chance:70},
-{id:"workdetectivejob_matured_investigate_onereason_success",chance:30}
-],
-effects: {funds:2},
-startdescription: "Расследование цели. Чем больше я приложу Разума, тем выше мои шансы на успех.",
-description: "Расследование не выявило новых следов.",
-warmup:60,
-aspects:{employment:1,fatiguing:1},
-craftable: true},
-
-
-{id: "workdetectivejob_matured_investigate_threereason_success",
-label: "Прогресс!",
-actionId: "work",
-alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
-requirements: {reason:3},
-craftable: false,
-linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
-{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
-
-{id: "workdetectivejob_matured_investigate_tworeason_success",
-label: "Прогресс!",
-actionId: "work",
-alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
-requirements: {reason:2},
-craftable: false,
-linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
-{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
-
-{id: "workdetectivejob_matured_investigate_onereason_success",
-label: "Прогресс!",
-actionId: "work",
-alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
-requirements: {reason:1},
-craftable: false,
-linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
-{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
-
-
-
-
-{id: "workdetectivejob_matured_investigate_successresults",
-label: "Прогресс!",
-actionId: "work",
-effects: {funds:3,myevidence:1},
-aspects:{employment:1,fatiguing:1,investigatingsuccess:1,dreadful:1},
-description: "Непрерывно хлопающие двери, влажжные следы на стенах участка, запах гуталина и немытых констеблей. Всё сходится к единственной прозрачной истине. В моём деле прогресс, а в карманах — деньги за сверхурочную работу.",
-craftable: false},
-
-{id: "workdetectivejob_matured_attemptsolvecase",
-label: "Завершение дела",
-actionId: "work",
-requirements: {myevidenceb:1},
-slots:[{id:"Culprit",label:"Преступник",required:{independent:1},greedy:true}],
-startdescription: "Мои улики в руках у помощника генерального директора Бюро Подавления... но арестовывать некого.",
-description: "Бюро Подавления получило от меня достаточно улик для ареста... но арестовывать некого.",
-alternativerecipes:[{id:"workdetectivejob_matured_solvecase",chance:100}],
-warmup:60,
-aspects:{employment:1,fatiguing:1},
-effects:{funds:2,suspicious:-99},
-craftable: false	},
-{id: "workdetectivejob_matured_solvecase",
-label: "Завершение дела",
-actionId: "work",
-requirements: {myevidenceb:1,independent:1},
-startdescription: "Мои улики в руках у помощника генерального директора Бюро Подавления. Сейчас, полагаю, суровые люди в немаркой одежде стучатся в двери моей цели.",
-description: "Суд Бюро Подавления закрыт и не склонен к снисхождению. Моя цель исчезла с лица земли. Я вправе требовать повышения.",
-effects:{funds:7,favour:1,suspicious:-99,independent:-1},
-warmup:60,
-aspects:{employment:1,fatiguing:1},
-craftable: false	},
-
-
-
-{id: "workdetectivejob_matured_plead",
-label: "Прошу о восстановлении!",
-actionId: "work",
-requirements: {legacydetectivejob_suspended:1,passion:1},
-startdescription: "Почему они не понимают?",
-description: "Меня восстановили... пока что.",
-aspects:{plead:1},
-warmup:60,
-craftable: true	},
-
-
-{id: "workdetectivejob_epilogue",
-label: "",
-actionId: "work",
-effects: {legacydetectivejob_matured:-1},
-startdescription: "Работы больше нет",
-description: "",
-craftable: false},
-
-
-{id: "legacydetectiveplotitem_tempt",
-label: "Запах страниц",
-actionId: "craving",
-requirements: {legacydetective_plotitem:1},
-linked:[{id:"legacydetectiveplotitem_tempt_addslot",chance:100}]},
-{id: "legacydetectiveplotitem_tempt_addslot",
-label: "Запах страниц",
-actionId: "craving",
-slots:[{id:"resist",label:"Сопротивление",description:"Сложно сдержать желание перечитать это дело. Мне нужен Разум, чтобы усилить сопротивление.",required:{reason:1}}],
-startdescription: "Не могу забыть это дело. «#PREVIOUSCHARACTERNAME#» — имя на обложке. [Сложно сдержать желание перечитать это дело. Нужен Разум, чтобы усилить сопротивление.]",
-description:"Так легко переворачивать страницы. Словно чистить фрукты или развязывать ленту на тайном подарке. В конце концов на моих руках — следы чернил. Мой мозг кипит. Куда меня уводят эти слова?",
-effects:{legacydetective_plotitem:-1,LEVER_LastDesire:1,fascination:1,dread:1},
-alternativerecipes:[{id:"legacydetectiveplotitem_tempt_resist",chance:100},
-{id:"visionsrisk",chance:100,additional:true}],
-warmup:60,
-craftable: false},
-
-{id: "legacydetectiveplotitem_tempt_resist",
-label: "Запах страниц",
-requirements: {reason:1},
-actionId: "craving",
-startdescription:"Дисциплина. Я помню, что значит это слово. Дисциплина — моё второе имя. Выдержав столько времени, я не сдамся так легко.",
-aspects:{fatiguing:1},
-description:"Соблазн преодолён, пока что."},
-
-
-
-
-{id: "detectiveopenstudy",
-label: "Изучение...",
-alternativerecipes: [{id:"ascensionnotyet",chance:100,additional:true},
-{id:"detectiveopenexplore",chance:100,additional:true}],
-actionId: "study",
-startdescription:"Иногда я могу выкроить время для саморазвития.",
-description:"Несомненно, где-то найдутся материалы для изучения.",
-effects: {reason:1},
-warmup:30,
-craftable: false
-},
-
- 
-{id: "detectiveopenexplore",
-label: "Поиск...",
-actionId: "explore",
-startdescription:"Карта столицы — на стене моего офиса, испещрена чёрными шпильками, полускрыта короткими заметками.",
-description:"Я хорошо знаю этот город. Но целая жизнь потребуется, чтобы узнать его полностью.",
-warmup:10,
-deckeffect: {citysecrets:2},
-craftable: false,
-alternativerecipes: [{id:"detectiveopentalk",chance:100,additional:true}],
-},
-
-{id: "detectiveopentalk",
-label: "Разговор...",
-actionId: "talk",
-startdescription:"Я могу начать дружбу или закончить её.",
-description:"",
-effects: {},
-warmup:30,
-craftable: false
-},
-
-
-{id: "detectivestudy_plotitem",
-label: "Мне не следует открывать запечатанную папку",
-actionId: "study",
-requirements: {legacydetective_plotitem:1},
-alternativerecipes: [{id:"detectiveopendream",chance:100,additional:true}],
-effects: {legacydetective_plotitem:-1,fascination:1,LEVER_LastDesire:1,dread:1},
-startdescription:"НИ В КОЕМ СЛУЧАЕ НЕ ЧИТАТЬ СНОВА. Память об этом сгладилась лишь через много недель — статьи, инструкции, наброски — помогите небеса, эти наброски...",
-description:"Так легко переворачивать страницы. Словно чистить фрукты или развязывать ленту на тайном подарке. В конце концов на моих руках — следы чернил. Мой мозг кипит. Куда меня уводят эти слова?",
-warmup:60,
-craftable: true
-},
-{id: "detectivework_plotitem",
-label: "Сжечь запечатанную папку",
-actionId: "work",
-requirements: {legacydetective_plotitem:1},
-effects: {legacydetective_plotitem:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
-startdescription:"Это свидетельства. Мы не сжигаем свидетельства. Но, возможно, так лучше.",
-description:"Страницы чернеют, одна за одной, сворачиваются, сжимаются, как пальцы. Окно открыто, дым рассеивается и исчезает. Что именно сотворили мои руки?",
-warmup:60,
-craftable: true
-},
-
-
-
+recipes: [
+	{
+		linked: 
+		[
+			{
+				id: "workdetectivejob_start_rebellion",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			legacydetectivejob: "1",
+		},
+		craftable: "true",
+		warmup: "10",
+		aspects: 
+		{
+			careeradvancement: "1",
+		},
+		label: "В участке",
+		startdescription: "Меня снова откомандировали в Бюро Подавления, государственную контору, работающую с «оккультными» преступлениями. О Бюро ходят дурные слухи.",
+		id: "workdetectivejob_start",
+		actionId: "work",
+		description: "Бюро выявило проблемную личность и назначило меня вести её дело. От имени на папке перехватывает дыхание. Я помню ещё одно расследование; я помню его слишком хорошо...",
+		effects: 
+		{
+			LEVER_LastFollower: "1",
+			health: "1",
+			funds: "3",
+			legacydetective_plotitem: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "needs",
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "detectiveopendream",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		craftable: "false",
+		warmup: "30",
+		label: "Сновидения...",
+		startdescription: "Бюро Подавления публикует меморандумы об опасностях снов. Каждую неделю выходит новый.",
+		id: "detectiveopendream",
+		actionId: "dream",
+		description: "«Сообщайте о снах про лунный свет. Сообщайте о снах про лес в окружении ночи. Держите шторы открытыми, чтобы просыпаться от солнечного света. Не стригите волосы перед сном. Никогда не спите перед треснувшим зеркалом».",
+		effects: 
+		{
+			passion: "1",
+		},
+	},
+	{
+		id: "workdetectivejob_matured_investigate_hint",
+		craftable: "false",
+		startdescription: "If I apply my Reason, perhaps I can learn more about my target.",
+		requirements: 
+		{
+			suspicious: "1",
+			legacydetectivejob_matured: "1",
+		},
+		comment: "NEW",
+		label: "Pursuing an Investigation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			favour: "1",
+			legacydetectivejob_matured: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		ending: "workvictoryb",
+		label: "A Kind of Ascension",
+		startdescription: "I've won favour with the authorities. I could use this to win myself a promotion to a place in the hierarchy of the Bureau itself. [This is a minor victory ending.]",
+		signalEndingFlavour: "Grand",
+		id: "workdetectivejob_matured_pursuepromotion",
+		warmup: "60",
+		description: "Ending finish.",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			reason: "1",
+			suspicious: "1",
+			legacydetectivejob_matured: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			employment: "1",
+			fatiguing: "1",
+		},
+		label: "Pursuing an Investigation",
+		startdescription: "Investigating a target. The more Reason I use, the better my chance of success.",
+		id: "workdetectivejob_matured_investigate",
+		actionId: "work",
+		description: "My investigation has turned up no new leads.",
+		effects: 
+		{
+			funds: "2",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopenstudy",
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_threereason_success",
+				chance: "100",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_tworeason_success",
+				chance: "70",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_onereason_success",
+				chance: "30",
+			},
+		],
+	},
+	{
+		id: "workdetectivejob_matured_investigate_threereason_success",
+		craftable: "false",
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopenstudy",
+				chance: "100",
+				additional: "true",
+			},
+		],
+		requirements: 
+		{
+			reason: "3",
+		},
+		linked: 
+		[
+			{
+				id: "workdetectivejob_matured_attemptsolvecase",
+				chance: "100",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_successresults",
+				chance: "100",
+			},
+		],
+		label: "Progress!",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		id: "workdetectivejob_matured_investigate_tworeason_success",
+		craftable: "false",
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopenstudy",
+				chance: "100",
+				additional: "true",
+			},
+		],
+		requirements: 
+		{
+			reason: "2",
+		},
+		linked: 
+		[
+			{
+				id: "workdetectivejob_matured_attemptsolvecase",
+				chance: "100",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_successresults",
+				chance: "100",
+			},
+		],
+		label: "Progress!",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		id: "workdetectivejob_matured_investigate_onereason_success",
+		craftable: "false",
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopenstudy",
+				chance: "100",
+				additional: "true",
+			},
+		],
+		requirements: 
+		{
+			reason: "1",
+		},
+		linked: 
+		[
+			{
+				id: "workdetectivejob_matured_attemptsolvecase",
+				chance: "100",
+			},
+			{
+				id: "workdetectivejob_matured_investigate_successresults",
+				chance: "100",
+			},
+		],
+		label: "Progress!",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		id: "workdetectivejob_matured_investigate_successresults",
+		craftable: "false",
+		aspects: 
+		{
+			employment: "1",
+			investigatingsuccess: "1",
+			fatiguing: "1",
+			dreadful: "1",
+		},
+		effects: 
+		{
+			myevidence: "1",
+			funds: "3",
+		},
+		description: "The constant clatter of closing doors, the damp-stains on the station walls, the smell of boot-polish and unwashed constables. All this narrows to a single crystalline truth. I've made progress, and earned myself some overtime pay.",
+		comment: "NEW",
+		label: "Progress!",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			myevidenceb: "1",
+		},
+		craftable: "false",
+		effects: 
+		{
+			suspicious: "-99",
+			funds: "2",
+		},
+		warmup: "60",
+		aspects: 
+		{
+			employment: "1",
+			fatiguing: "1",
+		},
+		label: "Solving the case",
+		startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau...",
+		id: "workdetectivejob_matured_attemptsolvecase",
+		actionId: "work",
+		comment: "NEW",
+		description: "I've provided the Suspicion Bureau with enough evidence to make an arrest... but there's no-one to arrest.",
+		slots: 
+		[
+			{
+				id: "Culprit",
+				required: 
+				{
+					independent: "1",
+				},
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "workdetectivejob_matured_solvecase",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			independent: "1",
+			myevidenceb: "1",
+		},
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			employment: "1",
+			fatiguing: "1",
+		},
+		label: "Solving the case",
+		startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau. At this moment, I can assume, hard-faced men in plain clothing are pounding on the door of my quarry.",
+		id: "workdetectivejob_matured_solvecase",
+		actionId: "work",
+		description: "The Suppression Bureau holds their trials in closed court, and they are not merciful. My quarry disappears from the world. I have earned myself a promotion. ",
+		effects: 
+		{
+			suspicious: "-99",
+			funds: "7",
+			independent: "-1",
+			favour: "1",
+			legacydetective_plotitem_backup: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "workdetectivejob_newrival",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "workdetectivejob_newrival_recruit",
+				chance: "100",
+			},
+		],
+		comment: "NEW",
+		warmup: "60",
+		label: "Another Miscreant?",
+		startdescription: "Will it ever end? Can we ever call the law, the city, the world 'safe'?",
+		id: "workdetectivejob_newrival",
+		deckeffect: 
+		{
+			acquaintances: "1",
+		},
+		description: "There are reports - troubling reports - of this one.",
+		actionId: "newrival",
+	},
+	{
+		id: "workdetectivejob_newrival_recruit",
+		linked: 
+		[
+			{
+				id: "workdetectivejob_start_promote_lever_believer",
+				chance: "100",
+			},
+		],
+		startdescription: ".",
+		description: ".",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "Another Miscreant?",
+		comment: "NEW",
+		actionId: "newrival",
+	},
+	{
+		id: "workdetectivejob_start_promote_lever_believer",
+		comments: "left unrenamed for backwards compatibility",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		craftable: "false",
+		label: "В участке",
+		linked: 
+		[
+			{
+				id: "workdetectivejob_start_promote_lever_disciple",
+				chance: "30",
+			},
+			{
+				id: "workdetectivejob_start_rebellion",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		actionId: "newrival",
+	},
+	{
+		id: "workdetectivejob_start_promote_lever_disciple",
+		comments: "left unrenamed for backwards compatibility",
+		aspects: 
+		{
+			promotionto_d_forge: "1",
+			promotionto_d_knock: "1",
+			promotionto_d_grail: "1",
+			promotionto_d_edge: "1",
+			promotionto_d_moth: "1",
+			promotionto_d_lantern: "1",
+			promotionto_d_winter: "1",
+			promotionto_d_heart: "1",
+		},
+		craftable: "false",
+		linked: 
+		[
+			{
+				id: "workdetectivejob_start_rebellion",
+				chance: "100",
+			},
+		],
+		label: "В участке",
+		actionId: "newrival",
+	},
+	{
+		id: "workdetectivejob_start_rebellion",
+		comments: "left unrenamed for backwards compatibility",
+		aspects: 
+		{
+			rebellion: "1",
+		},
+		craftable: "false",
+		label: "В участке",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			legacydetectivejob_suspended: "1",
+			passion: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			plead: "1",
+		},
+		label: "Plead for reinstatement!",
+		startdescription: "Why won't they understand?",
+		id: "workdetectivejob_matured_plead",
+		description: "I've been reinstated... for now.",
+		actionId: "work",
+	},
+	{
+		id: "workdetectivejob_epilogue",
+		startdescription: "Lost mah job",
+		effects: 
+		{
+			legacydetectivejob_matured: "-1",
+		},
+		comment: "NEW",
+		craftable: "false",
+		actionId: "work",
+	},
+	{
+		id: "legacydetectiveplotitem_tempt",
+		comment: "NEW",
+		requirements: 
+		{
+			detectivetemptation: "1",
+		},
+		linked: 
+		[
+			{
+				id: "legacydetectiveplotitem_tempt_addslot",
+				chance: "100",
+			},
+		],
+		label: "The Scent of the Pages",
+		actionId: "craving",
+	},
+	{
+		comment: "NEW",
+		craftable: "false",
+		effects: 
+		{
+			fascination: "1",
+			LEVER_LastDesire: "1",
+			dread: "1",
+			legacydetective_plotitem: "-1",
+		},
+		warmup: "60",
+		label: "The Scent of the Pages",
+		startdescription: "I cannot forget what I saw in the file on #PREVIOUSCHARACTERNAME#. [It is difficult to resist re-reading the file. Add Reason to strengthen your resistance.]",
+		id: "legacydetectiveplotitem_tempt_addslot",
+		actionId: "craving",
+		description: "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
+		slots: 
+		[
+			{
+				id: "resist",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "It is difficult to resist re-reading the file. Add Reason to strengthen your resistance.",
+				label: "Resist",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "legacydetectiveplotitem_tempt_resist",
+				chance: "100",
+			},
+			{
+				id: "visionsrisk",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		id: "legacydetectiveplotitem_tempt_resist",
+		comment: "NEW",
+		startdescription: "I am discipline. I am all discipline. I haven't lasted this long to give up so easily.",
+		requirements: 
+		{
+			reason: "1",
+		},
+		description: "The temptation has passed, for now.",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "The Scent of the Pages",
+		actionId: "craving",
+	},
+	{
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "Studying...",
+		startdescription: "Now and then, I have a little time to improve myself.",
+		id: "detectiveopenstudy",
+		actionId: "study",
+		description: "No doubt, somewhere out there, I can find materials for study.",
+		effects: 
+		{
+			reason: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "ascensionnotyet",
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "detectiveopenexplore",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		craftable: "false",
+		comment: "NEW",
+		warmup: "10",
+		label: "Exploring...",
+		startdescription: "I have a map of the capital on the wall of my office, bristling with dark-headed pins, spidery with annotations.",
+		id: "detectiveopenexplore",
+		deckeffect: 
+		{
+			citysecrets: "2",
+		},
+		description: "I know this city well, but it would take a lifetime to know it completely.",
+		actionId: "explore",
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopentalk",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		id: "detectiveopentalk",
+		craftable: "false",
+		startdescription: "I might make a friendship, or end one.",
+		warmup: "30",
+		effects: 
+		{
+		},
+		comment: "NEW",
+		label: "Talking...",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			detectivetemptation: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		label: "I Should Not Open the File",
+		startdescription: "I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
+		id: "detectivestudy_plotitem",
+		actionId: "study",
+		description: "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
+		maxexecutions: "1",
+		effects: 
+		{
+			fascination: "1",
+			detectivetemptation: "-1",
+			LEVER_LastDesire: "1",
+			dread: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopendream",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			detectivetemptation: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		label: "I Should Not Open the File",
+		startdescription: "I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
+		id: "detectivestudy_plotitem_afterfirsttime",
+		actionId: "study",
+		description: "The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I done?",
+		maxexecutions: "1",
+		effects: 
+		{
+			fascination: "1",
+			detectivetemptation: "-1",
+			dread: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "detectiveopendream",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			detectivetemptation: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "30",
+		label: "Burn the File",
+		startdescription: "This is evidence. We do not burn evidence. But perhaps it's for the best.",
+		id: "detectivework_plotitem",
+		actionId: "work",
+		description: "The pages blacken, one by one, curling like closing fingers. I have opened the window of my office. The smoke dissipates and is lost. What exactly have I done?",
+		effects: 
+		{
+			detectivetemptation: "-1",
+			contentment: "1",
+			legacydetective_plotitem_burning: "1",
+			restlessness: "1",
+		},
+	},
 ]
 }

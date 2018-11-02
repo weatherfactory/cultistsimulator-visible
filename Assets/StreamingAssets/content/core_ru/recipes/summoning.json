@@ -1,204 +1,483 @@
-﻿ {"recipes": [
- 
- 
- 
- 	{
-        id: "summon_spirit_wintera_edge",
-        label: "Взываем к Картографу Шрамов, чтобы поднять труп к полужизни",
-        actionId: "work",
-        requirements: {ritual:1,corpse:1,winter:4,edge:2,desire:-1},
-		effects: {spirit_wintera_edge:1,corpse:-1},
-        startdescription: "Раздирающая сила напитает эту плоть, которая станет Расколотым Восставшим. Мне предстоит начать процесс. Мне — приготовить молот.",
-        description: "Труп со стоном, шатаясь, поднимается на ноги; на то, что осталось от ног. Расколотый Восставший призван.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-  	{
-        id: "summon_spirit_wintera_moth",
-        label: "Просим Тис-Кольцо, чтобы поднять труп к полужизни",
-        actionId: "work",
-        requirements: {ritual:1,corpse:1,winter:4,moth:2,desire:-1},
-		effects: {spirit_wintera_moth:1,corpse:-1},
-        startdescription: "Сначала надо посадить семена: под веки, под язык, во все тайные отверстия тела. Оно пробудится, став Цветущим Восставшим.",
-        description: "Тело упруго поднимается вертикально. Продирает глаза. Смола капает из его рта. Оно растёт; оно восстало.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
- 
- 		{
-        id: "summon_spirit_forgee_edge",
-        label: "Призыв одного из Имён-флюидов Кузни Дней",
-        actionId: "work",
-        requirements: {ritual:1,knock:5,forge:10,lantern:2,desire:-1},
-		effects: {spirit_forgee_edge:1},
-        startdescription: "Король Тигель придёт лишь туда, где очень заметно влияние принципа, именуемого Кузней. Ещё он требует Лампады — ради света Славы, которую он якобы знает.",
-        description: "Если необходимо, он может скрыться в пламени свечи. Но здесь он — в полном огненном величии. Я поговорю с ним, и моё лицо и руки покраснеют как от солнечного ожога.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_graile_edge",
-        label: "Призыв одного из Имён-флюидов Алой Чаши",
-        actionId: "work",
-        requirements: {ritual:1,knock:5,grail:10,forge:2,desire:-1},
-		effects: {spirit_graile_edge:1},
-        startdescription: "Эзим может появиться только там, где сильно влияние Чаши; и он решит прийти только если его призывают Кузней, с которой он так часто заигрывал.",
-        description: "Столь изобильны и насыщены разлитые в воздухе ароматы, словно от незримого пира! Но первая и главная нота — кровь.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_lanterne_secret",
-        label: "Призыв таинственного Имени, что называют Бальдомеровой",
-        actionId: "work",
-        requirements: {ritual:1,knock:5,lantern:10,secrethistories:2,desire:-1},
-		effects: {spirit_lanterne_secret:1},
-        startdescription: "Могучая сила Лампады, чтобы привлечь внимание Бальдомеровой, и дразнящий привкус секретов, чтобы она подошла ближе.",
-        description: "У Бальдомеровой сутулые плечи учёной, ясный голос школьной учительницы, и веснушки путешественницы по Континенту. У неё нет тени.",
-        warmup: 60,
-        craftable: true,
-		comments: "Teresa doesn't struggle; she's always up for a chat"
-    },
-
+﻿{
+recipes: [
+	{
+		requirements: 
 		{
-        id: "summon_spirit_forgec_winter",
-        label: "Призыв создания туманного облика",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,forge:6,winter:2,desire:-1},
-		effects: {spirit_forgec_winter:1},
-        startdescription: "Кузня для призыва туманного духа, Зима — чтобы его удержать. Он должен знать, кто им правит.",
-        description: "Не все дети Кузни ярки. Её изгнанники и выкидыши собираются у Пределов, как чешуйки окалины — в трещинах на полу кузницы. Один из них — здесь.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-				{
-        id: "summon_spirit_grailc_moth",
-        label: "Призыв одного из самых изумительных созданий Алой Чаши",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,grail:6,moth:2,desire:-1},
-		effects: {spirit_grailc_moth:1},
-        startdescription: "Чаша — для источника Сырого Пророка; и немного Мотылька, чтобы польстить его влечению к хаосу.",
-        description: "Он протекает в мир конечность за конечностью, скользит как змея, каркает как ворона, пульсирует как вена. Он свернётся вокруг моих ног, если я ему позволю, и потом мне придётся выкинуть обувь.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_lanternc_edge",
-        label: "Призыв режущего отблеска Лампады",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,lantern:6,edge:2,desire:-1},
-		effects: {spirit_lanternc_edge:1},
-        startdescription: "Блик когда-то был живущим смертным, потом — мёртвым смертным, а теперь он — нечто иное. Призыв Бликов требует Лампады, ради света, что влечёт их к Обители, и Грани, ради их борьбы за место в зеркалах.",
-        description: "Блик не может позволить себе удовольствие драматичного и пышного визита. Взгляд живых расколет его. Я знаю, что он здесь, и этого достаточно.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_heartc_edge",
-        label: "Призыв создания Громокожи",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,heart:6,edge:2,desire:-1},
-		effects: {spirit_heartc_edge:1},
-        startdescription: "Перкуссигант, безжалостный и радостный! Сердце привлечёт его, Грань сдержит его.",
-        description: "Сначала — удар, удар, грохот и крик церемоний, что он выполняет в Лесу. Потом — он сам, головой вперёд продирается сквозь кожу мира, словно беспощадный когтистый отчим или корчащийся безголовый медведь.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_winterd_edge",
-        label: "Призыв слуги Солнца-в-Рубище",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,winter:8,edge:2,desire:-1},
-		effects: {spirit_winterd_edge:1},
-        startdescription: "Глубокий холод Зимы, чтобы назвать и привлечь Деву-в-Зеркале. Грань, чтобы соответствовать её изощрённой жестокости.",
-        description: "У того, что было женщиной, нет своего выражения лица. Движения её глаз и рта всегда совпадают с моими, словно я смотрю в зеркало. Её ногти остры как стекло.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
+			ritual: "1",
+			corpse: "1",
+			winter: "4",
+			edge: "2",
+			desire: "-1",
+		},
+		craftable: "true",
+		comments: "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+		warmup: "60",
+		aspects: 
 		{
-        id: "summon_spirit_winterb_heart",
-        label: "Призыв одного из Безгласных Мертвецов",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
-		effects: {spirit_winterb_heart:1},
-        startdescription: "Есть Мертвецы, что не спустились и не поднялись, но остались в Обители и видят сны о Зиме. Сила Зимы с долей тепла от Сердца привлечёт их сюда.",
-        description: "Тёмный контур, очерченный зимним светом. Он не говорит, но его глаза живы и смотрят, смотрят. Рано или поздно все Мертвецы начинают тосковать по миру.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-	
-	{id: "summoninglosingcontrol",
-	label: "Призыв: мятежный дух",
-	actionId: "work",
-	requirements: {},
-	startdescription: "Призванное создание борется против моей власти! Я могу обратиться к Разуму, спокойно отпустить его, и это надёжное решение. Я могу попытаться восстановить контроль Страстью, и это ненадёжно. Наконец, я могу не вмешиваться, и будь что будет.",
-	description: "Контроль прерван!",
-	alternativerecipes:[{id:"summoningshutitdown",chance:100},
-	{id:"summoningfightformastery",chance:100}],
-	slots: [{id:"Effort",label:"Усилие",required: {passion:1,reason:1}}],
-	warmup: 30,
-	craftable: false,
-	linked:[{id:"summoningescaped",chance:100}]},
-	
-	{id:"summoningshutitdown",
-	label: "Призыв: отправка домой",
-	actionId:"work",
-	requirements: {reason:1},
-	effects: {summoned:-1},
-	aspects:{fatiguing:1},
-	startdescription: "Произнести слова освобождения. Плотно запечатать круг. Стереть все следы.",
-	description: "Никого нет. Мы в безопасности.",
-	warmup:10
+			raiseshattered: "1",
+		},
+		label: "Взываем к Картографу Шрамов, чтобы поднять труп к полужизни",
+		startdescription: "Раздирающая сила напитает эту плоть, которая станет Расколотым Восставшим. Мне предстоит начать процесс. Мне — приготовить молот.",
+		id: "summon_spirit_wintera_edge",
+		description: "Труп со стоном, шатаясь, поднимается на ноги; на то, что осталось от ног. Расколотый Восставший призван.",
+		actionId: "work",
+		mutations: 
+		[
+			{
+				filterOnAspectId: "corpse",
+				mutateAspectId: "follower",
+				mutationLevel: "0",
+			},
+		],
 	},
 	{
-	id:"summoningfightformastery",
-	label: "Призыв: сражение за власть",
-	actionId:"work",
-	startdescription: "Сущности извне мира владеют разным оружием: ножами и загадками, огнём и отчаянием. У меня — своё оружие. [Это сработает — обычно. Но не всегда.]",
-	description:"",
-	requirements: {passion:1},
-	aspects:{fatiguing:1},
-	warmup:10,
-	linked:[{id:"summoningmasteryregained",chance:70},
-	{id:"summoningescaped",chance:100}]
-	},	
-		{id:"summoningescaped",
-	label: "Призыв: круг прорван!",
-
-	actionId:"work",
-	requirements: {},
-	effects: {summoned:-1},
-	startdescription: "Оно на свободе!",
-	description: "Создание ускользнуло из моего контроля, и несомненно начнёт сеять хаос — ",
-	warmup:5,
-		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true},
-		{id: "summoning_haunt_deceiver",chance:100,additional:true}]
+		requirements: 
+		{
+			ritual: "1",
+			corpse: "1",
+			moth: "2",
+			winter: "4",
+			desire: "-1",
+		},
+		craftable: "true",
+		comments: "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+		warmup: "60",
+		aspects: 
+		{
+			raiseburgeoning: "1",
+		},
+		label: "Просим Тис-Кольцо, чтобы поднять труп к полужизни",
+		startdescription: "Сначала надо посадить семена: под веки, под язык, во все тайные отверстия тела. Оно пробудится, став Цветущим Восставшим.",
+		id: "summon_spirit_wintera_moth",
+		description: "Тело упруго поднимается вертикально. Продирает глаза. Смола капает из его рта. Оно растёт; оно восстало.",
+		actionId: "work",
+		mutations: 
+		[
+			{
+				filterOnAspectId: "corpse",
+				mutateAspectId: "follower",
+				mutationLevel: "0",
+			},
+		],
 	},
-	
-			{id:"summoningmasteryregained",
-	label: "Призыв: власть восстановлена!",
-	actionId:"work",
-	requirements: {},
-	effects: {},
-	startdescription: "Я справляюсь!",
-	description: "Создание будет подчиняться моим желаниям — пока что.",
-	warmup:10
-	}
-	
-	
-
-
-	
-	
+	{
+		requirements: 
+		{
+			spirit_wintera_edge: "1",
+			ritual: "1",
+			edge: "8",
+			winter: "8",
+			desire: "-1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			renewshattered: "1",
+		},
+		label: "Call on the Cartographer of Scars to renew a corpse's half-life",
+		startdescription: "This is not really a rite of renewal - more of deferral. Winter can be delayed, but not denied.",
+		id: "renew_spirit_wintera_edge",
+		description: "The processes of decay are retarded - the motile energies re-engaged. The corpse will walk another ten hundred steps before it fails.",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			spirit_wintera_moth: "1",
+			ritual: "1",
+			moth: "8",
+			winter: "8",
+			desire: "-1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			renewburgeoning: "1",
+		},
+		label: "Call on the Ring-Yew to renew a corpse's half-life",
+		startdescription: "The new life within the corpse struggles to be free. I will contain it a little longer.",
+		id: "renew_spirit_wintera_moth",
+		description: "The light in the corpse's eyes grows less wild. Its tendrils are quelled. For a moment, I think it will speak.",
+		actionId: "work",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			forge: "10",
+			lantern: "2",
+			knock: "5",
+			desire: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв одного из Имён-флюидов Кузни Дней",
+		startdescription: "Король Тигель придёт лишь туда, где очень заметно влияние принципа, именуемого Кузней. Ещё он требует Лампады — ради света Славы, которую он якобы знает.",
+		id: "summon_spirit_forgee_edge",
+		actionId: "work",
+		description: "Если необходимо, он может скрыться в пламени свечи. Но здесь он — в полном огненном величии. Я поговорю с ним, и моё лицо и руки покраснеют как от солнечного ожога.",
+		effects: 
+		{
+			spirit_forgee_edge: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			forge: "2",
+			knock: "5",
+			desire: "-1",
+			grail: "10",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв одного из Имён-флюидов Алой Чаши",
+		startdescription: "Эзим может появиться только там, где сильно влияние Чаши; и он решит прийти только если его призывают Кузней, с которой он так часто заигрывал.",
+		id: "summon_spirit_graile_edge",
+		actionId: "work",
+		description: "Столь изобильны и насыщены разлитые в воздухе ароматы, словно от незримого пира! Но первая и главная нота — кровь.",
+		effects: 
+		{
+			spirit_graile_edge: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			secrethistories: "2",
+			ritual: "1",
+			lantern: "10",
+			knock: "5",
+			desire: "-1",
+		},
+		craftable: "true",
+		comments: "Teresa doesn't struggle; she's always up for a chat",
+		warmup: "60",
+		label: "Призыв таинственного Имени, что называют Бальдомеровой",
+		startdescription: "Могучая сила Лампады, чтобы привлечь внимание Бальдомеровой, и дразнящий привкус секретов, чтобы она подошла ближе.",
+		id: "summon_spirit_lanterne_secret",
+		actionId: "work",
+		description: "У Бальдомеровой сутулые плечи учёной, ясный голос школьной учительницы, и веснушки путешественницы по Континенту. У неё нет тени.",
+		effects: 
+		{
+			spirit_lanterne_secret: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			winter: "2",
+			ritual: "1",
+			forge: "6",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв создания туманного облика",
+		startdescription: "Кузня для призыва туманного духа, Зима — чтобы его удержать. Он должен знать, кто им правит.",
+		id: "summon_spirit_forgec_winter",
+		actionId: "work",
+		description: "Не все дети Кузни ярки. Её изгнанники и выкидыши собираются у Пределов, как чешуйки окалины — в трещинах на полу кузницы. Один из них — здесь.",
+		effects: 
+		{
+			spirit_forgec_winter: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			moth: "2",
+			knock: "2",
+			desire: "-1",
+			grail: "6",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв одного из самых изумительных созданий Алой Чаши",
+		startdescription: "Чаша — для источника Сырого Пророка; и немного Мотылька, чтобы польстить его влечению к хаосу.",
+		id: "summon_spirit_grailc_moth",
+		actionId: "work",
+		description: "Он протекает в мир конечность за конечностью, скользит как змея, каркает как ворона, пульсирует как вена. Он свернётся вокруг моих ног, если я ему позволю, и потом мне придётся выкинуть обувь.",
+		effects: 
+		{
+			spirit_grailc_moth: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			edge: "2",
+			lantern: "6",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв режущего отблеска Лампады",
+		startdescription: "Блик когда-то был живущим смертным, потом — мёртвым смертным, а теперь он — нечто иное. Призыв Бликов требует Лампады, ради света, что влечёт их к Обители, и Грани, ради их борьбы за место в зеркалах.",
+		id: "summon_spirit_lanternc_edge",
+		actionId: "work",
+		description: "Блик не может позволить себе удовольствие драматичного и пышного визита. Взгляд живых расколет его. Я знаю, что он здесь, и этого достаточно.",
+		effects: 
+		{
+			spirit_lanternc_edge: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			edge: "2",
+			knock: "2",
+			desire: "-1",
+			heart: "6",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв создания Громокожи",
+		startdescription: "Перкуссигант, безжалостный и радостный! Сердце привлечёт его, Грань сдержит его.",
+		id: "summon_spirit_heartc_edge",
+		actionId: "work",
+		description: "Сначала — удар, удар, грохот и крик церемоний, что он выполняет в Лесу. Потом — он сам, головой вперёд продирается сквозь кожу мира, словно беспощадный когтистый отчим или корчащийся безголовый медведь.",
+		effects: 
+		{
+			spirit_heartc_edge: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			edge: "2",
+			winter: "8",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв слуги Солнца-в-Рубище",
+		startdescription: "Глубокий холод Зимы, чтобы назвать и привлечь Деву-в-Зеркале. Грань, чтобы соответствовать её изощрённой жестокости.",
+		id: "summon_spirit_winterd_edge",
+		actionId: "work",
+		description: "У того, что было женщиной, нет своего выражения лица. Движения её глаз и рта всегда совпадают с моими, словно я смотрю в зеркало. Её ногти остры как стекло.",
+		effects: 
+		{
+			spirit_winterd_edge: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoninglosingcontrol",
+				chance: "30",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			winter: "4",
+			knock: "2",
+			desire: "-1",
+			heart: "2",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "Призыв одного из Безгласных Мертвецов",
+		startdescription: "Есть Мертвецы, что не спустились и не поднялись, но остались в Обители и видят сны о Зиме. Сила Зимы с долей тепла от Сердца привлечёт их сюда.",
+		id: "summon_spirit_winterb_heart",
+		actionId: "work",
+		description: "Тёмный контур, очерченный зимним светом. Он не говорит, но его глаза живы и смотрят, смотрят. Рано или поздно все Мертвецы начинают тосковать по миру.",
+		effects: 
+		{
+			spirit_winterb_heart: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoningescaped",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Призыв: мятежный дух",
+		startdescription: "Призванное создание борется против моей власти! Я могу обратиться к Разуму, спокойно отпустить его, и это надёжное решение. Я могу попытаться восстановить контроль Страстью, и это ненадёжно. Наконец, я могу не вмешиваться, и будь что будет.",
+		id: "summoninglosingcontrol",
+		actionId: "work",
+		description: "Контроль прерван!",
+		slots: 
+		[
+			{
+				id: "Effort",
+				required: 
+				{
+					reason: "1",
+					passion: "1",
+				},
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "summoningshutitdown",
+				chance: "100",
+			},
+			{
+				id: "summoningfightformastery",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			reason: "1",
+		},
+		warmup: "10",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "Призыв: отправка домой",
+		startdescription: "Произнести слова освобождения. Плотно запечатать круг. Стереть все следы.",
+		id: "summoningshutitdown",
+		actionId: "work",
+		description: "Никого нет. Мы в безопасности.",
+		effects: 
+		{
+			summoned: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "summoningmasteryregained",
+				chance: "70",
+			},
+			{
+				id: "summoningescaped",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			passion: "1",
+		},
+		warmup: "10",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "Призыв: сражение за власть",
+		startdescription: "Сущности извне мира владеют разным оружием: ножами и загадками, огнём и отчаянием. У меня — своё оружие. [Это сработает — обычно. Но не всегда.]",
+		id: "summoningfightformastery",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+		},
+		warmup: "5",
+		label: "Призыв: круг прорван!",
+		startdescription: "Оно на свободе!",
+		id: "summoningescaped",
+		actionId: "work",
+		description: "Создание ускользнуло из моего контроля, и несомненно начнёт сеять хаос — ",
+		effects: 
+		{
+			summoned: "-1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "summoning_haunt_devourer",
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "summoning_haunt_deceiver",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+		},
+		warmup: "10",
+		label: "Призыв: власть восстановлена!",
+		startdescription: "Я справляюсь!",
+		id: "summoningmasteryregained",
+		actionId: "work",
+		description: "Создание будет подчиняться моим желаниям — пока что.",
+		effects: 
+		{
+		},
+	},
 ]
 }

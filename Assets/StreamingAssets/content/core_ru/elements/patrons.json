@@ -1,139 +1,483 @@
-﻿{"elements":
-    [
-		 {
-        id: "aladim",
-            label: "Доктор Ибн аль-Адим",
-            aspects:
-            {tutoraramaic:1,tutor:1,patron:1},
-            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Он сделал вам заказ.",
-unique:true,
-			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
-					slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}],
-        },
-		 {
-        id: "aladimready",
-            label: "Доктор Ибн аль-Адим",
-            aspects:
-            {tutoraramaic:1,tutor:1,patron:1},
-            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Ему не помешает ваша помощь.",
-			unique:true,
-			xtriggers: {commissiongiven: aladim,killmortal:rumour,derangemortal:rumour}
-        },
-					 {
-        id: "bechet",
-            label: "Мадам Бекет",
-            aspects:
-            {mortal:1,patron:1,tutor:1,tutorgreek:1},
-            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Она сделала вам заказ.",
-unique:true,
-			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}]
-        },
-		 {
-        id: "bechetready",
-            label: "Мадам Бекет",
-            aspects:
-            {mortal:1,patron:1,tutor:1,tutorgreek:1},
-            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Ей не помешает ваша помощь.",
-unique:true,
-			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
-        },		 {
-        id: "jannings",
-            label: "Граф Джаннингс",
-            aspects:
-            {mortal:1,patron:1,tutor:1,tutorlatin:1},
-            description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Он сделал вам заказ.",
-unique:true,
-			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}]
-        },
-		 {
-        id: "janningsready",
-            label: "Граф Джаннингс",
-            aspects:
-            {mortal:1,patron:1,tutor:1,tutorlatin:1},
-            description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Ему не помешает ваша помощь.",
-unique:true,
-			xtriggers: {commissiongiven: jannings,killmortal:corpse,derangemortal:lunatic}
-        },
-						 {
-        id: "poppyready",
-            label: "Поппи Ласселс",
-            aspects:
-            {mortal:1,patron:1},
-            description: "Любезная владелица. Она хотела бы поговорить с вами.",
-unique:true,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic}
-        },
-				 {
-        id: "poppy",
-            label: "Поппи Ласселс",
-            aspects:
-            {mortal:1,patron:1},
-            description: "Любезная владелица.",
-unique:true,
-xtriggers: {killmortal:corpse,derangemortal:lunatic}
-        },
-						 {
-        id: "poppycommissionready",
-            label: "Поппи Ласселс",
-            aspects:
-            {mortal:1,patron:1},
-            description: "Любезная владелица. Ей не помешает помощь кое в чём.",
-unique:true,
-xtriggers: {killmortal:corpse,derangemortal:lunatic,commissiongiven:poppycommission},
-icon:"poppyready"
-        },
-						 {
-        id: "poppycommission",
-            label: "Поппи Ласселс",
-            aspects:
-            {mortal:1,patron:1},
-            description: "Любезная владелица. Она сделала вам заказ.",
-unique:true,
-xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
-				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}],
-icon:"poppy"
-        },
-		
-				 {
-        id: "aladimaway",
-            label: "Доктор Ибн аль-Адим",
-            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Сейчас он отрезан от внешнего мира, но скоро вернётся.",
-lifetime:120,
-decayTo: "aladimready",
-icon:"aladim"
-        },
-					 {
-        id: "bechetaway",
-            label: "Мадам Бекет",
-            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Сейчас она занята подготовкой к выпуску, но скоро вернётся.",
-lifetime:120,
-decayTo: "bechetready",
-icon:"bechet"
-        },
-				 {
-        id: "janningsaway",
-            label: "Граф Джаннингс",
-			lifetime:120,
-			description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Сейчас его нет в стране, но скоро он вернётся.",
-decayTo: "janningsready",
-icon:"jannings"
-        },
-		
-						 {
-        id: "poppyaway",
-            label: "Поппи Ласселс",
-            description: "Любезная владелица. Сейчас посетителей не принимает.",
-lifetime:120,
-decayTo: "poppycommissionready",
-icon:"poppy"
-        },
-		
-		
+﻿{
+elements: [
+	{
+		id: "aladim",
+		unique: "true",
+		aspects: 
+		{
+			tutor: "1",
+			patron: "1",
+			tutoraramaic: "1",
+		},
+		description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Он сделал вам заказ.",
+		slots: 
+		[
+			{
+				id: "Commission",
+				required: 
+				{
+					commission: "1",
+				},
+				actionId: "talk",
+			},
+			{
+				id: "Manuscript",
+				required: 
+				{
+					article: "1",
+				},
+				actionId: "talk",
+			},
+		],
+		label: "Доктор Ибн аль-Адим",
+		xtriggers: 
+		{
+			killmortal: "rumour",
+			derangemortal: "rumour",
+			commissionfulfilled: "aladimaway",
+		},
+	},
+	{
+		id: "aladimready",
+		unique: "true",
+		aspects: 
+		{
+			tutor: "1",
+			patron: "1",
+			tutoraramaic: "1",
+		},
+		description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Ему не помешает ваша помощь.",
+		label: "Доктор Ибн аль-Адим",
+		xtriggers: 
+		{
+			killmortal: "rumour",
+			commissiongiven: "aladim",
+			derangemortal: "rumour",
+		},
+	},
+	{
+		id: "bechet",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			tutor: "1",
+			tutorgreek: "1",
+			mortal: "1",
+		},
+		description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Она сделала вам заказ.",
+		slots: 
+		[
+			{
+				id: "Commission",
+				required: 
+				{
+					commission: "1",
+				},
+				actionId: "talk",
+			},
+			{
+				id: "Manuscript",
+				required: 
+				{
+					article: "1",
+				},
+				actionId: "talk",
+			},
+		],
+		label: "Мадам Бекет",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+			commissionfulfilled: "bechetaway",
+		},
+	},
+	{
+		id: "bechetready",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			tutor: "1",
+			tutorgreek: "1",
+			mortal: "1",
+		},
+		description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Ей не помешает ваша помощь.",
+		label: "Мадам Бекет",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			commissiongiven: "bechet",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "jannings",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			tutor: "1",
+			mortal: "1",
+			tutorlatin: "1",
+		},
+		description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Он сделал вам заказ.",
+		slots: 
+		[
+			{
+				id: "Commission",
+				required: 
+				{
+					commission: "1",
+				},
+				actionId: "talk",
+			},
+			{
+				id: "Manuscript",
+				required: 
+				{
+					article: "1",
+				},
+				actionId: "talk",
+			},
+		],
+		label: "Граф Джаннингс",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+			commissionfulfilled: "janningsaway",
+		},
+	},
+	{
+		id: "janningsready",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			tutor: "1",
+			mortal: "1",
+			tutorlatin: "1",
+		},
+		description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Ему не помешает ваша помощь.",
+		label: "Граф Джаннингс",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			commissiongiven: "jannings",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "poppyready",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			mortal: "1",
+		},
+		description: "Любезная владелица. Она хотела бы поговорить с вами.",
+		label: "Поппи Ласселс",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "poppy",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			mortal: "1",
+		},
+		description: "Любезная владелица.",
+		label: "Поппи Ласселс",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+		},
+	},
+	{
+		id: "poppycommissionready",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+			mortal: "1",
+		},
+		description: "Любезная владелица. Ей не помешает помощь кое в чём.",
+		icon: "poppyready",
+		label: "Поппи Ласселс",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+			commissiongiven: "poppycommission",
+		},
+	},
+	{
+		unique: "true",
+		icon: "poppy",
+		aspects: 
+		{
+			patron: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			killmortal: "corpse",
+			derangemortal: "lunatic",
+			commissionfulfilled: "poppyaway",
+		},
+		label: "Поппи Ласселс",
+		id: "poppycommission",
+		description: "Любезная владелица. Она сделала вам заказ.",
+		slots: 
+		[
+			{
+				id: "Commission",
+				required: 
+				{
+					commission: "1",
+				},
+				actionId: "talk",
+			},
+			{
+				id: "Manuscript",
+				required: 
+				{
+					article: "1",
+				},
+				actionId: "talk",
+			},
+		],
+	},
+	{
+		id: "aladimaway",
+		description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Сейчас он отрезан от внешнего мира, но скоро вернётся.",
+		icon: "aladim",
+		decayTo: "aladimready",
+		label: "Доктор Ибн аль-Адим",
+		lifetime: "120",
+	},
+	{
+		id: "bechetaway",
+		description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Сейчас она занята подготовкой к выпуску, но скоро вернётся.",
+		icon: "bechet",
+		decayTo: "bechetready",
+		label: "Мадам Бекет",
+		lifetime: "120",
+	},
+	{
+		id: "janningsaway",
+		description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Сейчас его нет в стране, но скоро он вернётся.",
+		icon: "jannings",
+		decayTo: "janningsready",
+		label: "Граф Джаннингс",
+		lifetime: "120",
+	},
+	{
+		id: "poppyaway",
+		description: "Любезная владелица. Сейчас посетителей не принимает.",
+		icon: "poppy",
+		decayTo: "poppycommissionready",
+		label: "Поппи Ласселс",
+		lifetime: "120",
+	},
+	{
+		uniquenessgroup: "uqbenefactorm",
+		comment: "NEW",
+		aspects: 
+		{
+			benefactor: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			avowal: "benefactorm_proposedtoplayer",
+			employment: "benefactorm",
+			killmortal: "corpse",
+			rejection: "benefactorm_rejectedplayer",
+		},
+		decayTo: "benefactorm_rejectedplayer",
+		label: "Lord Timothy Munday",
+		id: "benefactorm",
+		lifetime: "180",
+		description: "An elegant gentleman with sad eyes, receding hair, and a tendency to fits of friendly, braying, nervous laughter. He will no longer touch strong drink.",
+		slots: 
+		[
+			{
+				id: "health",
+				required: 
+				{
+					health: "1",
+				},
+				label: "Health",
+				actionId: "work",
+			},
+			{
+				id: "funds",
+				required: 
+				{
+					funds: "1",
+				},
+				label: "Glamour",
+				actionId: "work",
+			},
+		],
+	},
+	{
+		uniquenessgroup: "uqbenefactorf",
+		comment: "NEW",
+		aspects: 
+		{
+			benefactor: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			avowal: "benefactorf_proposedtoplayer",
+			employment: "benefactorf",
+			killmortal: "corpse",
+			rejection: "benefactorf_rejectedplayer",
+		},
+		decayTo: "benefactorf_rejectedplayer",
+		label: "Nicole, Fourth Marchioness of Stanford",
+		id: "benefactorf",
+		lifetime: "180",
+		description: "A cautious, clever woman with close-set eyes and excellent skin for her age. She has long managed her own financial affairs, and donates dutifully to charity.",
+		slots: 
+		[
+			{
+				id: "health",
+				required: 
+				{
+					health: "1",
+				},
+				label: "Health",
+				actionId: "work",
+			},
+			{
+				id: "funds",
+				required: 
+				{
+					funds: "1",
+				},
+				label: "Glamour",
+				actionId: "work",
+			},
+		],
+	},
+	{
+		id: "benefactorm_rejectedplayer",
+		comment: "NEW",
+		aspects: 
+		{
+			mortal: "1",
+		},
+		description: "Lord Timothy no longer sends me his little notes.",
+		icon: "benefactorm",
+		uniquenessgroup: "uqbenefactorm",
+		label: "Lord Timothy Munday",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+		},
+	},
+	{
+		id: "benefactorf_rejectedplayer",
+		comment: "NEW",
+		aspects: 
+		{
+			mortal: "1",
+		},
+		description: "The Most Honourable Marchioness of Stanford has been heard to declare that she doesn't quite understand exactly what she saw in me.",
+		icon: "benefactorf",
+		uniquenessgroup: "uqbenefactorf",
+		label: "Nicole, Fourth Marchioness of Stanford",
+		xtriggers: 
+		{
+			killmortal: "corpse",
+		},
+	},
+	{
+		uniquenessgroup: "uqbenefactorm",
+		comment: "NEW",
+		icon: "benefactorm",
+		aspects: 
+		{
+			benefactor_proposal: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			killmortal: "benefactorwill",
+		},
+		decayTo: "benefactorm_rejectedplayer",
+		label: "Lord Timothy Munday",
+		id: "benefactorm_proposedtoplayer",
+		lifetime: "180",
+		description: "In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes, or he'll feel spurned.]",
+	},
+	{
+		uniquenessgroup: "uqbenefactorf",
+		comment: "NEW",
+		icon: "benefactorf",
+		aspects: 
+		{
+			benefactor_proposal: "1",
+			mortal: "1",
+		},
+		xtriggers: 
+		{
+			killmortal: "benefactorwill",
+		},
+		decayTo: "benefactorf_rejectedplayer",
+		label: "Nicole, Fourth Marchioness of Stanford",
+		id: "benefactorf_proposedtoplayer",
+		lifetime: "180",
+		description: "In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes, or she'll feel spurned.]",
+	},
+	{
+		id: "benefactorwill",
+		icon: "documentgeneric",
+		aspects: 
+		{
+			text: "1",
+		},
+		description: "Someone who loved me has died. Perhaps they left me something in their will. I should speak to a solicitor. [Take action if you wish to pursue the matter... but there is a small chance that suspicion may fall on you.]",
+		slots: 
+		[
+			{
+				id: "lawyerfees",
+				required: 
+				{
+					funds: "1",
+				},
+				consumes: "true",
+				label: "Lawyer's Fees",
+				actionId: "study",
+			},
+		],
+		comment: "NEW",
+		label: "Dearly Departed's Papers",
+	},
+	{
+		id: "sulochana",
+		unique: "true",
+		aspects: 
+		{
+			tutor: "1",
+			tutorsanskrit: "1",
+			patron: "1",
+		},
+		description: "The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
+		comment: "NEW",
+		label: "Sulochana Amavasya",
+	},
 ]
-};
+}

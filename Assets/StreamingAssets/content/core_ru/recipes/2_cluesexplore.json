@@ -1,34 +1,56 @@
-﻿ {"recipes":
- [
-
-     					{
-	id: "explorevault_hint_addfunds",
-	label: "Подготовка к экспедиции?",
-	actionId: "explore",
-	requirements: {vault:1,follower:1},
-	startdescription: "Если я смогу выделить Средства, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	hintonly:true,
-	craftable: false,
+﻿{
+recipes: [
+	{
+		id: "explorevault_hint_sending",
+		craftable: "false",
+		startdescription: "If this expedition succeeds, the I-that-is-not-I will be there to perform the Forms. [If you succeed, you'll reap the usual rewards, and also progress your Change ascension.]",
+		requirements: 
+		{
+			sending: "1",
+			vault: "1",
+		},
+		comment: "NEW",
+		label: "A Second Self?",
+		hintonly: "true",
+		actionId: "explore",
 	},
-			{
-	id: "explorevault_hint_addfollower",
-	label: "Подготовка к экспедиции?",
-	actionId: "explore",
-	requirements: {vault:1,funds:1},
-	startdescription: "Если я добавлю кого-то из Приспешников, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	hintonly:true,
-	craftable: false,
+	{
+		id: "explorevault_hint_addfunds",
+		craftable: "false",
+		startdescription: "Если я смогу выделить Средства, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		requirements: 
+		{
+			follower: "1",
+			vault: "1",
+		},
+		label: "Подготовка к экспедиции?",
+		hintonly: "true",
+		actionId: "explore",
 	},
-      					{
-	id: "explorevault_hint",
-	label: "Подготовка к экспедиции?",
-	actionId: "explore",
-	requirements: {vault:1},
-	startdescription: "Я могу отправить сюда Экспедицию в поисках книг, сокровищ, инструментов или силы. Но мне понадобятся Приспешники, идущие в дорогу, и Средства для снабжения.",
-	hintonly:true,
-	craftable: false,
+	{
+		id: "explorevault_hint_addfollower",
+		craftable: "false",
+		startdescription: "Если я добавлю кого-то из Приспешников, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		requirements: 
+		{
+			vault: "1",
+			funds: "1",
+		},
+		label: "Подготовка к экспедиции?",
+		hintonly: "true",
+		actionId: "explore",
 	},
-	
-	
+	{
+		id: "explorevault_hint",
+		craftable: "false",
+		startdescription: "Я могу отправить сюда Экспедицию в поисках книг, сокровищ, инструментов или силы. Но мне понадобятся Приспешники, идущие в дорогу, и Средства для снабжения.",
+		requirements: 
+		{
+			vault: "1",
+		},
+		label: "Подготовка к экспедиции?",
+		hintonly: "true",
+		actionId: "explore",
+	},
 ]
 }

@@ -1,72 +1,162 @@
-﻿{"elements":
-    [
-		{id: "dayacquaintances",
-	label: "День новых знакомств",
-	description: "Я могу найти родственную душу.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	
-			{id: "daypatrons",
-	label: "День новых покровителей",
-	description: "Я могу найти кого-то, кто предложит помощь.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-				{id: "daycriminals",
-	label: "День неприятных связей",
-	description: "Я могу найти кого-то, кто не прочь замарать руки.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-				{id: "dayplaces",
-	label: "День картографов",
-	description: "Я могу найти небезынтересное место.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	
-	{id: "seasonsickness",
-	label: "Времена болезни",
-	description: "Мне нехорошо.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	{id: "seasonserenities",
-	label: "Времена покоя",
-	description: "Завтра может быть лучше.",
-	aspects: {season:1},
-	lifetime:1
+﻿{
+elements: [
+	{
+		id: "dayacquaintances",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Я могу найти родственную душу.",
+		label: "День новых знакомств",
+		lifetime: "1",
 	},
-		{id: "seasonsuspicion",
-	label: "Времена подозрения",
-	description: "За мной наблюдают?",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "daypatrons",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Я могу найти кого-то, кто предложит помощь.",
+		label: "День новых покровителей",
+		lifetime: "1",
 	},
-			{id: "seasondespair",
-	label: "Времена отчаяния",
-	description: "Меня ждёт ночь.",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "daycriminals",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Я могу найти кого-то, кто не прочь замарать руки.",
+		label: "День неприятных связей",
+		lifetime: "1",
 	},
-{id: "seasonvisions",
-	label: "Времена видений",
-	description: "Так красиво.",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "dayplaces",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Я могу найти небезынтересное место.",
+		label: "День картографов",
+		lifetime: "1",
 	},
-	{id: "seasonambitions",
-	label: "Времена амбиций",
-	description: "В это время ветры Леса меняют направление: поднимаются как страсти, так и смертные.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-		{id: "seasonsilence",
-	label: "Времена молчания",
-	description: "Эти дни проходят в ожидании.",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	]
-};
+	{
+		id: "seasonsickness",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Мне нехорошо.",
+		label: "Времена болезни",
+		lifetime: "1",
+	},
+	{
+		id: "seasonserenities",
+		comments: "currently unused",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Завтра может быть лучше.",
+		label: "Времена покоя",
+		lifetime: "1",
+	},
+	{
+		id: "seasonsuspicion",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "За мной наблюдают?",
+		label: "Времена подозрения",
+		lifetime: "1",
+	},
+	{
+		id: "seasondespair",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Меня ждёт ночь.",
+		label: "Времена отчаяния",
+		lifetime: "1",
+	},
+	{
+		id: "seasonvisions",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Так красиво.",
+		label: "Времена видений",
+		lifetime: "1",
+	},
+	{
+		id: "seasonambitions",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "В это время ветры Леса меняют направление: поднимаются как страсти, так и смертные.",
+		label: "Времена амбиций",
+		lifetime: "1",
+	},
+	{
+		id: "seasonsilence",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Эти дни проходят в ожидании.",
+		label: "Времена молчания",
+		lifetime: "1",
+	},
+	{
+		id: "seasonardours",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "We are all of us both ape and angel.",
+		comment: "NEW",
+		label: "A Season of Ardours",
+		lifetime: "1",
+	},
+	{
+		id: "schememurder",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move against an enemy.",
+		icon: "bloodshed",
+		comment: "NEW",
+		label: "A Murderous Scheme",
+		lifetime: "1",
+	},
+	{
+		id: "schemeexpedition",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move boldly.",
+		icon: "vaultrendingmountainsdefault",
+		comment: "NEW",
+		label: "A Bold Scheme",
+		lifetime: "1",
+	},
+	{
+		id: "schemeactivities",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move cautiously.",
+		icon: "contentment",
+		comment: "NEW",
+		label: "A Cautious Scheme",
+		lifetime: "1",
+	},
+]
+}

@@ -1,307 +1,946 @@
-﻿{"elements":
-    [
-       
-		     {
-        id: "hunger",
-            label: "Голод",
-            aspects:
-            {illhealth: 1,
-			  grail: 2,
-			  ingredient:1},
-			  slots: [{id:"Nourishment",label:"Питание",actionId:"dream",description: "Чтобы оправиться, мне нужно есть.",required:{funds:1}}],
-            description: "Если я хочу восстановиться, мне нужны отдых и питание. Но когда мой рот наполнен слюной, когда моё зрение расплывается, я вижу красную чашу; иногда она говорит со мной. [Сон с Голодом, пока эта карта не исчезла, позволит восстановить Здоровье.]",
-			xtriggers: {restorehealth: health},
-			lifetime:60,
-			decayTo:"decrepitude"
-			},
-        {
-            id: "health",
-            label: "Здоровье",
-            aspects:
-            {
-                heart: 2,
-				ingredient: 1,
-				ability:1
-            },
-            animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue},
-			description: "Это моё тело. Есть и другие тела, но это тело — моё, и оно нужно моему разуму, как грибнице нужна почва. [Если Бодрости достаточно, можно набрать больше Здоровья.]"
-        },
-				 {
-            id: "vitality",
-            label: "Бодрость",
-				  slots: [{id:"More Vitality",label:"Больше Бодрости",actionId:"study",description: "Накопив Бодрость, я могу увеличить Здоровье.",required:{vitality:1}}],
-          aspects:
-            {advancement:1},
-            description: "Упражнение, или что-то более редкое, взбодрило меня. [Изучив Бодрость, можно получить Здоровье. Длится всего три минуты, если не используется.]",
-		lifetime: 180
-        },
-		
-						 {
-            id: "restlessness",
-            label: "Беспокойство",
-            aspects:
-            {influence:1, forge:3,grail:3,lantern:3},
-            description: "Мною овладело смутное желание. Кажется, я хочу сделать... <i>что-то</i>. Что именно?",
-		lifetime: 60,
-		decayTo:"dread"
-        },
+﻿{
+elements: [
+	{
+		aspects: 
+		{
+			ingredient: "1",
+			illhealth: "1",
+			grail: "2",
+		},
+		xtriggers: 
+		{
+			scar_ability: "scar_heart",
+			restorehealth: "health",
+		},
+		decayTo: "decrepitude",
+		label: "Голод",
+		id: "hunger",
+		lifetime: "60",
+		description: "Если я хочу восстановиться, мне нужны отдых и питание. Но когда мой рот наполнен слюной, когда моё зрение расплывается, я вижу красную чашу; иногда она говорит со мной. [Сон с Голодом, пока эта карта не исчезла, позволит восстановить Здоровье.]",
+		slots: 
+		[
+			{
+				id: "nourishment",
+				required: 
 				{
-        id: "bloodshed",
-            label: "Кровопролитие",
-			description:"Пятна крови.",
-			lifetime:1
+					funds: "1",
+				},
+				description: "Чтобы оправиться, мне нужно есть.",
+				label: "Питание",
+				actionId: "dream",
 			},
-			
+		],
+	},
+	{
+		id: "health",
+		aspects: 
+		{
+			ability: "1",
+			ingredient: "1",
+			heart: "2",
+		},
+		description: "Это моё тело. Есть и другие тела, но это тело — моё, и оно нужно моему разуму, как грибнице нужна почва. [Если Бодрости достаточно, можно набрать больше Здоровья.]",
+		animFrames: "1",
+		label: "Здоровье",
+		xtriggers: 
+		{
+			damagehealth: "injury",
+			society: "fatigue",
+			destroyhealth: "decrepitude",
+			fallsick: "affliction",
+			employment: "fatigue",
+			ritual: "fatigue",
+			job: "fatigue",
+			scar_ability: "scar_heart",
+			fatiguing: "fatigue",
+		},
+	},
+	{
+		id: "vitality",
+		aspects: 
+		{
+			advancement: "1",
+			influence: "1",
+			heart: "1",
+		},
+		lifetime: "180",
+		description: "Упражнение, или что-то более редкое, взбодрило меня. [Изучив Бодрость, можно получить Здоровье. Длится всего три минуты, если не используется.]",
+		slots: 
+		[
 			{
-        id: "injury",
-            label: "Ранение",
-            aspects:
-            {illhealth: 1,
-			  knock: 2,
-			  ingredient:1},
-			  			slots: [{id:"Medicines, or...",label:"Лекарства или...",actionId:"dream",description: "Я могу заплатить за визит врача...",required:{funds:1},actionId:"dream"},
-			{id:"...Vitality",label:"...Бодрость",description: "...но, возможно, мне просто стоит отдохнуть.",required:{vitality:1},actionId:"dream"}],
-            description: "Если я хочу восстановиться, мне нужны отдых и питание. Но Мать Муравьёв благосклонна к ранам. [Сон с Ранением, пока эта карта не исчезла, позволит восстановить Здоровье.]",
-			xtriggers: {restorehealth: health},
-			lifetime: 150,
-			decayTo: "decrepitude"
+				id: "morevitality",
+				required: 
+				{
+					vitality: "1",
+					influenceheart: "1",
+				},
+				description: "Накопив Бодрость, я могу увеличить Здоровье.",
+				label: "Больше Бодрости",
+				actionId: "study",
 			},
-									{
-        id: "disillusionment",
-            label: "Страсть (разочарована)",
-            description: "Мои принципы или предпочтения были нарушены мной же. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
-			lifetime: 60,
-			decayTo:"passion",
-			icon:"passion"
-			},
-												{
-        id: "passionexhausted",
-            label: "Страсть (истощена)",
-            description: "Огонь страсти утих. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
-			lifetime: 60,
-			decayTo:"passion",
-			icon:"passion"
-			},
-						{
-        id: "fatigue",
-            label: "Здоровье (ослаблено)",
-            aspects:
-            {illhealth: 1},
-            description: "Эту карту нельзя использовать, но она восстановится через шестьдесят секунд. Я могу восстановиться быстрее — во Сне.",
-			xtriggers: {restorehealth: health},
-			lifetime: 60,
-			decayTo:"health",
-			icon:"health"
+		],
+		label: "Бодрость",
+		xtriggers: 
+		{
+			upgradeinfluence: "influenceheartc",
+		},
+	},
+	{
+		id: "vitalityplus",
+		aspects: 
+		{
+			advancement: "1",
+			influence: "1",
+			heart: "2",
+		},
+		lifetime: "300",
+		description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes.]",
+		comment: "NEW",
+		label: "Vitality: a Lesson Learnt ",
+		xtriggers: 
+		{
+			upgradeinfluence: "influenceheartc",
+		},
+	},
+	{
+		id: "restlessness",
+		aspects: 
+		{
+			grail: "2",
+			moth: "2",
+			forge: "2",
+			influence: "1",
+			lantern: "2",
+			heart: "2",
+		},
+		description: "Мною овладело смутное желание. Кажется, я хочу сделать... <i>что-то</i>. Что именно?",
+		decayTo: "dread",
+		label: "Беспокойство",
+		lifetime: "60",
+	},
+	{
+		id: "bloodshed",
+		description: "Пятна крови.",
+		label: "Кровопролитие",
+		lifetime: "1",
+	},
+	{
+		aspects: 
+		{
+			knock: "2",
+			ingredient: "1",
+			illhealth: "1",
+		},
+		xtriggers: 
+		{
+			scar_ability: "scar_heart",
+			restorehealth: "health",
+		},
+		decayTo: "decrepitude",
+		label: "Ранение",
+		id: "injury",
+		lifetime: "150",
+		description: "Если я хочу восстановиться, мне нужны отдых и питание. Но Мать Муравьёв благосклонна к ранам. [Сон с Ранением, пока эта карта не исчезла, позволит восстановить Здоровье.]",
+		slots: 
+		[
+			{
+				id: "medicines",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Я могу заплатить за визит врача...",
+				label: "Лекарства или...",
+				actionId: "dream",
 			},
 			{
-			id: "affliction",
-            label: "Болезнь",
-            aspects:{illhealth: 1, winter:2,ingredient:1},
-			xtriggers: {restorehealth: health},
-						slots: [{id: "Medicine",label:"Лекарства или...",actionId:"dream",description: "Я могу заплатить за визит врача...",required:{funds:1}},
-			{id:"Vitality",label:"...Бодрость",actionId:"dream",description: "...но, возможно, мне просто стоит отдохнуть.",required:{vitality:1}}],
-            description: "Болезнь ослабила меня. Если я хочу восстановиться, мне нужны отдых и питание. [Сон с Болезнью, пока эта карта не исчезла, позволит восстановить Здоровье.]",
-			lifetime: 180,
-			decayTo: "decrepitude"
+				id: "vitality",
+				required: 
+				{
+					vitality: "1",
+				},
+				description: "...но, возможно, мне просто стоит отдохнуть.",
+				label: "...Бодрость",
+				actionId: "dream",
 			},
-        {
-            id: "reason",
-            label: "Разум",
-            aspects:
-            {
-                lantern: 2,
-				ingredient:1,
-				ability:1
-            },
-            animFrames: 1,
-			description: "«Ни один живой организм не может долго существовать в условиях абсолютной реальности и не сойти с ума» — Ширли Джексон.
+		],
+	},
+	{
+		resaturate: "true",
+		icon: "passion",
+		xtriggers: 
+		{
+			toreason: "concentration",
+			scarability: "scar_moth",
+		},
+		decayTo: "passion",
+		label: "Страсть (разочарована)",
+		id: "disillusionment",
+		lifetime: "60",
+		description: "Мои принципы или предпочтения были нарушены мной же. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
+	},
+	{
+		resaturate: "true",
+		icon: "passion",
+		xtriggers: 
+		{
+			toreason: "concentration",
+			scarability: "scar_moth",
+		},
+		decayTo: "passion",
+		label: "Страсть (истощена)",
+		id: "passionexhausted",
+		lifetime: "60",
+		description: "Огонь страсти утих. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
+	},
+	{
+		resaturate: "true",
+		icon: "health",
+		aspects: 
+		{
+			illhealth: "1",
+			heart: "1",
+		},
+		xtriggers: 
+		{
+			damagehealth: "injury",
+			restorehealth: "health",
+			fallsick: "affliction",
+			scarability: "scar_heart",
+		},
+		decayTo: "health",
+		label: "Здоровье (ослаблено)",
+		id: "fatigue",
+		lifetime: "60",
+		description: "Эту карту нельзя использовать, но она восстановится через шестьдесят секунд. Я могу восстановиться быстрее — во Сне.",
+	},
+	{
+		aspects: 
+		{
+			ingredient: "1",
+			winter: "2",
+			illhealth: "1",
+		},
+		xtriggers: 
+		{
+			restorehealth: "health",
+			scarability: "scar_heart",
+		},
+		decayTo: "decrepitude",
+		label: "Болезнь",
+		id: "affliction",
+		lifetime: "180",
+		description: "Болезнь ослабила меня. Если я хочу восстановиться, мне нужны отдых и питание. [Сон с Болезнью, пока эта карта не исчезла, позволит восстановить Здоровье.]",
+		slots: 
+		[
+			{
+				id: "medicine",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "Я могу заплатить за визит врача...",
+				label: "Лекарства или...",
+				actionId: "dream",
+			},
+			{
+				id: "vitality",
+				required: 
+				{
+					vitality: "1",
+				},
+				description: "...но, возможно, мне просто стоит отдохнуть.",
+				label: "...Бодрость",
+				actionId: "dream",
+			},
+		],
+	},
+	{
+		id: "reason",
+		aspects: 
+		{
+			ability: "1",
+			lantern: "2",
+			ingredient: "1",
+		},
+		description: "«Ни один живой организм не может долго существовать в условиях абсолютной реальности и не сойти с ума» — Ширли Джексон.
 
 [Если Размышлений достаточно, можно набрать больше Разума.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion}
-				
-        },
-		        {
-            id: "concentration",
-            label: "Разум (утомлён)",
-			description: "Мой мозг устал. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
-			lifetime:60,
-			decayTo:"reason",		
-icon:"reason"
-        },
-				 {
-            id: "erudition",
-            label: "Размышление",
-			slots: [{id:"More Erudition",label:"Больше Размышлений",actionId:"study",description: "Накопив Размышления, я смогу увеличить Разум.",required:{erudition:1}}],
-            aspects: {advancement:1},
-            description: "Сегодня осмыслено многое. Возможно, я приближаюсь к развитию. [Изучив Размышление, можно получить Разум. Длится всего три минуты, если не используется.]",
-lifetime: 180
-        },
-			{id: "dread",
-            label: "Страх",
-            aspects:
-            {edge: 2,
-			inducesdespair: 1,
-			influence:1,
-			illhealth:1},
-			slots:	[{id:"Reminders",label:"Напоминание",actionId:"dream",required: {contentment:1},description:"Мне нужно немного покоя, или момент счастья. [Накапливающийся Страх может убить вас. Довольство излечивает от него.]"}],
-            description: "Мои глаза видели слишком многое. Безымянный страх вгрызается в мои надежды; экзистенциальный ужас.",
-			lifetime: 180
+		animFrames: "1",
+		label: "Разум",
+		xtriggers: 
+		{
+			topassion: "passion",
+			employment: "concentration",
+			job: "concentration",
+			fatiguing: "concentration",
+			society: "concentration",
+			ritual: "concentration",
+			damagereason: "dread",
+			scarability: "scar_lantern",
+		},
+	},
+	{
+		resaturate: "true",
+		icon: "reason",
+		xtriggers: 
+		{
+			topassion: "passionexhausted",
+			scarability: "scar_lantern",
+		},
+		decayTo: "reason",
+		label: "Разум (утомлён)",
+		id: "concentration",
+		lifetime: "60",
+		description: "Мой мозг устал. [Эту карту нельзя использовать, но она восстановится через шестьдесят секунд.]",
+	},
+	{
+		id: "erudition",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencelanternc",
+		},
+		aspects: 
+		{
+			influence: "1",
+			advancement: "1",
+			lantern: "1",
+		},
+		description: "Сегодня осмыслено многое. Возможно, я приближаюсь к развитию. [Изучив Размышление, можно получить Разум. Длится всего три минуты, если не используется.]",
+		slots: 
+		[
+			{
+				id: "moreerudition",
+				required: 
+				{
+					influencelantern: "1",
+					erudition: "1",
+				},
+				description: "Накопив Размышления, я смогу увеличить Разум.",
+				label: "Больше Размышлений",
+				actionId: "study",
 			},
-		        {
-            id: "passion",
-            label: "Страсть",
-            aspects:
-            {
-                moth: 2,
-				ingredient:1,
-				ability:1
-            },
-            animFrames: 1,
-			description: "«Дурному уму равно недоступно познание и математическое и непосредственное» - Блез Паскаль.
+		],
+		label: "Размышление",
+		lifetime: "180",
+	},
+	{
+		id: "eruditionplus",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencelanternc",
+		},
+		aspects: 
+		{
+			influence: "1",
+			advancement: "1",
+			lantern: "2",
+		},
+		description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Reason. It lasts up to five minutes.]",
+		comment: "NEW",
+		label: "Erudition: a Lesson Learnt",
+		lifetime: "300",
+	},
+	{
+		id: "dread",
+		xtriggers: 
+		{
+			upgradeinfluence: "influenceedgec",
+		},
+		aspects: 
+		{
+			edge: "2",
+			influence: "1",
+			illhealth: "1",
+			inducesdespair: "1",
+		},
+		description: "Мои глаза видели слишком многое. Безымянный страх вгрызается в мои надежды; экзистенциальный ужас.",
+		slots: 
+		[
+			{
+				id: "reminders",
+				required: 
+				{
+					contentment: "1",
+				},
+				description: "Мне нужно немного покоя, или момент счастья. [Накапливающийся Страх может убить вас. Довольство излечивает от него.]",
+				label: "Напоминание",
+				actionId: "dream",
+			},
+			{
+				id: "with",
+				required: 
+				{
+					influencewinter: "1",
+					influenceedge: "1",
+				},
+				description: "Perhaps I can use my Dread to strengthen a dangerous influence.",
+				comment: "NEW",
+				label: "With",
+				actionId: "study",
+			},
+			{
+				id: "knowledge",
+				required: 
+				{
+					fragmentedgec: "1",
+					fragmentedged: "1",
+					fragmentedgee: "1",
+					fragmentedgef: "1",
+					fragmentedgeg: "1",
+				},
+				description: "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+				comment: "NEW",
+				label: "Knowledge",
+				actionId: "study",
+			},
+		],
+		label: "Страх",
+		lifetime: "180",
+	},
+	{
+		id: "passion",
+		aspects: 
+		{
+			ability: "1",
+			moth: "2",
+			ingredient: "1",
+		},
+		description: "«Дурному уму равно недоступно познание и математическое и непосредственное» - Блез Паскаль.
 			
 [Если Мечтаний достаточно, можно набрать больше Страсти.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason}
-        },
-		
-		
-		        {
-            id: "decrepitude",
-            label: "Изъян",
-			description: "Некоторые раны оставляют следы на всю жизнь. [Раны и Голод, если о них не позаботились, становятся Изъянами, которые не превращаются в Здоровье. Изъяны остаются вплоть до вашей смерти.]",
-			aspects: {ability:1},
-			xtriggers: {tohealth:health}
-            },
-		
-					 {
-            id: "glimmering",
-            label: "Мечтание",
-			slots: [{id:"More Glimmering",label:"Больше Мечтаний",actionId:"study",description: "Накопив Мечтания, я смогу увеличить Страсть.",required:{glimmering:1}}],
-            aspects:
-            {advancement:1},
-            description: "Мои эмоции ярче обычного. Есть вещи, которых я никогда не пойму, и они всегда будут драгоценны, но прямо сейчас я чуть ближе к ним. [Изучив Мечтания, я смогу получить Страсть. Длится всего три минуты, если не используется.]",
-			lifetime: 180
-        },
-		{id: "fascination",
-            label: "Очарование",
-            aspects:
-            {moth:2,illhealth:1,influence:1},
-			              		slots:[{id:"Reminders",label:"Напоминание",required: {dread:1},actionId:"dream",description:"Серая реальность укрепит мою душу."}],
-            description: "Свет СОЧИТСЯ через ТРЕЩИНЫ. Мой ум ОЗАРЁН как НИКОГДА. ЧЕМ ВЫШЕ Я ПОДНИМАЮСЬ, ТЕМ ЯСНЕЕ Я ВИЖУ.",
-			lifetime: 180
-			},
+		animFrames: "1",
+		label: "Страсть",
+		xtriggers: 
 		{
-		id: "scholarlatin",
-		label: "Знание: латынь",
-		aspects: {language:1},
-		slots: [{id:"Text",
-		label: "Непереведённый текст",
-				required: {textlatin:1},
-				actionId:"study",
-			}],
-		description: "Мёртвый язык. Мёртвый как алмазы. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
+			employment: "passionexhausted",
+			job: "passionexhausted",
+			fatiguing: "passionexhausted",
+			plead: "disillusionment",
+			toreason: "reason",
+			ritual: "passionexhausted",
+			damagepassion: "fascination",
+			society: "passionexhausted",
 		},
-					{
-		id: "scholarfucine",
-		label: "Знание: фуцинский язык",
-		aspects: {language:1},
-				slots: [{id:"Text",
-				label: "Непереведённый текст",
-				required: {textfucine:1},
-				actionId:"study",
-			}],
-		description: "К востоку от потерянного озера Фучино жил народ. Гораций предупреждал, что там лежит земля ведьм. Это их язык; одни называют его «сухим языком», другие — «языком ведьм». [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
+	},
+	{
+		id: "decrepitude",
+		aspects: 
+		{
+			ability: "1",
+			winter: "1",
 		},
+		description: "Некоторые раны оставляют следы на всю жизнь. [Раны и Голод, если о них не позаботились, становятся Изъянами, которые не превращаются в Здоровье. Изъяны остаются вплоть до вашей смерти.]",
+		label: "Изъян",
+		xtriggers: 
+		{
+			tohealth: "health",
+		},
+	},
+	{
+		id: "glimmering",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencemothc",
+		},
+		aspects: 
+		{
+			moth: "1",
+			advancement: "1",
+			influence: "1",
+		},
+		description: "Мои эмоции ярче обычного. Есть вещи, которых я никогда не пойму, и они всегда будут драгоценны, но прямо сейчас я чуть ближе к ним. [Изучив Мечтания, я смогу получить Страсть. Длится всего три минуты, если не используется.]",
+		slots: 
+		[
+			{
+				id: "moreglimmering",
+				required: 
 				{
+					influencemoth: "1",
+					glimmering: "1",
+				},
+				description: "Накопив Мечтания, я смогу увеличить Страсть.",
+				label: "Больше Мечтаний",
+				actionId: "study",
+			},
+		],
+		label: "Мечтание",
+		lifetime: "180",
+	},
+	{
+		id: "glimmeringplus",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencemothc",
+		},
+		aspects: 
+		{
+			moth: "2",
+			advancement: "1",
+			influence: "1",
+		},
+		description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes.]",
+		comment: "NEW",
+		label: "Glimmering: a Lesson Learnt",
+		lifetime: "300",
+	},
+	{
+		id: "fascination",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencemothc",
+		},
+		aspects: 
+		{
+			moth: "2",
+			influence: "1",
+			illhealth: "1",
+		},
+		description: "Свет СОЧИТСЯ через ТРЕЩИНЫ. Мой ум ОЗАРЁН как НИКОГДА. ЧЕМ ВЫШЕ Я ПОДНИМАЮСЬ, ТЕМ ЯСНЕЕ Я ВИЖУ.",
+		slots: 
+		[
+			{
+				id: "reminders",
+				required: 
+				{
+					dread: "1",
+					fleeting: "1",
+				},
+				description: "Серая реальность укрепит мою душу.",
+				label: "Напоминание",
+				actionId: "dream",
+			},
+			{
+				id: "with",
+				required: 
+				{
+					influencelantern: "1",
+					influencemoth: "1",
+				},
+				description: "Perhaps I can use my Fascination to strengthen a tempting influence.",
+				comment: "NEW",
+				label: "With",
+				actionId: "study",
+			},
+			{
+				id: "knowledge",
+				required: 
+				{
+					fragmentmothc: "1",
+					fragmentmothd: "1",
+					fragmentmothe: "1",
+					fragmentmothf: "1",
+					fragmentmothg: "1",
+				},
+				description: "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+				comment: "NEW",
+				label: "Knowledge",
+				actionId: "study",
+			},
+		],
+		label: "Очарование",
+		lifetime: "180",
+	},
+	{
+		id: "scholarlatin",
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
+		description: "Мёртвый язык. Мёртвый как алмазы. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textlatin: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: латынь",
+	},
+	{
+		id: "scholarfucine",
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
+		description: "К востоку от потерянного озера Фучино жил народ. Гораций предупреждал, что там лежит земля ведьм. Это их язык; одни называют его «сухим языком», другие — «языком ведьм». [Некоторые книги сначала надо перевести, чтобы прочесть.]",
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textfucine: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: фуцинский язык",
+	},
+	{
 		id: "scholargreek",
-		label: "Знание: греческий язык",
-		aspects: {language:1},
-						slots: [{id:"Text",
-						label: "Непереведённый текст",
-				required: {textgreek:1},
-				actionId:"study",
-			}],
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
 		description: "Несомненно, вы сведущи в каждом диалекте греческого языка, от истоков до Византии. Но хорошо, что у вас есть эти труды для справок. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true		
-		},
-					{
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textgreek: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: греческий язык",
+	},
+	{
 		id: "scholarphrygian",
-		label: "Знание: фригийский язык",
-		slots: [{id:"Text",
-		label: "Непереведённый текст",
-				required: {textphrygian:1},
-				actionId:"study",
-			}],
-		aspects: {language:1},
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
 		description: "Фригийцы служили Великой Матери, которую мы зовём Чашей. В их землях зародился орден Сестёр Узла, и на их языке звучали мольбы Громокожи при его восхождении. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
-		},
-						{
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textphrygian: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: фригийский язык",
+	},
+	{
 		id: "scholararamaic",
-		label: "Знание: арамейский язык",
-						slots: [{id:"Text",
-						label: "Непереведённый текст",
-				required: {textaramaic:1},
-				actionId:"study",
-			}],
-		aspects: {language:1},
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
 		description: "Язык земли Арама и всего изобилия детей её, рождённых за три с лишним тысячи лет. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
-		},
-							{
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textaramaic: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: арамейский язык",
+	},
+	{
 		id: "scholarmandaic",
-		label: "Знание: глубокий мандейский язык",
-						slots: [{id:"Text",
-						label: "Непереведённый текст",
-				required: {textmandaic:1},
-				actionId:"study",
-			}],
-		aspects: {language:1},
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
 		description: "Самый секретный язык для святейших ритуалов тайных сект в глубине пустыни. Как сказано, родной язык самой Матери Муравьёв. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
-		},
-									{
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textmandaic: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: глубокий мандейский язык",
+	},
+	{
 		id: "scholarsanskrit",
-		label: "Знание: санскрит",
-						slots: [{id:"Text",
-						label: "Непереведённый текст",
-				required: {textsanskrit:1},
-				actionId:"study",
-			}],
-		aspects: {language:1},
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
+		},
 		description: "Святой язык Субконтинента. Мне открыт проход к четырём тысячам лет поэзии, церемоний и мистики — осталось лишь одолеть его словарь, завитый как лепестки лотоса. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
-		},
-									{
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textsanskrit: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: санскрит",
+	},
+	{
 		id: "scholarvak",
-		label: "Знание: вака",
-						slots: [{id:"Text",
-						label: "Непереведённый текст",
-				required: {textvak:1},
-				actionId:"study",
-			}],
-		aspects: {language:1},
-		description: "Ваку знали в Доме Солнца задолго до того, как боги поднялись из крови и обезьяна выпрямила спину. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		unique:true
+		unique: "true",
+		aspects: 
+		{
+			language: "1",
 		},
-		
-	
-			
-		
-			 {
-            id: "fleeting",
-            label: "Мимолётная память",
-            description: "Мгновение жизни. Ещё немного, и оно исчезнет.",
-			aspects: {secrethistories: 2,moth:2,influence:1},
-			lifetime:30
-        },
-		{id: "contentment",
-		label: "Довольство",
-		aspects: {lantern:2,heart:2,influence:1},
+		description: "Ваку знали в Доме Солнца задолго до того, как боги поднялись из крови и обезьяна выпрямила спину. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
+		slots: 
+		[
+			{
+				id: "Text",
+				required: 
+				{
+					textvak: "1",
+				},
+				label: "Непереведённый текст",
+				actionId: "study",
+			},
+		],
+		label: "Знание: вака",
+	},
+	{
+		id: "fleeting",
+		xtriggers: 
+		{
+			upgradeinfluence: "influencemothc",
+		},
+		aspects: 
+		{
+			secrethistories: "2",
+			moth: "2",
+			influence: "1",
+		},
+		description: "Мгновение жизни. Ещё немного, и оно исчезнет.",
+		slots: 
+		[
+			{
+				id: "with",
+				required: 
+				{
+					influencelantern: "1",
+					influencemoth: "1",
+				},
+				description: "Perhaps I can find something in my memories to strengthen a transient influence.",
+				label: "With",
+				actionId: "study",
+			},
+			{
+				id: "knowledge",
+				required: 
+				{
+					fragmentmothc: "1",
+					fragmentmothd: "1",
+					fragmentmothe: "1",
+					fragmentmothf: "1",
+					fragmentmothg: "1",
+				},
+				description: "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+				label: "Knowledge",
+				actionId: "study",
+			},
+		],
+		label: "Мимолётная память",
+		lifetime: "300",
+	},
+	{
+		id: "contentment",
+		xtriggers: 
+		{
+			upgradeinfluence: "influenceheartc",
+		},
+		aspects: 
+		{
+			influence: "1",
+			lantern: "2",
+			heart: "2",
+		},
 		description: "Это счастье. Наверное. [Довольство защищает от Страха; но оно не длится долго.]",
-		lifetime: 60
-		}
+		slots: 
+		[
+			{
+				id: "with",
+				required: 
+				{
+					influencelantern: "1",
+					influencewinter: "1",
+					influenceheart: "1",
+					influenceforge: "1",
+				},
+				description: "Perhaps I can use my Contentment to strengthen a positive influence.",
+				label: "With",
+				actionId: "study",
+			},
+			{
+				id: "knowledge",
+				required: 
+				{
+					fragmentheartc: "1",
+					fragmentheartd: "1",
+					fragmenthearte: "1",
+					fragmentheartf: "1",
+					fragmentheartg: "1",
+				},
+				description: "I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",
+				label: "Knowledge",
+				actionId: "study",
+			},
+		],
+		label: "Довольство",
+		lifetime: "60",
+	},
+	{
+		id: "memorybittersweet",
+		aspects: 
+		{
+			way: "1",
+		},
+		description: "I could recall a complex time.",
+		comment: "NEW",
+		label: "Bittersweet Memory",
+		lifetime: "300",
+	},
+	{
+		id: "memorypleasant",
+		aspects: 
+		{
+			way: "1",
+		},
+		description: "I could recall a happier time.",
+		comment: "NEW",
+		label: "Pleasant Memory",
+		lifetime: "300",
+	},
+	{
+		id: "memorypassionate",
+		aspects: 
+		{
+			way: "1",
+		},
+		description: "I could recall a warmer time.",
+		comment: "NEW",
+		label: "Passionate Memory",
+		lifetime: "300",
+	},
+	{
+		id: "scar_edge",
+		aspects: 
+		{
+			scar: "1",
+			edge: "4",
+			tool: "1",
+		},
+		description: "FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",
+		comment: "NEW",
+		label: "Scar: Brutal Experience",
+	},
+	{
+		id: "scar_knock",
+		aspects: 
+		{
+			scar: "1",
+			tool: "1",
+			knock: "4",
+		},
+		description: "Not all doors are wounds; but all wounds are doors. [You've made a permanent sacrifice for power.]",
+		comment: "NEW",
+		label: "Scar: Half-Healed Fistula",
+	},
+	{
+		id: "scar_winter",
+		aspects: 
+		{
+			scar: "1",
+			winter: "4",
+			tool: "1",
+		},
+		description: "Step closer to the sunset, and see the first stars of night. [You've made a permanent sacrifice for power.]",
+		comment: "NEW",
+		label: "Scar: Old Wound",
+	},
+	{
+		id: "scar_heart",
+		aspects: 
+		{
+			scar: "1",
+			tool: "1",
+			heart: "4",
+		},
+		description: "I have so much life in me. It is difficult not to move. When I sit, my joints burn. I know that if I stop, I might stop for always. [You've made a permanent sacrifice for power. Be careful: unlike Health, this card will not satisfy Sickness or Starvation.]",
+		comment: "NEW",
+		label: "Scar: A Wandering Heart",
+		xtriggers: 
+		{
+			employment: "scar_heart_fatigued",
+			job: "scar_heart_fatigued",
+			ritual: "scar_heart_fatigued",
+		},
+	},
+	{
+		id: "scar_heart_fatigued",
+		comment: "NEW",
+		description: "My arteries sing, my veins burn. I cannot push myself any further. [Wait.]",
+		decayTo: "scar_heart",
+		label: "Scar: A Wandering Heart (Strained)",
+		resaturate: "true",
+		lifetime: "60",
+	},
+	{
+		id: "scar_moth",
+		aspects: 
+		{
+			scar: "1",
+			moth: "4",
+			tool: "1",
+		},
+		description: "I've worn so many guises. With each new guise it is harder to recall my original face. Even the cartilage softens when my tempers are high. [You've made a permanent sacrifice for power.]",
+		comment: "NEW",
+		label: "Scar: A Flexible Aspect",
+		xtriggers: 
+		{
+			employment: "scar_moth_fatigued",
+			job: "scar_moth_fatigued",
+			ritual: "scar_moth_fatigued",
+		},
+	},
+	{
+		id: "scar_moth_fatigued",
+		comment: "NEW",
+		description: "With each new expression my features ripple like water. If I am not careful I shall entirely dissolve. [Wait.]",
+		decayTo: "scar_moth",
+		label: "Scar: A Flexible Aspect (Strained)",
+		resaturate: "true",
+		lifetime: "60",
+	},
+	{
+		id: "scar_lantern",
+		aspects: 
+		{
+			scar: "1",
+			tool: "1",
+			lantern: "4",
+		},
+		description: "Sometimes now I am beautiful beneath my skin. When I bend to the right angle - when my garments falls aside - when the eye is keen - my shape is a perfect revelation. [You've made a permanent sacrifice for power.]",
+		comment: "NEW",
+		label: "Scar: A Translucency",
+	},
 ]
-};
+}
