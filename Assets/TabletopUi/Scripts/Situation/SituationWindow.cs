@@ -214,8 +214,9 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        public void DisplayHintRecipeFound(Recipe r) {
-            Title = "Hint: " + r.Label;
+        public void DisplayHintRecipeFound(Recipe r)
+		{
+            Title = LanguageTable.Get("UI_HINT") + " " + r.Label;
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
