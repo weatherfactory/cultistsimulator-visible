@@ -122,7 +122,7 @@ warmup:5
         startdescription: ".",
         description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
         warmup: 60,
-		slots: [{id:"Starvation",required: {health: 1},
+		slots: [{id:"starvation",required: {health: 1},
 					greedy: true
 		}]
     },

@@ -180,7 +180,7 @@
 	actionId:"work",
 	requirements: {reason:1},
 	effects: {summoned:-1},
-	{aspects:fatiguing:1},
+	aspects: {fatiguing:1},
 	startdescription: "Pronounce the words of dismissal. Seal the circle tight. Erase every trace.",
 	description: "It's gone. We are safe.",
 	warmup:10
@@ -192,7 +192,7 @@
 	startdescription: "The things from outside the world have many weapons: knives and riddles, fire and despair. I have weapons of my own. [This will usually, but not always, work.]",
 	description:"",
 	requirements: {passion:1},
-	{aspects:fatiguing:1},
+	aspects:{fatiguing:1},
 	warmup:10,
 	linked:[{id:"summoningmasteryregained",chance:70},
 	{id:"summoningescaped",chance:100}]
