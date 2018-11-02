@@ -61,8 +61,15 @@ public class ResourcesManager: MonoBehaviour
     public static Sprite GetSpriteForEnding(string endingImage)
     {
         //just using images from elements for now - LB to sort out rectilinear images if we don't get suitable cards in time
-        return Resources.Load<Sprite>("endingArt/" + endingImage);
 
+		// Try to load localised version from language subfolder first - if none then fall back to normal one - CP
+		Sprite spr = Resources.Load<Sprite>("endingArt/" + LanguageTable.targetCulture + "/" + endingImage);
+		if (spr == null)
+		{
+			spr = Resources.Load<Sprite>("endingArt/" + endingImage);
+		}
+		
+		return spr;
     }
 
     public static IEnumerable<AudioClip> GetBackgroundMusic()
