@@ -29,6 +29,11 @@ namespace Assets.Core.Services
             string lastDesireLabel=String.Empty;
             string lastFollowerLabel = String.Empty;
 
+			if (previousCharacterName == HistoryBuilder.DEFAULT_CHARACTER_NAME)
+			{
+				previousCharacterName = LanguageTable.Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
+			}
+
             var lastBook = _compendium.GetElementById(lastBookId);
             if (lastBook == null)
                 NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastBookId, 1);
