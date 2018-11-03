@@ -335,16 +335,14 @@ public class ContentImporter
 			// Check for our fields of interest
 			for (int j=0; j<fieldsToTranslate.Length; j++)
 			{
-				if (dest.ContainsKey(fieldsToTranslate[j]))
+				if (src.ContainsKey(fieldsToTranslate[j]))
 				{
-					if (src.ContainsKey(fieldsToTranslate[j]))
-					{
-						dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
-					}
-					else
-					{
-						Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
-					}
+					dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+				}
+				else if (dest.ContainsKey(fieldsToTranslate[j]))
+				{
+					// Error if src is missing a field that is present in the native JSON
+					Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
 				}
 			}
 		}
