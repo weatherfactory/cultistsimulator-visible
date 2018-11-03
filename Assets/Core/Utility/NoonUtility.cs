@@ -120,15 +120,31 @@ namespace Noon
 		private static string secondsPostfix = "s";
 		private static string timeSeperator = ".";
 
+		private static string[] screenLog;
+		private static int screenLogStart = 0;
+		private static bool screenLogVisible = false;
+
         public static void Log(string message,int verbosityNeeded=0)
         {
             if(verbosityNeeded<=CurrentVerbosity)
-            { 
-            //switch between in-Unity and unit testing
-            if(UnitTestingMode)
-            Console.WriteLine(message);
-            else
-            Debug.Log(new String('>',verbosityNeeded) + " " + message);
+            {
+				if (message != null)
+				{
+					// Store in on-screen log
+					if (screenLog == null)
+					{
+						screenLog = new string[40];
+					}
+					screenLog[screenLogStart++] = message;
+					if (screenLogStart >= screenLog.Count())
+						screenLogStart = 0;
+				}
+
+	            //switch between in-Unity and unit testing
+				if(UnitTestingMode)
+					Console.WriteLine(message);
+				else
+					Debug.Log(new String('>',verbosityNeeded) + " " + message);
             }
         }
         public static void Log(string message, VerbosityLevel verbosityNeeded)
@@ -256,6 +272,24 @@ namespace Noon
 			s = s.Replace( '.', timeSeperator[0] );
 			return fixedspace + s + secondsPostfix;
 		}
+
+		public static void ToggleLog()
+		{
+			screenLogVisible = !screenLogVisible;
+		}
+
+		public static void DrawLog()
+		{
+			if (!screenLogVisible)
+				return;
+
+			for (int i=0; i<screenLog.Count(); i++)
+			{
+				int idx = (screenLogStart+1+i) % screenLog.Count();
+				GUI.Label( new Rect(0, Screen.height - 60f - (20f * screenLog.Count()) + (20f*i), Screen.width, 20), screenLog[idx]);
+			}
+		}
+
     }
 
 }

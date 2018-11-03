@@ -114,6 +114,11 @@ namespace Assets.CS.TabletopUI {
 			housekeepingTimer = AUTOSAVE_INTERVAL;
 		}
 
+		public void ToggleLog()
+		{
+			NoonUtility.ToggleLog();
+		}
+
 		public bool IsPaused()
 		{
 			return _heart.IsPaused;
@@ -406,7 +411,10 @@ namespace Assets.CS.TabletopUI {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void EndGame(Ending ending, SituationController endingSituation) {
+        public void EndGame(Ending ending, SituationController endingSituation)
+		{
+			NoonUtility.Log("TabletopManager.EndGame()");
+
             var ls = new LegacySelector(Registry.Retrieve<ICompendium>());
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
@@ -900,9 +908,9 @@ namespace Assets.CS.TabletopUI {
 			obj.gameObject.SetActive(true);
 		}
 
-#if UNITY_EDITOR
 		private void OnGUI()
 		{
+#if UNITY_EDITOR
 			// Extra tools for debugging autosave.
 
 			// Toggle to simulate bad save
@@ -921,8 +929,10 @@ namespace Assets.CS.TabletopUI {
 			{
 				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
 			}
-		}
 #endif
+			// Allowing this in final build to allow users to screengrab errors
+			NoonUtility.DrawLog();
+		}
 	}
 
 }
