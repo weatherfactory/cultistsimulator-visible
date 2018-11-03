@@ -52,15 +52,17 @@ recipes: [
 		],
 	},
 	{
-		id: "workbytjobend",
 		craftable: "false",
+		label: "Облако на горизонте",
 		startdescription: ".",
+		id: "workbytjobend",
+		actionId: "work",
+		description: ".",
 		effects: 
 		{
 			legacybytjobmatured: "-1",
 			funds: "2",
 		},
-		label: "Облако на горизонте",
 		alternativerecipes: 
 		[
 			{
@@ -70,7 +72,6 @@ recipes: [
 				additional: "true",
 			},
 		],
-		actionId: "work",
 	},
 	{
 		craftable: "false",

@@ -66,6 +66,7 @@ recipes: [
 					reputation: "1",
 				},
 				greedy: "true",
+				label: "Следы",
 			},
 		],
 	},
@@ -93,6 +94,7 @@ recipes: [
 					evidenceb: "1",
 				},
 				greedy: "true",
+				label: "Улики",
 			},
 		],
 		alternativerecipes: 
@@ -200,6 +202,7 @@ recipes: [
 					reputation: "1",
 				},
 				greedy: "true",
+				label: "Следы",
 			},
 		],
 	},
@@ -294,6 +297,7 @@ recipes: [
 					reputation: "1",
 				},
 				greedy: "true",
+				label: "Следы",
 			},
 		],
 		alternativerecipes: 
@@ -422,6 +426,7 @@ recipes: [
 					follower: "1",
 					independent: "1",
 				},
+				label: "Подозреваемый",
 				description: "Бюро требует подозреваемых.",
 				forbidden: 
 				{
@@ -565,6 +570,7 @@ recipes: [
 		},
 		warmup: "30",
 		label: "Союзник в тенях",
+		startdescription: "Я напоминаю о заслуге перед примечательным человеком. Возможно, он прикроет меня, но никаких гарантий.",
 		id: "suspicion_favourused",
 		actionId: "suspicion",
 		description: ".",

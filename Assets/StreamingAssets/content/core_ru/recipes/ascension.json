@@ -212,11 +212,13 @@ recipes: [
 	},
 	{
 		id: "minorforgevictory",
+		startdescription: "Огонь знаком мне не меньше родного дома. Плиты моей плоти со скрежетом трутся друг об друга. Я призываю огонь Кузни, и он отделит меня от того, что считалось мной. Я умру, когда пройду Трёхстворчатые Врата, но смерть — это не конец. Я достигну бессмертия; я буду среди Долгих, избранных Кузней.",
 		requirements: 
 		{
 			ascensionpowerf: "1",
 		},
 		actionId: "work",
+		description: "Я становлюсь именем огня. Помните, что текст окончания будет содержать суть.",
 		label: "Сожжение сердца",
 		ending: "minorforgevictory",
 	},
@@ -341,11 +343,13 @@ recipes: [
 	},
 	{
 		id: "minorgrailvictory",
+		startdescription: "Меня переполняют чужие жизни. Швы моего тела начинают рваться. Теперь я призываю Алую Чашу, Источник, Мать Гор. Во имя Её я рожусь из себя. Трёхстворчатые Врата открываются. Я достигну бессмертия; я буду среди Долгих, возлюбленных Чашей.",
 		requirements: 
 		{
 			ascensionsensationf: "1",
 		},
 		actionId: "work",
+		description: "Я иду...",
 		label: "Пир истинного рождения",
 		ending: "minorgrailvictory",
 	},
@@ -968,11 +972,13 @@ recipes: [
 	},
 	{
 		id: "minorlanternvictory",
+		startdescription: "От этой плоти почти ничего не осталось. Я пройду через Трёхстворчатые Врата и не вернусь. Дозорный ждёт меня. По Его следам я найду свет Славы. Понимание слишком велико для моей души, и душа раскроется. Я не буду среди бессмертных: я превзойду их.",
 		requirements: 
 		{
 			ascensionenlightenmentf: "1",
 		},
 		actionId: "work",
+		description: "Я иду...",
 		label: "Вторжение",
 		ending: "minorlanternvictory",
 	},
@@ -1090,6 +1096,7 @@ recipes: [
 				},
 				description: "Глубинная жажда",
 				greedy: "true",
+				label: "Одержимости",
 			},
 		],
 	},
@@ -1248,6 +1255,7 @@ recipes: [
 				},
 				description: "Огонь требует пищи",
 				greedy: "true",
+				label: "Соблазны",
 			},
 		],
 		alternativerecipes: 
@@ -1429,6 +1437,7 @@ recipes: [
 				},
 				description: "Огонь требует пищи",
 				greedy: "true",
+				label: "Топливо",
 			},
 		],
 	},
@@ -1463,6 +1472,7 @@ recipes: [
 				},
 				description: "Нужда снедает меня",
 				greedy: "true",
+				label: "Боль",
 			},
 		],
 	},
@@ -1514,6 +1524,7 @@ recipes: [
 				},
 				description: "Свежая падаль, или кто-то живой.",
 				greedy: "true",
+				label: "Питание",
 			},
 		],
 	},
@@ -1550,6 +1561,7 @@ recipes: [
 				},
 				description: "Нужда снедает меня",
 				greedy: "true",
+				label: "Боль",
 			},
 		],
 	},
@@ -1601,6 +1613,7 @@ recipes: [
 				},
 				description: "Последние слова живого разума.",
 				greedy: "true",
+				label: "Беседа",
 			},
 		],
 	},
@@ -1635,6 +1648,7 @@ recipes: [
 				},
 				description: "Нужда снедает меня",
 				greedy: "true",
+				label: "Боль",
 			},
 		],
 	},

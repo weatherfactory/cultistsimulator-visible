@@ -212,11 +212,13 @@ recipes: [
 	},
 	{
 		id: "minorforgevictory",
+		startdescription: "我已投身火焰无数次。我身上块块厚硬的甲皮互相摩擦着。我呼唤光阴之炉的炙热，让热浪焚毁从前之我。通过三尖门时，我将死去，但死亡并不意味着终结。我会获得永生：成为长生者，得到炉的宠爱。",
 		requirements: 
 		{
 			ascensionpowerf: "1",
 		},
 		actionId: "work",
+		description: "我快要成为火焰之具名者。Remember that the ending text will contain the payload.",
 		label: "心中之焰",
 		ending: "minorforgevictory",
 	},
@@ -341,11 +343,13 @@ recipes: [
 	},
 	{
 		id: "minorgrailvictory",
+		startdescription: "我因装入他人的生命而胀大。我身体的接缝开始破裂。现在我向赤杯祈求，她是山岳之母、吞吃之神、起源之神。以她之名，我将诞下我自己。三尖门开启了。我会获得永生：成为长生者，得到杯的宠爱。",
 		requirements: 
 		{
 			ascensionsensationf: "1",
 		},
 		actionId: "work",
+		description: "我来了……",
 		label: "真实诞生的宴席",
 		ending: "minorgrailvictory",
 	},
@@ -968,11 +972,13 @@ recipes: [
 	},
 	{
 		id: "minorlanternvictory",
+		startdescription: "肉体所剩无几。我将穿过三尖门，一去不回。守夜人在等我。跟随他的足迹，我会找到来自光界之光。认知光界令我的灵魂无法承受，我的灵魂将会洞开。我不会得到永生：我将进入比永生更高的境界。",
 		requirements: 
 		{
 			ascensionenlightenmentf: "1",
 		},
 		actionId: "work",
+		description: "我来了……",
 		label: "神掠",
 		ending: "minorlanternvictory",
 	},

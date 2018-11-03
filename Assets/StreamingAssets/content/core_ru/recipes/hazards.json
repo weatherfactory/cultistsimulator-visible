@@ -34,6 +34,7 @@ recipes: [
 					inducesdespair: "1",
 				},
 				greedy: "true",
+				label: "Тени",
 			},
 		],
 	},
@@ -75,6 +76,7 @@ recipes: [
 				},
 				greedy: "true",
 				noanim: "true",
+				label: "Мысли",
 			},
 		],
 		alternativerecipes: 
@@ -171,6 +173,7 @@ recipes: [
 					contentment: "1",
 				},
 				greedy: "true",
+				label: "Мысли",
 			},
 		],
 		alternativerecipes: 
@@ -224,6 +227,7 @@ recipes: [
 					fascination: "1",
 				},
 				greedy: "true",
+				label: "Тени",
 			},
 		],
 	},
@@ -271,6 +275,7 @@ recipes: [
 				},
 				greedy: "true",
 				noanim: "true",
+				label: "Мысли",
 			},
 		],
 		alternativerecipes: 
@@ -343,6 +348,7 @@ recipes: [
 					fleeting: "1",
 				},
 				greedy: "true",
+				label: "Мысли",
 			},
 		],
 		alternativerecipes: 
@@ -473,6 +479,7 @@ recipes: [
 		startdescription: "Проклятие Сухой Души опускается мягко, как морщинистая рука на плечо.",
 		id: "curse_dread_active",
 		actionId: "curse_dread",
+		description: "Мой череп скрипит. Цвета сереют.",
 		slots: 
 		[
 			{
@@ -578,6 +585,7 @@ recipes: [
 		startdescription: "Третий Глаз — миф или шишковидная железа. Четвёртый Глаз — Знак при определённых путях восхождения. Пятый Глаз открывается для меня сейчас.",
 		id: "curse_visions_active",
 		actionId: "curse_visions",
+		description: "Я не могу не видеть. Если я буду смотреть достаточно долго, я не захочу не видеть.",
 		slots: 
 		[
 			{
@@ -683,6 +691,7 @@ recipes: [
 		startdescription: "Проклятие Ползучего Дыхания начинается с кашля — кашля, который вцепляется в глотку как сборщик налогов.",
 		id: "curse_affliction_active",
 		actionId: "curse_affliction",
+		description: "Каждое дыхание нашей жизни слабее предыдущего, пока не настанет время последнего вздоха. Процесс настолько нетороплив, что неощутим... если речь не о проклятии Ползучего Дыхания.",
 		slots: 
 		[
 			{
@@ -788,6 +797,7 @@ recipes: [
 		startdescription: "В городе есть Черви. Их не видно, но притом их нельзя забыть. Они входят через отверстия в коже и делают то, что уместно Червям.",
 		id: "curse_nowhere_active",
 		actionId: "curse_nowhere",
+		description: "Мы бессильны. Если мы найдём останки, мы должны сжечь их и с предельным тщанием просеять пепел.",
 		slots: 
 		[
 			{
@@ -797,6 +807,7 @@ recipes: [
 				{
 					mortal: "1",
 				},
+				label: "Кто-то",
 			},
 		],
 	},
