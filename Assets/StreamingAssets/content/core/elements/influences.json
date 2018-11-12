@@ -178,8 +178,7 @@ aspects:
 slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any influence to subvert it to a higher level Knock influence.",actionId:"study",required:{influenceedge:1,influenceforge:1,influencegrail:1,influenceheart:1,influenceknock:1,influencelantern:1,influencemoth:1,influencewinter:1,erudition:1,glimmering:1,vitality:1,eruditionplus:1,glimmeringplus:1,vitalityplus:1}},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentknockc:1,fragmentknockd:1,fragmentknocke:1,fragmentknockf:1,fragmentknockg:1},actionId:"study"}],
 description: "Laces uncoil -- windows swing open -- locks move as if oiled. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-lifetime: 60,xtriggers:{upgradeinfluence:influenceknockc},
-decayTo:"bloodshed"
+lifetime: 60,xtriggers:{upgradeinfluence:influenceknockc}
 },
 				  {
 id: "influenceknockc",
