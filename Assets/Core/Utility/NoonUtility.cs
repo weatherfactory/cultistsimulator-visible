@@ -110,7 +110,10 @@ namespace Noon
 
         public static int CurrentVerbosity =1;
 
-        public static VersionNumber VersionNumber = new VersionNumber(Application.version);
+        public static VersionNumber VersionNumber
+        {
+	        get { return new VersionNumber(Application.version); }
+        }
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
 

@@ -29,11 +29,6 @@ public class SimpleJsonImporter
 		{']', '['}
 	};
 
-	private static readonly char[] SpecialChars =
-	{
-		'{', '}', '[', ']', ':', ','
-	};
-
 	private readonly string _json;
 
 	private readonly bool _caseInsensitive;
@@ -104,7 +99,7 @@ public class SimpleJsonImporter
 					if (key.Length == 0 && char.IsWhiteSpace(c))
 						continue;
 
-					key = ReadString(ref idx, end);
+					key = ReadString(ref idx, end, ':');
 					if (_caseInsensitive)
 						key = key.ToLower();
 					readingState = ReadingState.KeyFinished;
@@ -139,7 +134,7 @@ public class SimpleJsonImporter
 							returnValue[key] = ReadArrayList(ref idx, FindMatchingEnd(idx, end));
 							break;
 						default:
-							returnValue[key] = ReadString(ref idx, end);
+							returnValue[key] = ReadString(ref idx, end, ',');
 							break;
 					}
 					readingState = ReadingState.ValueFinished;
@@ -164,7 +159,7 @@ public class SimpleJsonImporter
 		}
 
 		if (readingState == ReadingState.Value)
-			LogWarning("Missing value for hashtable key: '" + key + "'", end);
+			LogWarning("Missing value for hashtable key: '" + key + "'", end - 1);
 
 		begin = end;
 		return returnValue;
@@ -192,7 +187,7 @@ public class SimpleJsonImporter
 						returnValue.Add(ReadArrayList(ref idx, FindMatchingEnd(idx, end)));
 						break;
 					default:
-						returnValue.Add(ReadString(ref idx, end));
+						returnValue.Add(ReadString(ref idx, end, ','));
 						break;
 				}
 
@@ -216,7 +211,7 @@ public class SimpleJsonImporter
 		return returnValue;
 	}
 
-	private string ReadString(ref int begin, int end)
+	private string ReadString(ref int begin, int end, char terminator)
 	{
 		string returnValue = "";
 		bool isEscaped = false;
@@ -256,12 +251,14 @@ public class SimpleJsonImporter
 			}
 			else
 			{
-				if (char.IsWhiteSpace(c) || SpecialChars.Contains(c))
+				if (char.IsWhiteSpace(c) || c == terminator)
 				{
 					foundEnd = true;
 					idx--;  // Go back so that the next state can process this character correctly
 					break;
 				}
+				if (c == '"')
+					LogWarning("Found '\"' in unquoted string", idx);
 			}
 
 			isEscaped = false;
@@ -271,7 +268,7 @@ public class SimpleJsonImporter
 		if (withinQuotes && !foundEnd)
 			LogWarning("Missing closing '\"' for string", end);
 		else if (!withinQuotes && returnValue.Length == 0)
-			LogWarning("Empty unquoted string", end);
+			LogWarning("Empty unquoted string", idx);
 		begin = idx;
 
 		return returnValue.JsonDecode();

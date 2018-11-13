@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -33,7 +30,7 @@ namespace Assets.Editor.Tests
             var mockNotifier = Substitute.For<INotifier>();
             var registry=new Registry();
             registry.Register<INotifier>(mockNotifier);
-
+            registry.Register<ICompendium>(Substitute.For<ICompendium>());
         }
 
         [Test]
@@ -70,14 +67,14 @@ namespace Assets.Editor.Tests
 
             //return empty element changes for the recipe - so nothing will change on account of just the recipe
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
-            
+
             //but we return the deckid from the deckeffect - so we will try to retrieve that deckinstance
             mockCommand.GetDeckEffects().Returns(deckIds);
             mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary()); //need something in the aspects to satisfy the requirement to combine 'em
 
             //and we set up to return the deckSpec for that ID from the compendium
             var storage = Substitute.For<IGameEntityStorage>();
-            
+
             storage.GetDeckInstanceById(firstDeckId).Returns(firstDeckInstance);
             storage.GetDeckInstanceById(secondDeckId).Returns(secondDeckInstance);
 
@@ -127,7 +124,7 @@ namespace Assets.Editor.Tests
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
             mockStacksManager.GetStacks().Returns(new List<IElementStack> { estack1 });
             mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary ());
-        
+
 
             var ex = new SituationEffectExecutor();
 
