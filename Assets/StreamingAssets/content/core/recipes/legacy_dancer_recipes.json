@@ -161,7 +161,7 @@ effects:{benefactorf:1,funds:2,influence:-1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorf,mutationLevel:-1}],
 alternativerecipes:[{id:"legacydancer_opentalk",chance:100,additional:true}]
 
-}
+},
 {id:"A_worklegacydancerjob_more_ecdysiast",
 actionId: "work",
 requirements:{potentialecdysiast:1,moth:2},
@@ -206,7 +206,7 @@ linked: [
 {id:"L_workdancerjobbenefactor_more_passion",chance:30},
 {id:"L_workdancerjobbenefactor_more_funds",chance:30},
 {id:"L_workdancerjobbenefactor_more_reason",chance:30},
-{id:"L_workdancerjobbenefactor_satisfactory_norequirement",chance:70}
+{id:"L_workdancerjobbenefactor_satisfactory_norequirement",chance:70},
 {id:"L_workdancerjobbenefactor_bored",chance:100}],
 startdescription: "My Benefactor would be delighted if I'd offer a private performance for a small and refined audience. They'll invite me to dinner afterwards, and of course offer suitable gifts in return for my time.",
 description: ".",
@@ -278,7 +278,7 @@ effects:{funds:5},
 
 {id:"L_workdancerjobbenefactor_satisfactory_funds",
 actionId:"work",
-requirements:{funds:1],
+requirements:{funds:1},
 label: "My Benefactor Watches Me Fondly",
 description:"I've chosen my attire well for the performance. My benefactor showers me with compliments, and gifts.",
 mutations:[{filterOnAspectId:benefactor,mutateAspectId:besotment,mutationLevel:1,additive:true}],
@@ -331,7 +331,7 @@ startdescription:"They have an air of suppressed excitement tonight.",
 description: ".",
 effects:{funds:5,contentment:1},
 aspects:{avowal:1}
-}
+},
 {id:"L_workdancerjobbenefactor_proposes_sometimes",
 actionId:"work",
 requirements:{besotment:7,benefactor_proposal:-1},

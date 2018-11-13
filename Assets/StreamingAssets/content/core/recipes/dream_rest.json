@@ -8,9 +8,9 @@
         requirements: {health:1},
 		effects: {fleeting:1},
 		alternativerecipes: [{id:"dreamhealthdread",chance:10},
-		{id:"dreamhealthfascination",chance:10}
+		{id:"dreamhealthfascination",chance:10},
 		{id:"dreamhealthcontentment",chance:30},
-		{id:"dream_router",chance:30}]
+		{id:"dream_router",chance:30}],
 		startdescription: "With luck, I'll wake refreshed. [Sometimes, this will provide Contentment. Often, it will do nothing. Occasionally, it will create Dread or Fascination.]",
         description: "Sometimes, I have dreamt of a tall woman in a sand-coloured coat, who stands at the foot of my bed, smiling as she watches me sleep. In that dream, she turns her head with the swiftness of a bird, and her fingers flex like talons. I do not think I dreamt of her last night. If I had, I could not have slept so soundly.",
         warmup: 60,
@@ -148,4 +148,5 @@
 		{id:"despairrisk",chance:10,additional:true},
 		{id:"sickness",chance:10,additional:true}]
     },
+]
 }

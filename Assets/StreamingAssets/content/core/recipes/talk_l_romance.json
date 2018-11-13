@@ -83,7 +83,7 @@ startdescription:"@#uqporter|Porter sits curled in his seat, motionless, but his
 #uqleo|Leo sits very straight, to begin with, but as excitement and cocktails overcome him, he begins to relax, until he relaxes all the way into me. 'I want to be different,' he whispers, 'but I don't know how.' His eyes are wide; his mouth is supple.@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
-{filterOnAspectId  :mortal,mutateAspectId:heart,mutationLevel:1}
+{filterOnAspectId  :mortal,mutateAspectId:heart,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:moth,mutationLevel:1}],
 craftable:false
 },
@@ -106,7 +106,7 @@ warmup:5
 label:"O Rose Thou Art Sick",
 actionId:"rose",
 requirements:{romanticinterest:2},
-comments: "careful: this is a potential weak spot if we ever start making romantic interest additive not binary"
+comments: "careful: this is a potential weak spot if we ever start making romantic interest additive not binary",
 actionId:"rose",
 startdescription: "Two of my particular friends have chosen to call on me at the same hour. The conversation is stilted.",
 description: "As the evening proceeds, tempers become strained, and there is a difficult scene.",

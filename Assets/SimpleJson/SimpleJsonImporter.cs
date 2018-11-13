@@ -5,202 +5,387 @@
 /* info@orbcreation.com                 */
 /* games, components and freelance work */
 
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 using OrbCreationExtensions;
 
-public class SimpleJsonImporter {
-
-	/* ------------------------------------------------------------------------------------- */
-	/* ------------------------------- Public Import interface ----------------------------- */
-	// simple case sensitive import of the full xml string
-	public static Hashtable Import(string json) {
-		return Import(json, false);
+public class SimpleJsonImporter
+{
+	private enum ReadingState
+	{
+		Key,
+		KeyFinished,
+		Value,
+		ValueFinished
 	}
 
+	private static readonly Dictionary<char, char> MatchingChars = new Dictionary<char, char>()
+	{
+		{'{', '}'},
+		{'[', ']'},
+		{'}', '{'},
+		{']', '['}
+	};
+
+	private static readonly char[] SpecialChars =
+	{
+		'{', '}', '[', ']', ':', ','
+	};
+
+	private readonly string _json;
+
+	private readonly bool _caseInsensitive;
+
+	private readonly List<string> _warnings;
 
 	// importing case insensitive will turn all tags into lowercase
-	public static Hashtable Import(string json, bool caseInsensitive) {
-		int end = json.Length;
+	public static Hashtable Import(string json, bool caseInsensitive = false)
+	{
+		SimpleJsonImporter importer = new SimpleJsonImporter(json, caseInsensitive);
+		Hashtable importedData = importer.Read();
+		if (importer._warnings.Count > 0)
+			throw new SimpleJsonException(importer._warnings);
+		return importedData;
+	}
+
+	private SimpleJsonImporter(string json, bool caseInsensitive)
+	{
+		_json = json;
+		_caseInsensitive = caseInsensitive;
+		_warnings = new List<string>();
+	}
+
+	private Hashtable Read()
+	{
+		int end = _json.Length;
 		int begin = 0;
-		MoveToNextNode(json, ref begin, end);
-		if(begin<end) {
-			int nodeEnd = FindMatchingEnd(json, begin, end);
-			if(json[begin] == '{') return ReadHashtable(json, ref begin, nodeEnd, caseInsensitive);
-			else if(json[begin] == '[') {
-				ArrayList list = ReadArrayList(json, ref begin, nodeEnd, caseInsensitive);
-				if(list != null && list.Count > 0) {
-					Hashtable wrapper = new Hashtable();
-					wrapper.Add("SimpleJSON", list);
+		MoveToNextNode(ref begin, end);
+		if (begin >= end)
+			return null;
+		int nodeEnd = FindMatchingEnd(begin, end);
+		switch (_json[begin])
+		{
+			case '{':
+				return ReadHashtable(ref begin, nodeEnd);
+			case '[':
+			{
+				ArrayList list = ReadArrayList(ref begin, nodeEnd);
+				if (list != null && list.Count > 0) {
+					Hashtable wrapper = new Hashtable {{"SimpleJSON", list}};
 					return wrapper;
 				}
+
+				break;
 			}
+			default:
+				LogWarning("Unexpected character: found '" + _json[begin] + "', was expecting '{' or '['", begin);
+				break;
 		}
 		return null;
 	}
-	/* ------------------------------------------------------------------------------------- */
 
-
-
-	/* ------------------------------------------------------------------------------------- */
-	/* ------------------------------- private Import functions ---------------------------- */
-	private static Hashtable ReadHashtable(string json, ref int begin, int end, bool caseInsensitive) {
-		Hashtable retval = new Hashtable();
+	private Hashtable ReadHashtable(ref int begin, int end)
+	{
+		Hashtable returnValue = new Hashtable();
 		int idx;
-		int isReading = 1;   // 1 key, 2 value
-		bool withinQuotes = false;
-		string ignoreCharsKey = "\r\n\t ?\"'\\,:{}[]";
+		ReadingState readingState = ReadingState.Key;
 		string key = "";
-		string value = "";
-		for(idx=begin+1; idx<end; idx++) {
-			bool skipThisChar = false;
-			char c=json[idx];
-			if(idx==0 || json[idx-1] != '\\') {
-				if(c == '\"') withinQuotes = (!withinQuotes);
-				if(!withinQuotes) {
-					if(isReading != 1 && c == ',') {  // end of entry
-						// add the previous key and value if not yet present
-						value = TrimPropertyValue(value);
-						if(key.Length > 0 && (!retval.ContainsKey(key)) && value.Length>0) {
-							retval[key] = value.JsonDecode();
-						}
-						isReading = 1;  // start reading next key
-						key = "";
-						value = "";
-						skipThisChar = true;
-					}
-					if(isReading == 1 && c == ':') {  // end of key
-						isReading = 2;  // start reading value
-						value = "";
-						skipThisChar = true;
-					}
-					if(isReading == 2 && c == '{') {  // value is a hashtable
-						int nodeEnd = FindMatchingEnd(json, idx, end);
-						retval[key] = ReadHashtable(json, ref idx, nodeEnd, caseInsensitive);
-						value = "";
-						isReading = 0;
-						skipThisChar = true;
-					}
-					if(isReading == 2 && c == '[') {  // value is a arraylist
-						int nodeEnd = FindMatchingEnd(json, idx, end);
-						retval[key] = ReadArrayList(json, ref idx, nodeEnd, caseInsensitive);
-						value = "";
-						isReading = 0;
-						skipThisChar = true;
-					}
-				}
-			}
 
-			if(!skipThisChar) {
-				// read the char into the current key or the value
-				if(isReading == 1 && ignoreCharsKey.IndexOf(c)<0) key = key + (caseInsensitive ? char.ToLower(c) : c);
-				if(isReading == 2) value = value + c;
+		for (idx = begin + 1; idx < end; idx++)
+		{
+			char c = _json[idx];
+
+			switch (readingState)
+			{
+				case ReadingState.Key:
+					// Skip any whitespace at the beginning
+					if (key.Length == 0 && char.IsWhiteSpace(c))
+						continue;
+
+					key = ReadString(ref idx, end);
+					if (_caseInsensitive)
+						key = key.ToLower();
+					readingState = ReadingState.KeyFinished;
+					break;
+				case ReadingState.KeyFinished:
+					// Skip any remaining whitespace
+					if (char.IsWhiteSpace(c))
+						continue;
+
+					if (c == ':')
+					{
+						if (key.Length == 0)
+							LogWarning("Empty hashtable key", idx);
+						readingState = ReadingState.Value;
+					}
+					else
+						LogWarning("Unexpected character in hashtable key: found '" + c + "', was expecting ':'", idx);
+
+					break;
+				case ReadingState.Value:
+					// Skip any whitespace at the beginning
+					if (char.IsWhiteSpace(c))
+						continue;
+
+					switch (c)
+					{
+						// Try to read a hashtable, an array list, or a string
+						case '{':
+							returnValue[key] = ReadHashtable(ref idx, FindMatchingEnd(idx, end));
+							break;
+						case '[':
+							returnValue[key] = ReadArrayList(ref idx, FindMatchingEnd(idx, end));
+							break;
+						default:
+							returnValue[key] = ReadString(ref idx, end);
+							break;
+					}
+					readingState = ReadingState.ValueFinished;
+					break;
+				case ReadingState.ValueFinished:
+					if (char.IsWhiteSpace(c))
+						continue;
+
+					if (c != ',')
+					{
+						LogWarning("Unexpected character in hashtable: found '" + c + "', was expecting ','", idx);
+						idx--;  // Go back so that processing can still continue in the new state
+					}
+
+					// Start reading the next key if the comma delimiter was encountered
+					key = "";
+					readingState = ReadingState.Key;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
 			}
 		}
-		// add the last key and value if not yet present
-		if(key.Length > 0 && (!retval.ContainsKey(key))) {
-			value = TrimPropertyValue(value);
-			if(value.Length>0) retval[key] = value.JsonDecode();
-		}
-		begin = idx;
-		return retval;
+
+		if (readingState == ReadingState.Value)
+			LogWarning("Missing value for hashtable key: '" + key + "'", end);
+
+		begin = end;
+		return returnValue;
 	}
 
-	private static ArrayList ReadArrayList(string json, ref int begin, int end, bool caseInsensitive) {
-		ArrayList retval = new ArrayList();
+	private ArrayList ReadArrayList(ref int begin, int end)
+	{
+		ArrayList returnValue = new ArrayList();
+		ReadingState readingState = ReadingState.Value;
 		int idx;
-		bool withinQuotes = false;
-		string value = "";
-		for(idx=begin+1; idx<end; idx++) {
-			bool skipThisChar = false;
-			char c=json[idx];
-			if(idx==0 || json[idx-1] != '\\') {
-				if(c == '\"') withinQuotes = (!withinQuotes);
-				if(!withinQuotes) {
-					if(c == '{') {  // value is a hashtable
-						int nodeEnd = FindMatchingEnd(json, idx, end);
-						retval.Add(ReadHashtable(json, ref idx, nodeEnd, caseInsensitive));
-						value = "";
-						skipThisChar = true;
-					} else if(c == '[') {  // value is a arraylist
-						int nodeEnd = FindMatchingEnd(json, idx, end);
-						retval.Add(ReadArrayList(json, ref idx, nodeEnd, caseInsensitive));
-						value = "";
-						skipThisChar = true;
-					} else if(c == ',') {  // end of entry
-						value = TrimPropertyValue(value);
-						if(value.Length > 0) retval.Add(value.JsonDecode());  // add the previous value
-						value = "";
-						skipThisChar = true;
-					}
+		for (idx = begin + 1; idx < end; idx++)
+		{
+			char c = _json[idx];
+			if (readingState == ReadingState.Value)
+			{
+				if (char.IsWhiteSpace(c))
+					continue;
+				switch (c)
+				{
+					// Try to read a hashtable, an array list, or a string
+					case '{':
+						returnValue.Add(ReadHashtable(ref idx, FindMatchingEnd(idx, end)));
+						break;
+					case '[':
+						returnValue.Add(ReadArrayList(ref idx, FindMatchingEnd(idx, end)));
+						break;
+					default:
+						returnValue.Add(ReadString(ref idx, end));
+						break;
 				}
+
+				readingState = ReadingState.ValueFinished;
 			}
-			if(!skipThisChar) {
-				// read the char into the current value
-				value = value + c;
+			else
+			{
+				if (char.IsWhiteSpace(c))
+					continue;
+				if (c != ',')
+				{
+					LogWarning("Unexpected character in array list: found '" + c + "', was expecting ','", idx);
+					idx--;  // Go back so that processing can still continue in the next state
+				}
+
+				readingState = ReadingState.Value;
 			}
 		}
-		// add the last value
-		value = TrimPropertyValue(value);
-		if(value.Length > 0) retval.Add(value.JsonDecode());
-		begin = idx;
-		return retval;
+
+		begin = end;
+		return returnValue;
 	}
 
-	/* ------------------------------------------------------------------------------------- */
-
-
-
-	/* ------------------------------------------------------------------------------------- */
-	/* ------------------------------- private helper functions ---------------------------- */
-
-	private static void MoveToNextNode(string json, ref int begin, int end) {
+	private string ReadString(ref int begin, int end)
+	{
+		string returnValue = "";
+		bool isEscaped = false;
+		bool foundEnd = false;
 		int idx;
-		bool withinQuotes = false;
-		for(idx=begin; idx<end; idx++) {
-			char c=json[idx];
-			if(c == '\"' && idx > 0 && json[idx-1] != '\"') {
-				withinQuotes = (!withinQuotes);
+
+		// Check if we are in a quoted string, which determines whether or not
+		// whitespace is allowed
+		bool withinQuotes = _json[begin] == '"';
+		if (withinQuotes)
+			begin++;
+
+		for (idx = begin; idx < end; idx++)
+		{
+			char c = _json[idx];
+
+			// Check if this is a valid escape character within quotes
+			// If the previous character was also an escape character, it
+			// escapes this one, which turns into a regular character;
+			// otherwise, the next character should be escaped
+			if (c == '\\')
+			{
+				isEscaped = !isEscaped;
+				if (isEscaped)
+				{
+					continue;
+				}
 			}
-			if(!withinQuotes) {
-				if(c == '{' || c=='[') {
-					begin = idx;
-					return;
+
+			if (withinQuotes)
+			{
+				if (!isEscaped && c == '"')
+				{
+					foundEnd = true;
+					break;
+				}
+			}
+			else
+			{
+				if (char.IsWhiteSpace(c) || SpecialChars.Contains(c))
+				{
+					foundEnd = true;
+					idx--;  // Go back so that the next state can process this character correctly
+					break;
+				}
+			}
+
+			isEscaped = false;
+			returnValue += c;
+		}
+
+		if (withinQuotes && !foundEnd)
+			LogWarning("Missing closing '\"' for string", end);
+		else if (!withinQuotes && returnValue.Length == 0)
+			LogWarning("Empty unquoted string", end);
+		begin = idx;
+
+		return returnValue.JsonDecode();
+	}
+
+	private void MoveToNextNode(ref int begin, int end)
+	{
+		int idx;
+		for (idx = begin; idx < end; idx++)
+		{
+			char c = _json[idx];
+			if (c == '{' || c == '[')
+			{
+				begin = idx;
+				return;
+			}
+			if (char.IsWhiteSpace(c))
+			{
+				continue;
+			}
+			LogWarning("Unexpected character: found '" + c + "', was expecting '{' or '['", idx);
+			break;
+		}
+		begin = end;   // not found
+	}
+
+	private int FindMatchingEnd(int begin, int end)
+	{
+		bool withinQuotes = false;
+		Stack<char> levels = new Stack<char>();
+		for (int idx = begin; idx < end; idx++) {
+			char c = _json[idx];
+			if (idx != 0 && _json[idx - 1] == '\\')
+				continue;
+			switch (c)
+			{
+				case '"':
+					withinQuotes = !withinQuotes;
+					break;
+				case '{':
+				case '[':
+					if (withinQuotes)
+						continue;
+					levels.Push(c);
+					break;
+				case '}':
+				case ']':
+				{
+					if (withinQuotes)
+						continue;
+					char openingChar;
+					try
+					{
+						openingChar = levels.Peek();
+					}
+					catch (InvalidOperationException)
+					{
+						LogWarning("Unexpected closing character: found '" + c + "', but no '" + MatchingChars[c] + "'", idx);
+						openingChar = MatchingChars[c];  // Keep going as if the correct opening character was provided
+					}
+					char expectedChar = MatchingChars[openingChar];
+					if (c != expectedChar)
+					{
+						LogWarning("Invalid closing character: found '" + c + "', was expecting '" + expectedChar + "'", idx);
+					}
+
+					levels.Pop();
+					if (levels.Count == 0)
+						return idx;   // if we are at the correct nesting level, we found the end
+					break;
 				}
 			}
 		}
-		begin=end;   // not found
-		return;
-	}
-
-	private static int FindMatchingEnd(string json, int begin, int end) {
-		int nestingLevel = 0;
-		bool withinQuotes = false;
-		for(int idx=begin; idx<end; idx++) {
-			char c=json[idx];
-			if(idx==0 || json[idx-1] != '\\') {
-				if(c == '\"') withinQuotes = (!withinQuotes);
-				else if(c== '{' || c == '[') nestingLevel++;
-				else if(c== '}' || c == ']') {
-					nestingLevel--;
-					if(nestingLevel==0) return idx;   // if we are at the correct nesting level, we found the end
-				}
-			}
+		// If we arrived at a non-zero nesting level, that means no matching end
+		// was found, and the JSON should be considered invalid
+		if (levels.Count != 0)
+		{
+			LogWarning("Missing closing character for '" + levels.Peek() + "'", end);
 		}
 		return end;
 	}
 
-	// remove all leading and trailing <space>, <tab>, <newline>, <return> and <doublequote>
-	private static string TrimPropertyValue(string str) {
-		str = str.Trim();
-		if(str==null || str.Length==0) return "";
-		while(str.Length>1 && str[0]=='\r' || str[0]=='\n' || str[0]=='\t' || str[0]==' ') str = str.Substring(1,str.Length-1);
-		while(str.Length>0 && str[str.Length-1]=='\r' || str[str.Length-1]=='\n' || str[str.Length-1]=='\t' || str[str.Length-1]==' ') str = str.Substring(0,str.Length-1);
-		if(str==null) return "";
-		if(str.Length>=2 && str[0] == '"' && str[str.Length-1] == '"') return str.Substring(1,str.Length-2);
-		return str;
+	private void LogWarning(string message, int idx = -1)
+	{
+		string warning = message;
+		if (idx >= 0)
+		{
+			int[] position = GetLineAndColumnAtIndex(idx);
+			warning += " (at line " + position[0] + ", column " + position[1] + ")";
+		}
+		_warnings.Add(warning);
 	}
-	/* ------------------------------------------------------------------------------------- */
+
+	private int[] GetLineAndColumnAtIndex(int idx)
+	{
+		int line = 1;
+		int column = 1;
+		for (int i = 0; i < idx; i++)
+		{
+			switch (_json[i])
+			{
+				case '\n':
+					line += 1;
+					column = 1;
+					break;
+				case '\t':
+					column += 4;  // Assume a tab width of 4
+					break;
+				default:
+					column += 1;
+					break;
+			}
+		}
+
+		return new[] {line, column};
+	}
 }
