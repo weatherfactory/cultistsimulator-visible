@@ -278,7 +278,12 @@ namespace Assets.CS.TabletopUI {
             return _elementStacksManager.GetStacks().SingleOrDefault();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack) {
+        public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack)
+        {
+            if (stack.Quantity > 1)
+                //no multiple stack is ever permitted in a slot
+                return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
+
             if (GoverningSlotSpecification == null)
                 return SlotMatchForAspects.MatchOK();
             else
