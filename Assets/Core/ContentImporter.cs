@@ -123,17 +123,20 @@ public class ContentImporter
     {
         var contentFolder = CORE_CONTENT_DIR + contentOfType;
         var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
-        var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
         var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
 
-        contentFiles.AddRange(overridecontentFiles);
-        if (!contentFiles.Any())
+        List<string> allContentFiles = new List<string>();
+
+        allContentFiles.AddRange(coreContentFiles);
+        allContentFiles.AddRange(overridecontentFiles); 
+        if (!allContentFiles.Any())
             NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
         ArrayList localisedArrayList = new ArrayList();
-        foreach (var contentFile in contentFiles)
+        foreach (var contentFile in allContentFiles)
         {
             string json = File.ReadAllText(contentFile);
             try
@@ -147,10 +150,10 @@ public class ContentImporter
             }
 
 			// Now look for localised language equivalent of the same file and parse that
-			string locFolder = "core_" + LanguageTable.targetCulture;
+			string locFolder = "core_" + LanguageTable.targetCulture; //ahem. - AK
 			string locFile = contentFile;
-			locFile = locFile.Replace( "core", locFolder );
-			if (File.Exists(locFile))	// If no file exists, no localisation happens
+			locFile = locFile.Replace( "core", locFolder ); //ahem, further. - AK
+            if (File.Exists(locFile))	// If no file exists, no localisation happens
 			{
 				json = File.ReadAllText(locFile);
 				if (json.Length > 0)
@@ -165,7 +168,7 @@ public class ContentImporter
 					    continue;
 					}
 
-					NoonUtility.Log("Localising ["+ locFile +"]");
+					
 
 					bool repair = false;
 					bool changed = false;
@@ -184,6 +187,9 @@ public class ContentImporter
 					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate, false, repair, ref changed );
 
 #if UNITY_EDITOR && LOC_AUTO_REPAIR
+NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be here? 
+    //(a) we don't actually autofix the file unless one is missing, and
+    //(b) the log is currently showing messages about the /more files, which shouldn't be localised to /core anyway.
 					if (changed)
 					{
 						bool testOutput = false;
@@ -207,8 +213,8 @@ public class ContentImporter
 						NoonUtility.Log("Exported ["+ locFile +"]");
 					}
 #endif
-				}
-			}
+                }
+            }
 
 			contentItemArrayList.AddRange( originalArrayList );
         }
@@ -1237,10 +1243,10 @@ public class ContentImporter
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1, messageLevel: 2);
+            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1, messageLevel: 0);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages,1, messageLevel: 2);
+            NoonUtility.Log("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages,1, messageLevel: 0);
     }
 
     public void PopulateCompendium(ICompendium compendium)
