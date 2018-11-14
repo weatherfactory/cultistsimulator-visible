@@ -53,6 +53,7 @@ namespace CS.Tests
 
 
         [Test]
+        [Ignore("Disabled until it is brought into the modern age, or at least the Renaissance")]
         public void RecipesImportFromHashtable()
         {
             NoonUtility.UnitTestingMode = true;
@@ -150,7 +151,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KALTERNATIVERECIPES, alAlternatives);
             htRecipe.Add(NoonConstants.KLINKED,allinkeds);
 
-            
+
 
             recipesToImport.Add(htRecipe);
 

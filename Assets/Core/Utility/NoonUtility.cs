@@ -60,7 +60,7 @@ namespace Noon
 
         public const string KINDUCES = "induces";
 
-        
+
 
 
         public const string KCHANCE = "chance";
@@ -110,7 +110,10 @@ namespace Noon
 
         public static int CurrentVerbosity =1;
 
-        public static VersionNumber VersionNumber = new VersionNumber(Application.version);
+        public static VersionNumber VersionNumber
+        {
+	        get { return new VersionNumber(Application.version); }
+        }
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
 
@@ -124,7 +127,7 @@ namespace Noon
 		private static int screenLogStart = 0;
 		private static bool screenLogVisible = false;
 
-        public static void Log(string message,int verbosityNeeded=0)
+        public static void Log(string message, int verbosityNeeded=0, int messageLevel=0)
         {
             if(verbosityNeeded<=CurrentVerbosity)
             {
@@ -143,13 +146,30 @@ namespace Noon
 	            //switch between in-Unity and unit testing
 				if(UnitTestingMode)
 					Console.WriteLine(message);
-				else
-					Debug.Log(new String('>',verbosityNeeded) + " " + message);
+	            else
+				{
+					string formattedMessage =
+						(verbosityNeeded > 0 ? new String('>', verbosityNeeded) + " " : "") + message;
+		            switch (messageLevel)
+		            {
+			            case 0:
+				            Debug.Log(formattedMessage);
+				            break;
+			            case 1:
+				            Debug.LogWarning(formattedMessage);
+				            break;
+			            case 2:
+				            Debug.LogError(formattedMessage);
+				            break;
+			            default:
+				            throw new ArgumentOutOfRangeException("messageLevel");
+		            }
+	            }
             }
         }
-        public static void Log(string message, VerbosityLevel verbosityNeeded)
+        public static void Log(string message, VerbosityLevel verbosityNeeded, int messageLevel=0)
         {
-            Log(message,Convert.ToInt32(verbosityNeeded));
+            Log(message,Convert.ToInt32(verbosityNeeded), messageLevel);
         }
 
         public static string GetGameSaveLocation()
@@ -182,13 +202,13 @@ namespace Noon
 
         public static Dictionary<string, string> HashtableToStringStringDictionary(Hashtable table)
         {
-            
+
             var dictionary = table
                 .Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
 
             return dictionary;
-      
+
         }
 
 

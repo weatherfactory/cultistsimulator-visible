@@ -131,7 +131,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden has never believed that I am qualified for this position.",
 	description:".",
 		effects: {funds:2},
-			linked: [{id:"gloverandglover_difficultbossa_overtime_initial",chance:100}
+			linked: [{id:"gloverandglover_difficultbossa_overtime_initial",chance:100},
 			{id:"gloverandglover_difficultbossa_overtime",chance:70},
 			{id:"gloverandglover_difficultbossa_no_overtime",chance:100}],
 	warmup:60,
@@ -319,7 +319,7 @@ maxexecutions:1
 	startdescription:"My job is demanding. I'll need to devote some Reason to it.",
 	hintonly:true,
 	craftable:false
-	}
+	},
 	
 				{id: "gloverandgloverseniorworkyoungerglovergone",
 	label: "Work at Glover & Glover",
@@ -345,7 +345,7 @@ maxexecutions:1
 	startdescription:"My job is demanding. I'll need to devote some of my Reason to it.",
 	hintonly:true,
 	craftable:false
-	}
+	},
 	
 			{id: "gloverandgloversenior_diligence_promotion",
 	label: "A Promotion!",
