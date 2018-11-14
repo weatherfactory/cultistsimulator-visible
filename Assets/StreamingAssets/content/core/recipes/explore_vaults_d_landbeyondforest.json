@@ -57,7 +57,23 @@
 	linked: [
 	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-				 	{
+	
+		{
+	
+		id: "explore_vaultlandbeyondforest5_setup",
+	label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultlandbeyondforest5:1},
+	effects: {seal_hiddendoor:1,guardian_watchers:1,peril_treacherousground:1},
+	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+	
+	{
 	id: "explore_vaultlandbeyondforestdefault_setup",
 	label: "Beginning an Expedition: Foxlily Meadows",
 	actionId: "explore",
@@ -124,6 +140,20 @@
 	warmup:30,
 	craftable: false
 	},
+	
+		{
+	id: "explorevaultlandbeyondforest5_success",
+	label: "FNORD Kusnetsov Endowment",
+	actionId: "explore",
+	requirements: {vaultlandbeyondforest5:1},
+	effects: {vaultlandbeyondforest5:-1},
+	deckeffect: {"vaultcontentsc":3},
+	startdescription: "FNORD",
+	description: "FNORD",
+	warmup:30,
+	craftable: false
+	},
+	
 	
 				{
 	id: "explorevaultlandbeyondforestdefault_success",

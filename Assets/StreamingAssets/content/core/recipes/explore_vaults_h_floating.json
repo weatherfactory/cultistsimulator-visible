@@ -1,0 +1,36 @@
+ {"recipes": [
+	
+		 			{
+	
+		id: "explore_vaultfloating1_setup",
+	label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultfloating1:1},
+	effects: {guardian_watchers:1,seal_wardeddoor:1,peril_sea:1},
+
+	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+
+	{
+	id: "explorevault5_success",
+	label: "FNORD ",
+	actionId: "explore",
+	requirements: {vaultfloating1:1},
+	effects: {vaultfloating1:-1},
+	deckeffect: {"vaultcontentsc":3},
+	startdescription: "FNORD",
+	description: "FNORD",
+	warmup:30,
+	craftable: false
+	},
+	
+
+	
+]
+}
+
