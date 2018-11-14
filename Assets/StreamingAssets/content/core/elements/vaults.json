@@ -49,6 +49,18 @@
             description: "They did good work here, once. Certainly there were a few too many amputations, but then there are individuals one would prefer not to walk the city streets.",
 			unique:true
         },
+					{
+        id: "vaultcapital5",
+            label: "Congregation of St Felix of Schüren",
+            aspects:{vault:1,location:1,vaultcapital:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+			],
+            description: "FNORD",
+			unique:true
+        },
 				{
         id: "vaultcapitaldefault",
             label: "The Forsaken Reach",
@@ -58,7 +70,7 @@
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "Along the grey banks of the rotting river, the warehouses wait. Perhaps I have identified one where an unusual cargo was stored."
+            description: "Along the grey banks of the rotting river, the warehouses wait. Perhaps I have identified one where an unusual cargo was stored. [You've found all the Expeditions in the Capital, although you can find and visit the Reach several times.]"
         },
 			{
         id: "vaultshires1",
@@ -108,6 +120,18 @@
             description: "Here the Romans dug for silver, until they reached the unsanctioned space where the Names hid things not fit for sunlight. Many others have come since then, even as the tunnels crumble. Some have never left.",
 			unique:true
         },
+						{
+        id: "vaultshires5",
+            label: "Gwaer Inn",
+            aspects:{vault:1,location:1,vaultshires:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+			],
+            description: "FNORD",
+			unique:true
+        },
 				{
         id: "vaultshiresdefault",
             label: "Kerisham",
@@ -119,7 +143,7 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartb:1,sendingmothb:1},actionId:"explore"},
 
 			],
-            description: "Drive through the downs to the coast where the grey-green land meets Atlantic grey. Search along the road for signs to Kerisham town. You will rarely find it, even if you have visited before; and its inhabitants guard their secrets with curse and cudgel and fast-bolted door."
+            description: "Drive through the downs to the coast where the grey-green land meets Atlantic grey. Search along the road for signs to Kerisham town. You will rarely find it, even if you have visited before; and its inhabitants guard their secrets with curse and cudgel and fast-bolted door. [You've found all the Expeditions in the Shires, although you can find and visit Kerisham several times.]"
         },
 		
 					{
@@ -170,6 +194,33 @@
             description: "A cramped little museum in a provincial town, long closed to the public since an outbreak of peculiar rapture in the room where they keep the pressed flowers. Only the very curious would ever pay attention to the place, and its close-warded store-room of ill-omened treasures.",
 			unique:true
         },
+		
+						{
+        id: "vaultcontinent5",
+            label: "Foreman House",
+            aspects:{vault:1,location:1,vaultcontinent:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+			],
+            description: "FNORD",
+			unique:true
+        },
+		
+						{
+        id: "vaultcontinent6",
+            label: "Key-Hunter's Garret",
+            aspects:{vault:1,location:1,vaultcontinent:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+			],
+
+            description: "FNORD",
+			unique:true
+        },
 				{
         id: "vaultcontinentdefault",
             label: "The  Unnumbered Stones",
@@ -181,7 +232,7 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartc:1,sendingmothc:1},actionId:"explore"},
 
 			],
-            description: "Megaliths placed in obsessive, inerrant rows by priest-castes long dead. Time has long erased the original blood-stains, but on moonless nights, the locals supplement what remains. Hidden chambers might guard hidden treasures."
+            description: "Megaliths placed in obsessive, inerrant rows by priest-castes long dead. Time has long erased the original blood-stains, but on moonless nights, the locals supplement what remains. Hidden chambers might guard hidden treasures. [You've found all the Expeditions on the Continent, although you can find and visit the Stones several times.]"
         },
 		
 							{
@@ -232,6 +283,18 @@
             description: "The blasted stump of a building. The air festers. Whatever power destroyed this place still clings. Only one floor remains above ground, but we suspect more space below.",
 			unique:true
         },
+						{
+        id: "vaultlandbeyondforest5",
+            label: "The Kusnetsov Endowment",
+            aspects:{vault:1,location:1,vaultlandbeyondforest:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+			],
+            description: "FNORD",
+			unique:true
+        },
 				{
         id: "vaultlandbeyondforestdefault",
             label: "Foxlily Meadows",
@@ -243,7 +306,7 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartd:1,sendingmothd:1},actionId:"explore"},
 
 			],
-            description: "The scent of foxlilies inspires ferocious appetites. It is probably fortunate that they grow only at this altitude. The peasants have organised to keep treasure-seekers away, but some treasure-seekers fall prey to lily-hungers. Their own treasures lie among their bones; and so the cycle continues."
+            description: "The scent of foxlilies inspires ferocious appetites. It is probably fortunate that they grow only at this altitude. The peasants have organised to keep treasure-seekers away, but some treasure-seekers fall prey to lily-hungers. Their own treasures lie among their bones; and so the cycle continues. [You've found all the Expeditions in the Land Beyond the Forest, although you can find and visit the Meadows several times.]"
         },
 		
 		
@@ -304,7 +367,7 @@
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "In a rearing outcrop of lion-coloured rock, labourers carved tombs for the first kings of this land. Those kings had hoped to be immortal, and perhaps one of them is. The others lie among their trinkets. A hereditary order of guardians watches closely."
+            description: "In a rearing outcrop of lion-coloured rock, labourers carved tombs for the first kings of this land. Those kings had hoped to be immortal, and perhaps one of them is. The others lie among their trinkets. A hereditary order of guardians watches closely. [You've found all the Expeditions in the Rending Mountains, although you can find and visit the Tombs several times.]"
         },
 					{
         id: "vaultloneandlevelsands1",
@@ -365,7 +428,7 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendinghearte:1,sendingmothe:1},actionId:"explore"},
 
 			],
-            description: "There was a city here. We can pick over its remains like jackals over old bones: palace walls, buried roads, shattered fountains. Sometimes we may find the knowledge of the  dead, and sometimes the dead may find us."
+            description: "There was a city here. We can pick over its remains like jackals over old bones: palace walls, buried roads, shattered fountains. Sometimes we may find the knowledge of the  dead, and sometimes the dead may find us. [You've found all the Expeditions in the Sands, although you can find and visit Miah several times.]"
         },
 		
 					{
@@ -427,8 +490,21 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartf:1,sendingmothf:1},actionId:"explore"},
 
 			],
-            description: "There is a choice that every immortal must make: enter the service of an Hour, or return to the mortal ranks, or face extinction. The sunny little island-port called Noon is the exile-realm of the immortals who refused all those options."
+            description: "There is a choice that every immortal must make: enter the service of an Hour, or return to the mortal ranks, or face extinction. The sunny little island-port called Noon is the exile-realm of the immortals who refused all those options. [You've found all the Expeditions in the Evening Isles, although you can find and visit Noon several times.]"
         },
+						{
+        id: "vaultfloating1",
+            label: "The 'Hebe Stanton'",
+            aspects:{vault:1,location:1,vaulteveningisles:1},
+			slots:[
+			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
+			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartf:1,sendingmothf:1},actionId:"explore"},
+
+			],
+            description: "FNORD", 
+unique:true			},
 
 ]
 };
