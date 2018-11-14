@@ -1,4 +1,4 @@
-y{
+{
 "recipes": [
 
 {id:"explorecabaret_meetsulochana",
@@ -352,7 +352,7 @@ actionId:"work",
 startdescription:"Tonight we are masked, and move like celebrants. Mr Agdistis watches closely.",
 description:"There is something tonight that almost happens - a gathering thunder; a moment when the scent of mountain pine freshens the air. But we remove everything except the masks, and all that occurs is applause. [Add a little more Heart to achieve something more. The further advanced your Desire, the more Heart you'll need.]",
 requirements:{ecdysijob:1,locationcabaret:1,heart:3,changemarks:1},
-effects:{funds:1,mystique:1,sending:},deckeffect:{ecdysisrewards:1},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{healthexhausted:1}}}],
 warmup:60,craftable:true
 },
@@ -363,7 +363,7 @@ label:"Work at the Ecdysis Club: Surrender, Almost",
 startdescription:"Tonight we are masked, and move like celebrants. Sulochana waits in the wings, eyes hooded.",
 description:"There is something tonight that almost happens - a sound like wind in tree-branches; a flickering like firelight in the watchers' eyes. But we remove everything except the masks, and all that occurs is applause. [Add a little more Moth to achieve something more. The further advanced your Desire, the more Moth you'll need.]",
 requirements:{ecdysijob:1,locationcabaret:1,moth:3,changemarks:1},
-effects:{funds:1,mystique:1,sending:},deckeffect:{ecdysisrewards:1},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
 warmup:60,craftable:true
 },

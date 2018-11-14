@@ -41,7 +41,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void ReduceElement_AffectsAspectPossessor_WhenNoConcreteElementFound()
         {
-          
+
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
             stackToRemove.Element.Aspects.Add("pureAspect",1);
             elementStacksManager.ReduceElement("pureAspect", -1, null);
@@ -56,7 +56,7 @@ namespace Assets.Editor.Tests
             foreach(var c in stacks)
             {
                 Assert.AreEqual(1, d[c.EntityId]);
-                
+
             }
         }
 
@@ -81,9 +81,9 @@ namespace Assets.Editor.Tests
             var elements = TestObjectGenerator.ElementDictionary(1,2);
             TestObjectGenerator.AddAnAspectToEachElement(elements,"a");
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
-       
+
             elementStacksManager.AcceptStacks(aspectedCards, null);
-         
+
             var d = elementStacksManager.GetTotalAspects();
             Assert.AreEqual(2, d["1"]);
             Assert.AreEqual(1, d["a1"]);
@@ -103,12 +103,12 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(1, d["a1"]);
             Assert.AreEqual(2, d["a2"]);
         }
-    
+
 
     [Test]
     public void Manager_ReduceElement_CanOnlyTakeNegativeArgument()
     {
-                  
+
             Assert.Throws<ArgumentException>(() => elementStacksManager.ReduceElement("1", 0, null));
             Assert.Throws<ArgumentException>(() => elementStacksManager.ReduceElement("1", 1, null));
     }
@@ -116,7 +116,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_ReduceElement_CallsRemoveOnSingleCard()
         {
-            
+
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
             elementStacksManager.ReduceElement(stackToRemove.EntityId,-1, null);
             Assert.IsTrue(stackToRemove.Defunct);
@@ -125,12 +125,12 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_ReduceElementBy2_Removes2SingleCards()
         {
-            
+
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
             FakeElementStack secondStackToRemove = stacks[1] as FakeElementStack;
             secondStackToRemove.Element = firstStackToRemove.Element;
-                
-            
+
+
             Assert.AreEqual(0, elementStacksManager.ReduceElement(firstStackToRemove.EntityId, -2, null));
             Assert.IsTrue(firstStackToRemove.Defunct);
             Assert.IsTrue(secondStackToRemove.Defunct);
@@ -141,7 +141,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_ReduceElementBy3_Removes2SingleCardsAndReturnsMinus1()
         {
-         
+
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
             FakeElementStack secondStackToRemove = stacks[1] as FakeElementStack;
             secondStackToRemove.Element = firstStackToRemove.Element;
@@ -152,13 +152,13 @@ namespace Assets.Editor.Tests
             Assert.IsTrue(secondStackToRemove.Defunct);
 
             //1 stack remaining out of 3
-            Assert.AreEqual(1, stacks.Count(s => s.Defunct == false));          
+            Assert.AreEqual(1, stacks.Count(s => s.Defunct == false));
         }
 
         [Test]
         public void Manager_IncreaseElement_CanOnlyTakePositiveArgument()
         {
-          
+
             Assert.Throws<ArgumentException>(() => elementStacksManager.IncreaseElement("1", 0,Source.Existing(), null));
             Assert.Throws<ArgumentException>(() => elementStacksManager.IncreaseElement("1", -1,Source.Existing(), null));
         }
@@ -166,7 +166,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_IncreaseNewElementBy2_AddsNewStackOf2()
         {
-         
+
             FakeElementStack newStack = TestObjectGenerator.CreateElementCard(stacks.Count + 1.ToString(), 2);
             wrapper.ProvisionElementStack(newStack.EntityId, newStack.Quantity,Source.Existing()).Returns(newStack);
             elementStacksManager.IncreaseElement(newStack.EntityId,newStack.Quantity,Source.Existing(), null);
@@ -178,7 +178,7 @@ namespace Assets.Editor.Tests
         public void Manager_AcceptsStack()
         {
 
-         
+
             FakeElementStack newStack =TestObjectGenerator.CreateElementCard(stacks.Count+1.ToString(),2);
             elementStacksManager.AcceptStack(newStack,null);
             wrapper.Received().DisplayHere(newStack,null);
@@ -186,7 +186,7 @@ namespace Assets.Editor.Tests
         }
 
 
-        
+
     }
 
     //I should mock this, actually
@@ -201,7 +201,7 @@ namespace Assets.Editor.Tests
         public bool MarkedForConsumption { get; set; }
 
         public bool Decays { get; private set; }
-        private IElementStacksManager CurrentStacksManager; 
+        private IElementStacksManager CurrentStacksManager;
 
         public FakeElementStack() {
             CurrentStacksManager=new ElementStacksManager(null,"fake"); //must be assigned to a stacksmanager at birth
@@ -221,7 +221,8 @@ namespace Assets.Editor.Tests
 
         public Dictionary<string, int> GetCurrentMutations()
         {
-            throw new NotImplementedException();
+            // TODO(Marc) Implement this if needed; this is just to get the tests to pass
+            return new Dictionary<string, int>();
         }
 
         public void SetMutation(string aspectId, int value, bool additive = true)

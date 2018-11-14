@@ -25,15 +25,15 @@ namespace Assets.Editor.Tests
         private ISituationClock _situationClockMock;
         private IVerb basicVerb;
         private Registry registry;
-            
+
         [SetUp]
         public void Setup()
         {
-            
+
             situationAnchorMock = Substitute.For<ISituationAnchor>();
             situationDetailsMock = Substitute.For<ISituationDetails>();
             compendiumMock = Substitute.For<ICompendium>();
-            characterMock = Substitute.For<Character>();
+            characterMock = Substitute.For<Character>(new object[] { null });
             _situationClockMock = Substitute.For<ISituationClock>();
             basicVerb=new BasicVerb("id","label","description",false);
 
@@ -43,7 +43,7 @@ namespace Assets.Editor.Tests
 
 
             sc = new SituationController(compendiumMock,characterMock);
-            
+
             var command=new SituationCreationCommand(basicVerb,null,SituationState.Unstarted);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock,null);
 
@@ -52,7 +52,7 @@ namespace Assets.Editor.Tests
         }
 
 
-       
+
 
         [Test]
         public void AllOutputsGone_ResetsStateMachine()

@@ -126,7 +126,7 @@ description: "The Suppression Bureau holds their trials in closed court, and the
 effects:{funds:7,favour:1,suspicious:-99,independent:-1,legacydetective_plotitem_backup:1},
 warmup:60,
 aspects:{employment:1,fatiguing:1},
-alternativerecipes:[{id:"workdetectivejob_newrival",chance:100,additional:true}]
+alternativerecipes:[{id:"workdetectivejob_newrival",chance:100,additional:true}],
 craftable: false},
 
 {id: "workdetectivejob_newrival",
@@ -146,7 +146,7 @@ startdescription:".",
 description:".",
 aspects:{recruiting:1},
 linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}],
-}
+},
 
 
 

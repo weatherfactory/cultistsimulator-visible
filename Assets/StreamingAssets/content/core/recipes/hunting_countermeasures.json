@@ -218,7 +218,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:"My minion has not returned. They must have failed.",
 	  effects: {follower:-1,notoriety:1},
 	  alternativerecipes:[{id:"huntersurvives_becomesmystic",chance:30},
-	  {id:"huntersurvives_becomestenacious",chance:10}]	  
+	  {id:"huntersurvives_becomestenacious",chance:10}],
 	  warmup:10	  
 	  },
 	  
@@ -375,7 +375,7 @@ effects:{notoriety:1,dread:1}
 {id:"hunterspeakdread_survives_becometenacious",
 actionId:"talk",
 label:"The Horrors Beneath the World's Skin",
-requirements:{tenacious:-1}
+requirements:{tenacious:-1},
 startdescription:"",
 description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become Tenacious, and an Idealist.]",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1},
@@ -387,7 +387,7 @@ effects:{notoriety:1,dread:1}
 	  {id:"hunterspeaklanterng",
 	  actionId:"talk",
 	  label:"Share a terrible mystery of the Glorious Lore",
-	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This is likely to tempt the Hunter from their path,, but will always increase your own Fascination.]",
+	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This is likely to tempt the Hunter from their path, but will always increase your own Fascination.]",
 	  requirements:{lantern:14,lore:1},
 	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
 linked:[{id:"hunterspeakfascination_resistant",chance:100},
@@ -399,7 +399,7 @@ linked:[{id:"hunterspeakfascination_resistant",chance:100},
 	  {id:"hunterspeaklanternd",
 	  actionId:"talk",
 	  label:"Share the brighter invocations of the Glorious Lore",
-	  startdescription:"'The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. Listen, and be illuminated...' [This may tempt the Hunter from their path,, especially if they're already an Idealist, but will always increase your own Fascination.]",
+	  startdescription:"'The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. Listen, and be illuminated...' [This may tempt the Hunter from their path, especially if they're already an Idealist, but will always increase your own Fascination.]",
 	  requirements:{lantern:8,lore:1},
 linked:[{id:"hunterspeakfascination_resistant",chance:100},
 {id:"hunterspeakfascination_vulnerable_fascinated",chance:70},

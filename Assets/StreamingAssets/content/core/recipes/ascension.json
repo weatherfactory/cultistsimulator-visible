@@ -185,7 +185,7 @@ warmup:1,
 effects:{follower:-3,summoned:-3,passion:-3},
 linked:[{id:"minorgrailvictory_overture",chance:100}]		
 
-}
+},
 
 {
 id: "minorgrailvictory_overture",
@@ -603,7 +603,7 @@ actionId:"ambition",
 deckeffect:{schemeevents:1},
 linked:[{id:"L_independent_router",chance:100}]
 
-}
+},
 
 {id:"L_independent_router",
 label:"Rivalry!",
@@ -614,7 +614,7 @@ startdescription:"Here is another who would ascend before me. [Independent occul
 alternativerecipes:[
 {id:"scheme_murderhunter",chance:100, additional:true,expulsion:{limit:1,filter:{independent:1}}},
 {id:"scheme_expedition_grab",chance:100, additional:true,expulsion:{limit:1,filter:{independent:1}}},
-{id:"scheme_activities",chance:100, additional:true,expulsion:{limit:1,filter:{independent:1}}}]
+{id:"scheme_activities",chance:100, additional:true,expulsion:{limit:1,filter:{independent:1}}}],
 warmup:30
 },
 
@@ -626,7 +626,7 @@ startdescription:"My Rival's achievements eclipse my own. Now they will ascend t
 ending:"rivalascension",
 signalEndingFlavour: Melancholy,
 warmup:60
-}
+},
 
 
 {id:"L_rebellion_activate",
@@ -821,7 +821,7 @@ actionId: "craving",
 requirements: {enlightenmentmarks:1},
 slots: [{id:"Conversation",description: "The last words of a living mind.",required: {prisoner:1}, greedy:true }],
 startdescription: "Time alone in a quiet room with a living mind. That's all I need.",
-linked: [,
+linked: [
 {id:"ascensionsuccesscravingenlightenment_descend",chance:100},
 {id:"ascensioncravingenlightenment_ascend",chance:100}],
 warmup:30
@@ -1071,7 +1071,7 @@ warmup:10
 label:"The Same Self",
 actionId: "craving",
 description: "I am no further along my path of change. In the movements of the secret Forms must I find my lesson.",
-effects:{restlessness:1}.
+effects:{restlessness:1},
 warmup:10
 },
 

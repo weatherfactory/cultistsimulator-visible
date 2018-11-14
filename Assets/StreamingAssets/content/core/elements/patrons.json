@@ -151,7 +151,7 @@ icon:"poppy"
 		aspects:{benefactor:1,mortal:1},
 		slots:[	{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
-			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse,,avowal:benefactorf_proposedtoplayer},
+			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse,avowal:benefactorf_proposedtoplayer},
 			lifetime:180,
 			decayTo:benefactorf_rejectedplayer
 		},

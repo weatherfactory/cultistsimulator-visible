@@ -57,6 +57,40 @@
 	linked: [
 	{id: "explorevault_expeditionbegun",chance:100}],
 	},
+	
+	
+	
+			{
+	
+		id: "explore_vaultcontinent5_setup",
+	label: "Beginning an Expedition: Foreman House",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent5:1},
+	effects: {guardian_dead:1,curse_dread:1},
+
+	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+	{
+	
+		id: "explore_vaultcontinent6_setup",
+	label: "Beginning an Expedition: the Key-Hunter's Garret",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent6:1},
+	effects: {guardian_serpent:1,seal_hiddendoor:1},
+
+	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+	
 				 	{
 	id: "explore_vaultcontinentdefault_setup",
 	label: "Beginning an Expedition: the Unnumbered Stones",
@@ -124,6 +158,33 @@
 	warmup:30,
 	craftable: false
 	},
+	
+		{
+	id: "explorevaultcontinent5_success",
+	label: "FNORD Foreman House",
+	actionId: "explore",
+	requirements: {vaultcontinent5:1},
+	effects: {vaultcontinent5:-1},
+	deckeffect: {"vaultcontentsc":3},
+	startdescription: "FNORD",
+	description: "FNORD",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultcontinent6_success",
+	label: "FNORD Garret",
+	actionId: "explore",
+	requirements: {vaultcontinent6:1},
+	effects: {vaultcontinent6:-1},
+	deckeffect: {"vaultcontentsc":3},
+	startdescription: "FNORD",
+	description: "FNORD",
+	warmup:30,
+	craftable: false
+	},
+	
 	
 				{
 	id: "explorevaultcontinentdefault_success",

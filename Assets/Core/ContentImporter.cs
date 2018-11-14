@@ -64,7 +64,7 @@ public class ContentImporter
     {
         List<SlotSpecification> cssList = new List<SlotSpecification>();
 
-   
+
             foreach (Hashtable htThisSlot in alSlots)
             {
                 string slotId = htThisSlot[NoonConstants.KID].ToString();
@@ -90,7 +90,7 @@ public class ContentImporter
 
                 if (htThisSlot[NoonConstants.KACTIONID] != null)
                         slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
-       
+
 
                 Hashtable htRequired = htThisSlot["required"] as Hashtable;
                     if (htRequired != null)
@@ -113,7 +113,7 @@ public class ContentImporter
 
                 cssList.Add(slotSpecification);
             }
-        
+
 
         return cssList;
 
@@ -123,17 +123,20 @@ public class ContentImporter
     {
         var contentFolder = CORE_CONTENT_DIR + contentOfType;
         var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
-        var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
         var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
 
-        contentFiles.AddRange(overridecontentFiles);
-        if (!contentFiles.Any())
+        List<string> allContentFiles = new List<string>();
+
+        allContentFiles.AddRange(coreContentFiles);
+        allContentFiles.AddRange(overridecontentFiles); 
+        if (!allContentFiles.Any())
             NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
         ArrayList localisedArrayList = new ArrayList();
-        foreach (var contentFile in contentFiles)
+        foreach (var contentFile in allContentFiles)
         {
             string json = File.ReadAllText(contentFile);
             try
@@ -142,15 +145,15 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
-                throw;
+                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message, messageLevel: 2);
+                continue;
             }
 
 			// Now look for localised language equivalent of the same file and parse that
-			string locFolder = "core_" + LanguageTable.targetCulture;
+			string locFolder = "core_" + LanguageTable.targetCulture; //ahem. - AK
 			string locFile = contentFile;
-			locFile = locFile.Replace( "core", locFolder );
-			if (File.Exists(locFile))	// If no file exists, no localisation happens
+			locFile = locFile.Replace( "core", locFolder ); //ahem, further. - AK
+            if (File.Exists(locFile))	// If no file exists, no localisation happens
 			{
 				json = File.ReadAllText(locFile);
 				if (json.Length > 0)
@@ -161,18 +164,18 @@ public class ContentImporter
 					}
 					catch (Exception e)
 					{
-						NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
-						throw;
+						NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message, messageLevel: 2);
+					    continue;
 					}
 
-					NoonUtility.Log("Localising ["+ locFile +"]");
+					
 
 					bool repair = false;
 					bool changed = false;
 #if UNITY_EDITOR && LOC_AUTO_REPAIR
 					//if (locFile.EndsWith("events.json"))
 						repair = true;
-#endif			
+#endif
 					// We now have two sets of data which SHOULD match pair for pair - english and translated.
 					// Traverse the dataset copying the following fields into the core data. Add new fields here if they need translating.
 					// If the field is a list it will have ALL contents inside localised
@@ -184,6 +187,9 @@ public class ContentImporter
 					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate, false, repair, ref changed );
 
 #if UNITY_EDITOR && LOC_AUTO_REPAIR
+NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be here? 
+    //(a) we don't actually autofix the file unless one is missing, and
+    //(b) the log is currently showing messages about the /more files, which shouldn't be localised to /core anyway.
 					if (changed)
 					{
 						bool testOutput = false;
@@ -207,21 +213,21 @@ public class ContentImporter
 						NoonUtility.Log("Exported ["+ locFile +"]");
 					}
 #endif
-				}
-			}
+                }
+            }
 
 			contentItemArrayList.AddRange( originalArrayList );
         }
         return contentItemArrayList;
 
 
-    
+
     }
 
 	private bool CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate, bool forceTranslate, bool autorepair, ref bool changedDst )
 	{
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
-		
+
 		// First : Validation!
 		if (dest == null || src == null)
 		{
@@ -229,7 +235,7 @@ public class ContentImporter
 		}
 		if (dest.Count != src.Count)
 		{
-			NoonUtility.Log("Native entries=" + dest.Count + " but loc entries=" + src.Count);
+			NoonUtility.Log("Native entries=" + dest.Count + " but loc entries=" + src.Count, messageLevel: 1);
 			changedDst = true;		// Force a reexport
 		}
 		if (dest.Count == 0 || src.Count == 0)
@@ -305,7 +311,7 @@ public class ContentImporter
 	{
 		// Copy localised language feilds from one dataset to the other
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
-		
+
 		if (dest == null || src == null)
 		{
 			return false;
@@ -316,7 +322,7 @@ public class ContentImporter
 		{
 			if (dest["id"].MakeString().CompareTo( src["id"].MakeString() ) != 0)
 			{
-				NoonUtility.Log("ERROR: Localisation expected ["+ dest["id"].MakeString() +"] but found ["+ src["id"].MakeString() +"]");
+				NoonUtility.Log("ERROR: Localisation expected ["+ dest["id"].MakeString() +"] but found ["+ src["id"].MakeString() +"]", messageLevel: 2);
 
 				//Debug.LogWarning("JSON original and translated don't match!");
 				return false;
@@ -482,7 +488,7 @@ public class ContentImporter
                     LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
             }
             if(!string.IsNullOrEmpty(e.Value.DecayTo))
-            { 
+            {
                 if(!Elements.ContainsKey(e.Value.DecayTo))
                     LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
 
@@ -494,7 +500,7 @@ public class ContentImporter
     {
 
         if (alElements == null)
-        { 
+        {
             LogProblem("Elements were never imported; PopulateElements failed");
             return 0;
         }
@@ -553,7 +559,7 @@ public class ContentImporter
                 else
                     element.Unique = false;
 
-     
+
 
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
 
@@ -568,7 +574,7 @@ public class ContentImporter
                 if (alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
                 foreach(var css in element.ChildSlotSpecifications)
-                { 
+                {
                     if(string.IsNullOrEmpty(css.ForVerb))
                 LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
                 }
@@ -636,10 +642,10 @@ public class ContentImporter
 
     public void ImportVerbs()
     {
-        
+
             //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
 
-   
+
         ArrayList verbsArrayList = GetContentItems(CONST_VERBS);
 
 
@@ -649,7 +655,7 @@ public class ContentImporter
                 Convert.ToBoolean(h["atStart"]));
             ArrayList alSlots = h.GetArrayList(NoonConstants.KSLOTS);
             if (alSlots != null)
-            { 
+            {
         var slots=AddSlotsFromArrayList(alSlots);
                 if (slots.Count > 1)
                     LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
@@ -666,7 +672,7 @@ public class ContentImporter
     private void ImportDeckSpecs()
     {
         ArrayList decksArrayList = GetContentItems(CONST_DECKS);
-        
+
         for (int i = 0; i < decksArrayList.Count; i++)
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
@@ -682,7 +688,7 @@ public class ContentImporter
                     {
                         if(!v.Contains(NoonConstants.DECK_PREFIX))
                             LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
-                        
+
 
                             thisDeckSpec.Add(v);
                     }
@@ -693,7 +699,7 @@ public class ContentImporter
                 LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
                            "' - " + e.Message);
             }
-       
+
 
             bool resetOnExhaustion=false;
             try
@@ -724,7 +730,7 @@ public class ContentImporter
 
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
-            
+
 
 
             try
@@ -778,7 +784,7 @@ public class ContentImporter
     public void ImportLegacies()
     {
         ArrayList legaciesArrayList = GetContentItems(CONST_LEGACIES);
-        
+
         for (int i = 0; i < legaciesArrayList.Count; i++)
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
@@ -848,7 +854,7 @@ public class ContentImporter
                         r.PortalEffect = (PortalEffect)Enum.Parse(typeof(PortalEffect), possiblePortalEffect, true);
                         htEachRecipe.Remove(NoonConstants.KPORTALEFFECT);
                     }
-                    catch 
+                    catch
                     {
                         LogProblem(r.Id + " has a PortalEffect specified that we don't think is right: " + possiblePortalEffect);
                     }
@@ -867,14 +873,14 @@ public class ContentImporter
                 if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
                     r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
                 htEachRecipe.Remove(NoonConstants.KSTARTDESCRIPTION);
-                
+
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KDESCRIPTION))
                     r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
                 htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
 
-                
-                
+
+
 
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
@@ -916,11 +922,11 @@ public class ContentImporter
 
                 if (htEachRecipe[NoonConstants.KID] == null)
                 {
-                 
+
                     LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
                 }
                 else
-                { 
+                {
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
                 }
             }
@@ -1004,7 +1010,7 @@ public class ContentImporter
 
                     }
             }
-        
+
             catch (Exception e)
             {
                 LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
@@ -1112,7 +1118,7 @@ public class ContentImporter
                         string filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
                         string mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
                         int mutationLevel= Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
-                        
+
                         bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
 
                         r.MutationEffects.Add(new MutationEffect(filterOnAspectId,mutateAspectId,mutationLevel,additive));
@@ -1131,7 +1137,7 @@ public class ContentImporter
 
 
 
-           
+
 
 
             //Finished! Import, tidy up.
@@ -1226,7 +1232,7 @@ public class ContentImporter
             }
             else
             {
-                
+
 
                 if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
@@ -1237,10 +1243,10 @@ public class ContentImporter
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1);
+            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1, messageLevel: 0);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages,1);
+            NoonUtility.Log("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages,1, messageLevel: 0);
     }
 
     public void PopulateCompendium(ICompendium compendium)
@@ -1274,7 +1280,7 @@ foreach(var d in _compendium.GetAllDeckSpecs())
 
 
         foreach (var p in GetContentImportProblems())
-            NoonUtility.Log(p.Description);
+            NoonUtility.Log(p.Description, messageLevel: 2);
 
     }
 

@@ -57,6 +57,21 @@
 	linked: [
 	{id: "explorevault_expeditionbegun",chance:100}],
 	},
+	
+			{
+	
+		id: "explore_vaultshires5_setup",
+	label: "Beginning an Expedition: the Gwaer Inn",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultshires5:1},
+	effects: {seal_wardeddoor:1,guardian_watchers:1},
+
+	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},
 				 	{
 	id: "explore_vaultshiresdefault_setup",
 	label: "Beginning an Expedition: Kerisham",
@@ -121,6 +136,19 @@
 	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
 	startdescription: "The air is stale, and dust sifts worryingly down from the rock above, but the dead lie still. This chamber, with its chalked figures and ancient stains, looks promising.",
 	description: "In a lead-lined sarcophagus lies the skeleton of a woman. She wasn't buried here: it looks like she crawled in to die... something has happened to the shape of her skull, pushing out the jaw like the muzzle of a beast. Scraps of rotting linen swathe her bones. Treasures lie among the remains of her clutching hands between her ribs.",
+	warmup:30,
+	craftable: false
+	},
+	
+		{
+	id: "explorevaultshires5_success",
+	label: "FNORD Gwaer Inn",
+	actionId: "explore",
+	requirements: {vaultshires5:1},
+	effects: {vaultshires5:-1},
+	deckeffect: {"vaultcontentsc":3},
+	startdescription: "FNORD",
+	description: "FNORD",
 	warmup:30,
 	craftable: false
 	},
