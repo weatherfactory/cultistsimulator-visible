@@ -1,0 +1,27 @@
+- action: explore
+  slot: vaultcapital2
+  aSlots:
+    expeditionmember: neville_d
+    expeditionmember2: enid_d
+    expeditionfunds: funds
+  recipes:
+    - explore_vaultcapital2_setup
+    - explorevault_expeditionbegun
+    - id: explorevaulttick
+      slot: funds
+    - id: explorevaultseal_hiddendoor_highknock
+      roll: 100
+    - explorevaultseal_hiddendoor_failure
+    - id: explorevaultseal_hiddendoor_highknock
+      roll: 1
+    - explorevaultseal_hiddendoor_success
+    - explorevaulttick
+    - explorevaultcapital2_success
+  results:
+    - toollanternb
+    - id: vaultcapital2
+      quantity: 0
+    - neville_d
+    - enid_d
+    - id: funds
+      quantity: < 1

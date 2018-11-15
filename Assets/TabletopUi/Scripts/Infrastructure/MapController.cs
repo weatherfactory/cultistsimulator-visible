@@ -8,6 +8,7 @@ using UnityEngine;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.Core.Entities;
 using Assets.Logic;
+using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -37,7 +38,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var activeDoor = _mapTokenContainer.GetActiveDoor();
             activeDoor.onCardDropped += HandleOnSlotFilled;
 
-            
+
             //get card position names
             //populate card positions 1,2,3 from decks with names of positions
             cards = new ElementStackToken[3];
@@ -61,7 +62,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             IDeckInstance subLocationDeck2 = character.GetDeckInstanceById(subLocationDeck2Id);
             if (doorDeck == null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
-            
+
 			DrawWithMessage dwm0 = dealer.DealWithMessage(doorDeck);
             cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dwm0.DrawnCard,activeDoor.portalType, dwm0.WithMessage);
             cards[0].FlipToFaceUp(true);
@@ -115,7 +116,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         void HandleOnCardTurned(ElementStackToken cardTurned) {
             if (cards != null)
-                for (int i = 0; i < cards.Length; i++) 
+                for (int i = 0; i < cards.Length; i++)
                     if (cards[i] != cardTurned)
                     {
                         cards[i].FlipToFaceUp();
@@ -136,7 +137,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _mapTokenContainer.SetActiveDoor(PortalEffect.None);
 
             // Kill all still existing cards
-            if (cards != null) { 
+            if (cards != null) {
                 foreach (var item in cards) {
                     if (item != pickedStack)
                         item.Retire(false);
@@ -178,13 +179,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void HideMansusMap(Transform effectCenter, IElementStack stack)
         {
-            Registry.Retrieve<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
+            Registry.Retrieve<ITabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }
 
 
 //not currently in use, preserve for quick debug
         public void CloseMap() {
-            Registry.Retrieve<TabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
+            Registry.Retrieve<ITabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
         }
     }
 }

@@ -1,0 +1,417 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Assets.Core.Entities;
+using Assets.Core.Interfaces;
+using Noon;
+using UnityEditor;
+using UnityEngine;
+using YamlDotNet.RepresentationModel;
+
+namespace Assets.Editor
+{
+    public class ContentTester : ISituationSimulatorSubscriber
+    {
+        private readonly SituationSimulator _simulator;
+        private ContentTest _currentContentTest;
+        private List<SituationRecipeSpec> _remainingExpectedRecipes;
+
+        private ContentTester()
+        {
+            _simulator = new SituationSimulator(this);
+        }
+
+        [MenuItem("Tools/Validate Content Assertions %#g")]
+        private static void ValidateContentAssertions()
+        {
+            // Clear the console of previous messages to reduce confusion
+            EditorUtils.ClearConsole();
+
+            // Load all the content tests
+            List<string> contentFilePaths = Directory.GetFiles(
+                Path.Combine(Application.dataPath, "Editor/ContentTests")).ToList().FindAll(f => f.EndsWith(".yaml"));
+            List<ContentTest> contentTests = new List<ContentTest>();
+            for (var i = 0; i < contentFilePaths.Count; i++)
+            {
+                var contentFilePath = contentFilePaths[i];
+                NoonUtility.Log("Loading content tests in " + contentFilePath);
+
+                // Read the YAML
+                var reader = new StringReader(File.ReadAllText(contentFilePath));
+                var yaml = new YamlStream();
+                yaml.Load(reader);
+
+                // Load the list of content tests
+                foreach (var document in yaml.Documents)
+                {
+                    var root = (YamlSequenceNode) document.RootNode;
+                    contentTests.AddRange(
+                        root.Children.Select(node => ContentTest.FromYaml(contentFilePath, i, (YamlMappingNode) node)));
+                }
+            }
+
+            // Start the simulator
+            ContentTester tester = new ContentTester();
+            NoonUtility.Log("Running " + contentTests.Count + " content tests.");
+            int numFailedTests = 0;
+            foreach (var test in contentTests)
+            {
+                try
+                {
+                    tester.RunTest(test);
+                }
+                catch (SituationSimulatorException e)
+                {
+                    NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message, messageLevel: 2);
+                    numFailedTests++;
+                }
+            }
+            NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", messageLevel: numFailedTests > 0 ? 1 : 0);
+        }
+
+        private void RunTest(ContentTest test)
+        {
+            // Set up our assertions
+            _currentContentTest = test;
+            _remainingExpectedRecipes = _currentContentTest.ExpectedRecipes != null ?
+                new List<SituationRecipeSpec>(_currentContentTest.ExpectedRecipes) : null;
+
+            // Run the test, which will call back to the event functions
+            Dictionary<string, string> additionalSlots = null;
+            if (test.StartingAdditionalSlotElements != null)
+                additionalSlots = test.StartingAdditionalSlotElements.ToDictionary(p => p.Key, p => p.Value.ElementId);
+            _simulator.RunSituation(
+                test.ActionId,
+                test.StartingPrimarySlotElement.ElementId,
+                additionalSlots);
+        }
+
+        public void OnRecipeStarted(Recipe recipe, SimulatedSlotsManager ongoingSlotsManager)
+        {
+            SituationRecipeSpec expectedRecipe = GetExpectedRecipeSpecIfNext(recipe);
+            if (expectedRecipe == null)
+                return;
+
+            // Try to fill in the slot if this is expected
+            if (expectedRecipe.Slot == null)
+                return;
+
+            SimulatedElementStack stack = new SimulatedElementStack();
+            stack.Populate(expectedRecipe.Slot.ElementId, 1, Source.Existing());
+            // TODO(Marc) Apply mutations
+            if (!ongoingSlotsManager.TryAddStackToSlot(null, stack))
+                throw new SituationSimulatorException(
+                    "Failed to add '" + stack.EntityId + "' to ongoing slot for recipe '" + recipe.Id + "'");
+        }
+
+        public int OnRecipeRollRequested(Recipe recipe)
+        {
+            if (recipe == null)
+                return 0;
+            SituationRecipeSpec expectedRecipe = GetExpectedRecipeSpecIfNext(recipe);
+            return expectedRecipe == null ? 0 : expectedRecipe.Roll;
+        }
+
+        public void OnRecipeExecuted(Recipe recipe)
+        {
+            SituationRecipeSpec expectedRecipe = GetExpectedRecipeSpecIfNext(recipe);
+            if (expectedRecipe == null)
+                return;
+            _remainingExpectedRecipes.Remove(expectedRecipe);
+        }
+
+        public void OnSituationCompleted(IEnumerable<IElementStack> outputStacks, string outputText)
+        {
+            // Check that all the expected recipes were encountered
+            if (_remainingExpectedRecipes != null)
+                foreach (var remainingRecipe in _remainingExpectedRecipes)
+                    throw new SituationSimulatorException(
+                        "Expected '" + remainingRecipe.RecipeId + "' but was never encountered");
+
+            // Check that the output elements are as expected, with the right quantities
+            // Since quantities might be split across multiple stacks, we first compile quantities by element,
+            // then run comparisons against them
+            if (_currentContentTest.ExpectedResults != null)
+            {
+                Dictionary<SituationResultSpec, int> encounteredQuantities = new Dictionary<SituationResultSpec, int>();
+                foreach (var outputStack in outputStacks)
+                {
+                    // TODO(Marc) Rework this for mutation support
+                    SituationResultSpec expectedResult = _currentContentTest.ExpectedResults.Find(
+                        er => er.ElementId == outputStack.EntityId);
+                    if (expectedResult == null)
+                        continue;  // Ignore any unexpected results
+                    int oldQuantity;
+                    encounteredQuantities.TryGetValue(expectedResult, out oldQuantity);
+                    encounteredQuantities[expectedResult] = oldQuantity + outputStack.Quantity;
+                }
+
+                foreach (var expectedResult in _currentContentTest.ExpectedResults)
+                {
+                    int quantity = 0;
+                    if (encounteredQuantities.ContainsKey(expectedResult))
+                    {
+                        quantity = encounteredQuantities[expectedResult];
+                    }
+
+                    bool test = false;
+                    string message = null;
+                    switch (expectedResult.Op)
+                    {
+                        case ComparisonOperator.LessThan:
+                            test = quantity < expectedResult.Quantity;
+                            message = "less than";
+                            break;
+                        case ComparisonOperator.LessThanOrEqual:
+                            test = quantity <= expectedResult.Quantity;
+                            message = "less than or equal to";
+                            break;
+                        case ComparisonOperator.Equal:
+                            test = quantity == expectedResult.Quantity;
+                            message = "equal to";
+                            break;
+                        case ComparisonOperator.GreaterThan:
+                            test = quantity > expectedResult.Quantity;
+                            message = "greater than";
+                            break;
+                        case ComparisonOperator.GreaterThanOrEqual:
+                            test = quantity >= expectedResult.Quantity;
+                            message = "greater than or equal";
+                            break;
+                    }
+                    if (!test)
+                        throw new SituationSimulatorException(
+                            "Was expecting '" + expectedResult.ElementId + "' to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
+                }
+            }
+
+            // Check that the output text matches
+            if (_currentContentTest.ExpectedResultText != null && !_currentContentTest.ExpectedResultText.Contains(outputText))
+                throw new SituationSimulatorException(
+                    "Expected output text to contain '" + _currentContentTest.ExpectedResultText + "' but got '" + outputText + "'");
+        }
+
+        private SituationRecipeSpec GetExpectedRecipeSpecIfNext(Recipe recipe)
+        {
+            if (_remainingExpectedRecipes == null || _remainingExpectedRecipes.Count == 0)
+                return null;
+
+            // Only consider the topmost recipe as a candidate, since every previous recipe needs to have been
+            // successfully executed
+            SituationRecipeSpec expectedRecipe = _remainingExpectedRecipes.First();
+            if (expectedRecipe == null)
+                return null;
+            return expectedRecipe.RecipeId != recipe.Id ? null : expectedRecipe;
+        }
+    }
+
+    internal class ContentTest
+    {
+        public string Id { get; private set; }
+
+        public string ActionId { get; private set; }
+
+        public SituationSlotSpec StartingPrimarySlotElement { get; private set; }
+
+        public Dictionary<string, SituationSlotSpec> StartingAdditionalSlotElements { get; private set; }
+
+        public List<SituationRecipeSpec> ExpectedRecipes { get; private set; }
+
+        public List<SituationResultSpec> ExpectedResults { get; private set; }
+
+        public string ExpectedResultText { get; private set; }
+
+        public static ContentTest FromYaml(string filePath, int entryNum, YamlMappingNode data)
+        {
+            ContentTest test = new ContentTest
+            {
+                Id = Path.GetFileNameWithoutExtension(filePath) + "_" + entryNum,
+                ActionId = data.Children["action"].ToString(),
+                StartingPrimarySlotElement = SituationSlotSpec.FromYaml(data.Children["slot"])
+            };
+
+            if (data.Children.ContainsKey("aSlots"))
+                test.StartingAdditionalSlotElements = ((YamlMappingNode) data.Children["aSlots"]).ToDictionary(
+                    p => p.Key.ToString(), p => SituationSlotSpec.FromYaml(p.Value));
+
+            if (data.Children.ContainsKey("recipes"))
+                test.ExpectedRecipes = ((YamlSequenceNode) data.Children["recipes"]).Children.Select(
+                    SituationRecipeSpec.FromYaml).ToList();
+
+            if (data.Children.ContainsKey("results"))
+                test.ExpectedResults = ((YamlSequenceNode) data.Children["results"]).Children.Select(
+                    SituationResultSpec.FromYaml).ToList();
+
+            if (data.Children.ContainsKey("text"))
+                test.ExpectedResultText = data.Children["text"].ToString();
+
+            return test;
+        }
+    }
+
+    internal class SituationSlotSpec
+    {
+        public string ElementId { get; private set; }
+
+        // TODO(Marc) Add support for mutations
+
+        public static SituationSlotSpec FromYaml(YamlNode data)
+        {
+            // Is it a dictionary?
+            var mappingNode = data as YamlMappingNode;
+            if (mappingNode != null)
+                return FromYaml(mappingNode);
+
+            // Is it just the element ID?
+            var node = data as YamlScalarNode;
+            return node != null ? FromYaml(node) : null;
+        }
+
+        private static SituationSlotSpec FromYaml(YamlMappingNode data)
+        {
+            var slotSpec = new SituationSlotSpec() {ElementId = data.Children["id"].ToString()};
+            return slotSpec;
+        }
+
+        private static SituationSlotSpec FromYaml(YamlScalarNode data)
+        {
+            var slotSpec = new SituationSlotSpec() {ElementId = data.ToString()};
+            return slotSpec;
+        }
+    }
+
+    internal class SituationRecipeSpec
+    {
+        public string RecipeId { get; private set; }
+
+        public SituationSlotSpec Slot { get; private set; }
+
+        public int Roll { get; private set; }
+
+        public static SituationRecipeSpec FromYaml(YamlNode data)
+        {
+            // Is it a dictionary?
+            var mappingNode = data as YamlMappingNode;
+            if (mappingNode != null)
+                return FromYaml(mappingNode);
+
+            // Is it just the recipe ID?
+            var node = data as YamlScalarNode;
+            return node != null ? FromYaml(node) : null;
+        }
+
+        private static SituationRecipeSpec FromYaml(YamlMappingNode data)
+        {
+            var recipeSpec = new SituationRecipeSpec()
+            {
+                RecipeId = data.Children["id"].ToString()
+            };
+
+            if (data.Children.ContainsKey("slot"))
+                recipeSpec.Slot = SituationSlotSpec.FromYaml(data.Children["slot"]);
+
+            if (data.Children.ContainsKey("roll"))
+                recipeSpec.Roll = int.Parse(data.Children["roll"].ToString());
+
+            return recipeSpec;
+        }
+
+        private static SituationRecipeSpec FromYaml(YamlScalarNode data)
+        {
+            var recipeSpec = new SituationRecipeSpec()
+            {
+                RecipeId = data.ToString(),
+                Roll = 0
+            };
+            return recipeSpec;
+        }
+    }
+
+    internal class SituationResultSpec
+    {
+        private static readonly Regex QuantityRegex = new Regex(@"^\s*([<>=]+)?\s*(\d+)\s*$");
+
+        public string ElementId { get; private set; }
+
+        public ComparisonOperator Op { get; private set; }
+
+        public int Quantity { get; private set; }
+
+        // TODO(Marc) Add support for mutations
+
+        public static SituationResultSpec FromYaml(YamlNode data)
+        {
+            // Is it a dictionary?
+            var mappingNode = data as YamlMappingNode;
+            if (mappingNode != null)
+                return FromYaml(mappingNode);
+
+            // Is it just the element ID?
+            var node = data as YamlScalarNode;
+            return node != null ? FromYaml(node) : null;
+        }
+
+        private static SituationResultSpec FromYaml(YamlMappingNode data)
+        {
+            var resultSpec = new SituationResultSpec()
+            {
+                ElementId = data.Children["id"].ToString(),
+                Quantity = 1,
+                Op = ComparisonOperator.Equal
+            };
+
+            // Check if the quantity is specified a simple number or a comparison
+            if (data.Children.ContainsKey("quantity"))
+            {
+                string quantityField = data.Children["quantity"].ToString();
+                Match match = QuantityRegex.Match(quantityField);
+                if (!match.Success)
+                    throw new SituationSimulatorException("Invalid quantity format: '" + quantityField + "'");
+                if (match.Groups[1].Length > 0)
+                    switch (match.Groups[1].Value)
+                    {
+                        case "<":
+                            resultSpec.Op = ComparisonOperator.LessThan;
+                            break;
+                        case "<=":
+                            resultSpec.Op = ComparisonOperator.LessThanOrEqual;
+                            break;
+                        case "==":
+                            resultSpec.Op = ComparisonOperator.Equal;
+                            break;
+                        case ">":
+                            resultSpec.Op = ComparisonOperator.GreaterThan;
+                            break;
+                        case ">=":
+                            resultSpec.Op = ComparisonOperator.GreaterThanOrEqual;
+                            break;
+                        default:
+                            throw new SituationSimulatorException("Unexpected quantity operator: '" + match.Groups[1].Value + "' in '" + quantityField + "'");
+                    }
+                resultSpec.Quantity = int.Parse(match.Groups[2].Value);
+            }
+            return resultSpec;
+        }
+
+        private static SituationResultSpec FromYaml(YamlScalarNode data)
+        {
+            var resultSpec = new SituationResultSpec()
+            {
+                ElementId = data.ToString(),
+                Quantity = 1,
+                Op = ComparisonOperator.Equal
+            };
+            return resultSpec;
+        }
+    }
+
+    internal enum ComparisonOperator
+    {
+        LessThan,
+        LessThanOrEqual,
+        Equal,
+        GreaterThan,
+        GreaterThanOrEqual,
+    }
+}

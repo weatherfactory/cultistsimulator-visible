@@ -19,6 +19,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using Noon;
 using OrbCreationExtensions;
+using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -28,7 +29,7 @@ using UnityEngine.XR.WSA;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour {
+    public class TabletopManager : MonoBehaviour, ITabletopManager {
 
         [Header("Game Control")]
         [SerializeField]
@@ -156,7 +157,7 @@ namespace Assets.CS.TabletopUI {
 			}
         }
 
-      
+
 
         void Start()
 		{
@@ -180,11 +181,11 @@ namespace Assets.CS.TabletopUI {
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
-                _speedController, 
-                _hotkeyWatcher, 
-                _cardAnimationController, 
-                _mapController, 
-                _endGameAnimController, 
+                _speedController,
+                _hotkeyWatcher,
+                _cardAnimationController,
+                _mapController,
+                _endGameAnimController,
                 _notifier,
                 _optionsPanel
                 );
@@ -194,7 +195,7 @@ namespace Assets.CS.TabletopUI {
             // Make sure dragging is reenabled
             DraggableToken.draggingEnabled = true;
 
-            
+
 
             BeginGame(_situationBuilder);
         }
@@ -328,7 +329,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice(debugTools));
-            registry.Register<TabletopManager>(this);
+            registry.Register<ITabletopManager>(this);
             registry.Register<SituationBuilder>(builder);
             registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
@@ -369,7 +370,7 @@ namespace Assets.CS.TabletopUI {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = LanguageTable.Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
-            newCharacter.Profession = chosenLegacy.Label;   
+            newCharacter.Profession = chosenLegacy.Label;
         }
 
         private void DealStartingDecks() {
@@ -406,7 +407,7 @@ namespace Assets.CS.TabletopUI {
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             CrossSceneState.RestartingGame();
-            
+
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -420,7 +421,7 @@ namespace Assets.CS.TabletopUI {
 
             var character = Registry.Retrieve<Character>();
             var chronicler = Registry.Retrieve<Chronicler>();
-            
+
             chronicler.ChronicleGameEnd(Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations(), Registry.Retrieve<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
 
 
@@ -492,7 +493,7 @@ namespace Assets.CS.TabletopUI {
 		{
             if (!IsSafeToAutosave())
                 return false;
-			
+
 			bool success = true;	// Assume everything will be OK to begin with...
 
 			// Check state so that autosave behaves correctly if called while paused - CP
@@ -555,7 +556,7 @@ namespace Assets.CS.TabletopUI {
             SituationController sit;
 
             foreach (var tokenSlotPair in slotsToFill) {
-                if (NeedToFillSlot(tokenSlotPair) == false) 
+                if (NeedToFillSlot(tokenSlotPair) == false)
                     continue; // Skip it, we don't need to fill it
 
                 var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.RecipeSlot.GoverningSlotSpecification) as ElementStackToken;
@@ -574,7 +575,7 @@ namespace Assets.CS.TabletopUI {
                     choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
-                
+
                 unprocessedSlots.Add(tokenSlotPair);
             }
 
@@ -610,7 +611,7 @@ namespace Assets.CS.TabletopUI {
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
                     return stack;
-    
+
             return null;
         }
 
@@ -916,13 +917,13 @@ namespace Assets.CS.TabletopUI {
 			// Toggle to simulate bad save
 			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"off") ))
 			{
-				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click 
+				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click
 			}
 
 			// Counter to show time to next autosave. Click it to reduce to a five second countdown
 			if (GUI.Button( new Rect(Screen.width * 0.5f - 100f, 10f, 150f, 20f), "Autosave in " + (int)(AUTOSAVE_INTERVAL-housekeepingTimer) ))
 			{
-				housekeepingTimer = AUTOSAVE_INTERVAL - 5f;		// Click 
+				housekeepingTimer = AUTOSAVE_INTERVAL - 5f;		// Click
 			}
 
 			if (!IsSafeToAutosave())

@@ -10,11 +10,12 @@ using Noon;
 using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using TabletopUi.Scripts.Interfaces;
 
 public class OptionsPanel : MonoBehaviour {
 
-    
-	
+
+
 	[SerializeField] private GameObject windowGO;
 
     [Header("Controls")]
@@ -25,7 +26,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private Slider autosaveSlider;
 	[SerializeField] private Slider	snapGridSlider;
     [SerializeField] private Slider birdWormSlider;
-    
+
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
 	[SerializeField] private TextMeshProUGUI inspectionTimeSliderValue;
@@ -69,9 +70,9 @@ public class OptionsPanel : MonoBehaviour {
 	[SerializeField]
 	private CanvasScaleManager screenCanvasScaler;
 
-    
+
     SpeedController speedController;
-    
+
 
     private const string MUSICVOLUME="MusicVolume";
     private const string SOUNDVOLUME = "SoundVolume";
@@ -85,7 +86,7 @@ public class OptionsPanel : MonoBehaviour {
     private bool _isInGame = true;
 
     public void InitPreferences( SpeedController spdctrl,bool isInGame)
-	{	
+	{
 		windowGO.SetActive(false);
         _isInGame = isInGame;
 
@@ -97,7 +98,7 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Music / Setting default
 
-        if (PlayerPrefs.HasKey(MUSICVOLUME)) 
+        if (PlayerPrefs.HasKey(MUSICVOLUME))
             value = PlayerPrefs.GetFloat(MUSICVOLUME);
         else
             value = 10f;
@@ -108,9 +109,9 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Sound / Setting default
 
-        if (PlayerPrefs.HasKey(SOUNDVOLUME)) 
+        if (PlayerPrefs.HasKey(SOUNDVOLUME))
             value = PlayerPrefs.GetFloat(SOUNDVOLUME);
-        else 
+        else
             value = 10f;
 
         SetSoundVolume(value); // this does nothing, since we're disabled but updates the value hint
@@ -121,7 +122,7 @@ public class OptionsPanel : MonoBehaviour {
 
         if (PlayerPrefs.HasKey(NOTIFICATIONTIME))
             value = PlayerPrefs.GetFloat(NOTIFICATIONTIME);
-        else 
+        else
             value = 0f;
 
         SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
@@ -132,7 +133,7 @@ public class OptionsPanel : MonoBehaviour {
 
 		if (PlayerPrefs.HasKey(SCREENCANVASSIZE))
 			value = PlayerPrefs.GetFloat(SCREENCANVASSIZE);
-		else 
+		else
 			value = 1f; // Set default scale to 100%
 
 		SetCanvasScaleSize(value); // this does nothing, since we're disabled but updates the value hint
@@ -143,7 +144,7 @@ public class OptionsPanel : MonoBehaviour {
 
         if (PlayerPrefs.HasKey(AUTOSAVEINTERVAL))
             value = PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
-        else 
+        else
             value = 5f;
 
         SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
@@ -184,7 +185,7 @@ public class OptionsPanel : MonoBehaviour {
 
     public void ToggleVisibility() {
 		windowGO.SetActive(!windowGO.activeSelf);
-        
+
         if (!_isInGame)
 			return;
 
@@ -212,9 +213,9 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
         if(restartButton.AttemptRestart())
-        { 
-		
-        Registry.Retrieve<TabletopManager>().RestartGame();
+        {
+
+        Registry.Retrieve<ITabletopManager>().RestartGame();
         ToggleVisibility();
         }
     }
@@ -223,8 +224,8 @@ public class OptionsPanel : MonoBehaviour {
 	{
 		if (!_isInGame)
 			return;
-		
-        var tabletopManager = Registry.Retrieve<TabletopManager>();
+
+        var tabletopManager = Registry.Retrieve<ITabletopManager>();
         tabletopManager.SetPausedState(true);
         if (tabletopManager.SaveGame(true))
 		{
@@ -254,7 +255,7 @@ public class OptionsPanel : MonoBehaviour {
     public void ManageSaves( bool open )
 	{
 		this.gameObject.SetActive( !open );
-		manageSavesWindow.SetActive( open );  
+		manageSavesWindow.SetActive( open );
     }
 
 	public void SaveErrorContinue()
@@ -268,7 +269,7 @@ public class OptionsPanel : MonoBehaviour {
 		// Reload last good savegame
 		Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
 
-		Registry.Retrieve<TabletopManager>().LoadGame();
+		Registry.Retrieve<ITabletopManager>().LoadGame();
 	}
 
     // public button events
@@ -337,7 +338,7 @@ public class OptionsPanel : MonoBehaviour {
 	{
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
-		
+
 		SetSnapGridInternal(value);
 		RefreshOptionsText();
 		SoundManager.PlaySfx("UISliderMove");
@@ -351,7 +352,7 @@ public class OptionsPanel : MonoBehaviour {
 	    try
 	    {
 
-	    
+
         // Inspect time
         inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
 
@@ -365,13 +366,13 @@ public class OptionsPanel : MonoBehaviour {
 		{
 		default:
 		case 0:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_0" ); break;
-		case 1:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_1" ); break;		
+		case 1:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_1" ); break;
 		case 2:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_2" ); break;
 		case 3:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_3" ); break;
 		}
 
 		// Bird/worm
-        
+
         birdWormSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM" );
 	    }
 	    catch (NullReferenceException)
@@ -414,7 +415,7 @@ public class OptionsPanel : MonoBehaviour {
         return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
     }
 
-	// 
+	//
 
 	void SetInspectionWindowTimeInternal(float value) {
 		// value ranges from -4 to 1
@@ -453,7 +454,7 @@ public class OptionsPanel : MonoBehaviour {
 		return value * scaleSliderFactor;
 	}
 
-	// 
+	//
 
     void SetAutosaveIntervalInternal(float value)
 	{
@@ -462,8 +463,8 @@ public class OptionsPanel : MonoBehaviour {
 
 		if (!_isInGame)
 			return;
-		
-		var tabletopManager = Registry.Retrieve<TabletopManager>();
+
+		var tabletopManager = Registry.Retrieve<ITabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );
     }
 
@@ -474,8 +475,8 @@ public class OptionsPanel : MonoBehaviour {
 
 		if (!_isInGame)
 			return;
-		
-		var tabletopManager = Registry.Retrieve<TabletopManager>();
+
+		var tabletopManager = Registry.Retrieve<ITabletopManager>();
 		tabletopManager.SetGridSnapSize( value );
     }
 }

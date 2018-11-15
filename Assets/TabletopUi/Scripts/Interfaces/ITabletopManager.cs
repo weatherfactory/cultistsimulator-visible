@@ -1,0 +1,41 @@
+using System.Collections.Generic;
+using Assets.Core.Commands;
+using Assets.Core.Entities;
+using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
+using UnityEngine;
+
+namespace TabletopUi.Scripts.Interfaces
+{
+    public interface ITabletopManager
+    {
+        void ForceAutosave();
+        void ToggleLog();
+        bool IsPaused();
+        void SetupNewBoard(SituationBuilder builder);
+        void ProvisionStartingElements(Legacy chosenLegacy, Choreographer choreographer);
+        void ClearGameState(Heart h, IGameEntityStorage s, TabletopTokenContainer tc);
+        void RestartGame();
+        void EndGame(Ending ending, SituationController endingSituation);
+        void LoadGame();
+        bool SaveGame(bool withNotification);
+        HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill);
+        void CloseAllSituationWindowsExcept(string exceptTokenId);
+        void DecayStacksOnTable(float interval);
+        void DecayStacksInResults(float interval);
+        void SetPausedState(bool paused);
+        bool GetPausedState();
+        void SetAutosaveInterval(float minutes);
+        void SetGridSnapSize(float snapsize);
+        void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect);
+        void ReturnFromMansus(Transform origin, ElementStackToken mansusCard);
+        void BeginNewSituation(SituationCreationCommand scc, List<IElementStack> withStacksInStorage);
+        void SignalImpendingDoom(ISituationAnchor situationToken);
+        void NoMoreImpendingDoom(ISituationAnchor situationToken);
+        void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec);
+    }
+}

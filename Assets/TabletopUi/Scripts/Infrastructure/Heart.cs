@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 
 
 public enum GameSpeed
@@ -23,12 +24,12 @@ public class Heart : MonoBehaviour
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
 	// Autosave tracking is now done in TabletopManager.Update()
-    
-    
+
+
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
     private GameSpeed CurrentGameSpeed=GameSpeed.Normal;
-    
+
 
     public bool IsPaused { get; private set; }
 
@@ -80,7 +81,7 @@ public class Heart : MonoBehaviour
         {
             beatCounter = 0;
 
-            outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
+            outstandingSlotsToFill = Registry.Retrieve<ITabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
     }
@@ -88,7 +89,7 @@ public class Heart : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        Registry.Retrieve<TabletopManager>().SaveGame(true);
+        Registry.Retrieve<ITabletopManager>().SaveGame(true);
         SteamworksIntegration.Release();
     }
 
@@ -96,7 +97,7 @@ public class Heart : MonoBehaviour
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        var tabletopManager = Registry.Retrieve<TabletopManager>();
+        var tabletopManager = Registry.Retrieve<ITabletopManager>();
         var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sc in situationControllers)
@@ -104,7 +105,7 @@ public class Heart : MonoBehaviour
             HeartbeatResponse response = sc.ExecuteHeartbeat(intervalThisBeat);
 
             foreach (var r in response.SlotsToFill) {
-                if (!OutstandingSlotAlreadySaved(r)) 
+                if (!OutstandingSlotAlreadySaved(r))
                     outstandingSlotsToFill.Add(r);
             }
         }
@@ -115,7 +116,7 @@ public class Heart : MonoBehaviour
 
     bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {
         foreach (var item in outstandingSlotsToFill)
-            if (item.Token == slot.Token && item.RecipeSlot == slot.RecipeSlot) 
+            if (item.Token == slot.Token && item.RecipeSlot == slot.RecipeSlot)
                 return true;
 
         return false;
