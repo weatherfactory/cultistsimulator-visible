@@ -58,7 +58,7 @@
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "FNORD",
+            description: "A Nonconformist enclave of a heterodox sect of a Calvinist offshoot, tucked away in an odd corner of the city. They belt out hymns with unsuitable gusto, in a throat-scraping language that is very much not quite Latin.",
 			unique:true
         },
 				{
@@ -129,7 +129,7 @@
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "FNORD",
+            description: "On a crumbling cliff above a grey sea, the Gwaer Inn squats, until the day the sea comes for it. It receives few guests - fewer since the owner closed his notorious library to visiting scholars.",
 			unique:true
         },
 				{
@@ -197,14 +197,14 @@
 		
 						{
         id: "vaultcontinent5",
-            label: "Foreman House",
+            label: "Forman House",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "FNORD",
+            description: "Filip Forman, the helminthologist and antiquarian, did all his best work here at the family home, until the day his subjects escaped. The infestation was destroyed, but Forman, they say, walks the halls to this day, guarding his library and his shame ",
 			unique:true
         },
 		
@@ -218,7 +218,7 @@
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
 
-            description: "FNORD",
+            description: "Vienna is one of those few cities which has the same name in every History, although adepts know it as the White City, or perhaps the City of the White. In a snowy street, in a crooked house, in a high and rattling attic, we have learnt that an eccentric hunter of imaginary keys has established a tiny trove of odd books.",
 			unique:true
         },
 				{
@@ -292,7 +292,7 @@
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
 			],
-            description: "FNORD",
+            description: "Prince Kusnetsov gave one fourth part of his blood-soaked fortune to the establishment of a Department for Eschatoloy at this provincial university. The staff have grown peculiar, now, and the buildings fester in a freezing swamp, but some of Kusnetsov's bequest, perhaps, was spent on treasures.",
 			unique:true
         },
 				{
@@ -503,7 +503,7 @@
 							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sendingheartf:1,sendingmothf:1},actionId:"explore"},
 
 			],
-            description: "FNORD", 
+            description: "A battered but surprisingly plush steamer, much used by actors fleeing scandal, by shy millionaires, by occult scholars who feel safer with moving water under them;  and,just once, by the Ligeia Club, who chartered the whole ship for the use of seven cabins.", 
 unique:true			},
 
 ]
