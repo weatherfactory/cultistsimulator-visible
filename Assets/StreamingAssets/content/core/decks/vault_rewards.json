@@ -1,5 +1,6 @@
 {"decks":
 [
+
 {id: "vaultcontentsc",
 label:"Common Treasures",
 description: "Archaeologist's gleanings and lesser relics",
@@ -64,18 +65,9 @@ spec:
 "textbooklatin",
 "textbookgreek",
 "textbookaramaic",
-"textbooksanskrit",
-
-"compensation",
-"compensationb",
-"compensation",
-"compensationb",
-"compensation",
-"compensationb",
-"compensation",
-"compensationb"],
-defaultcard: "compensation",
-resetonexhaustion:false
+"textbooksanskrit", 
+],
+resetonexhaustion:true
 },
 {id: "vaultcontentsu",
 label:"Uncommon Treasures",
@@ -139,17 +131,8 @@ spec:
 "highmysterieschurchsolarfucine",
 "textbookfucinelatin",
 "textbookphrygiangreek",
-"textbookmandaicaramaic",
-"compensationc",
-"compensationc",
-"compensationc",
-"compensationc",
-"compensationc",
-"compensationc",
-"compensationc",
-"compensationc"],
-defaultcard: "compensationb",
-resetonexhaustion:false
+"textbookmandaicaramaic"],
+resetonexhaustion:true
 },
 {id: "vaultcontentsr",
 label:"Rare Treasures",
@@ -203,18 +186,8 @@ spec:
 "voyagesfofucine",
 "scarskyfucine",
 
-"textbookvaksanskrit",
-"compensationd",
-"compensationd",
-"compensationd",
-"compensationd",
-
-"compensationd",
-"compensationd",
-"compensationd",
-"compensationd",],
-defaultcard: "compensationc",
-resetonexhaustion:false
+"textbookvaksanskrit"],
+resetonexhaustion:true
 },
 
 ]
