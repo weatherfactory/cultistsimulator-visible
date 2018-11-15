@@ -61,11 +61,11 @@
 		{
 	
 		id: "explore_vaultlandbeyondforest5_setup",
-	label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
+	label: "Beginning an Expedition: the Kusnetsov Endowment",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultlandbeyondforest5:1},
 	effects: {seal_hiddendoor:1,guardian_watchers:1,peril_treacherousground:1},
-	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "The journey to the Endowment buildings is not long, but the ground is difficult. We have sent three times for permission to visit, and received a less friendly answer each time. No doubt the staff will attempt to forbid our entry. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -137,12 +137,12 @@
 	
 		{
 	id: "explorevaultlandbeyondforest5_success",
-	label: "FNORD Kusnetsov Endowment",
+	label: "Words' End",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest5:1},
 	effects: {vaultlandbeyondforest5:-1,burningwomanphrygian:1,	encirclingtantrasanskrit:1,	knownunknowntantrasanskrit:1,	ironbookfucine:1,	silverbookfucine:1,	matthiasamethystpursuitaramaic:1},
-	startdescription: "FNORD",
-	description: "FNORD",
+	startdescription: "The library ceiling collapsed years ago. Many of the books have been reduced to swollen pulp by dripping water. Something must remain. ",
+	description: "A portrait of a genially smiling man - dark skin, bright eyes, no hair nor eyebrows - watches over the ruined library. It is titled 'Don't Mind Me', and signed with an indecipherable serpentine scrawl. The paint is peeling. It watches us with its benevolent smile as we select the treasures from the books on the shelves.",
 	warmup:30,
 	craftable: false
 	},

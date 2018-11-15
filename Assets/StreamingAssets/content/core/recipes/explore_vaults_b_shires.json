@@ -66,7 +66,7 @@
 	requirements:{funds:1,follower:1,vaultshires5:1},
 	effects: {seal_wardeddoor:1,guardian_watchers:1},
 
-	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "We can reserve rooms at the Inn easily enough, but we can expect the locals - if they divine our intentions - to turn nasty. And if the library is still there, it will be well-hidden. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -138,12 +138,12 @@
 	
 		{
 	id: "explorevaultshires5_success",
-	label: "FNORD Gwaer Inn",
+	label: "The White Library",
 	actionId: "explore",
 	requirements: {vaultshires5:1},
 	effects: {vaultshires5:-1,shavenlocktantrasanskrit:1,concursumdiariesphrygian:1,thosewhodonotsleepfucine:1,	matthiasamethystlossaramaic:1},
-	startdescription: "FNORD",
-	description: "FNORD",
+	startdescription: "The room is bleached and quiet. The chairs are pale wood; the table is topped with white marble. the A low draught blows through the ill-fitting sea-facing casement. In winter, it must be insupportably cold. A white-painted glass case holds a shelf of books, wrapped oddly in coils of copper wire.",
+	description: "Some of the books are exotic eighteenth-century pornography. Others are botanist's journals. Some, however, have real value. A yellowing note tucked into the spine of one reads 'Watch for me. - JC.'",
 	warmup:30,
 	craftable: false
 	},

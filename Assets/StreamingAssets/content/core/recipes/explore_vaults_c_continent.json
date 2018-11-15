@@ -63,12 +63,12 @@
 			{
 	
 		id: "explore_vaultcontinent5_setup",
-	label: "Beginning an Expedition: Foreman House",
+	label: "Beginning an Expedition: Forman House",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultcontinent5:1},
 	effects: {guardian_dead:1,curse_dread:1},
 
-	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Unquestionably, this bleak mansion is haunted. The last visitor saw and fled the dead before they could touch him with their fraying hands. The visitor before that claimed she saw nothing, but she died of despair exactly one year later to the day. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -82,7 +82,7 @@
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultcontinent6:1},
 	effects: {guardian_serpent:1,seal_hiddendoor:1},
-	startdescription: "FNORD [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Once in Vienna, we hear that the key-hunter has not been seen for many days. A local drunk insists that a great serpent entered the house to devour them. Certainly, the house is unlit and boarded up, and there is a reptile-house smell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -155,24 +155,24 @@
 	
 		{
 	id: "explorevaultcontinent5_success",
-	label: "FNORD Foreman House",
+	label: "The Casts",
 	actionId: "explore",
 	requirements: {vaultcontinent5:1},
 	effects: {vaultcontinent5:-1,devouredtantrasanskrit:1,worlddoesnotweeparamaic:1,deedsofthescarredcaptaingreek:1,matthiasamethysttransformationaramaic:1},
-	startdescription: "FNORD",
-	description: "FNORD",
+	startdescription: "In the room that overlooks the grimy glass of the broken conservatory, twisted shapes yellow-pale as maggots recline on slabs of wood. These are the plaster-casts that Forman made of the poor souls inhabited by the creatures he studied. In some of the figures, the entry-holes are visible in the relevant surface. In others, we might assume the creatures entered by ear, or mouth, or elsewhere. ",
+	description: "The room is empty. But at last, when we chance to break one of the casts, we find Forman's library-treasures, cached in the figure's yellowing abdomen.",
 	warmup:30,
 	craftable: false
 	},
 	
 			{
 	id: "explorevaultcontinent6_success",
-	label: "FNORD Garret",
+	label: "Ashes Above",
 	actionId: "explore",
 	requirements: {vaultcontinent6:1},
 	effects: {vaultcontinent6:-1,onthematterandthedeedsofserpentsvak:1,irreproachabletraditionssocietynobleendeavourlatin:1,textbookfucinelatin:1,serenityofblackwoodgreek:1},
-	startdescription: "FNORD",
-	description: "FNORD",
+	startdescription: "The room stinks of serpent-musk and burnt paper. Someone has comprehensively destroyed all the records they could find. They've even scrubbed the walls clean. Cold ashes choke the fireplace. No trace of the poor soul who rented this place remains.",
+	description: "A single corner of fire-curled paper has survived the flames. In a shaky hand, it reads: 'Lady K. Green Chalcedony. Three-lobed. Spring leaves in fi -' But, unexpectedly,in a suitcase beside the flames, a little trove of books survives. Whoeer destroyed the key-hunter's journals saw no need to burn these books.",
 	warmup:30,
 	craftable: false
 	},
