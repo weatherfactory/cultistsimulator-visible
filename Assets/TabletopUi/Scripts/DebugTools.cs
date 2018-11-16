@@ -49,7 +49,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     public void Awake()
     {
         btnPlusOne.onClick.AddListener(() => AddCard(input.text));
-        btnMinusOne.onClick.AddListener(() => DecrementElement(input.text));
+        btnMinusOne.onClick.AddListener(() => RemoveItem(input.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
         btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
         btnEndGame.onClick.AddListener(EndGame);
@@ -94,9 +94,15 @@ public class DebugTools : MonoBehaviour,IRollOverride
         stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
-    void DecrementElement(string elementId)
+    void RemoveItem(string itemId)
     {
-        tabletop.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
+        //do we have an inactive empty verb with this id?
+       var possibleEmptyVerb= Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationToken.EntityId==itemId);
+        if(possibleEmptyVerb!=null)
+        { if(!possibleEmptyVerb.situationWindow.GetOutputStacks().Any() && !possibleEmptyVerb.IsOngoing)
+            possibleEmptyVerb.Retire();
+        }
+        tabletop.GetElementStacksManager().ModifyElementQuantity(itemId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
     void BeginSituation(string recipeId)
