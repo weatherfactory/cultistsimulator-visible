@@ -42,7 +42,7 @@
             label: "Vitality: a Lesson Learnt ",
           aspects:
             {advancement:1,heart:2,influence:1},
-            description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes.]",
+            description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes before it decays back to a Vitality.]",
 			xtriggers:{upgradeinfluence:influenceheartc},
 		lifetime: 300,
 		decayTo:"vitality"
@@ -162,7 +162,7 @@ lifetime: 180,
             label: "Erudition: a Lesson Learnt",
           aspects:
             {advancement:1,lantern:2,influence:1},
-            description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Reason. It lasts up to five minutes.]",
+            description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Reason. It lasts up to five minutes before it decays back to an Erudition.]",
 		lifetime: 300,
 			xtriggers:{upgradeinfluence:influencelanternc},
 			decayTo:"erudition"
@@ -222,7 +222,7 @@ lifetime: 180,
             label: "Glimmering: a Lesson Learnt",
           aspects:
             {advancement:1,moth:2,influence:1},
-            description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes.]",
+            description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes before it decays back to a Glimmering.]",
 		lifetime: 300,
 			xtriggers:{upgradeinfluence:influencemothc},
 			decayTo:"glimmering"
