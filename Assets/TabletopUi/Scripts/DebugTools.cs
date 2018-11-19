@@ -13,13 +13,14 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.VR;
 
 public class DebugTools : MonoBehaviour,IRollOverride
 {
-    
+
     [SerializeField] private TabletopTokenContainer tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
@@ -74,17 +75,17 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         var element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
 
-        if (element == null) { 
+        if (element == null) {
             Debug.LogWarning("No Element with ID " + elementId + " found!");
             return;
         }
 
         //check if there's an existing stack of that type to increment
-        if (!element.Unique) { 
+        if (!element.Unique) {
             foreach (var stack in existingStacks)
             {
                 if(stack.EntityId==elementId)
-                { 
+                {
                     stack.ModifyQuantity(1);
                     return;
                 }
@@ -110,12 +111,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var compendium = Registry.Retrieve<ICompendium>();
         var recipe = compendium.GetRecipeById(recipeId.Trim());
         if (recipe!=null)
-        { 
+        {
             var situationEffectCommand=new SituationEffectCommand(recipe,true,null);
 
         IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(situationEffectCommand);
         SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
-        Registry.Retrieve<TabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
+        Registry.Retrieve<ITabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);
@@ -172,17 +173,17 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
         var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];
 
-        Registry.Retrieve<TabletopManager>().EndGame(ending, deathSit);
+        Registry.Retrieve<ITabletopManager>().EndGame(ending, deathSit);
     }
 
     public void LoadGame()
     {
-        Registry.Retrieve<TabletopManager>().LoadGame();
+        Registry.Retrieve<ITabletopManager>().LoadGame();
     }
 
     public void SaveGame()
     {
-        Registry.Retrieve<TabletopManager>().SaveGame(true);
+        Registry.Retrieve<ITabletopManager>().SaveGame(true);
     }
 
     void ResetDecks()
@@ -213,7 +214,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         rollsQueued.text = string.Empty;
         foreach(var i in QueuedRollsList)
-        { 
+        {
             if (rollsQueued.text!="")
                 rollsQueued.text += ", ";
 
@@ -221,12 +222,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
     }
 
-    public int PopNextOverrideValue()
+    public int PopNextOverrideValue(Recipe recipe = null)
     {
         if (!QueuedRollsList.Any())
             return 0;
         else
-        { 
+        {
         int result = QueuedRollsList.First();
             QueuedRollsList.RemoveAt(0);
             UpdatedQueuedRollsDisplay();
@@ -239,6 +240,7 @@ public interface IRollOverride
 {
     //if at least one override is queued, pop it and return it
     //if none are queued, return 0
-    int PopNextOverrideValue();
+    // If a contextual recipe is passed, it can affect the dice roll
+    int PopNextOverrideValue(Recipe recipe = null);
 
 }

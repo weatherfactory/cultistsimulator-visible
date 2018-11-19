@@ -43,7 +43,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
 
-            
+
             situationController.StartingSlotsUpdated();
 
             if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
@@ -83,7 +83,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetAllSlots());
 
             foreach (RecipeSlot s in currentSlots) {
-                if (s != null & s.GetElementStackInSlot() == null & s.childSlots.Count > 0) {
+                if (s != null && s.GetElementStackInSlot() == null && s.childSlots.Count > 0) {
                     List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
                     s.childSlots.Clear();
 
@@ -127,7 +127,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             DraggableToken tokenContained = slot.GetTokenInSlot();
 
-            if (tokenContained != null) 
+            if (tokenContained != null)
                 tokenContained.ReturnToTabletop(context);
         }
 

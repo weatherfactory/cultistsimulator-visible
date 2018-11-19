@@ -18,6 +18,7 @@ using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -132,9 +133,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-     
 
-        
+
+
         public void SetQuantity(int quantity) {
             _quantity = quantity;
             if (quantity <= 0) {
@@ -197,41 +198,15 @@ namespace Assets.CS.TabletopUI {
             IAspectsDictionary aspectsToReturn=new AspectsDictionary();
 
             if (includeSelf)
-            { 
+            {
                 aspectsToReturn.CombineAspects(_element.AspectsIncludingSelf);
                 aspectsToReturn[_element.Id] = aspectsToReturn[_element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
             }
             else
                 aspectsToReturn.CombineAspects(_element.Aspects);
 
-            foreach(KeyValuePair<string,int> mutation in _currentMutations)
-            {
-                if (mutation.Value > 0)
-                {
-                    if (aspectsToReturn.ContainsKey(mutation.Key))
-                        aspectsToReturn[mutation.Key] += mutation.Value;
-                    else
-                        aspectsToReturn.Add(mutation.Key,mutation.Value);
-                }
-                else if (mutation.Value < 0)
-                {
-                    if (aspectsToReturn.ContainsKey(mutation.Key))
-                    {
-                        if (aspectsToReturn.AspectValue(mutation.Key)+ mutation.Value<=0)
-                            aspectsToReturn.Remove(mutation.Key);
-                        else
-                            aspectsToReturn[mutation.Key] += mutation.Value;
-                    }
-                    else
-                    {
-                        //do nothing. We used to log this, but it's an issue when we are eg adding a -1 to remove an element that was added in play.
-                        // NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
-                    }
+            aspectsToReturn.ApplyMutations(_currentMutations);
 
-                }
-
-                    
-            }
             return aspectsToReturn;
         }
 
@@ -252,7 +227,7 @@ namespace Assets.CS.TabletopUI {
                 _currentMutations = new Dictionary<string, int>();
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
-            if (CurrentStacksManager == null) 
+            if (CurrentStacksManager == null)
                 CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
         }
@@ -271,7 +246,7 @@ namespace Assets.CS.TabletopUI {
             NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
 
             InitialiseIfStackIsNew();
-        
+
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
@@ -344,7 +319,7 @@ namespace Assets.CS.TabletopUI {
             // If we're not unique and we've never been on the table, auto-merge us!
             else if (!_element.Unique && lastTablePos == null)
 			{
-                var tabletop = Registry.Retrieve<TabletopManager>();
+                var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
@@ -372,7 +347,7 @@ namespace Assets.CS.TabletopUI {
             merge.Retire(false);
         }
 
- 
+
         // Called from StacksManager
         public void SetStackManager(IElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
@@ -395,7 +370,7 @@ namespace Assets.CS.TabletopUI {
             if (newTokenContainer != null)
                 newTokenContainer.SignalStackAdded(this, context);
         }
-        
+
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
             subscribedChronicler.TokenPlacedOnTabletop(this);
@@ -532,7 +507,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
 				return;
-			
+
 			// Compile list of valid slots
 			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
 			var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
@@ -582,7 +557,7 @@ namespace Assets.CS.TabletopUI {
 						//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
 					}
 					else
-					{	
+					{
 						//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
 						var choreo = Registry.Retrieve<Choreographer>();
 						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
@@ -590,7 +565,7 @@ namespace Assets.CS.TabletopUI {
 						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone,SEND_STACK_TO_SLOT_DURATION);
 					}
 				}
-			}			
+			}
 		}
 
         public override void OnPointerClick(PointerEventData eventData)
@@ -671,7 +646,7 @@ namespace Assets.CS.TabletopUI {
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays)
-			{ 
+			{
                 notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
             }
         }
@@ -702,7 +677,7 @@ namespace Assets.CS.TabletopUI {
 
         protected override void StartDrag(PointerEventData eventData) {
             // to ensure these are set before we split the cards
-            DraggableToken.itemBeingDragged = this; 
+            DraggableToken.itemBeingDragged = this;
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
@@ -732,7 +707,7 @@ namespace Assets.CS.TabletopUI {
                     tokenDroppedOn.OpenSituation();
                 else
                     tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
-                
+
 
                 return;
             }
@@ -752,7 +727,7 @@ namespace Assets.CS.TabletopUI {
             */
         }
 
-     
+
 
         public void Decay(float interval) {
             if (!Decays)
@@ -831,7 +806,7 @@ namespace Assets.CS.TabletopUI {
 
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer)
-		{    
+		{
 			if (Decays)
 				decayVisible = showTimer;
 			if(decayView!=null)
@@ -857,7 +832,7 @@ namespace Assets.CS.TabletopUI {
             {
                 artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
             }
-            
+
         }
 
         public void ShowCardShadow(bool show)
@@ -867,7 +842,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        
+
         public bool ChangeThisCardOnDesktopTo(string elementId) {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
@@ -897,7 +872,7 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        
+
 
         public void FlipToFaceUp(bool instant = false)
         {
@@ -1026,9 +1001,9 @@ namespace Assets.CS.TabletopUI {
                 yield return null;
             }
 
-            // remove anim 
+            // remove anim
             artwork.overrideSprite = null;
         }
-        
+
     }
 }

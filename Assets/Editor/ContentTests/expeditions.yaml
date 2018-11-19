@@ -1,0 +1,51 @@
+- action: explore
+  slot: vaultcapital2
+  aSlots:
+    expeditionmember: neville_d
+    expeditionmember2: enid_d
+    expeditionfunds: funds
+  recipes:
+    - explore_vaultcapital2_setup
+    - explorevault_expeditionbegun
+    - id: explorevaulttick
+      slot: funds
+    - id: explorevaultseal_hiddendoor_highknock
+      roll: 100
+    - explorevaultseal_hiddendoor_failure
+    - id: explorevaultseal_hiddendoor_highknock
+      roll: 1
+    - explorevaultseal_hiddendoor_success
+    - explorevaulttick
+    - explorevaultcapital2_success
+  output:
+    - toollanternb
+    - id: vaultcapital2
+      quantity: 0
+    - neville_d
+    - enid_d
+    - id: funds
+      quantity: < 1
+
+- action: explore
+  slot: vaultcapital1
+  aSlots:
+    expeditionmember: victor_d
+    expeditionfunds: funds
+  recipes:
+    - id: explorevaulttick
+      slot: funds
+    - explorevaultguardian_watchers_encounter
+    - id: explorevaultguardian_watchers_highedge
+      roll: 100
+    - id: explorevaultguardian_watchers_failure
+      roll: 1
+      expulsions:
+        - action: explorevault_casualty
+          recipe: explorevault_casualty
+          expelled:
+            - id: victor_d
+              quantity: 1
+    - explorevaultfailure_nofollowers
+  output:
+    - id: victor_d
+      quantity: 0

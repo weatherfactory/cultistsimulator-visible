@@ -1,0 +1,14 @@
+- action: work
+  slot: owl
+  output:
+    - id: owl
+      mutations:
+        dreadful: 10
+
+- action: study
+  slot: mapbookdealer
+  expulsions:
+    - action: explore
+      recipe: openexplore
+  recipes:
+    - studymapbookdealer

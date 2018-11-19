@@ -76,11 +76,11 @@ namespace Assets.Core
                 }
                 else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + ar.Id + " has been exhausted, so won't execute", 5);   
+                    NoonUtility.Log(recipe.Id + " says: " + ar.Id + " has been exhausted, so won't execute", 5);
                 }
             else
                 {
-                    int diceResult = dice.Rolld100();
+                    int diceResult = dice.Rolld100(recipe);
 
                     if (diceResult > ar.Chance)
                     {
@@ -112,19 +112,19 @@ namespace Assets.Core
         public RecipePrediction GetRecipePrediction(Recipe currentRecipe)
         {
             var rp=new RecipePrediction();
-           
+
    //set this up to return if we pass through the list below without finding anything interesting.
                 rp.Title = currentRecipe.Label;
                 rp.DescriptiveText = currentRecipe.StartDescription;
             rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
-  
-                
+
+
             foreach (var ar in currentRecipe.AlternativeRecipes)
             {
                 Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
 
                 if (candidateRecipe == null)
-                { 
+                {
                     rp.Title = "Recipe predictor couldn't find recipe with id " + ar.Id;
                     return rp;
                 }
@@ -159,7 +159,7 @@ namespace Assets.Core
 
             foreach (var ar in recipe.AlternativeRecipes)
             {
-                int diceResult = dice.Rolld100();
+                int diceResult = dice.Rolld100(recipe);
                 if (diceResult > ar.Chance)
                 {
                     NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
@@ -172,12 +172,12 @@ namespace Assets.Core
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
-                    { 
+                    {
                         NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id,5);
                         continue;
                     }
                     if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
-                    { 
+                    {
                         NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id,5);
                         continue;
                     }
