@@ -44,7 +44,8 @@
             {advancement:1,heart:2,influence:1},
             description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes.]",
 			xtriggers:{upgradeinfluence:influenceheartc},
-		lifetime: 300
+		lifetime: 300,
+		decayTo:"vitality"
         },
 		
 						 {
@@ -164,6 +165,7 @@ lifetime: 180,
             description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Reason. It lasts up to five minutes.]",
 		lifetime: 300,
 			xtriggers:{upgradeinfluence:influencelanternc},
+			decayTo:"erudition"
         },
 			{id: "dread",
             label: "Dread",
@@ -222,7 +224,8 @@ lifetime: 180,
             {advancement:1,moth:2,influence:1},
             description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes.]",
 		lifetime: 300,
-			xtriggers:{upgradeinfluence:influencemothc}
+			xtriggers:{upgradeinfluence:influencemothc},
+			decayTo:"glimmering"
         },
 		{id: "fascination",
             label: "Fascination",
