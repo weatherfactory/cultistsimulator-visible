@@ -35,9 +35,9 @@ namespace Assets.Editor
             List<string> contentFilePaths = Directory.GetFiles(
                 Path.Combine(Application.dataPath, "Editor/ContentTests")).ToList().FindAll(f => f.EndsWith(".yaml"));
             List<ContentTest> contentTests = new List<ContentTest>();
-            for (var i = 0; i < contentFilePaths.Count; i++)
+            foreach (var path in contentFilePaths)
             {
-                var contentFilePath = Path.GetFullPath(contentFilePaths[i]);
+                var contentFilePath = Path.GetFullPath(path);
                 NoonUtility.Log("Loading content tests in " + contentFilePath, -1);
 
                 // Read the YAML
@@ -302,8 +302,8 @@ namespace Assets.Editor
                 test.ExpectedRecipes = ((YamlSequenceNode) data.Children["recipes"]).Children.Select(
                     SituationRecipeSpec.FromYaml).ToList();
 
-            if (data.Children.ContainsKey("results"))
-                test.ExpectedResults = ((YamlSequenceNode) data.Children["results"]).Children.Select(
+            if (data.Children.ContainsKey("output"))
+                test.ExpectedResults = ((YamlSequenceNode) data.Children["output"]).Children.Select(
                     SituationResultSpec.FromYaml).ToList();
 
             if (data.Children.ContainsKey("text"))
@@ -445,8 +445,8 @@ namespace Assets.Editor
             if (data.Children.ContainsKey("recipe"))
                 expulsionSpec.RecipeId = data.Children["recipe"].ToString();
 
-            if (data.Children.ContainsKey("stacks"))
-                expulsionSpec.Stacks = ((YamlSequenceNode) data.Children["stacks"]).Children.Select(
+            if (data.Children.ContainsKey("expelled"))
+                expulsionSpec.Stacks = ((YamlSequenceNode) data.Children["expelled"]).Children.Select(
                     SituationResultSpec.FromYaml).ToList();
 
             return expulsionSpec;

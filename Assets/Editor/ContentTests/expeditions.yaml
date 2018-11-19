@@ -17,7 +17,7 @@
     - explorevaultseal_hiddendoor_success
     - explorevaulttick
     - explorevaultcapital2_success
-  results:
+  output:
     - toollanternb
     - id: vaultcapital2
       quantity: 0
@@ -42,10 +42,10 @@
       expulsions:
         - action: explorevault_casualty
           recipe: explorevault_casualty
-          stacks:
+          expelled:
             - id: victor_d
               quantity: 1
     - explorevaultfailure_nofollowers
-  results:
+  output:
     - id: victor_d
       quantity: 0
