@@ -81,8 +81,8 @@ namespace Assets.Editor
                     break;
                 case SituationState.Complete:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                case SituationState.Unstarted:
+                    throw new SituationSimulatorException("Failed to find a valid recipe to start");
             }
 
             return State;

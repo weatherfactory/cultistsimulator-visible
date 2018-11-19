@@ -43,11 +43,12 @@ namespace Assets.Editor
                 yaml.Load(reader);
 
                 // Load the list of content tests
+                var testIdx = 0;
                 foreach (var document in yaml.Documents)
                 {
                     var root = (YamlSequenceNode) document.RootNode;
                     contentTests.AddRange(
-                        root.Children.Select(node => ContentTest.FromYaml(contentFilePath, i, (YamlMappingNode) node)));
+                        root.Children.Select(node => ContentTest.FromYaml(contentFilePath, ++testIdx, (YamlMappingNode) node)));
                 }
             }
 
@@ -97,9 +98,12 @@ namespace Assets.Editor
             if (expectedRecipe.Slot == null)
                 return;
 
+            // Create the stack, with all appropriate mutations
             SimulatedElementStack stack = new SimulatedElementStack();
             stack.Populate(expectedRecipe.Slot.ElementId, 1, Source.Existing());
-            // TODO(Marc) Apply mutations
+            foreach (var mutation in expectedRecipe.Slot.Mutations)
+                stack.SetMutation(mutation.Key, mutation.Value, false);
+
             if (!ongoingSlotsManager.TryAddStackToSlot(null, stack))
                 throw new SituationSimulatorException(
                     "Failed to add '" + stack.EntityId + "' to ongoing slot for recipe '" + recipe.Id + "'");
@@ -137,9 +141,31 @@ namespace Assets.Editor
                 Dictionary<SituationResultSpec, int> encounteredQuantities = new Dictionary<SituationResultSpec, int>();
                 foreach (var outputStack in outputStacks)
                 {
-                    // TODO(Marc) Rework this for mutation support
-                    SituationResultSpec expectedResult = _currentContentTest.ExpectedResults.Find(
-                        er => er.ElementId == outputStack.EntityId);
+                    // Find a suitable candidate, based on both entity ID and present mutations
+                    // The first matching candidate is always selected
+                    SituationResultSpec expectedResult = null;
+                    Dictionary<string, int> mutations = outputStack.GetCurrentMutations();
+                    foreach (var er in _currentContentTest.ExpectedResults)
+                    {
+                        // Filter by element ID first
+                        if (er.ElementId != outputStack.EntityId)
+                            continue;
+                        expectedResult = er;
+
+                        // Filter by mutations, setting the result to null if any of the mutation criteria are not
+                        // fulfilled
+                        foreach (var mutationSpec in er.Mutations)
+                        {
+                            string mutElId = mutationSpec.Key;
+                            int mutQuantity = mutationSpec.Value;
+                            int actualQuantity;
+                            mutations.TryGetValue(mutElId, out actualQuantity);  // Will set a default of 0 if not found
+                            if (mutQuantity == mutations[mutElId])
+                                continue;
+                            expectedResult = null;
+                            break;
+                        }
+                    }
                     if (expectedResult == null)
                         continue;  // Ignore any unexpected results
                     int oldQuantity;
@@ -182,7 +208,9 @@ namespace Assets.Editor
                     }
                     if (!test)
                         throw new SituationSimulatorException(
-                            "Was expecting '" + expectedResult.ElementId + "' to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
+                            "Was expecting '" + expectedResult.ElementId + "' "
+                            + (expectedResult.Mutations.Count > 0 ? "(with mutations) " : "")
+                            + "to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
                 }
             }
 
@@ -254,7 +282,7 @@ namespace Assets.Editor
     {
         public string ElementId { get; private set; }
 
-        // TODO(Marc) Add support for mutations
+        public Dictionary<string, int> Mutations { get; private set; }
 
         public static SituationSlotSpec FromYaml(YamlNode data)
         {
@@ -270,13 +298,26 @@ namespace Assets.Editor
 
         private static SituationSlotSpec FromYaml(YamlMappingNode data)
         {
-            var slotSpec = new SituationSlotSpec() {ElementId = data.Children["id"].ToString()};
+            var slotSpec = new SituationSlotSpec()
+            {
+                ElementId = data.Children["id"].ToString(),
+                Mutations = new Dictionary<string, int>(),
+            };
+            if (data.Children.ContainsKey("mutations"))
+                slotSpec.Mutations =
+                    ((YamlMappingNode) data.Children["mutations"]).ToDictionary(
+                        p => p.Key.ToString(),
+                        p => int.Parse(p.Value.ToString()));
             return slotSpec;
         }
 
         private static SituationSlotSpec FromYaml(YamlScalarNode data)
         {
-            var slotSpec = new SituationSlotSpec() {ElementId = data.ToString()};
+            var slotSpec = new SituationSlotSpec()
+            {
+                ElementId = data.ToString(),
+                Mutations = new Dictionary<string, int>()
+            };
             return slotSpec;
         }
     }
@@ -334,11 +375,11 @@ namespace Assets.Editor
 
         public string ElementId { get; private set; }
 
+        public Dictionary<string, int> Mutations { get; private set; }
+
         public ComparisonOperator Op { get; private set; }
 
         public int Quantity { get; private set; }
-
-        // TODO(Marc) Add support for mutations
 
         public static SituationResultSpec FromYaml(YamlNode data)
         {
@@ -357,9 +398,17 @@ namespace Assets.Editor
             var resultSpec = new SituationResultSpec()
             {
                 ElementId = data.Children["id"].ToString(),
+                Mutations = new Dictionary<string, int>(),
                 Quantity = 1,
                 Op = ComparisonOperator.Equal
             };
+
+
+            if (data.Children.ContainsKey("mutations"))
+                resultSpec.Mutations =
+                    ((YamlMappingNode) data.Children["mutations"]).ToDictionary(
+                        p => p.Key.ToString(),
+                        p => int.Parse(p.Value.ToString()));
 
             // Check if the quantity is specified a simple number or a comparison
             if (data.Children.ContainsKey("quantity"))
@@ -399,6 +448,7 @@ namespace Assets.Editor
             var resultSpec = new SituationResultSpec()
             {
                 ElementId = data.ToString(),
+                Mutations = new Dictionary<string, int>(),
                 Quantity = 1,
                 Op = ComparisonOperator.Equal
             };

@@ -66,10 +66,8 @@ namespace Assets.Editor
                     additionalStacks.Add(slot.Key, additionalElementStack);
                 }
 
-            // Check that the verb exists
-            IVerb verb = _compendium.GetVerbById(verbId);
-            if (verb == null)
-                throw new SituationSimulatorException("Verb not found");
+            // Check that the verb exists, create it otherwise
+            IVerb verb = _compendium.GetVerbById(verbId) ?? new CreatedVerb(verbId, "", "");
 
             // Initialize all the simulation components for this situation
             SituationController controller = new SituationController(_compendium, _character);
