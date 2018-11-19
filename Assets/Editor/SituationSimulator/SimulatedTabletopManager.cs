@@ -14,6 +14,12 @@ namespace Assets.Editor
 {
     public class SimulatedTabletopManager : ITabletopManager
     {
+        public ISituationSimulatorSubscriber _simulationSubscriber;
+
+        public SimulatedTabletopManager(ISituationSimulatorSubscriber simulationSubscriber)
+        {
+            _simulationSubscriber = simulationSubscriber;
+        }
         public void ForceAutosave()
         {
         }
@@ -100,6 +106,11 @@ namespace Assets.Editor
 
         public void BeginNewSituation(SituationCreationCommand scc, List<IElementStack> withStacksInStorage)
         {
+            _simulationSubscriber.OnRecipeExpulsion(scc.Verb, scc.Recipe, withStacksInStorage);
+
+            // Remove the stacks from their previous stack manager, since they won't get reassigned to a new situation
+            foreach (var stack in withStacksInStorage)
+                stack.SetStackManager(null);
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken)

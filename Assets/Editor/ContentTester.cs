@@ -16,6 +16,7 @@ namespace Assets.Editor
         private readonly SituationSimulator _simulator;
         private ContentTest _currentContentTest;
         private List<SituationRecipeSpec> _remainingExpectedRecipes;
+        private Recipe _currentRecipe;
 
         private ContentTester()
         {
@@ -26,7 +27,9 @@ namespace Assets.Editor
         private static void ValidateContentAssertions()
         {
             // Clear the console of previous messages to reduce confusion
+            // Also disable all logging so that the console isn't polluted with other messages
             EditorUtils.ClearConsole();
+            NoonUtility.CurrentVerbosity = -1;
 
             // Load all the content tests
             List<string> contentFilePaths = Directory.GetFiles(
@@ -34,8 +37,8 @@ namespace Assets.Editor
             List<ContentTest> contentTests = new List<ContentTest>();
             for (var i = 0; i < contentFilePaths.Count; i++)
             {
-                var contentFilePath = contentFilePaths[i];
-                NoonUtility.Log("Loading content tests in " + contentFilePath);
+                var contentFilePath = Path.GetFullPath(contentFilePaths[i]);
+                NoonUtility.Log("Loading content tests in " + contentFilePath, -1);
 
                 // Read the YAML
                 var reader = new StringReader(File.ReadAllText(contentFilePath));
@@ -54,7 +57,7 @@ namespace Assets.Editor
 
             // Start the simulator
             ContentTester tester = new ContentTester();
-            NoonUtility.Log("Running " + contentTests.Count + " content tests.");
+            NoonUtility.Log("Running " + contentTests.Count + " content tests.", -1);
             int numFailedTests = 0;
             foreach (var test in contentTests)
             {
@@ -64,11 +67,11 @@ namespace Assets.Editor
                 }
                 catch (SituationSimulatorException e)
                 {
-                    NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message, messageLevel: 2);
+                    NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message, -1, messageLevel: 2);
                     numFailedTests++;
                 }
             }
-            NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", messageLevel: numFailedTests > 0 ? 1 : 0);
+            NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", -1, messageLevel: numFailedTests > 0 ? 1 : 0);
         }
 
         private void RunTest(ContentTest test)
@@ -90,6 +93,7 @@ namespace Assets.Editor
 
         public void OnRecipeStarted(Recipe recipe, SimulatedSlotsManager ongoingSlotsManager)
         {
+            _currentRecipe = recipe;  // Save it so that the expulsion can be checked against its spec, if any
             SituationRecipeSpec expectedRecipe = GetExpectedRecipeSpecIfNext(recipe);
             if (expectedRecipe == null)
                 return;
@@ -125,6 +129,32 @@ namespace Assets.Editor
             _remainingExpectedRecipes.Remove(expectedRecipe);
         }
 
+        public void OnRecipeExpulsion(IVerb verb, Recipe recipe, List<IElementStack> stacks)
+        {
+            SituationRecipeSpec expectedRecipe = GetExpectedRecipeSpecIfNext(_currentRecipe);
+            if (expectedRecipe == null || expectedRecipe.Expulsions == null)
+                return;
+
+            // Get the first expulsion that matches the verb and recipe
+            // This might be a problem if there are two expected expulsions of the same recipe in two different,
+            // unspecified verbs, but this seems like an edge-case and is unlikely to occur
+            SituationExpulsionSpec expectedExpulsion = null;
+            foreach (var expulsionSpec in expectedRecipe.Expulsions)
+            {
+                if (expulsionSpec.ActionId != null && expulsionSpec.ActionId != verb.Id)
+                    continue;
+                if (expulsionSpec.RecipeId != null && expulsionSpec.RecipeId != recipe.Id)
+                    continue;
+
+                expectedExpulsion = expulsionSpec;
+            }
+            if (expectedExpulsion == null)
+                return;
+
+            // Check for the presence of the expected stacks
+            CheckResults(expectedExpulsion.Stacks, stacks);
+        }
+
         public void OnSituationCompleted(IEnumerable<IElementStack> outputStacks, string outputText)
         {
             // Check that all the expected recipes were encountered
@@ -138,80 +168,7 @@ namespace Assets.Editor
             // then run comparisons against them
             if (_currentContentTest.ExpectedResults != null)
             {
-                Dictionary<SituationResultSpec, int> encounteredQuantities = new Dictionary<SituationResultSpec, int>();
-                foreach (var outputStack in outputStacks)
-                {
-                    // Find a suitable candidate, based on both entity ID and present mutations
-                    // The first matching candidate is always selected
-                    SituationResultSpec expectedResult = null;
-                    Dictionary<string, int> mutations = outputStack.GetCurrentMutations();
-                    foreach (var er in _currentContentTest.ExpectedResults)
-                    {
-                        // Filter by element ID first
-                        if (er.ElementId != outputStack.EntityId)
-                            continue;
-                        expectedResult = er;
-
-                        // Filter by mutations, setting the result to null if any of the mutation criteria are not
-                        // fulfilled
-                        foreach (var mutationSpec in er.Mutations)
-                        {
-                            string mutElId = mutationSpec.Key;
-                            int mutQuantity = mutationSpec.Value;
-                            int actualQuantity;
-                            mutations.TryGetValue(mutElId, out actualQuantity);  // Will set a default of 0 if not found
-                            if (mutQuantity == mutations[mutElId])
-                                continue;
-                            expectedResult = null;
-                            break;
-                        }
-                    }
-                    if (expectedResult == null)
-                        continue;  // Ignore any unexpected results
-                    int oldQuantity;
-                    encounteredQuantities.TryGetValue(expectedResult, out oldQuantity);
-                    encounteredQuantities[expectedResult] = oldQuantity + outputStack.Quantity;
-                }
-
-                foreach (var expectedResult in _currentContentTest.ExpectedResults)
-                {
-                    int quantity = 0;
-                    if (encounteredQuantities.ContainsKey(expectedResult))
-                    {
-                        quantity = encounteredQuantities[expectedResult];
-                    }
-
-                    bool test = false;
-                    string message = null;
-                    switch (expectedResult.Op)
-                    {
-                        case ComparisonOperator.LessThan:
-                            test = quantity < expectedResult.Quantity;
-                            message = "less than";
-                            break;
-                        case ComparisonOperator.LessThanOrEqual:
-                            test = quantity <= expectedResult.Quantity;
-                            message = "less than or equal to";
-                            break;
-                        case ComparisonOperator.Equal:
-                            test = quantity == expectedResult.Quantity;
-                            message = "equal to";
-                            break;
-                        case ComparisonOperator.GreaterThan:
-                            test = quantity > expectedResult.Quantity;
-                            message = "greater than";
-                            break;
-                        case ComparisonOperator.GreaterThanOrEqual:
-                            test = quantity >= expectedResult.Quantity;
-                            message = "greater than or equal";
-                            break;
-                    }
-                    if (!test)
-                        throw new SituationSimulatorException(
-                            "Was expecting '" + expectedResult.ElementId + "' "
-                            + (expectedResult.Mutations.Count > 0 ? "(with mutations) " : "")
-                            + "to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
-                }
+                CheckResults(_currentContentTest.ExpectedResults, outputStacks);
             }
 
             // Check that the output text matches
@@ -231,6 +188,84 @@ namespace Assets.Editor
             if (expectedRecipe == null)
                 return null;
             return expectedRecipe.RecipeId != recipe.Id ? null : expectedRecipe;
+        }
+
+        private static void CheckResults(List<SituationResultSpec> expectedResults, IEnumerable<IElementStack> stacks)
+        {
+            Dictionary<SituationResultSpec, int> encounteredQuantities = new Dictionary<SituationResultSpec, int>();
+            foreach (var outputStack in stacks)
+            {
+                // Find a suitable candidate, based on both entity ID and present mutations
+                // The first matching candidate is always selected
+                SituationResultSpec expectedResult = null;
+                Dictionary<string, int> mutations = outputStack.GetCurrentMutations();
+                foreach (var er in expectedResults)
+                {
+                    // Filter by element ID first
+                    if (er.ElementId != outputStack.EntityId)
+                        continue;
+                    expectedResult = er;
+
+                    // Filter by mutations, setting the result to null if any of the mutation criteria are not
+                    // fulfilled
+                    foreach (var mutationSpec in er.Mutations)
+                    {
+                        string mutElId = mutationSpec.Key;
+                        int mutQuantity = mutationSpec.Value;
+                        int actualQuantity;
+                        mutations.TryGetValue(mutElId, out actualQuantity);  // Will set a default of 0 if not found
+                        if (mutQuantity == mutations[mutElId])
+                            continue;
+                        expectedResult = null;
+                        break;
+                    }
+                }
+                if (expectedResult == null)
+                    continue;  // Ignore any unexpected results
+                int oldQuantity;
+                encounteredQuantities.TryGetValue(expectedResult, out oldQuantity);
+                encounteredQuantities[expectedResult] = oldQuantity + outputStack.Quantity;
+            }
+
+            foreach (var expectedResult in expectedResults)
+            {
+                int quantity = 0;
+                if (encounteredQuantities.ContainsKey(expectedResult))
+                {
+                    quantity = encounteredQuantities[expectedResult];
+                }
+
+                bool test = false;
+                string message = null;
+                switch (expectedResult.Op)
+                {
+                    case ComparisonOperator.LessThan:
+                        test = quantity < expectedResult.Quantity;
+                        message = "less than";
+                        break;
+                    case ComparisonOperator.LessThanOrEqual:
+                        test = quantity <= expectedResult.Quantity;
+                        message = "less than or equal to";
+                        break;
+                    case ComparisonOperator.Equal:
+                        test = quantity == expectedResult.Quantity;
+                        message = "equal to";
+                        break;
+                    case ComparisonOperator.GreaterThan:
+                        test = quantity > expectedResult.Quantity;
+                        message = "greater than";
+                        break;
+                    case ComparisonOperator.GreaterThanOrEqual:
+                        test = quantity >= expectedResult.Quantity;
+                        message = "greater than or equal";
+                        break;
+                }
+                if (!test)
+                    throw new SituationSimulatorException(
+                        "Was expecting '" + expectedResult.ElementId + "' "
+                        + (expectedResult.Mutations.Count > 0 ? "(with mutations) " : "")
+                        + "to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
+            }
         }
     }
 
@@ -330,6 +365,8 @@ namespace Assets.Editor
 
         public int Roll { get; private set; }
 
+        public List<SituationExpulsionSpec> Expulsions { get; private set; }
+
         public static SituationRecipeSpec FromYaml(YamlNode data)
         {
             // Is it a dictionary?
@@ -355,6 +392,10 @@ namespace Assets.Editor
             if (data.Children.ContainsKey("roll"))
                 recipeSpec.Roll = int.Parse(data.Children["roll"].ToString());
 
+            if (data.Children.ContainsKey("expulsions"))
+                recipeSpec.Expulsions = ((YamlSequenceNode) data.Children["expulsions"]).Children.Select(
+                    SituationExpulsionSpec.FromYaml).ToList();
+
             return recipeSpec;
         }
 
@@ -366,6 +407,60 @@ namespace Assets.Editor
                 Roll = 0
             };
             return recipeSpec;
+        }
+    }
+
+    internal class SituationExpulsionSpec
+    {
+        public string ActionId { get; private set; }
+
+        public string RecipeId { get; private set; }
+
+        public List<SituationResultSpec> Stacks { get; private set; }
+
+        public static SituationExpulsionSpec FromYaml(YamlNode data)
+        {
+            // Is it a dictionary?
+            var mappingNode = data as YamlMappingNode;
+            if (mappingNode != null)
+                return FromYaml(mappingNode);
+
+            // Is it just the element ID?
+            var node = data as YamlScalarNode;
+            return node != null ? FromYaml(node) : null;
+        }
+
+        private static SituationExpulsionSpec FromYaml(YamlMappingNode data)
+        {
+            var expulsionSpec = new SituationExpulsionSpec()
+            {
+                ActionId = null,
+                RecipeId = null,
+                Stacks = new List<SituationResultSpec>()
+            };
+
+            if (data.Children.ContainsKey("action"))
+                expulsionSpec.ActionId = data.Children["action"].ToString();
+
+            if (data.Children.ContainsKey("recipe"))
+                expulsionSpec.RecipeId = data.Children["recipe"].ToString();
+
+            if (data.Children.ContainsKey("stacks"))
+                expulsionSpec.Stacks = ((YamlSequenceNode) data.Children["stacks"]).Children.Select(
+                    SituationResultSpec.FromYaml).ToList();
+
+            return expulsionSpec;
+        }
+
+        private static SituationExpulsionSpec FromYaml(YamlScalarNode data)
+        {
+            var expulsionSpec = new SituationExpulsionSpec()
+            {
+                ActionId = null,
+                RecipeId = data.ToString(),
+                Stacks = new List<SituationResultSpec>()
+            };
+            return expulsionSpec;
         }
     }
 

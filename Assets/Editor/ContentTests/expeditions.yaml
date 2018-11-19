@@ -25,3 +25,27 @@
     - enid_d
     - id: funds
       quantity: < 1
+
+- action: explore
+  slot: vaultcapital1
+  aSlots:
+    expeditionmember: victor_d
+    expeditionfunds: funds
+  recipes:
+    - id: explorevaulttick
+      slot: funds
+    - explorevaultguardian_watchers_encounter
+    - id: explorevaultguardian_watchers_highedge
+      roll: 100
+    - id: explorevaultguardian_watchers_failure
+      roll: 1
+      expulsions:
+        - action: explorevault_casualty
+          recipe: explorevault_casualty
+          stacks:
+            - id: victor_d
+              quantity: 1
+    - explorevaultfailure_nofollowers
+  results:
+    - id: victor_d
+      quantity: 0

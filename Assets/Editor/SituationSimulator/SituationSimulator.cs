@@ -32,7 +32,7 @@ namespace Assets.Editor
             registry.Register<SituationsCatalogue>(new SituationsCatalogue());
             registry.Register<StackManagersCatalogue>(new StackManagersCatalogue());
             registry.Register<IDice>(new Dice(new SimulatedRollOverride(subscriber)));
-            registry.Register<ITabletopManager>(new SimulatedTabletopManager());
+            registry.Register<ITabletopManager>(new SimulatedTabletopManager(subscriber));
             registry.Register<INotifier>(new SimulatedNotifier());
             registry.Register<SimulatedTokenContainer>(new SimulatedTokenContainer("Limbo"));
         }
