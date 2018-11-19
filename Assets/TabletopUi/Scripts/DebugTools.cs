@@ -102,6 +102,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         { if(!possibleEmptyVerb.situationWindow.GetOutputStacks().Any() && !possibleEmptyVerb.IsOngoing)
             possibleEmptyVerb.Retire();
         }
+        else
         tabletop.GetElementStacksManager().ModifyElementQuantity(itemId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
