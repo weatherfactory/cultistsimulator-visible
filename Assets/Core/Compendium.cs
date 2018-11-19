@@ -166,7 +166,7 @@ public class Compendium : ICompendium
             return recipe;
         }
         else
-        throw new ApplicationException("Can't find recipe id " + recipeId);
+        throw new ApplicationException("Can't find recipe id '" + recipeId + "'");
 
     }
 
