@@ -107,7 +107,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         /*
-        // CountdownCanvas no longer has a Canvas component - sorting was shitty    
+        // CountdownCanvas no longer has a Canvas component - sorting was shitty
         public override void DisplayInAir() {
             base.DisplayInAir();
             countdownCanvas.overrideSorting = false;
@@ -159,7 +159,7 @@ namespace Assets.CS.TabletopUI {
 
         private void SetTimerVisibility(bool show) {
             // If we're changing the state, change the particles
-            if (show != countdownCanvas.gameObject.activeSelf) { 
+            if (show != countdownCanvas.gameObject.activeSelf) {
                 if (show)
                     particles[0].Play(); // only need to hit play on the first one
                 else
@@ -190,13 +190,13 @@ namespace Assets.CS.TabletopUI {
         public void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots) {
             ongoingSlotImage.gameObject.SetActive(ongoingSlots != null && ongoingSlots.Count > 0);
 
-            if (ongoingSlots == null || ongoingSlots.Count == 0) 
+            if (ongoingSlots == null || ongoingSlots.Count == 0)
                 return;
             if (ongoingSlots.Count > 1)
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
-			
+
 			// We're not a no-anim slot? Then show the anim!
-			if (!ongoingSlots[0].NoAnim && !isNew) {				
+			if (!ongoingSlots[0].NoAnim && !isNew) {
 				ongoingSlotAppearFX.Play();
 				SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
 			}
@@ -225,7 +225,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayComplete() {
             SetTimerVisibility(false);
-            DisplayMiniSlot(null); 
+            DisplayMiniSlot(null);
 			isNew = false;
         }
 
@@ -238,7 +238,7 @@ namespace Assets.CS.TabletopUI {
             completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
 
-            ShowDumpButton(newCount >= 0);            
+            ShowDumpButton(newCount >= 0);
         }
 
 
@@ -280,7 +280,7 @@ namespace Assets.CS.TabletopUI {
             if (dumpButton.IsHovering()) {
                 SituationController.DumpAllResults();
             }
-            else { 
+            else {
                 if (!SituationController.IsOpen)
                     OpenSituation();
                 else
@@ -327,5 +327,5 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-    }    
+    }
 }

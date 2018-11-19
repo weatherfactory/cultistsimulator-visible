@@ -11,7 +11,7 @@ namespace Assets.Core
     /// </summary>
    public class DefaultDice: IDice
     {
-        public int Rolld100()
+        public int Rolld100(Recipe recipe = null)
         {
             return 100;
         }

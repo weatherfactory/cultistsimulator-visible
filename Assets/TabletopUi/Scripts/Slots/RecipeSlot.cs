@@ -23,7 +23,8 @@ namespace Assets.CS.TabletopUI {
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s, Context context);
         string AnimationTag { get; set; }
-        RecipeSlot ParentSlot { get; set; }
+        IRecipeSlot ParentSlot { get; set; }
+        string SaveLocationInfoPath { get; }
         bool Defunct { get; set; }
         bool Retire();
         bool IsPrimarySlot();
@@ -37,7 +38,7 @@ namespace Assets.CS.TabletopUI {
         // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
-        public RecipeSlot ParentSlot { get; set; }
+        public IRecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
         public string AnimationTag { get; set; }
 
@@ -98,7 +99,7 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             SlotLabel.text = slotSpecification.Label;
-            
+
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
@@ -128,7 +129,7 @@ namespace Assets.CS.TabletopUI {
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
             }
-            else if (CanInteractWithDraggedObject(DraggableToken.itemBeingDragged)) { 
+            else if (CanInteractWithDraggedObject(DraggableToken.itemBeingDragged)) {
                 if (lastGlowState)
                     DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
@@ -140,7 +141,7 @@ namespace Assets.CS.TabletopUI {
 		public virtual void OnPointerExit(PointerEventData eventData) {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
-			
+
             if (lastGlowState && DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
 
@@ -158,7 +159,7 @@ namespace Assets.CS.TabletopUI {
         public void ShowGlow(bool glowState, bool instant) {
             lastGlowState = glowState;
 
-            if (glowState) 
+            if (glowState)
                 slotGlow.Show(instant);
             else
                 slotGlow.Hide(instant);
@@ -169,13 +170,13 @@ namespace Assets.CS.TabletopUI {
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
             //if (DraggableToken.itemBeingDragged == null && !lastGlowState)
             //    return;
-            
-            if (show) { 
+
+            if (show) {
                 SetGlowColor(UIStyle.TokenGlowColor.OnHover);
                 SoundManager.PlaySfx("TokenHover");
                 slotGlow.Show();
             }
-            else { 
+            else {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 //SoundManager.PlaySfx("TokenHoverOff");
 
@@ -195,7 +196,7 @@ namespace Assets.CS.TabletopUI {
 		public void OnDrop(PointerEventData eventData) {
 			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
 				return;
-			
+
             if (IsBeingAnimated || DraggableToken.itemBeingDragged == null || !(DraggableToken.itemBeingDragged is ElementStackToken))
                 return;
 
@@ -203,7 +204,7 @@ namespace Assets.CS.TabletopUI {
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
             //it's not an element stack; just put it down
-            if (stack == null) 
+            if (stack == null)
                 DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
             //does the token match the slot? Check that first
@@ -243,7 +244,7 @@ namespace Assets.CS.TabletopUI {
                 if (currentOccupant != null)
                     throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
                     //currentOccupant.ReturnToTabletop();
-                                    
+
                 //now we put the token in the slot.
                 DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
                 AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
@@ -289,7 +290,7 @@ namespace Assets.CS.TabletopUI {
             else
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
-        
+
         public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
             onCardRemoved(elementStackToken, context);
             //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
@@ -297,16 +298,16 @@ namespace Assets.CS.TabletopUI {
             //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
             // - or else not have it occur more than once on the same slot? mark as defunct?
         }
-  
+
         public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-            if (IsGreedy) { // We do not allow 
+            if (IsGreedy) { // We do not allow
                 incumbentMoved = false;
                 return;
             }
 
             //incomer is a token. Does it fit in the slot?
             if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
-            { 
+            {
                 incumbentMoved = true;
                 incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects
                 AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));

@@ -15,6 +15,7 @@ using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -31,7 +32,7 @@ namespace Assets.TabletopUi {
         private bool greedyAnimIsActive;
         private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None; //encapsulating; want to be able to catch calls to thie slightly sloppy bit of state
 
-        
+
 
         public bool IsOpen { get; set; }
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
@@ -65,7 +66,7 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, Heart heart) {
+        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, Heart heart, ISituationClock clock = null) {
             Registry.Retrieve<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
@@ -77,7 +78,7 @@ namespace Assets.TabletopUi {
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
-            SituationClock = new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
+            SituationClock = clock ?? new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
 
             switch (command.State) {
                 case SituationState.Unstarted:
@@ -216,7 +217,7 @@ namespace Assets.TabletopUi {
             HeartbeatResponse response = new HeartbeatResponse();
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
-                        
+
             SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
             // only pull in something if we've got a second remaining
@@ -244,12 +245,12 @@ namespace Assets.TabletopUi {
             UpdateSituationDisplayForPossiblePredictedRecipe();
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
-            
+
         }
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
         {
-            var tabletopManager = Registry.Retrieve<TabletopManager>();
+            var tabletopManager = Registry.Retrieve<ITabletopManager>();
             if (endingFlavour != EndingFlavour.None)
                 tabletopManager.SignalImpendingDoom(situationToken);
             else
@@ -280,7 +281,7 @@ namespace Assets.TabletopUi {
         /// </summary>
         /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
-            var tabletopManager = Registry.Retrieve<TabletopManager>();
+            var tabletopManager = Registry.Retrieve<ITabletopManager>();
 
             //called here in case ongoing slots trigger consumption
             situationWindow.SetSlotConsumptions();
@@ -289,7 +290,7 @@ namespace Assets.TabletopUi {
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             StoreStacks(situationWindow.GetOngoingStacks());
 
-            
+
 
             if (command.AsNewSituation) {
 
@@ -348,8 +349,8 @@ namespace Assets.TabletopUi {
 
             Notification refinedNotification=new Notification(notification.Title,
                 tr.RefineString(notification.Description));
-           
-            
+
+
             situationWindow.ReceiveTextNote(refinedNotification);
         }
 
@@ -363,7 +364,7 @@ namespace Assets.TabletopUi {
             SetOutput(outputStacks.ToList());
 
             ReceiveAndRefineTextNotification(notification);
-         
+
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
@@ -378,7 +379,13 @@ namespace Assets.TabletopUi {
             var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
 
             if (currentRecipe.PortalEffect != PortalEffect.None)
-                Registry.Retrieve<TabletopManager>().ShowMansusMap(this, ((MonoBehaviour) situationToken).transform, currentRecipe.PortalEffect);
+            {
+                // Add a check to see if this is actually running in the game
+                var behaviour = situationToken as MonoBehaviour;
+                if (behaviour != null)
+                    Registry.Retrieve<ITabletopManager>().ShowMansusMap(this, behaviour.transform,
+                        currentRecipe.PortalEffect);
+            }
         }
 
         public void Halt() {
@@ -412,13 +419,13 @@ namespace Assets.TabletopUi {
             foreach (var induction in aspectElement.Induces) {
                 var d = Registry.Retrieve<IDice>();
 
-                if (d.Rolld100() <= induction.Chance) 
+                if (d.Rolld100() <= induction.Chance)
                     CreateRecipeFromInduction(compendium.GetRecipeById(induction.Id), aspectElement.Id);
             }
         }
 
         void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID) {
-            if (inducedRecipe == null) { 
+            if (inducedRecipe == null) {
                 NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
                 return;
             }
@@ -427,7 +434,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
+            Registry.Retrieve<ITabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
         }
 
         public void ResetSituation() {
@@ -452,7 +459,7 @@ namespace Assets.TabletopUi {
             IsOpen = true;
             situationToken.DisplayAsOpen();
             situationWindow.Show( targetPosOverride );
-            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
+            Registry.Retrieve<ITabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
         }
 
 		public void OpenWindow()
@@ -478,7 +485,7 @@ namespace Assets.TabletopUi {
         public bool CanAcceptStackWhenClosed(IElementStack stack) {
             if (SituationClock.State == SituationState.Unstarted)
                 return HasSuitableStartingSlot(stack);
-            if (SituationClock.State == SituationState.Ongoing) 
+            if (SituationClock.State == SituationState.Ongoing)
                 return HasEmptyOngoingSlot(stack);
 
             return false;
@@ -502,11 +509,11 @@ namespace Assets.TabletopUi {
 
             if (ongoingSlots.Count == 0)
                 return false;
-            
+
             // Alexis want's token-drop actions to be able to replace existing tokens
             //if (ongoingSlots[0].GetElementStackInSlot() != null)
             //    return false;
-            
+
             return ongoingSlots[0].IsGreedy == false && ongoingSlots[0].GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
 
@@ -516,7 +523,7 @@ namespace Assets.TabletopUi {
             if (SituationClock.State == SituationState.Ongoing)
                 return PushDraggedStackIntoOngoingSlot(stack);
 
-           
+
 
             return false;
         }
@@ -581,7 +588,7 @@ namespace Assets.TabletopUi {
             Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.EntityId, currentCharacter, true); ;
 
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
-            if (matchingHintRecipe != null)  
+            if (matchingHintRecipe != null)
                 situationWindow.DisplayHintRecipeFound(matchingHintRecipe);
             //no recipe, no hint? If there are any elements in the mix, display 'try again' message
             else if (allAspects.Count > 0)
@@ -615,7 +622,7 @@ namespace Assets.TabletopUi {
 
             situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
 
-            
+
         }
 
         private RecipePrediction GetNextRecipePrediction(IAspectsDictionary aspects) {
@@ -712,11 +719,11 @@ namespace Assets.TabletopUi {
         public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim) {
             greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
-			
+
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, true );
 
 			// Hack to try to repro bug #1253 - CP
-			//var tabletop = Registry.Retrieve<TabletopManager>();
+			//var tabletop = Registry.Retrieve<ITabletopManager>();
 			//tabletop.ForceAutosave();
         }
 
@@ -747,7 +754,7 @@ namespace Assets.TabletopUi {
             var newRecipe = compendium.GetRecipeById(recipeId);
 
             if (newRecipe == null)
-            { 
+            {
                 NoonUtility.Log("Can't override with recipe id " + recipeId +" because it ain't.");
                 return;
             }
@@ -762,7 +769,7 @@ namespace Assets.TabletopUi {
         #endregion
 
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
-            if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) 
+            if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else
                 return situationWindow.GetOngoingSlotBySaveLocationInfoPath(locationInfo);

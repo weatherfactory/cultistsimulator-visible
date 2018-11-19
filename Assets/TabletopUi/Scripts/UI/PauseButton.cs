@@ -15,7 +15,7 @@ public class PauseButton : MonoBehaviour
 	private void OnEnable()
     {
         // subscribe to event for language change
-        LanguageManager.LanguageChanged += OnLanguageChanged;	
+        LanguageManager.LanguageChanged += OnLanguageChanged;
 	}
 
     private void OnDisable()
@@ -26,23 +26,23 @@ public class PauseButton : MonoBehaviour
     public void OnLanguageChanged()
     {
 		// Temp removed because we've settled on language switching ONLY in front end, so this is redundant.
-		//var tabletop = Registry.Retrieve<TabletopManager>();
+		//var tabletop = Registry.Retrieve<ITabletopManager>();
 		//SetPausedText( tabletop.IsPaused() );
 	}
 
     public void SetPausedText(bool isPaused)
     {
         if (isPaused)
-        { 
+        {
 			//ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
 			ButtonText.text = LanguageTable.Get("UI_UNPAUSE");
         }
         else
-        { 
+        {
 			//ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
 			ButtonText.text = LanguageTable.Get("UI_PAUSE");
         }
     }
 
- 
+
 }

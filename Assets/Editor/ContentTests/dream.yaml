@@ -1,0 +1,20 @@
+- action: dream
+  slot: waywood
+  recipes:
+    - id: dreamusewoodway
+      slot: passion
+    - dreamenterwood
+  output:
+    - waywood
+    - id: passionexhausted
+      quantity: <= 1
+
+- action: dream
+  slot: injury
+  aSlots:
+    vitality: vitality
+  recipes:
+    - recoverillhealthfundsvitality
+  output:
+    - health
+  text: "The sick-room grows close and stale. Time to get up."

@@ -101,7 +101,7 @@
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
 	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1,toollanternb:1,ingredientlanternb:1,toolwinterd:1,toollanternbcracked:1},
+	effects: {vaultcapital2:-1,ingredientlanternb:1,toolwinterd:1,toollanternbcracked:1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door that the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go... but others have been here too, much more recently. They have left their treasures.",
 	warmup:30,
@@ -136,7 +136,7 @@
 	
 					{
 	id: "explorevaultcapital5_success",
-	label: "The ",
+	label: "Secret Devotions",
 	actionId: "explore",
 	requirements: {vaultcapital5:1},
 	effects: {vaultcapital5:-1,roseofnurielgreek:1,	roseofwazneigreek:1,chioneatabydos:1,debellismurorum:1,textbookgreek:1},

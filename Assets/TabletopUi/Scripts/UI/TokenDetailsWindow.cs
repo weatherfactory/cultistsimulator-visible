@@ -10,10 +10,11 @@ using System.Collections;
 using System;
 using System.Linq;
 using Assets.Core.Entities;
+using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.CS.TabletopUI {
     public class TokenDetailsWindow : BaseDetailsWindow {
-        
+
         // coming in with header "Image" from BaseDetailsWindow
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
@@ -201,7 +202,7 @@ namespace Assets.CS.TabletopUI {
 
         void SetDeck(IDeckSpec deckId, int deckQuantity) {
             var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
-            
+
             SetImageNarrow(true);
             ShowImage(sprite);
             ShowImageDecayTimer(false);
@@ -316,8 +317,8 @@ namespace Assets.CS.TabletopUI {
 		void HighlightSlotCompatibleCards(SlotSpecification slotSpec) {
 			if (slotSpec.Greedy) // Greedy slots get no possible cards
 				return;
-			
-			var tabletop = Registry.Retrieve<TabletopManager>();
+
+			var tabletop = Registry.Retrieve<ITabletopManager>();
 			tabletop.HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
 		}
     }

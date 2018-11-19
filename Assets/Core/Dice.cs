@@ -12,9 +12,9 @@ using UnityEngine;
     System.Random random = new System.Random();
         private IRollOverride _rollOverride;
 
-    public int Rolld100()
+    public int Rolld100(Recipe recipe = null)
     {
-        var possibleOverride = _rollOverride.PopNextOverrideValue();
+        var possibleOverride = _rollOverride.PopNextOverrideValue(recipe);
         if (possibleOverride > 0)
             return possibleOverride;
         else
@@ -32,5 +32,5 @@ using UnityEngine;
 
 public interface IDice
 {
-    int Rolld100();
+    int Rolld100(Recipe recipe = null);
 }

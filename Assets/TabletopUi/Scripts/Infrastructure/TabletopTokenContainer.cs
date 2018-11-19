@@ -13,6 +13,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 
 public class TabletopTokenContainer : AbstractTokenContainer {
 #pragma warning disable 649
@@ -25,13 +26,13 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
 
-    // This is used to determine if this component is the tabletop. 
+    // This is used to determine if this component is the tabletop.
     // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
     public virtual bool IsTabletop { get { return true; } }
 
     public override void Initialise() {
         _elementStacksManager = new ElementStacksManager(this, "tabletop");
-        _elementStacksManager.EnforceUniqueStacksInThisStackManager = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
+        _elementStacksManager.EnforceUniqueStacksInThisStackManager = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
         choreo = Registry.Retrieve<Choreographer>();
         InitialiseListeners();
@@ -122,10 +123,10 @@ public class TabletopTokenContainer : AbstractTokenContainer {
                 DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
             }
             else if (DraggableToken.itemBeingDragged is ElementStackToken) {
-                GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged), 
+                GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged),
                     new Context(Context.ActionSource.PlayerDrag));
             }
-            else { 
+            else {
                 throw new NotImplementedException("Tried to put something weird on the table");
             }
 
@@ -137,7 +138,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     void HandleOnTableClicked() {
         //Close all open windows if we're not dragging (multi tap stuff)
         if (DraggableToken.itemBeingDragged == null)
-            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(null);
+            Registry.Retrieve<ITabletopManager>().CloseAllSituationWindowsExcept(null);
     }
 
     private void HandleDragStateChanged(bool isDragging) {
@@ -178,7 +179,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
                 sit.ShowDestinationsForStack(draggedElement, show);
 
             sit.ShowVisualEffectIfCanTakeDroppedToken(draggedElement,show);
-       
+
         }
     }
 
@@ -197,9 +198,9 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
     // Hide / Show for use with Mansus Map transition
     public virtual void Show(bool show) {
-        if (show) 
+        if (show)
             canvasGroupFader.Show();
-        else 
+        else
             canvasGroupFader.Hide();
     }
 
