@@ -82,7 +82,7 @@ namespace Assets.Core.Entities
                 var e = compendium.GetElementById(c);
                 if (e == null)
                 {
-                    throw new ApplicationException("Can't find element " + c + " from deck id " + _id);
+                    throw new ApplicationException("Can't find element '" + c + " from deck id " + _id + "'");
                 }
 
                 if (!string.IsNullOrEmpty(e.UniquenessGroup))
