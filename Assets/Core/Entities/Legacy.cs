@@ -15,7 +15,7 @@ namespace Assets.Core.Entities
 
         //title that displays at game end
         public string Label { get; set; }
-        
+
         //detail thatdisplays at game end
         public string Description { get; set; }
 
@@ -25,9 +25,11 @@ namespace Assets.Core.Entities
         public string FromEnding { get; set; }
         public bool AvailableWithoutEndingMatch { get; set; }
         public IAspectsDictionary Effects;
+        public List<string> ExcludesOnEnding;
 
 
-        public Legacy(string id, string label, string description, string startdescription, string image,string fromEnding,bool availableWithoutEndingMatch)
+        public Legacy(string id, string label, string description, string startdescription, string image,
+            string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding)
         {
             Id = id;
             Label = label;
@@ -37,6 +39,7 @@ namespace Assets.Core.Entities
             Effects = new AspectsDictionary();
             FromEnding = fromEnding;
             AvailableWithoutEndingMatch = availableWithoutEndingMatch;
+            ExcludesOnEnding = excludesOnEnding;
         }
     }
 }
