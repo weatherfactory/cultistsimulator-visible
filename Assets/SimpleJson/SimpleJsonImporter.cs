@@ -8,7 +8,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using OrbCreationExtensions;
 
 public class SimpleJsonImporter
@@ -232,7 +231,7 @@ public class SimpleJsonImporter
 			// If the previous character was also an escape character, it
 			// escapes this one, which turns into a regular character;
 			// otherwise, the next character should be escaped
-			if (c == '\\')
+			if (withinQuotes && c == '\\')
 			{
 				isEscaped = !isEscaped;
 				if (isEscaped)
@@ -247,6 +246,28 @@ public class SimpleJsonImporter
 				{
 					foundEnd = true;
 					break;
+				}
+				if (isEscaped)
+				{
+					// Consider valid escape characters
+					switch (c)
+					{
+						case 'n':
+							c = '\n';
+							break;
+						case 't':
+							c = '\t';
+							break;
+						case 'r':
+							c = '\r';
+							break;
+						case '"':
+							break;
+						default:
+							LogWarning("Unknown escaped sequence: '\\" + c + "'");
+							returnValue += '\\';
+							break;
+					}
 				}
 			}
 			else
@@ -265,6 +286,8 @@ public class SimpleJsonImporter
 			returnValue += c;
 		}
 
+		if (isEscaped)
+			LogWarning("Unterminated escape sequence", idx);
 		if (withinQuotes && !foundEnd)
 			LogWarning("Missing closing '\"' for string", end);
 		else if (!withinQuotes && returnValue.Length == 0)
