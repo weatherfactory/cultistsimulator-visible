@@ -43,7 +43,7 @@ startdescription: "Papa is dead! No-one will tell me exactly how. But the estate
 description: "The business of the will has been settled... but Papa's business affairs have been eaten up with debts like woodworm. No-one seems to know exactly what he spent the money on. But the solicitor is sending me some papers, apparently..",
 warmup:60,
 craftable: false},
- 
+
 {id: "bytopenexplore",
 label: "A World of Possibilities!",
 actionId: "explore",
@@ -62,7 +62,7 @@ alternativerecipes: [
 {id:"bytopendream",chance:100,additional:true}
 ],
 description: "I have received the papers. Poor Papa. Page after page after page of desperate scrawl on an invisible house and the colours of sleep and the invisible gods behind the world... but do you know, the more I read, the more it - well, not 'makes sense'. It doesn't make sense. But it does hang together. And here is Papa's diary.",
-effects: {legacydiarylastcharacter:1,LEVER_LastBook},
+effects: {legacydiarylastcharacter:1,LEVER_LastBook: 1},
 warmup:30,
 craftable: false
 },

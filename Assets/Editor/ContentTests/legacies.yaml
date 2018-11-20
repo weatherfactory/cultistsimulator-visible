@@ -1,0 +1,310 @@
+###########
+# Generic #
+###########
+
+- action: study
+  slot: mapbookdealer
+  recipes:
+  - id: studymapbookdealer
+    expulsions:
+    - openexplore
+  output:
+    - id: mapbookdealer
+      quantity: 0
+    - locationbookdealer
+
+############
+# Aspirant #
+############
+
+- action: work
+  slot: introjob
+  recipes:
+  - id: workintrojob
+    expulsions:
+    - introdream
+  output:
+  - health
+  - id: funds
+    quantity: 2
+
+- action: study
+  slot: bequestintro
+  aSlots:
+    Approach: reason
+  recipes:
+  - studybequestreason
+  output:
+  - id: bequestintro
+    quantity: 0
+  - ascensionenlightenmenta
+  - mapbookdealer
+  - fragmentlantern
+  - contactintro
+
+- action: study
+  slot: bequestintro
+  aSlots:
+    Approach: passion
+  recipes:
+  - studybequestpassion
+  output:
+  - id: bequestintro
+    quantity: 0
+  - ascensionpowera
+  - mapbookdealer
+  - fragmentforge
+  - contactintro
+
+- action: study
+  slot: contactintro
+  output:
+  - id: contactintro
+    quantity: 0
+  - mystique
+
+######################
+# Bright Young Thing #
+######################
+
+- action: work
+  slot: legacybytjob
+  recipes:
+  - id: workbytjobstart
+    expulsions:
+    - bytopenexplore
+  output:
+  - id: funds
+    quantity: 3
+  - id: legacybytjob
+    quantity: 0
+  - legacybytjobmatured
+
+- action: work
+  slot: legacybytjobmatured
+  recipes:
+  - id: workbytjob
+    roll: 1
+  - id: workbytjobend
+    expulsions:
+    - workbytjobepilogue
+  output:
+  - id: legacybytjobmatured
+    quantity: 0
+  - id: funds
+    quantity: 2
+
+- action: _wrap_bytopenstudy
+  slot: notaworm
+  recipes:
+  - _wrap_bytopenstudy
+  output:
+  - legacydiarylastcharacter
+  - textbooksanskrit
+
+- action: study
+  slot: legacydiarylastcharacter
+  recipes:
+  - id: bytstudydiary
+    expulsions:
+    - bytopentalk
+  output:
+  - id: legacydiarylastcharacter
+    quantity: 0
+  - reason
+  - fragmentgrail
+
+##########
+# Dancer #
+##########
+
+- action: study
+  slot: dancerlegacy_plotitem_a
+  aSlots:
+    Approach: fragmentheart
+  recipes:
+  - id: legacydancer_study_plotitema_heart
+    expulsions:
+    - legacydancer_opendream_heart
+  output:
+  - id: dancerlegacy_plotitem_a
+    quantity: 0
+  - id: vitality
+    quantity: 2
+
+- action: study
+  slot: dancerlegacy_plotitem_a
+  aSlots:
+    Approach: fragmentmoth
+  recipes:
+  - id: legacydancer_study_plotitema_moth
+    expulsions:
+    - legacydancer_opendream_moth
+  output:
+  - id: dancerlegacy_plotitem_a
+    quantity: 0
+  - id: glimmering
+    quantity: 2
+
+- action: work
+  slot: legacydancerjob
+  aSlots:
+    health: health
+  recipes:
+  - id: worklegacydancerjob
+    expulsions:
+    - legacydancer_openstudy
+    roll: 1
+  - id: worklegacydancerjob_more
+    slot: health
+    roll: 100
+  - A_worklegacydancerjob_more_heart
+  output:
+  - id: funds
+    quantity: 2
+
+- action: work
+  slot: legacydancerjob
+  aSlots:
+    health: health
+  recipes:
+  - id: worklegacydancerjob
+    expulsions:
+    - legacydancer_openstudy
+    roll: 1
+  - id: worklegacydancerjob_more
+    slot: passion
+    roll: 100
+  - A_worklegacydancerjob_more_moth
+  output:
+  - id: funds
+    quantity: 2
+
+#############
+# Detective #
+#############
+
+- action: work
+  slot: legacydetectivejob
+  recipes:
+  - id: workdetectivejob_start
+    expulsions:
+    - needs
+    - detectiveopendream
+  output:
+  - rose_r
+  - legacydetective_plotitem
+  - id: funds
+    quantity: 3
+  - fatigue
+
+- action: work
+  slot: legacydetectivejob_matured
+  aSlots:
+    target: favour
+  recipes:
+  - workdetectivejob_matured_pursuepromotion
+
+- action: work
+  slot: legacydetectivejob_matured
+  aSlots:
+    target: rose_r
+    meticulous: reason
+    vigilant: reason
+    singleminded: reason
+  recipes:
+  - id: workdetectivejob_matured_investigate
+    expulsions:
+    - detectiveopenstudy
+  - workdetectivejob_matured_investigate_successresults
+  output:
+  - id: funds
+    quantity: 3
+  - myevidence
+
+- action: work
+  slot: legacydetectivejob_matured
+  aSlots:
+    target: myevidence
+    meticulous: reason
+    vigilant: reason
+    singleminded: reason
+  recipes:
+  - id: workdetectivejob_matured_investigate
+    expulsions:
+    - detectiveopenstudy
+  - workdetectivejob_matured_investigate_successresults
+  output:
+  - id: funds
+    quantity: 3
+  - myevidenceb
+
+- action: work
+  slot: legacydetectivejob_matured
+  aSlots:
+    target: myevidenceb
+    meticulous: reason
+    vigilant: reason
+    singleminded: reason
+  recipes:
+  - id: workdetectivejob_matured_attemptsolvecase
+    slot: rose_r
+  - workdetectivejob_matured_solvecase
+  output:
+  - id: funds
+    quantity: 7
+  - favour
+  - legacydetective_plotitem_backup
+
+- action: study
+  slot: legacydetective_plotitem
+  recipes:
+    - id: detectivestudy_plotitem
+      expulsions:
+        - detectiveopendream
+  output:
+    - fascination
+    - ascensionsensationa
+    - dread
+
+- action: work
+  slot: legacydetective_plotitem
+  recipes:
+  - id: detectivework_plotitem
+    expulsions:
+    - detectiveopendream
+  output:
+  - legacydetective_plotitem_burning
+  - restlessness
+  - contentment
+
+#############
+# Physician #
+#############
+
+- action: work
+  slot: legacyphysicianjob
+  recipes:
+  - id: legacyphysicianwork
+    expulsions:
+    - legacyphysicianopenstudy
+  output:
+    - id: legacyphysicianjob
+      quantity: 0
+    - institutephysicianjob
+    - id: funds
+      quantity: 2
+    - health
+    - id: reason
+      quantity: 3
+
+- action: study
+  slot: legacyphysiciannotes
+  recipes:
+    - id: legacyphysicianstudynotes
+      expulsions:
+      - legacyphysicianopendream
+  output:
+    - id: legacyphysiciannotes
+      quantity: 0
+    - mapbookdealer

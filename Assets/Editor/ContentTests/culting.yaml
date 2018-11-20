@@ -1,0 +1,84 @@
+###################
+# Cult foundation #
+###################
+
+- action: talk
+  slot: neville_a
+  recipes:
+  - id: begincultfoundation
+    expulsions:
+    - action: cult
+      recipe: cultfoundation
+  output:
+  - neville_a
+
+- action: _wrap_cultfoundation
+  slot: notaworm
+  recipes:
+  - id: cultfoundation
+    slot: fragmentlantern
+  - id: cultfoundation_reason
+    slot: reason
+  - id: cultfoundation_firstrecruit
+    slot: neville_a
+  output:
+  - cultlantern_1
+  - neville_b
+
+- action: _wrap_cultfoundation
+  slot: notaworm
+  recipes:
+  - id: cultfoundation
+    slot: fragmentgrail
+  - id: cultfoundation_passion
+    slot: passion
+  - id: cultfoundation_firstrecruit
+    slot: neville_a
+  output:
+  - cultgrail_1
+  - neville_b
+
+- action: _wrap_cultfoundation
+  slot: notaworm
+  recipes:
+  - id: cultfoundation
+    slot: fragmentedge
+  - id: cultfoundation_health
+    slot: health
+  - id: cultfoundation_firstrecruit
+    slot: neville_a
+  output:
+  - cultedge_1
+  - neville_b
+
+###############
+# Recruitment #
+###############
+
+# Recruit from a -> b
+- action: talk
+  slot: cultknock_1
+  aSlots:
+    Associate: neville_a
+    Ceremony: fragmentknock
+  output:
+    - neville_b
+
+# Recruit from b -> c
+- action: talk
+  slot: cultknock_1
+  aSlots:
+    Associate: neville_b
+    Ceremony: fragmentknockc
+  output:
+  - neville_c
+
+# Recruit from c -> d
+- action: talk
+  slot: cultknock_1
+  aSlots:
+    Associate: neville_c
+    Ceremony: fragmentknockg
+    Trappings: influenceknock
+  output:
+  - neville_d

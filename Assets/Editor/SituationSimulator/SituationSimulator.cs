@@ -11,6 +11,8 @@ namespace Assets.Editor
 {
     public class SituationSimulator
     {
+        private const int MaxExecutions = 500;
+
         private readonly ISituationSimulatorSubscriber _subscriber;
         private readonly ICompendium _compendium;
         private readonly Character _character;
@@ -18,6 +20,9 @@ namespace Assets.Editor
         public SituationSimulator(ISituationSimulatorSubscriber subscriber = null)
         {
             _subscriber = subscriber;
+
+            // Set language to English for our tests
+            LanguageTable.LoadCulture("en");
 
             // Import all the content first
             ContentImporter contentImporter = new ContentImporter();
@@ -29,6 +34,7 @@ namespace Assets.Editor
             Registry registry = new Registry();
             registry.Register<ICompendium>(_compendium);
             registry.Register<Character>(_character);
+            _compendium.SupplyLevers(_character);
             registry.Register<SituationsCatalogue>(new SituationsCatalogue());
             registry.Register<StackManagersCatalogue>(new StackManagersCatalogue());
             registry.Register<IDice>(new Dice(new SimulatedRollOverride(subscriber)));
@@ -89,8 +95,13 @@ namespace Assets.Editor
 
             // Try to start the recipe, then run it to completion.
             controller.AttemptActivateRecipe();
+            int numExecutions = 0;
             while (controller.SituationClock.State != SituationState.Complete)
+            {
                 controller.ExecuteHeartbeat(0);
+                if (numExecutions++ >= MaxExecutions)
+                    throw new SituationSimulatorException("Too many executions, aborting");
+            }
         }
     }
 }
