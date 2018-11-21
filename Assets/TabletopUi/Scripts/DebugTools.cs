@@ -53,7 +53,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnMinusOne.onClick.AddListener(() => RemoveItem(input.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
         btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
-        btnEndGame.onClick.AddListener(EndGame);
+        btnEndGame.onClick.AddListener(()=>EndGame(input.text));
         btnLoadGame.onClick.AddListener(LoadGame);
         btnSaveGame.onClick.AddListener(SaveGame);
         btnResetDecks.onClick.AddListener(ResetDecks);
@@ -62,6 +62,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
         btnTriggerAchievement.onClick.AddListener(()=>TriggerAchievement(input.text));
         btnResetAchivement.onClick.AddListener(() => ResetAchievement(input.text));
+
 
         btnQueueRoll.onClick.AddListener(()=>QueueRoll(rollToQueue.text));
 
@@ -134,6 +135,15 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     }
 
+    void BeginLegacy(string legacyId)
+    {
+        var l = Registry.Retrieve<ICompendium>().GetAllLegacies().SingleOrDefault(leg => leg.Id == legacyId);
+        if (l == null)
+            return;
+
+
+    }
+    
     void TriggerAchievement(string achievementId)
     {
         var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
@@ -163,11 +173,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
     }
 
     // to allow access from HotkeyWatcher
-    public void EndGame()
+    public void EndGame(string endingId)
     {
         var compendium = Registry.Retrieve<ICompendium>();
-        var ending = compendium.GetEndingById("powerminor");
-
+       
+        var ending = compendium.GetEndingById(endingId);
+   
         ending.Anim = endingAnimFXName;
 
         // Get us a random situation that killed us!
