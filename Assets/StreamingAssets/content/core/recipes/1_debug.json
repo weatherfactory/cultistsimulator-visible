@@ -2,7 +2,7 @@
 {id:"debugsnare",
 actionId:"x",
 label:"Create Great Snares",
-		
+
 		effects:{snare:1},
 		warmup:1,
 		linked:[{id:"debugsnareaddmutation",chance:100}]
@@ -10,7 +10,7 @@ label:"Create Great Snares",
 		{id:"debugsnareaddmutation",
 actionId:"x",
 label:"Create Great Snares+",
-		
+
 		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
 		warmup:1
 		},
@@ -317,5 +317,33 @@ description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
+
+   {
+     id: "_wrap_cultfoundation",
+     actionId: "_wrap_cultfoundation",
+     linked: [{id: "cultfoundation", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1},
+     warmup: 0,
+     craftable: true
+   },
+   {
+     id: "_wrap_bytopenstudy",
+     actionId: "_wrap_bytopenstudy",
+     linked: [{id: "bytopenstudy", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1},
+     warmup: 0,
+     craftable: true
+   },
+   {
+     id: "_wrap_ambition",
+     actionId: "craving",
+     linked: [{id: "ambition", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1, seasonambitions: 1},
+     warmup: 0,
+     craftable: true
+   }
 ]
 }

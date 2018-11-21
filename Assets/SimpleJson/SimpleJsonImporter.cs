@@ -157,7 +157,7 @@ public class SimpleJsonImporter
 			}
 		}
 
-		if (readingState == ReadingState.Value)
+		if (readingState == ReadingState.Value || readingState == ReadingState.KeyFinished)
 			LogWarning("Missing value for hashtable key: '" + key + "'", end - 1);
 
 		begin = end;

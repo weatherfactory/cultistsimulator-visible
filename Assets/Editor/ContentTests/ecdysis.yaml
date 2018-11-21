@@ -1,0 +1,327 @@
+##############
+# Heart path #
+##############
+
+- action: talk
+  slot: sulochana
+  recipes:
+  - id: sulochanachat
+    slot: {id: ascensionchangea, mutations: {desireheart_track: 1}}
+  - sulochanachat_desireheart_track
+  output:
+  - locationcabaret
+
+- action: explore
+  slot: locationcabaret
+  aSlots:
+    Entry: sulochana
+  recipes:
+  - id: explorecabaret_meetsulochana
+    slot: {id: ascensionchangea, mutations: {desireheart_track: 1}}
+  - A_ecdysis_beginheart
+  output:
+  - dancerjobecdysisa
+  - fragmentheart
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangea
+    abilityfirst: health
+    abilitysecond: health
+  recipes:
+  - id: ecdysisdance_ascensionlessonhearta
+    roll: 1
+    expulsions:
+    - recipe: health_expel_to_scar
+      expelled: [fatigue]
+  output:
+  - funds
+  - mystique
+  - ascensionlessonhearta
+  - fatigue
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangeb
+    abilityfirst: health
+    abilitysecond: scar_heart
+  recipes:
+  - id: ecdysisdance_sendingheartb
+    roll: 1
+    expulsions:
+    - recipe: health_expel_to_scar
+      expelled: [fatigue]
+  output:
+  - funds
+  - mystique
+  - sendingheartb
+  - scar_heart_fatigued
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangec
+    abilityfirst: scar_heart
+    abilitysecond: scar_heart
+  recipes:
+  - ecdysisdance_sendingheartc
+  output:
+  - funds
+  - mystique
+  - sendingheartc
+  - id: scar_heart_fatigued
+    quantity: 2
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchanged
+    abilityfirst: scar_heart
+    abilitysecond: scar_heart
+    abilitythird: health
+  recipes:
+  - id: ecdysisdance_sendingheartd
+    roll: 1
+    expulsions:
+    - recipe: health_expel_to_scar
+      expelled: [fatigue]
+  output:
+  - funds
+  - mystique
+  - sendingheartd
+  - id: scar_heart_fatigued
+    quantity: 2
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangee
+    abilityfirst: scar_heart
+    abilitysecond: scar_heart
+    abilitythird: scar_heart
+  recipes:
+  - ecdysisdance_sendinghearte
+  output:
+  - funds
+  - mystique
+  - sendinghearte
+  - id: scar_heart_fatigued
+    quantity: 3
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangef
+    abilityfirst: scar_heart
+    abilitysecond: scar_heart
+    abilitythird: scar_heart
+    influence: influenceheart
+  recipes:
+  - ecdysisdance_sendingheartf
+  output:
+  - funds
+  - mystique
+  - sendingheartf
+  - id: scar_heart_fatigued
+    quantity: 3
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangeg
+    abilityfirst: scar_heart
+    abilitysecond: scar_heart
+    abilitythird: scar_heart
+    influence: influenceheartc
+  recipes:
+  - ecdysisdance_sendingheartg
+  output:
+  - funds
+  - mystique
+  - sendingheartg
+  - id: scar_heart_fatigued
+    quantity: 3
+
+#############
+# Moth path #
+#############
+
+- action: talk
+  slot: sulochana
+  recipes:
+  - id: sulochanachat
+    slot: {id: ascensionchangea, mutations: {desiremoth_track: 1}}
+  - sulochanachat_desiremoth_track
+  output:
+  - locationcabaret
+
+- action: explore
+  slot: locationcabaret
+  aSlots:
+    Entry: sulochana
+  recipes:
+  - id: explorecabaret_meetsulochana
+    slot: {id: ascensionchangea, mutations: {desiremoth_track: 1}}
+  - A_ecdysis_beginmoth
+  output:
+  - dancerjobecdysisa
+  - fragmentmoth
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangea
+    abilityfirst: passion
+    abilitysecond: passion
+  recipes:
+  - id: ecdysisdance_ascensionlessonmotha
+    roll: 1
+    expulsions:
+    - recipe: passion_expel_to_scar
+      expelled: [passionexhausted]
+  output:
+  - funds
+  - mystique
+  - ascensionlessonmotha
+  - passionexhausted
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangeb
+    abilityfirst: passion
+    abilitysecond: scar_moth
+  recipes:
+  - id: ecdysisdance_sendingmothb
+    roll: 1
+    expulsions:
+    - recipe: passion_expel_to_scar
+      expelled: [passionexhausted]
+  output:
+  - funds
+  - mystique
+  - sendingmothb
+  - scar_moth_fatigued
+
+- action: work
+  slot: dancerjobecdysisb
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangec
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+  recipes:
+  - ecdysisdance_sendingmothc
+  output:
+  - funds
+  - mystique
+  - sendingmothc
+  - id: scar_moth_fatigued
+    quantity: 2
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchanged
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+    abilitythird: passion
+  recipes:
+  - id: ecdysisdance_sendingmothd
+    roll: 1
+    expulsions:
+    - recipe: passion_expel_to_scar
+      expelled: [passionexhausted]
+  output:
+  - funds
+  - mystique
+  - sendingmothd
+  - id: scar_moth_fatigued
+    quantity: 2
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangee
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+    abilitythird: scar_moth
+  recipes:
+  - ecdysisdance_sendingmothe
+  output:
+  - funds
+  - mystique
+  - sendingmothe
+  - id: scar_moth_fatigued
+    quantity: 3
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangef
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+    abilitythird: scar_moth
+    influence: influencemoth
+  recipes:
+  - ecdysisdance_sendingmothf
+  output:
+  - funds
+  - mystique
+  - sendingmothf
+  - id: scar_moth_fatigued
+    quantity: 3
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: ascensionchangeg
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+    abilitythird: scar_moth
+    influence: influencemothc
+  recipes:
+  - ecdysisdance_sendingmothg
+  output:
+  - funds
+  - mystique
+  - sendingmothg
+  - id: scar_moth_fatigued
+    quantity: 3
+
+###################
+# Heart/Moth path #
+###################
+
+- action: work
+  slot: dancerjobecdysisc
+  aSlots:
+    location: locationcabaret
+    purpose: {id: ascensionchangeg, mutations: {desiremoth_track: 3, desireheart_track: 3}}
+    abilityfirst: scar_moth
+    abilitysecond: scar_moth
+    abilitythird: scar_moth
+    influence: influencemothc
+  recipes:
+  - ecdysisdance_sendingmothheartg
+  output:
+  - funds
+  - mystique
+  - sendingmothheartg
+  - id: scar_moth_fatigued
+    quantity: 3
