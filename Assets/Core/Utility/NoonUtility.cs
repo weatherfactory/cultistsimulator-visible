@@ -26,6 +26,7 @@ namespace Noon
         public const string KIMAGE = "image";
         public const string KFROMENDING = "fromEnding";
         public const string KAVAILABLEWITHOUTENDINGMATCH = "availableWithoutEndingMatch";
+	    public const string KEXCLUDESONENDING = "excludesOnEnding";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
         public const string KPORTALEFFECT = "portaleffect";

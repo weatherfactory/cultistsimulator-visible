@@ -18,7 +18,7 @@
 	id: "studyupgradelore_edge",
 	label: "Study the Lore of the Knife",
 	actionId: "study",
-	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock-1},
+	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock:-1},
 	effects: {project_upgrade_edge:1},
 	linked: [
 	{id: "studyresearchtick",chance:100}],
@@ -45,17 +45,17 @@
 	id: "studyforgelore",
 	label: "Study the Lore which Burns",
 	actionId: "study",
-	requirements: {lore:2, forge:1,edge:-1,lantern:-1,knock-1},
+	requirements: {lore:2, forge:1,edge:-1,lantern:-1,knock:-1},
 	effects:{project_upgrade_forge:1},
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
-	
+
 	warmup:30,
 	craftable: true
 	},
-	
+
 		{
 	id: "studysubvertlore_forgetoedge",
 	label: "Subvert the Lore which Burns",
@@ -66,26 +66,26 @@
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "The Hour called Lionsmith shattered his own sword to escape his master's dominion. All things can be overcome, with sufficient force. [This will create Edge lore instead of Forge.]",
-	
+
 	warmup:30,
 	craftable: true
 	},
-	
+
 			{
 	id: "studygraillore",
 	label: "Study the Succulent Lore",
 	actionId: "study",
-	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock-1},
+	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock:-1},
 	effects:{project_upgrade_grail:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
-	
+
 	warmup:30,
 	craftable: true,
 	},
-	
-		
+
+
 			{
 	id: "studysubvertlore_grailtomoth",
 	label: "Subvert the Succulent Lore",
@@ -95,26 +95,26 @@
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "It has been claimed that Grail was born from the first sacrifice. But Moth knows better. [This will create Moth lore instead of Grail.]",
-	
+
 	warmup:30,
 	craftable: true,
 	},
-	
-	
+
+
 				{
 	id: "studyheartlore",
 	label: "Study the Lore Unceasing",
 	actionId: "study",
-	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock-1},
+	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock:-1},
 	effects:{project_upgrade_heart:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
-	
+
 	warmup:30,
 	craftable: true,
 	},
-	
+
 					{
 	id: "studysubvertlore_hearttograil",
 	label: "Subvert the Lore Unceasing",
@@ -124,7 +124,7 @@
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "What does not cease will succumb, at last, to temptation. [This will create Grail lore instead of Heart.]",
-	
+
 	warmup:30,
 	craftable: true,
 	},
@@ -134,12 +134,12 @@
 	id: "studylanternlore",
 	label: "Study the Glorious Lore",
 	actionId: "study",
-	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock-1},
+	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock:-1},
 	effects:{project_upgrade_lantern:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
-	
+
 	warmup:30,
 	craftable: true,
 	},
@@ -152,7 +152,7 @@
 
 	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "The magus Julian Coseley claims the Forge of Days split the Sun. Perhaps he was right. [This will create Forge lore instead of Lantern.]",
-	
+
 	warmup:30,
 	craftable: true,
 	},
@@ -160,17 +160,17 @@
 	id: "studymothlore",
 	label: "Study the Lore of the Wood",
 	actionId: "study",
-	requirements: {lore:2, moth:1,lantern:-1,grail:-1,knock-1},
+	requirements: {lore:2, moth:1,lantern:-1,grail:-1,knock:-1},
 	effects:{project_upgrade_moth:1},
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
-	
+
 	warmup:30,
 	craftable: true
 	},
-	
+
 				{
 	id: "studysubvertlore_mothtolantern",
 	label: "Subvert the Lore of the Wood",
@@ -181,11 +181,11 @@
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "The Glory is a question, and the Moth always answers, Yes. [This will create Lantern lore instead of Moth.]",
-	
+
 	warmup:30,
 	craftable: true
 	},
-	
+
 				{
 	id: "studysecrethistorieslore",
 	label: "Study the Histories",
@@ -196,7 +196,7 @@
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
-	
+
 	warmup:30,
 	craftable: true
 	},
@@ -204,13 +204,13 @@
 	id: "studywinterlore",
 	label: "Study the Ragged Lore",
 	actionId: "study",
-	requirements: {lore:2, winter:1,heart:-1,knock-1},
+	requirements: {lore:2, winter:1,heart:-1,knock:-1},
 	effects:{project_upgrade_winter:1},
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
-	
+
 	warmup:30,
 	craftable: true
 	},
@@ -224,7 +224,7 @@
 	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Even in the snow, in the silence, in the white without colours, life will never quite cease. [This will create Heart lore instead of Winter.]",
-	
+
 	warmup:30,
 	craftable: true
 	},
@@ -336,7 +336,7 @@
 	{id: "studyresearchconsolation",chance:100},
 	]
 	},
-	
+
 						{
 	id: "studyresearchmaxinsight",
 	label: "Research complete, max insight",
@@ -389,18 +389,18 @@
 	warmup:0,
 	craftable: false,
 	linked: [
-	
 
-	
-		{id:"studyproject_upgrade_edge",chance:100},		
-		{id:"studyproject_upgrade_forge",chance:100},		
-		{id:"studyproject_upgrade_grail",chance:100},		
-		{id:"studyproject_upgrade_heart",chance:100},			
-		{id:"studyproject_upgrade_lantern",chance:100},		
-		{id:"studyproject_upgrade_moth",chance:100},		
+
+
+		{id:"studyproject_upgrade_edge",chance:100},
+		{id:"studyproject_upgrade_forge",chance:100},
+		{id:"studyproject_upgrade_grail",chance:100},
+		{id:"studyproject_upgrade_heart",chance:100},
+		{id:"studyproject_upgrade_lantern",chance:100},
+		{id:"studyproject_upgrade_moth",chance:100},
 		{id:"studyproject_upgrade_secrethistories",chance:100},
 		{id:"studyproject_upgrade_winter",chance:100},
-		
+
 		{id:"studyproject_subvert_edgetowinter",chance:100},
 		{id:"studyproject_subvert_forgetoedge",chance:100},
 		{id:"studyproject_subvert_grailtomoth",chance:100},
@@ -408,12 +408,12 @@
 		{id:"studyproject_subvert_lanterntoforge",chance:100},
 		{id:"studyproject_subvert_mothtolantern",chance:100},
 		{id:"studyproject_subvert_wintertoheart",chance:100},
-		
+
 		{id:"studyproject_upgrade_subvert_knock",chance:100},
 
-	
-	
-	
+
+
+
 	]
 	},
 	{id:"studyproject_upgrade_edge",
@@ -422,10 +422,10 @@
 	requirements:{project_upgrade_edge:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."	
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."
 	},
 
-	
+
 
 			{id:"studyproject_upgrade_forge",
 	label:"The Lore that Burns",
@@ -433,7 +433,7 @@
 	requirements:{project_upgrade_forge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore that Burns, which we call by its aspect, Forge."	
+	description:"I've increased my mastery of the Lore that Burns, which we call by its aspect, Forge."
 	},
 			{id:"studyproject_upgrade_grail",
 	label:"The Succulent Lore",
@@ -441,7 +441,7 @@
 	requirements:{project_upgrade_grail:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Succulent Lore, which we call by its aspect, Grail."	
+	description:"I've increased my mastery of the Succulent Lore, which we call by its aspect, Grail."
 	},
 			{id:"studyproject_upgrade_heart",
 	label:"The Lore Unceasing",
@@ -449,7 +449,7 @@
 	requirements:{project_upgrade_heart:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore Unceasing, which we call by its aspect, Heart."	
+	description:"I've increased my mastery of the Lore Unceasing, which we call by its aspect, Heart."
 	},
 			{id:"studyproject_upgrade_lantern",
 	label:"The Glorious Lore",
@@ -457,7 +457,7 @@
 	requirements:{project_upgrade_lantern:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Glorious Lore, which we call by its aspect, Lantern."	
+	description:"I've increased my mastery of the Glorious Lore, which we call by its aspect, Lantern."
 	},
 			{id:"studyproject_upgrade_moth",
 	label:"The Lore of the Wood",
@@ -465,7 +465,7 @@
 	requirements:{project_upgrade_moth:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Wood, which we call by its aspect, Moth."	
+	description:"I've increased my mastery of the Lore of the Wood, which we call by its aspect, Moth."
 	},
 			{id:"studyproject_upgrade_secrethistories",
 	label:"The Secret Histories",
@@ -473,7 +473,7 @@
 	requirements:{project_upgrade_secrethistories:1},
 	effects:{secrethistories:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my knowledge of the secret histories behind the one we know."	
+	description:"I've increased my knowledge of the secret histories behind the one we know."
 	},
 			{id:"studyproject_upgrade_winter",
 	label:"The Ragged Lore",
@@ -481,27 +481,27 @@
 	requirements:{project_upgrade_winter:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Ragged Lore, which we call by its aspect, Winter."	
+	description:"I've increased my mastery of the Ragged Lore, which we call by its aspect, Winter."
 	},
 
 
-	
+
 			{id:"studyproject_subvert_edgetowinter",
 	label:"All Things End",
 	actionId:"study",
 	requirements:{project_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
-	description:"Patience defeats strength. I've subverted my Edge lore to Winter."	
+	description:"Patience defeats strength. I've subverted my Edge lore to Winter."
 	},
-	
+
 			{id:"studyproject_subvert_forgetoedge",
 	label:"Force Conquers All",
 	actionId:"study",
 	requirements:{project_subvert_forgetoedge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"I've shattered what I believed before. Thus have I subverted my Forge lore to Edge."	
+	description:"I've shattered what I believed before. Thus have I subverted my Forge lore to Edge."
 	},
 			{id:"studyproject_subvert_grailtomoth",
 	label:"Hunger is Folly",
@@ -509,7 +509,7 @@
 	requirements:{project_subvert_grailtomoth:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"Even the Red Grail falls prey to the buzzing in the brain. I've subverted my Grail lore to Moth."	
+	description:"Even the Red Grail falls prey to the buzzing in the brain. I've subverted my Grail lore to Moth."
 	},
 			{id:"studyproject_subvert_hearttograil",
 	label:"What Does Not Cease Must Eventually Yield",
@@ -517,7 +517,7 @@
 	requirements:{project_subvert_hearttograil:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"All that moves must succumb to hunger. I've subverted my Heart lore to Grail."	
+	description:"All that moves must succumb to hunger. I've subverted my Heart lore to Grail."
 	},
 			{id:"studyproject_subvert_lanterntoforge",
 	label:"Sunset at Noon",
@@ -525,7 +525,7 @@
 	requirements:{project_subvert_lanterntoforge:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"There are arts in Forge which may split even the sun. I've subverted my Lantern lore to Forge."	
+	description:"There are arts in Forge which may split even the sun. I've subverted my Lantern lore to Forge."
 	},
 			{id:"studyproject_subvert_mothtolantern",
 	label:"The Light Above",
@@ -533,7 +533,7 @@
 	requirements:{project_subvert_mothtolantern:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"The Glory is a question, and Moth always answers Yes. I've subverted my Moth lore to Lantern."	
+	description:"The Glory is a question, and Moth always answers Yes. I've subverted my Moth lore to Lantern."
 	},
 
 			{id:"studyproject_subvert_wintertoheart",
@@ -542,16 +542,16 @@
 	requirements:{project_subvert_wintertoheart:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"Winter's coming must yield at last to spring. I've subverted my Winter lore to Heart."	
+	description:"Winter's coming must yield at last to spring. I've subverted my Winter lore to Heart."
 	},
-	
+
 				{id:"studyproject_upgrade_subvert_knock",
 	label:"All Shall Be Opened",
 	actionId:"study",
 	requirements:{project_upgrade_subvert_knock:1},
 	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
 	aspects:{epiphany:1},
-	description:"When we open a thing, then we learn its nature. I've deepened my understanding of the Lore that Opens, which we call by its aspect, Knock.",	
+	description:"When we open a thing, then we learn its nature. I've deepened my understanding of the Lore that Opens, which we call by its aspect, Knock.",
 	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
@@ -562,9 +562,9 @@
 	effects:{knock:-1},
 	description:"."
 	},
-	
-	
-	
+
+
+
 								{
 	id: "studyresearchconsolation",
 	label: "The Lessons of Experience",
@@ -577,7 +577,7 @@
 	warmup:0,
 	craftable: false
 	},
-	
+
 			{
 	id: "studydowngradefragmentedgeb",
 	label: "Return to the Fundamentals",
@@ -657,11 +657,11 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
+
+
+
+
+
 		{
 	id: "studydowngradefragmentforgeb",
 	label: "Return to the Fundamentals",
@@ -741,10 +741,10 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
+
+
+
+
 		{
 	id: "studydowngradefragmentgrailb",
 	label: "Return to the Fundamentals",
@@ -824,11 +824,11 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
+
+
+
+
+
 		{
 	id: "studydowngradefragmentheartb",
 	label: "Return to the Fundamentals",
@@ -910,11 +910,11 @@
 	},
 
 
-	
-	
-	
-	
-	
+
+
+
+
+
 		{
 	id: "studydowngradefragmentknockb",
 	label: "Return to the Fundamentals",
@@ -994,12 +994,12 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 		{
 	id: "studydowngradefragmentlanternb",
 	label: "Return to the Fundamentals",
@@ -1079,11 +1079,11 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
+
+
+
+
+
 		{
 	id: "studydowngradefragmentmothb",
 	label: "Return to the Fundamentals",
@@ -1163,13 +1163,13 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	{
 	id: "studydowngradefragmentsecrethistoriesb",
 	label: "Return to the Fundamentals",
@@ -1249,12 +1249,12 @@
 	warmup:60,
 	craftable: true
 	},
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	{
 	id: "studydowngradefragmentwinterb",
 	label: "Return to the Fundamentals",

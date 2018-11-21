@@ -129,7 +129,7 @@ public class ContentImporter
         List<string> allContentFiles = new List<string>();
 
         allContentFiles.AddRange(coreContentFiles);
-        allContentFiles.AddRange(overridecontentFiles); 
+        allContentFiles.AddRange(overridecontentFiles);
         if (!allContentFiles.Any())
             NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
 
@@ -168,7 +168,7 @@ public class ContentImporter
 					    continue;
 					}
 
-					
+
 
 					bool repair = false;
 					bool changed = false;
@@ -187,7 +187,7 @@ public class ContentImporter
 					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate, false, repair, ref changed );
 
 #if UNITY_EDITOR && LOC_AUTO_REPAIR
-NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be here? 
+NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be here?
     //(a) we don't actually autofix the file unless one is missing, and
     //(b) the log is currently showing messages about the /more files, which shouldn't be localised to /core anyway.
 					if (changed)
@@ -791,14 +791,25 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             try
             {
+                string legacyId = htEachLegacy[NoonConstants.KID].ToString();
 
-                Legacy l = new Legacy(htEachLegacy[NoonConstants.KID].ToString(),
-                    htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
+                // Build the list of legacies to exclude, if provided
+                // This should ONLY be applied to ending-dependent legacies, to avoid combining them with conflicting
+                // randomly-selected legacies after an ending
+                bool availableWithoutEndingMatch =
+                    Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH]);
+                List<string> excludesOnEnding = new List<string>();
+                if (htEachLegacy.ContainsKey(NoonConstants.KEXCLUDESONENDING))
+                    excludesOnEnding = htEachLegacy.GetArrayList(NoonConstants.KEXCLUDESONENDING).Cast<string>().ToList();
+
+                Legacy l = new Legacy(legacyId,
+                    htEachLegacy[NoonConstants.KLABEL].ToString(),
+                    htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
                     htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(),
                     htEachLegacy[NoonConstants.KIMAGE].ToString(),
                     htEachLegacy[NoonConstants.KFROMENDING].ToString(),
-                    Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH])
-
+                    availableWithoutEndingMatch,
+                    excludesOnEnding
                 );
 
                 Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);

@@ -20,28 +20,30 @@ namespace Assets.Logic
             Random rnd = new Random();
 
             List<Legacy> selectedLegacies=new List<Legacy>();
-            
+
 
             //try to find a legacy that matches the death.
             Legacy deathDependentLegacy = _compendium.GetAllLegacies().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
 
             //there should be one! but in case there's not, log it, and get prepped to draw an extra random legacy.
             if (deathDependentLegacy == null)
-            { 
+            {
                 NoonUtility.Log("Couldn't find a death-dependent ending for " + ending.Id +
                                 " so we'll draw a full 3 randoms. But this is a problem!",1);
                 randomLegaciesToDraw++;
             }
             else
-            { 
+            {
                 selectedLegacies.Add(deathDependentLegacy);
             }
 
             //find: randomly selected legacies from the remaining list that are
             //- available for random draw
             //- not the death-dependent legacy, if there is one
-            
-            IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(l => l.AvailableWithoutEndingMatch)
+            //- not excluded by the death-dependent legacy
+            IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(
+                    l => l.AvailableWithoutEndingMatch
+                         && (deathDependentLegacy == null || !deathDependentLegacy.ExcludesOnEnding.Contains(l.Id)))
                 .OrderBy(l => rnd.Next()).ToList();
 
             NoonUtility.Log(drawingLegacies.Count() + " legacies available to draw from");
@@ -56,7 +58,7 @@ namespace Assets.Logic
 
            selectedLegacies.AddRange(drawingLegacies);
 
-            
+
 
             return selectedLegacies;
         }
