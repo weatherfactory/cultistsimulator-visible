@@ -96,9 +96,16 @@ description:"The road you want to walk is what we call the Old Form. I walked it
 {id:"sulochanachat_desire",
 actionId:"talk",
 label:"On Desire",
+requirements:{sulochana:1,changemarks:1},
+startdescription:"The dance, hm?",
+description:"Find me in my house, and we can talk about the partner you will need in the end. Here's the address."
+},
+{id:"sulochanachat_desire",
+actionId:"talk",
+label:"On Desire",
 requirements:{sulochana:1,desire:1},
 startdescription:"That's what steers you?",
-description:"We have no common ground there. I chose my road a very long time ago."
+description:"We have no common ground there. I chose my road a very long time ago. But if you find yourself walking that road... speak to me again."
 },
 {id:"sulochanachat_secrethistoriesrouter",
 actionId:"talk",
