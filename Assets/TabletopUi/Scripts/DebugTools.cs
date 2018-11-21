@@ -20,10 +20,13 @@ using UnityEngine.VR;
 
 public class DebugTools : MonoBehaviour,IRollOverride
 {
+    private const int MaxAutoCompletionSuggestions = 50;
 
     [SerializeField] private TabletopTokenContainer tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
+    [SerializeField] private ScrollRect autoCompletionBox;
+    [SerializeField] private VerticalLayoutGroup autoCompletionSuggestions;
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnBeginSituation;
@@ -46,9 +49,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public List<int> QueuedRollsList;
 
+    public Transform AutoCompletionSuggestion;
 
     public void Awake()
     {
+        autoCompletionBox.gameObject.SetActive(false);
+        input.onValueChanged.AddListener(AttemptAutoCompletion);
         btnPlusOne.onClick.AddListener(() => AddCard(input.text));
         btnMinusOne.onClick.AddListener(() => RemoveItem(input.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
@@ -69,6 +75,58 @@ public class DebugTools : MonoBehaviour,IRollOverride
         QueuedRollsList=new List<int>();
 
     }
+
+    void AttemptAutoCompletion(string value)
+    {
+        // Don't show the suggestion box if the field is empty
+        if (value.Length == 0)
+        {
+            autoCompletionBox.gameObject.SetActive(false);
+            return;
+        }
+        autoCompletionBox.gameObject.SetActive(true);
+
+        // Clear the list
+        foreach (Transform child in autoCompletionSuggestions.transform)
+            Destroy(child.gameObject);
+
+        // Re-populate it with updated suggestions
+        // Disable the suggestion box if there are no suggestions
+        List<string> suggestedIds = GetAutoCompletionSuggestions(value);
+        if (suggestedIds.Count == 0)
+        {
+            autoCompletionBox.gameObject.SetActive(false);
+            return;
+        }
+        foreach (var suggestedId in suggestedIds)
+        {
+            Transform suggestion = Instantiate(AutoCompletionSuggestion);
+            suggestion.GetComponentInChildren<Text>().text = suggestedId;
+            suggestion.SetParent(autoCompletionSuggestions.transform, false);
+            Button button = suggestion.GetComponent<Button>();
+            var suggestionText = suggestedId;
+            button.onClick.AddListener(() => ApplySuggestion(suggestionText));
+        }
+    }
+
+    void ApplySuggestion(string suggestion)
+    {
+        // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
+        input.onValueChanged.RemoveListener(AttemptAutoCompletion);
+        input.text = suggestion;
+        input.onValueChanged.AddListener(AttemptAutoCompletion);
+        autoCompletionBox.gameObject.SetActive(false);
+    }
+
+    List<string> GetAutoCompletionSuggestions(string prompt)
+    {
+        ICompendium compendium = Registry.Retrieve<ICompendium>();
+        List<string> candidates = compendium.GetAllElementsAsDictionary().Keys.
+            Where(e => e.StartsWith(prompt)).ToList();
+        candidates.AddRange(compendium.GetAllRecipesAsList().Where(r => r.Id.StartsWith(prompt)).Select(r => r.Id));
+        return candidates.OrderBy(id => id).Take(MaxAutoCompletionSuggestions).ToList();
+    }
+
     void AddCard(string elementId)
     {
         var stackManager = tabletop.GetElementStacksManager();
