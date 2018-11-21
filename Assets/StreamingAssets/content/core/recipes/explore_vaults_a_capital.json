@@ -62,7 +62,7 @@
 	label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultcapital5:1},
-	effects: {},
+	effects: {guardian_monks:1},
 
 	startdescription: "Membership of the Congregation is strictly controlled. It may even be inherited. The safest approach is to burgle the minister's residence while he's conducting a service - but the sworn mothers of the Congregation guard the place in shifts, and they are not easily distracted. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
