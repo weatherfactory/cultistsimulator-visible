@@ -1,3 +1,7 @@
+###########
+# Generic #
+###########
+
 - action: explore
   slot: vaultcapital2
   aSlots:
@@ -49,3 +53,331 @@
   output:
   - id: victor_d
     quantity: 0
+
+#############################
+# Expeditions with sendings #
+#############################
+
+- action: explore
+  slot: vaultshiresdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingheartb
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_wardeddoor_encounter
+    slot: valciane_c
+  - id: explorevaultseal_wardeddoor_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultcurse_visions_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionheartb
+  output:
+    - id: sendingheartb
+      quantity: 0
+    - ascensionlessonheartb
+
+- action: explore
+  slot: vaultcontinentdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingheartc
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_forest_encounter
+    slot: valciane_c
+  - id: explorevaultperil_forest_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_hiddendoor_encounter
+    slot: slee_c
+  - id: explorevaultseal_hiddendoor_midlantern
+    roll: 1
+  - expeditionascensionheartc
+  output:
+  - id: sendingheartc
+    quantity: 0
+  - ascensionlessonheartc
+
+- action: explore
+  slot: vaultlandbeyondforestdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingheartd
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_mountains_encounter
+    slot: valciane_c
+  - id: explorevaultperil_mountains_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultcurse_visions_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionheartd
+  output:
+  - id: sendingheartd
+    quantity: 0
+  - ascensionlessonheartd
+
+- action: explore
+  slot: vaultloneandlevelsandsdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendinghearte
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_desert_encounter
+    slot: valciane_c
+  - id: explorevaultperil_desert_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_dead_encounter
+    slot: violet_c
+  - id: explorevaultguardian_dead_midwinter
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_hiddendoor_encounter
+    slot: slee_c
+  - id: explorevaultseal_hiddendoor_midlantern
+    roll: 1
+  - id: explorevaultcurse_affliction_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_affliction_midheart
+    roll: 1
+  - expeditionascensionhearte
+  output:
+  - id: sendinghearte
+    quantity: 0
+  - ascensionlessonhearte
+
+- action: explore
+  slot: vaulteveningislesdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingheartf
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_sea_encounter
+    slot: clovette_c
+  - id: explorevaultperil_sea_midheart
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_long_encounter
+    slot: saliba_c
+  - id: explorevaultguardian_long_midgrail
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_wardeddoor_encounter
+    slot: valciane_c
+  - id: explorevaultseal_wardeddoor_midforge
+    roll: 1
+  - id: explorevaultcurse_visions_encounter
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionheartf
+  output:
+  - id: sendingheartf
+    quantity: 0
+  - ascensionlessonheartf
+
+- action: explore
+  slot: vaultshiresdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingmothb
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_wardeddoor_encounter
+    slot: valciane_c
+  - id: explorevaultseal_wardeddoor_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultcurse_visions_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionmothb
+  output:
+  - id: sendingmothb
+    quantity: 0
+  - ascensionlessonmothb
+
+- action: explore
+  slot: vaultcontinentdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingmothc
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_forest_encounter
+    slot: valciane_c
+  - id: explorevaultperil_forest_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_hiddendoor_encounter
+    slot: slee_c
+  - id: explorevaultseal_hiddendoor_midlantern
+    roll: 1
+  - expeditionascensionmothc
+  output:
+  - id: sendingmothc
+    quantity: 0
+  - ascensionlessonmothc
+
+- action: explore
+  slot: vaultlandbeyondforestdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingmothd
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_mountains_encounter
+    slot: valciane_c
+  - id: explorevaultperil_mountains_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_watchers_encounter
+    slot: victor_c
+  - id: explorevaultguardian_watchers_midedge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultcurse_visions_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionmothd
+  output:
+  - id: sendingmothd
+    quantity: 0
+  - ascensionlessonmothd
+
+- action: explore
+  slot: vaultloneandlevelsandsdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingmothe
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_desert_encounter
+    slot: valciane_c
+  - id: explorevaultperil_desert_midforge
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_dead_encounter
+    slot: violet_c
+  - id: explorevaultguardian_dead_midwinter
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_hiddendoor_encounter
+    slot: slee_c
+  - id: explorevaultseal_hiddendoor_midlantern
+    roll: 1
+  - id: explorevaultcurse_affliction_encounter
+    slot: clovette_c
+  - id: explorevaultcurse_affliction_midheart
+    roll: 1
+  - expeditionascensionmothe
+  output:
+  - id: sendingmothe
+    quantity: 0
+  - ascensionlessonmothe
+
+- action: explore
+  slot: vaulteveningislesdefault
+  aSlots:
+    expeditionmember: neville_b
+    expeditionfunds: funds
+    sending: sendingmothf
+  recipes:
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultperil_sea_encounter
+    slot: clovette_c
+  - id: explorevaultperil_sea_midheart
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultguardian_long_encounter
+    slot: saliba_c
+  - id: explorevaultguardian_long_midgrail
+    roll: 1
+  - id: explorevaulttick
+    slot: funds
+  - id: explorevaultseal_wardeddoor_encounter
+    slot: valciane_c
+  - id: explorevaultseal_wardeddoor_midforge
+    roll: 1
+  - id: explorevaultcurse_visions_encounter
+  - id: explorevaultcurse_visions_midheart
+    roll: 1
+  - expeditionascensionmothf
+  output:
+  - id: sendingmothf
+    quantity: 0
+  - ascensionlessonmothf

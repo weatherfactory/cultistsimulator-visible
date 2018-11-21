@@ -1,0 +1,405 @@
+#########
+# Power #
+#########
+
+# a -> b
+- action: dream
+  slot: ascensionpowera
+  recipes:
+  - id: dreamascensionpowera
+    slot: fragmentforge
+  output:
+  - ascensionpowerb
+
+# b -> c
+- action: work
+  slot: ascensionpowerb
+  aSlots:
+    Know: waystag_after
+    Power: fragmentforgec
+  recipes:
+  - id: ascensionpower_upgradetoobsession
+  output:
+  - ascensionpowerc
+
+# c -> d
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionpowerc
+  - id: ascensioncravingpower
+    slot: funds
+  output:
+  - ascensionpowerd
+
+# d -> e
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionpowerd
+  - id: ascensioncravingpower
+    slot: funds
+  output:
+  - ascensionpowere
+
+# e -> f
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionpowere
+  - id: ascensioncravingpower
+    slot: funds
+  output:
+  - ascensionpowerf
+
+# f -> minor victory
+- action: work
+  slot: riteconsumetoolingredientfollowerinfluence
+  aSlots:
+    Sacrifice: fragmentforgeg
+    Surrender: toolforgef
+    Dissolution: influenceforgee
+    Desire: ascensionpowerf
+  recipes:
+    - minorforgevictory
+
+
+#################
+# Enlightenment #
+#################
+
+# a -> b
+- action: dream
+  slot: ascensionenlightenmenta
+  recipes:
+  - id: dreamascensionenlightenmenta
+    slot: fragmentlantern
+  output:
+  - ascensionenlightenmentb
+
+# b -> c
+- action: work
+  slot: ascensionenlightenmentb
+  aSlots:
+    Know: waystag_after
+    Power: fragmentlanternc
+  recipes:
+  - id: ascensionenlightenment_upgradetoobsession
+  output:
+  - ascensionenlightenmentc
+
+# c -> d
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionenlightenmentc
+  - id: ascensioncravingenlightenment
+    slot: neville_p
+  output:
+  - ascensionenlightenmentd
+
+# d -> e
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionenlightenmentd
+  - id: ascensioncravingenlightenment
+    slot: neville_p
+  output:
+  - ascensionenlightenmente
+
+# e -> f
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionenlightenmente
+  - id: ascensioncravingenlightenment
+    slot: neville_p
+  output:
+  - ascensionenlightenmentf
+
+# f -> minor victory
+- action: work
+  slot: riteconsumetoolingredientfollowerinfluence
+  aSlots:
+    Sacrifice: fragmentlanterng
+    Surrender: toollanternf
+    Dissolution: influencelanterne
+    Desire: ascensionenlightenmentf
+  recipes:
+  - minorlanternvictory
+
+
+#############
+# Sensation #
+#############
+
+# a -> b (f)
+- action: dream
+  slot: ascensionsensationa
+  recipes:
+  - id: dreamascensionsensationa
+    slot: fragmentgrail
+    roll: 100
+  output:
+  - ascensionsensationbf
+
+# a -> b (m)
+- action: dream
+  slot: ascensionsensationa
+  recipes:
+  - id: dreamascensionsensationa
+    slot: fragmentgrail
+    roll: 1
+  output:
+  - ascensionsensationbm
+
+# b -> c (f)
+- action: work
+  slot: ascensionsensationbf
+  aSlots:
+    Know: waystag_after
+    Power: fragmentgrailc
+  recipes:
+  - id: ascensionsensation_upgradetoobsessionf
+  output:
+  - ascensionsensationc
+
+# b -> c (m)
+- action: work
+  slot: ascensionsensationbm
+  aSlots:
+    Know: waystag_after
+    Power: fragmentgrailc
+  recipes:
+  - id: ascensionsensation_upgradetoobsessionm
+  output:
+  - ascensionsensationc
+
+# c -> d
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionsensationc
+  - id: ascensioncravingsensation
+    slot: neville_p
+  output:
+  - ascensionsensationd
+
+# d -> e
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionsensationd
+  - id: ascensioncravingsensation
+    slot: neville_p
+  output:
+  - ascensionsensatione
+
+# e -> f
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionsensatione
+  - id: ascensioncravingsensation
+    slot: neville_p
+  output:
+  - ascensionsensationf
+
+# f -> minor victory
+- action: work
+  slot: riteconsumetoolingredientfollowerinfluence
+  aSlots:
+    Sacrifice: fragmentgrailg
+    Surrender: toolgrailf
+    Dissolution: influencegraile
+    Desire: ascensionsensationf
+  recipes:
+  - minorgrailvictory
+
+##########
+# Change #
+##########
+
+# a -> b (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangea
+  - id: ascensioncravingchange_tryascendfroma
+    slot: ascensionlessonhearta
+  output:
+  - id: ascensionchangeb
+    mutations:
+      desireheart_track: 1
+
+# b -> c (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangeb
+  - id: ascensioncravingchange_tryascendfromb
+    slot: ascensionlessonheartb
+  output:
+  - id: ascensionchangec
+    mutations:
+      desireheart_track: 1
+
+# c -> d (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangec
+  - id: ascensioncravingchange_tryascendfromc
+    slot: ascensionlessonheartc
+  output:
+  - id: ascensionchanged
+    mutations:
+      desireheart_track: 1
+
+# d -> e (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchanged
+  - id: ascensioncravingchange_tryascendfromd
+    slot: ascensionlessonheartd
+  output:
+  - id: ascensionchangee
+    mutations:
+      desireheart_track: 1
+
+# e -> f (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangee
+  - id: ascensioncravingchange_tryascendfrome
+    slot: ascensionlessonhearte
+  output:
+  - id: ascensionchangef
+    mutations:
+      desireheart_track: 1
+
+# f -> g (heart)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangef
+  - id: ascensioncravingchange_tryascendfromf
+    slot: ascensionlessonheartf
+  output:
+  - id: ascensionchangeg
+    mutations:
+      desireheart_track: 1
+
+# g -> victory (heart)
+- action: dream
+  slot: sendingheartg
+  recipes:
+  - dreamheartvictory
+
+# a -> b (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangea
+  - id: ascensioncravingchange_tryascendfroma
+    slot: ascensionlessonmotha
+  output:
+  - id: ascensionchangeb
+    mutations:
+      desiremoth_track: 1
+
+# b -> c (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangeb
+  - id: ascensioncravingchange_tryascendfromb
+    slot: ascensionlessonmothb
+  output:
+  - id: ascensionchangec
+    mutations:
+      desiremoth_track: 1
+
+# c -> d (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangec
+  - id: ascensioncravingchange_tryascendfromc
+    slot: ascensionlessonmothc
+  output:
+  - id: ascensionchanged
+    mutations:
+      desiremoth_track: 1
+
+# d -> e (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchanged
+  - id: ascensioncravingchange_tryascendfromd
+    slot: ascensionlessonmothd
+  output:
+  - id: ascensionchangee
+    mutations:
+      desiremoth_track: 1
+
+# e -> f (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangee
+  - id: ascensioncravingchange_tryascendfrome
+    slot: ascensionlessonmothe
+  output:
+  - id: ascensionchangef
+    mutations:
+      desiremoth_track: 1
+
+# f -> g (moth)
+- action: craving
+  slot: notaworm
+  recipes:
+  - id: ambition
+    slot: ascensionchangef
+  - id: ascensioncravingchange_tryascendfromf
+    slot: ascensionlessonmothf
+  output:
+  - id: ascensionchangeg
+    mutations:
+      desiremoth_track: 1
+
+# g -> victory (moth)
+- action: dream
+  slot: sendingmothg
+  recipes:
+  - dreammothvictory
+
+# g -> victory (moth/heart)
+- action: dream
+  slot: sendingmothheartg
+  recipes:
+  - dreammeniscatevictory

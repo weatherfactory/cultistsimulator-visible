@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Noon;
 using UnityEditor;
 using UnityEngine;
@@ -82,12 +83,13 @@ namespace Assets.Editor
                 new List<SituationRecipeSpec>(_currentContentTest.ExpectedRecipes) : null;
 
             // Run the test, which will call back to the event functions
-            Dictionary<string, string> additionalSlots = null;
+            Dictionary<string, SimulatedElementStack> additionalSlots = null;
             if (test.StartingAdditionalSlotElements != null)
-                additionalSlots = test.StartingAdditionalSlotElements.ToDictionary(p => p.Key, p => p.Value.ElementId);
+                additionalSlots = test.StartingAdditionalSlotElements.ToDictionary(
+                    p => p.Key, p => BuildSlotStack(p.Value));
             _simulator.RunSituation(
                 test.ActionId,
-                test.StartingPrimarySlotElement.ElementId,
+                BuildSlotStack(test.StartingPrimarySlotElement),
                 additionalSlots);
         }
 
@@ -266,6 +268,18 @@ namespace Assets.Editor
                         + (expectedResult.Mutations.Count > 0 ? "(with mutations) " : "")
                         + "to be " + message + " " + expectedResult.Quantity + " but was " + quantity);
             }
+        }
+
+        private static SimulatedElementStack BuildSlotStack(SituationSlotSpec spec)
+        {
+            Element element = Registry.Retrieve<ICompendium>().GetElementById(spec.ElementId);
+            if (element == null)
+                throw new SituationSimulatorException("Unknown element '" + spec.ElementId + "' in slot");
+            SimulatedElementStack stack = new SimulatedElementStack();
+            stack.Populate(element, 1, Source.Existing());
+            foreach (var mutation in spec.Mutations)
+                stack.SetMutation(mutation.Key, mutation.Value, false);
+            return stack;
         }
     }
 

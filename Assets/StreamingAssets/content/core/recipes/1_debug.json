@@ -335,6 +335,15 @@ craftable:true
      effects: {notaworm: -1},
      warmup: 0,
      craftable: true
+   },
+   {
+     id: "_wrap_ambition",
+     actionId: "craving",
+     linked: [{id: "ambition", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1, seasonambitions: 1},
+     warmup: 0,
+     craftable: true
    }
 ]
 }
