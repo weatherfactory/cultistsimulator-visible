@@ -1,0 +1,85 @@
+{
+"recipes": [
+{id: "workapostleforgejob",
+label: "FNORD so what we got then?",
+actionId: "work",
+requirements: {legacyapostleforgejob:1},
+effects: {legacyapostleforge_plotitem:1,legacyapostleforgejob:-1},
+alternativerecipes: [{id:"apostleforgeopentalk",chance:100,additional:true}],
+startdescription: "FNORD",
+description: "FNORD here's ur starter kit",
+warmup:10,
+craftable: true},
+
+{id: "apostleforgeopentalk",
+label: "FNORD ",
+actionId: "talk",
+requirements:{},
+startdescription:"FNORD ",
+alternativerecipes: [{id:"apostleforgeopenstudy",chance:100,additional:true}],
+description:"FNORD here's the cult and here's the mentor.",
+effects: {cultforge_1:1,legacyapostleforgementor:1},
+warmup:10,
+craftable: false,
+linked:[{id:"begincultfoundation",chance:100}]
+},
+
+{id: "apostleforgeopenstudy",
+label: "FNORD OPEN STUDY",
+actionId: "study",
+startdescription:"",
+description:"",
+alternativerecipes: [
+{id:"apostleforgeopenexplore",chance:100,additional:true}
+],
+description: "FNORD",
+effects: {manneralchemistspared:1},
+warmup:30,
+craftable: false
+},
+
+{id: "apostleforgestudy_plotitem",
+label: "FNORD ",
+actionId: "study",
+requirements: {legacyapostleforge_plotitem:1},
+
+alternativerecipes: [
+{id:"apostleforgeopendream",chance:100,additional:true}
+],
+effects: {legacyapostleforge_plotitem:-1,fascination:1},
+startdescription:"",
+description:"",
+warmup:10,
+craftable: true
+},
+
+
+{id: "apostleforgeopendream",
+label: "FNORD OPEN DREAM",
+actionId: "dream",
+startdescription:"FNORD",
+description:"FNORD",
+effects: {ascensionforgeplusa:1},
+warmup:60,
+craftable: false,
+alternativerecipes:[
+{id:visionsrisk,chance:100,additional:true}
+],
+},
+
+ 
+{id: "apostleforgeopenexplore",
+label: "FNORD OPEN EXPLORE",
+actionId: "explore",
+startdescription:"FNORD",
+description:"FNORD OH NO A LONG",
+warmup:10,
+craftable: false
+},
+
+
+
+
+
+]
+}

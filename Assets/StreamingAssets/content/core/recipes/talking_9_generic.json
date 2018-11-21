@@ -296,17 +296,27 @@ craftable: true
 
 {
         id: "begincultfoundation",
+        label: "A New Beginning?",
+        actionId: "talk",
+        requirements: {acquaintance:1,ritual:-1,location:-1},
+        craftable: true,
+		startdescription:"Together, we might be more.",
+		maxexecutions: 1,
+		comments:"This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
+		linked:[{id:"begincultfoundation_createcult", chance:100}]
+    },
+	
+	{
+        id: "begincultfoundation_createcult",
         label: "Found a Mystical Organisation",
+		requirements:{society:-1},
 		alternativerecipes:
 		[{id: "cultfoundation", chance:100, additional: true}],
         actionId: "talk",
-        requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
         effects: {notoriety:1},
         startdescription: "Here is someone I might work with. A companion, or a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
         description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
-        warmup: 10,
-        craftable: true,
-		maxexecutions: 1
+        warmup: 10
     },
 
 
