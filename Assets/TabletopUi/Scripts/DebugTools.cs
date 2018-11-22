@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -45,6 +46,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private TMP_InputField rollToQueue;
     [SerializeField] private TextMeshProUGUI rollsQueued;
 
+    // Debug Load/Save/Delete buttons
+    [SerializeField] private List<Button> saveButtons;
+    [SerializeField] private List<Button> loadButtons;
+    [SerializeField] private List<Button> delButtons;
+
     public string endingAnimFXName = "DramaticLightEvil";
 
     public List<int> QueuedRollsList;
@@ -73,6 +79,26 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnQueueRoll.onClick.AddListener(()=>QueueRoll(rollToQueue.text));
 
         QueuedRollsList=new List<int>();
+
+        for (int i = 0; i < saveButtons.Count; i++)
+        {
+            var index = i;
+            saveButtons[i].onClick.AddListener(() => SaveDebugSave(index));
+        }
+        for (int i = 0; i < loadButtons.Count; i++)
+        {
+            var index = i;
+            loadButtons[i].onClick.AddListener(() => LoadDebugSave(index));
+            if (!CheckDebugSaveExists(i))
+                loadButtons[i].interactable = false;
+        }
+        for (int i = 0; i < delButtons.Count; i++)
+        {
+            var index = i;
+            delButtons[i].onClick.AddListener(() => DeleteDebugSave(index));
+            if (!CheckDebugSaveExists(i))
+                delButtons[i].interactable = false;
+        }
 
     }
 
@@ -201,7 +227,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
 
     }
-    
+
     void TriggerAchievement(string achievementId)
     {
         var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
@@ -234,9 +260,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
     public void EndGame(string endingId)
     {
         var compendium = Registry.Retrieve<ICompendium>();
-       
+
         var ending = compendium.GetEndingById(endingId);
-   
+
         ending.Anim = endingAnimFXName;
 
         // Get us a random situation that killed us!
@@ -303,6 +329,36 @@ public class DebugTools : MonoBehaviour,IRollOverride
             UpdatedQueuedRollsDisplay();
             return result;
         }
+    }
+
+    void SaveDebugSave(int index)
+    {
+        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        bool wasSuccessful = tabletopManager.SaveGame(true, index + 1);
+        loadButtons[index].interactable = wasSuccessful;
+        delButtons[index].interactable = wasSuccessful;
+    }
+
+    void LoadDebugSave(int index)
+    {
+        if (!CheckDebugSaveExists(index))
+            return;
+        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        tabletopManager.LoadGame(index + 1);
+    }
+
+    void DeleteDebugSave(int index)
+    {
+        if (!CheckDebugSaveExists(index))
+            return;
+        File.Delete(NoonUtility.GetGameSaveLocation(index + 1));
+        loadButtons[index].interactable = false;
+        delButtons[index].interactable = false;
+    }
+
+    private bool CheckDebugSaveExists(int index)
+    {
+        return File.Exists(NoonUtility.GetGameSaveLocation(index + 1));
     }
 }
 
