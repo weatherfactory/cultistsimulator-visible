@@ -45,20 +45,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //copies old version in case of corruption
-        private void BackupSave()
+        private void BackupSave(int index = 0)
         {
 			const int MAX_BACKUPS = 5;
 			// Back up a number of previous saves
             for (int i=MAX_BACKUPS-1; i>=1; i--)
 			{
 				if (File.Exists(NoonUtility.GetBackupGameSaveLocation(i)))	//otherwise we can't copy it
-	                File.Copy  (NoonUtility.GetBackupGameSaveLocation(i), NoonUtility.GetBackupGameSaveLocation(i+1),true);			
+	                File.Copy  (NoonUtility.GetBackupGameSaveLocation(i), NoonUtility.GetBackupGameSaveLocation(i+1),true);
 			}
 			// Back up the main save
-			if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
-                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(1),true);
+			if (File.Exists(NoonUtility.GetGameSaveLocation(index)))	//otherwise we can't copy it
+                File.Copy  (NoonUtility.GetGameSaveLocation(index), NoonUtility.GetBackupGameSaveLocation(1),true);
 		}
-        
+
         /// <summary>
         /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game
         /// by reloading the tabletop scene - hence withActiveLegacy
@@ -87,7 +87,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public bool SaveActiveGame(TabletopTokenContainer tabletop,Character character,bool forceBadSave = false)
+        public bool SaveActiveGame(TabletopTokenContainer tabletop,Character character,bool forceBadSave = false, int index = 0)
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
@@ -107,10 +107,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				if (failedSaveCount==3)	// Check ==3 not >3 so that we don't write any more ErrorReport saves after the first one - CP
 				{
 					// Back up main save
-					if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
-		                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "pre"),true);
+					if (File.Exists(NoonUtility.GetGameSaveLocation(index)))	//otherwise we can't copy it
+		                File.Copy  (NoonUtility.GetGameSaveLocation(index), NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "pre"),true);
 					// Force a bad save into a different filename
-					SaveActiveGame( tabletop, character, true );
+					SaveActiveGame( tabletop, character, true, index );
 					Analytics.CustomEvent( "autosave_corrupt_notified" );
 					// Pop up warning message
 					Registry.Retrieve<INotifier>().ShowSaveError(true);
@@ -124,20 +124,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			}
 			else
 			{
-				BackupSave();
-				File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+				BackupSave(index);
+				File.WriteAllText(NoonUtility.GetGameSaveLocation(index), htSaveTable.JsonString());
 				if (failedSaveCount > 0)
 				{
-					Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );	
+					Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );
 				}
 				failedSaveCount = 0;
 			}
 			return true;
         }
 
-        public Hashtable RetrieveHashedSaveFromFile()
+        public Hashtable RetrieveHashedSaveFromFile(int index = 0)
         {
-            string importJson = File.ReadAllText(NoonUtility.GetGameSaveLocation());
+            string importJson = File.ReadAllText(NoonUtility.GetGameSaveLocation(index));
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
             return htSave;
         }

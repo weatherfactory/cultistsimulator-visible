@@ -53,11 +53,11 @@ namespace Assets.Editor
         {
         }
 
-        public void LoadGame()
+        public void LoadGame(int index = 0)
         {
         }
 
-        public bool SaveGame(bool withNotification)
+        public bool SaveGame(bool withNotification, int index = 0)
         {
             return true;
         }

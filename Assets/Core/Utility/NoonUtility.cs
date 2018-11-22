@@ -173,9 +173,9 @@ namespace Noon
             Log(message,Convert.ToInt32(verbosityNeeded), messageLevel);
         }
 
-        public static string GetGameSaveLocation()
+        public static string GetGameSaveLocation(int index = 0)
         {
-            string wholePath= Application.persistentDataPath + "/save.txt" ;
+            string wholePath = Application.persistentDataPath + "/save" + (index == 0 ? "": "_" + index) + ".txt" ;
             return wholePath;
         }
 
