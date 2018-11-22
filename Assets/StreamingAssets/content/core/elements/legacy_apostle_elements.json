@@ -1,78 +1,111 @@
 {"elements":
     [
 	
-		{id: "legacyapostleforgementor",
-	label: "FNORD forge apostle job",
-	description: "FNORD the predecessor! who is an acquaintance, for reasons",
+		{id: "apostleforge.mentor",
+	label: "#PREVIOUSCHARACTERNAME#, our Shaper",
+	description: "The one who raised us; the one who made us what we are; the one who waits in exile, and will rise when we bring the Dawn.",
 	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
 	aspects: {acquaintance:1,desire:1},
-	noartneeded:true
+	
 },
 			  
 	{id: "legacyapostleforgejob",
 	label: "FNORD forge apostle job",
 	description: "FNORD",
 	aspects: {job:1},
-	noartneeded:true
+	
 },
 
-{id: "legacyapostleforge_pillar1",
-label: "FNORD Forge Apostle Plot Item",
-description: "",
-	noartneeded:true},
-	{id: "legacyapostleforge_pillar2",
-label: "FNORD Forge Apostle Plot Item",
-description: "",
-	noartneeded:true},
-	{id: "legacyapostleforge_pillar3",
-label: "FNORD Forge Apostle Plot Item",
-description: "",
-	noartneeded:true},
+{id: "apostleforge.pillarfuel",
+label: "FNORD forge pillar fuel",
+description: "FNORD",
+lifetime:60
+	},
+
+{id: "apostleforge.pillar1",
+label: "To Remake with Fire",
+description: ""
+	},
+	{id: "apostleforge.pillar2",
+label: "To End What Will Not Change",
+description: ""
+	},
+	{id: "apostleforge.pillar3",
+label: "To End All Nights",
+description: ""
+	},
 	
 	
+	
+		{id: "apostlegrail.mentor",
+	label: "#PREVIOUSCHARACTERNAME#, our Delight",
+	description: "Our fountain, our joy, who rests in exile until the greatest of Feasts.",
+	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
+	aspects: {acquaintance:1,desire:1}
+	
+},	
 	
 		{id: "legacyapostlegrailjob",
 	label: "FNORD grail apostle job",
 	description: "FNORD",
-	aspects: {job:1},
-	noartneeded:true
+	aspects: {job:1}
+	
 },
 
-{id: "legacyapostlegrail_pillar1",
+
+
+{id: "apostlegrail.pillarfuel",
 label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true},
+description: "FNORD",
+lifetime:60
+	},
+{id: "apostlegrail.pillar1",
+label: "",
+description: "FNORD"
+	},
 	
-	{id: "legacyapostlegrail_pillar2",
+	{id: "apostlegrail.pillar2",
 label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true},
+description: "FNORD"
+	},
 	
-	{id: "legacyapostlegrail_pillar3",
+	{id: "apostlegrail.pillar3",
 label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true},
+description: "FNORD"
+	},
+	
+			{id: "apostlelantern.mentor",
+	label: "#PREVIOUSCHARACTERNAME#, our Illuminated One",
+	description: "Our source, our inspiration, who dwells now in the Mansus.",
+	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
+	aspects: {acquaintance:1,desire:1},
+	
+},	
 	
 		{id: "legacyapostlelanternjob",
 	label: "FNORD lantern apostle job",
 	description: "FNORD",
-	aspects: {job:1},
-	noartneeded:true
-},
-
-{id: "legacyapostlelantern_pillar1",
-label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true},
-	{id: "legacyapostlelantern_pillar2",
-label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true},
+	aspects: {job:1}
 	
-	{id: "legacyapostlelantern_pillar3",
+},
+{id: "apostlelantern.pillarfuel",
 label: "",
-description: "#PREVIOUSCHARACTERNAME#.",
-	noartneeded:true}
+description: "FNORD",
+lifetime:60
+	},
+{id: "apostlelantern.pillar1",
+label: "",
+description: "FNORD"
+	},
+	{id: "apostlelantern.pillar2",
+label: "",
+description: "FNORD"
+	},
+	
+	{id: "apostlelantern.pillar3",
+label: "",
+description: "FNORD"
+	}
 	
 	
 	
