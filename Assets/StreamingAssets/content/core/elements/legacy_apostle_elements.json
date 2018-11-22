@@ -5,7 +5,7 @@
 	label: "FNORD forge apostle job",
 	description: "FNORD the predecessor! who is an acquaintance, for reasons",
 	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
-	aspects: {acquaintance:1},
+	aspects: {acquaintance:1,desire:1},
 	noartneeded:true
 },
 			  
@@ -16,9 +16,17 @@
 	noartneeded:true
 },
 
-{id: "legacyapostleforge_plotitem",
+{id: "legacyapostleforge_pillar1",
 label: "FNORD Forge Apostle Plot Item",
-description: "#PREVIOUSCHARACTERNAME#.",
+description: "",
+	noartneeded:true},
+	{id: "legacyapostleforge_pillar2",
+label: "FNORD Forge Apostle Plot Item",
+description: "",
+	noartneeded:true},
+	{id: "legacyapostleforge_pillar3",
+label: "FNORD Forge Apostle Plot Item",
+description: "",
 	noartneeded:true},
 	
 	
@@ -30,7 +38,17 @@ description: "#PREVIOUSCHARACTERNAME#.",
 	noartneeded:true
 },
 
-{id: "legacyapostlegrail_plotitem",
+{id: "legacyapostlegrail_pillar1",
+label: "",
+description: "#PREVIOUSCHARACTERNAME#.",
+	noartneeded:true},
+	
+	{id: "legacyapostlegrail_pillar2",
+label: "",
+description: "#PREVIOUSCHARACTERNAME#.",
+	noartneeded:true},
+	
+	{id: "legacyapostlegrail_pillar3",
 label: "",
 description: "#PREVIOUSCHARACTERNAME#.",
 	noartneeded:true},
@@ -42,10 +60,21 @@ description: "#PREVIOUSCHARACTERNAME#.",
 	noartneeded:true
 },
 
-{id: "legacyapostlelantern_plotitem",
+{id: "legacyapostlelantern_pillar1",
+label: "",
+description: "#PREVIOUSCHARACTERNAME#.",
+	noartneeded:true},
+	{id: "legacyapostlelantern_pillar2",
+label: "",
+description: "#PREVIOUSCHARACTERNAME#.",
+	noartneeded:true},
+	
+	{id: "legacyapostlelantern_pillar3",
 label: "",
 description: "#PREVIOUSCHARACTERNAME#.",
 	noartneeded:true}
+	
+	
 	
 	
 	
