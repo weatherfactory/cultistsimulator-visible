@@ -276,6 +276,14 @@ namespace Assets.CS.TabletopUI {
 
         public IElementStack GetElementStackInSlot()
         {
+            if (_elementStacksManager.GetStacks().Count() > 1)
+            {
+                NoonUtility.Log("Something weird in slot " + GoverningSlotSpecification.Id +
+                                ": it has more than one stack, so we're just returning the first.");
+                return _elementStacksManager.GetStacks().First();
+
+            }
+
             return _elementStacksManager.GetStacks().SingleOrDefault();
         }
 

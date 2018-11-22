@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using System.IO;
 using Noon;
 using UnityEngine.Audio;
 using TMPro;
@@ -248,8 +249,26 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void BrowseFiles()
-	{
-        OpenInFileBrowser.Open( NoonUtility.GetGameSaveLocation() );
+    {
+	    // Check for the existence of save file before browsing to it, since behaviour is undefined in that case
+	    string savePath = NoonUtility.GetGameSaveLocation();
+	    if (!File.Exists(savePath))
+	    {
+		    if (_isInGame)
+		    {
+			    // If a game is active, try to save it, showing an error if that fails
+			    if (!Registry.Retrieve<ITabletopManager>().SaveGame(false))
+			    {
+				    ToggleVisibility();
+				    Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+				    return;
+			    }
+		    }
+		    else
+			    // Otherwise, just show the directory where the save file would be located
+			    savePath = Path.GetDirectoryName(savePath);
+	    }
+        OpenInFileBrowser.Open(savePath);
     }
 
     public void ManageSaves( bool open )

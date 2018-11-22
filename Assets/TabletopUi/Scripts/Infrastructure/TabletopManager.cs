@@ -448,7 +448,7 @@ namespace Assets.CS.TabletopUI {
 
 #region -- Load / Save GameState -------------------------------
 
-        public void LoadGame() {
+        public void LoadGame(int index = 0) {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
@@ -456,7 +456,7 @@ namespace Assets.CS.TabletopUI {
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
-            var htSave = saveGameManager.RetrieveHashedSaveFromFile();
+            var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
 
@@ -489,7 +489,7 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(true, false);
         }
 
-        public bool SaveGame(bool withNotification)
+        public bool SaveGame(bool withNotification, int index = 0)
 		{
             if (!IsSafeToAutosave())
                 return false;
@@ -514,7 +514,7 @@ namespace Assets.CS.TabletopUI {
             // try
             //  {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
+            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>(), index: index);
 			if (success)
 			{
 				if (withNotification)

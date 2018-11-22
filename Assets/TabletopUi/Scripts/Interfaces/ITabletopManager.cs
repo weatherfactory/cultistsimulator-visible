@@ -21,8 +21,8 @@ namespace TabletopUi.Scripts.Interfaces
         void ClearGameState(Heart h, IGameEntityStorage s, TabletopTokenContainer tc);
         void RestartGame();
         void EndGame(Ending ending, SituationController endingSituation);
-        void LoadGame();
-        bool SaveGame(bool withNotification);
+        void LoadGame(int index = 0);
+        bool SaveGame(bool withNotification, int index = 0);
         HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill);
         void CloseAllSituationWindowsExcept(string exceptTokenId);
         void DecayStacksOnTable(float interval);
