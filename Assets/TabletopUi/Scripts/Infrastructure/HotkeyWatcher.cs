@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				return;
 
             if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
-            { 
+            {
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 {
                     if(Config.Instance.knock)
@@ -78,16 +78,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         _speedController.SetFastForward();
                 }
             }
-            
+
             catch (Exception e)
             {
                 NoonUtility.Log("Problem with debug tools: " + e.Message);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Pause"))
 				_speedController.TogglePause();
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (IsPressingAbortHotkey())
                 _optionsPanel.ToggleVisibility();
 
 			if ((int)Input.GetAxis("Start Recipe")>0) {
@@ -131,11 +131,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			}
 		}
 
-        public bool IsPressingAbortHotkey() {
-            if (Input.GetKeyDown(KeyCode.Escape))
-                return true;
-
-            return false;
+        public bool IsPressingAbortHotkey()
+        {
+            return Input.GetButtonDown("Cancel");
         }
 
     }
