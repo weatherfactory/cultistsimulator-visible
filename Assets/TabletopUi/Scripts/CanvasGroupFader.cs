@@ -8,6 +8,7 @@ namespace Assets.CS.TabletopUI
 
         public bool blockRaysDuringFade = false;
         public bool destroyOnHide = false;
+        public bool keepActiveOnHide = false;  // Only used if destroyOnHide is false
         public float durationTurnOn = 0.5f;
         public float durationTurnOff = 0.25f;
         private bool m_isFading;
@@ -17,13 +18,13 @@ namespace Assets.CS.TabletopUI
         }
 
         CanvasGroup group;
-        CanvasGroup Group { 
-            get { 
+        CanvasGroup Group {
+            get {
                 if (group == null)
                     group = GetComponent<CanvasGroup>();
 
-                return group; 
-            } 
+                return group;
+            }
         }
 
         public void Hide() {
@@ -57,7 +58,7 @@ namespace Assets.CS.TabletopUI
                 StartCoroutine(DoFade(1f, durationTurnOn));
             }
         }
-	
+
         IEnumerator DoFade(float alpha, float duration) {
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
@@ -75,15 +76,15 @@ namespace Assets.CS.TabletopUI
             m_isFading = false;
             SetAlpha(alpha);
         }
-	
+
         public void SetAlpha(float alpha) {
             StopAllCoroutines();
             Group.alpha = alpha;
-		
+
             if (Mathf.Approximately(alpha, 0f)) {
                 if (destroyOnHide)
                     Destroy(gameObject);
-                else
+                else if (!keepActiveOnHide)
                     gameObject.SetActive(false);
             }
             else
