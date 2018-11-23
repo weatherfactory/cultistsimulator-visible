@@ -247,8 +247,21 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void UpdateCompendiumContent()
     {
-        var contentImporter=new ContentImporter();
-        contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>());
+        var contentImporter = new ContentImporter();
+        var compendium = Registry.Retrieve<ICompendium>();
+        contentImporter.PopulateCompendium(compendium);
+
+        // Populate the new decks
+        IGameEntityStorage storage = Registry.Retrieve<Character>();
+        foreach (var ds in compendium.GetAllDeckSpecs())
+        {
+            if (storage.GetDeckInstanceById(ds.Id) == null)
+            {
+                IDeckInstance di = new DeckInstance(ds);
+                storage.DeckInstances.Add(di);
+                di.Reset();
+            }
+        }
     }
 
     void NextTrack()
