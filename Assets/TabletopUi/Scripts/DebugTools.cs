@@ -55,7 +55,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public List<int> QueuedRollsList;
 
-    public Transform AutoCompletionSuggestion;
+    public Transform AutoCompletionSuggestionPrefab;
 
     public void Awake()
     {
@@ -130,21 +130,18 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         // Re-populate it with updated suggestions
         // Disable the suggestion box if there are no suggestions
-        List<string> suggestedIds = GetAutoCompletionSuggestions(value);
-        if (suggestedIds.Count == 0)
+        ICompendium compendium = Registry.Retrieve<ICompendium>();
+        List<AutoCompletionSuggestion> suggestions = GetElementAutoCompletionSuggestions(compendium, value)
+            .Concat(GetRecipeAutoCompletionSuggestions(compendium, value))
+            .OrderBy(acs => acs.GetText())
+            .ToList();
+        if (suggestions.Count == 0)
         {
             autoCompletionBox.gameObject.SetActive(false);
             return;
         }
-        foreach (var suggestedId in suggestedIds)
-        {
-            Transform suggestion = Instantiate(AutoCompletionSuggestion);
-            suggestion.GetComponentInChildren<Text>().text = suggestedId;
-            suggestion.SetParent(autoCompletionSuggestions.transform, false);
-            Button button = suggestion.GetComponent<Button>();
-            var suggestionText = suggestedId;
-            button.onClick.AddListener(() => ApplySuggestion(suggestionText));
-        }
+        foreach (var suggestion in suggestions)
+            suggestion.transform.SetParent(autoCompletionSuggestions.transform, false);
     }
 
     void ApplySuggestion(string suggestion)
@@ -153,13 +150,29 @@ public class DebugTools : MonoBehaviour,IRollOverride
         autoCompletionBox.gameObject.SetActive(false);
     }
 
-    List<string> GetAutoCompletionSuggestions(string prompt)
+    List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(ICompendium compendium, string prompt)
     {
-        ICompendium compendium = Registry.Retrieve<ICompendium>();
-        List<string> candidates = compendium.GetAllElementsAsDictionary().Keys.
-            Where(e => e.StartsWith(prompt)).ToList();
-        candidates.AddRange(compendium.GetAllRecipesAsList().Where(r => r.Id.StartsWith(prompt)).Select(r => r.Id));
-        return candidates.OrderBy(id => id).Take(MaxAutoCompletionSuggestions).ToList();
+        return compendium.GetAllElementsAsDictionary().Keys.
+            Where(e => e.StartsWith(prompt)).Select(id => MakeAutocompleteSuggestion(compendium, id, true)).ToList();
+    }
+
+    List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(ICompendium compendium, string prompt)
+    {
+        return compendium.GetAllRecipesAsList().
+            Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, false)).ToList();
+    }
+
+    AutoCompletionSuggestion MakeAutocompleteSuggestion(ICompendium compendium, string suggestedId, bool isElement)
+    {
+        AutoCompletionSuggestion suggestion = Instantiate(AutoCompletionSuggestionPrefab).GetComponent<AutoCompletionSuggestion>();
+        suggestion.SetText(suggestedId);
+        suggestion.AddClickListener(() => ApplySuggestion(suggestedId));
+
+        // Show the element image if applicable
+        if (isElement)
+            suggestion.SetIconForElement(compendium.GetElementById(suggestedId));
+
+        return suggestion;
     }
 
     void AddCard(string elementId)
