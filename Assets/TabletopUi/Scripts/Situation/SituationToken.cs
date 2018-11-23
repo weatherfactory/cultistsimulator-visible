@@ -281,6 +281,9 @@ namespace Assets.CS.TabletopUI {
                 SituationController.DumpAllResults();
             }
             else {
+                // Add the current recipe name, if any, to the debug panel if it's active
+                Registry.Retrieve<DebugTools>().SetInput(SituationController.SituationClock.RecipeId);
+
                 if (!SituationController.IsOpen)
                     OpenSituation();
                 else

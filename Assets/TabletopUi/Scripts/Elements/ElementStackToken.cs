@@ -583,6 +583,9 @@ namespace Assets.CS.TabletopUI {
 				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
 				singleClickPending = true;
 
+			    // Add the element name to the debug panel if it's active
+			    Registry.Retrieve<DebugTools>().SetInput(_element.Id);
+
 				if (isFront)
 				{
 					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
