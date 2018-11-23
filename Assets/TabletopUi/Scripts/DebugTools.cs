@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -45,11 +46,16 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private TMP_InputField rollToQueue;
     [SerializeField] private TextMeshProUGUI rollsQueued;
 
+    // Debug Load/Save/Delete buttons
+    [SerializeField] private List<Button> saveButtons;
+    [SerializeField] private List<Button> loadButtons;
+    [SerializeField] private List<Button> delButtons;
+
     public string endingAnimFXName = "DramaticLightEvil";
 
     public List<int> QueuedRollsList;
 
-    public Transform AutoCompletionSuggestion;
+    public Transform AutoCompletionSuggestionPrefab;
 
     public void Awake()
     {
@@ -74,6 +80,38 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         QueuedRollsList=new List<int>();
 
+        for (int i = 0; i < saveButtons.Count; i++)
+        {
+            var index = i;
+            saveButtons[i].onClick.AddListener(() => SaveDebugSave(index));
+        }
+        for (int i = 0; i < loadButtons.Count; i++)
+        {
+            var index = i;
+            loadButtons[i].onClick.AddListener(() => LoadDebugSave(index));
+            if (!CheckDebugSaveExists(i))
+                loadButtons[i].interactable = false;
+        }
+        for (int i = 0; i < delButtons.Count; i++)
+        {
+            var index = i;
+            delButtons[i].onClick.AddListener(() => DeleteDebugSave(index));
+            if (!CheckDebugSaveExists(i))
+                delButtons[i].interactable = false;
+        }
+
+    }
+
+    public void SetInput(string text)
+    {
+        // Do nothing if it's not open
+        if (!isActiveAndEnabled || text == null)
+            return;
+
+        // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
+        input.onValueChanged.RemoveListener(AttemptAutoCompletion);
+        input.text = text;
+        input.onValueChanged.AddListener(AttemptAutoCompletion);
     }
 
     void AttemptAutoCompletion(string value)
@@ -92,39 +130,49 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         // Re-populate it with updated suggestions
         // Disable the suggestion box if there are no suggestions
-        List<string> suggestedIds = GetAutoCompletionSuggestions(value);
-        if (suggestedIds.Count == 0)
+        ICompendium compendium = Registry.Retrieve<ICompendium>();
+        List<AutoCompletionSuggestion> suggestions = GetElementAutoCompletionSuggestions(compendium, value)
+            .Concat(GetRecipeAutoCompletionSuggestions(compendium, value))
+            .OrderBy(acs => acs.GetText())
+            .ToList();
+        if (suggestions.Count == 0)
         {
             autoCompletionBox.gameObject.SetActive(false);
             return;
         }
-        foreach (var suggestedId in suggestedIds)
-        {
-            Transform suggestion = Instantiate(AutoCompletionSuggestion);
-            suggestion.GetComponentInChildren<Text>().text = suggestedId;
-            suggestion.SetParent(autoCompletionSuggestions.transform, false);
-            Button button = suggestion.GetComponent<Button>();
-            var suggestionText = suggestedId;
-            button.onClick.AddListener(() => ApplySuggestion(suggestionText));
-        }
+        foreach (var suggestion in suggestions)
+            suggestion.transform.SetParent(autoCompletionSuggestions.transform, false);
     }
 
     void ApplySuggestion(string suggestion)
     {
-        // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
-        input.onValueChanged.RemoveListener(AttemptAutoCompletion);
-        input.text = suggestion;
-        input.onValueChanged.AddListener(AttemptAutoCompletion);
+        SetInput(suggestion);
         autoCompletionBox.gameObject.SetActive(false);
     }
 
-    List<string> GetAutoCompletionSuggestions(string prompt)
+    List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(ICompendium compendium, string prompt)
     {
-        ICompendium compendium = Registry.Retrieve<ICompendium>();
-        List<string> candidates = compendium.GetAllElementsAsDictionary().Keys.
-            Where(e => e.StartsWith(prompt)).ToList();
-        candidates.AddRange(compendium.GetAllRecipesAsList().Where(r => r.Id.StartsWith(prompt)).Select(r => r.Id));
-        return candidates.OrderBy(id => id).Take(MaxAutoCompletionSuggestions).ToList();
+        return compendium.GetAllElementsAsDictionary().Keys.
+            Where(e => e.StartsWith(prompt)).Select(id => MakeAutocompleteSuggestion(compendium, id, true)).ToList();
+    }
+
+    List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(ICompendium compendium, string prompt)
+    {
+        return compendium.GetAllRecipesAsList().
+            Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, false)).ToList();
+    }
+
+    AutoCompletionSuggestion MakeAutocompleteSuggestion(ICompendium compendium, string suggestedId, bool isElement)
+    {
+        AutoCompletionSuggestion suggestion = Instantiate(AutoCompletionSuggestionPrefab).GetComponent<AutoCompletionSuggestion>();
+        suggestion.SetText(suggestedId);
+        suggestion.AddClickListener(() => ApplySuggestion(suggestedId));
+
+        // Show the element image if applicable
+        if (isElement)
+            suggestion.SetIconForElement(compendium.GetElementById(suggestedId));
+
+        return suggestion;
     }
 
     void AddCard(string elementId)
@@ -201,7 +249,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
 
     }
-    
+
     void TriggerAchievement(string achievementId)
     {
         var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
@@ -221,8 +269,21 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void UpdateCompendiumContent()
     {
-        var contentImporter=new ContentImporter();
-        contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>());
+        var contentImporter = new ContentImporter();
+        var compendium = Registry.Retrieve<ICompendium>();
+        contentImporter.PopulateCompendium(compendium);
+
+        // Populate the new decks
+        IGameEntityStorage storage = Registry.Retrieve<Character>();
+        foreach (var ds in compendium.GetAllDeckSpecs())
+        {
+            if (storage.GetDeckInstanceById(ds.Id) == null)
+            {
+                IDeckInstance di = new DeckInstance(ds);
+                storage.DeckInstances.Add(di);
+                di.Reset();
+            }
+        }
     }
 
     void NextTrack()
@@ -234,9 +295,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
     public void EndGame(string endingId)
     {
         var compendium = Registry.Retrieve<ICompendium>();
-       
+
         var ending = compendium.GetEndingById(endingId);
-   
+
         ending.Anim = endingAnimFXName;
 
         // Get us a random situation that killed us!
@@ -303,6 +364,36 @@ public class DebugTools : MonoBehaviour,IRollOverride
             UpdatedQueuedRollsDisplay();
             return result;
         }
+    }
+
+    void SaveDebugSave(int index)
+    {
+        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        bool wasSuccessful = tabletopManager.SaveGame(true, index + 1);
+        loadButtons[index].interactable = wasSuccessful;
+        delButtons[index].interactable = wasSuccessful;
+    }
+
+    void LoadDebugSave(int index)
+    {
+        if (!CheckDebugSaveExists(index))
+            return;
+        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        tabletopManager.LoadGame(index + 1);
+    }
+
+    void DeleteDebugSave(int index)
+    {
+        if (!CheckDebugSaveExists(index))
+            return;
+        File.Delete(NoonUtility.GetGameSaveLocation(index + 1));
+        loadButtons[index].interactable = false;
+        delButtons[index].interactable = false;
+    }
+
+    private bool CheckDebugSaveExists(int index)
+    {
+        return File.Exists(NoonUtility.GetGameSaveLocation(index + 1));
     }
 }
 
