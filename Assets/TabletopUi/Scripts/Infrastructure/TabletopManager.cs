@@ -341,7 +341,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
-
+			registry.Register<DebugTools>(debugTools);
 
         }
 

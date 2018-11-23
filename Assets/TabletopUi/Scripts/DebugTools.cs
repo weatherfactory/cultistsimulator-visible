@@ -102,6 +102,18 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     }
 
+    public void SetInput(string text)
+    {
+        // Do nothing if it's not open
+        if (!isActiveAndEnabled || text == null)
+            return;
+
+        // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
+        input.onValueChanged.RemoveListener(AttemptAutoCompletion);
+        input.text = text;
+        input.onValueChanged.AddListener(AttemptAutoCompletion);
+    }
+
     void AttemptAutoCompletion(string value)
     {
         // Don't show the suggestion box if the field is empty
@@ -137,10 +149,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void ApplySuggestion(string suggestion)
     {
-        // Temporarily disable suggestions so that this doesn't trigger a new auto-completion attempt
-        input.onValueChanged.RemoveListener(AttemptAutoCompletion);
-        input.text = suggestion;
-        input.onValueChanged.AddListener(AttemptAutoCompletion);
+        SetInput(suggestion);
         autoCompletionBox.gameObject.SetActive(false);
     }
 
