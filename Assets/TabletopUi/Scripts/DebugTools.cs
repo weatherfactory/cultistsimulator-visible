@@ -57,6 +57,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public Transform AutoCompletionSuggestionPrefab;
 
+    // Indicates the last selected auto-completion suggestion
+    // -1 means no previous suggestion was selected
+    private int currentAutoCompletionSuggestion = -1;
+
     public void Awake()
     {
         autoCompletionBox.gameObject.SetActive(false);
@@ -102,6 +106,63 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     }
 
+    public bool ProcessInput()
+    {
+        if (!autoCompletionBox.isActiveAndEnabled)
+            return false;
+
+        // If the user has right-clicked, close the suggestions box
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
+        {
+            AttemptAutoCompletion(null);
+            return true;
+        }
+
+        // Only process the rest when the main input field is open
+        if (!input.isFocused)
+            return false;
+
+        List<AutoCompletionSuggestion> suggestions = new List<AutoCompletionSuggestion>();
+        autoCompletionSuggestions.GetComponentsInChildren(suggestions);
+
+        if (suggestions.Count == 0)
+            return false;
+
+        // Check if the user is tab-completing
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            currentAutoCompletionSuggestion = 0;
+            AutoCompletionSuggestion suggestion = suggestions.First();
+            SetInput(suggestion.GetText());
+            input.MoveTextEnd(false);
+            return true;
+        }
+
+        // Check if the user is navigating suggestions with the arrow keys
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            // Get the next suggestion based on what was previously used
+            if (currentAutoCompletionSuggestion < 0)
+                currentAutoCompletionSuggestion = 0;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                currentAutoCompletionSuggestion++;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                currentAutoCompletionSuggestion--;
+
+            // Fold back to beginning and end of the suggestions if we overflow
+            if (currentAutoCompletionSuggestion >= suggestions.Count)
+                currentAutoCompletionSuggestion = 0;
+            else if (currentAutoCompletionSuggestion < 0)
+                currentAutoCompletionSuggestion = suggestions.Count - 1;
+
+            SetInput(suggestions[currentAutoCompletionSuggestion].GetText());
+            input.MoveTextEnd(false);
+            return true;
+        }
+
+        return false;
+    }
+
     public void SetInput(string text)
     {
         // Do nothing if it's not open
@@ -117,7 +178,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     void AttemptAutoCompletion(string value)
     {
         // Don't show the suggestion box if the field is empty
-        if (value.Length == 0)
+        if (string.IsNullOrEmpty(value))
         {
             autoCompletionBox.gameObject.SetActive(false);
             return;

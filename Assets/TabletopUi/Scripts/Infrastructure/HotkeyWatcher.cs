@@ -40,12 +40,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!enabled)
                 return;
 
+            // Process any debug tools-specific keys first
+            if (_debugTools.isActiveAndEnabled && _debugTools.ProcessInput())
+                return;
+
 			UpdateInputFieldState();
 
 			if (IsInInputField())
 				return;
 
-            if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
+	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 {
