@@ -159,8 +159,9 @@
 	description: "On the topmost floor is an altar to the Sun Divided - which could be one of many Hours. Sweep the items there displayed into a carpet-bag, and let's make haste into the back streets.",
 	warmup:30,
 	craftable: false,
-	linked:[		{id: "expeditionascensionheartb",chance:100},
-				{id: "expeditionascensionmothb",chance:100}]
+	linked:[{id:"explore.apostleforge.findflaw",chance:100},
+	{id: "expeditionascensionheartb",chance:100},
+	{id: "expeditionascensionmothb",chance:100}]
 	},
 	
 ]
