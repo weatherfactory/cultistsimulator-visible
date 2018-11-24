@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class AutoCompletionSuggestion : MonoBehaviour
 {
-	[SerializeField] private Text _text;
+#pragma warning disable 649
+    [SerializeField] private Text _text;
 	[SerializeField] private Image _icon;
 	[SerializeField] private Button _button;
+#pragma warning restore 649
 
-	public string GetText()
+    public string GetText()
 	{
 		return _text.text;
 	}

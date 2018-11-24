@@ -329,11 +329,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 			}
 		}
 
-		//Debug.Log("Localising ["+ dest["id"].MakeString() +"]");		// Commented out, too much spam!
+		//Debug.Log("Localising ["+ dest["id"].MakeString() +"]");		// Commented out to keep log clear for now
 
 		// Prep array lists so we can iterate in sync
 		ArrayList destList = new ArrayList(dest.Values);
-		ArrayList srcList = new ArrayList(src.Values);
+		//ArrayList srcList = new ArrayList(src.Values); commented out: not in use. - AK
 		ArrayList destKeys = new ArrayList(dest.Keys);
 
 		if (!forceTranslate)
