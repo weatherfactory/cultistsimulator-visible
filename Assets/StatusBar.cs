@@ -31,6 +31,14 @@ public class StatusBar : MonoBehaviour
     {
         CharacterName.text = storage.Name;
         CharacterProfession.text = storage.Profession;
+        RemoteSettings.Completed += TGNameEasterEgg;
     }
-        
+
+    public void TGNameEasterEgg(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
+    {
+        var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name);
+        if(!string.IsNullOrEmpty(remoteName))
+        CharacterName.text = remoteName;
+    }
+
 }
