@@ -22,6 +22,60 @@
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
         },
+		
+{id:"strategy.prep",
+label:"Preparations for a Plan",
+description:"Our immortal enemy will move against us soon.",
+isAspect:true},
+	
+	
+		{id:"strategy.assault.concealed",
+label:"The Long's Plans concealed: Assault",
+description:"FNORD",
+aspects:{intention.assault:1},
+xtriggers:{revealstrategy:strategy.assault.revealed},
+},
+{id:"strategy.sabotage.concealed",
+label:"The Long's Plans concealed: Sabotage",
+description:"FNORD",
+aspects:{intention.sabotage:1},
+xtriggers:{revealstrategy:strategy.sabotage.revealed},
+
+},
+{id:"strategy.dreams.concealed",
+label:"The Long's Plans concealed: Dreams",
+description:"FNORD",
+aspects:{intention.dreams:1},
+xtriggers:{revealstrategy:strategy.dreams.revealed},
+
+},
+{id:"strategy.downtime.concealed",
+label:"The Long's Plans concealed: A Respite",
+description:"FNORD",
+aspects:{intention.dreams:1},
+xtriggers:{revealstrategy:strategy.downtime.revealed},
+
+},
+{id:"strategy.assault.revealed",
+label:"The Long's Plans Revealed: Assault",
+description:"FNORD",
+aspects:{intention.assault:1}
+},
+{id:"strategy.sabotage.revealed",
+label:"The Long's Plans Revealed: Sabotage",
+description:"FNORD",
+aspects:{intention.sabotage:1}
+},
+{id:"strategy.dreams.revealed",
+label:"The Long's Plans Revealed: Dreams",
+description:"FNORD",
+aspects:{intention.dreams:1}
+},
+{id:"strategy.downtime.revealed",
+label:"The Long's Plans Revealed: A Respite",
+description:"FNORD",
+aspects:{intention.dreams:1}
+},
 
 		]
 };

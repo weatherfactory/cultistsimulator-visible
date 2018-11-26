@@ -35,7 +35,80 @@ effects: {},
 startdescription: "A great enemy remains in the shadows, for now.",
 warmup:60,
 craftable: false,
-linked:[{id:"long_cycle",chance:100}]}
+linked:[{id:"long_selectstrategy",chance:70},
+{id:"long_cycle",chance:100}]},
+
+{id:"long_selectstrategy",
+actionId:"long",
+label:"FNORD Long is planning",
+startdescription:"",
+description:"",
+requirements:{},
+deckeffect:{long.strategies:1},
+warmup:60,
+craftable:false,
+linked:[{id:"long_preparestrategy",chance:100}]
+},
+
+{id:"long_preparestrategy",
+actionId:"long",
+label:"FNORD preparing strategy",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{strategy.prep:1},
+warmup:60,
+craftable:false,
+linked:[{id:"long_executestrategy.assault",chance:100},
+{id:"long_executestrategy.sabotage",chance:100},
+{id:"long_executestrategy.dreams",chance:100},
+{id:"long_executestrategy.downtime",chance:100}]
+},
+
+{id:"long_executestrategy.assault",
+actionId:"long",
+label:".",
+startdescription:"FNORD execute assault basic",
+description:"",
+requirements:{strategy.prep:3,intention.assault:1},
+effects:{strategy.prep:-3},
+warmup:60,
+craftable:false
+},
+{id:"long_executestrategy.sabotage",
+actionId:"long",
+label:".",
+startdescription:"FNORD execute sabotage basic",
+description:"",
+requirements:{strategy.prep:3,intention.sabotage:1},
+effects:{strategy.prep:-3},
+warmup:60,
+craftable:false
+},
+
+{id:"long_executestrategy.dreams",
+actionId:"long",
+label:".",
+startdescription:"FNORD execute dreams basic",
+description:"",
+requirements:{strategy.prep:3,intention.dreams:1},
+effects:{strategy.prep:-3},
+warmup:60,
+craftable:false
+},
+
+{id:"long_executestrategy.downtime",
+actionId:"long",
+label:".",
+startdescription:"FNORD execute downtime basic",
+description:"",
+requirements:{strategy.prep:3,intention.downtime:1},
+effects:{strategy.prep:-3},
+warmup:60,
+craftable:false
+},
+
+
 
 
 

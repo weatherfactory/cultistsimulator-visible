@@ -282,7 +282,7 @@ resetonexhaustion:true
 	
 				{id:"forgelong",
 	label:"An Enemy of the Work",
-	description: "What might I learn?",
+	description: ".",
 	spec:[	"augusto_unknown",
 	"julian_unknown"],
 	defaultcard: "julian_unknown"
@@ -290,7 +290,7 @@ resetonexhaustion:true
 	
 					{id:"graillong",
 	label:"An Enemy of the Work",
-	description: "What might I learn?",
+	description: ".",
 	spec:[	"tryphon_unknown",
 	"julian_unknown"],
 	defaultcard: "julian_unknown"
@@ -298,10 +298,21 @@ resetonexhaustion:true
 	
 					{id:"lanternlong",
 	label:"An Enemy of the Work",
-	description: "What might I learn?",
+		description: ".",
 	spec:[	"diarist_unknown",
 	"julian_unknown"],
 	defaultcard: "julian_unknown"
+	},
+	
+						{id:"long.strategies",
+	label:"An Enemy of the Work",
+	description: ".",
+	spec:[	"strategy.assault.concealed",
+	"strategy.sabotage.concealed",
+	"strategy.dreams.concealed",
+	"strategy.downtime.concealed"],
+	defaultcard: "strategy.downtime",
+resetonexhaustion:true	
 	},
 	
 	
