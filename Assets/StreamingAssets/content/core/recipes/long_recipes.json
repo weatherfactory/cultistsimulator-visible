@@ -31,16 +31,18 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.cycle",
 label: "Someone is Watching",
 actionId: "long",
-effects: {},
+effects: {intention.assault:-9,intention.sabotage:-9,intention.dreams:-9,intention.downtime:-9},
 startdescription: "A great enemy remains in the shadows, for now.",
 warmup:60,
+slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
 craftable: false,
 linked:[{id:"long.selectstrategy",chance:70},
 {id:"long.cycle",chance:100}]},
 
 {id:"long.selectstrategy",
 actionId:"long",
-label:"FNORD Long is planning",
+label:"FNORD Long is deciding a course of action",
+slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
 startdescription:"",
 description:"",
 requirements:{},
@@ -56,7 +58,7 @@ label:"FNORD preparing strategy",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{strategy.prep:1},
+effects:{strategy.prep:1,intention.assault:1},
 warmup:60,
 craftable:false,
 linked:[{id:"long.executestrategy.assault",chance:100},
@@ -74,7 +76,9 @@ description:"",
 requirements:{strategy.prep:3,intention.assault:1},
 effects:{strategy.prep:-3},
 warmup:60,
-craftable:false
+craftable:false,
+alternativerecipes:[{additional:true, id:"long.executestrategy.assault.injurehealth.begin",chance:100}],
+linked:[{id:"long.cycle",chance:100}]
 },
 {id:"long.executestrategy.sabotage",
 actionId:"long",
@@ -84,7 +88,9 @@ description:"",
 requirements:{strategy.prep:3,intention.sabotage:1},
 effects:{strategy.prep:-3},
 warmup:60,
-craftable:false
+craftable:false,
+alternativerecipes:[{additional:true, id:"long.executestrategy.sabotage.mystiquetonotoriety.begin",chance:100}],
+linked:[{id:"long.cycle",chance:100}]
 },
 
 {id:"long.executestrategy.dreams",
@@ -95,19 +101,83 @@ description:"",
 requirements:{strategy.prep:3,intention.dreams:1},
 effects:{strategy.prep:-3},
 warmup:60,
-craftable:false
+craftable:false,
+alternativerecipes:[{additional:true, id:"long.executestrategy.dreams.createfascination.begin",chance:100}],
+linked:[{id:"long.cycle",chance:100}]
 },
 
 {id:"long.executestrategy.downtime",
 actionId:"long",
 label:".",
 startdescription:"FNORD execute downtime basic",
-description:"",
+description:"FNORD all is calm, all is bright",
 requirements:{strategy.prep:3,intention.downtime:1},
 effects:{strategy.prep:-3},
 warmup:60,
-craftable:false
+craftable:false,
+linked:[{id:"long.cycle",chance:100}]
 },
+
+{id:"long.executestrategy.assault.injurehealth.begin",
+actionId:"longassault",
+label:"An Attack! FNORD",
+startdescription:"FNORD attack health",
+description:"FNORD no health found; it's over for now.",
+slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.injurehealth.continue",chance:100}],
+warmup:10
+},
+{id:"long.executestrategy.assault.injurehealth.continue",
+actionId:"longassault",
+label:"Defence? FNORD",
+startdescription:"FNORD attacking now",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{health:1},
+warmup:10,
+linked:[{id:"long.executestrategy.assault.injurehealth.failure",chance:100},
+{id:"long.executestrategy.assault.injurehealth.succeed",chance:100},
+]
+},
+
+{id:"long.executestrategy.assault.injurehealth.failure",
+actionId:"longassault",
+label:"Defence successful! FNORD",
+startdescription:"FNORD",
+requirements:{follower:1},
+description:"FNORD our enemy has learnt from us :(",
+effects:{long.lesson.assault:1}
+},
+
+{id:"long.executestrategy.assault.injurehealth.succeed",
+actionId:"longassault",
+label:"Defence?",
+startdescription:"FNORD no defender, so health attack succeeds",
+description:"",
+aspects:{damagehealth:1}
+},
+
+{id:"long.executestrategy.sabotage.mystiquetonotoriety.begin",
+actionId:"longsabotage",
+label:"FNORD stub",
+startdescription:"FNORD stub",
+description:"FNORD stub",
+requirements:{},
+effects:{},
+warmup:10
+},
+
+{id:"long.executestrategy.dreams.createfascination.begin",
+actionId:"longdreams",
+label:"FNORD stub",
+startdescription:"FNORD stub",
+description:"FNORD stub",
+requirements:{},
+effects:{},
+warmup:10
+}
+
+
 
 
 
