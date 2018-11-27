@@ -495,7 +495,7 @@
 						{
         id: "vaultfloating1",
             label: "The 'Hebe Stanton'",
-            aspects:{vault:1,location:1,vaulteveningisles:1},
+            aspects:{vault:1,location:1},
 			slots:[
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
