@@ -43,7 +43,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -98,7 +98,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -153,7 +153,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -208,7 +208,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -219,6 +219,62 @@ elements: [
 			},
 		],
 		label: "圣阿格尼丝医院",
+	},
+	{
+		id: "vaultcapital5",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcapital: "1",
+			location: "1",
+		},
+		description: "A Nonconformist enclave of a heterodox sect of a Calvinist offshoot, tucked away in an odd corner of the city. They belt out hymns with unsuitable gusto, in a throat-scraping language that is very much not quite Latin.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "Congregation of St Felix of Schüren",
 	},
 	{
 		id: "vaultcapitaldefault",
@@ -262,7 +318,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -317,7 +373,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -372,7 +428,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -427,7 +483,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -482,7 +538,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -493,6 +549,62 @@ elements: [
 			},
 		],
 		label: "凯格琳的财宝",
+	},
+	{
+		id: "vaultshires5",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultshires: "1",
+		},
+		description: "On a crumbling cliff above a grey sea, the Gwaer Inn squats, until the day the sea comes for it. It receives few guests - fewer since the owner closed his notorious library to visiting scholars.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "Gwaer Inn",
 	},
 	{
 		id: "vaultshiresdefault",
@@ -536,7 +648,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -603,7 +715,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -658,7 +770,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -713,7 +825,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -768,7 +880,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -779,6 +891,118 @@ elements: [
 			},
 		],
 		label: "范德沙夫收藏馆",
+	},
+	{
+		id: "vaultcontinent5",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Filip Forman, the helminthologist and antiquarian, did all his best work here at the family home, until the day his subjects escaped. The infestation was destroyed, but Forman, they say, walks the halls to this day, guarding his library and his shame.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "Forman House",
+	},
+	{
+		id: "vaultcontinent6",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			vaultcontinent: "1",
+			location: "1",
+		},
+		description: "Vienna is one of those few cities which has the same name in every History, although adepts know it as the White City, or perhaps the City of the White. In a snowy street, in a crooked house, in a high and rattling attic, we have learnt that an eccentric hunter of imaginary keys has established a tiny trove of odd books.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "Key-Hunter's Garret",
 	},
 	{
 		id: "vaultcontinentdefault",
@@ -822,7 +1046,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -889,7 +1113,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -944,7 +1168,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -999,7 +1223,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1054,7 +1278,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1065,6 +1289,62 @@ elements: [
 			},
 		],
 		label: "瑞弗克之塔",
+	},
+	{
+		id: "vaultlandbeyondforest5",
+		unique: "true",
+		aspects: 
+		{
+			vault: "1",
+			location: "1",
+			vaultlandbeyondforest: "1",
+		},
+		description: "Prince Kusnetsov gave one fourth part of his blood-soaked fortune to the establishment of a Department for Eschatoloy at this provincial university. The staff have grown peculiar, now, and the buildings fester in a freezing swamp, but some of Kusnetsov's bequest, perhaps, was spent on treasures.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "The Kusnetsov Endowment",
 	},
 	{
 		id: "vaultlandbeyondforestdefault",
@@ -1108,7 +1388,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1175,7 +1455,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1230,7 +1510,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1285,7 +1565,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1340,7 +1620,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1394,7 +1674,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1449,7 +1729,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1504,7 +1784,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1559,7 +1839,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1614,7 +1894,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1668,7 +1948,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1735,7 +2015,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1790,7 +2070,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1845,7 +2125,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1901,7 +2181,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1955,7 +2235,7 @@ elements: [
 				actionId: "explore",
 			},
 			{
-				id: "expeditionfunds",
+				id: "expeditionfunds2",
 				required: 
 				{
 					funds: "1",
@@ -1978,6 +2258,62 @@ elements: [
 			},
 		],
 		label: "午港",
+	},
+	{
+		id: "vaultfloating1",
+		unique: "true",
+		aspects: 
+		{
+			vaulteveningisles: "1",
+			vault: "1",
+			location: "1",
+		},
+		description: "A battered but surprisingly plush steamer, much used by actors fleeing scandal, by shy millionaires, by occult scholars who feel safer with moving water under them; and, just once, by the Ligeia Club, who chartered the whole ship for the use of seven cabins.",
+		slots: 
+		[
+			{
+				id: "expeditionmember",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "I must have at least one Follower to start the expedition. I can add more later.",
+				label: "Leader",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionmember2",
+				required: 
+				{
+					follower: "1",
+				},
+				description: "Optionally, I can add an extra Follower now, if I think they'll be useful.",
+				label: "Assistant",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "I must have at least one Funds to begin the expedition.",
+				label: "Funds",
+				actionId: "explore",
+			},
+			{
+				id: "expeditionfunds2",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "现在，如果担心资金耗尽，我可以投入更多金钱。",
+				label: "投入更多金钱",
+				actionId: "explore",
+			},
+		],
+		comment: "NEW",
+		label: "The 'Hebe Stanton'",
 	},
 ]
 }

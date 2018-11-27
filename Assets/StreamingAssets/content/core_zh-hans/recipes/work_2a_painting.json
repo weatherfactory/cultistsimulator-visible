@@ -26,7 +26,7 @@
 		deckeffect:{paintingresultsbasic:2},
 		aspects:{fatiguing:1},
 		effects:{funds:2}
-		}
+		},
 		
 	{
 
@@ -43,7 +43,7 @@
         craftable: true,
 		alternativerecipes:[{id:"painthaslore",chance:100},
 	{id:"painthasinfluence",chance:100},
-	{id:"painthassummoned",chance:100}
+	{id:"painthassummoned",chance:100},
 	{id:"painthasfollower",chance:100}],
 	linked:[{id:"paintaddpigment",chance:100}]
     },
@@ -184,7 +184,7 @@ startdescription:"……来绘一幅上等的画作？",
 		linked:[{id:"paintresults",chance:100}
 		],
 warmup:5
-}.
+},
 {id:"painthaspigment",
 actionId:"work",
 requirements:{pigment:1},
@@ -249,7 +249,7 @@ warmup:5,
 	linked:[{id:"paintmasterknock_unique",chance:100},
 	{id:"paintresults",chance:100}]},
 	
-		{id:"matchlantern",requirements:{ingredientlanternb:,lantern:5},
+		{id:"matchlantern",requirements:{ingredientlanternb:1,lantern:5},
 	actionId:"work",
 	label:"一幅有价值的作品",
 	startdescription:"它将会如我们一样，成为那无尽黑暗中唯一的光芒。",

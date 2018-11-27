@@ -476,5 +476,72 @@ recipes: [
 			wolfatthedoor: "-1",
 		},
 	},
+	{
+		id: "_wrap_cultfoundation",
+		craftable: "true",
+		comment: "NEW",
+		requirements: 
+		{
+			notaworm: "1",
+		},
+		linked: 
+		[
+			{
+				id: "cultfoundation",
+				chance: "100",
+			},
+		],
+		warmup: "0",
+		effects: 
+		{
+			notaworm: "-1",
+		},
+		actionId: "_wrap_cultfoundation",
+	},
+	{
+		id: "_wrap_bytopenstudy",
+		craftable: "true",
+		comment: "NEW",
+		requirements: 
+		{
+			notaworm: "1",
+		},
+		linked: 
+		[
+			{
+				id: "bytopenstudy",
+				chance: "100",
+			},
+		],
+		warmup: "0",
+		effects: 
+		{
+			notaworm: "-1",
+		},
+		actionId: "_wrap_bytopenstudy",
+	},
+	{
+		id: "_wrap_ambition",
+		craftable: "true",
+		comment: "NEW",
+		requirements: 
+		{
+			notaworm: "1",
+		},
+		linked: 
+		[
+			{
+				id: "ambition",
+				chance: "100",
+			},
+		],
+		warmup: "0",
+		effects: 
+		{
+			notaworm: "-1",
+			seasonambitions: "1",
+		},
+		actionId: "craving",
+	},
 ]
 }

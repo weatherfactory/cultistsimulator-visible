@@ -204,7 +204,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 							*/
 							string outputFile = locFile.Replace( ".json", "_out.json" );
 							Export( outputFile, contentOfType, originalArrayList );
-							FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
+							//FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
 						}
 						else
 						{
@@ -347,8 +347,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 				}
 				else if (dest.ContainsKey(fieldsToTranslate[j]))
 				{
-					// Error if src is missing a field that is present in the native JSON
-					Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
+					if (dest.GetValue(fieldsToTranslate[j]).ToString().Length > 0)
+					{
+						// Error if src is missing a field that is present in the native JSON and has content
+						Debug.LogWarning("Missing loc field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
+					}
 				}
 			}
 		}
