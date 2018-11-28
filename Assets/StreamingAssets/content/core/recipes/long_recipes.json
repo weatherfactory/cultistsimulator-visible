@@ -31,7 +31,7 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.cycle",
 label: "Someone is Watching",
 actionId: "long",
-effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9},
+effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9,strategy.prep:-9},
 startdescription: "A great enemy remains in the shadows, for now.",
 warmup:60,
 slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
@@ -88,47 +88,8 @@ requirements:{},
 deckeffect:{long.strategies:1},
 warmup:60,
 craftable:false,
-linked:[{id:"long.refinestrategy",chance:100}]
-},
-
-{id:"long.refinestrategy",
-actionId:"long",
-label:"FNORD Specifically...",
-slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
-startdescription:"FNORD Long is refining their plans...",
-warmup:10,
-craftable:false,
-linked:[{id:"long.assault.injurehealth.set",chance:70},
-{id:"long.assault.intimidate.set",chance:70},
-{id:"long.assault.createmystique.set",chance:100},
-{id:"long.assault.mystiquetonotoriety.set",chance:100}]
-},
-
-{id:"long.refinestrategy",
-actionId:"long",
-effects:{strategy.assault.injurehealth:1},
 linked:[{id:"long.preparestrategy",chance:100}]
 },
-{id:"long.refinestrategy",
-actionId:"long",
-effects:{strategy.assault.intimidate:1},
-linked:[{id:"long.preparestrategy",chance:100}]
-},
-
-{id:"long.refinestrategy",
-actionId:"long",
-effects:{strategy.assault.createmystique:1},
-linked:[{id:"long.preparestrategy",chance:100}]
-},
-
-{id:"long.refinestrategy",
-actionId:"long",
-effects:{strategy.assault.mystiquetonotoriety:1},
-linked:[{id:"long.preparestrategy",chance:100}]
-},
-
-
-
 
 
 
@@ -141,40 +102,57 @@ requirements:{},
 effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
-linked:[{id:"long.executestrategy",chance:100},
-{id:"long.preparestrategy",chance:100},]
+linked:[{id:"long.refinestrategy.assault.injurehealth",chance:70},
+{id:"long.refinestrategy.assault.intimidate",chance:100},
+{id:"long.refinestrategy.intrigue.mystiquetonotoriety",chance:70},
+{id:"long.refinestrategy.intrigue.createmystique",chance:100},
+{id:"long.refinestrategy.dreams.learndreams",chance:100},
+{id:"long.refinestrategy.downtime.rest",chance:100},
+{id:"long.preparestrategy",chance:100}]
 },
 
-
-
-{id:"long.executestrategy",
+{id:"long.refinestrategy.assault.injurehealth",
 actionId:"long",
-label:"FNORD executing strategy",
-startdescription:"FNORD HERE IT COMES",
-requirements:{strategy.prep:2},
-effects:{strategy.prep:-2},
-warmup:10,
-craftable:false,
-alternativerecipes:[{id:"long.executestrategy.assault",chance:100,additional:true},
-{id:"long.executestrategy.intrigue",chance:100,additional:true},
-{id:"long.executestrategy.dreams",chance:100,additional:true},
-{id:"long.executestrategy.downtime",chance:100,additional:true}],
+requirements:{intention.assault:1,strategy.prep:3,long.might:2},
+alternativerecipes:[{id:"long.executestrategy.assault.injurehealth.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.assault.intimidate",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.assault.intimidate.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
 
-
-{id:"long.executestrategy.downtime",
+{id:"long.refinestrategy.intrigue.mystiquetonotoriety",
 actionId:"long",
-label:".",
-startdescription:"FNORD execute downtime basic",
-description:"FNORD all is calm, all is bright",
-requirements:{strategy.prep:2,intention.downtime:1},
-effects:{strategy.prep:-2},
-warmup:60,
-craftable:false,
+requirements:{intention.intrigue:1,strategy.prep:3,long.might:2},
+alternativerecipes:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
+
+{id:"long.refinestrategy.intrigue.createmystique",
+actionId:"long",
+requirements:{intention.intrigue:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.intrigue.createmystique.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+{id:"long.refinestrategy.dreams.learndreams",
+actionId:"long",
+requirements:{intention.dreams:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.downtime.createmystique.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.downtime.rest",
+actionId:"long",
+requirements:{intention.downtime:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.downtime.rest.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
 
 
 

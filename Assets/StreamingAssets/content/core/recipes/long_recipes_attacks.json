@@ -2,20 +2,6 @@
 "recipes": [
 
 
-{id:"long.executestrategy.assault",
-actionId:"longassault",
-label:".",
-startdescription:"FNORD execute assault",
-description:"",
-requirements:{intention.assault:1},
-effects:{},
-craftable:false,
-linked:[{id:"long.executestrategy.assault.injurehealth.begin",chance:70},
-{id:"long.executestrategy.assault.intimidate.begin",chance:100}]
-},
-
-
-
 
 {id:"long.executestrategy.assault.injurehealth.begin",
 actionId:"longassault",
@@ -36,7 +22,7 @@ label:"Defence? FNORD",
 startdescription:"FNORD attacking now",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
-requirements:{health:1},
+requirements:{injury:1},
 warmup:10,
 linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
 {id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
@@ -79,7 +65,7 @@ actionId:"longassault",
 label:"FNORD BLUD ON WALLS",
 startdescription:"FNORD they frit me",
 description:"",
-effects{dread:1}
+effects:{dread:1}
 },
 
 
@@ -156,22 +142,6 @@ aspects:{restorehealth:1}
 
 
 
-
-{id:"long.executestrategy.intrigue",
-actionId:"longintrigue",
-label:".",
-startdescription:"FNORD execute intrigue ",
-description:"",
-requirements:{intention.intrigue:1},
-effects:{},
-warmup:10,
-linked:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",chance:70},
-{id:"long.executestrategy.intrigue.createmystique.begin",chance:100}]
-},
-
-
-
-
 {id:"long.executestrategy.intrigue.createmystique.begin",
 actionId:"longintrigue",
 label:"Rumours! FNORD",
@@ -230,7 +200,7 @@ actionId:"longintrigue",
 label:"FNORD everyone hate me :(",
 startdescription:"FNORD notoriety attack succeeds",
 description:"",
-{effects:notoriety:1,mystique:-1}
+effects:{notoriety:1,mystique:-1}
 },
 
 
@@ -269,27 +239,25 @@ effects:{long.lesson.connections:1},
 
 
 
-{id:"long.executestrategy.dreams",
+{id:"long.executestrategy.dreams.learndreams.begin",
 actionId:"longdreams",
-label:".",
-startdescription:"FNORD execute dreams basic",
-description:"",
-requirements:{intention.dreams:1},
-effects:{},
+label:"Learning Us",
+startdescription:"FNORD snag d/f/r. They'll use it to learn us.",
+description:"No D/F/R found",
+slots:[{id:"impulses",label:"Impulses",required:{dread:1,fascination:1,restlessness:1}}],
 warmup:10,
 craftable:false,
-linked:[{id:"long.executestrategy.dreams.createfascination.begin",chance:100}]
+linked:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
 },
 
-{id:"long.executestrategy.dreams.createfascination.begin",
+{id:"long.executestrategy.dreams.learndreams.continue",
 actionId:"longdreams",
-label:"FNORD stub",
-startdescription:"FNORD stub",
-description:"FNORD stub",
-requirements:{},
-effects:{},
-warmup:10
+label:"FNORD Learned Us",
+description:"FNORD they're coming to know us",
+requirements:{influence:1},
+effects:{dread:-1,fascination:-1,restlessness:-1,long.lesson.dreamwork:1}
 }
+
 
 
 

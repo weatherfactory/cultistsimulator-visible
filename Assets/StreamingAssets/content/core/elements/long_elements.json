@@ -62,6 +62,36 @@ xtriggers:{revealstrategy:strategy.downtime.revealed},
 },
 
 
+
+		{id:"strategy.assault.revealed",
+label:"The Long's Plans Revealed: Assault",
+description:"FNORD",
+aspects:{intention.assault:1},
+xtriggers:{revealstrategy:strategy.assault.revealed},
+},
+{id:"strategy.intrigue.revealed",
+label:"The Long's Plans Revealed: intrigue",
+description:"FNORD",
+aspects:{intention.intrigue:1},
+xtriggers:{revealstrategy:strategy.intrigue.revealed},
+
+},
+{id:"strategy.dreams.revealed",
+label:"The Long's Plans Revealed: Dreams",
+description:"FNORD",
+aspects:{intention.dreams:1},
+xtriggers:{revealstrategy:strategy.dreams.revealed},
+
+},
+{id:"strategy.downtime.revealed",
+label:"The Long's Plans Revealed: A Respite",
+description:"FNORD",
+aspects:{intention.dreams:1},
+xtriggers:{revealstrategy:strategy.downtime.revealed},
+
+},
+
+
 {id:"long.lesson.might",
 label:"Battlefield Lessons",
 aspects:{long.lesson:1},
