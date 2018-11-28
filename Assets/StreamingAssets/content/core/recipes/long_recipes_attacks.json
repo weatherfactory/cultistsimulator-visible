@@ -235,10 +235,6 @@ effects:{long.lesson.connections:1},
 
 
 
-
-
-
-
 {id:"long.executestrategy.dreams.learndreams.begin",
 actionId:"longdreams",
 label:"Learning Us",
@@ -256,7 +252,18 @@ label:"FNORD Learned Us",
 description:"FNORD they're coming to know us",
 requirements:{influence:1},
 effects:{dread:-1,fascination:-1,restlessness:-1,long.lesson.dreamwork:1}
-}
+},
+
+
+
+
+{id:"long.executestrategy.downtime.rest.begin",
+actionId:"longdowntime",
+label:"A Respite",
+startdescription:"For now, our enemy has chosen to wait.",
+warmup:10,
+craftable:false,
+},
 
 
 
