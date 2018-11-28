@@ -1,143 +1,314 @@
-﻿ {"recipes": [
-	
-			 	{
-	id: "explore_vaultlandbeyondforest1_setup",
-	label: "Начало экспедиции: пещера свечей",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultlandbeyondforest1:1},
-	effects: {peril_mountains:1,guardian_serpent:1},
-
-	startdescription: "Подъём к пещере через горные перевалы будет опасен. Что бы ни ждало нас в темноте внизу, оно, вероятно, ещё опаснее. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-	
-		 	{
-	id: "explore_vaultlandbeyondforest2_setup",
-	label: "Начало экспедиции: цитадель воеводы",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultlandbeyondforest2:1},
-	effects: {seal_hiddendoor:1,guardian_dead:1},
-
-	startdescription: "Сокровищница воеводы будет хорошо скрыта, и если истории верны, его жертвы вряд ли нашли покой во тьме за стенами цитадели. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultlandbeyondforest3_setup",
-	label: "Начало экспедиции: Вечный Цирк Грюнвальд",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultlandbeyondforest3:1},
-	effects: {guardian_watchers:1,curse_nowhere:1},
-
-	startdescription: "Работники Цирка будут готовы поднять оружие против нас, а сила самого Цирка, мы боимся, запятнана Червями. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultlandbeyondforest4_setup",
-	label: "Начало экспедиции: башня Ревек",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultlandbeyondforest4:1},
-	effects: {seal_hiddendoor:1,curse_affliction:1},
-
-	startdescription: "Нам придётся истово обыскать башню в поисках оставшихся сокровищ, и если она действительно уничтожена в битве посвящённых, опасные влияния могут сохраниться в ней. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultlandbeyondforestdefault_setup",
-	label: "Начало экспедиции: луга лисьих лилий",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultlandbeyondforestdefault:1},
-	effects: {peril_mountains:1,guardian_watchers:1,curse_visions:1},
-
-	startdescription: "Путь через горы до искомых лугов будет тяжёл. Крестьяне-горцы постараются отпугнуть нас. Если мы вернёмся домой в безопасности, с нами могут остаться цепкие видения этих мест. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-					{
-	id: "explorevaultlandbeyondforest1_success",
-	label: "Гнездо огней",
-	actionId: "explore",
-	requirements: {vaultlandbeyondforest1:1},
-	effects: {vaultlandbeyondforest1:-1,influencelanternc:1},
-	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "Туннели под пещерой гладки — их проложила огромная змея — и совершенно темны, пока мы не зажжём фонари. Но пещерная зала, где гнездится змея, неожиданно ярка. Люминесцентные грибы наполняют её ложным лунным светом. Возможно, свечи привлекают змею, а не отпугивают её.",
-	description: "Маленький склад сокровищ, снятых за годы с живой пищи змеи. Сложены ею в блестящую горку.",
-	warmup:30,
-	craftable: false
-	},
-	
+﻿{
+recipes: [
+	{
+		linked: 
+		[
 			{
-	id: "explorevaultlandbeyondforest2_success",
-	label: "Пустая гробница",
-	actionId: "explore",
-	requirements: {vaultlandbeyondforest2:1},
-	effects: {vaultlandbeyondforest2:-1,influencegrailc:1},
-	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "Здесь — мавзолей воеводы. Качающиеся паучьи сети свисают как мягкие серые занавеси. Гигантский саркофаг из известняка вертикально стоит у дальней стены зала. Он пуст.",
-	description: "Кто-то оставил маленькую горстку сокровищ перед саркофагом как подношение. Отпечатков ног в пыли нет. Тот, кто их оставил, либо давно ушёл, либо не нуждался в том, чтобы ступать по земле.",
-	warmup:30,
-	craftable: false
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultlandbeyondforest1: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: пещера свечей",
+		startdescription: "Подъём к пещере через горные перевалы будет опасен. Что бы ни ждало нас в темноте внизу, оно, вероятно, ещё опаснее. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultlandbeyondforest1_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_mountains: "1",
+			guardian_serpent: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultlandbeyondforest3_success",
-	label: "По следам цирка",
-	actionId: "explore",
-	requirements: {vaultlandbeyondforest3:1},
-	effects: {vaultlandbeyondforest3:-1,erudition:1,glimmering:1, jumble:1},
-	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "В полосатом шатре свитки работ по тератологии за запачканным тёмным стеклом. В сером шатре — влажный туман, льнущий к нам словно кошка в охоте и пахнущий животным. В чёрном шатре со звёздами — восхитительный планетарий и скульптура, усеянная костюмными блестками. В красном шатре...",
-	description: "В красном шатре — безумное множество бумаг. Работники цирка расстелили испещрённую диаграммами бумагу по всем поверхностям: анатомия времени, препарирование древней погоды. Место смердит Нигде. Мы сожжём его, уходя отсюда. На высоком столе бесцеремонно свалены трофеи и сувениры.",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultlandbeyondforest2: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: цитадель воеводы",
+		startdescription: "Сокровищница воеводы будет хорошо скрыта, и если истории верны, его жертвы вряд ли нашли покой во тьме за стенами цитадели. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultlandbeyondforest2_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_dead: "1",
+			seal_hiddendoor: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultlandbeyondforest4_success",
-	label: "Задержанный финал",
-	actionId: "explore",
-	requirements: {vaultlandbeyondforest4:1},
-	effects: {vaultlandbeyondforest4:-1},
-	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "Под башней — тесный подвал с треснувшими шиферными стенами. Пропорции — они должен быть идеально кубическим, но почему-то в нём слишком много углов. Синий нездоровый свет просачивается из стыков стен и потолка. Пол выгибается, медленно, словно оболочка пузыря. Он качается под ударами ног. Что скрыто под ним?",
-	description: "Сложить сокровища в мешок. Поторопиться вдоль поручней к огрызку башни. В небе над ним колышутся полотна кобальтовых сияний. Холмы в округе омыты дрожащим синим светом. Высокий поющий тон исходит от камней башни за нашими спинами. Молния пронзает небо, и неожиданно приходит молчание. Остатков башни больше нет.",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultlandbeyondforest3: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: Вечный Цирк Грюнвальд",
+		startdescription: "Работники Цирка будут готовы поднять оружие против нас, а сила самого Цирка, мы боимся, запятнана Червями. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultlandbeyondforest3_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			curse_nowhere: "1",
+			guardian_watchers: "1",
+		},
 	},
-	
-				{
-	id: "explorevaultlandbeyondforestdefault_success",
-	label: "Питание цветов",
-	actionId: "explore",
-	requirements: {vaultlandbeyondforestdefault:1},
-	effects: {vaultlandbeyondforestdefault:-1},
-	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "Мы смочили ткань аммиаком и обвязали ею наши лица, чтобы заглушить аромат лисьих лилий. Всё равно наши головы кружатся, наши тела отвечают полудюжине противоречивых желаний. Вот кости, что мы искали. Обыщем их, и уйдём.",
-	description: "Лисьи лилии белы как пещерный лёд, белы как мороз, белы как незапятнанные простыни. Сложно отвернуться. Мы закроем глаза и направимся прочь с нашими трофеями.",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultlandbeyondforest4: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: башня Ревек",
+		startdescription: "Нам придётся истово обыскать башню в поисках оставшихся сокровищ, и если она действительно уничтожена в битве посвящённых, опасные влияния могут сохраниться в ней. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultlandbeyondforest4_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			curse_affliction: "1",
+			seal_hiddendoor: "1",
+		},
 	},
-	
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultlandbeyondforest5: "1",
+			follower: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "30",
+		label: "Beginning an Expedition: the Kusnetsov Endowment",
+		startdescription: "The journey to the Endowment buildings is not long, but the ground is difficult. We have sent three times for permission to visit, and received a less friendly answer each time. No doubt the staff will attempt to forbid our entry. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+		id: "explore_vaultlandbeyondforest5_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_treacherousground: "1",
+			guardian_watchers: "1",
+			seal_hiddendoor: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultlandbeyondforestdefault: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: луга лисьих лилий",
+		startdescription: "Путь через горы до искомых лугов будет тяжёл. Крестьяне-горцы постараются отпугнуть нас. Если мы вернёмся домой в безопасности, с нами могут остаться цепкие видения этих мест. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultlandbeyondforestdefault_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			curse_visions: "1",
+			peril_mountains: "1",
+			guardian_watchers: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultlandbeyondforest1: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Гнездо огней",
+		startdescription: "Туннели под пещерой гладки — их проложила огромная змея — и совершенно темны, пока мы не зажжём фонари. Но пещерная зала, где гнездится змея, неожиданно ярка. Люминесцентные грибы наполняют её ложным лунным светом. Возможно, свечи привлекают змею, а не отпугивают её.",
+		id: "explorevaultlandbeyondforest1_success",
+		actionId: "explore",
+		description: "Маленький склад сокровищ, снятых за годы с живой пищи змеи. Сложены ею в блестящую горку.",
+		effects: 
+		{
+			theskythesoularamaic: "1",
+			accountkanishkspidersdooraramaic: "1",
+			vaultlandbeyondforest1: "-1",
+			ingredientlanternf: "1",
+			influencelanternc: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultlandbeyondforest2: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Пустая гробница",
+		startdescription: "Здесь — мавзолей воеводы. Качающиеся паучьи сети свисают как мягкие серые занавеси. Гигантский саркофаг из известняка вертикально стоит у дальней стены зала. Он пуст.",
+		id: "explorevaultlandbeyondforest2_success",
+		actionId: "explore",
+		description: "Кто-то оставил маленькую горстку сокровищ перед саркофагом как подношение. Отпечатков ног в пыли нет. Тот, кто их оставил, либо давно ушёл, либо не нуждался в том, чтобы ступать по земле.",
+		effects: 
+		{
+			bookofthronesphrygian: "1",
+			gospelzacchaeusgreek: "1",
+			catalogueofunchartedpleasuresphrygian: "1",
+			toolheartd: "1",
+			twentysixenticementsseventormentsfucine: "1",
+			influencegrailc: "1",
+			vaultlandbeyondforest2: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultlandbeyondforest3: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "По следам цирка",
+		startdescription: "В полосатом шатре свитки работ по тератологии за запачканным тёмным стеклом. В сером шатре — влажный туман, льнущий к нам словно кошка в охоте и пахнущий животным. В чёрном шатре со звёздами — восхитительный планетарий и скульптура, усеянная костюмными блестками. В красном шатре...",
+		id: "explorevaultlandbeyondforest3_success",
+		actionId: "explore",
+		description: "В красном шатре — безумное множество бумаг. Работники цирка расстелили испещрённую диаграммами бумагу по всем поверхностям: анатомия времени, препарирование древней погоды. Место смердит Нигде. Мы сожжём его, уходя отсюда. На высоком столе бесцеремонно свалены трофеи и сувениры.",
+		effects: 
+		{
+			textbooksanskrit: "1",
+			ingredientgrailf: "1",
+			ivorybookfucine: "1",
+			erudition: "1",
+			sunsetpassageslatin: "1",
+			jumble: "1",
+			historyofshadowlesskingsaramaic: "1",
+			vaultlandbeyondforest3: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultlandbeyondforest4: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Задержанный финал",
+		startdescription: "Под башней — тесный подвал с треснувшими шиферными стенами. Пропорции — они должен быть идеально кубическим, но почему-то в нём слишком много углов. Синий нездоровый свет просачивается из стыков стен и потолка. Пол выгибается, медленно, словно оболочка пузыря. Он качается под ударами ног. Что скрыто под ним?",
+		id: "explorevaultlandbeyondforest4_success",
+		actionId: "explore",
+		description: "Сложить сокровища в мешок. Поторопиться вдоль поручней к огрызку башни. В небе над ним колышутся полотна кобальтовых сияний. Холмы в округе омыты дрожащим синим светом. Высокий поющий тон исходит от камней башни за нашими спинами. Молния пронзает небо, и неожиданно приходит молчание. Остатков башни больше нет.",
+		effects: 
+		{
+			ingredientforgeb: "1",
+			furioustantrasanskrit: "1",
+			howendwillbeginvak: "1",
+			twinserpenttantrasanskrit: "1",
+			vaultlandbeyondforest4: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultlandbeyondforest5: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "Words' End",
+		startdescription: "The library ceiling collapsed years ago. Many of the books have been reduced to swollen pulp by dripping water. Something must remain. ",
+		id: "explorevaultlandbeyondforest5_success",
+		actionId: "explore",
+		description: "A portrait of a genially smiling man - dark skin, bright eyes, neither hair nor eyebrows - watches over the ruined library. It is titled 'Don't Mind Me', and signed with an indecipherable serpentine scrawl. The paint is peeling. It watches us with its benevolent smile as we find intact treasures among the swollen books on the shelves.",
+		effects: 
+		{
+			vaultlandbeyondforest5: "-1",
+			knownunknowntantrasanskrit: "1",
+			silverbookfucine: "1",
+			encirclingtantrasanskrit: "1",
+			ironbookfucine: "1",
+			matthiasamethystpursuitaramaic: "1",
+			burningwomanphrygian: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "expeditionascensionheartd",
+				chance: "100",
+			},
+			{
+				id: "expeditionascensionmothd",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultlandbeyondforestdefault: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Питание цветов",
+		startdescription: "Мы смочили ткань аммиаком и обвязали ею наши лица, чтобы заглушить аромат лисьих лилий. Всё равно наши головы кружатся, наши тела отвечают полудюжине противоречивых желаний. Вот кости, что мы искали. Обыщем их, и уйдём.",
+		id: "explorevaultlandbeyondforestdefault_success",
+		actionId: "explore",
+		deckeffect: 
+		{
+			vaultrewardsd: "3",
+		},
+		description: "Лисьи лилии белы как пещерный лёд, белы как мороз, белы как незапятнанные простыни. Сложно отвернуться. Мы закроем глаза и направимся прочь с нашими трофеями.",
+		effects: 
+		{
+			vaultlandbeyondforestdefault: "-1",
+		},
+	},
 ]
 }
-

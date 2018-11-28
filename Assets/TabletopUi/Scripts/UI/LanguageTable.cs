@@ -60,7 +60,7 @@ public class LanguageTable : MonoBehaviour
 				list.Add("");
 			}
 
-			list.Add(curr.TrimStart(',').TrimStart('"').TrimEnd('"'));
+			list.Add(curr.TrimStart(',').TrimStart('"').TrimEnd('"').TrimEnd('\r'));
 		}
 
 		return list.ToArray();
