@@ -4,23 +4,27 @@
         id: "augusto_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
+			aspects:{enemylong:1}
         },
 				 {
         id: "tryphon_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
+			aspects:{enemylong:1}
         },
 		
 				 {
         id: "diarist_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
+			aspects:{enemylong:1}
         },
 		
 				 {
         id: "julian_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
+			aspects:{enemylong:1}
         },
 		
 {id:"strategy.prep",
@@ -35,11 +39,11 @@ description:"FNORD",
 aspects:{intention.assault:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
 },
-{id:"strategy.sabotage.concealed",
-label:"The Long's Plans concealed: Sabotage",
+{id:"strategy.intrigue.concealed",
+label:"The Long's Plans concealed: intrigue",
 description:"FNORD",
-aspects:{intention.sabotage:1},
-xtriggers:{revealstrategy:strategy.sabotage.revealed},
+aspects:{intention.intrigue:1},
+xtriggers:{revealstrategy:strategy.intrigue.revealed},
 
 },
 {id:"strategy.dreams.concealed",
@@ -56,32 +60,25 @@ aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
 
 },
-{id:"strategy.assault.revealed",
-label:"The Long's Plans Revealed: Assault",
-description:"FNORD",
-aspects:{intention.assault:1}
-},
-{id:"strategy.sabotage.revealed",
-label:"The Long's Plans Revealed: Sabotage",
-description:"FNORD",
-aspects:{intention.sabotage:1}
-},
-{id:"strategy.dreams.revealed",
-label:"The Long's Plans Revealed: Dreams",
-description:"FNORD",
-aspects:{intention.dreams:1}
-},
-{id:"strategy.downtime.revealed",
-label:"The Long's Plans Revealed: A Respite",
-description:"FNORD",
-aspects:{intention.dreams:1}
-},
 
-{id:"long.lesson.assault",
+
+{id:"long.lesson.might",
 label:"Battlefield Lessons",
 aspects:{long.lesson:1},
-description:"Our immortal enemy has learnt something of us.",
+description:"Our immortal enemy has learnt something of us. [Successful defence against a Long attack means future attacks may be more dangerous.]",
 },
 
-		]
+
+{id:"long.lesson.connections",
+label:"Intelligence on our Operations",
+aspects:{long.lesson:1},
+description:"Our immortal enemy has learnt something of us. [Successful defence against a Long attack means future attacks may be more dangerous.]",
+},
+
+{id:"long.lesson.dreamwork",
+label:"Glimpses of the Soul",
+aspects:{long.lesson:1},
+description:"Our immortal enemy has learnt something of us. [Successful defence against a Long attack means future attacks may be more dangerous.]",
+},
+]
 };

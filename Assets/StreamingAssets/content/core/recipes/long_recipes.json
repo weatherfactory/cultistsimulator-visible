@@ -31,26 +31,106 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.cycle",
 label: "Someone is Watching",
 actionId: "long",
-effects: {intention.assault:-9,intention.sabotage:-9,intention.dreams:-9,intention.downtime:-9},
+effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9},
 startdescription: "A great enemy remains in the shadows, for now.",
 warmup:60,
 slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
 craftable: false,
-linked:[{id:"long.selectstrategy",chance:70},
-{id:"long.cycle",chance:100}]},
+linked:[{id:"long.upgrade.might",chance:100},
+{id:"long.upgrade.connections",chance:100},
+{id:"long.upgrade.dreamwork",chance:100},
+{id:"long.selectstrategy",chance:100}]},
+
+{id:"long.upgrade.might",
+actionId:"long",
+label:"FNORD Long is upgrading their Might",
+startdescription:"FNORD Long is upgrading their Might",
+requirements:{long.lesson.might:1},
+effects:{long.lesson.might:-1},
+mutations:[{filterOnAspectId:enemylong,mutateAspectId:long.might,mutationLevel:1,additive:true}],
+warmup:10,
+linked:[{id:"long.selectstrategy",chance:100}]
+},
+
+
+
+{id:"long.upgrade.connections",
+actionId:"long",
+label:"FNORD Long is upgrading their Connections",
+startdescription:"FNORD Long is upgrading their Connections",
+requirements:{long.lesson.connections:1},
+effects:{long.lesson.connections:-1},
+mutations:[{filterOnAspectId:enemylong,mutateAspectId:long.connections,mutationLevel:1,additive:true}],
+warmup:10,
+linked:[{id:"long.selectstrategy",chance:100}]
+},
+
+
+{id:"long.upgrade.dreamwork",
+actionId:"long",
+label:"FNORD Long is upgrading their Starlight",
+startdescription:"FNORD Long is upgrading their Starlight",
+requirements:{long.lesson.dreamwork:1},
+effects:{long.lesson.dreamwork:-1},
+mutations:[{filterOnAspectId:enemylong,mutateAspectId:long.dreamwork,mutationLevel:1,additive:true}],
+warmup:10,
+linked:[{id:"long.selectstrategy",chance:100}]
+},
+
 
 {id:"long.selectstrategy",
 actionId:"long",
-label:"FNORD Long is deciding a course of action",
+label:"FNORD A moment of decision",
 slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
-startdescription:"",
+startdescription:"FNORD Long is deciding a course of action",
 description:"",
 requirements:{},
 deckeffect:{long.strategies:1},
 warmup:60,
 craftable:false,
+linked:[{id:"long.refinestrategy",chance:100}]
+},
+
+{id:"long.refinestrategy",
+actionId:"long",
+label:"FNORD Specifically...",
+slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
+startdescription:"FNORD Long is refining their plans...",
+warmup:10,
+craftable:false,
+linked:[{id:"long.assault.injurehealth.set",chance:70},
+{id:"long.assault.intimidate.set",chance:70},
+{id:"long.assault.createmystique.set",chance:100},
+{id:"long.assault.mystiquetonotoriety.set",chance:100}]
+},
+
+{id:"long.refinestrategy",
+actionId:"long",
+effects:{strategy.assault.injurehealth:1},
 linked:[{id:"long.preparestrategy",chance:100}]
 },
+{id:"long.refinestrategy",
+actionId:"long",
+effects:{strategy.assault.intimidate:1},
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+{id:"long.refinestrategy",
+actionId:"long",
+effects:{strategy.assault.createmystique:1},
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+{id:"long.refinestrategy",
+actionId:"long",
+effects:{strategy.assault.mystiquetonotoriety:1},
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+
+
+
+
 
 {id:"long.preparestrategy",
 actionId:"long",
@@ -58,124 +138,43 @@ label:"FNORD preparing strategy",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{strategy.prep:1,intention.assault:1},
+effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
-linked:[{id:"long.executestrategy.assault",chance:100},
-{id:"long.executestrategy.sabotage",chance:100},
-{id:"long.executestrategy.dreams",chance:100},
-{id:"long.executestrategy.downtime",chance:100},
-{id:"long.preparestrategy",chance:100}]
+linked:[{id:"long.executestrategy",chance:100},
+{id:"long.preparestrategy",chance:100},]
 },
 
-{id:"long.executestrategy.assault",
+
+
+{id:"long.executestrategy",
 actionId:"long",
-label:".",
-startdescription:"FNORD execute assault basic",
-description:"",
-requirements:{strategy.prep:3,intention.assault:1},
-effects:{strategy.prep:-3},
-warmup:60,
+label:"FNORD executing strategy",
+startdescription:"FNORD HERE IT COMES",
+requirements:{strategy.prep:2},
+effects:{strategy.prep:-2},
+warmup:10,
 craftable:false,
-alternativerecipes:[{additional:true, id:"long.executestrategy.assault.injurehealth.begin",chance:100}],
-linked:[{id:"long.cycle",chance:100}]
-},
-{id:"long.executestrategy.sabotage",
-actionId:"long",
-label:".",
-startdescription:"FNORD execute sabotage basic",
-description:"",
-requirements:{strategy.prep:3,intention.sabotage:1},
-effects:{strategy.prep:-3},
-warmup:60,
-craftable:false,
-alternativerecipes:[{additional:true, id:"long.executestrategy.sabotage.mystiquetonotoriety.begin",chance:100}],
+alternativerecipes:[{id:"long.executestrategy.assault",chance:100,additional:true},
+{id:"long.executestrategy.intrigue",chance:100,additional:true},
+{id:"long.executestrategy.dreams",chance:100,additional:true},
+{id:"long.executestrategy.downtime",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
-{id:"long.executestrategy.dreams",
-actionId:"long",
-label:".",
-startdescription:"FNORD execute dreams basic",
-description:"",
-requirements:{strategy.prep:3,intention.dreams:1},
-effects:{strategy.prep:-3},
-warmup:60,
-craftable:false,
-alternativerecipes:[{additional:true, id:"long.executestrategy.dreams.createfascination.begin",chance:100}],
-linked:[{id:"long.cycle",chance:100}]
-},
+
 
 {id:"long.executestrategy.downtime",
 actionId:"long",
 label:".",
 startdescription:"FNORD execute downtime basic",
 description:"FNORD all is calm, all is bright",
-requirements:{strategy.prep:3,intention.downtime:1},
-effects:{strategy.prep:-3},
+requirements:{strategy.prep:2,intention.downtime:1},
+effects:{strategy.prep:-2},
 warmup:60,
 craftable:false,
 linked:[{id:"long.cycle",chance:100}]
 },
-
-{id:"long.executestrategy.assault.injurehealth.begin",
-actionId:"longassault",
-label:"An Attack! FNORD",
-startdescription:"FNORD attack health",
-description:"FNORD no health found; it's over for now.",
-slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
-linked:[{id:"long.executestrategy.assault.injurehealth.continue",chance:100}],
-warmup:10
-},
-{id:"long.executestrategy.assault.injurehealth.continue",
-actionId:"longassault",
-label:"Defence? FNORD",
-startdescription:"FNORD attacking now",
-description:"",
-slots:[{id:"defender",label:"Defender",required:{follower:1}}],
-requirements:{health:1},
-warmup:10,
-linked:[{id:"long.executestrategy.assault.injurehealth.failure",chance:100},
-{id:"long.executestrategy.assault.injurehealth.succeed",chance:100},
-]
-},
-
-{id:"long.executestrategy.assault.injurehealth.failure",
-actionId:"longassault",
-label:"Defence successful! FNORD",
-startdescription:"FNORD",
-requirements:{follower:1},
-description:"FNORD our enemy has learnt from us :(",
-effects:{long.lesson.assault:1}
-},
-
-{id:"long.executestrategy.assault.injurehealth.succeed",
-actionId:"longassault",
-label:"Defence?",
-startdescription:"FNORD no defender, so health attack succeeds",
-description:"",
-aspects:{damagehealth:1}
-},
-
-{id:"long.executestrategy.sabotage.mystiquetonotoriety.begin",
-actionId:"longsabotage",
-label:"FNORD stub",
-startdescription:"FNORD stub",
-description:"FNORD stub",
-requirements:{},
-effects:{},
-warmup:10
-},
-
-{id:"long.executestrategy.dreams.createfascination.begin",
-actionId:"longdreams",
-label:"FNORD stub",
-startdescription:"FNORD stub",
-description:"FNORD stub",
-requirements:{},
-effects:{},
-warmup:10
-}
 
 
 

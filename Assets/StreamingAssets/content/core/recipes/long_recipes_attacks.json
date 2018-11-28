@@ -1,0 +1,298 @@
+{
+"recipes": [
+
+
+{id:"long.executestrategy.assault",
+actionId:"longassault",
+label:".",
+startdescription:"FNORD execute assault",
+description:"",
+requirements:{intention.assault:1},
+effects:{},
+craftable:false,
+linked:[{id:"long.executestrategy.assault.injurehealth.begin",chance:70},
+{id:"long.executestrategy.assault.intimidate.begin",chance:100}]
+},
+
+
+
+
+{id:"long.executestrategy.assault.injurehealth.begin",
+actionId:"longassault",
+label:"An Attack! FNORD",
+startdescription:"FNORD attack health",
+description:"FNORD no health found; it's over for now.",
+slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
+aspects:{damagehealth:1},
+comments:"Damaging health now so it doesn't figure into the Heart calculations",
+linked:[{id:"long.executestrategy.assault.injurehealth.continue",chance:100}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.assault.injurehealth.continue",
+actionId:"longassault",
+label:"Defence? FNORD",
+startdescription:"FNORD attacking now",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{health:1},
+warmup:10,
+linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.assault.failure.highedgedefence",chance:90},
+{id:"long.executestrategy.assault.failure.midedgedefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowedgedefence",chance:30},
+{id:"long.executestrategy.assault.injurehealth.succeed",chance:100},
+]
+},
+
+{id:"long.executestrategy.assault.injurehealth.succeed",
+actionId:"longassault",
+label:"FNORD OW",
+startdescription:"FNORD health attack succeeds",
+description:""
+},
+
+
+
+{id:"long.executestrategy.assault.intimidate.begin",
+actionId:"longassault",
+label:"Intimidation! FNORD",
+startdescription:"FNORD they sCARE",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.assault.failure.highgraildefence",chance:90},
+{id:"long.executestrategy.assault.failure.midgraildefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowgraildefence",chance:30},
+{id:"long.executestrategy.assault.intimidate.succeed",chance:100},
+]
+},
+
+
+{id:"long.executestrategy.assault.intimidate.succeed",
+actionId:"longassault",
+label:"FNORD BLUD ON WALLS",
+startdescription:"FNORD they frit me",
+description:"",
+effects{dread:1}
+},
+
+
+
+{id:"long.executestrategy.assault.failure.highedgedefence",
+actionId:"longassault",
+requirements:{follower:1,edge:10},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.midedgedefence",
+actionId:"longassault",
+requirements:{follower:1,edge:5},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.lowedgedefence",
+actionId:"longassault",
+requirements:{follower:1,edge:2},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+
+
+{id:"long.executestrategy.assault.failure.highgraildefence",
+actionId:"longassault",
+requirements:{follower:1,grail:10},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.midgraildefence",
+actionId:"longassault",
+requirements:{follower:1,grail:5},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.lowgraildefence",
+actionId:"longassault",
+requirements:{follower:1,grail:2},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+
+
+{id:"long.executestrategy.assault.failure.highheartdefence",
+actionId:"longassault",
+requirements:{follower:1,heart:10},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.midheartdefence",
+actionId:"longassault",
+requirements:{follower:1,heart:5},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.lowheartdefence",
+actionId:"longassault",
+requirements:{follower:1,heart:2},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+
+
+
+{id:"long.executestrategy.assault.failure",
+actionId:"longassault",
+label:"Defence successful! FNORD",
+startdescription:"FNORD",
+description:"FNORD our enemy has learnt from us :(",
+effects:{long.lesson.might:1},
+aspects:{restorehealth:1}
+},
+
+
+
+
+{id:"long.executestrategy.intrigue",
+actionId:"longintrigue",
+label:".",
+startdescription:"FNORD execute intrigue ",
+description:"",
+requirements:{intention.intrigue:1},
+effects:{},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",chance:70},
+{id:"long.executestrategy.intrigue.createmystique.begin",chance:100}]
+},
+
+
+
+
+{id:"long.executestrategy.intrigue.createmystique.begin",
+actionId:"longintrigue",
+label:"Rumours! FNORD",
+startdescription:"FNORD hap they sa bad thing",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.intrigue.createmystique.succeed",chance:100},
+]
+},
+
+
+{id:"long.executestrategy.intrigue.createmystique.succeed",
+actionId:"longintrigue",
+label:"Rumour's Mist",
+startdescription:"FNORD ppl believe bad thing!!",
+description:"",
+effects:{mystique:1}
+},
+
+
+
+
+
+{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",
+actionId:"longintrigue",
+label:"Filthy Rumours! FNORD",
+startdescription:"FNORD grab myst",
+slots:[{id:"mystique",label:"Mystique",required:{mystique:1},greedy:true}],
+comments:"If we can't find mystique, we go on trying to generate it",
+linked:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.continue",chance:100},
+{id:"long.executestrategy.intrigue.createmystique.begin",chance:100},],
+warmup:10
+},
+
+
+{id:"long.executestrategy.intrigue.mystiquetonotoriety.continue",
+actionId:"longintrigue",
+label:"Defence? FNORD",
+startdescription:"FNORD attacking now",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{mystique:1},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.intrigue.mystiquetonotoriety.succeed",chance:100},
+]
+},
+
+{id:"long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+actionId:"longintrigue",
+label:"FNORD everyone hate me :(",
+startdescription:"FNORD notoriety attack succeeds",
+description:"",
+{effects:notoriety:1,mystique:-1}
+},
+
+
+{id:"long.executestrategy.intrigue.failure.highheartdefence",
+actionId:"longintrigue",
+requirements:{follower:1,heart:10},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.failure.midheartdefence",
+actionId:"longintrigue",
+requirements:{follower:1,heart:5},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.failure.lowheartdefence",
+actionId:"longintrigue",
+requirements:{follower:1,heart:2},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+
+
+{id:"long.executestrategy.intrigue.failure",
+actionId:"longintrigue",
+label:"Defence successful! FNORD",
+startdescription:"FNORD",
+description:"FNORD our enemy has learnt from us :(",
+effects:{long.lesson.connections:1},
+},
+
+
+
+
+
+
+
+
+{id:"long.executestrategy.dreams",
+actionId:"longdreams",
+label:".",
+startdescription:"FNORD execute dreams basic",
+description:"",
+requirements:{intention.dreams:1},
+effects:{},
+warmup:10,
+craftable:false,
+linked:[{id:"long.executestrategy.dreams.createfascination.begin",chance:100}]
+},
+
+{id:"long.executestrategy.dreams.createfascination.begin",
+actionId:"longdreams",
+label:"FNORD stub",
+startdescription:"FNORD stub",
+description:"FNORD stub",
+requirements:{},
+effects:{},
+warmup:10
+}
+
+
+
+
+]
+}

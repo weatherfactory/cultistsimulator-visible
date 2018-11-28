@@ -1270,7 +1270,7 @@ isAspect:true},
 label:"Intention",
 description:"Our immortal enemy has a plan.",
 isAspect:true},
-{id:"intention.sabotage",
+{id:"intention.intrigue",
 label:"Intention",
 description:"Our immortal enemy has a plan.",
 isAspect:true},
@@ -1291,9 +1291,34 @@ isAspect:true},
 {id:"long.lesson",
 label:"A Lesson Learnt",
 description:"Our foe watches and learns.",
-isAspect:true}
+isAspect:true},
+
+{id:"long.might",
+label:"Might",
+description:"Over time, this Long will build up allies and resources in the city, improving their ability to assault us.",
+isAspect:true
+},
+
+{id:"long.connections",
+label:"Connections",
+description:"Over time, this Long will build up their network in the city, improving their ability to intrigue against us.",
+isAspect:true
+},
 		
-		
+
+{id:"long.dreamwork",
+label:"The Size of Starlight",
+description:"Over time, this Long will learn the shape of our dreams, improving their ability to strike at us through the Mansus.",
+isAspect:true
+},
+
+{id:"enemylong",
+label:"An Immortal Enemy",
+description:"Many Long serve the Hours. They fiercely oppose the rise of new Names, who might, just perhaps, become usurping Hours some day. Some Long hate the Hours. Their opposition to new Names is, if anythng, even fiercer.",
+isAspect:true
+},
+
+
 		
 ]
 }
