@@ -56,7 +56,7 @@ return;
             {
                 //let's try not to bring down the house because the phone line isn't working
                 NoonUtility.Log("WARNING: tried to set achievement" + achievementId + ", but failed: " + e.Message);
-                throw;
+                //throw;
             }
             
         }
