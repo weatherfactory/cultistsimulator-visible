@@ -10,8 +10,8 @@
         description: ".",
         warmup: 30,
         craftable: false,
-		alternativerecipes:[{id:"playerincreasedbid",chance:100,expulsion:}],
-		linked:[{id:"auctionfailure",chance:100}]
+		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
+		linked:[{id:"auctionfailure",chance:100}],
 		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
        },
 	   {id: "playerincreasedbid",
@@ -20,7 +20,7 @@
 	   requirements:{funds:1},
 	   startdescription: "我举起了手。拍卖师敲下木槌向我致意。会有人跟价吗？",
 	   description:".",
-	   effects:{funds:-1,bid:1}
+	   effects:{funds:-1,bid:1},
 	   warmup:0,
 	   linked:[
 	   {id:"auctionsuccess",chance:70},

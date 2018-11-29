@@ -1,142 +1,291 @@
- {"recipes": [
-	
-			 	{
-	id: "explore_vaultcapital1_setup",
-	label: "探险开始：斯特拉思科因的藏品",
-	actionId: "explore",
-	requirements:{vaultcapital1:1,funds:1,follower:1},
-	effects: {guardian_watchers:1},
-	startdescription: "很遗憾，斯特拉思科因先生禁止他人进入他的藏书室。我们看看有何办法可想。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-	
-		 	{
-	id: "explore_vaultcapital2_setup",
-	label: "探险开始：被遗忘的密特拉寺",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapital2:1},
-	effects: {seal_hiddendoor:1},
-
-	startdescription: "我相信这座密特拉寺仍保有未被发掘的秘密。搜寻工作虽无甚危险，却需要金钱的支持。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapital3_setup",
-	label: "探险开始：凯特与赫洛有限公司",
-	actionId: "explore",
-	requirements:{vaultcapital3:1,funds:1,follower:1},
-	effects: {peril_treacherousground:1},
-
-	startdescription: "工厂的残垣断壁摇摇欲倒。熏成黑色的梁木咯吱作响，发出痛苦的声音。我们需要装备妥当，并且提心吊胆，极其谨慎地前行。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapital4_setup",
-	label: "探险开始：圣阿格尼丝医院",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapital4:1},
-	effects: {curse_dread:1},
-
-	startdescription: "如今的医院大厅只剩往日余音徘徊其内，空气中的恶意却迟迟不肯离去。我们的调查必须细致入微，不放过一个房间。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapitaldefault_setup",
-	label: "探险开始：被抛弃的河岸街",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapitaldefault:1},
-	effects: {peril_treacherousground:1,guardian_watchers:1},
-
-	startdescription: "法律约束不了这片衰落的城市边缘地带。这里的淤泥已吞噬了许多性命，这间仓库无疑也盘踞着可鄙的罪犯或此类人等。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-					{
-	id: "explorevaultcapital1_success",
-	label: "斯特拉思科因的宝物",
-	actionId: "explore",
-	requirements: {vaultcapital1:1},
-	effects: {vaultcapital1:-1,wainscothistories:1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "这里是斯特拉思科因布置的舒适密室。壁炉里的火忽明忽暗，玻璃展柜里摆放着各种稀奇的小玩意。我们必须抓紧时间，能拿多少拿多少！斯特拉思科因可能已经通过电话报警了。",
-	description: "逃出生天，投入黑夜！我们逃离时并没有被人看见，然而第二天报上却刊登了斯特拉思科因家遭火灾的消息。是有人把烧红的煤块碰到壁炉前的地毯上了？或者是斯特拉思科因自己烧毁了住处，为了实施一场更大的阴谋？",
-	warmup:30,
-	craftable: false
-	},
-	
+﻿{
+recipes: [
+	{
+		linked: 
+		[
 			{
-	id: "explorevaultcapital2_success",
-	label: "愈深圣所",
-	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1,toollanternb:1,},
-	deckeffect: {"vaultcontentsc":2},
-	startdescription: "一个孤寂的地方。散发着腐臭味道和血的记忆。我们在其中发现了新人中最高级别者所用的那扇暗门。",
-	description: "祭坛向后倾倒，像一张大嘴。后面是只有猎日者和赐晨者能进入的金字塔状空间……然而就在短短不久前，亦有我们之外的人踏足此地。他们留下了宝物。",
-	warmup:30,
-	craftable: false
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultcapital1: "1",
+			funds: "1",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "探险开始：斯特拉思科因的藏品",
+		startdescription: "很遗憾，斯特拉思科因先生禁止他人进入他的藏书室。我们看看有何办法可想。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+		id: "explore_vaultcapital1_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_watchers: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultcapital3_success",
-	label: "凯特的办公室",
-	actionId: "explore",
-	requirements: {vaultcapital3:1},
-	effects: {vaultcapital3:-1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "这里就是那间宽敞的大房间，凯特先生曾在这里监工车间的工人。窗玻璃早已不在，此地变作了老鼠和乌鸦的乐园。不过这里或许还存留着有用的东西……",
-	description: "挪开两块地板后，凯特的办公桌下露出了一个空洞！老鼠已经不请自来地享用了这位企业家为抵抗腹中辘辘所预备的饼干，但是它们无法穿透这个铁质保险箱。我们用撬棍小试片刻便可将之开启。",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital2: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "探险开始：被遗忘的密特拉寺",
+		startdescription: "我相信这座密特拉寺仍保有未被发掘的秘密。搜寻工作虽无甚危险，却需要金钱的支持。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+		id: "explore_vaultcapital2_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			seal_hiddendoor: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultcapital4_success",
-	label: "蓝紫色房间",
-	actionId: "explore",
-	requirements: {vaultcapital4:1},
-	effects: {vaultcapital4:-1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "这是什么地方？房门上没有任何标识。没有窗户，墙壁刷成浓重的蓝紫色——被由天花板破洞漏下的雨水蹂躏后浓重依旧。一把木料腐烂的椅子，扶手处装着皮制捆绳。地面是瓷砖铺成的，开有下水渠。",
-	description: "墙上安着一个用挂锁的锁住的碗橱：我们的力气很快使它就范。里面是一些镶有燧石和玻璃的器具——不像是外科医生会用的。还有一些我们更感兴趣的物质……",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital3: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "探险开始：凯特与赫洛有限公司",
+		startdescription: "工厂的残垣断壁摇摇欲倒。熏成黑色的梁木咯吱作响，发出痛苦的声音。我们需要装备妥当，并且提心吊胆，极其谨慎地前行。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+		id: "explore_vaultcapital3_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_treacherousground: "1",
+		},
 	},
-	
-				{
-	id: "explorevaultcapitaldefault_success",
-	label: "延滞的货物",
-	actionId: "explore",
-	requirements: {vaultcapitaldefault:1},
-	effects: {vaultcapitaldefault:-1,funds:1},
-	deckeffect: {"vaultcontentsc":2},
-	startdescription: "面前是一扇栅栏门，狭窄的空间，货物藏于其中。",
-	description: "有人在这里看守着一堆板条箱，上面捆着被贼做过记号的封带。我们这次行动不为法律允许：货物的主人很可能不会喜欢我们动手脚。",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital4: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "探险开始：圣阿格尼丝医院",
+		startdescription: "如今的医院大厅只剩往日余音徘徊其内，空气中的恶意却迟迟不肯离去。我们的调查必须细致入微，不放过一个房间。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+		id: "explore_vaultcapital4_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			curse_dread: "1",
+		},
 	},
-	
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultcapital5: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "30",
+		label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
+		startdescription: "Membership of the Congregation is strictly controlled. It may even be inherited. The safest approach is to burgle the minister's residence while he's conducting a service - but the sworn mothers of the Congregation guard the place in shifts, and they are not easily distracted. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+		id: "explore_vaultcapital5_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_monks: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultcapitaldefault: "1",
+			follower: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "探险开始：被抛弃的河岸街",
+		startdescription: "法律约束不了这片衰落的城市边缘地带。这里的淤泥已吞噬了许多性命，这间仓库无疑也盘踞着可鄙的罪犯或此类人等。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+		id: "explore_vaultcapitaldefault_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_watchers: "1",
+			peril_treacherousground: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital1: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "斯特拉思科因的宝物",
+		startdescription: "这里是斯特拉思科因布置的舒适密室。壁炉里的火忽明忽暗，玻璃展柜里摆放着各种稀奇的小玩意。我们必须抓紧时间，能拿多少拿多少！斯特拉思科因可能已经通过电话报警了。",
+		id: "explorevaultcapital1_success",
+		actionId: "explore",
+		description: "逃出生天，投入黑夜！我们逃离时并没有被人看见，然而第二天报上却刊登了斯特拉思科因家遭火灾的消息。是有人把烧红的煤块碰到壁炉前的地毯上了？或者是斯特拉思科因自己烧毁了住处，为了实施一场更大的阴谋？",
+		effects: 
+		{
+			treatiseonunderplaces: "1",
+			travellingatnight3: "1",
+			vaultcapital1: "-1",
+			locksmithsdream4: "1",
+			textbookfucine: "1",
+			wainscothistories: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital2: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "愈深圣所",
+		startdescription: "一个孤寂的地方。散发着腐臭味道和血的记忆。我们在其中发现了新人中最高级别者所用的那扇暗门。",
+		id: "explorevaultcapital2_success",
+		actionId: "explore",
+		description: "祭坛向后倾倒，像一张大嘴。后面是只有猎日者和赐晨者能进入的金字塔状空间……然而就在短短不久前，亦有我们之外的人踏足此地。他们留下了宝物。",
+		effects: 
+		{
+			vaultcapital2: "-1",
+			toollanternbcracked: "1",
+			ingredientlanternb: "1",
+			toolwinterd: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital3: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "凯特的办公室",
+		startdescription: "这里就是那间宽敞的大房间，凯特先生曾在这里监工车间的工人。窗玻璃早已不在，此地变作了老鼠和乌鸦的乐园。不过这里或许还存留着有用的东西……",
+		id: "explorevaultcapital3_success",
+		actionId: "explore",
+		description: "挪开两块地板后，凯特的办公桌下露出了一个空洞！老鼠已经不请自来地享用了这位企业家为抵抗腹中辘辘所预备的饼干，但是它们无法穿透这个铁质保险箱。我们用撬棍小试片刻便可将之开启。",
+		effects: 
+		{
+			apolloandmarsyas: "1",
+			ingredientgrailb: "1",
+			toolheartb: "1",
+			vaultcapital3: "-1",
+			franklinbancroftdiarieslatin: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital4: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "蓝紫色房间",
+		startdescription: "这是什么地方？房门上没有任何标识。没有窗户，墙壁刷成浓重的蓝紫色——被由天花板破洞漏下的雨水蹂躏后浓重依旧。一把木料腐烂的椅子，扶手处装着皮制捆绳。地面是瓷砖铺成的，开有下水渠。",
+		id: "explorevaultcapital4_success",
+		actionId: "explore",
+		description: "墙上安着一个用挂锁的锁住的碗橱：我们的力气很快使它就范。里面是一些镶有燧石和玻璃的器具——不像是外科医生会用的。还有一些我们更感兴趣的物质……",
+		effects: 
+		{
+			ingredientheartb: "1",
+			toolgrailb: "1",
+			locksmithsdream3: "1",
+			vaultcapital4: "-1",
+			roseofhypatiagreek: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital5: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "Secret Devotions",
+		startdescription: "The minister's bed-chamber is grand in proportion, but sparsely furnished. Beneath the window,a feathered ornamental axe rests besidesan enameled chalice-drum on a little altar of yew-wood.",
+		id: "explorevaultcapital5_success",
+		actionId: "explore",
+		description: "Beneath the altar, in a box secured with a complicated triple knot, we find a trove of books - and more besides - a knife rank with old blood, a twist of cloth, a leathery remnant of something the minister must have surrendered at his ordination.",
+		effects: 
+		{
+			roseofnurielgreek: "1",
+			textbookgreek: "1",
+			chioneatabydos: "1",
+			roseofwazneigreek: "1",
+			vaultcapital5: "-1",
+			debellismurorum: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapitaldefault: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "延滞的货物",
+		startdescription: "面前是一扇栅栏门，狭窄的空间，货物藏于其中。",
+		id: "explorevaultcapitaldefault_success",
+		actionId: "explore",
+		deckeffect: 
+		{
+			vaultrewardsa: "3",
+		},
+		description: "有人在这里看守着一堆板条箱，上面捆着被贼做过记号的封带。我们这次行动不为法律允许：货物的主人很可能不会喜欢我们动手脚。",
+		effects: 
+		{
+			vaultcapitaldefault: "-1",
+			funds: "1",
+		},
+	},
 ]
 }
-

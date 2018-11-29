@@ -249,7 +249,7 @@ warmup:5,
 	linked:[{id:"paintmasterknock_unique",chance:100},
 	{id:"paintresults",chance:100}]},
 	
-		{id:"matchlantern",requirements:{ingredientlanternb:,lantern:5},
+		{id:"matchlantern",requirements:{ingredientlanternb:1,lantern:5},
 	actionId:"work",
 	label:"Подобающее средство",
 	startdescription:"Эта работа проявит лучшие качества в абсолютной тьме. Как и все мы.",

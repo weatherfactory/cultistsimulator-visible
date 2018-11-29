@@ -24,7 +24,9 @@ public class LanguageManager : MonoBehaviour
 	{
 		en,
 		ru,
-		zh
+		zh,
+
+		maxLanguages
 	};
 
 	public enum eFontStyle

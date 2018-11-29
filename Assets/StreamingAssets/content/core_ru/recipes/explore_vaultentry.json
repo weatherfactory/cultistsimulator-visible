@@ -93,6 +93,7 @@ recipes: [
 				chance: "100",
 			},
 		],
+		craftable: "false",
 		comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
 		effects: 
 		{
@@ -220,6 +221,11 @@ recipes: [
 				chance: "100",
 			},
 			{
+				id: "explorevaultcapital5_success",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
 				id: "explorevaultcapitaldefault_success",
 				chance: "100",
 			},
@@ -237,6 +243,11 @@ recipes: [
 			},
 			{
 				id: "explorevaultshires4_success",
+				chance: "100",
+			},
+			{
+				id: "explorevaultshires5_success",
+				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -260,6 +271,16 @@ recipes: [
 				chance: "100",
 			},
 			{
+				id: "explorevaultcontinent5_success",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "explorevaultcontinent6_success",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
 				id: "explorevaultcontinentdefault_success",
 				chance: "100",
 			},
@@ -277,6 +298,11 @@ recipes: [
 			},
 			{
 				id: "explorevaultlandbeyondforest4_success",
+				chance: "100",
+			},
+			{
+				id: "explorevaultlandbeyondforest5_success",
+				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -386,7 +412,6 @@ recipes: [
 	},
 	{
 		id: "explorevault_casualty_summoning",
-		comment: "NEW",
 		requirements: 
 		{
 			summoned: "1",

@@ -180,6 +180,19 @@ recipes: [
 		actionId: "talk",
 	},
 	{
+		id: "sulochanachat_desire_change",
+		startdescription: "The dance, hm?",
+		requirements: 
+		{
+			changemarks: "1",
+			sulochana: "1",
+		},
+		description: "Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
+		comment: "NEW",
+		label: "On Desire",
+		actionId: "talk",
+	},	
+	{
 		id: "sulochanachat_desire",
 		startdescription: "That's what steers you?",
 		requirements: 

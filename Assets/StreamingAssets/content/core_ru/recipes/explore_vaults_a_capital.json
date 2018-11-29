@@ -1,142 +1,291 @@
-﻿ {"recipes": [
-	
-			 	{
-	id: "explore_vaultcapital1_setup",
-	label: "Начало экспедиции: коллекция Страткойна",
-	actionId: "explore",
-	requirements:{vaultcapital1:1,funds:1,follower:1},
-	effects: {guardian_watchers:1},
-	startdescription: "Мистер Страткойн закрыл доступ в свою библиотеку. Очень жаль. Посмотрим, что мы сможем сделать. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-	
-		 	{
-	id: "explore_vaultcapital2_setup",
-	label: "Начало экспедиции: забытый митреум",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapital2:1},
-	effects: {seal_hiddendoor:1},
-
-	startdescription: "Я полагаю, что в митреуме всё ещё есть сокровища, не найденные прошлыми посетителями. Вряд ли он будет опасен, но поиск потребует средств. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapital3_setup",
-	label: "Начало экспедиции: компания «Кейтер и Хиро»",
-	actionId: "explore",
-	requirements:{vaultcapital3:1,funds:1,follower:1},
-	effects: {peril_treacherousground:1},
-
-	startdescription: "Остатки стен фабрики могут обвалиться в любой момент. Почерневшие балки скрипят от боли. Нам надо подобрать снаряжение и двигаться с тревогой и осторожностью. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapital4_setup",
-	label: "Начало экспедиции: госпиталь Святой Агнессы",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapital4:1},
-	effects: {curse_dread:1},
-
-	startdescription: "Теперь по коридорам госпиталя блуждает лишь эхо, но злоба всё ещё витает в воздухе. Мы должны обыскивать его педантично, комната за комнатой. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-				 	{
-	id: "explore_vaultcapitaldefault_setup",
-	label: "Начало экспедиции: проклятый плёс",
-	actionId: "explore",
-	requirements:{funds:1,follower:1,vaultcapitaldefault:1},
-	effects: {peril_treacherousground:1,guardian_watchers:1},
-
-	startdescription: "Закон не касается этого подгнивающего края города. Местная грязь повинна во многих смертях и, несомненно, какой-то жалкий преступник или кто-то иной уже обустроил себе логово на этих складах. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-	description: ".",
-	warmup:30,
-	craftable: true,
-	linked: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	},
-					{
-	id: "explorevaultcapital1_success",
-	label: "Сокровища Страткойна",
-	actionId: "explore",
-	requirements: {vaultcapital1:1},
-	effects: {vaultcapital1:-1,wainscothistories:1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "Уютная святыня Страткойна. Огонь трещит в камине. В стеклянных ящиках — потом и кровью собранные безделушки. Мы должны собрать всё, что можем, и быстро! Страткойн мог уже вызвать полицию по телефону.",
-	description: "Наружу, в ночь! Мы ускользнули незамеченными, но на следующее утро прочли заметки о пожаре у Страткойна. Кто-то случайно пнул горящий уголь на ковёр? Или Страткойн сам уничтожил это место ради неизвестной большей игры?",
-	warmup:30,
-	craftable: false
-	},
-	
+﻿{
+recipes: [
+	{
+		linked: 
+		[
 			{
-	id: "explorevaultcapital2_success",
-	label: "Глубокое святилище",
-	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1,toollanternb:1,},
-	deckeffect: {"vaultcontentsc":2},
-	startdescription: "Одинокое место, прокисшее памятью крови. Мы нашли скрытую дверь, которой ходили высшие посвящённые.",
-	description: "Алтарь отклонился назад как челюсть. Под ним — пирамидальная ниша, куда могли ходить только Охотники Солнца и Несущие Зарю... но прошли и другие, намного позднее. Они оставили сокровища.",
-	warmup:30,
-	craftable: false
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultcapital1: "1",
+			funds: "1",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: коллекция Страткойна",
+		startdescription: "Мистер Страткойн закрыл доступ в свою библиотеку. Очень жаль. Посмотрим, что мы сможем сделать. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultcapital1_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_watchers: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultcapital3_success",
-	label: "Офис Кейтера",
-	actionId: "explore",
-	requirements: {vaultcapital3:1},
-	effects: {vaultcapital3:-1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "Просторная комната, откуда мистер Кейтер наблюдал за рабочими на полу своей фабрики. Оконного стекла давно уже нет, вороны и крысы ведут бои за это место, но, возможно, здесь ещё осталось что-то полезное...",
-	description: "Две половицы поднимаются и открывают нишу под столом Кейтера. Крысы давно угостились бисквитами, которыми он пытался облегчить свой мучительный голод — но они не смогли пробраться в железный сейф. Минута с монтировкой откроет его.",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital2: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: забытый митреум",
+		startdescription: "Я полагаю, что в митреуме всё ещё есть сокровища, не найденные прошлыми посетителями. Вряд ли он будет опасен, но поиск потребует средств. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultcapital2_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			seal_hiddendoor: "1",
+		},
 	},
-	
-	
-				{
-	id: "explorevaultcapital4_success",
-	label: "Фиолетовый зал",
-	actionId: "explore",
-	requirements: {vaultcapital4:1},
-	effects: {vaultcapital4:-1},
-	deckeffect: {"vaultcontentsc":3},
-	startdescription: "Что это за место? На дверях нет таблички. Нет окон. Стены окрашены в яркий фиолетовый — яркий даже сейчас, после потоков дождя сквозь прохудившийся потолок. На ручках полусгнившего кресла — кожаные захваты. На керамическом полу — канавки для стока жидкости.",
-	description: "В стене есть шкафчик за кодовым замком: он не устоял против нашей силы. В нём — инструменты с наконечниками из кремня и стекла, не самые уместные для хирурга. Кроме того, в нём и другие вещи, более интересные нам...",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital3: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: компания «Кейтер и Хиро»",
+		startdescription: "Остатки стен фабрики могут обвалиться в любой момент. Почерневшие балки скрипят от боли. Нам надо подобрать снаряжение и двигаться с тревогой и осторожностью. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultcapital3_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			peril_treacherousground: "1",
+		},
 	},
-	
-				{
-	id: "explorevaultcapitaldefault_success",
-	label: "Опоздавшая доставка",
-	actionId: "explore",
-	requirements: {vaultcapitaldefault:1},
-	effects: {vaultcapitaldefault:-1,funds:1},
-	deckeffect: {"vaultcontentsc":2},
-	startdescription: "Дверь на засове, забитое место, тайный груз.",
-	description: "Местная охрана сторожила ящики, перевязанные лентами с печатями воров. Это незаконная транспортировка: владельцы груза могут не одобрить наше вмешательство.",
-	warmup:30,
-	craftable: false
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			vaultcapital4: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: госпиталь Святой Агнессы",
+		startdescription: "Теперь по коридорам госпиталя блуждает лишь эхо, но злоба всё ещё витает в воздухе. Мы должны обыскивать его педантично, комната за комнатой. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultcapital4_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			curse_dread: "1",
+		},
 	},
-	
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "1",
+			funds: "1",
+			vaultcapital5: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "30",
+		label: "Beginning an Expedition: the Congregation of St Felix of Schüren",
+		startdescription: "Membership of the Congregation is strictly controlled. It may even be inherited. The safest approach is to burgle the minister's residence while he's conducting a service - but the sworn mothers of the Congregation guard the place in shifts, and they are not easily distracted. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+		id: "explore_vaultcapital5_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_monks: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			vaultcapitaldefault: "1",
+			follower: "1",
+			funds: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		label: "Начало экспедиции: проклятый плёс",
+		startdescription: "Закон не касается этого подгнивающего края города. Местная грязь повинна во многих смертях и, несомненно, какой-то жалкий преступник или кто-то иной уже обустроил себе логово на этих складах. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+		id: "explore_vaultcapitaldefault_setup",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			guardian_watchers: "1",
+			peril_treacherousground: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital1: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Сокровища Страткойна",
+		startdescription: "Уютная святыня Страткойна. Огонь трещит в камине. В стеклянных ящиках — потом и кровью собранные безделушки. Мы должны собрать всё, что можем, и быстро! Страткойн мог уже вызвать полицию по телефону.",
+		id: "explorevaultcapital1_success",
+		actionId: "explore",
+		description: "Наружу, в ночь! Мы ускользнули незамеченными, но на следующее утро прочли заметки о пожаре у Страткойна. Кто-то случайно пнул горящий уголь на ковёр? Или Страткойн сам уничтожил это место ради неизвестной большей игры?",
+		effects: 
+		{
+			treatiseonunderplaces: "1",
+			travellingatnight3: "1",
+			vaultcapital1: "-1",
+			locksmithsdream4: "1",
+			textbookfucine: "1",
+			wainscothistories: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital2: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Глубокое святилище",
+		startdescription: "Одинокое место, прокисшее памятью крови. Мы нашли скрытую дверь, которой ходили высшие посвящённые.",
+		id: "explorevaultcapital2_success",
+		actionId: "explore",
+		description: "Алтарь отклонился назад как челюсть. Под ним — пирамидальная ниша, куда могли ходить только Охотники Солнца и Несущие Зарю... но прошли и другие, намного позднее. Они оставили сокровища.",
+		effects: 
+		{
+			vaultcapital2: "-1",
+			toollanternbcracked: "1",
+			ingredientlanternb: "1",
+			toolwinterd: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital3: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Офис Кейтера",
+		startdescription: "Просторная комната, откуда мистер Кейтер наблюдал за рабочими на полу своей фабрики. Оконного стекла давно уже нет, вороны и крысы ведут бои за это место, но, возможно, здесь ещё осталось что-то полезное...",
+		id: "explorevaultcapital3_success",
+		actionId: "explore",
+		description: "Две половицы поднимаются и открывают нишу под столом Кейтера. Крысы давно угостились бисквитами, которыми он пытался облегчить свой мучительный голод — но они не смогли пробраться в железный сейф. Минута с монтировкой откроет его.",
+		effects: 
+		{
+			apolloandmarsyas: "1",
+			ingredientgrailb: "1",
+			toolheartb: "1",
+			vaultcapital3: "-1",
+			franklinbancroftdiarieslatin: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital4: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Фиолетовый зал",
+		startdescription: "Что это за место? На дверях нет таблички. Нет окон. Стены окрашены в яркий фиолетовый — яркий даже сейчас, после потоков дождя сквозь прохудившийся потолок. На ручках полусгнившего кресла — кожаные захваты. На керамическом полу — канавки для стока жидкости.",
+		id: "explorevaultcapital4_success",
+		actionId: "explore",
+		description: "В стене есть шкафчик за кодовым замком: он не устоял против нашей силы. В нём — инструменты с наконечниками из кремня и стекла, не самые уместные для хирурга. Кроме того, в нём и другие вещи, более интересные нам...",
+		effects: 
+		{
+			ingredientheartb: "1",
+			toolgrailb: "1",
+			locksmithsdream3: "1",
+			vaultcapital4: "-1",
+			roseofhypatiagreek: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapital5: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "30",
+		label: "Secret Devotions",
+		startdescription: "The minister's bed-chamber is grand in proportion, but sparsely furnished. Beneath the window,a feathered ornamental axe rests besidesan enameled chalice-drum on a little altar of yew-wood.",
+		id: "explorevaultcapital5_success",
+		actionId: "explore",
+		description: "Beneath the altar, in a box secured with a complicated triple knot, we find a trove of books - and more besides - a knife rank with old blood, a twist of cloth, a leathery remnant of something the minister must have surrendered at his ordination.",
+		effects: 
+		{
+			roseofnurielgreek: "1",
+			textbookgreek: "1",
+			chioneatabydos: "1",
+			roseofwazneigreek: "1",
+			vaultcapital5: "-1",
+			debellismurorum: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			vaultcapitaldefault: "1",
+		},
+		craftable: "false",
+		warmup: "30",
+		label: "Опоздавшая доставка",
+		startdescription: "Дверь на засове, забитое место, тайный груз.",
+		id: "explorevaultcapitaldefault_success",
+		actionId: "explore",
+		deckeffect: 
+		{
+			vaultrewardsa: "3",
+		},
+		description: "Местная охрана сторожила ящики, перевязанные лентами с печатями воров. Это незаконная транспортировка: владельцы груза могут не одобрить наше вмешательство.",
+		effects: 
+		{
+			vaultcapitaldefault: "-1",
+			funds: "1",
+		},
+	},
 ]
 }
-
