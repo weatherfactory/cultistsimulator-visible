@@ -77,6 +77,22 @@ startdescription:"FNORD health attack succeeds",
 description:""
 },
 
+{id:"long.executestrategy.assault.rob.begin",
+actionId:"longintrigue",
+label:"Petty Theft",
+startdescription:"Our enemy has set a pickpocket to bedevil me.",
+description:"So much the worse for my enemy: I have no money to steal.",
+slots:[{id:"funds",label:"Funds",required:{funds:1},greedy:true}],
+alternativerecipes:[{id:"long.executestrategy.assault.rob.continue",chance:100}],
+warmup:10},
+
+{id:"long.executestrategy.assault.rob.continue",
+actionId:"longintrigue",
+label:"Petty, but Successful, Theft",
+startdescription:"Someone's snatched my pocketbook!",
+effects:{funds:-1}},
+
+
 
 
 {id:"long.executestrategy.assault.intimidate.begin",
@@ -187,37 +203,11 @@ linked:[{id:"long.executestrategy.assault.failure",chance:100}]
 
 {id:"long.executestrategy.assault.failure",
 actionId:"longassault",
-label:"Defence successful! FNORD",
-startdescription:"FNORD",
-description:"FNORD our enemy has learnt from us :(",
+label:"A Failed Assault",
+startdescription:"We've defeated our enemy's assault... but they've learnt something of us, and they'll take us more seriously as a threat. I can expect more dangerous assaults in future.",
 effects:{long.lesson.might:1},
 aspects:{restorehealth:1}
 },
-
-
-
-{id:"long.executestrategy.intrigue.createmystique.begin",
-actionId:"longintrigue",
-label:"Rumours! FNORD",
-startdescription:"FNORD hap they sa bad thing",
-slots:[{id:"defender",label:"Defender",required:{follower:1}}],
-warmup:10,
-linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
-{id:"long.executestrategy.intrigue.createmystique.succeed",chance:100},
-]
-},
-
-
-{id:"long.executestrategy.intrigue.createmystique.succeed",
-actionId:"longintrigue",
-label:"Rumour's Mist",
-startdescription:"FNORD ppl believe bad thing!!",
-description:"",
-effects:{mystique:1}
-},
-
 
 
 
@@ -258,6 +248,65 @@ effects:{notoriety:1,mystique:-1}
 },
 
 
+{id:"long.executestrategy.intrigue.fraud.begin",
+actionId:"longintrigue",
+label:"The Paper Snare",
+startdescription:"Our enemy has borne false witness against us. The authorities must be convinced of our innocence. [Defend using a follower with Heart or Moth; otherwise, you may lose one or many Funds.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+effects:{},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.intrigue.failure.highmothdefence",chance:90},
+{id:"long.executestrategy.intrigue.failure.midmothdefence",chance:70},
+{id:"long.executestrategy.intrigue.failure.lowmothdefence",chance:30},
+{id:"long.executestrategy.intrigue.fraud.succeed",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.fraud.succeed",
+actionId:"longintrigue",
+label:"The Auditor's Sting",
+startdescription:"'In our previous correspondence, we indicated the likely degree of your default. We have assessed the matter in more detail...'",
+slots:[{id:"funds",label:"Funds",required:{funds:1},greedy:true}],
+effects:{funds:-1},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.fraud.succeed",chance:70},
+{id:"long.executestrategy.intrigue.fraud.completed",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.fraud.completed",
+actionId:"longintrigue",
+label:"The Comptroller's Mercy",
+startdescription:"The steady stream of menacing letters has slowed; ceased. It's over... for now.",
+},
+
+{id:"long.executestrategy.intrigue.createmystique.begin",
+actionId:"longintrigue",
+label:"Rumours! FNORD",
+startdescription:"FNORD hap they sa bad thing.",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.intrigue.createmystique.succeed",chance:100},
+]
+},
+
+
+{id:"long.executestrategy.intrigue.createmystique.succeed",
+actionId:"longintrigue",
+label:"Rumour's Mist",
+startdescription:"FNORD ppl believe bad thing!!",
+description:"",
+effects:{mystique:1}
+},
+
+
+
+
+
 {id:"long.executestrategy.intrigue.failure.highheartdefence",
 actionId:"longintrigue",
 requirements:{follower:1,heart:10},
@@ -278,6 +327,26 @@ linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
 
 
 
+{id:"long.executestrategy.intrigue.failure.highmothdefence",
+actionId:"longintrigue",
+requirements:{follower:1,moth:10},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.failure.midmothdefence",
+actionId:"longintrigue",
+requirements:{follower:1,moth:5},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+{id:"long.executestrategy.intrigue.failure.lowmothdefence",
+actionId:"longintrigue",
+requirements:{follower:1,moth:2},
+linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
+},
+
+
+
 {id:"long.executestrategy.intrigue.failure",
 actionId:"longintrigue",
 label:"Defence successful! FNORD",
@@ -287,6 +356,14 @@ effects:{long.lesson.connections:1},
 },
 
 
+{id:"long.executestrategy.dreams.createfascination.begin",
+actionId:"longdreams",
+label:"Distant Lights",
+startdescription:"Our enemy has set a candle in the high Mansus-window. Its light will infiltrate our dreams.",
+description:"Here is that light on the edge of sleep, of which both Coseley and Heursault wrote, each in their time.",
+effects:{fascination:1},
+warmup:180,
+comments:"Warmup delay is deliberate: we want the F to have a sporting chance of being picked up by a subsequent dream attack"},
 
 
 {id:"long.executestrategy.dreams.learndreams.begin",
@@ -306,6 +383,26 @@ label:"FNORD Learned Us",
 startdescription:"FNORD they're coming to know us",
 requirements:{influence:1},
 effects:{dread:-1,fascination:-1,restlessness:-1,long.lesson.dreamwork:1}
+},
+
+
+{id:"long.executestrategy.downtime.learn.begin",
+actionId:"longdowntime",
+label:"A Rising Power",
+startdescription:"Our immortal enemy has allies and resources in many nations. They move slowly, but with as time passes, they will bring more and more of those allies and resources to bear against us.",
+warmup:10,
+linked:[{id:"long.executestrategy.downtime.learn.might",chance:100},
+{id:"long.executestrategy.downtime.learn.connections",chance:100}]
+},
+
+{id:"long.executestrategy.downtime.learn.might",
+actionId:"longdowntime",
+effects:{long.lesson.might:1}
+},
+
+{id:"long.executestrategy.downtime.learn.connections",
+actionId:"longdowntime",
+effects:{long.lesson.connections:1}
 },
 
 

@@ -34,30 +34,34 @@ isAspect:true},
 	
 	
 		{id:"strategy.assault.concealed",
-label:"The Long's Plans concealed: Assault",
-description:"FNORD",
+label:"The Long's Plans",
+description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.assault:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
+icon:"health"
 },
 {id:"strategy.intrigue.concealed",
-label:"The Long's Plans concealed: intrigue",
-description:"FNORD",
+label:"The Long's Plans",
+description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.intrigue:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
+icon:"reason"
 
 },
 {id:"strategy.dreams.concealed",
-label:"The Long's Plans concealed: Dreams",
-description:"FNORD",
+label:"The Long's Plans",
+description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
+icon:"passion"
 
 },
 {id:"strategy.downtime.concealed",
-label:"The Long's Plans concealed: A Respite",
-description:"FNORD",
-aspects:{intention.dreams:1},
+label:"The Long's Plans",
+description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
+aspects:{intention.downtime:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
+icon:"contentment"
 
 },
 
@@ -88,21 +92,27 @@ label:"The Long's Plans Revealed: A Respite",
 description:"FNORD",
 aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-
 },
 
 
+{id:"strategy.dreams.preference",
+label:"A Presentiment: the Lessons of the Soul",
+description:"For their next action, this Long will probably try to learn from our weaknesses in dreams - even if their plans would usually dictate otherwise.",
+},
+
+
+
 {id:"long.lesson.might",
-label:"Battlefield Lessons",
+label:"Increased Might",
 aspects:{long.lesson:1},
-description:"Our immortal enemy has learnt something of us. [Successful defence against a Long attack means future attacks may be more dangerous.]",
+description:"Our immortal enemy is taking us more seriously, and has brought more resources to bear. [An enemy Long's Might will increase, allowing them to conduct more powerful assaults.]",
 },
 
 
 {id:"long.lesson.connections",
-label:"Intelligence on our Operations",
+label:"More Connections",
 aspects:{long.lesson:1},
-description:"Our immortal enemy has learnt something of us. [Successful defence against a Long attack means future attacks may be more dangerous.]",
+description:"Our immortal enemy is taking us more seriously, and has brought more resources to bear. [An enemy Long's Might will increase, allowing them to conduct more devious intrigues.]"
 },
 
 {id:"long.lesson.dreamwork",

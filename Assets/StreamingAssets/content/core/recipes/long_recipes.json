@@ -102,12 +102,17 @@ requirements:{},
 effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
-linked:[{id:"long.refinestrategy.assault.forge.greatwork",chance:70},
+linked:[{id:"long.refinestrategy.dreams.learndreams.followup",chance:70},
+{id:"long.refinestrategy.assault.forge.greatwork",chance:70},
 {id:"long.refinestrategy.assault.injurehealth",chance:70},
+{id:"long.refinestrategy.assault.rob",chance:70},
 {id:"long.refinestrategy.assault.intimidate",chance:100},
+{id:"long.refinestrategy.intrigue.fraud",chance:70},
 {id:"long.refinestrategy.intrigue.mystiquetonotoriety",chance:70},
 {id:"long.refinestrategy.intrigue.createmystique",chance:100},
+{id:"long.refinestrategy.dreams.createfascination",chance:70},
 {id:"long.refinestrategy.dreams.learndreams",chance:100},
+{id:"long.refinestrategy.downtime.learn",chance:30},
 {id:"long.refinestrategy.downtime.rest",chance:100},
 {id:"long.preparestrategy",chance:100}]
 },
@@ -119,10 +124,19 @@ alternativerecipes:[{id:"long.executestrategy.assault.forge.greatwork.begin",cha
 linked:[{id:"long.cycle",chance:100}]
 },
 
+
+
 {id:"long.refinestrategy.assault.injurehealth",
 actionId:"long",
 requirements:{intention.assault:1,strategy.prep:3,long.might:2},
 alternativerecipes:[{id:"long.executestrategy.assault.injurehealth.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.assault.rob",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.assault.rob.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
@@ -134,10 +148,20 @@ linked:[{id:"long.cycle",chance:100}]
 },
 
 
+
 {id:"long.refinestrategy.intrigue.mystiquetonotoriety",
 actionId:"long",
 requirements:{intention.intrigue:1,strategy.prep:3,long.might:2},
 alternativerecipes:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+
+
+{id:"long.refinestrategy.intrigue.fraud",
+actionId:"long",
+requirements:{intention.intrigue:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.intrigue.fraud.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
@@ -147,10 +171,34 @@ requirements:{intention.intrigue:1,strategy.prep:3},
 alternativerecipes:[{id:"long.executestrategy.intrigue.createmystique.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
+
+{id:"long.refinestrategy.dreams.createfascination",
+actionId:"long",
+requirements:{intention.dreams:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.dreams.createfascination.begin",chance:100,additional:true}],
+effects:{strategy.dreams.preference:1},
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.dreams.learndreams.followup",
+actionId:"long",
+requirements:{intention.dreams:1,strategy.prep:3,strategy.dreams.preference:1},
+effects:{strategy.dreams.preference:-1},
+alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
 {id:"long.refinestrategy.dreams.learndreams",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3},
 alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.downtime.learn",
+actionId:"long",
+requirements:{intention.downtime:1,strategy.prep:3},
+alternativerecipes:[{id:"long.executestrategy.downtime.learn.begin",chance:70,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
