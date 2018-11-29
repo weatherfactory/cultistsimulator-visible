@@ -1325,10 +1325,11 @@ description:"When the Work is complete, our founder, our inspiration, will rise 
 isAspect:true
 },
 
-{id:"sabotaged",
-label:"Sabotaged!",
-description:"Our enemy has set us back. We'll need to find a way to repair the damage.",
-isAspect:true
+{id:"sabotage",
+label:"Sabotage!",
+description:"Converts a Great Work item to an unstable version that needs fixing.",
+isAspect:true,
+noartneeded:true
 }
 
 

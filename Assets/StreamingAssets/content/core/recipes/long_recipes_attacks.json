@@ -35,7 +35,7 @@ linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
 actionId:"longassault",
 label:"FNORD Sabotage succeeded!",
 startdescription:"FNORD it's been spoilt.",
-mutations:[{filterOnAspectId:greatwork,mutateAspectId:sabotaged,level:1}],
+aspects:{sabotage:1},
 warmup:10},
 
 
@@ -294,16 +294,16 @@ actionId:"longdreams",
 label:"Learning Us",
 startdescription:"FNORD snag d/f/r. They'll use it to learn us.",
 description:"No D/F/R found",
-slots:[{id:"impulses",label:"Impulses",required:{dread:1,fascination:1,restlessness:1}}],
+slots:[{id:"impulses",label:"Impulses",greedy:true,required:{dread:1,fascination:1,restlessness:1}}],
 warmup:10,
 craftable:false,
-linked:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
+alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
 },
 
 {id:"long.executestrategy.dreams.learndreams.continue",
 actionId:"longdreams",
 label:"FNORD Learned Us",
-description:"FNORD they're coming to know us",
+startdescription:"FNORD they're coming to know us",
 requirements:{influence:1},
 effects:{dread:-1,fascination:-1,restlessness:-1,long.lesson.dreamwork:1}
 },
