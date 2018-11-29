@@ -31,18 +31,24 @@ aspects:{lore:1}
 	},
 	{id: "apostleforge.pillar2.dormant",
 label: "Dormant Dawnbreaker Core",
-description: "The Sun was torn asunder. This fragment of what he was shall begin our Dawn, if we can rekindle it and purify it with the fiercest alchemy..",
-aspects:{tool:1}
+description: "@#sabotage|A battered tangle of ben metal, enclosing a mote of drunkenly bobbing ligh.t We must repair it before it collapses altogether!
+#|A shining cage of curved metal, enclosing a softly glowing fragment of ancient light. It might begin our Dawn, if we can rekindle it and purify it with the fiercest alchemy.@",
+aspects:{tool:1},
+lifetime:60
 	},
 		{id: "apostleforge.pillar2",
-label: "Dormant Dawnbreaker Core",
-description: "The Sun was torn asunder. We shall re-enact that moment at the place where the world's flaw colours the air, and we shall bring the Dawn.",
-aspects:{tool:1}
+label: "Dawnbreaker Core",
+description: "@#sabotage|A flaring tangle of bent metal. A blazing mote of solar fire quivers fitfully within. We must repair it before it collapses altogether!
+#|A radiant cage of curved metal, imprisoning a blazing mote of solar fire. If we can carry it to the place where the world's flaw colours the air, we can bring the Dawn.@",
+aspects:{tool:1},
+lifetime:60
 	},
 			{id: "apostleforge.pillar3",
 label: "Blue Gold",
-description: "This is alchemy's savage summit: the deadly blue of fire outpacing light. Touch it and die.",
-aspects:{ingredient:1}
+description: "@#sabotage|A poisoned, stuttering ingot of energetic alchemy. We must soothe its instability quickly!
+#|This is alchemy's savage summit: the deadly blue of fire outpacing light. Touch it and die@.",
+aspects:{ingredient:1},
+lifetime:60
 	},
 	
 			{id: "apostleforge.pillar5",
