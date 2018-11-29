@@ -177,7 +177,7 @@ namespace Assets.CS.TabletopUI {
 
             DisplayInAir();
 
-            startPosition = RectTransform.position;
+            startPosition = RectTransform.localPosition;
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 
@@ -189,7 +189,7 @@ namespace Assets.CS.TabletopUI {
             if (useDragOffset) {
                 Vector3 pressPos;
                 RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
-                dragOffset = startPosition - pressPos;
+                dragOffset = (startPosition + startParent.position) - pressPos;
             }
             else {
                 dragOffset = Vector3.zero;
@@ -304,11 +304,11 @@ namespace Assets.CS.TabletopUI {
                 ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
             else {
-                RectTransform.position = startPosition;
                 RectTransform.localRotation = Quaternion.identity;
                 RectTransform.SetParent(startParent);
                 RectTransform.SetSiblingIndex(startSiblingIndex);
-            }
+                RectTransform.localPosition = startPosition;
+           }
         }
 
         #endregion
