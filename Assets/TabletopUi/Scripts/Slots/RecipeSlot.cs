@@ -289,9 +289,9 @@ namespace Assets.CS.TabletopUI {
 
         public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack)
         {
-            if (stack.Quantity > 1)
-                //no multiple stack is ever permitted in a slot
-                return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
+			//no multiple stack is ever permitted in a slot  EDIT: removed this because we have support for splitting the stack to get a single card out - CP
+//			if (stack.Quantity > 1)
+//				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
 
             if (GoverningSlotSpecification == null)
                 return SlotMatchForAspects.MatchOK();
@@ -299,7 +299,8 @@ namespace Assets.CS.TabletopUI {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
+        public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
+		{
             onCardRemoved(elementStackToken, context);
             //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
             //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
