@@ -82,6 +82,26 @@ namespace Assets.Editor.Tests
             var resultRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
+
+        [Test]
+        public void RecipePrediction_ExcludesRecipeWithNoMoreThanRequirementUnsatisfied()
+        {
+            AspectsDictionary aspects = new AspectsDictionary {{"e", 3}};
+            primaryRecipe.Requirements.Add("e",-3); //'no more than'
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+            Assert.AreEqual(secondaryRecipe.Id,resultRecipe.Id);
+        }
+
+        [Test]
+        public void RecipePrediction_DoesntExcludeRecipeWithNoMoreThanRequirementAtHigherThanActualAspectLevel()
+        {
+            AspectsDictionary aspects = new AspectsDictionary { { "e", 2 } };
+            primaryRecipe.Requirements.Add("e", -3); //'no more than'
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+            Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
+        }
     }
     
 

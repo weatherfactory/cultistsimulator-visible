@@ -79,25 +79,9 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(SituationState.Ongoing,s.State);
         }
 
-        [Test]
-        public void Situation_ResetsTimer_WhenBeginningLoopRecipe()
-        {
+ 
 
-            rc.GetLinkedRecipe(null).ReturnsForAnyArgs(r2);
-            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.RequiringExecution, r1, subscriber);
-            r2.Warmup = 100;
-            s.Continue(rc, 1);
-            Assert.AreEqual(r2.Warmup, s.TimeRemaining);
-        }
-
-        [Test]
-        public void Situation_GoesComplete_WhenRecipeConductorSpecifiesNoLoopRecipe()
-        {
-            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.RequiringExecution, r1, subscriber);
-            s.Continue(rc,1);
-            Assert.AreEqual(SituationState.Complete, s.State);
-        }
-
+   
         [Test]
         public void Situation_AllOutputsGone_ReturnsToBlankState_IfSituationComplete()
         {

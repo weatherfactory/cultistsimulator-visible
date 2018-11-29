@@ -116,9 +116,9 @@ public class Recipe
     {
         foreach (var req in Requirements)
         {
-            if (req.Value == -1) //req -1 means there must be none of the element
+            if (req.Value <=-1) //this is a No More Than requirement
             {
-                if (aspects.AspectValue(req.Key) > 0)
+                if (aspects.AspectValue(req.Key) >= -req.Value)
                     return false;
             }
             else if (!(aspects.AspectValue(req.Key) >= req.Value))
