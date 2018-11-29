@@ -2,6 +2,42 @@
 "recipes": [
 
 
+{id:"long.executestrategy.assault.forge.greatwork.begin",
+actionId:"longassault",
+label:"An Act of Sabotage! FNORD",
+startdescription:"FNORD attack Great Work",
+description:"FNORD no Great Work found; it's over for now.",
+slots:[{id:"target",label:"Target",required:{greatwork:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.forge.greatwork.continue",chance:100}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.assault.forge.greatwork.continue",
+actionId:"longassault",
+label:"Defence? FNORD",
+startdescription:"FNORD attacking our stuf [Defend with a Heart or Forge follower.]",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{greatwork:1},
+warmup:10,
+linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
+{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
+{id:"long.executestrategy.assault.failure.highforgedefence",chance:90},
+{id:"long.executestrategy.assault.failure.midforgedefence",chance:70},
+{id:"long.executestrategy.assault.failure.lowforgedefence",chance:30},
+{id:"long.executestrategy.assault.forge.greatwork.succeed",chance:100},
+]
+},
+
+{id:"long.executestrategy.assault.forge.greatwork.succeed",
+actionId:"longassault",
+label:"FNORD Sabotage succeeded!",
+startdescription:"FNORD it's been spoilt.",
+mutations:[{filterOnAspectId:greatwork,mutateAspectId:sabotaged,level:1}],
+warmup:10},
+
 
 {id:"long.executestrategy.assault.injurehealth.begin",
 actionId:"longassault",
@@ -19,7 +55,7 @@ warmup:10
 {id:"long.executestrategy.assault.injurehealth.continue",
 actionId:"longassault",
 label:"Defence? FNORD",
-startdescription:"FNORD attacking now",
+startdescription:"FNORD attacking now [Defend with a Heart or Edge follower.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{injury:1},
@@ -66,6 +102,24 @@ label:"FNORD BLUD ON WALLS",
 startdescription:"FNORD they frit me",
 description:"",
 effects:{dread:1}
+},
+
+{id:"long.executestrategy.assault.failure.highforgedefence",
+actionId:"longassault",
+requirements:{follower:1,forge:10},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.midforgedefence",
+actionId:"longassault",
+requirements:{follower:1,forge:5},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
+},
+
+{id:"long.executestrategy.assault.failure.lowforgedefence",
+actionId:"longassault",
+requirements:{follower:1,forge:2},
+linked:[{id:"long.executestrategy.assault.failure",chance:100}]
 },
 
 
