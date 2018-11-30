@@ -83,34 +83,13 @@ namespace Assets.Editor.Tests
             primaryRecipe.LinkedRecipes.Add(lrd2);
 
 
-            mockDice.Rolld100().Returns(lrd1.Chance+1);
+            mockDice.Rolld100(Arg.Any<Recipe>()).Returns(100);
             rc =new RecipeConductor(compendium,null, mockDice, new Character(null));
             var loopedRecipe = rc.GetLinkedRecipe(primaryRecipe);
 
             Assert.AreEqual(secondaryRecipe.Id, loopedRecipe.Id);
         }
 
-        [Test]
-        public void RecipeConductor_SuppliesNullLoopedRecipe_WhenRecipeConditionsNotSatisfied()
-        {
-            LinkedRecipeDetails lrd = new LinkedRecipeDetails(primaryRecipe.Id, 100, false, null);
-            primaryRecipe.LinkedRecipes.Add(lrd);
-            primaryRecipe.Requirements.Add("loopedRecipeReq", 2);
-            rc = new RecipeConductor(compendium, new AspectsDictionary() { { "loopedRecipeReq", 1 } }, mockDice, new Character(null));
-            var loopedRecipe = rc.GetLinkedRecipe(primaryRecipe);
-            Assert.IsNull(loopedRecipe);
-        }
-
-        [Test]
-        public void AlternateRecipeExecutes_IfNoRequirements_AndDiceRollSatisfied()
-        {
-            mockDice.Rolld100().Returns(_linkedRecipeDetails.Chance);
-
-     rc = new RecipeConductor(compendium, null, mockDice, new Character(null));
-            IEnumerable<RecipeExecutionCommand> recipesToExecute = rc.GetActualRecipesToExecute(primaryRecipe);
-
-            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Recipe.Id);
-        }
 
     }
 }
