@@ -507,6 +507,8 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
 				return;
+			if (!CurrentStacksManager.Name.Equals("tabletop"))
+				return;
 
 			// Compile list of valid slots
 			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
