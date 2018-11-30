@@ -10,6 +10,7 @@ namespace Assets.Logic
     {
         private readonly IAspectsDictionary _aspectsToConsider;
         private readonly LinkedRecipeDetails _link;
+        private const string BASE_CONVENTION_ID = "base";
 
         public ChallengeArbiter(IAspectsDictionary aspectsToConsider,LinkedRecipeDetails link)
         {
@@ -24,7 +25,7 @@ namespace Assets.Logic
 
             foreach (var kvp in _link.Challenges)
             {
-                if (kvp.Value != "base")
+                if (kvp.Value != BASE_CONVENTION_ID)
                     throw new ApplicationException("We don't know what to do with a non-base difficulty convention");
                     int chanceFromAspect = ChanceForBaseConvention(_aspectsToConsider.AspectValue(kvp.Key));
                 if (chanceFromAspect > arbitratedChance)

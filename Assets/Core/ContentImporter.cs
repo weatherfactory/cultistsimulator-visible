@@ -1067,13 +1067,18 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         var htChallenges = ra.GetHashtable(NoonConstants.KCHALLENGES);
 
+                        if (raChance == 0)
+                        {
+                            if (htChallenges == null)
+                                raChance = 100;
+                            else
+                                raChance = 0;
+                        }
+
                         r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
 
-                        if (raChance == 0)
-                        {
-                            LogProblem("Chance 0 or not specified in alternative recipes for recipe " + r.Id);
-                        }
+
                     }
                 }
             }
@@ -1100,15 +1105,17 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         var lrExpulsion = GetExpulsionDetailsIfAny(lr);
                         var htChallenges = lr.GetHashtable(NoonConstants.KCHALLENGES);
 
-                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,NoonUtility.HashtableToStringStringDictionary(htChallenges)));
-
-
-
 
                         if (lrChance == 0)
                         {
-                            LogProblem("Chance 0 or not specified in linked recipes for recipe " + r.Id);
+                            if (htChallenges == null)
+                                lrChance = 100;
+                            else
+                                lrChance = 0;
                         }
+
+                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,NoonUtility.HashtableToStringStringDictionary(htChallenges)));
+
                     }
                 }
 
