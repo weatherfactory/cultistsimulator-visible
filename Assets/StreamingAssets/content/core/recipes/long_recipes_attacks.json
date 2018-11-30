@@ -16,18 +16,13 @@ warmup:10
 {id:"long.executestrategy.assault.forge.greatwork.continue",
 actionId:"longassault",
 label:"Defending the Great Work",
-startdescription:"Our work-room is besieged! Protect the Great Work! [Defend with a Heart or Forge follower, or the Great Work will be damaged.]",
+startdescription:"Our work-room is besieged! Protect the Great Work! [A Heart or Forge follower - the stronger, the better - might be able to defend against this action.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{greatwork:1},
 warmup:10,
-linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
-{id:"long.executestrategy.assault.failure.highforgedefence",chance:90},
-{id:"long.executestrategy.assault.failure.midforgedefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowforgedefence",chance:30},
-{id:"long.executestrategy.assault.forge.greatwork.succeed",chance:100},
+linked:[{id:"long.executestrategy.assault.failure",challenges:{heart:base,forge:base}},
+{id:"long.executestrategy.assault.forge.greatwork.succeed"},
 ]
 },
 
@@ -55,17 +50,12 @@ warmup:10
 {id:"long.executestrategy.assault.injurehealth.continue",
 actionId:"longassault",
 label:"Defence? FNORD",
-startdescription:"FNORD attacking now [Defend with a Heart or Edge follower.]",
+startdescription:"FNORD attacking now [A Heart or Edge follower - the stronger, the better - might be able to defend against this action.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{injury:1},
 warmup:10,
-linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
-{id:"long.executestrategy.assault.failure.highedgedefence",chance:90},
-{id:"long.executestrategy.assault.failure.midedgedefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowedgedefence",chance:30},
+linked:[{id:"long.executestrategy.assault.failure",challenges:{heart:base,edge:base}},
 {id:"long.executestrategy.assault.injurehealth.succeed",chance:100},
 ]
 },
@@ -98,15 +88,10 @@ effects:{funds:-1}},
 {id:"long.executestrategy.assault.intimidate.begin",
 actionId:"longassault",
 label:"Intimidation! FNORD",
-startdescription:"FNORD they sCARE",
+startdescription:"FNORD they sCARE [A Heart or Grail follower - the stronger, the better - might be able to defend against this action.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 warmup:10,
-linked:[{id:"long.executestrategy.assault.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.assault.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowheartdefence",chance:30},
-{id:"long.executestrategy.assault.failure.highgraildefence",chance:90},
-{id:"long.executestrategy.assault.failure.midgraildefence",chance:70},
-{id:"long.executestrategy.assault.failure.lowgraildefence",chance:30},
+linked:[{id:"long.executestrategy.assault.failure",challenges:{heart:base,grail:base}},
 {id:"long.executestrategy.assault.intimidate.succeed",chance:100},
 ]
 },
@@ -119,85 +104,6 @@ startdescription:"FNORD they frit me",
 description:"",
 effects:{dread:1}
 },
-
-{id:"long.executestrategy.assault.failure.highforgedefence",
-actionId:"longassault",
-requirements:{follower:1,forge:10},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.midforgedefence",
-actionId:"longassault",
-requirements:{follower:1,forge:5},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.lowforgedefence",
-actionId:"longassault",
-requirements:{follower:1,forge:2},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-
-
-{id:"long.executestrategy.assault.failure.highedgedefence",
-actionId:"longassault",
-requirements:{follower:1,edge:10},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.midedgedefence",
-actionId:"longassault",
-requirements:{follower:1,edge:5},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.lowedgedefence",
-actionId:"longassault",
-requirements:{follower:1,edge:2},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-
-
-{id:"long.executestrategy.assault.failure.highgraildefence",
-actionId:"longassault",
-requirements:{follower:1,grail:10},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.midgraildefence",
-actionId:"longassault",
-requirements:{follower:1,grail:5},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.lowgraildefence",
-actionId:"longassault",
-requirements:{follower:1,grail:2},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-
-
-{id:"long.executestrategy.assault.failure.highheartdefence",
-actionId:"longassault",
-requirements:{follower:1,heart:10},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.midheartdefence",
-actionId:"longassault",
-requirements:{follower:1,heart:5},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
-{id:"long.executestrategy.assault.failure.lowheartdefence",
-actionId:"longassault",
-requirements:{follower:1,heart:2},
-linked:[{id:"long.executestrategy.assault.failure",chance:100}]
-},
-
 
 
 
@@ -232,9 +138,7 @@ description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{mystique:1},
 warmup:10,
-linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base}},
 {id:"long.executestrategy.intrigue.mystiquetonotoriety.succeed",chance:100},
 ]
 },
@@ -251,16 +155,11 @@ effects:{notoriety:1,mystique:-1}
 {id:"long.executestrategy.intrigue.fraud.begin",
 actionId:"longintrigue",
 label:"The Paper Snare",
-startdescription:"Our enemy has borne false witness against us. The authorities must be convinced of our innocence. [Defend using a follower with Heart or Moth; otherwise, you may lose one or many Funds.]",
+startdescription:"Our enemy has borne false witness against us. The authorities must be convinced of our innocence.[If this succeeds, you may lose one or many funds. A Heart or Moth follower - the stronger, the better - might be able to defend against it.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 effects:{},
 warmup:10,
-linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
-{id:"long.executestrategy.intrigue.failure.highmothdefence",chance:90},
-{id:"long.executestrategy.intrigue.failure.midmothdefence",chance:70},
-{id:"long.executestrategy.intrigue.failure.lowmothdefence",chance:30},
+linked:[{id:"long.executestrategy.intrigue.failure",challenges{heart:base,moth:base}},
 {id:"long.executestrategy.intrigue.fraud.succeed",chance:100}]
 },
 
@@ -284,12 +183,10 @@ startdescription:"The steady stream of menacing letters has slowed; ceased. It's
 {id:"long.executestrategy.intrigue.createmystique.begin",
 actionId:"longintrigue",
 label:"Rumours! FNORD",
-startdescription:"FNORD hap they sa bad thing.",
+startdescription:"FNORD hap they sa bad thing. [A Heart follower - the stronger, the better - might be able to defend against this action.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 warmup:10,
-linked:[{id:"long.executestrategy.intrigue.failure.highheartdefence",chance:90},
-{id:"long.executestrategy.intrigue.failure.midheartdefence",chance:70},
-{id:"long.executestrategy.intrigue.failure.lowheartdefence",chance:30},
+linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base}},
 {id:"long.executestrategy.intrigue.createmystique.succeed",chance:100},
 ]
 },
@@ -301,48 +198,6 @@ label:"Rumour's Mist",
 startdescription:"FNORD ppl believe bad thing!!",
 description:"",
 effects:{mystique:1}
-},
-
-
-
-
-
-{id:"long.executestrategy.intrigue.failure.highheartdefence",
-actionId:"longintrigue",
-requirements:{follower:1,heart:10},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
-},
-
-{id:"long.executestrategy.intrigue.failure.midheartdefence",
-actionId:"longintrigue",
-requirements:{follower:1,heart:5},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
-},
-
-{id:"long.executestrategy.intrigue.failure.lowheartdefence",
-actionId:"longintrigue",
-requirements:{follower:1,heart:2},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
-},
-
-
-
-{id:"long.executestrategy.intrigue.failure.highmothdefence",
-actionId:"longintrigue",
-requirements:{follower:1,moth:10},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
-},
-
-{id:"long.executestrategy.intrigue.failure.midmothdefence",
-actionId:"longintrigue",
-requirements:{follower:1,moth:5},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
-},
-
-{id:"long.executestrategy.intrigue.failure.lowmothdefence",
-actionId:"longintrigue",
-requirements:{follower:1,moth:2},
-linked:[{id:"long.executestrategy.intrigue.failure",chance:100}]
 },
 
 
