@@ -4,9 +4,9 @@
 
 {id:"long.executestrategy.assault.forge.greatwork.begin",
 actionId:"longassault",
-label:"An Act of Sabotage! FNORD",
-startdescription:"FNORD attack Great Work",
-description:"FNORD no Great Work found; it's over for now.",
+label:"An Act of Sabotage!",
+startdescription:"Our immortal enemy has dispatched operatives to wreck our work in progress.",
+description:"Our enemy's operatives could find nothing suitable for their sledgehammer-work.",
 slots:[{id:"target",label:"Target",required:{greatwork:1},greedy:true}],
 linked:[{id:"long.executestrategy.assault.forge.greatwork.continue",chance:100}],
 warmup:10
@@ -15,8 +15,8 @@ warmup:10
 
 {id:"long.executestrategy.assault.forge.greatwork.continue",
 actionId:"longassault",
-label:"Defence? FNORD",
-startdescription:"FNORD attacking our stuf [Defend with a Heart or Forge follower.]",
+label:"Defending the Great Work",
+startdescription:"Our work-room is besieged! Protect the Great Work! [Defend with a Heart or Forge follower, or the Great Work will be damaged.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{greatwork:1},
