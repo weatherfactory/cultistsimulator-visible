@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Logic;
 using Noon;
 
 namespace Assets.Core
@@ -80,16 +81,26 @@ namespace Assets.Core
                 }
             else
                 {
+
+                    if (ar.Chance >= 100)
+                    {
+                        NoonUtility.Log(recipe.Id + " says: " + ar.Id + " is a suitable linked recipe with chance >=100! Executing it next.", 5);
+                        return candidateRecipe;
+
+                    }
+
+                    ChallengeArbiter challengeArbiter=new ChallengeArbiter(aspectsToConsider,ar);
+                    
                     int diceResult = dice.Rolld100(recipe);
 
-                    if (diceResult > ar.Chance)
+                    if (diceResult > challengeArbiter.GetArbitratedChance())
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + ar.Chance +
+                        NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + challengeArbiter.GetArbitratedChance() +
                                         " for linked recipe " + ar.Id + "; will try to execute next linked recipe", 5);
                     }
                     else
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + ar.Id + " is a suitable linked recipe! Executing it next.", 5);
+                        NoonUtility.Log(recipe.Id + " says: " + ar.Id + " is a suitable linked recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance() + ". Executing it next.", 5);
                         return candidateRecipe;
                     }
                 }
@@ -159,11 +170,15 @@ namespace Assets.Core
 
             foreach (var ar in recipe.AlternativeRecipes)
             {
+
+
+                ChallengeArbiter challengeArbiter = new ChallengeArbiter(aspectsToConsider, ar);
+
                 int diceResult = dice.Rolld100(recipe);
-                if (diceResult > ar.Chance)
+                if (diceResult > challengeArbiter.GetArbitratedChance())
                 {
                     NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
-                                    ar.Chance +
+                                    challengeArbiter.GetArbitratedChance() +
                                     " for alternative recipe " + ar.Id +
                                     "; will try to execute next alternative recipe");
                 }
@@ -184,7 +199,7 @@ namespace Assets.Core
                     if (ar.Additional)
                     {
                         recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
-                        NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
+                        NoonUtility.Log(recipe.Id + " says: Found additional recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance()  + ar.Id +
                                         " to execute - adding it to execution list and looking for more");
                     }
                     else

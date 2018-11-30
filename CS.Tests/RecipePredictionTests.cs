@@ -48,7 +48,7 @@ namespace Assets.Editor.Tests
                 Description = "And a tertiary description.",
                 ActionId = ACTIONID,
                 Craftable = true
-            }; 
+            };
 
             quaternaryRecipe = new Recipe
             {
@@ -56,30 +56,35 @@ namespace Assets.Editor.Tests
                 Description = "And still they come (quaternary)",
                 ActionId = ACTIONID,
                 Craftable = true
-            }; 
-            
+            };
 
-            List<Recipe> allRecipes = new List<Recipe>() { primaryRecipe, secondaryRecipe, tertiaryRecipe, quaternaryRecipe };
+
+            List<Recipe> allRecipes =
+                new List<Recipe>() {primaryRecipe, secondaryRecipe, tertiaryRecipe, quaternaryRecipe};
             compendium = new Compendium();
             compendium.UpdateRecipes(allRecipes);
             mockDice = Substitute.For<IDice>();
         }
+
         [Test]
         public void RecipePrediction_ExcludesRecipeWithAspectsUnsatisfied()
         {
             AspectsDictionary aspects = new AspectsDictionary {{"e", 1}};
-            primaryRecipe.Requirements.Add("e",2);
+            primaryRecipe.Requirements.Add("e", 2);
 
-            var resultRecipe=compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
-            Assert.AreEqual(secondaryRecipe.Id,resultRecipe.Id);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+            Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
+
         [Test]
         public void RecipePrediction_ExcludesRecipeWithNotRequirementUnsatisfied()
         {
-            AspectsDictionary aspects = new AspectsDictionary { { "e", 1 } };
+            AspectsDictionary aspects = new AspectsDictionary {{"e", 1}};
             primaryRecipe.Requirements.Add("e", -1); //-1 means 'should have none of this aspect.'
 
-            var resultRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
 
@@ -87,45 +92,23 @@ namespace Assets.Editor.Tests
         public void RecipePrediction_ExcludesRecipeWithNoMoreThanRequirementUnsatisfied()
         {
             AspectsDictionary aspects = new AspectsDictionary {{"e", 3}};
-            primaryRecipe.Requirements.Add("e",-3); //'no more than'
-            var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
-            Assert.AreEqual(secondaryRecipe.Id,resultRecipe.Id);
-        }
-
-        [Test]
-        public void RecipePrediction_DoesntExcludeRecipeWithNoMoreThanRequirementAtHigherThanActualAspectLevel()
-        {
-            AspectsDictionary aspects = new AspectsDictionary { { "e", 2 } };
             primaryRecipe.Requirements.Add("e", -3); //'no more than'
-            var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
-            Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
-        }
-
-        [Test]
-        public void RecipePredictionExcludesRecipeWithNoMoreThanAndNoLessThanUnsatisfied()
-        {
-            AspectsDictionary aspects=new AspectsDictionary{{"e",1}};
-            primaryRecipe.Requirements.Add("e", 2); //'no more than'
-            primaryRecipe.Requirements.Add("e", -4); //'no more than'
             var resultRecipe =
                 compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
 
         [Test]
-        public void RecipePredictionIncludesRecipeWithNoMoreThanAndNoLessThanSatisfied()
+        public void RecipePrediction_DoesntExcludeRecipeWithNoMoreThanRequirementAtHigherThanActualAspectLevel()
         {
-            AspectsDictionary aspects = new AspectsDictionary { { "e", 3 } };
-            primaryRecipe.Requirements.Add("e", -2); //'no more than'
-            primaryRecipe.Requirements.Add("e", -4); //'no more than'
+            AspectsDictionary aspects = new AspectsDictionary {{"e", 2}};
+            primaryRecipe.Requirements.Add("e", -3); //'no more than'
             var resultRecipe =
                 compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
         }
+
     }
-    
 
 }
 

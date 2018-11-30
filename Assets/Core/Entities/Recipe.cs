@@ -196,10 +196,7 @@ public class LinkedRecipeDetails
         _id = id;
         _chance = chance;
         Expulsion = expulsion;
-        if(challenges==null)
-    _challenges=new Dictionary<string, string>();
-        else
-            _challenges = challenges;
+        _challenges = challenges ?? new Dictionary<string, string>();
 
     }
 
