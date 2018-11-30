@@ -154,6 +154,7 @@ public class LinkedRecipeDetails
     private readonly bool _additional;
     private readonly string _id;
     private readonly int _chance;
+    private readonly Dictionary<string, string> _challenges;
     private Expulsion _expulsion;
 
     public string Id
@@ -184,12 +185,24 @@ public class LinkedRecipeDetails
         }
     }
 
-    public LinkedRecipeDetails(string id, int chance, bool additional,Expulsion expulsion)
+    public Dictionary<string, string> Challenges
+    {
+        get { return _challenges; }
+    }
+
+    public LinkedRecipeDetails(string id, int chance, bool additional,Expulsion expulsion, Dictionary<string, string> challenges)
     {
         _additional = additional;
         _id = id;
         _chance = chance;
         Expulsion = expulsion;
+        if(challenges==null)
+    _challenges=new Dictionary<string, string>();
+        else
+            _challenges = challenges;
+
     }
+
+  
 }
 

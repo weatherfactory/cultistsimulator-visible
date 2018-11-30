@@ -58,6 +58,7 @@ namespace Noon
         public static string KEXPULSION="expulsion";
         public static string KLIMIT = "limit";
         public static string KFILTER = "filter";
+        public static string KCHALLENGES="challenges";
 
         public const string KINDUCES = "induces";
 
@@ -193,6 +194,9 @@ namespace Noon
 
         public static Dictionary<string, int> HashtableToStringIntDictionary(Hashtable table)
         {
+            if (table == null)
+                return null;
+
             var dictionary=table
                 .Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => int.Parse(kvp.Value.ToString()));
@@ -203,6 +207,8 @@ namespace Noon
 
         public static Dictionary<string, string> HashtableToStringStringDictionary(Hashtable table)
         {
+            if (table == null)
+                return null;
 
             var dictionary = table
                 .Cast<DictionaryEntry>()

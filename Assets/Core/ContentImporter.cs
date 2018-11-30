@@ -614,7 +614,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         var lrExpulsion = GetExpulsionDetailsIfAny(ir);
 
 
-                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
+                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,null));
 
                         if (lrChance == 0)
                         {
@@ -1065,7 +1065,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         var raExpulsion = GetExpulsionDetailsIfAny(ra);
 
-                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion));
+                        var htChallenges = ra.GetHashtable(NoonConstants.KCHALLENGES);
+
+                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
 
                         if (raChance == 0)
@@ -1096,8 +1098,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
 
                         var lrExpulsion = GetExpulsionDetailsIfAny(lr);
+                        var htChallenges = lr.GetHashtable(NoonConstants.KCHALLENGES);
 
-                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
+                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
 
 
