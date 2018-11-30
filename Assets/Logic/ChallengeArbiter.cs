@@ -26,13 +26,26 @@ namespace Assets.Logic
             {
                 if (kvp.Value != "base")
                     throw new ApplicationException("We don't know what to do with a non-base difficulty convention");
-                if (_aspectsToConsider.ContainsKey(kvp.Key))
-                    arbitratedChance = 30;
+                    int chanceFromAspect = ChanceForBaseConvention(_aspectsToConsider.AspectValue(kvp.Key));
+                if (chanceFromAspect > arbitratedChance)
+                    arbitratedChance = chanceFromAspect;
 
 
             }
 
             return arbitratedChance;
+        }
+
+        private int ChanceForBaseConvention(int aspectLevel)
+        {
+            if (aspectLevel >= 10)
+                return 90;
+            if (aspectLevel >= 5)
+                return 70;
+            if (aspectLevel >= 1)
+                return 30;
+
+            return 0;
         }
 
     }
