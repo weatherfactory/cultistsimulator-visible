@@ -81,6 +81,16 @@ namespace CS.Tests
         }
 
         [Test]
+        public void ArbitedChanceIs70_ForBaseChallengeWithOneLowerRelevantAspect_ButTheOtherWayRound()
+        {
+            aspectsAvailable.Add("a", 4);
+            aspectsAvailable.Add("b", 5);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, lrd);
+
+            Assert.AreEqual(70, ca.GetArbitratedChance());
+        }
+
+        [Test]
         public void ArbitedChanceIs70_ForBaseChallengeWithTwoRelevantAspectsAt5()
         {
             aspectsAvailable.Add("a", 5);
@@ -88,6 +98,15 @@ namespace CS.Tests
             ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, lrd);
 
             Assert.AreEqual(70, ca.GetArbitratedChance());
+        }
+
+        [Test]
+        public void ArbitedChanceIs30_ForBaseChallengeWithTwoRelevantAspectsAt3()
+        {
+            aspectsAvailable.Add("a", 3);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, lrd);
+
+            Assert.AreEqual(30, ca.GetArbitratedChance());
         }
 
     }
