@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.IO;
+using TMPro;
 using UnityEngine;
 
 //
@@ -50,17 +51,7 @@ public class LanguageManager : MonoBehaviour
         {
             if (_instance == null)
 			{
-				// Removed - doesn't work unless Awake has been called anyway.
-				/*
-				string defaultCulture = "en";
-				if (PlayerPrefs.HasKey(CULTURE))
-				{
-					defaultCulture = PlayerPrefs.GetString(CULTURE);
-				}
-
-                _instance = GameObject.FindObjectOfType<LanguageManager>();
-				LanguageTable.LoadCulture( defaultCulture );	// Initial load
-				*/
+				// First init
 			}
             return _instance;
         }
@@ -76,6 +67,27 @@ public class LanguageManager : MonoBehaviour
 		DontDestroyOnLoad(this.gameObject);
 
 		string defaultCulture = "en";
+		string defaultConfigLocation = "Assets/StreamingAssets/content/defaults.ini";
+
+	    if (File.Exists(defaultConfigLocation))
+	    {
+			string contents = File.ReadAllText(defaultConfigLocation);
+
+			// Quick and dirty mapping for the three langs we support...
+			if (contents.Contains("lang=en"))
+	        {
+	            defaultCulture = "en";
+	        }
+			if (contents.Contains("lang=ru"))
+	        {
+	            defaultCulture = "ru";
+	        }
+			if (contents.Contains("lang=zh"))
+	        {
+	            defaultCulture = "zh-hans";
+	        }
+		}
+
 		if (PlayerPrefs.HasKey(CULTURE))
 		{
 			defaultCulture = PlayerPrefs.GetString(CULTURE);

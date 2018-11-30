@@ -1,0 +1,207 @@
+﻿{
+legacies: [
+	{
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "Искатель",
+		startdescription: "Одиночество в промозглом городе, бесполезное образование, сны.
+
+Что дальше? Могу ли я достичь чего-то большего?",
+		id: "aspirant",
+		fromEnding: "default",
+		description: "Вновь 28 июня.",
+		image: "aspirant",
+	},
+	{
+		effects: 
+		{
+			health: "1",
+			legacybytjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "Юное дарование",
+		startdescription: "Ещё один рассвет упущен. Пусть так. Будет много других рассветов.",
+		id: "brightyoungthing",
+		fromEnding: "deathofthebody",
+		description: "Талант и богатство — в избытке с рождения. Впереди, как янтарный ковёр, простирается лёгкая жизнь, полная восторга и уюта.",
+		image: "byt",
+	},
+	{
+		effects: 
+		{
+			reason: "1",
+			legacyphysicianjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "Медик",
+		startdescription: "Сегодня я возвращаюсь на своё место в Институте. У меня есть должность и репутация. Это должно бы иметь значение, но я вижу сны о чём-то ещё.",
+		id: "physician",
+		fromEnding: "deathofthebody",
+		description: "Мой пациент в предсмертном бреду, я веду тщательные и подробные заметки. В жужжащей ночной жаре я перечитываю их, и, наконец, в них проступает какой-то смысл.",
+		image: "physician",
+	},
+	{
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacydetectivejob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "Детектив",
+		startdescription: "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; в некоторые дни мои руки дрожат после неглубокого сна.",
+		id: "detective",
+		fromEnding: "arrest",
+		description: "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
+		image: "detective",
+	},
+	{
+		excludesOnEnding: 
+		[
+				detective,
+		],
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacydetectivejob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Детектив",
+		startdescription: "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; в некоторые дни мои руки дрожат после неглубокого сна.",
+		id: "detectivepostpromotion",
+		fromEnding: "workvictoryb",
+		description: "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
+		image: "detective",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle",
+		startdescription: "--",
+		id: "apostle",
+		fromEnding: "_visionsending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			funds: "5",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Auctioneer",
+		startdescription: "--",
+		id: "auctioneer",
+		fromEnding: "_workvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			passion: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Priest",
+		startdescription: "--",
+		id: "priest",
+		fromEnding: "_despairending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Medium",
+		startdescription: "--",
+		id: "medium",
+		fromEnding: "_visionsending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Survivor",
+		startdescription: "Haunted starting note",
+		id: "survivor",
+		fromEnding: "_wintersacrifice",
+		description: "At times, in mirrors, in crowds, you see the face of one now lost.",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "vessel",
+		fromEnding: "_minorlanternvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "tainted",
+		fromEnding: "_minorgrailvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "shaped",
+		fromEnding: "_minorforgevictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Cousin",
+		startdescription: "Inheritor starting note",
+		id: "cousin",
+		fromEnding: "_",
+		description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+		image: "knock",
+	},
+]
+}

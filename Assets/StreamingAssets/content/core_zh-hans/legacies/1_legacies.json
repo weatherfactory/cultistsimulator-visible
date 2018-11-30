@@ -1,0 +1,205 @@
+﻿{
+legacies: [
+	{
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "初出茅庐",
+		startdescription: "孤身踏入这个寒风彻骨的城市，带着我一文不值的文凭和梦想。现在呢？我能否过上不一样的人生？",
+		id: "aspirant",
+		fromEnding: "default",
+		description: "6月28日，轮回再启。",
+		image: "aspirant",
+	},
+	{
+		effects: 
+		{
+			health: "1",
+			legacybytjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "富家子弟",
+		startdescription: "我又睡过了晨曦微露的清晨。我向来如此。反正明天还会有新的清晨。",
+		id: "brightyoungthing",
+		fromEnding: "deathofthebody",
+		description: "生来家境优渥，天赋出众。过着轻松舒适的生活，光明的前途犹如徐徐卷开的琥珀地毯。",
+		image: "byt",
+	},
+	{
+		effects: 
+		{
+			reason: "1",
+			legacyphysicianjob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "医生",
+		startdescription: "今天是我返回研究所岗位的日子。我在那里拥有我的工作与声誉，前途看似远大光明。然而，我却开始梦见别的事物。",
+		id: "physician",
+		fromEnding: "deathofthebody",
+		description: "每当病人陷入临终的谵妄，我都会将他们的话语悉数记录下来。在闷热喧嚣的夜晚，我会重读这些笔记，渐渐地，似乎，它们最终会产生某种意义。",
+		image: "physician",
+	},
+	{
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacydetectivejob: "1",
+		},
+		availableWithoutEndingMatch: "true",
+		label: "警探",
+		startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
+		id: "detective",
+		fromEnding: "arrest",
+		description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
+		image: "detective",
+	},
+	{
+		excludesOnEnding: 
+		[
+				detective,
+		],
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacydetectivejob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "警探",
+		startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
+		id: "detectivepostpromotion",
+		fromEnding: "workvictoryb",
+		description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
+		image: "detective",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle",
+		startdescription: "--",
+		id: "apostle",
+		fromEnding: "_visionsending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			funds: "5",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Auctioneer",
+		startdescription: "--",
+		id: "auctioneer",
+		fromEnding: "_workvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			passion: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Priest",
+		startdescription: "--",
+		id: "priest",
+		fromEnding: "_despairending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Medium",
+		startdescription: "--",
+		id: "medium",
+		fromEnding: "_visionsending",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Survivor",
+		startdescription: "Haunted starting note",
+		id: "survivor",
+		fromEnding: "_wintersacrifice",
+		description: "At times, in mirrors, in crowds, you see the face of one now lost.",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "vessel",
+		fromEnding: "_minorlanternvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "tainted",
+		fromEnding: "_minorgrailvictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Vessel",
+		startdescription: "--",
+		id: "shaped",
+		fromEnding: "_minorforgevictory",
+		description: "--",
+		image: "moth",
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			introjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Cousin",
+		startdescription: "Inheritor starting note",
+		id: "cousin",
+		fromEnding: "_",
+		description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+		image: "knock",
+	},
+]
+}
