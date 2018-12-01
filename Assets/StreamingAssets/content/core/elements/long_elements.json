@@ -4,20 +4,23 @@
         id: "welland_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.assault:1},
+			xtriggers:{revealstrategy:welland}
         },
 				 {
         id: "tryphon_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.intrigue:1},
+			xtriggers:{revealstrategy:tryphon}
         },
 		
 				 {
         id: "diarist_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.dreams:1},
+			xtriggers:{revealstrategy:diarist}
         },
 		
 				 {
@@ -25,26 +28,27 @@
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
 			aspects:{enemylong:1},
+			xtriggers:{revealstrategy:julian}
         },
 		
 				 {
         id: "welland",
             label: "Captain Welland",
             description: "FNORD",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.assault:1}
         },
 				 {
         id: "tryphon",
             label: "Lady Tryphon",
             description: "'No, He cannot harm you; He cannot find you. But I suffer no such circumscription.'",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.intrigue:1}
         },
 		
 				 {
         id: "diarist",
             label: "A Shadowy Presence",
             description: "FNORD",
-			aspects:{enemylong:1}
+			aspects:{enemylong:1,long.preference.dreams:1}
         },
 		
 				 {
@@ -55,9 +59,15 @@
         },
 		
 {id:"strategy.prep",
-label:"Preparations for a Plan",
-description:"Our immortal enemy will move against us soon.",
+label:"Preparations Ongoing",
+description:"Our immortal enemy is preparing another action.",
 isAspect:true},
+
+{id:"strategy.prep.delayed",
+label:"Preparations Spoiled!",
+description:"Our spy has spoilt some element of our enemy's preparations.",
+isAspect:true},
+	
 	
 	
 		{id:"strategy.assault.concealed",
@@ -97,14 +107,14 @@ icon:"contentment"
 		{id:"strategy.assault.revealed",
 label:"The Long's Plans Revealed: Assault",
 description:"FNORD",
-aspects:{intention.assault:1},
+aspects:{intention.assault:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
 icon:"health"
 },
 {id:"strategy.intrigue.revealed",
 label:"The Long's Plans Revealed: intrigue",
 description:"FNORD",
-aspects:{intention.intrigue:1},
+aspects:{intention.intrigue:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
 icon:"reason"
 
@@ -112,7 +122,7 @@ icon:"reason"
 {id:"strategy.dreams.revealed",
 label:"The Long's Plans Revealed: Dreams",
 description:"FNORD",
-aspects:{intention.dreams:1},
+aspects:{intention.dreams:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
 icon:"passion"
 
@@ -120,7 +130,7 @@ icon:"passion"
 {id:"strategy.downtime.revealed",
 label:"The Long's Plans Revealed: A Respite",
 description:"FNORD",
-aspects:{intention.dreams:1},
+aspects:{intention.downtime:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
 icon:"contentment"
 },

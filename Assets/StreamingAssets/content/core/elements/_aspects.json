@@ -343,6 +343,21 @@
 			isAspect:true,
 			isHidden:true},
 			
+			
+
+{id:"long.preference.assault",
+isAspect:true,
+isHidden:true
+},
+{id:"long.preference.intrigue",
+isAspect:true,
+isHidden:true
+},
+{id:"long.preference.dreamwork",
+isAspect:true,
+isHidden:true
+},
+			
 		{id:"ascend",
 		label: "Ascending",
 		isAspect:true,
@@ -1269,19 +1284,30 @@ isAspect:true},
 {id:"intention.assault",
 label:"Intention",
 description:"Our immortal enemy has a plan.",
-isAspect:true},
+isAspect:true,
+isHidden:true},
 {id:"intention.intrigue",
 label:"Intention",
 description:"Our immortal enemy has a plan.",
-isAspect:true},
+isAspect:true,
+isHidden:true},
 {id:"intention.dreams",
 label:"Intention",
 description:"Our immortal enemy has a plan.",
-isAspect:true},
+isAspect:true,
+isHidden:true},
 {id:"intention.downtime",
 label:"Intention",
 description:"Our immortal enemy has a plan.",
-isAspect:true},
+isAspect:true,
+isHidden:true},
+
+
+{id:"strategy.revealed",
+label:"Strategy Revealed",
+description:"This strategy's been exposed.",
+isAspect:true,
+isHidden:true},
 
 {id:"revealstrategy",
 label:"Reveal Strategy",

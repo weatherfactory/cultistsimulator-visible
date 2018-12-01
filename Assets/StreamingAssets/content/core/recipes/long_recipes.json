@@ -31,8 +31,8 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.cycle",
 label: "Someone is Watching",
 actionId: "long",
-effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9,strategy.prep:-9},
-startdescription: "A great enemy remains in the shadows, for now.",
+effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9,strategy.prep:-9,strategy.prep.delayed:-9},
+startdescription: "The immortal in the shadows ponders their next move.",
 warmup:60,
 slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
 craftable: false,
@@ -90,22 +90,47 @@ linked:[{id:"long.selectstrategy",chance:100}]
 
 {id:"long.selectstrategy",
 actionId:"long",
-label:"FNORD A moment of decision",
-startdescription:"FNORD Long is deciding a course of action",
+label:"A Decision",
+startdescription:"Our immortal enemy has decided on a course of action.",
 description:"",
 requirements:{},
 deckeffect:{long.strategies:1},
-warmup:60,
+warmup:5,
 craftable:false,
+alternativerecipes:[{id:"long.preparestrategy.preference.assault",
+id:"long.preparestrategy.preference.assault",
+id:"long.preparestrategy.preference.assault"}],
 linked:[{id:"long.preparestrategy",chance:100}]
 },
+
+
+
+{id:"long.preparestrategy.preference.assault",
+actionId:"long",
+requirements:{long.preference.assault:1},
+deckeffect:{long.strategies.preference.assault:1},
+linked:[{id:"long.preparestrategy",chance:100}]},
+
+{id:"long.preparestrategy.preference.intrigue",
+actionId:"long",
+requirements:{long.preference.intrigue:1},
+deckeffect:{long.strategies.preference.intrigue:1},
+linked:[{id:"long.preparestrategy",chance:100}]},
+
+{id:"long.preparestrategy.preference.dreamwork",
+actionId:"long",
+requirements:{long.preference.dreamwork:1},
+deckeffect:{long.strategies.preference.dreamwork:1},
+linked:[{id:"long.preparestrategy",chance:100}]},
 
 
 
 {id:"long.preparestrategy",
 actionId:"long",
 label:"Preparing an Action",
-startdescription:"Our immortal enemy is preparing their next action. [Add a Follower with Knock or Lantern aspect, and you might be able to discover their general strategy.]",
+startdescription:"Our immortal enemy is preparing their next action.
+
+[Add followers strong in <sprite name=knock> <sprite name=lantern> <sprite name=moth> to try to uncover the Long's strategy. Add followers strong in <sprite name=edge> <sprite name=forge> <sprite name=grail> <sprite name=winter> to try to delay it.]",
 description:"FNORD",
 slots:[{id:"spy",label:"Spy",required:{follower:1}}],
 effects:{strategy.prep:1},
@@ -124,16 +149,32 @@ linked:[
 {id:"long.refinestrategy.dreams.learndreams",chance:100},
 {id:"long.refinestrategy.downtime.learn",chance:30},
 {id:"long.refinestrategy.downtime.rest",chance:100},
-{id:"long.spyonstrategy.highlantern",chance:90},
+{id:"long.spyonstrategy.success",challenges:{knock:base,lantern:base,moth:base}},
+{id:"long.delayaction.success",challenges:{edge:base,forge:base,grail:base,winter:base}},
 {id:"long.preparestrategy",chance:100}]
 },
 
-{id:"long.spyonstrategy.highlantern",
+
+{id:"long.spyonstrategy.success",
 actionId:"long",
 label:"A Report from our Spy",
-startdescription:"The shape of the Long's strategy is now clear.",
-requirements:{follower:1,lantern:10,strategy.assault.revealed:-1,strategy.intrigue.revealed:-1,strategy.dreams.revealed:-1,strategy.downtime.revealed:-1},
+requirements:{follower:1,strategy.revealed:-1},
+startdescription:"@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.
+@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.
+@#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate, He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.
+@#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.
+#|The shape of the Long's strategy is coming clear.@",
 aspects:{revealstrategy:1},
+warmup:10,
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+{id:"long.delayaction.success",
+actionId:"long",
+label:"Our Spy is Causing Difficulties",
+startdescription:"They can slow the Long's action, though not prevent it. [This is only possible once each action.]",
+requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1},
+effects:{strategy.prep.delayed:1,strategy.prep:-1},
 warmup:10,
 linked:[{id:"long.preparestrategy",chance:100}]
 },

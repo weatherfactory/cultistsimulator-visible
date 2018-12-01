@@ -315,6 +315,42 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 	
+		
+						{id:"long.strategies.preference.assault",
+	label:"An Enemy of the Work",
+	description: ".",
+	spec:["strategy.assault.concealed",
+	"strategy.assault.concealed",
+	"strategy.intrigue.concealed",
+	"strategy.dreams.concealed",
+	"strategy.downtime.concealed"],
+	defaultcard: "strategy.downtime",
+resetonexhaustion:true	
+	},
+							{id:"long.strategies.preference.intrigue",
+	label:"An Enemy of the Work",
+	description: ".",
+	spec:[	"strategy.assault.concealed",
+	"strategy.intrigue.concealed",
+	"strategy.intrigue.concealed",
+	"strategy.dreams.concealed",
+	"strategy.downtime.concealed"],
+	defaultcard: "strategy.downtime",
+resetonexhaustion:true	
+	},
+	
+							{id:"long.strategies.preference.dreamwork",
+	label:"An Enemy of the Work",
+	description: ".",
+	spec:[	"strategy.assault.concealed",
+	"strategy.intrigue.concealed",
+	"strategy.dreams.concealed",
+	"strategy.dreams.concealed",
+	"strategy.downtime.concealed"],
+	defaultcard: "strategy.downtime",
+resetonexhaustion:true	
+	}
+	
 	
 	]
 }
