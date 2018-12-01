@@ -1,0 +1,220 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+  m_Name: majoraspects
+  m_EditorClassIdentifier: 
+  hashCode: 1231209784
+  material: {fileID: 21264545287964032}
+  materialHashCode: 0
+  spriteSheet: {fileID: 2800000, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  spriteInfoList:
+  - id: 0
+    x: 205
+    y: 411
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: grail
+    hashCode: 121468305
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300008, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 1
+    x: 307
+    y: 411
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: heart
+    hashCode: 120098698
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300010, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 2
+    x: 409
+    y: 411
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: knock
+    hashCode: 125495362
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300012, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 3
+    x: 1
+    y: 383
+    width: 128
+    height: 128
+    xOffset: 0
+    yOffset: 90
+    xAdvance: 128
+    scale: 1.4
+    name: follower
+    hashCode: -1048441658
+    unicode: 0
+    pivot: {x: -64, y: 64}
+    sprite: {fileID: 21300004, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 4
+    x: 131
+    y: 309
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: lantern
+    hashCode: -1650284274
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300014, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 5
+    x: 1
+    y: 253
+    width: 128
+    height: 128
+    xOffset: 0
+    yOffset: 90
+    xAdvance: 128
+    scale: 1.5
+    name: mortal
+    hashCode: 73200009
+    unicode: 0
+    pivot: {x: -64, y: 64}
+    sprite: {fileID: 21300016, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 6
+    x: 131
+    y: 207
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: moth
+    hashCode: 4011518
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300018, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 7
+    x: 1
+    y: 123
+    width: 128
+    height: 128
+    xOffset: 0
+    yOffset: 90
+    xAdvance: 128
+    scale: 1.4
+    name: sending
+    hashCode: 1247008220
+    unicode: 0
+    pivot: {x: -64, y: 64}
+    sprite: {fileID: 21300022, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 8
+    x: 205
+    y: 105
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: secrethistories
+    hashCode: 1284551762
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300020, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 9
+    x: 1
+    y: 21
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: edge
+    hashCode: 3733187
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300002, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 10
+    x: 103
+    y: 21
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: forge
+    hashCode: 122133753
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300006, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  - id: 11
+    x: 205
+    y: 3
+    width: 100
+    height: 100
+    xOffset: 0
+    yOffset: 75
+    xAdvance: 100
+    scale: 1.5
+    name: winter
+    hashCode: 328631635
+    unicode: 0
+    pivot: {x: -50, y: 50}
+    sprite: {fileID: 21300024, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+  fallbackSpriteAssets: []
+--- !u!21 &21264545287964032
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: TextMeshPro/Sprite
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 74adef61a3012e44f963ffa7baa19453, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
