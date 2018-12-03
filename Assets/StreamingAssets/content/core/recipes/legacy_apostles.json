@@ -1,23 +1,23 @@
 {
 "recipes": [
 {id: "workapostleforgejob",
-label: "FNORD so what we got then?",
+label: "Consider my Resources",
 actionId: "work",
 requirements: {legacyapostleforgejob:1},
 effects: {funds:7,legacyapostleforgejob:-1},
 alternativerecipes: [{id:"apostleforgeopentalk",chance:100,additional:true}],
-startdescription: "FNORD",
-description: "FNORD here's ur starter kit",
+startdescription: "I have some funds remaining...",
+description: "...enough for a while, but I will need to find other means of support.",
 warmup:10,
 craftable: true},
 
 {id: "apostleforgeopentalk",
-label: "FNORD ",
+label: "Our Cause ",
 actionId: "talk",
 requirements:{},
-startdescription:"FNORD ",
+startdescription:"I am not alone. ",
 alternativerecipes: [{id:"apostleforgeopenstudy",chance:100,additional:true}],
-description:"FNORD here's the cult and here's the mentor.",
+description:"My allies; my Shaper.",
 effects: {LEVER_LastCult:1,LEVER_LastFollower:1,apostleforge.mentor:1},
 warmup:10,
 craftable: false,
@@ -25,12 +25,10 @@ linked:[{id:"begincultfoundation",chance:100}]
 },
 
 {id: "apostleforgeopenstudy",
-label: "FNORD OPEN STUDY",
+label: "What do I recall?",
 actionId: "study",
-startdescription:"",
-description:"",
+startdescription:"I have been vouchsafed secrets.",
 alternativerecipes: [{id:"apostleforgeopenexplore",chance:100,additional:true}],
-description: "FNORD",
 effects: {fragmentforgef:1},
 warmup:30,
 craftable: false
@@ -38,10 +36,10 @@ craftable: false
 
 
 {id: "apostleforgeopenexplore",
-label: "FNORD OPEN EXPLORE",
+label: "A Place to Begin",
 actionId: "explore",
-startdescription:"FNORD Pillar 1",
-description:"FNORD Pillar 1",
+startdescription:"Where were we?",
+description:"In our meeting-place, I shall consider the commands I was given.",
 alternativerecipes: [{id:"apostleforgeopendream",chance:100,additional:true}],
 effects: {apostleforge.pillar1:1,generichq:1},
 warmup:10,
@@ -52,10 +50,10 @@ craftable: false
 
 
 {id: "apostleforgeopendream",
-label: "FNORD OPEN DREAM",
+label: "Distant Thunder",
 actionId: "dream",
-startdescription:"FNORD",
-description:"FNORD OH NO A LONG",
+startdescription:"What is coming? Who is coming?",
+description:"Our Shaper wishes to change the order of the world, and even of the Mansus. There will be opposition.",
 warmup:60,
 craftable: false,
 alternativerecipes:[
