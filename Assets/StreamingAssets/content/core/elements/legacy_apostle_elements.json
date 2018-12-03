@@ -10,15 +10,15 @@
 },
 
 	{id: "legacyapostleforgejob",
-	label: "FNORD forge apostle job",
-	description: "FNORD",
+	label: "A Favoured Place",
+	description: "For so long I waited at the left hand of our Shaper. Now the time has come for me to lead the Great Work.",
 	aspects: {job:1},
 
 },
 
 {id: "apostleforge.pillarfuel",
 label: "FNORD forge pillar fuel",
-description: "FNORD",
+description: "FNORD it can be used to",
 aspects:{influence:1},
 lifetime:60,
 decayTo:dread
@@ -26,7 +26,7 @@ decayTo:dread
 
 {id: "apostleforge.pillar1",
 label: "Dawnbreaker Technique",
-description: "'To remake with fire; to end what will not change; to end all nights.' Annoint a Carcass Spark with fiercest alchemy. Find the flaw in the place that does not change. Bring the device there, with the key the undying sisters hold, and employ the most potent Mysteries of Opening. I have spoken.'",
+description: "THE SHAPER SPEAKS: 'I must enact the Forge. Set a Carcass Spark at the engine's heart. Awaken it with the highest mysteries. Prepare the fiercest alchemy to fuel it. Find the flaw in the place that does not change. Bring the device there, with the Biting Key that Sulochana knows. Employ the most potent Mysteries of Opening.'",
 aspects:{lore:1}
 	},
 	{id: "apostleforge.pillar2.dormant",
@@ -48,29 +48,29 @@ xtriggers:{sabotage:apostleforge.pillar3.sabotaged}
 	},
 
 			{id: "apostleforge.pillar5",
-label: "Mrs Eched's assistance",
-description: "FNORD",
+label: "Mrs E's Assistance",
+description: "A little brass chimaera-head given by Mrs E. as a token. When we have prepared the proper rite, she'll bear her Key to the flaw in the world, so that when I bring the Dawn, the Mansus will open for our Shaper. But she won't wait forever.",
 aspects:{tool:1},
-lifetime:180
+lifetime:600
 	},
 	
 			{id: "apostleforge.pillar2.dormant.sabotaged",
 label: "Mrs Eched's assistance",
-description: "A battered tangle of ben metal, enclosing a mote of drunkenly bobbing light. We must repair it before it collapses altogether!",
+description: "A battered tangle of bent metal, enclosing a mote of drunkenly bobbing light. We must repair it before it collapses altogether!",
 aspects:{influence:1},
-lifetime:60
+lifetime:120
 	},
 			{id: "apostleforge.pillar2.sabotaged",
 label: "Mrs Eched's assistance",
 description: "|A flaring tangle of bent metal. A blazing mote of solar fire quivers fitfully within. We must repair it before it collapses altogether!",
 aspects:{tool:1},
-lifetime:60
+lifetime:120
 	},
 				{id: "apostleforge.pillar3.sabotaged",
 label: "Mrs Eched's assistance",
 description: "A poisoned, stuttering ingot of energetic alchemy. We must soothe its rage, and quickly!",
 aspects:{ingredient:1},
-lifetime:60
+lifetime:120
 	},
 
 

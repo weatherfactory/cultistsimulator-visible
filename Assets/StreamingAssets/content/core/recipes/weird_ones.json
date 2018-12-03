@@ -32,7 +32,7 @@ warmup:1
 {id: "expel_corpse",
 label:"A Frail Shadow",
 actionId:"expel_corpse",
-requirements{corpse:1},
+requirements:{corpse:1},
 startdescription:"There it lies.",
 warmup:1
 },
@@ -41,7 +41,7 @@ warmup:1
 {id: "expel_injury",
 label:"A Trail of Blood",
 actionId:"expel_injury",
-requirements{injury:1},
+requirements:{injury:1},
 startdescription:"Pain is the last gift.",
 warmup:1
 },
