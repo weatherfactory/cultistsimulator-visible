@@ -31,10 +31,10 @@ public class StatusBar : MonoBehaviour
     {
         CharacterName.text = storage.Name;
         CharacterProfession.text = storage.Profession;
-        RemoteSettings.Completed += TGNameEasterEgg;
+        RemoteSettings.Completed += TGtoBClue;
     }
 
-    public void TGNameEasterEgg(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
+    public void TGtoBClue(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
     {
         var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name);
         if(!string.IsNullOrEmpty(remoteName))
