@@ -1142,20 +1142,34 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 {
                     foreach (Hashtable htMutationEffect in alMutations)
                     {
-                        string filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
-                        if(string.IsNullOrEmpty(filterOnAspectId))
+                        string filterOnAspectId=string.Empty;
+
+                        if (htMutationEffect[NoonConstants.KMUTATIONLEVEL] != null)
+                            filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
+                        else if (htMutationEffect[NoonConstants.KFILTERONASPECTIDALT] != null)
                             filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTIDALT].ToString();
+                        else
+                            LogProblem("Missing mutation filter specification for " + r.Id);
 
 
-                        string mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
-                        if(string.IsNullOrEmpty(mutateAspectId))
+                        string mutateAspectId = string.Empty;
+
+                        if (htMutationEffect[NoonConstants.KMUTATEASPECTID] != null)
+                            mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
+                        else if (htMutationEffect[NoonConstants.KMUTATEASPECTIDALT] != null)
                             mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTIDALT].ToString();
+                        else
+                            LogProblem("Missing mutation specification for " + r.Id);
 
 
-                        int mutationLevel= Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
-                        if(mutationLevel==0)
+                        int mutationLevel=0;
+
+                        if (htMutationEffect[NoonConstants.KMUTATIONLEVEL]!=null)
+                            mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
+                        else if (htMutationEffect[NoonConstants.KMUTATIONLEVELALT] != null)
                             mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVELALT]);
-
+                        else
+                            LogProblem("Missing mutation level specification for " + r.Id);
 
                         bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
 
