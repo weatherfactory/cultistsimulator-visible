@@ -31,12 +31,12 @@ public class StatusBar : MonoBehaviour
     {
         CharacterName.text = storage.Name;
         CharacterProfession.text = storage.Profession;
-        RemoteSettings.Completed += TGtoBClue;
+        RemoteSettings.Completed += TtoBAlternateClue;
     }
 
-    public void TGtoBClue(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
+    public void TtoBAlternateClue(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
     {
-        var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name);
+        var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name.Replace(" ","").ToUpper());
         if(!string.IsNullOrEmpty(remoteName))
         CharacterName.text = remoteName;
     }
