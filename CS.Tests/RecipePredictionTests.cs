@@ -92,7 +92,7 @@ namespace Assets.Editor.Tests
         public void RecipePrediction_ExcludesRecipeWithNoMoreThanRequirementUnsatisfied()
         {
             AspectsDictionary aspects = new AspectsDictionary {{"e", 3}};
-            primaryRecipe.Requirements.Add("e", -3); //'no more than'
+            primaryRecipe.Requirements.Add("e", -3); //'less than 3'
             var resultRecipe =
                 compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
@@ -102,7 +102,7 @@ namespace Assets.Editor.Tests
         public void RecipePrediction_DoesntExcludeRecipeWithNoMoreThanRequirementAtHigherThanActualAspectLevel()
         {
             AspectsDictionary aspects = new AspectsDictionary {{"e", 2}};
-            primaryRecipe.Requirements.Add("e", -3); //'no more than'
+            primaryRecipe.Requirements.Add("e", -3); //'less than 3'
             var resultRecipe =
                 compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
