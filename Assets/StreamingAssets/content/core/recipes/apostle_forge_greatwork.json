@@ -8,6 +8,30 @@ startdescription: "Our Shaper has favoured us with guidance. We should use it to
 effects:{apostleforge.pillarfuel:1}
 },
 
+
+{id:"work.apostleforge.majorvictory.hint",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core, its fuel, the Compass, the Key. Even all these will not be enough. We must prepare the way for our Shaper with the Mysteries of Opening. ",
+description:"",
+requirements:{apostleforge.pillar1:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
+
+{id:"work.apostleforge.majorvictory",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will be consumed.",
+description:"",
+requirements:{fragmentknockg:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
+warmup:60,
+craftable:true,
+ending:majorforgevictory
+},
+
 {id:"work.apostleforge.createcore",
 actionId:"work",
 label:"Forging the Dawnbreaker Core",
@@ -56,7 +80,7 @@ craftable:true
 {id:"work.apostleforge.prepareingredientforgef",
 actionId:"work",
 label:"Refine Iotic Essence",
-startdescription:"",
+startdescription:"With the guidance of our Shaper, we can refine this to something greater.",
 description:"Red thrills to blue.",
 requirements:{ingredientforgef:1,apostleforge.pillarfuel:1},
 effects:{ingredientforgef:-1,apostleforge.pillarfuel:-1,apostleforge.pillar3:1},
@@ -69,11 +93,11 @@ actionId:"work",
 label:"Choose the Compass",
 startdescription:"With our Shaper's assistance, we can prepare a follower to find the way to a flaw in the world. Once they've found it, they will find nothing else, ever again.",
 description:"The eyes, embers. The heart, a waiting temple.",
-requirements:{follower:1,mortal:1,apostleforge.pillarfuel:1},
+requirements:{follower:1,mortal:1,apostleforge.pillarfuel:1,tool:-1,lore:-1},
 effects:{apostleforge.pillarfuel:-1},
 mutations:[{filterOnAspectId:mortal,mutateAspectId:apostleforge.pillar4.dormant,mutationLevel:1}],
 warmup:60,
-craftable:false},
+craftable:true},
 
 {id:"explore.apostleforge.findflaw",
 actionId:"explore",
@@ -98,12 +122,11 @@ craftable:false
 {id:"talk.apostleforge.sulochanaechidna",
 actionId:"talk",
 label:"An Introduction to Mrs E.",
-startdescription:"Your Shaper wants to pass the Savage Door, hm? Do they really know what they're at? SAll right. I'll see what I can do. I have a sister who holds the key you want. I'll get in touch with her... but it'll take a while.",
+startdescription:"'Your Shaper wants to pass the Savage Door, hm? Do they really know what they're at? I've seen Forge-long try. Generally, they fail. But I'll see what I can do. I have a sister who holds the key you want. I'll get in touch with her... but it'll take a while.'",
 description:"",
 requirements:{apostleforge.pillarfuel:1},
-effects:{apostleforge.pillarfuel:-1,echidna:1},
-warmup:180,
-craftable:false
+effects:{apostleforge.pillarfuel:-1,echidna.enroute:1},
+craftable:false,
 },
 
 
@@ -130,27 +153,6 @@ effects:{exalted:-1,apostleforge.pillar5:1},
 craftable:false
 },
 
-{id:"work.apostleforge.majorvictory.hint",
-actionId:"work",
-label:"The Last Pieces of the Great Work?",
-startdescription:"We have the Core, its fuel, the Compass, the Key. Even all these will not be enough. We must prepare the way for our Shaper with the Mysteries of Opening. ",
-description:"",
-requirements:{apostleforge.pillar1:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
-effects:{},
-warmup:60,
-craftable:false,
-hintonly:true
-},
-{id:"work.apostleforge.majorvictory",
-actionId:"work",
-label:"The Last Pieces of the Great Work?",
-startdescription:"TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will be consumed.",
-description:"",
-requirements:{fragmentknockg:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
-warmup:60,
-craftable:true,
-ending:majorforgevictory
-}
 
 
 

@@ -211,12 +211,22 @@ icon:"poppy"
 		aspects:{tutorsanskrit:1,tutor:1,patron:1}
 		},
 		
+				{id:"echidna.enroute",
+		label: "Mrs E. is En Route",
+		description:"Mrs E., Sulochana's 'sister', goes by the unlikely title of 'the Mother of Monsters'. It's not clear where she usually lairs, but it's not this side of the sea. She'll take a while to get here.",
+		unique:true,
+		lifetime:180,
+		decayTo:echidna
+		},
+		
 		{id:"echidna",
-		label: "Mrs Eched",
+		label: "Mrs E.",
 		description:"The self-styled Mother of Monsters. A cheery, tubby woman in a green-grey garment like a baggy dirndl.",
+		aspects:{patron:1},
 		animFrames: 1,
 		unique:true,
 		},
+		
 		
 		
 ]

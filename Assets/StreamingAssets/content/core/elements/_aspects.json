@@ -296,6 +296,12 @@
 		isAspect: true,
 		description: "My ultimate aim. There will be a price."
 		},
+		
+					{id: "promise",
+		label: "Promise",
+		isAspect: true,
+		description: "A commitment to a conclusion."
+		},
 								{id: "rivalmarks",
 		label: "A Rival's Ascension",
 		isAspect: true,
@@ -1279,7 +1285,7 @@ isAspect:true},
 		
 {id:"apostleforge.pillar4",
 label:"Thine Eyes Have Seen",
-description:"This one is blind to everything except the flaw in the world. They can lead us there, with the Dawnbreaker Core, to perform our Great Work.",
+description:"This one is blind to everything except the flaw in the world that we seek. There is one in Vienna, but there is another much closer to home, in the place whose name has always been the same, even as Caer Ys. They can lead us there, with the Dawnbreaker Core, to perform our Great Work.",
 isAspect:true},
 
 {id:"mentor",
@@ -1357,14 +1363,23 @@ description:"When the Work is complete, our founder, our inspiration, will rise 
 isAspect:true
 },
 
+{id:"greatwork.sabotaged",
+label:"Sabotaged!",
+description:"The Great Work is imperilled. [Use a Forge follower and a Silver Spintria to repair this.]",
+isAspect:true
+},
+
 {id:"sabotage",
 label:"Sabotage!",
 description:"Converts a Great Work item to an unstable version that needs fixing.",
 isAspect:true,
 noartneeded:true
+},
+{id:"sabotage.repair",
+label:"Sabotage Repaired!",
+isAspect:true,
+noartneeded:true
 }
 
-
-		
 ]
 }

@@ -132,7 +132,7 @@
 			{id:"Surrender",actionId: "work",required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Dissolution",actionId: "work",required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Grief",actionId: "work",required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"}
+			{id:"Desire",actionId: "work",required: {desire:6,promise:1}, description: "What might I become? [This slot only accepts the final stage of Ascension. If you have achieved the Sixth Mark, add your Ascension to this slot to complete a Great Work.]"}
 			],
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts.",
 			unique:true

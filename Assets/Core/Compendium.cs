@@ -243,8 +243,10 @@ public class Compendium : ICompendium
 		string title = LanguageTable.Get( textId1 );
 		string desc = LanguageTable.Get( textId2 ) + " " + LanguageTable.Get( textId3 ) + " " + LanguageTable.Get( textId4 );
 
-        if (endingFlag == "minorforgevictory")
-            return new Ending(endingFlag, title, desc, "forgeofdays", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY");
+        if (endingFlag == "majorforgevictory")
+            return new Ending(endingFlag, "THE DAWN",
+                "[THIS IS PLACEHOLDER TEXT UNTIL THE FULL RELEASE.]"
+                , "madrugad", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY");
 
 
         if (endingFlag == "minorforgevictory")
