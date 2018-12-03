@@ -92,14 +92,14 @@ public class ContentImporter
                         slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
 
 
-                Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
                     if (htRequired != null)
                     {
                         foreach (string rk in htRequired.Keys)
                             slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
                     }
 
-                    Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
+                    Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
                     if (htForbidden != null)
                     {
                         foreach (string fk in htForbidden.Keys)
@@ -1055,6 +1055,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             {
 
                 ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
+                if(alRecipeAlternatives==null)
+                    alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPESALT);
                 if (alRecipeAlternatives != null)
                 {
                     foreach (Hashtable ra in alRecipeAlternatives)
@@ -1089,6 +1091,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
 
             htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPES);
+            htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPESALT);
 
 
             try
@@ -1140,8 +1143,19 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     foreach (Hashtable htMutationEffect in alMutations)
                     {
                         string filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
+                        if(string.IsNullOrEmpty(filterOnAspectId))
+                            filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTIDALT].ToString();
+
+
                         string mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
+                        if(string.IsNullOrEmpty(mutateAspectId))
+                            mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTIDALT].ToString();
+
+
                         int mutationLevel= Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
+                        if(mutationLevel==0)
+                            mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVELALT]);
+
 
                         bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
 

@@ -19,8 +19,11 @@ namespace Noon
         public const string KMAXEXECUTIONS = "maxexecutions";
         public const string KID = "id";
         public const string KFILTERONASPECTID = "filterOnAspectId";
+        public const string KFILTERONASPECTIDALT = "filter";
         public const string KMUTATEASPECTID = "mutateAspectId";
+        public const string KMUTATEASPECTIDALT = "mutate";
         public const string KMUTATIONLEVEL = "mutationLevel";
+        public const string KMUTATIONLEVELALT = "level";
         public const string KADDITIVE = "additive";
         public const string KLABEL = "label";
         public const string KIMAGE = "image";
@@ -42,6 +45,7 @@ namespace Noon
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
+        public const string KALTERNATIVERECIPESALT = "alt";
         public const string KSLOTS="slots";
         public const string KREQUIRED="required";
         public const string KFORBIDDEN = "forbidden";

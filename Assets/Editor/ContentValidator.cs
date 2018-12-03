@@ -5,7 +5,7 @@ namespace Assets.Editor
 {
 	public class ContentValidator
 	{
-		[MenuItem("Tools/Validate Content Import %#v")]
+		[MenuItem("Tools/Validate Content Import %#i")]
 		private static void ValidateContentImport()
 		{
 			// Clear the console of previous messages to reduce confusion
