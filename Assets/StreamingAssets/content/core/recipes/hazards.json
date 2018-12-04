@@ -30,8 +30,8 @@
 	},
 	
 				{  id: "despairwarning",
-        label: "I Am Seeing Things!",
-        actionId: "visions",
+        label: "DESPAIR",
+        actionId: "despair",
 		requirements: {dread: 2,contentment:-1},
 		startdescription: "Despair pads close at my heels. The world is leached of light. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
 		description: ".",
@@ -238,7 +238,7 @@
 	actionId:"curse_visions",
 	slots: [{id:"Protection",label:"Protection",required:{influencehearte:1,influenceheartg:1}}],
 	alternativerecipes:[{id:"curse_visions_mitigation_successful",chance:100}],
-	startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, will it be possible to turn aside the Curse.]",
+	startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, it will be possible to turn aside the Curse.]",
 	description:"I cannot stop seeing. If I look long enough, I will not wish to.",
 	aspects: {damagepassion:1},
 	warmup:60
