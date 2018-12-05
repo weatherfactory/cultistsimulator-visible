@@ -1,4 +1,110 @@
  {"recipes": [
+ 
+
+ 
+{id:"droo",
+actionId:"droo",
+label:"Order Sushi from Deliveroo",
+startdescription:"This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
+description:"This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
+
+slots:[{id:"funds",label:"Order",required:{funds:1}}],
+warmup:10,
+craftable:false,
+linked:[{id:"droo"}]
+},
+
+{id:"droostart",
+actionId:"droo",
+requirements:{funds:1},
+label:"The Restaurant Is Preparing Your Order",
+startdescription:"Mm, sushi!",
+warmup:30,
+alt:[{id:"_starvation",additional:true,chance:100}],
+linked:[{id:"droogo"}]
+},
+
+{id:"droogo",
+actionId:"droo",
+deckeffect:{seasonevents:1},
+linked:[{id:"droogosickness"},
+{id:"droogodespair"},
+{id:"droogovisions"},
+{id:"droogoambition"},
+{id:"droogovisions"},
+{id:"droogosuspicion"},
+{id:"droogoardours"},
+{id:"droogosilence"}]
+},
+
+
+{id:"droogosickness",
+actionId:"droo",
+label:"Your Rider Is Waiting At The Restaurant",
+startdescription:"Not long now!",
+requirements:{seasonsickness:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogodespair",
+actionId:"droo",
+label:"Assigning a Rider to your Order",
+startdescription:"Wonder who it'll be?",
+requirements:{seasondespair:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogovisions",
+actionId:"droo",
+label:"A Rider Has Been Assigned To Your Order",
+startdescription:"Cool! They should be at the restaurant soon.",
+requirements:{seasonvisions:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogoambition",
+actionId:"droo",
+label:"Your Rider Is Waiting At The Restaurant",
+startdescription:"Cool! It must be nearly on its way.",
+requirements:{seasonambitions:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogoardours",
+actionId:"droo",
+label:"A Call From A Deliveroo Support Person?",
+startdescription:"They say the restaurant said I wanted to cancel my order? Weird. No matter - I told them I don't want to cancel, and I'm sure it'll be okay.",
+requirements:{seasonardours:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogosuspicion",
+actionId:"droo",
+label:"A Rider Has Been Assigned To Your Order",
+startdescription:"Cool! They should be at the restaurant soon.",
+requirements:{seasonsuspicion:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogosilence",
+actionId:"droo",
+label:"'Your Order Has Been Cancelled",
+startdescription:"Here's your money back!
+
+We apologise for any inconvenience caused.
+
+If you'd like to try again, it'll be £15 cheaper next time!'",
+requirements:{seasonsilence:1},
+effects:{season:-1,dread:1},
+warmup:30
+},
+
 {id:"debugsnare",
 actionId:"x",
 label:"Create Great Snares",

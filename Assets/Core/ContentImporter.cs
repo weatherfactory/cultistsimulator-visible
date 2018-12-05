@@ -136,7 +136,7 @@ public class ContentImporter
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
         ArrayList localisedArrayList = new ArrayList();
-     allContentFiles.Sort();
+       allContentFiles.Sort();
         foreach (var contentFile in allContentFiles)
         {
             string json = File.ReadAllText(contentFile);
