@@ -109,6 +109,53 @@ namespace CS.Tests
             Assert.AreEqual(30, ca.GetArbitratedChance());
         }
 
+        [Test]
+        public void ArbitedChanceIs0_ForBAdvancedChallenge_WithAspect9()
+        {
+            aspectsAvailable.Add("a", 9);
+
+           var advancedChallenges = new Dictionary<string, string> { { "a", "advanced" }};
+          var advancedLrd = new LinkedRecipeDetails("a", 0, false, null, advancedChallenges);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, advancedLrd);
+
+            Assert.AreEqual(0, ca.GetArbitratedChance());
+        }
+        [Test]
+        public void ArbitedChanceIs30_ForBAdvancedChallenge_WithAspect10()
+        {
+            aspectsAvailable.Add("a", 10);
+
+            var advancedChallenges = new Dictionary<string, string> { { "a", "advanced" } };
+            var advancedLrd = new LinkedRecipeDetails("a", 0, false, null, advancedChallenges);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, advancedLrd);
+
+            Assert.AreEqual(30, ca.GetArbitratedChance());
+        }
+
+        [Test]
+        public void ArbitedChanceIs70_ForBAdvancedChallenge_WithAspect15()
+        {
+            aspectsAvailable.Add("a", 15);
+
+            var advancedChallenges = new Dictionary<string, string> { { "a", "advanced" }};
+            var advancedLrd = new LinkedRecipeDetails("a", 0, false, null, advancedChallenges);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, advancedLrd);
+
+            Assert.AreEqual(70, ca.GetArbitratedChance());
+        }
+
+        [Test]
+        public void ArbitedChanceIs90_ForBAdvancedChallenge_WithAspect20()
+        {
+            aspectsAvailable.Add("a", 20);
+
+            var advancedChallenges = new Dictionary<string, string> { { "a", "advanced" } };
+            var advancedLrd = new LinkedRecipeDetails("a", 0, false, null, advancedChallenges);
+            ChallengeArbiter ca = new ChallengeArbiter(aspectsAvailable, advancedLrd);
+
+            Assert.AreEqual(90, ca.GetArbitratedChance());
+        }
+
     }
 }
 

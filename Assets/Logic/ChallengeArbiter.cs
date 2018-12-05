@@ -11,6 +11,7 @@ namespace Assets.Logic
         private readonly IAspectsDictionary _aspectsToConsider;
         private readonly LinkedRecipeDetails _link;
         private const string BASE_CONVENTION_ID = "base";
+        private const string ADVANCED_CONVENTION_ID = "advanced";
 
         public ChallengeArbiter(IAspectsDictionary aspectsToConsider,LinkedRecipeDetails link)
         {
@@ -25,13 +26,17 @@ namespace Assets.Logic
 
             foreach (var kvp in _link.Challenges)
             {
-                if (kvp.Value != BASE_CONVENTION_ID)
-                    throw new ApplicationException("We don't know what to do with a non-base difficulty convention");
-                    int chanceFromAspect = ChanceForBaseConvention(_aspectsToConsider.AspectValue(kvp.Key));
+                int chanceFromAspect = 0;
+                if (kvp.Value == BASE_CONVENTION_ID)
+                     chanceFromAspect = ChanceForBaseConvention(_aspectsToConsider.AspectValue(kvp.Key));
+                else if (kvp.Value == ADVANCED_CONVENTION_ID)
+                    chanceFromAspect = ChanceForAdvancedConvention(_aspectsToConsider.AspectValue(kvp.Key));
+                else
+                throw new ApplicationException("We don't know what to do with this difficulty convention: " + kvp.Value);
+                 
                 if (chanceFromAspect > arbitratedChance)
                     arbitratedChance = chanceFromAspect;
-
-
+                
             }
 
             return arbitratedChance;
@@ -44,6 +49,18 @@ namespace Assets.Logic
             if (aspectLevel >= 5)
                 return 70;
             if (aspectLevel >= 1)
+                return 30;
+
+            return 0;
+        }
+
+        private int ChanceForAdvancedConvention(int aspectLevel)
+        {
+            if (aspectLevel >= 20)
+                return 90;
+            if (aspectLevel >= 15)
+                return 70;
+            if (aspectLevel >= 10)
                 return 30;
 
             return 0;

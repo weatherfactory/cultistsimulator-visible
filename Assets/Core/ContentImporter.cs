@@ -124,7 +124,11 @@ public class ContentImporter
         var contentFolder = CORE_CONTENT_DIR + contentOfType;
         var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
         var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        if(coreContentFiles.Any())
+          coreContentFiles.Sort();
         var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        if(overridecontentFiles.Any())
+             overridecontentFiles.Sort();
 
         List<string> allContentFiles = new List<string>();
 
