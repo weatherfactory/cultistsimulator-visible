@@ -2,6 +2,38 @@
 "recipes": [
 
 
+{id:"long.executestrategy.assault.abduct.follower.begin",
+actionId:"longassault.abduction",
+label:"An Abduction!",
+startdescription:"Our enemy is mounting an abduction attempt!",
+slots:[{id:"target",label:"Target",required:{romanticinterest:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.abduct.follower.continue"},
+{id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"}
+],
+warmup:10
+},
+
+{id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower",
+actionId:"longassault.abduction",
+label:"An Abduction!",
+startdescription:"Our enemy is mounting an abduction attempt!",
+slots:[{id:"target",label:"Target",required:{follower:1},forbidden:{summoned:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.abduct.follower.continue"},
+{id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"}],
+warmup:10
+},
+
+{id:"long.executestrategy.assault.abduct.follower.continue",
+actionId:"longassault.abduction",
+label:"An Abduction!",
+requirements:{follower:1},
+startdescription:"Our enemy has snatched a follower! We could try to rescue them - but it could be a trap. [The place is warded against summonings.]",
+slots:[{id:"rescuer",label:"Rescuer",required:{follower:1},forbidden:{summoned:1}}],
+linked:[
+{id:"long.executestrategy.assault.abduct.follower.continue",chance:100}],
+warmup:10
+},
+
 {id:"long.executestrategy.assault.forge.greatwork.begin",
 actionId:"longassault",
 label:"An Act of Sabotage!",
@@ -278,7 +310,7 @@ actionId:"long",
 comments:"Note: this takes effect in the main verb. Once in an assault confrontation, we're in it until the end.",
 label:"A Direct Assault!",
 aspects:{revealstrategy:1},
-slots:[{id:"follower",label:"Defender",required:{follower:1},forbidden:{summoned:-1}}],
+slots:[{id:"follower",label:"Defender",required:{follower:1},forbidden:{summoned:1}}],
 startdescription:"Enough feinting and proxy struggle. @#welland|Captain Welland will use his Forge-strength against us personally.#tryphon|Lady Tryphon has opted to bloody her well-manicured hands in a personal assault. #julian|This chilly enemy has come to end us personally.#|Our enemy has personally entered the fray.@ [The Long will devour my Health until I am dead, although our followers might protect us for a little while. And only mortal followers - our enemy is wise in the invisible arts, and spirits cannot assail them.] ",
 description:"FNORD",
 requirements:{long.might:6},
