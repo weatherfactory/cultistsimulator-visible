@@ -38,7 +38,7 @@ public class StatusBar : MonoBehaviour
     {
         var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name.Replace(" ","").ToUpper());
         if(!string.IsNullOrEmpty(remoteName))
-        CharacterName.text = remoteName;
+            CharacterName.text = remoteName;
     }
 
 }

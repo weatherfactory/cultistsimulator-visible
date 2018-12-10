@@ -6,29 +6,22 @@ thank you!
 
 - Lottie and Alexis
 
-v2018.11.g.1
-- Extremely alpha implementation of the first Major Victory. Currently, it's only possible to pursue a Forge apostle legacy (by completing the Forge/Power minor victory) and there is only a very limited implementation
-of just one of the immortal enemies you'll face. But it should give you an idea of what's coming. :)
-- Rite of the Sea's Marriage is now Rite of the Crow's Quenching.
-- St Felix now has guardian monks
-- Kusnetsov Endowment will be drawn correctly
-- Hebe Stanton now correctly provides rewards
-- You shouldn't see two Detective legacies
-- Loads of enhancements to debug console
+v2018.12.b.1
 
-v2018.11.f.1:
-- stray 'n's should no longer appear in the beta branch
-- Fixed a silly nonsense Dancer bug in beta branch only
-- Lessons Learnt now decay to their antecedents. (Thanks for the feedback on this!It should always have been thus, really)
-- Added a couple of Dancer hints
-
-v2018.11.e.1:
-- Major Expeditions rework to reduce midgame grind, including six new Expeditions. Expeditions now give fixed, more thematically suitable, and usually more impressive, rewards. Default expeditions give you a chance to scoop up books from any Expeditions consumed by Rivals, and also can be repeated to gain Ingredients. (Details of which items show up in which Expeditions may shuffle around further).
+- Major Expeditions rework to reduce midgame grind, including six new Expeditions. Expeditions now give fixed, more thematically suitable, and usually more impressive, rewards. Default expeditions give you a chance to scoop up books from any Expeditions consumed by Rivals, and also can be repeated to gain Ingredients. (If you're in mid-game when this patch hits, it might mean you get some items twice on your current playthrough: call it a bonus.)
 - Fixed a rare issue where it was still sometimes possible to put a stack of >1 card in a slot (if you swapped out one card of that type for a stack of identical cards)
 - Fixed an even rarer issue where saving the game with two funds in unstarted Expedition slots would leave you with only 1 Funds on reloading.
 - 30% of the time, failing to use a Favour to save a Follower would leave you under suspicion instead. This should no longer happen.
 - Removed Bloodshed, for now.
-- Reduced Fleeting Reminiscence duration to make it more Fleeting.
+- Reduced Fleeting Reminiscence duration to make it more Fleeting. It'll get more fleeting still, but I didn't want to cause too much unexpected pain when this hit the main branch.
+- Rite of the Sea's Marriage is now Rite of the Crow's Quenching.
+- You shouldn't see two Detective legacies
+- Loads of enhancements to debug console
+- Extremely alpha implementation of the first Major Victory. Currently, it's only possible to pursue a Forge apostle legacy (by completing the Forge/Power minor victory) and there is only a very limited implementation
+of just one of the immortal enemies you'll face. But it should give you an idea of what's coming. :) [This is unavailable in the main branch.]
+- Lessons Learnt now decay to their antecedents. (Thanks for the feedback on this! It should always have been thus, really)
+- Added a couple of Dancer hints
+
 
 v2018.11.c.1: 
 - Corpses when raised will never fight to break control.
