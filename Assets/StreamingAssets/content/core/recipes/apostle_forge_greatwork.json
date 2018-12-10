@@ -133,13 +133,14 @@ craftable:false,
 {id:"talk.apostleforge.echidna",
 actionId:"talk",
 label:"Petitioning Mrs E.",
-startdescription:"'Of course I can help, moppet. Lucky you came to me. I'm much more accommodating than our other sisters. But I will want someone tasty.'",
+startdescription:"'Of course I can help, moppet. Lucky you came to me. I'm much more accommodating than our other sisters. But I will want someone tasty... unless you can give me a good reason.'",
 description:"'No? I'll be around a little while longer.'",
 requirements:{echidna:1},
-slots:[{id:"sacrifice",label:"Someone Tasty",required:{exalted:1}}],
+slots:[{id:"sacrifice",label:"Someone Tasty, or a Good Reason",required:{exalted:1,cultsecrethistories_1:1}}],
 warmup:60,
 craftable:true,
-alternativerecipes:[{id:"talk.apostleforge.echidnahelp",chance:100}]
+alternativerecipes:[{id:"talk.apostleforge.echidnahelp"},
+{id:"talk.apostleforge.echidnahelp.sthydra"}]
 },
 
 
@@ -148,8 +149,18 @@ actionId:"talk",
 label:"Someone Tasty",
 startdescription:"'Oh, goody. Listen, though - I'm a woman of my word, but I'm not a patient woman. Don't give me your friend until you're ready.'",
 description:"'Take this. Don't lose it. I'll be there.'",
-requirements:{echidna:1,exalted:1},
+requirements:{echidna:1,exalted:1,},
 effects:{exalted:-1,apostleforge.pillar5:1},
+craftable:false
+},
+
+{id:"talk.apostleforge.echidnahelp.sthydra",
+actionId:"talk",
+label:"A Good Reason",
+startdescription:"'I see we both suckle serpents. As my sisters and I like to say: Ligeia remembers. I'll indulge you. (Did you ever wonder why it was five, not seven? Two missing Histories. Well, why only two? But we don't have time for that now. I'm not a patient woman.) Don't ask for my help until you're ready.'",
+description:"'Take this. Don't lose it. I'll be there.'",
+requirements:{echidna:1,cultsecrethistories_1:1},
+effects:{apostleforge.pillar5:1},
 craftable:false
 },
 
