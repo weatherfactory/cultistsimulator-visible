@@ -191,7 +191,7 @@ startdescription:"Our enemy has borne false witness against us. The authorities 
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 effects:{},
 warmup:10,
-linked:[{id:"long.executestrategy.intrigue.failure",challenges{heart:base,moth:base}},
+linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base,moth:base}},
 {id:"long.executestrategy.intrigue.fraud.succeed",chance:100}]
 },
 
