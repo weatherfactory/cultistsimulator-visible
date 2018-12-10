@@ -139,6 +139,7 @@ craftable:false,
 linked:[
 {id:"long.refinestrategy.dreams.learndreams.followup",chance:70},
 {id:"long.assault.confrontation",chance:70},
+{id:"long.refinestrategy.assault.abduct.follower",chance:70},
 {id:"long.refinestrategy.assault.forge.greatwork",chance:70},
 {id:"long.refinestrategy.assault.injurehealth",chance:70},
 {id:"long.refinestrategy.assault.rob",chance:70},
@@ -180,7 +181,12 @@ warmup:10,
 linked:[{id:"long.preparestrategy",chance:100}]
 },
 
-
+{id:"long.refinestrategy.assault.abduct.follower",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3,long.might:4},
+alternativerecipes:[{id:"long.executestrategy.assault.abduct.follower.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
 
 {id:"long.refinestrategy.assault.forge.greatwork",
 actionId:"long",

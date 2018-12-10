@@ -124,7 +124,11 @@ public class ContentImporter
         var contentFolder = CORE_CONTENT_DIR + contentOfType;
         var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
         var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        if(coreContentFiles.Any())
+          coreContentFiles.Sort();
         var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        if(overridecontentFiles.Any())
+             overridecontentFiles.Sort();
 
         List<string> allContentFiles = new List<string>();
 
@@ -136,6 +140,7 @@ public class ContentImporter
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
         ArrayList localisedArrayList = new ArrayList();
+       allContentFiles.Sort();
         foreach (var contentFile in allContentFiles)
         {
             string json = File.ReadAllText(contentFile);
