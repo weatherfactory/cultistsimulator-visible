@@ -92,27 +92,41 @@ xtriggers:{sabotage.repair:apostleforge.pillar3}
 
 
 {id: "apostlegrail.pillarfuel",
-label: "FNORD",
-description: "FNORD",
-aspects:{influence:1},
-lifetime:60,
+label: "Delightful Blood",
+description: "Our Delight's instructions are written in this blood, in the tiny tangles of cellular script. We can taste them, as they will taste us. If we waste it, our Delight will wax wroth.",
+aspects:{ingredient:1},
+lifetime:240,
 decayTo:dread
 	},
 {id: "apostlegrail.pillar1",
-label: "",
+label: "FNORD Recipe",
 description: "FNORD",
-aspects:{tool:1}
+aspects:{lore:1}
+
 	},
 
-	{id: "apostlegrail.pillar2",
-label: "",
-description: "FNORD",
-aspects:{tool:1}
+
+	
+{id: "apostlegrail.pillar2.dormant",
+label: "Forlorn Blood",
+description: "I have a disease. My blood is wrong. My bones are sick. I'll die. But our Delight can save me, with their own blood.",
+aspects:{promise:1},
+
+	},
+	
+
+	
+		{id: "apostlegrail.pillar2",
+label: "Awakened Blood",
+description: "I am of the same blood as the Delightful, now. As long as their savour graces my veins, my disease cannot touch me. Without their blessing, I'll die.",
+aspects:{promise:1},
+lifetime:600,
+decayTo:apostlegrail.pillar2.dormant
 	},
 
 	{id: "apostlegrail.pillar3",
-label: "",
-description: "FNORD",
+label: "The Seven Graces",
+description: "The firm of T.R.N. Spices and Savouries Ltd has provided these tempting adornments, with which we shall bedizen and prepare ourselves.",
 aspects:{tool:1}
 	},
 
