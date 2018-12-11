@@ -249,6 +249,18 @@ public class Compendium : ICompendium
                 , "madrugad", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY");
 
 
+        if (endingFlag == "majorgrailvictory")
+            return new Ending(endingFlag, "THE FEAST FULFILL'D",
+                "[THIS IS PLACEHOLDER TEXT UNTIL THE FULL RELEASE.]"
+                , "flowermaker", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MAJORGRAILVICTORY");
+
+
+        if (endingFlag == "majorlanternvictory")
+            return new Ending(endingFlag, "IN THE THIRD MODE", 
+                "[THIS IS PLACEHOLDER TEXT UNTIL THE FULL RELEASE.]",
+                "vagabond", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MAJORLANTERNVICTORY");
+
+
         if (endingFlag == "minorforgevictory")
             return new Ending(endingFlag, title, desc, "forgeofdays", EndingFlavour.Grand, "DramaticLightCool","A_ENDING_MINORFORGEVICTORY");
 

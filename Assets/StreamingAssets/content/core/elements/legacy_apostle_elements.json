@@ -127,12 +127,66 @@ description: "The firm of T.R.N. Spices and Savouries Ltd has provided these tem
 aspects:{tool:1}
 	},
 
-	
+		{id: "apostlegrail.pillar4.inprogress1",
+label: "The Guests 1",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
+	},
+		{id: "apostlegrail.pillar4.inprogress2",
+label: "The Guests 2",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress1,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3}
+	},
+		{id: "apostlegrail.pillar4.inprogress3",
+label: "The Guests 3",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress2,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4}
+	},
+		{id: "apostlegrail.pillar4.inprogress4",
+label: "The Guests ",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress3,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5}
+	},
+		{id: "apostlegrail.pillar4.inprogress5",
+label: "The Guests 5",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress4,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6}
+	},
+		{id: "apostlegrail.pillar4.inprogress6",
+label: "The Guests 6",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqvitulation",
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress5,
+xtriggers:{vitulationupgrade:apostlegrail.pillar4}
+	},
 	
 	{id: "apostlegrail.pillar4",
-label: "The Guests",
+label: "The Guests 7",
 description: "FNORD",
-aspects:{follower:1,summoned:1}
+aspects:{follower:1,summoned:1},
+lifetime:120,
+decayTo:apostlegrail.pillar4.inprogress6
 	},
 
 			{id: "apostlelantern.mentor",

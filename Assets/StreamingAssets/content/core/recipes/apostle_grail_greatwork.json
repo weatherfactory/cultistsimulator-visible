@@ -80,6 +80,39 @@ requirements:{ingredientmothd:1,mothflavour:-1},
 mutations:[{filter:apostlegrail.pillar3,mutate:mothflavour,level:1}]
 },
 
+
+{id:"talk.apostlegrail.createpillar4",
+actionId:"talk",
+label:"Set a Date for the Vitulation",
+startdescription:"FNORD Begin from the beginning",
+description:"FNORD",
+requirements:{apostlegrail.pillar1:1},
+craftable:true,
+effects:{apostlegrail.pillar4.inprogress1:1}
+},
+
+
+
+{id:"talk.apostlegrail.upgradepillar4.attempt",
+actionId:"talk",
+label:"FNORD Upgrade Guests",
+startdescription:"FNORD attempt upgrade",
+description:"FNORD upgrade failed",
+requirements:{uqvitulation:1},
+slots:[{id:"mystique",label:"Mystique",required:{mystique:1}}],
+alt:[{id:"talk.apostlegrail.upgradepillar4.succeed"}],
+warmup:60,
+craftable:true},
+
+
+{id:"talk.apostlegrail.upgradepillar4.succeed",
+actionId:"talk",
+label:"FNORD upgrade guests success",
+startdescription:"FNORD Upgrading!",
+requirements:{mystique:1,uqvitulation:1},
+aspects:{vitulationupgrade:1},
+craftable:false},
+
 {id:"talk.apostlegrail.sulochanamarinette",
 actionId:"talk",
 label:"An Introduction to Our Lady of Wires",
