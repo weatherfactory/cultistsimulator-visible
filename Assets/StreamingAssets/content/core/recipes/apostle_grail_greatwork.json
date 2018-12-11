@@ -2,9 +2,9 @@
  
 {id:"ambition.apostlegrail.emitfuel",
 actionId:"work",
-label:"Guidance from our Shaper",
+label:"Guidance from our Delight",
 requirements:{apostlegrail.mentor:1},
-startdescription: "FNORD",
+startdescription: "A courier has arrived from our Delight, with a single vial of their most holy blood.",
 effects:{apostlegrail.pillarfuel:1}
 },
 
@@ -15,7 +15,7 @@ actionId:"work",
 label:"The Last Elements of the Vitulation",
 startdescription:"FNORD",
 description:"",
-requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
+requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1,grailflavour:1,heartflavour:1,mothflavour:1},
 warmup:60,
 craftable:true,
 ending:majorgrailvictory
@@ -26,7 +26,7 @@ ending:majorgrailvictory
 {id:"explore.apostlegrail.purchase.apostlegrail.pillar3",
 actionId:"explore",
 label:"Bid for Rare Spices",
-startdescription:"FNORD",
+startdescription:"Our Delight's blood is a payment towards certain special goods for particular connoisseurs. Everything must be just right for the Vitulation.",
 description:"FNORD",
 requirements:{locationauctionhouse:1,apostlegrail.pillarfuel:1},
 effects:{apostlegrail.pillar3:1,apostlegrail.pillarfuel:-1},
@@ -34,12 +34,14 @@ warmup:5,
 craftable:true,
 linked:[{id:"auctionbuy"}]},
 
+
+
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3",
 actionId:"work",
-label:"Enhance the Seven Graces",
-startdescription:"FNORD",
+label:"Prepare the Seven Graces",
+startdescription:"The scents and savours must be precisely as the Recipe dictates. Only so can I, and my colleagues, be sufficiently appetising - appetising enough to arouse a pitch of appetite not seen in the waking world.",
 requirements:{apostlegrail.pillar3:1},
-description:"FNORD",
+description:"FNORD done nothing.",
 slots:[{id:"enhancement",label:"Enhancement",description:"Very special additives to ensure the Vitulation goes just right.",required:{ingredientgraild:1,ingredientmothd:1,ingredientheartf:1}}],
 alt:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"},
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"},
@@ -60,6 +62,7 @@ actionId:"work",
 label:"The Flowermaker's Gift",
 startdescription:"FNORD",
 requirements:{ingredientgraild:1,grailflavour:-1},
+effects:{ingredientgraild:-1},
 mutations:[{filter:apostlegrail.pillar3,mutate:grailflavour,level:1}]
 },
 
@@ -69,6 +72,7 @@ actionId:"work",
 label:"Janus' Savour",
 startdescription:"FNORD",
 requirements:{ingredientheartf:1,heartflavour:-1},
+effects:{ingredientheartf:-1},
 mutations:[{filter:apostlegrail.pillar3,mutate:heartflavour,level:1}]
 },
 
@@ -77,6 +81,7 @@ actionId:"work",
 label:"The Black-Flax's Savour",
 startdescription:"FNORD",
 requirements:{ingredientmothd:1,mothflavour:-1},
+effects:{ingredientmothd:-1},
 mutations:[{filter:apostlegrail.pillar3,mutate:mothflavour,level:1}]
 },
 
@@ -88,21 +93,49 @@ startdescription:"FNORD Begin from the beginning",
 description:"FNORD",
 requirements:{apostlegrail.pillar1:1},
 craftable:true,
-effects:{apostlegrail.pillar4.inprogress1:1}
+effects:{apostlegrail.pillar4.inprogress1:1},
+warmup:60
 },
-
-
 
 {id:"talk.apostlegrail.upgradepillar4.attempt",
 actionId:"talk",
 label:"FNORD Upgrade Guests",
 startdescription:"FNORD attempt upgrade",
 description:"FNORD upgrade failed",
+requirements:{apostlegrail.pillar4.inprogress7:1},
+slots:[{id:"finalguest",label:"The Final Guest",required:{marinette:1}}],
+alt:[{id:"talk.apostlegrail.upgradepillar4.marinetteready"},
+{id:"talk.apostlegrail.upgradepillar4.marinettenotready"}],
+warmup:60,
+craftable:true},
+
+
+{id:"talk.apostlegrail.upgradepillar4.inprogress.attempt",
+actionId:"talk",
+label:"FNORD Upgrade Guests",
+startdescription:"FNORD attempt upgrade",
+description:"FNORD upgrade failed",
 requirements:{uqvitulation:1},
-slots:[{id:"mystique",label:"Mystique",required:{mystique:1}}],
+slots:[{id:"more",label:"More",required:{mystique:1}}],
 alt:[{id:"talk.apostlegrail.upgradepillar4.succeed"}],
 warmup:60,
 craftable:true},
+
+{id:"talk.apostlegrail.upgradepillar4.marinetteready",
+actionId:"talk",
+label:"The Last Guest",
+startdescription:"'<sprite name=winter>.'",
+requirements:{marinette:1,approval:7,apostlegrail.pillar4.inprogress7:1},
+effects:{marinette:-1,apostlegrail.pillar4.inprogress7:-1,apostlegrail.pillar4:1},
+craftable:false},
+
+{id:"talk.apostlegrail.upgradepillar4.marinettenotready",
+actionId:"talk",
+label:"Not Yet Enough",
+startdescription:"'...<sprite name=grail>.' [Marinette is not yet sated.]",
+requirements:{marinette:1},
+craftable:false},
+
 
 
 {id:"talk.apostlegrail.upgradepillar4.succeed",
@@ -110,31 +143,38 @@ actionId:"talk",
 label:"FNORD upgrade guests success",
 startdescription:"FNORD Upgrading!",
 requirements:{mystique:1,uqvitulation:1},
+effects:{mystique:-1},
 aspects:{vitulationupgrade:1},
 craftable:false},
 
 {id:"talk.apostlegrail.sulochanamarinette",
 actionId:"talk",
 label:"An Introduction to Our Lady of Wires",
-startdescription:"'You're really going to do it?' Sulochana drops her unfinished cigarette, and crushes it under one booted foot. 'Then I'm leaving, now. Don't worry. I'll send your message to the necessary sister. I'm sure she'll come... if there's blood enough.'",
+startdescription:"'You're really going to do it?' Sulochana grinds one booted foot meditatively into the wreck of her cigarette. 'Then I'm leaving, now. Don't worry. I'll send your message to the necessary sister. I'm sure she'll come... if there's blood enough.'",
 description:"",
-requirements:{apostlegrail.pillarfuel:1},
-effects:{apostlegrail.pillarfuel:-1,marinette.enroute:1,sulochana:-1},
+requirements:{apostlegrail.pillar1:1},
+effects:{marinette.enroute:1,sulochana:-1},
 craftable:false,
 },
 
+{id:"talk.apostlegrail.marinette.ready.hint",
+actionId:"talk",
+label:"Marinette is Sated",
+startdescription:"'<sprite name=heart>'. [You can now add Marinette to your Guests.]",
+requirements:{marinette:1,approval:7},
+craftable:false,
+hintonly:true},
 
 {id:"talk.apostlegrail.marinette",
 actionId:"talk",
 label:"Petitioning Marinette of the Wires",
-startdescription:"'Blood.'",
-description:"'Not generous. Won't wait.'",
-requirements:{marinette:1},
+startdescription:"'<sprite name=grail>?'",
+description:"'<sprite name=grail>. <sprite name=grail>. <sprite name=grail>!'",
+requirements:{marinette:1,approval:-7},
 slots:[{id:"sacrifice",label:"Blood",required:{follower:1},forbidden:{summoned:-1}}],
 warmup:60,
 craftable:true,
-alternativerecipes:[{id:"talk.apostlegrail.marinette.ready"},
-{id:"talk.apostlegrail.marinettenext.hireling"},
+alternativerecipes:[{id:"talk.apostlegrail.marinettenext.hireling"},
 {id:"talk.apostlegrail.marinettenext.follower"}]
 },
 
@@ -143,7 +183,6 @@ alternativerecipes:[{id:"talk.apostlegrail.marinette.ready"},
 actionId:"talk",
 label:"Blood",
 startdescription:"Marinette always leaves the skin. Sometimes she leaves the bones. She'll consume the hired help eagerly enough, but the hired help generally objects, and then there is generally a fuss.",
-
 requirements:{marinette:1,hireling:1},
 effects:{hireling:-1,notoriety:1},
 mutations:[{filter:marinette,mutate:approval,level:1,additive:true}],
@@ -152,21 +191,14 @@ craftable:false
 
 {id:"talk.apostlegrail.marinettenext.follower",
 actionId:"talk",
-label:"A Good Reason",
+label:"Blood",
 startdescription:"Marinette always leaves the skin. Sometimes she leaves the bones. If we tell our loyal followers to close their eyes, it's over very quickly.",
 mutations:[{filter:marinette,mutate:approval,level:1,additive:true}],
 requirements:{marinette:1,follower:1},
 effects:{follower:-1},
-craftable:false,
-linked:[{id:"talk.apostlegrail.marinette.ready"}]
-},
+craftable:false
+}
 
-{id:"talk.apostlegrail.marinette.ready",
-actionId:"talk",
-label:"Marinette is Sated",
-startdescription:"'Begin'. [You can now add Marinette to your Guests.]",
-requirements:{marinette:1,approval:7},
-craftable:false}
 
 
 

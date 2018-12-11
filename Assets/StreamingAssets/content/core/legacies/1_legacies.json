@@ -51,7 +51,7 @@ excludesOnEnding: ["detective"]
 label: "Apostle Aestuant",
 startdescription: "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
 description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
-effects: {health:3,legacyapostleforgejob:1},
+effects: {health:2,legacyapostleforgejob:1},
 image: "forge",
 fromEnding:"minorforgevictory",
 availableWithoutEndingMatch:false
@@ -60,16 +60,16 @@ availableWithoutEndingMatch:false
 label: "Apostle Obsonate",
 startdescription: "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
 description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vesse.",
-effects: {passion:2,health:1,legacyapostlegrailjob:1},
+effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "lantern",
-fromEnding:"_minorgrailvictory",
+fromEnding:"minorgrailvictory",
 availableWithoutEndingMatch:false
 },
 {id: "apostlelantern",
 label: "Apostle Entheate",
 startdescription: "The one who guided us has ascended to a higher state... in one history, at least. The past is uncertain. But I will illuminate the path to their next ascension.",
 description: "Our Illuminated One is grown powerful - and they have powerful enemies. They will remain safe in the Mansus, while I serve as their voice.",
-effects: {reason:2,health:1,legacyapostlelanternjob:1},
+effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "lantern",
 fromEnding:"_minorlanternvictory",
 availableWithoutEndingMatch:false

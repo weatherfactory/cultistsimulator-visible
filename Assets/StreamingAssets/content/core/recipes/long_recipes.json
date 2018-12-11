@@ -47,6 +47,7 @@ linked:[{id:"long.selectstrategy",chance:100}]
 {id:"expelspy",
 actionId:"expelspy",
 label:"Our spy has returned to us.",
+requirements:{follower:1},
 startdescription:"FNORD",
 description:"FNORD",
 warmup:10},

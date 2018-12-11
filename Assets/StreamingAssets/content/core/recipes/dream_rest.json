@@ -65,6 +65,18 @@
         warmup: 30,
 		craftable:true
     },
+
+{id:"recover.apostlegrail.pillar2",
+actionId:"dream",
+label:"The Dream of the End",
+startdescription:"I consume the little vial of blood, lie back, close my eyes. Tomorrow, I will be stronger.",
+description:"I am much recovered - more than that - I am sumptuous. The sclera of my eyes, the veins in my wrists, are aswim with gorgeous serums. When the Vitulation comes, I will be the centre-piece, for our Delight to prove their appetite, to enact the Grail.",
+requirements:{apostlegrail.pillarfuel:1,apostlegrail.pillar2.dormant:1},
+effects:{apostlegrail.pillar2.dormant:-1,apostlegrail.pillar2:1,apostlegrail.pillarfuel:-1,fascination:1},
+warmup:60,
+craftable:true},
+
+
 	{
         id: "recoverillhealthfunds",
         label: "Heal",
