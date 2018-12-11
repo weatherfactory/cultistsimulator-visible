@@ -12,7 +12,7 @@ effects:{apostlegrail.pillarfuel:1}
 
 {id:"work.apostlegrail.majorvictory",
 actionId:"work",
-label:"The Last Elements of the Great Feast",
+label:"The Last Elements of the Vitulation",
 startdescription:"FNORD",
 description:"",
 requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
@@ -23,8 +23,62 @@ ending:majorgrailvictory
 
 
 
+{id:"explore.apostlegrail.purchase.apostlegrail.pillar3",
+actionId:"explore",
+label:"Bid for Rare Spices",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{locationauctionhouse:1,apostlegrail.pillarfuel:1},
+effects:{apostlegrail.pillar3:1,apostlegrail.pillarfuel:-1},
+warmup:5,
+craftable:true,
+linked:[{id:"auctionbuy"}]},
+
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3",
+actionId:"work",
+label:"Enhance the Seven Graces",
+startdescription:"FNORD",
+requirements:{apostlegrail.pillar3:1},
+description:"FNORD",
+slots:[{id:"enhancement",label:"Enhancement",description:"Very special additives to ensure the Vitulation goes just right.",required:{ingredientgraild:1,ingredientmothd:1,ingredientheartf:1}}],
+alt:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"},
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"},
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart"},
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"},],
+warmup:60,
+craftable:true},
+
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
+actionId:"work",
+label:"The Seven Graces are Prepared",
+startdescription:"The Salt, the Sweet, the Sweetest",
+requirements:{grailflavour:1,heartflavour:1,mothflavour:1},
+},
+
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
+actionId:"work",
+label:"The Flowermaker's Gift",
+startdescription:"FNORD",
+requirements:{ingredientgraild:1,grailflavour:-1},
+mutations:[{filter:apostlegrail.pillar3,mutate:grailflavour,level:1}]
+},
 
 
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart",
+actionId:"work",
+label:"Janus' Savour",
+startdescription:"FNORD",
+requirements:{ingredientheartf:1,heartflavour:-1},
+mutations:[{filter:apostlegrail.pillar3,mutate:heartflavour,level:1}]
+},
+
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
+actionId:"work",
+label:"The Black-Flax's Savour",
+startdescription:"FNORD",
+requirements:{ingredientmothd:1,mothflavour:-1},
+mutations:[{filter:apostlegrail.pillar3,mutate:mothflavour,level:1}]
+},
 
 {id:"talk.apostlegrail.sulochanamarinette",
 actionId:"talk",
