@@ -1,0 +1,88 @@
+ {"recipes": [
+ 
+{id:"ambition.apostlegrail.emitfuel",
+actionId:"work",
+label:"Guidance from our Shaper",
+requirements:{apostlegrail.mentor:1},
+startdescription: "FNORD",
+effects:{apostlegrail.pillarfuel:1}
+},
+
+
+
+{id:"work.apostlegrail.majorvictory",
+actionId:"work",
+label:"The Last Elements of the Great Feast",
+startdescription:"FNORD",
+description:"",
+requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
+warmup:60,
+craftable:true,
+ending:majorgrailvictory
+},
+
+
+
+
+
+
+{id:"talk.apostlegrail.sulochanamarinette",
+actionId:"talk",
+label:"An Introduction to Our Lady of Wires",
+startdescription:"'You're really going to do it?' Sulochana drops her unfinished cigarette, and crushes it under one booted foot. 'Then I'm leaving, now. Don't worry. I'll send your message to the necessary sister. I'm sure she'll come... if there's blood enough.'",
+description:"",
+requirements:{apostlegrail.pillarfuel:1},
+effects:{apostlegrail.pillarfuel:-1,marinette.enroute:1,sulochana:-1},
+craftable:false,
+},
+
+
+{id:"talk.apostlegrail.marinette",
+actionId:"talk",
+label:"Petitioning Marinette of the Wires",
+startdescription:"'Blood.'",
+description:"'Not generous. Won't wait.'",
+requirements:{marinette:1},
+slots:[{id:"sacrifice",label:"Blood",required:{follower:1},forbidden:{summoned:-1}}],
+warmup:60,
+craftable:true,
+alternativerecipes:[{id:"talk.apostlegrail.marinette.ready"},
+{id:"talk.apostlegrail.marinettenext.hireling"},
+{id:"talk.apostlegrail.marinettenext.follower"}]
+},
+
+
+{id:"talk.apostlegrail.marinettenext.hireling",
+actionId:"talk",
+label:"Blood",
+startdescription:"Marinette always leaves the skin. Sometimes she leaves the bones. She'll consume the hired help eagerly enough, but the hired help generally objects, and then there is generally a fuss.",
+
+requirements:{marinette:1,hireling:1},
+effects:{hireling:-1,notoriety:1},
+mutations:[{filter:marinette,mutate:approval,level:1,additive:true}],
+craftable:false
+},
+
+{id:"talk.apostlegrail.marinettenext.follower",
+actionId:"talk",
+label:"A Good Reason",
+startdescription:"Marinette always leaves the skin. Sometimes she leaves the bones. If we tell our loyal followers to close their eyes, it's over very quickly.",
+mutations:[{filter:marinette,mutate:approval,level:1,additive:true}],
+requirements:{marinette:1,follower:1},
+effects:{follower:-1},
+craftable:false,
+linked:[{id:"talk.apostlegrail.marinette.ready"}]
+},
+
+{id:"talk.apostlegrail.marinette.ready",
+actionId:"talk",
+label:"Marinette is Sated",
+startdescription:"'Begin'. [You can now add Marinette to your Guests.]",
+requirements:{marinette:1,approval:7},
+craftable:false}
+
+
+
+
+]
+}

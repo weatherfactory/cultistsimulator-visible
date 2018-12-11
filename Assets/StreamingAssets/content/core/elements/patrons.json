@@ -227,6 +227,22 @@ icon:"poppy"
 		unique:true,
 		},
 		
+						{id:"marinette.enroute",
+		label: "Our Lady of Wires is En Route",
+		description:"Sulochana's 'sister', who is not usually named save as 'Our Lady of Wires'. She'll be here, soon, by night.",
+		unique:true,
+		lifetime:180,
+		decayTo:marinette
+		},
+		
+		{id:"marinette",
+		label: "Marinette, 'Our Lady of Wires'",
+		description:"It reeks of rotten blood, and it clacks its jaw each time it speaks. Perhaps there is a woman, huddled beneath the cloth and the bones. Perhaps it's some puppeteer's trick.",
+		aspects:{patron:1},
+		animFrames: 1,
+		unique:true,
+		},
+		
 		
 		
 ]

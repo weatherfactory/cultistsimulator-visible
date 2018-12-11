@@ -110,14 +110,13 @@ aspects:{lore:1}
 {id: "apostlegrail.pillar2.dormant",
 label: "Forlorn Blood",
 description: "I have a disease. My blood is wrong. My bones are sick. I'll die. But our Delight can save me, with their own blood.",
-aspects:{promise:1},
-
+aspects:{promise:1}
 	},
 	
 
 	
 		{id: "apostlegrail.pillar2",
-label: "Awakened Blood",
+label: "Savorous Blood",
 description: "I am of the same blood as the Delightful, now. As long as their savour graces my veins, my disease cannot touch me. Without their blessing, I'll die.",
 aspects:{promise:1},
 lifetime:600,
@@ -130,6 +129,13 @@ description: "The firm of T.R.N. Spices and Savouries Ltd has provided these tem
 aspects:{tool:1}
 	},
 
+	
+	
+	{id: "apostlegrail.pillar4",
+label: "The Guests",
+description: "FNORD",
+aspects:{follower:1,summoned:1}
+	},
 
 			{id: "apostlelantern.mentor",
 	label: "#PREVIOUSCHARACTERNAME#, our Illuminated One",
