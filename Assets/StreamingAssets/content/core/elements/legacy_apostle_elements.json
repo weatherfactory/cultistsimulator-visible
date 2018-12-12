@@ -208,33 +208,36 @@ aspects:{follower:1,summoned:1}
 },
 
 		{id: "legacyapostlelanternjob",
-	label: "FNORD lantern apostle job",
-	description: "FNORD",
+	label: "The First Dream",
+	description: "FNORD I don't know what I must do, exactly, but I must learn.",
 	aspects: {job:1}
 
-},
 {id: "apostlelantern.pillarfuel",
-label: "",
-description: "FNORD",
+label: "A Dream of a Key",
+description: "The dream, again. FNORD",
 lifetime:60,
-aspects:{influence:1},
+aspects:{tool:1},
 decayTo:fascination
 	},
-{id: "apostlelantern.pillar1",
-label: "",
-description: "FNORD",
+	{id: "apostlelantern.pillar1",
+label: "The Third Way",
+description: "'The Three-Lobed gate opens three ways: inwards to admit new immortals to the Mansus; upwards to enter the Glory; and outwards for the Glory to enter the Mansus and the World.'",
 aspects:{tool:1}
 	},
-	{id: "apostlelantern.pillar2",
-label: "",
+{id: "apostlelantern.pillar2",
+label: "The Crossroads",
+description: "FNORD"
+	},
+	{id: "apostlelantern.pillar3",
+label: "The Light",
 description: "FNORD",
-aspects:{tool:1}
+aspects:{influence:1}
 	},
 
-	{id: "apostlelantern.pillar3",
-label: "",
+	{id: "apostlelantern.pillar4",
+label: "The Cloud of Witnesses",
 description: "FNORD",
-aspects:{tool:1}
+aspects:{follower:1,summoned:1}
 	}
 
 
