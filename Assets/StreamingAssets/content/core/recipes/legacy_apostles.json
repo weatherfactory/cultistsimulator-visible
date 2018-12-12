@@ -12,10 +12,10 @@ warmup:10,
 craftable: true},
 
 {id: "apostleforgeopentalk",
-label: "Our Cause ",
+label: "Our Cause",
 actionId: "talk",
 requirements:{},
-startdescription:"I am not alone. ",
+startdescription:"I am not alone.",
 alternativerecipes: [{id:"apostleforgeopenstudy",chance:100,additional:true}],
 description:"My allies; my Shaper.",
 effects: {LEVER_LastCult:1,LEVER_LastFollower:1,apostleforge.mentor:1},
@@ -77,10 +77,10 @@ warmup:10,
 craftable: true},
 
 {id: "apostlegrailopentalk",
-label: "Our Cause ",
+label: "Our Cause",
 actionId: "talk",
 requirements:{},
-startdescription:"I am not alone. ",
+startdescription:"I am not alone.",
 alternativerecipes: [{id:"apostlegrailopenstudy",chance:100,additional:true}],
 description:"My allies; my Shaper.",
 effects: {LEVER_LastCult:1,LEVER_LastFollower:1,apostlegrail.mentor:1},
@@ -122,6 +122,67 @@ effects:{passion:1},
 craftable: false,
 alternativerecipes:[
 {id:long.spawn.grail,chance:100,additional:true}
+],
+},
+
+
+{id: "workapostlelanternjob",
+label: "What I Must Do",
+actionId: "work",
+requirements: {legacyapostlelanternjob:1},
+effects: {funds:7,legacyapostlelanternjob:-1,apostlelantern.pillar1:1},
+alternativerecipes: [{id:"apostlelanternopentalk",chance:100,additional:true}],
+startdescription: "I return to myself with a start. Was I daydreaming?",
+description: "Here is a package, with funds. Here are my instructions, in a slender envelope of skymost blue. It's enough. My other memories are not relevant just now.",
+warmup:10,
+craftable: true},
+
+{id: "apostlelanternopentalk",
+label: "Our Cause",
+actionId: "talk",
+requirements:{},
+startdescription:"I remember these names, though I have never heard them spoken.",
+alternativerecipes: [{id:"apostlelanternopenstudy",chance:100,additional:true}],
+description:"My allies; my Shaper.",
+effects: {LEVER_LastCult:1,LEVER_LastFollower:1,apostlelantern.mentor:1},
+warmup:10,
+craftable: false,
+linked:[{id:"begincultfoundation",chance:100}]
+},
+
+{id: "apostlelanternopenstudy",
+label: "What do I recall?",
+actionId: "study",
+startdescription:"I have been vouchsafed secrets.",
+alternativerecipes: [{id:"apostlelanternopenexplore",chance:100,additional:true}],
+effects: {fragmentlanternf:1,reason:1,waywood:1,waywhite:1,waystag_after:1},
+warmup:30,
+craftable: false
+},
+
+
+{id: "apostlelanternopenexplore",
+label: "A Place to Begin",
+actionId: "explore",
+startdescription:"Where were we?",
+description:"This is the place I saw, in the light at sleep's edge.",
+alternativerecipes: [{id:"apostlelanternopendream",chance:100,additional:true}],
+effects: {generichq:1},
+warmup:10,
+craftable: false
+},
+
+
+{id: "apostlelanternopendream",
+label: "Distant Light",
+actionId: "dream",
+startdescription:"What is coming? Who is coming?",
+description:"My dreams warned that there would be opposition to the Illuminated One. All the dreams I am sent are true.",
+warmup:60,
+effects:{passion:1},
+craftable: false,
+alternativerecipes:[
+{id:long.spawn.lantern,chance:100,additional:true}
 ],
 },
 
