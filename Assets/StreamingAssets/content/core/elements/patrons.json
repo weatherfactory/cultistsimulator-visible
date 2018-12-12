@@ -243,6 +243,20 @@ icon:"poppy"
 		unique:true,
 		},
 		
+				{id:"kleidouchos.enroute",
+		label: "Frau Schlüssel is en route",
+		description:"Teresa Galmier's 'correspondent', Sulochana's 'sister', the holder of the Key of Days, is on her way here from Vienna. Perhaps I should meet her at the station.",
+		aspects:{patron:1},
+		lifetime:180,
+		decayTo:kleidouchos
+		},
+		
+		{id:"kleidouchos",
+		label: "Frau Schlüssel",
+		description:"A spry,forceful woman in severe black and white, tightly wrinkled. She is never observed to blink. A tiny black puppy peeps from her skirts.",
+		aspects:{patron:1}
+		},
+		
 		
 		
 ]

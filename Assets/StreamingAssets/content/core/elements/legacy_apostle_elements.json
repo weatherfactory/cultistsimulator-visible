@@ -211,14 +211,16 @@ aspects:{follower:1,summoned:1}
 	label: "The First Dream",
 	description: "FNORD I don't know what I must do, exactly, but I must learn.",
 	aspects: {job:1}
+	},
 
 {id: "apostlelantern.pillarfuel",
 label: "A Dream of a Key",
-description: "The dream, again. FNORD",
+description: "The dream, again. Instructions for me, and perhaps for someone else, if I can find them. FNORD",
 lifetime:60,
 aspects:{tool:1},
 decayTo:fascination
 	},
+	
 	{id: "apostlelantern.pillar1",
 label: "The Third Way",
 description: "'The Three-Lobed gate opens three ways: inwards to admit new immortals to the Mansus; upwards to enter the Glory; and outwards for the Glory to enter the Mansus and the World.'",
@@ -231,7 +233,73 @@ description: "FNORD"
 	{id: "apostlelantern.pillar3",
 label: "The Light",
 description: "FNORD",
-aspects:{influence:1}
+aspects:{influence:1},
+xtriggers:{renew.apostlelantern.pillar3:apostlelantern.pillar3},
+lifetime:180
+	},
+	
+	
+		{id: "apostlelantern.pillar4.inprogress1",
+label: "The Witnesses 1",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress2}
+	},
+		{id: "apostlelantern.pillar4.inprogress2",
+label: "The Witnesses 2",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress1,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress3}
+	},
+		{id: "apostlelantern.pillar4.inprogress3",
+label: "The Witnesses 3",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress2,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress4}
+	},
+		{id: "apostlelantern.pillar4.inprogress4",
+label: "The Witnesses 4",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress3,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress5}
+	},
+		{id: "apostlelantern.pillar4.inprogress5",
+label: "The Witnesses 5",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress4,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
+	},
+		{id: "apostlelantern.pillar4.inprogress6",
+label: "The Witnesses 6",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress5,
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress7}
+	},
+	
+	{id: "apostlelantern.pillar4.inprogress7",
+label: "The Witnesses 7",
+description: "FNORD",
+aspects:{follower:1,summoned:1},
+uniquenessgroup:"uqthirdway",
+lifetime:120,
+decayTo:apostlelantern.pillar4.inprogress6
 	},
 
 	{id: "apostlelantern.pillar4",

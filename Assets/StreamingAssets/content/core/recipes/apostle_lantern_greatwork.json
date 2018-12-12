@@ -2,13 +2,107 @@
  
 {id:"ambition.apostlelantern.emitfuel",
 actionId:"work",
-label:"A Vision from our Illuminated One",
-requirements:{apostleforge.mentor:1},
-startdescription: "Our Illuminated One has favoured us with a vision. We should study it to advance the Great Work.",
-effects:{apostleforge.pillarfuel:1}
+label:"A Vision from the Illuminated One",
+requirements:{apostlelantern.mentor:1},
+startdescription: "The dream, again.",
+effects:{apostlelantern.pillarfuel:1}
+},
+
+{id:"work.apostlelantern.majorvictory",
+actionId:"work",
+label:"The Gate Opens Outwards",
+startdescription:"FNORD",
+description:"",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1,toollanternf:1},
+warmup:60,
+craftable:true,
+ending:majorlanternvictory
 },
 
 
+
+{id:"apostlelantern.createpillar2",
+actionId:"dream",
+label:"Locate the Crossroads",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{waypeacock:1,apostlelantern.pillarfuel:1},
+effects:{apostlelantern.pillar2:1,apostlelantern.pillarfuel:-1},
+warmup:60,
+craftable:true},
+
+{id:"apostlelantern.createpillar3",
+actionId:"dream",
+label:"Create the Allure",
+startdescription:"FNORD Create Allure",
+description:"FNORD",
+requirements:{apostlelantern.pillar2:1,apostlelantern.pillarfuel:1,influencelanterng:1},
+effects:{apostlelantern.pillar3:1},
+warmup:60,
+craftable:true},
+
+{id:"apostlelantern.maintainpillar3",
+actionId:"dream",
+label:"Maintain the Allure",
+startdescription:"FNORD Maintain Allure",
+description:"FNORD",
+requirements:{apostlelantern.pillar3:1,fascination:1},
+effects:{fascination:-1},
+aspects:{renew.apostlelantern.pillar3:1},
+warmup:30,
+craftable:true},
+
+{id:"apostlelantern.createpillar4",
+actionId:"dream",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{apostlelantern.pillar3:1,fragmentsecrethistoriesf:1},
+effects:{fragmentsecrethistoriesf:-1,apostlelantern.pillar4.inprogress1:1},
+warmup:60,
+craftable:true},
+
+
+{id:"apostlelantern.upgradepillar4",
+actionId:"talk",
+label:"Send a Maid-in-the-Mirror to lure a Witness",
+startdescription:"FNORD Lure witness in dreams",
+description:"FNORD",
+requirements:{spirit_winterd_edge:1,fascination:1,apostlelantern.pillar3:1},
+effects:{fascination:-1},
+aspects:{cloudwitnessesupgrade:1},
+warmup:60},
+
+{id:"apostlelantern.attemptrecruitkleidouchos.sulochana",
+actionId:"talk",
+label:"Ask Sulochana about the Key",
+startdescription:"'The Key of Days.' Sulochana gnaws on her lip. Her teeth glint in the lamp-light. 'Yes, I have a relevant sister. But I'm not going to make that introduction. Ask someone on the other side of the Wood - someone who cares about the Glory.'",
+requirements:{sulochana:1,apostlelantern.pillarfuel:1},
+},
+
+{id:"apostlelantern.recruitkleidouchos.teresa",
+actionId:"talk",
+label:"FNORD",
+startdescription:"It's a long time since I spoke to a Ligeian.... but I promised the sea-born I would do her kind a return favour, one day.",
+description:"FNORD",
+requirements:{spirit_lanterne_secret:1,apostlelantern.pillarfuel:1},
+effects:{kleidouchos.enroute:1,apostlelantern.pillarfuel:-1}},
+
+{id:"apostlelantern.persuadekleidouchos",
+actionId:"talk",
+label:"Speak to the Woman in Black-and-White",
+startdescription:"'You need me to assist you with the Tricuspid Gate, yes, that is correct? In its ultimate mode? With my Key of Days? Yes, yes, I am aware. I do not like to travel in ignorance.'",
+description:"'Opportunities of this nature are so rare - so very rare. I will be delighted to attend your Long's ascension, little puppet. Tell me where. Tell me when. I shall enjoy your city until then.'",
+requirements:{kleidouchos:1,promise:-1},
+mutations:[{filter:kleidouchos,mutate:promise,level:1}],
+craftable:true},
+
+{id:"apostlelantern.kleidouchos.persuaded.hint",
+actionId:"talk",
+label:"Speak to the Woman in Black-and-White",
+startdescription:"'Is it time? Hurry, please.'",
+requirements:{kleidouchos:1,promise:1},
+hintonly:true}
 
 
 
