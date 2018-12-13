@@ -228,10 +228,14 @@ aspects:{tool:1}
 	},
 {id: "apostlelantern.pillar2",
 label: "The Crossroads",
-description: "FNORD"
+slots:[{id:"keydream",label:"A Dream of a Key",required:{apostlelantern.pillarfuel:1},actionId:dream},
+{id:"lanterninfluence",label:"A Dream of Light",required:{influencelanterng:1},actionId:dream}],
+description: "FNORD",
+aspects:{way:1}
 	},
 	{id: "apostlelantern.pillar3",
 label: "The Light",
+slots:[{id:"fascination",label:"The Bait",required:{fascination:1},actionId:study}],
 description: "FNORD",
 aspects:{influence:1},
 xtriggers:{renew.apostlelantern.pillar3:apostlelantern.pillar3},
