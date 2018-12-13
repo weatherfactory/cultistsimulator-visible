@@ -102,7 +102,7 @@ decayTo:dread
 
 {id: "apostlegrail.pillar1",
 label: "Vitulation Recipe",
-description: "FNORD",
+description: "'We shall give life; we shall take life; we shall not be sated. FNORD'",
 aspects:{lore:1}
 
 	},
@@ -222,8 +222,8 @@ decayTo:fascination
 	},
 	
 	{id: "apostlelantern.pillar1",
-label: "The Third Way",
-description: "'The Three-Lobed gate opens three ways: inwards to admit new immortals to the Mansus; upwards to enter the Glory; and outwards for the Glory to enter the Mansus and the World.'",
+label: "The Third Mode",
+description: "'We shall navigate; we shall illuminate; we shall not be compassionate. Seek the Crossroads behind the Door of Eyes. Raise there the Allure. Send the silvered dead to bring the sleeping souls of mortals. When there are sufficient Witnesses, send for the Key of Days, to open the three-lobed gate Outwards, in its third mode.'",
 aspects:{tool:1}
 	},
 {id: "apostlelantern.pillar2",
@@ -234,9 +234,9 @@ description: "FNORD",
 aspects:{way:1}
 	},
 	{id: "apostlelantern.pillar3",
-label: "The Light",
+label: "The Allure",
 slots:[{id:"fascination",label:"The Bait",required:{fascination:1},actionId:study}],
-description: "FNORD",
+description: "Once seen, the Allure clings. Few living souls will ever venture this far into the Mansus. I must employ a Maid-in-the-Mirror to bring them here.",
 aspects:{influence:1},
 xtriggers:{renew.apostlelantern.pillar3:apostlelantern.pillar3},
 lifetime:180
@@ -247,7 +247,7 @@ lifetime:180
 label: "The Witnesses 1",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress2}
 	},
@@ -255,7 +255,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress2}
 label: "The Witnesses 2",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress1,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress3}
@@ -264,7 +264,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress3}
 label: "The Witnesses 3",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress2,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress4}
@@ -273,7 +273,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress4}
 label: "The Witnesses 4",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress3,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress5}
@@ -282,7 +282,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress5}
 label: "The Witnesses 5",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress4,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
@@ -291,17 +291,17 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
 label: "The Witnesses 6",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress5,
-xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress7}
+xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4}
 	},
 	
 	{id: "apostlelantern.pillar4.inprogress7",
 label: "The Witnesses 7",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdway",
+uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress6
 	},
