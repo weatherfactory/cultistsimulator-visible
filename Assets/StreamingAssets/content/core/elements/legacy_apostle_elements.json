@@ -83,10 +83,9 @@ xtriggers:{sabotage.repair:apostleforge.pillar3}
 },
 
 		{id: "legacyapostlegrailjob",
-	label: "FNORD grail apostle job",
-	description: "FNORD",
+	label: "Duty and Delight",
+	description: "Our Delight saved me from death, and also from boredom. We shall give them everything.",
 	aspects: {job:1}
-
 },
 
 
@@ -102,9 +101,8 @@ decayTo:dread
 
 {id: "apostlegrail.pillar1",
 label: "Vitulation Recipe",
-description: "'We shall give life; we shall take life; we shall not be sated. FNORD'",
+description: "'The Delight shall give life; the Delight shall take life; the Delight shall not be sated. We must purchase the secret savours and infuse them with the Hours' gifts; assemble the Host; at the most auspicious time, raise the resistless cry of the Unceasing Mysteries and share from the Chalice Murmurous.'",
 aspects:{lore:1}
-
 	},
 
 
@@ -131,15 +129,15 @@ aspects:{ingredient:1,job:1,grail:2}
 	},
 
 		{id: "apostlegrail.pillar4.inprogress1",
-label: "The Guests 1",
-description: "FNORD",
+label: "The First of the Host",
+description: "We have attracted a few gourmands and perverts for, they expect, a feast of the senses.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
 	},
 		{id: "apostlegrail.pillar4.inprogress2",
-label: "The Guests 2",
+label: "The Second of the Host",
 description: "FNORD",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -148,8 +146,8 @@ decayTo:apostlegrail.pillar4.inprogress1,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3}
 	},
 		{id: "apostlegrail.pillar4.inprogress3",
-label: "The Guests 3",
-description: "FNORD",
+label: "The Third of the Host",
+description: "",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -167,7 +165,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5}
 	},
 		{id: "apostlegrail.pillar4.inprogress5",
 label: "The Guests 5",
-description: "FNORD",
+description: "Now the name of the Vitulation is whispered wherever mouths embrace meat.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -186,7 +184,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7}
 	
 	{id: "apostlegrail.pillar4.inprogress7",
 label: "The Guests 7",
-description: "FNORD",
+description: "When the signal is given, a great Host will assemble, their eyes wide, their lips red, to feast and be feasted upon; to draw from me the precious blood of our Delight.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -209,7 +207,7 @@ aspects:{follower:1,summoned:1}
 
 		{id: "legacyapostlelanternjob",
 	label: "The First Dream",
-	description: "FNORD I don't know what I must do, exactly, but I must learn.",
+	description: "The dreams have hollowed me out like a withered oak, and now I am almost ready.",
 	aspects: {job:1}
 	},
 
@@ -270,8 +268,8 @@ decayTo:apostlelantern.pillar4.inprogress2,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress4}
 	},
 		{id: "apostlelantern.pillar4.inprogress4",
-label: "The Witnesses 4",
-description: "FNORD",
+label: "The Witnesses: Four of Seven",
+description: "The light bleaches them, but by their nature they will dapple as the moment draws near.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -279,8 +277,8 @@ decayTo:apostlelantern.pillar4.inprogress3,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress5}
 	},
 		{id: "apostlelantern.pillar4.inprogress5",
-label: "The Witnesses 5",
-description: "FNORD",
+label: "The Witnesses: Five of Seven",
+description: "Five witnesses wait for the fruit that will swell, but never ripen.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -288,8 +286,8 @@ decayTo:apostlelantern.pillar4.inprogress4,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
 	},
 		{id: "apostlelantern.pillar4.inprogress6",
-label: "The Witnesses 6",
-description: "FNORD",
+label: "The Witnesses: Six of Seven",
+description: "The air is agony; they cannot look away.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -297,18 +295,10 @@ decayTo:apostlelantern.pillar4.inprogress5,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4}
 	},
 	
-	{id: "apostlelantern.pillar4.inprogress7",
-label: "The Witnesses 7",
-description: "FNORD",
-aspects:{follower:1,summoned:1},
-uniquenessgroup:"uqthirdwaywitnesses",
-lifetime:120,
-decayTo:apostlelantern.pillar4.inprogress6
-	},
 
 	{id: "apostlelantern.pillar4",
 label: "The Cloud of Witnesses",
-description: "FNORD",
+description: "Seven silent souls softly FNORD the shining source.",
 aspects:{follower:1,summoned:1}
 	}
 
