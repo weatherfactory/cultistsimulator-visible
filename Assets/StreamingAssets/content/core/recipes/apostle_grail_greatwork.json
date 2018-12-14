@@ -10,10 +10,11 @@ effects:{apostlegrail.pillarfuel:1}
 
 
 
+
 {id:"work.apostlegrail.majorvictory",
 actionId:"work",
 label:"The Last Elements of the Vitulation",
-startdescription:"FNORD",
+startdescription:"FNORD for full release",
 description:"",
 requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1,grailflavour:1,heartflavour:1,mothflavour:1},
 warmup:60,
@@ -40,7 +41,7 @@ linked:[{id:"auctionbuy"}]},
 actionId:"work",
 label:"Prepare the Seven Graces",
 startdescription:"The scents and savours must be precisely as the Recipe dictates. Only so can I, and my colleagues, be sufficiently appetising - appetising enough to arouse a pitch of appetite not seen in the waking world.",
-requirements:{apostlegrail.pillar3:1},
+requirements:{apostlegrail.pillar3:1,ritual:-1},
 description:"FNORD done nothing.",
 slots:[{id:"enhancement",label:"Enhancement",description:"Very special additives to ensure the Vitulation goes just right.",required:{ingredientgraild:1,ingredientmothd:1,ingredientheartf:1}}],
 alt:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"},

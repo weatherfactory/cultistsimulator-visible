@@ -1,6 +1,100 @@
  {"recipes":
  [		
  
+ 
+ 
+ {id:"work.apostlelantern.majorvictory.hint5",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"We need our noble guest's co-operation.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1,toollanternf:1,kleidouchos:1},
+hintonly:true
+},
+
+ {id:"work.apostlelantern.majorvictory.hint4",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"The Gate will not open Outwards without its unlawed Key.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1,toollanternf:1},
+hintonly:true
+},
+
+ {id:"work.apostlelantern.majorvictory.hint4",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"We'll need a Watchman's Glass for our Illuminated One to enact the utmost illumination.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1},
+hintonly:true
+},
+ {id:"work.apostlelantern.majorvictory.hint3",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"Centipede always knows the way. We'll need her secrets.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1},
+hintonly:true
+},
+ {id:"work.apostlelantern.majorvictory.hint2",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"The Watchman's Eye was opened, not in the usual way, but with a knife. We will need what it bled.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1},
+hintonly:true
+},
+ {id:"work.apostlelantern.majorvictory.hint1",
+actionId:"work",
+label:"The Gate Opens Outwards?",
+startdescription:"Certainly the Gate might open without Witnesses, but without Witnesses to be illuminated, how can we fulfil the Watchman's enactment? The Watchman is not compassionate.",
+requirements:{apostlelantern.pillar3:1},
+hintonly:true
+},
+
+ 
+ 
+ {id:"work.apostlegrail.majorvictory.hint5",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"Our particular spices must be particularly prepared. All else is ready.",
+requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
+hintonly:true
+},
+
+{id:"work.apostlegrail.majorvictory.hint4",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"Without the Unceasing Mysteries, the Vitulation will not reach the intensity we require.",
+requirements:{influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
+hintonly:true
+},
+
+{id:"work.apostlegrail.majorvictory.hint3",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"We need the most powerful Grail influence we can muster.",
+requirements:{apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1},
+hintonly:true
+},
+
+{id:"work.apostlegrail.majorvictory.hint2",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"No Vitulation would be a Vitulation without the Chalice Murmurous.",
+requirements:{apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1},
+hintonly:true
+},
+{id:"work.apostlegrail.majorvictory.hint1",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"We cannot begin the Vitulation without sufficient guests. Our Delight cannot go hungry.",
+requirements:{apostlegrail.pillar2:1,apostlegrail.pillar3:1},
+hintonly:true
+},
+{id:"work.apostlegrail.majorvictory.hint0",
+actionId:"work",
+label:"The Last Elements of the Vitulation?",
+startdescription:"We cannot begin the Vitulation without the correct flavouring, for myself and for the others of the Host.",
+requirements:{apostlegrail.pillar2:1},
+hintonly:true
+},
  	{id:"workbenefactorhint",
 	label: "Private Performances?",
 	actionId:"work",
@@ -492,6 +586,10 @@
 				
 
 
+
+				
+				
+				
 		{
         id: "ritehint",
         label: "Rites",

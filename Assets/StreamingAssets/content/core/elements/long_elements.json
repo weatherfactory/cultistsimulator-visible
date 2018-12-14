@@ -34,7 +34,7 @@
 				 {
         id: "welland",
             label: "Captain Welland",
-            description: "FNORD",
+            description: "'This is no Noble Endeavour. We'll have no Jack-come-quickly jumping up the House ranks.'",
 			aspects:{long.enemy:1,long.preference.assault:1}
         },
 				 {
@@ -46,15 +46,15 @@
 		
 				 {
         id: "diarist",
-            label: "A Shadowy Presence",
-            description: "FNORD",
+            label: "The Diarist",
+            description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.'",
 			aspects:{long.enemy:1,long.preference.dreams:1}
         },
 		
 				 {
         id: "julian",
-            label: "A Shadowy Presence",
-            description: "FNORD",
+            label: "J.C.",
+            description: "'No more Names. That's it; I'm sorry; I don't have time to make conversation.'",
 			aspects:{long.enemy:1},
         },
 		
@@ -106,14 +106,14 @@ icon:"contentment"
 
 		{id:"strategy.assault.revealed",
 label:"The Long's Plans Revealed: Assault",
-description:"FNORD",
+description:"Our enemy intends a direct attack of some kind,this time.",
 aspects:{intention.assault:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
 icon:"health"
 },
 {id:"strategy.intrigue.revealed",
 label:"The Long's Plans Revealed: intrigue",
-description:"FNORD",
+description:"Our enemy intends to use trickery against us, this time.",
 aspects:{intention.intrigue:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
 icon:"reason"
@@ -121,7 +121,7 @@ icon:"reason"
 },
 {id:"strategy.dreams.revealed",
 label:"The Long's Plans Revealed: Dreams",
-description:"FNORD",
+description:"Our enemy will find us through the Mansus, this time.",
 aspects:{intention.dreams:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
 icon:"passion"
