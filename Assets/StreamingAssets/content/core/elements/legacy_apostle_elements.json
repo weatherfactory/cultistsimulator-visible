@@ -129,16 +129,16 @@ aspects:{ingredient:1,job:1,grail:2}
 	},
 
 		{id: "apostlegrail.pillar4.inprogress1",
-label: "The First of the Host",
-description: "We have attracted a few gourmands and perverts for, they expect, a feast of the senses.",
+label: "The First Fragments of the Host",
+description: "We have attracted a few gourmands and perverts. They will expect a feast of the senses.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
 	},
 		{id: "apostlegrail.pillar4.inprogress2",
-label: "The Second of the Host",
-description: "FNORD",
+label: "The Second Fragments of the Host",
+description: "Word spreads. Curiosity and appetite will drive strangers to attend our Vitulation.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -146,7 +146,7 @@ decayTo:apostlegrail.pillar4.inprogress1,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3}
 	},
 		{id: "apostlegrail.pillar4.inprogress3",
-label: "The Third of the Host",
+label: "The Third Fragments of the Host",
 description: "",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -155,8 +155,8 @@ decayTo:apostlegrail.pillar4.inprogress2,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4}
 	},
 		{id: "apostlegrail.pillar4.inprogress4",
-label: "The Guests 4",
-description: "FNORD",
+label: "The Fourth Fragments of the Host",
+description: "The hungry, the greedy, the curious: they have received our invitation.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -164,7 +164,7 @@ decayTo:apostlegrail.pillar4.inprogress3,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5}
 	},
 		{id: "apostlegrail.pillar4.inprogress5",
-label: "The Guests 5",
+label: "The Fifth Fragments of the Host",
 description: "Now the name of the Vitulation is whispered wherever mouths embrace meat.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -173,8 +173,8 @@ decayTo:apostlegrail.pillar4.inprogress4,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6}
 	},
 		{id: "apostlegrail.pillar4.inprogress6",
-label: "The Guests 6",
-description: "FNORD",
+label: "The Sixth Fragments of the Host",
+description: "When the time comes, our guests will throng like rats.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -183,8 +183,8 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7}
 	},
 	
 	{id: "apostlegrail.pillar4.inprogress7",
-label: "The Guests 7",
-description: "When the signal is given, a great Host will assemble, their eyes wide, their lips red, to feast and be feasted upon; to draw from me the precious blood of our Delight.",
+label: "The Host, Assembled",
+description: "We await only the Key-holder, who must open the Kingskin Gate when our Delight enacts the Grail.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -193,7 +193,7 @@ decayTo:apostlegrail.pillar4.inprogress6
 
 	{id: "apostlegrail.pillar4",
 label: "The Guests: Complete",
-description: "FNORD Complete",
+description: "When the signal is given, a great Host will assemble, their eyes so wide - their mouths so wide - to feast and be feasted upon - to draw from me the blood of our Delight. Our very Delight shall lead them in their feasting, and the Lady of Wires shall turn her Key.",
 aspects:{follower:1,summoned:1}
 	},
 
@@ -213,7 +213,7 @@ aspects:{follower:1,summoned:1}
 
 {id: "apostlelantern.pillarfuel",
 label: "A Dream of a Key",
-description: "The dream, again. Instructions for me, and perhaps for someone else, if I can find them. FNORD",
+description: "The dream, again. Instructions for me, and for someone else, if I can find them. It will guide me into the Mansus. It will show me what I need to do. It is a presentiment of the true Key, for those who know something of the Glory.",
 lifetime:60,
 aspects:{tool:1},
 decayTo:fascination
@@ -225,10 +225,10 @@ description: "'We shall navigate; we shall illuminate; we shall not be compassio
 aspects:{tool:1}
 	},
 {id: "apostlelantern.pillar2",
-label: "The Crossroads",
+label: "The Lesser Crossroads",
 slots:[{id:"keydream",label:"A Dream of a Key",required:{apostlelantern.pillarfuel:1},actionId:dream},
 {id:"lanterninfluence",label:"A Dream of Light",required:{influencelanterng:1},actionId:dream}],
-description: "FNORD",
+description: "A pair of knotted roads beneath the shadow of a tree, and the eye of the Tricuspid Gate, close to the head of the Ascent of Knives. The Concursum's shadow? Its reflection? Its sister?",
 aspects:{way:1}
 	},
 	{id: "apostlelantern.pillar3",
@@ -287,7 +287,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
 	},
 		{id: "apostlelantern.pillar4.inprogress6",
 label: "The Witnesses: Six of Seven",
-description: "The air is agony; they cannot look away.",
+description: "The air is agony. They cannot look away.",
 aspects:{follower:1,summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -298,7 +298,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4}
 
 	{id: "apostlelantern.pillar4",
 label: "The Cloud of Witnesses",
-description: "Seven silent souls softly FNORD the shining source.",
+description: "Seven silent souls softly supplicate shining source.",
 aspects:{follower:1,summoned:1}
 	}
 
