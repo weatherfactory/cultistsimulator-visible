@@ -685,46 +685,49 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
 
-            //deckspec
-            var thisDeckSpec = new List<string>();
-            try
+            var d = PopulateDeckSpec(htEachDeck, htEachDeck["id"].ToString());
+
+            DeckSpecs.Add(d.Id, d);
+        }
+
+    }
+
+    private DeckSpec PopulateDeckSpec(Hashtable htEachDeck,string deckId)
+    {
+//deckspec
+        var thisDeckSpec = new List<string>();
+        try
+        {
+            ArrayList htDeckSpec = htEachDeck.GetArrayList(NoonConstants.KDECKSPEC);
+            if (htDeckSpec != null)
             {
-                ArrayList htDeckSpec = htEachDeck.GetArrayList(NoonConstants.KDECKSPEC);
-                if (htDeckSpec != null)
-                {
-                    foreach (string v in htDeckSpec)
-                    {
-                        if(!v.Contains(NoonConstants.DECK_PREFIX))
-                            LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
-
-
-                            thisDeckSpec.Add(v);
-                    }
-                }
+                foreach (string v in htDeckSpec)
+                    thisDeckSpec.Add(v);
             }
-            catch (Exception e)
-            {
-                LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
-            }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                       "' - " + e.Message);
+        }
 
 
-            bool resetOnExhaustion=false;
-            try
-            {
-                resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
-            }
-            catch (Exception e)
-            {
-                LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
-            }
+        bool resetOnExhaustion = false;
+        try
+        {
+            resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                       "' - " + e.Message);
+        }
 
-            string defaultCardId = "";
-            //if we reset on exhaustion, we'll never see a default card, and we don't want
-            //to throw an error on failing to import an unset default card.
-            //Of course someone could have no default card and resetonexhaustion = false, but that's fundamentally their problem.
-            if (!resetOnExhaustion)
+        string defaultCardId = "";
+        //if we reset on exhaustion, we'll never see a default card, and we don't want
+        //to throw an error on failing to import an unset default card.
+        //Of course someone could have no default card and resetonexhaustion = false, but that's fundamentally their problem.
+        if (!resetOnExhaustion)
             try
             {
                 defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
@@ -735,58 +738,53 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                            "' - " + e.Message);
             }
 
+  
+
+        DeckSpec d = new DeckSpec(deckId, thisDeckSpec, defaultCardId, resetOnExhaustion);
 
 
-            DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
-
-
-
-            try
+        try
+        {
+            Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DRAWMESSAGES);
+            if (htDrawMessages != null)
             {
-                Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DRAWMESSAGES);
-                if (htDrawMessages != null)
-                {
-                    d.DrawMessages = NoonUtility.HashtableToStringStringDictionary(htDrawMessages);
+                d.DrawMessages = NoonUtility.HashtableToStringStringDictionary(htDrawMessages);
 
-                    foreach (var drawmessagekey in d.DrawMessages.Keys)
-                    {
-                        if(!d.StartingCards.Contains(drawmessagekey))
-                        LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey + ", but that card isn't in the list of drawable cards.");
-                    }
+                foreach (var drawmessagekey in d.DrawMessages.Keys)
+                {
+                    if (!d.StartingCards.Contains(drawmessagekey))
+                        LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
+                                   ", but that card isn't in the list of drawable cards.");
                 }
             }
-            catch (Exception e)
-            {
-                LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
-            }
-
-            try
-            {
-                Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DEFAULTDRAWMESSAGES);
-                if (htDefaultDrawMessages != null)
-                {
-                    d.DefaultDrawMessages = NoonUtility.HashtableToStringStringDictionary(htDefaultDrawMessages);
-
-                }
-            }
-            catch (Exception e)
-            {
-                LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
-            }
-
-
-            if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
-               d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
-            if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
-                d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
-
-                DeckSpecs.Add(d.Id, d);
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                       "' - " + e.Message);
         }
 
-    }
+        try
+        {
+            Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DEFAULTDRAWMESSAGES);
+            if (htDefaultDrawMessages != null)
+            {
+                d.DefaultDrawMessages = NoonUtility.HashtableToStringStringDictionary(htDefaultDrawMessages);
+            }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                       "' - " + e.Message);
+        }
 
+
+        if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
+            d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
+        if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
+            d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
+        return d;
+    }
 
 
     public void ImportLegacies()
@@ -1035,7 +1033,22 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
             }
 
+
             htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
+            
+
+            ///////////INTERNAL DECKS - NB the deck is not stored with the recipe
+
+            var htInternalDeck = htEachRecipe.GetHashtable("internaldeck");
+            if(htInternalDeck!=null)
+            {
+                string internalDeckId = "deck." + r.Id;
+                var internalDeck=PopulateDeckSpec(htInternalDeck,internalDeckId);
+                r.DeckEffects.Add(internalDeckId,1);
+                DeckSpecs.Add(internalDeckId,internalDeck);
+            }
+
+
             /////////////////////////////////////////////
             //SLOTS
             try
@@ -1195,8 +1208,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
 
-
-
             //Finished! Import, tidy up.
             Recipes.Add(r);
 
@@ -1332,6 +1343,16 @@ foreach(var d in _compendium.GetAllDeckSpecs())
         CountWords();
         LogMissingImages();
         LogFnords();
+
+        foreach (var kvp in DeckSpecs)
+        {
+            foreach (var c in kvp.Value.StartingCards)
+            {
+                if (!c.Contains(NoonConstants.DECK_PREFIX))
+                    LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
+            }
+        }
+      
 #endif
 
 
