@@ -738,9 +738,23 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                            "' - " + e.Message);
             }
 
-  
 
         DeckSpec d = new DeckSpec(deckId, thisDeckSpec, defaultCardId, resetOnExhaustion);
+
+
+        try
+        {
+            if (htEachDeck.GetValue(NoonConstants.KDECKDEFAULTDRAWS) != null)
+            {
+                var defaultDraws = Convert.ToInt32(htEachDeck.GetValue(NoonConstants.KDECKDEFAULTDRAWS));
+                d.DefaultDraws = defaultDraws;
+            }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing defaultDraws  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                       "' - " + e.Message);
+        }
 
 
         try
@@ -1039,13 +1053,15 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             ///////////INTERNAL DECKS - NB the deck is not stored with the recipe
 
-            var htInternalDeck = htEachRecipe.GetHashtable("internaldeck");
+            var htInternalDeck = htEachRecipe.GetHashtable(NoonConstants.KINTERNALDECK);
             if(htInternalDeck!=null)
             {
                 string internalDeckId = "deck." + r.Id;
                 var internalDeck=PopulateDeckSpec(htInternalDeck,internalDeckId);
-                r.DeckEffects.Add(internalDeckId,1);
+                r.DeckEffects.Add(internalDeckId,internalDeck.DefaultDraws);
                 DeckSpecs.Add(internalDeckId,internalDeck);
+
+                htEachRecipe.Remove(NoonConstants.KINTERNALDECK);
             }
 
 

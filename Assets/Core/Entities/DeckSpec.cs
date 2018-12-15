@@ -53,6 +53,11 @@ namespace Assets.Core.Entities
         public List<string> StartingCards { get; set; }
         public string DefaultCardId { get; set; }
         public bool ResetOnExhaustion { get; set; }
+
+     /// <summary>
+     /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
+     /// </summary>
+        public int DefaultDraws { get; set; }
         public string Label { get; set; }
         public string Description { get; set; }
         public Dictionary<string,string> DrawMessages { get; set; }
@@ -68,6 +73,7 @@ namespace Assets.Core.Entities
             DrawMessages = new Dictionary<string, string>();
             DefaultDrawMessages = new Dictionary<string, string>();
             _uniquenessGroupsWithCards=new Dictionary<string, List<string>>();
+            DefaultDraws = 1;
         }
 
 

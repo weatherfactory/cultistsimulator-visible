@@ -58,6 +58,7 @@ namespace Noon
         public const string KDECKSPEC_DRAWMESSAGES = "drawmessages";
         public const string KDECKSPEC_DEFAULTDRAWMESSAGES = "defaultdrawmessages";
         public const string KDECKDEFAULTCARD = "defaultcard";
+        public const string KDECKDEFAULTDRAWS = "draws";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public static string KICON="icon";
         public static string KEXPULSION="expulsion";

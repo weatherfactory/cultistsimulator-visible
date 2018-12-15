@@ -3,41 +3,20 @@
  {id:"internaldecktest",
  actionId:"test",
  label:"x",
- internaldeck: 	{label:"Acquaintances",
-	description:"So many people in the world, and so few worth knowing.",
+ startdescription:"?",
+ description:"!",
+ internaldeck: 	{label:"Select Acquaintances",
+	description:"Hullo",
 	spec:
 	[
-	"auclair_a",
 	"cat_a",
 	"clifton_a",
 	"slee_a",			
 	"elridge_a",
-	"laidlaw_a",
-	"porter_a",
-	"renira_a",
-	"saliba_a",
-	"sylvia_a",
-	"valciane_a",
-	"violet_a",
-	"ysabet_a",
-	"clovette_a",
-	"tristan_a",
-	"dorothy_a",
-		"enid_a",
-		"rose_a",
-		"leo_a",
-		"neville_a",
-		"victor_a",
-		"generic_a_edge",
-		"generic_a_forge",
-		"generic_a_grail",
-		"generic_a_heart",
-		"generic_a_knock",
-		"generic_a_lantern",
-		"generic_a_moth",
-		"generic_a_winter"
+	"laidlaw_a"
 		],
-defaultcard: "mistakenidentity"	
+defaultcard: "mistakenidentity",
+draws:2
 }
 	},
 
