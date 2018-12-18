@@ -131,7 +131,7 @@ aspects:{ingredient:1,job:1,grail:2}
 		{id: "apostlegrail.pillar4.inprogress1",
 label: "The First Fragments of the Host",
 description: "We have attracted a few gourmands and perverts. They will expect a feast of the senses.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
@@ -139,7 +139,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
 		{id: "apostlegrail.pillar4.inprogress2",
 label: "The Second Fragments of the Host",
 description: "Word spreads. Curiosity and appetite will drive strangers to attend our Vitulation.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress1,
@@ -148,7 +148,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3}
 		{id: "apostlegrail.pillar4.inprogress3",
 label: "The Third Fragments of the Host",
 description: "",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress2,
@@ -157,7 +157,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4}
 		{id: "apostlegrail.pillar4.inprogress4",
 label: "The Fourth Fragments of the Host",
 description: "The hungry, the greedy, the curious: they have received our invitation.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress3,
@@ -166,7 +166,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5}
 		{id: "apostlegrail.pillar4.inprogress5",
 label: "The Fifth Fragments of the Host",
 description: "Now the name of the Vitulation is whispered wherever mouths embrace meat.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress4,
@@ -175,7 +175,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6}
 		{id: "apostlegrail.pillar4.inprogress6",
 label: "The Sixth Fragments of the Host",
 description: "When the time comes, our guests will throng like rats.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress5,
@@ -185,7 +185,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7}
 	{id: "apostlegrail.pillar4.inprogress7",
 label: "The Host, Assembled",
 description: "We await only the Key-holder, who must open the Kingskin Gate when our Delight enacts the Grail.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress6
@@ -194,7 +194,7 @@ decayTo:apostlegrail.pillar4.inprogress6
 	{id: "apostlegrail.pillar4",
 label: "The Host and the Guests",
 description: "When the signal is given, a great Host will assemble, their eyes so wide - their mouths so wide - to feast and be feasted upon - to draw from me the blood of our Delight. Our very Delight shall lead them in their feasting, and the Lady of Wires shall turn her Key.",
-aspects:{follower:1,summoned:1}
+aspects:{summoned:1}
 	},
 
 			{id: "apostlelantern.mentor",
@@ -234,7 +234,7 @@ aspects:{way:1}
 	{id: "apostlelantern.pillar3",
 label: "The Allure",
 slots:[{id:"fascination",label:"The Bait",required:{fascination:1},actionId:study}],
-description: "Once seen, the Allure clings. Few living souls will ever venture this far into the Mansus. I must employ a Maid-in-the-Mirror to bring them here.",
+description: "Once seen, the Allure clings. Few living souls will ever venture this far into the Mansus. I must employ a Maid-in-the-Mirror and show her the Allure, so that she will know to bring them here.",
 aspects:{influence:1},
 xtriggers:{renew.apostlelantern.pillar3:apostlelantern.pillar3},
 lifetime:180
@@ -244,7 +244,7 @@ lifetime:180
 		{id: "apostlelantern.pillar4.inprogress1",
 label: "The Witnesses: One of Seven",
 description: "A solitary figure, swaying at the Crossroads in the golden light of the Allure, the blue of the Mansus.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress2}
@@ -252,7 +252,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress2}
 		{id: "apostlelantern.pillar4.inprogress2",
 label: "The Witnesses: Two of Seven",
 description: "A Witness-pair, swaying at the Crossroads in the golden light of the Allure, the blue of the Mansus.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress1,
@@ -261,7 +261,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress3}
 		{id: "apostlelantern.pillar4.inprogress3",
 label: "The Witnesses: Three of Seven",
 description: "Their faces are blanker than ever, but they have taken each others' hands",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress2,
@@ -270,7 +270,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress4}
 		{id: "apostlelantern.pillar4.inprogress4",
 label: "The Witnesses: Four of Seven",
 description: "The light bleaches them, but by their nature they will dapple as the moment draws near.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress3,
@@ -279,7 +279,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress5}
 		{id: "apostlelantern.pillar4.inprogress5",
 label: "The Witnesses: Five of Seven",
 description: "Five witnesses wait for the fruit that will swell, but never ripen.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress4,
@@ -288,7 +288,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4.inprogress6}
 		{id: "apostlelantern.pillar4.inprogress6",
 label: "The Witnesses: Six of Seven",
 description: "The air is agony. They cannot look away.",
-aspects:{follower:1,summoned:1},
+aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
 decayTo:apostlelantern.pillar4.inprogress5,
@@ -299,7 +299,7 @@ xtriggers:{cloudwitnessesupgrade:apostlelantern.pillar4}
 	{id: "apostlelantern.pillar4",
 label: "The Cloud of Witnesses",
 description: "Seven silent souls softly supplicate shining source.",
-aspects:{follower:1,summoned:1}
+aspects:{summoned:1}
 	}
 
 

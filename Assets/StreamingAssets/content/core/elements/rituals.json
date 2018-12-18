@@ -128,7 +128,7 @@
             aspects:
             {ritual:1},
 			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, description: "Something to be lost.", consumes:true},
-			{id:"Offering",actionId: "work",required: {follower:1,prisoner:1},description: "Something to be lost.", consumes:true},
+			{id:"Offering",actionId: "work",required: {follower:1,prisoner:1,summoned:1},description: "Something to be lost.", consumes:true},
 			{id:"Surrender",actionId: "work",required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Dissolution",actionId: "work",required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Grief",actionId: "work",required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
