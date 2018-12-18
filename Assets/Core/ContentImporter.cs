@@ -980,7 +980,52 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
             }
 
+            //TABLE REQS
+
             htEachRecipe.Remove(NoonConstants.KREQUIREMENTS);
+
+            try
+            {
+                Hashtable htTableReqs = htEachRecipe.GetHashtable(NoonConstants.KTABLEREQS);
+                if (htTableReqs != null)
+                {
+                    foreach (string k in htTableReqs.Keys)
+                    {
+                        LogIfNonexistentElementId(k, r.Id, "(table requirements)");
+                        r.TableReqs.Add(k, Convert.ToInt32(htTableReqs[k]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing table requirements for recipe '" + r.Id + "' - " + e.Message);
+            }
+
+
+            htEachRecipe.Remove(NoonConstants.KTABLEREQS);
+
+
+            //extant REQS
+
+            try
+            {
+                Hashtable htExtantReqs = htEachRecipe.GetHashtable(NoonConstants.KEXTANTREQS);
+                if (htExtantReqs != null)
+                {
+                    foreach (string k in htExtantReqs.Keys)
+                    {
+                        LogIfNonexistentElementId(k, r.Id, "(extant requirements)");
+                        r.ExtantReqs.Add(k, Convert.ToInt32(htExtantReqs[k]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing extant requirements for recipe '" + r.Id + "' - " + e.Message);
+            }
+
+
+            htEachRecipe.Remove(NoonConstants.KEXTANTREQS);
 
             /////////////////////////////////////////////
 

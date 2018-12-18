@@ -28,6 +28,8 @@ public class Recipe
     public string Id { get; set; }
     public string ActionId { get; set; }
     public Dictionary<string, int> Requirements { get; set; }
+    public Dictionary<string, int> TableReqs { get; set; }
+    public Dictionary<string, int> ExtantReqs { get; set; }
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
     public List<MutationEffect> MutationEffects { get; set; }
@@ -100,6 +102,8 @@ public class Recipe
     public Recipe()
     {
         Requirements = new Dictionary<string, int>();
+        TableReqs = new Dictionary<string, int>();
+        ExtantReqs = new Dictionary<string, int>();
         Effects = new Dictionary<string, int>();
         AlternativeRecipes = new List<LinkedRecipeDetails>();
         LinkedRecipes=new List<LinkedRecipeDetails>();

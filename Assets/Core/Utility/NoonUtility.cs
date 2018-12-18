@@ -39,6 +39,8 @@ namespace Noon
         public const string KSIGNALIMPORTANTLOOP = "signalimportantloop";
         public const string KWARMUP = "warmup";
         public const string KREQUIREMENTS = "requirements";
+        public const string KTABLEREQS = "tablereqs";
+        public const string KEXTANTREQS = "extantreqs";
         public const string KEFFECTS = "effects";
         public const string KMUTATIONS = "mutations";
         public const string KDECKEFFECT = "deckeffect";
