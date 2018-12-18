@@ -611,7 +611,7 @@ namespace Assets.TabletopUi {
             var allAspects = GetAspectsAvailableToSituation(true);
 
             situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
-            ITabletopManager ttm=new TabletopManager();
+            ITabletopManager ttm = Registry.Retrieve<ITabletopManager>();
 
             var context = ttm.GetAspectsInContext(allAspects);
 
