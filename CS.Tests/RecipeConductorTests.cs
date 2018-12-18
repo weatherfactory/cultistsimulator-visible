@@ -84,7 +84,7 @@ namespace Assets.Editor.Tests
 
 
             mockDice.Rolld100(Arg.Any<Recipe>()).Returns(100);
-            rc =new RecipeConductor(compendium,null, mockDice, new Character(null));
+            rc =new RecipeConductor(compendium,AspectsInContext.DummyAspectsInContext(), mockDice, new Character(null));
             var loopedRecipe = rc.GetLinkedRecipe(primaryRecipe);
 
             Assert.AreEqual(secondaryRecipe.Id, loopedRecipe.Id);

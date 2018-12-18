@@ -895,8 +895,8 @@ namespace Assets.CS.TabletopUI {
 
             AspectsInContext aspectsInContext=new AspectsInContext(aspectsInSituation,tabletopAspects, allAspectsExtant);
 
-            Profiler.EndSample();
-            
+            return aspectsInContext;
+
         }
 
 		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {

@@ -73,7 +73,7 @@ namespace Assets.Editor.Tests
             primaryRecipe.Requirements.Add("e", 2);
 
             var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(aspects, new AspectsDictionary(), new AspectsDictionary()), ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
 
@@ -84,7 +84,7 @@ namespace Assets.Editor.Tests
             primaryRecipe.Requirements.Add("e", -1); //-1 means 'should have none of this aspect.'
 
             var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(aspects, new AspectsDictionary(), new AspectsDictionary()), ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
 
@@ -94,7 +94,7 @@ namespace Assets.Editor.Tests
             AspectsDictionary aspects = new AspectsDictionary {{"e", 3}};
             primaryRecipe.Requirements.Add("e", -3); //'less than 3'
             var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(aspects, new AspectsDictionary(), new AspectsDictionary()), ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
 
@@ -104,7 +104,53 @@ namespace Assets.Editor.Tests
             AspectsDictionary aspects = new AspectsDictionary {{"e", 2}};
             primaryRecipe.Requirements.Add("e", -3); //'less than 3'
             var resultRecipe =
-                compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(aspects, new AspectsDictionary(), new AspectsDictionary()), ACTIONID, new Character(null), false);
+            Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
+        }
+
+        [Test]
+        public void RecipePrediction_ExcludesRecipeWithUnsatisfiedTableReq()
+        {
+            AspectsDictionary aspectsOnTable = new AspectsDictionary { };
+            primaryRecipe.TableReqs.Add("t",1);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(new AspectsDictionary(), aspectsOnTable, new AspectsDictionary()), ACTIONID, new Character(null), false);
+            Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
+
+        }
+
+        [Test]
+        public void RecipePrediction_IncludesRecipeWithSatisfiedTableReq()
+        {
+            AspectsDictionary aspectsOnTable = new AspectsDictionary { { "t", 1 } };
+            primaryRecipe.TableReqs.Add("t", 1);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(new AspectsDictionary(), aspectsOnTable, new AspectsDictionary()), ACTIONID, new Character(null), false);
+
+            Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
+        }
+
+
+
+        [Test]
+        public void RecipePrediction_ExcludesRecipeWithUnsatisfiedExtantReq()
+        {
+            AspectsDictionary aspectsOnExtant = new AspectsDictionary { };
+            primaryRecipe.ExtantReqs.Add("t", 1);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(new AspectsDictionary(), new AspectsDictionary(), aspectsOnExtant), ACTIONID, new Character(null), false);
+            Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
+
+        }
+
+        [Test]
+        public void RecipePrediction_IncludesRecipeWithSatisfiedExtantReq()
+        {
+            AspectsDictionary aspectsOnExtant = new AspectsDictionary { { "t", 1 } };
+            primaryRecipe.ExtantReqs.Add("t", 1);
+            var resultRecipe =
+                compendium.GetFirstRecipeForAspectsWithVerb(new AspectsInContext(new AspectsDictionary(), new AspectsDictionary(), aspectsOnExtant), ACTIONID, new Character(null), false);
+
             Assert.AreEqual(primaryRecipe.Id, resultRecipe.Id);
         }
 
