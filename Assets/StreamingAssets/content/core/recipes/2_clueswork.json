@@ -1,7 +1,64 @@
  {"recipes":
  [		
  
+  
+ {id:"work.apostleforge.majorvictory.hint5",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core, its fuel, the Compass, the Key, the Mysteries of Opening. Now we require only the season of the Forge's most furious incandescence.",
+requirements:{apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1,fragmentknockg:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
  
+ 
+ {id:"work.apostleforge.majorvictory.hint4",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core, its fuel, the Compass, the Key. Even all these will not be enough. We must prepare the way for our Shaper with the Mysteries of Opening. ",
+requirements:{apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
+ 
+ 
+  
+ {id:"work.apostleforge.majorvictory.hint3",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core, its fuel, the Compass. We still need the Biting Key.",
+requirements:{apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
+
+ {id:"work.apostleforge.majorvictory.hint2",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core and its fuel. We need our blinded Compass, to find the flaw in the world.",
+requirements:{apostleforge.pillar2:1,apostleforge.pillar3:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
+
+ {id:"work.apostleforge.majorvictory.hint1",
+actionId:"work",
+label:"The Last Pieces of the Great Work?",
+startdescription:"We have the Core: we must have blue gold to feed it.",
+requirements:{apostleforge.pillar2:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
  
  {id:"work.apostlelantern.majorvictory.hint5",
 actionId:"work",
