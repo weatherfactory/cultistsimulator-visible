@@ -34,6 +34,14 @@ craftable:true,
 linked:[{id:"auctionbuy"}]},
 
 
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
+actionId:"work",
+label:"The Seven Graces are Prepared",
+startdescription:"The Seven Graces and the Three Savours: the Salt, the Sweet, the Sweetest. We who are the choicest of the Host shall so annoint ourselves.",
+requirements:{apostlegrail.pillar3:1,grailflavour:1,heartflavour:1,mothflavour:1},
+craftable:true,
+comments: "NB this is both craftable *and* linked, and precedes the main cooking recipe, in case the player tries to keep working on the Graces once it's done."
+},
 
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3",
 actionId:"work",
@@ -45,16 +53,10 @@ slots:[{id:"enhancement",label:"Enhancement",description:"Very special additives
 alt:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"},
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail"},
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart"},
-{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"},],
+{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth"}],
 warmup:60,
 craftable:true},
 
-{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
-actionId:"work",
-label:"The Seven Graces are Prepared",
-startdescription:"The Salt, the Sweet, the Sweetest",
-requirements:{grailflavour:1,heartflavour:1,mothflavour:1},
-},
 
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
 actionId:"work",
@@ -62,7 +64,8 @@ label:"The Flowermaker's Gift",
 startdescription:"If we die, yet shall we live on in those who slew us.",
 requirements:{ingredientgraild:1,grailflavour:-1},
 effects:{ingredientgraild:-1},
-mutations:[{filter:apostlegrail.pillar3,mutate:grailflavour,level:1}]
+mutations:[{filter:apostlegrail.pillar3,mutate:grailflavour,level:1}],
+linked:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"}]
 },
 
 
@@ -72,7 +75,8 @@ label:"Janus' Savour",
 startdescription:"Janus is the god that rose not, but reigns. Janus is the saint that died not, but is dead. Janus is the door between what cannot be, and what must be.",
 requirements:{ingredientheartf:1,heartflavour:-1},
 effects:{ingredientheartf:-1},
-mutations:[{filter:apostlegrail.pillar3,mutate:heartflavour,level:1}]
+mutations:[{filter:apostlegrail.pillar3,mutate:heartflavour,level:1}],
+linked:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"}]
 },
 
 {id:"work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
@@ -81,7 +85,8 @@ label:"The Black-Flax's Savour",
 startdescription:"It is necessary that we forget what we were.",
 requirements:{ingredientmothd:1,mothflavour:-1},
 effects:{ingredientmothd:-1},
-mutations:[{filter:apostlegrail.pillar3,mutate:mothflavour,level:1}]
+mutations:[{filter:apostlegrail.pillar3,mutate:mothflavour,level:1}],
+linked:[{id:"work.apostlegrail.upgrade.apostlegrail.pillar3.finished"}]
 },
 
 
