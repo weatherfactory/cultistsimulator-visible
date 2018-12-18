@@ -52,7 +52,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         DraggableToken.onChangeDragState -= HandleDragStateChanged;
     }
 
-    #region -- AbstractTokenContainer -------------------------------------------
+
 
     public override void DisplayHere(DraggableToken token, Context context) {
         // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
@@ -111,10 +111,9 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
     }
 
-    #endregion
 
-    #region -- Drag Reactions & Highlighting -------------------------------------------
 
+  
     void HandleOnTableDropped() {
         if (DraggableToken.itemBeingDragged != null) {
             DraggableToken.SetReturn(false, "dropped on the background");
@@ -183,7 +182,6 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         }
     }
 
-    #endregion
 
     // Returns a rect for use by the Choreographer
     public Rect GetRect() {

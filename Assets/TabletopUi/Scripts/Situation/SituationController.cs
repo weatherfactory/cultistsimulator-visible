@@ -166,7 +166,7 @@ namespace Assets.TabletopUi {
             return situationToken.EntityId;
         }
 
-        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
+        public IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
             aspects.CombineAspects(situationWindow.GetAspectsFromStoredElements(showElementAspects));
             return aspects;
@@ -215,8 +215,11 @@ namespace Assets.TabletopUi {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
+            var ttm = Registry.Retrieve<ITabletopManager>();
+            var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
+
             RecipeConductor rc = new RecipeConductor(compendium,
-                GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
+               aspectsInContext, Registry.Retrieve<IDice>(), currentCharacter);
 
             SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
@@ -569,8 +572,11 @@ namespace Assets.TabletopUi {
                 return;
 
             // Get all aspects and find a recipe
-            IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.EntityId, currentCharacter, false);
+            IAspectsDictionary allAspectsInSituation = situationWindow.GetAspectsFromAllSlottedElements();
+            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
+        
+            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
 
             // Update the aspects in the window
             IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
@@ -585,13 +591,13 @@ namespace Assets.TabletopUi {
             }
 
             //if we can't find a matching craftable recipe, check for matching hint recipes
-            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.EntityId, currentCharacter, true); ;
+            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext, situationToken.EntityId, currentCharacter, true); ;
 
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
             if (matchingHintRecipe != null)
                 situationWindow.DisplayHintRecipeFound(matchingHintRecipe);
             //no recipe, no hint? If there are any elements in the mix, display 'try again' message
-            else if (allAspects.Count > 0)
+            else if (allAspectsInSituation.Count > 0)
                 situationWindow.DisplayNoRecipeFound();
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
@@ -605,7 +611,11 @@ namespace Assets.TabletopUi {
             var allAspects = GetAspectsAvailableToSituation(true);
 
             situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
-            var rp = GetNextRecipePrediction(allAspects);
+            ITabletopManager ttm=new TabletopManager();
+
+            var context = ttm.GetAspectsInContext(allAspects);
+
+            var rp = GetNextRecipePrediction(context);
 
             if (rp != null)
             {
@@ -625,14 +635,18 @@ namespace Assets.TabletopUi {
 
         }
 
-        private RecipePrediction GetNextRecipePrediction(IAspectsDictionary aspects) {
-            RecipeConductor rc = new RecipeConductor(compendium, aspects,
+        private RecipePrediction GetNextRecipePrediction(AspectsInContext aspectsInContext) {
+            RecipeConductor rc = new RecipeConductor(compendium, aspectsInContext,
                 new DefaultDice(), currentCharacter); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
             return SituationClock.GetPrediction(rc);
         }
 
-        public void UpdateSituationDisplayForPossiblePredictedRecipe() {
-            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
+        public void UpdateSituationDisplayForPossiblePredictedRecipe()
+        {
+            ITabletopManager ttm = Registry.Retrieve<ITabletopManager>();
+            var context = ttm.GetAspectsInContext(situationWindow.GetAspectsFromAllSlottedAndStoredElements(true));
+
+            RecipeConductor rc = new RecipeConductor(compendium, context, Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
             //Check for possible text refinements based on the aspects in context
@@ -679,11 +693,17 @@ namespace Assets.TabletopUi {
 
         public void AttemptActivateRecipe()
         {
+
+
             if (SituationClock.State != SituationState.Unstarted)
                 return;
 
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.EntityId, currentCharacter, false);
+            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
+
+
+            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext, situationToken.EntityId, currentCharacter, false);
 
             //no recipe found? get outta here
             if (recipe == null)
@@ -706,7 +726,7 @@ namespace Assets.TabletopUi {
             //(which among other things should make the starting slot unavailable
 
             RecipeConductor rc = new RecipeConductor(compendium,
-                GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
+                aspectsInContext, Registry.Retrieve<IDice>(), currentCharacter); //reusing the aspectsInContext from above
 
             SituationClock.Continue(rc, 0);
 

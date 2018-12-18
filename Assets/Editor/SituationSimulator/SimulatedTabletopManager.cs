@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -123,6 +125,11 @@ namespace Assets.Editor
 
         public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
         {
+        }
+
+        public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
+        {
+            return AspectsInContext.DummyAspectsInContext();
         }
     }
 }

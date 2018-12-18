@@ -23,6 +23,7 @@ using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Profiling;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.WSA;
@@ -875,6 +876,28 @@ namespace Assets.CS.TabletopUI {
 				ShowFXonToken("FX/CardPingEffect", stack.transform);
 			}
 		}
+
+        public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
+        {
+            
+            var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
+            var tabletopAspects=new AspectsDictionary();
+            foreach(var s in tabletopStacks)
+                tabletopAspects.CombineAspects(s.GetAspects());
+
+            var allAspectsExtant=new AspectsDictionary();
+
+            var allSituations = Registry.Retrieve<SituationsCatalogue>();
+            foreach (var s in allSituations.GetRegisteredSituations())
+                allAspectsExtant.CombineAspects(s.GetAspectsAvailableToSituation(true));
+
+            allAspectsExtant.CombineAspects(tabletopAspects);
+
+            AspectsInContext aspectsInContext=new AspectsInContext(aspectsInSituation,tabletopAspects, allAspectsExtant);
+
+            Profiler.EndSample();
+            
+        }
 
 		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<ElementStackToken>();

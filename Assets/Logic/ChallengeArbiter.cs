@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
 
 namespace Assets.Logic
 {
@@ -13,9 +14,9 @@ namespace Assets.Logic
         private const string BASE_CONVENTION_ID = "base";
         private const string ADVANCED_CONVENTION_ID = "advanced";
 
-        public ChallengeArbiter(IAspectsDictionary aspectsToConsider,LinkedRecipeDetails link)
+        public ChallengeArbiter(AspectsInContext aspectsToConsider,LinkedRecipeDetails link)
         {
-            _aspectsToConsider = aspectsToConsider;
+            _aspectsToConsider = aspectsToConsider.AspectsInSituation;
             _link = link;
         }
 

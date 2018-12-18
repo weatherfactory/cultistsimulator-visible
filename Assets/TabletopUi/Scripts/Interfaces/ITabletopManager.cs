@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -37,5 +39,6 @@ namespace TabletopUi.Scripts.Interfaces
         void SignalImpendingDoom(ISituationAnchor situationToken);
         void NoMoreImpendingDoom(ISituationAnchor situationToken);
         void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec);
+        AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation);
     }
 }

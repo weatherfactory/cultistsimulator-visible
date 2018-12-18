@@ -13,6 +13,7 @@ using System.Text;
 using System.IO;
 
 using OrbCreationExtensions;
+using UnityEngine.Networking;
 
 public class DemoCtrl : MonoBehaviour {
 	private string pathSample1 = "http://orbcreation.com/SimpleJson/Facebook.json";
@@ -380,14 +381,14 @@ public class DemoCtrl : MonoBehaviour {
 
 	private IEnumerator DownloadFile(string url, System.Action<string> result) {
 		AddToLog("Downloading "+url);
-        WWW www = new WWW(url);
+	    UnityWebRequest www = new UnityWebRequest(url);
         yield return www;
         if(www.error!=null) {
         	AddToLog(www.error);
         } else {
-        	AddToLog("Downloaded "+www.bytesDownloaded+" bytes");
+        	AddToLog("Downloaded "+www.downloadedBytes+" bytes");
         }
-       	result(www.text);
+       	result(www.downloadHandler.text);
 	}
 
 	private void ExportToFile(string exportString, string path, bool addXmlProlog) {

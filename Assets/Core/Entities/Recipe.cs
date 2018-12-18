@@ -116,23 +116,54 @@ public class Recipe
 
 
 
-    public bool RequirementsSatisfiedBy(IAspectsDictionary aspects)
+    public bool RequirementsSatisfiedBy(AspectsInContext aspectsinContext)
     {
         foreach (var req in Requirements)
         {
             if (req.Value <=-1) //this is a No More Than requirement
             {
-                if (aspects.AspectValue(req.Key) >= -req.Value)
+                if (aspectsinContext.AspectsInSituation.AspectValue(req.Key) >= -req.Value)
                     return false;
             }
-            else if (!(aspects.AspectValue(req.Key) >= req.Value))
+            else if (!(aspectsinContext.AspectsInSituation.AspectValue(req.Key) >= req.Value))
             {
                 //req >0 means there must be >=req of the element
                 return false;
             }
         }
+
+        foreach (var treq in TableReqs)
+        {
+            if (treq.Value <= -1) //this is a No More Than requirement
+            {
+                if (aspectsinContext.AspectsOnTable.AspectValue(treq.Key) >= -treq.Value)
+                    return false;
+            }
+            else if (!(aspectsinContext.AspectsOnTable.AspectValue(treq.Key) >= treq.Value))
+            {
+                //req >0 means there must be >=req of the element
+                return false;
+            }
+        }
+
+        foreach (var ereq in ExtantReqs)
+        {
+            if (ereq.Value <= -1) //this is a No More Than requirement
+            {
+                if (aspectsinContext.AspectsExtant.AspectValue(ereq.Key) >= -ereq.Value)
+                    return false;
+            }
+            else if (!(aspectsinContext.AspectsExtant.AspectValue(ereq.Key) >= ereq.Value))
+            {
+                //req >0 means there must be >=req of the element
+                return false;
+            }
+        }
+
         return true;
     }
+
+
     /// <summary>
     /// do something grander like a bong when we loop this recipe
     /// </summary>

@@ -32,11 +32,11 @@ namespace Assets.Core
     public class RecipeConductor : IRecipeConductor
     {
         private ICompendium compendium;
-        private IAspectsDictionary aspectsToConsider;
+        private AspectsInContext aspectsToConsider;
         private IDice dice;
         private Character currentCharacter;
 
-        public RecipeConductor(ICompendium c,IAspectsDictionary a,IDice d,Character character)
+        public RecipeConductor(ICompendium c,AspectsInContext a,IDice d,Character character)
         {
             compendium = c;
             aspectsToConsider = a;
