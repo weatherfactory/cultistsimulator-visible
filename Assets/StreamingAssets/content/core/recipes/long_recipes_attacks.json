@@ -150,6 +150,117 @@ aspects:{restorehealth:1}
 
 
 
+
+
+{id:"long.executestrategy.intrigue.scandal",
+actionId:"long",
+requirements:{intention.intrigue:1,strategy.prep:3,long.might:8},
+alternativerecipes:[{id:"long.executestrategy.intrigue.scandal.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+
+{id:"long.executestrategy.intrigue.follower.seduce.begin",
+actionId:"longintrigue",
+label:"FNORD",
+linked:[{id:"long.cycle",chance:100}],
+warmup:10
+},
+
+
+
+{id:"long.executestrategy.intrigue.grail.greatwork.begin",
+actionId:"longintrigue",
+label:"FNORD",
+linked:[{id:"long.cycle",chance:100}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.follower.resentment.begin",
+actionId:"longintrigue",
+label:"FNORD",
+linked:[{id:"long.cycle",chance:100}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.intrigue.detective.assist.begin",
+actionId:"longintrigue",
+label:"FNORD",
+linked:[{id:"long.cycle",chance:100}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.adversary.assist.begin",
+actionId:"longintrigue",
+label:"FNORD",
+linked:[{id:"long.cycle",chance:100}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.begin",
+actionId:"longintrigue",
+label:"FNORD seeking a notoriety poison target",
+startdescription:"Our enemy is working to expose the secrets of our followers. [If they can't find a follower, this will end quietly.]",
+slots:[{id:"follower",label:"Target",greedy:true,required:{follower:1},forbidden:{summoned:-1,poison.notoriety:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.continue"}],
+},
+
+
+
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.continue",
+actionId:"longintrigue",
+label:"Defend against Exposure?", 
+startdescription:"FNORD poisoning with notoriety now. [Use Mystique to attempt a distraction, though that isn't always successful, and may generate Notoriety. Use a Favour from Authority to shut it down immediately.]",
+description:"",
+slots:[{id:"defence",label:"Distraction",required:{mystique:1,favour:1}}],
+requirements:{follower:1},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"},
+{id:"long.executestrategy.intrigue.intrigue.poison.follower.notoriety.defendmystique.try"},
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.success",chance:100},
+]
+},
+
+
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendfavour",
+actionId:"longintrigue",
+requirements:{favour:1},
+effects:{favour:-1},
+linked:[{id:"long.executestrategy.intrigue.failure"}]},
+
+
+{id:"long.executestrategy.intrigue.intrigue.poison.follower.notoriety.defendmystique.try",
+actionId:"longintrigue",
+label:"A Distraction",
+startdescription:"FNORD attempt a distraction. [If it fails, we can keep trying. If it succeeds, it will generate Notoriety.]",
+requirements:{mystique:1},
+warmup:10,
+effects:{mystique:-1},
+linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.success",chance:70},
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.continue",chance:100}]
+},
+
+
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.success",
+actionId:"longintrigue",
+effects:{notoriety:1},
+linked:[{id:"long.executestrategy.intrigue.failure"}]},
+
+
+
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.success",
+actionId:"longintrigue",
+label:"The Public Eye",
+startdescription:"FNORD poisoned with notoriety!",
+description:"FNORD",
+mutations:[{mutate:poison.notoriety,filter:follower,level:1}]
+},
+
+
+
 {id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",
 actionId:"longintrigue",
 label:"Filthy Rumours! FNORD",
@@ -157,14 +268,15 @@ startdescription:"FNORD grab myst",
 slots:[{id:"mystique",label:"Mystique",required:{mystique:1},greedy:true}],
 comments:"If we can't find mystique, we go on trying to generate it",
 linked:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.continue",chance:100},
-{id:"long.executestrategy.intrigue.createmystique.begin",chance:100},],
+{id:"long.executestrategy.intrigue.createmystique.begin",chance:100}],
 warmup:10
 },
 
 
+
 {id:"long.executestrategy.intrigue.mystiquetonotoriety.continue",
 actionId:"longintrigue",
-label:"Defence? FNORD",
+label:"Defence? FNORD", 
 startdescription:"FNORD attacking now",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],

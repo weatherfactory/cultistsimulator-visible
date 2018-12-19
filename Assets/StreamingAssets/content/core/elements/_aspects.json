@@ -1423,6 +1423,14 @@ noartneeded:true
 {id:"renew.apostlelantern.pillar3",
 label:"Renew the Allure",
 isAspect:true
+},
+
+{id:"poison.notoriety",
+label:"Exposed",
+description: "This follower's secrets have been revealed to the public. Any time they're active, the press might take an interest.",
+isAspect:true,
+image:"reputation",
+induces:[{id:"poison.notoriety.induction",chance:70}]
 }
 
 
