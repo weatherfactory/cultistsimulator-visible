@@ -152,18 +152,14 @@ aspects:{restorehealth:1}
 
 
 
-{id:"long.executestrategy.intrigue.scandal",
+{id:"long.executestrategy.intrigue.scandal.begin",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:8},
-alternativerecipes:[{id:"long.executestrategy.intrigue.scandal.begin",chance:100,additional:true}],
-linked:[{id:"long.cycle",chance:100}]
 },
 
 
 {id:"long.executestrategy.intrigue.follower.seduce.begin",
 actionId:"longintrigue",
 label:"FNORD",
-linked:[{id:"long.cycle",chance:100}],
 warmup:10
 },
 
@@ -172,7 +168,6 @@ warmup:10
 {id:"long.executestrategy.intrigue.grail.greatwork.begin",
 actionId:"longintrigue",
 label:"FNORD",
-linked:[{id:"long.cycle",chance:100}],
 warmup:10
 },
 
@@ -181,8 +176,8 @@ actionId:"longintrigue",
 label:"FNORD seeking a resentment poison target",
 startdescription:"Our enemy is working to poison a follower's mind against us.",
 slots:[{id:"follower",label:"Target",greedy:true,required:{follower:1},forbidden:{summoned:-1}}],
-linked:[{id:"long.executestrategy.intrigue.follower.resentment.follower.continue"}, 
-{id:"long.executestrategy.intrigue.follower.resentment.hireling.continue"}],
+linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.continue"}, 
+{id:"long.executestrategy.intrigue.poison.follower.resentment.hireling.continue"}],
 warmup:10
 },
 
@@ -191,7 +186,7 @@ warmup:10
 
 
 
-{id:"long.executestrategy.intrigue.poison.follower.resentment.follower.continue",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.continue",
 actionId:"longintrigue",
 label: "Taking Black Root",
 requirements:{follower:1},
@@ -205,7 +200,7 @@ linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpass
 
 
 
-{id:"long.executestrategy.intrigue.intrigue.poison.follower.resentment.defendpassion.try",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try",
 actionId:"longintrigue",
 label:"A Passionate Defence",
 startdescription:"FNORD attempt a bringing them back round. [If it fails, we can keep trying.]",
@@ -230,7 +225,7 @@ mutations:[{mutate:resentment,filter:follower,level:1,additive:true}]
 },
 
 
-{id:"long.executestrategy.intrigue.follower.resentment.hireling.continue",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.hireling.continue",
 actionId:"longintrigue",
 label:"Professional Caution",
 startdescription:"This hireling has been persuaded or threatened into disappearing. We won't see them again.",
@@ -275,7 +270,7 @@ slots:[{id:"defence",label:"Distraction",required:{mystique:1,favour:1}}],
 requirements:{follower:1},
 warmup:10,
 linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"},
-{id:"long.executestrategy.intrigue.intrigue.poison.follower.notoriety.defendmystique.try"},
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try"},
 {id:"long.executestrategy.intrigue.poison.follower.notoriety.success",chance:100},
 ]
 },
@@ -288,7 +283,7 @@ effects:{favour:-1},
 linked:[{id:"long.executestrategy.intrigue.failure"}]},
 
 
-{id:"long.executestrategy.intrigue.intrigue.poison.follower.notoriety.defendmystique.try",
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try",
 actionId:"longintrigue",
 label:"A Distraction",
 startdescription:"FNORD attempt a distraction. [If it fails, we can keep trying. If it succeeds, it will generate Notoriety.]",
