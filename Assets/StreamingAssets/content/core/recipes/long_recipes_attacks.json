@@ -176,12 +176,68 @@ linked:[{id:"long.cycle",chance:100}],
 warmup:10
 },
 
-{id:"long.executestrategy.intrigue.follower.resentment.begin",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.begin",
 actionId:"longintrigue",
-label:"FNORD",
-linked:[{id:"long.cycle",chance:100}],
+label:"FNORD seeking a resentment poison target",
+startdescription:"Our enemy is working to poison a follower's mind against us.",
+slots:[{id:"follower",label:"Target",greedy:true,required:{follower:1},forbidden:{summoned:-1}}],
+linked:[{id:"long.executestrategy.intrigue.follower.resentment.follower.continue"}, 
+{id:"long.executestrategy.intrigue.follower.resentment.hireling.continue"}],
 warmup:10
 },
+
+
+
+
+
+
+{id:"long.executestrategy.intrigue.poison.follower.resentment.follower.continue",
+actionId:"longintrigue",
+label: "Taking Black Root",
+requirements:{follower:1},
+startdescription:"FNORD poisoning with resentment now. [Use Passion to keep them loyal. That isn't always successful, but you can keep trying as long as you have Passion.]",
+slots:[{id:"passionateargument",label:"Passionate Argument",required:{passion:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try"},
+{id:"long.executestrategy.intrigue.poison.follower.resentment.success",chance:100},
+]
+},
+
+
+
+{id:"long.executestrategy.intrigue.intrigue.poison.follower.resentment.defendpassion.try",
+actionId:"longintrigue",
+label:"A Passionate Defence",
+startdescription:"FNORD attempt a bringing them back round. [If it fails, we can keep trying.]",
+requirements:{passion:1},
+warmup:10,
+aspects:{fatiguing:1},
+linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.success",chance:70},
+{id:"long.executestrategy.intrigue.poison.follower.resentment.continue",chance:100}]
+},
+
+
+{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.success",
+actionId:"longintrigue",
+linked:[{id:"long.executestrategy.intrigue.failure"}]},
+
+
+{id:"long.executestrategy.intrigue.poison.follower.resentment.success",
+actionId:"longintrigue",
+label:"Frustration's Fruit",
+startdescription:"We are at the point, now, where I believe that my follower is not telling me everything they have heard about me.",
+mutations:[{mutate:resentment,filter:follower,level:1,additive:true}]
+},
+
+
+{id:"long.executestrategy.intrigue.follower.resentment.hireling.continue",
+actionId:"longintrigue",
+label:"Professional Caution",
+startdescription:"This hireling has been persuaded or threatened into disappearing. We won't see them again.",
+requirements:{hireling:1},
+effects:{hireling:-1},
+warmup:10},
+
 
 
 {id:"long.executestrategy.intrigue.detective.assist.begin",
@@ -202,7 +258,7 @@ warmup:10
 {id:"long.executestrategy.intrigue.poison.follower.notoriety.begin",
 actionId:"longintrigue",
 label:"FNORD seeking a notoriety poison target",
-startdescription:"Our enemy is working to expose the secrets of our followers. [If they can't find a follower, this will end quietly.]",
+startdescription:"Our enemy is working to expose the secrets of our followers. [If they can't find an unexposed follower, this will end quietly.]",
 slots:[{id:"follower",label:"Target",greedy:true,required:{follower:1},forbidden:{summoned:-1,poison.notoriety:1}}],
 warmup:10,
 linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.continue"}],

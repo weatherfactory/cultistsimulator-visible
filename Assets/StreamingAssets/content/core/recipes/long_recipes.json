@@ -148,7 +148,7 @@ linked:[
 {id:"long.refinestrategy.intrigue.scandal",chance:70},
 {id:"long.refinestrategy.intrigue.follower.seduce",chance:70},
 {id:"long.refinestrategy.intrigue.grail.greatwork",chance:70},
-{id:"long.refinestrategy.intrigue.follower.resentment",chance:70},
+{id:"long.refinestrategy.intrigue.poison.follower.resentment",chance:70},
 {id:"long.refinestrategy.intrigue.detective.assist",chance:70},
 {id:"long.refinestrategy.intrigue.adversary.assist",chance:70},
 {id:"long.refinestrategy.intrigue.poison.follower.notoriety",chance:70},
@@ -230,7 +230,7 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.scandal",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:8},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:8},
 alternativerecipes:[{id:"long.executestrategy.intrigue.scandal.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -238,7 +238,8 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.follower.seduce",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:8},
+tablereqs:{resentment:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:8},
 alternativerecipes:[{id:"long.executestrategy.intrigue.follower.seduce.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -247,29 +248,34 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.grail.greatwork",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:6},
+tablereqs:{uqvitulation:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:6},
 alternativerecipes:[{id:"long.executestrategy.intrigue.grail.greatwork.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
-{id:"long.refinestrategy.intrigue.follower.resentment",
+{id:"long.refinestrategy.intrigue.poison.follower.resentment",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:6},
-alternativerecipes:[{id:"long.executestrategy.intrigue.follower.resentment.begin",chance:100,additional:true}],
+tablereqs:{follower:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:6},
+alternativerecipes:[{id:"long.executestrategy.intrigue.poison.follower.resentment.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
 
 {id:"long.refinestrategy.intrigue.detective.assist",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:4},
+tablereqs:{hunter:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:4},
 alternativerecipes:[{id:"long.executestrategy.intrigue.detective.assist.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
 {id:"long.refinestrategy.intrigue.adversary.assist",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:4},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:4},
+tablereqs:{independent:1},
+
 alternativerecipes:[{id:"long.executestrategy.intrigue.adversary.assist.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -277,7 +283,8 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.poison.follower.notoriety",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:2},
+tablereqs:{follower:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:2},
 alternativerecipes:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -287,7 +294,8 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.mystiquetonotoriety",
 actionId:"long",
-requirements:{intention.intrigue:1,strategy.prep:3,long.might:2},
+tablereqs:{mystique:1},
+requirements:{intention.intrigue:1,strategy.prep:3,long.connections:2},
 alternativerecipes:[{id:"long.executestrategy.intrigue.mystiquetonotoriety.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -296,6 +304,7 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.fraud",
 actionId:"long",
+tablereqs:{funds:2},
 requirements:{intention.intrigue:1,strategy.prep:3},
 alternativerecipes:[{id:"long.executestrategy.intrigue.fraud.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
