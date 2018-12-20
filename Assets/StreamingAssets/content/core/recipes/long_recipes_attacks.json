@@ -48,7 +48,7 @@ warmup:10
 {id:"long.executestrategy.assault.forge.greatwork.continue",
 actionId:"longassault",
 label:"Defending the Great Work",
-startdescription:"Our work-room is besieged! Protect the Great Work! [A Heart or Forge follower - the stronger, the better - might be able to defend against this action.]",
+startdescription:"Our work-room is besieged! Protect the Great Work! [A <sprite name=heart> or <sprite name=forge> follower - the stronger, the better - might be able to defend against this action.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{greatwork:1},
@@ -82,7 +82,7 @@ warmup:10
 {id:"long.executestrategy.assault.injurehealth.continue",
 actionId:"longassault",
 label:"Defence? FNORD",
-startdescription:"FNORD attacking now [A Heart or Edge follower - the stronger, the better - might be able to defend against this action.]",
+startdescription:"FNORD attacking now [A <sprite name=heart> or <sprite name=edge> follower - the stronger, the better - might be able to defend against this action.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 requirements:{injury:1},
@@ -120,7 +120,7 @@ effects:{funds:-1}},
 {id:"long.executestrategy.assault.intimidate.begin",
 actionId:"longassault",
 label:"Intimidation! FNORD",
-startdescription:"FNORD they sCARE [A Heart or Grail follower - the stronger, the better - might be able to defend against this action.]",
+startdescription:"FNORD they sCARE [A <sprite name=heart> or <sprite name=grail> follower - the stronger, the better - might be able to defend against this action.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 warmup:10,
 linked:[{id:"long.executestrategy.assault.failure",challenges:{heart:base,grail:base}},
@@ -154,12 +154,13 @@ aspects:{restorehealth:1}
 
 {id:"long.executestrategy.intrigue.scandal.begin",
 actionId:"long",
+label:"FNORD SKACK"
 },
 
 
 {id:"long.executestrategy.intrigue.follower.seduce.begin",
 actionId:"longintrigue",
-label:"FNORD",
+label:"FNORD SKACK",
 warmup:10
 },
 
@@ -237,18 +238,38 @@ warmup:10},
 
 {id:"long.executestrategy.intrigue.detective.assist.begin",
 actionId:"longintrigue",
-label:"FNORD",
-linked:[{id:"long.cycle",chance:100}],
+label:"FNORD SKACK",
+linked:[{id:"long.executestrategy.intrigue.detective.assist.continue",chance:100}],
 warmup:10
 },
 
 {id:"long.executestrategy.intrigue.adversary.assist.begin",
 actionId:"longintrigue",
-label:"FNORD",
-linked:[{id:"long.cycle",chance:100}],
+label:"Unlikely Alliances?",
+startdescription:"Our immortal enemy is seeking an ally - someone with potential. [If they can't find anyone suitable, their intrigue will end in failure.]",
+slots:[{id:"rival",label:"A Rival",greedy:true,required:{independent:1}}],
+linked:[{id:"long.executestrategy.intrigue.adversary.assist.continue",chance:100}],
 warmup:10
 },
 
+{id:"long.executestrategy.intrigue.adversary.assist.continue",
+actionId:"longintrigue",
+requirements:{independent:1},
+label:"Immortal Tutelage",
+startdescription:"Our enemy is coaching our rival towards more rapid ascension to the Long state. If they can recruit a second Long, our defeat is assured. [A <sprite name=heart> or <sprite name=moth> follower - the stronger, the better - might be able to defend against this action.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base,moth:base}},
+{id:"long.executestrategy.intrigue.adversary.assist.succeed"}],
+warmup:10},
+
+{id:"long.executestrategy.intrigue.adversary.assist.succeed",
+actionId:"longintrigue",
+label:"Higher",
+startdescription:"Our enemy has imparted vital secrets of ascension to our rival. No doubt, should our rival become truly Long, they'll be a tool of our enemy: but that won't help us much.",
+mutations:[{mutate:rivalmarks,filter:independent,level:1,additive:true}],
+
+warmup:10
+},
 
 {id:"long.executestrategy.intrigue.poison.follower.notoriety.begin",
 actionId:"longintrigue",
@@ -350,7 +371,7 @@ effects:{notoriety:1,mystique:-1}
 {id:"long.executestrategy.intrigue.fraud.begin",
 actionId:"longintrigue",
 label:"The Paper Snare",
-startdescription:"Our enemy has borne false witness against us. The authorities must be convinced of our innocence.[If this succeeds, you may lose one or many funds. A Heart or Moth follower - the stronger, the better - might be able to defend against it.]",
+startdescription:"Our enemy has borne false witness against us. The authorities must be convinced of our innocence. [If this succeeds, you may lose one or many funds. [A <sprite name=heart> or <sprite name=moth> follower - the stronger, the better - might be able to defend against this action.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 effects:{},
 warmup:10,
@@ -378,7 +399,7 @@ startdescription:"The steady stream of menacing letters has slowed; ceased. It's
 {id:"long.executestrategy.intrigue.createmystique.begin",
 actionId:"longintrigue",
 label:"Rumours! FNORD",
-startdescription:"FNORD hap they sa bad thing. [A Heart follower - the stronger, the better - might be able to defend against this action.]",
+startdescription:"FNORD hap they sa bad thing. [A <sprite name=heart> follower - the stronger, the better - might be able to defend against this action.]",
 slots:[{id:"defender",label:"Defender",required:{follower:1}}],
 warmup:10,
 linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base}},
