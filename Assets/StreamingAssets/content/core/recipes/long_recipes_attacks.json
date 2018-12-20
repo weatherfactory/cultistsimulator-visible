@@ -238,10 +238,88 @@ warmup:10},
 
 {id:"long.executestrategy.intrigue.detective.assist.begin",
 actionId:"longintrigue",
-label:"FNORD SKACK",
+label:"Unlikely Alliances?",
+startdescription:"Our immortal enemy is seeking a catspaw.",
+slots:[{id:"hunter",label:"A Thorn in our Side",greedy:true,required:{hunter:1}}],
 linked:[{id:"long.executestrategy.intrigue.detective.assist.continue",chance:100}],
 warmup:10
 },
+
+
+{id:"long.executestrategy.intrigue.detective.assist.continue",
+actionId:"longintrigue",
+requirements:{hunter:1},
+label:"The Enemy of Their Enemy",
+startdescription:"The Suppression Bureau will take assistance where they find it, and no doubt our Great Work is a cause of great concern to them. What mischief will our immortal enemy effect here?",
+
+linked:[{id:"long.executestrategy.intrigue.detective.assist.mystic",chance:70},
+{id:"long.executestrategy.intrigue.detective.assist.idealist",chance:70},
+{id:"long.executestrategy.intrigue.detective.assist.grim",chance:70},
+{id:"long.executestrategy.intrigue.detective.assist.erratic",chance:70},
+{id:"long.executestrategy.intrigue.detective.assist.evidence",chance:70},
+{id:"long.executestrategy.intrigue.detective.assist.mystic",chance:100},
+{id:"long.executestrategy.intrigue.detective.assist.idealist",chance:100},
+{id:"long.executestrategy.intrigue.detective.assist.grim",chance:100},
+{id:"long.executestrategy.intrigue.detective.assist.erratic",chance:100},
+{id:"long.executestrategy.intrigue.detective.assist.evidence",chance:100},
+],
+warmup:10},
+
+{id:"long.executestrategy.intrigue.detective.assist.mystic",
+actionId:"longintrigue",
+requirements:{mystic:-1},
+label:"Defence Against the Invisible Arts",
+startdescription:"Our enemy has taught this investigator something of how to protect themselves against spirits. [The investigator is now Mystic.]",
+mutations:[{mutate:mystic,filter:hunter,level:1,additive:true}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.intrigue.detective.assist.mystic",
+actionId:"longintrigue",
+requirements:{mystic:-1},
+label:"Defence Against the Invisible Arts",
+startdescription:"Our enemy has taught this investigator something of how to protect themselves against spirits. [The investigator is now Mystic.]",
+mutations:[{mutate:mystic,filter:hunter,level:1,additive:true}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.detective.assist.idealist",
+actionId:"longintrigue",
+requirements:{idealist:-1},
+label:"The New Light",
+startdescription:"This investigator has been educated in the nature of our Great Work. Consequently their commitment to defeating it has been forged, quenched, tempered. [The investigator is now an Idealist.]",
+mutations:[{mutate:idealist,filter:hunter,level:1,additive:true}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.detective.assist.grim",
+actionId:"longintrigue",
+requirements:{grim:-1},
+label:"Granite Certainty",
+startdescription:"This investigator has been shown lessons they will not readily forget. [The investigator is now Grim.]",
+mutations:[{mutate:grim,filter:hunter,level:1,additive:true}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.detective.assist.erratic",
+actionId:"longintrigue",
+requirements:{erratic:-1},
+label:"A New Perspective",
+startdescription:"This investigator has learnt new techniques and intuitions; although, now, their hands sometimes tremble. [The investigator is now Erratic.]",
+mutations:[{mutate:erratic,filter:hunter,level:1,additive:true},
+{mutate:meticulous,filter:hunter,level:-1,additive:true}],
+warmup:10
+},
+{id:"long.executestrategy.intrigue.detective.assist.evidence",
+actionId:"longintrigue",
+requirements:{erratic:1,grim:1,idealist:1,mystic:1},
+label:"Frankly Cheating",
+startdescription:"Our immortal enemy has whispered in this investigator's ear. [The enemy Long has provided Evidence.]",
+effects:{evidence:1},
+warmup:10
+},
+
 
 {id:"long.executestrategy.intrigue.adversary.assist.begin",
 actionId:"longintrigue",
