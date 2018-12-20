@@ -148,13 +148,31 @@ aspects:{restorehealth:1}
 },
 
 
-
-
-
-
 {id:"long.executestrategy.intrigue.scandal.begin",
-actionId:"long",
-label:"FNORD SKACK"
+actionId:"scandal",
+label:"A Scandal!",
+startdescription:"Our enemy has engineered a Scandal, which will roar through all our enterprises like a forest fire. [A Scandal will intermittently emit Notoriety until it unexpectedly dies out.]",
+alt:[{id:"scandal.notoriety",chance:70,additional:true}],
+linked:[{id:"scandal.end",chance:10},
+{id:"long.executestrategy.intrigue.scandal.begin",chance:100}],
+warmup:60
+},
+
+{id:"scandal.end",
+actionId:"scandal",
+label:"Silence At Last",
+startdescription:"The public is fickle... fortunately. They're forgetting us.",
+effects:{mystique:1},
+warmup:10
+},
+
+
+{id:"scandal.notoriety",
+actionId:"scandal.notoriety",
+label:"Filthy Lies",
+startdescription:"There is so much we're guilty of it, and this is not it, not it at all! and yet it may be what damns us.",
+effects:{notoriety:1},
+warmup:10
 },
 
 
