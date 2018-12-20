@@ -143,6 +143,9 @@ linked:[
 {id:"long.intrigue.confrontation",chance:70},
 {id:"long.refinestrategy.assault.abduct.follower",chance:70},
 {id:"long.refinestrategy.assault.forge.greatwork",chance:70},
+{id:"long.refinestrategy.assault.setambush.expedition",chance:70},
+{id:"long.refinestrategy.assault.destroyhealth",chance:70},
+{id:"long.refinestrategy.assault.injurefollower",chance:70},
 {id:"long.refinestrategy.assault.injurehealth",chance:70},
 {id:"long.refinestrategy.assault.rob",chance:70},
 {id:"long.refinestrategy.assault.intimidate",chance:100},
@@ -205,6 +208,29 @@ linked:[{id:"long.cycle",chance:100}]
 },
 
 
+{id:"long.refinestrategy.assault.destroyhealth",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3,long.might:6},
+tablereqs:{follower:1},
+alternativerecipes:[{id:"long.executestrategy.assault.destroyhealth.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.assault.setambush.expedition",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3,long.might:4},
+tablereqs:{vault:1},
+alternativerecipes:[{id:"long.executestrategy.assault.setambush.expedition.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+{id:"long.refinestrategy.assault.injurefollower",
+actionId:"long",
+requirements:{intention.assault:1,strategy.prep:3,long.might:2},
+tablereqs:{follower:1},
+alternativerecipes:[{id:"long.executestrategy.assault.injurefollower.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
 
 {id:"long.refinestrategy.assault.injurehealth",
 actionId:"long",

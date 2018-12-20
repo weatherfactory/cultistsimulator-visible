@@ -65,6 +65,63 @@ startdescription:"FNORD it's been spoilt.",
 aspects:{sabotage:1},
 warmup:10},
 
+{id:"long.executestrategy.assault.setambush.expedition.begin",
+actionId:"longassault",
+label:"An Ambush... FNORD SKACK",
+startdescription:"FNORD destroy health",
+description:"FNORD no vault found; it's over for now.",
+slots:[{id:"vault",label:"Vault",required:{vault:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.setambush.expedition.continue",chance:100}],
+warmup:10
+},
+
+{id:"long.executestrategy.assault.destroyhealth.begin",
+actionId:"longassault",
+label:"A Crushing Attack! FNORD SKACK",
+startdescription:"FNORD destroy health",
+
+slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
+aspects:{destroyhealth:1},
+comments:"Damaging health now so it doesn't figure into the Heart calculations",
+linked:[{id:"long.executestrategy.assault.destroyhealth.continue",chance:100},
+{id:"long.executestrategy.assault.destroyhealth.nonefound",chance:100}],
+warmup:10
+},
+
+{id:"long.executestrategy.assault.destroyhealth.nonefound",
+actionId:"longassault",
+label:"FNORD No health found",
+startdescription:"FNORD SKACK this will kill the player if they can't provide Health or a Follower. Replicate this for Injury",
+},
+
+{id:"long.executestrategy.assault.destroyhealth.continue",
+actionId:"longassault",
+label:"Defence? FNORD",
+startdescription:"FNORD attacking now [A <sprite name=heart> or <sprite name=edge> follower - the stronger, the better - might be able to defend against this action.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{decrepitude:1},
+warmup:10,
+linked:[{id:"long.executestrategy.assault.failure",challenges:{heart:base,edge:base}},
+{id:"long.executestrategy.assault.destroyhealth.succeed",chance:100},
+]
+},
+
+{id:"long.executestrategy.assault.destroyhealth.succeed",
+actionId:"longassault",
+label:"FNORD MASSIVE DAMAGE",
+startdescription:"FNORD MASSIVE DAMAGE"
+},
+
+{id:"long.executestrategy.assault.injurefollower.begin",
+actionId:"longassault",
+label:"An Attack on a Follower! FNORD SKACK",
+startdescription:"FNORD hurt follower",
+description:"FNORD no follower found; it's over for now.",
+slots:[{id:"follower",label:"Follower",required:{follower:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.injurefollower.continue",chance:100}],
+warmup:10
+},
+
 
 {id:"long.executestrategy.assault.injurehealth.begin",
 actionId:"longassault",
@@ -144,7 +201,7 @@ actionId:"longassault",
 label:"A Failed Assault",
 startdescription:"We've defeated our enemy's assault... but they've learnt something of us, and they'll take us more seriously as a threat. I can expect more dangerous assaults in future.",
 effects:{long.lesson.might:1},
-aspects:{restorehealth:1}
+aspects:{restorehealth:1,tohealth:1}
 },
 
 
