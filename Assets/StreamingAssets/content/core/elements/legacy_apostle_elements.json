@@ -134,7 +134,7 @@ description: "We have attracted a few gourmands and perverts. They will expect a
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress2",
 label: "The Second Fragments of the Host",
@@ -143,25 +143,25 @@ aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress1,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress3",
 label: "The Third Fragments of the Host",
-description: "",
+description: "Filthy draggles of the morbid and the inquisitive.",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress2,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress4",
 label: "The Fourth Fragments of the Host",
-description: "The hungry, the greedy, the curious: they have received our invitation.",
+description: "The hungry, the greedy, the curious: all these have received our invitation.",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress3,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5,sabotage:apostlegrail.pillar4.inprogress1}
 	},
 		{id: "apostlegrail.pillar4.inprogress5",
 label: "The Fifth Fragments of the Host",
@@ -170,7 +170,7 @@ aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress4,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6,sabotage:apostlegrail.pillar4.inprogress2}
 	},
 		{id: "apostlegrail.pillar4.inprogress6",
 label: "The Sixth Fragments of the Host",
@@ -179,7 +179,7 @@ aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
 decayTo:apostlegrail.pillar4.inprogress5,
-xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7}
+xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7,sabotage:apostlegrail.pillar4.inprogress3}
 	},
 	
 	{id: "apostlegrail.pillar4.inprogress7",
@@ -188,7 +188,8 @@ description: "We await only the Key-holder, who must open the Kingskin Gate when
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
-decayTo:apostlegrail.pillar4.inprogress6
+decayTo:apostlegrail.pillar4.inprogress6,
+xtriggers:{sabotage:apostlegrail.pillar4.inprogress4}
 	},
 
 	{id: "apostlegrail.pillar4",

@@ -160,7 +160,53 @@ label:"FNORD SKACK"
 
 {id:"long.executestrategy.intrigue.follower.seduce.begin",
 actionId:"longintrigue",
-label:"FNORD SKACK",
+label:"A Rendezvous",
+startdescription:"Our immortal enemy is attempting to engineer a meeting with one of our followers - one who harbours resentment.",
+slots:[{id:"target",label:"Tempted",greedy:true,required:{resentment:1},forbidden:{independent:1,investigator:1,romanticinterest:1}}],
+linked: [{id:"long.executestrategy.intrigue.follower.seduce.continue"}],
+warmup:10
+},
+
+{id:"long.executestrategy.intrigue.follower.seduce.continue",
+actionId:"longintrigue",
+label:"A Seduction",
+startdescription:"Now the Long will deploy all the formidable wiles they've learnt over the centuries... and perhaps our follower will leave our service. [Use Passion to keep them loyal. That isn't always successful, but you can keep trying as long as you have Passion.]",
+description:"",
+requirements:{resentment:1},
+slots:[{id:"passion",label:"Passionate Argument",required:{passion:1}}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.follower.seduce.defendpassion.try",chance:100},
+{id:"long.executestrategy.intrigue.follower.seduce.succeed",chance:100}],
+},
+
+{id:"long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+actionId:"longintrigue",
+label:"A Passionate Defence",
+startdescription:"FNORD attempt a bringing them back round. [If it fails, we can keep trying.]",
+requirements:{passion:1},
+warmup:10,
+aspects:{fatiguing:1},
+linked:[{id:"long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",chance:70},
+{id:"long.executestrategy.intrigue.follower.seduce.continue",chance:100}]
+},
+
+
+{id:"long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+actionId:"longintrigue",
+label:"A Reprieve",
+startdescription:"Our follower has chosen to stay with us... for now. [But their Resentment has increased, and our enemy has learnt more about us.]",
+mutations:[{mutate:resentment,filter:follower,level:1,additive:true}],
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure"}]},
+
+
+
+
+{id:"long.executestrategy.intrigue.follower.seduce.succeed",
+actionId:"longintrigue",
+label:"A Betrayal",
+startdescription:"Our follower has forsaken their sacred trust. Now they will lend their strength to the growing power of our enemy.",
+effects:{follower:-1,long.lesson.might:1},
 warmup:10
 },
 
@@ -168,9 +214,33 @@ warmup:10
 
 {id:"long.executestrategy.intrigue.grail.greatwork.begin",
 actionId:"longintrigue",
-label:"FNORD",
+label:"An Act of Sabotage!",
+startdescription:"Our immortal enemy is attempting to convince our Host that the Vitulation will be vile, perilous, or dull.",
+slots:[{id:"target",label:"Target",required:{uqvitulation:1},greedy:true}],
+linked:[{id:"long.executestrategy.intrigue.grail.greatwork.continue",chance:100}],
 warmup:10
 },
+
+
+{id:"long.executestrategy.intrigue.grail.greatwork.continue",
+actionId:"longintrigue",
+label:"Defending the Great Work",
+startdescription:"FNORD attacking Vitulation! [A <sprite name=heart> or <sprite name=grail> follower - the stronger, the better - might be able to defend against this action.]",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{follower:1}}],
+requirements:{uqvitulation:1},
+warmup:10,
+linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base,grail:base}},
+{id:"long.executestrategy.intrigue.grail.greatwork.succeed"},
+]
+},
+
+{id:"long.executestrategy.intrigue.grail.greatwork.succeed",
+actionId:"longintrigue",
+label:"FNORD Sabotage succeeded!",
+startdescription:"FNORD it's been spoilt.",
+aspects:{sabotage:1},
+warmup:10},
 
 {id:"long.executestrategy.intrigue.poison.follower.resentment.begin",
 actionId:"longintrigue",
@@ -195,7 +265,7 @@ startdescription:"FNORD poisoning with resentment now. [Use Passion to keep them
 slots:[{id:"passionateargument",label:"Passionate Argument",required:{passion:1}}],
 warmup:10,
 linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try"},
-{id:"long.executestrategy.intrigue.poison.follower.resentment.success",chance:100},
+{id:"long.executestrategy.intrigue.poison.follower.resentment.succeed",chance:100},
 ]
 },
 
@@ -208,17 +278,17 @@ startdescription:"FNORD attempt a bringing them back round. [If it fails, we can
 requirements:{passion:1},
 warmup:10,
 aspects:{fatiguing:1},
-linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.success",chance:70},
+linked:[{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",chance:70},
 {id:"long.executestrategy.intrigue.poison.follower.resentment.continue",chance:100}]
 },
 
 
-{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.success",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed",
 actionId:"longintrigue",
 linked:[{id:"long.executestrategy.intrigue.failure"}]},
 
 
-{id:"long.executestrategy.intrigue.poison.follower.resentment.success",
+{id:"long.executestrategy.intrigue.poison.follower.resentment.succeed",
 actionId:"longintrigue",
 label:"Frustration's Fruit",
 startdescription:"We are at the point, now, where I believe that my follower is not telling me everything they have heard about me.",
@@ -264,15 +334,6 @@ linked:[{id:"long.executestrategy.intrigue.detective.assist.mystic",chance:70},
 {id:"long.executestrategy.intrigue.detective.assist.evidence",chance:100},
 ],
 warmup:10},
-
-{id:"long.executestrategy.intrigue.detective.assist.mystic",
-actionId:"longintrigue",
-requirements:{mystic:-1},
-label:"Defence Against the Invisible Arts",
-startdescription:"Our enemy has taught this investigator something of how to protect themselves against spirits. [The investigator is now Mystic.]",
-mutations:[{mutate:mystic,filter:hunter,level:1,additive:true}],
-warmup:10
-},
 
 
 {id:"long.executestrategy.intrigue.detective.assist.mystic",
@@ -370,7 +431,7 @@ requirements:{follower:1},
 warmup:10,
 linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"},
 {id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try"},
-{id:"long.executestrategy.intrigue.poison.follower.notoriety.success",chance:100},
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.succeed",chance:100},
 ]
 },
 
@@ -389,19 +450,19 @@ startdescription:"FNORD attempt a distraction. [If it fails, we can keep trying.
 requirements:{mystique:1},
 warmup:10,
 effects:{mystique:-1},
-linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.success",chance:70},
+linked:[{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",chance:70},
 {id:"long.executestrategy.intrigue.poison.follower.notoriety.continue",chance:100}]
 },
 
 
-{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.success",
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed",
 actionId:"longintrigue",
 effects:{notoriety:1},
 linked:[{id:"long.executestrategy.intrigue.failure"}]},
 
 
 
-{id:"long.executestrategy.intrigue.poison.follower.notoriety.success",
+{id:"long.executestrategy.intrigue.poison.follower.notoriety.succeed",
 actionId:"longintrigue",
 label:"The Public Eye",
 startdescription:"FNORD poisoned with notoriety!",
@@ -630,11 +691,11 @@ actionId:"long",
 label:"Into the Night",
 startdescription:"I shall confront this creature directly. They have the strength of centuries... but I am not to be underestimated.",
 requirements:{murderskill:1},
-linked:[{id:"long.assault.confrontation.murderskill.success",chance:30},
+linked:[{id:"long.assault.confrontation.murderskill.succeed",chance:30},
 {id:"long.assault.confrontation.murderskill.failure"}]},
 
 
-{id:"long.assault.confrontation.murderskill.success",
+{id:"long.assault.confrontation.murderskill.succeed",
 actionId:"long",
 label:"I Was Broken, Though My Edges Wound Like Knives",
 
