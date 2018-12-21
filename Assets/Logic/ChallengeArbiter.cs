@@ -63,6 +63,8 @@ namespace Assets.Logic
                 return 70;
             if (aspectLevel >= 10)
                 return 30;
+            if (aspectLevel >= 5)
+                return 10;
 
             return 0;
         }

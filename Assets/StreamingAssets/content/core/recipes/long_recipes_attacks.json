@@ -7,7 +7,7 @@ actionId:"longassault.abduction",
 label:"An Abduction!",
 startdescription:"Our enemy is mounting an abduction attempt!",
 slots:[{id:"target",label:"Target",required:{romanticinterest:1},greedy:true}],
-linked:[{id:"long.executestrategy.assault.abduct.follower.continue"},
+linked:[{id:"long.executestrategy.assault.abduct.follower.captured"},
 {id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"}
 ],
 warmup:10
@@ -17,22 +17,40 @@ warmup:10
 actionId:"longassault.abduction",
 label:"An Abduction!",
 startdescription:"Our enemy is mounting an abduction attempt!",
-slots:[{id:"target",label:"Target",required:{follower:1},forbidden:{summoned:1},greedy:true}],
-linked:[{id:"long.executestrategy.assault.abduct.follower.continue"},
-{id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"}],
+slots:[{id:"target",label:"Target",required:{follower:1},forbidden:{summoned:1,hireling:1},greedy:true}],
+linked:[{id:"long.executestrategy.assault.abduct.follower.captured"}],
 warmup:10
 },
 
-{id:"long.executestrategy.assault.abduct.follower.continue",
-actionId:"longassault.abduction",
-label:"An Abduction!",
+{id:"long.executestrategy.assault.abduct.follower.captured",
+actionId:"longassault",
+label:"Captured!",
 requirements:{follower:1},
-startdescription:"Our enemy has snatched a follower! We could try to rescue them - but it could be a trap. [The place is warded against summonings.]",
-slots:[{id:"rescuer",label:"Rescuer",required:{follower:1},forbidden:{summoned:1}}],
-linked:[
-{id:"long.executestrategy.assault.abduct.follower.continue",chance:100}],
-warmup:10
+startdescription:"Our enemy has immured our follower in a locked room in a guarded house, behind invisible walls to keep invisible things at bay.",
+linked:[{id:"long.executestrategy.assault.abduct.follower.continue"}],
+warmup:10},
+
+{id:"long.executestrategy.assault.abduct.follower.continue",
+actionId:"longassault",
+label:"A rescue?",
+startdescription:"Our enemy has snatched a follower! They'll try to escape, and we might assist them - but it could be a trap. And the place is warded against summonings. [The highest total of <sprite name=edge> <sprite name=forge> or <sprite name=winter> will determine whether our followers escape unscathed.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1},forbidden:{summoned:1}}],
+linked:[{id:"long.executestrategy.assault.abduct.follower.defencesucceeded",
+actionId:"longassault",
+label:"A Victory",
+challenges:{edge:base,forge:base,winter:base},
+startdescription:"Smashed lock - broken window - night air by the gulp. Our follower is free. Our enemy will pay closer attention, now.",
+effects:{long.lesson.might:1}
 },
+{id:"long.executestrategy.assault.abduct.follower.defencefailed",
+actionId:"longassault",
+label:"A Trap",
+startdescription:"The escape attempt has failed. There may be another opportunity later.",
+linked:[{id:"long.executestrategy.assault.abduct.follower.continue"}],
+warmup:300} ],
+warmup:30
+},
+
 
 {id:"long.executestrategy.assault.forge.greatwork.begin",
 actionId:"longassault",
@@ -118,13 +136,53 @@ startdescription:"FNORD MASSIVE DAMAGE"
 
 {id:"long.executestrategy.assault.injurefollower.begin",
 actionId:"longassault",
-label:"An Attack on a Follower! FNORD SKACK",
-startdescription:"FNORD hurt follower",
-description:"FNORD no follower found; it's over for now.",
+label:"An Attack on a Follower!", 
+startdescription:"Our enemy has sent agents out to deliver a savage beating to any of our followers they might find.",
 slots:[{id:"follower",label:"Follower",required:{follower:1},greedy:true}],
-linked:[{id:"long.executestrategy.assault.injurefollower.continue",chance:100}],
+linked:[{id:"long.executestrategy.assault.injurefollower.hireling.continue"},
+{id:"long.executestrategy.assault.injurefollower.spirit.continue"},
+{id:"long.executestrategy.assault.injurefollower.continue"}],
 warmup:10
 },
+
+
+{id:"long.executestrategy.assault.injurefollower.hireling.continue",
+actionId:"longassault",
+label:"'You're Not Paying Me Enough For This'",
+startdescription:"That's the last we see of our hireling.",
+requirements:{hireling:1},
+effects:{follower:-1},
+warmup:10},
+
+{id:"long.executestrategy.assault.injurefollower.spirit.continue",
+actionId:"longassault",
+label:"The Door Swings Both Ways",
+startdescription:"Our enemy has given their agents the means to expel our summoning from the world. And it's gone.",
+requirements:{summoned:1},
+effects:{follower:-1},
+warmup:10},
+
+{id:"long.executestrategy.assault.injurefollower.continue",
+actionId:"longassault",
+label:"Reinforcements?",
+requirements:{follower:1},
+startdescription:"Another follower might rush to assist - but they risk being wounded too. And it would be foolish to send spirits against the forces of an ancient Long. [The highest total of <sprite name=edge> <sprite name=forge> or <sprite name=winter> will determine whether our followers escape unscathed.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1},forbidden:{summoned:1}}],
+linked:[{id:"long.executestrategy.assault.injurefollower.defencesucceeded",
+actionId:"longassault",
+label:"A Victory",
+challenges:{edge:base,forge:base,winter:base},
+startdescription:"Our followers are not to be discounted lightly. Our enemy's agents retreat in disarray. Of course, our enemy will now take the matter more seriously.",
+effects:{long.lesson.might:1}
+},
+{id:"long.executestrategy.assault.injurefollower.defencefailed",
+actionId:"longassault",
+label:"A Defeat",
+startdescription:"We all suffer in the service of our Founder. Perhaps that suffering enhances our worthiness.",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}] }],
+warmup:30},
+
 
 
 {id:"long.executestrategy.assault.injurehealth.begin",
