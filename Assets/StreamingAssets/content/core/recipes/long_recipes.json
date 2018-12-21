@@ -195,6 +195,7 @@ linked:[{id:"long.preparestrategy",chance:100}]
 
 {id:"long.refinestrategy.assault.abduct.follower",
 actionId:"long",
+extantreqs:{abductioninprogress:-1},
 requirements:{intention.assault:1,strategy.prep:3,long.might:4},
 alternativerecipes:[{id:"long.executestrategy.assault.abduct.follower.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
@@ -257,6 +258,7 @@ linked:[{id:"long.cycle",chance:100}]
 
 {id:"long.refinestrategy.intrigue.scandal",
 actionId:"long",
+extantreqs:{scandalinprogress:-1},
 requirements:{intention.intrigue:1,strategy.prep:3,long.connections:8},
 alternativerecipes:[{id:"long.executestrategy.intrigue.scandal.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
