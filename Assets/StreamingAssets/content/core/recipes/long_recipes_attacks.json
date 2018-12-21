@@ -243,7 +243,7 @@ startdescription:"They leave me bleeding, but not yet broken.",
 },
 
 {id:"long.executestrategy.assault.rob.begin",
-actionId:"longintrigue",
+actionId:"longassault",
 label:"Petty Theft",
 startdescription:"Our enemy has set a pickpocket to bedevil me.",
 description:"So much the worse for my enemy: I have no money to steal.",
@@ -252,7 +252,7 @@ alternativerecipes:[{id:"long.executestrategy.assault.rob.continue",chance:100}]
 warmup:10},
 
 {id:"long.executestrategy.assault.rob.continue",
-actionId:"longintrigue",
+actionId:"longassault",
 label:"Petty, but Successful, Theft",
 startdescription:"Someone's snatched my pocketbook!",
 effects:{funds:-1}},

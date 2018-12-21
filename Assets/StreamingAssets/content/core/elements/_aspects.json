@@ -1199,7 +1199,7 @@ isHidden:true
 		label:"Wound",
 		description:"Is it possible for Long to die? Let's put it to the test.",
 		isAspect:true,
-		image:"long_wound"
+		icon:"long_wound"
 		},
 				{id: "follower_wound",
 		label:"Wound",
@@ -1427,7 +1427,7 @@ noartneeded:true
 label:"Exposed",
 description: "This follower's secrets have been revealed to the public. Any time they're active, the press might take an interest.",
 isAspect:true,
-image:"reputation",
+icon:"reputation",
 induces:[{id:"poison.notoriety.induction",chance:70}]
 }
 
