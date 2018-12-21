@@ -237,7 +237,7 @@ public class Compendium : ICompendium
         if (endingFlag == "majorforgevictory")
             return new Ending(endingFlag, "THE DAWN",
                 "[THIS IS PLACEHOLDER TEXT UNTIL THE FULL RELEASE.]"
-                , "madrugad", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY");
+                , "madrugad", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MAJORFORGEVICTORY");
 
 
         if (endingFlag == "majorgrailvictory")
