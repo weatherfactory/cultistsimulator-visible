@@ -104,7 +104,7 @@
             aspects:
             {illhealth: 1,heart:1},
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
-			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction,scarability:scar_heart},
+			xtriggers: {restorehealth: health,damagehealth:injury,destroyhealth:decrepitude,fallsick:affliction,scarability:scar_heart},
 			lifetime: 60,
 			decayTo:"health",
 			icon:"health",

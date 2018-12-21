@@ -77,21 +77,25 @@ warmup:10
 
 {id:"long.executestrategy.assault.destroyhealth.begin",
 actionId:"longassault",
-label:"A Crushing Attack! FNORD SKACK",
-startdescription:"FNORD destroy health",
-
-slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
+label:"A Crushing Assault!",
+startdescription:"Our enemy has dispatched very serious gentlemen with orders to kill, or at least maim. [This will destroy Health.]",
+slots:[{id:"health",label:"Health",required:{health:1,fatigue:1},greedy:true}],
 aspects:{destroyhealth:1},
 comments:"Damaging health now so it doesn't figure into the Heart calculations",
-linked:[{id:"long.executestrategy.assault.destroyhealth.continue",chance:100},
-{id:"long.executestrategy.assault.destroyhealth.nonefound",chance:100}],
-warmup:10
+alt:[{id:"long.executestrategy.assault.health.nonefound",chance:100}],
+linked:[{id:"long.executestrategy.assault.destroyhealth.continue",chance:100}],
+warmup:30
 },
 
-{id:"long.executestrategy.assault.destroyhealth.nonefound",
-actionId:"longassault",
-label:"FNORD No health found",
-startdescription:"FNORD SKACK this will kill the player if they can't provide Health or a Follower. Replicate this for Injury",
+{
+id: "long.executestrategy.assault.health.nonefound",
+label: "This Attack will End Me",
+actionId: "longassault",
+requirements: {health: -1,fatigue:-1},
+startdescription: "Sickness, exhaustion or distraction prevents me from resisting this attack. [Supply Health immediately, or die.]",
+craftable: false,
+ending: "deathofthebody",
+signalEndingFlavour: Melancholy
 },
 
 {id:"long.executestrategy.assault.destroyhealth.continue",
@@ -125,14 +129,14 @@ warmup:10
 
 {id:"long.executestrategy.assault.injurehealth.begin",
 actionId:"longassault",
-label:"An Attack! FNORD",
-startdescription:"FNORD attack health",
-description:"FNORD no health found; it's over for now.",
+label:"An Assault!",
+startdescription:"Our enemy has set a hired thug to deliver a beating. They're not yet ready to order my murder, but they won't grieve if I happen to expire.[This will Injure your Health.]",
 slots:[{id:"health",label:"Health",required:{health:1},greedy:true}],
 aspects:{damagehealth:1},
 comments:"Damaging health now so it doesn't figure into the Heart calculations",
+alt:[{id:"long.executestrategy.assault.health.nonefound",chance:100}],
 linked:[{id:"long.executestrategy.assault.injurehealth.continue",chance:100}],
-warmup:10
+warmup:30
 },
 
 
