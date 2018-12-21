@@ -61,12 +61,12 @@
 {id:"strategy.prep",
 label:"Preparations Ongoing",
 description:"Our immortal enemy is preparing another action.",
-isAspect:true},
+lifetime:1},
 
 {id:"strategy.prep.delayed",
 label:"Preparations Spoiled!",
 description:"Our spy has spoilt some element of our enemy's preparations.",
-isAspect:true},
+lifetime:1},
 	
 	
 	
@@ -75,14 +75,16 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.assault:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
-icon:"health"
+icon:"health",
+lifetime:1
 },
 {id:"strategy.intrigue.concealed",
 label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.intrigue:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
-icon:"reason"
+icon:"reason",
+lifetime:1
 
 },
 {id:"strategy.dreams.concealed",
@@ -90,7 +92,8 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
-icon:"passion"
+icon:"passion",
+lifetime:1
 
 },
 {id:"strategy.downtime.concealed",
@@ -98,7 +101,8 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.downtime:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-icon:"contentment"
+icon:"contentment",
+lifetime:1
 
 },
 
@@ -109,14 +113,16 @@ label:"The Long's Plans Revealed: Assault",
 description:"Our enemy intends a direct attack of some kind,this time.",
 aspects:{intention.assault:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
-icon:"health"
+icon:"health",
+lifetime:1
 },
 {id:"strategy.intrigue.revealed",
 label:"The Long's Plans Revealed: intrigue",
 description:"Our enemy intends to use trickery against us, this time.",
 aspects:{intention.intrigue:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
-icon:"reason"
+icon:"reason",
+lifetime:1
 
 },
 {id:"strategy.dreams.revealed",
@@ -124,7 +130,8 @@ label:"The Long's Plans Revealed: Dreams",
 description:"Our enemy will find us through the Mansus, this time.",
 aspects:{intention.dreams:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
-icon:"passion"
+icon:"passion",
+lifetime:1
 
 },
 {id:"strategy.downtime.revealed",
@@ -132,13 +139,15 @@ label:"The Long's Plans Revealed: A Respite",
 description:"Our enemy will not move against us, this time. They will rest, and perhaps they will grow their powers.",
 aspects:{intention.downtime:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-icon:"contentment"
+icon:"contentment",
+lifetime:1
 },
 
 
 {id:"strategy.dreams.preference",
 label:"A Presentiment: the Lessons of the Soul",
 description:"For their next action, this Long will probably try to learn from our weaknesses in dreams - even if their plans would usually dictate otherwise.",
+lifetime:1
 },
 
 
@@ -147,6 +156,7 @@ description:"For their next action, this Long will probably try to learn from ou
 label:"Increased Might",
 aspects:{long.lesson:1},
 description:"Our immortal enemy is taking us more seriously, and has brought more resources to bear. [An enemy Long's Might will increase, allowing them to conduct more powerful assaults.]",
+lifetime:1
 },
 
 
