@@ -54,7 +54,7 @@
 		[
 		{id: "deathofthewoundedfollower",chance:100},
 		{id: "deathofthebody",chance:100}],
-        startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
+        startdescription: "I've become unwell! [If an illness cannot consume Health, it will kill you.]",
         description: "The sickness has ravaged my body.",
         warmup: 60
     },
@@ -72,7 +72,7 @@
 		[
 		{id:"savorousbloodrespite",chance:100},
 		{id: "forlornblooddeathofthebody",chance:100}],
-        startdescription: "My illness has come for me. If I survive, I must taste the blood of our Delight, and soon. [If this illness cannot consume Health, or Savorous Blood, it will cause death.]",
+        startdescription: "My illness has come for me. If I survive, I must taste the blood of our Delight, and soon. [If this illness cannot consume Health, or Savorous Blood, it will kill you.]",
         description: "I shrink and grow pale. Fatigue chokes my throat. I must ensure that my death serves a purpose.",
         warmup: 60
     },
@@ -148,7 +148,7 @@ warmup:5
 		alternativerecipes:
 		[{id: "deathofthebody",chance:100}],
         startdescription: ".",
-        description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
+        description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will kill you.]",
         warmup: 60,
 		slots: [{id:"starvation",required: {health: 1},
 					greedy: true
