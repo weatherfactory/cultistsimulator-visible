@@ -13,6 +13,19 @@
 		ending: "deathofthebody",
 		signalEndingFlavour: Melancholy
     },
+	   {
+        id: "forlornblooddeathofthebody",
+        label: "No Health is left",
+        actionId: "healthend",
+        requirements: {health: -1,fatigue:-1,apostlegrail.pillar2:-1},
+        effects: {},
+        startdescription: "The wrongness in my bones has overcome me. Unless I can muster my strength, or taste the blood of our Delight, it's over.",
+        description: "Where will they find me? I am not here.",
+        warmup: 0,
+        craftable: false,
+		ending: "deathofthebody",
+		signalEndingFlavour: Melancholy
+    },
 		{
         id: "workvictory",
         label: "I will settle into a comfortable existence",

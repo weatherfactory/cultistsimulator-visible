@@ -11,7 +11,8 @@
         actionId: "time",
         requirements: {},
         alternativerecipes:
-		[{id: "sickness", chance:100, additional: true},
+		[{id: "forlornbloodsickness", chance:70, additional: true},
+		{id: "sickness", chance:100, additional: true},
 		{id: "pleasantday", chance:100, additional: true},
 		{id: "suspicion", chance:100, additional: true},
 		{id: "ambition", chance:100,additional:true},
@@ -42,6 +43,8 @@
         label: "Sickness",
         actionId: "illhealth",
         requirements: {seasonsickness:1},
+		extantreqs: {apostlegrail.pillar2.dormant:-1},
+		comments:"We don't want to double up on normal and Grail-apostle sickness",
 				slots: [{id:"Affliction",
 					required: {health: 1,follower_wound:1,fatigue:1},
 					greedy: true
@@ -55,6 +58,31 @@
         description: "The sickness has ravaged my body.",
         warmup: 60
     },
+	
+	{id: "forlornbloodsickness",
+        label: "Sickness",
+        actionId: "illhealth",
+        extantreqs: {apostlegrail.pillar2.dormant:1},
+				slots: [{id:"Affliction",
+					required: {health: 1,follower_wound:1,fatigue:1,apostlegrail.pillar2:1},
+					greedy: true
+		}],
+		aspects:{fallsick:1},
+		alternativerecipes:
+		[
+		{id:"savorousbloodrespite",chance:100},
+		{id: "forlornblooddeathofthebody",chance:100}],
+        startdescription: "My illness has come for me. If I survive, I must taste the blood of our Delight, and soon. [If this illness cannot consume Health, or Savorous Blood, it will cause death.]",
+        description: "I shrink and grow pale. Fatigue chokes my throat. I must ensure that my death serves a purpose.",
+        warmup: 60
+    },
+
+{id:"savorousbloodrespite",
+actionId:"illhealth",
+label:"A Respite",
+requirements:{apostlegrail.pillar2:1},
+startdescription:"The blood of our Delight warms me. It makes red flowers in my cheeks; it pours out wine in my heart; it twitches my strings in the rhythm the Grail taught the Thunderskin. I shall live a little longer, I have decided.",
+warmup:10},
 	
 	{id:"deathofthewoundedfollower",
 		actionId: "time",
