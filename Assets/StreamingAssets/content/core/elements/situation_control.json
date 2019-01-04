@@ -16,6 +16,18 @@
 		lifetime:1,
 		icon: "seal_wardeddoor"
 		},
+				{id:"assassinationinprogress.player",
+		label:"An Assassination",
+		description:"This will end in a death. It could be my death.",
+		lifetime:1,
+		icon: "dread"
+		},
+						{id:"assassinationinprogress.follower",
+		label:"An Assassination",
+		description:"This will end in a death - theirs, or ours.",
+		lifetime:1,
+		icon: "dread"
+		},
 				{id:"scandalinprogress",
 		label:"Evil Gossip",
 		description:"What they say is only a shadow of the truth, but by our shadows we are discovered.",

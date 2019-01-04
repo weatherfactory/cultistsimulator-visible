@@ -2,6 +2,146 @@
 "recipes": [
 
 
+
+{id:"long.executestrategy.assassination.begin",
+actionId:"longassault.assassination",
+label:"The Dart in the Dark",
+startdescription:"In times long past, the Dartsmen were employed to hunt immortals and their chattels. The Troissaint Company is generally supposed to have extirpated them after the First Worm War... but perhaps not in every History. [The Dartsman might destroy you, or a follower. Uncover him with <sprite name=heart> <sprite name=lantern> followers while they're preparing, or defend with <sprite name=edge> <sprite name=forge> <sprite name=winter> followers once they begin their assault. Unsuccessful defenders will die. The Dartsman is not protected against summonings.] ",
+slots:[{id:"defender",label:"Uncover",required:{follower:1}}],
+warmup:120,
+internaldeck: 	{label:"Target",
+	description:"Who is the Dartsman's target?",
+	spec:
+	[
+"assassinationinprogress.follower",
+"assassinationinprogress.player"
+		],
+resetonexhaustion:true,
+draws:1
+},
+linked:[{id:"longassault.assassination.uncovered.success",challenges:{heart:base,lantern:base}},
+{id:"longassault.assassination.uncovered.failure"},
+{id:"longassault.assassination.continue"}]},
+
+
+{id:"longassault.assassination.uncovered.success",
+actionId:"longassault.assassination",
+requirements:{follower:1},
+label:"The Serpent, Exposed",
+startdescription:"Dartsmen strike from stealth. They don't thrive in daylight. This one has fled. (For good?) Our enemy will take note.",
+effects:{long.lesson.might:1},
+warmup:10},
+
+{id:"longassault.assassination.uncovered.failure",
+actionId:"longassault.assassination",
+requirements:{follower:1},
+label:"The Waiting Serpent",
+startdescription:"Our follower never returns. We can only assume that the Dartsmen felled them with his poisons.",
+effects:{follower:-1},
+warmup:10,
+linked:[{id:"longassault.assassination.continue"}]},
+
+{id:"longassault.assassination.continue",
+actionId:"longassault.assassination",
+label:"The First Wound",
+startdescription:"A Dartsmen will kill even the strongest by inches. [Defend with <sprite name=edge> <sprite name=forge> <sprite name=winter> followers. Unsuccessful defenders will die. The Dartsman is not protected against summonings.]",
+slots:[{id:"defender",label:"Defender",required:{follower:1,murderskill:1}}],
+warmup:30,
+linked:[{id:"longassault.assassination.attack.defeated",challenges:{edge:base,winter:base,forge:base}},
+{id:"longassault.assassination.defenderdefeated"},
+{id:"longassault.assassination.murderskill.succeed",chance:30},
+{id:"longassault.assassination.murderskill.failure"},
+{id:"longassault.assassination.attack.player"},
+{id:"longassault.assassination.attack.follower"}
+]},
+
+
+{id:"longassault.assassination.defenderdefeated",
+actionId:"longassault.assassination",
+label:"An Undue Death",
+startdescription:"The Dartsman has claimed the life of a defender: but the only payment that will satisfy them now is their target's death, or their own.",
+requirements:{follower:1},
+effects:{follower:-1},
+warmup:10,
+linked:[{id:"longassault.assassination.attack.player"},
+{id:"longassault.assassination.attack.follower"}]},
+
+
+{id:"longassault.assassination.attack.defeated",
+actionId:"longassault.assassination",
+label:"The Final Payment",
+startdescription:"Our defender has triumphed, and the Dartsman is dead. Perhaps that's enough to stop them.",
+effects:{long.lesson.might:1},
+warmup:10},
+
+{id:"longassault.assassination.attack.player",
+actionId:"longassault.assassination",
+label:"The Dartsman's Poisons",
+startdescription:"The Dartsman will taint me and bleed me, drop by drop.",
+slots:[{id:"health",label:"Attacking...",required:{health:1,fatigue:1},greedy:true}],
+alt:[{id:"longassault.assassination.killplayer"}],
+aspects:{damagehealth:1},
+warmup:10,
+linked:[{id:"longassault.assassination.continue"}]},
+
+
+{id:"longassault.assassination.murderskill.succeed",
+actionId:"long",
+label:"The Broken Barb",
+requirements:{murderskill:1},
+startdescription:"They should have known better than to set their strength against mine. They were owed a death, but I have paid them in their own blood.",
+warmup:30,
+effects:{long.lesson.might:1}},
+
+{id:"longassault.assassination.murderskill.failure",
+actionId:"long",
+label:"A Scarred Respite",
+requirements:{murderskill:1},
+startdescription:"I have won a breathing space, but they are too strong for me. My strength is broken.",
+warmup:30,
+effects:{murderskill:-1},
+linked:[{id:"longassault.assassination.continue"}]},
+
+
+
+{id:"longassault.assassination.killplayer",
+actionId:"longassault.assassination",
+label:"The Dart's End",
+startdescription:"Have I no more strength? [If you have no Health available, the Dartsman's poisons will end your game.]",
+requirements:{health:-1,injury:-1},
+ending:"deathofthebody",
+signalEndingFlavour: Melancholy},
+
+
+{id:"longassault.assassination.attack.follower",
+actionId:"longassault.assassination",
+label:"The Wound that Kills",
+startdescription:"A single dart might end the matter. A dozen darts always will. [<sprite name=edge> <sprite name=forge> <sprite name=winter> followers might survive. Others, or unlucky followers, will always die.",
+slots:[{id:"targetfollower",label:"Attacking...",required:{follower:1},greedy:true}],
+warmup:10,
+linked:[{id:"longassault.assassination.attack.follower.failure",challenges:{edge:base,winter:base,forge:base}},
+{id:"longassault.assassination.attack.follower.success"},
+{id:"longassault.assassination.continue"}]},
+
+{id:"longassault.assassination.attack.follower.failure",
+actionId:"longassault.assassination",
+label:"A Sudden Reversal",
+startdescription:"This time, the Dartsman met a challenge they hadn't expected. They're dead: perhaps that's enough to stop them.",
+effects:{long.lesson.might:1},
+warmup:10},
+
+
+
+
+{id:"longassault.assassination.attack.follower.success",
+actionId:"longassault.assassination",
+label:"The Death that is Due",
+startdescription:"The Dartsman's victims are usually found contorted in agony, neck arched, eyes starting. This one is not found at all. The Dartsman has had their due.",
+requirements:{follower:1},
+effects:{follower:-1},},
+
+
+
 {id:"long.executestrategy.assault.abduct.follower.begin",
 actionId:"longassault.abduction",
 label:"An Abduction!",

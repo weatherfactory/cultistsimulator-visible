@@ -104,8 +104,6 @@ id:"long.preparestrategy.preference.assault"}],
 linked:[{id:"long.preparestrategy",chance:100}]
 },
 
-
-
 {id:"long.preparestrategy.preference.assault",
 actionId:"long",
 requirements:{long.preference.assault:1},
@@ -141,6 +139,7 @@ linked:[
 {id:"long.refinestrategy.dreams.learndreams.followup",chance:70},
 {id:"long.assault.confrontation",chance:70},
 {id:"long.intrigue.confrontation",chance:70},
+{id:"long.refinestrategy.assault.assassination",chance:70},
 {id:"long.refinestrategy.assault.abduct.follower",chance:70},
 {id:"long.refinestrategy.assault.forge.greatwork",chance:70},
 {id:"long.refinestrategy.assault.setambush.expedition",chance:70},
@@ -193,17 +192,18 @@ warmup:10,
 linked:[{id:"long.preparestrategy",chance:100}]
 },
 
-{id:"long.refinestrategy.assault.abduct.follower",
+{id:"long.refinestrategy.assault.assassination",
 actionId:"long",
-extantreqs:{abductioninprogress:-1},
-requirements:{intention.assault:1,strategy.prep:3,long.might:4},
-alternativerecipes:[{id:"long.executestrategy.assault.abduct.follower.begin",chance:100,additional:true}],
+extantreqs: {assassinationinprogress.player:-1,assassinationinprogress.follower:-1},
+requirements:{intention.assault:1,strategy.prep:3,long.might:8},
+alternativerecipes:[{id:"long.executestrategy.assassination.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
 {id:"long.refinestrategy.assault.forge.greatwork",
 actionId:"long",
-requirements:{intention.assault:1,strategy.prep:3,long.might:4},
+extantreqs:{greatwork:1,apostleforge.mentor:1},
+requirements:{intention.assault:1,strategy.prep:3,long.might:6},
 alternativerecipes:[{id:"long.executestrategy.assault.forge.greatwork.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -216,6 +216,17 @@ tablereqs:{follower:1},
 alternativerecipes:[{id:"long.executestrategy.assault.destroyhealth.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
+
+
+{id:"long.refinestrategy.assault.abduct.follower",
+actionId:"long",
+extantreqs:{abductioninprogress:-1},
+requirements:{intention.assault:1,strategy.prep:3,long.might:4},
+alternativerecipes:[{id:"long.executestrategy.assault.abduct.follower.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+
 
 {id:"long.refinestrategy.assault.setambush.expedition",
 actionId:"long",
