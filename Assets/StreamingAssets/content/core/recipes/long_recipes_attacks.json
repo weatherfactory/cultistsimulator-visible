@@ -1039,9 +1039,11 @@ linked:[{id:"long.assault.confrontation"}]},
 
 {id:"long.dreams.confrontation",
 actionId:"long",
-comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
+comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end. Note also that we remove principle aspects on each run-through - any clutter left from killing
+spirits, we want to remove so it doesn't affect the attack calculation.",
 label:"A War of Phantoms",
 aspects:{revealstrategy:1},
+effects:{edge:-99,forge:-99,grail:-99,heart:-99,knock:-99,lantern:-99,moth:-99,winter:-99},
 slots:[{id:"summoned",label:"Defender",required:{summoned:1}}],
 startdescription:"@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. I might survive... if I can raise a sufficient host of spirits against them.] ",
 requirements:{long.dreamwork:10},
@@ -1052,11 +1054,104 @@ linked:[{id:"long.dreams.confrontation.grabability"}]},
 
 
 {id:"long.dreams.confrontation.vanquished",
-actionId:"long"
-},
+actionId:"long",
+label:"The Long is vanquished!",
+startdescription:"Among the wheeling shadows, the furious smokes, of the Bounds, the Long shrinks like a melting moon. Their armies dissipate. Their intentions founder. Their name is lost.",
+description:"[Savour your victory while you can. The work continues. If our enemy can be destroyed, so too can our mentor.]",
+requirements:{long_wound:3},
+effects:{long.enemy:-1},
+warmup:60},
+
+
 {id:"long.dreams.confrontation.defender",
-actionId:"long"
+actionId:"long",
+label:"A Battle in the Bounds ",
+startdescription:"The battle is imaginary; the war is not. FNORD [Only a spirit with <sprite name=edge><sprite name=lantern><sprite name=moth> at least 5 stands a chance of harming the Long. But others will delay the inevitable, for a little while.]",
+linked:[{id:"long.dreams.confrontation.lantern.maid"},
+{id:"long.dreams.confrontation.lantern.hint"},
+{id:"long.dreams.confrontation.winter.maid"},
+{id:"long.dreams.confrontation.forge.caligine"},
+{id:"long.dreams.confrontation.grail.prophet"},
+{id:"long.dreams.confrontation.weakfollower"},
+{id:"long.dreams.confrontation.strongfollower",challenges:{edge:base,lantern:base,moth:base}},
+{id:"long.dreams.confrontation.strongfollower.failure"}]
 },
+
+{id:"long.dreams.confrontation.lantern.maid",
+actionId:"long",
+label:"An Understanding with the Sun-in-Rags",
+startdescription:"The Diarist is on first-name terms with the presences that pass along the Ascent of Knives. No Maid-in-the-Mirror will raise her hand against him.",
+requirements:{diarist:1,spirit_winterd_edge:1},
+aspects:{summoned:-1},
+warmup:10,
+linked:[{id:"long.dreams.confrontation"}]},
+
+{id:"long.dreams.confrontation.winter.maid",
+actionId:"long",
+label:"Winter's Chill",
+startdescription:"Coseley is a Winter-long. However that chilly state was achieved, it has sealed him against the attacks of Maids-in-the-Mirror.",
+requirements:{julian:1,spirit_winterd_edge:1},
+aspects:{summoned:-1},
+warmup:10,
+linked:[{id:"long.dreams.confrontation"}]},
+
+{id:"long.dreams.confrontation.lantern.hint",
+actionId:"long",
+label:"The Meniscate's Light",
+startdescription:"The Diarist is a Lantern-long. he has alliances with many of the epigones of merciless light. No Hint will harm him.",
+requirements:{diarist:1,spirit_lanternc_edge:1},
+aspects:{summoned:-1},
+warmup:10,
+linked:[{id:"long.dreams.confrontation"}]},
+
+
+
+{id:"long.dreams.confrontation.forge.caligine",
+actionId:"long",
+label:"An Understanding with the Sun-in-Rags",
+startdescription:"Welland held fire on a long leash before ever our founder was born. No Caligine will harm him.",
+requirements:{welland:1,spirit_forgec_winter:1},
+aspects:{summoned:-1},
+warmup:10,
+linked:[{id:"long.dreams.confrontation"}]},
+
+{id:"long.dreams.confrontation.grail.prophet",
+actionId:"long",
+label:"An Understanding with the Sun-in-Rags",
+startdescription:"'Don't do that,' Lady Tryphon will remark. And the Raw Prophet will not, in fact, do that..",
+requirements:{tryphon:1,spirit_grailc_moth:1},
+aspects:{summoned:-1},
+warmup:10,
+linked:[{id:"long.dreams.confrontation"}]},
+
+
+{id:"long.dreams.confrontation.weakfollower",
+actionId:"long",
+label:"A Necessary Sacrifice",
+startdescription:"One more candle extinguished.",
+requirements:{edge:-5,forge:-5,winter:-5},
+warmup:30,
+aspects:{killsummoned:1},
+linked:[{id:"long.dreams.confrontation"}]},
+
+{id:"long.dreams.confrontation.strongfollower",
+actionId:"long",
+label:"Blood in the World",
+startdescription:"FNORD long wounded",
+mutations:[{filter:long.enemy,mutate:long_wound,level:1,additive:true}],
+warmup:30,
+aspects:{killsummoned:1},
+linked:[{id:"long.dreams.confrontation"}]},
+
+{id:"long.dreams.confrontation.strongfollower.failure",
+actionId:"long",
+label:"The Lengthening Light",
+startdescription:"FNORD long not hurt",
+warmup:30,
+aspects:{killsummoned:1},
+linked:[{id:"long.dreams.confrontation"}]},
+
+
 {id:"long.dreams.confrontation.grabability",
 actionId:"long"
 }
