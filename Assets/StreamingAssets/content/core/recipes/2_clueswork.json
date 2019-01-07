@@ -317,27 +317,92 @@ hintonly:true
         label: "Summon a mighty creature of the Forge of Days?",
         actionId: "work",
         requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
-		effects: {spirit_forgee_edge:1},
+				extantreqs:{spirit_forgee_edge:-1,spirit_forgee_edge.defunct:-1},
         startdescription: "I've found a useful conjunction of aspects, but I need more. To conjure a thing of fire and Glory, I'll need a great power of Forge; a significant power of Knock; and some Lantern.",     
    hintonly:true,
         craftable: false
     },
+	
+						{
+        id: "hint_summon_spirit_forgee_edge_exists",
+        label: "King Crucible, again?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		extantreqs:{spirit_forgee_edge:1},
+        startdescription: "Am I considering summoning King Crucible? King Crucible is already in the world.",  
+   hintonly:true,
+        craftable: false
+    },
+						{
+        id: "hint_summon_spirit_forgee_edge_dayd",
+        label: "King Crucible, already?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		extantreqs:{spirit_forgee_edge.defunct:1},
+        startdescription: "Am I considering summoning King Crucible? He's still stoking his fires in the Mansus.",  
+   hintonly:true,
+        craftable: false
+    },
+
 			{
         id: "hint_summon_spirit_graile_edge",
         label: "Summon a mighty creature of the Red Grail?",
         actionId: "work",
         requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
-		effects: {spirit_graile_edge:1},
+		extantreqs:{spirit_graile_edge:-1,spirit_graile_edge.defunct:-1},
         startdescription: "I've found a useful conjunction of aspects, but I need more power. To conjure a thing of blood and change, I'll need a great power of Grail; a significant power of Knock; and some Forge.",  
    hintonly:true,
         craftable: false
     },
+					{
+        id: "hint_summon_spirit_graile_edge_exists",
+        label: "Ezeem, again?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
+		extantreqs:{spirit_graile_edge:1},
+        startdescription: "Am I considering summoning Ezeem? Ezeem is already in the world.",  
+   hintonly:true,
+        craftable: false
+    },
+						{
+        id: "hint_summon_spirit_graile_edge_dayd",
+        label: "Ezeem, already?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
+		extantreqs:{spirit_graile_edge.defunct:1},
+        startdescription: "Am I considering summoning Ezeem? Ezeem is still sulking in the Mansus.",  
+   hintonly:true,
+        craftable: false
+    },
+	
 			{
         id: "hint_summon_spirit_lanterne_secret",
         label: "Summon something unusual?",
         actionId: "work",
         requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+				extantreqs:{spirit_lanterne_secret:-1,spirit_lanterne_secret.defunct:-1},
         startdescription: "I've found a useful conjunction of aspects, but I need more power. With enough Lantern, a significant degree of Knock, and a teasing taste of secrets, perhaps I can conjure someone interesting.",
+   hintonly:true,
+        craftable: false
+    },
+	
+						{
+        id: "hint_summon_spirit_lanterne_secret_exists",
+        label: "The Baldomerian, again?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+		extantreqs:{spirit_lanterne_secret:1},
+        startdescription: "Am I considering summoning the Baldomerian? She's already in the world.",  
+   hintonly:true,
+        craftable: false
+    },
+						{
+        id: "hint_summon_spirit_lanterne_secret_dayd",
+        label: "The Baldomerian, already?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+		extantreqs:{spirit_lanterne_secret.defunct:1},
+        startdescription: "Am I considering summoning the Baldomerian? She's still resting in the Mansus.",  
    hintonly:true,
         craftable: false
     },

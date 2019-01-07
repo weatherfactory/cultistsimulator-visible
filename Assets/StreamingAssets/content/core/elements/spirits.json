@@ -73,7 +73,9 @@
             aspects:
             {follower:1, summoned:1,forge:12,edge:12,devourer:12,tutor:1,spirittutormandaic:1},
             description: "'IN THE DESERT I WAIT IN THE RUINS I BURN - METAL IS WATER - STONE IS WAX - FLESH IS SMOKE - ENTER ME AND BE NO LONGER.'",
+			xtriggers:{killsummoned:spirit_forgee_edge.defunct},
 			lifetime: 180,
+			decayTo:spirit_forgee_edge.defunct,
 			unique:true
         },
 		 {
@@ -82,7 +84,9 @@
             aspects:
             {follower:1, summoned:1,grail:12,edge:12,devourer:12,tutor:1,spirittutorphrygian:1},
             description: "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
+			xtriggers:{killsummoned:spirit_graile_edge.defunct},
 			lifetime: 180,
+			decayTo:spirit_graile_edge.defunct,
 			unique:true
         },
 				 {
@@ -91,8 +95,34 @@
             aspects:
             {follower:1, summoned:1,lantern:12,secrethistories:12,tutor:1,spirittutorfucine:1},
             description: "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
+			xtriggers:{killsummoned:spirit_lanterne_secret.defunct},
+			lifetime: 180,
+			decayTo:spirit_lanterne_secret.defunct,
+			unique:true
+        },
+								 {
+        id: "spirit_forgee_edge.defunct",
+            label: "King Crucible Burns Low",
+            description: "King Crucible's fires have sunk to a lesser heat, for now.",
 			lifetime: 180,
 			unique:true
-        }
+        },
+		
+								 {
+        id: "spirit_graile_edge.defunct",
+            label: "Ezeem is Sulking",
+            description: "Ezeem will be fine, eventually.",
+			lifetime: 180,
+			unique:true
+        },
+						 {
+        id: "spirit_lanterne_secret.defunct",
+            label: "Teresa is Resting",
+            description: "The Baldomerian has retreated to the Sage-Knight's Lodge to rest.",
+			lifetime: 180,
+			unique:true
+        },
+		
+		
 ]
 };

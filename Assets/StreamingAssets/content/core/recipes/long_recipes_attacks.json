@@ -116,7 +116,7 @@ signalEndingFlavour: Melancholy},
 {id:"longassault.assassination.attack.follower",
 actionId:"longassault.assassination",
 label:"The Wound that Kills",
-startdescription:"A single dart might end the matter. A dozen darts always will. [<sprite name=edge> <sprite name=forge> <sprite name=winter> followers might survive. Others, or unlucky followers, will always die.",
+startdescription:"The Dartsman might employ a single dart, or a dozen; but it's always the last dart that kills.[<sprite name=edge> <sprite name=forge> <sprite name=winter> followers might survive. Others, or unlucky followers, will always die.",
 slots:[{id:"targetfollower",label:"Attacking...",required:{follower:1},greedy:true}],
 warmup:10,
 linked:[{id:"longassault.assassination.attack.follower.failure",challenges:{edge:base,winter:base,forge:base}},
@@ -126,7 +126,7 @@ linked:[{id:"longassault.assassination.attack.follower.failure",challenges:{edge
 {id:"longassault.assassination.attack.follower.failure",
 actionId:"longassault.assassination",
 label:"A Sudden Reversal",
-startdescription:"This time, the Dartsman met a challenge they hadn't expected. They're dead: perhaps that's enough to stop them.",
+startdescription:"This time, the Dartsman met a challenge they hadn't expected. They're dead. Perhaps that will stop them.",
 effects:{long.lesson.might:1},
 warmup:10},
 
@@ -925,7 +925,7 @@ craftable:false,
 actionId:"long",
 label:"Preparations for an Assault",
 startdescription:"Our enemy's connections are so ubiquitous that they now feel confident of success in open assault. We can expect an onslaught, very soon.",
-requirements:{long.connections:10},
+requirements:{long.connections:10,diarist:-1,diarist_unknown:-1},
 mutations:[{mutate:long.might,filter:long.enemy,level:10}],
 warmup:60,
 linked:[{id:"long.assault.confrontation"}],
@@ -940,7 +940,7 @@ label:"A Direct Assault!",
 aspects:{revealstrategy:1},
 slots:[{id:"follower",label:"Defender",required:{follower:1,murderskill:1},forbidden:{summoned:1,hireling:1}}],
 startdescription:"Enough feinting and proxy struggle. @#welland|Captain Welland will use his Forge-strength against us personally.#tryphon|Lady Tryphon has opted to bloody her well-manicured hands in a personal assault. #julian|This chilly enemy has come to end us personally.#|Our enemy has personally entered the fray.@ [The Long will devour my Health until I am dead, although our loyal followers might protect us for a little while. And only mortal followers - our enemy is wise in the invisible arts, and spirits cannot assail them.] ",
-requirements:{long.might:10},
+requirements:{long.might:10,diarist:-1,diarist_unknown:-1},
 alt:[{id:"expel_corpses",additional:true,expulsion:{limit:9,filter:{corpse:1}}},
 {id:"long.assault.confrontation.vanquished"},
 {id:"long.assault.confrontation.murderskill"},
@@ -1037,9 +1037,29 @@ alt:[{id:"expel_corpses",additional:true,expulsion:{limit:1,filter:{corpse:1}}}]
 linked:[{id:"long.assault.confrontation"}]},
 
 
+{id:"long.dreams.confrontation",
+actionId:"long",
+comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
+label:"A War of Phantoms",
+aspects:{revealstrategy:1},
+slots:[{id:"summoned",label:"Defender",required:{summoned:1}}],
+startdescription:"@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. I might survive... if I can raise a sufficient host of spirits against them.] ",
+requirements:{long.dreamwork:10},
+alt:[{id:"long.dreams.confrontation.vanquished"},
+{id:"long.dreams.confrontation.defender"}],
+warmup:30,
+linked:[{id:"long.dreams.confrontation.grabability"}]},
 
 
-
+{id:"long.dreams.confrontation.vanquished",
+actionId:"long"
+},
+{id:"long.dreams.confrontation.defender",
+actionId:"long"
+},
+{id:"long.dreams.confrontation.grabability",
+actionId:"long"
+}
 
 
 
