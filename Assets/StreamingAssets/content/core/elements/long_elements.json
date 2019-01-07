@@ -19,7 +19,7 @@
         id: "diarist_unknown",
             label: "A Shadowy Presence",
             description: "Their power is formidable; their identity, as yet unknown.",
-			aspects:{long.enemy:1,long.preference.dreams:1},
+			aspects:{long.enemy:1,long.preference.dreamwork:1},
 			xtriggers:{revealstrategy:diarist}
         },
 		
@@ -48,7 +48,7 @@
         id: "diarist",
             label: "The Diarist",
             description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.'",
-			aspects:{long.enemy:1,long.preference.dreams:1}
+			aspects:{long.enemy:1,long.preference.dreamwork:1}
         },
 		
 				 {

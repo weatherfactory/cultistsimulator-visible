@@ -478,6 +478,24 @@ craftable:true
      warmup: 0,
      craftable: true
    },
+     {
+     id: "_long.dreamconfrontation",
+     actionId: "long",
+	 startdescription:"Let's fight in the Mansus",
+     linked: [{id: "_long.dreamconfrontation.skillup"}],
+     effects: {diarist:1},
+	 warmup:1
+
+   },
+     {
+     id: "_long.dreamconfrontation.skillup",
+     actionId: "long",
+	 	 startdescription:"Let's skill up the Long first",
+	 mutations:[{filter:long.enemy,mutate:long.dreamwork,level:10}],
+     linked: [{id: "long.dreams.confrontation"}],
+	 warmup:1
+
+   },
    
 
 ]

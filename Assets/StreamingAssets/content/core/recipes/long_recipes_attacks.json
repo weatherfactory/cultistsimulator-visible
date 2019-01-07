@@ -1039,13 +1039,11 @@ linked:[{id:"long.assault.confrontation"}]},
 
 {id:"long.dreams.confrontation",
 actionId:"long",
-comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end. Note also that we remove principle aspects on each run-through - any clutter left from killing
-spirits, we want to remove so it doesn't affect the attack calculation.",
+comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
 label:"A War of Phantoms",
 aspects:{revealstrategy:1},
-effects:{edge:-99,forge:-99,grail:-99,heart:-99,knock:-99,lantern:-99,moth:-99,winter:-99},
 slots:[{id:"summoned",label:"Defender",required:{summoned:1}}],
-startdescription:"@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. I might survive... if I can raise a sufficient host of spirits against them.] ",
+startdescription:"@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. But they have exposed themselves to a counterattack... if I can raise a sufficient host of Mansus-things against them.] ",
 requirements:{long.dreamwork:10},
 alt:[{id:"long.dreams.confrontation.vanquished"},
 {id:"long.dreams.confrontation.defender"}],
@@ -1066,6 +1064,7 @@ warmup:60},
 {id:"long.dreams.confrontation.defender",
 actionId:"long",
 label:"A Battle in the Bounds ",
+requirements:{summoned:1},
 startdescription:"The battle is imaginary; the war is not. FNORD [Only a spirit with <sprite name=edge><sprite name=lantern><sprite name=moth> at least 5 stands a chance of harming the Long. But others will delay the inevitable, for a little while.]",
 linked:[{id:"long.dreams.confrontation.lantern.maid"},
 {id:"long.dreams.confrontation.lantern.hint"},
@@ -1084,7 +1083,7 @@ startdescription:"The Diarist is on first-name terms with the presences that pas
 requirements:{diarist:1,spirit_winterd_edge:1},
 aspects:{summoned:-1},
 warmup:10,
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 {id:"long.dreams.confrontation.winter.maid",
 actionId:"long",
@@ -1093,16 +1092,16 @@ startdescription:"Coseley is a Winter-long. However that chilly state was achiev
 requirements:{julian:1,spirit_winterd_edge:1},
 aspects:{summoned:-1},
 warmup:10,
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 {id:"long.dreams.confrontation.lantern.hint",
 actionId:"long",
 label:"The Meniscate's Light",
-startdescription:"The Diarist is a Lantern-long. he has alliances with many of the epigones of merciless light. No Hint will harm him.",
+startdescription:"As Lantern-long, the Diarist has an understanding with the Glory's epigones. No Hint will harm him.",
 requirements:{diarist:1,spirit_lanternc_edge:1},
 aspects:{summoned:-1},
 warmup:10,
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 
 
@@ -1113,7 +1112,7 @@ startdescription:"Welland held fire on a long leash before ever our founder was 
 requirements:{welland:1,spirit_forgec_winter:1},
 aspects:{summoned:-1},
 warmup:10,
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 {id:"long.dreams.confrontation.grail.prophet",
 actionId:"long",
@@ -1122,17 +1121,17 @@ startdescription:"'Don't do that,' Lady Tryphon will remark. And the Raw Prophet
 requirements:{tryphon:1,spirit_grailc_moth:1},
 aspects:{summoned:-1},
 warmup:10,
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 
 {id:"long.dreams.confrontation.weakfollower",
 actionId:"long",
 label:"A Necessary Sacrifice",
-startdescription:"One more candle extinguished.",
 requirements:{edge:-5,forge:-5,winter:-5},
+startdescription:"One more candle extinguished.",
 warmup:30,
 aspects:{killsummoned:1},
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 {id:"long.dreams.confrontation.strongfollower",
 actionId:"long",
@@ -1141,7 +1140,7 @@ startdescription:"FNORD long wounded",
 mutations:[{filter:long.enemy,mutate:long_wound,level:1,additive:true}],
 warmup:30,
 aspects:{killsummoned:1},
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 {id:"long.dreams.confrontation.strongfollower.failure",
 actionId:"long",
@@ -1149,14 +1148,39 @@ label:"The Lengthening Light",
 startdescription:"FNORD long not hurt",
 warmup:30,
 aspects:{killsummoned:1},
-linked:[{id:"long.dreams.confrontation"}]},
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
 
 {id:"long.dreams.confrontation.grabability",
-actionId:"long"
-}
+actionId: "long",
+label: "Dusk Unrelenting",
+startdescription:"Each time I sleep, nightmares shred my soul. Even when I wake, they await me in every mirror.",
+slots: [{id:"wakingnightmares",label:"Waking Nightmares",required: {passion: 1,reason:1,concentration:1,disillusionment:1,passionexhausted:1},greedy: true}],
+effects:{passion:-1,reason:-1,concentration:-1,disillusionment:-1,passionexhausted:-1},
+alt:[{id:"long.dreams.confrontation.destroyedbynightmares"}],
+startdescription: "The nightmares keep coming. They keep coming. Day or night, waking or sleeping, the sounds of the things in the air, the roots of my hair growing inwards, the open doors that open all the way and the migraines that lair in cold and everything speaks to me, all the time everything, the tug of waking is gravity's slither and the press of the Bounds is the press of the crowd and I am sloughing me, this is how glaciers go
 
+[When I have no remaining Passion or Reason, this will destroy me.]",
+warmup: 10,
+linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
+{id:"long.dreams.confrontation.destroyedbynightmares",
+actionId:"long",
+label:"The Mercy",
+startdescription:"- no more -",
+requirements:{passion:-1,reason:-1,concentration:-1,disillusionment:-1,passionexhausted:-1},
+ending: "longnightmareending",
+signalEndingFlavour:Melancholy
+},
+
+{id:"long.dreams.confrontation.cleanup",
+actionId:"long",
+comments:"We remove principle aspects on each run-through - any clutter left from killing
+spirits, we want to remove so it doesn't affect the attack calculation.",
+label:"A War of Phantoms",
+aspects:{revealstrategy:1},
+effects:{edge:-99,forge:-99,grail:-99,heart:-99,knock:-99,lantern:-99,moth:-99,winter:-99},
+linked:[{id:"long.dreams.confrontation"}]}
 
 ]
 }

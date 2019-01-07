@@ -316,6 +316,8 @@ public class Compendium : ICompendium
                 " but sometimes I am the reflection of the Witch, and sometimes my beloved-who-was is the Sister, and when the Sun is reborn, the Meniscate will bring us home. What is within, without; what is without, within. Always." +
                 " [Congratulations on a Change: Balance victory. You have found a secret. There are other paths.] ", "meniscate", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMENISCATEVICTORY_WITHRISEN");
 
+        if (endingFlag == "longnightmareending")
+            return new Ending(endingFlag, "Dissolution", "I couldn't bear it. No more. [A Long's nightmares drove you to dissolution.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil", null);
 
         if (endingFlag=="deathofthebody")
             return new Ending(endingFlag, title, desc, "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DEATHOFTHEBODY");
