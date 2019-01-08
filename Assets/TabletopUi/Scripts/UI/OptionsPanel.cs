@@ -124,7 +124,7 @@ public class OptionsPanel : MonoBehaviour {
         if (PlayerPrefs.HasKey(NOTIFICATIONTIME))
             value = PlayerPrefs.GetFloat(NOTIFICATIONTIME);
         else
-            value = 0f;
+            value = 10f;	// Default to maximum (now 30s)
 
         SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
         SetInspectionWindowTimeInternal(value);
