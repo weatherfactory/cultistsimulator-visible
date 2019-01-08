@@ -384,6 +384,7 @@ linked:[{id:"long.cycle",chance:100}]
 {id:"long.refinestrategy.dreams.poisonway",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3,long.dreamwork:6},
+tablereqs:{way:1},
 alternativerecipes:[{id:"long.executestrategy.dreams.poisonway.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -400,6 +401,7 @@ linked:[{id:"long.cycle",chance:100}]
 {id:"long.refinestrategy.dreams.poisonpassionwithdread",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3,long.dreamwork:4},
+tablereqs:{passion:1},
 alternativerecipes:[{id:"long.executestrategy.dreams.poisonpassionwithdread.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -407,6 +409,7 @@ linked:[{id:"long.cycle",chance:100}]
 {id:"long.refinestrategy.dreams.poisonreasonwithfascination",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3,long.dreamwork:4},
+tablereqs:{reason:1},
 alternativerecipes:[{id:"long.executestrategy.dreams.poisonreasonwithfascination.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
@@ -423,6 +426,7 @@ linked:[{id:"long.cycle",chance:100}]
 {id:"long.refinestrategy.dreams.dreadtofascination.poisoned",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3,long.dreamwork:2},
+tablereqs:{dread:1},
 alternativerecipes:[{id:"long.executestrategy.dreams.dreadtofascination.poisoned.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
