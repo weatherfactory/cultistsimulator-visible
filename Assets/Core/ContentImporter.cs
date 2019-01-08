@@ -626,7 +626,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                             LogProblem("Chance 0 or not specified in induced recipes for element " + element.Id);
                         }
 
-                        TryAddAsInternalRecipe(ir);
+                        TryAddAsInternalRecipe(ir,null);
                     }
                 }
 
@@ -862,7 +862,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             Hashtable htEachRecipe = importedRecipes.GetHashtable(i);
 
-            ImportRecipe(htEachRecipe);
+            ImportRecipe(htEachRecipe,null);
         }
 
        //check for common issues in recipes
@@ -884,7 +884,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
     }
 
-    private void ImportRecipe(Hashtable htEachRecipe)
+    private void ImportRecipe(Hashtable htEachRecipe,string defaultActionId)
     {
         Recipe r = new Recipe();
         try
@@ -925,7 +925,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 ? null
                 : htEachRecipe[NoonConstants.KACTIONID].ToString();
             if (r.ActionId == null)
-                LogProblem(r.Id + " has no actionId specified");
+            {
+                if (defaultActionId != null)
+                    r.ActionId = defaultActionId;
+                else
+                    LogProblem(r.Id + " has no actionId specified");
+
+            }
             htEachRecipe.Remove(NoonConstants.KACTIONID);
 
             if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
@@ -1176,7 +1182,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,
                         NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
-                    TryAddAsInternalRecipe(ra);
+                    TryAddAsInternalRecipe(ra,r);
                 }
             }
         }
@@ -1215,7 +1221,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,
                         NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
-                    TryAddAsInternalRecipe(lr);
+                    TryAddAsInternalRecipe(lr,r);
                 }
             }
         }
@@ -1291,16 +1297,21 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
     }
 
-    private void TryAddAsInternalRecipe(Hashtable ra)
+    private void TryAddAsInternalRecipe(Hashtable ra,Recipe wrappingRecipe)
     {
         ra.Remove(NoonConstants.KCHANCE);
         ra.Remove(NoonConstants.KADDITIONAL);
         ra.Remove(NoonConstants.KCHALLENGES);
         ra.Remove(NoonConstants.KEXPULSION);
 
+        string possibleDefaultActionId = null;
+
+        if (wrappingRecipe != null)
+            possibleDefaultActionId = wrappingRecipe.ActionId;
+
         //internal recipe? can be specified inline, and then goes into the recipes list as standard
         if (ra.Count > 1) //for a non-internal recipe, ID is the only remaining property
-            ImportRecipe(ra);
+            ImportRecipe(ra, possibleDefaultActionId);
     }
 
     private static Expulsion GetExpulsionDetailsIfAny(Hashtable linkedrecipedetails)
