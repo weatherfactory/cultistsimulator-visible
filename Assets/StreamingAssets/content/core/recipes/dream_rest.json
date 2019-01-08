@@ -1,6 +1,19 @@
 {
 "recipes": [
 
+
+	
+	{id:"poison.fascination.longlesson.trap",
+actionId:"dream",
+label:"FNORD",
+startdescription:"FNORD",
+requirements:{poison.fascination.longlesson:1,fascination:1},
+effects:{long.lesson.dreamwork:1},
+mutations:[{filter:fascination,mutate:poison.fascination.longlesson,level:-1}],
+warmup:10,
+craftable:true
+},
+
 			{
         id: "dreamhealth",
         label: "An Early Night",
@@ -145,6 +158,9 @@ craftable:true},
         warmup: 60,
 		craftable:true
     },
+
+	
+	
 				{
         id: "dreamfunds",
         label: "Purchase a Tincture of Opium",

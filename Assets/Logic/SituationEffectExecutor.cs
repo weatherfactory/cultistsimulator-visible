@@ -20,7 +20,8 @@ namespace Assets.Logic
             var recipeAspects = command.Recipe.Aspects;
             var cardAspects = stacksManager.GetTotalAspects();
  
-
+            //MutationEffects happen first. I often regret this, because I sometimes create a card and want to apply a mutationeffect to it.
+            //But I can always pass something through an empty recipe if I gotta.
             RunMutationEffects(command, stacksManager);
 
             //note: xtriggers for recipe aspects happen before xtriggers for card aspects. Within that precedence, aspects take effect in non-specific order.

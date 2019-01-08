@@ -996,7 +996,12 @@ isHidden:true
 			comments: "Recipe aspect. Upgrades influence.",
 			noartneeded:true
         },
-												 {
+	
+{id:"glorify",
+label:"A MOve toWards the GLory",
+description:"Converts Dread to Fascination, and potential other elements to more Gloryful equivalents.",
+isAspect:true,noartneeded:true
+},									 {
             id: "depiphany",
             label: "Depiphany",
 			description: "I understand things more simply now.",
@@ -1452,20 +1457,6 @@ isAspect:true,
 induces:[{id:"poison.reason.fascination.induction",chance:70}]
 },
 
-
-{id:"poison.fascination.longlesson",
-label:"FNORD",
-description: "FNORD",
-isAspect:true,
-induces:[{id:"poison.fascination.longlesson.induction",chance:70}]
-},
-
-{id:"poison.dread.longlesson",
-label:"FNORD",
-description: "FNORD",
-isAspect:true,
-induces:[{id:"poison.dread.longlesson.induction",chance:70}]
-},
 
 {id:"poison.health.dread",
 label:"FNORD",

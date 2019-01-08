@@ -179,7 +179,7 @@ lifetime: 180,
 			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
 			lifetime: 180,
-			xtriggers:{upgradeinfluence:influenceedgec}
+			xtriggers:{upgradeinfluence:influenceedgec,glorify:fascination}
 			},
 		        {
             id: "passion",

@@ -401,7 +401,20 @@ namespace Assets.TabletopUi {
         private void AttemptAspectInductions() {
             //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
 
-            var inducingAspects = situationWindow.GetAspectsFromOutputElements(true);
+            var outputStacks = situationWindow.GetOutputStacks();
+            var inducingAspects=new AspectsDictionary();
+
+            //face-down cards don't trigger inductions. This is because we don't generally want to trigger an induction
+            //for something that has JUST BEEN CREATED. This is unmistakably a hack, and if we distinguish newly added cards better
+            //(or expand IsFront to cover that) then that would be safer.
+
+            //It will may mean that we can't transform a card that we don't want to trigger initial inductions and may have to delete/recreate it, losing mutations.
+
+            foreach (var os in outputStacks)
+            {
+               if(os.IsFront())
+                   inducingAspects.CombineAspects(os.GetAspects());
+            }
 
             var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
 
