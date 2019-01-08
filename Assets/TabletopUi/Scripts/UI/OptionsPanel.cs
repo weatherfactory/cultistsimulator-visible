@@ -27,6 +27,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private Slider autosaveSlider;
 	[SerializeField] private Slider	snapGridSlider;
     [SerializeField] private Slider birdWormSlider;
+    [SerializeField] private Slider contrastSlider;
 
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
@@ -35,6 +36,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
     [SerializeField] private TextMeshProUGUI snapGridSliderValue;
+    [SerializeField] private TextMeshProUGUI contrastSliderValue;
 
     [SerializeField] private RestartButton restartButton;
 
@@ -163,7 +165,6 @@ public class OptionsPanel : MonoBehaviour {
         snapGridSlider.value = value;
 
         // Loading Bird/Worm Slider
-
         if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
             value = PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER);
         else
@@ -171,6 +172,16 @@ public class OptionsPanel : MonoBehaviour {
 
         SetBirdWorm(value);
         birdWormSlider.value = value;
+        NoonUtility.WormWar(value);
+
+        // Loading High Contrast Slider
+        if (PlayerPrefs.HasKey(NoonConstants.HIGHCONTRAST))
+            value = PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST);
+        else
+            value = 0f;
+
+        SetHighContrast(value);
+        contrastSlider.value = value;
         NoonUtility.WormWar(value);
     }
 
@@ -353,6 +364,18 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove");
     }
 
+    public void SetHighContrast(float value)
+	{
+        if (gameObject.activeInHierarchy == false)
+            return; // don't update anything if we're not visible.
+
+        PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
+		RefreshOptionsText();
+		SetHighContrastInternal(value);
+
+		SoundManager.PlaySfx("UISliderMove");
+    }
+
     public void SetSnapGrid(float value)
 	{
         if (gameObject.activeInHierarchy == false)
@@ -365,12 +388,10 @@ public class OptionsPanel : MonoBehaviour {
 
 	public void RefreshOptionsText()
 	{
-
 	    int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
 
 	    try
 	    {
-
 
         // Inspect time
         inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
@@ -391,8 +412,11 @@ public class OptionsPanel : MonoBehaviour {
 		}
 
 		// Bird/worm
-
         birdWormSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM" );
+
+		// High Contrast
+        contrastSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF" );
+
 	    }
 	    catch (NullReferenceException)
 	    {
@@ -497,5 +521,17 @@ public class OptionsPanel : MonoBehaviour {
 
 		var tabletopManager = Registry.Retrieve<ITabletopManager>();
 		tabletopManager.SetGridSnapSize( value );
+    }
+
+    void SetHighContrastInternal(float value)
+	{
+        // value ranges from 0 to 1
+        PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
+
+		if (!_isInGame)
+			return;
+
+		var tabletopManager = Registry.Retrieve<ITabletopManager>();
+		tabletopManager.SetHighContrast( value>0f );
     }
 }

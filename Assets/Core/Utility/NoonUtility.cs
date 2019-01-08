@@ -97,6 +97,7 @@ namespace Noon
         public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";
 
         public const string BIRDWORMSLIDER = "BirdWormSlider";
+		public const string HIGHCONTRAST = "HighContrast";
 
 
         public const string DECK_PREFIX = "deck:";

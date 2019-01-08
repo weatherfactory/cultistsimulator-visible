@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using Assets.CS.TabletopUI;	// For accessing high contrast mode
 
 /// Localization responder - assumes a singleton centralized manager class (LanguageManager{})
 /// that maintains fields for the font assets for different language sets being parsed
@@ -21,13 +22,20 @@ public class Babelfish : MonoBehaviour
     [Tooltip("Force this string to use the font for a specific language (empty by default)")]
     [SerializeField] private string						forceFontLanguage;
 #pragma warning restore 649
-    private TMP_Text tmpText;       // text mesh pro text object.
+	[SerializeField] private bool						highContrastAllowed = false;
+	[SerializeField] private bool						highContrastBold = true;
+	[SerializeField] private Color						highContrastColor = Color.white;
+
+
+	private Color		defaultColor;
+    private TMP_Text	tmpText;       // text mesh pro text object.
 	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
     private void Awake()
     {
         // cache the TMP component on this object
         tmpText = GetComponent<TMP_Text>();
+		defaultColor = tmpText.color;
     }
 
     private void OnEnable()
@@ -74,6 +82,28 @@ public class Babelfish : MonoBehaviour
         if (locLabel != "")
 		{
             tmpText.text = LanguageTable.Get(locLabel);
+		}
+
+		//if (highContrastAllowed)
+		{
+			highContrastBold = true;
+
+			if (TabletopManager.GetHighContrast())
+			{
+				Color light = Color.white;
+				Color dark = Color.black;
+				light.a = 1.0f;
+				dark.a = 1.0f;
+				tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
+				if (highContrastBold)
+					tmpText.fontStyle |= FontStyles.Bold;
+			}
+			else
+			{
+				tmpText.color = defaultColor;
+				if (highContrastBold)
+					tmpText.fontStyle &= ~FontStyles.Bold;
+			}
 		}
     }
 }

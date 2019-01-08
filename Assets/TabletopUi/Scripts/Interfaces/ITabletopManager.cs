@@ -31,6 +31,7 @@ namespace TabletopUi.Scripts.Interfaces
         bool GetPausedState();
         void SetAutosaveInterval(float minutes);
         void SetGridSnapSize(float snapsize);
+		void SetHighContrast( bool on );
         void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect);
         void ReturnFromMansus(Transform origin, ElementStackToken mansusCard);
         void BeginNewSituation(SituationCreationCommand scc, List<IElementStack> withStacksInStorage);

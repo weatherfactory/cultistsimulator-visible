@@ -96,6 +96,10 @@ namespace Assets.Editor
         {
         }
 
+        public void SetHighContrast(bool on)
+        {
+        }
+
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect)
         {
         }

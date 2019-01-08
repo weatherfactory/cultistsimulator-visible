@@ -108,6 +108,7 @@ namespace Assets.CS.TabletopUI {
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
 		private static float gridSnapSize = 0.0f;
+		private static bool highContrastMode = false;
         private List<string> currentDoomTokens=new List<string>();
 
 		public void ForceAutosave()	// Useful for forcing autosave to happen at tricky moments for debugging - CP
@@ -780,6 +781,7 @@ namespace Assets.CS.TabletopUI {
 			AUTOSAVE_INTERVAL = minutes * 60.0f;
 		}
 
+
 		public void SetGridSnapSize( float snapsize )
 		{
 			int snap = Mathf.RoundToInt( snapsize );
@@ -797,6 +799,19 @@ namespace Assets.CS.TabletopUI {
 		{
 			return gridSnapSize;
 		}
+
+
+		public void SetHighContrast( bool on )
+		{
+			highContrastMode = on;
+			LanguageManager.LanguageChangeHasOccurred();	// Fire language change to recreate all text, which will also apply contrast adjustments - CP 
+		}
+
+		public static bool GetHighContrast()
+		{
+			return highContrastMode;
+		}
+
 
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
