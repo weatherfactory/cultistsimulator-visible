@@ -861,34 +861,86 @@ effects:{long.lesson.connections:1},
 },
 
 
+{id:"long.executestrategy.dreams.drysoul",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.fiftheye",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.poisonway",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.attackwitnesses",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.poisonpassionwithdread",actionId:"longdreams",
+label:"",
+startdescription:"FNORD", 
+warmup:60},
+{id:"long.executestrategy.dreams.poisonreasonwithfascination",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.createfascination.poisoned",actionId:"longdreams",
+label:"",
+startdescription:"FNORD",
+warmup:60},
+{id:"long.executestrategy.dreams.dreadtofascination.poisoned",actionId:"longdreams"},
+
+
 {id:"long.executestrategy.dreams.createfascination.begin",
 actionId:"longdreams",
 label:"Distant Lights",
 startdescription:"Our enemy has set a candle in the high Mansus-window. Its light will infiltrate our dreams.",
 description:"Here is that light on the edge of sleep, of which both Coseley and Heursault wrote, each in their time.",
 effects:{fascination:1},
-warmup:180,
-comments:"Warmup delay is deliberate: we want the F to have a sporting chance of being picked up by a subsequent dream attack"},
+warmup:60},
 
 
 {id:"long.executestrategy.dreams.learndreams.begin",
 actionId:"longdreams",
 label:"Learning Us",
-startdescription:"FNORD snag d/f/r. They'll use it to learn us.",
-description:"No D/F/R found",
-slots:[{id:"impulses",label:"Impulses",greedy:true,required:{dread:1,fascination:1,restlessness:1}}],
+startdescription:"FNORD snag f They'll use it to learn us.",
+description:"No f found",
+slots:[{id:"impulses",label:"Impulses",greedy:true,required:{fascination:1}}],
 warmup:10,
 craftable:false,
 alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
 },
 
+
 {id:"long.executestrategy.dreams.learndreams.continue",
 actionId:"longdreams",
 label:"FNORD Learned Us",
 startdescription:"FNORD they're coming to know us",
-requirements:{influence:1},
-effects:{dread:-1,fascination:-1,restlessness:-1,long.lesson.dreamwork:1}
+requirements:{fascination:1},
+effects:{fascination:-1,long.lesson.dreamwork:1}
 },
+
+{id:"long.executestrategy.dreams.learnfears.begin",
+actionId:"longdreams",
+label:"Learning Us",
+startdescription:"FNORD snag d They'll use it to learn us.",
+description:"No f found",
+slots:[{id:"impulses",label:"Impulses",greedy:true,required:{dread:1}}],
+warmup:10,
+craftable:false,
+alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
+},
+
+{id:"long.executestrategy.dreams.learnfears.continue",
+actionId:"longdreams",
+label:"FNORD Learned Us",
+startdescription:"FNORD they're coming to know us",
+requirements:{dread:1},
+effects:{dread:-1,long.lesson.dreamwork:1}
+},
+
+
 
 
 {id:"long.executestrategy.downtime.learn.begin",
