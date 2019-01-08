@@ -1441,28 +1441,40 @@ label:"Exposed",
 description: "This follower's secrets have been revealed to the public. Any time they're active, the press might take an interest.",
 isAspect:true,
 icon:"reputation",
-induces:[{id:"poison.notoriety.induction",chance:70}]
+induces:[{id:"poison.notoriety.induction",chance:30}]
 },
+
 
 {id:"poison.passion.dread",
 label:"Poisoned Passion",
-description: "My emotions have been infected with the creeping taint of fear. [Using this element may cause Dread to occur.]",
+description: "My emotions have been infected with the creeping taint of fear. [Using this card anywhere will probably create Dread.]",
 isAspect:true,
 induces:[{id:"poison.passion.dread.induction",chance:70}]
 },
 {id:"poison.reason.fascination",
 label:"FNORD",
-description: "FNORD",
+description: "FNORD  [Using this card anywhere will probably create Fascination.]",
 isAspect:true,
 induces:[{id:"poison.reason.fascination.induction",chance:70}]
 },
 
-
 {id:"poison.health.dread",
 label:"FNORD",
-description: "FNORD",
+description: "FNORD  [Using this card anywhere will probably create Dread.]",
 isAspect:true,
 induces:[{id:"poison.health.dread.induction",chance:70}]
+},
+
+{id:"poison.fascination.longlesson",
+label:"The Eyes in my Memory",
+description: "The Long has sent me a sweet dream. I must not think of it. [If you Dream away this card or use it in a ritual, the Long will learn from you, increasing their power in your dreams.]",
+isAspect:true
+},
+
+{id:"poison.dread.longlesson",
+label:"FNORD",
+description: "FNORD",
+isAspect:true
 },
 
 

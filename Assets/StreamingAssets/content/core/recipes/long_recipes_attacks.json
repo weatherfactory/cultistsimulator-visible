@@ -890,8 +890,8 @@ label:"FNORD",
 startdescription:"FNORD",
 warmup:60},
 {id:"long.executestrategy.dreams.dreadtofascination.poisoned.begin",actionId:"longdreams",
-label:"FNORD",
-startdescription:"FNORD",
+label:"Juicy Dreams",
+startdescription:"Our enemy Long has sent me a dream of the Orchard of Lights. Nestled in the dream, like a juicy pear in rustling paper, is the promise of an end to fear.",
 slots:[{id:"seeking",label:"Dread",required:{dread:1},greedy:true}],
 linked:[{id:"long.executestrategy.dreams.dreadtofascination.poisoned.continue"}],
 warmup:60
@@ -899,7 +899,8 @@ warmup:60
 
 {id:"long.executestrategy.dreams.dreadtofascination.poisoned.continue",
 actionId:"longdreams",
-label:"Sweet Dreams",
+label:"Juicy Dreams",
+startdescription:"The dream I received has encompassed my Dread like a polyp devouring a life-mote. In its place, it offers a memory of a conversation that never happened, ripe with luminous laughter.",
 requirements:{dread:1},
 effects:{contentment:1},
 effects:{dread:-1,fascination:1,contentment:1},
@@ -907,7 +908,7 @@ linked:[{id:"long.executestrategy.dreams.applypoison.fascination.longlesson"}]},
 
 {id:"long.executestrategy.dreams.applypoison.fascination.longlesson",
 actionId:"longdreams",
-label:"Sweet Dreams",
+label:"Juicy Dreams",
 mutations:[{filter:fascination,mutate:poison.fascination.longlesson,level:1,additive:true}]
 },
 

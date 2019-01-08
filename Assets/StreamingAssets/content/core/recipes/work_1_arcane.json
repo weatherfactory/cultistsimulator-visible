@@ -1,5 +1,15 @@
 {
 "recipes": [
+	{id:"work.poison.fascination.longlesson.trap",
+actionId:"work",
+label:"FNORD",
+startdescription:"FNORD",
+requirements:{poison.fascination.longlesson:1,fascination:1},
+effects:{long.lesson.dreamwork:1},
+mutations:[{filter:fascination,mutate:poison.fascination.longlesson,level:-1}],
+warmup:10,
+craftable:true
+},
 	   {
         label: "Reason's Glory [Grand]",
         id: "arcane_lantern_edge_grand",
