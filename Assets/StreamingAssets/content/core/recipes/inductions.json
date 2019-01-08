@@ -100,6 +100,42 @@ actionId:"poison.notoriety.induction",
 label:"The Public Gaze",
 startdescription:"I've used a follower who's too well-known. The Suppression Bureau may hear of it.",
 effects:{notoriety:1},
-warmup:30}
+warmup:30},
+
+{id:"poison.passion.dread.induction",
+actionId:"poison.passion.dread.induction",
+label:"The Creeping Colour",
+startdescription:"My passions are poisoned. Each pang of emotion brings an answering pang of savage grey.",
+effects:{dread:1},
+warmup:30
+},
+{id:"poison.reason.fascination.induction",
+actionId:"poison.reason.fascination.induction",
+label:"",
+startdescription:"",
+effects:{fascination:1},
+warmup:30
+},
+{id:"poison.health.dread.induction",
+actionId:"poison.health.dread.induction",
+label:"",
+startdescription:"",
+effects:{dread:1},
+warmup:30
+},
+{id:"poison.dread.longlesson.induction",
+actionId:"poison.dread.longlesson.induction",
+label:"",
+startdescription:"",
+effects:{long.lesson.dreamwork:1},
+warmup:30
+},
+{id:"poison.fascination.longlesson.induction",
+actionId:"poison.fascination.longlesson.induction",
+label:"",
+startdescription:"",
+effects:{dread:1},
+warmup:30
+},
 ]
 }

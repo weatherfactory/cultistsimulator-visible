@@ -1437,7 +1437,44 @@ description: "This follower's secrets have been revealed to the public. Any time
 isAspect:true,
 icon:"reputation",
 induces:[{id:"poison.notoriety.induction",chance:70}]
-}
+},
+
+{id:"poison.passion.dread",
+label:"Poisoned Passion",
+description: "My emotions have been infected with the creeping taint of fear. [Using this element may cause Dread to occur.]",
+isAspect:true,
+induces:[{id:"poison.passion.dread.induction",chance:70}]
+},
+{id:"poison.reason.fascination",
+label:"FNORD",
+description: "FNORD",
+isAspect:true,
+induces:[{id:"poison.reason.fascination.induction",chance:70}]
+},
+
+
+{id:"poison.fascination.longlesson",
+label:"FNORD",
+description: "FNORD",
+isAspect:true,
+induces:[{id:"poison.fascination.longlesson.induction",chance:70}]
+},
+
+{id:"poison.dread.longlesson",
+label:"FNORD",
+description: "FNORD",
+isAspect:true,
+induces:[{id:"poison.dread.longlesson.induction",chance:70}]
+},
+
+{id:"poison.health.dread",
+label:"FNORD",
+description: "FNORD",
+isAspect:true,
+induces:[{id:"poison.health.dread.induction",chance:70}]
+},
+
+
 
 
 
