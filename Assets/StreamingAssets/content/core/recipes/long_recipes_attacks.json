@@ -863,20 +863,59 @@ effects:{long.lesson.connections:1},
 
 {id:"long.executestrategy.dreams.drysoul.begin",actionId:"longdreams",
 label:"FNORD",
-startdescription:"FNORD",
+startdescription:"Our enemy is raising a Dry Soul Curse against us. We could employ a Percussigant to avert the curse with its cheering thumps and merry limbs, but then our enemy will be able to interrogate it. [A Percussigant can avert the curse's raising, but will provide a Lesson for our enemy.] ",
+slots:[{id:"defender",label:"Percussigant",required:{spirit_heartc_edge:1}}],
+alt:[{id:"long.executestrategy.dreams.drysoul.defeated"},
+{id: "curse_dread_dormant",chance:100,additional:true}],
 warmup:60},
+
+{id:"long.executestrategy.dreams.drysoul.defeated",
+actionId:"longdreams",
+label:"The Percussigant Defence",
+startdescription:"
+sing those hymns
+of writhing limbs
+percussigant, rehearse
+
+the dry soul curse!
+the dry soul curse!
+a polymelian universe!",
+requirements:{spirit_heartc_edge:1},
+effects:{long.lesson.dreamwork:1,summoned:-1},
+warmup:10
+},
+
+
+
+
 {id:"long.executestrategy.dreams.fiftheye.begin",actionId:"longdreams",
 label:"FNORD",
-startdescription:"FNORD",
+startdescription:"Our enemy is raising a Fifth Eye against us. We could use a Caligine's smokes to cloud their preparations, but then our enemy will be able to interrogate it. [A Caligine can avert the curse's raising, but will provide a Lesson for our enemy.] ",
+slots:[{id:"defender",label:"Percussigant",required:{spirit_forgec_winter:1}}],
+alt:[{id:"long.executestrategy.dreams.fiftheye.defeated"},
+{id: "curse_visions_dormant",chance:100,additional:true}],
 warmup:60},
+
+
+{id:"long.executestrategy.dreams.fiftheye.defeated",
+actionId:"longdreams",
+label:"The Fifth Eye Lost In Smoke",
+startdescription:"The Fifth Eye Curse has been defeated before it resolved. Our Caligine is gone, too, along with whatever secrets it might have learnt from us.",
+requirements:{spirit_forgec_winter:1},
+effects:{long.lesson.dreamwork:1,summoned:-1},
+warmup:10
+},
+
 {id:"long.executestrategy.dreams.poisonway.begin",actionId:"longdreams",
 label:"FNORD capture way",
 startdescription:"FNORD",
 warmup:60},
+
 {id:"long.executestrategy.dreams.attackwitnesses.begin",actionId:"longdreams",
 label:"FNORD capture great work",
 startdescription:"FNORD",
 warmup:60},
+
 {id:"long.executestrategy.dreams.poisonpassionwithdread.begin",actionId:"longdreams",
 label:"FNORD capture passion",
 slots:[{id:"seeking",label:"Passion",required:{passion:1},greedy:true}],
