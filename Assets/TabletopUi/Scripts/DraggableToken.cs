@@ -181,7 +181,10 @@ namespace Assets.CS.TabletopUI {
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 
-            lastTablePos = RectTransform.anchoredPosition;
+			if (RectTransform.anchoredPosition.sqrMagnitude > 0.0f)	// Never store 0,0 as that's a slot position and we never auto-return to slots - CP
+			{
+	            lastTablePos = RectTransform.anchoredPosition;
+			}
 
             RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
