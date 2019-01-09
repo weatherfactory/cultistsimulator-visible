@@ -162,7 +162,7 @@ linked:[
 {id:"long.refinestrategy.dreams.drysoul",chance:70},
 {id:"long.refinestrategy.dreams.fiftheye",chance:70},
 {id:"long.refinestrategy.dreams.poisonway",chance:70},
-{id:"long.refinestrategy.dreams.attackwitnesses",chance:70},
+{id:"long.refinestrategy.dreams.lantern.greatwork",chance:70},
 {id:"long.refinestrategy.dreams.poisonpassionwithdread",chance:30},
 {id:"long.refinestrategy.dreams.poisonreasonwithfascination",chance:70},
 {id:"long.refinestrategy.dreams.createfascination.poisoned",chance:70},
@@ -389,11 +389,11 @@ alternativerecipes:[{id:"long.executestrategy.dreams.poisonway.begin",chance:100
 linked:[{id:"long.cycle",chance:100}]
 },
 
-{id:"long.refinestrategy.dreams.attackwitnesses",
+{id:"long.refinestrategy.dreams.lantern.greatwork",
 actionId:"long",
 requirements:{intention.dreams:1,strategy.prep:3,long.dreamwork:6},
 tablereqs:{uqthirdwaywitnesses:1},
-alternativerecipes:[{id:"long.executestrategy.dreams.attackwitnesses.begin",chance:100,additional:true}],
+alternativerecipes:[{id:"long.executestrategy.dreams.lantern.greatwork.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 
