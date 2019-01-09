@@ -63,6 +63,7 @@ startdescription: "If I have enough Passion, I can walk the dream-road to the Wo
 description: "The waters of the Wood run cold and deep, but never clear. Rote memory alone will not take me there. I must engage my Passion. Now I drift into other dreams.",
 aspects:{fatiguing:1},
 alternativerecipes: [
+{id:"poison.long.way.trap",additional:true},
 {id:"dreamenterwood",chance:100},
 {id:"dreamreachwhitelantern",chance:100},
 {id:"dreamreachwhiteknock",chance:100},
@@ -169,6 +170,7 @@ description: "The narrow path is crowded with slow shapes - the air shivers with
 linked: [{id:"dream_router",chance:100}],
 craftable: true,
 alternativerecipes: [
+{id:"poison.long.way.trap",additional:true},
 {id:"dreamenterwhite",chance:100},
 {id:"dreamreachstagfirst",chance:100},
 {id:"dreamreachstagsubsequent",chance:100},
@@ -310,6 +312,7 @@ description: "Here in the high dry byways of the Bounds are the intricate fissur
 linked: [{id:"dream_router",chance:100}],
 craftable: true,
 alternativerecipes: [
+{id:"poison.long.way.trap",additional:true},
 {id:"dreamenterstag",chance:100},
 {id:"dreamreachspiderlantern",chance:100},
 {id:"dreamreachspiderknock",chance:100},
@@ -409,6 +412,7 @@ linked: [{id:"dream_router",chance:100}],
 aspects:{fatiguing:1},
 craftable: true,
 alternativerecipes: [
+{id:"poison.long.way.trap",additional:true},
 {id:"dreamenterspider",chance:100},
 {id:"dreamreachpeacocklantern",chance:100},
 {id:"dreamreachpeacockknock",chance:100},
@@ -504,6 +508,7 @@ description: "The Peacock's Door is purple as the sweetest gem, as the ripest fr
 craftable: true,
 aspects:{fatiguing:1},
 alternativerecipes: [
+{id:"poison.long.way.trap",additional:true},
 {id:"apostlelantern.createpillar2",chance:100},
 {id:"dreamenterpeacockmirror",chance:100},
 {id:"dreamenterpeacockfrangiclave",chance:100},
@@ -534,6 +539,18 @@ description: ".",
 portaleffect: "peacockdoor",
 warmup:0	
 },
+
+
+{id:"poison.long.way.trap",
+actionId:"poison.long.way.trap",
+label:"The Watch upon the Way",
+startdescription:"The Long has set invisible cartographers at the gate, to observe me as I pass and map me like a half-known country.",
+requirements:{poison.way.long:1},
+effects:{long.lesson.dreamwork:1},
+warmup:10},
+
+
+
 {id: "dreamheartvictoryintro",
 label: "Drums in the Storm",
 actionId: "dream",

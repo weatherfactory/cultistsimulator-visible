@@ -906,12 +906,24 @@ effects:{long.lesson.dreamwork:1,summoned:-1},
 warmup:10
 },
 
-{id:"long.executestrategy.dreams.poisonway.begin",actionId:"longdreams",
+{id:"long.executestrategy.dreams.poisonway.begin",
+actionId:"longdreams.poisonway",
+comments:"unique verb, because it loops",
 label:"FNORD capture way",
 startdescription:"FNORD",
-warmup:60},
+slots:[{id:"way",label:"Way",required:{way:1},forbidden:{poison.long.way:1,waystagbefore_1:1,waystagbefore_2:1,waystagbefore_3:1,waystagbefore_4:1,waystagbefore_5:1},greedy:true}],
+linked:[{id:"long.executestrategy.dreams.poisonway.continue"},
+{id:"long.executestrategy.dreams.poisonway.begin"}],
+warmup:30},
 
 
+{id:"long.executestrategy.dreams.poisonway.continue",
+actionId:"longdreams.poisonway",
+label:"FNORD watching",
+requirements:{way:1},
+startdescription:"FNORD poisoning!",
+mutations:[{filter:way,mutate:poison.way.long,level:1}]
+},
 
 
 {id:"long.executestrategy.dreams.lantern.greatwork.begin",
