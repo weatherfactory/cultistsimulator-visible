@@ -801,7 +801,7 @@ namespace Assets.CS.TabletopUI {
 		}
 
 
-		public void SetHighContrast( bool on )
+		public static void SetHighContrast( bool on )
 		{
 			highContrastMode = on;
 			LanguageManager.LanguageChangeHasOccurred();	// Fire language change to recreate all text, which will also apply contrast adjustments - CP 

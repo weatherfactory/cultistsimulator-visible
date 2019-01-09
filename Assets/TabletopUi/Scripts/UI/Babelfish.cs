@@ -22,12 +22,13 @@ public class Babelfish : MonoBehaviour
     [Tooltip("Force this string to use the font for a specific language (empty by default)")]
     [SerializeField] private string						forceFontLanguage;
 #pragma warning restore 649
-	[SerializeField] private bool						highContrastAllowed = false;
+	[SerializeField] private bool						highContrastEnabled = true;
 	[SerializeField] private bool						highContrastBold = true;
 	[SerializeField] private Color						highContrastColor = Color.white;
 
 
 	private Color		defaultColor;
+	private FontStyles	defaultStyle;
     private TMP_Text	tmpText;       // text mesh pro text object.
 	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
@@ -36,6 +37,7 @@ public class Babelfish : MonoBehaviour
         // cache the TMP component on this object
         tmpText = GetComponent<TMP_Text>();
 		defaultColor = tmpText.color;
+		defaultStyle = tmpText.fontStyle;
     }
 
     private void OnEnable()
@@ -84,15 +86,15 @@ public class Babelfish : MonoBehaviour
             tmpText.text = LanguageTable.Get(locLabel);
 		}
 
-		//if (highContrastAllowed)
+		if (highContrastEnabled)
 		{
-			highContrastBold = true;
+			//highContrastBold = true;	// Force all text to go bold
 
 			if (TabletopManager.GetHighContrast())
 			{
-				Color light = Color.white;
-				Color dark = Color.black;
-				light.a = 1.0f;
+				Color light = LanguageManager.Instance.highContrastLight;
+				Color dark = LanguageManager.Instance.highContrastDark;
+				light.a = 1.0f;	// ensure color is opaque
 				dark.a = 1.0f;
 				tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
 				if (highContrastBold)
@@ -102,7 +104,7 @@ public class Babelfish : MonoBehaviour
 			{
 				tmpText.color = defaultColor;
 				if (highContrastBold)
-					tmpText.fontStyle &= ~FontStyles.Bold;
+					tmpText.fontStyle = defaultStyle;
 			}
 		}
     }

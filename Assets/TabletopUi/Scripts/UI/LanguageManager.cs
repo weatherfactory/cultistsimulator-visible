@@ -42,6 +42,8 @@ public class LanguageManager : MonoBehaviour
 
 
     public FontStyle[]	fontStyles;
+	public Color		highContrastLight = Color.white;
+	public Color		highContrastDark = Color.black;
 
     // simple singleton declaration
     private static LanguageManager _instance;

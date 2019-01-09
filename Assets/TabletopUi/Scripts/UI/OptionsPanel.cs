@@ -527,11 +527,6 @@ public class OptionsPanel : MonoBehaviour {
 	{
         // value ranges from 0 to 1
         PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
-
-		if (!_isInGame)
-			return;
-
-		var tabletopManager = Registry.Retrieve<ITabletopManager>();
-		tabletopManager.SetHighContrast( value>0f );
+		TabletopManager.SetHighContrast( value>0f );
     }
 }
