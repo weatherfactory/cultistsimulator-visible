@@ -43,6 +43,7 @@ public class Heart : MonoBehaviour
         usualInterval = startingInterval;
         InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
         IsPaused = false;
+		beatCounter = HOUSEKEEPING_CYCLE_BEATS;	// Force immediate housekeeping check on resume - CP
 	}
 
     public void StopBeating()
