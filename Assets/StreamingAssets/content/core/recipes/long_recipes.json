@@ -79,8 +79,8 @@ linked:[{id:"long.selectstrategy",chance:100}]
 
 {id:"long.upgrade.dreamwork",
 actionId:"long",
-label:"FNORD Long is upgrading their Starlight",
-startdescription:"FNORD Long is upgrading their Starlight",
+label:"Starlight, Burgeoning",
+startdescription:"This Long has found their way deeper into my dreams.",
 requirements:{long.lesson.dreamwork:1},
 effects:{long.lesson.dreamwork:-1},
 mutations:[{filterOnAspectId:long.enemy,mutateAspectId:long.dreamwork,mutationLevel:1,additive:true}],

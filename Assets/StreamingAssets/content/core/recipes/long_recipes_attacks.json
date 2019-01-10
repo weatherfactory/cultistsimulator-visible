@@ -862,7 +862,7 @@ effects:{long.lesson.connections:1},
 
 
 {id:"long.executestrategy.dreams.drysoul.begin",actionId:"longdreams",
-label:"FNORD",
+label:"The Dry Soul Curse, Rising",
 startdescription:"Our enemy is raising a Dry Soul Curse against us. We could employ a Percussigant to avert the curse with its cheering thumps and merry limbs, but then our enemy will be able to interrogate it. [A Percussigant can avert the curse's raising, but will provide a Lesson for our enemy.] ",
 slots:[{id:"defender",label:"Percussigant",required:{spirit_heartc_edge:1}}],
 alt:[{id:"long.executestrategy.dreams.drysoul.defeated"},
@@ -889,7 +889,7 @@ warmup:10
 
 
 {id:"long.executestrategy.dreams.fiftheye.begin",actionId:"longdreams",
-label:"FNORD",
+label:"The Fifth Eye Curse, Rising",
 startdescription:"Our enemy is raising a Fifth Eye against us. We could use a Caligine's smokes to cloud their preparations, but then our enemy will be able to interrogate it. [A Caligine can avert the curse's raising, but will provide a Lesson for our enemy.] ",
 slots:[{id:"defender",label:"Percussigant",required:{spirit_forgec_winter:1}}],
 alt:[{id:"long.executestrategy.dreams.fiftheye.defeated"},
@@ -909,8 +909,8 @@ warmup:10
 {id:"long.executestrategy.dreams.poisonway.begin",
 actionId:"longdreams.poisonway",
 comments:"unique verb, because it loops",
-label:"FNORD capture way",
-startdescription:"FNORD",
+label:"The Watchers in the Way",
+startdescription:"Our enemy will select a way we have found into the Mansus, and set a watch upon it.",
 slots:[{id:"way",label:"Way",required:{way:1},forbidden:{poison.long.way:1,waystagbefore_1:1,waystagbefore_2:1,waystagbefore_3:1,waystagbefore_4:1,waystagbefore_5:1},greedy:true}],
 linked:[{id:"long.executestrategy.dreams.poisonway.continue"},
 {id:"long.executestrategy.dreams.poisonway.begin"}],
@@ -919,9 +919,9 @@ warmup:30},
 
 {id:"long.executestrategy.dreams.poisonway.continue",
 actionId:"longdreams.poisonway",
-label:"FNORD watching",
+label:"The Watchers in the Way",
 requirements:{way:1},
-startdescription:"FNORD poisoning!",
+startdescription:"Our enemy has made their choice. We'll never be able to pass this gate again without inviting peril.",
 mutations:[{filter:way,mutate:poison.way.long,level:1}]
 },
 
@@ -929,7 +929,7 @@ mutations:[{filter:way,mutate:poison.way.long,level:1}]
 {id:"long.executestrategy.dreams.lantern.greatwork.begin",
 actionId:"longdreams",
 label:"An Act of Sabotage!",
-startdescription:"Our immortal enemy FNORD.",
+startdescription:"Our immortal enemy has drawn attention to our work in the Mansus. A lesser Name of the Wolf-Divided is on its scent.",
 slots:[{id:"target",label:"Target",required:{uqthirdwaywitnesses:1},greedy:true}],
 linked:[{id:"long.executestrategy.dreams.lantern.greatwork.continue",chance:100}],
 warmup:10
@@ -939,7 +939,7 @@ warmup:10
 {id:"long.executestrategy.dreams.lantern.greatwork.continue",
 actionId:"longdreams",
 label:"Defending the Great Work",
-startdescription:"FNORD [A <sprite name=heart> or <sprite name=lantern> spirit - the stronger, the better - might be able to defend against this action.]",
+startdescription:"Our Great Work is threatened by lean grey malice. If we shroud it in light, that might deter this prowling wolf-splinter. [A <sprite name=heart> or <sprite name=lantern> spirit - the stronger, the better - might be able to defend against this action.]",
 description:"",
 slots:[{id:"defender",label:"Defender",required:{summoned:1}}],
 requirements:{uqthirdwaywitnesses:1},
@@ -951,8 +951,8 @@ linked:[{id:"long.executestrategy.dreams.lantern.greatwork.failure",challenges:{
 
 {id:"long.executestrategy.dreams.lantern.greatwork.succeed",
 actionId:"longdreams",
-label:"The Host's Dismay",
-startdescription:"FNORD witnesses removed.",
+label:"The Dimming Light",
+startdescription:"One witness fled, another lost to the wolf-splinter. What of the third? Gone somewhere unmapped.",
 aspects:{sabotage:1},
 warmup:10},
 
@@ -960,39 +960,25 @@ warmup:10},
 
 {id:"long.executestrategy.dreams.lantern.greatwork.failure",
 actionId:"longdreams",
-label:"FNORD",
-startdescription:"FNORD attack failed",
+label:"The Shrouding Light",
+startdescription:"We've averted the attention of the prowling wolf-splinter. Our Great Work is safe for now.",
 effects:{long.lesson.dreamwork:1},
 warmup:10},
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {id:"long.executestrategy.dreams.poisonpassionwithdread.begin",actionId:"longdreams",
-label:"FNORD capture passion",
+label:"The Deepening Twilight",
 slots:[{id:"seeking",label:"Passion",required:{passion:1},greedy:true}],
 linked:[{id:"long.executestrategy.dreams.poisonpassionwithdread.continue"}],
-startdescription:"FNORD", 
+startdescription:"Death, it is said, is down. The roots of the Mansus extend far below the light. This is in the dreams my enemy sends me.", 
 warmup:60},
 
 {id:"long.executestrategy.dreams.poisonpassionwithdread.continue",
 actionId:"longdreams",
-label:"FNORD passion caught",
-startdescription:"FNORD passion caught, now making dread",
+label:"The Deepening Twilight",
+startdescription:"In my dreams I see the staircases that go ever downwards, into the place the Dead go as the world turns.",
 requirements:{passion:1},
 mutations:[{filter:passion,mutate:poison.passion.dread,level:1}],
 alt:[{id:"poison.passion.dread.induction",additional:true}],
@@ -1000,8 +986,8 @@ warmup:10},
 
 
 {id:"long.executestrategy.dreams.poisonreasonwithfascination.begin",actionId:"longdreams",
-label:"FNORD capture reason",
-startdescription:"FNORD",
+label:"The Glint and the Wick",
+startdescription:"My enemy has salted my dreams with images - each a different facet of the promise of an Hour to come.",
 slots:[{id:"seeking",label:"Reason",required:{reason:1},greedy:true}],
 linked:[{id:"long.executestrategy.dreams.poisonreasonwithfascination.continue"}],
 warmup:60},
@@ -1010,8 +996,8 @@ warmup:60},
 
 {id:"long.executestrategy.dreams.poisonreasonwithfascination.continue",
 actionId:"longdreams",
-label:"FNORD reason caught",
-startdescription:"FNORD reason caught, now making fascination",
+label:"The Glint and the Wick",
+startdescription:"Who is the Chandler? Why will I dream of her? What is the flame, and what the fuel? My thoughts are tinder.",
 requirements:{reason:1},
 mutations:[{filter:reason,mutate:poison.reason.fascination,level:1}],
 alt:[{id:"poison.reason.fascination.induction",additional:true}],
@@ -1059,9 +1045,9 @@ warmup:60},
 
 {id:"long.executestrategy.dreams.learndreams.begin",
 actionId:"longdreams",
-label:"Learning Us",
-startdescription:"FNORD snag f They'll use it to learn us.",
-description:"No f found",
+label:"An Unveiled Angle",
+startdescription:"At a certain angle, my thoughts reflect the Mansus-light. Our enemy seeks to learn that angle.",
+description:"Our enemy has searched the Mansus-halls for the glint of my reflected thoughts, and found nothing.",
 slots:[{id:"impulses",label:"Impulses",greedy:true,required:{fascination:1}}],
 warmup:10,
 craftable:false,
@@ -1071,17 +1057,17 @@ alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chanc
 
 {id:"long.executestrategy.dreams.learndreams.continue",
 actionId:"longdreams",
-label:"FNORD Learned Us",
-startdescription:"FNORD they're coming to know us",
+label:"An Unveiled Angle",
+startdescription:"Our enemy has learnt the angle of my thoughts. Our vulnerability has increased.",
 requirements:{fascination:1},
 effects:{fascination:-1,long.lesson.dreamwork:1}
 },
 
 {id:"long.executestrategy.dreams.learnfears.begin",
 actionId:"longdreams",
-label:"Learning Us",
-startdescription:"FNORD snag d They'll use it to learn us.",
-description:"No f found",
+label:"The Exhibition of Fears",
+startdescription:"There is a room in my heart where my fears are all arrayed. In my dreams, that room has a door. If our enemy finds that door, they might pass through it.",
+description:"My fears are lost in darkness. Our enemy has found nothing.",
 slots:[{id:"impulses",label:"Impulses",greedy:true,required:{dread:1}}],
 warmup:10,
 craftable:false,
@@ -1090,8 +1076,8 @@ alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chanc
 
 {id:"long.executestrategy.dreams.learnfears.continue",
 actionId:"longdreams",
-label:"FNORD Learned Us",
-startdescription:"FNORD they're coming to know us",
+label:"The Exhibition of Fears",
+startdescription:"Our enemy has seen the fears arrayed in my heart. Our vulnerability has increased.",
 requirements:{dread:1},
 effects:{dread:-1,long.lesson.dreamwork:1}
 },
