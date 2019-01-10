@@ -538,7 +538,7 @@ linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base,grail
 
 {id:"long.executestrategy.intrigue.grail.greatwork.succeed",
 actionId:"longintrigue",
-label:"THe Host's Dismay",
+label:"The Host's Dismay",
 startdescription:"Our Host is crumbling. Their greedy faith is soured.",
 aspects:{sabotage:1},
 warmup:10},
@@ -906,15 +906,81 @@ effects:{long.lesson.dreamwork:1,summoned:-1},
 warmup:10
 },
 
-{id:"long.executestrategy.dreams.poisonway.begin",actionId:"longdreams",
+{id:"long.executestrategy.dreams.poisonway.begin",
+actionId:"longdreams.poisonway",
+comments:"unique verb, because it loops",
 label:"FNORD capture way",
 startdescription:"FNORD",
-warmup:60},
+slots:[{id:"way",label:"Way",required:{way:1},forbidden:{poison.long.way:1,waystagbefore_1:1,waystagbefore_2:1,waystagbefore_3:1,waystagbefore_4:1,waystagbefore_5:1},greedy:true}],
+linked:[{id:"long.executestrategy.dreams.poisonway.continue"},
+{id:"long.executestrategy.dreams.poisonway.begin"}],
+warmup:30},
 
-{id:"long.executestrategy.dreams.attackwitnesses.begin",actionId:"longdreams",
-label:"FNORD capture great work",
-startdescription:"FNORD",
-warmup:60},
+
+{id:"long.executestrategy.dreams.poisonway.continue",
+actionId:"longdreams.poisonway",
+label:"FNORD watching",
+requirements:{way:1},
+startdescription:"FNORD poisoning!",
+mutations:[{filter:way,mutate:poison.way.long,level:1}]
+},
+
+
+{id:"long.executestrategy.dreams.lantern.greatwork.begin",
+actionId:"longdreams",
+label:"An Act of Sabotage!",
+startdescription:"Our immortal enemy FNORD.",
+slots:[{id:"target",label:"Target",required:{uqthirdwaywitnesses:1},greedy:true}],
+linked:[{id:"long.executestrategy.dreams.lantern.greatwork.continue",chance:100}],
+warmup:10
+},
+
+
+{id:"long.executestrategy.dreams.lantern.greatwork.continue",
+actionId:"longdreams",
+label:"Defending the Great Work",
+startdescription:"FNORD [A <sprite name=heart> or <sprite name=lantern> spirit - the stronger, the better - might be able to defend against this action.]",
+description:"",
+slots:[{id:"defender",label:"Defender",required:{summoned:1}}],
+requirements:{uqthirdwaywitnesses:1},
+warmup:10,
+linked:[{id:"long.executestrategy.dreams.lantern.greatwork.failure",challenges:{heart:base,lantern:base}},
+{id:"long.executestrategy.dreams.lantern.greatwork.succeed"},
+]
+},
+
+{id:"long.executestrategy.dreams.lantern.greatwork.succeed",
+actionId:"longdreams",
+label:"The Host's Dismay",
+startdescription:"FNORD witnesses removed.",
+aspects:{sabotage:1},
+warmup:10},
+
+
+
+{id:"long.executestrategy.dreams.lantern.greatwork.failure",
+actionId:"longdreams",
+label:"FNORD",
+startdescription:"FNORD attack failed",
+effects:{long.lesson.dreamwork:1},
+warmup:10},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {id:"long.executestrategy.dreams.poisonpassionwithdread.begin",actionId:"longdreams",
 label:"FNORD capture passion",
