@@ -92,30 +92,32 @@ linked:[{id:"long.selectstrategy",chance:100}]
 actionId:"long",
 label:"A Decision",
 startdescription:"Our immortal enemy has decided on a course of action.",
-description:"",
 requirements:{},
 deckeffect:{long.strategies:1},
 warmup:5,
 craftable:false,
-alternativerecipes:[{id:"long.preparestrategy.preference.assault",
-id:"long.preparestrategy.preference.assault",
-id:"long.preparestrategy.preference.assault"}],
+alternativerecipes:[{id:"long.preparestrategy.preference.assault"},
+{id:"long.preparestrategy.preference.intrigue"},
+{id:"long.preparestrategy.preference.dreamwork"}],
 linked:[{id:"long.preparestrategy",chance:100}]
 },
 
 {id:"long.preparestrategy.preference.assault",
+label:"A Decision",
 actionId:"long",
 requirements:{long.preference.assault:1},
 deckeffect:{long.strategies.preference.assault:1},
 linked:[{id:"long.preparestrategy",chance:100}]},
 
 {id:"long.preparestrategy.preference.intrigue",
+label:"A Decision",
 actionId:"long",
 requirements:{long.preference.intrigue:1},
 deckeffect:{long.strategies.preference.intrigue:1},
 linked:[{id:"long.preparestrategy",chance:100}]},
 
 {id:"long.preparestrategy.preference.dreamwork",
+label:"A Decision",
 actionId:"long",
 requirements:{long.preference.dreamwork:1},
 deckeffect:{long.strategies.preference.dreamwork:1},
@@ -130,6 +132,7 @@ startdescription:"Our immortal enemy is preparing their next action.
 
 [Add followers strong in <sprite name=knock> <sprite name=lantern> <sprite name=moth> to try to uncover the Long's strategy. Add followers strong in <sprite name=edge> <sprite name=forge> <sprite name=grail> <sprite name=winter> to try to delay it.]",
 slots:[{id:"spy",label:"Spy",required:{follower:1}}],
+alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
 effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
@@ -173,6 +176,14 @@ linked:[
 {id:"long.delayaction.success",challenges:{edge:base,forge:base,grail:base,winter:base}},
 {id:"long.preparestrategy",chance:100}]
 },
+
+{id:"expelallspies",
+actionId:"expelallspies",
+label:"Because We Are Too Many",
+requirements:{follower:2},
+startdescription:"Our enemy is vigilant. We've sent too many watchers - if we send more than one, all will fail.",
+warmup:10},
+
 
 
 {id:"long.spyonstrategy.success",

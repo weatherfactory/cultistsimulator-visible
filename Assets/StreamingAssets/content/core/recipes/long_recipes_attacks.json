@@ -150,6 +150,7 @@ slots:[{id:"target",label:"Target",required:{romanticinterest:1},greedy:true}],
 linked:[{id:"long.executestrategy.assault.abduct.follower.captured"},
 {id:"long.executestrategy.assault.abduct.follower.begin.nonromancedfollower"}
 ],
+effects:{abductioninprogress:1},
 warmup:10
 },
 
@@ -166,7 +167,6 @@ warmup:10
 actionId:"longassault",
 label:"Captured!",
 requirements:{follower:1},
-effects:{abductioninprogress:1},
 startdescription:"Our enemy has immured our follower in a locked room in a guarded house, behind invisible walls to keep invisible things at bay.",
 linked:[{id:"long.executestrategy.assault.abduct.follower.continue"}],
 warmup:10},
