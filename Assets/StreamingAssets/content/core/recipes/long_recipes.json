@@ -46,10 +46,9 @@ linked:[{id:"long.selectstrategy",chance:100}]
 
 {id:"expelspy",
 actionId:"expelspy",
-label:"Our spy has returned to us.",
+label:"In from the Night",
 requirements:{follower:1},
-startdescription:"FNORD",
-description:"FNORD",
+startdescription:"Our spy has returned to us.",
 warmup:10},
 
 {id:"long.upgrade.might",
@@ -130,7 +129,6 @@ label:"Preparing an Action",
 startdescription:"Our immortal enemy is preparing their next action.
 
 [Add followers strong in <sprite name=knock> <sprite name=lantern> <sprite name=moth> to try to uncover the Long's strategy. Add followers strong in <sprite name=edge> <sprite name=forge> <sprite name=grail> <sprite name=winter> to try to delay it.]",
-description:"FNORD",
 slots:[{id:"spy",label:"Spy",required:{follower:1}}],
 effects:{strategy.prep:1},
 warmup:60,
