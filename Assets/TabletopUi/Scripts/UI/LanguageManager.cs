@@ -42,6 +42,8 @@ public class LanguageManager : MonoBehaviour
 
 
     public FontStyle[]	fontStyles;
+	public Color		highContrastLight = Color.white;
+	public Color		highContrastDark = Color.black;
 
     // simple singleton declaration
     private static LanguageManager _instance;
@@ -120,7 +122,7 @@ public class LanguageManager : MonoBehaviour
     public static event LanguageMgrHandler LanguageChanged;
 
     // call this method to properly fire the lang changed event
-    private static void LanguageChangeHasOccurred()
+    public static void LanguageChangeHasOccurred()
     {
         if (LanguageChanged != null) LanguageChanged();
     }

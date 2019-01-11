@@ -389,8 +389,8 @@ namespace OrbCreationExtensions
             return str;
         }
         public static string JsonEncode(this string str) {
-            str = str.Replace("\"", "\\\"");
             str = str.Replace("\\", "\\\\");
+            str = str.Replace("\"", "\\\"");
 //          str = str.Replace("/", "\\/");
             str = str.Replace("\n", "\\n");
             str = str.Replace("\r", "\\r");

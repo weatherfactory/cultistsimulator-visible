@@ -29,10 +29,13 @@ UI_OPT_INFODURATION,Info Window Duration,信息窗口持续时长 ,Показы�
 UI_OPT_UISCALING,UI Scaling,UI尺寸 ,Размер интерфейса
 UI_OPT_AUTOSAVEINTERVAL,Autosave Interval,自动保存间隔,Автосохранение 
 UI_OPT_GRIDSNAPSIZE,Grid Snap Size,网格对齐大小,Сетка для карт 
+UI_OPT_CONTRAST,High Contrast Mode,,
 UI_OPT_BIRDWORM,Bird / Worm,虫/鸟,Птица / Червь
 UI_BIRD,Bird,虫,Птица
 UI_WORM,Worm,鸟,Червь
 UI_CARD,Card,张卡牌,карта
+UI_ON,On,,
+UI_OFF,Off,关闭,Откл.
 UI_SNAP_0,Off,关闭,Откл.
 UI_SNAP_1,1 Card,1张卡牌,1 карта
 UI_SNAP_2,½ Card,½张卡牌,½ карты
@@ -41,7 +44,7 @@ UI_FIXEDSPACE,<mspace=1.6em>,<mspace=2.2em><b>,<mspace=2.2em><b>
 UI_MINUTES_POSTFIX, min,分钟, мин
 UI_SECONDS_POSTFIX, sec, 秒, с
 UI_SECONDS_POSTFIX_SHORT,s,</b> 秒,с</b>
-UI_TIME_SEPERATOR,.,.,","
+UI_TIME_SEPERATOR,".",".",","
 UI_KNOWN_LINUX,KNOWN LINUX ISSUES,已知Linux版本问题,Известные проблемы Linux 
 UI_KNOWN_LINUX_1,- Keystrokes may register twice when naming your characters. This is a Unity issue; hoping for a fix!,- 在为角色命名时，键盘输入有可能会被计入两次。这是一个Unity的问题，希望能得到修复！,"— При вводе имён персонажей нажатия клавиш могут «двоиться». Это проблема Unity — надеемся, она будет исправлена! "
 UI_PURGE_SAVE,PURGE SAVE,清除存档,Уничтожить сохранение
@@ -151,6 +154,6 @@ UI_CANTPUT,I can't put that there -,我不能把它放在这里……,Не мо�
 UI_ASPECTSREQUIRED,That card must have at least one of these aspects: ,放在此处的卡牌必须至少拥有下列属性之一： ,У карты должен быть хотя бы один из указанных аспектов: 
 UI_ASPECTSFORBIDDEN,A card may not go here if it has any of these aspects: ,含有下列属性的卡牌无法挪至该处： ,Здесь недопустимы карты с любым из указанных аспектов: 
 UI_OR,", or ", 或者 ,", или "
-UI_FULLSTOP,.,。,.
+UI_FULLSTOP,".","。","."
 UI_HINT,Hint:,提示：,Подсказка:
 UI_DEFAULTNAME,J.N. Sinombre,J.N. Sinombre,Эли Мярек

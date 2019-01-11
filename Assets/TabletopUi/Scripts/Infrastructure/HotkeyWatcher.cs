@@ -91,10 +91,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (Input.GetButtonDown("Pause"))
 				_speedController.TogglePause();
 
-            if (IsPressingAbortHotkey())
-                _optionsPanel.ToggleVisibility();
+            if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
+			{
+				// Check for open situation windows and close them first
+				bool windowWasOpen = false;
+				var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
-			if ((int)Input.GetAxis("Start Recipe")>0) {
+				foreach (var controller in situationControllers) {
+					if (controller.IsOpen) {
+						controller.CloseWindow();
+						windowWasOpen = true;
+						break;
+					}
+				}
+
+				if (!windowWasOpen)	// Only summon options if no windows to clear
+				{
+					_optionsPanel.ToggleVisibility();
+				}
+			}
+
+			if ((int)Input.GetAxis("Start Recipe")>0)
+			{
 				var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
 				foreach (var controller in situationControllers) {
