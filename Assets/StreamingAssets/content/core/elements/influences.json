@@ -49,7 +49,7 @@ aspects:
 {forge: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Forge influences to intensify them. Study how it's affected by Edge influence to subvert it, instead.",required:{influenceforge:1,influenceedge:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentforgec:1,fragmentforged:1,fragmentforgee:1,fragmentforgef:1,fragmentforgeg:1},actionId:"study"}],
-description: "A haze and a shimmer. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "A haze and a shimmer. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceforgec}
 },
 				  {
@@ -92,7 +92,7 @@ aspects:
 {grail: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influencegrail:1,influencemoth:1,glimmering:1,glimmeringplus:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentgrailc:1,fragmentgraild:1,fragmentgraile:1,fragmentgrailf:1,fragmentgrailg:1},actionId:"study"}],
-description: "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc}
 },
 				  {
@@ -134,7 +134,7 @@ aspects:
 {heart: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influenceheart:1,influencegrail:1,vitality:1,vitalityplus:1,contentment:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
-description: "The toes tap. All is brisk and all is well. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "The toes tap. All is brisk and all is well. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceheartc},
 decayTo:"vitality"
 },
@@ -219,7 +219,7 @@ aspects:
 {lantern: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelantern:1,influenceforge:1,erudition:1,eruditionplus:1,fascination:1,contentment:1,fleeting:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
-description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanternc},
 decayTo: "fascination"
 },
@@ -263,7 +263,7 @@ aspects:
 {moth: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",required:{influencemoth:1,influencelantern:1,erudition:1,eruditionplus:1,glimmering:1,glimmeringplus:1,fascination:1,fleeting:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
-description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencemothc},
 decayTo: "restlessness"
 },
@@ -307,7 +307,7 @@ aspects:
 {winter: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",required:{influencewinter:1,influenceheart:1,vitality:1,vitalityplus:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentwinterc:1,fragmentwinterd:1,fragmentwintere:1,fragmentwinterf:1,fragmentwinterg:1},actionId:"study"}],
-description: "A peculiar chill lingers in my rooms. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "A peculiar chill lingers in my rooms. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencewinterc},
 decayTo: "dread"
 },
