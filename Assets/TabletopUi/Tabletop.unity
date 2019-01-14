@@ -145,7 +145,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &18
@@ -833,7 +833,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONS
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &117
@@ -3669,6 +3669,8 @@ MonoBehaviour:
   RecipeSlot: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
     type: 3}
   NotificationWindow: {fileID: 114000014022297626, guid: 24926ddfbbe311e45a08a5a61eab67b8,
+    type: 3}
+  DropZoneToken: {fileID: 2656880656757540889, guid: 1156e72892331c64397bcd330e4ea6c6,
     type: 3}
   TabletopManager: {fileID: 600}
 --- !u!114 &662
@@ -17875,7 +17877,7 @@ MonoBehaviour:
   locLabel: UI_NORMALSPEED
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &678812401
@@ -18342,7 +18344,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONSTITLE
   fontStyle: 1
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &689196553
@@ -18531,7 +18533,7 @@ MonoBehaviour:
   locLabel: UI_SAVEEXIT
   fontStyle: 2
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!224 &690040967 stripped
@@ -19532,7 +19534,7 @@ MonoBehaviour:
   locLabel: UI_FASTSPEED
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &788429830
@@ -20525,7 +20527,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &839027548
@@ -21208,7 +21210,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &867542149
@@ -25552,7 +25554,7 @@ MonoBehaviour:
   locLabel: UI_RESUME
   fontStyle: 2
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1194530666
@@ -28615,7 +28617,7 @@ MonoBehaviour:
   locLabel: UI_BROWSE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1506403063
@@ -30717,7 +30719,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 2
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!224 &1648940665 stripped
@@ -35057,7 +35059,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONSNOTES_FE
   fontStyle: 0
   forceFontLanguage: 
-  highContrastAllowed: 0
+  highContrastEnabled: 1
   highContrastBold: 0
   highContrastColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1986614135
