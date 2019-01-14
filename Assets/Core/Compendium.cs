@@ -339,6 +339,11 @@ public class Compendium : ICompendium
                 "Perhaps I waited too long. Or perhaps this victory was never meant for me. Another has ascended in my place. Where they have risen, " +
                 "I will diminish, until I am only a memory. Perhaps another will avenge my defeat. [Someone else surpassed you, changed the world, and won.]", "lionsmith", EndingFlavour.Melancholy, "DramaticLightEvil", "A_RIVAL_ASCENSION"
             );
+        if (endingFlag == "rivalascensionapostle")
+            return new Ending(endingFlag, "TOO LONG",
+                "A rival has risen to immortality. They will ally with the immortal enemy who already hounds us. We cannot stand against two immortals. " +
+                "Our Founder's scheme has come to an end, and with it, my service. [Rival ascension rules out an Apostle victory.]", "lionsmith", EndingFlavour.Melancholy, "DramaticLightEvil", "A_RIVAL_ASCENSION"
+            );
 
         if (endingFlag == "workvictory")
             return new Ending(endingFlag, title, desc, "insomnia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORY");

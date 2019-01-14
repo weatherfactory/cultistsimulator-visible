@@ -290,8 +290,8 @@ craftable: true
 	  label:"Discuss the Locksmith's Dream, Volume 5",
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream5:1,autographed:-1},
 	  actionId:"talk",
-	  startdescription:"'Teresa FNORD'",
-	  description:"'FNORD Teresa.'",
+	  startdescription:"'Now where exactly did you find this?'",
+	  description:"'I'll sign it. But not with my Name. Not yet, if ever.'",
 	  effects:{glimmering:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
 	  },

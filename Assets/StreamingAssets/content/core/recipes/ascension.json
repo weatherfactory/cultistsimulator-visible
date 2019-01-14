@@ -624,12 +624,25 @@ warmup:30
 {id:"L_ascension_rival",
 actionId:"ambition",
 requirements:{rivalmarks:7},
+extantreqs:{long.enemy:-1},
 label:"A Pretender Victorious",
 startdescription:"My Rival's achievements eclipse my own. Now they will ascend to a place in the House of the Sun, while here, in the world, I will remain alone with my frustrations.",
 ending:"rivalascension",
 signalEndingFlavour: Melancholy,
 warmup:60
 },
+
+{id:"L_ascension_rival_apostle",
+actionId:"ambition",
+requirements:{rivalmarks:7},
+extantreqs:{long.enemy:1},
+label:"Too Many Enemies",
+startdescription:"One immortal enemy is a mortal peril. Two immortal enemies are too much. Our Great Work has failed.",
+ending:"rivalascension",
+signalEndingFlavour: Melancholy,
+warmup:60
+},
+
 
 
 {id:"L_rebellion_activate",
