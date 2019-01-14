@@ -132,8 +132,13 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        private void DisplayIcon(IVerb v) {
-            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
+        public void DisplayIcon(IVerb v) {
+         DisplayIcon(v.Id);
+        }
+
+        public void DisplayIcon(string icon)
+        {
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
             artwork.sprite = sprite;
         }
 

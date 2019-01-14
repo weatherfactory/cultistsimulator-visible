@@ -337,6 +337,22 @@ namespace Assets.TabletopUi {
 
 
             situationWindow.DisplayStoredElements();
+
+            TryOverrideVerbIcon(situationWindow.GetAspectsFromStoredElements(true)); //this is called from OngoingSlotsOrStorageUpdated too. But I'm not going to call that here
+            //cos I can't remember the details of the flow and I don't want to end up in a loop somewhere
+
+
+        }
+
+        private void TryOverrideVerbIcon(IAspectsDictionary forAspects)
+        {
+//if we have an element in the situation now that overrides the verb icon, update it
+            string overrideIcon = compendium.GetVerbIconOverrideFromAspects(forAspects);
+            if (!string.IsNullOrEmpty(overrideIcon))
+            { 
+                situationToken.DisplayIcon(overrideIcon);
+                situationWindow.DisplayIcon(overrideIcon);
+            }
         }
 
         public void ReceiveAndRefineTextNotification(INotification notification)
@@ -645,7 +661,7 @@ namespace Assets.TabletopUi {
 
             situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
 
-
+            TryOverrideVerbIcon(situationWindow.GetAspectsFromStoredElements(true));
         }
 
         private RecipePrediction GetNextRecipePrediction(AspectsInContext aspectsInContext) {

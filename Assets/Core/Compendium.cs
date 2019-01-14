@@ -38,6 +38,7 @@ public interface ICompendium
     List<IDeckSpec> GetAllDeckSpecs();
     IDeckSpec GetDeckSpecById(string id);
     void SupplyLevers(IGameEntityStorage populatedCharacter);
+    string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 }
 
 public class Compendium : ICompendium
@@ -494,5 +495,21 @@ public class Compendium : ICompendium
 
         }
 
+    }
+
+    public string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects)
+    {
+        if (currentAspects != null)
+        {
+            foreach (var a in currentAspects.Where(a=>a.Value>0))
+            { 
+                var e = GetElementById(a.Key);
+                //assume only one override, but out after
+                if (!string.IsNullOrEmpty(e.OverrideVerbIcon))
+                    return e.OverrideVerbIcon;
+            }
+        }
+
+        return null;
     }
 }

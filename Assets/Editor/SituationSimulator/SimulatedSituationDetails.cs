@@ -245,5 +245,10 @@ namespace Assets.Editor
         {
             return _storage.ReprovisionExistingElementStack(stackSpecification, stackSource, locatorId);
         }
+
+        public void DisplayIcon(string icon)
+        {
+            //hakuna matata
+        }
     }
 }

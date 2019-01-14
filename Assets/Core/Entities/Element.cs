@@ -21,7 +21,7 @@ public class Element
     private string _label="";
     private string _description="";
     public string Id { get; set; }
-    public string _icon;
+    private string _icon;
     private bool _resaturate;
 
     public string Label
@@ -54,6 +54,11 @@ public class Element
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
     public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects. It will only work on aspect displays, anyhoo
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string OverrideVerbIcon { get; set; }
 
     public bool NoArtNeeded { get; set; }
     public float Lifetime { get; set; }

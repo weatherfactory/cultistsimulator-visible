@@ -47,6 +47,7 @@ namespace Noon
         public const string KINTERNALDECK = "internaldeck";
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";
+        public const string KVERBOVERRIDEICON = "verbicon";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KALTERNATIVERECIPESALT = "alt";
         public const string KSLOTS="slots";

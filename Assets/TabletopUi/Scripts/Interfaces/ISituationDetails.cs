@@ -73,5 +73,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 		Vector3 Position { get; set; }
         void SetWindowSize(bool wide);
         IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null);
+        void DisplayIcon(string icon);
     }
 }

@@ -35,20 +35,23 @@
         id: "welland",
             label: "Captain Welland",
             description: "'This is no Noble Endeavour. We'll have no Jack-come-quickly jumping up the House ranks.'",
-			aspects:{long.enemy:1,long.preference.assault:1}
+			aspects:{long.enemy:1,long.preference.assault:1},
+			verbicon:"long-forge"
         },
 				 {
         id: "tryphon",
             label: "Lady Tryphon",
             description: "'No, He cannot harm you; He cannot find you. But I suffer no such circumscription.'",
-			aspects:{long.enemy:1,long.preference.intrigue:1}
+			aspects:{long.enemy:1,long.preference.intrigue:1},
+			verbicon:"long-grail"
         },
 		
 				 {
         id: "diarist",
             label: "The Diarist",
             description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.'",
-			aspects:{long.enemy:1,long.preference.dreamwork:1}
+			aspects:{long.enemy:1,long.preference.dreamwork:1},
+			verbicon:"long-lantern"
         },
 		
 				 {
@@ -56,6 +59,7 @@
             label: "J.C.",
             description: "'No more Names. That's it; I'm sorry; I don't have time to make conversation.'",
 			aspects:{long.enemy:1},
+			verbicon:"long-winter"
         },
 		
 {id:"strategy.prep",

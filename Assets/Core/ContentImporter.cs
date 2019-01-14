@@ -567,8 +567,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 else
                     element.Unique = false;
 
+                element.OverrideVerbIcon = htElement.GetString(NoonConstants.KVERBOVERRIDEICON);
 
-
+                
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
 
                 if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))

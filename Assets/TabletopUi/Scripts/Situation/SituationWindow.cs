@@ -89,12 +89,19 @@ namespace Assets.CS.TabletopUI {
             dumpResultsButton.onClick.RemoveListener(DumpAllResultingCardsToDesktop);
         }
 
-		public void Initialise(IVerb verb, SituationController sc, Heart heart) {
+
+        public void DisplayIcon(string icon)
+        {
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
+            artwork.sprite = sprite;
+        }
+
+        public void Initialise(IVerb verb, SituationController sc, Heart heart) {
 			situationController = sc;
 			_heart = heart;
 			Verb = verb;
             name = "Window_" + verb.Id;
-            artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
+            DisplayIcon(verb.Id);
 
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);

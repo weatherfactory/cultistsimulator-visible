@@ -402,6 +402,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     controller.ReprovisionStoredElementStack(ess,Source.Existing());
                     
                 controller.OngoingSlotsOrStorageUpdated();
+                
             }
         }
 
