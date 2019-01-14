@@ -36,14 +36,16 @@
             label: "Captain Welland",
             description: "'This is no Noble Endeavour. We'll have no Jack-come-quickly jumping up the House ranks.'",
 			aspects:{long.enemy:1,long.preference.assault:1},
-			verbicon:"long-forge"
+			verbicon:"long-forge",
+			xtriggers:{longded:welland.defeated}
         },
 				 {
         id: "tryphon",
             label: "Lady Tryphon",
             description: "'No, He cannot harm you; He cannot find you. But I suffer no such circumscription.'",
 			aspects:{long.enemy:1,long.preference.intrigue:1},
-			verbicon:"long-grail"
+			verbicon:"long-grail",
+			xtriggers:{longded:tryphon.defeated}
         },
 		
 				 {
@@ -51,7 +53,8 @@
             label: "The Diarist",
             description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.'",
 			aspects:{long.enemy:1,long.preference.dreamwork:1},
-			verbicon:"long-lantern"
+			verbicon:"long-lantern",
+			xtriggers:{longded:diarist.defeated}
         },
 		
 				 {
@@ -59,9 +62,38 @@
             label: "J.C.",
             description: "'No more Names. That's it; I'm sorry; I don't have time to make conversation.'",
 			aspects:{long.enemy:1},
-			verbicon:"long-winter"
+			verbicon:"long-winter",
+			xtriggers:{longded:julian.defeated}
         },
-		
+{id:"welland.defeated",
+label:"FNORD Welland, Defeated",
+description:"FNORD",
+slots:[{id:"mentor",label:"Shaper",required:{apostleforge.mentor:1},actionId:study}],
+aspects:{text:1}
+},	
+
+{id:"tryphon.defeated",
+label:"FNORD Tryphon, Defeated",
+description:"FNORD",
+slots:[{id:"mentor",label:"Delight",required:{apostlegrail.mentor:1},actionId:study}],
+aspects:{text:1}
+},
+
+{id:"diarist.defeated",
+label:"FNORD Diarist, Defeated",
+description:"FNORD",
+slots:[{id:"mentor",label:"Illuminated One",required:{apostlelantern.mentor:1},actionId:study}],
+aspects:{text:1}
+},
+
+	
+{id:"julian.defeated",
+label:"FNORD Julian, Defeated",
+description:"FNORD",
+slots:[{id:"mentor",label:"Founder",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
+aspects:{text:1}
+},
+
 {id:"strategy.prep",
 label:"Preparations Ongoing",
 description:"Our immortal enemy is preparing another action.",

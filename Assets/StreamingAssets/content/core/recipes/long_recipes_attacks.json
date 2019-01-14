@@ -1151,7 +1151,7 @@ label:"The Long is dead!",
 startdescription:"This giant might have lived forever, but they grew incautious.",
 description:"[Savour your victory while you can. The work continues. If our enemy can be destroyed, so too can our mentor.]",
 requirements:{long_wound:3},
-effects:{long.enemy:-1},
+aspects:{longded:1},
 warmup:60},
 
 {id: "long.assault.confrontation.grabhealth",
@@ -1253,7 +1253,7 @@ label:"The Long is vanquished!",
 startdescription:"Among the wheeling shadows, the furious smokes, of the Bounds, the Long shrinks like a melting moon. Their armies dissipate. Their intentions founder. Their name is lost.",
 description:"[Savour your victory while you can. The work continues. If our enemy can be destroyed, so too can our mentor.]",
 requirements:{long_wound:3},
-effects:{long.enemy:-1},
+aspects:{longded:1},
 warmup:60},
 
 

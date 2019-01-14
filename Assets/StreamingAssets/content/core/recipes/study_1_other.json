@@ -19,7 +19,52 @@
 		effects:{notoriety:1,benefactorwill:-1},
         description: "Something has gone awry. Our former acquaintances cross the street when I pass. A newspaper hints at foul play. The solicitor will not receive me. I can expect no bequest, and there may be worse to come.",
 
-	}
+	},
+	
+	
+{id:"study.welland.defeated",
+actionId:"study",
+label:"FNORD Welland ",
+startdescription:"FNORD ",
+description:"FNORD",
+requirements:{welland.defeated:1,mentor:1},
+effects:{mentor:-1,welland.defeated:-1,ascensionpowerc:1},
+warmup:60,
+craftable:true
+},
+
+{id:"study.tryphon.defeated",
+actionId:"study",
+label:"FNORD tryphon ",
+startdescription:"FNORD ",
+description:"FNORD",
+requirements:{tryphon.defeated:1,mentor:1},
+effects:{mentor:-1,tryphon.defeated:-1,ascensionsensationc:1},
+warmup:60,
+craftable:true
+},
+
+{id:"study.diarist.defeated",
+actionId:"study",
+label:"FNORD diarist ",
+startdescription:"diarist ",
+description:"diarist",
+requirements:{diarist.defeated:1,mentor:1},
+effects:{mentor:-1,diarist.defeated:-1,ascensionenlightenmentc:1},
+warmup:60,
+craftable:true
+},
+
+{id:"study.julian.defeated",
+actionId:"study",
+label:"FNORD julian ",
+startdescription:"FNORD ",
+description:"FNORD",
+requirements:{julian.defeated:1,mentor:1},
+effects:{mentor:-1,julian.defeated:-1,dread:1},
+warmup:60,
+craftable:true
+},
 	
 
 ]
