@@ -66,15 +66,16 @@
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "The first rays of the day's sun will fall on the open eyes of a corpse. There is often a price for an unwise summoning: but it is not always the summoner who pays it.",
-	  aspects: {killmortal:1},
-	  effects: {notoriety:1,summoned:-1}
+	  aspects: {killmortal:1,killsummoned:1},
+	  effects: {notoriety:1}
 	  },
 	  	  	 {id: "devourer_haunting_mortal_failure",
 	   label: "An Escaped Summoning has visited Horror upon its Victim",
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "The victim has survived, but the story of this night will spread like a stain.",
-	  effects: {notoriety:1,summoned:-1}
+	  effects: {notoriety:1},
+	  	  aspects: {killsummoned:1},
 	  },
 	
 	
@@ -133,7 +134,8 @@ alternativerecipes:	[
 	  startdescription:".",
 	  description: "I will bear a scar, of the kind that one day might be photographed for a museum. And the neighbours will talk; how they will talk..",
 	  aspects: {damagehealth:1},
-	 effects: {summoned:-1,notoriety:1}
+	 effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  
 	  },
 	  	  	 {id: "devourer_haunting_damageshealth_failure",
@@ -141,7 +143,8 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "I was too much for it! But I couldn't deal with it in silence. People will talk.",
-	  effects: {summoned:-1,notoriety:1}
+	  effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  },
 	  
 	  
@@ -210,7 +213,8 @@ alternativerecipes:	[
 	  startdescription:".",
 	  description: "The events of that night will live long in your memory; and for days, the newspapers question residents of the district.",
 	  aspects: {damagereason:1},
-	 effects: {summoned:-1,notoriety:1}
+	 effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  
 	  },
 	  	  	 {id: "deceiver_haunting_reason_failure",
@@ -218,7 +222,8 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "The events of that night will live long in your memory; but the thing from beyond the Wake is no match for you. For days, however, the newspapers question residents of the district.",
-	  effects: {summoned:-1,notoriety:1}
+	  effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  },
 
 
@@ -280,15 +285,16 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "Only the strongest mind could survive this. The newspapers will have a peculiar story to tell.",
-	  aspects: {derangemortal:1},
-	  effects:{notoriety:1,summoned:-1}
+	  aspects: {derangemortal:1,killsummoned:1},
+	  effects:{notoriety:1}
 	  },
 	  	  	 {id: "deceiver_haunting_mortal_failure",
 	   label: "An Escaped Summoning has visited Horror upon its Victim",
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "Its victim's resolve remains unbroken. The newspapers will have a peculiar story to tell.",
-	  effects:{notoriety:1,summoned:-1}
+	  effects:{notoriety:1},
+	 aspects:{killsummoned:1}
 	  }
 	
 ]

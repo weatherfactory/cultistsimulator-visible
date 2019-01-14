@@ -60,7 +60,7 @@
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
-					forbidden:{summoned:-1} 
+					forbidden:{summoned:1} 
 				}],
         unique:true
         },

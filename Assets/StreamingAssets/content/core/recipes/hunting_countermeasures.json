@@ -5,7 +5,8 @@ label:"Wards and Seals",
 requirements:{mystic:1,summoned:1},
 description:"'Our enemy possesses the most dangerous weapon of all: knowledge.'\n
 Your summoning has fallen prey to your adversary's countermeasures. Mystic Hunters know the proper protections, and will usually survive attacks from summoned Minions. But sooner or later, they'll make a mistake.",
-effects:{notoriety:1,summoned:-1},
+effects:{notoriety:1},
+aspects:{killsummoned:1}
    },
    {id: "huntertenacioussurvives",
 actionId:"talk",
@@ -31,7 +32,8 @@ requirements:{summoned:1,mystic:-1},
 description:"'What does not kill sometimes them makes them stranger.'\n
 When a Hunter survives an attack by a summoned creature, occasionally they'll be inspired to learn countermeasures against Mansus-things, becoming Mystic. Mystic Hunters usually survive further attacks by summoned creatures.",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
-effects:{notoriety:1,summoned:-1}
+effects:{notoriety:1},
+aspects:{killsummoned:1}
    },
 
             {id: "hunterfitewithextraswole",
