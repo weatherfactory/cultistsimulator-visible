@@ -66,30 +66,73 @@
 			xtriggers:{longded:julian.defeated}
         },
 {id:"welland.defeated",
-label:"FNORD Welland, Defeated",
-description:"FNORD",
+label:"A Letter from Welland",
+description:"'SIR - (It does not seem to have occurred to Welland that he might have been defeated by anyone but a 'sir')
+
+I am the most dangerous enemy you will ever face, and I have defeated far greater than you. You deserve better than to be pyre-fuel. I urge you to shatter your chains, as the Lionsmith did so long ago, and rise to take your own place as Long.
+
+I attach the secret that Darius told Alexander at Issus. Use it wisely.
+
+Regards,
+
+W. '
+
+[The secret is attached. You can use it to break free of your Mentor.]
+",
 slots:[{id:"mentor",label:"Shaper",required:{apostleforge.mentor:1},actionId:study}],
 aspects:{text:1}
 },	
 
 {id:"tryphon.defeated",
-label:"FNORD Tryphon, Defeated",
-description:"FNORD",
+label:"A Letter from Lady Tryphon",
+description:"'My love,
+
+I am defeated, and you my vanquisher have won my devotion. I enclose a remaining scrap of myself, and go forth to meet my demise.
+
+Consume what remains of me, and we shall be one, as the Flowermaker has always intended. Reject your 'Delight'. Your destiny is far greater.
+
+You will ask: is this a last trick? A desperate stratagem to assure your betrayal? I can only answer: taste me, and see.
+
+I remain,
+
+your delicious friend,
+
+T.E.'
+
+[If you consume the enclosed morsel of Lady Tryphon, you can break free of your Mentor.]
+",
 slots:[{id:"mentor",label:"Delight",required:{apostlegrail.mentor:1},actionId:study}],
 aspects:{text:1}
 },
 
 {id:"diarist.defeated",
-label:"FNORD Diarist, Defeated",
-description:"FNORD",
+label:"A Dream of the Diarist",
+description:"The sunlight through the western window in the Scriptorium is failing. As the Diarist writes his last entry, the chamber chills from gold towards grey. He closes his little book with a snap. 'Death is down,' he explains, 'and my altitude is falling. I don't bear you a grudge. I tell you what, though, 
+I hope your Illuminated One trips and falls down the Ascent.' The Diarist's face is erasing itself, like a man unwriting, and his eyes are already gone. He hands you his little book. 'This is your last chance. You can go where I was, or where you're going. I know which is better.' His mouth spools itself up like the undrawing of a zip, and he is blank white paper.
+
+[If you consider the dream of the diary, you can break free of your Mentor.]
+
+",
 slots:[{id:"mentor",label:"Illuminated One",required:{apostlelantern.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{text:1},
+lifetime:120
 },
 
 	
 {id:"julian.defeated",
-label:"FNORD Julian, Defeated",
-description:"FNORD",
+label:"A Letter from Julian Coseley.",
+description:"Enemy,
+
+I am not so easily destroyed. But I will acknowledge that you have defeated me, so I will reward you with my counsel.
+
+You are a fool, cozened by a fool to emplace one more stone in the walls of the Mansus. You may, if you choose, cast that stone away into night.
+
+Should you so cast it, you will die naked and alone, as do all, even the Long. You might die free.
+
+- Julian
+
+[If you take Julian's lesson to heart, you can break free of your Mentor.]
+",
 slots:[{id:"mentor",label:"Founder",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
 aspects:{text:1}
 },
