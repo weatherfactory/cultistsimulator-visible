@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return;
 
             // Process any debug tools-specific keys first
-            if (_debugTools.isActiveAndEnabled && _debugTools.ProcessInput())
+            if (_debugTools!=null && _debugTools.isActiveAndEnabled && _debugTools.ProcessInput())
                 return;
 
 			UpdateInputFieldState();

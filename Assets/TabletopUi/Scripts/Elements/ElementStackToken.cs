@@ -1,4 +1,6 @@
 ﻿#pragma warning disable 0649
+//#define DROPZONE
+
 using System;
 using System.Collections.Generic;
 using Assets.Core;
@@ -44,7 +46,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] string defaultRetireFX = "CardBurn";
 
-        private IElementStacksManager CurrentStacksManager;
+        protected IElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
@@ -56,7 +58,7 @@ namespace Assets.CS.TabletopUI {
 		private Color cachedDecayBackgroundColor;
 
 		// Interaction handling - CP
-		private bool singleClickPending = false;
+		protected bool singleClickPending = false;
 
         public float LifetimeRemaining { get; set; }
         private bool isFront = true;
@@ -75,17 +77,17 @@ namespace Assets.CS.TabletopUI {
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
         }
-        public string Label
+        virtual public string Label
         {
             get { return _element == null ? null : _element.Label; }
         }
 
-        public string Icon
+        virtual public string Icon
         {
             get { return _element == null ? null : _element.Icon; }
         }
 
-        public bool Unique
+        virtual public bool Unique
         {
             get
             {
@@ -95,22 +97,23 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public string UniquenessGroup
+        virtual public string UniquenessGroup
         {
             get { return _element == null ? null : _element.UniquenessGroup; }
         }
 
-        public bool Decays {
+        virtual public bool Decays
+		{
             get { return _element.Lifetime > 0; }
         }
 
-        public int Quantity {
+        virtual public int Quantity {
             get { return Defunct ? 0 : _quantity; }
         }
 
-        public bool MarkedForConsumption { get; set; }
+        virtual public bool MarkedForConsumption { get; set; }
 
-        public IlluminateLibrarian IlluminateLibrarian
+        virtual public IlluminateLibrarian IlluminateLibrarian
         {
             get { return _illuminateLibrarian; }
             set { _illuminateLibrarian = value; }
@@ -161,16 +164,16 @@ namespace Assets.CS.TabletopUI {
                 textBackground.overrideSprite = null;
         }
 
-        public Dictionary<string, int> GetCurrentMutations()
+        virtual public Dictionary<string, int> GetCurrentMutations()
         {
             return new Dictionary<string, int>(_currentMutations);
         }
-        public Dictionary<string, string> GetCurrentIlluminations()
+        virtual public Dictionary<string, string> GetCurrentIlluminations()
         {
             return IlluminateLibrarian.GetCurrentIlluminations();
         }
 
-        public void SetMutation(string aspectId, int value,bool additive)
+        virtual public void SetMutation(string aspectId, int value,bool additive)
         {
             if (_currentMutations.ContainsKey(aspectId))
             {
@@ -189,11 +192,11 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public Dictionary<string, string> GetXTriggers() {
+        virtual public Dictionary<string, string> GetXTriggers() {
             return _element.XTriggers;
         }
 
-        public IAspectsDictionary GetAspects(bool includeSelf = true)
+        virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
             IAspectsDictionary aspectsToReturn=new AspectsDictionary();
 
@@ -210,11 +213,11 @@ namespace Assets.CS.TabletopUI {
             return aspectsToReturn;
         }
 
-        public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
+        virtual public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
             return _element.ChildSlotSpecifications.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
         }
 
-        public bool HasChildSlotsForVerb(string verb) {
+        virtual public bool HasChildSlotsForVerb(string verb) {
             return _element.HasChildSlotsForVerb(verb);
         }
 
@@ -240,7 +243,16 @@ namespace Assets.CS.TabletopUI {
         /// <param name="elementId"></param>
         /// <param name="quantity"></param>
         /// <param name="source"></param>
-        public void Populate(string elementId, int quantity, Source source) {
+        public void Populate(string elementId, int quantity, Source source)
+		{
+			#if DROPZONE
+			if (elementId == "dropzone")
+			{
+				CreateDropZone( );
+				return;
+			}
+			#endif
+
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             if(_element==null)
             NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
@@ -283,6 +295,7 @@ namespace Assets.CS.TabletopUI {
                 Retire(false);
             }
         }
+
         private void CullTextBackface() {
             decayCountText.enableCulling = true;
             stackCountText.enableCulling = true;
@@ -317,26 +330,75 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
             // If we're not unique and we've never been on the table, auto-merge us!
-            else if (!_element.Unique && lastTablePos == null)
+            else if (lastTablePos == null)
 			{
                 var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
-                //check if there's an existing stack of that type to merge with
-                foreach (var stack in existingStacks)
+				if (!_element.Unique)
 				{
-                    if (CanMergeWith(stack))
+					//check if there's an existing stack of that type to merge with
+					foreach (var stack in existingStacks)
 					{
-                        var elementStack = stack as ElementStackToken;
-                        elementStack.MergeIntoStack(this);
-                        return;
-                    }
-                }
-            }
+						if (CanMergeWith(stack))
+						{
+							var elementStack = stack as ElementStackToken;
+							elementStack.MergeIntoStack(this);
+							return;
+						}
+					}
+				}
+			
+				#if DROPZONE
+				// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+				lastTablePos = Vector2.zero;
+				DraggableToken	dropZoneObject = null;
+				Vector3			dropZoneOffset = new Vector3(80f,-50f,0f);
+
+				foreach (var stack in existingStacks)
+				{
+					DraggableToken tok = stack as DraggableToken;
+					if (tok!=null && tok.EntityId == "dropzone")
+					{
+						dropZoneObject = tok;
+						break;
+					}
+				}
+				if (dropZoneObject == null)
+				{
+					dropZoneObject = CreateDropZone();		// Create drop zone now and add to stacks
+				}
+
+				if (dropZoneObject != null)	// Position card near dropzone
+				{
+					lastTablePos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
+				}
+				#endif
+			}
 
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
         }
+
+		private DraggableToken CreateDropZone()
+		{
+			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var stacksManager = tabletop._tabletop.GetElementStacksManager();
+			var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
+
+            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+            newCard.transform.position = Vector3.zero;
+
+            stacksManager.AcceptStack(newCard, new Context(Context.ActionSource.Loading));
+
+			// Show hint message explaining what this new thing is...
+			//notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
+
+            // Accepting stack may put it to pos Vector3.zero, so this is last
+            //newCard.transform.position = position;
+            newCard.transform.localScale = Vector3.one;
+            return newCard as DraggableToken;
+		}
 
         private bool IsOnTabletop() {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
@@ -454,14 +516,14 @@ namespace Assets.CS.TabletopUI {
             return !isFront || base.AllowsInteraction();
         }
 
-        public bool AllowsIncomingMerge() {
+        virtual public bool AllowsIncomingMerge() {
             if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
         }
 
-        public bool AllowsOutgoingMerge() {
+        virtual public bool AllowsOutgoingMerge() {
             if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
                 return false;
             else
@@ -680,7 +742,8 @@ namespace Assets.CS.TabletopUI {
             return null;
         }
 
-        protected override void StartDrag(PointerEventData eventData) {
+        protected override void StartDrag(PointerEventData eventData)
+		{
             // to ensure these are set before we split the cards
             DraggableToken.itemBeingDragged = this;
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
@@ -688,7 +751,8 @@ namespace Assets.CS.TabletopUI {
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
 			// Now also allowing both shift keys to drag entire stack - CP
-            if (stackBadge.IsHovering() == false &&
+            if (stackBadge != null &&
+				stackBadge.IsHovering() == false &&
 				Input.GetKey(KeyCode.LeftShift) == false &&
 				Input.GetKey(KeyCode.RightShift) == false)
 			{
@@ -891,7 +955,7 @@ namespace Assets.CS.TabletopUI {
             Flip(false, instant);
         }
 
-        public void Flip(bool state, bool instant = false) {
+        virtual public void Flip(bool state, bool instant = false) {
             if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
                 return;
 
