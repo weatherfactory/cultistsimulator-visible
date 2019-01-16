@@ -257,8 +257,8 @@ linked:[{id:"long.preparestrategy",chance:100}]
 
 {id:"long.delayaction.success.intrigue",
 actionId:"long",
-label:"An Intrigue Delayed",
-startdescription:"We divined that the Long intended to launch an assault; we've delayed it a little. [This is only possible once each action.]",
+label:"An Intrigue Delayed!",
+startdescription:"We divined that the Long intended to launch an intrigue; we've delayed it a little. [This is only possible once each action.]",
 requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1,intention.intrigue:1},
 effects:{strategy.prep.delayed:1,strategy.prep:-1},
 aspects:{revealstrategy:1},
