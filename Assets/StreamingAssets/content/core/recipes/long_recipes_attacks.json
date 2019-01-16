@@ -1093,7 +1093,8 @@ label:"A Rising Power",
 startdescription:"Our immortal enemy has allies and resources in many nations. They move slowly, but as time passes, they will bring more and more of those allies and resources to bear against us.",
 warmup:10,
 linked:[{id:"long.executestrategy.downtime.learn.might",chance:100},
-{id:"long.executestrategy.downtime.learn.connections",chance:100}]
+{id:"long.executestrategy.downtime.learn.connections",chance:100},
+{id:"long.executestrategy.downtime.learn.dreamwork",chance:100}]
 },
 
 {id:"long.executestrategy.downtime.learn.might",
@@ -1105,6 +1106,12 @@ effects:{long.lesson.might:1}
 actionId:"longdowntime",
 effects:{long.lesson.connections:1}
 },
+
+{id:"long.executestrategy.downtime.learn.dreamwork",
+actionId:"longdowntime",
+effects:{long.lesson.dreamwork:1}
+},
+
 
 
 
@@ -1125,7 +1132,7 @@ requirements:{long.connections:10,diarist:-1,diarist_unknown:-1},
 mutations:[{mutate:long.might,filter:long.enemy,level:10}],
 warmup:60,
 linked:[{id:"long.assault.confrontation"}],
-aspects:{revealstrategy:1}
+aspects:{revealidentity:1}
 },
 
 
@@ -1133,7 +1140,7 @@ aspects:{revealstrategy:1}
 actionId:"long",
 comments:"Note: this takes effect in the main verb. Once in an assault confrontation, we're in it until the end.",
 label:"A Direct Assault!",
-aspects:{revealstrategy:1},
+aspects:{revealidentity:1},
 slots:[{id:"follower",label:"Defender",required:{follower:1,murderskill:1},forbidden:{summoned:1,hireling:1}}],
 startdescription:"Enough feinting and proxy struggle. @#welland|Captain Welland will use his Forge-strength against us personally.#tryphon|Lady Tryphon has opted to bloody her well-manicured hands in a personal assault. #julian|This chilly enemy has come to end us personally.#|Our enemy has personally entered the fray.@ [The Long will devour my Health until I am dead, although our loyal followers might protect us for a little while. And only mortal followers - our enemy is wise in the invisible arts, and spirits cannot assail them.] ",
 requirements:{long.might:10,diarist:-1,diarist_unknown:-1},
@@ -1237,7 +1244,7 @@ linked:[{id:"long.assault.confrontation"}]},
 actionId:"long",
 comments:"Note: this takes effect in the main verb. Once in a dreams confrontation, we're in it until the end.",
 label:"A War of Phantoms",
-aspects:{revealstrategy:1},
+aspects:{revealidentity:1},
 slots:[{id:"summoned",label:"Defender",required:{summoned:1}}],
 startdescription:"@#welland|Captain Welland has, uncharacteristically, chosen the Bounds of the Mansus for our final battleground.#tryphon|Lady Tryphon has chosen the Bounds of the Mansus for our final confrontation. #julian|Coseley is raising allies in the Bounds of the Mansus to strike at us.#diarist|The Diarist has begun an all-out attack on us, through the Bounds of the Mansus that they know so well.#|Our enemy has raised a host of spirits to strike at us through the Mansus.@ [The Long will devour my Passion and Reason until I am no more. But they have exposed themselves to a counterattack... if I can raise a sufficient host of Mansus-things against them.] ",
 requirements:{long.dreamwork:10},
@@ -1374,7 +1381,7 @@ actionId:"long",
 comments:"We remove principle aspects on each run-through - any clutter left from killing
 spirits, we want to remove so it doesn't affect the attack calculation.",
 label:"A War of Phantoms",
-aspects:{revealstrategy:1},
+aspects:{revealidentity:1},
 effects:{edge:-99,forge:-99,grail:-99,heart:-99,knock:-99,lantern:-99,moth:-99,winter:-99},
 linked:[{id:"long.dreams.confrontation"}]}
 

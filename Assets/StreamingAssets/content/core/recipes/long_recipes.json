@@ -34,7 +34,7 @@ actionId: "long",
 effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9,strategy.prep:-9,strategy.prep.delayed:-9},
 startdescription: "The immortal in the shadows ponders their next move.",
 warmup:60,
-slots:[{id:"longlesson",label:"Lessons",required:{long.lesson:1},greedy:true}],
+slots:[{id:"longlesson",label:"Lessons",description:"As we provoke our enemy, and as they learn from us, their attacks will grow deadlier.",required:{long.lesson:1},greedy:true}],
 craftable: false,
 alternativerecipes:[{id:"long.upgrade.might",chance:100},
 {id:"long.upgrade.connections",chance:100},
@@ -59,7 +59,7 @@ requirements:{long.lesson.might:1},
 effects:{long.lesson.might:-1},
 mutations:[{filterOnAspectId:long.enemy,mutateAspectId:long.might,mutationLevel:1,additive:true}],
 warmup:10,
-linked:[{id:"long.selectstrategy",chance:100}]
+linked:[{id:"long.cycle",chance:100}]
 },
 
 
@@ -72,7 +72,7 @@ requirements:{long.lesson.connections:1},
 effects:{long.lesson.connections:-1},
 mutations:[{filterOnAspectId:long.enemy,mutateAspectId:long.connections,mutationLevel:1,additive:true}],
 warmup:10,
-linked:[{id:"long.selectstrategy",chance:100}]
+linked:[{id:"long.cycle",chance:100}]
 },
 
 
@@ -84,7 +84,7 @@ requirements:{long.lesson.dreamwork:1},
 effects:{long.lesson.dreamwork:-1},
 mutations:[{filterOnAspectId:long.enemy,mutateAspectId:long.dreamwork,mutationLevel:1,additive:true}],
 warmup:10,
-linked:[{id:"long.selectstrategy",chance:100}]
+linked:[{id:"long.cycle",chance:100}]
 },
 
 
@@ -130,8 +130,12 @@ actionId:"long",
 label:"Preparing an Action",
 startdescription:"Our immortal enemy is preparing their next action.
 
-[Add followers strong in <sprite name=knock> <sprite name=lantern> <sprite name=moth> to try to uncover the Long's strategy. Add followers strong in <sprite name=edge> <sprite name=forge> <sprite name=grail> <sprite name=winter> to try to delay it.]",
-slots:[{id:"spy",label:"Spy",required:{follower:1}}],
+[Add a follower strong in <sprite name=knock> <sprite name=lantern> to try to uncover the Long's strategy.
+Add a follower strong in
+<sprite name=edge> <sprite name=forge> to try to delay Assaults,
+<sprite name=grail> <sprite name=heart> for Intrigues, 
+<sprite name=moth> <sprite name=winter> for Starlight attacks.]",
+slots:[{id:"spy",label:"Spy",description:"Spies can learn of the Long's plans. If you know or guess the nature of those plans, the right spies can delay them.", required:{follower:1}}],
 alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
 effects:{strategy.prep:1},
 warmup:60,
@@ -170,18 +174,21 @@ linked:[
 {id:"long.refinestrategy.dreams.dreadtofascination.poisoned",chance:70},
 {id:"long.refinestrategy.dreams.learndreams",chance:70},
 {id:"long.refinestrategy.dreams.createfascination",chance:100},
-{id:"long.refinestrategy.downtime.learn",chance:70},
+{id:"long.refinestrategy.downtime.learn.winter",chance:90},
+{id:"long.refinestrategy.downtime.learn",chance:50},
 {id:"long.refinestrategy.downtime.rest",chance:100},
-{id:"long.spyonstrategy.success",challenges:{knock:base,lantern:base,moth:base}},
-{id:"long.delayaction.success",challenges:{edge:base,forge:base,grail:base,winter:base}},
+{id:"long.spyonstrategy.success",challenges:{knock:base,lantern:base}},
+{id:"long.delayaction.success.assault",challenges:{edge:base,forge:base}},
+{id:"long.delayaction.success.intrigue",challenges:{grail:base,heart:base}},
+{id:"long.delayaction.success.dreams",challenges:{moth:base,winter:base}},
 {id:"long.preparestrategy",chance:100}]
 },
 
 {id:"expelallspies",
 actionId:"expelallspies",
 label:"Because We Are Too Many",
-requirements:{follower:2},
-startdescription:"Our enemy is vigilant. We've sent too many watchers - if we send more than one, all will fail.",
+requirements:{follower:3},
+startdescription:"Our enemy is vigilant. We've sent too many watchers - if we send more than two, all will fail.",
 warmup:10},
 
 
@@ -189,20 +196,92 @@ warmup:10},
 {id:"long.spyonstrategy.success",
 actionId:"long",
 label:"A Report from our Spy",
+alt:[{id:"long.revealidentity.success.might"},
+{id:"long.revealidentity.success.connections"},
+{id:"long.revealidentity.success.dreamwork"}],
 requirements:{follower:1,strategy.revealed:-1},
-startdescription:"@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.
-@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.
-@#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate. He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.
-@#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.
-#|The shape of the Long's strategy is coming clear.@",
+startdescription:"The shape of the Long's strategy is coming clear.",
 aspects:{revealstrategy:1},
 warmup:10,
 linked:[{id:"long.preparestrategy",chance:100}]
 },
 
+
+{id:"long.revealidentity.success.might",
+actionId:"long",
+label:"Our Enemy's Identity",
+requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.might:3},
+linked:[{id:"long.revealidentity.success"}]
+},
+
+{id:"long.revealidentity.success.connections",
+actionId:"long",
+label:"Our Enemy's Identity",
+requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.connections:3},
+linked:[{id:"long.revealidentity.success"}]
+},
+
+
+{id:"long.revealidentity.success.dreamwork",
+actionId:"long",
+label:"Our Enemy's Identity",
+requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.dreamwork:3},
+linked:[{id:"long.revealidentity.success"}]
+},
+
+
+
+{id:"long.revealidentity.success",
+actionId:"long",
+label:"Our Enemy's Identity",
+startdescription:"@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.
+@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.
+#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate. He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.
+#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.@",
+aspects:{revealidentity:1},
+warmup:10,
+linked:[{id:"long.spyonstrategy.success",chance:100}]
+},
+
+
+{id:"long.delayaction.success.assault",
+actionId:"long",
+label:"An Assault Delayed",
+startdescription:"We divined that the Long intended to launch an assault; we've delayed it a little. [This is only possible once each action.]",
+requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1,intention.assault:1},
+effects:{strategy.prep.delayed:1,strategy.prep:-1},
+aspects:{revealstrategy:1},
+warmup:30,
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+{id:"long.delayaction.success.intrigue",
+actionId:"long",
+label:"An Intrigue Delayed",
+startdescription:"We divined that the Long intended to launch an assault; we've delayed it a little. [This is only possible once each action.]",
+requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1,intention.intrigue:1},
+effects:{strategy.prep.delayed:1,strategy.prep:-1},
+aspects:{revealstrategy:1},
+warmup:30,
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+{id:"long.delayaction.success.dreams",
+actionId:"long",
+label:"The Moon, Occluded",
+startdescription:"We divined that the Long intended to come at us through our dreams; we've delayed that a little. [This is only possible once each action.]",
+requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1,intention.dreams:1},
+effects:{strategy.prep.delayed:1,strategy.prep:-1},
+aspects:{revealstrategy:1},
+warmup:30,
+linked:[{id:"long.preparestrategy",chance:100}]
+},
+
+
 {id:"long.delayaction.success",
 actionId:"long",
-label:"Our Spy is Causing Difficulties",
+label:"Our Spy Has Delayed Our Enemy",
+comments:"This generic recipe is included only for backwards compatibility with beta folks",
 startdescription:"They can slow the Long's action, though not prevent it. [This is only possible once each action.]",
 requirements:{follower:1,strategy.prep:1,strategy.prep.delayed:-1},
 effects:{strategy.prep.delayed:1,strategy.prep:-1},
@@ -471,10 +550,18 @@ alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.begin",chance:1
 linked:[{id:"long.cycle",chance:100}]
 },
 
+{id:"long.refinestrategy.downtime.learn.winter",
+actionId:"long",
+requirements:{intention.downtime:1,strategy.prep:3,long.preference.winter:1},
+alternativerecipes:[{id:"long.executestrategy.downtime.learn.begin",chance:100,additional:true}],
+linked:[{id:"long.cycle",chance:100}]
+},
+
+
 {id:"long.refinestrategy.downtime.learn",
 actionId:"long",
-requirements:{intention.downtime:1,strategy.prep:3},
-alternativerecipes:[{id:"long.executestrategy.downtime.learn.begin",chance:70,additional:true}],
+requirements:{intention.downtime:1,strategy.prep:3,long.preference.winter:-1},
+alternativerecipes:[{id:"long.executestrategy.downtime.learn.begin",chance:100,additional:true}],
 linked:[{id:"long.cycle",chance:100}]
 },
 

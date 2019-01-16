@@ -3,38 +3,38 @@
 		 {
         id: "welland_unknown",
             label: "A Shadowy Presence",
-            description: "Their power is formidable; their identity, as yet unknown.",
+            description: "Their power is formidable; their identity, as yet unknown. [Once the Long's Might, Connections or Starlight reaches 3, it may be possible to unmask them.]",
 			aspects:{long.enemy:1,long.preference.assault:1},
-			xtriggers:{revealstrategy:welland}
+			xtriggers:{revealidentity:welland}
         },
 				 {
         id: "tryphon_unknown",
             label: "A Shadowy Presence",
-            description: "Their power is formidable; their identity, as yet unknown.",
+            description: "Their power is formidable; their identity, as yet unknown. [Once the Long's Might, Connections or Starlight reaches 3, it may be possible to unmask them.]",
 			aspects:{long.enemy:1,long.preference.intrigue:1},
-			xtriggers:{revealstrategy:tryphon}
+			xtriggers:{revealidentity:tryphon}
         },
 		
 				 {
         id: "diarist_unknown",
             label: "A Shadowy Presence",
-            description: "Their power is formidable; their identity, as yet unknown.",
+            description: "Their power is formidable; their identity, as yet unknown. [Once the Long's Might, Connections or Starlight reaches 3, it may be possible to unmask them.]",
 			aspects:{long.enemy:1,long.preference.dreamwork:1},
-			xtriggers:{revealstrategy:diarist}
+			xtriggers:{revealidentity:diarist}
         },
 		
 				 {
         id: "julian_unknown",
             label: "A Shadowy Presence",
-            description: "Their power is formidable; their identity, as yet unknown.",
-			aspects:{long.enemy:1},
+            description: "Their power is formidable; their identity, as yet unknown. [Once the Long's Might, Connections or Starlight reaches 3, it may be possible to unmask them.]",
+			aspects:{long.enemy:1,long.preference.winter:1},
 			xtriggers:{revealstrategy:julian}
         },
 		
 				 {
         id: "welland",
             label: "Captain Welland",
-            description: "'This is no Noble Endeavour. We'll have no Jack-come-quickly jumping up the House ranks.'",
+            description: "'This is no Noble Endeavour. We'll have no Jack-come-quickly jumping up the House ranks.' [Welland is more likely to use Assault attacks.]",
 			aspects:{long.enemy:1,long.preference.assault:1},
 			verbicon:"long-forge",
 			xtriggers:{longded:welland.defeated}
@@ -42,7 +42,7 @@
 				 {
         id: "tryphon",
             label: "Lady Tryphon",
-            description: "'No, He cannot harm you; He cannot find you. But I suffer no such circumscription.'",
+            description: "'No, He cannot harm you; He cannot find you. But I suffer no such circumscription.' [Tryphon is more likely to use Intrigue attacks.]",
 			aspects:{long.enemy:1,long.preference.intrigue:1},
 			verbicon:"long-grail",
 			xtriggers:{longded:tryphon.defeated}
@@ -51,7 +51,7 @@
 				 {
         id: "diarist",
             label: "The Diarist",
-            description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.'",
+            description: "'Your pretender is going to make a damned good footnote. But I wouldn't expect anything more than that.' [The Diarist is more likely to use Starlight attacks.]",
 			aspects:{long.enemy:1,long.preference.dreamwork:1},
 			verbicon:"long-lantern",
 			xtriggers:{longded:diarist.defeated}
@@ -60,8 +60,8 @@
 				 {
         id: "julian",
             label: "J.C.",
-            description: "'No more Names. That's it; I'm sorry; I don't have time to make conversation.'",
-			aspects:{long.enemy:1},
+            description: "'No more Names. That's it; I'm sorry; I don't have time to make conversation.' [Julian will more frequently use downtime to increase his abilities.]",
+			aspects:{long.enemy:1,long.preference.winter:1},
 			verbicon:"long-winter",
 			xtriggers:{longded:julian.defeated}
         },
@@ -139,12 +139,12 @@ aspects:{text:1}
 
 {id:"strategy.prep",
 label:"Preparations Ongoing",
-description:"Our immortal enemy is preparing another action.",
+description:"Our immortal enemy is preparing another action. [The Long needs three Preparations to launch another action.]",
 lifetime:1},
 
 {id:"strategy.prep.delayed",
 label:"Preparations Spoiled!",
-description:"Our spy has spoilt some element of our enemy's preparations.",
+description:"Our spy has upset some element of our enemy's preparations. [The Long has lost one Preparation token to your sabotage.]",
 lifetime:1},
 	
 	
@@ -154,7 +154,6 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.assault:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
-icon:"health",
 lifetime:1
 },
 {id:"strategy.intrigue.concealed",
@@ -162,7 +161,6 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.intrigue:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
-icon:"reason",
 lifetime:1
 
 },
@@ -171,7 +169,6 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
-icon:"passion",
 lifetime:1
 
 },
@@ -180,7 +177,6 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.downtime:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-icon:"contentment",
 lifetime:1
 
 },
@@ -189,10 +185,9 @@ lifetime:1
 
 		{id:"strategy.assault.revealed",
 label:"The Long's Plans Revealed: Assault",
-description:"Our enemy intends a direct attack of some kind,this time.",
+description:"Our enemy intends a direct attack of some kind, this time.",
 aspects:{intention.assault:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
-icon:"health",
 lifetime:1
 },
 {id:"strategy.intrigue.revealed",
@@ -200,7 +195,6 @@ label:"The Long's Plans Revealed: intrigue",
 description:"Our enemy intends to use trickery against us, this time.",
 aspects:{intention.intrigue:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
-icon:"reason",
 lifetime:1
 
 },
@@ -209,16 +203,14 @@ label:"The Long's Plans Revealed: Dreams",
 description:"Our enemy will find us through the Mansus, this time.",
 aspects:{intention.dreams:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
-icon:"passion",
 lifetime:1
 
 },
 {id:"strategy.downtime.revealed",
 label:"The Long's Plans Revealed: A Respite",
-description:"Our enemy will not move against us, this time. They will rest, and perhaps they will grow their powers.",
+description:"Our enemy will not move against us, this time. They will rest... and perhaps in resting they will grow stronger.",
 aspects:{intention.downtime:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-icon:"contentment",
 lifetime:1
 },
 
@@ -236,8 +228,7 @@ noartneeded:true
 {id:"long.lesson.might",
 label:"Increased Might",
 aspects:{long.lesson:1},
-description:"Our immortal enemy is taking us more seriously, and has brought more resources to bear. [An enemy Long's Might will increase, allowing them to conduct more powerful assaults.]",
-lifetime:1
+description:"Our immortal enemy is taking us more seriously, and has brought more resources to bear. [An enemy Long's Might will increase, allowing them to conduct more powerful assaults.]"
 },
 
 

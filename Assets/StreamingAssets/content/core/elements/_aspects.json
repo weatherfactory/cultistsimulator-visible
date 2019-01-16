@@ -369,6 +369,10 @@ isHidden:true
 isAspect:true,
 isHidden:true
 },
+{id:"long.preference.winter",
+isAspect:true,
+isHidden:true
+},
 			
 		{id:"ascend",
 		label: "Ascending",
@@ -1355,6 +1359,13 @@ description:"Reveals a concealed strategy",
 isAspect:true,
 noartneeded:true},
 
+
+{id:"revealidentity",
+label:"Reveal Indentity",
+description:"Reveals an unknown enemy",
+isAspect:true,
+noartneeded:true},
+
 {id:"long.lesson",
 label:"A Lesson Learnt",
 description:"Our foe watches and learns.",
@@ -1382,7 +1393,8 @@ isAspect:true
 {id:"long.enemy",
 label:"An Immortal Enemy",
 description:"Many Long serve the Hours. They fiercely oppose the rise of new Names, who might, just perhaps, become usurping Hours some day. Some Long hate the Hours. Their opposition to new Names is, if anythng, even fiercer.",
-isAspect:true
+isAspect:true,
+isHidden:true
 },
 
 
