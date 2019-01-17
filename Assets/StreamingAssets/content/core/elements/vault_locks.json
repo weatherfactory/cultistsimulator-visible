@@ -61,6 +61,37 @@
 	description: "Not all the Dead rest easy. These ones dislike our intrusion. We can prevail against them with Edge; or they may obey one who comes in the name of Winter."
 	},
 	
+	
+				{id: "guardian_serpent_pre",
+	label: "Younger Sister",
+	description: "The Mother of Ants was born among serpents. She has so very many younger sisters. It can be defeated in battle; or it will respond to the Mother's power.",
+	isAspect:true,
+	icon:"guardian"
+	},
+		{id: "guardian_watchers_pre",
+	label: "Watchers",
+	aspects: {guardian:1},
+	description: "Mortals. Perhaps even ordinary mortals. But quite a number of them. They can be fought, seduced, or deceived.",
+	isAspect:true,
+	icon:"guardian"
+	},
+
+			{id: "guardian_monks_pre",
+	label: "Monks",
+	aspects: {guardian:1},
+	description: "Contemplatives blessed or condemned to service here. They're bound by their curious vows. We can murder them, or deceive them, but they will not be seduced.",
+	isAspect:true,
+	icon:"guardian"
+	},
+	
+			{id: "guardian_dead_pre",
+	label: "The Fretful Dead",
+	aspects: {guardian:1},
+	description: "Not all the Dead rest easy. These ones dislike our intrusion. We can prevail against them with Edge; or they may obey one who comes in the name of Winter.",
+	isAspect:true,
+	icon:"guardian"
+	},
+	
 				{id: "guardian_soucouyants",
 	label: "Soucouyants",
 	aspects: {guardian:1},
