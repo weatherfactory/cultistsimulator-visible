@@ -10,9 +10,39 @@
 	requirements:{vault:1,follower:1,funds:1},
 	startdescription: "I have given my agents the opportunity to serve. Let us hope it ends well for us all.",
 	description: ".",
-	linked: [{id: "explorevaulttick",chance:100}],
+	linked: [{id:"explorevault.add.watchers"},
+	{id:"explorevault.add.monks"},
+	{id:"explorevault.add.dead"},
+	{id:"explorevault.add.serpent"},
+	{id: "explorevaulttick",chance:100}],
 	craftable:false
 	},
+	
+	,
+
+{id:"explorevault.add.watchers",
+actionId:"explore",
+requirements:{guardian_watchers_pre:1,guardian_watchers:-1},
+effects:{guardian_watchers:1},
+linked:[{id:"explorevault_expeditionbegun"}]},
+
+{id:"explorevault.add.monks",
+actionId:"explore",
+requirements:{guardian_monks_pre:1,guardian_monks:-1},
+effects:{guardian_monks:1},
+linked:[{id:"explorevault_expeditionbegun"}]},
+
+{id:"explorevault.add.dead",
+actionId:"explore",
+requirements:{guardian_dead_pre:1,guardian_dead:-1},
+effects:{guardian_dead:1},
+linked:[{id:"explorevault_expeditionbegun"}]},
+
+{id:"explorevault.add.serpent",
+actionId:"explore",
+requirements:{guardian_serpent_pre:1,guardian_serpent:-1},
+effects:{guardian_serpent:1},
+linked:[{id:"explorevault_expeditionbegun"}]},
 
 		{
 	id: "explorevaulttick",

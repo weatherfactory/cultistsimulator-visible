@@ -229,30 +229,40 @@ actionId:"longassault",
 label:"An Ambush",
 startdescription:"Our enemy has learnt that we're considering an expedition. If they can learn our destination, they'll send allies to prepare an ambush.",
 slots:[{id:"vault",label:"Vault",required:{vault:1},greedy:true}],
-linked:[{id:"long.executestrategy.assault.setambush.expedition.continue.watchers",
+
+linked:[
+{id:"long.executestrategy.assault.setambush.expedition.continue.watchers",
 actionId:"longassault",
+label:"An Additional Complication",
 startdescription:"Our enemy has paid locals to watch the place.",
-requirements:{guardian_watchers:-1},
-mutations:[{mutate:guardian_watchers,level:1,filter:vault}],
+requirements:{guardian_watchers:-1,guardian_watchers_pre:-1},
+mutations:[{mutate:guardian_watchers_pre,level:1,filter:vault}],
 },
+
 {id:"long.executestrategy.assault.setambush.expedition.continue.monks",
 actionId:"longassault",
+label:"An Additional Complication",
 startdescription:"Our enemy has sent their sworm servants to guard the place.",
-requirements:{guardian_monks:-1},
-mutations:[{mutate:guardian_monks,level:1,filter:vault}],
+requirements:{guardian_monks:-1,guardian_monks_pre:-1},
+mutations:[{mutate:guardian_monks_pre,level:1,filter:vault}],
 },
+
 {id:"long.executestrategy.assault.setambush.expedition.continue.dead",
 actionId:"longassault",
-requirements:{guardian_dead:-1},
+label:"An Additional Complication",
+requirements:{guardian_dead:-1,guardian_dead_pre:-1},
 startdescription:"Our enemy has set the Dead to guard the place.",
-mutations:[{mutate:guardian_dead,level:1,filter:vault}],
+mutations:[{mutate:guardian_dead_pre,level:1,filter:vault}],
 },
+
 {id:"long.executestrategy.assault.setambush.expedition.continue.serpent",
 actionId:"longassault",
-requirements:{guardian_serpent:-1},
+label:"An Additional Complication",
+requirements:{guardian_serpent:-1,guardian_serpent_pre:-1},
 startdescription:"Our enemy has raised up a Serpent to guard the place.",
-mutations:[{mutate:guardian_serpent,level:1,filter:vault}]}],
-warmup:10
+mutations:[{mutate:guardian_serpent_pre,level:1,filter:vault}],
+warmup:1}
+]
 },
 
 
