@@ -64,7 +64,7 @@
         actionId: "illhealth",
         extantreqs: {apostlegrail.pillar2.dormant:1},
 				slots: [{id:"Affliction",
-					required: {health: 1,follower_wound:1,fatigue:1,apostlegrail.pillar2:1},
+					required: {health: 1,fatigue:1,apostlegrail.pillar2:1},
 					greedy: true
 		}],
 		aspects:{fallsick:1},
