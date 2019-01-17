@@ -86,7 +86,7 @@ linked:[{id:"longassault.assassination.continue"}]},
 
 
 {id:"longassault.assassination.murderskill.succeed",
-actionId:"long",
+actionId:"longassault.assassination",
 label:"The Broken Barb",
 requirements:{murderskill:1},
 startdescription:"They should have known better than to set their strength against mine. They were owed a death, but I have paid them in their own blood.",
@@ -94,7 +94,7 @@ warmup:30,
 effects:{long.lesson.might:1}},
 
 {id:"longassault.assassination.murderskill.failure",
-actionId:"long",
+actionId:"longassault.assassination",
 label:"A Scarred Respite",
 requirements:{murderskill:1},
 startdescription:"I have won a breathing space, but they are too strong for me. My strength is broken.",
