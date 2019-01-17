@@ -154,14 +154,16 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.assault:1},
 xtriggers:{revealstrategy:strategy.assault.revealed},
-lifetime:1
+lifetime:1,
+icon:"strategy.unknown"
 },
 {id:"strategy.intrigue.concealed",
 label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.intrigue:1},
 xtriggers:{revealstrategy:strategy.intrigue.revealed},
-lifetime:1
+lifetime:1,
+icon:"strategy.unknown"
 
 },
 {id:"strategy.dreams.concealed",
@@ -169,7 +171,8 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.dreams:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
-lifetime:1
+lifetime:1,
+icon:"strategy.unknown"
 
 },
 {id:"strategy.downtime.concealed",
@@ -177,7 +180,8 @@ label:"The Long's Plans",
 description:"The Long is planning their next action against us. If we send a spy, we might be able to discover something of their intentions.",
 aspects:{intention.downtime:1},
 xtriggers:{revealstrategy:strategy.downtime.revealed},
-lifetime:1
+lifetime:1,
+icon:"strategy.unknown"
 
 },
 
