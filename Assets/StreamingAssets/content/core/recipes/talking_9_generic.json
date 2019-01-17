@@ -301,9 +301,9 @@ craftable: true
         label: "A New Beginning?",
         actionId: "talk",
         requirements: {acquaintance:1,ritual:-1,location:-1},
+		extantreqs:{society:-1},
         craftable: true,
 		startdescription:"Together, we might be more.",
-		maxexecutions: 1,
 		comments:"This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
 		linked:[{id:"begincultfoundation_createcult", chance:100}]
     },
@@ -311,7 +311,7 @@ craftable: true
 	{
         id: "begincultfoundation_createcult",
         label: "Found a Mystical Organisation",
-		requirements:{society:-1},
+		extantreqs:{society:-1},
 		alternativerecipes:
 		[{id: "cultfoundation", chance:100, additional: true}],
         actionId: "talk",
