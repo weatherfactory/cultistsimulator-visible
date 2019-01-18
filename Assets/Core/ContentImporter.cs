@@ -1368,7 +1368,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             if (thisElement.IsAspect )
             {
-                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(thisElement.Icon) == null || ResourcesManager.GetSpriteForAspect(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingAspectImages += (" " + k);
                     missingAspectImageCount++;
