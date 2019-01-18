@@ -243,7 +243,10 @@ public class Compendium : ICompendium
 
         if (endingFlag == "majorgrailvictory")
             return new Ending(endingFlag, "THE FEAST FULFILL'D",
-                "[THIS IS PLACEHOLDER TEXT UNTIL THE FULL RELEASE.]"
+                "I have been the keystone of a sumptuous event, and even as I am scattered I know joy. " +
+                "My Delight will dwell forever in the chambers of the Grail, as they so ripely deserve, and I will live nowhere at all, " +
+                "where the Applebright has found me. She has gathered my last few fragments to caress and console " +
+                "and restore in her rich baskets of nutritions, and she promises me that sometimes, when she is the Witch and I am inside her, she will show me the world again."
                 , "flowermaker", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MAJORGRAILVICTORY");
 
 

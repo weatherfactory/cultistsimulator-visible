@@ -23,10 +23,17 @@
 	   effects:{funds:-1,bid:1},
 	   warmup:0,
 	   linked:[
+	   {id:"auctionbidmatched.grailapostlepillar3"},
 	   {id:"auctionsuccess",chance:70},
 	   {id:"auctionbidmatched",chance:100}
 	   ]
 	   },
+
+{id:"auctionbidmatched.grailapostlepillar3",
+actionId:"explore",
+requirements:{bid:-6,apostlegrail.pillar3:1},
+linked:[{id:"auctionbidmatched"}]},
+	   
 	   {id:"auctionbidmatched",
 	   label: "Another bidder!",
 	   actionId:"explore",
@@ -40,8 +47,8 @@
 	   {id:"auctionfailure",
 	   actionId:"explore",
 	   label: "I haven't won the auction",
-	   		effects:{text:-1,tool:-1},
-comments:"Tools might subsequently be offered as purchases; in particular, they are right now in a Grail Apostle plot recipe.",
+	   		effects:{text:-1,tool:-1,ingredient:-1},
+comments:"Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
 		aspects: {restore:1},
 		startdescription:".",
 		description:"The auction is over. The lot has gone on elsewhere. I retain my funds.",
