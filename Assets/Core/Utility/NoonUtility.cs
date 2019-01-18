@@ -107,6 +107,12 @@ namespace Noon
         public const string LEVER_PREFIX = "LEVER_";
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
+
+        public const string A_ENDING_MAJORFORGEVICTORY = "A_ENDING_MAJORFORGEVICTORY";
+        public const string A_ENDING_MAJORGRAILVICTORY = "A_ENDING_MAJORGRAILVICTORY";
+        public const string A_ENDING_MAJORLANTERNVICTORY = "A_ENDING_MAJORLANTERNVICTORY";
+
+        public const string A_ENDING_MAJORVICTORYGENERIC = "A_MANSUS_TRICUSPIDGATE";
     }
 
     public enum VerbosityLevel

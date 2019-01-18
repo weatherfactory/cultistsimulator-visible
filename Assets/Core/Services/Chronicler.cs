@@ -95,6 +95,9 @@ namespace Assets.Core.Services
 
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
             storefrontServicesProvider.SetAchievementForCurrentStorefronts(ending.AchievementId, true);
+
+            if(ending.AchievementId==NoonConstants.A_ENDING_MAJORFORGEVICTORY || ending.AchievementId == NoonConstants.A_ENDING_MAJORGRAILVICTORY || ending.AchievementId == NoonConstants.A_ENDING_MAJORLANTERNVICTORY)
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts(NoonConstants.A_ENDING_MAJORVICTORYGENERIC, true);
         }
 
         public void ChronicleGameEnd(List<SituationController> situations, List<IElementStacksManager> stacksManagers,Ending ending)
