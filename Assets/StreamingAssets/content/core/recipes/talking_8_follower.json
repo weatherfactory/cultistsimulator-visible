@@ -833,7 +833,7 @@ label:"A Desperate Attempt",
 	  actionId:"talk",
 	  startdescription:"My Believer will struggle to abduct a victim, but they may be lucky.",
 	  requirements: {society:1,edge:1,follower:1},
-	  linked: [{id:"followeraction_abductsuccess",chance:3},
+	  linked: [{id:"followeraction_abductsuccess",chance:30},
 	  {id:"followeraction_abductfailure",chance:100}
 	  ]
 	  },
