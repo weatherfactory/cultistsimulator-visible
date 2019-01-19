@@ -673,6 +673,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 else
                     v.PrimarySlotSpecification = slots.First();
             }
+
+            
             Verbs.Add(v.Id, v);
         }
 
@@ -832,7 +834,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     htEachLegacy[NoonConstants.KIMAGE].ToString(),
                     htEachLegacy[NoonConstants.KFROMENDING].ToString(),
                     availableWithoutEndingMatch,
-                    excludesOnEnding
+                    excludesOnEnding,
+                    htEachLegacy[NoonConstants.KSTARTINGVERBID].ToString()
                 );
 
                 Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);

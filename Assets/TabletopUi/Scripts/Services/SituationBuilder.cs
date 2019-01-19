@@ -22,21 +22,20 @@ namespace Assets.TabletopUi.Scripts.Services {
 			this._heart = heart;
         }
 
-        public void CreateInitialTokensOnTabletop() {
+        public void CreateInitialTokensOnTabletop(Legacy legacy) {
             float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
 
             // build verbs
-            var verbs = Registry.Retrieve<ICompendium>().GetAllVerbs().Where(v => v.AtStart).ToList();
-
-            for (int i = 0; i < verbs.Count; i++) {
-                IVerb v = verbs[i];
+            IVerb v = Registry.Retrieve<ICompendium>().GetVerbById(legacy.StartingVerbId);
+               
+ 
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
                 var situationToken = CreateTokenWithAttachedControllerAndSituation(command);
 
-                situationToken.transform.localPosition = new Vector3(-700f + sTokenHorizSpace, 200f - i * sTokenVertiSpace);
-                //replace with locatorinfo
-            }
+                situationToken.transform.localPosition = new Vector3(-700f + sTokenHorizSpace, 200f -(0*sTokenVertiSpace));
+                //this is left over from when we sometimes started with multiple verbs in a new legacy; those days might come again ofc, so I'm leaving the formula in
+
         }
 
         public SituationToken CreateTokenWithAttachedControllerAndSituation(SituationCreationCommand situationCreationCommand, string locatorInfo = null) {

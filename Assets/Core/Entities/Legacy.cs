@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.TabletopUi.SlotsContainers;
 
 namespace Assets.Core.Entities
 {
@@ -26,10 +27,10 @@ namespace Assets.Core.Entities
         public bool AvailableWithoutEndingMatch { get; set; }
         public IAspectsDictionary Effects;
         public List<string> ExcludesOnEnding;
-
+public string StartingVerbId { get; private set; }
 
         public Legacy(string id, string label, string description, string startdescription, string image,
-            string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding)
+            string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding,string startingVerbId)
         {
             Id = id;
             Label = label;
@@ -40,6 +41,13 @@ namespace Assets.Core.Entities
             FromEnding = fromEnding;
             AvailableWithoutEndingMatch = availableWithoutEndingMatch;
             ExcludesOnEnding = excludesOnEnding;
+
+            if (string.IsNullOrEmpty(startingVerbId))
+                StartingVerbId = "work";
+            else
+                StartingVerbId = startingVerbId; //hack in case someone has outdated DLC json that doesn't specify startingverbid
+            //which they shouldn't, but you never know right
+
         }
     }
 }

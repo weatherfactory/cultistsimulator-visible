@@ -8,7 +8,8 @@ What now? Could I become something more?",
 effects: {introjob:1},
 image: "aspirant",
 fromEnding:"default",
-availableWithoutEndingMatch:true
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
 },
 {id: "brightyoungthing",
 label: "Bright Young Thing",
@@ -17,7 +18,8 @@ startdescription: "I missed the dawn. I generally do. There'll be plenty more.",
 effects: {legacybytjob:1,health:1},
 image: "byt",
 fromEnding:"deathofthebody",
-availableWithoutEndingMatch:true
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
 },
 {id: "physician",
 label: "Physician",
@@ -26,7 +28,8 @@ startdescription: "Today is the day I return to my post at the Institute. I have
 effects: {legacyphysicianjob:1,reason:1},
 image: "physician",
 fromEnding:"deathofthebody",
-availableWithoutEndingMatch:true
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
 },
 {id: "detective",
 label: "Detective",
@@ -35,7 +38,8 @@ startdescription: "I have ended the careers of thieves, murderers, blackmailers,
 effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
 fromEnding:"arrest",
-availableWithoutEndingMatch:true
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
 },
 {id: "detectivepostpromotion",
 label: "Detective",
@@ -45,7 +49,8 @@ effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
 fromEnding:"workvictoryb",
 availableWithoutEndingMatch:false,
-excludesOnEnding: ["detective"]
+excludesOnEnding: ["detective"],
+startingVerbId:"work"
 },
 {id: "apostleforge",
 label: "Apostle Aestuant",
@@ -54,7 +59,8 @@ description: "Our Great Shaper is grown powerful - and they have powerful enemie
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
 fromEnding:"minorforgevictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 {id: "apostlegrail",
 label: "Apostle Obsonate",
@@ -63,7 +69,8 @@ description: "Our Delight is grown powerful - and they have powerful enemies. Th
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
 fromEnding:"minorgrailvictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 {id: "apostlelantern",
 label: "Apostle Entheate",
@@ -72,7 +79,8 @@ description: "I don't remember what happened. I don't remember who I am. But the
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
 fromEnding:"minorlanternvictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
 {id: "apostleforgewithrisen",
@@ -82,7 +90,8 @@ description: "Our Great Shaper is grown powerful - and they have powerful enemie
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
 fromEnding:"_minorforgevictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 {id: "apostlegrailwithrisen",
 label: "Apostle Obsonate",
@@ -91,7 +100,8 @@ description: "Our Delight is grown powerful - and they have powerful enemies. Th
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
 fromEnding:"_minorgrailvictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 {id: "apostlelanternwithrisen",
 label: "Apostle Entheate",
@@ -100,7 +110,8 @@ description: "I don't remember what happened. I don't remember who I am. But the
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
 fromEnding:"_minorlanternvictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
 
@@ -112,7 +123,8 @@ startdescription: "--",
 effects: {funds:5},
 image: "moth",
 fromEnding:"_workvictory",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 {id: "priest",
 label: "Priest",
@@ -121,7 +133,8 @@ startdescription: "--",
 effects: {passion:1},
 image: "moth",
 fromEnding:"_despairending",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
 {id: "medium",
@@ -131,7 +144,8 @@ startdescription: "--",
 effects: {introjob:1},
 image: "moth",
 fromEnding:"_visionsending",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
 {id: "survivor",
@@ -141,38 +155,10 @@ startdescription: "Haunted starting note",
 effects: {introjob:1},
 image: "moth",
 fromEnding:"_wintersacrifice",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
-
-
-{id: "vessel",
-label: "Vessel",
-description: "--",
-startdescription: "--",
-effects: {introjob:1},
-image: "moth",
-fromEnding:"_minorlanternvictory",
-availableWithoutEndingMatch:false
-},
-{id: "tainted",
-label: "Vessel",
-description: "--",
-startdescription: "--",
-effects: {introjob:1},
-image: "moth",
-fromEnding:"_minorgrailvictory",
-availableWithoutEndingMatch:false
-},
-{id: "shaped",
-label: "Vessel",
-description: "--",
-startdescription: "--",
-effects: {introjob:1},
-image: "moth",
-fromEnding:"_minorforgevictory",
-availableWithoutEndingMatch:false
-},
 {id: "cousin",
 label: "Cousin",
 description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
@@ -180,7 +166,8 @@ startdescription: "Inheritor starting note",
 effects: {introjob:1},
 image: "knock",
 fromEnding:"_",
-availableWithoutEndingMatch:false
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
 },
 
 

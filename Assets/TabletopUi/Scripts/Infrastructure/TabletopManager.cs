@@ -354,10 +354,13 @@ namespace Assets.CS.TabletopUI {
         public void SetupNewBoard(SituationBuilder builder) {
 
 
-            builder.CreateInitialTokensOnTabletop();
+     
             Character _character = Registry.Retrieve<Character>();
             if(_character.ActiveLegacy==null)
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
+
+            builder.CreateInitialTokensOnTabletop(_character.ActiveLegacy);
+
             ProvisionStartingElements(_character.ActiveLegacy, Registry.Retrieve<Choreographer>());
             SetStartingCharacterInfo(_character.ActiveLegacy);
             StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());

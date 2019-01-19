@@ -12,6 +12,7 @@ namespace Noon
 {
     public class NoonConstants
     {
+        public const string KSTARTINGVERBID = "startingVerbId";
         public const string KCHARACTERSTATE = "state";
         public const string KLINKED="linked";
         public const string KENDING="ending";
