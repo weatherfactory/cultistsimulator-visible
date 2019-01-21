@@ -133,9 +133,8 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "I will bear a scar, of the kind that one day might be photographed for a museum. And the neighbours will talk; how they will talk..",
-	  aspects: {damagehealth:1},
-	 effects: {notoriety:1},
-	 aspects:{killsummoned:1}
+	  aspects: {damagehealth:1,killsummoned:1},
+	 effects: {notoriety:1}
 	  
 	  },
 	  	  	 {id: "devourer_haunting_damageshealth_failure",
@@ -212,9 +211,8 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:".",
 	  description: "The events of that night will live long in your memory; and for days, the newspapers question residents of the district.",
-	  aspects: {damagereason:1},
-	 effects: {notoriety:1},
-	 aspects:{killsummoned:1}
+	  aspects: {damagereason:1,killsummoned:1},
+	 effects: {notoriety:1}
 	  
 	  },
 	  	  	 {id: "deceiver_haunting_reason_failure",
