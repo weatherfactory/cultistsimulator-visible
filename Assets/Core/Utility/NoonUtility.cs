@@ -69,6 +69,7 @@ namespace Noon
         public static string KLIMIT = "limit";
         public static string KFILTER = "filter";
         public static string KCHALLENGES="challenges";
+        public static string DEFAULT_STARTING_VERB_ID="work";
 
         public const string KINDUCES = "induces";
 

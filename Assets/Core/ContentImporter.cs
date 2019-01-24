@@ -827,6 +827,10 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 if (htEachLegacy.ContainsKey(NoonConstants.KEXCLUDESONENDING))
                     excludesOnEnding = htEachLegacy.GetArrayList(NoonConstants.KEXCLUDESONENDING).Cast<string>().ToList();
 
+                string startingVerbId = string.Empty;
+                if (htEachLegacy.ContainsKey(NoonConstants.KSTARTINGVERBID))
+                    startingVerbId = htEachLegacy[NoonConstants.KSTARTINGVERBID].ToString();
+
                 Legacy l = new Legacy(legacyId,
                     htEachLegacy[NoonConstants.KLABEL].ToString(),
                     htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
@@ -835,7 +839,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     htEachLegacy[NoonConstants.KFROMENDING].ToString(),
                     availableWithoutEndingMatch,
                     excludesOnEnding,
-                    htEachLegacy[NoonConstants.KSTARTINGVERBID].ToString()
+                    startingVerbId
                 );
 
                 Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
