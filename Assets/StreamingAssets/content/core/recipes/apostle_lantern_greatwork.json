@@ -8,9 +8,21 @@ startdescription: "The dream, again.",
 effects:{apostlelantern.pillarfuel:1}
 },
 
+{id:"work.apostlelantern.majorvictory.postbetrayal",
+actionId:"work",
+label:"And Yet, The Gate Opens Outwards",
+extantreqs:{apostlelantern.mentor:-1},
+startdescription:"The Watchman is here in all his knifely radiance, but even he will stand aside for the Key of Days. I have closed the door in my eye, but I cannot forget. My path was ordained before I ever saw true light.  The Witnesses and I are prepared - prepared for the Glory to enter the Mansus from the other side. The dreams of the innocent are not so prepared. Hundreds of souls will never wake. There is always a price, and it is essential that our Illuminated One navigates; that they illuminate; that they are not compassionate.",
+requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1,toollanternf:1,kleidouchos:1,promise:1},
+warmup:60,
+craftable:true,
+ending:majorlanternvictory
+},
+
 {id:"work.apostlelantern.majorvictory",
 actionId:"work",
 label:"The Gate Opens Outwards",
+extantreqs:{apostlelantern.mentor:1},
 startdescription:"The Watchman is here in all his knifely radiance, but even he will stand aside for the Key of Days. The Witnesses and I are prepared - prepared for the Glory to enter the Mansus from the other side. The dreams of the innocent are not so prepared. Hundreds of souls will never wake. There is always a price, and it is essential that our Illuminated One navigates; that they illuminate; that they are not compassionate.",
 requirements:{apostlelantern.pillar3:1,apostlelantern.pillar4:1,ingredientlanternf:1,fragmentmothe:1,toollanternf:1,kleidouchos:1,promise:1},
 warmup:60,
