@@ -64,7 +64,7 @@ xtriggers:{sabotage.repair:apostleforge.pillar2.dormant}
 	},
 			{id: "apostleforge.pillar2.sabotaged",
 label: "Sabotaged Dawnbreaker Core",
-description: "|A flaring tangle of bent metal. A blazing mote of solar fire quivers fitfully within. We must repair it before it collapses altogether!",
+description: "A flaring tangle of bent metal. A blazing mote of solar fire quivers fitfully within. We must repair it before it collapses altogether!",
 aspects:{tool:1,greatwork.sabotaged:1},
 xtriggers:{sabotage.repair:apostleforge.pillar2}
 	},
@@ -214,7 +214,7 @@ aspects:{summoned:1}
 	label: "The First Dream",
 	description: "The dreams have hollowed me out like a withered oak, and now I am almost ready.",
 	aspects: {job:1},
-	icon:apostlelantern.pillar1
+	icon:"apostlelantern.pillar1"
 	},
 
 {id: "apostlelantern.pillarfuel",
@@ -269,7 +269,7 @@ icon:apostlelantern.pillar4
 	},
 		{id: "apostlelantern.pillar4.inprogress3",
 label: "The Witnesses: Three of Seven",
-description: "Their faces are blanker than ever, but they have taken each others' hands",
+description: "Their faces are blanker than ever, but they have taken each others' hands.",
 aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
