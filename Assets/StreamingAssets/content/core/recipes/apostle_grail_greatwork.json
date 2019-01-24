@@ -8,12 +8,22 @@ startdescription: "A courier has arrived from our Delight, with a single vial of
 effects:{apostlegrail.pillarfuel:1}
 },
 
-
+{id:"work.apostlegrail.majorvictory.postbetrayal",
+actionId:"work",
+label:"Nevertheless, the Vitulation",
+extantreqs:{apostlegrail.mentor:-1},
+startdescription:"To join with the Grail, our Delight must give life and take life and be not sated. So it is that I am the centrepiece of the Vitulation. A child of the Delight's body would fulfil the requirement, but one cannot enter the Mansus in triumph when one has committed the Crime of the Sky. So it is me, and after all despite Tryphon's temptations I will submit to the binding and to Marinette's marinations, and the Seven Graces and the Three Savours overwhelm me, and when the first mouthful is taken, almost I do not feel it; almost I do not feel it at all.",
+requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1,grailflavour:1,heartflavour:1,mothflavour:1},
+warmup:60,
+craftable:true,
+ending:majorgrailvictory
+},
 
 
 {id:"work.apostlegrail.majorvictory",
 actionId:"work",
 label:"The Last Elements of the Vitulation",
+extantreqs:{apostlegrail.mentor:1},
 startdescription:"To join with the Grail, our Delight must give life and take life and be not sated. So it is that I am the centrepiece of the Vitulation. A child of the Delight's body would fulfil the requirement, but one cannot enter the Mansus in triumph when one has committed the Crime of the Sky. So it is me, and I submit to the binding and to Marinette's marinations, and the Seven Graces and the Three Savours overwhelm me, and when the first mouthful is taken, almost I do not feel it; almost I do not feel it at all.",
 requirements:{fragmentheartg:1,influencegrailg:1,apostlegrail.pillar2:1,apostlegrail.pillar3:1,apostlegrail.pillar4:1,toolgrailf:1,grailflavour:1,heartflavour:1,mothflavour:1},
 warmup:60,

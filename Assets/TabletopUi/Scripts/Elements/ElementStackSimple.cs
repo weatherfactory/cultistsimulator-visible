@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void DisplayIcon() {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
+            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)

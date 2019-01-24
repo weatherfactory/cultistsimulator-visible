@@ -8,12 +8,24 @@ startdescription: "Our Shaper has favoured us with guidance. We should use it to
 effects:{apostleforge.pillarfuel:1}
 },
 
+{id:"work.apostleforge.majorvictory.postbetrayal",
+actionId:"work",
+label:"Nevertheless, the Great Work Continues",
+extantreqs:{apostleforge.mentor:-1},
+startdescription:"TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will return to our Shaper's side. I made my choice long ago. I will be consumed.",
+description:"",
+requirements:{fragmentknockg:1,influenceforgeg:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
+warmup:60,
+craftable:true,
+ending:majorforgevictory
+},
 
 
 
 {id:"work.apostleforge.majorvictory",
 actionId:"work",
 label:"The Last Pieces of the Great Work",
+extantreqs:{apostleforge.mentor:1},
 startdescription:"TO REMAKE WITH FIRE; TO END WHAT WILL NOT CHANGE; TO END ALL NIGHTS. As the Dawnbreaker begins to spin, the rotation of the Earth will slow, minutely. Echidna will bear the key in her taloned hands. The Compass will speak their last words. Blue Gold will burn. The Savage Door will open. Our Shaper will enact the Forge. And I; I will be consumed.",
 description:"",
 requirements:{fragmentknockg:1,influenceforgeg:1,apostleforge.pillar2:1,apostleforge.pillar3:1,apostleforge.pillar4:1,apostleforge.pillar5:1},
