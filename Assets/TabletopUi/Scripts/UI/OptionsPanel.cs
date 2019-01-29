@@ -354,7 +354,8 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove");
     }
 
-    public void SetBirdWorm(float value) {
+    public void SetBirdWorm(float value)
+	{
         PlayerPrefs.SetFloat(NoonConstants.BIRDWORMSLIDER, value);
 		RefreshOptionsText();
 
@@ -366,12 +367,12 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetHighContrast(float value)
 	{
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-
-        PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
-		RefreshOptionsText();
+		PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
 		SetHighContrastInternal(value);
+		RefreshOptionsText();
+
+		if (gameObject.activeInHierarchy == false)
+            return; // don't update anything if we're not visible.
 
 		SoundManager.PlaySfx("UISliderMove");
     }
