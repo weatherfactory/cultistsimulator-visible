@@ -659,7 +659,7 @@ namespace Assets.CS.TabletopUI {
 			if (targetSlots!=null && targetSlots.Count > 0)
 			{
 				TabletopUi.TokenAndSlot selectedSlot = null;
-				float selectedSlotDist = 999999.9f;
+				float selectedSlotDist = float.MaxValue;
 
 				// Find closest token to stack
 				foreach (TabletopUi.TokenAndSlot tokenpair in targetSlots)
