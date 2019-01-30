@@ -245,29 +245,23 @@ namespace Assets.CS.TabletopUI {
         /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source)
 		{
-			#if DROPZONE
-			if (elementId == "dropzone")
-			{
-				CreateDropZone( );
-				return;
-			}
-			#endif
-
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
-            if(_element==null)
-            NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
+            if (_element==null)
+			{
+				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
+			}
 
             InitialiseIfStackIsNew();
 
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
-            if(_element.Unique)
+            if (_element.Unique)
                 dealer.IndicateUniqueCardManifested(_element.Id);
-            if(!String.IsNullOrEmpty(_element.UniquenessGroup))
+            if (!String.IsNullOrEmpty(_element.UniquenessGroup))
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
-
-            try {
+            try
+			{
                 SetQuantity(quantity); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
@@ -288,9 +282,18 @@ namespace Assets.CS.TabletopUI {
 
                 StackSource = source;
 
-
+				#if DROPZONE
+				// Refactored for safety. Custom class was crashing all over the shop because it didn't reliably inherit from ElementStackToken
+				// and many card properties are just expected to be valid. Instead, we create a normal but useless card ("dropzone" in tools.json)
+				// and just customise it's appearance.
+				if (elementId == "dropzone")
+				{
+					CustomizeDropZone();
+				}
+				#endif
             }
-            catch (Exception e) {
+            catch (Exception e)
+			{
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(false);
             }
@@ -329,14 +332,13 @@ namespace Assets.CS.TabletopUI {
                 originStack.MergeIntoStack(this);
                 return;
             }
-            // If we're not unique and we've never been on the table, auto-merge us!
-            else if (lastTablePos == null)
+            else
 			{
                 var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
-				if (!_element.Unique)
+				if (!_element.Unique)            // If we're not unique, auto-merge us!
 				{
 					//check if there's an existing stack of that type to merge with
 					foreach (var stack in existingStacks)
@@ -350,41 +352,57 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 			
+				if (lastTablePos == null)	// If we've never been on the tabletop, use the drop zone
+				{
 				#if DROPZONE
-				// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-				lastTablePos = Vector2.zero;
-				DraggableToken	dropZoneObject = null;
-				Vector3			dropZoneOffset = new Vector3(80f,-50f,0f);
-
-				foreach (var stack in existingStacks)
-				{
-					DraggableToken tok = stack as DraggableToken;
-					if (tok!=null && tok.EntityId == "dropzone")
-					{
-						dropZoneObject = tok;
-						break;
-					}
-				}
-				if (dropZoneObject == null)
-				{
-					dropZoneObject = CreateDropZone();		// Create drop zone now and add to stacks
-				}
-
-				if (dropZoneObject != null)	// Position card near dropzone
-				{
-					lastTablePos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
-				}
+					// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+					lastTablePos = GetDropZoneSpawnPos();
 				#endif
+				}
 			}
 
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
         }
 
+		public Vector2 GetDropZoneSpawnPos()
+		{
+			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var stackManager = tabletop._tabletop.GetElementStacksManager();
+			var existingStacks = stackManager.GetStacks();
+
+			Vector2 spawnPos = Vector2.zero;
+			DraggableToken	dropZoneObject = null;
+			Vector3			dropZoneOffset = new Vector3(0f,0f,0f);
+
+			foreach (var stack in existingStacks)
+			{
+				DraggableToken tok = stack as DraggableToken;
+				if (tok!=null && tok.EntityId == "dropzone")
+				{
+					dropZoneObject = tok;
+					break;
+				}
+			}
+			if (dropZoneObject == null)
+			{
+				dropZoneObject = CreateDropZone();		// Create drop zone now and add to stacks
+			}
+
+			if (dropZoneObject != null)	// Position card near dropzone
+			{
+				spawnPos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
+			}
+			
+			return spawnPos;	
+		}
+
 		private DraggableToken CreateDropZone()
 		{
 			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
-			var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
+			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
+			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
+			newCard.Populate("dropzone", 1, Source.Fresh());
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             newCard.transform.position = Vector3.zero;
@@ -398,6 +416,51 @@ namespace Assets.CS.TabletopUI {
             //newCard.transform.position = position;
             newCard.transform.localScale = Vector3.one;
             return newCard as DraggableToken;
+		}
+
+		private void CustomizeDropZone()		// Customises self!
+		{
+			// Customize appearance of card to make it distinctive
+			// First hide normal card elements
+			Transform oldcard = transform.Find( "Card" );
+			Transform oldglow = transform.Find( "Glow" );
+			Transform oldshadow = transform.Find( "Shadow" );
+			if (oldcard)
+			{
+				oldcard.gameObject.SetActive( false );
+			}
+			if (oldglow)
+			{
+				oldglow.gameObject.SetActive( false );
+			}
+			if (oldshadow)
+			{
+				oldshadow.gameObject.SetActive( false );
+			}
+
+			// Now create an instance of the dropzone prefab parented to this card
+			// This way any unused references are still pointing at the original card data, so no risk of null refs.
+			// It's a bit hacky, but it's now a live project so refactoring the entire codebase to make it safe is high-risk.
+			TabletopManager tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+
+			GameObject zoneobj = GameObject.Instantiate( tabletop._dropZoneTemplate, transform );
+			Transform newcard = zoneobj.transform.Find( "Card" );
+			Transform newglow = zoneobj.transform.Find( "Glow" );
+			Transform newshadow = zoneobj.transform.Find( "Shadow" );
+
+			glowImage = newglow.gameObject.GetComponent<GraphicFader>() as GraphicFader;
+			newglow.gameObject.SetActive( false );
+			shadow = newshadow.gameObject;
+
+			// Modify original card settings
+			useDragOffset = true;	// It's huge and we can only grab it at the corner
+			LayoutElement lay = GetComponent<LayoutElement>() as LayoutElement;
+			if (lay)
+			{
+				lay.preferredWidth = 0f;	// Do not want this zone to interact with cards at all
+				lay.preferredHeight = 0f;
+			}
+			NoPush = true;
 		}
 
         private bool IsOnTabletop() {
@@ -598,7 +661,7 @@ namespace Assets.CS.TabletopUI {
 			if (targetSlots!=null && targetSlots.Count > 0)
 			{
 				TabletopUi.TokenAndSlot selectedSlot = null;
-				float selectedSlotDist = 999999.9f;
+				float selectedSlotDist = float.MaxValue;
 
 				// Find closest token to stack
 				foreach (TabletopUi.TokenAndSlot tokenpair in targetSlots)

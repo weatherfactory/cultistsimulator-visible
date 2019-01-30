@@ -65,7 +65,11 @@ namespace Assets.CS.TabletopUI {
         Transform tableLevelTransform;
         [SerializeField]
         Transform windowLevelTransform;
-        [SerializeField] private ScrollRect tableScroll;
+        [SerializeField]
+		private ScrollRect tableScroll;
+		[SerializeField]
+		public GameObject _dropZoneTemplate;
+
 
         [Header("Options Bar & Notes")]
         [SerializeField]

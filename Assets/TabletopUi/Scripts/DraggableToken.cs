@@ -80,6 +80,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool Defunct { get; protected set; }
         public bool IsInAir { protected set; get; }
+		public bool NoPush { protected set; get; }
 
         protected virtual bool AllowsDrag() {
             return !IsBeingAnimated;
