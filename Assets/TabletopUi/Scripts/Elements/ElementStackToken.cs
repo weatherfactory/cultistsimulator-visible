@@ -332,14 +332,13 @@ namespace Assets.CS.TabletopUI {
                 originStack.MergeIntoStack(this);
                 return;
             }
-            // If we're not unique and we've never been on the table, auto-merge us!
-            else if (lastTablePos == null)
+            else
 			{
                 var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
-				if (!_element.Unique)
+				if (!_element.Unique)            // If we're not unique, auto-merge us!
 				{
 					//check if there's an existing stack of that type to merge with
 					foreach (var stack in existingStacks)
@@ -353,10 +352,13 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 			
+				if (lastTablePos == null)	// If we've never been on the tabletop, use the drop zone
+				{
 				#if DROPZONE
-				// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
-				lastTablePos = GetDropZoneSpawnPos();
+					// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
+					lastTablePos = GetDropZoneSpawnPos();
 				#endif
+				}
 			}
 
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
