@@ -742,8 +742,12 @@ namespace Assets.CS.TabletopUI {
             return CanMergeWith(stackDroppedOn);
         }
 
-        bool CanMergeWith(IElementStack stack) {
-            return stack.EntityId == this.EntityId && stack.AllowsIncomingMerge() && this.AllowsOutgoingMerge();
+        bool CanMergeWith(IElementStack stack)
+		{
+            return	stack.EntityId == this.EntityId &&
+					(stack as ElementStackToken) != this &&
+					stack.AllowsIncomingMerge() &&
+					this.AllowsOutgoingMerge();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
