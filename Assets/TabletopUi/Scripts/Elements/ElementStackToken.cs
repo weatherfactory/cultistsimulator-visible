@@ -1,5 +1,5 @@
 ﻿#pragma warning disable 0649
-//#define DROPZONE
+#define DROPZONE
 
 using System;
 using System.Collections.Generic;
