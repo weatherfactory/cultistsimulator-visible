@@ -846,7 +846,8 @@ namespace Assets.CS.TabletopUI {
             _mapController.ShowMansusMap(origin, true);
         }
 
-        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard) {
+        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
+		{
             DraggableToken.CancelDrag();
             LockSpeedController(false);
             FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
@@ -863,6 +864,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("MansusExit");
 
             // Put card into the original Situation Results
+			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
