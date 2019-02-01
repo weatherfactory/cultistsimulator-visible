@@ -51,6 +51,12 @@ namespace Assets.CS.TabletopUI {
         private Element _element;
         private int _quantity;
 
+		// Cache aspect lists because they are EXPENSIVE to calculate repeatedly every frame - CP
+		private IAspectsDictionary _aspectsDictionaryInc;		// For caching aspects including self 
+		private IAspectsDictionary _aspectsDictionaryExc;		// For caching aspects excluding self
+		private bool _aspectsDirtyInc = true;
+		private bool _aspectsDirtyExc = true;
+
 		// Cached data for fading decay timer nicely - CP
 		private bool decayVisible = false;
 		private Image decayBackgroundImage;
@@ -125,7 +131,8 @@ namespace Assets.CS.TabletopUI {
             base.Awake();
         }
 
-        protected void OnDisable() {
+        protected void OnDisable()
+		{
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
             artwork.overrideSprite = null;
 
@@ -139,16 +146,21 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void SetQuantity(int quantity) {
-            _quantity = quantity;
-            if (quantity <= 0) {
-                Retire(true);
-                return;
-            }
+        public void SetQuantity(int quantity)
+		{
+			_quantity = quantity;
+			if (quantity <= 0)
+			{
+				Retire(true);
+				return;
+			}
 
-            if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
-                _quantity = 1;
-            DisplayInfo();
+			if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
+			{
+				_quantity = 1;
+			}
+			_aspectsDirtyInc = true;
+			DisplayInfo();
         }
 
         public void ModifyQuantity(int change) {
@@ -180,13 +192,17 @@ namespace Assets.CS.TabletopUI {
                 if (additive)
                     _currentMutations[aspectId] += value;
                 else
-                  _currentMutations[aspectId] = value;
+					_currentMutations[aspectId] = value;
 
                 if (_currentMutations[aspectId] == 0)
                     _currentMutations.Remove(aspectId);
             }
             else
-            _currentMutations.Add(aspectId,value);
+			{
+				_currentMutations.Add(aspectId,value);
+			}
+			_aspectsDirtyExc = true;
+			_aspectsDirtyInc = true;
         }
 
 
@@ -198,19 +214,54 @@ namespace Assets.CS.TabletopUI {
 
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            IAspectsDictionary aspectsToReturn=new AspectsDictionary();
+			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			if (!tabletop._enableAspectCaching)
+			{
+				_aspectsDirtyInc = true;
+				_aspectsDirtyExc = true;
+			}
 
-            if (includeSelf)
-            {
-                aspectsToReturn.CombineAspects(_element.AspectsIncludingSelf);
-                aspectsToReturn[_element.Id] = aspectsToReturn[_element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
-            }
-            else
-                aspectsToReturn.CombineAspects(_element.Aspects);
+			if (includeSelf)
+			{
+				if (_aspectsDirtyInc)
+				{
+					if (_aspectsDictionaryInc==null)
+						_aspectsDictionaryInc=new AspectsDictionary();
+					else
+						_aspectsDictionaryInc.Clear();	// constructor is expensive
 
-            aspectsToReturn.ApplyMutations(_currentMutations);
+					_aspectsDictionaryInc.CombineAspects(_element.AspectsIncludingSelf);
+					_aspectsDictionaryInc[_element.Id] = _aspectsDictionaryInc[_element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
 
-            return aspectsToReturn;
+					_aspectsDictionaryInc.ApplyMutations(_currentMutations);
+
+					if (tabletop._enableAspectCaching)
+						_aspectsDirtyInc = false;
+
+					tabletop.NotifyAspectsDirty();
+				}
+				return _aspectsDictionaryInc;
+			}
+			else
+			{
+				if (_aspectsDirtyExc)
+				{
+					if (_aspectsDictionaryExc==null)
+						_aspectsDictionaryExc=new AspectsDictionary();
+					else
+						_aspectsDictionaryExc.Clear();	// constructor is expensive
+
+					_aspectsDictionaryExc.CombineAspects(_element.Aspects);
+
+					_aspectsDictionaryExc.ApplyMutations(_currentMutations);
+
+					if (tabletop._enableAspectCaching)
+						_aspectsDirtyExc = false;
+
+					tabletop.NotifyAspectsDirty();
+				}
+				return _aspectsDictionaryExc;
+			}
         }
 
         virtual public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
@@ -279,6 +330,8 @@ namespace Assets.CS.TabletopUI {
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 				decayBackgroundImage = decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
+				_aspectsDirtyExc = true;
+				_aspectsDirtyInc = true;
 
                 StackSource = source;
 
@@ -501,19 +554,24 @@ namespace Assets.CS.TabletopUI {
             subscribedChronicler.TokenPlacedOnTabletop(this);
         }
 
-        public override bool Retire() {
-            return Retire(defaultRetireFX);
+        public override bool Retire()
+		{
+			return Retire(defaultRetireFX);
         }
 
-        public bool Retire(bool useDefaultFX) {
-            return Retire(useDefaultFX ? defaultRetireFX : null);
+        public bool Retire(bool useDefaultFX)
+		{
+			return Retire(useDefaultFX ? defaultRetireFX : null);
         }
 
-        public bool Retire(string vfxName) {
-            if (Defunct)
-                return false;
-
-            SetStackManager(null); // Remove it from the StacksManager. It no longer exists in the model.
+        public bool Retire(string vfxName)
+		{
+			if (Defunct)
+				return false;
+			
+			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
+            SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
@@ -979,7 +1037,8 @@ namespace Assets.CS.TabletopUI {
         #endregion
 
 
-        public bool ChangeThisCardOnDesktopTo(string elementId) {
+        public bool ChangeThisCardOnDesktopTo(string elementId)
+		{
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
