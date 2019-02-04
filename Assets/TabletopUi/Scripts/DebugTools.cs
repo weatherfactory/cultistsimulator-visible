@@ -260,21 +260,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
             }
         }
         //if we didn't jump out of loop with return, above
-		Context debugContext = new Context(Context.ActionSource.Debug);
-        stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), debugContext);
-
-		// Find the card we just added and move it to the dropzone
-		existingStacks = stackManager.GetStacks();
-		foreach (var stack in existingStacks)
-        {
-            if(stack.EntityId==elementId)
-            {
-				ElementStackToken token = stack as ElementStackToken;
-				Vector2 dropPos = token.GetDropZoneSpawnPos();
-				
-	            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
-            }
-        }
+        stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
     void RemoveItem(string itemId)

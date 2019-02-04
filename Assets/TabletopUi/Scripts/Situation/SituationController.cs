@@ -261,25 +261,19 @@ namespace Assets.TabletopUi {
 
         }
 
-        public void StoreStacks(IEnumerable<IElementStack> inputStacks)
-		{
+        public void StoreStacks(IEnumerable<IElementStack> inputStacks) {
           //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
             situationWindow.DisplayStoredElements(); //displays the miniversion of the cards.
         }
 
-        public void AddToResults(ElementStackToken stack, Context context)
-		{
+        public void AddToResults(ElementStackToken stack, Context context) {
             situationWindow.GetResultsStacksManager().AcceptStack(stack, context);
             UpdateTokenResultsCountBadge();
-
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
-			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
         }
 
-        public void SituationOngoing()
-		{
+        public void SituationOngoing() {
             //var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
             situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);

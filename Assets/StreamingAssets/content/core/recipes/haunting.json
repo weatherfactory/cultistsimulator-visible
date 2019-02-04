@@ -13,7 +13,7 @@
 		{id:"summoning_haunt_devourer_eatsmortal",
 	label: "A Lurking Devourer",
 	actionId:"haunting",
-	startdescription: "Your escaped summoning haunts the district, seeking mortals to devour. [The higher the Devourer aspect, the more likely it is to harm a mortal.]",
+	startdescription: "Your escaped summoning haunts the district, seeking mortals to devour.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
@@ -33,7 +33,6 @@
 	  startdescription:"Closer with each sweep of the clock's hand, like a circling wind, like the river's coil.",
 	  description:"Death comes unseen, but not unheard.",
 	  requirements: {mortal:1,devourer:10},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:100},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
@@ -46,7 +45,6 @@
 	  startdescription:"The victim will know that something is amiss, by now. They will listen to the sounds in the night and try to make preparations.",
 	  description:". devourer_haunting_mortal_middevourer",
 	  requirements: {mortal:1,devourer:5},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:70},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
@@ -58,7 +56,6 @@
 	  startdescription:"This thing is only a moderate menace, but even a moderate menace can be lethal sometimes.",
 	  description:". devourer_haunting_mortal_lowdevourer",
 	  requirements: {mortal:1,devourer:1},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:30},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
@@ -76,7 +73,7 @@
 	   label: "An Escaped Summoning has visited Horror upon its Victim",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "The victim has survived, after all! but the story of this night will spread like a stain.",
+	  description: "The victim has survived, but the story of this night will spread like a stain.",
 	  effects: {notoriety:1},
 	  	  aspects: {killsummoned:1},
 	  },
@@ -85,16 +82,15 @@
 						{id:"summoning_haunt_devourer_damages_health",
 	label: "A Lurking Devourer",
 	actionId:"haunting",
-	startdescription: "Your escaped summoning will attempt to take something from you, before it returns to the place beneath the world's skin. [The higher the Devourer aspect, the more likely it is to damage you.]",
+	startdescription: "Your escaped summoning will take something from you, before it returns to the place beneath the world's skin.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: [{id:"consuming",label:"Consuming",required: {health:1},greedy:true}],
+	slots: [{id:"consuming",required: {health:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"devourer_haunting_damageshealth_highdevourer",chance:100},
 {id:"devourer_haunting_damageshealth_middevourer",chance:100},
 {id:"devourer_haunting_damageshealth_lowdevourer",chance:100}
 ],
-linked:[{id:"summoning_haunt_devourer_damages_health"}]
 },
 
 	
@@ -104,7 +100,6 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	  startdescription:"Is it toying with me?",
 	  description:".",
 	  requirements: {health:1,devourer:10},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:100},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],
@@ -117,7 +112,6 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	  startdescription:"There are so many ways to undo a human body. My skin feels vulnerable as an open door.",
 	  description:". devourer_haunting_damageshealth_middevourer",
 	  requirements: {health:1,devourer:5},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:70},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],
@@ -126,10 +120,9 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	 {id: "devourer_haunting_damageshealth_lowdevourer",
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
-	  startdescription:"I will watch the windows and bolt the doors and keep oak and silver by the bed. That might be sufficient.",
+	  startdescription:"I will watch the windows and bolt the doors and keep oak and silver by the bed. That might be sufficient..",
 	  description:". devourer_haunting_damageshealth_lowdevourer",
 	  requirements: {health:1,devourer:1},
-	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:30},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],

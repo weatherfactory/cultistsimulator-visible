@@ -24,6 +24,7 @@ public class Babelfish : MonoBehaviour
 #pragma warning restore 649
 	[SerializeField] private bool						highContrastEnabled = true;
 	[SerializeField] private bool						highContrastBold = true;
+	[SerializeField] private Color						highContrastColor = Color.white;
 
 
 	private Color		defaultColor;

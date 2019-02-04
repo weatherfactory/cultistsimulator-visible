@@ -79,13 +79,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- POSITIONING HELP METHODS ----------------------------
 
-        public void MoveAllTokensOverlappingWith(DraggableToken pushingToken)
-		{
-			if (pushingToken.NoPush)
-			{
-				return;
-			}
-
+        public void MoveAllTokensOverlappingWith(DraggableToken pushingToken) {
             var targetRect = GetCenterPosRect(pushingToken.RectTransform);
 			// Reduce the target Rect size to be less finnicky
 			targetRect.size = targetRect.size * 0.6f;
@@ -244,8 +238,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return true;
             if (token.IsInAir)
                 return true;
-			if (token.NoPush)
-				return true;
 
             return false;
         }

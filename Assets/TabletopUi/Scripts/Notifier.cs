@@ -59,12 +59,7 @@ namespace Assets.CS.TabletopUI {
         // Token Details
 
         // Variant to link to token decay
-        public void ShowCardElementDetails(Element element, ElementStackToken token)
-		{
-			if (token.name == "Card_dropzone")	// Clunky but reliable
-			{
-				return;
-			}
+        public void ShowCardElementDetails(Element element, ElementStackToken token) {
             tokenDetails.ShowElementDetails(element, token);
             aspectDetails.Hide();
         }

@@ -1,6 +1,4 @@
 ﻿#pragma warning disable 0649
-#define ENABLE_ASPECT_CACHING	// Comment out to return to continuous aspect recalc
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,11 +65,7 @@ namespace Assets.CS.TabletopUI {
         Transform tableLevelTransform;
         [SerializeField]
         Transform windowLevelTransform;
-        [SerializeField]
-		private ScrollRect tableScroll;
-		[SerializeField]
-		public GameObject _dropZoneTemplate;
-
+        [SerializeField] private ScrollRect tableScroll;
 
         [Header("Options Bar & Notes")]
         [SerializeField]
@@ -94,23 +88,6 @@ namespace Assets.CS.TabletopUI {
         private ElementOverview _elementOverview;
 
         private SituationBuilder _situationBuilder;
-
-		// Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
-		[NonSerialized]
-#if ENABLE_ASPECT_CACHING
-		public bool					_enableAspectCaching = true;
-#else
-		public bool					_enableAspectCaching = false;
-#endif
-		private AspectsDictionary	_tabletopAspects = null;
-		private AspectsDictionary	_allAspectsExtant = null;
-		private bool				_tabletopAspectsDirty = true;
-		private bool				_allAspectsExtantDirty = true;
-
-		public void NotifyAspectsDirty()
-		{
-			_tabletopAspectsDirty = true;
-		}
 
 		public enum NonSaveableType
 		{
@@ -865,8 +842,7 @@ namespace Assets.CS.TabletopUI {
             _mapController.ShowMansusMap(origin, true);
         }
 
-        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
-		{
+        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard) {
             DraggableToken.CancelDrag();
             LockSpeedController(false);
             FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
@@ -883,7 +859,6 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("MansusExit");
 
             // Put card into the original Situation Results
-			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
@@ -922,47 +897,21 @@ namespace Assets.CS.TabletopUI {
 
         public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
         {
-			if (!_enableAspectCaching)
-			{
-				_tabletopAspectsDirty = true;
-				_allAspectsExtantDirty = true;
-			}
+            
+            var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
+            var tabletopAspects=new AspectsDictionary();
+            foreach(var s in tabletopStacks)
+                tabletopAspects.CombineAspects(s.GetAspects());
 
-            if (_tabletopAspectsDirty)
-			{
-				if (_tabletopAspects==null)
-					_tabletopAspects=new AspectsDictionary();
-				else
-					_tabletopAspects.Clear();
+            var allAspectsExtant=new AspectsDictionary();
 
-				var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
-				foreach(var s in tabletopStacks)
-				    _tabletopAspects.CombineAspects(s.GetAspects());
+            var allSituations = Registry.Retrieve<SituationsCatalogue>();
+            foreach (var s in allSituations.GetRegisteredSituations())
+                allAspectsExtant.CombineAspects(s.GetAspectsAvailableToSituation(true));
 
-				if (_enableAspectCaching)
-					_tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
+            allAspectsExtant.CombineAspects(tabletopAspects);
 
-				_allAspectsExtantDirty = true;		// Force the aspects below to recalc
-			}
-
-			if (_allAspectsExtantDirty)
-			{
-				if (_allAspectsExtant == null)
-					_allAspectsExtant=new AspectsDictionary();
-				else
-					_allAspectsExtant.Clear();
-
-				var allSituations = Registry.Retrieve<SituationsCatalogue>();
-				foreach (var s in allSituations.GetRegisteredSituations())
-				    _allAspectsExtant.CombineAspects(s.GetAspectsAvailableToSituation(true));
-
-				_allAspectsExtant.CombineAspects(_tabletopAspects);
-
-				if (_enableAspectCaching)
-					_allAspectsExtantDirty = false;		// If left dirty the aspects will recalc every frame
-			}
-
-            AspectsInContext aspectsInContext=new AspectsInContext(aspectsInSituation, _tabletopAspects, _allAspectsExtant);
+            AspectsInContext aspectsInContext=new AspectsInContext(aspectsInSituation,tabletopAspects, allAspectsExtant);
 
             return aspectsInContext;
 
@@ -1007,7 +956,7 @@ namespace Assets.CS.TabletopUI {
 			// Extra tools for debugging autosave.
 
 			// Toggle to simulate bad save
-			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"OFF") ))
+			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"off") ))
 			{
 				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click
 			}
@@ -1022,13 +971,6 @@ namespace Assets.CS.TabletopUI {
 			{
 				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
 			}
-
-			#if ENABLE_ASPECT_CACHING
-			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 35f, 180f, 20f), "Aspect caching: " + (_enableAspectCaching?"ON":"OFF") ))
-			{
-				_enableAspectCaching = !_enableAspectCaching;		// Click
-			}
-			#endif
 #endif
 			// Allowing this in final build to allow users to screengrab errors
 			NoonUtility.DrawLog();
