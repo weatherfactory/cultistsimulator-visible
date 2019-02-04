@@ -18,7 +18,7 @@
 	aspects: {healthskill:2,ability:1},
 	slots:[
 		{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
-	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?[Use this with six Vitality to gain more Health.]",actionId:"study"},
+	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?[Use this with three Lessons Learnt  to gain more Health.]",actionId:"study"},
 	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
 	{id:"V3",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"}
 	],
@@ -30,7 +30,7 @@
 	slots:[
 	{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
 	{id:"specialisation",actionId:"study",label:"Something More",required:{lore:1},description:"If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between strength and grace.",actionId:"study"},
-	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still? [Use this with eight Vitality to gain more Health.]",actionId:"study"},
+	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still? [Use this with four Lessons Learnt to gain more Health.]",actionId:"study"},
 	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
 	{id:"V3",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
 	{id:"V4",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"}	
@@ -115,7 +115,7 @@
 	description: "I have been known to break six pencils in a day. [Use this with Work to Paint, or with Study and three Lessons Learnt to gain more Passion.]",
 	xtriggers:{careeradvancement:skillpassionc},
 	aspects: {passionskill:2,ability:1},
-	slots:[{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be? [Use this with six Glimmering to gain more Passion.]",actionId:"study"},
+	slots:[{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be? [Use this with three Lessons Learnt to gain more Passion.]",actionId:"study"},
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
 	{id:"G3",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
 		{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
@@ -128,7 +128,7 @@
 	description: "Phantoms ride my waking mind. [Use this with four Lessons Learnt to gain more Passion.]",
 	aspects: {passionskill:3,ability:1},
 	slots:[{id:"specialisation",actionId:"study",label:"Something More",required:{lore:1},description:"If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between unreason and folly.",actionId:"study"},
-	{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain? [Use this with Work to Paint, or with Study and eight Glimmering to gain more Passion.]",actionId:"study"},
+	{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain? [Use this with Work to Paint, or with Study and four Lessons Learnt to gain more Passion.]",actionId:"study"},
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G3",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G4",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
