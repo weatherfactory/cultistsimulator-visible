@@ -66,42 +66,51 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		isManualDragActive = false;
 	}
 
-	void Update() {
+	void Update()
+	{
 		// We are dragging manually? then block this thing and stop
-		if (isManualDragActive) {
+		if (isManualDragActive)
+		{
 			blockScrolling = true;
 			return;
 		}
 		// We're pressing a hotkey? Then move!
-		if (PressingMoveKey()) {
+		if (PressingMoveKey())
+		{
 			mousePos = GetMousePosFromKeys();
-			magnitude = 2f;
+			magnitude = 3f;
 			pointerEnterEdgeTime = timeout;
 		}
 		// Pointer is in our rect? Then move
-		else if (pointerInRect && Assets.CS.TabletopUI.DraggableToken.itemBeingDragged!=null) {
+		else if (Assets.CS.TabletopUI.DraggableToken.itemBeingDragged!=null)
+		{
 			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
 			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
 			SetMagnitudeFromMouse();
 		}
 		// We got neither a button nor a pointer? Nothing.
-		else {
+		else
+		{
+			blockScrolling = false; // enable scrolling starting with the next frame
 			return;
 		}
 
 		// We are not in a zone? Then stop doing this and unblock us if needed
-		if (Mathf.Approximately(magnitude, 0f)) {
+		if (Mathf.Approximately(magnitude, 0f))
+		{
 			blockScrolling = false; // enable scrolling starting with the next frame
 			pointerEnterEdgeTime = 0f;	
 			return;
 		}
 		// We are blocked - IE we had a manual drag and we're still in the scroll-zone?
-		else if (blockScrolling) {
+		else if (blockScrolling)
+		{
 			return;
 		}
 
 		// Increment our edgeTimer if we're not over the timeout
-		if (pointerEnterEdgeTime < timeout) {
+		if (pointerEnterEdgeTime < timeout)
+		{
 			pointerEnterEdgeTime += Time.deltaTime;
 
 			// Still not enough, then get us out of here
@@ -159,26 +168,32 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		}
 	}
 
-	Vector2 GetMousePosFromKeys() {
+	Vector2 GetMousePosFromKeys()
+	{
 		if (HotkeyWatcher.IsInInputField())
 			return Vector2.zero;
 
 		float y;
 		float x;
-
+		/*
 		if (Input.GetKey(KeyCode.UpArrow))
 			y = 0.5f;
 		else if (Input.GetKey(KeyCode.DownArrow))
 			y = -0.5f;
 		else 
 			y = 0f;
+		*/
+		y = Input.GetAxis( "Vertical" );
 
+		/*
 		if (Input.GetKey(KeyCode.RightArrow)) 
 			x = 0.5f;
 		else if (Input.GetKey(KeyCode.LeftArrow)) 
 			x = -0.5f;
 		else 
 			x = 0f;
+		*/
+		x = Input.GetAxis( "Horizontal" );
 
 		return new Vector2(x, y);
 	}
