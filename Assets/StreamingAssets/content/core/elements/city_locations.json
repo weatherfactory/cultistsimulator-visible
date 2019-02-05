@@ -64,6 +64,60 @@
 				}],
         unique:true
         },
+					{
+        id: "hq.townhouse",
+            label: "Opulent Townhouse",
+            aspects:{hq: 1},
+			description: "We always close the curtains tight before we roll back the rugs and mark the floor with chalk.",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+        unique:true
+        },
+							{
+        id: "hq.church",
+            label: "Heterodox Church",
+            aspects:{hq: 1},
+			description: "Even on Sunday morning, there are quirks in the order of service, but most outsiders don't notice. Outsiders are not invited to the ceremonies we hold at chillier hours",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+        unique:true
+        },
+		
+									{
+        id: "hq.mithraeum",
+            label: "Candle-lit Mithraeum",
+            aspects:{hq: 1},
+			description: "Initiates have celebrated the Mysteries here for almost two thousand years. The words change, the gods change, but always, eventually, there is blood.",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+        unique:true
+        },
+		
+											{
+        id: "hq.hospital",
+            label: "House Violet",
+            aspects:{hq: 1},
+			description: "We've painted the walls within the rich colour of the Violet Chamber. We've cleaned the cobwebs and placed unobtrusive shutters behind all the windows. And we've replaced all the locks.",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+        unique:true
+        },
 				{
         id: "locationstreetsstrange",
             label: "Streets Strange by Moonlight",
