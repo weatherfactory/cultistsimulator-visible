@@ -74,9 +74,9 @@
 					{
         id: "hq.townhouse",
             label: "Opulent Townhouse",
-            aspects:{hq: 1},
+            aspects:{hq: 1,library:1},
 			description: "We always close the curtains tight before we roll back the rugs and mark the floor with chalk.",
-			slots: [{id:"Cupboard",
+			slots: [{id:"Attic",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
@@ -84,14 +84,14 @@
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
-        },
+        }
 							{
         id: "hq.church",
             label: "Heterodox Church",
-            aspects:{hq: 1},
+            aspects:{hq:1,sanctuary:1},
 			description: "Even on Sunday morning, there are quirks in the order of service, but most outsiders don't notice. Outsiders are not invited to the ceremonies we hold at chillier hours",
-			slots: [{id:"Cupboard",
-					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+			slots: [{id:"Vestry",
+					description: "Lock a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
@@ -103,9 +103,9 @@
 									{
         id: "hq.mithraeum",
             label: "Candle-lit Mithraeum",
-            aspects:{hq: 1},
+            aspects:{hq: 1,pit:1,secret:1},
 			description: "Initiates have celebrated the Mysteries here for almost two thousand years. The words change, the gods change, but always, eventually, there is blood.",
-			slots: [{id:"Cupboard",
+			slots: [{id:"Chains",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
@@ -118,9 +118,9 @@
 											{
         id: "hq.hospital",
             label: "House Violet",
-            aspects:{hq: 1},
+            aspects:{hq: 1,pit:1,secret:1},
 			description: "We've painted the walls within the rich colour of the Violet Chamber. We've cleaned the cobwebs and placed unobtrusive shutters behind all the windows. And we've replaced all the locks.",
-			slots: [{id:"Cupboard",
+			slots: [{id:"Cell",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
@@ -133,9 +133,9 @@
 													{
         id: "hq.bookshop",
             label: "Behind a Bookshop",
-            aspects:{hq: 1},
+            aspects:{hq: 1,library:1},
 			description: "FNORD",
-			slots: [{id:"Cupboard",
+			slots: [{id:"Cellar",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
@@ -148,9 +148,9 @@
 													{
         id: "hq.warehouse",
             label: "A Darkened Warehouse",
-            aspects:{hq: 1},
+            aspects:{hq: 1,pit:1,secret:1},
 			description: "FNORD",
-			slots: [{id:"Cupboard",
+			slots: [{id:"Shed",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
