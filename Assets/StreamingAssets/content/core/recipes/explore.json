@@ -1,6 +1,24 @@
  {"recipes": [
  
  
+
+{id:"exploremovehq",
+actionId:"explore",
+label:"A Change of Premises",
+startdescription:"Move our organisation's headquarters to a new location. [This will permanently relocate your headquarters. No return is possible. It can reduce Notoriety.]",
+description:"No address is really ever permanent. Like our bodies, we leave them all in the end. But for now, this is home.",
+requirements:{hq:1,hq.potential:1},
+aspects:{movehq:1},
+slots: [{id:"coldtrail",
+label:"A Cold Trail",
+description:"When we move, the Suppression Bureau may waste time investigating our old location.",
+greedy:true,
+required:{notoriety:1}}],
+effects:{notoriety:-1},
+warmup:60,
+craftable:true},
+ 
+ 
 	{
         id: "explorelocationbookdealer",
         label: "Add to your Library",

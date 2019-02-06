@@ -49,6 +49,12 @@
 			unique:true,
 			uniquenessgroup:uqcabaret
         },
+		{
+		id:"hq.abandoned",
+		label:"Abandoned Headquarters",
+		description:"Forget it, J.N.",
+		lifetime:1		
+		},
 
 		
 			{
@@ -62,6 +68,7 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
 					{
@@ -75,6 +82,7 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
 							{
@@ -88,6 +96,7 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
 		
@@ -102,6 +111,7 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
 		
@@ -116,8 +126,98 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
+		
+													{
+        id: "hq.bookshop",
+            label: "Behind a Bookshop",
+            aspects:{hq: 1},
+			description: "FNORD",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		
+													{
+        id: "hq.warehouse",
+            label: "A Darkened Warehouse",
+            aspects:{hq: 1},
+			description: "FNORD",
+			slots: [{id:"Cupboard",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		{
+        id: "hq.church.potential",
+            label: "Unattended Church",
+			  aspects:{location: 1,hq.potential:1},
+            description: "FNORD",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.church},
+		icon:"hq.church"
+        },
+		
+									{
+        id: "hq.mithraeum.potential",
+            label: "Empty Mithraeum",
+			aspects:{location: 1,hq.potential:1},
+			description: "FNORD",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.mithraeum},
+		icon:"hq.mithraeum"
+        },
+		
+											{
+        id: "hq.hospital.potential",
+            label: "Empty Hospital",
+			aspects:{location: 1,hq.potential:1},
+			description: "FNORD",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.hospital},
+		icon:"hq.hospital"
+        },
+	{
+        id: "hq.warehouse.potential",
+            label: "An Abandoned Warehouse",
+			aspects:{location: 1,hq.potential:1},
+			description: "FNORD",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.warehouse},
+		icon:"hq.warehouse"
+        },
+		
 				{
         id: "locationstreetsstrange",
             label: "Streets Strange by Moonlight",

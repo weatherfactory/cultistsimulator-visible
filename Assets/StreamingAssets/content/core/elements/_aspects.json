@@ -480,6 +480,19 @@ isHidden:true
 			description: "For conversation and convocation.",
         isAspect: true
 },
+		        {
+            id: "hq.potential",
+            label: "Potential Headquarters",
+			description: ".",
+        isAspect: true,
+		isHidden:true
+},
+		        {
+            id: "movehq",
+            label: "Move to a New HQ",
+			description: "Recipe aspect",
+        isAspect: true
+},
 
         {
             id: "location",
