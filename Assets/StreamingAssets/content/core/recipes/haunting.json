@@ -3,6 +3,7 @@
  
 		{id:"summoning_haunt_devourer",
 		actionId:"haunting",
+		requirements:{devourer:1},
 		startdescription:"It's free!",
 		warmup:0,
 		linked: [{id: "summoning_haunt_devourer_eatsmortal",chance:50},
@@ -57,7 +58,8 @@
 	  actionId:"haunting",
 	  startdescription:"This thing is only a moderate menace, but even a moderate menace can be lethal sometimes.",
 	  description:". devourer_haunting_mortal_lowdevourer",
-	  requirements: {mortal:1,devourer:1},
+	  requirements: {mortal:1},
+	  comments:"Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
 	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:30},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
@@ -128,7 +130,8 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	  actionId:"haunting",
 	  startdescription:"I will watch the windows and bolt the doors and keep oak and silver by the bed. That might be sufficient.",
 	  description:". devourer_haunting_damageshealth_lowdevourer",
-	  requirements: {health:1,devourer:1},
+	  requirements: {health:1},
+	  comments:"Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
 	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:30},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
@@ -177,6 +180,7 @@ alternativerecipes:	[
 {id:"deceiver_haunting_reason_middeceiver",chance:100},
 {id:"deceiver_haunting_reason_lowdeceiver",chance:100}
 ],
+linked:[{id:"summoning_haunt_deceiver_derangesreason"}]
 },
 
 	  	   {id: "deceiver_haunting_reason_highdeceiver",
@@ -207,7 +211,8 @@ alternativerecipes:	[
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
 	  description:". deceiver_haunting_reason_lowedge",
-	  requirements: {reason:1,deceiver:1},
+	  requirements: {reason:1},
+	  comments:"Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
 	  linked: [{id:"deceiver_haunting_reason_success",chance:30},
 	  {id:"deceiver_haunting_reason_failure",chance:100}
 	  ],
