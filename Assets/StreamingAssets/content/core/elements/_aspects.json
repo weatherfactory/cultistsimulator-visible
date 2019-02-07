@@ -172,7 +172,8 @@
             id: "job",
             label: "Job",
             isAspect: true,
-			description: "An arrangement to exchange one's life for money."
+			description: "An arrangement to exchange one's life for money.",
+			induces:[{id:"needs",chance:100}],
         },
 								{
             id: "dance",
