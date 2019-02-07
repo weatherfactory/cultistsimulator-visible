@@ -33,7 +33,7 @@ namespace Galaxy {
 			#if UNITY_2017_3_OR_NEWER
 			else if (target == BuildTarget.StandaloneOSX) {
 			#else
-			else if (target == BuildTarget.StandaloneOSXUniversal || target == BuildTarget.StandaloneOSXIntel || target == BuildTarget.StandaloneOSXIntel64) {
+			else if (target == BuildTarget.StandaloneOSX) {
 			#endif
 				pathToBuiltProject = pathToBuiltProject + "/"; // Ensure the .app directory name is actually treated as a directory.
 				string outputLibLocation = Path.Combine (pathToBuiltProject, "Contents/Frameworks/MonoEmbedRuntime/osx/");
