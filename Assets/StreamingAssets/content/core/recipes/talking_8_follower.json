@@ -183,7 +183,7 @@ startdescription:"I have already given this follower a gift. [A follower cannot 
 {id:"A_talktofollower_givetool_router",
 label:"Gift a Tool to a Follower",
 actionId: "talk",
-requirements:{follower:1,tool:1,summoned:-1,follower_honoured:-1},
+requirements:{follower:1,tool:1,summoned:-1,follower_honoured:-1,greatwork:-1,greatwork.sabotaged:-1},
 startdescription:"Power will pass from my hands to theirs. [This will increase a follower's relevant Aspect, but you can never reclaim the tool, nor gift them a second tool. A Gift will reduce Resentment.]",
 description: ".",
 linked: [{chance:100,id: "L_give_tool_edgeb"},
@@ -699,7 +699,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 label:"Repair a Sabotaged Element of the Great Work",
 actionId: "talk",
 requirements:{follower:1,forge:1,greatwork.sabotaged:1},
-startdescription:"We can begin to repair this, but it will take a Gold Spintria to purchase the necessary materials.",
+startdescription:"We can begin to repair this, but it will take a Silver Spintria to purchase the necessary materials.",
 description: ".",
 linked: [{chance:100,id: "followeraction.repair.greatwork.sabotaged.attempt"}]
 },

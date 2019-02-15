@@ -173,7 +173,10 @@
 	description: "It's escaped my control!",
 	alternativerecipes:[{id:"summoningshutitdown",chance:100},
 	{id:"summoningfightformastery",chance:100}],
-	slots: [{id:"Effort",required: {passion:1,reason:1}}],
+	slots: [{id:"Effort",
+	label:"Effort",
+	description:"I could use Reason to dismiss it safely, which is always reliable. I could try to reassert control with Passion, which is not reliable. Or I could let what will happen, happen.",	
+	required: {passion:1,reason:1}}],
 	warmup: 30,
 	craftable: false,
 	linked:[{id:"summoningescaped",chance:100}]},
@@ -206,13 +209,11 @@
 
 	actionId:"work",
 	requirements: {},
-	effects: {summoned:-1},
-	comments: "Not using killsummoned, intentionally",
 	startdescription: "It's free!",
 	description: "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
 	warmup:5,
-		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true},
-		{id: "summoning_haunt_deceiver",chance:100,additional:true}]
+		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true,expulsion:{limit:1,filter:{summoned:1}}},
+		{id: "summoning_haunt_deceiver",chance:100,additional:true,expulsion:{limit:1,filter:{summoned:1}}}]
 	},
 	
 			{id:"summoningmasteryregained",
