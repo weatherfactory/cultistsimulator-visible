@@ -66,7 +66,7 @@
 			{
         id: "generichq",
             label: "Temporary Headquarters",
-            aspects:{hq: 1},
+            aspects:{hq: 1,location:1},
 			description: "Our business is private. We could use somewhere more secret.",
 			slots: [{id:"Cupboard",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
@@ -80,13 +80,19 @@
 					{
         id: "hq.townhouse",
             label: "Opulent Townhouse",
-            aspects:{hq: 1,library:1},
+            aspects:{hq: 1,location:1,library:1},
 			description: "We always close the curtains tight before we roll back the rugs and mark the floor with chalk.",
 			slots: [{id:"Attic",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
-					required: {follower: 1},
-					forbidden:{summoned:1} 
+					required: {follower:1},
+					forbidden:{summoned:1}
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Grail-influence.",
+					actionId: "explore",
+					required: {funds:1},
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
@@ -94,14 +100,21 @@
 							{
         id: "hq.church",
             label: "Heterodox Church",
-            aspects:{hq:1,sanctuary:1},
+            aspects:{hq: 1,location:1,sanctuary:1},
 			description: "Even on Sunday morning, there are quirks in the order of service, but most outsiders don't notice. Outsiders are not invited to the ceremonies we hold at chillier hours",
 			slots: [{id:"Vestry",
 					description: "Lock a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
-				}],
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Knock-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}
+				],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
@@ -109,13 +122,19 @@
 									{
         id: "hq.mithraeum",
             label: "Candle-lit Mithraeum",
-            aspects:{hq: 1,pit:1,secret:1},
+            aspects:{hq: 1,location:1,pit:1,secret:1},
 			description: "Initiates have celebrated the Mysteries here for almost two thousand years. The words change, the gods change, but always, eventually, there is blood.",
 			slots: [{id:"Chains",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Lantern-influence.",
+					actionId: "explore",
+					required: {funds:1},
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
@@ -124,13 +143,18 @@
 											{
         id: "hq.hospital",
             label: "House Violet",
-            aspects:{hq: 1,pit:1,secret:1},
+            aspects:{hq: 1,location:1,pit:1,secret:1},
 			description: "We've painted the walls within the rich colour of the Violet Chamber. We've cleaned the cobwebs and placed unobtrusive shutters behind all the windows. And we've replaced all the locks.",
 			slots: [{id:"Cell",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
+				},{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Knock-influence.",
+					actionId: "explore",
+					required: {funds:1},
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
@@ -139,13 +163,19 @@
 													{
         id: "hq.bookshop",
             label: "Rooms Behind a Bookshop",
-            aspects:{hq: 1,library:1},
+            aspects:{hq: 1,location:1,library:1},
 			description: "The lesser elements of Miss Morland's stock yet remain. Over time, strangers drift in with books to sell, and sometimes we indulge them.",
 			slots: [{id:"Cellar",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Heart-influence.",
+					actionId: "explore",
+					required: {funds:1},
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
@@ -154,13 +184,18 @@
 													{
         id: "hq.warehouse",
             label: "A Darkened Warehouse",
-            aspects:{hq: 1,pit:1,secret:1},
+            aspects:{hq: 1,location:1,pit:1,secret:1},
 			description: "The rafters are rank with rats. Their smell is almost lost beneath the reek of the river. It's a long way from anywhere anyone would want to go. All these things are, in their way, advantages.",
 			slots: [{id:"Shed",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
 					required: {follower: 1},
 					forbidden:{summoned:1} 
+				},{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Forge-influence.",
+					actionId: "explore",
+					required: {funds:1},
 				}],
 				xtriggers:{movehq:hq.abandoned},
         unique:true
