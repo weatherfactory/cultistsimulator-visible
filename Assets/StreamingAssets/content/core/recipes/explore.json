@@ -17,6 +17,72 @@ required:{notoriety:1}}],
 effects:{notoriety:-1},
 warmup:60,
 craftable:true},
+
+{id:"explorehq.townhouse",
+actionId:"explore",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{hq.townhouse:1,funds:1},
+effects:{influencegrail:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.hospital",
+actionId:"explore",
+label:"Where It Opens",
+startdescription:"The first wardens of this place practised their incisions and their transections until the world parted like fruit-peel. Those openings have long since healed, but nothing ever heals completely.",
+description:"There is always discomfort, at first, but we have made sure that everything is done cleanly, and so we touch the bright skirts of the Mother-of-Ants.",
+requirements:{hq.hospital:1,funds:1},
+effects:{influenceknock:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.mithraeum",
+actionId:"explore",
+label:"The Sun Beneath Us",
+startdescription:"This was a holy place of the Sun Unconquered, the Sun Undivided. With the purest of candles, we can touch the light that still swims in the stone.",
+description:"The lucent, the translucent, the memory of splendour. Much is lost, and much remains, of the Sun Invisible and Indivisible.",
+requirements:{hq.mithraeum:1,funds:1},
+effects:{influencelantern:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.church",
+actionId:"explore",
+label:"The Wounds of Wisdom",
+startdescription:"'Not all doors are wounds, but every wound is a door.' The history of this place is rich with both wounds and doors. With the right materials, we can soften the air where once the air opened.",
+description:"Tonight, no door in this church will close; no lock will require a key; and no ",
+requirements:{hq.church:1,funds:1},
+effects:{influenceknock:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.bookshop",
+actionId:"explore",
+label:"The Guarded Hearth",
+startdescription:"We will warm the spaces behind the shop with fire-light, enliven them with the kettle's whistle and the gramophone's hum. Not all our celebrations require the shedding of blood.",
+description:"Bookshops give solace to the anxious, the ignorant and the troubled in spirit. Even after Morland brought her curious wares here, this solace lingers. Tonight the Hour called Thunderskin steps softly.",
+requirements:{hq.bookshop:1,funds:1},
+effects:{influenceheart:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.warehouse",
+actionId:"explore",
+label:"In Memory of Engines",
+startdescription:"Before this was a warehouse, it was a mansion of machines: a house of steam and iron and, from time to time, torn flesh and screaming. We will pour the oils that commemorate that time. ",
+description:"Once more we have flames, once more we have iron, and once more flesh will know heat's kiss; though nowhere it will show, not by daylight. Far above, far below, the Forge of Days performs her purifications.",
+requirements:{hq.warehouse:1,funds:1},
+effects:{influenceforge:1,funds:-1},
+warmup:60,
+craftable:true
+},
  
  
 	{
