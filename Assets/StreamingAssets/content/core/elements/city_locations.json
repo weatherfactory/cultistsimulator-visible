@@ -59,6 +59,15 @@
 		
 			{
         id: "generichq",
+            label: "Headquarters?",
+            aspects:{hq: 1},
+			description: "[Headquarters mechanics have changed.",
+
+        unique:true
+        },
+		
+					{
+        id: "hq.temporary",
             label: "Temporary Headquarters",
             aspects:{hq: 1},
 			description: "Our business is private. We could use somewhere more secret.",
@@ -69,7 +78,8 @@
 					forbidden:{summoned:1} 
 				}],
 				xtriggers:{movehq:hq.abandoned},
-        unique:true
+        unique:true,
+		icon:generichq
         },
 					{
         id: "hq.townhouse",
