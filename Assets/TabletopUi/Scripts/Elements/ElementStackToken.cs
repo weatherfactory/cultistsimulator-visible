@@ -378,6 +378,8 @@ namespace Assets.CS.TabletopUI {
 
         public override void ReturnToTabletop(Context context)
 		{
+			bool stackBothSides = true;
+
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
             //We might have changed the element that a stack is associated with... so check we can still merge it
             if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack))
@@ -410,11 +412,12 @@ namespace Assets.CS.TabletopUI {
 				#if DROPZONE
 					// If we get here we have a new card that won't stack with anything else. Place it in the "in-tray"
 					lastTablePos = GetDropZoneSpawnPos();
+					stackBothSides = false;
 				#endif
 				}
 			}
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
         }
 
 		public Vector2 GetDropZoneSpawnPos()

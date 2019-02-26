@@ -21,7 +21,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         const float checkPointPerArcLength = 100f;
 
         const float pointGridSize = 100f;
-        const int maxGridIterations = 4;
+        const int maxGridIterations = 5;
 
         const float radiusBase = 50f;
         const float radiusIncrement = 50f;
@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);
         }
 
-        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false)
+        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false, bool stackBothSides = true)
 		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
             else
 			{
-                pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero);
+                pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero, -1, stackBothSides);
             }
 
             stack.RectTransform.anchoredPosition = pos.Value;
@@ -121,7 +121,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #region -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
+        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+		{
 #if DEBUG
             _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             _currentDebug.tabletop = _tabletop.transform;
@@ -130,7 +131,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _currentDebug.tokenOverlaps = false;
             _currentDebug.checkedRects = new List<Rect>();
 
-            var pos = GetFreeTokenPosition(token, centerPos, startIteration);
+            var pos = GetFreeTokenPosition(token, centerPos, startIteration, stackBothSides);
             _currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
             _currentDebug.hasDebugData = true;
 
@@ -142,7 +143,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #endif
         }
 
-        Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
+        Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1, bool stackBothSides = true)
+		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
 			centerPos = NoonUtility.SnapToGrid( centerPos );
@@ -151,17 +153,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
 
-            if (_currentDebug != null) {
+            if (_currentDebug != null)
+			{
                 _currentDebug.targetRect = targetRect;
                 _currentDebug.tokenOverlaps = true;
 			}
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
-            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
+            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations, stackBothSides);
 
             // Go over the test points and check if there's a clear spot to place things
-            foreach (var point in currentPoints) {
+            foreach (var point in currentPoints)
+			{
                 if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
                     return point;
             }
@@ -180,7 +184,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size), token))
                 return centerPos;
 
-            foreach (var point in currentPoints) {
+            foreach (var point in currentPoints)
+			{
                 if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
                     return point;
             }
@@ -191,15 +196,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         // Tokens have their pos in their center, rects in the bottom right
-        Rect GetCenterPosRect(RectTransform rectTrans) {
+        Rect GetCenterPosRect(RectTransform rectTrans)
+		{
             return GetCenterPosRect(rectTrans.anchoredPosition, rectTrans.rect.size);
         }
 
-        Rect GetCenterPosRect(Vector2 centerPos, Vector2 size) {
+        Rect GetCenterPosRect(Vector2 centerPos, Vector2 size)
+		{
             return new Rect(centerPos - size / 2f, size);
         }
 
-        Vector2 GetPosClampedToTable(Vector2 pos) {
+        Vector2 GetPosClampedToTable(Vector2 pos)
+		{
             const float padding = .2f;
 
             pos.x = Mathf.Clamp(pos.x, tableRect.x + padding, tableRect.x + tableRect.width - padding);
@@ -207,7 +215,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect,  DraggableToken ignoreToken = null) {
+        bool IsLegalPosition(Rect rect,  DraggableToken ignoreToken = null)
+		{
             if (tableRect.Contains(rect.position + rect.size / 2f) == false)
                 return false;
             
@@ -250,10 +259,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return false;
         }
 
-        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration) {
+        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration, bool stackBothSides = true)
+		{
             int numPoints = 0;
+			// Always test in half-card intervals for best chance of finding valid slot
+			float snap_x = 90.0f * 0.5f;
+			float snap_y = 130.0f * 0.5f;
 
-            for (int i = startIteration; i <= maxIteration; i++) {
+            for (int i = startIteration; i <= maxIteration; i++)
+			{
                 numPoints += 8 * i;
             }
 
@@ -263,16 +277,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             float y;
             float x;
             
-            for (int v = 1 ; v < 2 + maxIteration * 2; v++) {
+            for (int v = 1 ; v < 2 + maxIteration * 2; v++)
+			{
                 y = (v % 2 == 0 ? -(v / 2) : (v / 2));
 
-                for (int h = 1; h < 2 + maxIteration * 2; h++) {
+                for (int h = 1; h < 2 + maxIteration * 2; h++)
+				{
                     if (h <= -1 + startIteration * 2 && v <= -1 + startIteration * 2)
                         continue; // don't put out points lower than our startIteration
 
-                    x = (h % 2 == 0 ? (h / 2) : -(h / 2));
+					if (stackBothSides)
+					{
+						x = (h % 2 == 0 ? (h / 2) : -(h / 2));
+					}
+					else
+					{
+						x = h;
+					}
 
-                    points[p] = new Vector2(pos.x + x * pointGridSize, pos.y + y * pointGridSize);
+                    points[p] = new Vector2(pos.x + x * snap_x, pos.y + y * snap_y);
 					points[p] = NoonUtility.SnapToGrid( points[p] );
 
                     if (_currentDebug != null) 
