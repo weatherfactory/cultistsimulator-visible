@@ -912,11 +912,21 @@ namespace Assets.CS.TabletopUI {
                 backgroundMusic.NoMoreImpendingDoom();
         }
 
-		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
-			var stacks = FindAllStacksForSlotSpecificationOnTabletop(slotSpec);
+		static private float cardPingLastTriggered = 0.0f;
 
-			foreach (var stack in stacks) {
-				ShowFXonToken("FX/CardPingEffect", stack.transform);
+		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
+		{
+			float time = Time.timeSinceLevelLoad;
+			if (time > cardPingLastTriggered + 1.0f)	// Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
+			{
+				cardPingLastTriggered = time;
+
+				var stacks = FindAllStacksForSlotSpecificationOnTabletop(slotSpec);
+
+				foreach (var stack in stacks)
+				{
+					ShowFXonToken("FX/CardPingEffect", stack.transform);
+				}
 			}
 		}
 
