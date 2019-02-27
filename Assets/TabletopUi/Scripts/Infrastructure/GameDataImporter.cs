@@ -455,6 +455,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 int elementQuantity = GetIntFromHashtable(htEachStack, SaveConstants.SAVE_QUANTITY);
                 int lifetimeRemaining = GetIntFromHashtable(htEachStack, SaveConstants.LIFETIME_REMAINING);
                 bool markedForConsumption = htEachStack[SaveConstants.MARKED_FOR_CONSUMPTION].MakeBool();
+				float? posx = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_X);
+				float? posy = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_Y);
+				Vector2 lasttablepos = new Vector2( posx.HasValue ? posx.Value : 0.0f, posy.HasValue ? posy.Value : 0.0f );
+				//Debug.Log("Loaded lastTablePos " + lasttablepos.x + ", " + lasttablepos.y);
 
                 Dictionary<string, int> mutations = new Dictionary<string, int>();
                 if (htEachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
@@ -476,7 +480,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     mutations,
                     illuminations,
                     lifetimeRemaining,
-                    markedForConsumption));
+                    markedForConsumption,
+					lasttablepos));
             }
             return elementQuantitySpecifications;
         }

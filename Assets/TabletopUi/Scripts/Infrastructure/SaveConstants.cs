@@ -27,6 +27,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_QUANTITY = "quantity";
         public const string SAVE_VERBID = "verbId";
         public const string SAVE_RECIPEID = "recipeId";
+		public const string SAVE_LASTTABLEPOS_X = "lastTablePosX";
+		public const string SAVE_LASTTABLEPOS_Y = "lastTablePosY";
         public const string SAVE_SITUATION_WINDOW_OPEN = "situationWindowOpen";
         public const string SAVE_SITUATION_WINDOW_X = "situationWindowX";
         public const string SAVE_SITUATION_WINDOW_Y = "situationWindowY";

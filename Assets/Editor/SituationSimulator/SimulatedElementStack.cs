@@ -5,6 +5,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.Logic;
+using UnityEngine;
 
 namespace Assets.Editor
 {
@@ -41,6 +42,11 @@ namespace Assets.Editor
         public string Icon
         {
             get { return _element == null ? null : _element.Icon; }
+        }
+        public Vector2? LastTablePos
+		{
+            get { return null; }
+			set {}
         }
 
         private IElementStacksManager _currentStacksManager;

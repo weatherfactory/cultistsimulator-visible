@@ -117,6 +117,12 @@ namespace Assets.CS.TabletopUI {
             get { return Defunct ? 0 : _quantity; }
         }
 
+        virtual public Vector2? LastTablePos
+		{
+            get { return lastTablePos; }
+			set { lastTablePos = value; }
+        }
+
         virtual public bool MarkedForConsumption { get; set; }
 
         virtual public IlluminateLibrarian IlluminateLibrarian
@@ -776,6 +782,7 @@ namespace Assets.CS.TabletopUI {
 
 				if (isFront)
 				{
+					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
 					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
 					notifier.ShowCardElementDetails(this._element, this);
 				}

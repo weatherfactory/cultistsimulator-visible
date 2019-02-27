@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using UnityEngine;
 
 namespace Assets.Core.Interfaces
 {
@@ -16,6 +17,7 @@ namespace Assets.Core.Interfaces
         bool Defunct { get; }
         bool MarkedForConsumption { get; set; }
         bool Decays { get; }
+		Vector2? LastTablePos { get; set; }
         IAspectsDictionary GetAspects(bool includingSelf = true);
         Dictionary<string,int> GetCurrentMutations();
         void SetMutation(string aspectId, int value,bool additive);

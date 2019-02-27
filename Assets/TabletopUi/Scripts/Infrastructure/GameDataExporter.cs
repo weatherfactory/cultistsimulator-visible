@@ -187,6 +187,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             htStackProperties.Add(SaveConstants.SAVE_QUANTITY, stack.Quantity);
 			htStackProperties.Add(SaveConstants.LIFETIME_REMAINING, Mathf.CeilToInt(stack.LifetimeRemaining));
             htStackProperties.Add(SaveConstants.MARKED_FOR_CONSUMPTION,stack.MarkedForConsumption);
+            htStackProperties.Add(SaveConstants.SAVE_LASTTABLEPOS_X, stack.LastTablePos.HasValue ? stack.LastTablePos.Value.x : 0.0f );
+            htStackProperties.Add(SaveConstants.SAVE_LASTTABLEPOS_Y, stack.LastTablePos.HasValue ? stack.LastTablePos.Value.y : 0.0f );
 
             var currentMutations = stack.GetCurrentMutations();
             if (currentMutations.Any())
