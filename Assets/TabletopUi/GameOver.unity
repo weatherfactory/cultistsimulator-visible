@@ -198,7 +198,6 @@ GameObject:
   - component: {fileID: 10482936}
   - component: {fileID: 10482935}
   - component: {fileID: 10482934}
-  - component: {fileID: 10482933}
   - component: {fileID: 10482938}
   m_Layer: 5
   m_Name: CanvasContent
@@ -207,26 +206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &10482933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10482932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25568d2f28ec94e4697cbbbcf32748a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasScaler: {fileID: 10482935}
-  container: {fileID: 10482937}
-  image: {fileID: 90397361}
-  content: {fileID: 171545931}
-  minTextWidth: 400
-  maxTextWidth: 1000
-  gutterWidth: 80
-  marginWidth: 50
 --- !u!114 &10482934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,10 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 50
   m_ScaleFactor: 0.5
-  m_ReferenceResolution: {x: 1366, y: 768}
+  m_ReferenceResolution: {x: 2250, y: 1080}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -360,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 375, y: 0}
   m_SizeDelta: {x: 500, y: 730}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &101704318
@@ -490,8 +469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 600}
+  m_AnchoredPosition: {x: 925, y: 0}
+  m_SizeDelta: {x: 996, y: 600}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!225 &171545932
 CanvasGroup:
