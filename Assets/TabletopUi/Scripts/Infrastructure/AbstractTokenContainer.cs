@@ -37,6 +37,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (stackSpecification.MarkedForConsumption)
                 stack.MarkedForConsumption = true;
 
+			stack.LastTablePos = stackSpecification.LastTablePos;
+
             return stack;
         }
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
