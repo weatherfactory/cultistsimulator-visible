@@ -273,7 +273,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.84705883, b: 0.5735294, a: 1}
-      maxColor: {r: 1, g: 0.8308824, b: 0.9591785, a: 0.39215687}
+      maxColor: {r: 1, g: 0.8308824, b: 0.9591785, a: 0.60784316}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -983,21 +983,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 10.76336
-          outSlope: 10.76336
+          value: 0.6051948
+          inSlope: 11.902599
+          outSlope: 11.902599
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.13258573
         - serializedVersion: 3
-          time: 0.29431152
-          value: 1
-          inSlope: 0.120506376
-          outSlope: 0.120506376
+          time: 0.09875336
+          value: 0.99555385
+          inSlope: 0.1736197
+          outSlope: 0.1736197
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 1
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
@@ -1146,8 +1146,8 @@ ParticleSystem:
     enabled: 0
     x:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0
+      minMaxState: 1
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1181,8 +1181,8 @@ ParticleSystem:
         m_RotationOrder: 0
     y:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0
+      minMaxState: 1
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1216,7 +1216,7 @@ ParticleSystem:
         m_RotationOrder: 0
     curve:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 1
       scalar: 8.726646
       minScalar: -8.726646
       maxCurve:
@@ -1276,7 +1276,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 9720
+        atime1: 1157
         atime2: 17623
         atime3: 65535
         atime4: 0
