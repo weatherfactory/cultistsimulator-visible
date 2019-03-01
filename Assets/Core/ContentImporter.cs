@@ -30,12 +30,14 @@ public class ContentImporter
     private const string CONST_VERBS = "verbs";
     private const string CONST_DECKS = "decks";
     private const string CONST_LEGACIES = "legacies";
+    private const string CONST_ENDINGS = "endings";
     public ICompendium _compendium { get; private set; }
 
 
     public Dictionary<string, IVerb> Verbs;
     public Dictionary<string, Element> Elements;
     public Dictionary<string, Legacy> Legacies;
+    public Dictionary<string, Ending> Endings;
     public List<Recipe> Recipes;
     private Dictionary<string, IDeckSpec> DeckSpecs;
 
@@ -48,6 +50,7 @@ public class ContentImporter
         Recipes = new List<Recipe>();
         DeckSpecs = new Dictionary<string, IDeckSpec>();
         Legacies = new Dictionary<string, Legacy>();
+		Endings = new Dictionary<string, Ending>();
     }
 
     public IList<ContentImportProblem> GetContentImportProblems()
@@ -864,6 +867,44 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     }
 
+    public void ImportEndings()
+    {
+        ArrayList endingsArrayList = GetContentItems(CONST_ENDINGS);
+
+        for (int i = 0; i < endingsArrayList.Count; i++)
+        {
+            Hashtable htEachEnding = endingsArrayList.GetHashtable(i);
+
+            try
+            {
+                string endingId = htEachEnding[NoonConstants.KID].ToString();
+
+				EndingFlavour flavour = EndingFlavour.Melancholy;
+				if (htEachEnding[NoonConstants.KFLAVOUR].ToString().CompareTo(EndingFlavour.Grand.ToString()) == 0)
+					flavour = EndingFlavour.Grand;
+				if (htEachEnding[NoonConstants.KFLAVOUR].ToString().CompareTo(EndingFlavour.Melancholy.ToString()) == 0)
+					flavour = EndingFlavour.Melancholy;
+
+                Ending end = new Ending(endingId,
+                    htEachEnding[NoonConstants.KLABEL].ToString(),
+                    htEachEnding[NoonConstants.KDESCRIPTION].ToString(),
+                    htEachEnding[NoonConstants.KIMAGE].ToString(),
+                    flavour,
+                    htEachEnding[NoonConstants.KANIM].ToString(),
+                    htEachEnding[NoonConstants.KACHIEVEMENT].ToString()
+                );
+
+                Endings.Add(endingId, end);
+            }
+
+            catch
+            {
+                LogProblem("Can't parse this legacy: " + htEachEnding[NoonConstants.KID].ToString());
+            }
+        }
+    }
+
+
     public void PopulateRecipeList(ArrayList importedRecipes)
     {
         for (int i = 0; i < importedRecipes.Count; i++)
@@ -1408,6 +1449,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         ImportDeckSpecs();
         ImportRecipes();
         ImportLegacies();
+		ImportEndings();
 
         //I'm not sure why I use fields rather than local variables returned from the import methods?
         //that might be something to tidy up; I suspect it's left from an early design
@@ -1417,6 +1459,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         _compendium.UpdateVerbs(Verbs);
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
+		_compendium.UpdateEndings(Endings);
 
 foreach(var d in _compendium.GetAllDeckSpecs())
     d.RegisterUniquenessGroups(_compendium);

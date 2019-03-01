@@ -20,6 +20,7 @@ public interface ICompendium
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
     void UpdateLegacies(Dictionary<string, Legacy> legacies);
+    void UpdateEndings(Dictionary<string, Ending> endings);
     void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<Recipe> GetAllRecipesAsList();
@@ -27,10 +28,13 @@ public interface ICompendium
     Dictionary<string,Element> GetAllElementsAsDictionary();
     Element GetElementById(string elementId);
     Boolean IsKnownElement(string elementId);
+
     List<IVerb> GetAllVerbs();
     IVerb GetVerbById(string verbId);
-    Ending GetEndingById(string endingFlag);
     IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
+
+    List<Ending> GetAllEndings();
+    Ending GetEndingById(string endingFlag);
 
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
@@ -48,6 +52,7 @@ public class Compendium : ICompendium
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
+    private Dictionary<string, Ending> _endings;
     private Dictionary<string, IDeckSpec> _decks;
     private Dictionary<LegacyEventRecordId, string> _pastLevers;
 
@@ -90,6 +95,10 @@ public class Compendium : ICompendium
         _legacies = legacies;
     }
 
+    public void UpdateEndings(Dictionary<string, Ending> endings)
+    {
+        _endings = endings;
+    }
 
     // -- Misc Getters ------------------------------
 
@@ -144,6 +153,10 @@ public class Compendium : ICompendium
 
     public List<Legacy> GetAllLegacies() {
         return new List<Legacy>(_legacies.Values);
+    }
+
+    public List<Ending> GetAllEndings() {
+        return new List<Ending>(_endings.Values);
     }
 
     // -- Get By Id ------------------------------
@@ -209,6 +222,19 @@ public class Compendium : ICompendium
         return legacy;
     }
 
+    public Ending GetEndingById(string endingId)
+	{
+		Analytics.CustomEvent( "A_ENDING", new Dictionary<string,object>{ {"id",endingId} } );
+
+        Ending ending;
+		if (_endings.TryGetValue(endingId, out ending))
+		{
+			return ending;
+		}
+
+		return GetEndingById_old( endingId );	// Fall back to old one while WIP
+    }
+
     // -- Assorted Methods ------------------------------
 
     public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
@@ -223,7 +249,7 @@ public class Compendium : ICompendium
         return createdVerb;
     }
 
-    public Ending GetEndingById(string endingFlag)
+    public Ending GetEndingById_old(string endingFlag)
     {
 		Analytics.CustomEvent( "A_ENDING", new Dictionary<string,object>{ {"id",endingFlag} } );
 
