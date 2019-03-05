@@ -1,0 +1,241 @@
+ {"recipes": [
+
+					,
+{id:"studyresearch.trysetchallenge",
+actionId:"study",
+label:"",
+startdescription:"FNORD solve challenges",
+description:".",
+requirements:{lore:2},
+effects:{},
+warmup:30,
+craftable:false,
+alternativerecipes:[{id:"studyresearch.setchallenge.knowledge",chance:100}],
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+{id:"studyresearch.setchallenge.knowledge",
+actionId:"study",
+label:"",
+startdescription:"",
+description:"",
+requirements:{challenge.knowledge:1},
+mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:1}]
+warmup:,
+craftable:
+},
+
+
+{id:"studyresearch.attemptsolve.challenge.knowledge",
+actionId:"study",
+label:"",
+startdescription:"",
+description:"",
+slots:[{}],
+warmup:,
+craftable:
+},
+
+{id:"studyresearch.attemptsolve",
+actionId:"",
+label:"",
+startdescription:"",
+description:"",
+requirements:{},
+effects:{},
+warmup:,
+craftable:
+}
+
+
+					
+					{
+	id: "studyresearchtick",
+	comments: "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
+	label: "Promising Research",
+	actionId: "study",
+	requirements:{lore:2},
+	startdescription: "This project has possibilities. When research requirements appear, I must fulfil them to gain Insight. If I gain three Insight, I will succeed; otherwise, I may fail.",
+	description: ".",
+	warmup:30,
+	linked:[
+	{id: "studyresearchearlyconclusion",chance:100},
+	{id: "studyresearchneedsreason",chance:50},
+	{id: "studyresearchneedserudition",chance:50},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	},
+			{
+	id: "studyresearchneedsreason",
+	label: "Confusion's Shadow",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Reason",required: {reason:1}, greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearchreasonsuccess",chance:100}],
+	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
+	description: "I need to use my Reason to help my research.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearchreasonsuccess",
+	label: "The Intellect's Light!",
+	actionId: "study",
+	requirements: {reason:1},
+	effects: {insight:1},
+	craftable: false,
+	startdescription: "The task occupies ever more of my attention. But my efforts are paying off. [Gained Insight.].",
+	linked: [{id:"studyresearchtick",chance:100}],
+	aspects: {fatiguing:1}
+	},
+		{
+	id: "studyresearchneedserudition",
+	label: "The Pieces of the Puzzle",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearcheruditionsuccess",chance:100}],
+	startdescription: "My research needs Erudition.",
+	description: "My research needs Erudition.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearcheruditionsuccess",
+	label: "The Pieces Fit!",
+	actionId: "study",
+	requirements: {erudition:1},
+	effects: {insight:1},
+	craftable: false,
+	startdescription: "Knowledge breeds knowledge. [Gained Insight.]",
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+		{
+	id: "studyresearchneedsglimmering",
+	label: "The Gates of Intuition",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearchglimmeringsuccess",chance:100}],
+	startdescription: "My research needs a Glimmering. ",
+	description: ".",
+	warmup:30,
+	craftable: false,
+	linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+			{
+	id: "studyresearchglimmeringsuccess",
+	label: "The Gates of Intuition are opened!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1},
+	startdescription: "Sometimes, Insights are found in unexpected places. [Gained Insight.]",
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+	{id: "studyresearchearlyconclusion",
+	actionId: "study",
+	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+	requirements: {insight: 3},
+	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
+	},
+	{id: "studyresearchconclusion",
+	actionId: "study",
+	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
+	alternativerecipes: [
+	{id: "studyresearchmaxinsight",chance:100},
+	{id: "studyresearchmoderateinsight",chance:100},
+	{id: "studyresearchminimalinsight",chance:100},
+	{id: "studyresearchconsolation",chance:100},
+	]
+	},
+
+						{
+	id: "studyresearchmaxinsight",
+	label: "Research complete, max insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:100}],
+	actionId: "study",
+	requirements: {insight:3},
+	effects: {},
+	startdescription: "BEGIN studyresearchmaxinsight",
+	description: "COMPLETE studyresearchmaxinsight",
+	warmup:0,
+	comments: "This is currently a pass-through only; including for consistency.",
+	},
+					{
+	id: "studyresearchmoderateinsight",
+	label: "Research complete, some insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:70},
+	{id: "studyresearchconsolation",chance:100}],
+	actionId: "study",
+	requirements: {insight:2},
+	effects: {},
+	startdescription: "BEGIN studyresearchsomeinsight",
+	description: "COMPLETE studyresearchsomeinsight",
+	warmup:0
+	},
+						{
+	id: "studyresearchminimalinsight",
+	label: "Research complete, minimal insight",
+	actionId: "study",
+	requirements: {insight:1},
+			alternativerecipes: [
+	{id: "studyresearchsuccess",chance:30},
+	{id: "studyresearchconsolation",chance:100}],
+	requirements: {},
+	effects: {},
+	startdescription: "BEGIN studyresearchnoinsight",
+	description: "COMPLETE studyresearchnoinsight",
+	warmup:0,
+	},
+							{
+	id: "studyresearchsuccess",
+	label: "Success!",
+	actionId: "study",
+	requirements: {},
+	aspects: {restore:1},
+	effects: {insight:-100},
+	startdescription: ".",
+	description: "I've learnt something new.",
+	warmup:0,
+	craftable: false,
+	linked: [
+
+
+
+		{id:"studyproject_upgrade_edge",chance:100},
+		{id:"studyproject_upgrade_forge",chance:100},
+		{id:"studyproject_upgrade_grail",chance:100},
+		{id:"studyproject_upgrade_heart",chance:100},
+		{id:"studyproject_upgrade_lantern",chance:100},
+		{id:"studyproject_upgrade_moth",chance:100},
+		{id:"studyproject_upgrade_secrethistories",chance:100},
+		{id:"studyproject_upgrade_winter",chance:100},
+
+		{id:"studyproject_subvert_edgetowinter",chance:100},
+		{id:"studyproject_subvert_forgetoedge",chance:100},
+		{id:"studyproject_subvert_grailtomoth",chance:100},
+		{id:"studyproject_subvert_hearttograil",chance:100},
+		{id:"studyproject_subvert_lanterntoforge",chance:100},
+		{id:"studyproject_subvert_mothtolantern",chance:100},
+		{id:"studyproject_subvert_wintertoheart",chance:100},
+
+		{id:"studyproject_upgrade_subvert_knock",chance:100},
+
+
+
+	]
+	},
+	
+]
+}
