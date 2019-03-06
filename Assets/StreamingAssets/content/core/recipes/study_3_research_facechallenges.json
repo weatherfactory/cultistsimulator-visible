@@ -17,36 +17,43 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 
 {id:"studyresearch.setchallenge.knowledge",
 actionId:"study",
-label:"",
-startdescription:"",
-description:"",
-requirements:{challenge.knowledge:1},
-mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:1}]
-warmup:,
-craftable:
+label:"Challenge: Knowledge",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{challenge.knowledge:-1},
+mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:1}],
+warmup:0,
+craftable:false
 },
 
 
 {id:"studyresearch.attemptsolve.challenge.knowledge",
 actionId:"study",
-label:"",
-startdescription:"",
-description:"",
-slots:[{}],
-warmup:,
-craftable:
+label:"FNORD solve knowledge challenge",
+startdescription:"FNORD",
+slots:[{id:"solvechallenge",label:"Solution",required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.knowledge"}]
+{id:"studyresearch.solved.challenge.knowledge"}]
 },
 
-{id:"studyresearch.attemptsolve",
-actionId:"",
-label:"",
-startdescription:"",
-description:"",
-requirements:{},
-effects:{},
-warmup:,
-craftable:
+{id:"studyresearch.failed.challenge.knowledge",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.knowledge",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:-1}],
+warmup:30
 }
+
 
 
 					
