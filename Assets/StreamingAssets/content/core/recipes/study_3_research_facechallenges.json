@@ -1,6 +1,6 @@
  {"recipes": [
 
-					,
+					
 {id:"studyresearch.trysetchallenge",
 actionId:"study",
 label:"",
@@ -34,7 +34,7 @@ startdescription:"FNORD",
 slots:[{id:"solvechallenge",label:"Solution",required:{erudition:1,library:1}}],
 warmup:30,
 craftable:false,
-linked:[{id:"studyresearch.failed.challenge.knowledge"}]
+linked:[{id:"studyresearch.failed.challenge.knowledge"},
 {id:"studyresearch.solved.challenge.knowledge"}]
 },
 
@@ -52,7 +52,7 @@ label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
 mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:-1}],
 warmup:30
-}
+},
 
 
 
