@@ -1,37 +1,46 @@
  {"recipes": [
 
 					
-{id:"studyresearch.trysetchallenge",
+{id:"studyresearch.entrypoint",
 actionId:"study",
 label:"",
-startdescription:"FNORD solve challenges",
+startdescription:"FNORD check existing challenges",
 description:".",
 requirements:{lore:2},
 effects:{},
 warmup:30,
 craftable:false,
-alternativerecipes:[{id:"studyresearch.setchallenge.knowledge",chance:100}],
+alternativerecipes:[{id:"studyresearch.setchallenge",chance:100}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
-
-{id:"studyresearch.setchallenge.knowledge",
+{id:"studyresearch.attemptsolve",
 actionId:"study",
-label:"Challenge: Knowledge",
+label:"FNORD trying solve lore",
+startdescription:"FNORD ",
+linked:[{id:"studyresearch.nochallengesremaining"},
+{id:"studyresearch.attemptsolve.challenge.knowledge"}]
+},
+
+
+{id:"studyresearch.setchallenge",
+actionId:"study",
+label:"Determining Challenges",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{challenge.knowledge:-1},
 mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:1}],
-warmup:0,
-craftable:false
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
 
 {id:"studyresearch.attemptsolve.challenge.knowledge",
 actionId:"study",
-label:"FNORD solve knowledge challenge",
-startdescription:"FNORD",
-slots:[{id:"solvechallenge",label:"Solution",required:{erudition:1,library:1}}],
+label:"A Challenge: Knowledge",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
 warmup:30,
 craftable:false,
 linked:[{id:"studyresearch.failed.challenge.knowledge"},
@@ -41,7 +50,7 @@ linked:[{id:"studyresearch.failed.challenge.knowledge"},
 {id:"studyresearch.failed.challenge.knowledge",
 actionId:"study",
 label:"FNORD failed challenge",
-startdescription:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
 requirements:{erudition:-1,library:-1},
 warmup:30
 },
@@ -51,12 +60,317 @@ actionId:"study",
 label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
 mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:-1}],
-warmup:30
+warmup:30,
+effects:{erudition:-1},
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
 
 
-					
+
+{id:"studyresearch.attemptsolve.challenge.intuition",
+actionId:"study",
+label:"A Challenge: intuition",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.intuition"},
+{id:"studyresearch.solved.challenge.intuition"}]
+},
+
+{id:"studyresearch.failed.challenge.intuition",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.intuition",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.intuition,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.grim",
+actionId:"study",
+label:"A Challenge: grim",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.grim"},
+{id:"studyresearch.solved.challenge.grim"}]
+},
+
+{id:"studyresearch.failed.challenge.grim",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.grim",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.grim,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.obsessive",
+actionId:"study",
+label:"A Challenge: obsessive",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.obsessive"},
+{id:"studyresearch.solved.challenge.obsessive"}]
+},
+
+{id:"studyresearch.failed.challenge.obsessive",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.obsessive",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.obsessive,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.paradox",
+actionId:"study",
+label:"A Challenge: paradox",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.paradox"},
+{id:"studyresearch.solved.challenge.paradox"}]
+},
+
+{id:"studyresearch.failed.challenge.paradox",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.paradox",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.paradox,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.illumination",
+actionId:"study",
+label:"A Challenge: illumination",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.illumination"},
+{id:"studyresearch.solved.challenge.illumination"}]
+},
+
+{id:"studyresearch.failed.challenge.illumination",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.illumination",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.illumination,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.practical",
+actionId:"study",
+label:"A Challenge: practical",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.practical"},
+{id:"studyresearch.solved.challenge.practical"}]
+},
+
+{id:"studyresearch.failed.challenge.practical",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.practical",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.practical,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+{id:"studyresearch.attemptsolve.challenge.insight",
+actionId:"study",
+label:"A Challenge: insight",
+startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
+slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
+warmup:30,
+craftable:false,
+linked:[{id:"studyresearch.failed.challenge.insight"},
+{id:"studyresearch.solved.challenge.insight"}]
+},
+
+{id:"studyresearch.failed.challenge.insight",
+actionId:"study",
+label:"FNORD failed challenge",
+startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
+requirements:{erudition:-1,library:-1},
+warmup:30
+},
+
+{id:"studyresearch.solved.challenge.insight",
+actionId:"study",
+label:"FNORD solved challenge",
+startdescription:"FNORD solved challenge",
+mutations: [{filter:lore,mutateAspectId:challenge.insight,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+
+
+
+
+
+
+
+
+
+{id:"studyresearch.nochallengesremaining",
+actionId:"study",
+label:"fnord ALL SOLVED",
+startdescription:"FNORD all solved!",
+description:"",
+warmup:30,
+requirements:{challenge.knowledge:-1},
+linked: [
+
+		{id:"studyproject_upgrade_edge",chance:100},
+		{id:"studyproject_upgrade_forge",chance:100},
+		{id:"studyproject_upgrade_grail",chance:100},
+		{id:"studyproject_upgrade_heart",chance:100},
+		{id:"studyproject_upgrade_lantern",chance:100},
+		{id:"studyproject_upgrade_moth",chance:100},
+		{id:"studyproject_upgrade_secrethistories",chance:100},
+		{id:"studyproject_upgrade_winter",chance:100},
+
+		{id:"studyproject_subvert_edgetowinter",chance:100},
+		{id:"studyproject_subvert_forgetoedge",chance:100},
+		{id:"studyproject_subvert_grailtomoth",chance:100},
+		{id:"studyproject_subvert_hearttograil",chance:100},
+		{id:"studyproject_subvert_lanterntoforge",chance:100},
+		{id:"studyproject_subvert_mothtolantern",chance:100},
+		{id:"studyproject_subvert_wintertoheart",chance:100},
+
+		{id:"studyproject_upgrade_subvert_knock",chance:100},
+
+	]
+},
+
+
 					{
 	id: "studyresearchtick",
 	comments: "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",

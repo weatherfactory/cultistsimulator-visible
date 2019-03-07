@@ -7,7 +7,7 @@
 	effects:{project_upgrade_subvert_knock:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any Lore studied with Knock becomes Knock.]",
 	description: ".",
 	warmup:30,
@@ -21,7 +21,7 @@
 	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock:-1},
 	effects: {project_upgrade_edge:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "All of the greatest struggles end in death. The Lore of the Knife holds the lessons of those struggles.",
 	description: ".",
 	warmup:30,
@@ -34,7 +34,7 @@
 	requirements: {lore:2, edge:1,winter:1},
 	effects: {project_subvert_edgetowinter:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "All things end. I will meditate on the triumph of patience over strength. [This will create Winter lore instead of Edge.]",
 	description: ".",
 	warmup:30,
@@ -49,7 +49,7 @@
 	effects:{project_upgrade_forge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
 
 	warmup:30,
@@ -64,7 +64,7 @@
 	effects:{project_subvert_forgetoedge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "The Hour called Lionsmith shattered his own sword to escape his master's dominion. All things can be overcome, with sufficient force. [This will create Edge lore instead of Forge.]",
 
 	warmup:30,
@@ -78,7 +78,7 @@
 	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock:-1},
 	effects:{project_upgrade_grail:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
 
 	warmup:30,
@@ -93,7 +93,7 @@
 	requirements: {lore:2, grail:1,moth:1},
 	effects:{project_subvert_grailtomoth:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "It has been claimed that Grail was born from the first sacrifice. But Moth knows better. [This will create Moth lore instead of Grail.]",
 
 	warmup:30,
@@ -108,7 +108,7 @@
 	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock:-1},
 	effects:{project_upgrade_heart:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
 
 	warmup:30,
@@ -122,7 +122,7 @@
 	requirements: {lore:2, heart:1,grail:1},
 	effects:{project_subvert_hearttograil:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "What does not cease will succumb, at last, to temptation. [This will create Grail lore instead of Heart.]",
 
 	warmup:30,
@@ -137,7 +137,7 @@
 	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock:-1},
 	effects:{project_upgrade_lantern:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
 
 	warmup:30,
@@ -150,7 +150,7 @@
 	requirements: {lore:2, lantern:1,forge:1},
 	effects:{project_subvert_lanterntoforge:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "The magus Julian Coseley claims the Forge of Days split the Sun. Perhaps he was right. [This will create Forge lore instead of Lantern.]",
 
 	warmup:30,
@@ -164,7 +164,7 @@
 	effects:{project_upgrade_moth:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
 
 	warmup:30,
@@ -179,7 +179,7 @@
 	effects:{project_subvert_mothtolantern:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "The Glory is a question, and the Moth always answers, Yes. [This will create Lantern lore instead of Moth.]",
 
 	warmup:30,
@@ -194,7 +194,7 @@
 	effects:{project_upgrade_secrethistories:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
 
 	warmup:30,
@@ -208,7 +208,7 @@
 	effects:{project_upgrade_winter:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
 
 	warmup:30,
@@ -222,7 +222,7 @@
 	effects:{project_subvert_wintertoheart:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "Even in the snow, in the silence, in the white without colours, life will never quite cease. [This will create Heart lore instead of Winter.]",
 
 	warmup:30,
