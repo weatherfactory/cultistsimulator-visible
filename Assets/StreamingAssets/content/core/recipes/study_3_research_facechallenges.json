@@ -10,7 +10,6 @@ requirements:{lore:2},
 effects:{},
 warmup:30,
 craftable:false,
-alternativerecipes:[{id:"studyresearch.setchallenge",chance:100}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
@@ -19,21 +18,16 @@ actionId:"study",
 label:"FNORD trying solve lore",
 startdescription:"FNORD ",
 linked:[{id:"studyresearch.nochallengesremaining"},
-{id:"studyresearch.attemptsolve.challenge.knowledge"}]
+{id:"studyresearch.attemptsolve.challenge.knowledge"},
+{id:"studyresearch.attemptsolve.challenge.intuition"},
+{id:"studyresearch.attemptsolve.challenge.grim"},
+{id:"studyresearch.attemptsolve.challenge.obsessive"},
+{id:"studyresearch.attemptsolve.challenge.paradox"},
+{id:"studyresearch.attemptsolve.challenge.illumination"},
+{id:"studyresearch.attemptsolve.challenge.practical"}]
 },
 
 
-{id:"studyresearch.setchallenge",
-actionId:"study",
-label:"Determining Challenges",
-startdescription:"FNORD",
-description:"FNORD",
-requirements:{challenge.knowledge:-1},
-mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:1}],
-warmup:30,
-craftable:false,
-linked:[{id:"studyresearch.attemptsolve",chance:100}]
-},
 
 
 {id:"studyresearch.attemptsolve.challenge.knowledge",
@@ -116,7 +110,7 @@ linked:[{id:"studyresearch.failed.challenge.grim"},
 actionId:"study",
 label:"FNORD failed challenge",
 startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
-requirements:{dread:-1,pit:-1,skillreasond_concentration:=1},
+requirements:{dread:-1,pit:-1,skillreasond_concentration:1},
 warmup:30
 },
 
@@ -205,34 +199,6 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 
 
 
-
-{id:"studyresearch.attemptsolve.challenge.insight",
-actionId:"study",
-label:"A Challenge: insight",
-startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Fascination, which may breed; or use a Sanctuary.]",
-slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{fascination:1,sanctuary:1}}],
-warmup:30,
-craftable:false,
-linked:[{id:"studyresearch.failed.challenge.insight"},
-{id:"studyresearch.solved.challenge.insight"}]
-},
-
-{id:"studyresearch.failed.challenge.insight",
-actionId:"study",
-label:"FNORD failed challenge",
-startdescription:"FNORD failed challenge. Exit the loop, here. That means cleaning up temp cards too, ideally",
-requirements:{fascination:-1,sanctuary:-1},
-warmup:30
-},
-
-{id:"studyresearch.solved.challenge.insight",
-actionId:"study",
-label:"FNORD solved challenge",
-startdescription:"FNORD solved challenge",
-mutations: [{filter:lore,mutateAspectId:challenge.insight,level:-1}],
-warmup:30,
-linked:[{id:"studyresearch.attemptsolve",chance:100}]
-},
 
 
 
