@@ -33,6 +33,7 @@ linked:[{id:"studyresearch.nochallengesremaining"},
 {id:"studyresearch.attemptsolve.challenge.knowledge",
 actionId:"study",
 label:"A Challenge: Knowledge",
+requirements:{challenge.knowledge:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Erudition, or use a Library.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{erudition:1,library:1}}],
 warmup:30,
@@ -65,6 +66,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.intuition",
 actionId:"study",
 label:"A Challenge: intuition",
+requirements:{challenge.intuition:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Glimmering, or use a Sanctuary.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{glimmering:1,sanctuary:1}}],
 warmup:30,
@@ -98,6 +100,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.grim",
 actionId:"study",
 label:"A Challenge: grim",
+requirements:{challenge.grim:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Dread, use a Pit, or use the Silent Intensity skill. Dread may breed.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{dread:1,pit:1,skillreasond_concentration:1}}],
 warmup:30,
@@ -131,6 +134,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.obsessive",
 actionId:"study",
 label:"A Challenge: obsessive",
+requirements:{challenge.obsessive:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Surrender your Reason, which may occasionally be permanently damaged; or use a Library; or use Never-No skill.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget",required:{reason:1,library:1,skillpassiond_unreason:1}}],
 warmup:30,
@@ -171,6 +175,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.paradox",
 actionId:"study",
 label:"A Challenge: paradox",
+requirements:{challenge.paradox:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Surrender Passion, which might occasionally be damaged; use a Sanctuary; or use an Open Soul skill.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{passion:1,sanctuary:1,skillpassiond_folly:1}}],
 warmup:30,
@@ -205,6 +210,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.illumination",
 actionId:"study",
 label:"A Challenge: illumination",
+requirements:{challenge.illumination:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Provide Fascination, which may breed; use a Library; or employ a Rarefied Mind skill.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{fascination:1,library:1,skillreasond_illumination:1}}],
 warmup:30,
@@ -241,6 +247,7 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 {id:"studyresearch.attemptsolve.challenge.practical",
 actionId:"study",
 label:"A Challenge: practical",
+requirements:{challenge.practical:1},
 startdescription:"This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [Risk your Health, or use a Prisoner.]",
 slots:[{id:"solvechallenge",label:"Solution",description:"Books: where one puts the pieces one will eventually forget", required:{health:1,prisoner:1}}],
 warmup:30,
@@ -274,19 +281,13 @@ linked:[{id:"studyresearch.attemptsolve",chance:100}]
 
 
 
-
-
-
-
-
-
 {id:"studyresearch.nochallengesremaining",
 actionId:"study",
 label:"fnord ALL SOLVED",
 startdescription:"FNORD all solved!",
 description:"",
 warmup:30,
-requirements:{challenge.knowledge:-1},
+requirements:{challenge.knowledge:-1,challenge.intuition:-1,challenge.grim:-1,challenge.obsessive:-1,challenge.paradox:-1,challenge.illumination:-1,challenge.practical:-1},
 linked: [
 
 		{id:"studyproject_upgrade_edge",chance:100},
