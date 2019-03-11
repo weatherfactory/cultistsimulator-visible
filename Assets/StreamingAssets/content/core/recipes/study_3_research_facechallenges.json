@@ -123,6 +123,7 @@ label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
 mutations: [{filter:lore,mutateAspectId:challenge.grim,level:-1}],
 warmup:30,
+alt:[{id:"dreadinduction_ifdread",chance:70,additional:true}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
@@ -155,19 +156,22 @@ warmup:30
 actionId:"study",
 label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
+aspects:{fatiguing:1},
 mutations: [{filter:lore,mutateAspectId:challenge.obsessive,level:-1}],
 warmup:30,
-linked:[{id:"studyresearch.attemptsolve",chance:100}]
+linked:[{id:"studyresearch.damagereason",chance:10},
+{id:"studyresearch.attemptsolve",chance:100}]
 },
 
 
-
-
-
-
-
-
-
+{id:"studyresearch.damagereason",
+actionId:"study",
+label:"Obsession's Burden",
+startdescription:"I have sharpened my thoughts like a blade. Now the point of that blade has snapped. [Reason has been permanently damaged.]",
+requirements:{concentration:1},
+warmup:30,
+linked:[{id:"studyresearch.attemptsolve",chance:100}]
+},
 
 
 
@@ -196,12 +200,22 @@ warmup:30
 actionId:"study",
 label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
+aspects:{fatiguing:1},
 mutations: [{filter:lore,mutateAspectId:challenge.paradox,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.damagepassion",chance:10},
+{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+{id:"studyresearch.damagepassion",
+actionId:"study",
+label:"The Labyrinth's Heart",
+startdescription:"I followed my passions through the labyrinth, and here I am at its heart. The heart of the labyrinth is a black and hollow place, charred like wood. [Passion has been permanently damaged.]",
+requirements:{passionexhausted:1},
+aspects:{damagepassion:1},
 warmup:30,
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
-
-
 
 
 
@@ -233,6 +247,7 @@ label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
 mutations: [{filter:lore,mutateAspectId:challenge.illumination,level:-1}],
 warmup:30,
+alt:[{id:"fascinationinduction_iffascination",chance:70,additional:true}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
 
@@ -268,7 +283,20 @@ warmup:30
 actionId:"study",
 label:"FNORD solved challenge",
 startdescription:"FNORD solved challenge",
+aspects:{fatiguing:1},
 mutations: [{filter:lore,mutateAspectId:challenge.practical,level:-1}],
+warmup:30,
+linked:[{id:"studyresearch.damagehealth",chance:30},
+{id:"studyresearch.attemptsolve",chance:100}]
+},
+
+
+{id:"studyresearch.damagehealth",
+actionId:"study",
+label:"The Damage",
+startdescription:"Pain is a teacher, they say, especially if they aren't in pain. [Health has been injured.]",
+requirements:{fatigue:1},
+aspects:{damagehealth:1},
 warmup:30,
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },
