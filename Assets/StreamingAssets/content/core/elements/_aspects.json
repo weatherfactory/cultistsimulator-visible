@@ -509,8 +509,9 @@ isAspect:true
 
 {id:"secret",
 label:"Secret",
-description:"This place is easily overlooked. [You may be able to erase Reputation cards.]",
-isAspect:true
+description:"This place is easily overlooked. [Use of this Headquarters will cause Reputation cards to disappear.]",
+isAspect:true,
+induces:[{id:"secret.induction",chance:30}]
 },
 {id:"sanctuary",
 label:"Sanctuary",

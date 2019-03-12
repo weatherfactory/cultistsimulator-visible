@@ -124,5 +124,16 @@ effects:{dread:1},
 warmup:30
 },
 
+
+{id:"secret.induction",
+actionId:"unsuspicion",
+label:"The Benefits of Privacy",
+startdescription:"We've taken care to locate our headquarters somewhere out of the way...",
+description:"...perhaps it will be harder for the Suppression Bureau to follow leads to our door. It may also be harder to sustain a reputation.",
+slots:[{id:"reputation",label:"Reputation",required:{reputation:1},greedy:true}],
+warmup:180,
+effects:{reputation:-1}
+}
+
 ]
 }

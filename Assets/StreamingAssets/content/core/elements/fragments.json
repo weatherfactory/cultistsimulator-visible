@@ -158,7 +158,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 		{  id: "fragmentgrailf",
             label: "Anthic Elaboration",
             aspects:
-            {grail:12,lore:1,challenge.intuition:1,challenge.practical:1,challenge.paradoxical:1},
+            {grail:12,lore:1,challenge.intuition:1,challenge.practical:1,challenge.paradox:1},
             description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours. [This formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentgrailf:1,fragmentmothf:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentgrailg}
         },
@@ -244,7 +244,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentknockc",
             label: "A Consent of Wounds",
             aspects:
-            {knock: 6,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradoxical:1},
+            {knock: 6,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradox:1},
             description: "To open certain Ways, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgec:1,fragmentforgec:1,fragmentgrailc:1,fragmentheartc:1,fragmentknockc:1,fragmentlanternc:1,fragmentmothc:1,fragmentwinterc:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockd}
         },
@@ -252,21 +252,21 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 		        id: "fragmentknockd",
             label: "Meniscate Invocation",
             aspects:
-            {knock:8,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradoxical:1},
+            {knock:8,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradox:1},
             description: "When the moon's face was wounded, these words appeared. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedged:1,fragmentforged:1,fragmentgraild:1,fragmentheartd:1,fragmentknockd:1,fragmentlanternd:1,fragmentmothd:1,fragmentwinterd:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknocke}
         },
 		{		        id: "fragmentknocke",
             label: "Formulae Ophidian",
             aspects:
-            {knock:10,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradoxical:1},
+            {knock:10,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradox:1},
             description: "Serpents are the visitors which may not be denied. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgee:1,fragmentforgee:1,fragmentgraile:1,fragmenthearte:1,fragmentknocke:1,fragmentlanterne:1,fragmentmothe:1,fragmentwintere:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockf}
         },
 		{  id: "fragmentknockf",
             label: "Liminal Evocation",
             aspects:
-            {knock:12,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradoxical:1},
+            {knock:12,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradox:1},
             description: "One god-who-was-stone remains, and she watches all thresholds. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgef:1,fragmentforgef:1,fragmentgrailf:1,fragmentheartf:1,fragmentknockf:1,fragmentlanternf:1,fragmentmothf:1,fragmentwinterf:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockg}
         },
@@ -313,14 +313,14 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 		{		        id: "fragmentlanterne",
             label: "Formulae Concursate",
             aspects:
-            {lantern:10,lore:1,challenge.knowledge:1,challenge.illumination:1,challenge.paradoxical:1},
+            {lantern:10,lore:1,challenge.knowledge:1,challenge.illumination:1,challenge.paradox:1},
             description: "The Concursum waits at the Lantern of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
 			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentlanterne:1,fragmentforgee:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternf}
         },
 		{  id: "fragmentlanternf",
             label: "Mantra of Ascent",
             aspects:
-            {lantern:12,lore:1,challenge.knowledge:1,challenge.illumination:1,challenge.paradoxical:1},
+            {lantern:12,lore:1,challenge.knowledge:1,challenge.illumination:1,challenge.paradox:1},
             description: "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
 			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentlanternf:1,fragmentforgef:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterng}
         },
