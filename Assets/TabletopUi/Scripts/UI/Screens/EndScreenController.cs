@@ -115,7 +115,7 @@ namespace Assets.CS.TabletopUI
 #if UNITY_EDITOR
 		private void OnGUI()
 		{
-			Rect buttonRect = new Rect(10,10,200,20);
+			Rect buttonRect = new Rect(5,5,200,20);
 			var compendium = Registry.Retrieve<ICompendium>();
 			List<Ending> endings = compendium.GetAllEndings();
 
@@ -125,7 +125,12 @@ namespace Assets.CS.TabletopUI
 				{
 					InitEnding( ending );
 				}
-				buttonRect.y += 24.0f;
+				buttonRect.y += 20.0f;
+				if (buttonRect.y > Screen.height-20)
+				{
+					buttonRect.y = 5;
+					buttonRect.x = Screen.width-205;
+				}
 			}
 		}
 #endif
