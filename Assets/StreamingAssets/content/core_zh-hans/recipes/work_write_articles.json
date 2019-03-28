@@ -1,6 +1,6 @@
  {"recipes": [
  		{id: "writeedgec",
-	label: "撰写一篇有关践行<b>刃</b>以及主宰<b>刃</b>的时枢神的泛述论文。",
+	label: "撰写一篇有关践行<b>刃</b>以及主宰<b>刃</b>的时枢神的泛述论文",
 	actionId: "work",
 	requirements: {commissionarticleedgec:1,lore:1,edge:6,reason:2},
 	effects: {articleedgec:1},
@@ -10,7 +10,7 @@
 	craftable: true
 	},
 	{id: "writeforgec",
-	label: "撰写一篇关于<b>铸</b>之法则的知识的泛述论文。",
+	label: "撰写一篇关于<b>铸</b>之法则的知识的泛述论文",
 	actionId: "work",
 	requirements: {commissionarticleforgec:1,lore:1,forge:6,reason:2},
 	effects: {articleforgec:1},
@@ -20,7 +20,7 @@
 	craftable: true
 	},
 			{id: "writegrailc",
-	label: "撰写一篇关于赤杯之知识的泛述论文。",
+	label: "撰写一篇关于赤杯之知识的泛述论文",
 	actionId: "work",
 	requirements: {commissionarticlegrailc:1,lore:1,grail:6,reason:1,passion:1},
 	effects: {articlegrailc:1},
@@ -33,7 +33,7 @@
 			{id: "writeheartc",
 	label: "撰写一篇关于<b>心</b>之知识的泛述论文。",
 	actionId: "work",
-	requirements: {commissionarticleheartc:1,lore:1,heart:6,,reason:1,passion:1},
+	requirements: {commissionarticleheartc:1,lore:1,heart:6,reason:1,passion:1},
 	effects: {articleheartc:1},
 	startdescription: "或许能够用于委托。",
 	description: "你已完成了这份手稿。",
@@ -41,7 +41,7 @@
 	craftable: true
 	},
 				{id: "writeknockc",
-	label: "撰写一篇关于<b>启</b>之知识的泛述论文。",
+	label: "撰写一篇关于<b>启</b>之知识的泛述论文",
 	actionId: "work",
 	requirements: {commissionarticleknockc:1,lore:1,knock:6,reason:2},
 	effects: {articleknockc:1},
@@ -65,7 +65,7 @@
 			{id: "writemothc",
 	label: "撰写一篇关于<b>蛾</b>之知识的泛述论文。",
 	actionId: "work",
-	requirements: {commissionarticlemothc:1,lore:1,moth:6,,reason:1,passion:1},
+	requirements: {commissionarticlemothc:1,lore:1,moth:6,reason:1,passion:1},
 	effects: {articlemothc:1},
 	startdescription: "或许能够用于委托。",
 	description: "你已完成了这份手稿。",
@@ -94,7 +94,7 @@
 	craftable: true
 	},
 	{id: "writeedgeb",
-	label: "撰写一篇关于<b>刃</b>的实践的详尽论文。",
+	label: "撰写一篇关于<b>刃</b>的实践的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticleedgeb:1,lore:1,edge:4,reason:1},
 	effects: {articleedgeb:1},
@@ -104,7 +104,7 @@
 	craftable: true
 	},
 	{id: "writeforgeb",
-	label: "撰写一篇关于<b>铸</b>之法则的详尽论文。",
+	label: "撰写一篇关于<b>铸</b>的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticleforgeb:1,lore:1,forge:4,reason:1},
 	effects: {articleforgeb:1},
@@ -114,7 +114,7 @@
 	craftable: true
 	},
 			{id: "writegrailb",
-	label: "撰写一篇关于赤杯仪式的详尽论文。",
+	label: "撰写一篇关于赤杯仪式的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticlegrailb:1,lore:1,grail:4,reason:1},
 	effects: {articlegrailb:1},
@@ -125,7 +125,7 @@
 	},
 		
 			{id: "writeheartb",
-	label: "撰写一篇关于<b>心</b>之知识的详尽论文。",
+	label: "撰写一篇关于<b>心</b>之知识的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticleheartb:1,lore:1,heart:4,reason:1},
 	effects: {articleheartb:1},
@@ -135,7 +135,7 @@
 	craftable: true
 	},
 				{id: "writeknockb",
-	label: "撰写一篇关于<b>启</b>之开启仪式的详尽论文。",
+	label: "撰写一篇关于<b>启</b>之开启仪式的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticleknockb:1,lore:1,knock:4,reason:1},
 	effects: {articleknockb:1},
@@ -146,7 +146,7 @@
 	},
 		
 			{id: "writelanternb",
-	label: "撰写一篇关于<b>灯</b>的详尽论文。",
+	label: "撰写一篇关于<b>灯</b>的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticlelanternb:1,lore:1,lantern:4,reason:1},
 	effects: {articlelanternb:1},
@@ -157,7 +157,7 @@
 	},
 		
 			{id: "writemothb",
-	label: "撰写一篇关于<b>蛾</b>的详尽论文。",
+	label: "撰写一篇关于<b>蛾</b>的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticlemothb:1,lore:1,moth:4,reason:1},
 	effects: {articlemothb:1},
@@ -168,7 +168,7 @@
 	},
 	
 	{id: "writesecrethistoriesb",
-	label: "撰写一篇关于<b>秘史</b>的详尽论文。",
+	label: "撰写一篇关于<b>秘史</b>的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticlesecrethistoriesb:1,lore:1,secrethistories:4,reason:1},
 	effects: {articlesecrethistoriesb:1},
@@ -178,7 +178,7 @@
 	craftable: true
 	},
 			{id: "writewinterb",
-	label: "撰写一篇关于<b>白</b>之知识的详尽论文。",
+	label: "撰写一篇关于<b>白</b>之知识的详尽论文",
 	actionId: "work",
 	requirements: {commissionarticlewinterb:1,lore:1,winter:4,reason:1},
 	effects: {articlewinterb:1},
@@ -188,7 +188,7 @@
 	craftable: true
 	},
 		{id: "writeedgea",
-	label: "撰写一篇关于<b>刃</b>法则的简要论文。",
+	label: "撰写一篇关于<b>刃</b>之法则的简要论文",
 	actionId: "work",
 	requirements: {commissionarticleedge:1,lore:1,edge:2,reason:1},
 	effects: {articleedgea:1},
@@ -198,7 +198,7 @@
 	craftable: true
 	},
 	{id: "writeforgea",
-	label: "撰写一篇关于<b>铸</b>之法则的简要论文。",
+	label: "撰写一篇关于<b>铸</b>之法则的简要论文",
 	actionId: "work",
 	requirements: {commissionarticleforge:1,lore:1,forge:2,reason:1},
 	effects: {articleforgea:1},
@@ -208,7 +208,7 @@
 	craftable: true
 	},
 			{id: "writegraila",
-	label: "撰写一篇关于赤杯之知识的简要论文。",
+	label: "撰写一篇关于赤杯之知识的简要论文",
 	actionId: "work",
 	requirements: {commissionarticlegrail:1,lore:1,grail:2,reason:1},
 	effects: {articlegraila:1},
@@ -219,7 +219,7 @@
 	},
 		
 			{id: "writehearta",
-	label: "撰写一篇关于<b>心</b>的简要论文。",
+	label: "撰写一篇关于<b>心</b>之知识的简要论文",
 	actionId: "work",
 	requirements: {commissionarticleheart:1,lore:1,heart:2,reason:1},
 	effects: {articlehearta:1},
@@ -229,7 +229,7 @@
 	craftable: true
 	},
 				{id: "writeknocka",
-	label: "撰写一篇关于<b>启</b>法则和开启仪式的简要论文。",
+	label: "撰写一篇关于<b>启</b>之开启仪式的简要论文",
 	actionId: "work",
 	requirements: {commissionarticleknock:1,lore:1,knock:2,reason:1},
 	effects: {articleknocka:1},
@@ -240,7 +240,7 @@
 	},
 		
 			{id: "writelanterna",
-	label: "撰写一篇关于<b>灯</b>之知识的简要论文。",
+	label: "撰写一篇关于<b>灯</b>之知识的简要论文",
 	actionId: "work",
 	requirements: {commissionarticlelantern:1,lore:1,lantern:2,reason:1},
 	effects: {articlelanterna:1},
@@ -251,7 +251,7 @@
 	},
 		
 			{id: "writemotha",
-	label: "撰写一篇关于<b>蛾</b>的简要论文。",
+	label: "撰写一篇关于<b>蛾</b>的简要论文",
 	actionId: "work",
 	requirements: {commissionarticlemoth:1,lore:1,moth:2,reason:1},
 	effects: {articlemotha:1},
@@ -262,7 +262,7 @@
 	},
 	
 	{id: "writesecrethistoriesa",
-	label: "撰写一篇关于<b>秘史</b>的简要论文。",
+	label: "撰写一篇关于<b>秘史</b>的简要论文",
 	actionId: "work",
 	requirements: {commissionarticlesecrethistories:1,lore:1,secrethistories:2,reason:1},
 	effects: {articlesecrethistoriesa:1},
@@ -272,7 +272,7 @@
 	craftable: true
 	},
 			{id: "writewintera",
-	label: "撰写一篇关于<b>白</b>之知识的简要论文。",
+	label: "撰写一篇关于<b>白</b>之知识的简要论文",
 	actionId: "work",
 	requirements: {commissionarticlewinter:1,lore:1,winter:2,reason:1},
 	effects: {articlewintera:1},

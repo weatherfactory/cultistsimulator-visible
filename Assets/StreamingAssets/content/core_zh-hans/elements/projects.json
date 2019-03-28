@@ -1,313 +1,251 @@
-﻿{
-elements: [
-	{
-		id: "project_upgrade_edge",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>刃</b>之知识的了解。",
-		label: "加强我对刃之知识的理解",
-		lifetime: "1",
+{"elements":
+    [
+	{id: "project_upgrade_edge",
+	label: "加强我对刃之知识的理解",
+	description: "我希望提升我对<b>刃</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_edgetowinter",
-		aspects: 
-		{
-		},
-		description: "忍耐战胜了力量，我承受了这一点，将我所掌握的<b>刃</b>之知识转化为了<b>冬</b>之知识。",
-		label: "将刃转化为冬",
-		lifetime: "1",
+		{id: "project_subvert_edgetowinter",
+	label: "将刃转化为冬",
+	description: "忍耐战胜了力量，我承受了这一点，将我所掌握的<b>刃</b>之知识转化为了<b>冬</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_forge",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>铸</b>之知识的了解。",
-		label: "加强我对<b>铸</b>之知识的理解",
-		lifetime: "1",
+
+
+		{id: "project_upgrade_forge",
+	label: "加强我对<b>铸</b>之知识的理解",
+	description: "我希望提升我对<b>铸</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_forgetoedge",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>铸</b>之知识转化为<b>刃</b>之知识。",
-		label: "将<b>铸</b>转化为刃",
-		lifetime: "1",
+		{id: "project_subvert_forgetoedge",
+	label: "将<b>铸</b>转化为刃",
+	description: "我正在将我所掌握的<b>铸</b>之知识转化为<b>刃</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_grail",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>杯</b>之知识的了解。",
-		label: "加强我对<b>杯</b>之知识的理解",
-		lifetime: "1",
+
+
+
+			{id: "project_upgrade_grail",
+	label: "加强我对<b>杯</b>之知识的理解",
+	description: "我希望提升我对<b>杯</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_grailtomoth",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>杯</b>之知识转化为<b>蛾</b>之知识。",
-		label: "将<b>杯</b>之知识转化为蛾",
-		lifetime: "1",
+		{id: "project_subvert_grailtomoth",
+	label: "将<b>杯</b>之知识转化为蛾",
+	description: "我正在将我所掌握的<b>杯</b>之知识转化为<b>蛾</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_heart",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>心</b>之知识的了解。",
-		label: "加强我对心之知识的理解",
-		lifetime: "1",
+
+
+
+			{id: "project_upgrade_heart",
+	label: "加强我对心之知识的理解",
+	description: "我希望提升我对<b>心</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_hearttograil",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>心</b>之知识转化为<b>杯</b>之知识。",
+		{id: "project_subvert_hearttograil",
 		label: "将心之知识转化为<b>杯</b>",
-		lifetime: "1",
+	description: "我正在将我所掌握的<b>心</b>之知识转化为<b>杯</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_subvert_knock",
-		aspects: 
-		{
-		},
-		description: "我正在加深我对<b>启</b>之知识的了解。",
-		label: "加强我对启之知识的理解",
-		lifetime: "1",
+
+
+			{id: "project_upgrade_subvert_knock",
+	label: "加强我对启之知识的理解",
+	description: "我正在加深我对<b>启</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_lantern",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>灯</b>之知识的了解。",
-		label: "加强我对灯之知识的理解",
-		lifetime: "1",
+
+
+
+			{id: "project_upgrade_lantern",
+	label: "加强我对灯之知识的理解",
+	description: "我希望提升我对<b>灯</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_lanterntoforge",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>灯</b>之知识转化为<b>铸</b>之知识。",
+		{id: "project_subvert_lanterntoforge",
 		label: "将灯之知识转化为<b>铸</b>",
-		lifetime: "1",
+	description: "我正在将我所掌握的<b>灯</b>之知识转化为<b>铸</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_moth",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>蛾</b>之知识的了解。",
-		label: "加强我对蛾之知识的理解",
-		lifetime: "1",
+
+
+
+
+			{id: "project_upgrade_moth",
+	label: "加强我对蛾之知识的理解",
+	description: "我希望提升我对<b>蛾</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_mothtolantern",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>蛾</b>之知识转化为<b>灯</b>之知识。",
-		label: "将蛾之知识转化为灯",
-		lifetime: "1",
+		{id: "project_subvert_mothtolantern",
+	label: "将蛾之知识转化为灯",
+	description: "我正在将我所掌握的<b>蛾</b>之知识转化为<b>灯</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_secrethistories",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>秘史</b>知识的了解。",
-		label: "加强我对<b>秘史</b>知识的理解",
-		lifetime: "1",
+
+
+
+
+				{id: "project_upgrade_secrethistories",
+	label: "加强我对<b>秘史</b>知识的理解",
+	description: "我希望提升我对<b>秘史</b>知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_upgrade_winter",
-		aspects: 
-		{
-		},
-		description: "我希望提升我对<b>冬</b>之知识的了解。",
-		label: "提升我对冬之知识的理解",
-		lifetime: "1",
+
+
+
+				{id: "project_upgrade_winter",
+	label: "提升我对冬之知识的理解",
+	description: "我希望提升我对<b>冬</b>之知识的了解。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_subvert_wintertoheart",
-		aspects: 
-		{
-		},
-		description: "我正在将我所掌握的<b>冬</b>之知识转化为<b>心</b>之知识。",
-		label: "将冬之知识转化为心",
-		lifetime: "1",
+		{id: "project_subvert_wintertoheart",
+	label: "将冬之知识转化为心",
+	description: "我正在将我所掌握的<b>冬</b>之知识转化为<b>心</b>之知识。",
+	aspects: {},
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_edge",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Edge influence.",
-		icon: "project_upgrade_edge",
-		comment: "NEW",
-		label: "Augmenting a Edge influence",
-		lifetime: "1",
+
+
+	{id: "project_influence_upgrade_edge",
+	icon:"project_upgrade_edge",
+	label: "扩大<b>刃</b>之影响",
+	description: "我希望能扩大这<b>刃</b>之影响。",
+	aspects:{},icon:"project_upgrade_edge",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_edgetowinter",
-		aspects: 
-		{
-		},
-		description: "I am acknowledging the victory of patience over strength, subverting my Edge influence to Winter influence.",
-		icon: "project_subvert_edgetowinter",
-		comment: "NEW",
-		label: "Subverting Edge to Winter",
-		lifetime: "1",
+		{id: "project_influence_subvert_edgetowinter",
+		icon:"project_subvert_edgetowinter",
+	label: "将刃转化为冬",
+	description: "我现在承认忍耐强于力量的胜利，正在将我所掌握的<b>刃</b>之影响转化为<b>冬</b>之影响。",
+	aspects:{},icon:"project_subvert_edgetowinter",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_forge",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Forge influence.",
-		icon: "project_upgrade_forge",
-		comment: "NEW",
-		label: "Augmenting a Forge influence",
-		lifetime: "1",
+
+
+		{id: "project_influence_upgrade_forge",
+	label: "扩大<b>铸</b>之影响",
+	description: "我希望能扩大这<b>铸</b>之影响。",
+	aspects:{},icon:"project_upgrade_forge",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_forgetoedge",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Forge influence to Edge influence.",
-		icon: "project_subvert_forgetoedge",
-		comment: "NEW",
-		label: "Subverting Forge to Edge",
-		lifetime: "1",
+		{id: "project_influence_subvert_forgetoedge",
+		icon:"project_subvert_forgetoedge",
+	label: "将<b>铸</b>转化为刃",
+	description: "我正在将我所掌握的<b>铸</b>之影响转化为<b>刃</b>之影响。",
+	aspects:{},icon:"project_subvert_forgetoedge",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_grail",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Grail influence.",
-		icon: "project_upgrade_grail",
-		comment: "NEW",
-		label: "Augmenting a Grail influence",
-		lifetime: "1",
+
+
+
+			{id: "project_influence_upgrade_grail",
+			icon:"project_upgrade_grail",
+	label: "扩大<b>杯</b>之影响",
+	description: "我希望能扩到这<b>杯</b>之影响。",
+	aspects:{},icon:"project_upgrade_grail",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_grailtomoth",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Grail influence to Moth influence.",
-		icon: "project_subvert_grailtomoth",
-		comment: "NEW",
-		label: "Subverting Grail influence to Moth",
-		lifetime: "1",
+		{id: "project_influence_subvert_grailtomoth",
+		icon:"project_subvert_grailtomoth",
+	label: "将<b>杯</b>之影响转化为<b>蛾</b>",
+	description: "我正在将我所掌握的<b>杯</b>之影响转化为<b>蛾</b>之影响。",
+	aspects:{},icon:"project_subvert_grailtomoth",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_heart",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Heart influence.",
-		icon: "project_upgrade_heart",
-		comment: "NEW",
-		label: "Augmenting a Heart influence",
-		lifetime: "1",
+
+
+
+			{id: "project_influence_upgrade_heart",
+			icon:"project_upgrade_heart",
+	label: "扩大<b>心</b>之影响",
+	description: "我希望能扩大这<b>心</b>之影响。",
+	aspects:{},icon:"project_upgrade_heart",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_hearttograil",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Heart influence to Grail influence.",
-		icon: "project_subvert_hearttograil",
-		comment: "NEW",
-		label: "Subverting Heart influence to Grail",
-		lifetime: "1",
+		{id: "project_influence_subvert_hearttograil",
+		icon:"project_subvert_hearttograil",
+		label: "将<b>心</b>之影响转化为<b>杯</b>",
+	description: "我正在将我所掌握的<b>心</b>之影响转化为<b>杯</b>之影响。",
+	aspects:{},icon:"project_subvert_hearttograil",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_subvert_knock",
-		aspects: 
-		{
-		},
-		description: "I am deepening my understanding of Knock influence.",
-		icon: "project_upgrade_subvert_knock",
-		comment: "NEW",
-		label: "Augmenting a Knock influence",
-		lifetime: "1",
+
+
+			{id: "project_influence_upgrade_subvert_knock",
+			icon:"project_upgrade_subvert_knock",
+	label: "扩大<b>启</b>之影响",
+	description: "我正在加深我对<b>启</b>之影响的了解。",
+	aspects:{},icon:"project_upgrade_subvert_knock",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_lantern",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Lantern influence.",
-		icon: "project_upgrade_lantern",
-		comment: "NEW",
-		label: "Augmenting a Lantern influence",
-		lifetime: "1",
+
+
+
+			{id: "project_influence_upgrade_lantern",
+			icon:"project_upgrade_lantern",
+	label: "扩大<b>灯</b>之影响",
+	description: "我希望能扩大这<b>灯</b>之影响。",
+	aspects:{},icon:"project_upgrade_lantern",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_lanterntoforge",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Lantern influence to Forge influence.",
-		icon: "project_subvert_lanterntoforge",
-		comment: "NEW",
-		label: "Subverting Lantern influence to Forge",
-		lifetime: "1",
+		{id: "project_influence_subvert_lanterntoforge",
+		icon:"project_subvert_lanterntoforge",
+		label: "将灯之影响转化为<b>铸</b>",
+	description: "我正在将我所掌握的<b>灯</b>之影响转化为<b>铸</b>之影响。",
+	aspects:{},icon:"project_subvert_lanterntoforge",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_moth",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Moth influence.",
-		icon: "project_upgrade_moth",
-		comment: "NEW",
-		label: "Augmenting a Moth influence",
-		lifetime: "1",
+
+
+
+
+			{id: "project_influence_upgrade_moth",
+			icon:"project_upgrade_moth",
+	label: "扩大<b>蛾</b>之影响",
+	description: "我希望能扩大这<b>蛾</b>之影响。",
+	aspects:{},icon:"project_upgrade_moth",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_mothtolantern",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Moth influence to Lantern influence",
-		icon: "project_subvert_mothtolantern",
-		comment: "NEW",
-		label: "Subverting Moth influence to Lantern",
-		lifetime: "1",
+		{id: "project_influence_subvert_mothtolantern",
+		icon:"project_subvert_mothtolantern",
+	label: "将<b>蛾</b>之影响转化为<b>灯</b>",
+	description: "我正在将我所掌握的<b>蛾</b>之影响转化为<b>灯</b>之影响。",
+	aspects:{},icon:"project_upgrade_moth",
+	lifetime:1
 	},
-	{
-		id: "project_influence_upgrade_winter",
-		aspects: 
-		{
-		},
-		description: "I hope to augment this Winter influence.",
-		icon: "project_upgrade_winter",
-		comment: "NEW",
-		label: "Augmenting a Winter influence",
-		lifetime: "1",
+
+
+
+
+				{id: "project_influence_upgrade_winter",
+				icon:"project_upgrade_winter",
+	label: "扩大<b>冬</b>之影响",
+	description: "我希望能扩大这<b>冬</b>之影响。",
+	aspects:{},icon:"project_upgrade_winter",
+	lifetime:1
 	},
-	{
-		id: "project_influence_subvert_wintertoheart",
-		aspects: 
-		{
-		},
-		description: "I am subverting my Winter influence to Heart influence",
-		icon: "project_subvert_wintertoheart",
-		comment: "NEW",
-		label: "Subverting Winter influence to Heart",
-		lifetime: "1",
+		{id: "project_influence_subvert_wintertoheart",
+		icon:"project_subvert_wintertoheart",
+	label: "将<b>冬</b>之影响转化为<b>心</b>",
+	description: "我正在将我所掌握的<b>冬</b>之影响转化为<b>心</b>之影响。",
+	aspects:{},icon:"project_subvert_wintertoheart",
+	lifetime:1
 	},
 ]
-}
+};

@@ -3,7 +3,8 @@
  
 		{id:"summoning_haunt_devourer",
 		actionId:"haunting",
-		startdescription:"它自由了！",
+		requirements:{devourer:1},
+		startdescription:"它脱逃了！",
 		warmup:0,
 		linked: [{id: "summoning_haunt_devourer_eatsmortal",chance:50},
 		{id: "summoning_haunt_devourer_damages_health",chance:100}]
@@ -13,8 +14,8 @@
 		{id:"summoning_haunt_devourer_eatsmortal",
 	label: "潜伏的吞噬者",
 	actionId:"haunting",
-	startdescription: "那只从你那里逃走的召唤物在这片区域游荡着，寻找并吞噬着凡人。",
-	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	startdescription: "那只从你处逃走的召唤物在此地作乱，寻找凡人来吞噬。[吞噬者的属性越高，他们就更加容易去伤害凡人。]",
+	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
 	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
@@ -28,11 +29,12 @@
 
 
 	  	   {id: "devourer_haunting_mortal_highdevourer",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"表针每走一格它就更接近一些，像盘旋的风，像河里的波。",
-	  description:"死亡无形，但并非无声。",
+	  startdescription:"表针每走一格它就更近一些，像盘旋的风，像河水的涡。",
+	  description:"死亡来之无踪，但并非无声。",
 	  requirements: {mortal:1,devourer:10},
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:100},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
@@ -40,22 +42,25 @@
 
 	  
 	  	  	   {id: "devourer_haunting_mortal_middevourer",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"事到如今，受害者会注意到有些不对劲了。他们将在夜里留心响动，尝试做好准备。",
+	  startdescription:"事到如今，受害者会注意到有些不对劲了。他们将在夜里留心响动，试图防备。",
 	  description:". devourer_haunting_mortal_middevourer",
 	  requirements: {mortal:1,devourer:5},
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:70},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
 	  },
 
 	 {id: "devourer_haunting_mortal_lowdevourer",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"这个造物只是个温和的威胁，但即使是温和的威胁有时也会致命。",
+	  startdescription:"这个生物的对人的威胁并不强烈，但即使是不强烈的威胁有时也会致命。",
 	  description:". devourer_haunting_mortal_lowdevourer",
-	  requirements: {mortal:1,devourer:1},
+	  requirements: {mortal:1},
+	  comments:"Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_mortal_success",chance:30},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
 	  ],
@@ -65,31 +70,33 @@
 	   label: "逃脱的召唤物杀死了受害者",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "那天的第一缕阳光将落在尸体睁着的眼睛上。这通常是一场不明智的召唤仪式的代价：但却并不总是由召唤者支付。",
-	  aspects: {killmortal:1},
-	  effects: {notoriety:1,summoned:-1}
+	  description: "那天的第一缕阳光将会落在尸体睁大的眼睛上。轻率的召唤仪式常常要付出这种代价：但却并不总是由召唤者支付。",
+	  aspects: {killmortal:1,killsummoned:1},
+	  effects: {notoriety:1}
 	  },
 	  	  	 {id: "devourer_haunting_mortal_failure",
-	   label: "逃脱的召唤物对受害者降下恐惧",
+	   label: "逃脱的召唤物对受害者造成恐惧",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "受害者幸存了下来，但有关这个夜晚的故事会像污迹一样蔓延开来。",
-	  effects: {notoriety:1,summoned:-1}
+	  description: "不论如何，这位受害者活了下来！但是这个夜晚的故事会像污点一样蔓延开来。",
+	  effects: {notoriety:1},
+	  	  aspects: {killsummoned:1},
 	  },
 	
 	
 						{id:"summoning_haunt_devourer_damages_health",
 	label: "潜伏的吞噬者",
 	actionId:"haunting",
-	startdescription: "在退回世界的表皮之下前，你那逃脱了的召唤物将从你手里带走些什么。",
-	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
-	slots: [{id:"consuming",required: {health:1},greedy:true}],
+	startdescription: "从你处逃脱的召唤物在回归世界表皮下方之前会尝试从你身上夺去什么。[吞噬者的属性越高，就越可能伤害你。]",
+	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
+	slots: [{id:"consuming",label:"消耗",required: {health:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"devourer_haunting_damageshealth_highdevourer",chance:100},
 {id:"devourer_haunting_damageshealth_middevourer",chance:100},
 {id:"devourer_haunting_damageshealth_lowdevourer",chance:100}
 ],
+linked:[{id:"summoning_haunt_devourer_damages_health"}]
 },
 
 	
@@ -99,6 +106,7 @@ alternativerecipes:	[
 	  startdescription:"它是在逗弄我吗？",
 	  description:".",
 	  requirements: {health:1,devourer:10},
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:100},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],
@@ -106,42 +114,46 @@ alternativerecipes:	[
 
 	  
 	  	  	   {id: "devourer_haunting_damageshealth_middevourer",
-	   label: "逃脱的召唤物正在前方埋伏你",
+	   label: "逃脱的召唤物正在埋伏你",
 	  actionId:"haunting",
-	  startdescription:"有太多的办法可以销毁人类的肉体。我感觉自己的皮肤脆弱得犹如一道大敞的门。",
+	  startdescription:"有太多的办法可以拆解人类的身体。我感觉自己的皮肤脆弱如大敞的门。",
 	  description:". devourer_haunting_damageshealth_middevourer",
 	  requirements: {health:1,devourer:5},
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:70},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],
 	  },
 
 	 {id: "devourer_haunting_damageshealth_lowdevourer",
-	   label: "逃脱的召唤物正在前方埋伏你",
+	   label: "逃脱的召唤物正在埋伏你",
 	  actionId:"haunting",
-	  startdescription:"我会留意窗外的动静，栓紧屋门，将橡木和银器准备在床头。这应该足够了……",
+	  startdescription:"我会监视着窗户，把门栓上，然后把橡木和银器放在床边。这样可能就够了。",
 	  description:". devourer_haunting_damageshealth_lowdevourer",
-	  requirements: {health:1,devourer:1},
+	  requirements: {health:1},
+	  comments:"Leaving 'Devourer' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
+	  warmup:15,
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:30},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
 	  ],
 	  },
 	  
 	  	 {id: "devourer_haunting_damageshealth_success",
-	   label: "逃脱的召唤物残害了你",
+	   label: "逃脱的召唤物袭击了你",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "我会留下一道伤疤，那种可能有朝一日会被拍照放在博物馆展出的伤疤。邻里会议论的；他们会如何议论呢……",
-	  aspects: {damagehealth:1},
-	 effects: {summoned:-1,notoriety:1}
+	  description: "我会落下一道伤疤，那种有朝一日说不定会在博物馆展出照片的伤疤。而且邻里一定会议论的。他们会议论什么呢……",
+	  aspects: {damagehealth:1,killsummoned:1},
+	 effects: {notoriety:1}
 	  
 	  },
 	  	  	 {id: "devourer_haunting_damageshealth_failure",
-	   label: "逃脱的召唤物没能战胜你",
+	   label: "逃脱的召唤物敌不过你",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "我比它厉害多了！但是我没法无声地解决掉它。人们会议论的。",
-	  effects: {summoned:-1,notoriety:1}
+	  description: "它哪里有我厉害！但是我没法无声无息地解决掉它。人们会议论的。",
+	  effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  },
 	  
 	  
@@ -149,18 +161,18 @@ alternativerecipes:	[
 			{id:"summoning_haunt_deceiver",
 		actionId:"haunting",
 		requirements: {deceiver:1},
-		startdescription:"它自由了！",
+		startdescription:"它脱逃了！",
 		warmup:0,
 		linked: [{id: "summoning_haunt_deceiver_derangesreason",chance:100}],
-		comments: "目前不会调用summoning_haunt_deceiver_derangesmortal，因为欺诈者不会直接攻击。"
+		comments: "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
 
 },
 
 					{id:"summoning_haunt_deceiver_derangesreason",
-	label: "潜伏的欺诈者",
+	label: "潜伏的欺骗者",
 	actionId:"haunting",
-	startdescription: "你那逃脱了的召唤物在困扰着你，试图使你绝望——",
-	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	startdescription: "那只从你处逃走的召唤物骚扰着着你，试图使你陷入绝望——",
+	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
 	slots: [{id:"Consuming",required: {reason:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
@@ -168,12 +180,13 @@ alternativerecipes:	[
 {id:"deceiver_haunting_reason_middeceiver",chance:100},
 {id:"deceiver_haunting_reason_lowdeceiver",chance:100}
 ],
+linked:[{id:"summoning_haunt_deceiver_derangesreason"}]
 },
 
 	  	   {id: "deceiver_haunting_reason_highdeceiver",
-	   label: "逃脱的召唤物正在前方埋伏你",
+	   label: "逃脱的召唤物正在埋伏你",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，而这个造物令人无法抗拒。",
+	  startdescription:"人类的理智是脆弱的，而这个生物令人无法抗拒。",
 	  description:".",
 	  requirements: {reason:1,deceiver:10},
 	  linked: [{id:"deceiver_haunting_reason_success",chance:100},
@@ -183,9 +196,9 @@ alternativerecipes:	[
 
 	  
 	  	  	   {id: "deceiver_haunting_reason_middeceiver",
-	   label: "逃脱的召唤物正在前方埋伏你",
+	   label: "逃脱的召唤物正在埋伏你",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，而这个造物很有说服力。",
+	  startdescription:"人类的理智是脆弱的，而这个生物能言善辩。",
 	  description:". deceiver_haunting_reason_middeceiver",
 	  requirements: {reason:1,deceiver:5},
 	  linked: [{id:"deceiver_haunting_reason_success",chance:70},
@@ -194,39 +207,41 @@ alternativerecipes:	[
 	  },
 
 	 {id: "deceiver_haunting_reason_lowdeceiver",
-	   label: "逃脱的召唤物正在前方埋伏你",
+	   label: "逃脱的召唤物正在埋伏你",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，但比起造成伤害，这个造物可能更多在是捣乱。",
+	  startdescription:"人类的理智是脆弱的，但与其说是伤害，这个生物可能更多在是捣乱。",
 	  description:". deceiver_haunting_reason_lowedge",
-	  requirements: {reason:1,deceiver:1},
+	  requirements: {reason:1},
+	  comments:"Leaving 'Deceiver' requirement out of here allows us to catch old-style hauntings where a spirit is not present in the verb. otherwise they loop forever!",
 	  linked: [{id:"deceiver_haunting_reason_success",chance:30},
 	  {id:"deceiver_haunting_reason_failure",chance:100}
 	  ],
 	  },
 	  
 	  	 {id: "deceiver_haunting_reason_success",
-	   label: "逃脱的召唤物摧毁了你的梦境",
+	   label: "逃脱的召唤物蹂躏了你的梦境",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "那晚的事情会久久地留在你的记忆之中；几天来，报社都在向当地的居民了解情况。",
-	  aspects: {damagereason:1},
-	 effects: {summoned:-1,notoriety:1}
+	  description: "那晚的情景将久久地留在你的记忆中。很多天来，报社都在向当地的居民了解情况。",
+	  aspects: {damagereason:1,killsummoned:1},
+	 effects: {notoriety:1}
 	  
 	  },
 	  	  	 {id: "deceiver_haunting_reason_failure",
 	   label: "逃脱的召唤物没能击垮你的决心",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "那晚的事情会久久地留在你的记忆之中；然而那个从苏醒之外而来的造物不是你的对手。但是几天来，报社都在向当地的居民了解情况。",
-	  effects: {summoned:-1,notoriety:1}
+	  description: "那晚的情景会久久地留在你的记忆中。然而那个来自清醒世界之外的生物不是你的对手。然而很多天来，报社都在向当地的居民了解情况。",
+	  effects: {notoriety:1},
+	 aspects:{killsummoned:1}
 	  },
 
 
 				{id:"summoning_haunt_deceiver_derangesmortal",
-	label: "潜伏的欺诈者",
+	label: "潜伏的欺骗者",
 	actionId:"haunting",
-	startdescription: "那只从你那里逃走的召唤物在这片区域游荡着，寻找并扰乱着凡人。",
-	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	startdescription: "那只从你处逃走的召唤物在此地作乱，寻找凡人来搅扰。",
+	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
 	effects: {notoriety:1},
 	aspects: {derangemortal:1},
 	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
@@ -242,9 +257,9 @@ alternativerecipes:	[
 
 
 	  	   {id: "deceiver_haunting_mortal_highedge",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，而这个造物令人无法抗拒。",
+	  startdescription:"人类的理智是脆弱的，而这个生物令人无法抗拒。",
 	  description:".",
 	  requirements: {mortal:1,edge:10},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:100},
@@ -254,9 +269,9 @@ alternativerecipes:	[
 
 	  
 	  	  	   {id: "deceiver_haunting_mortal_midedge",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，而这个造物很有说服力。",
+	  startdescription:"人类的理智是脆弱的，而这个生物能言善辩。",
 	  description:". deceiver_haunting_mortal_midedge",
 	  requirements: {mortal:1,edge:5},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:70},
@@ -265,9 +280,9 @@ alternativerecipes:	[
 	  },
 
 	 {id: "deceiver_haunting_mortal_lowedge",
-	   label: "逃脱的召唤物接近了受害者",
+	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"人类的理智是脆弱的，但比起造成伤害，这个造物可能更多在是捣乱。",
+	  startdescription:"人类的理智是脆弱的，但与其说是伤害，这个生物可能更多在是捣乱。",
 	  description:". deceiver_haunting_mortal_lowedge",
 	  requirements: {mortal:1,edge:1},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:30},
@@ -276,19 +291,20 @@ alternativerecipes:	[
 	  },
 	  
 	  	 {id: "deceiver_haunting_mortal_success",
-	   label: "逃脱的召唤物对受害者降下恐惧",
+	   label: "逃脱的召唤物对受害者造成恐惧",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "只有最强大的内心才能生存下来。报社有一个奇异的故事可以刊登了。",
-	  aspects: {derangemortal:1},
-	  effects:{notoriety:1,summoned:-1}
+	  description: "只有心智最强大的人才能逃出一命。报社有稀奇的新闻可登了。",
+	  aspects: {derangemortal:1,killsummoned:1},
+	  effects:{notoriety:1}
 	  },
 	  	  	 {id: "deceiver_haunting_mortal_failure",
-	   label: "逃脱的召唤物对受害者降下恐惧",
+	   label: "逃脱的召唤物对受害者造成恐惧",
 	  actionId:"haunting",
 	  startdescription:".",
-	  description: "受害者的决心依然坚定。报社有一个奇异的故事可以刊登了。",
-	  effects:{notoriety:1,summoned:-1}
+	  description: "受害者的决心依然坚定不移。报社有稀奇的新闻可登了。",
+	  effects:{notoriety:1},
+	 aspects:{killsummoned:1}
 	  }
 	
 ]

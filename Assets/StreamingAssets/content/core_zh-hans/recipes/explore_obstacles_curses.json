@@ -5,7 +5,7 @@
 	label: "吸魂诅咒",
 	startdescription: "前方的宝藏被吸魂诅咒保护着。若是没有<b>灯</b>或者<b>心</b>，这诅咒会跟着我们回去，吸干我们的魂。",
 	requirements: {curse_dread:1},
-	slots:[{id:"Assistance",description: "金钱对探险来说必不可少。而追随者则会助我突破阻碍。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_dread_highheart",chance:100},
 	{id: "explorevaultcurse_dread_highlantern",chance:100},
@@ -22,9 +22,9 @@
 	actionId: "explore",
 	requirements:{heart:10},
 	label:"我们召唤了环杉，再生之神",
-	startdescription:"我们的<b>心</b>非常强大，足以抵御这一诅咒。",
+	startdescription:"我们的<b>心</b>非常强大，几乎足以抵御这一诅咒。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:100},
+	linked: [{id:"explorevaultcurse_dread_success",chance:90},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
 		  },
 		{id:"explorevaultcurse_dread_midheart",
@@ -50,9 +50,9 @@
 	actionId: "explore",
 	requirements:{lantern:10},
 	label:"我们召唤了上校，不容违抗之神",
-	startdescription:"上校是位残暴的时枢神，但他却有着光源之力，他曾经从比这严酷得多的境遇下生还。他的力量或许能保护我们。",
+	startdescription:"上校是位残暴的时枢神，但他却有着光源之力，他曾经从比这严酷得多的境遇下生还。他的力量应该能保护我们。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:100},
+	linked: [{id:"explorevaultcurse_dread_success",chance:90},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
 		  },
 		  
@@ -107,7 +107,7 @@
 	label: "第五目诅咒",
 	startdescription: "前方的宝藏被第五目诅咒保护着。若是没有<b>冬</b>或者<b>心</b>，这诅咒会跟着我们回去，并开启灵魂之眼。",
 	requirements: {curse_visions:1},
-	slots:[{id:"Assistance", description: "金钱对探险来说必不可少。而追随者则会助我突破阻碍。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_visions_highheart",chance:100},
 	{id: "explorevaultcurse_visions_highwinter",chance:100},
@@ -124,9 +124,9 @@
 	actionId: "explore",
 	requirements:{heart:10},
 	label:"我们召唤了环杉，再生之神",
-	startdescription:"我们的<b>心</b>非常强大，足以抵御这一诅咒。",
+	startdescription:"我们的<b>心</b>非常强大，几乎足以抵御这一诅咒。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:100},
+	linked: [{id:"explorevaultcurse_visions_success",chance:90},
 	{id:"explorevaultcurse_visions_failure",chance:100}]	  
 		  },
 		{id:"explorevaultcurse_visions_midheart",
@@ -152,9 +152,9 @@
 	actionId: "explore",
 	requirements:{winter:10},
 	label:"我们召唤了悼歌者，一毛不拔之神",
-	startdescription:"悼歌者知晓已失去的一切。他的力量会保护我们。",
+	startdescription:"悼歌者知晓已失去的一切。他的力量应该会保护我们。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:100},
+	linked: [{id:"explorevaultcurse_visions_success",chance:90},
 	{id:"explorevaultcurse_visions_failure",chance:100}]	  
 		  },
 		  
@@ -211,7 +211,7 @@
 	label: "蠕息诅咒",
 	startdescription: "前方的宝藏被蠕息诅咒保护着。若是没有<b>杯</b>或者<b>心</b>，这诅咒会跟着我们回去，并且在我们的肺里播种孢子。",
 	requirements: {curse_affliction:1},
-	slots:[{id:"Assistance", description: "金钱对探险来说必不可少。而追随者则会助我突破阻碍。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_affliction_highheart",chance:100},
 	{id: "explorevaultcurse_affliction_highgrail",chance:100},
@@ -228,9 +228,9 @@
 	actionId: "explore",
 	requirements:{heart:10},
 	label:"我们召唤了环杉，再生之神",
-	startdescription:"我们的<b>心</b>非常强大，足以抵御这一诅咒。",
+	startdescription:"我们的<b>心</b>非常强大，几乎足以抵御这一诅咒。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
+	linked: [{id:"explorevaultcurse_affliction_success",chance:90},
 	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
 		  },
 		{id:"explorevaultcurse_affliction_midheart",
@@ -256,9 +256,9 @@
 	actionId: "explore",
 	requirements:{grail:10},
 	label:"我们召唤了赤杯，赐命之神",
-	startdescription:"赤杯的活力将会保护我们免于诅咒的伤害。",
+	startdescription:"赤杯的活力几乎足以保护我们免于诅咒的伤害。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
+	linked: [{id:"explorevaultcurse_affliction_success",chance:90},
 	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
 		  },
 		  
@@ -316,7 +316,7 @@
 	label: "虚源诅咒",
 	startdescription: "有这样一个世界表皮变得炙热焦黄的地方。除了<b>灯</b>或者<b>蛾</b>以外，没有什么东西能保护我们了。",
 	requirements: {curse_nowhere:1},
-	slots:[{id:"Assistance", description: "金钱对探险来说必不可少。而追随者则会助我突破阻碍。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
 	{id: "explorevaultcurse_nowhere_highlantern",chance:100},
@@ -333,9 +333,9 @@
 	actionId: "explore",
 	requirements:{moth:10},
 	label:"我们召唤了笑鸫，精力无限之神",
-	startdescription:"我们的<b>蛾</b>非常强大，足以抵御这一诅咒。",
+	startdescription:"我们的<b>蛾</b>非常强大，几乎足以抵御这一诅咒。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:90},
 	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
 		  },
 		{id:"explorevaultcurse_nowhere_midmoth",
@@ -361,9 +361,9 @@
 	actionId: "explore",
 	requirements:{lantern:10},
 	label:"我们召唤了残阳，燃烧至今之神",
-	startdescription:"残阳借给我们了来自<b>灯</b>的光。这能够终结这里的诅咒。",
+	startdescription:"残阳借给我们了来自<b>灯</b>的光。这应该能够终结这里的诅咒。",
 		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:90},
 	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
 		  },
 		  

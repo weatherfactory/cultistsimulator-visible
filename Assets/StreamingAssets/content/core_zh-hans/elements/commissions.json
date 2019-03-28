@@ -4,7 +4,7 @@
         id: "commissionarticlesecrethistory",
             label: "委托：秘史",
             aspects: {},
-			description: "我必须<b>改变</b>",
+			description: "我必须<b>转变</b>",
 			lifetime:1,
 			decayTo:commissionarticlesecrethistories,
 			noartneeded:true
@@ -13,7 +13,7 @@
         id: "commissionarticlesecrethistoryb",
             label: "委托：秘史",
             aspects: {},
-			description: "我必须<b>改变</b>",
+			description: "我必须<b>转变</b>",
 			lifetime:1,
 			decayTo:commissionarticlesecrethistoriesb,
 			noartneeded:true
@@ -22,7 +22,7 @@
         id: "commissionarticlesecrethistoryc",
             label: "委托：秘史",
             aspects: {},
-			description: "我必须<b>改变</b>",
+			description: "我必须<b>转变</b>",
 			lifetime:1,
 			decayTo:commissionarticlesecrethistoriesc,
 			noartneeded:true
@@ -40,7 +40,7 @@
         },
 				 {
         id: "commissionarticlesecrethistoriesb",
-            label: "委托：秘史 (详尽)",
+            label: "委托：秘史（详尽）",
             aspects: {commission:1,job:1},
             description: "伊本·阿迪姆博士，外号阿勒颇人，向你提出了一项委托。他要寻找一篇关于世界秘史的详尽论文。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
@@ -49,7 +49,7 @@
         },
 				 {
         id: "commissionarticlesecrethistoriesc",
-            label: "委托：秘史 (极其详尽)",
+            label: "委托：秘史（极其详尽）",
             aspects: {commission:1,job:1,job:1},
             description: "伊本·阿迪姆博士，外号阿勒颇人，向你提出了一项委托。他要寻找一些关于世界秘史的特别隐晦的情报。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 						slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
@@ -71,7 +71,7 @@
 		{
 		
 		        id: "commissionarticlelanternb",
-            label: "委托：灯 (详尽)",
+            label: "委托：灯（详尽）",
             aspects: {commission:1,job:1},
             description: "伊本·阿迪姆博士，外号阿勒颇人，向你提出了一项委托。他希望你提供一份关于<b>灯</b>之奥秘的详尽评述 。[要完成此委任，你需要一能个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:4}}],
@@ -82,7 +82,7 @@
 		{
 		
 		        id: "commissionarticlelanternc",
-            label: "委托：灯 (极其详尽)",
+            label: "委托：灯（极其详尽）",
             aspects: {commission:1,job:1},
             description: "伊本·阿迪姆博士，外号阿勒颇人，向你提出了一项委托。他希望你提供一份关于<b>灯</b>之奥秘的极其详尽的调查。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:6}}],
@@ -107,7 +107,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleforgeb",
-            label: "委托：铸 (详尽)",
+            label: "委托：铸（详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她想要一些关于<b>铸</b>的更加详尽的文字。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots:[{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:4}}],
@@ -118,7 +118,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleforgec",
-            label: "委托：铸 (极其详尽)",
+            label: "委托：铸（极其详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她想要一些关于<b>铸</b>所带来的改变和痛苦方面，极其详尽甚至激烈的文字。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:6}}],
@@ -142,7 +142,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlegrailb",
-            label: "委托：杯 (详尽)",
+            label: "委托：杯（详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她感兴趣的是关于赤杯与其诱惑力的更加详尽的描述。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:4}}],
@@ -153,7 +153,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlegrailc",
-            label: "委托：杯 (极其详尽)",
+            label: "委托：杯（极其详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她想要一些关于赤杯、极其详尽且“不加掩饰”的文字。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:6}}],
@@ -178,7 +178,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlemothb",
-            label: "委托：蛾 (详尽)",
+            label: "委托：蛾（详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她想要一份关于<b>蛾</b>的、详尽且神秘难解的文字。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:4}}],
@@ -189,7 +189,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlemothc",
-            label: "委托：蛾 (极其详尽)",
+            label: "委托：蛾（极其详尽）",
             aspects: {commission:1,job:1},
             description: "奥林普·贝赛女士正在为《凯里夏姆评论报》寻找适合的文章。她想要一篇关于<b>蛾</b>与其难解之谜的、极其详尽的阐析 。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:6}}],
@@ -214,7 +214,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleheartb",
-            label: "委托：心 (详尽)",
+            label: "委托：心（详尽）",
             aspects: {commission:1,job:1},
             description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>心</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:4}}],
@@ -225,7 +225,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleheartc",
-            label: "委托：心 (极其详尽)",
+            label: "委托：心（极其详尽）",
             aspects: {commission:1,job:1},
             description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>心</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:6}}],
@@ -248,7 +248,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleedgeb",
-            label: "委托：刃 (详尽)",
+            label: "委托：刃（详尽）",
             aspects: {commission:1,job:1},
             description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一些关于<b>刃</b>之实践的详尽记录。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:4}}],
@@ -259,7 +259,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleedgec",
-            label: "委托：刃 (极其详尽)",
+            label: "委托：刃（极其详尽）",
             aspects: {commission:1,job:1},
             description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想要一篇关于<b>刃</b>之实践的、极其详尽的文章。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:6}}],
@@ -283,7 +283,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleknockb",
-            label: "委托：启 (详尽)",
+            label: "委托：启（详尽）",
             aspects: {commission:1,job:1},
             description: "波碧愿意为她感兴趣的情报付酬。这一次，她想要一篇关于<b>启</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:4}}],
@@ -294,7 +294,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticleknockc",
-            label: "委托：启 (极其详尽)",
+            label: "委托：启（极其详尽）",
             aspects: {commission:1,job:1},
             description: "波碧愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>启</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:6}}],
@@ -319,7 +319,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlewinterb",
-            label: "委托：冬 (详尽)",
+            label: "委托：冬（详尽）",
             aspects: {commission:1,job:1},
             description: "波碧愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>冬</b>之奥秘的详尽报告。[要完成此委任，你需要一个能与之匹配且至少4级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:4}}],
@@ -330,7 +330,7 @@ slots:[{id:"lore",label:"知识", required:{lore:1},actionId:"work"},
 		{
 		
 		        id: "commissionarticlewinterc",
-            label: "委托：冬 (极其详尽)",
+            label: "委托：冬（极其详尽）",
             aspects: {commission:1,job:1},
             description: "波碧愿意为她感兴趣的情报付出酬劳。这一次，她想要一篇关于<b>冬</b>之奥秘的、极其详尽的报告。[要完成此委任，你需要一个能与之匹配且至少6级的知识碎片。]",
 			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:6}}],

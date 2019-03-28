@@ -1,0 +1,255 @@
+{"elements":
+    [
+	      		 {
+            id: "ascensionchangea",
+            label: "诱惑：转变",
+            aspects:
+            {desire: 1,changemarks:1},
+            description: "在某些夜里，当我沐浴在观众的目光之下，便有某种难以名状的东西在我心中振翅欲腾，而我又会因此变化成何种面目呢？[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+			xtriggers:{ascend:ascensionchangeb},
+			uniquenessgroup:"uqdesire"
+        },
+		      		 {
+            id: "ascensionchangeb",
+            label: "转变：化叶",
+            aspects:
+            {desire: 1,changemarks:2},
+            description: "每当有风吹来，我便会随之战栗，一颗孔雀石磨成的珠子常年紧贴着我的肌肤，而在那肌肤之下，便是已经脉络毕露的血管。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+			xtriggers:{ascend:ascensionchangec},
+			uniquenessgroup:"uqdesire"
+        },
+				      		 {
+            id: "ascensionchangec",
+            label: "转变：化珠",
+            aspects:
+            {desire: 1,changemarks:3},
+            description: "皮肤正从我的肌体上片片剥却，我也渐渐声名冷落，然而，我的眼睛也愈发光亮了起来。我身上某个隐秘之处藏有一颗海中珍珠。我不时会在夜里听到大海的声音；或者在清早醒来，发现自己的床单戴上了血迹。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+			xtriggers:{ascend:ascensionchanged},
+			uniquenessgroup:"uqdesire"
+        },
+			      		 {
+            id: "ascensionchanged",
+            label: "转变：化影",
+            aspects:
+            {desire: 1,changemarks:4},
+            description: "我的存在感日渐淡薄，程度已经到达了自己期望的极点。暗影伴在我的左右，而我的脚步也已几近无声。我的手上戴有套戒，上面镶嵌的黑玉却从来都被藏在里侧，用我的手心掩盖着存在。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+			xtriggers:{ascend:ascensionchangee},
+			uniquenessgroup:"uqdesire"
+        },
+			      		 {
+            id: "ascensionchangee",
+            label: "转变：创痕",
+            aspects:
+            {desire: 1,changemarks:5},
+            description: "我心中的黑暗失去了色泽，而我一切的色彩都已经淡去，在我感觉最为敏锐的地方伸出了新的耳廓。秘密横流在我的体表。我的舌头也已苍白失色，而在它的下面，一颗钙沸石的棱柱结晶一直伴我同行。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+			xtriggers:{ascend:ascensionchangef},
+			uniquenessgroup:"uqdesire"
+        },
+			      		 {
+            id: "ascensionchangef",
+            label: "转变：异瞳",
+            aspects:
+            {desire: 1,changemarks:6},
+            description: "我的眼白已经变作了黄色，而在最终的转变来临之前，全新的覆皮也已经覆满了我的四肢。我私下里还会佩戴金制的趾环，以及黄金和黄玉制成的耳环。不过，这些东西我从未在示现在旁人的视线之中。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+						xtriggers:{ascend:ascensionchangeg},
+						uniquenessgroup:"uqdesire"
+
+        },
+		
+					      		 {
+            id: "ascensionchangeg",
+            label: "转变：象牙",
+            aspects:
+            {desire: 1,changemarks:6},
+            description: "我的骨骼已经化成了与过去迥异的形态。它便是一切失却之物故事的载体。如若我在转变的过程中丧命，那么我便会成为故事的主人公，而这象牙的残片许也会在旁人的肌肤之上安家，为它居留的所在带来温暖吧。[如对这张卡片进行足够力度的升级，便可达成转变的胜利结局。在你的舞蹈中下足功夫，你便会找到通往下一步的孔径。]",
+						xtriggers:{ascend:ascensionchangeg},
+						uniquenessgroup:"uqdesire"
+
+        },
+      		 {
+            id: "sendingheartb",
+            label: "拟态：毒蛇",
+            aspects:
+            {sending:1,knock:1},
+            description: "毒蛇盘踞的地方，便是海水交于陆地，遇岸而返的所在。我必须在水边寻找一处力量汇集的去处。如果我和苏洛坎纳分享一些有关其他地方的秘密的话，她许也能同样帮助我找到一处这样的所在。[你身体的某些部分可化作蛇的形态在外游荡。将其与你的追随者一并送往某处，它便可以代替你表演那些你必须表演的舞蹈。如果在寻找地方的时候不太顺利，和苏洛坎纳就秘匿历史进行讨论会对你有所帮助。]",
+			uniquenessgroup:uqsending
+        },
+		      		 {
+            id: "sendingheartc",
+            label: "拟态：猫",
+            aspects:
+            {sending:1,moth:2},
+            description: "在夜里，猫会行走在生有黑色亚麻的河边。[你身体的某些部分可化作猫的形态在外游荡。将其与你的追随者一并送往某处，它便可以代替你表演那些你必须表演的舞蹈。如果在寻找地方的时候不太顺利，和苏洛坎纳就秘匿历史进行讨论会对你有所帮助。]",
+			uniquenessgroup:uqsending
+        },
+			      		 {
+            id: "sendingheartd",
+            label: "拟态：狐",
+            aspects:
+            {sending:1,grail:3},
+            description: "狐狸在山中的草甸里游荡，寻求着生花之人的触摸。[你身体的某些部分可化作狐狸的形态在外游荡。将其与你的追随者一并送往某处，它便可以代替你表演那些你必须表演的舞蹈。如果在寻找地方的时候不太顺利，和苏洛坎纳就秘匿历史进行讨论会对你有所帮助。]",
+			uniquenessgroup:uqsending
+        },
+			      		 {
+						 id: "sendinghearte",
+            label: "拟态：鹰",
+            aspects:
+            {sending:1,lantern:4},
+            description: "鹰翱翔在天路之上，见到了如此光景：第一栖木就在弥迦之内，那里便是天空之力第一次分享他们秘密的地方。[你身体的某些部分可化作鹰的形态在外游荡。将其与你的追随者一并送往某处，它便可以代替你表演那些你必须表演的舞蹈。如果在寻找地方的时候不太顺利，和苏洛坎纳就秘匿历史进行讨论会对你有所帮助。]",
+			uniquenessgroup:uqsending
+        },
+		
+					      		 {
+            id: "sendingheartf",
+            label: "拟态：鸽",
+            aspects:
+            {sending:1,winter:5},
+            description: "旁物尽皆忘却之时，鸽子的记忆却会留存如旧。[你身体的某些部分可化作鸽子的形态在外游荡。将其与你的追随者一并送往某处，它便可以代替你表演那些你必须表演的舞蹈。如果在寻找地方的时候不太顺利，和苏洛坎纳就秘匿历史进行讨论会对你有所帮助。]",
+			uniquenessgroup:uqsending
+        },
+							      		 
+ {
+            id: "sendingheartg",
+            label: "拟态：野猪",
+            aspects:
+            {sending:1,way:1},
+            description: "在此种形态之下，我将臣服于会任何持有王肤之键的人[你身体的某些部分可以化作一头狂野的黑兽在外游荡。]",
+			uniquenessgroup:uqsending
+        },
+
+		      		 {
+            id: "sendingmothb",
+            label: "龄虫：静寂",
+            aspects:
+            {sending:1,knock:1},
+            description: "我们将在海边一座安静的房子里寻求第二次转变。我必须在水边寻找一处灵地，如果我和苏洛坎纳分享有关其它地方的秘密的话，她应该也能帮上我的忙。[你身体的某些部分可以化作蛇形在外游荡。将它和你的追随者一起送去某处。它便可以代替你表演你必须表演的舞蹈。如果在寻找地点的时候有困难，就和苏洛坎纳就秘匿历史的话题进行交谈吧。]",
+			uniquenessgroup:uqsending
+        },
+		      		 {
+            id: "sendingmothc",
+            label: "龄虫：藏形",
+            aspects:
+            {sending:1,moth:2},
+            description: "在黑兽掘洞栖身的石头之中，在眼之假面的背后，我们将寻求进行第三次转变。[你身体的某些部分可以化作猫形在外游荡。将它和你的追随者一起送去某处。它便可以代替你表演你必须表演的舞蹈。如果在寻找地点的时候有困难，就和苏洛坎纳就秘匿历史的话题进行交谈吧。]",
+			uniquenessgroup:uqsending
+        },
+			      		 {
+            id: "sendingmothd",
+            label: "龄虫：黄褐",
+            aspects:
+            {sending:1,grail:3},
+            description: "在空气都成为诱惑的高处，我们将寻求进行第四次转变。[你身体的某些部分可以化作狐形在外游荡。将它和你的追随者一起送去某处。它便可以代替你表演你必须表演的舞蹈。如果在寻找地点的时候有困难，就和苏洛坎纳就秘匿历史的话题进行交谈吧。]",
+			uniquenessgroup:uqsending
+        },
+			      		 {
+            id: "sendingmothe",
+            label: "龄虫：远行",
+            aspects:
+            {sending:1,lantern:4},
+            description: "在弥阿之中，在蜈蚣遍照一切未来可能之事的地方，我们将寻求进行第五次转变。[你身体的某些部分可以化作鹰形在外游荡。将它和你的追随者一起送去某处。它便可以代替你表演你必须表演的舞蹈。如果在寻找地点的时候有困难，就和苏洛坎纳就秘匿历史的话题进行交谈吧。]",
+			uniquenessgroup:uqsending
+        },
+		 {
+            id: "sendingmothf",
+            label: "龄虫：渴望",
+            aspects:
+            {sending:1,winter:5},
+            description: "在他们记忆着太阳的遥远之处，我将带着我借来的所有恨意，进行第六次转变。[你身体的某些部分可以化作狼形在外游荡。将它和你的追随者一起送去某处。它便可以代替你表演你必须表演的舞蹈。如果在寻找地点的时候有困难，就和苏洛坎纳就秘匿历史的话题进行交谈吧。]",
+			uniquenessgroup:uqsending
+        },
+					      		 {
+            id: "sendingmothg",
+            label: "成虫",
+            aspects:
+            {sending:1,way:1},
+            description: "为了进行最后一次转变，我将穿越林中之门。献与美杜莎的祭品自始未变，都是一头童子身的红色母鹿，而我也会以雌鹿的形态从门中穿过。[你翱翔在夜晚的回环中。]",
+			uniquenessgroup:uqsending
+        },
+		
+							      		 {
+            id: "sendingmothheartg",
+            label: "拟态：成虫",
+            aspects:
+            {sending:1,way:1},
+            description: "我的魂灵将化作一头生有巨角的野兽，从我的身体上离开。它要去往何处？可是要成为祭品？[内者外也，外者内也。]",
+			icon:"sendingmothg",
+			uniquenessgroup:uqsending
+        },
+		
+		{
+            id: "ascensionlessonhearta",
+            label: "抛却服饰",
+            aspects:{},
+            description: "孔雀石的教谕有云，作为赤子的自我并非真实的自我，然而，这话却也不假。[在野心勃发的时节中，这张卡可以升级你的转变欲望。]",unique:true
+        },
+				{
+            id: "ascensionlessonheartb",
+            label: "抛却覆皮",
+            aspects:{},
+            description: "双子和巨蛇进行着战争，而在这场战争里我才明白，成为一道门扉会带来怎样的痛楚。",unique:true
+        },
+				{
+            id: "ascensionlessonheartc",
+            label: "抛却足音",
+            aspects:{},
+            description: "鹄绒教谕我：意欲揭露之物，必先进行掩藏，以应对其披露带来的种种后果，我已然抛却了自己的脚步声。",unique:true
+        },
+				{
+            id: "ascensionlessonheartd",
+            label: "抛却颜色",
+            aspects:{},
+            description: "圃仙人已经赐予了我万众渴求的东西，同时夺去了我的色彩。",unique:true
+        },
+				{
+            id: "ascensionlessonhearte",
+            label: "抛却视力",
+            aspects:{},
+            description: "我将双眼奉与流浪者，这样一来，我便应能用它看到她将见到的景象：去往红之变貌的路途。",unique:true
+        },
+				{
+            id: "ascensionlessonheartf",
+            label: "抛却骨骼",
+            aspects:{},
+            description: "悼歌者教导我，在我身体最后的部分进行转变的时候，我要去进行记忆。而在我穿越王肤之门时，我也将会把这教导谨记于心。",unique:true
+        },
+		
+				{
+            id: "ascensionlessonmotha",
+            label: "抛却服饰",
+            aspects:{},
+            description: "环杉命令我袒露自己的肉体，我也照办了。不过，我不会一直听令于它。[在野心勃发的时节中，这个要素可以升级你的转变欲望。]",unique:true
+        },
+				{
+            id: "ascensionlessonmothb",
+            label: "抛却覆皮",
+            aspects:{},
+            description: "蚁母穿透，女巫索求，巫女溶解。随后，我的皮肤如雨般稀薄。",unique:true
+        },
+				{
+            id: "ascensionlessonmothc",
+            label: "抛却足音",
+            aspects:{},
+            description: "我漫步在河岸上的黑色亚麻之上，它用自己的千百根舌头舔舐着我的双脚，直到我无法忍受为止，而在那之后，我便只是一道影子了。",unique:true
+        },
+				{
+            id: "ascensionlessonmothd",
+            label: "抛却颜色",
+            aspects:{},
+            description: "我来到了制花人作成的花朵旁，成为了其中的一部分——而我的色彩，也被他保存了起来。",unique:true
+        },
+				{
+            id: "ascensionlessonmothe",
+            label: "抛却视力",
+            aspects:{},
+            description: "蜈蚣为我讲了她的笑话，作为交换，我让她为我雕刻黄金之眼，直到复眼出现在其上为止。",unique:true
+        },
+				{
+            id: "ascensionlessonmothf",
+            label: "抛却骨骼",
+            aspects:{},
+            description: "太阳已被分割开来，狼也不会让我忘记它骨头上的盐味——除非漫索迎来崩毁的一刻。现在，它又要我带着这味道，去穿越林中之门的门扉。",unique:true
+        },
+
+		
+]
+};

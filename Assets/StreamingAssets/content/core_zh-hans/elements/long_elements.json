@@ -1,0 +1,251 @@
+{"elements":
+    [
+		 {
+        id: "welland_unknown",
+            label: "一个阴暗的身影",
+            description: "他的力量让人望而却步；他的身份却暂且不为人知。[一旦长生者的力量，人脉，或者星光达到三级，或许可以减少他们的印记。]",
+			aspects:{long.enemy:1,long.preference.assault:1},
+			xtriggers:{revealidentity:welland}
+        },
+				 {
+        id: "tryphon_unknown",
+            label: "一个阴暗的身影",
+            description: "他的力量让人望而却步；他的身份却暂且不为人知。[一旦长生者的力量，人脉，或者星光达到三级，或许可以减少他们的印记。]",
+			aspects:{long.enemy:1,long.preference.intrigue:1},
+			xtriggers:{revealidentity:tryphon}
+        },
+		
+				 {
+        id: "diarist_unknown",
+            label: "一个阴暗的身影",
+            description: "他的力量让人望而却步；他的身份却暂且不为人知。[一旦长生者的力量，人脉，或者星光达到三级，或许可以减少他们的印记。]",
+			aspects:{long.enemy:1,long.preference.dreamwork:1},
+			xtriggers:{revealidentity:diarist}
+        },
+		
+				 {
+        id: "julian_unknown",
+            label: "一个阴暗的身影",
+            description: "他的力量让人望而却步；他的身份却暂且不为人知。[一旦长生者的力量，人脉，或者星光达到三级，或许可以减少他们的印记。]",
+			aspects:{long.enemy:1,long.preference.winter:1},
+			xtriggers:{revealidentity:julian}
+        },
+		
+				 {
+        id: "welland",
+            label: "卫兰船长",
+            description: "“这可不是什么高尚的行为。我们不会让什么小萝卜头随便占上居所一席。”[卫兰更有可能使用突然袭击。]",
+			aspects:{long.enemy:1,long.preference.assault:1},
+			verbicon:"long-forge",
+			xtriggers:{longded:welland.defeated}
+        },
+				 {
+        id: "tryphon",
+            label: "特里芬女士",
+            description: "“不，他绝不可能伤害你；他找不到你。但我不会受到类似的制约。”[特里芬更有可能使用阴谋陷害你。]",
+			aspects:{long.enemy:1,long.preference.intrigue:1},
+			verbicon:"long-grail",
+			xtriggers:{longded:tryphon.defeated}
+        },
+		
+				 {
+        id: "diarist",
+            label: "日记作者",
+            description: "“你手下的伪装者会做下一个绝妙的注脚，不过，我是不指望他搞出别的东西来的。”[日记作者更有可能使用星光攻击。]",
+			aspects:{long.enemy:1,long.preference.dreamwork:1},
+			verbicon:"long-lantern",
+			xtriggers:{longded:diarist.defeated}
+        },
+		
+				 {
+        id: "julian",
+            label: "J.C.",
+            description: "“没有别的具名者了。就这样吧；抱歉；我没时间聊天。”[朱利安会更加频繁的利用空闲时间来提高他的能力。]",
+			aspects:{long.enemy:1,long.preference.winter:1},
+			verbicon:"long-winter",
+			xtriggers:{longded:julian.defeated}
+        },
+{id:"welland.defeated",
+label:"一封来自卫兰的信",
+description:"“<b>先生</b>——（卫兰似乎没有意料到自己会被除了叫“先生”的那个人之外的人击败）
+
+我将是你所面对过的最危险的敌人，而我所击败的人远超过你。你如果只是做燃油那便可惜了。我请求你像锻狮以前那样斩断自己的枷锁，在长生者中寻找到一席之地。
+
+我会附上大流士告诉亚历山大的秘密。请明智的使用它。
+
+此致，
+
+卫兰”
+
+[附件中的秘密，你可以使用它来摆脱你的导师的控制。]
+",
+slots:[{id:"mentor",label:"赋形者",required:{apostleforge.mentor:1},actionId:study}],
+aspects:{text:1}
+},	
+
+{id:"tryphon.defeated",
+label:"一封来自特里芬女士的信",
+description:"“亲爱的，
+
+我输了，你征服了我，我把自己奉献与你。我将自己的一块残片封存起来，然后大步前去，拥抱自己的死亡。
+
+吞噬我残留的部分，我们便会如同圃仙人所欲图的一样，从此合为一体。抛却你的“愉悦”罢，落在你肩头上的天命比起这些要远大许多。
+
+你会发问：“这可是你的最后一个把戏？可是在绝望间贯彻你背叛行为的计谋？”而我只能如此作答：品尝我的滋味，然后且看吧。
+
+敬上，
+
+你美味的朋友，
+
+特里芬”
+
+[如果你吞噬了特里芬女士封装起来的残骸，你便可借此摆脱导师的控制。]
+",
+slots:[{id:"mentor",label:"愉悦者",required:{apostlegrail.mentor:1},actionId:study}],
+aspects:{text:1}
+},
+
+{id:"diarist.defeated",
+label:"日记作者的梦境",
+description:"从写字间西侧窗外射入的阳光正渐渐沉落。日记作者正写着最后一行，屋中的温度褪去，金色也变成了灰。随着啪的一声，他合上了自己那本小小的簿子。“死亡就在下面，”他解释说。“而我已经在失却自己的高度了。我不会怨恨于你。
+不过啊，我还是得说，我希望你手下的沐光明者会吃绊子，最后在飞升的路上摔将下来。”话音刚落，就只见他的脸开始化作一片空白，就像一个人在抹去自己写下的东西一般，此时他的眼睛已经消失了。他将他那本小小的簿子递到了你的手上。“这是你最后的机会，你可以去往我曾去往的地方，或者你欲图去往的所在。至于哪里更好些，我是知道的”，接着，他的嘴也像开张的拉链一般缠卷起来，再然后，那里只剩下了一张空荡的白纸。
+
+[如若你仔细琢磨日记之梦，便可摆脱导师的控制。]
+
+",
+slots:[{id:"mentor",label:"沐光明者",required:{apostlelantern.mentor:1},actionId:study}],
+aspects:{text:1},
+lifetime:120
+},
+
+	
+{id:"julian.defeated",
+label:"一封来自朱利安·寇兹利的信",
+description:"“致吾敌：
+
+你休想轻易让我粉骨碎身，但是我也将接受你击败我的事实，故此，我将奉上建言，以资奖励。
+
+你不过一个被傻瓜诱骗的傻瓜，跑去漫索之中，在墙上放进了又一块石头。如果你有这种意愿，也可以把那石头扔进夜色之中。
+
+假使你真的这么做了，你会孤独而空虚的死去，不过，一切——包括长生者们，也会遭逢同样的命运，这样一来，你就可以在死亡的同时，迎来解脱。
+
+——朱利安上”
+
+[如果你将朱利安的教导当回事，便可摆脱导师的控制。]
+",
+slots:[{id:"mentor",label:"创始人",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
+aspects:{text:1}
+},
+
+{id:"strategy.prep",
+label:"进行中的筹划工作",
+description:"我们那位不朽的敌人正在筹划另一次行动。[长生者需要三次筹划工作后才能开始其他的动作。]",
+lifetime:1},
+
+{id:"strategy.prep.delayed",
+label:"筹划工作受到破坏！",
+description:"我们派出去的间谍扰乱了敌人的筹划工作。[你的破坏导致长生者的一次筹划工作没能成功。]",
+lifetime:1},
+	
+	
+	
+		{id:"strategy.assault.concealed",
+label:"长生者的计划",
+description:"长生者正在筹划下一次针对我们的行动。如果我们能派出间谍，我们或许能发现他们的意图。",
+aspects:{intention.assault:1},
+xtriggers:{revealstrategy:strategy.assault.revealed},
+lifetime:1,
+icon:"strategy.unknown"
+},
+{id:"strategy.intrigue.concealed",
+label:"长生者的计划",
+description:"长生者正在筹划下一次针对我们的行动。如果我们能派出间谍，我们或许能发现他们的意图。",
+aspects:{intention.intrigue:1},
+xtriggers:{revealstrategy:strategy.intrigue.revealed},
+lifetime:1,
+icon:"strategy.unknown"
+
+},
+{id:"strategy.dreams.concealed",
+label:"长生者的计划",
+description:"长生者正在筹划下一次针对我们的行动。如果我们能派出间谍，我们或许能发现他们的意图。",
+aspects:{intention.dreams:1},
+xtriggers:{revealstrategy:strategy.dreams.revealed},
+lifetime:1,
+icon:"strategy.unknown"
+
+},
+{id:"strategy.downtime.concealed",
+label:"长生者的计划",
+description:"长生者正在筹划下一次针对我们的行动。如果我们能派出间谍，我们或许能发现他们的意图。",
+aspects:{intention.downtime:1},
+xtriggers:{revealstrategy:strategy.downtime.revealed},
+lifetime:1,
+icon:"strategy.unknown"
+
+},
+
+
+
+		{id:"strategy.assault.revealed",
+label:"长生者计划曝光：袭击",
+description:"这一次，我们的敌人准备使用某种方法直接攻击我们。",
+aspects:{intention.assault:1,strategy.revealed:1},
+xtriggers:{revealstrategy:strategy.assault.revealed},
+lifetime:1
+},
+{id:"strategy.intrigue.revealed",
+label:"长生者计划曝光：阴谋",
+description:"这次，我们的敌人准备了某种阴谋来对付我们。",
+aspects:{intention.intrigue:1,strategy.revealed:1},
+xtriggers:{revealstrategy:strategy.intrigue.revealed},
+lifetime:1
+
+},
+{id:"strategy.dreams.revealed",
+label:"长生者计划曝光：梦境",
+description:"这次，我们的敌人准备通过漫索找到我们。",
+aspects:{intention.dreams:1,strategy.revealed:1},
+xtriggers:{revealstrategy:strategy.dreams.revealed},
+lifetime:1
+
+},
+{id:"strategy.downtime.revealed",
+label:"长生者计划曝光：暂缓",
+description:"这次，我们的敌人暂时不会攻击我们。他们会先进行修整，或许他们会变得更加强大。",
+aspects:{intention.downtime:1,strategy.revealed:1},
+xtriggers:{revealstrategy:strategy.downtime.revealed},
+lifetime:1
+},
+
+
+{id:"strategy.dreams.preference",
+label:"预感：灵魂的课题",
+description:"在下次行动中，这位长生者或许会尝试在梦境中了解我们的弱点，尽管他的计划总是另有指示。",
+comments: "This is currently unused - it became less relevant once tablereqs came in.",
+lifetime:1,
+noartneeded:true
+},
+
+
+
+{id:"long.lesson.might",
+label:"增强力量",
+aspects:{long.lesson:1},
+description:"我们的不朽敌人更认真对待我们了——这次他们准备了更多的资源。 [一名长生者敌人的力量将提升，并允许他们进行更强力的攻击。]"
+},
+
+
+{id:"long.lesson.connections",
+label:"更多人脉",
+aspects:{long.lesson:1},
+description:"我们的不朽敌人更认真对待我们了——这次他们准备了更多的资源。 [一名长生者敌人的力量将提升，并允许他们施行更狡猾的阴谋。]"
+},
+
+{id:"long.lesson.dreamwork",
+label:"灵魂一瞥",
+aspects:{long.lesson:1},
+description:"我们不朽的敌人加深了对我们的了解。 [一位敌方长生者的星光增加了，这将让他可以在我们的梦中发挥出更多力量。]",
+},
+]
+};

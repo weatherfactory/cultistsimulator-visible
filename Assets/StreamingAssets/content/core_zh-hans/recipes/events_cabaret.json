@@ -1,5 +1,6 @@
  {"recipes": [
 
+
 	
 	{id:"explorecabaret",
 	actionId: "explore",
@@ -7,6 +8,7 @@
 	requirements: {locationcabaret:1,funds:1},
 	startdescription:"入口在深红色、朱砂色和肉粉色的巨大帷帘之下若隐若现。门的上方写着俱乐部的标语：“IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI”。它的意思是：“我们彻夜飞旋，直至融入火焰。”",
 	description: ".",
+	effects: {funds:-1},
 	craftable:true,
 	deckeffect: {"cabaretevents":1},
 	linked:[{id:"cabaretpleasure",chance:100},
@@ -42,7 +44,7 @@
 	actionId: "explore",
 	requirements:{erudition:1},
 	startdescription: "飞舞的披肩和热忱的肢体构成了今晚杂乱无章的表演。 观众们转而交谈起来。",
-	description: "我花了一整夜与一桌冒充内行、装腔作势、或许根本就是小白的家伙交换理论。其中某些理论可能是真的。",
+	description: "我花了一整夜与一桌冒充内行、装腔作势、或许根本就是刚入行的家伙交换理论。其中某些理论可能是真的。",
 	effects:{contentment:1},
 	warmup:15,
 	craftable:false

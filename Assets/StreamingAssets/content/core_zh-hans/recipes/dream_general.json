@@ -1,435 +1,233 @@
-﻿{
-recipes: [
-	{
-		requirements: 
+{
+"recipes": [
 		{
-			ascensionpowera: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "在冥想中追求神秘力量",
-		startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-		id: "dreamascensionpowera",
-		actionId: "dream",
-		description: "我决定维持现状……至少暂时如此。",
-		slots: 
-		[
-			{
-				id: "Calculation",
-				required: 
+        id: "dreamascensionpowera",
+        label: "在冥想中追求神秘力量",
+        actionId: "dream",
+        requirements: {ascensionpowera: 1},
+		slots: [{id:"Calculation",required:{lore:1,health:1,reason:1}, description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少暂时如此。",
+		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_power_1to2",chance:100}],
+        warmup: 60,
+        craftable: true
+    },
 				{
-					reason: "1",
-					lore: "1",
-					health: "1",
-				},
-				description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。",
-			},
-		],
-		alternativerecipes: 
-		[
+        id: "dreamascensionsensationa",
+        label: "在冥想中追寻感官的认知",
+        actionId: "dream",
+        requirements: {ascensionsensationa: 1},
+		slots: [{id:"Musing",required:{lore:1,passion:1,reason:1}, description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少暂时如此。",
+        		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_sensation_1to2m",chance:50},
+		{id: "dreamascension_upgrade_sensation_1to2f",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
 			{
-				id: "dreamascension_switchto_sensation",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_switchto_enlightenment",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_upgrade_power_1to2",
-				chance: "100",
-			},
-		],
-	},
+        id: "dreamascensionenlightenmenta",
+        label: "在冥想中追求神秘知识",
+        actionId: "dream",
+        requirements: {ascensionenlightenmenta: 1},
+		slots: [{id:"Reflection",required:{lore:1,passion:1,health:1},description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少暂时如此。",
+        		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_upgrade_enlightenment_1to2",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
 	{
-		requirements: 
-		{
-			ascensionsensationa: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "在冥想中追寻感官的认知",
-		startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-		id: "dreamascensionsensationa",
+        id: "dreamascension_switchfromchange",
+		label: "追寻感官而不是转变",
+		requirements:{ascensionchangea:1},
 		actionId: "dream",
-		description: "我决定维持现状……至少暂时如此。",
-		slots: 
-		[
-			{
-				id: "Musing",
-				required: 
-				{
-					reason: "1",
-					lore: "1",
-					passion: "1",
-				},
-				description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "dreamascension_switchto_power",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_switchto_enlightenment",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_upgrade_sensation_1to2m",
-				chance: "50",
-			},
-			{
-				id: "dreamascension_upgrade_sensation_1to2f",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			ascensionenlightenmenta: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "在冥想中追求神秘知识",
-		startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-		id: "dreamascensionenlightenmenta",
-		actionId: "dream",
-		description: "我决定维持现状……至少暂时如此。",
-		slots: 
-		[
-			{
-				id: "Reflection",
-				required: 
-				{
-					lore: "1",
-					passion: "1",
-					health: "1",
-				},
-				description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "dreamascension_switchto_sensation",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_switchto_power",
-				chance: "100",
-			},
-			{
-				id: "dreamascension_upgrade_enlightenment_1to2",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			ascensionchangea: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		label: "Pursue Sensation rather than Change",
-		startdescription: "Of all things, the desire for change is most susceptible to change. [It isn't straightforward to regain the desire for Change, once it's lost.]",
-		id: "dreamascension_switchfromchange",
-		actionId: "dream",
-		description: "I have refocused my intentions. There are experiences tucked like veins beneath the world's skin. I will know the deepest of them, though the experience might devour me.",
-		effects: 
-		{
-			ascensionsensationa: "1",
-			desire: "-1",
-		},
-	},
-	{
-		id: "dreamascension_switchto_power",
-		startdescription: "或许力量是最令人信服的追求。",
-		requirements: 
-		{
-			passion: "1",
-		},
-		description: "我重新确认了自己的目标。我的前辈们曾经掌控过重铸的力量：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
-		effects: 
-		{
-			ascensionpowera: "1",
-			desire: "-1",
-		},
+		effects:{desire:-1,ascensionsensationa:1},
+		startdescription:"所有事物中，变换的欲望是最为善变的。[一旦失去后，转变的欲望不能直接重新获得。]",
+		description: "我重新确认了自己的目标。那些经历就像这个世界表皮之下被掩盖的脉络。我将会知道它们最深层的秘密，尽管这也许会将我吞噬。",
+		warmup: 60,
+		craftable:true
+},
+{
+        id: "dreamascension_switchto_power",
 		label: "现在，我追求力量。",
 		actionId: "dream",
-	},
-	{
-		id: "dreamascension_switchto_sensation",
-		startdescription: "也许感官才是更甜蜜的追求。",
-		requirements: 
-		{
-			health: "1",
-		},
-		description: "我重新确认了自己的目标。那些经历就像这个世界表皮之下被掩盖的脉络。我将会知道它们最深层的秘密，尽管这也许会将我吞噬。",
-		effects: 
-		{
-			ascensionsensationa: "1",
-			desire: "-1",
-		},
+		requirements: {passion:1},
+		effects:{desire:-1,ascensionpowera:1},
+		startdescription:"或许力量是最令人信服的追求。",
+		description: "我重新确认了自己的目标。我的前辈们曾经掌控过重铸的力量：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
+},
+{
+        id: "dreamascension_switchto_sensation",
 		label: "现在，我追求感官。",
 		actionId: "dream",
-	},
-	{
-		id: "dreamascension_switchto_enlightenment",
-		startdescription: "也许知识才是更好的目标。",
-		requirements: 
-		{
-			reason: "1",
-		},
-		description: "我重新确认了自己的目标。我之前的先驱曾掌握过至高的、富有洞见的奥秘，那些透过玻璃般的骸骨与羊皮纸般的皮肤闪耀着的奥秘。我也应当掌握这些奥秘，尽管一旦当我尝试承载这些奥秘，它会将我瓦解。",
-		effects: 
-		{
-			ascensionenlightenmenta: "1",
-			desire: "-1",
-		},
+		requirements: {health:1},
+		effects:{desire:-1,ascensionsensationa:1},
+		startdescription:"也许感官才是更甜蜜的追求。",
+		description: "我重新确认了自己的目标。那些经历就像这个世界表皮之下被掩盖的脉络。我将会知道它们最深层的秘密，尽管这也许会将我吞噬。",
+},
+
+{
+        id: "dreamascension_switchto_enlightenment",
 		label: "现在，我以启智为目标。",
 		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			forge: "1",
-		},
+		requirements: {reason:1},
+				effects:{desire:-1,ascensionenlightenmenta:1},
+		startdescription:"也许知识才是更好的目标。",
+				description: "我重新确认了自己的目标。我之前的先驱曾掌握过至高的、富有洞见的奥秘，那些透过玻璃般的骸骨与羊皮纸般的皮肤闪耀着的奥秘。我也应当掌握这些奥秘，尽管一旦当我尝试承载这些奥秘，它会将我瓦解。",
+},
+
+{
+        id: "dreamascension_upgrade_power_1to2",
 		label: "投身于火",
-		startdescription: "我将投身追寻力量。",
-		id: "dreamascension_upgrade_power_1to2",
 		actionId: "dream",
+		requirements: {lore:1,forge:1},
+		startdescription:"我将投身追寻力量。",
 		description: "我低语着那些铁匠对铁、凶手对受害者、火焰对燃料所说的话。只有我自己知道我做了什么，但它已经为我开辟了一条道路。[我向着可怖的飞升又进了一步。]",
-		effects: 
-		{
-			ascensionpowera: "-1",
-			ascensionpowerb: "1",
-		},
-		burnimage: "forgededication",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			grail: "1",
-		},
+		effects:{ascensionpowera:-1,ascensionpowerb:1},
+		burnimage: "forgededication"
+},
+
+
+{
+        id: "dreamascension_upgrade_sensation_1to2m",
 		label: "投身于血",
-		startdescription: "我将投身追求感官。",
-		id: "dreamascension_upgrade_sensation_1to2m",
 		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"我将投身追求感官。",
 		description: "有些话语悦耳。有些话语可口。美妙的味道洋溢于我的舌尖，令我永远无法忘怀。[我向着可怖的飞升又进了一步。]",
-		effects: 
-		{
-			ascensionsensationa: "-1",
-			ascensionsensationbm: "1",
-		},
-		burnimage: "graildedication",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			grail: "1",
-		},
+		effects:{ascensionsensationa:-1,ascensionsensationbm:1},
+		burnimage: "graildedication"
+},
+{
+        id: "dreamascension_upgrade_sensation_1to2f",
 		label: "投身于血",
-		startdescription: "我将投身追求感官。",
-		id: "dreamascension_upgrade_sensation_1to2f",
 		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"我将投身追求感官。",
 		description: "有些话语悦耳。有些话语可口。美妙的味道洋溢于我的舌尖，令我永远无法忘怀。[我向着可怖的飞升又进了一步。]",
-		effects: 
-		{
-			ascensionsensationa: "-1",
-			ascensionsensationbf: "1",
-		},
-		burnimage: "graildedication",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			lantern: "1",
-		},
+		effects:{ascensionsensationa:-1,ascensionsensationbf:1},		
+		burnimage: "graildedication"
+},
+
+{
+        id: "dreamascension_upgrade_enlightenment_1to2",
 		label: "投身于光",
-		startdescription: "我将投身追求知识。",
-		id: "dreamascension_upgrade_enlightenment_1to2",
 		actionId: "dream",
+		requirements: {lore:1,lantern:1},
+		startdescription:"我将投身追求知识。",
 		description: "我曾说过这样的话：“时枢神皆有其颜色，但颜色只出现在有光存在的地方。”我会去有光的地方，并让光将我漂至透明。[我向着可怖的飞升又进了一步。]",
-		effects: 
-		{
-			ascensionenlightenmenta: "-1",
-			ascensionenlightenmentb: "1",
-		},
-		burnimage: "lanterndedication",
+		effects:{ascensionenlightenmenta:-1,ascensionenlightenmentb:1},		
+		burnimage: "lanterndedication"
+},
+
+
+
+
+	{
+	id: "dreamreason",
+	label: "神游的思绪",
+	actionId: "dream",
+	requirements: {reason: 1},
+	effects: {},
+	startdescription: "曾有人说，是伴随着理智的长眠催生了怪物。或许经常让思想在睡眠中徘徊是有益健康的。但是，若是我就此坠入深梦，迟早有一天，怪兽会在我自己的恐惧当中诞生。",
+	description: ".",
+	warmup: 60,
+	craftable: true,
+	linked: [{id:"dream_router",chance:100}]
+	},
+	
+	{id: "dream_router",
+	label: "睡眠群像",
+	actionId: "dream",
+	deckeffect: {dreamreasonresults:1},
+	linked: [
+	{id: "dreamcontentment",chance: 100},
+	{id: "dreamrestlessness",chance: 100},
+{id: "dreamvitality",chance: 100},	
+	{id: "dreamglimmering", chance: 100},
+	{id: "nightmarehersault", chance: 100},
+	{id: "nightmarecleansingdawn", chance: 100},
+	],
+	warmup:10
 	},
 	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			reason: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "神游的思绪",
-		startdescription: "曾有人说，是伴随着理智的长眠催生了怪物。或许经常让思想在睡眠中徘徊是有益健康的。但是，若是我就此坠入深梦，迟早有一天，怪兽会在我自己的恐惧当中诞生。",
-		id: "dreamreason",
-		actionId: "dream",
-		description: ".",
-		effects: 
-		{
-		},
+	id: "dreamcontentment",
+	label: "关于雨的梦境",
+	actionId: "dream",
+	requirements: {contentment:1},
+	
+	startdescription: "要下雨了，不过却是恰到好处的那种雨。",
+	description: "我梦见了雨在檐上低语，像个老朋友般地轻敲窗户，恶作剧般地在烟囱里发出嘶嘶声。在这种恰到好处的雨中，实在很难让人感到失落。",
+	warmup: 10,
 	},
 	{
-		id: "dream_router",
-		deckeffect: 
-		{
-			dreamreasonresults: "1",
-		},
-		warmup: "10",
-		linked: 
-		[
-			{
-				id: "dreamcontentment",
-				chance: "100",
-			},
-			{
-				id: "dreamrestlessness",
-				chance: "100",
-			},
-			{
-				id: "dreamvitality",
-				chance: "100",
-			},
-			{
-				id: "dreamglimmering",
-				chance: "100",
-			},
-			{
-				id: "nightmarehersault",
-				chance: "100",
-			},
-			{
-				id: "nightmarecleansingdawn",
-				chance: "100",
-			},
-		],
-		label: "睡眠群像",
-		actionId: "dream",
+	id: "dreamrestlessness",
+	label: "关于门的梦境",
+	actionId: "dream",
+	requirements: {restlessness:1},
+	startdescription: "今夜，我梦见了由门组成的迷宫。",
+	description: "我梦见了敞开的门。红色的门，金色的门，玻璃门，像书籍一样装订起来的门，轨道车厢门还有城堡大门。我身后便是我寻找的某个事物。我醒来时，门阖上的声音仍回荡在耳边。",
+	warmup: 10,
+	},{
+	id: "dreamvitality",
+	label: "深沉又安谧的睡梦",
+	actionId: "dream",
+	requirements: {vitality:1},
+	startdescription: "今天我将会梦见——",
+	description: "我什么也没梦见。我醒了，伸了伸懒腰。那几个小时的安静时光令我精神焕发。",
+	warmup: 10,
 	},
 	{
-		id: "dreamcontentment",
-		startdescription: "要下雨了，不过却是恰到好处的那种雨。",
-		warmup: "10",
-		requirements: 
+	id: "dreamglimmering",
+	label: "关于玻璃后的稀奇物什的梦",
+	actionId: "dream",
+	requirements: {glimmering:1},
+	startdescription: "今天我将会梦见一个博物馆。",
+	description: "在不存在的博物馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚硬盒子中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一听装着风暴的锡罐。我总会在看到走廊尽头前醒来。",
+	warmup: 10,
+	},
 		{
-			contentment: "1",
-		},
-		description: "我梦见了雨在檐上低语，像个老朋友般地轻敲窗户，恶作剧般地在烟囱里发出嘶嘶声。在这种恰到好处的雨中，实在很难让人感到失落。",
-		label: "关于雨的梦境",
-		actionId: "dream",
+	id: "nightmarecleansingdawn",
+	label: "梦魇：净化的黎明",
+	actionId: "dream",
+	requirements: {fascination: 1},
+		alternativerecipes: [{id: "nightmarecleansingdawnsuccess",chance: 30}],
+	startdescription: "太阳升起了。它不会放过我。",
+	description: "现在我可以一块又一块地褪去我的肉，像从牙缝中剔出细丝一样拽出筋腱。我的皮肤像一匹破布一样落在地上。太阳伴着胜利的战吼升至地平线之上。光像酸一样滴落在我裸露的骨头上。疼痛唤醒了我。我的骨头会抽痛好几天。",
+	warmup: 10,
+	},
+		{id: "nightmarecleansingdawnsuccess",
+		actionId:"dream",
+	effects: {influencelanternc: 1},
+		description: "现在我可以一块又一块地褪去我的肉，像从牙缝中剔出细丝一样拽出筋腱。我的皮肤像一匹破布一样落在地上。太阳伴着胜利的战吼升至地平线之上。光像酸一样滴落在我裸露的骨头上。疼痛唤醒了我。我的骨头会抽痛好几天，但太阳的话语就此烙在了我的骨头上。"
 	},
 	{
-		id: "dreamrestlessness",
-		startdescription: "今夜，我梦见了由门组成的迷宫。",
-		warmup: "10",
-		requirements: 
-		{
-			restlessness: "1",
-		},
-		description: "我梦见了敞开的门。红色的门，金色的门，玻璃门，像书籍一样装订起来的门，轨道车厢门还有城堡大门。我身后便是我寻找的某个事物。我醒来时，门阖上的声音仍回荡在耳边。",
-		label: "关于门的梦境",
-		actionId: "dream",
+	id: "nightmarehersault",
+	label: "海索的梦魇",
+	actionId: "dream",
+	requirements: {dread: 1},
+	alternativerecipes: [{id: "nightmarehersaultsuccess",chance: 30}],
+	startdescription: "我下去了。",
+	description: "我记得海索记录过此事。我撬起地板，紧紧地挤进地板下。现在我被压在它们下面，就像一具不为人知的尸体。空气中充满了热灰的臭气。我的嘴里满是刺人的渣子。这一次，我还没能学会我希望学到东西——不管那是什么。",
+	warmup: 10,
 	},
-	{
-		id: "dreamvitality",
-		startdescription: "今天我将会梦见——",
-		warmup: "10",
-		requirements: 
-		{
-			vitality: "1",
-		},
-		description: "我什么也没梦见。我醒了，伸了伸懒腰。那几个小时的安静时光令我精神焕发。",
-		label: "深沉又安谧的睡梦",
-		actionId: "dream",
+	{id: "nightmarehersaultsuccess",
+	label: "海索的梦魇",
+	actionId: "dream",
+	effects: {influenceknockc: 1},
+		description: "我撬起地板，紧紧地挤进地板下。现在我被压在它们下面，就像一具不为人知的尸体。空气中充满了热灰的臭气。我的嘴里满是刺人的渣子。但这里便是下方的空间了。"
 	},
-	{
-		id: "dreamglimmering",
-		startdescription: "今天我将会梦见一个博物馆。",
-		warmup: "10",
-		requirements: 
-		{
-			glimmering: "1",
-		},
-		description: "在不存在的博物馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚硬盒子中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一听装着风暴的锡罐。我总会在看到走廊尽头前醒来。",
-		label: "关于玻璃后的稀奇物什的梦",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			fascination: "1",
-		},
-		warmup: "10",
-		label: "梦魇：净化的黎明",
-		startdescription: "太阳升起了。它不会放过我。",
-		id: "nightmarecleansingdawn",
-		description: "现在我可以一块又一块地褪去我的肉，像从牙缝中剔出细丝一样拽出筋腱。我的皮肤像一匹破布一样落在地上。太阳伴着胜利的战吼升至地平线之上。光像酸一样滴落在我裸露的骨头上。疼痛唤醒了我。我的骨头会抽痛好几天。",
-		actionId: "dream",
-		alternativerecipes: 
-		[
-			{
-				id: "nightmarecleansingdawnsuccess",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "nightmarecleansingdawnsuccess",
-		effects: 
-		{
-			influencelanternc: "1",
-		},
-		description: "现在我可以一块又一块地褪去我的肉，像从牙缝中剔出细丝一样拽出筋腱。我的皮肤像一匹破布一样落在地上。太阳伴着胜利的战吼升至地平线之上。光像酸一样滴落在我裸露的骨头上。疼痛唤醒了我。我的骨头会抽痛好几天，但太阳的话语就此烙在了我的骨头上。",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			dread: "1",
-		},
-		warmup: "10",
-		label: "海索的梦魇",
-		startdescription: "我下去了。",
-		id: "nightmarehersault",
-		description: "我记得海索记录过此事。我撬起地板，紧紧地挤进地板下。现在我被压在它们下面，就像一具不为人知的尸体。空气中充满了热灰的臭气。我的嘴里满是刺人的渣子。这一次，我还没能学会我希望学到东西——不管那是什么。",
-		actionId: "dream",
-		alternativerecipes: 
-		[
-			{
-				id: "nightmarehersaultsuccess",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "nightmarehersaultsuccess",
-		effects: 
-		{
-			influenceknockc: "1",
-		},
-		description: "我撬起地板，紧紧地挤进地板下。现在我被压在它们下面，就像一具不为人知的尸体。空气中充满了热灰的臭气。我的嘴里满是刺人的渣子。但这里便是下方的空间了。",
-		label: "海索的梦魇",
-		actionId: "dream",
-	},
-]
+	
+	
+	
+	
+	]
+
 }

@@ -1,301 +1,158 @@
-﻿{
-recipes: [
-	{
-		id: "drawseason",
-		deckeffect: 
-		{
-			seasonevents: "1",
-		},
-		warmup: "0",
-		linked: 
+{"recipes": [
+	{id: "drawseason",
+	actionId: "time",
+	deckeffect:{"seasonevents":1},
+	warmup:0,
+	 linked:[{id:"needs",chance:100}]
+	},
+
+   {id: "needs",
+        label: "时间流逝",
+        actionId: "time",
+        requirements: {},
+        alternativerecipes:
+		[{id: "forlornbloodsickness", chance:70, additional: true},
+		{id: "sickness", chance:100, additional: true},
+		{id: "pleasantday", chance:100, additional: true},
+		{id: "suspicion", chance:100, additional: true},
+		{id: "ambition", chance:100,additional:true},
+		{id: "despairrisklink", chance:100,additional:true},
+		{id: "visionsrisklink", chance:100,additional:true},
+		 {id: "starvation", chance:100, additional: true},
+		 {id: "rosenext", chance:100, additional: true},
+		 ],
+        startdescription: "时间，随着日晷之影流逝着。我需要金钱来维系生活，否则我会生病。",
+        description: ".",
+        warmup: 60,
+		slots: [{id:"Expenses",
+					required: {funds: 1},
+				greedy: true,
+				noanim:true,
+				description: "我得付商店老板的帐。不交钱就会挨饿。"
+				}],
+        linked:[{id:"discardseason",chance:100}],
+		signalimportantloop:true
+    },
+	{id: "discardseason",
+	actionId: "time",
+	effects: {season:-1,funds:-999},
+	warmup:0,
+	 linked:[{id:"drawseason",chance:100}]
+	},
+	   {id: "sickness",
+        label: "生病",
+        actionId: "illhealth",
+        requirements: {seasonsickness:1},
+		extantreqs: {apostlegrail.pillar2.dormant:-1},
+		comments:"We don't want to double up on normal and Grail-apostle sickness",
+				slots: [{id:"Affliction",
+					required: {health: 1,follower_wound:1,fatigue:1},
+					greedy: true
+		}],
+		aspects:{fallsick:1},
+		alternativerecipes:
 		[
-			{
-				id: "needs",
-				chance: "100",
-			},
-		],
+		{id: "deathofthewoundedfollower",chance:100},
+		{id: "deathofthebody",chance:100}],
+        startdescription: "我感觉不舒服！[如果被疾病耗尽健康，你将死亡。]",
+        description: "病痛毁坏了我的身体。",
+        warmup: 60
+    },
+	
+	{id: "forlornbloodsickness",
+        label: "生病",
+        actionId: "illhealth",
+        extantreqs: {apostlegrail.pillar2.dormant:1},
+				slots: [{id:"Affliction",
+					required: {health: 1,fatigue:1,apostlegrail.pillar2:1},
+					greedy: true
+		}],
+		aspects:{fallsick:1},
+		alternativerecipes:
+		[
+		{id:"savorousbloodrespite",chance:100},
+		{id: "forlornblooddeathofthebody",chance:100}],
+        startdescription: "疾病来向我索命了。要是我活下来，我须得品尝我们愉悦者的血，且要尽快。[如果被疾病耗尽健康和醇味之血，你将死亡。]",
+        description: "我缩成一团，脸色苍白。疲倦噎住我的喉咙。我必须将我的死用在达到什么目的上。",
+        warmup: 60
+    },
+
+{id:"savorousbloodrespite",
+actionId:"illhealth",
+label:"缓解",
+requirements:{apostlegrail.pillar2:1},
+startdescription:"愉悦者的鲜血温暖了我。它让我的双颊绽放红花，将美酒倾倒入我的心脏；它以杯神教给怒号之皮的节奏拨动我的琴弦。我决定了，我要再活久一点。",
+warmup:10},
+	
+	{id:"deathofthewoundedfollower",
 		actionId: "time",
+	label:"我的追随者快死了！",
+	requirements:{follower_wound:1},
+	startdescription: "此人受了致命伤。已经无药可救了。",
+	description: "也许此人的精魂在居所游荡。也许它迷失在林地，沉到更低的地方。而他的凡人躯壳将留在此处。",
+	aspects:{killmortal:1}	
 	},
-	{
-		linked: 
-		[
-			{
-				id: "discardseason",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-		},
-		signalimportantloop: "true",
-		warmup: "60",
-		slots: 
-		[
-			{
-				id: "Expenses",
-				required: 
-				{
-					funds: "1",
-				},
-				greedy: "true",
-				description: "商店老板会给我寄账单。我需要支付它们，否则就会挨饿。",
-				noanim: "true",
-			},
-		],
-		label: "时间流逝",
-		startdescription: "时间，随着日晷之影的移动，在一点点流逝。我需要金钱来维系生活，否则我会生病。",
-		id: "needs",
-		description: ".",
-		actionId: "time",
-		alternativerecipes: 
-		[
-			{
-				id: "sickness",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "pleasantday",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "suspicion",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "ambition",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "despairrisklink",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "visionsrisklink",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "starvation",
-				chance: "100",
-				additional: "true",
-			},
-			{
-				id: "rosenext",
-				comment: "NEW",
-				chance: "100",
-				additional: "true",
-			},
-		],
-	},
-	{
-		id: "discardseason",
-		effects: 
-		{
-			season: "-1",
-			funds: "-999",
-		},
-		linked: 
-		[
-			{
-				id: "drawseason",
-				chance: "100",
-			},
-		],
-		warmup: "0",
-		actionId: "time",
-	},
-	{
-		requirements: 
-		{
-			seasonsickness: "1",
-		},
-		warmup: "60",
-		aspects: 
-		{
-			fallsick: "1",
-		},
-		label: "生病",
-		startdescription: "我感觉不太舒服！[如果没有可以转化为疾病的健康，我会死亡。]",
-		id: "sickness",
-		actionId: "illhealth",
-		description: "疾病在侵蚀我的身体。",
-		slots: 
-		[
-			{
-				id: "Affliction",
-				required: 
-				{
-					follower_wound: "1",
-					fatigue: "1",
-					health: "1",
-				},
-				greedy: "true",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "deathofthewoundedfollower",
-				chance: "100",
-			},
-			{
-				id: "deathofthebody",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "deathofthewoundedfollower",
-		startdescription: "他们已经受了致命之伤，已经无法治愈。",
-		requirements: 
-		{
-			follower_wound: "1",
-		},
-		description: "或许他们的灵魂会在居所中行走。或许他们会迷失在林地之中，沉入更低之处。而他们凡人的躯壳得以存留。",
-		aspects: 
-		{
-			killmortal: "1",
-		},
-		label: "我的追随者已濒临死亡！",
-		actionId: "time",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "L_roseend",
-				chance: "100",
-			},
-			{
-				id: "L_checkjealousy",
-				chance: "30",
-			},
-			{
-				id: "L_roserouter",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			seasonardours: "1",
-		},
-		comment: "NEW",
-		warmup: "5",
-		label: "Trysts and Interludes",
-		startdescription: "If I have a particular friend, now is the time to renew our connection.",
-		id: "rosenext",
-		actionId: "rose",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Who?",
-				required: 
-				{
-					romanticinterest: "1",
-				},
-				description: "Palm to palm and eye to eye.",
-				forbidden: 
-				{
-					notoriety: "1",
-				},
-				greedy: "true",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			seasonserenities: "1",
-		},
-		craftable: "false",
-		comments: "currently unused",
-		warmup: "30",
-		label: "愉快的一天。",
-		startdescription: "这天清晨，我的脚步特别轻快，好像装了弹簧一样。我也不知道为什么。",
-		id: "pleasantday",
-		actionId: "pleasantday",
-		description: "有些日子就是会比平时更好。有时候，天空会更澄净，不再像张肮脏的被单。有时候，河里的流水也会更加清澈。",
-		effects: 
-		{
-			contentment: "1",
-		},
-	},
-	{
-		id: "despairrisklink",
-		craftable: "false",
-		warmup: "0",
-		requirements: 
-		{
-			seasondespair: "1",
-		},
-		linked: 
-		[
-			{
-				id: "despairrisk",
-				chance: "100",
-			},
-		],
-		label: "despairrisklink",
-		actionId: "despair",
-	},
-	{
-		id: "visionsrisklink",
-		craftable: "false",
-		warmup: "0",
-		requirements: 
-		{
-			seasonvisions: "1",
-		},
-		linked: 
-		[
-			{
-				id: "visionsrisk",
-				chance: "100",
-			},
-		],
-		label: "visionsrisklink",
-		actionId: "visions",
-	},
-	{
-		requirements: 
-		{
-			funds: "-1",
-		},
-		warmup: "60",
-		slots: 
-		[
-			{
-				id: "starvation",
-				required: 
-				{
-					health: "1",
-				},
-				greedy: "true",
-			},
-		],
-		label: "挨饿",
-		startdescription: ".",
-		id: "starvation",
-		actionId: "illhealth",
-		description: "没有钱，我会挨饿。[如果没有可以转化为疾病的健康，我会死亡。]",
-		effects: 
-		{
-			health: "-1",
-			hunger: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "deathofthebody",
-				chance: "100",
-			},
-		],
-	},
+	{id:"rosenext",
+label:"幽会与插曲",
+actionId:"rose",
+requirements:{seasonardours:1},
+slots: [{id:"Who?",description:" 手与手相牵，目与目相对。",required:{romanticinterest:1},forbidden:{notoriety:1}, greedy:true}],
+startdescription: "如果我有位特别的朋友，现在就是我们再续前缘的时机。",
+description:".",
+linked:[{id:"L_roseend",chance:100},
+{id:"L_checkjealousy",chance:30},
+{id:"L_roserouter",chance:100}],
+warmup:5
+},
+		   {
+        id: "pleasantday",
+        label: "愉快的一天。",
+        actionId: "pleasantday",
+        requirements: {seasonserenities:1},
+        effects: {
+		contentment: 1,
+        },
+		comments:"currently unused",
+        startdescription: "这天清晨，我的脚步特别轻快，好像装了弹簧一样。我也不知道为什么。",
+        description: "有些日子就是比平日更好。有时候，天空不再像张肮脏的被单。有时候，河里的流水更加清澈。",
+        warmup: 30,
+        craftable: false
+    },
+			   {
+        id: "despairrisklink",
+        label: "despairrisklink",
+        actionId: "despair",
+        requirements: {seasondespair:1},
+        warmup: 0,
+        craftable: false,
+		linked:[{id:"despairrisk",chance:100}]
+    },
+				   {
+        id: "visionsrisklink",
+        label: "visionsrisklink",
+        actionId: "visions",
+        requirements: {seasonvisions:1},
+        warmup: 0,
+        craftable: false,
+		linked:[{id:"visionsrisk",chance:100}]
+    },
+	   {
+        id: "starvation",
+        label: "挨饿",
+        actionId: "illhealth",
+        requirements: {funds: -1},
+        effects: {
+            health: -1,
+            hunger: 1
+        },
+		alternativerecipes:
+		[{id: "deathofthebody",chance:100}],
+        startdescription: ".",
+        description: "没有钱，我很快会挨饿。[如果被疾病耗尽健康，你将死亡。]",
+        warmup: 60,
+		slots: [{id:"starvation",required: {health: 1},
+					greedy: true
+		}]
+    },
 ]
 }

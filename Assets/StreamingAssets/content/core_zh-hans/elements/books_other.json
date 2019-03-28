@@ -5,25 +5,21 @@
             label: "《随笔集》",
             aspects:
             {text:1,auctionable:1},
-            description: "若头脑是刀刃，本书恰似磨刀之石。 [使用两份博闻来研究，可以获得理性。]",
-			slots: [{id:"Insight",actionId: "study", required: {erudition:1},consumes:true},
-			{id:"Understanding", actionId: "study",  required: {erudition:1},consumes:true}]
+            description: "头脑如锋，此书如砥。[通过研究获得博学：学习经验，以此增加理智。]"
         },
 		 {
         id: "textbookpassion",
             label: "《诗集》",
             aspects:
             {text:1,auctionable:1},
-            description: "“诗人长久且彻底的混淆自身所有的感官，从而成为一位预言家……”可幸的是与智慧背道而驰。[使用两份灵感来研究，可以获得热情。]",
-			slots:[{id:"Inspiration", actionId: "study", required: {glimmering:1},consumes:true},
-			{id:"Influence", actionId: "study", required: {glimmering:1},consumes:true}]
+            description: "“诗人长久且彻底的混淆自身所有的感官，从而成为一位预言家……”可幸的是，这与智慧背道而驰。[通过研究获得灵感：学习经验，以此增加热情。]"
         },
 						 {
         id: "genericrubbishbook",
             label: "《惊天秘密！如此这般这般如此》",
             aspects:
             {text:1,auctionable:1},
-            description: "一篇耸人听闻的花边文章，描述了关于“秘密世界”的一些一知半解的流言，当今道德观如何脱节；还内附一份列表，罗列了一连串荒唐不经，貌似杜撰而出的纵欲行为。[如果你从店铺里买到了这个，那么商店库存里恐怕已经没有任何有趣的书籍了。]"
+            description: "一篇耸人听闻的花边文章，描述了关于“秘密世界”的一些一知半解的流言，当今道德观如何脱节；还内附一份列表，罗列了一连串荒唐不经，貌似杜撰而出的纵欲行为。[如果我从店铺里买到了这个，那么商店库存里恐怕已经没有任何有趣的书籍了。]"
         }
 		 
 

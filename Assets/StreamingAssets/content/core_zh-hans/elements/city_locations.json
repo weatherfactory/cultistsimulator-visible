@@ -16,7 +16,7 @@
         },
 				{
         id: "locationbookdealer_exhausted",
-            label: "莫兰书屋 [歇业中]",
+            label: "莫兰书屋[歇业中]",
             aspects:{location: 1},
             description: "这里曾是书商莫兰的旧址，但我现在必须去别的地方寻找知识了。",
 			unique:true,
@@ -34,17 +34,20 @@
             label: "蜕变俱乐部[歇业中]",
             description: "一件据传与密教有关的夜总会。只在每周的特定夜晚开放；不久将会重新开始营业。",
 			unique:true,
-			lifetime:60,
-			decayTo: locationcabaret
+			lifetime:30,
+			decayTo: locationcabaret,
+			uniquenessgroup:uqcabaret,
+			resaturate: true
         },
 						{
         id: "locationcabaret",
             label: "蜕变俱乐部",
-            aspects:{location: 1,moth:1,grail:1},
+            aspects:{location: 1,moth:1,grail:1,heart:1},
             description: "一件据传与密教有关的夜总会。",
-			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
+			slots:[{id:"Entry", actionId: "explore", required:{funds:1,sulochana:1},}],
 			xtriggers:{locationcabaret:locationcabaretclosed},
-			unique:true
+			unique:true,
+			uniquenessgroup:uqcabaret
         },
 
 		
@@ -57,7 +60,7 @@
 					description: "将一名追随者置于此处将其永久性地转化为囚徒。",
 					actionId: "talk",
 					required: {follower: 1},
-					forbidden:{summoned:-1} 
+					forbidden:{summoned:1} 
 				}],
         unique:true
         },

@@ -1,0 +1,40 @@
+{
+"recipes": [
+
+
+	{
+        id: "dreampleasantmemory",
+        label: "沉浸于甜蜜的回忆中",
+        actionId: "dream",
+		requirements:{memorypleasant:1},
+		effects: {memorypleasant:-1,contentment:1,fleeting:1},
+startdescription: "理解后那甜蜜的沉静？冬日暖光中的一刻？",
+		description: "这也许能支持我。",
+        craftable: true,
+		warmup:10
+    },
+		{
+        id: "dreampassionatememory",
+        label: "沉浸于热情的回忆中",
+        actionId: "dream",
+		requirements:{memorypassionate:1},
+		effects: {memorypassionate:-1,restlessness:1,contentment:1,vitality:1},
+startdescription: "一齐的声喘，交织的四肢？不可告人的黑暗中的炙热？",
+		description: "这也许会使我分心。",
+        craftable: true,
+		warmup:10
+    },
+	
+		{
+        id: "dreambittersweetmemory",
+        label: "沉浸于甜苦交织的回忆中",
+        actionId: "dream",
+		requirements:{memorybittersweet:1},
+		effects: {memorybittersweet:-1,dread:1,contentment:1,glimmering:1},
+startdescription: "一份无人敢说出声的理解？争执，与其后果？",
+		description: "这也许能使我犹豫。",
+        craftable: true,
+		warmup:10
+    },
+]
+}

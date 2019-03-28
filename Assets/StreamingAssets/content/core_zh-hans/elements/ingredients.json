@@ -4,9 +4,11 @@
 	label: "一具人类尸体",
 	description: "这具肉体的灵魂已经离开。它腐败后散发的气味会让你不得不把它处理掉，但至少现在还没到那时候。尸体会吸引额外的注意；也可以用来震慑那些容易动摇的人。[即使是在把尸体处理掉之后，邪名依旧存在。]",
 	aspects: {winter:3,grail:3,ingredient:1,reputation:2},
+	xtriggers: {raiseburgeoning:spirit_wintera_moth,raiseshattered:spirit_wintera_edge},
 	lifetime:60,
 	decayTo:"notoriety"
 	},
+
 				{id: "ingredientedgeb",
 	label: "马氏膏",
 	description: "剑上使用的圣油。有着令人着迷的银绿色。",
@@ -14,7 +16,7 @@
 	},
 		{id: "ingredientedged",
 	label: "拉比特谷物",
-	description: "拉比特是锻狮最年轻的仆从。当磨制这种粉末时，他们更注重效力而不是外观……",
+	description: "拉比特是锻狮最年轻的仆从。当磨制这种粉末时，他们更注重效力而不是外观。",
 	aspects: {edge:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientedgef",
@@ -39,7 +41,7 @@
 	aspects: {forge:12,auctionable:6,ingredient:1}
 	},
 		
-						{id: "ingredientgrailb",
+	{id: "ingredientgrailb",
 	label: "活力染料",
 	description: "身体在死亡后还保留着如此纯粹的红色，这种情况极为罕见。",
 	aspects: {grail:4,auctionable:2,ingredient:1,pigment:1}
@@ -94,7 +96,7 @@
 	},
 		{id: "ingredientlanternd",
 	label: "透指之毒",
-	description: "“在外者，亦在内。”一种对痕月的信徒来说十分神圣的毒素。",
+	description: "“内者外也，外者内也。”一种对痕月的信徒来说十分神圣的毒素。",
 	aspects: {lantern:8,auctionable:4,ingredient:1,poison:2}
 	},
 	{id: "ingredientlanternf",

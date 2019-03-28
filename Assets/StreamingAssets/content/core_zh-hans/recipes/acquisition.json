@@ -23,10 +23,17 @@
 	   effects:{funds:-1,bid:1},
 	   warmup:0,
 	   linked:[
+	   {id:"auctionbidmatched.grailapostlepillar3"},
 	   {id:"auctionsuccess",chance:70},
 	   {id:"auctionbidmatched",chance:100}
 	   ]
 	   },
+
+{id:"auctionbidmatched.grailapostlepillar3",
+actionId:"explore",
+requirements:{bid:-6,apostlegrail.pillar3:1},
+linked:[{id:"auctionbidmatched"}]},
+	   
 	   {id:"auctionbidmatched",
 	   label: "另一位竞拍者！",
 	   actionId:"explore",
@@ -40,10 +47,11 @@
 	   {id:"auctionfailure",
 	   actionId:"explore",
 	   label: "我没能赢得拍品。",
-	   		effects:{text:-1},
+	   		effects:{text:-1,tool:-1,ingredient:-1},
+comments:"Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
 		aspects: {restore:1},
 		startdescription:".",
-		description:"拍卖结束了。书籍已归他人之手。我也得以保留钱财。",
+		description:"拍卖结束了。拍品已归他人之手。我也得以保留钱财。",
 		warmup:0,
 	   },
 	   {
