@@ -28,8 +28,8 @@
             aspects:
             {desire: 2,powermarks:2},
             description: "I have dedicated myself to the acquisition of immortal power, at any cost. [Upgrade this card further to make a Power victory possible. I must be a true initiate of the Mansus; I'll need to Work with Forge-aspect to invoke the Forge of Days and begin the change.]",
-			slots: [{id:"Know", actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
-			{id: "Power", actionId: "work", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
+			slots: [{id:"Know", label:"Know", actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
+			{id: "Power", label:"Power", actionId: "work", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -39,8 +39,8 @@
             aspects:
             {desire: 2,sensationmarks:2},
             description: "I have dedicated myself to the immortal pursuit of sensation. [Upgrade this card further to make a Sensation victory possible. I must be a true initiate of the Mansus; I'll need to Work with Grail-aspect to make myself palatable to the Red Grail.]",
-			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
-			{id:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know", label:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
+			{id:"Power", label:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -50,8 +50,8 @@
             aspects:
             {desire: 2,sensationmarks:2},
             description: "I have dedicated myself to the immortal pursuit of sensation. [Upgrade this card further to makes a Sensation victory possible. I must be a true initiate of the Mansus; I'll need to Work with Grail-aspect to make myself palatable to the Red Grail.]",
-			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
-			{id:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know", label:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
+			{id:"Power", label:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -62,7 +62,7 @@
             {desire: 2,enlightenmentmarks:2},
             description: "I have dedicated myself to the pursuit of higher understanding. I must see beneath the skin, whatever the cost. [This makes an Enlightenment victory possible. I must be a true initiate of the Mansus; I'll need to Work with Lantern-aspect to allow the Watchman to see me.]",
 						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step. The Know are those who have passed the Stag Door, in dreams."},
-			{id:"Power", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
+			{id:"Power", label:"Power", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
 			uniquenessgroup:"uqdesire"
         },
 		{
