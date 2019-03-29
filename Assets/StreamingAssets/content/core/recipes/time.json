@@ -25,7 +25,8 @@
         description: ".",
         warmup: 60,
 		slots: [{id:"Expenses",
-					required: {funds: 1},
+				label:"Expenses",
+				required: {funds: 1},
 				greedy: true,
 				noanim:true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
@@ -46,6 +47,7 @@
 		extantreqs: {apostlegrail.pillar2.dormant:-1},
 		comments:"We don't want to double up on normal and Grail-apostle sickness",
 				slots: [{id:"Affliction",
+					label:"Affliction",
 					required: {health: 1,follower_wound:1,fatigue:1},
 					greedy: true
 		}],
@@ -64,6 +66,7 @@
         actionId: "illhealth",
         extantreqs: {apostlegrail.pillar2.dormant:1},
 				slots: [{id:"Affliction",
+					label:"Affliction",
 					required: {health: 1,fatigue:1,apostlegrail.pillar2:1},
 					greedy: true
 		}],
@@ -96,7 +99,7 @@ warmup:10},
 label:"Trysts and Interludes",
 actionId:"rose",
 requirements:{seasonardours:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},forbidden:{notoriety:1}, greedy:true}],
+slots: [{id:"Who?",label:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},forbidden:{notoriety:1}, greedy:true}],
 startdescription: "If I have a particular friend, now is the time to renew our connection.",
 description:".",
 linked:[{id:"L_roseend",chance:100},
@@ -150,7 +153,7 @@ warmup:5
         startdescription: ".",
         description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will kill you.]",
         warmup: 60,
-		slots: [{id:"starvation",required: {health: 1},
+		slots: [{id:"starvation",label:"Starvation",required: {health: 1},
 					greedy: true
 		}]
     },

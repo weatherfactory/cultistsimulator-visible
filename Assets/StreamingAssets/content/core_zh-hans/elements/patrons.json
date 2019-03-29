@@ -8,8 +8,8 @@
             description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
-					slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+					slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
         },
 		 {
         id: "aladimready",
@@ -28,8 +28,8 @@ unique:true,
             description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "bechetready",
@@ -47,8 +47,8 @@ unique:true,
             description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "janningsready",
@@ -95,8 +95,8 @@ icon:"poppyready"
             description: "一个和蔼可亲的贵妇人。她向你提出了一项委托。",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
 icon:"poppy"
         },
 		

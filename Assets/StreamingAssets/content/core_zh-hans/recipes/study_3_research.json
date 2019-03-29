@@ -250,7 +250,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Reason",required: {reason:1}, greedy:true}],
+	slots:[{id:"Reason",label:"理性",required: {reason:1}, greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearchreasonsuccess",chance:100}],
 	startdescription: "困惑遮蔽道路。我必须使用更多理性。",
@@ -276,7 +276,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
+	slots:[{id:"Erudition",label:"博闻",required: {erudition:1},consumes:true,greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearcheruditionsuccess",chance:100}],
 	startdescription: "我的研究需要博闻。",
@@ -301,7 +301,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
+	slots:[{id:"Glimmering",label:"灵感",required: {glimmering:1},consumes:true,greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
 	startdescription: "我的研究需要灵感。",

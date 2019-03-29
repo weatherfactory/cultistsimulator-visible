@@ -48,7 +48,7 @@ alternativerecipes:[{id: "legacyphysicianopenstudy",chance:100,additional:true}]
 	startdescription:"我可以屈服于梦境。但他<i>将会</i>吞噬我的理性。",
 	description: ".",
 	alternativerecipes:[{id: "legacyphysicianhookfulfilment",chance:100}],
-	slots: [{id:"Temptation",required: {reason:1},consumes:true}],
+	slots: [{id:"Temptation",label:"诱惑",required: {reason:1},consumes:true}],
 	linked: [{id: "legacyphysicianhook",chance:100}],
 	warmup:60
 	},

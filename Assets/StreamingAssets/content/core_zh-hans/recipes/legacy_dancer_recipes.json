@@ -345,7 +345,7 @@ comments:"Identical to proposes_always, but with a lower threshold"
 {id:"talk_benefactormarry",
 actionId:"talk",
 requirements:{benefactor_proposal:1},
-slots:[{id:"Yes",required:{passion:1}}],
+slots:[{id:"Yes",label:"是",required:{passion:1}}],
 label:"接受求婚",
 startdescription:"我被求婚了——和贵族结婚。平和、兴旺、安逸，以及赞助人对我余生的深情陪伴。我必须是真诚的。如果我不能自己真诚，我也必须捏造出来。",
 description: "赞助人仍在等着，脸色阴沉。",

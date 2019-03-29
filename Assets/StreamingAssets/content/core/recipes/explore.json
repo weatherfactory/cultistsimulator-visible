@@ -109,7 +109,7 @@ aspects:{exhaustlocation:1}
         label: "A Hireling?",
         actionId: "explore",
         startdescription: "I've found someone whom I might pay to enact regrettable necessities. [Add Funds to hire them, for a limited time.]",
-slots:[{id:"Payment",required:{funds:1},consumes:true}],
+slots:[{id:"Payment",label:"Payment",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
 		 description: "Better not. I must be careful of the company I keep.",

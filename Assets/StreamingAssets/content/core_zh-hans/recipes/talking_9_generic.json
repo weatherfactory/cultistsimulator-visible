@@ -69,7 +69,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 label:"在中立地带安排会面。",
 actionId: "talk",
 requirements: {independent: 1,society:-1,ritual:-1},
-slots: [{id:"Subject",description:"选择话题"}],
+slots: [{id:"Subject",label:"话题",description:"选择话题"}],
 alternativerecipes:[
 {id:"A_follower_settrap_independent",chance:100},
 {id:"independentloreconversation",chance:100},
@@ -152,7 +152,7 @@ deckeffect: {troublemakerconversations:1}
 label:"与敌人安排会面",
 actionId: "talk",
 requirements: {hunter: 1},
-slots: [{id:"Subject",description:"选择话题……或派出一名消灭他的喽啰。"}],
+slots: [{id:"Subject",label:"话题",description:"选择话题……或派出一名消灭他的喽啰。"}],
 alternativerecipes:[
 {id:"hunterfitewithextraswole"},
 {id:"hunterfitewithswole"},
@@ -186,7 +186,7 @@ craftable: true
 label:"与我召唤出的对象交谈",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:1},
-slots: [{id:"Subject",description:"选择话题……或目标。"}],
+slots: [{id:"Subject",label:"话题",description:"选择话题……或目标。"}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"discussfucinespirit"},

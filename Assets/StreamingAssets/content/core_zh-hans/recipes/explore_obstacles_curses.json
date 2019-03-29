@@ -5,7 +5,7 @@
 	label: "吸魂诅咒",
 	startdescription: "前方的宝藏被吸魂诅咒保护着。若是没有<b>灯</b>或者<b>心</b>，这诅咒会跟着我们回去，吸干我们的魂。",
 	requirements: {curse_dread:1},
-	slots:[{id:"Assistance",description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助",description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_dread_highheart",chance:100},
 	{id: "explorevaultcurse_dread_highlantern",chance:100},
@@ -107,7 +107,7 @@
 	label: "第五目诅咒",
 	startdescription: "前方的宝藏被第五目诅咒保护着。若是没有<b>冬</b>或者<b>心</b>，这诅咒会跟着我们回去，并开启灵魂之眼。",
 	requirements: {curse_visions:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_visions_highheart",chance:100},
 	{id: "explorevaultcurse_visions_highwinter",chance:100},
@@ -211,7 +211,7 @@
 	label: "蠕息诅咒",
 	startdescription: "前方的宝藏被蠕息诅咒保护着。若是没有<b>杯</b>或者<b>心</b>，这诅咒会跟着我们回去，并且在我们的肺里播种孢子。",
 	requirements: {curse_affliction:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_affliction_highheart",chance:100},
 	{id: "explorevaultcurse_affliction_highgrail",chance:100},
@@ -316,7 +316,7 @@
 	label: "虚源诅咒",
 	startdescription: "有这样一个世界表皮变得炙热焦黄的地方。除了<b>灯</b>或者<b>蛾</b>以外，没有什么东西能保护我们了。",
 	requirements: {curse_nowhere:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
 	{id: "explorevaultcurse_nowhere_highlantern",chance:100},

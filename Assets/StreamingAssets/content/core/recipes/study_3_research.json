@@ -250,7 +250,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Reason",required: {reason:1}, greedy:true}],
+	slots:[{id:"Reason",label:"Reason",required: {reason:1}, greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearchreasonsuccess",chance:100}],
 	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
@@ -276,7 +276,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
+	slots:[{id:"Erudition",label:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearcheruditionsuccess",chance:100}],
 	startdescription: "My research needs Erudition.",
@@ -301,7 +301,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
+	slots:[{id:"Glimmering",label:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
 	startdescription: "My research needs a Glimmering. ",

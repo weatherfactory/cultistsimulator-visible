@@ -5,7 +5,7 @@
 	label: "暗门",
 	startdescription: "这里肯定有一扇门，但若是没有<b>灯</b>或<b>启</b>，我们就无法打开它。",
 	requirements: {seal_hiddendoor:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultseal_hiddendoor_highlantern",chance:100},
 	{id: "explorevaultseal_hiddendoor_highknock",chance:100},
@@ -107,7 +107,7 @@
 	label: "上锁的门",
 	startdescription: "这扇门已经坚守了很长时间了。除非我们带来了<b>铸</b>或<b>启</b>，它同样也会阻挡我们很久。",
 	requirements: {seal_wardeddoor:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultseal_wardeddoor_highforge",chance:100},
 	{id: "explorevaultseal_wardeddoor_highknock",chance:100},

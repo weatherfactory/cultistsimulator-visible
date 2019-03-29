@@ -8,7 +8,7 @@
 	label: "Treacherous Ground",
 	startdescription: "Sucking mud, tricksy fissures: the earth is hungry. We need Lantern to show us a way, or Forge to make one.",
 	requirements: {peril_treacherousground:1},
-	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
 	{id: "explorevaultperil_treacherousground_highforge",chance:100},
@@ -111,7 +111,7 @@
 	label: "Peril-Prowled Forest",
 	startdescription: "The darkness under the trees is quiet, for now, but we're not alone in here. Moth aspect will guide us through, or Forge aspect will clear a path.",
 	requirements: {peril_forest:1},
-	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_forest_highmoth",chance:100},
 	{id: "explorevaultperil_forest_highforge",chance:100},
@@ -220,7 +220,7 @@
 	label: "The High Passes",
 	startdescription: "Savage peaks scar the sky. Winter aspect may preserve us from chill, and Forge aspect may give us a path. If we have neither, our expedition will fail.",
 	requirements: {peril_mountains:1},
-	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_mountains_highwinter",chance:100},
 	{id: "explorevaultperil_mountains_highforge",chance:100},
@@ -322,7 +322,7 @@
 	label: "Desolation",
 	startdescription: "An immense and tawny furnace barely contained by its horizons. At night, a chilly wilderness of stars. We must go carefully, with Forge to shape our way or Grail to secure us against thirst.",
 	requirements: {peril_desert:1},
-	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_desert_highgrail",chance:100},
 	{id: "explorevaultperil_desert_highforge",chance:100},
@@ -426,7 +426,7 @@
 	label: "The Sea around the Evening Isles",
 	startdescription: "The sea we sail is plagued by storms. The isles we seek are tucked in the corners of unmapped history. We will need Heart or Forge or both.",
 	requirements: {peril_sea:1},
-	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_sea_highheart",chance:100},
 	{id: "explorevaultperil_sea_highforge",chance:100},

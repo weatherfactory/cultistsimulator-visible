@@ -48,6 +48,7 @@
         description: "The clerks file out in silence. I am free for now.",
         warmup:60,
 			slots: [{id:"Diligence",
+					label:"Diligence",
 					required: {reason: 1},
 					forbidden: {},
 					description: "Extra effort. It might help, sometimes."
@@ -92,6 +93,7 @@ My new position is better paid, and the desk stands by the street window. But I 
         description: "The clerks file out in silence. I am free for now.",
         warmup:60,
 			slots: [{id:"Diligence",
+					label:"Diligence",
 					required: {reason: 1},
 					forbidden: {},
 					description: "Extra effort. It might help, sometimes."
@@ -166,6 +168,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	label:"Work overtime, at Mr Alden's insistence",
 	startdescription:"'The work is complete when I have assessed the work as complete, and not before. I trust we understand each other.'",
 			slots: [{id:"Attention",
+					label:"Attention",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
@@ -184,6 +187,7 @@ maxexecutions:1
 	label:"Work overtime, at Mr Alden's insistence",
 	startdescription:"'The work is complete when I have assessed the work as complete, and not before. I trust we understand each other.'",
 			slots: [{id:"Attention",
+					label:"Attention",
 					required: {reason: 1,passion:1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
@@ -235,6 +239,7 @@ maxexecutions:1
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
         warmup: 70,
 			slots: [{id:"Devotion",
+					label:"Devotion",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
@@ -265,6 +270,7 @@ maxexecutions:1
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
         warmup: 70,
 			slots: [{id:"Devotion",
+					label:"Devotion",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
@@ -294,6 +300,7 @@ maxexecutions:1
 	
         warmup: 70,
 			slots: [{id:"Acceptance",
+					label:"Acceptance",
 					required: {passion: 1},
 					description: "I could devote my life to this."
 				}],
@@ -332,6 +339,7 @@ maxexecutions:1
         description: "When I close my eyes, figures march behind my eyelids. When I open them, the light hurts.",
         warmup: 70,
 			slots: [{id:"Ambition",
+					label:"Ambition",
 					required: {passion: 1},
 					description: "The younger Glover's board seat remains unoccupied..."
 				}],
@@ -362,6 +370,7 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob: 1},
 	  			slots: [{id:"Scandal",
+					label:"Scandal",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "My high position now affords me some protection against scandal. But if the firm grows too concerned, I may be dismissed."
@@ -389,6 +398,7 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob_tainted: 1},
 	  			slots: [{id:"Scandal",
+					label:"Scandal",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "My high position may protect me a little longer. But I am now in real danger of losing my position."

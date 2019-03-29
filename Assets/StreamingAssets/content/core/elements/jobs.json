@@ -42,7 +42,8 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Position at Glover & Glover",
             aspects:{job:1},
 			slots: [{id:"Diligence",
-			actionId:"work",
+					label:"Diligence",
+					actionId:"work",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 					}],
@@ -56,7 +57,8 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Position at Glover & Glover",
             aspects:{job:1},
 			slots: [{id:"Diligence",
-			actionId:"work",
+					label:"Diligence",
+					actionId:"work",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 					}],
@@ -70,11 +72,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Senior Position at Glover & Glover",
             aspects:{annoyance:1,job:1},
 			slots: [
-			{id:"Devotion",
-			required: {reason: 1},
-			actionId:"work",
+					{id:"Devotion",
+					label:"Devotion",
+					required: {reason: 1},
+					actionId:"work",
 					description: "My position is demanding. I must concentrate my mind."
-				}],
+					}],
             description: "I suppose, theoretically, I could rise higher, if someone died. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {endannoyance:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverseniorjob},
 			lifetime:60,
@@ -85,11 +88,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Senior Position at Glover & Glover",
 			aspects:{job:1},
 			slots: [
-			{id:"Devotion",
-			required: {reason: 1},
-			actionId:"work",
+					{id:"Devotion",
+					label:"Devotion",
+					required: {reason: 1},
+					actionId:"work",
 					description: "My position is demanding. I must concentrate my mind."
-				}],
+					}],
             description: "With the younger Glover gone, I might rise even higher. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {careeradvancement:gloverandglovertopjob,employment:gloverandgloverseniorjob_youngerglovergone},
 			lifetime:90,

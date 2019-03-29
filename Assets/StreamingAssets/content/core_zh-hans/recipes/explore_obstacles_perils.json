@@ -8,7 +8,7 @@
 	label: "诡变多端的地面",
 	startdescription: "拉人下陷的泥浆，欺人眼目的裂缝——大地急于吞吃我们。我们需要用<b>灯</b>照亮前路，或<b>铸</b>一盏灯。",
 	requirements: {peril_treacherousground:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
 	{id: "explorevaultperil_treacherousground_highforge",chance:100},
@@ -111,7 +111,7 @@
 	label: "危机四伏的森林",
 	startdescription: "目下树下的黑暗尚还安静，但这里不只我们存在。让<b>蛾</b>之属性为我指引方向，或<b>铸</b>之属性为我涤清道路。",
 	requirements: {peril_forest:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_forest_highmoth",chance:100},
 	{id: "explorevaultperil_forest_highforge",chance:100},
@@ -220,7 +220,7 @@
 	label: "云中径",
 	startdescription: "高峻的山峰划破天空。让<b>冬</b>之属性免我受寒，或<b>铸</b>之属性为我开道。若两者皆无，探险必失败。",
 	requirements: {peril_mountains:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_mountains_highwinter",chance:100},
 	{id: "explorevaultperil_mountains_highforge",chance:100},
@@ -322,7 +322,7 @@
 	label: "荒漠",
 	startdescription: "这片广袤的土地犹如一个几达天边的土黄色火炉。到了夜晚，莽莽星空撒下冷冽的光。我们必须小心前行，或以<b>铸</b>铺就前路，或以<b>杯</b>避免干渴。",
 	requirements: {peril_desert:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_desert_highgrail",chance:100},
 	{id: "explorevaultperil_desert_highforge",chance:100},
@@ -426,7 +426,7 @@
 	label: "薄暮群屿周边海域",
 	startdescription: "我们航行的海面风暴肆虐。我们要找寻的岛屿隐藏在没有记载的历史角落之中。我们需要<b>心</b>或<b>铸</b>，或两者皆需。",
 	requirements: {peril_sea:1},
-	slots:[{id:"Assistance", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
+	slots:[{id:"Assistance",label:"协助", description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_sea_highheart",chance:100},
 	{id: "explorevaultperil_sea_highforge",chance:100},

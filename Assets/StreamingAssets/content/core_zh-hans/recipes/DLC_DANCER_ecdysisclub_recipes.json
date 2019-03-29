@@ -6,7 +6,7 @@
 	label: "在蜕变俱乐部和苏洛坎纳见面",
 	requirements: {locationcabaret:1,sulochana:1},
 	startdescription: "苏洛坎纳·阿马瓦尼亚立于挂着红色帷幕的门口。她一边抽着她那别致的进口丁香香烟，一边与一位高高瘦瘦的似乎是来自希腊的人交谈。她看着走来的我，既不眨眼，也不动声色。",
-	slots:[{id:"Subject",description:"我在这里是为了谈一谈……",required:{desire:1}}],
+	slots:[{id:"Subject",label:"话题",description:"我在这里是为了谈一谈……",required:{desire:1}}],
 	description:"“没有什么想说的吗？那就别浪费我的时间了。”",
 	alternativerecipes:[{id:"A_ecdysis_beginheart",chance:100},
 	{id:"A_ecdysis_beginmoth",chance:100},

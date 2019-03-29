@@ -25,7 +25,8 @@
         description: ".",
         warmup: 60,
 		slots: [{id:"Expenses",
-					required: {funds: 1},
+				label:"开销",
+				required: {funds: 1},
 				greedy: true,
 				noanim:true,
 				description: "我得付商店老板的帐。不交钱就会挨饿。"
@@ -46,6 +47,7 @@
 		extantreqs: {apostlegrail.pillar2.dormant:-1},
 		comments:"We don't want to double up on normal and Grail-apostle sickness",
 				slots: [{id:"Affliction",
+					label:"苦痛",
 					required: {health: 1,follower_wound:1,fatigue:1},
 					greedy: true
 		}],
@@ -64,6 +66,7 @@
         actionId: "illhealth",
         extantreqs: {apostlegrail.pillar2.dormant:1},
 				slots: [{id:"Affliction",
+					label:"苦痛",
 					required: {health: 1,fatigue:1,apostlegrail.pillar2:1},
 					greedy: true
 		}],
@@ -96,7 +99,7 @@ warmup:10},
 label:"幽会与插曲",
 actionId:"rose",
 requirements:{seasonardours:1},
-slots: [{id:"Who?",description:" 手与手相牵，目与目相对。",required:{romanticinterest:1},forbidden:{notoriety:1}, greedy:true}],
+slots: [{id:"Who?",label:"谁？",description:" 手与手相牵，目与目相对。",required:{romanticinterest:1},forbidden:{notoriety:1}, greedy:true}],
 startdescription: "如果我有位特别的朋友，现在就是我们再续前缘的时机。",
 description:".",
 linked:[{id:"L_roseend",chance:100},
@@ -150,7 +153,7 @@ warmup:5
         startdescription: ".",
         description: "没有钱，我很快会挨饿。[如果被疾病耗尽健康，你将死亡。]",
         warmup: 60,
-		slots: [{id:"starvation",required: {health: 1},
+		slots: [{id:"starvation",label:"饥饿",required: {health: 1},
 					greedy: true
 		}]
     },

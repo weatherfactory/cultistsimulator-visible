@@ -109,7 +109,7 @@ aspects:{exhaustlocation:1}
         label: "一位雇工？",
         actionId: "explore",
         startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以临时雇用他。]",
-slots:[{id:"Payment",required:{funds:1},consumes:true}],
+slots:[{id:"Payment",label:"报酬",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
 		 description: "最好不要。我必须小心选择同伴。",

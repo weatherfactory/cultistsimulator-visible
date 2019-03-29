@@ -5,6 +5,7 @@
             label: "莫兰书屋",
             aspects:{location: 1},
 			slots: [{id:"Cost",
+					label:"费用",
 					required: {funds: 1},
 					consumes: true,
 					actionId: "explore"
@@ -26,7 +27,7 @@
             label: " 奥瑞福莱姆拍卖行",
             aspects:{location: 1},
             description: "奥瑞福莱姆拍卖行专注于古玩，香水，生物标本和稀有的文字资料。自从一场无法解释的大火毁了它的旧址，它现在在一栋狭小的房子里营业。[你可以在此处买卖物品。]",
-				slots:[{id:"Sell",description: "把物品放在此处来拍卖。", required: {auctionable:1},actionId:"explore"}],
+				slots:[{id:"Sell",label:"出售",description: "把物品放在此处来拍卖。", required: {auctionable:1},actionId:"explore"}],
 			unique:true
         },
 										{
@@ -44,7 +45,7 @@
             label: "蜕变俱乐部",
             aspects:{location: 1,moth:1,grail:1,heart:1},
             description: "一件据传与密教有关的夜总会。",
-			slots:[{id:"Entry", actionId: "explore", required:{funds:1,sulochana:1},}],
+			slots:[{id:"Entry",label:"入口", actionId: "explore", required:{funds:1,sulochana:1},}],
 			xtriggers:{locationcabaret:locationcabaretclosed},
 			unique:true,
 			uniquenessgroup:uqcabaret
@@ -57,6 +58,7 @@
             aspects:{hq: 1},
 			description: "我们的业务是保密的。我们可以使用更隐秘的地点。",
 			slots: [{id:"Cupboard",
+					label:"壁橱",
 					description: "将一名追随者置于此处将其永久性地转化为囚徒。",
 					actionId: "talk",
 					required: {follower: 1},

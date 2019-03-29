@@ -486,7 +486,7 @@
         actionId: "cult",
         requirements: {},
         effects: {},
-		slots: [{id:"Doctrine",required: {lore: 1},description: "我们所求为何？"}],
+		slots: [{id:"Doctrine",label:"教义",required: {lore: 1},description: "我们所求为何？"}],
         startdescription: "没有规矩不成方圆——或旧律，或新规，或兼而有之。[添加知识来决定你教派的根本信条。]",
         description: "",
         warmup: 30,

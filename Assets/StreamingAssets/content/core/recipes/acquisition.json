@@ -5,7 +5,7 @@
         label: "Bid in an Auction",
         actionId: "explore",
 		effects: {},
-		slots:[{id:"Bid",required: {funds:1}}],
+		slots:[{id:"Bid",label:"Bid",required: {funds:1}}],
         startdescription: "A crowd of pinched faces, glinting eyes. Who will bid? [The item at auction is visible on the right. It will be gone forever if the auction is lost.]",
         description: ".",
         warmup: 30,

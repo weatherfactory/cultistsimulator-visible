@@ -48,6 +48,7 @@
         description: "职员们沉默着鱼贯而出。我现在有空了。",
         warmup:60,
 			slots: [{id:"Diligence",
+					label:"勤勉",
 					required: {reason: 1},
 					forbidden: {},
 					description: "加倍努力工作。有时候可能管用。"
@@ -90,6 +91,7 @@
         description: "职员们沉默着鱼贯而出。我现在有空了。",
         warmup:60,
 			slots: [{id:"Diligence",
+					label:"勤勉",
 					required: {reason: 1},
 					forbidden: {},
 					description: "加倍努力工作。有时候可能管用。"
@@ -159,6 +161,7 @@
 	label:"在奥尔登先生的坚持下加班",
 	startdescription:"“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
 			slots: [{id:"Attention",
+					label:"殷勤",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -175,6 +178,7 @@ maxexecutions:1
 	label:"在奥尔登先生的坚持下加班",
 	startdescription:"“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
 			slots: [{id:"Attention",
+					label:"殷勤",
 					required: {reason: 1,passion:1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -222,6 +226,7 @@ maxexecutions:1
         description: "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
         warmup: 70,
 			slots: [{id:"Devotion",
+					label:"献身",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -252,6 +257,7 @@ maxexecutions:1
         description: "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
         warmup: 70,
 			slots: [{id:"Devotion",
+					label:"献身",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -281,6 +287,7 @@ maxexecutions:1
 	
         warmup: 70,
 			slots: [{id:"Acceptance",
+					label:"赞同",
 					required: {passion: 1},
 					description: "我愿意把毕生精力投入进去。"
 				}],
@@ -319,6 +326,7 @@ maxexecutions:1
         description: "我阖上眼，数字在我眼帘下列队飘过。我睁开眼，光线使我刺痛。",
         warmup: 70,
 			slots: [{id:"Ambition",
+					label:"野心",
 					required: {passion: 1},
 					description: "小格洛弗留下的董事席位还是空的……"
 				}],
@@ -349,6 +357,7 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob: 1},
 	  			slots: [{id:"Scandal",
+					label:"中伤",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "我身居高位，这也许能再为我抵挡一阵丑闻。但这件事已经引起公司相当的重视，我可能会被解雇。"
@@ -376,6 +385,7 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob_tainted: 1},
 	  			slots: [{id:"Scandal",
+					label:"中伤",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "我身居高位，这也许能再为我遮挡一阵丑闻。但我现在切实面临丢掉职位的危险。"
