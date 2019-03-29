@@ -298,7 +298,6 @@ elements: [
 	},
 	{
 		uniquenessgroup: "uqbenefactorm",
-		comment: "NEW",
 		aspects: 
 		{
 			benefactor: "1",
@@ -316,6 +315,7 @@ elements: [
 		id: "benefactorm",
 		lifetime: "180",
 		description: "An elegant gentleman with sad eyes, receding hair, and a tendency to fits of friendly, braying, nervous laughter. He will no longer touch strong drink.",
+		animFrames: "1",
 		slots: 
 		[
 			{
@@ -340,7 +340,6 @@ elements: [
 	},
 	{
 		uniquenessgroup: "uqbenefactorf",
-		comment: "NEW",
 		aspects: 
 		{
 			benefactor: "1",
@@ -358,6 +357,7 @@ elements: [
 		id: "benefactorf",
 		lifetime: "180",
 		description: "A cautious, clever woman with close-set eyes and excellent skin for her age. She has long managed her own financial affairs, and donates dutifully to charity.",
+		animFrames: "1",
 		slots: 
 		[
 			{
@@ -382,7 +382,6 @@ elements: [
 	},
 	{
 		id: "benefactorm_rejectedplayer",
-		comment: "NEW",
 		aspects: 
 		{
 			mortal: "1",
@@ -398,7 +397,6 @@ elements: [
 	},
 	{
 		id: "benefactorf_rejectedplayer",
-		comment: "NEW",
 		aspects: 
 		{
 			mortal: "1",
@@ -414,7 +412,6 @@ elements: [
 	},
 	{
 		uniquenessgroup: "uqbenefactorm",
-		comment: "NEW",
 		icon: "benefactorm",
 		aspects: 
 		{
@@ -433,7 +430,6 @@ elements: [
 	},
 	{
 		uniquenessgroup: "uqbenefactorf",
-		comment: "NEW",
 		icon: "benefactorf",
 		aspects: 
 		{
@@ -471,7 +467,6 @@ elements: [
 				actionId: "study",
 			},
 		],
-		comment: "NEW",
 		label: "Dearly Departed's Papers",
 	},
 	{
@@ -484,8 +479,72 @@ elements: [
 			patron: "1",
 		},
 		description: "The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
-		comment: "NEW",
+		animFrames: "1",
 		label: "Sulochana Amavasya",
+	},
+	{
+		id: "echidna.enroute",
+		unique: "true",
+		comment: "NEW",
+		description: "Mrs E., Sulochana's 'sister', goes by the unlikely title of 'the Mother of Monsters'. It's not clear where she usually lairs, but it's not this side of the sea. She'll take a while to get here.",
+		decayTo: "echidna",
+		label: "Mrs E. is En Route",
+		lifetime: "180",
+	},
+	{
+		id: "echidna",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+		},
+		description: "The self-styled Mother of Monsters. A cheery, tubby woman in a green-grey garment like a baggy dirndl.",
+		animFrames: "1",
+		label: "Mrs E.",
+		comment: "NEW",
+	},
+	{
+		id: "marinette.enroute",
+		unique: "true",
+		comment: "NEW",
+		description: "Sulochana's 'sister', who is not usually named save as 'Our Lady of Wires'. She'll be here, soon, by night.",
+		decayTo: "marinette",
+		label: "Our Lady of Wires is En Route",
+		lifetime: "180",
+	},
+	{
+		id: "marinette",
+		unique: "true",
+		aspects: 
+		{
+			patron: "1",
+		},
+		description: "It reeks of rotten blood, and it clacks its jaw each time it speaks. Perhaps there is a woman, huddled beneath the cloth and the bones. Perhaps it's some puppeteer's trick.",
+		animFrames: "1",
+		label: "Marinette, 'Our Lady of Wires'",
+		comment: "NEW",
+	},
+	{
+		id: "kleidouchos.enroute",
+		comment: "NEW",
+		aspects: 
+		{
+			patron: "1",
+		},
+		description: "Teresa Galmier's 'correspondent', Sulochana's 'sister', the holder of the Key of Days, is on her way here from Vienna. Perhaps I should meet her at the station.",
+		decayTo: "kleidouchos",
+		label: "Frau Schlüssel is en route",
+		lifetime: "180",
+	},
+	{
+		id: "kleidouchos",
+		aspects: 
+		{
+			patron: "1",
+		},
+		description: "A spry,forceful woman in severe black and white, tightly wrinkled. She is never observed to blink. A tiny black puppy peeps from her skirts.",
+		comment: "NEW",
+		label: "Frau Schlüssel",
 	},
 ]
 }

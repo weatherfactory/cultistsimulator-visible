@@ -160,6 +160,11 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "poison.long.way.trap",
+				comment: "NEW",
+				additional: "true",
+			},
+			{
 				id: "dreamenterwood",
 				chance: "100",
 			},
@@ -221,6 +226,7 @@ recipes: [
 			lore: "1",
 			lantern: "1",
 		},
+		warmup: "10",
 		aspects: 
 		{
 			fatiguing: "1",
@@ -308,6 +314,7 @@ recipes: [
 			lore: "1",
 			winter: "1",
 		},
+		warmup: "10",
 		aspects: 
 		{
 			fatiguing: "1",
@@ -377,6 +384,11 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "poison.long.way.trap",
+				comment: "NEW",
+				additional: "true",
+			},
+			{
 				id: "dreamenterwhite",
 				chance: "100",
 			},
@@ -410,6 +422,15 @@ recipes: [
 		actionId: "dream",
 	},
 	{
+		extantreqs: 
+		{
+			waystagbefore_1: "-1",
+			waystagbefore_2: "-1",
+			waystagbefore_3: "-1",
+			waystagbefore_4: "-1",
+			waystagbefore_5: "-1",
+			waystag_after: "-1",
+		},
 		requirements: 
 		{
 			waywhite: "1",
@@ -423,7 +444,6 @@ recipes: [
 		label: "К Оленьей Двери",
 		startdescription: "Я поднимаюсь медленно. Ветры из Нигде треплют меня. Моя кожа запятнана светом. Лес непрестанно трепещет жизнью далеко подо мной.",
 		id: "dreamreachstagfirst",
-		maxexecutions: "1",
 		deckeffect: 
 		{
 			stagriddles: "1",
@@ -693,6 +713,11 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "poison.long.way.trap",
+				comment: "NEW",
+				additional: "true",
+			},
+			{
 				id: "dreamenterstag",
 				chance: "100",
 			},
@@ -888,6 +913,11 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "poison.long.way.trap",
+				comment: "NEW",
+				additional: "true",
+			},
+			{
 				id: "dreamenterspider",
 				chance: "100",
 			},
@@ -1073,6 +1103,16 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "poison.long.way.trap",
+				comment: "NEW",
+				additional: "true",
+			},
+			{
+				id: "apostlelantern.createpillar2",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
 				id: "dreamenterpeacockmirror",
 				chance: "100",
 			},
@@ -1117,6 +1157,22 @@ recipes: [
 		actionId: "dream",
 	},
 	{
+		id: "poison.long.way.trap",
+		comment: "NEW",
+		startdescription: "The Long has set invisible cartographers at the gate, to observe me as I pass and map me like a half-known country.",
+		warmup: "10",
+		requirements: 
+		{
+			poison.way.long: "1",
+		},
+		effects: 
+		{
+			long.lesson.dreamwork: "1",
+		},
+		label: "The Watch upon the Way",
+		actionId: "poison.long.way.trap",
+	},
+	{
 		linked: 
 		[
 			{
@@ -1137,7 +1193,6 @@ recipes: [
 			sendingheartg: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "30",
 		slots: 
 		[
@@ -1171,7 +1226,6 @@ recipes: [
 			sendingheartg: "1",
 		},
 		ending: "minorheartvictory",
-		comment: "NEW",
 		label: "The Kingskin Gate",
 		actionId: "dream",
 	},
@@ -1187,7 +1241,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingheartg: "1",
 		},
 		ending: "minorheartvictorywithrisen",
-		comment: "NEW",
 		label: "The Kingskin Gate",
 		actionId: "dream",
 	},
@@ -1212,7 +1265,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothg: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "30",
 		slots: 
 		[
@@ -1246,7 +1298,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothg: "1",
 		},
 		ending: "minormothvictory",
-		comment: "NEW",
 		label: "The Door in the Wood",
 		actionId: "dream",
 	},
@@ -1262,7 +1313,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothg: "1",
 		},
 		ending: "minormothvictorywithrisen",
-		comment: "NEW",
 		label: "The Door in the Wood",
 		actionId: "dream",
 	},
@@ -1287,7 +1337,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothheartg: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "30",
 		slots: 
 		[
@@ -1321,7 +1370,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothheartg: "1",
 		},
 		ending: "minormeniscatevictory",
-		comment: "NEW",
 		label: "Three",
 		actionId: "dream",
 	},
@@ -1335,7 +1383,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 			sendingmothheartg: "1",
 		},
 		ending: "minormeniscatevictorywithrisen",
-		comment: "NEW",
 		label: "Three",
 		actionId: "dream",
 	},
@@ -1344,7 +1391,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 		{
 			romanticinterest: "1",
 		},
-		comment: "NEW",
 		warmup: "30",
 		label: "The Threshold Choice",
 		startdescription: "The final farewell. They will remain, and I will ascend.",
@@ -1457,7 +1503,6 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 	{
 		id: "imnotinlovedream",
 		craftable: "false",
-		comment: "NEW",
 		actionId: "dream",
 		linked: 
 		[

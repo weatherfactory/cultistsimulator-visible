@@ -320,5 +320,107 @@ decks: [
 		],
 		defaultcard: "contentment",
 	},
+	{
+		id: "forgelong",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				julian_unknown,
+				welland_unknown,
+				welland_unknown,
+		],
+		defaultcard: "julian_unknown",
+	},
+	{
+		id: "graillong",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				tryphon_unknown,
+				tryphon_unknown,
+				julian_unknown,
+		],
+		defaultcard: "julian_unknown",
+	},
+	{
+		id: "lanternlong",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				julian_unknown,
+				diarist_unknown,
+				diarist_unknown,
+		],
+		defaultcard: "julian_unknown",
+	},
+	{
+		id: "long.strategies",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				strategy.assault.concealed,
+				strategy.intrigue.concealed,
+				strategy.dreams.concealed,
+				strategy.downtime.concealed,
+		],
+		resetonexhaustion: "true",
+		defaultcard: "strategy.downtime",
+	},
+	{
+		id: "long.strategies.preference.assault",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				strategy.assault.concealed,
+				strategy.assault.concealed,
+				strategy.intrigue.concealed,
+				strategy.dreams.concealed,
+				strategy.downtime.concealed,
+		],
+		resetonexhaustion: "true",
+		defaultcard: "strategy.downtime",
+	},
+	{
+		id: "long.strategies.preference.intrigue",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				strategy.assault.concealed,
+				strategy.intrigue.concealed,
+				strategy.intrigue.concealed,
+				strategy.dreams.concealed,
+				strategy.downtime.concealed,
+		],
+		resetonexhaustion: "true",
+		defaultcard: "strategy.downtime",
+	},
+	{
+		id: "long.strategies.preference.dreamwork",
+		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
+		comment: "NEW",
+		label: "An Enemy of the Work",
+		spec: 
+		[
+				strategy.assault.concealed,
+				strategy.intrigue.concealed,
+				strategy.dreams.concealed,
+				strategy.dreams.concealed,
+				strategy.downtime.concealed,
+		],
+		resetonexhaustion: "true",
+		defaultcard: "strategy.downtime",
+	},
 ]
 }

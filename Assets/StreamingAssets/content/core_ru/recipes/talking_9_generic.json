@@ -175,7 +175,6 @@ recipes: [
 		[
 			{
 				id: "A_follower_settrap_independent",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -188,17 +187,14 @@ recipes: [
 			},
 			{
 				id: "independentfitewithextraswole",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "independentfitewithswole",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "independentspeakpoison",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -239,7 +235,6 @@ recipes: [
 			murderskill: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		aspects: 
 		{
 			killmortal: "1",
@@ -267,7 +262,6 @@ recipes: [
 			healthskill: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		aspects: 
 		{
 			killmortal: "1",
@@ -305,7 +299,6 @@ recipes: [
 			},
 		],
 		craftable: "false",
-		comment: "NEW",
 		label: "A Surprise Attack has Failed!",
 		startdescription: ".",
 		id: "independentfitewithswole_failure",
@@ -332,7 +325,6 @@ recipes: [
 			},
 		],
 		craftable: "false",
-		comment: "NEW",
 		label: "Employ a Remarkable Poison against a Rival",
 		startdescription: "'Do you like tea?'",
 		id: "independentspeakpoison",
@@ -371,86 +363,60 @@ recipes: [
 		[
 			{
 				id: "hunterfitewithextraswole",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterfitewithswole",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakpoison_glassfinger",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakpoison",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakwinterg",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakwinterd",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakwinter",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakdread",
-				chance: "100",
 			},
 			{
 				id: "hunterspeaklanterng",
-				chance: "100",
 			},
 			{
 				id: "hunterspeaklanternd",
-				chance: "100",
 			},
 			{
 				id: "hunterspeaklantern",
-				chance: "100",
 			},
 			{
 				id: "hunterspeakfascination",
-				chance: "100",
 			},
 			{
 				id: "hunterattackhighedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattackhighwinter",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterattackmidedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattackmidwinter",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterattacklowedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattacklowwinter",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "hunterattacknoedge",
-				comment: "NEW",
-				chance: "100",
 			},
 		],
 	},
@@ -481,101 +447,83 @@ recipes: [
 		[
 			{
 				id: "discussfucinespirit",
-				chance: "100",
 			},
 			{
 				id: "discussphrygianspirit",
-				chance: "100",
 			},
 			{
 				id: "discussmandaicspirit",
-				chance: "100",
 			},
 			{
 				id: "hunterattackhighedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattackmidedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattacklowedge",
-				chance: "100",
 			},
 			{
 				id: "hunterattacknoedge",
-				chance: "100",
 			},
 			{
 				id: "evidencedestroymidmoth",
-				chance: "100",
 			},
 			{
 				id: "evidencedestroylowmoth",
-				chance: "100",
 			},
 			{
 				id: "evidencedestroynomoth",
-				chance: "100",
 			},
 			{
 				id: "annoyanceseducehighgrail",
-				chance: "100",
 			},
 			{
 				id: "annoyanceattackhighedge",
-				chance: "100",
 			},
 			{
 				id: "annoyanceseducemidgrail",
-				chance: "100",
 			},
 			{
 				id: "annoyanceattackmidedge",
-				chance: "100",
 			},
 			{
 				id: "annoyancederangemidmoth",
-				chance: "100",
 			},
 			{
 				id: "annoyanceseducelowgrail",
-				chance: "100",
 			},
 			{
 				id: "annoyanceattacklowedge",
-				chance: "100",
 			},
 			{
 				id: "annoyancederangelowmoth",
-				chance: "100",
 			},
 			{
 				id: "annoyanceattacknoedge",
-				chance: "100",
+			},
+			{
+				id: "apostlelantern.recruitkleidouchos.teresa",
+				comment: "NEW",
+			},
+			{
+				id: "apostlelantern.usepillar3",
+				comment: "NEW",
 			},
 			{
 				id: "teresadiscusslocksmithsdream1",
-				chance: "100",
 			},
 			{
 				id: "teresadiscusslocksmithsdream2",
-				chance: "100",
 			},
 			{
 				id: "teresadiscusslocksmithsdream3",
-				chance: "100",
 			},
 			{
 				id: "teresadiscusslocksmithsdream4",
-				comment: "NEW",
-				chance: "100",
 			},
 			{
 				id: "teresadiscusslocksmithsdream5",
-				comment: "NEW",
-				chance: "100",
 			},
 		],
 	},
@@ -705,7 +653,6 @@ recipes: [
 				mutationLevel: "1",
 			},
 		],
-		comment: "NEW",
 		label: "Discuss the Locksmith's Dream, Volume 4",
 		startdescription: "'I'll definitely sign that one. But I'm afraid no one will see the signature unless they're dreaming of the book.'",
 		id: "teresadiscusslocksmithsdream4",
@@ -731,7 +678,6 @@ recipes: [
 				mutationLevel: "1",
 			},
 		],
-		comment: "NEW",
 		label: "Discuss the Locksmith's Dream, Volume 5",
 		startdescription: "'FNORD.'",
 		id: "teresadiscusslocksmithsdream5",
@@ -749,21 +695,43 @@ recipes: [
 		},
 	},
 	{
+		extantreqs: 
+		{
+			society: "-1",
+		},
 		requirements: 
 		{
 			acquaintance: "1",
 			ritual: "-1",
-			society: "-1",
 			location: "-1",
 		},
 		craftable: "true",
-		warmup: "10",
+		comments: "This is hijacked by links from the Apostle open-talk verbs, to prevent apostles founding a second cult. This is why all the content is in the followup recipe.",
 		label: "Основание мистической организации",
 		startdescription: "У меня есть компаньон для возможной работы. Я могу надеяться на помощь, даже на послушание. Но сначала — у нас должно быть то, чему мы последуем. Общество; братство; орден; культ.",
+		linked: 
+		[
+			{
+				id: "begincultfoundation_createcult",
+				chance: "100",
+			},
+		],
 		id: "begincultfoundation",
-		actionId: "talk",
 		description: "Истинный труд начат. Власти заинтересуются им. Мне надо быть наготове. [Вы начали создавать свой культ. Дополните его чем-то ещё, и сможете вербовать приспешников.]",
-		maxexecutions: "1",
+		actionId: "talk",
+	},
+	{
+		extantreqs: 
+		{
+			society: "-1",
+		},
+		comment: "NEW",
+		warmup: "10",
+		label: "Found a Mystical Organisation",
+		startdescription: "Here is someone I might work with. A companion, or a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
+		id: "begincultfoundation_createcult",
+		actionId: "talk",
+		description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
 		effects: 
 		{
 			notoriety: "1",

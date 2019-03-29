@@ -121,7 +121,6 @@ recipes: [
 			vaultshires5: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "30",
 		label: "Beginning an Expedition: the Gwaer Inn",
 		startdescription: "We can reserve rooms at the Inn easily enough, but we can expect the locals - if they divine our intentions - to turn nasty. And if the library is still there, it will be well-hidden. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
@@ -252,7 +251,6 @@ recipes: [
 			vaultshires5: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		warmup: "30",
 		label: "The White Library",
 		startdescription: "The room is bleached and quiet. The chairs are pale wood; the table is topped with white marble. the A low draught blows through the ill-fitting sea-facing casement. In winter, it must be insupportably cold. A white-painted glass case holds a shelf of books, wrapped oddly in coils of copper wire.",
@@ -272,6 +270,11 @@ recipes: [
 	{
 		linked: 
 		[
+			{
+				id: "explore.apostleforge.findflaw",
+				comment: "NEW",
+				chance: "100",
+			},
 			{
 				id: "expeditionascensionheartb",
 				chance: "100",

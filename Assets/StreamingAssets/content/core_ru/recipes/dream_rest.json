@@ -1,6 +1,32 @@
 ﻿{
 recipes: [
 	{
+		mutations: 
+		[
+			{
+				level: "-1",
+				filter: "fascination",
+				mutate: "poison.fascination.longlesson",
+			},
+		],
+		craftable: "true",
+		comment: "NEW",
+		warmup: "10",
+		label: "An Enemy Ever Vigilant",
+		startdescription: "Our enemy has learnt from my dreams.",
+		id: "dream.poison.fascination.longlesson.trap",
+		actionId: "dream",
+		effects: 
+		{
+			long.lesson.dreamwork: "1",
+		},
+		requirements: 
+		{
+			fascination: "1",
+			poison.fascination.longlesson: "1",
+		},
+	},
+	{
 		requirements: 
 		{
 			health: "1",
@@ -20,12 +46,10 @@ recipes: [
 		[
 			{
 				id: "dreamhealthdread",
-				comment: "NEW",
 				chance: "10",
 			},
 			{
 				id: "dreamhealthfascination",
-				comment: "NEW",
 				chance: "10",
 			},
 			{
@@ -57,7 +81,6 @@ recipes: [
 			dread: "1",
 		},
 		description: "In the land of the two rivers, in the days of Rimush and of Naram-Sin, there were stories told of a howling woman who devoured the children of other mothers. Last night there was a howling in my dreams.",
-		comment: "NEW",
 		label: "An Early Night",
 		actionId: "dream",
 	},
@@ -69,7 +92,6 @@ recipes: [
 			fascination: "1",
 		},
 		description: "Imagine a box of mirrors, where each mirror contains a sweeter light. Now imagine that in the seventh mirror there is only an ordinary dawn, an ordinary bed, the dull beginnings of an ordinary day. Imagine that, and long for light.",
-		comment: "NEW",
 		label: "An Early Night",
 		actionId: "dream",
 	},
@@ -111,6 +133,28 @@ recipes: [
 		id: "recoverfatigue",
 		description: "Мне лучше.",
 		actionId: "dream",
+	},
+	{
+		requirements: 
+		{
+			apostlegrail.pillar2.dormant: "1",
+			apostlegrail.pillarfuel: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "10",
+		label: "The Dream of the End",
+		startdescription: "I consume the little vial of blood, lie back, close my eyes. Tomorrow, I will be stronger.",
+		id: "recover.apostlegrail.pillar2",
+		actionId: "dream",
+		description: "I am much recovered - more than that - I am sumptuous. The sclera of my eyes, the veins in my wrists, are aswim with gorgeous serums. When the Vitulation comes, I will be the centre-piece, for our Delight to prove their appetite, to enact the Grail.",
+		effects: 
+		{
+			fascination: "1",
+			apostlegrail.pillar2.dormant: "-1",
+			apostlegrail.pillar2: "1",
+			apostlegrail.pillarfuel: "-1",
+		},
 	},
 	{
 		requirements: 
@@ -203,7 +247,6 @@ recipes: [
 			fleeting: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "60",
 		label: "Composure",
 		startdescription: ".",

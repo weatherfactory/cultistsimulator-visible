@@ -6,7 +6,6 @@ recipes: [
 			follower_wound: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "60",
 		label: "Attempt the healing of a Follower",
 		startdescription: "Compassion, or convenience?",
@@ -22,6 +21,7 @@ recipes: [
 					funds: "1",
 				},
 				description: "Funds will buy medicine.",
+				label: "Healing",
 			},
 		],
 		alternativerecipes: 
@@ -70,7 +70,6 @@ recipes: [
 		label: "Complete the healing of a Follower",
 		startdescription: "Perhaps, now, they'll survive. But there are limits to what the human body can sustain.",
 		id: "talktofollower_heal",
-		comment: "NEW",
 		actionId: "talk",
 		requirements: 
 		{
@@ -94,7 +93,6 @@ recipes: [
 				additive: "true",
 			},
 		],
-		comment: "NEW",
 		description: "The wound is healed. The scar remains. But each scar, as the scholar Shulga once observed, is a lesson.",
 		linked: 
 		[
@@ -123,7 +121,6 @@ recipes: [
 				additive: "true",
 			},
 		],
-		comment: "NEW",
 		description: "The wound is healed - as much as it will ever be. A gate of pain and possibility remains.",
 		linked: 
 		[
@@ -152,7 +149,6 @@ recipes: [
 				additive: "true",
 			},
 		],
-		comment: "NEW",
 		description: "The wound is healed, but this one came very close to death. Silence has touched them, like snow.",
 		linked: 
 		[
@@ -175,7 +171,6 @@ recipes: [
 			follower_scar_edge: "3",
 		},
 		description: "This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
-		comment: "NEW",
 		label: "Death: a Defeat",
 		actionId: "talk",
 	},
@@ -190,7 +185,6 @@ recipes: [
 			follower_scar_knock: "3",
 		},
 		description: "To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
-		comment: "NEW",
 		label: "Death: an Opening",
 		actionId: "talk",
 	},
@@ -205,7 +199,6 @@ recipes: [
 			follower_scar_winter: "3",
 		},
 		description: "The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
-		comment: "NEW",
 		label: "Death: an Ending",
 		actionId: "talk",
 	},
@@ -251,47 +244,38 @@ recipes: [
 			},
 			{
 				id: "A_talktofollower_givetool_router",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_cantgivetool",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationcabaret_lustsensation",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationcabaret_lustchange",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationstreetsstrange_lustenlightenment",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationauctionhouse_lustpower",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationcabaret_notinterested",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationstreetsstrange_notinterested",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "A_talktofollower_locationauctionhouse_notinterested",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -307,48 +291,43 @@ recipes: [
 				chance: "100",
 			},
 			{
-				id: "A_follower_settrap_independent",
+				id: "followeraction.repair.greatwork.sabotaged",
 				comment: "NEW",
+			},
+			{
+				id: "A_follower_settrap_independent",
 				chance: "100",
 			},
 			{
 				id: "A_follower_settrap_vault",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_murderhighwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_craftworkhighforge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_seducehighgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_burglehighknock",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_charmhighheart",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_auguryhighlantern",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_hoodwinkhighmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -357,37 +336,30 @@ recipes: [
 			},
 			{
 				id: "followeraction_murdermidwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_craftworkmidforge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_seducemidgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_burglemidknock",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_charmmidheart",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_augurymidlantern",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_hoodwinkmidmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -396,37 +368,30 @@ recipes: [
 			},
 			{
 				id: "followeraction_murderlowwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_craftworklowforge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_seducelowgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_burglelowknock",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_charmlowheart",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_augurylowlantern",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "followeraction_hoodwinklowmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -435,97 +400,78 @@ recipes: [
 			},
 			{
 				id: "hunterattackhighedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattackmidedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattacklowedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattackhighwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattackmidwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattacklowwinter",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "hunterattacknoedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceseducehighgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceattackhighedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceseducemidgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceattackmidedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyancederangemidmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceseducelowgrail",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceattacklowedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyancederangelowmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "annoyanceattacknoedge",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "evidencedestroymidmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "evidencedestroylowmoth",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "evidencedestroynomoth",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -562,20 +508,20 @@ recipes: [
 			tool: "1",
 			follower_honoured: "1",
 		},
-		comment: "NEW",
 		label: "Not Wise, or Not Permitted?",
 		actionId: "talk",
 	},
 	{
 		id: "A_talktofollower_givetool_router",
-		comment: "NEW",
 		startdescription: "Power will pass from my hands to theirs. [This will increase a follower's relevant Aspect, but you can never reclaim the tool, nor gift them a second tool. A Gift will reduce Resentment.]",
 		requirements: 
 		{
 			summoned: "-1",
 			follower: "1",
+			greatwork: "-1",
 			tool: "1",
 			follower_honoured: "-1",
+			greatwork.sabotaged: "-1",
 		},
 		description: ".",
 		linked: 
@@ -719,7 +665,6 @@ recipes: [
 				additive: "true",
 			},
 		],
-		comment: "NEW",
 		description: "Around the neck, on a length of dried tiger-sinew.",
 		requirements: 
 		{
@@ -755,7 +700,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Close to the hand, but wrapped against the touch of blood which may excite it.",
 		requirements: 
 		{
@@ -791,7 +735,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Buried somewhere it cannot incite rebellion.",
 		requirements: 
 		{
@@ -827,7 +770,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: around the neck, on a chain of fine steel links.",
 		requirements: 
 		{
@@ -863,7 +805,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in a hoop of iron, fixed fast to the flesh.",
 		requirements: 
 		{
@@ -899,7 +840,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in the lamp of a private shrine.",
 		requirements: 
 		{
@@ -941,7 +881,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: below the neck, above the waist, in the central hollow of the chest.",
 		requirements: 
 		{
@@ -977,7 +916,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: never to be worn in daylight, and in moonlight, only with utmost caution.",
 		requirements: 
 		{
@@ -1013,7 +951,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: into this ring will my servant weave their own hair, for its next owner to burn.",
 		requirements: 
 		{
@@ -1049,7 +986,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in the cellar, beside the rarer sort of wine.",
 		requirements: 
 		{
@@ -1085,7 +1021,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be carried: in a bandage-sling, like a well-behaved infant.",
 		requirements: 
 		{
@@ -1121,7 +1056,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: wrapped tight, so it will not shiver untimely.",
 		requirements: 
 		{
@@ -1157,7 +1091,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: above the mantel, or before the threshold.",
 		requirements: 
 		{
@@ -1193,7 +1126,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: around the neck, on a length of dried serpent-gut.",
 		requirements: 
 		{
@@ -1229,7 +1161,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: at the door which is not to be opened.",
 		requirements: 
 		{
@@ -1265,7 +1196,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "It cannot be locked away. Keep it in the hand or beneath the tongue.",
 		requirements: 
 		{
@@ -1301,7 +1231,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: around the neck, on a twist of golden wire.",
 		requirements: 
 		{
@@ -1337,7 +1266,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Wherever it's kept, it will be visible in the splintered reflections of the pupils.",
 		requirements: 
 		{
@@ -1373,7 +1301,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in a room without windows, to which no light is ever admitted.",
 		requirements: 
 		{
@@ -1409,7 +1336,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in a clot of hair, in a bandage, in a box, in a place we visit only when we are ready.",
 		requirements: 
 		{
@@ -1445,7 +1371,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: upon the blank face of a mannequin-head, always facing the wall.",
 		requirements: 
 		{
@@ -1481,7 +1406,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: in a copper bowl of water, mixed with three drops of blood and three strands of hair, freshened weekly; and an iron needle, so they may always be aligned to the North.",
 		requirements: 
 		{
@@ -1517,7 +1441,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Sometimes, one object can be kept in more than one place.",
 		requirements: 
 		{
@@ -1553,7 +1476,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "To be kept: between two mirrors, beneath a light that is not to be extinguished.",
 		requirements: 
 		{
@@ -1589,7 +1511,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Kept in a silent place.",
 		requirements: 
 		{
@@ -1625,7 +1546,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Kept in an empty place.",
 		requirements: 
 		{
@@ -1661,7 +1581,6 @@ recipes: [
 				additive: "false",
 			},
 		],
-		comment: "NEW",
 		description: "Kept in an empty, silent place.",
 		requirements: 
 		{
@@ -1677,13 +1596,11 @@ recipes: [
 	{
 		id: "L_give_tool_other",
 		description: "This is something that cannot be given away; or something that no-one would accept.",
-		comment: "NEW",
 		label: "Not all gifts are suitable",
 		actionId: "talk",
 	},
 	{
 		id: "A_talktofollower_locationcabaret_lustsensation",
-		comment: "NEW",
 		startdescription: "@#uqrose|Rose grins. 'Thank you. I'm very fond of the Club. My brother used to take me there.'
 #uqsaliba|Saliba examines me, toe to head. He curls his fingers into the palms of his hands, into fists, and then smooths them out. 'Good,' he agrees.
 #uqvictor|Victor winks. 'Yes, let's. My sister used to like the Club. I've been looking for a chance to go back.'
@@ -1708,7 +1625,6 @@ recipes: [
 	},
 	{
 		id: "A_talktofollower_locationcabaret_lustchange",
-		comment: "NEW",
 		startdescription: "@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.
 #uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.
 #uqclovette|Clovette claps her hands. 'I thought you'd never ask!'
@@ -1734,7 +1650,6 @@ recipes: [
 	},
 	{
 		id: "A_talktofollower_locationstreetsstrange_lustenlightenment",
-		comment: "NEW",
 		startdescription: "@#uqauclair|Auclair elevates her face and orients her mouth into a bright, clear smile. 'Delighted,' she says.
 #uqcat|Cat lifts her teacup, drains it to the dregs, tilts the cup to study it critically. 'Why not,' she says. 'Why not indeed.'
 #uqclifton|Clifton belches and wipes his mouth. 'All bloody right,' he says approvingly.
@@ -1760,7 +1675,6 @@ recipes: [
 	},
 	{
 		id: "A_talktofollower_locationauctionhouse_lustpower",
-		comment: "NEW",
 		startdescription: "@#uqtristan|Tristan nods emphatically, without speaking.
 #uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.
 #uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on me. 'Yes, please,' he says.
@@ -1791,7 +1705,6 @@ recipes: [
 			locationcabaret: "1",
 		},
 		description: "[Your follower has no especial interest in this place.]",
-		comment: "NEW",
 		label: "Invite them to an evening at the Ecdysis Club",
 		actionId: "talk",
 	},
@@ -1804,7 +1717,6 @@ recipes: [
 			locationauctionhouse: "1",
 		},
 		description: "[Your follower has no especial interest in this place.]",
-		comment: "NEW",
 		label: "Invite them to an evening at Oriflamme's",
 		actionId: "talk",
 	},
@@ -1817,7 +1729,6 @@ recipes: [
 			locationstreetsstrange: "1",
 		},
 		description: "[Your follower has no especial interest in this place.]",
-		comment: "NEW",
 		label: "Invite them to take a walk in an uncanny place.",
 		actionId: "talk",
 	},
@@ -2014,6 +1925,71 @@ recipes: [
 		actionId: "talk",
 	},
 	{
+		id: "followeraction.repair.greatwork.sabotaged",
+		comment: "NEW",
+		startdescription: "We can begin to repair this, but it will take a Silver Spintria to purchase the necessary materials.",
+		requirements: 
+		{
+			greatwork.sabotaged: "1",
+			follower: "1",
+			forge: "1",
+		},
+		description: ".",
+		linked: 
+		[
+			{
+				id: "followeraction.repair.greatwork.sabotaged.attempt",
+				chance: "100",
+			},
+		],
+		label: "Repair a Sabotaged Element of the Great Work",
+		actionId: "talk",
+	},
+	{
+		comment: "NEW",
+		warmup: "30",
+		label: "Repairing a Sabotaged Element of the Great Work",
+		startdescription: "My follower needs a Silver Spintria to complete their task.",
+		id: "followeraction.repair.greatwork.sabotaged.attempt",
+		actionId: "talk",
+		description: "I couldn't provide the materials my follower needed. The Work remains imperilled.",
+		slots: 
+		[
+			{
+				id: "Materials",
+				required: 
+				{
+					compensationvalue: "8",
+				},
+				description: "Metals and mercies",
+				label: "Materials",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "followeraction.repair.greatwork.sabotaged.succeed",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "followeraction.repair.greatwork.sabotaged.succeed",
+		comment: "NEW",
+		startdescription: "My follower is at work,",
+		requirements: 
+		{
+			compensationvalue: "8",
+		},
+		description: "The Great Work will continue!",
+		aspects: 
+		{
+			sabotage.repair: "1",
+		},
+		label: "Repairing a Sabotaged Element of the Great Work",
+		actionId: "talk",
+	},
+	{
 		linked: 
 		[
 			{
@@ -2028,7 +2004,6 @@ recipes: [
 			independent: "1",
 		},
 		comments: "Follower requirement isn't redundant... cos we also link here from conversations with Independents.",
-		comment: "NEW",
 		label: "Create a Snare to delay or defeat a Rival",
 		startdescription: "Rivals don't prowl the streets like Hunters. They will only meet us on neutral ground. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
 		id: "A_follower_settrap_independent",
@@ -2052,7 +2027,6 @@ recipes: [
 	},
 	{
 		id: "A_follower_settrap_vault",
-		comment: "NEW",
 		startdescription: "Rivals are cautious: they don't prowl the streets like Hunters. To defeat one, we must prepare a trap, and await our opportunity. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
 		requirements: 
 		{
@@ -2070,7 +2044,6 @@ recipes: [
 	},
 	{
 		id: "L_set_trap_router",
-		comment: "NEW",
 		effects: 
 		{
 			snare: "1",
@@ -2134,7 +2107,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_highedge",
-		comment: "NEW",
 		requirements: 
 		{
 			edge: "10",
@@ -2150,7 +2122,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_highwinter",
-		comment: "NEW",
 		requirements: 
 		{
 			winter: "10",
@@ -2166,7 +2137,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_highforge",
-		comment: "NEW",
 		requirements: 
 		{
 			forge: "10",
@@ -2182,7 +2152,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_highmoth",
-		comment: "NEW",
 		requirements: 
 		{
 			moth: "10",
@@ -2198,7 +2167,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_midedge",
-		comment: "NEW",
 		requirements: 
 		{
 			edge: "7",
@@ -2214,7 +2182,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_midwinter",
-		comment: "NEW",
 		requirements: 
 		{
 			winter: "7",
@@ -2230,7 +2197,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_midforge",
-		comment: "NEW",
 		requirements: 
 		{
 			forge: "7",
@@ -2246,7 +2212,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_midmoth",
-		comment: "NEW",
 		requirements: 
 		{
 			moth: "7",
@@ -2262,7 +2227,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_lowedge",
-		comment: "NEW",
 		requirements: 
 		{
 			edge: "3",
@@ -2278,7 +2242,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_lowwinter",
-		comment: "NEW",
 		requirements: 
 		{
 			winter: "3",
@@ -2294,7 +2257,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_lowforge",
-		comment: "NEW",
 		requirements: 
 		{
 			forge: "3",
@@ -2310,7 +2272,6 @@ recipes: [
 	},
 	{
 		id: "L_settrap_lowmoth",
-		comment: "NEW",
 		requirements: 
 		{
 			moth: "3",
@@ -2337,7 +2298,6 @@ recipes: [
 		],
 		warmup: "30",
 		description: "My follower has set a perilously cunning ambuscade - one that will almost certainly succeed.",
-		comment: "NEW",
 		label: "A Perilous Snare",
 		actionId: "talk",
 	},
@@ -2354,7 +2314,6 @@ recipes: [
 		],
 		warmup: "30",
 		description: "My follower has set a cunning ambuscade - one that will likely succeed.",
-		comment: "NEW",
 		label: "A Cunning Snare",
 		actionId: "talk",
 	},
@@ -2371,7 +2330,6 @@ recipes: [
 		],
 		warmup: "30",
 		description: "My follower has prepared a stratagem which - with considerable luck - might defeat a rival's plans.",
-		comment: "NEW",
 		label: "An Adequate Snare",
 		actionId: "talk",
 	},
@@ -2379,7 +2337,6 @@ recipes: [
 		id: "L_createsnare_rubbish",
 		warmup: "30",
 		description: "My follower's plan is eccentric at best and incompetent at worst, but perhaps an enemy will stumble into it.",
-		comment: "NEW",
 		label: "A Desperate Attempt",
 		actionId: "talk",
 	},
@@ -2439,7 +2396,7 @@ recipes: [
 		[
 			{
 				id: "followeraction_abductsuccess",
-				chance: "3",
+				chance: "30",
 			},
 			{
 				id: "followeraction_abductfailure",
@@ -2522,7 +2479,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_murderfailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -2656,7 +2612,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_craftworkfailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -2780,7 +2735,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_seducefailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -2914,7 +2868,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_burglefailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -3048,7 +3001,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_charmfailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -3167,7 +3119,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_auguryfailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],
@@ -3300,7 +3251,6 @@ recipes: [
 			},
 			{
 				id: "followeraction_hoodwinkfailure",
-				comment: "NEW",
 				chance: "100",
 			},
 		],

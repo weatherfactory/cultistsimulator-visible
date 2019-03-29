@@ -51,6 +51,12 @@ recipes: [
 		alternativerecipes: 
 		[
 			{
+				id: "forlornbloodsickness",
+				comment: "NEW",
+				chance: "70",
+				additional: "true",
+			},
+			{
 				id: "sickness",
 				chance: "100",
 				additional: "true",
@@ -87,7 +93,6 @@ recipes: [
 			},
 			{
 				id: "rosenext",
-				comment: "NEW",
 				chance: "100",
 				additional: "true",
 			},
@@ -111,10 +116,15 @@ recipes: [
 		actionId: "time",
 	},
 	{
+		extantreqs: 
+		{
+			apostlegrail.pillar2.dormant: "-1",
+		},
 		requirements: 
 		{
 			seasonsickness: "1",
 		},
+		comments: "We don't want to double up on normal and Grail-apostle sickness",
 		warmup: "60",
 		aspects: 
 		{
@@ -143,7 +153,6 @@ recipes: [
 		[
 			{
 				id: "deathofthewoundedfollower",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -153,8 +162,61 @@ recipes: [
 		],
 	},
 	{
-		id: "deathofthewoundedfollower",
+		extantreqs: 
+		{
+			apostlegrail.pillar2.dormant: "1",
+		},
 		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			fallsick: "1",
+		},
+		label: "Sickness",
+		startdescription: "My illness has come for me. If I survive, I must taste the blood of our Delight, and soon. [If this illness cannot consume Health, or Savorous Blood, it will kill you.]",
+		id: "forlornbloodsickness",
+		actionId: "illhealth",
+		description: "I shrink and grow pale. Fatigue chokes my throat. I must ensure that my death serves a purpose.",
+		slots: 
+		[
+			{
+				id: "Affliction",
+				required: 
+				{
+					fatigue: "1",
+					health: "1",
+					apostlegrail.pillar2: "1",
+				},
+				greedy: "true",
+				label: "Affliction",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "savorousbloodrespite",
+				chance: "100",
+			},
+			{
+				id: "forlornblooddeathofthebody",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "savorousbloodrespite",
+		startdescription: "The blood of our Delight warms me. It makes red flowers in my cheeks; it pours out wine in my heart; it twitches my strings in the rhythm the Grail taught the Thunderskin. I shall live a little longer, I have decided.",
+		warmup: "10",
+		requirements: 
+		{
+			apostlegrail.pillar2: "1",
+		},
+		comment: "NEW",
+		label: "A Respite",
+		actionId: "illhealth",
+	},
+	{
+		id: "deathofthewoundedfollower",
 		startdescription: "Their wounds are mortal. There's nothing to be done.",
 		requirements: 
 		{
@@ -188,7 +250,6 @@ recipes: [
 		{
 			seasonardours: "1",
 		},
-		comment: "NEW",
 		warmup: "5",
 		label: "Trysts and Interludes",
 		startdescription: "If I have a particular friend, now is the time to renew our connection.",
@@ -208,6 +269,7 @@ recipes: [
 				{
 					notoriety: "1",
 				},
+				label: "Who?",
 				greedy: "true",
 			},
 		],
@@ -281,7 +343,7 @@ recipes: [
 					health: "1",
 				},
 				greedy: "true",
-				comment: "NEW",
+				label: "Starvation",
 			},
 		],
 		label: "Истощение",
