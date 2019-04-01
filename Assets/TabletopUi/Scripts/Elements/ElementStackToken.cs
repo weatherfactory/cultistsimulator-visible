@@ -776,7 +776,14 @@ namespace Assets.CS.TabletopUI {
 					notifier.ShowCardElementDetails(this._element, this);
 					if (TabletopManager.GetStickyDrag())
 					{
-						OnBeginDrag( eventData );
+						if (DraggableToken.itemBeingDragged != null)
+						{
+							OnEndDrag( eventData );
+						}
+						else
+						{
+							OnBeginDrag( eventData );
+						}
 					}
 				}
 				else
