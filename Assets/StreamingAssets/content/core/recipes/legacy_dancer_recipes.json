@@ -345,7 +345,7 @@ comments:"Identical to proposes_always, but with a lower threshold"
 {id:"talk_benefactormarry",
 actionId:"talk",
 requirements:{benefactor_proposal:1},
-slots:[{id:"Yes",required:{passion:1}}],
+slots:[{id:"Yes",label:"Yes",required:{passion:1}}],
 label:"Accept a Proposal of Marriage",
 startdescription:"I have been offered marriage - marriage into the nobility. Peace, prosperity, comfort, and the affectionate companionship of my Benefactor for the remainder of my life. I must be sincere. If I cannot experience sincerity, I must manufacture it.",
 description: "My Benefactor still waits, face clouded.",

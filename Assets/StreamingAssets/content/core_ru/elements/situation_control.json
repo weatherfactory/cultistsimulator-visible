@@ -1,14 +1,51 @@
-﻿{"elements":
-    [
-		{id: "insight",
-		label: "Озарение",
+﻿{
+elements: [
+	{
+		id: "insight",
 		description: "Озарение об этой тайне.",
-		lifetime:1
-		},
-		{id: "bid",
-		label: "Ставка",
+		label: "Озарение",
+		lifetime: "1",
+	},
+	{
+		id: "bid",
 		description: "Ставка, размещённая на аукционе.",
-		xtriggers:{restore:funds}
-		}
+		label: "Ставка",
+		xtriggers: 
+		{
+			restore: "funds",
+		},
+	},
+	{
+		id: "abductioninprogress",
+		description: "Thought, they say, is free, but thought is chained to the body.",
+		icon: "seal_wardeddoor",
+		comment: "NEW",
+		label: "A Warded Cell",
+		lifetime: "1",
+	},
+	{
+		id: "assassinationinprogress.player",
+		description: "This will end in a death. It could be my death.",
+		icon: "dread",
+		comment: "NEW",
+		label: "An Assassination",
+		lifetime: "1",
+	},
+	{
+		id: "assassinationinprogress.follower",
+		description: "This will end in a death - theirs, or ours.",
+		icon: "dread",
+		comment: "NEW",
+		label: "An Assassination",
+		lifetime: "1",
+	},
+	{
+		id: "scandalinprogress",
+		description: "What they say is only a shadow of the truth, but by our shadows we are discovered.",
+		icon: "notoriety",
+		comment: "NEW",
+		label: "Evil Gossip",
+		lifetime: "1",
+	},
 ]
-};
+}

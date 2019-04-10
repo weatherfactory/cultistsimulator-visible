@@ -1,532 +1,237 @@
-﻿{
-recipes: [
-	{
-		requirements: 
-		{
-			follower: "1",
-			hq: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		aspects: 
-		{
-			capturefollower: "1",
-		},
-		label: "背叛并囚禁一位追随者",
-		startdescription: "这家伙必定心怀异念。滚进橱柜吧。",
-		id: "lockfollowerincupboard",
-		actionId: "talk",
-		description: "我把这家伙锁了起来。等尖叫和咆哮停下来后，我再将他完全制服。",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "romanticinterest",
-				mutationLevel: "-1",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			sulochana: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		label: "A Chat with Sulochana",
-		startdescription: "@#ascensionlessonhearta|'You want to know more?'
-#ascensionlessonheartb|'You want to know more?'
-#ascensionlessonheartc|'You want to know more?'
-#ascensionlessonheartd|'You want to know more?'
-#ascensionlessonhearte|'You want to know more?'
-#ascensionlessonheartf|'You want to know more?'
-#ascensionlessonmotha|'You want to know more?'
-#ascensionlessonmothb|'You want to know more?'
-#ascensionlessonmothc|'You want to know more?'
-#ascensionlessonmothd|'You want to know more?'
-#ascensionlessonmothe|'You want to know more?'
-#ascensionlessonmothf|'You want to know more?'
-#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
-		id: "sulochanachat",
-		actionId: "talk",
-		description: "@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles
-#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#|Is she disappointed? It's difficult to tell, with Sulochana.@",
-		slots: 
-		[
-			{
-				id: "Subject",
-				description: "A topic of conversation",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "sulochanachat_health",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_passion",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_cabaret",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desireheart_track",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desiremoth_track",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desire",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesrouter",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "sulochanachat_health",
-		startdescription: "'You're young. Congratulations.'",
-		requirements: 
-		{
-			health: "1",
-			sulochana: "1",
-		},
-		description: "'We were all of us young. Everyone. That's the only thing most of us have in common.'",
-		comment: "NEW",
-		label: "On the Body's Strengths",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_passion",
-		startdescription: "'Yes. That will get you into trouble.'",
-		requirements: 
-		{
-			passion: "1",
-			sulochana: "1",
-		},
-		description: "'You have potential. You saw me see that. Potential isn't enough. Anything else?'",
-		comment: "NEW",
-		label: "On Passion",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_cabaret",
-		startdescription: "'Yes?'",
-		requirements: 
-		{
-			sulochana: "1",
-			locationcabaret: "1",
-		},
-		description: "'There's a road you can walk that begins there, in my house. If you want to talk about it, meet me there.'",
-		comment: "NEW",
-		label: "On the Ecdysis Club",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desireheart_track",
-		comment: "NEW",
-		startdescription: "'Looking to shed your skin, hm?'",
-		requirements: 
-		{
-			desireheart_track: "1",
-			sulochana: "1",
-		},
-		description: "'The road you want to walk is what we call the New Form. Not all that new, not any more. But it has merit, if you can stand the pain. Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'",
-		effects: 
-		{
-			locationcabaret: "1",
-		},
-		label: "On the New Form",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desiremoth_track",
-		comment: "NEW",
-		startdescription: "Now - now we begin to understand each other.",
-		requirements: 
-		{
-			desiremoth_track: "1",
-			sulochana: "1",
-		},
-		description: "The road you want to walk is what we call the Old Form. I walked it myself, and eventually it brought me here. You'll give up everything along the way. You'll need to shed your skin, and not only once... Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
-		effects: 
-		{
-			locationcabaret: "1",
-		},
-		label: "On the Old Form",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desire_change",
-		startdescription: "The dance, hm?",
-		requirements: 
-		{
-			changemarks: "1",
-			sulochana: "1",
-		},
-		description: "Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
-		comment: "NEW",
-		label: "On Desire",
-		actionId: "talk",
-	},	
-	{
-		id: "sulochanachat_desire",
-		startdescription: "That's what steers you?",
-		requirements: 
-		{
-			sulochana: "1",
-			desire: "1",
-		},
-		description: "We have no common ground there. I chose my road a very long time ago.",
-		comment: "NEW",
-		label: "On Desire",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesrouter",
-		comment: "NEW",
-		startdescription: "As to that...",
-		requirements: 
-		{
-			lore: "1",
-			secrethistories: "1",
-			sulochana: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "sulochanachat_secrethistoriesg",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesf",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriese",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesd",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesc",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesb",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesa",
-				chance: "100",
-			},
-		],
-		label: "On Secret Places",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesg",
-		comment: "NEW",
-		startdescription: "'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
-		requirements: 
-		{
-			sulochana: "1",
-			fragmentsecrethistoriesg: "1",
-		},
-		description: "'Here. This map will work for a little while. If any of them ask after me, tell them I'll come for their children next.'",
-		effects: 
-		{
-			vaulteveningislesdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Ivory",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesf",
-		comment: "NEW",
-		startdescription: "'You need to go to Miah? Bring me back some of those dates.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesf: "1",
-			sulochana: "1",
-		},
-		description: "'Here. This is the address of someone who'll guide you. If the Thief of Sights asks after me... tell her to give my regards to Kleido... you know what? Don't say anything about me. Here's your address.'",
-		effects: 
-		{
-			vaultloneandlevelsandsdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Pupil",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriese",
-		comment: "NEW",
-		startdescription: "'The Shadowless Kings? No - '",
-		requirements: 
-		{
-			fragmentsecrethistoriese: "1",
-			sulochana: "1",
-		},
-		description: "'There's nothing there for my kind or yours. No dance is worth dancing in that place. You'll need to go further south.'",
-		effects: 
-		{
-		},
-		label: "Not there - ",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesd",
-		comment: "NEW",
-		startdescription: "'You need to go to the Meadows? Mm.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesd: "1",
-			sulochana: "1",
-		},
-		description: "'This is the easiest road at this time of year. But it won't be easy. Enjoy yourself.'",
-		effects: 
-		{
-			lore: "-1",
-			vaultlandbeyondforestdefault: "1",
-		},
-		label: "On the Road to Stigma",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesc",
-		comment: "NEW",
-		startdescription: "'You want to go to the Stones?'",
-		requirements: 
-		{
-			fragmentsecrethistoriesc: "1",
-			sulochana: "1",
-		},
-		description: "'Here. This will get you to the last mile, and then you'll have to walk. There is a little auberge I used to stay at when I went. But I burnt it down.' She lights a cigarette.",
-		effects: 
-		{
-			lore: "-1",
-			vaultcontinentdefault: "1",
-		},
-		label: "On the Road to Antumbra",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesb",
-		comment: "NEW",
-		startdescription: "'You want to go to Kerisham? Yes. The trains are difficult.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesb: "1",
-			sulochana: "1",
-		},
-		description: "Sulochana hands you a printed slip of paper. 'These are the numbers, this month. Be sure you get the right platform. Much easier to get there now, hm? There was a time you'd have had to pass the Wrong Door, and I have better things to do.' She chuckles richly.",
-		effects: 
-		{
-			vaultshiresdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Pearl",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesa",
-		startdescription: "'I can help you with that... if you want to Change.'",
-		requirements: 
-		{
-			fragmentsecrethistories: "1",
-			sulochana: "1",
-		},
-		description: "'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'",
-		comment: "NEW",
-		label: "On the Roads to Change",
-		actionId: "talk",
-	},
-	{
-		requirements: 
-		{
-			poppyready: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "与波碧·拉塞尔斯对话",
-		startdescription: "“亲爱的，有件事我一直想和你说。我有时会资助那些研究无形之仪的学者。我愿意为你提供资助，非常丰厚的资助。而你只需要在某些时候，介绍我一名最终会成为应许者的合适人选就可以了。”她露出和善的微笑。[添加<b>热情</b>接受条件，或者添加<b>理性</b>来进一步询问。]",
-		id: "poppyoffer",
-		actionId: "talk",
-		description: "我没有接受波碧的提议。",
-		slots: 
-		[
-			{
-				id: "Consent",
-				required: 
-				{
-					reason: "1",
-					passion: "1",
-				},
-				description: "添加<b>热情</b>接受条件，或者添加<b>理性</b>来进一步询问波碧。",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poppyofferaccept",
-				chance: "100",
-			},
-			{
-				id: "poppyofferquery",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			passion: "1",
-		},
-		label: "接受波碧的提议",
-		startdescription: "“对，正是如此。我今晚会回来。”",
-		id: "poppyofferaccept",
-		actionId: "talk",
-		description: "装着袖珍宝物的小包裹：一份来自波碧的礼物。她打算在残之季再见我一次，因为我许诺过介绍应许者给她。",
-		effects: 
-		{
-			funds: "10",
-			poppyready: "-1",
-			compensationc: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "poppytimebomb",
-				chance: "100",
-				additional: "true",
-			},
-		],
-	},
-	{
-		id: "poppyofferquery",
-		startdescription: "那位应许者呢？",
-		requirements: 
-		{
-			reason: "1",
-		},
-		description: "“是的。当残之季到来时，我的资助人会要求某人成为应许者。你可以提供一名足够忠诚的人，也可以自己来。完全取决于你，我不想过于麻烦。”",
-		effects: 
-		{
-			influencewinter: "1",
-		},
-		label: "仔细询问波碧",
-		actionId: "talk",
-	},
-	{
-		id: "poppytimebomb",
-		startdescription: "在“残之季”，波碧会回来……",
-		warmup: "300",
-		description: ".",
-		linked: 
-		[
-			{
-				id: "poppysafefornow",
-				chance: "7",
-			},
-			{
-				id: "poppywantssoul",
-				chance: "100",
-			},
-		],
-		label: "波碧的请求",
-		actionId: "poppytime",
-	},
-	{
-		id: "poppysafefornow",
-		startdescription: "波碧经常在镇里晃悠，露出和善的微笑，资助一些慈善活动。",
-		warmup: "10",
-		description: ".",
-		linked: 
-		[
-			{
-				id: "poppytimebomb",
-				chance: "100",
-			},
-		],
-		label: "波碧的沉默",
-		actionId: "poppytime",
-	},
-	{
-		ending: "wintersacrifice",
-		label: "来自波碧的友好造访",
-		startdescription: "“现在，到时候了，亲爱的。残阳索要他的应许者。承担任务的人会是你吗？还是你的朋友？”",
-		signalEndingFlavour: "Melancholy",
-		id: "poppywantssoul",
-		actionId: "poppytime",
-		warmup: "60",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Sacrifice",
-				required: 
-				{
-					follower: "1",
-				},
-				forbidden: 
-				{
-					summoned: "1",
-					hireling: "1",
-				},
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poppysatiated",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "poppysatiated",
-		startdescription: "“你拥有一名多么忠诚的朋友啊！现在请和你的朋友道别吧。”",
-		requirements: 
-		{
-			follower: "1",
-		},
-		description: "我的追随者离开了，但我留了下来。我时不时还能遇见波碧·拉塞尔斯。她应该还有更多事情想和我说。",
-		effects: 
-		{
-			influencewinter: "1",
-			follower: "-1",
-			poppycommissionready: "1",
-		},
-		label: "一名合适的应许者",
-		actionId: "poppytime",
-	},
+{
+"recipes": [
+{id: "lockfollowerincupboard",
+label: "背叛并囚禁一位追随者",
+actionId: "talk",
+requirements: {hq:1,follower:1},
+startdescription: "这家伙必定心怀异念。送他进橱柜。",
+description: "我把这家伙锁了起来。等他的尖叫和咆哮停下来后，我再将他完全制服。",
+aspects: {capturefollower:1},
+effects: {notoriety:1},
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:-1}],
+craftable:true,
+warmup:10
+},
+
+{id:"sulochanachat",
+label:"和苏洛坎纳聊天",
+actionId:"talk",
+requirements:{sulochana:1},
+slots: [{id:"Subject",label:"话题",description:"选择话题"}],
+startdescription:"@#ascensionlessonhearta|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartb|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonheartc|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartd|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonhearte|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartf|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonmotha|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothb|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothc|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothd|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#ascensionlessonmothe|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#ascensionlessonmothf|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#|她失望了吗？与苏洛坎纳，我很难分辨。@",
+alternativerecipes:[
+{id:"talk.apostleforge.sulochanaechidna"},
+{id:"talk.apostlegrail.sulochanamarinette"},
+{id:"apostlelantern.attemptrecruitkleidouchos.sulochana"},
+{id:"sulochanachat_health",chance:100},
+{id:"sulochanachat_passion",chance:100},
+{id:"sulochanachat_cabaret",chance:100},
+{id:"sulochanachat_desireheart_track",chance:100},
+{id:"sulochanachat_desiremoth_track",chance:100},
+{id:"sulochanachat_desire",chance:100},
+{id:"sulochanachat_secrethistoriesrouter",chance:100},
+],
+warmup:60,
+craftable:true
+},
+
+{id:"sulochanachat_health",
+actionId:"talk",
+label:"身体机能",
+requirements:{sulochana:1,health:1},
+startdescription:"“你还年轻，可喜可贺。”",
+description:"“我们都曾年轻过，每个人都是。这是我们中的大部分人所拥有的唯一共同点。”"
+},
+{id:"sulochanachat_passion",
+label:"论热情",
+actionId:"talk",
+requirements:{sulochana:1,passion:1},
+startdescription:"“是啊。你会陷入麻烦的。”",
+description:"“你很有潜力。你让我看出了这一点。不过空有潜力可不够啊，还有别的吗？”"
+},
+{id:"sulochanachat_cabaret",
+label:"论蜕变俱乐部",
+actionId:"talk",
+requirements:{sulochana:1,locationcabaret:1},
+startdescription:"“怎么？”",
+description:"“有条你能走的路，起点就在我家里面。要是你想和我聊聊这条路，就去我家找我。”"
+},
+{id:"sulochanachat_desireheart_track",
+label:"论新形体",
+actionId:"talk",
+requirements:{sulochana:1,desireheart_track:1},
+effects:{locationcabaret:1},
+startdescription:"“想要褪下你的皮肤，嗯？”",
+description:"你所想要走的路我们称之为新形体。并不是和原先一样崭新的。但如果你能忍受痛楚的话，你会发现它的好处。去我家找我，我们到时可以说说你最后会用到的那个搭档。这是地址。"
+},
+{id:"sulochanachat_desiremoth_track",
+actionId:"talk",
+label:"论旧形体",
+requirements:{sulochana:1,desiremoth_track:1},
+effects:{locationcabaret:1},
+startdescription:"现在——现在我们开始理解对方了。",
+description:"你所想要走的路我们称之为旧形体。我自己走过这条路，最后便成了这副模样。在这条路上你得放弃所有东西。你得褪去你的皮肤，还不止一次……去我家找我，我们可以谈谈你最后会用到的那个搭档。这是地址。"
+},
+{id:"sulochanachat_desire_change",
+actionId:"talk",
+label:"论欲望",
+requirements:{sulochana:1,changemarks:1},
+startdescription:"舞蹈，嗯？",
+description:"去我家找我，我们可以谈谈你最后会用到的那个搭档。这是地址。"
+},
+{id:"sulochanachat_desire",
+actionId:"talk",
+label:"论欲望",
+requirements:{sulochana:1,desire:1},
+startdescription:"这就是你行动的原因吗？",
+description:"我们在那个问题上没有什么共同立场可言。我很久以前就选择了自己的路。但如果你发现你也走上了这条路……那就再来找我聊吧。"
+},
+{id:"sulochanachat_secrethistoriesrouter",
+actionId:"talk",
+label:"论秘密场所",
+requirements:{sulochana:1,lore:1,secrethistories:1},
+startdescription:"至于那个嘛……",
+description:".",
+linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
+{id:"sulochanachat_secrethistoriesf",chance:100},
+{id:"sulochanachat_secrethistoriese",chance:100},
+{id:"sulochanachat_secrethistoriesd",chance:100},
+{id:"sulochanachat_secrethistoriesc",chance:100},
+{id:"sulochanachat_secrethistoriesb",chance:100},
+{id:"sulochanachat_secrethistoriesa",chance:100}
+]
+},
+
+{id:"sulochanachat_secrethistoriesg",
+actionId:"talk",
+label:"踏上象牙之路",
+requirements:{sulochana:1,fragmentsecrethistoriesg:1},
+startdescription:"“你要去午港？哈，那可真是遗憾呢。”苏洛坎纳的声音透出非同寻常的恶意。",
+description:"“给你。这张地图短时间里会有点用。要是他们有谁问起我的事情，那你就告诉他，我下一个就找上他的孩子。”",
+effects:{lore:-1,vaulteveningislesdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesf",
+actionId:"talk",
+label:"踏上异瞳之路",
+requirements:{sulochana:1,fragmentsecrethistoriesf:1},
+startdescription:"“你要去弥阿？给我带点椰枣回来。”",
+description:"“给你。住在这个地址的人会给你指引。要是凛目之贼问起我来……让她代我向克莱多问好……你记着，不要提任何关于我的事。好了，地址拿去。”",
+effects:{lore:-1,vaultloneandlevelsandsdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriese",
+actionId:"talk",
+label:"不是那里——",
+requirements:{sulochana:1,fragmentsecrethistoriese:1},
+startdescription:"“无影列王？不——”",
+description:"“那里完全不适合我们或你们这类人。那里不值当去跳任何一种舞蹈。你要到更南一点的地方去。",
+effects:{}
+},
+
+{id:"sulochanachat_secrethistoriesd",
+actionId:"talk",
+label:"踏上伤痕之路",
+requirements:{sulochana:1,fragmentsecrethistoriesd:1},
+startdescription:"“你要去狐百合原野？嗯……”",
+description:"“这个时节这条路是最好走的。不过说好走也好走不到哪去。好好享受吧。”",
+
+effects:{lore:-1,vaultlandbeyondforestdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesc",
+actionId:"talk",
+label:"踏上化影之路",
+requirements:{sulochana:1,fragmentsecrethistoriesc:1},
+startdescription:"“你要去巨石阵？”",
+description:"“给你。它能指引你到还差最后一里地的地方，之后你就要靠走的了。那里有座小客栈，我以前去的时候时常留宿。不过我后来把它给烧了。”她点了一支烟。",
+effects:{lore:-1,vaultcontinentdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesb",
+actionId:"talk",
+label:"踏上化珠之路",
+requirements:{sulochana:1,fragmentsecrethistoriesb:1},
+startdescription:"“你想要去凯里夏姆？是的，火车是挺不好坐的。”",
+description:"苏洛坎纳递给你一张打印的纸。“这是这个月的数字。一定要找到正确的站台。有了这个去那儿可容易多了吧，嗯？要是在从前你非得穿过‘错误的门扉’不可，我才不要浪费那个时间。”她咯咯笑了起来。",
+effects:{lore:-1,vaultshiresdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesa",
+actionId:"talk",
+label:"踏上转变之路",
+requirements:{sulochana:1,fragmentsecrethistories:1},
+startdescription:"“要是你想转变的话……我可以帮忙。”",
+description:"“我们总是先在海边改变。当今的凯里夏姆可是个好地方。然后地点会越选越远。不过不是让你亲自去，绝对不要亲自去，而是要让另一个你去。如果你不确定要去哪里，欢迎你带着更多的知识回来找我。不过啊，你寻求的若是转变之外的东西……那我可帮不了你了。”",
+},
+
+
+{id: "poppyoffer",
+label:"与波碧·拉塞尔斯对话",
+actionId: "talk",
+requirements: {poppyready: 1},
+slots: [{id:"Consent",label:"接受",description:"放入<b>热情</b>来接受条件，或者放入<b>理性</b>来对波碧进行进一步询问。",required: {passion:1,reason:1}}],
+alternativerecipes: [{id: "poppyofferaccept",chance:100},
+{id:"poppyofferquery",chance:100}],
+startdescription: "“亲爱的，有件事我一直想和你说。我有时会资助那些研究无形之仪的学者。我愿意为你提供资助，非常丰厚的资助。而你需要做的只是在以后某个时间点，给我介绍一个合适的收尾之人。”她露出和善的微笑。[放入<b>热情</b>来接受条件，或者放入<b>理性</b>来对她进行进一步询问。]",
+description: "我没有接受波碧的提议。",
+warmup:60,
+craftable: true
+},
+{id: "poppyofferaccept",
+label: "接受波碧的提议",
+actionId: "talk",
+requirements: {passion:1},
+startdescription: "“对，正是如此。我今晚回来。”",
+description: "装着小小宝物的小小包裹——一份来自波碧的礼物。她会在‘残季’再来见我一次，让我介绍我许诺的人给她。",
+effects: {funds:10,compensationc:1,poppyready:-1},
+alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+},
+{id: "poppyofferquery",
+label: "仔细询问波碧",
+actionId: "talk",
+requirements: {reason:1},
+startdescription: "那个收尾之人呢？",
+description: "“是的。当‘残季’再度到来时，我的资助人会要求拿一个人做结尾。你可以给我一个对你足够忠诚的人，也可以你自己上。都随你的便，我不想给你添麻烦。”",
+effects: {influencewinter:1}
+},
+{
+id:"poppytimebomb",
+label:"波碧的要求",
+actionId:"poppytime",
+startdescription: "波碧会在“残季”返回……",
+description: ".",
+linked: [{id:"poppysafefornow",chance:7},
+{id:"poppywantssoul",chance:100}],
+warmup:300
+},
+{id:"poppysafefornow",
+actionId: "poppytime",
+label:"波碧的沉默",
+startdescription:"波碧经常出现在镇上，资助一些慈善活动，脸上挂着和善的笑容。",
+description: ".",
+linked: [{id: "poppytimebomb",chance:100}],
+warmup:10
+},
+
+{id:"poppywantssoul",
+label:"波碧的友好造访",
+actionId: "poppytime",
+slots: [{id:"Sacrifice",label:"祭献",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+alternativerecipes: [{id:"poppysatiated",chance:100}],
+warmup:60,
+signalEndingFlavour:Melancholy,
+ending: "wintersacrifice",
+startdescription: "“亲爱的，到时候了。残阳来索要他的终局之人了。是你来？还是你的朋友？”",
+description: "."
+},
+{id:"poppysatiated",
+actionId: "poppytime",
+label:"一个合适的终局",
+requirements: {follower:1},
+startdescription: "“多么忠实的朋友啊！现在和你的朋友道别吧。”",
+description: "我的追随者已经去了，而我还在。波碧·拉塞尔斯仍然时不时在各地现身。她说不定还有更多事情想对我说。",
+effects: {poppycommissionready:1,influencewinter:1,follower:-1}
+}
 ]
 }

@@ -114,7 +114,6 @@ recipes: [
 		{
 			textvak: "1",
 		},
-		comment: "NEW",
 		label: "Translate from Vak?",
 		hintonly: "true",
 		actionId: "study",
@@ -129,7 +128,6 @@ recipes: [
 			skillhealthc: "1",
 			vitalityplus: "4",
 		},
-		comment: "NEW",
 		label: "Exercise the Body: Secret Techniques?",
 		hintonly: "true",
 		actionId: "study",
@@ -142,7 +140,6 @@ recipes: [
 		{
 			vitality: "2",
 		},
-		comment: "NEW",
 		label: "Increase my Health?",
 		hintonly: "true",
 		actionId: "study",
@@ -155,7 +152,6 @@ recipes: [
 		{
 			erudition: "2",
 		},
-		comment: "NEW",
 		label: "Increase my Reason?",
 		hintonly: "true",
 		actionId: "study",
@@ -168,8 +164,20 @@ recipes: [
 		{
 			glimmering: "2",
 		},
-		comment: "NEW",
 		label: "Increase my Passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyupgradeinfluences.apostlelanternhint",
+		craftable: "false",
+		startdescription: "Even the greatest allure, over time, will flicker and grey. I must stoke it with the colours of obsession.",
+		requirements: 
+		{
+			apostlelantern.pillar3: "1",
+		},
+		comment: "NEW",
+		label: "Maintaining a Marvel",
 		hintonly: "true",
 		actionId: "study",
 	},
@@ -185,7 +193,6 @@ recipes: [
 			lore: "-1",
 			influence: "2",
 		},
-		comment: "NEW",
 		label: "Upgrade Influences?",
 		hintonly: "true",
 		actionId: "study",
@@ -199,7 +206,6 @@ recipes: [
 			skillhealthc: "1",
 			vitalityplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Skill to something extraordinary?",
 		hintonly: "true",
 		actionId: "study",
@@ -213,7 +219,6 @@ recipes: [
 			healthskill: "1",
 			vitalityplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Health?",
 		hintonly: "true",
 		actionId: "study",
@@ -226,7 +231,6 @@ recipes: [
 		{
 			vitalityplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Health?",
 		hintonly: "true",
 		actionId: "study",
@@ -239,7 +243,6 @@ recipes: [
 		{
 			vitality: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Health?",
 		hintonly: "true",
 		actionId: "study",
@@ -253,7 +256,6 @@ recipes: [
 			eruditionplus: "1",
 			skillreasonc: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Skill to something extraordinary?",
 		hintonly: "true",
 		actionId: "study",
@@ -267,7 +269,6 @@ recipes: [
 			reasonskill: "1",
 			eruditionplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Reason?",
 		hintonly: "true",
 		actionId: "study",
@@ -280,7 +281,6 @@ recipes: [
 		{
 			eruditionplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Reason?",
 		hintonly: "true",
 		actionId: "study",
@@ -293,7 +293,6 @@ recipes: [
 		{
 			erudition: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Reason?",
 		hintonly: "true",
 		actionId: "study",
@@ -307,7 +306,6 @@ recipes: [
 			skillpassionc: "1",
 			glimmeringplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Skill to something extraordinary?",
 		hintonly: "true",
 		actionId: "study",
@@ -321,7 +319,6 @@ recipes: [
 			passionskill: "1",
 			glimmeringplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my passion?",
 		hintonly: "true",
 		actionId: "study",
@@ -334,7 +331,6 @@ recipes: [
 		{
 			glimmeringplus: "1",
 		},
-		comment: "NEW",
 		label: "Increase my passion?",
 		hintonly: "true",
 		actionId: "study",
@@ -347,7 +343,6 @@ recipes: [
 		{
 			glimmering: "1",
 		},
-		comment: "NEW",
 		label: "Increase my Passion?",
 		hintonly: "true",
 		actionId: "study",
@@ -360,7 +355,6 @@ recipes: [
 		{
 			restlessness: "1",
 		},
-		comment: "NEW",
 		label: "Study Restlessness?",
 		hintonly: "true",
 		actionId: "study",
@@ -373,7 +367,6 @@ recipes: [
 		{
 			influence: "1",
 		},
-		comment: "NEW",
 		label: "Upgrade Influences?",
 		hintonly: "true",
 		actionId: "study",

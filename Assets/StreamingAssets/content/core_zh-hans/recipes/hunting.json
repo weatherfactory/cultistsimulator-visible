@@ -1,718 +1,314 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "suspiciongrabreputation",
-				chance: "100",
-			},
-			{
-				id: "suspiciontrycreatehunter",
-				chance: "70",
-			},
-		],
-		requirements: 
-		{
-			seasonsuspicion: "1",
+{"recipes": [
+	    {
+        id: "suspicion",
+        label: "不合适的关注",
+        actionId: "suspicion",
+        requirements: {seasonsuspicion:1},
+		slots: [{id:"Suspicion", label:"敌人？", required: {hunter: 1}, greedy: true}],
+        startdescription: "这个城市充斥着记者、警探和其他好事之人。 他们能让我安宁多久？",
+        description: "我现在安全了。 那些好事家注意力一定转去了别处。这算是些许安慰。",
+        warmup: 10,
+        craftable: false,
+		linked: [{id: "suspiciongrabreputation",chance: 100},		
+		{id:"suspiciontrycreatehunter",chance:70}]
 		},
-		craftable: "false",
-		warmup: "10",
-		label: "不合适的关注",
-		startdescription: "这个城市充斥着记者、警探和其他好事之人。 他们能让我安宁多久？",
-		id: "suspicion",
-		actionId: "suspicion",
-		description: "我现在安全了。 那些好事家注意力一定转去了别处。这算是些许安慰。",
-		slots: 
-		[
-			{
-				id: "Suspicion",
-				required: 
-				{
-					hunter: "1",
-				},
-				greedy: "true",
-				label: "敌人？",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_searchlongerforevidence",
-				chance: "100",
-			},
-			{
-				id: "suspiciongrabevidence",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			hunter: "1",
-		},
-		warmup: "30",
+		
+		{id:"suspiciongrabreputation",
 		label: "正在寻找线索……",
-		startdescription: "某个敌对的存在正在盘查我的活动。",
-		id: "suspiciongrabreputation",
-		actionId: "suspicion",
-		slots: 
-		[
-			{
-				id: "Clues",
-				required: 
-				{
-					reputation: "1",
-				},
-				greedy: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicionerratic_alwayssucceed",
-				chance: "10",
-			},
-		],
-		warmup: "30",
-		label: "正在分析证据……",
-		startdescription: "如果猎人发现邪名，他们将尝试用其来捏造或进一步粉饰证据。 只要他们足够仔细，他们就不会失败。 而如果他们举棋不定的的话，就没那么容易成功……但即使没有邪名，他们偶尔也可以凭空捏造证据。",
-		id: "suspiciongrabevidence",
-		actionId: "suspicion",
-		description: "我安全了，至少现在是。 我的敌人没有足够证据来对我提起诉讼，他们没能发现新的线索。",
-		slots: 
-		[
-			{
-				id: "Evidence",
-				required: 
-				{
-					evidence: "1",
-					evidenceb: "1",
-				},
-				greedy: "true",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "suspicionpretrial",
-				chance: "100",
-			},
-			{
-				id: "suspicionerratic_alwaysfail",
-				chance: "10",
-			},
-			{
-				id: "suspicionpromoteevidencemeticulous",
-				chance: "100",
-			},
-			{
-				id: "suspicionpromoteevidence",
-				chance: "70",
-			},
-			{
-				id: "suspicioncreateevidencemeticulous",
-				chance: "100",
-			},
-			{
-				id: "suspicioncreateevidence",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "suspicionerratic_alwaysfail",
-		startdescription: "我的敌人行为反常。 [这样的事情并不多见。]",
-		requirements: 
-		{
-			erratic: "1",
-			reputation: "1",
+		actionId:"suspicion",
+		requirements:{hunter:1},
+		startdescription: "某个敌人正在盘查我的活动。",
+		description: "",
+		slots: [{id:"Clues",label:"线索",required: {reputation: 1}, greedy: true}], 
+		warmup:30,
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
 		},
-		description: "我的敌人莫非在练习乐器而不是进行调查？还是在向软木靶掷飞镖？又或者只是在打长盹？他们的报告内容不一致，行为也出现了异同。总之，他们没有取得任何进展。",
-		effects: 
-		{
-			reputation: "-1",
+		
+		{id:"suspiciongrabevidence",
+		actionId:"suspicion",
+		label:"正在分析证据……",
+		startdescription: "如果猎人发现邪名，他将尝试用其来捏造或进一步粉饰证据。 只要他足够仔细，他就不会失败。 而如果他举棋不定的的话，就没那么容易成功……但即使没有邪名，他偶尔也可以凭空捏造证据。",
+		description: "我安全了，至少现在是。 我的敌人没有足够证据来对我提起诉讼，他没能发现新的线索。",
+		slots: [{id:"Evidence",label:"证据",required: {evidenceb:1,evidence: 1}, greedy: true}],
+		alternativerecipes:[{id:"suspicionpretrial",chance:100},
+		{id:"suspicionerratic_alwaysfail",chance:10},
+		{id:"suspicionpromoteevidencemeticulous",chance:100},
+		{id:"suspicionpromoteevidence",chance:70},
+		{id:"suspicioncreateevidencemeticulous",chance:100},
+		{id:"suspicioncreateevidence",chance:70}],
+		warmup:30,
+		linked:[{id:"suspicionerratic_alwayssucceed",chance:10}]
 		},
-		label: "诡异的行为",
-		actionId: "suspicion",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicionpromoteevidence",
-				chance: "100",
-			},
-			{
-				id: "suspicioncreateevidence",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			erratic: "1",
-			reputation: "-1",
+		{id:"suspicionerratic_alwaysfail",
+		actionId:"suspicion",
+		label:"诡异的行为",
+		requirements:{erratic:1,reputation:1},
+		startdescription:"我的敌人行为反常。 [这样的事情并不多见。]",
+		description:"我的敌人莫非在练习乐器而不是进行调查？还是在向软木靶掷飞镖？又或者只是在打长盹？他的报告内容不一致，行为也出现了异同。总之，他没有取得任何进展。",
+		effects:{reputation:-1}		
 		},
-		warmup: "30",
-		label: "令人困惑的成功",
-		startdescription: "有传言称我的敌人开始靠易经来描画神谕。 也有传言说他们在梦中追寻答案。 还有一种说法，说他们通过掷骰子来选择问什么问题。 他们已经在应该无据可查的地方找到了证据。 [这样的事情并不多见。]",
-		id: "suspicionerratic_alwayssucceed",
-		actionId: "suspicion",
-		effects: 
-		{
-			notoriety: "1",
+		{id:"suspicionerratic_alwayssucceed",
+		actionId:"suspicion",
+		label:"令人困惑的成功",
+		requirements:{erratic:1,reputation:-1},
+		effects:{notoriety:1},
+		startdescription:"有传言称我的敌人开始靠易经来描画神谕。 也有传言说他在梦中追寻答案。 还有一种说法，说他通过掷骰子来选择问什么问题。 他已经在应该无据可查的地方找到了证据。 [这样的事情并不多见。]",
+	linked:[{id:"suspicionpromoteevidence",chance:100},
+		{id:"suspicioncreateevidence",chance:100}],
+		warmup:30
 		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_searchlongerforevidence",
-				chance: "100",
-			},
-			{
-				id: "suspiciongrabevidence",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			mystique: "1",
-		},
-		effects: 
-		{
-			mystique: "-1",
-		},
-		warmup: "60",
+		
+		
+				{id:"suspicion_searchlongerforevidence",
+		actionId:"suspicion",
+		requirements:{mystique:1},
 		label: "名誉危机",
-		startdescription: "我的神秘吸引了这位猎人的关注。 他们还什么都无法证明，但现在他们将继续寻找。",
-		id: "suspicion_searchlongerforevidence",
-		actionId: "suspicion",
-		slots: 
-		[
-			{
-				id: "Clues",
-				required: 
-				{
-					reputation: "1",
-				},
-				greedy: "true",
-			},
-		],
-	},
-	{
-		id: "suspicionpromoteevidencemeticulous",
-		requirements: 
-		{
-			meticulous: "1",
-			reputation: "1",
-			evidence: "1",
+		startdescription: "我的神秘吸引了这位猎人的关注。 他还什么都无法证明，但现在他将继续寻找。",
+		effects:{mystique:-1},
+		slots: [{id:"Clues",label:"线索",required: {reputation: 1}, greedy: true}], 
+		warmup:60,
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
 		},
-		linked: 
-		[
-			{
-				id: "suspicionpromoteevidence",
-				chance: "100",
-			},
-		],
+				{id:"suspicionpromoteevidencemeticulous",
+		actionId:"suspicion",
 		label: "创造确凿证据",
-		actionId: "suspicion",
-	},
-	{
-		requirements: 
-		{
-			reputation: "1",
-			evidence: "1",
+		requirements:{evidence:1,reputation:1,meticulous:1},
+		linked:[{id:"suspicionpromoteevidence",chance:100}]
 		},
-		warmup: "30",
+		
+		
+		{id:"suspicionpromoteevidence",
+		actionId:"suspicion",
+		requirements:{evidence:1,reputation:1},
 		label: "创造确凿证据",
 		startdescription: "这位猎人正在对他的调查进行收尾。",
-		id: "suspicionpromoteevidence",
-		actionId: "suspicion",
-		description: "一旦这件案子进入诉讼流程，我将面临很大的危险。 即使这个猎人被解决了，另一个猎人也可能会发现他的笔记。",
-		effects: 
-		{
-			reputation: "-1",
-			evidence: "-1",
-			evidenceb: "1",
+		description:"一旦这件案子进入诉讼流程，我将面临很大的危险。 即使这个猎人被解决了，另一个猎人也可能会发现他的笔记。",
+		effects:{evidence:-1,evidenceb:1,reputation:-1},
+		warmup:30},
+		
+						{id:"suspicioncreateevidencemeticulous",
+		actionId:"suspicion",
+			label: "化线索为证据",
+		requirements:{reputation:1,meticulous:1},
+		linked:[{id:"suspicioncreateevidence",chance:100}]
 		},
-	},
-	{
-		id: "suspicioncreateevidencemeticulous",
-		requirements: 
-		{
-			meticulous: "1",
-			reputation: "1",
-		},
-		linked: 
-		[
-			{
-				id: "suspicioncreateevidence",
-				chance: "100",
-			},
-		],
-		label: "化线索为证据",
-		actionId: "suspicion",
-	},
-	{
-		requirements: 
-		{
-			reputation: "1",
-		},
-		warmup: "30",
+		
+		{id:"suspicioncreateevidence",
+		actionId:"suspicion",
+		requirements:{reputation:1},
 		label: "化线索为证据",
 		startdescription: "流言传出，弥漫四散。 这位猎人正从调查中获得进展。",
-		id: "suspicioncreateevidence",
-		actionId: "suspicion",
-		description: "我确信我的敌人在其他地方提交了他的笔记副本——给他的律师，他的上司，甚至是媒体的联系人。这令人烦恼。",
-		effects: 
-		{
-			reputation: "-1",
-			evidence: "1",
-		},
-	},
-	{
-		effects: 
-		{
-			contentment: "1",
-		},
-		warmup: "30",
+		description:"我确信我的敌人在其他地方提交了他的笔记副本——给他的律师，他的上司，甚至是媒体的联系人。这令人烦恼。",
+		effects:{reputation:-1, evidence:1},
+		warmup:30},
+			
+	
+				{id:"suspiciontrycreatehunter",
 		label: "好奇的少数人",
-		startdescription: "不良的声誉可能会引起好奇者、清教徒或者报复者的兴趣。[本声望状态可能会诱发敌对存在的出现和行动]",
-		id: "suspiciontrycreatehunter",
 		actionId: "suspicion",
+		startdescription: "不良的声誉可能会引起好奇者、清教徒或者报复者的兴趣。[本声望状态可能会诱发敌人的出现和行动]",
+		slots: [{id:"Clues",label:"线索", required: {reputation: 1}, greedy: true}],
+		alternativerecipes:[{id:"suspicioncreatefirsthunter",chance:100},
+		{id:"suspicioncreatehunter",chance:100}],
 		description: "现在，我洗脱了嫌疑。我所有的保护者也依旧潜藏于暗影中。",
-		slots: 
-		[
-			{
-				id: "Clues",
-				required: 
-				{
-					reputation: "1",
-				},
-				greedy: "true",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "suspicioncreatefirsthunter",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "suspicioncreatehunter",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reputation: "1",
+		effects:{contentment:1},
+		warmup:30
 		},
-		comment: "NEW",
-		warmup: "0",
-		actionId: "suspicion",
-		label: "An Adversary!",
-		startdescription: "Someone is meddling.",
-		id: "suspicioncreatefirsthunter",
-		maxexecutions: "1",
-		description: "There's always someone who doesn't understand, or who understands too well. This troublemaker may seek evidence on my activities to share with the authorities.",
-		effects: 
-		{
-			reputation: "-1",
-			defaulthunter: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			reputation: "1",
-		},
-		warmup: "0",
-		label: "敌对者！",
+		
+				{id:"suspicioncreatefirsthunter",
+		actionId:"suspicion",
+		label: "敌人！",
+		requirements:{reputation:1},
 		startdescription: "有人在捣乱。",
-		id: "suspicioncreatehunter",
-		actionId: "suspicion",
-		deckeffect: 
-		{
-			hunters: "1",
-		},
-		description: "人们要么不能理解，要么就理解得太透彻。 这个捣乱分子可能会寻找并向当局呈纳有关我各种行动的的证据。",
-		effects: 
-		{
-			reputation: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_attemptmitigation_me",
-				chance: "30",
-			},
-			{
-				id: "suspicion_questionfollower",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			evidenceb: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "监管局盯上了我",
+		description:"人们要么不能理解，要么就理解得太透彻。 这个捣乱分子可能会寻找并向当局呈纳有关我各种行动的的证据。",
+		effects: {reputation:-1,defaulthunter:1},
+		maxexecutions:1,
+		warmup:0},
+
+		
+		{id:"suspicioncreatehunter",
+		actionId:"suspicion",
+		label: "敌人！",
+		requirements:{reputation:1},
+		startdescription: "有人在捣乱。",
+		description:"人们要么不能理解，要么就理解得太透彻。 这个捣乱分子可能会寻找并向当局呈纳有关我各种行动的的证据。",
+		deckeffect: {"hunters":1},
+		effects: {reputation:-1},
+		warmup:0},
+
+
+		    {
+        id: "suspicionpretrial",
+        label: "监管局盯上了我",
+        actionId: "suspicion",
+        requirements: {evidenceb:1},
 		startdescription: "我的敌人已经说服监管局研究我的案子。 监管局负责惩治那些并不常见的罪犯——那些也许只在梦中犯下罪行的人。",
-		id: "suspicionpretrial",
-		description: ".",
-		actionId: "suspicion",
-		burnimage: "beforetrial",
+        description: ".",
+        warmup: 30,
+        craftable: false,
+		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}],
+		burnimage:"beforetrial"
+    },
+					    {
+        id: "suspicion_questionme",
+        label: "我将在法庭接受考验！",
+        actionId: "suspicion",
+        startdescription: "监管局将我带去讯问。",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+    },
+					    {
+        id: "suspicion_questionfollower",
+        label: "三堂会审！",
+        actionId: "suspicion",
+		slots: [{id:"Suspect",label:"嫌犯",required: {follower:1,independent:1}, forbidden:{summoned:1,hireling:1}, description: "监管局迫切需要嫌疑人。",greedy:true}],
+        startdescription: "监管局正在找一位我的同伴进行讯问。 如果他们找不到，他们会直接找上我。",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_follower"},
+		{chance:100,id:"suspicion_attemptmitigation_rival"},
+		{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+
+    },
+	{
+	id:"suspicion_attemptmitigation_me",
+	actionId:"suspicion",
+	label: "监管局正把我送上法庭！",
+	startdescription:"有些罪名并不在国家公认罪行之中，而我遭受的指控罪名便在此列。监管局在秘密法庭里进行了审判，他们毫无仁慈可言。 除非我能善用人脉优势，不然就难逃牢狱之灾！",
+	description:".",
+	slots:[{id:"favour",label:"援手",required:{favour:1}}],
+	linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_meimprisoned"},
+	{chance:100,id:"suspicion_meexonerated"}],
+	warmup:60
 	},
 	{
-		linked: 
-		[
-			{
-				id: "suspicion_attemptmitigation_me",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "我将在法庭接受考验！",
-		startdescription: "监管局将我带去讯问。",
-		id: "suspicion_questionme",
-		description: ".",
-		actionId: "suspicion",
+	id:"suspicion_attemptmitigation_follower",
+	label: "监管局正把我的同伴送上法庭！",
+	actionId:"suspicion",
+	requirements: {follower:1},
+	startdescription:"有些罪名并不在国家公认罪行之中，而我的同伴遭受的指控罪名便在此列。监管局在秘密法庭里进行了审判，他们毫无仁慈可言。 除非我能善用用人脉，否则我就可能永远失去我的同伴……",
+	description:".",
+	slots:[{id:"favour",label:"援手",required:{favour:1}}],
+		linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_followerimprisoned"},
+	{chance:100,id:"suspicion_followerexonerated"}],
+	warmup:60,
 	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_attemptmitigation_follower",
-				chance: "100",
-			},
-			{
-				id: "suspicion_attemptmitigation_rival",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "suspicion_attemptmitigation_me",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "三堂会审！",
-		startdescription: "监管局正在找我的追随者进行讯问。 如果他们找不到，他们会直接找上我。",
-		id: "suspicion_questionfollower",
-		actionId: "suspicion",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Suspect",
-				required: 
-				{
-					follower: "1",
-					independent: "1",
-				},
-				description: "监管局迫切需要嫌疑人。",
-				forbidden: 
-				{
-					summoned: "1",
-					hireling: "1",
-				},
-				greedy: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_favourused",
-				chance: "100",
-			},
-			{
-				id: "suspicion_meimprisoned",
-				chance: "70",
-			},
-			{
-				id: "suspicion_meexonerated",
-				chance: "100",
-			},
-		],
-		warmup: "60",
-		label: "监管局正把我送上法庭！",
-		startdescription: "有些罪名并不在国家公认罪行之中，而我遭受的指控罪名便在此列。监管局在秘密法庭里进行了审判，他们毫无仁慈可言。 除非我能善用人脉优势，不然就难逃牢狱之灾！",
-		id: "suspicion_attemptmitigation_me",
-		actionId: "suspicion",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "favour",
-				required: 
-				{
-					favour: "1",
-				},
-				label: "援手",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "suspicion_favourused",
-				chance: "100",
-			},
-			{
-				id: "suspicion_followerimprisoned",
-				chance: "70",
-			},
-			{
-				id: "suspicion_followerexonerated",
-				chance: "100",
-			},
-		],
-		requirements: 
 		{
-			follower: "1",
-		},
-		warmup: "60",
-		label: "监管局正把一名追随者送上法庭！",
-		startdescription: "有些罪名并不在国家公认罪行之中，而我的追随者遭受的指控罪名便在此列。监管局在秘密法庭里进行了审判，他们毫无仁慈可言。 除非我能善用用人脉，否则我就可能永远失去我的追随者！",
-		id: "suspicion_attemptmitigation_follower",
-		actionId: "suspicion",
-		description: ".",
-		slots: 
-		[
+	id:"suspicion_attemptmitigation_rival",
+	label: "监管局正把一名对手送上法庭！",
+	actionId:"suspicion",
+	requirements: {independent:1},
+	startdescription:"有些罪名并不在国家公认罪行之中，而我的同伴遭受的指控罪名便在此列。监管局在秘密法庭里进行了审判，他们毫无仁慈可言。这也许将是我对手的最终结果……尽管我可以试着去阻止这一切。",
+	description:".",
+	slots:[{id:"favour",label:"援手",required:{favour:1}}],
+		linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_rivalimprisoned"},
+	{chance:100,id:"suspicion_rivalexonerated"}],
+	warmup:60,
+	},
+	
+	
+		{
+	id:"suspicion_favourused",
+	actionId:"suspicion",
+	label:"暗处的盟友",
+	requirements:{favour:1},
+	effects:{favour:-1},
+		startdescription:"我已经联系了某位权贵人士，要他还我个人情。 我可能会因此得到庇护，然而诸事无常。",
+		description:".",
+	warmup:30,
+	linked:[{chance:70,id:"suspicion_followerexonerated"},
+	{chance:70,id:"suspicion_meexonerated"},
+	{chance:100,id:"suspicion_favourused_failure"}],
+	},
 			{
-				id: "favour",
-				required: 
-				{
-					favour: "1",
-				},
-				label: "援手",
-			},
-		],
+	id:"suspicion_favourused_failure",
+	actionId:"suspicion",
+	label:"不够！",
+	startdescription: "我已经竭尽全力，但这还不够。 监管局是无情的。 如果我有另一条人脉，现在许还用得上。不然的话，我们就只能在公堂上碰运气了。",
+	description:".",
+	warmup:30,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_follower"},
+	{chance:100,id:"suspicion_attemptmitigation_me"}],
 	},
 	{
-		linked: 
-		[
-			{
-				id: "suspicion_favourused",
-				chance: "100",
-			},
-			{
-				id: "suspicion_rivalimprisoned",
-				chance: "70",
-			},
-			{
-				id: "suspicion_rivalexonerated",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			independent: "1",
-		},
-		comment: "NEW",
-		warmup: "60",
-		label: "The Suppression Bureau is bringing a Rival to trial!",
-		startdescription: "There are crimes the state does not openly recognise. My rival has been implicated in one of these. The Suppression Bureau holds its trials in closed court, and they are not merciful. This may be the end for my rival... although I could try to intervene.",
-		id: "suspicion_attemptmitigation_rival",
-		actionId: "suspicion",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "favour",
-				required: 
-				{
-					favour: "1",
-				},
-				label: "A Favour",
-			},
-		],
+	id:"suspicion_followerimprisoned",
+	actionId:"suspicion",
+	label:"监管局的胜利",
+	description:"我的同伴被关在禁止探视的监狱里，甚至连释放日期也无从得知。 监管局的欲望被暂时满足了；问题是，我的同伴又告诉了他们什么呢？",
+		aspects:{investigatingsetback:1},
+	effects:{follower:-1}
 	},
 	{
-		linked: 
-		[
-			{
-				id: "suspicion_followerexonerated",
-				chance: "70",
-			},
-			{
-				id: "suspicion_meexonerated",
-				chance: "70",
-			},
-			{
-				id: "suspicion_favourused_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			favour: "1",
-		},
-		warmup: "30",
-		label: "暗处的盟友",
-		id: "suspicion_favourused",
-		actionId: "suspicion",
-		description: ".",
-		comment: "NEW",
-		startdescription:"I have called in a favour with a person of note. It'll probably shield me, but nothing is certain.",
-		effects: 
-		{
-			favour: "-1",
-		},
+	id:"suspicion_meimprisoned",
+	actionId:"suspicion",
+	label:"监管局的胜利",
+			startdescription:"我被认定有罪！ 我所有的计划都结束了。 我必须准备好。",
+	description:".",
+	warmup:10,
+			signalEndingFlavour:Melancholy,
+	ending:arrest
+	},
+	
+	{
+	id:"suspicion_followerexonerated",
+	actionId:"suspicion",
+	requirements:{follower:1},
+	label:"监管局的狂怒",
+				startdescription:"我的同伴被判无罪！呈堂证供无法为指控背书，他因此重获自由……尽管他可能会对我怀恨在心。 监管局暂且算是栽了个跟头。",
+	aspects:{investigatingsetback:1},
+mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
 	},
 	{
-		id: "suspicion_favourused_failure",
-		startdescription: "我已经竭尽全力，但这还不够。 监管局是无情的。 如果我有另一条人脉，现在许还用得上。不然的话，我们就只能在公堂上碰运气了。",
-		warmup: "30",
-		description: ".",
-		linked: 
-		[
-			{
-				id: "suspicion_attemptmitigation_follower",
-				chance: "70",
-			},
-			{
-				id: "suspicion_attemptmitigation_me",
-				chance: "100",
-			},
-		],
-		label: "不够！",
-		actionId: "suspicion",
-	},
-	{
-		id: "suspicion_followerimprisoned",
-		aspects: 
-		{
-			investigatingsetback: "1",
-		},
-		description: "我的追随者被关在禁止探视的监狱里，甚至连释放日期也无从得知。 监管局的欲望被暂时满足了；问题是，我的追随者又告诉了他们什么呢？",
-		effects: 
-		{
-			follower: "-1",
-		},
-		label: "监管局的胜利",
-		actionId: "suspicion",
-	},
-	{
-		warmup: "10",
-		ending: "arrest",
-		label: "监管局的胜利",
-		startdescription: "我被认定有罪！ 我所有的计划都结束了。 我必须准备好。",
-		signalEndingFlavour: "Melancholy",
-		id: "suspicion_meimprisoned",
-		description: ".",
-		actionId: "suspicion",
-	},
-	{
-		id: "suspicion_followerexonerated",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "1",
-				additional: "true",
-			},
-		],
-		startdescription: "我的追随者被判无罪！ 呈堂证供无法为指控背书，他因此重获自由。 监管局暂且算是栽了个跟头；但他们会从中得到什么教训呢？",
-		requirements: 
-		{
-			follower: "1",
-		},
-		aspects: 
-		{
-			investigatingsetback: "1",
-		},
-		label: "监管局的狂怒",
-		actionId: "suspicion",
-	},
-	{
-		id: "suspicion_meexonerated",
-		startdescription: "我被判无罪！ 呈堂证供无法为指控背书，所以我自由了。",
-		requirements: 
-		{
-			follower: "-1",
-		},
-		aspects: 
-		{
-			evidencelevel: "-1",
-		},
-		label: "监管局的狂怒",
-		actionId: "suspicion",
-	},
-	{
-		id: "suspiciontrial",
+	id:"suspicion_meexonerated",
+	actionId:"suspicion",
+	label:"监管局的狂怒",
+	startdescription: "我被判无罪！ 呈堂证供无法为指控背书，所以我自由了。",
+	requirements:{follower:-1},
+	aspects:{evidencelevel:-1}
+	},		
+	   {
+        id: "suspiciontrial",
 		comments: "Here for legacy compatibility",
-		description: "被捕！",
-		linked: 
-		[
+        actionId: "suspicion",
+        description: "被捕！",
+        warmup: 0,
+		linked:[{id:"suspicionpretrial",chance:100}],
+    },
+	
 			{
-				id: "suspicionpretrial",
-				chance: "100",
-			},
-		],
-		warmup: "0",
-		actionId: "suspicion",
+	id:"suspicion_rivalimprisoned",
+	actionId:"suspicion",
+	label:"监管局的胜利",
+	description:"我的对手将不会重现天日。监管局的欲望被暂时满足了；问题是，他们学到了什么呢？",
+		aspects:{investigatingsetback:1},
+	effects:{independent:-1}
 	},
 	{
-		id: "suspicion_rivalimprisoned",
-		comment: "NEW",
-		aspects: 
-		{
-			investigatingsetback: "1",
-		},
-		description: "My Rival will not be seen again by daylight. The Bureau's appetite is satisfied for the moment; but what have they learnt?",
-		effects: 
-		{
-			independent: "-1",
-		},
-		label: "A Victory for the Bureau",
-		actionId: "suspicion",
+	id:"suspicion_rivalexonerated",
+	actionId:"suspicion",
+	requirements:{independent:1},
+	label:"监管局的狂怒",
+				startdescription:"我的对手被判无罪！ 呈堂证供无法为指控背书，他因此重获自由……纵然，毫无疑问他们会因努力白费而责怪我。",
+	aspects:{investigatingsetback:1},
+mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
 	},
-	{
-		id: "suspicion_rivalexonerated",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "independent",
-				mutateAspectId: "resentment",
-				mutationLevel: "1",
-				additional: "true",
-			},
-		],
-		startdescription: "My Rival has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go... though they will no doubt blame me for their hardships.",
-		requirements: 
-		{
-			independent: "1",
-		},
-		aspects: 
-		{
-			investigatingsetback: "1",
-		},
-		label: "The Bureau's Fury",
-		comment: "NEW",
+
+
+	  {
+        id: "scapegoat",
 		actionId: "suspicion",
-	},
-	{
-		id: "scapegoat",
 		comments: "Here for legacy compatibility",
-		warmup: "0",
-		actionId: "suspicion",
-	},
+	warmup:0
+
+    },
+
 ]
 }

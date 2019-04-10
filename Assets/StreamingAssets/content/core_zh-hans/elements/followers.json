@@ -1,3164 +1,1500 @@
-﻿{
-elements: [
-	{
-		id: "auclair_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "奥克莱尔有着学者的面孔和病态的气质。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqauclair",
-		animFrames: "1",
-		label: "熟人奥克莱尔",
-		xtriggers: 
-		{
-			rebellion: "auclair_r",
-			killmortal: "corpse",
-			recruiting: "auclair_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "auclair_b",
-		aspects: 
-		{
-			follower: "1",
-			winter: "2",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "奥克莱尔沉静，做事细致而又冷酷。",
-		uniquenessgroup: "uqauclair",
-		animFrames: "1",
-		label: "信徒奥克莱尔",
-		xtriggers: 
-		{
-			rebellion: "auclair_r",
-			killmortal: "corpse",
-			capturefollower: "auclair_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "auclair_c",
-		},
-	},
-	{
-		id: "auclair_c",
-		aspects: 
-		{
-			follower: "1",
-			winter: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			potential: "1",
-		},
-		description: "奥克莱尔不怎么说话。她对自己的言语斟词酌句。她连动作也是能简则简，生怕浪费气力。还有，人们从没看她眨过眼。",
-		uniquenessgroup: "uqauclair",
-		animFrames: "1",
-		label: "门徒奥克莱尔",
-		xtriggers: 
-		{
-			rebellion: "auclair_r_c",
-			promotionto_d_winter: "auclair_d",
-			capturefollower: "auclair_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "auclair_d",
-		aspects: 
-		{
-			winter: "10",
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "空气仿佛被冻住，蜡泪不断地流淌，街上的声音都静了下来。有谁在这里。",
-		uniquenessgroup: "uqauclair",
-		animFrames: "1",
-		label: "一个憔悴又沉默的女人",
-		xtriggers: 
-		{
-			rebellion: "auclair_r_d",
-			killmortal: "corpse",
-			capturefollower: "auclair_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "cat_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "“卡特·卡罗”，她这样称呼自己，她平时是一个剧场灵媒兼算命师。但她可能还有更深层次的天赋。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqcat",
-		animFrames: "1",
-		label: "熟人卡特·卡罗",
-		xtriggers: 
-		{
-			rebellion: "cat_r",
-			killmortal: "corpse",
-			recruiting: "cat_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "cat_b",
-		aspects: 
-		{
-			follower: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "2",
-		},
-		description: "一个眼神炯炯有神，警惕的女人，她能完美地回忆起她的梦境。",
-		uniquenessgroup: "uqcat",
-		animFrames: "1",
-		label: "信徒卡特·卡罗",
-		xtriggers: 
-		{
-			rebellion: "cat_r",
-			killmortal: "corpse",
-			capturefollower: "cat_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "cat_c",
-		},
-	},
-	{
-		id: "cat_c",
-		aspects: 
-		{
-			follower: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "5",
-			potential: "1",
-		},
-		description: "她有时仍在剧院表演。“卡特·卡罗，”海报上写着，“能找到道路。卡特·卡罗知道该怎么走。”",
-		uniquenessgroup: "uqcat",
-		animFrames: "1",
-		label: "门徒卡特·卡罗",
-		xtriggers: 
-		{
-			rebellion: "cat_r_c",
-			promotionto_d_lantern: "cat_d",
-			capturefollower: "cat_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "cat_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "10",
-		},
-		description: "考古学家在墓穴中发现了宝藏。农民从地里收割庄稼。卡特·卡罗在梦中发现了什么呢？",
-		uniquenessgroup: "uqcat",
-		animFrames: "1",
-		label: "预言家卡特·卡罗",
-		xtriggers: 
-		{
-			rebellion: "cat_r_d",
-			killmortal: "corpse",
-			capturefollower: "cat_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "clifton_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "一个散发着神秘主义气息，留着一把没修剪过的胡须的声音粗旷的非正统天主教徒。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqclifton",
-		animFrames: "1",
-		label: "熟人“教皇”克利夫顿",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "clifton_b",
-		aspects: 
-		{
-			follower: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "2",
-		},
-		description: "现在，克利夫顿即兴创作了充满太阳隐喻的新祷告词。他仍然像个士兵一样大喊大叫，像个水手一样酗酒。",
-		uniquenessgroup: "uqclifton",
-		animFrames: "1",
-		label: "信徒“教皇”克利夫顿",
-		xtriggers: 
-		{
-			rebellion: "clifton_r",
-			killmortal: "corpse",
-			capturefollower: "clifton_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "clifton_c",
-		},
-	},
-	{
-		id: "clifton_c",
-		aspects: 
-		{
-			follower: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "5",
-			potential: "1",
-		},
-		description: "克利夫顿的祷告变得越来越复杂。他的眼睛睁得大大的，闪闪发光。他的声音变得更大了。",
-		uniquenessgroup: "uqclifton",
-		animFrames: "1",
-		label: "门徒“教皇”克利夫顿",
-		xtriggers: 
-		{
-			rebellion: "clifton_r_c",
-			promotionto_d_lantern: "clifton_d",
-			capturefollower: "clifton_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "clifton_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "10",
-		},
-		description: "克利夫顿仍在背诵他的祷告词，但它们变得像古旧的镜子一样奇怪。他每天早晨起来迎接黎明。他直视太阳的面庞，然后告诉你他看到了什么。",
-		uniquenessgroup: "uqclifton",
-		animFrames: "1",
-		label: "预言家克利夫顿",
-		xtriggers: 
-		{
-			rebellion: "clifton_r_d",
-			killmortal: "corpse",
-			capturefollower: "clifton_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "clovette_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "克罗薇特是个容不下不快乐的快乐之人。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqclovette",
-		animFrames: "1",
-		label: "熟人克罗薇特",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "clovette_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-			heart: "2",
-		},
-		description: "克罗薇特那坚定的快乐已经发展为狂热。",
-		uniquenessgroup: "uqclovette",
-		animFrames: "1",
-		label: "信徒克罗薇特",
-		xtriggers: 
-		{
-			rebellion: "clovette_r",
-			killmortal: "corpse",
-			capturefollower: "clovette_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "clovette_c",
-		},
-	},
-	{
-		id: "clovette_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "5",
-			potential: "1",
-		},
-		description: "克罗薇特的乐观令人生畏。她像挥舞一把锤子一样挥舞她的喜悦。",
-		uniquenessgroup: "uqclovette",
-		animFrames: "1",
-		label: "门徒克罗薇特",
-		xtriggers: 
-		{
-			rebellion: "clovette_r_c",
-			killmortal: "corpse",
-			capturefollower: "clovette_p",
-			promotionto_d_heart: "clovette_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "clovette_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "10",
-		},
-		description: "克罗薇特总是兴致高昂。她很爱笑。她的微笑像新月的月弧。",
-		uniquenessgroup: "uqclovette",
-		animFrames: "1",
-		label: "蛊舞者克罗薇特",
-		xtriggers: 
-		{
-			rebellion: "clovette_r_d",
-			killmortal: "corpse",
-			capturefollower: "clovette_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			edge: "5",
-			disciple: "1",
-			mortal: "1",
-			grail: "4",
-		},
-		xtriggers: 
-		{
-			rebellion: "connie_r_c",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerf",
-			derangemortal: "lunatic",
-			promotionto_d_edge: "connie_d",
-		},
-		label: "Connie, a Disciple",
-		id: "connie_c",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			edge: "10",
-			disciple: "1",
-			mortal: "1",
-			grail: "7",
-		},
-		xtriggers: 
-		{
-			rebellion: "connie_r_d",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerf",
-			derangemortal: "lunatic",
-		},
-		label: "Connie, a Conqueress",
-		id: "connie_d",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		id: "dorothy_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "多萝西是个有着广泛阅读兴趣的热心之人。她对你提到的关于世界表皮之下的真实很感兴趣。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqdorothy",
-		animFrames: "1",
-		label: "熟人多萝西",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "dorothy_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-			heart: "2",
-		},
-		description: "多萝西是个热心的人，而我把她的热心为我们所用。",
-		uniquenessgroup: "uqdorothy",
-		animFrames: "1",
-		label: "信徒多萝西",
-		xtriggers: 
-		{
-			rebellion: "dorothy_r",
-			killmortal: "corpse",
-			capturefollower: "dorothy_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "dorothy_c",
-		},
-	},
-	{
-		id: "dorothy_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "5",
-			potential: "1",
-		},
-		description: "多萝西的热情已转变为痴迷。她决不会在目标前停下，噢，她现在多爱跳舞啊。",
-		uniquenessgroup: "uqdorothy",
-		animFrames: "1",
-		label: "门徒多萝西",
-		xtriggers: 
-		{
-			rebellion: "dorothy_r_c",
-			killmortal: "corpse",
-			capturefollower: "dorothy_p",
-			promotionto_d_heart: "dorothy_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "dorothy_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "10",
-		},
-		description: "当多萝西行动时，我们就能听见鼓声。当多萝西说话时，我们就能看见舞蹈。她的决心是她的利剑与盾牌。",
-		uniquenessgroup: "uqdorothy",
-		animFrames: "1",
-		label: "蛊舞者多萝西",
-		xtriggers: 
-		{
-			rebellion: "dorothy_r_d",
-			killmortal: "corpse",
-			capturefollower: "dorothy_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			follower: "1",
-			forge: "2",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			rebellion: "douglas_r",
-			killmortal: "corpse",
-			capturefollower: "douglas_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "douglas_c",
-		},
-		label: "Douglas, a believer",
-		id: "douglas_b",
-		description: "Douglas has exchanged the Force for the Forge.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			follower: "1",
-			forge: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		xtriggers: 
-		{
-			promotionto_d_forge: "douglas_d",
-			killmortal: "corpse",
-			capturefollower: "douglas_p",
-			derangemortal: "lunatic",
-			rebellion: "douglas_r_c",
-		},
-		label: "Douglas, a disciple",
-		id: "douglas_c",
-		description: "Douglas doesn't like hammers. They remind him of an Incident. But he uses what instruments he must.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			forge: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			rebellion: "douglas_r_d",
-			killmortal: "corpse",
-			capturefollower: "douglas_p",
-			derangemortal: "lunatic",
-		},
-		label: "Douglas, a Shaper",
-		id: "douglas_d",
-		description: "Douglas has changed so much. His eyes glow like smithy windows in fog. His voice is the rattle of coal in the chute. His arm is long.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_a",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			acquaintance: "1",
-			mortal: "1",
-		},
-		description: "一位有着不雅习惯的优雅男人。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqelridge",
-		animFrames: "1",
-		label: "熟人埃尔里奇",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "elridge_b",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			edge: "2",
-			mortal: "1",
-		},
-		description: "埃尔里奇基本已经能管住自己在与人谈话时不用刀剔牙了。但他还不能把刀一直放在靴子里不拔出来。",
-		uniquenessgroup: "uqelridge",
-		animFrames: "1",
-		label: "信徒埃尔里奇",
-		xtriggers: 
-		{
-			rebellion: "elridge_r",
-			killmortal: "corpse",
-			capturefollower: "elridge_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "elridge_c",
-		},
-	},
-	{
-		id: "elridge_c",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			edge: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "埃尔里奇在耐心等待下一个捅人刀子的时机。",
-		uniquenessgroup: "uqelridge",
-		animFrames: "1",
-		label: "门徒埃尔里奇",
-		xtriggers: 
-		{
-			rebellion: "elridge_r_c",
-			killmortal: "corpse",
-			capturefollower: "elridge_p",
-			derangemortal: "lunatic",
-			promotionto_d_edge: "elridge_d",
-		},
-	},
-	{
-		id: "elridge_d",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			exalted: "1",
-			edge: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "埃尔里奇从没被人看见过身沾血迹，一滴也没有。",
-		uniquenessgroup: "uqelridge",
-		animFrames: "1",
-		label: "暗杀者埃尔里奇",
-		xtriggers: 
-		{
-			rebellion: "elridge_r_d",
-			killmortal: "corpse",
-			capturefollower: "elridge_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "enid_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "伊妮德说话轻声细语，有时她的目光会聚焦到不存在的事物上。大概你们俩进入了同样的梦境吧。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqenid",
-		animFrames: "1",
-		label: "熟人伊妮德",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "enid_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustenlightenment: "1",
-			mortal: "1",
-			knock: "2",
-		},
-		description: "伊妮德说话轻声细语，有时她的目光会聚焦到不存在的事物上。她能看见他人不视之物。",
-		uniquenessgroup: "uqenid",
-		animFrames: "1",
-		label: "信徒伊妮德",
-		xtriggers: 
-		{
-			rebellion: "enid_r_c",
-			killmortal: "corpse",
-			capturefollower: "enid_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "enid_c",
-		},
-	},
-	{
-		id: "enid_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustenlightenment: "1",
-			disciple: "1",
-			mortal: "1",
-			knock: "5",
-			potential: "1",
-		},
-		description: "伊妮德能看见他人无视之物，这给她带来很多麻烦，但非常有用。",
-		uniquenessgroup: "uqenid",
-		animFrames: "1",
-		label: "门徒伊妮德",
-		xtriggers: 
-		{
-			rebellion: "enid_r_d",
-			promotionto_d_knock: "enid_d",
-			capturefollower: "enid_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "enid_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustenlightenment: "1",
-			disciple: "1",
-			mortal: "1",
-			knock: "10",
-		},
-		description: "伊妮德能看到事物之间的间隙，她所学的技艺使她有时能将指尖置入那间隙之中。",
-		uniquenessgroup: "uqenid",
-		animFrames: "1",
-		label: "灵钥伊妮德",
-		xtriggers: 
-		{
-			rebellion: "enid_r",
-			killmortal: "corpse",
-			capturefollower: "enid_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "laidlaw_a",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			acquaintance: "1",
-			mortal: "1",
-		},
-		description: "莱德劳是一名修补匠兼机修工，掌握着不可思议的绝活。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqlaidlaw",
-		animFrames: "1",
-		label: "熟人莱德劳",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "laidlaw_b",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "2",
-			mortal: "1",
-		},
-		description: "莱德劳已经开始明白手再巧也有极限，而牺牲能带来力量。",
-		uniquenessgroup: "uqlaidlaw",
-		animFrames: "1",
-		label: "信徒莱德劳",
-		xtriggers: 
-		{
-			rebellion: "laidlaw_r",
-			killmortal: "corpse",
-			capturefollower: "laidlaw_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "laidlaw_c",
-		},
-	},
-	{
-		id: "laidlaw_c",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "莱德劳已经学会了更机智地使用火与铜，蜡与酸。",
-		uniquenessgroup: "uqlaidlaw",
-		animFrames: "1",
-		label: "门徒莱德劳",
-		xtriggers: 
-		{
-			promotionto_d_forge: "laidlaw_d",
-			killmortal: "corpse",
-			capturefollower: "laidlaw_p",
-			derangemortal: "lunatic",
-			rebellion: "laidlaw_r_c",
-		},
-	},
-	{
-		id: "laidlaw_d",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			exalted: "1",
-			forge: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "莱德劳能将破碎之物塑造为必需之物。",
-		uniquenessgroup: "uqlaidlaw",
-		animFrames: "1",
-		label: "赋形者莱德劳",
-		xtriggers: 
-		{
-			rebellion: "laidlaw_r_d",
-			killmortal: "corpse",
-			capturefollower: "laidlaw_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "leo_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "里奥是个对密教有兴趣的热心的人。他对于你提到的无形之仪十分在意。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqleo",
-		animFrames: "1",
-		label: "熟人里奥",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "leo_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-			heart: "2",
-		},
-		description: "里奥是个真诚的人，但他也准备好去做那些不得不为之事。",
-		uniquenessgroup: "uqleo",
-		animFrames: "1",
-		label: "信徒里奥",
-		xtriggers: 
-		{
-			rebellion: "leo_r",
-			killmortal: "corpse",
-			capturefollower: "leo_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "leo_c",
-		},
-	},
-	{
-		id: "leo_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "5",
-			potential: "1",
-		},
-		description: "里奥仍然想保存那些美好和有价值的事物。但他明白人为了保护理想，必须要去做那些不太光彩的事。",
-		uniquenessgroup: "uqleo",
-		animFrames: "1",
-		label: "门徒里奥",
-		xtriggers: 
-		{
-			rebellion: "leo_r_c",
-			killmortal: "corpse",
-			capturefollower: "leo_p",
-			promotionto_d_heart: "leo_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "leo_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "10",
-		},
-		description: "里奥会不惜一切保持事物存续。他决不会停止。",
-		uniquenessgroup: "uqleo",
-		animFrames: "1",
-		label: "蛊舞者里奥",
-		xtriggers: 
-		{
-			rebellion: "leo_r_d",
-			killmortal: "corpse",
-			capturefollower: "leo_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			forge: "4",
-			disciple: "1",
-			mortal: "1",
-			lantern: "5",
-		},
-		xtriggers: 
-		{
-			rebellion: "natalia_r_c",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerf",
-			derangemortal: "lunatic",
-			promotionto_d_lantern: "natalia_d",
-		},
-		label: "Natalia, a Disciple",
-		id: "natalia_c",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			forge: "7",
-			disciple: "1",
-			mortal: "1",
-			lantern: "10",
-		},
-		xtriggers: 
-		{
-			rebellion: "natalia_r_d",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerf",
-			derangemortal: "lunatic",
-		},
-		label: "Natalia, a Sage",
-		id: "natalia_d",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		id: "neville_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "内维尔是一个在开口之前犹犹豫豫，容易退缩的人。当他认为你在开玩笑的时候，他总会发笑。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqneville",
-		animFrames: "1",
-		label: "熟人内维尔",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "neville_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustenlightenment: "1",
-			mortal: "1",
-			knock: "2",
-		},
-		description: "内维尔是一个在开口之前犹犹豫豫，容易退缩的人。但他对更深层的事物十分敏感。",
-		uniquenessgroup: "uqneville",
-		animFrames: "1",
-		label: "信徒内维尔",
-		xtriggers: 
-		{
-			rebellion: "neville_r",
-			killmortal: "corpse",
-			capturefollower: "neville_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "neville_c",
-		},
-	},
-	{
-		id: "neville_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustenlightenment: "1",
-			disciple: "1",
-			mortal: "1",
-			knock: "5",
-			potential: "1",
-		},
-		description: "内维尔的目光变得鬼鬼祟祟，他的声音也时不时变得尖锐刺耳。他现在毫无保留地地吐露他的梦想。",
-		uniquenessgroup: "uqneville",
-		animFrames: "1",
-		label: "门徒内维尔",
-		xtriggers: 
-		{
-			rebellion: "neville_r_c",
-			promotionto_d_knock: "neville_d",
-			capturefollower: "neville_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "neville_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustenlightenment: "1",
-			disciple: "1",
-			mortal: "1",
-			knock: "10",
-		},
-		description: "在梦中，内维尔看见那些能打开世界与其道路的缺口。",
-		uniquenessgroup: "uqneville",
-		animFrames: "1",
-		label: "灵钥内维尔",
-		xtriggers: 
-		{
-			rebellion: "neville_r_d",
-			killmortal: "corpse",
-			capturefollower: "neville_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "porter_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "在卷入诉讼案件前，波特曾是一名理发师。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqporter",
-		animFrames: "1",
-		label: "熟人波特",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "porter_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "2",
-			mortal: "1",
-		},
-		description: "波特用他的剃刀和剪刀来给他的朋友带来利益。",
-		uniquenessgroup: "uqporter",
-		animFrames: "1",
-		label: "信徒波特",
-		xtriggers: 
-		{
-			rebellion: "porter_r",
-			killmortal: "corpse",
-			capturefollower: "porter_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "porter_c",
-		},
-	},
-	{
-		id: "porter_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "波特一直保持低调无闻，直到他做好出击的准备。",
-		uniquenessgroup: "uqporter",
-		animFrames: "1",
-		label: "门徒波特",
-		xtriggers: 
-		{
-			rebellion: "porter_r_c",
-			killmortal: "corpse",
-			capturefollower: "porter_p",
-			derangemortal: "lunatic",
-			promotionto_d_moth: "porter_d",
-		},
-	},
-	{
-		id: "porter_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			moth: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "波特就像蜘蛛一样，总是藏在最意想不到的地方。",
-		uniquenessgroup: "uqporter",
-		animFrames: "1",
-		label: "易皮师波特",
-		xtriggers: 
-		{
-			rebellion: "porter_r_d",
-			killmortal: "corpse",
-			capturefollower: "porter_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "renira_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "在三个不同的辖区里，芮妮拉三次被判无罪释放。她很可能永远不会因为任何事获罪。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqrenira",
-		animFrames: "1",
-		label: "熟人芮妮拉",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "renira_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-			grail: "2",
-		},
-		description: "尽管她的野心已经壮大，芮妮拉仍然在追寻着欲望时保持谨慎。",
-		uniquenessgroup: "uqrenira",
-		animFrames: "1",
-		label: "信徒芮妮拉",
-		xtriggers: 
-		{
-			rebellion: "renira_r",
-			killmortal: "corpse",
-			capturefollower: "renira_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "renira_c",
-		},
-	},
-	{
-		id: "renira_c",
-		aspects: 
-		{
-			follower: "1",
-			grail: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			potential: "1",
-		},
-		description: "无论去哪，芮妮拉都能引人爱慕。她只会将注意力放在那些值得报以爱慕的人身上。",
-		uniquenessgroup: "uqrenira",
-		animFrames: "1",
-		label: "门徒芮妮拉",
-		xtriggers: 
-		{
-			rebellion: "renira_r_c",
-			killmortal: "corpse",
-			capturefollower: "renira_p",
-			promotionto_d_grail: "renira_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "renira_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			grail: "10",
-		},
-		description: "芮妮拉几乎每天都会收到来自爱慕者的礼物。有些礼物是花，有些是情诗。有时候她收到的是珠宝，又有时候是紧紧包裹在血迹斑斑的绉纸里的充满绝望的礼物。",
-		uniquenessgroup: "uqrenira",
-		animFrames: "1",
-		label: "引蝶人芮妮拉",
-		xtriggers: 
-		{
-			rebellion: "renira_r_d",
-			killmortal: "corpse",
-			capturefollower: "renira_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "rose_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "萝丝是个狡猾的小姐，她认为你是个不同寻常的角色。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqrose",
-		animFrames: "1",
-		label: "熟人萝丝",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "rose_b",
-		aspects: 
-		{
-			follower: "1",
-			edge: "2",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "萝丝是一位狡猾但忠诚的女士。",
-		uniquenessgroup: "uqrose",
-		animFrames: "1",
-		label: "信徒萝丝",
-		xtriggers: 
-		{
-			rebellion: "rose_r",
-			killmortal: "corpse",
-			capturefollower: "rose_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "rose_c",
-		},
-	},
-	{
-		id: "rose_c",
-		aspects: 
-		{
-			follower: "1",
-			edge: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			potential: "1",
-		},
-		description: "萝丝将她的狡猾磨练到了极点。",
-		uniquenessgroup: "uqrose",
-		animFrames: "1",
-		label: "门徒萝丝",
-		xtriggers: 
-		{
-			rebellion: "rose_r_c",
-			killmortal: "corpse",
-			capturefollower: "rose_p",
-			derangemortal: "lunatic",
-			promotionto_d_edge: "rose_d",
-		},
-	},
-	{
-		id: "rose_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			edge: "10",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-		},
-		description: "在目标人物被萝丝拜访的前一晚，他会收到一个附带一朵黄玫瑰的包裹。",
-		uniquenessgroup: "uqrose",
-		animFrames: "1",
-		label: "暗杀者萝丝",
-		xtriggers: 
-		{
-			rebellion: "rose_r_d",
-			killmortal: "corpse",
-			capturefollower: "rose_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "saliba_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "萨利巴是一个有着惊人欲望的人。他早就过了通过满足欲望获得乐趣的阶段。但他学到了很多。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqsaliba",
-		animFrames: "1",
-		label: "熟人萨利巴",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "saliba_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-			grail: "2",
-		},
-		description: "萨利巴了解鲜血，但尚未了解生育。",
-		uniquenessgroup: "uqsaliba",
-		animFrames: "1",
-		label: "信徒萨利巴",
-		xtriggers: 
-		{
-			rebellion: "saliba_r",
-			killmortal: "corpse",
-			capturefollower: "saliba_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "saliba_c",
-		},
-	},
-	{
-		id: "saliba_c",
-		aspects: 
-		{
-			follower: "1",
-			grail: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			potential: "1",
-		},
-		description: "萨利巴在一间没有窗子的房间中享受愉悦。他的伙伴会一次又一次地回来找他，即使每一次他们都会少许不如原先。",
-		uniquenessgroup: "uqsaliba",
-		animFrames: "1",
-		label: "门徒萨利巴",
-		xtriggers: 
-		{
-			rebellion: "saliba_r_c",
-			killmortal: "corpse",
-			capturefollower: "saliba_p",
-			promotionto_d_grail: "saliba_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "saliba_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			grail: "10",
-		},
-		description: "萨利巴的魅力如巨锤挥下般猛烈。想抗拒他的欲望是极度困难的。",
-		uniquenessgroup: "uqsaliba",
-		animFrames: "1",
-		label: "引蝶人萨利巴",
-		xtriggers: 
-		{
-			rebellion: "saliba_r_d",
-			killmortal: "corpse",
-			capturefollower: "saliba_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "slee_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "克雷格·思雷，天文学家兼先锋派诗人，因为自己的健康衰弱而对怪力乱神产生了兴趣。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqslee",
-		animFrames: "1",
-		label: "熟人思雷",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "slee_b",
-		aspects: 
-		{
-			follower: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "2",
-		},
-		description: "思雷会向所有愿意听的人热心地讲他的理论：星星恍若微小伤口，而那太阳便是辉光的血流。他的诗比以往更古怪了。",
-		uniquenessgroup: "uqslee",
-		animFrames: "1",
-		label: "信徒思雷",
-		xtriggers: 
-		{
-			rebellion: "slee_r",
-			killmortal: "corpse",
-			capturefollower: "slee_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "slee_c",
-		},
-	},
-	{
-		id: "slee_c",
-		aspects: 
-		{
-			follower: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "5",
-			potential: "1",
-		},
-		description: "思雷的头痛越来越严重，但是他的理论却越来越实用。他的诗写的也越来越好。",
-		uniquenessgroup: "uqslee",
-		animFrames: "1",
-		label: "门徒思雷",
-		xtriggers: 
-		{
-			rebellion: "slee_r_c",
-			promotionto_d_lantern: "slee_d",
-			capturefollower: "slee_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "slee_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustenlightenment: "1",
-			lantern: "10",
-		},
-		description: "思雷专门谈论数学和诗歌。两者都很吸引人：分辨两者的差异变得越来越难了。",
-		uniquenessgroup: "uqslee",
-		animFrames: "1",
-		label: "预言家思雷",
-		xtriggers: 
-		{
-			rebellion: "slee_r_d",
-			killmortal: "corpse",
-			capturefollower: "slee_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			moth: "4",
-			disciple: "1",
-			mortal: "1",
-			knock: "5",
-		},
-		xtriggers: 
-		{
-			rebellion: "spencer_r_c",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerm",
-			derangemortal: "lunatic",
-			promotionto_d_lantern: "spencer_d",
-		},
-		label: "Spencer, a Disciple",
-		id: "spencer_c",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			moth: "7",
-			disciple: "1",
-			mortal: "1",
-			knock: "10",
-		},
-		xtriggers: 
-		{
-			rebellion: "spencer_r_d",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerm",
-			derangemortal: "lunatic",
-		},
-		label: "Spencer, a Herald",
-		id: "spencer_d",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		id: "sylvia_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "西尔维娅九岁那年在树林里失去了一只眼睛。每年圣烛节，她都会回到那个她埋葬眼睛的地方。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqsylvia",
-		animFrames: "1",
-		label: "熟人西尔维娅",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "sylvia_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "2",
-			mortal: "1",
-		},
-		description: "西尔维娅在屋脊，退潮的河流，爱尔兰威士忌以及变魔术上有很深的造诣。",
-		uniquenessgroup: "uqsylvia",
-		animFrames: "1",
-		label: "信徒西尔维娅",
-		xtriggers: 
-		{
-			rebellion: "sylvia_r",
-			killmortal: "corpse",
-			capturefollower: "sylvia_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "sylvia_c",
-		},
-	},
-	{
-		id: "sylvia_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "西尔维娅最喜欢的策略是闭眼微笑。值得注意的是，与她交谈的人经常会将自己此时的所想脱口而出。",
-		uniquenessgroup: "uqsylvia",
-		animFrames: "1",
-		label: "门徒西尔维娅",
-		xtriggers: 
-		{
-			rebellion: "sylvia_r_c",
-			killmortal: "corpse",
-			capturefollower: "sylvia_p",
-			derangemortal: "lunatic",
-			promotionto_d_moth: "sylvia_d",
-		},
-	},
-	{
-		id: "sylvia_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			moth: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "西尔维娅已经学会迅速从某处离去，甚至快到可称还未进入既已离去。有时，她会在窗台下留下枯叶，有时她会在将名字写在不会被发现的地方。",
-		uniquenessgroup: "uqsylvia",
-		animFrames: "1",
-		label: "易皮师西尔维娅",
-		xtriggers: 
-		{
-			rebellion: "sylvia_r_d",
-			killmortal: "corpse",
-			capturefollower: "sylvia_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "tristan_a",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			acquaintance: "1",
-			mortal: "1",
-		},
-		description: "崔斯坦讨厌干扰。崔斯坦有事必成。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqtristan",
-		animFrames: "1",
-		label: "熟人崔斯坦",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "tristan_b",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "2",
-			mortal: "1",
-		},
-		description: "崔斯坦讨厌干扰。崔斯坦有事必成。",
-		uniquenessgroup: "uqtristan",
-		animFrames: "1",
-		label: "信徒崔斯坦",
-		xtriggers: 
-		{
-			rebellion: "tristan_r",
-			killmortal: "corpse",
-			capturefollower: "tristan_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "tristan_c",
-		},
-	},
-	{
-		id: "tristan_c",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "崔斯坦会去做那些不得不为之事。要想创造，有时必先摧毁。",
-		uniquenessgroup: "uqtristan",
-		animFrames: "1",
-		label: "门徒崔斯坦",
-		xtriggers: 
-		{
-			promotionto_d_forge: "tristan_d",
-			killmortal: "corpse",
-			capturefollower: "tristan_p",
-			derangemortal: "lunatic",
-			rebellion: "tristan_r_c",
-		},
-	},
-	{
-		id: "tristan_d",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			exalted: "1",
-			forge: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "换一个时代，崔斯坦可能会是个铁匠。换一个人生，他可能是个炸弹制作者。",
-		uniquenessgroup: "uqtristan",
-		animFrames: "1",
-		label: "赋形者崔斯坦",
-		xtriggers: 
-		{
-			rebellion: "tristan_r_d",
-			killmortal: "corpse",
-			capturefollower: "tristan_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "valciane_a",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			acquaintance: "1",
-			mortal: "1",
-		},
-		description: "万查妮已经经营了她的事业近二十年。她从未招过助手。她的双手十分有力。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqvalciane",
-		animFrames: "1",
-		label: "熟人万查妮",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "valciane_b",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "2",
-			mortal: "1",
-		},
-		description: "万查妮非常心灵手巧，她的握力甚至比铁匠的更强。",
-		uniquenessgroup: "uqvalciane",
-		animFrames: "1",
-		label: "信徒万查妮",
-		xtriggers: 
-		{
-			rebellion: "valciane_r",
-			killmortal: "corpse",
-			capturefollower: "valciane_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "valciane_c",
-		},
-	},
-	{
-		id: "valciane_c",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			forge: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "万查妮并不是机器。我们有理由相信这一点，因为人们时不时会发现她犯下人为的错误。",
-		uniquenessgroup: "uqvalciane",
-		animFrames: "1",
-		label: "门徒万查妮",
-		xtriggers: 
-		{
-			promotionto_d_forge: "valciane_d",
-			killmortal: "corpse",
-			capturefollower: "valciane_p",
-			derangemortal: "lunatic",
-			rebellion: "valciane_r_c",
-		},
-	},
-	{
-		id: "valciane_d",
-		aspects: 
-		{
-			follower_lustpower: "1",
-			follower: "1",
-			exalted: "1",
-			forge: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "万查妮已经开始不用工具工作了。“它们碍我的事”，她如是说。",
-		uniquenessgroup: "uqvalciane",
-		animFrames: "1",
-		label: "赋形者万查妮",
-		xtriggers: 
-		{
-			rebellion: "valciane_r_d",
-			killmortal: "corpse",
-			capturefollower: "valciane_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "victor_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "维克多是个狡猾的家伙，而且他对稀有的机遇有着敏锐的嗅觉。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqvictor",
-		animFrames: "1",
-		label: "熟人维克多",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "victor_b",
-		aspects: 
-		{
-			follower: "1",
-			edge: "2",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "维克多是一位狡猾的家伙，但他很忠诚。",
-		uniquenessgroup: "uqvictor",
-		animFrames: "1",
-		label: "信徒维克多",
-		xtriggers: 
-		{
-			rebellion: "victor_r",
-			killmortal: "corpse",
-			capturefollower: "victor_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "victor_c",
-		},
-	},
-	{
-		id: "victor_c",
-		aspects: 
-		{
-			follower: "1",
-			edge: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			potential: "1",
-		},
-		description: "维克多将他的狡猾磨练到了极点。",
-		uniquenessgroup: "uqvictor",
-		animFrames: "1",
-		label: "门徒维克多",
-		xtriggers: 
-		{
-			rebellion: "victor_r_c",
-			killmortal: "corpse",
-			capturefollower: "victor_p",
-			derangemortal: "lunatic",
-			promotionto_d_edge: "victor_d",
-		},
-	},
-	{
-		id: "victor_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			edge: "10",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-		},
-		description: "维克多喜欢和他的目标先混熟，这样他就能在最后一刻前私下向他们致歉了。",
-		uniquenessgroup: "uqvictor",
-		animFrames: "1",
-		label: "暗杀者维克多",
-		xtriggers: 
-		{
-			rebellion: "victor_r_d",
-			killmortal: "corpse",
-			capturefollower: "victor_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "violet_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustsensation: "1",
-			mortal: "1",
-		},
-		description: "维奥莱特一直在慷慨地贡献出自己的时间，缓解垂死之人的痛苦。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqviolet",
-		animFrames: "1",
-		label: "熟人维奥莱特",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "violet_b",
-		aspects: 
-		{
-			follower: "1",
-			winter: "2",
-			mortal: "1",
-			follower_lustsensation: "1",
-		},
-		description: "维奥莱特喜欢画画。她很有天赋，尽管她一直对此很谦虚。她的画中从来不会出现人类。这个世界上的人已经有够多了。",
-		uniquenessgroup: "uqviolet",
-		animFrames: "1",
-		label: "信徒维奥莱特",
-		xtriggers: 
-		{
-			rebellion: "violet_r",
-			killmortal: "corpse",
-			capturefollower: "violet_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "violet_c",
-		},
-	},
-	{
-		id: "violet_c",
-		aspects: 
-		{
-			follower: "1",
-			winter: "5",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-			potential: "1",
-		},
-		description: "维奥莱特总是很小心。",
-		uniquenessgroup: "uqviolet",
-		animFrames: "1",
-		label: "门徒维奥莱特",
-		xtriggers: 
-		{
-			rebellion: "violet_r_c",
-			promotionto_d_winter: "violet_d",
-			capturefollower: "violet_p",
-			derangemortal: "lunatic",
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "violet_d",
-		aspects: 
-		{
-			winter: "10",
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			follower_lustsensation: "1",
-		},
-		description: "现在，去睡吧。什么都不要担心。",
-		uniquenessgroup: "uqviolet",
-		animFrames: "1",
-		label: "一个面容和蔼的，沉默的女人",
-		xtriggers: 
-		{
-			rebellion: "violet_r_d",
-			killmortal: "corpse",
-			capturefollower: "violet_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "ysabet_a",
-		aspects: 
-		{
-			acquaintance: "1",
-			follower_lustchange: "1",
-			mortal: "1",
-		},
-		description: "乌赛贝总在月光下感到最自在。她有很强的夜间视力。在日光下的她经常被人忽视。[你也许可以招募这位熟人作为追随者。]",
-		uniquenessgroup: "uqysabet",
-		animFrames: "1",
-		label: "熟人乌赛贝",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "ysabet_b",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "2",
-			mortal: "1",
-		},
-		description: "乌赛贝的睡眠总是断断续续的。她会在黄昏醒来去做一个乌赛贝该做的事。",
-		uniquenessgroup: "uqysabet",
-		animFrames: "1",
-		label: "信徒乌赛贝",
-		xtriggers: 
-		{
-			rebellion: "ysabet_r",
-			killmortal: "corpse",
-			capturefollower: "ysabet_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "ysabet_c",
-		},
-	},
-	{
-		id: "ysabet_c",
-		aspects: 
-		{
-			follower: "1",
-			follower_lustchange: "1",
-			moth: "5",
-			disciple: "1",
-			mortal: "1",
-			potential: "1",
-		},
-		description: "乌赛贝刚才就在此处，就在片刻前。就是此处，我们几乎可以肯定。",
-		uniquenessgroup: "uqysabet",
-		animFrames: "1",
-		label: "门徒乌赛贝",
-		xtriggers: 
-		{
-			rebellion: "ysabet_r_c",
-			killmortal: "corpse",
-			capturefollower: "ysabet_p",
-			derangemortal: "lunatic",
-			promotionto_d_moth: "ysabet_d",
-		},
-	},
-	{
-		id: "ysabet_d",
-		aspects: 
-		{
-			follower: "1",
-			exalted: "1",
-			follower_lustchange: "1",
-			moth: "10",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "现在，乌赛贝从不说谎。她也不需要。",
-		uniquenessgroup: "uqysabet",
-		animFrames: "1",
-		label: "易皮师乌赛贝",
-		xtriggers: 
-		{
-			rebellion: "ysabet_r_d",
-			killmortal: "corpse",
-			capturefollower: "ysabet_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			winter: "5",
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			lantern: "4",
-		},
-		xtriggers: 
-		{
-			rebellion: "zachary_r_c",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerm",
-			promotionto_d_winter: "zachary_d",
-			derangemortal: "lunatic",
-		},
-		label: "Zachary, a Disciple",
-		id: "zachary_c",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			winter: "10",
-			follower: "1",
-			exalted: "1",
-			disciple: "1",
-			mortal: "1",
-			lantern: "7",
-		},
-		xtriggers: 
-		{
-			rebellion: "zachary_r_d",
-			killmortal: "corpse",
-			capturefollower: "genericprisonerm",
-			derangemortal: "lunatic",
-		},
-		label: "Zachary, a Conclusion",
-		id: "zachary_d",
-		description: "[Not yet.]",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		aspects: 
-		{
-			prisoner: "1",
-			winter: "5",
-			mortal: "1",
-			heart: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯奥克莱尔",
-		id: "auclair_p",
-		lifetime: "600",
-		description: "奥克莱尔不说话也不吃东西。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "5",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯卡特·卡罗",
-		id: "cat_p",
-		lifetime: "600",
-		description: "那个称呼自己为“卡特·卡罗”的女人一有时间就睡觉。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "5",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯“教皇”克利夫顿",
-		id: "clifton_p",
-		lifetime: "600",
-		description: "克利夫顿怒吼着，诅咒着，但铁窗仍然存在，墙壁也依然很厚。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "5",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯克罗薇特",
-		id: "clovette_p",
-		lifetime: "600",
-		description: "克罗薇特正在等待情形好转。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "5",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯多萝西",
-		id: "dorothy_p",
-		lifetime: "600",
-		description: "多萝西没完没了的劝告消磨着我们的神经。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "defaulthunterprisoner",
-		aspects: 
-		{
-			prisoner: "1",
-			forge: "5",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "Douglas, a prisoner",
-		id: "douglas_p",
-		lifetime: "600",
-		description: "Douglas shakes his head sadly. 'Never thought I'd end on the wrong side of the bars. Should have listened to me old mum.'",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqenid",
-		aspects: 
-		{
-			knock: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯伊妮德",
-		id: "enid_p",
-		lifetime: "600",
-		description: "伊妮德不再说话。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqelridge",
-		aspects: 
-		{
-			edge: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯埃尔里奇",
-		id: "elridge_p",
-		lifetime: "600",
-		description: "我们禁止给埃尔里奇用勺子或盘子。让他碰到尖利点的蔬菜都可能很不明智……",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		aspects: 
-		{
-			prisoner: "1",
-			forge: "5",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯莱德劳",
-		id: "laidlaw_p",
-		lifetime: "600",
-		description: "莱德劳的门是闩上，而不是锁上的。我们知道上锁没用。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "5",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯里奥",
-		id: "leo_p",
-		lifetime: "600",
-		description: "里奥不知道他做错了什么。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		aspects: 
-		{
-			knock: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯内维尔",
-		id: "neville_p",
-		lifetime: "600",
-		description: "内维尔正在哭泣。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		aspects: 
-		{
-			moth: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯波特",
-		id: "porter_p",
-		lifetime: "600",
-		description: "波特静止如蜥蜴，静静地等待着。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "5",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯芮妮拉",
-		id: "renira_p",
-		lifetime: "600",
-		description: "芮妮拉总能找到打发时间的方法。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		aspects: 
-		{
-			edge: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯萝丝",
-		id: "rose_p",
-		lifetime: "600",
-		description: "萝丝还没有放弃。我怀疑她偷藏餐具。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "5",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯思雷",
-		id: "slee_p",
-		lifetime: "600",
-		description: "思雷着迷似地在墙上写诗。如果我们不提供墨水，他就用他能弄到的液体书写。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		aspects: 
-		{
-			prisoner: "1",
-			forge: "5",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯崔斯坦",
-		id: "tristan_p",
-		lifetime: "600",
-		description: "崔斯坦会在逆境中尽力挽回形势。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "5",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯萨利巴",
-		id: "saliba_p",
-		lifetime: "600",
-		description: "萨利巴的愤怒如地下的岩浆。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		aspects: 
-		{
-			moth: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯西尔维娅",
-		id: "sylvia_p",
-		lifetime: "600",
-		description: "只是以防万一，我们每小时都会查看一下西尔维娅。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		aspects: 
-		{
-			prisoner: "1",
-			forge: "5",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯万查妮",
-		id: "valciane_p",
-		lifetime: "600",
-		description: "非常重要的一点，永远不要进入万查妮手能够到的范围。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		aspects: 
-		{
-			edge: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯维克多",
-		id: "victor_p",
-		lifetime: "600",
-		description: "维克多的眼睛溢满了愤怒。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		aspects: 
-		{
-			prisoner: "1",
-			winter: "5",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯维奥莱特",
-		id: "violet_p",
-		lifetime: "600",
-		description: "维奥莱特坚称她没事。看来她没事。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		aspects: 
-		{
-			moth: "5",
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "囚犯乌赛贝",
-		id: "ysabet_p",
-		lifetime: "600",
-		description: "若说乌赛贝是在哭泣，她也只是用她那干涸的双眼在哭。",
-		animFrames: "1",
-	},
-	{
-		id: "generic_a",
-		comments: "legacy element to keep saves valid",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+{"elements":
+    [
+		 {
+        id: "auclair_a",
+            label: "熟人奥克莱尔",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "奥克莱尔有着学者的面孔和病态的气质。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic,rebellion:auclair_r},
+			uniquenessgroup:"uqauclair"
+        },
+										 {
+        id: "auclair_b",
+            label: "信徒奥克莱尔",
+            aspects:
+            {mortal: 1, follower: 1,winter: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "奥克莱尔沉静，做事细致而又冷酷。",
+			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r},
+			uniquenessgroup:"uqauclair"
+
+        },
+				 {
+        id: "auclair_c",
+            label: "门徒奥克莱尔",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,winter:5,follower_lustenlightenment:1},
+            description: "奥克莱尔不怎么说话。她对自己的言语斟词酌句。她连动作也是能简则简，生怕浪费气力。还有，人们从没看她眨过眼。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r_c},
+			uniquenessgroup:"uqauclair"
+        },
+				 {
+        id: "auclair_d",
+            label: "一个憔悴又沉默的女人",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10,follower_lustenlightenment:1},
+            description: "空气仿佛被冻住，蜡泪不断地流淌，街上的声音都静了下来。有谁在这里。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r_d},
+			uniquenessgroup:"uqauclair"
+        },
+		
+		
+			 {
+        id: "cat_a",
+            label: "熟人卡特·卡罗",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "“卡特·卡罗”，她这样称呼自己，她平时是一个剧场灵媒兼算命师。但她可能还有更深层次的天赋。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: cat_b,killmortal:corpse,derangemortal:lunatic,rebellion:cat_r},
+			uniquenessgroup:"uqcat"
+        },
+										 {
+        id: "cat_b",
+            label: "信徒卡特·卡罗",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "一个眼神炯炯有神，警惕的女人，她能完美地回忆起她的梦境。",
+			xtriggers: {promotiontodisciple: cat_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r},
+			uniquenessgroup:"uqcat"
+
+        },
+				 {
+        id: "cat_c",
+            label: "门徒卡特·卡罗",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
+            description: "她有时仍在剧院表演。“卡特·卡罗，”海报上写着，“能找到道路。卡特·卡罗知道该怎么走。”",
+			animFrames: 1,
+			xtriggers: {promotionto_d_lantern: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r_c},
+			uniquenessgroup:"uqcat"
+        },
+				 {
+        id: "cat_d",
+            label: "预言家卡特·卡罗",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
+            description: "考古学家在墓穴中发现了宝藏。农民从地里收割庄稼。卡特·卡罗在梦中发现了什么呢？",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r_d},
+			uniquenessgroup:"uqcat"
+        },
+								 {
+        id: "clifton_a",
+            label: "熟人“教皇”克利夫顿",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "一个散发着神秘主义气息，留着一把没修剪过的胡须的声音粗旷的非正统天主教徒。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: clifton_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqclifton"
+        },
+										 {
+        id: "clifton_b",
+            label: "信徒“教皇”克利夫顿",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "现在，克利夫顿即兴创作了充满太阳隐喻的新祷告词。他仍然像个士兵一样大喊大叫，像个水手一样酗酒。",
+			xtriggers: {promotiontodisciple: clifton_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r},
+			uniquenessgroup:"uqclifton"
+
+        },
+		
+				 {
+        id: "clifton_c",
+            label: "门徒“教皇”克利夫顿",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
+            description: "克利夫顿的祷告变得越来越复杂。他的眼睛睁得大大的，闪闪发光。他的声音变得更大了。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r_c},
+			uniquenessgroup:"uqclifton"
+        },
+				 {
+        id: "clifton_d",
+            label: "预言家克利夫顿",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
+            description: "克利夫顿仍在背诵他的祷告词，但它们变得像古旧的镜子一样奇怪。他每天早晨起来迎接黎明。他直视太阳的面庞，然后告诉你他看到了什么。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r_d},
+			uniquenessgroup:"uqclifton"
+        },
+		
+			 {
+        id: "clovette_a",
+            label: "熟人克罗薇特",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "克罗薇特是个容不下不快乐的快乐之人。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: clovette_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqclovette"
+        },
+									 {
+        id: "clovette_b",
+            label: "信徒克罗薇特",
+            aspects:
+            {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "克罗薇特那坚定的快乐已经发展为狂热。",
+			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
+			uniquenessgroup:"uqclovette"
+        },
+				 {
+        id: "clovette_c",
+            label: "门徒克罗薇特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,heart:5,follower_lustchange:1},
+            description: "克罗薇特的乐观令人生畏。她像挥舞一把锤子一样挥舞她的喜悦。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_heart: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r_c},
+			uniquenessgroup:"uqclovette"
+        },
+		{
+        id: "clovette_d",
+            label: "蛊舞者克罗薇特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,heart:10,follower_lustchange:1},
+            description: "克罗薇特总是兴致高昂。她很爱笑。她的微笑像新月的月弧。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r_d},
+			uniquenessgroup:"uqclovette"
+        },
+		{
+		        id: "connie_c",
+            label: "门徒康妮",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:5,grail:4},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,promotionto_d_edge:connie_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
+			uniquenessgroup:"uqconnie",
+			icon:"connie_r"
+        },
+
+		{
+		        id: "connie_d",
+            label: "征服者康妮",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:10,grail:7},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_d},
+			uniquenessgroup:"uqconnie",
+			icon:"connie_r"
+        },
+		{
+        id: "dorothy_a",
+            label: "熟人多萝西",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "多萝西是个有着广泛阅读兴趣的热心之人。她对我提到的关于世界表皮之下的真实很感兴趣。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: dorothy_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqdorothy"
+        },
+							 {
+        id: "dorothy_b",
+            label: "信徒多萝西",
+            aspects:
+            {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "多萝西是个热心的人，而我把她的热心为我们所用。",
+			xtriggers: {promotiontodisciple: dorothy_c,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r},
+			uniquenessgroup:"uqdorothy"
+        },
+				 {
+        id: "dorothy_c",
+            label: "门徒多萝西",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,heart:5,follower_lustchange:1},
+            description: "多萝西的热情已转变为痴迷。她决不会在目标前停下，噢，她现在多爱跳舞啊。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r_c},
+			uniquenessgroup:"uqdorothy"
+        },
+				 {
+        id: "dorothy_d",
+            label: "蛊舞者多萝西",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,heart:10,follower_lustchange:1},
+            description: "当多萝西行动时，我们就能听见鼓声。当多萝西说话时，我们就能看见舞蹈。她的决心是她的利剑与盾牌。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r_d},
+			uniquenessgroup:"uqdorothy"
+        },
+		
+									 {
+        id: "douglas_b",
+            label: "信徒道格拉斯",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2},
+            animFrames: 1,
+			description: "道格拉斯为了<b>炉</b>交换了力量。",
+			xtriggers: {promotiontodisciple: douglas_c,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
+			uniquenessgroup:"uqdouglas",
+			icon:"douglas_r"
+        },
+				 {
+        id: "douglas_c",
+            label: "门徒道格拉斯",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,forge:5},
+            description: "道格拉斯不喜欢锤子。这让他想起一起事故。但他会用到所必需的工具。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_forge: douglas_d,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r_c},
+			uniquenessgroup:"uqdouglas",
+			icon:"douglas_r"
+        },
+				 {
+        id: "douglas_d",
+            label: "赋形者道格拉斯",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
+            description: "道格拉斯改变了如此之多。他的眼睛如迷雾中铁匠铺的窗户发光。他的声音变得像煤块在滑道中碰撞发出的咯咯声响。他的手臂也很长。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r_d},
+			uniquenessgroup:"uqdouglas",
+			icon:"douglas_r"
+        },
+							 {
+        id: "elridge_a",
+            label: "熟人埃尔里奇",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustpower:1},
+            description: "一位有着不雅习惯的优雅男人。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqelridge"
+        },
+										 {
+        id: "elridge_b",
+            label: "信徒埃尔里奇",
+            aspects:
+            {mortal: 1, follower: 1,edge: 2,follower_lustpower:1},
+            animFrames: 1,
+			description: "埃尔里奇基本已经能管住自己在与人谈话时不用刀剔牙了。但他还不能把刀一直放在靴子里不拔出来。",
+			xtriggers: {promotiontodisciple: elridge_c,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r},
+			uniquenessgroup:"uqelridge"
+
+        },
+				 {
+        id: "elridge_c",
+            label: "门徒埃尔里奇",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustpower:1},
+            description: "埃尔里奇在耐心等待下一个捅人刀子的时机。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_edge: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r_c},
+			uniquenessgroup:"uqelridge"
+        },
+				 {
+        id: "elridge_d",
+            label: "暗杀者埃尔里奇",
+            aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustpower:1},
+            description: "埃尔里奇从没被人看见过身沾血迹，一滴也没有。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r_d},
+			uniquenessgroup:"uqelridge"
+        },
+				 {
+        id: "enid_a",
+            label: "熟人伊妮德",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "伊妮德说话轻声细语，有时她的目光会聚焦到不存在的事物上。大概你们俩进入了同样的梦境吧。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: enid_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqenid"
+        },
+								 {
+        id: "enid_b",
+            label: "信徒伊妮德",
+            aspects:
+            {mortal: 1, follower: 1, knock: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "伊妮德说话轻声细语，有时她的目光会聚焦到不存在的事物上。她能看见他人不视之物。",
+			xtriggers: {promotiontodisciple: enid_c,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r_c},
+			uniquenessgroup:"uqenid"
+        },
+		{
+        id: "enid_c",
+            label: "门徒伊妮德",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,knock:5,follower_lustenlightenment:1},
+            description: "伊妮德能看见他人无视之物，这给她带来很多麻烦，但非常有用。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_knock: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r_d},
+			uniquenessgroup:"uqenid"
+        },
+						 {
+        id: "enid_d",
+            label: "灵钥伊妮德",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:10,follower_lustenlightenment:1},
+            description: "伊妮德能看到事物之间的间隙，她所学的技艺使她有时能将指尖置入那间隙之中。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r},
+			uniquenessgroup:"uqenid"
+        },
+		 {
+        id: "laidlaw_a",
+            label: "熟人莱德劳",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustpower:1},
+            description: "莱德劳是一名修补匠兼机修工，掌握着不可思议的绝活。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: laidlaw_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqlaidlaw"
+        },
+										 {
+        id: "laidlaw_b",
+            label: "信徒莱德劳",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2,follower_lustpower:1},
+            animFrames: 1,
+			description: "莱德劳已经开始明白手再巧也有极限，而牺牲能带来力量。",
+			xtriggers: {promotiontodisciple: laidlaw_c,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r},
+			uniquenessgroup:"uqlaidlaw"
+
+        },
+		
+				 {
+        id: "laidlaw_c",
+            label: "门徒莱德劳",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
+            description: "莱德劳已经学会了更机智地使用火与铜，蜡与酸。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_forge: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r_c},
+			uniquenessgroup:"uqlaidlaw"
+        },
+				 {
+        id: "laidlaw_d",
+            label: "赋形者莱德劳",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
+            description: "莱德劳能将破碎之物塑造为必需之物。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r_d},
+			uniquenessgroup:"uqlaidlaw"
+        },
+	
+				 {
+        id: "leo_a",
+            label: "熟人里奥",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "里奥是个对密教有兴趣的热心的人。他对于你提到的无形之仪十分在意。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting:leo_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqleo"
+        },
+						 {
+        id: "leo_b",
+            label: "信徒里奥",
+            aspects:
+            {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "里奥是个真诚的人，但他也准备好去做那些不得不为之事。",
+			xtriggers: {promotiontodisciple: leo_c,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r},
+			uniquenessgroup:"uqleo"
+        },
+						 {
+        id: "leo_c",
+            label: "门徒里奥",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1, heart:5,follower_lustchange:1},
+            description: "里奥仍然想保存那些美好和有价值的事物。但他明白人为了保护理想，必须要去做那些不太光彩的事。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_heart:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r_c},
+			uniquenessgroup:"uqleo"
+        },
+					 {
+        id: "leo_d",
+            label: "蛊舞者里奥",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1, heart:10,follower_lustchange:1},
+            description: "里奥会不惜一切保持事物存续。他决不会停止。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r_d},
+			uniquenessgroup:"uqleo"
+        },
+				{
+		        id: "natalia_c",
+            label: "门徒纳塔丽娅",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:5,forge:4},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,promotionto_d_lantern:natalia_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
+			uniquenessgroup:"uqnatalia",
+			icon:"natalia_r"
+        },
+						{
+		        id: "natalia_d",
+            label: "圣人纳塔丽娅",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,forge:7},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse, derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_d},
+			uniquenessgroup:"uqnatalia",
+			icon:"natalia_r"
+        },
+		
+				 {
+        id: "neville_a",
+            label: "熟人内维尔",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "内维尔是一个在开口之前犹犹豫豫，容易退缩的人。当他认为你在开玩笑的时候，他总会发笑。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: neville_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqneville"
+        },
+					 {
+        id: "neville_b",
+            label: "信徒内维尔",
+            aspects:
+            {mortal: 1, follower: 1, knock: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "内维尔是一个在开口之前犹犹豫豫，容易退缩的人。但他对更深层的事物十分敏感。",
+			xtriggers: {promotiontodisciple: neville_c,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r},
+			uniquenessgroup:"uqneville"
+        },
+						 {
+        id: "neville_c",
+            label: "门徒内维尔",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,knock:5,follower_lustenlightenment:1},
+            description: "内维尔的目光变得鬼鬼祟祟，他的声音也时不时变得尖锐刺耳。他现在毫无保留地地吐露他的梦想。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_knock: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r_c},
+			uniquenessgroup:"uqneville"
+        },
+						 {
+        id: "neville_d",
+            label: "灵钥内维尔",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:10,follower_lustenlightenment:1},
+            description: "在梦中，内维尔看见那些能打开世界与其道路的缺口。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r_d},
+			uniquenessgroup:"uqneville"
+        },
+		
+							 {
+        id: "porter_a",
+            label: "熟人波特",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "在卷入诉讼案件前，波特曾是一名理发师。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: porter_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqporter"
+        },
+										 {
+        id: "porter_b",
+            label: "信徒波特",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "波特用他的剃刀和剪刀来给他的朋友带来利益。",
+			xtriggers: {promotiontodisciple: porter_c,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r},
+			uniquenessgroup:"uqporter"
+
+        },
+				 {
+        id: "porter_c",
+            label: "门徒波特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
+            description: "波特一直保持低调无闻，直到他做好出击的准备。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_moth: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r_c},
+			uniquenessgroup:"uqporter"
+        },
+				 {
+        id: "porter_d",
+            label: "易皮师波特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
+            description: "波特就像蜘蛛一样，总是藏在最意想不到的地方。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r_d},
+			uniquenessgroup:"uqporter"
+        },
+		
+			 {
+        id: "renira_a",
+            label: "熟人芮妮拉",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustsensation:1},
+            description: "在三个不同的辖区里，芮妮拉三次被判无罪释放。她很可能永远不会因为任何事获罪。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqrenira"
+        },
+										 {
+        id: "renira_b",
+            label: "信徒芮妮拉",
+            aspects:
+            {mortal: 1, follower: 1,grail: 2,follower_lustsensation:1},
+            animFrames: 1,
+			description: "尽管她的野心已经壮大，芮妮拉仍然在追寻着欲望时保持谨慎。",
+			xtriggers: {promotiontodisciple: renira_c,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r},
+			uniquenessgroup:"uqrenira"
+
+        },
+		
+				 {
+        id: "renira_c",
+            label: "门徒芮妮拉",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,grail:5,follower_lustsensation:1},
+            description: "无论去哪，芮妮拉都能引人爱慕。她只会将注意力放在那些值得报以爱慕的人身上。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_grail: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r_c},
+			uniquenessgroup:"uqrenira"
+        },
+				 {
+        id: "renira_d",
+            label: "引蝶人芮妮拉",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,grail:10,follower_lustsensation:1},
+            description: "芮妮拉几乎每天都会收到来自爱慕者的礼物。有些礼物是花，有些是情诗。有时候她收到的是珠宝，又有时候是紧紧包裹在血迹斑斑的绉纸里的充满绝望的礼物。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r_d},
+			uniquenessgroup:"uqrenira"
+        },
+					 {
+        id: "rose_a",
+            label: "熟人萝丝",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustsensation:1},
+            description: "萝丝是个狡猾的小姐，她认为你是个不同寻常的角色。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: rose_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqrose"
+        },
+					 {
+        id: "rose_b",
+            label: "信徒萝丝",
+            aspects:
+            {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
+            animFrames: 1,
+			description: "萝丝是一位狡猾但忠诚的女士。",
+			xtriggers: {promotiontodisciple: rose_c,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r},
+			uniquenessgroup:"uqrose"
+        },
+						 {
+        id: "rose_c",
+            label: "门徒萝丝",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustsensation:1},
+            description: "萝丝将她的狡猾磨练到了极点。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_edge: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r_c},
+			uniquenessgroup:"uqrose"
+        },
+						 {
+        id: "rose_d",
+            label: "暗杀者萝丝",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustsensation:1},
+            description: "在目标人物被萝丝拜访的前一晚，他会收到一个附带一朵黄玫瑰的包裹。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r_d},
+			uniquenessgroup:"uqrose"
+        },
+
+					 {
+        id: "saliba_a",
+            label: "熟人萨利巴",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustsensation:1},
+            description: "萨利巴是一个有着惊人欲望的人。他早就过了通过满足欲望获得乐趣的阶段。但他学到了很多。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqsaliba"
+        },
+										 {
+        id: "saliba_b",
+            label: "信徒萨利巴",
+            aspects:
+            {mortal: 1, follower: 1,grail: 2,follower_lustsensation:1},
+            animFrames: 1,
+			description: "萨利巴了解鲜血，但尚未了解生育。",
+			xtriggers: {promotiontodisciple: saliba_c,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r},
+			uniquenessgroup:"uqsaliba"
+
+        },
+		
+				 {
+        id: "saliba_c",
+            label: "门徒萨利巴",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,grail:5,follower_lustsensation:1},
+            description: "萨利巴在一间没有窗子的房间中享受愉悦。他的伙伴会一次又一次地回来找他，即使每一次他们都会少许不如原先。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r_c},
+			uniquenessgroup:"uqsaliba"
+        },
+				 {
+        id: "saliba_d",
+            label: "引蝶人萨利巴",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,grail:10,follower_lustsensation:1},
+            description: "萨利巴的魅力如巨锤挥下般猛烈。想抗拒他的欲望是极度困难的。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r_d},
+			uniquenessgroup:"uqsaliba"
+        },
+					 {
+        id: "slee_a",
+            label: "熟人思雷",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
+            description: "克雷格·思雷，天文学家兼先锋派诗人，因为自己的健康衰弱而对怪力乱神产生了兴趣。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: slee_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqslee"
+        },
+										 {
+        id: "slee_b",
+            label: "信徒思雷",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
+            animFrames: 1,
+			description: "思雷会向所有愿意听的人热心地讲他的理论：星星恍若微小伤口，而那太阳便是辉光的血流。他的诗比以往更古怪了。",
+			xtriggers: {promotiontodisciple: slee_c,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r},
+			uniquenessgroup:"uqslee"
+        },
+		
+				 {
+        id: "slee_c",
+            label: "门徒思雷",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
+            description: "思雷的头痛越来越严重，但是他的理论却越来越实用。他的诗写的也越来越好。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_lantern: slee_d,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r_c},
+			uniquenessgroup:"uqslee"
+        },
+				 {
+        id: "slee_d",
+            label: "预言家思雷",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
+            description: "思雷专门谈论数学和诗歌。两者都很吸引人：分辨两者的差异变得越来越难了。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r_d},
+			uniquenessgroup:"uqslee"
+        },
+		
+				{
+		        id: "spencer_c",
+            label: "门徒斯宾塞",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:5,moth:4},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,promotionto_d_lantern:spencer_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_c},
+			uniquenessgroup:"uqspencer",
+			icon:"spencer_r"
+        },
+		
+						{
+		        id: "spencer_d",
+            label: "先知斯宾塞",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:10,moth:7},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
+			uniquenessgroup:"uqspencer",
+			icon:"spencer_r"
+        },
+		
+					 {
+        id: "sylvia_a",
+            label: "熟人西尔维娅",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "西尔维娅九岁那年在树林里失去了一只眼睛。每年圣烛节，她都会回到那个她埋葬眼睛的地方。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqsylvia"
+        },
+										 {
+        id: "sylvia_b",
+            label: "信徒西尔维娅",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "西尔维娅在屋脊，退潮的河流，爱尔兰威士忌以及变魔术上有很深的造诣。",
+			xtriggers: {promotiontodisciple: sylvia_c,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r},
+			uniquenessgroup:"uqsylvia"
+
+        },
+				 {
+        id: "sylvia_c",
+            label: "门徒西尔维娅",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
+            description: "西尔维娅最喜欢的策略是闭眼微笑。值得注意的是，与她交谈的人经常会将自己此时的所想脱口而出。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_moth: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r_c},
+			uniquenessgroup:"uqsylvia"
+        },
+				 {
+        id: "sylvia_d",
+            label: "易皮师西尔维娅",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
+            description: "西尔维娅已经学会迅速从某处离去，甚至快到可称还未进入既已离去。有时，她会在窗台下留下枯叶，有时她会在将名字写在不会被发现的地方。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r_d},
+			uniquenessgroup:"uqsylvia"
+        },
+						 {
+        id: "tristan_a",
+            label: "熟人崔斯坦",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustpower:1},
+            description: "崔斯坦讨厌干扰。崔斯坦有事必成。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: tristan_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqtristan"
+        },
+								 {
+        id: "tristan_b",
+            label: "信徒崔斯坦",
+            aspects:
+            {mortal: 1, follower: 1,forge:2,follower_lustpower:1},
+            animFrames: 1,
+			description: "崔斯坦讨厌干扰。崔斯坦有事必成。",
+						xtriggers: {promotiontodisciple: tristan_c,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r},
+			uniquenessgroup:"uqtristan"
+        },
+								 {
+        id: "tristan_c",
+            label: "门徒崔斯坦",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
+            description: "崔斯坦会去做那些不得不为之事。要想创造，有时必先摧毁。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_forge: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r_c},
+			uniquenessgroup:"uqtristan"
+        },
+								 {
+        id: "tristan_d",
+            label: "赋形者崔斯坦",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
+            description: "换一个时代，崔斯坦可能会是个铁匠。换一个人生，他可能是个炸弹制作者。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r_d},
+			uniquenessgroup:"uqtristan"
+        },
+		
+					 {
+        id: "valciane_a",
+            label: "熟人万查妮",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustpower:1},
+            description: "万查妮已经经营了她的事业近二十年。她从未招过助手。她的双手十分有力。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqvalciane"
+        },
+										 {
+        id: "valciane_b",
+            label: "信徒万查妮",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2,follower_lustpower:1},
+            animFrames: 1,
+			description: "万查妮非常心灵手巧，她的握力甚至比铁匠的更强。",
+			xtriggers: {promotiontodisciple: valciane_c,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r},
+			uniquenessgroup:"uqvalciane"
+
+        },
+		
+				 {
+        id: "valciane_c",
+            label: "门徒万查妮",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
+            description: "万查妮并不是机器。我们有理由相信这一点，因为人们时不时会发现她犯下人为的错误。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_forge: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r_c},
+			uniquenessgroup:"uqvalciane"
+        },
+				 {
+        id: "valciane_d",
+            label: "赋形者万查妮",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
+            description: "万查妮已经开始不用工具工作了。“它们碍我的事”，她如是说。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r_d},
+			uniquenessgroup:"uqvalciane"
+        },
+					 {
+        id: "victor_a",
+            label: "熟人维克多",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustsensation:1},
+            description: "维克多是个狡猾的家伙，而且他对稀有的机遇有着敏锐的嗅觉。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: victor_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqvictor"
+        },
+						 {
+        id: "victor_b",
+            label: "信徒维克多",
+            aspects:
+            {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
+            animFrames: 1,
+			description: "维克多是一位狡猾的家伙，但他很忠诚。",
+			xtriggers: {promotiontodisciple: victor_c,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r},
+			uniquenessgroup:"uqvictor"
+        },
+						 {
+        id: "victor_c",
+            label: "门徒维克多",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustsensation:1},
+            description: "维克多将他的狡猾磨练到了极点。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_edge: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r_c},
+			uniquenessgroup:"uqvictor"
+        },
+				 {
+        id: "victor_d",
+            label: "暗杀者维克多",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustsensation:1},
+            description: "维克多喜欢和他的目标先混熟，这样他就能在最后一刻前私下向他们致歉了。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r_d},
+			uniquenessgroup:"uqvictor"
+        },
+
+					 {
+        id: "violet_a",
+            label: "熟人维奥莱特",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustsensation:1},
+            description: "维奥莱特一直在慷慨地贡献出自己的时间，缓解垂死之人的痛苦。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqviolet"
+        },
+										 {
+        id: "violet_b",
+            label: "信徒维奥莱特",
+            aspects:
+            {mortal: 1, follower: 1,winter: 2,follower_lustsensation:1},
+            animFrames: 1,
+			description: "维奥莱特喜欢画画。她很有天赋，尽管她一直对此很谦虚。她的画中从来不会出现人类。这个世界上的人已经有够多了。",
+			xtriggers: {promotiontodisciple: violet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r},
+			uniquenessgroup:"uqviolet"
+
+        },
+		
+				 {
+        id: "violet_c",
+            label: "门徒维奥莱特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,winter:5,follower_lustsensation:1},
+            description: "维奥莱特总是很小心。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_winter: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r_c},
+			uniquenessgroup:"uqviolet"
+        },
+				 {
+        id: "violet_d",
+            label: "一个面容和蔼的，沉默的女人",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10,follower_lustsensation:1},
+            description: "现在，去睡吧。什么都不要担心。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r_d},
+			uniquenessgroup:"uqviolet"
+        },
+	
+					 {
+        id: "ysabet_a",
+            label: "熟人伊莎贝特",
+            aspects:
+            {mortal: 1,acquaintance:1,follower_lustchange:1},
+            description: "伊莎贝特总在月光下感到最自在。她有很强的夜间视力。在日光下的她经常被人忽视。[你也许可以招募这位熟人作为追随者。]",
+			animFrames: 1,
+			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"uqysabet"
+        },
+										 {
+        id: "ysabet_b",
+            label: "信徒伊莎贝特",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
+            animFrames: 1,
+			description: "伊莎贝特的睡眠总是断断续续的。她会在黄昏醒来去做一个伊莎贝特该做的事。",
+			xtriggers: {promotiontodisciple: ysabet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r},
+			uniquenessgroup:"uqysabet"
+
+        },
+				 {
+        id: "ysabet_c",
+            label: "门徒伊莎贝特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
+            description: "伊莎贝特刚才就在此处，就在片刻前。就是此处，我们几乎可以肯定。",
+			animFrames: 1,
+			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r_c},
+			uniquenessgroup:"uqysabet"
+        },
+				 {
+        id: "ysabet_d",
+            label: "易皮师伊莎贝特",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
+            description: "现在，伊莎贝特从不说谎。她也不需要。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r_d},
+			uniquenessgroup:"uqysabet"
+        },
+		
+						{
+		        id: "zachary_c",
+            label: "门徒扎迦利",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:5,lantern:4},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,promotionto_d_winter:zachary_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
+			uniquenessgroup:"uqzachary",
+			icon:"zachary_r"
+        },
+				
+						{
+		        id: "zachary_d",
+            label: "应许者扎迦利",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10,lantern:7},
+            description: "[还不行。]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_d},
+			uniquenessgroup:"uqzachary",
+			icon:"zachary_r"
+        },
+		
+					 {
+        id: "auclair_p",
+            label: "囚犯奥克莱尔",
+            aspects:
+            {mortal:1, prisoner:1,winter:5,grail:3,heart:3},
+            description: "奥克莱尔不说话也不吃东西。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqauclair"
+        },
+							 {
+        id: "cat_p",
+            label: "囚犯卡特·卡罗",
+            aspects:
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
+            description: "那个称呼自己为“卡特·卡罗”的女人一有时间就睡觉。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqcat"
+        },
+							 {
+        id: "clifton_p",
+            label: "囚犯“教皇”克利夫顿",
+            aspects:
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
+            description: "克利夫顿怒吼着，诅咒着，但铁窗仍然存在，墙壁也依然很厚。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqclifton"
+        },
+			
+				 {
+        id: "clovette_p",
+            label: "囚犯克罗薇特",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
+            description: "克罗薇特正在等待情形好转。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqclovette"
+        },
+		 {
+        id: "dorothy_p",
+            label: "囚犯多萝西",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
+            description: "多萝西没完没了的劝告消磨着我们的神经。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqdorothy"
+        },
+				 {
+        id: "douglas_p",
+            label: "囚犯道格拉斯",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
+            description: "道格拉斯伤心地摇着头。“从未想过我会终结于铁窗的另一边，我应该听我老母亲的话的。”",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqdouglas",
+			icon:"defaulthunterprisoner"
+        },
+				 {
+        id: "enid_p",
+            label: "囚犯伊妮德",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
+            description: "伊妮德不再说话。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqenid"
+        },
+
+							 {
+        id: "elridge_p",
+            label: "囚犯埃尔里奇",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
+            description: "我们禁止给埃尔里奇用勺子或盘子。让他碰到尖利点的蔬菜都可能很不明智……",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqelridge"
+        },
+							 {
+        id: "laidlaw_p",
+            label: "囚犯莱德劳",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
+            description: "莱德劳的门是闩上，而不是锁上的。我们知道上锁没用。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqlaidlaw"
+        },
+						 {
+        id: "leo_p",
+            label: "囚犯里奥",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
+            description: "里奥不知道他做错了什么。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqleo"
+        },
+				 {
+        id: "neville_p",
+            label: "囚犯内维尔",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
+            description: "内维尔正在哭泣。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqneville"
+        },
+							 {
+        id: "porter_p",
+            label: "囚犯波特",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
+            description: "波特静止如蜥蜴，静静地等待着。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqporter"
+        },
+							 {
+        id: "renira_p",
+            label: "囚犯芮妮拉",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
+            description: "芮妮拉总能找到打发时间的方法。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqrenira"
+        },
+		
+								 {
+        id: "rose_p",
+            label: "囚犯萝丝",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
+            description: "萝丝还没有放弃。我怀疑她偷藏餐具。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqrose"
+        },
+							 {
+        id: "slee_p",
+            label: "囚犯思雷",
+            aspects:
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
+            description: "思雷着迷似地在墙上写诗。如果我们不提供墨水，他就用他能弄到的液体书写。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqslee"
+        },
+						 {
+        id: "tristan_p",
+            label: "囚犯崔斯坦",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
+            description: "崔斯坦会在逆境中尽力挽回形势。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqtristan"
+        },
+							 {
+        id: "saliba_p",
+            label: "囚犯萨利巴",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
+            description: "萨利巴的愤怒如地下的岩浆。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqsaliba"
+        },
+							 {
+        id: "sylvia_p",
+            label: "囚犯西尔维娅",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
+            description: "只是以防万一，我们每小时都会查看一下西尔维娅。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqsylvia"
+        },
+							 {
+        id: "valciane_p",
+            label: "囚犯万查妮",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
+            description: "非常重要的一点，永远不要进入万查妮手能够到的范围。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqvalciane"
+        },
+
+				 {
+        id: "victor_p",
+            label: "囚犯维克多",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
+            description: "维克多的眼睛溢满了愤怒。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqvictor"
+        },
+							 {
+        id: "violet_p",
+            label: "囚犯维奥莱特",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,winter:5},
+            description: "维奥莱特坚称她没事。看来她没事。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqviolet"
+        },
+							 {
+        id: "ysabet_p",
+            label: "囚犯伊莎贝特",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
+            description: "若说伊莎贝特是在哭泣，她也只是用她那干涸的双眼在哭。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqysabet"
+        },
+						 {
+        id: "generic_a",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
+			animFrames: 1,
+			comments:"legacy element to keep saves valid",
+			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic,rebellion:generic_r}
+        },
+									 {
+        id: "generic_a_edge",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_edge",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_edge}
+        },
+										 {
+        id: "generic_a_forge",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_edge",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_forge",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_forge}
+        },
+										 {
+        id: "generic_a_grail",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_forge",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_grail",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_grail}
+        },
+										 {
+        id: "generic_a_heart",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_grail",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_heart",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_heart}
+        },
+										 {
+        id: "generic_a_knock",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_heart",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_knock",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_knock}
+        },
+										 {
+        id: "generic_a_lantern",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_knock",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_lantern",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_lantern}
+        },
+										 {
+        id: "generic_a_moth",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_lantern",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_moth",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,recruiting:generic_b_moth}
+        },
+										 {
+        id: "generic_a_winter",
+            label: "外围人士",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
 		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_winter}
+        },
 		{
-			rebellion: "generic_r",
-			recruiting: "generic_b_moth",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_a_winter",
-		aspects: 
-		{
-			acquaintance: "1",
-			mortal: "1",
-		},
-		description: "可塑之才，但也可能永远发挥不了什么价值。[你也许可以招募这位熟人来作为追随者。]",
-		animFrames: "1",
-		label: "外围人士",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			recruiting: "generic_b_winter",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_b",
-		comments: "This is a legacy element to support older saves.",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_knock",
-		},
-	},
-	{
-		id: "generic_b_edge",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_edge",
-		},
-	},
-	{
-		id: "generic_b_forge",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_forge",
-		},
-	},
-	{
-		id: "generic_b_grail",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_grail",
-		},
-	},
-	{
-		id: "generic_b_heart",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_heart",
-		},
-	},
-	{
-		id: "generic_b_knock",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_knock",
-		},
-	},
-	{
-		id: "generic_b_lantern",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_lantern",
-		},
-	},
-	{
-		id: "generic_b_moth",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_moth",
-		},
-	},
-	{
-		id: "generic_b_winter",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			mortal: "1",
-		},
-		description: "忠诚，但是缺乏主动性。",
-		animFrames: "1",
-		label: "爪牙",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-			promotiontodisciple: "generic_c_winter",
-		},
-	},
-	{
-		id: "generic_c_edge",
-		aspects: 
-		{
-			follower: "1",
-			edge: "2",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "忠诚且肌肉结实。",
-		animFrames: "1",
-		label: "一位强壮的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_c_forge",
-		aspects: 
-		{
-			forge: "2",
-			follower: "1",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "忠诚且善于锻造。",
-		animFrames: "1",
-		label: "一位务实的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_c_grail",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-			grail: "2",
-		},
-		description: "忠诚，然而贪心。",
-		animFrames: "1",
-		label: "一位贪婪的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_c_heart",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-			heart: "2",
-		},
-		description: "忠诚，而且随时准备为大家献歌一曲。",
-		animFrames: "1",
-		label: "一位活泼的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_c_knock",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-			knock: "2",
-		},
-		description: "忠诚，擅长开锁。",
-		animFrames: "1",
-		label: "一位手巧的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "generic_c_lantern",
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-			lantern: "2",
-		},
-		description: "忠诚，而且眼尖目明。",
-		animFrames: "1",
-		label: "一位眼尖的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		aspects: 
-		{
-			follower: "1",
-			edge: "1",
-			moth: "2",
-			disciple: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-		decayTo: "lunatic",
-		label: "一位古怪的门徒",
-		id: "generic_c_moth",
-		lifetime: "600",
-		description: "忠诚，而又古怪。即使在我们之中也算是个怪人。",
-		animFrames: "1",
-	},
-	{
-		id: "generic_c_winter",
-		aspects: 
-		{
-			follower: "1",
-			winter: "2",
-			edge: "1",
-			disciple: "1",
-			mortal: "1",
-		},
-		description: "忠诚，而且如落雪般寂静。",
-		animFrames: "1",
-		label: "一位沉默的门徒",
-		xtriggers: 
-		{
-			rebellion: "generic_r",
-			killmortal: "corpse",
-			capturefollower: "generic_p",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		aspects: 
-		{
-			prisoner: "1",
-			mortal: "1",
-			heart: "3",
-			lantern: "3",
-			grail: "3",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-		decayTo: "corpse",
-		label: "被背叛的追随者",
-		id: "generic_p",
-		lifetime: "600",
-		description: "此人疲弱地控诉着自己的命运。",
-		animFrames: "1",
-	},
-]
-}
+        id: "generic_b",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			comments: "This is a legacy element to support older saves.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+        },
+								 {
+        id: "generic_b_edge",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
+        },
+										 {
+        id: "generic_b_forge",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
+        },
+										 {
+        id: "generic_b_grail",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
+        },
+										 {
+        id: "generic_b_heart",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
+        },
+										 {
+        id: "generic_b_knock",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+        },
+										 {
+        id: "generic_b_lantern",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
+        },
+										 {
+        id: "generic_b_moth",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_moth}
+        },
+										 {
+        id: "generic_b_winter",
+            label: "爪牙",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "忠诚，但是缺乏主动性。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
+        },
+										 {
+        id: "generic_c_edge",
+            label: "一位强壮的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:2},
+            animFrames: 1,
+			description: "忠诚且肌肉结实。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+										 {
+        id: "generic_c_forge",
+            label: "一位务实的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
+            animFrames: 1,
+			description: "忠诚且能干。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+										 {
+        id: "generic_c_grail",
+            label: "一位贪婪的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
+            animFrames: 1,
+			description: "忠诚，然而贪心。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+										 {
+        id: "generic_c_heart",
+            label: "一位活泼的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
+            animFrames: 1,
+			description: "忠诚，而且随时准备为大家献歌一曲。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+								 {
+        id: "generic_c_knock",
+            label: "一位手巧的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
+            animFrames: 1,
+			description: "忠诚，擅长开锁。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+
+										 {
+        id: "generic_c_lantern",
+            label: "一位眼尖的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
+            animFrames: 1,
+			description: "忠诚，而且眼尖目明。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+												 {
+        id: "generic_c_moth",
+            label: "一位古怪的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
+            animFrames: 1,
+			description: "忠诚，而又古怪。即使在我们之中也算是个怪人。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:600,
+			decayTo: lunatic
+        },
+														 {
+        id: "generic_c_winter",
+            label: "一位沉默的门徒",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
+            animFrames: 1,
+			description: "忠诚，而且如落雪般寂静。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
+        },
+
+						 {
+        id: "generic_p",
+            label: "被背叛的追随者",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3},
+            description: "此人疲弱地控诉着自己的命运。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse"
+        },
+
+		]
+};

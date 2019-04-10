@@ -6,7 +6,7 @@
 	label: "Meet Sulochana at the Ecdysis Club",
 	requirements: {locationcabaret:1,sulochana:1},
 	startdescription: "Sulochana Amavasya stands just inside the red-swagged doorway, smoking one of her peculiar imported clove cigarettes, speaking to a lean, very tall sort who might perhaps be Greek. She watches me approach without blinking or changing her expression.",
-	slots:[{id:"Subject",description:"I'm here to talk about...",required:{desire:1}}],
+	slots:[{id:"Subject",label:"Subject",description:"I'm here to talk about...",required:{desire:1}}],
 	description:"'No? Don't waste my time.'",
 	alternativerecipes:[{id:"A_ecdysis_beginheart",chance:100},
 	{id:"A_ecdysis_beginmoth",chance:100},

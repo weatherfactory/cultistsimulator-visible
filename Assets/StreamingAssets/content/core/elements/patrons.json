@@ -8,8 +8,8 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
 unique:true,
 			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
-					slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+					slots: [{id:"Commission",label:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Manuscript",actionId:"talk",required:{article:1}}],
         },
 		 {
         id: "aladimready",
@@ -28,8 +28,8 @@ unique:true,
             description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
 unique:true,
 			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",label:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "bechetready",
@@ -47,8 +47,8 @@ unique:true,
             description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He has offered you a commission",
 unique:true,
 			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",label:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "janningsready",
@@ -95,8 +95,8 @@ icon:"poppyready"
             description: "An amiable woman of property. She has offered you a commission.",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
-				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+				slots: [{id:"Commission",label:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Manuscript",actionId:"talk",required:{article:1}}],
 icon:"poppy"
         },
 		

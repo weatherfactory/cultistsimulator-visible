@@ -110,6 +110,11 @@ namespace Noon
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
 
+		public const string KANIM = "anim";
+		public const string KFLAVOUR = "flavour";
+		public const string KACHIEVEMENT = "achievement";
+
+
         public const string A_ENDING_MAJORFORGEVICTORY = "A_ENDING_MAJORFORGEVICTORY";
         public const string A_ENDING_MAJORGRAILVICTORY = "A_ENDING_MAJORGRAILVICTORY";
         public const string A_ENDING_MAJORLANTERNVICTORY = "A_ENDING_MAJORLANTERNVICTORY";

@@ -176,16 +176,23 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
 		{
-            SetTimerVisibility(true);
+			if (timeRemaining > 0.0f)
+			{
+				SetTimerVisibility(true);
 
-            Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
+				Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
 
-            timeRemaining = Mathf.Max(0f, timeRemaining);
-            countdownBar.color = barColor;
-            countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
-            countdownText.color = barColor;
-			countdownText.text = NoonUtility.MakeTimeString( timeRemaining );
-            countdownText.richText = true;
+				timeRemaining = Mathf.Max(0f, timeRemaining);
+				countdownBar.color = barColor;
+				countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
+				countdownText.color = barColor;
+				countdownText.text = NoonUtility.MakeTimeString( timeRemaining );
+				countdownText.richText = true;
+			}
+			else
+			{
+				SetTimerVisibility(false);
+			}
         }
 
         public Vector3 GetOngoingSlotPosition() {

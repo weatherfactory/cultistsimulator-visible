@@ -17,7 +17,7 @@ warmup:10
 label:"A Chat with Sulochana",
 actionId:"talk",
 requirements:{sulochana:1},
-slots: [{id:"Subject",description:"A topic of conversation"}],
+slots: [{id:"Subject",label:"Subject",description:"A topic of conversation"}],
 startdescription:"@#ascensionlessonhearta|'You want to know more?'
 #ascensionlessonheartb|'You want to know more?'
 #ascensionlessonheartc|'You want to know more?'
@@ -195,7 +195,7 @@ description:"'We always change at the sea first. Kerisham is a good place, these
 label:"Speak to Poppy Lascelles",
 actionId: "talk",
 requirements: {poppyready: 1},
-slots: [{id:"Consent",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
+slots: [{id:"Consent",label:"Consent",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
 alternativerecipes: [{id: "poppyofferaccept",chance:100},
 {id:"poppyofferquery",chance:100}],
 startdescription: "'My dear, I've been wanting to talk to you. Sometimes, I fund scholars of the invisible arts. I'd like to offer you my support. A substantial contribution. And all you need to do, some day, is to introduce me to someone else who'll end matters properly.' She smiles, benignly. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
@@ -242,7 +242,7 @@ warmup:10
 {id:"poppywantssoul",
 label:"A Friendly Visit from Poppy",
 actionId: "poppytime",
-slots: [{id:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+slots: [{id:"Sacrifice",label:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
 alternativerecipes: [{id:"poppysatiated",chance:100}],
 warmup:60,
 signalEndingFlavour:Melancholy,

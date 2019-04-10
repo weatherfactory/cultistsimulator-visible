@@ -16,7 +16,7 @@
 	actionId:"haunting",
 	startdescription: "Your escaped summoning haunts the district, seeking mortals to devour. [The higher the Devourer aspect, the more likely it is to harm a mortal.]",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
+	slots: [{id:"Consuming",label:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"devourer_haunting_mortal_highdevourer",chance:100},
@@ -173,7 +173,7 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	actionId:"haunting",
 	startdescription: "Your escaped summoning haunts you, seeking to drive you to despair -",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: [{id:"Consuming",required: {reason:1},greedy:true}],
+	slots: [{id:"Consuming",label:"Consuming",required: {reason:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"deceiver_haunting_reason_highdeceiver",chance:100},
@@ -244,7 +244,7 @@ linked:[{id:"summoning_haunt_deceiver_derangesreason"}]
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	effects: {notoriety:1},
 	aspects: {derangemortal:1},
-	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
+	slots: [{id:"Consuming",label:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"deceiver_haunting_mortal_highedge",chance:100},

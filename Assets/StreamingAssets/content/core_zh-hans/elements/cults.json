@@ -5,9 +5,9 @@
             label: "辉刃教派",
             aspects:
             {society:1,venerationedge:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk",  required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."}],
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk",  required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"}],
             description: "密教团体，信奉象征抗争与征服的时枢神。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为暗杀者。]",
 			unique:true
         },
@@ -16,9 +16,9 @@
             label: "无畏教团",
             aspects:
             {society:1,venerationforge:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
             description: "密教团体，信奉“变化与重造之火”。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为赋形者。]",
 			unique:true
@@ -28,10 +28,10 @@
             label: "血杯会",
             aspects:
             {society:1,venerationgrail:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
 			
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
 
             description: "密教团体，致力于有关降生，血液和欲望的诸多奥秘。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为引蝶人。]",
@@ -42,10 +42,10 @@
             label: "不休圣堂",
             aspects:
             {society:1,venerationheart:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
 			
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
 
             description: "密教团体，信奉永不停息之鼓声。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为蛊舞者。]",
@@ -56,9 +56,9 @@
             label: "圣伤教会",
             aspects:
             {society:1,venerationknock:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
             description: "密教团体，信奉开启门扉的时枢神。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为灵钥。]",
 				unique:true
@@ -68,22 +68,22 @@
             label: "光界之镜",
             aspects:
             {society:1,venerationlantern:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
 			
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
             description: "密教团体，致力于理解从那狂暴之地泄漏的光芒。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒能够被擢升为门徒；而少数天赋异禀的门徒还能够进一步擢升为预言家。]",
 				unique:true
         },
 		          {
         id: "cultmoth_1",
-            label: "野木社",
+            label: "荒林俱乐部",
             aspects:
             {society:1,venerationmoth:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"
 			}],
             description: "密教团体，信奉混沌，以及难以预测之时枢神。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为易皮师。]",
 				unique:true
@@ -93,9 +93,9 @@
             label: "九头神蛇教会",
             aspects:
             {society:1,venerationedge:1,venerationforge:1,venerationgrail:1,venerationheart:1,venerationlantern:1,venerationknock:1,venerationmoth:1,venerationwinter:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk",  required: {lore:1},description: "For the higher mysteries, deeper oaths are needed."},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."}],
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk",  required: {lore:1},description: "想要触及更高阶的奥秘，必须立下更深刻的誓约。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"}],
             description: "密教团体，致力于研究五支历史线以及它们衍生的数以千计、虚实共存的分支史。[九头神蛇教会的与众不同之处在于，你能够用任何属性擢升信徒，但是却不会出现能够特别擢升的使徒。]",
 				unique:true
         },
@@ -104,9 +104,9 @@
             label: "缄默之子",
             aspects:
             {society:1,venerationwinter:1},
-			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
-			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "想要发展新的信众，我只需要展示一些小小的奥秘即可。而更高级的奥秘，需要立下更深的誓约。"},
-			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Summonings and Tools."}],
+			slots: [{id:"Associate", label:"同盟", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒。"},
+			{id:"Ceremony", label:"仪式", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的神秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
+			{id:"Trappings", label:"诱捕", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "为了这庄重的场合。消耗材料和影响；使用，但不消耗，媒介。"}],
             description: "密教团体，信奉将临之沉默以及终末之寒。[创立教派后，你可以将教徒投入<b>谈话</b>当中，用以招募和擢升追随者，并外派他们执行任务，收集资源。信徒可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为一种致命的静默。]",
 				unique:true
         },

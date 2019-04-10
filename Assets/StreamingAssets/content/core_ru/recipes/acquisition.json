@@ -1,63 +1,157 @@
-﻿ {"recipes": [
-
+﻿{
+recipes: [
+	{
+		linked: 
+		[
+			{
+				id: "auctionfailure",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds.",
+		warmup: "30",
+		slots: 
+		[
+			{
+				id: "Bid",
+				required: 
+				{
+					funds: "1",
+				},
+				label: "Ставка",
+			},
+		],
+		label: "Ставка на аукционе",
+		startdescription: "Лица истощены и стеснены, глаза блестят. Кто сделает ставку? [Предмет на аукционе — справа. Если вы проиграете аукцион, он будет потерян навсегда.]",
+		id: "auctionbuy",
+		actionId: "explore",
+		description: ".",
+		effects: 
 		{
-        id: "auctionbuy",
-        label: "Ставка на аукционе",
-        actionId: "explore",
-		effects: {},
-		slots:[{id:"Bid",label:"Ставка",required: {funds:1}}],
-        startdescription: "Лица истощены и стеснены, глаза блестят. Кто сделает ставку? [Предмет на аукционе — справа. Если вы проиграете аукцион, он будет потерян навсегда.]",
-        description: ".",
-        warmup: 30,
-        craftable: false,
-		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
-		linked:[{id:"auctionfailure",chance:100}],
-		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
-       },
-	   {id: "playerincreasedbid",
-	   actionId:"explore",
-	   label:"Моя ставка!",
-	   requirements:{funds:1},
-	   startdescription: "Моя рука поднята, ставка сделана, аукционист подтверждает её стуком молотка. Ответят ли на неё?",
-	   description:".",
-	   effects:{funds:-1,bid:1},
-	   warmup:0,
-	   linked:[
-	   {id:"auctionsuccess",chance:70},
-	   {id:"auctionbidmatched",chance:100}
-	   ]
-	   },
-	   {id:"auctionbidmatched",
-	   label: "Чужая ставка!",
-	   actionId:"explore",
-	   startdescription:"Кто-то ответил на мою ставку! Нужно либо подкрепить её средствами, либо отказаться от покупки.",
-	   description:".",
-	   slots:[{id:"Bid",label:"Ставка",required: {funds:1}}],
-		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
-		linked:[{id:"auctionfailure",chance:100}],
-		warmup:30
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "playerincreasedbid",
+				chance: "100",
+			},
+		],
 	},
-	   {id:"auctionfailure",
-	   actionId:"explore",
-	   label: "Аукцион проигран",
-	   		effects:{text:-1},
-		aspects: {restore:1},
-		startdescription:".",
-		description:"Аукцион закончен. Книга ушла кому-то ещё. Мне вернули средства.",
-		warmup:0,
-	   },
-	   {
-        id: "auctionsuccess",
-        label: "Победа на аукционе!",
-        actionId: "explore",
-		effects: {funds:-100,bid:-100},
-        startdescription: ".",
-        description: "Аукционист делает пометку у моего имени и даёт знак помощнику. Покупка в моих руках. Надеюсь, она того стоила.",
-        warmup: 0,
-        craftable: false,
-		comments: "The auction item should be inherited from the linking recipe."
-       },
-			
-	
+	{
+		linked: 
+		[
+			{
+				id: "auctionbidmatched.grailapostlepillar3",
+				comment: "NEW",
+			},
+			{
+				id: "auctionsuccess",
+				chance: "70",
+			},
+			{
+				id: "auctionbidmatched",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			funds: "1",
+		},
+		warmup: "0",
+		label: "Моя ставка!",
+		startdescription: "Моя рука поднята, ставка сделана, аукционист подтверждает её стуком молотка. Ответят ли на неё?",
+		id: "playerincreasedbid",
+		actionId: "explore",
+		description: ".",
+		effects: 
+		{
+			funds: "-1",
+			bid: "1",
+		},
+	},
+	{
+		id: "auctionbidmatched.grailapostlepillar3",
+		comment: "NEW",
+		requirements: 
+		{
+			bid: "-6",
+			apostlegrail.pillar3: "1",
+		},
+		linked: 
+		[
+			{
+				id: "auctionbidmatched",
+			},
+		],
+		actionId: "explore",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "auctionfailure",
+				chance: "100",
+			},
+		],
+		warmup: "30",
+		label: "Чужая ставка!",
+		startdescription: "Кто-то ответил на мою ставку! Нужно либо подкрепить её средствами, либо отказаться от покупки.",
+		id: "auctionbidmatched",
+		actionId: "explore",
+		description: ".",
+		slots: 
+		[
+			{
+				id: "Bid",
+				required: 
+				{
+					funds: "1",
+				},
+				label: "Ставка",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "playerincreasedbid",
+				chance: "100",
+			},
+		],
+	},
+	{
+		comments: "Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
+		warmup: "0",
+		aspects: 
+		{
+			restore: "1",
+		},
+		label: "Аукцион проигран",
+		startdescription: ".",
+		id: "auctionfailure",
+		actionId: "explore",
+		description: "Аукцион закончен. Книга ушла кому-то ещё. Мне вернули средства.",
+		effects: 
+		{
+			text: "-1",
+			tool: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		craftable: "false",
+		comments: "The auction item should be inherited from the linking recipe.",
+		warmup: "0",
+		label: "Победа на аукционе!",
+		startdescription: ".",
+		id: "auctionsuccess",
+		actionId: "explore",
+		description: "Аукционист делает пометку у моего имени и даёт знак помощнику. Покупка в моих руках. Надеюсь, она того стоила.",
+		effects: 
+		{
+			funds: "-100",
+			bid: "-100",
+		},
+	},
 ]
 }

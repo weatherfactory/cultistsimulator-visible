@@ -41,7 +41,6 @@ recipes: [
 	},
 	{
 		craftable: "false",
-		comment: "NEW",
 		warmup: "30",
 		label: "The Dark, the Light",
 		startdescription: "Moth finds the light in the dark, and so do I.",
@@ -86,7 +85,6 @@ recipes: [
 		},
 		craftable: "false",
 		comments: "Only triggers if there's already Dread in whatever called this.",
-		comment: "NEW",
 		warmup: "30",
 		label: "Night Terrors",
 		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
@@ -117,7 +115,6 @@ recipes: [
 			fascination: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		warmup: "30",
 		label: "New Colours",
 		startdescription: "I have begun to notice colours in the world for which I have no name.",
@@ -128,6 +125,54 @@ recipes: [
 		{
 			prefascination: "1",
 		},
+	},
+	{
+		id: "poison.notoriety.induction",
+		startdescription: "I've used a follower who's too well-known. The Suppression Bureau may hear of it.",
+		warmup: "30",
+		effects: 
+		{
+			notoriety: "1",
+		},
+		comment: "NEW",
+		label: "The Public Gaze",
+		actionId: "poison.notoriety.induction",
+	},
+	{
+		id: "poison.passion.dread.induction",
+		startdescription: "My passions are poisoned. Each pang of emotion brings an answering pang of savage grey.",
+		warmup: "30",
+		effects: 
+		{
+			dread: "1",
+		},
+		comment: "NEW",
+		label: "The Creeping Colour",
+		actionId: "poison.passion.dread.induction",
+	},
+	{
+		id: "poison.reason.fascination.induction",
+		startdescription: "A candle, when burned, brings light. When my thoughts ignite, what then?",
+		warmup: "30",
+		effects: 
+		{
+			fascination: "1",
+		},
+		comment: "NEW",
+		label: "Relentless Light",
+		actionId: "poison.reason.fascination.induction",
+	},
+	{
+		id: "poison.health.dread.induction",
+		startdescription: "I have invited an old friend to lair in my muscles for one more day.",
+		warmup: "30",
+		effects: 
+		{
+			dread: "1",
+		},
+		comment: "NEW",
+		label: "The Hospitality of Agony",
+		actionId: "poison.health.dread.induction",
 	},
 ]
 }

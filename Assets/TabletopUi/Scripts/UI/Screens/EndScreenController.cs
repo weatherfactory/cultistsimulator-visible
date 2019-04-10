@@ -8,8 +8,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI {
-    public class EndScreenController : MonoBehaviour {
+namespace Assets.CS.TabletopUI
+{
+    public class EndScreenController : MonoBehaviour
+	{
+		// Convenient way to list all the endings for the debug menu
+		enum eEndings
+		{
+			workvictory,
+			deathofthebody,
+
+			maxEndings
+		};
 
         public Image image;
         public TextMeshProUGUI header;
@@ -27,15 +37,21 @@ namespace Assets.CS.TabletopUI {
         protected AudioClip endingMusic;
         
 
-        private void OnEnable() {
+        private void OnEnable()
+		{
             FadeIn(durationFadeIn);
 
             var ending = CrossSceneState.GetCurrentEnding();
 
             if (ending == null)
                 ending = Ending.DefaultEnding();
+			
+			InitEnding( ending );
+		}
 
-            PlayEndingMusic(ending);
+		private void InitEnding( Ending ending )
+		{
+			PlayEndingMusic(ending);
 
             header.text = ending.Title;
             flavor.text = ending.Description;
@@ -49,19 +65,22 @@ namespace Assets.CS.TabletopUI {
             audioSource.PlayOneShot(endingMusic);
         }
 
-        void FadeIn(float duration) {
+        void FadeIn(float duration)
+		{
             blackOverlay.gameObject.SetActive(true);
             blackOverlay.canvasRenderer.SetAlpha(1f);
             blackOverlay.CrossFadeAlpha(0f, duration, false);
         }
 
-        void FadeOut(float duration) {
+        void FadeOut(float duration)
+		{
             blackOverlay.gameObject.SetActive(true);
             blackOverlay.canvasRenderer.SetAlpha(0f);
             blackOverlay.CrossFadeAlpha(1f, duration, false);
         }
 
-        public void ReturnToMenu() {
+        public void ReturnToMenu()
+		{
             if (hasSelected)
                 return;
 
@@ -71,14 +90,16 @@ namespace Assets.CS.TabletopUI {
             Invoke("ReturnToMenuInternal", durationFadeOut);
         }
 
-        private void ReturnToMenuInternal() {
+        private void ReturnToMenuInternal()
+		{
             //save on exit, so the player will return here, not begin a new game
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             saveGameManager.SaveInactiveGame(null);
             SceneManager.LoadScene(SceneNumber.MenuScene);
         }
 
-        public void StartNewGame() {
+        public void StartNewGame()
+		{
             if (hasSelected)
                 return;
 
@@ -91,6 +112,27 @@ namespace Assets.CS.TabletopUI {
         private void StartNewGameInternal() {
             SceneManager.LoadScene(SceneNumber.NewGameScene);
         }
+#if UNITY_EDITOR
+		private void OnGUI()
+		{
+			Rect buttonRect = new Rect(5,5,200,20);
+			var compendium = Registry.Retrieve<ICompendium>();
+			List<Ending> endings = compendium.GetAllEndings();
 
-    }
+			foreach (Ending ending in endings)
+			{
+				if (GUI.Button(buttonRect, ending.Id))
+				{
+					InitEnding( ending );
+				}
+				buttonRect.y += 20.0f;
+				if (buttonRect.y > Screen.height-20)
+				{
+					buttonRect.y = 5;
+					buttonRect.x = Screen.width-205;
+				}
+			}
+		}
+#endif
+	}
 }

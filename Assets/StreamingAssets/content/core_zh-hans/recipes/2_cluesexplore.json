@@ -1,56 +1,42 @@
-﻿{
-recipes: [
-	{
-		id: "explorevault_hint_sending",
-		craftable: "false",
-		startdescription: "If this expedition succeeds, the I-that-is-not-I will be there to perform the Forms. [If you succeed, you'll reap the usual rewards, and also progress your Change ascension.]",
-		requirements: 
-		{
-			sending: "1",
-			vault: "1",
-		},
-		comment: "NEW",
-		label: "A Second Self?",
-		hintonly: "true",
-		actionId: "explore",
+ {"recipes":
+ [
+  					{
+	id: "explorevault_hint_sending",
+	label: "第二个自我？",
+	actionId: "explore",
+	requirements: {vault:1,sending:1},
+	startdescription: "如果这次探索成功，非我之我会代我实现形体。[如果成功，除了收获平常的奖励，还会在转变飞升上更进一步。]",
+	hintonly:true,
+	craftable: false,
 	},
-	{
-		id: "explorevault_hint_addfunds",
-		craftable: "false",
-		startdescription: "如果我投入至少一份金钱，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		requirements: 
-		{
-			follower: "1",
-			vault: "1",
-		},
-		label: "为探险做准备？",
-		hintonly: "true",
-		actionId: "explore",
+     					{
+	id: "explorevault_hint_addfunds",
+	label: "为探险做准备？ ",
+	actionId: "explore",
+	requirements: {vault:1,follower:1},
+	startdescription: "如果我投入至少一份金钱，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	hintonly:true,
+	craftable: false,
 	},
-	{
-		id: "explorevault_hint_addfollower",
-		craftable: "false",
-		startdescription: "如果我派遣至少一位追随者，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		requirements: 
-		{
-			vault: "1",
-			funds: "1",
-		},
-		label: "为探险做准备？",
-		hintonly: "true",
-		actionId: "explore",
+			{
+	id: "explorevault_hint_addfollower",
+	label: "为探险做准备？ ",
+	actionId: "explore",
+	requirements: {vault:1,funds:1},
+	startdescription: "如果我派遣至少一位追随者，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	hintonly:true,
+	craftable: false,
 	},
-	{
-		id: "explorevault_hint",
-		craftable: "false",
-		startdescription: "我能派出一支探险队前往这里寻找书籍、宝藏以及带有力量的媒介。但我需要分配追随者，并且耗费金钱来为他们提供补给。",
-		requirements: 
-		{
-			vault: "1",
-		},
-		label: "为探险做准备？",
-		hintonly: "true",
-		actionId: "explore",
+      					{
+	id: "explorevault_hint",
+	label: "为探险做准备？ ",
+	actionId: "explore",
+	requirements: {vault:1},
+	startdescription: "我能派出一支探险队前往这里寻找书籍、宝藏以及带有力量的媒介。但我需要分配追随者，并且耗费金钱来为他们提供补给。",
+	hintonly:true,
+	craftable: false,
 	},
+	
+	
 ]
 }

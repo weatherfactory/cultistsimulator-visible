@@ -5,7 +5,7 @@
             id: "mystique",
             label: "神秘",
             aspects: {reputation: 1},
-            description: "他们会记住我是谁。 [神秘可能会引起猎人的注意。他们没办法利用它来找到针对你的证据，但这能够促使他们更努力地去寻找。]",
+            description: "违和感残留着。[神秘可能会引起猎人的注意。他们没办法利用它来找到针对你的证据，但这能够促使他们更努力地去寻找。]",
 		lifetime: 300
         },
 							 {
@@ -13,7 +13,7 @@
             label: "邪名",
             aspects:
             {reputation: 2},
-            description: "他们会记住我曾经做过什么。 [邪名可能会让猎人得到足够针对你的证据。]",
+            description: "有些行为没那么容易忘记。[邪名可能会让猎人得到足够针对你的证据。]",
 	lifetime: 300,
 	xtriggers:{scandalous:notoriety}
         },
@@ -21,7 +21,7 @@
             id: "evidence",
 			aspects:{evidencelevel:1},
             label: "不确定的证据",
-            description: "一名猎人发现了我的罪证，或许是真实的，或许是臆造的。 [有了证据的猎人会变得更危险。证据可能会在当初制作它的猎人死后继续留存。]",
+            description: "一名猎人发现了我的罪证，或许是真实的，或许是臆造的。 [有了关于密教活动的证据的猎人会变得更危险。证据可能会在当初制作它的猎人死后继续留存。]",
 						xtriggers:{investigatingsuccess:evidenceb,investigatingsetback:notoriety},
 						lifetime: 600,
 			
@@ -30,7 +30,7 @@
             id: "evidenceb",
 			aspects:{evidencelevel:2},
             label: "确凿证据",
-            description: "“大地，瞪大眼睛看看吧！哦，不，它不让我在此留存。”[掌握了确凿证据后，监管局就能凭之给你定罪。证据可能会在当初发现它的猎人死后继续留存。]",
+            description: "“大地，瞪大眼睛看看吧！哦，不，它不让我在此留存。”[掌握了关于密教活动的确凿证据后，监管局就能凭之给你定罪。证据可能会在当初发现它的猎人死后继续留存。]",
 			xtriggers:{investigatingsetback:evidence},
 			lifetime: 600,
 			decayTo: "evidence"

@@ -1,0 +1,35 @@
+ {"recipes": [
+	
+		 			{
+	
+		id: "explore_vaultfloating1_setup",
+	label: "探险开始：赫柏·斯坦顿号",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultfloating1:1},
+	effects: {guardian_watchers:1,seal_wardeddoor:1,peril_sea:1},
+
+	startdescription: "乘坐客轮来造访这座赫柏·斯坦顿号停靠的阴森小岛是有点怪异的，但是我们可以租一艘渔船，然后相信大海的表现。而当我们上船时，穿过守卫与重重大门的真正工作将会开始。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+
+	{
+	id: "explorevaultfloating1_success",
+	label: "一个舒适的巢",
+	actionId: "explore",
+	requirements: {vaultfloating1:1},
+	effects: {vaultfloating1:-1,ceaselesstantrasanskrit:1,leoninetantrasanskrit:1,incandescenttantrasanskrit:1,	firecircletantrasanskrit:1},
+	startdescription: "船上的乘客很少，这不足为奇，倘若这阴森冰冷的岛屿是这艘船的目的地的话。然而至少有一名乘客不止使用了物理上的锁具来保护他的舱门。他肯定上岸课。他有可能随时返航。",
+	description: "我们清空了行李，倒扣书本抖动它们，翻转图画以查验它们的背面。我们翻过了衣物、票据、地图，而一切如常……尽管仍有那么一个奇妙的半透明的物质，如同一片蛇皮，披在椅背之上。最后，当我们劈开床垫搜寻其中的填充物时，我们找到了一点儿象牙卷轴盒。",
+	warmup:30,
+	craftable: false
+	},
+	
+
+	
+]
+}
+

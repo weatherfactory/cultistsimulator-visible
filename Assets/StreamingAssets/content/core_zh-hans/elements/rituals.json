@@ -5,10 +5,10 @@
             label: "海之宴仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Instrument",actionId: "work",required: {tool:1},description: "使用什么工具?"},
-			{id:"Offering",actionId: "work",required: {ingredient: 1}, consumes: true,description: "我们要放弃什么？"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Instrument",label:"器具",actionId: "work",required: {tool:1},description: "使用什么工具？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {ingredient: 1}, consumes: true,description: "我们要放弃什么？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "这项仪式恳求双生巫女拉近现实与可能性之间的差距。学徒把祭品倾倒或投入水体：最好是，但并不一定要求是，海洋。",
 			unique:true
@@ -18,12 +18,12 @@
             label: "地之疆仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Offering",actionId: "work",required: {influence:1},description: "会消耗什么影响呢？",consumes:true},
-			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "使用什么工具?"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {influence:1},description: "会消耗什么影响呢？",consumes:true},
+			{id:"Instrument",label:"器具",actionId: "work",required: {tool: 1}, description: "使用什么工具？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
-            description: "流浪者是唯一一名从未进入过漫索的时枢神。这个仪式必须在正确的地点和正确的时间进行，流浪者会为了获得这些正确性而降临。",
+            description: "流浪者是唯一一位从未进入过漫索的时枢神。这个仪式必须在正确的地点和正确的时间进行，流浪者会为了获得这些正确性而降临。",
 			unique:true
         },
 	
@@ -33,10 +33,10 @@
 			comments: "endgame rite",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Victim",actionId: "work",required: {follower:1,prisoner:1}, consumes: true, description: "世间一直存在愿意奉献的血。"},
-			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "血将滴落何处？"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Victim",label:"被害者",actionId: "work",required: {follower:1,prisoner:1}, consumes: true, description: "世间一直存在愿意奉献的血。"},
+			{id:"Instrument",label:"器具",actionId: "work",required: {tool: 1}, description: "血将滴落何处？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "这个仪式需要使用有法力的器具点燃鲜血：火焰是这世界表象上的病灶。执行此仪式的助手没有一个可以全身而退。",
 			unique:true
@@ -47,10 +47,10 @@
 			comments: "endgame rite",
             aspects:
             {ritual:1},
-			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, consumes: true, description: "我们会忘记什么？"},
-			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
-			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "使用什么工具?"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Sacrifice",label:"祭品",actionId: "work",required: {lore: 1}, consumes: true, description: "我们会忘记什么？"},
+			{id:"Assistant",label:"助手",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Instrument",label:"器具",actionId: "work",required: {tool: 1}, description: "使用什么工具？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "这个仪式会让守夜人想起失去的东西，他常行走于无墙的居所。（光在前，影在后。别让他看到你。）使用法器召唤他来取走祭品：你思维深处那珍贵的知识。必须有助手吟诵能稳定心智的话语，请选择一个你信任的人。",
 			unique:true
@@ -61,10 +61,10 @@
             label: "奋起仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
-			{id:"Offering",actionId: "work",required: {tool: 1}, consumes: true,description: "我们要放弃什么？"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Assistant",label:"助手",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {tool: 1}, consumes: true,description: "我们要放弃什么？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "这个仪式贯彻了光阴之炉的一项教导：工匠只有摧毁他们最珍视的工具后，才有可能达成最高的成就。当锻狮在上校面前砸碎他的剑的时候，他领悟到了这一点。那么我的助手也必须摧毁一件法器。",
 			unique:true
@@ -75,25 +75,25 @@
             label: "蚁母之悯仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
-			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Assistant",label:"助手",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "助手就是献给蚁母的祭品。蚁母不光擅长毒药，也精于治疗，她非常仁慈，愿意接受更差的祭品作为替代。通常如此。这一经验并不能给助手带来宽慰。",
 			unique:true
         },
 						          {
         id: "riteinfluenceconsumeingredient",
-            label: "海之礼仪式",
+            label: "鸦淬仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Influence",actionId: "work",required: {influence:1},description: "展示什么样的力量？"},
-			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Influence",label:"影响",actionId: "work",required: {influence:1},description: "展示什么样的力量？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
-            description: "这项仪式恳求双生女巫拉近现实与可能性之间的差距。助手将自己作为配偶进献给未知之物：理论上是，但不一定是，海洋。",
+            description: "此仪式于日出或月出时分呼唤滩鸦。滩鸦接受献祭，并返还大地的礼物。",
 			unique:true
         },
 						          {
@@ -101,10 +101,10 @@
             label: "日落仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
-			{id:"Offering",actionId: "work",required: {influence: 1}, consumes:true, description: "要消耗什么影响？"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷",actionId: "work",required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Assistant",label:"助手",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {influence: 1}, consumes:true, description: "要消耗什么影响？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "助手必须基于真实情感嚎啕大哭，泪水挥洒在影响存在的地方。如果一切按计划进行，残阳就会消耗这个影响，告知一种结局，并提供它的帮助。",
 			unique:true
@@ -114,10 +114,10 @@
             label: "兽裂仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Invocation", actionId: "work", required: {lore: 1}, description: "关键词是什么？"},
-			{id:"Victim", actionId: "work",required: {follower:1,prisoner:1},description: "要分割谁？",consumes:true},
-			{id:"Influence", actionId: "work",required: {influence: 1}, description: "展示什么样的力量？"},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Invocation",label:"祈祷", actionId: "work", required: {lore: 1}, description: "关键词是什么？"},
+			{id:"Victim",label:"被害者", actionId: "work",required: {follower:1,prisoner:1},description: "要分割谁？",consumes:true},
+			{id:"Influence",label:"影响", actionId: "work",required: {influence: 1}, description: "展示什么样的力量？"},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
             description: "助手的名字在法力之地或法力之时被夺去；而他也被分割成九个部分。曾经是会像动物般被猎杀，但现在已经不同了。",
 			unique:true
@@ -127,14 +127,14 @@
             label: "化闰仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, description: "将会失去的东西。", consumes:true},
-			{id:"Offering",actionId: "work",required: {follower:1,prisoner:1},description: "将会失去的东西。", consumes:true},
-			{id:"Surrender",actionId: "work",required: {tool: 1}, description: "将会失去的东西。", consumes:true},
-			{id:"Dissolution",actionId: "work",required: {influence: 1}, description: "将会失去的东西。", consumes:true},
-			{id:"Grief",actionId: "work",required: {ingredient: 1}, description: "将会失去的东西。", consumes:true},
-			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经获得了第六印，请将你的飞升卡牌置于此处以完成这项伟业。]"}
+			slots: [{id:"Sacrifice",label:"祭品",actionId: "work",required: {lore: 1}, description: "将会失去的东西。", consumes:true},
+			{id:"Offering",label:"奉纳",actionId: "work",required: {follower:1,prisoner:1,summoned:1},description: "将会失去的东西。", consumes:true},
+			{id:"Surrender",label:"抛却",actionId: "work",required: {tool: 1}, description: "将会失去的东西。", consumes:true},
+			{id:"Dissolution",label:"融解",actionId: "work",required: {influence: 1}, description: "将会失去的东西。", consumes:true},
+			{id:"Grief",label:"悲痛",actionId: "work",required: {ingredient: 1}, description: "将会失去的东西。", consumes:true},
+			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6,promise:1}, description: "我可能会变成什么？[该栏位仅在飞升最终阶段有效。如果你已经达成了第六印记，请将你的飞升卡牌置于此处以完成这项大业。]"}
 			],
-            description: "这个仪式概述了太阳那可憎的命运。在某些极端的时代曾被一些愚蠢的学徒使用过。",
+            description: "这个仪式概述了太阳那可憎的命运。在迫不得已的时候供愚蠢的学徒使用。",
 			unique:true
         },
 

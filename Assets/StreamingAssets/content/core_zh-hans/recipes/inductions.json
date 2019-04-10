@@ -1,133 +1,128 @@
-﻿{
-recipes: [
+ {"recipes": [
 	{
-		craftable: "false",
-		warmup: "30",
-		label: "心之历程",
+        id: "heartinduction",
+        label: "心之历程",
+        actionId: "heartinduction",
+        effects: {previtality:1},
 		startdescription: "每当<b>心</b>之法则显现时，我能获得活力。",
-		id: "heartinduction",
-		actionId: "heartinduction",
-		description: "今天，我的心脏更有力地搏动。",
-		effects: 
+        description: "今天，我的心脏更有力地搏动。",
+        warmup: 30,
+        craftable: false
+    },
 		{
-			previtality: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "颅内之光",
+        id: "lanterninduction",
+        label: "颅内之光",
+        actionId: "lanterninduction",
+        effects: {preerudition:1},
 		startdescription: "每当<b>灯</b>之法则点亮我的头脑时，我也许能想起什么忽略的知识。",
-		id: "lanterninduction",
-		actionId: "lanterninduction",
-		description: "脑海中的杂念一扫而空，至少暂时如此。",
-		effects: 
+        description: "脑海中的杂念一扫而空，至少暂时如此。",
+        warmup: 30,
+        craftable: false
+    },
 		{
-			preerudition: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "陈旧遥远的不快之事",
+        id: "mothinduction",
+        label: "陈旧遥远的不快之事",
+        actionId: "mothinduction",
+        effects: {prerestlessness:1},
 		startdescription: "<b>蛾</b>在黑暗中寻觅光芒，而我亦复如是。",
-		id: "mothinduction",
-		actionId: "mothinduction",
-		description: "我脑海中飘过一丝忧愁。",
-		effects: 
-		{
-			prerestlessness: "1",
-		},
-	},
-	{
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "The Dark, the Light",
-		startdescription: "Moth finds the light in the dark, and so do I.",
-		id: "mothglimmeringinduction",
-		actionId: "mothinduction",
-		description: "What could I be if I could be not this?",
-		effects: 
-		{
-			preglimmering: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "欲望的背后",
+        description: "我脑海中飘过一丝忧愁。",
+        warmup: 30,
+        craftable: false
+    },
+			{
+        id: "mothglimmeringinduction",
+        label: "暗与光",
+        actionId: "mothinduction",
+        effects: {preglimmering:1},
+		startdescription: "<b>蛾</b>在黑暗中寻觅光芒，而我亦复如是。",
+        description: "若不为此，何去何从？",
+        warmup: 30,
+        craftable: false
+    },
+			{
+        id: "grailinduction",
+        label: "欲望的背后",
+        actionId: "grailinduction",
+        effects: {preglimmering:1},
 		startdescription: "我能在满足欲望的过程中学到什么吗？",
-		id: "grailinduction",
-		actionId: "grailinduction",
-		description: "某种类似启蒙的感觉。",
-		effects: 
-		{
-			preglimmering: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "噩梦",
+        description: "某种类似启蒙的感觉。",
+        warmup: 30,
+        craftable: false
+    },
+				{
+        id: "dreadinduction",
+        label: "噩梦",
+        actionId: "dreadinduction",
+        effects: {predread:1},
 		startdescription: "我在半夜惊醒。掌心和脸上都渗出了汗珠。",
-		id: "dreadinduction",
-		actionId: "dreadinduction",
-		description: "慢慢地，我松开了紧紧攥住的拳头。我又回到了睡梦中。但还有东西残留着，就像是房间角落无人注意的蛛网。",
-		effects: 
-		{
-			predread: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			dread: "1",
-		},
-		craftable: "false",
-		comments: "Only triggers if there's already Dread in whatever called this.",
-		comment: "NEW",
-		warmup: "30",
-		label: "Night Terrors",
-		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
-		id: "dreadinduction_ifdread",
-		actionId: "dreadinduction",
-		description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
-		effects: 
-		{
-			predread: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "新的色彩",
+        description: "慢慢地，我松开了紧紧攥住的拳头。我又回到了睡梦中。但还有东西残留着，就像是房间角落无人注意的蛛网。",
+        warmup: 30,
+        craftable: false
+    },
+					{
+        id: "dreadinduction_ifdread",
+        label: "噩梦",
+        actionId: "dreadinduction",
+		requirements:{dread:1},
+        effects: {predread:1},
+		comments:"Only triggers if there's already Dread in whatever called this.",
+		startdescription: "我在半夜惊醒。掌心和脸上都渗出了汗珠。",
+        description: "慢慢地，我松开了紧紧攥住的拳头。我又回到了睡梦中。但还有东西残留着，就像是房间角落无人注意的蛛网。",
+        warmup: 30,
+        craftable: false
+    },
+	
+					{
+        id: "fascinationinduction",
+        label: "新的色彩",
+        actionId: "fascinationinduction",
+        effects: {prefascination:1},
 		startdescription: "我开始留意到世界上那些我并不知道名字的色彩。",
-		id: "fascinationinduction",
-		actionId: "fascinationinduction",
-		description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
-		effects: 
-		{
-			prefascination: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			fascination: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "New Colours",
-		startdescription: "I have begun to notice colours in the world for which I have no name.",
-		id: "fascinationinduction_iffascination",
-		actionId: "fascinationinduction",
-		description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
-		effects: 
-		{
-			prefascination: "1",
-		},
-	},
+        description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
+        warmup: 30,
+        craftable: false
+    },
+						{
+        id: "fascinationinduction_iffascination",
+        label: "新的色彩",
+        actionId: "fascinationinduction",
+		requirements: {fascination:1},
+        effects: {prefascination:1},
+		startdescription: "我开始留意到世界上那些我并不知道名字的色彩。",
+        description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
+        warmup: 30,
+        craftable: false
+    },
+
+
+{id:"poison.notoriety.induction",
+actionId:"poison.notoriety.induction",
+label:"众目睽睽",
+startdescription:"我派遣了一位太过有名的追随者。监管局也许会听闻此事。",
+effects:{notoriety:1},
+warmup:30},
+
+{id:"poison.passion.dread.induction",
+actionId:"poison.passion.dread.induction",
+label:"渗人的颜色",
+startdescription:"我的热情中了毒。每一阵苦痛都会以一种荒芜的灰色之痛作答。",
+effects:{dread:1},
+warmup:30
+},
+{id:"poison.reason.fascination.induction",
+actionId:"poison.reason.fascination.induction",
+label:"不息之光",
+startdescription:"一支蜡烛如果被点燃就会带来光亮。如果我的思绪被点燃，会发生什么呢？",
+effects:{fascination:1},
+warmup:30
+},
+{id:"poison.health.dread.induction",
+actionId:"poison.health.dread.induction",
+label:"欢迎痛楚",
+startdescription:"我邀请了一位老朋友在我的肌骨中再滞留一天。",
+effects:{dread:1},
+warmup:30
+},
+
 ]
 }

@@ -1,0 +1,52 @@
+{
+"recipes": [
+
+
+{id: "health_expel_to_scar",
+label:"健康：疤痕",
+actionId:"scar_ability",
+startdescription:"我的身体正在改变……",
+description:"有些动作会留下更深刻的痕迹。[健康已永久地变成了疤痕。注意：生病与挨饿不能靠疤痕治疗。]",
+requirements:{health:1},
+aspects:{scarability:1},
+warmup:10,
+},
+
+{id: "passion_expel_to_scar",
+label:"热情：疤痕",
+actionId:"scar_ability",
+startdescription:"我的情感改变着我……",
+description:"我的思绪比保险箱还要紧般地禁锢了我的肉体与灵魂。",
+requirements:{passion:1},
+aspects:{scarability:1},
+warmup:10,
+},
+
+{id: "expel_independent",
+label:"安定的不自知",
+actionId:"expel_independent",
+startdescription:"我的对手不可能知道什么等待着他。",
+warmup:1
+},
+
+{id: "expel_corpses",
+label:"脆弱的影子",
+actionId:"expel_corpse",
+requirements:{corpse:1},
+startdescription:"它躺在此处。",
+warmup:1
+},
+
+
+{id: "expel_injury",
+label:"鲜血之路",
+actionId:"expel_injury",
+requirements:{injury:1},
+startdescription:"痛苦是最后的礼物。",
+warmup:1
+},
+
+ 
+
+]
+}

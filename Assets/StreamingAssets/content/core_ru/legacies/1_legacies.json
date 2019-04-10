@@ -1,6 +1,7 @@
 ﻿{
 legacies: [
 	{
+		startingVerbId: "work",
 		effects: 
 		{
 			introjob: "1",
@@ -16,6 +17,7 @@ legacies: [
 		image: "aspirant",
 	},
 	{
+		startingVerbId: "work",
 		effects: 
 		{
 			health: "1",
@@ -30,6 +32,7 @@ legacies: [
 		image: "byt",
 	},
 	{
+		startingVerbId: "work",
 		effects: 
 		{
 			reason: "1",
@@ -44,6 +47,7 @@ legacies: [
 		image: "physician",
 	},
 	{
+		startingVerbId: "work",
 		effects: 
 		{
 			reason: "1",
@@ -59,6 +63,7 @@ legacies: [
 		image: "detective",
 	},
 	{
+		startingVerbId: "work",
 		excludesOnEnding: 
 		[
 				detective,
@@ -78,20 +83,107 @@ legacies: [
 		image: "detective",
 	},
 	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{
-			introjob: "1",
+			health: "2",
+			legacyapostleforgejob: "1",
 		},
 		availableWithoutEndingMatch: "false",
-		label: "Apostle",
-		startdescription: "--",
-		id: "apostle",
-		fromEnding: "_visionsending",
-		description: "--",
-		image: "moth",
+		label: "Apostle Aestuant",
+		startdescription: "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
+		id: "apostleforge",
+		fromEnding: "minorforgevictory",
+		description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
+		image: "apostleforge",
 	},
 	{
+		startingVerbId: "work",
+		comment: "NEW",
+		effects: 
+		{
+			legacyapostlegrailjob: "1",
+			health: "1",
+			passion: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle Obsonate",
+		startdescription: "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
+		id: "apostlegrail",
+		fromEnding: "minorgrailvictory",
+		description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
+		image: "apostlegrail",
+	},
+	{
+		startingVerbId: "work",
+		comment: "NEW",
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacyapostlelanternjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle Entheate",
+		startdescription: "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
+		id: "apostlelantern",
+		fromEnding: "minorlanternvictory",
+		description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
+		image: "apostlelantern",
+	},
+	{
+		startingVerbId: "work",
+		comment: "NEW",
+		effects: 
+		{
+			health: "2",
+			legacyapostleforgejob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle Aestuant",
+		startdescription: "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
+		id: "apostleforgewithrisen",
+		fromEnding: "minorforgevictorywithrisen",
+		description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
+		image: "apostleforge",
+	},
+	{
+		startingVerbId: "work",
+		comment: "NEW",
+		effects: 
+		{
+			legacyapostlegrailjob: "1",
+			health: "1",
+			passion: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle Obsonate",
+		startdescription: "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
+		id: "apostlegrailwithrisen",
+		fromEnding: "minorgrailvictorywithrisen",
+		description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
+		image: "apostlegrail",
+	},
+	{
+		startingVerbId: "work",
+		comment: "NEW",
+		effects: 
+		{
+			reason: "1",
+			health: "1",
+			legacyapostlelanternjob: "1",
+		},
+		availableWithoutEndingMatch: "false",
+		label: "Apostle Entheate",
+		startdescription: "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
+		id: "apostlelanternwithrisen",
+		fromEnding: "minorlanternvictorywithrisen",
+		description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
+		image: "apostlelantern",
+	},
+	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{
@@ -106,6 +198,7 @@ legacies: [
 		image: "moth",
 	},
 	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{
@@ -120,6 +213,7 @@ legacies: [
 		image: "moth",
 	},
 	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{
@@ -134,6 +228,7 @@ legacies: [
 		image: "moth",
 	},
 	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{
@@ -148,48 +243,7 @@ legacies: [
 		image: "moth",
 	},
 	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "vessel",
-		fromEnding: "_minorlanternvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "tainted",
-		fromEnding: "_minorgrailvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "shaped",
-		fromEnding: "_minorforgevictory",
-		description: "--",
-		image: "moth",
-	},
-	{
+		startingVerbId: "work",
 		comment: "NEW",
 		effects: 
 		{

@@ -1,362 +1,198 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			vaultcontinent1: "1",
-			funds: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "探险开始：拉维林城堡",
-		startdescription: "拉维林伯爵的城堡偏远而破败，早已经历过掠夺。然而我们找到证据，那里尚未被洗劫一空。那里也许有个秘密房间。与此相对，那里也许存在着诅咒。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		id: "explore_vaultcontinent1_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			curse_dread: "1",
-			seal_hiddendoor: "1",
-		},
+ {"recipes": [
+	
+			 	{
+	id: "explore_vaultcontinent1_setup",
+	label: "探险开始：拉维林城堡",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent1:1},
+	effects: {seal_hiddendoor:1,curse_dread:1},
+
+	startdescription: "拉维林伯爵的城堡偏远而破败，早已经历过掠夺。然而我们找到证据，那里尚未被洗劫一空。那里也许有个秘密房间。与此相对，那里也许存在着诅咒。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent2: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "探险开始：费米尔修道院",
-		startdescription: "费米尔修道院，深藏于森林之中，宛如被塞入绿色外袍中偷运的珠宝盒。纵使我们设法穿越了森林，我们仍然得面对僧众。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		id: "explore_vaultcontinent2_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_monks: "1",
-			peril_forest: "1",
-		},
+	
+{
+	id: "explore_vaultcontinent2_setup",
+	label: "探险开始：费米尔修道院",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent2:1},
+	effects: {peril_forest:1,guardian_monks:1},
+
+	startdescription: "费米尔修道院，深藏于森林之中，宛如被塞入绿色外袍中偷运的珠宝盒。纵使我们设法穿越了森林，我们仍然得面对僧众。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent3: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "探险开始：俄耳托斯树林",
-		startdescription: "在黑暗的俄耳托斯树林的中心，我们也许能找到那棵戴面具的乌鸦与它的党徒用以会面的树木。但树林本身就是险境，居住其中的食人部落则是另外个危险因素。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		id: "explore_vaultcontinent3_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "1",
-			peril_forest: "1",
-		},
+				 	{
+	id: "explore_vaultcontinent3_setup",
+	label: "探险开始：俄耳托斯树林",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent3:1},
+	effects: {peril_forest:1,guardian_watchers:1},
+
+	startdescription: "在黑暗的俄耳托斯树林的中心，我们也许能找到那棵戴面具的乌鸦与它的党徒用以会面的树木。但树林本身就是险境，居住其中的食人部落则是另外个危险因素。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent4: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "探险开始：范德沙夫收藏馆",
-		startdescription: "通往范德沙夫收藏馆绘彩室的大门紧锁，守卫重重。并且那幢建筑据说有“花影作祟”。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		id: "explore_vaultcontinent4_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			curse_visions: "1",
-			seal_wardeddoor: "1",
-		},
+				 	{
+	id: "explore_vaultcontinent4_setup",
+	label: "探险开始：范德沙夫收藏馆",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent4:1},
+	effects: {seal_wardeddoor:1,curse_visions:1},
+
+	startdescription: "通往范德沙夫收藏馆绘彩室的大门紧锁，守卫重重。并且那幢建筑据说有“花影作祟”。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	{
-		linked: 
-		[
+	
+	
+	
 			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent5: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "30",
-		label: "Beginning an Expedition: Forman House",
-		startdescription: "Unquestionably, this bleak mansion is haunted. The last visitor saw and fled the dead before they could touch him with their fraying hands. The visitor before that claimed she saw nothing, but she died of despair exactly one year later to the day. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	
 		id: "explore_vaultcontinent5_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_dead: "1",
-			curse_dread: "1",
-		},
-	},
+	label: "探险开始：福曼之屋",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent5:1},
+	effects: {guardian_dead:1,curse_dread:1},
+
+	startdescription: "毫无疑问，昏暗的宅邸闹鬼了。最后一位到访者看见了死者，并在它们用那锐利的双手触碰到她之前逃走了。到访者先前声称她什么也没看到，但在那天的一年后，她便死于绝望。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
 	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent6: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "30",
-		label: "Beginning an Expedition: the Key-Hunter's Garret",
-		startdescription: "Once in Vienna, we hear that the key-hunter has not been seen for many days. A local drunk insists that a great serpent entered the house to devour them. Certainly, the house is unlit and boarded up, and there is a reptile-house smell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	
 		id: "explore_vaultcontinent6_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_serpent: "1",
-			seal_hiddendoor: "1",
-		},
+	label: "探险开始:钥匙猎人的阁楼",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent6:1},
+	effects: {guardian_serpent:1,seal_hiddendoor:1},
+	startdescription: "曾经在维也纳，我们听说钥匙猎人已经多天未出现在人们的视线里。一个当地的醉汉坚称一条大毒蛇潜进房子把他给吞了。可以肯定的是，房子被木板围住，周围毫无亮光，有一种爬虫屋的味道。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [{id: "explorevault_expeditionbegun",chance:100}],
+	},	
+
+	
+				 	{
+	id: "explore_vaultcontinentdefault_setup",
+	label: "探险开始：一望无际的巨石阵",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinentdefault:1},
+	effects: {peril_forest:1,seal_hiddendoor:1,guardian_watchers:1},
+	startdescription: "前来拜访石岗的寻宝者必须穿越隐藏着石岗的森林；和崇敬石岗的土著格斗；最后即使发现了暗门，仍需为挖掘做好准备。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	{
-		linked: 
-		[
+					{
+	id: "explorevaultcontinent1_success",
+	label: "童年的结束",
+	actionId: "explore",
+	requirements: {vaultcontinent1:1},
+	effects: {vaultcontinent1:-1,ingredientwinterb:1,toolforgeb:1,highmysterieschurchsolarfucine:1,bookoftruebloodlatin:1,morphycodexaramaic:1},
+	startdescription: "在一幅破败的描绘着狼群猎杀人类的挂毯背后，是一堵镶板墙。在镶板墙之中，隐藏着一扇门。弹簧失踪已久，这丝毫不让人意外。我们不得不用锤子砸门而入。",
+	description: "拉维林伯爵最后的宝藏位于此处，在一个空气出乎意料地流通的房间里。高处的天窗早已破损，地板被树叶和碎片所掩埋，但这个地方曾被布置成育婴室。 这里有一个摇篮，里面放着小狗的骨骸。",
+	warmup:30,
+	craftable: false
+	},
+	
 			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinentdefault: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "探险开始：一望无际的巨石阵",
-		startdescription: "前来拜访石岗的寻宝者必须穿越隐藏着石岗的森林；和崇敬石岗的土著格斗；最后即使发现了暗门，仍需为挖掘做好准备。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
-		id: "explore_vaultcontinentdefault_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "1",
-			seal_hiddendoor: "1",
-			peril_forest: "1",
-		},
+	id: "explorevaultcontinent2_success",
+	label: "枝干之下",
+	actionId: "explore",
+	requirements: {vaultcontinent2:1},
+	effects: {vaultcontinent2:-1,againstsisterhoodknotgreek:1,ingredientheartb:1,thirstingtantrasanskrit:1,dehoris2latin:1,tantrawormssanskrit:1,textbookaramaic:1},
+	startdescription: "我们摆脱了僧侣和他们的不幸。在他们的礼拜堂的庭院中，一棵巨大的红豆杉矗立在花岗岩祭坛旁生长着，宛如石棺盖。里面有什么？",
+	description: "祭坛内部装满了损毁的杯子，每只都涂成了红色，每只都绘有丑恶的涂鸦，或者其他污秽的图案。这些僧侣必定进行过令人憎恶的庞大仪式，保留了残余部分作为战利品。而别的宝藏被埋藏在杯子的残骸中。",
+	warmup:30,
+	craftable: false
 	},
-	{
-		requirements: 
-		{
-			vaultcontinent1: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "童年的结束",
-		startdescription: "在一幅破败的描绘着狼群猎杀人类的挂毯背后，是一堵镶板墙。在镶板墙之中，隐藏着一扇门。弹簧失踪已久，这丝毫不让人意外。我们不得不用锤子砸门而入。",
-		id: "explorevaultcontinent1_success",
-		actionId: "explore",
-		description: "拉维林伯爵最后的宝藏位于此处，在一个空气出乎意料地流通的房间里。高处的天窗早已破损，地板被树叶和碎片所掩埋，但这个地方曾被布置成育婴室。 这里有一个摇篮，里面放着小狗的骨骸。",
-		effects: 
-		{
-			morphycodexaramaic: "1",
-			bookoftruebloodlatin: "1",
-			vaultcontinent1: "-1",
-			highmysterieschurchsolarfucine: "1",
-			ingredientwinterb: "1",
-			toolforgeb: "1",
-		},
+	
+	
+				{
+	id: "explorevaultcontinent3_success",
+	label: "群鸦记忆",
+	actionId: "explore",
+	requirements: {vaultcontinent3:1},
+	effects: {vaultcontinent3:-1,ingredientmothd:1,toolgrailmoth:1,toolmothd:1,inthemountainsasupontheplainvak:1},
+	startdescription: "这是面具乌鸦曾栖息的大橡树。它被闪电纵向劈开，焦黑腐烂。其上爬满了手指长度的虫子。在死亡的树根堆中有什么东西微微闪光。",
+	description: "树根盘绕着一个孩子大小的铅蛋。 也许它曾被镀上另一种金属，但风吹雨打已经抹消了所有涂抹的痕迹。 经过一番努力后，蛋一分为二，显露出内部。",
+	warmup:30,
+	craftable: false
 	},
-	{
-		requirements: 
-		{
-			vaultcontinent2: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "枝干之下",
-		startdescription: "我们摆脱了僧侣和他们的不幸。在他们的礼拜堂的庭院中，一棵巨大的红豆杉矗立在花岗岩祭坛旁生长着，宛如石棺盖。里面有什么？",
-		id: "explorevaultcontinent2_success",
-		actionId: "explore",
-		description: "祭坛内部装满了损毁的杯子，每只都涂成了红色，每只都绘有丑恶的涂鸦，或者其他污秽的图案。这些僧侣必定进行过令人憎恶的庞大仪式，保留了残余部分作为战利品。而别的宝藏被埋藏在杯子的残骸中。",
-		effects: 
-		{
-			ingredientheartb: "1",
-			textbookaramaic: "1",
-			tantrawormssanskrit: "1",
-			vaultcontinent2: "-1",
-			dehoris2latin: "1",
-			againstsisterhoodknotgreek: "1",
-			thirstingtantrasanskrit: "1",
-		},
+	
+	
+				{
+	id: "explorevaultcontinent4_success",
+	label: "绘厅之中",
+	actionId: "explore",
+	requirements: {vaultcontinent4:1},
+	effects: {vaultcontinent4:-1,toolsecrethistoriesb:1,jumble:1,influencemothc:1,watchfultantrasanskrit:1,vinzantinscriptionsphrygian:1,geminiadfucine:1,textbookaramaic:1},
+	startdescription: "绘厅的墙上绘有所有重大历史战争的场景：虫攻陷维也纳，受缚之火的主宰焚烧结绳姐妹会殉道的战士，亚历山大与无影之王的会晤。一面墙上靠立着一个架子，堆满了垃圾和古董。",
+	description: "一本关于标本花的书籍，散发着异香； 三位上了年纪的贝德克尔家族成员; 被涂成黑白两色蝴蝶藏品；最后是真正的宝藏。 一个装在玻璃箱中的罕见之物和装在景泰蓝保险箱中的奇书。",
+	warmup:30,
+	craftable: false
 	},
-	{
-		requirements: 
+	
 		{
-			vaultcontinent3: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "群鸦记忆",
-		startdescription: "这是面具乌鸦曾栖息的大橡树。它被闪电纵向劈开，焦黑腐烂。其上爬满了手指长度的虫子。在死亡的树根堆中有什么东西微微闪光。",
-		id: "explorevaultcontinent3_success",
-		actionId: "explore",
-		description: "树根盘绕着一个孩子大小的铅蛋。 也许它曾被镀上另一种金属，但风吹雨打已经抹消了所有涂抹的痕迹。 经过一番努力后，蛋一分为二，显露出内部。",
-		effects: 
-		{
-			toolgrailmoth: "1",
-			ingredientmothd: "1",
-			inthemountainsasupontheplainvak: "1",
-			vaultcontinent3: "-1",
-			toolmothd: "1",
-		},
+	id: "explorevaultcontinent5_success",
+	label: "石膏模型",
+	actionId: "explore",
+	requirements: {vaultcontinent5:1},
+	effects: {vaultcontinent5:-1,devouredtantrasanskrit:1,worlddoesnotweeparamaic:1,deedsofthescarredcaptaingreek:1,matthiasamethysttransformationaramaic:1},
+	startdescription: "远望着破旧温室的阴冷玻璃的房间里，黄灰色的扭曲形状犹如蛆虫躺靠在木板上。这些是福曼通过他研究过的生物，用那些可怜栖息灵魂制作的石膏模型。在其中的一些模型中，可以看到在相关表面有很大的进入通道。其他模型的话，我们可以假设能通过耳朵或嘴或身体其他部位进入这些生物。",
+	description: "房间空荡荡的。但在最后，我们偶然打破其中的一个模型，并在什么东西的泛黄的肠肚发现了福曼存放的镇馆之宝。",
+	warmup:30,
+	craftable: false
 	},
-	{
-		requirements: 
-		{
-			vaultcontinent4: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "绘厅之中",
-		startdescription: "绘厅的墙上绘有所有重大历史战争的场景：虫攻陷维也纳，受缚之火的主宰焚烧结绳姐妹会殉道的战士，亚历山大与无影之王的会晤。一面墙上靠立着一个架子，堆满了垃圾和古董。",
-		id: "explorevaultcontinent4_success",
-		actionId: "explore",
-		description: "一本关于标本花的书籍，散发着异香； 三位上了年纪的贝德克尔家族成员; 被涂成黑白两色蝴蝶藏品；最后是真正的宝藏。 一个装在玻璃箱中的罕见之物和装在景泰蓝保险箱中的古董。",
-		effects: 
-		{
-			watchfultantrasanskrit: "1",
-			vinzantinscriptionsphrygian: "1",
-			textbookaramaic: "1",
-			toolsecrethistoriesb: "1",
-			influencemothc: "1",
-			jumble: "1",
-			vaultcontinent4: "-1",
-			geminiadfucine: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent5: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "The Casts",
-		startdescription: "In the room that overlooks the grimy glass of the broken conservatory, twisted shapes yellow-pale as maggots recline on slabs of wood. These are the plaster-casts that Forman made of the poor souls inhabited by the creatures he studied. In some of the figures, the entry-holes are visible in the relevant surface. In others, we might assume the creatures entered by ear, or mouth, or elsewhere. ",
-		id: "explorevaultcontinent5_success",
-		actionId: "explore",
-		description: "The room is empty. But at last, when we chance to break one of the casts, we find Forman's library-treasures, cached in the figure's yellowing abdomen.",
-		effects: 
-		{
-			worlddoesnotweeparamaic: "1",
-			devouredtantrasanskrit: "1",
-			deedsofthescarredcaptaingreek: "1",
-			vaultcontinent5: "-1",
-			matthiasamethysttransformationaramaic: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent6: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "Ashes Above",
-		startdescription: "The room stinks of serpent-musk and burnt paper. Someone has comprehensively destroyed all the records they could find. They've even scrubbed the walls clean. Cold ashes choke the fireplace. No trace of the poor soul who rented this place remains.",
-		id: "explorevaultcontinent6_success",
-		actionId: "explore",
-		description: "A single corner of fire-curled paper has survived the flames. In a shaky hand, it reads: 'Lady K. Green Chalcedony. Three-lobed. Spring leaves in fi -' But, unexpectedly,in a suitcase beside the flames, a little trove of books survives. Whoeer destroyed the key-hunter's journals saw no need to burn these books.",
-		effects: 
-		{
-			irreproachabletraditionssocietynobleendeavourlatin: "1",
-			serenityofblackwoodgreek: "1",
-			onthematterandthedeedsofserpentsvak: "1",
-			textbookfucinelatin: "1",
-			vaultcontinent6: "-1",
-		},
-	},
-	{
-		linked: 
-		[
+	
 			{
-				id: "expeditionascensionheartc",
-				chance: "100",
-			},
-			{
-				id: "expeditionascensionmothc",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			vaultcontinentdefault: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "石之下",
-		startdescription: "月光将草地漂染成冬天的颜色。环顾四周，石岗隐约可见。在草地下面的古墓中，有一块石头会像陷门一样升降。我们必须紧紧背靠着它。",
-		id: "explorevaultcontinentdefault_success",
-		actionId: "explore",
-		deckeffect: 
-		{
-			vaultrewardsc: "3",
-		},
-		description: "岁月让古墓里的空间坍塌了一半。肥胖的白色蜘蛛从我们的灯光边缘缓缓爬处，缓慢得近乎傲慢。画像砖开裂，碎屑不断落下。但这里仍然有着用以供奉的孔洞，装着宝藏。",
-		effects: 
-		{
-			vaultcontinentdefault: "-1",
-		},
+	id: "explorevaultcontinent6_success",
+	label: "灰烬之上",
+	actionId: "explore",
+	requirements: {vaultcontinent6:1},
+	effects: {vaultcontinent6:-1,onthematterandthedeedsofserpentsvak:1,irreproachabletraditionssocietynobleendeavourlatin:1,textbookfucinelatin:1,serenityofblackwoodgreek:1},
+	startdescription: "房间散发着毒蛇麝香和烧焦纸张的气味。某人彻底破坏了所有他能够找到的记录。他甚至将墙壁清洗干净。冰冷的灰烬堆积在壁炉里。没有留下一丝关于租借在这里的可怜人的痕迹。",
+	description: "被火烧得弯曲的纸张的一角在火焰中幸存了下来。上面颤抖的字迹写道：“K.绿玉髓夫人。化成三瓣。春叶于——”但出乎意料的是，在火焰旁一角的一个手提箱里面，有一小堆书幸免保留了下来。那位摧毁了钥匙猎人的日志的人，也觉得没必要烧掉这些书籍。",
+	warmup:30,
+	craftable: false
 	},
+	
+	
+				{
+	id: "explorevaultcontinentdefault_success",
+	label: "石之下",
+	actionId: "explore",
+	requirements: {vaultcontinentdefault:1},
+	effects: {vaultcontinentdefault:-1},
+	deckeffect: {"vaultrewardsc":3},
+	startdescription: "月光将草地漂染成冬天的颜色。环顾四周，石岗隐约可见。在草地下面的古墓中，有一块石头会像陷门一样升降。我们必须紧紧背靠着它。",
+	description: "岁月让古墓里的空间坍塌了一半。肥胖的白色蜘蛛从我们的灯光边缘缓缓爬处，缓慢得近乎傲慢。画像砖开裂，碎屑不断落下。但这里仍然有着用以供奉的孔洞，装着宝藏。",
+	warmup:30,
+	craftable: false,
+	linked:[			{id: "expeditionascensionheartc",chance:100},
+			{id: "expeditionascensionmothc",chance:100}]
+	},
+	
 ]
 }
+

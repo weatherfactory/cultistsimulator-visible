@@ -1,0 +1,278 @@
+ {"recipes": [
+	{
+        id: "scheme_murderhunter",
+        label: "酝酿中的谋杀猎人的计划",
+        actionId: "scheme",
+    requirements:{schememurder:1},
+   effects:{},
+   startdescription:"有个对手想要猎人的命。我也许能利用这一点……但这也可能引起注意。",
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"scheme_murderhunter_grab",chance:100}]
+    },
+	
+		{
+        id: "scheme_murderhunter_grab",
+        label: "酝酿中的谋杀猎人的计划",
+        actionId: "scheme",
+		slots:[{id:"victim",label:"被害者",greedy:true,required:{hunter:1}}],
+    
+   effects:{},
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"scheme_murderhunter_success",chance:30},
+		{id:"scheme_murderhunter_failure",chance:100},
+		{id:"scheme_murderhunter_nohunterfound",chance:100}]
+    },
+	
+	{
+        id: "scheme_murderhunter_success",
+        label: "有人干掉了猎人！",
+        actionId: "scheme",
+		requirements:{hunter:1},
+    aspects:{killhunter:1},
+	   effects:{notoriety:1},
+   startdescription:"我也许可以喘口气了——但监管局最终可能会因此找上门来。",
+        warmup:5,
+        craftable: false
+    },
+	
+		
+	{
+        id: "scheme_murderhunter_failure",
+        label: "有人谋杀猎人的尝试失败了！",
+        actionId: "scheme",
+    requirements:{hunter:1},
+   effects:{notoriety:1},
+   startdescription:"监管局最终可能会因此找上门来。",
+        warmup: 5,
+        craftable: false
+    },
+	
+		{
+        id: "scheme_murderhunter_nohunterfound",
+        label: "谋杀猎人的计划无果而终。",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"这或许是最好的结果。",
+        warmup: 60,
+        craftable: false
+    },
+	
+					{
+        id: "scheme_expedition_debug",
+        label: "FORCE EXP START",
+        actionId: "scheme",
+    	slots:[{id:"target",label:"Actor",required:{independent:1}}],
+
+        warmup: 30,
+        craftable: false,
+		linked: [{chance:100,id:"scheme_expedition_grab"}]
+    },
+	
+				{
+        id: "scheme_expedition_grab",
+        label: "对手正在筹备一场探险……",
+        actionId: "scheme",
+		requirements:{schemeexpedition:1},
+    	slots:[{id:"target",label:"目标",greedy:true,required:{vault:1}}],
+   effects:{},
+   startdescription:"对手正在为飞升寻找工具与知识。",
+        warmup: 60,
+        craftable: false,
+		linked: [{id:"scheme_expedition_prep",chance:100}]
+    },
+	
+					{
+        id: "scheme_expedition_prep",
+        label: "使用圈套的机会",
+        actionId: "scheme",
+    slots:[{id:"snare",label:"伏击",required:{snare:1}}],
+requirements:{vault:1},
+   startdescription:"如果设下圈套，我就能设法伏击对手，阻止其探险，甚至将其重创……",
+        warmup: 60,
+        craftable: false,
+		linked:[{chance:100,id:"scheme_expedition_snare_great"},
+		{chance:100,id:"scheme_expedition_snare_good"},
+		{chance:100,id:"scheme_expedition_snare_poor"},
+		{chance:100,id:"scheme_expedition_snare_rubbish"},
+		{chance:70,id:"scheme_expedition_success"},
+		{chance:100,id:"scheme_expedition_failure"}],
+    },
+	{id:"scheme_expedition_snare_great",
+	actionId:"scheme",
+	requirements:{snarelevel:4},
+	linked:[{id:"scheme_expedition_snare_success",chance:90},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_good",
+	actionId:"scheme",
+	requirements:{snarelevel:3},
+	linked:[{id:"scheme_expedition_snare_success",chance:70},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_poor",
+	actionId:"scheme",
+	requirements:{snarelevel:2},
+	linked:[{id:"scheme_expedition_snare_success",chance:30},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_rubbish",
+	actionId:"scheme",
+	requirements:{snarelevel:1},
+	linked:[{id:"scheme_expedition_snare_success",chance:10},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+	
+	{
+        id: "scheme_expedition_snare_success",
+        label: "我们的圈套奏效了！",
+        actionId: "scheme",
+		   			effects:{snare:-1},
+   startdescription:"对手落入了我们的圈套！他会尝试撤退，好自舔伤口。",
+      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
+        warmup: 5,
+        craftable: false,
+		linked:[{id:"independent_scar",chance:100}]
+    },
+
+{
+        id: "scheme_expedition_snare_failure",
+        label: "我们的圈套失败了！",
+        actionId: "scheme",
+
+   startdescription:"对手避开了我们的圈套……",
+   mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],
+   			effects:{snare:-1},
+        warmup: 5,
+        craftable: false,
+		linked:[{id:"scheme_expedition_success",chance:70},
+		{id:"scheme_expedition_failure",chance:100},]
+    },
+	
+					{
+        id: "scheme_expedition_success",
+        label: "对手洗劫了这里……",
+        actionId: "scheme",
+    requirements:{vault:1},
+   effects:{vault:-1},
+   startdescription:"无论他来这的目的是什么，他如愿以偿了。",
+        warmup: 5,
+        craftable: false,
+		linked:[{id:"scheme_promotion",chance:100}]
+    },
+	
+						{
+        id: "scheme_expedition_failure",
+        label: "对手的探险失败了。",
+        actionId: "scheme",
+      requirements:{vault:1},
+   effects:{},
+   startdescription:"无论他来这的目的是什么，他没能如愿。他已经放弃了这次探索……至少现在是这样。",
+        warmup: 5,
+        craftable: false
+    },
+	{
+        id: "scheme_activities",
+        label: "有对手正在暗中行动。",
+        actionId: "scheme",
+    requirements:{schemeactivities:1},
+   effects:{mystique:1},
+   startdescription:"他仍旧潜伏着。他想要的究竟是什么？[这种状况几乎总是无疾而终，但有时，某个对手的力量会在暗中增长。试着空置一处探险地点来引蛇出洞。]",
+   description:"对手搞了一些小破坏，这可能会引起监管局的注意。",
+   alternativerecipes:[{id:"scheme_calm",chance:10},
+   {id:"scheme_promotion",chance:11}],
+        warmup: 60,
+        craftable: false
+    },
+					{
+        id: "scheme_calm",
+        label: "对手的语气软化了。",
+        actionId: "scheme",
+   effects:{influenceheartc:1},
+   description:"对手的礼数十分周全：我收到了一封措辞客气、彬彬有礼的信件，尽管信中所谈无足轻重……但某一天，我们双方或许会有联手的机会？[对手的怨恨偶尔会减轻。]",
+         mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:-1,additive:true}],
+        warmup: 60,
+        craftable: false
+    },
+		
+				{
+        id: "scheme_promotion",
+        label: "对手的事业取得了进展。",
+        actionId: "scheme",
+    alternativerecipes:[{chance:100,id:"scheme_promotion_ascension"}],
+   effects:{mystique:1},
+   aspects:{rival_promotion:1},
+   description:"对手取得了更多的知识、宝藏、人脉……这些使得他变得更为强大了。",
+        warmup: 60,
+        craftable: false
+    },
+	
+					{
+        id: "scheme_promotion_ascension",
+        label: "对手奋力穿过三尖之门，并成为了更强大的存在。",
+        actionId: "scheme",
+    requirements:{exalted:1},
+   effects:{mystique:1},
+   startdescription:"他离目标又近了一步，在日之居所的体系中又升了一级。[当心：一旦你的对手飞升到第七级，他就会先你一步获胜。]",
+   mutations:[{filterOnAspectId:independent,mutateAspectId:rivalmarks,mutationLevel:1,additive:true}],
+        warmup: 60,
+        craftable: false
+    },
+	
+	
+	{id:"independent_scar",
+label:"对手受伤了",
+startdescription:"对手惨遭不幸。失败给他留下了伤痕；他会记恨我的。[三道同样的伤痕会杀死凡人。]",
+actionId:"scheme",
+linked:[{id:"independent_givescar_edge",chance:30},
+{id:"independent_givescar_knock",chance:50},
+{id:"independent_givescar_winter",chance:100}]
+},
+{id:"independent_givescar_edge",
+actionId:"scheme",
+label:"对手败退",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_edge,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:edge,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_edge",chance:100}]
+},
+
+{id:"independent_givescar_knock",
+label:"对手败退",
+actionId:"scheme",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_knock,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:knock,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_knock",chance:100}]
+},
+{id:"independent_givescar_winter",
+actionId:"scheme",
+label:"对手败退",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_winter,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:winter,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_winter",chance:100}]
+},
+{id:"independent_deathscar_edge",
+actionId:"scheme",
+label:"死亡：一次失败",
+requirements:{follower_scar_edge:3},
+description:"我们在此人的身上看到了勇气与韧性。但到最后，这些都不够。[你的对手落下了三道<b>刃</b>痕，命丧黄泉。]",
+aspects:{killmortal:1}
+},
+{id:"independent_deathscar_knock",
+actionId:"scheme",
+label:"死亡：一处开口",
+requirements:{follower_scar_knock:3},
+description:"为了有效地运转，人必须把内部的事物藏在内部，并阻碍外部的事物入侵内部。当人的内部之物流泻到外部到一定程度时，人就不再运转了。[你的对手落下了三道<b>启</b>痕，命丧黄泉。]",
+aspects:{killmortal:1}
+},
+{id:"independent_deathscar_winter",
+actionId:"scheme",
+label:"死亡：一幕结局",
+requirements:{follower_scar_winter:3},
+description:"落雪如羽。残阳是光的污迹。[你的对手落下了三道<b>冬</b>痕，命丧黄泉。]",
+aspects:{killmortal:1}
+},
+
+]
+}

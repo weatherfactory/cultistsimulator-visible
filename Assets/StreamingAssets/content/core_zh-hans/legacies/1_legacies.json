@@ -1,205 +1,174 @@
-﻿{
-legacies: [
-	{
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "初出茅庐",
-		startdescription: "孤身踏入这个寒风彻骨的城市，带着我一文不值的文凭和梦想。现在呢？我能否过上不一样的人生？",
-		id: "aspirant",
-		fromEnding: "default",
-		description: "6月28日，轮回再启。",
-		image: "aspirant",
-	},
-	{
-		effects: 
-		{
-			health: "1",
-			legacybytjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "富家子弟",
-		startdescription: "我又睡过了晨曦微露的清晨。我向来如此。反正明天还会有新的清晨。",
-		id: "brightyoungthing",
-		fromEnding: "deathofthebody",
-		description: "生来家境优渥，天赋出众。过着轻松舒适的生活，光明的前途犹如徐徐卷开的琥珀地毯。",
-		image: "byt",
-	},
-	{
-		effects: 
-		{
-			reason: "1",
-			legacyphysicianjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "医生",
-		startdescription: "今天是我返回研究所岗位的日子。我在那里拥有我的工作与声誉，前途看似远大光明。然而，我却开始梦见别的事物。",
-		id: "physician",
-		fromEnding: "deathofthebody",
-		description: "每当病人陷入临终的谵妄，我都会将他们的话语悉数记录下来。在闷热喧嚣的夜晚，我会重读这些笔记，渐渐地，似乎，它们最终会产生某种意义。",
-		image: "physician",
-	},
-	{
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacydetectivejob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "警探",
-		startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
-		id: "detective",
-		fromEnding: "arrest",
-		description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
-		image: "detective",
-	},
-	{
-		excludesOnEnding: 
-		[
-				detective,
-		],
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacydetectivejob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "警探",
-		startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
-		id: "detectivepostpromotion",
-		fromEnding: "workvictoryb",
-		description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
-		image: "detective",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle",
-		startdescription: "--",
-		id: "apostle",
-		fromEnding: "_visionsending",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			funds: "5",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Auctioneer",
-		startdescription: "--",
-		id: "auctioneer",
-		fromEnding: "_workvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			passion: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Priest",
-		startdescription: "--",
-		id: "priest",
-		fromEnding: "_despairending",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Medium",
-		startdescription: "--",
-		id: "medium",
-		fromEnding: "_visionsending",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Survivor",
-		startdescription: "Haunted starting note",
-		id: "survivor",
-		fromEnding: "_wintersacrifice",
-		description: "At times, in mirrors, in crowds, you see the face of one now lost.",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "vessel",
-		fromEnding: "_minorlanternvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "tainted",
-		fromEnding: "_minorgrailvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Vessel",
-		startdescription: "--",
-		id: "shaped",
-		fromEnding: "_minorforgevictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Cousin",
-		startdescription: "Inheritor starting note",
-		id: "cousin",
-		fromEnding: "_",
-		description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
-		image: "knock",
-	},
+{"legacies":
+    [
+{id: "aspirant",
+label: "初出茅庐",
+description: "6月28日，轮回再启。",
+startdescription: "孤身踏入这个寒风彻骨的城市，带着我一文不值的文凭和梦想。\n现在呢？我能否过上不一样的人生？",
+effects: {introjob:1},
+image: "aspirant",
+fromEnding:"default",
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
+},
+{id: "brightyoungthing",
+label: "富家子弟",
+description: "生来家境优渥，天赋出众。过着轻松舒适的生活，光明的前途犹如徐徐卷开的琥珀地毯。",
+startdescription: "我又睡过了晨曦微露的清晨。我向来如此。反正明天还会有新的清晨。",
+effects: {legacybytjob:1,health:1},
+image: "byt",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
+},
+{id: "physician",
+label: "医生",
+description: "每当病人陷入临终的谵妄，我都会将他们的话语悉数记录下来。在闷热喧嚣的夜晚，我会重读这些笔记，渐渐地，似乎，它们最终会产生某种意义。",
+startdescription: "今天是我返回研究所岗位的日子。我在那里拥有我的工作与声誉，前途看似远大光明。然而，我却开始梦见别的事物。",
+effects: {legacyphysicianjob:1,reason:1},
+image: "physician",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
+},
+{id: "detective",
+label: "警探",
+description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
+startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
+effects: {legacydetectivejob:1,reason:1,health:1},
+image: "detective",
+fromEnding:"arrest",
+availableWithoutEndingMatch:true,
+startingVerbId:"work"
+},
+{id: "detectivepostpromotion",
+label: "警探",
+description: "我是隶属首都警察局的一名警探，负责调查人类能对彼此犯下的最邪恶卑鄙的行径。",
+startdescription: "我曾终结过许多蟊贼，杀人犯，敲诈犯和纵火者的犯罪生涯。但人们总还会犯下更丑恶的罪行。在某些清晨，当我醒来之时，我的双手颤抖不已。",
+effects: {legacydetectivejob:1,reason:1,health:1},
+image: "detective",
+fromEnding:"workvictoryb",
+availableWithoutEndingMatch:false,
+excludesOnEnding: ["detective"],
+startingVerbId:"work"
+},
+{id: "apostleforge",
+label: "炙热使徒",
+startdescription: "那塑造我们的人升向了更高的境界……至少，在一支历史里。过去是不确定的。但现在，我会调理好坩埚以便他下一个飞升。",
+description: "我们伟大的塑形者变强了——并且带来了强大的敌人。当他隐藏在暗处时，我会是他的工具。",
+effects: {health:2,legacyapostleforgejob:1},
+image: "apostleforge",
+fromEnding:"minorforgevictory",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+{id: "apostlegrail",
+label: "饕餮使徒",
+startdescription: "那哺育我们的人升向了更高的境界……至少，在一支历史里。过去是不确定的。但现在，我会准备好盛宴以便他下一个飞升。",
+description: "我们的愉悦者变强了——并且带来了强大的敌人。当他隐藏在暗处时，我会是他的容器。",
+effects: {passion:1,health:1,legacyapostlegrailjob:1},
+image: "apostlegrail",
+fromEnding:"minorgrailvictory",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+{id: "apostlelantern",
+label: "神愉使徒",
+startdescription: "沐光明者于日之居所等待着——等待升往更高处。我则是他的手。",
+description: "我不记得发生了什么。我不记得我是谁。但是那些梦教会了我必须要做的事。",
+effects: {reason:1,health:1,legacyapostlelanternjob:1},
+image: "apostlelantern",
+fromEnding:"minorlanternvictory",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+{id: "apostleforgewithrisen",
+label: "炙热使徒",
+startdescription: "那塑造我们的人升向了更高的境界……至少，在一支历史里。过去是不确定的。但现在，我会调理好坩埚以便他下一个飞升。",
+description: "我们伟大的塑形者变强了——并且带来了强大的敌人。当他隐藏在暗处时，我会是他的工具。",
+effects: {health:2,legacyapostleforgejob:1},
+image: "apostleforge",
+fromEnding:"minorforgevictorywithrisen",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+{id: "apostlegrailwithrisen",
+label: "饕餮使徒",
+startdescription: "那哺育我们的人升向了更高的境界……至少，在一支历史里。过去是不确定的。但现在，我会准备好盛宴以便他下一个飞升。",
+description: "我们的愉悦者变强了——并且带来了强大的敌人。当他隐藏在暗处时，我会是他的容器。",
+effects: {passion:1,health:1,legacyapostlegrailjob:1},
+image: "apostlegrail",
+fromEnding:"minorgrailvictorywithrisen",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+{id: "apostlelanternwithrisen",
+label: "神愉使徒",
+startdescription: "沐光明者于日之居所等待着——等待升往更高处。我则是他的手。",
+description: "我不记得发生了什么。我不记得我是谁。但是那些梦教会了我必须要做的事。",
+effects: {reason:1,health:1,legacyapostlelanternjob:1},
+image: "apostlelantern",
+fromEnding:"minorlanternvictorywithrisen",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+
+
+{id: "auctioneer",
+label: "拍卖师",
+description: "--",
+startdescription: "--",
+effects: {funds:5},
+image: "moth",
+fromEnding:"_workvictory",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+{id: "priest",
+label: "牧师",
+description: "--",
+startdescription: "--",
+effects: {passion:1},
+image: "moth",
+fromEnding:"_despairending",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+{id: "medium",
+label: "灵媒",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_visionsending",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+{id: "survivor",
+label: "幸存者",
+description: "有时，在镜中，在人群里，你会看到已经消逝的面孔。",
+startdescription: "不详的起始音",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_wintersacrifice",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+{id: "cousin",
+label: "表亲",
+description: "这天清晨，太阳高悬，镜子也都被封了起来，即将有人扣响门扉。“这位施主，”灰衣绅士会说：“这是给您的遗赠，或许您还根本不清楚它和您有什么关系吧。”",
+startdescription: "继承人的初始笔记",
+effects: {introjob:1},
+image: "knock",
+fromEnding:"_",
+availableWithoutEndingMatch:false,
+startingVerbId:"work"
+},
+
+
 ]
 }

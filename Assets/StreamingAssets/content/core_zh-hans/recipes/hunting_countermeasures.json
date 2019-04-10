@@ -1,1119 +1,478 @@
-﻿{
-recipes: [
-	{
-		id: "huntermysticsurvives",
-		requirements: 
-		{
-			summoned: "1",
-			mystic: "1",
-		},
-		description: "“我们的敌人掌握着最危险的武器：知识。”
+{"recipes": [
+{id: "huntermysticsurvives",
+actionId:"talk",
+label:"守卫与封印",
+requirements:{mystic:1,summoned:1},
+description:"“我们的敌人掌握着最危险的武器：知识。”\n你的召唤物受制于敌人的应对措施。神秘的猎人懂得恰当的防卫方式，并常能从召唤来的手下的攻击中幸存。但他们迟早会出差错。",
+effects:{notoriety:1},
+aspects:{killsummoned:1}
+   },
+   {id: "huntertenacioussurvives",
+actionId:"talk",
+label:"坚韧",
+requirements:{tenacious:1},
+description:"“可是没人能从那样的攻击中幸存！”\n有时，坚韧的猎人不知怎么地挺过了本该杀死他们的攻击。但他们的好运终会耗尽；而且除了物理攻击，还有别的方式可以摧毁猎人。",
+effects:{notoriety:1}
+   },
+      {id: "huntersurvives_becomestenacious",
+actionId:"talk",
+label:"伤疤",
+requirements:{tenacious:-1},
+description:"“他们比看起来更结实。”\n从物理攻击中活下来的猎人有时会变得坚韧。坚韧的猎人更难被杀死。",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1,follower:-1}
+   },
+         {id: "huntersurvives_becomesmystic",
+actionId:"talk",
+label:"严酷的教训",
+requirements:{summoned:1,mystic:-1},
+description:"“没有杀死他们的东西有时会使他们更不寻常。”\n当猎人从召唤物的攻击中活下来，偶尔他们会受激发而得知抵抗漫索之物的应对措施，并变得神秘。神秘的猎人通常能幸免于召唤物的进一步攻击。",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
+effects:{notoriety:1},
+aspects:{killsummoned:1}
+   },
 
-你的召唤物受制于对头的应对措施。神秘的猎人懂得恰当的防卫方式，并常能从召唤来的手下的攻击中幸存。但他们迟早会出差错。",
-		effects: 
-		{
-			summoned: "-1",
-			notoriety: "1",
-		},
-		label: "守卫与封印",
-		actionId: "talk",
-	},
-	{
-		id: "huntertenacioussurvives",
-		requirements: 
-		{
-			tenacious: "1",
-		},
-		description: "“可是没人能从那样的攻击中幸存！”
+            {id: "hunterfitewithextraswole",
+	   label: "对敌人进行突袭",
+	  actionId:"talk",
+	  requirements:{murderskill:1},
+	  startdescription:"我的敌人坚持在公共地区进行会面。他做好了所有合理的应对措施。但他没有理由应对我。发动直接袭击可能会是一个巨大的风险……但也许是我们所必须面对的。[这也许会成功，即便困难重重。]",
+	  description:"我的双手卡在他的头颅之间，并折断了他的脖颈。之后在其身首坠地之前转身离开这里。",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:70},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+         {id: "hunterfitewithswole",
+	   label: "对敌人进行突袭",
+	  actionId:"talk",
+	  requirements:{healthskill:1},
+	  startdescription:"我的敌人坚持在公共地区进行会面。他做足了一切合理的预防措施，除了对我的防范。直接攻击将会是场巨大的风险……但可能也是我们所必须面对的。[这风险很大。]",
+	  description:"我的双手卡在他的头颅之间，并折断了他的脖颈。之后在其身首坠地之前转身离开这里。",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:90},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+	  {id:"hunterfitewithswole_failure",
+	  label:"突袭失败！",
+	  actionId:"talk",
+	  startdescription:".",
+	  description:"我的对手大叫着后跳，踢倒桌子！围着我们的人都转过头去。没人看见我挪动身子。只有我的对手看见我。不过我必须要马上离开了。",
+	  craftable:false,
+	  effects:{notoriety:1},
+	  	  mutations:[{filterOnAspectId:hunter,mutateAspectId:wary,mutationLevel:1}],
+	  },
+	  
+	        {id: "hunterspeakpoison_glassfinger",
+	   label: "对猎人使用透指之毒",
+	  actionId:"talk",
+	  requirements:{ingredientlanternd:1},
+	  startdescription:"“喜欢这茶吗？”",
+	  description:"这死法不太优美，但很迅速而且几乎没有痛苦。当溶解结束时，不会留下任何可见之物。",
+	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  effects:{ingredientlanternd:-1},
+	  aspects:{dissolution:1},
+	  craftable:false
+	  },
+	  
+      {id: "hunterspeakpoison",
+	   label: "对猎人使用非凡的毒药",
+	  actionId:"talk",
+	  requirements:{poison:1},
+	  startdescription:"“喜欢这茶吗？”",
+	  description:"这死法不太优美，但很迅速而且几乎没有痛苦。还不算是最糟糕的死法。",
+	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  effects:{poison:-1,notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+   
+   {id: "hunterattackhighwinter",
+	   label: "指派缄默的手下去解决猎人的问题",
+	  actionId:"talk",
+	  startdescription:"这也许能确保猎人不来找我们的麻烦。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
+	  requirements: {hunter:1,winter:10,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:70},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ],
+	  craftable:false
+	  },
+	  	   {id: "hunterattackmidwinter",
+	   label: "指派沉静的手下去解决猎人的问题",
+	  actionId:"talk",
+	  startdescription:"我的手下会观察与等待。如果我们够幸运，他可能会获得处理掉敌人的机会。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
+	  description:".",
+	  requirements: {hunter:1,winter:5,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:30},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowwinter",
+	   label: "指派谨慎的手下去解决猎人的问题",
+	  actionId:"talk",
+	  startdescription:"我的手下会等待适合的时机，尽管那一刻可能永远都不会来。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
+	  description:".",
+	  requirements: {hunter:1,winter:1,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:10},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
 
-有时，坚韧的猎人不知怎么地挺过了本该杀死他们的攻击。但他们的好运终会耗尽；而且除了物理攻击，还有别的方式可以摧毁猎人。",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		label: "坚韧",
-		actionId: "talk",
-	},
-	{
-		id: "huntersurvives_becomestenacious",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "tenacious",
-				mutationLevel: "1",
-			},
-		],
-		requirements: 
-		{
-			tenacious: "-1",
-		},
-		description: "“他们比看起来更结实。”
+	  
+	  	  {id: "hunterstealthattacksuccess",
+	   label: "耐心……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下带着战利品归来。",
+	  effects: {notoriety:1},
+	  aspects:{killhunter:1},
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntermysticsurvives",chance:70}],
+	  comments:"No summoned creatures currently attack with Winter. This is in case I add one later.",
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "hunterstealthattackfailure",
+	   label: "耐心……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下归来了。他没有机会去终结猎人的生命；而且猎人现在可能意识到了危险。",
+	  effects: {notoriety:1},
+	  warmup:10	  
+	  },
 
-从物理攻击中活下来的猎人有时会变得坚韧。坚韧的猎人更难被杀死。",
-		effects: 
-		{
-			follower: "-1",
-			notoriety: "1",
-		},
-		label: "伤疤",
-		actionId: "talk",
-	},
-	{
-		id: "huntersurvives_becomesmystic",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "mystic",
-				mutationLevel: "1",
-			},
-		],
-		requirements: 
-		{
-			summoned: "1",
-			mystic: "-1",
-		},
-		description: "“没有杀死他们的东西有时会使他们更不寻常。”
 
-当猎人从召唤物的攻击中活下来，偶尔他们会受激发而得知抵抗漫索之物的应对措施，并变得神秘。神秘的猎人通常能幸免于召唤物的进一步攻击。",
-		effects: 
-		{
-			summoned: "-1",
-			notoriety: "1",
-		},
-		label: "严酷的教训",
-		actionId: "talk",
-	},
-	{
-		requirements: 
-		{
-			murderskill: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		aspects: 
-		{
-			killhunter: "1",
-		},
-		label: "A Surprise Attack on an Adversary",
-		startdescription: "My adversary insists on a public meeting-place. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
-		id: "hunterfitewithextraswole",
-		actionId: "talk",
-		description: "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "hunterfitewithswole_failure",
-				chance: "70",
-			},
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			healthskill: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		aspects: 
-		{
-			killhunter: "1",
-		},
-		label: "A Surprise Attack on an Adversary",
-		startdescription: "My adversary insists on a public meeting-place. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
-		id: "hunterfitewithswole",
-		actionId: "talk",
-		description: "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "hunterfitewithswole_failure",
-				chance: "90",
-			},
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "wary",
-				mutationLevel: "1",
-			},
-		],
-		craftable: "false",
-		comment: "NEW",
-		label: "A Surprise Attack has Failed!",
-		startdescription: ".",
-		id: "hunterfitewithswole_failure",
-		actionId: "talk",
-		description: "With a cry, my adversary leaps back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my adversary. But I must leave immediately.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			ingredientlanternd: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		aspects: 
-		{
-			dissolution: "1",
-		},
-		label: "Employ Glassfinger Toxin against a Hunter",
-		startdescription: "'Enjoying your tea?'",
-		id: "hunterspeakpoison_glassfinger",
-		actionId: "talk",
-		description: "The end is not pretty, but it's quick and almost painless. When the dissolution is complete, nothing visible remains.",
-		effects: 
-		{
-			ingredientlanternd: "-1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			poison: "1",
-		},
-		craftable: "false",
-		aspects: 
-		{
-			killhunter: "1",
-		},
-		label: "对猎人使用非凡的毒药",
-		startdescription: "“喜欢这茶吗？”",
-		id: "hunterspeakpoison",
-		actionId: "talk",
-		description: "这死法不太优美，但很迅速而且几乎没有痛苦。还不算是最糟糕的死法。",
-		effects: 
-		{
-			poison: "-1",
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "hunterattackhighwinter",
-		craftable: "false",
-		startdescription: "这也许能确保猎人不来找我们的麻烦。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
-		requirements: 
-		{
-			follower: "1",
-			winter: "10",
-			hunter: "1",
-		},
-		linked: 
-		[
-			{
-				id: "hunterstealthattacksuccess",
-				chance: "70",
-			},
-			{
-				id: "hunterstealthattackfailure",
-				chance: "100",
-			},
-		],
-		label: "指派缄默的手下去解决猎人的问题",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattackmidwinter",
-		linked: 
-		[
-			{
-				id: "hunterstealthattacksuccess",
-				chance: "30",
-			},
-			{
-				id: "hunterstealthattackfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我的手下会观察与等待。如果我们够幸运，他可能会获得处理掉敌人的机会。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			winter: "5",
-			hunter: "1",
-		},
-		label: "指派沉静的手下去解决猎人的问题",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattacklowwinter",
-		linked: 
-		[
-			{
-				id: "hunterstealthattacksuccess",
-				chance: "10",
-			},
-			{
-				id: "hunterstealthattackfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我的手下会等待适合的时机，尽管那一刻可能永远都不会来。[该做法的成功率低于<b>刃</b>之攻击，而且无论成功与否都会引起注意，但手下通常会存活。]",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			winter: "1",
-			hunter: "1",
-		},
-		label: "指派谨慎的手下去解决猎人的问题",
-		actionId: "talk",
-	},
-	{
-		comments: "No summoned creatures currently attack with Winter. This is in case I add one later.",
-		warmup: "10",
-		aspects: 
-		{
-			killhunter: "1",
-		},
-		label: "耐心……",
-		startdescription: "我等待指示……",
-		id: "hunterstealthattacksuccess",
-		actionId: "talk",
-		description: "我的手下带着战利品归来。",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-			{
-				id: "huntermysticsurvives",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "hunterstealthattackfailure",
-		startdescription: "我等待指示……",
-		warmup: "10",
-		description: "我的手下归来了。他没有机会去终结猎人的生命；而且猎人现在可能意识到了危险。",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		label: "耐心……",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattackhighedge",
-		linked: 
-		[
-			{
-				id: "hunterattacksuccess",
-				chance: "100",
-			},
-		],
-		startdescription: "除非该猎人有某种非同一般的防护措施，不然他已经死了。但是他的逝世会引起注意。",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			edge: "10",
-			hunter: "1",
-		},
-		label: "指派不可遏之力去杀害猎人",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattackmidedge",
-		linked: 
-		[
-			{
-				id: "hunterattacksuccess",
-				chance: "70",
-			},
-			{
-				id: "hunterattackfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我的手下很强大。猎人不太可能存活。但是此次攻击会引起注意。",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			edge: "5",
-			hunter: "1",
-		},
-		label: "指派强有力的手下去杀害猎人",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattacklowedge",
-		linked: 
-		[
-			{
-				id: "hunterattacksuccess",
-				chance: "30",
-			},
-			{
-				id: "hunterattackfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我手下的技巧有限。猎人很可能存活，而且此次攻击会引起注意。",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			edge: "1",
-			hunter: "1",
-		},
-		label: "指派手下去杀害猎人",
-		actionId: "talk",
-	},
-	{
-		id: "hunterattacknoedge",
-		linked: 
-		[
-			{
-				id: "hunterattacksuccess",
-				chance: "10",
-			},
-			{
-				id: "hunterattackfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我的手下缺乏<b>刃</b>之属性，极其不适合去攻击猎人。他成功的可能性很小。",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			hunter: "1",
-		},
-		label: "指派不适合的人去杀害猎人",
-		actionId: "talk",
-	},
-	{
-		warmup: "10",
-		label: "搜寻猎人……",
-		startdescription: "我等待指示……",
-		id: "hunterattacksuccess",
-		actionId: "talk",
-		description: "我的手下带着战利品归来。",
-		effects: 
-		{
-			corpse: "1",
-			hunter: "-1",
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "huntertenacioussurvives",
-				chance: "30",
-			},
-			{
-				id: "huntermysticsurvives",
-				chance: "70",
-			},
-			{
-				id: "huntercapturesuccess",
-				chance: "30",
-			},
-		],
-	},
-	{
-		warmup: "10",
-		aspects: 
-		{
-			capturehunter: "1",
-		},
-		label: "搜寻猎人……",
-		startdescription: "我等待指示……",
-		id: "huntercapturesuccess",
-		actionId: "talk",
-		description: "我的手下带着囚犯归来！",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		id: "hunterattackfailure",
-		startdescription: "我等待指示……",
-		description: "我的手下没有归来。他一定是失败了。",
-		effects: 
-		{
-			follower: "-1",
-			notoriety: "1",
-		},
-		label: "搜寻猎人……",
-		alternativerecipes: 
-		[
-			{
-				id: "huntersurvives_becomesmystic",
-				chance: "30",
-			},
-			{
-				id: "huntersurvives_becomestenacious",
-				chance: "10",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "evidencedestroysuccess",
-				chance: "70",
-			},
-			{
-				id: "evidencedestroyfailure_mortalfollower",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroyfailure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			moth: "5",
-			evidencelevel: "1",
-		},
-		comments: "We don't want a 100% chance because there's no downside. This could easily change later.",
-		label: "指派精于算计的手下去毁灭证据",
-		startdescription: "我的计谋很可能成功。事情出错的概率总是有的。",
-		id: "evidencedestroymidmoth",
-		description: ".",
-		actionId: "talk",
-	},
-	{
-		id: "evidencedestroylowmoth",
-		linked: 
-		[
-			{
-				id: "evidencedestroysuccess",
-				chance: "30",
-			},
-			{
-				id: "evidencedestroyfailure_mortalfollower",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroyfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我手下的欺诈才能有限，而此项任务很难。可能会失败。",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			moth: "1",
-			evidencelevel: "1",
-		},
-		label: "指派手下去毁灭证据",
-		actionId: "talk",
-	},
-	{
-		id: "evidencedestroynomoth",
-		linked: 
-		[
-			{
-				id: "evidencedestroysuccess",
-				chance: "10",
-			},
-			{
-				id: "evidencedestroyfailure_mortalfollower",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroyfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "我的手下缺乏<b>蛾</b>之属性，难以胜任这项任务。他成功的可能性很小。",
-		description: ".",
-		requirements: 
-		{
-			evidencelevel: "1",
-		},
-		label: "指派不适合的人去毁灭证据",
-		actionId: "talk",
-	},
-	{
-		id: "evidencedestroysuccess",
-		startdescription: "我等待指示……",
-		warmup: "10",
-		description: "我的手下归来了。证据已经被毁灭。我更安全些了。",
-		effects: 
-		{
-			evidencelevel: "-1",
-		},
-		label: "篡改记录……",
-		actionId: "talk",
-	},
-	{
-		id: "evidencedestroyfailure",
-		startdescription: "我等待指示……",
-		warmup: "10",
-		description: "我的手下没有归来。失败了，而且手下的疏忽大意可能引起了注意。",
-		effects: 
-		{
-			follower: "-1",
-			notoriety: "1",
-		},
-		label: "篡改记录……",
-		actionId: "talk",
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		comment: "NEW",
-		warmup: "10",
-		label: "Tampering with Records...",
-		startdescription: "I await word....",
-		id: "evidencedestroyfailure_mortalfollower",
-		actionId: "talk",
-		description: "My minion has returned, stumbling, mumbling, clumsily bandaged. They were caught in the coils of their own plan. [Heal a fallen Follower with Talk.]",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		requirements: 
-		{
-			summoned: "-1",
-		},
-	},
-	{
-		id: "hunterspeakwinterg",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "grim",
-				mutationLevel: "1",
-			},
-		],
-		startdescription: "“当炉冷却，当光湮灭，当林化尘，唯至噬己之时，裂狼方能将息。现在听我说……”[这可能使猎人害怕，但这总会提升你自己的恐惧。]",
-		requirements: 
-		{
-			lore: "1",
-			winter: "14",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakdread_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakdread_vulnerable_demoralised",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakdread_demoralised",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakdread_survives",
-				chance: "100",
-			},
-		],
-		label: "分享破败知识中的可怕谜团",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakwinterd",
-		startdescription: "“用于纪念追悼之力，来自未被索取之人，且不可受欺骗之人。我将告知力量的名字。听我说……”[这可能使猎人害怕，尤其是忧愁的猎人，但这总会提升你自己的恐惧。]",
-		requirements: 
-		{
-			lore: "1",
-			winter: "8",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakdread_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakdread_vulnerable_demoralised",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakdread_demoralised",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakdread_survives",
-				chance: "100",
-			},
-		],
-		label: "分享破败知识中的冰冷祷文",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakwinter",
-		startdescription: "“让我们谈谈终结。谈谈落日。谈谈那些未死而不可死之物……”[这可能使猎人害怕，但这总会提升你自己的恐惧。]",
-		requirements: 
-		{
-			lore: "1",
-			winter: "1",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakdread_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakdread_vulnerable_demoralised",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakdread_demoralised",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakdread_survives",
-				chance: "100",
-			},
-		],
-		label: "暗示破败知识",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread",
-		startdescription: "“每当你闭上双眼，可以来好好想想。”[这可能使猎人害怕，但这总会提升你自己的恐惧。]",
-		requirements: 
-		{
-			dread: "1",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakdread_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakdread_vulnerable_demoralised",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakdread_demoralised",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakdread_survives",
-				chance: "100",
-			},
-		],
-		label: "描述即将降临在对头身上的恐怖之事",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread_resistant",
-		startdescription: "“好吧，我的结局可能很糟，但这值得我的牺牲。而其他人将继续抗争下去。我们会再度相见。”[理想主义者不会意志消沉。]",
-		requirements: 
-		{
-			idealist: "1",
-		},
-		effects: 
-		{
-			dread: "1",
-			notoriety: "1",
-		},
-		label: "潜伏于世界表皮之下的恐怖",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread_vulnerable_demoralised",
-		startdescription: "你的描述令猎人无法承受，瞠目而视，张口结舌。今后，他将无可避免地陷入绝望。",
-		requirements: 
-		{
-			grim: "1",
-		},
-		effects: 
-		{
-			dread: "1",
-		},
-		label: "潜伏于世界表皮之下的恐怖",
-		aspects: 
-		{
-			derangemortal: "1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread_demoralised",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "grim",
-				mutationLevel: "1",
-			},
-		],
-		startdescription: "猎人咆哮着反抗，但你明白你的话已经实现了目标。[这位猎人变得忧愁。]",
-		requirements: 
-		{
-			grim: "-1",
-		},
-		effects: 
-		{
-			dread: "1",
-			notoriety: "1",
-		},
-		label: "潜伏于世界表皮之下的恐怖",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread_survives",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "idealist",
-				mutationLevel: "1",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "hunterspeakdread_survives_becometenacious",
-				chance: "100",
-			},
-		],
-		description: "“是的，这世界上有糟糕的事物，但这都是我们更应该抵制它们的原因。我该谢谢你。你向我展示了我必须要做的事。”[这位猎人成为了一名理想主义者。]",
-		effects: 
-		{
-			dread: "1",
-			notoriety: "1",
-		},
-		label: "潜伏于世界表皮之下的恐怖",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakdread_survives_becometenacious",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "tenacious",
-				mutationLevel: "1",
-			},
-			{
-				filterOnAspectId: "hunter",
-				comment: "NEW",
-				mutateAspectId: "idealist",
-				mutationLevel: "1",
-			},
-		],
-		requirements: 
-		{
-			tenacious: "-1",
-		},
-		description: "“是的，这世界上有糟糕的事物，但这都是我们更应该抵制它们的原因。我该谢谢你。你向我展示了我必须要做的事。”[这位猎人变成理想主义者。]",
-		effects: 
-		{
-			dread: "1",
-			notoriety: "1",
-		},
-		label: "潜伏于世界表皮之下的恐怖",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeaklanterng",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "idealist",
-				mutationLevel: "1",
-			},
-		],
-		startdescription: "“这是瞳中之扉的秘密信条。张大你的耳朵吧……”[这可能深深吸引猎人，但这总会提升你自己的入迷。]",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "14",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakfascination_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakfascination_vulnerable_fascinated",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakfascination_fascinated",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakfascination_survives",
-				chance: "100",
-			},
-		],
-		label: "分享辉煌的知识中的可怕谜团",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeaklanternd",
-		startdescription: "“瞳中之扉指引方向；他并不仁慈；然而从始至终，他都在为我们照明。听吧，被照亮吧……”[这可能深深吸引猎人，尤其是理想主义者，但这总会提升你自己的入迷。]",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "8",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakfascination_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakfascination_vulnerable_fascinated",
-				chance: "70",
-			},
-			{
-				id: "hunterspeakfascination_fascinated",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakfascination_survives",
-				chance: "100",
-			},
-		],
-		label: "分享辉煌的知识中的光明祷文",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeaklantern",
-		startdescription: "“世界上有着比我们所见之物更美好的事物。你一定感受到过。想象永生的可能性吧……”[这可能深深吸引猎人，但这总会提升你自己的入迷。]",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "1",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakfascination_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakfascination_vulnerable_fascinated",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakfascination_fascinated",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakfascination_survives",
-				chance: "100",
-			},
-		],
-		label: "暗示辉煌的知识",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination",
-		startdescription: "“你升得越高，看到的越多。”[这可能深深吸引猎人，但这总会提升你自己的入迷。]",
-		requirements: 
-		{
-			fascination: "1",
-		},
-		linked: 
-		[
-			{
-				id: "hunterspeakfascination_resistant",
-				chance: "100",
-			},
-			{
-				id: "hunterspeakfascination_vulnerable_fascinated",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakfascination_fascinated",
-				chance: "30",
-			},
-			{
-				id: "hunterspeakfascination_survives",
-				chance: "100",
-			},
-		],
-		label: "向对头描述你的愿景",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination_resistant",
-		startdescription: "“听起来很吸引人。但我还有工作要做。我还会来找你的。”[忧愁的猎人不会被迷住。]",
-		requirements: 
-		{
-			grim: "1",
-		},
-		effects: 
-		{
-			fascination: "1",
-			notoriety: "1",
-		},
-		label: "光之幻象",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination_vulnerable_fascinated",
-		startdescription: "你的描述令猎人无法承受，目光如炬，想入非非。今后，他将摒弃他曾知晓的一切。",
-		requirements: 
-		{
-			idealist: "1",
-		},
-		effects: 
-		{
-			fascination: "1",
-		},
-		label: "光之幻象",
-		aspects: 
-		{
-			derangemortal: "1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination_fascinated",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "idealist",
-				mutationLevel: "1",
-			},
-		],
-		startdescription: "猎人嗤之以鼻，但你明白你描述出的紧迫感已碰撞出火花。[这位猎人变成理想主义者。]",
-		requirements: 
-		{
-			idealist: "-1",
-		},
-		effects: 
-		{
-			fascination: "1",
-			notoriety: "1",
-		},
-		label: "光之幻象",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination_survives",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "grim",
-				mutationLevel: "1",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "hunterspeakfascination_survives_becometenacious",
-				chance: "100",
-			},
-		],
-		description: "“是的，我可能变得更好，但我们所做之事比我们是谁更加重要。这世界是我们生活的地方，而我将守护它，至死方休。你可以保留你的愿景。”[这位猎人变得忧愁。]",
-		effects: 
-		{
-			fascination: "1",
-			notoriety: "1",
-		},
-		label: "光之幻象",
-		actionId: "talk",
-	},
-	{
-		id: "hunterspeakfascination_survives_becometenacious",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "grim",
-				mutationLevel: "1",
-			},
-			{
-				filterOnAspectId: "hunter",
-				mutateAspectId: "tenacious",
-				mutationLevel: "1",
-			},
-		],
-		requirements: 
-		{
-			tenacious: "-1",
-		},
-		description: "“是的，我可能变得更好，但我们所做之事比我们是谁更加重要。这世界是我们生活的地方，而我将守护它，至死方休。你可以保留你的愿景。”[这位猎人变得忧愁而坚韧。]",
-		effects: 
-		{
-			fascination: "1",
-			notoriety: "1",
-		},
-		label: "光之幻象",
-		actionId: "talk",
-	},
+	   {id: "hunterattackhighedge",
+	   label: "指派不可遏之力去杀害猎人",
+	  actionId:"talk",
+	  startdescription:"除非该猎人有某种非同一般的防护措施，不然他已经死了。但是他的逝世会引起注意。",
+	  description:".",
+	  requirements: {hunter:1,edge:10,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "hunterattackmidedge",
+	   label: "指派强有力的手下去杀害猎人",
+	  actionId:"talk",
+	  startdescription:"我的手下很强大。猎人不太可能存活。但是此次攻击会引起注意。[失败会杀死你的手下。]",
+	  description:".",
+	  requirements: {hunter:1,edge:5,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:70},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowedge",
+	   label: "指派手下去杀害猎人",
+	  actionId:"talk",
+	  startdescription:"我手下的技巧有限。猎人很可能存活，而且此次攻击会引起注意。[失败会杀死你的手下。]",
+	  description:".",
+	  requirements: {hunter:1,edge:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:30},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "hunterattacknoedge",
+	   label: "指派不适合的人去杀害猎人",
+	  actionId:"talk",
+	  startdescription:"我的手下缺失<b>刃</b>的属性，很不幸，他并不适合用来谋杀猎人。他只有非常小的概率能够成功。[失败会杀死你的手下。]",
+	  description:".",
+	  requirements: {hunter:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:10},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "hunterattacksuccess",
+	   label: "搜寻猎人……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下带着战利品归来。",
+	  effects: {hunter:-1,corpse:1,notoriety:1},
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntermysticsurvives",chance:70},
+	  {id:"huntercapturesuccess",chance:30}],
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "huntercapturesuccess",
+	   label: "搜寻猎人……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下带着囚犯归来！",
+	  effects: {notoriety:1},
+	  aspects: {capturehunter:1},
+	  warmup:10	  
+	  },
+	  
+	  
+	  {id: "hunterattackfailure",
+	   label: "搜寻猎人……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下没有归来。他一定是失败了。",
+	  effects: {follower:-1,notoriety:1},
+	  alternativerecipes:[{id:"huntersurvives_becomesmystic",chance:30},
+	  {id:"huntersurvives_becomestenacious",chance:10}],
+	  warmup:10	  
+	  },
+	  
+	  
+	  	   {id: "evidencedestroymidmoth",
+	   label: "指派精于算计的手下去毁灭证据",
+	  actionId:"talk",
+	  startdescription:"我的计谋很可能成功。事情出错的概率总是有的。",
+	  description:".",
+	  requirements: {follower:1,moth:5,evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:70},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ],
+	  	  comments: "We don't want a 100% chance because there's no downside. This could easily change later."
+	  },
+	  	  	   {id: "evidencedestroylowmoth",
+	   label: "指派手下去毁灭证据",
+	  actionId:"talk",
+	  startdescription:"我手下的欺诈才能有限，而此项任务很难。可能会失败。",
+	  description:".",
+	  requirements: {follower:1,moth:1,evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:30},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+	   {id: "evidencedestroynomoth",
+	   label: "指派不适合的人去毁灭证据",
+	  actionId:"talk",
+	  startdescription:"我的手下缺乏<b>蛾</b>之属性，难以胜任这项任务。他成功的可能性很小。",
+	  description:".",
+	  requirements: {evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:10},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+
+	  {id: "evidencedestroysuccess",
+	   label: "篡改记录……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下归来了。证据已经被毁灭。我更安全些了。",
+	  effects: {evidencelevel:-1},
+	  warmup:10	  
+	  },
+	  {id: "evidencedestroyfailure",
+	   label: "篡改记录……",
+	  actionId:"talk",
+	  startdescription: "我等待着回音……",
+	  description:"我的手下没有归来。失败了，而且手下的疏忽大意可能引起了注意。",
+	  effects: {follower:-1,notoriety:1},
+	  warmup:10	  
+	  },
+	  
+	  {id: "evidencedestroyfailure_mortalfollower",
+	   label: "篡改记录……",
+	  actionId:"talk",
+	  requirements:{summoned:-1},
+	  startdescription: "我等待着回音……",
+	  description:"我的手下回来了，跌跌撞撞，口齿不清，身上绑着丑陋的绷带。他陷进了他自己的计划之中。[通过<b>谈话</b>治疗追随者。]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:10	  
+	  },
+	  
+	  	  	  {id:"hunterspeakwinterg",
+	  actionId:"talk",
+	  label:"分享破败知识中的可怕谜团",
+	  startdescription:"“当炉冷却，当光湮灭，当林化尘，唯至噬己之时，裂狼方能将息。现在听我说……”[这可能使猎人将精力转向别处，但这总会增加你自己的恐惧。]",
+	  requirements:{winter:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:70},
+{id:"hunterspeakdread_demoralised",chance:70},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+	  	  {id:"hunterspeakwinterd",
+	  actionId:"talk",
+	  label:"分享破败知识中的冰冷祷文",
+	  startdescription:"“用于纪念追悼之力，来自未被索取之人，且不可受欺骗之人。我将告知力量的名字。听我说……”[这可能使猎人将精力转向别处，尤其是忧愁的猎人，但这总会增加你自己的恐惧。]",
+	  requirements:{winter:8,lore:1},
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:70},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+	  {id:"hunterspeakwinter",
+	  actionId:"talk",
+	  label:"暗示破败的知识",
+	  startdescription:"“让我们谈谈终结。谈谈落日。谈谈那些未死而不可死之物……”[这可能使猎人将精力转向别处，但这总会增加你自己的恐惧。]",
+	  requirements:{winter:1,lore:1},
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:30},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+
+{id:"hunterspeakdread",
+actionId:"talk",
+label:"描述即将降临在敌人身上的恐怖之事",
+requirements:{dread:1},
+startdescription:"“每当你闭上双眼，可以来好好想想。”[这可能使猎人将精力转向别处，但这总会增加你自己的恐惧。]",
+description:"",
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:30},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+
+},
+{id:"hunterspeakdread_resistant",
+actionId:"talk",
+requirements:{idealist:1},
+label:"潜伏于世界表皮之下的恐怖",
+startdescription:"“好吧，我的结局可能很糟，但这值得我的牺牲。而其他人将继续抗争下去。我们会再度相见。”[理想主义者不会意志消沉。]",
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_vulnerable_demoralised",
+actionId:"talk",
+requirements:{grim:1},
+label:"潜伏于世界表皮之下的恐怖",
+startdescription:"你的描述令猎人无法承受，瞠目而视，张口结舌。今后，他将无可避免地陷入绝望……除非，他找到新的信仰来作救命稻草。",
+description:"",
+effects:{dread:1},
+aspects:{derangemortal:1}
+
+},
+{id:"hunterspeakdread_demoralised",
+actionId:"talk",
+requirements:{grim:-1},
+label:"潜伏于世界表皮之下的恐怖",
+startdescription:"猎人咆哮着反抗，但你明白你的话已经实现了目标。[这位猎人变得忧愁。]",
+description:"",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_survives",
+actionId:"talk",
+label:"潜伏于世界表皮之下的恐怖",
+alternativerecipes:[{id:"hunterspeakdread_survives_becometenacious",chance:100}],
+startdescription:"",
+description:"“是的，这世界上有糟糕的事物，但这都是我们更应该抵制它们的原因。我该谢谢你。你向我展示了我必须要做的事。”[这位猎人变成了理想主义者。]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_survives_becometenacious",
+actionId:"talk",
+label:"潜伏于世界表皮之下的恐怖",
+requirements:{tenacious:-1},
+startdescription:"",
+description:"“是的，这世界上有糟糕的事物，但这都是我们更应该抵制它们的原因。我该谢谢你。你向我展示了我必须要做的事。”[这位猎人变得更加坚韧了，他成为了一名理想主义者。]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1},
+{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+
+	  {id:"hunterspeaklanterng",
+	  actionId:"talk",
+	  label:"分享辉煌的知识中的可怕谜团",
+	  startdescription:"“这是瞳中之扉的秘密信条。张大你的耳朵吧……”[这可能使猎人将精力引向别处，但这总会增加你自己的入迷。]",
+	  requirements:{lantern:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:70},
+{id:"hunterspeakfascination_fascinated",chance:70},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+	  {id:"hunterspeaklanternd",
+	  actionId:"talk",
+	  label:"分享辉煌的知识中的光明祷文",
+	  startdescription:"“瞳中之扉指引方向；他并不仁慈；然而从始至终，他都在为我们照明驱暗。听吧，被照亮吧……”[这可能使猎人将精力引向别处，尤其是理想主义者，但这总会增加你自己的入迷。]",
+	  requirements:{lantern:8,lore:1},
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:70},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+	  {id:"hunterspeaklantern",
+	  actionId:"talk",
+	  label:"暗示辉煌的知识",
+	  startdescription:"“世界上有着比我们所见之物更美好的事物。你一定感受到过。想象永生的可能性吧……”[这可能使猎人将精力引向别处，但这总会增加你自己的入迷。]",
+	  requirements:{lantern:1,lore:1},	  
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:30},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+{id:"hunterspeakfascination",
+actionId:"talk",
+label:"向敌人描述你的幻象",
+requirements:{fascination:1},
+startdescription:"“你升得越高，看到的越多。”[这可能使猎人将精力引向别处，但这总会增加你自己的入迷。]",
+description:"",
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:30},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+
+},
+{id:"hunterspeakfascination_resistant",
+actionId:"talk",
+requirements:{grim:1},
+label:"光之幻象",
+startdescription:"“听起来很吸引人。但我还有工作要做。我还会来找你的。”[忧愁的猎人不会入迷。]",
+effects:{notoriety:1,fascination:1}
+
+},
+{id:"hunterspeakfascination_vulnerable_fascinated",
+actionId:"talk",
+requirements:{idealist:1},
+label:"光之幻象",
+startdescription:"你的描述令猎人无法承受，目光如炬，想入非非。今后，他将摒弃他曾知晓的一切。",
+description:"",
+effects:{fascination:1},
+aspects:{derangemortal:1}
+
+},
+{id:"hunterspeakfascination_fascinated",
+actionId:"talk",
+requirements:{idealist:-1},
+label:"光之幻象",
+startdescription:"猎人嗤之以鼻，但你明白你描述出的紧迫感已碰撞出火花。[这位猎人变成理想主义者。]",
+description:"",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+
+},
+{id:"hunterspeakfascination_survives",
+actionId:"talk",
+label:"光之幻象",
+alternativerecipes:[{id:"hunterspeakfascination_survives_becometenacious",chance:100}],
+description:"“是的，我可能变得更好，但我们所做之事比我们是谁更加重要。这世界是我们生活的地方，而我将守护它，至死方休。你可以保留你的愿景。”[这位猎人变得忧愁。]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+},
+{id:"hunterspeakfascination_survives_becometenacious",
+actionId:"talk",
+label:"光之幻象",
+requirements:{tenacious:-1},
+description:"“是的，我可能变得更好，但我们所做之事比我们是谁更加重要。这世界是我们生活的地方，而我将守护它，至死方休。你可以保留你的愿景。”[这位猎人变得忧愁而坚韧。]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1},
+{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+},
+
 ]
 }

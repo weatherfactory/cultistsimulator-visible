@@ -1,483 +1,263 @@
-﻿{
-elements: [
-	{
-		id: "aladim",
-		unique: "true",
-		aspects: 
-		{
-			tutor: "1",
-			patron: "1",
-			tutoraramaic: "1",
+{"elements":
+    [
+		 {
+        id: "aladim",
+            label: "伊本·阿迪姆博士",
+            aspects:
+            {tutoraramaic:1,tutor:1,patron:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他向你提出了一项委托。",
+unique:true,
+			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
+					slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
+        },
+		 {
+        id: "aladimready",
+            label: "伊本·阿迪姆博士",
+            aspects:
+            {tutoraramaic:1,tutor:1,patron:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他可能会用到你的帮助。",
+			unique:true,
+			xtriggers: {commissiongiven: aladim,killmortal:rumour,derangemortal:rumour}
+        },
+					 {
+        id: "bechet",
+            label: "贝赛女士",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorgreek:1},
+            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她向你提出了一项委托。",
+unique:true,
+			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "bechetready",
+            label: "贝赛女士",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorgreek:1},
+            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她可能会用到你的帮助。",
+unique:true,
+			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
+        },		 {
+        id: "jannings",
+            label: "戈特·简宁伯爵",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorlatin:1},
+            description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他向你提出了一项委托。",
+unique:true,
+			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "janningsready",
+            label: "戈特·简宁伯爵",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorlatin:1},
+            description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他可能会用到你的帮助。",
+unique:true,
+			xtriggers: {commissiongiven: jannings,killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppyready",
+            label: "波碧·拉塞尔斯",
+            aspects:
+            {mortal:1,patron:1},
+            description: "一个和蔼可亲的贵妇人。她想要和你谈谈。",
+unique:true,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+				 {
+        id: "poppy",
+            label: "波碧·拉塞尔斯",
+            aspects:
+            {mortal:1,patron:1},
+            description: "一个和蔼可亲的贵妇人。",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppycommissionready",
+            label: "波碧·拉塞尔斯",
+            aspects:
+            {mortal:1,patron:1},
+            description: "一个和蔼可亲的贵妇人。她在某些事上需要你的帮助。",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissiongiven:poppycommission},
+icon:"poppyready"
+        },
+						 {
+        id: "poppycommission",
+            label: "波碧·拉塞尔斯",
+            aspects:
+            {mortal:1,patron:1},
+            description: "一个和蔼可亲的贵妇人。她向你提出了一项委托。",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
+				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
+icon:"poppy"
+        },
+		
+				 {
+        id: "aladimaway",
+            label: "伊本·阿迪姆博士",
+            description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他现在联系不上，不过很快会回来的。",
+lifetime:120,
+decayTo: "aladimready",
+icon:"aladim"
+        },
+					 {
+        id: "bechetaway",
+            label: "贝赛女士",
+            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她最近正忙着准备出版的事，但她很快会回来的。",
+lifetime:120,
+decayTo: "bechetready",
+icon:"bechet"
+        },
+				 {
+        id: "janningsaway",
+            label: "戈特·简宁伯爵",
+			lifetime:120,
+			description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他现在不在国内，但很快会回来的。",
+decayTo: "janningsready",
+icon:"jannings"
+        },
+		
+						 {
+        id: "poppyaway",
+            label: "波碧·拉塞尔斯",
+            description: "一个和蔼可亲的贵妇人。她现在不会见访客。",
+lifetime:120,
+decayTo: "poppycommissionready",
+icon:"poppy"
+        },
+		{id:"benefactorm",
+		label: "提摩西·曼迪勋爵",
+		description:"一位举止优雅的绅士，他有着忧桑的眼眸，微微后倾的发型，习惯发出一种亲切，粗狂又神经质的笑声。他可不会再碰烈酒了。",
+		animFrames: 1,
+		uniquenessgroup:"uqbenefactorm",
+		aspects:{benefactor:1,mortal:1},
+			slots:[{id:"health",actionId:"work",label:"健康",required:{health:1}},
+			{id:"funds",actionId:"work",label:"魅力",required:{funds:1}}],
+				xtriggers:{employment:benefactorm,rejection:benefactorm_rejectedplayer,killmortal:corpse,avowal:benefactorm_proposedtoplayer},
+			lifetime:180,
+			decayTo:benefactorm_rejectedplayer
 		},
-		description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他向你提出了一项委托。",
-		slots: 
-		[
-			{
-				id: "Commission",
-				required: 
-				{
-					commission: "1",
-				},
-				actionId: "talk",
-			},
-			{
-				id: "Manuscript",
-				required: 
-				{
-					article: "1",
-				},
-				actionId: "talk",
-			},
-		],
-		label: "伊本·阿迪姆博士",
-		xtriggers: 
-		{
-			killmortal: "rumour",
-			derangemortal: "rumour",
-			commissionfulfilled: "aladimaway",
+				{id:"benefactorf",
+		label: "尼克尔，第四代斯坦福女侯爵",
+		description:"一位谨慎聪慧的女性，双眼如缝，她有着同龄人中极好的皮肤。她常年打理着自己的生意，并忠实地慈善捐赠。",
+		animFrames: 1,
+		uniquenessgroup:"uqbenefactorf",
+		aspects:{benefactor:1,mortal:1},
+		slots:[	{id:"health",actionId:"work",label:"健康",required:{health:1}},
+			{id:"funds",actionId:"work",label:"魅力",required:{funds:1}}],
+			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse,avowal:benefactorf_proposedtoplayer},
+			lifetime:180,
+			decayTo:benefactorf_rejectedplayer
 		},
+
+				{id:"benefactorm_rejectedplayer",
+		label: "提摩西·曼迪勋爵",
+		description:"提摩西勋爵不再送小纸条过来了。",
+		uniquenessgroup:"uqbenefactorm",
+		aspects:{mortal:1},
+			xtriggers:{killmortal:corpse},
+			icon:benefactorm
+		},
+				{id:"benefactorf_rejectedplayer",
+		label: "尼克尔，第四代斯坦福女侯爵",
+		description:"那位最让人崇敬的斯坦福女侯爵已广为告知，她也不太明白她为什么看上我。",
+		uniquenessgroup:"uqbenefactorf",
+		aspects:{mortal:1},
+			xtriggers:{killmortal:corpse},
+			icon:benefactorf
+		},
+						{id:"benefactorm_proposedtoplayer",
+		label: "提摩西·曼迪勋爵",
+		description:"在激情的推动下，提摩西勋爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在勋爵的激情衰退前跟他交谈，否则他会觉得自己被拒绝。]",
+		uniquenessgroup:"uqbenefactorm",
+		aspects:{mortal:1,benefactor_proposal:1},
+			xtriggers:{killmortal:benefactorwill},
+			lifetime:180,
+			decayTo:benefactorm_rejectedplayer,
+			icon:benefactorm
+		},
+				{id:"benefactorf_proposedtoplayer",
+		label: "尼克尔，第四代斯坦福女侯爵",
+		description:"在激情的推动下，那位最让人崇敬的斯坦福女侯爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在女侯爵的激情衰退前跟他交谈，否则她会觉得自己被拒绝。]",
+		uniquenessgroup:"uqbenefactorf",
+		aspects:{mortal:1,benefactor_proposal:1},
+			xtriggers:{killmortal:benefactorwill},
+				lifetime:180,
+			decayTo:benefactorf_rejectedplayer,
+			icon:benefactorf
+		},
+		
+								{id: "benefactorwill",
+	label: "亲爱的，过往的信笺",
+	description: "那些爱我的人已经死了。或许他们还给我遗留了些东西。我应该跟一名求婚者谈谈。[如果你想发展次故事线就行动吧……不过有小几率会让人产生怀疑。]",
+	slots:[{id:"lawyerfees",actionId:"study",label:"律师的费用",consumes:true,required:{funds:1}}],
+	aspects:{text:1},
+	icon:"documentgeneric"
 	},
-	{
-		id: "aladimready",
-		unique: "true",
-		aspects: 
-		{
-			tutor: "1",
-			patron: "1",
-			tutoraramaic: "1",
+		
+								{id:"sulochana",
+		label: "苏洛坎纳·阿马瓦尼亚",
+		description:"干练，雄健，有着闪亮眼眸的蜕变俱乐部的无可动摇的拥有者。",
+		animFrames: 1,
+		unique:true,
+		aspects:{tutorsanskrit:1,tutor:1,patron:1}
 		},
-		description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他可能会用到你的帮助。",
-		label: "伊本·阿迪姆博士",
-		xtriggers: 
-		{
-			killmortal: "rumour",
-			commissiongiven: "aladim",
-			derangemortal: "rumour",
+		
+				{id:"echidna.enroute",
+		label: "E夫人正在来的路上",
+		description:"E夫人，苏洛坎纳的“姐姐”，有着让人无法相信的“怪物之母”的称号。从未有人确切知道她的老巢在哪，但绝非海的这边。她还要花点时间才能抵达。",
+		unique:true,
+		lifetime:180,
+		decayTo:echidna
 		},
-	},
-	{
-		id: "bechet",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			tutor: "1",
-			tutorgreek: "1",
-			mortal: "1",
+		
+		{id:"echidna",
+		label: "E夫人",
+		description:"这位自封为“怪物之母”，欢快，胖胖的女性，穿着一件灰绿色像是宽松版阿尔卑斯山少女农装的衣服。",
+		aspects:{patron:1},
+		animFrames: 1,
+		unique:true,
 		},
-		description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她向你提出了一项委托。",
-		slots: 
-		[
-			{
-				id: "Commission",
-				required: 
-				{
-					commission: "1",
-				},
-				actionId: "talk",
-			},
-			{
-				id: "Manuscript",
-				required: 
-				{
-					article: "1",
-				},
-				actionId: "talk",
-			},
-		],
-		label: "贝赛女士",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-			commissionfulfilled: "bechetaway",
+		
+						{id:"marinette.enroute",
+		label: "提线圣母正在来的路上",
+		description:"苏洛坎纳的“姐姐”，有着不为人知的“提线圣母”称号。她很快就会抵达，就在夜间。",
+		unique:true,
+		lifetime:180,
+		decayTo:marinette
 		},
-	},
-	{
-		id: "bechetready",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			tutor: "1",
-			tutorgreek: "1",
-			mortal: "1",
+		
+		{id:"marinette",
+		label: "马里内特，“提线圣母”",
+		description:"她身上散发出腐败血液的恶臭，每次说话下颚骨会发出阵阵骇人的噼啪响。或许裹缩在衣服和骨头之下的真是一个女人，又或许只是某人的提线木偶罢了。",
+		aspects:{patron:1},
+		animFrames: 1,
+		unique:true,
 		},
-		description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她可能会用到你的帮助。",
-		label: "贝赛女士",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			commissiongiven: "bechet",
-			derangemortal: "lunatic",
+		
+				{id:"kleidouchos.enroute",
+		label: "施鲁塞尔女士，正在来的路上",
+		description:"特蕾莎·加尔米耶的“客户”，苏洛坎纳的“姐姐”，光阴之钥的所有者，正从维也纳赶来。",
+		aspects:{patron:1},
+		lifetime:180,
+		decayTo:kleidouchos
 		},
-	},
-	{
-		id: "jannings",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			tutor: "1",
-			mortal: "1",
-			tutorlatin: "1",
+		
+		{id:"kleidouchos",
+		label: "施鲁塞尔女士",
+		description:"一位身体瘦削，穿着黑白分明衣服的女性，她精神抖擞，富有魄力。她好像从未眨眼。一只小黑狗从她的裙底探出头来。",
+		aspects:{patron:1}
 		},
-		description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他向你提出了一项委托。",
-		slots: 
-		[
-			{
-				id: "Commission",
-				required: 
-				{
-					commission: "1",
-				},
-				actionId: "talk",
-			},
-			{
-				id: "Manuscript",
-				required: 
-				{
-					article: "1",
-				},
-				actionId: "talk",
-			},
-		],
-		label: "戈特·简宁伯爵",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-			commissionfulfilled: "janningsaway",
-		},
-	},
-	{
-		id: "janningsready",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			tutor: "1",
-			mortal: "1",
-			tutorlatin: "1",
-		},
-		description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他可能会用到你的帮助。",
-		label: "戈特·简宁伯爵",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			commissiongiven: "jannings",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "poppyready",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			mortal: "1",
-		},
-		description: "一个和蔼可亲的贵妇人。她想要和你谈谈。",
-		label: "波碧·拉塞尔斯",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "poppy",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			mortal: "1",
-		},
-		description: "一个和蔼可亲的贵妇人。",
-		label: "波碧·拉塞尔斯",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "poppycommissionready",
-		unique: "true",
-		aspects: 
-		{
-			patron: "1",
-			mortal: "1",
-		},
-		description: "一个和蔼可亲的贵妇人。她在某些事上需要你的帮助。",
-		icon: "poppyready",
-		label: "波碧·拉塞尔斯",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-			commissiongiven: "poppycommission",
-		},
-	},
-	{
-		unique: "true",
-		icon: "poppy",
-		aspects: 
-		{
-			patron: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			derangemortal: "lunatic",
-			commissionfulfilled: "poppyaway",
-		},
-		label: "波碧·拉塞尔斯",
-		id: "poppycommission",
-		description: "一个和蔼可亲的贵妇人。她向你提出了一项委托。",
-		slots: 
-		[
-			{
-				id: "Commission",
-				required: 
-				{
-					commission: "1",
-				},
-				actionId: "talk",
-			},
-			{
-				id: "Manuscript",
-				required: 
-				{
-					article: "1",
-				},
-				actionId: "talk",
-			},
-		],
-	},
-	{
-		id: "aladimaway",
-		description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他现在联系不上，不过很快会回来的。",
-		icon: "aladim",
-		decayTo: "aladimready",
-		label: "伊本·阿迪姆博士",
-		lifetime: "120",
-	},
-	{
-		id: "bechetaway",
-		description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她最近正忙着准备出版的事，但她很快会回来的。",
-		icon: "bechet",
-		decayTo: "bechetready",
-		label: "贝赛女士",
-		lifetime: "120",
-	},
-	{
-		id: "janningsaway",
-		description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他现在不在国内，但很快会回来的。",
-		icon: "jannings",
-		decayTo: "janningsready",
-		label: "戈特·简宁伯爵",
-		lifetime: "120",
-	},
-	{
-		id: "poppyaway",
-		description: "一个和蔼可亲的贵妇人。她现在不会见访客。",
-		icon: "poppy",
-		decayTo: "poppycommissionready",
-		label: "波碧·拉塞尔斯",
-		lifetime: "120",
-	},
-	{
-		uniquenessgroup: "uqbenefactorm",
-		comment: "NEW",
-		aspects: 
-		{
-			benefactor: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			avowal: "benefactorm_proposedtoplayer",
-			employment: "benefactorm",
-			killmortal: "corpse",
-			rejection: "benefactorm_rejectedplayer",
-		},
-		decayTo: "benefactorm_rejectedplayer",
-		label: "Lord Timothy Munday",
-		id: "benefactorm",
-		lifetime: "180",
-		description: "An elegant gentleman with sad eyes, receding hair, and a tendency to fits of friendly, braying, nervous laughter. He will no longer touch strong drink.",
-		slots: 
-		[
-			{
-				id: "health",
-				required: 
-				{
-					health: "1",
-				},
-				label: "Health",
-				actionId: "work",
-			},
-			{
-				id: "funds",
-				required: 
-				{
-					funds: "1",
-				},
-				label: "Glamour",
-				actionId: "work",
-			},
-		],
-	},
-	{
-		uniquenessgroup: "uqbenefactorf",
-		comment: "NEW",
-		aspects: 
-		{
-			benefactor: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			avowal: "benefactorf_proposedtoplayer",
-			employment: "benefactorf",
-			killmortal: "corpse",
-			rejection: "benefactorf_rejectedplayer",
-		},
-		decayTo: "benefactorf_rejectedplayer",
-		label: "Nicole, Fourth Marchioness of Stanford",
-		id: "benefactorf",
-		lifetime: "180",
-		description: "A cautious, clever woman with close-set eyes and excellent skin for her age. She has long managed her own financial affairs, and donates dutifully to charity.",
-		slots: 
-		[
-			{
-				id: "health",
-				required: 
-				{
-					health: "1",
-				},
-				label: "Health",
-				actionId: "work",
-			},
-			{
-				id: "funds",
-				required: 
-				{
-					funds: "1",
-				},
-				label: "Glamour",
-				actionId: "work",
-			},
-		],
-	},
-	{
-		id: "benefactorm_rejectedplayer",
-		comment: "NEW",
-		aspects: 
-		{
-			mortal: "1",
-		},
-		description: "Lord Timothy no longer sends me his little notes.",
-		icon: "benefactorm",
-		uniquenessgroup: "uqbenefactorm",
-		label: "Lord Timothy Munday",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-		},
-	},
-	{
-		id: "benefactorf_rejectedplayer",
-		comment: "NEW",
-		aspects: 
-		{
-			mortal: "1",
-		},
-		description: "The Most Honourable Marchioness of Stanford has been heard to declare that she doesn't quite understand exactly what she saw in me.",
-		icon: "benefactorf",
-		uniquenessgroup: "uqbenefactorf",
-		label: "Nicole, Fourth Marchioness of Stanford",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-		},
-	},
-	{
-		uniquenessgroup: "uqbenefactorm",
-		comment: "NEW",
-		icon: "benefactorm",
-		aspects: 
-		{
-			benefactor_proposal: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "benefactorwill",
-		},
-		decayTo: "benefactorm_rejectedplayer",
-		label: "Lord Timothy Munday",
-		id: "benefactorm_proposedtoplayer",
-		lifetime: "180",
-		description: "In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes, or he'll feel spurned.]",
-	},
-	{
-		uniquenessgroup: "uqbenefactorf",
-		comment: "NEW",
-		icon: "benefactorf",
-		aspects: 
-		{
-			benefactor_proposal: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "benefactorwill",
-		},
-		decayTo: "benefactorf_rejectedplayer",
-		label: "Nicole, Fourth Marchioness of Stanford",
-		id: "benefactorf_proposedtoplayer",
-		lifetime: "180",
-		description: "In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes, or she'll feel spurned.]",
-	},
-	{
-		id: "benefactorwill",
-		icon: "documentgeneric",
-		aspects: 
-		{
-			text: "1",
-		},
-		description: "Someone who loved me has died. Perhaps they left me something in their will. I should speak to a solicitor. [Take action if you wish to pursue the matter... but there is a small chance that suspicion may fall on you.]",
-		slots: 
-		[
-			{
-				id: "lawyerfees",
-				required: 
-				{
-					funds: "1",
-				},
-				consumes: "true",
-				label: "Lawyer's Fees",
-				actionId: "study",
-			},
-		],
-		comment: "NEW",
-		label: "Dearly Departed's Papers",
-	},
-	{
-		id: "sulochana",
-		unique: "true",
-		aspects: 
-		{
-			tutor: "1",
-			tutorsanskrit: "1",
-			patron: "1",
-		},
-		description: "The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
-		comment: "NEW",
-		label: "Sulochana Amavasya",
-	},
+		
+		
+		
 ]
-}
+};

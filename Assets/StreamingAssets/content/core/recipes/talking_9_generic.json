@@ -69,7 +69,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 label:"Arrange a meeting on neutral ground.",
 actionId: "talk",
 requirements: {independent: 1,society:-1,ritual:-1},
-slots: [{id:"Subject",description:"A topic of conversation."}],
+slots: [{id:"Subject",label:"Subject",description:"A topic of conversation."}],
 alternativerecipes:[
 {id:"A_follower_settrap_independent",chance:100},
 {id:"independentloreconversation",chance:100},
@@ -152,7 +152,7 @@ deckeffect: {troublemakerconversations:1}
 label:"Arrange a meeting with an adversary",
 actionId: "talk",
 requirements: {hunter: 1},
-slots: [{id:"Subject",description:"A topic of conversation... or a minion who will destroy them."}],
+slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a minion who will destroy them."}],
 alternativerecipes:[
 {id:"hunterfitewithextraswole"},
 {id:"hunterfitewithswole"},
@@ -186,7 +186,7 @@ craftable: true
 label:"Speak to something I have summoned",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:1},
-slots: [{id:"Subject",description:"A topic of conversation... or a target."}],
+slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a target."}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"discussfucinespirit"},

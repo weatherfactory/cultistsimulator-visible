@@ -1,293 +1,347 @@
 {"elements":
-    [
-								          {
-        id: "influenceedge",
-            label: "震颤的气息",
-            aspects:
-            {edge: 2,influence:1},
-            description: "感知变得敏锐了。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influenceedgec",
-            label: "激昂的气息",
-            aspects:
-            {edge: 6,influence:1},
-            description: "热情被点燃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-						          {
-        id: "influenceedgee",
-            label: "狂怒的气息",
-            aspects:
-            {edge: 10,influence:1},
-            description: "愤怒以各种形态彰显。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-								          {
-        id: "influenceedgeg",
-            label: "决议",
-            aspects:
-            {edge: 15,influence:1},
-            description: "谁能扭转最终战局？[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-		
-								          {
-        id: "influenceforge",
-            label: "兴起的热力",
-            aspects:
-            {forge: 2,influence:1},
-            description: "薄雾与微光。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influenceforgec",
-            label: "战栗的热力",
-            aspects:
-            {forge: 6,influence:1},
-            description: "迸出火花的可能性。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"fascination"
-        },
-						          {
-        id: "influenceforgee",
-            label: "擢升的热力",
-            aspects:
-            {forge: 10,influence:1},
-            description: "这是火山的边缘散发出的气息。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"fascination"
-        },
-								          {
-        id: "influenceforgeg",
-            label: "炽热",
-            aspects:
-            {forge: 15,influence:1},
-            description: "改变随着火焰而来。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"fascination"
-        },
-		
-		
-							          {
-        id: "influencegrail",
-            label: "欲望的醒觉",
-            aspects:
-            {grail: 2,influence:1},
-            description: "所有知觉都被增强；所有感情都被加深。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influencegrailc",
-            label: "欲望的促进",
-            aspects:
-            {grail: 6,influence:1},
-            description: "难以控制自己。[六阶的影响：显著的共鸣和关联。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-						          {
-        id: "influencegraile",
-            label: "欲望的势在必行",
-            aspects:
-            {grail: 10,influence:1},
-            description: "唇舌渴望着品尝，十指渴望着抓扼。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-								          {
-        id: "influencegrailg",
-            label: "转生而诞",
-            aspects:
-            {grail: 15,influence:1},
-            description: "那气息似乎非常鲜美多汁。一旦刺破，可能会鲜血直流。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-		
-							          {
-        id: "influenceheart",
-            label: "战栗的气息",
-            aspects:
-            {heart: 2,influence:1},
-            description: "轻点脚尖。轻快又舒适。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influenceheartc",
-            label: "脉动的气息",
-            aspects:
-            {heart: 6,influence:1},
-            description: "力量提升，精力充沛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"vitality"
-        },
-						          {
-        id: "influencehearte",
-            label: "重震的气息",
-            aspects:
-            {heart: 10,influence:1},
-            description: "世界随心而动。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"vitality"
-        },
-								          {
-        id: "influenceheartg",
-            label: "急迫",
-            aspects:
-            {heart: 15,influence:1},
-            description: "天空为鼓，大地已经准备好接受它的狂喜。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo:"vitality"
-        },
-		
-								          {
-        id: "influenceknock",
-            label: "细微瑕疵",
-            aspects:
-            {knock: 2,influence:1},
-            description: "蕾丝展平，窗户转开，锁芯像被润滑过那样动作。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influenceknockc",
-            label: "轻微破损",
-            aspects:
-            {knock: 6,influence:1},
-            description: "云彩分块，墙壁裂开，旧伤作痛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-						          {
-        id: "influenceknocke",
-            label: "轻微撕裂",
-            aspects:
-            {knock: 10,influence:1},
-            description: "几何扭曲，门扇爆开，蛇群在地上沸腾！[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-								          {
-        id: "influenceknockg",
-            label: "错误的门",
-            aspects:
-            {knock: 15,influence:1},
-            description: "那里有一扇不应该开启的门，即使现在它的合页正摇摇欲动。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "bloodshed"
-        },
-		
-								          {
-        id: "influencelantern",
-            label: "光辉的觉悟",
-            aspects:
-            {lantern: 2,influence:1},
-            description: "在世界背后，有这样一道光，凌驾于漫索之上，能够刺透玻璃与皮肤。它出现在了这里。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influencelanternc",
-            label: "光辉的强度",
-            aspects:
-            {lantern: 6,influence:1},
-            description: "光滴落在皮肤上，弥漫在空气中。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "fascination"
-        },
-						          {
-        id: "influencelanterne",
-            label: "光辉的炽烈",
-            aspects:
-            {lantern: 10,influence:1},
-            description: "所有的颜色都变得更明亮，仿佛新染过一样，但是，现在它们全都开始流失色彩漂向纯白。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "fascination"
-        },
-								          {
-        id: "influencelanterng",
-            label: "璀璨",
-            aspects:
-            {lantern: 15,influence:1},
-            description: "如果你喜欢，它能遮蔽你的双眼。它纯然而无目的。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "fascination"
-        },
-		
-						          {
-        id: "influencemoth",
-            label: "脑中的嗡鸣",
-            aspects:
-            {moth: 2,influence:1},
-            description: "IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI <b>飞旋 飞旋 飞旋</b>[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-								          {
-        id: "influencemothc",
-            label: "灵魂的躁动",
-            aspects:
-            {moth: 6,influence:1},
-            description: "噢，我们玩弄于鼓掌间的朋友，我们制造的虚假皮囊，依然在驱策着我们！[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "restlessness"
-        },
-						          {
-        id: "influencemothe",
-            label: "心灵的长啸",
-            aspects:
-            {moth: 10,influence:1},
-            description: "情感歪曲了我们的思想。一种热情轻易转化为另一种，就像被风卷起的叶子！[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "restlessness"
-        },
-								          {
-        id: "influencemothg",
-            label: "旧日的向往",
-            aspects:
-            {moth: 15,influence:1},
-            description: "“踏哒请来吧踏哒”",
-			lifetime: 60,
-			decayTo: "restlessness"
-        },
-		
-				          {
-        id: "influencewinter",
-            label: "寒凉的气场",
-            aspects:
-            {winter: 2,influence:1},
-            description: "一股特别的寒意徘徊于我的房间。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
-			lifetime: 60
-        },
-						          {
-        id: "influencewinterc",
-            label: "冰冻的气场",
-            aspects:
-            {winter: 6,influence:1},
-            description: "空气冻得皮肤发脆。霜结上了玻璃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "dread"
-        },
-						          {
-        id: "influencewintere",
-            label: "刺骨的气场",
-            aspects:
-            {winter: 10,influence:1},
-            description: "冬穿透了衣物，穿透了皮肤，宿居在血管里。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "dread"
-        },
-								          {
-        id: "influencewinterg",
-            label: "完美霜冻",
-            aspects:
-            {winter: 15,influence:1},
-            description: "这个世界死寂如冰，每一步都是一段旅程。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
-			lifetime: 60,
-			decayTo: "dread"
-        },
+[
+				  {
+id: "influenceedge",
+label: "震颤的气息",
+aspects:
+{edge: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>刃</b>之影响的对应物来强化它们。或者，用上<b>冬</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceedge:1,influencewinter:1,dread:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
+description: "感知变得敏锐了。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceedgec}
+},
+				  {
+id: "influenceedgec",
+label: "激昂的气息",
+aspects:
+{edge: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>刃</b>之影响的对应物来强化它们。或者，用上<b>冬</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceedgec:1,influencewinterc:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
+description: "热情被点燃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceedgee},
+decayTo: "influenceedge"
+},
+		  {
+id: "influenceedgee",
+label: "狂怒的气息",
+aspects:
+{edge: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>刃</b>之影响的对应物来强化它们。或者，用上<b>冬</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceedgee:1,influencewintere:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
+description: "愤怒以各种形态彰显。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceedgeg},
+decayTo: "influenceedgec"
+},
+				  {
+id: "influenceedgeg",
+label: "决议",
+aspects:
+{edge: 15,influence:1},
+description: "谁能扭转最终战局？[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo: "influenceedgee"
+},
+
+				  {
+id: "influenceforge",
+label: "兴起的热力",
+aspects:
+{forge: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>铸</b>之影响的对应物来强化它们。或者，用上<b>刃</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceforge:1,influenceedge:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentforgec:1,fragmentforged:1,fragmentforgee:1,fragmentforgef:1,fragmentforgeg:1},actionId:"study"}],
+description: "薄雾与微光。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceforgec}
+},
+				  {
+id: "influenceforgec",
+label: "战栗的热力",
+aspects:
+{forge: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>铸</b>之影响的对应物来强化它们。或者，用上<b>刃</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceforgec:1,influenceedgec:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentforgec:1,fragmentforged:1,fragmentforgee:1,fragmentforgef:1,fragmentforgeg:1},actionId:"study"}],
+description: "迸出火花的可能性。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceforgee},
+decayTo:"influenceforge"
+},
+		  {
+id: "influenceforgee",
+label: "擢升的热力",
+aspects:
+{forge: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>铸</b>之影响的对应物来强化它们。或者，用上<b>刃</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceforgee:1,influenceedgee:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentforgec:1,fragmentforged:1,fragmentforgee:1,fragmentforgef:1,fragmentforgeg:1},actionId:"study"}],
+description: "这是火山的边缘散发出的气息。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceforgeg},
+decayTo:"influenceforgec"
+},
+				  {
+id: "influenceforgeg",
+label: "炽热",
+aspects:
+{forge: 15,influence:1},
+description: "改变随着火焰而来。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo:"influenceforgee"
+},
+
+
+			  {
+id: "influencegrail",
+label: "欲望的醒觉",
+aspects:
+{grail: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>杯</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencegrail:1,influencemoth:1,glimmering:1,glimmeringplus:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentgrailc:1,fragmentgraild:1,fragmentgraile:1,fragmentgrailf:1,fragmentgrailg:1},actionId:"study"}],
+description: "所有知觉都被增强；所有感情都被加深。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc}
+},
+				  {
+id: "influencegrailc",
+label: "欲望的促进",
+aspects:
+{grail: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>杯</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencegrailc:1,influencemothc:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentgrailc:1,fragmentgraild:1,fragmentgraile:1,fragmentgrailf:1,fragmentgrailg:1},actionId:"study"}],
+description: "难以控制自己。[六阶的影响：显著的共鸣和关联。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencegraile},
+decayTo: "influencegrail"
+},
+		  {
+id: "influencegraile",
+label: "欲望的势在必行",
+aspects:
+{grail: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相同的<b>杯</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencegraile:1,influencemothe:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentgrailc:1,fragmentgraild:1,fragmentgraile:1,fragmentgrailf:1,fragmentgrailg:1},actionId:"study"}],
+description: "唇舌渴望着品尝，十指渴望着抓扼。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencegrailg},
+decayTo: "influencegrailc"
+},
+				  {
+id: "influencegrailg",
+label: "转生而诞",
+aspects:
+{grail: 15,influence:1},
+description: "那气息似乎非常鲜美多汁。一旦刺破，可能会鲜血直流。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo: "influencegraile"
+},
+
+			  {
+id: "influenceheart",
+label: "战栗的气息",
+aspects:
+{heart: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>心</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceheart:1,influencegrail:1,vitality:1,vitalityplus:1,contentment:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
+description: "轻点脚尖。轻快又舒适。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceheartc},
+decayTo:"vitality"
+},
+				  {
+id: "influenceheartc",
+label: "脉动的气息",
+aspects:
+{heart: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>心</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influenceheartc:1,influencegrailc:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
+description: "力量提升，精力充沛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencehearte},
+decayTo:"influenceheart"
+},
+		  {
+id: "influencehearte",
+label: "重震的气息",
+aspects:
+{heart: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>心</b>之影响的对应物来强化它们。或者，用上<b>蛾</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencehearte:1,influencegraile:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
+description: "世界随心而动。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceheartg},
+decayTo:"influenceheartc"
+},
+				  {
+id: "influenceheartg",
+label: "急迫",
+aspects:
+{heart: 15,influence:1},
+description: "天空为鼓，大地已经准备好接受它的狂喜。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo:"influencehearte"
+},
+
+				  {
+id: "influenceknock",
+label: "细微瑕疵",
+aspects:
+{knock: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"压力足够时，世界的外皮就会撕裂。添加任一影响，将其转化为更高阶的<b>启</b>之影响。",actionId:"study",required:{influenceedge:1,influenceforge:1,influencegrail:1,influenceheart:1,influenceknock:1,influencelantern:1,influencemoth:1,influencewinter:1,erudition:1,glimmering:1,vitality:1,eruditionplus:1,glimmeringplus:1,vitalityplus:1}},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentknockc:1,fragmentknockd:1,fragmentknocke:1,fragmentknockf:1,fragmentknockg:1},actionId:"study"}],
+description: "蕾丝展平，窗户转开，锁芯像被润滑过那样动作。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceknockc}
+},
+				  {
+id: "influenceknockc",
+label: "轻微破损",
+aspects:
+{knock: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"压力足够时，世界的外皮就会撕裂。添加相应的影响，将其转化为更高阶的<b>启</b>之影响。",actionId:"study",required:{influenceedgec:1,influenceforgec:1,influencegrailc:1,influenceheartc:1,influenceknockc:1,influencelanternc:1,influencemothc:1,influencewinterc:1}},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentknockc:1,fragmentknockd:1,fragmentknocke:1,fragmentknockf:1,fragmentknockg:1},actionId:"study"}],
+description: "云彩分块，墙壁裂开，旧伤作痛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceknocke},
+decayTo: "influenceknock"
+},
+		  {
+id: "influenceknocke",
+label: "轻微撕裂",
+aspects:
+{knock: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"压力足够时，世界的外皮就会撕裂。添加相应的影响，将其转化为更高阶的<b>启</b>之影响。",actionId:"study",required:{influenceedgee:1,influenceforgee:1,influencegraile:1,influencehearte:1,influenceknocke:1,influencelanterne:1,influencemothe:1,influencewintere:1}},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentknockc:1,fragmentknockd:1,fragmentknocke:1,fragmentknockf:1,fragmentknockg:1},actionId:"study"}],
+description: "几何扭曲，门扇爆开，蛇群在地上沸腾！[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influenceknockg},
+decayTo: "influenceknockc"
+},
+				  {
+id: "influenceknockg",
+label: "错误的门",
+aspects:
+{knock: 15,influence:1},
+description: "那里有一扇不应该开启的门，即使现在它的合页正摇摇欲动。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo: "influenceknocke"
+},
+
+				  {
+id: "influencelantern",
+label: "光辉的意识",
+aspects:
+{lantern: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>灯</b>之影响的对应物来强化它们。或者，用上<b>铸</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencelantern:1,influenceforge:1,erudition:1,eruditionplus:1,fascination:1,contentment:1,fleeting:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
+description: "在世界背后，有这样一道光，凌驾于漫索之上，能够刺透玻璃与皮肤。它出现在了这里。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencelanternc},
+decayTo: "fascination"
+},
+				  {
+id: "influencelanternc",
+label: "光辉的强度",
+aspects:
+{lantern: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>灯</b>之影响的对应物来强化它们。或者，用上<b>铸</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencelanternc:1,influenceforgec:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
+description: "光滴落在皮肤上，弥漫在空气中。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencelanterne},
+decayTo: "influencelantern"
+},
+		  {
+id: "influencelanterne",
+label: "光辉的炽烈",
+aspects:
+{lantern: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>灯</b>之影响的对应物来强化它们。或者，用上<b>铸</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencelanterne:1,influenceforgee:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
+description: "所有的颜色都变得更明亮，仿佛新染过一样，但是，现在它们全都开始流失色彩漂向纯白。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencelanterng},
+decayTo: "influencelanternc"
+},
+				  {
+id: "influencelanterng",
+label: "璀璨",
+aspects:
+{lantern: 15,influence:1},
+
+description: "如果你喜欢，它能遮蔽你的双眼。它纯然而无目的。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
+lifetime: 60,
+decayTo: "influencelanterne"
+},
+
+		  {
+id: "influencemoth",
+label: "脑中的嗡鸣",
+aspects:
+{moth: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>蛾</b>之影响的对应物来强化它们。或者，用上<b>灯</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencemoth:1,influencelantern:1,erudition:1,eruditionplus:1,glimmering:1,glimmeringplus:1,fascination:1,fleeting:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+description: "IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI <b>喀嚓喀嚓喀嚓</b>[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencemothc},
+decayTo: "restlessness"
+},
+				  {
+id: "influencemothc",
+label: "灵魂的躁动",
+aspects:
+{moth: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>蛾</b>之影响的对应物来强化它们。或者，用上<b>灯</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencemothc:1,influencelanternc:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+description: "噢，我们玩弄于鼓掌间的朋友，我们制造的虚假皮囊，依然在驱策着我们！[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencemothe},
+decayTo: "influencemoth"
+},
+		  {
+id: "influencemothe",
+label: "心灵的长啸",
+aspects:
+{moth: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>蛾</b>之影响的对应物来强化它们。或者，用上<b>灯</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencemothe:1,influencelanterne:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+description: "情感歪曲了我们的思想。一种热情轻易转化为另一种，就像被风卷起的叶子！[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencemothg},
+decayTo: "influencemothc"
+},
+				  {
+id: "influencemothg",
+label: "旧日的向往",
+aspects:
+{moth: 15,influence:1},
+description: "			
+please",		
+lifetime: 60,
+decayTo: "influencemothe"
+},
+
+  {
+id: "influencewinter",
+label: "寒凉的气场",
+aspects:
+{winter: 2,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>冬</b>之影响的对应物来强化它们。或者，用上<b>心</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencewinter:1,influenceheart:1,vitality:1,vitalityplus:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentwinterc:1,fragmentwinterd:1,fragmentwintere:1,fragmentwinterf:1,fragmentwinterg:1},actionId:"study"}],
+description: "一股特别的寒意徘徊于我的房间。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下，并且会在某些手下被摧毁时遗留。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencewinterc},
+decayTo: "dread"
+},
+		  {
+id: "influencewinterc",
+label: "冰冻的气场",
+aspects:
+{winter: 6,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>冬</b>之影响的对应物来强化它们。或者，用上<b>心</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencewinterc:1,influenceheartc:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentwinterc:1,fragmentwinterd:1,fragmentwintere:1,fragmentwinterf:1,fragmentwinterg:1},actionId:"study"}],
+description: "空气冻得皮肤发脆。霜结上了玻璃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。如果不使用，将会变为恐惧。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencewintere},
+decayTo: "influencewinter"
+},
+		  {
+id: "influencewintere",
+label: "刺骨的气场",
+aspects:
+{winter: 10,influence:1},
+slots:[{id:"with",label:"加上",description:"研究两份相应的<b>冬</b>之影响的对应物来强化它们。或者，用上<b>心</b>之影响，研究其受侵蚀的过程来转化它。",required:{influencewintere:1,influencehearte:1},actionId:"study"},
+{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关知识中有坚实的基础。]",required:{fragmentwinterc:1,fragmentwinterd:1,fragmentwintere:1,fragmentwinterf:1,fragmentwinterg:1},actionId:"study"}],
+description: "冬穿透了衣物，穿透了皮肤，宿居在血管里。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。如果不使用，将会变为恐惧。]",
+lifetime: 60,xtriggers:{upgradeinfluence:influencewinterg},
+decayTo: "influencewinterc"
+},
+				  {
+id: "influencewinterg",
+label: "完美霜冻",
+aspects:
+{winter: 15,influence:1},
+description: "这个世界死寂如冰，每一步都是一段旅程。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。如果不使用，将会变为恐惧。]",
+lifetime: 60,
+decayTo: "influencewintere"
+},
 
 ]
 };

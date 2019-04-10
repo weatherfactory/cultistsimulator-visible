@@ -22,6 +22,7 @@ namespace Assets.Core.Utility
         private const string CONST_VERBS = "verbs";
         private const string CONST_DECKS = "decks";
         private const string CONST_LEGACIES = "legacies";
+        private const string CONST_ENDINGS = "endings";
         private const string CONST_DLC = "DLC";
         private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
@@ -186,6 +187,7 @@ namespace Assets.Core.Utility
             MoveDLCContent(target, CONST_VERBS);
             MoveDLCContent(target, CONST_DECKS);
             MoveDLCContent(target, CONST_LEGACIES);
+            MoveDLCContent(target, CONST_ENDINGS);
         }
 
         private static string GetCoreContentPath(BuildTarget target)

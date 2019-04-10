@@ -210,17 +210,31 @@ namespace Assets.CS.TabletopUI {
         
         #region -- Do Drag ------------------------------------
 
-        public void OnDrag(PointerEventData eventData) {
+        public void OnDrag(PointerEventData eventData)
+		{
             if (itemBeingDragged != this)
                 return;
 
-            if (draggingEnabled) {
+            if (draggingEnabled)
+			{
                 MoveObject(eventData);
             }
-            else {
+            else
+			{
                 eventData.pointerDrag = null; // cancel the drag
                 OnEndDrag(eventData);
             }
+        }
+
+        public void OnMove(PointerEventData eventData)
+		{
+			if (TabletopManager.GetStickyDrag())
+			{
+				if (DraggableToken.itemBeingDragged == this)
+				{
+					OnDrag(eventData);
+				}
+			}
         }
 
         public void MoveObject(PointerEventData eventData) {

@@ -488,7 +488,7 @@
         actionId: "cult",
         requirements: {},
         effects: {},
-		slots: [{id:"Doctrine",required: {lore: 1},description: "What do we seek?"}],
+		slots: [{id:"Doctrine",label:"Doctrine",required: {lore: 1},description: "What do we seek?"}],
         startdescription: "Tradition and compulsion - old, new, or both together. [Add Lore to determine your cult's founding principles.]",
         description: "",
         warmup: 30,

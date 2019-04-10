@@ -136,8 +136,9 @@ public class LanguageTable : MonoBehaviour
 	{
 		if (locTriplets == null)
 		{
-			Debug.LogError("locTriplets garbage collected!? Something badly wrong...");
-			return null;
+			Debug.LogWarning("locTriplets is null!? Is something holding strings.csv open?");
+			//PlayerPrefs.SetString( "Culture", "en" );
+			return "ERROR";
 		}
 
 		int tgtHash = Animator.StringToHash( id );

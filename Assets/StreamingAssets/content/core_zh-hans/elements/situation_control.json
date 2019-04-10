@@ -9,6 +9,30 @@
 		label: "出价",
 		description: "在拍卖行中出价。",
 		xtriggers:{restore:funds}
+		},
+		{id:"abductioninprogress",
+		label:"上锁的牢房",
+		description:"他们说，思想是自由的，但是思想被束缚在肉体上。",
+		lifetime:1,
+		icon: "seal_wardeddoor"
+		},
+				{id:"assassinationinprogress.player",
+		label:"暗杀",
+		description:"这将会以死亡告终。或许也可能是以我的死亡而告终。",
+		lifetime:1,
+		icon: "dread"
+		},
+						{id:"assassinationinprogress.follower",
+		label:"暗杀",
+		description:"这将以死亡告终——他们的，或者我们的。",
+		lifetime:1,
+		icon: "dread"
+		},
+				{id:"scandalinprogress",
+		label:"邪恶的流言",
+		description:"他们所说的只是真理的影子，但是通过影子我们被发现了。",
+		lifetime:1,
+		icon: "notoriety"
 		}
 ]
 };

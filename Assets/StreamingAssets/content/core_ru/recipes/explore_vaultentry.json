@@ -4,6 +4,22 @@ recipes: [
 		linked: 
 		[
 			{
+				id: "explorevault.add.watchers",
+				comment: "NEW",
+			},
+			{
+				id: "explorevault.add.monks",
+				comment: "NEW",
+			},
+			{
+				id: "explorevault.add.dead",
+				comment: "NEW",
+			},
+			{
+				id: "explorevault.add.serpent",
+				comment: "NEW",
+			},
+			{
 				id: "explorevaulttick",
 				chance: "100",
 			},
@@ -19,6 +35,86 @@ recipes: [
 		startdescription: "У моих агентов есть возможность послужить мне. Будем надеяться, что для всех нас всё кончится хорошо.",
 		id: "explorevault_expeditionbegun",
 		description: ".",
+		actionId: "explore",
+	},
+	{
+		id: "explorevault.add.watchers",
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+			},
+		],
+		requirements: 
+		{
+			guardian_watchers_pre: "1",
+			guardian_watchers: "-1",
+		},
+		effects: 
+		{
+			guardian_watchers: "1",
+		},
+		comment: "NEW",
+		actionId: "explore",
+	},
+	{
+		id: "explorevault.add.monks",
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+			},
+		],
+		requirements: 
+		{
+			guardian_monks_pre: "1",
+			guardian_monks: "-1",
+		},
+		effects: 
+		{
+			guardian_monks: "1",
+		},
+		comment: "NEW",
+		actionId: "explore",
+	},
+	{
+		id: "explorevault.add.dead",
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+			},
+		],
+		requirements: 
+		{
+			guardian_dead_pre: "1",
+			guardian_dead: "-1",
+		},
+		effects: 
+		{
+			guardian_dead: "1",
+		},
+		comment: "NEW",
+		actionId: "explore",
+	},
+	{
+		id: "explorevault.add.serpent",
+		linked: 
+		[
+			{
+				id: "explorevault_expeditionbegun",
+			},
+		],
+		requirements: 
+		{
+			guardian_serpent: "-1",
+			guardian_serpent_pre: "1",
+		},
+		effects: 
+		{
+			guardian_serpent: "1",
+		},
+		comment: "NEW",
 		actionId: "explore",
 	},
 	{
@@ -222,7 +318,6 @@ recipes: [
 			},
 			{
 				id: "explorevaultcapital5_success",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -247,7 +342,6 @@ recipes: [
 			},
 			{
 				id: "explorevaultshires5_success",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -272,12 +366,10 @@ recipes: [
 			},
 			{
 				id: "explorevaultcontinent5_success",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
 				id: "explorevaultcontinent6_success",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -302,7 +394,6 @@ recipes: [
 			},
 			{
 				id: "explorevaultlandbeyondforest5_success",
-				comment: "NEW",
 				chance: "100",
 			},
 			{
@@ -369,6 +460,11 @@ recipes: [
 				id: "explorevaulteveningislesdefault_success",
 				chance: "100",
 			},
+			{
+				id: "explorevaultfloating1_success",
+				comment: "NEW",
+				chance: "100",
+			},
 		],
 		startdescription: "Успех! Скоро узнаю подробности...",
 		description: ".",
@@ -412,15 +508,15 @@ recipes: [
 	},
 	{
 		id: "explorevault_casualty_summoning",
+		aspects: 
+		{
+			killsummoned: "1",
+		},
 		requirements: 
 		{
 			summoned: "1",
 		},
 		description: "It is banished, or destroyed.",
-		effects: 
-		{
-			summoned: "-1",
-		},
 		label: "My summoning has been defeated!",
 		actionId: "explorevault_casualty",
 	},

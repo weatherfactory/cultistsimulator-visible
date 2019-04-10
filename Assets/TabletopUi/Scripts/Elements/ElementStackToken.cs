@@ -662,16 +662,6 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Interaction ------------------------------------------------------------------------------------
 
-		IEnumerator DelayedShowCardDetails()
-		{
-			yield return new WaitForSeconds(.5f);
-			if (singleClickPending)
-			{
-				notifier.ShowCardElementDetails(this._element, this);
-				singleClickPending = false;
-			}
-		}
-
 		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
 		{
 			List<TabletopUi.TokenAndSlot> results = new List<TabletopUi.TokenAndSlot>();
@@ -783,8 +773,18 @@ namespace Assets.CS.TabletopUI {
 				if (isFront)
 				{
 					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
-					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
 					notifier.ShowCardElementDetails(this._element, this);
+					if (TabletopManager.GetStickyDrag())
+					{
+						if (DraggableToken.itemBeingDragged != null)
+						{
+							OnEndDrag( eventData );
+						}
+						else
+						{
+							OnBeginDrag( eventData );
+						}
+					}
 				}
 				else
 				{

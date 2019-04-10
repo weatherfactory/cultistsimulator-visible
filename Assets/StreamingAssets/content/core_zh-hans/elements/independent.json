@@ -1,1771 +1,807 @@
-﻿{
-elements: [
-	{
-		id: "generic_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "毫无是非观念的人。",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "捣乱分子",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-			rival_promotion: "generic_r_c",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		icon: "auclair_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_b",
-			derangemortal: "lunatic",
-			rival_promotion: "auclair_r_c",
-		},
-		label: "捣乱分子奥克莱尔",
-		id: "auclair_r",
-		description: "奥克莱尔喜欢国际象棋，现在则更进一步。黑白对立，判然二分。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		icon: "cat_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_b",
-			derangemortal: "lunatic",
-			rival_promotion: "cat_r_c",
-		},
-		label: "捣乱分子卡特·卡罗",
-		id: "cat_r",
-		description: "她称呼自己为“卡特·卡罗”。她曾是一名算命师，而现在则无人知晓。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		icon: "clifton_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_b",
-			derangemortal: "lunatic",
-			rival_promotion: "clifton_r_c",
-		},
-		label: "捣乱分子“教皇”克利夫顿",
-		id: "clifton_r",
-		description: "克利夫顿喜欢被人称为“圣·克利夫顿大人”。如果有人不这么称呼他，他要表现的可就不那么神圣了。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		icon: "clovette_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_b",
-			derangemortal: "lunatic",
-			rival_promotion: "clovette_r_c",
-		},
-		label: "捣乱分子克罗薇特",
-		id: "clovette_r",
-		description: "即使知道她的行径，也很难讨厌克罗薇特。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_b",
-			derangemortal: "lunatic",
-			rival_promotion: "dorothy_r_c",
-		},
-		label: "捣乱分子多萝西",
-		id: "dorothy_r",
-		description: "多萝西不会停止，她永远不会停止。她曾对此发誓。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "defaulthunter",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_b",
-			derangemortal: "lunatic",
-			rival_promotion: "douglas_r_c",
-		},
-		label: "Douglas, a troublemaker",
-		id: "douglas_r",
-		description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "埃尔里奇的鞋子上总是有斑斑血迹。",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "捣乱分子埃尔里奇",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_b",
-			derangemortal: "lunatic",
-			rival_promotion: "elridge_r_c",
-		},
-	},
-	{
-		id: "enid_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "伊妮德总能提前发现敌人来袭，每次都是如此。",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "捣乱分子伊妮德",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_b",
-			derangemortal: "lunatic",
-			rival_promotion: "enid_r_c",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_b",
-			derangemortal: "lunatic",
-			rival_promotion: "laidlaw_r_c",
-		},
-		label: "捣乱分子莱德劳",
-		id: "laidlaw_r",
-		description: "莱德劳的计划总是宛如蕨类阴影般错综复杂。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		icon: "leo_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_b",
-			derangemortal: "lunatic",
-			rival_promotion: "leo_r_c",
-		},
-		label: "捣乱分子里奥",
-		id: "leo_r",
-		description: "里奥已经选定了他的事业，而他将尽己所能来保护它。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_b",
-			derangemortal: "lunatic",
-			rival_promotion: "neville_r_c",
-		},
-		label: "捣乱分子内维尔",
-		id: "neville_r",
-		description: "内维尔知道这不是长久之计。但上帝作证，他会打开每一扇门，无论它们以什么样的形式出现。",
-		animFrames: "1",
-		image: "neville_r",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		icon: "porter_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_b",
-			derangemortal: "lunatic",
-			rival_promotion: "porter_r_c",
-		},
-		label: "捣乱分子波特",
-		id: "porter_r",
-		description: "波特已经开始编排名单了。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		icon: "renira_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_b",
-			derangemortal: "lunatic",
-			rival_promotion: "renira_r_c",
-		},
-		label: "捣乱分子芮妮拉",
-		id: "renira_r",
-		description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		icon: "rose_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_b",
-			derangemortal: "lunatic",
-			rival_promotion: "rose_r_c",
-		},
-		label: "捣乱分子萝丝",
-		id: "rose_r",
-		description: "萝丝早已不再畏惧她的敌人。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		icon: "saliba_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_b",
-			derangemortal: "lunatic",
-			rival_promotion: "saliba_r_c",
-		},
-		label: "捣乱分子萨利巴",
-		id: "saliba_r",
-		description: "萨利巴无法忍受枯燥。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		icon: "slee_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_b",
-			derangemortal: "lunatic",
-			rival_promotion: "slee_r_c",
-		},
-		label: "捣乱分子思雷",
-		id: "slee_r",
-		description: "思雷总是渴望更多资源来推进她的理论。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_b",
-			derangemortal: "lunatic",
-			rival_promotion: "sylvia_r_c",
-		},
-		label: "捣乱分子西尔维娅",
-		id: "sylvia_r",
-		description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		icon: "tristan_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_b",
-			derangemortal: "lunatic",
-			rival_promotion: "tristan_r_c",
-		},
-		label: "捣乱分子崔斯坦",
-		id: "tristan_r",
-		description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火……",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		icon: "valciane_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_b",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_c",
-		},
-		label: "捣乱分子万查妮",
-		id: "valciane_r",
-		description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		icon: "victor_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_b",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_c",
-		},
-		label: "捣乱分子维克多",
-		id: "victor_r",
-		description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		icon: "violet_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_b",
-			derangemortal: "lunatic",
-			rival_promotion: "violet_r_c",
-		},
-		label: "捣乱分子维奥莱特",
-		id: "violet_r",
-		description: "维奥莱特找到了新的乐子。",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_b",
-			derangemortal: "lunatic",
-			rival_promotion: "ysabet_r_c",
-		},
-		label: "捣乱分子乌赛贝",
-		id: "ysabet_r",
-		description: "乌赛贝躲藏在阴影中等待。",
-		animFrames: "1",
-	},
-	{
-		id: "generic_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Someone who's lost all sense of proportion.",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "A Rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-			rival_promotion: "generic_r_d",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		comment: "NEW",
-		icon: "auclair_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_c",
-			derangemortal: "lunatic",
-			rival_promotion: "auclair_r_d",
-		},
-		label: "Auclair, a rival",
-		id: "auclair_r_c",
-		description: "Auclair enjoys chess, now more than ever. The black, the white.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		comment: "NEW",
-		icon: "cat_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_c",
-			derangemortal: "lunatic",
-			rival_promotion: "cat_r_d",
-		},
-		label: "Cat Caro, a rival",
-		id: "cat_r_c",
-		description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one seems to know exactly what she is now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		comment: "NEW",
-		icon: "clifton_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_c",
-			derangemortal: "lunatic",
-			rival_promotion: "clifton_r_d",
-		},
-		label: "'Pope' Clifton, a rival",
-		id: "clifton_r_c",
-		description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		comment: "NEW",
-		icon: "clovette_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_c",
-			derangemortal: "lunatic",
-			rival_promotion: "clovette_r_d",
-		},
-		label: "Clovette, a rival",
-		id: "clovette_r_c",
-		description: "It's difficult to dislike Clovette, even when one knows what she's done.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "connie_c",
-			derangemortal: "lunatic",
-			rival_promotion: "connie_r_d",
-		},
-		label: "Connie, a renegade",
-		id: "connie_r_c",
-		description: "Connie's... Connie's thinking things over.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		comment: "NEW",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_c",
-			derangemortal: "lunatic",
-			rival_promotion: "dorothy_r_d",
-		},
-		label: "Dorothy, a rival",
-		id: "dorothy_r_c",
-		description: "Dorothy will not cease. She will never cease. She has vowed as much.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_c",
-			derangemortal: "lunatic",
-			rival_promotion: "douglas_r_d",
-		},
-		label: "Douglas, a rival",
-		id: "douglas_r_c",
-		description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Elridge's shoes are often spotted with blood.",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "Elridge, a rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_c",
-			derangemortal: "lunatic",
-			rival_promotion: "elridge_r_d",
-		},
-	},
-	{
-		id: "enid_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Enid always sees her enemies coming. All the time.",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "Enid, a rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_c",
-			derangemortal: "lunatic",
-			rival_promotion: "enid_r_d",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		comment: "NEW",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_c",
-			derangemortal: "lunatic",
-			rival_promotion: "laidlaw_r_d",
-		},
-		label: "Laidlaw, a rival",
-		id: "laidlaw_r_c",
-		description: "Laidlaw's schemes are intricate as fern-shadow.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		comment: "NEW",
-		icon: "leo_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_c",
-			derangemortal: "lunatic",
-			rival_promotion: "leo_r_d",
-		},
-		label: "Leo, a rival",
-		id: "leo_r_c",
-		description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "natalia_c",
-			derangemortal: "lunatic",
-			rival_promotion: "natalia_r_d",
-		},
-		label: "Natalia, a renegade",
-		id: "natalia_r_c",
-		description: "Natalia has learnt truths that were too long hidden. In consequence, she has adjusted her agenda.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		comment: "NEW",
-		icon: "neville_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_c",
-			derangemortal: "lunatic",
-			rival_promotion: "neville_r_d",
-		},
-		label: "Neville, a rival",
-		id: "neville_r_c",
-		description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		comment: "NEW",
-		icon: "porter_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_c",
-			derangemortal: "lunatic",
-			rival_promotion: "porter_r_d",
-		},
-		label: "Porter, a rival",
-		id: "porter_r_c",
-		description: "Porter has begun to collect names.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		comment: "NEW",
-		icon: "renira_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_c",
-			derangemortal: "lunatic",
-			rival_promotion: "renira_r_d",
-		},
-		label: "Renira, a rival",
-		id: "renira_r_c",
-		description: "Renira likes to convert admirers into worshippers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		comment: "NEW",
-		icon: "rose_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_c",
-			derangemortal: "lunatic",
-			rival_promotion: "rose_r_d",
-		},
-		label: "Rose, a rival",
-		id: "rose_r_c",
-		description: "Rose has long since ceased to fear her enemies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		comment: "NEW",
-		icon: "saliba_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_c",
-			derangemortal: "lunatic",
-			rival_promotion: "saliba_r_d",
-		},
-		label: "Saliba, a rival",
-		id: "saliba_r_c",
-		description: "Saliba does not tolerate boredom.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		comment: "NEW",
-		icon: "slee_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_c",
-			derangemortal: "lunatic",
-			rival_promotion: "slee_r_d",
-		},
-		label: "Slee, a rival",
-		id: "slee_r_c",
-		description: "Slee is always hungry for resources to pursue his theories.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "spencer_c",
-			derangemortal: "lunatic",
-			rival_promotion: "spencer_r_d",
-		},
-		label: "Spencer, a renegade",
-		id: "spencer_r_c",
-		description: "For so long, Spencer flirted with these possibilities... and now he's made his decision.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		comment: "NEW",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_c",
-			derangemortal: "lunatic",
-			rival_promotion: "sylvia_r_d",
-		},
-		label: "Sylvia, a rival",
-		id: "sylvia_r_c",
-		description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		comment: "NEW",
-		icon: "tristan_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_c",
-			derangemortal: "lunatic",
-			rival_promotion: "tristan_r_d",
-		},
-		label: "Tristan, a rival",
-		id: "tristan_r_c",
-		description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		comment: "NEW",
-		icon: "valciane_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_c",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_d",
-		},
-		label: "Valciane, a rival",
-		id: "valciane_r_c",
-		description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		comment: "NEW",
-		icon: "victor_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_c",
-			derangemortal: "lunatic",
-			rival_promotion: "victor_r_d",
-		},
-		label: "Victor, a rival",
-		id: "victor_r_c",
-		description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		comment: "NEW",
-		icon: "violet_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_c",
-			derangemortal: "lunatic",
-			rival_promotion: "violet_r_d",
-		},
-		label: "Violet, a rival",
-		id: "violet_r_c",
-		description: "Violet has found new hobbies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		comment: "NEW",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_c",
-			derangemortal: "lunatic",
-			rival_promotion: "ysabet_r_d",
-		},
-		label: "Ysabet, a rival",
-		id: "ysabet_r_c",
-		description: "Ysabet waits where she cannot be seen.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "zachary_c",
-			derangemortal: "lunatic",
-			rival_promotion: "zachary_r_d",
-		},
-		label: "Zachary, a renegade",
-		id: "zachary_r_c",
-		description: "Zachary has always followed his reasoning wherever it leads: and now, it has led him out of the Suppression Bureau, into a bitter dawn.",
-		animFrames: "1",
-	},
-	{
-		id: "generic_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Someone who's lost all sense of proportion.",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "A Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		comment: "NEW",
-		icon: "auclair_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_d",
-			derangemortal: "lunatic",
-		},
-		label: "Auclair, a Long in the making",
-		id: "auclair_r_d",
-		description: "Auclair enjoys chess, now more than ever. The black, the white.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		comment: "NEW",
-		icon: "cat_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_d",
-			derangemortal: "lunatic",
-		},
-		label: "Cat Caro, a Long in the making",
-		id: "cat_r_d",
-		description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one seems to know exactly what she is now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		comment: "NEW",
-		icon: "clifton_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_d",
-			derangemortal: "lunatic",
-		},
-		label: "'Pope' Clifton, a Long in the making",
-		id: "clifton_r_d",
-		description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		comment: "NEW",
-		icon: "clovette_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_d",
-			derangemortal: "lunatic",
-		},
-		label: "Clovette, a Long in the making",
-		id: "clovette_r_d",
-		description: "It's difficult to dislike Clovette, even when one knows what she's done.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "connie_d",
-			derangemortal: "lunatic",
-		},
-		label: "Connie, a Long in the making",
-		id: "connie_r_d",
-		description: "Connie never could resist a challenge.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		comment: "NEW",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_d",
-			derangemortal: "lunatic",
-		},
-		label: "Dorothy, a Long in the making",
-		id: "dorothy_r_d",
-		description: "Dorothy will not cease. She will never cease. She has vowed as much.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_d",
-			derangemortal: "lunatic",
-		},
-		label: "Douglas, a Long in the Making",
-		id: "douglas_r_d",
-		description: "Douglas has found the fire.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Elridge's shoes are often spotted with blood.",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "Elridge, a Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "enid_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Enid always sees her enemies coming. All the time.",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "Enid, a Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		comment: "NEW",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_d",
-			derangemortal: "lunatic",
-		},
-		label: "Laidlaw, a Long in the making",
-		id: "laidlaw_r_d",
-		description: "Laidlaw's schemes are intricate as fern-shadow.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		comment: "NEW",
-		icon: "leo_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_d",
-			derangemortal: "lunatic",
-		},
-		label: "Leo, a Long in the making",
-		id: "leo_r_d",
-		description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "natalia_d",
-			derangemortal: "lunatic",
-		},
-		label: "Natalia, a Long in the making",
-		id: "natalia_r_d",
-		description: "Natalia has learnt so much, and at such cost. She won't stop now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		comment: "NEW",
-		icon: "neville_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_d",
-			derangemortal: "lunatic",
-		},
-		label: "Neville, a Long in the making",
-		id: "neville_r_d",
-		description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		comment: "NEW",
-		icon: "porter_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_d",
-			derangemortal: "lunatic",
-		},
-		label: "Porter, a Long in the making",
-		id: "porter_r_d",
-		description: "Porter has begun to collect names.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		comment: "NEW",
-		icon: "renira_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_d",
-			derangemortal: "lunatic",
-		},
-		label: "Renira, a Long in the making",
-		id: "renira_r_d",
-		description: "Renira likes to convert admirers into worshippers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		comment: "NEW",
-		icon: "rose_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_d",
-			derangemortal: "lunatic",
-		},
-		label: "Rose, a Long in the making",
-		id: "rose_r_d",
-		description: "Rose has long since ceased to fear her enemies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		comment: "NEW",
-		icon: "saliba_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_d",
-			derangemortal: "lunatic",
-		},
-		label: "Saliba, a Long in the making",
-		id: "saliba_r_d",
-		description: "Saliba does not tolerate boredom.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		comment: "NEW",
-		icon: "slee_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_d",
-			derangemortal: "lunatic",
-		},
-		label: "Slee, a Long in the making",
-		id: "slee_r_d",
-		description: "Slee is always hungry for resources to pursue his theories.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "spencer_d",
-			derangemortal: "lunatic",
-		},
-		label: "Spencer, a Long in the making",
-		id: "spencer_r_d",
-		description: "Spencer will no longer permit anything to be kept from him. Now he approaches the final threshold.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		comment: "NEW",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_d",
-			derangemortal: "lunatic",
-		},
-		label: "Sylvia, a Long in the making",
-		id: "sylvia_r_d",
-		description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		comment: "NEW",
-		icon: "tristan_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_d",
-			derangemortal: "lunatic",
-		},
-		label: "Tristan, a Long in the making",
-		id: "tristan_r_d",
-		description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		comment: "NEW",
-		icon: "valciane_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_d",
-			derangemortal: "lunatic",
-		},
-		label: "Valciane, a Long in the making",
-		id: "valciane_r_d",
-		description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		comment: "NEW",
-		icon: "victor_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_d",
-			derangemortal: "lunatic",
-		},
-		label: "Victor, a Long in the making",
-		id: "victor_r_d",
-		description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		comment: "NEW",
-		icon: "violet_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_d",
-			derangemortal: "lunatic",
-		},
-		label: "Violet, a Long in the making",
-		id: "violet_r_d",
-		description: "Violet has found new hobbies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		comment: "NEW",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_d",
-			derangemortal: "lunatic",
-		},
-		label: "Ysabet, a Long in the making",
-		id: "ysabet_r_d",
-		description: "Ysabet waits where she cannot be seen.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "zachary_d",
-			derangemortal: "lunatic",
-		},
-		label: "Zachary, a Long in the making",
-		id: "zachary_r_d",
-		description: "Zachary approaches his inevitable conclusion.",
-		animFrames: "1",
-	},
-]
-}
+{"elements":
+    [
+							 {
+        id: "generic_r",
+             label: "捣乱分子",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2,suspicious:1},
+            description: "毫无是非观念的人。",
+			animFrames: 1,
+			icon:"generic_c_edge",
+			xtriggers: {rival_promotion:generic_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+        },
+								 {
+        id: "auclair_r",
+            icon:"auclair_r", label: "捣乱分子奥克莱尔",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "奥克莱尔喜欢国际象棋，现在则更进一步。黑白对立，判然二分。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:auclair_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:auclair_b},
+			uniquenessgroup:"uqauclair"
+        },
+				 {
+        id: "cat_r",
+            icon:"cat_r", label: "捣乱分子卡特·卡罗",
+            aspects:
+            {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
+            description: "她称呼自己为“卡特·卡罗”。她曾是一名算命师，而现在则似乎无人知晓。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:cat_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:cat_b},
+			uniquenessgroup:"uqcat"
+        },
+
+									 {
+        id: "clifton_r",
+            icon:"clifton_r", label: "捣乱分子“教皇”克利夫顿",
+            aspects:
+            {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
+            description: "克利夫顿喜欢被人称为“圣·克利夫顿大人”。如果有人不这么称呼他，他要表现的可就不那么神圣了。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:clifton_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:clifton_b},
+			uniquenessgroup:"uqclifton"
+        },
+	
+		 {
+        id: "clovette_r",
+            icon:"clovette_r", label: "捣乱分子克罗薇特",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "即使知道她的行径，也很难讨厌克罗薇特。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:clovette_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_b},
+			uniquenessgroup:"uqclovette"
+        },
+	
+		 {
+        id: "dorothy_r",
+            icon:"dorothy_r", label: "捣乱分子多萝西",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "多萝西不会停止，她永远不会停止。她曾对此发誓。",
+			animFrames: 1,
+				xtriggers: {rival_promotion:dorothy_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_b},
+			uniquenessgroup:"uqdorothy"
+        },
+						 {
+        id: "douglas_r",
+            icon:"defaulthunter", label: "捣乱分子道格拉斯",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "道格拉斯忍无可忍了。该看看他都是在大惊小怪些什么了。",
+			animFrames: 1,
+				xtriggers: {rival_promotion:douglas_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:douglas_b},
+			uniquenessgroup:"uqdouglas"
+        },
+								 {
+        id: "elridge_r",
+            icon:"elridge_r", label: "捣乱分子埃尔里奇",
+            aspects:
+            {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
+            description: "埃尔里奇的鞋子上总是有斑斑血迹。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:elridge_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:elridge_b}
+        },
+				 {
+        id: "enid_r",
+            icon:"enid_r", label: "捣乱分子伊妮德",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "伊妮德总能提前发现敌人来袭，每次都是如此。",
+			xtriggers: {rival_promotion:enid_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:enid_b},
+			uniquenessgroup:"uqenid"
+        },
+	
+							 {
+        id: "laidlaw_r",
+            icon:"laidlaw_r", label: "捣乱分子莱德劳",
+            aspects:
+            {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
+            description: "莱德劳的计划总是宛如蕨类阴影般错综复杂。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:laidlaw_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_b},
+			uniquenessgroup:"uqlaidlaw"
+						
+        },
+		{
+        id: "leo_r",
+            icon:"leo_r", label: "捣乱分子里奥",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1,},
+            description: "里奥已经选定了他的事业，而他将尽己所能来保护它。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:leo_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:leo_b},
+			uniquenessgroup:"uqleo"
+        },
+				 {
+        id: "neville_r",
+            icon:"neville_r",
+			label: "捣乱分子内维尔",
+            aspects:{mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "内维尔知道这不是长久之计。但上帝作证，他会打开每一扇门，无论它们以什么样的形式出现。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:neville_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:neville_b},
+			uniquenessgroup:"uqneville"
+        },
+				
+							 {
+        id: "porter_r",
+            icon:"porter_r", label: "捣乱分子波特",
+            aspects:
+            {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
+            description: "波特已经开始编排名单了。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:porter_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:porter_b},
+			uniquenessgroup:"uqporter"
+        },
+						 {
+        id: "renira_r",
+            icon:"renira_r", label: "捣乱分子芮妮拉",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:renira_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:renira_b},
+			uniquenessgroup:"uqrenira"
+        },
+							 {
+        id: "rose_r",
+            icon:"rose_r", label: "捣乱分子萝丝",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2,suspicious:1},
+            description: "萝丝早已不再畏惧她的敌人。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:rose_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:rose_b},
+			uniquenessgroup:"uqrose"
+        },
+						 {
+        id: "saliba_r",
+            icon:"saliba_r", label: "捣乱分子萨利巴",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "萨利巴无法忍受枯燥。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:saliba_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:saliba_b},
+			uniquenessgroup:"uqsaliba"
+        },
+						 {
+        id: "slee_r",
+            icon:"slee_r", label: "捣乱分子思雷",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "思雷总是渴望更多资源来推进她的理论。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:slee_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:slee_b},
+			uniquenessgroup:"uqslee"
+        },
+						 {
+        id: "sylvia_r",
+            icon:"sylvia_r", label: "捣乱分子西尔维娅",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:sylvia_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_b},
+			uniquenessgroup:"uqsylvia"
+        },
+				 {
+        id: "tristan_r",
+            icon:"tristan_r", label: "捣乱分子崔斯坦",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:tristan_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_b},
+			uniquenessgroup:"uqtristan"
+        },
+			
+						 {
+        id: "valciane_r",
+            icon:"valciane_r", label: "捣乱分子万查妮",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_b},
+			uniquenessgroup:"uqvalciane"
+        },
+			 {
+        id: "victor_r",
+            icon:"victor_r", label: "捣乱分子维克多",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1,},
+            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:victor_b},
+			uniquenessgroup:"uqvictor"
+        },
+		
+						 {
+        id: "violet_r",
+            icon:"violet_r", label: "捣乱分子维奥莱特",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "维奥莱特找到了新的乐子。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:violet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:violet_b},
+			uniquenessgroup:"uqviolet"
+        },
+						 {
+        id: "ysabet_r",
+            icon:"ysabet_r", label: "捣乱分子伊莎贝特",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "伊莎贝特躲藏在阴影中等待。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:ysabet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_b},
+			uniquenessgroup:"uqysabet",
+        },
+		
+						 {
+        id: "generic_r_c",
+            label: "竞争者",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "毫无是非观念的人。",
+			animFrames: 1,
+			icon:"generic_c_edge",
+			xtriggers: {rival_promotion:generic_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+        },
+								 {
+        id: "auclair_r_c",
+            icon:"auclair_r", label: "对手奥克莱尔",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "奥克莱尔喜欢国际象棋，现在则更进一步。黑白对立，判然二分。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:auclair_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:auclair_c},
+			uniquenessgroup:"uqauclair"
+        },
+				 {
+        id: "cat_r_c",
+            icon:"cat_r", label: "对手卡特·卡罗",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "她称呼自己为“卡特·卡罗”。她曾是一名算命师，而现在则似乎无人知晓。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:cat_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:cat_c},
+			uniquenessgroup:"uqcat"
+        },
+
+									 {
+        id: "clifton_r_c",
+            icon:"clifton_r", label: "对手“教皇”克里夫顿",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "克利夫顿喜欢被人称为“圣·克利夫顿大人”。如果有人不这么称呼他，他要表现的可就不那么神圣了。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:clifton_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:clifton_c},
+			uniquenessgroup:"uqclifton"
+        },
+	
+		 {
+        id: "clovette_r_c",
+            icon:"clovette_r", label: "对手克罗薇特",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "即使知道她的行径，也很难讨厌克罗薇特。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:clovette_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_c},
+			uniquenessgroup:"uqclovette"
+        },
+		{
+		        id: "connie_r_c",
+            icon:"connie_r", label: "叛党康妮",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "康妮……康妮正在想事情。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:connie_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:connie_c},
+			uniquenessgroup:"uqconnie"
+        },
+		
+		 {
+        id: "dorothy_r_c",
+            icon:"dorothy_r", label: "对手多萝西",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "多萝西不会停止，她永远不会停止。她曾对此发誓。",
+			animFrames: 1,
+				xtriggers: {rival_promotion:dorothy_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_c},
+			uniquenessgroup:"uqdorothy"
+        },
+						 {
+        id: "douglas_r_c",
+            icon:"douglas_r", label: "对手道格拉斯",
+            aspects:
+            {mortal:1,independent:1,disciple:1,rivalmarks:3, suspicious:1},
+            description: "道格拉斯忍无可忍了。该看看他都是在大惊小怪些什么了。",
+			animFrames: 1,
+				xtriggers: {rival_promotion:douglas_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:douglas_c},
+			uniquenessgroup:"uqdouglas"
+        },
+		
+								 {
+        id: "elridge_r_c",
+            icon:"elridge_r", label: "对手埃尔里奇",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "埃尔里奇的鞋子上总是有斑斑血迹。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:elridge_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:elridge_c}
+        },
+				 {
+        id: "enid_r_c",
+            icon:"enid_r", label: "对手伊妮德",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "伊妮德总能提前发现敌人来袭，每次都是如此。",
+			xtriggers: {rival_promotion:enid_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:enid_c},
+			uniquenessgroup:"uqenid"
+        },
+	
+							 {
+        id: "laidlaw_r_c",
+            icon:"laidlaw_r", label: "对手莱德劳",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "莱德劳的计划总是宛如蕨类阴影般错综复杂。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:laidlaw_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_c},
+			uniquenessgroup:"uqlaidlaw"
+						
+        },
+		{
+        id: "leo_r_c",
+            icon:"leo_r", label: "对手里奥",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1,},
+            description: "里奥已经选定了他的事业，而他将尽己所能来保护它。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:leo_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:leo_c},
+			uniquenessgroup:"uqleo"
+        },
+		
+						 {
+        id: "natalia_r_c",
+            icon:"natalia_r", label: "叛党纳塔丽娅",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "纳塔丽娅已经窥见了那深藏已久的真相，因此，她调整了自己的安排。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:natalia_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:natalia_c},
+			uniquenessgroup:"uqnatalia"
+        },
+		
+				 {
+        id: "neville_r_c",
+            icon:"neville_r", label: "对手内维尔",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "内维尔知道这不是长久之计。但上帝作证，他会打开每一扇门，无论它们以什么样的形式出现。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:neville_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:neville_c},
+			uniquenessgroup:"uqneville"
+        },
+				
+							 {
+        id: "porter_r_c",
+            icon:"porter_r", label: "对手波特",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "波特已经开始编排名单了。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:porter_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:porter_c},
+			uniquenessgroup:"uqporter"
+        },
+						 {
+        id: "renira_r_c",
+            icon:"renira_r", label: "对手芮妮拉",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:renira_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:renira_c},
+			uniquenessgroup:"uqrenira"
+        },
+							 {
+        id: "rose_r_c",
+            icon:"rose_r", label: "对手萝丝",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "萝丝早已不再畏惧她的敌人。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:rose_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:rose_c},
+			uniquenessgroup:"uqrose"
+        },
+						 {
+        id: "saliba_r_c",
+            icon:"saliba_r", label: "对手萨利巴",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "萨利巴无法忍受枯燥。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:saliba_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:saliba_c},
+			uniquenessgroup:"uqsaliba"
+        },
+						 {
+        id: "slee_r_c",
+            icon:"slee_r", label: "对手思雷",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "思雷总是渴望更多资源来推进她的理论。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:slee_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:slee_c},
+			uniquenessgroup:"uqslee"
+        },
+		
+								 {
+        id: "spencer_r_c",
+            icon:"spencer_r", label: "叛党斯宾塞",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "在很长的时间里，斯宾塞一直八面玲珑……如今，他做出了决定。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:spencer_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:spencer_c},
+			uniquenessgroup:"uqspencer"
+        },
+						 {
+        id: "sylvia_r_c",
+            icon:"sylvia_r", label: "对手西尔维亚",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:sylvia_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_c},
+			uniquenessgroup:"uqsylvia"
+        },
+				 {
+        id: "tristan_r_c",
+            icon:"tristan_r", label: "对手崔斯坦",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:tristan_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_c},
+			uniquenessgroup:"uqtristan"
+        },
+			
+						 {
+        id: "valciane_r_c",
+            icon:"valciane_r", label: "对手万查妮",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:valciane_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_c},
+			uniquenessgroup:"uqvalciane"
+        },
+			 {
+        id: "victor_r_c",
+            icon:"victor_r", label: "对手维克多",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1,},
+            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:victor_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:victor_c},
+			uniquenessgroup:"uqvictor"
+        },
+		
+						 {
+        id: "violet_r_c",
+            icon:"violet_r", label: "对手维奥莱特",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "维奥莱特找到了新的乐子。",
+			animFrames: 1,
+						xtriggers: {rival_promotion:violet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:violet_c},
+			uniquenessgroup:"uqviolet"
+        },
+						 {
+        id: "ysabet_r_c",
+            icon:"ysabet_r", label: "对手伊莎贝特",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "伊莎贝特躲藏在阴影中等待。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:ysabet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_c},
+			uniquenessgroup:"uqysabet",
+        },
+		
+								 {
+        id: "zachary_r_c",
+            icon:"zachary_r", label: "叛党扎迦利",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "扎迦利总是循着自己的理性前进；如今，理性将他领出了监管局，将他带进了严寒中的黎明。",
+			animFrames: 1,
+			xtriggers: {rival_promotion:zachary_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:zachary_c},
+			uniquenessgroup:"uqzachary",
+        },
+		
+		
+		
+				 {
+        id: "generic_r_d",
+            label: "未成形的长生者",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "毫无是非观念的人。",
+			animFrames: 1,
+			icon:"generic_c_edge",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+        },
+								 {
+        id: "auclair_r_d",
+            icon:"auclair_r", label: "未成形的长生者奥克莱尔",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "奥克莱尔喜欢国际象棋，现在则更进一步。黑白对立，判然二分。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			uniquenessgroup:"uqauclair"
+        },
+				 {
+        id: "cat_r_d",
+            icon:"cat_r", label: "未成形的长生者卡特·卡罗",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "她称呼自己为“卡特·卡罗”。她曾是一名算命师，而现在则似乎无人知晓。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
+			uniquenessgroup:"uqcat"
+        },
+
+									 {
+        id: "clifton_r_d",
+            icon:"clifton_r", label: "未成形的长生者“教皇”克里夫顿",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "克利夫顿喜欢被人称为“圣·克利夫顿大人”。如果有人不这么称呼他，他要表现的可就不那么神圣了。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
+			uniquenessgroup:"uqclifton"
+        },
+	
+		 {
+        id: "clovette_r_d",
+            icon:"clovette_r", label: "未成形的长生者克罗薇特",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "即使知道她的行径，也很难讨厌克罗薇特。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
+			uniquenessgroup:"uqclovette"
+        },
+		
+				{
+		        id: "connie_r_d",
+            icon:"connie_r", label: "未成形的长生者康妮",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:3,suspicious:1},
+            description: "康妮从不抗拒挑战。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:connie_d},
+			uniquenessgroup:"uqconnie"
+        },
+		
+		 {
+        id: "dorothy_r_d",
+            icon:"dorothy_r", label: "未成形的长生者多萝西",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "多萝西不会停止，她永远不会停止。她曾对此发誓。",
+			animFrames: 1,
+				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
+			uniquenessgroup:"uqdorothy"
+        },
+								 {
+        id: "douglas_r_d",
+            icon:"douglas_r", label: "未成形的道格拉斯",
+            aspects:
+            {mortal:1,independent:1,disciple:1,rivalmarks:4, suspicious:1},
+            description: "道格拉斯找到了火焰。",
+			animFrames: 1,
+				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:douglas_d},
+			uniquenessgroup:"uqdouglas"
+        },
+								 {
+        id: "elridge_r_d",
+            icon:"elridge_r", label: "未成形的长生者埃尔里奇",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "埃尔里奇的鞋子上总是有斑斑血迹。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
+        },
+				 {
+        id: "enid_r_d",
+            icon:"enid_r", label: "未成形的长生者伊妮德",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "伊妮德总能提前发现敌人来袭，每次都是如此。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
+			uniquenessgroup:"uqenid"
+        },
+	
+							 {
+        id: "laidlaw_r_d",
+            icon:"laidlaw_r", label: "未成形的长生者莱德劳",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "莱德劳的计划总是宛如蕨类阴影般错综复杂。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
+			uniquenessgroup:"uqlaidlaw"
+						
+        },
+		{
+        id: "leo_r_d",
+            icon:"leo_r", label: "未成形的长生者里奥",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1,},
+            description: "里奥已经选定了他的事业，而他将尽己所能来保护它。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
+			uniquenessgroup:"uqleo"
+        },
+						 {
+        id: "natalia_r_d",
+            icon:"natalia_r", label: "未成形的长生者纳塔丽娅",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "纳塔丽娅已经了解了这么多，付出了这么多。如今她不会回头。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:natalia_d},
+			uniquenessgroup:"uqnatalia"
+        },
+				 {
+        id: "neville_r_d",
+            icon:"neville_r", label: "未成形的长生者内维尔",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "内维尔知道这不是长久之计。但上帝作证，他会打开每一扇门，无论它们以什么样的形式出现。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
+			uniquenessgroup:"uqneville"
+        },
+				
+							 {
+        id: "porter_r_d",
+            icon:"porter_r", label: "未成形的长生者波特",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "波特已经开始编排名单了。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
+			uniquenessgroup:"uqporter"
+        },
+						 {
+        id: "renira_r_d",
+            icon:"renira_r", label: "未成形的长生者芮妮拉",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
+			uniquenessgroup:"uqrenira"
+        },
+							 {
+        id: "rose_r_d",
+            icon:"rose_r", label: "未成形的长生者萝丝",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
+            description: "萝丝早已不再畏惧她的敌人。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
+			uniquenessgroup:"uqrose"
+        },
+						 {
+        id: "saliba_r_d",
+            icon:"saliba_r", label: "未成形的长生者萨利巴",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "萨利巴无法忍受枯燥。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
+			uniquenessgroup:"uqsaliba"
+        },
+						 {
+        id: "slee_r_d",
+            icon:"slee_r", label: "未成形的长生者思雷",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "思雷总是渴望更多资源来推进她的理论。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
+			uniquenessgroup:"uqslee"
+        },
+								 {
+        id: "spencer_r_d",
+            icon:"spencer_r", label: "未成形的长生者斯宾塞",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "斯宾塞不会再允许他人对自己有事隐瞒。如今他只差最后一步。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:spencer_d},
+			uniquenessgroup:"uqspencer"
+        },
+		
+						 {
+        id: "sylvia_r_d",
+            icon:"sylvia_r", label: "未成形的长生者西尔维亚",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
+			uniquenessgroup:"uqsylvia"
+        },
+				 {
+        id: "tristan_r_d",
+            icon:"tristan_r", label: "未成形的长生者崔斯坦",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
+			uniquenessgroup:"uqtristan"
+        },
+			
+						 {
+        id: "valciane_r_d",
+            icon:"valciane_r", label: "未成形的长生者万查妮",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
+			uniquenessgroup:"uqvalciane"
+        },
+			 {
+        id: "victor_r_d",
+            icon:"victor_r", label: "未成形的长生者维克多",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1,},
+            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
+			uniquenessgroup:"uqvictor"
+        },
+		
+						 {
+        id: "violet_r_d",
+            icon:"violet_r", label: "未成形的长生者维奥莱特",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "维奥莱特找到了新的乐子。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
+			uniquenessgroup:"uqviolet"
+        },
+						 {
+        id: "ysabet_r_d",
+            icon:"ysabet_r", label: "未成形的长生者伊莎贝特",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "伊莎贝特躲藏在阴影中等待。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
+			uniquenessgroup:"uqysabet",
+        },
+		
+								 {
+        id: "zachary_r_d",
+            icon:"zachary_r", label: "未成形的长生者扎迦利",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "扎迦利接近自己必然的结果了。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:zachary_d},
+			uniquenessgroup:"uqzachary",
+        },
+		
+		
+		
+		]
+};

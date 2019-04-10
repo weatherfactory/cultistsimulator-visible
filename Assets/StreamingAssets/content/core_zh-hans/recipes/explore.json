@@ -19,10 +19,10 @@
         label: "莫兰书屋要歇业了！",
         actionId: "explore",
         requirements: {genericrubbishbook:1},
-        description: "“我打算改行了，”莫兰小姐告诉你说， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢……”",
+        description: "“我打算改行了，”莫兰小姐告诉你， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢。”",
 		deckeffect:{oneoffrewards:1},
         warmup: 1,
-		aspects:{exhaustlocation:1}
+aspects:{exhaustlocation:1}
     },
 		{
         id: "explorelocationauctionhouse",
@@ -46,7 +46,7 @@
         requirements: {locationstreetsstrange:1},
 		
 		deckeffect: {"streetsstrangefinds":1},
-        startdescription: "名为痕月的时枢神所对应的时辰里，街道会呈现异相。",
+        startdescription: "名为痕月的时枢神所对应的小时，街道会呈现异相。",
         description: "幻像如跳着孔雀舞般优雅地从我身旁掠过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃女子。 回家时我心中将会充满不舍。",
         warmup: 30,
         craftable: true
@@ -109,7 +109,7 @@
         label: "一位雇工？",
         actionId: "explore",
         startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以临时雇用他。]",
-slots:[{id:"Payment",required:{funds:1},consumes:true}],
+slots:[{id:"Payment",label:"报酬",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
 		 description: "最好不要。我必须小心选择同伴。",

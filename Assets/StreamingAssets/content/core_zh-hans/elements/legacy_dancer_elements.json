@@ -1,0 +1,65 @@
+{"elements":
+    [
+			  
+	{id: "legacydancerjob",
+	label: "与欢愉剧院的合约",
+		description: "我在欢愉剧院中的歌舞队中任职。在我芳华或好运散尽之前，这都将是我的工作——除非我找到更好的工作。",
+	aspects: {job:1,dance:1,potentialbenefactorm:1,potentialbenefactorf:1,potentialecdysiast:1},
+	lifetime:120,
+	decayTo: legacydancerjob_suspended,
+	xtriggers:{job:legacydancerjob},
+	slots:[	{id:"health",label:"健康",actionId:"work",required:{health:1}}]
+},
+	{id: "legacydancerjob_suspended",
+	label: "与欢愉剧院的合约：停职",
+		description: "我错过了太多的表演。如果我的恳求看上去足够真心诚意，我也许能赢回我的工作。",
+	aspects: {job:1},
+	lifetime:300,
+	xtriggers:{plead:legacydancerjob},
+		slots:[{id:"passion",label:"热情",actionId:"work",required:{passion:1}}]
+},
+
+{id:"dancerlegacy_plotitem_a",
+label:"揉成一团的诗",
+description:"这是致另一位舞者的信件，署名为#LAST_FOLLOWER#。作者描述了他如何在梦中的黑暗林地里见到了舞者。他的梦中伴随着鼓声，翅膀扇动的节拍声，影子的外皮，月亮的血。怪不得信被扔了。但我已经能看到那等待着被抽丝剥茧的一层又一层的深意了。",
+slots:[{id:"Approach",label:"方法",actionId:"study",description:"心的鼓动，还是提琴的鸣泣？",required:{heart:1,moth:1}}],
+aspects:{text:1}},
+
+
+{id: "dancerjobecdysisa",
+	label: "与蜕变俱乐部的合约",
+	description: "我在蜕变俱乐部开放的那些夜晚表演。",
+slots:[{id:"location",label:"蜕变俱乐部",description:"在蜕变俱乐部，我带领见证者们走向启示。",actionId:work,required:{locationcabaret:1}},
+{id:"purpose",label:"目的",actionId:work,required:{changemarks:1,healthskill:1},description:"使用我的技能来获得更复杂的舞蹈；或者用我的欲望来追求转变；也或者将其空置来赚取金钱。"},
+{id:"abilityfirst",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+{id:"influence",label:"影响",description:"What stirs me today?",actionId:work,required:{influence:1},consumes:true},
+
+],
+	aspects: {job:1,dance:1,ecdysijob:1}
+},
+{id: "dancerjobecdysisb",
+	label: "与蜕变俱乐部的上级合约",
+	description: "我在蜕变俱乐部表演更精准的舞蹈。",
+slots:[{id:"location",label:"蜕变俱乐部",label:"蜕变俱乐部",description:"在蜕变俱乐部，我带领见证者们走向启示。",actionId:work,required:{locationcabaret:1}},
+	{id:"purpose",label:"目的",actionId:work,required:{changemarks:1,healthskill:1},description:"使用我的技能来获得更复杂的舞蹈；或者用我的欲望来追求转变；也或者将其空置来赚取金钱。"},
+{id:"abilityfirst",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+	{id:"abilitysecond",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+	{id:"influence",label:"影响",description:"What stirs me today?",actionId:work,required:{influence:1},consumes:true},
+
+],
+	aspects: {job:1,dance:1,ecdysijob:1}
+},
+{id: "dancerjobecdysisc",
+	label: "与蜕变俱乐部的特殊合约",
+	description: "有时，我会被给予重金来为那些非常特别的鉴识家表演一些非常特殊的舞蹈。",
+	slots:[{id:"location",label:"蜕变俱乐部",description:"在蜕变俱乐部，我带领见证者们走向启示。",actionId:work,required:{locationcabaret:1}},
+	{id:"purpose",label:"目的",actionId:work,required:{changemarks:1,healthskill:1},description:"Use my Desire to pursue Change; or leave empty if I'm just earning money."},
+	{id:"abilityfirst",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+	{id:"abilitysecond",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+	{id:"abilitythird",label:"能力，或是伤痕",description:"我应将自己献给什么？",actionId:work,required:{health:1,passion:1,scar:1}},
+	{id:"influence",label:"影响",description:"What stirs me today?",actionId:work,required:{influence:1},consumes:true},
+	],
+	aspects: {job:1,dance:1,ecdysijob:1},
+},
+]
+};

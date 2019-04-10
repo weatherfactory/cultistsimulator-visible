@@ -1,6 +1,275 @@
 ﻿{
 recipes: [
 	{
+		requirements: 
+		{
+			apostleforge.pillar2: "1",
+			apostleforge.pillar3: "1",
+			apostleforge.pillar4: "1",
+			apostleforge.pillar5: "1",
+			fragmentknockg: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		hintonly: "true",
+		label: "The Last Pieces of the Great Work?",
+		startdescription: "We have the Core, its fuel, the Compass, the Key, the Mysteries of Opening. Now we require only the season of the Forge's most furious incandescence.",
+		id: "work.apostleforge.majorvictory.hint5",
+		actionId: "work",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			apostleforge.pillar2: "1",
+			apostleforge.pillar3: "1",
+			apostleforge.pillar4: "1",
+			apostleforge.pillar5: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		hintonly: "true",
+		label: "The Last Pieces of the Great Work?",
+		startdescription: "We have the Core, its fuel, the Compass, the Key. Even all these will not be enough. We must prepare the way for our Shaper with the Mysteries of Opening. ",
+		id: "work.apostleforge.majorvictory.hint4",
+		actionId: "work",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			apostleforge.pillar2: "1",
+			apostleforge.pillar3: "1",
+			apostleforge.pillar4: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		hintonly: "true",
+		label: "The Last Pieces of the Great Work?",
+		startdescription: "We have the Core, its fuel, the Compass. We still need the Biting Key.",
+		id: "work.apostleforge.majorvictory.hint3",
+		actionId: "work",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			apostleforge.pillar2: "1",
+			apostleforge.pillar3: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		hintonly: "true",
+		label: "The Last Pieces of the Great Work?",
+		startdescription: "We have the Core and its fuel. We need our blinded Compass, to find the flaw in the world.",
+		id: "work.apostleforge.majorvictory.hint2",
+		actionId: "work",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			apostleforge.pillar2: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		hintonly: "true",
+		label: "The Last Pieces of the Great Work?",
+		startdescription: "We have the Core: we must have blue gold to feed it.",
+		id: "work.apostleforge.majorvictory.hint1",
+		actionId: "work",
+		effects: 
+		{
+		},
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint5",
+		startdescription: "We need our noble guest's co-operation.",
+		requirements: 
+		{
+			toollanternf: "1",
+			apostlelantern.pillar3: "1",
+			apostlelantern.pillar4: "1",
+			kleidouchos: "1",
+			fragmentmothe: "1",
+			ingredientlanternf: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint4",
+		startdescription: "The Gate will not open Outwards without its unlawed Key.",
+		requirements: 
+		{
+			toollanternf: "1",
+			apostlelantern.pillar3: "1",
+			apostlelantern.pillar4: "1",
+			fragmentmothe: "1",
+			ingredientlanternf: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint3",
+		startdescription: "We'll need a Watchman's Glass for our Illuminated One to enact the utmost illumination.",
+		requirements: 
+		{
+			apostlelantern.pillar3: "1",
+			apostlelantern.pillar4: "1",
+			fragmentmothe: "1",
+			ingredientlanternf: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint2",
+		startdescription: "Centipede always knows the way. We'll need her secrets.",
+		requirements: 
+		{
+			apostlelantern.pillar3: "1",
+			apostlelantern.pillar4: "1",
+			ingredientlanternf: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint1",
+		startdescription: "The Watchman's Eye was opened, not in the usual way, but with a knife. We will need what it bled.",
+		requirements: 
+		{
+			apostlelantern.pillar3: "1",
+			apostlelantern.pillar4: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlelantern.majorvictory.hint0",
+		startdescription: "Certainly the Gate might open without Witnesses, but without Witnesses to be illuminated, how can we fulfil the Watchman's enactment? The Watchman is not compassionate.",
+		requirements: 
+		{
+			apostlelantern.pillar3: "1",
+		},
+		comment: "NEW",
+		label: "The Gate Opens Outwards?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint5",
+		startdescription: "Our particular spices must be particularly prepared. All else is ready.",
+		requirements: 
+		{
+			apostlegrail.pillar3: "1",
+			toolgrailf: "1",
+			apostlegrail.pillar2: "1",
+			fragmentheartg: "1",
+			apostlegrail.pillar4: "1",
+			influencegrailg: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint4",
+		startdescription: "Without the Unceasing Mysteries, the Vitulation will not reach the intensity we require.",
+		requirements: 
+		{
+			toolgrailf: "1",
+			apostlegrail.pillar2: "1",
+			apostlegrail.pillar3: "1",
+			apostlegrail.pillar4: "1",
+			influencegrailg: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint3",
+		startdescription: "We need the most powerful Grail influence we can muster.",
+		requirements: 
+		{
+			toolgrailf: "1",
+			apostlegrail.pillar2: "1",
+			apostlegrail.pillar3: "1",
+			apostlegrail.pillar4: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint2",
+		startdescription: "No Vitulation would be a Vitulation without the Chalice Murmurous.",
+		requirements: 
+		{
+			apostlegrail.pillar2: "1",
+			apostlegrail.pillar3: "1",
+			apostlegrail.pillar4: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint1",
+		startdescription: "We cannot begin the Vitulation without sufficient guests. Our Delight cannot go hungry.",
+		requirements: 
+		{
+			apostlegrail.pillar2: "1",
+			apostlegrail.pillar3: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
+		id: "work.apostlegrail.majorvictory.hint0",
+		startdescription: "We cannot begin the Vitulation without the correct flavouring, for myself and for the others of the Host.",
+		requirements: 
+		{
+			apostlegrail.pillar2: "1",
+		},
+		comment: "NEW",
+		label: "The Last Elements of the Vitulation?",
+		hintonly: "true",
+		actionId: "work",
+	},
+	{
 		id: "workbenefactorhint",
 		craftable: "false",
 		startdescription: "To satisfy my benefactor, I'll need to exert my abilities, and ensure I look my best. That always has a cost.",
@@ -8,7 +277,6 @@ recipes: [
 		{
 			benefactor: "1",
 		},
-		comment: "NEW",
 		label: "Private Performances?",
 		hintonly: "true",
 		actionId: "work",
@@ -117,7 +385,6 @@ recipes: [
 	},
 	{
 		id: "minorforgevictory_hint_sixth",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
 		requirements: 
 		{
@@ -133,7 +400,6 @@ recipes: [
 	},
 	{
 		id: "minorforgevictory_hint",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Conflagration of the Heart. I will first need to achieve the Sixth Mark.",
 		requirements: 
 		{
@@ -149,7 +415,6 @@ recipes: [
 	},
 	{
 		id: "minorgrailvictory_hint_sixth_with_romantic",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need more... but the Grail once sacrificed one she had loved, and those sacrifices are precious to her. If I am willing to sacrifice a lover, I will need power to only the twenty-seventh degree of intensity.",
 		requirements: 
 		{
@@ -166,7 +431,6 @@ recipes: [
 	},
 	{
 		id: "minorgrailvictory_hint_sixth",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
 		requirements: 
 		{
@@ -182,7 +446,6 @@ recipes: [
 	},
 	{
 		id: "minorgrailvictory_hint",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Feast of the True Birth. I will first need to achieve the Sixth Mark.",
 		requirements: 
 		{
@@ -198,7 +461,6 @@ recipes: [
 	},
 	{
 		id: "minorlanternvictory_hint_sixth",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
 		requirements: 
 		{
@@ -214,7 +476,6 @@ recipes: [
 	},
 	{
 		id: "minorlanternvictory_hint",
-		comment: "NEW",
 		startdescription: "The Seventh Mark is the Incursus. I will first need to achieve the Sixth Mark.",
 		requirements: 
 		{
@@ -229,6 +490,11 @@ recipes: [
 		actionId: "work",
 	},
 	{
+		extantreqs: 
+		{
+			spirit_forgee_edge: "-1",
+			spirit_forgee_edge.defunct: "-1",
+		},
 		requirements: 
 		{
 			ritual: "1",
@@ -243,12 +509,55 @@ recipes: [
 		startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать существо огня и Славы, мне понадобится большая сила Кузни; значительная сила Стука; и немного Лампады.",
 		id: "hint_summon_spirit_forgee_edge",
 		actionId: "work",
-		effects: 
+	},
+	{
+		extantreqs: 
 		{
 			spirit_forgee_edge: "1",
 		},
+		requirements: 
+		{
+			ritual: "1",
+			forge: "1",
+			lantern: "1",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		hintonly: "true",
+		label: "King Crucible, again?",
+		startdescription: "Am I considering summoning King Crucible? King Crucible is already in the world.",
+		id: "hint_summon_spirit_forgee_edge_exists",
+		actionId: "work",
 	},
 	{
+		extantreqs: 
+		{
+			spirit_forgee_edge.defunct: "1",
+		},
+		requirements: 
+		{
+			ritual: "1",
+			forge: "1",
+			lantern: "1",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		hintonly: "true",
+		label: "King Crucible, already?",
+		startdescription: "Am I considering summoning King Crucible? He's still stoking his fires in the Mansus.",
+		id: "hint_summon_spirit_forgee_edge_dayd",
+		actionId: "work",
+	},
+	{
+		extantreqs: 
+		{
+			spirit_graile_edge.defunct: "-1",
+			spirit_graile_edge: "-1",
+		},
 		requirements: 
 		{
 			ritual: "1",
@@ -263,15 +572,55 @@ recipes: [
 		startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать существо крови и перемены, мне понадобится большая сила Чаши; значительная сила Стука; и немного Кузни.",
 		id: "hint_summon_spirit_graile_edge",
 		actionId: "work",
-		effects: 
+	},
+	{
+		extantreqs: 
 		{
 			spirit_graile_edge: "1",
 		},
+		requirements: 
+		{
+			ritual: "1",
+			forge: "1",
+			knock: "2",
+			desire: "-1",
+			grail: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		hintonly: "true",
+		label: "Ezeem, again?",
+		startdescription: "Am I considering summoning Ezeem? Ezeem is already in the world.",
+		id: "hint_summon_spirit_graile_edge_exists",
+		actionId: "work",
 	},
 	{
-		id: "hint_summon_spirit_lanterne_secret",
+		extantreqs: 
+		{
+			spirit_graile_edge.defunct: "1",
+		},
+		requirements: 
+		{
+			ritual: "1",
+			forge: "1",
+			knock: "2",
+			desire: "-1",
+			grail: "1",
+		},
 		craftable: "false",
-		startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Набрав достаточно Лампады, значительную степень Стука и добавив дразнящий привкус секретов, возможно, я смогу призвать кого-то интересного.",
+		comment: "NEW",
+		hintonly: "true",
+		label: "Ezeem, already?",
+		startdescription: "Am I considering summoning Ezeem? Ezeem is still sulking in the Mansus.",
+		id: "hint_summon_spirit_graile_edge_dayd",
+		actionId: "work",
+	},
+	{
+		extantreqs: 
+		{
+			spirit_lanterne_secret: "-1",
+			spirit_lanterne_secret.defunct: "-1",
+		},
 		requirements: 
 		{
 			secrethistories: "1",
@@ -280,8 +629,53 @@ recipes: [
 			knock: "2",
 			desire: "-1",
 		},
-		label: "Призыв чего-то необычного?",
+		craftable: "false",
 		hintonly: "true",
+		label: "Призыв чего-то необычного?",
+		startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Набрав достаточно Лампады, значительную степень Стука и добавив дразнящий привкус секретов, возможно, я смогу призвать кого-то интересного.",
+		id: "hint_summon_spirit_lanterne_secret",
+		actionId: "work",
+	},
+	{
+		extantreqs: 
+		{
+			spirit_lanterne_secret: "1",
+		},
+		requirements: 
+		{
+			secrethistories: "1",
+			ritual: "1",
+			lantern: "1",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		hintonly: "true",
+		label: "The Baldomerian, again?",
+		startdescription: "Am I considering summoning the Baldomerian? She's already in the world.",
+		id: "hint_summon_spirit_lanterne_secret_exists",
+		actionId: "work",
+	},
+	{
+		extantreqs: 
+		{
+			spirit_lanterne_secret.defunct: "1",
+		},
+		requirements: 
+		{
+			secrethistories: "1",
+			ritual: "1",
+			lantern: "1",
+			knock: "2",
+			desire: "-1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		hintonly: "true",
+		label: "The Baldomerian, already?",
+		startdescription: "Am I considering summoning the Baldomerian? She's still resting in the Mansus.",
+		id: "hint_summon_spirit_lanterne_secret_dayd",
 		actionId: "work",
 	},
 	{
@@ -390,7 +784,6 @@ recipes: [
 			ritual: "1",
 			desire: "-1",
 		},
-		comment: "NEW",
 		label: "Renew a Shattered Risen with the power of the Cartographer of Scars?",
 		hintonly: "true",
 		actionId: "work",
@@ -405,7 +798,6 @@ recipes: [
 			ritual: "1",
 			desire: "-1",
 		},
-		comment: "NEW",
 		label: "Renew a Burgeoning Risen with the power of the Ring-Yew?",
 		hintonly: "true",
 		actionId: "work",
@@ -896,7 +1288,6 @@ recipes: [
 			ingredient: "-1",
 			desire: "-1",
 		},
-		comment: "NEW",
 		label: "Rites",
 		hintonly: "true",
 		actionId: "work",
@@ -909,7 +1300,6 @@ recipes: [
 			forge: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		hintonly: "true",
 		label: "Not Enough, Not Yet",
 		startdescription: "Not yet enough. The Forge of Days will not attend unless I can merit her attention. I need Forge power of at least the sixth intensity.",
@@ -927,7 +1317,6 @@ recipes: [
 			grail: "1",
 		},
 		description: ".",
-		comment: "NEW",
 		label: "Not Enough, Not Yet",
 		hintonly: "true",
 		actionId: "work",
@@ -942,7 +1331,6 @@ recipes: [
 			grail: "1",
 		},
 		description: ".",
-		comment: "NEW",
 		label: "Not Enough, Not Yet",
 		hintonly: "true",
 		actionId: "work",
@@ -955,7 +1343,6 @@ recipes: [
 			lantern: "1",
 		},
 		craftable: "false",
-		comment: "NEW",
 		hintonly: "true",
 		label: "Not Enough, Not Yet",
 		startdescription: "Not yet enough. The Watchman will not attend unless I can merit his attention. I need Lantern power of at least the sixth intensity.",

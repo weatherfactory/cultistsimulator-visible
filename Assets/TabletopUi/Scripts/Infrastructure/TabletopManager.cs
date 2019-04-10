@@ -133,6 +133,7 @@ namespace Assets.CS.TabletopUI {
 		private float AUTOSAVE_INTERVAL = 300.0f;
 		private static float gridSnapSize = 0.0f;
 		private static bool highContrastMode = false;
+		private static bool stickyDragMode = false;
         private List<string> currentDoomTokens=new List<string>();
 
 		public void ForceAutosave()	// Useful for forcing autosave to happen at tricky moments for debugging - CP
@@ -839,6 +840,15 @@ namespace Assets.CS.TabletopUI {
 			return highContrastMode;
 		}
 
+		public static void SetStickyDrag( bool on )
+		{
+			stickyDragMode = on;
+		}
+
+		public static bool GetStickyDrag()
+		{
+			return stickyDragMode;
+		}
 
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);

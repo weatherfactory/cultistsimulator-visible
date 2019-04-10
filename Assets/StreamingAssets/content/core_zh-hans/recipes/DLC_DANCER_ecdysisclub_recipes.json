@@ -1,0 +1,436 @@
+{
+"recipes": [
+
+{id:"explorecabaret_meetsulochana",
+	actionId: "explore",
+	label: "在蜕变俱乐部和苏洛坎纳见面",
+	requirements: {locationcabaret:1,sulochana:1},
+	startdescription: "苏洛坎纳·阿马瓦尼亚立于挂着红色帷幕的门口。她一边抽着她那别致的进口丁香香烟，一边与一位高高瘦瘦的似乎是来自希腊的人交谈。她看着走来的我，既不眨眼，也不动声色。",
+	slots:[{id:"Subject",label:"话题",description:"我在这里是为了谈一谈……",required:{desire:1}}],
+	description:"“没有什么想说的吗？那就别浪费我的时间了。”",
+	alternativerecipes:[{id:"A_ecdysis_beginheart",chance:100},
+	{id:"A_ecdysis_beginmoth",chance:100},
+	{id:"A_ecdysis_switchtochangefromsensation",chance:100},
+	{id:"A_ecdysis_switchtochangefrompower",chance:100},
+	{id:"A_ecdysis_cantswitchtochangefromenlightenment",chance:100},
+	{id:"A_ecdysis_alreadyonchange",chance:100},
+	{id:"A_ecdysis_cantswitch",chance:100}],
+	craftable:true,
+	warmup:60
+	},
+	
+	
+	{id:"A_ecdysis_beginheart",
+	actionId:"explore",
+	maxexecutions:1,
+	requirements:{desireheart_track:1},
+	label:"血肉的揭幕",
+	startdescription:"“好吧。”苏洛坎纳说，“我有一份给你工作。这机会只有一次。”她吸了一口烟。“你得把你衣服脱了。”她加道。烟雾围绕着她的面庞。她依然没有眨眼。“你外面的几层。”",
+	description:"我分配到了一个狭窄的试衣间——非常狭窄——和一个碗柜差不多宽。我得到了我的第一份服装。楼下，鼓声愈演愈响。就是这一刻，那个瘦长的希腊人毫无征兆地进来，并弯下腰，轻轻地告诉我了一个秘密。他的名字，我后来知道，是阿格狄斯提斯先生。",
+	effects:{dancerjobecdysisa:1,fragmentheart:1}
+
+	},
+		{id:"A_ecdysis_beginmoth",
+	actionId:"explore",
+		maxexecutions:1,
+			requirements:{desiremoth_track:1},
+	label:"自我的揭幕",
+	startdescription:"“好吧。”苏洛坎纳说，“我有一份给你工作。这机会只有一次。”她吸了一口烟。“你得把你衣服脱了。”她加道。她靠得很近，“而且不仅如此。”",
+	description:"我分配到了一个狭窄的试衣间——非常狭窄——和一个碗柜差不多宽。我得到了我的第一份服装。苏洛坎纳用一把银色的小剪刀剪下了我的一缕头发，并在我耳边轻轻地告诉我了一个秘密。",
+		effects:{dancerjobecdysisa:1,fragmentmoth:1}
+	},
+
+	{
+        id: "A_ecdysis_switchtochangefromsensation",
+		label: "追求转变，而非感官",
+		requirements:{ascensionsensationa:1},
+		actionId: "dream",
+		effects:{ascensionsensationa:-1,ascensionchangea:1},
+		startdescription:"“重新考虑杯的道路了，是吗？你得肯定。形体钻研起来并不容易。但如果你真的想要追求转变——”",
+		description: "苏洛坎纳凑近，对着我的脸仔细端详，将手抚在我的脸颊上。她的皮肤冰冷，吐息温暖。她的嘴角扭动着。“睡去吧。下次俱乐部开门时，你再来见我。我们继续谈。”",
+		linked:[{id:"L_desire_addmothtrack",chance:100}]
+},
+
+
+	{
+        id: "A_ecdysis_switchtochangefrompower",
+		label: "追求转变，而非力量",
+		requirements:{ascensionpowera:1},
+		actionId: "explore",
+		effects:{ascensionpowera:-1,ascensionchangea:1},
+		startdescription:"“重新考虑杯的道路了，是吗？你得肯定。火亦非火，但形体钻研起来并不容易——”",
+		description: "苏洛坎纳凑近，对着我的脸仔细端详。她抖了抖烟灰。烟末的纸微微亮着。她笑了笑。“睡去吧。下次俱乐部开门时，你再来见我。我们继续谈。”",
+		linked:[{id:"L_desire_addmothtrack",chance:100}]
+},
+
+	{
+        id: "A_ecdysis_cantswitchtochangefromenlightenment",
+		label: "追求转变，而非启智",
+		requirements:{ascensionenlightenmenta:1},
+		actionId: "explore",
+		startdescription:"“重新考虑守夜人的道路了，是吗？很好。但你还有一条要走的路。”",
+		description: "苏洛坎纳慢慢地摇着头，与我始终相视。“首先，记住你是谁。”[如果想要追求转变，以诱惑入梦后将其转换，再与苏洛坎纳交谈。]"
+
+},
+	{
+        id: "A_ecdysis_alreadyonchange",
+		label: "欲得之形",
+		actionId: "explore",
+		requirements:{changemarks:1},
+		startdescription:"“准备好工作了吗？我们为什么在这里浪费时间？”[在俱乐部使用合约来跳舞。]",
+		description: "“是的，我知道你想要什么。”她示意着一旁的那位高个子。“阿格狄斯提斯先生也是如此。今晚跳舞太晚了。下次，早点。”",
+
+},
+
+	{
+        id: "A_ecdysis_cantswitch",
+		label: "转变为时已晚",
+		actionId: "explore",
+		requirements:{desire:1},
+		comments:"Need the desire requirement so we only fall through to this if there's an incompatible desire.",
+		startdescription:"“不行。你已经定型了。这不可能。”",
+		description: "“你听到我说的了吗？这不可能。你会成功，亦或失败。但你永远不会真正的改变。”她将亮着的烟头扔至黑暗中。“狂烈地做梦吧。”"
+
+},
+
+{id:"ecdysisjobupgradehint_maxedout",
+label:"最远的舞步？",
+actionId:"work",
+startdescription:"我已经准备好表演最严格的舞蹈了。",
+comments:"Hint appears if we have max skill and don't qualify for an ecdysijob upgrade",
+requirements:{ecdysijob:1,healthskill:4},
+craftable:true,hintonly:true
+},
+{id:"ecdysisjobupgrade_toc_hint",
+label:"在苏洛坎纳面前展示我的能力？",
+actionId:"work",
+startdescription:"苏洛坎纳检查着我四肢的长度和我腰身的伸展。“还不够。”她说到。[提升你的健康技能至最高等级，并且精修优雅，以继续下一步。]",
+requirements:{dancerjobecdysisb:1,healthskill:2},
+craftable:false,
+hintonly:true
+},
+
+{id:"ecdysisjobupgradehint",
+label:"更远的舞步？",
+actionId:"work",
+startdescription:"口味独特的观众需要更加精准的舞蹈。在苏洛坎纳和阿格狄斯提斯先生允许我去表演之前，我得证明自己的身体可以胜任这项工作。[提高你的健康技能来留下深刻印象。]",
+requirements:{ecdysijob:1,healthskill:1},
+craftable:true,hintonly:true
+},
+{id:"ecdysisjobupgrade_tob",
+label:"在阿格狄斯提斯先生面前展示我的能力",
+actionId:"work",
+startdescription:"我已经准备好在俱乐部的深处表演更加精准的舞蹈了，在一间红色百叶门后面的房间里。阿格狄斯提斯先生将检查我是否够格。",
+description: "阿格狄斯提斯先生把他修长而美丽的双手握在一起；他意味深长的笑了笑。以防万一，他会从我身上采走一点点血液，然后我们便准备好了。",
+requirements:{dancerjobecdysisa:1,healthskill:2},
+effects:{dancerjobecdysisa:-1,dancerjobecdysisb:1},
+warmup:30,
+craftable:true
+},
+
+
+{id:"ecdysisjobupgrade_toc",
+label:"在苏洛坎纳面前证明我的能力",
+actionId:"work",
+startdescription:"我认为我已经准备好表演那些特殊场合时才会有的舞蹈了。苏洛坎纳将会邀请我至俱乐部最顶层的房间，一个装着月亮形状的窗的阁楼中。苏洛坎纳在那里存放着她的钥匙，她的珠宝还有她的奖杯，她会在我开始表演前用象牙被盛满葡萄酒送给我。葡萄酒浓郁而甜美，我的思绪焕然一新。空气会像翅膀一般颤动，但是即便我脱光衣服，我也不会觉得冷。",
+description: "“你可以做到的，”苏洛坎纳·阿马瓦尼亚说。“欢迎来到更衣室。”她用往常那样的目光打量着我。“就快了。就快了。或许是时候和你聊聊我的姐妹了。”",
+requirements:{dancerjobecdysisb:1,skillhealthd_grace:1},
+effects:{dancerjobecdysisb:-1,dancerjobecdysisc:1},
+warmup:30,
+craftable:true
+},
+{id: "ecdysisdanceclublantern_generichint",
+label:"不是这里，不是那个",
+actionId:"work",
+startdescription:"阿格狄斯提斯先生摇了摇他英俊的头。他深邃的眼神中洋溢着快乐，虽然通常它们都充满着忧郁。",
+requirements:{ecdysijob:1,locationcabaret:1,lantern:1},
+craftable:true,hintonly:true
+},
+
+
+{id: "ecdysisdanceclub_generichint",
+label:"舞台等着我",
+actionId:"work",
+startdescription:"阿格狄斯提斯先生领着我从更衣室到达舞台。他曾经也是一名舞者。你仍然可以在他的手势中看到他过去的身影。但是他大腿上的旧伤迫使他放弃了继续登台演出。",
+requirements:{ecdysijob:1,locationcabaret:1},
+craftable:true,hintonly:true
+},
+
+{id: "ecdysisdance_generichint",
+label:"一夜又一夜",
+actionId:"work",
+startdescription:"每当蜕变俱乐部开业的时候，我意识到，他的开业时间总是和月相息息相关。每当新月之时，虽然不仅仅是新月，俱乐部就会开始营业。",
+requirements:{ecdysijob:1},
+warmup:60,craftable:true,hintonly:true
+},
+
+
+{id: "ecdysisdance_sendingheartg",
+label:"最后一支舞",
+actionId:"work",
+startdescription:"阿格狄斯提斯先生沉默寡言。当他说话时，他的声音十分动人——温润如中音笛。“你几乎掌握了你需要的技巧，”他说，“以走过王皮之门。有人会借给你钥匙。”他看向你的双眼。“我求你不要握她的手，看她的脚，也不要问她要不要喝些什么。”他开始非常小声地抽泣起来。“那会伤害她。我爱她。”",
+description: "当舞蹈结束，当我的身体破烂不堪，当阿格狄斯提斯先生的眼泪温暖了我破碎的肉体时，我的影子成为了一种长着獠牙的巨兽的影子。“快去吧，”阿格狄斯提斯先生说道。“快睡吧。我的苏洛坎纳女士已经叫了马里内特女士来。她会是把你剥皮的人。”",
+requirements:{ecdysijob:1,locationcabaret:1,heart:18,ascensionchangeg:1},
+effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
+aspects:{damagehealth:1},
+alternativerecipes:[{id:"ecdysisdance_sendingmothheartg",chance:100},
+{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_sendingmothg",
+label:"最后一支舞",
+actionId:"work",
+startdescription:"苏洛坎纳在这里观赏我最后的演出。“近在咫尺了。我手上并没有供你必须过的门的钥匙。但是我的姐姐，我们活着的之中最老的（这不是说她还活着）——我的姐姐会在梦中授予你钥匙。我告诉你这个算是卖给你和她的人情：别看她的脸。”
+
+她点了一支烟。“会痛的，”她愉悦地加道。",
+description:"当舞蹈结束，当我的思绪混乱不堪，当我的情绪如毒蛇尾巴扬起时，我不能再轻易分辨何为真实了。苏洛坎纳是真的，我觉得。我镜子中的倒影—— 背尾的倒影——那是十分真实的。“快去吧，”苏洛坎纳说道。她抓紧了我的肩膀，亲吻了我的嘴唇，如蛾翼般轻盈。她的唇冰冷。她的吐息是腐肉。她的眼睛是美好的夜晚。那是真的吗？",
+requirements:{ecdysijob:1,locationcabaret:1,moth:18,ascensionchangeg:1},
+effects:{funds:1,mystique:1,sendingmothg:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"ecdysisdance_sendingmothheartg",chance:100},
+{id:"passion_expel_to_scar",chance:100,additional:true,expulsion:{limit:3,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_sendingmothheartg",
+label:"最后一支舞",
+actionId:"work",
+startdescription:"苏洛坎纳和阿格狄斯提斯先生都在这里观赏我最后的演出。“近如咫尺了，”她说。她皱了眉。“我不太确定……不过，你现在木已成舟了。祝你在林地好运，大概吧。”她点了一支烟。“这会疼，”她笑着加道。她背后，阿格狄斯提斯先生说了一次你的名字，轻轻地。他的声音十分动人——温润如中音笛。",
+description:"当舞蹈结束，当我的思绪混乱不堪，当我的情绪如毒蛇扬起时，我不能再轻易分辨何为真实了。苏洛坎纳是真的，我觉得。我镜子中的倒影——獠牙巨兽的倒影——那是十分真实的。“快去吧，”苏洛坎纳说道。她抓紧了我的肩膀，亲吻了我的嘴唇，如蛾翼般轻盈。她的唇冰冷。她的吐息是腐肉。她的眼睛映着夜晚。那是真的吗？",
+requirements:{desiremoth_track:3,desireheart_track:3},
+effects:{funds:1,mystique:1,sendingmothheartg:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:100,additional:true,expulsion:{limit:3,filter:{passionexhausted:1}}}],
+warmup:60
+},
+
+
+{id: "ecdysisdance_sendingheartf",
+label:"在蜕变俱乐部工作：苍白背后",
+actionId:"work",
+startdescription:"舞蹈于裸体中表演。阿格狄斯提斯先生与我进入更衣间，将我身体涂成了必要的白色。他在抽泣。",
+description:"剧院又暗又静。一道聚光灯光紧随着我的舞步。有可能，但不太可能，无人看着我表演——无人看着聚光灯渐渐暗淡下来，和我最后的坠落——无人看着一只白鸟从我张开的嘴中飞起，并遗忘在夜色中。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:15,ascensionchangef:1},
+effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_sendingmothf",
+label:"在蜕变俱乐部工作：",
+actionId:"work",
+startdescription:"为了这个舞蹈，我剩下的头发会被剔除——不是剃掉，而是用剪刀修剪，无微不至。苏洛坎纳执行这个任务。如果我敢动，她会叫骂并用剪刀的尖顶刺我。“我们应该磨利你的牙，真的，”她愉悦着说道，“但我们没时间了。用力咬就好。”她用力得打着我的臀部，时间到了。",
+description:"这支舞蹈没有舞伴，而唯一的观众便是祭品，他四处乱跑哭嚎，双拳砸墙。我冲向他，撞倒椅子，砸碎瓶子。我的牙齿刻在在它的脖子。我的狼形从血中醒来。哪怕我闭上眼，我也看得到它，如人们如何看着太阳升起。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:15,ascensionchangef:1},
+effects:{funds:1,mystique:1,sendingmothf:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+
+
+{id: "ecdysisdance_sendinghearte",
+label:"在蜕变俱乐部工作：新的高度",
+actionId:"work",
+startdescription:"今天苏洛坎纳亲自来为我穿上羽毛。“我从未达到比此更高的高度，哪怕是旧的形态，”她承认。“我到达居所的途径与此不同，最后。”她肯定得捏了捏我的后臀。如此之近，我看得见她的牙齿，如毒蛇般弯曲。“但我觉得你一定会走完全程。现在，我觉得，应该警告我的姐妹你的来临。现在你该去展现你自己了。漫索固然很好，可我可是来赚钱的。”",
+description:"今晚在座的只有七位观众：三男，三女，与阿格狄斯提斯先生，来这里收款。我在设计别致的七孔雪松琴的音乐下起舞，音乐家便是苏洛坎纳本人。天窗大开——夜晚很冷，但我的舞更甚。当另一个我飞升至夜色时，观众没有鼓掌——只有赞同的低语。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:12,ascensionchangee:1},
+effects:{funds:1,mystique:1,sendinghearte:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+
+
+{id: "ecdysisdance_sendingmothe",
+label:"在蜕变俱乐部工作：新的高度",
+actionId:"work",
+startdescription:"今天苏洛坎纳亲自来为我穿上羽毛。“这是我到达过最高的高度，没有比这更高过，”她承认。“我到达居所的途径与此不同，最后。”她肯定得捏了捏我的后臀。如此之近，我看得见她的牙齿，如毒蛇般弯曲。“但我觉得你一定会走完全程。现在，我觉得，应该警告我的姐妹你的来临。现在你该去展现你自己了。漫索固然很好，可我可是来赚钱的。”",
+description:"今晚在座的只有七位观众：三男，三女，与阿格狄斯提斯先生，来这里收款。我在设计别致的七孔雪松琴的音乐下起舞，音乐家便是苏洛坎纳本人。天窗大开——夜晚很冷，但我的舞更甚。当另一个我飞升至夜色时，观众没有鼓掌——只有赞同的低语。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:12,ascensionchangee:1},
+effects:{funds:1,mystique:1,sendingmothe:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_sendingheartd",
+label:"在蜕变俱乐部工作：罕见的追猎",
+actionId:"work",
+startdescription:"今晚，我身着褐红色的软皮与狐面。一条尾巴挂在我的身后：我的猎人需要点抓住的东西。今晚，我会独舞，但并非孤身一人。当我从幕后偷窥时，许多观众开始离席。其他人耐心地坐着，让衣着红黑的服务员将他们绑在坐席上。",
+description:"当音乐步入一段狡猾的快板旋律时，我从舞台跳下，在座位之间上窜下跳。观众叫了起来，在我经过时试着抓到我，摇晃座位以够到我。一位观众的手指在滑过我尾巴的战利品时摔倒，但另一位抓到了，并将它拽脱！服务员将他背至后台以领取他应得的东西。我从房间溜出，得到了雷鸣的掌声。只有得奖者看到了另一个我离开，与我一同带着面具与软皮，以及他完好的尾巴。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:10,ascensionchanged:1},
+effects:{funds:1,mystique:1,sendingheartd:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_sendingmothd",
+label:"在蜕变俱乐部工作：罕见的追猎",
+
+actionId:"work",
+startdescription:"今晚，我身着褐红色的软皮与狐面。一条尾巴挂在我的身后：我的猎人需要点抓住的东西。今晚，我会独舞，但并非孤身一人。当我从幕后偷窥时，许多观众开始离席。其他人耐心地坐着，让衣着红黑的服务员将他们绑在坐席上。",
+description:"当音乐步入一段狡猾的快板旋律时，我从舞台跳下，在座位之间上窜下跳。观众叫了起来，在我经过时试着抓到我，摇晃座位以够到我。一位观众的手指在滑过我尾巴的战利品时摔倒，但另一位抓到了，并将它拽脱！服务员将他背至后台以领取他应得的东西。我从房间溜出，得到了雷鸣的掌声。只有得奖者看到了另一个我离开，与我一同带着面具与软皮，以及他完好的尾巴。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:10,ascensionchanged:1},
+effects:{funds:1,mystique:1,sendingmothd:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_sendingheartc",
+label:"在蜕变俱乐部工作：分离的影子",
+actionId:"work",
+startdescription:"我与一人共舞。我带着猫面。他身着蛇衣。我每只黑手套的指尖都镶着蓝钢。如果我的蛇衣舞伴太慢了，我会在他的外皮上留下印记，而且我——我要小心他的毒牙所带的印记，当我们相吻时。",
+description:"伴随着优雅的猫步，我迈出了自己的影子。我是一只黑猫，蜷曲而拘谨，而且我会在准备好回归自己前都无影无踪。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:8,ascensionchangec:1},
+effects:{funds:1,mystique:1,sendingheartc:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_sendingmothc",
+label:"在蜕变俱乐部工作：分离的影子",
+actionId:"work",
+startdescription:"我与一人共舞。我带着猫面。他身着蛇衣。我每只黑手套的指尖都镶着蓝钢。如果我的蛇衣舞伴太慢了，我会在他的外皮上留下印记，而且我——我要小心他的毒牙所带的印记，当我们相吻时。",
+description:"伴随着优雅的猫步，我迈出了自己的影子。我是一只黑猫，蜷曲而拘谨，而且我会在准备好回归自己前都无影无踪。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:8,ascensionchangec:1},
+effects:{funds:1,mystique:1,sendingmothc:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+{id: "ecdysisdance_sendingheartb",
+label:"在蜕变俱乐部工作：抬头的毒蛇",
+actionId:"work",
+startdescription:"今晚，我们带着毒蛇在舞台与我们一同舞动，我们戴着鳞面，如毒蛇一样蜿蜒。舞台被光环起，空气是银色的雾，哪怕汗水从我的的颈背滴下。今晚，我们为月亮而舞。",
+description:"在舞蹈的高潮，我突然发作，趴在地上抽搐，直到我胸内所动之物展现自己的原形——一条抬头的毒蛇！他如疾病一般从我的嘴里倾泻而出，漫流于我的身体。观众们疯狂的鼓掌！我蹒跚下场，胸口起伏。我知道毒蛇会像它离开那样回来，当我和它都准备好了以后。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:6,ascensionchangeb:1},
+effects:{funds:1,mystique:1,sendingheartb:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_sendingmothb",
+label:"在蜕变俱乐部工作：抬头的毒蛇",
+actionId:"work",
+startdescription:"今晚，我们带着毒蛇在舞台与我们一同舞动，我们戴着鳞面，如毒蛇一样蜿蜒。舞台被光环起，空气是银色的雾，哪怕汗水从我的的颈背滴下。今晚，我们为月亮而舞。",
+description:"在舞蹈的高潮，我突然发作，趴在地上抽搐，直到我胸内所动之物展现自己的原形——一条抬头的毒蛇！他如疾病一般从我的嘴里倾泻而出，漫流于我的身体。观众们疯狂的鼓掌！我蹒跚下场，胸口起伏。我知道毒蛇会像它离开那样回来，当我和它都准备好了以后。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:6,ascensionchangeb:1},
+effects:{funds:1,mystique:1,sendingmothb:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_ascensionlessonmotha",
+label:"在蜕变俱乐部工作：猛烈的外肤",
+actionId:"work",
+startdescription:"今晚，我们被紧紧地包在绿色丝绸的丝巾中。我们会比平日更猛烈地宽衣解带。当我开始前，阿格狄斯提斯先生给了我一张无嘴的椭圆面具，春叶的新绿。我带上前犹豫了一会儿。他在面具里侧涂满了新鲜的土壤。",
+description:"当第一条丝巾离去时，痛苦令人十分震惊，如剥去结痂。下一条简单些，然后再是一条，但我有些失衡。我的舞伴担忧地看着我：我知道我的表情在面具后不会被看见。我们收尾时，我们收成一个环。当我把最后一条丝巾卸下时，痛苦宛如树根扯出大地。我不敢拿开面具。之后，我的皮肤再无印记。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:4,ascensionchangea:1},
+effects:{funds:1,mystique:1,ascensionlessonmotha:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_ascensionlessonhearta",
+label:"在蜕变俱乐部工作：猛烈的外肤",
+actionId:"work",
+startdescription:"今晚，我们被紧紧地包在绿色丝绸的丝巾中。我们会比平日更猛烈地宽衣解带。当我开始前，阿格狄斯提斯先生给了我一张无嘴的椭圆面具，春叶的新绿。我带上前犹豫了一会儿。他在面具里侧涂满了新鲜的土壤。",
+description:"当第一条丝巾离去时，痛苦令人十分震惊，如剥去结痂。下一条简单些，然后再是一条，但我有些失衡。我的舞伴担忧地看着我：我知道我的表情在面具后不会被看见。我们收尾时，我们收成一个环。当我把最后一条丝巾卸下时，痛苦宛如树根扯出大地。我不敢拿开面具。之后，我的皮肤再无印记。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:4,ascensionchangea:1},
+effects:{funds:1,mystique:1,ascensionlessonhearta:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_ascensionlessonheart_fallthrough",
+label:"在蜕变俱乐部工作：雷鸣，差一点",
+actionId:"work",
+startdescription:"今晚我们戴着面具，如庆典者漫步。阿格狄斯提斯先生仔细观察着。",
+description:"今晚，有什么东西呼之欲出——一片聚集的雷鸣。风雨欲来前的一刻清新山松香。但我们将除了面具的所有都褪下，之后只剩下掌声。[加入一点<b>心</b>以获得更多。欲望提升得越高，需要的<b>心</b>也越多。]",
+requirements:{ecdysijob:1,locationcabaret:1,heart:3,changemarks:1},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{healthexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_ascensionlessonmoth_fallthrough",
+actionId:"work",
+label:"在蜕变俱乐部工作：放弃，差一点",
+startdescription:"今晚我们戴着面具，如庆典者漫步。苏洛坎纳在外座等待，双睑合闭。",
+description:"今晚，有什么东西呼之欲出——树枝间的风声。观众的眼中如萤火虫般的闪烁。但我们将除了面具的所有都褪下，之后只剩下掌声。[加入一点<b>蛾</b>以获得更多。欲望提升得越高，需要的<b>蛾</b>也越多。]",
+requirements:{ecdysijob:1,locationcabaret:1,moth:3,changemarks:1},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_genericheart",
+label:"在蜕变俱乐部的有灵感的工作",
+actionId:"work",
+startdescription:"空气在颤动。我舞台上的同伴是血肉与丝绒的电弧。阿格狄斯提斯先生的鼓声响起。我们开始了。",
+description:"乐手们华丽地收尾。有些观众如从梦中醒来。其他的鼓掌。有个人强行挤出人群急着退场，面色难分。总会有这么一个人。当我们从舞台上跳走时，阿格狄斯提斯先生使了眼色。然后苏洛坎纳用她灵巧的手为我们中用力过猛的人包扎。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:3},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_genericmoth",
+actionId:"work",
+label:"在蜕变俱乐部的有灵感的工作",
+startdescription:"空气被烟雾缭绕。我舞台上的同伴是血肉与丝绒的鼓动。阿格狄斯提斯先生的鼓声响起。我们开始了。",
+description:"乐手们华丽地收尾。有些观众如从梦中醒来。其他的鼓掌。有个人强行挤出人群急着退场，面色难分。总会有这么一个人。当我们从舞台上跳走时，阿格狄斯提斯先生使了眼色。然后苏洛坎纳用她灵巧的手为我们中用力过猛的人包扎。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:3},
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+warmup:60,craftable:true
+},
+
+{id: "ecdysisdance_genericheart_rote",
+label:"在蜕变俱乐部的无灵感的工作",
+actionId:"work",
+startdescription:"我们迈向舞台，七个人，头向后摆动，丝巾扬起。但我已经知道还差点什么。透着蓝色的烟，我看到观众们的脸转向我们，然后回到他们的鸡尾酒和伙伴。我压着因从舞台另一边飘来的烟雾带来的咳嗽。",
+description:"阿格狄斯提斯先生与其他的乐手们坐在他的鼓边。我觉得表演结束时，他在看着我。他很失望。我知道他不会说什么不好的话。更可能的事，他什么都不会说。",
+requirements:{ecdysijob:1,locationcabaret:1,heart:2},
+effects:{funds:1,mystique:1},
+alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
+warmup:60,craftable:true
+},
+
+
+{id: "ecdysisdance_genericmoth_rote",
+label:"在蜕变俱乐部的无灵感的工作",
+actionId:"work",
+startdescription:"我们迈向舞台，七个人，头向后摆动，丝巾飞卷。但我已经知道还差点什么。透着蓝色的烟，我看到观众们的脸转向我们，然后回到他们的鸡尾酒和伙伴。我压着因从舞台另一边飘来的烟雾带来的咳嗽。",
+description:"苏洛坎纳站在后排，手掌托着手腕，眼睁睁看着我挤过她。“我的要求不止如此，”她忍不住说道。",
+requirements:{ecdysijob:1,locationcabaret:1,moth:2},
+effects:{funds:1,mystique:1},
+alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1,}}}],
+warmup:60,craftable:true
+},
+
+{id: "work_changedesire",
+label:"随心所欲",
+actionId:"work",
+startdescription:"外出夜游……",
+description:"第二天太阳升起时，我发现自己被挂在烟囱边，见证着透着晨曦的城市。我的头发一团糟，有人还偷了我的鞋子。",
+requirements:{changemarks:1,ecdysijob:-1,job:-1,dance:-1,location:-1},
+effects:{glimmering:1,vitality:1},
+alternativerecipes: [{id:"work_changedesire_restlessness",chance:70}],
+warmup:60,craftable:true
+},
+ 
+{id: "work_changedesire_restlessness",
+label:"随心所欲",
+actionId:"work",
+description:"我与一位牧师喝了白葡萄酒——我在码头边看野狗打架——在布满了假人的房间里做模特被画。这都不是我想要的。",
+
+effects:{restlessness:1},
+},
+ 
+]
+}

@@ -36,7 +36,6 @@ recipes: [
 			sulochana: "1",
 		},
 		craftable: "true",
-		comment: "NEW",
 		warmup: "60",
 		label: "A Chat with Sulochana",
 		startdescription: "@#ascensionlessonhearta|'You want to know more?'
@@ -72,10 +71,23 @@ recipes: [
 			{
 				id: "Subject",
 				description: "A topic of conversation",
+				label: "Subject",
 			},
 		],
 		alternativerecipes: 
 		[
+			{
+				id: "talk.apostleforge.sulochanaechidna",
+				comment: "NEW",
+			},
+			{
+				id: "talk.apostlegrail.sulochanamarinette",
+				comment: "NEW",
+			},
+			{
+				id: "apostlelantern.attemptrecruitkleidouchos.sulochana",
+				comment: "NEW",
+			},
 			{
 				id: "sulochanachat_health",
 				chance: "100",
@@ -115,7 +127,6 @@ recipes: [
 			sulochana: "1",
 		},
 		description: "'We were all of us young. Everyone. That's the only thing most of us have in common.'",
-		comment: "NEW",
 		label: "On the Body's Strengths",
 		actionId: "talk",
 	},
@@ -128,7 +139,6 @@ recipes: [
 			sulochana: "1",
 		},
 		description: "'You have potential. You saw me see that. Potential isn't enough. Anything else?'",
-		comment: "NEW",
 		label: "On Passion",
 		actionId: "talk",
 	},
@@ -141,13 +151,11 @@ recipes: [
 			locationcabaret: "1",
 		},
 		description: "'There's a road you can walk that begins there, in my house. If you want to talk about it, meet me there.'",
-		comment: "NEW",
 		label: "On the Ecdysis Club",
 		actionId: "talk",
 	},
 	{
 		id: "sulochanachat_desireheart_track",
-		comment: "NEW",
 		startdescription: "'Looking to shed your skin, hm?'",
 		requirements: 
 		{
@@ -164,7 +172,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_desiremoth_track",
-		comment: "NEW",
 		startdescription: "Now - now we begin to understand each other.",
 		requirements: 
 		{
@@ -188,10 +195,9 @@ recipes: [
 			sulochana: "1",
 		},
 		description: "Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
-		comment: "NEW",
 		label: "On Desire",
 		actionId: "talk",
-	},	
+	},
 	{
 		id: "sulochanachat_desire",
 		startdescription: "That's what steers you?",
@@ -201,13 +207,11 @@ recipes: [
 			desire: "1",
 		},
 		description: "We have no common ground there. I chose my road a very long time ago.",
-		comment: "NEW",
 		label: "On Desire",
 		actionId: "talk",
 	},
 	{
 		id: "sulochanachat_secrethistoriesrouter",
-		comment: "NEW",
 		startdescription: "As to that...",
 		requirements: 
 		{
@@ -252,7 +256,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriesg",
-		comment: "NEW",
 		startdescription: "'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
 		requirements: 
 		{
@@ -270,7 +273,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriesf",
-		comment: "NEW",
 		startdescription: "'You need to go to Miah? Bring me back some of those dates.'",
 		requirements: 
 		{
@@ -288,7 +290,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriese",
-		comment: "NEW",
 		startdescription: "'The Shadowless Kings? No - '",
 		requirements: 
 		{
@@ -304,7 +305,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriesd",
-		comment: "NEW",
 		startdescription: "'You need to go to the Meadows? Mm.'",
 		requirements: 
 		{
@@ -322,7 +322,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriesc",
-		comment: "NEW",
 		startdescription: "'You want to go to the Stones?'",
 		requirements: 
 		{
@@ -340,7 +339,6 @@ recipes: [
 	},
 	{
 		id: "sulochanachat_secrethistoriesb",
-		comment: "NEW",
 		startdescription: "'You want to go to Kerisham? Yes. The trains are difficult.'",
 		requirements: 
 		{
@@ -365,7 +363,6 @@ recipes: [
 			sulochana: "1",
 		},
 		description: "'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'",
-		comment: "NEW",
 		label: "On the Roads to Change",
 		actionId: "talk",
 	},
