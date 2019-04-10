@@ -210,8 +210,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 	
 		{id: "priestjob",
 		aspects:{job:1},
-	label: "Priestly Stipend",
-	description: "",
+	slots:[{id:"ability",label:"Ability",required:{ability:1},actionId:"work"},
+{id:"doctrine",label:"Doctrine",required:{lore:1},actionId:"work"},
+{id:"fervour",label:"Fervour",required:{fervour:1},actionId:"work"},
+],
+	label: "An Appointment to the Parish of St Felix",
+	description: "As long as I do not draw the attention of the Bishop, I can draw a living as the vicar of St Felix.",
 	noartneeded:true
 	
 },

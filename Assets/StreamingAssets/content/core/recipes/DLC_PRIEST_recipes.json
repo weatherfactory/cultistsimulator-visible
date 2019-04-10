@@ -1,0 +1,95 @@
+{
+"recipes": [
+
+{id:"work_priest_scarhealth",
+	actionId: "work",
+	label: "FNORD",
+	requirements: {priestjob:1,health:1,lore:1,fervour:1},
+	startdescription: "FNORD start description",
+	description:"'FNORD end description - nomatch",
+	alternativerecipes:[{id:"a_scarhealth_edge",chance:100},
+	{id:"a_scarhealth_forge",chance:100},
+	{id:"a_scarhealth_grail",chance:100},
+	{id:"a_scarhealth_heart",chance:100},
+	{id:"a_scarhealth_lantern",chance:100},
+	{id:"a_scarhealth_moth",chance:100},
+	{id:"a_scarhealth_winter",chance:100}],
+	craftable:true,
+	warmup:60
+	},
+
+	{id:"a_scarhealth_edge",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to edge",
+description:"FNORD scarred to edge",
+requirements:{edge:6},
+effects:{fatigue:-1,scarpriestedge:1},
+warmup:0,
+craftable:false
+},
+
+
+{id:"a_scarhealth_forge",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to forge",
+description:"FNORD scarred to forge",
+requirements:{forge:6},
+effects:{fatigue:-1,scarpriestforge:1},
+warmup:0,
+craftable:false
+},
+{id:"a_scarhealth_grail",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to grail",
+description:"FNORD scarred to grail",
+requirements:{grail:6},
+effects:{fatigue:-1,scarpriestgrail:1},
+warmup:0,
+craftable:false
+},
+{id:"a_scarhealth_heart",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to heart",
+description:"FNORD scarred to heart",
+requirements:{heart:6},
+effects:{fatigue:-1,scarpriestheart:1},
+warmup:0,
+craftable:false
+},
+{id:"a_scarhealth_lantern",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to lantern",
+description:"FNORD scarred to lantern",
+requirements:{lantern:6},
+effects:{fatigue:-1,scarpriestlantern:1},
+warmup:0,
+craftable:false
+},
+{id:"a_scarhealth_moth",
+actionId:"work",
+label:"FNORD ",
+startdescription:"FNORD scarring to moth",
+description:"FNORD scarred to moth",
+requirements:{moth:6},
+effects:{fatigue:-1,scarpriestmoth:1},
+warmup:0,
+craftable:false
+},
+{id:"a_scarhealth_winter",
+actionId:"work", 
+label:"FNORD ",
+startdescription:"FNORD scarring to winter",
+description:"FNORD scarred to winter",
+requirements:{winter:6},
+effects:{fatigue:-1,scarpriestwinter:1},
+craftable:false
+}
+	
+ 
+]
+}
