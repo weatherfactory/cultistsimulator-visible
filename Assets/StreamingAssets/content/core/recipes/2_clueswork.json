@@ -500,7 +500,16 @@ hintonly:true
    hintonly:true,
         craftable: false
     },
-	
+	{id:"work.openscar.hint",
+actionId:"work",
+label:"FNORD Knock ascension?",
+startdescription:"FNORD need 24 for Knock ascension",
+requirements:{ritual:1,lockscar:1,knock:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
 	 			{
         id: "ritehinthasknockedge",
         label: "Summoning Something?",
