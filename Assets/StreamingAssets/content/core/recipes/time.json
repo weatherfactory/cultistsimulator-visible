@@ -40,6 +40,17 @@
 	warmup:0,
 	 linked:[{id:"drawseason",chance:100}]
 	},
+	{id:"presickness",
+	label:"The Price of Joy",
+	actionId: "illhealth",
+	comments:"to lead into actual sickness from opium abuse, which requires Season Of",
+	startdescription:"My breathing has been laboured; my thoughts confused. Perhaps I should not have indulged so freely in that cure for pain.",
+	effects:{seasonsickness:1},
+	linked:[{id:"sickness"}],
+	warmup:15
+	},
+	
+	
 	   {id: "sickness",
         label: "Sickness",
         actionId: "illhealth",
@@ -58,7 +69,8 @@
 		{id: "deathofthebody",chance:100}],
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will kill you.]",
         description: "The sickness has ravaged my body.",
-        warmup: 60
+        warmup: 60,
+		effects:{seasonsickness:-1}
     },
 	
 	{id: "forlornbloodsickness",
@@ -93,7 +105,8 @@ warmup:10},
 	requirements:{follower_wound:1},
 	startdescription: "Their wounds are mortal. There's nothing to be done.",
 	description: "Perhaps their spirit walks the House. Perhaps it's lost in the Wood, to sink ever lower. Their mortal shell remains.",
-	aspects:{killmortal:1}	
+	aspects:{killmortal:1},
+effects:{seasonsickness:-1}
 	},
 	{id:"rosenext",
 label:"Trysts and Interludes",
