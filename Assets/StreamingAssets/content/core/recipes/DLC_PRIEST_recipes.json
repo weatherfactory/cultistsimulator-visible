@@ -7,10 +7,10 @@ actionId:"work",
 label:"FNORD begin Knock ascension",
 startdescription:"FNORD attempt",
 description:"FNORD fell down",
-slots:[{id:"scar",label:"My Lock",required:{lockscar:1}}],
 requirements:{ritual:1,lockscar:1,knock:24},
+aspects:{unlockscar:1},
 linked:[{id:"work.openscar.continue"}],
-warmup:60,
+warmup:30,
 craftable:true
 },
 
@@ -19,15 +19,26 @@ craftable:true
 actionId:"work",
 label:"FNORD continue Knock ascension",
 startdescription:"FNORD continue Knock ascension",
-description:"",
-requirements:{lockscar:1},
-linked:[{id:"work.openscar.continue"},
-{id:"minorknockvictory"}],
+description:"FNORD Knock ascension failed",
+slots:[{id:"scar",label:"My Lock",required:{lockscar:1}}],
+alt:[{id:"minorknockvictory"},
+{id:"work.openscar.failed"}],
+linked:[{id:"work.openscar.continue"}],
 aspects:{unlockscar:1},
 warmup:30,
-craftable:falsee
-}
+craftable:false
+},
 
+
+
+{id:"work.openscar.failed",
+actionId:"work",
+label:"FNORD ascension will fail",
+startdescription:"FNORD no lock scar provided, provide one!",
+requirements:{lockscar:-1},
+warmup:10,
+craftable:false
+},
 
 
 
@@ -35,7 +46,7 @@ craftable:falsee
 actionId:"work",
 label:"The Threshold",
 startdescription:"FNORD Minor Knock Victory",
-requirements:{openedlockscar:7},
+requirements:{openedlockscar:6,lockscar:1},
 warmup:30,
 ending:"minorknockvictory"
 },
