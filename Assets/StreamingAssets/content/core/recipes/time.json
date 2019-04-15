@@ -65,9 +65,9 @@
 		aspects:{fallsick:1},
 		alternativerecipes:
 		[
-		{id: "mareending",chance:100],
+		{id: "mareending",chance:100},
 		{id: "deathofthewoundedfollower",chance:100},
-		{id: "deathofthebody",chance:100},
+		{id: "deathofthebody",chance:100}],
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will kill you.]",
         description: "The sickness has ravaged my body.",
         warmup: 60,
@@ -171,7 +171,7 @@ warmup:5
 					greedy: true
 		}]
     },
-	,
+	
 {id:"mareending",
 actionId:"sickness",
 label:"The Mare In Me",
