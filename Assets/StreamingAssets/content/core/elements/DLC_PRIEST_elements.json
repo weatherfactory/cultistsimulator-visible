@@ -105,6 +105,88 @@ lifetime:1,
 decayTo:lockscarwinter
 },
 
+											 {
+        id: "devotee_edge",
+            label: "A Sturdy Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+										 {
+        id: "devotee_forge",
+            label: "A Practical Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+										 {
+        id: "devotee_grail",
+            label: "An Avid Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+										 {
+        id: "devotee_heart",
+            label: "A Lively Worshipper ",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+								 {
+        id: "devotee_knock",
+            label: "A Dextrous Worshipper ",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+
+										 {
+        id: "devotee_lantern",
+            label: "A Percipient Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
+            animFrames: 1,
+					description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+												 {
+        id: "devotee_moth",
+            label: "An Erratic Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+														 {
+        id: "devotee_winter",
+            label: "A Silent Worshipper",
+            aspects:
+            {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
+            animFrames: 1,
+			description: "Sometimes, Fervour drives laypeople to devote themselves to more uncommon duties. [When this one's enthusiasm fades, they will return to the congregation.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
+			lifetime:180
+        },
+
 
 
 ]
