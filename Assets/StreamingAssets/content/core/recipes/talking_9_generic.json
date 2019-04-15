@@ -189,6 +189,7 @@ requirements: {society:-1,follower: 1,summoned:1},
 slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a target."}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
+{id:"discusssicknessprotectionspirit"},
 {id:"discussfucinespirit"},
 {id:"discussphrygianspirit"},
 {id:"discussmandaicspirit"},
@@ -221,6 +222,16 @@ startdescription: "Not everything from the Mansus can speak, but everything can 
 description: "Nothing; my words cease like sand in a glass.",
 warmup: 60,
 craftable: true
+},
+
+{id: "discusssicknessprotectionspirit",
+label:"An Exemption from Sickness",
+actionId: "talk",
+requirements: {summoned:1,spiritsicknessprotector:1,health:1},
+startdescription: "FNORD sickness protection",
+description: "@spirit_wintera_moth#I will place a lock of my hair in the hollow of this one's chest, and with luck, one day, the sickness will seek me there instead.|spirit_grailc_moth#The Raw Prophet will embrace me with all its arms and kiss me with its mouths or whatever else it might find suitable, and perhaps that will protect me from diseases, and perhaps it will simply outnumber them.|spirit_heartc_edge#The Percussigant will weave the beat of my heart into the steps of its dance unending, and that might be enough, enough, enough. |spirit_graile_edge#'Open your mouth. Tilt back your head. We shall let one drop fall. Swallow. Yes. You'll be better now.'|spirit_lanterne_secret#'I will speak with your shadow, and some time soon it might turn a greater shadow aside. That's all I can promise you now.'@",
+craftable: false,
+effects:{sicknessprotection:1}
 },
 
 {id: "discussfucinespirit",
