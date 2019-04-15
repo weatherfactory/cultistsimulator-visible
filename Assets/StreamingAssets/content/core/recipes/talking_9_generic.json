@@ -225,11 +225,11 @@ craftable: true
 },
 
 {id: "discusssicknessprotectionspirit",
-label:"An Exemption from Sickness",
+label:"Request a Stay of Execution",
 actionId: "talk",
 requirements: {summoned:1,spiritsicknessprotector:1,health:1},
-startdescription: "FNORD sickness protection",
-description: "@spirit_wintera_moth#I will place a lock of my hair in the hollow of this one's chest, and with luck, one day, the sickness will seek me there instead.|spirit_grailc_moth#The Raw Prophet will embrace me with all its arms and kiss me with its mouths or whatever else it might find suitable, and perhaps that will protect me from diseases, and perhaps it will simply outnumber them.|spirit_heartc_edge#The Percussigant will weave the beat of my heart into the steps of its dance unending, and that might be enough, enough, enough. |spirit_graile_edge#'Open your mouth. Tilt back your head. We shall let one drop fall. Swallow. Yes. You'll be better now.'|spirit_lanterne_secret#'I will speak with your shadow, and some time soon it might turn a greater shadow aside. That's all I can promise you now.'@",
+startdescription: "The residents of the Mansus are not subject to the ills of the flesh. Some of them, sometimes, can extend their protection to those of us trapped out here in the Wake.",
+description: "@#spirit_wintera_moth|I will place a lock of my hair in the hollow of this one's chest, and with luck, one day, the sickness will seek me there instead.#spirit_grailc_moth|The Raw Prophet will embrace me with all its arms and kiss me with its mouths or whatever else it might find suitable, and perhaps that will protect me from diseases, and perhaps it will simply outnumber them.#spirit_heartc_edge|The Percussigant will weave the beat of my heart into the steps of its dance unending, and that might be enough, enough, enough. #spirit_graile_edge|'Open your mouth. Tilt back your head. We shall let one drop fall. Swallow. Yes. You'll be better now.'#spirit_lanterne_secret|'I will speak with your shadow, and some time soon it might turn a greater shadow aside. That's all I can promise you now.'@",
 craftable: false,
 effects:{sicknessprotection:1}
 },
