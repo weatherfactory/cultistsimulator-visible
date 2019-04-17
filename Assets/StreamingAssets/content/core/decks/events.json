@@ -352,7 +352,25 @@ resetonexhaustion:true
 	"strategy.downtime.concealed"],
 	defaultcard: "strategy.downtime",
 resetonexhaustion:true	
-	}
+	},
+	
+	{id:"priest.repevent",
+	label:"The Congregation's Passions",
+	description:"What will come of this?",
+	spec:["notoriety",
+	"notoriety",
+	"notoriety",
+	"notoriety",
+	"mystique",
+	"mystique",
+	"mystique",
+	"mystique",
+	"funds",
+	"funds",
+	"fervour"
+	],
+	resetonexhaustion:true
+	},
 	
 	
 	]

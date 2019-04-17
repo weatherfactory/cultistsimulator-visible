@@ -37,6 +37,11 @@
             isAspect: true
         },
 				     {
+            id: "devotee",
+            label: "Devotee",
+			description: "Just now, this one's devotion is all-consuming. But soon it may fade, and then they may question what they have done."
+        },
+				     {
             id: "exalted",
             label: "Exalted",
 			description: "This one cannot rise higher... at least, not while I lead.",
@@ -726,6 +731,14 @@ isAspect:true
 			description: "Extend a hireling's period of service.",
             isAspect: true,
 			comments: "Recipe aspect. Use to rehire hirelings.",
+			noartneeded: true
+        },
+		{
+            id: "refiring",
+            label: "Refiring",
+			description: "Extend a d's period of service.",
+            isAspect: true,
+			comments: "Recipe aspect. Use to refire devotees.",
 			noartneeded: true
         },
 		{
