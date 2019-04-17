@@ -1,6 +1,120 @@
 {
 "recipes": [
 
+
+{id:"work.priest.first",
+actionId:"",
+label:"",
+startdescription:"FNORD humdrum sermon",
+description:"",
+requirements:{priestjob:1,ability:1},
+effects:{},
+warmup:60,
+craftable:true,
+maxexecutions:1,
+alt:[{id:"dream.priest.open",additional:true}]
+},
+
+{id:"work.priest.second",
+actionId:"",
+label:"",
+startdescription:"FNORD excited sermon, gives fervour",
+description:"",
+requirements:{priestjob:1,reason:1,fragmentknock:1},
+effects:{fervour:1},
+warmup:60,
+craftable:true,
+maxexecutions:1,
+alt:[{id:"priest.rep..priest.open",additional:true}
+{id:"study.priest.open",additional:true}]
+},
+
+{id:"work.priest.third",
+actionId:"",
+label:"",
+startdescription:"FNORD using fervour",
+description:"",
+requirements:{priestjob:1,fervour:1},
+effects:{fervour:1},
+warmup:60,
+craftable:true,
+maxexecutions:1,
+{id:"talk.priest.open",additional:true},
+{id:"explore.priest.open",additional:true}]
+},
+
+
+{id:"dream.priest.open",
+actionId:"",
+label:"",
+startdescription:"St Agnes again in a vision",
+description:"",
+requirements:{},
+effects:{fragmentknock:1},
+warmup:30
+},
+
+{id:"explore.priest.open",
+actionId:"explore",
+label:"",
+startdescription:"FNORD some description about the church",
+description:"",
+requirements:{},
+effects:{hq.church:1},
+warmup:30
+},
+
+{id:"talk.priest.open",
+actionId:"talk",
+label:"",
+startdescription:"",
+description:"Hello, we've been expecting you. Last chap name",
+requirements:{},
+effects:{LEVER_LastCult:1},
+warmup:30
+},
+
+{id:"talk.priest.open.followup",
+actionId:"talk",
+label:"FNORD",
+startdescription:"FNORD",
+mutations:[{filter:society,mutate:rededicable,mutationLevel:1}],
+warmup:0},
+
+
+
+{id:"study.priest.open",
+actionId:"",
+label:"",
+startdescription:"",
+description:"",
+requirements:{},
+effects:{},
+warmup:30
+},
+
+
+{id:"talk.rededicatecult",
+actionId:"talk",
+label:"FNORD will this even work? We might need to put it in a different verb and add a REDEDICABLE requirement to that",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{society:1,rededicable:1},
+slots:[{id:"principle",label:"New Founding Principle",required:{lore:1}}],
+alt:[{id:"talk.rededicatecult.edge",
+label:"Re-dedicate Cult: Edge",
+startdescription:"We FNORD copy",
+description:"FNORD copy from cult",
+requirements:{edge:1},
+effects:{society:-1,cultedge:1}}]
+},
+
+
+
+
+
+
+
 {id:"work.priest.passion.fervour.lore",
 actionId:"work",
 label:"Employ Fervour + Passion + Lore FNORD",
