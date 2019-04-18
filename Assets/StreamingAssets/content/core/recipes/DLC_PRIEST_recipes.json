@@ -3,61 +3,72 @@
 
 
 {id:"work.priest.first",
-actionId:"",
-label:"",
+actionId:"work",
+label:"Conduct My First Service",
 startdescription:"FNORD humdrum sermon",
 description:"",
-requirements:{priestjob:1,ability:1},
-effects:{},
-warmup:60,
+requirements:{priestjob:1,passion:1},
+effects:{funds:1,reason:1},
+warmup:10,
 craftable:true,
 maxexecutions:1,
-alt:[{id:"dream.priest.open",additional:true}]
+alt:[{id:"dream.priest.open",additional:true},
+{id:"study.priest.open",additional:true}]
 },
 
 {id:"work.priest.second",
-actionId:"",
-label:"",
-startdescription:"FNORD excited sermon, gives fervour",
-description:"",
+actionId:"work",
+label:"Conduct a Service, and speak of the Dream of Keys",
+startdescription:"FNORD excited sermon",
+description:"FNORD excited sermon, gives fervour",
 requirements:{priestjob:1,reason:1,fragmentknock:1},
 effects:{fervour:1},
 warmup:60,
 craftable:true,
 maxexecutions:1,
-alt:[{id:"priest.rep..priest.open",additional:true}
-{id:"study.priest.open",additional:true}]
+alt:[{id:"priest.repevent",additional:true}]
 },
 
 {id:"work.priest.third",
-actionId:"",
-label:"",
-startdescription:"FNORD using fervour",
+actionId:"work",
+label:"Conduct Services",
+startdescription:"FNORD using fervour - they're all still whipped up",
 description:"",
 requirements:{priestjob:1,fervour:1},
 effects:{fervour:1},
 warmup:60,
 craftable:true,
 maxexecutions:1,
-{id:"talk.priest.open",additional:true},
+alt:[{id:"talk.priest.open",additional:true},
 {id:"explore.priest.open",additional:true}]
 },
 
 
 {id:"dream.priest.open",
-actionId:"",
-label:"",
-startdescription:"St Agnes again in a vision",
+actionId:"dream",
+label:"Deep Sleep",
+startdescription:"But still in my dreams I see St Agnes FNORD",
+description:"",
+requirements:{},
+effects:{health:1},
+warmup:10
+},
+
+{id:"study.priest.open",
+actionId:"study",
+label:"The Hinge in the Words",
+startdescription:"The Locksmith's Dream",
 description:"",
 requirements:{},
 effects:{fragmentknock:1},
-warmup:30
+warmup:10 
 },
+
 
 {id:"explore.priest.open",
 actionId:"explore",
-label:"",
-startdescription:"FNORD some description about the church",
+label:"Old Stones",
+startdescription:"FNORD some description about the church - Sun and Knot",
 description:"",
 requirements:{},
 effects:{hq.church:1},
@@ -70,7 +81,7 @@ label:"",
 startdescription:"",
 description:"Hello, we've been expecting you. Last chap name",
 requirements:{},
-effects:{LEVER_LastCult:1},
+effects:{LEVER_LastCult:1,LEVER_LastFollower:1},
 warmup:30
 },
 
@@ -78,20 +89,9 @@ warmup:30
 actionId:"talk",
 label:"FNORD",
 startdescription:"FNORD",
-mutations:[{filter:society,mutate:rededicable,mutationLevel:1}],
-warmup:0},
+mutations:[{filter:society,mutate:rededicable,level:1}]},
 
 
-
-{id:"study.priest.open",
-actionId:"",
-label:"",
-startdescription:"",
-description:"",
-requirements:{},
-effects:{},
-warmup:30
-},
 
 
 {id:"talk.rededicatecult",
@@ -106,7 +106,7 @@ label:"Re-dedicate Cult: Edge",
 startdescription:"We FNORD copy",
 description:"FNORD copy from cult",
 requirements:{edge:1},
-effects:{society:-1,cultedge:1}}]
+effects:{society:-1,cultedge_1:1}}]
 },
 
 
@@ -284,7 +284,7 @@ actionId:"priest.repevent",
 label:"FNORD repevent",
 startdescription:"FNORD repevent",
 description:"FNORD repevent",
-slots:[{id:"society",label:"Deeper Mysteries",description:"I could introduce more enthusiastic worshippers to the deeper mysteries..."}],
+slots:[{id:"society",label:"Inner Circle",description:"I could introduce the most enthusiastic worshippers to the inner circle.."}],
 alt:[{id:"priest.repevent.devotee.edge",
 requirements:{venerationedge:1},
 deckeffect:{priest.repevent:1},
@@ -426,7 +426,7 @@ ending:"minorknockvictory"
 	requirements: {priestjob:1,health:1,lore:1,fervour:1},
 	startdescription: "There are doors that few ever see - fewer yet ever open. If I am willing to suffer the consequences, I might become one of those doors.",
 	description:"I have suffered. Perhaps I have not suffered enough. [You need both Restlessness and at least sixth-level Lore to create a Lock Scar. You can only have one of each type of scar.]" ,
-	slots:[{id:"restlessnessfuel",label:"Yearning",required:{restlessness:1},greedy:true}]
+	slots:[{id:"restlessnessfuel",label:"Yearning",required:{restlessness:1},greedy:true}],
 	alternativerecipes:[{id:"a_scarhealth_edge",chance:100},
 	{id:"a_scarhealth_forge",chance:100},
 	{id:"a_scarhealth_grail",chance:100},
