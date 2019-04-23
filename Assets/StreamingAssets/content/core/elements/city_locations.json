@@ -127,7 +127,8 @@
 					required: {funds:1},
 				}
 				],
-				xtriggers:{movehq:hq.abandoned}
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
         },
 		
 									{
