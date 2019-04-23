@@ -172,21 +172,21 @@ warmup:60
 
 {id:"work.priest.passion.fervour.lore",
 actionId:"work",
-label:"Employ Fervour + Passion + Lore FNORD",
-startdescription:"Any lore + Fervour will drive em nuts. fnord",
-description:"FNORD ",
+label:"Improvise upon a secret doctrine, before a fervent congregation",
+startdescription:"The congregation is already in a state of excitement. Any secret knowledge will almost certainly drive them to exultation.",
+description:"At last their fervour is spent.  What have they made of this night? [Fervour and Lore together will almost always cause Exultation, but will use up the Fervour.]",
 requirements:{priestjob:1,passion:1,lore:1,fervour:1},
 effects:{funds:1,fervour:-1},
 alt:[{id:"priest.repevent",chance:90,additional:true}],
-warmup:60,
+warmup:50,
 craftable:true
 },
 
 {id:"work.priest.reason.fervour.lore",
 actionId:"work",
-label:"Employ Fervour + Reason + Lore FNORD",
-startdescription:"Any lore + Fervour will drive em nuts. fnord",
-description:"FNORD ",
+label:"Prepare a sermon on a secret doctrine, to give to a fervent congregation",
+startdescription:"The congregation is already in a state of excitement. Any secret knowledge will almost certainly drive them to exultation.",
+description:"At last their fervour is spent.  What have they made of this night? [Fervour and Lore together will almost always cause Exultation, but will use up the Fervour.]",
 requirements:{priestjob:1,reason:1,lore:1,fervour:1},
 effects:{funds:1,fervour:-1},
 alt:[{id:"priest.repevent",chance:90,additional:true}],
@@ -196,9 +196,9 @@ craftable:true
 
 {id:"work.priest.passion.fervour",
 actionId:"work",
-label:"Employ Fervour + Passion",
-startdescription:"Fervour gives a very high chance of a rep event. fnord",
-description:"FNORD ",
+label:"Improvise a sermon, before a fervent congregation",
+startdescription:"The congregation is already in a state of excitement. Any secret knowledge will likely drive them to exultation.",
+description:"At last their fervour is spent.  What have they made of this night? [Fervour will usually cause Exultation, but will use up the Fervour.]",
 requirements:{priestjob:1,passion:1,fervour:1},
 effects:{funds:1,fervour:-1},
 alt:[{id:"priest.repevent",chance:70,additional:true}],
@@ -208,9 +208,9 @@ craftable:true
 
 {id:"work.priest.reason.fervour",
 actionId:"work",
-label:"Employ Fervour + Reason + Fervour",
-startdescription:"Fervour gives a very high chance of a rep event. fnord",
-description:"FNORD ",
+label:"Carefully prepare a sermon for a fervent congregation",
+startdescription:"The congregation is already in a state of excitement. Any secret knowledge will likely drive them to exultation.",
+description:"At last their fervour is spent.  What have they made of this night? [Fervour will usually cause Exultation, but will use up the Fervour.]",
 requirements:{priestjob:1,reason:1,fervour:1},
 effects:{funds:1,fervour:-1},
 alt:[{id:"priest.repevent",chance:70,additional:true}],
@@ -221,9 +221,9 @@ craftable:true
 
 {id:"work.priest.passion.lore",
 actionId:"work",
-label:"Employ Passion  with lore FNORD",
-startdescription:"FNORd general Passion preach  with lore",
-description:"FNORD general Passion preach with  non-reason lore",
+label:"Improvise a sermon on a secret doctrine",
+startdescription:"I will speak to their souls, and if I speak with conviction, their souls may answer me. [Using a suitable doctrine with Passionate preaching is more likely to create Fervour.]",
+description:"Tonight, they listen... but they do not hear. [Using a suitable doctrine with Passionate preaching is more likely to create Fervour.]",
 requirements:{priestjob:1,passion:1,lore:1},
 alt:[{id:"preach.edge",challenges:{edge:base}},
 {id:"preach.forge",challenges:{forge:base}},
@@ -233,15 +233,15 @@ alt:[{id:"preach.edge",challenges:{edge:base}},
 {id:"priest.repevent",chance:10,additional:true}
 ],
 effects:{funds:1},
-warmup:60,
+warmup:50,
 craftable:true
 },
 
 {id:"work.priest.reason.lore",
 actionId:"work",
-label:"Employ Reason with lore FNORD",
-startdescription:"FNORd general reason preach  with lore",
-description:"FNORD general reason preach with  non-reason lore",
+label:"Prepare a sermon on a secret doctrine",
+startdescription:"I will speak to their souls, and if I speak with precisions, their souls may answer me. [Using a suitable doctrine with Reasoned preaching is more likely to create Fervour.]",
+description:"Tonight, they listen... but they do not hear. [Using a suitable doctrine with Reasoned preaching is more likely to create Fervour.]",
 requirements:{priestjob:1,reason:1,lore:1},
 alt:[{id:"preach.knock",challenges:{knock:base}},
 {id:"preach.secrethistories",challenges:{secrethistories:base}},
@@ -350,7 +350,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Division! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_edge:1}
+effects:{funds:2,devotee_edge:1}
 },
 {id:"priest.repevent.devotee.forge",
 requirements:{venerationforge:1},
@@ -358,7 +358,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Fires! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_forge:1}
+effects:{funds:2,devotee_forge:1}
 },
 {id:"priest.repevent.devotee.grail",
 requirements:{venerationgrail:1},
@@ -366,7 +366,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes the Red! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_grail:1}
+effects:{funds:2,devotee_grail:1}
 },
 {id:"priest.repevent.devotee.heart",
 requirements:{venerationheart:1},
@@ -374,7 +374,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Drum! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_heart:1}
+effects:{funds:2,devotee_heart:1}
 },
 {id:"priest.repevent.devotee.knock",
 requirements:{venerationknock:1},
@@ -382,7 +382,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Threshold! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_knock:1}
+effects:{funds:2,devotee_knock:1}
 },
 {id:"priest.repevent.devotee.lantern",
 requirements:{venerationlantern:1},
@@ -390,7 +390,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Candle! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_lantern:1}
+effects:{funds:2,devotee_lantern:1}
 },
 {id:"priest.repevent.devotee.moth",
 requirements:{venerationmoth:1},
@@ -398,7 +398,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Shears! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_moth:1}
+effects:{funds:2,devotee_moth:1}
 },
 {id:"priest.repevent.devotee.winter",
 requirements:{venerationwinter:1},
@@ -406,7 +406,7 @@ deckeffect:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has come who will not speak of their dreams; but, indeed, they need not! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
-effects:{funds:1,devotee_winter:1}
+effects:{funds:2,devotee_winter:1}
 },
 ],
 deckeffect:{priest.repevent:1},
@@ -428,7 +428,7 @@ craftable:true
 
 {id:"work.priest.reason",
 actionId:"work",
-label:"Employ Reason FNORD",
+label:"Conduct a Service",
 startdescription:"I will prepare my sermon with care.",
 description:"The congregation listens closely. I have shared no secret doctrine today.",
 requirements:{priestjob:1,reason:1},
