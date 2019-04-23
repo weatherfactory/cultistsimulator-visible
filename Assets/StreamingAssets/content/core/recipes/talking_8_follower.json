@@ -179,7 +179,7 @@ label:"Fire this Devotee with faith again.",
 requirements: {devotee:1,fervour:1},
 startdescription:"If my devotee's faith is wavering, I can use Fervour to fire their enthusiasm again.",
 description:"'Would you forget your dreams so quickly?'",
-effects:{refiring:-1},
+effects:{refiring:1},
 craftable:true,
 warmup:10
 },

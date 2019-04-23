@@ -36,7 +36,7 @@ label:"Conduct a Service",
 startdescription:"The congregation whispers as it waits, and the echoes are like wings in a high place, like tree-branches in the wind. The deacon and the sacristan watch me as I take my place. There is something in their eyes I didn't quite expect. Is it... pride?",
 description:"My heart is the crossroads of my blood. My tongue is a sharpened flame. Isee shapes in the stained glass that are not always there. A grey mare; a sundered tree; a twinned serpent. When I've finished, the congregation is on their feet, stamping and hooting, and their eyes, their mouths, are doors. The sacristan takes my hand in his withered own, before the whole church. There are tears in his eyes. 'We've waited so long', he whispers.'",
 requirements:{priestjob:1,ability:1,lore:1,fervour:1},
-effects:{fervour:1},
+effects:{funds:1,fervour:-1},
 warmup:60,
 craftable:true,
 maxexecutions:1,
@@ -84,7 +84,7 @@ linked:[{id:"talk.priest.open.followup"}]
 {id:"talk.priest.open.followup",
 actionId:"talk",
 label:"Rededication",
-startdescription:"The sacristan is weeping again. 'We've waited for you. We've honoured the charge that #PREVIOUSCHARACTERNAME# gave us. You are our Light; you are our Threshold. We need you. Lead us.'",
+startdescription:"The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
 mutations:[{filter:society,mutate:rededicable,level:1}]
 },
 
