@@ -1,12 +1,13 @@
 {"elements":
     [
 		     {
-        id: "fervour",
+        id:"fervour",
             label: "Fervour",
             aspects:
             {influence:1,heart:2},
-            description: "My congregation's passions run strong, if not deep.",
-			lifetime:180
+            description: "My congregation's passions run strong, if not deep. [Keep your congregation satisfied. Fervour, if unused, will decay to Dread.]",
+			lifetime:180,
+			decayTo: dread
 			},
 
 
