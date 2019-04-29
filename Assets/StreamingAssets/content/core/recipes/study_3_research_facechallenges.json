@@ -169,6 +169,7 @@ actionId:"study",
 label:"Obsession's Burden",
 startdescription:"I have sharpened my thoughts like a blade. Now the point of that blade has snapped. [Reason has been permanently damaged.]",
 requirements:{concentration:1},
+aspects:{damagereason:1},
 warmup:30,
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
 },

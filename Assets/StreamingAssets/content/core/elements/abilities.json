@@ -85,7 +85,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 												{
@@ -95,7 +95,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 						{
@@ -144,7 +144,7 @@
 			lifetime:60,
 			decayTo:"reason",		
 		icon:"reason",
-			xtriggers:{scarability:scar_lantern,topassion:passionexhausted},
+			xtriggers:{scarability:scar_lantern,topassion:passionexhausted,damagereason:dread},
 			resaturate: true
         },
 				 {
@@ -203,7 +203,8 @@ lifetime: 180,
             label: "Decrepitude",
 			description: "Some wounds never quite heal. [Untreated Injuries and Hunger become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
 			aspects: {ability:1,winter:1},
-			xtriggers: {tohealth:health}
+			xtriggers: {tohealth:health},
+			slots:[{id:"consume",label:"Consume",required:{ingredient:1},forbidden:{poison:1}, actionId:"dream"}]
             },
 		
 					 {
