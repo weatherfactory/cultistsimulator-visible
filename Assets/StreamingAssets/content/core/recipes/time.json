@@ -51,53 +51,47 @@
 	},
 	
 	
-	   {id: "sickness",
-        label: "Sickness",
-        actionId: "illhealth",
-		startdescription:"I've become unwell! This illness will poison my health, and I'll need to recover.",
-        requirements: {seasonsickness:1},
-		extantreqs: {apostlegrail.pillar2.dormant:-1},
-		comments:"We don't want to double up on normal and Grail-apostle sickness",
-				slots: [{id:"Affliction",
-					label:"Affliction",
-					required: {health: 1,follower_wound:1,fatigue:1},
-					greedy: true
-		}],
-		aspects:{fallsick:1},
-		alternativerecipes:
+   {id: "sickness",
+	label: "Sickness",
+	actionId: "illhealth",
+	startdescription:"I've become unwell!",
+	description: "This illness has damaged my health. I'll need to rest before I am fully recovered. [Cure your Affliction with Funds or Vitality.]",
+	requirements: {seasonsickness:1},
+	extantreqs: {apostlegrail.pillar2.dormant:-1},
+	comments:"We don't want to double up on normal and Grail-apostle sickness",
+			slots: [{id:"Affliction",
+				label:"Health",
+				required: {health: 1,follower_wound:1,fatigue:1},
+				greedy: true
+	}],
+	aspects:{fallsick:1},
+	alternativerecipes:
 		[
 		{id: "deathofthewoundedfollower",chance:100},
-		{id: "mareendingsickness",chance:100,
-		actionId:"sickness",
-		label:"The Mare In Me",
-		startdescription:"SHE COMES",
-		description:"--",
-		extantreqs:{lockscar:3},
-		signalEndingFlavour:Melancholy,
-		ending:minormarevictory,
-		craftable:false
-		},
-		{id:"signalupcomingsicknessdeath",chance:100,
-		signalEndingFlavour:Melancholy,
-		label:"Sickness",
-		requirements:{health:-1,fatigue:-1},
-		
-		comments: "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
-		
-		linked:	[{id: "sickness.nohealthavailable.tryforstayofexecution",chance:100}],
-		}],
+		{id:"signalupcomingsicknessdeath",chance:100},
+		],
 
-        startdescription: "I've become unwell! [If an illness cannot consume Health, it will kill you, unless you have a Stay of Execution.]",
-        warmup: 60,
-		effects:{seasonsickness:-1}
+
+	warmup: 60,
+	effects:{seasonsickness:-1}
     },
 	
+{id:"signalupcomingsicknessdeath",chance:100,
+actionId:"sickness",
+label:"Sickness",
+requirements:{health:-1,fatigue:-1},
+startdescription: "I've become unwell! [If an illness cannot consume Health, it will kill you... unless you have special protection.]",
+comments: "need this here so we can have a warning if there's no health; then we link to the stay of execution attempt so we can have a new slot.",
+signalEndingFlavour:Melancholy,
+linked:
+[{id: "sickness.nohealthavailable.tryforstayofexecution",chance:100}],
+},
 	
 {id:"sickness.nohealthavailable.tryforstayofexecution",
 actionId:"illhealth",
 label:"Mortal Peril",
-				slots: [{id:"Affliction",
-					label:"Affliction",
+				slots: [{id:"sicknessprotection",
+					label:"Protection",
 					required: {sicknessprotection:1},
 					greedy: true
 		}],
@@ -113,8 +107,18 @@ alt:[
 actionId:"sickness",
 label:"Not This Time",
 requirements:{sicknessprotection:1},
-startdescription:"Flesh has limits, and now my flesh would fail me: but a mark of mortal grace has been set upon me, and it will not fail today. [Your Stay of Execution has spared you from the ravages of sickness.]",
+startdescription:"Flesh has limits, and now my flesh would fail: but a mark of mortal grace has been set upon me, and it will not fail today. [Your Stay of Execution has spared you from the ravages of sickness.]",
 effects:{sicknessprotection:-1,influenceheart:1}
+},
+{id: "mareendingsickness",chance:100,
+actionId:"sickness",
+label:"The Mare In Me",
+startdescription:"SHE COMES",
+description:"--",
+extantreqs:{lockscar:3},
+signalEndingFlavour:Melancholy,
+ending:minormarevictory,
+craftable:false
 },
 ]
 },
