@@ -192,10 +192,11 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 },
 
 
-		{id: "mediumjob",
+		{id: "ghouljob.first",
 		aspects:{job:1},
-	label: "A Reputation as a Medium",
-	description: "",
+	label: "A Convincing Routine",
+	description: "The last time I did this, the front row fainted.",
+	slots:[{id:"memory",actionId:"work",required:{memory:1}}],
 	noartneeded:true
 	
 },
@@ -216,7 +217,6 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 ],
 	label: "An Appointment to a Quiet Parish",
 	description: "As long as I do not draw the attention of the Bishop through dereliction or scandal, I can draw a living here.",
-	noartneeded:true
 	
 },
 
