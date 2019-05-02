@@ -528,6 +528,7 @@ maxexecutions:1
         effects: {
           vitality:1,funds:1
         },
+		alternativerecipes:[{id: "needs", chance:100, additional:true}],
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
