@@ -194,9 +194,10 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 
 		{id: "ghouljob.first",
 		aspects:{job:1},
-	label: "A Convincing Routine",
-	description: "The last time I did this, the front row fainted.",
-	slots:[{id:"memory",actionId:"work",required:{memory:1}}],
+	label: "A Convincing Spiritualist Routine",
+	description: "Sometimes, when I am particularly effective, the front row faints.",
+	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
+	xtriggers:{demotion:ghouljob},
 	noartneeded:true
 	
 },
@@ -204,9 +205,9 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 
 		{id: "ghouljob",
 		aspects:{job:1},
-	label: "FNORD",
-	description: "FNORD",
-	slots:[{id:"memory",actionId:"work",required:{memory:1}}],
+	label: "A Perilous Spiritualist Routine",
+	description: "Sometimes I speak in voices even I do not expect.",
+	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
 	noartneeded:true
 	
 },

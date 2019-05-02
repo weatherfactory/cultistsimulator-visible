@@ -260,7 +260,7 @@ icon:"poppy"
 		{id:"naenia",
 label:"FNORD Naenia",
 description:"FNORD",
-slots:[{id:"subject",actionId:"talk",required:{restlessness:1}}],
+slots:[{id:"subject",label:"Subject",actionId:"talk",required:{restlessness:1,fleeting:1}}],
 aspects:{patron:1}
 },
 
