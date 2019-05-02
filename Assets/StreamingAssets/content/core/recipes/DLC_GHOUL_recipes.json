@@ -11,10 +11,10 @@ description:"FNORD",
 requirements:{},
 effects:{},
 alt:[{id:"work.seance.first.shameful"},
-{"work.seance.first.profitable"}]
-warmup:,
+{"work.seance.first.profitable"}],
+warmup:10,
 maxexecutions:1,
-craftable:},
+craftable:true},
 	
 
 {id:"work.seance.first.shameful",
@@ -23,9 +23,7 @@ label:"FNORD",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{favour:1,funds:5,health:1},
-warmup:,
-craftable:},
+effects:{favour:1,funds:5,health:1}},
 
 {id:"work.seance.first.profitable",
 actionId:"work",
@@ -33,9 +31,7 @@ label:"FNORD",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{funds:10,health:1},
-warmup:,
-craftable:},
+effects:{funds:10,health:1}},
 
 
 
@@ -47,9 +43,9 @@ description:"FNORD",
 requirements:{},
 effects:{},
 slots:[{id:"desire",label:"A Peculiar Urge",greedy:true,required:{desire:1}}],
-warmup:,
+warmup:10,
 maxexecutions:1,
-craftable:}
+craftable:true},
 	
 	
 		{id:"open.dream.ghoul",
@@ -58,9 +54,8 @@ label:"FNORD dream of desire. opened by first seance formula",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{winter desire:1},
-warmup:,
-craftable:},
+effects:{winterdesire:1},
+warmup:15},
 
  
  	{id:"open.talk.ghoul",
@@ -69,22 +64,17 @@ label:"FNORD Miss Naenia conversation",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{naenia painting:1,},
-warmup:,
-craftable:},
+effects:{naenia:1,},
+warmup:15},
  
- 	{id:"open.study.ghoul,
+ 	{id:"open.study.ghoul",
 actionId:"study",
 label:"FNORD alzabo formula",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{alzabo formula:1},
-warmup:,
-craftable:},
-
-
- 
+effects:{alzabo:1},
+warmup:15},
 
 
 
@@ -95,8 +85,7 @@ startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
 effects:{graveyard:1},
-warmup:,
-craftable:},
+warmup:15},
  
 ]
 }
