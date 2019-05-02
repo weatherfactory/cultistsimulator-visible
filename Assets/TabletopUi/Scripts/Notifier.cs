@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
@@ -41,9 +42,16 @@ namespace Assets.CS.TabletopUI {
         }
         
 
-        public void ShowNotificationWindow(string title, string description) {
+        public void ShowNotificationWindow(string title, string description, bool duplicatesAllowed = true) {
        
             float duration = (title.Length + description.Length) / 7; //average reading speed in English is c. 15 characters a second
+            
+            // If no duplicates are allowed, then find any duplicates and hide them
+            if (!duplicatesAllowed)
+            {
+	            foreach (var window in GetDuplicateNotificationWindow(title, description))
+		            window.Hide();
+            }
             
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
@@ -54,6 +62,13 @@ namespace Assets.CS.TabletopUI {
             var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
             notification.SetDuration(duration);
             return notification;
+        }
+
+        private IEnumerable<NotificationWindow> GetDuplicateNotificationWindow(string title, string description)
+        {
+	        return notificationHolder
+		        .GetComponentsInChildren<NotificationWindow>()
+		        .Where(window => window.Title == title && window.Description == description);
         }
 
         // Token Details

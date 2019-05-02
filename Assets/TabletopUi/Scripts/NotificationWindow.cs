@@ -16,6 +16,22 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI _titleTxt;
         [SerializeField] TextMeshProUGUI _descriptionTxt;
 
+        public string Title
+        {
+	        get
+	        {
+		        return _titleTxt.text;
+	        }
+        }
+        
+        public string Description
+        {
+	        get
+	        {
+		        return _descriptionTxt.text;
+	        }
+        }
+
         public void SetDuration(float duration)
         {
             Invoke("Hide", duration);

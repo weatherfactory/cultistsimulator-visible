@@ -12,7 +12,7 @@ namespace Assets.Core.Interfaces
     {
         void PushTextToLog(string text);
         void HideDetails();
-        void ShowNotificationWindow(string title, string description);
+        void ShowNotificationWindow(string title, string description, bool duplicatesAllowed = true);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);

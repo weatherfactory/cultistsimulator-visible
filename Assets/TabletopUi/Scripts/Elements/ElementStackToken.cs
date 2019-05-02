@@ -849,7 +849,7 @@ namespace Assets.CS.TabletopUI {
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
+                notifier.ShowNotificationWindow(LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS"), false);
             }
         }
 
