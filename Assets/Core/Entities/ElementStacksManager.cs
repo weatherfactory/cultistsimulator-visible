@@ -145,6 +145,13 @@ public class ElementStacksManager : IElementStacksManager {
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
         if (EnforceUniqueStacksInThisStackManager) 
             RemoveDuplicates(stack);
+        
+        // Check if the stack's elements are decaying, and split them if they are
+        // Decaying stacks should not be allowed
+        while (stack.Decays && stack.Quantity > 1)
+        {
+            AcceptStack(stack.SplitAllButNCardsToNewStack(1, context), context);
+        }
 
         stack.SetStackManager(this);
         _stacks.Add(stack);
