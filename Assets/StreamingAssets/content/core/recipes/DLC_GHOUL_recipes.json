@@ -2,7 +2,101 @@
 "recipes": [
 
 
+
+{id:"work.seance.first",
+actionId:"work",
+label:"TODO",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{},
+alt:[{id:"work.seance.first.shameful"},
+{"work.seance.first.profitable"}]
+warmup:,
+maxexecutions:1,
+craftable:},
 	
+
+{id:"work.seance.first.shameful",
+actionId:"work",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{favour:1,funds:5,health:1},
+warmup:,
+craftable:},
+
+{id:"work.seance.first.profitable",
+actionId:"work",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{funds:10,health:1},
+warmup:,
+craftable:},
+
+
+
+{id:"work.seance.second",
+actionId:"",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{},
+slots:[{id:"desire",label:"A Peculiar Urge",greedy:true,required:{desire:1}}],
+warmup:,
+maxexecutions:1,
+craftable:}
+	
+	
+		{id:"open.dream.ghoul",
+actionId:"dream",
+label:"FNORD dream of desire. opened by first seance formula",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{winter desire:1},
+warmup:,
+craftable:},
+
+ 
+ 	{id:"open.talk.ghoul",
+actionId:"talk",
+label:"FNORD Miss Naenia conversation",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{naenia painting:1,},
+warmup:,
+craftable:},
+ 
+ 	{id:"open.study.ghoul,
+actionId:"study",
+label:"FNORD alzabo formula",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{alzabo formula:1},
+warmup:,
+craftable:},
+
+
+ 
+
+
+
+	{id:"open.explore.ghoul",
+actionId:"explore",
+label:"FNORD first graveyard, opened by conversation with Miss Naenia about desire",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{graveyard:1},
+warmup:,
+craftable:},
  
 ]
 }
