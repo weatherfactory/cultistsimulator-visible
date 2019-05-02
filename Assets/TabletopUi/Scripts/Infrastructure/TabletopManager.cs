@@ -974,7 +974,7 @@ namespace Assets.CS.TabletopUI {
 
 				var allSituations = Registry.Retrieve<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
-				    _allAspectsExtant.CombineAspects(s.GetAspectsAvailableToSituation(true));
+					_allAspectsExtant.CombineAspects(s.GetAspectsInSituation());
 
 				_allAspectsExtant.CombineAspects(_tabletopAspects);
 
