@@ -87,8 +87,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            // Do nothing, since we now have a dedicated "close" button
-            //Hide();
+            Hide();
         }
     }
 }

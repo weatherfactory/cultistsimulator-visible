@@ -26,7 +26,9 @@ namespace TabletopUi.Scripts.Interfaces
         void LoadGame(int index = 0);
         bool SaveGame(bool withNotification, int index = 0);
         HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill);
+        void CloseAllDetailsWindows();
         void CloseAllSituationWindowsExcept(string exceptTokenId);
+        bool IsSituationWindowOpen();
         void DecayStacksOnTable(float interval);
         void DecayStacksInResults(float interval);
         void SetPausedState(bool paused);

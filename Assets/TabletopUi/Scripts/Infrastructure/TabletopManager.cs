@@ -50,6 +50,12 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         private Limbo Limbo;
 
+        [Header("Detail Windows")]
+        [SerializeField]
+        private AspectDetailsWindow aspectDetailsWindow;
+        [SerializeField]
+        private TokenDetailsWindow tokenDetailsWindow;
+
         [Header("Mansus Map")]
         [SerializeField]
         private MapController _mapController;
@@ -712,6 +718,14 @@ namespace Assets.CS.TabletopUI {
 
 #endregion
 
+		public void CloseAllDetailsWindows()
+		{
+			if (aspectDetailsWindow != null)
+				aspectDetailsWindow.Hide();
+			if (tokenDetailsWindow != null)
+				tokenDetailsWindow.Hide();
+		}
+
         public void CloseAllSituationWindowsExcept(string exceptTokenId) {
             var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
@@ -719,6 +733,11 @@ namespace Assets.CS.TabletopUI {
                 if (controller.GetTokenId() != exceptTokenId)
                     controller.CloseWindow();
             }
+        }
+
+        public bool IsSituationWindowOpen() {
+	        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+	        return situationControllers.Any(c => c.IsOpen);
         }
 
         void HandleOnMapBackgroundDropped() {

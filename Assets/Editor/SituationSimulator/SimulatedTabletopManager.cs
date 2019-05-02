@@ -68,11 +68,20 @@ namespace Assets.Editor
         {
             return null;
         }
+        
+        public void CloseAllDetailsWindows()
+        {
+        }
 
         public void CloseAllSituationWindowsExcept(string exceptTokenId)
         {
         }
 
+        public bool IsSituationWindowOpen()
+        {
+            return false;
+        }
+        
         public void DecayStacksOnTable(float interval)
         {
         }

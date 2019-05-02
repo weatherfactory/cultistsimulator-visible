@@ -3158,6 +3158,8 @@ MonoBehaviour:
   _endGameAnimController: {fileID: 2130193020}
   _tabletop: {fileID: 730}
   Limbo: {fileID: 68}
+  aspectDetailsWindow: {fileID: 549721624}
+  tokenDetailsWindow: {fileID: 1362001138}
   _mapController: {fileID: 1698081295}
   mapTokenContainer: {fileID: 1927212867}
   mapBackground: {fileID: 1041490181}
@@ -11109,7 +11111,7 @@ ParticleSystem:
 --- !u!199 &186965453
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 199482367758206654, guid: bed742eae2a4060438e017c513130a7b,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -21859,66 +21861,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+    - target: {fileID: 114886493606689152, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
-      propertyPath: m_text
-      value: "The parallels in mystic dreams experienced by carpenters, masons and
-        other artisans, and what they purport to reveal about the architecture of
-        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
-        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
-        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
-        No-one has ever explained why Galmier devoted herself to this quixotic exploration
-        of artisan's dreams."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
+      propertyPath: m_Size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 312
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.materialCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_subTextObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1571225336}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 16.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 224707539595644502, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.00006850922
       objectReference: {fileID: 0}
     - target: {fileID: 224417031444728264, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
@@ -21935,15 +21881,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224707539595644502, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00006850922
+      objectReference: {fileID: 0}
     - target: {fileID: 224000011530422946, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114681621770573970, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224870385522298112, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
@@ -22035,10 +21981,66 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 62
       objectReference: {fileID: 0}
-    - target: {fileID: 114886493606689152, guid: deb00c042628c48cfa9eef03d318a4ba,
+    - target: {fileID: 114681621770573970, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
-      propertyPath: m_Size
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_text
+      value: "The parallels in mystic dreams experienced by carpenters, masons and
+        other artisans, and what they purport to reveal about the architecture of
+        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
+        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
+        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
+        No-one has ever explained why Galmier devoted herself to this quixotic exploration
+        of artisan's dreams."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 312
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_subTextObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1571225336}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb00c042628c48cfa9eef03d318a4ba, type: 3}
@@ -30219,6 +30221,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187}
     m_Modifications:
+    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30250,11 +30257,6 @@ PrefabInstance:
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
-        type: 3}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
@@ -31509,6 +31511,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: windowGO
+      value: 
+      objectReference: {fileID: 1970367469}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 870194953}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 677}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1954531830}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: aspectDetailsWindow
+      value: 
+      objectReference: {fileID: 549721624}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: tokenDetailsWindow
+      value: 
+      objectReference: {fileID: 1362001138}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: screenCanvasScaler
+      value: 
+      objectReference: {fileID: 980569407}
     - target: {fileID: 224021198777810674, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31599,41 +31636,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: windowGO
-      value: 
-      objectReference: {fileID: 1970367469}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: restartButton
-      value: 
-      objectReference: {fileID: 870194953}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: backgroundMusic
-      value: 
-      objectReference: {fileID: 677}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: soundManager
-      value: 
-      objectReference: {fileID: 1954531830}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: aspectDetailsWindow
-      value: 
-      objectReference: {fileID: 549721624}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: tokenDetailsWindow
-      value: 
-      objectReference: {fileID: 1362001138}
-    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: screenCanvasScaler
-      value: 
-      objectReference: {fileID: 980569407}
     - target: {fileID: 114715296451418630, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -32094,11 +32096,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -320
       objectReference: {fileID: 0}
-    - target: {fileID: 114014354813750090, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: m_MaxValue
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1901235684137025364, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: m_RootOrder
@@ -32173,6 +32170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114014354813750090, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b01924c99f42946fd8aba56d7f2c1aa2, type: 3}
@@ -34297,6 +34299,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34386,16 +34398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224333853204506148, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
