@@ -11,8 +11,8 @@ description:"FNORD",
 requirements:{},
 effects:{},
 alt:[{id:"work.seance.first.shameful"},
-{"work.seance.first.profitable"}],
-warmup:10,
+{id:"work.seance.first.profitable"}],
+warmup:15,
 maxexecutions:1,
 craftable:true},
 	
@@ -31,19 +31,22 @@ label:"FNORD",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
+alt:[{id:"open.dream.ghoul",additional:true}],
 effects:{funds:10,health:1}},
 
 
 
 {id:"work.seance.second",
-actionId:"",
+actionId:"work",
 label:"FNORD",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
 effects:{},
 slots:[{id:"desire",label:"A Peculiar Urge",greedy:true,required:{desire:1}}],
-warmup:10,
+warmup:15,
+alt:[{id:"open.explore.ghoul",additional:true}],
+
 maxexecutions:1,
 craftable:true},
 	
@@ -54,9 +57,33 @@ label:"FNORD dream of desire. opened by first seance formula",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{winterdesire:1},
+effects:{desire.remembrance:1},
+warmup:10},
+
+
+	{id:"open.explore.ghoul",
+actionId:"explore",
+label:"FNORD find gallery, which we can subsequently explore for Naenia",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{},
+effects:{location.gallery:1},
 warmup:15},
 
+
+{id:"explore.location.gallery.ghoul",
+actionId:"explore",
+label:"FNORD look through gallery",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{location.gallery},
+effects:{location.gallery:-1,fleeting:1},
+alt:[{id:"open.talk.ghoul",additional:true}],
+
+warmup:30,
+craftable:true
+},
+ 
  
  	{id:"open.talk.ghoul",
 actionId:"talk",
@@ -64,7 +91,27 @@ label:"FNORD Miss Naenia conversation",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{naenia:1,},
+effects:{naenia:1},
+warmup:15},
+
+ 	{id:"open.talk.ghoul.consolation",
+actionId:"talk",
+label:"FNORD Miss Naenia conversation",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{naenia:1,restlessness:1},
+effects:{restlessness:-1,fleeting:1},
+alt:[{id:"open.study.ghoul",additional:true}],
+warmup:15},
+
+
+ 	{id:"open.talk.ghoul.winter",
+actionId:"talk",
+label:"FNORD Miss Naenia conversation",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{naenia:1,winter:1},
+effects:{alzabo:1},
 warmup:15},
  
  	{id:"open.study.ghoul",
@@ -78,14 +125,5 @@ warmup:15},
 
 
 
-	{id:"open.explore.ghoul",
-actionId:"explore",
-label:"FNORD first graveyard, opened by conversation with Miss Naenia about desire",
-startdescription:"FNORD",
-description:"FNORD",
-requirements:{},
-effects:{graveyard:1},
-warmup:15},
- 
 ]
 }
