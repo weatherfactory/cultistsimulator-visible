@@ -73,7 +73,7 @@ alt:[{id:"open.dream.ghoul",additional:true}]},
 actionId:"work",
 label:"FNORD",
 startdescription:"FNORD tonight is is going to be an odd one.",
-requirements:{ghouljob.first:1,desire.remembrance:1},
+requirements:{ghouljob.first:1,temptation.remembrance:1},
 effects:{funds:2,memory:-1,notoriety:1},
 aspects:{demotion:1},
 alt:[{id:"open.explore.ghoul",additional:true}],
@@ -94,7 +94,7 @@ actionId:"dream",
 label:"FNORD dream of desire. opened by first seance formula",
 startdescription:"FNORD",
 description:"FNORD",
-effects:{desire.remembrance:1,health:1},
+effects:{temptation.remembrance:1,health:1},
 warmup:15},
 
 
@@ -171,6 +171,40 @@ description:"FNORD",
 requirements:{},
 effects:{alzabo:1},
 warmup:15},
+
+
+
+
+{id:"ghoul.firsttaste",
+actionId:"work",
+label:"The First Taste",
+startdescription:"FNORD first taste",
+description:"FNORD first taste done",
+requirements:{temptation.remembrance:1,alzabo:1,corpse:1},
+effects:{alzabo:-1,corpse:-1,memory.unexpected:1},
+aspects:{ascend:1},
+mutations:[{filter:desire,mutate:ghoul.hunger,level:1}],
+warmup:30,
+craftable:true},
+
+
+{id:"ending.minorpalestvictory",
+actionId:"talk",
+label:"FNORD PALEST VICTORY",
+startdescription:"FNORD HERE IT COMES",
+
+requirements:{painting.palest:1},
+ending:"minorpalestvictory",
+signalEndingFlavour:"Pale",
+warmup:30},
+
+{id:"ending.minorcrownedgrowthvictory",
+actionId:"craving",
+label:"FNORD CG VICTORY",
+startdescription:"FNORD HERE IT COMES",
+ending:"minorcrownedgrowthvictory",
+signalEndingFlavour:"Vile",
+warmup:30},
 
 
 
