@@ -14,8 +14,11 @@ public static class UIStyle {
     public static Color lightRed = new Color32(0xFF, 0x59, 0x63, 0xFF);
     public static Color lightBlue = new Color32(0x94, 0xE2, 0xEF, 0xFF);
     public static Color warmWhite = new Color32(0xFF, 0xEA, 0x77, 0xFF); // ffea77
-    //public static Color warmWhite = new Color32(0xFF, 0xEB, 0xB0, 0xFF);
     
+    public static Color coldWhite = Color.white;
+    public static Color vile = new Color32(156, 181, 76,255);
+
+
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
     
@@ -29,8 +32,12 @@ public static class UIStyle {
 
             if (forEndingFlavour == EndingFlavour.Grand)
                 warningColor = warmWhite;
+            else if (forEndingFlavour == EndingFlavour.Pale)
+                warningColor = coldWhite;
+            else if (forEndingFlavour == EndingFlavour.Vile)
+                warningColor = vile;
             else
-                warningColor = lightRed;
+            warningColor = lightRed;
 
             if (timeRemaining > timeToBlink || timeRemaining <= 0f)
                 return warningColor;
