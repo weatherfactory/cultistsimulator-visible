@@ -413,6 +413,12 @@ isHidden:true
             isAspect: true,
 			description: "Books are the memory which does not die."
         },
+        {
+            id: "legacyplotitem",
+            isAspect: true,
+            isHidden: true,
+            comments: "Used for plot items that shouldn't be passed down to another legacy through LEVER_LastBook, since they can break flows."
+        },
 				{
             id: "autographed",
             label: "Autographed",
