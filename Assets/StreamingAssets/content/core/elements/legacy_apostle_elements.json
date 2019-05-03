@@ -236,7 +236,8 @@ label: "The Lesser Crossroads",
 slots:[{id:"keydream",label:"A Dream of a Key",required:{apostlelantern.pillarfuel:1},actionId:dream},
 {id:"lanterninfluence",label:"A Dream of Light",required:{influencelanterng:1},actionId:dream}],
 description: "A pair of knotted roads beneath the shadow of a tree, and the eye of the Tricuspid Gate, close to the head of the Ascent of Knives. The Concursum's shadow? Its reflection? Its sister?",
-aspects:{way:1}
+aspects:{way:1},
+unique: true
 	},
 	{id: "apostlelantern.pillar3",
 label: "The Allure",
