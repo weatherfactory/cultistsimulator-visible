@@ -110,7 +110,8 @@ label:"The Dart's End",
 startdescription:"Have I no more strength? [If you have no Health available, the Dartsman's poisons will end your game.]",
 requirements:{health:-1,fatigue:-1,injury:-1},
 ending:"deathofthebody",
-signalEndingFlavour: Melancholy},
+signalEndingFlavour: Melancholy,
+comments:"The -1 to injury doesn't seem right, since the damagehealth in longassault.assassination.attack.player will always turn health/fatigue into an injury. To be checked."},
 
 
 {id:"longassault.assassination.attack.follower",
