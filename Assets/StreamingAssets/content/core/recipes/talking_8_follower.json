@@ -828,6 +828,7 @@ label:"A Desperate Attempt",
 	  description:".",
 	  requirements: {society:1,edge:10,follower:1},
 	  linked: [{id:"followeraction_abductsuccess",chance:90},
+      {id:"followeraction_abductfailure",chance:100}
 	  ]
 	  },
 
