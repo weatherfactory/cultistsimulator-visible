@@ -80,7 +80,7 @@ W. '
 [The secret is attached. You can use it to break free of your Mentor.]
 ",
 slots:[{id:"mentor",label:"Shaper",required:{apostleforge.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{legacyplotitem:1}
 },	
 
 {id:"tryphon.defeated",
@@ -102,7 +102,7 @@ T.E.'
 [If you consume the enclosed morsel of Lady Tryphon, you can break free of your Mentor.]
 ",
 slots:[{id:"mentor",label:"Delight",required:{apostlegrail.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{legacyplotitem:1}
 },
 
 {id:"diarist.defeated",
@@ -114,7 +114,7 @@ I hope your Illuminated One trips and falls down the Ascent.' The Diarist's face
 
 ",
 slots:[{id:"mentor",label:"Illuminated One",required:{apostlelantern.mentor:1},actionId:study}],
-aspects:{text:1},
+aspects:{legacyplotitem:1},
 lifetime:120
 },
 
@@ -134,7 +134,7 @@ Should you so cast it, you will die empty and alone, as do all, even the Long. Y
 [If you take Julian's lesson to heart, you can break free of your Mentor.]
 ",
 slots:[{id:"mentor",label:"Founder",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{legacyplotitem:1}
 },
 
 {id:"strategy.prep",
