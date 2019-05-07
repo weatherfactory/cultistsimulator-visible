@@ -4,7 +4,22 @@ Follow us at www.weatherfactory.biz, and at @factoryweather on Twitter, to learn
 
 thank you!
 
-- Lottie, Alexis and Claire
+- Lottie, Alexis, Claire and Marc
+
+v2019.5.a.1
+- Fixed incorrect lore result from Ezeem.
+- Fixed dual cults bug (AGAIN!).
+- Working with Health should now always spawn the Time verb.
+- Recipe outputs should now separate out stacks of decaying items to avoid some related bugs.
+- Element and aspect details windows can now be closed by clicking anywhere else if a situation window isn't open.
+- Certain identical notification messages (e.g. "Can't merge cards") will no longer stack.
+- Fixed "The Lesser Crossroads" not being unique.
+- Fixed certain legacy-specific items getting passed down to the Bright Young Thing.
+- Ensure high-level Edge assassination attempts have a penalty for failure.
+- Fixed Victor sometimes morphing into Valciane.
+- Fixed Dartmen ignoring fatigue as a valid target when attacking the player.
+- It is no longer possible to start a recipe while dragging any token to prevent certain recipe bugs.
+- Fixed painting not always correctly accounting for the level of Passion.
 
 v2019.4.b.1
 - Fixed Research mechanic bugs - particularly an issue where challenges weren't reset after a Lore fragment was upgraded.
@@ -19,6 +34,9 @@ v2019.3.a.1
 - Research mechanics have changed significantly (and may change further).
 - Secret headquarters sometimes consume Reputation.
 
+v2019.2.d.1
+- Initial HQ implementation. They'll have some additional effects when the new Research mechanic lands.
+- Backwards-compatibility tweak to allow access to the new HQs for existing saves.
 
 v2019.2.b.1
 - It's now possible to repair a sabotaged Dawnbreaker Core. Sorry about that.
