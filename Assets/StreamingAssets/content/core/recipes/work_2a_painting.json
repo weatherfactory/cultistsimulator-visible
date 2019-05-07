@@ -92,7 +92,13 @@ warmup:120,
 	startdescription:"@#memory.furious|FNORD Seven-Coiled
 	#memory.luxurious|FNORD Tide
 	#memory.liminal|FNORD Double-Axe
-	#|FNORD other memory@",
+	#memory.horizon|FNORD 
+	#memory.splendid|FNORD 
+	#memory.endless|FNORD 
+	#memory.wildering|FNORD 
+	#memory.golden|FNORD 
+	#memory.honeyed|FNORD
+	@",
 	requirements:{memory:5,passion:1},
 	warmup:30,
 	linked:[{id:"paint.palestpainting.continue"}]
@@ -103,8 +109,16 @@ actionId:"work",
 label:"Continue the Palest Painting",
 startdescription:"FNORD continue Palest Painting",
 description:"The world can wait a little longer for the Palest Painting. It has already waited so long.",
-slots:[{id:"canvas.pale",label:"Canvas", description:"Slowly, softly.",required:{canvas.pale:1}}],
-alt:[{id:"paint.palestpainting.furious"}],
+slots:[{id:"canvas.pale",label:"Canvas", greedy:true, description:"Slowly, softly.",required:{canvas.pale:1}}],
+alt:[{id:"paint.palestpainting.furious"},
+{id:"paint.palestpainting.luxurious"},
+{id:"paint.palestpainting.liminal"},
+{id:"paint.palestpainting.horizon"},
+{id:"paint.palestpainting.splendid"},
+{id:"paint.palestpainting.endless"},
+{id:"paint.palestpainting.wildering"},
+{id:"paint.palestpainting.golden"},
+{id:"paint.palestpainting.honeyed"},],
 warmup:60
 },
 
@@ -116,77 +130,117 @@ startdescription:"FNORD seven-coiled",
 requirements:{memory.furious:1},
 effects:{memory.furious:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.furious,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.furious,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.luxurious",
 actionId:"work",
-label:"The ",
+label:"The Colours Tidal",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.luxurious:1},
+effects:{memory.luxurious:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.luxurious,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.liminal",
 actionId:"work",
-label:"The ",
+label:"The Colours of the Double Threshold",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.liminal:1},
+effects:{memory.liminal:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.liminal,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.horizon",
 actionId:"work",
-label:"The ",
+label:"The Colours of the Horizon",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.horizon:1},
+effects:{memory.horizon:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.horizon,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.splendid",
 actionId:"work",
-label:"The ",
+label:"The  Colours that Were",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.splendid:1},
+effects:{memory.splendid:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.splendid,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.endless",
 actionId:"work",
-label:"The ",
+label:"The Colours that Turn",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.endless:1},
+effects:{memory.endless:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.endless,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.wildering",
 actionId:"work",
-label:"The ",
+label:"The Colours That Are Not Black",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.wildering:1},
+effects:{memory.wildering:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.wildering,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
 },
 
-{id:"paint.palestpainting.",
+{id:"paint.palestpainting.golden",
 actionId:"work",
-label:"The ",
+label:"The Colours of the Old Fire",
 startdescription:"FNORD ",
-requirements:{memory.:1},
-effects:{memory.:-1},
+requirements:{memory.golden:1},
+effects:{memory.golden:-1},
 aspects:{fatiguing:1},
-mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+mutations:[{mutate:colours.golden,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
+},
+
+{id:"paint.palestpainting.honeyed",
+actionId:"work",
+label:"The Colours that Will Be",
+startdescription:"FNORD ",
+requirements:{memory.honeyed:1},
+effects:{memory.honeyed:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.honeyed,filter:canvas.pale,level:1}],
+linked:[{id:"paint.palestpainting.complete"}]
+},
+
+
+
+{id:"paint.palestpainting.complete",
+actionId:"work",
+label:"Nine Colours Hinted",
+startdescription:"It is almost done. Doves crowd the roof-ridge above me. The dusk waits breathless.",
+description:"The painting is not a door. These Hours are gone. Even their echoes are empty. But I have commemorated them. The One from whom nothing more can be taken; who cannot be deceived; who calls each of the Dead by name - that One might be satisfied with the work.",
+requirements:{colours.furious:1,
+	colours.luxurious:1,
+	colours.liminal:1,
+	colours.horizon:1,
+	colours.splendid:1,
+	colours.endless:1,
+	colours.wildering:1,
+	colours.golden:1,
+	colours.honeyed:1},
+effects:{memory:-1,canvas.pale:-1,painting.palest:1,notoriety:2},
+aspects:{fatiguing:1},
+warmup:30
 },
 
 	
