@@ -9,7 +9,9 @@ namespace Assets.Core.Entities
     {
         None=0,
         Grand=1,
-        Melancholy=2
+        Melancholy=2,
+        Pale=3,
+        Vile=4
     }
 
     public class Ending

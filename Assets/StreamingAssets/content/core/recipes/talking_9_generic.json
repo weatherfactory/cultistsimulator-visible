@@ -189,6 +189,9 @@ requirements: {society:-1,follower: 1,summoned:1},
 slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a target."}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
+{id:"discusspassionsacrifice"},
+{id:"discussreasonsacrifice"},
+{id:"discusssicknessprotectionspirit"},
 {id:"discussfucinespirit"},
 {id:"discussphrygianspirit"},
 {id:"discussmandaicspirit"},
@@ -221,6 +224,39 @@ startdescription: "Not everything from the Mansus can speak, but everything can 
 description: "Nothing; my words cease like sand in a glass.",
 warmup: 60,
 craftable: true
+},
+
+
+{id:"discusspassionsacrifice",
+actionId:"talk",
+label:"Chilly Lessons",
+startdescription:"If I listen closely enough to the stories told by winter sun, I may learn something, at the cost of my soul's withering. [This will teach the Ecdysiast's Parable, but will convert Passion to Decrepitude... although even that might open a narrow door.]",
+description:"@#spirit_winterb_heart|'You look at me, and you see that I died. You might think that's what I lost. But if that's all, why would you ask me?' But I will ask it nothing. The dead do not usually speak.
+#spirit_winterd_edge|The Maid's voice is bright and sharp as fresh-cut gems. 'What may be lost? Every choice closes a door... and the Mansus has only seven.'
+#spirit_lanterne_secret|'What may be lost?' My childhood. My burdens. My illusions. My pride. My reputation. My shadow. My heart...'@",
+requirements:{passion:1,spiriteatspassion:1},
+effects:{passion:-1,decrepitude:1,fragmentmothc:1,influencewintere:1}
+},
+
+{id:"discussreasonsacrifice",
+actionId:"talk",
+label:"Wild Lessons",
+startdescription:"If I give myself to the frenzy, I will learn a wild lesson. [This will teach the Consent of Wounds, but will convert Reason to Decrepitude... although even that might open a narrow door.]",
+description:"@#spirit_grailc_moth|The Prophet will enact its prophecies upon my skin, and beneath its pronouncements, my thoughts will part like old cloth.
+#spirit_heartc_edge|The Percussigant will lead me in the movements my body will not support, and if I need to make both changes and amends, why then, my skin will bear the tale, the tale; o my skin, the bear, the tale.
+#spirit_graile_edge|'I knew her in the Wake. Her arms were fewer; her arms were warmer; but her mouth was always cold. Call me a liar. I dare you. Or come here, and I will kiss the Fifth History deep into you, where no one will see it, not even you - '@",
+requirements:{reason:1,spiriteatsreason:1},
+effects:{reason:-1,decrepitude:1,fragmentknockc:1,influenceknocke:1}
+},
+
+{id: "discusssicknessprotectionspirit",
+label:"Request a Stay of Execution",
+actionId: "talk",
+requirements: {summoned:1,spiritsicknessprotector:1,health:1},
+startdescription: "The residents of the Mansus are not subject to the ills of the flesh. Some of them, sometimes, can extend their protection to those of us trapped out here in the Wake.",
+description: "@#spirit_wintera_moth|I will place a lock of my hair in the hollow of this one's chest, and with luck, one day, the sickness will seek me there instead.#spirit_grailc_moth|The Raw Prophet will embrace me with all its arms and kiss me with its mouths or whatever else it might find suitable, and perhaps that will protect me from diseases, and perhaps it will simply outnumber them.#spirit_heartc_edge|The Percussigant will weave the beat of my heart into the steps of its dance unending, and that might be enough, enough, enough. #spirit_graile_edge|'Open your mouth. Tilt back your head. We shall let one drop fall. Swallow. Yes. You'll be better now.'#spirit_lanterne_secret|'I will speak with your shadow, and some time soon it might turn a greater shadow aside. That's all I can promise you now.'@",
+craftable: false,
+effects:{sicknessprotection:1}
 },
 
 {id: "discussfucinespirit",

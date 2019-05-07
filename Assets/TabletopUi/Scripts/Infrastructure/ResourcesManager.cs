@@ -93,6 +93,13 @@ public class ResourcesManager: MonoBehaviour
 
         if (endingFlavour == EndingFlavour.Melancholy)
             return Resources.LoadAll<AudioClip>("music/endings/melancholy");
+
+        if (endingFlavour == EndingFlavour.Pale)
+            return Resources.LoadAll<AudioClip>("music/endings/melancholy");
+
+
+        if (endingFlavour == EndingFlavour.Vile)
+            return Resources.LoadAll<AudioClip>("music/endings/melancholy");
         else
             return null;
     }

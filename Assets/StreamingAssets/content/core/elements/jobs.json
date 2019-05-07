@@ -192,10 +192,22 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 },
 
 
-		{id: "mediumjob",
+		{id: "ghouljob.first",
 		aspects:{job:1},
-	label: "A Reputation as a Medium",
-	description: "",
+	label: "A Convincing Spiritualist Routine",
+	description: "Sometimes, when I am particularly effective, the front row faints.",
+	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
+	xtriggers:{demotion:ghouljob},
+	noartneeded:true
+	
+},
+
+
+		{id: "ghouljob",
+		aspects:{job:1},
+	label: "A Perilous Spiritualist Routine",
+	description: "Sometimes I speak in voices even I do not expect.",
+	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
 	noartneeded:true
 	
 },
@@ -210,9 +222,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 	
 		{id: "priestjob",
 		aspects:{job:1},
-	label: "Priestly Stipend",
-	description: "",
-	noartneeded:true
+	slots:[{id:"ability",label:"Ability",required:{passion:1,reason:1,health:1},actionId:"work"},
+{id:"doctrine",label:"Doctrine",required:{lore:1},actionId:"work"},
+{id:"fervour",label:"Fervour",required:{fervour:1},actionId:"work"},
+],
+	label: "An Appointment to a Quiet Parish",
+	description: "As long as I do not draw the attention of the Bishop through dereliction or scandal, I can draw a living here.",
 	
 },
 

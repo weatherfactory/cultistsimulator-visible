@@ -14,7 +14,7 @@ namespace Assets.Editor
         {
         }
 
-        public void ShowNotificationWindow(string title, string description)
+        public void ShowNotificationWindow(string title, string description, bool duplicatesAllowed = true)
         {
         }
 

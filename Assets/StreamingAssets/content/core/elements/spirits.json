@@ -14,7 +14,7 @@
 		         id: "spirit_wintera_moth",
             label: "Burgeoning Risen",
             aspects:
-            {follower:1, summoned:1,winter:4,moth:4},
+            {follower:1, summoned:1,winter:4,moth:4,spiritsicknessprotector:1},
             description: "The growths of the Wood have encompassed the corpse's organs, swelled its skull like a gourd, twined around its heart. It eyes are moist with cunning, and it moves with jerky puppet grace. Its bones are rotten wood, and soon it will take root, but until then it will be a swift and subtle servant.",
 			xtriggers:{renewburgeoning:spirit_wintera_moth,killsummoned:influencemoth},
 			lifetime: 120
@@ -22,7 +22,7 @@
 {        id: "spirit_winterb_heart",
             label: "Voiceless Dead",
             aspects:
-            {follower:1, summoned:1,winter:6,moth:6,deceiver:6},
+            {follower:1, summoned:1,winter:6,moth:6,deceiver:6,spiriteatspassion:1},
             description: "Sometimes the Dead enter the Mansus by the White Door. At its threshold they lay down their power of speech forever. Call them back to the world, and they will have no voice, but their skins of dust are yours to command.",
 			lifetime: 180,
 			xtriggers:{killsummoned:influencewinter},
@@ -42,7 +42,7 @@
         id: "spirit_grailc_moth",
             label: "Raw Prophet",
             aspects:
-            {follower:1, summoned:1,grail:8,moth:8,deceiver:8},
+            {follower:1, summoned:1,grail:8,moth:8,deceiver:8,spiritsicknessprotector:1,spiriteatsreason:1},
             description: "Sometimes it divides, sometimes it unites, sometimes she speaks words of warning, sometimes he advises on appetite. Its prophecies are confusion, their whispers confound.",
 			lifetime: 180,
 			xtriggers:{killsummoned:influencegrail},
@@ -62,7 +62,7 @@
         id: "spirit_heartc_edge",
             label: "Percussigant",
             aspects:
-            {follower:1, summoned:1,heart:8,edge:8,devourer:8},
+            {follower:1, summoned:1,heart:8,edge:8,devourer:8,spiritsicknessprotector:1,spiriteatsreason:1},
             description: "The Percussigant! It loves the sistrum's shiver, it loves the thrum of the tympanos, it recalls with fondness the flaying of Marsyas, and so it will not
 			will not
 			will not stop dancing.",
@@ -74,7 +74,7 @@
         id: "spirit_winterd_edge",
             label: "Maid-in-the-Mirror",
             aspects:
-            {follower:1, summoned:1,winter:10,edge:10,devourer:10},
+            {follower:1, summoned:1,winter:10,edge:10,devourer:10,spiriteatspassion:1},
             description: "'The ascent is glass. The walls are knives. Each step is blood.' The Dead who rest before a new-cracked mirror, who pass through the Peacock Gate, who master the Sharp Stair: those Dead enter the service of the Sun-in-Rags.",
 			lifetime: 180,
 			xtriggers:{killsummoned:influencewinter},
@@ -95,7 +95,7 @@
         id: "spirit_graile_edge",
             label: "Ezeem, the Second Thirstly",
             aspects:
-            {follower:1, summoned:1,grail:12,edge:12,devourer:12,tutor:1,spirittutorphrygian:1},
+            {follower:1, summoned:1,grail:12,edge:12,devourer:12,tutor:1,spirittutorphrygian:1,spiritsicknessprotector:1,spiriteatsreason:1},
             description: "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
 			xtriggers:{killsummoned:spirit_graile_edge.defunct},
 			lifetime: 180,
@@ -106,7 +106,7 @@
         id: "spirit_lanterne_secret",
             label: "Teresa",
             aspects:
-            {follower:1, summoned:1,lantern:12,secrethistories:12,tutor:1,spirittutorfucine:1},
+            {follower:1, summoned:1,lantern:12,secrethistories:12,tutor:1,spirittutorfucine:1,spiritsicknessprotector:1,spiriteatspassion:1},
             description: "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
 			xtriggers:{killsummoned:spirit_lanterne_secret.defunct},
 			lifetime: 180,

@@ -136,8 +136,15 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
     void HandleOnTableClicked() {
         //Close all open windows if we're not dragging (multi tap stuff)
+        // Situation windows get closed first, then details windows.
         if (DraggableToken.itemBeingDragged == null)
-            Registry.Retrieve<ITabletopManager>().CloseAllSituationWindowsExcept(null);
+        {
+            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            if (tabletopManager.IsSituationWindowOpen())
+                tabletopManager.CloseAllSituationWindowsExcept(null);
+            else
+                tabletopManager.CloseAllDetailsWindows();
+        }
     }
 
     private void HandleDragStateChanged(bool isDragging) {

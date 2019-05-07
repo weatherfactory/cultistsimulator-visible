@@ -28,7 +28,7 @@ icon:mentorguidance
 
 {id: "apostleforge.pillar1",
 label: "Dawnbreaker Technique",
-description: "THE SHAPER SPEAKS: 'I must enact the Forge. Set a Carcass Spark at the engine's heart. Awaken it with the highest mysteries. Prepare the fiercest alchemy to fuel it. Find the flaw in the place at the land's edge that has the same name in every History. Bring the device there, with the Biting Key that Sulochana the Ligeian knows. At the season of the Forge's greatest heat, employ the most potent Mysteries of Opening; and I will attend your dissolution.'"
+description: "THE SHAPER SPEAKS: 'I must enact the Forge. Set a Carcass Spark at the engine's heart. Awaken it with the highest mysteries. Prepare the fiercest alchemy to fuel it. Find the flaw in the place at the land's edge that has the same name in every History. Bring the device there, with the Biting Key that Sulochana the Ligeian knows. Evoke the Forge's greatest heat; employ the most potent Mysteries of Opening; and I will attend your dissolution.'"
 	},
 	{id: "apostleforge.pillar2.dormant",
 label: "Dormant Dawnbreaker Core",
@@ -236,7 +236,8 @@ label: "The Lesser Crossroads",
 slots:[{id:"keydream",label:"A Dream of a Key",required:{apostlelantern.pillarfuel:1},actionId:dream},
 {id:"lanterninfluence",label:"A Dream of Light",required:{influencelanterng:1},actionId:dream}],
 description: "A pair of knotted roads beneath the shadow of a tree, and the eye of the Tricuspid Gate, close to the head of the Ascent of Knives. The Concursum's shadow? Its reflection? Its sister?",
-aspects:{way:1}
+aspects:{way:1},
+unique: true
 	},
 	{id: "apostlelantern.pillar3",
 label: "The Allure",

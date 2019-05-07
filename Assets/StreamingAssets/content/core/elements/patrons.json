@@ -199,7 +199,7 @@ icon:"poppy"
 	label: "Dearly Departed's Papers",
 	description: "Someone who loved me has died. Perhaps they left me something in their will. I should speak to a solicitor. [Take action if you wish to pursue the matter... but there is a small chance that suspicion may fall on you.]",
 	slots:[{id:"lawyerfees",actionId:"study",label:"Lawyer's Fees",consumes:true,required:{funds:1}}],
-	aspects:{text:1},
+	aspects:{legacyplotitem:1},
 	icon:"documentgeneric"
 	},
 		
@@ -256,6 +256,14 @@ icon:"poppy"
 		description:"A spry,forceful woman in severe black and white, tightly wrinkled. She is never observed to blink. A tiny black puppy peeps from her skirts.",
 		aspects:{patron:1}
 		},
+		
+		{id:"naenia",
+label:"'Miss Naenia'",
+description:"A painting of a dark-skinned woman with snow-coloured eyes and close-cropped ivory-coloured hair. She stands before a small marble tomb overgrown with star jasmine. The painting is signed 'Jonas B. Munch, 1811'.",
+slots:[{id:"subject",label:"Subject",actionId:"talk",required:{memory:1}}],
+aspects:{patron:1}
+},
+
 		
 		
 		

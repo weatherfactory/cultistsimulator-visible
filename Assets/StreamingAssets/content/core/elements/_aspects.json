@@ -1,5 +1,6 @@
 {"elements":
     [
+
    {
             id: "acquaintance",
             label: "Acquaintance",
@@ -34,6 +35,12 @@
             label: "Disciple",
 			description: "A true initiate of the mysteries.",
             isAspect: true
+        },
+				     {
+            id: "devotee",
+            label: "Devotee",
+			description: "Just now, this one's devotion is all-consuming. But soon it may fade, and then they may question what they have done.",
+			isAspect:true
         },
 				     {
             id: "exalted",
@@ -206,6 +213,11 @@
             isAspect: true,
 			description: "To recruit believers, I must build something for them to believe."
         },
+		{id:"rededicable",
+		label:"Uncertain",
+		description:"This organisation has begun to question its tenets. With enough Fervour, it might reaffirm or alter its direction.",
+		isAspect:true
+		},
 		        {
             id: "ingredient",
             label: "Ingredient",
@@ -401,6 +413,12 @@ isHidden:true
             isAspect: true,
 			description: "Books are the memory which does not die."
         },
+        {
+            id: "legacyplotitem",
+            isAspect: true,
+            isHidden: true,
+            comments: "Used for plot items that shouldn't be passed down to another legacy through LEVER_LastBook, since they can break flows."
+        },
 				{
             id: "autographed",
             label: "Autographed",
@@ -412,6 +430,13 @@ isHidden:true
             label: "Lore",
             isAspect: true,
 			description: "Knowledge of the invisible arts. I can use it to attract followers, to perform rites, to open the way to the Mansus, to seek my ascension... [Lore fragments can sometimes be upgraded with Study, and with matching fragments.]"
+        },
+		
+		{
+        id: "memory",
+            label: "Memory",
+			isAspect:true,
+            description: "We remember the dead, until we forget them."
         },
 				{
             id: "language",
@@ -463,6 +488,22 @@ isHidden:true
             isAspect: true,
 			description: "This spirit may be able to teach you Deep Mandaic, if you know a related tongue."
         },
+		
+		
+{id:"spiritsicknessprotector",
+label:"Phylaxian",
+description:"If I speak with this one about my Health, it can offer protection against disease.",
+isAspect:true},
+
+{id:"spiriteatspassion",
+label:"Lamp of Loss",
+description:"If I speak to this one, I could offer it my Passion.",
+isAspect:true},
+
+{id:"spiriteatsreason",
+label:"Thresher of Thoughts",
+description:"If I speak to this one, I could offer it my Reason.",
+isAspect:true},
 								        {
             id: "auctionable",
             label: "Auctionable",
@@ -480,6 +521,43 @@ isHidden:true
             label: "Headquarters",
 			description: "For conversation and convocation.",
         isAspect: true
+},
+		        {
+            id: "hq.potential",
+            label: "Potential Headquarters",
+			description: ".",
+        isAspect: true,
+		isHidden:true
+},
+		        {
+            id: "movehq",
+            label: "Move to a New HQ",
+			description: "Recipe aspect",
+        isAspect: true
+},
+
+{id:"library",
+label:"Library",
+description:"A collection of minor volumes, partial copies and ephemera that may help with research.",
+isAspect:true
+},
+
+{id:"pit",
+label:"Pit",
+description:"A lightless well of solitude where I may experience grim insights.",
+isAspect:true
+},
+
+{id:"secret",
+label:"Secret",
+description:"This place is easily overlooked. [Use of this Headquarters will cause Reputation cards to disappear.]",
+isAspect:true,
+induces:[{id:"secret.induction",chance:30}]
+},
+{id:"sanctuary",
+label:"Sanctuary",
+description:"A space designed for contemplation and perhaps even peace.",
+isAspect:true
 },
 
         {
@@ -563,6 +641,58 @@ isHidden:true
 			description: "There is something precious here.",
         isAspect: true
 },
+      {
+            id: "challenge.knowledge",
+            label: "Requires Knowledge",
+			description: "This is a puzzle with missing pieces. I might find those pieces in odd corners of scholarship. [To upgrade or subvert this Fragment, you'd need Erudition, or an HQ with a Library.]",
+        isAspect: true
+},
+
+
+      {
+            id: "challenge.intuition",
+            label: "Requires Intuition",
+			description: "With time and peace, answers sometimes come unannounced. [To upgrade or subvert this Fragment, you'd need Glimmerings, or an HQ with a Sanctuary.]",
+        isAspect: true
+},
+
+      {
+            id: "challenge.grim",
+            label: "Requires a Grim Lesson",
+			description: "I'll learn. [To upgrade or subvert this Fragment, you'd need Dread (which might breed), the Silent Intensity skill, or an HQ with a Pit.]",
+        isAspect: true
+},
+
+      {
+            id: "challenge.obsessive",
+            label: "Requires Obsessive Research",
+			description: "This subject demands more attention than is safe. [To upgrade or subvert this Fragment, you'd need an HQ with a Library, the Never-No skill, or a Reason. There's a very small risk your Reason might be permanently damaged.]",
+        isAspect: true
+},
+
+      {
+            id: "challenge.paradox",
+            label: "Requires a Paradoxical Resolution",
+			description: "Truth is a serpent. Answers feed its appetites. [To upgrade or subvert this Fragment, you'd need an HQ with a Sanctuary, the Open Soul skill, or a Passion. There's a very small risk your Passion might be permanently damaged.]",
+        isAspect: true
+},
+
+
+      {
+            id: "challenge.illumination",
+            label: "Requires Illumination",
+			description: "Water fills the cup; light fills the mind. [To upgrade or subvert this Fragment, you'd need Fascination (which might breed), an HQ with a Library, or the Rarefied Mind skill.]",
+        isAspect: true
+},
+
+      {
+            id: "challenge.practical",
+            label: "Requires Practical Experimentation",
+			description: "Pain is only what happens now; knowledge is what we will remember. [To upgrade or subvert this Fragment, you'd need to risk your Health or use a Prisoner.]",
+        isAspect: true
+},
+
+
 
 
         {
@@ -620,6 +750,14 @@ isHidden:true
 			description: "Extend a hireling's period of service.",
             isAspect: true,
 			comments: "Recipe aspect. Use to rehire hirelings.",
+			noartneeded: true
+        },
+		{
+            id: "refiring",
+            label: "Refiring",
+			description: "Extend a d's period of service.",
+            isAspect: true,
+			comments: "Recipe aspect. Use to refire devotees.",
 			noartneeded: true
         },
 		{
@@ -1507,6 +1645,32 @@ description: "The Long has set a watch upon this Way. If I pass it, they'll lear
 isAspect:true
 },
 
+			     {
+        id: "lockscar",
+            label: "Lock-Scar",
+            description: "Perhaps a serpent has kissed me, perhaps a knife has drunk of me, perhaps I dreamt too sharp a dream. [In a rite with a sufficient intensity of Knock, this Scar might open.]",
+		isAspect:true
+			},
+						     {
+        id: "openedlockscar",
+            label: "Open Lock-Scar",
+            description: "[This Scar is opening.",
+		isAspect:true
+			},
+									     {
+        id: "unlockscar",
+            label: "This Scar will Open",
+            description: "Recipee aspect.",
+		isAspect:true,
+		noartneeded:true
+			},
+       
+       
+{id:"ghoul.hunger",
+label:"Graveyard Mouth",
+description:"Now that I have tasted the graveyard fruit, the hunger comes often to trouble me. My mouth waters at the fragrances of decay, and my belly growls like a dog.",
+isAspect:true
+}
 
 
 

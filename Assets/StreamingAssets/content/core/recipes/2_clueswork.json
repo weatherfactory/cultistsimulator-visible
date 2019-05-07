@@ -500,7 +500,16 @@ hintonly:true
    hintonly:true,
         craftable: false
     },
-	
+	{id:"work.openscar.hint",
+actionId:"work",
+label:"A Threshold ascension?",
+startdescription:"A Threshold ascension requires seven Lock-scars, and Knock aspect to the twenty-fourth intensity.",
+requirements:{ritual:1,lockscar:1,knock:1},
+effects:{},
+warmup:60,
+craftable:false,
+hintonly:true
+},
 	 			{
         id: "ritehinthasknockedge",
         label: "Summoning Something?",

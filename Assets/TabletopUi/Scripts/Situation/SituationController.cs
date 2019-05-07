@@ -172,6 +172,16 @@ namespace Assets.TabletopUi {
             return aspects;
         }
 
+        // Compiles a dictionary of *every* aspect involved in the situation, so
+        // that the extantreqs can be satisfied by elements that are in
+        // completed situations
+        public IAspectsDictionary GetAspectsInSituation()
+        {
+            var aspects = situationWindow.GetAspectsFromAllSlottedAndStoredElements(true);
+            aspects.CombineAspects(situationWindow.GetAspectsFromOutputElements(true));
+            return aspects;
+        }
+
         private int GetNumOutputCards() {
             int count = 0;
             var stacks = situationWindow.GetOutputStacks();

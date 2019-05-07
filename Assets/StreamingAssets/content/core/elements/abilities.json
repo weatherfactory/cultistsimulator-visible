@@ -85,7 +85,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 												{
@@ -95,7 +95,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 						{
@@ -144,7 +144,7 @@
 			lifetime:60,
 			decayTo:"reason",		
 		icon:"reason",
-			xtriggers:{scarability:scar_lantern,topassion:passionexhausted},
+			xtriggers:{scarability:scar_lantern,topassion:passionexhausted,damagereason:dread},
 			resaturate: true
         },
 				 {
@@ -203,7 +203,8 @@ lifetime: 180,
             label: "Decrepitude",
 			description: "Some wounds never quite heal. [Untreated Injuries and Hunger become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
 			aspects: {ability:1,winter:1},
-			xtriggers: {tohealth:health}
+			xtriggers: {tohealth:health},
+			slots:[{id:"consume",label:"Consume",required:{ingredient:1},forbidden:{poison:1}, actionId:"dream"}]
             },
 		
 					 {
@@ -339,7 +340,7 @@ lifetime: 180,
             id: "fleeting",
             label: "Fleeting Reminiscence",
             description: "A moment in time. In another moment, it'll be gone.",
-			aspects: {secrethistories: 2,moth:2,influence:1},
+			aspects: {secrethistories: 2,moth:2,influence:1,memory:1},
 				slots:[{id:"with",label:"With",description:"Perhaps I can find something in my memories to strengthen a transient influence.",required:{influencemoth:1,influencelantern:1},actionId:"study"},
 			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
 			lifetime:120,
@@ -355,27 +356,7 @@ lifetime: 180,
 		lifetime: 60,
 			xtriggers:{upgradeinfluence:influenceheartc}
 		},
-									 {
-            id: "memorybittersweet",
-            label: "Bittersweet Memory",
-            description: "I could recall a complex time.",
-			aspects: {way:1},
-			lifetime:300
-        },
-					 {
-            id: "memorypleasant",
-            label: "Pleasant Memory",
-            description: "I could recall a happier time.",
-			aspects: {way:1},
-			lifetime:300
-        },
-							 {
-            id: "memorypassionate",
-            label: "Passionate Memory",
-            description: "I could recall a warmer time.",
-			aspects: {way:1},
-			lifetime:300
-        },
+					
 				{id: "scar_edge",
 		label:"Scar: Brutal Experience",
 		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",

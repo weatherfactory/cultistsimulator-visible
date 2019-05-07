@@ -18,9 +18,15 @@
 				{
         id: "locationbookdealer_exhausted",
             label: "Morland's Shop [Closed]",
-            aspects:{location: 1},
             description: "This used to be the address of Morland's, the book dealer, but I'll have to look elsewhere for knowledge, now.",
-			unique:true,
+				  aspects:{location: 1,hq.potential:1},
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.bookshop}
         },
 				{
         id: "locationauctionhouse",
@@ -50,12 +56,27 @@
 			unique:true,
 			uniquenessgroup:uqcabaret
         },
+		{
+		id:"hq.abandoned",
+		label:"Abandoned Headquarters",
+		description:"Forget it, J.N.",
+		lifetime:1		
+		},
 
 		
 			{
         id: "generichq",
-            label: "Temporary Headquarters",
+            label: "Headquarters?",
             aspects:{hq: 1},
+			description: "[Headquarters mechanics have changed.",
+
+        unique:true
+        },
+		
+					{
+        id: "hq.temporary",
+            label: "Temporary Headquarters",
+            aspects:{hq: 1,location:1},
 			description: "Our business is private. We could use somewhere more secret.",
 			slots: [{id:"Cupboard",
 					label:"Cupboard",
@@ -64,8 +85,192 @@
 					required: {follower: 1},
 					forbidden:{summoned:1} 
 				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true,
+		icon:generichq
+        },
+					{
+        id: "hq.townhouse",
+            label: "Opulent Townhouse",
+            aspects:{hq: 1,location:1,library:1},
+			description: "We always close the curtains tight before we roll back the rugs and mark the floor with chalk.",
+			slots: [{id:"Attic",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower:1},
+					forbidden:{summoned:1}
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Grail-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}],
+				xtriggers:{movehq:hq.abandoned},
         unique:true
         },
+							{
+        id: "hq.church",
+            label: "Heterodox Church",
+            aspects:{hq: 1,location:1,sanctuary:1},
+			description: "Even on Sunday morning, there are quirks in the order of service, but most outsiders don't notice. Outsiders are not invited to the ceremonies we hold at chillier hours.",
+			slots: [{id:"Vestry",
+					description: "Lock a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Knock-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}
+				],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		
+									{
+        id: "hq.mithraeum",
+            label: "Candle-lit Mithraeum",
+            aspects:{hq: 1,location:1,sanctuary:1,secret:1},
+			description: "Initiates have celebrated the Mysteries here for almost two thousand years. The words change, the gods change, but always, eventually, there is blood.",
+			slots: [{id:"Chains",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Lantern-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		
+											{
+        id: "hq.hospital",
+            label: "House Violet",
+            aspects:{hq: 1,location:1,pit:1,secret:1},
+			description: "We've painted the walls within the rich colour of the Violet Chamber. We've cleaned the cobwebs and placed unobtrusive shutters behind all the windows. And we've replaced all the locks.",
+			slots: [{id:"Cell",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				},{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Knock-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		
+													{
+        id: "hq.bookshop",
+            label: "Rooms Behind a Bookshop",
+            aspects:{hq: 1,location:1,library:1},
+			description: "The lesser elements of Miss Morland's stock yet remain. Over time, strangers drift in with books to sell, and sometimes we indulge them.",
+			slots: [{id:"Cellar",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				},
+				{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Heart-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		
+													{
+        id: "hq.warehouse",
+            label: "A Darkened Warehouse",
+            aspects:{hq: 1,location:1,pit:1,secret:1},
+			description: "The rafters are rank with rats. Their smell is almost lost beneath the reek of the river. It's a long way from anywhere anyone would want to go. All these things are, in their way, advantages.",
+			slots: [{id:"Shed",
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:1} 
+				},{id:"funds",
+				label:"Funds",
+					description: "Place Funds in here to raise Forge-influence.",
+					actionId: "explore",
+					required: {funds:1},
+				}],
+				xtriggers:{movehq:hq.abandoned},
+        unique:true
+        },
+		{
+        id: "hq.church.potential",
+            label: "Unattended Church",
+			  aspects:{location: 1,hq.potential:1},
+            description: "The minister disappeared, one night, quite abruptly, with his inner circle and the church's chiefest treasures. He is widely assumed to have gone to a better place: possibly a sunny place beside a shining sea. We could recruit his leaderless flock, and make this our base of operations.",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.church},
+		icon:"hq.church"
+        },
+		
+									{
+        id: "hq.mithraeum.potential",
+            label: "Empty Mithraeum",
+			aspects:{location: 1,hq.potential:1},
+			description: "This was a place of worship, once. We could make it so again.",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.mithraeum},
+		icon:"hq.mithraeum"
+        },
+		
+											{
+        id: "hq.hospital.potential",
+            label: "Empty Hospital",
+			aspects:{location: 1,hq.potential:1},
+			description: "Phantoms - the neighbours say - still walk the echoing halls here. If we take possession, of course, they will leave, or we'll turn them to our use.",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.hospital},
+		icon:"hq.hospital"
+        },
+	{
+        id: "hq.warehouse.potential",
+            label: "An Abandoned Warehouse",
+			aspects:{location: 1,hq.potential:1},
+			description: "A rotting shell beside a rotting river. Who would follow us here?",
+			slots: [{id:"Old HQ",
+					description: "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
+					actionId: "explore",
+					required: {hq: 1}
+				}],
+        unique:true,
+		xtriggers:{movehq:hq.warehouse},
+		icon:"hq.warehouse"
+        },
+		
 				{
         id: "locationstreetsstrange",
             label: "Streets Strange by Moonlight",
@@ -73,6 +278,14 @@
             description: "Sometimes, the light of the moon is a key to other spaces. I've found a place where, for a night or two, the streets curve in unfamiliar ways. If I walk here, I might find insight, or I might be touched by madness.",
 			lifetime:120
         },
+		
+		{id:"location.gallery",
+		label:"FNORD gallery",
+		comments: "currently just used for early Ghoul flavour, but we could do more.",
+		aspects:{location:1},
+		description:"FNORD"
+		
+		}
 
 ]
 };

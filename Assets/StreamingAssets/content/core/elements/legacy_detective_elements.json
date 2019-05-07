@@ -40,7 +40,7 @@ decayTo:"mystique"
 },
 {id: "legacydetective_plotitem",
 label: "Sealed Bureau File",
-aspects: {desire:1,text:1,detectivetemptation:1},
+aspects: {desire:1,legacyplotitem:1,detectivetemptation:1},
 description: "A file on the enigmatic #PREVIOUSCHARACTERNAME#. I sealed it myself. I am all too familiar with its contents. If I were to revisit them, the dreams might begin again."},
 {
 id: "myevidence",
@@ -63,12 +63,12 @@ label: "Burning Bureau File",
 description: "It's almost gone! I could pluck it from the flames - ",
 lifetime: 10,
 icon:"legacydetective_plotitem",
-aspects: {desire:1,text:1,detectivetemptation:1},
+aspects: {desire:1,legacyplotitem:1,detectivetemptation:1},
 },
 
 {id: "legacydetective_plotitem_backup",
 label: "Troubling Bureau File",
-aspects: {desire:1,text:1,detectivetemptation:1},
+aspects: {desire:1,legacyplotitem:1,detectivetemptation:1},
 icon:"legacydetective_plotitem",
 description: "The evidence includes the kind of details that might make one lick one's lips, if one were interested in such things. I should not read it. The dreams might begin again."},
 

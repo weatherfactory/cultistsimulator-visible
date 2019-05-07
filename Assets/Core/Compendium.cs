@@ -285,9 +285,18 @@ public class Compendium : ICompendium
             foreach (var a in currentAspects.Where(a=>a.Value>0))
             { 
                 var e = GetElementById(a.Key);
+                try
+                {
+
+          
                 //assume only one override, but out after
                 if (!string.IsNullOrEmpty(e.OverrideVerbIcon))
                     return e.OverrideVerbIcon;
+                }
+                catch (Exception)
+                {
+                   throw new ApplicationException("Couldn't find OverrideVerbIcon for element" + a.Key  + " - does that element exist?");
+                }
             }
         }
 

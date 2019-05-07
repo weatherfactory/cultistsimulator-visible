@@ -80,6 +80,7 @@ comments: "We have clues upstream for recruitment/promotion, and we don't want t
 alternativerecipes:[
 
 {id:"talktohireling_rehire",chance:100},
+{id:"talktodevotee_refire",chance:100},
 {id:"A_talktofollower_givetool_router",chance:100},
 {id:"A_talktofollower_cantgivetool",chance:100},
 
@@ -168,6 +169,17 @@ startdescription:"I could pay to extend this hireling's period of service.",
 description:"'All right. Same terms as before.'",
 aspects:{hiring:1},
 effects:{funds:-1},
+craftable:true,
+warmup:10
+},
+
+{id: "talktodevotee_refire",
+actionId:"talk",
+label:"Fire this Devotee with faith again.",
+requirements: {devotee:1,fervour:1},
+startdescription:"If my devotee's faith is wavering, I can use Fervour to fire their enthusiasm again.",
+description:"'Would you forget your dreams so quickly?'",
+effects:{refiring:1},
 craftable:true,
 warmup:10
 },
@@ -816,6 +828,7 @@ label:"A Desperate Attempt",
 	  description:".",
 	  requirements: {society:1,edge:10,follower:1},
 	  linked: [{id:"followeraction_abductsuccess",chance:90},
+      {id:"followeraction_abductfailure",chance:100}
 	  ]
 	  },
 
