@@ -504,6 +504,15 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			comments: "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull. - AK.",
 			xtriggers:{epiphany:bequestintro},
 			noartneeded:true
-        }
+        },
+		
+		{id:"alzabo",
+label:"Formula: Elixir Zeboim",
+description:"That formula which quickens the memories of the dead in the bellies of the living. Such a thing could not exist without the consent of both the Flowermaker and the Elegiast... and with the assistance of one more Hour besides.",
+comments: "RIP Gene Wolfe, 1931-2019. 'Some are haunted by ghosts. I am haunted by stories.'",
+aspects:{lore:1},
+slots:[{id:"feast",label:"Feast",description:"When the Elixir is consumed, the enzymes of digestion become the messengers of resurrection. The Dead live again - if only in my memories.",actionId:"study",required:{remnant:1}}]
+},
+
 ]
 };

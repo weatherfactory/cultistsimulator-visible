@@ -167,7 +167,7 @@
 {id:"temptation.remembrance",
 label:"Temptation: Remembrance",
 description:"The cool wind that blows when the sun is red and low.  The voice the waves once used.  The shapes that loped beside us in the snow. All crushed behind the flat glass of time. I will recall what was lost. ",
-aspects:{desire:1},
+aspects:{desire:1,,remembrancemarks:1},
 slots:[{id:"alzabo",label:"Elixir Zeboim",required:{alzabo:1},actionId:"work"},
 {id:"corpse",label:"Corpse",{corpse:1},actionId:"work"}],
 xtriggers:{ascend:dedication.remembrance},
@@ -177,7 +177,7 @@ xtriggers:{ascend:dedication.remembrance},
 {id:"dedication.remembrance",
 label:"Dedication: Remembrance",
 description:"The cool wind that blows when the sun is red and low.  The voice the waves once used.  The shapes that loped beside us in the snow. All crushed behind the flat glass of time. I will recall what was lost... though the taste of it might be ripe and strange.",
-aspects:{desire:1},
+aspects:{desire:1,remembrancemarks:2},
 slots: [{id:"corpse",label:"Corpse",{corpse:1},actionId:"work"}]
 
 }

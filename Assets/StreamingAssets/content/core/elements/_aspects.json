@@ -347,6 +347,12 @@
 		isAspect: true,
 		description: "I may seek immortality and enlightenment in the Hour called the Watchman. His touch brings particular appetites, and Marks."
 		},
+								{id: "remembrancemarks",
+		label: "The Claws of Memory",
+		isAspect: true,
+		description: "Beneath the soil, bones.",
+		comments:"Important! this is used to trigger the extra corpse-remnants discovery from Expeditions for Ghoul"
+		},
 			{id: "follower_lustenlightenment",
 			isAspect:true,
 			isHidden:true},
@@ -1722,6 +1728,14 @@ isAspect:true},
 {id:"ascension.remembrance.offering",
 label:"The Elegiast's Price",
 description:"Once in a long ever, the Elegiast makes an arrangement to postpone an ending. The price is never quite made clear.",
+isAspect:true
+},
+
+
+
+{id:"remnant",
+label:"Remnant",
+description:"Once another wore this flesh.",
 isAspect:true
 }
 

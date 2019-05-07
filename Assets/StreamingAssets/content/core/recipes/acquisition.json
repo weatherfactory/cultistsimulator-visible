@@ -65,6 +65,54 @@ comments:"Tools and ingredients might subsequently be offered as purchases; in p
         craftable: false,
 		comments: "The auction item should be inherited from the linking recipe."
        },
+	   
+	   
+
+{id:"expedition.corpse.find.vaultshires3",
+actionId:"expedition.corpse.find",
+label:"FNORD corpse bits",
+startdescription:"FNORD",
+description:"FNORD",
+extantreqs:{remembrancemarks:1},
+effects:{corpse.furious:1},
+warmup:10},
+
+{id:"expedition.corpse.find.vaultcapital5",
+actionId:"expedition.corpse.find",
+label:"FNORD corpse bits",
+startdescription:"FNORD",
+description:"FNORD",
+extantreqs:{remembrancemarks:1},
+effects:{corpse.luxurious:1},
+warmup:10},
+
+{id:"expedition.corpse.find.vaultloneandlevelsands2",
+actionId:"expedition.corpse.find",
+label:"FNORD corpse bits",
+startdescription:"FNORD",
+description:"FNORD",
+extantreqs:{remembrancemarks:1},
+effects:{corpse.liminal:1},
+warmup:10},
+
+{id:"expedition.corpse.find.vaultrendingmountainsdefault",
+actionId:"expedition.corpse.find",
+label:"FNORD corpse bits",
+startdescription:"FNORD",
+description:"FNORD",
+extantreqs:{remembrancemarks:1,corpse.horizon:-1,memory.horizon:-1,colours.horizon:-1},
+effects:{corpse.horizon:1},
+warmup:10},
+
+{id:"expedition.corpse.find.vaultshires4",
+actionId:"expedition.corpse.find",
+label:"FNORD corpse bits",
+startdescription:"FNORD",
+description:"FNORD",
+extantreqs:{remembrancemarks:1},
+effects:{corpse.splendid:1},
+warmup:10}
+
 			
 	
 ]
