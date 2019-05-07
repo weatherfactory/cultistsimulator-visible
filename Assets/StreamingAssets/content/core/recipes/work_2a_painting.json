@@ -44,7 +44,8 @@
         warmup: 20,
         craftable: true,
 		alternativerecipes:[
-		{id:"painthasgrandmemory",chance:100},
+		{id:"painthasgrandmemory.nocanvas",chance:100},
+			{id:"painthasgrandmemory",chance:100},
 		{id:"painthasmemory",chance:100},
 		{id:"painthaslore",chance:100},
 	{id:"painthasinfluence",chance:100},
@@ -53,11 +54,11 @@
 	linked:[{id:"paintaddpigment",chance:100}]
     },
 	
-			{id:"painthasgrandmemory",
+			{id:"painthasgrandmemory.nocanvas",
 	actionId:"work",
 	label:"Forgotten Colours",
 	startdescription:"I remember colours that are gone from the world. I dare not reproduce them faithfully - even if I could. But I could pay tribute to them... if I had a canvas worthy of the task.",
-	requirements:{memory:5},
+	requirements:{memory:5,passion:1},
 	extantreqs:{canvas.pale:-1},
 	warmup:30,
 	linked:[{id:"paint.prepareforcanvas.pale"}]
@@ -78,11 +79,116 @@ warmup:30
 actionId:"work",
 label:"A Pale Canvas",
 requirements:{corpse:1},
-startdescription:"The preparations must be made in secret, in a room that has no windows... but is well-ventilated.",
-description:"It is complete. One would never know, unless one looks very closely indeed. It would be best if the authorities never saw this canvas.",
+startdescription:"The preparations must be made in secret, in a room that has no windows... but must nevertheless be extremely well-ventilated.",
+description:"It is complete. One would never know, unless one looks very closely indeed. It would be best if the authorities never saw this canvas. [Use your Memory again next time you paint, and you'll be able to begin work on the Canvas.]",
 effects:{canvas.pale:1,corpse:-1,notoriety:1},
 warmup:120,
 },
+
+
+			{id:"painthasgrandmemory",
+	actionId:"work",
+	label:"A Forgotten Colour",
+	startdescription:"@#memory.furious|FNORD Seven-Coiled
+	#memory.luxurious|FNORD Tide
+	#memory.liminal|FNORD Double-Axe
+	#|FNORD other memory@",
+	requirements:{memory:5,passion:1},
+	warmup:30,
+	linked:[{id:"paint.palestpainting.continue"}]
+	},
+	
+	{id:"paint.palestpainting.continue",
+actionId:"work",
+label:"Continue the Palest Painting",
+startdescription:"FNORD continue Palest Painting",
+description:"The world can wait a little longer for the Palest Painting. It has already waited so long.",
+slots:[{id:"canvas.pale",label:"Canvas", description:"Slowly, softly.",required:{canvas.pale:1}}],
+alt:[{id:"paint.palestpainting.furious"}],
+warmup:60
+},
+
+
+{id:"paint.palestpainting.furious",
+actionId:"work",
+label:"The Colours Coiled",
+startdescription:"FNORD seven-coiled",
+requirements:{memory.furious:1},
+effects:{memory.furious:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.furious,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
+{id:"paint.palestpainting.",
+actionId:"work",
+label:"The ",
+startdescription:"FNORD ",
+requirements:{memory.:1},
+effects:{memory.:-1},
+aspects:{fatiguing:1},
+mutations:[{mutate:colours.,filter:canvas.pale,level:1}]
+},
+
 	
 		{id:"painthasmemory",
 	actionId:"work",
@@ -90,10 +196,10 @@ warmup:120,
 	startdescription:"These memories would have been lost to the earth below us, and now they will live on. [The Suppression Bureau may take notice.]",
 	requirements:{memory:1},
 	effects:{insight:1,notoriety:1,memory:-1},
-	
 	warmup:5,
 	linked:[{id:"paintaddpigment",chance:100}]
 	},
+	
 
 	{id:"painthaslore",
 	actionId:"work",
