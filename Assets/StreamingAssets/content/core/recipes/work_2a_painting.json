@@ -37,18 +37,63 @@
         requirements: {passionskill:1,ritual:-1,job:-1},
 					slots: [{id:"Inspiration",
 					label:"Inspiration",
-					required: {lore:1,influence:1,follower:1,acquaintance:1},
+					required: {lore:1,influence:1,follower:1,acquaintance:1,memory:1},
 					description: "A worthy subject isn't essential, but it's useful. Some subjects will draw the authorities' attention, but aren't those the interesting ones?",
 				}],
         startdescription: "You never know. This might be a living. [Add Passion to make distinctive paintings. Add Mystique and especially Notoriety to attract attention and make more money. Be careful: if you use Notoriety, exhibiting paintings will keep you in the public eye.]",
         warmup: 20,
         craftable: true,
-		alternativerecipes:[{id:"painthaslore",chance:100},
+		alternativerecipes:[
+		{id:"painthasgrandmemory",chance:100},
+		{id:"painthasmemory",chance:100},
+		{id:"painthaslore",chance:100},
 	{id:"painthasinfluence",chance:100},
 	{id:"painthassummoned",chance:100},
 	{id:"painthasfollower",chance:100}],
 	linked:[{id:"paintaddpigment",chance:100}]
     },
+	
+			{id:"painthasgrandmemory",
+	actionId:"work",
+	label:"Forgotten Colours",
+	startdescription:"I remember colours that are gone from the world. I dare not reproduce them faithfully - even if I could. But I could pay tribute to them... if I had a canvas worthy of the task.",
+	requirements:{memory:5},
+	extantreqs:{canvas.pale:-1},
+	warmup:30,
+	linked:[{id:"paint.prepareforcanvas.pale"}]
+	},
+	
+{id:"paint.prepareforcanvas.pale",
+actionId:"work",
+label:"Prepare the canvas for the Palest Painting",
+startdescription:"One is the artist, or one is the canvas. Today, I am the artist. [This will take a while, and will occupy the Work verb while you are preparing the canvas.]",
+description:"The world can wait a little longer for the Palest Painting. It has already waited so long.",
+slots:[{id:"corpse",label:"Materials", description:"The process will be long and complex, but when I am done, the odour will be almost imperceptible.",required:{corpse:1}}],
+linked:[{id:"paint.createcanvas.pale"}],
+warmup:30
+},
+
+
+{id:"paint.createcanvas.pale",
+actionId:"work",
+label:"A Pale Canvas",
+requirements:{corpse:1},
+startdescription:"The preparations must be made in secret, in a room that has no windows... but is well-ventilated.",
+description:"It is complete. One would never know, unless one looks very closely indeed. It would be best if the authorities never saw this canvas.",
+effects:{canvas.pale:1,corpse:-1,notoriety:1},
+warmup:120,
+},
+	
+		{id:"painthasmemory",
+	actionId:"work",
+	label:"A Life Retold",
+	startdescription:"These memories would have been lost to the earth below us, and now they will live on. [The Suppression Bureau may take notice.]",
+	requirements:{memory:1},
+	effects:{insight:1,notoriety:1,memory:-1},
+	
+	warmup:5,
+	linked:[{id:"paintaddpigment",chance:100}]
+	},
 
 	{id:"painthaslore",
 	actionId:"work",
