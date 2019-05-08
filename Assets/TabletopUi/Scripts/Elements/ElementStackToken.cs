@@ -203,7 +203,7 @@ namespace Assets.CS.TabletopUI {
                 if (_currentMutations[aspectId] == 0)
                     _currentMutations.Remove(aspectId);
             }
-            else
+            else if (value != 0)
 			{
 				_currentMutations.Add(aspectId,value);
 			}
@@ -647,14 +647,14 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public bool AllowsIncomingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
+            if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
         }
 
         virtual public bool AllowsOutgoingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
+            if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
                 return true;	// If outgoing, it doesn't matter what it's current container is - CP
@@ -810,12 +810,13 @@ namespace Assets.CS.TabletopUI {
             return CanMergeWith(stackDroppedOn);
         }
 
-        bool CanMergeWith(IElementStack stack)
+        public bool CanMergeWith(IElementStack stack)
 		{
             return	stack.EntityId == this.EntityId &&
 					(stack as ElementStackToken) != this &&
 					stack.AllowsIncomingMerge() &&
-					this.AllowsOutgoingMerge();
+					this.AllowsOutgoingMerge() &&
+					stack.GetCurrentMutations().IsEquivalentTo(GetCurrentMutations());
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
@@ -857,6 +858,8 @@ namespace Assets.CS.TabletopUI {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
                 cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
+                foreach (var m in GetCurrentMutations())
+	                cardLeftBehind.SetMutation(m.Key, m.Value, false); //brand new mutation, never needs to be additive
 
                 originStack = cardLeftBehind;
 

@@ -169,7 +169,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 			{
                 token = card as ElementStackToken;
 
-                if (token != null && token != draggedElement) {
+                if (token != null && draggedElement.CanMergeWith(token)) {
                     token.SetGlowColor(UIStyle.TokenGlowColor.Default);
                     token.ShowGlow(show, false);
                 }
