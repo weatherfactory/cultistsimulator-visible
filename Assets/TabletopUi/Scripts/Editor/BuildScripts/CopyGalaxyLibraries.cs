@@ -5,52 +5,46 @@
 
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
 using System.IO;
 
-namespace Galaxy {
+namespace Galaxy 
+{
 
 	// Copy GOG dlls to the appropriate place when building standalone players.
-	// Note: Implemented as a direct mirror of the dll copy process implemeneted in the Steamworks.net library (https://github.com/rlabrecque/Steamworks.NET).
+	// Note: Implemented as a direct mirror of the dll copy process implemented in the Steamworks.net library (https://github.com/rlabrecque/Steamworks.NET).
 	public class CopyGalaxyLibraries {
-		const string galaxyAPIRelativeLoc = "Assets/Plugins/GoGGalaxy";
+		private const string GALAXY_API_RELATIVE_LOC = "Assets/Plugins/GoGGalaxy";
 
-		[PostProcessBuild]
-		public static void Copy(BuildTarget target, string pathToBuiltProject) {
+		public static void Copy(BuildTarget target, string outputLibLocation) 
+		{
 			#if !DISABLEREDISTCOPY
 			if (target == BuildTarget.StandaloneWindows64) {
-				string outputLibLocation = Path.GetDirectoryName (pathToBuiltProject);
-				Debug.Log ("BUILD: copying Galaxy libraries 64 to: " + outputLibLocation);
-				CopyFile ("Win64/Galaxy64.dll", Path.Combine (outputLibLocation, "Galaxy64.dll"));
-				CopyFile ("Win64/GalaxyCSharpGlue.dll", Path.Combine (outputLibLocation, "GalaxyCSharpGlue.dll"));
+				Debug.Log("BUILD: copying Galaxy libraries 64 to: " + outputLibLocation);
+				CopyFile("Win64/Galaxy64.dll", Path.Combine(outputLibLocation, "Galaxy64.dll"));
+				CopyFile("Win64/GalaxyCSharpGlue.dll", Path.Combine(outputLibLocation, "GalaxyCSharpGlue.dll"));
 			}
 			else if (target == BuildTarget.StandaloneWindows) {
-				string outputLibLocation = Path.GetDirectoryName (pathToBuiltProject);
-				Debug.Log ("BUILD: copying Galaxy libraries 32 to: " + outputLibLocation);
-				CopyFile ("Win32/Galaxy.dll", Path.Combine (outputLibLocation, "Galaxy.dll"));
-				CopyFile ("Win32/GalaxyCSharpGlue.dll", Path.Combine (outputLibLocation, "GalaxyCSharpGlue.dll"));
+				Debug.Log("BUILD: copying Galaxy libraries 32 to: " + outputLibLocation);
+				CopyFile("Win32/Galaxy.dll", Path.Combine(outputLibLocation, "Galaxy.dll"));
+				CopyFile("Win32/GalaxyCSharpGlue.dll", Path.Combine(outputLibLocation, "GalaxyCSharpGlue.dll"));
 			}
-			#if UNITY_2017_3_OR_NEWER
 			else if (target == BuildTarget.StandaloneOSX) {
-			#else
-			else if (target == BuildTarget.StandaloneOSX) {
-			#endif
-				pathToBuiltProject = pathToBuiltProject + "/"; // Ensure the .app directory name is actually treated as a directory.
-				string outputLibLocation = Path.Combine (pathToBuiltProject, "Contents/Frameworks/MonoEmbedRuntime/osx/");
+				outputLibLocation = Path.Combine(outputLibLocation, "OSX.app/Contents/Frameworks/Mono/MonoEmbedRuntime/osx/");
 
-				CopyFile ("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxy.dylib", Path.Combine (outputLibLocation, "libGalaxy.dylib"));
-				CopyFile ("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxyCSharpGlue.dylib", Path.Combine (outputLibLocation, "libGalaxyCSharpGlue.dylib"));
+				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxy.dylib", Path.Combine(outputLibLocation, "libGalaxy.dylib"));
+				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxyCSharpGlue.dylib", Path.Combine(outputLibLocation, "libGalaxyCSharpGlue.dylib"));
 			}
 			#endif
 		}
 
-		private static void CopyFile (string sourceFilePath, string outputFilePath) {
+		private static void CopyFile(string sourceFilePath, string outputFilePath) 
+		{
 			string strCWD = Directory.GetCurrentDirectory();
-			string strSource = Path.Combine(Path.Combine(strCWD, galaxyAPIRelativeLoc), sourceFilePath);
+			string strSource = Path.Combine(Path.Combine(strCWD, GALAXY_API_RELATIVE_LOC), sourceFilePath);
 			string strFileDest = outputFilePath;
 
 			if (!File.Exists(strSource)) {
-				Debug.LogWarning(string.Format("[GoGGalaxy RedistCopy] Could not copy {0} into the project root. {0} could not be found in '{1}'. Place {0} from the redist into the project root manually.", sourceFilePath, galaxyAPIRelativeLoc));
+				Debug.LogWarning(string.Format("[GoGGalaxy RedistCopy] Could not copy {0} into the project root. {0} could not be found in '{1}'. Place {0} from the redist into the project root manually.", sourceFilePath, GALAXY_API_RELATIVE_LOC));
 				return;
 			}
 
