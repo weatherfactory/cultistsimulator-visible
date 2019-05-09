@@ -36,7 +36,7 @@ namespace Facepunch.Editor
             if (target == BuildTarget.StandaloneOSX)
             {
                 Console.WriteLine("pathToBuiltProject in CopySteamLibraries: " + pathToBuiltProject);
-                FileUtil.ReplaceFile("libsteam_api.dylib", pathToBuiltProject + "/OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/libsteam_api.dylib");
+                FileUtil.ReplaceFile("libsteam_api.dylib", pathToBuiltProject + "/OSX.app/Contents/Frameworks/Mono/MonoEmbedRuntime/osx/libsteam_api.dylib");
             }
             if (target == BuildTarget.StandaloneLinux64 || target == BuildTarget.StandaloneLinuxUniversal)
                 FileUtil.ReplaceFile("libsteam_api64.so",pathToBuiltProject + "/libsteam_api64.so");

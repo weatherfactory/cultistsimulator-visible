@@ -80,7 +80,7 @@ namespace Assets.Core.Utility
                 locationPathName = JoinPaths(buildRootPath, GetExeNameForTarget(target)),
                 scenes = Scenes
             };
-            Console.WriteLine(">>>>>> Building " + label + " version to " + buildPlayerOptions.locationPathName);
+            Log("Building " + label + " version to " + buildPlayerOptions.locationPathName);
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
         }

@@ -29,7 +29,7 @@ namespace Galaxy
 				CopyFile("Win32/GalaxyCSharpGlue.dll", Path.Combine(outputLibLocation, "GalaxyCSharpGlue.dll"));
 			}
 			else if (target == BuildTarget.StandaloneOSX) {
-				outputLibLocation = Path.Combine(outputLibLocation, "OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/");
+				outputLibLocation = Path.Combine(outputLibLocation, "OSX.app/Contents/Frameworks/Mono/MonoEmbedRuntime/osx/");
 
 				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxy.dylib", Path.Combine(outputLibLocation, "libGalaxy.dylib"));
 				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxyCSharpGlue.dylib", Path.Combine(outputLibLocation, "libGalaxyCSharpGlue.dylib"));
