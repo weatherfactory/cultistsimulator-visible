@@ -12,6 +12,7 @@ namespace Assets.Core.Utility
 {
     public static class BuildUtility
     {
+        private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_DIR = "build";
         private const string CONST_DLC = "DLC";
         private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
@@ -63,6 +64,15 @@ namespace Assets.Core.Utility
         {
             var args = Environment.GetCommandLineArgs();
             var buildRootPath = args.Length > 1 ? Environment.GetCommandLineArgs()[1] : DEFAULT_BUILD_DIR;
+            
+            // Clear the build directory of any of the intermediate results of a previous build
+            // This excludes any existing build directories, so that we can easily combine builds for different
+            // platforms and versions
+            DirectoryInfo rootDir = new DirectoryInfo(buildRootPath);
+            foreach (var file in rootDir.GetFiles())
+                File.Delete(file.FullName);
+            foreach (var directory in rootDir.GetDirectories().Where(d => !d.Name.StartsWith(BUILD_DIR_PREFIX)))
+                Directory.Delete(directory.FullName, true);
 
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
@@ -91,13 +101,13 @@ namespace Assets.Core.Utility
         private static void PostBuildFileTasks(BuildTarget target, string rootPath)
         {
             // Move the build output into its build- and platform-specific subdirectory
-            var outputFolder = "csunity-" + NoonUtility.VersionNumber.ToString();
+            var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
             var buildPath = JoinPaths(rootPath, outputFolder);
             var platformDirName = GetPlatformFolderForTarget(target);
             var baseEditionPath = JoinPaths(buildPath, platformDirName);
             if (Directory.Exists(baseEditionPath))
                 Directory.Delete(baseEditionPath, true);
-            CopyDirectoryRecursively(rootPath, baseEditionPath, true);
+            CopyDirectoryRecursively(rootPath, baseEditionPath);
             
             // Copy some extra files directly from the Unity project
             Log("Copying Steam libraries");
