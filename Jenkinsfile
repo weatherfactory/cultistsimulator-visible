@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'csunity-ci:latest'
+            image 'lyrositor/csunity-ci:latest'
         }
     }
     environment {
