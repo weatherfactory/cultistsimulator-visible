@@ -200,8 +200,9 @@ signalEndingFlavour:"Pale",
 warmup:30},
 
 {id:"ending.minorcrownedgrowthvictory",
-actionId:"craving",
+actionId:"ambition",
 label:"FNORD CG VICTORY",
+requirements:{ghoul.hunger:7},
 startdescription:"FNORD HERE IT COMES",
 ending:"minorcrownedgrowthvictory",
 signalEndingFlavour:"Vile",
@@ -231,7 +232,7 @@ description:"@#memory.furious|c furious
 #memory.honeyed|honeyed
 #|FNORD other@",
 requirements:{remnant:1,alzabo:1,remembrancemarks:1},
-mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1}],
+mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
 alt:[{id:"study.alzabo.corpse"},
 {id:"study.alzabo.crucible"}],
 warmup:30,
@@ -243,7 +244,7 @@ label:"Feast upon a Corpse",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{corpse:1,alzabo:1},
-mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1}],
+mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
 effects:{memory.unexpected:1,corpse:-1}
 },
 
@@ -254,7 +255,7 @@ startdescription:"Go up: I need only take a little.",
 description:"The burns are very minor - they will heal quickly - but the taste of him will be in my mouth for days.",
 requirements:{alzabo:1,spirit_forgee_edge.defunct:1},
 effects:{influenceforgec:1,spirit_forgee_edge.consumed:1},
-mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1}],
+mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
 }
 
 

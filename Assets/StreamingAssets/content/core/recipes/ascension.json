@@ -584,6 +584,7 @@ linked: [
 {id:"L_independent",chance:100},
 {id:"L_rebellion_activate",chance:70},
 {id:"L_rebellion_noactivation",chance:100},
+{id:"ending.minorcrownedgrowthvictory",chance:100},
 {id:"ambition.apostleforge.emitfuel",chance:100},
 {id:"ambition.apostlegrail.emitfuel",chance:100},
 {id:"ambition.apostlelantern.emitfuel",chance:100},
@@ -873,7 +874,7 @@ aspects: {ascend:1}
 label:"The Hunger that Grows in Dark Earth",
 actionId: "craving",
 requirements: {remembrancemarks:2},
-mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:1}],
+mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:1,additive:true}],
 startdescription: "The taste - the particular taste - the taste which is neither fair nor foul - it comes to trouble my mouth again. My tongue will swell, my lips will blacken. The Elixir has set its spores within me, and only dead flesh can quell them.",
 warmup:30
 },
