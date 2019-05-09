@@ -245,7 +245,8 @@ startdescription:"FNORD",
 description:"FNORD",
 requirements:{corpse:1,alzabo:1},
 mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
-effects:{memory.unexpected:1,corpse:-1}
+deckeffect:{ghoul.memory:1},
+effects:{corpse:-1}
 },
 
 {id:"study.alzabo.crucible",
