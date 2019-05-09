@@ -46,9 +46,9 @@
 		alternativerecipes:[
 		{id:"painthasgrandmemory.nocanvas",chance:100},
 			{id:"painthasgrandmemory",chance:100},
-		{id:"painthasmemory",chance:100},
 		{id:"painthaslore",chance:100},
 	{id:"painthasinfluence",chance:100},
+	{id:"painthasmemory",chance:100},
 	{id:"painthassummoned",chance:100},
 	{id:"painthasfollower",chance:100}],
 	linked:[{id:"paintaddpigment",chance:100}]
@@ -244,17 +244,6 @@ warmup:30
 },
 
 	
-		{id:"painthasmemory",
-	actionId:"work",
-	label:"A Life Retold",
-	startdescription:"These memories would have been lost to the earth below us, and now they will live on. [The Suppression Bureau may take notice.]",
-	requirements:{memory:1},
-	effects:{insight:1,notoriety:1,memory:-1},
-	warmup:5,
-	linked:[{id:"paintaddpigment",chance:100}]
-	},
-	
-
 	{id:"painthaslore",
 	actionId:"work",
 	label:"Esoteric Art",
@@ -274,6 +263,75 @@ warmup:30
 	warmup:5,
 	linked:[{id:"paintaddpigment",chance:100}]
 	},
+			{id:"painthasmemory",
+	actionId:"work",
+	label:"A Life Retold",
+	startdescription:"These memories would have been lost to the earth below us, and now they will live on. [The Suppression Bureau may take notice.]",
+	requirements:{memory:1},
+	effects:{insight:1,notoriety:1},
+	warmup:10,
+	linked:[{id:"paint.memory.menacing.first"},
+	{id:"paint.memory.shameful.first"},
+	{id:"paint.memory.unexpected.first"},
+	{id:"paint.memory.joyful.first"},
+	{id:"paint.memory.profitable.first"},
+	{id:"paintaddpigment"}]
+	},
+	
+		{id:"paint.memory.menacing.first",
+	actionId:"work",
+	startdescription:"FNORD I have glimpsed the death of seven coils",
+	requirements:{memory.menacing:1},
+	effects:{fragmentedgeb:1,insight:2},
+	warmup:10,
+	maxexecutions:1,
+	linked:[{id:"paintaddpigment"}]
+	},
+	
+			{id:"paint.memory.shameful.first",
+	actionId:"work",
+	startdescription:"FNORD I have ",
+	requirements:{memory.shameful:1},
+	effects:{fragmentgrailb:1,insight:2},
+	warmup:10,
+	maxexecutions:1,
+	linked:[{id:"paintaddpigment"}]
+	},
+
+
+		{id:"paint.memory.unexpected.first",
+	actionId:"work",
+	startdescription:"FNORD I have glimpsed the glimpsed the sacrifice the Axe was forced to",
+	requirements:{memory.unexpected:1},
+	effects:{fragmentknockb:1,insight:2},
+	warmup:10,
+	maxexecutions:1,
+	linked:[{id:"paintaddpigment"}]
+	},
+
+
+		{id:"paint.memory.joyful.first",
+	actionId:"work",
+	startdescription:"FNORD I have glimpsed the turning of the Wheel, which has not ceased",
+	requirements:{memory.joyful:1},
+	effects:{fragmentheartb:1,insight:2},
+	warmup:10,
+	maxexecutions:1,
+	linked:[{id:"paintaddpigment"}]
+	},
+	
+			{id:"paint.memory.profitable.first",
+	actionId:"work",
+	startdescription:"FNORD I have glimpsed how fire changed, even in the days of Flint",
+	requirements:{memory.profitable:1},
+	effects:{fragmentforgeb:1,insight:2},
+	warmup:10,
+	maxexecutions:1,
+	linked:[{id:"paintaddpigment"}]
+	},
+
+
+	
 		{id:"painthasfollower",
 		actionId:"work",
 		label:"A Portrait",
