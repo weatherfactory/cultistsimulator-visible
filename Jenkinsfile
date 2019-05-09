@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'csunity-cli:latest'
+            image 'csunity-ci:latest'
         }
     }
     environment {
