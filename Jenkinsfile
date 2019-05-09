@@ -4,6 +4,9 @@ pipeline {
             image 'csunity-cli:latest'
         }
     }
+    environment {
+        UNITY_CLOUD_API_KEY = credentials('UNITY_CLOUD_API_KEY')
+    }
     stages {
         stage('Build') {
             steps {
