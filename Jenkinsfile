@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'python3 build.py'
+                sh 'python3 /csunity-ci/build.py'
             }
         }
     }
