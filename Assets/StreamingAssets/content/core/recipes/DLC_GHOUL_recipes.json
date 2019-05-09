@@ -170,19 +170,19 @@ label:"FNORD alzabo formula",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{},
-effects:{alzabo:1},
+effects:{prealzabo:1},
 warmup:15},
 
 
 
 
 {id:"ghoul.firsttaste",
-actionId:"work",
+actionId:"study",
 label:"The First Taste",
 startdescription:"FNORD first taste",
 description:"FNORD first taste done",
-requirements:{temptation.remembrance:1,alzabo:1,corpse:1},
-effects:{alzabo:-1,corpse:-1,memory.unexpected:1},
+requirements:{prealzabo:1,temptation.remembrance:1,corpse:1},
+effects:{corpse:-1,memory.unexpected:1,prealzabo:-1,alzabo:1},
 aspects:{ascend:1},
 mutations:[{filter:desire,mutate:ghoul.hunger,level:1}],
 warmup:30,

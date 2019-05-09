@@ -505,7 +505,13 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			xtriggers:{epiphany:bequestintro},
 			noartneeded:true
         },
-		
+				{id:"prealzabo",
+label:"Formula: Elixir Zeboim?",
+description:"I have here a secret - a recipe of honey, asphodel, powdered ivory, and a mottled fungus that grows only where the dead are buried.",
+aspects:{lore:1},
+slots:[{id:"desire",label:"Desire",description:"Old memories go into the earth, and there they cannot be found - but they dwell is another place, first, before they go too deep.",actionId:"study",required:{temptation.remembrance:1}},
+{id:"taste",label:"Taste",description:"There is no turning back.",actionId:"study",required:{remnant:1}}]
+},
 		{id:"alzabo",
 label:"Formula: Elixir Zeboim",
 description:"That formula which quickens the memories of the dead in the bellies of the living. Such a thing could not exist without the consent of both the Flowermaker and the Elegiast... and with the assistance of one more Hour besides.",

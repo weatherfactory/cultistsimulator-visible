@@ -1,6 +1,7 @@
  {"recipes":
  [		
  
+
   
  {id:"work.apostleforge.majorvictory.hint5",
 actionId:"work",
@@ -794,9 +795,22 @@ hintonly:true
         craftable: false,
 		hintonly: true
     },
+		{id:"work.temptation.remembrance.hint",
+actionId:"work",
+label:"Lost Colours?",
+startdescription:"I hunger for what is lost. The way to that lies through another hunger. There is a secret I must study.",
+requirements:{temptation.remembrance:1},
+hintonly:true,
+craftable:false},
 	
 
-	
+	{id:"work.generaldesire.hint",
+actionId:"work",
+label:"A Great Work?",
+startdescription:"The final fulfilment of a Desire is often a conclusion. It is not enough to hope. I stand or fail on my deeds. [Desires are often the means to winning a game. The Desire for Sensation or Power or Enlightenment will require a great ritual. But there are other, even rarer, Desires, especially in the Ghoul, Priest and Dancer expansions. ]",
+requirements:{desire:1},
+hintonly:true,
+craftable:false}
 	
 
 	

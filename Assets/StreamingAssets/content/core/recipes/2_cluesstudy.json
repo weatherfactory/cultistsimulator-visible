@@ -19,9 +19,20 @@
 		craftable: false,
 		hintonly:true
 	},
+	
+		   	{
+	id: "studyprealzabo_hint",
+	label: "A Bold Experiment",
+	actionId: "study",
+	requirements: {prealzabo:1},	
+	startdescription: "The mixture is ready. I need to summon my courage... and to prepare a meal.",
+		craftable: false,
+		hintonly:true
+	},
+	
 	   	{
 	id: "studyalzabo_hint",
-	label: "The Feast of the Dove and the Crow",
+	label: "The Feast of the Honeyed Dove",
 	actionId: "study",
 	requirements: {alzabo:1},	
 	startdescription: "I can consume Remnants, to preserve a little of their knowledge from dust. I may yet have to.",
