@@ -63,7 +63,8 @@
 	{id: "ingredientheartf",
 	label: "True Blood of St Januarius",
 	description: "The Thunderskin protected the one they called Januarius, against perils from every past. To this day his blood keeps dancing.",
-	aspects: {heart:12,auctionable:6,ingredient:1}
+	aspects: {heart:12,auctionable:6,ingredient:1,remnant:1},
+	xtriggers:{alzabo:memory.endless}
 	},
 	
 						{id: "ingredientknockb",
@@ -111,10 +112,11 @@
 	{id: "ingredientmothf",
 	label: "Holiest Hemolymph",
 	description: "Faint traces of an enigmatic substance spilt in the commission of an ancient crime, tightly sealed in a glass ampoule. 'Who will remember the barber's son?' ",
-	aspects: {moth:12,auctionable:6,ingredient:1}
+	aspects: {moth:12,auctionable:6,ingredient:1,remnant:1},
+	xtriggers:{alzabo:memory.wildering}
 	},
 	
-						{id: "ingredientwinterb",
+	{id: "ingredientwinterb",
 	label: "Greydawn Oil",
 	description: "The precise colour of the hours when one cannot sleep.",
 	aspects: {winter:4,auctionable:2,ingredient:1,pigment:1}
