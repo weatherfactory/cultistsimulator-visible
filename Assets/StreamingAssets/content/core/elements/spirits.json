@@ -116,13 +116,23 @@
 								 {
         id: "spirit_forgee_edge.defunct",
             label: "King Crucible Burns Low",
-            description: "King Crucible's fires have sunk to a lesser heat, for now.",
+            description: "King Crucible's fires have sunk to a lesser heat, for now. Blackened traces remain, like the bones of coal.",
 			lifetime: 180,
-			comments:"This shouldn't have any aspects. We don't want it to be removed or used - it's solely a blocker.",
+	aspects:{remnant:1},
+			unique:true,
+			xtriggers:{alzabo:spirit_forgee_edge.consumed}
+        },
+		
+										 {
+        id: "spirit_forgee_edge.consumed",
+            label: "An Ashen Taste",
+            description: "I have consumed the traces that Crucible left in the world. At the very least he will be offended. He might be enraged. I should not summon him again.",
 			unique:true
         },
 		
-								 {
+		
+		
+		 {
         id: "spirit_graile_edge.defunct",
             label: "Ezeem is Sulking",
             description: "Ezeem will be fine, eventually.",

@@ -57,7 +57,7 @@
         label: "Summon one of the Name-emanations of the Forge of Days",
         actionId: "work",
         requirements: {ritual:1,knock:5,forge:10,lantern:2,desire:-1},
-				extantreqs:{spirit_forgee_edge:-1,spirit_forgee_edge.defunct:-1},
+				extantreqs:{spirit_forgee_edge:-1,spirit_forgee_edge.defunct:-1,spirit_forgee_edge.consumed:-1},
 		effects: {spirit_forgee_edge:1},
         startdescription: "King Crucible will come only when the room glows with the aspect called Forge. He also requires a Lantern, for the light of the Glory that he claims to know.",
         description: "He can hide in a candle-flame if he must. But here he is in all his bonfire pomp. After I speak with him, the skin of my face and hands will be pink as if from too much sun.",

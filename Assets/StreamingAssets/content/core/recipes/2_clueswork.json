@@ -317,7 +317,7 @@ hintonly:true
         label: "Summon a mighty creature of the Forge of Days?",
         actionId: "work",
         requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
-				extantreqs:{spirit_forgee_edge:-1,spirit_forgee_edge.defunct:-1},
+				extantreqs:{spirit_forgee_edge:-1,spirit_forgee_edge.defunct:-1,spirit_forgee_edge.consumed:-1},
         startdescription: "I've found a useful conjunction of aspects, but I need more. To conjure a thing of fire and Glory, I'll need a great power of Forge; a significant power of Knock; and some Lantern.",     
    hintonly:true,
         craftable: false
@@ -343,6 +343,18 @@ hintonly:true
    hintonly:true,
         craftable: false
     },
+	
+							{
+        id: "hint_summon_spirit_forgee_edge_nom",
+        label: "King Crucible? Really?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		extantreqs:{spirit_forgee_edge.consumed:1},
+        startdescription: "I consumed King Crucible's cindered remains. He will be wroth with me. It does not to do summon a Name of the Forge who is wroth with you.",  
+   hintonly:true,
+        craftable: false
+    },
+
 
 			{
         id: "hint_summon_spirit_graile_edge",
