@@ -335,16 +335,6 @@ warmup:30
 	linked:[{id:"paintaddpigment"}]
 	},
 	
-				{id:"paint.memory.profitable.once",
-	actionId:"work",
-	label:"FNORD",
-	startdescription:"FNORD I have glimpsed how fire changed, even in the days of Flint[The Suppression Bureau may take notice.]",
-	requirements:{memory.profitable:1},
-	effects:{pre.fragmentforgeb:1,insight:3,notoriety:1,memory.profitable:-1},
-	warmup:10,
-	maxexecutions:1,
-	linked:[{id:"paintaddpigment"}]
-	},
 
 				{id:"paint.memory.generic",
 	actionId:"work",
