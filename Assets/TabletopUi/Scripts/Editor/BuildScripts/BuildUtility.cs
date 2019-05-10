@@ -1,392 +1,257 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using Facepunch.Editor;
 using Galaxy;
 using Noon;
-using OrbCreationExtensions;
 using UnityEditor;
 using UnityEditor.Callbacks;
-using UnityEngine;
-using UnityEngine.WSA;
 
 namespace Assets.Core.Utility
 {
-    public class BuildUtility
+    public static class BuildUtility
     {
-        private const string CONST_ELEMENTS = "elements";
-        private const string CONST_RECIPES = "recipes";
-        private const string CONST_VERBS = "verbs";
-        private const string CONST_DECKS = "decks";
-        private const string CONST_LEGACIES = "legacies";
-        private const string CONST_ENDINGS = "endings";
+        private const string BUILD_DIR_PREFIX = "csunity-";
+        private const string DEFAULT_BUILD_DIR = "build";
         private const string CONST_DLC = "DLC";
         private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
         private const char CONST_SLASH_CHAR = '/';
-        
-        
 
-        private static string[] GetScenes()
+        private static readonly string[] Scenes = 
         {
-            string[] scenes =
-            {
-                "Assets/TabletopUi/Logo.unity",
-                "Assets/TabletopUi/Quote.unity",
-                "Assets/TabletopUi/Menu.unity",
-                "Assets/TabletopUi/Tabletop.unity",
-                "Assets/TabletopUi/GameOver.unity",
-                "Assets/TabletopUi/NewGame.unity",
-                "Assets/TabletopUi/Global.unity",
-            };
+            "Assets/TabletopUi/Logo.unity",
+            "Assets/TabletopUi/Quote.unity",
+            "Assets/TabletopUi/Menu.unity",
+            "Assets/TabletopUi/Tabletop.unity",
+            "Assets/TabletopUi/GameOver.unity",
+            "Assets/TabletopUi/NewGame.unity",
+            "Assets/TabletopUi/Global.unity",
+        };
 
-            return scenes;
+        private static readonly string[] ContentTypes =
+        {
+            "decks",
+            "elements",
+            "endings",
+            "legacies",
+            "recipes",
+            "verbs"
+        };
+        
+        [MenuItem("Tools/Build (Windows)")]
+        public static void PerformWindowsBuild()
+        {
+            PerformBuild(BuildTarget.StandaloneWindows, "Windows");
         }
 
-
-        private static void MoveDLCContent(BuildTarget target, string contentOfType)
+        [MenuItem("Tools/Build (OSX)")]
+        public static void PerformOsxBuild()
         {
-            //for every folder in [outputpath]/[datafolder]/StreamingAssets/content/core/
+            PerformBuild(BuildTarget.StandaloneOSX, "OSX");
+        }
 
+        [MenuItem("Tools/Build (Linux)")]
+        public static void PerformLinuxBuild()
+        {
+            PerformBuild(BuildTarget.StandaloneLinuxUniversal, "Linux");
+        }
+        
+        private static void PerformBuild(BuildTarget target, string label)
+        {
+            var args = Environment.GetCommandLineArgs();
+            var buildRootPath = args.Length > 1 ? Environment.GetCommandLineArgs()[1] : DEFAULT_BUILD_DIR;
+            
+            // Clear the build directory of any of the intermediate results of a previous build
+            // This excludes any existing build directories, so that we can easily combine builds for different
+            // platforms and versions
+            DirectoryInfo rootDir = new DirectoryInfo(buildRootPath);
+            foreach (var file in rootDir.GetFiles())
+                File.Delete(file.FullName);
+            foreach (var directory in rootDir.GetDirectories().Where(d => !d.Name.StartsWith(BUILD_DIR_PREFIX)))
+                Directory.Delete(directory.FullName, true);
 
-            var contentPathThisFolder = GetCoreContentPath(target) + CONST_SLASH_CHAR + contentOfType;
-            Console.WriteLine(">>>>>> Searching for DLC in " + contentPathThisFolder);
-
-            var contentFiles = Directory.GetFiles(contentPathThisFolder).ToList().FindAll(f => f.EndsWith(".json"));
-
-
-            foreach (var contentFileNameWithPath in contentFiles)
+            BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
-                Console.WriteLine("checking " + contentFileNameWithPath);
+                target = target,
+                locationPathName = JoinPaths(buildRootPath, GetExeNameForTarget(target)),
+                scenes = Scenes
+            };
+            Log("Building " + label + " version to " + buildPlayerOptions.locationPathName);
 
-                int dlcMarkerIndex=contentFileNameWithPath.IndexOf(CONST_DLC + CONST_NAME_SEPARATOR_CHAR);
-
-                //does it begin DLC_
-                if (dlcMarkerIndex>-1)
-                {
-                //if so, get its title (DLC_[title]_)
-                    string dlcFilenameWithoutPath = contentFileNameWithPath.Substring(dlcMarkerIndex);
-                    Console.WriteLine("DLC file found! -" + dlcFilenameWithoutPath);
-
-                    string dlctitle = dlcFilenameWithoutPath.Split(CONST_NAME_SEPARATOR_CHAR)[1];
-                    if (string.IsNullOrEmpty(dlctitle))
-                        throw new ApplicationException("Couldn't find DLC title for file " + contentFileNameWithPath );
-
-                    //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
-
-                    string dlcDestinationDir =
-                        getBuildRootPath() + CONST_SLASH_CHAR + CONST_DLC + CONST_SLASH_CHAR +
-                        dlctitle + CONST_SLASH_CHAR +
-                        getPlatformFolderForTarget(target) + CONST_SLASH_CHAR +
-                        dataFolderForTarget(exeNameForTarget(target)) + CONST_SLASH_CHAR +
-                        CONST_CORE_CONTENT_LOCATION + CONST_SLASH_CHAR +
-                        contentOfType;
-
-                        String dlcFileDestination=dlcDestinationDir + CONST_SLASH_CHAR + dlcFilenameWithoutPath;
-                    if (!Directory.Exists(dlcDestinationDir))
-                    {
-                        Console.WriteLine(">>>>>> creating directory: " + dlcFileDestination);
-                        Directory.CreateDirectory(dlcDestinationDir);
-                    }
-
-                    if (File.Exists(dlcFileDestination))
-                    {
-                        Console.WriteLine(">>>>>> deleting old file at this destination");
-                        File.Delete(dlcFileDestination);
-                    }
-                        
-
-                    Console.WriteLine(">>>>>> moving file " + contentFileNameWithPath + " to " + dlcFileDestination);
-                    File.Move(contentFileNameWithPath, dlcFileDestination);
-                    
-                    //throw an error if it doesn't exist
-                    //move (don't copy) the file to that location.
-                }
-
+            BuildPipeline.BuildPlayer(buildPlayerOptions);
+        }
+        
+        [PostProcessBuild]
+        public static void OnBuildComplete(BuildTarget target, string pathToBuiltProject)
+        {
+            if (target != BuildTarget.StandaloneWindows
+                && target != BuildTarget.StandaloneOSX
+                && target != BuildTarget.StandaloneLinuxUniversal)
+            {
+                return;
             }
 
+            PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName);
         }
 
-        public static void AddVersionNumber(string exeFolder)
+        private static void PostBuildFileTasks(BuildTarget target, string rootPath)
         {
+            // Move the build output into its build- and platform-specific subdirectory
+            var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
+            var buildPath = JoinPaths(rootPath, outputFolder);
+            var platformDirName = GetPlatformFolderForTarget(target);
+            var baseEditionPath = JoinPaths(buildPath, platformDirName);
+            if (Directory.Exists(baseEditionPath))
+                Directory.Delete(baseEditionPath, true);
+            CopyDirectoryRecursively(rootPath, baseEditionPath);
             
-            string versionPath = exeFolder + "/version.txt";
-            Console.WriteLine(">>>>> Writing version to " + versionPath);
+            // Copy some extra files directly from the Unity project
+            Log("Copying Steam libraries");
+            CopySteamLibraries.Copy(target, baseEditionPath);
+            Log("Copying Galaxy libraries");
+            CopyGalaxyLibraries.Copy(target, baseEditionPath);
+            Log("Adding version number");
+            AddVersionNumber(baseEditionPath);
+            
+            // Set up the Perpetual Edition, with all its DLC
+            string perpetualEditionPath = JoinPaths(buildPath, CONST_PERPETUALEDITIONLOCATION, platformDirName);
+            Log("Copying whole project with DLC from " + baseEditionPath + " to " + perpetualEditionPath);
+            if (Directory.Exists(perpetualEditionPath))
+                Directory.Delete(perpetualEditionPath, true);
+            CopyDirectoryRecursively(baseEditionPath, perpetualEditionPath);
+            
+            // Take the DLCs out of the base edition and into their own directories
+            var dlcPath = JoinPaths(buildPath, CONST_DLC);
+            foreach (var dlcContentType in ContentTypes)
+                MoveDlcContent(baseEditionPath, dlcPath, target, dlcContentType);
+        }
 
+        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string contentOfType)
+        {
+            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, target, contentOfType);
+            Log("Searching for DLC in " + baseEditionContentPath);
+            
+            var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
+            foreach (var contentFilePath in contentFiles)
+            {
+                int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
+
+                // Does it begin with "DLC_"?
+                if (dlcMarkerIndex <= -1) 
+                    continue;
+                
+                // Extract the DLC title so it can be moved to the appropriate subdirectory
+                string dlcFilenameWithoutPath = contentFilePath.Substring(dlcMarkerIndex);
+                Log("DLC file found: " + dlcFilenameWithoutPath);
+                string dlcTitle = dlcFilenameWithoutPath.Split(CONST_NAME_SEPARATOR_CHAR)[1];
+                if (string.IsNullOrEmpty(dlcTitle))
+                    throw new ApplicationException("Couldn't find DLC title for file " + contentFilePath);
+
+                //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
+                string dlcDestinationDir = GetCoreContentPath(
+                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), target, contentOfType);
+                string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
+                if (Directory.Exists(dlcDestinationDir))
+                {
+                    Directory.Delete(dlcDestinationDir, true);
+                    Log("Removing old directory: " + dlcDestinationDir);
+                }
+                Log("Creating directory: " + dlcDestinationDir);
+                Directory.CreateDirectory(dlcDestinationDir);
+
+                Log("Moving file " + contentFilePath + " to " + dlcFileDestinationPath);
+                File.Move(contentFilePath, dlcFileDestinationPath);
+            }
+        }
+
+        private static void CopyDirectoryRecursively(string source, string destination, bool move = false)
+        {
+            DirectoryInfo sourceDirectory = new DirectoryInfo(source);
+            DirectoryInfo destinationDirectory = new DirectoryInfo(destination);
+            if (!destinationDirectory.Exists)
+                destinationDirectory.Create();
+            foreach (var file in sourceDirectory.GetFiles().Where(IsPermittedFileToCopy))
+            {
+                if (move)
+                    file.MoveTo(JoinPaths(destination, file.Name));
+                else
+                    file.CopyTo(JoinPaths(destination, file.Name), true);
+            }
+
+            foreach (var directory in sourceDirectory.GetDirectories()
+                .Where(d => !destinationDirectory.FullName.StartsWith(d.FullName)))
+            {
+                CopyDirectoryRecursively(directory.FullName, JoinPaths(destination, directory.Name), move);
+                if (move)
+                    Directory.Delete(directory.FullName);
+            }
+        }
+
+        private static void AddVersionNumber(string exeFolder)
+        {
+            string versionPath = JoinPaths(exeFolder, "version.txt");
+            Log("Writing version to " + versionPath);
             File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
-
-
         }
 
-        private static string exeNameForTarget(BuildTarget target)
+        private static string GetExeNameForTarget(BuildTarget target)
         {
-            if (target == BuildTarget.StandaloneWindows)
-                return "cultistsimulator.exe";
-
-            if (target == BuildTarget.StandaloneOSX)
-                return "OSX.app";
-
-            if (target == BuildTarget.StandaloneLinuxUniversal)
-                return "CS.x86";
-
-            throw new ApplicationException("We don't know how to handle this build target: " + target);
+            switch (target)
+            {
+                case BuildTarget.StandaloneWindows:
+                    return "cultistsimulator.exe";
+                case BuildTarget.StandaloneOSX:
+                    return "OSX.app";
+                case BuildTarget.StandaloneLinuxUniversal:
+                    return "CS.x86";
+                default:
+                    throw new ApplicationException("We don't know how to handle this build target: " + target);
+            }
         }
 
-        private static string dataFolderForTarget(string exeName)
+        private static string GetDataFolderForTarget(string exeName)
         {
-            if (exeName.Contains("OSX")) //OSX is cray
+            if (exeName.Contains("OSX")) // OSX is cray
                 return "OSX.app/Contents/Resources/Data";
-            else
             return exeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
         }
 
-        private static string getPlatformFolderForTarget(BuildTarget target)
+        private static string GetPlatformFolderForTarget(BuildTarget target)
         {
-            if (target == BuildTarget.StandaloneWindows)
-                return "Windows";
-
-            if (target == BuildTarget.StandaloneOSX)
-                return "OSX";
-
-            if (target == BuildTarget.StandaloneLinuxUniversal)
-                return "Linux";
-
-            throw new ApplicationException("We don't know how to handle this build target: " + target);
-        }
-
-        private static void PostBuildFileTasks(BuildTarget target, string pathToBuiltProject)
-        {
-            Console.WriteLine("pathToBuiltProject in postfilebuildtasks: " + pathToBuiltProject);
-
-            Console.WriteLine(">>>>> Copying Steam libraries");
-            CopySteamLibraries.Copy(target, pathToBuiltProject);
-            Console.WriteLine(">>>>> Copying Galaxy libraries");
-            CopyGalaxyLibraries.Copy(target, pathToBuiltProject + "/"); //we need the extra slash; we've been avoiding using it elsewhere in this code, but the GOG code expects it, and I don't want to edit it
-                                                                        //It belatedly occurs to me that there's a reason for using trailing slashes to indicate folders.
-
-            Console.WriteLine(">>>>> Adding version number");
-            AddVersionNumber(pathToBuiltProject);
-
-            string perpetualEditionLocation = getBuildRootPath() + CONST_SLASH_CHAR + CONST_PERPETUALEDITIONLOCATION + CONST_SLASH_CHAR + getPlatformFolderForTarget(target);
-
-            Console.WriteLine(">>>>> Copying whole project with DLC from " + pathToBuiltProject + " to Perpetual Edition location at " + perpetualEditionLocation);
-
-            DeleteContentsOfDirectory(perpetualEditionLocation);
-
-            CopyDirectoryWithContents(pathToBuiltProject, perpetualEditionLocation, true);
-
-            Console.WriteLine(">>>>> Moving DLC content to individual DLC locations");
-
-            MoveDLCContent(target, CONST_ELEMENTS);
-            MoveDLCContent(target, CONST_RECIPES);
-            MoveDLCContent(target, CONST_VERBS);
-            MoveDLCContent(target, CONST_DECKS);
-            MoveDLCContent(target, CONST_LEGACIES);
-            MoveDLCContent(target, CONST_ENDINGS);
-        }
-
-        private static string GetCoreContentPath(BuildTarget target)
-        {
-            return getBuildOutputPathForPlatform(target) + CONST_SLASH_CHAR +  dataFolderForTarget(exeNameForTarget(target)) +  CONST_SLASH_CHAR +  CONST_CORE_CONTENT_LOCATION;
-        }
-
-        private static string getBuildRootPath()
-        {
-            return System.Environment.GetCommandLineArgs()[1];
-
-        }
-
-        private static string getBuildOutputPathForPlatform(BuildTarget target)
-        {
-
-                return getBuildRootPath() + CONST_SLASH_CHAR + getPlatformFolderForTarget(target);
-        }
-
-        public static void PerformWindowsBuild()
-        {
-
-            BuildTarget thisBuildTarget = BuildTarget.StandaloneWindows;
-            try
+            switch (target)
             {
-
-
-            BuildPlayerOptions windowsBuildPlayerOptions =
-                new BuildPlayerOptions
-                {
-                    target = BuildTarget.StandaloneWindows,
-                    locationPathName = getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget)
-                };
-
-                Console.WriteLine(">>>>>> Building Windows version to " + windowsBuildPlayerOptions.locationPathName);
-
-            windowsBuildPlayerOptions.scenes = GetScenes();
-
-            BuildPipeline.BuildPlayer(windowsBuildPlayerOptions);
-
-            PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
-            }
-            catch (Exception e)
-            {
-                Debug.Log(">>>>>>ERROR: " + e.Message);
-            }
-
-        }
-
-        public static void PerformOsxBuild()
-        {
-            BuildTarget thisBuildTarget = BuildTarget.StandaloneOSX;
-
-            try
-            {
-
-            BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions
-            {
-                target = BuildTarget.StandaloneOSX,
-                locationPathName = getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget),
-                scenes = GetScenes()
-            };
-
-           Console.WriteLine(">>>>>> Building OSX version to " + osxBuildPlayerOptions.locationPathName);
-
-            BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
-
-            //for some reason, the OSX build barfs when copying the steam libraries in PostProcessHook...but not in here.
-            //So I've moved it to here.
-            //does the folder not exist at that point?
-
-
-        PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
-
-            }
-            catch (Exception e)
-            {
-                Debug.Log("ERROR: " + e.Message);
+                case BuildTarget.StandaloneWindows:
+                    return "Windows";
+                case BuildTarget.StandaloneOSX:
+                    return "OSX";
+                case BuildTarget.StandaloneLinuxUniversal:
+                    return "Linux";
+                default:
+                    throw new ApplicationException("We don't know how to handle this build target: " + target);
             }
         }
 
-        public static void PerformLinuxBuild()
+        private static string GetCoreContentPath(string basePath, BuildTarget target, string contentOfType)
         {
-            BuildTarget thisBuildTarget = BuildTarget.StandaloneLinuxUniversal;
-
-
-            try
-            {
-
-            BuildPlayerOptions linuxBuildPlayerOptions =
-                new BuildPlayerOptions
-                {
-                    target = BuildTarget.StandaloneLinuxUniversal,
-                    locationPathName =  getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget),
-                scenes = GetScenes()
-                };
-                Console.WriteLine(">>>>>> Building Linux version to " + linuxBuildPlayerOptions.locationPathName);
-
-            BuildPipeline.BuildPlayer(linuxBuildPlayerOptions);
-
-            PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
-            }
-            catch (Exception e)
-            {
-                Debug.Log("ERROR: " + e.Message);
-            }
+            return JoinPaths(basePath, GetDataFolderForTarget(GetExeNameForTarget(target)), CONST_CORE_CONTENT_LOCATION, contentOfType);
         }
 
-
-        private static void DeleteContentsOfDirectory(string perpetualEditionLocation)
-        {
-
-            System.IO.DirectoryInfo di = new DirectoryInfo(perpetualEditionLocation);
-            if (!di.Exists)
-            {
-                Console.WriteLine(">>>>> Couldn't find " + perpetualEditionLocation + " to delete");
-                return;
-                ;
-            }
-
-            foreach (FileInfo file in di.GetFiles())
-            {
-                file.Delete();
-            }
-            foreach (DirectoryInfo dir in di.GetDirectories())
-            {
-                dir.Delete(true);
-            }
-        }
-
-        private static void CopyDirectoryWithContents(string sourceDirName, string destDirName, bool copySubDirs)
-        {
-            // Get the subdirectories for the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-
-            if (!dir.Exists)
-            {
-                throw new DirectoryNotFoundException(
-                    "Source directory does not exist or could not be found: "
-                    + sourceDirName);
-            }
-
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            // If the destination directory doesn't exist, create it.
-            if (!Directory.Exists(destDirName))
-            {
-                Directory.CreateDirectory(destDirName);
-            }
-
-            // Get the files in the directory and copy them to the new location.
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                if (isPermittedFileToCopy(file))
-                {
-                    string temppath = Path.Combine(destDirName, file.Name);
-                    file.CopyTo(temppath, false);
-                }
-
-            }
-
-            // If copying subdirectories, copy them and their contents to new location.
-            if (copySubDirs)
-            {
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    string temppath = Path.Combine(destDirName, subdir.Name);
-                    CopyDirectoryWithContents(subdir.FullName, temppath, copySubDirs);
-                }
-            }
-        }
-
-        private static bool isPermittedFileToCopy(FileInfo file)
+        private static bool IsPermittedFileToCopy(FileSystemInfo file)
         {
             return file.Name != ".dropbox";
         }
 
+        private static void Log(string message)
+        {
+            Console.WriteLine(">>>>> " + message);
+        }
 
-        //[PostProcessBuild]
-        //public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
-        //{
-        //    try
-        //    {
-
-        //    CopySteamLibraries.Copy(target, pathToBuiltProject);
-        //    CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
-
-        //    string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
-        //    AddVersionNumber(exeFolder);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Debug.Log("ERROR: " + e.Message);
-        //    }
-
-
-        //}
-
-
+        private static string JoinPaths(params string[] paths)
+        {
+            return paths.Aggregate("", Path.Combine);
+        }
     }
-    }
-
+}

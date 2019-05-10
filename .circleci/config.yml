@@ -1,0 +1,47 @@
+version: 2.1
+executors:
+  csunity-ci:
+    docker:
+      - image: lyrositor/csunity-ci:latest
+        auth:
+          username: lyrositor
+          password: $DOCKERHUB_PASSWORD
+jobs:
+  build:
+    executor: csunity-ci
+    steps:
+      - run:
+          name: Running builds on Unity CI
+          command: python3 /csunity-ci/build.py /csunity-ci/config.toml
+      - store_artifacts:
+          path: /csunity-ci-build/artifacts/
+          destination: /
+      - persist_to_workspace:
+          root: /csunity-ci-build/
+          paths:
+            - csunity-*
+  publish:
+    executor: csunity-ci
+    steps:
+      - attach_workspace:
+          at: /csunity-ci-build/
+#      - run:
+#          name: Pushing builds to distribution platforms
+#          command: python3 /csunity-ci/publish.py /csunity-ci/config.toml
+workflows:
+  version: 2
+  build_and_publish:
+    jobs:
+      - build:
+          filters: 
+            branches:
+              only:
+                - master
+                - /release\/.*/
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - /release\/.*/
