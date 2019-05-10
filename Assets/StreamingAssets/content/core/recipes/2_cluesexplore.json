@@ -57,5 +57,24 @@
 	craftable: false,
 	},
 	
+	{id:"explore.searchgraveyard.hint",
+actionId:"explore",
+requirements:{location.cemetery:1},
+label:"A Disinterment?",
+startdescription:"I'll need to deploy my own strength, or that of a friend.",
+craftable:false,
+hintonly:true
+},
+
+
+{id:"explore.searchgraveyard.closing.hint",
+actionId:"explore",
+requirements:{location.cemetery.closing:1},
+label:"A Cautious Disinterment?",
+startdescription:"I'll need to deploy my own strength, or that of a friend.",
+craftable:false,
+hintonly:true
+},
+	
 ]
 }

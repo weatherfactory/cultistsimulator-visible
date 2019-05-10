@@ -45,7 +45,7 @@
             "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
 			"atStart":false,
 			  slots: [{id:"explore",label:"Explore",description: "A place; a person; a location; a secret.",
-			  required:{health:1,follower:1,secrethistories:1,location:1},
+			  required:{health:1,follower:1,secrethistories:1,location:1,ghoul.hunger:1},
 			  forbidden:{hireling:1}}],
         },
 			  {

@@ -166,7 +166,7 @@ aspects:{exhaustlocation:1}
         id: "explorehealth",
         label: "Search the City",
         actionId: "explore",
-        requirements: {health:1},
+        requirements: {health:1,location:-1},
 		deckeffect: {exploreevents:1},
 		aspects:{fatiguing:1},
 		linked:	[
@@ -222,6 +222,55 @@ alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{season:-1},
         warmup: 5
     },
+	
+	
+	
+{id:"explore.searchgraveyard.self",
+actionId:"explore",
+requirements:{location.cemetery:1,health:1},
+effects:{corpse:1,mystique:1},
+aspects:{fatiguing:1},
+label:"A Disinterment",
+startdescription:"Stealthy excavations by the soft light of a hooded lantern.",
+description:"The shovel strikes wood. That's a good sign. If the coffin is too far rotted, usually the remains are scant.",
+warmup:30,
+craftable:true
+},
+
+{id:"explore.searchgraveyard.follower",
+actionId:"explore",
+requirements:{location.cemetery:1,follower:1},
+effects:{corpse:1,mystique:1},
+label:"A Disinterment",
+startdescription:"Stealthy excavations by the soft light of a hooded lantern.",
+description:"The shovel strikes wood. That's a good sign. If the coffin is too far rotted, usually the remains are scant.",
+warmup:30,
+craftable:true
+},
+
+{id:"explore.searchgraveyard.closing.self",
+actionId:"explore",
+requirements:{location.cemetery.closing:1,health:1},
+effects:{corpse:1,notoriety:1},
+aspects:{fatiguing:1},
+label:"A Cautious Disinterment",
+startdescription:"Steal through the shuffling shadows. Light no lamp. Go warily.",
+description:"I dig in darkness, until I find enough to be going on with.",
+warmup:60,
+craftable:true
+},
+
+{id:"explore.searchgraveyard.closing.follower",
+actionId:"explore",
+requirements:{location.cemetery.closing:1,follower:1},
+effects:{corpse:1,notoriety:1},
+label:"A Cautious Disinterment",
+startdescription:"Steal through the shuffling shadows. Light no lamp. Go warily.",
+description:"I dig in darkness, until I find enough to be going on with.",
+warmup:60,
+craftable:true
+}
+
 
 	
 ]

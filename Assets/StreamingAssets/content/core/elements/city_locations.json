@@ -285,7 +285,28 @@
 		aspects:{location:1},
 		description:"FNORD"
 		
-		}
+		},
+		
+		{id:"location.cemetery",
+		label: "Cemetery",
+		slots:[{id:"muscle",label:"Muscle",description:"I can employ a helper, or do the digging myself.",actionId:"explore",required:{health:1,follower:1}}],
+		description: "In the waking world, as in dreams, the dead are most often found below.",
+		aspects:{location:1},
+		lifetime:300,
+		decayTo:"location.cemetery.closing"
+		
+		},
+		
+				{id:"location.cemetery.closing",
+		label: "Closely Watched Cemetery",
+		
+		description: "The authorities have noticed peculiar activity in this place. They have set a watch upon it. Visits will take longer, and very soon they will no longer be possible at all.",
+				slots:[{id:"muscle",label:"Muscle",description:"I can employ a helper, or do the digging myself.",actionId:"explore",required:{health:1,follower:1}}],
+		aspects:{location:1},
+		lifetime:60
+		},
+		
+						
 
 ]
 };

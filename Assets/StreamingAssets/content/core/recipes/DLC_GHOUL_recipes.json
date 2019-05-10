@@ -288,7 +288,22 @@ description:"The burns are very minor - they will heal quickly - but the taste o
 requirements:{alzabo:1,spirit_forgee_edge.defunct:1},
 effects:{influenceforgec:1,spirit_forgee_edge.consumed:1},
 mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
-}
+},
+
+
+{id:"explore.ghoul.findgraveyard",
+actionId:"explore",
+requirements:{ghoul.hunger:1},
+effects:{location.cemetery:1,mystique:1},
+label:"Search for Promising Cemeteries",
+startdescription:"Prowl the cemetery, seeking places of burial which are close, but not too close - populous, but not too busy.",
+description:"I've found one. FNORD",
+warmup:30,
+craftable:true
+},
+
+
+
 
 
 
