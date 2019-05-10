@@ -14,7 +14,7 @@ jobs:
           name: Running builds on Unity CI
           command: python3 /csunity-ci/build.py /csunity-ci/config.toml
       - store_artifacts:
-          path: /csunity-ci-build/
+          path: /csunity-ci-build/artifacts/
           destination: /
       - persist_to_workspace:
           root: /csunity-ci-build/
