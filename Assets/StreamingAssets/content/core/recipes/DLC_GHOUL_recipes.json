@@ -125,48 +125,11 @@ craftable:true
  	{id:"open.talk.ghoul",
 actionId:"talk",
 label:"FNORD Miss Naenia conversation",
-startdescription:"FNORD each day I return ",
-description:"FNORD",
+startdescription:"Each day I return, waiting to learn the reason I was drawn here.",
+description:"I used to believe that I heard the dead speaking to me. I often believe Miss Naenia has spoken to me, although I never exactly hear her voice.",
 requirements:{},
 effects:{naenia:1,passion:1},
-warmup:60}, 
-
- 	{id:"talk.ghoul.grandmemory",
-actionId:"talk",
-label:"Falling through Time",
-startdescription:"When I come before Miss Naeni, perhaps I am imagining it, but it seems to me that a pale light plays around her mouth and her eyes.",
-description:"Later, I remembered how Miss Naenia and I had strolled through the shuttered gallery, arm in arm. The light of the candle she carried played on the faces of the other paintings. 'We will not be forgotten,' she breathed, 'as long as our image endures.'",
-requirements:{naenia:1,memory:5},
-effects:{restlessness:1},
-warmup:30,
-craftable:true},
-
- 	{id:"talk.ghoul.memorypassionate",
-actionId:"talk",
-label:"Speak to Miss Naenia about my lover",
-startdescription:"I have come to reminisce with her about a potent memory.",
-requirements:{naenia:1,memorypassionate:1},
-alt:[{id:"dreampassionatememory"}],
-warmup:30,
-craftable:true},
-
- 	{id:"talk.ghoul.memorypleasant",
-actionId:"talk",
-label:"Speak to Miss Naenia about my lover",
-startdescription:"I have come to reminisce with her about a sweet memory.",
-requirements:{naenia:1,memorypleasant:1},
-alt:[{id:"dreampleasanttmemory"}],
-warmup:30,
-craftable:true},
-
- 	{id:"talk.ghoul.memorybittersweet",
-actionId:"talk",
-label:"Speak to Miss Naenia about my lover",
-startdescription:"I have come to reminisce with her about a difficult memory.",
-requirements:{naenia:1,memorybittersweet:1},
-alt:[{id:"dreambittersweetmemory"}],
-warmup:30,
-craftable:true},
+warmup:60},
 
  	{id:"talk.ghoul.consolation",
 actionId:"talk",
@@ -189,6 +152,187 @@ effects:{fleeting:-1,restlessness:1},
 alt:[{id:"open.study.ghoul",additional:true}],
 warmup:30,
 craftable:true},
+
+
+ 	{id:"talk.ghoul.fascination",
+actionId:"talk",
+label:"Speak to Miss Naenia of my visions",
+startdescription:"Is it safe to speak of this to her?",
+description:"The light in here is brighter than I had realised. Colours swim beneath Miss Naenia's skin, like electricity, like oil. It is very hard to look away.",
+requirements:{naenia:1,fascination:1},
+effects:{fascination:1},
+alt:[{id:"open.study.ghoul",additional:true}],
+warmup:30,
+craftable:true},
+
+
+ 	{id:"talk.ghoul.dread",
+actionId:"talk",
+label:"Speak to Miss Naenia of my Dread",
+startdescription:"Should I really share my fears with her? I do not think that she is a kindly painting, not exactly.",
+description:"The longer I look at Miss Naenia's smile, the more I see her teeth.",
+requirements:{naenia:1,dread:1},
+effects:{dread:1},
+alt:[{id:"open.study.ghoul",additional:true}],
+warmup:30,
+craftable:true},
+
+
+
+
+ 	{id:"talk.ghoul.grandmemory",
+actionId:"talk",
+label:"Falling through Time",
+startdescription:"When I come before Miss Naenia, perhaps I am imagining it, but it seems to me that a pale light plays around her mouth and her eyes.",
+description:"Later, I remembered how Miss Naenia and I had strolled through the shuttered gallery, arm in arm. The light of the candle she carried played on the faces of the other paintings. 'We will not be forgotten,' she breathed, 'as long as our image endures.'",
+requirements:{naenia:1,memory:5},
+effects:{restlessness:1},
+warmup:30,
+craftable:true},
+
+ 	{id:"talk.ghoul.memorypassionate",
+actionId:"talk",
+label:"Speak to Miss Naenia about my lover",
+startdescription:"I have come to reminisce with her about a potent memory.",
+requirements:{naenia:1,memorypassionate:1},
+alt:[{id:"dreampassionatememory"}],
+warmup:30,
+craftable:true},
+
+ 	{id:"talk.ghoul.memorypleasant",
+actionId:"talk",
+label:"Speak to Miss Naenia about my lover",
+startdescription:"I have come to reminisce with her about a sweet memory.",
+requirements:{naenia:1,memorypleasant:1},
+alt:[{id:"dreampleasantmemory"}],
+warmup:30,
+craftable:true},
+
+ 	{id:"talk.ghoul.memorybittersweet",
+actionId:"talk",
+label:"Speak to Miss Naenia about my lover",
+startdescription:"I have come to reminisce with her about a difficult memory.",
+requirements:{naenia:1,memorybittersweet:1},
+alt:[{id:"dreambittersweetmemory"}],
+warmup:30,
+craftable:true},
+
+
+ 	{id:"talk.ghoul.memory.menacing",
+actionId:"talk",
+label:"Share a menacing memory with Miss Naenia",
+startdescription:"Her eyes are watchful.",
+requirements:{naenia:1,memory.menacing:1},
+warmup:30,
+internaldeck: 	{label:"Response",
+	description:"Response",
+	spec:
+	[
+"vitalityplus",
+"influenceedgec",
+"influencewinterc",
+"influenceedgec",
+"influencewinterc"
+		],
+resetonexhaustion:true,
+draws:1
+},
+effects:{memory.menacing:-1},
+description:"@#vitalityplus|Miss Naenia says nothing, but I remember afterwards how her smile warmed me against the cold.
+#influenceedgec|Miss Naenia says nothing, but I remember long afterwards how her eyes flashed.
+#influencewinterc|Miss Naenia says nothing. Silence pools like shadow between the gallery lamps.@",
+craftable:true},
+
+ 	{id:"talk.ghoul.memory.shameful",
+actionId:"talk",
+label:"Share a memory of secret sin with Miss Naenia",
+startdescription:"Today, Miss Naenia looks almost sly.",
+requirements:{naenia:1,memory.shameful:1},
+warmup:30,
+internaldeck: 	{label:"Response",
+	description:"Response",
+	spec:
+	[
+"favour",
+"contentment",
+"influencegrailc",
+"influencegrailc",
+"influencegrailc"
+		],
+resetonexhaustion:true,
+draws:1
+},
+effects:{memory.shameful:-1},
+description:"@#|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.
+#|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.
+#|Miss Naenia says nothing, but .@",
+craftable:true},
+
+
+ 	{id:"talk.ghoul.memory.unexpected",
+actionId:"talk",
+label:"Share an outré memory with Miss Naenia",
+startdescription:"",
+requirements:{naenia:1,memory.unexpected:1},
+warmup:30,
+deckeffect:{vaultrewardsb:1},
+effects:{memory.unexpected:-1},
+description:"@#|Miss Naenia says nothing, but there in the gallery, I snatch my pen from my pocket, and I write, frienziedly, as if I had been given directions by someone whispering in my ear. When I follow the directions, I will find something precious.@",
+craftable:true},
+
+
+ 	{id:"talk.ghoul.memory.joyful",
+actionId:"talk",
+label:"Share a  memory with Miss Naenia",
+startdescription:"",
+requirements:{naenia:1,memory.joyful:1},
+warmup:30,
+internaldeck: 	{label:"Response",
+	description:"Response",
+	spec:
+	[
+"influencehearte",
+"influenceheartc",
+"influenceheartc",
+"contentment",
+"contentment"
+		],
+resetonexhaustion:true,
+draws:1
+},
+effects:{memory.joyful:-1},
+description:"@influencehearte#|Miss Naenia says nothing, but my heart pounds like a hammered anvil, even after I leave the gallery.
+#influenceheartc|Miss Naenia says nothing, but all the way home, there is a tune in my head that leaves me thinking of her.
+#contentment|Miss Naenia says nothing, but I match her smile.@",
+craftable:true},
+
+
+ 	{id:"talk.ghoul.memory.profitable",
+actionId:"talk",
+label:"Share a  memory with Miss Naenia",
+startdescription:"",
+requirements:{naenia:1,memory.profitable:1},
+warmup:30,
+internaldeck: 	{label:"Response",
+	description:"Response",
+	spec:
+	[
+"jumble",
+"funds",
+"compensation",
+"funds",
+"funds"
+		],
+resetonexhaustion:true,
+draws:1
+},
+effects:{memory.profitable:-1},
+description:"@#jumble|Miss Naenia says nothing, but afterwards I think of her when I'm browsing in a junk shop, and I buy something silly on impulse.
+#funds|Miss Naenia says nothing, but the next day I receive an unexpected package in the post.
+#compensation|Miss Naenia says nothing, but afterwards I find a sovereign in the street.@",
+craftable:true},
+
+
 
 
  	{id:"talk.ghoul.painting.palest",
