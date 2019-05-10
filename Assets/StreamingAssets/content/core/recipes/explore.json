@@ -269,7 +269,40 @@ startdescription:"Steal through the shuffling shadows. Light no lamp. Go warily.
 description:"I dig in darkness, until I find enough to be going on with.",
 warmup:60,
 craftable:true
-}
+},
+
+
+
+{id:"explore.fleeting",
+actionId:"explore",
+requirements:{fleeting:1},
+label:"Let memory guide my steps",
+startdescription:"My thoughts will wander and I will follow. Old emotions will come to roost.",
+description:"Memory is a maze, and at its heart a garden.",
+effects:{fleeting:-1},
+internaldeck: 	{label:"Where We Go",
+	description:"Where We Go",
+	spec:
+	[
+"restlessness",
+"dread",
+"fascination",
+"contentment",
+"restlessness",
+"dread",
+"fascination",
+"contentment",
+"restlessness",
+"dread",
+"fascination",
+"contentment",
+		],
+resetonexhaustion:true,
+draws:1
+},
+
+warmup:30,
+craftable:true}
 
 
 	
