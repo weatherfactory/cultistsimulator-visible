@@ -252,7 +252,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         if (!element.Unique) {
             foreach (var stack in existingStacks)
             {
-                if(stack.EntityId==elementId)
+                if (stack.EntityId == elementId && !stack.GetCurrentMutations().Any())
                 {
                     stack.ModifyQuantity(1);
                     return;
@@ -267,7 +267,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 		existingStacks = stackManager.GetStacks();
 		foreach (var stack in existingStacks)
         {
-            if(stack.EntityId==elementId)
+            if(stack.EntityId==elementId && !stack.GetCurrentMutations().Any())
             {
 				ElementStackToken token = stack as ElementStackToken;
 				Vector2 dropPos = token.GetDropZoneSpawnPos();
