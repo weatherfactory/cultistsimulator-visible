@@ -6,7 +6,6 @@ using Galaxy;
 using Noon;
 using UnityEditor;
 using UnityEditor.Callbacks;
-using UnityEngine;
 
 namespace Assets.Core.Utility
 {
@@ -247,7 +246,7 @@ namespace Assets.Core.Utility
 
         private static void Log(string message)
         {
-            Debug.Log(">>>>> " + message);
+            Console.WriteLine(">>>>> " + message);
         }
 
         private static string JoinPaths(params string[] paths)

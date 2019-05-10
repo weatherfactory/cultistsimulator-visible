@@ -1,7 +1,6 @@
 ﻿using System;
+using System.IO;
 using UnityEditor;
-using UnityEditor.Callbacks;
-using UnityEngine;
 
 namespace Facepunch.Editor
 {
@@ -36,7 +35,10 @@ namespace Facepunch.Editor
             if (target == BuildTarget.StandaloneOSX)
             {
                 Console.WriteLine("pathToBuiltProject in CopySteamLibraries: " + pathToBuiltProject);
-                FileUtil.ReplaceFile("libsteam_api.dylib", pathToBuiltProject + "/OSX.app/Contents/Frameworks/Mono/MonoEmbedRuntime/osx/libsteam_api.dylib");
+                var outputDirectoryPath = pathToBuiltProject + "/OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/";
+                if (!Directory.Exists(outputDirectoryPath))
+                    Directory.CreateDirectory(outputDirectoryPath);
+                FileUtil.ReplaceFile("libsteam_api.dylib", outputDirectoryPath + "libsteam_api.dylib");
             }
             if (target == BuildTarget.StandaloneLinux64 || target == BuildTarget.StandaloneLinuxUniversal)
                 FileUtil.ReplaceFile("libsteam_api64.so",pathToBuiltProject + "/libsteam_api64.so");
