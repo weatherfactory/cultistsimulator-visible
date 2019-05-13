@@ -15,6 +15,8 @@ namespace Assets.Core.Utility
         private const string DEFAULT_BUILD_DIR = "build";
         private const string CONST_DLC = "DLC";
         private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
+        private const string CONST_PERPETUALEDITION_DLC = "PERPETUAL";
+        private const string CONST_PERPETUALEDITION_SEMPER_PATH = "StreamingAssets/edition/semper.txt";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
@@ -165,6 +167,20 @@ namespace Assets.Core.Utility
                 Log("Moving file " + contentFilePath + " to " + dlcFileDestinationPath);
                 File.Move(contentFilePath, dlcFileDestinationPath);
             }
+            
+            // Create the Perpetual Edition DLC
+            string semperPath = JoinPaths(
+                dlcPath,
+                CONST_PERPETUALEDITION_DLC,
+                GetPlatformFolderForTarget(target),
+                GetDataFolderForTarget(GetExeNameForTarget(target)),
+                CONST_PERPETUALEDITION_SEMPER_PATH);
+            string semperDirPath = Path.GetDirectoryName(semperPath);
+            if (semperDirPath != null && !Directory.Exists(semperDirPath))
+            {
+                Directory.CreateDirectory(semperDirPath);
+            }
+            File.WriteAllText(semperPath, string.Empty);
         }
 
         private static void CopyDirectoryRecursively(string source, string destination, bool move = false)
