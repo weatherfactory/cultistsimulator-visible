@@ -5,7 +5,7 @@
 	id: "studyupgrade_downgrade_lore_hint",
 	label: "Improve my Knowledge of the invisible arts?",
 	actionId: "study",
-	requirements: {lore:1,edge:-1,forge:-1,grail:-1,heart:-1,knock:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1,alzabo:-1},	
+	requirements: {lore:1,edge:-1,forge:-1,grail:-1,heart:-1,knock:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1,alzabo:-1,prealzabo:-1},	
 	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. If I use Reason, I can analyse the lore, breaking it down into lower-level fragments. Or I can use another type of lore to subvert it...",
 		craftable: false,
 		hintonly:true
@@ -14,7 +14,7 @@
 	id: "studyupgradelore_hint",
 	label: "Improve my Knowledge of the invisible arts?",
 	actionId: "study",
-	requirements: {lore:1,healthskill:-1,alzabo:-1},	
+	requirements: {lore:1,healthskill:-1,alzabo:-1,prealzabo:-1},	
 	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use another type of lore to subvert it...",
 		craftable: false,
 		hintonly:true
@@ -25,7 +25,7 @@
 	label: "A Bold Experiment",
 	actionId: "study",
 	requirements: {prealzabo:1},	
-	startdescription: "The mixture is ready. I need to summon my courage... and to prepare a meal.",
+	startdescription: "I need only purchase a few final ingredients, and then I can prepare the mixture. I must summon my courage... and find a suitable meal.",
 		craftable: false,
 		hintonly:true
 	},
