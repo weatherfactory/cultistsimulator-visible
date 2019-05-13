@@ -11,8 +11,10 @@ public class PauseButton : MonoBehaviour
 
     [SerializeField] Button ThisButton;
     [SerializeField] TextMeshProUGUI ButtonText;
+    [SerializeField] private Animator flashAnimator;
+    private static readonly int Flash = Animator.StringToHash("Flash");
 
-	private void OnEnable()
+    private void OnEnable()
     {
         // subscribe to event for language change
         LanguageManager.LanguageChanged += OnLanguageChanged;
@@ -42,6 +44,11 @@ public class PauseButton : MonoBehaviour
 			//ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
 			ButtonText.text = LanguageTable.Get("UI_PAUSE");
         }
+    }
+
+    public void RunFlashAnimation()
+    {
+	    flashAnimator.SetTrigger(Flash);
     }
 
 
