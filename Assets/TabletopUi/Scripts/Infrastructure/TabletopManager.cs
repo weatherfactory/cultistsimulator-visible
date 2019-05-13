@@ -274,8 +274,8 @@ namespace Assets.CS.TabletopUI {
                     BeginNewGame(builder);
                 }
             }
-			_heart.StartBeatingWithDefaultValue();						// Init heartbeat duration...
-			_speedController.SetPausedState(shouldStartPaused, false);	// ...but (optionally) pause game while the player gets their bearings.
+			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
+			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
         }
 
         private void BeginNewGame(SituationBuilder builder)
@@ -487,7 +487,7 @@ namespace Assets.CS.TabletopUI {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
-            _speedController.SetPausedState(true, false);
+            _speedController.SetPausedState(true, false, true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
@@ -521,7 +521,7 @@ namespace Assets.CS.TabletopUI {
             //{
             //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             //}
-            _speedController.SetPausedState(true, false);
+            _speedController.SetPausedState(true, false, true);
         }
 
         public bool SaveGame(bool withNotification, int index = 0)
@@ -910,6 +910,9 @@ namespace Assets.CS.TabletopUI {
             _tabletop.Show(true);
             _mapController.ShowMansusMap(origin, false);
             SoundManager.PlaySfx("MansusExit");
+            
+            // Pause the game with a flashing notification
+            _speedController.SetPausedState(true, false, true);
 
             // Put card into the original Situation Results
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new
