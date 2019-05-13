@@ -510,7 +510,8 @@ label:"Formula: Elixir Zeboim?",
 description:"I have here a secret - a recipe of honey, asphodel, powdered ivory, and a mottled fungus that grows only where the dead are buried.",
 aspects:{lore:1},
 slots:[{id:"desire",label:"Desire",description:"Old memories go into the earth, and there they cannot be found - but they dwell is another place, first, before they go too deep.",actionId:"study",required:{remembrancemarks:1}},
-{id:"taste",label:"Taste",description:"There is no turning back.",actionId:"study",required:{remnant:1}}]
+{id:"taste",label:"Taste",description:"There is no turning back.",actionId:"study",required:{remnant:1}},
+{id:"materials",label:"Materials",required:{funds:1},actionId:"study"}]
 },
 		{id:"alzabo",
 label:"Formula: Elixir Zeboim",
