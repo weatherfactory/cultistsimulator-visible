@@ -5,9 +5,8 @@
 
 {id:"work.seance.first",
 actionId:"work",
-label:"A Well-Attended Performance",
-startdescription:"FNORD let's go",
-description:"U SHUD NEVER SEE THIS",
+label:"A Well-Attended Performance by a Stage Medium",
+startdescription:"I stand alone in light on the stage. I take the first question from the audience - the first of many tonight who will refuse to acknowledge that the dead are dead. I have prepared well: I have a choice of responses.",
 requirements:{ghouljob.first:1},
 slots:[{id:"desire",label:"Something More?",description: "I am a fraud... aren't I?",greedy:true,required:{desire:1}}],
 alt:[
@@ -23,39 +22,46 @@ craftable:true},
 
 {id:"work.seance.first.shameful",
 actionId:"work",
-label:"FNORD",
-startdescription:"FNORD shameful",
-description:"FNORD shameful done. a tingle in the air",
+label:"Imitate the Dead: Something Shameful",
+startdescription:"I don't share the whole story of the sins of the dead. That would do neither of us any good. But I share hints that they will recognise.",
+description:"Our public business is concluded, and after the show, the bereaved will conclude our private business with a little gift - something to ensure my silence.
+
+(There is something in the air tonight. The scent of snow? I am imagining it.)",
 requirements:{memory.shameful:1},
-effects:{favour:1,funds:5,passion:1,memory.shameful:-1,mystique:1},
+effects:{favour:1,funds:6,passion:1,memory.shameful:-1,mystique:1},
 alt:[{id:"open.dream.ghoul",additional:true}]},
 
 {id:"work.seance.first.profitable",
 actionId:"work",
-label:"FNORD",
-startdescription:"FNORD profitable",
-description:"FNORD profitable done. a tingle in the air",
+label:"Imitate the Dead: Something Profitable",
+startdescription:"I've sniffed out a forgotten investment that will benefit us both. But I must be careful not to surrender too much information. The living are greedier than the dead.",
+description:"They'll meet me after the show. They'll be sceptical, but grateful. I've earned my finder's fee.
+(There is something in the air tonight. The scent of snow? I am imagining it.)",
 requirements:{memory.profitable:1},
-effects:{funds:10,reason:1,memory.profitable:-1,mystique:1},
+effects:{funds:6,reason:1,memory.profitable:-1,mystique:1},
 alt:[{id:"open.dream.ghoul",additional:true}]},
 
 
 {id:"work.seance.first.joyful",
 actionId:"work",
-label:"FNORD",
-startdescription:"FNORD joyful",
-description:"FNORD joyful done. a tingle in the air",
+label:"Imitate the Dead: Something Joyful",
+startdescription:"I have seen photographs of a golden afternoon, long enough ago to be sweet, not so long as to fade.",
+description:"They're sobbing when they return to their seat. If they return another night, I won't answer their questions. This should be the story they tell of me.
+
+(There is something in the air tonight. The scent of snow? I am imagining it.)",
 requirements:{memory.joyful:1},
-effects:{funds:2,health:1,memory.joyful:-1,mystique:1},
+effects:{funds:3,health:1,memory.joyful:-1,mystique:1},
 alt:[{id:"open.dream.ghoul",additional:true}]},
 
 {id:"work.seance.first.fleeting",
 actionId:"work",
-label:"FNORD",
-startdescription:"FNORD fleeting",
-description:"FNORD fleeting done. a tingle in the air",
+label:"Imitate  using Hearsay and Rumour",
+startdescription:"I've gathered enough gossip to stitch together something reasonably persuasive.",
+description:"I answer their questions with more questions. Call and response, like night-birds. Are they satisfied? They've sat down, at least.
+
+(There is something in the air tonight. The scent of snow? I am imagining it.)",
 requirements:{fleeting:1},
-effects:{funds:3,fleeting:-1},
+effects:{funds:2,fleeting:-1},
 alt:[{id:"open.dream.ghoul",additional:true}]},
 
 
