@@ -89,15 +89,15 @@ warmup:120,
 			{id:"painthasgrandmemory",
 	actionId:"work",
 	label:"A Forgotten Colour",
-	startdescription:"@#memory.furious|FNORD Seven-Coiled
-	#memory.luxurious|FNORD Tide
-	#memory.liminal|FNORD Horned-Axe
-	#memory.horizon|FNORD 
-	#memory.splendid|FNORD 
-	#memory.endless|FNORD 
-	#memory.wildering|FNORD 
-	#memory.golden|FNORD 
-	#memory.honeyed|FNORD
+	startdescription:"@#memory.furious|On a bed of dunes beneath a red low sun a monster wrestles itself while attendants crowd around its flanks. It is flabby and huge, the colour of dirty sulphur...
+	#memory.luxurious|In a night-blue Mansus-haze swims a coral palace-crown which yields now and then to the moon...
+	#memory.liminal|A a purple evening sky shot with red gold...
+	#memory.horizon|A faded pale white-gold seen in certain patches of the sky, when the mist is clearing but the sun might be mistaken for the moon... 
+	#memory.splendid|Auroral rose views with electric blue. There is neither night nor morning but only the hours of noon anticipated and lingering noon...
+	#memory.endless| It might be ugly but it is beautiful like the withdrawing of blood from the labyrinths of glass... 
+	#memory.wildering|The Wood before its darkening, its fruits poison-green, its carnelian roots... 
+	#memory.golden|Each of its facets shows a single point of light. It might be the glint of firelight... 
+	#memory.honeyed|Our wings unfurled and shining, our scales lambent as obsidian...
 	@",
 	requirements:{memory:5,passion:1},
 	warmup:30,
@@ -107,7 +107,7 @@ warmup:120,
 	{id:"paint.palestpainting.continue",
 actionId:"work",
 label:"Continue the Palest Painting",
-startdescription:"FNORD continue Palest Painting",
+startdescription:"I have stalked the image like a hunter, never looking it in the eye. No pigment I have can express these lost colours, and so I must understate them.",
 description:"The world can wait a little longer for the Palest Painting. It has already waited so long.",
 slots:[{id:"canvas.pale",label:"Canvas", greedy:true, description:"Slowly, softly.",required:{canvas.pale:1}}],
 alt:[{id:"paint.palestpainting.furious"},
@@ -125,8 +125,8 @@ warmup:60
 
 {id:"paint.palestpainting.furious",
 actionId:"work",
-label:"The Colours Coiled",
-startdescription:"FNORD seven-coiled",
+label:"The Colours Seven-Coiled",
+startdescription:"On a bed of dunes beneath a red low sun a monster wrestles itself while attendants crowd around its flanks. It is flabby and huge, the colour of dirty sulphur. Fanged tentacle-necks wrestle like kittens. It tears cheerfully at its own flesh, and the blood that flows is golden. It flops over in a cataclysm of wattled flesh, crushing a knot of attendants, and the others scream and cheer.",
 requirements:{memory.furious:1},
 effects:{memory.furious:-1},
 aspects:{fatiguing:1},
@@ -137,7 +137,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.luxurious",
 actionId:"work",
 label:"The Colours Tidal",
-startdescription:"FNORD ",
+startdescription:"In a night-blue Mansus-haze swims a coral palace-crown which yields now and then to the moon. At its fore-edge it absorbs the lesser Names, coating them with its minerals and juices, and at its rear edge it expels them, polished like jewels - but not all of them. The others go to feed its thorny Tide-heart.",
 requirements:{memory.luxurious:1},
 effects:{memory.luxurious:-1},
 aspects:{fatiguing:1},
@@ -148,7 +148,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.liminal",
 actionId:"work",
 label:"The Colours of the Double Threshold",
-startdescription:"FNORD ",
+startdescription:"When I remember the Horned Axe, I recall the scent of hawthorn. I recall a purple evening sky shot with red gold. I recall that her edges dripped where she had lately been at work.",
 requirements:{memory.liminal:1},
 effects:{memory.liminal:-1},
 aspects:{fatiguing:1},
@@ -159,7 +159,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.horizon",
 actionId:"work",
 label:"The Colours of the Horizon",
-startdescription:"FNORD ",
+startdescription:"A faded pale white-gold seen in certain patches of the sky, when the mist is clearing but the sun might be mistaken for the moon. We hold our breath and watch it brighten, until each colour divides from the next like a new-minted alphabet. The Egg Unhatching.",
 requirements:{memory.horizon:1},
 effects:{memory.horizon:-1},
 aspects:{fatiguing:1},
@@ -170,7 +170,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.splendid",
 actionId:"work",
 label:"The  Colours that Were",
-startdescription:"FNORD ",
+startdescription:"Auroral rose views with electric blue. There is neither night nor morning but only the hours of noon anticipated and lingering noon. We each of us open our hearts to the golden needle of the sky. All colours magnified beneath the Sun-in-Splendour.",
 requirements:{memory.splendid:1},
 effects:{memory.splendid:-1},
 aspects:{fatiguing:1},
@@ -181,7 +181,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.endless",
 actionId:"work",
 label:"The Colours that Turn",
-startdescription:"FNORD ",
+startdescription:"With each turn its cilia pulse nad wriggle and its body flushes translucent to crimson. It might be ugly but it is beautiful like the withdrawing of blood from the labyrinths of glass. It does not cease and all its involutions are infinite. The Wheel.",
 requirements:{memory.endless:1},
 effects:{memory.endless:-1},
 aspects:{fatiguing:1},
@@ -192,7 +192,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.wildering",
 actionId:"work",
 label:"The Colours That Are Not Black",
-startdescription:"FNORD ",
+startdescription:"The Wood before its darkening, its fruits poison-green, its carnelian roots. The Moth's eyes are merry with hunger. He is hunting.",
 requirements:{memory.wildering:1},
 effects:{memory.wildering:-1},
 aspects:{fatiguing:1},
@@ -203,7 +203,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.golden",
 actionId:"work",
 label:"The Colours of the Old Fire",
-startdescription:"FNORD ",
+startdescription:"This is only a stone, though it is smoothed and sharpened to a midnight point, but look closer. Each of its facets shows a single point of light. It might be the glint of firelight. It might be each a different Star.",
 requirements:{memory.golden:1},
 effects:{memory.golden:-1},
 aspects:{fatiguing:1},
@@ -214,7 +214,7 @@ linked:[{id:"paint.palestpainting.complete"}]
 {id:"paint.palestpainting.honeyed",
 actionId:"work",
 label:"The Colours that Will Be",
-startdescription:"FNORD ",
+startdescription:"Our wings unfurled and shining, our scales lambent as obsidian, our eyes faceted like jewels, our claws unimpeachable dark.",
 requirements:{memory.honeyed:1},
 effects:{memory.honeyed:-1},
 aspects:{fatiguing:1},
@@ -281,7 +281,8 @@ warmup:30
 	
 		{id:"paint.memory.menacing.once",
 	actionId:"work",
-	startdescription:"FNORD I have glimpsed the death of seven coils [The Suppression Bureau may take notice.]",
+		label:"Secrets in the Soul",
+	startdescription:"I have glimpsed the death of Seven Coils. [The Suppression Bureau may take notice.]",
 	requirements:{memory.menacing:1},
 	effects:{pre.fragmentedgeb:1,insight:3,notoriety:1,memory.menacing:-1},
 	warmup:10,
@@ -291,8 +292,8 @@ warmup:30
 	
 			{id:"paint.memory.shameful.once",
 	actionId:"work",
-	label:"FNORD",
-	startdescription:"FNORD I have ",
+	label:"Secrets in the Soul",
+	startdescription:"I have glimpsed the shape of the Great Mother. [The Suppression Bureau may take notice.]",
 	requirements:{memory.shameful:1},
 	effects:{pre.fragmentgrailb:1,insight:3,notoriety:1,memory.shameful:-1},
 	warmup:10,
@@ -303,8 +304,8 @@ warmup:30
 
 		{id:"paint.memory.unexpected.once",
 	actionId:"work",
-	label:"FNORD",
-	startdescription:"FNORD I have glimpsed the glimpsed the sacrifice the Axe was forced to [The Suppression Bureau may take notice.]",
+	label:"Secrets in the Soul",
+	startdescription:"I have glimpsed the Horned-Axe's sacrifice. [The Suppression Bureau may take notice.]",
 	requirements:{memory.unexpected:1},
 	effects:{pre.fragmentknockb:1,insight:3,notoriety:1,memory.unexpected:-1},
 	warmup:10,
@@ -315,8 +316,8 @@ warmup:30
 
 		{id:"paint.memory.joyful.once",
 	actionId:"work",
-	label:"FNORD",
-	startdescription:"FNORD I have glimpsed the turning of the Wheel, which has not ceased [The Suppression Bureau may take notice.]",
+	label:"Secrets in the Soul",
+	startdescription:"I have glimpsed the turning of the Wheel, although adepts have learnt that turning ceased long ago. [The Suppression Bureau may take notice.]",
 	requirements:{memory.joyful:1},
 	effects:{pre.fragmentheartb:1,insight:3,notoriety:1,memory.joyful:-1},
 	warmup:10,
@@ -326,8 +327,8 @@ warmup:30
 	
 			{id:"paint.memory.profitable.once",
 	actionId:"work",
-	label:"FNORD",
-	startdescription:"FNORD I have glimpsed how fire changed, even in the days of Flint [The Suppression Bureau may take notice.]",
+		label:"Secrets in the Soul",
+	startdescription:"I have glimpsed how fire has changed, even in the days after fire had facets. [The Suppression Bureau may take notice.]",
 	requirements:{memory.profitable:1},
 	effects:{pre.fragmentforgeb:1,insight:3,notoriety:1,memory.profitable:-1},
 	warmup:10,
@@ -339,7 +340,7 @@ warmup:30
 				{id:"paint.memory.generic",
 	actionId:"work",
 	label:"Scenes from a Life",
-	startdescription:"FNORD this is all very spooky yet relatable",
+	startdescription:"I do not think that this was my own life, but perhaps after all it was. One day I will not be able to tell at all.",
 	requirements:{memory.profitable:1},
 	effects:{insight:2,memory:-1},
 	warmup:10,
