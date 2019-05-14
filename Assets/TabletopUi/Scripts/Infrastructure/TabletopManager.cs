@@ -261,8 +261,21 @@ namespace Assets.CS.TabletopUI {
             {
                 NoonUtility.Log("Checking if save game exists", 10);
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+                bool isSaveCorrupted = false;
+                bool shouldContinueGame;
+                try
+                {
+	                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive();
+                }
+                catch (Exception e)
+                {
+	                Debug.LogError("Failed to save game (see exception for details)");
+	                Debug.LogException(e);
+	                shouldContinueGame = false;
+	                isSaveCorrupted = true;
+                }
 
-                if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
+                if (shouldContinueGame)
                 {
                     NoonUtility.Log("Loading game", 10);
                     LoadGame();
@@ -273,10 +286,16 @@ namespace Assets.CS.TabletopUI {
                     NoonUtility.Log("Beginning new game", 10);
                     BeginNewGame(builder);
                 }
+
+                if (isSaveCorrupted)
+                {
+	                _notifier.ShowSaveError(true);
+	                GameSaveManager.saveErrorWarningTriggered = true;
+                }
             }
 			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
 			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
-        }
+		}
 
         private void BeginNewGame(SituationBuilder builder)
         {
@@ -489,38 +508,39 @@ namespace Assets.CS.TabletopUI {
 
             _speedController.SetPausedState(true, false, true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
-            //try
-            //{
-            var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
-            ClearGameState(_heart, storage, _tabletop);
-            saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
+            try
+            {
+	            var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
+	            ClearGameState(_heart, storage, _tabletop);
+	            saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
 
-            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
-            /////
-            if (storage.ActiveLegacy == null)
-                storage.ActiveLegacy = compendium.GetAllLegacies().First();
-            /////
-            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
-            StatusBar.UpdateCharacterDetailsView(storage);
+	            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
+	            /////
+	            if (storage.ActiveLegacy == null)
+	                storage.ActiveLegacy = compendium.GetAllLegacies().First();
+	            /////
+	            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
+	            StatusBar.UpdateCharacterDetailsView(storage);
 
-			// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
-			var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-            foreach (var s in allSituationControllers)
-			{
-				if (s.IsOpen)
+				// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
+				var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+	            foreach (var s in allSituationControllers)
 				{
-					Vector3 tgtPos = s.RestoreWindowPosition;
-	                s.OpenWindow( tgtPos );
+					if (s.IsOpen)
+					{
+						Vector3 tgtPos = s.RestoreWindowPosition;
+		                s.OpenWindow( tgtPos );
+					}
 				}
-			}
 
-            _notifier.ShowNotificationWindow( LanguageTable.Get("UI_LOADEDTITLE"), LanguageTable.Get("UI_LOADEDDESC"));
-
-            //}
-            //catch (Exception e)
-            //{
-            //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
-            //}
+	            _notifier.ShowNotificationWindow( LanguageTable.Get("UI_LOADEDTITLE"), LanguageTable.Get("UI_LOADEDDESC"));
+            }
+            catch (Exception e)
+            {
+                _notifier.ShowNotificationWindow(LanguageTable.Get("UI_LOADFAILEDTITLE"), LanguageTable.Get("UI_LOADFAILEDDESC"));
+                Debug.LogError("Failed to load game (see exception for details)");
+                Debug.LogException(e, this);
+            }
             _speedController.SetPausedState(true, false, true);
         }
 
@@ -546,24 +566,27 @@ namespace Assets.CS.TabletopUI {
                 s.CloseWindow();
 			*/
 
-            // try
-            //  {
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>(), index: index);
-			if (success)
-			{
-				if (withNotification)
+            try
+            {
+	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+	            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>(), index: index);
+				if (success)
 				{
-					//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-					_autosaveNotifier.SetDuration( 3.0f );
-					_autosaveNotifier.Show();
+					if (withNotification)
+					{
+						//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+						_autosaveNotifier.SetDuration( 3.0f );
+						_autosaveNotifier.Show();
+					}
 				}
-			}
-            //}
-            //catch (Exception e)
-            //{
-            //      _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
-            // }
+            }
+            catch (Exception e)
+            {
+				_notifier.ShowSaveError(true);
+				GameSaveManager.saveErrorWarningTriggered = true;
+				Debug.LogError("Failed to save game (see exception for details)");
+				Debug.LogException(e);
+            }
 
 			if (wasBeating)
 			{
