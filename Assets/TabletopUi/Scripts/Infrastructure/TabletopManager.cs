@@ -269,7 +269,7 @@ namespace Assets.CS.TabletopUI {
                 }
                 catch (Exception e)
                 {
-	                Debug.LogError("Failed to save game (see exception for details)");
+	                Debug.LogError("Failed to load game (see exception for details)");
 	                Debug.LogException(e);
 	                shouldContinueGame = false;
 	                isSaveCorrupted = true;
