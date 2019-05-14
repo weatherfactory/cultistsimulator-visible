@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 _heart.StopBeating();
                 pauseButton.SetPausedText(true);
-                pauseButton.GetComponent<Image>().color = activeSpeedColor;
+                pauseButton.SetColor(activeSpeedColor);
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
 
@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 					SoundManager.PlaySfx("UIPauseStart");
 
                 if (withFlash)
-                    pauseButton.RunFlashAnimation();
+                    pauseButton.RunFlashAnimation(inactiveSpeedColor);
             }
             else
 			{
@@ -77,7 +77,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				
                 _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
-                pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
+                pauseButton.SetColor(inactiveSpeedColor);
 
                 if (_heart.GetGameSpeed() == GameSpeed.Fast)
                 {
