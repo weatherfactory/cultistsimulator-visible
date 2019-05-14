@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 615}
   - component: {fileID: 617}
   - component: {fileID: 618}
-  - component: {fileID: 43}
   m_Layer: 5
   m_Name: Button_Pause
   m_TagString: Untagged
@@ -350,25 +349,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &43
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 596c0f8bb8d312d43a36a72d8531fe64, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &48
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,9 +3417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2bf7704154e894ab77e627bad3deca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisButton: {fileID: 615}
-  ButtonText: {fileID: 526}
-  flashAnimator: {fileID: 43}
+  buttonImage: {fileID: 616}
+  buttonText: {fileID: 526}
 --- !u!114 &618
 MonoBehaviour:
   m_ObjectHideFlags: 0
