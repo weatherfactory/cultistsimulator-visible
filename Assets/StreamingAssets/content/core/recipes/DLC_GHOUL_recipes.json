@@ -386,22 +386,57 @@ craftable:true},
 
  	{id:"talk.ghoul.painting.palest",
 actionId:"talk",
-label:"FNORD Miss Naenia conversation",
-startdescription:"FNORD yes this is it - ",
+label:"Show Miss Naenia the Palest Painting",
+startdescription:"I might feel a little foolish, bringing a painting to show to a painting. But when I turn the street into the gallery, it is snowing, and only in that street. Passers-by huddle, hurry, or exclaim in wonder. I hug the painting close to me, though it is safely wrapped in brown paper, and mount the stairs to Miss Naenia's chamber.",
+description:"Miss Naenia is gone. A dark rectangle marks the empty place where once she hung. I stare about in consternation. But she is not here. There is nothing more to be done.
+
+Nothing now, but when I unwrap the Palest Painting in the silence of my home, I see that it has changed. A faint shape stands in the doorway to Nowhere, looking over its shoulder - waiting for me to follow. The shape has something of Miss Naenia about it.",
 requirements:{naenia:1,painting.palest:1},
 warmup:30,
-linked:[{id:"ending.minorpalestvictory"}],
+effects:{naenia:-1},
+mutations:[{mutate:way,filter:painting.palest,level:1}],
 craftable:true
 },
  
 
 
-{id:"ending.minorpalestvictory",
-actionId:"talk",
-label:"FNORD PALEST VICTORY",
-startdescription:"FNORD HERE IT COMES",
+{id:"dream.ghoul.painting.palest",
+actionId:"dream",
+label:"Enter the Painted Door",
+startdescription:"The House of the Sun has many secret doors. They are of course all locked, but tonight Miss Naenia will open this one for me. Beyond that door, the Elegiast waits, with winter in his hand.",
+requirements:{painting.palest:1,way:1},
+linked:[{id:"dream.ghoul.sacrificeabilities"}],
+craftable:true,
+warmup:10
+},
 
-requirements:{painting.palest:1},
+
+{id:"dream.ghoul.sacrificeabilities",
+actionId:"dream",
+label:"Death is Down",
+startdescription:"Beyond the door, a winding stair lit by black nephrite lamps, and far below, the place called Nowhere where the Dead drift down, where nothing is exactly forgotten. Down I go.",
+slots:[{id:"sacrifice",label:"The Painting's Hunger",description:"The Painted Door will take everything, if I let it. Do <i>not</i> try this at home.",required:{health:1,passion:1,reason:1,fatigue:1,disillusionment:1,concentration:1,passionexhausted:1}}],
+alt:[{id:"dream.ghoul.noabilitysacrificed"}],
+linked:[{id:"ending.minorpalestvictory"},
+{id:"dream.ghoul.sacrificeabilities"}],
+warmup:30,
+effects:{health:-1,passion:-1,reason:-1,fatigue:-1,disillusionment:-1,concentration:-1,passionexhausted:-1},
+},
+
+{id:"dream.ghoul.noabilitysacrificed",
+actionId:"dream",
+label:"From Whom Nothing More Can Be Taken",
+startdescription:"The Elegiast does not offer immortality, but an existence beyond death. The Palest Painting will draw from me what life is left, but only if I permit it.",
+requirements:{health:-1,passion:-1,reason:-1,fatigue:-1,disillusionment:-1,concentration:-1,passionexhausted:-1},
+description:"I am awake. On the wall above me, the painting waits hungrily."
+},
+
+
+{id:"ending.minorpalestvictory",
+actionId:"dream",
+label:"NOWHERE",
+startdescription:"I have seen the lost colours, and the price of it is that I am dead and Nowhere. But if the Elegiast remembers me, perhaps he will call me back into the Mansus, to walk the world until my appointed end - ",
+extantreqs:{health:-1,passion:-1,reason:-1,fatigue:-1,disillusionment:-1,concentration:-1,passionexhausted:-1},
 ending:"minorpalestvictory",
 signalEndingFlavour:"Pale",
 warmup:30},
