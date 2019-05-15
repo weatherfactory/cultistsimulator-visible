@@ -802,6 +802,16 @@ startdescription:"I hunger for what is lost. The way to that lies through anothe
 requirements:{temptation.remembrance:1},
 hintonly:true,
 craftable:false},
+
+   {
+     id: "detectivework_plotitem_burning_hint",
+     actionId: "work",
+     label: "Second Thoughts?",
+     startdescription: "It was the right decision. And yet... [There may still be time enough to Study the file before it is gone forever.]",
+     requirements: {legacydetective_plotitem_burning: 1},
+     hintonly: true,
+     craftable: false
+   },
 	
 
 	{id:"work.generaldesire.hint",
