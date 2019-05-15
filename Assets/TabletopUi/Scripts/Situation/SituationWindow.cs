@@ -317,6 +317,8 @@ namespace Assets.CS.TabletopUI {
                 return false; // Slot is being animated? Don't highlight
 			if (slot.IsGreedy)
 				return false; // Slot is greedy? It can never take anything.
+            if (stack.EntityId == "dropzone")
+                return false; // Dropzone can never be put in a slot
 
             return slot.GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }

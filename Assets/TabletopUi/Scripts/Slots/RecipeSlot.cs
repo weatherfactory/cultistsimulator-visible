@@ -293,6 +293,8 @@ namespace Assets.CS.TabletopUI {
 //			if (stack.Quantity > 1)
 //				return new SlotMatchForAspects(new List<string>{"Too many!"}, SlotMatchForAspectsType.ForbiddenAspectPresent);
 
+            if (stack.EntityId == "dropzone")
+                return new SlotMatchForAspects(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
             if (GoverningSlotSpecification == null)
                 return SlotMatchForAspects.MatchOK();
             else
