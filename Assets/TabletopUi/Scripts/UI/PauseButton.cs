@@ -8,19 +8,27 @@ using Assets.CS.TabletopUI;
 
 public class PauseButton : MonoBehaviour
 {
+	[SerializeField] Image buttonImage;
+    [SerializeField] TextMeshProUGUI buttonText;
 
-    [SerializeField] Button ThisButton;
-    [SerializeField] TextMeshProUGUI ButtonText;
+    private const double FLASH_PERIOD = 0.15;
+    private const double FLASH_DURATION = 0.9;
+    private bool _isFlashing;
+    private double _timeSpent;
+    private Color _originalColor;
+    private Color _flashColor;
 
-	private void OnEnable()
+    private void OnEnable()
     {
         // subscribe to event for language change
         LanguageManager.LanguageChanged += OnLanguageChanged;
-	}
+        _isFlashing = false;
+    }
 
     private void OnDisable()
     {
         LanguageManager.LanguageChanged -= OnLanguageChanged;
+        _isFlashing = false;
     }
 
     public void OnLanguageChanged()
@@ -35,14 +43,42 @@ public class PauseButton : MonoBehaviour
         if (isPaused)
         {
 			//ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
-			ButtonText.text = LanguageTable.Get("UI_UNPAUSE");
+			buttonText.text = LanguageTable.Get("UI_UNPAUSE");
         }
         else
         {
 			//ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
-			ButtonText.text = LanguageTable.Get("UI_PAUSE");
+			buttonText.text = LanguageTable.Get("UI_PAUSE");
         }
     }
 
+    public void SetColor(Color color)
+    {
+	    buttonImage.color = color;
+    }
+
+    public void RunFlashAnimation(Color flashColor)
+    {
+	    _timeSpent = 0.0;
+	    _originalColor = buttonImage.color;
+	    _flashColor = flashColor;
+	    _isFlashing = true;
+    }
+
+    void Update()
+    {
+	    if (!_isFlashing) 
+		    return;
+	    
+	    _timeSpent += Time.deltaTime;
+	    int currentPeriod = (int) (_timeSpent / FLASH_PERIOD);
+	    buttonImage.color = currentPeriod % 2 == 1 ? _flashColor : _originalColor;
+	    
+	    if (!(_timeSpent > FLASH_DURATION)) 
+		    return;
+	    _isFlashing = false;
+	    _timeSpent = 0.0;
+	    buttonImage.color = _originalColor;
+    }
 
 }

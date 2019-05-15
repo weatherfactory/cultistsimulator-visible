@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -118,11 +117,17 @@ public class LanguageTable : MonoBehaviour
 
 			for (int i=1; i<lines.Length; i++)
 			{
+				// Skip blank lines
+				if (string.IsNullOrWhiteSpace(lines[i]))
+					continue;
+				
 				entries = SplitCSVLine( lines[i] );
 				if (entries!=null && entries.Length>cultureIndex)
 				{
 					LocTriplet tri = new LocTriplet( entries[0], entries[cultureIndex] );
 					//Debug.Log("Adding " + entries[0] + " <" + tri.GetHashCode() + "> " + entries[cultureIndex]);
+					if (string.IsNullOrWhiteSpace(tri.GetString()))
+						Debug.LogWarning($"Missing '{targetCulture}' localisation for '{entries[0]}' on line {i+1}");
 					locTriplets.Add( tri );
 				}
 			}

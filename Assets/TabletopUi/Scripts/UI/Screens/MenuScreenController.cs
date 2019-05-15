@@ -352,6 +352,14 @@ public class MenuScreenController : MonoBehaviour {
         Application.Quit();
     }
 
+    public void BrowseToSaves()
+    {
+        if (!canTakeInput)
+            return;
+        
+        optionsPanel.BrowseFiles();
+    }
+
 #endregion
 
 }

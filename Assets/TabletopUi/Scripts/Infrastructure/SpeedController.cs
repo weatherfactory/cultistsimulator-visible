@@ -47,21 +47,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			return _heart.IsPaused;
 		}
 
-		public void SetPausedState(bool pause, bool withSFX = true)
+		public void SetPausedState(bool pause, bool withSFX = true, bool withFlash = false)
         {
-			if (_heart.IsPaused == pause)	// No SFX if no change of state - CP
-				withSFX = false;
+            if (_heart.IsPaused == pause)
+            {
+                // No SFX or flash if no change of state - CP
+                withSFX = false;
+                withFlash = false;
+            }
 
             if (pause || isLocked)
             {
                 _heart.StopBeating();
                 pauseButton.SetPausedText(true);
-                pauseButton.GetComponent<Image>().color = activeSpeedColor;
+                pauseButton.SetColor(activeSpeedColor);
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
 
 				if (withSFX)
 					SoundManager.PlaySfx("UIPauseStart");
+
+                if (withFlash)
+                    pauseButton.RunFlashAnimation(inactiveSpeedColor);
             }
             else
 			{
@@ -70,7 +77,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				
                 _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
-                pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
+                pauseButton.SetColor(inactiveSpeedColor);
 
                 if (_heart.GetGameSpeed() == GameSpeed.Fast)
                 {
