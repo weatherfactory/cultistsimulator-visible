@@ -50,7 +50,7 @@ description:"They're sobbing when they return to their seat. If they return anot
 
 (There is something in the air tonight. The scent of snow? It seems unlikely.)",
 requirements:{memory.joyful:1},
-effects:{funds:3,health:1,memory.joyful:-1,mystique:1},
+effects:{funds:4,health:1,memory.joyful:-1,mystique:1},
 alt:[{id:"open.dream.ghoul",additional:true}]},
 
 {id:"work.seance.first.fleeting",
@@ -548,6 +548,70 @@ craftable:true
 },
 
 
+
+
+{id:"work.seance",
+actionId:"work",
+label:"A Clandestine Consultation",
+startdescription:"My reputation as a performer is ruined. My reputation as an oracle is only begun. But the authorities have their eye on me.",
+description:"No-one stops by my rooms today. It's for the best: I had nothing to tell them.",
+requirements:{ghouljob:1},
+alt:[
+{id:"work.seance.shameful"},
+{id:"work.seance.profitable"},
+{id:"work.seance.joyful"},
+{id:"work.seance.menacing"},
+{id:"work.seance.unexpected"},
+{id:"work.seance.grandmemory"},
+{id:"work.seance.fleeting"}],
+warmup:15,
+craftable:true},
+	
+
+{id:"work.seance.shameful",
+actionId:"work",
+label:"Remembering the Dead: Something Shameful",
+startdescription:"I've found someone who will purchase my silence.",
+description:"A shabby transaction, but a profitable one.",
+requirements:{memory.shameful:1},
+effects:{funds:3,memory.shameful:-1}},
+
+{id:"work.seance.profitable",
+actionId:"work",
+label:"Remembering the Dead: Something Profitable",
+startdescription:"I've found someone who'll benefit from this memory. They'll pay well.",
+description:"We both did well out of that... and my reputation is a little uncannier.",
+requirements:{memory.profitable:1},
+effects:{funds:3,memory.profitable:-1,mystique:1}},
+
+
+{id:"work.seance.joyful",
+actionId:"work",
+label:"Remembering the Dead: Something Joyful",
+startdescription:"It might not necessarily be memories of my client, but it's something true.",
+description:"Enough for now. My client's tears are welcome, even to them.",
+requirements:{memory.joyful:1},
+effects:{funds:2,memory.joyful:-1,mystique:1}},
+
+
+{id:"work.seance.grandmemory",
+actionId:"work",
+label:"Too Rich a Wine",
+startdescription:"Do I really want to speak of the colours that were lost?",
+description:"My client stumbles from the room. I don't think they understood one-quarter of what I said, but they'll have a story to tell."
+requirements:{memory:5},
+effects:{funds:1,notoriety:1}
+},
+
+{id:"work.seance.other",
+actionId:"work",
+label:"Inspiration and Desperation",
+startdescription:"I can cobble together enough half-truths to satisfy my client.",
+description:"I've been paid my fee. It's difficult to say whether I have earnt it. Fortunately, it's difficult for them to say whether I have earnt it, too."
+comments:"I've decided that Fleeting Rems get eaten and romantic rems, Dread, F all get kept. We can crack this into specifics if we have too."
+requirements:{memory:1},
+effects:{funds:1,mystique:1,fleeting:-1}
+},
 
 
 
