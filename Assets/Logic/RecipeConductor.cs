@@ -175,7 +175,7 @@ namespace Assets.Core
                 ChallengeArbiter challengeArbiter = new ChallengeArbiter(aspectsToConsider, ar);
 
                 int diceResult = dice.Rolld100(recipe);
-                if (diceResult > challengeArbiter.GetArbitratedChance())
+                if (diceResult > challengeArbiter.GetArbitratedChance()) //BUT NOTE: Challenges always seem to fail on alternative recipes at the mo - though they're working fine on linked recipes.
                 {
                     NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
                                     challengeArbiter.GetArbitratedChance() +
