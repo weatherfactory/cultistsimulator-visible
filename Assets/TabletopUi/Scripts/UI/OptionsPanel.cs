@@ -28,6 +28,7 @@ public class OptionsPanel : MonoBehaviour {
 	[SerializeField] private Slider	snapGridSlider;
     [SerializeField] private Slider birdWormSlider;
     [SerializeField] private Slider contrastSlider;
+    [SerializeField] private Slider accessibleCardsSlider;
 
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
@@ -37,6 +38,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
     [SerializeField] private TextMeshProUGUI snapGridSliderValue;
     [SerializeField] private TextMeshProUGUI contrastSliderValue;
+    [SerializeField] private TextMeshProUGUI accessibleCardsSliderValue;
 
     [SerializeField] private RestartButton restartButton;
 
@@ -182,8 +184,16 @@ public class OptionsPanel : MonoBehaviour {
 
         SetHighContrast(value);
         contrastSlider.value = value;
-        NoonUtility.WormWar(value);
-    }
+        
+        // Loading Accessible Cards Slider
+        if (PlayerPrefs.HasKey(NoonConstants.ACCESSIBLECARDS))
+	        value = PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS);
+        else
+	        value = 0f;
+
+        SetAccessibleCards(value);
+        accessibleCardsSlider.value = value;
+	}
 
     private void OnEnable()
     {
@@ -377,6 +387,18 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove");
     }
 
+    public void SetAccessibleCards(float value)
+    {
+	    PlayerPrefs.SetFloat(NoonConstants.ACCESSIBLECARDS, value);
+	    TabletopManager.SetAccessibleCards(value > 0.5f);
+	    RefreshOptionsText();
+
+	    if (gameObject.activeInHierarchy == false)
+		    return; // don't update anything if we're not visible.
+
+	    SoundManager.PlaySfx("UISliderMove");
+    }
+
     public void SetSnapGrid(float value)
 	{
         if (gameObject.activeInHierarchy == false)
@@ -417,6 +439,9 @@ public class OptionsPanel : MonoBehaviour {
 
 		// High Contrast
         contrastSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF" );
+
+        // Accessible Cards
+        accessibleCardsSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF" );
 
 	    }
 	    catch (NullReferenceException)
