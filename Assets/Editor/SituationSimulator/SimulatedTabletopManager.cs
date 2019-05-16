@@ -81,7 +81,11 @@ namespace Assets.Editor
         {
             return false;
         }
-        
+
+        public void SetHighlightedElement(string elementId, int quantity = 1)
+        {
+        }
+
         public void DecayStacksOnTable(float interval)
         {
         }
