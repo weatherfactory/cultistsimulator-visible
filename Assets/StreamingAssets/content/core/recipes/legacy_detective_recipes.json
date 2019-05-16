@@ -301,7 +301,7 @@ maxexecutions:1
 {id: "detectivework_plotitem",
 label: "Burn the File",
 actionId: "work",
-requirements: {detectivetemptation:1},
+requirements: {detectivetemptation:1, legacydetective_plotitem_burning:-1},
 effects: {detectivetemptation:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
 startdescription:"This is evidence. We do not burn evidence. But perhaps it's for the best.",
 description:"The pages blacken, one by one, curling like closing fingers. I have opened the window of my office. The smoke dissipates and is lost. What exactly have I done?",

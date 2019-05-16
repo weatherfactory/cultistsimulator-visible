@@ -197,18 +197,16 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 	label: "A Convincing Spiritualist Routine",
 	description: "Sometimes, when I am particularly effective, the front row faints.",
 	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
-	xtriggers:{demotion:ghouljob},
-	noartneeded:true
+	xtriggers:{demotion:ghouljob}
 	
 },
 
 
 		{id: "ghouljob",
 		aspects:{job:1},
-	label: "A Perilous Spiritualist Routine",
-	description: "Sometimes I speak in voices even I do not expect.",
-	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}],
-	noartneeded:true
+	label: "A Reputation as a Medium",
+	description: "Sometimes I speak in voices that even I do not expect.",
+	slots:[{id:"memory",label:"Information",actionId:"work",required:{memory:1}}]
 	
 },
 
