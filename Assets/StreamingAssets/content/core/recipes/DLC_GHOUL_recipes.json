@@ -563,8 +563,8 @@ alt:[
 {id:"work.seance.menacing"},
 {id:"work.seance.unexpected"},
 {id:"work.seance.grandmemory"},
-{id:"work.seance.fleeting"}],
-warmup:15,
+{id:"work.seance.other"}],
+warmup:30,
 craftable:true},
 	
 
@@ -591,7 +591,55 @@ label:"Remembering the Dead: Something Joyful",
 startdescription:"It might not necessarily be memories of my client, but it's something true.",
 description:"Enough for now. My client's tears are welcome, even to them.",
 requirements:{memory.joyful:1},
-effects:{funds:2,memory.joyful:-1,mystique:1}},
+effects:{funds:2,memory.joyful:-1,contentment:1,mystique:1}},
+
+{id:"work.seance.menacing",
+actionId:"work",
+label:"Remembering the Dead: Something Menacing",
+startdescription:"This will be stark. I might not enjoy it.",
+description:"My client is aghast, but also agog. Some people will pay for this. Some people will pay for anything.",
+requirements:{memory.menacing:1},
+effects:{funds:2,memory.menacing:-1,dread:1,mystique:1}},
+
+{id:"work.seance.unexpected",
+actionId:"work",
+label:"Remembering the Dead: Something Unexpected",
+startdescription:"It does not do for oracles to be too predictable.",
+description:"I never remember exactly what I said, afterwards, but my lips retain the taste of the words..",
+requirements:{memory.unexpected:1},
+effects:{funds:2,memory.unexpected:-1,mystique:1},
+internaldeck: 	{label:"Something Unexpected",
+	description:"Something Unexpected",
+	spec:
+	[
+"vitalityplus",
+"fascination",
+"dread",
+"eruditionplus",
+"glimmeringplus",
+"influencelanternc",
+"influencewinterc",
+"influencemothc",
+"fragmentsecrethistories",
+"vitalityplus",
+"fascination",
+"dread",
+"eruditionplus",
+"glimmeringplus",
+"influencelanternc",
+"influencewinterc",
+"influencemothc",
+"fragmentsecrethistories",
+"fragmentsecrethistoriesc",
+"influencemothe"
+		],
+resetonexhaustion:true,
+draws:1
+},
+
+
+},
+
 
 
 {id:"work.seance.grandmemory",
