@@ -213,7 +213,7 @@ namespace Assets.CS.TabletopUI {
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
                 DraggableToken.SetReturn(true, "Didn't match recipe slot values");
-                DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+                DraggableToken.itemBeingDragged.ReturnToStartPosition();
 
                 var notifier = Registry.Retrieve<INotifier>();
 

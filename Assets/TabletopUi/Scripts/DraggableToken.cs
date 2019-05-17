@@ -306,7 +306,7 @@ namespace Assets.CS.TabletopUI {
             DraggableToken.itemBeingDragged = null;
         }
 
-        private void ReturnToStartPosition() {
+        public void ReturnToStartPosition() {
             if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
