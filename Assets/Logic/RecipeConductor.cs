@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Logic;
 using Noon;
+using UnityEngine;
 
 namespace Assets.Core
 {
@@ -143,16 +144,24 @@ namespace Assets.Core
                     !currentCharacter.HasExhaustedRecipe(candidateRecipe))
 
                 {
-                    if (!ar.Additional && ar.Chance>=100)
+                    if (!ar.Additional)
                     {
+                        if (ar.Chance >= 100)
+                        {
                             //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
                             //alternative will have a useful description.
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
                             rp.BurnImage = candidateRecipe.BurnImage;
-                        rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
-                        //we are not in the additional branch, so just return this predictioin.
-                        return rp;
+                            rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
+                            //we are not in the additional branch, so just return this prediction.
+                            return rp;
+                        }
+                        
+                        // We don't support recipe predictions for non-additional recipes which can fail (since then we
+                        // can't be sure the recipe will actually execute)
+                        Debug.LogError(
+                            $"Recipe {ar.Id} should not be listed as an additional recipe for {currentRecipe.Id} since it has a chance of failure");
                     }
                 }
             }
