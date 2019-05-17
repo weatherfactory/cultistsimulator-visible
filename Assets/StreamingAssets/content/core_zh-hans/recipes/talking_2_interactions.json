@@ -1,7 +1,7 @@
 {
 "recipes": [
 {id: "lockfollowerincupboard",
-label: "背叛并囚禁一位追随者",
+label: "背叛并囚禁一个追随者",
 actionId: "talk",
 requirements: {hq:1,follower:1},
 startdescription: "这家伙必定心怀异念。送他进橱柜。",
@@ -17,8 +17,33 @@ warmup:10
 label:"和苏洛坎纳聊天",
 actionId:"talk",
 requirements:{sulochana:1},
-slots: [{id:"Subject",label:"话题",description:"选择话题"}],
-startdescription:"@#ascensionlessonhearta|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartb|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonheartc|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartd|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonhearte|“这不是我的专攻。”苏洛坎纳笑道。#ascensionlessonheartf|“这不是我的专攻。”苏洛坎纳如蛇般耸肩。#ascensionlessonmotha|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothb|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothc|“这就是我能教给你的全部。我是你的雇主，不是你的老师。”苏洛坎纳伸了个懒腰。“有点耐心。”#ascensionlessonmothd|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#ascensionlessonmothe|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#ascensionlessonmothf|“这就是我能教给你的全部。 如果你想要个老师，那就去找忘却会。”苏洛坎纳露齿而笑。“他们和不和你说话就另说了。”#|她失望了吗？与苏洛坎纳，我很难分辨。@",
+slots: [{id:"Subject",description:"选择话题"}],
+startdescription:"@#ascensionlessonhearta|'You want to know more?'
+#ascensionlessonheartb|'You want to know more?'
+#ascensionlessonheartc|'You want to know more?'
+#ascensionlessonheartd|'You want to know more?'
+#ascensionlessonhearte|'You want to know more?'
+#ascensionlessonheartf|'You want to know more?'
+#ascensionlessonmotha|'You want to know more?'
+#ascensionlessonmothb|'You want to know more?'
+#ascensionlessonmothc|'You want to know more?'
+#ascensionlessonmothd|'You want to know more?'
+#ascensionlessonmothe|'You want to know more?'
+#ascensionlessonmothf|'You want to know more?'
+#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
+description:"@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles
+#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.
+#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.
+#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.
+#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.
+#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.
+#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#|Is she disappointed? It's difficult to tell, with Sulochana.@",
 alternativerecipes:[
 {id:"talk.apostleforge.sulochanaechidna"},
 {id:"talk.apostlegrail.sulochanamarinette"},
@@ -43,7 +68,7 @@ startdescription:"“你还年轻，可喜可贺。”",
 description:"“我们都曾年轻过，每个人都是。这是我们中的大部分人所拥有的唯一共同点。”"
 },
 {id:"sulochanachat_passion",
-label:"论热情",
+label:"论激情",
 actionId:"talk",
 requirements:{sulochana:1,passion:1},
 startdescription:"“是啊。你会陷入麻烦的。”",
@@ -54,7 +79,7 @@ label:"论蜕变俱乐部",
 actionId:"talk",
 requirements:{sulochana:1,locationcabaret:1},
 startdescription:"“怎么？”",
-description:"“有条你能走的路，起点就在我家里面。要是你想和我聊聊这条路，就去我家找我。”"
+description:"“有条你能走的路，起点就在我家房子里。要是你想和我聊聊这条路，就去我家找我。”"
 },
 {id:"sulochanachat_desireheart_track",
 label:"论新形体",
@@ -84,13 +109,13 @@ actionId:"talk",
 label:"论欲望",
 requirements:{sulochana:1,desire:1},
 startdescription:"这就是你行动的原因吗？",
-description:"我们在那个问题上没有什么共同立场可言。我很久以前就选择了自己的路。但如果你发现你也走上了这条路……那就再来找我聊吧。"
+description:"我们在那个问题上没有什么共同立场可言。我很久以前就选择了不同的路。但如果那是你想走的路……那就在蜕变俱乐部，再来找我聊吧。"
 },
 {id:"sulochanachat_secrethistoriesrouter",
 actionId:"talk",
 label:"论秘密场所",
 requirements:{sulochana:1,lore:1,secrethistories:1},
-startdescription:"至于那个嘛……",
+startdescription:"至于那个……",
 description:".",
 linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
 {id:"sulochanachat_secrethistoriesf",chance:100},
@@ -104,19 +129,19 @@ linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
 
 {id:"sulochanachat_secrethistoriesg",
 actionId:"talk",
-label:"踏上象牙之路",
+label:"踏上通向白骨之路",
 requirements:{sulochana:1,fragmentsecrethistoriesg:1},
-startdescription:"“你要去午港？哈，那可真是遗憾呢。”苏洛坎纳的声音透出非同寻常的恶意。",
+startdescription:"“你要去午港？哈，那可真是遗憾呢。”苏洛坎纳的声音透出非同寻常的恶毒。",
 description:"“给你。这张地图短时间里会有点用。要是他们有谁问起我的事情，那你就告诉他，我下一个就找上他的孩子。”",
 effects:{lore:-1,vaulteveningislesdefault:1}
 },
 
 {id:"sulochanachat_secrethistoriesf",
 actionId:"talk",
-label:"踏上异瞳之路",
+label:"踏上通向瞳仁之路",
 requirements:{sulochana:1,fragmentsecrethistoriesf:1},
 startdescription:"“你要去弥阿？给我带点椰枣回来。”",
-description:"“给你。住在这个地址的人会给你指引。要是凛目之贼问起我来……让她代我向克莱多问好……你记着，不要提任何关于我的事。好了，地址拿去。”",
+description:"“给你。住在这个地址的人会给你指引。要是那盗取视线的贼问起我来……让她代我向克莱多问好……你记着，不要提任何关于我的事。好了，地址拿去。”",
 effects:{lore:-1,vaultloneandlevelsandsdefault:1}
 },
 
@@ -131,7 +156,7 @@ effects:{}
 
 {id:"sulochanachat_secrethistoriesd",
 actionId:"talk",
-label:"踏上伤痕之路",
+label:"踏上通向烙印之路",
 requirements:{sulochana:1,fragmentsecrethistoriesd:1},
 startdescription:"“你要去狐百合原野？嗯……”",
 description:"“这个时节这条路是最好走的。不过说好走也好走不到哪去。好好享受吧。”",
@@ -141,7 +166,7 @@ effects:{lore:-1,vaultlandbeyondforestdefault:1}
 
 {id:"sulochanachat_secrethistoriesc",
 actionId:"talk",
-label:"踏上化影之路",
+label:"踏上通向伪影之路",
 requirements:{sulochana:1,fragmentsecrethistoriesc:1},
 startdescription:"“你要去巨石阵？”",
 description:"“给你。它能指引你到还差最后一里地的地方，之后你就要靠走的了。那里有座小客栈，我以前去的时候时常留宿。不过我后来把它给烧了。”她点了一支烟。",
@@ -150,19 +175,19 @@ effects:{lore:-1,vaultcontinentdefault:1}
 
 {id:"sulochanachat_secrethistoriesb",
 actionId:"talk",
-label:"踏上化珠之路",
+label:"踏上通向珍珠之路",
 requirements:{sulochana:1,fragmentsecrethistoriesb:1},
-startdescription:"“你想要去凯里夏姆？是的，火车是挺不好坐的。”",
-description:"苏洛坎纳递给你一张打印的纸。“这是这个月的数字。一定要找到正确的站台。有了这个去那儿可容易多了吧，嗯？要是在从前你非得穿过‘错误的门扉’不可，我才不要浪费那个时间。”她咯咯笑了起来。",
+startdescription:"“你想要去凯尔伊苏姆？是的，火车是挺不好坐的。”",
+description:"苏洛坎纳递给你一张打印的纸。“这是这个月的站台号。一定要找到正确的站台。有了这个去那儿可容易多了吧，嗯？要是在从前你非得穿过‘错误的门’不可，我才不要浪费那个时间。”她咯咯笑了起来。",
 effects:{lore:-1,vaultshiresdefault:1}
 },
 
 {id:"sulochanachat_secrethistoriesa",
 actionId:"talk",
-label:"踏上转变之路",
+label:"踏上通向转变的一众路途",
 requirements:{sulochana:1,fragmentsecrethistories:1},
 startdescription:"“要是你想转变的话……我可以帮忙。”",
-description:"“我们总是先在海边改变。当今的凯里夏姆可是个好地方。然后地点会越选越远。不过不是让你亲自去，绝对不要亲自去，而是要让另一个你去。如果你不确定要去哪里，欢迎你带着更多的知识回来找我。不过啊，你寻求的若是转变之外的东西……那我可帮不了你了。”",
+description:"“我们总是先在海边转变。当今的凯尔伊苏姆可是个好地方。然后地点会越来越远。不过不是让你亲自去，永远不要亲自去，而是要让另一个你去。如果你不确定要去哪里，欢迎你带着更多密传回来找我。如果你寻求的是转变之外的东西……那我可帮不了你了。”",
 },
 
 
@@ -170,10 +195,10 @@ description:"“我们总是先在海边改变。当今的凯里夏姆可是个�
 label:"与波碧·拉塞尔斯对话",
 actionId: "talk",
 requirements: {poppyready: 1},
-slots: [{id:"Consent",label:"接受",description:"放入<b>热情</b>来接受条件，或者放入<b>理性</b>来对波碧进行进一步询问。",required: {passion:1,reason:1}}],
+slots: [{id:"Consent",description:"放入<b>激情</b>，接受条件；或放入<b>理性</b>，对波碧进行进一步询问。",required: {passion:1,reason:1}}],
 alternativerecipes: [{id: "poppyofferaccept",chance:100},
 {id:"poppyofferquery",chance:100}],
-startdescription: "“亲爱的，有件事我一直想和你说。我有时会资助那些研究无形之仪的学者。我愿意为你提供资助，非常丰厚的资助。而你需要做的只是在以后某个时间点，给我介绍一个合适的收尾之人。”她露出和善的微笑。[放入<b>热情</b>来接受条件，或者放入<b>理性</b>来对她进行进一步询问。]",
+startdescription: "“亲爱的，有件事我一直想和你说。我有时会资助那些研究无形之术的学者。我愿意为你提供资助，非常丰厚的资助。而你需要做的只是在以后某个时间点，给我介绍一个合适的收尾之人。”她露出和善的微笑。[放入<b>激情</b>，接受条件；或放入<b>理性</b>，对她进行进一步询问。]",
 description: "我没有接受波碧的提议。",
 warmup:60,
 craftable: true
@@ -183,7 +208,7 @@ label: "接受波碧的提议",
 actionId: "talk",
 requirements: {passion:1},
 startdescription: "“对，正是如此。我今晚回来。”",
-description: "装着小小宝物的小小包裹——一份来自波碧的礼物。她会在‘残季’再来见我一次，让我介绍我许诺的人给她。",
+description: "装着小小宝物的小小包裹——一份来自波碧的礼物。她会在“残季”再来见我一次，让我介绍我许诺的人给她。",
 effects: {funds:10,compensationc:1,poppyready:-1},
 alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
 },
@@ -217,7 +242,7 @@ warmup:10
 {id:"poppywantssoul",
 label:"波碧的友好造访",
 actionId: "poppytime",
-slots: [{id:"Sacrifice",label:"祭献",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+slots: [{id:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
 alternativerecipes: [{id:"poppysatiated",chance:100}],
 warmup:60,
 signalEndingFlavour:Melancholy,
@@ -227,7 +252,7 @@ description: "."
 },
 {id:"poppysatiated",
 actionId: "poppytime",
-label:"一个合适的终局",
+label:"合适的收尾",
 requirements: {follower:1},
 startdescription: "“多么忠实的朋友啊！现在和你的朋友道别吧。”",
 description: "我的追随者已经去了，而我还在。波碧·拉塞尔斯仍然时不时在各地现身。她说不定还有更多事情想对我说。",

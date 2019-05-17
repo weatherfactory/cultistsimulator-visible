@@ -1,816 +1,502 @@
-﻿{
-recipes: [
-	{
-		id: "internaldecktest",
-		startdescription: "?",
-		internaldeck: 
-		{
-			draws: "2",
-			description: "Hullo",
-			label: "Select Acquaintances",
-			spec: 
-			[
-					cat_a,
-					clifton_a,
-					slee_a,
-					elridge_a,
-					laidlaw_a,
-			],
-			defaultcard: "funds",
-		},
-		description: "!",
-		label: "x",
-		actionId: "test",
-	},
-	{
-		id: "irt1",
-		startdescription: "ERROR",
-		warmup: "10",
-		alt: 
-		[
-			{
-				id: "irt2",
-				startdescription: "irt2",
-				comment: "NEW",
-				actionId: "irt",
-			},
+ {"recipes": [
+ 
+ {id:"internaldecktest",
+ actionId:"test",
+ label:"x",
+ startdescription:"?",
+ description:"!",
+ internaldeck: 	{label:"Select Acquaintances",
+	description:"Hullo",
+	spec:
+	[
+	"cat_a",
+	"clifton_a",
+	"slee_a",			
+	"elridge_a",
+	"laidlaw_a"
 		],
-		label: "ERROR",
-		actionId: "irt",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droo",
-			},
-		],
-		craftable: "false",
-		warmup: "10",
-		label: "Order Sushi from Deliveroo",
-		startdescription: "This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
-		id: "droo",
-		actionId: "droo",
-		description: "This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
-		slots: 
-		[
-			{
-				id: "funds",
-				required: 
-				{
-					funds: "1",
-				},
-				label: "Order",
-			},
-		],
-	},
-	{
-		id: "droostart",
-		startdescription: "Mm, sushi!",
-		warmup: "30",
-		requirements: 
-		{
-			funds: "1",
-		},
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		label: "The Restaurant Is Preparing Your Order",
-		actionId: "droo",
-	},
-	{
-		id: "droogo",
-		deckeffect: 
-		{
-			seasonevents: "1",
-		},
-		linked: 
-		[
-			{
-				id: "droogosickness",
-			},
-			{
-				id: "droogodespair",
-			},
-			{
-				id: "droogovisions",
-			},
-			{
-				id: "droogoambition",
-			},
-			{
-				id: "droogovisions",
-			},
-			{
-				id: "droogosuspicion",
-			},
-			{
-				id: "droogoardours",
-			},
-			{
-				id: "droogosilence",
-			},
-		],
-		actionId: "droo",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasonsickness: "1",
-		},
-		warmup: "30",
-		label: "Your Rider Is Waiting At The Restaurant",
-		startdescription: "Not long now!",
-		id: "droogosickness",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasondespair: "1",
-		},
-		warmup: "30",
-		label: "Assigning a Rider to your Order",
-		startdescription: "Wonder who it'll be?",
-		id: "droogodespair",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasonvisions: "1",
-		},
-		warmup: "30",
-		label: "A Rider Has Been Assigned To Your Order",
-		startdescription: "Cool! They should be at the restaurant soon.",
-		id: "droogovisions",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasonambitions: "1",
-		},
-		warmup: "30",
-		label: "Your Rider Is Waiting At The Restaurant",
-		startdescription: "Cool! It must be nearly on its way.",
-		id: "droogoambition",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasonardours: "1",
-		},
-		warmup: "30",
-		label: "A Call From A Deliveroo Support Person?",
-		startdescription: "They say the restaurant said I wanted to cancel my order? Weird. No matter - I told them I don't want to cancel, and I'm sure it'll be okay.",
-		id: "droogoardours",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "droogo",
-			},
-		],
-		requirements: 
-		{
-			seasonsuspicion: "1",
-		},
-		warmup: "30",
-		label: "A Rider Has Been Assigned To Your Order",
-		startdescription: "Cool! They should be at the restaurant soon.",
-		id: "droogosuspicion",
-		actionId: "droo",
-		effects: 
-		{
-			season: "-1",
-		},
-	},
-	{
-		id: "droogosilence",
-		startdescription: "Here's your money back!
+defaultcard: "funds",
+draws:2
+}
+},
+	
+	
+
+{id:"irt1",
+actionId:"irt",
+label:"ERROR",
+startdescription:"ERROR",
+alt:[{id:"ERROR",actionId:"irt",startdescription:"ERROR"}],
+warmup:10},
+
+ 
+{id:"droo",
+actionId:"droo",
+label:"Order Sushi from Deliveroo",
+startdescription:"This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
+description:"This will bring delicious sushi straight to your door in a few minutes. The best thing about it is that you'll receive constant updates on the location of your sushi!",
+
+slots:[{id:"funds",label:"Order",required:{funds:1}}],
+warmup:10,
+craftable:false,
+linked:[{id:"droo"}]
+},
+
+{id:"droostart",
+actionId:"droo",
+requirements:{funds:1},
+label:"The Restaurant Is Preparing Your Order",
+startdescription:"Mm, sushi!",
+warmup:30,
+linked:[{id:"droogo"}]
+},
+
+{id:"droogo",
+actionId:"droo",
+deckeffect:{seasonevents:1},
+linked:[{id:"droogosickness"},
+{id:"droogodespair"},
+{id:"droogovisions"},
+{id:"droogoambition"},
+{id:"droogovisions"},
+{id:"droogosuspicion"},
+{id:"droogoardours"},
+{id:"droogosilence"}]
+},
+
+
+{id:"droogosickness",
+actionId:"droo",
+label:"Your Rider Is Waiting At The Restaurant",
+startdescription:"Not long now!",
+requirements:{seasonsickness:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogodespair",
+actionId:"droo",
+label:"Assigning a Rider to your Order",
+startdescription:"Wonder who it'll be?",
+requirements:{seasondespair:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogovisions",
+actionId:"droo",
+label:"A Rider Has Been Assigned To Your Order",
+startdescription:"Cool! They should be at the restaurant soon.",
+requirements:{seasonvisions:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogoambition",
+actionId:"droo",
+label:"Your Rider Is Waiting At The Restaurant",
+startdescription:"Cool! It must be nearly on its way.",
+requirements:{seasonambitions:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogoardours",
+actionId:"droo",
+label:"A Call From A Deliveroo Support Person?",
+startdescription:"They say the restaurant said I wanted to cancel my order? Weird. No matter - I told them I don't want to cancel, and I'm sure it'll be okay.",
+requirements:{seasonardours:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogosuspicion",
+actionId:"droo",
+label:"A Rider Has Been Assigned To Your Order",
+startdescription:"Cool! They should be at the restaurant soon.",
+requirements:{seasonsuspicion:1},
+effects:{season:-1},
+warmup:30,
+linked:[{id:"droogo"}]
+},
+{id:"droogosilence",
+actionId:"droo",
+label:"'Your Order Has Been Cancelled",
+startdescription:"Here's your money back!
 
 We apologise for any inconvenience caused.
 
 If you'd like to try again, it'll be £15 cheaper next time!'",
-		warmup: "30",
-		requirements: 
-		{
-			seasonsilence: "1",
+requirements:{seasonsilence:1},
+effects:{season:-1,dread:1},
+warmup:30
+},
+
+{id:"debugsnare",
+actionId:"x",
+label:"Create Great Snares",
+
+		effects:{snare:1},
+		warmup:1,
+		linked:[{id:"debugsnareaddmutation",chance:100}]
 		},
-		effects: 
-		{
-			season: "-1",
-			dread: "1",
+		{id:"debugsnareaddmutation",
+actionId:"x",
+label:"Create Great Snares+",
+
+		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
+		warmup:1
 		},
-		label: "'Your Order Has Been Cancelled",
-		actionId: "droo",
-	},
-	{
-		id: "debugsnare",
-		warmup: "1",
-		effects: 
+
+
+{id:"_testexpelled",
+actionId:"testexpelled",
+startdescription:"test expelled",
+description: "end test expelled",
+warmup:5},
+{id: "_testmutations",
+label: "Testing mutation",
+actionId: "work",
+requirements:{owl:1},
+mutations:[{filterOnAspectId:owl,mutateAspectId:dreadful,mutationLevel:10}],
+warmup: 1,
+craftable:true
+},
+{id:"_adeptskit",
+label:"Adept's Kit",
+actionId:"adeptskit",
+warmup:1,
+effects:{
+fragmentedge:1,
+fragmentforge:1,
+fragmentgrail:1,
+fragmentheart:1,
+fragmentknock:1,
+fragmentlantern:1,
+fragmentmoth:1,
+fragmentsecrethistories:1,
+fragmentwinter:1,
+fragmentedgeb:1,
+fragmentforgeb:1,
+fragmentgrailb:1,
+fragmentheartb:1,
+fragmentknockb:1,
+fragmentlanternb:1,
+fragmentmothb:1,
+fragmentsecrethistoriesb:1,
+fragmentwinterb:1,
+ingredientedgeb:1,
+ingredientforgeb:1,
+ingredientgrailb:1,
+ingredientheartb:1,
+ingredientknockb:1,
+ingredientlanternb:1,
+ingredientmothb:1,
+ingredientwinterb:1,
+tooledged:1,
+toolforged:1,
+toolgraild:1,
+toolheartd:1,
+toolknockd:1,
+toollanternd:1,
+toolmothd:1,
+toolsecrethistoriesd:1,
+toolwinterd:1,
+ritefollowerconsumeingredient:1,
+ritetoolconsumeingredient:1
+}},
 		{
-			snare: "1",
-		},
-		linked: 
-		[
-			{
-				id: "debugsnareaddmutation",
-				chance: "100",
-			},
-		],
-		label: "Create Great Snares",
-		actionId: "x",
-	},
-	{
-		id: "debugsnareaddmutation",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "snare",
-				mutateAspectId: "snarelevel",
-				mutationLevel: "3",
-				additive: "true",
-			},
-		],
-		warmup: "1",
-		label: "Create Great Snares+",
-		actionId: "x",
-	},
-	{
-		id: "_testexpelled",
-		startdescription: "test expelled",
-		description: "end test expelled",
-		warmup: "5",
-		actionId: "testexpelled",
-	},
-	{
-		id: "_testmutations",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "owl",
-				mutateAspectId: "dreadful",
-				mutationLevel: "10",
-			},
-		],
-		warmup: "1",
-		requirements: 
-		{
-			owl: "1",
-		},
-		craftable: "true",
-		label: "Testing mutation",
-		actionId: "work",
-	},
-	{
-		id: "_adeptskit",
-		warmup: "1",
-		effects: 
-		{
-			fragmentedgeb: "1",
-			toolsecrethistoriesd: "1",
-			fragmentgrail: "1",
-			ritefollowerconsumeingredient: "1",
-			tooledged: "1",
-			fragmentknock: "1",
-			fragmentwinter: "1",
-			toolknockd: "1",
-			ingredientlanternb: "1",
-			fragmentwinterb: "1",
-			fragmentmothb: "1",
-			toollanternd: "1",
-			ingredientknockb: "1",
-			fragmentsecrethistoriesb: "1",
-			toolheartd: "1",
-			ingredientedgeb: "1",
-			ingredientheartb: "1",
-			ingredientwinterb: "1",
-			fragmentheartb: "1",
-			toolforged: "1",
-			fragmentheart: "1",
-			ingredientforgeb: "1",
-			toolgraild: "1",
-			fragmentforge: "1",
-			ingredientgrailb: "1",
-			fragmentforgeb: "1",
-			fragmentedge: "1",
-			toolmothd: "1",
-			fragmentlantern: "1",
-			fragmentgrailb: "1",
-			ritetoolconsumeingredient: "1",
-			fragmentsecrethistories: "1",
-			ingredientmothb: "1",
-			fragmentlanternb: "1",
-			toolwinterd: "1",
-			fragmentmoth: "1",
-			fragmentknockb: "1",
-		},
-		label: "Adept's Kit",
-		actionId: "adeptskit",
-	},
-	{
-		id: "_memoryvault",
-		craftable: "false",
+        id: "_memoryvault",
+        label: "Retrieve stored things",
+        actionId: "fictitiousverb",
+                effects: {
+				LEVER_LastBook:1,
+				LEVER_LastDesire:1,
+				    LEVER_LastTool:1,
+    LEVER_LastSignificantPainting:1,
+    LEVER_LastCult:1,
+    LEVER_LastHeadquarters:1,
+    LEVER_LastPersonKilled:1
+				},
 		startdescription: "This is what we had:",
-		warmup: "1",
-		effects: 
-		{
-			LEVER_LastCult: "1",
-			LEVER_LastHeadquarters: "1",
-			LEVER_LastBook: "1",
-			LEVER_LastDesire: "1",
-			LEVER_LastSignificantPainting: "1",
-			LEVER_LastTool: "1",
-			LEVER_LastPersonKilled: "1",
-		},
-		label: "Retrieve stored things",
-		actionId: "fictitiousverb",
+        warmup: 1,
+        craftable: false,
 	},
-	{
-		requirements: 
 		{
-		},
-		craftable: "false",
-		warmup: "5",
-		ending: "minorgrailvictory",
-		label: "Display Ascension Ending",
+        id: "_ascensionending",
+        label: "Display Ascension Ending",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Here I go",
-		id: "_ascensionending",
-		actionId: "fictitiousverb",
-		description: "Ending text coming",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Ending text coming",
+        warmup: 5,
+        craftable: false,
+		ending: "minorgrailvictory"
 	},
-	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		warmup: "5",
-		ending: "arrest",
-		label: "Display Imprisonment Ending",
+			{
+        id: "_arrest",
+        label: "Display Imprisonment Ending",
+        actionId: "fictitiousverb",
+        requirements: {},
 		startdescription: "Here I go",
-		id: "_arrest",
-		description: "Ending text coming",
-		actionId: "fictitiousverb",
+        description: "Ending text coming",
+        warmup: 5,
+        craftable: false,
+		ending: "arrest"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "Wood",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansustest",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustest",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "Wood"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "StagDoor",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansusteststag",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansusteststag",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "StagDoor"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "PeacockDoor",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansustestpeacock",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustestpeacock",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "PeacockDoor"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "TricuspidGate",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansustestgate",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustestgate",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "TricuspidGate"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "SpiderDoor",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansustestspider",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustestspider",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "SpiderDoor"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "WhiteDoor",
-		warmup: "1",
-		label: "Test Mansus effect",
+        id: "_mansustestwhite",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustestwhite",
-		actionId: "fictitiousverb",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "WhiteDoor"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		portaleffect: "whitedoor",
-		warmup: "1",
-		label: "Test Mansus effect for door",
+        id: "_mansustest2",
+        label: "Test Mansus effect for door",
+        actionId: "fictitiousverb2",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: "Mansus entry will occur on completion",
-		id: "_mansustest2",
-		actionId: "fictitiousverb2",
-		description: "Mansus entry occurs as this appears",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "whitedoor"
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		warmup: "1",
-		label: "Create Dream token",
+        id: "_dream",
+        label: "Create Dream token",
+        actionId: "dream",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: ".",
-		id: "_dream",
-		actionId: "dream",
-		description: "...",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "...",
+        warmup: 1,
+        craftable: false
 	},
 	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		warmup: "1",
-		label: "Create study token",
+        id: "_study",
+        label: "Create study token",
+        actionId: "study",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: ".",
-		id: "_study",
-		actionId: "study",
-		description: "...",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "...",
+        warmup: 1,
+        craftable: false
 	},
-	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		warmup: "1",
-		label: "Create talk token",
+{
+        id: "_talk",
+        label: "Create talk token",
+        actionId: "talk",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: ".",
-		id: "_talk",
-		actionId: "talk",
-		description: "...",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "...",
+        warmup: 1,
+        craftable: false
 	},
-	{
-		requirements: 
+
 		{
-		},
-		craftable: "false",
-		warmup: "1",
-		label: "Create explore token",
+        id: "_explore",
+        label: "Create explore token",
+        actionId: "explore",
+        requirements: {},
+        effects: {contentment:1},
 		startdescription: ".",
-		id: "_explore",
-		actionId: "explore",
-		description: "...",
-		effects: 
-		{
-			contentment: "1",
-		},
+        description: "...",
+        warmup: 1,
+        craftable: false
 	},
-	{
-		requirements: 
-		{
-			health: "-1",
-		},
-		craftable: "false",
-		warmup: "10",
-		ending: "deathofthebody",
-		label: "健康已耗尽",
-		startdescription: "我的生命正在流逝——",
-		signalEndingFlavour: "Melancholy",
-		id: "testdeathcountdown",
-		actionId: "healthend",
-		description: "他们会在哪里找到我呢？我并不在此处。",
-		effects: 
-		{
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "10",
-		label: "'In so far as one denies what is, one is possessed by what is not.' - Le Guin",
-		startdescription: "test empty coming up -",
-		id: "testemptyresults",
-		actionId: "testemptyresults",
-		description: "Nothing here, verb stuck open.",
-		effects: 
-		{
-		},
-	},
-	{
-		requirements: 
-		{
-			wolfatthedoor: "1",
-		},
-		craftable: "true",
-		warmup: "0",
-		label: "狼来了",
-		startdescription: "我们遥听狼嗥响起……",
-		id: "wolfatthedooreats_work",
-		actionId: "work",
-		description: "紧随其后是另一声狼嗥。",
-		effects: 
-		{
-			wolfatthedoor: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			wolfatthedoor: "1",
-		},
-		craftable: "true",
-		warmup: "0",
-		label: "狼来了",
-		startdescription: "我们遥听狼嗥响起……",
-		id: "wolfatthedooreats_dream",
-		actionId: "dream",
-		description: "紧随其后是另一声狼嗥。",
-		effects: 
-		{
-			wolfatthedoor: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			wolfatthedoor: "1",
-		},
-		craftable: "true",
-		warmup: "0",
-		label: "狼来了",
-		startdescription: "我们遥听狼嗥响起……",
-		id: "wolfatthedooreats_study",
-		actionId: "study",
-		description: "紧随其后是另一声狼嗥。",
-		effects: 
-		{
-			wolfatthedoor: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			wolfatthedoor: "1",
-		},
-		craftable: "true",
-		warmup: "0",
-		label: "狼来了",
-		startdescription: "我们遥听狼嗥响起……",
-		id: "wolfatthedooreats_explore",
-		actionId: "explore",
-		description: "紧随其后是另一声狼嗥。",
-		effects: 
-		{
-			wolfatthedoor: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			wolfatthedoor: "1",
-		},
-		craftable: "true",
-		warmup: "0",
-		label: "狼来了",
-		startdescription: "我们遥听狼嗥响起……",
-		id: "wolfatthedooreats_talk",
-		actionId: "talk",
-		description: "紧随其后是另一声狼嗥。",
-		effects: 
-		{
-			wolfatthedoor: "-1",
-		},
-	},
-	{
-		id: "_wrap_cultfoundation",
-		craftable: "true",
-		requirements: 
-		{
-			notaworm: "1",
-		},
-		linked: 
-		[
-			{
-				id: "cultfoundation",
-				chance: "100",
-			},
-		],
-		warmup: "0",
-		effects: 
-		{
-			notaworm: "-1",
-		},
-		actionId: "_wrap_cultfoundation",
-	},
-	{
-		id: "_wrap_bytopenstudy",
-		craftable: "true",
-		requirements: 
-		{
-			notaworm: "1",
-		},
-		linked: 
-		[
-			{
-				id: "bytopenstudy",
-				chance: "100",
-			},
-		],
-		warmup: "0",
-		effects: 
-		{
-			notaworm: "-1",
-		},
-		actionId: "_wrap_bytopenstudy",
-	},
-	{
-		id: "_wrap_ambition",
-		craftable: "true",
-		requirements: 
-		{
-			notaworm: "1",
-		},
-		linked: 
-		[
-			{
-				id: "ambition",
-				chance: "100",
-			},
-		],
-		warmup: "0",
-		effects: 
-		{
-			notaworm: "-1",
-			seasonambitions: "1",
-		},
-		actionId: "craving",
-	},
-	{
-		id: "_long.dreamconfrontation",
-		startdescription: "Let's fight in the Mansus",
-		effects: 
-		{
-			diarist: "1",
-		},
-		linked: 
-		[
-			{
-				id: "_long.dreamconfrontation.skillup",
-			},
-		],
-		warmup: "1",
-		actionId: "long",
-	},
-	{
-		id: "_long.dreamconfrontation.skillup",
-		mutations: 
-		[
-			{
-				level: "10",
-				filter: "long.enemy",
-				mutate: "long.dreamwork",
-			},
-		],
-		startdescription: "Let's skill up the Long first",
-		warmup: "1",
-		linked: 
-		[
-			{
-				id: "long.dreams.confrontation",
-			},
-		],
-		actionId: "long",
-	},
+	   {
+        id: "testdeathcountdown",
+        label: "健康已耗尽",
+        actionId: "healthend",
+        requirements: {health: -1},
+        effects: {},
+        startdescription: "我的生命正在流逝——",
+        description: "他们会在哪里找到我？这里没有我。",
+        warmup: 10,
+        craftable: false,
+		signalEndingFlavour:Melancholy,
+		ending: "deathofthebody"
+    },
+		   {
+        id: "testemptyresults",
+        label: "'In so far as one denies what is, one is possessed by what is not.' - Le Guin",
+        actionId: "testemptyresults",
+        effects: {},
+        startdescription: "test empty coming up -",
+        description: "Nothing here, verb stuck open.",
+        warmup: 10,
+        craftable: false,
+    },
+	 {id: "wolfatthedooreats_work",
+label: "狼来了",
+actionId: "work",
+requirements: {wolfatthedoor:1},
+effects: {wolfatthedoor:-1},
+startdescription: "我们遥听狼嗥响起……",
+description: "紧随其后是另一声狼嗥。",
+warmup: 0,
+craftable:true
+},
+{id: "wolfatthedooreats_dream",
+label: "狼来了",
+actionId: "dream",
+requirements: {wolfatthedoor:1},
+effects: {wolfatthedoor:-1},
+startdescription: "我们遥听狼嗥响起……",
+description: "紧随其后是另一声狼嗥。",
+warmup: 0,
+craftable:true
+},
+
+{id: "wolfatthedooreats_study",
+label: "狼来了",
+actionId: "study",
+requirements: {wolfatthedoor:1},
+effects: {wolfatthedoor:-1},
+startdescription: "我们遥听狼嗥响起……",
+description: "紧随其后是另一声狼嗥。",
+warmup: 0,
+craftable:true
+},
+
+{id: "wolfatthedooreats_explore",
+label: "狼来了",
+actionId: "explore",
+requirements: {wolfatthedoor:1},
+effects: {wolfatthedoor:-1},
+startdescription: "我们遥听狼嗥响起……",
+description: "紧随其后是另一声狼嗥。",
+warmup: 0,
+craftable:true
+},
+
+{id: "wolfatthedooreats_talk",
+label: "狼来了",
+actionId: "talk",
+requirements: {wolfatthedoor:1},
+effects: {wolfatthedoor:-1},
+startdescription: "我们遥听狼嗥响起……",
+description: "紧随其后是另一声狼嗥。",
+warmup: 0,
+craftable:true
+},
+
+   {
+     id: "_wrap_cultfoundation",
+     actionId: "_wrap_cultfoundation",
+     linked: [{id: "cultfoundation", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1},
+     warmup: 0,
+     craftable: true
+   },
+   {
+     id: "_wrap_bytopenstudy",
+     actionId: "_wrap_bytopenstudy",
+     linked: [{id: "bytopenstudy", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1},
+     warmup: 0,
+     craftable: true
+   },
+   {
+     id: "_wrap_ambition",
+     actionId: "craving",
+     linked: [{id: "ambition", chance: 100}],
+     requirements: {notaworm: 1},
+     effects: {notaworm: -1, seasonambitions: 1},
+     warmup: 0,
+     craftable: true
+   },
+     {
+     id: "_long.dreamconfrontation",
+     actionId: "long",
+	 startdescription:"Let's fight in the Mansus",
+     linked: [{id: "_long.dreamconfrontation.skillup"}],
+     effects: {diarist:1},
+	 warmup:1
+
+   },
+     {
+     id: "_long.dreamconfrontation.skillup",
+     actionId: "long",
+	 	 startdescription:"Let's skill up the Long first",
+	 mutations:[{filter:long.enemy,mutate:long.dreamwork,level:10}],
+     linked: [{id: "long.dreams.confrontation"}],
+	 warmup:1
+
+   },
+   
+
 ]
 }

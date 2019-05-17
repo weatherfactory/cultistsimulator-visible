@@ -8,8 +8,8 @@
             description: "伊本·阿迪姆博士，外号阿勒颇人，对被忽视的历史有些兴趣。他向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
-					slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
+					slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}],
         },
 		 {
         id: "aladimready",
@@ -25,18 +25,18 @@ unique:true,
             label: "贝赛女士",
             aspects:
             {mortal:1,patron:1,tutor:1,tutorgreek:1},
-            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她向你提出了一项委托。",
+            description: "奥林普·贝赛女士是《凯尔伊苏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "bechetready",
             label: "贝赛女士",
             aspects:
             {mortal:1,patron:1,tutor:1,tutorgreek:1},
-            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她可能会用到你的帮助。",
+            description: "奥林普·贝赛女士是《凯尔伊苏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她可能会用到你的帮助。",
 unique:true,
 			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
         },		 {
@@ -47,8 +47,8 @@ unique:true,
             description: "戈特·罗布·简宁伯爵代表一个由医师和斗士组成的内陆教团。他向你提出了一项委托。",
 unique:true,
 			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
-				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}]
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "janningsready",
@@ -95,8 +95,8 @@ icon:"poppyready"
             description: "一个和蔼可亲的贵妇人。她向你提出了一项委托。",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
-				slots: [{id:"Commission",label:"委托",actionId:"talk",required: {commission:1}},
-					{id:"Manuscript",label:"手稿",actionId:"talk",required:{article:1}}],
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}],
 icon:"poppy"
         },
 		
@@ -111,7 +111,7 @@ icon:"aladim"
 					 {
         id: "bechetaway",
             label: "贝赛女士",
-            description: "奥林普·贝赛女士是《凯里夏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她最近正忙着准备出版的事，但她很快会回来的。",
+            description: "奥林普·贝赛女士是《凯尔伊苏姆评论报》的编辑。它发布那些对于其他文学杂志来说过于阴森可怕的材料。她最近正忙着准备出版的事，但她很快会回来的。",
 lifetime:120,
 decayTo: "bechetready",
 icon:"bechet"
@@ -176,7 +176,7 @@ icon:"poppy"
 		},
 						{id:"benefactorm_proposedtoplayer",
 		label: "提摩西·曼迪勋爵",
-		description:"在激情的推动下，提摩西勋爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在勋爵的激情衰退前跟他交谈，否则他会觉得自己被拒绝。]",
+		description:"在激情的推动下，提摩西勋爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在勋爵的热情衰退前跟他交谈，否则他会觉得自己被拒绝。]",
 		uniquenessgroup:"uqbenefactorm",
 		aspects:{mortal:1,benefactor_proposal:1},
 			xtriggers:{killmortal:benefactorwill},
@@ -186,7 +186,7 @@ icon:"poppy"
 		},
 				{id:"benefactorf_proposedtoplayer",
 		label: "尼克尔，第四代斯坦福女侯爵",
-		description:"在激情的推动下，那位最让人崇敬的斯坦福女侯爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在女侯爵的激情衰退前跟他交谈，否则她会觉得自己被拒绝。]",
+		description:"在激情的推动下，那位最让人崇敬的斯坦福女侯爵提出了结婚的想法。如果我能抓住机会，这将改变我的一生……并永远阻碍我的其他事业。[在女侯爵的热情消退前跟他交谈，否则她会觉得自己被拒绝。]",
 		uniquenessgroup:"uqbenefactorf",
 		aspects:{mortal:1,benefactor_proposal:1},
 			xtriggers:{killmortal:benefactorwill},
@@ -245,7 +245,7 @@ icon:"poppy"
 		
 				{id:"kleidouchos.enroute",
 		label: "施鲁塞尔女士，正在来的路上",
-		description:"特蕾莎·加尔米耶的“客户”，苏洛坎纳的“姐姐”，光阴之钥的所有者，正从维也纳赶来。",
+		description:"特蕾莎·加尔米耶的“客户”，苏洛坎纳的“姐姐”，光阴之钥的所有者，正从维也纳赶来。也许我应该在车站见她。",
 		aspects:{patron:1},
 		lifetime:180,
 		decayTo:kleidouchos

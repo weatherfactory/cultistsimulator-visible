@@ -37,7 +37,7 @@ defaultcard: "contentment",
 resetonexhaustion:true	
 	},
 	{id:"roserewards",
-	label:"浪漫的奖励",
+	label:"浪漫的回报",
 	description:"那时，此时，何时？",
 		spec:
 	["memorybittersweet",
@@ -47,7 +47,7 @@ resetonexhaustion:true
 	resetonexhaustion:true	
 	},
 	{id: "dreamreasonresults",
-		label:"梦之腹地",
+		label:"梦境的腹地",
 	description:"睡眠通常能歇息身体，平和心境；然而，总有例外——是了，总有例外。",
 	spec:
 	["dread",
@@ -73,7 +73,7 @@ resetonexhaustion:true
 	},
 		{id: "paintingresults",
 				label:"艺术的回报",
-	description:"作画通常能带来安逸。不过，有时候，我的作品也会吸引到一些关注。",
+	description:"作画通常能带来安逸。不过，有时候，我的作品也会引人关注。。",
 	spec:
 	["glimmering",
 "glimmering",
@@ -98,7 +98,7 @@ resetonexhaustion:true
 	},
 			{id: "paintingresultsreputation",
 				label:"名誉的回报",
-	description:"名中生利。",
+	description:"名能生利。",
 	spec:
 	["funds",
 "funds",
@@ -124,8 +124,8 @@ resetonexhaustion:true
 	},
 	
 		{id: "ecdysisrewards",
-					label:"最后的供品",
-	description:"俱乐部有保底的奖励，但是有时观众也会献出自己所有。",
+					label:"结束的奉礼",
+	description:"俱乐部有保底报酬，但是有时观众也会献出自己所有。",
 	spec:
 	["funds",
 	"funds",
@@ -151,7 +151,7 @@ resetonexhaustion:true
 	},
 	
 			{id: "robberyrewards",
-					label:"罪业的回报",
+					label:"罪业的报偿",
 	description:"我的手下经常能为我带回琐碎的财宝；有时只是些垃圾；然而，极少情况下，会是奇特的物什。",
 	spec:
 	["funds",
@@ -201,7 +201,7 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 		{id: "exploreevents",
-		label:"探索都城",
+		label:"探索首都",
 	description:"搜寻城市能够发现……",
 	spec:[
 	"daycriminals",
@@ -231,7 +231,7 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 		{id:"talkevents",
-	label:"午夜的聚会",
+	label:"午夜聚会",
 	description: "这里能遇见新的信徒，盟友或者敌人。",
 	spec:["dayacquaintances",
 		"dayacquaintances",
@@ -267,7 +267,7 @@ resetonexhaustion:true
 	},
 			{id:"troublemakerconversations",
 	label:"与捣乱分子对话",
-	description: "我会了解到什么呢？",
+	description: "我会得知什么呢？",
 	spec:[	"dread",
 	"dread",
 	"fascination",
@@ -281,7 +281,7 @@ resetonexhaustion:true
 	},
 	
 				{id:"forgelong",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description: "我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"julian_unknown",
 	"welland_unknown",
@@ -290,7 +290,7 @@ resetonexhaustion:true
 	},
 	
 					{id:"graillong",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["tryphon_unknown",
 	"tryphon_unknown",
@@ -299,7 +299,7 @@ resetonexhaustion:true
 	},
 	
 					{id:"lanternlong",
-	label:"工作上的敌人",
+	label:"大业之敌",
 		description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["julian_unknown",
 		"diarist_unknown",
@@ -308,7 +308,7 @@ resetonexhaustion:true
 	},
 	
 						{id:"long.strategies",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",
@@ -320,7 +320,7 @@ resetonexhaustion:true
 	
 		
 						{id:"long.strategies.preference.assault",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["strategy.assault.concealed",
 	"strategy.assault.concealed",
@@ -331,7 +331,7 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 							{id:"long.strategies.preference.intrigue",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",
@@ -343,7 +343,7 @@ resetonexhaustion:true
 	},
 	
 							{id:"long.strategies.preference.dreamwork",
-	label:"工作上的敌人",
+	label:"大业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",

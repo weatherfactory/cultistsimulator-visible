@@ -8,55 +8,55 @@
 	},
 		{id: "favour",
 	label: "当权者的偏袒",
-	description: "我掌握了某样能帮我渡过一次难关的东西。[这会使你或你的一位追随者免受牢狱之灾……但并不够可靠。] ",
+	description: "我掌握了某样能帮我渡过一次难关的东西。[这会使你或你的一名追随者免受牢狱之灾……但并不够可靠。] ",
 	aspects:{suspicious:1},
 	lifetime: 300
 	},
 		{id: "mistakenidentity",
 	label: "误认身份",
 	aspects: {mortal:1},
-	description: "到头来，这并不是你要寻找的人。他无足轻重，不会让你留下任何印象。或许已经没有什么人值得去见了。",
+	description: "到头来，这并不是你要寻找的人。他无足轻重，不会让你留下任何印象。或许已经没有什么人值得你去见了。",
 	xtriggers:{rebellion:generic_r},
 	comments:"This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
 	lifetime: 10
 	},
           {
         id: "funds",
-            label: "金钱",
+            label: "资金",
             aspects:
             {ingredient: 1},
-            description: "这足够支撑我舒舒服服度过一段时间。",
+            description: "足够供我舒舒服服地生活一小段时间。",
         },
 		          {
         id: "compensation",
             label: "古铁币",
 			aspects: {edge:2, secrethistories:1,compensationvalue:2,ingredient:1,auctionable:2},
-            description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。古铁币是最低的面额，反面刻绘着谋杀的情景。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]"
+            description: "隐秘世界的初级成员用斯宾特里亚古币支付各种费用。古铁币面值最低，背面画着凶杀的情形。[“古钱币”可以在拍卖行换成份数的普通资金。]"
         },
 		          {
         id: "compensationb",
             label: "古铜币",
             aspects: {forge:4, secrethistories:1,compensationvalue:4,ingredient:1,auctionable:3},
-			description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。古铜币的反面通常展示着塑造的过程。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]"
+			description: "隐秘世界的初级成员用斯宾特里亚古币支付各种费用。古铜币背面通常画着表示塑造的图案。[“古钱币”可以在拍卖行换成份数的普通资金。]"
         },
 		{
         id: "compensationc",
             label: "古银币",
 			aspects: {grail:6, secrethistories:1,compensationvalue:8,ingredient:1,auctionable:4},
-            description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。它们能够轻松地换成更多的普通金钱。古银币更具价值，通常在背面展示放荡的情景。[斯宾特里亚古币古币可以在拍卖行换取更多普通的金钱。]"
+            description: "隐秘世界的初级成员用斯宾特里亚古币支付各种费用。古币很容易卖出数值更高的普通货币。古银币更具价值，背面一般画着淫荡的情形。[“古钱币”可以在拍卖行换成份数的普通资金。]"
         },
 				{
         id: "compensationd",
             label: "古金币",
 			aspects: {lantern:8, secrethistories:1,compensationvalue:16,ingredient:1,auctionable:5},
-            description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。它们能够轻松地换成更多金钱。古金币反面展示了凡人无法看见的场景。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]"
+            description: "隐秘世界的初级成员用斯宾特里亚古币支付各种费用。古币很容易卖出数值更高的普通货币。古金币背面画着凡人肉眼不可见的情形。[“古钱币”可以在拍卖行换成份数的普通资金。]"
 
         },
 		{
         id: "mapbookdealer",
-            label: "前往莫兰书屋的路线",
+            label: "前往莫兰书店的路线",
             aspects:{text:1},
-            description: "通往莫兰书屋的神秘地址的隐秘路线。莫兰是贩卖某类稀有书籍的商人。"
+            description: "通往莫兰书店的神秘地址的隐秘路线。莫兰是贩卖某类稀有书籍的商人。"
         },		{
         id: "jumble",
             label: "杂物堆",

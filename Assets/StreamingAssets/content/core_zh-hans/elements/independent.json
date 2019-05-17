@@ -129,7 +129,7 @@
             icon:"porter_r", label: "捣乱分子波特",
             aspects:
             {mortal: 1,independent:1,rivalmarks:2,suspicious:1},
-            description: "波特已经开始编排名单了。",
+            description: "波特已经开始收集名字了。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:porter_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:porter_b},
 			uniquenessgroup:"uqporter"
@@ -139,7 +139,7 @@
             icon:"renira_r", label: "捣乱分子芮妮拉",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+            description: "芮妮拉喜欢将别人对她爱慕的转为崇拜。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:renira_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:renira_b},
 			uniquenessgroup:"uqrenira"
@@ -149,7 +149,7 @@
             icon:"rose_r", label: "捣乱分子萝丝",
             aspects:
             {mortal:1,independent:1,rivalmarks:2,suspicious:1},
-            description: "萝丝早已不再畏惧她的敌人。",
+            description: "萝丝早已停止了畏惧她的敌人。",
 			animFrames: 1,
 			xtriggers: {rival_promotion:rose_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:rose_b},
 			uniquenessgroup:"uqrose"
@@ -169,7 +169,7 @@
             icon:"slee_r", label: "捣乱分子思雷",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "思雷总是渴望更多资源来推进她的理论。",
+            description: "思雷总巴望搞到更多资源好钻研他的理论。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:slee_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:slee_b},
 			uniquenessgroup:"uqslee"
@@ -179,7 +179,7 @@
             icon:"sylvia_r", label: "捣乱分子西尔维娅",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+            description: "西尔维娅的日程安排不清不楚。有人怀疑连她自己也搞不清楚。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:sylvia_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_b},
 			uniquenessgroup:"uqsylvia"
@@ -189,7 +189,7 @@
             icon:"tristan_r", label: "捣乱分子崔斯坦",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+            description: "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:tristan_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_b},
 			uniquenessgroup:"uqtristan"
@@ -200,7 +200,7 @@
             icon:"valciane_r", label: "捣乱分子万查妮",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+            description: "万查妮用一个抄起瓶子就砸的小青年那种毫不留情的劲头对付反对她的人。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_b},
 			uniquenessgroup:"uqvalciane"
@@ -210,7 +210,7 @@
             icon:"victor_r", label: "捣乱分子维克多",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1,},
-            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+            description: "维克多已经准备好迎接可能来临的事物，他的所有刀子都锋利如新兵。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:victor_b},
 			uniquenessgroup:"uqvictor"
@@ -221,7 +221,7 @@
             icon:"violet_r", label: "捣乱分子维奥莱特",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "维奥莱特找到了新的乐子。",
+            description: "维奥莱特找到了新的爱好。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:violet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:violet_b},
 			uniquenessgroup:"uqviolet"
@@ -231,7 +231,7 @@
             icon:"ysabet_r", label: "捣乱分子伊莎贝特",
             aspects:
             {mortal:1,independent:1,rivalmarks:2, suspicious:1},
-            description: "伊莎贝特躲藏在阴影中等待。",
+            description: "伊莎贝特在别人看不到她的地方等待着。",
 			animFrames: 1,
 			xtriggers: {rival_promotion:ysabet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_b},
 			uniquenessgroup:"uqysabet",
@@ -239,7 +239,7 @@
 		
 						 {
         id: "generic_r_c",
-            label: "竞争者",
+            label: "对手",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
             description: "毫无是非观念的人。",
@@ -389,7 +389,7 @@
             icon:"porter_r", label: "对手波特",
             aspects:
             {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
-            description: "波特已经开始编排名单了。",
+            description: "波特已经开始收集名字了。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:porter_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:porter_c},
 			uniquenessgroup:"uqporter"
@@ -399,7 +399,7 @@
             icon:"renira_r", label: "对手芮妮拉",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+            description: "芮妮拉喜欢将别人对她爱慕的转为崇拜。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:renira_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:renira_c},
 			uniquenessgroup:"uqrenira"
@@ -409,7 +409,7 @@
             icon:"rose_r", label: "对手萝丝",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
-            description: "萝丝早已不再畏惧她的敌人。",
+            description: "萝丝早已停止了畏惧她的敌人。",
 			animFrames: 1,
 			xtriggers: {rival_promotion:rose_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:rose_c},
 			uniquenessgroup:"uqrose"
@@ -429,7 +429,7 @@
             icon:"slee_r", label: "对手思雷",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "思雷总是渴望更多资源来推进她的理论。",
+            description: "思雷总巴望搞到更多资源好钻研他的理论。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:slee_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:slee_c},
 			uniquenessgroup:"uqslee"
@@ -450,7 +450,7 @@
             icon:"sylvia_r", label: "对手西尔维亚",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+            description: "西尔维娅的日程安排不清不楚。有人怀疑连她自己也搞不清楚。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:sylvia_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_c},
 			uniquenessgroup:"uqsylvia"
@@ -460,7 +460,7 @@
             icon:"tristan_r", label: "对手崔斯坦",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+            description: "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:tristan_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_c},
 			uniquenessgroup:"uqtristan"
@@ -471,7 +471,7 @@
             icon:"valciane_r", label: "对手万查妮",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+            description: "万查妮用一个抄起瓶子就砸的小青年那种毫不留情的劲头对付反对她的人。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:valciane_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_c},
 			uniquenessgroup:"uqvalciane"
@@ -481,7 +481,7 @@
             icon:"victor_r", label: "对手维克多",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1,},
-            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+            description: "维克多已经准备好迎接可能来临的事物，他的所有刀子都锋利如新兵。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:victor_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:victor_c},
 			uniquenessgroup:"uqvictor"
@@ -492,7 +492,7 @@
             icon:"violet_r", label: "对手维奥莱特",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "维奥莱特找到了新的乐子。",
+            description: "维奥莱特找到了新的爱好。",
 			animFrames: 1,
 						xtriggers: {rival_promotion:violet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:violet_c},
 			uniquenessgroup:"uqviolet"
@@ -502,7 +502,7 @@
             icon:"ysabet_r", label: "对手伊莎贝特",
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
-            description: "伊莎贝特躲藏在阴影中等待。",
+            description: "伊莎贝特在别人看不到她的地方等待着。",
 			animFrames: 1,
 			xtriggers: {rival_promotion:ysabet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_c},
 			uniquenessgroup:"uqysabet",
@@ -671,7 +671,7 @@
             icon:"porter_r", label: "未成形的长生者波特",
             aspects:
             {mortal: 1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
-            description: "波特已经开始编排名单了。",
+            description: "波特已经开始收集名字了。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
 			uniquenessgroup:"uqporter"
@@ -681,7 +681,7 @@
             icon:"renira_r", label: "未成形的长生者芮妮拉",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "芮妮拉喜欢将他人的仰慕转变为崇拜。",
+            description: "芮妮拉喜欢将别人对她爱慕的转为崇拜。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
 			uniquenessgroup:"uqrenira"
@@ -691,7 +691,7 @@
             icon:"rose_r", label: "未成形的长生者萝丝",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
-            description: "萝丝早已不再畏惧她的敌人。",
+            description: "萝丝早已停止了畏惧她的敌人。",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
 			uniquenessgroup:"uqrose"
@@ -711,7 +711,7 @@
             icon:"slee_r", label: "未成形的长生者思雷",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "思雷总是渴望更多资源来推进她的理论。",
+            description: "思雷总巴望搞到更多资源好钻研他的理论。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
 			uniquenessgroup:"uqslee"
@@ -732,7 +732,7 @@
             icon:"sylvia_r", label: "未成形的长生者西尔维亚",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "西尔维娅的日程安排总是混乱不堪。有人怀疑甚至她自己也不太确定。",
+            description: "西尔维娅的日程安排不清不楚。有人怀疑连她自己也搞不清楚。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
 			uniquenessgroup:"uqsylvia"
@@ -742,7 +742,7 @@
             icon:"tristan_r", label: "未成形的长生者崔斯坦",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "崔斯坦正在铸造一个小小的王国。如果有必要用火，他就会用火。",
+            description: "崔斯坦正在铸造一个小小的王国。有必要用火时，他就会用火。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
 			uniquenessgroup:"uqtristan"
@@ -753,7 +753,7 @@
             icon:"valciane_r", label: "未成形的长生者万查妮",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+            description: "万查妮用一个抄起瓶子就砸的小青年那种毫不留情的劲头对付反对她的人。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
 			uniquenessgroup:"uqvalciane"
@@ -763,7 +763,7 @@
             icon:"victor_r", label: "未成形的长生者维克多",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1,},
-            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+            description: "维克多已经准备好迎接可能来临的事物，他的所有刀子都锋利如新兵。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
 			uniquenessgroup:"uqvictor"
@@ -774,7 +774,7 @@
             icon:"violet_r", label: "未成形的长生者维奥莱特",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "维奥莱特找到了新的乐子。",
+            description: "维奥莱特找到了新的爱好。",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
 			uniquenessgroup:"uqviolet"
@@ -784,7 +784,7 @@
             icon:"ysabet_r", label: "未成形的长生者伊莎贝特",
             aspects:
             {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
-            description: "伊莎贝特躲藏在阴影中等待。",
+            description: "伊莎贝特在别人看不到她的地方等待着。",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
 			uniquenessgroup:"uqysabet",

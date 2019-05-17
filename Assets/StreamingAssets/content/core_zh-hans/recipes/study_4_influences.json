@@ -8,7 +8,7 @@
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "对世界之肤施以压力，它便会像熟透果实的外皮一样崩裂。[用<b>启</b>研究之影响亦将成为<b>启</b>。]",
+	startdescription: "对世界的表皮施以压力，它便会像熟透果实的表皮一样崩裂。[用<b>启</b>研究之影响亦将成为<b>启</b>。]",
 	description: ".",
 	warmup:5,
 	craftable: true
@@ -30,7 +30,7 @@
 	},
 		{
 	id: "studysubvertinfluence_edgetowinter",
-	label: "转化<b>刃</b>之影响",
+	label: "转化刃之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
@@ -45,7 +45,7 @@
 
 	{
 	id: "studyforgeinfluence",
-	label: "升温",
+	label: "燃起高温",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:-1,lantern:-1,knock:-1},
 	effects:{project_influence_upgrade_forge:1},
@@ -60,7 +60,7 @@
 
 		{
 	id: "studysubvertinfluence_forgetoedge",
-	label: "转化<b>铸</b>之影响",
+	label: "转化铸之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:1},
 	effects:{project_influence_subvert_forgetoedge:1},
@@ -75,7 +75,7 @@
 
 			{
 	id: "studygrailinfluence",
-	label: "统合六欲",
+	label: "统合欲望",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:-1,heart:-1,knock:-1},
 	effects:{project_influence_upgrade_grail:1},
@@ -90,13 +90,13 @@
 
 			{
 	id: "studysubvertinfluence_grailtomoth",
-	label: "转化<b>杯</b>之影响",
+	label: "转化杯之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:1},
 	effects:{project_influence_subvert_grailtomoth:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "据说<b>杯</b>诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>转化为<b>蛾</b>之影响。]",
+	startdescription: "据说杯神诞生于第一场献祭。然而蛾神知道真相并非如此。[将<b>杯</b>转化为<b>蛾</b>之影响。]",
 
 	warmup:5,
 	craftable: true,
@@ -105,13 +105,13 @@
 
 				{
 	id: "studyheartinfluence",
-	label: "交织不休的韵律",
+	label: "交织不休的节拍",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:-1,winter:-1,knock:-1},
 	effects:{project_influence_upgrade_heart:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "解剖家、舞蹈家以及萨满都会学习的知识。[升级<b>心</b>之影响。]",
+	startdescription: "所有解剖家、舞蹈家和萨满都要学的一课。[升级<b>心</b>之影响。]",
 
 	warmup:5,
 	craftable: true,
@@ -119,7 +119,7 @@
 
 					{
 	id: "studysubvertinfluence_hearttograil",
-	label: "转化<b>心</b>之影响",
+	label: "转化心之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:1},
 	effects:{project_influence_subvert_hearttograil:1},
@@ -132,20 +132,20 @@
 	},
 		{
 	id: "studylanterninfluence",
-	label: "对光",
+	label: "均匀光度",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:-1,moth:-1,knock:-1},
 	effects:{project_influence_upgrade_lantern:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "镜像交错，暗影分离，太阳光辉的血稠密至极。[升级<b>灯</b>之影响。]",
+	startdescription: "镜像交错，影子分离处，太阳金色的血液稠密已极。[升级<b>灯</b>之影响。]",
 
 	warmup:5,
 	craftable: true,
 	},
 			{
 	id: "studysubvertinfluence_lanterntoforge",
-	label: "转化<b>灯</b>之影响",
+	label: "转化灯之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:1},
 	effects:{project_influence_subvert_lanterntoforge:1},
@@ -174,7 +174,7 @@
 
 				{
 	id: "studysubvertinfluence_mothtolantern",
-	label: "转化<b>蛾</b>之影响",
+	label: "转化蛾之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:1},
 	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
@@ -182,7 +182,7 @@
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "若光是一个疑问，蛾总以肯定作答。[将<b>蛾</b>转化为<b>灯</b>之影响。]",
+	startdescription: "若辉光是一个疑问，蛾总以肯定作答。[将<b>蛾</b>转化为<b>灯</b>之影响。]",
 
 	warmup:5,
 	craftable: true
@@ -190,28 +190,28 @@
 
 				{
 	id: "studywinterinfluence",
-	label: "深化寂静",
+	label: "加深寂静",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:-1,knock:-1},
 	effects:{project_influence_upgrade_winter:1},
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "寂静等在世界的西边，但这并非永久。[升级<b>冬</b>之影响。]",
+	startdescription: "寂静等在世界以西，但并非永远。[升级<b>冬</b>之影响。]",
 
 	warmup:5,
 	craftable: true
 	},
 			{
 	id: "subvertwinterinfluence",
-	label: "转化<b>冬</b>之影响",
+	label: "转化冬之影响",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:1},
 	effects:{project_influence_subvert_wintertoheart:1},
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "纵使在雪地中，在寂静中，在没有色彩的纯白中，生命亦永不停歇。[将<b>冬</b>转化为<b>心</b>之影响。]",
+	startdescription: "纵使在雪，在静默中，在没有色彩的纯白中，生命亦不尽休止。[将<b>冬</b>转化为<b>心</b>之影响。]",
 
 	warmup:5,
 	craftable: true
@@ -220,7 +220,7 @@
 					{
 	id: "studyinfluence_effectproject",
 
-	label: "结果揭示的时刻",
+	label: "揭示后果的时刻",
 	actionId: "study",
 	requirements:{influence:2},
 	startdescription: "现在性能与潜力重合了——",
@@ -261,7 +261,7 @@
 
 
 			{id:"studyproject_influence_upgrade_forge",
-	label:"更热了",
+	label:"更高的热度",
 	actionId:"study",
 	requirements:{project_influence_upgrade_forge:1},
 	effects:{forge:-1},
@@ -277,7 +277,7 @@
 	description:"我强化了<b>杯</b>之影响。"
 	},
 			{id:"studyproject_influence_upgrade_heart",
-	label:"不休的韵律",
+	label:"不休的节拍",
 	actionId:"study",
 	requirements:{project_influence_upgrade_heart:1},
 	effects:{heart:-1},
@@ -285,7 +285,7 @@
 description:"我强化了<b>心</b>之影响。"
 	},
 			{id:"studyproject_influence_upgrade_lantern",
-	label:"对光完成",
+	label:"光度已匀",
 	actionId:"study",
 	requirements:{project_influence_upgrade_lantern:1},
 	effects:{lantern:-1},
@@ -318,7 +318,7 @@ description:"我强化了<b>冬</b>之影响。"
 	requirements:{project_influence_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"坚忍胜于力量"
+	description:"坚忍胜过力量"
 	},
 
 			{id:"studyproject_influence_subvert_forgetoedge",
@@ -327,7 +327,7 @@ description:"我强化了<b>冬</b>之影响。"
 	requirements:{project_influence_subvert_forgetoedge:1},
 	effects:{forge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"成型之物我已打碎。"
+	description:"我已打碎成型之物。"
 	},
 			{id:"studyproject_influence_subvert_grailtomoth",
 	label:"欲望为昧",
@@ -343,10 +343,10 @@ description:"我强化了<b>冬</b>之影响。"
 	requirements:{project_influence_subvert_hearttograil:1},
 	effects:{heart:-1},
 	aspects:{upgradeinfluence:1},
-	description:"所有会动的东西必将被欲望压垮。"
+	description:"有生之物必将被欲望压垮。"
 	},
 			{id:"studyproject_influence_subvert_lanterntoforge",
-	label:"正午日坠",
+	label:"正午日落",
 	actionId:"study",
 	requirements:{project_influence_subvert_lanterntoforge:1},
 	effects:{lantern:-1},
@@ -359,7 +359,7 @@ description:"我强化了<b>冬</b>之影响。"
 	requirements:{project_influence_subvert_mothtolantern:1},
 	effects:{moth:-1},
 	aspects:{upgradeinfluence:1},
-	description:"若光是一个疑问，蛾总以肯定作答。"
+	description:"若辉光是一个疑问，蛾总以肯定作答。"
 	},
 
 			{id:"studyproject_influence_subvert_wintertoheart",
@@ -368,16 +368,16 @@ description:"我强化了<b>冬</b>之影响。"
 	requirements:{project_influence_subvert_wintertoheart:1},
 	effects:{winter:-1},
 	aspects:{upgradeinfluence:1},
-	description:"降临的冬终将让位于春。"
+	description:"凛冬终将让位于春。"
 	},
 
 				{id:"studyproject_influence_upgrade_subvert_knock",
-	label:"世界的外皮",
+	label:"世界的表皮",
 	actionId:"study",
 	requirements:{project_influence_upgrade_subvert_knock:1},
 	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
 	aspects:{upgradeinfluence:1},
-	description:"请在弱点施压，撕开世界的外皮。",
+	description:"在脆弱处施压，撕开世界的表皮。",
 	linked:[{id:"studyproject_influence_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_influence_upgrade_subvert_knock_remove_spare_knock",

@@ -14,9 +14,9 @@
 		{id:"summoning_haunt_devourer_eatsmortal",
 	label: "潜伏的吞噬者",
 	actionId:"haunting",
-	startdescription: "那只从你处逃走的召唤物在此地作乱，寻找凡人来吞噬。[吞噬者的属性越高，他们就更加容易去伤害凡人。]",
+	startdescription: "那只从你处逃走的召唤物在此地作乱，寻找凡人来吞噬。[吞噬者的属性越高，他就更加容易去伤害凡人。]",
 	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
-	slots: [{id:"Consuming",label:"消耗",required: {mortal:1},greedy:true}],
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"devourer_haunting_mortal_highdevourer",chance:100},
@@ -44,7 +44,7 @@
 	  	  	   {id: "devourer_haunting_mortal_middevourer",
 	   label: "逃脱的召唤物逐步接近它的受害者",
 	  actionId:"haunting",
-	  startdescription:"事到如今，受害者会注意到有些不对劲了。他们将在夜里留心响动，试图防备。",
+	  startdescription:"事到如今，受害者会注意到有些不对劲了。他将在夜里留心响动，试图防备。",
 	  description:". devourer_haunting_mortal_middevourer",
 	  requirements: {mortal:1,devourer:5},
 	  warmup:15,
@@ -173,7 +173,7 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	actionId:"haunting",
 	startdescription: "那只从你处逃走的召唤物骚扰着着你，试图使你陷入绝望——",
 	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
-	slots: [{id:"Consuming",label:"消耗",required: {reason:1},greedy:true}],
+	slots: [{id:"Consuming",required: {reason:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"deceiver_haunting_reason_highdeceiver",chance:100},
@@ -244,7 +244,7 @@ linked:[{id:"summoning_haunt_deceiver_derangesreason"}]
 	description: "你召唤出来的生物已经回到了属于它的地方。它暂时不会对再你造成伤害了。",
 	effects: {notoriety:1},
 	aspects: {derangemortal:1},
-	slots: [{id:"Consuming",label:"消耗",required: {mortal:1},greedy:true}],
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"deceiver_haunting_mortal_highedge",chance:100},

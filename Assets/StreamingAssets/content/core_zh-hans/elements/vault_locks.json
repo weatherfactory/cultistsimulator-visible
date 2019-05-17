@@ -35,13 +35,13 @@
 				{id: "seal_wardeddoor",
 	label: "上锁的门",
 	aspects: {seal:1},
-	description: "一位工程师或学徒确保了这扇门不会被轻易打开。<b>铸</b>或<b>启</b>能够打开它。"
+	description: "一名工程师，或学徒，确保了这扇门不会轻易打开。<b>铸</b>或<b>启</b>能够打开它。"
 	},
 	
 			{id: "guardian_serpent",
-	label: "妹妹",
+	label: "幼妹",
 	aspects: {guardian:1},
-	description: "蚁母诞生于巨蛇之中。她拥有许许多多的妹妹。它们可以在战斗中被打倒；不然它们将会响应蚁母的力量。"
+	description: "蚁母诞生于蛇群之中。她拥有许许多多的幼妹。你可以在战斗中将其打败；否则它将回应蚁母的神力。"
 	},
 		{id: "guardian_watchers",
 	label: "看守",
@@ -63,8 +63,8 @@
 	
 	
 				{id: "guardian_serpent_pre",
-	label: "妹妹",
-	description: "蚁母诞生于巨蛇之中。她拥有许许多多的妹妹。它们可以在战斗中被打倒；不然它们将会响应蚁母的力量。",
+	label: "幼妹",
+	description: "蚁母诞生于蛇群之中。她拥有许许多多的幼妹。你可以在战斗中将其打败；否则它将回应蚁母的神力。",
 	isAspect:true,
 	icon:"guardian"
 	},
@@ -104,7 +104,7 @@
 	},
 	
 		{id: "curse_dread",
-	label: "吸魂诅咒",
+	label: "涸魂诅咒",
 	aspects: {curse:1},
 	description: "我们需要<b>心</b>或<b>灯</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
@@ -114,12 +114,12 @@
 	description: "我们需要<b>心</b>或者<b>冬</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 	{id: "curse_affliction",
-	label: "蠕息诅咒",
+	label: "迟息诅咒",
 	aspects: {curse:1},
 	description: "我们需要<b>心</b>或者<b>杯</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 		{id: "curse_nowhere",
-	label: "此世之虫",
+	label: "世间的蠕虫",
 	aspects: {curse:1},
 	description: "我们需要<b>灯</b>或者<b>蛾</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},

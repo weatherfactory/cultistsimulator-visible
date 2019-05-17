@@ -59,7 +59,7 @@
             aspects:
             {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
             animFrames: 1,
-			description: "一个眼神炯炯有神，警惕的女人，她能完美地回忆起她的梦境。",
+			description: "一个目光炯炯，精神警觉的女人，她能完美地回忆她的梦境。",
 			xtriggers: {promotiontodisciple: cat_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r},
 			uniquenessgroup:"uqcat"
 
@@ -76,7 +76,7 @@
         },
 				 {
         id: "cat_d",
-            label: "预言家卡特·卡罗",
+            label: "预言者卡特·卡罗",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "考古学家在墓穴中发现了宝藏。农民从地里收割庄稼。卡特·卡罗在梦中发现了什么呢？",
@@ -111,14 +111,14 @@
             label: "门徒“教皇”克利夫顿",
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
-            description: "克利夫顿的祷告变得越来越复杂。他的眼睛睁得大大的，闪闪发光。他的声音变得更大了。",
+            description: "克利夫顿的祀奉变得越来越复杂。他的眼睛睁得大大的，闪闪发光。他的声音变得更大了。",
 			animFrames: 1,
 			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r_c},
 			uniquenessgroup:"uqclifton"
         },
 				 {
         id: "clifton_d",
-            label: "预言家克利夫顿",
+            label: "预言者克利夫顿",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "克利夫顿仍在背诵他的祷告词，但它们变得像古旧的镜子一样奇怪。他每天早晨起来迎接黎明。他直视太阳的面庞，然后告诉你他看到了什么。",
@@ -215,7 +215,7 @@
             label: "门徒多萝西",
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,heart:5,follower_lustchange:1},
-            description: "多萝西的热情已转变为痴迷。她决不会在目标前停下，噢，她现在多爱跳舞啊。",
+            description: "多萝西的激情已转为痴迷。她不会停下，噢，她现在多爱跳舞啊。",
 			animFrames: 1,
 			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r_c},
 			uniquenessgroup:"uqdorothy"
@@ -237,7 +237,7 @@
             aspects:
             {mortal: 1, follower: 1,forge: 2},
             animFrames: 1,
-			description: "道格拉斯为了<b>炉</b>交换了力量。",
+			description: "道格拉斯用力量交换了炉。",
 			xtriggers: {promotiontodisciple: douglas_c,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
 			uniquenessgroup:"uqdouglas",
 			icon:"douglas_r"
@@ -247,7 +247,7 @@
             label: "门徒道格拉斯",
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,forge:5},
-            description: "道格拉斯不喜欢锤子。这让他想起一起事故。但他会用到所必需的工具。",
+            description: "道格拉斯不喜欢锤子。这让他想起一起事故。但他会使用必用的器具。",
 			animFrames: 1,
 			xtriggers: {promotionto_d_forge: douglas_d,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r_c},
 			uniquenessgroup:"uqdouglas",
@@ -269,7 +269,7 @@
             label: "熟人埃尔里奇",
             aspects:
             {mortal: 1,acquaintance:1,follower_lustpower:1},
-            description: "一位有着不雅习惯的优雅男人。[你也许可以招募这位熟人作为追随者。]",
+            description: "一名拥有不雅习惯的优雅男人。[你也许可以招募这位熟人作为追随者。]",
 			animFrames: 1,
 			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqelridge"
@@ -392,7 +392,7 @@
             label: "熟人里奥",
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
-            description: "里奥是个对密教有兴趣的热心的人。他对于你提到的无形之仪十分在意。[你也许可以招募这位熟人作为追随者。]",
+            description: "里奥是个对密教有兴趣的热心的人。他对于你提到的无形之术十分在意。[你也许可以招募这位熟人作为追随者。]",
 			animFrames: 1,
 			xtriggers: {recruiting:leo_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqleo"
@@ -422,7 +422,7 @@
             label: "蛊舞者里奥",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1, heart:10,follower_lustchange:1},
-            description: "里奥会不惜一切保持事物存续。他决不会停止。",
+            description: "里奥会不惜一切保持存续。他不会停止。",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r_d},
 			uniquenessgroup:"uqleo"
@@ -485,7 +485,7 @@
             label: "灵钥内维尔",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10,follower_lustenlightenment:1},
-            description: "在梦中，内维尔看见那些能打开世界与其道路的缺口。",
+            description: "在梦中，内维尔看见那些能打开世界与其道路的破绽。",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r_d},
 			uniquenessgroup:"uqneville"
@@ -591,7 +591,7 @@
             aspects:
             {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
             animFrames: 1,
-			description: "萝丝是一位狡猾但忠诚的女士。",
+			description: "萝丝是一个狡猾但忠诚的姑娘。",
 			xtriggers: {promotiontodisciple: rose_c,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r},
 			uniquenessgroup:"uqrose"
         },
@@ -621,7 +621,7 @@
             label: "熟人萨利巴",
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
-            description: "萨利巴是一个有着惊人欲望的人。他早就过了通过满足欲望获得乐趣的阶段。但他学到了很多。[你也许可以招募这位熟人作为追随者。]",
+            description: "萨利巴是一个有着惊人欲望的人。他早就过了通过满足欲望获得欢愉的阶段。但他学到了很多。[你也许可以招募这位熟人作为追随者。]",
 			animFrames: 1,
 			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqsaliba"
@@ -643,7 +643,7 @@
             label: "门徒萨利巴",
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,grail:5,follower_lustsensation:1},
-            description: "萨利巴在一间没有窗子的房间中享受愉悦。他的伙伴会一次又一次地回来找他，即使每一次他们都会少许不如原先。",
+            description: "萨利巴在一间没有窗子的房间中享受欢愉。他的伙伴会一次又一次地回来找他，即使每一次他们都会少许不如原先。",
 			animFrames: 1,
 			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r_c},
 			uniquenessgroup:"uqsaliba"
@@ -691,7 +691,7 @@
         },
 				 {
         id: "slee_d",
-            label: "预言家思雷",
+            label: "预言者思雷",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "思雷专门谈论数学和诗歌。两者都很吸引人：分辨两者的差异变得越来越难了。",
@@ -864,7 +864,7 @@
             aspects:
             {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
             animFrames: 1,
-			description: "维克多是一位狡猾的家伙，但他很忠诚。",
+			description: "维克多是一个狡猾的家伙，但他很忠诚。",
 			xtriggers: {promotiontodisciple: victor_c,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r},
 			uniquenessgroup:"uqvictor"
         },
@@ -958,7 +958,7 @@
             label: "门徒伊莎贝特",
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
-            description: "伊莎贝特刚才就在此处，就在片刻前。就是此处，我们几乎可以肯定。",
+            description: "伊莎贝特刚才就在此处，就在片刻前。就是此处。几乎可以肯定。",
 			animFrames: 1,
 			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r_c},
 			uniquenessgroup:"uqysabet"
@@ -1411,7 +1411,7 @@
         },
 										 {
         id: "generic_c_edge",
-            label: "一位强壮的门徒",
+            label: "强壮的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:2},
             animFrames: 1,
@@ -1420,7 +1420,7 @@
         },
 										 {
         id: "generic_c_forge",
-            label: "一位务实的门徒",
+            label: "务实的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
             animFrames: 1,
@@ -1429,7 +1429,7 @@
         },
 										 {
         id: "generic_c_grail",
-            label: "一位贪婪的门徒",
+            label: "热切的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
             animFrames: 1,
@@ -1438,7 +1438,7 @@
         },
 										 {
         id: "generic_c_heart",
-            label: "一位活泼的门徒",
+            label: "活泼的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
             animFrames: 1,
@@ -1447,7 +1447,7 @@
         },
 								 {
         id: "generic_c_knock",
-            label: "一位手巧的门徒",
+            label: "手巧的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
             animFrames: 1,
@@ -1457,7 +1457,7 @@
 
 										 {
         id: "generic_c_lantern",
-            label: "一位眼尖的门徒",
+            label: "眼尖的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
             animFrames: 1,
@@ -1466,7 +1466,7 @@
         },
 												 {
         id: "generic_c_moth",
-            label: "一位古怪的门徒",
+            label: "古怪的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
             animFrames: 1,
@@ -1477,7 +1477,7 @@
         },
 														 {
         id: "generic_c_winter",
-            label: "一位沉默的门徒",
+            label: "沉默的门徒",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
             animFrames: 1,
@@ -1487,7 +1487,7 @@
 
 						 {
         id: "generic_p",
-            label: "被背叛的追随者",
+            label: "遭背叛的追随者",
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3},
             description: "此人疲弱地控诉着自己的命运。",
