@@ -666,6 +666,16 @@ mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:-1
 warmup:30
 },
 
+{id:"ending.minorcrownedgrowthvictory",
+actionId:"ambition",
+label:"TO INFECT AND BECOME",
+requirements:{ghoul.hunger:7},
+startdescription:"My appetite has become a thing beyond me, but not outside me. My abdomen pullulates with fruitfulness. It is too late.",
+ending:"minorcrownedgrowthvictory",
+signalEndingFlavour:"Vile",
+warmup:30},
+
+
 {id:"ascensionnotyet",
 label:"Mortal Frustrations",
 actionId: "craving",
