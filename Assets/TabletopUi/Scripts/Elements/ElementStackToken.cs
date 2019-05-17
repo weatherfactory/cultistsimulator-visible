@@ -752,7 +752,19 @@ namespace Assets.CS.TabletopUI {
 			}
 		}
 
-        public override void OnPointerClick(PointerEventData eventData)
+		public override void OnPointerEnter(PointerEventData eventData)
+		{
+			base.OnPointerEnter(eventData);
+			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(EntityId, Quantity);
+		}
+
+		public override void OnPointerExit(PointerEventData eventData)
+		{
+			base.OnPointerExit(eventData);
+			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(null);
+		}
+
+		public override void OnPointerClick(PointerEventData eventData)
 		{
 			if (eventData.clickCount > 1)
 			{

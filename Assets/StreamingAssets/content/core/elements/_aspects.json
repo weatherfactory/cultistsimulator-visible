@@ -215,7 +215,7 @@
         },
 		{id:"rededicable",
 		label:"Uncertain",
-		description:"This organisation has begun to question its tenets. With enough Fervour, it might reaffirm or alter its direction.",
+		description:"This organisation has begun to question its tenets. I could apply pressure to alter its direction.",
 		isAspect:true
 		},
 		        {
@@ -539,7 +539,8 @@ isAspect:true},
             id: "movehq",
             label: "Move to a New HQ",
 			description: "Recipe aspect",
-        isAspect: true
+        isAspect: true,
+		noartneeded:true
 },
 
 {id:"library",
@@ -1014,6 +1015,14 @@ isAspect:true
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
+        },
+        {
+            id: "killmanifesting",
+            label: "Kill Manifesting Summoning",
+            description: "Summonings will be replaced by flavour influences or summon blockers",
+            isAspect: true,
+            comments: "Recipe aspect",
+            noartneeded: true
         },
 								 {
             id: "dissolution",
@@ -1656,7 +1665,7 @@ isAspect:true
 						     {
         id: "openedlockscar",
             label: "Open Lock-Scar",
-            description: "[This Scar is opening.",
+            description: "[This Scar is opening.]",
 		isAspect:true
 			},
 									     {
@@ -1733,9 +1742,13 @@ isAspect:true
 label:"Remnant",
 description:"Once another wore this flesh.",
 isAspect:true
+},
+
+{id:"manifesting",
+label:"Manifesting",
+description:"The spirit is entering the world. This is simpler than a birth, but not so simple as passing through a door.",
+isAspect:true
 }
-
-
 
 
 

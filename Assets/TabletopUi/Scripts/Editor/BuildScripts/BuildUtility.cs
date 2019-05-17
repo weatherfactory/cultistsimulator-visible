@@ -20,7 +20,6 @@ namespace Assets.Core.Utility
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
-        private const char CONST_SLASH_CHAR = '/';
 
         private static readonly string[] Scenes = 
         {
@@ -41,6 +40,13 @@ namespace Assets.Core.Utility
             "legacies",
             "recipes",
             "verbs"
+        };
+
+        private static readonly string[] Locales =
+        {
+            null,  // Default locale (en)
+            "ru",
+            "zh-hans"
         };
         
         [MenuItem("Tools/Build (Windows)")]
@@ -128,12 +134,13 @@ namespace Assets.Core.Utility
             // Take the DLCs out of the base edition and into their own directories
             var dlcPath = JoinPaths(buildPath, CONST_DLC);
             foreach (var dlcContentType in ContentTypes)
-                MoveDlcContent(baseEditionPath, dlcPath, target, dlcContentType);
+                foreach (var locale in Locales)
+                    MoveDlcContent(baseEditionPath, dlcPath, target, dlcContentType, locale);
         }
 
-        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string contentOfType)
+        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string contentOfType, string locale)
         {
-            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, target, contentOfType);
+            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, target, contentOfType, locale);
             Log("Searching for DLC in " + baseEditionContentPath);
             
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
@@ -154,7 +161,7 @@ namespace Assets.Core.Utility
 
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
-                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), target, contentOfType);
+                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), target, contentOfType, locale);
                 string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
                 {
@@ -250,9 +257,13 @@ namespace Assets.Core.Utility
             }
         }
 
-        private static string GetCoreContentPath(string basePath, BuildTarget target, string contentOfType)
+        private static string GetCoreContentPath(string basePath, BuildTarget target, string contentOfType, string locale)
         {
-            return JoinPaths(basePath, GetDataFolderForTarget(GetExeNameForTarget(target)), CONST_CORE_CONTENT_LOCATION, contentOfType);
+            return JoinPaths(
+                basePath, 
+                GetDataFolderForTarget(GetExeNameForTarget(target)), 
+                CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""), 
+                contentOfType);
         }
 
         private static bool IsPermittedFileToCopy(FileSystemInfo file)

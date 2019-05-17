@@ -61,49 +61,56 @@ label:"Edge-Lock Scar",
 description:"When I am Threshold, this scar will open beneath a blade's touch.",
 aspects:{tool:1,knock:2,openedlockscar:1,edge:2},
 lifetime:1,
-decayTo:lockscaredge
+decayTo:lockscaredge,
+icon:"lockscaredge"
 },
 {id:"openedlockscarforge",
 label:"Forge-Lock Scar",
 description:"When I am Threshold, this scar will open to the touch of hot iron.",
 aspects:{tool:1,knock:2,openedlockscar:1,forge:2},
 lifetime:1,
-decayTo:lockscarforge
+decayTo:lockscarforge,
+icon:"lockscarforge"
 },
 {id:"openedlockscargrail",
 label:"Grail-Lock Scar",
 description:"When I am Threshold, this scar will open to a fervent kiss.",
 aspects:{tool:1,knock:2,openedlockscar:1,grail:2},
 lifetime:1,
-decayTo:lockscargrail
+decayTo:lockscargrail,
+icon:"lockscargrail"
 },
 {id:"openedlockscarheart",
 label:"Heart-Lock Scar",
 description:"When I am Threshold, this scar will open at the beat of the drum.",
 aspects:{tool:1,knock:2,openedlockscar:1,heart:2},
 lifetime:1,
-decayTo:lockscarheart
+decayTo:lockscarheart,
+icon:"lockscarheart",
 },
 {id:"openedlockscarlantern",
 label:"Lantern-Lock Scar",
 description:"When I am Threshold, this scar will open at the flush of dawn.",
 aspects:{tool:1,knock:2,openedlockscar:1,lantern:2},
 lifetime:1,
-decayTo:lockscarlantern
+decayTo:lockscarlantern,
+icon:"lockscarlantern"
 },
 {id:"openedlockscarmoth",
 label:"Moth-Lock Scar",
 description:"When I am Threshold, this scar will answer to the scissors.",
 aspects:{tool:1,knock:2,openedlockscar:1,moth:2},
 lifetime:1,
-decayTo:lockscarmoth
+decayTo:lockscarmoth,
+icon:"lockscarmoth"
 },
 {id:"openedlockscarwinter",
 label:"Winter-Lock Scar",
 description:"When I am Threshold, this scar will open last.",
 aspects:{tool:1,knock:2,openedlockscar:1,winter:2},
 lifetime:1,
-decayTo:lockscarwinter
+decayTo:lockscarwinter,
+icon:"lockscarwinter"
 },
 
 											 {
