@@ -58,6 +58,7 @@ public class MenuScreenController : MonoBehaviour {
     public MenuSubtitle Subtitle;
 
     public GameObject modEntryPrefab;
+    public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
 
     bool canTakeInput;
@@ -376,12 +377,14 @@ public class MenuScreenController : MonoBehaviour {
         // Clear the list and repopulate with one entry per loaded mod
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry);
+        
         foreach (var mod in _modManager.Mods.Values)
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
             modEntry.Initialize(mod);
         }
+        modEmptyMessage.enabled = !_modManager.Mods.Any();
     }
 #endif
     

@@ -1,16 +1,14 @@
-#if MODS
 using Assets.CS.TabletopUI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
     public class ModEntry : MonoBehaviour
     {
-        public Text activationToggle;
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
+        public Babelfish activationToggleText;
         
         private Mod _mod;
 
@@ -38,11 +36,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         private void UpdateActivationState()
         {
-            activationToggle.text = _mod.Enabled ? "Disable" : "Enable";
+            activationToggleText.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
             description.color = newColor;
         }
     }
 }
-#endif
