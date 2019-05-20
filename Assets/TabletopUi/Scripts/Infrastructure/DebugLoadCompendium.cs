@@ -1,6 +1,9 @@
 ﻿using Assets.CS.TabletopUI;
 using System.Collections;
 using System.Collections.Generic;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+#endif
 using UnityEngine;
 
 public class DebugLoadCompendium : MonoBehaviour
@@ -20,6 +23,9 @@ public class DebugLoadCompendium : MonoBehaviour
 	private void SetupServices()
 	{
         var registry = new Registry();
+#if MODS
+        registry.Register(new ModManager(false));
+#endif
         var compendium = new Compendium();
         var contentImporter = new ContentImporter();
         contentImporter.PopulateCompendium(compendium);
