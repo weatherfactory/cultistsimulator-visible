@@ -136,7 +136,10 @@ Add a follower strong in
 <sprite name=grail> <sprite name=heart> for Intrigues, 
 <sprite name=moth> <sprite name=winter> for Starlight attacks.]",
 slots:[{id:"spy",label:"Spy",description:"Spies can learn of the Long's plans. If you know or guess the nature of those plans, the right spies can delay them.", required:{follower:1}}],
-alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
+alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.might",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.connections",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.dreamwork",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
 effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
@@ -190,6 +193,32 @@ label:"Because We Are Too Many",
 requirements:{follower:3},
 startdescription:"Our enemy is vigilant. We've sent too many watchers - if we send more than two, all will fail.",
 warmup:10},
+
+{id:"expelallspies_beforeconfrontation.might",
+actionId:"expelallspies",
+label:"Before the Storm",
+requirements:{long.might:10,follower:1},
+startdescription:"Our enemy is almost ready to attack us directly. We've recalled our spies.",
+warmup:10},
+
+{id:"expelallspies_beforeconfrontation.connections",
+actionId:"expelallspies",
+label:"Before the Storm",
+requirements:{long.connections:10,follower:1},
+startdescription:"Our enemy is almost ready to attack us directly. We've recalled our spies.",
+warmup:10},
+
+
+
+{id:"expelallspies_beforeconfrontation.dreamwork",
+actionId:"expelallspies",
+label:"Before the Storm",
+requirements:{long.dreamwork:10,follower:1},
+startdescription:"Our enemy is almost ready to attack us directly. We've recalled our spies.",
+warmup:10},
+
+
+
 
 
 
