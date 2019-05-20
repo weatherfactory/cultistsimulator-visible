@@ -19,7 +19,7 @@
 
 {id: "apostleforge.pillarfuel",
 label: "塑形者的指引",
-description: "到时我们需要倚仗我们的塑形者的指引，用尸骸星火铸造出破晓器核心，将<b>铸</b>之原料精炼至最终形态，将一名追随者变为塑形者的罗盘，从名为苏洛坎纳的丽姬亚处习得钥匙，而后完成大业。但如若我们不赶紧满足他的要求，将会得到恐惧。",
+description: "到时我们需要倚仗我们的塑形者的指引，用尸骸星火铸造出破晓器核心，将<b>铸</b>之原料精炼至最终形态，将一名追随者变为塑形者的罗盘，从名为苏洛坎纳的丽姬亚成员处习得钥匙，而后完成大业。但如若我们不赶紧满足他的要求，将会得到恐惧。",
 aspects:{influence:1},
 lifetime:60,
 decayTo:dread,
@@ -28,7 +28,7 @@ icon:mentorguidance
 
 {id: "apostleforge.pillar1",
 label: "破晓技术",
-description: "塑形者言道：“我须得扮演炉神。命你放置尸骸星火于引擎之正中心，用最高等级的神秘将其唤醒，最猛烈的炼金素材为其燃料；找到各历史中大地边缘处的同名破绽，将装置带到那里，连带丽姬亚的苏洛坎纳所知的咬合之钥。在炉热最盛的时节，使用最强力的开启之秘；而后我会加入你们，一同融解。”"
+description: "塑形者言道：“我须得扮演炉神。命你放置尸骸星火于引擎之正中心，用最高等级的奥秘将其唤醒，最猛烈的炼金素材为其燃料，找到在所以历史中都名字相同的大地边缘之处的破绽，将装置带到那里，连带丽姬亚成员苏洛坎纳所知的咬合之钥。唤起炉最强的炙热，使用最强力的开启之秘；而后我目送你融解。”"
 	},
 	{id: "apostleforge.pillar2.dormant",
 label: "休眠中的破晓器核心",
@@ -78,7 +78,7 @@ xtriggers:{sabotage.repair:apostleforge.pillar3}
 
 		{id: "apostlegrail.mentor",
 	label: "我们的愉悦者，#PREVIOUSCHARACTERNAME#",
-	description: "我们以之为甘露和喜悦之源者，斯人静待于放逐之途，直到最盛大的飨宴——“丰收之时”来临。",
+	description: "我们以之为甘露和喜悦之源者，斯人静待于放逐之途，直到最盛大的飨宴——“欢庆祭”来临。",
 	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
 	aspects: {mentor:1}
 
@@ -94,7 +94,7 @@ xtriggers:{sabotage.repair:apostleforge.pillar3}
 
 
 {id: "apostlegrail.pillarfuel",
-label: "愉悦之血",
+label: "悦人之血",
 description: "我得到了一小瓶我们愉悦者的血液。我们的愉悦者在这留下以细胞为文字的指示。我们可以口尝到他，如同他可以尝到我们。如果我们浪费这血，我们的愉悦者将震怒。",
 aspects:{ingredient:1,grail:3,auctionable:1},
 lifetime:240,
@@ -104,8 +104,8 @@ icon:mentorguidance
 
 
 {id: "apostlegrail.pillar1",
-label: "丰收之时的食谱",
-description: "“愉悦者给予生命；愉悦者夺取生命；愉悦者永无餍足。我们须采购隐秘的滋味，将其以时枢神的赐物浸渍；我们须聚集东道主；须于大吉之时，以无人能敌的声音高呼不朽之秘，并用低语之觚共饮。”",
+label: "欢庆祭的食谱",
+description: "“愉悦者给予生命；愉悦者夺取生命；愉悦者永无餍足。我们须采购隐秘的滋味，将其以时枢神的赐物浸渍；我们须聚集东道主；须于大吉之时，以无人能敌的声音高呼不休之秘，并用低语之觚共饮。”",
 aspects:{lore:1}
 	},
 
@@ -120,7 +120,7 @@ slots:[{id:"blood",actionId:"dream",label:"血",required:{apostlegrail.pillarfue
 
 {id: "apostlegrail.pillar2",
 label: "醇味之血",
-description: "我现在和愉悦者流着相同的血。只要我的血管有他滋味的庇佑，病症便不能侵蚀于我。若离了他的恩泽，我会死去。",
+description: "我现在和悦人者流着相同的血。只要我的血管有他滋味的庇佑，病症便不能侵蚀于我。若离了他的恩泽，我会死去。",
 aspects:{promise:1},
 lifetime:600,
 decayTo:apostlegrail.pillar2.dormant
@@ -133,7 +133,7 @@ aspects:{ingredient:1,job:1,grail:2}
 	},
 
 		{id: "apostlegrail.pillar4.inprogress1",
-label: "第一批东主",
+label: "第一部分宴主",
 description: "我们钓到几个醉心食色性之人。他们为一场官能的盛宴而来。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -141,8 +141,8 @@ lifetime:120,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress2,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress2",
-label: "第二批东主",
-description: "消息传开。好奇心和馋虫会驱使陌生人参加我们的“丰收之时”。",
+label: "第二部分宴主",
+description: "消息传开。好奇心和馋虫会驱使陌生人参加我们的欢庆祭。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -150,7 +150,7 @@ decayTo:apostlegrail.pillar4.inprogress1,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress3,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress3",
-label: "第三批东主",
+label: "第三部分宴主",
 description: "零星前来的脏兮兮的精神病态之人与好打听之人。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -159,7 +159,7 @@ decayTo:apostlegrail.pillar4.inprogress2,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress4,sabotage:notoriety}
 	},
 		{id: "apostlegrail.pillar4.inprogress4",
-label: "第四批东主",
+label: "第四部分宴主",
 description: "饥饿之人、贪婪之人、好奇之人，都收到了我们的请柬。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -168,8 +168,8 @@ decayTo:apostlegrail.pillar4.inprogress3,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress5,sabotage:apostlegrail.pillar4.inprogress1}
 	},
 		{id: "apostlegrail.pillar4.inprogress5",
-label: "第五批东主",
-description: "如今“丰收之时”的大名在所有嗜肉的口舌间暗暗传扬。",
+label: "第五部分宴主",
+description: "如今欢庆祭的大名在所有嗜肉的口舌间暗暗传扬。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
 lifetime:120,
@@ -177,7 +177,7 @@ decayTo:apostlegrail.pillar4.inprogress4,
 xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress6,sabotage:apostlegrail.pillar4.inprogress2}
 	},
 		{id: "apostlegrail.pillar4.inprogress6",
-label: "第六批东主",
+label: "第六部分宴主",
 description: "时间一到，宾客会如鼠群般涌来。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -187,7 +187,7 @@ xtriggers:{vitulationupgrade:apostlegrail.pillar4.inprogress7,sabotage:apostlegr
 	},
 	
 	{id: "apostlegrail.pillar4.inprogress7",
-label: "集合的东主",
+label: "宴主，集齐",
 description: "我们只等持钥匙者前来，于我们的愉悦者扮演杯神时打开王皮之门。",
 aspects:{summoned:1},
 uniquenessgroup:"uqvitulation",
@@ -197,8 +197,8 @@ xtriggers:{sabotage:apostlegrail.pillar4.inprogress4}
 	},
 
 	{id: "apostlegrail.pillar4",
-label: "东主与宾客",
-description: "一声令下，大批东主即集合一处，死命瞪大眼睛——张大嘴巴——来飨食与被食——吸去我身上我们愉悦者的血。属于我们的愉悦者将指引他们宴饮，提线圣母则将拧转钥匙。",
+label: "宴主与宾客",
+description: "一声令下，大批宴主即集合一处，死命瞪大眼睛——张大嘴巴——来飨食与被食——吸去我身上我们愉悦者的血。属于我们的愉悦者将指引他们宴饮，提线圣母则将拧转钥匙。",
 aspects:{summoned:1}
 	},
 
@@ -228,7 +228,7 @@ icon:mentorguidance
 	
 	{id: "apostlelantern.pillar1",
 label: "第三状态",
-description: "“我们指引前路，我们照明驱暗，我们无有怜悯之心。令你寻找眼瞳之门背后的十字路，在彼处悬起诱饵，派遣银白色的死者带来凡人睡去的灵魂。待见证者之数足够，召来光阴之钥，将三瓣之门‘向外’敞开，即，使它处于第三状态。”",
+description: "“我们指引前路，我们照明驱暗，我们无有怜悯之心。令你寻找眼睛之门背后的十字路，在彼处育植诱饵，派遣银白色的死者带来凡人睡去的灵魂。待见证者数足，召来光阴之钥，将三瓣之门‘向外’敞开，即，使它处于第三状态。”",
 aspects:{tool:1}
 	},
 {id: "apostlelantern.pillar2",
@@ -241,7 +241,7 @@ aspects:{way:1}
 	{id: "apostlelantern.pillar3",
 label: "诱饵",
 slots:[{id:"fascination",label:"垂钩待鱼来",required:{fascination:1},actionId:study}],
-description: "一旦被人瞧见，诱惑便会紧抓不放。没有几个活着的灵魂能如此深入漫索。我必须找来一名镜中淑女助我，先将诱饵拿给她看，她才会带灵魂来此。",
+description: "一旦被人瞧见，诱饵便会紧抓不放。没有几个活着的灵魂能如此深入漫索。我必须找来一名镜中少女助我，先将诱饵拿给她看，她才会带灵魂来此。",
 aspects:{influence:1},
 xtriggers:{renew.apostlelantern.pillar3:apostlelantern.pillar3},
 lifetime:180
@@ -250,7 +250,7 @@ lifetime:180
 	
 		{id: "apostlelantern.pillar4.inprogress1",
 label: "见证者：寻七得一",
-description: "一个孤影，在诱惑的金光与漫索的蓝光笼罩下的十字路上游荡。",
+description: "一个孤影，在诱饵的金光与漫索的蓝光笼罩下的十字路上游荡。",
 aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -259,7 +259,7 @@ icon:apostlelantern.pillar4
 	},
 		{id: "apostlelantern.pillar4.inprogress2",
 label: "见证者：寻七得二",
-description: "一对见证者，在诱惑的金光与漫索的蓝光笼罩下的十字路上游荡。",
+description: "一对见证者，在诱饵的金光与漫索的蓝光笼罩下的十字路上游荡。",
 aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -279,7 +279,7 @@ icon:apostlelantern.pillar4
 	},
 		{id: "apostlelantern.pillar4.inprogress4",
 label: "见证者：寻七得四",
-description: "光明将他们涤荡一新，但其本性注定他们将随某一时刻临近而生斑。",
+description: "光明将他们的颜色漂尽，但其本性注定他们将随某一时刻临近而生出斑纹。",
 aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,
@@ -299,7 +299,7 @@ icon:apostlelantern.pillar4
 	},
 		{id: "apostlelantern.pillar4.inprogress6",
 label: "见证者：寻七得六",
-description: "气氛苦痛至极。他们无法移开视线。",
+description: "气氛痛苦至极。他们无法移开视线。",
 aspects:{summoned:1},
 uniquenessgroup:"uqthirdwaywitnesses",
 lifetime:120,

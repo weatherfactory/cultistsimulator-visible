@@ -7,7 +7,7 @@
 	requirements:{funds:1,follower:1,vaultlandbeyondforest1:1},
 	effects: {peril_mountains:1,guardian_serpent:1},
 
-	startdescription: "通往高处的洞穴的道路是危险的。但下方黑暗中所蛰伏着的东西，很可能更为可怕。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "通往高处的洞穴的道路是危险的。但下方黑暗中所蛰伏着的东西，很可能更为可怕。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -17,12 +17,12 @@
 	
 		 	{
 	id: "explore_vaultlandbeyondforest2_setup",
-	label: "探险开始：大公城塞",
+	label: "探险开始：大公的城塞",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultlandbeyondforest2:1},
 	effects: {seal_hiddendoor:1,guardian_dead:1},
 
-	startdescription: "大公城塞的地下室必然极为隐秘，并且如果传闻为真，在要塞的高墙背后，他的受害者很可能死不瞑目。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "大公城塞的地下室必然极为隐秘，并且如果传闻为真，在要塞的高墙背后，他的受害者很可能死不瞑目。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -36,7 +36,7 @@
 	requirements:{funds:1,follower:1,vaultlandbeyondforest3:1},
 	effects: {guardian_watchers:1,curse_nowhere:1},
 
-	startdescription: "马戏团的子民准备对我们举起武器，我们还担心，马戏团中的力量也许与虫有关。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "马戏团的子民准备对我们举起武器，我们还担心，马戏团里的神怪也许受了蠕虫的碰触。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -50,7 +50,7 @@
 	requirements:{funds:1,follower:1,vaultlandbeyondforest4:1},
 	effects: {seal_hiddendoor:1,curse_affliction:1},
 
-	startdescription: "我们必须努力搜寻任何可能留存的宝藏；如果塔的确已经被学徒内战所摧毁，那里可能仍然残留着危险的影响。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "我们必须努力搜寻任何可能留存的宝藏；如果塔的确已经被学徒内战所摧毁，那里可能仍然残留着危险的影响。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -61,11 +61,11 @@
 		{
 	
 		id: "explore_vaultlandbeyondforest5_setup",
-	label: "探险开始：库兹涅佐夫的遗赠",
+	label: "探险开始：库兹涅佐夫捐赠的楼群",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultlandbeyondforest5:1},
 	effects: {seal_hiddendoor:1,guardian_watchers:1,peril_treacherousground:1},
-	startdescription: "前往库兹涅佐夫的宅邸的路途并不漫长，但找个能进入的理由则是困难的。我们已三次申请访问许可，然而每次都收到不甚友好的回复。毋庸置疑，工作人员将试图阻止我们的进入。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "前往该楼群的路并不漫长，但走进去却很困难。我们已三次申请访问许可，然而每次都收到不甚友好的回复。毋庸置疑，工作人员会试图阻止我们进入。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -79,7 +79,7 @@
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultlandbeyondforestdefault:1},
 	effects: {peril_mountains:1,guardian_watchers:1,curse_visions:1},
-	startdescription: "穿过群山通向高处的狐百合之海的的道路将是艰险的。山上的农民会试图赶走我们。即便我们安全到家，也很可能难以在脑海中摆脱那里的景象。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "穿过群山通向高处的狐百合之海的的道路将是艰险的。山上的农民会试图赶走我们。即便我们安全到家，也很可能难以在脑海中摆脱那里的景象。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -87,12 +87,12 @@
 	},
 	{
 	id: "explorevaultlandbeyondforest1_success",
-	label: "光之巢",
+	label: "光之巢穴",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest1:1},
 	effects: {vaultlandbeyondforest1:-1,influencelanternc:1,accountkanishkspidersdooraramaic:1,theskythesoularamaic:1,ingredientlanternf:1},
 	startdescription: "因为充当巨蛇的通路，山洞下的隧道非常平滑，但要不是我们带着灯，它的黑暗将令人窒息。然而它盘踞的房间出乎意料地明亮。作为月光的替代品，发光的真菌充满了整个空间。也许蜡烛并没有驱赶走这些真菌，反而吸引了它们。",
-	description: "小小堆积的一些宝藏，自经年累月的巨蛇的食物中筛选而出，并被巨蛇拱成一堆，闪闪发光。",
+	description: "一小堆宝藏，自经年累月的巨蛇食物中筛选而出，并被巨蛇拱成一堆，闪闪发光。",
 	warmup:30,
 	craftable: false
 	},
@@ -125,11 +125,11 @@
 	
 				{
 	id: "explorevaultlandbeyondforest4_success",
-	label: "迟来的终局",
+	label: "迟来已久的终局",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest4:1},
 	effects: {vaultlandbeyondforest4:-1,furioustantrasanskrit:1,twinserpenttantrasanskrit:1,howendwillbeginvak:1,ingredientforgeb:1},
-	startdescription: "在塔的下方是一个狭窄的地下室，板岩墙已经坍塌。它的比例——它本应是个完美的立方型空间，但不知为何有太多的角落。天花板和墙壁的接合处渗透出蓝光。地板缓慢地伸缩，如同泡泡的表面。如果跺脚，能听到它传来的回音。打开下方，将是怎样的空间？",
+	startdescription: "在塔的下方是一个狭窄的地下室，板岩墙已经裂缝。它的比例——它本应是个完美的立方型空间，但不知为何有太多的角落。天花板和墙壁的接合处渗透出蓝光。地板缓慢地伸缩，如同泡泡的表面。如果跺脚，能听到它传来的回音。打开下方，将是怎样的空间？",
 	description: "将书捆成一堆。迅速打开塔基的把手。头顶的天空泛着涟漪般的深蓝色极光。四周的山丘布满了颤动的蓝光。当我们离开时，筑成塔的石块发出高亢的歌声。闪电自天空落下，突然之间，万籁俱寂。塔基消失了。",
 	warmup:30,
 	craftable: false
@@ -137,12 +137,12 @@
 	
 		{
 	id: "explorevaultlandbeyondforest5_success",
-	label: "文字的末尾",
+	label: "文字的结末",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest5:1},
 	effects: {vaultlandbeyondforest5:-1,burningwomanphrygian:1,	encirclingtantrasanskrit:1,	knownunknowntantrasanskrit:1,	ironbookfucine:1,	silverbookfucine:1,	matthiasamethystpursuitaramaic:1},
-	startdescription: "图书馆的天花板在多年以前便已坍塌。许多书籍已被滴水浸泡成了发胀的书浆。其中一定有什么东西留下了。",
-	description: "一个黑色皮肤，有着明亮眼睛，没有头发与眉毛的和蔼微笑男人的肖像看管着这破败的图书馆。肖像画的题目为“不要在意我”，并且签名的笔迹难以辨认，蜷曲潦草。这画从墙上剥落。当我们从书架上泡胀的书本中翻找完好的宝藏时，这画带着它仁慈的微笑看着我们。",
+	startdescription: "图书馆的天花板在多年前便已坍塌。许多书籍已被漏水泡成了发胀的书浆。一定还有留存的东西。",
+	description: "一副和蔼微笑着的男人——深色皮肤，眼睛明亮，没有头发与眉毛——的肖像看管着这座破败的图书馆。肖像画题为“不要在意我”，签名难以辨认，蜷曲潦草。画的四角已经卷起。当我们在书架上泡胀的书本中寻找完好无损的宝物时，这副画用它仁慈的微笑看着我们。",
 	warmup:30,
 	craftable: false
 	},

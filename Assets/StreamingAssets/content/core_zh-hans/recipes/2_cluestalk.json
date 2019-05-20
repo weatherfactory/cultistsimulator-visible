@@ -17,7 +17,7 @@
         actionId: "talk",
         requirements: {independent:1, mortal:1,resentment:-1},
 
-        startdescription: "如果我能收集我们教派的属性，将其提升到21级的话……这个人可能会入伙。[即便是与你信仰不同的捣乱分子，你也可以雇佣，只要你能提供足够的力量就行——但你必须讲一份媒介作礼物献给一位独立者。]",
+        startdescription: "如果我能收集我们教派的属性，将其提升到21级的话……这个人可能会入伙。[即便是与你信仰不同的捣乱分子，你也可以雇佣，只要你法力足够就行——但你必须将一件“工具”作为礼物送给一名独立者。]",
     
         craftable: false,
 		hintonly:true
@@ -81,7 +81,7 @@
         requirements: {cultlantern_1: 1,follower:1, disciple:1},
  
 		
-               startdescription: "要将门徒擢升为预言家，我需要至少21级的<b>灯</b>。无论如何，适格之人必须慧眼澄澈。",
+               startdescription: "要将门徒擢升为预言者，我需要至少21级的<b>灯</b>。无论如何，适格之人必须慧眼澄澈。",
 
         hintonly:true,
         craftable: true
@@ -124,7 +124,7 @@
     },
 		  	{
         id: "talktobenefactorhint",
-        label: "赞助人执着于会面的私密性。",
+        label: "我的金主执着于会面的私密性。",
         actionId: "talk",
         requirements: {benefactor:1},
         startdescription: "“我们可不能在这儿聊天，亲爱的。我们得私下里说。”",
@@ -145,7 +145,7 @@
         label: "招募新的追随者？",
         actionId: "talk",
         requirements: {society: 1,acquaintance:1},
-        startdescription: "要招募追随者，我需要一点我们所崇敬的力量。我可以从影响、媒介、材料，或者我们信仰的知识中获得这种力量。",
+        startdescription: "要招募追随者，我需要一点我们所崇敬的神力。我可以从<b>影响</b>、<b>工具</b>、<b>原料</b>，或关于我教传统的<b>密传</b>中获得。",
         craftable: false,
 		hintonly: true
     },
@@ -225,7 +225,7 @@ hintonly:true
 label:"完成波碧的委托？",
 actionId: "talk",
 requirements: {commission: 1,poppycommission:1,article:1},
-startdescription: "“噢亲爱的，我很抱歉。但我需要更多的……真知灼见。”[检查委托细节。]",
+startdescription: "“噢亲爱的，我很抱歉。但我需要更多……深入的见解。”[检查委托细节。]",
 warmup: 10,
 craftable: false,
 hintonly:true

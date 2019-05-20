@@ -1,6 +1,91 @@
  {"recipes": [
  
  
+
+{id:"exploremovehq",
+actionId:"explore",
+label:"改换办公场所",
+startdescription:"将我们机构的总部搬迁至新地点。[永久性更换总部地址。无法还原。可消减“邪名”。]",
+description:"世上没有永恒不变的地址。像我们的躯壳一样，我们最终要将之抛弃。不过至少当下，这里就是家。",
+requirements:{hq:1,hq.potential:1},
+aspects:{movehq:1},
+slots: [{id:"coldtrail",
+label:"冷酷的追踪",
+description:"我们搬家时，监管局可能会白费时间调查我们的旧址。",
+greedy:true,
+required:{notoriety:1}}],
+effects:{notoriety:-1},
+warmup:60,
+craftable:true},
+
+
+{id:"explorehq.townhouse",
+actionId:"explore",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{hq.townhouse:1,funds:1},
+effects:{influencegrail:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.hospital",
+actionId:"explore",
+label:"开口处",
+startdescription:"此地最初的守卫者使出左劈右砍，将世界像剥果皮一样剥开。这些开口后来早已愈合，但完全的愈合并不存在于世。",
+description:"一开始总归会不舒服，但我们特意将一切都办得干净利落，于是我们触到了蚁母明亮的裙摆。",
+requirements:{hq.hospital:1,funds:1},
+effects:{influenceknock:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.mithraeum",
+actionId:"explore",
+label:"我们脚下的太阳",
+startdescription:"这里曾是“无敌的太阳”，“未分裂的太阳”的圣地。靠最纯净的蜡烛，我们能触到仍在石中游荡的光。",
+description:"明朗的记忆，半明半掩的记忆，骄盛的记忆。失落甚多，留存亦多，来自不可见且不可分割的太阳。",
+requirements:{hq.mithraeum:1,funds:1},
+effects:{influencelantern:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.church",
+actionId:"explore",
+label:"蕴含智慧的创口",
+startdescription:"“并非所有门洞都是创口，但所有创口都是门洞。”此地的历史饱含创口与门。若有适当的材料，我们能够在空气一度打开的地方，将该处的空气软化。",
+description:"今夜，这间教堂的一切门都不会关闭，一切锁都无需钥匙；每一颗心都将被打开。",
+requirements:{hq.church:1,funds:1},
+effects:{influenceknock:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.bookshop",
+actionId:"explore",
+label:"带有防护的壁炉",
+startdescription:"我们将用火光温暖店铺后部的空间，以水壶烧开的高啸和留声机响起的低鸣声带来活气。并非我们所有的欢庆方式都要见血。",
+description:"书店给焦虑之人、无知之人与苦恼之人以精神上的抚慰。即使在莫兰带来她那些稀奇古怪的存货后，这种抚慰依然存在。今夜，名为怒号之皮的时枢神脚步轻柔。",
+requirements:{hq.bookshop:1,funds:1},
+effects:{influenceheart:1,funds:-1},
+warmup:60,
+craftable:true
+},
+
+{id:"explorehq.warehouse",
+actionId:"explore",
+label:"对引擎的悼念",
+startdescription:"此处原为仓库，一座摆满机械的大屋：贮藏着蒸汽与铁，时不时还有横飞的血肉与惨叫。我们将泼洒纪念那段时光的油。",
+description:"我们又一次拥有了火焰，又一次拥有了铁，肉体又一次尝到了炉温的亲吻；虽然它不显现在任何地方，不显现在日光下。于高天，于深底，光阴之炉进行着她的精炼。",
+requirements:{hq.warehouse:1,funds:1},
+effects:{influenceforge:1,funds:-1},
+warmup:60,
+craftable:true
+},
+ 
+ 
 	{
         id: "explorelocationbookdealer",
         label: "扩充你的藏书",
@@ -8,7 +93,7 @@
         requirements: {locationbookdealer:1,funds:1},
 		effects: {},
 		deckeffect: {"commontomes":1},
-        startdescription: "浪里淘金，壳中拣麦，水中萃血，皆耗须臾。 如果我买下足够多的书，总应该能发现些有趣的事情吧。",
+        startdescription: "砂里淘金、壳里拾粒、水中萃血，皆需工夫。 如果我买下足够多的书，总会发现些有趣的事情。",
         description: "我发现了值得注意的东西。",
         warmup: 30,
         craftable: true,
@@ -16,10 +101,10 @@
     },
 		{
         id: "explorelocationbookdealer_exhausted",
-        label: "莫兰书屋要歇业了！",
+        label: "莫兰书店要关张了！",
         actionId: "explore",
         requirements: {genericrubbishbook:1},
-        description: "“我打算改行了，”莫兰小姐告诉你， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢。”",
+        description: "“我打算改行了，”莫兰小姐告诉你， “我的存货售出了大半，也引起了监管局的注目。 所以就此道别吧。最后这本书内容不知所云，不过我在封底塞了几页有趣的文章，作为对你常来光顾的谢礼。”",
 		deckeffect:{oneoffrewards:1},
         warmup: 1,
 aspects:{exhaustlocation:1}
@@ -31,7 +116,7 @@ aspects:{exhaustlocation:1}
         requirements: {locationauctionhouse:1,auctionable:-1},
 		effects: {},
 		deckeffect: {"auctionedcommontomes":1},
-        startdescription: "这是一间无窗的，有着鲜艳烧橙色墙壁的拍卖室，我们坐在惊人的里特维德椅子上，等待着拍卖师宣布他所提供的商品。 新油漆的气味让人大脑眩晕。 [点击开始查看提供的商品，或者添加你想要出售的物品。]",
+        startdescription: "我们身处一间无窗、墙壁为鲜艳燃橙色的拍卖室，坐在外观扎眼、里特费尔德出品的椅子里，等待拍卖师宣布待拍的商品。 新油漆的气味让人脑子发晕。 [点击“开始”查看待拍物品，或将你想出售的物品添入其中。]",
         description: ".",
 			
         warmup: 5,
@@ -41,26 +126,26 @@ aspects:{exhaustlocation:1}
 	
 		{
         id: "explorelocationstreetsstrange",
-        label: "趁着月色，探索离奇扭曲的街道。",
+        label: "趁着月色，探索九转回环的街巷。",
         actionId: "explore",
         requirements: {locationstreetsstrange:1},
 		
 		deckeffect: {"streetsstrangefinds":1},
-        startdescription: "名为痕月的时枢神所对应的小时，街道会呈现异相。",
-        description: "幻像如跳着孔雀舞般优雅地从我身旁掠过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃女子。 回家时我心中将会充满不舍。",
+        startdescription: "于名为痕月的神所司掌的那个钟点，街巷现出异相。",
+        description: "幻像跳着优雅的帕凡舞从我身旁经过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃做成的女子。 待回家时，我将心怀不舍。",
         warmup: 30,
         craftable: true
     },
 			 {
         id: "explorefollower",
-        label: "探索市区",
+        label: "探索这个城市",
         actionId: "explore",
         requirements: {follower:1,location:-1},
 		deckeffect: {exploreevents:1},
 		linked:	[
 			{id: "explorefindcriminal",chance:100},
 		{id: "explorefindplace",chance:100}],
-        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将派我的手下出去寻找机遇。",
+        startdescription: "白天是熙熙攘攘的通衢，夜里是雾气缭绕的迷宫。我将派手下去寻找机遇。",
         description: ".",
         warmup: 10,
 		craftable:true
@@ -72,14 +157,14 @@ aspects:{exhaustlocation:1}
         requirements: {rumour:1},
 		deckeffect: {"acquaintances":1},
 		effects: {rumour:-1,notoriety:1},
-        startdescription: "我怀疑，在这个故事的最后，我也许能找到一个人，愿意听我讲这些不得不说的话。",
-        description: "一个飘忽不定的地址：却住了一位值得信赖的人物。",
+        startdescription: "我怀疑，在追寻的终点，我会发现一个我需要向其为自己辩白的人物。",
+        description: "一个毫不可期的地址：却住着一个颇为可期的人物。",
         warmup: 60,
 		craftable:true
     },
 	 {
         id: "explorehealth",
-        label: "探索市区",
+        label: "探索这个城市",
         actionId: "explore",
         requirements: {health:1},
 		deckeffect: {exploreevents:1},
@@ -87,7 +172,7 @@ aspects:{exhaustlocation:1}
 		linked:	[
 			{id: "explorefindcriminal",chance:100},
 		{id: "explorefindplace",chance:100}],
-        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将沿着街道探寻秘密，直到无法前进为止。",
+        startdescription: "白天是熙熙攘攘的通衢，夜里是雾气缭绕的迷宫。我漫步街道，探寻秘密，直到再无法前行为止。",
         description: ".",
         warmup: 10,
 		craftable:true
@@ -96,7 +181,7 @@ aspects:{exhaustlocation:1}
 			
 					{
         id: "explorefindcriminal",
-        label: "一位雇工？",
+        label: "雇工？",
         actionId: "explore",
         requirements: {daycriminals:1},
 		deckeffect: {"hirelings":1},
@@ -106,10 +191,10 @@ aspects:{exhaustlocation:1}
     },
 				{
         id: "explorechoosepaycriminal",
-        label: "一位雇工？",
+        label: "雇工？",
         actionId: "explore",
-        startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以临时雇用他。]",
-slots:[{id:"Payment",label:"报酬",required:{funds:1},consumes:true}],
+        startdescription: "我找到了一个收钱办事的人，我或许可以雇他去做那些我心不忍而又不得不为的事情。 [添加“资金”，在一定时间内雇佣此人。]",
+slots:[{id:"Payment",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
 		 description: "最好不要。我必须小心选择同伴。",
@@ -117,10 +202,10 @@ alternativerecipes:[{id:"explorepaycriminal",chance:100}],
     },
 					{
         id: "explorepaycriminal",
-        label: "一位雇工",
+        label: "雇工",
 		requirements: {funds:1},
         actionId: "explore",
-        startdescription: "这可以买到他的忠诚，虽然只是一时的。",
+        startdescription: "这可以买到此人一时的忠诚。",
 		effects:{funds:-1}
     },
 
@@ -128,10 +213,10 @@ alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		 {
  
         id: "explorefindplace",
-        label: "被忽略之处？",
+        label: "被忽略的地点？",
         actionId: "explore",
         requirements: {dayplaces:1},
-        startdescription: "我可能发现了不太寻常的地方。",
+        startdescription: "我可能发现了一个不寻常的地方。",
         description: ".",
 		deckeffect: {"citysecrets":1},
 		effects:{season:-1},

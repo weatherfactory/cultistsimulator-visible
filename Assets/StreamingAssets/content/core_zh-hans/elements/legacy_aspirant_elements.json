@@ -5,13 +5,13 @@
             label: "一份遗赠",
             aspects:
             {text:1},
-            description: "包裹中夹着我通信者的遗嘱执行人留下的诡异书页。我必须通过理性或是热情<b>研究</b>它。",
-						slots:[{id:"Approach", label:"方法", actionId:"study",required: {reason: 1, passion: 1},
-						description: "我是热情的人，理智的人。"}]
+            description: "包裹中夹着我通信者的遗嘱执行人留下的诡异书页。我必须以理性或以激情<b>研究</b>它。",
+						slots:[{id:"Approach", actionId:"study",required: {reason: 1, passion: 1},
+						description: "我是一个委身激情的人，还是一个坚持理性的人？。"}]
         },
 	{id: "introjob",
 	label: "卑贱的雇工",
-	description: "在医院做搬工，相当不稳定的工作。这很悲惨，但这是你现在唯一的选择。",
+	description: "医院的搬工之职，相当不稳定。悲惨，但也是你现在唯一的选择。",
 	aspects: {job:1}
 	},
 {id: "contactintro",

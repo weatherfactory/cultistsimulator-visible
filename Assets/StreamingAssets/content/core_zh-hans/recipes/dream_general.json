@@ -5,7 +5,7 @@
         label: "在冥想中追求神秘力量",
         actionId: "dream",
         requirements: {ascensionpowera: 1},
-		slots: [{id:"Calculation",label:"计算",required:{lore:1,health:1,reason:1}, description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+		slots: [{id:"Calculation",required:{lore:1,health:1,reason:1}, description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
         startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
         description: "我决定维持现状……至少暂时如此。",
 		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
@@ -19,7 +19,7 @@
         label: "在冥想中追寻感官的认知",
         actionId: "dream",
         requirements: {ascensionsensationa: 1},
-		slots: [{id:"Musing",label:"冥想",required:{lore:1,passion:1,reason:1}, description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+		slots: [{id:"Musing",required:{lore:1,passion:1,reason:1}, description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
         startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
         description: "我决定维持现状……至少暂时如此。",
         		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
@@ -34,7 +34,7 @@
         label: "在冥想中追求神秘知识",
         actionId: "dream",
         requirements: {ascensionenlightenmenta: 1},
-		slots: [{id:"Reflection",label:"反思",required:{lore:1,passion:1,health:1},description: "投身于我所找到的知识所对应的教义，或在别处寻求突破。"}],
+		slots: [{id:"Reflection",required:{lore:1,passion:1,health:1},description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
         startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
         description: "我决定维持现状……至少暂时如此。",
         		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
@@ -61,7 +61,7 @@
 		requirements: {passion:1},
 		effects:{desire:-1,ascensionpowera:1},
 		startdescription:"或许力量是最令人信服的追求。",
-		description: "我重新确认了自己的目标。我的前辈们曾经掌控过重铸的力量：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
+		description: "我重新确认了自己的目标。我的前辈们曾经掌控过重塑之力：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
 },
 {
         id: "dreamascension_switchto_sensation",
@@ -75,12 +75,12 @@
 
 {
         id: "dreamascension_switchto_enlightenment",
-		label: "现在，我以启智为目标。",
+		label: "现在，我以启智为追求。",
 		actionId: "dream",
 		requirements: {reason:1},
 				effects:{desire:-1,ascensionenlightenmenta:1},
-		startdescription:"也许知识才是更好的目标。",
-				description: "我重新确认了自己的目标。我之前的先驱曾掌握过至高的、富有洞见的奥秘，那些透过玻璃般的骸骨与羊皮纸般的皮肤闪耀着的奥秘。我也应当掌握这些奥秘，尽管一旦当我尝试承载这些奥秘，它会将我瓦解。",
+		startdescription:"也许知识才是更好的追求。",
+				description: "我重新确认了自己的目标。我之前的先驱曾掌握过至高的秘密、洞见底蕴的秘密，骸骨与皮肤难掩其光，被如玻璃和羊皮纸般穿透的秘密。我也应当掌握这些秘密，尽管一旦当我尝试承载这些秘密，它会将我瓦解。",
 },
 
 {
@@ -132,11 +132,11 @@
 
 	{
 	id: "dreamreason",
-	label: "神游的思绪",
+	label: "漫游的思绪",
 	actionId: "dream",
 	requirements: {reason: 1},
 	effects: {},
-	startdescription: "曾有人说，是伴随着理智的长眠催生了怪物。或许经常让思想在睡眠中徘徊是有益健康的。但是，若是我就此坠入深梦，迟早有一天，怪兽会在我自己的恐惧当中诞生。",
+	startdescription: "曾有人说，是伴随理智的长眠催生了怪物。或许经常让思绪在睡眠中徘徊是有益健康的。但是，若是我就此坠入深梦，迟早有一天，怪兽会在我自己的恐惧当中诞生。",
 	description: ".",
 	warmup: 60,
 	craftable: true,
@@ -144,7 +144,7 @@
 	},
 	
 	{id: "dream_router",
-	label: "睡眠群像",
+	label: "睡梦中纷纷攘攘",
 	actionId: "dream",
 	deckeffect: {dreamreasonresults:1},
 	linked: [
@@ -163,7 +163,7 @@
 	actionId: "dream",
 	requirements: {contentment:1},
 	
-	startdescription: "要下雨了，不过却是恰到好处的那种雨。",
+	startdescription: "要下雨了，不过是恰到好处的那种雨。",
 	description: "我梦见了雨在檐上低语，像个老朋友般地轻敲窗户，恶作剧般地在烟囱里发出嘶嘶声。在这种恰到好处的雨中，实在很难让人感到失落。",
 	warmup: 10,
 	},
@@ -186,11 +186,11 @@
 	},
 	{
 	id: "dreamglimmering",
-	label: "关于玻璃后的稀奇物什的梦",
+	label: "关于玻璃幕后稀奇物什的梦",
 	actionId: "dream",
 	requirements: {glimmering:1},
-	startdescription: "今天我将会梦见一个博物馆。",
-	description: "在不存在的博物馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚硬盒子中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一听装着风暴的锡罐。我总会在看到走廊尽头前醒来。",
+	startdescription: "今天我将梦见一个展览馆。",
+	description: "在不存在的展览馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚硬盒子中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一听装着风暴的锡罐。我总会在看到走廊尽头前醒来。",
 	warmup: 10,
 	},
 		{

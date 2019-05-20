@@ -1,23 +1,23 @@
  {"recipes": [
 	{
         id: "studydehoris1",
-        label: "阅读《时枢志·卷一》",
+        label: "ERROR",
         actionId: "study",
         requirements: {dehoris1: 1},
         effects: {dehoris1: -1,fragmentmoth:1,erudition:1},
 		startdescription: "本卷主要讲述了林地的时枢神：蛾、漆色亚麻和环杉的故事。",
-        description: "“若光是一个疑问，蛾总以肯定作答。漆色亚麻以否定作答，结果既定，从无变易。”",
+        description: "“若辉光是一个疑问，蛾总以肯定作答。漆色亚麻以否定作答，从来如此。”",
         warmup: 60,
         craftable: true
     },
 		{
         id: "studydehoris2",
-        label: "阅读《时枢志·卷二》",
+        label: "ERROR",
         actionId: "study",
         requirements: {dehoris2: 1},
         effects: {dehoris2: -1,fragmentedge:1,erudition:1},
-		startdescription: "本卷主要记述了锻狮，伤痕护民官以及两者敌对的故事。",
-        description: "“锻狮制造出怪物意图击败伤痕护民官，然而伤痕护民官身上的每一条伤疤都是一件武器。”",
+		startdescription: "本卷主要记述了锻狮，伤痕护民官及两者敌对的故事。",
+        description: "“锻狮制造出怪物意图击败伤痕护民官，然而护民官身上的每一道伤痕都是武器。”",
         warmup: 60,
         craftable: true
     },
@@ -28,7 +28,7 @@
         requirements: {travellingatnight1: 1},
         effects: {travellingatnight1: -1, fragmentmoth:1,erudition:1},
 		startdescription: "“林地坐落于漫索的围墙之外。而研习历史的人都知道，漫索并无围墙。”",
-        description: "依洛波里在书中描述他如何通过他所说的银色梦境反复造访梦中之林。他还解释道：“想象如何到达林地，就仿佛想象如何坠入爱河一般。不过我的确找到了有所裨助的奥秘。”",
+        description: "依洛波里在书中描述他如何通过他口中的银色梦境反复造访梦中林地。“通过遐想到达林地，”他解释道。“如同遐想坠入爱河一般。不过我的确找到了有所裨助的<b>秘密</b>。”",
         warmup: 60,
         craftable: true
     },
@@ -38,8 +38,8 @@
         actionId: "study",
         requirements: {travellingatnight2: 1},
         effects: {travellingatnight2: -1, fragmentwinter:1,erudition:1},
-		startdescription: "书中针对依洛波里自身的梦境与罗马皇帝埃拉加巴卢斯的梦境之相似处展开了大量讨论。埃拉加巴卢斯被依洛波里认为是残阳的傀儡或化身。依洛波里评论道：“纯白之门在世界以西，<b>冬</b>不会永远在那里等待。” ",
-		   description: "“谢天谢地，埃拉加巴卢斯最终寻得前往纯白之门的道路。话语无法穿透纯白之门，而且说实话，埃拉加巴卢斯口中也讲不出什么有趣的话。我曾经尝试追随他的脚步前进，但终究对“纯白”领会不足。大概我也幸而如此吧。但是我确实知道……”",
+		startdescription: "书中对依洛波里自身的梦境与罗马皇帝埃拉伽巴路斯的梦境，两者间的相似处展开了大量讨论。依洛波里认为埃拉伽巴路斯是残阳的傀儡或化身。“<b>纯白</b>在世界以西，”依洛波里评论道，“且<b>冬</b>不会永远等待。” ",
+		   description: "“谢天谢地，埃拉伽巴路斯最终寻见了纯白之门。话语无法穿过纯白之门，而且说实话，埃拉伽巴路斯也讲不出什么有趣的话。我曾经尝试追随他的脚步，但终究对“纯白”领会不足。大概我也幸而如此吧。但是我确实知道……”",
         warmup: 60,
         craftable: true
     },
@@ -49,8 +49,8 @@
         actionId: "study",
         requirements: {travellingatnight3: 1},
         effects: {travellingatnight3: -1, fragmentforge:1,erudition:1},
-		startdescription: "依洛波里在研究火焰和不焚之神的论文中半途搁笔，改笔写起了一篇致与名为“巴尔多梅拉”之人的香艳诗文。",
-        description: "“到达雄鹿之门后，你所需要的就只是足够强烈的欲望了。可是我从来没有对任何事物有过强烈的欲望，当然，对巴尔多梅拉除外。这恐怕就是这个故事令人纠结的地方：巴尔多梅拉想要的只是雄鹿之门罢了。可我在波斯还学到了一些东西。或许它能让<i>你</i>认清自己的欲望。”",
+		startdescription: "依洛波里关于火焰和不焚之神的论文中插入了数段致“巴尔多梅拉”的香艳诗文。",
+        description: "“要去至雄鹿之门，我认为人需要的只是足够强烈想要某物的念头。可是我从来没有那样地想要过什么，当然，除了对巴尔多梅拉，而且这恐怕便是此事的死结所在：巴尔多梅拉想要的是雄鹿之门。不过，我在波斯学到了一些东西。或许它能教会你<i>你</i>想要何物。”",
         warmup: 60,
         craftable: true
     },
@@ -60,8 +60,8 @@
         actionId: "study",
         requirements: {sixlettersonnecessity: 1},
         effects: {sixlettersonnecessity: -1,fragmentforge:1,erudition:1},
-		startdescription: "科西利的语气急迫——就仿佛他自觉时日无多。",
-        description: "“即便太阳也能被分裂，尽管这需要光阴之炉的参与。”",
+		startdescription: "寇兹利的语气急迫——仿佛他自觉时日无多。",
+        description: "“即便太阳也能被分裂，尽管这需要光阴之炉来做。”",
         warmup: 60,
         craftable: true
     },
@@ -93,8 +93,8 @@
         actionId: "study",
         requirements: {locksmithsdream3: 1},
         effects: {locksmithsdream3: -1,fragmentmothb:1,glimmering:1},
-		startdescription: "人尽皆知的是，此卷中加尔米耶的文字开始语不成章，让人弄不清哪些是她本人的梦境。",
-        description: "“身着沙色长袍的女人告诉我：漫索的阶梯一直朝上延伸，而死亡则是朝下。蚁母用她的两个头颅分别守卫上下两方，若要通过，必须通过伤口。我觉得纯白之门或许就是一道伤口。这应该就是亡者偶尔从此处通过的原因之一。我想我已经了解到另外一半秘密了，希望我的读者也能将这两个秘密拼凑到一起。”",
+		startdescription: "人尽皆知，加尔米耶的文字从此卷开始语不成章，让人弄不清哪些是她本人的梦境。",
+        description: "“身着沙色长袍的女人告诉我：漫索的阶梯一直朝上延伸。死亡则朝下。蚁母用她的两个头颅分别卫戍上下两方，若要通过，必须通过创口。我觉得纯白之门或许就是创口。这应该是亡者偶尔从此处通过的原因之一。我想我已经了解到另外一半秘密了，希望我的读者也能将这两个秘密拼凑到一起。”",
         warmup: 60,
         craftable: true
     },
@@ -104,8 +104,8 @@
         actionId: "study",
         requirements: {locksmithsdream4: 1},
         effects: {locksmithsdream4:-1,fragmentmothc:1,fragmentlanternc:1,fascination:1},
-		startdescription: "“雅努斯是守门者、双面之神、予创之神、昭示变化前兆之人、亦是太阳与月亮。所以我们认为他与守夜人、双子、蚁母、炉、痕月和拂晓是同一人。他不可能是他们全员吧？有这种可能吗？<i>弗拉门</i>们了解教堂、干涸之地和埃拉伽巴路斯。那他是糅合而成的形象吗？亦或是其他性质的存在？在加拉埃西亚，他被称作亚努斯·拉弥亚斯，但忘却会的诽谤也并非空穴来风。”",
-        description: "“他们说，雅努斯不是只有一张而是两张面孔。但我对此回应：为什么只有一个？为什么只有两个？海索与寇兹利——根据托马斯·洛夫·丹曼的说法——曾经同意过雅努斯曾是‘诸神与无’。但是之后，海索坚持他是‘诸神’，而寇兹利则偏爱‘无’。丹曼是个令人不快的业余爱好者，但他认为两者都有其真实性。”",
+		startdescription: "“雅努斯是守门者、双面之神、予创之神、昭示变化之人、是太阳，是月亮。所以我们认为他与守夜人、孪生子、蚁母、炉、痕月和拂晓是同一人。他不可能是他们全员吧？有这种可能吗？<i>弗拉门</i>们了解教堂、干涸之地和埃拉伽巴路斯。那他是糅合而成的形象吗？亦或是其他性质的存在？在加拉埃西亚，他被称作亚努斯·拉弥亚斯，但忘却会的诽谤也并非空穴来风。”",
+        description: "“他们说，雅努斯不是只有一张，而是两张面孔。但我对此回应：为什么只有一个？为什么只有两个？海索与寇兹利——根据托马斯·洛夫·丹曼的说法——曾经同意过雅努斯曾是‘诸神与无’。但是之后，海索坚持他是‘诸神’，而寇兹利则偏爱‘无’。丹曼是个令人不快的业余爱好者，但他认为两者各有真实。”",
         warmup: 60,
         craftable: true
     },
@@ -115,8 +115,8 @@
         actionId: "study",
         requirements: {orchidtransfigurations1: 1},
         effects: {orchidtransfigurations1: -1,fragmentgrail:1,glimmering:1},
-		startdescription: "这些插图的确夺人眼球。合上书后仍使人面上潮红，在人眼底印照不去。",
-        description: "“人必先噬人，而后人噬之。为人所噬者不可逆，如人之诞世不可逆。”",
+		startdescription: "这些插图的确夺人眼球。合上书后仍使人面上潮红，在眼底印照不去。",
+        description: "“人必先噬人，而后人噬之。为人噬者不可逆，如人之诞世不可逆。”",
         warmup: 60,
         craftable: true
     },
@@ -125,8 +125,8 @@
 	actionId: "study",
 	requirements: {orchidtransfigurations2:1},
 	effects: {orchidtransfigurations2:-1,fragmentgrailb:1},
-	startdescription: "福路德，或假冒的福路德，以松木骑士寻找朱砂杯的故事暗示了赤化的炼金传统做法与更古老的“杯”的传统做法之间的对应关系。",
-	description: "“在产床上寻找朱砂杯”，这是交给松树骑士的任务。令他惊奇的是，产床上的助产士竟是高山之母。带着敬畏之情，他阉割了自己，又将自己的皮剥下。警惕之岚愉悦地冲破他的遗体而出。”",
+	startdescription: "福路德，或假冒的福路德，以松树骑士寻找朱砂杯的故事暗示炼金术惯用的赤化法与更古老的<b>杯</b>之做法间的对应关系。",
+	description: "“在产床上寻找朱砂杯”，这是交给松树骑士的任务。令他惊奇的是，产床上的助产士竟是高山之母。带着敬畏之情，他阉割了自己，并将自己的皮剥下。警醒风暴欢乐地冲破他的遗体而出。”",
 	warmup: 60,
 	craftable: true
 	},
@@ -135,8 +135,8 @@
 	actionId: "study",
 	requirements: {orchidtransfigurations3:1},
 	effects: {orchidtransfigurations3:-1,fragmentheart:1},
-	startdescription: "高山之母与警惕之岚间漫长的谈话解释了山脉与风暴的结局，同时也解释了他们是如何规避那些结局的。",
-	description: "以狮背为王座者说：“我们必须利用刀、绞索、火焰以及警唤的言辞去对抗那些穿过三瓣之门的人。无人可从此处通过：这是我们的法则，也是太阳的法则。”",
+	startdescription: "高山之母与警醒风暴间漫长的谈话解释了高山与风暴的结局，同时也解释了他们是如何规避那些结局的。",
+	description: "“然而我们须用刀、”以狮背为王座者说：“绞索、火焰、<b>唤醒之语</b>对抗穿过三膜之门者。无人可从此处通过：这是我们的法则，也是太阳的法则。”",
 	warmup: 60,
 	craftable: true
 	},
@@ -145,7 +145,7 @@
 	actionId: "study",
 	requirements: {humoursofagentleman:1},
 	effects: {humoursofagentleman:-1,fragmentlantern:1},
-	startdescription: "在第一幕结束时，梅维琳告诉了里奥“屋子”的墙上有着隐秘的门，而寇维诺则开始习惯于吃“虫”。",
+	startdescription: "第一幕结束时，梅维琳告诉了里奥<b>居屋</b>墙上有秘门，而寇维诺则开始惯于进食<b>蠕虫</b>。",
 	description: "这部剧既粗俗又偶尔显得滑稽。角色充满矛盾，变换无常。许多能引起人们共鸣的台词或可作强力的法术之用，只是隐藏于平平无奇的场景之中。",
 	warmup: 60,
 	craftable: true
@@ -155,8 +155,8 @@
 	actionId: "study",
 	requirements: {victoryofcrowns:1},
 	effects: {victoryofcrowns:-1,fragmentedge:1},
-	startdescription: "根据“阿伦”的说法，暗杀者是名为科罗内尔的时枢神的特使，是“秘密大师的战士”。这些说法甚至可以追溯到罗马时期。",
-	description: "阿伦的学问令人怀疑，但是他（或者是她？）的文字简洁有力。他笔下突然而残暴的死亡伴随着警句：“时枢神无梦，长生者以无梦为愿。”",
+	startdescription: "根据“阿伦”的说法，暗杀者是一位名为“降校”的神灵派来的特使，是“秘密大师的战士”。这些说法甚至可以追溯到罗马时期。",
+	description: "阿伦的学识令人怀疑，但是他（她？）的文字简洁有力。他笔下突然而残暴的死亡伴随着警句：“时枢神无梦，长生者以无梦为愿。”",
 	warmup: 60,
 	craftable: true
 	},
@@ -165,8 +165,8 @@
 	actionId: "study",
 	requirements: {introductiontohistories:1},
 	effects: {introductiontohistories:-1,fragmentsecrethistories:1},
-	startdescription: "书的序言用很多笔墨向读者警告一位名为朱利安·寇兹利的人的罪孽行径，海索将这位前同僚尖刻地描述为“虫中之虫”。看来海索在创作早期曾经从科西利那里获得过一些建议，但是后来又对其起疑。",
-	description: "海索认为“血”、“银”、“设计”和“虫”是历史的中心轴，并认为所谓的第二史才是真实的历史。",
+	startdescription: "书的序言用很多笔墨向读者警告一个名为朱利安·寇兹利的人的罪孽行径，海索将这位前同僚尖刻地描述为“蠕虫中的蠕虫”。看来海索在创作早期曾经从寇兹利那里获得过一些建议，但是后来又对其起疑。",
+	description: "海索认为<b>血</b>、<b>银</b>、<b>设计</b>和<b>蠕虫</b>是历史的中轴，并认为所谓的第二史才是真实的历史。",
 	warmup: 60,
 	craftable: true
 	},
@@ -226,7 +226,7 @@
 	requirements: {skeletonsongs:1},
 	effects: {skeletonsongs:-1,fragmentgrail:1},
 	startdescription: "在阿拉贝拉的引言中，她解释道这本书本应有插图，但是这被监管局所禁止。她暗示了插图还存在于别处。这本书是对“赤杯的帕西瓦尔阁下”的致敬。",
-	description: "二十六颗愉悦的果实。七种责罚。九座花园。四项悔事。",
+	description: "二十六颗悦人的果实。七种责罚。九座花园。四项悔事。",
 	warmup: 60,
 	craftable: true
 	},
@@ -236,7 +236,7 @@
 	requirements: {burningofunburntgod:1},
 	effects: {burningofunburntgod:-1,fragmentforgeb:1,ritetoolconsumefollower:1},
 	startdescription: "延森假设有这么一位在拜火教存在之前的火神，祂的仪式是铁匠的仪式。",
-	description: "延森最后不情愿地总结道，那位神是位女神。他认为，那位神之所以被禁压是因为其性别。其所描述的仪式通常是怪诞的，甚至是可怖的。",
+	description: "延森最后不情愿地总结道，这位神祇是女神。他认为，祂是因为其性别才受到压制。书中描述的仪式通常是怪诞的，甚至是可怖的。",
 	warmup: 60,
 	craftable: true
 	},
@@ -245,8 +245,8 @@
 	actionId: "study",
 	requirements: {debellismurorum:1},
 	effects: {debellismurorum:-1,fragmentedgeb:1},
-	startdescription: "这首诗概括了野兽，天气现象，与神秘知识间的战争。它详细地描写了战术部分。",
-	description: "“二一相合，角者得彰。从此有血。”",
+	startdescription: "这首诗概括性描写了野兽、天气现象、隐秘概念三者间的战争。战术部分的写得相当具体。",
+	description: "“二一相合，角者得彰。于是得血。”",
 	warmup: 60,
 	craftable: true
 	},
@@ -255,8 +255,8 @@
 	actionId: "study",
 	requirements: {onwhatiscontainedbysilver:1},
 	effects: {onwhatiscontainedbysilver:-1,fragmentlanternb:1,ritetoolfollowerconsumelore:1},
-	startdescription: "本书记述了镜中所见的诸多恐怖，于三世纪由署名“波曼德”之人所著。这本是近年新出的版本。",
-	description: "“镜中处女/少女偏好兰花，而[背后之人？]则偏爱杜鹃。两种花被剪下后都不应该放在打亮的铜器前。”附录中收录了一个也许能召唤这些存在的仪式，虽然其用途的细节尚不明确。",
+	startdescription: "本书记述了镜中所见的诸多恐怖，是三世纪署名“波曼德”者所著之书在近年新出的版本。",
+	description: "“镜中的处女/少女偏好兰花，而[背后之人？]则偏爱杜鹃。两种花被剪下后都不应该放在打亮的铜器前。”附录中收录了一个也许能召唤这些存在的仪式，虽然其用途的细节尚不明确。",
 	warmup: 60,
 	craftable: true
 	},
@@ -266,7 +266,7 @@
 	requirements: {truecompleteasclepian:1},
 	effects: {truecompleteasclepian:-1,fragmentheartb:1,ritetoolconsumeinfluence:1},
 	startdescription: "这很显然并非古书。顶多称得上十分破旧。但它包含许多有趣的内容，特别是提出了这样一个很有说服力的对比：将没有围墙和门的居所与拥有七窍的人体相对比。",
-	description: "“死亡的方向在下，”书中解释道，“孔雀之门被认为是一种裂缝，或者是一处磨损。但从其他角度看，它更像是一张嘴——又或许是一种更珍贵的入口。”对门的讨论包括一种通过门召唤生物的仪式，虽然其关键祷句仍然缺失。",
+	description: "“死亡的方向朝下，”书中解释道，“孔雀之门被认为是一种裂缝，或者是一处磨损。但从其他角度看，它更像是一张嘴——又或许是一种更珍贵的入口。”对门的讨论包括一种通过门召唤生物的仪式，虽然其关键祷句仍然缺失。",
 	warmup: 60,
 	craftable: true
 	},
@@ -281,12 +281,12 @@
 	craftable: true
 	},
 					{id: "studygeminiad",
-	label: "阅读《双子之神》",
+	label: "阅读《双生姝丽》",
 	actionId: "study",
 	requirements: {geminiad:1},
 	effects: {geminiad:-1,geminiadread:1,fragmentgraild:1,fragmentheartd:1,fragmentmothd:1,riteinfluenceconsumeingredient:1},
-	startdescription: "书中描绘了一位令静止之物结合与另一位位于水之缘，月之底的时枢神的教义与本性：双生巫女。书中的语言复杂，诗性，任性。我需要一定时间来解读它。",
-	description: "《双子之神》提醒了我们所知的双生巫女常常以双生女巫的形象现身——并且当其中一面神痊愈之时，另一面神依旧饥饿着。这透露了双生巫女和林地时枢神之间的联系，特别是与其中一位名为鹄绒的守密人。但是，双生巫女是否为林地的时枢神一事依旧不明。并且在书中，有大量笔墨描绘了二位一体者的悲伤，以及从她们仍为血肉之躯之时带来的悲哀。",
+	startdescription: "书中描绘了一位令静止之物结合的，与另一位位于水之缘、月之底的时枢神的信条与本性：双生巫女。书中的语言缠结，诗意，任性。我需要花些时间来解开它。",
+	description: "《双生姝丽》提醒了我们：众所周知，双生巫女常常以双生女巫的形象现身——并且当其中一面饱足时，另一面仍然可以是饥饿的。这暗示了双生巫女和林地诸时枢神间的联系，特别是与其中一位名为鹄绒的守密人——双生巫女自己是否算作林地时枢神则依旧不明。且书中用大量笔墨描绘了二位一体的悲哀，既自她们仍为血肉之躯时便留存下来的悲哀。",
 	warmup: 90,
 	craftable: true
 	},
@@ -313,7 +313,7 @@ craftable: true
 effects:{irreproachabletraditionssocietynobleendeavour:-1,fragmentforgeb:1},
 warmup:60,
 startdescription:"他们的“举动”倒可称高贵——那是一场神秘的，能将他们变成超越人类之物的大火。但这种转换非常难得实现，大部分情况他们会变成难称高贵的一堆灰烬。",
-            description:"帕特里奇声称他在成功飞升者身上发现了一个规律，即，他们都穿过了雄鹿之门，得以与通晓者比肩。在飞升开始时，他们都吟诵着铸形祷文，或更厉害的仪式祷文。并且他们都很富有。",
+            description:"帕特里奇声称他在成功飞升者身上发现了一个规律，即，他们都穿过了雄鹿之门，得以与通晓者比肩。在飞升开始时，他们都吟诵着巧匠祷文，或更厉害的祷文。并且他们都很富有。",
 craftable: true
         },						 {
         id: "studyroseofnuriel",
@@ -322,8 +322,8 @@ craftable: true
             requirements:{roseofnuriel:1},
 effects:{roseofnuriel:-1,fragmentgrailb:1,fragmentknockb:1},
 warmup:60,
-startdescription:"努瑞尔解释道，圣特里芬以“流血与忍耐的她”和“开启道路的她”之名展示了秘密的奇迹，从而开启了通往日之居所的道路，涅槃重生，飞升成为不死之人。",
-            description:"圣特里芬的飞升过程始于他穿过“角门”。而后他学习了因其极度神圣而未被努瑞尔所记载的“酩酊祷文”。努瑞尔严肃地解释道，为了获得涅槃重生的七道印记，圣特里芬奉上了“灵魂已逝之人，和灵魂犹存之人。”",
+startdescription:"努瑞尔解释道，圣特里芬以“流血与忍耐的她”和“开启道路的她”之名展示了秘密的奇迹，从而开启了通往太阳居所的道路，涅槃重生，飞升成为不死之人。",
+            description:"圣特里芬的飞升过程始于他穿过“双角门”。而后他学习了因其极度神圣而未被努瑞尔所记载的“酩酊祷文”。努瑞尔严肃地解释道，为了获得涅槃重生的七道印记，圣特里芬奉上了“灵魂已逝之人，和灵魂犹存之人。”",
 craftable: true
         },						 {
         id: "studyroseofhypatia",
@@ -353,7 +353,7 @@ craftable: true
 effects:{sunsetpassages:-1,fragmentwinterb:1},
 warmup:60,
 startdescription:"在骄阳分裂之前，教会就尊崇它。但在骄阳还完整的时候，它日后的分裂出的自我就已经被认为是它的具名者了。而拂晓执掌的自然是死亡和前往居所的道路。",
-            description:"纯白仪式据称是祭祀时枢神拂晓的仪式，在黎明前的寒冷时刻的葬礼中施行。这份文献中提示道，在仪式中，所有的刀刃都不能出鞘，“否则尸体将不再沉默。”",
+            description:"“纯白之礼”据称是纪念时枢神拂晓的仪式，在黎明前冷冽之时的葬礼施行。这份文献提示道，在念诵仪式祝词时，所有的刀刃都不能出鞘，“否则尸体将不再沉默。”",
 craftable: true
         },						 {
         id: "studygospelzacchaeus",
@@ -362,38 +362,38 @@ craftable: true
             requirements:{gospelzacchaeus:1},
 effects:{gospelzacchaeus:-1,fragmentknockc:1,ritefollowerconsumeingredient:1},
 warmup:60,
-startdescription:"“他身上的伤痕其数为七，居所的大门其数为七，时枢神的次要属性其数为七，<b>启</b>之属性凌驾于上，正因蚁母乃是救赎之母。”",
-            description:"这本书描述了一个仪式，这个仪式可以将一具尸体转为半死，“以纪念他为林地所流之血。”进行这个仪式需要一具尸体和足够的力量，作者建议使用与<b>冬</b>相关的祷文，还需一位被林地之力触碰过的助手。",
+startdescription:"“他身上的伤口其数为七，居所之门其数为七，时枢神的次级属性其数为七，<b>启</b>属性凌驾于上，正因蚁母乃是救赎之母。”",
+            description:"这本书描述了一个<b>仪式</b>，可将一具尸体转为半死，“以纪念他为林地所流之血。”进行这个仪式需要一具尸体和足够的法力，作者建议使用与<b>冬</b>之密传相关的祷文，还需一名被林地之力触碰过的助手。",
 craftable: true
         },						 {
         id: "studymatthiasamethystloss",
-            label: "阅读《论马蒂亚斯与紫晶虫：缺失》",
+            label: "阅读《论马蒂亚斯与紫晶成虫：缺失》",
             actionId:"study",
             requirements:{matthiasamethystloss:1},
 effects:{matthiasamethystloss:-1,fragmentmothc:1,ritetoolconsumeinfluence:1},
 warmup:60,
-startdescription:"“居所的法则禁止马蒂亚斯去爱，而林地的习俗也禁止虫停留。于是当她发现了阿拉卡布的大剪刀后，他最后一次召唤了她；他为剪去她背后的翅膀而痛苦，这样她就能留下来，她为剪去他存放男性精华的部位而痛苦，这样他们就能远离有罪的行径。这便是伴随血与欢愉的爱情。我们将马蒂亚斯逐出了居所。”",
-            description:"“流浪者教给了我们地之疆仪式的知识。这一仪式是当年马蒂亚斯用于召唤紫晶虫的，但正如大部分召唤仪式一样，只要借助合适的工具，施加适当的影响，就几乎可以召唤所有的存在。请温柔地执行仪式以缅怀那些为能够结合承受过极度痛苦的具名者和长生者。”",
+startdescription:"“居所的法则禁止马蒂亚斯去爱，而林地的习俗也禁止那只成虫停留。于是当她发现了阿拉卡普拉的剪子后，他最后一次召唤了她；他为剪去她背后的翅膀而痛苦，这样她就能留下来，她为剪去他存放男性种籽的部位而痛苦，这样他们就能远离有罪的行径。这便是伴随血与欢乐的爱情。我们将马蒂亚斯逐出了居所。”",
+            description:"“流浪者教给了我们地之疆仪式的知识。这一仪式是当年马蒂亚斯用于召唤紫晶成虫的，但正如大部分召唤仪式一样，只要借助合适的工具，施加适当的影响，就几乎可以召唤所有的存在。请温柔地执行仪式以缅怀那些为能够结合承受过极度痛苦的具名者和长生者。”",
 craftable: true
         },						 {
         id: "studymatthiasamethysttransformation",
-            label: "阅读《论马蒂亚斯与紫晶虫：嬗变》",
+            label: "阅读《论马蒂亚斯与紫晶成虫：嬗变》",
             actionId:"study",
             requirements:{matthiasamethysttransformation:1},
 effects:{matthiasamethysttransformation:-1,fragmentforgec:1},
 warmup:60,
-startdescription:"“我们逐出了马蒂亚斯，也对紫晶虫施加了诅咒，但我们在梦中看着他们。我们看到他们向光阴之炉许诺，许诺改变自己，飞升，获得新生。他们向火而飞。”",
-            description:"这是马蒂亚斯和虫进行的第一重实践，从这里他们开启了通往力量的飞升之路。他们升出了我们的视野之外，但他们所留下的火焰仍在铸所里燃烧。",
+startdescription:"“我们逐出了马蒂亚斯，也对紫晶成虫施加了诅咒，但我们在梦中看着他们。我们看到他们向光阴之炉许诺，许诺改变自己，飞升，获得新生。他们向火而飞。”",
+            description:"这是马蒂亚斯和成虫进行的第一重实践，从这里他们开启了飞升成神之路。他们升出了我们的视野之外，但他们所留下的火焰仍在铸所里燃烧。",
 craftable: true
         },						 {
         id: "studymatthiasamethystpursuit",
-            label: "阅读《论马蒂亚斯与紫晶虫：追寻》",
+            label: "阅读《论马蒂亚斯与紫晶成虫：追寻》",
             actionId:"study",
             requirements:{matthiasamethystpursuit:1},
 effects:{matthiasamethystpursuit:-1,fragmentgrailc:1},
 warmup:60,
-startdescription:"“马蒂亚斯给我们下了一道挑战，要我们在林地里搜寻蛾麾下的具名者，用以丰富他那些虫类标本。紫晶虫在与双生巫女玩耍，但她回到了林地去寻求蛾的赦免。而蛾，或是出于一时兴起抑或是出于忏悔，派她出去，要她将那位长生者引诱至梦魔泥沼。”",
-            description:"“马蒂亚斯爱着虫。（真的吗？难道长生者真的可以恋爱？难道他们的灵魂并没有干涸到无法修补？）虫爱着马蒂亚斯。（真的吗？难道她并非一时兴起？）他追着她穿过林地，但最后她并没有引他进入梦魔泥沼，他们躺在一起，直到“边界”逐渐明亮起来。他们学会了<b>杯</b>之欢愉，这就是他们所获得的知识。”",
+startdescription:"“马蒂亚斯给我们下了一道挑战，要我们在林地里搜寻蛾麾下的具名者，用以丰富他那些虫类标本。紫晶成虫在与双生巫女玩耍，但她回到了林地去寻求蛾的赦免。而蛾，或是出于一时兴起抑或是出于忏悔，派她出去，要她将那位长生者引诱至梦魔泥沼。”",
+            description:"“马蒂亚斯爱着那只成虫。（真的吗？难道长生者真的可以恋爱？难道他们的灵魂并没有干涸到无法修补？）那只成虫爱着马蒂亚斯。（真的吗？难道她并非一时兴起？）他追着她穿过林地，但最后她并没有引他进入梦魔泥沼，他们躺在一起，直到“边界”逐渐明亮起来。他们学会了杯之欢愉，这是他们自己赢得的密传。”",
 craftable: true
         },						 {
         id: "studyfranklinbancroftdiaries",
@@ -402,7 +402,7 @@ craftable: true
             requirements:{franklinbancroftdiaries:1},
 effects:{franklinbancroftdiaries:-1,fragmentlanternc:1},
 warmup:60,
-startdescription:"班克罗夫特是个极有天赋的人，但他把自己的精力投入给了一些极度异想天开的计划：比如为漫索的生灵举办‘摘葡萄大赛’，又或是教律动者玩杂耍，还为坚决拒绝了他求婚的玫瑰女巫艾尔召唤了一场如梦似幻的鲜花风暴。班克罗夫特花了整整二十页来哀叹对方没有接受自己的求婚。",
+startdescription:"班克罗夫特是个极有天赋的人，但他把自己的精力投入给了一些极度异想天开的计划：比如为漫索的生灵举办“摘葡萄大赛”，又或是教擂击者玩杂耍，还为坚决拒绝了他求婚的玫瑰女巫艾尔召唤了一场如梦似幻的鲜花风暴。班克罗夫特花了整整二十页来哀叹对方没有接受自己的求婚。",
             description:"这里所记载的梵咒既高等又难用，它可以让一个人将其灵魂献给守夜人，开启飞升至居所之旅。当班克罗夫特喝多了的时候他就会开始吹嘘自己朗诵的能力。他还给自己的作品谱上曲，在沃克斯豪尔花园的烟火大会上表演。",
 craftable: true
         },						 {
@@ -412,8 +412,8 @@ craftable: true
             requirements:{indignitiesobliviate:1},
 effects:{indignitiesobliviate:-1,fragmentwinterc:1,ritetoolfollowerconsumelore:1},
 warmup:60,
-startdescription:"<b>第五十八条。</b>他们声称自己确实继承了遗忘家族的传统，但是他们居然在<b>不方便</b>执行时就<b>抛弃</b>了家族最为美丽也最为神圣的仪式。<b>第五十九条</b>……",
-            description:"“现在，由我来向大家分享这教团用来召唤烟雾幽魂的仪式。他们<b>背叛</b>家族传统，竟不将一位<b>冬</b>的学徒和锤骨精要与启之知识一起献上，<b>而是</b>将一位启的学徒和锤骨与<b>冬</b>之知识一起献上！这不能忍——”",
+startdescription:"<b>第五十八条。</b>他们声称自己确实继承了遗忘家族的传统，但是他们居然在<b>不方便</b>执行时就<b>抛弃</b>了家族最为美丽也最为神圣的典礼。<b>第五十九条</b>……",
+            description:"“现在，由我来向大家分享教团用来召唤灵体“汽灵”的仪式。他们<b>背叛</b>家族传统，竟不将一名冬之学徒和蛮横锤骨与启之密传一起献上，<b>而是</b>将一名启之学徒和锤骨与冬之密传一起献上！这不能忍——”",
 craftable: true
         },						 {
         id: "studyfurioustantra",
@@ -422,28 +422,28 @@ craftable: true
             requirements:{furioustantra:1},
 effects:{furioustantra:-1,fragmentedgec:1,ritefollowerconsumetool:1},
 warmup:60,
-startdescription:"这本密宗叙述了狂怒的用途和危险性。书里警告道，愤怒并不总能让你在转化中幸存。",
-            description:"“满月显现，百兽复生，一条蜥蜴也不可屠戮，因为它可能就是你。”",
+startdescription:"这本密宗讲述了怒气的用途和危险性。书里警告说，怒气不一定能在转化中存活。",
+            description:"“满月显现，百兽复生，一条蜥蜴也不可屠戮，因为它可能是你。”",
 craftable: true
         },						 {
         id: "studydevouredtantra",
-            label: "阅读《暴食密宗》",
+            label: "阅读《贪食密宗》",
             actionId:"study",
             requirements:{devouredtantra:1},
 effects:{devouredtantra:-1,fragmentgrailc:1},
 warmup:60,
-startdescription:"这本密宗叙述了贪食的用途和危险性，不过大部分篇幅都是在写那些“星状有分枝杈的引发饥饿者”，这就让这份文献很明显地带有了很强烈的偏好性。",
+startdescription:"《贪食密宗》提醒了食欲的用途和危险性，却将大段篇幅用于描述那些“拥有星形肢体的引发饥饿者”，行文间透出明显的喜爱之情。",
             description:"“形态不一的众口吞噬万物，无尽烈火的巨胃燃尽一切。”",
 craftable: true
         },						 {
         id: "studyceaselesstantra",
-            label: "阅读《无间密宗》",
+            label: "阅读《无休密宗》",
             actionId:"study",
             requirements:{ceaselesstantra:1},
 effects:{ceaselesstantra:-1,fragmentheartc:1},
 warmup:60,
-startdescription:"尽管无间密宗的主旨在于警告大家有种名叫律动者的生物存在，但文献的最后却给出了召唤这种生物的咒语。它叙述道，律动者可以学会任何一种舞蹈，但它们只喜欢学一种。",
-            description:"“不间断他物者，自己亦不间断。”",
+startdescription:"尽管《无休密宗》的主体在于让人们警惕一种名叫“擂击者”的生物，却又在书最后给出了召唤该生物的咒语。据它所述，擂击者可以学会任何一种舞蹈，但它们只喜欢学那一种。",
+            description:"“不休止他物者，自己亦无休止。”",
 craftable: true
         },						 {
         id: "studyknownunknowntantra",
@@ -452,18 +452,18 @@ craftable: true
             requirements:{knownunknowntantra:1},
 effects:{knownunknowntantra:-1,fragmentlanternc:1},
 warmup:60,
-startdescription:"《不思议密宗》讲述了一场前往漫索中的纯白之门的旅行，那是扇言语无法穿过的门，这份文献给出了一个密宗，只要在正确的时间和地点使用这个梵咒，就能抵达那扇门。",
-            description:"“来自于灯的光亦只能照亮森林树影的间隙。”",
+startdescription:"《不思议密宗》讲述了一场前往漫索中“纯白之门”的旅行，言语在那扇门后终止，这份文献给出了一个梵咒，只要在正确的时间和地点使用，就能抵达那扇门。",
+            description:"“灯所发出的光从来只能照亮森林树影的间隙。”",
 craftable: true
         },						 {
         id: "studyencirclingtantra",
-            label: "阅读《环抱密宗》",
+            label: "阅读《盘绕密宗》",
             actionId:"study",
             requirements:{encirclingtantra:1},
 effects:{encirclingtantra:-1,fragmentknockc:1},
 warmup:60,
-startdescription:"环抱密宗提及了蛇之门，这扇饥饿的大门有时也被称作蜘蛛之门，它归属于蚁母，扁颈贵胄曾从这扇门通过。",
-            description:"《环抱密宗》中记载着一句咒语，但它也提醒道，这句咒语力量不足以从猎人之门到达巨蛇之门。“无终点之路，自身即为终点”，书中特意这样补充道。",
+startdescription:"《盘绕密宗》提及了“巨蛇之门”，即有时也被称作蜘蛛之门的饥饿门户，蚁母的神圣之门，扁颈贵胄曾从此经过。",
+            description:"《盘绕密宗》中记载了一句祷文，但也提醒，其法力不足以从猎手之门到达巨蛇之门。“无终点之路，自身即为终点”，书中特意这样补充道。",
 craftable: true
         },						 {
         id: "studyshavenlocktantra",
@@ -472,17 +472,17 @@ craftable: true
             requirements:{shavenlocktantra:1},
 effects:{shavenlocktantra:-1,fragmentmothc:1},
 warmup:60,
-startdescription:"该密宗中大谈特谈那些准备抛弃旧我、寻求崭新且更高尚自我的人。书中警告说，一旦这一变化，即越过第三印记，真正开始发生，回到旧我就将变得危险而痛苦。",
-            description:"“向大地低声吐露你的秘密，将它们燃尽，丢弃至海中。即便如此，它们依然会紧紧抓着你的头发”，密宗如此警告。这是一个密教谜语，自称有时能解答猎人之门的谜语。",
+startdescription:"该密宗中大谈特谈那些准备抛弃旧我、寻求崭新且更高尚自我的人。书中警告说，一旦这一转变——即越过第三印记——真正开始发生，回到旧我就将变得危险而痛苦。",
+            description:"“向大地低声吐露你的秘密，将它们燃尽，弃至海中。即便如此，它们依然会紧紧抓着你的头发”，密宗如此警告。这是一个密教谜语，自称有时能解答猎手之门的谜语。",
 craftable: true
         },						 {
         id: "studytantraworms",
-            label: "阅读《虫之密宗》",
+            label: "阅读《蠕虫密宗》",
             actionId:"study",
             requirements:{tantraworms:1},
 effects:{tantraworms:-1,fragmentwinterc:1},
 warmup:60,
-startdescription:"《虫之密宗》中罗列了许多被称为“非蛇之蛇”的方法用来对抗蠕虫，尽管它们并不怎么实用。<b>蛾</b>与<b>冬</b>最接近它们，因此了解它们的弱点，但使用两者皆有危险。锻狮能轻易打败它们，但其所使用的方法并不适合凡人。",
+startdescription:"《蠕虫密宗》中罗列了许多被称为“非蛇之蛇”的方法用来对抗蠕虫，尽管它们并不怎么实用。<b>蛾</b>与<b>冬</b>最接近它们，因此了解它们的弱点，但使用两者皆有危险。锻狮能轻易打败它们，但其所使用的方法并不适合凡人。",
             description:"“蠕虫总是渴望将我们作为寄生的温床。这些是令我们的身体不适宜寄生的一些尝试。”书中有些图示，不但令人不忍卒看，而且其中所描绘的任何一种方法都不能令被试者存活。",
 craftable: true
         },
@@ -505,7 +505,7 @@ craftable: true
 effects:{accountkanishkspidersdoor:-1,fragmentedgec:1},
 warmup:60,
 startdescription:"迦腻色伽试图成为一位具名者。为了达成这一目标，他将洛克·卡胡利变成承载他食欲的容器，承诺与其一起飞升。面对着蜘蛛之门时，他背叛了他的情人……",
-            description:"千夫长倾听了他的背叛之言，然后强迫迦腻色伽侍奉他。千夫长不容拒绝。洛克·卡胡利继续撰写这部著作，并描述外部关于的斗争与竞赛的魔法。",
+            description:"千夫长倾听了他的背叛之言，然后强迫迦腻色伽侍奉他。千夫长不容违抗。洛克·卡胡利继续撰写这部著作，并描述外部关于的斗争与竞赛的魔法。",
 craftable: true
         },
 		{
@@ -515,8 +515,8 @@ craftable: true
             requirements:{stumm:1,funds:1},
 effects:{stumm:-1,fragmentwinterc:1,dread:1,ritefollowerconsumeinfluence:1,funds:-1},
 warmup:60,
-startdescription:"放映机嘎嘎作响，静静地将画面投影在墙上。故事讲述的是一位研究禁忌科学的愚蠢学生的故事，他招募了一名舞者来引诱死者，让死者通过世界外皮上的裂缝重返世界。这是一个虚构的故事，但片中的字幕却写着夕阳行动……",
-            description:"仪式的描述极为详尽，令人毛骨悚然。这是世界的裂缝，在流光溢彩的涂料中闪闪发光的力量。那里讲舞者怎样跳出令人无法抗拒的节奏。这段是学者在详述行动步骤，而现在迷雾似的死者正旋转着穿过裂缝，要将他吞噬！片子的最后一幕是舞者警觉的双眼。她从一开始就打算这么做吗？",
+startdescription:"放映机嘎嘎作响，静静地将画面投影在墙上。故事讲述的是一名研究禁忌科学的愚蠢学生的故事，他招募了一名舞者来引诱死者，让死者通过世界表皮上的破绽重返世界。这是一个虚构的故事，但片中的字幕却写着落日行动……",
+            description:"仪式描述极为详尽，令人毛骨悚然。先是世界的破绽，一种在流光溢彩的涂料中闪闪发光的影响。然后是舞者怎样跳出令人无法抗拒的节奏。然后是学者复述行动步骤；而现在，雾一般的亡者正旋转着穿过要将它吞噬的破绽处！片子的最后一幕是舞者警觉的双眼。她从一开始就打算这么做吗？",
 craftable: true
         },
 		{
@@ -526,8 +526,8 @@ craftable: true
             requirements:{vinzantinscriptions:1},
 effects:{vinzantinscriptions:-1,fragmentforgec:1},
 warmup:60,
-startdescription:"很久很久以前，根据结绳姐妹会所说，光阴之炉爱上了一位叫做骄阳的时枢神。赤杯早就预料到他们的结合，且<b>杯</b>之女祭司也预言过此事……",
-            description:"文章的其余部分是<b>杯</b>之女祭司幸灾乐祸地评论即将到来的重塑，中间混杂着侍奉环衫，尤其是双角斧的姐妹会的警告与哀叹。尽管如此，书中还含有一个对光阴之炉使用的祷文，以帮助光阴之炉推进。",
+startdescription:"很久很久以前，根据结绳姐妹会所说，光阴之炉爱上了一位叫做骄阳的时枢神。赤杯早就预料到他们的结合，且杯之女祭司也预言过此事……",
+            description:"文章的其余部分是杯之女祭司幸灾乐祸地评论即将到来的重塑，中间混杂着侍奉环杉，尤其是双角斧的姐妹会的警告与哀叹。尽管如此，书中还含有一个对光阴之炉使用的祷文，以帮助光阴之炉推进。",
 craftable: true
         },
 		{
@@ -537,8 +537,8 @@ craftable: true
             requirements:{larquebinecodex:1},
 effects:{larquebinecodex:-1,fragmentheartc:1},
 warmup:60,
-startdescription:"双生女巫来自西方，分别从两个子宫降生，一位是公主，一位是怪物。然而，她们自出生就彼此相爱，并暗中相会，“寻求结合”。",
-            description:"当大干旱降临，那片土地上的国王们试图将公主与女巫献祭，于是她们横渡大海。当绝望攫住她们时，她们纵身跳入深不见底的大海……并因此发现了画中之河，还由此穿过赤杯的房间进入了漫索。然而，写本却以谴责赤杯结束……",
+startdescription:"双生女巫来自西方，分别从两个子宫降生，一个是公主，一个是怪物。然而，她们自出生就彼此相爱，并暗中相会，“寻求结合”。",
+            description:"当大干旱降临，那片土地上的国王们试图将公主与女巫献祭，于是她们横渡大海。当绝望攫住她们时，她们纵身跳入深不见底的海水……并因此发现了画中之河，还由此穿过赤杯的房间进入了漫索。然而，写本却以谴责赤杯结束……",
 craftable: true
         },
 		{
@@ -559,7 +559,7 @@ craftable: true
             requirements:{morphycodex:1},
 effects:{morphycodex:-1,fragmentsecrethistoriesd:1},
 warmup:60,
-startdescription:"这本书的作者坚信赤杯、环杉与双角斧——为姐妹会所崇敬的力量——同意在居所的时枢神与被前者取代的时枢神间缔结最终条约：怒号之皮深爱着环杉，而赤杯将他摧毁，作为对手足惨遭杀害的双角斧的补偿。",
+startdescription:"这本书的作者坚信赤杯、环杉与双角斧——为姐妹会所崇敬的神灵——同意在居所的时枢神与被前者取代的时枢神间缔结最终条约：怒号之皮深爱着环杉，而赤杯将他摧毁，作为对手足惨遭杀害的双角斧的补偿。",
             description:"怒号之皮由孔雀之门进入漫索，“这是双生巫女从未享受过的特权，不过那时她们功绩寥寥。”作者承认由孔雀之门进入不太行得通，但同时坚称在那种情况下别无他法。",
 craftable: true
         },
@@ -581,8 +581,8 @@ craftable: true
             requirements:{incandescenttantra:1},
 effects:{incandescenttantra:-1,fragmentforged:1},
 warmup:60,
-startdescription:"本书记载着与某个名为坩埚王公的实体之间的对话记录。王公向他人警告他的女主人，燃烧女王，胃口巨大，以及她与骄阳分享的赤裸欲望的危险。即便如此，他依然口称对女王忠心耿耿。",
-            description:"“改变的仪式必然是毁灭的仪式，而若想催生巨变，则必须依靠野蛮的破坏。”",
+startdescription:"本书记载着与某个名叫坩埚王公的存在的对话记录。王公向他人警告他的女主人，燃烧女王，胃口巨大，以及她与骄阳分享的赤裸欲望的危险。即便如此，他依然口称对女王忠心耿耿。",
+            description:"“转变的仪式必然是毁灭的仪式，而若想催生巨变，则必须依靠野蛮的破坏。”",
 craftable: true
         },
 		{
@@ -593,7 +593,7 @@ craftable: true
 effects:{thirstingtantra:-1,fragmentgraild:1,ritetoolconsumeingredient:1},
 warmup:60,
 startdescription:"这是一篇对于干渴的各种种类、用途及效果的专题研究。",
-            description:"《干渴密宗》描述了凡人能怎样通过平息干渴升为干渴之力的侍奉者，但同时也警告了为满足普通的干渴而放弃更稀有的干渴的后果。“一个心怀干渴的人，伟大的力量啊，他的思想与此世紧紧相连，将会从彼世回归此世。”",
+            description:"《干渴密宗》描述了凡人能怎样通过平息干渴升为干渴之神的侍奉者，但同时也警告了为满足普通的干渴而放弃更稀有的干渴的后果。“一个口中干渴的人，强大的人啊，他的心智贴紧这个世界的活动态，将会从另一处方回归这个动态的世界。”",
 craftable: true
         },
 		{
@@ -609,12 +609,12 @@ craftable: true
         },
 		{
         id: "studywatchfultantra",
-            label: "阅读《警觉密宗》",
+            label: "阅读《警夜密宗》",
             actionId:"study",
             requirements:{watchfultantra:1},
 effects:{watchfultantra:-1,fragmentlanternd:1,ritetoolfollowerconsumelore:1},
 warmup:60,
-startdescription:"《警觉密宗》描述了几种密教的启迪过程，包含一个或许能指示从猎人之门到达巨蛇之门路线的法术，后者在西方通常称为蜘蛛之门。",
+startdescription:"《警夜密宗》描述了几种密教的启明过程，包含一个或许能为从“猎手之门”到达“巨蛇之门”指路的法术，后者在西方通常称为蜘蛛之门。",
             description:"“骄阳本应当在指定的时刻穿过居所。自从骄阳分裂后，这一时间变得无法确定了。”",
 craftable: true
         },
@@ -625,7 +625,7 @@ craftable: true
             requirements:{twinserpenttantra:1},
 effects:{twinserpenttantra:-1,fragmentknockd:1,ritefollowerconsumeingredient:1},
 warmup:60,
-startdescription:"《孪蛇密宗》描述了扁颈贵胄参与祷告，其来自于某个起源不明的王朝。他献祭并作诗纪念钥之蛇、十字路之双子与镜之女王。“那迦盘绕，那迦从伤口中升起，那迦不伤害已被伤害者。”",
+startdescription:"《孪蛇密宗》描述了扁颈贵胄——来自某个起源不明的王朝——如何参与祷告，献祭并作诗赞颂钥匙之蛇、十字路孪生子与镜子女王。“那迦盘绕，那迦现身于创口，那迦饶过已被伤害者。”",
             description:"扁颈贵胄被描写为“从其死亡的历史中逃脱至其未死之时”。文章中声称他们现在已有一百零八人，但——又是一种他们身上常出现的双生异象——在他们跨越自己的死亡历史前，他们只有五十四人。",
 craftable: true
         },
@@ -636,8 +636,8 @@ craftable: true
             requirements:{firecircletantra:1},
 effects:{firecircletantra:-1,fragmentmothd:1},
 warmup:60,
-startdescription:"此处展现了扁颈贵胄乞求森林拔地而起并吞噬一整支进犯的帖木儿军队的情节。“斑纹之王”、“蜜树”与“海之双子”都拒绝了他的请求，直到他们向一位穴居于地洞中的守秘人寻求帮助……",
-            description:"携带着穴居守秘者提供的勒索材料，扁颈贵胄再次向林地之力请愿，并取得成功。四分之一的帖木儿军队被蜜蜂吞没，四分之一溺水，四分之一“丢盔卸甲，裸身而逃。”",
+startdescription:"此处展现了扁颈贵胄乞求森林拔地而起并吞噬一整支进犯的帖木儿军队的情节。“斑驳之王”、“蜜树”与“海之孪生子”都拒绝了他的请求，直到他们向一个穴居于地洞中的守秘人寻求帮助……",
+            description:"携带着穴居守秘者提供的勒索材料，扁颈贵胄再次向“林地”诸神请愿，并取得成功。四分之一的帖木儿军队被蜜蜂吞没，四分之一溺水，四分之一“丢盔卸甲，裸身而逃。”",
 craftable: true
         },
 		{
@@ -648,12 +648,12 @@ craftable: true
 effects:{asthesunhiscourse:-1,fragmentedged:1,ritefollowerconsumetool:1},
 warmup:60,
 startdescription:"亚历山大与万王之王大流士在伊苏斯会面，持续了三天三夜。第一晚，两人互相威胁；第二晚，给予承诺；第三晚，分享秘密。大流士披露了令人震惊的事实，亚历山大不得不回到帐中思考“有关力量与王权的事宜”。",
-            description:"第四夜清晨，亚历山大宣布：“日之躔回归其始，吾之躔亦如此。”他回到马其顿，处死了质疑他决定的两名将领。他带来了“一个失明的神的名字”，和“神圣背叛仪式”：约珥对此认为，没有背叛，战争便可结束。",
+            description:"第四夜清晨，亚历山大宣布：“日之躔回归其始，吾之躔亦如此。”他回到马其顿，处死了质疑他决定的两名将领。他带来了“一个目盲之神的名字”，和“神圣背叛仪式”：约珥对此认为，没有背叛，战争便可结束。",
 craftable: true
         },
 		{
         id: "studyconcursumdiaries",
-            label: "阅读《聚点日志》",
+            label: "阅读《聚点日记》",
             actionId:"study",
             requirements:{concursumdiaries:1},
 effects:{concursumdiaries:-1,fragmentlanternd:1},
@@ -670,7 +670,7 @@ craftable: true
 effects:{ironbook:-1,fragmentforged:1},
 warmup:60,
 startdescription:"每个教团的成员都必须许下钢铁誓链，保证永远避世。这本指南中含有应当早已废弃的地址和通行暗语，以前用来联络伊瑞阿镇上的教团联系人。",
-            description:"指南的最后部分描述了怎样处罚违背了保密誓言的教团成员。其中包括一个用来召唤名为坩埚王的精灵，并令其代己复仇的祷文。伊芙妮警告说这很可能是对付违背誓言之人最后的手段，仅当其他手段无法惩罚他们时才会使用：召唤坩埚王甚至可能会吸引光阴之炉的注意力。",
+            description:"指南的最后部分描述了怎样处罚违背了保密誓言的教团成员。其中包括一个用来召唤名为坩埚王的灵体，并令其代己复仇的祷文。伊芙妮警告说这很可能是对付违背誓言之人最后的手段，仅当其他手段无法惩罚他们时才会使用：召唤坩埚王甚至可能会吸引光阴之炉的注意力。",
 craftable: true
         },
 		{
@@ -692,7 +692,7 @@ craftable: true
 effects:{ivorybook:-1,fragmentwinterd:1,ritefollowerconsumeinfluence:1},
 warmup:60,
 startdescription:"每个教团的成员都必须许下白色誓链，禁止与时枢神往来。对学徒来说，要一字一句遵守这个誓言几乎是不可能的，因此指南包含了不计其数的解释、例外和赦罪的方法。",
-            description:"红描述了教团的埋葬仪式，其中包括了在理论上保证死去的长生者的灵魂不被交付于时枢神的咒术。这些仪式秘密地向被称为骨白之鸽的，记忆与纪念之时枢神祈求，“因为我们与这位时枢神达成了共识”。",
+            description:"红描述了教团的埋葬仪式，其中包括了能在理论上确保逝去长生者的灵魂不被时枢神掠去的咒术。这些仪式秘密地向司掌记忆与纪念的时枢神骨白之鸽祈求，“因为我们与这位时枢神达成了共识”。",
 craftable: true
         },
 		{
@@ -702,41 +702,41 @@ craftable: true
             requirements:{worlddoesnotweep:1},
 effects:{worlddoesnotweep:-1,fragmentwinterd:1,riteinfluenceconsumefollower:1},
 warmup:60,
-startdescription:"一位不知名的学徒写下这些宣言：世界会遗忘，而骨白之鸽不会。为了保证某些做法能被人铭记，文中列出了一串旧习做法，包括一种需要以特别骇人听闻的方式献祭的仪式……",
+startdescription:"一名不知名的学徒写下这些宣言：世界会遗忘，而骨白之鸽不会。为了保证某些做法能被人铭记，文中列出了一串旧习做法，包括一种需要以特别骇人听闻的方式献祭的仪式……",
             description:"时枢神企图掩盖关于大轮、燧石、浪潮及七蟠的遭遇的记忆，但骨白之鸽不会容许这样做。他也不容许初卵的遭遇被遗忘，尽管这可能是守夜人唯一会原谅的事……",
 craftable: true
         },
 		{
         id: "studydeedsofthescarredcaptain",
-            label: "阅读《刀疤船长事迹录》",
+            label: "阅读《身负伤痕的上尉之事迹录》",
             actionId:"study",
             requirements:{deedsofthescarredcaptain:1},
 effects:{deedsofthescarredcaptain:-1,fragmentedged:1},
 warmup:60,
-startdescription:"关于“刀疤船长”是如何率先斩杀七怪、守卫这片土地并建立迈锡尼的故事。",
-            description:"船长每杀死一个怪物，血的洪潮就升得更高，直至一位女祭司溺死其中，作为蛇神重生。她祝福船长，船长在血潮退却后离开迈锡尼，去向“林地之上的居所”，成为至高的主宰。",
+startdescription:"关于“身负伤痕的上尉”是如何率先斩杀七怪、守卫这片土地并建立迈锡尼的故事。",
+            description:"上尉每杀死一个怪物，血的洪潮就升得更高，直至一名女祭司溺死其中，作为蛇神重生。她祝福上尉，上尉他则在血潮退却后离开迈锡尼，去向“林地之上的居所”，成为至高的主宰。",
 craftable: true
         },
 		{
         id: "studybookofdissolution",
-            label: "阅读《解离之书》",
+            label: "阅读《融解之书》",
             actionId:"study",
             requirements:{bookofdissolution:1},
 effects:{bookofdissolution:-1,fragmentforgee:1,ritetoolconsumefollower:1},
 warmup:60,
-startdescription:"这本书主要记载了向不焚之神，即吞噬与重造之神光阴之炉的祈祷。该书认为光阴之炉的力量部分来源于其本性，部分来源于其工具。",
-            description:"书中描写了早期的日之居所，它有着和现在不尽相同的门与道路。它颂扬了光阴之炉开启通往居所道路的事迹，赞美了他将过往重塑为现今的作为，尽管过程伴随着石头凄厉的尖叫……",
+startdescription:"这本书主要记载了向不焚之神，即吞噬与重造之神光阴之炉的祈祷。该书认为炉之力部分来源于其本性，部分来源于其工具。",
+            description:"书中描写了早期的太阳之居所，它有着和现在不尽相同的门与道路。它颂扬了光阴之炉开启通往居所道路的事迹，赞美了他将过往重塑为现今的作为，尽管过程伴随着石头凄厉的尖叫……",
 craftable: true
         },
 		{
         id: "studycatalogueofunchartedpleasures",
-            label: "阅读《异趣集》",
+            label: "阅读《未知快感概览》",
             actionId:"study",
             requirements:{catalogueofunchartedpleasures:1},
 effects:{catalogueofunchartedpleasures:-1,fragmentgraile:1},
 warmup:60,
-startdescription:"某些愉悦，恰如“欢愉法术所证”，如此之激烈，“甚至能够侵蚀现实世界的法则”。这篇文献收录了一些这样的情形。",
-            description:"新生降临于愉悦和苦痛并存之时。因而光阴之炉的第一条禁忌诞下了欢欣的火花，它根植于光界或虚界之中：谁能肯定呢？因而圃仙人的种子埋下，尽管在很长的时间里他将只是一处无法满足的痛楚。",
+startdescription:"“有些快感，”有销魂法术为证，“如此强烈，足以侵蚀现实世界的法则”。这篇文献收录了一些此类例证。",
+            description:"新生降临于欢愉与苦痛并存之时。因而光阴之炉的第一条禁忌诞下了欢欣的火花，它根植于光界或虚界之中：谁能肯定呢？因而圃仙人的种子埋下，尽管在很长的时间里他将只是一处无法满足的痛楚。",
 craftable: true
         },
 		{
@@ -746,8 +746,8 @@ craftable: true
             requirements:{thosewhodonotsleep:1},
 effects:{thosewhodonotsleep:-1,fragmenthearte:1,ritetoolconsumeingredient:1},
 warmup:60,
-startdescription:"“双生女巫分别从海洋彼岸的两个子宫降生，一位贫穷，一位富有。巫女强于<b>心</b>属性，以保她二者存活于世；女巫强于<b>杯</b>属性，故而她二者欲壑难填……”",
-            description:"“当双生女巫自西而来，赤杯允诺让她们飞升，但随后却对她们的力量产生了嫉妒。于是赤杯引诱了一位伟大的音乐家，将他纳入为麾下的具名者，使他从鲜血中重生为<b>心</b>之时枢神，借此让<b>杯</b>在<b>心</b>的领域也掌握权柄。但是，<b>杯</b>并非常胜不败。”",
+startdescription:"“双生女巫分别从海洋彼岸的两个子宫降生，一个贫穷，一个富有。巫女强于<b>心</b>属性，以保她二者存活于世；女巫强于<b>杯</b>属性，故而她二者欲壑难填……”",
+            description:"“当双生女巫自西而来，赤杯允诺让她们飞升，但随后却对她们的神力产生了嫉妒。于是赤杯引诱了一位伟大的音乐家，将他纳入为麾下的具名者，使他从鲜血中重生为<b>心</b>之时枢神，借此让赤杯在<b>心</b>的领域也掌握权柄。但是，赤杯并非常胜不败。”",
 craftable: true
         },
 		{
@@ -763,13 +763,13 @@ craftable: true
         },
 		{
         id: "studyonthematterandthedeedsofserpents",
-            label: "阅读《巨蛇事迹考察》",
+            label: "阅读《蛇族事迹考察》",
             actionId:"study",
             requirements:{onthematterandthedeedsofserpents:1},
 effects:{onthematterandthedeedsofserpents:-1,fragmentknocke:1,dread:1},
 warmup:60,
-startdescription:"名为扁颈贵胄的巨蛇人一族了解到了遗忘之屋教团的存在，与其展开了跨越千里的战争。它与蚁母为盟，“巨蛇族曾经也是她的子女”……",
-            description:"文中描述了扁颈贵胄如何从第五史逃离（或将要逃离），而第五史也是它们死去（或是注定要死去）的地方。扁颈贵胄参与到了一场针对“大河流域”（某些历史中称之为印度）的秘密征服中，确保了其他对那片土地的征服行动均无理可依。",
+startdescription:"人称“扁颈贵胄”的蛇人一族了解到了“遗忘家族”教团的存在，并与之展开了跨越千里的战争。它与蚁母为盟，“蛇族曾经也是她的子女”……",
+            description:"文中描述了扁颈贵胄如何从第五史逃离（或将要逃离），而第五史也是它们死去（或是注定要死去）的地方。扁颈贵胄参与到了一场针对“大河流域”（某些历史中称之为印度）的秘密征服中，确保了除己之外对那片土地的征服行动均无理可依。",
 craftable: true
         },
 		{
@@ -790,7 +790,7 @@ craftable: true
             requirements:{bookofthrones:1},
 effects:{bookofthrones:-1,fragmentsecrethistoriese:1,fragmentedgee:1},
 warmup:60,
-startdescription:"在“至初也至伟的历史”中，一位波斯无影帝国的国民向西而行，前往珀耳修斯王国。在那里，他拜入珀耳修斯守护神，又称居于黑暗的伤痕人门下。七年后他学成归来，用所学为无影帝国效力，成为了帝国的黄金大将……",
+startdescription:"在“至初也至伟的历史”中，一名波斯无影帝国的国民向西而行，前往珀耳修斯王国。在那里，他拜入珀耳修斯守护神，又称居于黑暗的伤痕人门下。七年后他学成归来，用所学为无影帝国效力，成为了帝国的黄金大将……",
             description:"和平持续了许多年，直到珀耳修斯王国的继承者向无影帝国与列王之王宣战。起初黄金大将不愿与自己导师的血亲操戈相向，直到听闻列王之王向他耳语一个“关于背叛的巨大秘密”。他折断佩剑，将自己对帝国与伤痕人的誓约一并舍弃，然后将之前的人生抛下，进入了“隐于世后的神庙”。",
 craftable: true
         },{
@@ -801,7 +801,7 @@ craftable: true
 effects:{secondglory:-1,fragmentwintere:1,dread:1,riteinfluenceconsumefollower:1},
 warmup:60,
 startdescription:"尤赛对毁灭时枢神进行辩解：他们老了，既懦弱，又卑劣，他们的时代已经过去了，而通过光荣的战斗夺取居所正是人类的天命所归。",
-            description:"尤赛重述了名为七蟠的时枢神在战斗中被上校击杀的过程、名为浪潮的时枢神遭<b>杯</b>吞噬的过程，以及逆孵之卵“像个懦夫一样逃走”的样子。他对逆孵之卵肆言詈辱，用阴沉的语气让人们警惕其归来。",
+            description:"尤赛重述了名为七蟠的时枢神在战斗中被上校击杀的过程、名为浪潮的时枢神遭杯神吞噬的过程，以及逆孵之卵“像个懦夫一样逃走”的样子。他对逆孵之卵肆言詈辱，并严正告诫人们警惕其归来。",
 craftable: true
         },
 		{
@@ -812,7 +812,7 @@ craftable: true
 effects:{bookoftrueblood:-1,fragmentedgee:1,dread:1},
 warmup:60,
 startdescription:"军团使节受到被称为伤痕护民官的时枢神的直接指挥，神允诺如果他在战斗中身亡就给予他不死之身……",
-            description:"在最后，卡西乌斯承认了自己的前使节身份。他重述了自己对护民官的恐惧，并吐露了有关黄金大将，即无影帝国的捍卫者，护民官的敌人的秘密知识，希冀护民官终有一日会被扳倒。",
+            description:"在最后，卡西乌斯承认了自己的前使节身份。他重述了自己对护民官的恐惧，并吐露了有关黄金大将，即无影帝国的捍卫者，护民官之敌的秘密传承，希冀护民官终有一日会被扳倒。",
 craftable: true
         },
 		{
@@ -822,7 +822,7 @@ craftable: true
             requirements:{burningwoman:1},
 effects:{burningwoman:-1,fragmentforgee:1,fascination:1},
 warmup:60,
-startdescription:"这部戏剧描述了铁匠与学徒的朝圣之旅，众人循着燃烧的女人的足迹前行。在他们的梦中，燃烧的女人给予每个人一处创伤、一个词汇。",
+startdescription:"这部戏剧描述了铁匠与学徒的朝圣之旅，众人循着燃烧的女人的足迹前行。在他们的梦中，燃烧的女人给予每个人一处伤口、一个词汇。",
             description:"铁匠和学徒放弃了对燃烧的女人的找寻，他们决心创建自己的王国，“一个以我们的力量足以粉碎世界的王国。”",
 craftable: true
         },
@@ -833,8 +833,8 @@ craftable: true
             requirements:{twentysixenticementsseventorments:1},
 effects:{twentysixenticementsseventorments:-1,fragmentgraile:1,dread:1},
 warmup:60,
-startdescription:"“就数量而言，<b>杯</b>的诱惑远比其苦痛要多，但苦痛才是<b>杯</b>的本性。降生是第一苦痛，而干渴是第七苦痛。”",
-            description:"列举<b>杯</b>的诱惑与苦痛离不开干涸之地的女巫哀伤的历史：她们诞生于两个子宫的痛苦，摆脱<b>杯</b>的挣扎与对<b>杯</b>的哀求，对结合为一的共同的渴望。",
+startdescription:"“<b>杯</b>的<b>诱惑</b>数量多于其<b>苦痛</b>，但<b>苦痛</b>才是<b>杯</b>的真本性。<b>降生</b>是<b>第一苦痛</b>，而<b>干渴</b>是<b>第七苦痛</b>。”",
+            description:"要列举<b>杯</b>的诱惑与苦痛，离不开“干涸之地女巫”哀伤的历史：她们诞生于两个子宫的痛苦，摆脱<b>杯</b>的挣扎与对<b>杯</b>的哀求，对结合为一的共同的渴望。",
 craftable: true
         },
 		
@@ -846,7 +846,7 @@ craftable: true
 effects:{historyofshadowlesskings:-1,fragmentsecrethistoriese:1,fragmenthearte:1},
 warmup:60,
 startdescription:"这里描述了“至初也至伟的历史”。波斯帝国——又称“阿契美尼斯之子”，“无影列王”，“至高辉煌帝国”——顶住了亚历山大大帝的强攻，繁荣昌盛到了第五世纪。",
-            description:"在罗马陷落后，无影帝国将拜占庭纳入版图，随后东进大河流域。作者艾萨克开始叙述对抗“扁颈巨蛇那没有皮肤的军队”的侵略战争，但却突然以一连串被他称为是保护了无影帝国存续的祷文收了尾。",
+            description:"在罗马陷落后，无影帝国将拜占庭纳入版图，随后东进大河流域。作者艾萨克开始叙述对抗“扁颈蛇那没有皮肤的军队”的侵略战争，但却突然以一连串被他称为是保护了无影帝国存续的祷文收了尾。",
 craftable: true
         },
 
@@ -857,8 +857,8 @@ craftable: true
             requirements:{highmysterieschurchsolar:1},
 effects:{highmysterieschurchsolar:-1,fragmentlanterne:1,fascination:1},
 warmup:60,
-startdescription:"这一教派礼拜的主要对象是骄阳，原初，未分裂的太阳；但这份文献也提及了对骄阳其他形态的崇拜，如冷冽的冬季初晨、消逝的落日，以及痕月，即太阳的“夜间形态”。该教派的祭司均为男性，但也能让女性通过仪式转化为男性。",
-            description:"这一教派最重要的仪式在聚点举行，聚点是位于漫索核心位置的厅室，以时枢神的通过而闻名。这些仪式包含对诸位并非源自太阳的时枢神——诸如杯神、环衫、双角斧、怒号之皮——致以敬意的环节。",
+startdescription:"这一教派礼拜的主要对象是骄阳，原初，未分裂的太阳；但这份文献也提及了对骄阳其他面相的祀奉，如冷冽的冬季初晨、消逝的夕阳，以及痕月，即太阳的“夜间自我”。该教派的祭司均为男性，但也能让女性通过仪式转化为男性。",
+            description:"这一教派最重要的仪式在聚点举行，聚点是位于漫索核心位置的厅室，以时枢神的通过而闻名。这些仪式包含对诸位并非源自太阳的时枢神——诸如杯神、环杉、双角斧、怒号之皮——致以敬意的环节。",
 craftable: true
         },
 
@@ -869,8 +869,8 @@ craftable: true
             requirements:{medusaslament:1},
 effects:{medusaslament:-1,fragmentknocke:1,dread:1},
 warmup:60,
-startdescription:"诗的第一部分描述了七蟠遭遇伏击，设伏的那个战士全身上下都是背叛的神留下的伤疤，甚至他的眼睛都有疤痕，因此连七蟠的视线也无法摧毁他。",
-            description:"激战一直持续到七蟠淹死在自己的鲜血中，此时文中的叙述变得神秘而婉转。拥有七项头衔的女神从七蟠的血沫中现出身来：她是披坚执锐的女王，是巨蛇的女儿，她是灵钥，也是治疗师，也是杀手，也是先知，但她的第七头衔却未揭示。",
+startdescription:"诗的第一部分描述了七蟠遭遇伏击，设伏的那个战士“全身上下都是背信弃义的神留下的伤痕，甚至眼睛都有疤，因此连七蟠的视线也无法摧毁他。”",
+            description:"激战一直持续到七蟠淹死在自己的鲜血中，此时文中的叙述变得神秘而婉转。拥有七项头衔的女神从七蟠的血沫中现出身来：她是披坚执锐的女王，是蛇的女儿，她是灵钥，也是治疗师，也是杀手，也是先知，但她的第七头衔却未揭示。",
 craftable: true
         },
 
@@ -893,7 +893,7 @@ craftable: true
             requirements:{inthemountainsasupontheplain:1},
 effects:{inthemountainsasupontheplain:-1,fragmentsecrethistoriese:1,fragmentmothe:1},
 warmup:60,
-startdescription:"作者宁阿伽娜在书中讲述了几个生动活泼的故事，关于令人费解的食人魔和关于山中部落间的战争。但在讲述空手猎人传说时，基调却转向忧郁：杯有一位情人，他获得与杯相同的胃口，成为和她并肩的时枢神，但最终却撕裂并吞吃了自己，只将名字留给了他曾经漫步过的群山。",
+startdescription:"作者宁阿伽娜在书中讲述了几个生动活泼的故事，关于令人费解的食人魔和关于山中部落间的战争。但在讲述空手猎人传说时，基调却转向忧郁：杯有一名情人，他获得与杯相同的胃口，成为和她并肩的时枢神，但最终却撕裂并吞吃了自己，只将名字留给了他曾经漫步过的群山。",
             description:"宁阿伽娜称那些有时会显现为鸟的时枢神——笑鸫、骨白之鸽、滩鸦、双生巫女——会在山顶的秘密地点会面，交换彼此没听说过的闲话。时不时，会有凡人听见他们的只言片语，而这样的人总是会被抹除掉，并且会面的地点也总在变化。",
 craftable: true
         },
@@ -917,8 +917,8 @@ craftable: true
             requirements:{sevenfoldslayingsevencoiled:1},
 effects:{sevenfoldslayingsevencoiled:-1,fragmentedgef:1,dread:1},
 warmup:60,
-startdescription:"共十二节。第一节中，一位飞生而来的，称为伤痕者的时枢神列举了他消灭七蟠的种种理由：七蟠的口腹之欲，七蟠的不断成长，对人类的敌意等。第二节中，一位女祭司熄灭了他的眼，并在他的皮肤上留下伤疤，以此保护他免受七蟠魔法的伤害。在接下来的七节中，他将七蟠的各个属性逐一消灭……",
-            description:"第十节中，伤痕者让庇护他的女祭司全身洒满七蟠的鲜血，为她带来力量。第十一节中，他向“隐于世后的神庙”发动袭击，强行进入了神殿。第十二节中，他吟唱三重一体的咒言，将其先祖、其后裔、其自身保护起来。",
+startdescription:"共十二节。第一节中，一位飞生而来的，称为伤痕者的时枢神列举了他消灭七蟠的种种理由：七蟠的口腹之欲，七蟠的不断成长，对人类的敌意等。第二节中，一名女祭司熄灭了他的眼，并在他的皮肤上留下伤痕，以此保护他免受七蟠魔法的伤害。在接下来的七节中，他将七蟠的各个属性逐一消灭……",
+            description:"第十节中，伤痕者让庇护他的女祭司全身洒满七蟠的鲜血，以此借给她神力。第十一节中，他向“隐于世后的神庙”发动袭击，强行进入了神殿。第十二节中，他吟唱三重一体的咒言，将其先祖、其后裔、其自身保护起来。",
 craftable: true
         },
 
@@ -930,7 +930,7 @@ craftable: true
 effects:{bighuff:-1,fragmentforgef:1},
 warmup:60,
 startdescription:"霍克伯德吹嘘他的皇室血统，并坚持认为拥有高贵血统的人在施行光阴之炉的魔法时会更有效。",
-            description:"柏新德对河泽教团定他的罪有所埋怨。他承认在“享受那种快乐”后，他“有了一些改变”，但他坚持认为这些改变既是高雅的，也是必然的。“到底谁是火，谁是油？”他反问道。",
+            description:"柏新德对河泽教团定他的罪有所埋怨。他承认在“达成那种愉悦”后，他“有了一些改变”，但他坚持认为这些改变既是高雅的，也是必然的。“到底谁是火，谁是油？”他反问道。",
 craftable: true
         },
 
@@ -941,8 +941,8 @@ craftable: true
             requirements:{dreamconspiracyskies:1},
 effects:{dreamconspiracyskies:-1,fragmentgrailf:1,fascination:1},
 warmup:60,
-startdescription:"达马翁坚持认为即使是远超于凡人的时枢神们，也会屈服于自己的热情——憎恨，甚至爱。“饥荒与丰收，地球的转动，熔炉的转变——所有这些仅仅只是时枢神们小小的激情表现出的结果。”",
-            description:"达马翁建议时枢神们收敛下他们的矛盾，以免在日之居所引发战争。他认为时枢神不满足其他热情的原因是“对天孽的恐惧”。他开始推测时枢神们不再约束自己的可怕的可能性。“那时候他们又会吞噬什么呢？”",
+startdescription:"达马翁坚持认为即使是远超于凡人的时枢神们，也会屈服于自己的激情——屈服于憎恨，甚至爱。“饥荒与丰收，地球的转动，熔炉的转变——所有这些仅仅只是时枢神的激情中较弱的那些产生的结果。”",
+            description:"达马翁建议时枢神们收敛矛盾，以免在太阳的居所引发战争。他认为时枢神不满足于其他激情的原因是“对天孽的恐惧”。他开始推测时枢神们变成阿鲁凯德的可怕的可能性。“那时候他们又会吞噬什么呢？”",
 craftable: true
         },
 
@@ -953,7 +953,7 @@ craftable: true
             requirements:{bookwhitecat:1},
 effects:{bookwhitecat:-1,fragmentheartf:1},
 warmup:60,
-startdescription:"众所周知，鸟型的时枢神——乌鸦，笑鸫，鸽子，以及孪鸢——会在戈尔迪翁北部的一座深山中，一个叫做栖木的地方见面，聊聊闲话。佩涅罗佩称听见他们话语的凡人都已经被抹杀，但她的猫不被神查知地回到她身边，并告诉了她时枢神们见面时所说的留言。",
+startdescription:"众所周知，鸟型的时枢神——乌鸦，笑鸫，白鸽，以及孪鸢——会在戈尔迪翁北部的一座深山中，一个叫做栖木的地方见面，聊聊闲话。佩涅罗佩称听见他们话语的凡人都已经被抹杀，但她的猫不被神查知地回到她身边，并告诉了她时枢神们见面时所说的留言。",
             description:"佩内洛普所述的时枢神的留言既零碎又使人不解：提到以希望、恐惧与无影帝国为棋子的竞赛，还有在不为人知的历史中的破坏与纪念的计划。最有趣的是她担心时枢神可能发现了她打探神机，所以在书的结尾施加了保护祷文。",
 craftable: true
         },
@@ -977,8 +977,8 @@ craftable: true
             requirements:{songscarapacecross:1},
 effects:{songscarapacecross:-1,fragmentknockf:1,dread:1},
 warmup:60,
-startdescription:"作者西描述了在人类文明存在之前，“介壳种”是如何为石源神，也即是最初的时枢诸神举行仪式。他声称是介壳种时期的最后一名幸存者将这个消息告诉给他的。",
-            description:"这些仪式现在大部分已经被废弃。至少在过去的一千年里，这些仪式几乎没有任何作用。不过，西确认了至少一个拥有某种力量的祷文。他提醒说祷文必须谨慎使用，以免石源神找到回到虚界的道途。",
+startdescription:"作者“席”描述了在人类文明存在之前，""介壳种""是如何为石源神，也即是最初的时枢诸神举行仪式。他声称是介壳种时期的最后一名幸存者将这个消息告诉给他的。",
+            description:"这些仪式现在大部分已经被废弃。至少在过去的一千年里，这些仪式几乎没有任何作用。不过，席确认到了至少一个拥有某种法力的祷文。他提醒说祷文必须谨慎使用，以免石源神找到回到虚界的道途。",
 craftable: true
         },
 						{
@@ -988,7 +988,7 @@ craftable: true
             requirements:{originsofhours:1},
 effects:{originsofhours:-1,fragmentmothf:1,dread:1},
 warmup:60,
-startdescription:"索哈姆的作品由诗歌转为自白。他将神分为肉源（由凡人而来），血源（由献祭而来），光源（由光界而来）以及石源（由他所未知处而来）。他坚持认为蛾神是首位血源神，但之后又自相矛盾地声称赤杯才是首位。",
+startdescription:"索哈姆的作品由诗歌转为自白。他将神分为肉源（由凡人而来），血源（由献祭而来），光源（由光界而来）以及石源（早于他的所知）。他坚持认为蛾神是首位血源神，但之后又自相矛盾地声称赤杯才是首位。",
             description:"“在第一位神灵从光界而来时，漫索并非现在的模样，但没有人怀疑过那时候它已经存在。”",
 craftable: true
         },
@@ -1000,7 +1000,7 @@ craftable: true
 effects:{wherehasshegone:-1,fragmentsecrethistoriesf:1},
 warmup:60,
 startdescription:"根据记载，流浪者不仅去过漫索和林地，环游过全部九个大陆，还去过那些禁止其他时枢神踏足的地方……",
-            description:"从时枢神的流言和无形的知识中，斯佩斯推断流浪者去了虚界，但是她不会回来。他也宣称她还没去过光界，但是最终是一定要去的。",
+            description:"从时枢神的流言和无形的密传中，斯佩斯推断流浪者去了虚界，但是她不会回来。他也宣称她还没去过光界，但是最终是一定要去的。",
 craftable: true
         },
 						{
@@ -1032,7 +1032,7 @@ craftable: true
             requirements:{manneralchemistspared:1},
 effects:{manneralchemistspared:-1,fragmentforgeg:1,fascination:1},
 warmup:60,
-startdescription:"介壳种时期，人类在黑暗中生活，跪着吃饭，人类可以像寄生虫一样进入漫索。一天，有人学会了燧石的技巧，即塑造和改造的技巧……",
+startdescription:"介壳种时期，人类在黑暗中生活，跪着吃饭，人类可以像寄生虫一样进入漫索。一天，有人学会了燧石的技巧，即塑造与再造的技巧……",
             description:"“通过黑色，黄色，红色，愚蠢的凡者飞升到了逆孵之卵的阴影处，并加入侍奉他的行列。他可能一直到今天还在那。”",
 craftable: true
         },
@@ -1043,8 +1043,8 @@ craftable: true
             requirements:{fivecreations:1},
 effects:{fivecreations:-1,fragmentgrailg:1,dread:1},
 warmup:60,
-startdescription:"<b>壳之起源</b>：我们都来自于甲壳，就像黄蜂将卵寄生于蜘蛛体内。<b>光之起源</b>：我们的生命所需元素来源于光。<b>污源</b>：我们在诞生时浑身赤裸，身上抹着林地根基的淤泥……",
-            description:"作者肖黑偏爱的理论是，我们都是直立行走的猿猴的后代，尽管他这么说时语气很讥讽；或者我们不仅在消耗我们的父母，“当然这不是天孽”，同时也在消耗我们的源，所以我们来自虚界。",
+startdescription:"<b>壳源</b>：我们诞于甲壳，如同黄蜂的后代钻出蜘蛛体内。<b>辉煌之源</b>：我们的生命微粒降自辉光。<b>受污之源</b>：我们生时浑身赤裸，身上沾着林地根部的淤泥……",
+            description:"作者肖黑偏爱的理论是，我们都是直立行走的猿猴的后代，尽管他说及此论时语带讥讽；又或者我们不仅耗损我们的父母，“这并非天孽”，也耗损我们的源，所以我们来自虚界。",
 craftable: true
         },
 						{
@@ -1055,7 +1055,7 @@ craftable: true
 effects:{commandspreservationallexists:-1,fragmentheartg:1},
 warmup:60,
 startdescription:"艾丽在其中描述了能用于各种情况的强大保护咒",
-            description:"“这些保护咒必须每四年补完一次，以抵御虫群的进入以及海浪和伤口的渴望。”至少在我们所在的历史中，至少在过去千年里，并没有迹象表明这些保护咒定期施放过。",
+            description:"“这些保护咒必须每四年补完一次，以抵御蠕虫进入以及海浪和创口的热盼。”至少在我们所在的历史中，至少在过去千年里，并没有迹象表明这些保护咒定期施放过。",
 craftable: true
         },
 						{
@@ -1087,8 +1087,8 @@ craftable: true
             requirements:{birdsong:1},
 effects:{birdsong:-1,fragmentmothg:1,fascination:1,dread:1},
 warmup:60,
-startdescription:"<b>伊纳姆</b>：滩鸦没有分享他的宝藏吗？<b>加尔基</b>：没有分享最稀有的那些。他把那些最珍贵的都带走了，他声称那些是找到的，而不是偷到的。",
-            description:"卡皮吉吉努皮尔认为滩鸦不仅仅是盗贼，也是间谍，甚至喜欢窥淫。他将时枢神与他们的具名者间秘密交合的记忆藏在居所的角落中，作为暗中夸耀的宝藏。尤其是林地里热心的时枢神环杉，和有时是双生女巫的姐妹的树中牝马，两者的关系特别引人猜疑。",
+startdescription:"<b>伊纳姆</b>：滩鸦没有分享他的宝藏吗？<b>加尔基</b>：没有分享最稀有的。他把那些最珍贵的都留给自己了；他声称那些是找到的，不是偷到的。",
+            description:"卡皮吉吉努皮尔认为滩鸦不仅仅是盗贼，也是探子，甚至喜欢窥淫。他将时枢神与他们的具名者间秘密交合的记忆藏在居所的角落中，作为暗中夸耀的宝藏。其中还有一个特别流行的猜测：林地里时枢神环杉，和有时是双生女巫姐妹的树中牝马，这两者间有私情。",
 craftable: true
         },
 						{
@@ -1104,12 +1104,12 @@ craftable: true
         },
 						{
         id: "studyscarsky",
-            label: "阅读《天之伤》",
+            label: "阅读《天之伤痕》",
             actionId:"study",
             requirements:{scarsky:1},
 effects:{scarsky:-1,fragmentwinterg:1,dread:1,riteconsumetoolingredientfollowerinfluence:1},
 warmup:60,
-startdescription:"这本书的每一页只有一个词，但每翻过一页，知识都会涌入脑中。",
+startdescription:"这本书的每一页只有一个词，但每翻过一页，就有一个知识潜入脑中。",
             description:"最后一页写满了字。这本书的每一位读者都会在此写下同一个词。现在，该我了。",
 craftable: true
         },
@@ -1120,29 +1120,29 @@ craftable: true
             requirements:{kitlingripe:1},
 effects:{kitlingripe:-1,fragmentmothb:1,glimmering:1},
 warmup:60,
-startdescription:"主角，一位名为老成仔猫的无言猫形生物执行了许多复杂的仪式来拯救她家族中的远方亲戚。在故事的高潮，她复活了她的“另一个外婆”，鼹鼠。",
-            description:"“当大蛇女巫杀死了雄鹿，猫猫摘下了它的一只眼睛。当干渴女巫杀死了母猪，猫猫偷走了它一杯的血。接着，她带着它们到了埋葬鼹鼠的地方，并散开她的头发，开始舞蹈……”",
+startdescription:"主角，一个名为老成仔猫的无言猫形生物执行了许多复杂的仪式来拯救她家族中的远方亲戚。在故事的高潮，她复活了她的“另一个外婆”，鼹鼠。",
+            description:"“在蛇女巫杀死雄鹿时，仔猫摘下了它的一只眼睛。在干渴女巫杀死牝猪时，仔猫偷走了它一杯血。接着，她带着这些东西到埋葬鼹鼠的地方，散开她的头发，然后她开始舞蹈……”",
 craftable: true
         },
 								{
         id: "studyraptintheking",
-            label: "阅读《大王的入迷》",
+            label: "阅读《为王痴迷》",
             actionId:"study",
             requirements:{raptintheking:1},
 effects:{raptintheking:-1,fragmentheartc:1,vitality:1},
 warmup:60,
-startdescription:"这些是来源伊希斯的与西布莉的密教所传承的神秘舞蹈，但两者都包含了隐射与实际意义上的剥皮，并且人类的心永远是的仪式的关键。作者的叙述中强调了他那被打断的盛宴的令人恶心的感官描述。",
-            description:"“在那些盛大的盛宴中，一头黑猪在被宰前加冕为王。在这时，它的心脏和一束羽毛被摆在天秤的两端，而它的皮变成了主祭的披风。它的血肉留给了乌鸦们，但我必须坦白我的兴趣不在它的尸骸，而在于大地内被安置的女帽制造者的芬芳血肉。”",
+startdescription:"此舞源自伊西斯与库柏勒两女神之密教所传承的奥秘，两教都涉及象征和实际意义上的剥皮，并且永远以人类心脏作为仪式的主轴。作者着重对他自己被打断的宴席进行了令人作呕的感官描写。",
+            description:"“在那些盛大<b>宴席</b>间，总有一头<b>黑猪</b>在经受<b>屠宰</b>前被加冕为<b>王</b>。每逢此时，它的<b>心脏</b>会经<b>天平</b>与一束<b>羽毛</b>互较轻重，而它的<b>皮</b>会成为<b>主祭</b>的<b>披风</b>。它的<b>血肉</b>被留给<b>乌鸦</b>，但我必须坦白我意不在其<b>尸骸</b>，而在<b>女帽制造者</b>新入土的喷了<b>香水</b>的<b>肉体</b>。”",
 craftable: true
         },
 									{
         id: "studyvienneseconundra",
-            label: "阅读《维也纳的未解之谜》",
+            label: "阅读《维也纳未解之谜》",
             actionId:"study",
             requirements:{vienneseconundra:1},
 effects:{vienneseconundra:-1,fragmentmothc:1,glimmering:1},
 warmup:60,
-startdescription:"“当K氏参加会议时，黑色的狗们被献祭并四分。当M氏出席时，黑色的母马们被割喉。我认为那些献祭是不必要的，但我们来自丽姬亚的朋友们认为这些是‘妥当的’。以下是分切的图表……”",
+startdescription:"“当K氏参加会议时，黑狗被献祭并四分。当M氏出席时，黑母马被割喉。我认为那些献祭是不必要的，但我们加入丽姬亚的朋友们认为这些是‘妥当的’。以下是分切的图表……”",
             description:"“那就美杜莎的谜题吧，我选择将其理解成‘什么东西不会被看到？’这里又有一道谜题，我将其理解为‘什么会被失去？’我打算描绘一些历史上的前车之鉴来回答——这些东西本身，某种意义也可以说是，牺牲——”",
 craftable: true
         },
@@ -1190,7 +1190,7 @@ craftable: true
         actionId: "study",
         requirements: {textbooksanskrit: 1},
         effects: {textbooksanskrit: -1,scholarsanskrit:1},
-		startdescription: "梵语这个词的另一种翻译是“精炼的语言”。",
+		startdescription: "这种语言的名字意为“精炼的语言”。",
         description: "词汇太多，时间太少。我常常把参考资料放在手边。",
         warmup: 60,
         craftable: true
@@ -1202,7 +1202,7 @@ craftable: true
         actionId: "study",
         requirements: {textbookfucine: 1},
         effects: {textbookfucine: -1,scholarfucine:1},
-		startdescription: "它与拉丁文有一些相似之处，也与发狂的老鼠留下的爪痕有着形似之处。",
+		startdescription: "它与拉丁语有一些相似之处，也与发狂的老鼠留下的爪痕有着形似之处。",
         description: "在有些方面，它与我了解的某些语言有重合之处，但在某些方面……好吧，我终于知道为什么他们称这门语言叫做“女巫的语言”了。不过现在我能很好地理解这门语言了。",
         warmup: 60,
         craftable: true
@@ -1236,12 +1236,12 @@ craftable: true
 	
 					{
         id: "studytextbookvak",
-        label: "获取有关伐伽语的知识",
+        label: "获取有关伐迦语的知识",
         actionId: "study",
         requirements: {textbookvak: 1},
         effects: {textbookvak: -1,scholarvak:1},
 		startdescription: "时枢神会说话吗？如果会的话，这就是他们所使用的语言吧。",
-        description: "据说没人学习伐伽语，更别提认识她了。不过现在，我和她稍微熟悉了一些。",
+        description: "据说没人学习伐迦语，更别提认识她了。不过现在，我和她稍微熟悉了一些。",
         warmup: 60,
         craftable: true
     },
@@ -1254,8 +1254,8 @@ craftable: true
         actionId: "study",
         requirements: {textbookreason: 1},
         effects: {textbookreason:-1,eruditionplus:1},
-		startdescription: "锻炼头脑。",
-        description: "可能性——",
+		startdescription: "锻炼智力。",
+        description: "计算概率——",
         warmup: 60,
         craftable: true,
     },
@@ -1265,8 +1265,8 @@ craftable: true
         actionId: "study",
         requirements: {textbookpassion: 1},
         effects: {textbookpassion: -1,glimmeringplus:1},
-		startdescription: "我需要激发我的想象力。",
-        description: "灵感——",
+		startdescription: "我要让想象力燃得更旺。",
+        description: "迸发灵感——",
         warmup: 60,
         craftable: true
     },

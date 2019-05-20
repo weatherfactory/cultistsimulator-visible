@@ -5,7 +5,7 @@
             unique:true, label: "《时枢志·卷一》",
             aspects:
             {text:1,auctionable:1},
-            description: "记载了隐秘的诸神的书册，仅有零星的连贯部分留存。本书是其中一卷的英文译本，记述了“林地”的神力。"
+            description: "记载了隐秘的诸神的书册，仅有零星的连贯部分留存。本书是其中一卷的英文译本，记述了“林地”诸神。"
         },
           {
         id: "dehoris2",
@@ -41,7 +41,7 @@
             unique:true, label: "《须知六书》",
             aspects:
             {text:1,auctionable:1},
-            description: "本书记载了关于修习无形之仪所付出代价的警语以及诸多报应，据说是十七世纪的智者（传闻中亦是长生不死者）朱利安·寇兹利馈赠学生之物。"
+            description: "本书记载了关于修习无形之术所付出代价的警语以及诸多报应，据说是十七世纪的智者（传闻中亦是永生不死者）朱利安·寇兹利馈赠学生之物。"
         },
 		 {
         id: "locksmithsdream1",
@@ -66,7 +66,7 @@
         },
 					 {
         id: "locksmithsdream4",
-            unique:true, label: "《锁匠的梦境：被盗的思虑》",
+            unique:true, label: "《锁匠的梦境：被盗的倒影》",
             aspects:
             {text:1,auctionable:2},
             description: "特蕾莎·加尔米耶的笔锋从匠人们的梦境到其他职业的重要调查。其涵盖广阔的丛书的第四卷。语调相较《罪行》而言平静许多，但有时又显得害怕，甚至是偏执。此卷于1926年出版，但几乎立刻就被出版社召回销毁——理由任君所想，因作者，或是政府的请愿，几份抄本得以保存。"
@@ -76,7 +76,7 @@
             unique:true, label: "《锁匠的梦境：神掠》",
             aspects:
             {text:1,lantern:1},
-            description: "特蕾莎·加尔米耶对诸多匠人神秘梦境中的相似之处的考察，但是变成她自己神秘之旅的报告考察笔记，丛书的第五卷(最后一卷?)。该卷从未出版过，据说，还未写出来。"
+            description: "特蕾莎·加尔米耶臭名昭著的作品之第五卷(最后一卷?)，始于作者对诸多匠人神秘梦境中的相似之处的考察，后来变成她自己的探索密教之旅笔记。这一卷从未出版过，而且貌似，还未写出来。"
         },
 		{
 		id: "humoursofagentleman",
@@ -97,11 +97,11 @@
 		{id:"treatiseonunderplaces",
 		unique:true, label:"《下层论》",
 		aspects: {text:1,auctionable:1},
-		description:"十七世纪的神秘学信者和古董商人克劳德·赫尔索在此书中描述了有关在梦境边界上存在的“边界”与“下层”之类的概念。此人也在书中警告说，这些概念会随时间发生变化。"},
+		description:"十七世纪的神秘学信者和古董商人克劳德·赫尔索在此书中描述了有关在梦境边界上存在的“边界”或“下层”之类的概念。此人也在书中警告说，这些概念会随时间发生变化。"},
 		{id:"onthewhite",
 		unique:true, label:"《论纯白》",
 		aspects: {text:1,auctionable:1},
-		description:"所罗门·赫舍著。本书的内容或许能够解读为有关<b>冬</b>的寓言，以及它与太阳一起缓缓迎来毁灭的历程。本书终章名为“午时落日”。"},
+		description:"所罗门·赫舍著。本书的内容或许能够解读为有关<b>冬</b>天的寓言，以及它与太阳一起缓缓迎来毁灭的历程。本书终章名为“午时日落”。"},
 		{id:"waroftheroadscensored",
 		unique:true, label:"《路权战争》1450-1580版，删节版",
 		aspects: {text:1,auctionable:1},
@@ -131,7 +131,7 @@
 		{id:"onwhatiscontainedbysilver",
 		unique:true, label:"《银镜之内》",
 		aspects: {text:1,auctionable:1},
-		description:"本书记述了镜中所见的诸多恐怖，于三世纪由署名“波曼德”之人所著。这本是近年新出的版本。"},
+		description:"本书记述了镜中所见的诸多恐怖，是三世纪署名“波曼德”者所著之书在近年新出的版本。"},
 		{id:"truecompleteasclepian",
 		unique:true, label:"《对居所之根基的阿斯克利庇之谜真实而完整的记述》",
 		aspects: {text:1,auctionable:1},
@@ -140,38 +140,38 @@
 
 								 {
         id: "geminiad",
-            unique:true, label: "《双子之神》",
+            unique:true, label: "《双生姝丽》",
             aspects:
             {knock: 2,tool:1,text:1,auctionable:2},
             description: "一份残缺不全的手稿，其中最引人瞩目的内容是以同体孪生面貌出现、光彩照人的忧郁美人形象，并附有全部月相的图例。本书能追溯到公元七世纪，撰写书中所用的富奇诺语则更加古老。封面由珊瑚装饰，书页的页角十分锐利，足以割破咽喉。[我已记下了用于翻译的笔记。我现在可以研习它了。]"
         },
 										 {
         id: "geminiadread",
-            unique:true, label: "《双子之神》（已读）",
+            unique:true, label: "《双生姝丽》（已读）",
             aspects:
             {knock: 2,tool:1,auctionable:2},
-            description: "一份残缺不全的手稿，其中最引人瞩目的内容是以同体孪生面貌出现、光彩照人的忧郁美人形象，并附有全部月相的图例。封面由珊瑚装饰，书页的页角十分锐利，足以割破咽喉。[我已从这本书中汲取了所有可以获得知识，不过其本身的力量尚在。]"
+            description: "一份残缺不全的手稿，其中最引人瞩目的内容是以同体孪生面貌出现、光彩照人的忧郁美人形象，并附有全部月相的图例。封面由珊瑚装饰，书页的页角十分锐利，足以割破咽喉。[我已从这本书中汲取了所有可以获得知识，不过它本身仍带有法力。]"
         },
 		 {
         id: "orchidtransfigurations1",
-            unique:true, label: "《兰花变容，卷一：盛会》",
+            unique:true, label: "《兰花变容·卷一：宴席》",
             aspects:
             {text:1,auctionable:1},
-            description: "一套有关准玫瑰十字会的寓言，本书为丛书第一卷的英译本，作者据推测为罗伯特·福路德。"
+            description: "一套有关“准玫瑰十字会”的寓言，本书为丛书第一卷的英译本，作者据推测为罗伯特·福路德。"
         },
 				 {
         id: "orchidtransfigurations2",
-            unique:true, label: "《兰花变容·卷二：降生》",
+            unique:true, label: "《兰花变容·卷二：诞生》",
             aspects:
             {text:1,auctionable:1},
-            description: "一套有关准玫瑰十字会的寓言，本书为丛书第二卷的英译本，作者据推测为罗伯特·福路德。"
+            description: "一套有关“准玫瑰十字会”的寓言，本书为丛书第二卷的英译本，作者据推测为罗伯特·福路德。"
         },
 				 {
         id: "orchidtransfigurations3",
-            unique:true, label: "《兰花变容·卷三：午时》",
+            unique:true, label: "《兰花变容·卷三：正午》",
             aspects:
             {text:1,auctionable:1},
-            description: "一套有关准玫瑰十字会的寓言，本书为丛书第三卷的英译本，作者据推测为罗伯特·福路德。"
+            description: "一套有关“准玫瑰十字会”的寓言，本书为丛书第三卷的英译本，作者据推测为罗伯特·福路德。"
         },
 						 {
         id: "wainscothistories",
@@ -218,7 +218,7 @@
             unique:true, label: "《日落之路》",
             aspects:
             {text:1,auctionable:2},
-            description: "本书收录了不破之日教会——亦即第三和第四历史线中的擢升者——的葬仪中使用各种的祷文，仪式，以及赞美诗。然而，本教派在化闰之时发生了分裂——当时太阳被分割开来，而遗留下来的，也已经不再拥有重要力量的存在。"
+            description: "本书收录了无敌太阳教会——亦即第三和第四历史线中的擢升者——的典礼中使用各种的祷文，仪式和赞歌。然而，本教派在化闰之时发生了分裂——当时太阳被分割开来，而遗留下来的，也已经不再拥有重要力量的存在。"
         },						 {
         id: "gospelzacchaeus",
             unique:true, label: "《撒该福音》",
@@ -227,49 +227,49 @@
             description: "一本关于弥赛亚拿撒勒和他的事迹的手记，其中的内容可谓异端至极。他开张肉体并借此飞升入化的过程也记在其内。"
         },						 {
         id: "matthiasamethystloss",
-            unique:true, label: "《论马蒂亚斯与紫晶虫：缺失》",
+            unique:true, label: "《论马蒂亚斯与紫晶成虫：缺失》",
             aspects:
             {text:1,auctionable:2},
-            description: "一本记录了密教故事的札记，作者署名“帕拉，阿隆之子”，此人宣称自己在一天一夜间完成了这些文本，作为进入遗忘之屋教派大马士革分册的投名状——这个教派戒律森严，成员也都是抛却了前尘后事的长生者。"
+            description: "一本记录了密教故事的札记，作者署名“帕拉，阿隆之子”，此人宣称自己在一天一夜间完成了这些文本，作为进入“遗忘家族”大马士革分舵的投名状——该教团戒律森严，成员也都是抛却前尘后事的不死者。"
         },						 {
         id: "matthiasamethysttransformation",
-            unique:true, label: "《论马蒂亚斯与紫晶虫：嬗变》",
+            unique:true, label: "《论马蒂亚斯与紫晶成虫：嬗变》",
             aspects:
             {text:1,auctionable:2},
-            description: "一本记录了密教故事的札记，作者署名“伊亚沃苟斯”，此人宣称自己在一夜间完成了这些文本，作为进入遗忘之屋教派阿勒颇分册的投名状——而本教派的成员都没有向任何一位时序神宣告效忠。"
+            description: "一本记录了密教故事的札记，一个名叫“伊亚沃苟斯”的人宣称他仅用一夜时间写下了这篇记录，作为进入“遗忘家族”阿勒颇分舵的投名状——这个不死者教团不向任何时序神效忠。"
         },						 {
         id: "matthiasamethystpursuit",
-            unique:true, label: "《论马蒂亚斯与紫晶虫：追寻》",
+            unique:true, label: "《论马蒂亚斯与紫晶成虫：追寻》",
             aspects:
             {text:1,auctionable:2},
-            description: "一本记录了密教故事的札记，作者署名“梅克”，此人宣称自己在一夜间完成了这些文本，作为进入遗忘之屋教派底比斯分册的投名状——本派成员都使用水之技来藏匿自己的行迹。"
+            description: "一本记录了密教故事的札记，一个名叫“梅克”的人宣称他仅用一夜时间写下了这篇记录，作为进入“遗忘家族”底比斯分舵的投名状——这个不死者教团用水来掩盖自己的行迹。"
         },						 {
         id: "franklinbancroftdiaries",
-            unique:true, label: "《富兰克林·班克罗夫特勋爵1750-1790年间的日记》",
+            unique:true, label: "ERROR",
             aspects:
             {text:1,auctionable:2},
-            description: "富兰克林·班克罗夫特勋爵被“玫瑰女巫”菲奥娜·艾尔谢尔引入了圃仙人之艺中之后，便成为了社交圈中有名的密教活动家和秘密享乐活动的发起者——直到他在1790年突然的音讯全无为止。"
+            description: "富兰克林·班克罗夫特勋爵被“玫瑰女巫”菲奥娜·艾尔谢尔引入“圃仙人之艺”中后，便成为了圈子里密教法事和秘密享乐的提供者——直到他在1790年突然的音讯全无为止。"
         },						 {
         id: "indignitiesobliviate",
             unique:true, label: "《惯于欺瞒的忘却互助会所造成的种种侮辱伤害》",
             aspects:
             {text:1,auctionable:2},
-            description: "本书的作者只以姓名首字母署名为“C.R.O.D”，我们并不能确定他是否为不死者学徒忘却教派的新晋成员。本书成于十六世纪，而此时，此教派——如果我们相信作者的陈述——的权能巅峰期已经远去。"
+            description: "本书的作者只以姓名首字母署名为“C.R.O.D”，我们并不能确定他是否为不死者学徒所组成的“忘却教派”的新成员。本书成于十六世纪，而此时，此教派——如果我们相信作者的陈述——权势的巅峰期已经过去。"
         },						 {
         id: "furioustantra",
             unique:true, label: "《狂怒密宗》",
             aspects:
             {text:1,auctionable:2},
-            description: "由灵媒兼烟火技师雅各布·奥利弗·拓普马格斯通所抄写。据说原文是由雷电在橡树的树皮上烧灼而成，后被他发现。"
+            description: "由灵媒兼烟火技师雅各布·奥利弗·拓普马格斯通所抄写。通说原文是由雷电在橡树的树皮上烧灼而成，后被他发现。"
         },						 {
         id: "devouredtantra",
-            unique:true, label: "《暴食密宗》",
+            unique:true, label: "《贪食密宗》",
             aspects:
             {text:1,auctionable:2},
-            description: "外交官兼牧师斯坦尼斯拉夫·约翰·司考勒从某位赤杯长生者的藏馆中抄来了此书。不过，这份手稿现在成了凯里夏姆某人的私藏。"
+            description: "外交官兼牧师斯坦尼斯拉夫·约翰·司考勒从某位赤杯长生者的藏书中抄来了此本。不过，这份手稿现在成了凯尔伊苏姆某人的私藏。"
         },						 {
         id: "ceaselesstantra",
-            unique:true, label: "《无间密宗》",
+            unique:true, label: "《无休密宗》",
             aspects:
             {text:1,auctionable:2},
             description: "先锋派舞蹈编排家尼古拉斯·基尔气势汹汹的芭蕾舞中据说编入了此密宗。"
@@ -281,7 +281,7 @@
             description: "卡洛斯·加西亚·绍里，比利牛斯山中痴狂的神秘主义者，以会用三种语言背诵本书闻名，尽管他从未造访过印度次大陆。"
         },						 {
         id: "encirclingtantra",
-            unique:true, label: "《环抱密宗》",
+            unique:true, label: "《盘绕密宗》",
             aspects:
             {text:1,auctionable:2},
             description: "探索家兼商业家T.艾佛里特·杜普兰提斯曾经试图劫掠这篇经文所在的寺庙。他的命运被记载在了附录里。"
@@ -290,10 +290,10 @@
             unique:true, label: "《剃度密宗》",
             aspects:
             {text:1,auctionable:2},
-            description: "也被称为“剃发之人”。据说，连善于变形的瓦那拉都不承认里面的知识。"
+            description: "也被称为“剃发之人”。据说，连善于变形的瓦那拉都不承认这篇密传。"
         },						 {
         id: "tantraworms",
-            unique:true, label: "《虫之密宗》",
+            unique:true, label: "《蠕虫密宗》",
             aspects:
             {text:1,auctionable:2},
             description: "昆虫学家朱莉安娜·萨斯托斯基最后坚持认为这本书是由寄宿在人类体内的昆虫所写的。她从来没有为她的说法提供过证据。"
@@ -340,7 +340,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《结绳姐妹会与……》",
             aspects:
             {text:1,auctionable:2},
-            description: "《结绳姐妹会与其堕落习俗之批判》。“伪寻爱绮梦式”耶罗尼米斯写下了这篇狂怒的长篇大论，抨击结绳姐妹会对他所在的不破之日教会的邪恶影响。"
+            description: "《结绳姐妹会与其堕落习俗之批判》。“伪寻爱绮梦式”耶罗尼米斯写下这篇狂怒的长篇大论，抨击“结绳姐妹会”对他所在的“无敌太阳教会”的邪恶影响。"
         },
 		{
         id: "morphycodex",
@@ -379,7 +379,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
         },
 		{
         id: "watchfultantra",
-            unique:true, label: "《警觉密宗》",
+            unique:true, label: "《警夜密宗》",
             aspects:
             {text:1,auctionable:2},
             description: "因为与达菲德·乔纳斯和梅勒迪斯·布莱尼的死亡有关而闻名。1840年，这两位早期的物理学家都称只有自己拥有该书唯一的一本，最终引发了一场决斗。"
@@ -389,7 +389,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《孪蛇密宗》",
             aspects:
             {text:1,auctionable:2},
-            description: "就在大战打响之前，亚历山大·斯派洛——几乎可以确定是个假名——出版了宣称蛇身王子影响了国际关系的传单。那名为《孪蛇密宗》的文本是其主要灵感来源。"
+            description: "就在大战打响之前，亚历山大·斯派洛——几乎可以确定是个假名——出版了宣称“蛇身贵胄”影响了国际关系的传单。那名为《孪蛇密宗》的文本是其主要灵感来源。"
         },
 		{
         id: "firecircletantra",
@@ -403,11 +403,11 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《其躔如日》",
             aspects:
             {text:1,auctionable:2},
-            description: "大桥上的乔伊，一位退休的士兵，偶尔会去当收费员。他写下了这首传奇诗，内容是亚历山大在与阿契美尼德王朝的战争中，在伊苏斯做出的无法解释的撤退决定，以及在那之后回到马其顿的行为。"
+            description: "大桥上的乔伊，一名退休士兵，偶尔会去当收费员。他写下了这首传奇诗，内容是亚历山大在与阿契美尼德王朝的战争中，在伊苏斯做出的无法解释的撤退决定，以及在那之后回到马其顿的行为。"
         },
 		{
         id: "concursumdiaries",
-            unique:true, label: "《聚点日志》",
+            unique:true, label: "《聚点日记》",
             aspects:
             {text:1,auctionable:2},
             description: "探险家及杀人犯，拉斯·韦斯特格伦的日志。不巧的是，他为了防人耳目将其翻译成了弗里吉亚语。"
@@ -442,21 +442,21 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
         },
 		{
         id: "deedsofthescarredcaptain",
-            unique:true, label: "《刀疤船长事迹录》",
+            unique:true, label: "《身负伤痕的上尉之事迹录》",
             aspects:
             {text:1,auctionable:2},
             description: "由靠做雇佣兵，也有时靠家里汇钱过活的帕威尔·舒格在希腊生活时煞费苦心地收集成书。"
         },
 		{
         id: "bookofdissolution",
-            unique:true, label: "《解离之书》",
+            unique:true, label: "《融解之书》",
             aspects:
             {text:1,auctionable:2},
             description: "亚历山大·普罗布斯特，在杰·威格斯沃斯·金森的基础上，修复了一本存于波斯某山中寺庙的本书。本书在其他地方也时有发现，通常是烙刻在石头上。"
         },
 		{
         id: "catalogueofunchartedpleasures",
-            unique:true, label: "《异趣集》",
+            unique:true, label: "《未知快感概览》",
             aspects:
             {text:1,auctionable:2},
             description: "“黑暗绅士”是这本抄本众多的书唯一被指认出的，而且指认时相当大张旗鼓的作者。"
@@ -477,17 +477,17 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
         },
 		{
         id: "onthematterandthedeedsofserpents",
-            unique:true, label: "《巨蛇事迹考察》",
+            unique:true, label: "《蛇族事迹考察》",
             aspects:
             {text:1,auctionable:2},
-            description: "这大概是”那迦大蛇的预言“的英语版，由”威廉·米德奈特“在1880年代于巴黎配图，但是他和那本书又有一些不同之处。从伐伽语的版本来看，它的年代显然更加近一些。"
+            description: "此书大概是《那迦大蛇的预言》的英语版，由“威廉·米德奈特”在1880年代于巴黎配图，但是他和那本书又有一些不同之处。从伐迦语的版本来看，它的年代显然更加近一些。"
         },
 		{
         id: "serenityofblackwood",
             unique:true, label: "《黑林地的静谧》",
             aspects:
             {text:1,auctionable:2},
-            description: "一本关于遗忘家族的寓言式的历史，暗示这个组织受到了蜈蚣的启发。时至如今，“塞雷诺·布莱克伍德（意为静谧黑林地）”一直是对密教的别称。"
+            description: "一本关于“遗忘家族”的寓言式的历史，暗示这个组织受到了蜈蚣的启发。时至如今，“塞雷诺·布莱克伍德（意为静谧黑林地）”一直是对密教的别称。"
         },
 		{
         id: "bookofthrones",
@@ -537,7 +537,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《太阳神教核心厅室之极密》",
             aspects:
             {text:1,auctionable:2},
-            description: "《太阳神教核心厅室之极密》记载了不破之日教会的秘密仪式，该教至少在两个历史上掌握过权势。",
+            description: "《太阳神教核心厅室之极密》记载了无敌太阳教会的秘密仪式，该教至少在两个历史上掌握过权势。",
         },
 
 				{
@@ -585,7 +585,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true,  label: "《我的事迹、我的力量、我的成就……》",
             aspects:
             {text:1,auctionable:2},
-            description: "《我的事迹、我的力量、我的成就以及我所面临的不公》，由柏新德的霍克伯德——某个名叫遗忘家族的不死者团体的前成员——为反击该团体所撰。"
+            description: "《我的事迹、我的力量、我的成就以及我所面临的不公》，由柏新德的霍克伯德——某个名叫“遗忘家族”的不死者教团的前成员——为反击该教团所撰。"
         },
 
 				{
@@ -617,7 +617,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《介壳种之歌》",
             aspects:
             {text:1,auctionable:2},
-            description: "米卡·西，有时也被称作“石英智者”，用酸液将这部作品蚀刻在了石头上。这部作品后被重制了许多次，不过这些重制品大多散佚于山体滑坡了。"
+            description: "米卡·席，有时也被称作“石英智者”，用酸液将这部作品蚀刻在了石头上。这部作品后被重制了许多次，不过这些重制品大多散佚于山体滑坡了。"
         },
 						{
         id: "originsofhours",
@@ -659,14 +659,14 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《五大起源》",
             aspects:
             {text:1,auctionable:2},
-            description: "游学者肖黑讨论了五种可能的人类起源，并佐以一个带着头罩的，据他后来所称是“滩鸦”的形象。他在之后又声称那些解释全部是错误的，但是讨论本身还是被记录了下来。"
+            description: "游学者肖黑讨论了五种人类可能的起源，并佐以一个蒙面的，他称之为“滩鸦”的形象。肖黑之后又称这些描述已全部被证伪，但是讨论本身还是被记录了下来。"
         },
 						{
         id: "commandspreservationallexists",
             unique:true, label: "《关于保存一切事物的教令》",
             aspects:
             {text:1,auctionable:2},
-            description: "作者布莱克·艾丽为大马士革结绳姐妹会的女首领，被罗马皇帝提督斯·尤利安努斯所囚禁。据记载，她曾命人将这些秘密的教条记录成书，以保姐妹会的事物的不遭遗失。令人遗憾的是，据说提督斯·尤利安努斯将这本书和她一起葬在了一个没有标记的墓室里。"
+            description: "作者布莱克·艾丽为大马士革结绳姐妹会的女首领，被罗马皇帝提督斯·尤利安努斯所囚禁。据记载，她曾命人将这些秘密教义记录成书，以保姐妹会的事物的不遭遗失。令人遗憾的是，据说提督斯·尤利安努斯将这本书和她一起葬在了一个没有标记的墓室里。"
         },
 						{
         id: "timedivision",
@@ -680,7 +680,7 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
             unique:true, label: "《脱身指南》",
             aspects:
             {text:1,auctionable:2},
-            description: "作者自称为杰卡杜，号称自己河流之地的扁颈贵胄之一。文风并不正式，甚至可以说像闲聊。"
+            description: "作者自称杰卡杜，为河流之地的扁颈贵胄之一。文风并不正式，甚至可以说像闲聊。"
         },
 						{
         id: "birdsong",
@@ -698,28 +698,28 @@ slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to 
         },
 						{
         id: "scarsky",
-            unique:true, label: "《天之伤》",
+            unique:true, label: "《天之伤痕》",
             aspects:
             {text:1,auctionable:2},
             description: "作者“宁”在写下本书后追悔不迭。"
         },
 				{id:"kitlingripe",
 		unique:true,
-		label:"老成仔猫与鼹鼠的坟墓（以及其他故事）",
+		label:"《老成仔猫与鼹鼠的坟墓（以及其他故事）》",
 		aspects:{text:1,auctionable:1},
-		description:"关于一些关系稀疏的儿童故事的一本插图华美的大本书。几乎没有几个故事适合儿童。"
+		description:"一本插图华美的大书，内含数篇互有松散关联的儿童故事，由一位名为N.K.菲尔德的人收集成册。里面没有几个故事适合儿童阅读。"
 		},
 			{id:"raptintheking",
 		unique:true,
-		label:"大王的入迷",
+		label:"《为王痴迷》",
 		aspects:{text:1,auctionable:1},
-		description:"关于在南欧、埃及和安纳托利亚的大墓地与坟园中看到的秘密狂欢和狂喜之舞的详细记录。作者自称是个食尸鬼，一种食用埋在地下的尸体的生物：他宣称他在大快朵颐时见到了那些舞蹈。"
+		description:"詹姆斯·科林·墨菲所著的关于在南欧、埃及和安纳托利亚的大墓地与坟园中看到的秘密狂欢和狂喜之舞的详细记录。作者自称是个食尸鬼，一种食用埋在地里的尸体的生物：他宣称他在大快朵颐时见到了那些舞蹈。"
 		},
 			{id:"vienneseconundra",
 		unique:true,
-		label:"维也纳的未解之谜",
+		label:"《维也纳未解之谜》",
 		aspects:{text:1,auctionable:1},
-		description:"梵·德莱尔描述了发生在维也纳的古怪事物——儿童的消失；泛滥成灾的害虫；动物的分尸；虫的噩梦；一个慈善组织，新丽姬亚，的为穷人的埋葬提供金钱的活动。她提出了这些活动之间怪异关联。"
+		description:"妮可·梵·德莱尔描述了维也纳发生的怪事——儿童消失；寄生虫大肆传染；动物被切掉肢体；噩梦梦到蠕虫；一个为穷人提供丧葬费，名为“新生丽姬亚”的慈善组织。她指出了这些现象之间怪异的联系。"
 		}
 
 ]

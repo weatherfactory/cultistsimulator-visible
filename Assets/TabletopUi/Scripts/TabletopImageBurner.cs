@@ -97,7 +97,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         Sprite LoadBurnSprite(string imageName) {
-            return Resources.Load<Sprite>(burnImagePath + imageName) as Sprite;
+            return ResourcesManager.GetSprite(burnImagePath, imageName, false);
         }
 
         class BurnImage {

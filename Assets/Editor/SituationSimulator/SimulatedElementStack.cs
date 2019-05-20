@@ -4,6 +4,7 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using UnityEngine;
 
@@ -11,42 +12,26 @@ namespace Assets.Editor
 {
     public class SimulatedElementStack : IElementStack
     {
-        public string EntityId
-        {
-            get { return _element == null ? null : _element.Id; }
-        }
+        public string EntityId => _element?.Id;
         public string SaveLocationInfo { get; set; }
-        public int Quantity
-        {
-            get { return Defunct ? 0 : _quantity; }
-        }
-        public bool Defunct
-        {
-            get { return false; }
-        }
+        public int Quantity => Defunct ? 0 : _quantity;
+
+        public bool Defunct => false;
         public bool MarkedForConsumption { get; set; }
-        public bool Decays {
-            get { return _element.Lifetime > 0; }
-        }
+        public bool Decays => _element.Lifetime > 0;
         public Source StackSource { get; set; }
         public float LifetimeRemaining { get; set; }
         public IlluminateLibrarian IlluminateLibrarian { get; set; }
-        public bool Unique
-        {
-            get { return _element != null && _element.Unique; }
-        }
-        public string UniquenessGroup
-        {
-            get { return _element == null ? null : _element.UniquenessGroup; }
-        }
-        public string Icon
-        {
-            get { return _element == null ? null : _element.Icon; }
-        }
+        public bool Unique => _element != null && _element.Unique;
+
+        public string UniquenessGroup => _element?.UniquenessGroup;
+
+        public string Icon => _element?.Icon;
+
         public Vector2? LastTablePos
 		{
-            get { return null; }
-			set {}
+            get => null;
+            set {}
         }
 
         private IElementStacksManager _currentStacksManager;
@@ -157,6 +142,17 @@ namespace Assets.Editor
 
         public IElementStack SplitAllButNCardsToNewStack(int n, Context context)
         {
+            if (Quantity > n) {
+                var cardLeftBehind = new SimulatedElementStack();
+                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
+                foreach (var m in GetCurrentMutations())
+                    cardLeftBehind.SetMutation(m.Key, m.Value, false);
+
+                SetQuantity(n);
+                
+                return cardLeftBehind;
+            }
+
             return null;
         }
 

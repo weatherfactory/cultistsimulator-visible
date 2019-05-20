@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+#endif
 using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
@@ -11,50 +15,32 @@ public class ResourcesManager: MonoBehaviour
 
 	public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
-
-        var sprite = Resources.Load<Sprite>("icons100/verbs/" + verbId);
-        if (sprite == null)
-            return Resources.Load<Sprite>("icons100/verbs/" + PLACEHOLDER_IMAGE_NAME);
-        else
-            return sprite;
+        return GetSprite("icons100/verbs/", verbId);
     }
 
 	public static Sprite GetSpriteForElement(string imageName)
     {
-        var sprite = Resources.Load<Sprite>("elementArt/" + imageName);
-        if (sprite == null)
-            sprite = Resources.Load<Sprite>("elementArt/" + PLACEHOLDER_IMAGE_NAME);
-        return sprite;
+        return GetSprite("elementArt/", imageName);
     }
 
     public static Sprite GetSpriteForElement(string imageName, int animFrame) {
 
         //This doesn't look for the placeholder image: this is intentional (we don't want a flickering pink question mark)
         //but might be a good way to spot missing animations
-        return Resources.Load<Sprite>("elementArt/anim/" + imageName + "_" + animFrame);
+        return GetSprite("elementArt/anim/", imageName + "_" + animFrame, false);
     }
 
     public static Sprite GetSpriteForCardBack(string backId) {
-        var sprite = Resources.Load<Sprite>("cardBacks/" + backId);
-
-        if (sprite == null)
-            sprite = Resources.Load<Sprite>("cardBacks/" + PLACEHOLDER_IMAGE_NAME);
-
-        return sprite;
+        return GetSprite("cardBacks/", backId);
     }
 
     public static Sprite GetSpriteForAspect(string imageName)
     {
-        var sprite = Resources.Load<Sprite>("icons40/aspects/" + imageName);
-
-        if (sprite == null)
-            sprite = Resources.Load<Sprite>("icons40/aspects/" + PLACEHOLDER_IMAGE_NAME);
-
-        return sprite;
+        return GetSprite("icons40/aspects/", imageName);
     }
         public static Sprite GetSpriteForLegacy(string legacyImage)
         {
-            return Resources.Load<Sprite>("icons100/legacies/" + legacyImage);
+            return GetSprite("icons100/legacies/", legacyImage, false);
         }
 
 
@@ -63,10 +49,13 @@ public class ResourcesManager: MonoBehaviour
         //just using images from elements for now - LB to sort out rectilinear images if we don't get suitable cards in time
 
 		// Try to load localised version from language subfolder first - if none then fall back to normal one - CP
-		Sprite spr = Resources.Load<Sprite>("endingArt/" + LanguageTable.targetCulture + "/" + endingImage);
+        Sprite spr = GetSprite(
+            "endingArt/" + LanguageTable.targetCulture + "/",
+            endingImage,
+            false);
 		if (spr == null)
 		{
-			spr = Resources.Load<Sprite>("endingArt/" + endingImage);
+			spr = GetSprite("endingArt/", endingImage, false);
 		}
 		
 		return spr;
@@ -102,6 +91,25 @@ public class ResourcesManager: MonoBehaviour
             return Resources.LoadAll<AudioClip>("music/endings/melancholy");
         else
             return null;
+    }
+    
+    public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
+    {
+#if MODS
+        // Try to find the image in a mod first, in case it overrides an existing one
+        var modManager = Registry.Retrieve<ModManager>();
+        var modSprite = modManager.GetSprite(folder + file);
+        if (modSprite != null)
+        {
+            return modSprite;
+        }
+#endif
+
+        // Try to load the image from the packed resources next, and show the placeholder if not found
+        var sprite = Resources.Load<Sprite>(folder + file);
+        if (sprite != null || !withPlaceholder)
+            return sprite;
+        return Resources.Load<Sprite>(folder + PLACEHOLDER_IMAGE_NAME);
     }
 }
 

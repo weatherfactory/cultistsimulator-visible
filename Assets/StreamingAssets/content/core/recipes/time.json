@@ -114,7 +114,7 @@ actionId:"sickness",
 label:"The Mare In Me",
 startdescription:"SHE COMES",
 description:"--",
-extantreqs:{lockscar:3},
+extantreqs:{lockscar:3,health:-1},
 signalEndingFlavour:Melancholy,
 ending:minormarevictory,
 craftable:false
@@ -217,7 +217,7 @@ warmup:5
 		label:"The Mare In Me",
 		startdescription:"SHE COMES",
 		description:"--",
-		extantreqs:{lockscar:3},
+		extantreqs:{lockscar:3,health:-1},
 		signalEndingFlavour:Melancholy,
 		ending:minormarevictory,
 		craftable:false

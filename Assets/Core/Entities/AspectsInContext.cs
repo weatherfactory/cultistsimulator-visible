@@ -44,15 +44,5 @@ namespace Assets.Core.Entities
             if (AspectsExtant == null)
                 throw new ApplicationException("Unpopulated Aspects Extant passed to " + verbId);
         }
-
-        private AspectsInContext()
-        {
-
-        }
-
-        public static AspectsInContext DummyAspectsInContext()
-        {
-            return new AspectsInContext();
-        }
     }
 }

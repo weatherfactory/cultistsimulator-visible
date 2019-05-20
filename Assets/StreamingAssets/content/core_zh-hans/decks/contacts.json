@@ -2,7 +2,7 @@
     [
 	{id: "acquaintances",
 	label:"熟人",
-	description:"茫茫天下人，寥寥交我心。",
+	description:"世人甚众，而堪交者甚寡。",
 	spec:
 	[
 	"auclair_a",
@@ -38,7 +38,7 @@
 defaultcard: "mistakenidentity"	
 	},
 				{id: "hirelings",
-				label:"残暴与狡诈之人。",
+				label:"残暴之人与狡诈之人",
 	description:"物尽其用，人尽其才。",
 	spec:["thugedge",
 	"thugforgeedge",
@@ -62,7 +62,7 @@ defaultcard: "mistakenidentity"
 resetonexhaustion:true	},
 		{id: "hunters",
 			label:"猎人",
-	description:"对我有恶意的人。",
+	description:"盼我遭厄之人。",
 	spec:
 	["investigator1",
 	"investigator2",
@@ -72,7 +72,7 @@ resetonexhaustion:true	},
 defaultcard: "defaulthunter"
 	},
 
-{id: "scholarpatrons",	label:"主顾",
+{id: "scholarpatrons",	label:"赞助人",
 	description:"可能会帮助我的人。",
 	spec:["aladimready",
 	"bechetready",
@@ -94,7 +94,7 @@ defaultcard: "rumour"},
 resetonexhaustion:true	},
 	
 		{id: "bechetcommissions",
-			label:"贝赛的兴趣",
+			label:"贝赛兴趣所在",
 	description:"",
 	spec:["commissionarticleforge",
 	"commissionarticleforgeb",
@@ -110,7 +110,7 @@ resetonexhaustion:true	},
 resetonexhaustion:true	},
 
 		{id: "janningscommissions",
-			label:"简宁的兴趣",
+			label:"简宁兴趣所在",
 	description:"",
 	spec:["commissionarticleedge",
 	"commissionarticleedgeb",
@@ -122,7 +122,7 @@ resetonexhaustion:true	},
 resetonexhaustion:true	},
 
 		{id: "poppycommissions",
-			label:"波碧的兴趣",
+			label:"波碧兴趣所在",
 	description:"",
 	spec:["commissionarticlewinter",
 	"commissionarticlewinterb",
@@ -133,8 +133,8 @@ resetonexhaustion:true	},
 resetonexhaustion:true	},
 	
 			{id: "randomvictim",
-				label:"愚蠢与未开化之人",
-	description:"也只能尽我们所能利用他们了。",
+				label:"不明智之人与不谨慎之人",
+	description:"我们用他们行我们须行之事。",
 	spec:["genericprisonerm",
 	"genericprisonerf"],
 	defaultcard:"genericprisonerm",

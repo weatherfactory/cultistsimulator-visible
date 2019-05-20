@@ -16,6 +16,9 @@ using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;    
+#endif
 using Noon;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -29,6 +32,7 @@ public class MenuScreenController : MonoBehaviour {
     public Button newGameButton;
     public Button continueGameButton;
     public Button purgeButton;
+    public Button modsButton;
     public Button languageButton;
 
     [Header("Overlays")]
@@ -38,6 +42,7 @@ public class MenuScreenController : MonoBehaviour {
 	public CanvasGroupFader settings;
 	public CanvasGroupFader language;
     public CanvasGroupFader versionHints;
+    public CanvasGroupFader modsPanel;
 	public OptionsPanel optionsPanel;
 
     [Header("Fade Visuals")]
@@ -52,6 +57,10 @@ public class MenuScreenController : MonoBehaviour {
 
     public MenuSubtitle Subtitle;
 
+    public GameObject modEntryPrefab;
+    public TextMeshProUGUI modEmptyMessage;
+    public Transform modEntries;
+
     bool canTakeInput;
     int sceneToLoad;
 	private string cultureContentLoaded = "none";	// Used to track which culture we have got loaded. If language changes on the Menu screen, we must re-import the content.
@@ -60,6 +69,10 @@ public class MenuScreenController : MonoBehaviour {
 
     GameSaveManager saveGameManager;
 
+#if MODS    
+    private ModManager _modManager;
+#endif
+    
     void Start() {
         // make sure the screen is black
         fadeOverlay.gameObject.SetActive(true);
@@ -85,9 +98,18 @@ public class MenuScreenController : MonoBehaviour {
 
     void InitialiseServices()
 	{
-		InitialiseContent();	// Moved content into it's own function, so it can happen again after language select if necessary
-
         var registry = new Registry();
+
+#if MODS
+        _modManager = new ModManager(true);
+        _modManager.LoadAll();
+        registry.Register(_modManager);
+        BuildModsPanel();
+#else
+        modsButton.enabled = false;
+#endif
+
+		InitialiseContent();	// Moved content into it's own function, so it can happen again after language select if necessary
 
         var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
         registry.Register<MetaInfo>(metaInfo);
@@ -338,6 +360,34 @@ public class MenuScreenController : MonoBehaviour {
         versionAnim.Stop(); // Ensure that the anim is no longer playing
     }
 
+
+    public void ShowModsPanel()
+    {
+#if MODS
+        if (!canTakeInput)
+            return;
+        
+        ShowOverlay(modsPanel);
+#endif
+    }
+    
+#if MODS
+    private void BuildModsPanel()
+    {
+        // Clear the list and repopulate with one entry per loaded mod
+        foreach (Transform modEntry in modEntries)
+            Destroy(modEntry);
+        
+        foreach (var mod in _modManager.Mods.Values)
+        {
+            var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
+            modEntry.transform.SetParent(modEntries, false);
+            modEntry.Initialize(mod);
+        }
+        modEmptyMessage.enabled = !_modManager.Mods.Any();
+    }
+#endif
+    
     public void CloseCurrentOverlay() {
         if (!canTakeInput)
             return;

@@ -6,63 +6,63 @@
             label: "诱惑：力量",
             aspects:
             {desire: 1,powermarks:1},
-            description: "我突然意识到我手里握着通往力量的钥匙。[只要你将其升级到一定程度，你就能用这张卡牌获取力量胜利。用它来入梦可以升级或者转变它。]",uniquenessgroup:"uqdesire"
+            description: "我突然意识到我握着通往力量的钥匙。[此卡可通达“力量胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",uniquenessgroup:"uqdesire"
         },
 				 {
             id: "ascensionsensationa",
             label: "诱惑：感官",
             aspects:
             {desire: 1,sensationmarks:1},
-            description: "我能感受到那种几乎无人体会过的强烈冲动。[只要你将其升级到一定程度，你就能用这张卡牌获取感官胜利。用它来入梦可以升级或者转变它。]",uniquenessgroup:"uqdesire"
+            description: "我能感受到那种几乎无人体会过的强烈冲动。[此卡可通达“感官胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",uniquenessgroup:"uqdesire"
         },
 		 {
             id: "ascensionenlightenmenta",
             label: "诱惑：启智",
             aspects:
             {desire: 1,enlightenmentmarks:1},
-            description: "我突然意识到我手里握着前往智慧的钥匙。[只要你将其升级到一定程度，你就能用这张卡牌获取启智胜利。用它来入梦可以升级或者转变它。]",uniquenessgroup:"uqdesire"
+            description: "我突然意识到我手里握着前往智慧的钥匙。[此卡可通达“启智胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",uniquenessgroup:"uqdesire"
         },
 				 {
             id: "ascensionpowerb",
-            label: "奉献：力量",
+            label: "致力：力量",
             aspects:
             {desire: 2,powermarks:2},
-            description: "我将不惜一切代价获取不朽的力量。[将这张卡牌升级可能会获得力量的胜利。我必须真正地融入漫索。我需要使用<b>铸</b>属性<b>来进行仪式</b>，祈求光阴之炉，来开始我的转变。]",
-			slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
-			{id: "Power", label:"力量", actionId: "work", required: {forge:1},description: "我需要足够的从<b>炉</b>而来的狂野炙热。"}],
+            description: "我将不惜一切代价获取永恒的力量。[进一步升级此卡，追求“力量胜利”。我必须真正地融入漫索。我需要做一些<b>铸</b>属性的<b>工作</b>来祈求光阴之炉，开始我的转变。]",
+			slots: [{id:"Know", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
+			{id: "Power", actionId: "work", required: {forge:1},description: "我需要足够的从炉而来的狂野炙热。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
 				 {
             id: "ascensionsensationbm",
-            label: "奉献：感官",
+            label: "致力：感官",
             aspects:
             {desire: 2,sensationmarks:2},
-            description: "我将不惜一切代价追求永恒的感官。[将这张卡牌升级可能会获得感官的胜利。我必须真正地融入漫索。我需要使用<b>杯</b>属性<b>来进行仪式</b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
-			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
+            description: "我将不惜一切代价对感官展开永恒的追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让自己能够被赤杯接纳。]",
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
+			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
 						 {
             id: "ascensionsensationbf",
-            label: "奉献：感官",
+            label: "致力：感官",
             aspects:
             {desire: 2,sensationmarks:2},
-            description: "我将不惜一切代价追求不朽的感官。[将这张卡牌升级可能会获得感官的胜利。我必须真正地融入漫索。我需要使用<b>杯</b>属性<b>来进行仪式</b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
-			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
+            description: "我将不惜一切代价对感官展开永恒的追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让自己能够被赤杯接纳。]",
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
+			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
 		 {
             id: "ascensionenlightenmentb",
-            label: "奉献：启智",
+            label: "致力：启智",
             aspects:
             {desire: 2,enlightenmentmarks:2},
-            description: "我致力于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[将这张卡牌升级有可能获得启智的胜利。我必须真正地融入漫索。我需要使用<b>灯</b>属性<b>来进行仪式</b>，让守夜人能够看到我。]",
-						slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
-			{id:"Power", label:"力量", actionId: "work", required: {lantern:1},description: "我需要象征漫索无情之光的标志。"}],
+            description: "我致力于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[进一步升级此卡，追求“启智胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让守夜人能够看到我。]",
+						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
+			{id:"Power", actionId: "work", required: {lantern:1},description: "我需要象征漫索无情之光的标志。"}],
 			uniquenessgroup:"uqdesire"
         },
 		{
@@ -78,7 +78,7 @@
 		label: "飞升：力量",
 		aspects: {desire:4,powermarks:4},
 		xtriggers: {ascend:ascensionpowere,descend:ascensionpowerc},
-		description:"虽然火焰让我遍体鳞伤，但是每一次炙烤都使我的肉体更加坚韧。我现在开始渐渐变得不再害怕火焰，像是一条巨龙或者一块石头。这是第四印记。",
+		description:"虽然火焰让我遍体伤痕，但想炙伤我的肉体也是越来越难。我现在开始渐渐习惯火焰，如同一条龙或一块石头。这是第四印记。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
@@ -94,7 +94,7 @@
 		label: "飞升：力量",
 		aspects: {desire:6,powermarks:6,murderskill:1},
 		xtriggers: {descend:ascensionpowere},
-		description:"我不屈不挠，满身伤疤。我不愿将我的面容暴露在众人的目光下。我能手握炙热的煤炭而毫无知觉，虽然我能感到一丝气味和轻微的嘶嘶声。这是第六印记。",
+		description:"我满身伤疤，四肢都很难弯屈。我不愿将我的面容暴露在众人的目光下。我能手握炙热的煤炭而毫无知觉，虽然我能感到一丝气味和轻微的嘶嘶声。这是第六印记。",
 		uniquenessgroup:"uqdesire"
 		},		
 				{
@@ -110,7 +110,7 @@
 		label: "飞升：感官",
 		aspects: {desire:4,sensationmarks:4},
 		xtriggers:{ascend:ascensionsensatione,descend:ascensionsensationc},
-		description:"第四印记是皮肤上断断续续的进展，从手臂到大腿的痕迹成补丁状生长。洁净，柔软，而透着红光，好似爬出山泉水的新生儿的皮肤。但是只是像补丁一样。",
+		description:"第四印记是皮肤上断断续续的进展，从手臂到大腿的痕迹成补丁状生长。洁净，柔软，而透着红光，好似爬出山泉水的新生儿的皮肤。只是一块一块的。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
@@ -118,7 +118,7 @@
 		label: "飞升：感官",
 		aspects: {desire:5,sensationmarks:5},
 		xtriggers:{ascend:ascensionsensationf,descend:ascensionsensationd},
-		description:"“增生和出疹”是第五印记的昵称。我已经长出了两根新的手指，但是只有一根是长在我的手上的。我的膝盖弯曲的地方出现了一个瘘管。处于其边缘的压迫感带来一种轻和的愉快。我认为我背上的小小隆起是一个新的器官。",
+		description:"“增生和出疹”是第五印记的昵称。我已经长出了两根新的手指，但只有一根长在我的手上。我的膝盖弯曲处出现了一个瘘管。压迫其边缘带来一种轻柔的快感。我认为我背上的小小隆起是一个新的器官。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
@@ -126,7 +126,7 @@
 		label: "飞升：感官",
 		aspects: {desire:6,sensationmarks:6},
 		xtriggers:{descend:ascensionsensatione},
-		description:"我发现自己比以前高了一个手的长度后察觉了第六印记。我的每个部位，每个方向都肿胀着。我的皮肤如闪亮的丝绒。几坨肉块垫在我的眼睑间。我十分干渴。",
+		description:"我发现自己比以前高了一个手的长度后察觉了第六印记。我的每个部位，每个方向都肿胀着。我的皮肤是发光的丝绒。一对肉陷坑垫着我的眼珠。我非常干渴。",
 		uniquenessgroup:"uqdesire"
 		},
 		
@@ -135,7 +135,7 @@
 		label: "飞升：启智",
 		aspects: {desire:3,enlightenmentmarks:3},
 		xtriggers:{ascend:ascensionenlightenmentd},
-		description:"守夜人，即瞳中之扉，触碰了我。现在每天我的好奇心都会增强：这是一种急迫，生理上的需求，就像饥饿一样折磨我。我知道这就是第三印记。",
+		description:"守夜人，即瞳中之扉，触碰了我。现在每天我的好奇心都会增强：这是一种急迫的，生理上的需求，就像饥饿一样折磨我。我知道这就是第三印记。",
 		uniquenessgroup:"uqdesire"
 		},
 				{

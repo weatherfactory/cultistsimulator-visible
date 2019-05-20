@@ -4,8 +4,8 @@
         label: "心之历程",
         actionId: "heartinduction",
         effects: {previtality:1},
-		startdescription: "每当<b>心</b>之法则显现时，我能获得活力。",
-        description: "今天，我的心脏更有力地搏动。",
+		startdescription: "每及<b>心</b>之准则出现时，我便可能获得活力。",
+        description: "今天，我自己的心搏动地更有力了。",
         warmup: 30,
         craftable: false
     },
@@ -14,8 +14,8 @@
         label: "颅内之光",
         actionId: "lanterninduction",
         effects: {preerudition:1},
-		startdescription: "每当<b>灯</b>之法则点亮我的头脑时，我也许能想起什么忽略的知识。",
-        description: "脑海中的杂念一扫而空，至少暂时如此。",
+		startdescription: "每当<b>灯</b>之准则放光时，我便可能多记起一些残篇知识。",
+        description: "脑海中的灰尘一扫而空，至少暂时如此。",
         warmup: 30,
         craftable: false
     },
@@ -24,17 +24,17 @@
         label: "陈旧遥远的不快之事",
         actionId: "mothinduction",
         effects: {prerestlessness:1},
-		startdescription: "<b>蛾</b>在黑暗中寻觅光芒，而我亦复如是。",
-        description: "我脑海中飘过一丝忧愁。",
+		startdescription: "蛾在黑暗中寻见光，我亦如是。",
+        description: "一种似有似无的惆怅感染了我。",
         warmup: 30,
         craftable: false
     },
 			{
         id: "mothglimmeringinduction",
-        label: "暗与光",
+        label: "黑暗与光",
         actionId: "mothinduction",
         effects: {preglimmering:1},
-		startdescription: "<b>蛾</b>在黑暗中寻觅光芒，而我亦复如是。",
+		startdescription: "蛾在黑暗中寻见光，我亦如是。",
         description: "若不为此，何去何从？",
         warmup: 30,
         craftable: false
@@ -44,30 +44,30 @@
         label: "欲望的背后",
         actionId: "grailinduction",
         effects: {preglimmering:1},
-		startdescription: "我能在满足欲望的过程中学到什么吗？",
-        description: "某种类似启蒙的感觉。",
+		startdescription: "从满足欲望的过程中能学到什么吗？",
+        description: "有种启蒙般的感觉。",
         warmup: 30,
         craftable: false
     },
 				{
         id: "dreadinduction",
-        label: "噩梦",
+        label: "暗夜惊魂",
         actionId: "dreadinduction",
         effects: {predread:1},
-		startdescription: "我在半夜惊醒。掌心和脸上都渗出了汗珠。",
-        description: "慢慢地，我松开了紧紧攥住的拳头。我又回到了睡梦中。但还有东西残留着，就像是房间角落无人注意的蛛网。",
+		startdescription: "我在半夜惊醒。我的手掌，我的脸上都渗出汗珠。",
+        description: "慢慢地，我松开紧攥的拳头。我又滑落回睡梦中。但某种东西留下了，好像房间角落的蛛网。",
         warmup: 30,
         craftable: false
     },
 					{
         id: "dreadinduction_ifdread",
-        label: "噩梦",
+        label: "暗夜惊魂",
         actionId: "dreadinduction",
 		requirements:{dread:1},
         effects: {predread:1},
 		comments:"Only triggers if there's already Dread in whatever called this.",
-		startdescription: "我在半夜惊醒。掌心和脸上都渗出了汗珠。",
-        description: "慢慢地，我松开了紧紧攥住的拳头。我又回到了睡梦中。但还有东西残留着，就像是房间角落无人注意的蛛网。",
+		startdescription: "我在半夜惊醒。我的手掌，我的脸上都渗出汗珠。",
+        description: "慢慢地，我松开紧攥的拳头。我又滑落回睡梦中。但某种东西留下了，好像房间角落的蛛网。",
         warmup: 30,
         craftable: false
     },
@@ -77,8 +77,8 @@
         label: "新的色彩",
         actionId: "fascinationinduction",
         effects: {prefascination:1},
-		startdescription: "我开始留意到世界上那些我并不知道名字的色彩。",
-        description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
+		startdescription: "我开始留意世间那些我无法命名的色彩。",
+        description: "我正在看我不该看的东西。我知道这么做的危险性，但要按捺住想看的念头是很难的。",
         warmup: 30,
         craftable: false
     },
@@ -88,8 +88,8 @@
         actionId: "fascinationinduction",
 		requirements: {fascination:1},
         effects: {prefascination:1},
-		startdescription: "我开始留意到世界上那些我并不知道名字的色彩。",
-        description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
+		startdescription: "我开始留意世间那些我无法命名的色彩。",
+        description: "我正在看我不该看的东西。我知道这么做的危险性，但要按捺住想看的念头是很难的。",
         warmup: 30,
         craftable: false
     },
@@ -98,31 +98,42 @@
 {id:"poison.notoriety.induction",
 actionId:"poison.notoriety.induction",
 label:"众目睽睽",
-startdescription:"我派遣了一位太过有名的追随者。监管局也许会听闻此事。",
+startdescription:"我们派的追随者有些过分出名了。监管局也许会听闻此事。",
 effects:{notoriety:1},
 warmup:30},
 
 {id:"poison.passion.dread.induction",
 actionId:"poison.passion.dread.induction",
 label:"渗人的颜色",
-startdescription:"我的热情中了毒。每一阵苦痛都会以一种荒芜的灰色之痛作答。",
+startdescription:"我的激情被毒侵入。每一阵精神上的剧痛都会唤起一阵凶猛的灰颜色。",
 effects:{dread:1},
 warmup:30
 },
 {id:"poison.reason.fascination.induction",
 actionId:"poison.reason.fascination.induction",
 label:"不息之光",
-startdescription:"一支蜡烛如果被点燃就会带来光亮。如果我的思绪被点燃，会发生什么呢？",
+startdescription:"蜡烛，点火便会发光。我的思绪点燃时，会发生什么？",
 effects:{fascination:1},
 warmup:30
 },
 {id:"poison.health.dread.induction",
 actionId:"poison.health.dread.induction",
-label:"欢迎痛楚",
-startdescription:"我邀请了一位老朋友在我的肌骨中再滞留一天。",
+label:"款待痛楚",
+startdescription:"我邀请一位老友在我的肌骨里再居留一天。",
 effects:{dread:1},
 warmup:30
 },
+
+
+{id:"secret.induction",
+actionId:"unsuspicion",
+label:"隐私的好处",
+startdescription:"我们已特意将总部设在某个冷僻无人的地方……",
+description:"……也许能让监管局更难摸上门。要维持响亮的声名可能也更难了。",
+slots:[{id:"reputation",label:"声名",required:{reputation:1},greedy:true}],
+warmup:180,
+effects:{reputation:-1}
+}
 
 ]
 }

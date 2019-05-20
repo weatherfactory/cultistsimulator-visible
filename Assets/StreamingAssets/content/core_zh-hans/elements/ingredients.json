@@ -1,7 +1,7 @@
 {"elements":
     [
 					{id: "corpse",
-	label: "一具人类尸体",
+	label: "人类尸体",
 	description: "这具肉体的灵魂已经离开。它腐败后散发的气味会让你不得不把它处理掉，但至少现在还没到那时候。尸体会吸引额外的注意；也可以用来震慑那些容易动摇的人。[即使是在把尸体处理掉之后，邪名依旧存在。]",
 	aspects: {winter:3,grail:3,ingredient:1,reputation:2},
 	xtriggers: {raiseburgeoning:spirit_wintera_moth,raiseshattered:spirit_wintera_edge},
@@ -11,129 +11,129 @@
 
 				{id: "ingredientedgeb",
 	label: "马氏膏",
-	description: "剑上使用的圣油。有着令人着迷的银绿色。",
+	description: "剑所用的圣油。且为迷人的银绿色。",
 	aspects: {edge:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientedged",
-	label: "拉比特谷物",
-	description: "拉比特是锻狮最年轻的仆从。当磨制这种粉末时，他们更注重效力而不是外观。",
+	label: "拉比特谷粒",
+	description: "拉比特是锻狮最年轻的仆从。磨成粉后，它效力依旧，却不复美丽。",
 	aspects: {edge:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientedgef",
-	label: "斯加普托顿獠牙",
-	description: "现在，锻狮几乎不制造斯加普托顿了；但是他们很难击杀，而且拥有非常漫长的寿命。",
+	label: "斯加普托顿的獠牙",
+	description: "现在，锻狮甚少制造斯加普托顿了；但是他们很难杀死，而且寿命超长。",
 	aspects: {edge:12,auctionable:6,ingredient:1}
 	},
 	
 					{id: "ingredientforgeb",
 	label: "苦黑盐",
-	description: "没有哪个普通的化学家能够制造出这种黑亮的晶体——至少如果不借助光阴之炉的力量就绝不可能。",
+	description: "没有哪个普通的化学家能制造出这种黑亮的晶体——若离了炉的触碰。",
 	aspects: {forge:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientforged",
-	label: "黄色精华",
-	description: "在<b>炉</b>的某些运行过程中，阳光最终会驱散月光，正如我们经历用痕月所对应的时间到拂晓之时一般。这种精华曾经是水银般的颜色，不过现在它的颜色是镀金色，如夏日的午后一般。美极了。",
+	label: "艳黄精华",
+	description: "在炉的某些运转中，据说阳光会驱散月光，如同我们从痕月的钟点过渡到拂晓的钟点。这种精华曾是水银，不过它现在为夏日午后的浓金色。很漂亮。",
 	aspects: {forge:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientforgef",
 	label: "激流精华",
-	description: "在<b>炉</b>之后的运行过程中，拂晓屈服给了真实的光阴之<b>炉</b>，这种精华也随之变红。有时候，它并不会改变，不过至少我们手头的这些表现得和这种说法一致。",
+	description: "在炉的后期运转中，拂晓让位于真正的光阴之炉，这种精华也开始变红。也许有一天，变红会停止，不过现在我们手上的还没有。",
 	aspects: {forge:12,auctionable:6,ingredient:1}
 	},
 		
 	{id: "ingredientgrailb",
-	label: "活力染料",
-	description: "身体在死亡后还保留着如此纯粹的红色，这种情况极为罕见。",
+	label: "活力颜料",
+	description: "躯体死后还保留如此红的红色，并不寻常。",
 	aspects: {grail:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientgraild",
 	label: "紫红花蜜",
-	description: "这是圃仙人的许多赠物之一。在更加光明的年代，它也许被赐予了不朽。即使在现今这已枯萎的历史里，它依旧拥有无法比拟的甜腻。",
+	description: "圃仙人的许多赠物之一。在更加光明的年代，它或许被赐予了永生。即使在现今这已枯萎的历史里，它依旧拥有无法比拟的甜腻。",
 	aspects: {grail:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientgrailf",
-	label: "扭曲胎膜",
-	description: "把你的手放在那些破烂的褶皱上，感受它们的温暖；继续放在其上，它将尝试包裹你。",
+	label: "扭动胎膜",
+	description: "把你的手置于它残破的褶皱上，感受它的温暖；手不收回，则它将探索拥抱的可能性。",
 	aspects: {grail:12,auctionable:6,ingredient:1}
 	},
 	
 					{id: "ingredientheartb",
 	label: "玫瑰色珍珠粉",
-	description: "珍珠对双生巫女而言是神圣的，特别是这种颜色的。它们曾被用在防护性的仪式中。",
+	description: "珍珠对双生巫女而言是神圣的，特别是这种颜色的。它们尤其被用在防护性的仪式中。",
 	aspects: {heart:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientheartd",
 	label: "巫吻之油",
-	description: "从拜赫卡忒在十字路口被崇拜开始，其配方从未改变过。",
+	description: "从赫卡忒在十字路受人敬拜始，这个配方从未改变过。",
 	aspects: {heart:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientheartf",
 	label: "圣雅纳略的真血",
-	description: "怒号之皮从每一个过去历史的危险中保护了一个叫做雅纳略的人。直到今天，雅纳略的血液依旧在舞动。",
+	description: "怒号之皮在每一个过去中保护了一个人称“雅纳略”的人免遭危难。时至如今，他的血液仍在持续舞动。",
 	aspects: {heart:12,auctionable:6,ingredient:1}
 	},
 	
 						{id: "ingredientknockb",
-	label: "拜占庭染料",
-	description: "这深厚的紫色只有在皇帝所使用的泰尔紫染料不够时才会用上。穿着这种颜色的人一般都身份高贵。",
+	label: "拜占庭染剂",
+	description: "这种渊博的紫色只在“推罗紫”染料不够浓重的历史中才用于穿着。穿这种颜色的人到哪里都出入无禁。",
 	aspects: {knock:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientknockd",
-	label: "猛毒",
-	description: "一直以来，蚁母也被称为剧毒之女。这种物质在不计其数的地方产生过作用。",
+	label: "生猛毒液",
+	description: "蚁母时常也被称为“毒液的女儿”。这种物质在不计其数的地方洞开着人体。",
 	aspects: {knock:8,auctionable:4,ingredient:1,poison:2}
 	},
 	{id: "ingredientknockf",
 	label: "阿佐特",
-	description: "只能储存在一种纯净元素制成的容器内，温度必须保持恒定。也许这不是炼金术士追寻的最终溶剂。但是，对我们的目的来说，这就够了。",
+	description: "此物只能储存在纯由一种元素制成的容器，且绝对不能允许它加温。它或许不是炼金术士追寻的终极溶剂。但它能胜任我们的目的。",
 	aspects: {knock:12,auctionable:6,ingredient:1}
 	},
 	
 							{id: "ingredientlanternb",
-	label: "辉耀",
-	description: "即使在完全的黑暗中也能看清的臻于至纯的白色。",
+	label: "耀素",
+	description: "至纯的白色，在纯暗环境中依然可见。",
 	aspects: {lantern:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientlanternd",
-	label: "透指之毒",
-	description: "“内者外也，外者内也。”一种对痕月的信徒来说十分神圣的毒素。",
+	label: "透指毒素",
+	description: "“内外相易，表里互替。”一种对痕月信徒来说地位神圣的毒素。",
 	aspects: {lantern:8,auctionable:4,ingredient:1,poison:2}
 	},
 	{id: "ingredientlanternf",
 	label: "玻璃灵液",
-	description: "当瞳中之扉开启时，偶尔可以收集到一种苍白色，需要十分小心的液体。",
+	description: "有的时候，瞳中之扉打开时，可以收集到一种浅色的，警觉的液体。",
 	aspects: {lantern:12,auctionable:6,ingredient:1}
 	},
 	
 	{id: "ingredientmothb",
-	label: "斑驳染料",
-	description: "碾碎一种稀有鳞翅类昆虫的翅膀所得。“想涂黑，亦或涂白，这种颜料都能满足你。”",
+	label: "黑白颜料",
+	description: "取自碾碎的稀有鳞翅目昆虫的翅膀。“想画黑，想画白，这种颜料都能来。”",
 	aspects: {moth:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientmothd",
-	label: "忘却之水",
-	description: "一种黑色粘稠的液体，在无名的林中村落中十分流行。“闭上眼睛，仔细品味，现在我们开始饮用！忘记你的名字，忘记你的身体。”",
+	label: "遗忘之水",
+	description: "一种粘稠的黑色液体，受到森林中无名村落的喜爱。“舌头与眼睛，现在我们开始！忘记你的名字，忘记你的表皮。”",
 	aspects: {moth:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientmothf",
 	label: "至圣血淋巴",
-	description: "某桩古老罪行洒落在现场的神秘物质留下的淡淡痕迹，如今被紧紧密封在一个玻璃安瓿里。“谁会记得那个理发师的儿子呢？”",
+	description: "某桩古老罪案现场洒落的神秘物质的淡淡印痕，紧封在一个安瓿瓶中。“谁会记得理发师的儿子？”",
 	aspects: {moth:12,auctionable:6,ingredient:1}
 	},
 	
 						{id: "ingredientwinterb",
 	label: "灰曦之油",
-	description: "精准表现无法安眠所对应的时间的颜色。",
+	description: "正是无法入眠的钟点的颜色。",
 	aspects: {winter:4,auctionable:2,ingredient:1,pigment:1}
 	},
 		{id: "ingredientwinterd",
 	label: "狼雪",
-	description: "实在太过寒冷，只有最炎热的正午阳光才能使它融化。它会渐渐吞噬人的血肉。",
+	description: "此物冷到任何事物都无法将之融化，除了最炎热的正午阳光。它会一点一点，极缓地消磨人类的血肉。",
 	aspects: {winter:8,auctionable:4,ingredient:1}
 	},
 	{id: "ingredientwinterf",
-	label: "监守虫",
-	description: "第一次蠕虫大战遗留下的一小罐发育不良的干瘪的幼虫残余，其能力为寄生死去的时枢神。",
+	label: "守夜虫",
+	description: "第一次蠕虫大战遗留下的一小罐发育不良的，干瘪的幼虫，与占据死去时枢神之位的神灵同级。",
 	aspects: {winter:12,auctionable:6,ingredient:1,poison:3}
 	},
 ]

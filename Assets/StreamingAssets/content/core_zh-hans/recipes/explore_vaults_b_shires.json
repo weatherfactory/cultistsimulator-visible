@@ -7,7 +7,7 @@
 	requirements:{funds:1,follower:1,funds:1,follower:1,vaultshires1:1},
 	effects: {guardian_serpent:1},
 
-	startdescription: "在湖面的下方，或在崖壁的的凹坑里，或许还有些遗物等待着我们。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "在湖面的下方，或在崖壁的的凹坑里，或许还有些遗物等待着我们。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -22,7 +22,7 @@
 	requirements:{funds:1,follower:1,vaultshires2:1},
 	effects: {peril_treacherousground:1,guardian_watchers:1},
 
-	startdescription: "我们来到泥泞的沼地。在这里的某个地点，我们确信，有一座残存着珍贵余料的神殿。如果当地人想要杀死我们的话，我们也许正中他们的下怀。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "我们来到泥泞的沼地。在这里的某个地点，我们确信，有一座残存着珍贵余料的神殿。如果当地人想要杀死我们的话，我们也许正中他们的下怀。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -36,7 +36,7 @@
 	requirements:{funds:1,follower:1,vaultshires3:1},
 	effects: {seal_wardeddoor:1},
 
-	startdescription: "先于我们的来者已经找到了斜坡里的门。门虽可能尚在此处，却被石块和咒语一起封得严严实实。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "先于我们的来者已经找到了斜坡里的门。门虽可能尚在此处，却被石块和咒语一起封得严严实实。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -50,7 +50,7 @@
 	requirements:{funds:1,follower:1,vaultshires4:1},
 	effects: {peril_treacherousground:1,guardian_dead:1},
 
-	startdescription: "我们为深入地底做好准备。我们携带了绳索，工具，照明：用来武装自己，准备对付接下来遇到的任何会动的东西。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "我们为深入地底做好准备。我们携带了绳索，工具，照明：用来武装自己，准备对付接下来遇到的任何会动的东西。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -66,7 +66,7 @@
 	requirements:{funds:1,follower:1,vaultshires5:1},
 	effects: {seal_wardeddoor:1,guardian_watchers:1},
 
-	startdescription: "我们可以轻易地订到旅馆的客房，但这里的本地人却绝非善类——如果他们推测得出我们的目的。而且如果图书馆在此处，那它应该隐蔽得很好。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "我们可以轻易地订到旅馆的客房，但这里的本地人却绝非善类——如果让他们推测出我们的所图。而且如果藏书室还在此处，它应该隐蔽得很好。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -74,12 +74,12 @@
 	},
 				 	{
 	id: "explore_vaultshiresdefault_setup",
-	label: "探险开始：凯里夏姆",
+	label: "探险开始：凯尔伊苏姆",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultshiresdefault:1},
 	effects: {seal_wardeddoor:1,guardian_watchers:1,curse_visions:1},
 
-	startdescription: "沿着街道潜入一幢光鲜不再的大宅。我们蹑手蹑脚围住大宅的后园。围绕住在这里的女人流传着各种诡异的故事。她可能是一名学徒，一位收藏家，抑或人称<i>恩浦萨</i>的罕见存在。我们必须提高警惕。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	startdescription: "沿着街道潜入一幢光鲜不再的大宅。我们蹑手蹑脚围住大宅的后园。围绕住在这里的女人流传着各种诡异的故事。她可能是一名学徒，一位收藏家，抑或人称<i>恩浦萨</i>的罕见存在。我们必须保持警觉。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -118,7 +118,7 @@
 	requirements: {vaultshires3:1},
 	effects: {vaultshires3:-1,toolwinterb:1,tooledgeb:1,influencewinterc:1,ingredientwinterb:1,ingredientmothb:1,bookofcentipedegreek:1},
 	startdescription: "这个地方算是可以容人站直了，但空气污浊，我们的灯火也燃得黯淡。这里，身兼战士的国王踞于墓石之上，他的骨骸已碎，再不能够行走。他脸上的两个骷髅眼眶各镶着一圈青铜。",
-	description: "有人先我们来过——其力量还残留在此处，这无疑是他们举行仪式时用到的力量。他们拿走了武士国王的一部分陪葬宝物，又留下了些自己的东西。",
+	description: "有人先我们来过——其法力还残留在此处，这无疑是他们举行祭典所用的法力。他们拿走了武士国王的一部分陪葬宝物，又留下了些自己的东西。",
 	warmup:30,
 	craftable: false
 	},
@@ -138,7 +138,7 @@
 	
 		{
 	id: "explorevaultshires5_success",
-	label: "纯白图书馆",
+	label: "白色藏书室",
 	actionId: "explore",
 	requirements: {vaultshires5:1},
 	effects: {vaultshires5:-1,shavenlocktantrasanskrit:1,concursumdiariesphrygian:1,thosewhodonotsleepfucine:1,	matthiasamethystlossaramaic:1,textbooklatin:1},
@@ -156,7 +156,7 @@
 	effects: {vaultshiresdefault:-1},
 	deckeffect: {"vaultrewardsb":3},
 	startdescription: "再没有什么能阻挡我们的道路。我们先搜地下室，然后再搜上层房间。我们可不想被困住。",
-	description: "在最顶层是祭奉分裂之日的祭坛——他或是诸多时枢神的一员。让我们把摆在上面的物品扫进一个毛毡口袋，然后赶紧逃入小巷，溜之大吉吧。",
+	description: "在最顶层是祭奉分裂之阳的祭坛——他或是诸多时枢神的一员。让我们把摆在上面的物品扫进一个毛毡口袋，然后赶紧逃入小巷，溜之大吉吧。",
 	warmup:30,
 	craftable: false,
 	linked:[{id:"explore.apostleforge.findflaw",chance:100},

@@ -3,43 +3,43 @@
 
 
 {id: "health_expel_to_scar",
-label:"健康：疤痕",
+label:"健康：落下伤痕",
 actionId:"scar_ability",
 startdescription:"我的身体正在改变……",
-description:"有些动作会留下更深刻的痕迹。[健康已永久地变成了疤痕。注意：生病与挨饿不能靠疤痕治疗。]",
+description:"有些动作会留下更深的印记。[“健康”已永久地成为一道伤痕。注意：伤痕不能治疗生病与挨饿。]",
 requirements:{health:1},
 aspects:{scarability:1},
 warmup:10,
 },
 
 {id: "passion_expel_to_scar",
-label:"热情：疤痕",
+label:"激情：落下伤痕",
 actionId:"scar_ability",
-startdescription:"我的情感改变着我……",
-description:"我的思绪比保险箱还要紧般地禁锢了我的肉体与灵魂。",
+startdescription:"我的多愁善感正在改变我……",
+description:"我的思绪将我的肉体与灵魂绑定得甚是牢靠。[“激情”已永久地成为一道伤痕。]",
 requirements:{passion:1},
 aspects:{scarability:1},
 warmup:10,
 },
 
 {id: "expel_independent",
-label:"安定的不自知",
+label:"浑然不查",
 actionId:"expel_independent",
-startdescription:"我的对手不可能知道什么等待着他。",
+startdescription:"我的对手不可能知道等待他的是什么。",
 warmup:1
 },
 
 {id: "expel_corpses",
-label:"脆弱的影子",
+label:"一道虚影",
 actionId:"expel_corpse",
 requirements:{corpse:1},
-startdescription:"它躺在此处。",
+startdescription:"倒地身亡。",
 warmup:1
 },
 
 
 {id: "expel_injury",
-label:"鲜血之路",
+label:"一抹血痕",
 actionId:"expel_injury",
 requirements:{injury:1},
 startdescription:"痛苦是最后的礼物。",

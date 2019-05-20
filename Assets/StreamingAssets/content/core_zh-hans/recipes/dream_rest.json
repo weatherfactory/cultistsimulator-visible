@@ -5,7 +5,7 @@
 	
 	{id:"dream.poison.fascination.longlesson.trap",
 actionId:"dream",
-label:"一个永远警惕的敌人",
+label:"一个永远警醒的敌人",
 startdescription:"我们的敌人从我梦中学习到了一些东西。",
 requirements:{poison.fascination.longlesson:1,fascination:1},
 effects:{long.lesson.dreamwork:1},
@@ -42,7 +42,7 @@ craftable:true
         label: "早睡的夜晚",
         actionId: "dream",
 		effects: {dread:1},
-		description: "早在瑞穆什与纳拉姆辛的时代，在两河流域中流传着有关一位吞噬了其他母亲孩子的嗥叫着的女人的故事。昨晚，我的梦里传来了一声嗥叫。",
+		description: "早在瑞穆什与纳拉姆辛的时代，在两河流域中流传着一个吞噬了其他母亲的孩子，嗥叫着的女人的故事。昨晚，我的梦里传来了一声嗥叫。",
         craftable: false,
     },
 			{
@@ -83,7 +83,7 @@ craftable:true
 actionId:"dream",
 label:"终末之梦",
 startdescription:"我喝下了一小瓶鲜血，躺下，闭上眼。明天，我会变得更强壮。",
-description:"我觉得好多了——更不如说——我现在神采飞扬。我眼睛的巩膜，我手腕的血管流动着美妙的精华。当丰收之时来临时，我会成为桌子中央的华美装饰，以让我们的愉悦者显明其胃口，来唤起杯。",
+description:"我现在好多了——还不止——我现在豪奢丰盛。我眼睛的巩膜，我手腕的血管涌动着玉液琼浆。当欢庆祭来临，我会成为压轴大菜，让我们的愉悦者彰显胃口，扮演杯神。",
 requirements:{apostlegrail.pillarfuel:1,apostlegrail.pillar2.dormant:1},
 effects:{apostlegrail.pillar2.dormant:-1,apostlegrail.pillar2:1,apostlegrail.pillarfuel:-1,fascination:1},
 warmup:10,
@@ -92,21 +92,21 @@ craftable:true},
 
 	{
         id: "recoverillhealthfunds",
-        label: "治愈",
+        label: "治疗",
         actionId: "dream",
         requirements: {funds: 1, illhealth: 1},
         effects: {
 			funds:-1,
         },
 		aspects:{restorehealth:1},
-        startdescription: "那药又黑又苦，跟焦油似的。这很容易让我怀疑自己是不是被人下毒了。",
+        startdescription: "这药又黑又苦，跟焦油似的。这很容易让我怀疑自己是不是被人下毒了。",
         description: "病房渐渐变得狭小和陈旧。起床的时候到了。",
         warmup: 60,
 		craftable:true
     },
 		{
         id: "recoverillhealthfundsvitality",
-        label: "治愈",
+        label: "治疗",
         actionId: "dream",
         requirements: {vitality: 1, illhealth: 1},
         effects: {

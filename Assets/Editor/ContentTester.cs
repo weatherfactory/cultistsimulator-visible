@@ -214,9 +214,8 @@ namespace Assets.Editor
                     {
                         string mutElId = mutationSpec.Key;
                         int mutQuantity = mutationSpec.Value;
-                        int actualQuantity;
-                        mutations.TryGetValue(mutElId, out actualQuantity);  // Will set a default of 0 if not found
-                        if (mutQuantity == mutations[mutElId])
+                        mutations.TryGetValue(mutElId, out var actualQuantity);  // Will set a default of 0 if not found
+                        if (mutQuantity == actualQuantity)
                             continue;
                         expectedResult = null;
                         break;

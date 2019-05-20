@@ -22,7 +22,7 @@
 	actionId: "explore",
 	requirements: {vaultfloating1:1},
 	effects: {vaultfloating1:-1},
-	internaldeck: {spec: [ceaselesstantrasanskrit, leoninetantrasanskrit, incandescenttantrasanskrit, firecircletantrasanskrit], draws: 4, resetonexhaustion: true},
+	internaldeck: {spec: [ceaselesstantrasanskrit, leoninetantrasanskrit, incandescenttantrasanskrit, firecircletantrasanskrit], draws: 4, defaultcard: compensationd, resetonexhaustion: false},
 	startdescription: "There are few passengers on board - no wonder, if this cheerless icy isle was the ship's destination. But there's at least one passenger - someone who had protected their cabin door with more than physical locks. They must have gone ashore. They might return at any moment - ",
 	description: "We empty the luggage, upend the books to shake them, turn pictures to check the backs. We find clothes, tickets, maps, nothing out of the ordinary... although there is a curious translucent material like a sheet of snakeskin draped over a chair-back. At last, when we slash the mattress to search its stuffing, we find a little collection of ivory scroll-cases.",
 	warmup:30,

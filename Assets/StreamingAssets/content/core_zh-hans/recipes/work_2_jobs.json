@@ -19,7 +19,7 @@
         actionId: "work",
         requirements: {demotion:1},
 		aspects:{plead:1},       
-        startdescription: "一定要让上级主管相信我已痛改前非。[用热情说服领导让我重返岗位。]",
+        startdescription: "一定要让上级主管相信我已痛改前非。[以“激情”说服领导让我重返岗位。]",
         hintonly:true,
 		craftable: true,
 		
@@ -48,7 +48,6 @@
         description: "职员们沉默着鱼贯而出。我现在有空了。",
         warmup:60,
 			slots: [{id:"Diligence",
-					label:"勤勉",
 					required: {reason: 1},
 					forbidden: {},
 					description: "加倍努力工作。有时候可能管用。"
@@ -74,7 +73,9 @@
 		aspects: {careeradvancement:1},
 	actionId:"work",
         startdescription: "",
-        description: "档案部主管奥尔登先生叫我去办公室，表扬我工作勤奋。我一直盯着他脖子上的痣，听他讲话、讲话、没完没了地讲话。不过讲到最后，他给我升职了！我的新职位工资更高，办公桌在临街的窗户旁。然而奥尔登先生现在成了我的直属上司。奥尔登先生可是出了名地难对付。",
+        description: "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!
+		
+My new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
         warmup: 0
 	},
 	
@@ -91,7 +92,6 @@
         description: "职员们沉默着鱼贯而出。我现在有空了。",
         warmup:60,
 			slots: [{id:"Diligence",
-					label:"勤勉",
 					required: {reason: 1},
 					forbidden: {},
 					description: "加倍努力工作。有时候可能管用。"
@@ -149,7 +149,12 @@
 	actionId:"work",
 	label:"奥尔登要退休了！",
 	startdescription:"“我明天将会离开格洛弗父子公司。做完今天的工作后，请来找我。”",
-	description:"“你在我的指点下<i>确实</i>有些进步。我已经推荐你接替我的职位。我教你的东西你要记住，将来说不定能让你在这个部门做出一番成绩。你可以走了。”“还有一句！我差点忘了——”“明天请务必准时到岗。”",
+	description:"'You <i>have</i> shown some improvement, under my direction. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'
+	
+'One more thing! I had almost forgotten - '
+	
+'Be especially punctual tomorrow, please.'
+	",
 	warmup:30,
 	craftable:false,
 	aspects:{careeradvancement:1}
@@ -161,11 +166,12 @@
 	label:"在奥尔登先生的坚持下加班",
 	startdescription:"“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
 			slots: [{id:"Attention",
-					label:"殷勤",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
-	description:"“我的结论是你这一次的工作处于及格水准。你可以走了。明天请准时到岗。”[可能有法子对付奥尔登先生]",
+	description:"'On this occasion I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
+	
+[There may be ways to deal with Mr Alden.]",
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
@@ -178,11 +184,12 @@ maxexecutions:1
 	label:"在奥尔登先生的坚持下加班",
 	startdescription:"“我认定工作完成后工作才算完成。我相信我们都了解这一点。”",
 			slots: [{id:"Attention",
-					label:"殷勤",
 					required: {reason: 1,passion:1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
-	description:"“这次同样，我的结论是你的工作处于及格水准。你可以走了。明天请准时到岗。”[可能有法子对付奥尔登先生]",
+	description:"'Once again, I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
+	
+[There may be ways to deal with Mr Alden.]",
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
@@ -195,7 +202,9 @@ maxexecutions:1
 			aspects: {employment:1},
 	label:"在奥尔登先生的坚持下加班",
 	startdescription:"“我认为你没有正确认识到我们这里工作的重要性。这份工作需要你投入<i>全部精力</i>。”[加入理性以说服奥尔登先生。]",
-	description:"“我本打算说我感到失望，不过我对你的期待本已很低了。我不得不扣除你的一部分薪水。你可以走了，别忘了明天请准时到岗。”[可能有法子对付奥尔登先生]",
+	description:"'I would like to say that I am disappointed, but my expectations of you were already low. I have no choice but to withhold a portion of your pay. You may go, but be punctual tomorrow, please.'
+	
+[There may be ways to deal with Mr Alden.]",
 	requirements: {reason:-1},
 	effects:{funds:-1},
 	craftable:false
@@ -226,7 +235,6 @@ maxexecutions:1
         description: "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
         warmup: 70,
 			slots: [{id:"Devotion",
-					label:"献身",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -241,7 +249,7 @@ maxexecutions:1
 		aspects:{careeradvancement:1},
 	actionId:"work",
         startdescription: "",
-        description: "年轻的那个格洛弗带我去他所在的俱乐部吃了一次午饭。现在我得比以前做事更勤谨、更加小心，作为回报，他会从我为他父亲挣的那些钱里再多拿出一点给我。",
+        description: "小格洛弗带我去他所在的俱乐部吃了一次午饭。现在我得比以前做事更勤谨、更加小心，作为回报，他会从我为他父亲挣的那些钱里再多拿出一点给我。",
         warmup: 0
 	},
 	
@@ -257,7 +265,6 @@ maxexecutions:1
         description: "墨水，纸张，滋滋作响的电灯。我离开时办公室已光线昏暗。走到外面的人行道上，我把衣服领子翻了起来。",
         warmup: 70,
 			slots: [{id:"Devotion",
-					label:"献身",
 					required: {reason: 1},
 					description: "加倍努力工作，运气很好的话说不定管用。"
 				}],
@@ -287,7 +294,6 @@ maxexecutions:1
 	
         warmup: 70,
 			slots: [{id:"Acceptance",
-					label:"赞同",
 					required: {passion: 1},
 					description: "我愿意把毕生精力投入进去。"
 				}],
@@ -326,7 +332,6 @@ maxexecutions:1
         description: "我阖上眼，数字在我眼帘下列队飘过。我睁开眼，光线使我刺痛。",
         warmup: 70,
 			slots: [{id:"Ambition",
-					label:"野心",
 					required: {passion: 1},
 					description: "小格洛弗留下的董事席位还是空的……"
 				}],
@@ -357,13 +362,12 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob: 1},
 	  			slots: [{id:"Scandal",
-					label:"中伤",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "我身居高位，这也许能再为我抵挡一阵丑闻。但这件事已经引起公司相当的重视，我可能会被解雇。"
 				}],
 		startdescription:"工作日难熬的钟点像在我眼前排成长队等着我一样。我吃完午饭就回家算了……",
-		description: "如果说哪里是格洛弗父子公司的心脏，那便是会计部了，那里的钱来去滚滚犹如春潮。而公司的肢体则是那些大气也不敢出的行政人员和职员。但我和其他董事所处的是它的颅骨顶部，（至少现在）我不必惧怕丑闻，也无需顾虑财务压力。",	
+		description: "如果说哪里是格洛弗父子公司的心脏，那便是会计部了，那里的钱来去滚滚如春潮。而公司的肢体则是那些大气也不敢出的行政人员和职员。但我和其他董事所处的是它的颅骨顶部，（至少现在）我不必惧怕丑闻，也无需顾虑财务压力。",	
 	warmup:50,
 	
 	effects: { funds: 4,notoriety:-1},
@@ -385,7 +389,6 @@ maxexecutions:1
 	actionId:"work",
 	  requirements: {gloverandglovertopjob_tainted: 1},
 	  			slots: [{id:"Scandal",
-					label:"中伤",
 					required: {notoriety: 1},
 					greedy:true,
 					description: "我身居高位，这也许能再为我遮挡一阵丑闻。但我现在切实面临丢掉职位的危险。"
@@ -427,8 +430,8 @@ maxexecutions:1
             funds: 1,dread:1
         },
 		alternativerecipes:[{id:"workbeg_lucky",chance:30}],
-        startdescription: "我向路人展示我的病弱之躯，希望获得他们同情。",
-        description: "漫长的一日过去。有人撒了几枚硬币，大多数人扭头躲开。这么长时间看这么多退避三舍的背影着实难熬。",
+        startdescription: "我向路人展示我的病弱之躯，希望博得他们的同情。",
+        description: "长日漫漫。有人撒下几枚硬币，大多数人扭头躲开。长时间望着这么多退避三舍的背影着实难熬。",
         warmup: 90,
         craftable: true
     },
@@ -440,13 +443,13 @@ maxexecutions:1
         effects: {
             funds: 2
         },
-        description: "漫长的一日过去。有人撒了几枚硬币，大多数人扭头躲开。但我碗里多了枚金英镑！是有人慷慨解囊，还是失手漏下？",
+        description: "长日漫漫。有人撒下几枚硬币，大多数人扭头躲开。但我碗里多了枚金英镑！是有人慷慨解囊，还是失手漏下？",
         warmup: 90
     },
 
 			{
         id: "workhealthskilld_edge",
-        label: "做粗重活计：臂膀强韧如山峦",
+        label: "做粗重活计：力大如山",
         actionId: "work",
         requirements: {health: 1,skillhealthd_strength:1,ritual:-1,job:-1,benefactor:-1},
         effects: {
@@ -454,7 +457,7 @@ maxexecutions:1
         },
 		aspects:{employment:1},
         startdescription: "我又一次拿一身力气换饭吃。",
-        description: "他们说我干活一个顶俩。其实并非如此；我可远不是只有这点能耐。",
+        description: "他们说我干活一个顶俩。其实并非如此；我不止顶两个。",
         warmup: 40,
         craftable: true,
 		
@@ -470,7 +473,7 @@ maxexecutions:1
         },
 		aspects:{employment:1},
         startdescription: "我又一次拿一身力气换饭吃。",
-        description: "人们对我的巨力议论纷纷。内容并不全是夸赞。我拿了薪水便离开了。",
+        description: "人们对我的巨力议论纷纷。内容并不全是夸赞。我领了薪水便离开了。",
         warmup: 45,
         craftable: true
     },
@@ -484,7 +487,7 @@ maxexecutions:1
         },
 		aspects:{employment:1},
         startdescription: "我要少说话，快做事。我不怕受伤。",
-        description: "其他人不怎么和我说话，但会在我经过时点头。我拿到了薪水。",
+        description: "其他人不怎么和我说话，但会在我经过时点头。我领到了薪水。",
         warmup: 50,
         craftable: true
     },

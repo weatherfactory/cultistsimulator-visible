@@ -83,7 +83,7 @@ namespace Assets.Logic
                         {
                             var drawnCardId = dealer.Deal(deck);
 
-                            if (drawnCardId != null)
+                            if (!string.IsNullOrEmpty(drawnCardId))
                             {
                                 var source = Source.Fresh(); //ultimately this should correspond to deck
                                 stacksManager.ModifyElementQuantity(drawnCardId, 1, source,
@@ -91,7 +91,7 @@ namespace Assets.Logic
                             }
                             else
                             {
-                                throw new ApplicationException("Couldn't retrieve a card from deck " + deckId);
+                                Debug.LogError($"Failed to draw card '{drawnCardId}' from deck '{deckId}'");
                             }
                         }
                     }

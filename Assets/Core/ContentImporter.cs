@@ -14,6 +14,10 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+#endif
 using OrbCreationExtensions;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -226,11 +230,253 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 			contentItemArrayList.AddRange( originalArrayList );
         }
+#if MODS
+        return ProcessContentItemsWithMods(contentItemArrayList, contentOfType);
+#else
         return contentItemArrayList;
-
-
-
+#endif
     }
+
+#if MODS
+    private ArrayList ProcessContentItemsWithMods(ArrayList items, string contentOfType)
+    {
+        var modManager = Registry.Retrieve<ModManager>();
+            var moddedItems = modManager.GetContentForCategory(contentOfType);
+            foreach (var moddedItem in moddedItems)
+            {
+                var moddedItemId = moddedItem.GetString("id");
+
+                // Check if this is deleting an existing item
+                if (moddedItem.GetBool("deleted"))
+                {
+                    // Try to find an item with this ID
+                    int foundIndex = -1;
+                    for (int i = 0; i < items.Count; i++)
+                        if (((Hashtable) items[i])["id"].ToString() == moddedItemId)
+                        {
+                            foundIndex = i;
+                            break;
+                        }
+                    if (foundIndex < 0)
+                        NoonUtility.Log(
+                            "Tried to delete '" + moddedItemId + "' but was not found", 
+                            messageLevel: 1);
+                    else
+                    {
+                        NoonUtility.Log("Deleted '" + moddedItemId + "'");
+                        items.RemoveAt(foundIndex);
+                    }
+
+                    continue;
+                }
+
+                Hashtable originalItem = null;
+                var parents = new Dictionary<string, Hashtable>();
+                var parentsOrder = moddedItem.GetArrayList("extends") ?? new ArrayList();
+                foreach (Hashtable item in items)
+                {
+                    // Check if this item is overwriting an existing item (this will consider only the first matching
+                    // item - normally, there should only be one)
+                    var itemId = item.GetString("id");
+                    if (itemId == moddedItemId && originalItem == null)
+                    {
+                        originalItem = item;
+                    }
+
+                    // Collect all the parents of this modded item so that the full item can be built
+                    if (parentsOrder.Contains(itemId))
+                    {
+                        parents[itemId] = item;
+                    }
+                }
+
+                // Build the new item, first by copying its parents, then by applying its own specificities
+                // If the new item should override an older one, replace that one too
+                var newItem = new Hashtable();
+                foreach (string parent in parentsOrder)
+                {
+                    if (!parents.ContainsKey(parent))
+                    {
+                        NoonUtility.Log(
+                            "Unknown parent '" + parent + "' for '" + moddedItemId + "', skipping parent", 
+                            messageLevel: 2);
+                        continue;
+                    }
+                    newItem.AddHashtable(parents[parent], false);
+                }
+                newItem.AddHashtable(moddedItem, true);
+
+                // Run any property operations that are present
+                ProcessPropertyOperations(newItem);
+
+                if (originalItem != null)
+                {
+                    originalItem.Clear();
+                    originalItem.AddHashtable(newItem, true);
+                }
+                else
+                {
+                    items.Add(newItem);
+                }
+            }
+            return items;
+    }
+    
+    private static void ProcessPropertyOperations(Hashtable item)
+        {
+            var itemId = item.GetString("id");
+            var keys = new ArrayList(item.Keys);
+            foreach (string property in keys)
+            {
+                var propertyWithOperation = property.Split('$');
+                if (propertyWithOperation.Length < 2)
+                {
+                    continue;
+                }
+                if (propertyWithOperation.Length > 2)
+                {
+                    NoonUtility.Log(
+                        "Property '" + property + "' in '" + itemId + "' contains too many '$', skipping", messageLevel: 1);
+                    continue;
+                }
+
+                var originalProperty = propertyWithOperation[0];
+                if (!item.ContainsKey(originalProperty))
+                {
+                    NoonUtility.Log(
+                        "Unknown property '" + originalProperty + "' for property '" + property + "' in '" + itemId + "', skipping",
+                        messageLevel: 1);
+                    continue;
+                }
+                var operation = propertyWithOperation[1];
+                switch (operation)
+                {
+                    // append: append values to a list
+                    // prepend: prepend values to a list
+                    case "append":
+                    case "prepend":
+                    {
+                        var value = item.GetArrayList(originalProperty);
+                        var newValue = item.GetArrayList(property);
+                        if (value == null || newValue == null)
+                        {
+                            NoonUtility.Log(
+                                "Cannot apply '{operation}' to '" + originalProperty + "' in '" + itemId + "': invalid type, must be a list",
+                                messageLevel: 1);
+                            continue;
+                        }
+
+                        if (operation == "append")
+                        {
+                            value.AddRange(newValue);
+                        }
+                        else
+                        {
+                            value.InsertRange(0, newValue);
+                        }
+
+                        break;
+                    }
+
+                    // plus: Adds a numerical value to another.
+                    // minus: Subtracts a numerical value from another.
+                    case "plus":
+                    case "minus":
+                    {
+                        var value = item.GetFloat(originalProperty);
+                        var newValue = item.GetFloat(property);
+
+                        var modifier = operation == "plus" ? 1 : -1;
+                        item[originalProperty] = value + newValue * modifier;
+                        break;
+                    }
+
+                    // extend: add or replace keys in a dictionary
+                    case "extend":
+                    {
+                        var value = item.GetHashtable(originalProperty);
+                        var newValue = item.GetHashtable(property);
+                        if (value == null || newValue == null)
+                        {
+                            NoonUtility.Log(
+                                "Cannot apply '{operation}' to '" + originalProperty + "' in '" + itemId + "': invalid type, must be a dictionary",
+                                messageLevel: 1);
+                            continue;
+                        }
+
+                        value.AddHashtable(newValue, true);
+
+                        break;
+                    }
+
+                    // remove: removes items from a dictionary or a list
+                    case "remove":
+                    {
+                        var newValue = item.GetArrayList(property);
+                        if (newValue == null)
+                        {
+                            NoonUtility.Log(
+                                "Invalid value for '" + property + "' in '" + itemId + "': invalid type, must be a list",
+                                messageLevel: 1);
+                            continue;
+                        }
+
+                        if (!item.ContainsKey(originalProperty))
+                        {
+                            NoonUtility.Log(
+                                "Cannot apply '{operation}' to '" + originalProperty + "' in '" + itemId + "': failed to find '" + originalProperty + "'",
+                                messageLevel: 1);
+                            continue;
+                        }
+
+                        object originalPropertyValue = item[originalProperty];
+                        if (originalPropertyValue.GetType() == typeof(Hashtable))
+                        {
+                            var value = item.GetHashtable(originalProperty);
+                            foreach (string toDelete in newValue)
+                            {
+                                if (value.ContainsKey(toDelete))
+                                    value.Remove(toDelete);
+                                else
+                                    NoonUtility.Log(
+                                        "Failed to delete '" + toDelete + "' from '" + originalProperty + "' in '" + itemId + "'",
+                                        messageLevel: 1);
+                            }
+                        }
+                        else if (originalPropertyValue.GetType() == typeof(ArrayList))
+                        {
+                            var value = item.GetArrayList(originalProperty);
+                            foreach (string toDelete in newValue)
+                            {
+                                if (value.Contains(toDelete))
+                                    value.Remove(toDelete);
+                                else
+                                    NoonUtility.Log(
+                                        "Failed to delete '" + toDelete + "' from '" + originalProperty + "' in '" + itemId + "'",
+                                        messageLevel: 1);
+                            }
+                        }
+                        else
+                        {
+                            NoonUtility.Log(
+                                "Cannot apply '{operation}' to '" + originalProperty + "' in '" + itemId + "': invalid type, must be a dictionary or a list",
+                                messageLevel: 1);
+                        }
+
+                        break;
+                    }
+                    default:
+                        NoonUtility.Log(
+                            "Unknown operation '{operation}' for property '" + property + "' in '" + itemId + "', skipping", 
+                            messageLevel: 1);
+                        continue;
+                }
+
+                // Remove the property once it has been processed, to avoid warnings from the content importer
+                item.Remove(property);
+            }
+        }
+#endif
 
 	private bool CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate, bool forceTranslate, bool autorepair, ref bool changedDst )
 	{

@@ -1,14 +1,14 @@
  {"recipes": [
 		{
 	id: "studyknocklore",
-	label: "研究开启的知识",
+	label: "研究开启的密传",
 	actionId: "study",
 	requirements: {lore:2, knock:1},
 	effects:{project_upgrade_subvert_knock:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "存在拆解事物的咒语，其词语间的空隙与实际的音节拥有相同效力。拆开某物，便知其本质。[与<b>启</b>一同研究的知识都将变为<b>启</b>。]",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "存在拆解事物的咒语，其词语间的空隙与实际的音节拥有相同效力。拆开某物，便知其本质。[与<b>启</b>一同研究的密传都将变为<b>启</b>。]",
 	description: ".",
 	warmup:30,
 	craftable: true
@@ -16,26 +16,26 @@
 
 	{
 	id: "studyupgradelore_edge",
-	label: "研究利刃的知识",
+	label: "研究利刃的密传",
 	actionId: "study",
 	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock:-1},
 	effects: {project_upgrade_edge:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "一切重大纷争皆以死亡告终。利刃的知识掌握着那些纷争的教训。",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "一切重大纷争皆以死亡告终。利刃的密传掌握着纷争的教训。",
 	description: ".",
 	warmup:30,
 	craftable: true
 	},
 		{
 	id: "studysubvertlore_edgetowinter",
-	label: "转化利刃的知识",
+	label: "转化利刃的密传",
 	actionId: "study",
 	requirements: {lore:2, edge:1,winter:1},
 	effects: {project_subvert_edgetowinter:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "万事皆有终结。我将思索如何用忍耐战胜力量。[将<b>刃</b>转化为<b>冬</b>之知识。]",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "万事皆有终结。我将思索如何用忍耐战胜力量。[将<b>刃</b>转化为<b>冬</b>之密传。]",
 	description: ".",
 	warmup:30,
 	craftable: true
@@ -43,13 +43,13 @@
 
 	{
 	id: "studyforgelore",
-	label: "研究燃烧的知识",
+	label: "研究燃烧的密传",
 	actionId: "study",
 	requirements: {lore:2, forge:1,edge:-1,lantern:-1,knock:-1},
 	effects:{project_upgrade_forge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "极少数人知晓铁匠与杀人犯会吟诵相同的祷辞。我要仔细调查那些祷辞。",
 
 	warmup:30,
@@ -58,14 +58,14 @@
 
 		{
 	id: "studysubvertlore_forgetoedge",
-	label: "转化燃烧的知识",
+	label: "转化燃烧的密传",
 	actionId: "study",
 	requirements: {lore:2, forge:1,edge:1},
 	effects:{project_subvert_forgetoedge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "被称为锻狮的时枢神打碎其剑，以此逃脱主人的支配。只要有足够的力量，万事万物皆可被战胜。[将<b>铸</b>转化为<b>刃</b>之知识。]",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "被称为锻狮的时枢神打碎其剑，以此逃脱主人的支配。只要有足够的力量，万事万物皆可被战胜。[将<b>铸</b>转化为<b>刃</b>之密传。]",
 
 	warmup:30,
 	craftable: true
@@ -73,12 +73,12 @@
 
 			{
 	id: "studygraillore",
-	label: "研究诱惑的知识",
+	label: "研究诱惑的密传",
 	actionId: "study",
 	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock:-1},
 	effects:{project_upgrade_grail:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "某些话语渴望被说出口。花费时间来考虑它们还挺诱人的——不仅诱人，或许也有用。",
 
 	warmup:30,
@@ -88,13 +88,13 @@
 
 			{
 	id: "studysubvertlore_grailtomoth",
-	label: "转化诱惑的知识",
+	label: "转化诱惑的密传",
 	actionId: "study",
 	requirements: {lore:2, grail:1,moth:1},
 	effects:{project_subvert_grailtomoth:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "据说<b>杯</b>诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>转化为<b>蛾</b>之知识。]",
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "据说<b>杯</b>诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>转化为<b>蛾</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
@@ -103,13 +103,13 @@
 
 				{
 	id: "studyheartlore",
-	label: "研究不休的知识",
+	label: "研究不休的密传",
 	actionId: "study",
 	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock:-1},
 	effects:{project_upgrade_heart:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "解剖家、舞蹈家以及萨满都会学习的知识。",
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "所有解剖家、舞蹈家和萨满都要学的一课。",
 
 	warmup:30,
 	craftable: true,
@@ -117,13 +117,13 @@
 
 					{
 	id: "studysubvertlore_hearttograil",
-	label: "转化不休的知识",
+	label: "转化不休的密传",
 	actionId: "study",
 	requirements: {lore:2, heart:1,grail:1},
 	effects:{project_subvert_hearttograil:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "不休之物终将屈从于诱惑。[将<b>心</b>转化为<b>杯</b>之知识。]",
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "不休之物终将屈从诱惑。[将<b>心</b>转化为<b>杯</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
@@ -132,39 +132,39 @@
 
 		{
 	id: "studylanternlore",
-	label: "研究辉煌的知识",
+	label: "研究辉煌的密传",
 	actionId: "study",
 	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock:-1},
 	effects:{project_upgrade_lantern:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "无形之仪的施行者中流传着一句谚语：“辉光会造访这栋‘没有围墙的居所’。”我想了解光。",
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "无形之术的施行者中流传着一句谚语：“辉光会造访这栋‘没有围墙的居所’。”我想了解光。",
 
 	warmup:30,
 	craftable: true,
 	},
 			{
 	id: "studysubvertlore_lanterntoforge",
-	label: "转化辉煌的知识",
+	label: "转化辉煌的密传",
 	actionId: "study",
 	requirements: {lore:2, lantern:1,forge:1},
 	effects:{project_subvert_lanterntoforge:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "占星师朱利安·寇兹利声称光阴之炉分裂了太阳。也许他是对的。[将<b>灯</b>转化为<b>铸</b>之知识。]",
+	linked: [{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "占星师朱利安·寇兹利声称光阴之炉分裂了太阳。也许他是对的。[将<b>灯</b>转化为<b>铸</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
 	},
 			{
 	id: "studymothlore",
-	label: "研究林地的知识",
+	label: "研究林地的密传",
 	actionId: "study",
 	requirements: {lore:2, moth:1,lantern:-1,grail:-1,knock:-1},
 	effects:{project_upgrade_moth:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "当气息于杯中变黑，雾气使肌肤绷紧，树林在冬季行走之际，我们听见这些语句。",
 
 	warmup:30,
@@ -173,14 +173,14 @@
 
 				{
 	id: "studysubvertlore_mothtolantern",
-	label: "转化林地的知识",
+	label: "转化林地的密传",
 	actionId: "study",
 	requirements: {lore:2, moth:1,lantern:1},
 	effects:{project_subvert_mothtolantern:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "若光是一个疑问，蛾总以肯定作答。[将<b>蛾</b>转化为<b>灯</b>之知识。]",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "若辉光是一个疑问，蛾总以肯定作答。[将<b>蛾</b>转化为<b>灯</b>之密传。]",
 
 	warmup:30,
 	craftable: true
@@ -194,7 +194,7 @@
 	effects:{project_upgrade_secrethistories:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyresearch.entrypoint",chance:100}],
 	startdescription: "历史不像我们一贯所学的的那样明确。我可以通过研究其模糊的边缘学到知识。",
 
 	warmup:30,
@@ -202,270 +202,83 @@
 	},
 				{
 	id: "studywinterlore",
-	label: "研究破败的知识",
+	label: "研究破败的密传",
 	actionId: "study",
 	requirements: {lore:2, winter:1,heart:-1,knock:-1},
 	effects:{project_upgrade_winter:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "这些语句使空气骤寒，血色褪下我的皮肤。",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "这些语句使空气骤冷，血色褪下我的皮肤。",
 
 	warmup:30,
 	craftable: true
 	},
 			{
 	id: "subvertwinterlore",
-	label: "转化破败的知识",
+	label: "转化破败的密传",
 	actionId: "study",
 	requirements: {lore:2, winter:1,heart:1},
 	effects:{project_subvert_wintertoheart:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "纵使在雪地中，在寂静中，在没有色彩的纯白中，生命亦永不停歇。[将<b>冬</b>转化为<b>心</b>之知识。]",
+	{id: "studyresearch.entrypoint",chance:100}],
+	startdescription: "纵使在雪，在静默中，在没有色彩的纯白中，生命亦不尽休止。[将<b>冬</b>转化为<b>心</b>之影响。]",
 
 	warmup:30,
 	craftable: true
 	},
 
-					{
-	id: "studyresearchtick",
-	comments: "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
-	label: "前景光明的研究",
-	actionId: "study",
-	requirements:{lore:2},
-	startdescription: "这个项目有可能成功。当研究要求出现，我必须满足要求来获取洞察。如果我获得了3个洞察，我将成功；否则，我会失败。",
-	description: ".",
-	warmup:30,
-	linked:[
-	{id: "studyresearchearlyconclusion",chance:100},
-	{id: "studyresearchneedsreason",chance:50},
-	{id: "studyresearchneedserudition",chance:50},
-	{id: "studyresearchneedsglimmering",chance:100}]
-	},
-			{
-	id: "studyresearchneedsreason",
-	label: "迷惑不解的阴影",
-	actionId: "study",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Reason",label:"理性",required: {reason:1}, greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearchreasonsuccess",chance:100}],
-	startdescription: "困惑遮蔽道路。我必须使用更多理性。",
-	description: "我需要用我的理性来辅助研究。",
-	warmup:30,
-	craftable: false,
-		linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-				{
-	id: "studyresearchreasonsuccess",
-	label: "智慧之光！",
-	actionId: "study",
-	requirements: {reason:1},
-	effects: {insight:1},
-	craftable: false,
-	startdescription: "这项任务占据了我越来越多的注意力。但努力是有回报的。[获得洞察。]",
-	linked: [{id:"studyresearchtick",chance:100}],
-	aspects: {fatiguing:1}
-	},
-		{
-	id: "studyresearchneedserudition",
-	label: "拼图的碎片",
-	actionId: "study",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Erudition",label:"博闻",required: {erudition:1},consumes:true,greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearcheruditionsuccess",chance:100}],
-	startdescription: "我的研究需要博闻。",
-	description: "我的研究需要博闻。",
-	warmup:30,
-	craftable: false,
-		linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-				{
-	id: "studyresearcheruditionsuccess",
-	label: "这块碎片正合适！",
-	actionId: "study",
-	requirements: {erudition:1},
-	effects: {insight:1},
-	craftable: false,
-	startdescription: "知识生出知识。[获得洞察。]",
-	linked: [{id:"studyresearchtick",chance:100}]
-	},
-		{
-	id: "studyresearchneedsglimmering",
-	label: "直觉之门",
-	actionId: "study",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Glimmering",label:"灵感",required: {glimmering:1},consumes:true,greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearchglimmeringsuccess",chance:100}],
-	startdescription: "我的研究需要灵感。",
-	description: ".",
-	warmup:30,
-	craftable: false,
-	linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-			{
-	id: "studyresearchglimmeringsuccess",
-	label: "直觉之门开启了！",
-	actionId: "study",
-	requirements: {glimmering:1},
-	effects: {insight:1},
-	startdescription: "有时会在出乎意料的地方发现洞察。[获得洞察。]",
-	craftable: false,
-	linked: [{id:"studyresearchtick",chance:100}]
-	},
-	{id: "studyresearchearlyconclusion",
-	actionId: "study",
-	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
-	requirements: {insight: 3},
-	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
-	},
-	{id: "studyresearchconclusion",
-	actionId: "study",
-	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
-	alternativerecipes: [
-	{id: "studyresearchmaxinsight",chance:100},
-	{id: "studyresearchmoderateinsight",chance:100},
-	{id: "studyresearchminimalinsight",chance:100},
-	{id: "studyresearchconsolation",chance:100},
-	]
-	},
-
-						{
-	id: "studyresearchmaxinsight",
-	label: "研究完成，最高洞察",
-		alternativerecipes: [
-	{id: "studyresearchsuccess",chance:100}],
-	actionId: "study",
-	requirements: {insight:3},
-	effects: {},
-	startdescription: "BEGIN studyresearchmaxinsight",
-	description: "COMPLETE studyresearchmaxinsight",
-	warmup:0,
-	comments: "This is currently a pass-through only; including for consistency.",
-	},
-					{
-	id: "studyresearchmoderateinsight",
-	label: "研究完成，中等洞察",
-		alternativerecipes: [
-	{id: "studyresearchsuccess",chance:70},
-	{id: "studyresearchconsolation",chance:100}],
-	actionId: "study",
-	requirements: {insight:2},
-	effects: {},
-	startdescription: "BEGIN studyresearchsomeinsight",
-	description: "COMPLETE studyresearchsomeinsight",
-	warmup:0
-	},
-						{
-	id: "studyresearchminimalinsight",
-	label: "研究完成，最低洞察",
-	actionId: "study",
-	requirements: {insight:1},
-			alternativerecipes: [
-	{id: "studyresearchsuccess",chance:30},
-	{id: "studyresearchconsolation",chance:100}],
-	requirements: {},
-	effects: {},
-	startdescription: "BEGIN studyresearchnoinsight",
-	description: "COMPLETE studyresearchnoinsight",
-	warmup:0,
-	},
-							{
-	id: "studyresearchsuccess",
-	label: "成功！",
-	actionId: "study",
-	requirements: {},
-	aspects: {restore:1},
-	effects: {insight:-100},
-	startdescription: ".",
-	description: "我学到了新东西。",
-	warmup:0,
-	craftable: false,
-	linked: [
-
-
-
-		{id:"studyproject_upgrade_edge",chance:100},
-		{id:"studyproject_upgrade_forge",chance:100},
-		{id:"studyproject_upgrade_grail",chance:100},
-		{id:"studyproject_upgrade_heart",chance:100},
-		{id:"studyproject_upgrade_lantern",chance:100},
-		{id:"studyproject_upgrade_moth",chance:100},
-		{id:"studyproject_upgrade_secrethistories",chance:100},
-		{id:"studyproject_upgrade_winter",chance:100},
-
-		{id:"studyproject_subvert_edgetowinter",chance:100},
-		{id:"studyproject_subvert_forgetoedge",chance:100},
-		{id:"studyproject_subvert_grailtomoth",chance:100},
-		{id:"studyproject_subvert_hearttograil",chance:100},
-		{id:"studyproject_subvert_lanterntoforge",chance:100},
-		{id:"studyproject_subvert_mothtolantern",chance:100},
-		{id:"studyproject_subvert_wintertoheart",chance:100},
-
-		{id:"studyproject_upgrade_subvert_knock",chance:100},
-
-
-
-
-	]
-	},
 	{id:"studyproject_upgrade_edge",
-	label:"利刃的知识",
+	label:"利刃的密传",
 	actionId:"study",
 	requirements:{project_upgrade_edge:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
-	description:"我对利刃的知识更加精通了，这种知识可据其属性称为<b>刃</b>。"
+	description:"我对利刃的密传更加精通了，这种密传可据其属性称为<b>刃</b>。"
 	},
 
 
 
 			{id:"studyproject_upgrade_forge",
-	label:"燃烧的知识",
+	label:"燃烧的密传",
 	actionId:"study",
 	requirements:{project_upgrade_forge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"我对燃烧的知识更加精通了，这种知识可据其属性称为<b>铸</b>。"
+	description:"我对燃烧的密传更加精通了，这种密传可据其属性称为<b>铸</b>。"
 	},
 			{id:"studyproject_upgrade_grail",
-	label:"诱惑的知识",
+	label:"诱惑的密传",
 	actionId:"study",
 	requirements:{project_upgrade_grail:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"我对诱惑的知识更加精通了，这种知识可据其属性称为<b>杯</b>。"
+	description:"我对诱惑的密传更加精通了，这种密传可据其属性称为<b>杯</b>。"
 	},
 			{id:"studyproject_upgrade_heart",
-	label:"不休的知识",
+	label:"不休的密传",
 	actionId:"study",
 	requirements:{project_upgrade_heart:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"我对不休的知识更加精通了，这种知识可据其属性称为<b>心</b>。"
+	description:"我对不休的密传更加精通了，这种密传可据其属性称为<b>心</b>。"
 	},
 			{id:"studyproject_upgrade_lantern",
-	label:"辉煌的知识",
+	label:"辉煌的密传",
 	actionId:"study",
 	requirements:{project_upgrade_lantern:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"我对辉煌的知识更加精通了，这种知识可据其属性称为<b>灯</b>。"
+	description:"我对辉煌的密传更加精通了，这种密传可据其属性称为<b>灯</b>。"
 	},
 			{id:"studyproject_upgrade_moth",
-	label:"林地的知识",
+	label:"林地的密传",
 	actionId:"study",
 	requirements:{project_upgrade_moth:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"我对林地的知识更加精通了，这种知识可据其属性称为<b>蛾</b>。"
+	description:"我对林地的密传更加精通了，这种密传可据其属性称为<b>蛾</b>。"
 	},
 			{id:"studyproject_upgrade_secrethistories",
 	label:"秘史",
@@ -473,15 +286,15 @@
 	requirements:{project_upgrade_secrethistories:1},
 	effects:{secrethistories:-1},
 	aspects:{epiphany:1},
-	description:"我对<b>秘史</b>的知识更加精通了，<b>秘史</b>是世人皆知的历史背后的历史。"
+	description:"我对秘史相关的知识更加精通了，秘史是世人皆知的历史背后的历史。"
 	},
 			{id:"studyproject_upgrade_winter",
-	label:"破败的知识",
+	label:"破败的密传",
 	actionId:"study",
 	requirements:{project_upgrade_winter:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"我对破败的知识更加精通了，这种知识可据其属性称为<b>冬</b>。"
+	description:"我对破败的密传更加精通了，这种密传可据其属性称为<b>冬</b>。"
 	},
 
 
@@ -492,7 +305,7 @@
 	requirements:{project_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
-	description:"忍耐战胜力量。我将<b>刃</b>之知识转化为<b>冬</b>。"
+	description:"忍耐战胜力量。我将<b>刃</b>之密传转化为<b>冬</b>。"
 	},
 
 			{id:"studyproject_subvert_forgetoedge",
@@ -501,7 +314,7 @@
 	requirements:{project_subvert_forgetoedge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"我打碎了过往的信仰，将<b>铸</b>之知识转化为<b>刃</b>。"
+	description:"我打碎了过往的信仰，将<b>铸</b>之密传转化为<b>刃</b>。"
 	},
 			{id:"studyproject_subvert_grailtomoth",
 	label:"欲望为昧",
@@ -509,7 +322,7 @@
 	requirements:{project_subvert_grailtomoth:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"即使是赤杯也深受脑中低语之害。我将<b>杯</b>之知识转化为<b>蛾</b>。"
+	description:"即使是赤杯也深受脑中低语之害。我将<b>杯</b>之密传转化为<b>蛾</b>。"
 	},
 			{id:"studyproject_subvert_hearttograil",
 	label:"不休之物终将屈服",
@@ -517,15 +330,15 @@
 	requirements:{project_subvert_hearttograil:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"所有会动的东西必将被欲望压垮。我将<b>心</b>之知识转化为<b>杯</b>。"
+	description:"所有会动的东西必将被欲望压垮。我将<b>心</b>之密传转化为<b>杯</b>。"
 	},
 			{id:"studyproject_subvert_lanterntoforge",
-	label:"正午日坠",
+	label:"正午日落",
 	actionId:"study",
 	requirements:{project_subvert_lanterntoforge:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"<b>炉</b>中有技可裂日。我将<b>灯</b>之知识转化为<b>铸</b>。"
+	description:"炉神有技可裂日。我将<b>灯</b>之密传转化为<b>铸</b>。"
 	},
 			{id:"studyproject_subvert_mothtolantern",
 	label:"凌驾万物之光",
@@ -533,7 +346,7 @@
 	requirements:{project_subvert_mothtolantern:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"若光是一个疑问，蛾总以肯定作答。我将<b>蛾</b>之知识转化为<b>灯</b>。"
+	description:"若辉光是一个疑问，蛾总以肯定作答。我将<b>蛾</b>之密传转化为<b>灯</b>。"
 	},
 
 			{id:"studyproject_subvert_wintertoheart",
@@ -542,7 +355,7 @@
 	requirements:{project_subvert_wintertoheart:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"降临的冬终将让位于春。我将<b>冬</b>之知识转化为<b>心</b>。"
+	description:"降临的冬终将让位于春。我将<b>冬</b>之密传转化为<b>心</b>。"
 	},
 
 				{id:"studyproject_upgrade_subvert_knock",
@@ -551,7 +364,7 @@
 	requirements:{project_upgrade_subvert_knock:1},
 	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
 	aspects:{epiphany:1},
-	description:"打开某物，便知其本质。我加深了对关于开启的知识的理解，这种知识因其属性可称为<b>启</b>。",
+	description:"打开某物，便知其本质。我加深了对关于开启的密传的理解，这种密传可据其属性称为<b>启</b>。",
 	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
@@ -567,13 +380,13 @@
 
 								{
 	id: "studyresearchconsolation",
-	label: "经验教训",
+	label: "习学教训",
 	actionId: "study",
 	requirements: {},
 	effects: {insight:-100,erudition:1},
 	aspects: {restore:1},
 	startdescription: ".",
-	description: "此时，该研究失败了。但我从中吸取了教训。",
+	description: "这一次的研究失败了。但我从中吸取了经验教训。",
 	warmup:0,
 	craftable: false
 	},
@@ -585,7 +398,7 @@
 	requirements: {fragmentedgeb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedgeb:-1,fragmentedge:2},
 	warmup:60,
@@ -599,7 +412,7 @@
 	requirements: {fragmentedgec:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedgec:-1,fragmentedgeb:2},
 	warmup:60,
@@ -612,7 +425,7 @@
 	requirements: {fragmentedged:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedged:-1,fragmentedgec:2},
 	warmup:60,
@@ -625,7 +438,7 @@
 	requirements: {fragmentedgee:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedgee:-1,fragmentedged:2},
 	warmup:60,
@@ -638,7 +451,7 @@
 	requirements: {fragmentedgef:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedgef:-1,fragmentedgee:2},
 	warmup:60,
@@ -651,7 +464,7 @@
 	requirements: {fragmentedgeg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentedgeg:-1,fragmentedgef:2},
 	warmup:60,
@@ -669,7 +482,7 @@
 	requirements: {fragmentforgeb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforgeb:-1,fragmentforge:2},
 	warmup:60,
@@ -683,7 +496,7 @@
 	requirements: {fragmentforgec:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforgec:-1,fragmentforgeb:2},
 	warmup:60,
@@ -696,7 +509,7 @@
 	requirements: {fragmentforged:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforged:-1,fragmentforgec:2},
 	warmup:60,
@@ -709,7 +522,7 @@
 	requirements: {fragmentforgee:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforgee:-1,fragmentforged:2},
 	warmup:60,
@@ -722,7 +535,7 @@
 	requirements: {fragmentforgef:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforgef:-1,fragmentforgee:2},
 	warmup:60,
@@ -735,7 +548,7 @@
 	requirements: {fragmentforgeg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentforgeg:-1,fragmentforgef:2},
 	warmup:60,
@@ -752,7 +565,7 @@
 	requirements: {fragmentgrailb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgrailb:-1,fragmentgrail:2},
 	warmup:60,
@@ -766,7 +579,7 @@
 	requirements: {fragmentgrailc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgrailc:-1,fragmentgrailb:2},
 	warmup:60,
@@ -779,7 +592,7 @@
 	requirements: {fragmentgraild:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgraild:-1,fragmentgrailc:2},
 	warmup:60,
@@ -792,7 +605,7 @@
 	requirements: {fragmentgraile:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgraile:-1,fragmentgraild:2},
 	warmup:60,
@@ -805,7 +618,7 @@
 	requirements: {fragmentgrailf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgrailf:-1,fragmentgraile:2},
 	warmup:60,
@@ -818,7 +631,7 @@
 	requirements: {fragmentgrailg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentgrailg:-1,fragmentgrailf:2},
 	warmup:60,
@@ -836,7 +649,7 @@
 	requirements: {fragmentheartb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentheartb:-1,fragmentheart:2},
 	warmup:60,
@@ -850,7 +663,7 @@
 	requirements: {fragmentheartc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentheartc:-1,fragmentheartb:2},
 	warmup:60,
@@ -863,7 +676,7 @@
 	requirements: {fragmentheartd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentheartd:-1,fragmentheartc:2},
 	warmup:60,
@@ -876,7 +689,7 @@
 	requirements: {fragmenthearte:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmenthearte:-1,fragmentheartd:2},
 	warmup:60,
@@ -889,7 +702,7 @@
 	requirements: {fragmentheartf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentheartf:-1,fragmenthearte:2},
 	warmup:60,
@@ -902,7 +715,7 @@
 	requirements: {fragmentheartg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentheartg:-1,fragmentheartf:2},
 	warmup:60,
@@ -922,7 +735,7 @@
 	requirements: {fragmentknockb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknockb:-1,fragmentknock:2},
 	warmup:60,
@@ -936,7 +749,7 @@
 	requirements: {fragmentknockc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknockc:-1,fragmentknockb:2},
 	warmup:60,
@@ -949,7 +762,7 @@
 	requirements: {fragmentknockd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknockd:-1,fragmentknockc:2},
 	warmup:60,
@@ -962,7 +775,7 @@
 	requirements: {fragmentknocke:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknocke:-1,fragmentknockd:2},
 	warmup:60,
@@ -975,7 +788,7 @@
 	requirements: {fragmentknockf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknockf:-1,fragmentknocke:2},
 	warmup:60,
@@ -988,7 +801,7 @@
 	requirements: {fragmentknockg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentknockg:-1,fragmentknockf:2},
 	warmup:60,
@@ -1007,7 +820,7 @@
 	requirements: {fragmentlanternb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanternb:-1,fragmentlantern:2},
 	warmup:60,
@@ -1021,7 +834,7 @@
 	requirements: {fragmentlanternc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanternc:-1,fragmentlanternb:2},
 	warmup:60,
@@ -1034,7 +847,7 @@
 	requirements: {fragmentlanternd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanternd:-1,fragmentlanternc:2},
 	warmup:60,
@@ -1047,7 +860,7 @@
 	requirements: {fragmentlanterne:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanterne:-1,fragmentlanternd:2},
 	warmup:60,
@@ -1060,7 +873,7 @@
 	requirements: {fragmentlanternf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanternf:-1,fragmentlanterne:2},
 	warmup:60,
@@ -1073,7 +886,7 @@
 	requirements: {fragmentlanterng:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentlanterng:-1,fragmentlanternf:2},
 	warmup:60,
@@ -1091,7 +904,7 @@
 	requirements: {fragmentmothb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothb:-1,fragmentmoth:2},
 	warmup:60,
@@ -1105,7 +918,7 @@
 	requirements: {fragmentmothc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothc:-1,fragmentmothb:2},
 	warmup:60,
@@ -1118,7 +931,7 @@
 	requirements: {fragmentmothd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothd:-1,fragmentmothc:2},
 	warmup:60,
@@ -1131,7 +944,7 @@
 	requirements: {fragmentmothe:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothe:-1,fragmentmothd:2},
 	warmup:60,
@@ -1144,7 +957,7 @@
 	requirements: {fragmentmothf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothf:-1,fragmentmothe:2},
 	warmup:60,
@@ -1157,7 +970,7 @@
 	requirements: {fragmentmothg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentmothg:-1,fragmentmothf:2},
 	warmup:60,
@@ -1177,7 +990,7 @@
 	requirements: {fragmentsecrethistoriesb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriesb:-1,fragmentsecrethistories:2},
 	warmup:60,
@@ -1191,7 +1004,7 @@
 	requirements: {fragmentsecrethistoriesc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriesc:-1,fragmentsecrethistoriesb:2},
 	warmup:60,
@@ -1204,7 +1017,7 @@
 	requirements: {fragmentsecrethistoriesd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriesd:-1,fragmentsecrethistoriesc:2},
 	warmup:60,
@@ -1217,7 +1030,7 @@
 	requirements: {fragmentsecrethistoriese:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriese:-1,fragmentsecrethistoriesd:2},
 	warmup:60,
@@ -1230,7 +1043,7 @@
 	requirements: {fragmentsecrethistoriesf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriesf:-1,fragmentsecrethistoriese:2},
 	warmup:60,
@@ -1243,7 +1056,7 @@
 	requirements: {fragmentsecrethistoriesg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentsecrethistoriesg:-1,fragmentsecrethistoriesf:2},
 	warmup:60,
@@ -1262,7 +1075,7 @@
 	requirements: {fragmentwinterb:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-	startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwinterb:-1,fragmentwinter:2},
 	warmup:60,
@@ -1276,7 +1089,7 @@
 	requirements: {fragmentwinterc:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwinterc:-1,fragmentwinterb:2},
 	warmup:60,
@@ -1289,7 +1102,7 @@
 	requirements: {fragmentwinterd:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwinterd:-1,fragmentwinterc:2},
 	warmup:60,
@@ -1302,7 +1115,7 @@
 	requirements: {fragmentwintere:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwintere:-1,fragmentwinterd:2},
 	warmup:60,
@@ -1315,7 +1128,7 @@
 	requirements: {fragmentwinterf:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwinterf:-1,fragmentwintere:2},
 	warmup:60,
@@ -1328,7 +1141,7 @@
 	requirements: {fragmentwinterg:1, reason:1},
 	comments:"This doesn't participate in the research cycle - it's one-and-done.",
 	aspects:{fatiguing:1},
-		startdescription: "有时，对于个别知识我可能需要回到更基础的理解中。[这将知识分解为两块更低级的碎片。之后你能将其重组，但不会同分解它一样容易。]",
+		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
 	effects:{fragmentwinterg:-1,fragmentwinterf:2},
 	warmup:60,

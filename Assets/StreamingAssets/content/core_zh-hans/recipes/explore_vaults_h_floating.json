@@ -8,7 +8,7 @@
 	requirements:{funds:1,follower:1,vaultfloating1:1},
 	effects: {guardian_watchers:1,seal_wardeddoor:1,peril_sea:1},
 
-	startdescription: "乘坐客轮来造访这座赫柏·斯坦顿号停靠的阴森小岛是有点怪异的，但是我们可以租一艘渔船，然后相信大海的表现。而当我们上船时，穿过守卫与重重大门的真正工作将会开始。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "乘坐客轮来造访这座赫柏·斯坦顿号停靠的阴森小岛是有点怪异的，但是我们可以租一艘渔船，然后相信大海的表现。而当我们上船时，穿过守卫与重重大门的真正工作将会开始。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -18,7 +18,7 @@
 
 	{
 	id: "explorevaultfloating1_success",
-	label: "一个舒适的巢",
+	label: "舒适的巢",
 	actionId: "explore",
 	requirements: {vaultfloating1:1},
 	effects: {vaultfloating1:-1,ceaselesstantrasanskrit:1,leoninetantrasanskrit:1,incandescenttantrasanskrit:1,	firecircletantrasanskrit:1},

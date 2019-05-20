@@ -29,6 +29,7 @@ namespace TabletopUi.Scripts.Interfaces
         void CloseAllDetailsWindows();
         void CloseAllSituationWindowsExcept(string exceptTokenId);
         bool IsSituationWindowOpen();
+        void SetHighlightedElement(string elementId, int quantity = 1);
         void DecayStacksOnTable(float interval);
         void DecayStacksInResults(float interval);
         void SetPausedState(bool paused);

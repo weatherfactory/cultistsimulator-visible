@@ -21,6 +21,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using Noon;
 using OrbCreationExtensions;
+using TabletopUi.Scripts.Elements;
 using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -55,6 +56,8 @@ namespace Assets.CS.TabletopUI {
         private AspectDetailsWindow aspectDetailsWindow;
         [SerializeField]
         private TokenDetailsWindow tokenDetailsWindow;
+        [SerializeField] 
+        private CardHoverDetail cardHoverDetail;
 
         [Header("Mansus Map")]
         [SerializeField]
@@ -139,6 +142,7 @@ namespace Assets.CS.TabletopUI {
 		private float AUTOSAVE_INTERVAL = 300.0f;
 		private static float gridSnapSize = 0.0f;
 		private static bool highContrastMode = false;
+		private static bool accessibleCards = false;
 		private static bool stickyDragMode = false;
         private List<string> currentDoomTokens=new List<string>();
 
@@ -763,6 +767,19 @@ namespace Assets.CS.TabletopUI {
 	        return situationControllers.Any(c => c.IsOpen);
         }
 
+        public void SetHighlightedElement(string elementId, int quantity = 1)
+        {
+	        if (!GetAccessibleCards())
+		        return;
+	        if (elementId == null || elementId == "dropzone")
+	        {
+		        cardHoverDetail.Hide();
+		        return;
+	        }
+	        cardHoverDetail.Populate(elementId, quantity);
+	        cardHoverDetail.Show();
+        }
+        
         void HandleOnMapBackgroundDropped() {
             if (DraggableToken.itemBeingDragged != null) {
 
@@ -880,6 +897,16 @@ namespace Assets.CS.TabletopUI {
 		public static bool GetHighContrast()
 		{
 			return highContrastMode;
+		}
+
+		public static void SetAccessibleCards( bool on )
+		{
+			accessibleCards = on;
+		}
+
+		public static bool GetAccessibleCards()
+		{
+			return accessibleCards;
 		}
 
 		public static void SetStickyDrag( bool on )

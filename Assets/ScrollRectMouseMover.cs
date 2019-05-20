@@ -21,7 +21,9 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 	[SerializeField] float timeout = 0.1f;
 #pragma warning restore 649
-    bool pointerInRect;
+#pragma warning disable 414
+	bool pointerInRect;
+#pragma warning restore 414
 	float pointerEnterEdgeTime = 0f;
 	bool isManualDragActive;
 	bool blockScrolling;

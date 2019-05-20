@@ -3,29 +3,29 @@
 
  	{
 	id: "studyupgrade_downgrade_lore_hint",
-	label: "增进对无形之仪的了解？",
+	label: "增长关于无形之术的知识？",
 	actionId: "study",
 	requirements: {lore:1,edge:-1,forge:-1,grail:-1,heart:-1,knock:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},	
-	startdescription: "如果有两份相同属性种类和等级的知识碎片，我就能把它们放在一块儿研究，以此增进我的理解。如果使用理性，我就能分析知识，将其分解成级别稍低的碎片。或者我可以用另一种知识来转换它……",
+	startdescription: "如果我有两份相同属性和等级的密传片段，我就能把它们放在一起研究，增进我的理解。如果使用理性，我就能分析密传，将其分解成级别较低的片段。或者我可以用另一种密传来转换它……",
 		craftable: false,
 		hintonly:true
 	},
    	{
 	id: "studyupgradelore_hint",
-	label: "增进对无形之仪的了解？",
+	label: "增长关于无形之术的知识？",
 	actionId: "study",
 	requirements: {lore:1,healthskill:-1},	
-	startdescription: "如果有两份相同属性种类和等级的知识碎片，我就能把它们放在一块儿研究，以此增进我的理解。或者我可以用另一种知识来转换它……",
+	startdescription: "如果我有两份相同属性和等级的密传片段，我就能把它们放在一起研究，增进我的理解。或者我可以用另一种密传来转换它……",
 		craftable: false,
 		hintonly:true
 	},
 	
 	  
  {id:"translatelatinhint",
- label:"翻译拉丁文？",
+ label:"翻译拉丁语？",
  actionId:"study",
  requirements:{textlatin:1},
- startdescription:"我的拉丁文水平还不足以解读它。我或许可以找本教材，或者找雇个导师。",
+ startdescription:"我的拉丁语水平还不足以解读它。我或许可以找本教材，或者雇个教师。",
  hintonly:true,
  craftable:false
  },
@@ -33,7 +33,7 @@
  label:"翻译希腊语？",
  actionId:"study",
  requirements:{textgreek:1},
- startdescription:"我的希腊语水平还不足以解读它。我或许可以找本教材，或者找雇个导师。",
+ startdescription:"我的希腊语水平还不足以解读它。我或许可以找本教材，或者雇个教师。",
  hintonly:true,
  craftable:false
  },
@@ -42,7 +42,7 @@
  label:"翻译亚拉姆语？",
  actionId:"study",
  requirements:{textaramaic:1},
- startdescription:"我的亚拉姆语水平还不足以解读它。我或许可以找本教材，或者雇个导师。",
+ startdescription:"我的亚拉姆语水平还不足以解读它。我或许可以找本教材，或者雇个教师。",
  hintonly:true,
  craftable:false
  },
@@ -51,7 +51,7 @@
  label:"翻译富奇诺语？",
  actionId:"study",
  requirements:{textfucine:1},
- startdescription:"我并不懂富奇诺语，恐怕现如今活着的人也没有谁懂得这门语言了。或许哪里能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+ startdescription:"我并不懂富奇诺语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
  hintonly:true,
  craftable:false
  },
@@ -59,7 +59,7 @@
  label:"翻译弗里吉亚语？",
  actionId:"study",
  requirements:{textphrygian:1},
- startdescription:"我并不懂弗里吉亚语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+ startdescription:"我并不懂弗里吉亚语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
  hintonly:true,
  craftable:false
  },
@@ -68,15 +68,15 @@
  label:"翻译渊深曼达安语？",
  actionId:"study",
  requirements:{textmandaic:1},
- startdescription:"我并不懂渊深曼达安语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+ startdescription:"我并不懂渊深曼达安语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
  hintonly:true,
  craftable:false
  },
     {id:"translatevakhint",
- label:"翻译伐伽语？ ",
+ label:"翻译伐迦语？ ",
  actionId:"study",
  requirements:{textvak:1},
- startdescription:"我并不懂伐伽语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+ startdescription:"我并不懂伐迦语，恐怕活着的人里没有人懂了。或许哪里能发现类似罗塞塔的石碑……也许我可以找一个不完全算活人的教师。",
  hintonly:true,
  craftable:false
  },
@@ -86,27 +86,27 @@
         label: "锻炼身体：独家技巧？",
         actionId: "study",
         requirements: {skillhealthc:1,vitalityplus:4,lore:1},
-		startdescription: " 这篇知识中所诉的一切都无法在此处起效。我必须尝试一下别的知识。",
+		startdescription: " 这篇密传在此处一无用处。我必须尝试别的密传。",
 		hintonly:true,
         craftable: false,
     },
  
 	{
         id: "increasehealthfurtherhint",
-        label: "变得更健康？",
+        label: "增进我的健康？",
         actionId: "study",
         requirements: {vitality:2},
-        startdescription: "我越是健康，就需要越多的活力。[使用体魄相关的技能来增加自己的健康。]",
+        startdescription: "我越是健康，就需要越多的活力。[使用“体魄”技能增加“健康”。]",
 
         hintonly:true,
         craftable: false
     },
 			{
         id: "increasereasonfurtherhint",
-        label: "变得更理性？",
+        label: "增进我的理性？",
         actionId: "study",
         requirements: {erudition:2},
-        startdescription: "我越是理性，就需要越多的的博闻。[使用学问相关的技能来增加自己的理性。]",
+        startdescription: "我越是理性，就需要越多的博学。[使用“学识”技能增加“理性”。]",
 
         hintonly:true,
         craftable: false
@@ -114,19 +114,19 @@
 	
 		{
         id: "increasepassionfurtherhint",
-        label: "变得更热情？",
+        label: "增进我的激情？",
         actionId: "study",
         requirements: {glimmering:2},
-        startdescription: "我越是热情，就需要越多的灵感。[使用想象相关的技能来增加自己的热情。]",
+        startdescription: "我越是激情，就需要越多的灵感。[使用“想象”技能增加“激情”。]",
 
         hintonly:true,
         craftable: false
     },
 				{id:"studyupgradeinfluences.apostlelanternhint",
-	label:"保持好奇",
+	label:"保持新鲜感",
 	actionId:"study",
 	requirements:{apostlelantern.pillar3:1},
-	startdescription:"随着时间的推移，即便是曾经最大的诱惑，也会逐渐变得明灭不定失去颜色。我必须使用痴迷之色来刺激它。",
+	startdescription:"即便是最大的诱惑，随着时间推移，也会逐渐变得明灭而黯淡。我必须使用痴迷之色激活将其唤醒。",
 	hintonly:true,
 	craftable:false
 	},
@@ -135,35 +135,35 @@
 	label:"升级影响？",
 	actionId:"study",
 	requirements:{influence:2,lore:-1,healthskill:-1,reasonskill:-1,passionskill:-1},
-	startdescription:"使用正确的组合方式我或许可以将影响中的力量变得更为强大……但前提是我得知晓相应的无形之仪的知识。",
+	startdescription:"恰当地组合<b>影响</b>有可能增强其法力……前提是我拥有相应的无形之术知识。",
 	hintonly:true,
 	craftable:false
 	},
 					{
         id: "increasehealthfurtherhintpluswithskillneedslore",
-        label: "将我的技能提升到非凡之境？",
+        label: "将我的技能提升至非凡境地？",
         actionId: "study",
         requirements: {vitalityplus:1,skillhealthc:1},
-        startdescription: "我需要足够的学习经验……还有一些别的东西。",
+        startdescription: "我需要足够学有所成……和更多其他东西。",
         hintonly:true,
         craftable: false
     },
 				{
         id: "increasehealthfurtherhintpluswithskill",
-        label: "变得更健康？",
+        label: "增进我的健康？",
         actionId: "study",
         requirements: {vitalityplus:1,healthskill:1},
-        startdescription: "我需要更多的学习经验。",
+        startdescription: "我需要更加学有所成。",
 
         hintonly:true,
         craftable: false
     },
 			{
         id: "increasehealthfurtherhintplus",
-        label: "变得更健康？",
+        label: "增进我的健康？",
         actionId: "study",
         requirements: {vitalityplus:1},
-        startdescription: "我需要用与之相符的力量技能才能使用它。",
+        startdescription: "我得将它和力量技能一起运用。",
 
         hintonly:true,
         craftable: false
@@ -171,7 +171,7 @@
 		
 	{
         id: "increasehealthfurtherhint1",
-        label: "变得更健康？",
+        label: "增进我的健康？",
         actionId: "study",
         requirements: {vitality:1},
         startdescription: "我需要更多。",
@@ -183,30 +183,30 @@
 	
 						{
         id: "increasereasonfurtherhintpluswithskillneedslore",
-        label: "将我的技能提升到非凡之境？",
+        label: "将我的技能提升至非凡境地？",
         actionId: "study",
         requirements: {eruditionplus:1,skillreasonc:1},
-        startdescription: "我需要足够的学习经验……还有一些别的东西。",
+        startdescription: "我需要足够学有所成……和更多其他东西。",
 
         hintonly:true,
         craftable: false
     },
 					{
         id: "increasereasonfurtherhintpluswithskill",
-        label: "变得更理性？",
+        label: "增进我的理性？",
         actionId: "study",
         requirements: {eruditionplus:1,reasonskill:1},
-        startdescription: "我需要更多的学习经验。",
+        startdescription: "我需要更加学有所成。",
 
         hintonly:true,
         craftable: false
     },
 			{
         id: "increasereasonfurtherhintplus",
-        label: "变得更理性？",
+        label: "增进我的理性？",
         actionId: "study",
         requirements: {eruditionplus:1},
-        startdescription: "我需要用与之相符的学问技能才能使用它。",
+        startdescription: "我得将它和学识技能一起运用。",
 
         hintonly:true,
         craftable: false
@@ -214,7 +214,7 @@
 	
 			{
         id: "increasereasonfurtherhint1",
-        label: "变得更理性？",
+        label: "增进我的理性？",
         actionId: "study",
         requirements: {erudition:1},
         startdescription: "我需要不止一个。",
@@ -225,10 +225,10 @@
 	
 							{
         id: "increasepassionfurtherhintpluswithskillneedslore",
-        label: "将我的技能提升到非凡之境？",
+        label: "将我的技能提升至非凡境地？",
         actionId: "study",
         requirements: {glimmeringplus:1,skillpassionc:1},
-        startdescription: "我需要足够的学习经验……还有一些别的东西。",
+        startdescription: "我需要足够学有所成……和更多其他东西。",
 
         hintonly:true,
         craftable: false
@@ -236,20 +236,20 @@
 	
 					{
         id: "increasepassionfurtherhintpluswithskill",
-        label: "变得更热情？",
+        label: "增进我的激情？",
         actionId: "study",
         requirements: {glimmeringplus:1,passionskill:1},
-        startdescription: "我需要更多的学习经验。",
+        startdescription: "我需要更加学有所成。",
 
         hintonly:true,
         craftable: false
     },
 			{
         id: "increasepassionfurtherhintplus",
-        label: "变得更热情？",
+        label: "增进我的激情？",
         actionId: "study",
         requirements: {glimmeringplus:1},
-        startdescription: "我需要用与之相符的想象技能才能使用它。",
+        startdescription: "我得将它和想象技能一起运用。",
 
         hintonly:true,
         craftable: false
@@ -257,7 +257,7 @@
 	
 		{
         id: "increasepassionfurtherhint1",
-        label: "变得更热情？",
+        label: "增进我的激情？",
         actionId: "study",
         requirements: {glimmering:1},
         startdescription: "我需要不止一个。",
@@ -270,7 +270,7 @@
 	label:"研究躁动？",
 	actionId:"study",
 	requirements:{restlessness:1},
-	startdescription:"为了研究学习，我必须保持平常心。躁动对于学术研究来说通常都不是盟友。",
+	startdescription:"研究，需要一个人安安静静地坐住。躁动极少会成为学术研究的朋友。",
 	hintonly:true,
 	craftable:false
 	},
@@ -279,7 +279,7 @@
 	label:"升级影响？",
 	actionId:"study",
 	requirements:{influence:1},
-	startdescription:"使用正确的组合方式我或许可以将影响中的力量变得更为强大……",
+	startdescription:"恰当地组合<b>影响</b>有可能增强其法力……",
 	hintonly:true,
 	craftable:false
 	},
