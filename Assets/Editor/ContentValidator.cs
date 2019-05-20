@@ -1,4 +1,8 @@
-﻿using Noon;
+﻿using Assets.CS.TabletopUI;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+#endif
+using Noon;
 using UnityEditor;
 
 namespace Assets.Editor
@@ -12,6 +16,9 @@ namespace Assets.Editor
 			EditorUtils.ClearConsole();
 
 			NoonUtility.Log("-- Checking content files for errors --");
+#if MODS
+			new Registry().Register(new ModManager(false));
+#endif
 			var contentImporter = new ContentImporter();
 			contentImporter.PopulateCompendium(new Compendium());
 			NoonUtility.Log("-- Verification complete --");
