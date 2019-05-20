@@ -67,6 +67,16 @@
  craftable:false
  },
  
+  {id:"translatesanskrithint",
+ label:"Translate from Sanskrit?",
+ actionId:"study",
+ requirements:{textsanskrit:1},
+ startdescription:"My Sanskrit skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ 
    {id:"translatefucinehint",
  label:"Translate from Fucine?",
  actionId:"study",
