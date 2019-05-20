@@ -226,7 +226,7 @@ aspects:
 {lantern: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelantern:1,influenceforge:1,erudition:1,eruditionplus:1,fascination:1,contentment:1,fleeting:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
-description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.]",
+description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions, and some minions will leave it lingering when they are destroyed.  If unused, it will become Fascination.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanternc},
 decayTo: "fascination"
 },
@@ -237,7 +237,7 @@ aspects:
 {lantern: 6,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanternc:1,influenceforgec:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
-description: "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.  If unused, it will become Fascination.]",
+description: "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanterne},
 decayTo: "influencelantern"
 },
@@ -248,7 +248,7 @@ aspects:
 {lantern: 10,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanterne:1,influenceforgee:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentlanternc:1,fragmentlanternd:1,fragmentlanterne:1,fragmentlanternf:1,fragmentlanterng:1},actionId:"study"}],
-description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
+description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanterng},
 decayTo: "influencelanternc"
 },
@@ -258,8 +258,7 @@ label: "A Splendour",
 aspects:
 {lantern: 15,influence:1},
 
-description: "Cover your eyes, if you like. It will serve no purpose. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
-lifetime: 60,
+description: "Cover your eyes, if you like. It will serve no purpose. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]
 decayTo: "influencelanterne"
 },
 
