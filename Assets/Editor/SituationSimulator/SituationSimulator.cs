@@ -5,6 +5,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.Editor
@@ -21,17 +22,28 @@ namespace Assets.Editor
         {
             _subscriber = subscriber;
 
+            Registry registry = new Registry();
+
             // Set language to English for our tests
             LanguageTable.LoadCulture("en");
+            
+            // Set up an empty mod manager
+            registry.Register(new ModManager(false));
 
             // Import all the content first
             ContentImporter contentImporter = new ContentImporter();
             _compendium = new Compendium();
             contentImporter.PopulateCompendium(_compendium);
             _character = new Character(_compendium.GetAllLegacies().First());
+            
+            // Initialise all decks
+            foreach (var ds in _compendium.GetAllDeckSpecs()) {
+                IDeckInstance di = new DeckInstance(ds);
+                _character.DeckInstances.Add(di);
+                di.Reset();
+            }
 
             // Register all the required services used by the simulator
-            Registry registry = new Registry();
             registry.Register<ICompendium>(_compendium);
             registry.Register<Character>(_character);
             _compendium.SupplyLevers(_character);

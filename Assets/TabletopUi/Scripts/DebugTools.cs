@@ -12,6 +12,9 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+#if MODS
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+#endif
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
@@ -344,6 +347,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void UpdateCompendiumContent()
     {
+#if MODS
+        Registry.Retrieve<ModManager>().LoadAll();
+#endif
         var contentImporter = new ContentImporter();
         var compendium = Registry.Retrieve<ICompendium>();
         contentImporter.PopulateCompendium(compendium);

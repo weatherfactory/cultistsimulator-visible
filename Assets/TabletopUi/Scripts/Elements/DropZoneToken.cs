@@ -217,11 +217,6 @@ namespace Assets.CS.TabletopUI {
             return false;
         }
 
-        bool CanMergeWith(IElementStack stack)
-		{
-            return false;
-        }
-
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
 		{
         }

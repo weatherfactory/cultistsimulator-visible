@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -146,7 +145,7 @@ namespace Assets.Editor
 
         public AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation)
         {
-            return AspectsInContext.DummyAspectsInContext();
+            return new AspectsInContext(aspectsInSituation, new AspectsDictionary(), new AspectsDictionary());
         }
     }
 }

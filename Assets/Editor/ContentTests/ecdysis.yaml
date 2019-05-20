@@ -37,7 +37,8 @@
     - recipe: health_expel_to_scar
       expelled: [fatigue]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - ascensionlessonhearta
   - fatigue
@@ -56,7 +57,8 @@
     - recipe: health_expel_to_scar
       expelled: [fatigue]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingheartb
   - scar_heart_fatigued
@@ -71,7 +73,8 @@
   recipes:
   - ecdysisdance_sendingheartc
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingheartc
   - id: scar_heart_fatigued
@@ -92,7 +95,8 @@
     - recipe: health_expel_to_scar
       expelled: [fatigue]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingheartd
   - id: scar_heart_fatigued
@@ -109,7 +113,8 @@
   recipes:
   - ecdysisdance_sendinghearte
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendinghearte
   - id: scar_heart_fatigued
@@ -127,7 +132,8 @@
   recipes:
   - ecdysisdance_sendingheartf
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingheartf
   - id: scar_heart_fatigued
@@ -145,7 +151,8 @@
   recipes:
   - ecdysisdance_sendingheartg
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingheartg
   - id: scar_heart_fatigued
@@ -190,7 +197,8 @@
     - recipe: passion_expel_to_scar
       expelled: [passionexhausted]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - ascensionlessonmotha
   - passionexhausted
@@ -209,7 +217,8 @@
     - recipe: passion_expel_to_scar
       expelled: [passionexhausted]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothb
   - scar_moth_fatigued
@@ -224,7 +233,8 @@
   recipes:
   - ecdysisdance_sendingmothc
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothc
   - id: scar_moth_fatigued
@@ -245,7 +255,8 @@
     - recipe: passion_expel_to_scar
       expelled: [passionexhausted]
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothd
   - id: scar_moth_fatigued
@@ -262,7 +273,8 @@
   recipes:
   - ecdysisdance_sendingmothe
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothe
   - id: scar_moth_fatigued
@@ -280,7 +292,8 @@
   recipes:
   - ecdysisdance_sendingmothf
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothf
   - id: scar_moth_fatigued
@@ -298,7 +311,8 @@
   recipes:
   - ecdysisdance_sendingmothg
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothg
   - id: scar_moth_fatigued
@@ -320,7 +334,8 @@
   recipes:
   - ecdysisdance_sendingmothheartg
   output:
-  - funds
+  - id: funds
+    quantity: "> 0"
   - mystique
   - sendingmothheartg
   - id: scar_moth_fatigued
