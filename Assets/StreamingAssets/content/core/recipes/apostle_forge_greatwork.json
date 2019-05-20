@@ -141,10 +141,20 @@ requirements:{echidna:1},
 slots:[{id:"sacrifice",label:"Someone Tasty, or a Good Reason",required:{exalted:1,cultsecrethistories_1:1}}],
 warmup:60,
 craftable:true,
-alternativerecipes:[{id:"talk.apostleforge.echidnahelp"},
+alternativerecipes:[{id:"talk.apostleforge.echidnahelp.independent"},
+{id:"talk.apostleforge.echidnahelp"},
 {id:"talk.apostleforge.echidnahelp.sthydra"}]
 },
 
+{id:"talk.apostleforge.echidnahelp.independent",
+actionId:"talk",
+label:"Someone Tasty",
+startdescription:"'Have you two had a falling-out? Don't you worry, I'll tidy everything up. Listen, though - I'm a woman of my word, but I'm not a patient woman.  Wait until you're ready, and then I'll meet your tasty little problem.'",
+description:"'Take this. Don't lose it. I'll be there.'",
+requirements:{echidna:1,exalted:1},
+effects:{exalted:-1,apostleforge.pillar5:1},
+craftable:false
+},
 
 {id:"talk.apostleforge.echidnahelp",
 actionId:"talk",
