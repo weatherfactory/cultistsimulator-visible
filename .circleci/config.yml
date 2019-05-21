@@ -38,7 +38,7 @@ jobs:
           command: python3 /csunity-ci/publish.py /csunity-ci/config.toml
       - store_artifacts:
           root: /csunity-ci-publish/artifacts/
-          paths:
+          path:
             - humble/
 workflows:
   version: 2
