@@ -3,13 +3,13 @@
 	{id: "project_upgrade_edge",
 	label: "Increasing my understanding of Edge lore",
 	description: "I hope to improve my Edge lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_edgetowinter",
 	label: "Subverting Edge to Winter",
 	description: "I am acknowledging the victory of patience over strength, subverting my Edge lore to Winter lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -17,13 +17,13 @@
 		{id: "project_upgrade_forge",
 	label: "Increasing my understanding of Forge lore",
 	description: "I hope to improve my Forge lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_forgetoedge",
 	label: "Subverting Forge to Edge",
 	description: "I am subverting my Forge lore to Edge lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -32,13 +32,13 @@
 			{id: "project_upgrade_grail",
 	label: "Increasing my understanding of Grail lore",
 	description: "I hope to improve my Grail lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_grailtomoth",
 	label: "Subverting Grail lore to Moth",
 	description: "I am subverting my Grail lore to Moth lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -47,13 +47,13 @@
 			{id: "project_upgrade_heart",
 	label: "Increasing my understanding of Heart lore",
 	description: "I hope to improve my Heart lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_hearttograil",
 		label: "Subverting Heart lore to Grail",
 	description: "I am subverting my Heart lore to Grail lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -61,7 +61,7 @@
 			{id: "project_upgrade_subvert_knock",
 	label: "Increasing my understanding of Knock lore",
 	description: "I am deepening my understanding of Knock lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -70,13 +70,13 @@
 			{id: "project_upgrade_lantern",
 	label: "Increasing my understanding of Lantern lore",
 	description: "I hope to improve my Lantern lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_lanterntoforge",
 		label: "Subverting Lantern lore to Forge",
 	description: "I am subverting my Lantern lore to Forge lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -86,13 +86,13 @@
 			{id: "project_upgrade_moth",
 	label: "Increasing my understanding of Moth lore",
 	description: "I hope to improve my Moth lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_mothtolantern",
 	label: "Subverting Moth lore to Lantern",
 	description: "I am subverting my Moth lore to Lantern lore",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -102,7 +102,7 @@
 				{id: "project_upgrade_secrethistories",
 	label: "Increasing my understanding of Secret Histories lore",
 	description: "I hope to improve my Secret Histories lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -111,13 +111,13 @@
 				{id: "project_upgrade_winter",
 	label: "Increasing my understanding of Winter lore",
 	description: "I hope to improve my Winter lore.",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 		{id: "project_subvert_wintertoheart",
 	label: "Subverting Winter lore to Heart",
 	description: "I am subverting my Winter lore to Heart lore",
-	aspects: {},
+	aspects:{project:1},
 	lifetime:1
 	},
 
@@ -126,14 +126,14 @@
 	icon:"project_upgrade_edge",
 	label: "Augmenting a Edge influence",
 	description: "I hope to augment this Edge influence.",
-	aspects:{},icon:"project_upgrade_edge",
+	aspects:{project:1},icon:"project_upgrade_edge",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_edgetowinter",
 		icon:"project_subvert_edgetowinter",
 	label: "Subverting Edge to Winter",
 	description: "I am acknowledging the victory of patience over strength, subverting my Edge influence to Winter influence.",
-	aspects:{},icon:"project_subvert_edgetowinter",
+	aspects:{project:1},icon:"project_subvert_edgetowinter",
 	lifetime:1
 	},
 
@@ -141,14 +141,14 @@
 		{id: "project_influence_upgrade_forge",
 	label: "Augmenting a Forge influence",
 	description: "I hope to augment this Forge influence.",
-	aspects:{},icon:"project_upgrade_forge",
+	aspects:{project:1},icon:"project_upgrade_forge",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_forgetoedge",
 		icon:"project_subvert_forgetoedge",
 	label: "Subverting Forge to Edge",
 	description: "I am subverting my Forge influence to Edge influence.",
-	aspects:{},icon:"project_subvert_forgetoedge",
+	aspects:{project:1},icon:"project_subvert_forgetoedge",
 	lifetime:1
 	},
 
@@ -158,14 +158,14 @@
 			icon:"project_upgrade_grail",
 	label: "Augmenting a Grail influence",
 	description: "I hope to augment this Grail influence.",
-	aspects:{},icon:"project_upgrade_grail",
+	aspects:{project:1},icon:"project_upgrade_grail",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_grailtomoth",
 		icon:"project_subvert_grailtomoth",
 	label: "Subverting Grail influence to Moth",
 	description: "I am subverting my Grail influence to Moth influence.",
-	aspects:{},icon:"project_subvert_grailtomoth",
+	aspects:{project:1},icon:"project_subvert_grailtomoth",
 	lifetime:1
 	},
 
@@ -175,14 +175,14 @@
 			icon:"project_upgrade_heart",
 	label: "Augmenting a Heart influence",
 	description: "I hope to augment this Heart influence.",
-	aspects:{},icon:"project_upgrade_heart",
+	aspects:{project:1},icon:"project_upgrade_heart",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_hearttograil",
 		icon:"project_subvert_hearttograil",
 		label: "Subverting Heart influence to Grail",
 	description: "I am subverting my Heart influence to Grail influence.",
-	aspects:{},icon:"project_subvert_hearttograil",
+	aspects:{project:1},icon:"project_subvert_hearttograil",
 	lifetime:1
 	},
 
@@ -191,7 +191,7 @@
 			icon:"project_upgrade_subvert_knock",
 	label: "Augmenting a Knock influence",
 	description: "I am deepening my understanding of Knock influence.",
-	aspects:{},icon:"project_upgrade_subvert_knock",
+	aspects:{project:1},icon:"project_upgrade_subvert_knock",
 	lifetime:1
 	},
 
@@ -201,14 +201,14 @@
 			icon:"project_upgrade_lantern",
 	label: "Augmenting a Lantern influence",
 	description: "I hope to augment this Lantern influence.",
-	aspects:{},icon:"project_upgrade_lantern",
+	aspects:{project:1},icon:"project_upgrade_lantern",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_lanterntoforge",
 		icon:"project_subvert_lanterntoforge",
 		label: "Subverting Lantern influence to Forge",
 	description: "I am subverting my Lantern influence to Forge influence.",
-	aspects:{},icon:"project_subvert_lanterntoforge",
+	aspects:{project:1},icon:"project_subvert_lanterntoforge",
 	lifetime:1
 	},
 
@@ -219,14 +219,14 @@
 			icon:"project_upgrade_moth",
 	label: "Augmenting a Moth influence",
 	description: "I hope to augment this Moth influence.",
-	aspects:{},icon:"project_upgrade_moth",
+	aspects:{project:1},icon:"project_upgrade_moth",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_mothtolantern",
 		icon:"project_subvert_mothtolantern",
 	label: "Subverting Moth influence to Lantern",
 	description: "I am subverting my Moth influence to Lantern influence",
-	aspects:{},icon:"project_upgrade_moth",
+	aspects:{project:1},icon:"project_upgrade_moth",
 	lifetime:1
 	},
 
@@ -237,14 +237,14 @@
 				icon:"project_upgrade_winter",
 	label: "Augmenting a Winter influence",
 	description: "I hope to augment this Winter influence.",
-	aspects:{},icon:"project_upgrade_winter",
+	aspects:{project:1},icon:"project_upgrade_winter",
 	lifetime:1
 	},
 		{id: "project_influence_subvert_wintertoheart",
 		icon:"project_subvert_wintertoheart",
 	label: "Subverting Winter influence to Heart",
 	description: "I am subverting my Winter influence to Heart influence",
-	aspects:{},icon:"project_subvert_wintertoheart",
+	aspects:{project:1},icon:"project_subvert_wintertoheart",
 	lifetime:1
 	},
 ]
