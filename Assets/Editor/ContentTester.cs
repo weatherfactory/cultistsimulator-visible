@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -14,6 +17,8 @@ namespace Assets.Editor
 {
     public class ContentTester : ISituationSimulatorSubscriber
     {
+        public static readonly string JUnitResultsPath =
+            Path.Combine(Application.dataPath, "..", "Tests", "csunity-tests.xml");
         private readonly SituationSimulator _simulator;
         private ContentTest _currentContentTest;
         private List<SituationRecipeSpec> _remainingExpectedRecipes;
@@ -25,7 +30,7 @@ namespace Assets.Editor
         }
 
         [MenuItem("Tools/Validate Content Assertions %#g")]
-        private static void ValidateContentAssertions()
+        public static void ValidateContentAssertions()
         {
             // Clear the console of previous messages to reduce confusion
             // Also disable all logging so that the console isn't polluted with other messages
@@ -58,21 +63,67 @@ namespace Assets.Editor
 
             // Start the simulator
             ContentTester tester = new ContentTester();
-            NoonUtility.Log("Running " + contentTests.Count + " content tests.", -1);
+            int numTests = contentTests.Count;
             int numFailedTests = 0;
+            NoonUtility.Log($"Running {numTests} content tests.", -1);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var testResults = new Dictionary<string, string>();
             foreach (var test in contentTests)
             {
                 try
                 {
                     tester.RunTest(test);
+                    testResults[test.Id] = null;
                 }
-                catch (SituationSimulatorException e)
+                catch (Exception e)
                 {
                     NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message, -1, messageLevel: 2);
                     numFailedTests++;
+                    testResults[test.Id] = e.Message;
                 }
             }
+            
+            watch.Stop();
+            var elapsedSeconds = watch.Elapsed.TotalSeconds;
             NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", -1, messageLevel: numFailedTests > 0 ? 1 : 0);
+            
+            // Write the JUnit report for CI integration
+            var testDir = Directory.GetParent(JUnitResultsPath);
+            if (!testDir.Exists)
+                testDir.Create();
+            using (XmlWriter writer = XmlWriter.Create(JUnitResultsPath))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("testsuites");
+                writer.WriteAttributeString("id", $"csunity_{DateTime.Today:yyMMdd}");
+                writer.WriteAttributeString("name", "Cultist Simulator Tests");
+                writer.WriteAttributeString("tests", numTests.ToString());
+                writer.WriteAttributeString("failures", numFailedTests.ToString());
+                writer.WriteAttributeString("time", elapsedSeconds.ToString(CultureInfo.InvariantCulture));
+                writer.WriteStartElement("testsuite");
+                writer.WriteAttributeString("id", "csunity");
+                writer.WriteAttributeString("name", "Content Assertions");
+                writer.WriteAttributeString("tests", numTests.ToString());
+                writer.WriteAttributeString("failures", numFailedTests.ToString());
+                writer.WriteAttributeString("time", elapsedSeconds.ToString(CultureInfo.InvariantCulture));
+                foreach (var testId in testResults.Keys.OrderBy(x => x))
+                {
+                    var testResult = testResults[testId];
+                    writer.WriteStartElement("testcase");
+                    writer.WriteAttributeString("id", $"csunity.{testId}");
+                    writer.WriteAttributeString("name", testId);
+                    if (testResult != null)
+                    {
+                        writer.WriteStartElement("failure");
+                        writer.WriteAttributeString("message", testResult);
+                        writer.WriteAttributeString("type", "ERROR");
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+            }
         }
 
         private void RunTest(ContentTest test)
