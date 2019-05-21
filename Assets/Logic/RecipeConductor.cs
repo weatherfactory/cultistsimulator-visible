@@ -158,10 +158,13 @@ namespace Assets.Core
                             return rp;
                         }
                         
-                        // We don't support recipe predictions for non-additional recipes which can fail (since then we
-                        // can't be sure the recipe will actually execute)
-                        Debug.LogError(
-                            $"Recipe {ar.Id} should not be listed as an additional recipe for {currentRecipe.Id} since it has a chance of failure");
+                        // Print a warning when we encounter a non-certain alternative recipe with a start description
+                        // and no description, since its text won't get displayed.
+                        var arRecipe = compendium.GetRecipeById(ar.Id);
+                        if (!string.IsNullOrEmpty(arRecipe.StartDescription) && string.IsNullOrEmpty(arRecipe.Description))
+                            Debug.LogWarning(
+                                $"Recipe {ar.Id} should not be listed as an alternative recipe for {currentRecipe.Id}" +
+                                " since it has a chance of failure, a start description and no final description");
                     }
                 }
             }
