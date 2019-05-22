@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Assets.Editor;
 using Facepunch.Editor;
 using Galaxy;
 using Noon;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Assets.Core.Utility
 {
@@ -136,6 +138,13 @@ namespace Assets.Core.Utility
             foreach (var dlcContentType in ContentTypes)
                 foreach (var locale in Locales)
                     MoveDlcContent(baseEditionPath, dlcPath, target, dlcContentType, locale);
+
+            // Run the content tests, but only for Windows, since otherwise we'll end up with three copies
+            if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
+            {
+                ContentTester.ValidateContentAssertions();
+                FileUtil.CopyFileOrDirectory(ContentTester.JUnitResultsPath, Path.Combine(rootPath, "csunity-tests.xml"));
+            }
         }
 
         private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string contentOfType, string locale)

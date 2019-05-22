@@ -695,7 +695,8 @@ hintonly:true
         id: "ritehinthaslantern",
         label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:-1,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        requirements: {ritual:1,knock:-1,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1,apostlelantern.pillar4:-1},
+		comments:"extremely specific and probably unnecessary exclusion with the pillar, but it caught one person once",
         startdescription: "Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it. If I add Knock, I might be able to attempt a summoning. If I add Edge, I can try to conquer my Passion with Reason. If I add Winter, I can attempt a foolish, beautiful magic.",
         craftable: false,
 		hintonly: true

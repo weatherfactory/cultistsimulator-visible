@@ -1750,13 +1750,18 @@ description:"The spirit is entering the world. This is simpler than a birth, but
 isAspect:true
 },
 
-
 {id:"stale",
 label:"Staleness",
 description:"I have begun to repeat myself. [The higher this grows, the greater the impact on your work. Concentrate on quality work to clear it.]",
 isAspect:true,
 icon:boredom
 },
+
+{id:"project",
+label:"Project",
+description:"Research project agenda",
+isHidden:true,
+isAspect:true}
 
 
 

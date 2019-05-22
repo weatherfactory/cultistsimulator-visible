@@ -1068,6 +1068,34 @@ namespace Assets.CS.TabletopUI {
 
         }
 
+        public void GroupAllStacks()
+        {
+	        var stacks = _tabletop.GetElementStacksManager().GetStacks();
+	        var groups = stacks.OfType<ElementStackToken>()
+		        .GroupBy(e => e.EntityWithMutationsId, e => e)
+		        .Select(group => group.OrderByDescending(e => e.Quantity).ToList());
+	        var mergedStacks = false;
+	        foreach (var group in groups)
+	        {
+		        var primaryStack = group.First();
+		        var mergedStack = false;
+		        foreach (var stack in group.Skip(1))
+			        if (primaryStack.CanMergeWith(stack))
+			        {
+				        primaryStack.MergeIntoStack(stack);
+				        mergedStack = true;
+			        }
+		        
+		        if (mergedStack)
+			        primaryStack.ShowHoveringGlow(true);
+
+		        mergedStacks |= mergedStack;
+	        }
+	        
+	        if (mergedStacks)
+		        SoundManager.PlaySfx("CardPutOnStack");
+        }
+
 		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 			var stackList = new List<ElementStackToken>();
 			var stacks = _tabletop.GetElementStacksManager().GetStacks();

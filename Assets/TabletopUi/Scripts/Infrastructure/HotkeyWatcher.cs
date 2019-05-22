@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -138,6 +139,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         break;
                     }
                 }
+            }
+
+            if (Input.GetButtonDown("Stack Cards"))
+            {
+	            Registry.Retrieve<ITabletopManager>().GroupAllStacks();
             }
         }
 

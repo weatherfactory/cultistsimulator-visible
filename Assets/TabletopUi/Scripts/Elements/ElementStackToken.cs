@@ -93,6 +93,22 @@ namespace Assets.CS.TabletopUI {
             get { return _element == null ? null : _element.Icon; }
         }
 
+        public string EntityWithMutationsId 
+        {
+	        // Generate a unique ID for a combination of entity ID and mutations
+	        // IDs will look something like: entity_id?mutation_1=2&mutation_2=-1
+	        get
+	        {
+		        var mutations = GetCurrentMutations();
+		        return EntityId + "?" + string.Join(
+			               "&", 
+			               mutations.Keys
+				               .Where(m => mutations[m] != 0)
+				               .OrderBy(x => x)
+				               .Select(m => $"{m}={mutations[m]}"));
+	        }
+        }
+
         virtual public bool Unique
         {
             get
@@ -529,7 +545,7 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
-        private void MergeIntoStack(ElementStackToken merge) {
+        public void MergeIntoStack(ElementStackToken merge) {
             SetQuantity(Quantity + merge.Quantity);
             merge.Retire(false);
         }

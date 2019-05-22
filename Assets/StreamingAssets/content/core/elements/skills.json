@@ -105,7 +105,7 @@
 	description: "My daydreams sometimes outpace my dreams. [Use this with Work to Paint, or with Study and with two Lessons Learnt to gain more Passion.]",
 	slots:[{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
-{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
 	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}
 	],
 	xtriggers:{careeradvancement:skillpassionb}
