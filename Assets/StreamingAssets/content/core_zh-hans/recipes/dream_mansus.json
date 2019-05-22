@@ -579,9 +579,9 @@ warmup:30
 label: "王皮之门",
 actionId: "dream",
 requirements: {sendingheartg:1,summoned:1},
-startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.
+startdescription: "马里内特在一株松树的阴影中等待；她黑肤泛光，白骨烁烁，手爪亮如青铜。她拿着一把或为染血刀子，或为红宝石般伤口的赤色钥匙。她放下钥匙时，钥匙的疼痛盛放红光。
 
-In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+我死去的爱人在树下晦暗无光处观看着，他的皮肤斑驳，眼为灯盏。",
 ending: "minorheartvictorywithrisen",
 warmup:10
 },
@@ -613,9 +613,9 @@ warmup:30
 label: "林中之门",
 actionId: "dream",
 requirements: {sendingmothg:1,summoned:1},
-startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape. 
+startdescription: "月光分开重重树木，前来染黑井中之物，勾勒树的根茎，触摸候于井边的美杜莎那互相缠绕的肢体。她用滴水的两臂举起一把灰白色钥匙，两臂扭结如一条呲露獠牙的蠕虫。我跪倒，作为一头红鹿，呈上我的颈项。一蓬血洒入井中，然后美杜莎开始为我雕刻新的外形。
 
-In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+我死去的爱人在树下晦暗无光处观看着，他的皮肤斑驳，眼为灯盏。",
 ending: "minormothvictorywithrisen",
 warmup:10
 },
@@ -659,7 +659,7 @@ label:"抉择",
 actionId:"dream",
 requirements:{romanticinterest:1},
 startdescription:"最后的道别。他将留下，而我将飞升。",
-slots: [{id:"decision",label:"临行决断",description:"[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",required:{passion:1}}],
+slots: [{id:"decision",label:"临行决断",description:"[用激情打断飞升……和你的爱人共度凡人的一生。如要继续，则什么也不做。]",required:{passion:1}}],
 alternativerecipes:[{id:"auclairvictory",chance:100},
 {id:"catvictory",chance:100},
 {id:"clovettevictory",chance:100},

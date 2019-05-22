@@ -316,7 +316,7 @@
         id: "stumm",
             unique:true, label: "《噤声！》",
 
-slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to purchase a projector to watch this.",required:{funds:1},actionId:"study"}],
+slots:[{id:"projector",unique:true, label:"放映机",description:"我需买一台放映机来观看这盘影带。",required:{funds:1},actionId:"study"}],
             aspects:
             {text:1,auctionable:2},
             description: "一罐硝酸底片，上面的标签写着“噤声！”——意味大抵是“沉默”，抑或“静声”，上面还用歪歪扭扭的字体写着导演的名字：“杰尼克·克罗斯”。"

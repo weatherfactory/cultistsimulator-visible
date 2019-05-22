@@ -3,8 +3,8 @@
 actionId:"talk",
 label:"守卫与封印",
 requirements:{mystic:1,summoned:1},
-description:"'Our enemy possesses the most dangerous weapon of all: knowledge.'\n
-Your summoning has fallen prey to your adversary's countermeasures. Mystic Hunters know the proper protections, and will usually survive attacks from summoned Minions. But sooner or later, they'll make a mistake.",
+description:"“我们的敌人掌握着最危险的武器：知识。”\n
+你的召唤物受制于对头的应对措施。神秘的猎人懂得恰当的防卫方式，并常能从召唤来的手下的攻击中幸存。但他们迟早会出差错。",
 effects:{notoriety:1},
 aspects:{killsummoned:1}
    },
@@ -12,16 +12,16 @@ aspects:{killsummoned:1}
 actionId:"talk",
 label:"坚忍",
 requirements:{tenacious:1},
-description:"'But - no-one could have survived that!'\n
-Now and then, Tenacious Hunters somehow survive attacks that should have killed them. But their luck always runs out in the end; and there are other ways to destroy a Hunter beside physical assault.",
+description:"“可是没人能从那样的攻击中幸存！”\n
+有时，坚韧的猎人不知怎么地挺过了本该杀死他们的攻击。但他们的好运终会耗尽；而且除了物理攻击，还有别的方式可以摧毁猎人。",
 effects:{notoriety:1}
    },
       {id: "huntersurvives_becomestenacious",
 actionId:"talk",
 label:"伤痕",
 requirements:{tenacious:-1},
-description:"'They're tougher than they look.'\n
-A Hunter who survives a physical attack may sometimes become Tenacious. Tenacious Hunters are harder to kill.",
+description:"“他们比看起来更结实。”\n
+从物理攻击中活下来的猎人有时会变得坚韧。坚韧的猎人更难被杀死。",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
 effects:{notoriety:1,follower:-1}
    },
@@ -29,8 +29,8 @@ effects:{notoriety:1,follower:-1}
 actionId:"talk",
 label:"严酷的教训",
 requirements:{summoned:1,mystic:-1},
-description:"'What does not kill sometimes them makes them stranger.'\n
-When a Hunter survives an attack by a summoned creature, occasionally they'll be inspired to learn countermeasures against Mansus-things, becoming Mystic. Mystic Hunters usually survive further attacks by summoned creatures.",
+description:"“没有杀死他们的东西有时会使他们更不寻常。”\n
+当猎人从召唤物的攻击中活下来，偶尔他们会受激发而得知抵抗漫索之物的应对措施，并变得神秘。神秘的猎人通常能幸免于召唤物的进一步攻击。",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
 effects:{notoriety:1},
 aspects:{killsummoned:1}
