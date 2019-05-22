@@ -48,9 +48,6 @@ workflows:
             branches:
               only:
                 - master
-                - /release\/.*/
-            tags:
-              only: ci
       - publish:
           requires:
             - build
@@ -58,4 +55,3 @@ workflows:
             branches:
               only:
                 - master
-                - /release\/.*/
