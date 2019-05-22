@@ -43,5 +43,6 @@ namespace TabletopUi.Scripts.Interfaces
         void NoMoreImpendingDoom(ISituationAnchor situationToken);
         void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec);
         AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation);
+        void GroupAllStacks();
     }
 }

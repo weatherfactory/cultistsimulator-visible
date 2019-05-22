@@ -147,5 +147,9 @@ namespace Assets.Editor
         {
             return new AspectsInContext(aspectsInSituation, new AspectsDictionary(), new AspectsDictionary());
         }
+
+        public void GroupAllStacks()
+        {
+        }
     }
 }
