@@ -659,39 +659,59 @@ warmup:5,
 			label:"My recent work is celebrated!",
 			description:"My name is known, and my work has done well.",
 			
-			actionId:"work",requirements:{reputation:9},deckeffect:{paintingresultsreputation:7}},
+			actionId:"work",requirements:{reputation:9},deckeffect:{paintingresultsreputation:7},
+linked:[{id:"painting.reputation.overexposure"}]},
 		{id:"paintingreputation_famed",
 			label:"My recent work has accrued modest fame",
 			description:"My latest paintings have reviewed well.",
 			
-			actionId:"work",requirements:{reputation:7},deckeffect:{paintingresultsreputation:6}},
+			actionId:"work",requirements:{reputation:7},deckeffect:{paintingresultsreputation:6},
+linked:[{id:"painting.reputation.overexposure"}]},
 		{id:"paintingreputation_notable",
 			label:"My recent work is considered notable",
 			description:"I've exhibited the latest paintings publicly. Surely someone will buy something.",
 			
-			actionId:"work",requirements:{reputation:5},deckeffect:{paintingresultsreputation:4}},
+			actionId:"work",requirements:{reputation:5},deckeffect:{paintingresultsreputation:4},
+linked:[{id:"painting.reputation.overexposure"}]},
 		{id:"paintingreputation_significant",
 			label:"My recent work is considered significant",
 			description:"I may yet earn a living from this, but nothing is certain.",
 			
-			actionId:"work",requirements:{reputation:3},deckeffect:{paintingresultsreputation:3}},
+			actionId:"work",requirements:{reputation:3},deckeffect:{paintingresultsreputation:3},
+linked:[{id:"painting.reputation.overexposure"}]},
+
+
 		{id:"paintingreputation_known",
 			label:"My recent work has drawn some attention",
 			description:"Something should sell.",
 			
 			actionId:"work",requirements:{reputation:2},deckeffect:{paintingresultsreputation:2}},
+			
+			
 {id:"paintingreputation_noticed",
+comments:"No links to over-exposure risk. The overexposure cards will happily decay to funds.",
 			label:"My recent work has attracted a couple of callers.",
 			description:"With luck, something will sell.",
 			
 			actionId:"work",requirements:{reputation:1},deckeffect:{paintingresultsreputation:1}},
 			
+			
 		{id:"paintingreputation_unknown",
+		comments:"No links to over-exposure risk. The overexposure cards will happily decay to funds.",
 			label:"My recent work has gone unnoticed",
 			description:"Nothing has sold. Perhaps the work is its own reward. I hope so.",
 			
 			actionId:"work",requirements:{reputation:-1}},
-		  
+			
+
+
+{id:"painting.reputation.overexposure",
+actionId:"work",
+requirements:{overexposure:1},
+effects:{overexposure:-1},
+mutations:[{filter:passionskill,mutate:stale,level:1,additive:true}],
+linked:[{id:"painting.reputation.overexposure"}]},
+	  
 		{
         id: "paintmansus",
         label: "Depicting the Mansus",
