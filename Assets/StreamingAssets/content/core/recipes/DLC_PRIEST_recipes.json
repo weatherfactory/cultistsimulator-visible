@@ -223,7 +223,6 @@ craftable:true
 actionId:"work",
 label:"Improvise a sermon on a secret doctrine",
 startdescription:"I will speak to their souls, and if I speak with conviction, their souls may answer me. [Using a suitable doctrine with Passionate preaching is more likely to create Fervour. Improvised preaching is a little quicker.]",
-description:"Tonight, they listen... but they do not hear. [Using a suitable doctrine with Passionate preaching is more likely to create Fervour.]",
 requirements:{priestjob:1,passion:1,lore:1},
 linked:[{id:"preach.edge",challenges:{edge:base}},
 {id:"preach.forge",challenges:{forge:base}},
@@ -239,7 +238,6 @@ craftable:true
 actionId:"work",
 label:"Prepare a sermon on a secret doctrine",
 startdescription:"I will speak to their souls, and if I speak with precision, their souls may answer me. [Using a suitable doctrine with Reasoned preaching is more likely to create Fervour.]",
-
 requirements:{priestjob:1,reason:1,lore:1},
 linked:[{id:"preach.knock",challenges:{knock:base}},
 {id:"preach.secrethistories",challenges:{secrethistories:base}},
@@ -254,7 +252,7 @@ craftable:true
 {id:"work.priest.nolorematch",
 actionId:"work",
 label:"A Subdued Ceremony",
-startdescription:"Tonight, they listen... but they do not hear. [Using a suitable doctrine with Reasoned preaching is more likely to create Fervour. The deeper the Lore, the greater the chance of Exultation.]",
+startdescription:"Tonight, they listen... but they do not hear. [Using a suitable doctrine with @#concentration|Reasoned#passionexhausted|Passionate@ preaching is more likely to create Fervour. The deeper the Lore, the greater the chance of Exultation.]",
 effects:{funds:1},
 }
 ,
