@@ -1085,9 +1085,9 @@ namespace Assets.CS.TabletopUI {
 				        primaryStack.MergeIntoStack(stack);
 				        mergedStack = true;
 			        }
-		        
+
 		        if (mergedStack)
-			        primaryStack.ShowHoveringGlow(true);
+			        StartCoroutine(primaryStack.PulseGlow());
 
 		        mergedStacks |= mergedStack;
 	        }
