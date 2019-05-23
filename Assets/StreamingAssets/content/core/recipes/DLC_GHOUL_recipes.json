@@ -219,7 +219,7 @@ craftable:true},
 actionId:"talk",
 label:"Speak to Miss Naenia of my Dread",
 startdescription:"Should I really share my fears with her? I do not think that she is a kindly painting, not exactly.",
-description:"The longer I look at Miss Naenia's smile, the more I see her teeth.",
+description:"The longer I look at Miss Naenia's smile, the more I am conscious of her teeth.",
 requirements:{naenia:1,dread:1},
 effects:{dread:1},
 alt:[{id:"open.study.ghoul",additional:true}],
@@ -232,7 +232,7 @@ craftable:true},
  	{id:"talk.ghoul.grandmemory",
 actionId:"talk",
 label:"Falling through Time",
-startdescription:"When I come before Miss Naenia, perhaps It seems unlikely, but it seems to me that a pale light plays around her mouth and her eyes.",
+startdescription:"When I come before Miss Naenia, it seems to me that a pale light plays around her mouth and her eyes.",
 description:"Later, I remembered how Miss Naenia and I had strolled through the shuttered gallery, arm in arm. The light of the candle she carried played on the faces of the other paintings. 'We will not be forgotten,' she breathed, 'as long as our image endures.'",
 requirements:{naenia:1,memory:5},
 effects:{restlessness:1},
@@ -312,9 +312,9 @@ resetonexhaustion:true,
 draws:1
 },
 effects:{memory.shameful:-1},
-description:"@#|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.
-#|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.
-#|Miss Naenia says nothing, but .@",
+description:"@#favour|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.
+#contentment|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.
+#influencegrailc|Miss Naenia says nothing, but her mouth curves slowly, slowly. I realise that I have never seen her part her lips.@",
 craftable:true},
 
 
@@ -449,7 +449,7 @@ label:"Feast upon a Remnant",
 startdescription:"@#corpse| Once again, my appetite rises, flecked once again with shivers of revulsion.
 #spirit_wintera_moth| It will lie still, if I tell it.
 #spirit_wintera_edge| It will lie still, if I tell it. It may even be succulent.
-corpse.furious| I will grind it to powder and get it down.
+#corpse.furious| I will grind it to powder and get it down.
 #corpse.luxurious| Chewy.
 #corpse.liminal| Like consuming raw spice.
 #corpse.horizon| If I could only boil it until it was soft -
@@ -457,16 +457,16 @@ corpse.furious| I will grind it to powder and get it down.
 #ingredientheartf| Bright upon my tongue like copper citrus.
 #ingredientmothf| I had wondered what the taste might be, but chiefly, now, my experience is that it is <i>gooey</i>.
 #spirit_forgee_edge.defunct| I will set to, grimly, with water to rinse my mouth and to extinguish any unexpected fires.
-#decrepitude|So this is what it has come to. I am not dead. I hope that I may be dead enough that this will work as I hope, and unlock those memories that lair in my own flesh.
+#decrepitude| So this is what it has come to. I am not dead. I hope that I may be dead enough that this will work as I hope, and unlock those memories that lair in my own flesh.
 #|Let's hope this is edible.@",
 description:"@#memory.furious|I have a savage memory, inherited from who knows how many feasts - a sand-coloured memory, ready to paint.
-#memory.liminal|I have a memory of thresholds, ready to paint.
-#memory.splendid|I have a memory of how matters stood before the Intercalate, ready to paint.
-#memory.golden|I have a memory of how things stood before the Forge was lit, ready to paint.
-#memory.horizon|I have a memory of something even the King who bore it did not understand.
-#memory.endless|I have a memory now of something that should never have ceased... and perhaps it has not
-#memory.wildering|I have a memory of the Hunt at which the Wheel was first brought to earth...
-#memory.honeyed|I have a memory which almost seems my own.
+#memory.liminal| I have a memory of thresholds, ready to paint.
+#memory.splendid| I have a memory of how matters stood before the Intercalate, ready to paint.
+#memory.golden| I have a memory of how things stood before the Forge was lit, ready to paint.
+#memory.horizon| I have a memory of something even the King who bore it did not understand.
+#memory.endless| I have a memory now of something that should never have ceased - and perhaps it has not -
+#memory.wildering| I have a memory of the Hunt at which the Wheel was first brought to earth...
+#memory.honeyed| I have a memory which almost seems my own.
 #|Something?@",
 requirements:{remnant:1,alzabo:1,remembrancemarks:1},
 mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:-1,additive:true}],
