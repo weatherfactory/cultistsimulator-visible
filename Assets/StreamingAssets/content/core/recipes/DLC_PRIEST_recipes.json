@@ -226,7 +226,7 @@ startdescription:"I will speak to their souls, and if I speak with conviction, t
 requirements:{priestjob:1,passion:1,lore:1},
 linked:[{id:"preach.edge",challenges:{edge:base}},
 {id:"preach.forge",challenges:{forge:base}},
-{id:"preach.grail",challenges:{grail:base}}, 
+{id:"preach.grail",challenges:{grail:base}},
 {id:"preach.heart",challenges:{heart:base}},
 {id:"preach.moth",challenges:{moth:base}},
 {id:"work.priest.nolorematch"}],
@@ -511,8 +511,8 @@ ending:"minorknockvictory"
 	craftable:true,
 	warmup:60
 	},
-	
-	
+
+
 {id:"work.priest.scarhealth.restlessnesspresent",
 actionId:"work",
 label:"The Work of the Threshold",
@@ -603,7 +603,7 @@ warmup:0,
 craftable:false
 },
 {id:"a_scarhealth_winter",
-actionId:"work", 
+actionId:"work",
 label:"The Nine-Year Vision",
 startdescription:"Wait in the white on the walls. Watch the sun slow. Chione walks the streets in silence. Her skirts are the wind. So white her surface. See what ceases in the storm.",
 description:"My congregation waited until sunrise when I woke from the white sleep. Frost has withered my hand. There is no wound, not as such, but there will be a scar. [Health has been permanently converted to a Scar. There are always seven Marks; you will need seven Lock-Scars. There is always a way, though the way may be narrow.]",
@@ -614,7 +614,7 @@ craftable:false
 },
 
 {id:"a_noscar_knock",
-actionId:"work", 
+actionId:"work",
 label:"A Vision of St Agnes",
 startdescription:"I begin my vigil. My mouth is open. My eyes are open. Through them, as the congregation raises the hymn, St Agnes enters like a questing hand.",
 description:"St Agnes unlocks my tongue, and I taste blood. St Agnes encircles the vessels of my heart, and I feel a moment's pain. St Agnes departs via the first wound of all, the one in the pit of my belly where the serpent of my birth was severed, but first she affirms and uplifts me. This is my path, until I am the path. I will open unto my people as a door, that they might pass me. [Lock-Scars cannot be created with Knock or Secret Histories, only the other seven Aspects.]",
@@ -623,7 +623,7 @@ effects:{funds:1,restlessness:-1,fervour:-1,influenceknockc:1},
 craftable:false
 },
 {id:"a_noscar_secrethistories",
-actionId:"work", 
+actionId:"work",
 label:"A Vision of the One Hundred and Eight",
 startdescription:"I begin my vigil. The voices of the congregation rise. The light of the windows mingles before the altar. In that light, I see events that have not occurred...",
 description:"Great princes lie hooded in garments of striped black and yellow and rich ornaments of gold, upon the fields of bone. Their eyes are open to the sky. Their scales are scarred and cold. Now at last are they visible, and to look upon them is long-forbidden knowledge. This did not occur. [Lock-Scars cannot be created with Knock or Secret Histories, only the other seven Aspects.]",
@@ -631,7 +631,7 @@ requirements:{secrethistories:2},
 effects:{funds:1,restlessness:-1,fervour:-1,erudition:1},
 craftable:false
 }
-	
- 
+
+
 ]
 }
