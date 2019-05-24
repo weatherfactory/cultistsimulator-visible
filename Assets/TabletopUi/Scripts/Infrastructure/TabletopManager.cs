@@ -1006,7 +1006,7 @@ namespace Assets.CS.TabletopUI {
 
 		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec)
 		{
-			float time = Time.timeSinceLevelLoad;
+			float time = Time.realtimeSinceStartup;
 			if (time > cardPingLastTriggered + 1.0f)	// Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
 			{
 				cardPingLastTriggered = time;
