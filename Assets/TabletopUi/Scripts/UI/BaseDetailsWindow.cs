@@ -26,8 +26,8 @@ namespace Assets.CS.TabletopUI {
 
             if (gameObject.activeSelf == false) {
                 // Show the content, then make the anim move in
-                UpdateContent();
                 gameObject.SetActive(true);
+                UpdateContent();
                 TriggerAnim(AnimType.None, AnimType.MoveRight);
                 StartCoroutine(DoWaitForHide());
             }
