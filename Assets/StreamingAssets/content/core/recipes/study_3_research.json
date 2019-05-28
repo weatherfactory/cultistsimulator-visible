@@ -362,7 +362,7 @@
 	label:"All Shall Be Opened",
 	actionId:"study",
 	requirements:{project_upgrade_subvert_knock:1},
-	effects:{project:-1,edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
+	effects:{project:-1,subvertable_lore:-1},
 	aspects:{epiphany:1},
 	description:"When we open a thing, then we learn its nature. I've deepened my understanding of the Lore that Opens, which we call by its aspect, Knock.",
 	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
