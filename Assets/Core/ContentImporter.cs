@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -27,8 +28,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
-    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
-    private readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
+    private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+    private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -44,6 +45,8 @@ public class ContentImporter
     public Dictionary<string, Ending> Endings;
     public List<Recipe> Recipes;
     private Dictionary<string, IDeckSpec> DeckSpecs;
+    
+    private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
 
 
     public ContentImporter()
@@ -55,6 +58,15 @@ public class ContentImporter
         DeckSpecs = new Dictionary<string, IDeckSpec>();
         Legacies = new Dictionary<string, Legacy>();
 		Endings = new Dictionary<string, Ending>();
+    }
+
+    public static IEnumerable<string> GetInstalledDlc()
+    {
+        return from path in Directory.GetFiles(Path.Combine(CORE_CONTENT_DIR, CONST_LEGACIES)) 
+            select Path.GetFileName(path) into fileName 
+            select DlcLegacyRegex.Match(fileName) into match 
+            where match.Success 
+            select match.Groups[1].Value;
     }
 
     public IList<ContentImportProblem> GetContentImportProblems()
