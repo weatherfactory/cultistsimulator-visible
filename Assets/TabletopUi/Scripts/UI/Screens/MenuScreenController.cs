@@ -410,6 +410,13 @@ public class MenuScreenController : MonoBehaviour {
         optionsPanel.BrowseFiles();
     }
 
+    public void ShowPromo()
+    {
+        SoundManager.PlaySfx("UIButtonClick");
+        Application.OpenURL(
+            "https://weatherfactory.us13.list-manage.com/subscribe?u=97d06a3faac1573fa4330bb7d&id=c3f9b32720");
+    }
+
 #endregion
 
 }
