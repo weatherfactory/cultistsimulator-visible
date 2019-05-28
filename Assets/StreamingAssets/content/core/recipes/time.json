@@ -62,6 +62,7 @@
 			slots: [{id:"Affliction",
 				label:"Health",
 				required: {health: 1,follower_wound:1,fatigue:1},
+                forbidden: {summoned: 1, corpse: 1},
 				greedy: true
 	}],
 	aspects:{fallsick:1},
