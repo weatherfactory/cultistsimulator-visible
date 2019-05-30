@@ -30,11 +30,16 @@ namespace Assets.Editor
         }
 
         [MenuItem("Tools/Validate Content Assertions %#g")]
-        public static void ValidateContentAssertions()
+        public static void ValidateContentAssertions(bool clearConsole = false)
         {
             // Clear the console of previous messages to reduce confusion
             // Also disable all logging so that the console isn't polluted with other messages
-            EditorUtils.ClearConsole();
+            if (clearConsole)
+            {
+                EditorUtils.ClearConsole();
+            }
+
+            var oldVerbosity = NoonUtility.CurrentVerbosity;
             NoonUtility.CurrentVerbosity = -1;
 
             // Load all the content tests
@@ -86,6 +91,7 @@ namespace Assets.Editor
             watch.Stop();
             var elapsedSeconds = watch.Elapsed.TotalSeconds;
             NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", -1, messageLevel: numFailedTests > 0 ? 1 : 0);
+            NoonUtility.CurrentVerbosity = oldVerbosity;
             
             // Write the JUnit report for CI integration
             var testDir = Directory.GetParent(JUnitResultsPath);

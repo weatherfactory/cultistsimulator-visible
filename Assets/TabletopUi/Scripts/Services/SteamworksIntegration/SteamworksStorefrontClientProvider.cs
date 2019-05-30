@@ -1,57 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Noon;
+﻿using Noon;
+using Steamworks;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-
-
     public class SteamworksStorefrontClientProvider : IStoreFrontClientProvider
     {
+        private readonly CGameID _gameId;
 
+        public SteamworksStorefrontClientProvider()
+        {
+            if (!SteamManager.Initialized)
+                return;
 
-
+            // Cache the GameID for use in the Callbacks
+            _gameId = new CGameID(SteamUtils.GetAppID());
+            
+            // Set up Steam callbacks
+            Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
+            
+            // Fetch the initial list of achievements
+            SteamUserStats.RequestCurrentStats();
+        }
 
         public void SetAchievement(string achievementId, bool setStatus)
         {
-   
-
             if (string.IsNullOrEmpty(achievementId))
                 return;
 
-        var steamClient = Facepunch.Steamworks.Client.Instance;
-            if (steamClient == null)
+            if (!SteamManager.Initialized)
             {
-                                NoonUtility.Log("No Facepunch Steamworks client not initialised: not setting a Steam achievement for " + achievementId,10);
+                NoonUtility.Log($"No Steamworks client initialised: not setting a Steam achievement for {achievementId}");
                 return;
             }
-            var achievement = steamClient.Achievements.Find(achievementId);
-                if (achievement != null)
-                {
-                    if (setStatus && !achievement.State)
-                    {
-                        achievement.Trigger(true);
-                        NoonUtility.Log("Set Steam achievement:" + achievementId, 1);
-                    }
 
-                    else if (!setStatus)
-                        achievement.Reset();
-                    else
-                        NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it's already set", 1);
-                }
+            if (!SteamUserStats.GetAchievement(achievementId, out var state))
+            {
+                NoonUtility.Log($"Trying to set Steam achievement {achievementId}, but it doesn't exist");
+                return;
+            }
+            if (state != setStatus)
+            {
+                if (setStatus)
+                    SteamUserStats.SetAchievement(achievementId);
                 else
-                    NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it doesn't exist", 11);
-            
-
+                    SteamUserStats.ClearAchievement(achievementId);
+                NoonUtility.Log((setStatus ? "Set" : "Unset") + $" Steam achievement: {achievementId}");
+            }
+            else
+                NoonUtility.Log(
+                    "Trying to " + (setStatus ? "set" : "unset") 
+                                 + $" Steam achievement {achievementId}, but it's already " 
+                                 + (state ? "set" : "unset"), 
+                    1);
         }
+        
+        private void OnUserStatsReceived(UserStatsReceived_t pCallback) 
+        {
+            if (!SteamManager.Initialized)
+                return;
 
+            // Ignore callbacks from other games
+            if ((ulong) _gameId != pCallback.m_nGameID) 
+                return;
 
+            NoonUtility.Log(pCallback.m_eResult == EResult.k_EResultOK
+                ? "Received achievements from Steam"
+                : $"Failed to fetch achievements: Code {pCallback.m_eResult}");
+        }
     }
-
-
-
-
 }

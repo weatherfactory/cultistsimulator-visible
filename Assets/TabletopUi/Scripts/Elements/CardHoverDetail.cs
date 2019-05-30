@@ -5,9 +5,11 @@ namespace TabletopUi.Scripts.Elements
 {
     public class CardHoverDetail : ElementStackSimple, ICanvasRaycastFilter
     {
+#pragma warning disable 649
         [SerializeField] 
         private RectTransform statusBar;
-        
+#pragma warning restore 649
+
         public void Show()
         {
             UpdatePosition();
