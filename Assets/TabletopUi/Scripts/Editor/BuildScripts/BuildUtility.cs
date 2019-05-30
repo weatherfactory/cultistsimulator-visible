@@ -142,7 +142,7 @@ namespace Assets.Core.Utility
             // Run the content tests, but only for Windows, since otherwise we'll end up with three copies
             if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
             {
-                ContentTester.ValidateContentAssertions();
+                ContentTester.ValidateContentAssertions(false);
                 FileUtil.ReplaceFile(ContentTester.JUnitResultsPath, Path.Combine(rootPath, "csunity-tests.xml"));
             }
         }

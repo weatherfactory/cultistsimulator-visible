@@ -30,7 +30,12 @@ namespace Assets.Editor
         }
 
         [MenuItem("Tools/Validate Content Assertions %#g")]
-        public static void ValidateContentAssertions(bool clearConsole = false)
+        public static void ValidateContentAssertions()
+        {
+            ValidateContentAssertions(true);
+        }
+
+        public static void ValidateContentAssertions(bool clearConsole)
         {
             // Clear the console of previous messages to reduce confusion
             // Also disable all logging so that the console isn't polluted with other messages

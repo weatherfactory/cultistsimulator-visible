@@ -44,6 +44,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     SteamUserStats.SetAchievement(achievementId);
                 else
                     SteamUserStats.ClearAchievement(achievementId);
+                SteamUserStats.StoreStats();
                 NoonUtility.Log((setStatus ? "Set" : "Unset") + $" Steam achievement: {achievementId}");
             }
             else
