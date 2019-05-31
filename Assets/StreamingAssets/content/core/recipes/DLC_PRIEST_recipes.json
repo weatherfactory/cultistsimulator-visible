@@ -75,7 +75,7 @@ warmup:30
 {id:"talk.priest.open",
 actionId:"talk",
 label:"A Welcome",
-startdescription:"The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three of now do me honour - ",
+startdescription:"The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three now do me honour - ",
 effects:{LEVER_LastCult:1,LEVER_LastFollower:1},
 warmup:30,
 linked:[{id:"talk.priest.open.followup"}]
@@ -84,7 +84,7 @@ linked:[{id:"talk.priest.open.followup"}]
 {id:"talk.priest.open.followup",
 actionId:"talk",
 label:"Rededication",
-startdescription:"The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
+startdescription:"The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence#|colours beneath the world's skin@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
 mutations:[{filter:society,mutate:rededicable,level:1}]
 },
 
