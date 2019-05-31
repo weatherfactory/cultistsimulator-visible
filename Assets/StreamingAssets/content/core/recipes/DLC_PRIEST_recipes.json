@@ -127,7 +127,7 @@ mutations:[{filter:society,mutate:rededicable,level:-1}]},
 
 {id:"talk.rededicatecult.knock",
 label:"Re-dedicate Cult: Knock",
-startdescription:"Now the Seal is opened, and behind it lies the true Cult. It is St Agnest that opens the Seal, but who waits behind it? [You could pursue a different ascension than Knock. You need not complete the process.] ",
+startdescription:"Now the Seal is opened, and behind it lies the true Cult. It is St Agnes that opens the Seal, but who waits behind it? [You could pursue a different ascension than Knock. You need not complete the process.] ",
 requirements:{society:1,lore:1,knock:1},
 effects:{society:-1,cultknock_1:1,ascensionenlightenmenta:1},
 mutations:[{filter:society,mutate:rededicable,level:-1}]},
@@ -148,18 +148,18 @@ mutations:[{filter:society,mutate:rededicable,level:-1}]},
 
 
 {id:"talk.rededicatecult.secrethistories",
-label:"Re-dedicate Cult: Secret Historis",
+label:"Re-dedicate Cult: Secret Histories",
 startdescription:"In another History, our cult remained unchanged. Not here. Here, I have altered our path... and I could alter it even further. [You could pursue a different ascension than Knock. You need not complete the process.]",
 requirements:{society:1,lore:1,secrethistories:1},
 effects:{society:-1,cultsecrethistories_1:1,ascensionenlightenmenta:1},
 mutations:[{filter:society,mutate:rededicable,level:-1}]},
 
 
-{id:"talk.rededicatecult.wintere",
+{id:"talk.rededicatecult.winter",
 label:"Re-dedicate Cult: Winter",
 startdescription:"Tonight, the old ways are ended. But for the first time, I hold the reins of our destiny. Should I choose... I could take a different path. [You could pursue a different ascension than Knock. You need not complete the process.]",
-requirements:{society:1,lore:1,winter:1,ascensionenlightenmenta:1},
-effects:{society:-1,cultwinter_1:1},
+requirements:{society:1,lore:1,winter:1},
+effects:{society:-1,cultwinter_1:1,ascensionenlightenmenta:1},
 mutations:[{filter:society,mutate:rededicable,level:-1}]}
 
 ],
