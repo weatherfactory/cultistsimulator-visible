@@ -150,7 +150,7 @@ public class ElementStacksManager : IElementStacksManager {
         // Decaying stacks should not be allowed
         while (stack.Decays && stack.Quantity > 1)
         {
-            AcceptStack(stack.SplitAllButNCardsToNewStack(1, context), context);
+            AcceptStack(stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, context), context);
         }
 
         stack.SetStackManager(this);
