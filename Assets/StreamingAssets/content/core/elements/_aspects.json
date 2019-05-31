@@ -437,6 +437,13 @@ isHidden:true
             isAspect: true,
 			description: "Knowledge of the invisible arts. I can use it to attract followers, to perform rites, to open the way to the Mansus, to seek my ascension... [Lore fragments can sometimes be upgraded with Study, and with matching fragments.]"
         },
+        {
+            id: "subvertable_lore",
+            label: "Subvertable Lore",
+            isAspect: true,
+            isHidden: true,
+            noartneeded: true
+        },
 		
 		{
         id: "memory",
@@ -1691,7 +1698,7 @@ isAspect:true},
 
 {id:"colours.luxurious",
 label:"The Colours Tidal",
-description:"In a night-blue Mansus-haze swims a coral palace-crown which yields now and then to the moon. At its fore-edge it absorbs the lesser Names, coating them with its minerals and juices, and at its rear edge it expels them, polished like jewels - but not all of them. The others go to feed its thorny Tide-heart.",
+description:"In a night-blue Mansus-haze swims a coral palace-crown. At its fore-edge it absorbs the lesser Names, coating them with its minerals and juices, and at its rear edge it expels some of them, polished like jewels. The others go to feed its thorny Tide-heart.",
 isAspect:true},
 
 {id:"colours.liminal",
@@ -1732,7 +1739,7 @@ isAspect:true},
 
 {id:"ascension.remembrance.offering",
 label:"The Elegiast's Price",
-description:"The Elegiast is the Hour from whom nothing more can be taken, and the Hour who calls each of the Dead by name. Once in a long ever, for a great price, he will call one of the Dead up out of Nowhere, that they may continue, lonely, unscathed, until the date of their own final winter. The price is always another kind of resurrection.",
+description:"The Elegiast is the Hour from whom nothing more can be taken, and the Hour who calls each of the Dead by name. Once in a long ever, for a great price, he will call one of the Dead up out of Nowhere, that they may continue, lonely, unscathed, until the date of their own final winter.",
 isAspect:true
 },
 

@@ -1,13 +1,10 @@
 #pragma warning disable 0649
 using System;
-using System.Collections.Generic;
-using Assets.Core.Commands;
+using System.Collections;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
-using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
-using Assets.TabletopUi.UI;
 using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -463,6 +460,13 @@ namespace Assets.CS.TabletopUI {
                 else  
                     glowImage.Hide();
             }
+        }
+        
+        public IEnumerator PulseGlow()
+        {
+            ShowHoverGlow(true, false, Color.white);
+            yield return new WaitForSeconds(0.5f);
+            ShowHoverGlow(false);
         }
 
         #endregion

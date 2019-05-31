@@ -1,5 +1,14 @@
  {"recipes":
  [
+      			{
+        id: "temptationremembrancehintdream",
+        label: "Temptations?",
+        actionId: "dream",
+        requirements: {temptation.remembrance:1},
+        startdescription: "There are colours in the world, there are colours in the Mansus, and then there are colours lost. Their absence is the knife I cannot release. [The Remembrance temptation has its teeth in you, and no other Temptation will touch you.]",
+        craftable: false,
+		hintonly: true
+    },
      			{
         id: "vitalityhintdream",
         label: "Vitality",

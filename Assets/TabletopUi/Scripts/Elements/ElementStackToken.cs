@@ -771,7 +771,11 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			base.OnPointerEnter(eventData);
-			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(EntityId, Quantity);
+			var tabletopManager = Registry.Retrieve<ITabletopManager>();
+			if (isFront)
+				tabletopManager.SetHighlightedElement(EntityId, Quantity);
+			else
+				tabletopManager.SetHighlightedElement(null);
 		}
 
 		public override void OnPointerExit(PointerEventData eventData)

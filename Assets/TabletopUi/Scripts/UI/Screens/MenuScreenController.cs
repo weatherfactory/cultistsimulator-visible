@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
@@ -57,6 +58,10 @@ public class MenuScreenController : MonoBehaviour {
 
     public MenuSubtitle Subtitle;
 
+    public Transform dlcEntries;
+    public TextMeshProUGUI dlcEmptyMessage;
+    private static readonly string _dlcEntryPrefix = "TextDLC_";
+    
     public GameObject modEntryPrefab;
     public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
@@ -104,6 +109,7 @@ public class MenuScreenController : MonoBehaviour {
         _modManager = new ModManager(true);
         _modManager.LoadAll();
         registry.Register(_modManager);
+        BuildDlcPanel();
         BuildModsPanel();
 #else
         modsButton.enabled = false;
@@ -370,6 +376,24 @@ public class MenuScreenController : MonoBehaviour {
         ShowOverlay(modsPanel);
 #endif
     }
+
+    private void BuildDlcPanel()
+    {
+        var dlc = new HashSet<string>(ContentImporter.GetInstalledDlc());
+        bool wasDlcActivated = false;
+        foreach (var child in dlcEntries.GetComponentsInChildren<Transform>())
+        {
+            if (!child.name.StartsWith(_dlcEntryPrefix)) 
+                continue;
+            var dlcEntryName = child.name.Substring(_dlcEntryPrefix.Length);
+            bool isInstalled = dlc.Contains(dlcEntryName);
+            child.gameObject.SetActive(isInstalled);
+            wasDlcActivated |= isInstalled;
+        }
+        
+        dlcEntries.gameObject.SetActive(wasDlcActivated);
+        dlcEmptyMessage.gameObject.SetActive(!wasDlcActivated);
+    }
     
 #if MODS
     private void BuildModsPanel()
@@ -408,6 +432,13 @@ public class MenuScreenController : MonoBehaviour {
             return;
         
         optionsPanel.BrowseFiles();
+    }
+
+    public void ShowPromo()
+    {
+        SoundManager.PlaySfx("UIButtonClick");
+        Application.OpenURL(
+            "https://weatherfactory.us13.list-manage.com/subscribe?u=97d06a3faac1573fa4330bb7d&id=c3f9b32720");
     }
 
 #endregion

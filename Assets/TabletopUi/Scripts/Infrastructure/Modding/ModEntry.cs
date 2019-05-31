@@ -8,7 +8,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     {
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
-        public Babelfish activationToggleText;
+        public TextMeshProUGUI activationToggleText;
+        public Babelfish activationToggleBabel;
         
         private Mod _mod;
 
@@ -36,7 +37,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         private void UpdateActivationState()
         {
-            activationToggleText.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
+            var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
+            activationToggleBabel.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
+            activationToggleText.text = LanguageTable.Get(newLabel);
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
             description.color = newColor;

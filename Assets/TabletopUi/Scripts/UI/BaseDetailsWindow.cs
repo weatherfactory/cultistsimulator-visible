@@ -1,15 +1,14 @@
 ﻿#pragma warning disable 0649
-using System.Collections.Generic;
-using Assets.Core;
-using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 namespace Assets.CS.TabletopUI {
-    public abstract class BaseDetailsWindow : AnimatedNoteBase, IPointerClickHandler {
+    public abstract class BaseDetailsWindow : 
+        AnimatedNoteBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;
@@ -20,6 +19,8 @@ namespace Assets.CS.TabletopUI {
 
         float waitTime = 10f;
         float time;
+
+        private bool _isHoveringOver;
 
         protected void Show() {
             ResetTimer();
@@ -66,7 +67,7 @@ namespace Assets.CS.TabletopUI {
 
         IEnumerator DoWaitForHide() {
             while (time < waitTime) {
-                if (!IsBusy())
+                if (!IsBusy() && !_isHoveringOver)
                     time += Time.deltaTime;
 
                 yield return null;
@@ -88,6 +89,16 @@ namespace Assets.CS.TabletopUI {
 
         public void OnPointerClick(PointerEventData eventData) {
             Hide();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _isHoveringOver = true;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _isHoveringOver = false;
         }
     }
 }

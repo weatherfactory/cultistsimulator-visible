@@ -32,9 +32,17 @@ namespace TabletopUi.Scripts.UI
         {
             var isHoveringOver =
                 TMP_TextUtilities.IsIntersectingRectTransform(_text.rectTransform, Input.mousePosition, _camera);
-            int linkIndex = isHoveringOver
-                ? TMP_TextUtilities.FindIntersectingLink(_text, Input.mousePosition, _camera)
-                : -1;
+            int linkIndex;
+            try
+            {
+                linkIndex = isHoveringOver
+                    ? TMP_TextUtilities.FindIntersectingLink(_text, Input.mousePosition, _camera)
+                    : -1;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                linkIndex = -1;
+            }
 
             if (_currentLink != -1 && linkIndex != _currentLink)
             {

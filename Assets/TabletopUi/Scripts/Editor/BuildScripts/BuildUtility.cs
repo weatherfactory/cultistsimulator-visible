@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Assets.Editor;
-using Facepunch.Editor;
 using Galaxy;
 using Noon;
 using UnityEditor;
@@ -98,16 +97,17 @@ namespace Assets.Core.Utility
         public static void OnBuildComplete(BuildTarget target, string pathToBuiltProject)
         {
             if (target != BuildTarget.StandaloneWindows
+                && target != BuildTarget.StandaloneWindows64
                 && target != BuildTarget.StandaloneOSX
                 && target != BuildTarget.StandaloneLinuxUniversal)
             {
                 return;
             }
 
-            PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName);
+            PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName, Path.GetFileName(pathToBuiltProject));
         }
 
-        private static void PostBuildFileTasks(BuildTarget target, string rootPath)
+        private static void PostBuildFileTasks(BuildTarget target, string rootPath, string exeName)
         {
             // Move the build output into its build- and platform-specific subdirectory
             var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
@@ -137,19 +137,19 @@ namespace Assets.Core.Utility
             var dlcPath = JoinPaths(buildPath, CONST_DLC);
             foreach (var dlcContentType in ContentTypes)
                 foreach (var locale in Locales)
-                    MoveDlcContent(baseEditionPath, dlcPath, target, dlcContentType, locale);
+                    MoveDlcContent(baseEditionPath, dlcPath, target, exeName, dlcContentType, locale);
 
             // Run the content tests, but only for Windows, since otherwise we'll end up with three copies
             if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
             {
-                ContentTester.ValidateContentAssertions();
-                FileUtil.CopyFileOrDirectory(ContentTester.JUnitResultsPath, Path.Combine(rootPath, "csunity-tests.xml"));
+                ContentTester.ValidateContentAssertions(false);
+                FileUtil.ReplaceFile(ContentTester.JUnitResultsPath, Path.Combine(rootPath, "csunity-tests.xml"));
             }
         }
 
-        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string contentOfType, string locale)
+        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string exeName, string contentOfType, string locale)
         {
-            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, target, contentOfType, locale);
+            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, exeName, contentOfType, locale);
             Log("Searching for DLC in " + baseEditionContentPath);
             
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
@@ -170,7 +170,7 @@ namespace Assets.Core.Utility
 
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
-                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), target, contentOfType, locale);
+                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
                 string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
                 {
@@ -189,7 +189,7 @@ namespace Assets.Core.Utility
                 dlcPath,
                 CONST_PERPETUALEDITION_DLC,
                 GetPlatformFolderForTarget(target),
-                GetDataFolderForTarget(GetExeNameForTarget(target)),
+                GetDataFolderForTarget(exeName),
                 CONST_PERPETUALEDITION_SEMPER_PATH);
             string semperDirPath = Path.GetDirectoryName(semperPath);
             if (semperDirPath != null && !Directory.Exists(semperDirPath))
@@ -234,6 +234,7 @@ namespace Assets.Core.Utility
             switch (target)
             {
                 case BuildTarget.StandaloneWindows:
+                case BuildTarget.StandaloneWindows64:
                     return "cultistsimulator.exe";
                 case BuildTarget.StandaloneOSX:
                     return "OSX.app";
@@ -256,6 +257,7 @@ namespace Assets.Core.Utility
             switch (target)
             {
                 case BuildTarget.StandaloneWindows:
+                case BuildTarget.StandaloneWindows64:
                     return "Windows";
                 case BuildTarget.StandaloneOSX:
                     return "OSX";
@@ -266,11 +268,11 @@ namespace Assets.Core.Utility
             }
         }
 
-        private static string GetCoreContentPath(string basePath, BuildTarget target, string contentOfType, string locale)
+        private static string GetCoreContentPath(string basePath, string exeName, string contentOfType, string locale)
         {
             return JoinPaths(
                 basePath, 
-                GetDataFolderForTarget(GetExeNameForTarget(target)), 
+                GetDataFolderForTarget(exeName), 
                 CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""), 
                 contentOfType);
         }
@@ -280,9 +282,12 @@ namespace Assets.Core.Utility
             return file.Name != ".dropbox";
         }
 
-        private static void Log(string message)
+        public static void Log(string message)
         {
-            Console.WriteLine(">>>>> " + message);
+            var oldStackTraceLogType = Application.GetStackTraceLogType(LogType.Log);
+            Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.None);
+            Debug.Log(">>>>> " + message);
+            Application.SetStackTraceLogType(LogType.Log, oldStackTraceLogType);
         }
 
         private static string JoinPaths(params string[] paths)
