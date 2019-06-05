@@ -105,6 +105,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 }
             }
+            
+            // Register the defunct character so that it remains available when switching scenes
+            // This is necessary for game restarts to work correctly.
+            // The actual legacy has been lost but it shouldn't matter, since we're only interested in the levers.
+            CrossSceneState.SetDefunctCharacter(Character.MakeDefunctCharacter(storage));
         }
 
 

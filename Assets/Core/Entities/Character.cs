@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
+using Assets.CS.TabletopUI;
 using JetBrains.Annotations;
 using Noon;
 
@@ -41,7 +42,7 @@ public class Character:IGameEntityStorage
 
     }
 
-    public Character(Legacy activeLegacy,Character previousCharacter)
+    public Character(Legacy activeLegacy, Character previousCharacter)
     {
         State = CharacterState.Viable;
         recipeExecutions = new Dictionary<string, int>();
@@ -66,6 +67,23 @@ public class Character:IGameEntityStorage
 
     }
 
+    // Turns this character into a defunct character based on the past of the current, active character
+    public static Character MakeDefunctCharacter(IGameEntityStorage currentCharacter)
+    {
+        return new Character(null)
+        {
+            recipeExecutions = new Dictionary<string, int>(),
+            DeckInstances = new List<IDeckInstance>(),
+            State = CharacterState.Extinct,
+            _futureLegacyEventRecords = currentCharacter.GetAllPastLegacyEventRecords(),
+
+            // Turn all past records back into future records, to simulate a character whose run ended
+            _pastLegacyEventRecords = new HistoryBuilder().FillInDefaultPast(new Dictionary<LegacyEventRecordId, string>()),
+            
+            // Load in a default legacy, since it doesn't matter for the defunct character
+            ActiveLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First()
+        };
+    }
     
 
     public Dictionary<string, int> GetAllExecutions()

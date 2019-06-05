@@ -22,6 +22,7 @@ public class BabelfishImage : MonoBehaviour
 //#pragma warning disable 649
     [Tooltip("Custom images per language")]
     [SerializeField] private SpriteMapping[]			sprites = new SpriteMapping[ (int)LanguageManager.eLanguage.maxLanguages ];
+    [SerializeField] private bool			            usesOverride;
 //#pragma warning restore 649
 
 	private Image image;
@@ -61,7 +62,13 @@ public class BabelfishImage : MonoBehaviour
 			bool shouldBeActive = (0 == string.Compare( LanguageTable.targetCulture, 0, ((LanguageManager.eLanguage)sprites[i].language).ToString(), 0, 2 ));
 			if (shouldBeActive)
 			{
-				image.sprite = sprites[i].sprite;
+                if (usesOverride)
+                {
+				    image.overrideSprite = sprites[i].sprite;
+                } else
+                {
+                    image.sprite = sprites[i].sprite;
+                }
 				return;
 			}
 		}
