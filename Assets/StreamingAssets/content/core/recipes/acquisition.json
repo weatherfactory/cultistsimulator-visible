@@ -112,7 +112,58 @@ label:"One More Treasure",
 startdescription:"'Caput gerat lupinum'. When a human passes beyond the permissible, they were once considered to have become a wolf.",
 extantreqs:{remembrancemarks:1},
 effects:{corpse.splendid:1},
-warmup:10}
+warmup:10},
+
+
+
+
+{id:"expedition.corpse.find.vaultshires3.ransackedbyrival",
+actionId:"expedition.corpse.find",
+label:"One More Treasure",
+startdescription:"Mr rival, like all the others who have come here, overlooked the secrets locked within the warrior-king's corpse. I will not make the same mistake.",
+requirements:{vaultshires3:1},
+extantreqs:{remembrancemarks:1},
+effects:{corpse.furious:1},
+warmup:60},
+
+
+
+
+{id:"expedition.corpse.find.vaultcapital5.ransackedbyrival",
+actionId:"expedition.corpse.find",
+label:"One More Treasure",
+startdescription:"Now that my rival has gone, we can steal in and scavenge this last piece of priest. It will, no doubt, be chewy, but there is power and knowledge within.",
+requirements:{vaultcapital5:1},
+extantreqs:{remembrancemarks:1},
+effects:{corpse.luxurious:1},
+warmup:60},
+
+{id:"expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+actionId:"expedition.corpse.find",
+label:"One More Treasure",
+startdescription:"Now that my rival has gone, we can steal in and scavenge the once-immortal remains I require. I will gather what I can of Lagun's remains. I will find a way to unlock the memories within. Even if I have to steep it in tea.",
+requirements:{vaultloneandlevelsands2:1},
+extantreqs:{remembrancemarks:1},
+effects:{corpse.liminal:1},
+warmup:60},
+
+{id:"expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+actionId:"expedition.corpse.find",
+label:"One More Treasure",
+startdescription:"Now that my rival has gone, we can steal in and scavenge the half-mortal remains I require. I will keep what is left of the King to myself.",
+requirements:{vaultrendingmountainsdefault:1},
+extantreqs:{remembrancemarks:1,corpse.horizon:-1,memory.horizon:-1,colours.horizon:-1},
+effects:{corpse.horizon:1},
+warmup:60},
+
+{id:"expedition.corpse.find.vaultshires4.ransackedbyrival",
+actionId:"expedition.corpse.find",
+label:"One More Treasure",
+startdescription:"Now that my rival has gone, we can steal in and scavenge the mortal remains we require.",
+requirements:{vaultshires4:1},
+extantreqs:{remembrancemarks:1},
+effects:{corpse.splendid:1},
+warmup:60},
 
 			
 	
