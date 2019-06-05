@@ -103,7 +103,7 @@
         id: "promoteto_d_winterhint",
         label: "Exalt a Disciple?",
         actionId: "talk",
-        requirements: {cultwinter_1: 1,follower:1, disciple:1},
+        requirements: {venerationwinter: 1,venerationedge:-1,venerationforge:-1,venerationgrail:-1,venerationheart:-1,venerationlantern:-1,venerationknock:-1,venerationmoth:-1,follower:1, disciple:1},
  
 		
         startdescription: "To Exalt a Disciple to a degree that has no name, I will need Winter to at least the twenty-first intensity.  In any case, only the bleakest souls will be suitable.",
