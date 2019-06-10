@@ -331,6 +331,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 {
                     var texture = new Texture2D(2, 2);
                     texture.LoadImage(fileData);
+                    texture.filterMode = FilterMode.Trilinear;
+                    texture.anisoLevel = 9;
+                    texture.mipMapBias = (float) -0.5;
+                    texture.Apply();
                     sprite = Sprite.Create(
                         texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
                 }
