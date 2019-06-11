@@ -253,7 +253,7 @@
 	},
 			{id: "curse_affliction_dormant",
 	label:"Dormant Creeping Breath Curse",
-	actionId: "curse_health",
+	actionId: "curse_affliction",
 	startdescription: "The Creeping Breath curse has not yet come due.",
 	alternativerecipes: [{id: "curse_affliction_active",chance:30}],
 	linked: [{id: "curse_affliction_dormant",chance:100}],
