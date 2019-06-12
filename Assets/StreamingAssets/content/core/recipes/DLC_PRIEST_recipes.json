@@ -75,7 +75,7 @@ warmup:30
 {id:"talk.priest.open",
 actionId:"talk",
 label:"A Welcome",
-startdescription:"The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three of now do me honour - ",
+startdescription:"The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three now do me honour - ",
 effects:{LEVER_LastCult:1,LEVER_LastFollower:1},
 warmup:30,
 linked:[{id:"talk.priest.open.followup"}]
@@ -84,7 +84,7 @@ linked:[{id:"talk.priest.open.followup"}]
 {id:"talk.priest.open.followup",
 actionId:"talk",
 label:"Rededication",
-startdescription:"The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
+startdescription:"The sacristan is weeping again. 'We've waited for you. #PREVIOUSCHARACTERNAME# taught us of the @#cultedge_1|Bright Edge#cultforge_1|power in the shaping flame#cultgrail_1|secret delights of appetite#cultheart_1|dance that does not end#cultknock_1|nature of keys#cultlantern_1|Glory#cultmoth_1|Wood#cultsecrethistories_1|many Histories#cultwinter_1|Silence#|colours beneath the world's skin@, and we have used those teachings to prepare the Way. You are our Light; you are our Threshold. We need you. Lead us.'",
 mutations:[{filter:society,mutate:rededicable,level:1}]
 },
 
@@ -284,7 +284,6 @@ alt:[{id:"priest.repevent",challenges:grail,additional:true}],
 {id:"preach.heart",
 actionId:"work",
 label:"'The hearts of the false shall be taken from them when they cease; but the hearts of the true cease not.'",
-startdescription:"'In the House of the Sun, the dance of the angels of Glory does not cease. Those who were cast down, wave or wound or snow, are gone from the House, and as long as their parts in the dance are filled, they may never return. Therefore let us join hands, and add our little steps to the dance.' [The deeper the Lore, the greater the chance of Exultation.]",
 startdescription:"'In the House of the Sun, the dance of the angels of Glory does not cease. Those who were cast down, wave or wound or snow, are gone from the House, and as long as their parts in the dance are filled, they may never return. Therefore let us join hands, and add our little steps to the dance.' [The deeper the Lore, the greater the chance of Exultation.]",
 effects:{funds:1,fervour:1},
 alt:[{id:"priest.repevent",challenges:heart,additional:true}],

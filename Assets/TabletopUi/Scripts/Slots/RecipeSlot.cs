@@ -317,7 +317,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             //incomer is a token. Does it fit in the slot?
-            if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
+            if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay && potentialUsurper.Quantity == 1)
             {
                 incumbentMoved = true;
                 incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects

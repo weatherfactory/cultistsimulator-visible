@@ -110,6 +110,19 @@
             description: "An occult society dedicated to the silence that comes and the cold that ends. [You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to a condition of lethal silence.]",
 				unique:true
         },
+		
+				          {
+        id: "cultwinter_2",
+            label: "Towers of the Dove",
+            aspects:
+            {society:1,venerationwinter:1},
+			slots: [{id:"Associate", label:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", label:"Ceremony", actionId:"talk", required: {lore:1},description: "To recruit a novice, I only need a small secret. The higher mysteries require deeper oaths."},
+			{id:"Trappings", label:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "For a proper sense of occasion. Consumes Ingredients and Influences; uses, but does not consume, Tools."}],
+            description: "An occult society dedicated to all that has been lost, and what may yet return. [You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to a condition of lethal silence.]",
+				unique:true,
+				icon:"cultwinter_1"
+        },
 		  
 ]
 };

@@ -216,7 +216,7 @@ namespace Assets.CS.TabletopUI {
                 else
 					_currentMutations[aspectId] = value;
 
-                if (_currentMutations[aspectId] == 0)
+                if (_currentMutations[aspectId] <= 0)
                     _currentMutations.Remove(aspectId);
             }
             else if (value != 0)
@@ -545,6 +545,11 @@ namespace Assets.CS.TabletopUI {
             return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
+        public bool IsInRecipeSlot()
+        {
+	        return CurrentStacksManager.Name == "slot";
+        }
+
         public void MergeIntoStack(ElementStackToken merge) {
             SetQuantity(Quantity + merge.Quantity);
             merge.Retire(false);
@@ -663,7 +668,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public bool AllowsIncomingMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated)
+            if (Decays || _element.Unique || IsBeingAnimated || IsInAir || IsInRecipeSlot())
                 return false;
             else
                 return TokenContainer.AllowStackMerge;

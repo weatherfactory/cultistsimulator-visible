@@ -44,7 +44,7 @@ unique:true,
             label: "Count Jannings",
             aspects:
             {mortal:1,patron:1,tutor:1,tutorlatin:1},
-            description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He has offered you a commission",
+            description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He has offered you a commission.",
 unique:true,
 			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
 				slots: [{id:"Commission",label:"Commission",actionId:"talk",required: {commission:1}},
