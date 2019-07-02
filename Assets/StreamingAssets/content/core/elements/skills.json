@@ -4,7 +4,7 @@
 	label: "Skill: a Stronger Physique",
 	aspects: {healthskill:1,ability:1},
 	description: "I have benefited from exercise. [Use this with two Lessons Learnt to gain more Health.]",
-	slots:[{id:"Health",actionId:"work",description:"I must devote my energies to this..",required:{health:1}},
+	slots:[{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
 	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
 	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
 
@@ -106,7 +106,7 @@
 	slots:[{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
 {id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"}
 	],
 	xtriggers:{careeradvancement:skillpassionb}
 	},
@@ -118,9 +118,9 @@
 	slots:[{id:"G1",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be? [Use this with three Lessons Learnt to gain more Passion.]",actionId:"study"},
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
 	{id:"G3",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
-		{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
+		{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"}
 	],
 	},	
 			{id: "skillpassionc",
@@ -132,10 +132,10 @@
 	{id:"G2",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G3",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G4",label:"A Lesson Learnt",required:{glimmeringplus:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
-	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
+	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"}
 	],
 	},	
 	
@@ -143,10 +143,10 @@
 	label: "Skill: Never-No",
 	description: "The more, the more, the more, the m - [Passion and Skill can increase no further.]",
 	aspects: {passionskill:4,ability:1},
-	slots:[{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	],
+	slots:[{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"}	],
 	icon:"skillpassionc"
 
 	},
@@ -154,10 +154,10 @@
 	label: "Skill: an Open Soul",
 	description: "'Behold, they stand at my door and knock; if I hear any voice, I will open the door, and they will come in to me, and sup with them, and they with me.' [Passion and Skill can increase no further.]",
 	aspects: {passionskill:4,ability:1},
-		slots:[	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}]	,
+		slots:[	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention.",actionId:"work"}]	,
 	icon:"skillpassionc"
 	},
 ]
