@@ -2,7 +2,7 @@ version: 2.1
 executors:
   csunity-ci:
     docker:
-      - image: lyrositor/csunity-ci:latest
+      - image: lyrositor/wfunity-ci:latest
         auth:
           username: lyrositor
           password: $DOCKERHUB_PASSWORD
@@ -12,7 +12,7 @@ jobs:
     steps:
       - run:
           name: Running builds on Unity CI
-          command: python3 /csunity-ci/build.py /csunity-ci/config.toml
+          command: python3 /workspace/build.py /workspace/config.csunity.toml
       - run:
           name: Moving test files
           command: mkdir -p /csunity-ci-build/tests/ && mv /csunity-ci-build/csunity-tests.xml /csunity-ci-build/tests/
@@ -35,7 +35,7 @@ jobs:
           command: test $(( ($(date -d "now" +%s) - $(date -d "2019-05-21" +%s)) / 86400 )) -lt 90
       - run:
           name: Pushing builds to distribution platforms
-          command: python3 /csunity-ci/publish.py /csunity-ci/config.toml
+          command: python3 /workspace/publish.py /workspace/config.csunity.toml
       - store_artifacts:
           path: /csunity-ci-publish/artifacts/humble/
           destination: /humble/
