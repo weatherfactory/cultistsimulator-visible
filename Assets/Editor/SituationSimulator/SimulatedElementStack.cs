@@ -69,7 +69,7 @@ namespace Assets.Editor
                 else
                     _currentMutations[aspectId] = value;
 
-                if (_currentMutations[aspectId] <= 0)
+                if (_currentMutations[aspectId] == 0)
                     _currentMutations.Remove(aspectId);
             }
             else

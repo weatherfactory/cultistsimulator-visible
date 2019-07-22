@@ -15,7 +15,7 @@
             description: "My intellect should be put to better use! But the pay is better than labourer's work. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {careeradvancement:gloverandgloverjob,employment:gloverandgloverjuniorjob_nodifficultbossa},
 			lifetime:90,
-			decayTo:"gloverandgloverjuniorjob_demotion"
+			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
         },
 		
 		
@@ -65,7 +65,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {careeradvancement:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverjob_youngerglovergone},
 			lifetime:90,
-			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
+			decayTo:"gloverandgloverjob_youngerglovergone_demotion"
         },
 		{
         id: "gloverandgloverseniorjob",
