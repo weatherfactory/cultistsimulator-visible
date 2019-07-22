@@ -75,6 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             storage.ActiveLegacy = chosenLegacyForCharacter;
 
 
+            storage.ClearExecutions();
             if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
             {
                 var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
