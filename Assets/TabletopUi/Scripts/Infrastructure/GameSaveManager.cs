@@ -65,16 +65,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             var htSaveTable = dataExporter.GetHashtableForExtragameState(withActiveLegacy);
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
-            //try
-            //{
-            //    var htSaveTable = dataExporter.GetHashtableForExtragameState(withActiveLegacy);
-            //    File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
-            //}
-            //catch (Exception e)
-            //{
-            //  NoonUtility.Log("Couldn't save game: " + e.Message);
-            //}
-
         }
 
         public void DeleteCurrentSave()
@@ -82,10 +72,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             File.Delete(NoonUtility.GetGameSaveLocation());
         }
 
-        //for saving from the tabletop
-        public bool SaveActiveGame(TabletopTokenContainer tabletop,Character character,bool forceBadSave = false, int index = 0)
+        public IEnumerator<bool?> SaveActiveGameAsync(TabletopTokenContainer tabletop, Character character, bool forceBadSave = false, int index = 0)
         {
-            var allStacks = tabletop.GetElementStacksManager().GetStacks();
+	        var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             var metaInfo = Registry.Retrieve<MetaInfo>();
             var allDecks = character.DeckInstances;
@@ -100,55 +89,72 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			if (htSaveTable == null && !forceBadSave)
 			{
 				HandleSaveError(tabletop, character, index);
-				return false;	// Something went wrong with the save
+				yield return false;	// Something went wrong with the save
+				yield break;
 			}
 			if (forceBadSave)
 			{
-				File.WriteAllText(NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "post" ), htSaveTable.JsonString());
+				var postSaveFilePath = NoonUtility.GetErrorSaveLocation(DateTime.Now, "post");
+				System.Threading.Tasks.Task.Run(() => RunSave(postSaveFilePath, htSaveTable)).Wait();
 			}
 			else
 			{
 				// Write the save to a temporary file first, check that it is valid, and only then backup the old save
 				// This is to mitigate some bugs where save files would end up with invalid data written to them
-				var saveText = htSaveTable.JsonString();
 				var saveFilePath = NoonUtility.GetGameSaveLocation(index);
 				var tempSaveFilePath = NoonUtility.GetTemporaryGameSaveLocation(index);
-				bool isTempSaveValid;
-				try
+				var saveTask = System.Threading.Tasks.Task.Run(() => RunSave(tempSaveFilePath, htSaveTable));
+				while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
 				{
-					File.WriteAllText(tempSaveFilePath, saveText);
-					isTempSaveValid = IsSavedGameActive(index, true);
-				}
-				catch (Exception e)
-				{
-					Debug.LogError("Failed to save game to temporary save file (see exception for details)");
-					Debug.LogException(e);
-					isTempSaveValid = false;
+					yield return null;
 				}
 
-				if (isTempSaveValid)
+				bool success;
+				if (saveTask.Exception == null)
 				{
-					BackupSave(index);
-					if (File.Exists(saveFilePath))
-					{
-						File.Delete(saveFilePath);
-					}
-
-					File.Move(tempSaveFilePath, saveFilePath);
-					if (failedSaveCount > 0)
-					{
-						Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );
-					}
-
-					failedSaveCount = 0;
+					success = IsSavedGameActive(index, true);
 				}
 				else
 				{
+					Debug.LogError("Failed to save game to temporary save file (see exception for details)");
+					Debug.LogException(saveTask.Exception);
+					success = false;
+				}
+
+				if (success)
+				{
+					try
+					{
+						BackupSave(index);
+						if (File.Exists(saveFilePath))
+						{
+							File.Delete(saveFilePath);
+						}
+
+						File.Move(tempSaveFilePath, saveFilePath);
+
+						if (failedSaveCount > 0)
+						{
+							Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );
+						}
+
+						failedSaveCount = 0;
+					}
+					catch (Exception e)
+					{
+						Debug.LogError("Failed to move temporary file (see exception for details)");
+						Debug.LogException(e);
+						success = false;
+					}
+				}
+				if (!success)
+				{
 					HandleSaveError(tabletop, character, index);
-					return false;
+					yield return false;
+					yield break;
 				}
 			}
-			return true;
+			yield return true;
         }
 
         public Hashtable RetrieveHashedSaveFromFile(int index = 0, bool temp = false)
@@ -216,12 +222,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	            File.Copy(savePath, NoonUtility.GetErrorSaveLocation(DateTime.Now, "pre"), true);
                 
             // Force a bad save into a different filename
-            SaveActiveGame(tabletop, character, true, index);
+            var saveTask = SaveActiveGameAsync(tabletop, character, true, index);
+            while (saveTask.MoveNext())
+            {
+            }
             Analytics.CustomEvent("autosave_corrupt_notified");
                 
             // Pop up warning message
             Registry.Retrieve<INotifier>().ShowSaveError(true);
             saveErrorWarningTriggered = true;
+        }
+
+        private void RunSave(string saveFilePath, Hashtable saveData)
+        {
+	        File.WriteAllText(saveFilePath, saveData.JsonString());
         }
     }
 }
