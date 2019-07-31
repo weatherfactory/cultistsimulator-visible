@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -24,7 +24,7 @@ namespace TabletopUi.Scripts.Interfaces
         void RestartGame();
         void EndGame(Ending ending, SituationController endingSituation);
         void LoadGame(int index = 0);
-        IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null);
+        bool SaveGame(bool withNotification, int index = 0);
         HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill);
         void CloseAllDetailsWindows();
         void CloseAllSituationWindowsExcept(string exceptTokenId);

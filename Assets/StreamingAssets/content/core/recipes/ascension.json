@@ -592,7 +592,6 @@ linked: [
 {id:"ascensioncravingsensation",chance:100},
 {id:"ascensioncravingenlightenment",chance:100},
 {id:"ascensioncravingremembrance",chance:100},
-{id:"ascensioncravingremembrancenegative",chance:100},
 {id:"ascensioncravingchange_tryascendfromg",chance:100},
 {id:"ascensioncravingchange_tryascendfromf",chance:100},
 {id:"ascensioncravingchange_tryascendfrome",chance:100},
@@ -884,18 +883,9 @@ aspects: {ascend:1}
 {id:"ascensioncravingremembrance",
 label:"The Hunger that Grows in Dark Earth",
 actionId: "craving",
-requirements: {remembrancemarks:2, ghoul.hunger:1},
+requirements: {remembrancemarks:2},
 mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:1,additive:true}],
 startdescription: "The taste - the particular taste - the taste which is neither fair nor foul - it comes to trouble my mouth again. My tongue will swell, my lips will blacken. The Elixir has set its spores within me, and only dead flesh can quell them.",
-warmup:30
-},
-{id:"ascensioncravingremembrancenegative",
-label:"The Hunger that Grows in Dark Earth",
-actionId: "craving",
-requirements: {remembrancemarks:2},
-mutations:[{filter:remembrancemarks,mutate:ghoul.hunger,level:1,additive:false}],
-startdescription: "The taste - the particular taste - the taste which is neither fair nor foul - it comes to trouble my mouth again. My tongue will swell, my lips will blacken. The Elixir has set its spores within me, and only dead flesh can quell them.",
-comments: "This is a safety measure for players who managed to allow their hunger to go negative with an old save.",
 warmup:30
 },
 

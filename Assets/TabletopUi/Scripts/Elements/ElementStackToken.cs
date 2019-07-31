@@ -726,7 +726,7 @@ namespace Assets.CS.TabletopUI {
 						var ongoingSlots = situ.GetOngoingSlots();
 						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
 					}
-					else if (!situ.situationToken.IsTransient && situ.SituationClock.State == SituationState.Unstarted)
+					else if (!situ.situationToken.IsTransient)
 					{
 						// Look for starting slots (most common case)
 						var startSlots = situ.situationWindow.GetStartingSlots();
@@ -736,7 +736,7 @@ namespace Assets.CS.TabletopUI {
 			}
 
 			// Now find the best target from that list
-			if (targetSlots.Count > 0)
+			if (targetSlots!=null && targetSlots.Count > 0)
 			{
 				TabletopUi.TokenAndSlot selectedSlot = null;
 				float selectedSlotDist = float.MaxValue;

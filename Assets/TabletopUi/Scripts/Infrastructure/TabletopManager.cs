@@ -2,15 +2,19 @@
 #define ENABLE_ASPECT_CACHING	// Comment out to return to continuous aspect recalc
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 #if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -19,11 +23,16 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using Noon;
+using OrbCreationExtensions;
 using TabletopUi.Scripts.Elements;
 using TabletopUi.Scripts.Interfaces;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Profiling;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.WSA;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
@@ -176,14 +185,14 @@ namespace Assets.CS.TabletopUI {
 			housekeepingTimer += Time.deltaTime;
 			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
 			{
-				housekeepingTimer = 0.0f;
-				StartCoroutine(SaveGameAsync(true, callback: success =>
+			    if (SaveGame(true))
 				{
-					if (!success)
-					{
-						housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
-					}
-				}));
+					housekeepingTimer = 0.0f;	// Successful save
+				}
+				else
+				{
+					housekeepingTimer = AUTOSAVE_INTERVAL-5.0f;		// Failed save - try again in 5 secs
+				}
 			}
         }
 
@@ -547,13 +556,10 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(true, false, true);
         }
 
-        public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
+        public bool SaveGame(bool withNotification, int index = 0)
 		{
-			if (!IsSafeToAutosave())
-			{
-				yield return false;
-				yield break;
-			}
+            if (!IsSafeToAutosave())
+                return false;
 
 			bool success = true;	// Assume everything will be OK to begin with...
 
@@ -564,45 +570,39 @@ namespace Assets.CS.TabletopUI {
 		        _heart.StopBeating();
 				wasBeating = true;
 			}
+			/*
+            //Close all windows and dump tokens to desktop before saving.
+            //We don't want or need to track half-started situations.
+            var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            foreach (var s in allSituationControllers)
+                s.CloseWindow();
+			*/
 
-			IEnumerator<bool?> saveTask = null;
             try
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop, Registry.Retrieve<Character>(), index: index);
+	            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>(), index: index);
+				if (success)
+				{
+					if (withNotification)
+					{
+						//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+						_autosaveNotifier.SetDuration( 3.0f );
+						_autosaveNotifier.Show();
+					}
+				}
             }
             catch (Exception e)
             {
-	            success = false;
-	            _notifier.ShowSaveError(true);
-	            GameSaveManager.saveErrorWarningTriggered = true;
-	            Debug.LogError("Failed to save game (see exception for details)");
-	            Debug.LogException(e);
+				_notifier.ShowSaveError(true);
+				GameSaveManager.saveErrorWarningTriggered = true;
+				Debug.LogError("Failed to save game (see exception for details)");
+				Debug.LogException(e);
             }
 
-            if (wasBeating)
-            {
-	            _heart.ResumeBeating();
-            }
-
-            if (saveTask != null)
-            {
-	            bool? result;
-	            do
-	            {
-		            yield return null;
-		            bool atEnd = !saveTask.MoveNext();
-		            result = atEnd ? false : saveTask.Current;
-	            } while (result == null);
-
-	            success = result.Value;
-            }
-
-            if (success && withNotification)
+			if (wasBeating)
 			{
-				//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-				_autosaveNotifier.SetDuration( 3.0f );
-				_autosaveNotifier.Show();
+	            _heart.ResumeBeating();
 			}
 
 			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
@@ -613,9 +613,7 @@ namespace Assets.CS.TabletopUI {
 				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
 			}
 
-			callback?.Invoke(success);
-
-			yield return success;
+			return success;
         }
 
 #endregion

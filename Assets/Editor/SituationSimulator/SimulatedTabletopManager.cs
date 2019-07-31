@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -59,9 +58,9 @@ namespace Assets.Editor
         {
         }
 
-        public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
+        public bool SaveGame(bool withNotification, int index = 0)
         {
-            yield return true;
+            return true;
         }
 
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)

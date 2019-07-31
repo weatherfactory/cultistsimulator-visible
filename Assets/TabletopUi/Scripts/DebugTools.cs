@@ -395,8 +395,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void SaveGame()
     {
-        var saveTask = Registry.Retrieve<ITabletopManager>().SaveGameAsync(true);
-        StartCoroutine(saveTask);
+        Registry.Retrieve<ITabletopManager>().SaveGame(true);
     }
 
     void ResetDecks()
@@ -451,11 +450,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
     void SaveDebugSave(int index)
     {
         ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
-        StartCoroutine(tabletopManager.SaveGameAsync(true, index + 1, success =>
-        {
-            loadButtons[index].interactable = success;
-            delButtons[index].interactable = success;
-        }));
+        bool wasSuccessful = tabletopManager.SaveGame(true, index + 1);
+        loadButtons[index].interactable = wasSuccessful;
+        delButtons[index].interactable = wasSuccessful;
     }
 
     void LoadDebugSave(int index)

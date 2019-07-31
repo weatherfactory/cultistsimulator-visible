@@ -90,10 +90,7 @@ public class Heart : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        var saveTask = Registry.Retrieve<ITabletopManager>().SaveGameAsync(true);
-        while (saveTask.MoveNext())
-        {
-        }
+        Registry.Retrieve<ITabletopManager>().SaveGame(true);
     }
 
     public void AdvanceTime(float intervalThisBeat)

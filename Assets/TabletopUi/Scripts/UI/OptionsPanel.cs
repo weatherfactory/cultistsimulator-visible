@@ -249,21 +249,19 @@ public class OptionsPanel : MonoBehaviour {
 
         var tabletopManager = Registry.Retrieve<ITabletopManager>();
         tabletopManager.SetPausedState(true);
-        StartCoroutine(tabletopManager.SaveGameAsync(true, callback: success =>
-        {
-	        if (success)
-	        {
-		        SceneManager.LoadScene(SceneNumber.MenuScene);
-	        }
-	        else
-	        {
-		        // Save failed, need to let player know there's an issue
-		        // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-		        ToggleVisibility();
-		        Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
-	        }
-        }));
-	}
+        if (tabletopManager.SaveGame(true))
+		{
+			// Save was successful, OK to exit
+	        SceneManager.LoadScene(SceneNumber.MenuScene);
+		}
+		else
+		{
+			// Save failed, need to let player know there's an issue
+			// Autosave would wait and retry in a few seconds, but player is expecting results NOW.
+			ToggleVisibility();
+			Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError( true );
+		}
+    }
 
 	// Leave game without saving
 	public void AbandonGame()
@@ -279,21 +277,17 @@ public class OptionsPanel : MonoBehaviour {
 	    {
 		    if (_isInGame)
 		    {
-			    StartCoroutine(Registry.Retrieve<ITabletopManager>().SaveGameAsync(true, callback: success =>
+			    // If a game is active, try to save it, showing an error if that fails
+			    if (!Registry.Retrieve<ITabletopManager>().SaveGame(false))
 			    {
-				    // If a game is active, try to save it, showing an error if that fails
-				    if (!success)
-				    {
-					    ToggleVisibility();
-					    Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
-					    OpenInFileBrowser.Open(savePath);
-				    }
-			    }));
-			    return;
+				    ToggleVisibility();
+				    Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+				    return;
+			    }
 		    }
-
-		    // Otherwise, just show the directory where the save file would be located
-		    savePath = Path.GetDirectoryName(savePath);
+		    else
+			    // Otherwise, just show the directory where the save file would be located
+			    savePath = Path.GetDirectoryName(savePath);
 	    }
         OpenInFileBrowser.Open(savePath);
     }
