@@ -84,7 +84,11 @@ public class Character:IGameEntityStorage
             ActiveLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First()
         };
     }
-    
+
+    public void ClearExecutions()
+    {
+        recipeExecutions.Clear();
+    }
 
     public Dictionary<string, int> GetAllExecutions()
     {

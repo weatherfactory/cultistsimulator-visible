@@ -12,6 +12,7 @@ namespace Assets.Core.Interfaces
         IDeckInstance GetDeckInstanceById(string id);
         string Name { get; set; }
         string Profession { get; set; }
+        void ClearExecutions();
         void AddExecutionsToHistory(string forRecipeId,int executions);
         int GetExecutionsCount(string forRecipeId);
         bool HasExhaustedRecipe(Recipe forRecipe);
