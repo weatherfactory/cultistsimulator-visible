@@ -28,7 +28,7 @@ public class Babelfish : MonoBehaviour
 
 	private Color		defaultColor;
 	private FontStyles	defaultStyle;
-    private TMP_Text	tmpText;       // text mesh pro text object.
+    protected TMP_Text	tmpText;       // text mesh pro text object.
 	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
     private void Awake()

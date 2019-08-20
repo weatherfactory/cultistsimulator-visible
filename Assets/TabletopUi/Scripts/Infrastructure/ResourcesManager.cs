@@ -38,11 +38,16 @@ public class ResourcesManager: MonoBehaviour
     {
         return GetSprite("icons40/aspects/", imageName);
     }
-        public static Sprite GetSpriteForLegacy(string legacyImage)
-        {
-            return GetSprite("icons100/legacies/", legacyImage, false);
-        }
 
+    public static Sprite GetSpriteForLegacy(string legacyImage)
+    {
+        return GetSprite("icons100/legacies/", legacyImage, false);
+    }
+
+    public static Sprite GetSpriteForDlc(string dlcId, bool active)
+    {
+        return GetSprite("icons100/dlc/", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
+    }
 
     public static Sprite GetSpriteForEnding(string endingImage)
     {

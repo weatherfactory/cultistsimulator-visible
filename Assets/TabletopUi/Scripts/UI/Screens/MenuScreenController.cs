@@ -6,11 +6,9 @@
 // Licensed under GNU General Public License v3.0
 // http://www.gnu.org/licenses/gpl-3.0.txt
 
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,6 +19,8 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;    
 #endif
 using Noon;
+using TabletopUi.Scripts.Services;
+using TabletopUi.Scripts.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -58,10 +58,10 @@ public class MenuScreenController : MonoBehaviour {
 
     public MenuSubtitle Subtitle;
 
+    [Header("DLC & Mods)")]
     public Transform dlcEntries;
-    public TextMeshProUGUI dlcEmptyMessage;
-    private static readonly string _dlcEntryPrefix = "TextDLC_";
-    
+    public MenuDlcEntry dlcEntryPrefab;
+    public GameObject dlcUnavailableLabel;
     public GameObject modEntryPrefab;
     public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
@@ -77,6 +77,43 @@ public class MenuScreenController : MonoBehaviour {
 #if MODS    
     private ModManager _modManager;
 #endif
+
+    private const string StorefrontFileName = "store.txt";
+    private static readonly MenuDlcEntry.Spec[] DlcEntrySpecs =
+    {
+        new MenuDlcEntry.Spec(
+            "DANCER",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://store.steampowered.com/app/871650/Cultist_Simulator_The_Dancer/"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_dancer"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-dancer"}
+            }),
+        new MenuDlcEntry.Spec(
+            "PRIEST",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://store.steampowered.com/app/871651/Cultist_Simulator_The_Priest/"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_priest"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-priest"}
+            }),
+        new MenuDlcEntry.Spec(
+            "GHOUL",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://store.steampowered.com/app/871900/Cultist_Simulator_The_Ghoul/"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_ghoul"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"}
+            }),
+    };
+    private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
+        "OST",
+        new Dictionary<Storefront, string>
+        {
+            {Storefront.Steam, "https://store.steampowered.com/app/988320/Cultist_Simulator_Original_Soundtrack/"},
+            {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_original_soundtrack"},
+            {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-original-soundtrack"},
+        });
     
     void Start() {
         // make sure the screen is black
@@ -99,6 +136,30 @@ public class MenuScreenController : MonoBehaviour {
         string perpetualEditionDumbfileLocation = Application.streamingAssetsPath + "/edition/semper.txt";
         if (File.Exists(perpetualEditionDumbfileLocation))
             NoonUtility.PerpetualEdition = true;
+    }
+
+    private static Storefront GetCurrentStorefront()
+    {
+        var storeFilePath = Path.Combine(Application.streamingAssetsPath, "edition", StorefrontFileName);
+        if (!File.Exists(storeFilePath))
+        {
+            return Storefront.Unknown;
+        }
+
+        var edition = File.ReadAllText(storeFilePath).Trim();
+        switch (edition)
+        {
+            case "steam":
+                return Storefront.Steam;
+            case "gog":
+                return Storefront.Gog;
+            case "humble":
+                return Storefront.Humble;
+            case "itch":
+                return Storefront.Itch;
+            default:
+                return Storefront.Unknown;
+        }
     }
 
     void InitialiseServices()
@@ -380,19 +441,17 @@ public class MenuScreenController : MonoBehaviour {
     private void BuildDlcPanel()
     {
         var dlc = new HashSet<string>(ContentImporter.GetInstalledDlc());
-        bool wasDlcActivated = false;
-        foreach (var child in dlcEntries.GetComponentsInChildren<Transform>())
+        var store = GetCurrentStorefront();
+        var hasAnyDlc = false;
+        foreach (var dlcEntrySpec in DlcEntrySpecs)
         {
-            if (!child.name.StartsWith(_dlcEntryPrefix)) 
-                continue;
-            var dlcEntryName = child.name.Substring(_dlcEntryPrefix.Length);
-            bool isInstalled = dlc.Contains(dlcEntryName);
-            child.gameObject.SetActive(isInstalled);
-            wasDlcActivated |= isInstalled;
+            var dlcEntry = Instantiate(dlcEntryPrefab, dlcEntries);
+            var hasDlc = dlc.Contains(dlcEntrySpec.Id);
+            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc);
+            hasAnyDlc |= hasDlc;
         }
-        
-        dlcEntries.gameObject.SetActive(wasDlcActivated);
-        dlcEmptyMessage.gameObject.SetActive(!wasDlcActivated);
+
+        dlcUnavailableLabel.SetActive(store == Storefront.Itch && !hasAnyDlc);
     }
     
 #if MODS
@@ -442,5 +501,4 @@ public class MenuScreenController : MonoBehaviour {
     }
 
 #endregion
-
 }
