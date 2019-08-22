@@ -32,7 +32,7 @@ jobs:
           at: /csunity-ci-build/
       - run:
           name: Checking date since last password change
-          command: test $(( ($(date -d "now" +%s) - $(date -d "2019-05-21" +%s)) / 86400 )) -lt 90
+          command: test $(( ($(date -d "now" +%s) - $(date -d "2019-08-21" +%s)) / 86400 )) -lt 90
       - run:
           name: Pushing builds to distribution platforms
           command: python3 /workspace/publish.py /workspace/config.csunity.toml
