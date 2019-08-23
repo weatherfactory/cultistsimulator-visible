@@ -1,62 +1,22 @@
-﻿{
-recipes: [
-	{
-		requirements: 
-		{
-			fatigue: "-1",
-			health: "-1",
-		},
-		craftable: "false",
-		warmup: "0",
-		ending: "deathofthebody",
-		label: "Больше нет Здоровья",
-		startdescription: "Моя жизнь ускользает -",
-		signalEndingFlavour: "Melancholy",
-		id: "deathofthebody",
-		actionId: "healthend",
-		description: "Где найдут меня? Я не здесь.",
-		effects: 
-		{
-		},
-	},
-	{
-		requirements: 
-		{
-			fatigue: "-1",
-			health: "-1",
-			apostlegrail.pillar2: "-1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "0",
-		ending: "deathofthebody",
-		label: "No Health is left",
-		startdescription: "The wrongness in my bones has overcome me. Unless I can muster my strength, or taste the blood of our Delight, it's over.",
-		signalEndingFlavour: "Melancholy",
-		id: "forlornblooddeathofthebody",
-		actionId: "healthend",
-		description: "Where will they find me? I am not here.",
-		effects: 
-		{
-		},
-	},
-	{
-		requirements: 
-		{
-			passion: "1",
-		},
-		craftable: "false",
-		warmup: "0",
-		ending: "workvictory",
-		label: "Я удовлетворюсь житейским комфортом",
-		startdescription: "Снов больше нет и никогда не будет; я буду жить сравнительно неплохо.",
-		id: "workvictory",
-		actionId: "workwin",
-		description: "Всё кончено",
-		effects: 
-		{
-		},
-		burnimage: "retirement",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "deathofthebody",
+            "description": "Где найдут меня? Я больше не здесь.",
+            "startdescription": "Жизнь покидает моё тело...",
+            "label": "Не осталось здоровья"
+        },
+        {
+            "id": "forlornblooddeathofthebody",
+            "description": "Где найдут меня? Я больше не здесь.",
+            "startdescription": "Я больше не могу превозмогать поселившуюся в костях немочь. Если я не смогу собраться с силами или отведать крови Отрады, все кончено.",
+            "label": "Не осталось здоровья"
+        },
+        {
+            "id": "workvictory",
+            "description": "Всё кончено",
+            "startdescription": "Мои мечты давно забыты; жизнь моя будет вполне достойной.",
+            "label": "Я устрою себе вполне комфортную жизнь"
+        }
+    ]
 }

@@ -1,524 +1,68 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "explorevault.add.watchers",
-				comment: "NEW",
-			},
-			{
-				id: "explorevault.add.monks",
-				comment: "NEW",
-			},
-			{
-				id: "explorevault.add.dead",
-				comment: "NEW",
-			},
-			{
-				id: "explorevault.add.serpent",
-				comment: "NEW",
-			},
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			vault: "1",
-			funds: "1",
-		},
-		craftable: "false",
-		label: "Экспедиция отправляется",
-		startdescription: "У моих агентов есть возможность послужить мне. Будем надеяться, что для всех нас всё кончится хорошо.",
-		id: "explorevault_expeditionbegun",
-		description: ".",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault.add.watchers",
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-			},
-		],
-		requirements: 
-		{
-			guardian_watchers_pre: "1",
-			guardian_watchers: "-1",
-		},
-		effects: 
-		{
-			guardian_watchers: "1",
-		},
-		comment: "NEW",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault.add.monks",
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-			},
-		],
-		requirements: 
-		{
-			guardian_monks_pre: "1",
-			guardian_monks: "-1",
-		},
-		effects: 
-		{
-			guardian_monks: "1",
-		},
-		comment: "NEW",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault.add.dead",
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-			},
-		],
-		requirements: 
-		{
-			guardian_dead_pre: "1",
-			guardian_dead: "-1",
-		},
-		effects: 
-		{
-			guardian_dead: "1",
-		},
-		comment: "NEW",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault.add.serpent",
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-			},
-		],
-		requirements: 
-		{
-			guardian_serpent: "-1",
-			guardian_serpent_pre: "1",
-		},
-		effects: 
-		{
-			guardian_serpent: "1",
-		},
-		comment: "NEW",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultperil_treacherousground_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultperil_forest_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultperil_mountains_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultperil_desert_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultperil_sea_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultseal_hiddendoor_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultseal_wardeddoor_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcurse_dread_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcurse_visions_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcurse_affliction_encounter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcurse_nowhere_encounter",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
-		effects: 
-		{
-			funds: "-1",
-		},
-		warmup: "30",
-		label: "Экспедиция продолжается",
-		startdescription: "Наша экспедиция готовится к следующему испытанию. Это потребует Средств; сейчас я могу добавить Средства, либо послать ещё одного Приспешника.",
-		id: "explorevaulttick",
-		actionId: "explore",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники будут преодолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultsuccesslink",
-				chance: "100",
-			},
-			{
-				id: "explorevaultfailure_nofunds",
-				chance: "100",
-			},
-			{
-				id: "explorevaultfailure_nofollowers",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			funds: "-1",
-		},
-		warmup: "10",
-		label: "Сложности снабжения",
-		startdescription: "Припасы кончаются. Если я не пошлю ещё Средства, от экспедиции придётся отказаться.",
-		id: "explorevaultfailure_nofunds",
-		actionId: "explore",
-		description: "Мы можем попытаться снова, когда уляжется пыль.",
-		effects: 
-		{
-			guardian: "-10",
-			curse: "-10",
-			seal: "-10",
-			peril: "-10",
-			dread: "1",
-			mystique: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			follower: "-1",
-		},
-		warmup: "10",
-		label: "Никто не вернулся",
-		startdescription: "Мои агенты мертвы, либо бесполезны по иным причинам. Мне нужно послать им помощь, или экспедиция подойдёт к концу.",
-		id: "explorevaultfailure_nofollowers",
-		actionId: "explore",
-		description: "Никто не вернулся. Я могу попытаться отправить экспедию вновь. Я даже могу снова воспользоваться теми же припасами.",
-		effects: 
-		{
-			guardian: "-10",
-			curse: "-10",
-			seal: "-10",
-			peril: "-10",
-			dread: "1",
-			mystique: "1",
-		},
-	},
-	{
-		id: "explorevaultsuccesslink",
-		comments: "Separate recipe link to remove the confusing slot from Success, next.",
-		requirements: 
-		{
-			curse: "-1",
-			seal: "-1",
-			peril: "-1",
-			guardian: "-1",
-		},
-		linked: 
-		[
-			{
-				id: "explorevaultsuccess",
-				chance: "100",
-			},
-		],
-		label: "Нас ждут сокровища",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultsuccess",
-		linked: 
-		[
-			{
-				id: "explorevaultcapital1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapital1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapital2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapital3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapital4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapital5_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcapitaldefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshires1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshires2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshires3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshires4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshires5_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultshiresdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent5_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinent6_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultcontinentdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforest1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforest2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforest3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforest4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforest5_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultlandbeyondforestdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultrendingmountains1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultrendingmountains2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultrendingmountains3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultrendingmountains4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultrendingmountainsdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultloneandlevelsands1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultloneandlevelsands2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultloneandlevelsands3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultloneandlevelsands4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultloneandlevelsandsdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaulteveningisles1_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaulteveningisles2_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaulteveningisles3_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaulteveningisles4_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaulteveningislesdefault_success",
-				chance: "100",
-			},
-			{
-				id: "explorevaultfloating1_success",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		startdescription: "Успех! Скоро узнаю подробности...",
-		description: ".",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		label: "Нас ждут сокровища",
-		actionId: "explore",
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		craftable: "false",
-		warmup: "5",
-		label: "Участник экспедиции умирает!",
-		startdescription: "Если мы не в силах устранить Угрозу или Стражу, то обычно одному из нас грозит верная смерть.",
-		id: "explorevault_casualty",
-		description: "Смерть пришла.",
-		actionId: "explorevault_casualty",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty_summoning",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevault_casualty_summoning",
-		aspects: 
-		{
-			killsummoned: "1",
-		},
-		requirements: 
-		{
-			summoned: "1",
-		},
-		description: "It is banished, or destroyed.",
-		label: "My summoning has been defeated!",
-		actionId: "explorevault_casualty",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "explorevault_expeditionbegun",
+            "description": ".",
+            "startdescription": "У моих ставленников наконец-то появился шанс доказать свою ценность.",
+            "label": "Экспедиция отправляется"
+        },
+        {
+            "id": "explorevault.add.watchers"
+        },
+        {
+            "id": "explorevault.add.monks"
+        },
+        {
+            "id": "explorevault.add.dead"
+        },
+        {
+            "id": "explorevault.add.serpent"
+        },
+        {
+            "id": "explorevaulttick",
+            "description": ".",
+            "startdescription": "Экспедиция готовится к встрече с новым препятствием. Ей потребуются средства; я могу отправить в помощь своим людям деньги или еще одного последователя.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Последователи борются с препятствиями.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Экспедиция продолжается"
+        },
+        {
+            "id": "explorevaultfailure_nofunds",
+            "description": "Когда уляжется пыль, попытку можно будет повторить.",
+            "startdescription": "У моих людей заканчиваются припасы. Если я не отправлю им дополнительные средства, экспедицию придётся свернуть.",
+            "label": "Трудности планирования"
+        },
+        {
+            "id": "explorevaultfailure_nofollowers",
+            "description": "Из экспедиции никто не вернулся. Я могу предпринять новую попытку. Можно даже заново использовать неистраченные средства.",
+            "startdescription": "В экспедиции не осталось людей. Необходимо отправить помощь, иначе её придётся свернуть.",
+            "label": "Некому возвращаться"
+        },
+        {
+            "id": "explorevaultsuccesslink",
+            "label": "Впереди сокровища"
+        },
+        {
+            "id": "explorevaultsuccess",
+            "description": ".",
+            "startdescription": "Получилось! Совсем скоро я узнаю новую истину...",
+            "label": "Впереди сокровища"
+        },
+        {
+            "id": "explorevault_casualty",
+            "description": "Раны очень опасны. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Наши ряды редеют.",
+            "label": "Один из участников экспедиции повержен!"
+        },
+        {
+            "id": "explorevault_casualty_summoning",
+            "description": "Оно было изгнано из этого мира или просто уничтожено.",
+            "label": "Призванное мной существо повержено!"
+        }
+    ]
 }

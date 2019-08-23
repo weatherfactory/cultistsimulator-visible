@@ -1,170 +1,49 @@
-﻿{
-decks: [
-	{
-		id: "acquaintances",
-		description: "Так много людей в этом мире — но так мало тех, с кем стоит знаться.",
-		label: "Знакомства",
-		spec: 
-		[
-				auclair_a,
-				cat_a,
-				clifton_a,
-				slee_a,
-				elridge_a,
-				laidlaw_a,
-				porter_a,
-				renira_a,
-				saliba_a,
-				sylvia_a,
-				valciane_a,
-				violet_a,
-				ysabet_a,
-				clovette_a,
-				tristan_a,
-				dorothy_a,
-				enid_a,
-				rose_a,
-				leo_a,
-				neville_a,
-				victor_a,
-				generic_a_edge,
-				generic_a_forge,
-				generic_a_grail,
-				generic_a_heart,
-				generic_a_knock,
-				generic_a_lantern,
-				generic_a_moth,
-				generic_a_winter,
-		],
-		defaultcard: "mistakenidentity",
-	},
-	{
-		id: "hirelings",
-		description: "Каждой цели — свои средства.",
-		label: "Бугаи и Ловкачи",
-		spec: 
-		[
-				thugedge,
-				thugforgeedge,
-				thuglanternmoth,
-				thugknock,
-				thugmoth,
-				thugedge,
-				thugforgeedge,
-				thuglanternmoth,
-				thugknock,
-				thugmoth,
-				thugmothminor,
-				thugmothminor,
-				thugmothminor,
-				thugmothminor,
-				thugedgeminor,
-				thugedgeminor,
-				thugedgeminor,
-				thugedgeminor,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "hunters",
-		description: "Те, кто желают мне зла.",
-		label: "Охотники",
-		spec: 
-		[
-				investigator1,
-				investigator2,
-				investigator3,
-				investigator4,
-				defaulthunter,
-		],
-		defaultcard: "defaulthunter",
-	},
-	{
-		id: "scholarpatrons",
-		description: "Те, кто могут помочь мне.",
-		label: "Покровители",
-		spec: 
-		[
-				aladimready,
-				bechetready,
-				janningsready,
-				poppyready,
-				sulochana,
-		],
-		defaultcard: "rumour",
-	},
-	{
-		id: "aladimcommissions",
-		label: "Интересы аль-Адима",
-		spec: 
-		[
-				commissionarticlesecrethistories,
-				commissionarticlesecrethistoriesb,
-				commissionarticlesecrethistoriesc,
-				commissionarticlelantern,
-				commissionarticlelanternb,
-				commissionarticlelanternc,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "commissionarticlesecrethistories",
-	},
-	{
-		id: "bechetcommissions",
-		label: "Интересы Бекет",
-		spec: 
-		[
-				commissionarticleforge,
-				commissionarticleforgeb,
-				commissionarticleforgec,
-				commissionarticlegrail,
-				commissionarticlegrailb,
-				commissionarticlegrailc,
-				commissionarticlemoth,
-				commissionarticlemothb,
-				commissionarticlemothc,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "commissionarticlegrail",
-	},
-	{
-		id: "janningscommissions",
-		label: "Интересы Джаннингса",
-		spec: 
-		[
-				commissionarticleedge,
-				commissionarticleedgeb,
-				commissionarticleedgec,
-				commissionarticleheart,
-				commissionarticleheartb,
-				commissionarticleheartc,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "poppycommissions",
-		label: "Интересы Поппи",
-		spec: 
-		[
-				commissionarticlewinter,
-				commissionarticlewinterb,
-				commissionarticlewinterc,
-				commissionarticleknock,
-				commissionarticleknockb,
-				commissionarticleknockc,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "randomvictim",
-		description: "Мы сделаем с ними всё, что необходимо.",
-		label: "Глупцы и Неудачники",
-		spec: 
-		[
-				genericprisonerm,
-				genericprisonerf,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "genericprisonerm",
-	},
-]
+{
+    "decks": [
+        {
+            "label": "Знакомые",
+            "description": "Мир переполнен людьми, но немногие из них заслуживают внимания.",
+            "id": "acquaintances"
+        },
+        {
+            "label": "Жестокие и изворотливые",
+            "description": "Иные цели требуют особых средств.",
+            "id": "hirelings"
+        },
+        {
+            "label": "Охотники",
+            "description": "Те, кто желает мне зла.",
+            "id": "hunters"
+        },
+        {
+            "label": "Покровители",
+            "description": "Те, кто может быть полезен.",
+            "id": "scholarpatrons"
+        },
+        {
+            "id": "aladimcommissions",
+            "description": "",
+            "label": "Интересы Аль-Адима"
+        },
+        {
+            "id": "bechetcommissions",
+            "description": "",
+            "label": "Интересы Беше"
+        },
+        {
+            "label": "Интересы Яннингса",
+            "description": "",
+            "id": "janningscommissions"
+        },
+        {
+            "label": "Интересы Поппи",
+            "description": "",
+            "id": "poppycommissions"
+        },
+        {
+            "id": "randomvictim",
+            "description": "Они послужат нашим целям.",
+            "label": "Недалекие и беспечные"
+        }
+    ]
 }

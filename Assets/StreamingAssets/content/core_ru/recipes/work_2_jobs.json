@@ -1,1163 +1,334 @@
-﻿{
-recipes: [
-	{
-		requirements: 
-		{
-			reason: "1",
-			ritual: "-1",
-			job: "-1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Найти бумажную работу",
-		startdescription: "Найти работу, которая пощадит хотя бы моё тело, если не разум.",
-		id: "findclericalwork",
-		actionId: "work",
-		description: "«Гловер и Гловер» предложили мне стажировку. Я приступаю к работе завтра утром, ровно в восемь!",
-		maxexecutions: "1",
-		effects: 
-		{
-			gloverandgloverjuniorjob: "1",
-		},
-		burnimage: "office",
-	},
-	{
-		requirements: 
-		{
-			demotion: "1",
-		},
-		craftable: "true",
-		hintonly: "true",
-		aspects: 
-		{
-			plead: "1",
-		},
-		label: "Просить сохранить на должности?",
-		startdescription: "Начальство должно поверить в моё раскаяние. [Приложите Страсть, чтобы убедить руководителей позволить вам вернуться к работе.]",
-		id: "job_plead_hint",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			demotion: "1",
-			passion: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		aspects: 
-		{
-			plead: "1",
-		},
-		label: "Просить сохранить на должности",
-		startdescription: "Это неприятный разговор, но, вероятно, необходимый.",
-		id: "job_plead",
-		description: "Мне дали ещё один шанс. Очевидно, от меня ожидали благодарности.",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverjuniorjob: "1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Diligence",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Дополнительные усилия. Иногда могут помочь.",
-				forbidden: 
-				{
-				},
-				label: "Усердие",
-			},
-		],
-		label: "Стажировка в «Гловер и Гловер»",
-		startdescription: "Скрип ручек, горечь пыли, вздохи младшего Гловера, жадное ворчание старшего.",
-		id: "gloverandgloverjuniorwork",
-		actionId: "work",
-		description: "Клерки закрывают дела в тишине. Я временно на свободе.",
-		effects: 
-		{
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_diligence",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "1",
-		},
-		craftable: "false",
-		warmup: "0",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Дополнительные усилия в «Гловер и Гловер»",
-		startdescription: "Я приложу дополнительные усилия. Возможно, их оценят.",
-		id: "gloverandglover_diligence",
-		actionId: "work",
-		description: "День закончен. Шея болит. Завтрашняя работа ни на йоту не сократилась.",
-		effects: 
-		{
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandgloverjunior_diligence_promotion",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverjuniorjob: "1",
-			reason: "1",
-		},
-		warmup: "0",
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Повышение!",
-		id: "gloverandgloverjunior_diligence_promotion",
-		actionId: "work",
-		description: "Мистер Алден, Заведующий Архивом, вызвал меня в свой офис, чтобы одобрить моё усердие. Бородавка на его шее чуть двигалась, пока он говорил; и говорил; и говорил. Но в конце концов, меня повысили!
-		
-Новая должность лучше оплачивается, и стол стоит у окна на улицу. Но я работаю непосредственно под мистером Алденом. Мистер Алден известен придирчивостью.",
-		effects: 
-		{
-			funds: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			ritual: "-1",
-			gloverandgloverjuniorjob_nodifficultbossa: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Diligence",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Дополнительные усилия. Иногда могут помочь.",
-				forbidden: 
-				{
-				},
-				label: "Усердие",
-			},
-		],
-		label: "Стажировка в «Гловер и Гловер»",
-		startdescription: "Скрип ручек, горечь пыли, вздохи младшего Гловера, жадное ворчание старшего.",
-		id: "gloverandgloverjuniorwork_again",
-		actionId: "work",
-		description: "Клерки закрывают дела в тишине. Я временно на свободе.",
-		effects: 
-		{
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_diligence_again",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "1",
-		},
-		craftable: "false",
-		warmup: "0",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Дополнительные усилия в «Гловер и Гловер»",
-		startdescription: "Я приложу дополнительные усилия. Возможно, их оценят; возможно, я вернусь на лучшую должность.",
-		id: "gloverandglover_diligence_again",
-		actionId: "work",
-		description: "День окончен. Шея болит. Завтрашняя работа ни на йоту не сократилась.",
-		effects: 
-		{
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandgloverjunior_diligence_promotion_again",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "1",
-			gloverandgloverjuniorjob_nodifficultbossa: "1",
-		},
-		warmup: "0",
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Повышение!",
-		id: "gloverandgloverjunior_diligence_promotion_again",
-		actionId: "work",
-		description: "Мне вернули лучшую должность.",
-		effects: 
-		{
-			funds: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "gloverandglover_difficultbossa_overtime_initial",
-				chance: "100",
-			},
-			{
-				id: "gloverandglover_difficultbossa_overtime",
-				chance: "70",
-			},
-			{
-				id: "gloverandglover_difficultbossa_no_overtime",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			gloverandglover_difficultbossa_job: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Мне платят лучше, чем раньше. Но мистер Алден присматривается ко мне. Мистер Алден крайне въедлив. Мистер Алден ценит работу, выполненную в точности так, как следует. И мистер Алден никогда не считал, что я соответствую этой должности.",
-		id: "gloverandgloverwork_difficultbossa",
-		actionId: "work",
-		description: ".",
-		effects: 
-		{
-			funds: "2",
-		},
-	},
-	{
-		id: "gloverandglover_difficultbossa_no_overtime",
-		aspects: 
-		{
-			employment: "1",
-		},
-		description: "Мистер Алден сегодня не нашёл в моей работе ничего, заслуживающего критики. Он не смотрит, как я ухожу.",
-		startdescription: ".",
-		label: "Труд в «Гловер и Гловер»",
-		actionId: "work",
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Мистер Алден уходит в отставку!",
-		startdescription: "«Завтра я покидаю „Гловер и Гловер“. Когда закончите сегодняшнюю работу, зайдите ко мне».",
-		id: "gloverandglover_difficultbossa_patienceisavirtue",
-		description: "«Вы <i>смогли</i> продемонстрировать некоторый прогресс под моим руководством. Я порекомендовал вас себе на замену. Помните, чему я вас учил, и однажды, возможно, отдел будет гордиться вами. Можете идти».
-	
-«Ещё одно! Чуть не забыл — »
-	
-«Пожалуйста, будьте в особенности пунктуальны завтра».
-	",
-		actionId: "work",
-	},
-	{
-		craftable: "false",
-		comments: "Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
-		warmup: "30",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Сверхурочный труд по настоянию мистера Алдена",
-		startdescription: "«Работа закончена, когда я считаю, что она закончена, и не раньше того. Надеюсь, мы поняли друг друга».",
-		id: "gloverandglover_difficultbossa_overtime_initial",
-		actionId: "work",
-		description: "«В этом случае я считаю, что качество вашей работы находится на приемлемом уровне. Можете идти. Пожалуйста, будьте пунктуальны завтра».
-	
-[Могут быть способы справиться с мистером Алденом.]",
-		maxexecutions: "1",
-		slots: 
-		[
-			{
-				id: "Attention",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Дополнительные усилия. Могут помочь, если очень повезёт.",
-				label: "Внимание",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_difficultbossa_overtime_fail",
-				chance: "100",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "gloverandglover_difficultbossa_patienceisavirtue",
-				chance: "2",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Сверхурочный труд по настоянию мистера Алдена",
-		startdescription: "«Работа закончена, когда я считаю, что она закончена, и не раньше того. Надеюсь, мы поняли друг друга».",
-		id: "gloverandglover_difficultbossa_overtime",
-		actionId: "work",
-		description: "«И в этом случае я тоже считаю, что ваша работа выполнена на приемлемом уровне качества. Можете идти. Пожалуйста, будьте пунктуальны завтра».
-	
-[Могут быть способы справиться с мистером Алденом.]",
-		slots: 
-		[
-			{
-				id: "Attention",
-				required: 
-				{
-					reason: "1",
-					passion: "1",
-				},
-				description: "Дополнительные усилия. Могут помочь, если очень повезёт.",
-				label: "Внимание",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_difficultbossa_overtime_fail",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "-1",
-		},
-		craftable: "false",
-		effects: 
-		{
-			funds: "-1",
-		},
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Сверхурочный труд по настоянию мистера Алдена",
-		startdescription: "«Я полагаю, что вы не в полной мере понимаете важность нашей работы в этом отделе. Эта задача потребует вашего <i>полного</i> внимания». [Уделите Разум, чтобы удовлетворить мистера Алдена.]",
-		id: "gloverandglover_difficultbossa_overtime_fail",
-		description: "«Мне хотелось бы сказать, что я разочарован, но мои ожидания в отношении вас и без того были невысоки. У меня нет выбора, кроме как удержать часть вашего заработка. Можете идти, но, пожалуйста, будьте пунктуальны завтра».
-	
-[Могут быть способы справиться с мистером Алденом.]",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			gloverandglover_difficultbossa_gone_job: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Офис шуршит новостями о неожиданном отсутствии Алдена. Тощий нервный парень с четвёртого этажа назначен исполняющим обязанности Заведующего Архивом. В отличие от Алдена, он не вмешивается в мою работу.",
-		id: "gloverandgloverwork_difficultbossa_gone",
-		actionId: "work",
-		description: "Чернила, бумага, мерцание электрических ламп. Офис тёмен, когда я ухожу. Но я ухожу в назначенное время.",
-		effects: 
-		{
-			gloverandglover_difficultbossa_gone_job: "-1",
-			gloverandgloverjob: "1",
-			funds: "2",
-		},
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverjob: "1",
-		},
-		craftable: "true",
-		warmup: "70",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Devotion",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Дополнительные усилия. Могут помочь, если очень повезёт.",
-				label: "Вовлечённость",
-			},
-		],
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Теперь работа требует больше внимания, но оплачивается лучше.",
-		id: "gloverandgloverwork",
-		actionId: "work",
-		description: "Чернила, бумага, мерцание электрических ламп. Офис тёмен, когда я ухожу. Выйдя из здания, я поднимаю воротник.",
-		effects: 
-		{
-			funds: "2",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_diligence_promotion",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "2",
-			gloverandgloverjob: "1",
-		},
-		warmup: "0",
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Сверхурочный труд в «Гловер и Гловер»",
-		id: "gloverandglover_diligence_promotion",
-		actionId: "work",
-		description: "Младший Гловер взял меня с собой на ланч в своём клубе. Мне предстоит делать то же самое, что на работе, но ещё тщательнее; за это он выплатит мне чуть больше денег из тех, что моим трудом заработаны для его отца.",
-		effects: 
-		{
-			funds: "3",
-		},
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverjob_youngerglovergone: "1",
-		},
-		craftable: "true",
-		warmup: "70",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Devotion",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Дополнительные усилия. Могут помочь, если очень повезёт.",
-				label: "Вовлечённость",
-			},
-		],
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Теперь работа требует больше внимания, но оплачивается лучше.",
-		id: "gloverandgloverwork_again",
-		actionId: "work",
-		description: "Чернила, бумага, мерцание электрических ламп. Офис тёмен, когда я ухожу. Выйдя из здания, я поднимаю воротник.",
-		effects: 
-		{
-			funds: "2",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglover_diligence_promotion_again",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "2",
-		},
-		warmup: "0",
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Сверхурочный труд в «Гловер и Гловер»",
-		id: "gloverandglover_diligence_promotion_again",
-		actionId: "work",
-		description: "Я вновь среди начальников.",
-		effects: 
-		{
-			funds: "2",
-		},
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverseniorjob: "1",
-			reason: "1",
-		},
-		craftable: "true",
-		warmup: "70",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Acceptance",
-				required: 
-				{
-					passion: "1",
-				},
-				description: "Я могу посвятить этому жизнь.",
-				label: "Принятие",
-			},
-		],
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Верно сложить руки и приступить к работе.",
-		id: "gloverandgloverseniorwork_retirementoption",
-		actionId: "work",
-		description: "Я всегда запираю офис; даже старший Гловер уходит раньше.",
-		effects: 
-		{
-			funds: "3",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "workvictory",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			gloverandgloverseniorjob: "1",
-			reason: "1",
-		},
-		craftable: "true",
-		warmup: "70",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Верно сложить руки и приступить к работе.",
-		id: "gloverandgloverseniorwork",
-		actionId: "work",
-		description: "Я всегда запираю офис; даже старший Гловер уходит раньше. Я на хорошем счету у младшего Гловера. Он любит шутить, что я могу потеснить его следующим повышением. Конечно же, нет. Его отец об этом позаботится. Эта шутка должна ставить меня на место. Она начинает раздражать.",
-		effects: 
-		{
-			funds: "3",
-		},
-	},
-	{
-		id: "gloverandgloverseniorwork_hint",
-		craftable: "false",
-		startdescription: "Работа требует моего внимания. Надо всерьёз уделить ей Разум.",
-		requirements: 
-		{
-			gloverandgloverseniorjob: "1",
-		},
-		label: "Труд в «Гловер и Гловер»?",
-		hintonly: "true",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			reason: "1",
-			gloverandgloverseniorjob_youngerglovergone: "1",
-		},
-		craftable: "true",
-		warmup: "70",
-		aspects: 
-		{
-			employment: "1",
-		},
-		slots: 
-		[
-			{
-				id: "Ambition",
-				required: 
-				{
-					passion: "1",
-				},
-				description: "Место младшего Гловера в совете всё ещё не занято...",
-				label: "Честолюбие",
-			},
-		],
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Верно сложить руки и приступить к работе.",
-		id: "gloverandgloverseniorworkyoungerglovergone",
-		actionId: "work",
-		description: "Когда я закрываю глаза, под веками прыгают цифры. Когда открываю их — свет ослепляет.",
-		effects: 
-		{
-			funds: "3",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandgloversenior_diligence_promotion",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "gloverandgloverseniorwork_youngerglovergone_hint",
-		craftable: "false",
-		startdescription: "Работа требует моего внимания. Надо всерьёз уделить ей Разум.",
-		requirements: 
-		{
-			gloverandgloverseniorjob_youngerglovergone: "1",
-		},
-		label: "Труд в «Гловер и Гловер»?",
-		hintonly: "true",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			passion: "1",
-		},
-		aspects: 
-		{
-			careeradvancement: "1",
-		},
-		label: "Повышение!",
-		startdescription: ".",
-		id: "gloverandgloversenior_diligence_promotion",
-		actionId: "work",
-		description: "«Мой сын, — поделился старший Гловер, — был добродушен, но ему не хватало честолюбия. Вы же, с другой стороны, горите им. Вы мне напоминаете меня в молодости, знаете? Я знаю. Думаю, мы найдём вам место в совете директоров».",
-		effects: 
-		{
-			funds: "5",
-		},
-	},
-	{
-		requirements: 
-		{
-			gloverandglovertopjob: "1",
-		},
-		craftable: "true",
-		effects: 
-		{
-			funds: "4",
-			notoriety: "-1",
-		},
-		warmup: "50",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Часы рабочего дня выстроились передо мной. Я могу и просто уйти домой после обеда...",
-		id: "gloverandglovertopwork",
-		actionId: "work",
-		description: "Если бы у «Гловер и Гловер» было сердце, оно было бы в бухгалтерии, где деньги текут словно весенние ручьи. Руками были бы юркие и тихие администраторы и клерки. Но я, как и прочие члены директората, сижу на самой макушке компании, и могу не заботиться (пока что) о скандалах и денежных проблемах.",
-		slots: 
-		[
-			{
-				id: "Scandal",
-				required: 
-				{
-					notoriety: "1",
-				},
-				greedy: "true",
-				description: "Моё высокое положение даёт некоторую защиту от скандалов. Но если фирма слишком обеспокоится, от меня могут избавиться.",
-				label: "Скандал",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglovertopwork_scandal_a",
-				chance: "30",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			notoriety: "1",
-		},
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Выражение озабоченности",
-		startdescription: ".",
-		id: "gloverandglovertopwork_scandal_a",
-		actionId: "work",
-		description: "Меня вызвали в кабинет к старшему Гловеру — единственному теперь Гловеру. Он неловко выпрямляется в кресле. «Я слышал, — начинает он. Колеблется. Смотрит прямо в мои глаза. — Я не хочу слышать ничего больше о том... об этом. Больше ни слова. Ни единого слова».",
-		effects: 
-		{
-			gloverandglovertopjob: "-1",
-			funds: "4",
-			gloverandglovertopjob_tainted: "1",
-			notoriety: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			gloverandglovertopjob_tainted: "1",
-		},
-		craftable: "true",
-		effects: 
-		{
-			funds: "4",
-			notoriety: "-1",
-		},
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Труд в «Гловер и Гловер»",
-		startdescription: "Прошли дни, когда дорога домой открывалась мне после обеда. Мои коллеги начали подозревать, кто я. Они ничего не знают о том, чем я могу стать.",
-		id: "gloverandglovertopjob_tainted",
-		actionId: "work",
-		description: "Я просматриваю аккуратные колонки цифр в аккуратной комнате на пятом этаже. Из офисного окна я вижу реку. Секретарь приносит мне горячий напиток каждые сорок пять минут. Река — цвета дождя.",
-		slots: 
-		[
-			{
-				id: "Scandal",
-				required: 
-				{
-					notoriety: "1",
-				},
-				greedy: "true",
-				description: "Моё высокое положение может прикрывать меня ещё какое-то время. Но теперь передо мной реальная перспектива утратить должность.",
-				label: "Скандал",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "gloverandglovertopwork_scandal_b",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "gloverandglovertopwork_scandal_b",
-		startdescription: ".",
-		requirements: 
-		{
-			notoriety: "1",
-		},
-		description: "Мне пришло официальное (но странным образом тревожное) письмо, переданное лично в руки от компании «Гловер и Гловер». Мои услуги в качестве директора больше не требуются, но к письму прилагается очень щедрое выходное пособие. Компания выражает искреннюю надежду, что расставание на этих условиях не будет болезненным. Подпись на письме слегка нетверда...",
-		effects: 
-		{
-			gloverandglovertopjob_tainted: "-1",
-			funds: "8",
-			notoriety: "-1",
-		},
-		label: "Разжалование!",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			ritual: "-1",
-			institutephysicianjob: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Труд в Институте",
-		startdescription: "Сырой и едкий запах в коридорах Института никогда их не покидает. Может быть, краска. Может быть, пациенты. Может быть, что-то в стенах.",
-		id: "institutephysicianwork",
-		actionId: "work",
-		description: "Удалось принести некоторую пользу. Мои пациенты тише, чем были в начале моей смены.",
-		effects: 
-		{
-			funds: "2",
-		},
-	},
-	{
-		requirements: 
-		{
-			decrepitude: "1",
-		},
-		craftable: "true",
-		warmup: "90",
-		label: "Нищенство на улицах",
-		startdescription: "Я покажу мои недуги и буду надеяться на сочувствие прохожих.",
-		id: "workbeg",
-		actionId: "work",
-		description: "Длинный день. Кто-то кидал монеты, почти все отворачивались. Тяжело столько часов видеть так много удаляющихся спин.",
-		effects: 
-		{
-			funds: "1",
-			dread: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "workbeg_lucky",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "workbeg_lucky",
-		warmup: "90",
-		requirements: 
-		{
-			decrepitude: "1",
-		},
-		description: "Длинный день. Кто-то кидал монеты, почти все отворачивались. Но в моей миске — золотой соверен! Щедрое пожертвование или случайность?",
-		effects: 
-		{
-			funds: "2",
-		},
-		label: "Нищенство на улицах",
-		actionId: "work",
-	},
-	{
-		requirements: 
-		{
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			skillhealthd_strength: "1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "40",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Unskilled Labour: Like the Mountain",
-		startdescription: "Once again I put my strength to use.",
-		id: "workhealthskilld_edge",
-		actionId: "work",
-		description: "They say I can do the job of any two others together. It's not true; not quite.",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			healthskill: "3",
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "45",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Unskilled Labour: Arms of Steel",
-		startdescription: "Once again I put my strength to use.",
-		id: "workhealthskillc",
-		actionId: "work",
-		description: "My strength attracts comment. Not all the comments are compliments. I draw my pay and leave.",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			healthskill: "2",
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "50",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Unskilled Labour: Arms of Iron",
-		startdescription: "I will work with speed and in silence. I don't fear injury.",
-		id: "workhealthskillb",
-		actionId: "work",
-		description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			healthskill: "1",
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		warmup: "55",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Неквалифицированный труд: бронзовые руки",
-		startdescription: "Тогда за работу.",
-		id: "workhealthskilla",
-		actionId: "work",
-		description: "Дело сделано раньше срока. Заработок в кармане.",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "workhealthinjury",
-				chance: "10",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		comments: "guaranteed three days without injury",
-		comment: "NEW",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Unskilled Labour",
-		startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
-		id: "workhealth_noinjurychance",
-		actionId: "work",
-		description: "The day is done, and so am I; but I've earned my pay.",
-		maxexecutions: "3",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			job: "-1",
-			health: "1",
-			benefactor: "-1",
-			ritual: "-1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		aspects: 
-		{
-			employment: "1",
-		},
-		label: "Unskilled Labour",
-		startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
-		id: "workhealth",
-		actionId: "work",
-		description: "The day is done, and so am I; but I've earned my pay.",
-		effects: 
-		{
-			vitality: "1",
-			funds: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "workhealthinjury",
-				chance: "30",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "0",
-		label: "An injury at work!",
-		startdescription: ".",
-		id: "workhealthinjury",
-		actionId: "work",
-		description: "I'm injured! I'll hobble painfully home with my wretched pay.",
-		effects: 
-		{
-			injury: "1",
-			health: "-1",
-			funds: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "investmentsjobdecline",
-				chance: "30",
-			},
-		],
-		requirements: 
-		{
-			investmentsjobc: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		label: "Manage my Affairs",
-		startdescription: "My investments will provide well for me, if I pay attention to them.",
-		id: "workinvestmentjobc",
-		actionId: "work",
-		description: "A neat white cheque in a neat white envelope, for a handsome sum.",
-		effects: 
-		{
-			funds: "4",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "investmentsjobdecline",
-				chance: "30",
-			},
-		],
-		requirements: 
-		{
-			investmentsjobb: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		label: "Manage my Affairs",
-		startdescription: "My investments will provide sufficiently for me, if I pay attention to them.",
-		id: "workinvestmentjobb",
-		actionId: "work",
-		description: "A neat white cheque in a neat white envelope, for a reasonably attractive sum.",
-		effects: 
-		{
-			funds: "3",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "investmentsjobdecline",
-				chance: "30",
-			},
-		],
-		requirements: 
-		{
-			investmentsjoba: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "60",
-		label: "Manage my Affairs",
-		startdescription: "My investments will just about provide for me, if I pay attention to them.",
-		id: "workinvestmentjoba",
-		actionId: "work",
-		description: "A neat white cheque in a neat white envelope, for a modest sum.",
-		effects: 
-		{
-			funds: "2",
-		},
-	},
-	{
-		craftable: "false",
-		comment: "NEW",
-		warmup: "5",
-		aspects: 
-		{
-			decline: "1",
-		},
-		label: "A Decline in Circumstances",
-		startdescription: ".",
-		id: "investmentsjobdecline",
-		description: "I have received the usual cheque, but it comes with disquieting news. My investments have suffered - ill luck, or, just possibly, an enemy's malice.",
-		actionId: "work",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "findclericalwork",
+            "description": "В «Гловер и Гловер» мне предложили самую низовую работу. Начать можно завтра в восемь утра! ",
+            "startdescription": "Найти работу, которая пощадит моё тело, если не разум.",
+            "label": "Найти работу продавцом"
+        },
+        {
+            "id": "job_plead_hint",
+            "startdescription": "Начальство не верит в моё раскаяние. [Используйте эмоции, чтобы убедить руководство разрешить вам вернуться к работе.]",
+            "label": "Просить оставить меня на работе?"
+        },
+        {
+            "id": "job_plead",
+            "description": "Мне дали ещё один шанс. Мне нужно проявить благодарность.",
+            "startdescription": "Это не самый приятный, но необходимый разговор.",
+            "label": "Просить, чтобы меня не выгнали"
+        },
+        {
+            "id": "gloverandgloverjuniorwork",
+            "label": "Низовая работа в «Гловер и Гловер»",
+            "description": "Продавцы расходятся в тишине. Я тоже могу идти.",
+            "startdescription": "Скрип ручек, запах пыли, вздохи Гловера-младшего, жадное бульканье старшего.",
+            "slots": [
+                {
+                    "label": "Усердие",
+                    "description": "Больше усилий. Порой это помогает.",
+                    "id": "Diligence"
+                }
+            ]
+        },
+        {
+            "id": "gloverandglover_diligence",
+            "label": "Больше усилий в «Гловер и Гловер»",
+            "description": "Конец дня. Шея болит. Завтра работы будет так же много.",
+            "startdescription": "Я приложу побольше усилий. Может, они это оценят."
+        },
+        {
+            "id": "gloverandgloverjunior_diligence_promotion",
+            "description": "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!\r\n\t\t\r\nMy new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
+            "startdescription": "",
+            "label": "Повышение!"
+        },
+        {
+            "id": "gloverandgloverjuniorwork_again",
+            "label": "Junior Работа в «Гловер и Гловер»",
+            "description": "Продавцы расходятся в тишине. Я тоже могу идти.",
+            "startdescription": "Скрип ручек, запах пыли, вздохи Гловера-младшего, жадное бульканье старшего.",
+            "slots": [
+                {
+                    "label": "Усердие",
+                    "description": "Больше усилий. Порой это помогает.",
+                    "id": "Diligence"
+                }
+            ]
+        },
+        {
+            "id": "gloverandglover_diligence_again",
+            "label": "Больше усилий в «Гловер и Гловер»",
+            "description": "Конец дня. Шея болит. Завтра работы будет так же много.",
+            "startdescription": "Я приложу побольше усилий. Может, начальство это оценит. Вдруг мне дадут работу получше?"
+        },
+        {
+            "id": "gloverandgloverjunior_diligence_promotion_again",
+            "description": "Мне предложили пост повыше.",
+            "startdescription": "",
+            "label": "Повышение!"
+        },
+        {
+            "id": "gloverandgloverwork_difficultbossa",
+            "description": ".",
+            "startdescription": "Теперь мне куда лучше платят. Но мной заинтересовался мистер Олден. Мистер Олден очень привередливый, он хочет, чтобы всё делалось наилучшим образом. Мистер Олден не верит, что я подхожу на это место.",
+            "label": "Работа в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_no_overtime",
+            "description": "Мистер Олден сегодня не нашёл, за что меня ругать. Даже не посмотрел на меня, прощаясь.",
+            "startdescription": ".",
+            "label": "Работа в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_patienceisavirtue",
+            "description": "'You <i>have</i> shown some improvement, under my direction. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'\r\n\t\r\n'One more thing! I had almost forgotten - '\r\n\t\r\n'Be especially punctual tomorrow, please.'\r\n\t",
+            "startdescription": "«Завтра я покину \"Гловер и Гловер\". Когда закончите дела, зайдите ко мне».",
+            "label": "Мистер Олден выходит на пенсию!"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime_initial",
+            "description": "'On this occasion I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "startdescription": "«Работа заканчивается, когда я считаю её законченной, но не раньше. Надеюсь, мы хорошо друг друга понимаем».",
+            "slots": [
+                {
+                    "label": "Внимание",
+                    "description": "Больше усилий. Если мне очень повезёт, это окупится.",
+                    "id": "Attention"
+                }
+            ],
+            "label": "Работать сверхурочно по настоянию мистера Олдена"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime",
+            "description": "'Once again, I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "startdescription": "«Работа заканчивается, когда я считаю её законченной, но не раньше. Надеюсь, мы хорошо друг друга понимаем».",
+            "slots": [
+                {
+                    "label": "Внимание",
+                    "description": "Больше усилий. Если мне очень повезёт, это окупится.",
+                    "id": "Attention"
+                }
+            ],
+            "label": "Работать сверхурочно по настоянию мистера Олдена"
+        },
+        {
+            "id": "gloverandglover_difficultbossa_overtime_fail",
+            "description": "'I would like to say that I am disappointed, but my expectations of you were already low. I have no choice but to withhold a portion of your pay. You may go, but be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "startdescription": "«Я не могу поверить, что вы не понимаете, насколько важна наша работа. Нужно <i>полностью</i> ей отдаваться». [Добавить разум, чтобы удовлетворить мистера Олдена.]",
+            "label": "Работать сверхурочно по настоянию мистера Олдена"
+        },
+        {
+            "id": "gloverandgloverwork_difficultbossa_gone",
+            "description": "Чернила, бумага и жужжание электрических ламп. Когда я ухожу, в офисе темно. Но я ухожу в положенное время.",
+            "startdescription": "В офисе шумно из-за новостей о неожиданном отсутствии Олдена. Дёрганый парень с четвертого этажа становится временно исполняющим его обязанности. В отличие от Олдена, он не цепляется ко мне постоянно.",
+            "label": "Работа в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandgloverwork",
+            "label": "Работа в «Гловер и Гловер»",
+            "description": "Чернила, бумага, жужжание электрических ламп. Когда я ухожу, в офисе темно. На улице я поднимаю воротник.",
+            "startdescription": "Работа теперь куда ответственнее, но и платят лучше.",
+            "slots": [
+                {
+                    "label": "Самоотдача",
+                    "description": "Больше усилий. Если мне очень повезёт, это окупится.",
+                    "id": "Devotion"
+                }
+            ]
+        },
+        {
+            "id": "gloverandglover_diligence_promotion",
+            "description": "Гловер-младший пригласил меня на ланч в его клубе. Мне нужно работать больше, более аккуратно, тогда он станет делиться со мной большей долей денег, что я зарабатываю для его отца.",
+            "startdescription": "",
+            "label": "Дополнительные часы в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandgloverwork_again",
+            "label": "Работа в «Гловер и Гловер»",
+            "description": "Чернила, бумага, жужжание электрических ламп. Когда я ухожу, в офисе темно. На улице я поднимаю воротник.",
+            "startdescription": "Работа теперь куда ответственнее, но и платят лучше.",
+            "slots": [
+                {
+                    "label": "Самоотдача",
+                    "description": "Больше усилий. Если мне очень повезёт, это окупится.",
+                    "id": "Devotion"
+                }
+            ]
+        },
+        {
+            "id": "gloverandglover_diligence_promotion_again",
+            "description": "Я возвращаюсь на своё заслуженное место.",
+            "startdescription": "",
+            "label": "Дополнительные часы в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandgloverseniorwork_retirementoption",
+            "description": "Я всегда ухожу позже всех, даже позже Гловера-старшего.",
+            "startdescription": "Нужно свернуть мои руки должным образом и можно начинать.",
+            "slots": [
+                {
+                    "label": "Принятие",
+                    "description": "Я могу всю жизнь этому посвятить.",
+                    "id": "Acceptance"
+                }
+            ],
+            "label": "Работа в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandgloverseniorwork",
+            "description": "Я всегда ухожу позже всех, даже позже Гловера-старшего. С Гловером-младшим у меня хорошие отношения. Он иногда шутит, что мне суждено занять его пост. Нет, конечно, его отец этого не допустит. Это просто шутка, которая должна поставить меня на место. Начинает раздражать.",
+            "startdescription": "Нужно свернуть мои руки должным образом и можно начинать.",
+            "label": "Работа в «Гловер и Гловер»"
+        },
+        {
+            "id": "gloverandgloverseniorwork_hint",
+            "startdescription": "У меня ответственная работа. Нужно вложить в нее какую-то часть разума.",
+            "label": "Работа в «Гловер и Гловер»?"
+        },
+        {
+            "id": "gloverandgloverseniorworkyoungerglovergone",
+            "description": "Закрыв глаза, я вижу внутренним взором пляшущие цифры. Когда открываю, мне больно от света.",
+            "startdescription": "Нужно свернуть мои руки должным образом и можно начинать.",
+            "slots": [
+                {
+                    "label": "Амбиции",
+                    "description": "Место Гловера-младшего в совете остаётся свободным...",
+                    "id": "Ambition"
+                }
+            ],
+            "label": "Work at Glover & Glover"
+        },
+        {
+            "id": "gloverandgloverseniorwork_youngerglovergone_hint",
+            "startdescription": "У меня ответственная работа. Нужно вложить в нее какую-то часть своего разума.",
+            "label": "Работа в «Гловер и Гловер»?"
+        },
+        {
+            "id": "gloverandgloversenior_diligence_promotion",
+            "description": "«Мой сын, — говорит Гловер-старший, — был хорошим мальчиком, но ему не хватало амбиций. Вы же, напротив, переполнены ими. Я в вас вижу молодого себя. Как вам такое? То-то же. Думаю, мы должны принять вас в совет директоров».",
+            "startdescription": ".",
+            "label": "Повышение!"
+        },
+        {
+            "id": "gloverandglovertopwork",
+            "description": "Сердцем «Гловер и Гловер» можно считать бухгалтерию, где деньги текут, как весенние ручьи. Конечностями можно считать администраторов и продавцов, тихих и расторопных. Я же вместе с другими директорами сижу в черепе, на самом верху, где мне пока не страшны скандалы и финансовые сложности.",
+            "startdescription": "Меня ждут ещё долгие часы рабочего дня. Как бы хотелось уйти домой сразу после ланча...",
+            "slots": [
+                {
+                    "label": "Скандал",
+                    "description": "Моё высокое положение теперь даёт какую-то защиту от скандалов. Но если фирма окажется затронута, меня могут уволить.",
+                    "id": "Scandal"
+                }
+            ],
+            "label": "Work at Glover & Glover"
+        },
+        {
+            "id": "gloverandglovertopwork_scandal_a",
+            "description": "Меня вызвали к Гловеру-старшему, единственному теперь Гловеру. Он беспокойно ёрзает в кресле. «Мне сообщили, — начинает он, потом делает паузу, глядя мне в глаза. — Я не хочу об этом больше слышать. Ни слова. Ни единого. Вообще».",
+            "startdescription": ".",
+            "label": "Выражение озабоченности"
+        },
+        {
+            "id": "gloverandglovertopjob_tainted",
+            "description": "Я проверяю аккуратные столбики цифр в своем опрятном кабинете на пятом этаже. Из окна видно реку. Каждые пятьдесят восемь минут секретарша приносит мне горячий кофе. У реки тот же цвет, что и у дождя.",
+            "startdescription": "Проходят дни, прежде чем я могу отправиться домой после ланча. Коллеги начинают подозревать, кто я. Но они даже не подозревают, кем я могу быть.",
+            "slots": [
+                {
+                    "label": "Скандал",
+                    "description": "Высокое положение может меня ещё некоторое время защищать. Но я рискую его утратить.",
+                    "id": "Scandal"
+                }
+            ],
+            "label": "Work at Glover & Glover"
+        },
+        {
+            "id": "gloverandglovertopwork_scandal_b",
+            "description": "Мне пришло официальное (но крайне доходчивое) письмо из «Гловер и Гловер». Мои услуги в качестве директора более не требуются, но мне выделили щедрую сумму в качестве выходного пособия. Фирма надеется, что это предотвратит встречные обиды. Подпись поставлена несколько дрожащей рукой... ",
+            "startdescription": ".",
+            "label": "В опале!"
+        },
+        {
+            "id": "institutephysicianwork",
+            "description": "Мне удалось добиться успехов. Мои пациенты куда тише, чем раньше.",
+            "startdescription": "В коридорах клиники держится влажный и прилипчивый запах. Может, это от краски. Или от пациентов. А может, от чего-то внутри стен.",
+            "label": "Работа в клинике"
+        },
+        {
+            "id": "workbeg",
+            "description": "Долгий день. Кто-то бросал мне монеты, но большинство просто отворачивались. Тяжело за несколько часов увидеть столько удаляющихся спин.",
+            "startdescription": "Я буду демонстрировать свою немощь, вдруг кто-то сжалится надо мной.",
+            "label": "Попрошайничество на улицах"
+        },
+        {
+            "id": "workbeg_lucky",
+            "description": "Долгий день. Кто-то бросал мне монеты, но большинство просто отворачивались. А ведь в моей миске золотой соверен! Это такое щедрое пожертвование или просто случайность?",
+            "label": "Попрошайничество на улицах"
+        },
+        {
+            "id": "workhealthskilld_edge",
+            "description": "Говорят, что я могу работать за двоих. Это не так. Не совсем так.",
+            "startdescription": "Я снова полагаюсь на свою силу.",
+            "label": "Неквалифицированный труд: как гора"
+        },
+        {
+            "id": "workhealthskillc",
+            "description": "Моя сила привлекает внимание. Не все комментарии приятны. Я получаю деньги и ухожу.",
+            "startdescription": "Я снова полагаюсь на свою силу.",
+            "label": "Неквалифицированный труд: стальные мышцы"
+        },
+        {
+            "id": "workhealthskillb",
+            "description": "Остальные со мной почти не говорят, но кивают, когда я прохожу. Вот и мои деньги.",
+            "startdescription": "Я работаю быстро и тихо, не боясь травм.",
+            "label": "Неквалифицированный труд: железные мышцы"
+        },
+        {
+            "id": "workhealthskilla",
+            "label": "Неквалифицированный труд: бронзовые мышцы",
+            "description": "Удалось закончить пораньше и получить деньги.",
+            "startdescription": "Ну, за работу."
+        },
+        {
+            "label": "Неквалифицированный труд",
+            "startdescription": "Изнурительная работа за жалкие деньги. И это всё, что мне доступно?",
+            "description": "День подошел к концу, моя работа тоже. Но у меня будут деньги.",
+            "id": "workhealth_noinjurychance"
+        },
+        {
+            "id": "workhealth",
+            "label": "Неквалифицированный труд",
+            "description": "День подошел к концу, моя работа тоже. Но у меня будут деньги.",
+            "startdescription": "Изнурительная работа за жалкие деньги. И это всё, что мне доступно?"
+        },
+        {
+            "id": "workhealthinjury",
+            "description": "Меня угораздило покалечиться! Я еле ковыляю домой, получив жалкую сумму.",
+            "startdescription": ".",
+            "label": "Травма на работе!"
+        },
+        {
+            "id": "workinvestmentjobc",
+            "description": "В белом конверте лежит белый чек на приятную сумму.",
+            "startdescription": "Мои вложения с лихвой окупятся, если я буду ими заниматься.",
+            "label": "Управление делами"
+        },
+        {
+            "id": "workinvestmentjobb",
+            "description": "В белом конверте лежит белый чек на более-менее хорошую сумму.",
+            "startdescription": "Мои вложения как-то окупятся, если я буду ими заниматься.",
+            "label": "Управление делами"
+        },
+        {
+            "id": "workinvestmentjoba",
+            "description": "В белом конверте лежит белый чек на скромную сумму.",
+            "startdescription": "Мои вложения почти окупятся, если я буду ими заниматься.",
+            "label": "Управление делами"
+        },
+        {
+            "id": "investmentsjobdecline",
+            "description": "Мне передали чек, но вместе с ним пришли и тревожные новости. Мои вложения пострадали — случайно, а может и по вине врага.",
+            "startdescription": ".",
+            "label": "Новые обстоятельства"
+        }
+    ]
 }

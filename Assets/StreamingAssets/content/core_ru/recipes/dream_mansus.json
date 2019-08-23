@@ -1,1526 +1,389 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			passion: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Лунная дорога",
-		startdescription: "Я помню этот сон. Дорога взбегает на вершину холма, воздух пронизан серебристым светом —",
-		id: "dreamstartingpassion",
-		actionId: "dream",
-		description: "Неровные поля, мерцание реки. Колкая прохлада.",
-		burnimage: "moon",
-		slots: 
-		[
-			{
-				id: "Lore",
-				required: 
-				{
-					lore: "1",
-					waywood: "1",
-				},
-				description: "Если я обращусь к оккультной практике перед сном, я могу найти путь глубже в сны.",
-				label: "Знание",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "dreamreachwoodknock",
-				chance: "100",
-			},
-			{
-				id: "dreamreachwoodlantern",
-				chance: "100",
-			},
-			{
-				id: "dreamreachwoodmoth",
-				chance: "100",
-			},
-			{
-				id: "dreamenterwood",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			moth: "3",
-		},
-		comments: "requirement 3, not 2, because there's already moth in the mix.",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Тирсов путь",
-		startdescription: "Я могу отрезать локон волос перед сном и почтить тем силу Леса.",
-		id: "dreamreachwoodmoth",
-		actionId: "dream",
-		description: "Дорога ныряет под деревья. Бледные крылья мелькают глубоко в лесу. Теперь я спотыкаюсь о корни. Хочется опуститься на все четыре, чтобы не задевать низкие ветви. Луна проходит сквозь чёрные листья, её пальцы остаются в моих волосах. Я не забуду путь сюда.",
-		effects: 
-		{
-			influencemoth: "1",
-			waywood: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			knock: "2",
-		},
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Змеиный путь",
-		startdescription: "Замочники часто видят Сон после того, как ранят подошву стопы — особенно если их ужалила змея. Я могу испробовать это.",
-		id: "dreamreachwoodknock",
-		actionId: "dream",
-		description: "Я ковыляю по дороге; в пути на глаза мне попадается змея в колее. Я следую за ней по пустошам в лабиринты корней. Волосы ли касаются моего лица, или свисающий мох? Я склоняюсь ниже, чтобы быть ближе к земле, как мой проводник. Я не забуду путь сюда.",
-		effects: 
-		{
-			influencemoth: "1",
-			waywood: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			lantern: "2",
-		},
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Бесцветный путь",
-		startdescription: "Я могу заснуть в комнате без цветов: отбелить простыни, выкрасить в белый стены, обесцветить волосы и нанести мел на кожу.",
-		id: "dreamreachwoodlantern",
-		actionId: "dream",
-		description: "«Цвет существует лишь там, где есть свет», и Лес — место, куда нет пути свету. В этом сне я закрываю глаза и иду, спотыкаясь, обдирая стопы и колени. В конце концов заросли передо мной слишком густы, чтобы идти дальше; тогда я открываю глаза и вижу, что дрейфую среди чёрных деревьев. Тени колышутся. Мои ноги узнают путь сюда.",
-		effects: 
-		{
-			influencemoth: "1",
-			waywood: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waywood: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Путь в Лес",
-		startdescription: "Если мне хватит Страсти, я смогу выйти по дороге снов к Лесу. Если у меня достанет правильных Знаний, я, возможно, смогу найти путь дальше.",
-		id: "dreamusewoodway",
-		actionId: "dream",
-		description: "Воды Леса холодны и глубоки, но никогда не чисты. Простое заучивание наизусть не выведет меня на нужный путь. Мне нужна Страсть. Теперь ускользаю в иные сны.",
-		slots: 
-		[
-			{
-				id: "Path",
-				required: 
-				{
-					lore: "1",
-					passion: "1",
-				},
-				description: "Направьте Страсть, чтобы войти в Лес — или, с правильным Знанием, найдите путь к Белой Двери, где роятся Мертвецы.",
-				label: "Путь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poison.long.way.trap",
-				comment: "NEW",
-				additional: "true",
-			},
-			{
-				id: "dreamenterwood",
-				chance: "100",
-			},
-			{
-				id: "dreamreachwhitelantern",
-				chance: "100",
-			},
-			{
-				id: "dreamreachwhiteknock",
-				chance: "100",
-			},
-			{
-				id: "dreamreachwhitewinter",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachwhitelantern",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachwhiteknock",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachwhitewinter",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			passion: "1",
-			waywood: "1",
-		},
-		craftable: "false",
-		portaleffect: "Wood",
-		warmup: "0",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Вход в Лес",
-		startdescription: "Я иду среди деревьев, испещрённых глубокими шрамами. Луна проходит сквозь чёрные листья, её пальцы остаются в моих волосах. Теперь я спотыкаюсь о корни. Хочется опуститься на все четыре, чтобы не задевать низкие ветви. Бледные крылья скользят далеко в ночи.",
-		id: "dreamenterwood",
-		description: ".",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			lantern: "1",
-		},
-		warmup: "10",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Свет в Лесу: недостаточно!",
-		startdescription: "Есть Дом в Лесу. Хотя бы это я знаю. Вижу свет за деревьями — ",
-		id: "dreamnotquitereachwhitelantern",
-		description: "Колючки во сне, кожа во сне, раны во сне. Когда я проснусь, на моей кровати будут пятна крови. Это верный подход, но чтобы пройти дальше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			lantern: "4",
-		},
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Приближение к Белой Двери",
-		startdescription: "Есть Дом в Лесу. Я знаю кое-что об этом доме. Достаточно ли, чтобы дойти до его света?",
-		id: "dreamreachwhitelantern",
-		actionId: "dream",
-		description: "Есть Пределы, лежащие вокруг Дома, с их туманами и их следами. Вот камень, что именуют Храмом Колеса, высокий, как церковный шпиль, в пятнах чёрного лишайника и в знаках глаз. Я обхожу его, и прямо передо мной — Белая Дверь. Свет Дома просачивается по её контуру.",
-		effects: 
-		{
-			waywhite: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			knock: "1",
-		},
-		warmup: "10",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Свет в Лесу: недостаточно!",
-		startdescription: "Есть Дом в Лесу. Хотя бы это я знаю. Вижу свет за деревьями — ",
-		id: "dreamnotquitereachwhiteknock",
-		description: "Колючки во сне, кожа во сне, раны во сне. Когда я проснусь, на моей кровати будут пятна крови. Это верный подход, но чтобы пройти дальше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			knock: "4",
-		},
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Приближение к Белой Двери",
-		startdescription: "Есть Дом в Лесу. Я знаю достаточно тайн Стука, чтобы найти скрытые пути через сплетения деревьев.",
-		id: "dreamreachwhiteknock",
-		actionId: "dream",
-		description: "Есть Пределы, лежащие вокруг Дома, с их туманами и их следами. Вот камень, что именуют Храмом Колеса, высокий, как церковный шпиль, в пятнах чёрного лишайника и в знаках глаз. Я обхожу его, и прямо передо мной — Белая Дверь: открытая, как было предписано давным-давно.",
-		effects: 
-		{
-			waywhite: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			winter: "1",
-		},
-		warmup: "10",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Свет в Лесу: недостаточно!",
-		startdescription: "Есть Дом в Лесу. Хотя бы это я знаю. Вижу свет за деревьями — ",
-		id: "dreamnotquitereachwhitewinter",
-		description: "Колючки во сне, кожа во сне, раны во сне. Когда я проснусь, на моей кровати будут пятна крови. Это верный подход, но чтобы пройти дальше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			lore: "1",
-			winter: "4",
-		},
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Приближение к Белой Двери",
-		startdescription: "Есть Дом в Лесу, и есть дверь, куда иногда входят Мертвецы. Мне знакомы книги о путях Мертвецов.",
-		id: "dreamreachwhitewinter",
-		actionId: "dream",
-		description: "Есть Пределы, лежащие вокруг Дома, с их туманами и их следами. Вот камень, что именуют Храмом Колеса, высокий, как церковный шпиль, в пятнах чёрного лишайника и в знаках глаз. Я обхожу его, и прямо передо мной — Белая Дверь, сияющая как луна Зимой.",
-		effects: 
-		{
-			waywhite: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waywhite: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Путь к Белой Двери",
-		startdescription: "В моих снах я знаю путь к Белой Двери, через Пределы. Но этот путь забит Мертвецами, что тоже идут по нему. Мне нужно Здоровье, чтобы устоять перед их холодом.",
-		id: "dreamusewhiteway",
-		actionId: "dream",
-		description: "На узком пути толпятся медленные контуры — воздух дрожит от их вздохов. Моя кровь застывает от холода. Мне надо отступить. Теперь ускользаю в иные сны.",
-		slots: 
-		[
-			{
-				id: "Ascent",
-				required: 
-				{
-					health: "1",
-					desire: "1",
-				},
-				description: "Вложите Здоровье, чтобы пройти Белую Дверь — или следуйте за желанием к Оленьей Двери, двери Чтецов.",
-				label: "Подъём",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poison.long.way.trap",
-				comment: "NEW",
-				additional: "true",
-			},
-			{
-				id: "dreamenterwhite",
-				chance: "100",
-			},
-			{
-				id: "dreamreachstagfirst",
-				chance: "100",
-			},
-			{
-				id: "dreamreachstagsubsequent",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			health: "1",
-			waywhite: "1",
-		},
-		craftable: "false",
-		portaleffect: "whitedoor",
-		warmup: "0",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Вход в Белую Дверь",
-		startdescription: "Теперь я могу подойти к Белой Двери через Пределы. Теперь я могу прижать к ней пальцы, почувствовать леденящий холод, увидеть, как она подаётся вглубь. Она плавно распахивается, и мой рот закрывается, смыкается, исцеляется, как залеченный изъян. Вокруг меня и вблизи меня — кобальтовый свет Обители...",
-		id: "dreamenterwhite",
-		description: ".",
-		actionId: "dream",
-	},
-	{
-		extantreqs: 
-		{
-			waystagbefore_1: "-1",
-			waystagbefore_2: "-1",
-			waystagbefore_3: "-1",
-			waystagbefore_4: "-1",
-			waystagbefore_5: "-1",
-			waystag_after: "-1",
-		},
-		requirements: 
-		{
-			waywhite: "1",
-			desire: "1",
-		},
-		warmup: "30",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "К Оленьей Двери",
-		startdescription: "Я поднимаюсь медленно. Ветры из Нигде треплют меня. Моя кожа запятнана светом. Лес непрестанно трепещет жизнью далеко подо мной.",
-		id: "dreamreachstagfirst",
-		deckeffect: 
-		{
-			stagriddles: "1",
-		},
-		description: "Оленья Дверь: изломанные врата из переплетённых рогов, в потёках крови, столь огромные, что прошёл бы корабль. Роговой барьер давным-давно был пробит, и поныне не вполне восстановлен. На откосе у Двери стоит гигантская раненая золотая Голова. Её рот мог бы проглотить меня одним движением, если бы не расколотая челюсть. Это Имя, Гъирби. Золотые губы напевно начинают загадку.",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			waywhite: "1",
-			desire: "1",
-		},
-		warmup: "10",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "У Оленьей Двери, снова",
-		startdescription: "Мне уже знаком этот подъём. Он мне не поможет. Мне следует ответить на Загадку, если это необходимо, или воспользоваться Путём к Оленьей Двери, если я знаю путь.",
-		id: "dreamreachstagsubsequent",
-		description: "Оленья Дверь: изломанные врата из переплетённых рогов, в потёках крови, столь огромные, что прошёл бы корабль. Роговой барьер давным-давно был пробит, и поныне не вполне восстановлен. На откосе у Двери стоит гигантская раненая золотая Голова, Гъирби. У меня уже есть услышанная здесь загадка, на которую нужно ответить, чтобы войти в Оленью Дверь. [Сны о Загадке, чтобы ответить на неё; либо Путь: Оленья Дверь, если вы уже ответили.]",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			riddle: "1",
-		},
-		craftable: "true",
-		comments: "Route through this to answer riddle.",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Загадка Гъирби",
-		startdescription: "Во сне я вновь встану перед Оленьей Дверью: изломанные врата рогов, запятнанные кровью, пробитые и не излеченные. Гигантская золотая Голова, Гъирби, будет ждать моего ответа на загадку.",
-		id: "dream_answerstagriddle_router",
-		actionId: "dream",
-		description: "Голова молчит. Дверь остаётся закрытой. Теперь ускользаю в иные сны.",
-		slots: 
-		[
-			{
-				id: "Answer",
-				required: 
-				{
-					lore: "1",
-				},
-				label: "Ответ",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "dream_answerstagriddle_1",
-				chance: "100",
-			},
-			{
-				id: "dream_answerstagriddle_1",
-				chance: "100",
-			},
-			{
-				id: "dream_answerstagriddle_2",
-				chance: "100",
-			},
-			{
-				id: "dream_answerstagriddle_3",
-				chance: "100",
-			},
-			{
-				id: "dream_answerstagriddle_4",
-				chance: "100",
-			},
-			{
-				id: "dream_answerstagriddle_5",
-				chance: "100",
-			},
-			{
-				id: "dream_wronganswerstagriddle",
-				chance: "100",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystagbefore_1: "1",
-			fragmentmothc: "1",
-		},
-		label: "Нить в Лабиринте",
-		startdescription: "«Есть много ответов на эту загадку, как известно срывающим кожу. Вот мой ответ...»",
-		id: "dream_answerstagriddle_1",
-		actionId: "dream",
-		description: "Дверь со скрежетом расходится в стороны. Свет Дозорного потоком льётся из коридора, уходящего внутрь. Голова, Гъирби, испускает тяжкий стон. Слёзы расплавленной бронзы копятся в золотых глазах и стекают по щекам, потом на землю, прожигая её. Я могу войти!",
-		effects: 
-		{
-			riddle: "-1",
-			reason: "1",
-			waystag_after: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystagbefore_2: "1",
-			fragmentlanternc: "1",
-		},
-		label: "Неумолимый ответ",
-		startdescription: "«Лишь в тенях».",
-		id: "dream_answerstagriddle_2",
-		actionId: "dream",
-		description: "Дверь со скрежетом расходится в стороны. Свет Дозорного потоком льётся из коридора, уходящего внутрь. Голова, Гъирби, испускает тяжкий стон. Слёзы расплавленной бронзы копятся в золотых глазах и стекают по щекам, потом на землю, прожигая её. Я могу войти!",
-		effects: 
-		{
-			riddle: "-1",
-			reason: "1",
-			waystag_after: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystagbefore_3: "1",
-			fragmentgrailc: "1",
-		},
-		label: "Желанный ответ",
-		startdescription: "«Вот эти слова...»",
-		id: "dream_answerstagriddle_3",
-		actionId: "dream",
-		description: "Дверь со скрежетом расходится в стороны. Свет Дозорного потоком льётся из коридора, уходящего внутрь. Голова, Гъирби, испускает тяжкий стон. Слёзы расплавленной бронзы копятся в золотых глазах и стекают по щекам, потом на землю, прожигая её. Я могу войти!",
-		effects: 
-		{
-			riddle: "-1",
-			reason: "1",
-			waystag_after: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystagbefore_4: "1",
-			fragmentknockc: "1",
-		},
-		label: "Змеиный ответ",
-		startdescription: "«Меня. Именно меня следует открыть. Смотри, вот моя кровь, и она пролита».",
-		id: "dream_answerstagriddle_4",
-		actionId: "dream",
-		description: "Дверь со скрежетом расходится в стороны. Свет Дозорного потоком льётся из коридора, уходящего внутрь. Голова, Гъирби, испускает тяжкий стон. Слёзы расплавленной бронзы копятся в золотых глазах и стекают по щекам, потом на землю, прожигая её. Я могу войти!",
-		effects: 
-		{
-			riddle: "-1",
-			reason: "1",
-			waystag_after: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystagbefore_5: "1",
-			fragmentsecrethistoriesc: "1",
-		},
-		label: "Исторический ответ",
-		startdescription: "«Её сердце погребено в иной Истории».",
-		id: "dream_answerstagriddle_5",
-		actionId: "dream",
-		description: "Дверь со скрежетом расходится в стороны. Свет Дозорного потоком льётся из коридора, уходящего внутрь. Голова, Гъирби, испускает тяжкий стон. Слёзы расплавленной бронзы копятся в золотых глазах и стекают по щекам, потом на землю, прожигая её. Я могу войти!",
-		effects: 
-		{
-			riddle: "-1",
-			reason: "1",
-			waystag_after: "1",
-		},
-	},
-	{
-		id: "dream_wronganswerstagriddle",
-		startdescription: "Гъирби — очень глубоко падшее Имя. Гъирби не дано войти в Дом, и одно из немногих оставшихся удовольствий Гъирби — отказ во входе. Достоинство Имени не позволит высмеивать меня, но я вижу удовлетворение в золотых глазах. «Это, — произносят золотые губы, — не ответ».",
-		requirements: 
-		{
-			lore: "1",
-		},
-		description: "Я бодрствую. Мои глаза открыты, а Оленья Дверь остаётся закрытой. Теперь ускользаю в иные сны.",
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		label: "Это не ответ",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			waystag_after: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Путь к Оленьей Двери",
-		startdescription: "В моих снах я знаю путь к Оленьей Двери, через лабиринт Пределов. Гъирби даст мне пройти, но путь — всегда загадка. Мне нужен Разум.",
-		id: "dreamusestagway",
-		actionId: "dream",
-		description: "Здесь, на вышних сухих перепутьях Пределов — витиеватые расщелины и ловушки десяти тысяч лет времени. Мне не хватает Разума. Я проснусь, не увидев Двери. Теперь ускользаю в иные сны.",
-		slots: 
-		[
-			{
-				id: "Ascent",
-				required: 
-				{
-					reason: "1",
-					lore: "1",
-				},
-				description: "Вложите Разум, чтобы пройти Оленью Дверь — или, с правильным Знанием, найдите путь к Паучьей Двери, двери, где пролита кровь.",
-				label: "Подъём",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poison.long.way.trap",
-				comment: "NEW",
-				additional: "true",
-			},
-			{
-				id: "dreamenterstag",
-				chance: "100",
-			},
-			{
-				id: "dreamreachspiderlantern",
-				chance: "100",
-			},
-			{
-				id: "dreamreachspiderknock",
-				chance: "100",
-			},
-			{
-				id: "dreamreachspidergrail",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachspiderlantern",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachspiderknock",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachspidergrail",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			reason: "1",
-			waystag_after: "1",
-		},
-		craftable: "false",
-		portaleffect: "stagdoor",
-		warmup: "30",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Вход в Оленью Дверь",
-		startdescription: "Оленья Дверь — Врата Посвящённых. Пройти её — познать первую истинную мистерию Дома Солнца. Голова, Гъирби, плачет, видя, как я вхожу туда, куда Гъирби нет пути: но обязательство пропустить меня в силе. Изрезанные створки Двери со скрежетом раскрываются.",
-		id: "dreamenterstag",
-		description: ".",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			lantern: "1",
-		},
-		warmup: "10",
-		label: "Шёлковые Пески: недостаточно!",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. Мне довелось читать об изломанных следах, по которым надо пройти, о выгнутых, незримых, медленных обитателях Песков — ",
-		id: "dreamnotquitereachspiderlantern",
-		description: "Пески проглатывают мои шаги. Они окутывают, забивают мой рот, лезут в глаза... Я проснусь с распухшим языком и иссушённой глоткой. Это верный подход, но чтобы пройти выше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachspiderlantern",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. Мне довелось читать об изломанных следах, по которым надо пройти, о выгнутых, незримых, неспешных обитателях Песков — ",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "8",
-		},
-		description: "Пески отступают как вода, и под ними — камень, откуда столь давно восставали боги. Передо мной — Дверь, блестящая как дождь, унизанная кровью по чёрной поверхности, каждая капля изогнута словно напившийся клещ.",
-		effects: 
-		{
-			wayspider: "1",
-		},
-		label: "Приближение к Паучьей Двери",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			knock: "1",
-		},
-		warmup: "10",
-		label: "Шёлковые Пески: недостаточно!",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. Я знаю слова, что открывают ветер — ",
-		id: "dreamnotquitereachspiderknock",
-		description: "Пески проглатывают мои шаги. Они окутывают, забивают мой рот, лезут в глаза... Я проснусь с распухшим языком и иссушённой глоткой. Это верный подход, но чтобы пройти выше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachspiderknock",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. Я знаю слова, что открывают ветер, и Пески разрешат мне пройти — ",
-		requirements: 
-		{
-			lore: "1",
-			knock: "8",
-		},
-		description: "Пески отступают как вода, и под ними — камень, откуда столь давно восставали боги. Передо мной — Дверь, блестящая как дождь, унизанная кровью по чёрной поверхности, каждая капля изогнута словно напившийся клещ.",
-		effects: 
-		{
-			wayspider: "1",
-		},
-		label: "Приближение к Паучьей Двери",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			grail: "1",
-		},
-		warmup: "10",
-		label: "Шёлковые Пески: недостаточно!",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. ЖАЖДА единственный проводник через Пески — моя ЖАЖДА, или ЖАЖДА Паучьей Двери —",
-		id: "dreamnotquitereachspidergrail",
-		description: "Пески проглатывают мои шаги. Они окутывают, забивают мой рот, лезут в глаза... Я проснусь с распухшим языком и иссушённой глоткой. Это верный подход, но чтобы пройти выше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachspidergrail",
-		startdescription: "Во снах Шёлковые Пески — место, что шепчет. Сеется серый песок, дрожат серые травы. ЖАЖДА — единственный проводник через Пески — моя ЖАЖДА, или ЖАЖДА Паучьей Двери —",
-		requirements: 
-		{
-			lore: "1",
-			grail: "8",
-		},
-		description: "Пески отступают как вода, и под ними — камень, откуда столь давно восставали боги. Передо мной — Дверь, блестящая как дождь, унизанная кровью по чёрной поверхности, каждая капля изогнута словно напившийся клещ.",
-		effects: 
-		{
-			wayspider: "1",
-		},
-		label: "Приближение к Паучьей Двери",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			wayspider: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Путь к Паучьей Двери",
-		startdescription: "В моих снах я знаю путь через Шёлковые Пески к Паучьей Двери. Если я утолю её ЖАЖДУ, пролив свежую кровь перед сном, она откроется мне.",
-		id: "dreamusespiderway",
-		actionId: "dream",
-		description: "Здесь, в складках сна — Дверь, мерцающая чёрным, как брюхо осы-сколии, вечно отмеченная вечно густеющими каплями крови. ЖАЖДА Двери не удовлетворена мной, и Дверь не откроется. Теперь ускользаю в иные сны.",
-		slots: 
-		[
-			{
-				id: "Ascent",
-				required: 
-				{
-					lore: "1",
-					prisoner: "1",
-				},
-				description: "Принесите кровавую жертву, чтобы удовлетворить ЖАЖДУ Паучьей Двери — или, с правильным Знанием, найдите путь к Павлиньей Двери, двери, где свет пролит как кровь.",
-				label: "Подъём",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poison.long.way.trap",
-				comment: "NEW",
-				additional: "true",
-			},
-			{
-				id: "dreamenterspider",
-				chance: "100",
-			},
-			{
-				id: "dreamreachpeacocklantern",
-				chance: "100",
-			},
-			{
-				id: "dreamreachpeacockknock",
-				chance: "100",
-			},
-			{
-				id: "dreamreachpeacockedge",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachpeacocklantern",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachpeacockknock",
-				chance: "100",
-			},
-			{
-				id: "dreamnotquitereachpeacockedge",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			prisoner: "1",
-			wayspider: "1",
-		},
-		craftable: "false",
-		portaleffect: "spiderdoor",
-		warmup: "0",
-		label: "Вход в Паучью Дверь",
-		startdescription: "Паучья Дверь всегда ЖАЖДЕТ. Всегда. Принесённая мною кровь стекает нитями и плещется сквозь кожу мира, и Дверь пьёт её, и минутным удовлетворением набухает её открытие — а потом я могу пройти.",
-		id: "dreamenterspider",
-		actionId: "dream",
-		description: ".",
-		effects: 
-		{
-			prisoner: "-1",
-		},
-	},
-	{
-		id: "dreamnotquitereachpeacocklantern",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Этим путём однажды пришли Часы из тех, что ярче, но сейчас Сад тих, здесь, в облаках — ",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "1",
-		},
-		description: "Ледяной воздух Стеклянного Сада вонзается в каждую пору моей кожи. Когда я проснусь, этот холод окрасит меня синевато-белым. Это верный подход, но чтобы пройти выше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		label: "Стеклянный Сад: недостаточно!",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachpeacocklantern",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Этим путём однажды пришли Часы из тех, что ярче, но сейчас Сад тих, здесь, в облаках — ",
-		requirements: 
-		{
-			lore: "1",
-			lantern: "10",
-		},
-		description: "Павлинья Дверь, горделиво сияющий аметист, в чьём сиянии отражаются снежно-бледные контуры Стеклянного Сада. Здесь — высшая точка, где смертные могут проникнуть в Обитель. Ни единой трещиной не омрачена её поверхность. Это не та дверь, что откроется, но, как сказано, она может источать свет.",
-		effects: 
-		{
-			waypeacock: "1",
-		},
-		label: "Стеклянный Сад: приближение к Павлиньей Двери",
-		actionId: "dream",
-	},
-	{
-		id: "dreamnotquitereachpeacockknock",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Я почти знаю путь — ",
-		requirements: 
-		{
-			lore: "1",
-			knock: "1",
-		},
-		description: "Ледяной воздух Стеклянного Сада вонзается в каждую пору моей кожи. Когда я проснусь, этот холод окрасит меня синевато-белым. Это верный подход, но чтобы пройти выше, мне надо узнать больше. Теперь ускользаю в иные сны.",
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		label: "Стеклянный Сад: недостаточно!",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachpeacockknock",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Я буду ступать осторожно. Я знаю путь — ",
-		requirements: 
-		{
-			lore: "1",
-			knock: "10",
-		},
-		description: "Павлинья Дверь, горделиво сияющий аметист, в чьём сиянии отражаются снежно-бледные контуры Стеклянного Сада. Здесь — высшая точка, где смертные могут проникнуть в Обитель. Ни единой трещиной не омрачена её поверхность. Это не та дверь, что откроется, но, как сказано, она может источать свет.",
-		effects: 
-		{
-			waypeacock: "1",
-		},
-		label: "Стеклянный Сад: приближение к Павлиньей Двери",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dream_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			lore: "1",
-			edge: "1",
-		},
-		warmup: "10",
-		label: "Стеклянный Сад: недостаточно!",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Так и должно быть — ",
-		id: "dreamnotquitereachpeacockedge",
-		description: "Павлинья Дверь, горделиво сияющий аметист, в чьём сиянии отражаются снежно-бледные контуры Стеклянного Сада. Здесь — высшая точка, где смертные могут проникнуть в Обитель. Ни единой трещиной не омрачена её поверхность. Это не та дверь, что откроется, но, как сказано, она может источать свет. Теперь ускользаю в иные сны.",
-		actionId: "dream",
-	},
-	{
-		id: "dreamreachpeacockedge",
-		startdescription: "Свет разделённого Солнца пронизывает мои сны, но его недостаточно, чтобы растопить давно погибшие замороженные цветы Стеклянного Сада. Каждый мой шаг разбивает в порошок ещё одно растение. Так и должно быть. Я буду выбирать шаги осторожно и точно так, как предписывает Знание  — ",
-		requirements: 
-		{
-			lore: "1",
-			edge: "10",
-		},
-		description: "Павлинья Дверь, горделиво сияющий аметист, в чьём сиянии отражаются снежно-бледные контуры Стеклянного Сада. Здесь — высшая точка, где смертные могут проникнуть в Обитель. Ни единой трещиной не омрачена её поверхность. Это не та дверь, что откроется, но, как сказано, она может источать свет.",
-		effects: 
-		{
-			waypeacock: "1",
-		},
-		label: "Стеклянный Сад: приближение к Павлиньей Двери",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			waypeacock: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			fatiguing: "1",
-		},
-		label: "Путь к Павлиньей Двери",
-		startdescription: "В моих снах я знаю путь через Стеклянный Сад к Павлиньей Двери: прекраснейшей из Дверей, Двери, что сияет как зеркало. Возможно, с правильными средствами, я могу пройти через неё.",
-		id: "dreamusepeacockway",
-		actionId: "dream",
-		description: "Павлинья Дверь фиолетова как сладчайшая драгоценность, как спелейший плод, как самая экстравагантная проза. Она берёт моё отражение и ничего не отдаёт взамен. Проснувшись, я не вспомню свой сон.",
-		slots: 
-		[
-			{
-				id: "Ascent",
-				required: 
-				{
-					tool: "1",
-				},
-				description: "Павлинья Дверь, по сути, не открывается.",
-				label: "Подъём",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poison.long.way.trap",
-				comment: "NEW",
-				additional: "true",
-			},
-			{
-				id: "apostlelantern.createpillar2",
-				comment: "NEW",
-				chance: "100",
-			},
-			{
-				id: "dreamenterpeacockmirror",
-				chance: "100",
-			},
-			{
-				id: "dreamenterpeacockfrangiclave",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			mirror: "1",
-			waypeacock: "1",
-		},
-		craftable: "false",
-		portaleffect: "peacockdoor",
-		warmup: "0",
-		aspects: 
-		{
-			crackmirror: "1",
-		},
-		label: "Проход через Павлинью Дверь",
-		startdescription: "Павлинья Дверь отражает зеркало, что я держу во сне, и зеркало отражает Павлинью Дверь. Уже сейчас чувственная волна пробегает по её поверхности. Она алчет трещины, и когда она достигнет удовлетворения, я войду.",
-		id: "dreamenterpeacockmirror",
-		description: ".",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			waypeacock: "1",
-			toolknockf: "1",
-		},
-		craftable: "false",
-		portaleffect: "peacockdoor",
-		warmup: "0",
-		label: "Проход через Павлинью Дверь",
-		startdescription: "Звон камертона оживляет ключ в моей руке: Павлинья Дверь стонет в ответ. Уже сейчас чувственная волна пробегает по её поверхности. Она алчет трещины, и когда она достигнет удовлетворения, я войду.",
-		id: "dreamenterpeacockfrangiclave",
-		description: ".",
-		actionId: "dream",
-	},
-	{
-		id: "poison.long.way.trap",
-		comment: "NEW",
-		startdescription: "The Long has set invisible cartographers at the gate, to observe me as I pass and map me like a half-known country.",
-		warmup: "10",
-		requirements: 
-		{
-			poison.way.long: "1",
-		},
-		effects: 
-		{
-			long.lesson.dreamwork: "1",
-		},
-		label: "The Watch upon the Way",
-		actionId: "poison.long.way.trap",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreamheartvictory_withrisen",
-				chance: "100",
-			},
-			{
-				id: "belovedfarewelldream",
-				chance: "100",
-			},
-			{
-				id: "dreamheartvictory",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			sendingheartg: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		slots: 
-		[
-			{
-				id: "beloved",
-				required: 
-				{
-					romanticinterest: "1",
-				},
-				greedy: "true",
-				forbidden: 
-				{
-					corpse: "1",
-					notoriety: "1",
-				},
-				label: "Beloved",
-			},
-		],
-		label: "Drums in the Storm",
-		startdescription: "The wind rises and the roof rattles as I settle myself to sleep. There is a bitter herb that will help me pass from my body. The Wood opens around me, but with my new eyes, I see another path now. The one called Marinette waits along that path, with the Key that will end me and begin me.",
-		signalEndingFlavour: "Grand",
-		id: "dreamheartvictoryintro",
-		actionId: "dream",
-	},
-	{
-		id: "dreamheartvictory",
-		startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.",
-		warmup: "30",
-		requirements: 
-		{
-			sendingheartg: "1",
-		},
-		ending: "minorheartvictory",
-		label: "The Kingskin Gate",
-		actionId: "dream",
-	},
-	{
-		id: "dreamheartvictory_withrisen",
-		startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.
-
-In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
-		warmup: "10",
-		requirements: 
-		{
-			summoned: "1",
-			sendingheartg: "1",
-		},
-		ending: "minorheartvictorywithrisen",
-		label: "The Kingskin Gate",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreammothvictory_withrisen",
-				chance: "100",
-			},
-			{
-				id: "belovedfarewelldream",
-				chance: "100",
-			},
-			{
-				id: "dreammothvictory",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			sendingmothg: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		slots: 
-		[
-			{
-				id: "beloved",
-				required: 
-				{
-					romanticinterest: "1",
-				},
-				greedy: "true",
-				forbidden: 
-				{
-					corpse: "1",
-					notoriety: "1",
-				},
-				label: "Beloved",
-			},
-		],
-		label: "Drums in the Storm",
-		startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. The Door in the Wood lies beneath the waters of the well. I know that now. I cannot pass it living and I cannot pass it dead. Medusa, who is neither living nor dead, will clear the way. I break into a trot.",
-		signalEndingFlavour: "Grand",
-		id: "dreammothvictoryintro",
-		actionId: "dream",
-	},
-	{
-		id: "dreammothvictory",
-		startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape.",
-		warmup: "30",
-		requirements: 
-		{
-			sendingmothg: "1",
-		},
-		ending: "minormothvictory",
-		label: "The Door in the Wood",
-		actionId: "dream",
-	},
-	{
-		id: "dreammothvictory_withrisen",
-		startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape. 
-
-In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
-		warmup: "10",
-		requirements: 
-		{
-			summoned: "1",
-			sendingmothg: "1",
-		},
-		ending: "minormothvictorywithrisen",
-		label: "The Door in the Wood",
-		actionId: "dream",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "dreammeniscatevictory_withrisen",
-				chance: "100",
-			},
-			{
-				id: "belovedfarewelldream",
-				chance: "100",
-			},
-			{
-				id: "dreammeniscatevictory",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			sendingmothheartg: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		slots: 
-		[
-			{
-				id: "beloved",
-				required: 
-				{
-					romanticinterest: "1",
-				},
-				greedy: "true",
-				forbidden: 
-				{
-					corpse: "1",
-					notoriety: "1",
-				},
-				label: "Beloved",
-			},
-		],
-		label: "Without the Walls",
-		startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. But this is not the Wood I know. It is all birch trees, white as moonlight, and the moonlight is black as ink. Beneath its pressure, the white skins of the trees begin to blister, then bleed. I break into a trot, then a gallop. I must reach the Well, before I wake, or before something worse - ",
-		signalEndingFlavour: "Grand",
-		id: "dreammeniscatevictoryintro",
-		actionId: "dream",
-	},
-	{
-		id: "dreammeniscatevictory",
-		startdescription: "My skin is tattering now. The Well is ahead, but the moon is changing, is black, is gold, is pearl. The blood of the Well is a red mirror, and three of them rise, and their faces are mine, are horned like the Moon, the greatest holds a key of black sapphire and when it parts my skin my body is rent like lightning, and WHAT IS WITHIN, WITHOUT, WHAT IS WITHOUT, WITHIN -",
-		warmup: "30",
-		requirements: 
-		{
-			sendingmothheartg: "1",
-		},
-		ending: "minormeniscatevictory",
-		label: "Three",
-		actionId: "dream",
-	},
-	{
-		id: "dreammeniscatevictory_withrisen",
-		startdescription: "My skin is tattering now. The Well is ahead, but the moon is changing, is black, is gold, is pearl. The blood of the Well is a red mirror, and three of them rise, and their faces are mine, are horned like the Moon, the greatest holds a key of black sapphire and when it parts my skin my body is rent like lightning, and WHAT IS WITHIN, WITHOUT, WHAT IS WITHOUT, WITHIN -",
-		warmup: "30",
-		requirements: 
-		{
-			summoned: "1",
-			sendingmothheartg: "1",
-		},
-		ending: "minormeniscatevictorywithrisen",
-		label: "Three",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			romanticinterest: "1",
-		},
-		warmup: "30",
-		label: "The Threshold Choice",
-		startdescription: "The final farewell. They will remain, and I will ascend.",
-		id: "belovedfarewelldream",
-		actionId: "dream",
-		slots: 
-		[
-			{
-				id: "decision",
-				required: 
-				{
-					passion: "1",
-				},
-				description: "[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",
-				label: "Decision",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "auclairvictory",
-				chance: "100",
-			},
-			{
-				id: "catvictory",
-				chance: "100",
-			},
-			{
-				id: "clovettevictory",
-				chance: "100",
-			},
-			{
-				id: "cliftonvictory",
-				chance: "100",
-			},
-			{
-				id: "dorothyvictory",
-				chance: "100",
-			},
-			{
-				id: "elridgevictory",
-				chance: "100",
-			},
-			{
-				id: "enidvictory",
-				chance: "100",
-			},
-			{
-				id: "laidlawvictory",
-				chance: "100",
-			},
-			{
-				id: "leovictory",
-				chance: "100",
-			},
-			{
-				id: "nevillevictory",
-				chance: "100",
-			},
-			{
-				id: "portervictory",
-				chance: "100",
-			},
-			{
-				id: "reniravictory",
-				chance: "100",
-			},
-			{
-				id: "rosevictory",
-				chance: "100",
-			},
-			{
-				id: "salibavictory",
-				chance: "100",
-			},
-			{
-				id: "sleevictory",
-				chance: "100",
-			},
-			{
-				id: "sylviavictory",
-				chance: "100",
-			},
-			{
-				id: "tristanvictory",
-				chance: "100",
-			},
-			{
-				id: "valcianevictory",
-				chance: "100",
-			},
-			{
-				id: "victorvictory",
-				chance: "100",
-			},
-			{
-				id: "violetvictory",
-				chance: "100",
-			},
-			{
-				id: "ysabetvictory",
-				chance: "100",
-			},
-			{
-				id: "imnotinlovedream",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "imnotinlovedream",
-		craftable: "false",
-		actionId: "dream",
-		linked: 
-		[
-			{
-				id: "dreammothvictory",
-				chance: "100",
-			},
-			{
-				id: "dreamheartvictory",
-				chance: "100",
-			},
-			{
-				id: "dreammeniscatevictory",
-				chance: "100",
-			},
-		],
-		label: "Dedication",
-		startdescription: "Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
-	},
-]
+{
+    "recipes": [
+        {
+            "slots": [
+                {
+                    "label": "Знания",
+                    "description": "Если перед сном уделить время оккультным практикам, возможно, я погружусь в царство снов чуть глубже.",
+                    "id": "Lore"
+                }
+            ],
+            "label": "Залитая лунным светом дорога",
+            "startdescription": "Я знаю этот сон. Дорога на вершине холма, горящий серебром воздух...",
+            "description": "Взъерошенные ветром поля. Мерцание реки. Звенящий холодок.",
+            "id": "dreamstartingpassion"
+        },
+        {
+            "id": "dreamreachwoodmoth",
+            "description": "Дорога ныряет в лес. В его глубине порхают бледные крылья. Я запинаюсь о корни. Мне хочется опуститься на четвереньки, чтобы легче избегать низко повисших ветвей. Луна движется где-то за черными листьями, но ее пальцы продолжают перебирать мои волосы. Я никогда не забуду дорогу сюда.",
+            "startdescription": "Чтобы почтить силу Леса, можно было бы срезать перед сном прядь волос.",
+            "label": "Терсийский Путь"
+        },
+        {
+            "id": "dreamreachwoodknock",
+            "description": "Я хромаю по дороге и наконец вижу змею в канаве. Я следую за ней туда, где копятся отходы, и в лабиринт из корней. Что это касается моего лица — волосы или свисающие плети мха? Я склоняюсь все ниже, чтобы быть ближе к земле, подражая своему проводнику. Я никогда не забуду дорогу сюда.",
+            "startdescription": "Замочные мастера нередко видят Сон после того, как повредят подошвы ног — в особенности после укусов змей. Возможно, мне тоже стоит попробовать.",
+            "label": "Путь Змея"
+        },
+        {
+            "id": "dreamreachwoodlantern",
+            "description": "«Цвет есть лишь там, где есть свет» — а в Лес свет проникнуть не в силах. Во сне я закрываю глаза и иду вперед: я запинаюсь, и на ступнях и коленях проступают синяки. Наконец заросли становятся слишком густыми, и мне приходится остановиться. Я открываю глаза. Я вишу в невесомости среди черных деревьев. Вокруг трепещут тени. Мои ноги запомнят дорогу в этот лес.",
+            "startdescription": "Можно было бы уснуть в комнате, лишенной цвета: отстирать до белизны простыни, побелить стены, покрасить волосы и кожу.",
+            "label": "Выбеленный Путь"
+        },
+        {
+            "id": "dreamusewoodway",
+            "description": "Воды Леса холодны и глубоки, но не бывают прозрачны. Одно затверженное наизусть воспоминание не в силах привести меня в Лес. Здесь нужны эмоции. Я отправляюсь в другие сны.",
+            "startdescription": "С достаточной силой эмоций я могу вновь выйти на дорогу к Лесу. Будь у меня необходимое знание, возможно, я найду путь, который выведет меня дальше.",
+            "slots": [
+                {
+                    "label": "Дорога",
+                    "description": "Доверьтесь эмоциям, чтобы войти в Лес — или обретите необходимое знание и найдите дорогу к Белой Двери, где толпятся мертвецы.",
+                    "id": "Path"
+                }
+            ],
+            "label": "Путь в Лес"
+        },
+        {
+            "id": "dreamenterwood",
+            "description": ".",
+            "startdescription": "Я иду меж изрезанных шрамами стволов. Луна движется где-то за ветвями, но её пальцы продолжают перебирать мои волосы. Я запинаюсь о корни. Мне хочется опуститься на четвереньки, чтобы легче избегать низко повисших ветвей. Где-то глубоко в ночи порхают бледные крылья.",
+            "label": "Вход в Лес"
+        },
+        {
+            "id": "dreamnotquitereachwhitelantern",
+            "description": "Мою кожу (во сне) протыкают (во сне) острые шипы (во сне). Когда я проснусь, на простыне будут капли крови. Я иду верным путем, но чтобы пройти дальше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "В лесу есть Дом. Уж это-то я знаю точно. Среди деревьев проступает свет... ",
+            "label": "Свет в лесу: рано!"
+        },
+        {
+            "id": "dreamreachwhitelantern",
+            "description": "Дом окружают Пределы, окутанные туманами и следами. Эта скала носит имя Храма Колеса: она не уступает по высоте соборному шпилю и вся испещрена пятнами черного лишайника и нарисованными глазами. Я обхожу её и вижу перед собой Белую Дверь. Её края обрисовывает свет Дома.",
+            "startdescription": "В лесу есть Дом. Я кое-что знаю об этом Доме. Достаточно ли, чтобы приблизиться к его свету?",
+            "label": "Все ближе к Белой Двери"
+        },
+        {
+            "id": "dreamnotquitereachwhiteknock",
+            "description": "Мою кожу (во сне) протыкают (во сне) острые шипы (во сне). Когда я проснусь, на простыне будут капли крови. Я иду верным путем, но чтобы пройти дальше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "В лесу есть Дом. Уж это-то я знаю точно. Среди деревьев проступает свет... ",
+            "label": "The Light in the Лес: Not Enough!"
+        },
+        {
+            "id": "dreamreachwhiteknock",
+            "description": "Дом окружают Пределы, окутанные туманами и следами. Эта скала носит имя Храма Колеса: она не уступает по высоте соборному шпилю и вся испещрена пятнами черного лишайника и нарисованными глазами. Я обхожу её и вижу перед собой Белую Дверь — она открыта, как было предписано много дней назад.",
+            "startdescription": "В лесу есть Дом. Я знаю достаточно тайн Стука, чтобы отыскать секретные тропки меж спутанных деревьев.",
+            "label": "Все ближе к Белой Двери"
+        },
+        {
+            "id": "dreamnotquitereachwhitewinter",
+            "description": "Мою кожу (во сне) протыкают (во сне) острые шипы (во сне). Когда я проснусь, на простыне будут капли крови. Я иду верным путем, но чтобы пройти дальше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "There is a House in the Лес. This much I know. Here is a light through the trees - ",
+            "label": "Свет в лесу: рано!"
+        },
+        {
+            "id": "dreamreachwhitewinter",
+            "description": "Дом окружают Пределы, окутанные туманами и следами. Эта скала носит имя Храма Колеса: она не уступает по высоте соборному шпилю и вся испещрена пятнами черного лишайника и нарисованными глазами. Я обхожу её и вижу перед собой Белую Дверь — она светится, подобно луне Зимой.",
+            "startdescription": "В лесу есть Дом и дверь, через которую порой проходят мертвецы. Мне приходилось читать об излюбленных дорогах мертвых.",
+            "label": "Все ближе к Белой Двери"
+        },
+        {
+            "id": "dreamusewhiteway",
+            "description": "Узкая тропа загромождена медлительными силуэтами. Воздух подрагивает от их вздохов. Моя кровь густеет от холода. Дальше мне не пройти. Я отправляюсь в другие сны.",
+            "startdescription": "Я знаю дорогу, что ведет сквозь Пределы к Белой Двери. Однако на этой дороге собирается множество мертвецов. Чтобы уберечься от пронизывающего холода мертвой плоти, мне потребуется здоровье.",
+            "slots": [
+                {
+                    "label": "Подъем",
+                    "description": "Добавьте здоровье, чтобы пройти через Белую Дверь — или последуйте за своими желаниями и найдите дорогу к Оленьей Двери, двери Чтецов.",
+                    "id": "Ascent"
+                }
+            ],
+            "label": "Путь к Белой Двери"
+        },
+        {
+            "id": "dreamenterwhite",
+            "description": ".",
+            "startdescription": "Я иду через Пределы к Оленьей двери. Я касаюсь её, ощущаю её холод, вижу, как она распахивается. Дверь открывается — и мой рот закрывается, сжимается, скрывается под свежей кожей, точно он был уродливым дефектом. Меня окружает синий свет Обители...",
+            "label": "Проход через Белую Дверь"
+        },
+        {
+            "id": "dreamreachstagfirst",
+            "description": "Оленья Дверь: зубчатое заграждение из залитого кровью рога, такое большое, что способно пропустить через себя целый корабль. Давным-давно Дверь была сломана, и раны все еще зажили не до конца. На косогоре у самой двери возвышается огромная раненая золотая Голова. Она так велика, что могла бы проглотить меня, не будь у нее переломана челюсть. Это имя, Гирби. Голова зачитывает загадку. ",
+            "startdescription": "Подъем требует времени. Меня то и дело толкают налетевшие из ниоткуда порывы ветра. Моя кожа покрыта пятнами света. Далеко внизу дрожит, переливаясь, Лес.",
+            "label": "К Оленьей Двери"
+        },
+        {
+            "id": "dreamreachstagsubsequent",
+            "description": "Оленья Дверь: зубчатое заграждение из залитого кровью рога, такое большое, что способно пропустить через себя целый корабль. Давным-давно Дверь была сломана, и раны все еще зажили не до конца. На косогоре у самой двери возвышается огромная раненая золотая Голова — Гирби. Голова задала мне загадку, не разгадав которую, в Оленью Дверь не пройти. [Погрузитесь в сон о загадке, чтобы найти ответ, или об Оленьей Двери, если загадка уже решена.]",
+            "startdescription": "Мои ноги уже поднимались наверх. В этом нет никакого смысла. Нужно или найти ответ на загадку, или, если есть такая возможность, выбрать путь к Оленьей Двери.",
+            "label": "Вновь у Оленьей Двери"
+        },
+        {
+            "slots": [
+                {
+                    "label": "Ответ",
+                    "id": "Answer"
+                }
+            ],
+            "label": "Загадка Гирби",
+            "startdescription": "Во сне я вновь предстану перед Оленьей Дверью — зубчатым заграждением из залитого кровью рога, что давным-давно был сломан и так и не зажил до конца. Гигантская золотая Голова, Гирби, будет ждать моего ответа.",
+            "description": "Голова молчит. Дверь закрыта. Я отправляюсь в другие сны.",
+            "id": "dream_answerstagriddle_router"
+        },
+        {
+            "id": "dream_answerstagriddle_1",
+            "description": "Дверь со скрежетом открывается. За ней виден проход, из которого льется свет Дозорного. Голова, Гирби, издает скрежещущий стон. Слезы из расплавленной меди собираются в уголках его глаз и стекают по щекам, капают вниз, обжигая землю. Теперь я могу войти!",
+            "startdescription": "«На этот вопрос есть много ответов, как это хорошо известно сбросившим кожу. Мой ответ таков...»",
+            "label": "Нить в лабиринте"
+        },
+        {
+            "id": "dream_answerstagriddle_2",
+            "description": "Дверь со скрежетом открывается. За ней виден проход, из которого льется свет Дозорного. Голова, Гирби, издает скрежещущий стон. Слезы из расплавленной меди собираются в уголках его глаз и стекают по щекам, капают вниз, обжигая землю. Теперь я могу войти!",
+            "startdescription": "«Лишь в тени».",
+            "label": "Суровый ответ"
+        },
+        {
+            "id": "dream_answerstagriddle_3",
+            "description": "Дверь со скрежетом открывается. За ней виден проход, из которого льется свет Дозорного. Голова, Гирби, издает скрежещущий стон. Слезы из расплавленной меди собираются в уголках его глаз и стекают по щекам, капают вниз, обжигая землю. Теперь я могу войти!",
+            "startdescription": "«Вот они, те слова...»",
+            "label": "Желанный ответ"
+        },
+        {
+            "id": "dream_answerstagriddle_4",
+            "description": "Дверь со скрежетом открывается. За ней виден проход, из которого льется свет Дозорного. Голова, Гирби, издает скрежещущий стон. Слезы из расплавленной меди собираются в уголках его глаз и стекают по щекам, капают вниз, обжигая землю. Теперь я могу войти!",
+            "startdescription": "«Меня нужно открыть. Смотри же: вот проливается моя кровь.»",
+            "label": "Ответ Змея"
+        },
+        {
+            "id": "dream_answerstagriddle_5",
+            "description": "Дверь со скрежетом открывается. За ней виден проход, из которого льется свет Дозорного. Голова, Гирби, издает скрежещущий стон. Слезы из расплавленной меди собираются в уголках его глаз и стекают по щекам, капают вниз, обжигая землю. Теперь я могу войти!",
+            "startdescription": "«Её сердце похоронено в иной Истории».",
+            "label": "Ответ из истории"
+        },
+        {
+            "id": "dream_wronganswerstagriddle",
+            "description": "Я просыпаюсь. Мои глаза открыты, и Оленья Дверь остается заперта. Я отправляюсь в другие сны.",
+            "startdescription": "Гирби пал очень и очень низко. Он не может войти в Дом, и не пускать туда других — одно из немногих оставшихся ему удовольствий. Гирби слишком благороден, чтобы посмеяться надо мной, но я вижу в его золотых глазах удовлетворение. «Это не ответ», — произносит он, смакуя каждое слово.",
+            "label": "Это не ответ"
+        },
+        {
+            "id": "dreamusestagway",
+            "description": "Здесь, на высоте, сухие тропы Пределов испещрены коварными расщелинами и ловушками десяти тысяч истекших лет. Мой разум не справляется. Я проснусь, так и не увидев Двери. Я отправляюсь в другие сны.",
+            "startdescription": "Я знаю дорогу, что ведет сквозь лабиринт Пределов к Оленьей Двери. Гирби разрешит мне войти, но путь — это всегда та или иная загадка. Мне потребуется сила разума.",
+            "slots": [
+                {
+                    "label": "Подъем",
+                    "description": "Доверьтесь силе разума, чтобы пройти через Оленью Дверь — или обретите необходимое знание и найдите дорогу к Паучьей Двери, где проливается кровь.",
+                    "id": "Ascent"
+                }
+            ],
+            "label": "Путь к Оленьей Двери"
+        },
+        {
+            "id": "dreamenterstag",
+            "description": ".",
+            "startdescription": "Оленья Дверь — это Врата Адепта. Тот, кто пройдет через эти врата, причастится первой истинной тайны Дома Солнца. Голова, Гирби, плачет, глядя на то, как я вхожу туда, куда ему путь заказан; однако он не смеет меня остановить. Изрезанные шрамами створы, скрежеща, распахиваются.",
+            "label": "Проход через Оленью Дверь"
+        },
+        {
+            "id": "dreamnotquitereachspiderlantern",
+            "description": "Пески глотают мои ноги и волной захлестывают рот и глаза... Когда я проснусь, мой язык будет отёкшим, а горло — до боли сухим. Я иду верным путем, но чтобы пройти выше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. Я знаю, что необходимо двигаться по изогнутой углами дорожке и о том, что в Песках живут невидимые, неспешные, изогнутые существа... ",
+            "label": "Шелковые Пески: рано!"
+        },
+        {
+            "id": "dreamreachspiderlantern",
+            "description": "Пески утекают прочь, точно вода, открывая взгляду камень, из которого когда-то давно восстали боги. Впереди блестит, подобно дождю, Дверь: её черная поверхность покрыта бусинками крови, круглыми, будто напившиеся клещи.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. Я знаю, что необходимо двигаться по изогнутой углами дорожке и о том, что в Песках живут невидимые, неспешные, изогнутые существа... ",
+            "label": "Все ближе к Паучьей Двери"
+        },
+        {
+            "id": "dreamnotquitereachspiderknock",
+            "description": "Пески глотают мои ноги и волной захлестывают рот и глаза... Когда я проснусь, мой язык будет отёкшим, а горло — до боли сухим. Я иду верным путем, но чтобы пройти выше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. Я знаю — есть слова, что открывают ветер... ",
+            "label": "Шелковые Пески: рано!"
+        },
+        {
+            "id": "dreamreachspiderknock",
+            "description": "Пески утекают прочь, точно вода, открывая взгляду камень, из которого когда-то давно восстали боги. Впереди блестит, подобно дождю, Дверь: её черная поверхность покрыта бусинками крови, круглыми, будто напившиеся клещи.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. Я знаю, какие слова открывают ветер, и Пески разрешат мне пройти... ",
+            "label": "Все ближе к Паучьей Двери"
+        },
+        {
+            "id": "dreamnotquitereachspidergrail",
+            "description": "Пески глотают мои ноги и волной захлестывают рот и глаза... Когда я проснусь, мой язык будет отёкшим, а горло — до боли сухим. Я иду верным путем, но чтобы пройти выше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. ЖАЖДА — вот проводник сквозь Пески. Моя ЖАЖДА и ЖАЖДА Паучьей Двери...",
+            "label": "Шелковые Пески: рано!"
+        },
+        {
+            "id": "dreamreachspidergrail",
+            "description": "Пески утекают прочь, точно вода, открывая взгляду камень, из которого когда-то давно восстали боги. Впереди блестит, подобно дождю, Дверь: её черная поверхность покрыта бусинками крови, круглыми, будто напившиеся клещи.",
+            "startdescription": "Шелковые Пески — это место во снах, где живет шепот. Скользят серые зерна песка, дрожат серые травы. ЖАЖДА — вот проводник сквозь Пески. Моя ЖАЖДА и ЖАЖДА Паучьей Двери...",
+            "label": "Все ближе к Паучьей Двери"
+        },
+        {
+            "id": "dreamusespiderway",
+            "description": "Здесь, в тяжелых складках сна, скрывается черная и блестящая, точно брюшко жалоносной сколии, дверь, украшенная все уменьшающимися пятнами крови. Её ЖАЖДА не была утолена, и Дверь не откроется. Я отправляюсь в другие сны.",
+            "startdescription": "Я знаю дорогу, что ведет от Шелковых Песков к Паучьей Двери. Если я утолю её ЖАЖДУ, пролив свежую кровь перед отходом ко сну, то дверь откроется.",
+            "slots": [
+                {
+                    "label": "Подъем",
+                    "description": "Принесите кровавую жертву, чтобы утолить ЖАЖДУ Паучьей Двери — или обретите необходимое знание и найдите дорогу к Павлиньей Двери, двери, где свет льется, подобно крови.",
+                    "id": "Ascent"
+                }
+            ],
+            "label": "Путь к Паучьей Двери"
+        },
+        {
+            "id": "dreamenterspider",
+            "description": ".",
+            "startdescription": "Паучью Дверь всегда страдает от ЖАЖДЫ. Всегда. Пролитая мною кровь тонкими струйками проникает под кожу мира. Дверь жадно глотает её, и этот краткий миг сытости заставляет её раскрыться передо мной.",
+            "label": "Проход через Паучью Дверь"
+        },
+        {
+            "id": "dreamnotquitereachpeacocklantern",
+            "description": "Холод Стеклянного Сада обжигает каждую пору моей кожи. Когда я проснусь, она будет вся синяя. Я иду верным путем, но чтобы пройти выше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Здесь, этой дорогой, однажды явились в мир светлейшие Часы, но теперь здесь, среди облаков, царит тишина... ",
+            "label": "Стеклянный Сад: рано!"
+        },
+        {
+            "id": "dreamreachpeacocklantern",
+            "description": "Павлинья Дверь: чистый, сверкающий аметист, оттеняющий снежно-бледные льды Стеклянного Сада. Передо мной высшая точка, через которую смертные могут войти в Обитель. Поверхность двери безупречна: на ней нет ни единой трещины. Эта дверь не из тех, что можно открыть, однако говорят, что порой из неё проливается свет.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Здесь, этой дорогой, однажды явились в мир светлейшие Часы, но теперь здесь, среди облаков, царит тишина... ",
+            "label": "Стеклянный Сад: все ближе к Павлиньей Двери"
+        },
+        {
+            "id": "dreamnotquitereachpeacockknock",
+            "description": "Холод Стеклянного Сада обжигает каждую пору моей кожи. Когда я проснусь, она будет вся синяя. Я иду верным путем, но чтобы пройти выше, мне нужно знать больше. А сейчас я отправлюсь в другие сны.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Я почти знаю, куда идти... ",
+            "label": "Стеклянный Сад: рано!"
+        },
+        {
+            "id": "dreamreachpeacockknock",
+            "description": "Павлинья Дверь: чистый, сверкающий аметист, оттеняющий снежно-бледные льды Стеклянного Сада. Передо мной высшая точка, через которую смертные могут войти в Обитель. Поверхность двери безупречна: на ней нет ни единой трещины. Эта дверь не из тех, что можно открыть, однако говорят, что порой из неё проливается свет.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Я буду внимательно следить за ногами. Я знаю, куда идти... ",
+            "label": "Стеклянный Сад: все ближе к Павлиньей Двери"
+        },
+        {
+            "id": "dreamnotquitereachpeacockedge",
+            "description": "Павлинья Дверь: чистый, сверкающий аметист, оттеняющий снежно-бледные льды Стеклянного Сада. Передо мной высшая точка, через которую смертные могут войти в Обитель. Поверхность двери безупречна: на ней нет ни единой трещины. Эта дверь не из тех, что можно открыть, однако говорят, что порой из неё проливается свет. Я отправляюсь в другие сны.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Но это необходимо... ",
+            "label": "Стеклянный Сад: рано!"
+        },
+        {
+            "id": "dreamreachpeacockedge",
+            "description": "Павлинья Дверь: чистый, сверкающий аметист, оттеняющий снежно-бледные льды Стеклянного Сада. Передо мной высшая точка, через которую смертные могут войти в Обитель. Поверхность двери безупречна: на ней нет ни единой трещины. Эта дверь не из тех, что можно открыть, однако говорят, что порой из неё проливается свет.",
+            "startdescription": "Мой сон пронизывают лучи рассеченного солнца, но их недостаточно, чтобы растопить давным-давно погибшие ледяные бутоны Стеклянного сада. Каждый шаг обращает в порошок очередной цветок. Но это необходимо. Я буду внимательно следить, куда ступаю, как и диктует мне знание...",
+            "label": "Стеклянный Сад: все ближе к Павлиньей Двери"
+        },
+        {
+            "id": "dreamusepeacockway",
+            "description": "Фиолетовый Павлиньей Двери подобен сладчайшему из самоцветов, самому спелому плоду, самой поверхностной прозе. Она принимает мои мысли, но не дает ничего взамен. Проснувшись, я не вспомню своего сна.",
+            "startdescription": "Я знаю дорогу, что ведет из Стеклянного Сада к Павлиньей Двери — великолепнейшей из всех Дверей, что сверкает, точно зеркало. Возможно, я смогу пройти сквозь эту дверь, если найду все необходимое. ",
+            "slots": [
+                {
+                    "label": "Подъем",
+                    "description": "Павлинья Дверь не открывается.",
+                    "id": "Ascent"
+                }
+            ],
+            "label": "Путь к Павлиньей Двери"
+        },
+        {
+            "id": "dreamenterpeacockmirror",
+            "description": ".",
+            "startdescription": "Павлинья Дверь отражает зеркало, которое я поднимаю во сне, а зеркало отражает Павлинью Дверь. По её поверхности пробегает чувственная рябь. Дверь отчаянно жаждет раскола, и когда она познает это удовольствие, я смогу войти.",
+            "label": "Путь сквозь Павлинью Дверь"
+        },
+        {
+            "id": "dreamenterpeacockfrangiclave",
+            "description": ".",
+            "startdescription": "Гудение камертона оживляет ключ, что я держу в руках, и Павлинья Дверь отзывается стоном. По её поверхности пробегает чувственная рябь. Дверь отчаянно жаждет раскола, и когда она познает это удовольствие, я смогу войти.",
+            "label": "Путь сквозь Павлинью Дверь"
+        },
+        {
+            "id": "poison.long.way.trap",
+            "startdescription": "Вечный поставил у ворот невидимых картографов — они должны будут проследить за мной и нанести меня на карту, точно малоизведанную страну.",
+            "label": "Стражи на Пути"
+        },
+        {
+            "id": "dreamheartvictoryintro",
+            "startdescription": "Когда я ложусь, поднимается сильный ветер, и крыша грохочет от его порывов. Горькая трава поможет мне покинуть тело. Вокруг меня встает Лес, но мои новые глаза различают еще одну дорогу. Там, в конце, ждет Маринетта: в её руках Ключ, что станет моим концом и началом.",
+            "slots": [
+                {
+                    "label": "Любовь",
+                    "id": "beloved"
+                }
+            ],
+            "label": "Барабаны в бурю"
+        },
+        {
+            "id": "dreamheartvictory",
+            "startdescription": "Маринетта ждет в тени кедра; у неё светящаяся темная кожа, блестящие белые кости, сверкающие подобно меди когти. Она держит алый Ключ — не то залитый кровью нож, не то рубиновую рану. Когда она опускает его, боль оказывается ослепительно красной.",
+            "label": "Королевские врата"
+        },
+        {
+            "id": "dreamheartvictory_withrisen",
+            "startdescription": "Маринетта ждет в тени кедра; у неё светящаяся темная кожа, блестящие белые кости, сверкающие подобно меди когти. Она держит алый Ключ — не то залитый кровью нож, не то рубиновую рану. Когда она опускает его, боль оказывается ослепительно красной.\r\n\r\nIn the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+            "label": "Королевские врата"
+        },
+        {
+            "id": "dreammothvictoryintro",
+            "startdescription": "Я брожу по знакомым дорогам сна, пока передо мной не встают цепкие деревья и тенистые тропинки Леса. Дверь в Лесу скрыта под водой колодца. Теперь я это знаю. В эту дверь не войти ни живым, ни мертвым. Мне откроет дорогу Медуза, ибо она не мертва и не жива. Я спешу вперед рысью.",
+            "slots": [
+                {
+                    "label": "Любовь",
+                    "id": "beloved"
+                }
+            ],
+            "label": "Барабаны в бурю"
+        },
+        {
+            "id": "dreammothvictory",
+            "startdescription": "Лунный свет раздвигает деревья, чернит содержимое колодца, расписывает своей игрой корни, касается избигистого тела Медузы, которая ждёт у колодца. Она поднимает руки — с них капает — с бледным Ключом, который извивается, все равно что клыкастый червь. Я, алый олень, опускаюсь на запястья и подставляю ей шею. В колодец проливается поток крови, и Медуза вырезает мою новую форму.",
+            "label": "Дверь в Лесу"
+        },
+        {
+            "id": "dreammothvictory_withrisen",
+            "startdescription": "Лунный свет раздвигает деревья, чернит содержимое колодца, расписывает своей игрой корни, касается избигистого тела Медузы, которая ждёт у колодца. Она поднимает руки — с них капает — с бледным Ключом, который извивается, все равно что клыкастый червь. Я, алый олень, опускаюсь на запястья и подставляю ей шею. В колодец проливается поток крови, и Медуза вырезает мою новую форму. \r\n\r\nIn the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+            "label": "Дверь в Лесу"
+        },
+        {
+            "id": "dreammeniscatevictoryintro",
+            "startdescription": "Я брожу по знакомым дорогам сна, пока передо мной не встают цепкие деревья и тенистые тропинки Леса. Но это не тот Лес, который я помню. Вокруг одни белые, точно лунный свет, березы — а сам лунный свет чернее самых черных чернил. Под его давлением белая кожа деревьев вздувается волдырями и начинает сочиться кровью. Я ускоряюсь до рыси, затем перехожу в галоп. Мне нужно добраться до Колодца до пробуждения... или пока не произошло нечто... ",
+            "slots": [
+                {
+                    "label": "Любовь",
+                    "id": "beloved"
+                }
+            ],
+            "label": "Без стен"
+        },
+        {
+            "id": "dreammeniscatevictory",
+            "startdescription": "Моя кожа висит лохмотьями. Колодец совсем близко, но луна меняется — она черная, она золотая, она переливается, как жемчуг. Кровь в Колодце — все равно что красное зеркало, и передо мной встают трое, и у троих мои лица, и все несут рога, как небесный месяц, и тот, что выше всех, поднимает ключ из черного сапфира, и когда он рассекает мою кожу, моё тело рвет на куски, будто молнией, и ТО, ЧТО ВНУТРИ, СНАРУЖИ, ТО, ЧТО СНАРУЖИ, ВНУТРИ...",
+            "label": "Три"
+        },
+        {
+            "id": "dreammeniscatevictory_withrisen",
+            "startdescription": "Моя кожа висит лохмотьями. Колодец совсем близко, но луна меняется — она черная, она золотая, она переливается, как жемчуг. Кровь в Колодце — все равно что красное зеркало, и передо мной встают трое, и у троих мои лица, и все несут рога, как небесный месяц, и тот, что выше всех, поднимает ключ из черного сапфира, и когда он рассекает мою кожу, моё тело рвет на куски, будто молнией, и ТО, ЧТО ВНУТРИ, СНАРУЖИ, ТО, ЧТО СНАРУЖИ, ВНУТРИ...",
+            "label": "Три"
+        },
+        {
+            "id": "belovedfarewelldream",
+            "startdescription": "Последнее прощание. Они останутся здесь. Я вознесусь.",
+            "slots": [
+                {
+                    "label": "Выбор",
+                    "description": "[Добавьте эмоции, чтобы отказаться от вознесения... и бессмертия. Вы останетесь со своей любовью. Хотите продолжить — ничего не делайте.]",
+                    "id": "decision"
+                }
+            ],
+            "label": "Выбор на Границе"
+        },
+        {
+            "id": "imnotinlovedream",
+            "startdescription": "Возможно, меня любят. Возможно, я тоже люблю. Возможно, это не имеет значения.",
+            "label": "Стремление"
+        }
+    ]
 }

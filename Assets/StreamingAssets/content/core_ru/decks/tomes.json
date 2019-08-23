@@ -1,96 +1,19 @@
-﻿{
-decks: [
-	{
-		id: "oneoffrewards",
-		description: "Стоит внимания.",
-		label: "Полезная мелочь",
-		spec: 
-		[
-				fragmentedgeb,
-				fragmentforgeb,
-				fragmentgrailb,
-				fragmentheartb,
-				fragmentknockb,
-				fragmentlanternb,
-				fragmentmothb,
-				fragmentwinterb,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "commontomes",
-		description: "Возможно, я найду в продаже книги о незримых искусствах.",
-		label: "Труды в обращении",
-		spec: 
-		[
-				dehoris1latin,
-				travellingatnight1,
-				travellingatnight2,
-				sixlettersonnecessity,
-				locksmithsdream1,
-				locksmithsdream2,
-				humoursofagentleman,
-				introductiontohistories,
-				onthewhite,
-				waroftheroadscensored,
-				queensoftherivers,
-				skeletonsongs,
-				burningofunburntgod,
-				onwhatiscontainedbysilvergreek,
-				orchidtransfigurations1latin,
-				orchidtransfigurations2latin,
-				victoryofcrowns,
-				apolloandmarsyas,
-				kitlingripe,
-				raptintheking,
-				vienneseconundra,
-				textbooklatin,
-				textbookgreek,
-				textbooksanskrit,
-				textbookreason,
-				textbookpassion,
-				textbookreason,
-				textbookpassion,
-				textbookreason,
-				textbookpassion,
-		],
-		defaultcard: "genericrubbishbook",
-	},
-	{
-		id: "auctionedcommontomes",
-		description: "Возможно, здесь найдутся книги, отобранные чуть более вдумчиво.",
-		label: "Труды из собраний",
-		spec: 
-		[
-				dehoris1latin,
-				travellingatnight1,
-				travellingatnight2,
-				sixlettersonnecessity,
-				locksmithsdream1,
-				locksmithsdream2,
-				humoursofagentleman,
-				introductiontohistories,
-				onthewhite,
-				waroftheroadscensored,
-				queensoftherivers,
-				skeletonsongs,
-				burningofunburntgod,
-				victoryofcrowns,
-				stumm,
-				debellismurorumlatin,
-				onwhatiscontainedbysilvergreek,
-				orchidtransfigurations1latin,
-				orchidtransfigurations2latin,
-				truecompleteasclepiangreek,
-				apolloandmarsyas,
-				textbooklatin,
-				textbookgreek,
-				textbooksanskrit,
-				textbookpassion,
-				textbookreason,
-				textbookpassion,
-		],
-		defaultcard: "genericrubbishbook",
-	},
-]
+{
+    "decks": [
+        {
+            "label": "Полезная заметка",
+            "description": "Тут что-то любопытное.",
+            "id": "oneoffrewards"
+        },
+        {
+            "label": "Общедоступные труды",
+            "description": "Я могу найти книги, из которых почерпну знания о незримых искусствах.",
+            "id": "commontomes"
+        },
+        {
+            "label": "Коллекционные труды",
+            "description": "Здесь я могу обнаружить чуть более ценные книги.",
+            "id": "auctionedcommontomes"
+        }
+    ]
 }

@@ -1,157 +1,102 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "auctionfailure",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds.",
-		warmup: "30",
-		slots: 
-		[
-			{
-				id: "Bid",
-				required: 
-				{
-					funds: "1",
-				},
-				label: "Ставка",
-			},
-		],
-		label: "Ставка на аукционе",
-		startdescription: "Лица истощены и стеснены, глаза блестят. Кто сделает ставку? [Предмет на аукционе — справа. Если вы проиграете аукцион, он будет потерян навсегда.]",
-		id: "auctionbuy",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "playerincreasedbid",
-				chance: "100",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "auctionbidmatched.grailapostlepillar3",
-				comment: "NEW",
-			},
-			{
-				id: "auctionsuccess",
-				chance: "70",
-			},
-			{
-				id: "auctionbidmatched",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			funds: "1",
-		},
-		warmup: "0",
-		label: "Моя ставка!",
-		startdescription: "Моя рука поднята, ставка сделана, аукционист подтверждает её стуком молотка. Ответят ли на неё?",
-		id: "playerincreasedbid",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			funds: "-1",
-			bid: "1",
-		},
-	},
-	{
-		id: "auctionbidmatched.grailapostlepillar3",
-		comment: "NEW",
-		requirements: 
-		{
-			bid: "-6",
-			apostlegrail.pillar3: "1",
-		},
-		linked: 
-		[
-			{
-				id: "auctionbidmatched",
-			},
-		],
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "auctionfailure",
-				chance: "100",
-			},
-		],
-		warmup: "30",
-		label: "Чужая ставка!",
-		startdescription: "Кто-то ответил на мою ставку! Нужно либо подкрепить её средствами, либо отказаться от покупки.",
-		id: "auctionbidmatched",
-		actionId: "explore",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Bid",
-				required: 
-				{
-					funds: "1",
-				},
-				label: "Ставка",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "playerincreasedbid",
-				chance: "100",
-			},
-		],
-	},
-	{
-		comments: "Tools and ingredients might subsequently be offered as purchases; in particular, ingredients are right now in a Grail Apostle plot recipe.",
-		warmup: "0",
-		aspects: 
-		{
-			restore: "1",
-		},
-		label: "Аукцион проигран",
-		startdescription: ".",
-		id: "auctionfailure",
-		actionId: "explore",
-		description: "Аукцион закончен. Книга ушла кому-то ещё. Мне вернули средства.",
-		effects: 
-		{
-			text: "-1",
-			tool: "-1",
-			ingredient: "-1",
-		},
-	},
-	{
-		craftable: "false",
-		comments: "The auction item should be inherited from the linking recipe.",
-		warmup: "0",
-		label: "Победа на аукционе!",
-		startdescription: ".",
-		id: "auctionsuccess",
-		actionId: "explore",
-		description: "Аукционист делает пометку у моего имени и даёт знак помощнику. Покупка в моих руках. Надеюсь, она того стоила.",
-		effects: 
-		{
-			funds: "-100",
-			bid: "-100",
-		},
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "auctionbuy",
+            "description": ".",
+            "startdescription": "Нетерпеливые лица, сверкающие глаза. Кто предложит цену? [Предмет с аукциона можно увидеть справа. Если вы его упустите, он будет утрачен навсегда.]",
+            "slots": [
+                {
+                    "label": "Заявка",
+                    "id": "Bid"
+                }
+            ],
+            "label": "Ставка на аукционе"
+        },
+        {
+            "id": "playerincreasedbid",
+            "description": ".",
+            "startdescription": "Я поднимаю руку. Аукционист вскриком показывает, что заметил меня. Даст ли кто-то больше?",
+            "label": "Предложение цены!"
+        },
+        {
+            "id": "auctionbidmatched.grailapostlepillar3"
+        },
+        {
+            "id": "auctionbidmatched",
+            "description": ".",
+            "startdescription": "Кто-то поднял ставку! Мне надо вложить больше средств или отказаться от покупки.",
+            "slots": [
+                {
+                    "label": "Заявка",
+                    "id": "Bid"
+                }
+            ],
+            "label": "Ещё одно предложение!"
+        },
+        {
+            "id": "auctionfailureclear"
+        },
+        {
+            "id": "auctionfailure",
+            "description": "Аукцион окончен. Лот достался другому. Мои средства остались при мне.",
+            "startdescription": ".",
+            "label": "Неудача на аукционе"
+        },
+        {
+            "id": "auctionsuccess",
+            "description": "Аукционист записывает моё имя и даёт сигнал кому-то из помощников. Лот достался мне. Надеюсь, оно того стоило.",
+            "startdescription": ".",
+            "label": "Выигрыш на аукционе!"
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3",
+            "startdescription": "Другие искатели не обратили внимания на тайны, скрытые в трупе короля-воина. Я не совершу эту ошибку.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5",
+            "startdescription": "Не стоит пренебрегать последним кусочком жреца. Да, прожевать его будет сложновато, но в нём содержатся знания и сила.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2",
+            "startdescription": "Я соберу всё, что осталось от Лагуна, и придумаю, как добраться до его воспоминаний. Может, растворить прах в чае?",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault",
+            "startdescription": "Я сохраню останки Короля у себя.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4",
+            "startdescription": "Caput gerat lupinum. Когда-то считалось, что человек превращается в волка, если выходит за границы дозволенного.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
+            "startdescription": "Как и все остальные, кто приходил сюда прежде, мой соперник не обратил внимания на тайны, скрытые в трупе короля-воина. Я не совершу эту ошибку.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить последний кусочек священника. Да, прожевать его будет сложновато, но в нём содержатся знания и сила.",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить останки бывшего бессмертного. Я соберу всё, что осталось от Лагуна, и придумаю, как добраться до его воспоминаний. Может, растворить прах в чае?",
+            "label": "Ещё одно сокровище"
+        },
+        {
+            "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить наполовину смертные остатки. Я сохраню останки Короля у себя.",
+            "label": "One More Treasure"
+        },
+        {
+            "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
+            "startdescription": "Моего соперника больше нет, и теперь мы можем похитить останки смертного.",
+            "label": "One More Treasure"
+        }
+    ]
 }

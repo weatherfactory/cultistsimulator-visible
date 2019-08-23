@@ -1,417 +1,244 @@
-﻿ {"recipes": [
 {
-	id: "explorevaultcurse_dread_encounter",
-	actionId:"explore",
-	label: "Проклятие Сухой Души",
-	startdescription: "Сокровища перед нами укрыты проклятием Сухой Души. Без Лампады или Сердца оно последует за нами домой и иссушит нас.",
-	requirements: {curse_dread:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultcurse_dread_highheart",chance:100},
-	{id: "explorevaultcurse_dread_highlantern",chance:100},
-	{id: "explorevaultcurse_dread_midheart",chance:100},
-	{id: "explorevaultcurse_dread_midlantern",chance:100},
-	{id: "explorevaultcurse_dread_lowheart",chance:100},	
-	{id: "explorevaultcurse_dread_lowlantern",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultcurse_dread_failure",chance:100}]
-	},
-	
-	{id:"explorevaultcurse_dread_highheart",
-	actionId: "explore",
-	requirements:{heart:10},
-	label:"Мы молим Тис-Кольцо, что обновлена",
-	startdescription:"Мы достаточно сильны Сердцем, чтобы защититься от этого Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:100},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-		{id:"explorevaultcurse_dread_midheart",
-	actionId: "explore",
-	requirements:{heart:5},
-	label:"Мы молим Тис-Кольцо, что дарует путь",
-	startdescription:"С нами достаточно силы Сердца, чтобы сокрушить Проклятие... возможно.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:70},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultcurse_dread_lowheart",
-	actionId: "explore",
-	requirements:{heart:1},
-	label:"Мы молим Тис-Кольцо, что сочна",
-	startdescription:"Возможно, сила древнего и плодородного Часа, сила Тис-Кольцо, сможет защитить нас от Проклятия. Возможно, нет.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:30},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_dread_highlantern",
-	actionId: "explore",
-	requirements:{lantern:10},
-	label:"Мы взываем к Полковнику, что неотвергаем",
-	startdescription:"Полковник — яростный Час, но притом ему знаком Свет, и он переживал худшее. Его сила защитит нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:100},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_dread_midlantern",
-	actionId: "explore",
-	requirements:{lantern:5},
-	label:"Мы взываем к Полковнику, что в шрамах",
-		startdescription:"Полковник — Час в шрамах, но притом ему знаком Свет, и он переживал худшее. Его сила защитит нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:70},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_dread_lowlantern",
-	actionId: "explore",
-	requirements:{lantern:1},
-	label:"Мы взываем к Полковнику, что слеп",
-	startdescription:"Полковник — Час, которому знаком Свет, но помнит ли он? Его сила всё же может защитить нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_dread_success",chance:30},
-	{id:"explorevaultcurse_dread_failure",chance:100}]	  
-		  },
-	
-			{
-	id: "explorevaultcurse_dread_success",
-	actionId:"explore",
-	label: "Проклятие тает",
-	startdescription: "Наша мощь преодолела ту, что была здесь. Проклятие не коснётся нас.",
-	description: ".",
-	effects: {curse_dread:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-				{
-	id: "explorevaultcurse_dread_failure",
-	actionId:"explore",
-	label: "Проклятие нависает",
-	startdescription: "Есть цена, которую приходится платить за вход в такие места. Вскоре Проклятие сомкнётся вокруг нас.",
-	description: ".",
-	effects: {curse_dread:-1},
-	alternativerecipes: [{id: "curse_dread_dormant",chance:100,additional:true}],
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	{
-	id: "explorevaultcurse_visions_encounter",
-	actionId:"explore",
-	label: "Проклятие Пятого Глаза",
-	startdescription: "Сокровища перед нами укрыты проклятием Пятого Глаза. Без Зимы или Сердца оно последует за нами домой и откроет новые глаза нашим душам.",
-	requirements: {curse_visions:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultcurse_visions_highheart",chance:100},
-	{id: "explorevaultcurse_visions_highwinter",chance:100},
-	{id: "explorevaultcurse_visions_midheart",chance:100},
-	{id: "explorevaultcurse_visions_midwinter",chance:100},
-	{id: "explorevaultcurse_visions_lowheart",chance:100},	
-	{id: "explorevaultcurse_visions_lowwinter",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultcurse_visions_failure",chance:100}]
-	},
-	
-	{id:"explorevaultcurse_visions_highheart",
-	actionId: "explore",
-	requirements:{heart:10},
-	label:"Мы молим Тис-Кольцо, что обновлена",
-	startdescription:"Мы достаточно сильны Сердцем, чтобы защититься от этого Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:100},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-		{id:"explorevaultcurse_visions_midheart",
-	actionId: "explore",
-	requirements:{heart:5},
-	label:"Мы молим Тис-Кольцо, что дарует путь",
-	startdescription:"С нами достаточно силы Сердца, чтобы сокрушить Проклятие... возможно.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:70},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultcurse_visions_lowheart",
-	actionId: "explore",
-	requirements:{heart:1},
-	label:"Мы молим Тис-Кольцо, что сочна",
-	startdescription:"Возможно, сила древнего и плодородного Часа, сила Тис-Кольцо, сможет защитить нас от Проклятия. Возможно, нет.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:30},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_visions_highwinter",
-	actionId: "explore",
-	requirements:{winter:10},
-	label:"Мы взываем к Элегиасту, у которого больше ничего не изъять",
-	startdescription:"Элегиаст знает, что уже утрачено. Его сила защитит нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:100},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_visions_midwinter",
-	actionId: "explore",
-	requirements:{winter:5},
-	label:"Мы взываем к Элегиасту, которого не обмануть",
-	startdescription:"Элегиаст отделяет воспоминания от истины. Его сила должна защитить нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:70},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_visions_lowwinter",
-	actionId: "explore",
-	requirements:{winter:1},
-	label:"Мы взываем к Элегиасту, что зовёт всех Мертвецов по именам",
-	startdescription:"Ирония и печаль Элегиаста могут подавить видения. Кто знает?",
-		  description:".",
-	linked: [{id:"explorevaultcurse_visions_success",chance:30},
-	{id:"explorevaultcurse_visions_failure",chance:100}]	  
-		  },
-	
-			{
-	id: "explorevaultcurse_visions_success",
-	actionId:"explore",
-	label: "Проклятие тает",
-	startdescription: "Наша мощь преодолела ту, что была здесь. Проклятие не коснётся нас.",
-	description: ".",
-	effects: {curse_visions:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-				{
-	id: "explorevaultcurse_visions_failure",
-	actionId:"explore",
-	label: "Проклятие нависает",
-	startdescription: "Есть цена, которую приходится платить за вход в такие места. Вскоре Проклятие сомкнётся вокруг нас.",
-	description: ".",
-	effects: {curse_visions:-1},
-	alternativerecipes: [{id: "curse_visions_dormant",chance:100,additional:true}],
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
-	
-	{
-	id: "explorevaultcurse_affliction_encounter",
-	actionId:"explore",
-	label: "Проклятие Ползучего Дыхания",
-	startdescription: "Сокровища перед нами укрыты проклятием Ползучего Дыхания. Без Чаши или Сердца оно последует за нами домой и спорами поселится в наших лёгких.",
-	requirements: {curse_affliction:1},
-	slots:[{id:"Assistance",label:"Помощь", description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultcurse_affliction_highheart",chance:100},
-	{id: "explorevaultcurse_affliction_highgrail",chance:100},
-	{id: "explorevaultcurse_affliction_midheart",chance:100},
-	{id: "explorevaultcurse_affliction_midgrail",chance:100},
-	{id: "explorevaultcurse_affliction_lowheart",chance:100},	
-	{id: "explorevaultcurse_affliction_lowgrail",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultcurse_affliction_failure",chance:100}]
-	},
-	
-	{id:"explorevaultcurse_affliction_highheart",
-	actionId: "explore",
-	requirements:{heart:10},
-	label:"Мы взываем к Тис-Кольцо, что обновлена",
-	startdescription:"Мы достаточно сильны Сердцем, чтобы защититься от этого Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-		{id:"explorevaultcurse_affliction_midheart",
-	actionId: "explore",
-	requirements:{heart:5},
-	label:"Мы взываем к Тис-Кольцо, что дарует путь",
-	startdescription:"С нами достаточно силы Сердца, чтобы сокрушить Проклятие... возможно.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:70},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultcurse_affliction_lowheart",
-	actionId: "explore",
-	requirements:{heart:1},
-	label:"Мы взываем к Тис-Кольцо, что сочна",
-	startdescription:"Возможно, сила древнего и плодородного Часа, сила Тис-Кольцо, сможет защитить нас от Проклятия. Возможно, нет.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:30},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_affliction_highgrail",
-	actionId: "explore",
-	requirements:{grail:10},
-	label:"Мы взываем к Алой Чаше, что дарует жизнь",
-	startdescription:"Живая сила Алой Чаши предохранит нас от Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_affliction_midgrail",
-	actionId: "explore",
-	requirements:{grail:5},
-	label:"Мы взываем к Алой Чаше, что забирает жизнь",
-	startdescription:"Желания Алой Чаши должны защитить нас от Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:70},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_affliction_lowgrail",
-	actionId: "explore",
-	requirements:{grail:1},
-	label:"Мы взываем к Алой Чаше, что не насыщена.",
-	startdescription:"Алая Чаша может защитить нас от Проклятия. Это изменчивый Час.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_affliction_success",chance:30},
-	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
-		  },
-	
-			{
-	id: "explorevaultcurse_affliction_success",
-	actionId:"explore",
-	label: "Проклятие тает",
-	startdescription: "Наша мощь преодолела ту, что была здесь. Проклятие не коснётся нас.",
-	description: ".",
-	effects: {curse_affliction:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-				{
-	id: "explorevaultcurse_affliction_failure",
-	actionId:"explore",
-	label: "Проклятие нависает",
-	startdescription: "Есть цена, которую приходится платить за вход в такие места. Вскоре Проклятие сомкнётся вокруг нас.",
-	description: ".",
-	effects: {curse_affliction:-1},
-	alternativerecipes: [{id: "curse_affliction_dormant",chance:100,additional:true}],
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-	
-	
-	
-	{
-	id: "explorevaultcurse_nowhere_encounter",
-	actionId:"explore",
-	label: "Проклятие-из-Нигде",
-	startdescription: "Здесь — место, где кожа мира пожелтела от лихорадки. Лампада или Мотылёк могут защитить нас. И больше ничто.",
-	requirements: {curse_nowhere:1},
-	slots:[{id:"Assistance",label:"Помощь",description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
-	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
-	{id: "explorevaultcurse_nowhere_highlantern",chance:100},
-	{id: "explorevaultcurse_nowhere_midmoth",chance:100},
-	{id: "explorevaultcurse_nowhere_midlantern",chance:100},
-	{id: "explorevaultcurse_nowhere_lowmoth",chance:100},	
-	{id: "explorevaultcurse_nowhere_lowlantern",chance:100}],
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaultcurse_nowhere_failure",chance:100}]
-	},
-	
-	{id:"explorevaultcurse_nowhere_highmoth",
-	actionId: "explore",
-	requirements:{moth:10},
-	label:"Мы взываем к Смеющемуся Дрозду, что неутомима",
-	startdescription:"Наш Мотылёк достаточно силён, и защитит нас от этого Проклятия.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-		{id:"explorevaultcurse_nowhere_midmoth",
-	actionId: "explore",
-	requirements:{moth:5},
-	label:"Мы взываем к Смеющемуся Дрозду, что неостановима",
-	startdescription:"Час, которую иногда называют Смеющимся Дроздом, вполне могла прислушаться к нашей мольбе и унести это Проклятие. Вероятно, мы в безопасности.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:70},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-		  	{id:"explorevaultcurse_nowhere_lowmoth",
-	actionId: "explore",
-	requirements:{moth:1},
-	label:"Мы взываем к Смеющемуся Дрозду, что рассказывает свою историю желающим и нежелающим",
-	startdescription:"Смеющийся Дрозд — это сила Мотылька, и она ненадёжна. Не исключено, что она защитит нас.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:30},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_nowhere_highlantern",
-	actionId: "explore",
-	requirements:{lantern:10},
-	label:"Мы взываем к Солнцу-в-Рубище, что горит недвижно",
-	startdescription:"Солнце-в-Рубище одалживает светом Лампады. Это Проклятие несомненно прервётся здесь.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_nowhere_midlantern",
-	actionId: "explore",
-	requirements:{lantern:5},
-	label:"Мы взываем к Солнцу-в-Рубище, что уже не то, чем было.",
-	startdescription:"Солнце-в-Рубище, усталая леденящая сила, может одолжить нам свет Лампады. Оно завершит это Проклятие... вероятно.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:70},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-		  
-		  	{id:"explorevaultcurse_nowhere_lowlantern",
-	actionId: "explore",
-	requirements:{lantern:1},
-	label:"Мы взываем к Солнцу-в-Рубище, что далеко от нас.",
-	startdescription:"Нам нужна Лампада, чтобы прервать это Проклятие, но Солнце-в-Рубище не в силах дать нам много света.",
-		  description:".",
-	linked: [{id:"explorevaultcurse_nowhere_success",chance:30},
-	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
-		  },
-	
-			{
-	id: "explorevaultcurse_nowhere_success",
-	actionId:"explore",
-	label: "Проклятие тает",
-	startdescription: "Наша мощь преодолела ту, что была здесь. Проклятие не коснётся нас.",
-	description: ".",
-	effects: {curse_nowhere:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-				{
-	id: "explorevaultcurse_nowhere_failure",
-	actionId:"explore",
-	label: "Проклятие нависает",
-	startdescription: "Есть цена, которую приходится платить за вход в такие места. Вскоре Проклятие сомкнётся вокруг нас.",
-	description: ".",
-	effects: {curse_nowhere:-1},
-	alternativerecipes: [{id: "curse_nowhere_dormant",chance:100,additional:true}],
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
-	},
-	
-]
+    "recipes": [
+        {
+            "id": "explorevaultcurse_dread_encounter",
+            "startdescription": "На сокровища, которых мы ищем, наложено иссушающее проклятие. Без защиты Лампады или Сердца оно может последовать за нами и выпить нашу жизненную силу.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Иссушающее проклятие"
+        },
+        {
+            "id": "explorevaultcurse_dread_highheart",
+            "description": ".",
+            "startdescription": "Наша вера в Сердце достаточно крепка, чтобы практически не бояться проклятия.",
+            "label": "Мы взываем к Тисовой Спирали, что возрождается"
+        },
+        {
+            "id": "explorevaultcurse_dread_midheart",
+            "description": ".",
+            "startdescription": "У нас достаточно влияния Сердца, чтобы отогнать проклятие... наверное.",
+            "label": "Мы взываем к Тисовой Спирали, что всеобъемлет"
+        },
+        {
+            "id": "explorevaultcurse_dread_lowheart",
+            "description": ".",
+            "startdescription": "Возможно, сила древнего, плодородного Часа под названием Тисовая Спираль защитит нас от проклятия. А возможно, нет.",
+            "label": "Мы взываем к Тисовой Спирали, что напитана соком"
+        },
+        {
+            "id": "explorevaultcurse_dread_highlantern",
+            "description": ".",
+            "startdescription": "Полковник — безжалостный Час, однако это сила, близкая Свету, и ему приходилось переживать вещи и похуже. Его сила почти наверняка убережёт нас.",
+            "label": "Мы взываем к Полковнику, что не принимает отказов"
+        },
+        {
+            "id": "explorevaultcurse_dread_midlantern",
+            "description": ".",
+            "startdescription": "Полковник — покрытый шрамами Час, однако это сила, близкая Свету, и ему приходилось переживать вещи и похуже. Его сила должна нас уберечь.",
+            "label": "Мы взываем к Полковнику, что покрыт шрамами"
+        },
+        {
+            "id": "explorevaultcurse_dread_lowlantern",
+            "description": ".",
+            "startdescription": "Полковник — это Час, близкий Свету, но помнит ли об этом он сам? Возможно, его сила еще сумеет нас уберечь.",
+            "label": "Мы взываем к Полковнику, что слеп"
+        },
+        {
+            "id": "explorevaultcurse_dread_success",
+            "description": ".",
+            "startdescription": "Мы сильнее той силы, что была здесь. Проклятие не смеет нас коснуться.",
+            "label": "Проклятие слабеет"
+        },
+        {
+            "id": "explorevaultcurse_dread_failure",
+            "description": ".",
+            "startdescription": "Тот, кто отправляется в такие места, должен знать, что цена высока. Скоро придёт час, когда проклятие усилит свою хватку.",
+            "label": "Проклятие остается с нами"
+        },
+        {
+            "id": "explorevaultcurse_visions_encounter",
+            "startdescription": "На сокровища, которых мы ищем, наложено проклятие пятого глаза. Без защиты Зимы или Сердца оно может последовать за нами и прорвать в душе глаз.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Проклятие пятого глаза"
+        },
+        {
+            "id": "explorevaultcurse_visions_highheart",
+            "description": ".",
+            "startdescription": "Наша вера в Сердце достаточно крепка, чтобы практически не бояться проклятия.",
+            "label": "Мы взываем к Тисовой Спирали, что возрождается"
+        },
+        {
+            "id": "explorevaultcurse_visions_midheart",
+            "description": ".",
+            "startdescription": "У нас достаточно влияния Сердца, чтобы отогнать проклятие... наверное.",
+            "label": "Мы взываем к Тисовой Спирали, что всеобъемлет"
+        },
+        {
+            "id": "explorevaultcurse_visions_lowheart",
+            "description": ".",
+            "startdescription": "Возможно, сила древнего, плодородного Часа под названием Тисовая Спираль защитит нас от проклятия. А возможно, нет.",
+            "label": "Мы взываем к Тисовой Спирали, что напитана соком"
+        },
+        {
+            "id": "explorevaultcurse_visions_highwinter",
+            "description": ".",
+            "startdescription": "Элегист знает, что утеряно без следа. Его сила почти наверняка убережёт нас.",
+            "label": "Мы взываем к Элегисту, от которого более взять нечего"
+        },
+        {
+            "id": "explorevaultcurse_visions_midwinter",
+            "description": ".",
+            "startdescription": "Элегист умеет различить истину и воспоминание. Его сила должна нас уберечь.",
+            "label": "Мы взываем к Элегисту, что видит обман насквозь"
+        },
+        {
+            "id": "explorevaultcurse_visions_lowwinter",
+            "description": ".",
+            "startdescription": "Возможно, ирония и печаль Элегиста ещё усмирят видения. Кто знает?",
+            "label": "Мы взываем к Элегисту, что называет мертвецов по имени"
+        },
+        {
+            "id": "explorevaultcurse_visions_success",
+            "description": ".",
+            "startdescription": "Мы сильнее той силы, что была здесь. Проклятие не смеет нас коснуться.",
+            "label": "Проклятие слабеет"
+        },
+        {
+            "id": "explorevaultcurse_visions_failure",
+            "description": ".",
+            "startdescription": "Тот, кто отправляется в такие места, должен знать, что цена высока. Скоро придёт час, когда проклятие усилит свою хватку.",
+            "label": "Проклятие остается с нами"
+        },
+        {
+            "id": "explorevaultcurse_affliction_encounter",
+            "startdescription": "На сокровища, которых мы ищем, наложено проклятие хриплого дыхания. Без защиты Зимы или Сердца оно может последовать за нами и, точно споры, пустить корни в наших лёгких.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Хриплое дыхание"
+        },
+        {
+            "id": "explorevaultcurse_affliction_highheart",
+            "description": ".",
+            "startdescription": "Мы можем быть почти уверены, что наша вера в Сердце достаточно крепка, чтобы не бояться проклятия.",
+            "label": "Мы взываем к Тисовой Спирали, что возрождается"
+        },
+        {
+            "id": "explorevaultcurse_affliction_midheart",
+            "description": ".",
+            "startdescription": "У нас достаточно влияния Сердца, чтобы отогнать проклятие... наверное.",
+            "label": "Мы взываем к Тисовой Спирали, что всеобъемлет"
+        },
+        {
+            "id": "explorevaultcurse_affliction_lowheart",
+            "description": ".",
+            "startdescription": "Возможно, сила древнего, плодородного Часа под названием Тисовая Спираль защитит нас от проклятия. А возможно, нет.",
+            "label": "Мы взываем к Тисовой Спирали, что напитана соком"
+        },
+        {
+            "id": "explorevaultcurse_affliction_highgrail",
+            "description": ".",
+            "startdescription": "Мощь Алой Чаши почти наверняка убережёт нас от проклятия.",
+            "label": "Мы взываем к Алой Чаше, что даёт жизнь"
+        },
+        {
+            "id": "explorevaultcurse_affliction_midgrail",
+            "description": ".",
+            "startdescription": "Голод Алой Чаши должен уберечь нас от проклятия.",
+            "label": "Мы взываем к Алой Чаше, что отнимает жизнь"
+        },
+        {
+            "id": "explorevaultcurse_affliction_lowgrail",
+            "description": ".",
+            "startdescription": "Возможно, Алая Чаша еще убережёт нас от проклятия. В свои права вступил капризный, непостоянный час.",
+            "label": "Мы взываем к Алой Чаше, что не знает сытости"
+        },
+        {
+            "id": "explorevaultcurse_affliction_success",
+            "description": ".",
+            "startdescription": "Мы сильнее той силы, что была здесь. Проклятие не смеет нас коснуться.",
+            "label": "Проклятие слабеет"
+        },
+        {
+            "id": "explorevaultcurse_affliction_failure",
+            "description": ".",
+            "startdescription": "Тот, кто отправляется в такие места, должен знать, что цена высока. Скоро придёт час, когда проклятие усилит свою хватку.",
+            "label": "Проклятие остается с нами"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_encounter",
+            "startdescription": "Кожа мира желта от снедающей её лихорадки. Только Лампада и Мотылёк смогут нас защитить. Они и больше никто. ",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Проклятье-из-Нигде"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_highmoth",
+            "description": ".",
+            "startdescription": "Мы можем быть почти уверены, что наша вера в Мотылька достаточно крепка, чтобы не бояться проклятия.",
+            "label": "Мы взываем к Кустарнице, что не знает усталости"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_midmoth",
+            "description": ".",
+            "startdescription": "Чтобы избавиться от проклятия, можно обратиться к силе Часа, что зовется Кустарницей. Вероятнее всего, она убережёт нас.",
+            "label": "Мы взываем к Кустарнице, что не знает покоя"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_lowmoth",
+            "description": ".",
+            "startdescription": "Кустарница — это сила, близкая Мотыльку, и надёжной её не назвать. Возможно, она убережёт нас.",
+            "label": "Мы взываем к Кустарнице, что поёт и тем, кто того просит, и тем, кто затыкает уши"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_highlantern",
+            "description": ".",
+            "startdescription": "Солнце-в-Лохмотьях льёт свет Лампады. Оно почти наверняка уничтожит проклятие.",
+            "label": "Мы взываем к Солнцу-в-Лохмотьях, что продолжает гореть"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_midlantern",
+            "description": ".",
+            "startdescription": "Солнце-в-Лохмотьях, эта усталая, зяблая сила, может пролить на нас свет Лампады. Оно прогонит проклятие... наверное.",
+            "label": "Мы взываем к Солнцу-в-Лохмотьях, что стало не таким, как прежде"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_lowlantern",
+            "description": ".",
+            "startdescription": "Чтобы побороть проклятие, нужна сила Лампады, но Солнце-в-Лохмотьях даст нам лишь немного.",
+            "label": "Мы взываем к Солнцу-в-Лохмотьях, что далеко от нас"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_success",
+            "description": ".",
+            "startdescription": "Мы сильнее той силы, что была здесь. Проклятие не смеет нас коснуться.",
+            "label": "Проклятие слабеет"
+        },
+        {
+            "id": "explorevaultcurse_nowhere_failure",
+            "description": ".",
+            "startdescription": "Тот, кто отправляется в такие места, должен знать, что цена высока. Скоро придёт час, когда проклятие усилит свою хватку.",
+            "label": "Проклятие остается с нами"
+        }
+    ]
 }
-

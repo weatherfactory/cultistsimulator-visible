@@ -1,1686 +1,424 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_serpent: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Младшая сестра: Змея",
-		startdescription: "Змея пристально смотрит на нас, покачивая гигантской головой. Без Грани или Стука нам её не одолеть.",
-		id: "explorevaultguardian_serpent_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_serpent_highknock",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_highedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_midknock",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_midedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_lowknock",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_serpent_lowedge",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_serpent_highedge",
-		startdescription: "Глаза как газовые лампы; чешуи как чёрный нефрит. Змея — могучий враг, но она ничто перед нами.",
-		requirements: 
-		{
-			edge: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_edge",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила несравненна.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_serpent_midedge",
-		startdescription: "Глаза как газовые лампы; клыки как сталактиты. Великая Змея — могучий враг, но мы сравнимся с нею.",
-		requirements: 
-		{
-			edge: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_edge",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила велика.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_serpent_lowedge",
-		startdescription: "Глаза как газовые лампы; пасть, в которую можно войти. Мы можем победить эту Змею. Мы можем пожалеть, что попытались.",
-		requirements: 
-		{
-			edge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_edge",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Нашей силы может не хватить.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_serpent_highknock",
-		startdescription: "В пасть Змеи можно войти, склонившись. Язык Змеи толщиной с мужские плечи. Но, несомненно, она почтит силу, что мы несём.",
-		requirements: 
-		{
-			knock: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_knock",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Матери Муравьёв, что восстаёт из ран.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_serpent_midknock",
-		startdescription: "Длины Змеи хватит, чтобы обернуться вокруг дома. Клыки Змеи блестят как лёд. Вероятно, она почтит силу, что мы несём.",
-		requirements: 
-		{
-			knock: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_knock",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Матери Муравьёв, что окружает.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_serpent_lowknock",
-		startdescription: "Змея возвышается как буйная река. Её глаза — горящие провалы голода. Может быть, Змея почтит силу, что мы несём.",
-		requirements: 
-		{
-			knock: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_serpent_success_knock",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_serpent_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Матери Муравьёв, что открывает.",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Биения Змеи",
-		startdescription: "Змея вьётся и кричит! Её агония сотрясает землю! Но она умирает. Мы пройдём дальше.",
-		id: "explorevaultguardian_serpent_success_edge",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_serpent: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Печаль Змеи",
-		startdescription: "Она опускает огромную голову. Влага сочится из немигающих глаз. Она плачет? Что она помнит о старшей сестре, к чьей силе мы воззвали?",
-		id: "explorevaultguardian_serpent_success_knock",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_serpent: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Сила Змеи",
-		startdescription: "Назад. Назад! Нам не устоять!",
-		id: "explorevaultguardian_serpent_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_watchers: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Стражи",
-		startdescription: "Местные — со злобой, по долгу, или с контрактом наёмников. Мы можем обмануть их Мотыльком, соблазнить их Чашей, или сразиться с ними Гранью.",
-		id: "explorevaultguardian_watchers_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_watchers_highgrail",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_highmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_highedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_midgrail",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_midmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_midedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_lowgrail",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_lowmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_watchers_lowedge",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_watchers_highedge",
-		startdescription: "Стражи пожалеют, что встали против нас.",
-		requirements: 
-		{
-			edge: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_edge",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила несравненна.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_midedge",
-		startdescription: "Мы застанем Стражей врасплох. Мы должны справиться с ними.",
-		requirements: 
-		{
-			edge: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_edge",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила велика.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_lowedge",
-		startdescription: "Возможно, Стражи слишком сильны для нас — но у нас всё же есть шанс.",
-		requirements: 
-		{
-			edge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_edge",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Нашей силы может не хватить.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_highgrail",
-		startdescription: "«Ближе, милые. Для вас есть кое-что особенное».",
-		requirements: 
-		{
-			grail: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_grail",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: обольщения Чаши",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_midgrail",
-		startdescription: "Наши чары должны преодолеть волю Стражей.",
-		requirements: 
-		{
-			grail: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_grail",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: соблазны Чаши",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_lowgrail",
-		startdescription: "Возможно, мы сможем отвлечь Стражей от цели.",
-		requirements: 
-		{
-			grail: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_grail",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: отвлечения Чаши",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_highmoth",
-		startdescription: "«Смотрите ближе. Ещё ближе. Ближе! Смотрите ещё. Ближе. Теперь закройте глаза...»",
-		requirements: 
-		{
-			moth: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_moth",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: идеальный план обмана",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_midmoth",
-		startdescription: "«Проснитесь! Проснитесь! Они напали! Туда, быстрее!»",
-		requirements: 
-		{
-			moth: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_moth",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: неплохой план обмана",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_watchers_lowmoth",
-		startdescription: "«Они пошли... туда?»",
-		requirements: 
-		{
-			moth: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_watchers_success_moth",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_watchers_failure",
-				chance: "100",
-			},
-		],
-		label: "Против Стражей: отчаянный план обмана",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Конец Стражей",
-		startdescription: "Выплески их крови сначала ярки, потом темнеют. Не стоило вставать на нашем пути. Идём дальше.",
-		id: "explorevaultguardian_watchers_success_edge",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Падение Стражей",
-		startdescription: "Удовольствия, которым они предаются, повредят им. Возможно, они сочтут, что вред не важен. Тем временем, мы можем пройти.",
-		id: "explorevaultguardian_watchers_success_grail",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Смущение Стражей",
-		startdescription: "Их растерянность — наша возможность. Мы пройдём в молчании и тайне.",
-		id: "explorevaultguardian_watchers_success_moth",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Победа Стражей",
-		startdescription: "Они хитрее и многочисленнее, чем мы думали! Это кончится нашей кровью — ",
-		id: "explorevaultguardian_watchers_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_monks: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Монахи",
-		startdescription: "Орден хранителей, связанных обетами и нравами. Они слишком стойки для обольщений Чаши — мы должны победить их Гранью или запутать Мотыльком.",
-		id: "explorevaultguardian_monks_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_monks_highmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_highedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_midmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_midedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_lowmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_monks_lowedge",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_monks_highedge",
-		startdescription: "Мы запятнаем землю святой кровью.",
-		requirements: 
-		{
-			edge: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_edge",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила неотразима.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_monks_midedge",
-		startdescription: "Нас должно быть вполне достаточно для этих святых глупцов.",
-		requirements: 
-		{
-			edge: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_edge",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила велика.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_monks_lowedge",
-		startdescription: "Всего лишь монахи. Но — их много, очень много. Мы можем одолеть их, если повезёт.",
-		requirements: 
-		{
-			edge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_edge",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Нашей силы может не хватить.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_monks_highmoth",
-		startdescription: "«Мы принесли те самые святые тексты, чьё значение проясняется лишь при лунном свете — »",
-		requirements: 
-		{
-			moth: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_moth",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Монахи: идеальный план обмана",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_monks_midmoth",
-		startdescription: "«На этом пропуске — печать высшей власти. Не стойте на пути — »",
-		requirements: 
-		{
-			moth: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_moth",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Монахи: неплохой план обмана",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_monks_lowmoth",
-		startdescription: "«У нас есть... реликвии. <b>Древние</b> реликвии».",
-		requirements: 
-		{
-			moth: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_monks_success_moth",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_monks_failure",
-				chance: "100",
-			},
-		],
-		label: "Монахи: отчаянный план обмана",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Молчание монахов",
-		startdescription: "Неотличимые тела лежат в растёкшихся робах. Перешагнуть. Вперёд.",
-		id: "explorevaultguardian_monks_success_edge",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_monks: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Заблуждение монахов",
-		startdescription: "Вера — обоюдоострый клинок. Эти монахи отлично обучены верить — и, в том числе, верить нашей лжи.",
-		id: "explorevaultguardian_monks_success_moth",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_monks: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Гнев монахов",
-		startdescription: "Они сильнее и мудрее, чем мы думали. Их удары находят цели — ",
-		id: "explorevaultguardian_monks_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_dead: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Раздражённые Мертвецы",
-		startdescription: "Мертвецы сгущаются в воздухе вокруг нас, как мерцание над старыми кладбищами. Без Грани или Зимы у нас нет шансов против них.",
-		id: "explorevaultguardian_dead_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_dead_highwinter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_highedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_midwinter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_midedge",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_lowwinter",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_dead_lowedge",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_dead_highedge",
-		startdescription: "Мертвецы бледны как негативы теней. Они скользят как паутина на ветру. Они не могут устоять перед нами. Мы отошлём их прочь — вновь бормотать в тенях Леса.",
-		requirements: 
-		{
-			edge: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_edge",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила несравненна.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_dead_midedge",
-		startdescription: "Эти Мертвецы, с жадным, жалким взглядом, уже однажды скончались. Они едва держатся за бодрствующий мир. Нам должно хватить сил отправить их вниз, во тьму, но надо быть осторожнее.",
-		requirements: 
-		{
-			edge: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_edge",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Наша сила велика.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_dead_lowedge",
-		startdescription: "Мертвецы неспешны, как тень солнечных часов — неспешны и неостановимы. Они помнят боль и страх, но не слишком чётко. Нам оба этих чувства знакомы слишком хорошо. Может быть, мы их не одолеем.",
-		requirements: 
-		{
-			edge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_edge",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Нашей силы может не хватить.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_dead_highwinter",
-		startdescription: "Мертвецы кружат на грани нашего зрения как разорванные сны. Сам воздух вокруг нас холоден от тени Зимы. Они должны узнать её.",
-		requirements: 
-		{
-			winter: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_winter",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Костяному Голубю, что знает имена всех мёртвых.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_dead_midwinter",
-		startdescription: "Мертвецы пристально смотрят на нас, без выражения, как статуи святых. Но мы пронизаны силой Зимы. Возможно, Мертвецы узнают её.",
-		requirements: 
-		{
-			winter: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_winter",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Костяному Голубю, которого невозможно обмануть.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_dead_lowwinter",
-		startdescription: "Мертвецы кишат и хрипят во тьме, но мы отмечены Часами Зимы. Может быть, Мертвецы узнают её.",
-		requirements: 
-		{
-			winter: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_dead_success_winter",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_dead_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Костяному Голубю, у которого больше ничего не изъять.",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Несчастные Мертвецы",
-		startdescription: "Возвращаясь к нам, Мертвецы используют ту материю, что подвластна им, когда больше нет тел: пыль, ржавчину, паутину, обломки и лохмотья. Теперь мы победили их, и это тряпьё — всё, что осталось.",
-		id: "explorevaultguardian_dead_success_edge",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_dead: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Осторожные Мертвецы",
-		startdescription: "Мертвецы отступают, их почти-лица плоски и внимательны. Они не потревожат нас.",
-		id: "explorevaultguardian_dead_success_winter",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_dead: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Гнев Мертвецов",
-		startdescription: "Мертвецы больше похожи на ветер, чем на плоть, но не стоит недооценивать ветер. Сейчас они — ужасный режущий ураган бледных теней. Отступаем. Отступаем!",
-		id: "explorevaultguardian_dead_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_soucouyants: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Соукоянты во тьме",
-		startdescription: "В ночном воздухе проносятся их хрипы. Пригнёмся. Они слишком сильны для боя, но мы можем попытаться обмануть их, или отпугнуть светом Обители.",
-		id: "explorevaultguardian_soucouyants_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_highmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_highlantern",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_midmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_midlantern",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_lowmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_lowlantern",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_soucouyants_highlantern",
-		startdescription: "У нас достаточно силы, чтобы они держались в стороне.",
-		requirements: 
-		{
-			lantern: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_lantern",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Дозорному, что освещает.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_soucouyants_midlantern",
-		startdescription: "Нашей силы должно хватить, чтобы сдержать их — но они ждут малейшего провала в нашей бдительности.",
-		requirements: 
-		{
-			lantern: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_lantern",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Дозорному, что не сострадает.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_soucouyants_lowlantern",
-		startdescription: "Возможно, что сила, которую мы несём, безопасно проведёт нас через стеснённую ночь. Несомненно возможно.",
-		requirements: 
-		{
-			lantern: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_lantern",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Дозорному, что направляет.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_soucouyants_highmoth",
-		startdescription: "У Мотылька есть сила в стеснённой лесной ночи. Мы пройдём тайно и безопасно.",
-		requirements: 
-		{
-			moth: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_moth",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Мотыльку, что ищет среди деревьев в Лесу.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_soucouyants_midmoth",
-		startdescription: "У нас должно хватить силы, чтобы вселить уныние и растерянность в жаждущих ночных крылатых.",
-		requirements: 
-		{
-			moth: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_moth",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Мотыльку, что бьётся под черепом.",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_soucouyants_lowmoth",
-		startdescription: "Мотылёк даст нам шанс в пятнистых ночных тенях — но всего лишь шанс.",
-		requirements: 
-		{
-			moth: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_soucouyants_success_moth",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_soucouyants_failure",
-				chance: "100",
-			},
-		],
-		label: "Мы взываем к Мотыльку, что испещрён.",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Отступление соукоянтов",
-		startdescription: "Они не приблизятся. Они дразнят нас голосами воронов и детей; качают верхушки деревьев; метают в нас камни из темноты. Но не приближаются. Мы пройдём.",
-		id: "explorevaultguardian_soucouyants_success_lantern",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_soucouyants: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Раздражение соукоянтов",
-		startdescription: "Бегом из тени в глубокую тень. Лицом вниз в мягкую землю. Они знают, что мы здесь, но не знают, где мы. Их крики затихают за нами.",
-		id: "explorevaultguardian_soucouyants_success_moth",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_soucouyants: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Голод соукоянтов",
-		startdescription: "Они преследуют! Хлопанье кожистых крыльев, и тело с воплем исчезает в темноте - ",
-		id: "explorevaultguardian_soucouyants_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			guardian_long: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Долгие",
-		startdescription: "Полуденный Порт основан на печально известном Источнике: стоит испить из него, и мир забудет о вас. Некоторые Долгие ушли сюда от дел большого мира. Они не рады нарушителям, и нападать на них безусловно глупо. Но, возможно, они подвержены развлечениям Мотылька или обольщениям Чаши.",
-		id: "explorevaultguardian_long_encounter",
-		actionId: "explore",
-		slots: 
-		[
-			{
-				id: "Assistance",
-				required: 
-				{
-					follower: "1",
-					funds: "1",
-				},
-				description: "Средства необходимы для экспедиций. Приспешники позволяют одолевать препятствия.",
-				label: "Помощь",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "explorevaultguardian_long_highmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_highgrail",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_midmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_midgrail",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_lowmoth",
-				chance: "100",
-			},
-			{
-				id: "explorevaultguardian_long_lowgrail",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "explorevaultguardian_long_highgrail",
-		startdescription: "Даже у Долгих есть желания; возможно, в особенности у Долгих. Встреченный нами добровольно отдастся нашему вниманию.",
-		requirements: 
-		{
-			grail: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_grail",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Мы здесь ради вашего удовольствия».",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_long_midgrail",
-		startdescription: "Долгий совсем не против наших соблазнов, но всё ещё подозревает. Возможно, мы достигнем успеха.",
-		requirements: 
-		{
-			grail: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_grail",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Мы здесь ради вашего отвлечения».",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_long_lowgrail",
-		startdescription: "Желания этого Долгого — те же, что и у смертных, но они сглажены тысячами прожитых удовольствий. Возможно, мы всё же сможем стать достаточным развлечением... если повезёт.",
-		requirements: 
-		{
-			grail: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_grail",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Мы... надеемся, что вам понравится?»",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_long_highmoth",
-		startdescription: "Долгие безысходно тоскуют по новизне. Мы воспользуемся этим и при первой возможности исчезнем.",
-		requirements: 
-		{
-			moth: "10",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_moth",
-				chance: "90",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Новости! Новости из Старой Страны! Из всех Старых Стран!»",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_long_midmoth",
-		startdescription: "Он с нами играет? Сложно сказать. Но даже если это игра, Долгий может разрешить нам уйти. Наверное, всё будет хорошо.",
-		requirements: 
-		{
-			moth: "5",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_moth",
-				chance: "70",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Очень хорошо: слушайте условия пари».",
-		actionId: "explore",
-	},
-	{
-		id: "explorevaultguardian_long_lowmoth",
-		startdescription: "Глаза Долгого суровы и далеки как линия горизонта. Он недвижим как ящер. Слушает ли он?",
-		requirements: 
-		{
-			moth: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "explorevaultguardian_long_success_moth",
-				chance: "30",
-			},
-			{
-				id: "explorevaultguardian_long_failure",
-				chance: "100",
-			},
-		],
-		label: "«Это... эм, хм, забавная история, на самом деле...»",
-		actionId: "explore",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Долгий и золотой вечер",
-		startdescription: "Долгий действительно пал перед соблазнами Чаши? Или точно знал, что делают? В любом случае, места и времени более чем достаточно, чтобы — ",
-		id: "explorevaultguardian_long_success_grail",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_long: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Долгий обман",
-		startdescription: "Бессмертный житель Полудня обманут, или восхищён, или пойман в сети большего плана. В этот раз нам не помешают.",
-		id: "explorevaultguardian_long_success_moth",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_long: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevaulttick",
-				comment: "NEW",
-				chance: "100",
-			},
-		],
-		craftable: "false",
-		warmup: "30",
-		label: "Долгий выплеск ярости",
-		startdescription: "Бессмертный гневается. Возможно, решит кого-то убить, или сдержит гнев. Очень тяжело угадать действия бессмертных — ",
-		id: "explorevaultguardian_long_failure",
-		description: ".",
-		actionId: "explore",
-		alternativerecipes: 
-		[
-			{
-				id: "explorevault_casualty",
-				expulsion: 
-				{
-					filter: 
-					{
-						follower: "1",
-					},
-					limit: "1",
-				},
-				chance: "70",
-				additional: "true",
-			},
-		],
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "explorevaultguardian_serpent_encounter",
+            "startdescription": "Змей внимательно следит за нами, покачивая гордой головой. Без Стука или Грани нам не победить.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Младшая сестра: Змей"
+        },
+        {
+            "id": "explorevaultguardian_serpent_highedge",
+            "description": ".",
+            "startdescription": "Глаза, точно газовые светильники; чешуя подобна чёрному нефриту. Змей — опасный противник, но против нас он ничто.",
+            "label": "Наша сила не знает себе равных."
+        },
+        {
+            "id": "explorevaultguardian_serpent_midedge",
+            "description": ".",
+            "startdescription": "Глаза, точно газовые светильники; клыки подобны сталактитам. Змей — опасный противник, но то же можно сказать и о нас.",
+            "label": "Наша сила велика."
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowedge",
+            "description": ".",
+            "startdescription": "Глаза, точно газовые светильники; в пасти уместится скорчившийся человек. Возможно, мы победим Змея. Возможно, пожалеем, что решились вступить в бой.",
+            "label": "Нашей силы может оказаться недостаточно."
+        },
+        {
+            "id": "explorevaultguardian_serpent_highknock",
+            "description": ".",
+            "startdescription": "В пасти Змея уместился бы скорчившийся человек. Его язык не уступает толщиной плечу взрослого мужчины. Однако он почти наверняка отступит перед силой, которой мы владеем.",
+            "label": "Мы взываем к Матери муравьев, что встает из ран"
+        },
+        {
+            "id": "explorevaultguardian_serpent_midknock",
+            "description": ".",
+            "startdescription": "Тело Змея так длинно, что могло бы обернуться вокруг целого дома. Его клыки сверкают, как лёд. Вероятно, он отступит перед силой, которой мы владеем.",
+            "label": "Мы взываем к Матери муравьев, что облекает"
+        },
+        {
+            "id": "explorevaultguardian_serpent_lowknock",
+            "description": ".",
+            "startdescription": "Змей вздымается вверх, подобно мощной волне. Его глаза — алчные бездонные щели. Возможно, он отступит перед силой, которой мы владеем.",
+            "label": "Мы взываем к Матери муравьев, что разверзает"
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_edge",
+            "description": ".",
+            "startdescription": "Змей ревёт и извивается! Его предсмертная агония сотрясает землю! Но он умирает. Мы сможем пройти дальше.",
+            "label": "Битва Змея"
+        },
+        {
+            "id": "explorevaultguardian_serpent_success_knock",
+            "description": ".",
+            "startdescription": "Змей опускает гордую голову. С его лишенных век глаз стекает влага. Неужто он плачет? Что он помнит о своей старшей сестре, к силе которой мы обратились?",
+            "label": "Печаль Змея"
+        },
+        {
+            "id": "explorevaultguardian_serpent_failure",
+            "description": ".",
+            "startdescription": "Назад. Назад! Нам не справиться!",
+            "label": "Сила Змея"
+        },
+        {
+            "id": "explorevaultguardian_watchers_encounter",
+            "startdescription": "Местные, затаившие зло — а может, обещавшие исполнить некий долг или условия контракта. Мы можем обмануть их с помощью Мотылька, соблазнить с помощью Чаши или побороть с помощью Грани.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Стражи"
+        },
+        {
+            "id": "explorevaultguardian_watchers_highedge",
+            "description": ".",
+            "startdescription": "Стражи почти наверняка пожалеют, что преградили нам путь.",
+            "label": "Наша сила не знает себе равных."
+        },
+        {
+            "id": "explorevaultguardian_watchers_midedge",
+            "description": ".",
+            "startdescription": "Стражи не готовы к этой встрече. Скорее всего, мы сумеем с ними справиться.",
+            "label": "Наша сила велика."
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowedge",
+            "description": ".",
+            "startdescription": "Стражи могут оказаться для нас слишком сильны — однако шанс на победу всё же есть.",
+            "label": "Нашей силы может оказаться недостаточно."
+        },
+        {
+            "id": "explorevaultguardian_watchers_highgrail",
+            "description": ".",
+            "startdescription": "«Идите сюда, дорогие. У нас есть для вас кое-что особенное».",
+            "label": "Против Стражей: соблазны Чаши"
+        },
+        {
+            "id": "explorevaultguardian_watchers_midgrail",
+            "description": ".",
+            "startdescription": "Стражи не должны устоять перед нашим очарованием.",
+            "label": "Против Стражей: искушение Чаши"
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowgrail",
+            "description": ".",
+            "startdescription": "Возможно, мы сумеем заставить Стражей забыть о своём долге.",
+            "label": "Против Стражей: прелести Чаши"
+        },
+        {
+            "id": "explorevaultguardian_watchers_highmoth",
+            "description": ".",
+            "startdescription": "«Смотрите. Подойдите поближе. Ещё ближе! И будьте внимательны. Смотрите. А теперь закройте глаза...»",
+            "label": "Против Стражей: убедительная ложь"
+        },
+        {
+            "id": "explorevaultguardian_watchers_midmoth",
+            "description": ".",
+            "startdescription": "«Просыпайтесь! Они уже здесь! Скорее сюда!»",
+            "label": "Против Стражей: неплохая ложь"
+        },
+        {
+            "id": "explorevaultguardian_watchers_lowmoth",
+            "description": ".",
+            "startdescription": "«Они... туда побежали!»",
+            "label": "Против Стражей: отчаянная ложь"
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_edge",
+            "description": ".",
+            "startdescription": "Их кровь взмётывается яркой волной — и чернеет. Им не следовало с нами сражаться. Мы следуем дальше.",
+            "label": "Конец Стражей"
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_grail",
+            "description": ".",
+            "startdescription": "Наслаждения выйдут им боком. Возможно, позднее они скажут, что это того стоило. Мы можем двигаться дальше.",
+            "label": "Падение Стражей"
+        },
+        {
+            "id": "explorevaultguardian_watchers_success_moth",
+            "description": ".",
+            "startdescription": "Их дезориентация — наш шанс. Мы пройдем тихо и незаметно.",
+            "label": "Смятение Стражей"
+        },
+        {
+            "id": "explorevaultguardian_watchers_failure",
+            "description": ".",
+            "startdescription": "Они коварнее и многочисленнее, чем мы думали! Это плохо для нас закончится...",
+            "label": "Победа Стражей"
+        },
+        {
+            "id": "explorevaultguardian_monks_encounter",
+            "startdescription": "Орден хранителей, связанных клятвой и традицией. Они слишком крепко стоят на ногах, чтобы поддаться на соблазны Чаши — придется победить их с помощью Грани или ослепить с помощью Мотылька.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Монахи"
+        },
+        {
+            "id": "explorevaultguardian_monks_highedge",
+            "description": ".",
+            "startdescription": "Мы обагрим землю святой кровью.",
+            "label": "Наша сила практически непреодолима."
+        },
+        {
+            "id": "explorevaultguardian_monks_midedge",
+            "description": ".",
+            "startdescription": "Этим набожным идиотам с нами не справиться.",
+            "label": "Наша сила велика."
+        },
+        {
+            "id": "explorevaultguardian_monks_lowedge",
+            "description": ".",
+            "startdescription": "Это всего лишь монахи. Однако их много. Очень много. Если повезёт, мы всё же сумеем победить.",
+            "label": "Нашей силы может оказаться недостаточно."
+        },
+        {
+            "id": "explorevaultguardian_monks_highmoth",
+            "description": ".",
+            "startdescription": "«Мы принесли с собой священные рукописи, смысл которых очевиден только при свете луны...»",
+            "label": "Монахи: эффективная ложь"
+        },
+        {
+            "id": "explorevaultguardian_monks_midmoth",
+            "description": ".",
+            "startdescription": "«На этой бумаге печать высшей власти. Не смейте преграждать нам дорогу...»",
+            "label": "Монахи: приличная ложь"
+        },
+        {
+            "id": "explorevaultguardian_monks_lowmoth",
+            "description": ".",
+            "startdescription": "«У нас есть... реликвии. *Очень* древние реликвии».",
+            "label": "Монахи: отчаянная ложь"
+        },
+        {
+            "id": "explorevaultguardian_monks_success_edge",
+            "description": ".",
+            "startdescription": "Их тела лежат бесформенными кучами, и одно неотличимо от другого. Мы двигаемся дальше.",
+            "label": "Безмолвие монахов"
+        },
+        {
+            "id": "explorevaultguardian_monks_success_moth",
+            "description": ".",
+            "startdescription": "Вера — это обоюдоострый клинок. Монахи имеют великий талант к вере и поэтому поверили в нашу ложь.",
+            "label": "Обман монахов"
+        },
+        {
+            "id": "explorevaultguardian_monks_failure",
+            "description": ".",
+            "startdescription": "Они сильнее и мудрее, чем мы думали. И вот их удары находят цель... ",
+            "label": "Гнев монахов"
+        },
+        {
+            "id": "explorevaultguardian_dead_encounter",
+            "startdescription": "Мертвецы собираются вокруг нас, точно сгустки могильного света. Без Грани или Зимы нам нечего им противопоставить.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Беспокойные мертвецы"
+        },
+        {
+            "id": "explorevaultguardian_dead_highedge",
+            "description": ".",
+            "startdescription": "Мертвецы бледны, словно обратные стороны теней. Они колышутся, как паутинки на ветру. Им почти наверняка не выстоять. Мы отправим их обратно в тенистые глубины Леса.",
+            "label": "Наша сила не знает себе равных."
+        },
+        {
+            "id": "explorevaultguardian_dead_midedge",
+            "description": ".",
+            "startdescription": "У мертвецов жадные, горестные глаза; они уже однажды умерли. Они едва держатся за свет. Вероятно, мы сумеем отправить их во тьму, но следует быть осторожными.",
+            "label": "Наша сила велика."
+        },
+        {
+            "id": "explorevaultguardian_dead_lowedge",
+            "description": ".",
+            "startdescription": "Движения мертвых подобны движению тени на солнечных часах — неспешному, но постоянному. Они помнят боль, помнят страх, но помнят смутно. Мы же хорошо знакомы и с первой, и со вторым. Возможно, этот враг для нас слишком силён.",
+            "label": "Нашей силы может оказаться недостаточно."
+        },
+        {
+            "id": "explorevaultguardian_dead_highwinter",
+            "description": ".",
+            "startdescription": "Мертвецы кружат где-то на границе зрения, будто истрепанные обрывки снов. Воздух стынет от опустившейся тени Зимы. Они наверняка отступят.",
+            "label": "Мы взываем к Костяному Голубю, что знает имена всех мертвецов"
+        },
+        {
+            "id": "explorevaultguardian_dead_midwinter",
+            "description": ".",
+            "startdescription": "Мертвецы внимательно наблюдают за ними. Их лица непроницаемы и лишены выражения, как у статуй святых угодников. Однако с нами сила Зимы. Вероятно, мертвецы отступят перед ней.",
+            "label": "Мы взываем к Костяному Голубю, что видит ложь насквозь"
+        },
+        {
+            "id": "explorevaultguardian_dead_lowwinter",
+            "description": ".",
+            "startdescription": "Мертвецы хрипло клокочут в темноте, но мы познали прикосновение Часов Зимы. Возможно, они отступят.",
+            "label": "Мы взываем к Костяному Голубю, от которого более взять нечего"
+        },
+        {
+            "id": "explorevaultguardian_dead_success_edge",
+            "description": ".",
+            "startdescription": "Мертвецы вновь подступают ближе, но теперь они лишены тел и вынуждены вселяться в пыль, ржавчину, паутину и прочий мусор. Мы сломили их, и более им ничего не остается.",
+            "label": "Окаянные мертвецы"
+        },
+        {
+            "id": "explorevaultguardian_dead_success_winter",
+            "description": ".",
+            "startdescription": "Мертвецы отступают; их полулица равнодушны, но напряжены. Они нас не тронут.",
+            "label": "Осторожные мертвецы"
+        },
+        {
+            "id": "explorevaultguardian_dead_failure",
+            "description": ".",
+            "startdescription": "Мертвецы подобны скорее ветру, чем плоти, однако недооценивать ветер опасно. Сейчас перед нами страшный ураган бледных теней. Отступаем. Отступаем!",
+            "label": "Гнев мертвецов"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_encounter",
+            "startdescription": "Воздух бурлит от их движения. Пригнитесь. Они слишком сильны, чтобы вступать в открытый бой, но, возможно, нам удастся их обмануть или отогнать с помощью света Обители.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Сукуяны во тьме"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highlantern",
+            "description": ".",
+            "startdescription": "Скорее всего, нашей силы достаточно, чтобы удержать врага на расстоянии.",
+            "label": "Мы взываем к Дозорному, что проливает свет"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midlantern",
+            "description": ".",
+            "startdescription": "Нашей силы должно хватить, чтобы удержать врага на расстоянии — однако стоит потерять бдительность, и противник кинется вперед.",
+            "label": "Мы взываем к Дозорному, что не знает сочувствия"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowlantern",
+            "description": ".",
+            "startdescription": "Вполне возможно, что сопутствующая нам сила проведёт нас через тесную тьму. Да, это вполне возможно.",
+            "label": "Мы взываем к Дозорному, что находит путь"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_highmoth",
+            "description": ".",
+            "startdescription": "Мотылёк силён в тесноте ночного леса. Мы пройдём незамеченными и нетронутыми... Разве только нам очень не повезёт.",
+            "label": "Мы взываем к Мотыльку, что рыщет среди деревьев Леса"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_midmoth",
+            "description": ".",
+            "startdescription": "Нашей силы должно быть достаточно, чтобы обмануть и сбить с толку этих измученных жаждой существ, что порхают на крыльях ночи.",
+            "label": "Мы взываем к Мотыльку, что бьётся в стенах черепа"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_lowmoth",
+            "description": ".",
+            "startdescription": "Мотылёк даст нам шанс устоять против прихотливых лесных теней — но лишь шанс, не более.",
+            "label": "Мы взываем к Мотыльку, что испещрён пятнышками"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_lantern",
+            "description": ".",
+            "startdescription": "Они не решаются приблизиться. Они дразнятся из темноты голосами стервятников и маленьких детей; трясут верхушки деревьев; бросают в нас камни. Но приблизиться не решаются. Мы сумеем пройти дальше.",
+            "label": "Отступление сукуянов"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_success_moth",
+            "description": ".",
+            "startdescription": "Бегом: из полупрозрачной тени в непроницаемую. Лицом прямо в упругую землю. Они знают, что мы здесь, но не знают, где именно. Их крики слабеют за нашими спинами.",
+            "label": "Недовольство сукуянов"
+        },
+        {
+            "id": "explorevaultguardian_soucouyants_failure",
+            "description": ".",
+            "startdescription": "Они здесь! Хлопок кожистых крыльев — и один из нас с криком исчезает где-то высоко во тьме... ",
+            "label": "Голод сукуянов"
+        },
+        {
+            "id": "explorevaultguardian_long_encounter",
+            "startdescription": "Полуденный Порт был основан там, где из земли бьёт печально известный родник: выпьешь из него, и мир тебя забудет. Кое-кто из Вечных отдыхает здесь от мирских дел. Они не любят незваных гостей, и нападать на них было бы неразумно. Однако здесь могут помочь увеселения Мотылька или соблазны Чаши.",
+            "slots": [
+                {
+                    "label": "Помощь",
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "id": "Assistance"
+                }
+            ],
+            "label": "Вечные"
+        },
+        {
+            "id": "explorevaultguardian_long_highgrail",
+            "description": ".",
+            "startdescription": "Даже Вечные знают, что такое страсть; возможно, они знают это лучше других. Вот этот почти наверняка соблазнится нашим вниманием.",
+            "label": "«Мы здесь для вашего наслаждения»."
+        },
+        {
+            "id": "explorevaultguardian_long_midgrail",
+            "description": ".",
+            "startdescription": "Один из Вечных явно увлечен нашими чарами, но остальные ведут себя настороженно. Вероятно, нас всё же ждёт успех.",
+            "label": "«Мы здесь для вашего развлечения»."
+        },
+        {
+            "id": "explorevaultguardian_long_lowgrail",
+            "description": ".",
+            "startdescription": "Потребности Вечных ничем не отличаются от тех, что мучают смертных, однако их аппетит пресыщен миллионом блюд. Возможно, если повезёт, нам все же удастся увлечь одного из них.",
+            "label": "«Надеемся... что мы сможем вас развлечь...»"
+        },
+        {
+            "id": "explorevaultguardian_long_highmoth",
+            "description": ".",
+            "startdescription": "Вечные отчаянно жаждут новизны. Мы воспользуемся этой их слабостью и, если все пройдёт как надо, исчезнем, прежде чем они что-то поймут.",
+            "label": "«Новости! Новости из Древней страны! Из всех Древних стран!»"
+        },
+        {
+            "id": "explorevaultguardian_long_midmoth",
+            "description": ".",
+            "startdescription": "Он смеётся над нами? Сложно сказать наверняка. Но даже если это просто игра, они все равно могут нас отпустить. Вероятно, нам удастся уйти. ",
+            "label": "«Очень хорошо. Предлагаю пари»."
+        },
+        {
+            "id": "explorevaultguardian_long_lowmoth",
+            "description": ".",
+            "startdescription": "Глаза Вечного далеки и недвижны, всё равно что горизонт. Тело кажется застывшим, как у ящерицы. Нас хотя бы слушают?",
+            "label": "«Эм... история очень интересная... в общем...»"
+        },
+        {
+            "id": "explorevaultguardian_long_success_grail",
+            "description": ".",
+            "startdescription": "Действительно ли Вечные поддались на соблазны Чаши? Или они прекрасно понимали, что делают? Так или иначе, нам удалось выиграть время...",
+            "label": "Долгий, золотой день"
+        },
+        {
+            "id": "explorevaultguardian_long_success_moth",
+            "description": ".",
+            "startdescription": "Бессмертные обитатели Полуденного Порта вовлечены — обманом ли, искренне ли, для развлечения ли — в перипетии великих интриг. На этот раз они нас не тронут.",
+            "label": "Обман Вечных"
+        },
+        {
+            "id": "explorevaultguardian_long_failure",
+            "description": ".",
+            "startdescription": "Один из бессмертных в бешенстве. Возможно, он убьет кого-то из нас, а возможно, сдержит свой гнев. Намерения бессмертных определить нелегко... ",
+            "label": "Вечная агония"
+        }
+    ]
 }

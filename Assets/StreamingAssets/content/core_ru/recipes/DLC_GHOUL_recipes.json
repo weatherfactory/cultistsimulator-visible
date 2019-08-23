@@ -1,0 +1,322 @@
+{
+    "recipes": [
+        {
+            "id": "work.seance.first",
+            "startdescription": "Я стою на сцене в одиночестве. Один из зрителей задает первый вопрос — это лишь первый из долгой череды моих сегодняшних слушателей, которые будут отрицать, что мертвые мертвы. Однако у меня подготовлена целая россыпь ответов.",
+            "slots": [
+                {
+                    "label": "Нечто большее?",
+                    "description": "На самом деле я обычный мошенник.",
+                    "id": "desire"
+                }
+            ],
+            "label": "Популярное выступление медиума"
+        },
+        {
+            "id": "work.seance.first.shameful",
+            "description": "Our public business is concluded, and after the show, the bereaved will conclude our private business with a little gift - something to ensure my silence.\r\n\r\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "startdescription": "Я оставляю лишние подробности о грехах мертвецов при себе. Это не нужно ни мне, ни зрителю. Однако я позволяю себе пару намеков, которые он точно распознает.",
+            "label": "Подражать мертвецам: нечто позорное"
+        },
+        {
+            "id": "work.seance.first.profitable",
+            "description": "They'll meet me after the show. They'll be sceptical, but grateful. I've earned my finder's fee.\r\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "startdescription": "Мне удалось разнюхать сведения о забытом вкладе — сведения, которые будут выгодны и мне, и моему зрителю. Однако раскрывать все подробности не следует. Живые куда жаднее мертвых.",
+            "label": "Подражать мертвецам: нечто выгодное"
+        },
+        {
+            "id": "work.seance.first.joyful",
+            "description": "They're sobbing when they return to their seat. If they return another night, I won't answer their questions. This should be the story they tell of me.\r\n\r\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "startdescription": "Мне показывают фотографии залитого золотом дня — достаточно давнего, чтобы вызывать ностальгию, и достаточно близкого, чтобы еще не быть забытым.",
+            "label": "Подражать мертвецам: нечто радостное"
+        },
+        {
+            "id": "work.seance.first.fleeting",
+            "description": "I answer their questions with more questions. Call and response, like night-birds. Are they satisfied? They've sat down, at least.\r\n\r\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "startdescription": "До меня доходило достаточно сплетен, чтобы слепить из них нечто вполне убедительное.",
+            "label": "Подражать мертвецам: толки и пересуды"
+        },
+        {
+            "id": "work.seance.first.nomemory",
+            "description": "My responses were lacklustre. The audience's disappointment is evident even in the near-dark.\r\n\r\n(There is something in the air tonight. The scent of snow? It seems unlikely.)",
+            "startdescription": "При ответе на этот вопрос мне не на что опереться. Приходится импровизировать.",
+            "label": "Подражать мертвецам в меру возможности"
+        },
+        {
+            "id": "work.seance.demotion",
+            "startdescription": "Я открываю рот, чтобы начать говорить, и чувствую на языке снег и медь...",
+            "label": "Мертвые"
+        },
+        {
+            "id": "work.seance.demotion.continue",
+            "description": "Театр разрывает со мной контракт. Управляющий не снизошел даже до того, чтобы нанести мне это оскорбление лично. Я стою на промозглой улице, размышляя о жалких лохмотьях, в которые превратилась моя репутация, а сверху, с карниза, на меня смотрят бледные голубки. В их мягком ворковании почти слышны слова: «Монморанци. Нения. #PREVIOUSCHARACTERNAME#...» ",
+            "startdescription": "Я слышу вдали собственный голос. Я говорю что-то о слоновой кости и старых снегах. Я подражаю пению птиц. Зрители начинают неуверенно посмеиваться, но кое-кто плачет. Я произношу полузнакомые имена: Монморанци. Нения. #PREVIOUSCHARACTERNAME#. Действо продолжается... ",
+            "label": "Представление идет не по плану"
+        },
+        {
+            "id": "open.dream.ghoul",
+            "description": "Там, на сцене, ко мне вернулась память о бледном сне, который все же повторился. Прохладный ветер под красным, низко нависшим солнцем. Забытые голоса волн. Силуэты, что скакали за нами по снегу... Тоска лежит у меня под сердцем тяжелым камнем.",
+            "startdescription": "Там, на сцене, ко мне вернулась память о бледном сне...",
+            "label": "Прошлой ночью"
+        },
+        {
+            "id": "open.explore.ghoul",
+            "description": "Вот оно, то самое место, где мне встретилось это имя. Галерея с серым фасадом, затворенным, захлопнутым, словно створки окна.",
+            "startdescription": "Не Монморанси, а именно Монморанци. Я <i>знаю</i> это имя — я помню его из времен увлечения живописью.",
+            "label": "«Монморанци»."
+        },
+        {
+            "id": "explore.location.gallery.ghoul",
+            "description": "Сомнительные святые, анатомические рисунки, набросанные пастелью реликварии. Эскизы намалеванных на камне глаз. Старая серия под названием «Сезоны Абидоса» — несколько раз написанная маслом в разную погоду улица с мраморными храмами. Но меня непреодолимо тянет к одному портрету — тянет еще до того, как я вижу название.",
+            "startdescription": "Я плачу за вход и взбираюсь по темной лестнице. Все это должно что-то значить. Возможно, это значит, что мой разум болен.",
+            "label": "Исследовать галерею"
+        },
+        {
+            "id": "open.talk.ghoul",
+            "description": "Я вспоминаю, как мы с мисс Ненией обсуждали низко повисшее, мудрое красное солнце, бледную радость полета. У меня родилось убеждение, что, если принести ей одно из сокровищ моей памяти, она подарит мне иное сокровище взамен.",
+            "startdescription": "Кожа мисс Нении темна, но ее коротко остриженные волосы белее слоновой кости, а глаза подобны снегу. Я прихожу каждый день, надеясь узнать, почему меня сюда так тянет. Картина не произносит ни слова — разумеется, ведь это картина! — но потом я словно бы вспоминаю ее слова.",
+            "label": "«Мисс Нения»"
+        },
+        {
+            "id": "open.study.ghoul",
+            "description": "Хаган и Гриствуд, «Погребальные обычаи Раздирных гор». Книга была куплена много лет назад в поисках вдохновения и новых идей для представлений. Ничего полезного в ней не оказалось. Однако теперь я вспоминаю записанный авторами наговор. Его звучание неприятно моему уху... но упоминание растертой в порошок слоновой кости живо отзывается в моем сердце.",
+            "startdescription": "Мисс Нения напомнила мне о книге, которая лежала забытой много лет. Но она все еще где-то у меня.",
+            "label": "Верхняя полка в кабинете"
+        },
+        {
+            "id": "ghoul.firsttaste.prologue",
+            "description": "Почти невозможно.",
+            "startdescription": "Я буду обедать в одиночестве — однако не совсем.",
+            "slots": [
+                {
+                    "label": "Сила воли",
+                    "description": "Трудно.",
+                    "id": "forceofwill"
+                }
+            ],
+            "label": "Первое знакомство"
+        },
+        {
+            "id": "ghoul.firsttaste",
+            "description": "«У каждого из нас, — это было записано гораздо позже в моем дневнике, — есть воспоминание о времени, когда жизнь изменилась навсегда, хотя в тот момент мы этого не понимали. Возможно, у вселенной тоже есть такие воспоминания». Когда была сделана эта запись, мне захотелось отложить ручку и перевести взгляд за окно, в темноту. Вторая сторона той минуты ускользает от меня. Возможно, мне также понадобилось утереть губы. Облизнуться.",
+            "startdescription": "Начать нелегко. Волю приходится заточить в зазубренное лезвие, нечто вроде каменного навершия для копья. Но с каждым новым кусочком становится все проще.",
+            "label": "Первое знакомство"
+        },
+        {
+            "id": "talk.ghoul.hint",
+            "startdescription": "Мисс Нения ждет со всем присущим картинам терпением.",
+            "label": "Поговорить с мисс Ненией?"
+        },
+        {
+            "id": "talk.ghoul.consolation",
+            "description": "Она понимает мою тревогу. Порой она мучает и ее саму. Она напоминает мне, что все преходяще.",
+            "startdescription": "Глаза мисс Нении полны доброты.",
+            "label": "Искать утешения у мисс Нении"
+        },
+        {
+            "id": "talk.ghoul.recollection",
+            "description": "Мисс Нения замечает, что все преходяще, и память тоже... Однако эту память можно передавать друг другу, будто факел или сокровище.",
+            "startdescription": "Глаза мисс Нении задумчивы.",
+            "label": "Поделиться с мисс Ненией рассказом о воспоминаниях"
+        },
+        {
+            "id": "talk.ghoul.fascination",
+            "description": "Свет здесь ярче, чем мне показалось сначала. Где-то под кожей мисс Нении плавают разводы цвета — словно электрические разряды, словно масло. Мне трудно отвести взгляд.",
+            "startdescription": "Безопасно ли заводить с ней этот разговор?",
+            "label": "Поговорить с мисс Ненией о видениях"
+        },
+        {
+            "id": "talk.ghoul.dread",
+            "description": "Чем дольше я смотрю на улыбку мисс Нении, тем больше мой взгляд притягивается к ее зубам.",
+            "startdescription": "Разумно ли рассказывать ей о моих страхах? Я сомневаюсь, что ее можно назвать доброй картиной. Едва ли.",
+            "label": "Поговорить с мисс Ненией об ужасе"
+        },
+        {
+            "id": "talk.ghoul.grandmemory",
+            "description": "Позднее я вспоминаю, как мы с мисс Ненией рука об руку прогуливались по запертой галерее. Она несла свечу, свет пламени которой плясал на лицах других портретов. «Память о нас живет, — выдохнула она, — пока живы наши образы».",
+            "startdescription": "Когда я подхожу к мисс Нении, кажется, как будто вокруг ее рта и глаз играют бледные отсветы.",
+            "label": "Падение сквозь время"
+        },
+        {
+            "id": "talk.ghoul.memorypassionate",
+            "startdescription": "Мы с ней разделили могущественное воспоминание.",
+            "label": "Поговорить с мисс Ненией о моей любви"
+        },
+        {
+            "id": "talk.ghoul.memorypleasant",
+            "startdescription": "Мы с ней разделили чудесное воспоминание.",
+            "label": "Поговорить с мисс Ненией о моей любви"
+        },
+        {
+            "id": "talk.ghoul.memorybittersweet",
+            "startdescription": "Мы с ней разделили тяжелое воспоминание.",
+            "label": "Поговорить с мисс Ненией о моей любви"
+        },
+        {
+            "id": "talk.ghoul.memory.menacing",
+            "description": "@#vitalityplus|Miss Naenia says nothing, but I remember afterwards how her smile warmed me against the cold.\r\n#influenceedgec|Miss Naenia says nothing, but I remember long afterwards how her eyes flashed.\r\n#influencewinterc|Miss Naenia says nothing. Silence pools like shadow between the gallery lamps.@",
+            "startdescription": "Ее глаза смотрят со всем вниманием.",
+            "label": "Поделиться с мисс Ненией опасным воспоминанием"
+        },
+        {
+            "id": "talk.ghoul.memory.shameful",
+            "description": "@#favour|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.\r\n#contentment|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.\r\n#influencegrailc|Miss Naenia says nothing, but her mouth curves slowly, slowly. I realise that I have never seen her part her lips.@",
+            "startdescription": "Сегодня мисс Нения смотрит почти лукаво.",
+            "label": "Поделиться с мисс Ненией воспоминанием о тайном грехе"
+        },
+        {
+            "id": "talk.ghoul.memory.unexpected",
+            "description": "@#|Мисс Нения молчит, но прямо там, в галерее, я выхватываю из кармана ручку и быстро, исступленно пишу, как будто слова нашептывают мне в ухо. Последовав записанным указаниям, я непременно найду нечто ценное.@",
+            "startdescription": "Сегодня лицо мисс Нении непроницаемо. Ее глаза, рот, черты лица кажутся мне несвязанными, отдельными объектами, объединенными лишь по прихоти случая — они все равно что содержимое чьих-то вывернутых на стол карманов.",
+            "label": "Поделиться с мисс Ненией скандальным воспоминанием"
+        },
+        {
+            "id": "talk.ghoul.memory.joyful",
+            "description": "@#influencehearte|Miss Naenia says nothing, but my heart pounds like a hammered anvil, even after I leave the gallery.\r\n#influenceheartc|Miss Naenia says nothing, but all the way home, there is a tune in my head that leaves me thinking of her.\r\n#contentment|Miss Naenia says nothing, but I match her smile.@",
+            "startdescription": "Глаза мисс Нении преисполняются теплоты.",
+            "label": "Поделиться с мисс Ненией радостным воспоминанием"
+        },
+        {
+            "id": "talk.ghoul.memory.profitable",
+            "description": "@#jumble|Miss Naenia says nothing, but afterwards I think of her when I'm browsing in a junk shop, and I buy something silly on impulse.\r\n#funds|Miss Naenia says nothing, but the next day I receive an unexpected package in the post.\r\n#compensation|Miss Naenia says nothing, but afterwards I find a sovereign in the street.@",
+            "startdescription": "Глаза мисс Нении проницательны.",
+            "label": "Поделиться с мисс Ненией выгодным воспоминанием"
+        },
+        {
+            "id": "talk.ghoul.painting.palest",
+            "description": "Miss Naenia is gone. A dark rectangle marks the empty place where once she hung. I stare about in consternation. But she is not here. There is nothing more to be done.\r\n\r\nNothing now, but when I unwrap the Palest Painting in the silence of my home, I see that it has changed. A faint shape stands in the doorway to Nowhere, looking over its shoulder - waiting for me to follow. The shape has something of Miss Naenia about it.",
+            "startdescription": "Идея показать картину картине кажется мне довольно глупой. Однако когда я заворачиваю на улицу перед галереей, то вижу снег. Снег, падающий с неба только над этой улицей. Прохожие сбиваются в группки, ускоряют шаг и удивленно что-то восклицают. Я крепче прижимаю к себе картину, хотя она надежно обернута в коричневую бумагу, и взбираюсь по лестнице, ведущей в покои мисс Нении.",
+            "label": "Показать мисс Нении Бледнейшую Картину"
+        },
+        {
+            "id": "dream.ghoul.painting.palest",
+            "startdescription": "В Дом Солнца ведет множество тайных дверей. Разумеется, все они заперты, но сегодня мисс Нения откроет одну из них для меня. За этой дверью ждет Элегист. Он несет в руках зиму.",
+            "label": "Войти в нарисованную дверь"
+        },
+        {
+            "id": "dream.ghoul.sacrificeabilities",
+            "startdescription": "За дверью скрывается круговая лестница, освещенная лампами из черного нефрита, а у ее подножия лежит то самое место, куда стекаются все мертвые, место, где ничто не забыто — Нигде. Я спускаюсь вниз.",
+            "slots": [
+                {
+                    "label": "Голод картины",
+                    "description": "Если я позволю, нарисованная дверь заберет абсолютно все. Не пытайтесь это повторить.",
+                    "id": "sacrifice"
+                }
+            ],
+            "label": "Смерть внизу"
+        },
+        {
+            "id": "dream.ghoul.noabilitysacrificed",
+            "description": "Я прихожу в себя. Надо мной, на стене, ждет своего часа голодная картина.",
+            "startdescription": "Элегист предлагает мне не бессмертие, но некое продолжение существования после смерти. Бледнейшая Картина вытянет из меня остатки жизни, но только если я дам на это свое разрешение.",
+            "label": "Ибо более взять нечего"
+        },
+        {
+            "id": "ending.minorpalestvictory",
+            "startdescription": "Мои глаза увидели потерянные краски, и цена за это такова: меня забрала смерть, и теперь я Нигде. Однако, возможно, Элегист еще вспомнит меня и пригласит назад в Обитель — бродить по свету до самого назначенного часа... ",
+            "label": "НИГДЕ"
+        },
+        {
+            "id": "study.alzabo.remnant",
+            "description": "@#memory.furious|I have a savage memory, inherited from who knows how many feasts - a sand-coloured memory, ready to paint.\r\n#memory.liminal| I have a memory of thresholds, ready to paint.\r\n#memory.splendid| I have a memory of how matters stood before the Intercalate, ready to paint.\r\n#memory.golden| I have a memory of how things stood before the Forge was lit, ready to paint.\r\n#memory.horizon| I have a memory of something even the King who bore it did not understand.\r\n#memory.endless| I have a memory now of something that should never have ceased - and perhaps it has not -\r\n#memory.wildering| I have a memory of the Hunt at which the Wheel was first brought to earth...\r\n#memory.honeyed| I have a memory which almost seems my own.\r\n#|Something?@",
+            "startdescription": "@#corpse| Once again, my appetite rises, flecked once again with shivers of revulsion.\r\n#spirit_wintera_moth| It will lie still, if I tell it.\r\n#spirit_wintera_edge| It will lie still, if I tell it. It may even be succulent.\r\n#corpse.furious| I will grind it to powder and get it down.\r\n#corpse.luxurious| Chewy.\r\n#corpse.liminal| Like consuming raw spice.\r\n#corpse.horizon| If I could only boil it until it was soft -\r\n#corpse.splendid| This will not be an easy meal.\r\n#ingredientheartf| Bright upon my tongue like copper citrus.\r\n#ingredientmothf| I had wondered what the taste might be, but chiefly, now, my experience is that it is <i>gooey</i>.\r\n#spirit_forgee_edge.defunct| I will set to, grimly, with water to rinse my mouth and to extinguish any unexpected fires.\r\n#decrepitude| So this is what it has come to. I am not dead. I hope that I may be dead enough that this will work as I hope, and unlock those memories that lair in my own flesh.\r\n#|Let's hope this is edible.@",
+            "label": "Полакомиться останками"
+        },
+        {
+            "id": "study.alzabo.remnant.reducehunger",
+            "label": "Полакомиться останками",
+        },
+        {
+            "id": "study.alzabo.corpse",
+            "startdescription": "Порой на поверхности земли остается то, что следовало бы снова закопать, однако к этому делу можно подойти с умом.",
+            "label": "Полакомиться трупом"
+        },
+        {
+            "id": "study.alzabo.corpse.reducehunger",
+            "label": "Полакомиться трупом"
+        },
+        {
+            "id": "study.alzabo.follower_scar_edge",
+            "startdescription": "Ужасное событие придало плоти особый, резкий вкус.",
+            "label": "Старая боль"
+        },
+        {
+            "id": "study.alzabo.follower_scar_knock",
+            "startdescription": "В этой плоти открылось слишком много дверей, и вкус подобен полному ужасов лабиринту.",
+            "label": "Старая боль"
+        },
+        {
+            "id": "study.alzabo.follower_scar_winter",
+            "startdescription": "В этой плоти узнаются морозные нотки промозглой тоски, и она холодит моё сердце.",
+            "label": "Старая боль"
+        },
+        {
+            "id": "study.alzabo.follower_scar.reducehunger",
+            "label": "Старая боль"
+        },
+        {
+            "id": "study.alzabo.crucible",
+            "description": "Ожоги совсем неглубоки и быстро закроются свежей плотью, однако его вкус пребудет со мной еще много дней.",
+            "startdescription": "Вперед: мне потребуется совсем немного.",
+            "label": "Полакомиться останками Тигля"
+        },
+        {
+            "id": "study.alzabo.crucible.reducehunger",
+            "label": "Полакомиться останками Тигля",
+        },
+        {
+            "id": "explore.ghoul.findgraveyard",
+            "description": "Мне удалось найти многообещающее кладбище.",
+            "startdescription": "Мне нужны места захоронения, которые находятся достаточно близко, и все же не слишком близко — там должны бывать люди, но их не может быть слишком много.",
+            "label": "Искать перспективные кладбища"
+        },
+        {
+            "id": "work.seance",
+            "description": "Сегодня ко мне никто не приходил. Это и к лучшему: мне все равно нечего сказать.",
+            "startdescription": "Моя артистическая репутация уничтожена. Миру предстоит узнать во мне оракула. Однако власти уже начали за мной приглядывать.",
+            "label": "Тайная консультация"
+        },
+        {
+            "id": "work.seance.shameful",
+            "description": "Низкая, но все же весьма выгодная сделка.",
+            "startdescription": "Нашёлся человек, готовый заплатить за моё молчание.",
+            "label": "Вспоминая мертвецов: нечто позорное"
+        },
+        {
+            "id": "work.seance.profitable",
+            "description": "Эта история принесла всем участникам неплохой доход... и придала мне еще больший флер загадочности.",
+            "startdescription": "Нашелся человек, которому это воспоминание принесет большую выгоду. Он хорошо мне заплатит.",
+            "label": "Вспоминая мертвецов: нечто выгодное"
+        },
+        {
+            "id": "work.seance.joyful",
+            "description": "Достаточно. По лицу моего клиента катятся долгожданные — даже для него — слезы.",
+            "startdescription": "Не знаю, принадлежат ли эти воспоминания моему клиенту, но в них живет правда.",
+            "label": "Вспоминая мертвецов: нечто радостное"
+        },
+        {
+            "id": "work.seance.menacing",
+            "description": "Мой клиент охвачен священным ужасом, но одновременно и сгорает от нетерпения. Найдутся люди, которые за это заплатят. Всегда есть кто-то, кто заплатит.",
+            "startdescription": "Это будет сурово. Боюсь, я не получу никакого удовольствия.",
+            "label": "Вспоминая мертвецов: нечто угрожающее"
+        },
+        {
+            "id": "work.seance.unexpected",
+            "description": "Как я потом ни стараюсь, я не могу вспомнить, что именно было сказано, но на моих губах остался вкус произнесенных слов.",
+            "startdescription": "Оракулам нельзя быть предсказуемыми.",
+            "label": "Вспоминая мертвецов: нечто неожиданное"
+        },
+        {
+            "id": "work.seance.grandmemory",
+            "description": "Мой клиент покидает залу, слегка пошатываясь. Боюсь, он не понял и четверти из того, что было сказано, однако ему и без того будет о чем рассказать.",
+            "startdescription": "Разумно ли говорить о потерянных цветах?",
+            "label": "Слишком пряное вино"
+        },
+        {
+            "id": "work.seance.other",
+            "description": "Деньги за работу получены. Сложно сказать, заслужена ли эта сумма. К счастью, мой клиент тоже не знает, насколько она заслужена.",
+            "startdescription": "Я наскребаю достаточно полуправд, чтобы мой клиент остался удовлетворен.",
+            "label": "Вдохновение и отчаяние"
+        }
+    ]
+}

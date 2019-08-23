@@ -1,0 +1,158 @@
+{
+    "elements": [
+        {
+            "label": "Тень",
+            "description": "Сила этого человека внушает страх; мне ещё предстоит выяснить, кто это. [Когда Мощь, Связи или Звёздность Вечного достигнет 3, его личность можно будет раскрыть.]",
+            "id": "welland_unknown"
+        },
+        {
+            "label": "Тень",
+            "description": "Сила этого человека внушает страх; мне ещё предстоит выяснить, кто это. [Когда Мощь, Связи или Звёздность Вечного достигнет 3, его личность можно будет раскрыть.]",
+            "id": "tryphon_unknown"
+        },
+        {
+            "label": "Тень",
+            "description": "Сила этого человека внушает страх; мне ещё предстоит выяснить, кто это. [Когда Мощь, Связи или Звёздность Вечного достигнет 3, его личность можно будет раскрыть.]",
+            "id": "diarist_unknown"
+        },
+        {
+            "label": "Тень",
+            "description": "Сила этого человека внушает страх; мне ещё предстоит выяснить, кто это. [Когда Мощь, Связи или Звёздность Вечного достигнет 3, его личность можно будет раскрыть.]",
+            "id": "julian_unknown"
+        },
+        {
+            "id": "welland",
+            "description": "«Мы тут не в благородство играем. Это Дом, а не гонка по карьерной лестнице». [Велланд чаще прибегает к открытым нападениям.]",
+            "label": "Капитан Велланд"
+        },
+        {
+            "id": "tryphon",
+            "description": "«Нет, Он не причинит тебе вреда; Он не сможет тебя найти. А вот я — запросто». [Триффон чаще прибегает к интригам.]",
+            "label": "Леди Триффон"
+        },
+        {
+            "id": "diarist",
+            "description": "«Таким, как вы, самое место в примечаниях внизу страницы. На большее я бы не надеялся». [Мемуарист чаще прибегает к звёздным атакам.]",
+            "label": "Мемуарист"
+        },
+        {
+            "id": "julian",
+            "description": "«Больше никаких Имён. Вот и всё; мне очень жаль, но у меня нет времени на разговоры». [Джулиан чаще прибегает к отдыху, чтобы усилить свои способности.]",
+            "label": "Дж. К."
+        },
+        {
+            "label": "Письмо от Велланда",
+            "description": "'SIR - (It does not seem to have occurred to Welland that he might have been defeated by anyone but a 'sir')\r\n\r\nI am the most dangerous enemy you will ever face, and I have defeated far greater than you. You deserve better than to be pyre-fuel. I urge you to shatter your chains, as the Lionsmith did so long ago, and rise to take your own place as Long.\r\n\r\nI attach the secret that Darius told Alexander at Issus. Use it wisely.\r\n\r\nRegards,\r\n\r\nW. '\r\n\r\n[The secret is attached. You can use it to break free of your Mentor.]\r\n",
+            "id": "welland.defeated",
+            "slots": [
+                {
+                    "label": "Мастер",
+                    "id": "mentor"
+                }
+            ]
+        },
+        {
+            "label": "Письмо от леди Триффон",
+            "description": "'My love,\r\n\r\nI am defeated, and you my vanquisher have won my devotion. I enclose a remaining scrap of myself, and go forth to meet my demise.\r\n\r\nConsume what remains of me, and we shall be one, as the Flowermaker has always intended. Reject your 'Отрада'. Your destiny is far greater.\r\n\r\nYou will ask: is this a last trick? A desperate stratagem to assure your betrayal? I can only answer: taste me, and see.\r\n\r\nI remain,\r\n\r\nyour delicious friend,\r\n\r\nT.E.'\r\n\r\n[If you consume the enclosed morsel of Леди Триффон, you can break free of your Mentor.]\r\n",
+            "id": "tryphon.defeated",
+            "slots": [
+                {
+                    "label": "Отрада",
+                    "id": "mentor"
+                }
+            ]
+        },
+        {
+            "id": "diarist.defeated",
+            "description": "The sunlight through the western window in the Scriptorium is failing. As the Diarist writes his last entry, the chamber chills from gold towards grey. He closes his little book with a snap. 'Death is down,' he explains, 'and I am already losing altitude. I don't bear you any grudge. I tell you what, though, \r\nI hope your Зарево trips and falls down the Ascent.' Мемуарист's face is erasing itself, like a man unwriting, and his eyes are already gone. He hands you his little book. 'This is your last chance. You can go where I was, or where you're going. I know which is better.' His mouth spools itself up like the undrawing of a zip, and he is blank white paper.\r\n\r\n[If you consider the dream of the diary, you can break free of your Mentor.]\r\n\r\n",
+            "slots": [
+                {
+                    "label": "Зарево",
+                    "id": "mentor"
+                }
+            ],
+            "label": "Сон о Мемуаристе"
+        },
+        {
+            "label": "Письмо от Джулиана Коузли",
+            "description": "'Enemy,\r\n\r\nI am not so easily destroyed. But I will acknowledge that you have defeated me, and so I will reward you with my counsel.\r\n\r\nYou are a fool, cozened by a fool to emplace one more stone in the walls of the Mansus. You may, if you choose, cast that stone away into night.\r\n\r\nShould you so cast it, you will die empty and alone, as do all, even the Long. You might die free.\r\n\r\n- Julian'\r\n\r\n[If you take Julian's lesson to heart, you can break free of your Mentor.]\r\n",
+            "id": "julian.defeated",
+            "slots": [
+                {
+                    "label": "Основатель",
+                    "id": "mentor"
+                }
+            ]
+        },
+        {
+            "label": "Идёт подготовка",
+            "description": "Наш бессмертный враг готовится действовать снова. [Чтобы организовать новую атаку, Вечному требуется три карты подготовки.]",
+            "id": "strategy.prep"
+        },
+        {
+            "label": "Подготовка сорвана!",
+            "description": "Нашему шпиону удалось расстроить планы врага. [Вечный потерял одну карту подготовки к саботажу.]",
+            "id": "strategy.prep.delayed"
+        },
+        {
+            "id": "strategy.assault.concealed",
+            "description": "Наш враг планирует следующий ход. Отправив шпиона, мы сможем выяснить что-нибудь о его планах.",
+            "label": "Планы Вечного"
+        },
+        {
+            "id": "strategy.intrigue.concealed",
+            "description": "Наш враг планирует следующий ход. Отправив шпиона, мы сможем выяснить что-нибудь о его планах.",
+            "label": "Планы Вечного"
+        },
+        {
+            "id": "strategy.dreams.concealed",
+            "description": "Наш враг планирует следующий ход. Отправив шпиона, мы сможем выяснить что-нибудь о его планах.",
+            "label": "Планы Вечного"
+        },
+        {
+            "id": "strategy.downtime.concealed",
+            "description": "Наш враг планирует следующий ход. Отправив шпиона, мы сможем выяснить что-нибудь о его планах.",
+            "label": "Планы Вечного"
+        },
+        {
+            "id": "strategy.assault.revealed",
+            "description": "На этот раз враг намеревается устроить открытое нападение.",
+            "label": "Планы Вечного раскрыты: нападение"
+        },
+        {
+            "id": "strategy.intrigue.revealed",
+            "description": "На этот раз враг намеревается использовать против нас своё коварство.",
+            "label": "Планы Вечного раскрыты: интрига"
+        },
+        {
+            "id": "strategy.dreams.revealed",
+            "description": "На этот раз враг найдёт нас через Обитель.",
+            "label": "Планы Вечного раскрыты: сны"
+        },
+        {
+            "id": "strategy.downtime.revealed",
+            "description": "На этот раз враг не станет ничего предпринимать. Он будет отдыхать... и набираться сил.",
+            "label": "Планы Вечного раскрыты: передышка"
+        },
+        {
+            "id": "strategy.dreams.preference",
+            "description": "В следующий раз враг пытается извлечь пользу из наших слабостей во сне — даже если обычно он предпочитает другую тактику.",
+            "label": "Предчувствие: уроки души"
+        },
+        {
+            "label": "Повышенная мощь",
+            "description": "Наш бессмертный враг взялся за нас всерьёз и задействовал больше ресурсов. [Мощь враждебного Вечного повысится, и его нападения станут опаснее.]",
+            "id": "long.lesson.might"
+        },
+        {
+            "label": "Новые связи",
+            "description": "Наш бессмертный враг взялся за нас всерьёз и задействовал больше ресурсов. [Связи враждебного Вечного расширятся, и его интриги станут изобретательнее.]",
+            "id": "long.lesson.connections"
+        },
+        {
+            "label": "Проблески души",
+            "description": "Наш бессмертный враг что-то о нас узнал. [Звёздность враждебного Вечного повысится, и он обретёт больше власти в наших снах.]",
+            "id": "long.lesson.dreamwork"
+        }
+    ]
+}

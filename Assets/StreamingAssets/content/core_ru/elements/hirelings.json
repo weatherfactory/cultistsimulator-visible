@@ -1,67 +1,39 @@
-﻿{"elements":
-    [
-				 {
-        id: "thugedgeminor",
-            label: "Бугай",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,edge:3},
-              description: "«Будет сделано». [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring: thugedgeminor,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+{
+    "elements": [
+        {
+            "id": "thugedgeminor",
+            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Громила"
         },
-			 {
-        id: "thugmothminor",
-            label: "Хитрюга",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,moth:3},
-              description: "«Будет сделано». [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring: thugmothminor,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+        {
+            "id": "thugmothminor",
+            "description": "«Я справлюсь с любой работой». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Плутовка"
         },
-						 {
-        id: "thugedge",
-            label: "Силач по найму",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,edge:5},
-              description: "«Я их сломаю». [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring: thugedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+        {
+            "id": "thugedge",
+            "description": "«Я их надвое переломлю». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Боец"
         },
-		 {
-        id: "thugforgeedge",
-            label: "Бомбист",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,forge:5,edge:3},
-            description: "«Пока без политики». [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring:thugforgeedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+        {
+            "id": "thugforgeedge",
+            "description": "«Пожалуй, сейчас не лучшее время обсуждать политику». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Подрывник"
         },
-				 {
-        id: "thugknock",
-            label: "Консультант по входу",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,knock:5},
-            description: "«Двери — не проблема». [Может пригодиться в некоторых Экспедициях.]",
-			xtriggers: {hiring:thugknock,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+        {
+            "id": "thugknock",
+            "description": "«Я умею обращаться с замками». [Этот наёмник может быть полезен в некоторых экспедициях.]",
+            "label": "Специалист по взлому"
         },
-				 {
-        id: "thuglanternmoth",
-            label: "Гадалка",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,lantern:5,moth:3},
-            description: "«Я знаю. Я вижу, что вы отличаетесь». [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring:thuglanternmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
+        {
+            "id": "thuglanternmoth",
+            "description": "«Я вижу многое. Я вижу, что ты отличаешься от других». [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Оракул"
         },
-						 {
-        id: "thugmoth",
-            label: "Аферистка",
-            aspects:
-            {mortal: 1,hireling:1,follower:1,moth:5,grail:1},
-            description: "«Как приятно сотрудничать с вами!» [Может пригодиться в некоторых Экспедициях, и может помочь с Охотниками и Помехами.]",
-			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
-			lifetime:120
-        },
-		]
-};
+        {
+            "id": "thugmoth",
+            "description": "«Работать с вами — одно удовольствие!» [Этот наёмник может быть полезен в некоторых экспедициях и поможет справиться с охотниками и помехами.]",
+            "label": "Пройдоха"
+        }
+    ]
+}

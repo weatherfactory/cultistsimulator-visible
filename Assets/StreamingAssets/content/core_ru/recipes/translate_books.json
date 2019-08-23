@@ -1,22 +1,15 @@
-﻿ {"recipes": [
-  	{
-        id: "translatehint",
-        label: "Попытаться перевести текст?",
-        actionId: "study",
-        requirements: {language:1},
-		startdescription: "Если у меня есть текст на этом языке, я могу приступить к переводу.",
-        craftable: false,
-		hintonly:true
-    },
- 	{
-        id: "translate",
-        label: "Начать перевод текста",
-        actionId: "study",
-        requirements: {language:1,text:1},
-		startdescription: "Дверь кабинета закрыта. Труд начинается.",
-        description: "Текст готов для изучения.",
-        warmup: 60,
-        craftable: true
-    }
-]
+{
+    "recipes": [
+        {
+            "id": "translatehint",
+            "startdescription": "Если у меня есть текст на этом языке, то я могу начать переводить его.",
+            "label": "Попытаться перевести текст?"
+        },
+        {
+            "id": "translate",
+            "description": "Текст для изучения готов.",
+            "startdescription": "Закрыть дверь кабинета и начать работать. ",
+            "label": "Начать переводить текст"
+        }
+    ]
 }

@@ -1,683 +1,434 @@
-﻿{"elements":
-    [
-	          {
-        id: "dehoris1latin",
-            unique:true, label: "De Horis (том 1)",
-            aspects:{text:1,auctionable:1,textlatin:1},
-            description: "На латыни. Переиздание девятнадцатого века переведённой в четырнадцатом веке работы, написанной в четвёртом веке.",
-			xtriggers: {scholarlatin: dehoris1}
+{
+    "elements": [
+        {
+            "id": "dehoris1latin",
+            "description": "Написано на латыни. Выполненное в XIX веке переиздание латинского перевода XIV века трактата IV века.",
+            "label": "De Horis, книга 1"
         },
-			          {
-        id: "dehoris2latin",
-            unique:true, label: "De Horis (том 2)",
-            aspects:
-            {text:1,auctionable:1,textlatin:1},
-            description: "На латыни. Переиздание девятнадцатого века переведённой в четырнадцатом веке работы, написанной в четвёртом веке.",
-			xtriggers: {scholarlatin: dehoris2}
+        {
+            "id": "dehoris2latin",
+            "description": "Написано на латыни. Выполненное в XIX веке переиздание латинского перевода XIV века трактата IV века.",
+            "label": "De Horis, книга 2"
         },
-
-		{id:"debellismurorumlatin",
-		unique:true, label:"De Bellis Murorum",
-		aspects: {text:1,auctionable:1,textlatin:1},
-		description:"На латыни. Стихотворный эпос восемнадцатого века под псевдонимом «Солипсист».",
-		xtriggers: {scholarlatin:debellismurorum}},
-		
-		{id:"onwhatiscontainedbysilvergreek",
-		unique:true, label:"О Том, что Сдержано Серебром",
-		aspects: {text:1,auctionable:1,textgreek:1},
-		description:"Бестиарий «Поумендера». На греческом языке.",
-			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
-		{id:"truecompleteasclepiangreek",
-		unique:true, label:"Настоящий и Полный Свод Асклепийских Мистерий Корней Дома",
-		aspects: {text:1,auctionable:1,textgreek:1},
-		description:"Переписан Райли Гресе с — предположительно — много более раннего текста. На греческом языке.",
-			xtriggers: {scholargreek: truecompleteasclepian}},
-
-				 {
-        id: "orchidtransfigurations1latin",
-            unique:true, label: "Превращения Орхидеи, том 1",
-            aspects:
-            {text:1,auctionable:1,textlatin:1},
-            description: "Горячечный бред алхимика шестнадцатого века, приписываемый Роберту Фладду, которого часто запрещали из-за тревожного очарования его иллюстраций. В оригинале, на латыни.",
-			xtriggers: {scholarlatin: orchidtransfigurations1}
+        {
+            "id": "debellismurorumlatin",
+            "description": "Написано на латыни. Эпос XVIII века, написанный автором под псевдонимом Солипсист.",
+            "label": "De Bellis Murorum"
         },
-		 {       id: "orchidtransfigurations2latin",
-            unique:true, label: "Превращения Орхидеи, том 2",
-            aspects:
-            {text:1,auctionable:1,textlatin:1},
-            description: "Горячечный бред алхимика шестнадцатого века, приписываемый Роберту Фладду, которого часто запрещали из-за тревожного очарования его иллюстраций. В оригинале, на латыни.",
-			xtriggers: {scholarlatin: orchidtransfigurations2}
+        {
+            "id": "onwhatiscontainedbysilvergreek",
+            "description": "Бестиарий за авторством некоего Пемандра. Написано по-гречески.",
+            "label": "Что сдерживает серебро"
         },
-		 {       id: "orchidtransfigurations3latin",
-            unique:true, label: "Превращения Орхидеи, том 3",
-            aspects:
-            {text:1,auctionable:1,textlatin:1},
-            description: "Горячечный бред алхимика шестнадцатого века, приписываемый Роберту Фладду, которого часто запрещали из-за тревожного очарования его иллюстраций. В оригинале, на латыни.",
-			xtriggers: {scholarlatin: orchidtransfigurations3}
+        {
+            "id": "truecompleteasclepiangreek",
+            "description": "Выполненный неким Райли Гризом пересказ намного более старого источника. Написано по-гречески.",
+            "label": "Истинные и полные записи асклепийских мистерий у корней Дома"
         },
-						 {
-        id: "geminiadfucine",
-            unique:true, label: "Геминиады",
-            aspects:
-            {knock: 2,tool:1,text:1,auctionable:1,textfucine:1},
-			xtriggers: {scholarfucine: geminiad},
-            description: "Хрупкий манускрипт, украшенный двойственными ликами — сияющими, печальными и чарующими — а также всеми фазами луны. Текст написан не раньше седьмого века, но язык — фуцинский — намного древнее. Обложка обрамлена кораллами, и краями страниц можно перерезать глотку."
+        {
+            "id": "orchidtransfigurations1latin",
+            "description": "Алхимическая галлюцинация XVI века, приписываемая Роберту Фладду. Не раз была под запретом из-за шокирующей развратности иллюстраций. Латинский первоисточник.",
+            "label": "Преобразования орхидеи, том 1"
         },
-
-							 {
-        id: "textbookfucinelatin",
-            unique:true, label: "Шифрованный дневник Алессандро ЛаКроче",
-            aspects:
-            {text:1,auctionable:1,textlatin:1},
-            description: "Принц Алессандро ЛаКроче годами втайне изучал таблички, добытые на Фуцинских болотах в центральной Италии. Его работа позволит вам читать тексты на фуцинском языке... но она написана простым латинским шифром. Сначала её нужно расшифровать.",
-			xtriggers: {scholarlatin: textbookfucine}
-        },	
-		
-									 {
-        id: "textbookphrygiangreek",
-            unique:true, label: "Надписи Велшорна",
-            aspects:
-            {text:1,auctionable:1,textgreek:1},
-            description: "Сотни совпадающих строк в греческих и фригийских стихотворениях, скопированные со стены. Сходные — или идентичные — с надписями, открытыми Велшорном в Галикарнасе. [Это ключ к фригийскому языку, если вы уже говорите по-гречески.]",
-			xtriggers: {scholargreek: textbookphrygian}
-        },	
-											 {
-        id: "textbookmandaicaramaic",
-            unique:true, label: "Камень Августа",
-            aspects:
-            {text:1,auctionable:1,textaramaic:1},
-            description: "Огромная чаша, большая как гонг, вырезанная из чёрного базальта, с совпадающими заклинаниями на арамейском и мандейском языках. [Ключ к мандейскому языку здесь, если вы знаете арамейский.]",
-			xtriggers: {scholararamaic: textbookmandaic}
-        },	
-		
-											 {
-        id: "textbookvaksanskrit",
-            unique:true, label: "Загадочная скульптура",
-            aspects:
-            {text:1,auctionable:1,textsanskrit:1},
-            description: "Скульптура из слоновой кости невероятно тонкой и сложной работы. По её поверхности змеятся надписи на санскрите. Вака противостоит им. [Вака, первый язык мира, откроется вам, если вы говорите на санскрите.]",
-			xtriggers: {scholarsanskrit: textbookvak}
-        },	
-		
-		
-								 {
-        id: "irreproachabletraditionssocietynobleendeavourlatin",
-            unique:true, label: "Безукоризненные Традиции...",
-            aspects:
-            {text:1,auctionable:2,textlatin:1},
-            description: "Безукоризненные Традиции Общества Благородных Устремлений. На латыни.",
-			xtriggers: {scholarlatin: irreproachabletraditionssocietynobleendeavour}
-        },						 {
-        id: "roseofnurielgreek",
-            unique:true, label: "Роза Нуриэль",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Есть метка — тройной знак Сестёр Узла, мистического и созерцательного ордена. На греческом языке.",
-			xtriggers: {scholargreek: roseofnuriel}
-        },						 {
-        id: "roseofhypatiagreek",
-            unique:true, label: "Роза Гипатии",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Есть метка — тройной знак Сестёр Узла, мистического и созерцательного ордена. На греческом языке.",
-			xtriggers: {scholargreek:roseofhypatia }
-        },						 {
-        id: "roseofwazneigreek",
-            unique:true, label: "Роза Вазне",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Есть метка — тройной знак Сестёр Узла, мистического и созерцательного ордена... но знак изуродован добавленным четвёртым листом. На греческом языке.",
-			xtriggers: {scholargreek:roseofwaznei }
-        },						 {
-        id: "sunsetpassageslatin",
-            unique:true, label: "Строки Заката",
-            aspects:
-            {text:1,auctionable:2,textlatin:1},
-            description: "Священный текст Церкви Непобеждённого Солнца, которая во многих Историях ушла в подполье. На латыни.",
-			xtriggers: {scholarlatin: sunsetpassages}
-        },						 {
-        id: "gospelzacchaeusgreek",
-            unique:true, label: "Евангелие от Захея",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Утраченный раннехристианский текст? На греческом языке.",
-			xtriggers: {scholargreek:gospelzacchaeus }
-        },						 {
-        id: "matthiasamethystlossaramaic",
-            unique:true, label: "О Матиасе и Аметистовой Имаго: Утрата",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Диаграммы и иллюстрации, даже спустя столетия, элегантны, гипнотичны, иногда даже эротичны. На арамейском языке.",
-			xtriggers: {scholararamaic: matthiasamethystloss}
-        },						 {
-        id: "matthiasamethysttransformationaramaic",
-            unique:true, label: "О Матиасе и Аметистовой Имаго: Превращение",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Диаграммы и иллюстрации, даже спустя столетия, элегантны, гипнотичны, иногда даже эротичны. На арамейском языке.",
-			xtriggers: {scholararamaic:matthiasamethysttransformation }
-        },						 {
-        id: "matthiasamethystpursuitaramaic",
-            unique:true, label: "О Матиасе и Аметистовой Имаго: Погоня",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Диаграммы и иллюстрации, даже спустя столетия, элегантны, гипнотичны, иногда даже эротичны. На арамейском языке.",
-			xtriggers: {scholararamaic: matthiasamethystpursuit}
-        },						 {
-        id: "franklinbancroftdiarieslatin",
-            unique:true, label: "Дневники лорда Франклина Бэнкрофта, 1750-1790",
-            aspects:
-            {text:1,auctionable:2,textlatin:1},
-            description: "Печально известные дневники печально известного джентльмена; их вели на латыни, несомненно, в целях безопасности.",
-			xtriggers: {scholarlatin: franklinbancroftdiaries}
-        },						 {
-        id: "indignitiesobliviatelatin",
-            unique:true, label: "Унижения, причинённые лживым братством Забвенных",
-            aspects:
-            {text:1,auctionable:2,textlatin:1},
-            description: "Книга знаменита как бешеной яростью, которой пронизан её текст, так и знанием, в ней содержащимся. На латыни.",
-			xtriggers: {scholarlatin:indignitiesobliviate }
-        },						 {
-        id: "furioustantrasanskrit",
-            unique:true, label: "Яростная Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "В переводе медиума и пиротехника Якоба Оливера Топп-Магглстоуна. Считается, что он нашёл эту тантру выжженной ударом молнии в коре дуба.",
-			xtriggers: {scholarsanskrit: furioustantra}
-        },						 {
-        id: "devouredtantrasanskrit",
-            unique:true, label: "Поглощённая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Дипломат-жрец Станислав Джон Шаллер переписал этот текст из библиотеки Алого Долгого, но он остаётся в частном собрании в Керишаме.",
-			xtriggers: {scholarsanskrit: devouredtantra}
-        },						 {
-        id: "ceaselesstantrasanskrit",
-            unique:true, label: "Неостановимая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Авангардный хореограф Николас Кейрле, вероятно, включил эту тантру в свои грозные балеты.",
-			xtriggers: {scholarsanskrit:ceaselesstantra }
-        },						 {
-        id: "knownunknowntantrasanskrit",
-            unique:true, label: "Тантра Знаемого Незнаемого",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Карлос Гарсия Заури, экстатический пиренейский мистик, произносил её на трёх языках, хотя никогда не посещал Подконтинент.",
-			xtriggers: {scholarsanskrit:knownunknowntantra }
-        },						 {
-        id: "encirclingtantrasanskrit",
-            unique:true, label: "Окружающая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Исследователь и антрепренер Т. Эверетт Дуплантис однажды попытался ограбить храм, где хранился этот текст. Его судьба записана в приложении.",
-			xtriggers: {scholarsanskrit: encirclingtantra}
-        },						 {
-        id: "shavenlocktantrasanskrit",
-            unique:true, label: "Тантра Сбритого Локона",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Также известна под названием «Тантры Обрившихся». Говорят, что это знание отвергли даже ванары, меняющие обличья.",
-			xtriggers: {scholarsanskrit: shavenlocktantra}
-        },						 {
-        id: "tantrawormssanskrit",
-            unique:true, label: "Тантра Червей",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Энтомолог Юлиана Завистовски с определённого момента начала утверждать, что этот текст написан насекомыми, живущими в человеческой коже. Она не привела доказательств этого утверждения.",
-			xtriggers: {scholarsanskrit: tantraworms}
+        {
+            "id": "orchidtransfigurations2latin",
+            "description": "Алхимическая галлюцинация XVI века, приписываемая Роберту Фладду. Не раз была под запретом из-за шокирующей развратности иллюстраций. Латинский первоисточник.",
+            "label": "Преобразования орхидеи, том 2"
         },
-		{
-        id: "bookofcentipedegreek",
-            unique:true, label: "Книга Сороконожки",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "В середине 1860-х годов «Мадам И» представила пьесу, основанную, по её словам, на этой книге.",
-			xtriggers: {scholargreek: bookofcentipede}
+        {
+            "id": "orchidtransfigurations3latin",
+            "description": "Алхимическая галлюцинация XVI века, приписываемая Роберту Фладду. Не раз была под запретом из-за шокирующей развратности иллюстраций. Латинский первоисточник.",
+            "label": "Преобразования орхидеи, том 3"
         },
-		{
-        id: "accountkanishkspidersdooraramaic",
-            unique:true, label: "Запись Канишка у Паучьей Двери",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Эта запись оставлена Лок Каули, жертвой и любовью Канишка, возможно, посмертно.",
-			xtriggers: {scholararamaic: accountkanishkspidersdoor}
-        },      
-		{
-        id: "vinzantinscriptionsphrygian",
-            unique:true, label: "Надписи Винзанта",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Эверетт Винзант переписал эти фригийские строки со скалы в Анатолии, где он получил удар молнии, выжил, и тем прославился. Он умер семь лет спустя. Его кости, как гласит предание, были горячими на ощупь.",
-			xtriggers: {scholarphrygian: vinzantinscriptions}
+        {
+            "id": "geminiadfucine",
+            "description": "Иллюстрированный хрупкий манускрипт с изображениями грустной и сиятельной красавицы с двойником, а также всех фаз луны. Вероятно, был написан аж в VII веке, но язык записей, фучинский, куда старше. Обложка украшена кораллом; края страниц настолько остры, что ими можно перерезать горло.",
+            "label": "Геминиада"
         },
-		{
-        id: "larquebinecodexphrygian",
-            unique:true, label: "Кодекс Ларкеба",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Кристоф Ларкеб утверждает, что приобрёл две рукописные копии Кодекса на считающемся мёртвым фригийском языке у семьи ведьм на побережье Мраморного моря. Третья «отдана морю».",
-			xtriggers: {scholarphrygian: larquebinecodex}
+        {
+            "id": "textbookfucinelatin",
+            "description": "Принц Алессандро Лакроче долгие годы тайком изучал таблички с Фучинских болот в центре Италии. Его труды позволят вам расшифровывать тексты на фучинском языке... но написаны они простым латинским шифром. Сперва вам придётся разобраться с ним.",
+            "label": "Зашифрованный дневник Алессандро Лакроче"
         },
-		{
-        id: "againstsisterhoodknotgreek",
-            unique:true, label: "Против Сестёр Узла и...",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "«Против Сестёр Узла и Уродства их Извращённых Нравов». Иероним Псевдо-Гипнэротомах написал эту гневную, но нудную, речь о греховном влиянии Сестёр на его собственную Церковь Непобеждённого Солнца.",
-			xtriggers: {scholargreek: againstsisterhoodknot}
+        {
+            "id": "textbookphrygiangreek",
+            "description": "Несколько сотен строк параллельного текста на греческом и фригийском, скопированного со стены. Напоминают письмена, обнаруженные Кэлом Велшорном в Галикарнасе, а возможно, идентичны им. [Если вы знаете греческий, вы можете использовать это как ключ к расшифровке фригийского.]",
+            "label": "Надписи Велшорна"
         },
-		{
-        id: "morphycodexaramaic",
-            unique:true, label: "Кодекс Морфи",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Труд Сестёр Узла, раскопанный Эваном Морфи.",
-			xtriggers: {scholararamaic: morphycodex}
+        {
+            "id": "textbookmandaicaramaic",
+            "description": "Чаша из чёрного базальта величиной с колокол, на которой вырезаны заклинания на двух языках, арамейском и мандейском. [Если вы знаете арамейский, вы можете использовать это как ключ к расшифровке мандейского.]",
+            "label": "Величественный камень"
         },
-		{
-        id: "leoninetantrasanskrit",
-            unique:true, label: "Львиная Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Автором самого печально известного перевода Львиной Тантры значится Эшли Филипс — но само существование этой личности явно отрицается в прологе тантры. Такие противоречия характерны для книг, касающихся Великих Сокрытых Принцев-с-Капюшонами.",
-			xtriggers: {scholarsanskrit: leoninetantra}
+        {
+            "id": "textbookvaksanskrit",
+            "description": "Затейливое изваяние непостижимо тонкой работы. Вся его поверхность испещрена надписями на санскрите, вьющимися бок о бок с тем же текстом на языке вач. [Если вы знаете санскрит, это позволит выучить язык вач.]",
+            "label": "Загадочная скульптура"
         },
-		{
-        id: "incandescenttantrasanskrit",
-            unique:true, label: "Раскалённая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Майкл Блокли, эксцентричный стальной магнат, любил цитировать эту тантру. Он погиб в пожаре на фабрике.",
-			xtriggers: {scholarsanskrit: incandescenttantra}
+        {
+            "id": "irreproachabletraditionssocietynobleendeavourlatin",
+            "description": "«Безукоризненные традиции Общества благого начинания». Написано на латыни.",
+            "label": "Безукоризненные традиции..."
         },
-		{
-        id: "thirstingtantrasanskrit",
-            unique:true, label: "Жаждущая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "К. Г. Бериэл, агитатор за трезвость, опубликовал её элементы в памфлете; его пришлось отозвать и уничтожить, когда он стал чрезмерно популярен.",
-			xtriggers: {scholarsanskrit: thirstingtantra}
+        {
+            "id": "roseofnurielgreek",
+            "description": "Фолиант, украшенный тройным символом сестёр Узла — мистического ордена созерцателей. Написано по-гречески.",
+            "label": "Роза Нуриэль"
         },
-		{
-        id: "flayedtantrasanskrit",
-            unique:true, label: "Содранная Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Считается, что тантра записана с речи загадочной личности под именем «Кожура», по ряду признаков сходной с мифологической нагой. Содранная Тантра сыграла важную роль в параноидальных памфлетах Александра Спэрроу.",
-			xtriggers: {scholarsanskrit: flayedtantra}
+        {
+            "id": "roseofhypatiagreek",
+            "description": "Фолиант, украшенный тройным символом сестёр Узла — мистического ордена созерцателей. Написано по-гречески.",
+            "label": "Роза Гипатии"
         },
-		{
-        id: "watchfultantrasanskrit",
-            unique:true, label: "Зоркая Тантра",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Печально известна тем, что послужила причиной гибели Дэвида Джонса и Мередит Блейз — двух физиков, каждый из которых утверждал, что хранит единственную существующую копию этой тантры; в 1840 году точку в их споре поставила дуэль.",
-			xtriggers: {scholarsanskrit: watchfultantra}
+        {
+            "id": "roseofwazneigreek",
+            "description": "Фолиант, украшенный тройным символом сестёр Узла — мистического ордена созерцателей... Кто-то исказил символ, дорисовав к нему четвёртый лист. Написано по-гречески.",
+            "label": "Роза Вазнэй"
         },
-		{
-        id: "twinserpenttantrasanskrit",
-            unique:true, label: "Тантра Двойной Змеи",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Тантра, изложенная особенно неясно.",
-			xtriggers: {scholarsanskrit: twinserpenttantra}
+        {
+            "id": "sunsetpassageslatin",
+            "description": "Священное писание церкви Непокорённого Солнца, которая во многих историях вынуждена была уйти в тень. Написано на латыни.",
+            "label": "Закатные фрагменты"
         },
-		{
-        id: "firecircletantrasanskrit",
-            unique:true, label: "Тантра Огненного Круга",
-            aspects:
-            {text:1,auctionable:2,textsanskrit:1},
-            description: "Единственная сохранившаяся копия в Западной Европе была украдена в 1892 году из Британской библиотеки. Харви Хаттингтон признался в преступлении и заявил, что съел её с маслом и чесноком в момент неукротимой прихоти.",
-			xtriggers: {scholarsanskrit: firecircletantra}
+        {
+            "id": "gospelzacchaeusgreek",
+            "description": "Утраченный раннехристианский текст? Написано по-гречески.",
+            "label": "Евангелие от Закхея"
         },
-		{
-        id: "asthesunhiscoursearamaic",
-            unique:true, label: "Путь Его как Солнце",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Джоэль Моста, отставной солдат, подрабатывающий сборщиком пошлин, написал этот эпос об Александре, его известном и необъяснимом решении прекратить войну с Ахеменидами при Иссе, и последующем возврате в Македонию..",
-			xtriggers: {scholararamaic: asthesunhiscourse}
+        {
+            "id": "matthiasamethystlossaramaic",
+            "description": "Со времени создания этой книги минуло много веков, но её схемы и иллюстрации и сегодня поражают изысканным, гипнотическим эротизмом. Написано по-арамейски.",
+            "label": "О Маттиасе и Аметистовой Имаго: «Утрата»"
         },
-		{
-        id: "concursumdiariesphrygian",
-            unique:true, label: "Дневники Стечения",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Дневники исследователя и убийцы Ларса Вестергрена. Ради секретности он перевёл их на фригийский язык.",
-			xtriggers: {scholarphrygian: concursumdiaries}
+        {
+            "id": "matthiasamethysttransformationaramaic",
+            "description": "Со времени создания этой книги минуло много веков, но её схемы и иллюстрации и сегодня поражают изысканным, гипнотическим эротизмом. Написано по-арамейски.",
+            "label": "О Маттиасе и Аметистовой Имаго: «Трансформация»"
         },
-		{
-        id: "ironbookfucine",
-            unique:true, label: "Книга Железа",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Руководство Ордо Лимы, ордена псевдо-бессмертных, создавших тайный анклав у истоков реки Лимы, в римской провинции Галлеции.",
-			xtriggers: {scholarfucine: ironbook}
+        {
+            "id": "matthiasamethystpursuitaramaic",
+            "description": "Со времени создания этой книги минуло много веков, но её схемы и иллюстрации и сегодня поражают изысканным, гипнотическим эротизмом. Написано по-арамейски.",
+            "label": "О Маттиасе и Аметистовой Имаго: «Погоня»"
         },
-		{
-        id: "silverbookfucine",
-            unique:true, label: "Книга Серебра",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Руководство Ордо Лимы, ордена псевдо-бессмертных, создавших тайный анклав у истоков реки Лимы, в римской провинции Галлеции.",
-			xtriggers: {scholarfucine: silverbook}
+        {
+            "id": "franklinbancroftdiarieslatin",
+            "description": "Скандальный дневник скандально известного джентльмена. Написан на латыни — вне всяких сомнений, в целях предосторожности.",
+            "label": "Дневники лорда Франклина Бэнкрофта, 1750—1790 гг."
         },
-		{
-        id: "ivorybookfucine",
-            unique:true, label: "Книга Слоновой Кости",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Руководство Ордо Лимы, ордена псевдо-бессмертных, создавших тайный анклав у истоков реки Лимы, в римской провинции Галлеции.",
-			xtriggers: {scholarfucine: ivorybook}
+        {
+            "id": "indignitiesobliviatelatin",
+            "description": "Автор этой книги писал ее с пылкостью, которая делает текст почти бессвязным, но вложил в неё ценные знания. Написано на латыни.",
+            "label": "Бесчинства, совершённые вероломным братством Забвенных"
         },
-		{
-        id: "worlddoesnotweeparamaic",
-            unique:true, label: "Мир не плачет",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Найдено «Бурым» Иешуа в колодце в Хаме. По сомнительной легенде текст брошен Александром при отступлении от Иссы.",
-			xtriggers: {scholararamaic: worlddoesnotweep}
+        {
+            "id": "furioustantrasanskrit",
+            "description": "Поздняя транскрипция, выполненная медиумом и пиротехником Якобом Оливером Топп-Магглстоуном. Согласно легенде, он обнаружил её на коре дуба, где надпись выжег удар молнии.",
+            "label": "Яростная тантра"
         },
-		{
-        id: "deedsofthescarredcaptaingreek",
-            unique:true, label: "Деяния Капитана-Шрама",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Тщательно собраны Павлом Шульгой, наёмником и странником, в годы, проведённые им в Греции.",
-			xtriggers: {scholargreek: deedsofthescarredcaptain}
+        {
+            "id": "devouredtantrasanskrit",
+            "description": "Дипломат и священник Станислав Джон Шаллер переписал эту тантру в библиотеке Алого Вечного, но его манускрипт хранится в частной коллекции в Керишеме.",
+            "label": "Пожранная тантра"
         },
-		{
-        id: "bookofdissolutionmandaic",
-            unique:true, label: "Книга Растворения",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Александр Пробст, следуя лёгшему в основание труду Джея Вигглсворта Дженсена, добыл копию этой работы из персидского горного храма. Иногда всплывают другие копии, обычно — выжженные в камне.",
-			xtriggers: {scholarmandaic: bookofdissolution}
+        {
+            "id": "ceaselesstantrasanskrit",
+            "description": "Предполагают, что хореограф-авангардист Николас Кейль использовал эту тантру в своих пугающих балетах.",
+            "label": "Непрерывная тантра"
         },
-		{
-        id: "catalogueofunchartedpleasuresphrygian",
-            unique:true, label: "Каталог неведомых наслаждений",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "«Тёмный Джентльмен» — единственный точно (и притом весьма помпезно) опознанный автор этого часто копируемого труда.",
-			xtriggers: {scholarphrygian: catalogueofunchartedpleasures}
+        {
+            "id": "knownunknowntantrasanskrit",
+            "description": "Известно, что Карлос Гарсиа Саури, фанатичный мистик из Пиреней, мог зачитать эту тантру на трёх языках, хоть никогда и не бывал на субконтиненте.",
+            "label": "Тантра знакомого-чуждого"
         },
-		{
-        id: "thosewhodonotsleepfucine",
-            unique:true, label: "Те, кто не спят",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Текст на фуцинском языке, приписываемый мистику Броднаксу.",
-			xtriggers: {scholarfucine: thosewhodonotsleep}
+        {
+            "id": "encirclingtantrasanskrit",
+            "description": "Исследователь и предприниматель Т. Эверетт Дюпланти как-то попытался разграбить храм, в котором хранился этот текст. О его судьбе рассказано в дополнении.",
+            "label": "Окружающая тантра"
         },
-		{
-        id: "theskythesoularamaic",
-            unique:true, label: "Небо, Душа",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "Великий труд Кэля, поэта-аскета, творившего при дворе Королей-без-Тени.",
-			xtriggers: {scholararamaic: theskythesoul}
+        {
+            "id": "shavenlocktantrasanskrit",
+            "description": "Другое название — «Тот, кто обрил волосы». Говорят, что эти знания отвергают даже переменчивые ванары.",
+            "label": "Тантра остриженного локона"
         },
-		{
-        id: "onthematterandthedeedsofserpentsvak",
-            unique:true, label: "О Змеях и их Деяниях",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Вероятно, исходно этот текст был «Пророчествами Наги», переведёнными и иллюстрированными «Вильямом Миднайтом» в Париже в 1880 году; но есть ряд существенных расхождений. Книга определённо слишком современна для своего языка. Вака древнее, как и её труды.",
-			xtriggers: {scholarvak: onthematterandthedeedsofserpents}
+        {
+            "id": "tantrawormssanskrit",
+            "description": "Энтомолог Джулиана Завистовски в конце концов стала утверждать, что этот текст написан насекомыми, живущими в коже человека. Свои слова она ничем не подкрепляла.",
+            "label": "Тантра Червей"
         },
-		{
-        id: "serenityofblackwoodgreek",
-            unique:true, label: "Спокойствие Чёрного Дерева",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-            description: "Аллегорическая история Дома Леты; как намекается этим текстом, они вдохновлялись Сороконожкой. «Покой Чёрнодерева» — их оккультный псевдоним и по сей день.",
-			xtriggers: {scholargreek: serenityofblackwood}
+        {
+            "id": "bookofcentipedegreek",
+            "description": "В середине 1860-х некая мадам И. утверждала, что придуманное ею сценическое представление основано на этой книге.",
+            "label": "Книга Сколопендры"
         },
-		{
-        id: "bookofthronesphrygian",
-            unique:true, label: "Книга Тронов",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Легенда Империи-без-Тени, переписанная Александром Питерхансом из анналов тайной усыпальницы в Анатолии.",
-			xtriggers: {scholarphrygian: bookofthrones}
-        },{
-        id: "secondglorymandaic",
-            unique:true, label: "Вторая Слава",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Труд Юсы, жреца и учёного-отшельника.",
-			xtriggers: {scholarmandaic: secondglory}
+        {
+            "id": "accountkanishkspidersdooraramaic",
+            "description": "Вероятно, эти строки принадлежат уже мертвой руке Лок Кахули, жертвы и любовной страсти Канишка.",
+            "label": "Записи о Канишке у Паучьей Двери"
         },
-		{
-        id: "bookoftruebloodlatin",
-            unique:true, label: "Книга Истинной Крови",
-            aspects:
-            {text:1,auctionable:2,textlatin:1},
-            description: "Труд Кассия Фомского.",
-			xtriggers: {scholarlatin: bookoftrueblood}
+        {
+            "id": "vinzantinscriptionsphrygian",
+            "description": "Эверетт Винзант переписал этот текст со скалы в Анатолии. Известно, что там он также пережил попадание молнии и умер ровно через семь лет после того дня. Легенда гласит, что его кости были горячими на ощупь.",
+            "label": "Записи Винзанта"
         },
-		{
-        id: "burningwomanphrygian",
-            unique:true, label: "Горящая Женщина",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Перевод пьесы Менандером Победителем, вероятным автором драмы, на фригийский язык, с комментариями.",
-			xtriggers: {scholarphrygian: burningwoman}
+        {
+            "id": "larquebinecodexphrygian",
+            "description": "Кристоф Ларкебю утверждал, что две копии рукописного кодекса, написанные на предположительно мёртвом фригийском языке, он приобрел у семейства ведьм на берегу Мраморного моря. Третью книгу «отдали Морю».",
+            "label": "Кодекс Ларкебю"
         },
-		{
-        id: "twentysixenticementsseventormentsfucine",
-            unique:true, label: "Двадцать Шесть Соблазнов, Семь Пыток",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Художник Нильс Фредерик Мальскер обрёл печальную славу, когда попытался создать цикл работ, основанных на Пытках. В начале работы над Пятой Пыткой требования картины возросли настолько, что он умер от потери крови. К счастью, диаграммы в этом тексте не так подробны.",
-			xtriggers: {scholarfucine: twentysixenticementsseventorments}
+        {
+            "id": "againstsisterhoodknotgreek",
+            "description": "«Разоблачение сестёр Узла и их гнусных мерзких обычаев». В этой книге Иероним Псевдо-Гипнэротомах с негодованием пишет о губительном влиянии сестёр на его церковь Непокорённого Солнца.",
+            "label": "Разоблачение сестёр Узла..."
         },
-		
-		{
-        id: "historyofshadowlesskingsaramaic",
-            unique:true, label: "Верная и Точная История Королей-без-Тени",
-            aspects:
-            {text:1,auctionable:2,textaramaic:1},
-            description: "История Империи-без-Тени, написанная Исааком из Карфа.",
-			xtriggers: {scholararamaic: historyofshadowlesskings}
+        {
+            "id": "morphycodexaramaic",
+            "description": "Текст, написанный сёстрами Узла и открытый Эваном Морфи.",
+            "label": "Кодекс Морфи"
         },
-
-				{
-        id: "highmysterieschurchsolarfucine",
-            unique:true, label: "Высшие Мистерии Святая Святых...",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "«Высшие Мистерии Святая Святых нашей Церкви Солнца». Тайные ритуалы Церкви Непобеждённого Солнца, достигшей господства как минимум в двух Историях.",
-			xtriggers: {scholarfucine: highmysterieschurchsolar }
+        {
+            "id": "leoninetantrasanskrit",
+            "description": "Самый печально известный перевод Львиной тантры. Указанное имя переводчика — Эшли Филлипс, но в прологе прямо сказано, что этого человека не существует. Такая путаница всегда встречается в книгах, упоминающих великих Принцев-под-Капюшонами.",
+            "label": "Львиная тантра"
         },
-
-				{
-        id: "medusaslamentgreek",
-            unique:true, label: "Горе Медузы",
-            aspects:
-            {text:1,auctionable:2,textgreek:1},
-                       description: "На смерть Часа по имени Семь Витков, «Отца Матери».",
-			xtriggers: {scholargreek: medusaslament}
+        {
+            "id": "incandescenttantrasanskrit",
+            "description": "Майкл Блокли, эксцентричный железный магнат, любил зачитывать фрагменты этой тантры. Погиб во время пожара на фабрике.",
+            "label": "Раскалённая тантра"
         },
-
-				{
-        id: "bookofmasksphrygian",
-            unique:true, label: "Книга Масок",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Работа Афины Ваны о Часе-изгое по имени Бродяга.",
-			xtriggers: {scholarphrygian: bookofmasks}
+        {
+            "id": "thirstingtantrasanskrit",
+            "description": "К. Г. Бэриел, активный сторонник трезвости, напечатал листовку с фрагментами этой тантры. Когда она обрела чрезмерную известность, её пришлось изъять и уничтожить.",
+            "label": "Тантра жажды"
         },
-
-				{
-        id: "inthemountainsasupontheplainvak",
-            unique:true, label: "В Горах, как и на Равнинах...",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "«В Горах, как и на Равнинах, нет Непройденных Путей». Автор — Нинегала из Лагаша.",
-			xtriggers: {scholarvak: inthemountainsasupontheplain}
+        {
+            "id": "flayedtantrasanskrit",
+            "description": "Повествование ведётся от лица загадочного «Линялого», во многом похожего на мифического нага. Бескожая тантра сильно повлияла на параноидальное творчество Александра Спэрроу.",
+            "label": "Бескожая тантра"
         },
-
-				{
-        id: "memoryofgodsfucine",
-            unique:true, label: "Памяти Богов",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description:  "Автор — «Дитя кургана», безымянный галльский адепт, вступивший в организацию, под которой узнаётся Ордо Лимы.",
-			xtriggers: {scholarfucine: memoryofgods}
+        {
+            "id": "watchfultantrasanskrit",
+            "description": "Известна тем, что привела к смерти двух физиков, Дафида Джонса и Мередита Блейна. Каждый из них утверждал, что обладает единственной копией тантры, из-за чего в 1840 году учёные сразились на знаменитой роковой дуэли.",
+            "label": "Тантра подозрительности"
         },
-
-				{
-        id: "sevenfoldslayingsevencoiledfucine",
-            unique:true, label: "Семикратное убийство Семи Витков",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Запись об уничтожении доисторического Часа, бога-бывшего-Камнем.",
-			xtriggers: {scholarfucine: sevenfoldslayingsevencoiled}
+        {
+            "id": "twinserpenttantrasanskrit",
+            "description": "Тантра, о происхождении которой почти ничего не известно.",
+            "label": "Тантра Змей-Близнецов"
         },
-
-				{
-        id: "bighufffucine",
-            unique:true, label: "Мои Дела, Силы, Достижения...",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "«Мои Дела, Силы, Достижения и Неправедности, Сотворённые Против Меня»",
-			xtriggers: {scholarfucine: bighuff}
+        {
+            "id": "firecircletantrasanskrit",
+            "description": "Единственная во всей Западной Европе точная копия была украдена из Британской библиотеки в 1892 году. Некий Харви Хэттингтон признался в совершённом преступлении и утверждал, что в неукротимом порыве съел добычу, натерев маслом и чесноком.",
+            "label": "Тантра огненного круга"
         },
-
-				{
-        id: "dreamconspiracyskiesphrygian",
-            unique:true, label: "Сон о Заговоре Нижних Небес",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Исследования опального оракула Дамаона Азенатена.",
-			xtriggers: {scholarphrygian: dreamconspiracyskies}
+        {
+            "id": "asthesunhiscoursearamaic",
+            "description": "Джоэл Мостовой, сборщик пошлин и бывший солдат, написал эпическую поэму о знаменитом и необъяснимом решении Александра прекратить войну с Ахеменидами у Исса и его последующем возвращении в Македонию.",
+            "label": "По пути Солнца"
         },
-
-				{
-        id: "bookwhitecatphrygian",
-            unique:true, label: "Книга Белой Кошки",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Рассказы, полученные Пенелопой Гордионской от слепой белой кошки.",
-			xtriggers: {scholarphrygian: bookwhitecat}
+        {
+            "id": "concursumdiariesphrygian",
+            "description": "Дневники Ларса Вестергрена, исследователя и убийцы. Он писал на фригийском, чтобы утаить их содержание, но это мало помогло.",
+            "label": "Дневники с Перепутья"
         },
-
-				{
-        id: "focusambermandaic",
-            unique:true, label: "Фокус Янтаря",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Труд-епитимья Омара, Сполоха.",
-			xtriggers: {scholarmandaic: focusamber}
+        {
+            "id": "ironbookfucine",
+            "description": "Наставления Ordo Limiae, ордена полубессмертных, чьи члены тайно обитали у истоков реки Лима в римской провинции Галлеция.",
+            "label": "Железная книга"
         },
-
-				{
-        id: "songscarapacecrossmandaic",
-            unique:true, label: "Песни Панцирного Креста",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Часто гибнущая работа Мика Си.",
-			xtriggers: {scholarmandaic: songscarapacecross}
+        {
+            "id": "silverbookfucine",
+            "description": "Наставления Ordo Limiae, ордена полубессмертных, чьи члены тайно обитали у истоков реки Лима в римской провинции Галлеция.",
+            "label": "Серебряная книга"
         },
-						{
-        id: "originsofhoursvak",
-            unique:true, label: "Происхождение Часов",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Слухи о различных происхождениях тайных богов. Вака — язык этих обсуждений.",
-			xtriggers: {scholarvak: originsofhours}
+        {
+            "id": "ivorybookfucine",
+            "description": "Наставления Ordo Limiae, ордена полубессмертных, чьи члены тайно обитали у истоков реки Лима в римской провинции Галлеция.",
+            "label": "Костяная книга"
         },
-						{
-        id: "wherehasshegonevak",
-            unique:true, label: "Куда Она ушла?",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Размышления о странствиях Бродяги. Вака — язык, на котором они записаны.",
-			xtriggers: {scholarvak: wherehasshegone}
+        {
+            "id": "worlddoesnotweeparamaic",
+            "description": "«Бурый» Джошуа обнаружил эту книгу в колодце в Емафе. История о том, что она осталась там после отступления Александра из Исса, звучит неубедительно.",
+            "label": "Мир не проливает слёзы"
         },
-						{
-        id: "bookextinguishedheartmandaic",
-            unique:true, label: "Книга Погашенного Сердца",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Книга печального пророчества.",
-			xtriggers: {scholarmandaic: bookextinguishedheart}
+        {
+            "id": "deedsofthescarredcaptaingreek",
+            "description": "Павел Шульга, эмигрант-наёмник, скрупулёзно записывал эти истории во время своего пребывания в Греции.",
+            "label": "Деяния капитана со шрамами"
         },
-						{
-        id: "howendwillbeginvak",
-            unique:true, label: "Как Начнётся Конец",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Книга мрачного пророчества.",
-			xtriggers: {scholarvak: howendwillbegin}
+        {
+            "id": "bookofdissolutionmandaic",
+            "description": "Следуя по стопам Джея Вигглсворта Дженсена, Александр Пробст обнаружил копию этого труда в горном храме в Персии. Такие тексты, обычно выжженные на камне, всё ещё иногда находят при раскопках.",
+            "label": "Книга Распада"
         },
-						{
-        id: "manneralchemistsparedvak",
-            unique:true, label: "Как был Пощажен Алхимик",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Вака — язык этого псевдоалхимического текста.",
-			xtriggers: {scholarvak: manneralchemistspared}
+        {
+            "id": "catalogueofunchartedpleasuresphrygian",
+            "description": "«Тёмный господин» — единственный хвастливо указанный автор книги. Это произведение часто копируют.",
+            "label": "Перечень неизведанных удовольствий"
         },
-						{
-        id: "fivecreationsvak",
-            unique:true, label: "Пять Творений",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Странствующий учёный Шохай спорит с фигурой в капюшоне о пяти возможных происхождениях человечества; утверждается, что это Ворон-Берег. Позже Шохай заявлял, что все эти версии признаны ложными, но спор, тем не менее, записан.",
-			xtriggers: {scholarvak: fivecreations}
+        {
+            "id": "thosewhodonotsleepfucine",
+            "description": "Написано на фучинском языке. Предполагаемый автор — мистик Броднакс.",
+            "label": "Неспящие"
         },
-						{
-        id: "commandspreservationallexistsmandaic",
-            unique:true, label: "Заповеди о Спасении...",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "«Заповеди о Спасении Всего Сущего». Чёрная Эли, Дамасский Матриарх Сестёр Узла, была заточена императором Дидием Юлианом. Утверждают, что она потребовала, чтобы эти тайные доктрины были записаны и сохранены на случай их поражения. К сожалению, как сказано далее, Дидий Юлиан повелел, чтобы её труд похоронили вместе с ней в безымянной гробнице.",
-			xtriggers: {scholarmandaic: commandspreservationallexists}
+        {
+            "id": "theskythesoularamaic",
+            "description": "Великий труд аскета Калле, что писал стихотворения при дворе Королей-без-Тени.",
+            "label": "Небо и душа"
         },
-						{
-        id: "timedivisionmandaic",
-            unique:true, label: "Время Разделения",
-            aspects:
-            {text:1,auctionable:2,textmandaic:1},
-            description: "Амира Зара предсказывает события, позже названные Внедрением, когда Час по имени Солнце-в-Сиянии будет разделён.",
-			xtriggers: {scholarmandaic: timedivision}
+        {
+            "id": "onthematterandthedeedsofserpentsvak",
+            "description": "Вероятно, это переведённые на английский «Пророчества Нага», но в некоторых местах текст расходится с оригиналом. Книга с переводом и иллюстрациями «Уильяма Полуночного» была издана в Париже в 1880 году. Это один из новейших текстов на языке вач.",
+            "label": "О деяниях Змеев"
         },
-						{
-        id: "manualdeparturevak",
-            unique:true, label: "Руководство Отбытия",
-            aspects:
-            {text:1,auctionable:2,textvak:1},
-            description: "Автор, именующий себя Йекаду, утверждает, что является Великим Сокрытым Принцем-с-Капюшоном Речной Страны.",
-			xtriggers: {scholarvak: manualdeparture}
+        {
+            "id": "serenityofblackwoodgreek",
+            "description": "Образно рассказанная история Дома Леты. В тексте подразумевается, что он был создан под влиянием Сколопендры. Псевдоним «Тишь Чернолес» часто используется оккультистами и по сей день.",
+            "label": "Тишь Чёрного леса"
         },
-						{
-        id: "birdsongphrygian",
-            unique:true, label: "Инаам, Капигигинлупир, Гарки, Крипп",
-            aspects:
-            {text:1,auctionable:2,textphrygian:1},
-            description: "Четыре загадочных рассказчика делятся историями, услышанными ими за годы на Насесте — в тайном месте, где собираются крылатые Часы.",
-			xtriggers: {scholarphrygian: birdsong}
+        {
+            "id": "bookofthronesphrygian",
+            "description": "История Империи-без-Тени, записанная Александром Питерхансом на основе хроник из тайного святилища в Анатолии.",
+            "label": "Книга престолов"
         },
-						{
-        id: "voyagesfofucine",
-            unique:true, label: "Странствия Фернишана Ореольского",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Невероятные путешествия морского капитана в период заката финикийской державы. Текст замалчивается в ходе всей известной истории: его читателям свойственно бесследно исчезать.",
-			xtriggers: {scholarfucine: voyagesfo }
+        {
+            "id": "secondglorymandaic",
+            "description": "Труд Джусеха, учёного жреца и отшельника.",
+            "label": "Вторая Слава"
         },
-						{
-        id: "scarskyfucine",
-            unique:true, label: "Шрам в Небе",
-            aspects:
-            {text:1,auctionable:2,textfucine:1},
-            description: "Нин написал это, и позже сожалел.",
-			xtriggers: {scholarfucine: scarsky }
+        {
+            "id": "bookoftruebloodlatin",
+            "description": "Труд Кассия Томана.",
+            "label": "Книга истинной крови"
         },
-
-]
-};
+        {
+            "id": "burningwomanphrygian",
+            "description": "Запись пьесы Менандера Победителя. Возможно, это настоящее имя драматурга. Выполнена на фригийском языке и снабжена комментариями.",
+            "label": "Горящая женщина"
+        },
+        {
+            "id": "twentysixenticementsseventormentsfucine",
+            "description": "Художник Нильс Фредерик Мальскёр известен тем, что попытался нарисовать серию картин о семи истязаниях. К пятому истязанию требования картины возросли настолько, что художник умер от кровопотери. К счастью, изображения в тексте не столь детальны.",
+            "label": "Двадцать шесть искушений, семь истязаний"
+        },
+        {
+            "id": "historyofshadowlesskingsaramaic",
+            "description": "История Империи-без-Тени авторства Исаака из Картха.",
+            "label": "Правдивая и точная история Королей-без-Тени"
+        },
+        {
+            "id": "highmysterieschurchsolarfucine",
+            "description": "«Высшие и сокровеннейшие таинства нашей Церкви Солнца». Тайные обряды церкви Непокорённого Солнца, обладавшей большой властью как минимум в двух версиях истории.",
+            "label": "Высшие и сокровеннейшие таинства..."
+        },
+        {
+            "id": "medusaslamentgreek",
+            "description": "Повесть о гибели Часа, известного как Семь-Витков и Отец Матери.",
+            "label": "Плач Медузы"
+        },
+        {
+            "id": "bookofmasksphrygian",
+            "description": "Записи Афины Ваны о бродячем Часе, также известном как Скиталица.",
+            "label": "Книга масок"
+        },
+        {
+            "id": "inthemountainsasupontheplainvak",
+            "description": "«В горах над равниной не может быть нехоженых троп». Труд Нинегалы Лагашской.",
+            "label": "«В горах над равниной..."
+        },
+        {
+            "id": "memoryofgodsfucine",
+            "description": "Работа безымянного адепта из Галлии с псевдонимом «Дитя Кургана», вступившей в орден, известный как Ordo Limiae.",
+            "label": "Память богов"
+        },
+        {
+            "id": "sevenfoldslayingsevencoiledfucine",
+            "description": "Запись об уничтожении древнего Часа, Бога-Из-Камня.",
+            "label": "Семикратное умерщвление Семи-Витков"
+        },
+        {
+            "id": "bighufffucine",
+            "description": "«Мои деяния, способности, достижения и направленные против меня гнусные козни».",
+            "label": "Мои деяния, способности, достижения..."
+        },
+        {
+            "id": "dreamconspiracyskiesphrygian",
+            "description": "Исследование опального оракула Дамаона Азенатена.",
+            "label": "Сон о заговоре Нижних небес"
+        },
+        {
+            "id": "bookwhitecatphrygian",
+            "description": "Истории, рассказанные Пенелопе Гордионской слепой белой кошкой.",
+            "label": "Книга белой кошки"
+        },
+        {
+            "id": "focusambermandaic",
+            "description": "Покаяние Омара Пламенного.",
+            "label": "Средоточие янтаря"
+        },
+        {
+            "id": "songscarapacecrossmandaic",
+            "description": "Труд Мики Си, копии которого постоянно утрачиваются.",
+            "label": "Песни Хитинового Креста"
+        },
+        {
+            "id": "originsofhoursvak",
+            "description": "Написанная на языке вач работа, в которой предположительно содержатся слухи о происхождении тайных богов.",
+            "label": "Происхождение Часов"
+        },
+        {
+            "id": "wherehasshegonevak",
+            "description": "Написанный на языке вач анализ, посвященный странствиям Скиталицы.",
+            "label": "Куда Она ушла?"
+        },
+        {
+            "id": "bookextinguishedheartmandaic",
+            "description": "Меланхолическое пророчество.",
+            "label": "Книга погашенного Сердца"
+        },
+        {
+            "id": "howendwillbeginvak",
+            "description": "Мрачное пророчество.",
+            "label": "Как настанет начало конца"
+        },
+        {
+            "id": "manneralchemistsparedvak",
+            "description": "Псевдоалхимический текст, написанный на языке вач.",
+            "label": "Каким образом пощадили Алхимика"
+        },
+        {
+            "id": "fivecreationsvak",
+            "description": "Дискуссии странствующего учёного Сёхэя с некой фигурой в капюшоне, которую считают Вороном-с-Берега. Тема их разговоров — происхождение людей. Позднее Сёхэй заявил, что все предположения оказались ошибочными, но дискуссия все равно была записана.",
+            "label": "Пять путей сотворения"
+        },
+        {
+            "id": "commandspreservationallexistsmandaic",
+            "description": "«Заповеди о сохранении всего сущего». Чёрная Эли, матриарх дамасского общества сестёр Узла, попала в плен к императору Дидию Юлиану. Считается, что она дала наказ записать эти тайные учения, чтобы они не были утрачены, однако Дидий Юлиан приказал замуровать их в безымянной гробнице вместе с самой Эли.",
+            "label": "Заповеди о сохранении..."
+        },
+        {
+            "id": "timedivisionmandaic",
+            "description": "Текст, в котором Амира Захра предсказывает рассечение Солнца-в-Зените — событие, позже названное Интеркаляцией.",
+            "label": "Время Рассечения"
+        },
+        {
+            "id": "manualdeparturevak",
+            "description": "Автор, называющий себя Жекаду, утверждает, что он — один из великих Принцев-под-Капюшонами из Речной страны.",
+            "label": "Руководство по отбытию"
+        },
+        {
+            "id": "birdsongphrygian",
+            "description": "Четыре загадочных личности делятся историями, за много лет услышанными в Гнездовье — тайном месте, где встречаются птицеобразные Часы.",
+            "label": "Инаам, Капигигинлюпир, Гарки, Криппис"
+        },
+        {
+            "id": "voyagesfofucine",
+            "description": "Невероятные приключения мореплавателя поздней финикийской эры. За минувшие тысячелетия текст неоднократно запрещался, поскольку прочитавшие его бесследно исчезали.",
+            "label": "Путешествия Ферниншуна Ореольского"
+        },
+        {
+            "id": "scarskyfucine",
+            "description": "Нину, чья рука вывела эти строки, позже пришлось пожалеть о написанном.",
+            "label": "Небесный шрам"
+        }
+    ]
+}

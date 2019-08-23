@@ -1,299 +1,100 @@
-﻿{
-recipes: [
-	{
-		mutations: 
-		[
-			{
-				level: "-1",
-				filter: "fascination",
-				mutate: "poison.fascination.longlesson",
-			},
-		],
-		craftable: "true",
-		comment: "NEW",
-		warmup: "10",
-		label: "An Enemy Ever Vigilant",
-		startdescription: "Our enemy has learnt from my dreams.",
-		id: "dream.poison.fascination.longlesson.trap",
-		actionId: "dream",
-		effects: 
-		{
-			long.lesson.dreamwork: "1",
-		},
-		requirements: 
-		{
-			fascination: "1",
-			poison.fascination.longlesson: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			health: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Ранняя ночь",
-		startdescription: "Если повезёт, сон освежит меня. [Иногда такой сон приносит Довольство. Часто — ничего.]",
-		id: "dreamhealth",
-		actionId: "dream",
-		description: "Иногда я вижу сны о высокой женщине в робе песочного цвета. Она стоит у ног моего ложа, смотрит, как я сплю, и улыбается. В этом сне она поворачивает голову по-птичьи быстро, её пальцы скрючены как когти. Вряд ли она была в моём сне этой ночью. Иначе не получилось бы выспаться так крепко.",
-		effects: 
-		{
-			fleeting: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "dreamhealthdread",
-				chance: "10",
-			},
-			{
-				id: "dreamhealthfascination",
-				chance: "10",
-			},
-			{
-				id: "dreamhealthcontentment",
-				chance: "30",
-			},
-			{
-				id: "dream_router",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "dreamhealthcontentment",
-		craftable: "false",
-		effects: 
-		{
-			contentment: "1",
-		},
-		description: "Сон — широкий тёмный океан, но иногда на его дальнем берегу меня ждёт тёплый жёлтый свет.",
-		label: "Ранняя ночь",
-		actionId: "dream",
-	},
-	{
-		id: "dreamhealthdread",
-		craftable: "false",
-		effects: 
-		{
-			dread: "1",
-		},
-		description: "In the land of the two rivers, in the days of Rimush and of Naram-Sin, there were stories told of a howling woman who devoured the children of other mothers. Last night there was a howling in my dreams.",
-		label: "An Early Night",
-		actionId: "dream",
-	},
-	{
-		id: "dreamhealthfascination",
-		craftable: "false",
-		effects: 
-		{
-			fascination: "1",
-		},
-		description: "Imagine a box of mirrors, where each mirror contains a sweeter light. Now imagine that in the seventh mirror there is only an ordinary dawn, an ordinary bed, the dull beginnings of an ordinary day. Imagine that, and long for light.",
-		label: "An Early Night",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			funds: "1",
-			hunger: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		aspects: 
-		{
-			restorehealth: "1",
-		},
-		label: "Восстановление сил",
-		startdescription: "Мне долго не хватало еды. Стоит питаться с осторожностью.",
-		id: "recoverhunger",
-		actionId: "dream",
-		description: "Силы возвращаются. Клубящаяся тьма в уголках зрения отступила.",
-		effects: 
-		{
-			funds: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			fatigue: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		aspects: 
-		{
-			restorehealth: "1",
-		},
-		label: "Отдых при усталости",
-		startdescription: "Немного времени, чтобы восстановить силы.",
-		id: "recoverfatigue",
-		description: "Мне лучше.",
-		actionId: "dream",
-	},
-	{
-		requirements: 
-		{
-			apostlegrail.pillar2.dormant: "1",
-			apostlegrail.pillarfuel: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "10",
-		label: "The Dream of the End",
-		startdescription: "I consume the little vial of blood, lie back, close my eyes. Tomorrow, I will be stronger.",
-		id: "recover.apostlegrail.pillar2",
-		actionId: "dream",
-		description: "I am much recovered - more than that - I am sumptuous. The sclera of my eyes, the veins in my wrists, are aswim with gorgeous serums. When the Vitulation comes, I will be the centre-piece, for our Delight to prove their appetite, to enact the Grail.",
-		effects: 
-		{
-			fascination: "1",
-			apostlegrail.pillar2.dormant: "-1",
-			apostlegrail.pillar2: "1",
-			apostlegrail.pillarfuel: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			funds: "1",
-			illhealth: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			restorehealth: "1",
-		},
-		label: "Лечение",
-		startdescription: "Лекарство темно и горько как смола. Несложно заподозрить, что я принимаю яд.",
-		id: "recoverillhealthfunds",
-		actionId: "dream",
-		description: "Палата тесна и воздух в ней спёрт. Пора вставать.",
-		effects: 
-		{
-			funds: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vitality: "1",
-			illhealth: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		aspects: 
-		{
-			restorehealth: "1",
-		},
-		label: "Лечение",
-		startdescription: "Теперь мне нужно только время.",
-		id: "recoverillhealthfundsvitality",
-		actionId: "dream",
-		description: "Палата тесна и воздух в ней спёрт. Пора вставать.",
-		effects: 
-		{
-			vitality: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			contentment: "1",
-			dread: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Ясность мысли",
-		startdescription: "Я помню, что раньше было иначе.",
-		id: "reducedread",
-		actionId: "dream",
-		description: "Солнце ещё движется. Ветер ещё дует. Мои дневники — нить в лабиринте.",
-		effects: 
-		{
-			contentment: "-1",
-			dread: "-1",
-			fleeting: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			fascination: "1",
-			dread: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Самообладание",
-		startdescription: ".",
-		id: "reducefascination",
-		actionId: "dream",
-		description: "Воздух сгустился. Я снова дома, в этой мирской плоти. Возможно, так лучше.",
-		effects: 
-		{
-			fascination: "-1",
-			dread: "-1",
-			fleeting: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			fascination: "1",
-			fleeting: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Composure",
-		startdescription: ".",
-		id: "reducefascinationfleeting",
-		actionId: "dream",
-		description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
-		effects: 
-		{
-			fascination: "-1",
-			fleeting: "-1",
-		},
-	},
-	{
-		requirements: 
-		{
-			funds: "1",
-		},
-		craftable: "true",
-		warmup: "30",
-		label: "Купить настойку опия",
-		startdescription: "В особенно мрачные времена я могу посетить сдержанного фармацевта, купить у него настойку опия и подсластить свои сны. Но только в особенно мрачные времена. [Это дорогой и ненадёжный способ достичь Довольства. Он может привести к болезни или отчаянию.]",
-		id: "dreamfunds",
-		actionId: "dream",
-		description: "О, совершенный глубокий покой. Но мне не стоит сворачивать на эту тропу",
-		effects: 
-		{
-			contentment: "1",
-			funds: "-1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "grailinduction",
-				chance: "30",
-				additional: "true",
-			},
-			{
-				id: "despairrisk",
-				chance: "10",
-				additional: "true",
-			},
-			{
-				id: "sickness",
-				chance: "10",
-				additional: "true",
-			},
-		],
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "dream.poison.fascination.longlesson.trap",
+            "startdescription": "Мои сны навели нашего врага на мысль.",
+            "label": "Враг не теряет бдительности"
+        },
+        {
+            "id": "dreamhealth",
+            "description": "Порой мне снится высокая женщина в песочном плаще — она стоит у моих ног и, улыбаясь, смотрит, как я сплю. Ее голова поворачивается очень быстро, как будто у птицы, а пальцы сжимаются и разжимаются, подобно когтям. Кажется, прошлой ночью она не приходила. Иначе мой сон не был бы таким крепким и спокойным.",
+            "startdescription": "Если повезет, долгий сон придаст мне сил. [Иногда можно обрести безмятежность. Чаще всего вы не получите ничего, а порой вас ждет ужас или фиксация.]",
+            "label": "Пораньше в постель"
+        },
+        {
+            "id": "dreamhealthcontentment",
+            "description": "Сон подобен бесконечному черному океану, но порой у дальнего берега моряка встречает огонь светильника.",
+            "label": "Пораньше в постель"
+        },
+        {
+            "id": "dreamhealthdread",
+            "description": "В долине двух рек, во времена Римуша и Нарам-Син, ходили рассказы о завывающей женщине, которая пожирает чужих детей. Прошлой ночью в моих снах слышались завывания.",
+            "label": "Пораньше в постель"
+        },
+        {
+            "id": "dreamhealthfascination",
+            "description": "Представьте коробочку с зеркалами, каждое из которых хранит все более соблазнительный свет. А теперь представьте, что седьмое зеркало отражает обыкновенный рассвет, обыкновенную кровать и обыкновенное начало скучного дня. Представьте это — и стремитесь к свету.",
+            "label": "Пораньше в постель"
+        },
+        {
+            "id": "recoverhunger",
+            "description": "Ко мне вернулись силы. По краям поля зрения больше не собирается темнота.",
+            "startdescription": "Мне пришлось поголодать. Нельзя сразу наедаться до отвала.",
+            "label": "Восстановить силы"
+        },
+        {
+            "id": "recoverfatigue",
+            "description": "Мне стало гораздо лучше.",
+            "startdescription": "Мне нужно время, чтобы восстановиться.",
+            "label": "Поспать, чтобы избавиться от слабости"
+        },
+        {
+            "id": "recover.apostlegrail.pillar2",
+            "description": "Я чувствую себя куда лучше — и даже более того, я чувствую себя просто великолепно. Белки моих глаз, вены на запястьях — все напитано живительным ликвором. Когда придет время Экзальтации, я буду главным блюдом, я брошу вызов Отраде, я оживлю Чашу.",
+            "startdescription": "Я выпиваю склянку крови, откидываюсь на подушки и закрываю глаза. Завтра я стану гораздо сильнее.",
+            "label": "Сон о Конце"
+        },
+        {
+            "id": "recoverillhealthfunds",
+            "description": "Комната, где я лежу, начинает казаться тесной и душной. Пора вставать.",
+            "startdescription": "Я выпиваю лекарство — темное и горькое, все равно что дёготь. Можно даже заподозрить, что меня пытаются отравить.",
+            "label": "Исцеление"
+        },
+        {
+            "id": "recoverillhealthfundsvitality",
+            "description": "Комната, где я лежу, начинает казаться тесной и душной. Пора вставать.",
+            "startdescription": "Теперь нужно только время.",
+            "label": "Исцеление"
+        },
+        {
+            "id": "reducedread",
+            "description": "Солнце все так же бродит по небу. Ветер все также гуляет по свету. Мои дневники — вот ключ к лабиринту.",
+            "startdescription": "Я знаю, что во мне что-то изменилось.",
+            "label": "Очистить разум"
+        },
+        {
+            "id": "reducefascination",
+            "description": "Воздух застыл. Я снова дома, в этом вульгарном теле. Может, это и к лучшему.",
+            "startdescription": ".",
+            "label": "Уравновешенность"
+        },
+        {
+            "id": "reducefascinationfleeting",
+            "description": "Воздух застыл. Я снова дома, в этом вульгарном теле. Может, это и к лучшему.",
+            "startdescription": ".",
+            "label": "Уравновешенность"
+        },
+        {
+            "id": "dreamfunds",
+            "description": "О, этот глубочайший покой... Однако в следующий раз будет лучше воздержаться.",
+            "startdescription": "В самые отчаянные времена я отправляюсь к одному неприметному аптекарю и приобретаю у него вытяжку опиума, которая придает снам особую сладость. Но только в самые отчаянные времена. [Это рискованный и дорогостоящий способ обрести безмятежность. Он может спровоцировать болезнь или отчаяние.]",
+            "label": "Приобрести вытяжку опиума."
+        },
+        {
+            "id": "dream.decrepitude",
+            "startdescription": "Моя душа упорно возвращается в слабеющее тело, точно призрачный огонек на болото. Биение сердца замедляется, и однажды придет день, когда оно остановится. Возможно, есть какие-то экзотические вещества, которые восстановили бы утраченные силы? Однако, боюсь, это маловероятно.",
+            "label": "Отчаянные меры"
+        },
+        {
+            "id": "dream.decrepitude.ingredientheartf",
+            "description": "Святой Януарий открыл дверь годов и дверь агоний, и через эти двойные врата бегут теперь боль и история.",
+            "startdescription": "Стоит мне ощутить слабый, ржавый аромат крови, как моё сердце взмывает куда-то вверх, и меня пронзает боль, как от внезапной зари.",
+            "label": "Оживание Януария"
+        },
+        {
+            "label": "Не более чем странный вкус",
+            "startdescription": "Моё сердце продолжает прихрамывать. Этот опыт не принес мне ничего ценного — разве что дорого доставшееся знание.",
+            "id": "dream.decrepitude.failure"
+        }
+    ]
 }

@@ -1,14 +1,14 @@
-﻿{"elements":
-    [
-			  
-	{id: "legacyphysicianjob",
-	description: "Сегодня возвращаюсь к работе.",
-	label: "Место в Институте",
-	aspects:{job:1}},
-	
-		{id: "legacyphysiciannotes",
-	description: "Мои личные заметки о мрачном угасании пациента. #PREVIOUSCHARACTERNAME# — я хорошо помню это имя. Чем дальше я продвигаюсь, тем сильнее портится мой почерк.",
-	label: "Заметки о пациенте: #PREVIOUSCHARACTERNAME#",
-	aspects:{text:1}},
-]
-};
+{
+    "elements": [
+        {
+            "label": "Сотрудник клиники",
+            "description": "Сегодня я возвращаюсь к работе. ",
+            "id": "legacyphysicianjob"
+        },
+        {
+            "label": "Записи о деле человека по имени #PREVIOUSCHARACTERNAME#",
+            "description": "Записанное моей собственной рукой свидетельство мрачного падения человека по имени #PREVIOUSCHARACTERNAME#. Чем дальше, тем неровнее становится почерк.",
+            "id": "legacyphysiciannotes"
+        }
+    ]
+}

@@ -1,819 +1,365 @@
-﻿{
-elements: [
-	{
-		id: "skillhealtha",
-		aspects: 
-		{
-			healthskill: "1",
-			ability: "1",
-		},
-		description: "Упражнения были мне полезны. [Используйте это с четырьмя картами Бодрости, чтобы набраться Здоровья.]",
-		slots: 
-		[
-			{
-				id: "Health",
-				required: 
-				{
-					health: "1",
-				},
-				description: "Мне надо приложить к этому усилия.",
-				label: "Здоровье",
-				actionId: "work",
-			},
-			{
-				id: "V1",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Не пора ли стать сильнее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V2",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Не пора ли стать сильнее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-		],
-		label: "Навык: сильное тело",
-		xtriggers: 
-		{
-			careeradvancement: "skillhealthb",
-		},
-	},
-	{
-		id: "skillhealthb",
-		aspects: 
-		{
-			healthskill: "2",
-			ability: "1",
-		},
-		description: "По силе я сравнюсь с кузнецом или солдатом.",
-		slots: 
-		[
-			{
-				id: "Health",
-				required: 
-				{
-					health: "1",
-				},
-				description: "Мне надо приложить к этому усилия.",
-				label: "Здоровье",
-				actionId: "work",
-			},
-			{
-				id: "V1",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Нужно ли быть ещё сильнее? [Используйте это с шестью картами Бодрости, чтобы набраться Здоровья.]",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V2",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Нужно ли быть ещё сильнее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V3",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Нужно ли быть ещё сильнее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-		],
-		label: "Навык: могучее тело",
-		xtriggers: 
-		{
-			careeradvancement: "skillhealthc",
-		},
-	},
-	{
-		id: "skillhealthc",
-		aspects: 
-		{
-			healthskill: "3",
-			ability: "1",
-		},
-		description: "Мало что уцелеет в хватке моих ладоней.",
-		slots: 
-		[
-			{
-				id: "Health",
-				required: 
-				{
-					health: "1",
-				},
-				description: "Мне надо приложить к этому усилия.",
-				label: "Здоровье",
-				actionId: "work",
-			},
-			{
-				id: "specialisation",
-				required: 
-				{
-					lore: "1",
-				},
-				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between strength and grace.",
-				comment: "NEW",
-				label: "Something More",
-				actionId: "study",
-			},
-			{
-				id: "V1",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Могу ли я стать ещё здоровее? [Используйте это с восемью картами Бодрости, чтобы набраться Здоровья.]",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V2",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Могу ли я стать ещё здоровее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V3",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Могу ли я стать ещё здоровее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-			{
-				id: "V4",
-				required: 
-				{
-					vitalityplus: "1",
-				},
-				description: "Могу ли я стать ещё здоровее?",
-				consumes: "true",
-				label: "Бодрость",
-				actionId: "study",
-			},
-		],
-		label: "Навык: стальное тело",
-	},
-	{
-		id: "skillhealthd_strength",
-		aspects: 
-		{
-			healthskill: "4",
-			ability: "1",
-			murderskill: "1",
-		},
-		description: "I move like a mountain and strike like the sky. 'To master others is strength. To master yourself is power.' [Health and Skill can increase no further.]",
-		slots: 
-		[
-			{
-				id: "Health",
-				required: 
-				{
-					health: "1",
-				},
-				description: "I must devote my energies to this.",
-				actionId: "work",
-			},
-		],
-		comment: "NEW",
-		label: "Skill: a Matchless Physique",
-	},
-	{
-		id: "skillhealthd_grace",
-		aspects: 
-		{
-			healthskill: "4",
-			ability: "1",
-		},
-		description: "Machine perfection. Sinew-bound ivory, tight in satin skin. 'From here, I can only deteriorate.' [Health and Skill can increase no further.]",
-		slots: 
-		[
-			{
-				id: "Health",
-				required: 
-				{
-					health: "1",
-				},
-				description: "I must devote my energies to this.",
-				actionId: "work",
-			},
-		],
-		comment: "NEW",
-		label: "Skill: a Flawless Physique",
-	},
-	{
-		id: "skillreasona",
-		aspects: 
-		{
-			reasonskill: "1",
-			ability: "1",
-		},
-		description: "Я знаю множество умных цитат. [Используйте это с четырьмя картами Размышления, чтобы набраться Разума.]",
-		slots: 
-		[
-			{
-				id: "e1",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Следует ли пополнить разум знанием?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e2",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Следует ли пополнить разум знанием?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-		],
-		label: "Навык: учёность",
-		xtriggers: 
-		{
-			careeradvancement: "skillreasonb",
-		},
-	},
-	{
-		id: "skillreasonb",
-		aspects: 
-		{
-			reasonskill: "2",
-			ability: "1",
-		},
-		description: "Я знаю достаточно, чтобы знать, насколько мало я знаю. [Используйте это с шестью картами Размышления, чтобы набраться Разума.]",
-		slots: 
-		[
-			{
-				id: "e1",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Возможно ли выучить ещё больше?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e2",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Возможно ли выучить ещё больше?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e3",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Возможно ли выучить ещё больше?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-		],
-		label: "Навык: большая учёность",
-		xtriggers: 
-		{
-			careeradvancement: "skillreasonc",
-		},
-	},
-	{
-		id: "skillreasonc",
-		aspects: 
-		{
-			reasonskill: "3",
-			ability: "1",
-		},
-		description: "Мой череп расходится по швам от собранного знания. [Используйте это с восемью картами Размышления, чтобы набраться Разума.]",
-		slots: 
-		[
-			{
-				id: "specialisation",
-				required: 
-				{
-					lore: "1",
-				},
-				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between illumination and concentration.",
-				comment: "NEW",
-				label: "Something More",
-				actionId: "study",
-			},
-			{
-				id: "e1",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Могу ли я острее отточить разум?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e2",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Могу ли я острее отточить разум?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e3",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Могу ли я острее отточить разум?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-			{
-				id: "e4",
-				required: 
-				{
-					eruditionplus: "1",
-				},
-				description: "Могу ли я острее отточить разум?",
-				consumes: "true",
-				label: "Размышление",
-				actionId: "study",
-			},
-		],
-		label: "Навык: глубокая учёность",
-	},
-	{
-		id: "skillreasond_illumination",
-		aspects: 
-		{
-			reasonskill: "4",
-			ability: "1",
-		},
-		description: "My mind is glass, and my memory light. [Reason and Skill can increase no further.]",
-		icon: "skillreasonc",
-		comment: "NEW",
-		label: "Skill: a Rarefied Mind",
-	},
-	{
-		id: "skillreasond_concentration",
-		aspects: 
-		{
-			reasonskill: "4",
-			ability: "1",
-		},
-		description: "This chilly stillness is the stillness of certainty. [Reason and Skill can increase no further.]",
-		icon: "skillreasonc",
-		comment: "NEW",
-		label: "Skill: a Silent Intensity",
-	},
-	{
-		id: "skillpassiona",
-		aspects: 
-		{
-			passionskill: "1",
-			ability: "1",
-		},
-		description: "Мои фантазии иногда ярче снов. [Примените этот навык в Труде и Рисуйте, либо Изучите это с четырьмя картами Мечтаний, чтобы набраться Страсти.]",
-		slots: 
-		[
-			{
-				id: "G1",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Не пора ли подкрепить мои страсти?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G2",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Не пора ли подкрепить мои страсти?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "painting1",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting2",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-		],
-		label: "Навык: живое воображение",
-		xtriggers: 
-		{
-			careeradvancement: "skillpassionb",
-		},
-	},
-	{
-		id: "skillpassionb",
-		aspects: 
-		{
-			passionskill: "2",
-			ability: "1",
-		},
-		description: "Как известно, я ломаю по шесть карандашей в день. [Примените этот навык в Труде и Рисуйте, либо Изучите это с шестью картами Мечтаний, чтобы набраться Страсти.]",
-		slots: 
-		[
-			{
-				id: "G1",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Что ещё не вижу и чего достигну? [Изучите это с шестью картами Мечтаний, чтобы набраться Страсти.]",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G2",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Что ещё не вижу и чего достигну?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G3",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Что ещё не вижу и чего достигну?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "painting1",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting2",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting3",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-		],
-		label: "Навык: яркое воображение",
-		xtriggers: 
-		{
-			careeradvancement: "skillpassionc",
-		},
-	},
-	{
-		id: "skillpassionc",
-		aspects: 
-		{
-			passionskill: "3",
-			ability: "1",
-		},
-		description: "Фантазии гонят меня при свете дня. [Изучите это с восемью Мечтаниями, чтобы набраться Страсти.]",
-		slots: 
-		[
-			{
-				id: "specialisation",
-				required: 
-				{
-					lore: "1",
-				},
-				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between unreason and folly.",
-				comment: "NEW",
-				label: "Something More",
-				actionId: "study",
-			},
-			{
-				id: "G1",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Какие неистовые видения ещё узрю? [Примените этот навык в Труде и Рисуйте, либо Изучите это с восемью картами Мечтаний, чтобы набраться Страсти.]",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G2",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Какие неистовые видения ещё узрю?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G3",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Какие неистовые видения ещё узрю?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "G4",
-				required: 
-				{
-					glimmeringplus: "1",
-				},
-				description: "Какие неистовые видения ещё узрю?",
-				consumes: "true",
-				label: "Мечтание",
-				actionId: "study",
-			},
-			{
-				id: "painting1",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting2",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting3",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting4",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				comment: "NEW",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-		],
-		label: "Навык: пламенное воображение",
-	},
-	{
-		id: "skillpassiond_unreason",
-		icon: "skillpassionc",
-		aspects: 
-		{
-			passionskill: "4",
-			ability: "1",
-		},
-		description: "The more, the more, the more, the m - [Passion and Skill can increase no further.]",
-		slots: 
-		[
-			{
-				id: "painting1",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting2",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting3",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting4",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-		],
-		comment: "NEW",
-		label: "Skill: Never-No",
-	},
-	{
-		id: "skillpassiond_folly",
-		icon: "skillpassionc",
-		aspects: 
-		{
-			passionskill: "4",
-			ability: "1",
-		},
-		description: "'Behold, they stand at my door and knock; if I hear any voice, I will open the door, and they will come in to me, and sup with them, and they with me.' [Passion and Skill can increase no further.]",
-		slots: 
-		[
-			{
-				id: "painting1",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting2",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting3",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-			{
-				id: "painting4",
-				required: 
-				{
-					mystique: "1",
-					passion: "1",
-					notoriety: "1",
-				},
-				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
-				label: "Art or Bread",
-				actionId: "work",
-			},
-		],
-		comment: "NEW",
-		label: "Skill: an Open Soul",
-	},
-]
+{
+    "elements": [
+        {
+            "id": "skillhealtha",
+            "description": "Упражнения пошли мне на пользу. [С двумя извлечёнными уроками принесёт больше здоровья.]",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "description": "Ради этого надо приложить усилия.",
+                    "id": "Health"
+                },
+                {
+                    "id": "V1",
+                    "description": "Могу ли я стать сильнее?",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V2",
+                    "description": "Могу ли я стать сильнее?",
+                    "label": "Извлечённый урок"
+                }
+            ],
+            "label": "Навык: сильное тело"
+        },
+        {
+            "id": "skillhealthb",
+            "description": "You might not know it to look at me, but I have grown strong as a smith or a soldier. [Use this with three Lessons Learnt to gain more Здоровье.]",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "description": "Ради этого надо приложить усилия.",
+                    "id": "Health"
+                },
+                {
+                    "id": "V1",
+                    "description": "Пора ли мне стать сильнее?[Use this with three Lessons Learnt  to gain more Здоровье.]",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V2",
+                    "description": "Пора ли мне стать сильнее?",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V3",
+                    "description": "Shall I grow stronger yet?",
+                    "label": "Извлечённый урок"
+                }
+            ],
+            "label": "Навык: закалённое тело"
+        },
+        {
+            "label": "Навык: стальное тело",
+            "description": "There are many things now that I could crush in my fists. [Use this with four Lessons Learnt to gain more Здоровье.]",
+            "id": "skillhealthc",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "description": "Ради этого надо приложить усилия.",
+                    "id": "Health"
+                },
+                {
+                    "id": "specialisation",
+                    "description": "С нужными знаниями я могу достичь ещё больших высот при помощи незримых искусств. Мне предстоит выбрать между силой и изяществом.",
+                    "label": "Нечто большее"
+                },
+                {
+                    "id": "V1",
+                    "description": "Могу ли я стать ещё выносливее? [Use this with four Lessons Learnt to gain more Здоровье.]",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V2",
+                    "description": "Могу ли я стать ещё выносливее?",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V3",
+                    "description": "Could I grow healthier still?",
+                    "label": "Извлечённый урок"
+                },
+                {
+                    "id": "V4",
+                    "description": "Could I grow healthier still?",
+                    "label": "A Lesson Learnt"
+                }
+            ]
+        },
+        {
+            "label": "Навык: несравненное тело",
+            "description": "Я напоминаю скалу, а мои удары обладают силой небес. «Сильные повелевают другими. Могущественные повелевают собой». [Здоровье и навык достигли максимума.]",
+            "id": "skillhealthd_strength",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "description": "Ради этого надо приложить усилия.",
+                    "id": "Health"
+                }
+            ]
+        },
+        {
+            "label": "Навык: безупречное тело",
+            "description": "Атласная кожа плотно обтягивает сухожилия, скрепляющие кости. «Это вершина, и путь с неё только один — вниз». [Здоровье и навык достигли максимума.]",
+            "id": "skillhealthd_grace",
+            "slots": [
+                {
+                    "label": "Health",
+                    "description": "Ради этого надо приложить усилия.",
+                    "id": "Health"
+                }
+            ]
+        },
+        {
+            "id": "skillreasona",
+            "description": "Я так и сыплю умными изречениями. [С двумя извлечёнными уроками принесёт больше разума.]",
+            "slots": [
+                {
+                    "id": "e1",
+                    "description": "Стоит ли мне напитать разум знаниями?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e2",
+                    "description": "Стоит ли мне напитать разум знаниями?",
+                    "label": "A Lesson Learnt"
+                }
+            ],
+            "label": "Навык: учёность"
+        },
+        {
+            "id": "skillreasonb",
+            "description": "Я знаю достаточно, чтобы понимать, как мало я знаю. [С тремя извлечёнными уроками принесёт больше разума.]",
+            "slots": [
+                {
+                    "id": "e1",
+                    "description": "Могу ли я узнать ещё больше?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e2",
+                    "description": "Могу ли я узнать ещё больше?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e3",
+                    "description": "Could I learn even more?",
+                    "label": "A Lesson Learnt"
+                }
+            ],
+            "label": "Навык: заметная учёность"
+        },
+        {
+            "label": "Навык: выдающаяся учёность",
+            "description": "Мой череп трещит от переполняющих его знаний. [С четырьмя извлечёнными уроками принесёт больше разума.]",
+            "id": "skillreasonc",
+            "slots": [
+                {
+                    "id": "specialisation",
+                    "description": "С нужными знаниями я могу достичь ещё больших высот при помощи незримых искусств. Мне предстоит выбрать между просвещением и сосредоточенностью.",
+                    "label": "Нечто большее"
+                },
+                {
+                    "id": "e1",
+                    "description": "Могу ли я ещё острее отточить свой ум?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e2",
+                    "description": "Могу ли я ещё острее отточить свой ум?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e3",
+                    "description": "Can I sharpen my reason further?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "e4",
+                    "description": "Can I sharpen my reason further?",
+                    "label": "A Lesson Learnt"
+                }
+            ]
+        },
+        {
+            "label": "Навык: утончённый ум",
+            "description": "Мой разум — стекло, моя память — свет. [Разум и навык достигли максимума.]",
+            "id": "skillreasond_illumination"
+        },
+        {
+            "label": "Навык: тихое напряжение",
+            "description": "Эта зябкая тишина говорит об уверенности. [Разум и навык достигли максимума.]",
+            "id": "skillreasond_concentration"
+        },
+        {
+            "id": "skillpassiona",
+            "description": "Мои фантазии иногда даже ярче снов. [С действием «Труд» позволяет рисовать. С действием «Изучить» и двумя извлечёнными уроками принесёт эмоции.]",
+            "slots": [
+                {
+                    "id": "G1",
+                    "description": "Нужно ли мне снова подпитать эмоции?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G2",
+                    "description": "Нужно ли мне снова подпитать эмоции?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание.",
+                    "id": "painting1"
+                },
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание.",
+                    "id": "painting2"
+                }
+            ],
+            "label": "Навык: богатое воображение"
+        },
+        {
+            "id": "skillpassionb",
+            "description": "Известно, что я ломаю по шесть карандашей в день. [С действием «Труд» позволяет рисовать. С действием «Изучить» и тремя извлечёнными уроками принесёт эмоции.]",
+            "slots": [
+                {
+                    "id": "G1",
+                    "description": "Что могу я увидеть, чем могу я стать? [С тремя извлечёнными уроками принесёт эмоции.]",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G2",
+                    "description": "Что могу я увидеть, чем могу я стать?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G3",
+                    "description": "Что могу я увидеть, чем могу я стать?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание..",
+                    "id": "painting1"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание.",
+                    "id": "painting2"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting3"
+                }
+            ],
+            "label": "Навык: буйное воображение"
+        },
+        {
+            "label": "Навык: воспалённое воображение",
+            "description": "Призраки роятся в моём разуме наяву. [С четырьмя извлечёнными уроками принесёт эмоции.]",
+            "id": "skillpassionc",
+            "slots": [
+                {
+                    "id": "specialisation",
+                    "description": "С нужными знаниями я могу достичь ещё больших высот при помощи незримых искусств. Мне предстоит выбрать между иррациональностью и безрассудством.",
+                    "label": "Нечто большее"
+                },
+                {
+                    "id": "G1",
+                    "description": "Какие безумства я смогу увидеть? [С действием «Труд» позволяет рисовать. С действием «Изучить» и четырьмя извлечёнными уроками принесёт эмоции.]",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G2",
+                    "description": "Какие безумства я смогу увидеть?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G3",
+                    "description": "Какие безумства я смогу увидеть?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "id": "G4",
+                    "description": "Какие безумства я смогу увидеть?",
+                    "label": "A Lesson Learnt"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting1"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting2"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting3"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting4"
+                }
+            ]
+        },
+        {
+            "id": "skillpassiond_unreason",
+            "description": "Всё больше, всё больше, всё больш... [Эмоции и навык достигли максимума.]",
+            "slots": [
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting1"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting2"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting3"
+                },
+                {
+                    "label": "Art or Bread",
+                    "description": "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+                    "id": "painting4"
+                }
+            ],
+            "label": "Навык: никогда-не"
+        },
+        {
+            "id": "skillpassiond_folly",
+            "description": "«Се, стоит кто у моей двери и стучит: если слышу я голос, отворяю дверь. Кто входит ко мне, с тем я буду вечерять, и он со мною». [Эмоции и навык достигли максимума.]",
+            "slots": [
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание..",
+                    "id": "painting1"
+                },
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание.",
+                    "id": "painting2"
+                },
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание..",
+                    "id": "painting3"
+                },
+                {
+                    "label": "Искусство или хлеб",
+                    "description": "Вложив в свой труд эмоции, я буду работать продуктивнее. Если обо мне знают, можно написать картину и привлечь внимание.",
+                    "id": "painting4"
+                }
+            ],
+            "label": "Навык: душа нараспашку"
+        }
+    ]
 }

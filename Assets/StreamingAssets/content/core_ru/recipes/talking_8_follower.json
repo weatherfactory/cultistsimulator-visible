@@ -1,3378 +1,717 @@
-﻿{
-recipes: [
-	{
-		requirements: 
-		{
-			follower_wound: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Attempt the healing of a Follower",
-		startdescription: "Compassion, or convenience?",
-		id: "talktofollower_attemptheal",
-		actionId: "talk",
-		description: "I could not or would not provide medical assistance.",
-		slots: 
-		[
-			{
-				id: "Healing",
-				required: 
-				{
-					funds: "1",
-				},
-				description: "Funds will buy medicine.",
-				label: "Healing",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "talktofollower_heal",
-				chance: "100",
-			},
-		],
-	},
-	{
-		linked: 
-		[
-			{
-				id: "givescar_edge",
-				chance: "30",
-			},
-			{
-				id: "givescar_knock",
-				chance: "50",
-			},
-			{
-				id: "givescar_winter",
-				chance: "100",
-			},
-		],
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "0",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "0",
-				additive: "false",
-			},
-		],
-		effects: 
-		{
-			funds: "-1",
-		},
-		label: "Complete the healing of a Follower",
-		startdescription: "Perhaps, now, they'll survive. But there are limits to what the human body can sustain.",
-		id: "talktofollower_heal",
-		actionId: "talk",
-		requirements: 
-		{
-			funds: "1",
-		},
-	},
-	{
-		id: "givescar_edge",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_scar_edge",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "edge",
-				mutationLevel: "2",
-				additive: "true",
-			},
-		],
-		description: "The wound is healed. The scar remains. But each scar, as the scholar Shulga once observed, is a lesson.",
-		linked: 
-		[
-			{
-				id: "deathscar_edge",
-				chance: "100",
-			},
-		],
-		label: "The Lessons of Experience",
-		actionId: "talk",
-	},
-	{
-		id: "givescar_knock",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_scar_knock",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "knock",
-				mutationLevel: "2",
-				additive: "true",
-			},
-		],
-		description: "The wound is healed - as much as it will ever be. A gate of pain and possibility remains.",
-		linked: 
-		[
-			{
-				id: "deathscar_knock",
-				chance: "100",
-			},
-		],
-		label: "Pain's Gate",
-		actionId: "talk",
-	},
-	{
-		id: "givescar_winter",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_scar_winter",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "winter",
-				mutationLevel: "2",
-				additive: "true",
-			},
-		],
-		description: "The wound is healed, but this one came very close to death. Silence has touched them, like snow.",
-		linked: 
-		[
-			{
-				id: "deathscar_winter",
-				chance: "100",
-			},
-		],
-		label: "The Beginning of an Ending",
-		actionId: "talk",
-	},
-	{
-		id: "deathscar_edge",
-		aspects: 
-		{
-			killmortal: "1",
-		},
-		requirements: 
-		{
-			follower_scar_edge: "3",
-		},
-		description: "This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
-		label: "Death: a Defeat",
-		actionId: "talk",
-	},
-	{
-		id: "deathscar_knock",
-		aspects: 
-		{
-			killmortal: "1",
-		},
-		requirements: 
-		{
-			follower_scar_knock: "3",
-		},
-		description: "To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
-		label: "Death: an Opening",
-		actionId: "talk",
-	},
-	{
-		id: "deathscar_winter",
-		aspects: 
-		{
-			killmortal: "1",
-		},
-		requirements: 
-		{
-			follower_scar_winter: "3",
-		},
-		description: "The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
-		label: "Death: an Ending",
-		actionId: "talk",
-	},
-	{
-		requirements: 
-		{
-			summoned: "-1",
-			follower: "1",
-			society: "-1",
-		},
-		craftable: "true",
-		comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
-		warmup: "60",
-		label: "Обсудить с приспешниками дела культа",
-		startdescription: "Важные беседы в задымлённой комнате для переговоров. Что я хочу от моих приспешников? [Добавьте культ, чтобы отправить собеседника на дела культа; покажите врага для устранения; или обсудите иные вопросы.]",
-		id: "talktofollower",
-		actionId: "talk",
-		description: "Значит, ничего.",
-		slots: 
-		[
-			{
-				id: "Subject",
-				required: 
-				{
-					annoyance: "1",
-					ingredient: "1",
-					tool: "1",
-					society: "1",
-					hunter: "1",
-					independent: "1",
-					location: "1",
-					evidencelevel: "1",
-				},
-				description: "Наш культ, для дел культа; цель атаки; или иная тема.",
-				label: "Тема",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "talktohireling_rehire",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_givetool_router",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_cantgivetool",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationcabaret_lustsensation",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationcabaret_lustchange",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationstreetsstrange_lustenlightenment",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationauctionhouse_lustpower",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationcabaret_notinterested",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationstreetsstrange_notinterested",
-				chance: "100",
-			},
-			{
-				id: "A_talktofollower_locationauctionhouse_notinterested",
-				chance: "100",
-			},
-			{
-				id: "followeraction_repairtoollanternbcracked",
-				chance: "100",
-			},
-			{
-				id: "followeraction_repairtoollanterndcracked",
-				chance: "100",
-			},
-			{
-				id: "followeraction_repairtoollanternfcracked",
-				chance: "100",
-			},
-			{
-				id: "followeraction.repair.greatwork.sabotaged",
-				comment: "NEW",
-			},
-			{
-				id: "A_follower_settrap_independent",
-				chance: "100",
-			},
-			{
-				id: "A_follower_settrap_vault",
-				chance: "100",
-			},
-			{
-				id: "followeraction_murderhighwinter",
-				chance: "100",
-			},
-			{
-				id: "followeraction_craftworkhighforge",
-				chance: "100",
-			},
-			{
-				id: "followeraction_seducehighgrail",
-				chance: "100",
-			},
-			{
-				id: "followeraction_burglehighknock",
-				chance: "100",
-			},
-			{
-				id: "followeraction_charmhighheart",
-				chance: "100",
-			},
-			{
-				id: "followeraction_auguryhighlantern",
-				chance: "100",
-			},
-			{
-				id: "followeraction_hoodwinkhighmoth",
-				chance: "100",
-			},
-			{
-				id: "followeraction_abducthighedge",
-				chance: "100",
-			},
-			{
-				id: "followeraction_murdermidwinter",
-				chance: "100",
-			},
-			{
-				id: "followeraction_craftworkmidforge",
-				chance: "100",
-			},
-			{
-				id: "followeraction_seducemidgrail",
-				chance: "100",
-			},
-			{
-				id: "followeraction_burglemidknock",
-				chance: "100",
-			},
-			{
-				id: "followeraction_charmmidheart",
-				chance: "100",
-			},
-			{
-				id: "followeraction_augurymidlantern",
-				chance: "100",
-			},
-			{
-				id: "followeraction_hoodwinkmidmoth",
-				chance: "100",
-			},
-			{
-				id: "followeraction_abductmidedge",
-				chance: "100",
-			},
-			{
-				id: "followeraction_murderlowwinter",
-				chance: "100",
-			},
-			{
-				id: "followeraction_craftworklowforge",
-				chance: "100",
-			},
-			{
-				id: "followeraction_seducelowgrail",
-				chance: "100",
-			},
-			{
-				id: "followeraction_burglelowknock",
-				chance: "100",
-			},
-			{
-				id: "followeraction_charmlowheart",
-				chance: "100",
-			},
-			{
-				id: "followeraction_augurylowlantern",
-				chance: "100",
-			},
-			{
-				id: "followeraction_hoodwinklowmoth",
-				chance: "100",
-			},
-			{
-				id: "followeraction_abductlowedge",
-				chance: "100",
-			},
-			{
-				id: "hunterattackhighedge",
-				chance: "100",
-			},
-			{
-				id: "hunterattackmidedge",
-				chance: "100",
-			},
-			{
-				id: "hunterattacklowedge",
-				chance: "100",
-			},
-			{
-				id: "hunterattackhighwinter",
-				chance: "100",
-			},
-			{
-				id: "hunterattackmidwinter",
-				chance: "100",
-			},
-			{
-				id: "hunterattacklowwinter",
-				chance: "100",
-			},
-			{
-				id: "hunterattacknoedge",
-				chance: "100",
-			},
-			{
-				id: "annoyanceseducehighgrail",
-				chance: "100",
-			},
-			{
-				id: "annoyanceattackhighedge",
-				chance: "100",
-			},
-			{
-				id: "annoyanceseducemidgrail",
-				chance: "100",
-			},
-			{
-				id: "annoyanceattackmidedge",
-				chance: "100",
-			},
-			{
-				id: "annoyancederangemidmoth",
-				chance: "100",
-			},
-			{
-				id: "annoyanceseducelowgrail",
-				chance: "100",
-			},
-			{
-				id: "annoyanceattacklowedge",
-				chance: "100",
-			},
-			{
-				id: "annoyancederangelowmoth",
-				chance: "100",
-			},
-			{
-				id: "annoyanceattacknoedge",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroymidmoth",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroylowmoth",
-				chance: "100",
-			},
-			{
-				id: "evidencedestroynomoth",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			funds: "1",
-			hireling: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		aspects: 
-		{
-			hiring: "1",
-		},
-		label: "Предложить наёмнику ещё один платёж.",
-		startdescription: "Я могу добавить Средства и продлить верность этого наёмника.",
-		id: "talktohireling_rehire",
-		actionId: "talk",
-		description: "«Хорошо. На тех же условиях».",
-		effects: 
-		{
-			funds: "-1",
-		},
-	},
-	{
-		id: "A_talktofollower_cantgivetool",
-		startdescription: "I have already given this follower a gift. [A follower cannot receive a second gift.]",
-		requirements: 
-		{
-			summoned: "-1",
-			follower: "1",
-			tool: "1",
-			follower_honoured: "1",
-		},
-		label: "Not Wise, or Not Permitted?",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_givetool_router",
-		startdescription: "Power will pass from my hands to theirs. [This will increase a follower's relevant Aspect, but you can never reclaim the tool, nor gift them a second tool. A Gift will reduce Resentment.]",
-		requirements: 
-		{
-			summoned: "-1",
-			follower: "1",
-			greatwork: "-1",
-			tool: "1",
-			follower_honoured: "-1",
-			greatwork.sabotaged: "-1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "L_give_tool_edgeb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_edged",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_edgef",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_forgeb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_forged",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_forgef",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_grailmoth",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_grailb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_graild",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_grailf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_heartb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_heartd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_heartf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_knockb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_knockd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_knockf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_lanternb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_lanternd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_lanternf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_mothb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_mothd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_mothf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_secrethistoriesb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_secrethistoriesd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_winterb",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_winterd",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_winterf",
-				chance: "100",
-			},
-			{
-				id: "L_give_tool_other",
-				chance: "100",
-			},
-		],
-		label: "Gift a Tool to a Follower",
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_edgeb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "edge",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-		],
-		description: "Around the neck, on a length of dried tiger-sinew.",
-		requirements: 
-		{
-			tooledgeb: "1",
-		},
-		label: "A minor gift of Edge",
-		effects: 
-		{
-			tooledgeb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_edged",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "edge",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "Close to the hand, but wrapped against the touch of blood which may excite it.",
-		requirements: 
-		{
-			tooledged: "1",
-		},
-		label: "A significant gift of Edge",
-		effects: 
-		{
-			tooledged: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_edgef",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "edge",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "Buried somewhere it cannot incite rebellion.",
-		requirements: 
-		{
-			tooledgef: "1",
-		},
-		label: "A great gift of Edge",
-		effects: 
-		{
-			tooledgef: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_forgeb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "forge",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: around the neck, on a chain of fine steel links.",
-		requirements: 
-		{
-			toolforgeb: "1",
-		},
-		label: "A minor gift of Forge",
-		effects: 
-		{
-			toolforgeb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_forged",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "forge",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in a hoop of iron, fixed fast to the flesh.",
-		requirements: 
-		{
-			toolforged: "1",
-		},
-		label: "A significant gift of Forge",
-		effects: 
-		{
-			toolforged: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_forgef",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "forge",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in the lamp of a private shrine.",
-		requirements: 
-		{
-			toolforgef: "1",
-		},
-		label: "A great gift of Forge",
-		effects: 
-		{
-			toolforgef: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_grailmoth",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "grail",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "moth",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: below the neck, above the waist, in the central hollow of the chest.",
-		requirements: 
-		{
-			toolgrailmoth: "1",
-		},
-		label: "A minor gift of Grail and Moth",
-		effects: 
-		{
-			toolgrailmoth: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_grailb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "grail",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: never to be worn in daylight, and in moonlight, only with utmost caution.",
-		requirements: 
-		{
-			toolgrailb: "1",
-		},
-		label: "A minor gift of Grail",
-		effects: 
-		{
-			toolgrailb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_graild",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "grail",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: into this ring will my servant weave their own hair, for its next owner to burn.",
-		requirements: 
-		{
-			toolgraild: "1",
-		},
-		label: "A significant gift of Grail",
-		effects: 
-		{
-			toolgraild: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_grailf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "grail",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in the cellar, beside the rarer sort of wine.",
-		requirements: 
-		{
-			toolgrailf: "1",
-		},
-		label: "A great gift of Grail",
-		effects: 
-		{
-			toolgrailf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_heartb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "heart",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be carried: in a bandage-sling, like a well-behaved infant.",
-		requirements: 
-		{
-			toolheartb: "1",
-		},
-		label: "A minor gift of Heart",
-		effects: 
-		{
-			toolheartb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_heartd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "heart",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: wrapped tight, so it will not shiver untimely.",
-		requirements: 
-		{
-			toolheartd: "1",
-		},
-		label: "A significant gift of Heart",
-		effects: 
-		{
-			toolheartd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_heartf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "heart",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "To be kept: above the mantel, or before the threshold.",
-		requirements: 
-		{
-			toolheartf: "1",
-		},
-		label: "A great gift of Heart",
-		effects: 
-		{
-			toolheartf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_knockb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "knock",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: around the neck, on a length of dried serpent-gut.",
-		requirements: 
-		{
-			toolknockb: "1",
-		},
-		label: "A minor gift of Knock",
-		effects: 
-		{
-			toolknockb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_knockd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "knock",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: at the door which is not to be opened.",
-		requirements: 
-		{
-			toolknockd: "1",
-		},
-		label: "A significant gift of Knock",
-		effects: 
-		{
-			toolknockd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_knockf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "knock",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "It cannot be locked away. Keep it in the hand or beneath the tongue.",
-		requirements: 
-		{
-			toolknockf: "1",
-		},
-		label: "A great gift of Knock",
-		effects: 
-		{
-			toolknockf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_lanternb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "lantern",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: around the neck, on a twist of golden wire.",
-		requirements: 
-		{
-			toollanternb: "1",
-		},
-		label: "A minor gift of Lantern",
-		effects: 
-		{
-			toollanternb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_lanternd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "lantern",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "Wherever it's kept, it will be visible in the splintered reflections of the pupils.",
-		requirements: 
-		{
-			toollanternd: "1",
-		},
-		label: "A significant gift of Lantern",
-		effects: 
-		{
-			toollanternd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_lanternf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "lantern",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in a room without windows, to which no light is ever admitted.",
-		requirements: 
-		{
-			toollanternf: "1",
-		},
-		label: "A great gift of Lantern",
-		effects: 
-		{
-			toollanternf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_mothb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "moth",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in a clot of hair, in a bandage, in a box, in a place we visit only when we are ready.",
-		requirements: 
-		{
-			toolmothb: "1",
-		},
-		label: "A minor gift of Moth",
-		effects: 
-		{
-			toolmothb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_mothd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "moth",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: upon the blank face of a mannequin-head, always facing the wall.",
-		requirements: 
-		{
-			toolmothd: "1",
-		},
-		label: "A significant gift of Moth",
-		effects: 
-		{
-			toolmothd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_mothf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "moth",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "To be kept: in a copper bowl of water, mixed with three drops of blood and three strands of hair, freshened weekly; and an iron needle, so they may always be aligned to the North.",
-		requirements: 
-		{
-			toolmothf: "1",
-		},
-		label: "A great gift of Moth",
-		effects: 
-		{
-			toolmothf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_secrethistoriesb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "secrethistories",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "Sometimes, one object can be kept in more than one place.",
-		requirements: 
-		{
-			toolsecrethistoriesb: "1",
-		},
-		label: "A minor gift in commemoration of the Secret Histories",
-		effects: 
-		{
-			toolsecrethistoriesb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_secrethistoriesd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "secrethistories",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "To be kept: between two mirrors, beneath a light that is not to be extinguished.",
-		requirements: 
-		{
-			toolsecrethistoriesd: "1",
-		},
-		label: "A significant gift in commemoration of the Secret Histories",
-		effects: 
-		{
-			toolsecrethistoriesd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_winterb",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "winter",
-				mutationLevel: "1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "1",
-				additive: "false",
-			},
-		],
-		description: "Kept in a silent place.",
-		requirements: 
-		{
-			toolwinterb: "1",
-		},
-		label: "A minor gift of Winter",
-		effects: 
-		{
-			toolwinterb: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_winterd",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "winter",
-				mutationLevel: "2",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "2",
-				additive: "false",
-			},
-		],
-		description: "Kept in an empty place.",
-		requirements: 
-		{
-			toolwinterd: "1",
-		},
-		label: "A significant gift of Winter",
-		effects: 
-		{
-			toolwinterd: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_winterf",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "winter",
-				mutationLevel: "3",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "resentment",
-				mutationLevel: "-1",
-				additive: "true",
-			},
-			{
-				filterOnAspectId: "follower",
-				mutateAspectId: "follower_honoured",
-				mutationLevel: "3",
-				additive: "false",
-			},
-		],
-		description: "Kept in an empty, silent place.",
-		requirements: 
-		{
-			toolwinterf: "1",
-		},
-		label: "A great gift of Winter",
-		effects: 
-		{
-			toolwinterf: "-1",
-		},
-		actionId: "talk",
-	},
-	{
-		id: "L_give_tool_other",
-		description: "This is something that cannot be given away; or something that no-one would accept.",
-		label: "Not all gifts are suitable",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationcabaret_lustsensation",
-		startdescription: "@#uqrose|Rose grins. 'Thank you. I'm very fond of the Club. My brother used to take me there.'
-#uqsaliba|Saliba examines me, toe to head. He curls his fingers into the palms of his hands, into fists, and then smooths them out. 'Good,' he agrees.
-#uqvictor|Victor winks. 'Yes, let's. My sister used to like the Club. I've been looking for a chance to go back.'
-#uqviolet|Violet chuckles. The chuckle becomes a delighted cackle, which ends in coughs. She recovers, and places a finger under my chin, to look directly into my eyes. 'Oh, yes,' she says.
-#uqrenira|Renira doesn't say a word. She only stretches splendidly and rises to stalk from the room. But she sends me a long glance back over her shoulder as she goes.@",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			follower_lustsensation: "1",
-			locationcabaret: "1",
-		},
-		description: "If I'm thinking of beginning a dalliance, then really, this is the place. If I and my companion share the same sensibilities. [To begin an affair with this character, show them that your deepest desires are aligned.]",
-		linked: 
-		[
-			{
-				id: "L_talk_roseopportunity",
-				chance: "100",
-			},
-		],
-		label: "Invite them to an evening at the Ecdysis Club",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationcabaret_lustchange",
-		startdescription: "@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.
-#uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.
-#uqclovette|Clovette claps her hands. 'I thought you'd never ask!'
-#uqdorothy|Dorothy nods decisively, twice, thrice. 'It's time,' she says softly.
-#uqsylvia|Sylvia yawns. She lifts her eye-patch edge to scratch an itch in the hollow beneath. 'Ripping,' she drawls.
-#uqleo|Leo ducks his head. He glances up at me and then at the ground. 'I would be delighted,' he says, very formally, to the ground.@",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			follower_lustchange: "1",
-			locationcabaret: "1",
-		},
-		description: "My companion's breath comes short as they watch the display on the stage; not particularly when the bodies of the performers are unsheathed, but most of all when certain transformations are manifested. [To begin an affair with this character, show them that your deepest desires are aligned.]",
-		linked: 
-		[
-			{
-				id: "L_talk_roseopportunity",
-				chance: "100",
-			},
-		],
-		label: "Invite them to an evening at the Ecdysis Club",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationstreetsstrange_lustenlightenment",
-		startdescription: "@#uqauclair|Auclair elevates her face and orients her mouth into a bright, clear smile. 'Delighted,' she says.
-#uqcat|Cat lifts her teacup, drains it to the dregs, tilts the cup to study it critically. 'Why not,' she says. 'Why not indeed.'
-#uqclifton|Clifton belches and wipes his mouth. 'All bloody right,' he says approvingly.
-#uqenid|Enid looks up, directly into my eyes, a sudden dragonfly brightness. 'Yes,' she says.
-#uqneville|Neville swallows. 'Truly? Thank you. I mean, yes, of course!'
-#uqslee|For a moment Slee looks as alarmed as if I'd suggested a surgical intervention. Then he nods, earnestly. 'I wonder what will happen,' he says. @",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			locationstreetsstrange: "1",
-			follower_lustenlightenment: "1",
-		},
-		description: "The light is silver; the breeze is cool; the night's silence invites words as dark velvet invites a finger's touch. [To begin an affair with this character, show them that your deepest desires are aligned.]",
-		linked: 
-		[
-			{
-				id: "L_talk_roseopportunity",
-				chance: "100",
-			},
-		],
-		label: "Invite them for a walk in strange streets",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationauctionhouse_lustpower",
-		startdescription: "@#uqtristan|Tristan nods emphatically, without speaking.
-#uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.
-#uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on me. 'Yes, please,' he says.
-#uqlaidlaw|Laidlaw beams. 'That sounds pretty!'@",
-		requirements: 
-		{
-			follower_lustpower: "1",
-			romanticinterest: "-1",
-			locationauctionhouse: "1",
-		},
-		description: "Some prefer moonlit walks. Some prefer soft music. But there are those whose enjoy shining opulence, high company, and the soft click of the operations of power. [To begin an affair with this character, show them that your deepest desires are aligned.]",
-		linked: 
-		[
-			{
-				id: "L_talk_roseopportunity",
-				chance: "100",
-			},
-		],
-		label: "Invite them to an evening at Oriflamme's",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationcabaret_notinterested",
-		startdescription: "'I... don't think that's for me.'",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			locationcabaret: "1",
-		},
-		description: "[Your follower has no especial interest in this place.]",
-		label: "Invite them to an evening at the Ecdysis Club",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationauctionhouse_notinterested",
-		startdescription: "'I... don't think that's for me.'",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			locationauctionhouse: "1",
-		},
-		description: "[Your follower has no especial interest in this place.]",
-		label: "Invite them to an evening at Oriflamme's",
-		actionId: "talk",
-	},
-	{
-		id: "A_talktofollower_locationstreetsstrange_notinterested",
-		startdescription: "'I... don't think that's for me.'",
-		requirements: 
-		{
-			romanticinterest: "-1",
-			locationstreetsstrange: "1",
-		},
-		description: "[Your follower has no especial interest in this place.]",
-		label: "Invite them to take a walk in an uncanny place.",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_repairtoollanternbcracked",
-		startdescription: "Мы можем приступить к починке, но для покупки необходимых материалов потребуются Средства.",
-		requirements: 
-		{
-			follower: "1",
-			toollanternbcracked: "1",
-			forge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "followeraction_repairtoollanternbcracked_attempt",
-				chance: "100",
-			},
-		],
-		label: "Починить треснувший Полуденный Камень",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Починка треснувшего Полуденного Камня",
-		startdescription: "Чтобы завершить работу, требуются Средства.",
-		id: "followeraction_repairtoollanternbcracked_attempt",
-		actionId: "talk",
-		description: "У меня не получилось найти нужные мастеру материалы. Камень не восстановлен.",
-		slots: 
-		[
-			{
-				id: "Materials",
-				required: 
-				{
-					funds: "1",
-				},
-				description: "Редкие виды топлива, странные порошки",
-				label: "Материалы",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_repairtoollanternbcracked_succeed",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "followeraction_repairtoollanternbcracked_succeed",
-		startdescription: "Идёт работа над камнем.",
-		requirements: 
-		{
-			funds: "1",
-		},
-		description: "Камень цел! Он сияет вновь, как сиял раньше.",
-		effects: 
-		{
-			toollanternbcracked: "-1",
-			funds: "-1",
-			toollanternb: "1",
-		},
-		label: "Починка треснувшего Полуденного Камня",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_repairtoollanterndcracked",
-		startdescription: "Мы можем приступить к починке, но для покупки необходимых материалов потребуется как минимум бронзовая Спинтрия.",
-		requirements: 
-		{
-			follower: "1",
-			toollanterndcracked: "1",
-			forge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "followeraction_repairtoollanterndcracked_attempt",
-				chance: "100",
-			},
-		],
-		label: "Починить треснувшее Бесящее Зеркальце",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Починка треснувшего Бесящего Зеркальца",
-		startdescription: "Чтобы завершить работу, требуется Спинтрия, как минимум бронзовая.",
-		id: "followeraction_repairtoollanterndcracked_attempt",
-		actionId: "talk",
-		description: "У меня не получилось найти нужные мастеру материалы. Зеркальце не восстановлено.",
-		slots: 
-		[
-			{
-				id: "Materials",
-				required: 
-				{
-					compensationvalue: "4",
-				},
-				description: "Редкие металлы, невозможные краски",
-				label: "Материалы",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_repairtoollanterndcracked_succeed",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "followeraction_repairtoollanterndcracked_succeed",
-		startdescription: "Идёт работа над зеркалом.",
-		requirements: 
-		{
-			compensationvalue: "4",
-		},
-		description: "Зеркальце цело! Оно блестит вновь, как блестело раньше.",
-		effects: 
-		{
-			toollanterndcracked: "-1",
-			compensationvalue: "-1",
-			toollanternd: "1",
-		},
-		label: "Починка треснувшего Бесящего Зеркальца",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_repairtoollanternfcracked",
-		startdescription: "Чтобы завершить работу, требуется Спинтрия, как минимум серебряная.",
-		requirements: 
-		{
-			follower: "1",
-			forge: "1",
-			toollanternfcracked: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "followeraction_repairtoollanternfcracked_attempt",
-				chance: "100",
-			},
-		],
-		label: "Починить треснувшее Зеркало Дозорного",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Починка треснувшего Зеркала Дозорного",
-		startdescription: "Чтобы завершить работу, требуется Спинтрия, как минимум серебряная.",
-		id: "followeraction_repairtoollanternfcracked_attempt",
-		actionId: "talk",
-		description: "У меня не получилось найти нужные мастеру материалы. Зеркало не восстановлено.",
-		slots: 
-		[
-			{
-				id: "Materials",
-				required: 
-				{
-					compensationvalue: "8",
-				},
-				description: "Искристые песни, экзотические сплавы",
-				label: "Материалы",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_repairtoollanternfcracked_succeed",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "followeraction_repairtoollanternfcracked_succeed",
-		startdescription: "Идёт работа над зеркалом.",
-		requirements: 
-		{
-			compensationvalue: "8",
-		},
-		description: "Зеркало цело! Оно блестит вновь, как блестело раньше.",
-		effects: 
-		{
-			toollanternf: "1",
-			compensationvalue: "-1",
-			toollanternfcracked: "-1",
-		},
-		label: "Починка треснувшего Зеркала Дозорного",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction.repair.greatwork.sabotaged",
-		comment: "NEW",
-		startdescription: "We can begin to repair this, but it will take a Silver Spintria to purchase the necessary materials.",
-		requirements: 
-		{
-			greatwork.sabotaged: "1",
-			follower: "1",
-			forge: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "followeraction.repair.greatwork.sabotaged.attempt",
-				chance: "100",
-			},
-		],
-		label: "Repair a Sabotaged Element of the Great Work",
-		actionId: "talk",
-	},
-	{
-		comment: "NEW",
-		warmup: "30",
-		label: "Repairing a Sabotaged Element of the Great Work",
-		startdescription: "My follower needs a Silver Spintria to complete their task.",
-		id: "followeraction.repair.greatwork.sabotaged.attempt",
-		actionId: "talk",
-		description: "I couldn't provide the materials my follower needed. The Work remains imperilled.",
-		slots: 
-		[
-			{
-				id: "Materials",
-				required: 
-				{
-					compensationvalue: "8",
-				},
-				description: "Metals and mercies",
-				label: "Materials",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction.repair.greatwork.sabotaged.succeed",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "followeraction.repair.greatwork.sabotaged.succeed",
-		comment: "NEW",
-		startdescription: "My follower is at work,",
-		requirements: 
-		{
-			compensationvalue: "8",
-		},
-		description: "The Great Work will continue!",
-		aspects: 
-		{
-			sabotage.repair: "1",
-		},
-		label: "Repairing a Sabotaged Element of the Great Work",
-		actionId: "talk",
-	},
-	{
-		linked: 
-		[
-			{
-				id: "L_set_trap_router",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			summoned: "-1",
-			follower: "1",
-			independent: "1",
-		},
-		comments: "Follower requirement isn't redundant... cos we also link here from conversations with Independents.",
-		label: "Create a Snare to delay or defeat a Rival",
-		startdescription: "Rivals don't prowl the streets like Hunters. They will only meet us on neutral ground. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
-		id: "A_follower_settrap_independent",
-		actionId: "talk",
-		alternativerecipes: 
-		[
-			{
-				id: "expel_independent",
-				expulsion: 
-				{
-					filter: 
-					{
-						independent: "1",
-					},
-					limit: "1",
-				},
-				chance: "100",
-				additional: "true",
-			},
-		],
-	},
-	{
-		id: "A_follower_settrap_vault",
-		startdescription: "Rivals are cautious: they don't prowl the streets like Hunters. To defeat one, we must prepare a trap, and await our opportunity. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
-		requirements: 
-		{
-			vault: "1",
-		},
-		linked: 
-		[
-			{
-				id: "L_set_trap_router",
-				chance: "100",
-			},
-		],
-		label: "Create a Snare to delay or defeat a Rival",
-		actionId: "talk",
-	},
-	{
-		id: "L_set_trap_router",
-		effects: 
-		{
-			snare: "1",
-		},
-		linked: 
-		[
-			{
-				id: "L_settrap_highedge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_highwinter",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_highforge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_highmoth",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_midedge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_midwinter",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_midforge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_midmoth",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_lowedge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_lowwinter",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_lowforge",
-				chance: "100",
-			},
-			{
-				id: "L_settrap_lowmoth",
-				chance: "100",
-			},
-			{
-				id: "L_createsnare_rubbish",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_highedge",
-		requirements: 
-		{
-			edge: "10",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_great",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_highwinter",
-		requirements: 
-		{
-			winter: "10",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_great",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_highforge",
-		requirements: 
-		{
-			forge: "10",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_great",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_highmoth",
-		requirements: 
-		{
-			moth: "10",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_great",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_midedge",
-		requirements: 
-		{
-			edge: "7",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_good",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_midwinter",
-		requirements: 
-		{
-			winter: "7",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_good",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_midforge",
-		requirements: 
-		{
-			forge: "7",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_good",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_midmoth",
-		requirements: 
-		{
-			moth: "7",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_good",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_lowedge",
-		requirements: 
-		{
-			edge: "3",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_poor",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_lowwinter",
-		requirements: 
-		{
-			winter: "3",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_poor",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_lowforge",
-		requirements: 
-		{
-			forge: "3",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_poor",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_settrap_lowmoth",
-		requirements: 
-		{
-			moth: "3",
-		},
-		linked: 
-		[
-			{
-				id: "L_createsnare_poor",
-				chance: "100",
-			},
-		],
-		actionId: "talk",
-	},
-	{
-		id: "L_createsnare_great",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "snare",
-				mutateAspectId: "snarelevel",
-				mutationLevel: "3",
-				additive: "true",
-			},
-		],
-		warmup: "30",
-		description: "My follower has set a perilously cunning ambuscade - one that will almost certainly succeed.",
-		label: "A Perilous Snare",
-		actionId: "talk",
-	},
-	{
-		id: "L_createsnare_good",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "snare",
-				mutateAspectId: "snarelevel",
-				mutationLevel: "2",
-				additive: "true",
-			},
-		],
-		warmup: "30",
-		description: "My follower has set a cunning ambuscade - one that will likely succeed.",
-		label: "A Cunning Snare",
-		actionId: "talk",
-	},
-	{
-		id: "L_createsnare_poor",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "snare",
-				mutateAspectId: "snarelevel",
-				mutationLevel: "1",
-				additive: "true",
-			},
-		],
-		warmup: "30",
-		description: "My follower has prepared a stratagem which - with considerable luck - might defeat a rival's plans.",
-		label: "An Adequate Snare",
-		actionId: "talk",
-	},
-	{
-		id: "L_createsnare_rubbish",
-		warmup: "30",
-		description: "My follower's plan is eccentric at best and incompetent at worst, but perhaps an enemy will stumble into it.",
-		label: "A Desperate Attempt",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_abducthighedge",
-		linked: 
-		[
-			{
-				id: "followeraction_abductsuccess",
-				chance: "90",
-			},
-		],
-		startdescription: "Ассасин с лёгкостью заберёт незнакомца с улиц.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			edge: "10",
-			society: "1",
-		},
-		label: "Дела культа: похищение незнакомца",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_abductmidedge",
-		startdescription: "Адепт, вероятно, в силах похитить опрометчивую жертву.",
-		requirements: 
-		{
-			follower: "1",
-			edge: "5",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_abductsuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_abductfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: похищение незнакомца",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_abductlowedge",
-		startdescription: "Неофиту будет сложно похитить жертву, но удача может и улыбнуться.",
-		requirements: 
-		{
-			follower: "1",
-			edge: "1",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_abductsuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_abductfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: похищение незнакомца",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Попытка похищения...",
-		startdescription: "Я жду...",
-		id: "followeraction_abductsuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			randomvictim: "1",
-		},
-		description: "Миньон со мной. Живой трофей — в аккуратной упаковке.",
-		effects: 
-		{
-			funds: "1",
-			notoriety: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Попытка похищения...",
-		startdescription: "Я жду...",
-		id: "followeraction_abductfailure",
-		actionId: "talk",
-		description: "Миньон со мной, но с пустыми руками.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_abductfailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Попытка похищения...",
-		startdescription: "Я жду...",
-		id: "followeraction_abductfailure_losefollower",
-		actionId: "talk",
-		description: "Миньона нет. Я никогда не узнаю, что же произошло.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		id: "followeraction_murderhighwinter",
-		linked: 
-		[
-			{
-				id: "followeraction_murdersuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_murderfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Возвращение с трупом совершенно неизбежно.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			winter: "10",
-			society: "1",
-		},
-		label: "Дела культа: убийство незнакомца",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_murdermidwinter",
-		startdescription: "Адепт, вероятно, сможет вернуться со свежим трупом.",
-		requirements: 
-		{
-			follower: "1",
-			winter: "5",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_murdersuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_murderfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: убийство незнакомца",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_murderlowwinter",
-		startdescription: "Неофит, очень вероятно, провалится.",
-		requirements: 
-		{
-			follower: "1",
-			winter: "1",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_murdersuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_murderfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: убийство незнакомца",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Попытка убийства...",
-		startdescription: "Я жду...",
-		id: "followeraction_murdersuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			robberyrewards: "2",
-		},
-		description: "Миньон со мной, со свежим трупом и тем, что жертве принадлежало.",
-		effects: 
-		{
-			corpse: "1",
-			notoriety: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Попытка убийства...",
-		startdescription: "Я жду...",
-		id: "followeraction_murderfailure",
-		actionId: "talk",
-		description: "Миньон со мной, но с пустыми руками.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_murderfailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Попытка убийства...",
-		startdescription: "Я жду...",
-		id: "followeraction_murderfailure_losefollower",
-		actionId: "talk",
-		description: "Миньона нет. Я никогда не узнаю, что же произошло.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		id: "followeraction_craftworkhighforge",
-		linked: 
-		[
-			{
-				id: "followeraction_craftworksuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_craftworkfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Меняющие точно найдут себе место в нелегальных лабораториях и сомнительных производствах.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			forge: "10",
-			society: "1",
-		},
-		label: "Дела культа: труд мастеровых",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_craftworkmidforge",
-		startdescription: "Адепт, вероятно, найдёт заработок в нелегальных лабораториях и сомнительных производствах — но могут быть несчастные случаи.",
-		requirements: 
-		{
-			follower: "1",
-			forge: "5",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_craftworksuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_craftworkfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: труд мастеровых",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_craftworklowforge",
-		startdescription: "Неофит может найти заработок в нелегальных лабораториях и сомнительных производствах... если повезёт.",
-		requirements: 
-		{
-			follower: "1",
-			forge: "1",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_craftworksuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_craftworkfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: труд мастеровых",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_craftworksuccess",
-		startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
-		deckeffect: 
-		{
-			robberyrewards: "2",
-		},
-		description: "Миньон со мной, как и плоды труда.",
-		label: "Труд по контракту...",
-		actionId: "talk",
-		warmup: "30",
-	},
-	{
-		warmup: "30",
-		label: "Труд по контракту...",
-		startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
-		id: "followeraction_craftworkfailure",
-		actionId: "talk",
-		description: "Миньон с пустыми руками. Сегодняшние задачи были слишком сложны.",
-		effects: 
-		{
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_craftworkfailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "followeraction_craftworkfailure_losefollower",
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
-		warmup: "30",
-		description: "Произошёл несчастный случай.",
-		label: "Труд по контракту...",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_seducehighgrail",
-		linked: 
-		[
-			{
-				id: "followeraction_seducesuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_seducefailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Никто не отказывает Распутникам.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			grail: "10",
-		},
-		label: "Дела культа: соблазнение незнакомцев",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_seducemidgrail",
-		startdescription: "Адепт, вероятно, сможет заманить к нам доверчивую жертву — если найдёт слова, чтобы убедить её.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			grail: "5",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_seducesuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_seducefailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: соблазнение незнакомцев",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_seducelowgrail",
-		startdescription: "Неофит, может быть, сможет заманить к нам жертву.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			grail: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_seducesuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_seducefailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: соблазнение незнакомцев",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Попытка соблазнения...",
-		startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
-		id: "followeraction_seducesuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			randomvictim: "1",
-		},
-		description: "Миньон со мной, и рядом — жертва, покорённая наслаждением.",
-		effects: 
-		{
-			funds: "1",
-			notoriety: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Попытка соблазнения...",
-		startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
-		id: "followeraction_seducefailure",
-		actionId: "talk",
-		description: "Миньон со мной, и с пустыми руками.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_seducefailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Попытка соблазнения...",
-		startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
-		id: "followeraction_seducefailure_losefollower",
-		actionId: "talk",
-		description: "Миньона нет. Я никогда не узнаю, что же произошло.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		id: "followeraction_burglehighknock",
-		linked: 
-		[
-			{
-				id: "followeraction_burglesuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_burglefailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Мой Ключ может открыть любой замок в этом городе.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			knock: "10",
-		},
-		label: "Дела культа: кража со взломом",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_burglemidknock",
-		startdescription: "Адепт, вероятно, сможет применить свои таланты, чтобы найти трофеи в чужих домах.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			knock: "5",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_burglesuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_burglefailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: кража со взломом",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_burglelowknock",
-		startdescription: "Неофит, может быть, сумеет найти трофеи в чужих домах, если повезёт.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			knock: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_burglesuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_burglefailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: кража со взломом",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Взлом, вход, выход...",
-		startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
-		id: "followeraction_burglesuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			robberyrewards: "2",
-		},
-		description: "Миньон со мной — и с добычей.",
-		effects: 
-		{
-			funds: "1",
-			notoriety: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Взлом, вход, выход...",
-		startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
-		id: "followeraction_burglefailure",
-		actionId: "talk",
-		description: "Миньон с пустыми руками. Сегодняшние дела были слишком сложны.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_burglefailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Взлом, вход, выход...",
-		startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
-		id: "followeraction_burglefailure_losefollower",
-		actionId: "talk",
-		description: "Произошёл несчастный случай.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-	{
-		id: "followeraction_charmhighheart",
-		linked: 
-		[
-			{
-				id: "followeraction_charmsuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_charmfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Не все сочувствуют нашим целям, но Тарантеллиста знают все в округе. Если у нас есть проблемы с репутацией, Тарантеллист безусловно сгладит их.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			heart: "10",
-		},
-		label: "Дела культа: обаяние",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_charmmidheart",
-		startdescription: "Не все сочувствуют нашим целям, но если у нас есть проблемы с репутацией, наш Адепт, вероятно, сгладит их.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			heart: "5",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_charmsuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_charmfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: обаяние",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_charmlowheart",
-		startdescription: "Не все сочувствуют нашим целям, но если у нас есть проблемы с репутацией, наш Неофит, возможно, сгладит их.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			heart: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_charmsuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_charmfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: обаяние",
-		actionId: "talk",
-	},
-	{
-		effects: 
-		{
-			reputation: "-1",
-		},
-		warmup: "30",
-		label: "Искренние речи, учтивые беседы",
-		startdescription: "Правила и ожидания обыденного общества к нам неприменимы. Но, возможно, мы не будем это подчёркивать. Возможно, мы сделаем упор на обаяние и чувство юмора. На такой случай у меня уже заготовлены элегантные банальности о высших принципах нашей организации.",
-		id: "followeraction_charmsuccess",
-		actionId: "talk",
-		description: "Оптимизм — маленький, но спасительный, штрих.",
-		slots: 
-		[
-			{
-				id: "Reputation",
-				required: 
-				{
-					reputation: "1",
-				},
-				greedy: "true",
-				label: "Репутация",
-			},
-		],
-	},
-	{
-		effects: 
-		{
-			rumour: "1",
-		},
-		warmup: "30",
-		label: "Искренние речи, учтивые беседы",
-		startdescription: "Правила и ожидания обыденного общества к нам неприменимы. Но, возможно, мы не будем это подчёркивать. Возможно, мы сделаем упор на обаяние и чувство юмора. На такой случай у меня уже заготовлены элегантные банальности о высших принципах нашей организации.",
-		id: "followeraction_charmfailure",
-		actionId: "talk",
-		description: "Никто не понимает нас; или понимает слишком хорошо.",
-		slots: 
-		[
-			{
-				id: "Reputation",
-				required: 
-				{
-					reputation: "1",
-				},
-				greedy: "true",
-				label: "Репутация",
-			},
-		],
-	},
-	{
-		id: "followeraction_auguryhighlantern",
-		linked: 
-		[
-			{
-				id: "followeraction_augurysuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_auguryfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Пророк может определить времена и места, где мы сможем дотянуться до силы.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			lantern: "10",
-		},
-		label: "Дела культа: прорицание",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_augurymidlantern",
-		startdescription: "Адепт, вероятно, сможет определить времена и места, где мы сможем дотянуться до силы; но в делах Обители безопасности нет.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			lantern: "5",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_augurysuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_auguryfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: прорицание",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_augurylowlantern",
-		startdescription: "Неофит, возможно, сможет определить времена и места, где мы сможем дотянуться до силы; но в делах Обители безопасности нет.",
-		requirements: 
-		{
-			follower: "1",
-			society: "1",
-			lantern: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_augurysuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_auguryfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: прорицание",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Под кожей мира",
-		startdescription: "Часы изучения и медитации...",
-		id: "followeraction_augurysuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			randominfluencelow: "1",
-		},
-		description: "Исследователь знает ещё один путь, как совместить наш труд с великой работой Часов.",
-		effects: 
-		{
-			erudition: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Под кожей мира",
-		startdescription: "Часы изучения и медитации...",
-		id: "followeraction_auguryfailure",
-		actionId: "talk",
-		description: "Поиск завёл слишком далеко. Разум исследователя не пострадал, но свет Обители проник в мир.",
-		effects: 
-		{
-			fascination: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_auguryfailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Под кожей мира",
-		startdescription: "Часы изучения и медитации...",
-		id: "followeraction_auguryfailure_losefollower",
-		actionId: "talk",
-		description: "Поиск завёл слишком далеко. Свет Обители коснулся мира в этом месте — и рассудок исследователя растаял под ним.",
-		effects: 
-		{
-			fascination: "1",
-		},
-	},
-	{
-		id: "followeraction_hoodwinkhighmoth",
-		linked: 
-		[
-			{
-				id: "followeraction_hoodwinksuccess",
-				chance: "90",
-			},
-			{
-				id: "followeraction_hoodwinkfailure",
-				chance: "100",
-			},
-		],
-		startdescription: "Кожевенник совершенным коварством разлучит дураков с их ценностями так же легко, как нарвёт груш с дерева в саду.",
-		description: ".",
-		requirements: 
-		{
-			follower: "1",
-			moth: "10",
-			society: "1",
-		},
-		label: "Дела культа: обман",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_hoodwinkmidmoth",
-		startdescription: "Вероятно, Адепт сможет воспользоваться своими навыками, чтобы разлучить дураков с их ценностями.",
-		requirements: 
-		{
-			follower: "1",
-			moth: "5",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_hoodwinksuccess",
-				chance: "70",
-			},
-			{
-				id: "followeraction_hoodwinkfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: обман",
-		actionId: "talk",
-	},
-	{
-		id: "followeraction_hoodwinklowmoth",
-		startdescription: "Неофит, возможно, сможет разлучить дураков с их ценностями... если повезёт.",
-		requirements: 
-		{
-			follower: "1",
-			moth: "1",
-			society: "1",
-		},
-		linked: 
-		[
-			{
-				id: "followeraction_hoodwinksuccess",
-				chance: "30",
-			},
-			{
-				id: "followeraction_hoodwinkfailure",
-				chance: "100",
-			},
-		],
-		label: "Дела культа: обман",
-		actionId: "talk",
-	},
-	{
-		warmup: "30",
-		label: "Обман и заблуждение",
-		startdescription: "Приспешник обманывает, чтобы получить доход...",
-		id: "followeraction_hoodwinksuccess",
-		actionId: "talk",
-		deckeffect: 
-		{
-			robberyrewards: "2",
-		},
-		description: "Успешный обман! Вот мои трофеи.",
-		effects: 
-		{
-			funds: "1",
-			notoriety: "1",
-		},
-	},
-	{
-		warmup: "30",
-		label: "Обман и заблуждение",
-		startdescription: "Приспешник обманывает, чтобы получить доход...",
-		id: "followeraction_hoodwinkfailure",
-		actionId: "talk",
-		description: "Миньон со мной, и с пустыми руками. Коварная схема была раскрыта.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "followeraction_hoodwinkfailure_losefollower",
-				chance: "30",
-			},
-		],
-	},
-	{
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower_wound",
-				mutationLevel: "1",
-				additive: "false",
-			},
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "follower",
-				mutationLevel: "-1",
-				additive: "false",
-			},
-		],
-		warmup: "30",
-		label: "Обман и заблуждение",
-		startdescription: "Приспешник обманывает, чтобы получить доход...",
-		id: "followeraction_hoodwinkfailure_losefollower",
-		actionId: "talk",
-		description: "Миньона нет. Возможно, и это тоже всего лишь обман — чтобы подстроить собственное исчезновение.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "talktofollower_attemptheal",
+            "description": "Я не могу оказать медицинскую помощь, да и не стану.",
+            "startdescription": "Сострадание или выгода?",
+            "slots": [
+                {
+                    "label": "Лечение",
+                    "description": "На мои средства можно купить лекарства.",
+                    "id": "Healing"
+                }
+            ],
+            "label": "Попытаться вылечить последователя"
+        },
+        {
+            "id": "talktofollower_heal",
+            "startdescription": "Может, ещё и выживет. Впрочем, у человеческого тела есть пределы.",
+            "label": "Вылечить последователя"
+        },
+        {
+            "id": "givescar_edge",
+            "description": "Рана зажила. На её месте остался шрам. По словам учёного Шульги, каждый шрам — это урок.",
+            "label": "Полученный опыт"
+        },
+        {
+            "id": "givescar_knock",
+            "description": "Рана зажила настолько, насколько это возможно. Остаются лишь врата боли и возможности.",
+            "label": "Врата боли"
+        },
+        {
+            "id": "givescar_winter",
+            "description": "Рана зажила, но случай был очень тяжёлый. Тишина коснулась моего последователя, словно снег.",
+            "label": "Начало конца"
+        },
+        {
+            "id": "deathscar_edge",
+            "description": "Мы будем помнить проявленное мужество и выносливость, но также и то, что этого недостаточно.[Ваш последователь получил три шрама Грани и умер.]",
+            "label": "Смерть: поражение"
+        },
+        {
+            "id": "deathscar_knock",
+            "description": "Чтобы добиваться успеха, нужно держать свои внутренности внутри, не подпуская к ним то, что снаружи. Если часть чьих-то внутренностей оказывается снаружи, их хозяин теряет актуальность. [Ваш последователь получил три шрама Стука и умер.]",
+            "label": "Смерть: открытие"
+        },
+        {
+            "id": "deathscar_winter",
+            "description": "Год свернул на запад, к Зиме. Эти глаза уже не откроются. [Ваш последователь получил три шрама Зимы и умер.]",
+            "label": "Смерть: конец"
+        },
+        {
+            "id": "talktofollower",
+            "description": "Пожалуй, ничего.",
+            "startdescription": "Беседы о важном в переговорном зале, полном дыма. Что мне нужно от последователя? [Добавьте свой культ, чтобы отправить последователя по делам культа, отправьте его на охоту за врагами или обсудите что-нибудь другое.]",
+            "slots": [
+                {
+                    "label": "Объект",
+                    "description": "Наш культ, дела культа; цель; другая тема.",
+                    "id": "Subject"
+                }
+            ],
+            "label": "Обсудить с последователем оккультные дела"
+        },
+        {
+            "id": "talktohireling_rehire",
+            "description": "«Ну ладно. На прежних условиях».",
+            "startdescription": "Я могу заплатить за дальнейшую службу наёмника.",
+            "label": "Предложить наёмнику ещё денег."
+        },
+        {
+            "id": "talktodevotee_refire",
+            "description": "«Неужели ты так легко забываешь свои сны?»",
+            "startdescription": "Если фанатик верует не так рьяно, как раньше, можно использовать рвение, чтобы его энтузиазм не угас.",
+            "label": "Заставить фанатика уверовать"
+        },
+        {
+            "label": "Нет мудрости? Или позволения?",
+            "startdescription": "Этот последователь уже получил от меня дар. [Последователю нельзя вручить второй дар.]",
+            "id": "A_talktofollower_cantgivetool"
+        },
+        {
+            "id": "A_talktofollower_givetool_router",
+            "description": ".",
+            "startdescription": "Пусть моя сила попадёт в руки моего последователя. [Так вы усилите соответствующий аспект последователя, но не сможете забрать орудие или подарить ему ещё одно. Ваш дар уменьшит обиду последователя.]",
+            "label": "Вручить последователю орудие"
+        },
+        {
+            "id": "L_give_tool_edgeb",
+            "description": "Висит на шее, на высушенном сухожилии тигра.",
+            "label": "Малый дар Грани"
+        },
+        {
+            "id": "L_give_tool_edged",
+            "description": "Близок к ладони, но при этом завёрнут, чтобы его не коснулась кровь — иначе он может ожить.",
+            "label": "Щедрый дар Грани"
+        },
+        {
+            "id": "L_give_tool_edgef",
+            "description": "Закопан там, где точно не станет причиной восстания.",
+            "label": "Великий дар Грани"
+        },
+        {
+            "id": "L_give_tool_forgeb",
+            "description": "Инструкция: повесить на шею на стальной цепи.",
+            "label": "Малый дар Кузни"
+        },
+        {
+            "id": "L_give_tool_forged",
+            "description": "Инструкция: хранить в железном обруче, закреплённом в плоти.",
+            "label": "Щедрый дар Кузни"
+        },
+        {
+            "id": "L_give_tool_forgef",
+            "description": "Инструкция: хранить в лампаде своего алтаря.",
+            "label": "Великий дар Кузни"
+        },
+        {
+            "id": "L_give_tool_grailmoth",
+            "description": "Инструкция: хранить между шеей и пупком, во впадине, что в середине грудной клетки.",
+            "label": "Малый дар Чаши и Мотылька"
+        },
+        {
+            "id": "L_give_tool_grailb",
+            "description": "Инструкция: никогда не носить при дневном свете, а при лунном соблюдать осторожность.",
+            "label": "Малый дар Чаши"
+        },
+        {
+            "id": "L_give_tool_graild",
+            "description": "Инструкция: мой слуга вплетёт в это кольцо свои волосы, чтобы следующий хозяин кольца их сжёг.",
+            "label": "Щедрый дар Чаши"
+        },
+        {
+            "id": "L_give_tool_grailf",
+            "description": "Инструкция: хранить в погребе возле редкого вина.",
+            "label": "Великий дар Чаши"
+        },
+        {
+            "id": "L_give_tool_heartb",
+            "description": "Инструкция: носить, укутав в пелёнки, словно послушного младенца.",
+            "label": "Малый дар Сердца"
+        },
+        {
+            "id": "L_give_tool_heartd",
+            "description": "Инструкция: как следует укутать, чтобы не дрожал.",
+            "label": "Щедрый дар Сердца"
+        },
+        {
+            "id": "L_give_tool_heartf",
+            "description": "Инструкция: хранить над каминной полкой или у порога.",
+            "label": "Великий дар Сердца"
+        },
+        {
+            "id": "L_give_tool_knockb",
+            "description": "Инструкция: повесить на шею на высушенных внутренностях змея.",
+            "label": "Малый дар Стука"
+        },
+        {
+            "id": "L_give_tool_knockd",
+            "description": "Инструкция: хранить у двери, которую нельзя открывать.",
+            "label": "Щедрый дар Стука"
+        },
+        {
+            "id": "L_give_tool_knockf",
+            "description": "Инструкция: его нельзя запирать. Нужно держать в руке или положить под язык.",
+            "label": "Великий дар Стука"
+        },
+        {
+            "id": "L_give_tool_lanternb",
+            "description": "Инструкция: повесить на шею на золотой проволоке.",
+            "label": "Малый дар Лампады"
+        },
+        {
+            "id": "L_give_tool_lanternd",
+            "description": "Инструкция: где бы он ни был, он будет виден в отражениях зрачков.",
+            "label": "Щедрый дар Лампады"
+        },
+        {
+            "id": "L_give_tool_lanternf",
+            "description": "Инструкция: хранить в комнате без окон, куда не попадает свет.",
+            "label": "Великий дар Лампады"
+        },
+        {
+            "id": "L_give_tool_mothb",
+            "description": "Инструкция: хранить в спутанных волосах, в повязке, в ящике, там, куда мы приходим лишь тогда, когда готовы.",
+            "label": "Малый дар Мотылька"
+        },
+        {
+            "id": "L_give_tool_mothd",
+            "description": "Инструкция: хранить на пустом лице манекена, обращённом к стене.",
+            "label": "Щедрый дар Мотылька"
+        },
+        {
+            "id": "L_give_tool_mothf",
+            "description": "Инструкция: хранить в медной миске с водой, куда добавлены три капли крови и три пряди волос (каждую неделю следует добавлять свежие), а также положена железная игла, чтобы дар всегда смотрел на север.",
+            "label": "Великий дар Мотылька"
+        },
+        {
+            "id": "L_give_tool_secrethistoriesb",
+            "description": "Порой один и тот же предмет хранится в разных местах.",
+            "label": "Малый дар в память о Тайных историях"
+        },
+        {
+            "id": "L_give_tool_secrethistoriesd",
+            "description": "Инструкция: хранить меж двух зеркал под неугасающим светом.",
+            "label": "Щедрый дар в память о Тайных историях"
+        },
+        {
+            "id": "L_give_tool_winterb",
+            "description": "Нужно хранить там, где тихо.",
+            "label": "Малый дар Зимы"
+        },
+        {
+            "id": "L_give_tool_winterd",
+            "description": "Нужно хранить там, где пусто.",
+            "label": "Щедрый дар Зимы"
+        },
+        {
+            "id": "L_give_tool_winterf",
+            "description": "Нужно хранить там, где пусто и тихо.",
+            "label": "Великий дар Зимы"
+        },
+        {
+            "label": "Не все подарки подходят",
+            "description": "Есть то, что нельзя отдавать, и то, что не примут в дар.",
+            "id": "L_give_tool_other"
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustsensation",
+            "description": "Если мне так хочется начать интрижку, здесь для этого самое подходящее место. Если, конечно, наши пристрастия совпадают в достаточной мере. [Докажите этому персонажу, что ваши самые сокровенные желания сходятся, чтобы начать с ним отношения.]",
+            "startdescription": "@#uqrose|Rose grins. 'Thank you. I'm very fond of the Club. My brother used to take me there.'\r\n#uqsaliba|Saliba examines me, toe to head. He curls his fingers into the palms of his hands, into fists, and then smooths them out. 'Good,' he agrees.\r\n#uqvictor|Victor winks. 'Yes, let's. My sister used to like the Club. I've been looking for a chance to go back.'\r\n#uqviolet|Violet chuckles. The chuckle becomes a delighted cackle, which ends in coughs. She recovers, and places a finger under my chin, to look directly into my eyes. 'Oh, yes,' she says.\r\n#uqrenira|Renira doesn't say a word. She only stretches splendidly and rises to stalk from the room. But she sends me a long glance back over her shoulder as she goes.@",
+            "label": "Пригласить провести вечер в клубе «Экдизис»"
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_lustchange",
+            "description": "Мой спутник то и дело замирает, глядя на происходящее на сцене. Раздетые тела артистов не особенно его прельщают, чего нельзя сказать о некоторых преображениях. [Докажите этому персонажу, что ваши самые сокровенные желания сходятся, чтобы начать с ним отношения.]",
+            "startdescription": "@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.\r\n#uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.\r\n#uqclovette|Clovette claps her hands. 'I thought you'd never ask!'\r\n#uqdorothy|Dorothy nods decisively, twice, thrice. 'It's time,' she says softly.\r\n#uqsylvia|Sylvia yawns. She lifts her eye-patch edge to scratch an itch in the hollow beneath. 'Ripping,' she drawls.\r\n#uqleo|Leo ducks his head. He glances up at me and then at the ground. 'I would be delighted,' he says, very formally, to the ground.@",
+            "label": "Пригласить провести вечер в клубе «Экдизис»"
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_lustenlightenment",
+            "description": "Свет отливает серебром. Дует прохладный ветер. Тишина ночи располагает к словам, как чёрный бархат располагает к прикосновениям. [Докажите этому персонажу, что ваши самые сокровенные желания сходятся, чтобы начать с ним отношения.]",
+            "startdescription": "@#uqauclair|Auclair elevates her face and orients her mouth into a bright, clear smile. 'Delighted,' she says.\r\n#uqcat|Cat lifts her teacup, drains it to the dregs, tilts the cup to study it critically. 'Why not,' she says. 'Why not indeed.'\r\n#uqclifton|Clifton belches and wipes his mouth. 'All bloody right,' he says approvingly.\r\n#uqenid|Enid looks up, directly into my eyes, a sudden dragonfly brightness. 'Yes,' she says.\r\n#uqneville|Neville swallows. 'Truly? Thank you. I mean, yes, of course!'\r\n#uqslee|For a moment Slee looks as alarmed as if I'd suggested a surgical intervention. Then he nods, earnestly. 'I wonder what will happen,' he says. @",
+            "label": "Пригласите на прогулку по странным улицам"
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_lustpower",
+            "description": "Одним нравятся прогулки под луной, другим — тихая музыка... Но есть и те, кто обожает сияние роскоши, светское общество и едва слышные щелчки власти. [Докажите этому персонажу, что ваши самые сокровенные желания сходятся, чтобы начать с ним отношения.]",
+            "startdescription": "@#uqtristan|Tristan nods emphatically, without speaking.\r\n#uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.\r\n#uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on me. 'Yes, please,' he says.\r\n#uqlaidlaw|Laidlaw beams. 'That sounds pretty!'@",
+            "label": "Пригласить провести вечер в «Орифламме»"
+        },
+        {
+            "id": "A_talktofollower_locationcabaret_notinterested",
+            "description": "[Ваш последователь не заинтересован этим местом.]",
+            "startdescription": "«Я... я боюсь, что это не для меня».",
+            "label": "Пригласить провести вечер в клубе «Экдизис»"
+        },
+        {
+            "id": "A_talktofollower_locationauctionhouse_notinterested",
+            "description": "[Ваш последователь не заинтересован этим местом.]",
+            "startdescription": "«Я... я боюсь, что это не для меня».",
+            "label": "Пригласить провести вечер в «Орифламме»"
+        },
+        {
+            "id": "A_talktofollower_locationstreetsstrange_notinterested",
+            "description": "[Ваш последователь не заинтересован этим местом.]",
+            "startdescription": "«Я... я боюсь, что это не для меня».",
+            "label": "Пригласите последователя на прогулку в необычном месте."
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked",
+            "description": ".",
+            "startdescription": "Мы можем взяться за починку, но для приобретения нужных материалов потребуются средства.",
+            "label": "Починить треснувший полуденный камень"
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_attempt",
+            "description": "У меня не вышло снабдить последователя всем необходимым. Камень так и не удалось спасти.",
+            "startdescription": "Для задания моему последователю требуются средства.",
+            "slots": [
+                {
+                    "label": "Материалы",
+                    "description": "Редкое топливо и странные порошки",
+                    "id": "Materials"
+                }
+            ],
+            "label": "Починка треснувшего полуденного камня"
+        },
+        {
+            "id": "followeraction_repairtoollanternbcracked_succeed",
+            "description": "Камень совсем как новый! Он не утратил прежнего блеска.",
+            "startdescription": "Мой последователь занимается починкой камня.",
+            "label": "Починка треснувшего полуденного камня"
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked",
+            "description": ".",
+            "startdescription": "Мы можем взяться за починку, но для приобретения нужных материалов потребуется по меньшей мере бронзовая спинтрия.",
+            "label": "Починить треснувшее зеркало путаницы"
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_attempt",
+            "description": "У меня не вышло снабдить последователя всем необходимым. Зеркало так и не удалось спасти.",
+            "startdescription": "Для задания моему последователю требуется по меньшей мере бронзовая спинтрия.",
+            "slots": [
+                {
+                    "label": "Материалы",
+                    "description": "Редкие металлы и невероятные оттенки",
+                    "id": "Materials"
+                }
+            ],
+            "label": "Починка треснувшего зеркала путаницы"
+        },
+        {
+            "id": "followeraction_repairtoollanterndcracked_succeed",
+            "description": "Зеркало совсем как новый! Оно не утратило прежнего блеска.",
+            "startdescription": "Мой последователь занимается починкой зеркала.",
+            "label": "Починка треснувшего зеркала путаницы"
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked",
+            "description": ".",
+            "startdescription": "Мы можем взяться за починку, но для приобретения нужных материалов потребуется по меньшей мере серебряная спинтрия.",
+            "label": "Починить треснувшее зеркало Дозорного"
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_attempt",
+            "description": "У меня не вышло снабдить последователя всем необходимым. Зеркало так и не удалось спасти.",
+            "startdescription": "Для задания моему последователю требуется по меньшей мере серебряная спинтрия.",
+            "slots": [
+                {
+                    "label": "Материалы",
+                    "description": "Сверкающие песни и заморские сплавы",
+                    "id": "Materials"
+                }
+            ],
+            "label": "Починка треснувшего зеркала Дозорного"
+        },
+        {
+            "id": "followeraction_repairtoollanternfcracked_succeed",
+            "description": "Зеркало совсем как новый! Оно не утратило прежнего блеска.",
+            "startdescription": "Мой последователь занимается починкой зеркала.",
+            "label": "Починка треснувшего зеркала Дозорного"
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged",
+            "description": ".",
+            "startdescription": "Мы можем взяться за починку, но для приобретения нужных материалов потребуется серебряная спинтрия.",
+            "label": "Починить испорченный элемент Великого Дела"
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.attempt",
+            "description": "У меня не вышло снабдить последователя всем необходимым. Великое Дело остаётся под угрозой.",
+            "startdescription": "Для задания моему последователю требуется серебряная спинтрия.",
+            "slots": [
+                {
+                    "label": "Материалы",
+                    "description": "Металл и милосердие",
+                    "id": "Materials"
+                }
+            ],
+            "label": "Починка испорченного элемента Великого Дела"
+        },
+        {
+            "id": "followeraction.repair.greatwork.sabotaged.succeed",
+            "description": "Великое Дело будет продолжено!",
+            "startdescription": "Мой последователь трудится.",
+            "label": "Починка испорченного элемента Великого Дела"
+        },
+        {
+            "id": "A_follower_settrap_independent",
+            "startdescription": "Соперники не бродят по улицам, как охотники. Они согласятся на встречу лишь на нейтральной территории. Чтобы одолеть одного из них, нужно подготовить капкан и надеяться, что они попадутся. [Грань, Кузня, Мотылёк и Зима подойдут для создания капканов. Готовый капкан будет использован, когда индивидуалист попытается пробраться в любую сокровищницу.]",
+            "label": "Создать капкан, чтобы задержать или одолеть соперника"
+        },
+        {
+            "id": "A_follower_settrap_vault",
+            "startdescription": "Соперники осторожны. Они не бродят по улицам, как охотники. Чтобы одолеть одного из них, нужно подготовить капкан и подождать. [Грань, Кузня, Мотылёк и Зима подойдут для создания капканов. Готовый капкан будет использован, когда индивидуалист попытается пробраться в любую сокровищницу.]",
+            "label": "Создать капкан, чтобы задержать или одолеть соперника"
+        },
+        {
+            "id": "L_set_trap_router"
+        },
+        {
+            "id": "L_settrap_highedge"
+        },
+        {
+            "id": "L_settrap_highwinter"
+        },
+        {
+            "id": "L_settrap_highforge"
+        },
+        {
+            "id": "L_settrap_highmoth"
+        },
+        {
+            "id": "L_settrap_midedge"
+        },
+        {
+            "id": "L_settrap_midwinter"
+        },
+        {
+            "id": "L_settrap_midforge"
+        },
+        {
+            "id": "L_settrap_midmoth"
+        },
+        {
+            "id": "L_settrap_lowedge"
+        },
+        {
+            "id": "L_settrap_lowwinter"
+        },
+        {
+            "id": "L_settrap_lowforge"
+        },
+        {
+            "id": "L_settrap_lowmoth"
+        },
+        {
+            "id": "L_createsnare_great",
+            "description": "Капкан, установленный моим последователем, очень хорош. Он должен сработать.",
+            "label": "Опасный капкан"
+        },
+        {
+            "id": "L_createsnare_good",
+            "description": "Капкан, установленный моим последователем, весьма хорош. Скорее всего, он сработает.",
+            "label": "Хитрый капкан"
+        },
+        {
+            "id": "L_createsnare_poor",
+            "description": "Если очень повезёт, стратегия моего последователя сработает и нарушит планы врага.",
+            "label": "Капкан приемлемого качества"
+        },
+        {
+            "label": "Отчаянная попытка",
+            "description": "План моего последователя в лучшем случае можно назвать эксцентричным, а в худшем — бредовым. Вряд ли в этот капкан кто-нибудь попадётся.",
+            "id": "L_createsnare_rubbish"
+        },
+        {
+            "id": "followeraction_abducthighedge",
+            "description": ".",
+            "startdescription": "Убийца может запросто похитить жертву на улице.",
+            "label": "Дела культа: похищение незнакомца"
+        },
+        {
+            "id": "followeraction_abductmidedge",
+            "startdescription": "Умелый адепт справится с зазевавшимся прохожим.",
+            "label": "Дела культа: похищение незнакомца"
+        },
+        {
+            "id": "followeraction_abductlowedge",
+            "startdescription": "Мой неофит вряд ли похитит жертву. Здесь можно надеяться только на удачу.",
+            "label": "Дела культа: похищение незнакомца"
+        },
+        {
+            "id": "followeraction_abductsuccess",
+            "description": "Мой прислужник принёс связанного по рукам и ногам узника.",
+            "startdescription": "Я жду вестей...",
+            "label": "Попытка похищения"
+        },
+        {
+            "id": "followeraction_abductfailure",
+            "description": "Мой прислужник вернулся с пустыми руками.",
+            "startdescription": "Я жду вестей...",
+            "label": "Попытка похищения"
+        },
+        {
+            "id": "followeraction_abductfailure_losefollower",
+            "description": "Мой прислужник вернулся с пустыми руками. Судя по его тяжелым ранам, неудавшаяся жертва дала отпор. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Я жду вестей...",
+            "label": "Попытка похищения"
+        },
+        {
+            "id": "followeraction_murderhighwinter",
+            "description": ".",
+            "startdescription": "Убийца почти наверняка добьётся своего и убьёт цель.",
+            "label": "Дела культа: убийство незнакомца"
+        },
+        {
+            "id": "followeraction_murdermidwinter",
+            "startdescription": "Умелый адепт вполне может принести свежий труп.",
+            "label": "Дела культа: убийство незнакомца"
+        },
+        {
+            "id": "followeraction_murderlowwinter",
+            "startdescription": "Скорее всего, неофит не справится с заданием.",
+            "label": "Дела культа: убийство незнакомца"
+        },
+        {
+            "id": "followeraction_murdersuccess",
+            "description": "Мой прислужник вернулся с чужими вещами и свежим трупом их владельца.",
+            "startdescription": "Я жду вестей...",
+            "label": "Покушение на жизнь..."
+        },
+        {
+            "id": "followeraction_murderfailure",
+            "description": "Мой прислужник вернулся с пустыми руками.",
+            "startdescription": "Я жду вестей...",
+            "label": "Покушение на жизнь..."
+        },
+        {
+            "id": "followeraction_murderfailure_losefollower",
+            "description": "Мой прислужник вернулся с пустыми руками и валится с ног. Жертва оказалась не из слабых. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Я жду вестей...",
+            "label": "Покушение на жизнь..."
+        },
+        {
+            "id": "followeraction_craftworkhighforge",
+            "description": ".",
+            "startdescription": "Мой подмастерье может зарабатывать в сомнительных лабораториях и на заводах с дурной репутацией. Что-то может пойти не так, но это случается редко.",
+            "label": "Дела культа: ремесло"
+        },
+        {
+            "id": "followeraction_craftworkmidforge",
+            "startdescription": "Мой адепт может заработать что-нибудь в сомнительных лабораториях и на заводах с дурной репутацией, но риск несчастного случая довольно велик.",
+            "label": "Дела культа: ремесло"
+        },
+        {
+            "id": "followeraction_craftworklowforge",
+            "startdescription": "Мой неофит попробует заработать что-нибудь в сомнительных лабораториях и на заводах с дурной репутацией... если ему очень повезёт.",
+            "label": "Дела культа: ремесло"
+        },
+        {
+            "id": "followeraction_craftworksuccess",
+            "description": "Мой последователь вернулся с плодами своих трудов.",
+            "startdescription": "В этом городе существуют устройства, не подчиняющиеся законам страны. Некоторые из них не подчиняются и законам природы. Кое-какие из них крайне опасны.",
+            "label": "Работа по договору..."
+        },
+        {
+            "id": "followeraction_craftworkfailure",
+            "description": "Мой последователь вернулся с пустыми руками. Сегодняшние задания оказались ему не по зубам.",
+            "startdescription": "В этом городе существуют устройства, не подчиняющиеся законам страны. Некоторые из них не подчиняются и законам природы. Кое-какие из них крайне опасны.",
+            "label": "Работа по договору..."
+        },
+        {
+            "id": "followeraction_craftworkfailure_losefollower",
+            "description": "Произошёл несчастный случай. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "В этом городе существуют устройства, не подчиняющиеся законам страны. Некоторые из них не подчиняются и законам природы. Кое-какие из них крайне опасны.",
+            "label": "Работа по договору..."
+        },
+        {
+            "id": "followeraction_seducehighgrail",
+            "description": ".",
+            "startdescription": "Никто не отказывает гедонистам. Почти.",
+            "label": ".Дела культа: завлечение незнакомца"
+        },
+        {
+            "id": "followeraction_seducemidgrail",
+            "startdescription": "Адепт может завлечь к нам особо восприимчивую жертву.",
+            "label": ".Дела культа: завлечение незнакомца"
+        },
+        {
+            "id": "followeraction_seducelowgrail",
+            "startdescription": "Не думаю, что мой неофит сможет кого-нибудь завлечь.",
+            "label": ".Дела культа: завлечение незнакомца"
+        },
+        {
+            "id": "followeraction_seducesuccess",
+            "description": "Мой прислужник вернулся в сопровождении мирного узника, чьё лицо светится от счастья.",
+            "startdescription": "Мой прислужник шепчет слова убеждения под покровом ночи. Жертва знает, что слова лживы, но вряд ли её это заботит.",
+            "label": "Попытка завлечения"
+        },
+        {
+            "id": "followeraction_seducefailure",
+            "description": "Мой прислужник вернулся с пустыми руками.",
+            "startdescription": "Мой прислужник шепчет слова убеждения под покровом ночи. Жертва знает, что слова лживы, но вряд ли её это заботит.",
+            "label": "Попытка завлечения"
+        },
+        {
+            "id": "followeraction_seducefailure_losefollower",
+            "description": "Мой прислужник вернулся в полуобморочном состоянии и весь в крови. Похоже, наш соперник постарался на славу. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Мой прислужник шепчет слова убеждения под покровом ночи. Жертва знает, что слова лживы, но вряд ли её это заботит.",
+            "label": "Попытка завлечения"
+        },
+        {
+            "id": "followeraction_burglehighknock",
+            "description": ".",
+            "startdescription": "Мой ключ справится практически с любым замком в этом городе.",
+            "label": "Дела культа: ограбление"
+        },
+        {
+            "id": "followeraction_burglemidknock",
+            "startdescription": "Мой адепт сможет задействовать свои таланты, чтобы лишить жертву её сокровищ.",
+            "label": "Дела культа: ограбление"
+        },
+        {
+            "id": "followeraction_burglelowknock",
+            "startdescription": "Мой неофит попробует лишить жертву её сокровищ... если очень повезёт.",
+            "label": "Дела культа: ограбление"
+        },
+        {
+            "id": "followeraction_burglesuccess",
+            "description": "Мой последователь вернулся с добычей.",
+            "startdescription": "Богачи и бедняки хранят свои сокровища в погребах и на чердаках, в потайных ящиках и запертых чуланах.",
+            "label": "Взлом, проникновение, возвращение..."
+        },
+        {
+            "id": "followeraction_burglefailure",
+            "description": "Мой последователь вернулся с пустыми руками. Сегодняшние задания оказались ему не по зубам.",
+            "startdescription": "Богачи и бедняки хранят свои сокровища в погребах и на чердаках, в потайных ящиках и запертых чуланах.",
+            "label": "Взлом, проникновение, возвращение..."
+        },
+        {
+            "id": "followeraction_burglefailure_losefollower",
+            "description": "Произошёл несчастный случай. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Богачи и бедняки хранят свои сокровища в погребах и на чердаках, в потайных ящиках и запертых чуланах.",
+            "label": "Взлом, проникновение, возвращение..."
+        },
+        {
+            "id": "followeraction_charmhighheart",
+            "description": ".",
+            "startdescription": "Наше дело поддерживают далеко не все, но моих тарантеллистов любят везде. Если у нас появятся проблемы с репутацией, тарантеллист почти наверняка сможет всё исправить.",
+            "label": "Дела культа: обаяние"
+        },
+        {
+            "id": "followeraction_charmmidheart",
+            "startdescription": "Наше дело поддерживают далеко не все. Если у нас появятся проблемы с репутацией, мой адепт постарается их решить.",
+            "label": "Дела культа: обаяние"
+        },
+        {
+            "id": "followeraction_charmlowheart",
+            "startdescription": "Наше дело поддерживают далеко не все. Если у нас появятся проблемы с репутацией, мой неофит попробует их решить. ",
+            "label": "Дела культа: обаяние"
+        },
+        {
+            "id": "followeraction_charmsuccess",
+            "description": "Вера в светлое будущее — это спасительная пряность.",
+            "startdescription": "Мы не подчиняемся общественным стандартам. Впрочем, вряд ли стоит поднимать эту тему. Лучше положиться на обаяние и добродушие. Изящные восхваления наших принципов пошли организации не пользу.",
+            "slots": [
+                {
+                    "label": "Репутация",
+                    "id": "Reputation"
+                }
+            ],
+            "label": "Пылкие речи и учтивые беседы"
+        },
+        {
+            "id": "followeraction_charmfailure",
+            "description": "Нас или не понимают, или понимают слишком хорошо.",
+            "startdescription": "Мы не подчиняемся общественным стандартам. Впрочем, вряд ли стоит поднимать эту тему. Лучше положиться на обаяние и добродушие. Изящные восхваления наших принципов пошли организации не пользу.",
+            "slots": [
+                {
+                    "label": "Репутация",
+                    "id": "Reputation"
+                }
+            ],
+            "label": "Пылкие речи и учтивые беседы"
+        },
+        {
+            "id": "followeraction_auguryhighlantern",
+            "description": ".",
+            "startdescription": "Мой пророк способен определить, где и когда мы сможем воспользоваться могуществом. Риск провала довольно мал.",
+            "label": "Дела культа: провидение"
+        },
+        {
+            "id": "followeraction_augurymidlantern",
+            "startdescription": "Мой пророк может определить, где и когда мы сможем воспользоваться могуществом, но в делах Обители без риска не обойтись.",
+            "label": "Дела культа: провидение"
+        },
+        {
+            "id": "followeraction_augurylowlantern",
+            "startdescription": "Мой пророк попробует определить, где и когда мы сможем воспользоваться могуществом, но в делах Обители без риска не обойтись.",
+            "label": "Дела культа: провидение"
+        },
+        {
+            "id": "followeraction_augurysuccess",
+            "description": "Мой последователь отыскал новый способ связать наше дело с величайшим делом Часов.",
+            "startdescription": "Долгие часы учения и медитации...",
+            "label": "Под кожей мироздания"
+        },
+        {
+            "id": "followeraction_auguryfailure",
+            "description": "Мой последователь совершил опасную ошибку. Его разум не повреждён, но свет Обители успел коснуться нашего мира.",
+            "startdescription": "Долгие часы учения и медитации...",
+            "label": "Под кожей мироздания"
+        },
+        {
+            "id": "followeraction_auguryfailure_losefollower",
+            "description": "Мой последователь совершил опасную ошибку. Свет Обители успел коснуться нашего мира. Психика моего последователя разрушена. Пришлось его связать, чтобы он не навредил себе ещё сильнее. Рано или поздно он поправится, но раны очень глубокие. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Долгие часы учения и медитации...",
+            "label": "Под кожей мироздания"
+        },
+        {
+            "id": "followeraction_hoodwinkhighmoth",
+            "description": ".",
+            "startdescription": "Мой кожевенник достаточно хитёр, чтобы забрать сокровища у недалёких. Для него это проще пареной репы. (Хотя и приготовление пареной репы не обходится без опасностей. Можно ошпариться.)",
+            "label": "Дела культа: облапошивание"
+        },
+        {
+            "id": "followeraction_hoodwinkmidmoth",
+            "startdescription": "Мой адепт сможет задействовать свои таланты, чтобы забрать сокровища у недалёких.",
+            "label": "Дела культа: облапошивание"
+        },
+        {
+            "id": "followeraction_hoodwinklowmoth",
+            "startdescription": "Мой неофит попробует забрать сокровища у недалёких... если очень повезёт.",
+            "label": "Дела культа: облапошивание"
+        },
+        {
+            "id": "followeraction_hoodwinksuccess",
+            "description": "Обман прошёл успешно! Вот мои награды.",
+            "startdescription": "Мой последователь пытается обмануть жертву, чтобы извлечь выгоду.",
+            "label": "Обман и заблуждение"
+        },
+        {
+            "id": "followeraction_hoodwinkfailure",
+            "description": "Мой последователь вернулся с пустыми руками. Его обман раскрыли.",
+            "startdescription": "Мой последователь пытается обмануть жертву, чтобы извлечь выгоду.",
+            "label": "Обман и заблуждение"
+        },
+        {
+            "id": "followeraction_hoodwinkfailure_losefollower",
+            "description": "Мне было показалось, что мой последователь решил сбежать. Как оказалось, его обман раскрыли. Жертва была в ярости, и мой последователь мог не вернуться живым. [Излечить пострадавшего последователя при помощи разговора.]",
+            "startdescription": "Мой последователь пытается обмануть жертву, чтобы извлечь выгоду.",
+            "label": "Обман и заблуждение"
+        }
+    ]
 }

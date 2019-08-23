@@ -1,20 +1,19 @@
-﻿{"elements":
-    [
-			  
-	{id: "legacybytjob",
-	description: "Можно увлекаться литературой. Можно увлекаться рисованием. Но главная опора в жизни — уверенность, что карманные деньги не кончатся.",
-	label: "То да сё",
-	aspects: {benign:1,job:1}
-},
-{id: "legacybytjobmatured",
-	description: "Можно увлекаться литературой. Можно увлекаться рисованием. Но главная опора в жизни — уверенность, что карманные деньги не кончатся.",
-	label: "То да сё",
-	aspects: {benign:1,job:1},
-	comments: "Exists to allow a switch to a longer cycle immediately after first use."
-},
-{id: "legacydiarylastcharacter",
-aspects:{text:1},
-label: "Шифрованный дневник",
-description: "В нём описана нарастающая одержимость, и объект одержимости — #PREVIOUSCHARACTERNAME#."}
-]
-};
+{
+    "elements": [
+        {
+            "label": "Всякая всячина",
+            "description": "Кто-то балуется писательством, кто-то — живописью, но наши увлечения определяются нашими материальными возможностями.",
+            "id": "legacybytjob"
+        },
+        {
+            "label": "Всякая всячина",
+            "description": "Кто-то балуется писательством, кто-то — живописью, но наши увлечения отчасти определяются нашими материальными возможностями.",
+            "id": "legacybytjobmatured"
+        },
+        {
+            "label": "Зашифрованный дневник",
+            "description": "Здесь рассказывается о растущей одержимости человека по имени #PREVIOUSCHARACTERNAME#.",
+            "id": "legacydiarylastcharacter"
+        }
+    ]
+}

@@ -1,1700 +1,1369 @@
-﻿{
-elements: [
-	{
-		id: "acquaintance",
-		isAspect: "true",
-		description: "Ещё не враг, ещё не друг.",
-		label: "Знакомство",
-	},
-	{
-		id: "independent",
-		isAspect: "true",
-		description: "Изучает незримые искусства с собственными целями.",
-		label: "Чужак",
-	},
-	{
-		id: "benefactor",
-		isAspect: "true",
-		description: "An aficionado of my work, with whom I have grown close.",
-		label: "Benefactor",
-	},
-	{
-		id: "follower",
-		isAspect: "true",
-		description: "Студент, помощник, защитник, вестник, разменная монета, жертва... компаньон.",
-		label: "Приспешник",
-	},
-	{
-		id: "hireling",
-		isAspect: "true",
-		description: "Услуги оплачены, на некоторое время.",
-		label: "Наёмник",
-	},
-	{
-		id: "disciple",
-		isAspect: "true",
-		description: "Всей душой в глубине мистерий.",
-		label: "Адепт",
-	},
-	{
-		id: "exalted",
-		isAspect: "true",
-		description: "Не поднимется выше... по крайней мере, не под моим руководством.",
-		label: "Магистр",
-	},
-	{
-		id: "prisoner",
-		isAspect: "true",
-		description: "В моих руках.",
-		label: "Арестант",
-	},
-	{
-		id: "hunter",
-		isAspect: "true",
-		description: "Законы цивилизации младше законов Часов, но они тоже иногда требуют жертв. Это агент закона.",
-		label: "хотник",
-	},
-	{
-		id: "patron",
-		isAspect: "true",
-		description: "Заметная фигура в кругах, где я вращаюсь.",
-		label: "Покровитель",
-	},
-	{
-		id: "approval",
-		isAspect: "true",
-		description: "Someone looks on me with increasing approval.",
-		comment: "NEW",
-		label: "Approval",
-	},
-	{
-		id: "tutor",
-		isAspect: "true",
-		description: "Владеет ценным знанием.",
-		label: "Учитель",
-	},
-	{
-		id: "annoyance",
-		isAspect: "true",
-		description: "Гвоздь в моём ботинке. Возможно, есть способ избавиться.",
-		label: "Помеха",
-	},
-	{
-		id: "sending",
-		isAspect: "true",
-		description: "Not exactly me, but not exactly something else.",
-		label: "Sending",
-	},
-	{
-		id: "edge",
-		isAspect: "true",
-		description: "Любая победа проходит через Грань. Один её обитатель слеп и неуязвим. Другой силён, и его сила растёт. [Грань — принцип сражения и борьбы.]",
-		label: "Грань",
-		noartneeded: "true",
-	},
-	{
-		id: "forge",
-		isAspect: "true",
-		description: "«Огонь, — как довелось мне прочесть, — это зима, что согревает, и весна, что поглощает» [Принцип Кузни изменяет и разрушает.]",
-		label: "Кузня",
-	},
-	{
-		id: "grail",
-		isAspect: "true",
-		description: "Голод, похоть, поглощающие воды. [Принцип Чаши благоволит родам и пирам.]",
-		label: "Чаша",
-		induces: 
-		[
-			{
-				id: "grailinduction",
-				chance: "5",
-			},
-		],
-	},
-	{
-		id: "heart",
-		isAspect: "true",
-		description: "Безустанное Сердце бьётся, защищая кожу понятного нам мира. [Сердце — принцип, который продолжает и сохраняет.]",
-		label: "Сердце",
-		induces: 
-		[
-			{
-				id: "heartinduction",
-				chance: "10",
-			},
-		],
-	},
-	{
-		id: "knock",
-		isAspect: "true",
-		description: "Стук не приемлет печатей, затворов и камер. Он торжествующе выталкивает нас из безопасного невежества. [Стук — принцип, отмыкающий двери и ломающий преграды.]",
-		label: "Стук",
-	},
-	{
-		id: "lantern",
-		isAspect: "true",
-		description: "«Жизнь — чистое пламя, и мы живём незримым Солнцем внутри нас» — Томас Браун. [Лампада — принцип тайного места, иногда называемого Домом Солнца, и света над ним.]",
-		label: "Лампада",
-		induces: 
-		[
-			{
-				id: "lanterninduction",
-				chance: "5",
-			},
-		],
-	},
-	{
-		id: "moth",
-		isAspect: "true",
-		description: "Я знаю человека, который ловил мотыльков в стеклянную банку. В такие ночи он выпускал бы их поодиночке на погибель в пламени свечи. [Мотылёк — дикий и опасный принцип хаоса, стремления и тоски.]",
-		label: "Мотылёк",
-		induces: 
-		[
-			{
-				id: "mothinduction",
-				chance: "10",
-			},
-		],
-	},
-	{
-		id: "secrethistories",
-		isAspect: "true",
-		description: "История — шрам на коже мира. [Тайные Истории описывают неизвестные тонкости мира и множества его прошлых.]",
-		label: "Тайные Истории",
-	},
-	{
-		id: "winter",
-		isAspect: "true",
-		description: "... [Зима — принцип тишины, завершений, и всего того, что не вполне мертво.]",
-		label: "Зима",
-	},
-	{
-		id: "ability",
-		isAspect: "true",
-		description: "Мозг, сердце, рука или глаз. Почти у всех нас почти всё это есть с рождения.",
-		label: "Талант",
-	},
-	{
-		id: "scar",
-		isAspect: "true",
-		description: "The irrevocable outcome of an irrevocable act.",
-		label: "Scar",
-	},
-	{
-		id: "advancement",
-		isAspect: "true",
-		description: "Вкус возможного. [В достаточном количестве эти карты позволяют развивать Таланты.]",
-		label: "Развитие",
-	},
-	{
-		id: "potential",
-		isAspect: "true",
-		description: "Знак величия? [В правильных обстоятельствах эта личность может стать ещё сильнее.]",
-		label: "Потенциал",
-	},
-	{
-		id: "job",
-		isAspect: "true",
-		description: "Договор обмена жизни на деньги.",
-		label: "Работа",
-		induces: 
-		[
-			{
-				id: "needs",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "dance",
-		isAspect: "true",
-		description: "Older than language, younger than life.",
-		label: "Dance",
-		induces: 
-		[
-			{
-				id: "heartinduction",
-				chance: "10",
-			},
-			{
-				id: "mothglimmeringinduction",
-				chance: "10",
-			},
-		],
-	},
-	{
-		id: "ecdysijob",
-		isAspect: "true",
-		description: "I have won a place on the stage of the Ecdysis Club.",
-		label: "A Place at the Ecdysis Club",
-	},
-	{
-		id: "demotion",
-		isAspect: "true",
-		description: "Меня слишком долго не было на работе.",
-		label: "Понижение",
-	},
-	{
-		id: "ritual",
-		isAspect: "true",
-		description: "«Верные вещи верным способом в верном порядке. Помоги нам Бог» — приписывается Херсо. [С помощью Ритуала, сочетая аспекты, вы можете выполнить призыв.]",
-		label: "Ритуал",
-	},
-	{
-		id: "society",
-		isAspect: "true",
-		description: "Чтобы нанимать неофитов, мне следует отстроить предмет веры для них.",
-		label: "Общество",
-	},
-	{
-		id: "ingredient",
-		comments: "This is so anything that generates Funds will always trigger the needs timer if it's not already running.",
-		isAspect: "true",
-		description: "Топливо, мазь, пигмент, спокойствие: всё со временем кончается.",
-		label: "Ингредиент",
-		induces: 
-		[
-			{
-				id: "needs",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "pigment",
-		isAspect: "true",
-		description: "Возможно, пригодится для холстов.",
-		label: "Пигмент",
-	},
-	{
-		id: "poison",
-		isAspect: "true",
-		description: "Ни при каких условиях не помещать в тех, кого хотелось бы сохранить.",
-		label: "Смертельный яд",
-	},
-	{
-		id: "influence",
-		isAspect: "true",
-		description: "Эхо, резонанс, совпадение, параллель. Вскоре завершится.",
-		label: "Влияние",
-	},
-	{
-		id: "tool",
-		isAspect: "true",
-		description: "«Меч не убивает, это лишь инструмент в руке убийцы» — Сенека Младший.",
-		label: "Инструмент",
-	},
-	{
-		id: "mirror",
-		isAspect: "true",
-		description: "Кожа света хрупка — через трещины в ней проступит его кровь.",
-		label: "Зеркало",
-	},
-	{
-		id: "riddle",
-		isAspect: "true",
-		description: "На некоторые вопросы — только один ответ. На другие ответов нет.",
-		label: "Загадка",
-	},
-	{
-		id: "reputation",
-		isAspect: "true",
-		description: "«Многие боятся своей репутации, немногие — совести» — Плиний.",
-		label: "Репутация",
-	},
-	{
-		id: "evidencelevel",
-		isAspect: "true",
-		description: "Некоторые свидетельства убедительнее других.",
-		label: "Сила улики",
-	},
-	{
-		id: "suspicious",
-		isAspect: "true",
-		description: "Это может заинтересовать детектива.",
-		label: "Подозрение",
-	},
-	{
-		id: "healthskill",
-		isAspect: "true",
-		description: "Ночью и днём я чувствую силу. [Благодаря этому у вас может лучше получаться грубая физическая работа.]",
-		label: "Сила",
-	},
-	{
-		id: "murderskill",
-		isAspect: "true",
-		description: "Direct confrontation is always unwise. But in the last resort, if it comes to a struggle, I am very dangerous.",
-		label: "Dangerous",
-	},
-	{
-		id: "passionskill",
-		isAspect: "true",
-		description: "Видения в моём черепе. [Благодаря этому у вас могут получаться более изощрённые картины.]",
-		label: "Воображение",
-	},
-	{
-		id: "reasonskill",
-		isAspect: "true",
-		description: "Я — столп мудрости. [Сейчас это позволяет набираться Разума — и только.]",
-		label: "Учёность",
-	},
-	{
-		id: "way",
-		isAspect: "true",
-		description: "Я знаю путь через Пределы, в Лес и Дом, высящийся над ним.",
-		label: "Путь",
-	},
-	{
-		id: "desire",
-		isAspect: "true",
-		description: "Моя конечная цель. Она потребует платы.",
-		label: "Желание",
-	},
-	{
-		id: "promise",
-		isAspect: "true",
-		description: "A commitment to a conclusion.",
-		comment: "NEW",
-		label: "Promise",
-	},
-	{
-		id: "rivalmarks",
-		isAspect: "true",
-		description: "Opportunities to ascend to the House of the Sun are rare. If another achieves it, I may miss my chance. [If this reaches seven, your Rival may win the game instead of you.]",
-		label: "A Rival's Ascension",
-	},
-	{
-		id: "changemarks",
-		isAspect: "true",
-		description: "Each time I change, I leave something behind.",
-		label: "The Forms of Change",
-	},
-	{
-		id: "powermarks",
-		isAspect: "true",
-		description: "Я могу искать бессмертия и силы в Часе по имени Кузня Дней. Её касание приносит особые потребности, и оставляет Знаки.",
-		label: "Знаки Формы",
-	},
-	{
-		id: "sensationmarks",
-		isAspect: "true",
-		description: "Я могу искать бессмертия и наслаждения в Часе по имени Алая Чаша. Её касание приносит особые потребности, и оставляет Знаки.",
-		label: "Знаки Наслаждения",
-	},
-	{
-		id: "enlightenmentmarks",
-		isAspect: "true",
-		description: "Я могу искать бессмертия и просветления в Часе по имени Дозорный. Его касание приносит особые потребности, и оставляет Знаки.",
-		label: "Знаки Света",
-	},
-	{
-		id: "follower_lustenlightenment",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "follower_lustpower",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "follower_lustsensation",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "follower_lustchange",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "detectivetemptation",
-		comments: "Aspect for Detective plot items",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "long.preference.assault",
-		comment: "NEW",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "long.preference.intrigue",
-		comment: "NEW",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "long.preference.dreamwork",
-		comment: "NEW",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "long.preference.winter",
-		comment: "NEW",
-		isAspect: "true",
-		isHidden: "true",
-	},
-	{
-		id: "ascend",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "К следующему Знаку.",
-		label: "Восхождение",
-		noartneeded: "true",
-	},
-	{
-		id: "descend",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Если я не буду питать мои новые потребности, мои Знаки погаснут.",
-		label: "Нисхождение",
-		noartneeded: "true",
-	},
-	{
-		id: "article",
-		isAspect: "true",
-		description: "Оригинальная работа по конкретной теме.",
-		label: "Статья",
-	},
-	{
-		id: "text",
-		isAspect: "true",
-		description: "Книги — бессмертная память.",
-		label: "Текст",
-	},
-	{
-		id: "autographed",
-		isAspect: "true",
-		description: "Есть подпись автора.",
-		label: "С автографом",
-	},
-	{
-		id: "lore",
-		isAspect: "true",
-		description: "Знание незримых искусств. Я могу воспользоваться им, чтобы привлечь приспешника, выполнить ритуал, открыть путь в Обитель, шагнуть к восхождению... [Изучая осколки знаний вместе с другими подходящими осколками, возможно, получится их улучшить.]",
-		label: "Знание",
-	},
-	{
-		id: "language",
-		isAspect: "true",
-		description: "Полезен для перевода текстов.",
-		label: "Язык",
-	},
-	{
-		id: "tutorlatin",
-		isAspect: "true",
-		description: "Знаток латыни; может обучить вас, если вы будете изучать язык.",
-		label: "Знаток латыни",
-	},
-	{
-		id: "tutorgreek",
-		isAspect: "true",
-		description: "Знаток греческого языка; может обучить вас, если вы будете изучать язык.",
-		label: "Знаток греческого языка",
-	},
-	{
-		id: "tutoraramaic",
-		isAspect: "true",
-		description: "Знаток арамейского языка; может обучить вас, если вы будете изучать язык.",
-		label: "Знаток арамейского языка",
-	},
-	{
-		id: "tutorsanskrit",
-		isAspect: "true",
-		description: "A scholar of Sanskrit who might be prepared to tutor you if you study with them.",
-		label: "Sanskrit Scholar",
-	},
-	{
-		id: "spirittutorfucine",
-		isAspect: "true",
-		description: "Этот дух может научить вас фуцинскому языку, если вы знаете родственный язык.",
-		label: "оситель фуцинского языка",
-	},
-	{
-		id: "spirittutorphrygian",
-		isAspect: "true",
-		description: "Этот дух может научить вас фригийскому языку, если вы знаете родственный язык.",
-		label: "Носитель фригийского языка",
-	},
-	{
-		id: "spirittutormandaic",
-		isAspect: "true",
-		description: "Этот дух может научить вас глубокому мандейскому языку, если вы знаете родственный язык.",
-		label: "Носитель мандейского языка",
-	},
-	{
-		id: "auctionable",
-		isAspect: "true",
-		description: "Я могу продать это на аукционе, хотя в цене всегда есть сомнения.",
-		label: "В аукционных каталогах",
-	},
-	{
-		id: "compensationvalue",
-		isAspect: "true",
-		description: "Спинтрии — валюта скрытого мира. Спинтрии бывают разной ценности. Не ждите сдачи. Это не бакалея.",
-		label: "Ценность: спинтрии",
-	},
-	{
-		id: "hq",
-		isAspect: "true",
-		description: "Для бесед и собраний.",
-		label: "Штаб",
-	},
-	{
-		id: "location",
-		isAspect: "true",
-		description: "Места! Всё должно где-то находиться, и это — здесь.",
-		label: "Место",
-	},
-	{
-		id: "vaultcapital",
-		isAspect: "true",
-		description: "Тайный район в набитой до отказа столице, где я живу.",
-		label: "В Столице",
-	},
-	{
-		id: "vaultshires",
-		isAspect: "true",
-		description: "Зелёные поля, зелёные холмы.",
-		label: "В Графствах",
-	},
-	{
-		id: "vaultcontinent",
-		isAspect: "true",
-		description: "За узким морем, в неприметных уголках враждующих стран.",
-		label: "На Континенте",
-	},
-	{
-		id: "vaultlandbeyondforest",
-		isAspect: "true",
-		description: "Туманные тропы и затерянные деревни, где кожа мира тонка.",
-		label: "В Земле за Чащей",
-	},
-	{
-		id: "vaultrendingmountains",
-		isAspect: "true",
-		description: "Рыжие склоны, снежные вершины, и помощь не придёт.",
-		label: "В Раздирающих Горах",
-	},
-	{
-		id: "vaultloneandlevelsands",
-		isAspect: "true",
-		description: "В сухих и дальних краях меня ждут скованные цепями дюн горизонты.",
-		label: "Песчаные Равнины Одиночества",
-	},
-	{
-		id: "vaulteveningisles",
-		isAspect: "true",
-		description: "Омытые волнами цепи каменистых островов, укрытых яркой зеленью.",
-		label: "На Вечерних Островах",
-	},
-	{
-		id: "peril",
-		isAspect: "true",
-		description: "Препятствие, опасность, или преждевременный конец.",
-		label: "Угроза",
-	},
-	{
-		id: "curse",
-		isAspect: "true",
-		description: "Злое влияние; его нужно одолеть.",
-		label: "Проклятие",
-	},
-	{
-		id: "guardian",
-		isAspect: "true",
-		description: "Те, кто мешают входу.",
-		label: "Стража",
-	},
-	{
-		id: "seal",
-		isAspect: "true",
-		description: "Преграда на моём пути.",
-		label: "Барьер",
-	},
-	{
-		id: "vault",
-		isAspect: "true",
-		description: "Здесь есть что-то ценное.",
-		label: "Тайник",
-	},
-	{
-		id: "summoned",
-		isAspect: "true",
-		description: "Не отсюда.",
-		label: "Призванное существо",
-	},
-	{
-		id: "illhealth",
-		isAspect: "true",
-		description: "Возможно, я могу отдохнуть и восстановить силы.",
-		label: "Нездоровье",
-	},
-	{
-		id: "inducesdespair",
-		isAspect: "true",
-		description: "Может вызвать Отчаяние.",
-		label: "Внушает Отчаяние",
-	},
-	{
-		id: "inducesvisions",
-		isAspect: "true",
-		description: "Возможно, мне мерещится.",
-		label: "Насылает Видения",
-	},
-	{
-		id: "commissiongiven",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Задача ожидает внимания.",
-		label: "Заказ получен",
-		noartneeded: "true",
-	},
-	{
-		id: "commissionfulfilled",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Задача выполнена",
-		label: "Заказ выполнен",
-		noartneeded: "true",
-	},
-	{
-		id: "recruiting",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Слепые не могут узреть свет; но иногда именно свет ослепляет.",
-		label: "Вербовка",
-		noartneeded: "true",
-	},
-	{
-		id: "hiring",
-		comments: "Recipe aspect. Use to rehire hirelings.",
-		isAspect: "true",
-		description: "Повторный договор с наёмником.",
-		label: "Найм",
-		noartneeded: "true",
-	},
-	{
-		id: "promotiontodisciple",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Время принять углублённые обеты.",
-		label: "Повышение",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_edge",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Грань",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_forge",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Кузня",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_grail",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Чаша",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_heart",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Сердце",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_knock",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Стук",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_lantern",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Лампада",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_moth",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Мотылёк",
-		noartneeded: "true",
-	},
-	{
-		id: "promotionto_d_winter",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Вот истинные мистерии нашего почитания.",
-		label: "Возвышение: Зима",
-		noartneeded: "true",
-	},
-	{
-		id: "rival_promotion",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		label: "Promotion: Rival",
-		noartneeded: "true",
-	},
-	{
-		id: "fatiguing",
-		comments: "Recipe aspect; runs to fatigue stats, or to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
-		isAspect: "true",
-		description: "Что-то случилось.",
-		label: "Обязательство взято",
-		noartneeded: "true",
-	},
-	{
-		id: "exhaustlocation",
-		isAspect: "true",
-		description: "Место истощилось; оно не откроется снова, пока не обновится явно.",
-		label: "Место истощено",
-		noartneeded: "true",
-	},
-	{
-		id: "restore",
-		comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals.",
-		isAspect: "true",
-		description: "Всё как и было",
-		label: "Ничего не случилось",
-		noartneeded: "true",
-	},
-	{
-		id: "decline",
-		comments: "Recipe aspect; runs when we want to decay something like an investment.",
-		isAspect: "true",
-		description: "Что-то кончается",
-		label: "Угасание",
-		noartneeded: "true",
-	},
-	{
-		id: "avowal",
-		comments: "Recipe aspect; runs when we want to flip someone's loyalties positively",
-		isAspect: "true",
-		description: "A Positive Change in Loyalties",
-		label: "Avowal",
-		noartneeded: "true",
-	},
-	{
-		id: "rejection",
-		comments: "Recipe aspect; runs when we want to flip someone's loyalties",
-		isAspect: "true",
-		description: "A Change in Loyalties",
-		label: "Rejection",
-		noartneeded: "true",
-	},
-	{
-		id: "scarability",
-		isAspect: "true",
-		description: "Permanently converts an ability (active or exhausted) to its scar version",
-		label: "Scar Ability",
-		noartneeded: "true",
-	},
-	{
-		id: "restorehealth",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Здоровье вернётся.",
-		label: "Возврат Здоровья",
-		noartneeded: "true",
-	},
-	{
-		id: "damagehealth",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Здоровье будет ранено.",
-		label: "Ущерб Здоровью",
-		noartneeded: "true",
-	},
-	{
-		id: "fallsick",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Здоровье станет недугом; в потенциале может влиять на людей.",
-		label: "Заболевание",
-		noartneeded: "true",
-	},
-	{
-		id: "destroyhealth",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Здоровье будет уничтожено.",
-		label: "Гибель Здоровья",
-		noartneeded: "true",
-	},
-	{
-		id: "damagereason",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Разум станет Страхом.",
-		label: "Ущерб Разуму",
-		noartneeded: "true",
-	},
-	{
-		id: "toreason",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "...станет Разумом.",
-		label: "В Разум",
-		noartneeded: "true",
-	},
-	{
-		id: "topassion",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "...станет Страстью.",
-		label: "В Страсть",
-		noartneeded: "true",
-	},
-	{
-		id: "tohealth",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "...станет Здоровьем.",
-		label: "В Здоровье",
-		noartneeded: "true",
-	},
-	{
-		id: "dreadful",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Риск вызова Страха.",
-		induces: 
-		[
-			{
-				id: "dreadinduction",
-				chance: "30",
-			},
-		],
-		label: "Вселяет Страх",
-		noartneeded: "true",
-	},
-	{
-		id: "fascinating",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Риск вызова Очарования.",
-		induces: 
-		[
-			{
-				id: "fascinationinduction",
-				chance: "30",
-			},
-		],
-		label: "Внушает Очарование",
-		noartneeded: "true",
-	},
-	{
-		id: "damagepassion",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Страсть станет Очарованием.",
-		label: "Ущерб Страсти",
-		noartneeded: "true",
-	},
-	{
-		id: "killmortal",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Прах земной станет трупом.",
-		label: "Убийство Праха земного",
-		noartneeded: "true",
-	},
-	{
-		id: "longded",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Long will be replaced by their rewards",
-		comment: "NEW",
-		label: "Kill Long",
-		noartneeded: "true",
-	},
-	{
-		id: "killsummoned",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Summonings will be replaced by flavour influences or summon blockers",
-		comment: "NEW",
-		label: "Kill Summoning",
-		noartneeded: "true",
-	},
-	{
-		id: "dissolution",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "What is without, within; what is within, without. Dissolves something to an Influence.",
-		label: "Dissolution",
-		noartneeded: "true",
-	},
-	{
-		id: "raiseshattered",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		label: "Transform eg a corpse to Shattered Risen",
-		noartneeded: "true",
-	},
-	{
-		id: "raiseburgeoning",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		label: "Transform eg a corpse to Burgeoning Risen",
-		noartneeded: "true",
-	},
-	{
-		id: "renewshattered",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		noartneeded: "true",
-	},
-	{
-		id: "renewburgeoning",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		noartneeded: "true",
-	},
-	{
-		id: "rebellion",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Приспешники станут Соперниками",
-		label: "Восстание",
-		noartneeded: "true",
-	},
-	{
-		id: "endannoyance",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Помехи — например, сложные начальники — будут устранены.",
-		label: "Конец Помехи",
-		noartneeded: "true",
-	},
-	{
-		id: "careeradvancement",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Повышение в карьере, или улучшение навыка",
-		label: "Ступень карьеры",
-		noartneeded: "true",
-	},
-	{
-		id: "derangemortal",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Прах земной станет Безумцем.",
-		label: "Расстройство Праха земного",
-		noartneeded: "true",
-	},
-	{
-		id: "capturehunter",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Охотники станут арестантами.",
-		label: "Захват Охотника",
-		noartneeded: "true",
-	},
-	{
-		id: "killhunter",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Охотники станут трупами.",
-		label: "Убийство Охотника",
-		noartneeded: "true",
-	},
-	{
-		id: "capturefollower",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Приспешники станут арестантами.",
-		label: "Захват Приспешника",
-		noartneeded: "true",
-	},
-	{
-		id: "restorepassion",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Страсть будет очищена.",
-		label: "Возвращение Страсти",
-		noartneeded: "true",
-	},
-	{
-		id: "plead",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Милосердие не исключено.",
-		label: "Мольба",
-		noartneeded: "true",
-	},
-	{
-		id: "employment",
-		comments: "Recipe aspect. Refreshes job timers and fatigues stats",
-		isAspect: "true",
-		description: "Дневная работа позади.",
-		label: "Наёмный труд",
-		noartneeded: "true",
-	},
-	{
-		id: "scandalous",
-		comments: "Recipe aspect. Refreshes reputation timers.",
-		isAspect: "true",
-		description: "Меня нелегко забыть.",
-		label: "На слуху",
-		noartneeded: "true",
-	},
-	{
-		id: "epiphany",
-		comments: "Recipe aspect. Upgrades lore.",
-		isAspect: "true",
-		description: "Я понимаю больше.",
-		label: "Прозрение",
-		noartneeded: "true",
-	},
-	{
-		id: "upgradeinfluence",
-		comments: "Recipe aspect. Upgrades influence.",
-		isAspect: "true",
-		description: "I've found an alignment.",
-		label: "Upgrade Influence",
-		noartneeded: "true",
-	},
-	{
-		id: "glorify",
-		isAspect: "true",
-		description: "Converts Dread to Fascination, and potential other elements to more Gloryful equivalents.",
-		comment: "NEW",
-		label: "A MOve toWards the GLory",
-		noartneeded: "true",
-	},
-	{
-		id: "depiphany",
-		comments: "Recipe aspect. Downgrades and splits lore.",
-		isAspect: "true",
-		description: "Моё понимание упрощено.",
-		label: "Затмение",
-		noartneeded: "true",
-	},
-	{
-		id: "investigatingsuccess",
-		comments: "Recipe aspect.",
-		isAspect: "true",
-		description: "Улучшает улики.",
-		label: "Успех расследования",
-		noartneeded: "true",
-	},
-	{
-		id: "investigatingsetback",
-		comments: "Recipe aspect.",
-		isAspect: "true",
-		description: "Ухудшает улики.",
-		label: "Провал расследования",
-		noartneeded: "true",
-	},
-	{
-		id: "crackmirror",
-		comments: "Recipe aspect",
-		isAspect: "true",
-		description: "Зеркала станут разбитыми.",
-		label: "Разбить зеркала",
-		noartneeded: "true",
-	},
-	{
-		id: "mortal",
-		isAspect: "true",
-		description: "«Из-за застарелой привычки жить мы встречаем смерть не готовыми к ней» — Томас Браун.",
-		label: "Прах земной",
-	},
-	{
-		id: "commission",
-		isAspect: "true",
-		description: "Возможность заработать. Мне надо выполнить задачу и вернуться к покровителю.",
-		label: "Заказ",
-	},
-	{
-		id: "benign",
-		isAspect: "true",
-		description: "Как же мне повезло.",
-		label: "Просто счастье",
-	},
-	{
-		id: "malign",
-		isAspect: "true",
-		description: "Что-то нежеланное.",
-		label: "Неприятности",
-	},
-	{
-		id: "season",
-		comments: "identifies card draws for Time seasonal events",
-		isAspect: "true",
-		description: "Скоро случится что-то соответствующее",
-		label: "Времена",
-	},
-	{
-		id: "devourer",
-		isAspect: "true",
-		description: "Если вырвется, может напасть на вас или поглотить ваших приспешников.",
-		label: "Хищник",
-	},
-	{
-		id: "deceiver",
-		isAspect: "true",
-		description: "Если вырвется, может попытаться свести с ума вас или ваших приспешников.",
-		label: "Хитрец",
-	},
-	{
-		id: "mystic",
-		isAspect: "true",
-		description: "Охотник-мистик обычно выживает при нападениях существ из Обители, даже если эта атака, казалось бы, неостановима.",
-		label: "Мистик",
-	},
-	{
-		id: "brilliant",
-		isAspect: "true",
-		description: "Охотник-гений находит смысл в мельчайших деталях. Может превратить Слухи непосредственно в Убийственные улики.",
-		label: "Гений",
-		noartneeded: "true",
-	},
-	{
-		id: "erratic",
-		isAspect: "true",
-		description: "Охотник-эксцентрик часто не может получить Улики на основе Слухов; притом Улики в этих руках могут возникать даже когда Слухов нет.",
-		label: "Эксцентрик",
-	},
-	{
-		id: "meticulous",
-		isAspect: "true",
-		description: "Охотник-педант всегда успешно создаёт Улики на основе Слухов.",
-		label: "Педант",
-	},
-	{
-		id: "tenacious",
-		isAspect: "true",
-		description: "Охотник-боец имеет шансы выжить при нападениях в материальном мире, даже если нападающие, казалось бы, неостановимы. Это случается примерно в одном случае из трёх.",
-		label: "Боец",
-	},
-	{
-		id: "wary",
-		isAspect: "true",
-		description: "This one has grown cautious. They will not meet with me in person again.",
-		label: "Wary",
-	},
-	{
-		id: "grim",
-		isAspect: "true",
-		description: "Отчаяние в этой душе защищает от соблазнов Славы... но может стать погибелью Охотника.",
-		label: "Мрачная душа",
-	},
-	{
-		id: "idealist",
-		isAspect: "true",
-		description: "Охотника-идеалиста нельзя деморализовать — но можно атаковать, опираясь на те же идеалы.",
-		label: "Идеалист",
-	},
-	{
-		id: "venerationedge",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Грань; к ней обращаемся во имя Полковника и Львокузнеца... а также иных.",
-		label: "Почитание: Грань",
-	},
-	{
-		id: "venerationforge",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Кузня; к ней обращаемся во имя самой Кузни Дней и Мадругады... а также иных.",
-		label: "Почитание: Кузня",
-	},
-	{
-		id: "venerationgrail",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Чаша; к ней обращаемся во имя самой Алой Чаши и Сестры-и-Ведьмы... а также иных.",
-		label: "Почитание: Чаша",
-	},
-	{
-		id: "venerationheart",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Сердце; к нему обращаемся во имя Громокожи и Бархат... а также иных.",
-		label: "Почитание: Сердце",
-	},
-	{
-		id: "venerationknock",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Стук; к нему обращаемся во имя Мениск и Матери Муравьёв... а также иных.",
-		label: "Почитание: Стук",
-	},
-	{
-		id: "venerationlantern",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Лампада; к ней обращаемся во имя Входа-в-Глаз и Мастера Цветов... а также иных.",
-		label: "Почитание: Лампада",
-	},
-	{
-		id: "venerationmoth",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Мотылёк; к нему обращаемся во имя самого Мотылька и Ведьмы-и-Сестры... а также иных.",
-		label: "Почитание: Мотылёк",
-	},
-	{
-		id: "venerationwinter",
-		isAspect: "true",
-		description: "Принцип, почитаемый в этой организации — Зима; к ней обращаемся во имя Солнца-в-Рубище и Рогатой Секиры... а также иных",
-		label: "Почитание: Зима",
-	},
-	{
-		id: "textlatin",
-		isAspect: "true",
-		description: "Мёртвый язык. Мёртвый как алмазы. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на латыни",
-	},
-	{
-		id: "textfucine",
-		isAspect: "true",
-		description: "К востоку от потерянного озера Фучино жил народ. Гораций предупреждал, что там лежит земля ведьм. Это их язык; одни называют его «сухим языком», другие — «языком ведьм». [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на фуцинском языке",
-	},
-	{
-		id: "textgreek",
-		isAspect: "true",
-		description: "Язык философов, теологов и героев. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на греческом языке",
-	},
-	{
-		id: "textphrygian",
-		isAspect: "true",
-		description: "Фригийцы служили Великой Матери, которую мы зовём Чашей. В их землях зародился орден Сестёр Узла, и на их языке звучали мольбы Громокожи при его восхождении. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "На фригийском языке",
-	},
-	{
-		id: "textaramaic",
-		isAspect: "true",
-		description: "Язык земли Арама и всего изобилия детей её, рождённых за три с лишним тысячи лет. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на арамейском языке",
-	},
-	{
-		id: "textmandaic",
-		isAspect: "true",
-		description: "Самый секретный язык для святейших ритуалов тайных сект в глубине пустыни. Как сказано, родной язык самой Матери Муравьёв. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на глубоком мандейском языке",
-	},
-	{
-		id: "textsanskrit",
-		isAspect: "true",
-		description: "Святой язык Субконтинента. Мне открыт проход к четырём тысячам лет поэзии, церемоний и мистики — осталось лишь одолеть его словарь, завитый как лепестки лотоса. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на санскрите",
-	},
-	{
-		id: "textvak",
-		isAspect: "true",
-		description: "Ваку знали в Доме Солнца задолго до того, как боги поднялись из крови и обезьяна выпрямила спину. [Некоторые книги сначала надо перевести, чтобы прочесть.]",
-		label: "Текст на ваке",
-	},
-	{
-		id: "follower_honoured",
-		isAspect: "true",
-		description: "I have honoured this follower with a gift.",
-		label: "Honoured",
-	},
-	{
-		id: "romanticinterest",
-		isAspect: "true",
-		description: "This is someone who has developed a romantic interest in me.",
-		label: "Interested",
-	},
-	{
-		id: "long_wound",
-		isAspect: "true",
-		description: "Is it possible for Long to die? Let's put it to the test.",
-		icon: "long_wound",
-		comment: "NEW",
-		label: "Wound",
-	},
-	{
-		id: "follower_wound",
-		isAspect: "true",
-		description: "This one has suffered in my service. [Wounded Followers don't count as Followers, and can't be used as agents or assistants. They may die in the Season of Sickness. Use <b>Talk</b> to treat them.]",
-		label: "Wound",
-		xtriggers: 
-		{
-			killmortal: "corpse_scar",
-		},
-	},
-	{
-		id: "follower_scar_edge",
-		isAspect: "true",
-		description: "FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a mortal.]",
-		label: "Scar: Brutal Experience",
-		xtriggers: 
-		{
-			killmortal: "corpse_scar",
-		},
-	},
-	{
-		id: "follower_scar_knock",
-		isAspect: "true",
-		description: "Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a mortal.]",
-		label: "Scar: Half-Healed Fistula",
-		xtriggers: 
-		{
-			killmortal: "corpse_scar",
-		},
-	},
-	{
-		id: "follower_scar_winter",
-		isAspect: "true",
-		description: "Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a mortal.]",
-		label: "Scar: Old Wound",
-		xtriggers: 
-		{
-			killmortal: "corpse_scar",
-		},
-	},
-	{
-		id: "corpse_scar",
-		isAspect: "true",
-		description: "This was someone who knew pain.",
-		label: "Old Scar",
-	},
-	{
-		id: "resentment",
-		comments: "Three resentments in the season of ambitions will turn someone Troublemaker",
-		isAspect: "true",
-		description: "Too many grievances can compromise loyalty.",
-		label: "Resentment",
-	},
-	{
-		id: "boredom",
-		isAspect: "true",
-		description: "My benefactor's interest will eventually wane.",
-		label: "Boredom",
-	},
-	{
-		id: "besotment",
-		isAspect: "true",
-		description: "My benefactor looks fondly on me.",
-		label: "Besotment",
-	},
-	{
-		id: "benefactor_proposal",
-		isAspect: "true",
-		description: "In a moment of passion, my benefactor has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Benefactor before their enthusiasm wanes.]",
-		label: "A Proposal from a Benefactor",
-	},
-	{
-		id: "desiremoth_track",
-		isAspect: "true",
-		description: "I am coming to know a dance that began in the sodden forests of the first continent.",
-		label: "Old Form",
-	},
-	{
-		id: "desireheart_track",
-		isAspect: "true",
-		description: "I am coming to know a dance that began beneath the mountain pines of the dry land.",
-		label: "The New Form",
-	},
-	{
-		id: "potentialbenefactorm",
-		isAspect: "true",
-		description: "A gentleman of means sometimes attends performances. He has been known to pay his respects to chorus members after the show.",
-		label: "The Gentlemen at the Stage Door",
-	},
-	{
-		id: "potentialbenefactorf",
-		isAspect: "true",
-		description: "A lady of means sometimes attends performances. She has been known to show a keen interest in chorus members.",
-		label: "The Lady in the Box",
-	},
-	{
-		id: "potentialecdysiast",
-		isAspect: "true",
-		description: "Sometimes she sits in the second row, seeking new talent for her peculiar establishment. Those she employs are rarely seen about town.",
-		label: "A Bright-Eyed Watcher",
-	},
-	{
-		id: "snarelevel",
-		isAspect: "true",
-		description: "Some snares are easy to escape. Some are webs of steel.",
-		label: "Snare Effectiveness",
-	},
-	{
-		id: "apostleforge.pillar4.dormant",
-		isAspect: "true",
-		description: "Our Shaper has chosen this one to be a compass to the flaw in the world - the weak place in the place that does not change. When they find it they will surrender their eyes, and live for their Purpose.",
-		comment: "NEW",
-		label: "The Chosen Compass",
-	},
-	{
-		id: "apostleforge.pillar4",
-		isAspect: "true",
-		description: "This one is blind to everything except the flaw in the world that we seek. There is one in Vienna, but there is another much closer to home, in the place whose name has always been the same, even as Caer Ys. They can lead us there, with the Dawnbreaker Core, to perform our Great Work.",
-		comment: "NEW",
-		label: "Thine Eyes Have Seen",
-	},
-	{
-		id: "mentor",
-		isAspect: "true",
-		description: "Our secret ruler, who commands our loyalty, who shall rise still higher through our works.",
-		comment: "NEW",
-		label: "Mentor",
-	},
-	{
-		id: "intention.assault",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Our immortal enemy has a plan.",
-		isHidden: "true",
-		label: "Intention",
-	},
-	{
-		id: "intention.intrigue",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Our immortal enemy has a plan.",
-		isHidden: "true",
-		label: "Intention",
-	},
-	{
-		id: "intention.dreams",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Our immortal enemy has a plan.",
-		isHidden: "true",
-		label: "Intention",
-	},
-	{
-		id: "intention.downtime",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Our immortal enemy has a plan.",
-		isHidden: "true",
-		label: "Intention",
-	},
-	{
-		id: "strategy.revealed",
-		comment: "NEW",
-		isAspect: "true",
-		description: "This strategy's been exposed.",
-		isHidden: "true",
-		label: "Strategy Revealed",
-	},
-	{
-		id: "revealstrategy",
-		isAspect: "true",
-		description: "Reveals a concealed strategy",
-		comment: "NEW",
-		label: "Reveal Strategy",
-		noartneeded: "true",
-	},
-	{
-		id: "revealidentity",
-		isAspect: "true",
-		description: "Reveals an unknown enemy",
-		comment: "NEW",
-		label: "Reveal Indentity",
-		noartneeded: "true",
-	},
-	{
-		id: "long.lesson",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Our foe watches and learns.",
-		isHidden: "true",
-		label: "A Lesson Learnt",
-	},
-	{
-		id: "long.might",
-		isAspect: "true",
-		description: "Over time, this Long will build up allies and resources in the city, improving their ability to assault us. [If it ever reaches 10, the Long will consider attacking you directly.]",
-		comment: "NEW",
-		label: "Might",
-	},
-	{
-		id: "long.connections",
-		isAspect: "true",
-		description: "Over time, this Long will build up their network in the city, improving their ability to intrigue against us. [If it ever reaches 10, the Long will consider attacking you directly.]",
-		comment: "NEW",
-		label: "Connections",
-	},
-	{
-		id: "long.dreamwork",
-		isAspect: "true",
-		description: "Over time, this Long will learn the shape of our dreams, improving their ability to strike at us through the Mansus. [If it ever reaches 10, the Long will consider attacking you directly.]",
-		comment: "NEW",
-		label: "The Size of Starlight",
-	},
-	{
-		id: "long.enemy",
-		comment: "NEW",
-		isAspect: "true",
-		description: "Many Long serve the Hours. They fiercely oppose the rise of new Names, who might, just perhaps, become usurping Hours some day. Some Long hate the Hours. Their opposition to new Names is, if anything, even fiercer.",
-		isHidden: "true",
-		label: "An Immortal Enemy",
-	},
-	{
-		id: "greatwork",
-		isAspect: "true",
-		description: "When the Work is complete, our founder, our inspiration, will rise yet higher.",
-		comment: "NEW",
-		label: "An element of the Great Work",
-	},
-	{
-		id: "greatwork.sabotaged",
-		isAspect: "true",
-		description: "The Great Work is imperilled. [Use a Forge follower and a Silver Spintria to repair this.]",
-		comment: "NEW",
-		label: "Sabotaged!",
-	},
-	{
-		id: "sabotage",
-		isAspect: "true",
-		description: "Converts a Great Work item to an unstable version that needs fixing.",
-		comment: "NEW",
-		label: "Sabotage!",
-		noartneeded: "true",
-	},
-	{
-		id: "sabotage.repair",
-		isAspect: "true",
-		comment: "NEW",
-		label: "Sabotage Repaired!",
-		noartneeded: "true",
-	},
-	{
-		id: "grailflavour",
-		isAspect: "true",
-		description: "Strawberries, cinnamon, orange-blossom.",
-		comment: "NEW",
-		label: "The Sweetest",
-	},
-	{
-		id: "heartflavour",
-		isAspect: "true",
-		description: "Copper, myrrh, rust.",
-		comment: "NEW",
-		label: "The Salt",
-	},
-	{
-		id: "mothflavour",
-		isAspect: "true",
-		description: "Figs, nuts, malt.",
-		comment: "NEW",
-		label: "The Sweet",
-	},
-	{
-		id: "vitulationupgrade",
-		isAspect: "true",
-		description: "Guests assemble!",
-		comment: "NEW",
-		label: "Vitulation Guests Upgrade",
-		noartneeded: "true",
-	},
-	{
-		id: "cloudwitnessesupgrade",
-		isAspect: "true",
-		description: "Witnesses assemble!",
-		comment: "NEW",
-		label: "Cloud of Witnesses Upgrade",
-		noartneeded: "true",
-	},
-	{
-		id: "renew.apostlelantern.pillar3",
-		isAspect: "true",
-		comment: "NEW",
-		label: "Renew the Allure",
-		noartneeded: "true",
-	},
-	{
-		id: "poison.notoriety",
-		isAspect: "true",
-		description: "This follower's secrets have been revealed to the public. Any time they're active, the press might take an interest.",
-		icon: "reputation",
-		comment: "NEW",
-		label: "Exposed",
-		induces: 
-		[
-			{
-				id: "poison.notoriety.induction",
-				chance: "30",
-			},
-		],
-	},
-	{
-		id: "poison.passion.dread",
-		isAspect: "true",
-		description: "My emotions have been infected with the creeping taint of fear. [Using this card anywhere will probably create Dread.]",
-		comment: "NEW",
-		label: "Poisoned Passion",
-		induces: 
-		[
-			{
-				id: "poison.passion.dread.induction",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "poison.reason.fascination",
-		isAspect: "true",
-		description: "I am teased by recurring dreams of candlefire. [Using this card anywhere will probably create Fascination.]",
-		comment: "NEW",
-		label: "The Splendorous Infection",
-		induces: 
-		[
-			{
-				id: "poison.reason.fascination.induction",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "poison.health.dread",
-		isAspect: "true",
-		description: "I have become subject to pain that will never depart. [Using this card anywhere will probably create Dread.]",
-		comment: "NEW",
-		label: "The Failing Flesh ",
-		induces: 
-		[
-			{
-				id: "poison.health.dread.induction",
-				chance: "70",
-			},
-		],
-	},
-	{
-		id: "poison.fascination.longlesson",
-		isAspect: "true",
-		description: "The Long has sent me a sweet dream. I must not think of it. [If you Dream away this card or use it in a ritual, the Long will learn from you, increasing their power in your dreams.]",
-		comment: "NEW",
-		label: "The Eyes in my Memory",
-	},
-	{
-		id: "poison.dread.longlesson",
-		isAspect: "true",
-		description: "The Long has set dreams to bedevil me. It would be safer to banish them, but wiser not to think of them. [If you Dream away this card or use it in a ritual, the Long will learn from you, increasing their power in your dreams.]",
-		comment: "NEW",
-		label: "The Teeth in my Heart",
-	},
-	{
-		id: "poison.way.long",
-		isAspect: "true",
-		description: "The Long has set a watch upon this Way. If I pass it, they'll learn more of me as I sleep.",
-		comment: "NEW",
-		label: "The Way is Watched",
-	},
-]
+{
+    "elements": [
+        {
+            "label": "Знакомый",
+            "description": "Ещё не друг, но пока ещё не враг.",
+            "id": "acquaintance"
+        },
+        {
+            "label": "Авантюрист",
+            "description": "Исследователь незримых искусств со своими интересами.",
+            "id": "independent"
+        },
+        {
+            "label": "Благодетель",
+            "description": "Ценитель моих работ, с которым мы очень сблизились.",
+            "id": "benefactor"
+        },
+        {
+            "label": "Последователь",
+            "description": "Ученик, помощник, защитник, поборник, простофиля, жертва... спутник.",
+            "id": "follower"
+        },
+        {
+            "label": "Наёмник",
+            "description": "Какое-то время этот человек будет действовать в моих интересах.",
+            "id": "hireling"
+        },
+        {
+            "label": "Адепт",
+            "description": "Истинный знаток тайных обрядов.",
+            "id": "disciple"
+        },
+        {
+            "label": "Фанатик",
+            "description": "Сейчас для этого человека не существует ничего, кроме веры. Но скоро пыл его может угаснуть, и тогда он усомнится в том, что совершил.",
+            "id": "devotee"
+        },
+        {
+            "label": "Высокий",
+            "description": "Подняться выше просто невозможно... по крайней мере, пока я глава культа.",
+            "id": "exalted"
+        },
+        {
+            "label": "Узник",
+            "description": "Этот человек у меня в руках.",
+            "id": "prisoner"
+        },
+        {
+            "label": "Охотник",
+            "description": "Законы цивилизации моложе законов, установленных Часами, но и они порой требуют жертв. Этот человек — рука закона.",
+            "id": "hunter"
+        },
+        {
+            "label": "Покровитель",
+            "description": "Заметная фигура в моих кругах.",
+            "id": "patron"
+        },
+        {
+            "label": "Одобрение",
+            "description": "Кто-то смотрит на меня с растущим одобрением.",
+            "id": "approval"
+        },
+        {
+            "label": "Учитель",
+            "description": "Этот человек может поделиться ценными знаниями.",
+            "id": "tutor"
+        },
+        {
+            "label": "Помеха",
+            "description": "Бельмо на глазу. Возможно, мне удастся от него избавиться.",
+            "id": "annoyance"
+        },
+        {
+            "label": "Отправление",
+            "description": "Не совсем я, но и не кто-то другой.",
+            "id": "sending"
+        },
+        {
+            "label": "Грань",
+            "description": "Любое завоевание происходит на Грани. Тот, кто живёт здесь, слеп и не может быть ранен. Другой силён и с каждой минутой становится сильнее. [Грань — принцип борьбы и битвы.]",
+            "id": "edge"
+        },
+        {
+            "label": "Кузня",
+            "description": "«Огонь, — встретилось мне в одной книге, — есть зима, которая согревает, и весна, которая поглощает». [Принцип Кузни трансформирует и разрушает.]",
+            "id": "forge"
+        },
+        {
+            "label": "Чаша",
+            "description": "Голод, похоть, манящая глубь. [Принцип Чаши чтит таинства рождения и пира.]",
+            "id": "grail"
+        },
+        {
+            "label": "Сердце",
+            "description": "Беспокойное Сердце бьётся, чтобы защитить кожу мира, который нам внятен. [Сердце есть принцип, который продолжает и сохраняет.]",
+            "id": "heart"
+        },
+        {
+            "label": "Стук",
+            "description": "Стук не терпит печатей и уединения. Он радостно звучит, выманивая нас из безопасности невежества. [Стук — принцип, который открывает двери и снимает печати с барьеров.]",
+            "id": "knock"
+        },
+        {
+            "label": "Лампада",
+            "description": "«Жизнь — это чистое пламя, и мы живём с невидимым солнцем внутри нас». Томас Браун [Лампада — принцип тайного места, которое иногда называют Домом Солнца, и света над ним.]",
+            "id": "lantern"
+        },
+        {
+            "label": "Мотылёк",
+            "description": "Мой знакомый ловил мотыльков и сажал их под стеклянный колпак. В ночи, подобные этой, он выпускал их одного за другим и смотрел, как они умирают в пламени свечи. [Мотылёк — непредсказуемый и опасный принцип хаоса и стремлений.]",
+            "id": "moth"
+        },
+        {
+            "label": "Тайные истории",
+            "description": "История — шрам на коже мира. [Тайные истории описывают неизвестные подробности сложного устройства мира и ответвлений его прошлого.]",
+            "id": "secrethistories"
+        },
+        {
+            "label": "Зима",
+            "description": "... [Зима — принцип безмолвия, конца и всего, что застыло на границе жизни и смерти.]",
+            "id": "winter"
+        },
+        {
+            "label": "Способность",
+            "description": "Разум, сердце, рука или глаз. Большинство из нас имеет всё это от рождения.",
+            "id": "ability"
+        },
+        {
+            "label": "Шрам",
+            "description": "Необратимый исход необратимого поступка.",
+            "id": "scar"
+        },
+        {
+            "label": "Прогресс",
+            "description": "Вкус возможностей. [С достаточным количеством таких карт вы можете развить способность.]",
+            "id": "advancement"
+        },
+        {
+            "label": "Потенциал",
+            "description": "Метка величия? [Если обстоятельства сложатся удачно, этот последователь может стать ещё сильнее.]",
+            "id": "potential"
+        },
+        {
+            "label": "Работа",
+            "description": "Договор, по которому жизнь обменивается на деньги.",
+            "id": "job"
+        },
+        {
+            "label": "Танец",
+            "description": "Старше языка, моложе жизни.",
+            "id": "dance"
+        },
+        {
+            "label": "Место в клубе «Экдизис»",
+            "description": "Меня взяли на работу в клуб «Экдизис».",
+            "id": "ecdysijob"
+        },
+        {
+            "label": "Понижение",
+            "description": "Меня слишком долго не было на работе.",
+            "id": "demotion"
+        },
+        {
+            "label": "Обряд",
+            "description": "«Правильные составляющие и правильные действия в правильном порядке. Да поможет нам Бог». (приписывается Эрсо) [Обряд позволяет объединять аспекты и призывать существ.]",
+            "id": "ritual"
+        },
+        {
+            "label": "Общество",
+            "description": "Для вербовки неофитов мне нужно создать то, во что они будут верить.",
+            "id": "society"
+        },
+        {
+            "label": "Сомнения",
+            "description": "Эти люди начали сомневаться в основополагающих принципах своей веры. Немного давления — и я смогу направить их в другую сторону.",
+            "id": "rededicable"
+        },
+        {
+            "id": "ingredient",
+            "description": "Топливо, мазь, пигмент, терпение: вещи, которые постепенно тратятся.",
+            "label": "Ингредиент"
+        },
+        {
+            "label": "Пигмент",
+            "description": "Возможно, его получится нанести на холст.",
+            "id": "pigment"
+        },
+        {
+            "label": "Смертельный яд",
+            "description": "Ни при каких обстоятельствах не используйте на тех, кто нужен вам живым.",
+            "id": "poison"
+        },
+        {
+            "label": "Влияние",
+            "description": "Эхо, отклик, связь. То, что долго не живёт.",
+            "id": "influence"
+        },
+        {
+            "label": "Орудие",
+            "description": "«Меч не убивает; это лишь орудие в руках убийцы». (Сенека Младший)",
+            "id": "tool"
+        },
+        {
+            "label": "Зеркало",
+            "description": "Если распороть кожу света, свет истечёт кровью.",
+            "id": "mirror"
+        },
+        {
+            "label": "Загадка",
+            "description": "На некоторые вопросы есть только один ответ. На некоторые и вовсе нет ответа.",
+            "id": "riddle"
+        },
+        {
+            "label": "Репутация",
+            "description": "«Молвы боятся многие, совести — кое-кто». (Плиний)",
+            "id": "reputation"
+        },
+        {
+            "label": "Уровень улик",
+            "description": "Некоторые доказательства весомее других.",
+            "id": "evidencelevel"
+        },
+        {
+            "label": "Подозрения",
+            "description": "Детектив может вами заинтересоваться.",
+            "id": "suspicious"
+        },
+        {
+            "label": "Сила",
+            "description": "Сила моя не угасает ни днём, ни ночью. [С этой картой вы можете трудиться или танцевать лучше.]",
+            "id": "healthskill"
+        },
+        {
+            "label": "Опасность",
+            "description": "Прямое столкновение — выбор неразумных. Но если у меня не останется выбора, пусть враги мои трепещут.",
+            "id": "murderskill"
+        },
+        {
+            "label": "Воображение",
+            "description": "В моей голове роятся образы. [Это позволит вам создавать более заметные картины.]",
+            "id": "passionskill"
+        },
+        {
+            "label": "Учёность",
+            "description": "Я — столп мудрости. [В настоящий момент с этой картой вы можете лишь развивать разум дальше.]",
+            "id": "reasonskill"
+        },
+        {
+            "label": "Путь назад через сновидение",
+            "description": "Некоторые воспоминания представляют сбой карту сновидения. Некоторые даже минуют Пределы сна и ведут в Лес и Дом, что простирается выше.",
+            "id": "way"
+        },
+        {
+            "label": "Желание",
+            "description": "Моя конечная цель. За её достижение придётся заплатить.",
+            "id": "desire"
+        },
+        {
+            "label": "Обещание",
+            "description": "Обещание идти до конца.",
+            "id": "promise"
+        },
+        {
+            "label": "Вознесение соперника",
+            "description": "Возможность вознестись в Дом Солнца представляется редко. Если её получит другой, я могу упустить свой шанс. [Когда число возрастёт до семи, ваш соперник получит шанс победить вас в следующую пору честолюбия.]",
+            "id": "rivalmarks"
+        },
+        {
+            "label": "Формы преображения",
+            "description": "Меняясь, я оставляю что-то в прошлом.",
+            "id": "changemarks"
+        },
+        {
+            "label": "Метки формы",
+            "description": "В поисках бессмертия и силы я могу обратиться к Часу, известному как Кузня Дней. Её касание пробуждает особые желания и дарует особые метки.",
+            "id": "powermarks"
+        },
+        {
+            "label": "Метки наслаждения",
+            "description": "В поисках бессмертия и наслаждений я могу обратиться к Часу, известному как Алая Чаша. Её касание пробуждает особые желания и дарует особые метки.",
+            "id": "sensationmarks"
+        },
+        {
+            "label": "Метки света",
+            "description": "В поисках бессмертия и знаний я могу обратиться к Часу, известному как Дозорный. Его касание пробуждает особые желания и дарует особые метки.",
+            "id": "enlightenmentmarks"
+        },
+        {
+            "label": "Когти памяти",
+            "description": "Под землёй кости. В костях память. В памяти цвета.",
+            "id": "remembrancemarks"
+        },
+        {
+            "id": "follower_lustenlightenment"
+        },
+        {
+            "id": "follower_lustpower"
+        },
+        {
+            "id": "follower_lustsensation"
+        },
+        {
+            "id": "follower_lustchange"
+        },
+        {
+            "id": "detectivetemptation"
+        },
+        {
+            "id": "long.preference.assault"
+        },
+        {
+            "id": "long.preference.intrigue"
+        },
+        {
+            "id": "long.preference.dreamwork"
+        },
+        {
+            "id": "long.preference.winter"
+        },
+        {
+            "id": "ascend",
+            "description": "К следующей метке.",
+            "label": "Вознесение"
+        },
+        {
+            "id": "descend",
+            "description": "Если я не утолю свои новые желания, метки потускнеют.",
+            "label": "Падение"
+        },
+        {
+            "label": "Статья",
+            "description": "Оригинальная работа, посвящённая узкой теме.",
+            "id": "article"
+        },
+        {
+            "label": "Текст",
+            "description": "Книги есть бессмертная память.",
+            "id": "text"
+        },
+        {
+            "id": "legacyplotitem"
+        },
+        {
+            "label": "С автографом",
+            "description": "Создатель оставил на тексте свою метку.",
+            "id": "autographed"
+        },
+        {
+            "label": "Знания",
+            "description": "Сведения о незримых искусствах. Я могу использовать их, чтобы привлекать последователей, проводить ритуалы, открыть путь в Обитель и приблизиться к вознесению... [Иногда фрагменты знаний можно улучшить с помощью изучения и других соответствующих им фрагментов.]",
+            "id": "lore"
+        },
+        {
+            "label": "Хрупкие знания",
+            "id": "subvertable_lore"
+        },
+        {
+            "label": "Память",
+            "description": "Мы помним мёртвых, пока не забываем о них.",
+            "id": "memory"
+        },
+        {
+            "label": "Язык",
+            "description": "Пригодится для перевода текстов.",
+            "id": "language"
+        },
+        {
+            "label": "Знаток латыни",
+            "description": "Знаток латинского языка, который готов обучить вас, если вы приступите к изучению вместе.",
+            "id": "tutorlatin"
+        },
+        {
+            "label": "Знаток греческого",
+            "description": "Знаток греческого языка, который готов обучить вас, если вы приступите к изучению вместе.",
+            "id": "tutorgreek"
+        },
+        {
+            "label": "Знаток арамейского",
+            "description": "Знаток арамейского языка, который готов обучить вас, если вы приступите к изучению вместе.",
+            "id": "tutoraramaic"
+        },
+        {
+            "label": "Знаток санскрита",
+            "description": "Знаток санскрита, который готов обучить вас, если вы приступите к изучению вместе.",
+            "id": "tutorsanskrit"
+        },
+        {
+            "label": "Носитель фучинского",
+            "description": "Этот дух может обучить вас фучинскому, если вы владеете родственным ему языком.",
+            "id": "spirittutorfucine"
+        },
+        {
+            "label": "Носитель фригийского",
+            "description": "Этот дух может обучить вас фригийскому, если вы владеете родственным ему языком.",
+            "id": "spirittutorphrygian"
+        },
+        {
+            "label": "Носитель мандейского",
+            "description": "Этот дух может обучить вас глубинному мандейскому, если вы владеете родственным ему языком.",
+            "id": "spirittutormandaic"
+        },
+        {
+            "label": "Филаксианец",
+            "description": "Если поговорить с этим духом о здоровье, он может защитить меня от недугов.",
+            "id": "spiritsicknessprotector"
+        },
+        {
+            "label": "Лампа потери",
+            "description": "Если поговорить с этим духом, я смогу предложить ему свои эмоции.",
+            "id": "spiriteatspassion"
+        },
+        {
+            "label": "Молот мыслей",
+            "description": "Если поговорить с этим духом, я смогу предложить ему свой разум.",
+            "id": "spiriteatsreason"
+        },
+        {
+            "label": "Аукционный предмет",
+            "description": "Я могу выставить этот предмет на аукцион, хотя результат торгов нельзя спрогнозировать.",
+            "id": "auctionable"
+        },
+        {
+            "label": "Номинал спинтрии",
+            "description": "Спинтрии — валюта скрытого мира. Некоторые виды спинтрий ценятся больше других. Впрочем, на сдачу не рассчитывайте. Вы не в бакалейной лавке.",
+            "id": "compensationvalue"
+        },
+        {
+            "label": "Штаб-квартира",
+            "description": "Для бесед и собраний.",
+            "id": "hq"
+        },
+        {
+            "label": "Возможная штаб-квартира",
+            "description": ".",
+            "id": "hq.potential"
+        },
+        {
+            "label": "Переехать в новый штаб",
+            "description": "Аспект рецепта",
+            "id": "movehq"
+        },
+        {
+            "label": "Библиотека",
+            "description": "Коллекция мелких трудов, частичных копий и эфемер, которые могут помочь в исследовании.",
+            "id": "library"
+        },
+        {
+            "label": "Яма",
+            "description": "В непроглядной темноте колодца мне откроются мрачные истины.",
+            "id": "pit"
+        },
+        {
+            "label": "Потайное место",
+            "description": "Это место легко не заметить. [Если вы используете эту штаб-квартиру, карты репутации исчезнут.]",
+            "id": "secret"
+        },
+        {
+            "label": "Святилище",
+            "description": "Место, созданное для размышлений и, возможно, даже умиротворения.",
+            "id": "sanctuary"
+        },
+        {
+            "label": "Место",
+            "description": "Места! Всему своё место, и здесь тоже наверняка что-то есть.",
+            "id": "location"
+        },
+        {
+            "label": "В столице",
+            "description": "Потайное место в оживлённом столичном городе, где я живу.",
+            "id": "vaultcapital"
+        },
+        {
+            "label": "В предместьях",
+            "description": "Зеленые поля и серые холмы.",
+            "id": "vaultshires"
+        },
+        {
+            "label": "На континенте",
+            "description": "По ту сторону узкого моря, в уголках чужой земли, где никто не будет искать.",
+            "id": "vaultcontinent"
+        },
+        {
+            "label": "В землях за лесом",
+            "description": "Туманные ущелья и удалённые от цивилизации деревеньки, где кожа мира особенно тонка. ",
+            "id": "vaultlandbeyondforest"
+        },
+        {
+            "label": "В Расколотых горах",
+            "description": "Песочные склоны, заснеженные вершины, далеко от людей.",
+            "id": "vaultrendingmountains"
+        },
+        {
+            "label": "Безлюдные пески",
+            "description": "В иссушённой пустыне вас ждут изрезанные дюнами горизонты.",
+            "id": "vaultloneandlevelsands"
+        },
+        {
+            "label": "На Сумеречных островах",
+            "description": "Омываемые морем скалистые берега изумрудных островов.",
+            "id": "vaulteveningisles"
+        },
+        {
+            "label": "Угроза",
+            "description": "Препятствие, риск или поспешный вывод.",
+            "id": "peril"
+        },
+        {
+            "label": "Проклятие",
+            "description": "Тёмное влияние, которое вам предстоит одолеть.",
+            "id": "curse"
+        },
+        {
+            "label": "Страж",
+            "description": "Священный долг этой сущности — помешать войти.",
+            "id": "guardian"
+        },
+        {
+            "label": "Печать",
+            "description": "Дальше вам не пройти.",
+            "id": "seal"
+        },
+        {
+            "label": "Сокровищница",
+            "description": "Тут хранится что-то очень ценное.",
+            "id": "vault"
+        },
+        {
+            "label": "Требуется знание",
+            "description": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Чтобы улучшить или обратить этот фрагмент, требуется эрудиция или штаб-квартира с библиотекой.]",
+            "id": "challenge.knowledge"
+        },
+        {
+            "label": "Требуется интуиция",
+            "description": "Некоторые ответы со временем приходят сами. [Чтобы улучшить или обратить этот фрагмент, требуются проблески или штаб-квартира со святилищем.]",
+            "id": "challenge.intuition"
+        },
+        {
+            "label": "Требуется суровый урок",
+            "description": "Я стану умнее. [Чтобы улучшить или обратить этот фрагмент, требуется ужас (который может развиться), навык «Тихое напряжение» или штаб-квартира с ямой.]",
+            "id": "challenge.grim"
+        },
+        {
+            "label": "Требуется одержимое исследование",
+            "description": "Для этого исследования придётся зайти дальше, чем велит голос рассудка. [Чтобы улучшить или обратить этот фрагмент, требуется штаб-квартира с библиотекой, навык «Никогда-не» или разум. Существует очень малая вероятность, что ваш разум повредится навсегда.]",
+            "id": "challenge.obsessive"
+        },
+        {
+            "label": "Требуется парадоксальная решимость",
+            "description": "Правда — змея, голод которой утоляют ответы. [Чтобы улучшить или обратить этот фрагмент, требуется штаб-квартира со святилищем, навык «Душа нараспашку» или эмоции. Существует очень малая вероятность, что ваши эмоции повредятся навсегда.]",
+            "id": "challenge.paradox"
+        },
+        {
+            "label": "Требуется просвещение",
+            "description": "Вода наполняет чашу; свет наполняет разум. [Чтобы улучшить или обратить этот фрагмент, требуется фиксация (которая может развиться), штаб-квартира с библиотекой или навык «Утончённый ум».]",
+            "id": "challenge.illumination"
+        },
+        {
+            "label": "Требуется экспериментальное исследование",
+            "description": "Боль мимолётна; знание останется в нашей памяти. [Чтобы улучшить или обратить этот фрагмент, вы должны рискнуть здоровьем или использовать узника.]",
+            "id": "challenge.practical"
+        },
+        {
+            "label": "Призванное существо",
+            "description": "Это существо не из нашего мира.",
+            "id": "summoned"
+        },
+        {
+            "label": "Проблемы со здоровьем",
+            "description": "Наверное, мне стоит отдохнуть и восстановить силы.",
+            "id": "illhealth"
+        },
+        {
+            "label": "Вызывает отчаяние",
+            "description": "Может спровоцировать отчаяние.",
+            "id": "inducesdespair"
+        },
+        {
+            "label": "Вызывает видения",
+            "description": "Я могу видеть то, чего нет.",
+            "id": "inducesvisions"
+        },
+        {
+            "id": "commissiongiven",
+            "description": "Вашего внимания ждёт работа.",
+            "label": "Получен заказ"
+        },
+        {
+            "id": "commissionfulfilled",
+            "description": "Вы выполнили поручение.",
+            "label": "Заказ выполнен"
+        },
+        {
+            "id": "recruiting",
+            "description": "Слепец не может видеть свет; но иногда свет ослепляет.",
+            "label": "Вербовка"
+        },
+        {
+            "id": "hiring",
+            "description": "Продлевает действие контракта наёмника.",
+            "label": "Наём"
+        },
+        {
+            "id": "refiring",
+            "description": "Продлевает преданность фанатика.",
+            "label": "Повторное воспламенение"
+        },
+        {
+            "id": "promotiontodisciple",
+            "description": "Настало время принести клятву посерьёзнее.",
+            "label": "Повышение"
+        },
+        {
+            "id": "promotionto_d_edge",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Грань"
+        },
+        {
+            "id": "promotionto_d_forge",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Кузня"
+        },
+        {
+            "id": "promotionto_d_grail",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Чаша"
+        },
+        {
+            "id": "promotionto_d_heart",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Сердце"
+        },
+        {
+            "id": "promotionto_d_knock",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Стук"
+        },
+        {
+            "id": "promotionto_d_lantern",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Лампада"
+        },
+        {
+            "id": "promotionto_d_moth",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Мотылёк"
+        },
+        {
+            "id": "promotionto_d_winter",
+            "description": "Истинные тайны нашего почитания.",
+            "label": "Возвышение: Зима"
+        },
+        {
+            "label": "Повышение: соперник",
+            "id": "rival_promotion"
+        },
+        {
+            "id": "fatiguing",
+            "description": "Что-то произошло.",
+            "label": "Обещание было дано."
+        },
+        {
+            "label": "Место истощено",
+            "description": "Ресурсы места истощены: оно не откроется, пока его не обновят.",
+            "id": "exhaustlocation"
+        },
+        {
+            "id": "restore",
+            "description": "Всё так, как было",
+            "label": "Ничего не произошло"
+        },
+        {
+            "id": "decline",
+            "description": "Что-то кончается",
+            "label": "Упадок"
+        },
+        {
+            "id": "avowal",
+            "description": "Положительная смена отношения",
+            "label": "Признание"
+        },
+        {
+            "id": "rejection",
+            "description": "Смена отношения",
+            "label": "Отказ"
+        },
+        {
+            "label": "Способность-след",
+            "description": "Навсегда обращает способность (активную или истощённую) в её след",
+            "id": "scarability"
+        },
+        {
+            "id": "restorehealth",
+            "description": "Здоровье вернётся.",
+            "label": "Восстановить здоровье"
+        },
+        {
+            "id": "damagehealth",
+            "description": "Здоровье ухудшится.",
+            "label": "Навредить"
+        },
+        {
+            "id": "fallsick",
+            "description": "Здоровье превратится в недуг; также может повлиять на людей",
+            "label": "Заболеть"
+        },
+        {
+            "id": "destroyhealth",
+            "description": "Здоровье будет утрачено.",
+            "label": "Разрушить здоровье"
+        },
+        {
+            "id": "damagereason",
+            "description": "Разум превратится в ужас.",
+            "label": "Повредить разум"
+        },
+        {
+            "id": "toreason",
+            "description": "...превратится в разум.",
+            "label": "В разум"
+        },
+        {
+            "id": "topassion",
+            "description": "...превратится в эмоции.",
+            "label": "В эмоции"
+        },
+        {
+            "id": "tohealth",
+            "description": "...превратится в здоровье.",
+            "label": "В здоровье"
+        },
+        {
+            "id": "dreadful",
+            "description": "Может спровоцировать ужас.",
+            "label": "Ужасный"
+        },
+        {
+            "id": "fascinating",
+            "description": "Может спровоцировать фиксацию.",
+            "label": "Чарующий"
+        },
+        {
+            "id": "damagepassion",
+            "description": "Эмоции превратятся в фиксацию.",
+            "label": "Повредить эмоции"
+        },
+        {
+            "id": "killmortal",
+            "description": "Смертные превращаются в трупы",
+            "label": "Убить смертного"
+        },
+        {
+            "id": "longded",
+            "description": "Вечные оставляют после себя награды",
+            "label": "Убить Вечного"
+        },
+        {
+            "id": "killsummoned",
+            "description": "Summonings will be replaced by flavour influences or summon blockers",
+            "label": "Убить призванного"
+        },
+        {
+            "id": "killmanifesting",
+            "description": "Summonings will be replaced by flavour influences or summon blockers",
+            "label": "Убить воплощённого призванного"
+        },
+        {
+            "id": "dissolution",
+            "description": "То, что внутри — извне; то, что извне — внутри. Распад превращает нечто во влияние.",
+            "label": "Распад"
+        },
+        {
+            "label": "Трансформировать труп в хрупкого восставшего",
+            "id": "raiseshattered"
+        },
+        {
+            "label": "Трансформировать труп в цветущего восставшего",
+            "id": "raiseburgeoning"
+        },
+        {
+            "id": "renewshattered"
+        },
+        {
+            "id": "renewburgeoning"
+        },
+        {
+            "id": "rebellion",
+            "description": "Последователи станут соперниками",
+            "label": "Бунт"
+        },
+        {
+            "id": "endannoyance",
+            "description": "Помехи вроде сложных боссов будут устранены.",
+            "label": "Покончить с помехой"
+        },
+        {
+            "id": "careeradvancement",
+            "description": "Повышение или улучшение мастерства",
+            "label": "Продвижение на работе"
+        },
+        {
+            "id": "derangemortal",
+            "description": "Смертные превращаются в душевнобольных",
+            "label": "Повредить рассудок смертному"
+        },
+        {
+            "id": "capturehunter",
+            "description": "Охотники будут пленены.",
+            "label": "Захватить охотника"
+        },
+        {
+            "id": "killhunter",
+            "description": "Охотники превратятся в трупы.",
+            "label": "Убить охотника"
+        },
+        {
+            "id": "capturefollower",
+            "description": "Последователи будут пленены.",
+            "label": "Захватить последователя"
+        },
+        {
+            "id": "restorepassion",
+            "description": "Эмоции будут очищены.",
+            "label": "Восстановить эмоции"
+        },
+        {
+            "id": "plead",
+            "description": "Возможно, к вам проявят милосердие.",
+            "label": "Мольба"
+        },
+        {
+            "id": "employment",
+            "description": "На сегодня с работой покончено.",
+            "label": "Место работы"
+        },
+        {
+            "id": "scandalous",
+            "description": "Меня так легко не забудут.",
+            "label": "Скандальная личность"
+        },
+        {
+            "id": "epiphany",
+            "description": "Моё понимание улучшилось.",
+            "label": "Откровение"
+        },
+        {
+            "id": "upgradeinfluence",
+            "description": "Мне удалось найти поддержку.",
+            "label": "Усилить влияние"
+        },
+        {
+            "label": "Шаг к славе",
+            "description": "Обращает ужас в фиксацию, а потенциальные другие элементы — в их могущественные аналоги.",
+            "id": "glorify"
+        },
+        {
+            "id": "depiphany",
+            "description": "Теперь я многое понимаю упрощённо.",
+            "label": "Помутнение"
+        },
+        {
+            "id": "investigatingsuccess",
+            "description": "Улучшает улики.",
+            "label": "Успешное расследование"
+        },
+        {
+            "id": "investigatingsetback",
+            "description": "Ослабляет улики.",
+            "label": "Трудности в расследовании"
+        },
+        {
+            "id": "crackmirror",
+            "description": "Зеркала потрескаются.",
+            "label": "Разбить зеркала"
+        },
+        {
+            "label": "Смертный",
+            "description": "«Привычка жить обращает нас против смерти». (Томас Браун)",
+            "id": "mortal"
+        },
+        {
+            "label": "Заказ",
+            "description": "Возможность заработать. Мне нужно выполнить заказ и вернуть его покровителю.",
+            "id": "commission"
+        },
+        {
+            "label": "Настоящая удача",
+            "description": "Как мне повезло.",
+            "id": "benign"
+        },
+        {
+            "label": "Уродство",
+            "description": "Этому здесь не рады.",
+            "id": "malign"
+        },
+        {
+            "label": "Пора",
+            "description": "Скоро произойдёт что-то важное",
+            "id": "season"
+        },
+        {
+            "label": "Пожиратель",
+            "description": "Если это существо вырвется на свободу, оно может напасть на вас или поглотить ваших последователей.",
+            "id": "devourer"
+        },
+        {
+            "label": "Обманщик",
+            "description": "Если это существо вырвется на свободу, оно может попытаться свести с ума вас или ваших последователей.",
+            "id": "deceiver"
+        },
+        {
+            "label": "Мистик",
+            "description": "Этот охотник способен выдержать атаку существ из Обители, даже если никто другой не может их остановить.",
+            "id": "mystic"
+        },
+        {
+            "label": "Гений",
+            "description": "Гениальные охотники видят смысл в каждой детали. Они могут превратить дурную славу в изобличающие улики.",
+            "id": "brilliant"
+        },
+        {
+            "label": "Сумасброд",
+            "description": "Этот охотник часто не в состоянии извлечь улики из дурной славы. С другой стороны, порой он находит улики даже у тех, чья репутация безупречна.",
+            "id": "erratic"
+        },
+        {
+            "label": "Педантичность",
+            "description": "Этот охотник всегда успешно извлекает улики из дурной славы.",
+            "id": "meticulous"
+        },
+        {
+            "label": "Силач",
+            "description": "Этот охотник выдержит примерно одну из трёх физических атак, даже если никто другой не может их остановить.",
+            "id": "tenacious"
+        },
+        {
+            "label": "Осторожный",
+            "description": "Теперь этот охотник настороже. Он больше не станет встречаться со мной лично.",
+            "id": "wary"
+        },
+        {
+            "label": "Мрачный",
+            "description": "Мрачных охотников не соблазнить славой... но их может погубить их собственное отчаяние.",
+            "id": "grim"
+        },
+        {
+            "label": "Идеалист",
+            "description": "Сила духа идеалистов нерушима — но иногда их идеалы можно обратить против них.",
+            "id": "idealist"
+        },
+        {
+            "label": "Поклонение: Грань",
+            "description": "Эта организация поклоняется принципу Грани, к которому мы взываем от имени Полковника и Львиного Кузнеца... и не только.",
+            "id": "venerationedge"
+        },
+        {
+            "label": "Поклонение: Кузня",
+            "description": "Эта организация поклоняется принципу Кузни, к которому мы взываем от имени самой Кузни Дней и Мадругады... и не только.",
+            "id": "venerationforge"
+        },
+        {
+            "label": "Поклонение: Чаша",
+            "description": "Эта организация поклоняется принципу Чаши, к которому мы взываем от имени самой Алой Чаши и Сестры-и-Ведьмы... и не только.",
+            "id": "venerationgrail"
+        },
+        {
+            "label": "Поклонение: Сердце",
+            "description": "Эта организация поклоняется принципу Сердца, к которому мы взываем от имени Громового Ритма и Мшанки... и не только.",
+            "id": "venerationheart"
+        },
+        {
+            "label": "Поклонение: Стук",
+            "description": "Эта организация поклоняется принципу Стука, к которому мы взываем от имени Матери Муравьёв и Менискаты... и не только.",
+            "id": "venerationknock"
+        },
+        {
+            "label": "Поклонение: Лампада",
+            "description": "Эта организация поклоняется принципу Лампады, к которому мы взываем от имени Двери-в-Глазу и Цветовода... и не только.",
+            "id": "venerationlantern"
+        },
+        {
+            "label": "Поклонение: Мотылёк",
+            "description": "Эта организация поклоняется принципу Мотылька, к которому мы взываем от имени самого Мотылька и Ведьмы-и-Сестры... и не только.",
+            "id": "venerationmoth"
+        },
+        {
+            "label": "Поклонение: Зима",
+            "description": "Эта организация поклоняется принципу Зимы, к которому мы взываем от имени Солнца-в-Лохмотьях и Рогатой Секиры... и не только.",
+            "id": "venerationwinter"
+        },
+        {
+            "label": "Написано на латыни",
+            "description": "Этот язык мёртв. Мёртв, словно алмазы. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textlatin"
+        },
+        {
+            "label": "Написано по-фучински",
+            "description": "К востоку от затерянного озера Фучино жил один народ. Ещё Гораций писал, что в тех землях обитают ведьмы. Именно на этом языке они говорили; одни называли его «сухим языком», другие — «языком ведьм». [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textfucine"
+        },
+        {
+            "label": "Написано по-гречески",
+            "description": "Язык философов, теологов и героев. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textgreek"
+        },
+        {
+            "label": "Написано по-фригийски",
+            "description": "Фригийцы почитали Великую мать, которую мы зовём Чашей. Именно в их землях зародилось общество сестёр Узла, и это на их языке Громовой Ритм молился во время вознесения. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textphrygian"
+        },
+        {
+            "label": "Написано по-арамейски",
+            "description": "Язык, на котором говорили жители Арамеи и уже более трёх тысяч лет говорят их многочисленные потомки. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textaramaic"
+        },
+        {
+            "label": "Написано на глубинном мандейском",
+            "description": "Тайные записи самых сокровенных обрядов, которые уединённые культы соблюдают в глубинах пустынь. Утверждается, что это родной язык самой Матери Муравьёв. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textmandaic"
+        },
+        {
+            "label": "Написано на санскрите",
+            "description": "Священный язык субконтинента. Теперь эта дверь вам открыта: сокровища поэзии, обряды и таинства, описанные за четыре тысячи лет, лежат перед вами... если продраться через витиеватость слога. [Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textsanskrit"
+        },
+        {
+            "label": "Написано на языке вач",
+            "description": "Когда боги ещё не восстали из крови, а обезьяны не освоили прямохождение, на этом языке уже говорили в Палатах солнца.[Некоторые книги необходимо перевести, чтобы прочитать.]",
+            "id": "textvak"
+        },
+        {
+            "label": "Удостоенный",
+            "description": "Этот последователь удостоен моего дара.",
+            "id": "follower_honoured"
+        },
+        {
+            "label": "Заинтересованный",
+            "description": "Этот человек интересуется мной в романтическом смысле.",
+            "id": "romanticinterest"
+        },
+        {
+            "label": "Рана",
+            "description": "Может ли Вечный умереть? Давайте проверим.",
+            "id": "long_wound"
+        },
+        {
+            "label": "Рана",
+            "description": "Этот человек пострадал в служении мне. [Раненые последователи не считаются последователями и не могут использоваться как агенты и помощники. Они могут умереть в пору болезней. Используйте <b>разговор</b>, чтобы вылечить их.]",
+            "id": "follower_wound"
+        },
+        {
+            "label": "След: ужасное событие",
+            "description": "ФАУСТ: Ну, полно, ад, мне думается, басня. МЕФИСТОФЕЛЬ: Что ж, думай так, но переменишь мненье. [Три карты следа одного типа убивают смертного.]",
+            "id": "follower_scar_edge"
+        },
+        {
+            "label": "След: почти зажившая фистула",
+            "description": "Не все двери — раны, но все раны — двери. [Три карты следа одного типа убивают смертного.]",
+            "id": "follower_scar_knock"
+        },
+        {
+            "label": "След: старая рана",
+            "description": "Сделай шаг навстречу закату и узри первые звёзды. [Три карты следа одного типа убивают смертного.]",
+            "id": "follower_scar_winter"
+        },
+        {
+            "label": "Старый шрам",
+            "description": "Этот человек познал боль.",
+            "id": "corpse_scar"
+        },
+        {
+            "label": "Обида",
+            "description": "Бесчисленные горести могут подорвать верность.",
+            "id": "resentment"
+        },
+        {
+            "label": "Скука",
+            "description": "Интерес моего благодетеля рано или поздно ослабнет.",
+            "id": "boredom"
+        },
+        {
+            "label": "Страстное увлечение",
+            "description": "Мой благодетель испытывает ко мне приязнь.",
+            "id": "besotment"
+        },
+        {
+            "label": "Предложение от благодетеля",
+            "description": "В минуту страсти мой благодетель предложил мне сочетаться с ним браком. Если я соглашусь, моя жизнь изменится навсегда... и навсегда закроет для меня другие двери. [Поговорите с благодетелем, пока его энтузиазм не угас.]",
+            "id": "benefactor_proposal"
+        },
+        {
+            "label": "Старые фигуры",
+            "description": "Я знакомлюсь с танцем, который зародился во влажных лесах первого континента.",
+            "id": "desiremoth_track"
+        },
+        {
+            "label": "Новые фигуры",
+            "description": "Я знакомлюсь с танцем, который зародился под горными соснами иссушённой земли.",
+            "id": "desireheart_track"
+        },
+        {
+            "label": "Джентльмен у Оленьей Двери",
+            "description": "Иногда выступления посещает состоятельный джентльмен. После шоу он лично выражает уважение танцорам кордебалета.",
+            "id": "potentialbenefactorm"
+        },
+        {
+            "label": "Дама в коробке",
+            "description": "Иногда выступления посещает состоятельная дама. Она живо интересуется танцорами кордебалета.",
+            "id": "potentialbenefactorf"
+        },
+        {
+            "label": "Восторженная наблюдательница",
+            "description": "Иногда она сидит во втором ряду, высматривая таланты для своего заведения. Тех, кого она нанимает, редко впоследствии видят в городе.",
+            "id": "potentialecdysiast"
+        },
+        {
+            "label": "Эффективность капкана",
+            "description": "Некоторых ловушек легко избежать. Другие являют собой стальную паутину.",
+            "id": "snarelevel"
+        },
+        {
+            "label": "Избранный компас",
+            "description": "Наш мастер выбрал этого человека на роль компаса, указывающего путь к пороку мира — уязвимому месту, которое не меняется. Когда его найдут, компас откажется от зрения, полностью посвятив себя Цели.",
+            "id": "apostleforge.pillar4.dormant"
+        },
+        {
+            "label": "Глаза твои узрели",
+            "description": "Этот человек слеп ко всему, кроме порока мира, который мы ищем. Один из них находится в Вене, но гораздо ближе к дому есть ещё один, в месте, имя которого, Кер-Ис, всегда оставалось неизменным. Компас отведёт нас туда с Ядром Рассвета, чтобы мы могли завершить Великое Дело.",
+            "id": "apostleforge.pillar4"
+        },
+        {
+            "label": "Наставник",
+            "description": "Наш тайный владыка; тот, кому отдана наша верность, кто вознесётся ещё выше нашими стараниями.",
+            "id": "mentor"
+        },
+        {
+            "label": "Намерение",
+            "description": "Наш бессмертный враг разработал план.",
+            "id": "intention.assault"
+        },
+        {
+            "label": "Намерение",
+            "description": "Наш бессмертный враг разработал план.",
+            "id": "intention.intrigue"
+        },
+        {
+            "label": "Намерение",
+            "description": "Наш бессмертный враг разработал план.",
+            "id": "intention.dreams"
+        },
+        {
+            "label": "Намерение",
+            "description": "Наш бессмертный враг разработал план.",
+            "id": "intention.downtime"
+        },
+        {
+            "label": "Раскрыта стратегия",
+            "description": "Эту стратегию раскрыли.",
+            "id": "strategy.revealed"
+        },
+        {
+            "label": "Раскрыть стратегию",
+            "description": "Раскрывает тайную стратегию",
+            "id": "revealstrategy"
+        },
+        {
+            "label": "Раскрыть личность",
+            "description": "Раскрывает неизвестного врага",
+            "id": "revealidentity"
+        },
+        {
+            "label": "Извлечённый урок",
+            "description": "Наш недруг наблюдает и учится.",
+            "id": "long.lesson"
+        },
+        {
+            "label": "Мощь",
+            "description": "Со временем этот Вечный наберёт союзников и ресурсы, улучшая шансы на успешное нападение. [Если этот показатель достигнет 10, Вечный решит рассмотреть возможность напасть на вас открыто.]",
+            "id": "long.might"
+        },
+        {
+            "label": "Связи",
+            "description": "Со временем этот Вечный развернёт в городе сеть контактов и сможет плести более сложные интриги. [Если этот показатель достигнет 10, Вечный решит рассмотреть возможность напасть на вас открыто.]",
+            "id": "long.connections"
+        },
+        {
+            "label": "Звёздность",
+            "description": "Со временем этот Вечный узнает форму наших снов и сможет эффективнее атаковать нас через Обитель. [Если этот показатель достигнет 10, Вечный решит рассмотреть возможность напасть на вас открыто.]",
+            "id": "long.dreamwork"
+        },
+        {
+            "label": "Бессмертный враг",
+            "description": "Многие Вечные служат Часам. Они яростно противятся появлению новых Имён, ведь когда-нибудь они могут стать новыми Часами и захватить власть. Некоторые Вечные ненавидят Часы. Эти борются с новыми Именами ещё отчаяннее.",
+            "id": "long.enemy"
+        },
+        {
+            "label": "Элемент Великого Дела",
+            "description": "Когда Дело будет завершено, наш создатель, наше вдохновение вознесётся ещё выше.",
+            "id": "greatwork"
+        },
+        {
+            "label": "Дело под угрозой!",
+            "description": "Великое Дело под угрозой. [Используйте для починки последователя Кузни и серебряную спинтрию.]",
+            "id": "greatwork.sabotaged"
+        },
+        {
+            "label": "Саботаж!",
+            "description": "Превращает предмет, необходимый для Великого Дела, в его нестабильную версию, которую нужно починить.",
+            "id": "sabotage"
+        },
+        {
+            "label": "Последствия саботажа устранены!",
+            "id": "sabotage.repair"
+        },
+        {
+            "label": "Сладчайшее",
+            "description": "Клубника, корица, померанец.",
+            "id": "grailflavour"
+        },
+        {
+            "label": "Соль",
+            "description": "Медь, мирра, ржавчина.",
+            "id": "heartflavour"
+        },
+        {
+            "label": "Сладкое",
+            "description": "Инжир, орехи, солод.",
+            "id": "mothflavour"
+        },
+        {
+            "label": "Улучшение гостей Экзальтации",
+            "description": "Собираются гости!",
+            "id": "vitulationupgrade"
+        },
+        {
+            "label": "Улучшение Облака Свидетелей",
+            "description": "Собираются Свидетели!",
+            "id": "cloudwitnessesupgrade"
+        },
+        {
+            "label": "Разжечь искушение",
+            "id": "renew.apostlelantern.pillar3"
+        },
+        {
+            "id": "poison.notoriety",
+            "label": "Разоблачение",
+            "description": "Тайны этого последователя обнародованы. Любая деятельность этого человека интересует прессу."
+        },
+        {
+            "label": "Отравленные эмоции",
+            "description": "Мои эмоции омрачены ползучим страхом. [Использование этой карты, скорее всего, вызовет ужас.]",
+            "id": "poison.passion.dread"
+        },
+        {
+            "label": "Ослепительное наваждение",
+            "description": "Меня дразнят повторяющиеся сны о горящих свечах. [Использование этой карты, скорее всего, вызовет фиксацию.]",
+            "id": "poison.reason.fascination"
+        },
+        {
+            "label": "Слабость плоти ",
+            "description": "Боль больше не покидает моё тело. [Использование этой карты, скорее всего, вызовет ужас.]",
+            "id": "poison.health.dread"
+        },
+        {
+            "label": "Глаза в моей памяти",
+            "description": "Вечный наслал на меня приятный сон. Мне нельзя об этом думать. [Если вы используете эту карту для сна или в ритуале, Вечный воспользуется вашими знаниями и укрепится в ваших снах.]",
+            "id": "poison.fascination.longlesson"
+        },
+        {
+            "label": "Зуб в моём сердце",
+            "description": "Вечный насылает на меня беспокойные сны. Безопаснее будет отбросить их, но мудрее — не думать о них вовсе. [Если вы используете эту карту для сна или в ритуале, Вечный воспользуется вашими знаниями и укрепится в ваших снах.]",
+            "id": "poison.dread.longlesson"
+        },
+        {
+            "label": "Путь под наблюдением",
+            "description": "Вечный наблюдает за этим Путём. Если я пройду им во сне, мой враг узнает обо мне больше.",
+            "id": "poison.way.long"
+        },
+        {
+            "label": "Запертый шрам",
+            "description": "Может, меня поцеловал змей, может, меня вкусил кинжал. А может, мне привиделся слишком живой сон. [Этот шрам может открыться в обряде с достаточно сильным Стуком.]",
+            "id": "lockscar"
+        },
+        {
+            "label": "Открыть запертый шрам",
+            "description": "[Этот шрам открывается.]",
+            "id": "openedlockscar"
+        },
+        {
+            "label": "Этот шрам откроется",
+            "description": "Аспект рецепта.",
+            "id": "unlockscar"
+        },
+        {
+            "label": "Кладбищенский едок",
+            "description": "Достаточно было единожды вкусить могильных плодов, чтобы голод поселился во мне навсегда. От ароматов разложения рот заполняет слюна, а желудок рычит, как пёс. [Уменьшается, когда вы кормитесь останками. Не позволяйте этому показателю достичь семи — игра может закончиться, и очень неприятно.]",
+            "id": "ghoul.hunger"
+        },
+        {
+            "label": "Цвета Семи-Витков",
+            "description": "На постели из дюн, под красным закатным солнцем бьётся само с собой чудовище, а помощники толпятся вокруг. Его огромное клёклое тело цвета грязной серы. Щупальцевидные шеи с клыками дерутся друг с другом, подобно котятам. Оно радостно рвёт собственную плоть, из которой хлещет золотая кровь. Оно переворачивается, сбивая с ног группу помощников, и остальные восторженно вопят.",
+            "id": "colours.furious"
+        },
+        {
+            "label": "Цвета приливные",
+            "description": "В ночной синеве Обители плавает коралловая корона. Спереди она поглощает младшие Имена, покрывая их минералами и соками, а сзади изгоняет некоторых из них, отполированных, как жемчужины. Остальные же кормят её покрытое шипами приливное сердце.",
+            "id": "colours.luxurious"
+        },
+        {
+            "label": "Цвета двойной Границы",
+            "description": "Когда я вспоминаю Рогатую Секиру, я чувствую запах боярышника. Я помню пурпурное вечернее небо с золотыми всполохами. Я помню, как блестят её лезвия после усердной работы.",
+            "id": "colours.liminal"
+        },
+        {
+            "label": "Цвета горизонта",
+            "description": "Тусклые бело-золотые заплаты раскрашивают небо, когда туман расступается, но солнце можно принять за луну. Задержав дыхание, мы смотрим, как оно становится ярче, пока от каждого цвета не отделяется новый подобно тому, как буквы алфавита получают новый смысл. Птенец вылупляется.",
+            "id": "colours.horizon"
+        },
+        {
+            "label": "Цвета былого",
+            "description": "Рассветный румянец переливается электрическим голубым светом. Это не ночь и не утро, а всего лишь часы полудня предсказанного и полудня длящегося. Мы раскрываем сердца перед золотой иглой неба. Под Солнцем-в-Зените все цвета становятся ярче.",
+            "id": "colours.splendid"
+        },
+        {
+            "label": "Цвета поворотные",
+            "description": "С каждым поворотом жгутики пульсируют, а тело светится, меняясь от прозрачного к багряному. Оно уродливо, но и красиво, как кровь, вытекающая из лабиринтов стекла. Оно не останавливается; его сложность бесконечна. Колесо.",
+            "id": "colours.endless"
+        },
+        {
+            "label": "Цвета не-чёрные",
+            "description": "Лес в сумерках, его ядовито-зелёные плоды, его сердоликовые корни. Глаза Мотылька сияют голодом и азартом. Он вышел на охоту.",
+            "id": "colours.wildering"
+        },
+        {
+            "label": "Цвета старого огня",
+            "description": "Это лишь камень, хотя он гладок и заточен, — но взгляните ближе. На каждой из граней — одна точка света. Возможно, это отблеск камина. А может, это другие звезды.",
+            "id": "colours.golden"
+        },
+        {
+            "label": "Цвета будущего",
+            "description": "Наши сияющие крылья раскрыты, чешуя сверкает, как обсидиан, глаза огранены, как драгоценные камни, а когти заточены до безупречной темноты.",
+            "id": "colours.honeyed"
+        },
+        {
+            "label": "Цена Элегиста",
+            "description": "Элегист — это Час, у которого больше нечего взять, и Час, который называет Мёртвых по именам. Когда-нибудь он вызовет одного из них из Ниоткуда, чтобы тот жил, одинокий и невредимый, до своей последней зимы.",
+            "id": "ascension.remembrance.offering"
+        },
+        {
+            "label": "Останки",
+            "description": "Эту плоть раньше носил кто-то другой.",
+            "id": "remnant"
+        },
+        {
+            "label": "Воплощение",
+            "description": "Дух приходит в мир. Это проще рождения, но не так просто, как пройти через дверь.",
+            "id": "manifesting"
+        },
+        {
+            "label": "Косноязычие",
+            "description": "Я начинаю повторяться. [Чем выше это значение, тем сильнее влияние на вашу работу. Создавая работы великолепного качества, вы постепенно понизите косноязычие.]",
+            "id": "stale"
+        },
+        {
+            "label": "Проект",
+            "description": "Исследовать тему проекта",
+            "id": "project"
+        }
+    ]
 }

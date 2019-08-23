@@ -1,178 +1,90 @@
-﻿{
-recipes: [
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "Путь сердца",
-		startdescription: "Когда вовлекается аспект Сердца, я могу получить Бодрость.",
-		id: "heartinduction",
-		actionId: "heartinduction",
-		description: "Моё собственное сердце сегодня бьётся сильнее.",
-		effects: 
-		{
-			previtality: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "Свет в черепе",
-		startdescription: "Когда аспект Лампады проливает свет, я могу вновь подобрать затерянные крупицы знаний.",
-		id: "lanterninduction",
-		actionId: "lanterninduction",
-		description: "Разрозненные пыльные факты прояснились и соединились в моём мозгу. По крайней мере, временно.",
-		effects: 
-		{
-			preerudition: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "Древнее, несчастное, дальнее",
-		startdescription: "Мотылёк находит свет в темноте. Как и я.",
-		id: "mothinduction",
-		actionId: "mothinduction",
-		description: "Меня томят полуосознанные влечения.",
-		effects: 
-		{
-			prerestlessness: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "The Dark, the Light",
-		startdescription: "Moth finds the light in the dark, and so do I.",
-		id: "mothglimmeringinduction",
-		actionId: "mothinduction",
-		description: "What could I be if I could be not this?",
-		effects: 
-		{
-			preglimmering: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "За пределами желания",
-		startdescription: "Удовлетворив желание, могу ли я усвоить хоть что-то из этого опыта?",
-		id: "grailinduction",
-		actionId: "grailinduction",
-		description: "Похоже на просветление.",
-		effects: 
-		{
-			preglimmering: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "Ужасы ночи",
-		startdescription: "Я просыпаюсь в ночи. Мои ладони, моё лицо — в крупных каплях пота.",
-		id: "dreadinduction",
-		actionId: "dreadinduction",
-		description: "Сжатые кулаки медленно расслабляются. Я вновь ускользаю в сон. Но что-то остаётся, как паутина в углах комнаты.",
-		effects: 
-		{
-			predread: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			dread: "1",
-		},
-		craftable: "false",
-		comments: "Only triggers if there's already Dread in whatever called this.",
-		warmup: "30",
-		label: "Night Terrors",
-		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
-		id: "dreadinduction_ifdread",
-		actionId: "dreadinduction",
-		description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
-		effects: 
-		{
-			predread: "1",
-		},
-	},
-	{
-		craftable: "false",
-		warmup: "30",
-		label: "Новые цвета",
-		startdescription: "Я замечаю, что мир облекается в незнакомые мне цвета.",
-		id: "fascinationinduction",
-		actionId: "fascinationinduction",
-		description: "Я вижу то, что видеть не следует. Я знаю, это опасно. Но сложно сдержать влечение к этому.",
-		effects: 
-		{
-			prefascination: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			fascination: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "New Colours",
-		startdescription: "I have begun to notice colours in the world for which I have no name.",
-		id: "fascinationinduction_iffascination",
-		actionId: "fascinationinduction",
-		description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
-		effects: 
-		{
-			prefascination: "1",
-		},
-	},
-	{
-		id: "poison.notoriety.induction",
-		startdescription: "I've used a follower who's too well-known. The Suppression Bureau may hear of it.",
-		warmup: "30",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		comment: "NEW",
-		label: "The Public Gaze",
-		actionId: "poison.notoriety.induction",
-	},
-	{
-		id: "poison.passion.dread.induction",
-		startdescription: "My passions are poisoned. Each pang of emotion brings an answering pang of savage grey.",
-		warmup: "30",
-		effects: 
-		{
-			dread: "1",
-		},
-		comment: "NEW",
-		label: "The Creeping Colour",
-		actionId: "poison.passion.dread.induction",
-	},
-	{
-		id: "poison.reason.fascination.induction",
-		startdescription: "A candle, when burned, brings light. When my thoughts ignite, what then?",
-		warmup: "30",
-		effects: 
-		{
-			fascination: "1",
-		},
-		comment: "NEW",
-		label: "Relentless Light",
-		actionId: "poison.reason.fascination.induction",
-	},
-	{
-		id: "poison.health.dread.induction",
-		startdescription: "I have invited an old friend to lair in my muscles for one more day.",
-		warmup: "30",
-		effects: 
-		{
-			dread: "1",
-		},
-		comment: "NEW",
-		label: "The Hospitality of Agony",
-		actionId: "poison.health.dread.induction",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "heartinduction",
+            "description": "Сегодня моё собственное сердце бьётся сильнее.",
+            "startdescription": "Каждый раз, как дело касается принципа Сердца, я могу получить стойкость.",
+            "label": "Путь Сердца"
+        },
+        {
+            "id": "lanterninduction",
+            "description": "Замшелые факты в моей голове обрели какую-то ясность. Хотя бы на время.",
+            "startdescription": "Каждый раз, как принцип Лампады проливает свет, я могу получить дополнительные обрывки знаний.",
+            "label": "Свет в черепе"
+        },
+        {
+            "id": "mothinduction",
+            "description": "Я чувствую полуосознанное томление.",
+            "startdescription": "Мотылёк находит свет в темноте, найду и я.",
+            "label": "Старые несчастные далекие вещи"
+        },
+        {
+            "id": "mothglimmeringinduction",
+            "description": "Кем мне быть, если я смогу быть не собой?",
+            "startdescription": "Мотылёк находит свет в темноте, найду и я.",
+            "label": "Тьма, Свет"
+        },
+        {
+            "id": "grailinduction",
+            "description": "Это похоже на просветление.",
+            "startdescription": "Можно ли чему-то научиться, удовлетворяя желание?",
+            "label": "За пределами Желания"
+        },
+        {
+            "id": "dreadinduction",
+            "description": "Постепенно я успокаиваюсь, разжимаю кулаки и снова засыпаю. Но что-то остаётся, вроде паутины в углу комнаты.",
+            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота.",
+            "label": "Ночные страхи"
+        },
+        {
+            "id": "dreadinduction_ifdread",
+            "description": "Постепенно я успокаиваюсь, разжимаю кулаки и снова засыпаю. Но что-то остаётся, вроде паутины в углу комнаты.",
+            "startdescription": "Я просыпаюсь ночью. Моё лицо и ладони покрыты бусинками пота.",
+            "label": "Ночные страхи"
+        },
+        {
+            "id": "fascinationinduction",
+            "description": "Я вижу такое, что видеть не дозволяется. Я знаю, что это опасно. Но как же тяжело отказаться от подобного!",
+            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий.",
+            "label": "Новые цвета"
+        },
+        {
+            "id": "fascinationinduction_iffascination",
+            "description": "Я вижу такое, что видеть не дозволяется. Я знаю, что это опасно. Но как же тяжело отказаться от подобного!",
+            "startdescription": "Я начинаю видеть вокруг себя цвета, для которых даже нет названий.",
+            "label": "Новые цвета"
+        },
+        {
+            "id": "poison.notoriety.induction",
+            "startdescription": "Не стоило использовать столь известного последователя. Об этом может узнать Бюро умолчания.",
+            "label": "Внимание общества"
+        },
+        {
+            "id": "poison.passion.dread.induction",
+            "startdescription": "Мои эмоции отравлены. Каждая вспышка чувств вызывает ответную вспышку жуткой серости.",
+            "label": "Растекающийся цвет"
+        },
+        {
+            "id": "poison.reason.fascination.induction",
+            "startdescription": "Горящая свеча дарит свет. Что же происходит с горящими мыслями?",
+            "label": "Неотступный свет"
+        },
+        {
+            "id": "poison.health.dread.induction",
+            "startdescription": "Я приглашаю старого друга ещё день пожить в моих мышцах.",
+            "label": "Гостеприимство агонии"
+        },
+        {
+            "id": "secret.induction",
+            "description": "...возможно, так Бюро умолчания будет тяжелее связать улики с нами. Кроме того, будет тяжелее поддерживать репутацию.",
+            "startdescription": "Мы постарались найти место для штаб-квартиры в стороне...",
+            "slots": [
+                {
+                    "label": "Репутация",
+                    "id": "reputation"
+                }
+            ],
+            "label": "Выгода уединения"
+        }
+    ]
 }

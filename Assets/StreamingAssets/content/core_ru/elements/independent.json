@@ -1,1771 +1,389 @@
-﻿{
-elements: [
-	{
-		id: "generic_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Некто совершенно без чувства меры.",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "Смутьян",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-			rival_promotion: "generic_r_c",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		icon: "auclair_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_b",
-			derangemortal: "lunatic",
-			rival_promotion: "auclair_r_c",
-		},
-		label: "Оклер, смутьян",
-		id: "auclair_r",
-		description: "Теперь Оклер ещё больше нравятся шахматы. Чёрное, белое.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		icon: "cat_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_b",
-			derangemortal: "lunatic",
-			rival_promotion: "cat_r_c",
-		},
-		label: "Кэт Каро, смутьян",
-		id: "cat_r",
-		description: "«Кэт Каро», так она себя называет. Она была гадалкой. Кажется, никто уже не знает точно, кто она сейчас.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		icon: "clifton_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_b",
-			derangemortal: "lunatic",
-			rival_promotion: "clifton_r_c",
-		},
-		label: "«Папа» Клифтон, смутьян",
-		id: "clifton_r",
-		description: "Клифтон предпочитает, чтобы его называли «Ваше святейшество». Когда его зовут по-другому, он может закатить сцену.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		icon: "clovette_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_b",
-			derangemortal: "lunatic",
-			rival_promotion: "clovette_r_c",
-		},
-		label: "Кловетта, смутьян",
-		id: "clovette_r",
-		description: "Сложно испытывать неприязнь к Кловетте, даже когда точно знаешь, что она сделала.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_b",
-			derangemortal: "lunatic",
-			rival_promotion: "dorothy_r_c",
-		},
-		label: "Дороти, смутьян",
-		id: "dorothy_r",
-		description: "Дороти не прервётся. Никогда не прервётся. Таков её обет.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "defaulthunter",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_b",
-			derangemortal: "lunatic",
-			rival_promotion: "douglas_r_c",
-		},
-		label: "Douglas, a troublemaker",
-		id: "douglas_r",
-		description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Ботинки Элриджа зачастую запятнаны кровью.",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "Элридж, смутьян",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_b",
-			derangemortal: "lunatic",
-			rival_promotion: "elridge_r_c",
-		},
-	},
-	{
-		id: "enid_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Энид предвидит врагов. Всегда.",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "Энид, смутьян",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_b",
-			derangemortal: "lunatic",
-			rival_promotion: "enid_r_c",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_b",
-			derangemortal: "lunatic",
-			rival_promotion: "laidlaw_r_c",
-		},
-		label: "Лейдло, смутьян",
-		id: "laidlaw_r",
-		description: "Планы Лейдло изощрённы как тень папоротника.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		icon: "leo_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_b",
-			derangemortal: "lunatic",
-			rival_promotion: "leo_r_c",
-		},
-		label: "Лео, смутьян",
-		id: "leo_r",
-		description: "Лео выбрал свою сторону, и сделает то, что необходимо, чтобы охранить её.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_b",
-			derangemortal: "lunatic",
-			rival_promotion: "neville_r_c",
-		},
-		label: "Невилл, смутьян",
-		id: "neville_r",
-		description: "Невилл знает, что долго так продолжаться не может — но покуда он в силах, он клянётся, что откроет все двери, решившие встать у него на пути.",
-		animFrames: "1",
-		image: "neville_r",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		icon: "porter_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_b",
-			derangemortal: "lunatic",
-			rival_promotion: "porter_r_c",
-		},
-		label: "Портер, смутьян",
-		id: "porter_r",
-		description: "Портер начал собирать имена.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		icon: "renira_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_b",
-			derangemortal: "lunatic",
-			rival_promotion: "renira_r_c",
-		},
-		label: "Ренира, смутьян",
-		id: "renira_r",
-		description: "Ренира любит превращать поклонников в служителей.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		icon: "rose_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_b",
-			derangemortal: "lunatic",
-			rival_promotion: "rose_r_c",
-		},
-		label: "Роуз, смутьян",
-		id: "rose_r",
-		description: "Роуз давно прекратила бояться своих врагов.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		icon: "saliba_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_b",
-			derangemortal: "lunatic",
-			rival_promotion: "saliba_r_c",
-		},
-		label: "Салиб, смутьян",
-		id: "saliba_r",
-		description: "Салиб не терпит скуки.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		icon: "slee_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_b",
-			derangemortal: "lunatic",
-			rival_promotion: "slee_r_c",
-		},
-		label: "Сли, смутьян",
-		id: "slee_r",
-		description: "Сли никогда не хватает материалов для доработки его теорий.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_b",
-			derangemortal: "lunatic",
-			rival_promotion: "sylvia_r_c",
-		},
-		label: "Сильвия, смутьян",
-		id: "sylvia_r",
-		description: "Планы Сильвии неясны. Кажется, они неясны даже самой Сильвии.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		icon: "tristan_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_b",
-			derangemortal: "lunatic",
-			rival_promotion: "tristan_r_c",
-		},
-		label: "Тристан, смутьян",
-		id: "tristan_r",
-		description: "Тристан куёт маленькое королевство. Когда огонь будет необходим, он применит огонь.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		icon: "valciane_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_b",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_c",
-		},
-		label: "Вальчиана, смутьян",
-		id: "valciane_r",
-		description: "Вальчиана расправляется со своими противниками с беспощадной живостью молодёжи, бьющей бутылки.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		icon: "victor_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_b",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_c",
-		},
-		label: "Виктор, смутьян",
-		id: "victor_r",
-		description: "Виктор готов ко всему. Все его ножи рвутся в бой как новобранцы.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		icon: "violet_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_b",
-			derangemortal: "lunatic",
-			rival_promotion: "violet_r_c",
-		},
-		label: "Виолет, смутьян",
-		id: "violet_r",
-		description: "Виолет нашла новые увлечения.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			rivalmarks: "2",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_b",
-			derangemortal: "lunatic",
-			rival_promotion: "ysabet_r_c",
-		},
-		label: "Изабет, смутьян",
-		id: "ysabet_r",
-		description: "Изабет ждёт там, где её не увидеть.",
-		animFrames: "1",
-	},
-	{
-		id: "generic_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Someone who's lost all sense of proportion.",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "A Rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-			rival_promotion: "generic_r_d",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		comment: "NEW",
-		icon: "auclair_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_c",
-			derangemortal: "lunatic",
-			rival_promotion: "auclair_r_d",
-		},
-		label: "Auclair, a rival",
-		id: "auclair_r_c",
-		description: "Auclair enjoys chess, now more than ever. The black, the white.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		comment: "NEW",
-		icon: "cat_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_c",
-			derangemortal: "lunatic",
-			rival_promotion: "cat_r_d",
-		},
-		label: "Cat Caro, a rival",
-		id: "cat_r_c",
-		description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one seems to know exactly what she is now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		comment: "NEW",
-		icon: "clifton_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_c",
-			derangemortal: "lunatic",
-			rival_promotion: "clifton_r_d",
-		},
-		label: "'Pope' Clifton, a rival",
-		id: "clifton_r_c",
-		description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		comment: "NEW",
-		icon: "clovette_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_c",
-			derangemortal: "lunatic",
-			rival_promotion: "clovette_r_d",
-		},
-		label: "Clovette, a rival",
-		id: "clovette_r_c",
-		description: "It's difficult to dislike Clovette, even when one knows what she's done.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "connie_c",
-			derangemortal: "lunatic",
-			rival_promotion: "connie_r_d",
-		},
-		label: "Connie, a renegade",
-		id: "connie_r_c",
-		description: "Connie's... Connie's thinking things over.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		comment: "NEW",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_c",
-			derangemortal: "lunatic",
-			rival_promotion: "dorothy_r_d",
-		},
-		label: "Dorothy, a rival",
-		id: "dorothy_r_c",
-		description: "Dorothy will not cease. She will never cease. She has vowed as much.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_c",
-			derangemortal: "lunatic",
-			rival_promotion: "douglas_r_d",
-		},
-		label: "Douglas, a rival",
-		id: "douglas_r_c",
-		description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Elridge's shoes are often spotted with blood.",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "Elridge, a rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_c",
-			derangemortal: "lunatic",
-			rival_promotion: "elridge_r_d",
-		},
-	},
-	{
-		id: "enid_r_c",
-		comment: "NEW",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Enid always sees her enemies coming. All the time.",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "Enid, a rival",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_c",
-			derangemortal: "lunatic",
-			rival_promotion: "enid_r_d",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		comment: "NEW",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_c",
-			derangemortal: "lunatic",
-			rival_promotion: "laidlaw_r_d",
-		},
-		label: "Laidlaw, a rival",
-		id: "laidlaw_r_c",
-		description: "Laidlaw's schemes are intricate as fern-shadow.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		comment: "NEW",
-		icon: "leo_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_c",
-			derangemortal: "lunatic",
-			rival_promotion: "leo_r_d",
-		},
-		label: "Leo, a rival",
-		id: "leo_r_c",
-		description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "natalia_c",
-			derangemortal: "lunatic",
-			rival_promotion: "natalia_r_d",
-		},
-		label: "Natalia, a renegade",
-		id: "natalia_r_c",
-		description: "Natalia has learnt truths that were too long hidden. In consequence, she has adjusted her agenda.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		comment: "NEW",
-		icon: "neville_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_c",
-			derangemortal: "lunatic",
-			rival_promotion: "neville_r_d",
-		},
-		label: "Neville, a rival",
-		id: "neville_r_c",
-		description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		comment: "NEW",
-		icon: "porter_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_c",
-			derangemortal: "lunatic",
-			rival_promotion: "porter_r_d",
-		},
-		label: "Porter, a rival",
-		id: "porter_r_c",
-		description: "Porter has begun to collect names.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		comment: "NEW",
-		icon: "renira_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_c",
-			derangemortal: "lunatic",
-			rival_promotion: "renira_r_d",
-		},
-		label: "Renira, a rival",
-		id: "renira_r_c",
-		description: "Renira likes to convert admirers into worshippers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		comment: "NEW",
-		icon: "rose_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_c",
-			derangemortal: "lunatic",
-			rival_promotion: "rose_r_d",
-		},
-		label: "Rose, a rival",
-		id: "rose_r_c",
-		description: "Rose has long since ceased to fear her enemies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		comment: "NEW",
-		icon: "saliba_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_c",
-			derangemortal: "lunatic",
-			rival_promotion: "saliba_r_d",
-		},
-		label: "Saliba, a rival",
-		id: "saliba_r_c",
-		description: "Saliba does not tolerate boredom.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		comment: "NEW",
-		icon: "slee_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_c",
-			derangemortal: "lunatic",
-			rival_promotion: "slee_r_d",
-		},
-		label: "Slee, a rival",
-		id: "slee_r_c",
-		description: "Slee is always hungry for resources to pursue his theories.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "spencer_c",
-			derangemortal: "lunatic",
-			rival_promotion: "spencer_r_d",
-		},
-		label: "Spencer, a renegade",
-		id: "spencer_r_c",
-		description: "For so long, Spencer flirted with these possibilities... and now he's made his decision.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		comment: "NEW",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_c",
-			derangemortal: "lunatic",
-			rival_promotion: "sylvia_r_d",
-		},
-		label: "Sylvia, a rival",
-		id: "sylvia_r_c",
-		description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		comment: "NEW",
-		icon: "tristan_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_c",
-			derangemortal: "lunatic",
-			rival_promotion: "tristan_r_d",
-		},
-		label: "Tristan, a rival",
-		id: "tristan_r_c",
-		description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		comment: "NEW",
-		icon: "valciane_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_c",
-			derangemortal: "lunatic",
-			rival_promotion: "valciane_r_d",
-		},
-		label: "Valciane, a rival",
-		id: "valciane_r_c",
-		description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		comment: "NEW",
-		icon: "victor_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_c",
-			derangemortal: "lunatic",
-			rival_promotion: "victor_r_d",
-		},
-		label: "Victor, a rival",
-		id: "victor_r_c",
-		description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		comment: "NEW",
-		icon: "violet_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_c",
-			derangemortal: "lunatic",
-			rival_promotion: "violet_r_d",
-		},
-		label: "Violet, a rival",
-		id: "violet_r_c",
-		description: "Violet has found new hobbies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		comment: "NEW",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_c",
-			derangemortal: "lunatic",
-			rival_promotion: "ysabet_r_d",
-		},
-		label: "Ysabet, a rival",
-		id: "ysabet_r_c",
-		description: "Ysabet waits where she cannot be seen.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "zachary_c",
-			derangemortal: "lunatic",
-			rival_promotion: "zachary_r_d",
-		},
-		label: "Zachary, a renegade",
-		id: "zachary_r_c",
-		description: "Zachary has always followed his reasoning wherever it leads: and now, it has led him out of the Suppression Bureau, into a bitter dawn.",
-		animFrames: "1",
-	},
-	{
-		id: "generic_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Someone who's lost all sense of proportion.",
-		icon: "generic_c_edge",
-		animFrames: "1",
-		label: "A Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "generic_c_edge",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqauclair",
-		comment: "NEW",
-		icon: "auclair_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "auclair_d",
-			derangemortal: "lunatic",
-		},
-		label: "Auclair, a Long in the making",
-		id: "auclair_r_d",
-		description: "Auclair enjoys chess, now more than ever. The black, the white.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqcat",
-		comment: "NEW",
-		icon: "cat_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "cat_d",
-			derangemortal: "lunatic",
-		},
-		label: "Cat Caro, a Long in the making",
-		id: "cat_r_d",
-		description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one seems to know exactly what she is now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclifton",
-		comment: "NEW",
-		icon: "clifton_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clifton_d",
-			derangemortal: "lunatic",
-		},
-		label: "'Pope' Clifton, a Long in the making",
-		id: "clifton_r_d",
-		description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqclovette",
-		comment: "NEW",
-		icon: "clovette_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "clovette_d",
-			derangemortal: "lunatic",
-		},
-		label: "Clovette, a Long in the making",
-		id: "clovette_r_d",
-		description: "It's difficult to dislike Clovette, even when one knows what she's done.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqconnie",
-		comment: "NEW",
-		icon: "connie_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "3",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "connie_d",
-			derangemortal: "lunatic",
-		},
-		label: "Connie, a Long in the making",
-		id: "connie_r_d",
-		description: "Connie never could resist a challenge.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdorothy",
-		comment: "NEW",
-		icon: "dorothy_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "dorothy_d",
-			derangemortal: "lunatic",
-		},
-		label: "Dorothy, a Long in the making",
-		id: "dorothy_r_d",
-		description: "Dorothy will not cease. She will never cease. She has vowed as much.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqdouglas",
-		comment: "NEW",
-		icon: "douglas_r",
-		aspects: 
-		{
-			disciple: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "douglas_d",
-			derangemortal: "lunatic",
-		},
-		label: "Douglas, a Long in the Making",
-		id: "douglas_r_d",
-		description: "Douglas has found the fire.",
-		animFrames: "1",
-	},
-	{
-		id: "elridge_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Elridge's shoes are often spotted with blood.",
-		icon: "elridge_r",
-		animFrames: "1",
-		label: "Elridge, a Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "elridge_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		id: "enid_r_d",
-		comment: "NEW",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		description: "Enid always sees her enemies coming. All the time.",
-		icon: "enid_r",
-		uniquenessgroup: "uqenid",
-		label: "Enid, a Long in the making",
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "enid_d",
-			derangemortal: "lunatic",
-		},
-	},
-	{
-		uniquenessgroup: "uqlaidlaw",
-		comment: "NEW",
-		icon: "laidlaw_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "laidlaw_d",
-			derangemortal: "lunatic",
-		},
-		label: "Laidlaw, a Long in the making",
-		id: "laidlaw_r_d",
-		description: "Laidlaw's schemes are intricate as fern-shadow.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqleo",
-		comment: "NEW",
-		icon: "leo_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "leo_d",
-			derangemortal: "lunatic",
-		},
-		label: "Leo, a Long in the making",
-		id: "leo_r_d",
-		description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqnatalia",
-		comment: "NEW",
-		icon: "natalia_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "natalia_d",
-			derangemortal: "lunatic",
-		},
-		label: "Natalia, a Long in the making",
-		id: "natalia_r_d",
-		description: "Natalia has learnt so much, and at such cost. She won't stop now.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqneville",
-		comment: "NEW",
-		icon: "neville_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "neville_d",
-			derangemortal: "lunatic",
-		},
-		label: "Neville, a Long in the making",
-		id: "neville_r_d",
-		description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqporter",
-		comment: "NEW",
-		icon: "porter_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "porter_d",
-			derangemortal: "lunatic",
-		},
-		label: "Porter, a Long in the making",
-		id: "porter_r_d",
-		description: "Porter has begun to collect names.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrenira",
-		comment: "NEW",
-		icon: "renira_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "renira_d",
-			derangemortal: "lunatic",
-		},
-		label: "Renira, a Long in the making",
-		id: "renira_r_d",
-		description: "Renira likes to convert admirers into worshippers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqrose",
-		comment: "NEW",
-		icon: "rose_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "rose_d",
-			derangemortal: "lunatic",
-		},
-		label: "Rose, a Long in the making",
-		id: "rose_r_d",
-		description: "Rose has long since ceased to fear her enemies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsaliba",
-		comment: "NEW",
-		icon: "saliba_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "saliba_d",
-			derangemortal: "lunatic",
-		},
-		label: "Saliba, a Long in the making",
-		id: "saliba_r_d",
-		description: "Saliba does not tolerate boredom.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqslee",
-		comment: "NEW",
-		icon: "slee_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "slee_d",
-			derangemortal: "lunatic",
-		},
-		label: "Slee, a Long in the making",
-		id: "slee_r_d",
-		description: "Slee is always hungry for resources to pursue his theories.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqspencer",
-		comment: "NEW",
-		icon: "spencer_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "spencer_d",
-			derangemortal: "lunatic",
-		},
-		label: "Spencer, a Long in the making",
-		id: "spencer_r_d",
-		description: "Spencer will no longer permit anything to be kept from him. Now he approaches the final threshold.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqsylvia",
-		comment: "NEW",
-		icon: "sylvia_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "sylvia_d",
-			derangemortal: "lunatic",
-		},
-		label: "Sylvia, a Long in the making",
-		id: "sylvia_r_d",
-		description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqtristan",
-		comment: "NEW",
-		icon: "tristan_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "tristan_d",
-			derangemortal: "lunatic",
-		},
-		label: "Tristan, a Long in the making",
-		id: "tristan_r_d",
-		description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvalciane",
-		comment: "NEW",
-		icon: "valciane_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "valciane_d",
-			derangemortal: "lunatic",
-		},
-		label: "Valciane, a Long in the making",
-		id: "valciane_r_d",
-		description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqvictor",
-		comment: "NEW",
-		icon: "victor_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "victor_d",
-			derangemortal: "lunatic",
-		},
-		label: "Victor, a Long in the making",
-		id: "victor_r_d",
-		description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqviolet",
-		comment: "NEW",
-		icon: "violet_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "violet_d",
-			derangemortal: "lunatic",
-		},
-		label: "Violet, a Long in the making",
-		id: "violet_r_d",
-		description: "Violet has found new hobbies.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqysabet",
-		comment: "NEW",
-		icon: "ysabet_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "ysabet_d",
-			derangemortal: "lunatic",
-		},
-		label: "Ysabet, a Long in the making",
-		id: "ysabet_r_d",
-		description: "Ysabet waits where she cannot be seen.",
-		animFrames: "1",
-	},
-	{
-		uniquenessgroup: "uqzachary",
-		comment: "NEW",
-		icon: "zachary_r",
-		aspects: 
-		{
-			exalted: "1",
-			rivalmarks: "4",
-			suspicious: "1",
-			independent: "1",
-			mortal: "1",
-		},
-		xtriggers: 
-		{
-			killmortal: "corpse",
-			recruiting: "zachary_d",
-			derangemortal: "lunatic",
-		},
-		label: "Zachary, a Long in the making",
-		id: "zachary_r_d",
-		description: "Zachary approaches his inevitable conclusion.",
-		animFrames: "1",
-	},
-]
+{
+    "elements": [
+        {
+            "id": "generic_r",
+            "description": "Этот человек окончательно утратил чувство меры.",
+            "label": "Смутьян"
+        },
+        {
+            "id": "auclair_r",
+            "label": "Оклер, смутьянка",
+            "description": "Оклер любит шахматы ещё больше, чем прежде. Чёрные, белые."
+        },
+        {
+            "id": "cat_r",
+            "label": "Кэт Каро, смутьянка",
+            "description": "Она называет себя Кэт Каро. Когда-то она была предсказательницей. Кто она теперь, точно не знает никто."
+        },
+        {
+            "id": "clifton_r",
+            "label": "«Поп» Клифтон, смутьян",
+            "description": "Клифтон любит, когда к нему обращаются «Ваше Святейшество». В противном случае он может закатить скандал."
+        },
+        {
+            "id": "clovette_r",
+            "label": "Кловетта, смутьянка",
+            "description": "Сложно не любить Кловетту — даже тем, кто знает, что она совершила."
+        },
+        {
+            "id": "dorothy_r",
+            "label": "Дороти, смутьянка",
+            "description": "Дороти не отступится. Она никогда не отступится. Она в этом поклялась."
+        },
+        {
+            "id": "douglas_r",
+            "label": "Дуглас, смутьян",
+            "description": "Дугласу всё осточертело. Пора выяснить, к чему вся эта суета."
+        },
+        {
+            "id": "elridge_r",
+            "label": "Элридж, смутьян",
+            "description": "Туфли Элриджа часто запачканы кровью."
+        },
+        {
+            "id": "enid_r",
+            "label": "Энид, смутьянка",
+            "description": "Энид всегда знает, когда её враг сделает ход. Всегда."
+        },
+        {
+            "id": "laidlaw_r",
+            "label": "Лэйдлоу, смутьян",
+            "description": "Планы Лэйдлоу затейливы, как тень папоротника."
+        },
+        {
+            "id": "leo_r",
+            "label": "Лео, смутьян",
+            "description": "Лео выбрал сторону и сделает всё ради своей цели."
+        },
+        {
+            "id": "neville_r",
+            "label": "Невилл, смутьян",
+            "description": "Невилл знает, что так продолжаться не может. Но пока он готов открывать любые двери, которые видит перед собой."
+        },
+        {
+            "id": "porter_r",
+            "label": "Портер, смутьян",
+            "description": "Портер начал коллекционировать имена."
+        },
+        {
+            "id": "renira_r",
+            "label": "Ренира, смутьянка",
+            "description": "Ренира любит обращать поклонников в свою веру."
+        },
+        {
+            "id": "rose_r",
+            "label": "Роуз, смутьянка",
+            "description": "Роуз давно перестала бояться своих врагов."
+        },
+        {
+            "id": "saliba_r",
+            "label": "Салиба, смутьян",
+            "description": "Салиба не терпит скуки."
+        },
+        {
+            "id": "slee_r",
+            "label": "Сли, смутьян",
+            "description": "Сли всегда ищет ресурсы для доказательства своих теорий."
+        },
+        {
+            "id": "sylvia_r",
+            "label": "Сильвия, смутьянка",
+            "description": "Интересы Сильвии до конца не понятны. Можно даже предположить, что они не вполне понятны ей самой."
+        },
+        {
+            "id": "tristan_r",
+            "label": "Тристан, смутьян",
+            "description": "Тристан куёт своё маленькое королевство. Когда ему понадобится огонь, он использует огонь."
+        },
+        {
+            "id": "valciane_r",
+            "label": "Валсиана, смутьянка",
+            "description": "Валсиана встречает противников весёлой бравадой и звоном бьющейся бутылки."
+        },
+        {
+            "id": "victor_r",
+            "label": "Виктор, смутьян",
+            "description": "Виктор ждёт следующего хода противника. Его ножи остры и готовы к бою, как отдохнувшие солдаты."
+        },
+        {
+            "id": "violet_r",
+            "label": "Вайолет, смутьянка",
+            "description": "Вайолет нашла себе новые увлечения."
+        },
+        {
+            "id": "ysabet_r",
+            "label": "Изабет, смутьянка",
+            "description": "Изабет ждёт там, где её не видно."
+        },
+        {
+            "id": "generic_r_c",
+            "description": "Этот человек окончательно утратил чувство меры.",
+            "label": "Соперник"
+        },
+        {
+            "id": "auclair_r_c",
+            "label": "Оклер, соперница",
+            "description": "Оклер любит шахматы ещё больше, чем прежде. Чёрные, белые."
+        },
+        {
+            "id": "cat_r_c",
+            "label": "Кэт Каро, соперница",
+            "description": "Она называет себя Кэт Каро. Когда-то она была предсказательницей. Кто она теперь, точно не знает никто."
+        },
+        {
+            "id": "clifton_r_c",
+            "label": "«Поп» Клифтон, соперник",
+            "description": "Клифтон любит, когда к нему обращаются «Ваше Святейшество». В противном случае он может закатить скандал."
+        },
+        {
+            "id": "clovette_r_c",
+            "label": "Кловетта, соперница",
+            "description": "Сложно не любить Кловетту — даже тем, кто знает, что она совершила."
+        },
+        {
+            "id": "connie_r_c",
+            "label": "Конни, отступница",
+            "description": "Конни... Конни обдумывает происходящее."
+        },
+        {
+            "id": "dorothy_r_c",
+            "label": "Дороти, соперница",
+            "description": "Дороти не отступится. Она никогда не отступится. Она в этом поклялась."
+        },
+        {
+            "id": "douglas_r_c",
+            "label": "Дуглас, соперник",
+            "description": "Дугласу всё осточертело. Пора выяснить, к чему вся эта суета."
+        },
+        {
+            "id": "elridge_r_c",
+            "label": "Элридж, соперник",
+            "description": "Туфли Элриджа часто запачканы кровью."
+        },
+        {
+            "id": "enid_r_c",
+            "label": "Энид, соперница",
+            "description": "Энид всегда знает, когда её враг сделает ход. Всегда."
+        },
+        {
+            "id": "laidlaw_r_c",
+            "label": "Лэйдлоу, соперник",
+            "description": "Планы Лэйдлоу затейливы, как тень папоротника."
+        },
+        {
+            "id": "leo_r_c",
+            "label": "Лео, соперник",
+            "description": "Лео выбрал сторону и сделает всё ради своей цели."
+        },
+        {
+            "id": "natalia_r_c",
+            "label": "Наталия, отступница",
+            "description": "Наталии открылись давно скрытые истины. В результате её интересы изменились."
+        },
+        {
+            "id": "neville_r_c",
+            "label": "Невилл, соперник",
+            "description": "Невилл знает, что так продолжаться не может. Но пока он готов открывать любые двери, которые видит перед собой."
+        },
+        {
+            "id": "porter_r_c",
+            "label": "Портер, соперник",
+            "description": "Портер начал коллекционировать имена."
+        },
+        {
+            "id": "renira_r_c",
+            "label": "Ренира, соперница",
+            "description": "Ренира любит обращать поклонников в свою веру."
+        },
+        {
+            "id": "rose_r_c",
+            "label": "Роуз, соперница",
+            "description": "Роуз давно перестала бояться своих врагов."
+        },
+        {
+            "id": "saliba_r_c",
+            "label": "Салиба, соперник",
+            "description": "Салиба не терпит скуки."
+        },
+        {
+            "id": "slee_r_c",
+            "label": "Сли, соперник",
+            "description": "Сли всегда ищет ресурсы для доказательства своих теорий."
+        },
+        {
+            "id": "spencer_r_c",
+            "label": "Спенсер, отступник",
+            "description": "Спенсер долго играл с возможностями... но наконец принял решение."
+        },
+        {
+            "id": "sylvia_r_c",
+            "label": "Сильвия, соперница",
+            "description": "Интересы Сильвии до конца не понятны. Можно даже предположить, что они не вполне понятны ей самой."
+        },
+        {
+            "id": "tristan_r_c",
+            "label": "Тристан, соперник",
+            "description": "Тристан куёт своё маленькое королевство. Когда ему понадобится огонь, он использует огонь."
+        },
+        {
+            "id": "valciane_r_c",
+            "label": "Валсиана, соперница",
+            "description": "Валсиана встречает противников весёлой бравадой и звоном бьющейся бутылки."
+        },
+        {
+            "id": "victor_r_c",
+            "label": "Виктор, соперник",
+            "description": "Виктор ждёт следующего хода противника. Его ножи остры и готовы к бою, как отдохнувшие солдаты."
+        },
+        {
+            "id": "violet_r_c",
+            "label": "Вайолет, соперница",
+            "description": "Вайолет нашла себе новые увлечения."
+        },
+        {
+            "id": "ysabet_r_c",
+            "label": "Изабет, соперница",
+            "description": "Изабет ждёт там, где её не видно."
+        },
+        {
+            "id": "zachary_r_c",
+            "label": "Захария, отступник",
+            "description": "Захария всегда прислушивался к гласу рассудка, и теперь тот привёл его из Бюро умолчания к горькому рассвету."
+        },
+        {
+            "id": "generic_r_d",
+            "description": "Этот человек окончательно утратил чувство меры.",
+            "label": "Восходящий к Вечности"
+        },
+        {
+            "id": "auclair_r_d",
+            "label": "Оклер, восходящая к Вечности",
+            "description": "Оклер любит шахматы ещё больше, чем прежде. Чёрные, белые."
+        },
+        {
+            "id": "cat_r_d",
+            "label": "Кэт Каро, восходящая к Вечности",
+            "description": "Она называет себя Кэт Каро. Когда-то она была предсказательницей. Кто она теперь, точно не знает никто."
+        },
+        {
+            "id": "clifton_r_d",
+            "label": "«Поп» Клифтон, восходящий к Вечности",
+            "description": "Клифтон любит, когда к нему обращаются «Ваше Святейшество». В противном случае он может закатить скандал."
+        },
+        {
+            "id": "clovette_r_d",
+            "label": "Кловетта, восходящая к Вечности",
+            "description": "Сложно не любить Кловетту — даже тем, кто знает, что она совершила."
+        },
+        {
+            "id": "connie_r_d",
+            "label": "Конни, восходящая к Вечности",
+            "description": "Конни никогда не могла устоять перед сложными задачами."
+        },
+        {
+            "id": "dorothy_r_d",
+            "label": "Дороти, восходящая к Вечности",
+            "description": "Дороти не отступится. Она никогда не отступится. Она в этом поклялась."
+        },
+        {
+            "id": "douglas_r_d",
+            "label": "Дуглас, восходящий к Вечности",
+            "description": "Дуглас нашёл свой огонь."
+        },
+        {
+            "id": "elridge_r_d",
+            "label": "Элридж, восходящий к Вечности",
+            "description": "Туфли Элриджа часто запачканы кровью."
+        },
+        {
+            "id": "enid_r_d",
+            "label": "Энид, восходящая к Вечности",
+            "description": "Энид всегда знает, когда её враг сделает ход. Всегда."
+        },
+        {
+            "id": "laidlaw_r_d",
+            "label": "Лэйдлоу, восходящий к Вечности",
+            "description": "Планы Лэйдлоу затейливы, как тень папоротника."
+        },
+        {
+            "id": "leo_r_d",
+            "label": "Лео, восходящий к Вечности",
+            "description": "Лео выбрал сторону и сделает всё ради своей цели."
+        },
+        {
+            "id": "natalia_r_d",
+            "label": "Наталия, восходящая к Вечности",
+            "description": "Наталия узнала много и дорого заплатила за эти знания. Она уже не остановится."
+        },
+        {
+            "id": "neville_r_d",
+            "label": "Невилл, восходящий к Вечности",
+            "description": "Невилл знает, что так продолжаться не может. Но пока он готов открывать любые двери, которые видит перед собой."
+        },
+        {
+            "id": "porter_r_d",
+            "label": "Портер, восходящий к Вечности",
+            "description": "Портер начал коллекционировать имена."
+        },
+        {
+            "id": "renira_r_d",
+            "label": "Ренира, восходящая к Вечности",
+            "description": "Ренира любит обращать поклонников в свою веру."
+        },
+        {
+            "id": "rose_r_d",
+            "label": "Роуз, восходящая к Вечности",
+            "description": "Роуз давно перестала бояться своих врагов."
+        },
+        {
+            "id": "saliba_r_d",
+            "label": "Салиба, восходящий к Вечности",
+            "description": "Салиба не терпит скуки."
+        },
+        {
+            "id": "slee_r_d",
+            "label": "Сли, восходящий к Вечности",
+            "description": "Сли всегда ищет ресурсы для доказательства своих теорий."
+        },
+        {
+            "id": "spencer_r_d",
+            "label": "Спенсер, восходящий к Вечности",
+            "description": "Спенсер больше не позволит что-то от него утаивать. Он приближается к последней двери."
+        },
+        {
+            "id": "sylvia_r_d",
+            "label": "Сильвия, восходящая к Вечности",
+            "description": "Интересы Сильвии до конца не понятны. Можно даже предположить, что они не вполне понятны ей самой."
+        },
+        {
+            "id": "tristan_r_d",
+            "label": "Тристан, восходящий к Вечности",
+            "description": "Тристан куёт своё маленькое королевство. Когда ему понадобится огонь, он использует огонь."
+        },
+        {
+            "id": "valciane_r_d",
+            "label": "Валсиана, восходящая к Вечности",
+            "description": "Валсиана встречает противников весёлой бравадой и звоном бьющейся бутылки."
+        },
+        {
+            "id": "victor_r_d",
+            "label": "Виктор, восходящий к Вечности",
+            "description": "Виктор ждёт следующего хода противника. Его ножи остры и готовы к бою, как отдохнувшие солдаты."
+        },
+        {
+            "id": "violet_r_d",
+            "label": "Вайолет, восходящая к Вечности",
+            "description": "Вайолет нашла себе новые увлечения."
+        },
+        {
+            "id": "ysabet_r_d",
+            "label": "Изабет, восходящая к Вечности",
+            "description": "Изабет ждёт там, где её не видно."
+        },
+        {
+            "id": "zachary_r_d",
+            "label": "Захария, восходящий к Вечности",
+            "description": "Захария приближается к неизбежному финалу."
+        }
+    ]
 }

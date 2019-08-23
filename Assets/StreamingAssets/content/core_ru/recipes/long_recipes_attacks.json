@@ -1,0 +1,954 @@
+{
+    "recipes": [
+        {
+            "id": "long.executestrategy.assassination.begin",
+            "startdescription": "Когда-то давно Трагулари — Жалящих — привлекали для охоты на бессмертных и приближённых к ним. Отряд Труасена истребил их после Первой войны Червей... но не во всех историях, видимо. [Жалящий может уничтожить вас или последователя. Пока он готовится, <sprite name=heart> <sprite name=lantern> помогут вашим последователям его раскрыть, <sprite name=edge> <sprite name=forge> <sprite name=winter> помогут защититься во время нападения. Неудачливые защитники погибнут. Жалящий уязвим для призванных существ.] ",
+            "slots": [
+                {
+                    "label": "Открыть",
+                    "id": "defender"
+                }
+            ],
+            "label": "Дротик во тьме"
+        },
+        {
+            "id": "longassault.assassination.uncovered.success",
+            "startdescription": "Трагулари нападают из укрытия, солнечный свет им противен. В этот раз убийца отступил, но навсегда ли? Враг учтет это.",
+            "label": "Змей без укрытия"
+        },
+        {
+            "id": "longassault.assassination.uncovered.failure",
+            "startdescription": "Наш последователь так и не вернулся. Можешь лишь предположить, что Трагулари добрался до него со своими дротиками и ядом.",
+            "label": "Ожидающий Змей"
+        },
+        {
+            "id": "longassault.assassination.continue",
+            "startdescription": "Жалящий способен расправиться даже с самыми сильными. [<sprite name=edge> <sprite name=forge> <sprite name=winter> помогут вашим последователям организовать оборону. Неудачливые защитники погибнут. Жалящий уязвим для призванных существ.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Первая рана"
+        },
+        {
+            "id": "longassault.assassination.defenderdefeated",
+            "startdescription": "Жалящий забрал жизнь защитника, но это не конец. Трагулари удовлетворит только смерть цели или его собственная.",
+            "label": "Несвоевременная смерть"
+        },
+        {
+            "id": "longassault.assassination.attack.defeated",
+            "startdescription": "Наш защитник одержал победу, Жалящий мёртв. Можно надеяться, что всё закончилось.",
+            "label": "Последняя плата"
+        },
+        {
+            "id": "longassault.assassination.attack.player",
+            "startdescription": "Жалящий будет пускать мне кровь и отравлять меня раз за разом.",
+            "slots": [
+                {
+                    "label": "Атака...",
+                    "id": "health"
+                }
+            ],
+            "label": "Яды Жалящего"
+        },
+        {
+            "id": "longassault.assassination.murderskill.succeed",
+            "startdescription": "Не нужно было выступать против меня. Кто задолжал смерти, тот расплатился кровью.",
+            "label": "Сломанный дротик"
+        },
+        {
+            "id": "longassault.assassination.murderskill.failure",
+            "startdescription": "Мне удалось выстоять, но враг слишком силен. Сил у меня почти не осталось.",
+            "label": "Шрамы и передышка"
+        },
+        {
+            "id": "longassault.assassination.killplayer",
+            "startdescription": "Неужели у меня больше нет силы? [Если у вас нет запаса Здоровья, то яды Жалящего положат всему конец.]",
+            "label": "Острие дротика"
+        },
+        {
+            "id": "longassault.assassination.attack.follower",
+            "startdescription": "Жалящий может использовать один дротик или десяток, но смертельный удар будет нанесён последним.[<sprite name=edge> <sprite name=forge> <sprite name=winter> может защитить последователей от гибели. Остальные, как и несчастливые последователи, всегда погибают.]",
+            "slots": [
+                {
+                    "label": "Атака...",
+                    "id": "targetfollower"
+                }
+            ],
+            "label": "Рана, которая убивает"
+        },
+        {
+            "id": "longassault.assassination.attack.follower.failure",
+            "startdescription": "В этот раз Жалящий встретил неожиданно сильного противника и погиб. Быть может, на этом всё и закончится.",
+            "label": "Неожиданный поворот"
+        },
+        {
+            "id": "longassault.assassination.attack.follower.success",
+            "startdescription": "Иногда жертвы Жалящего умирают в агонии, закатывая глаза и корчась на земле. Иногда их находят исколотыми, как подушечку для булавок. На этот раз тело попросту пропало. Работа Жалящего завершена.",
+            "label": "Своевременная смерть"
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin",
+            "startdescription": "Наш враг готовит попытку похищения!",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "target"
+                }
+            ],
+            "label": "Похищение!"
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.begin.nonromancedfollower",
+            "startdescription": "Наш враг готовит попытку похищения!",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "target"
+                }
+            ],
+            "label": "Похищение!"
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.captured",
+            "startdescription": "Враг заточил нашего последователя в запертую комнату хорошо охраняемого дома, за невидимыми стенами, которые способны удерживать незримые вещи.",
+            "label": "Поймали!"
+        },
+        {
+            "id": "long.executestrategy.assault.abduct.follower.continue",
+            "startdescription": "Враг похитил нашего последователя! Последователь постарается сбежать, мы ему поможем, но вдруг это ловушка? Место защищено от призванных существ. [<sprite name=edge> <sprite name=forge> или <sprite name=winter> — чего больше — определит, смогут ли последователи бежать без потерь.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Спасение?"
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.begin",
+            "description": "Агенты врага не находят ничего, что могли бы сломать.",
+            "startdescription": "Бессмертный враг отправил своих агентов, чтобы помешать нашему труду.",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "target"
+                }
+            ],
+            "label": "Это диверсия!"
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.continue",
+            "description": "",
+            "startdescription": "Наша мастерская в осаде! Защищайте Великое Дело! [<sprite name=heart> или <sprite name=forge> дает последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Защита Великого Дела"
+        },
+        {
+            "id": "long.executestrategy.assault.forge.greatwork.succeed",
+            "startdescription": "Враг всё возится со своими ножами и ломами.",
+            "label": "Саботаж!"
+        },
+        {
+            "id": "long.executestrategy.assault.setambush.expedition.begin",
+            "startdescription": "Враг узнал, что мы планируем экспедицию. Узнав, куда мы собираемся, он отправит подручных, чтобы устроить засаду.",
+            "slots": [
+                {
+                    "label": "Сокровищница",
+                    "id": "vault"
+                }
+            ],
+            "label": "Засада"
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.begin",
+            "startdescription": "Враг отправил очень серьёзных джентльменов с приказом убить или хотя бы покалечить. [Это будет ударом по здоровью.]",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "id": "health"
+                }
+            ],
+            "label": "Сокрушительное наступление!"
+        },
+        {
+            "id": "long.executestrategy.assault.health.nonefound",
+            "startdescription": "Болезнь, истощение или недостаток сосредоточения мешает мне сопротивляться этой атаке. [Немедленно добудьте здоровье или умрите.]",
+            "label": "Эта атака меня погубит"
+        },
+        {
+            "id": "long.executestrategy.assault.destroyhealth.continue",
+            "startdescription": "Если атака достигнет цели, мне будет нанесён значительный урон. [<sprite name=heart> или <sprite name=edge> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Сокрушительное наступление!"
+        },
+        {
+            "label": "Уроки агонии",
+            "startdescription": "Я страдаю. Я терплю.",
+            "id": "long.executestrategy.assault.destroyhealth.succeed"
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.begin",
+            "startdescription": "Враг отправил своих агентов, чтобы жестоко избивать наших последователей.",
+            "slots": [
+                {
+                    "label": "Последователь",
+                    "id": "follower"
+                }
+            ],
+            "label": "Нападение на последователя!"
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.hireling.continue",
+            "startdescription": "Больше нашего наёмника мы не увидим.",
+            "label": "«Мне недостаточно платят, чтобы такое терпеть»"
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.spirit.continue",
+            "startdescription": "Враг дал своим агентам возможность изгонять существ, призванных нами. Всё, их нет.",
+            "label": "В эту игру можно играть вдвоём"
+        },
+        {
+            "id": "long.executestrategy.assault.injurefollower.continue",
+            "startdescription": "Ещё кто-то из последователей мог бы прийти на помощь, но боится тоже оказаться среди раненых. Было бы глупо посылать духов против сил столь древнего Вечного. [<sprite name=edge> <sprite name=forge> или <sprite name=winter> — чего больше — определит, смогут ли последователи бежать без потерь.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Подкрепления?"
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.begin",
+            "startdescription": "Враг отправил громилу. Еще нет приказа о моём убийстве, но та сторона горевать не станет, если я вдруг скончаюсь.[Это навредит вашему здоровью.]",
+            "slots": [
+                {
+                    "label": "Здоровье",
+                    "id": "health"
+                }
+            ],
+            "label": "Штурм!"
+        },
+        {
+            "id": "long.executestrategy.assault.injurehealth.continue",
+            "description": "",
+            "startdescription": "Кто будет меня защищать? [<sprite name=heart> или <sprite name=edge> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Штурм!"
+        },
+        {
+            "label": "Не самая большая трудность",
+            "startdescription": "Я проливаю кровь, но держусь.",
+            "id": "long.executestrategy.assault.injurehealth.succeed"
+        },
+        {
+            "id": "long.executestrategy.assault.rob.begin",
+            "description": "Тем хуже моему врагу — красть у меня нечего.",
+            "startdescription": "Враг послал карманника, чтобы досадить мне.",
+            "slots": [
+                {
+                    "label": "Средства",
+                    "id": "funds"
+                }
+            ],
+            "label": "Мелкая кража"
+        },
+        {
+            "label": "Мелкая, но успешная кража",
+            "startdescription": "Кто-то украл мой блокнот!",
+            "id": "long.executestrategy.assault.rob.continue"
+        },
+        {
+            "id": "long.executestrategy.assault.intimidate.begin",
+            "startdescription": "Враг послал своих агентов, чтобы запугивать нас. [<sprite name=heart> или <sprite name=grail> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Неприятный трюк"
+        },
+        {
+            "label": "Предчувствие боли",
+            "startdescription": "Проклятья, написанные углём; распятые в саду животные; поджог брошенных домов. Тайная война может вестись и такими способами.",
+            "id": "long.executestrategy.assault.intimidate.succeed"
+        },
+        {
+            "id": "long.executestrategy.assault.failure",
+            "startdescription": "Мы выстояли во время вражеского нападения... Но при этом раскрыли себя для врага, теперь он будет относиться к нам более серьёзно. В следующий раз атака будет куда опаснее.",
+            "label": "Неудачный штурм"
+        },
+        {
+            "id": "long.executestrategy.intrigue.scandal.begin",
+            "startdescription": "Наш враг организовал скандал, который будет губить все наши начинания, как лесной пожар. [Скандал будет периодически создавать дурную славу, пока внезапно не утихнет.]",
+            "label": "Какой скандал!"
+        },
+        {
+            "id": "scandal.end",
+            "startdescription": "Общественность быстро всё забывает, к счастью. Забудет и нас.",
+            "label": "Наконец-то тишина"
+        },
+        {
+            "id": "scandal.notoriety",
+            "startdescription": "Мы виноваты во многом, но только не в этом. Тем не менее, это обвинение может нас и погубить.",
+            "label": "Грязная ложь"
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.begin",
+            "startdescription": "Бессмертный враг пытается устроить встречу с одним из наших последователей — тем, что сомневается в нашем деле.",
+            "slots": [
+                {
+                    "label": "В искушении",
+                    "id": "target"
+                }
+            ],
+            "label": "Встреча"
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.continue",
+            "description": "",
+            "startdescription": "Теперь Вечный задействует все уловки, что удалось накопить за века... есть риск, что последователь оставит нас. [Используйте эмоции, чтобы сохранить последователя. Это не всегда получается, но вы можете повторять попытки, пока у вас остаются эмоции.]",
+            "slots": [
+                {
+                    "label": "Эмоциональный спор",
+                    "id": "passion"
+                }
+            ],
+            "label": "Соблазнение"
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.try",
+            "startdescription": "Эмоции могут заставить передумать. [Если не получится, мы можем повторить попытку.]",
+            "label": "Эмоциональная защита"
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.defendpassion.succeed",
+            "startdescription": "Последователь решает остаться с нами... пока что. [Но обида крепнет, а враг теперь знает о нас больше.]",
+            "label": "Облегчение"
+        },
+        {
+            "id": "long.executestrategy.intrigue.follower.seduce.succeed",
+            "startdescription": "Последователь обманул оказанное доверие и теперь будет помогать набирающему силы врагу.",
+            "label": "Предательство"
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.begin",
+            "startdescription": "Бессмертный враг пытается убедить нашего Хозяина, что Экзальтация будет неприятной, опасной или скучной.",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "target"
+                }
+            ],
+            "label": "Это диверсия!"
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.continue",
+            "description": "",
+            "startdescription": "Я могу послать представителя, чтобы очаровать или вдохновить. [<sprite name=heart> или <sprite name=grail> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Защитник",
+                    "id": "defender"
+                }
+            ],
+            "label": "Защита Великого Дела"
+        },
+        {
+            "id": "long.executestrategy.intrigue.grail.greatwork.succeed",
+            "startdescription": "Наш Хозяин колеблется, державшаяся на алчности вера рассыпается.",
+            "label": "Отчаяние Хозяина"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.begin",
+            "startdescription": "Наш враг пытается отравить разум нашего последователя.",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "follower"
+                }
+            ],
+            "label": "Семя сомнения"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.continue",
+            "startdescription": "Что говорят? [Используйте эмоции, чтобы сохранить последователя. Это не всегда получается, но вы можете повторять попытки, пока у вас остаются эмоции.]",
+            "slots": [
+                {
+                    "label": "Эмоциональный спор",
+                    "id": "passionateargument"
+                }
+            ],
+            "label": "Растут чёрные корни"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.try",
+            "startdescription": "Эмоции могут заставить передумать. [Если не получится, мы можем повторить попытку.]",
+            "label": "A Эмоцииate Defence"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.defendpassion.succeed"
+        },
+        {
+            "label": "Плоды разочарования",
+            "startdescription": "Мне кажется, что последователь не рассказывает мне всего, что знает обо мне.",
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.succeed"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.resentment.hireling.continue",
+            "startdescription": "Наемника убедили скрыться или запугали. Больше наши пути не пересекутся.",
+            "label": "Профессиональная бдительность"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.begin",
+            "startdescription": "Бессмертный враг ищет себе послушное орудие.",
+            "slots": [
+                {
+                    "label": "Заноза",
+                    "id": "hunter"
+                }
+            ],
+            "label": "Маловероятные союзы?"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.continue",
+            "startdescription": "Бюро умолчания не откажется ни от какой помощи, а наш Великое Дело его явно тревожит. Что же задумал наш бессмертный враг?",
+            "label": "Враг врага"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.mystic",
+            "startdescription": "Наш враг научил этого дознавателя как-то защищаться от духов. [Этот дознаватель стал мистиком.]",
+            "label": "Защита от незримых искусств"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.idealist",
+            "startdescription": "Этот дознаватель познал суть нашего Великого Дела. Это лишь укрепило, закалило, отшлифовало его стремление нас уничтожить. [Этот дознаватель стал идеалистом.]",
+            "label": "Новый свет"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.grim",
+            "startdescription": "Этому дознавателю преподали урок, который не так-то просто забыть. [Этот дознаватель стал мрачным.]",
+            "label": "Каменная твёрдость"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.erratic",
+            "startdescription": "Этот дознаватель теперь знает новые приёмы. Другое дело, что у него теперь дрожат руки. [Этот дознаватель стал сумасбродом.]",
+            "label": "Новая точка зрения"
+        },
+        {
+            "id": "long.executestrategy.intrigue.detective.assist.evidence",
+            "startdescription": "Бессмертный враг нашёптывает что-то на ухо этому дознавателю. [Вечный враг предоставил улику.]",
+            "label": "Явное жульничество"
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.begin",
+            "startdescription": "Бессмертный враг ищет союзника с большим потенциалом. [Если никого подходящего не удастся найти, интрига не состоится.]",
+            "slots": [
+                {
+                    "label": "Соперник",
+                    "id": "rival"
+                }
+            ],
+            "label": "Маловероятные союзы?"
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.continue",
+            "startdescription": "Враг тренирует нашего соперника, помогая быстрее войти в ряды Вечных. Если та сторона получит второго Вечного, наши дни сочтены. [<sprite name=heart> или <sprite name=moth> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "defender"
+                }
+            ],
+            "label": "Наставничество бессмертного"
+        },
+        {
+            "id": "long.executestrategy.intrigue.adversary.assist.succeed",
+            "startdescription": "Враг открыл нашему сопернику основные тайны вознесения. Нет сомнений, что если соперник станет Вечным, то будет использоваться врагом. Нам придётся очень нелегко.",
+            "label": "Выше"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.begin",
+            "startdescription": "Наш враг собирается раскрыть всем тайны наших последователей. [Если не удастся найти нераскрытого последователя, всё быстро закончится.]",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "follower"
+                }
+            ],
+            "label": "Дневные страхи."
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.continue",
+            "startdescription": "Я могу попробовать дать обществу что-то такое, что отвлечет внимание. [Используйте мистику, чтобы отвлечь врага. Это не всегда ведет к успеху и может создать дурную славу. Воспользуйтесь услугой от представителя власти, чтобы закончить всё немедленно.]",
+            "slots": [
+                {
+                    "label": "Отвлечение",
+                    "id": "defence"
+                }
+            ],
+            "label": "Защититься от раскрытия?"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendfavour"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.try",
+            "startdescription": "Слишком много посторонних уже слышали имя этого последователя. [Если отвлечь не удастся, мы можем повторить попытку. Если удастся, возникнет Дурная слава.]",
+            "label": "Отвлечение"
+        },
+        {
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.defendmystique.succeed"
+        },
+        {
+            "label": "Интерес общества",
+            "startdescription": "Наш последователь обретает нежеланную известность.",
+            "id": "long.executestrategy.intrigue.poison.follower.notoriety.succeed"
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.begin",
+            "startdescription": "Враг раздувает существующие слухи до невероятных масштабов.",
+            "slots": [
+                {
+                    "label": "Мистика",
+                    "id": "mystique"
+                }
+            ],
+            "label": "Ткань слухов"
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.continue",
+            "startdescription": "Возможно, я знаю кого-нибудь, кто сможет всё развернуть в обратную сторону. [<sprite name=heart> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "defender"
+                }
+            ],
+            "label": "Защитить нашу репутацию?"
+        },
+        {
+            "id": "long.executestrategy.intrigue.mystiquetonotoriety.succeed",
+            "description": "",
+            "startdescription": "Это не совсем так, но не совсем и не так.",
+            "label": "Нас презирают"
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.begin",
+            "startdescription": "Враг лжесвидетельствует против нас. Власти должны быть уверены в нашей невиновности. [Если это получится, мы потеряем существенную часть средств. <sprite name=heart> или <sprite name=moth> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "defender"
+                }
+            ],
+            "label": "Бумажный капкан"
+        },
+        {
+            "id": "long.executestrategy.intrigue.fraud.succeed",
+            "startdescription": "«В предыдущих письмах мы указывали на высокую вероятность вашего банкротства. Рассмотрев проблему более подробно...»",
+            "slots": [
+                {
+                    "label": "Средства",
+                    "id": "funds"
+                }
+            ],
+            "label": "Хватка аудитора"
+        },
+        {
+            "label": "Милость ревизора",
+            "startdescription": "Поток грозных писем сначала обмелел, а потом и вовсе пересох. Всё закончилось... хотя бы на какое-то время.",
+            "id": "long.executestrategy.intrigue.fraud.completed"
+        },
+        {
+            "id": "long.executestrategy.intrigue.createmystique.begin",
+            "startdescription": "Враг знает, что если повторять ложь достаточно часто, то в неё поверят. [<sprite name=heart> даёт последователям (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "defender"
+                }
+            ],
+            "label": "Беспочвенные слухи"
+        },
+        {
+            "label": "Дымка слухов",
+            "startdescription": "Моя репутация теперь зависит не только от меня.",
+            "id": "long.executestrategy.intrigue.createmystique.succeed"
+        },
+        {
+            "label": "Выгода сомнений",
+            "startdescription": "Наша репутация не пострадала... но в следующий раз враг будет действовать более тщательно.",
+            "id": "long.executestrategy.intrigue.failure"
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.begin",
+            "startdescription": "Враг использует против нас иссушающее проклятье. Мы можем отправить Перкуссиганта, чтобы остановить проклятье весёлым шумом и звоном, но тогда наш враг получит возможность его допросить. [Перкуссигант может сорвать применение проклятья, но подарит врагу урок.] ",
+            "slots": [
+                {
+                    "label": "Перкуссигант",
+                    "id": "defender"
+                }
+            ],
+            "label": "Иссушающее проклятие готовится"
+        },
+        {
+            "id": "long.executestrategy.dreams.drysoul.defeated",
+            "startdescription": "\r\nsing those hymns\r\nof writhing limbs\r\npercussigant, rehearse\r\n\r\nthe dry soul curse!\r\nthe dry soul curse!\r\na polymelian universe!",
+            "label": "Защита Перкуссиганта"
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.begin",
+            "startdescription": "Враг использует против нас проклятье пятого глаза. Мы можем применить дым Калигине, сорвав его приготовления, но враг получит возможность что-то разузнать. [Калигине может сорвать применение проклятья, но подарит врагу урок.] ",
+            "slots": [
+                {
+                    "label": "Перкуссигант",
+                    "id": "defender"
+                }
+            ],
+            "label": "Проклятие пятого глаза готовится"
+        },
+        {
+            "id": "long.executestrategy.dreams.fiftheye.defeated",
+            "startdescription": "Проклятье пятого глаза разрушено ещё до применения. Калигине больше нет, но нет и уверенности насчёт сохранности наших секретов.",
+            "label": "Пятый глаз не видит в дыму"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.begin",
+            "startdescription": "Враг выберет путь к Обители и поставит на нём стража.",
+            "slots": [
+                {
+                    "label": "Путь",
+                    "id": "way"
+                }
+            ],
+            "label": "Стражи на пути"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonway.continue",
+            "startdescription": "Враг сделал выбор. Мы больше не сможем без опаски пройти через эти врата.",
+            "label": "Стражи на пути"
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.begin",
+            "startdescription": "Бессмертный враг привлёк внимание Обители к нашему труду. Младшее Имя Рассечённого Волка идёт по нашему следу.",
+            "slots": [
+                {
+                    "label": "Цель",
+                    "id": "target"
+                }
+            ],
+            "label": "An Act of Саботаж!"
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.continue",
+            "description": "",
+            "startdescription": "Проворное серое зло ищет наш Великое Дело. Окутав его светом, мы сможем отпугнуть осколок волка. [<sprite name=heart> или <sprite name=lantern> даёт духам (чем сильнее, тем лучше) способность защищаться от подобного.]",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "defender"
+                }
+            ],
+            "label": "Защита Великого Дела"
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.succeed",
+            "startdescription": "Один свидетель бежал, другой достался осколку волка. Где же третий? Там, где никто не сможет найти.",
+            "label": "Меркнущий свет"
+        },
+        {
+            "id": "long.executestrategy.dreams.lantern.greatwork.failure",
+            "startdescription": "Мы отвлекли осколок волка другой целью. Наш Великое Дело пока в безопасности.",
+            "label": "Окутывающий свет"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.begin",
+            "startdescription": "Говорят, что царство смерти находится внизу. Но корни Обители уходят глубже, чем проникает свет. Я вижу это в снах, что мне посылает враг.",
+            "slots": [
+                {
+                    "label": "Эмоции",
+                    "id": "seeking"
+                }
+            ],
+            "label": "Сгущающиеся сумерки"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonpassionwithdread.continue",
+            "startdescription": "Во сне я вижу лестницу, уходящую в бесконечную глубину, туда, где упокоятся мёртвые после конца времен.",
+            "label": "Сгущающиеся сумерки"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.begin",
+            "startdescription": "Враг наполнил мои сны образами — мозаичными обещаниями грядущих Часов.",
+            "slots": [
+                {
+                    "label": "Разум",
+                    "id": "seeking"
+                }
+            ],
+            "label": "Фитиль и искры"
+        },
+        {
+            "id": "long.executestrategy.dreams.poisonreasonwithfascination.continue",
+            "startdescription": "Свечница — кто это? Почему я вижу сны о ней? Что это за огонь, что его питает? Мои мысли похожи на трут.",
+            "label": "Фитиль и искры"
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.poisoned.begin",
+            "startdescription": "Враг всё больше знает о моих надеждах и страхах, ему больше не приходится даже окрашивать свои послания моим ужасом. Сон этой ночью как корица в янтаре. Он выплывает прямо из Плавильни, манит меня, как нетронутый пирог, окруженный тёплой дымкой ностальгии.",
+            "label": "Вкусные сны"
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.begin",
+            "startdescription": "Враг послал мне сон о Саду огней. В этот сон завёрнуто, подобно сочному персику в шуршащей бумаге, обещание ужасного конца.",
+            "slots": [
+                {
+                    "label": "Ужас",
+                    "id": "seeking"
+                }
+            ],
+            "label": "Сочные сны"
+        },
+        {
+            "id": "long.executestrategy.dreams.dreadtofascination.poisoned.continue",
+            "startdescription": "Полученный мной сон охватывает мой ужас, как полип, пожирающий искру жизни. Вместо того он предлагает воспоминания о разговоре, которого не было, и светоносный смех.",
+            "label": "Сочные сны"
+        },
+        {
+            "label": "Сочные сны",
+            "id": "long.executestrategy.dreams.applypoison.fascination.longlesson"
+        },
+        {
+            "id": "long.executestrategy.dreams.createfascination.begin",
+            "description": "Это тот самый свет на пограничье грёз, о котором писали Коузли и Эрсо в своё время.",
+            "startdescription": "Враг зажёг свечу в высоком окне Обители. Её свет будет проникать в наши сны.",
+            "label": "Далекие огни"
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.begin",
+            "description": "Враг искал блеск моих отраженных мыслей в залах Обители, но ничего не нашел.",
+            "startdescription": "Под определенным углом мои мысли отражают свет Обители. Враг пытается вычислить этот угол.",
+            "slots": [
+                {
+                    "label": "Импульсы",
+                    "id": "impulses"
+                }
+            ],
+            "label": "Раскрытый угол"
+        },
+        {
+            "id": "long.executestrategy.dreams.learndreams.continue",
+            "startdescription": "Враг узнал угол моих мыслей, сделав меня куда уязвимее.",
+            "label": "Раскрытый угол"
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.begin",
+            "description": "Мои страхи окутаны тьмой, враг ничего не может найти.",
+            "startdescription": "Где-то внутри моего сердца скрываются и все мои страхи. Во сне в этот тайник ведёт дверь; если враг найдет её, то сможет проникнуть внутрь.",
+            "slots": [
+                {
+                    "label": "Импульсы",
+                    "id": "impulses"
+                }
+            ],
+            "label": "Демонстрация страхов"
+        },
+        {
+            "id": "long.executestrategy.dreams.learnfears.continue",
+            "startdescription": "Враг увидел страхи внутри моего сердца, сделав меня куда уязвимее.",
+            "label": "Демонстрация страхов"
+        },
+        {
+            "id": "long.executestrategy.downtime.learn.begin",
+            "startdescription": "Бессмертный враг располагает союзниками в разных странах. Даже действуя медленно, он сможет задействовать против меня серьезные ресурсы.",
+            "label": "Растущая сила"
+        },
+        {
+            "label": "Изучение: мощь",
+            "id": "long.executestrategy.downtime.learn.might"
+        },
+        {
+            "label": "Изучение: связи",
+            "id": "long.executestrategy.downtime.learn.connections"
+        },
+        {
+            "label": "Изучение: ткань снов",
+            "id": "long.executestrategy.downtime.learn.dreamwork"
+        },
+        {
+            "id": "long.executestrategy.downtime.rest.begin",
+            "startdescription": "Пока что враг решил выжидать.",
+            "label": "Передышка"
+        },
+        {
+            "id": "long.intrigue.confrontation",
+            "startdescription": "У врага настолько обширные связи, что он может рассчитывать на успех в прямом нападении. Атака может состояться совсем скоро.",
+            "label": "Подготовка к штурму"
+        },
+        {
+            "id": "long.assault.confrontation",
+            "startdescription": "Довольно уловок и действий через подручных. @#welland|Капитан Велланд лично использует против нас силу Кузни.#tryphon|Леди Триффон решила испачкать свои красивые руки кровью, лично пойдя в бой. #julian|Бесчувственный враг придёт, чтобы лично покончить с нами.#|Наш враг будет лично участвовать в сражении.@ [Вечный будет питаться моим здоровьем, пока меня не станет, хотя верные последователи могут защитить нас на какое-то время. Но только смертные последователи — враг опытен в незримых искусствах и духи ему навредить не могут.] ",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "follower"
+                }
+            ],
+            "label": "Прямое нападение!"
+        },
+        {
+            "id": "long.assault.confrontation.vanquished",
+            "description": "[Радуйтесь победе, пока можете. Работа продолжается. Если можно уничтожить нашего врага, то и наш наставник уязвим.]",
+            "startdescription": "Если бы не одна ошибка, этот гигант мог бы жить вечно.",
+            "label": "Вечный мёртв!"
+        },
+        {
+            "id": "long.assault.confrontation.grabhealth",
+            "startdescription": "Вечный наносит удар из тени и снова замолкает! [Если у меня не будет запаса здоровья, то это меня убьёт.]",
+            "slots": [
+                {
+                    "label": "Ранение",
+                    "id": "injury"
+                }
+            ],
+            "label": "Отчаянный натиск"
+        },
+        {
+            "id": "long.assault.confrontation.defender",
+            "startdescription": "Последователь с готовностью отдаст жизнь за наше дело. [Только <sprite name=edge><sprite name=forge><sprite name=winter> числом не меньше 5 даёт последователю возможность навредить Вечному. Но остальные хотя бы оттянут неизбежное.]",
+            "label": "Необходимая жертва"
+        },
+        {
+            "id": "long.assault.confrontation.weakfollower",
+            "startdescription": "Ещё одна свеча погашена.",
+            "label": "Необходимая жертва"
+        },
+        {
+            "id": "long.assault.confrontation.murderskill",
+            "startdescription": "Я лично сражусь с этим существом. На его стороне сила веков... но и меня тоже не стоит недооценивать.",
+            "label": "Навстречу ночи"
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.succeed",
+            "startdescription": "Схватившись с врагом в темноте и потерпев поражение, я всё же собираюсь с силами, чтобы пустить ему кровь. Да, мой враг ранен, но на мне нет живого места.",
+            "label": "Меня сломили, но теперь мои края режут, как бритва"
+        },
+        {
+            "id": "long.assault.confrontation.murderskill.failure",
+            "startdescription": "Я выхожу против врага, отвечаю силой на силу, но терплю поражение. Быть может, я больше, чем человек, но враг не был человеком намного дольше.",
+            "label": "Меня сломили"
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower",
+            "startdescription": "Глубокой ночью страшный крик заставляет город вздрогнуть. Вечный ранен!",
+            "label": "Славный конец"
+        },
+        {
+            "id": "long.assault.confrontation.strongfollower.failure",
+            "startdescription": "Минуты превращаются в часы. Ночь проглотила нашего товарища так же легко, как рыба проглатывает муху. Вечный продолжает своё наступление.",
+            "label": "Неудача"
+        },
+        {
+            "id": "long.dreams.confrontation",
+            "startdescription": "@#welland|Капитан Велланд ожидаемо избрал Пределы Обители полем решающего сражения.#tryphon|Леди Триффон избрала Пределы Обители местом решающего сражения.#julian|Коузли собирает своих союзников в Пределах Обители, чтобы напасть на нас.#diarist|Мемуарист начинает решающее наступление на нас в хорошо знакомых ему Пределах Обители.#|Враг собирает войско духов, чтобы дать нам бой у Обители.@ [Вечный будет питаться моими эмоциями и разумом, пока меня не станет. Но он открылся для ответного удара... если мне удастся собрать достаточно большое войско порождений Обители.] ",
+            "slots": [
+                {
+                    "label": "Defender",
+                    "id": "summoned"
+                }
+            ],
+            "label": "Война фантомов"
+        },
+        {
+            "id": "long.dreams.confrontation.vanquished",
+            "description": "[Радуйтесь победе, пока можете. Работа продолжается. Если можно уничтожить нашего врага, то и наш наставник уязвим.]",
+            "startdescription": "Среди непостоянных теней и яростного дыма Пределов Вечный тает, как убывающая Луна, его армия рассеивается, замыслы теряют смысл, имя забывается.",
+            "label": "Вечного больше нет!"
+        },
+        {
+            "id": "long.dreams.confrontation.defender",
+            "startdescription": "Битва может быть вымышленной, война — нет. Мне стоит выставить стражей во снах. [Только <sprite name=edge><sprite name=lantern><sprite name=moth> числом не меньше 5 дает духу возможность навредить Вечному. Но остальные хотя бы оттянут неизбежное.]",
+            "label": "Битва в Пределах"
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.maid",
+            "startdescription": "Мемуарист на короткой ноге с теми, кто проходит по Лестнице Ножей. Дева-из-Зеркала не выступит против него.",
+            "label": "Взаимопонимание с Солнцем-в-Лохмотьях"
+        },
+        {
+            "id": "long.dreams.confrontation.winter.maid",
+            "startdescription": "Коузли — Вечный Зимы, состояние защищает его от атак Девы-из-Зеркала.",
+            "label": "Зимний холод"
+        },
+        {
+            "id": "long.dreams.confrontation.lantern.hint",
+            "startdescription": "Мемуарист, будучи Вечным Лампады, знаком с последователями Славы. Ни один Намёк ему не повредит.",
+            "label": "Свет Менискаты"
+        },
+        {
+            "id": "long.dreams.confrontation.forge.caligine",
+            "startdescription": "Велланд держал огонь на поводке ещё до того, как родился наш Основатель. Калигине не сможет повредить ему.",
+            "label": "Давнее знакомство с Кузней"
+        },
+        {
+            "id": "long.dreams.confrontation.grail.prophet",
+            "startdescription": "«Не надо», — скажет леди Триффон. И бескожий пророк поймёт, что на самом деле не надо.",
+            "label": "Очевидная симпатия"
+        },
+        {
+            "id": "long.dreams.confrontation.weakfollower",
+            "startdescription": "Ещё одна свеча погашена.",
+            "label": "Необходимая жертва"
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower",
+            "startdescription": "С ветвей деревьев капает кровь. Наш враг ранен.",
+            "label": "Рана на дереве"
+        },
+        {
+            "id": "long.dreams.confrontation.strongfollower.failure",
+            "startdescription": "Наш враг не ранен.",
+            "label": "Длящийся свет"
+        },
+        {
+            "id": "long.dreams.confrontation.grabability",
+            "startdescription": "The nightmares keep coming. They keep coming. Day or night, waking or sleeping, the sounds of the things in the air, the roots of my hair growing inwards, the open doors that open all the way and the migraines that lair in cold and everything speaks to me, all the time everything, the tug of waking is gravity's slither and the press of the Bounds is the press of the crowd and I am sloughing me, this is how glaciers go\r\n\r\n[When I have no remaining Эмоции or Разум, this will destroy me.]",
+            "slots": [
+                {
+                    "label": "Кошмары наяву",
+                    "id": "wakingnightmares"
+                }
+            ],
+            "label": "Неизбежный закат"
+        },
+        {
+            "id": "long.dreams.confrontation.destroyedbynightmares",
+            "startdescription": "- больше нет -",
+            "label": "Милосердие"
+        },
+        {
+            "id": "long.dreams.confrontation.cleanup",
+            "label": "Война фантомов"
+        }
+    ]
+}

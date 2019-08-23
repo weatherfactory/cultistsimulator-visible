@@ -1,171 +1,77 @@
-﻿{
-elements: [
-	{
-		id: "legacydetectivejob",
-		aspects: 
-		{
-			job: "1",
-		},
-		description: "Я в числе старших инспекторов столичной полиции.",
-		label: "Должность инспектора",
-		xtriggers: 
-		{
-			careeradvancement: "legacydetectivejob_matured",
-		},
-	},
-	{
-		icon: "legacydetectivejob",
-		aspects: 
-		{
-			job: "1",
-		},
-		xtriggers: 
-		{
-			employment: "legacydetectivejob_matured",
-		},
-		decayTo: "legacydetectivejob_suspended",
-		label: "Должность инспектора",
-		id: "legacydetectivejob_matured",
-		lifetime: "90",
-		description: "Я в числе старших инспекторов столичной полиции, но по соглашению помогаю Бюро Подавления.",
-		slots: 
-		[
-			{
-				id: "target",
-				required: 
-				{
-					suspicious: "1",
-				},
-				description: "Пока нет улик, надо начать с непосредственного осмотра цели.",
-				label: "Субъект",
-				actionId: "work",
-			},
-			{
-				id: "meticulous",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Чем больше Разума я уделю расследованию, тем выше шанс успеха.",
-				label: "Педантичность",
-				actionId: "work",
-			},
-			{
-				id: "vigilant",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Чем больше Разума я уделю расследованию, тем выше шанс успеха.",
-				label: "Настойчивость",
-				actionId: "work",
-			},
-			{
-				id: "singleminded",
-				required: 
-				{
-					reason: "1",
-				},
-				description: "Чем больше Разума я уделю расследованию, тем выше шанс успеха.",
-				label: "Сосредоточенность",
-				actionId: "work",
-			},
-		],
-	},
-	{
-		aspects: 
-		{
-			job: "1",
-		},
-		xtriggers: 
-		{
-			plead: "legacydetectivejob_matured",
-		},
-		decayTo: "legacydetectivejob_disgraced",
-		label: "Должность инспектора [на грани увольнения]",
-		id: "legacydetectivejob_suspended",
-		lifetime: "90",
-		description: "Моё отсутствие замечено. Я на грани увольнения. [Подайте петицию о вашем случае, или навсегда утратите эту должность.]",
-		slots: 
-		[
-			{
-				id: "passion",
-				required: 
-				{
-					passion: "1",
-				},
-				label: "Страсть",
-				actionId: "work",
-			},
-		],
-	},
-	{
-		id: "legacydetectivejob_disgraced",
-		description: "Должность потеряна. Я вряд ли смогу её вернуть. Мне надо понять, как жить без своей формы.",
-		decayTo: "mystique",
-		label: "Должность инспектора [в опале]",
-		lifetime: "120",
-	},
-	{
-		id: "legacydetective_plotitem",
-		aspects: 
-		{
-			text: "1",
-			detectivetemptation: "1",
-			desire: "1",
-		},
-		description: "Данные по загадочному делу: #PREVIOUSCHARACTERNAME# — имя на обложке. Папка запечатана мною лично. Я слишком хорошо знаю, что в ней. Если открою её снова, могут вернуться сны.",
-		label: "Запечатанная папка Бюро",
-	},
-	{
-		id: "myevidence",
-		xtriggers: 
-		{
-			investigatingsuccess: "myevidenceb",
-		},
-		aspects: 
-		{
-			suspicious: "1",
-		},
-		description: "У меня есть свидетельства о занятиях цели.",
-		label: "Недостаточные улики",
-		lifetime: "300",
-	},
-	{
-		id: "myevidenceb",
-		aspects: 
-		{
-			suspicious: "1",
-		},
-		description: "У меня есть точные данные о занятиях цели.",
-		label: "Убийственные улики",
-		lifetime: "300",
-	},
-	{
-		id: "legacydetective_plotitem_burning",
-		aspects: 
-		{
-			text: "1",
-			detectivetemptation: "1",
-			desire: "1",
-		},
-		description: "Её почти нет.",
-		icon: "legacydetective_plotitem",
-		label: "Горящая папка Бюро",
-		lifetime: "10",
-	},
-	{
-		id: "legacydetective_plotitem_backup",
-		aspects: 
-		{
-			text: "1",
-			detectivetemptation: "1",
-			desire: "1",
-		},
-		description: "The evidence includes the kind of details that might make one lick one's lips, if one were interested in such things. I should not read it. The dreams might begin again.",
-		icon: "legacydetective_plotitem",
-		comment: "NEW",
-		label: "Troubling Bureau File",
-	},
-]
+{
+    "elements": [
+        {
+            "label": "Место инспектора",
+            "description": "Я занимаю руководящую должность в столичной полиции.",
+            "id": "legacydetectivejob"
+        },
+        {
+            "id": "legacydetectivejob_matured",
+            "description": "Я занимаю руководящую должность в столичной полиции, но меня временно командировали в Бюро умолчания.",
+            "slots": [
+                {
+                    "label": "Объект",
+                    "description": "Мне нужно начать наблюдение за добычей, пока я не получу доказательств.",
+                    "id": "target"
+                },
+                {
+                    "label": "Педантичность",
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
+                    "id": "meticulous"
+                },
+                {
+                    "label": "Бдительность",
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
+                    "id": "vigilant"
+                },
+                {
+                    "label": "Целеустремлённость",
+                    "description": "Если в расследовании я буду чаще обращаться к разуму, это увеличит мои шансы на успех.",
+                    "id": "singleminded"
+                }
+            ],
+            "label": "Место инспектора"
+        },
+        {
+            "id": "legacydetectivejob_suspended",
+            "description": "Моё отсутствие не осталось незамеченным. Меня отстранили от работы. [Оправдайте себя в глазах работодателя как можно скорее, или потеряете работу.]",
+            "slots": [
+                {
+                    "label": "Эмоции",
+                    "id": "passion"
+                }
+            ],
+            "label": "Инспектор полиции [Контракт приостановлен]"
+        },
+        {
+            "label": "Инспектор полиции [В опале]",
+            "description": "Меня уволили. Вряд ли мне удастся вернуть место. Я теперь гражданское лицо, и мне предстоит искать свой путь заново.",
+            "id": "legacydetectivejob_disgraced"
+        },
+        {
+            "label": "Опечатанное досье Бюро",
+            "description": "Досье на загадочную личность, известную как #PREVIOUSCHARACTERNAME#. Бумаги опечатаны мною лично. Мне прекрасно знакомо их содержание. Если я решусь перечитать их, сны могут вернуться.",
+            "id": "legacydetective_plotitem"
+        },
+        {
+            "id": "myevidence",
+            "description": "У меня есть некоторые улики касательно деятельности моей цели.",
+            "label": "Предварительные улики"
+        },
+        {
+            "label": "Изобличающие улики",
+            "description": "У меня есть веские улики касательно деятельности моей цели.",
+            "id": "myevidenceb"
+        },
+        {
+            "id": "legacydetective_plotitem_burning",
+            "label": "Горящее досье Бюро",
+            "description": "Бумаги почти догорели! Можно попробовать выхватить их из огня... "
+        },
+        {
+            "label": "Пугающее досье Бюро",
+            "description": "В числе улик — подробности, которые заставят облизнуться того, кто заинтересован в подобного рода вещах. Мне не следует их читать. Сны могут вернуться.",
+            "id": "legacydetective_plotitem_backup"
+        }
+    ]
 }

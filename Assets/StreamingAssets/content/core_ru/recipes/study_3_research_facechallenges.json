@@ -1,0 +1,270 @@
+{
+    "recipes": [
+        {
+            "id": "studyresearch.entrypoint",
+            "description": ".",
+            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]",
+            "label": "Навстречу ночи"
+        },
+        {
+            "label": "Навстречу ночи",
+            "startdescription": "Мудрость суть страна, а это её карты. [Пройдите все испытания на обоих фрагментах знаний, чтобы завершить исследовательское поручение. Потерпев неудачу, вы сможете снова приступить к выполнению.]",
+            "id": "studyresearch.attemptsolve"
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.knowledge",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходима эрудиция. Также можно воспользоваться библиотекой.]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: знание"
+        },
+        {
+            "id": "studyresearch.failed.challenge.knowledge",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.knowledge",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на знание.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.intuition",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходим проблеск. Также можно воспользоваться святилищем.]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: интуиция"
+        },
+        {
+            "id": "studyresearch.failed.challenge.intuition",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.intuition",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на интуицию.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.grim",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходим ужас. Также можно использовать яму или применить навык «Тихое напряжение». Ужас может развиться.]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: мрачные уроки"
+        },
+        {
+            "id": "studyresearch.failed.challenge.grim",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.grim",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли мрачное испытание.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.obsessive",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Откажитесь от разума, который может быть помутнён навсегда. Также можно воспользоваться библиотекой или применить навык «Никогда-не».]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: одержимое исследование"
+        },
+        {
+            "id": "studyresearch.failed.challenge.obsessive",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.obsessive",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на одержимость.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.damagereason",
+            "startdescription": "Мои мысли были заточены, словно клинок, но остриё этого клинка откололось. [Разум помутнён навсегда.]",
+            "label": "Ноша одержимости"
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.paradox",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Откажитесь от эмоций, которые могут быть повреждены. Также можно воспользоваться святилищем или применить навык «Душа нараспашку».]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: парадоксальная решимость"
+        },
+        {
+            "id": "studyresearch.failed.challenge.paradox",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.paradox",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли парадоксальное испытание.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.damagepassion",
+            "startdescription": "Эмоции провели меня по лабиринту, и теперь я нахожусь в самом его сердце. Сердце лабиринта черно и пусто. Оно обуглено, как дерево. [Эмоции повреждены навсегда.]",
+            "label": "Сердце лабиринта"
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.illumination",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Необходима фиксация — она может развиться. Также можно воспользоваться библиотекой или применить навык «Утончённый ум».]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: просвещение"
+        },
+        {
+            "id": "studyresearch.failed.challenge.illumination",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.illumination",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли испытание на просвещение.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.attemptsolve.challenge.practical",
+            "startdescription": "В этой головоломке недостаёт фрагментов. Отыскать их можно в странных уголках научного знания. [Рискните своим здоровьем или возьмите узника.]",
+            "slots": [
+                {
+                    "label": "Решение",
+                    "id": "solvechallenge"
+                }
+            ],
+            "label": "Испытание: экспериментальное исследование"
+        },
+        {
+            "id": "studyresearch.failed.challenge.practical",
+            "startdescription": "С исследованием придётся повременить. Пока что.",
+            "label": "Не удалось!"
+        },
+        {
+            "id": "studyresearch.solved.challenge.practical",
+            "startdescription": " ...кажется, есть. Это ведь то, что нужно? [Вы прошли экспериментальное испытание.]",
+            "label": "Ага!.."
+        },
+        {
+            "id": "studyresearch.damagehealth",
+            "startdescription": "Боль, как говорится, обучает. Особенно это любят говорить те, кому не больно. [Здоровье стало хуже.]",
+            "label": "Ущерб"
+        },
+        {
+            "id": "studyresearch.nochallengesremaining",
+            "description": "",
+            "startdescription": "Теперь... Теперь я понимаю!",
+            "label": "Мерцание света"
+        },
+        {
+            "id": "studyresearchtick",
+            "description": ".",
+            "startdescription": "У этого проекта есть возможности. Когда появляются требования, нужно их выполнять, чтобы получать осознание. Если я получу три осознания, то всё получится; иначе меня ждёт провал.",
+            "label": "Многообещающее исследование"
+        },
+        {
+            "id": "studyresearchneedsreason",
+            "description": "Чтобы продолжить исследование, мне необходим разум.",
+            "startdescription": "Мой путь затмевает замешательство. Здесь не обойтись без разума.",
+            "slots": [
+                {
+                    "label": "Разум",
+                    "id": "Reason"
+                }
+            ],
+            "label": "Тень замешательства"
+        },
+        {
+            "id": "studyresearchreasonsuccess",
+            "startdescription": "Это поручение занимает моё внимание целиком, но я уже вижу плоды своих трудов. [Получено осознание.]",
+            "label": "Свет интеллекта!"
+        },
+        {
+            "id": "studyresearchneedserudition",
+            "description": "My research needs Эрудиция.",
+            "startdescription": "Для моего исследования потребуется эрудиция.",
+            "slots": [
+                {
+                    "label": "Эрудиция",
+                    "id": "Erudition"
+                }
+            ],
+            "label": "Фрагменты мозаики"
+        },
+        {
+            "id": "studyresearcheruditionsuccess",
+            "startdescription": "Знание множит знание. [Получено осознание.]",
+            "label": "Всё подходит!"
+        },
+        {
+            "id": "studyresearchneedsglimmering",
+            "description": ".",
+            "startdescription": "Для моего исследования нужен проблеск. ",
+            "slots": [
+                {
+                    "label": "Проблеск",
+                    "id": "Glimmering"
+                }
+            ],
+            "label": "Врата интуиции"
+        },
+        {
+            "id": "studyresearchglimmeringsuccess",
+            "startdescription": "Порой осознание приходит тогда, когда меньше всего ждёшь. [Получено осознание.]",
+            "label": "Врата интуиции отворились!"
+        },
+        {
+            "id": "studyresearchearlyconclusion"
+        },
+        {
+            "id": "studyresearchconclusion"
+        },
+        {
+            "id": "studyresearchmaxinsight",
+            "label": "Исследование завершено с максимальной степенью осознания",
+            "description": "COMPLETE studyresearchmaxinsight",
+            "startdescription": "BEGIN studyresearchmaxinsight"
+        },
+        {
+            "id": "studyresearchmoderateinsight",
+            "label": "Исследование завершено со средней степенью осознания",
+            "description": "COMPLETE studyresearchsomeinsight",
+            "startdescription": "BEGIN studyresearchsomeinsight"
+        },
+        {
+            "id": "studyresearchminimalinsight",
+            "label": "Исследование завершено с минимальной степенью осознания",
+            "description": "COMPLETE studyresearchnoinsight",
+            "startdescription": "BEGIN studyresearchnoinsight"
+        },
+        {
+            "id": "studyresearchsuccess",
+            "description": "Теперь я знаю что-то новое.",
+            "startdescription": ".",
+            "label": "Успех!"
+        }
+    ]
+}

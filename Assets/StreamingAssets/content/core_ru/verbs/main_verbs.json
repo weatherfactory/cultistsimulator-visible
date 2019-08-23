@@ -1,59 +1,69 @@
-﻿    {"verbs":
-	[
+{
+    "verbs": [
         {
+            "label": "Работа",
+            "description": "Разработать на жизнь или практиковать незримые искусства",
             "id": "work",
-            "label": "Труд",
-            "description": "Заработок на жизнь; практика незримых искусств.",
-			"atStart": true,
-						  slots: [{id:"work",label:"Труд",description: "То, что я делаю; то, что я знаю; или то, что я есть.",
-			  required:{ability:1,job:1,ritual:1,desire:1},
-			  forbidden:{reasonskill:1}
-			  }],
-			
+            "slots": [
+                {
+                    "label": "Работа",
+                    "description": "Я что-то могу делать, я что-то знаю, я кем-то являюсь.",
+                    "id": "work"
+                }
+            ]
         },
         {
+            "label": "Сон",
+            "description": "Отдохнуть, подумать над целями в жизни, рискнуть исследовать королевства снов.",
             "id": "dream",
-            "label": "Сны",
-            "description": "Отдых; смена приоритетов; или выход на опасные дороги в неизведанных царствах сна.",
-			"atStart": false,
-			 slots: [{id:"dream",label:"Сны",description: "Направление для моих снов; или проблема, от которой следует избавиться.",
-			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
-			  }],
+            "slots": [
+                {
+                    "label": "Сон",
+                    "description": "Направление моих снов или неприятность, от которой хочется отвлечься.",
+                    "id": "dream"
+                }
+            ]
         },
-				{
-            "id": "study",
+        {
             "label": "Изучение",
-            "description": "Ключи для книг, иные сокровища.",
-			"atStart": false,
-						 slots: [{id:"study",label:"Изучение",description: "Чтобы познать незримые искусства, может не хватить и десяти жизней.",
-						 required:{text:1,lore:1,ability:1, advancement:1,tutor:1,language:1}}],
+            "description": "Открыть для себя книги и другие сокровища.",
+            "id": "study",
+            "slots": [
+                {
+                    "label": "Изучение",
+                    "description": "Чтобы постигнуть незримые искусства, нужно учиться вдесятеро против человеческой жизни.",
+                    "id": "study"
+                }
+            ]
         },
-		{
-            "id": "talk",
+        {
             "label": "Разговор",
-            "description": "Допрос, устрашение, совращение, инструктаж, вербовка.",
-				"atStart": false,
-			 slots: [{id:"talk",label:"Разговор",description: "Союзник, враг, или кто-то на пути между ними.",
-			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1}}]
-		
+            "description": "Допрашивать, угрожать, развлекать, наставлять, вербовать.",
+            "id": "talk",
+            "slots": [
+                {
+                    "label": "Разговор",
+                    "description": "Союзника, врага или кого-то ещё.",
+                    "id": "talk"
+                }
+            ]
         },
-
-	  {
+        {
+            "label": "Исследование",
+            "description": "Исследование the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
             "id": "explore",
-            "label": "Поиск",
-            "description": "Поиск районов в городе с помощью Здоровья или Приспешников; освоение мест; поиск путей, скрытых в знаниях. Ищущий зачастую не знает, что сможет найти.",
-			"atStart":false,
-			  slots: [{id:"explore",label:"Поиск",description: "Район; человек; место; тайна.",
-			  required:{health:1,follower:1,secrethistories:1,location:1},
-			  forbidden:{hireling:1}}],
+            "slots": [
+                {
+                    "label": "Исследование",
+                    "description": "Место, человека, точку, секрет.",
+                    "id": "explore"
+                }
+            ]
         },
-			  {
-            "id": "time",
+        {
             "label": "Время",
-            "description": "Тень солнечных часов.",
-			"atStart":false
+            "description": "Тень на солнечных часах.",
+            "id": "time"
         }
-		]
-		
-    }
-	
+    ]
+}

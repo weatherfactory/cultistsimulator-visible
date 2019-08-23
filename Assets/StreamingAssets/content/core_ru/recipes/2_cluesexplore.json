@@ -1,56 +1,44 @@
-﻿{
-recipes: [
-	{
-		id: "explorevault_hint_sending",
-		craftable: "false",
-		startdescription: "If this expedition succeeds, the I-that-is-not-I will be there to perform the Forms. [If you succeed, you'll reap the usual rewards, and also progress your Change ascension.]",
-		requirements: 
-		{
-			sending: "1",
-			vault: "1",
-		},
-		comment: "NEW",
-		label: "A Second Self?",
-		hintonly: "true",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault_hint_addfunds",
-		craftable: "false",
-		startdescription: "Если я смогу выделить Средства, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		requirements: 
-		{
-			follower: "1",
-			vault: "1",
-		},
-		label: "Подготовка к экспедиции?",
-		hintonly: "true",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault_hint_addfollower",
-		craftable: "false",
-		startdescription: "Если я добавлю кого-то из Приспешников, я смогу начать Экспедицию. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		requirements: 
-		{
-			vault: "1",
-			funds: "1",
-		},
-		label: "Подготовка к экспедиции?",
-		hintonly: "true",
-		actionId: "explore",
-	},
-	{
-		id: "explorevault_hint",
-		craftable: "false",
-		startdescription: "Я могу отправить сюда Экспедицию в поисках книг, сокровищ, инструментов или силы. Но мне понадобятся Приспешники, идущие в дорогу, и Средства для снабжения.",
-		requirements: 
-		{
-			vault: "1",
-		},
-		label: "Подготовка к экспедиции?",
-		hintonly: "true",
-		actionId: "explore",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "explore_movehq_hint",
+            "startdescription": "При желании мы можем переместить нашу базу сюда.",
+            "label": "Новое помещение?"
+        },
+        {
+            "id": "explorevault_hint_sending",
+            "startdescription": "Если экспедиция закончится успешно, копия меня останется здесь, чтобы проводить церемонии. [В случае успеха вы получите обычные награды и приблизитесь к вознесению преображения.]",
+            "label": "Двойник?"
+        },
+        {
+            "id": "explorevault_hint_addfunds",
+            "startdescription": "Я смогу начать экспедицию, если добавлю хотя бы одну карту средств. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Подготовка к экспедиции?"
+        },
+        {
+            "id": "explorevault_hint_addfollower",
+            "startdescription": "Я смогу начать экспедицию, если добавлю последователя. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Подготовка к экспедиции?"
+        },
+        {
+            "id": "explorevault_hint",
+            "startdescription": "Сюда можно отправить экспедицию на поиски книг, сокровищ и могущественных инструментов, но мне понадобятся последователи и средства.",
+            "label": "Подготовка к экспедиции?"
+        },
+        {
+            "id": "exploresulochanacabaret_hint",
+            "startdescription": "[Если у вас есть дополнение «Танцовщица», используйте это сочетание, чтобы получить работу в клубе «Экдизис» и начать вознесение преображения.]",
+            "label": "Старые и новые фигуры"
+        },
+        {
+            "id": "explore.searchgraveyard.hint",
+            "startdescription": "Мне понадобится собственная сила или сила товарища.",
+            "label": "Эксгумация?"
+        },
+        {
+            "id": "explore.searchgraveyard.closing.hint",
+            "startdescription": "Мне понадобится собственная сила или сила товарища.",
+            "label": "Осторожная эксгумация?"
+        }
+    ]
 }

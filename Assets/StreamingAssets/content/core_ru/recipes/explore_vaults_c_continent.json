@@ -1,362 +1,88 @@
-﻿{
-recipes: [
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			vaultcontinent1: "1",
-			funds: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Начало экспедиции: замок Равлен",
-		startdescription: "Отдалённые руины замка графов Равлен давно разграблены. Мы нашли признаки, что мародёры не осмотрели его достаточно тщательно. Здесь может быть секретная комната. Точно так же здесь может быть проклятие. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		id: "explore_vaultcontinent1_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			curse_dread: "1",
-			seal_hiddendoor: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent2: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Начало экспедиции: аббатство Фермье",
-		startdescription: "Аббатство Фермье скрыто в лесу как шкатулка драгоценностей скрыта в зелёной робе. Если мы пройдём через лес, нам всё равно придётся встретиться с монахами. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		id: "explore_vaultcontinent2_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_monks: "1",
-			peril_forest: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent3: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Начало экспедиции: Орфский лес",
-		startdescription: "В чёрном сердце Орфского леса мы можем найти дерево, где Ворон в маске встречается со своим родом. Но лес — угроза сам по себе, а кланы каннибалов, живущие в нём — ещё одна. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		id: "explore_vaultcontinent3_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "1",
-			peril_forest: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent4: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Начало экспедиции: коллекция Вандершаафа",
-		startdescription: "Дверь в Красочную Камеру коллекции Вандершаафа заперта и закрыта на засов. Как говорят, строение «одержимо цветами». [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		id: "explore_vaultcontinent4_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			curse_visions: "1",
-			seal_wardeddoor: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent5: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "30",
-		label: "Beginning an Expedition: Forman House",
-		startdescription: "Unquestionably, this bleak mansion is haunted. The last visitor saw and fled the dead before they could touch him with their fraying hands. The visitor before that claimed she saw nothing, but she died of despair exactly one year later to the day. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-		id: "explore_vaultcontinent5_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_dead: "1",
-			curse_dread: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinent6: "1",
-		},
-		craftable: "true",
-		comment: "NEW",
-		warmup: "30",
-		label: "Beginning an Expedition: the Key-Hunter's Garret",
-		startdescription: "Once in Vienna, we hear that the key-hunter has not been seen for many days. A local drunk insists that a great serpent entered the house to devour them. Certainly, the house is unlit and boarded up, and there is a reptile-house smell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-		id: "explore_vaultcontinent6_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_serpent: "1",
-			seal_hiddendoor: "1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "explorevault_expeditionbegun",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			follower: "1",
-			funds: "1",
-			vaultcontinentdefault: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		label: "Начало экспедиции: Несчётные Камни",
-		startdescription: "Искатели сокровищ, идущие к Камням, сначала должны пройти через лес, где они сокрыты; затем им предстоит победить местных служителей Камней; и наконец, их ждут раскопки, даже если они в силах найти скрытую дверь. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
-		id: "explore_vaultcontinentdefault_setup",
-		actionId: "explore",
-		description: ".",
-		effects: 
-		{
-			guardian_watchers: "1",
-			seal_hiddendoor: "1",
-			peril_forest: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent1: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Конец детства",
-		startdescription: "За истлевшими занавесями с изображениями волков, охотящихся за человеком, стенная панель. В панели — секретная дверь. Механизм, конечно, давно испортился. Нам пришлось пробить её молотами.",
-		id: "explorevaultcontinent1_success",
-		actionId: "explore",
-		description: "Последние сокровища графов де Равелин лежат здесь в неожиданно просторной комнате. Высокие потолочные окна давно разбиты, пол не виден под листвой и обломками, но когда-то эта комната была обставлена как детская. В колыбели лежит скелет щенка.",
-		effects: 
-		{
-			morphycodexaramaic: "1",
-			bookoftruebloodlatin: "1",
-			vaultcontinent1: "-1",
-			highmysterieschurchsolarfucine: "1",
-			ingredientwinterb: "1",
-			toolforgeb: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent2: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Под ветвями",
-		startdescription: "Монахи и их печали позади. Здесь, во внутреннем дворе церкви огромный тис возвышается за гранитным алтарём с крышкой как у саркофага. Что внутри?",
-		id: "explorevaultcontinent2_success",
-		actionId: "explore",
-		description: "Пространство под алтарём заполнено разбитыми кубками, каждый — заляпан красным, на каждом омерзительные граффити, каждый тщательно изуродован. Наверняка монахи проводили большие церемонии отвращения, и эти останки чаш — их трофеи. Среди осколков — иные сокровища.",
-		effects: 
-		{
-			ingredientheartb: "1",
-			textbookaramaic: "1",
-			tantrawormssanskrit: "1",
-			vaultcontinent2: "-1",
-			dehoris2latin: "1",
-			againstsisterhoodknotgreek: "1",
-			thirstingtantrasanskrit: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent3: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Память-Ворон",
-		startdescription: "Это великий дуб, где восседал Ворон в маске. Молния расколола его от вершины до сердцевины, дерево обгорело и медленно гниёт. Оно кишит червями длиной в палец. Что-то тускло блестит под сплетением мёртвых корней.",
-		id: "explorevaultcontinent3_success",
-		actionId: "explore",
-		description: "Корень обвивается вокруг медного яйца размером с ребёнка. Возможно, раньше поверх меди был другой металл, но погода удалила все следы этого покрытия. С трудом мы смогли разделить половинки яйца и добыть его содержимое.",
-		effects: 
-		{
-			toolgrailmoth: "1",
-			ingredientmothd: "1",
-			inthemountainsasupontheplainvak: "1",
-			vaultcontinent3: "-1",
-			toolmothd: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent4: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "В Красочной Камере",
-		startdescription: "На стенах Красочной Камеры — сцены войн из всех главных Историй. Вена, павшая перед Червями, Повелители Захваченного Пламени сжигают солдат-мучениц из ордена Сестёр Узла, встречу Александра и Короля-без-Тени. Вдоль одной из стен — полка, забитая мусором и редкостями.",
-		id: "explorevaultcontinent4_success",
-		actionId: "explore",
-		description: "Книга прессованных цветов источает странный аромат; три древних бедекера; коллекция чёрно-белых бабочек; и настоящие сокровища. Причудливая вещь в стеклянном ящике, и маленький ящичек любопытных мелочей, гнездящихся в перегородчатой эмали.",
-		effects: 
-		{
-			watchfultantrasanskrit: "1",
-			vinzantinscriptionsphrygian: "1",
-			textbookaramaic: "1",
-			toolsecrethistoriesb: "1",
-			influencemothc: "1",
-			jumble: "1",
-			vaultcontinent4: "-1",
-			geminiadfucine: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent5: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "The Casts",
-		startdescription: "In the room that overlooks the grimy glass of the broken conservatory, twisted shapes yellow-pale as maggots recline on slabs of wood. These are the plaster-casts that Forman made of the poor souls inhabited by the creatures he studied. In some of the figures, the entry-holes are visible in the relevant surface. In others, we might assume the creatures entered by ear, or mouth, or elsewhere. ",
-		id: "explorevaultcontinent5_success",
-		actionId: "explore",
-		description: "The room is empty. But at last, when we chance to break one of the casts, we find Forman's library-treasures, cached in the figure's yellowing abdomen.",
-		effects: 
-		{
-			worlddoesnotweeparamaic: "1",
-			devouredtantrasanskrit: "1",
-			deedsofthescarredcaptaingreek: "1",
-			vaultcontinent5: "-1",
-			matthiasamethysttransformationaramaic: "1",
-		},
-	},
-	{
-		requirements: 
-		{
-			vaultcontinent6: "1",
-		},
-		craftable: "false",
-		comment: "NEW",
-		warmup: "30",
-		label: "Ashes Above",
-		startdescription: "The room stinks of serpent-musk and burnt paper. Someone has comprehensively destroyed all the records they could find. They've even scrubbed the walls clean. Cold ashes choke the fireplace. No trace of the poor soul who rented this place remains.",
-		id: "explorevaultcontinent6_success",
-		actionId: "explore",
-		description: "A single corner of fire-curled paper has survived the flames. In a shaky hand, it reads: 'Lady K. Green Chalcedony. Three-lobed. Spring leaves in fi -' But, unexpectedly,in a suitcase beside the flames, a little trove of books survives. Whoeer destroyed the key-hunter's journals saw no need to burn these books.",
-		effects: 
-		{
-			irreproachabletraditionssocietynobleendeavourlatin: "1",
-			serenityofblackwoodgreek: "1",
-			onthematterandthedeedsofserpentsvak: "1",
-			textbookfucinelatin: "1",
-			vaultcontinent6: "-1",
-		},
-	},
-	{
-		linked: 
-		[
-			{
-				id: "expeditionascensionheartc",
-				chance: "100",
-			},
-			{
-				id: "expeditionascensionmothc",
-				chance: "100",
-			},
-		],
-		requirements: 
-		{
-			vaultcontinentdefault: "1",
-		},
-		craftable: "false",
-		warmup: "30",
-		label: "Под камнем",
-		startdescription: "Лунный свет выбелил траву до цвета снега. Со всех сторон нависают камни. Здесь, на склоне кургана, под дёрном — камень, который поднимется словно откидная дверь. Нам придётся поднапрячься.",
-		id: "explorevaultcontinentdefault_success",
-		actionId: "explore",
-		deckeffect: 
-		{
-			vaultrewardsc: "3",
-		},
-		description: "Камера под курганом наполовину обрушена ходом времени. Жирные белые пауки с насмешливой леностью расползаются от света наших фонарей. Каменные стены сочатся влагой из трещин. Но ниша для подношений осталась, и остались дары в ней.",
-		effects: 
-		{
-			vaultcontinentdefault: "-1",
-		},
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "explore_vaultcontinent1_setup",
+            "description": ".",
+            "startdescription": "Разваливающийся шато Равелинов разграбили уже давным-давно. Но мы подозреваем, что кое-что ещё могло там остаться — ведь могут быть и тайные комнаты. Но может быть и проклятье. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: шато Равелинов"
+        },
+        {
+            "id": "explore_vaultcontinent2_setup",
+            "description": ".",
+            "startdescription": "Аббатство Фермье прячется в лесу, как шкатулка с драгоценностями в складках зелёного плаща. Когда минуем лес, придется ещё как-то разобраться с монахами. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: аббатство Фермье"
+        },
+        {
+            "id": "explore_vaultcontinent3_setup",
+            "description": ".",
+            "startdescription": "В чёрном сердце леса Ортос мы попробуем найти дерево, где Ворон в маске встречался со своими товарищами. Но опасность представляет не только лес, но и живущие в нём племена людоедов. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: лес Ортос"
+        },
+        {
+            "id": "explore_vaultcontinent4_setup",
+            "description": ".",
+            "startdescription": "Дверь в Расписной зал Вандершаафской коллекции заперта и опечатана. Говорят, что здание населено призрачными цветами. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: Вандершаафская коллекция"
+        },
+        {
+            "id": "explore_vaultcontinent5_setup",
+            "description": ".",
+            "startdescription": "Нет сомнений, что в сером особняке обитает что-то потустороннее. Последний из гостей увидел мёртвых и сбежал, прежде чем они успели коснуться его цепкими руками. Более ранняя гостья сказала, что не видела ничего, но умерла от тоски от отчаяния спустя ровно год. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: дом Формана"
+        },
+        {
+            "id": "explore_vaultcontinent6_setup",
+            "description": ".",
+            "startdescription": "В Вене нам сообщили, что уже много дней никто не видел искателя ключей. Местный пьяница поведал, что в дом проник громадный голодный змей. В окнах нет света, они забиты досками, изнутри доносится запах, как из серпентария. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: мансарда искателя ключей"
+        },
+        {
+            "id": "explore_vaultcontinentdefault_setup",
+            "description": ".",
+            "startdescription": "Искателям сокровищ, посещающим Камни, нужно сначала миновать лес, окружающий их, избавиться от ревностных местных и хорошенько поработать лопатами, если вдруг удастся найти тайную дверь. [На каждое препятствие нужна как минимум одна карта средств. С препятствиями борются последователи. Без средств или последователей экспедиция завершится.]",
+            "label": "Начало экспедиции: бесчисленные Камни"
+        },
+        {
+            "id": "explorevaultcontinent1_success",
+            "description": "Здесь, в неожиданно просторном зале, лежат последние из сокровищ шато Равелинов. Окна в крыше разбиты, пол занесён листьями и сухими ветками, но видно, что когда-то здесь была детская. Посередине стоит колыбель, в ней скелет щенка.",
+            "startdescription": "За прогнившим гобеленом, изображающим охоту волков на людей, находится обшитая панелями стена. Среди панелей есть тайная дверь. Пружины давно проржавели, конечно, пришлось браться за молотки.",
+            "label": "Конец детства"
+        },
+        {
+            "id": "explorevaultcontinent2_success",
+            "description": "Внутри алтарь наполнен черепками, выкрашенными в алый цвет, покрытыми скверными письменами и оскверненными иными неблаговидными способами. Монахи проводили здесь омерзительные обряды, а оставшееся сохраняли. Среди черепков есть и другие сокровища.",
+            "startdescription": "Монахи со своими невзгодами остались позади. Впереди двор их часовни, перед огромным тисом стоит гранитный алтарь в форме саркофага. А что в нём?",
+            "label": "За завесой веток"
+        },
+        {
+            "id": "explorevaultcontinent3_success",
+            "description": "Корень обвивает свинцовое яйцо размером с младенца. Быть может, когда-то оно было покрыто слоем другого металла, но непогода стёрла все следы этого. Приходится приложить усилия, чтобы половины яйца разделились, открывая то, что скрыто внутри.",
+            "startdescription": "На этом могучем дубе когда-то свил гнездо Ворон в маске. Молния расколола дерево от вершины до корня, выжгла его до углей, вскрыла для гнили, теперь в нем кишат черви в палец длиной. Среди голых ветвей что-то тускло поблёскивает.",
+            "label": "Память о Воронах"
+        },
+        {
+            "id": "explorevaultcontinent4_success",
+            "description": "Тут ароматная книга с гербарием, три старых бедекера, коллекция бабочек, раскрашенных белой и чёрной краской, рядом самые настоящие сокровища — нечто странное в стеклянном кожухе и богато украшенный сундук с редкими книгами.",
+            "startdescription": "На стенах Расписного зала изображены батальные сцены — вот Вена сдаётся Червям, вот Суверены Укрощённого пламени сжигают солдат-мучениц из сестёр Узла, вот Александр встречается с Королем-без-Тени. Идущая вдоль одной стены полка забита безделицами и чем-то более любопытным.",
+            "label": "В Расписном зале"
+        },
+        {
+            "id": "explorevaultcontinent5_success",
+            "description": "В остальном комната пуста. Наконец, мы разбиваем один из слепков и внутри жёлтого живота находим библиотечное существо Формана.",
+            "startdescription": "Над разорённой теплицей с грязными стёклами есть комната, где на деревянных плахах лежат желтоватые перекрученные тела — это гипсовые слепки, которые Форман снимал с бедняг, населённых изучаемыми существами. В некоторых случаях видны даже входные отверстия, в иных можно предположить, что существо попало внутрь через рот, ухо или как-то ещё. ",
+            "label": "Слепки"
+        },
+        {
+            "id": "explorevaultcontinent6_success",
+            "description": "В пламени уцелел лишь один уголок листа. На нём неровно написано следующее: «Госпожа К. Зелёный халцедон. Трёхдольные. Весенние листья в о...». Неожиданным образом остался нетронутым сундучок с книгами. Кто бы ни сжёг дневники искателя ключей, книги его не интересовали.",
+            "startdescription": "В комнате пахнет горелой бумагой и змеями. Кто-то тщательно уничтожил все найденные записи, даже стены выскоблены начисто. Камин полон остывшего пепла. Нет никаких следов бедняги, что снимал это помещение.",
+            "label": "Под пеплом"
+        },
+        {
+            "id": "explorevaultcontinentdefault_success",
+            "description": "Потолок помещения внутри кургана частично обвалился. Медленные белые пауки пытаются скрыться от света наших фонарей. На растрескавшихся каменных барельефах висят капли. Мы находим углубление для подношений, наполненное сокровищами.",
+            "startdescription": "В лунном свете трава выглядит заиндевелой. Вокруг нас камни. Под дёрном на склоне кургана обнаруживается камень, похожий на крышку люка. Приходится навалиться на него изо всех сил. ",
+            "label": "За камнем"
+        }
+    ]
 }

@@ -1,261 +1,88 @@
-﻿{
-legacies: [
-	{
-		startingVerbId: "work",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "Искатель",
-		startdescription: "Одиночество в промозглом городе, бесполезное образование, сны.
-
-Что дальше? Могу ли я достичь чего-то большего?",
-		id: "aspirant",
-		fromEnding: "default",
-		description: "Вновь 28 июня.",
-		image: "aspirant",
-	},
-	{
-		startingVerbId: "work",
-		effects: 
-		{
-			health: "1",
-			legacybytjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "Юное дарование",
-		startdescription: "Ещё один рассвет упущен. Пусть так. Будет много других рассветов.",
-		id: "brightyoungthing",
-		fromEnding: "deathofthebody",
-		description: "Талант и богатство — в избытке с рождения. Впереди, как янтарный ковёр, простирается лёгкая жизнь, полная восторга и уюта.",
-		image: "byt",
-	},
-	{
-		startingVerbId: "work",
-		effects: 
-		{
-			reason: "1",
-			legacyphysicianjob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "Медик",
-		startdescription: "Сегодня я возвращаюсь на своё место в Институте. У меня есть должность и репутация. Это должно бы иметь значение, но я вижу сны о чём-то ещё.",
-		id: "physician",
-		fromEnding: "deathofthebody",
-		description: "Мой пациент в предсмертном бреду, я веду тщательные и подробные заметки. В жужжащей ночной жаре я перечитываю их, и, наконец, в них проступает какой-то смысл.",
-		image: "physician",
-	},
-	{
-		startingVerbId: "work",
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacydetectivejob: "1",
-		},
-		availableWithoutEndingMatch: "true",
-		label: "Детектив",
-		startdescription: "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; в некоторые дни мои руки дрожат после неглубокого сна.",
-		id: "detective",
-		fromEnding: "arrest",
-		description: "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
-		image: "detective",
-	},
-	{
-		startingVerbId: "work",
-		excludesOnEnding: 
-		[
-				detective,
-		],
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacydetectivejob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Детектив",
-		startdescription: "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; в некоторые дни мои руки дрожат после неглубокого сна.",
-		id: "detectivepostpromotion",
-		fromEnding: "workvictoryb",
-		description: "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
-		image: "detective",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			health: "2",
-			legacyapostleforgejob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Aestuant",
-		startdescription: "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
-		id: "apostleforge",
-		fromEnding: "minorforgevictory",
-		description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
-		image: "apostleforge",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			legacyapostlegrailjob: "1",
-			health: "1",
-			passion: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Obsonate",
-		startdescription: "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
-		id: "apostlegrail",
-		fromEnding: "minorgrailvictory",
-		description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
-		image: "apostlegrail",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacyapostlelanternjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Entheate",
-		startdescription: "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
-		id: "apostlelantern",
-		fromEnding: "minorlanternvictory",
-		description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
-		image: "apostlelantern",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			health: "2",
-			legacyapostleforgejob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Aestuant",
-		startdescription: "The one who shaped us has ascended to a higher state... in one history, at least. The past is uncertain. But I will tend the crucible for their next ascension.",
-		id: "apostleforgewithrisen",
-		fromEnding: "minorforgevictorywithrisen",
-		description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
-		image: "apostleforge",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			legacyapostlegrailjob: "1",
-			health: "1",
-			passion: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Obsonate",
-		startdescription: "The one who nourished us has ascended to a higher state... in one history, at least. The past is uncertain. But I will prepare the feast for their next ascension.",
-		id: "apostlegrailwithrisen",
-		fromEnding: "minorgrailvictorywithrisen",
-		description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
-		image: "apostlegrail",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			reason: "1",
-			health: "1",
-			legacyapostlelanternjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Apostle Entheate",
-		startdescription: "The Illuminated One waits in the House of the Sun - waits to rise higher. I am their hand.",
-		id: "apostlelanternwithrisen",
-		fromEnding: "minorlanternvictorywithrisen",
-		description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
-		image: "apostlelantern",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			funds: "5",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Auctioneer",
-		startdescription: "--",
-		id: "auctioneer",
-		fromEnding: "_workvictory",
-		description: "--",
-		image: "moth",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			passion: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Priest",
-		startdescription: "--",
-		id: "priest",
-		fromEnding: "_despairending",
-		description: "--",
-		image: "moth",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Medium",
-		startdescription: "--",
-		id: "medium",
-		fromEnding: "_visionsending",
-		description: "--",
-		image: "moth",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Survivor",
-		startdescription: "Haunted starting note",
-		id: "survivor",
-		fromEnding: "_wintersacrifice",
-		description: "At times, in mirrors, in crowds, you see the face of one now lost.",
-		image: "moth",
-	},
-	{
-		startingVerbId: "work",
-		comment: "NEW",
-		effects: 
-		{
-			introjob: "1",
-		},
-		availableWithoutEndingMatch: "false",
-		label: "Cousin",
-		startdescription: "Inheritor starting note",
-		id: "cousin",
-		fromEnding: "_",
-		description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
-		image: "knock",
-	},
-]
+{
+    "legacies": [
+        {
+            "id": "aspirant",
+            "description": "Вновь 28 июня.",
+            "startdescription": "Alone in this chilly city, with my useless education, and my dreams.\n\r\nWhat now? Could I become something more?",
+            "label": "Искатель"
+        },
+        {
+            "id": "brightyoungthing",
+            "description": "Талант и богатство — в избытке с рождения. Впереди, как янтарный ковёр, простирается лёгкая жизнь, полная восторга и уюта.",
+            "startdescription": "Ещё один рассвет упущен. Пусть так. Будет много других рассветов.",
+            "label": "Юное дарование"
+        },
+        {
+            "id": "physician",
+            "description": "Мой пациент в предсмертном бреду, я веду тщательные и подробные заметки. В гудящей ночной жаре я перечитываю их и, наконец, нащупываю смысл.",
+            "startdescription": "Сегодня я возвращаюсь на своё место в клинике. У меня есть должность и репутация. Это должно бы иметь значение, но в последнее время я мечтаю о чём-то большем.",
+            "label": "Медик"
+        },
+        {
+            "id": "detective",
+            "description": "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
+            "startdescription": "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; порой с утра я не могу унять дрожь от ночных видений.",
+            "label": "Детектив"
+        },
+        {
+            "id": "detectivepostpromotion",
+            "description": "Я инспектор столичной полиции, и моя работа — расследовать самые подлые и гнусные дела, на которые способен человеческий род.",
+            "startdescription": "Мой труд оборвал карьеры многих воров, убийц, поджигателей и шантажистов. Но есть более опасные преступники; порой с утра я не могу унять дрожь от ночных видений.",
+            "label": "Детектив"
+        },
+        {
+            "id": "apostleforge",
+            "description": "Сила мастера велика, но и враги наши тоже сильны. Пока мастер скрывается, я буду верным орудием нашего лидера.",
+            "startdescription": "Человек, что выковал нас, вознёсся и стал кем-то большим... хотя бы в одной из историй. Прошлое туманно. Я подготовлю тигель к следующему вознесению Мастера.",
+            "label": "Пылкий ученик"
+        },
+        {
+            "id": "apostlegrail",
+            "description": "Сила Отрады велика, но и враги наши тоже сильны. Пока Отрада скрывается, я буду верным орудием нашего лидера.",
+            "startdescription": "Человек, что вскормил нас, вознёсся и стал кем-то большим... хотя бы в одной из историй. Прошлое туманно. Я подготовлю пир к следующему вознесению Отрады.",
+            "label": "Пирующий ученик"
+        },
+        {
+            "id": "apostlelantern",
+            "description": "Я не помню, что произошло. Я не помню ничего о себе. Но во снах я узнаю, что мне надо делать.",
+            "startdescription": "Зарево ожидает в Доме Солнца — ожидает возможности вознестись ещё выше. Я позабочусь об этом.",
+            "label": "Просветлённый ученик"
+        },
+        {
+            "id": "apostleforgewithrisen",
+            "description": "Сила мастера велика, но и враги наши тоже сильны. Пока мастер скрывается, я буду верным орудием нашего лидера.",
+            "startdescription": "Человек, что выковал нас, вознёсся и стал кем-то большим... хотя бы в одной из историй. Прошлое туманно. Я подготовлю тигель к следующему вознесению Мастера.",
+            "label": "Пылкий ученик"
+        },
+        {
+            "id": "apostlegrailwithrisen",
+            "description": "Сила Отрады велика, но и враги наши тоже сильны. Пока Отрада скрывается, я буду верным орудием нашего лидера.",
+            "startdescription": "Человек, что вскормил нас, вознёсся и стал кем-то большим... хотя бы в одной из историй. Прошлое туманно. Я подготовлю пир к следующему вознесению Отрады.",
+            "label": "Пирующий ученик"
+        },
+        {
+            "id": "apostlelanternwithrisen",
+            "description": "Я не помню, что произошло. Я не помню ничего о себе. Но во снах я узнаю, что мне надо делать.",
+            "startdescription": "Зарево ожидает в Доме Солнца — ожидает возможности вознестись ещё выше. Я позабочусь об этом.",
+            "label": "Просветлённый ученик"
+        },
+        {
+            "id": "auctioneer",
+            "description": "--",
+            "startdescription": "--",
+            "label": "Аукционист"
+        },
+        {
+            "id": "survivor",
+            "description": "Среди отражений и в толпе иногда мелькает лицо утраченного.",
+            "startdescription": "Haunted starting note",
+            "label": "Выживший"
+        },
+        {
+            "id": "cousin",
+            "description": "Однажды утром, когда солнце поднимется высоко, а все зеркала будут укрыты, в дверь кто-то постучит (\"A benefactor\"скажет господин в сером).\"A bequest. Perhaps you hadn't known you were related.\"",
+            "startdescription": "Первая запись наследника",
+            "label": "Родственник"
+        }
+    ]
 }

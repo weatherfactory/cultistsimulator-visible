@@ -1,426 +1,124 @@
-﻿{
-decks: [
-	{
-		id: "seasonevents",
-		description: "Когда проходит Время, может произойти неожиданное событие.",
-		label: "Времена",
-		spec: 
-		[
-				seasonsickness,
-				seasonsuspicion,
-				seasonsuspicion,
-				seasondespair,
-				seasondespair,
-				seasonvisions,
-				seasonvisions,
-				seasonambitions,
-				seasonambitions,
-				seasonsilence,
-				seasonardours,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "contentment",
-	},
-	{
-		id: "cabaretevents",
-		description: "Каждый вечер — новые услады, а иногда — новые риски.",
-		label: "Вечер в клубе",
-		spec: 
-		[
-				contentment,
-				contentment,
-				contentment,
-				fascination,
-				fascination,
-				erudition,
-				glimmering,
-				vitality,
-				notoriety,
-				influencegrail,
-				influencemoth,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "contentment",
-	},
-	{
-		id: "roserewards",
-		description: "Then, now, when?",
-		label: "Romance's Reward",
-		spec: 
-		[
-				memorybittersweet,
-				memorypleasant,
-				memorypassionate,
-				fleeting,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "dreamreasonresults",
-		description: "Обычно сны приносят отдых и покой; но не всегда. Не всегда.",
-		label: "Провинции снов",
-		spec: 
-		[
-				dread,
-				fascination,
-				glimmering,
-				vitality,
-				contentment,
-				restlessness,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "paintingresultsbasic",
-		description: "Рисование может быть путём к удовольствию, а иногда — к новым горизонтам понимания.",
-		label: "Плоды творчества",
-		spec: 
-		[
-				contentment,
-				contentment,
-				glimmering,
-				glimmering,
-				glimmering,
-				glimmering,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "paintingresults",
-		description: "Рисование часто приносит довольство. Иногда моя работа может привлечь внимание.",
-		label: "Плоды творчества",
-		spec: 
-		[
-				glimmering,
-				glimmering,
-				glimmering,
-				glimmering,
-				glimmering,
-				glimmering,
-				glimmering,
-				contentment,
-				contentment,
-				contentment,
-				contentment,
-				contentment,
-				mystique,
-				mystique,
-				mystique,
-				mystique,
-				mystique,
-				mystique,
-				mystique,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "paintingresultsreputation",
-		description: "Здесь исток моего дохода.",
-		label: "Плоды славы",
-		spec: 
-		[
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				mystique,
-				mystique,
-				mystique,
-				mystique,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "ecdysisrewards",
-		description: "The Club guarantees a minimum, but the audience sometimes offer contributions of their own.",
-		label: "The Offerings at the End",
-		spec: 
-		[
-				funds,
-				funds,
-				funds,
-				funds,
-				compensationb,
-				compensationb,
-				compensationc,
-				jumble,
-				funds,
-				funds,
-				funds,
-				funds,
-				compensationb,
-				compensationb,
-				compensationc,
-				jumble,
-				kitlingripe,
-				raptintheking,
-				vienneseconundra,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "robberyrewards",
-		description: "Обычно мои миньоны приносят недорогие сувениры; иногда — мусор; редко — что-то действительно примечательное.",
-		label: "Грязная добыча",
-		spec: 
-		[
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				funds,
-				jumble,
-				jumble,
-				jumble,
-				jumble,
-				jumble,
-				compensation,
-				compensation,
-				compensation,
-				compensation,
-				compensation,
-				compensation,
-				compensationb,
-				compensationb,
-				compensationb,
-				ingredientedgeb,
-				ingredientforgeb,
-				ingredientgrailb,
-				ingredientheartb,
-				ingredientknockb,
-				ingredientmothb,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "exploreevents",
-		description: "Ищущие в городе могут найти...",
-		label: "Поиск в Столице",
-		spec: 
-		[
-				daycriminals,
-				dayplaces,
-				daycriminals,
-				dayplaces,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "schemeevents",
-		description: "My Rival Plots...",
-		label: "Potential Scheme",
-		spec: 
-		[
-				schememurder,
-				schememurder,
-				schemeexpedition,
-				schemeexpedition,
-				schemeexpedition,
-				schemeexpedition,
-				schemeactivities,
-				schemeactivities,
-				schemeactivities,
-				schemeactivities,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "talkevents",
-		description: "Я могу найти рекрутов, союзников или соперников.",
-		label: "Полуночные встречи",
-		spec: 
-		[
-				dayacquaintances,
-				dayacquaintances,
-				dayacquaintances,
-				dayacquaintances,
-				dayacquaintances,
-				dayacquaintances,
-				dayacquaintances,
-				daypatrons,
-				daypatrons,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "citysecrets",
-		description: "Неприметные места.",
-		label: "Городские секреты",
-		spec: 
-		[
-				locationauctionhouse,
-				locationcabaret,
-				locationbookdealer,
-				locationstreetsstrange,
-		],
-		defaultcard: "locationstreetsstrange",
-	},
-	{
-		id: "streetsstrangefinds",
-		description: "Озарения и влияния.",
-		label: "Странные улицы",
-		spec: 
-		[
-				influenceknockc,
-				influenceknockc,
-				glimmering,
-				glimmering,
-				fascination,
-				contentment,
-				contentment,
-		],
-		resetonexhaustion: "true",
-	},
-	{
-		id: "troublemakerconversations",
-		description: "Что я узнаю?",
-		label: "Разговоры со Смутьяном",
-		spec: 
-		[
-				dread,
-				dread,
-				fascination,
-				fascination,
-				erudition,
-				erudition,
-				erudition,
-				glimmering,
-				glimmering,
-		],
-		defaultcard: "contentment",
-	},
-	{
-		id: "forgelong",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				julian_unknown,
-				welland_unknown,
-				welland_unknown,
-		],
-		defaultcard: "julian_unknown",
-	},
-	{
-		id: "graillong",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				tryphon_unknown,
-				tryphon_unknown,
-				julian_unknown,
-		],
-		defaultcard: "julian_unknown",
-	},
-	{
-		id: "lanternlong",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				julian_unknown,
-				diarist_unknown,
-				diarist_unknown,
-		],
-		defaultcard: "julian_unknown",
-	},
-	{
-		id: "long.strategies",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				strategy.assault.concealed,
-				strategy.intrigue.concealed,
-				strategy.dreams.concealed,
-				strategy.downtime.concealed,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "strategy.downtime",
-	},
-	{
-		id: "long.strategies.preference.assault",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				strategy.assault.concealed,
-				strategy.assault.concealed,
-				strategy.intrigue.concealed,
-				strategy.dreams.concealed,
-				strategy.downtime.concealed,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "strategy.downtime",
-	},
-	{
-		id: "long.strategies.preference.intrigue",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				strategy.assault.concealed,
-				strategy.intrigue.concealed,
-				strategy.intrigue.concealed,
-				strategy.dreams.concealed,
-				strategy.downtime.concealed,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "strategy.downtime",
-	},
-	{
-		id: "long.strategies.preference.dreamwork",
-		description: "Our enemy will select a general approach, which we might be able to divine - but we'll never know the details of their plan until they execute it.",
-		comment: "NEW",
-		label: "An Enemy of the Work",
-		spec: 
-		[
-				strategy.assault.concealed,
-				strategy.intrigue.concealed,
-				strategy.dreams.concealed,
-				strategy.dreams.concealed,
-				strategy.downtime.concealed,
-		],
-		resetonexhaustion: "true",
-		defaultcard: "strategy.downtime",
-	},
-]
+{
+    "decks": [
+        {
+            "id": "seasonevents",
+            "description": "С течением Времени могут происходить неожиданные события.",
+            "label": "Сезоны"
+        },
+        {
+            "id": "cabaretevents",
+            "description": "Каждый вечер приносит новые удовольствия, а порой и опасности.",
+            "label": "Вечер в клубе"
+        },
+        {
+            "label": "Награды страсти",
+            "description": "Тогда, сейчас... когда?",
+            "id": "roserewards"
+        },
+        {
+            "label": "Страна снов",
+            "description": "Обычно сон приносит покой и отдых, но так бывает не всегда. Далеко не всегда.",
+            "id": "dreamreasonresults"
+        },
+        {
+            "label": "Награды искусства",
+            "description": "Живопись приносит безмятежность, а иногда и помогает взглянуть на вещи по-новому.",
+            "id": "paintingresultsbasic"
+        },
+        {
+            "label": "Награды искусства",
+            "description": "Живопись часто приносит безмятежность. Порой мой труд может привлечь внимание.",
+            "id": "paintingresults"
+        },
+        {
+            "label": "Награды славы",
+            "description": "Отсюда приходят деньги.",
+            "id": "paintingresultsreputation"
+        },
+        {
+            "label": "Пожертвования в финале",
+            "description": "Клуб гарантирует минимальную оплату, но иногда публика предлагает что-то сама.",
+            "id": "ecdysisrewards"
+        },
+        {
+            "label": "Выгоды греха",
+            "description": "Мои подручные чаще всего приносят мелкие ценности, иногда просто мусор, а порой что-то действительно необычное.",
+            "id": "robberyrewards"
+        },
+        {
+            "label": "Изучение столицы",
+            "description": "Исследуя город, можно многое найти...",
+            "id": "exploreevents"
+        },
+        {
+            "label": "Возможные планы",
+            "description": "Интриги моих врагов...",
+            "id": "schemeevents"
+        },
+        {
+            "label": "Полуночные встречи",
+            "description": "Я могу найти новых послушников, союзников и соперников.",
+            "id": "talkevents"
+        },
+        {
+            "label": "Городские тайны",
+            "description": "Места, которые легко не заметить.",
+            "id": "citysecrets"
+        },
+        {
+            "label": "Странные улицы",
+            "description": "Знания и влияния.",
+            "id": "streetsstrangefinds"
+        },
+        {
+            "label": "Беседы со Смутьяном",
+            "description": "Что я могу узнать?",
+            "id": "troublemakerconversations"
+        },
+        {
+            "label": "Происки врага",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "id": "forgelong"
+        },
+        {
+            "label": "Происки врага",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "id": "graillong"
+        },
+        {
+            "label": "Происки врага",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "id": "lanternlong"
+        },
+        {
+            "id": "long.strategies",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "label": "Происки врага"
+        },
+        {
+            "id": "long.strategies.preference.assault",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "label": "Происки врага"
+        },
+        {
+            "id": "long.strategies.preference.intrigue",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "label": "Происки врага"
+        },
+        {
+            "id": "long.strategies.preference.dreamwork",
+            "description": "Наш враг выберет общий подход, который нам, возможно, удастся предугадать, но мы не узнаем подробностей его плана, пока он не приведёт его в исполнение.",
+            "label": "Происки врага"
+        },
+        {
+            "label": "Страсти паствы",
+            "description": "К чему это приведёт?",
+            "id": "priest.repevent"
+        },
+        {
+            "label": "Воспоминания",
+            "description": "Я буду помнить то, о чём забыли другие.",
+            "id": "ghoul.memory"
+        }
+    ]
 }

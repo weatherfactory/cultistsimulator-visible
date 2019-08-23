@@ -1,285 +1,166 @@
-﻿ {"recipes": [
- 		{id: "writeedgec",
-	label: "Написать детальную монографию о практиках Грани и Часах, что ею правят",
-	actionId: "work",
-	requirements: {commissionarticleedgec:1,lore:1,edge:6,reason:2},
-	effects: {articleedgec:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	{id: "writeforgec",
-	label: "Написать детальную монографию о знаниях аспекта, именуемого Кузней",
-	actionId: "work",
-	requirements: {commissionarticleforgec:1,lore:1,forge:6,reason:2},
-	effects: {articleforgec:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writegrailc",
-	label: "Написать детальную монографию о знаниях Алой Чаши",
-	actionId: "work",
-	requirements: {commissionarticlegrailc:1,lore:1,grail:6,reason:1,passion:1},
-	effects: {articlegrailc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writeheartc",
-	label: "Написать детальную монографию о знаниях Сердца",
-	actionId: "work",
-	requirements: {commissionarticleheartc:1,lore:1,heart:6,reason:1,passion:1},
-	effects: {articleheartc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-				{id: "writeknockc",
-	label: "Написать детальную монографию о знаниях Стука",
-	actionId: "work",
-	requirements: {commissionarticleknockc:1,lore:1,knock:6,reason:2},
-	effects: {articleknockc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writelanternc",
-	label: "Написать детальную монографию о знаниях Лампады",
-	actionId: "work",
-	requirements: {commissionarticlelanternc:1,lore:1,lantern:6,reason:2},
-	effects: {articlelanternc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writemothc",
-	label: "Написать детальную монографию о знаниях Мотылька",
-	actionId: "work",
-	requirements: {commissionarticlemothc:1,lore:1,moth:6,reason:1,passion:1},
-	effects: {articlemothc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	
-	{id: "writesecrethistoriesc",
-	label: "Написать детальную монографию о Тайных Историях",
-	actionId: "work",
-	requirements: {commissionarticlesecrethistoriesc:1,lore:1,secrethistories:6,reason:2},
-	effects: {articlesecrethistoriesc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writewinterc",
-	label: "Написать детальную монографию о Белом Знании",
-	actionId: "work",
-	requirements: {commissionarticlewinterc:1,lore:1,winter:6,reason:2},
-	effects: {articlewinterc:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	{id: "writeedgeb",
-	label: "Написать углублённую статью о практиках Грани",
-	actionId: "work",
-	requirements: {commissionarticleedgeb:1,lore:1,edge:4,reason:1},
-	effects: {articleedgeb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	{id: "writeforgeb",
-	label: "Написать углублённую статью о принципе Кузни",
-	actionId: "work",
-	requirements: {commissionarticleforgeb:1,lore:1,forge:4,reason:1},
-	effects: {articleforgeb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writegrailb",
-	label: "Написать углублённую статью о ритуалах Алой Чаши",
-	actionId: "work",
-	requirements: {commissionarticlegrailb:1,lore:1,grail:4,reason:1},
-	effects: {articlegrailb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writeheartb",
-	label: "Написать углублённую статью о знаниях Сердца",
-	actionId: "work",
-	requirements: {commissionarticleheartb:1,lore:1,heart:4,reason:1},
-	effects: {articleheartb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-				{id: "writeknockb",
-	label: "Написать углублённую статью об открывающих ритуалах Стука",
-	actionId: "work",
-	requirements: {commissionarticleknockb:1,lore:1,knock:4,reason:1},
-	effects: {articleknockb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writelanternb",
-	label: "Написать углублённую статью о Лампаде",
-	actionId: "work",
-	requirements: {commissionarticlelanternb:1,lore:1,lantern:4,reason:1},
-	effects: {articlelanternb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writemothb",
-	label: "Написать углублённую статью о Мотыльке",
-	actionId: "work",
-	requirements: {commissionarticlemothb:1,lore:1,moth:4,reason:1},
-	effects: {articlemothb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	
-	{id: "writesecrethistoriesb",
-	label: "Написать углублённую статью о Тайных Историях",
-	actionId: "work",
-	requirements: {commissionarticlesecrethistoriesb:1,lore:1,secrethistories:4,reason:1},
-	effects: {articlesecrethistoriesb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writewinterb",
-	label: "Написать углублённую статью о Белом Знании",
-	actionId: "work",
-	requirements: {commissionarticlewinterb:1,lore:1,winter:4,reason:1},
-	effects: {articlewinterb:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		{id: "writeedgea",
-	label: "Написать обзорные заметки по аспекту Грани",
-	actionId: "work",
-	requirements: {commissionarticleedge:1,lore:1,edge:2,reason:1},
-	effects: {articleedgea:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	{id: "writeforgea",
-	label: "Написать обзорные заметки по аспекту Кузни",
-	actionId: "work",
-	requirements: {commissionarticleforge:1,lore:1,forge:2,reason:1},
-	effects: {articleforgea:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writegraila",
-	label: "Написать обзорные заметки по знанию Алой Чаши",
-	actionId: "work",
-	requirements: {commissionarticlegrail:1,lore:1,grail:2,reason:1},
-	effects: {articlegraila:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writehearta",
-	label: "Написать обзорные заметки по знанию Сердца",
-	actionId: "work",
-	requirements: {commissionarticleheart:1,lore:1,heart:2,reason:1},
-	effects: {articlehearta:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-				{id: "writeknocka",
-	label: "Написать обзорные заметки по аспекту Стука и открывающим ритуалам",
-	actionId: "work",
-	requirements: {commissionarticleknock:1,lore:1,knock:2,reason:1},
-	effects: {articleknocka:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writelanterna",
-	label: "Написать обзорные заметки по знанию Лампады",
-	actionId: "work",
-	requirements: {commissionarticlelantern:1,lore:1,lantern:2,reason:1},
-	effects: {articlelanterna:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-		
-			{id: "writemotha",
-	label: "Написать обзорные заметки о Мотыльке",
-	actionId: "work",
-	requirements: {commissionarticlemoth:1,lore:1,moth:2,reason:1},
-	effects: {articlemotha:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-	
-	{id: "writesecrethistoriesa",
-	label: "Написать обзорные заметки о Тайных Историях",
-	actionId: "work",
-	requirements: {commissionarticlesecrethistories:1,lore:1,secrethistories:2,reason:1},
-	effects: {articlesecrethistoriesa:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	},
-			{id: "writewintera",
-	label: "Написать обзорные заметки о Белом Знании",
-	actionId: "work",
-	requirements: {commissionarticlewinter:1,lore:1,winter:2,reason:1},
-	effects: {articlewintera:1},
-	startdescription: "Это может пригодиться для заказа.",
-	description: "Манускрипт завершён.",
-	warmup: 60,	
-	craftable: true
-	}
-]
+{
+    "recipes": [
+        {
+            "id": "writeedgec",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд о практиках Грани и Часах, кто управляют ими"
+        },
+        {
+            "id": "writeforgec",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано с принципом Кузни"
+        },
+        {
+            "id": "writegrailc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано с Алой Чашей"
+        },
+        {
+            "id": "writeheartc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано с Сердцем"
+        },
+        {
+            "id": "writeknockc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано со Стуком"
+        },
+        {
+            "id": "writelanternc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано с Лампадой"
+        },
+        {
+            "id": "writemothc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд обо всём, что связано с Мотыльком"
+        },
+        {
+            "id": "writesecrethistoriesc",
+            "description": "Рукопись закончена.",
+            "startdescription": "Это может пригодиться для заказа.",
+            "label": "Написать обширный труд о тайных историях"
+        },
+        {
+            "id": "writewinterc",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать обширный труд о белых знаниях"
+        },
+        {
+            "id": "writeedgeb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд обо всём, что связано с практиками Грани"
+        },
+        {
+            "id": "writeforgeb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о принципе Кузни"
+        },
+        {
+            "id": "writegrailb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о обрядах Алой Чаши"
+        },
+        {
+            "id": "writeheartb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд обо всём, что связано с Сердцем"
+        },
+        {
+            "id": "writeknockb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о вступительных обрядах Стука"
+        },
+        {
+            "id": "writelanternb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о Лампаде"
+        },
+        {
+            "id": "writemothb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о Мотыльке"
+        },
+        {
+            "id": "writesecrethistoriesb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о тайных историях"
+        },
+        {
+            "id": "writewinterb",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать внушительный труд о белых знаниях"
+        },
+        {
+            "id": "writeedgea",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о принципах Грани"
+        },
+        {
+            "id": "writeforgea",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о принципах Кузни"
+        },
+        {
+            "id": "writegraila",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд обо всём, что связано с Алой Чашей"
+        },
+        {
+            "id": "writehearta",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд обо всём, что связано с Сердцем"
+        },
+        {
+            "id": "writeknocka",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о принципе Стука и вступительных обрядах"
+        },
+        {
+            "id": "writelanterna",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд обо всём, что связано с Лампадой"
+        },
+        {
+            "id": "writemotha",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о Мотыльке"
+        },
+        {
+            "id": "writesecrethistoriesa",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о тайных историях"
+        },
+        {
+            "id": "writewintera",
+            "description": "I've finished the manuscript.",
+            "startdescription": "This may be useful for a Commission.",
+            "label": "Написать краткий труд о белых знаниях"
+        }
+    ]
 }

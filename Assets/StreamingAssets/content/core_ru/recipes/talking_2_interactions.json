@@ -1,531 +1,168 @@
-﻿{
-recipes: [
-	{
-		requirements: 
-		{
-			follower: "1",
-			hq: "1",
-		},
-		craftable: "true",
-		warmup: "10",
-		aspects: 
-		{
-			capturefollower: "1",
-		},
-		label: "Предать и заточить приспешника",
-		startdescription: "Этому телу найдётся иное применение. В чулан.",
-		id: "lockfollowerincupboard",
-		actionId: "talk",
-		description: "Замок надёжен. Когда затихнут стуки и вопли, я укрощу жертву должным образом.",
-		effects: 
-		{
-			notoriety: "1",
-		},
-		mutations: 
-		[
-			{
-				filterOnAspectId: "mortal",
-				mutateAspectId: "romanticinterest",
-				mutationLevel: "-1",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			sulochana: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "A Chat with Sulochana",
-		startdescription: "@#ascensionlessonhearta|'You want to know more?'
-#ascensionlessonheartb|'You want to know more?'
-#ascensionlessonheartc|'You want to know more?'
-#ascensionlessonheartd|'You want to know more?'
-#ascensionlessonhearte|'You want to know more?'
-#ascensionlessonheartf|'You want to know more?'
-#ascensionlessonmotha|'You want to know more?'
-#ascensionlessonmothb|'You want to know more?'
-#ascensionlessonmothc|'You want to know more?'
-#ascensionlessonmothd|'You want to know more?'
-#ascensionlessonmothe|'You want to know more?'
-#ascensionlessonmothf|'You want to know more?'
-#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
-		id: "sulochanachat",
-		actionId: "talk",
-		description: "@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles
-#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#|Is she disappointed? It's difficult to tell, with Sulochana.@",
-		slots: 
-		[
-			{
-				id: "Subject",
-				description: "A topic of conversation",
-				label: "Subject",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "talk.apostleforge.sulochanaechidna",
-				comment: "NEW",
-			},
-			{
-				id: "talk.apostlegrail.sulochanamarinette",
-				comment: "NEW",
-			},
-			{
-				id: "apostlelantern.attemptrecruitkleidouchos.sulochana",
-				comment: "NEW",
-			},
-			{
-				id: "sulochanachat_health",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_passion",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_cabaret",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desireheart_track",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desiremoth_track",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_desire",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesrouter",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "sulochanachat_health",
-		startdescription: "'You're young. Congratulations.'",
-		requirements: 
-		{
-			health: "1",
-			sulochana: "1",
-		},
-		description: "'We were all of us young. Everyone. That's the only thing most of us have in common.'",
-		label: "On the Body's Strengths",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_passion",
-		startdescription: "'Yes. That will get you into trouble.'",
-		requirements: 
-		{
-			passion: "1",
-			sulochana: "1",
-		},
-		description: "'You have potential. You saw me see that. Potential isn't enough. Anything else?'",
-		label: "On Passion",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_cabaret",
-		startdescription: "'Yes?'",
-		requirements: 
-		{
-			sulochana: "1",
-			locationcabaret: "1",
-		},
-		description: "'There's a road you can walk that begins there, in my house. If you want to talk about it, meet me there.'",
-		label: "On the Ecdysis Club",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desireheart_track",
-		startdescription: "'Looking to shed your skin, hm?'",
-		requirements: 
-		{
-			desireheart_track: "1",
-			sulochana: "1",
-		},
-		description: "'The road you want to walk is what we call the New Form. Not all that new, not any more. But it has merit, if you can stand the pain. Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'",
-		effects: 
-		{
-			locationcabaret: "1",
-		},
-		label: "On the New Form",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desiremoth_track",
-		startdescription: "Now - now we begin to understand each other.",
-		requirements: 
-		{
-			desiremoth_track: "1",
-			sulochana: "1",
-		},
-		description: "The road you want to walk is what we call the Old Form. I walked it myself, and eventually it brought me here. You'll give up everything along the way. You'll need to shed your skin, and not only once... Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
-		effects: 
-		{
-			locationcabaret: "1",
-		},
-		label: "On the Old Form",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desire_change",
-		startdescription: "The dance, hm?",
-		requirements: 
-		{
-			changemarks: "1",
-			sulochana: "1",
-		},
-		description: "Find me in my house, and we can talk about the partner you will need in the end. Here's the address.",
-		label: "On Desire",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_desire",
-		startdescription: "That's what steers you?",
-		requirements: 
-		{
-			sulochana: "1",
-			desire: "1",
-		},
-		description: "We have no common ground there. I chose my road a very long time ago.",
-		label: "On Desire",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesrouter",
-		startdescription: "As to that...",
-		requirements: 
-		{
-			lore: "1",
-			secrethistories: "1",
-			sulochana: "1",
-		},
-		description: ".",
-		linked: 
-		[
-			{
-				id: "sulochanachat_secrethistoriesg",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesf",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriese",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesd",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesc",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesb",
-				chance: "100",
-			},
-			{
-				id: "sulochanachat_secrethistoriesa",
-				chance: "100",
-			},
-		],
-		label: "On Secret Places",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesg",
-		startdescription: "'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
-		requirements: 
-		{
-			sulochana: "1",
-			fragmentsecrethistoriesg: "1",
-		},
-		description: "'Here. This map will work for a little while. If any of them ask after me, tell them I'll come for their children next.'",
-		effects: 
-		{
-			vaulteveningislesdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Ivory",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesf",
-		startdescription: "'You need to go to Miah? Bring me back some of those dates.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesf: "1",
-			sulochana: "1",
-		},
-		description: "'Here. This is the address of someone who'll guide you. If the Thief of Sights asks after me... tell her to give my regards to Kleido... you know what? Don't say anything about me. Here's your address.'",
-		effects: 
-		{
-			vaultloneandlevelsandsdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Pupil",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriese",
-		startdescription: "'The Shadowless Kings? No - '",
-		requirements: 
-		{
-			fragmentsecrethistoriese: "1",
-			sulochana: "1",
-		},
-		description: "'There's nothing there for my kind or yours. No dance is worth dancing in that place. You'll need to go further south.'",
-		effects: 
-		{
-		},
-		label: "Not there - ",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesd",
-		startdescription: "'You need to go to the Meadows? Mm.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesd: "1",
-			sulochana: "1",
-		},
-		description: "'This is the easiest road at this time of year. But it won't be easy. Enjoy yourself.'",
-		effects: 
-		{
-			lore: "-1",
-			vaultlandbeyondforestdefault: "1",
-		},
-		label: "On the Road to Stigma",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesc",
-		startdescription: "'You want to go to the Stones?'",
-		requirements: 
-		{
-			fragmentsecrethistoriesc: "1",
-			sulochana: "1",
-		},
-		description: "'Here. This will get you to the last mile, and then you'll have to walk. There is a little auberge I used to stay at when I went. But I burnt it down.' She lights a cigarette.",
-		effects: 
-		{
-			lore: "-1",
-			vaultcontinentdefault: "1",
-		},
-		label: "On the Road to Antumbra",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesb",
-		startdescription: "'You want to go to Kerisham? Yes. The trains are difficult.'",
-		requirements: 
-		{
-			fragmentsecrethistoriesb: "1",
-			sulochana: "1",
-		},
-		description: "Sulochana hands you a printed slip of paper. 'These are the numbers, this month. Be sure you get the right platform. Much easier to get there now, hm? There was a time you'd have had to pass the Wrong Door, and I have better things to do.' She chuckles richly.",
-		effects: 
-		{
-			vaultshiresdefault: "1",
-			lore: "-1",
-		},
-		label: "On the Road to Pearl",
-		actionId: "talk",
-	},
-	{
-		id: "sulochanachat_secrethistoriesa",
-		startdescription: "'I can help you with that... if you want to Change.'",
-		requirements: 
-		{
-			fragmentsecrethistories: "1",
-			sulochana: "1",
-		},
-		description: "'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'",
-		label: "On the Roads to Change",
-		actionId: "talk",
-	},
-	{
-		requirements: 
-		{
-			poppyready: "1",
-		},
-		craftable: "true",
-		warmup: "60",
-		label: "Разговор с Поппи Ласселс",
-		startdescription: "«Дорогуша, мне надо поговорить с тобой. Временами я помогаю изучающим незримые искусства, и хотела бы предложить помощь и тебе. Сделать весомый вклад в твое дело. Всё, что потребуется от тебя — однажды познакомить меня с кем-нибудь ещё, кто правильно завершит дела». Она доброжелательно улыбается. [Добавьте <b>Страсть</b>, чтобы согласиться, или <b>Разум</b>, чтобы разузнать больше.]",
-		id: "poppyoffer",
-		actionId: "talk",
-		description: "Предложение Поппи ещё не принято.",
-		slots: 
-		[
-			{
-				id: "Consent",
-				required: 
-				{
-					reason: "1",
-					passion: "1",
-				},
-				description: "Добавьте Страсть, чтобы принять, или Разум, чтобы тщательнее распросить Поппи.",
-				label: "Согласие",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poppyofferaccept",
-				chance: "100",
-			},
-			{
-				id: "poppyofferquery",
-				chance: "100",
-			},
-		],
-	},
-	{
-		requirements: 
-		{
-			passion: "1",
-		},
-		label: "Принять предложение Поппи",
-		startdescription: "«Да, отличное предложение. Я вернусь вечером»",
-		id: "poppyofferaccept",
-		actionId: "talk",
-		description: "Маленький пакет маленьких сокровищ: подарок от Поппи. Она встретится со мной в Дни Рубищ; мне надо подготовить обещанное знакомство.",
-		effects: 
-		{
-			funds: "10",
-			poppyready: "-1",
-			compensationc: "1",
-		},
-		alternativerecipes: 
-		[
-			{
-				id: "poppytimebomb",
-				chance: "100",
-				additional: "true",
-			},
-		],
-	},
-	{
-		id: "poppyofferquery",
-		startdescription: "Кто-то, кто правильно завершит дела?",
-		requirements: 
-		{
-			reason: "1",
-		},
-		description: "«Да. Когда снова настанут Дни Рубищ, моему спонсору потребуется кто-то для завершения. Ты можешь предоставить услуги кого-то достаточно верного, или свои собственные. Как пожелаешь. Я не хочу тебя беспокоить».",
-		effects: 
-		{
-			influencewinter: "1",
-		},
-		label: "Тщательно расспросить Поппи",
-		actionId: "talk",
-	},
-	{
-		id: "poppytimebomb",
-		startdescription: "В Дни Рубищ Поппи вернётся...",
-		warmup: "300",
-		description: ".",
-		linked: 
-		[
-			{
-				id: "poppysafefornow",
-				chance: "7",
-			},
-			{
-				id: "poppywantssoul",
-				chance: "100",
-			},
-		],
-		label: "Просьба Поппи",
-		actionId: "poppytime",
-	},
-	{
-		id: "poppysafefornow",
-		startdescription: "Поппи можно заметить в городе; она помогает на благотворительных сборах, на её лице ласковая улыбка.",
-		warmup: "10",
-		description: ".",
-		linked: 
-		[
-			{
-				id: "poppytimebomb",
-				chance: "100",
-			},
-		],
-		label: "Молчание Поппи",
-		actionId: "poppytime",
-	},
-	{
-		ending: "wintersacrifice",
-		label: "Дружеский визит Поппи",
-		startdescription: "«Время пришло, дорогуша. Солнцу-в-Рубище нужен его финал. Им станешь ты? Или у тебя есть друг?»",
-		signalEndingFlavour: "Melancholy",
-		id: "poppywantssoul",
-		actionId: "poppytime",
-		warmup: "60",
-		description: ".",
-		slots: 
-		[
-			{
-				id: "Sacrifice",
-				required: 
-				{
-					follower: "1",
-				},
-				forbidden: 
-				{
-					summoned: "1",
-					hireling: "1",
-				},
-				label: "Жертва",
-			},
-		],
-		alternativerecipes: 
-		[
-			{
-				id: "poppysatiated",
-				chance: "100",
-			},
-		],
-	},
-	{
-		id: "poppysatiated",
-		startdescription: "«Ох, какая трогательная и верная дружба! Теперь попрощайся».",
-		requirements: 
-		{
-			follower: "1",
-		},
-		description: "Приспешника больше нет. Я остаюсь. Поппи Ласселс можно заметить то тут, то там. Может быть, наши беседы не закончены.",
-		effects: 
-		{
-			influencewinter: "1",
-			follower: "-1",
-			poppycommissionready: "1",
-		},
-		label: "Уместное завершение",
-		actionId: "poppytime",
-	},
-]
+{
+    "recipes": [
+        {
+            "id": "lockfollowerincupboard",
+            "description": "Всё, теперь не вырвется. Когда перестанет орать и брыкаться, подчиню как следует.",
+            "startdescription": "Этот последователь послужит иной цели. Теперь его место в чулане.",
+            "label": "Предать последователя и пленить его"
+        },
+        {
+            "id": "sulochanachat",
+            "description": "@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles\r\n#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.\r\n#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.\r\n#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.\r\n#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.\r\n#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.\r\n#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\r\n#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\r\n#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'\r\n#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\r\n#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\r\n#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'\r\n#|Is she disappointed? It's difficult to tell, with Sulochana.@",
+            "startdescription": "@#ascensionlessonhearta|'You want to know more?'\r\n#ascensionlessonheartb|'You want to know more?'\r\n#ascensionlessonheartc|'You want to know more?'\r\n#ascensionlessonheartd|'You want to know more?'\r\n#ascensionlessonhearte|'You want to know more?'\r\n#ascensionlessonheartf|'You want to know more?'\r\n#ascensionlessonmotha|'You want to know more?'\r\n#ascensionlessonmothb|'You want to know more?'\r\n#ascensionlessonmothc|'You want to know more?'\r\n#ascensionlessonmothd|'You want to know more?'\r\n#ascensionlessonmothe|'You want to know more?'\r\n#ascensionlessonmothf|'You want to know more?'\r\n#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
+            "slots": [
+                {
+                    "label": "Объект",
+                    "description": "Тема беседы",
+                    "id": "Subject"
+                }
+            ],
+            "label": "Беседа с Сулочаной"
+        },
+        {
+            "id": "sulochanachat_health",
+            "description": "«Все мы были молоды. Все. Только это нас и объединяет».",
+            "startdescription": "«Твоя старость ещё впереди. Мои поздравления».",
+            "label": "О телесных силах"
+        },
+        {
+            "id": "sulochanachat_passion",
+            "description": "«В тебе есть потенциал. Ты знаешь, что я это знаю. Одного потенциала недостаточно. Ещё что-нибудь?»",
+            "startdescription": "«Да. Из-за этого у тебя будут новые заботы».",
+            "label": "О эмоциях"
+        },
+        {
+            "id": "sulochanachat_cabaret",
+            "description": "«Там, в моём доме, берёт начало путь, который ты можешь пройти. Если хочешь это обсудить, встретимся там».",
+            "startdescription": "«Да?»",
+            "label": "О клубе «Экдизис»"
+        },
+        {
+            "id": "sulochanachat_desireheart_track",
+            "description": "«Путь, к которому ты стремишься, мы называем Новой Фигурой. Уже не полностью новой, конечно, но польза всё же есть — если вытерпеть боль. Встретимся у меня дома. Там мы сможем обсудить партнёра, который тебе в конце концов потребуется. Вот мой адрес».",
+            "startdescription": "«Хочешь сбросить кожу? М-м?»",
+            "label": "О новых фигурах"
+        },
+        {
+            "id": "sulochanachat_desiremoth_track",
+            "description": "Путь, к которому ты стремишься, мы называем Старой Фигурой. Меня он в итоге привёл сюда. На пути ты отринешь всё, абсолютно всё. Сбросишь кожу, и не раз... Встретимся у меня дома. Там мы сможем обсудить партнёра, который тебе в конце концов потребуется. Вот мой адрес.",
+            "startdescription": "Теперь... Теперь мы начинаем друг друга понимать.",
+            "label": "О старых фигурах"
+        },
+        {
+            "id": "sulochanachat_desire_change",
+            "description": "Встретимся у меня дома. Там мы сможем обсудить партнёра, который тебе в конце концов потребуется. Вот мой адрес.",
+            "startdescription": "Танец, значит?",
+            "label": "О желании"
+        },
+        {
+            "id": "sulochanachat_desire",
+            "description": "Здесь у нас нет ни капли общего. Я уже давно выбрала другую дорогу. Но раз уж ты хочешь пройти этот путь... Поговорим в клубе «Экдизис».",
+            "startdescription": "Так вот что тобой движет?",
+            "label": "О желании"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesrouter",
+            "description": ".",
+            "startdescription": "Насчёт этого...",
+            "label": "О потайных местах"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesg",
+            "description": "«Держи. Эта карта сколько-то продержится. Если они будут обо мне спрашивать, скажи, что в следующий раз я приду за их детьми».",
+            "startdescription": "«Тебе нужно в Полуденный порт? Сочувствую», — цедит Сулочана. Обычно она разговаривает не так.",
+            "label": "О пути к костям"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesf",
+            "description": "«Возьми. Это адрес того, кто сможет тебя направить. Если Воровка Взглядов обо мне спросит... скажи ей, чтобы передала привет Кляйдо. А хотя... знаешь, лучше ничего обо мне не говори. Вот адрес».",
+            "startdescription": "«Тебе нужно в Миах? Привези мне оттуда даты».",
+            "label": "О пути к зрачку"
+        },
+        {
+            "id": "sulochanachat_secrethistoriese",
+            "description": "«Таким, как я или как ты, там ничего не светит. Ни один танец не стоит того, чтобы танцевать его там. Тебе нужно проследовать южнее».",
+            "startdescription": "«Короли-без-Тени? Нет...»",
+            "label": "Не туда... "
+        },
+        {
+            "id": "sulochanachat_secrethistoriesd",
+            "description": "«В это время года это самый простой путь. И всё же будет сложно. Хорошо тебе провести время».",
+            "startdescription": "«Тебе нужно на Луга? М-м...»",
+            "label": "О пути к отметине"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesc",
+            "description": "«Вот, держи. Так ты доберёшься почти до конца, но последнюю милю придётся идти пешком. Когда я там бывала, то ночевала в одном трактире. Но я его сожгла». Она закуривает.",
+            "startdescription": "«Хочешь добраться до Камней?»",
+            "label": "О пути к полумраку"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesb",
+            "description": "Сулочана вручает вам бумажку, на которой что-то напечатано. «Здесь расписание на этот месяц. Смотри не перепутай платформу. Сейчас добраться куда проще! Раньше приходилось проходить через Неправильную Дверь, а мне и без того есть чем заняться», — усмехается она.",
+            "startdescription": "«Хочешь в Керишем? Да. С поездами всё сложно».",
+            "label": "О пути к жемчугу"
+        },
+        {
+            "id": "sulochanachat_secrethistoriesa",
+            "description": "«Сначала мы всегда преображаемся у моря. Начать можно с Керишема, а потом двигаться дальше. Но не лично, ни в коем случае. Облачись в иную суть. Если запутаешься — приходи с новыми знаниями. А если ты ищешь не преображения... я ничем не могу тебе помочь».",
+            "startdescription": "«Я могу помочь... Если хочешь преобразиться».",
+            "label": "На пути к преображению"
+        },
+        {
+            "id": "poppyoffer",
+            "description": "Принять предложение Поппи было бы не лучшей идеей.",
+            "startdescription": "«А я всё хотела с тобой потолковать. Иногда я спонсирую тех, кто изучает невидимые искусства. Сейчас я хочу предложить тебе поддержку. Весьма значительную. Всё, что я попрошу взамен — когда-нибудь представить меня тому, кто завершит всё так, как надо». Она кротко улыбается. [Добавьте <b>эмоции</b>, чтобы согласиться, или <b>разум</b>, чтобы продолжить её расспрашивать.]",
+            "slots": [
+                {
+                    "label": "Согласие",
+                    "description": "Добавьте эмоции, чтобы согласиться, или разум, чтобы продолжить расспрашивать Поппи.",
+                    "id": "Consent"
+                }
+            ],
+            "label": "Поговорить с Поппи Ласеллс"
+        },
+        {
+            "id": "poppyofferaccept",
+            "description": "Крошечный мешочек с крошечными сокровищами — подарок Поппи. Мы с ней ещё увидимся в сезоне лохмотьев. Я представлю ей кого-то.",
+            "startdescription": "«Да, именно так. Я вернусь сегодня вечером».",
+            "label": "Принять предложение Поппи"
+        },
+        {
+            "id": "poppyofferquery",
+            "description": "«Именно так. Когда снова наступит сезон лохмотьев, мой спонсор потребует завершения, и для этого кто-то понадобится. Можешь привести кого-нибудь верного, но ты тоже подойдёшь. Как пожелаешь. Не хочу навязываться».",
+            "startdescription": "Кто-то, кто завершит всё так, как надо?",
+            "label": "Как следует расспросить Поппи"
+        },
+        {
+            "id": "poppytimebomb",
+            "description": ".",
+            "startdescription": "В сезоне лохмотьев Поппи вернётся...",
+            "label": "Просьба Поппи"
+        },
+        {
+            "id": "poppysafefornow",
+            "description": ".",
+            "startdescription": "Поппи то и дело видят в городе. Она помогает на благотворительных мероприятиях и кротко улыбается.",
+            "label": "Тишина Поппи"
+        },
+        {
+            "id": "poppywantssoul",
+            "label": "Поппи приходит в гости",
+            "description": ".",
+            "startdescription": "«Время пришло. Солнце-в-Лохмотьях требует завершения. Кто это будет? Ты или кто-нибудь из твоих друзей?»",
+            "slots": [
+                {
+                    "label": "Пожертвование",
+                    "id": "Sacrifice"
+                }
+            ]
+        },
+        {
+            "id": "poppysatiated",
+            "description": "Моего последователя больше нет, а я есть. Поппи Ласеллс то и дело видят в округе. Возможно, ей ещё есть что мне сказать.",
+            "startdescription": "«Какой верный друг! Что ж, прощайтесь».",
+            "label": "Подходящее завершение"
+        }
+    ]
 }
