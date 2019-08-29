@@ -253,7 +253,7 @@
 	label:"An Intenser Opposition",
 	actionId:"study",
 	requirements:{project_influence_upgrade_edge:1},
-	effects:{edge:-1},
+	effects:{influenceedge:-1, influenceedgec:-1, influenceedgee:-1, influenceedgeg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've intensified this Edge influence."
 	},
@@ -264,7 +264,7 @@
 	label:"A Greater Heat",
 	actionId:"study",
 	requirements:{project_influence_upgrade_forge:1},
-	effects:{forge:-1},
+	effects:{influenceforge:-1, influenceforgec:-1, influenceforgee:-1, influenceforgeg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've intensified this Forge influence."
 	},
@@ -272,7 +272,7 @@
 	label:"A More Potent Appetite",
 	actionId:"study",
 	requirements:{project_influence_upgrade_grail:1},
-	effects:{grail:-1,},
+	effects:{influencegrail:-1, influencegrailc:-1, influencegraile:-1, influencegrailg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've intensified this Grail influence."
 	},
@@ -280,7 +280,7 @@
 	label:"The Rhythms Unceasing",
 	actionId:"study",
 	requirements:{project_influence_upgrade_heart:1},
-	effects:{heart:-1},
+	effects:{influenceheart:-1, influenceheartc:-1, influencehearte:-1, influenceheartg:-1},
 	aspects:{upgradeinfluence:1},
 description:"I've intensified this Heart influence."
 	},
@@ -288,7 +288,7 @@ description:"I've intensified this Heart influence."
 	label:"Luminosities Aligned",
 	actionId:"study",
 	requirements:{project_influence_upgrade_lantern:1},
-	effects:{lantern:-1},
+	effects:{influencelantern:-1, influencelanternc:-1, influencelanterne:-1, influencelanterng:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've intensified this Lantern influence."
 	},
@@ -296,7 +296,7 @@ description:"I've intensified this Heart influence."
 	label:"Closer, Closer",
 	actionId:"study",
 	requirements:{project_influence_upgrade_moth:1},
-	effects:{moth:-1},
+	effects:{influencemoth:-1, influencemothc:-1, influencemothe:-1, influencemothg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've intensified this Moth influence."
 	},
@@ -305,7 +305,7 @@ description:"I've intensified this Heart influence."
 	label:"A Silent Place",
 	actionId:"study",
 	requirements:{project_influence_upgrade_winter:1},
-	effects:{winter:-1},
+	effects:{influencewinter:-1, influencewinterc:-1, influencewintere:-1, influencewinterg:-1},
 	aspects:{upgradeinfluence:1},
 description:"I've intensified this Winter influence."
 	},
@@ -316,7 +316,7 @@ description:"I've intensified this Winter influence."
 	label:"All Things End",
 	actionId:"study",
 	requirements:{project_influence_subvert_edgetowinter:1},
-	effects:{edge:-1},
+	effects:{influenceedge:-1, influenceedgec:-1, influenceedgee:-1, influenceedgeg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"Patience defeats strength."
 	},
@@ -325,7 +325,7 @@ description:"I've intensified this Winter influence."
 	label:"Force Conquers All",
 	actionId:"study",
 	requirements:{project_influence_subvert_forgetoedge:1},
-	effects:{forge:-1},
+	effects:{influenceforge:-1, influenceforgec:-1, influenceforgee:-1, influenceforgeg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"I've shattered what was shaped."
 	},
@@ -333,7 +333,7 @@ description:"I've intensified this Winter influence."
 	label:"Hunger is Folly",
 	actionId:"study",
 	requirements:{project_influence_subvert_grailtomoth:1},
-	effects:{grail:-1},
+	effects:{influencegrail:-1, influencegrailc:-1, influencegraile:-1, influencegrailg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"Even the Red Grail falls prey to the buzzing in the brain."
 	},
@@ -341,7 +341,7 @@ description:"I've intensified this Winter influence."
 	label:"What Does Not Cease Must Eventually Yield",
 	actionId:"study",
 	requirements:{project_influence_subvert_hearttograil:1},
-	effects:{heart:-1},
+	effects:{influenceheart:-1, influenceheartc:-1, influencehearte:-1, influenceheartg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"All that moves must succumb to hunger."
 	},
@@ -349,7 +349,7 @@ description:"I've intensified this Winter influence."
 	label:"Sunset at Noon",
 	actionId:"study",
 	requirements:{project_influence_subvert_lanterntoforge:1},
-	effects:{lantern:-1},
+	effects:{influencelantern:-1, influencelanternc:-1, influencelanterne:-1, influencelanterng:-1},
 	aspects:{upgradeinfluence:1},
 	description:"Light yields to Heat."
 	},
@@ -357,7 +357,7 @@ description:"I've intensified this Winter influence."
 	label:"The Light Above",
 	actionId:"study",
 	requirements:{project_influence_subvert_mothtolantern:1},
-	effects:{moth:-1},
+	effects:{influencemoth:-1, influencemothc:-1, influencemothe:-1, influencemothg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"The Glory is a question, and Moth always answers Yes."
 	},
@@ -366,7 +366,7 @@ description:"I've intensified this Winter influence."
 	label:"The Life Beneath",
 	actionId:"study",
 	requirements:{project_influence_subvert_wintertoheart:1},
-	effects:{winter:-1},
+	effects:{influencewinter:-1, influencewinterc:-1, influencewintere:-1, influencewinterg:-1},
 	aspects:{upgradeinfluence:1},
 	description:"Winter's coming must yield at last to spring."
 	},
@@ -375,7 +375,15 @@ description:"I've intensified this Winter influence."
 	label:"The Skin of the World",
 	actionId:"study",
 	requirements:{project_influence_upgrade_subvert_knock:1},
-	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
+	effects:{
+		influenceedge:-1, influenceedgec:-1, influenceedgee:-1, influenceedgeg:-1,
+		influenceforge:-1, influenceforgec:-1, influenceforgee:-1, influenceforgeg:-1,
+		influencegrail:-1, influencegrailc:-1, influencegraile:-1, influencegrailg:-1,
+		influenceheart:-1, influenceheartc:-1, influencehearte:-1, influenceheartg:-1,
+		influencelantern:-1, influencelanternc:-1, influencelanterne:-1, influencelanterng:-1,
+		influencemoth:-1, influencemothc:-1, influencemothe:-1, influencemothg:-1,
+		influencewinter:-1, influencewinterc:-1, influencewintere:-1, influencewinterg:-1
+	},
 	aspects:{upgradeinfluence:1},
 	description:"Place pressure upon a weakness, and rend the skin of the world.",
 	linked:[{id:"studyproject_influence_upgrade_subvert_knock_remove_spare_knock",chance:100}]
@@ -385,7 +393,7 @@ description:"I've intensified this Winter influence."
 	comments:"This exists to remove a Knock influence, if we were combining Knock influences rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
 	actionId:"study",
 	requirements:{influence:2},
-	effects:{knock:-1},
+	effects:{influenceknock:-1, influenceknockc:-1, influenceknocke:-1, influenceknockg:-1},
 	description:"."
 	},
 
