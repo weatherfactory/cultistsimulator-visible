@@ -8,7 +8,7 @@ actionId:"work",
 label:"一场座无虚席的舞台灵媒表演",
 startdescription:"我独自一人立于舞台灯光下，回应观众的第一个提问——回应今晚众多拒绝承认死者已死之人的头一个。我已做好充分准备：我有大把回答可选。",
 requirements:{ghouljob.first:1},
-slots:[{id:"desire",label:"非止于此？",description: "I am a fraud... aren't I?",greedy:true,required:{desire:1}}],
+slots:[{id:"desire",label:"非止于此？",description: "我是个骗子，不是……吗？",greedy:true,required:{desire:1}}],
 alt:[
 {id:"work.seance.demotion"},
 {id:"work.seance.first.shameful"},
@@ -153,7 +153,7 @@ actionId:"study",
 label:"初尝人脔",
 requirements:{prealzabo:1,temptation.remembrance:1,corpse:1,funds:1},
 startdescription:"我将独自进餐——或许不能算是独自。",
-slots:[{id:"forceofwill",label:"意志力",description:"It is difficult.",required:{passion:1}}],
+slots:[{id:"forceofwill",label:"意志力",description:"难啊。",required:{passion:1}}],
 alt:[{id:"ghoul.firsttaste"}],
 description:"我下不去嘴。",
 warmup:10,
@@ -288,9 +288,9 @@ resetonexhaustion:true,
 draws:1
 },
 effects:{memory.menacing:-1},
-description:"@#vitalityplus|Miss Naenia says nothing, but I remember afterwards how her smile warmed me against the cold.
-#influenceedgec|Miss Naenia says nothing, but I remember long afterwards how her eyes flashed.
-#influencewinterc|Miss Naenia says nothing. Silence pools like shadow between the gallery lamps.@",
+description:"@#vitalityplus|挽歌儿小姐一言不发，但过后我记得她的微笑如何驱散冷意，温暖了我。
+#influenceedgec|挽歌儿小姐一言不发，但很久过后我记得她的眼睛如何闪动。
+#influencewinterc|挽歌儿小姐一言不发。静默似画廊灯间的阴影一样汇积成片。@",
 craftable:true},
 
  	{id:"talk.ghoul.memory.shameful",
@@ -313,9 +313,9 @@ resetonexhaustion:true,
 draws:1
 },
 effects:{memory.shameful:-1},
-description:"@#favour|Miss Naenia says nothing, but I realise later the same idea must have occurred to both of us: we could use this as leverage against someone in authority.
-#contentment|Miss Naenia says nothing, but the intimacy of the moment is very pleasant, and the serenity lingers.
-#influencegrailc|Miss Naenia says nothing, but her mouth curves slowly, slowly. I realise that I have never seen her part her lips.@",
+description:"@#favour|挽歌儿小姐一言不发，但我后来意识到我们两个定是起了同样的念头：我们可以拿这个作为对付某当局者的手段。
+#contentment|挽歌儿小姐一言不发，但那一刻的亲密非常令人愉快，且带来了迟留不散的安心感。
+#influencegrailc|挽歌儿小姐一言不发，但她的嘴角慢慢地，一分一分地向上弯起。我意识到我从未见过她开启双唇。@",
 craftable:true},
 
 
@@ -351,9 +351,9 @@ resetonexhaustion:true,
 draws:1
 },
 effects:{memory.joyful:-1},
-description:"@#influencehearte|Miss Naenia says nothing, but my heart pounds like a hammered anvil, even after I leave the gallery.
-#influenceheartc|Miss Naenia says nothing, but all the way home, there is a tune in my head that leaves me thinking of her.
-#contentment|Miss Naenia says nothing, but I match her smile.@",
+description:"@#influencehearte|挽歌儿小姐一言不发，但我的心脏似遭捶打的铁砧一般猛跳，即便在我离开画廊之后。
+#influenceheartc|挽歌儿小姐一言不发，但我在回家时，一路上脑海里总有个调子让我想到她。
+#contentment|挽歌儿小姐一言不发，但我露出了与她相仿的微笑。@",
 craftable:true},
 
 
@@ -377,9 +377,9 @@ resetonexhaustion:true,
 draws:1
 },
 effects:{memory.profitable:-1},
-description:"@#jumble|Miss Naenia says nothing, but afterwards I think of her when I'm browsing in a junk shop, and I buy something silly on impulse.
-#funds|Miss Naenia says nothing, but the next day I receive an unexpected package in the post.
-#compensation|Miss Naenia says nothing, but afterwards I find a sovereign in the street.@",
+description:"@#jumble|挽歌儿小姐一言不发，但过后我在逛一家旧货店时想到了她，然后便一时冲动买了些蠢兮兮的东西。
+#funds|挽歌儿小姐一言不发，但第二天我的邮箱收到了一件意想不到包裹。
+#compensation|挽歌儿小姐一言不发，但过后我在街上捡到了一枚索维林币。@",
 craftable:true},
 
 
@@ -389,9 +389,9 @@ craftable:true},
 actionId:"talk",
 label:"向挽歌儿小姐展示淡白至极的画作",
 startdescription:"我感觉我可能有点蠢，竟向一幅画展示另一幅画。但当我转过街角走向画廊时，发现天正在下雪，且只下在那条街上。路过的行人或瑟缩，或疾行，或大声惊叹。虽然画已妥妥当当地包在牛皮纸中，我还是将它抱紧，然后踏上通往挽歌儿小姐厅堂的阶梯。",
-description:"Miss Naenia is gone. A dark rectangle marks the empty place where once she hung. I stare about in consternation. But she is not here. There is nothing more to be done.
+description:"挽歌儿小姐不见了。在她曾悬挂，而今空荡荡的地方是一块深色的长方形印痕。我惊愕地瞪大了双眼。但她不在这里，我亦无计可施。
 
-Nothing now, but when I unwrap the Palest Painting in the silence of my home, I see that it has changed. A faint shape stands in the doorway to Nowhere, looking over its shoulder - waiting for me to follow. The shape has something of Miss Naenia about it.",
+现今虽无计，然而当我在自家的寂静中解开淡白至极的画作时，我看到它变样了。一个模糊的身形站在乌有乡的门户前，回首眺望着——等待我随其同行。这个身形有些挽歌儿小姐的韵味。",
 requirements:{naenia:1,painting.palest:1},
 warmup:30,
 effects:{naenia:-1},
@@ -416,7 +416,7 @@ warmup:10
 actionId:"dream",
 label:"死亡是朝下的",
 startdescription:"于门的另一边，是一道由墨玉灯照亮的螺旋阶梯，而再遥遥其下，是死者顺流而下所至的名为乌有乡处，在那里没有什么能被完全遗忘。我朝下行。",
-slots:[{id:"sacrifice",label:"此画所饥",description:"The Painted Door will take everything, if I let it. Do <i>not</i> try this at home.",required:{health:1,passion:1,reason:1,fatigue:1,disillusionment:1,concentration:1,passionexhausted:1}}],
+slots:[{id:"sacrifice",label:"此画所饥",description:"若我不加阻止，画中之门将夺走一切。<i>勿</i>要在家中尝试。",required:{health:1,passion:1,reason:1,fatigue:1,disillusionment:1,concentration:1,passionexhausted:1}}],
 alt:[{id:"dream.ghoul.noabilitysacrificed"}],
 linked:[{id:"ending.minorpalestvictory"},
 {id:"dream.ghoul.sacrificeabilities"}],

@@ -5,22 +5,22 @@
  label:"x",
  startdescription:"?",
  description:"!",
- internaldeck: 	{label:"Select Acquaintances",
-	description:"Hullo",
-	spec:
-	[
-	"cat_a",
-	"clifton_a",
-	"slee_a",			
-	"elridge_a",
-	"laidlaw_a"
-		],
+ internaldeck:  {label:"Select Acquaintances",
+    description:"Hullo",
+    spec:
+    [
+    "cat_a",
+    "clifton_a",
+    "slee_a",           
+    "elridge_a",
+    "laidlaw_a"
+        ],
 defaultcard: "funds",
 draws:2
 }
 },
-	
-	
+    
+    
 
 {id:"irt1",
 actionId:"irt",
@@ -136,17 +136,17 @@ warmup:30
 actionId:"x",
 label:"Create Great Snares",
 
-		effects:{snare:1},
-		warmup:1,
-		linked:[{id:"debugsnareaddmutation",chance:100}]
-		},
-		{id:"debugsnareaddmutation",
+        effects:{snare:1},
+        warmup:1,
+        linked:[{id:"debugsnareaddmutation",chance:100}]
+        },
+        {id:"debugsnareaddmutation",
 actionId:"x",
 label:"Create Great Snares+",
 
-		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
-		warmup:1
-		},
+        mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
+        warmup:1
+        },
 
 
 {id:"_testexpelled",
@@ -205,176 +205,176 @@ toolwinterd:1,
 ritefollowerconsumeingredient:1,
 ritetoolconsumeingredient:1
 }},
-		{
+        {
         id: "_memoryvault",
         label: "Retrieve stored things",
         actionId: "fictitiousverb",
                 effects: {
-				LEVER_LastBook:1,
-				LEVER_LastDesire:1,
-				    LEVER_LastTool:1,
+                LEVER_LastBook:1,
+                LEVER_LastDesire:1,
+                    LEVER_LastTool:1,
     LEVER_LastSignificantPainting:1,
     LEVER_LastCult:1,
     LEVER_LastHeadquarters:1,
     LEVER_LastPersonKilled:1
-				},
-		startdescription: "This is what we had:",
+                },
+        startdescription: "This is what we had:",
         warmup: 1,
         craftable: false,
-	},
-		{
+    },
+        {
         id: "_ascensionending",
         label: "Display Ascension Ending",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Here I go",
+        startdescription: "Here I go",
         description: "Ending text coming",
         warmup: 5,
         craftable: false,
-		ending: "minorgrailvictory"
-	},
-			{
+        ending: "minorgrailvictory"
+    },
+            {
         id: "_arrest",
         label: "Display Imprisonment Ending",
         actionId: "fictitiousverb",
         requirements: {},
-		startdescription: "Here I go",
+        startdescription: "Here I go",
         description: "Ending text coming",
         warmup: 5,
         craftable: false,
-		ending: "arrest"
-	},
-	{
+        ending: "arrest"
+    },
+    {
         id: "_mansustest",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "Wood"
-	},
-	{
+        portaleffect: "Wood"
+    },
+    {
         id: "_mansusteststag",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "StagDoor"
-	},
-	{
+        portaleffect: "StagDoor"
+    },
+    {
         id: "_mansustestpeacock",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "PeacockDoor"
-	},
-	{
+        portaleffect: "PeacockDoor"
+    },
+    {
         id: "_mansustestgate",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "TricuspidGate"
-	},
-	{
+        portaleffect: "TricuspidGate"
+    },
+    {
         id: "_mansustestspider",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "SpiderDoor"
-	},
-	{
+        portaleffect: "SpiderDoor"
+    },
+    {
         id: "_mansustestwhite",
         label: "Test Mansus effect",
         actionId: "fictitiousverb",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "WhiteDoor"
-	},
-	{
+        portaleffect: "WhiteDoor"
+    },
+    {
         id: "_mansustest2",
         label: "Test Mansus effect for door",
         actionId: "fictitiousverb2",
         requirements: {},
         effects: {contentment:1},
-		startdescription: "Mansus entry will occur on completion",
+        startdescription: "Mansus entry will occur on completion",
         description: "Mansus entry occurs as this appears",
         warmup: 1,
         craftable: false,
-		portaleffect: "whitedoor"
-	},
-	{
+        portaleffect: "whitedoor"
+    },
+    {
         id: "_dream",
         label: "Create Dream token",
         actionId: "dream",
         requirements: {},
         effects: {contentment:1},
-		startdescription: ".",
+        startdescription: ".",
         description: "...",
         warmup: 1,
         craftable: false
-	},
-	{
+    },
+    {
         id: "_study",
         label: "Create study token",
         actionId: "study",
         requirements: {},
         effects: {contentment:1},
-		startdescription: ".",
+        startdescription: ".",
         description: "...",
         warmup: 1,
         craftable: false
-	},
+    },
 {
         id: "_talk",
         label: "Create talk token",
         actionId: "talk",
         requirements: {},
         effects: {contentment:1},
-		startdescription: ".",
+        startdescription: ".",
         description: "...",
         warmup: 1,
         craftable: false
-	},
+    },
 
-		{
+        {
         id: "_explore",
         label: "Create explore token",
         actionId: "explore",
         requirements: {},
         effects: {contentment:1},
-		startdescription: ".",
+        startdescription: ".",
         description: "...",
         warmup: 1,
         craftable: false
-	},
-	   {
+    },
+       {
         id: "testdeathcountdown",
         label: "健康已耗尽",
         actionId: "healthend",
@@ -384,10 +384,10 @@ ritetoolconsumeingredient:1
         description: "他们会在哪里将我找见呢？我不在此处。",
         warmup: 10,
         craftable: false,
-		signalEndingFlavour:Melancholy,
-		ending: "deathofthebody"
+        signalEndingFlavour:Melancholy,
+        ending: "deathofthebody"
     },
-		   {
+           {
         id: "testemptyresults",
         label: "'In so far as one denies what is, one is possessed by what is not.' - Le Guin",
         actionId: "testemptyresults",
@@ -397,7 +397,7 @@ ritetoolconsumeingredient:1
         warmup: 10,
         craftable: false,
     },
-	 {id: "wolfatthedooreats_work",
+     {id: "wolfatthedooreats_work",
 label: "Here is the Wolf",
 actionId: "work",
 requirements: {wolfatthedoor:1},
@@ -481,19 +481,19 @@ craftable:true
      {
      id: "_long.dreamconfrontation",
      actionId: "long",
-	 startdescription:"Let's fight in the Mansus",
+     startdescription:"Let's fight in the Mansus",
      linked: [{id: "_long.dreamconfrontation.skillup"}],
      effects: {diarist:1},
-	 warmup:1
+     warmup:1
 
    },
      {
      id: "_long.dreamconfrontation.skillup",
      actionId: "long",
-	 	 startdescription:"Let's skill up the Long first",
-	 mutations:[{filter:long.enemy,mutate:long.dreamwork,level:10}],
+         startdescription:"Let's skill up the Long first",
+     mutations:[{filter:long.enemy,mutate:long.dreamwork,level:10}],
      linked: [{id: "long.dreams.confrontation"}],
-	 warmup:1
+     warmup:1
 
    },
    
@@ -505,14 +505,14 @@ label:"MEMORIES",
 startdescription:"ALL ALONE IN THE A BYSS",
 effects:{
 memory.furious:1,
-	memory.luxurious:1,
-	memory.liminal:1,
-	memory.horizon:1,
-	memory.splendid:1,
-	memory.endless:1,
-	memory.wildering:1,
-	memory.golden:1,
-	memory.honeyed:1},
+    memory.luxurious:1,
+    memory.liminal:1,
+    memory.horizon:1,
+    memory.splendid:1,
+    memory.endless:1,
+    memory.wildering:1,
+    memory.golden:1,
+    memory.honeyed:1},
 warmup:1}
    
 

@@ -33,7 +33,7 @@
             label: "奥里弗拉姆拍卖行",
             aspects:{location: 1},
             description: "奥里弗拉姆(法语, 意为金色火焰)专卖古玩，香水，生物标本和稀有文献。自被一场无法解释的大火烧毁后，如今，它于局促的新址展开业务。[你可以去拍卖行买卖物品。]",
-				slots:[{id:"Sell", label:"售卖",description: "Add an item here to auction it off.", required: {auctionable:1},actionId:"explore"}],
+				slots:[{id:"Sell", label:"售卖",description: "把物品放在此处拍卖。", required: {auctionable:1},actionId:"explore"}],
 			unique:true
         },
 										{
@@ -289,7 +289,7 @@
 		
 		{id:"location.cemetery",
 		label: "公墓",
-		slots:[{id:"muscle",label:"劳力",description:"I can employ a helper, or do the digging myself.",actionId:"explore",required:{health:1,follower:1}}],
+		slots:[{id:"muscle",label:"劳力",description:"我可以雇一名帮手，又或自己亲手去挖。",actionId:"explore",required:{health:1,follower:1}}],
 		description: "在醒时的世界，和在梦中一样，死者通常位于下方。",
 		aspects:{location:1},
 		lifetime:300,
@@ -301,7 +301,7 @@
 		label: "看守严密的公墓",
 		
 		description: "当局注意到了此地发生的异常举动。他们派来了一名守卫。访问此地将耗费更长的时间，而且很快会变得完全不可能。",
-				slots:[{id:"muscle",label:"劳力",description:"I can employ a helper, or do the digging myself.",actionId:"explore",required:{health:1,follower:1}}],
+				slots:[{id:"muscle",label:"劳力",description:"我可以雇一名帮手，又或自己亲手去挖。",actionId:"explore",required:{health:1,follower:1}}],
 		aspects:{location:1},
 		lifetime:60
 		},

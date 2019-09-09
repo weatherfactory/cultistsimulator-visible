@@ -67,17 +67,17 @@
         },
 {id:"welland.defeated",
 label:"韦兰的来信",
-description:"'SIR - (It does not seem to have occurred to Welland that he might have been defeated by anyone but a 'sir')
+description:"“<b>先 生</b>——（韦兰似乎认定击败他之人只能是位“先生”而不可能是其他）
 
-I am the most dangerous enemy you will ever face, and I have defeated far greater than you. You deserve better than to be pyre-fuel. I urge you to shatter your chains, as the Lionsmith did so long ago, and rise to take your own place as Long.
+我是你要面对的敌人中最危险的，而我击败过的人远比你强大。你只做燃料可惜了。我力劝你斩断身上的枷锁，如很久以前的狮子匠，在长生者中获得一席之地。
+	
+我会附上大流士告诉亚历山大的秘密。请明智地使用。
 
-I attach the secret that Darius told Alexander at Issus. Use it wisely.
-
-Regards,
-
-W. '
-
-[The secret is attached. You can use it to break free of your Mentor.]
+此致
+	
+W”
+	
+[秘密在附件中，你可以用它摆脱你导师的控制。]
 ",
 slots:[{id:"mentor",label:"塑形者",required:{apostleforge.mentor:1},actionId:study}],
 aspects:{legacyplotitem:1}
@@ -107,10 +107,9 @@ aspects:{legacyplotitem:1}
 
 {id:"diarist.defeated",
 label:"日记作者的一场梦",
-description:"The sunlight through the western window in the Scriptorium is failing. As the Diarist writes his last entry, the chamber chills from gold towards grey. He closes his little book with a snap. 'Death is down,' he explains, 'and I am already losing altitude. I don't bear you any grudge. I tell you what, though, 
-I hope your Illuminated One trips and falls down the Ascent.' The Diarist's face is erasing itself, like a man unwriting, and his eyes are already gone. He hands you his little book. 'This is your last chance. You can go where I was, or where you're going. I know which is better.' His mouth spools itself up like the undrawing of a zip, and he is blank white paper.
+description:"从缮写室西窗射入的阳光正渐渐衰落。随着日记作者撰写下最后一篇日记，房中转寒，金色被冻成了灰白。他啪的一声合上他的小本子。“死亡是朝下的，”他解释说。“而我已在失去高度。我不会怨恨于你。不过我和你说，
 
-[If you consider the dream of the diary, you can break free of your Mentor.]
+[仔细琢磨日记之梦，你便可以摆脱你导师的控制。]
 
 ",
 slots:[{id:"mentor",label:"沐光明者",required:{apostlelantern.mentor:1},actionId:study}],
@@ -121,17 +120,17 @@ lifetime:120
 	
 {id:"julian.defeated",
 label:"朱利安·科赛利的来信",
-description:"'Enemy,
+description:"“吾敌：
 
-I am not so easily destroyed. But I will acknowledge that you have defeated me, and so I will reward you with my counsel.
+勿要以为我会轻易毁灭。但我承认你打败了我，故我将致你以忠告，以资奖励：
 
-You are a fool, cozened by a fool to emplace one more stone in the walls of the Mansus. You may, if you choose, cast that stone away into night.
+你只是个被傻瓜诱骗的傻瓜，给漫宿之墙又添了一块石头。只要你愿意，你完全可以把那块石头丢进黑夜。
 
-Should you so cast it, you will die empty and alone, as do all, even the Long. You might die free.
+若你如此选择，你将在孤独和空虚中死去，和所有人 ，也包括长生者一样。你将会自由地死去。
 
-- Julian'
+——朱利安上”
 
-[If you take Julian's lesson to heart, you can break free of your Mentor.]
+[将朱利安的教导记在心上，你便可以摆脱你导师的控制。]
 ",
 slots:[{id:"mentor",label:"创教者",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
 aspects:{legacyplotitem:1}

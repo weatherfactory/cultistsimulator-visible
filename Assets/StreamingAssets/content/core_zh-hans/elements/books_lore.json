@@ -316,7 +316,7 @@
         id: "stumm",
             unique:true, label: "《噤声！》",
 
-slots:[{id:"projector",unique:true, label:"放映机",description:"I'll need to purchase a projector to watch this.",required:{funds:1},actionId:"study"}],
+slots:[{id:"projector",unique:true, label:"放映机",description:"我需要买台放映机来观看这盘影带。",required:{funds:1},actionId:"study"}],
             aspects:
             {text:1,auctionable:2},
             description: "一盘硝酸盐胶片，标签上写着“<b>STUMM!</b>(<b>噤 声!</b>)”——意为“沉默”，或者“哑”。旁边颤抖的的字迹则是导演的姓名：“杰尼克·克罗塞”。"

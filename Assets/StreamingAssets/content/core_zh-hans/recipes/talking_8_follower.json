@@ -7,7 +7,7 @@ actionId:"talk",
 startdescription: "出于同情，还是私利？",
 description:"我不能或不愿提供医疗援助。",
 requirements: {follower_wound:1,mortal:1,society:-1},
-slots:[{id:"Healing",label:"治疗",description: "Funds will buy medicine.", required: {funds:1}}],
+slots:[{id:"Healing",label:"治疗",description: "用资金购买药物。", required: {funds:1}}],
 alternativerecipes:[{id:"talktofollower_heal",chance:100}],
 warmup:60,
 craftable:true
@@ -75,7 +75,7 @@ aspects:{killmortal:1}
 label:"与追随者讨论教团事务",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: [{id:"Subject",label:"话题",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,independent:1,tool:1,ingredient:1,annoyance:1,location:1}}],
+slots: [{id:"话题",label:"话题",description:"本教事务；目标；或者另一个话题。",required: {society:1,evidencelevel:1,hunter:1,independent:1,tool:1,ingredient:1,annoyance:1,location:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 
@@ -546,11 +546,11 @@ description:"有些东西不能送给他人；有些东西没人会接受。",
 label:"邀请此人至蜕衣俱乐部共度一晚",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustsensation:1,locationcabaret:1},
-startdescription:"@#uqrose|Rose grins. 'Thank you. I'm very fond of the Club. My brother used to take me there.'
-#uqsaliba|Saliba examines me, toe to head. He curls his fingers into the palms of his hands, into fists, and then smooths them out. 'Good,' he agrees.
-#uqvictor|Victor winks. 'Yes, let's. My sister used to like the Club. I've been looking for a chance to go back.'
-#uqviolet|Violet chuckles. The chuckle becomes a delighted cackle, which ends in coughs. She recovers, and places a finger under my chin, to look directly into my eyes. 'Oh, yes,' she says.
-#uqrenira|Renira doesn't say a word. She only stretches splendidly and rises to stalk from the room. But she sends me a long glance back over her shoulder as she goes.@",
+startdescription:"@#uqrose|萝丝咧嘴笑了。“谢谢你。我特别喜欢这个俱乐部。以前我哥哥经常带我去。”
+#uqsaliba|萨利巴打量着我，从脚趾到头顶。他把手指弯曲到掌心中，握成拳，然后放开。“好”，他同意道。
+#uqvictor|维克多挤挤眼。“好啊，一起。以前我妹妹喜欢去这个俱乐部。我也在找机会回去看看。”
+#uqviolet|维奥莱特先是轻笑，轻笑变成愉悦的大笑，笑到咳嗽才收住。待她缓过气，她用一根手指抬起我的下颚，直直地看进我的双眼。“哦，好啊”，她说道。
+#uqrenira|芮妮拉一言不发。她只是伸了个赏心悦目的懒腰，然后便起身从房间阔步走出。但走时她回头给了我长长的一瞥。@",
 description:"若我有意开始一段露水情缘，那么此处便是绝佳场所。只要我和同行之人具有相同的感性。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
@@ -559,12 +559,12 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"邀请此人至蜕衣俱乐部共度一晚",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustchange:1,locationcabaret:1},
-startdescription:"@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.
-#uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.
-#uqclovette|Clovette claps her hands. 'I thought you'd never ask!'
-#uqdorothy|Dorothy nods decisively, twice, thrice. 'It's time,' she says softly.
-#uqsylvia|Sylvia yawns. She lifts her eye-patch edge to scratch an itch in the hollow beneath. 'Ripping,' she drawls.
-#uqleo|Leo ducks his head. He glances up at me and then at the ground. 'I would be delighted,' he says, very formally, to the ground.@",
+startdescription:"@#uqporter|波特弓着背，口里嚼着一条甘草根。“行”，他说道。
+#uqysabet|伊莎贝特歪头想了想。“我会去的吧”，她说。她犹豫了如蝙蝠拍翅的一瞬。“应该会很精彩的”，她补充道。
+#uqclovette|克罗薇特拍起手来。“我还以为你永远也不会提呢！”
+#uqdorothy|多萝西果决地点头，点了两次，三次。“是时候了”，她柔声说道。
+#uqsylvia|西尔维娅打了个呵欠。她拎起眼罩边搔了搔底下的空洞。“棒极了”，她拖长语调说道。
+#uqleo|里奥忽地埋下头去。他抬眼向我一瞥，然后又看着地面。“我很乐意”，他语气非常正式，对着地面说道。@",
 description:"随着舞台上表演的进行，我同伴的呼吸变得急促；主要不是因为舞者衣不遮体，而是为台上显现的某些变形。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
@@ -573,12 +573,12 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"邀请此人去奇异的街巷散步",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustenlightenment:1,locationstreetsstrange:1},
-startdescription:"@#uqauclair|Auclair elevates her face and orients her mouth into a bright, clear smile. 'Delighted,' she says.
-#uqcat|Cat lifts her teacup, drains it to the dregs, tilts the cup to study it critically. 'Why not,' she says. 'Why not indeed.'
-#uqclifton|Clifton belches and wipes his mouth. 'All bloody right,' he says approvingly.
-#uqenid|Enid looks up, directly into my eyes, a sudden dragonfly brightness. 'Yes,' she says.
-#uqneville|Neville swallows. 'Truly? Thank you. I mean, yes, of course!'
-#uqslee|For a moment Slee looks as alarmed as if I'd suggested a surgical intervention. Then he nods, earnestly. 'I wonder what will happen,' he says. @",
+startdescription:"@#uqauclair|奥克莱尔扬起脸，把她的嘴调整成欢快的，明白的微笑。“我乐意”，她说道。
+#uqcat|卡特端起她的茶杯，喝干，然后倾斜茶杯，仔细端详剩下的茶渣。“为什么不”，她说，“为什么不呢。”
+#uqclifton|克利夫顿打了个嗝，擦擦嘴。“行啊”，他赞同道。
+#uqenid|伊妮德抬头直视我，双眼发出光芒。“好”，她说道。
+#uqneville|内维尔咽了咽口水。“真的吗？谢谢你。我是说，嗯，当然！”
+#uqslee|有那么一刻，思雷看上去惊恐地仿佛我提出了手术干预。然后他真诚地点了点头。“我想知道后面会发生什么”，他说道。@",
 description:"地撒银光，晚风凉爽；夜晚的寂静引来言语，如暗色丝绒引来手指抚弄。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
@@ -587,10 +587,10 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"邀请此人至奥里弗拉姆共度一晚",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustpower:1,locationauctionhouse:1},
-startdescription:"@#uqtristan|Tristan nods emphatically, without speaking.
-#uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.
-#uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on me. 'Yes, please,' he says.
-#uqlaidlaw|Laidlaw beams. 'That sounds pretty!'@",
+startdescription:"@#uqtristan|崔斯坦用力地点了点头，没有说话。
+#uqvalciane|万查妮轻微地点了点头，但她的双眼放光如炉门打开时炉内的煤炭。
+#uqelridge|埃尔里奇将刀子“咔哒”一声收折起来，把注意力全副集中给我。“好，拜托了。”，他说道。
+#uqlaidlaw|莱德劳露出灿烂的笑容道：“听起来很妙啊！”@",
 description:"有人更爱月下漫步。有人更爱轻缓的音乐。但也有人喜欢珠光宝气，名流相伴，还有权力的轻声运转。[要想与该角色开始一段私情，请向其表明你们最深的欲望是一致的。]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
@@ -634,7 +634,7 @@ linked: [{chance:100,id: "followeraction_repairtoollanternbcracked_attempt"}]
 {id:"followeraction_repairtoollanternbcracked_attempt",
 label:"正在修复裂损的午之石",
 actionId: "talk",
-slots: [{id:"Materials",label:"材料",description:"Rare fuels and odd powders",required:{funds:1}}],
+slots: [{id:"材料",label:"材料",description:"Rare fuels and odd powders",required:{funds:1}}],
 startdescription:"我的追随者需要<b>资金</b>来完成这项工作。",
 description: "我无法提供追随者所需的材料。这块石头没能复原。",
 warmup:30,
@@ -662,7 +662,7 @@ linked: [{chance:100,id: "followeraction_repairtoollanterndcracked_attempt"}]
 {id:"followeraction_repairtoollanterndcracked_attempt",
 label:"正在修复裂损的迷途之镜",
 actionId: "talk",
-slots: [{id:"Materials",label:"材料",description:"Rare metals and improbable tints",required:{compensationvalue:4}}],
+slots: [{id:"材料",label:"材料",description:"Rare metals and improbable tints",required:{compensationvalue:4}}],
 startdescription:"我的追随者需要一枚<b>古铜币</b>，或更贵重的古币，来完成这项工作。",
 description: "我无法提供追随者所需的材料。这面镜子没能修复。",
 warmup:30,
@@ -692,7 +692,7 @@ linked: [{chance:100,id: "followeraction_repairtoollanternfcracked_attempt"}]
 {id:"followeraction_repairtoollanternfcracked_attempt",
 label:"正在修复裂损的守夜人之镜",
 actionId: "talk",
-slots: [{id:"Materials",label:"材料",description:"Shining songs and exotic alloys",required:{compensationvalue:8}}],
+slots: [{id:"材料",label:"材料",description:"Shining songs and exotic alloys",required:{compensationvalue:8}}],
 startdescription:"我的追随者需要一枚<b>古银币</b>，或更贵重的古币，来完成这项工作。",
 description: "我无法提供追随者所需的材料。这面镜子没能修复。",
 warmup:30,
@@ -721,7 +721,7 @@ linked: [{chance:100,id: "followeraction.repair.greatwork.sabotaged.attempt"}]
 {id:"followeraction.repair.greatwork.sabotaged.attempt",
 label:"正在修复大功业被破坏的环节",
 actionId: "talk",
-slots: [{id:"Materials",label:"材料",description:"Metals and mercies",required:{compensationvalue:8}}],
+slots: [{id:"材料",label:"材料",description:"Metals and mercies",required:{compensationvalue:8}}],
 startdescription:"我的追随者需要一枚<b>古银币</b>来完成这项工作。",
 description: "我无法提供追随者所需的材料。大功业仍然岌岌可危。",
 warmup:30,
@@ -1165,7 +1165,7 @@ label:"孤注一掷的尝试",
 	  {id: "followeraction_charmsuccess",
 	   label: "真挚的演讲，亲切的谈话",
 	  actionId:"talk",
-	  slots: [{id:"Reputation",label:"声名",required:{reputation:1},greedy:true}],
+	  slots: [{id:"声名",label:"声名",required:{reputation:1},greedy:true}],
 	  startdescription: "地上社会的规范并不适用于我们。但也许我们不会对人强调这一点。也许我们要靠魅力和良好的心态对人。我已不吝将各种高雅的陈词滥调套给我们组织的崇高准则。",
 	  description:"乐观是制胜的调料。",
 	  effects: {reputation:-1},
@@ -1175,7 +1175,7 @@ label:"孤注一掷的尝试",
 	  {id: "followeraction_charmfailure",
 	   label: "真挚的演讲，亲切的谈话",
 	  actionId:"talk",
-	  slots: [{id:"Reputation",label:"声名",required:{reputation:1},greedy:true}],
+	  slots: [{id:"声名",label:"声名",required:{reputation:1},greedy:true}],
 	  startdescription: "地上社会的规范并不适用于我们。但也许我们不会对人强调这一点。也许我们要靠魅力和良好的心态对人。我已不吝将各种高雅的陈词滥调套给我们组织的崇高准则。",
 	  description:"没人理解我们，或者说，人们已太过理解我们。",
 	  effects: {rumour:1},

@@ -301,7 +301,7 @@ alt:[{id:"priest.repevent",challenges:knock,additional:true}],
 {id:"preach.lantern",
 actionId:"work",
 label:"“仁慈和真实使国王存续：但对于光，只有真实使之存续。”",
-startdescription:"“辉光索求真实。当我们为真实笼罩时，它将不灼烧我们。”[所用“密传”越深邃，“欣喜若狂”的可能性越大。]",
+startdescription:"""辉光索求真实。当我们为真实笼罩时，它将不灼烧我们。”[所用“密传”越深邃，“欣喜若狂”的可能性越大。]",
 effects:{funds:1,fervour:1},
 alt:[{id:"priest.repevent",challenges:lantern,additional:true}],
 },
@@ -309,7 +309,7 @@ alt:[{id:"priest.repevent",challenges:lantern,additional:true}],
 {id:"preach.moth",
 actionId:"work",
 label:"“祂们引领了我，先将我带入黑暗，而后带入光。”",
-startdescription:"“辉光索求真实。当我们为谎言笼罩时，它则将从我们身上灼去之。”[所用“密传”越深邃，“欣喜若狂”的可能性越大。]",
+startdescription:"""辉光索求真实。当我们为谎言笼罩时，它则将从我们身上灼去之。”[所用“密传”越深邃，“欣喜若狂”的可能性越大。]",
 effects:{funds:1,fervour:1},
 alt:[{id:"priest.repevent",challenges:moth,additional:true}],
 },
@@ -335,71 +335,71 @@ alt:[{id:"priest.repevent",challenges:winter,additional:true}],
 actionId:"priest.repevent",
 label:"欣喜若狂",
 startdescription:"有时，我的话语——还有我借来的话语——将我的会众推到不只专心致志，而是欣喜若狂。",
-description:"@#reputation|Our devotion has drawn comment...
-#funds|The congregation has donated generously, and they haven't limited those donations to the collection plate.@" ,
-slots:[{id:"society",label:"核心圈子",description:"I could introduce the most enthusiastic worshippers to an inner circle...",required:{society:1}}],
+description:"@#reputation|我们的祀奉之举引来了议论……
+#funds|会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@" ,
+slots:[{id:"society",label:"核心圈子",description:"我可以将那些最热心的敬拜者引入一个核心小圈子……",required:{society:1}}],
 alt:[{id:"priest.repevent.devotee.edge",
 requirements:{venerationedge:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Division! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了分裂之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_edge:1}
 },
 {id:"priest.repevent.devotee.forge",
 requirements:{venerationforge:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Fires! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了火焰之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_forge:1}
 },
 {id:"priest.repevent.devotee.grail",
 requirements:{venerationgrail:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes the Red! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了赤红之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_grail:1}
 },
 {id:"priest.repevent.devotee.heart",
 requirements:{venerationheart:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Drum! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了鼓点之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_heart:1}
 },
 {id:"priest.repevent.devotee.knock",
 requirements:{venerationknock:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Threshold! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了门关之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_knock:1}
 },
 {id:"priest.repevent.devotee.lantern",
 requirements:{venerationlantern:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Candle! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了蜡烛之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_lantern:1}
 },
 {id:"priest.repevent.devotee.moth",
 requirements:{venerationmoth:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has dreamt of St Agnes of the Shears! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者梦到了剪刀之圣徒亚割妮！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_moth:1}
 },
 {id:"priest.repevent.devotee.winter",
 requirements:{venerationwinter:1},
 deckeffect:{priest.repevent:1},
 label:"灵感",
-description:"A worshipper has come who will not speak of their dreams; but, indeed, they need not! Meanwhile, @#reputation|our devotion has drawn comment...
-#funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
+description:"一名敬拜者有梦而不言说之；不过，他的确不需要言说！与此同时，@#reputation|我们的祀奉之举引来了议论……
+#funds|其余会众慷慨解囊捐献，且所捐的不止有奉献盘里的那些。@",
 effects:{funds:2,devotee_winter:1}
 },
 ],

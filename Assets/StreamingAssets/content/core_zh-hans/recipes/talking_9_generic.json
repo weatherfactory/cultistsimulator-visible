@@ -21,7 +21,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
         label: "熟人？",
         actionId: "talk",
         requirements: {dayacquaintances:1},
-		slots:[{id:"escalation",label:"激情",description:"I must be fervent and convincing.",required:{passion:1},greedy:true}],
+		slots:[{id:"escalation",label:"激情",description:"我必须表现得满腔热忱，充满说服力。",required:{passion:1},greedy:true}],
         startdescription: "我发现了同道中人——不过我得能说服他才行。[说服熟人入伙需花费激情。]",
 		alternativerecipes:[{id:"talkmeetacquaintance",chance:100}],
         description: "我拿不出激情，没能让他加入我的圈子。等下一次吧。",
@@ -33,7 +33,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
         label: "赞助人？",
         actionId: "talk",
         requirements: {daypatrons:1},
-		slots:[{id:"escalation",label:"理性",description:"I must be articulate and credible.",required:{reason:1},greedy:true}],
+		slots:[{id:"escalation",label:"理性",description:"我需要表现得口才敏捷，有理有据。",required:{reason:1},greedy:true}],
         startdescription: "我已经找到了拥有对我有用的资源的人——不过我需要先打动他。[投入理性来打动赞助人。]",
 		alternativerecipes:[{id:"talkmeetpatron",chance:100}],
         description: "我缺少足够的精力，没法让他理解我的事业。等下一次吧。",
@@ -69,7 +69,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 label:"在中立地带安排会面。",
 actionId: "talk",
 requirements: {independent: 1,society:-1,ritual:-1},
-slots: [{id:"Subject",label:"话题",description:"A topic of conversation."}],
+slots: [{id:"Subject",label:"话题",description:"谈话的主题"}],
 alternativerecipes:[
 {id:"A_follower_settrap_independent",chance:100},
 {id:"independentloreconversation",chance:100},
@@ -152,7 +152,7 @@ deckeffect: {troublemakerconversations:1}
 label:"安排与敌对分子会面",
 actionId: "talk",
 requirements: {hunter: 1},
-slots: [{id:"Subject",label:"话题",description:"A topic of conversation... or a minion who will destroy them."}],
+slots: [{id:"Subject",label:"话题",description:"谈话的主题……或派出一名消灭他的喽啰。"}],
 alternativerecipes:[
 {id:"hunterfitewithextraswole"},
 {id:"hunterfitewithswole"},
@@ -186,7 +186,7 @@ craftable: true
 label:"与我召唤出的对象交谈",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:1},
-slots: [{id:"Subject",label:"话题",description:"A topic of conversation... or a target."}],
+slots: [{id:"Subject",label:"话题",description:"谈话的主题……或目标。"}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"discusspassionsacrifice"},
@@ -231,9 +231,9 @@ craftable: true
 actionId:"talk",
 label:"冷冽的教诲",
 startdescription:"若我足够用心地倾听冬日太阳讲述的故事，我或能学到什么，以我的灵魂枯萎为代价。[这会教授给你“蜕衣舞者的寓言”，但是会将“激情”转变为“衰老”……甚至能由此打开一扇狭窄的门。]",
-description:"@#spirit_winterb_heart|'You look at me, and you see that I died. You might think that's what I lost. But if that's all, why would you ask me?' But I will ask it nothing. The dead do not usually speak.
-#spirit_winterd_edge|The Maid's voice is bright and sharp as fresh-cut gems. 'What may be lost? Every choice closes a door... and the Mansus has only seven.'
-#spirit_lanterne_secret|'What may be lost?' My childhood. My burdens. My illusions. My pride. My reputation. My shadow. My heart...'@",
+description:"@#spirit_winterb_heart|“你看看我，便知道我已死。你或许以为这就是我失去之物。但如果答案如此单纯，你又为何要问我呢？要是换我我什么也不问。死者通常不开口说话。”
+#spirit_winterd_edge|少女的声音明亮而锐利，如新切割的宝石。“何物会失去？每一个选择关闭一扇门……而漫宿只有七扇。”
+#spirit_lanterne_secret|“何物会失去？我的童年，我的重担，我的幻觉，我的骄傲，我的声名，我的影子，我的心……@",
 requirements:{passion:1,spiriteatspassion:1},
 effects:{passion:-1,decrepitude:1,fragmentmothc:1,influencewintere:1}
 },
@@ -242,9 +242,9 @@ effects:{passion:-1,decrepitude:1,fragmentmothc:1,influencewintere:1}
 actionId:"talk",
 label:"狂野的教诲",
 startdescription:"如果我委身于癫狂，我将习得狂野的教训。[这会教授给你“伤口通行权”，但是会将“理性”转变为“衰老”……甚至能由此打开一扇狭窄的门。]",
-description:"@#spirit_grailc_moth|The Prophet will enact its prophecies upon my skin, and beneath its pronouncements, my thoughts will part like old cloth.
-#spirit_heartc_edge|The Percussigant will lead me in the movements my body will not support, and if I need to make both changes and amends, why then, my skin will bear the tale, the tale; o my skin, the bear, the tale.
-#spirit_graile_edge|'I knew her in the Wake. Her arms were fewer; her arms were warmer; but her mouth was always cold. Call me a liar. I dare you. Or come here, and I will kiss the Fifth History deep into you, where no one will see it, not even you - '@",
+description:"@#spirit_grailc_moth|先知在我的表皮上进行它的预言，于它的宣告之下，我的思绪将像旧布料一样断裂开来。
+#spirit_heartc_edge|擂击者将用我躯体所不能胜任的动作引导我，且如果我既要改变又要修补，那么，我的皮它将继承古时，那个故事；噢我的皮啊，那头狗熊，着实够凶。
+#spirit_heartc_edge|“我在醒时就认识她。那时她的臂膀少一些；那时她的臂膀更温暖；但她的口总是冷的。尽管说我撒谎吧，你敢吗。或者你过来，我将把第五史深深吻进你里头，吻到没人看得见的地方，连你也看不见——”@",
 requirements:{reason:1,spiriteatsreason:1},
 effects:{reason:-1,decrepitude:1,fragmentknockc:1,influenceknocke:1}
 },
@@ -298,7 +298,7 @@ craftable: true
 	  label:"探讨《锁匠的梦境·卷二》",
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream2:1,autographed:-1},
 	  actionId:"talk",
-	  startdescription:"“我要在书上签名吗？会不会显得有点假模假式？反正也没人会相信是真的。别人都以为我死了。”",
+	  startdescription:"“我要在书上签名么？会不会显得有点假模假式？反正也没人会相信是真的。别人都以为我死了。”",
 	  description:"“我始终认为'门'和工匠的作品有关——和打造过程有关。我认为我们就是在这里找到进居屋的门道的。当然我们先祖是有其极限的，直到我们学会说话。我来给你解释……”",
 	  effects:{glimmering:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
@@ -307,7 +307,7 @@ craftable: true
 	  label:"探讨《锁匠的梦境·卷三》",
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream3:1,autographed:-1},
 	  actionId:"talk",
-	  startdescription:"“我要在书上签名吗？只写克里斯托弗唤我用的名字，不是我在这儿用的名字。”",
+	  startdescription:"“我要在上面写名字，行吗？只写克里斯托弗唤我用的名字，不是我在这儿用的名字。”",
 	  description:"“哦，天哪，我写到这儿的时候脑子是乱的，对吧？我很抱歉。但是关于死亡是朝下的这点我是对的。这也是我在漫宿里一般都往高层去的原因之一。我再稍微具体解释一下——”",
 	  effects:{glimmering:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
@@ -327,7 +327,7 @@ craftable: true
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream5:1,autographed:-1},
 	  actionId:"talk",
 	  startdescription:"“所以你到底是在哪里找到它的？”",
-	  description:"“我会给你签名。可我还并非具名之人。我还不够格，大概永远都不够格。”",
+	  description:"“我会给你签名。但不是以我的名(Name)。还不行，大概永远都不行。”",
 	  effects:{glimmering:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
 	  },

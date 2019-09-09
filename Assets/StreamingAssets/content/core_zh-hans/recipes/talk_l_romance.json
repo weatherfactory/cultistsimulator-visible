@@ -24,10 +24,10 @@ warmup:30
 actionId:"rose",
 label:"戮力同升",
 requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
-startdescription:"@#uqtristan|Tristan rises before I've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on my shoulder, the hand trembles. 
-#uqvalciane|Valciane inches closer as we speak together. When she takes my hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns me. 'We should establish tolerances.'
-#uqelridge|Elridge listens intently to every word. His eyes never leave mine. The only thing he says is 'Yes', but by the time we reach my home, he has begun to say it even when I haven't asked a question.
-#uqlaidlaw|Laidlaw's eyes shine as I speak. He can't seem to look away. His hands are upon me before either of us quite seem clear how it happened. Just for a moment, the auctioneer falters. We leave together before we attract comment.@",
+startdescription:"@#uqtristan|崔斯坦在我把话说完之前便站起了身。“我们该走了，”他的语气非常平静，然而当他把手放在我肩头时，手在颤抖。
+#uqvalciane|在我们交谈时，万查妮一寸一寸靠近。她握注我手时，她的手指传来机械般的力道，她的皮肤有着余烬般的热力。“我不是光，”她警告我说，“我们应当对彼此宽容。
+#uqelridge|埃尔里奇专注地听我说的每一个字。他的眼睛从不离开我的眼睛。他只说唯一的一句话，“是”；但是等到我们抵达我家时，我甚至还没来得及问，他便开始抢着回答“是”。
+#uqlaidlaw|莱德劳的眼睛随着我的话闪闪发光。看起来他没法移开目光。在我们都没有意识到的时候，他的双手放到了我身上。那一瞬间，拍卖师突然打了个结巴。我们在引得别人说三道四前一起离开了。@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
@@ -39,11 +39,11 @@ craftable:false
 actionId:"rose",
 label:"探秘的伙伴",
 requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
-startdescription:"@#uqrose|Rose lolls back into the crook of my arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'
-#uqsaliba|Saliba has twined his fingers in my hair, musingly. 'This will end badly,' he says, with some satisfaction.
-#uqvictor|Above table level, Victor is a perfect gentleman. The hand he keeps above the table is placed palm upwards. A moth lands on the outstretched palm: he closes his hand to crush it. 'Good memories,' he says. 'Let's go.'
-#uqviolet|Violet has, somehow, arranged herself against and across me, and begun to bestow melting kisses like momentary snowflakes. 'I'm not going to wait,' she warns me. 'Take me home if you know what's good for you.'
-#uqrenira|Renira sits perfectly composed at the intersection of attention. Some audience members pay more attention to her than they do to the dancers. We move together like one hot drop of wax running into another. 'I do hope you're not going to be foolish,' she breathes, just before our lips meet. @",
+startdescription:"@#uqrose|萝丝倚回我的臂弯，满足地微笑着。“和从前一模一样，”她说道。“你打算什么时候带我回家？”
+#uqsaliba|萨利巴边沉思边把手指伸进我的头发里转。“不会有好结果的，”他说着，脸上露出一些满意的神色。
+#uqvictor|在桌台之上，可见之处，维克多是一位完美的绅士。他一直搁在桌上的那只手手掌朝上。一只蛾子落到摊开的掌中：他合上手将它碾碎。“叫我想起了美好回忆，”他说。“我们走吧。”
+#uqviolet|维奥莱特不知何时改换成了与我面面相对的姿势，开始为我印上点点雪片一样转瞬即化的吻。“我不等人，”她警告我，“你要还知道好歹，就带我回家。
+#uqrenira|芮妮拉在旁人交汇的目光下风度大方地端坐着。有些旁观的会员投给她的眼光更多于给那些跳舞的人。我们像一滴热蜡流向另一滴一样并肩走开。“我很希望你接下来别做傻事”，她用极轻的声音说道，我们的双唇随即相接。 @",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
@@ -56,12 +56,12 @@ craftable:false
 actionId:"rose",
 label:"分享光明",
 requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
-startdescription:"@#uqenid|Enid drifts closer to me, and closer, like a reflection on a wave-crest, until she fits against my side. She says nothing at all, neither then, nor later.
-#uqauclair|Speaking with Auclair is always a little like fencing and a little like accounting, so it's a surprise when she hesitates and lets the hesitation draw out inelegantly far. 'I don't want to touch you,' she says at last, 'but I want to be in your bed. Tonight.'
-#uqcat|Cat Caro listens as I speak. She links her arm through mine. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'
-#uqclifton|Clifton sways closer to me. 'I haven't drunk anything,' he assures me, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on my hip. 'Maybe it's you. Are we going home now?'
-#uqneville|Neville can't seem to stop smiling. He hangs on your every word. 'I never imagined - ' he breathes.
-#uqslee|Slee, it transpires, has prepared a poem dedicated to me. It's very flattering. But it does go on. Kissing him is an effective way to curtail it. @
+startdescription:"@#uqenid|伊妮德徐徐向我行来，近一点，又近一点，像浪峰上的一个倒影，直至紧贴我身侧。她一句话也没说，当时没有，后来也没有。
+#uqauclair|和奥克莱尔讲话总是有一点像在斗剑，又有一点像在对帐，所以看到她犹豫且有失优雅地任其流露了过长时间，对我来说是个惊讶。“我不想碰你，”她最后说出口，“但是今晚，我想躺在你床上。”
+#uqcat|卡特·卡罗听着，我说着。她的胳膊和我的挽在一起。“这和我的梦说的不一样”，她插进这样一句话，“但我喜欢不一样的体验。”她微笑道。“我梦到我带你回家。也许应该反过来，你带我回家。”
+#uqclifton|克利夫顿扭动着身子贴近我。“我什么都没喝，”他向我保证，“但我还是醉了。也许是醉给月色了。”他试探地将一只手放在我胯边。“也许是醉给你。我们现在回家吧？”
+#uqneville|内维尔好像控制不住脸上的微笑。他急切地听着我说的每一个字。“我从没想过——”他用极轻的声音吐出。
+#uqslee|看样子，思雷准备了一首诗献给我。诗写得十分恭维。不过确实有点没完没了。吻他是个打住他的好法子。@
 
  ",
 description:".",
@@ -75,12 +75,12 @@ craftable:false
 actionId:"rose",
 label:"将变得不一样的二人",
 requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
-startdescription:"@#uqporter|Porter sits curled in his seat, motionless, but his eyes glitter as he watches the stage, and they glitter the same way when I lean in to kiss him. 'Your taste,' he says. 'We're the same.' He chuckles, and then he puts his hands back on me.
-#uqysabet|Ysabet applauds enthusiastically at the end of every performance. With each cocktail she drinks, her applause grows more vigorous. After our first kiss, she leans back, considers me, and begins, once more, to applaud.
-#uqclovette|Clovette clasps my arm in excitement. 'I'm beginning to understand something. I don't know what, but there's something. And it's you, too - it's you!' She says nothing for a little while, and then, much later, long after we have left the club, she says again, very softly, 'It's you, too.'
-#uqdorothy|Dorothy hums along with the music. Dorothy unconsciously moves in time with the dancers' actions. When I kiss Dorothy, she kisses me back in equal measure. She's breathing heavily as she draws back. 'We'll be different, now,' she says.
-#uqsylvia|Sylvia pops olives into her mouth as she watches the stage, chewing noisily. When she kisses me, she bites my upper lip hard enough to draw blood, and I can taste olives for hours. 'I'll get inside your clothes,' she says hungriy, 'all the way inside. If we fit.'
-#uqleo|Leo sits very straight, to begin with, but as excitement and cocktails overcome him, he begins to relax, until he relaxes all the way into me. 'I want to be different,' he whispers, 'but I don't know how.' His eyes are wide; his mouth is supple.@",
+startdescription:"@#uqporter|波特在座位上蜷缩着，一动不动，但双眼亮晶晶地望向舞台，和我俯身吻他时他的眼神相同。“你的味道，”他说道，“我们是一样的人。”他窃笑着，然后把手放回我身上。
+#uqysabet|伊莎贝特在每场表演结束时都热烈鼓掌。随着一杯杯鸡尾酒下肚，她的掌声越发用力。在我们第一个吻结束后，她靠回座位，关心了一下我，然后再一次，重新开始鼓掌。
+#uqclovette|克罗薇特兴奋地紧搂住我胳膊，“我开始明白了。我不知道具体是什么，但里面有东西。而且里面也有你——有你！”她有一小会儿再没说话，后来，过了好长一段时间，我们已离开俱乐部很久后，她又开口了，声音很轻，“也有你。”
+#uqdorothy|多萝西随着音乐哼唱。多萝西不自觉地随着舞者的动作摆动。我亲吻多萝西时，她用同样的吻法回报给我。她收回嘴唇时呼吸粗重。“我们变得不一样了，从现在开始，”她说。
+#uqsylvia|西尔维娅一边望着舞台一边直把橄榄往嘴里塞，还大声咀嚼着。她吻我时咬了我的上唇，用力到出血，而且令我往后好几个小时嘴里一直有橄榄味。“我要钻进你衣服，”她如饥似渴地说，“钻到最里面。看看我们合不合缝。”
+#uqleo|一开始，里奥坐得笔直，但待兴奋劲和鸡尾酒一起涌上头，他开始放松姿势，最后把自己放倒在了我身上。“我想变得不一样，”他悄声说，“但不知道怎么做。”他的眼睛大睁着，嘴温软待亲。@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId  :mortal,mutateAspectId:heart,mutationLevel:1},
@@ -123,7 +123,7 @@ label:"后果来了！",
 startdescription:"@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge
 #uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose
 #uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan
-#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#|My lover@ will tolerate my neglect no longer.",
+#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#|我的情人@不会再忍受我的不闻不问。",
 description:"我们俩人都会记得这一刻的难堪。",
 slots:[{id:"glummer",label:"身后所遗",required:{contentment:1},greedy:true}],
 mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
@@ -151,9 +151,9 @@ actionId:"rose",
 label:"为旧爱感到寂寥和苦闷",
 requirements:{corpse:1,romanticinterest:1},
 startdescription:"我不能，现在还不能。悲伤还是留到将来。",
-description:"In time, their body will be gone as their spirit now is, and I will forget.
+description:"随着时间流逝，他的身体会和他此刻的灵魂一样消逝无踪，我会遗忘。
 
-Unless...",
+除非……",
 effects:{dread:1},
 warmup:30,
 craftable:false
@@ -163,7 +163,7 @@ craftable:false
 actionId:"rose",
 label:"别让我离去",
 requirements:{summoned:1,romanticinterest:1},
-slots: [{id:"Blood?",label:"血？",description:"The body's strengths",required:{health:1}}],
+slots: [{id:"Blood?",label:"血？",description:"身体的力量所在",required:{health:1}}],
 startdescription:"爱我的人已无原先的风采。我可以给他一点儿我的血——只给一点儿，然而他有时贪得无厌……如果我给他一点儿血，他会记住的，会记住一段时间。",
 description:"不。他活过，现在他死了。并且待一定时间后，死亡将成为他的唯一。",
 alternativerecipes:[
@@ -179,8 +179,8 @@ actionId:"rose",
 label:"别让我离去",
 requirements:{health:1},
 startdescription:"我曾经的情人肌肤的色泽——遗留下的色泽——更浓重，更饱满了。旧日的光芒在那双眼中再度点亮。",
-description:"@#spirit_wintera_edge|Pain, cold, misery. These are all that remain to us, and because they remain to us, perhaps they are precious.
-#spirit_wintera_moth|Their hands, their lips, are ripe with life, but it is the chilly life of apple-skin and lily-petal. Still it is their hands, and their lips.@",
+description:"@#spirit_wintera_edge|痛楚、寒冷、凄凉，这便是留给我们的所有。也许正因为是为我们留下的，它们才显出宝贵。
+#spirit_wintera_moth|他的双手，他的双唇，饱含着生命，却是苹果表皮和百合花瓣那种冷冰冰的生命。不过那仍是他的双手，他的双唇。@",
 effects:{dread:1},
 deckeffect:{roserewards:1},
 aspects:{damagehealth:1},
@@ -193,7 +193,7 @@ craftable:false
 actionId:"rose",
 label:"偷情：体力充沛的用处",
 requirements:{follower_lustpower:1,romanticinterest:1},
-slots: [{id:"What?",label:"健康",description:"The body's strengths",required:{health:1,dread:1,funds:1}}],
+slots: [{id:"What?",label:"健康",description:"身体的力量所在",required:{health:1,dread:1,funds:1}}],
 startdescription:"我的情人不容易满足——不过，我也一样。",
 description:"眼下……我腾不出精力。",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
@@ -211,10 +211,10 @@ actionId:"rose",
 label:"偷情：体力充沛的用处",
 requirements:{health:1},
 startdescription:"待我完事后，我们都将陷入沉睡。但我还没完事。",
-description:"@#uqtristan|Tristan will not touch strong drink, except with me. He will not leave the clock unwound, except the nights that I visit. He is always wary of closing his eyes, but sometimes, when we are together, he cannot but close them.
-#uqvalciane|Valciane's skin glows with furnace heat. Her strength is exquisitely strained. Each time when I leave, she follows me down the stairs for a final kiss.
-#uqelridge|Elridge acts unhesitatingly with elegance and economy, precisely anticipating my preferences.
-#uqlaidlaw|Laidlaw is ingenious and indefatigable. He likes to bring me little gifts: clockworks, liqueurs, caged amusements.@",
+description:"@#uqtristan|崔斯坦从不碰劲头烈的酒水，除非和我共饮。他从不忘给钟表上弦，除了我来访的夜晚。他总是心怀警惕，不愿闭眼；然而有的时候，当我们在一起时，他不能不闭眼。
+#uqvalciane|万查妮的肌肤泛着暖炉的热力。她的力气彻底耗尽了。每次我离开时，她都会送我下楼，为了与我最后一吻。
+#uqelridge|埃尔里奇行动起来毫不犹豫，既优雅又洗练，精准预测了我的喜好。
+#uqlaidlaw|莱德劳花样百出而又不知疲倦。他喜欢给我送小礼物：发条装置、利口酒、关在笼中的玩物。@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -229,7 +229,7 @@ craftable:false
 actionId:"rose",
 label:"偷情：火急火燎的愉悦",
 requirements:{follower_lustsensation:1,romanticinterest:1},
-slots: [{id:"What?",label:"激情",description:"The deepest imperative.",required:{passion:1,dread:1,funds:1}}],
+slots: [{id:"What?",label:"激情",description:"最急切的要事。",required:{passion:1,dread:1,funds:1}}],
 startdescription:"我的情人在尝试各种享乐上具有无穷无尽的匠心——不过到现在为止，我还跟得上他的步调。",
 description:"眼下……我匀不出时间。",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
@@ -248,11 +248,11 @@ actionId:"rose",
 label:"偷情：火急火燎的愉悦",
 requirements:{passion:1},
 startdescription:"连续好多天——好多天——这段回忆都会如夏夜的闪电一样打断我的思绪。",
-description:"@#uqrose|Rose is on me, devouringly, the moment I pass the threshold. Once only, she called me 'Victor'. We never mentioned it after.
-#uqsaliba|Saliba is always relentless, always tireless. He never smiles. Sometimes, afterwards, his voice cracks as if he might be close to tears, but his eyes remain dry.
-#uqvictor|Victor always brings me a single rose. He always hesitates when he hands it to me. He never shows any hesitation afterward.
-#uqviolet|Violet's enthusiasms are depthless as a dark well. There's something remorseless about her pleasures, but she never once causes any lasting pain.
-#uqrenira|When I arrive, Renira is hazed in perfumes. When I leave, she lies tangled in a glorious sprawl of limbs. I'll carry her with me for days.@",
+description:"@#uqrose|在我越过门关的那一刻，萝斯正缠在我身上，贪婪地索求。只有那一次，她叫我“维克多”。后来，我们谁也没再提这事。
+#uqsaliba|萨利巴总是无休无止，总是不知疲倦。他从来不笑。有时在事后，他声音哽咽，好像快要掉下泪来，但双眼仍是干的。
+#uqvictor|维克多总会送我单独一支的玫瑰花，他把花递给我时总会犹豫。他从不在事后露出犹豫之情。
+#uqviolet|维奥莱特的热情像一口黑井一样伸不见底。她的欢愉带着一种无情，但她从不造成任何长久的痛苦。
+#uqrenira|我到时，芮妮拉全身笼罩着香水味。我走时，她摊开酥软的四肢倒在床上。接下来几天我会一直带着她的味道。@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -266,7 +266,7 @@ craftable:false
 actionId:"rose",
 label:"偷情：理解带来的狂喜",
 requirements:{follower_lustenlightenment:1,romanticinterest:1},
-slots: [{id:"What?",label:"理性",description:"The spirit's true light.",required:{reason:1,dread:1,funds:1}}],
+slots: [{id:"What?",label:"理性",description:"真正的精神之光。",required:{reason:1,dread:1,funds:1}}],
 startdescription:"我的情人既与我辩论肉体之上的议题，也同我实践肉体之间的议题。我必须跟上他的强度。",
 description:"眼下……我分不出心思。",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
@@ -285,12 +285,12 @@ actionId:"rose",
 label:"偷情：理解带来的狂喜",
 requirements:{reason:1},
 startdescription:"在一起的我们更加光明",
-description:"@#uqenid|Enid prefers to close her eyes rather than look at me. She says it hurts to look. She says it with such longing that I can't take offence.
-#uqauclair|Auclair sets up the chess board. The rules are a little different every evening. By the evening's end, we have always been distracted from them.
-#uqcat|Cat Caro knows the way; Cat Caro knows so many ways. We'll walk them together, when the moon parts the curtains to peep into dark.
-#uqclifton|When I come to Clifton, his rooms are always blazingly lit - candles, arc-lights, even oil-lamps. He insists. As the evening goes on, the lights fail, one by one, until our ultimate business is conducted in perfect darkness.
-#uqneville|Neville welcomes me with tea and flowers. He sits cross-legged at my feet and waits for me to speak. It always takes an effort to coax him into initiative, but I am never disappointed.
-#uqslee|Invariably Slee comes armed with poetry. Sometimes I'm in the mood for poetry. Sometimes I'm in the mood for something else.@",
+description:"@#uqenid|比起注视着我，伊妮德更喜欢闭上眼睛。她说看见会让她难受。她说得那样缠绵，让我没法觉得不中听。
+#uqauclair|奥克莱尔摆好象棋盘。棋的规则每晚稍有不同。当晚到最后，我们都无心顾及规则了。
+#uqcat|卡特·卡罗知道如何到达。卡特·卡罗知道繁多的到达之法。当月亮分开窗帘，探入黑暗时，我们会一起依样行事。
+#uqclifton|我去找克利夫顿时，他的住处总是灯火通明——蜡烛、电弧灯、甚至还有油灯。他坚持要这么做。随着夜晚的进行，灯光一支接一支熄灭，最终留下我们在纯粹的黑暗中行我们的好事。
+#uqneville|内维尔用茶和鲜花欢迎我。他盘腿坐在我脚边等我开口。哄他自己主动总要费我一番功夫，不过他从不让我失望。
+#uqslee|思雷他雷打不动，来时总备好了诗。有的时候我心思在读诗上。有的时候我心思在做其他事情上。@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -322,12 +322,12 @@ label:"偷情：当我们正在……",
 requirements:{passion:1},
 startdescription:"在一起的我们变得不同",
 description:"
-@#uqporter|Porter has taken the trouble to bathe before our time together. He has also taken the trouble to shave, meticulously.
-#uqysabet|Ysabet moves so quickly, and with such subtlety, she never seems quite to be in one place. But, somehow, she's always where she should be.
-#uqclovette|Clovette laughs at the strangest moments, but her laughter always comes right. Her joy is almost a physical thing. One could be lost in it; one would not emerge unchanged.
-#uqdorothy|Dorothy insists that the gramophone must play, from the moment we touch to the moment we part. This occasions interruptions. But she makes up for those interruptions, and the memory of the music is woven into the memory of the evening like a bright thread into sateen.
-#uqsylvia|Sylvia snips your clothes off with her scissors, and then she snips her clothes off with her scissors, and then she chooses a location for what you do next. It's not a convenient location.
-#uqleo|Leo is happy to see me - so very happy - so happy sometimes that the shape of it seems visible through his fragile skin. I will trace its shape with my fingers, exalt him, calm him, as we become what we are together.@",
+#uqporter|波特已舍得花心思在和我幽会前洗澡。他也舍得花心思刮胡子了，刮得还很精心。
+#uqysabet|伊莎贝特行动太快，因着这份轻巧，她给人她从不停在一个地方的印象。不过不知为何，她总出现在她该在的地方。
+#uqclovette|克罗薇特会在最奇怪的时机笑出声，不过她的笑声最终总能带来好的结果。她的快乐简直到了看得见摸得着的程度，可以让人沉迷其中，且出来后必会变个样子。
+#uqdorothy|多萝西坚持要让留声机播曲子，从我们触碰的那一刻开始，到我们分开为止。这会搅扰到我们。不过她补偿了我，而对音乐的回忆会交织在对夜晚的回忆中，如编入缎子的一根亮线。
+#uqsylvia|西尔维娅用她的剪子剪下你的衣服，然后为你接下来要做的事情选了一个位置。这个位置并不顺手。
+#uqleo|里奥见到我很快乐——特别快乐——快乐到有时我能从他纤弱的肌肤下看出快乐的形状。我用手指顺着那个形状划过，提振他，安抚他；与之同时，我们成为了在一起的我们。@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},

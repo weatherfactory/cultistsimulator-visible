@@ -17,33 +17,33 @@ warmup:10
 label:"和苏洛恰那聊天",
 actionId:"talk",
 requirements:{sulochana:1},
-slots: [{id:"Subject",label:"话题",description:"A topic of conversation"}],
-startdescription:"@#ascensionlessonhearta|'You want to know more?'
-#ascensionlessonheartb|'You want to know more?'
-#ascensionlessonheartc|'You want to know more?'
-#ascensionlessonheartd|'You want to know more?'
-#ascensionlessonhearte|'You want to know more?'
-#ascensionlessonheartf|'You want to know more?'
-#ascensionlessonmotha|'You want to know more?'
-#ascensionlessonmothb|'You want to know more?'
-#ascensionlessonmothc|'You want to know more?'
-#ascensionlessonmothd|'You want to know more?'
-#ascensionlessonmothe|'You want to know more?'
-#ascensionlessonmothf|'You want to know more?'
-#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
-description:"@#ascensionlessonhearta|'Not my speciality.' Sulochana smiles
-#ascensionlessonheartb|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonheartc|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartd|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonhearte|'Not my speciality.' Sulochana smiles.
-#ascensionlessonheartf|'Not my speciality.' Sulochana shrugs like a snake.
-#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
-#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
-#|Is she disappointed? It's difficult to tell, with Sulochana.@",
+slots: [{id:"话题",label:"话题",description:"谈话的主题"}],
+startdescription:"	@#ascensionlessonhearta|“想知道更多？”
+#ascensionlessonheartb|“想知道更多？”
+#ascensionlessonheartc|“想知道更多？”
+#ascensionlessonheartd|“想知道更多？”
+#ascensionlessonhearte|“想知道更多？”
+#ascensionlessonheartf|“想知道更多？”
+#ascensionlessonmotha|“想知道更多？”
+#ascensionlessonmothb|“想知道更多？”
+#ascensionlessonmothc|“想知道更多？”
+#ascensionlessonmothd|“想知道更多？”
+#ascensionlessonmothe|“想知道更多？”
+#ascensionlessonmothf|“想知道更多？”
+#|苏洛恰那踩灭香烟。“可以，如果你想跟我学这门语言的话。行，没问题。还有别的事吗？”@",
+description:"@#ascensionlessonhearta|“不是我的专长。”苏洛恰那微笑道。
+#ascensionlessonheartb|“不是我的专长。”苏洛恰那蛇一般耸着肩道。
+#ascensionlessonheartc|“不是我的专长。”苏洛恰那微笑道。.
+#ascensionlessonheartd|“不是我的专长。”苏洛恰那蛇一般耸着肩道。
+#ascensionlessonhearte|“不是我的专长。”苏洛恰那微笑道。.
+#ascensionlessonheartf|“不是我的专长。”苏洛恰那蛇一般耸着肩道。
+#ascensionlessonmotha|“我能教你的就这些。我是你的雇主，不是老师。”苏洛恰那伸伸懒腰。“多点耐性如何。”
+#ascensionlessonmothb|“我能教你的就这些。我是你的雇主，不是老师。”苏洛恰那伸伸懒腰。“多点耐性如何。”
+#ascensionlessonmothc|“我能教你的就这些。我是你的雇主，不是老师。”苏洛恰那伸伸懒腰。“多点耐性如何。”
+#ascensionlessonmothd|“我能教你的就这些。找老师到忘却会找去。”苏洛恰那咧嘴一笑，露出满口牙齿。“他们理你才怪。”
+#ascensionlessonmothe|“我能教你的就这些。找老师到忘却会找去。”苏洛恰那咧嘴一笑，露出满口牙齿。“他们理你才怪。”
+#ascensionlessonmothf|“我能教你的就这些。找老师到忘却会找去。”苏洛恰那咧嘴一笑，露出满口牙齿。“他们理你才怪。”
+#|我让她失望了？很难说，对于苏洛恰那这人。@",
 alternativerecipes:[
 {id:"talk.apostleforge.sulochanaechidna"},
 {id:"talk.apostlegrail.sulochanamarinette"},
@@ -79,7 +79,7 @@ label:"探讨蜕衣俱乐部",
 actionId:"talk",
 requirements:{sulochana:1,locationcabaret:1},
 startdescription:"“怎么？”",
-description:"“有条你能走的路，起点就在我家房子里。你要想和我聊聊这条路，就去我家找我。”"
+description:"“有条你能走的路，起点就在我家房子里。你要想和我聊聊这条路，就去我家找我。"""
 },
 {id:"sulochanachat_desireheart_track",
 label:"探讨新形体",
@@ -132,7 +132,7 @@ actionId:"talk",
 label:"探讨通往白骨之途",
 requirements:{sulochana:1,fragmentsecrethistoriesg:1},
 startdescription:"“你要去午港？哈，对你表示遗憾。”苏洛恰那的话中透出非同寻常的恶毒。",
-description:"“给你。这张地图短时间会有点用。要是他们有谁问起我，你就告诉他我下一个就找上他的孩子。”",
+description:"""给你。这张地图短时间会有点用。要是他们有谁问起我，你就告诉他我下一个就找上他的孩子。”",
 effects:{lore:-1,vaulteveningislesdefault:1}
 },
 
@@ -195,7 +195,7 @@ description:"“我们第一次总是在海边变。现今的凯尔伊苏姆可�
 label:"与波比·拉舍莱斯对话",
 actionId: "talk",
 requirements: {poppyready: 1},
-slots: [{id:"Consent",label:"合意",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
+slots: [{id:"Consent",label:"合意",description:"放入<b>激情</b>，接受条件；或放入<b>理性</b>，进一步盘问波比。.",required: {passion:1,reason:1}}],
 alternativerecipes: [{id: "poppyofferaccept",chance:100},
 {id:"poppyofferquery",chance:100}],
 startdescription: "“亲爱的，我一直想和你聊聊。我有时会资助研究无形之术的学者。我愿意为你提供捐助，一大笔款子。而你需要做的只是在以后某一天，给我介绍一个适合结尾之人。”她露出和善的微笑。[放入<b>激情</b>，接受条件；或放入<b>理性</b>，进一步盘问她。]",

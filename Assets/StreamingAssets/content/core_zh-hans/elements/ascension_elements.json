@@ -28,8 +28,8 @@
             aspects:
             {desire: 2,powermarks:2},
             description: "我已奉身于获取永恒的力量。[进一步升级此卡，追求“力量胜利”。我必须真正地融入漫宿。我需要进行<b>铸</b>相的<b><作业></b>来祈求白日铸炉，开始改变。]",
-			slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
-			{id: "Power", label:"力量", actionId: "work", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
+			slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
+			{id: "Power", label:"力量", actionId: "work", required: {forge:1},description: "我需要足够炽烈的铸之火力。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -39,8 +39,8 @@
             aspects:
             {desire: 2,sensationmarks:2},
             description: "我将奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
-			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
+			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "我需要足够的<b>杯</b>之快感冲击。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -50,8 +50,8 @@
             aspects:
             {desire: 2,sensationmarks:2},
             description: "我已奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
-			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
+			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "我需要足够的<b>杯</b>之快感冲击。"}],
 			uniquenessgroup:"uqdesire"
 			
         },
@@ -61,8 +61,8 @@
             aspects:
             {desire: 2,enlightenmentmarks:2},
             description: "我已奉身于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[进一步升级此卡，追求“启明胜利”。我必须真正地融入漫宿。我需要进行<b>灯</b>相的<b><作业></b>，让守夜人能够看到我。]",
-						slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
-			{id:"Power", label:"力量", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
+						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
+			{id:"Power", label:"力量", actionId: "work", required: {lantern:1},description: "我需要象征漫宿无情之光的标志。"}],
 			uniquenessgroup:"uqdesire"
         },
 		{

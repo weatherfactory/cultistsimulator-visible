@@ -127,11 +127,11 @@
             label: "置闰仪式",
             aspects:
             {ritual:1},
-			slots: [{id:"Sacrifice",label:"祭献",actionId: "work",required: {lore: 1}, description: "会损失一些东西。", consumes:true},
-			{id:"Offering",label:"供奉",actionId: "work",required: {follower:1,prisoner:1,summoned:1},description: "会损失一些东西。", consumes:true},
-			{id:"Surrender",label:"抛却",actionId: "work",required: {tool: 1}, description: "会损失一些东西。", consumes:true},
-			{id:"Dissolution",label:"融解",actionId: "work",required: {influence: 1}, description: "会损失一些东西。", consumes:true},
-			{id:"Grief",label:"供奉",actionId: "work",required: {ingredient: 1}, description: "会损失一些东西。", consumes:true},
+			slots: [{id:"Sacrifice",label:"祭献",actionId: "work",required: {lore: 1}, description: "将失而不还。", consumes:true},
+			{id:"Offering",label:"供奉",actionId: "work",required: {follower:1,prisoner:1,summoned:1},description: "将失而不还。", consumes:true},
+			{id:"Surrender",label:"抛却",actionId: "work",required: {tool: 1}, description: "将失而不还。", consumes:true},
+			{id:"Dissolution",label:"融解",actionId: "work",required: {influence: 1}, description: "将失而不还。", consumes:true},
+			{id:"Grief",label:"悲痛",actionId: "work",required: {ingredient: 1}, description: "将失而不还。", consumes:true},
 			{id:"Desire",label:"欲望",actionId: "work",required: {desire:6,promise:1}, description: "我可变为何物？[该栏仅在飞升最终阶段可用。如果你已达成第六印记，将你的飞升卡置于此处可完成“大功业”。]"}
 			],
             description: "此仪式将复现太阳乖蹇的命运。愚蠢的学徒会在迫不得已时使用此仪式。",

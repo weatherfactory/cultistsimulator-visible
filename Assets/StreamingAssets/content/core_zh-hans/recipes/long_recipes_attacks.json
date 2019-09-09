@@ -830,7 +830,7 @@ linked:[{id:"long.executestrategy.intrigue.failure",challenges:{heart:base,moth:
 {id:"long.executestrategy.intrigue.fraud.succeed",
 actionId:"longintrigue",
 label:"审计员的毒刺",
-startdescription:"“在以前的往来信函中，我们指出过你违约的可能性。现在我们更详细地评估了这个问题……”",
+startdescription:"“在以前的往来信函中，我们指出过你违约的可能性。现在我们更详细地评估了这个问题……""",
 slots:[{id:"funds",label:"资金",required:{funds:1},greedy:true}],
 effects:{funds:-1},
 warmup:10,
@@ -1376,9 +1376,9 @@ startdescription:"每当我入睡，梦魇都会撕碎我的灵魂。甚至我�
 slots: [{id:"wakingnightmares",label:"醒时梦魇",required: {passion: 1,reason:1,concentration:1,disillusionment:1,passionexhausted:1},greedy: true}],
 effects:{passion:-1,reason:-1,concentration:-1,disillusionment:-1,passionexhausted:-1},
 alt:[{id:"long.dreams.confrontation.destroyedbynightmares"}],
-startdescription: "The nightmares keep coming. They keep coming. Day or night, waking or sleeping, the sounds of the things in the air, the roots of my hair growing inwards, the open doors that open all the way and the migraines that lair in cold and everything speaks to me, all the time everything, the tug of waking is gravity's slither and the press of the Bounds is the press of the crowd and I am sloughing me, this is how glaciers go
+startdescription: "梦魇永不停歇。永不停歇。不分白天黑夜，梦里梦外，半空中的响动，我向内生长的发根，自始至终敞开的门和栖于寒冷的偏头痛而且一切都在向我说话，无时无刻所有事物，保持清醒的苦役是蜿蜒的重力而边境的挤压是人群的挤压而我正在蜕下我自己，就如同冰川的移动。
 
-[When I have no remaining Passion or Reason, this will destroy me.]",
+[待“理性”或“激情”耗尽后，我将不复存在。]",
 warmup: 10,
 linked:[{id:"long.dreams.confrontation.cleanup"}]},
 
