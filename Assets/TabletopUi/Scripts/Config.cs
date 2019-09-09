@@ -51,10 +51,6 @@ public class Config
 	        {
 	            knock = true;
 	        }
-	        if (contents.Contains("loc=1"))
-	        {
-	            CrossSceneState.LocEnabled = true;
-	        }
         }
 	    else
 	    {

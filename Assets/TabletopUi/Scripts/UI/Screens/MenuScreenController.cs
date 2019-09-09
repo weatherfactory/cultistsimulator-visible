@@ -252,8 +252,6 @@ public class MenuScreenController : MonoBehaviour {
 
 		// now we can take input
 		canTakeInput = true;
-
-        languageButton.gameObject.SetActive(CrossSceneState.LocEnabled);
     }
 
     void UpdateVersionNumber(bool hasNews) {
