@@ -2,13 +2,14 @@
 "recipes": [
 		{
         id: "dreamascensionpowera",
-        label: "在冥想中追求神秘力量",
+        label: "思忖我对非此世力量的追求",
         actionId: "dream",
         requirements: {ascensionpowera: 1},
-		slots: [{id:"Calculation",required:{lore:1,health:1,reason:1}, description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
-        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-        description: "我决定维持现状……至少暂时如此。",
-		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		slots: [{id:"Calculation",label:"凝思",required:{lore:1,health:1,reason:1,priestjob:1}, description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}],
+        startdescription: "我应该奉身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少现下如此。",
+		alternativerecipes:[{id: "dreamascension_abandontemptation",chance:100},
+		{id: "dreamascension_switchto_sensation",chance:100},
 		{id: "dreamascension_switchto_enlightenment",chance:100},
 		{id: "dreamascension_upgrade_power_1to2",chance:100}],
         warmup: 60,
@@ -16,13 +17,14 @@
     },
 				{
         id: "dreamascensionsensationa",
-        label: "在冥想中追寻感官的认知",
+        label: "思忖我对感官的探求",
         actionId: "dream",
         requirements: {ascensionsensationa: 1},
-		slots: [{id:"Musing",required:{lore:1,passion:1,reason:1}, description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
-        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-        description: "我决定维持现状……至少暂时如此。",
-        		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
+		slots: [{id:"Musing",label:"冥思",required:{lore:1,passion:1,reason:1,priestjob:1}, description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}],
+        startdescription: "我应该奉身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少现下如此。",
+        		alternativerecipes:[{id: "dreamascension_abandontemptation",chance:100},
+				{id: "dreamascension_switchto_power",chance:100},
 		{id: "dreamascension_switchto_enlightenment",chance:100},
 		{id: "dreamascension_upgrade_sensation_1to2m",chance:50},
 		{id: "dreamascension_upgrade_sensation_1to2f",chance:100}],
@@ -31,25 +33,38 @@
     },
 			{
         id: "dreamascensionenlightenmenta",
-        label: "在冥想中追求神秘知识",
+        label: "思忖我对非此世知识的追求",
         actionId: "dream",
         requirements: {ascensionenlightenmenta: 1},
-		slots: [{id:"Reflection",required:{lore:1,passion:1,health:1},description: "投身于我所追寻的信条相关的密传，或在别处寻求突破。"}],
-        startdescription: "我应该投身于这一目标吗？还是应当从别处努力？",
-        description: "我决定维持现状……至少暂时如此。",
-        		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		slots: [{id:"Reflection",label:"反思",required:{lore:1,passion:1,health:1,priestjob:1},description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}],
+        startdescription: "我应该奉身于这一目标吗？还是应当从别处努力？",
+        description: "我决定维持现状……至少现下如此。",
+        		alternativerecipes:[
+				{id: "dreamascension_abandontemptation",chance:100},
+				{id: "dreamascension_switchto_sensation",chance:100},
 		{id: "dreamascension_switchto_power",chance:100},
 		{id: "dreamascension_upgrade_enlightenment_1to2",chance:100}],
 		warmup: 60,
         craftable: true
     },
+	
+	
+
+{id:"dreamascension_abandontemptation",
+actionId:"dream",
+label:"净化自身摆脱诱惑",
+startdescription:"我自己的欲望不足挂齿。我是门关。我是我麾下教民将行的路。我将鞭策自己为这个目标而活，永不回头。",
+description:"我或可以说我已选定，但此话不完全正确。我<i>已被</i>选定。 ",
+requirements:{priestjob:1},
+effects:{passion:1,desire:-1},
+},
 	{
         id: "dreamascension_switchfromchange",
-		label: "追寻感官而不是转变",
+		label: "追寻感官而非蜕变",
 		requirements:{ascensionchangea:1},
 		actionId: "dream",
 		effects:{desire:-1,ascensionsensationa:1},
-		startdescription:"所有事物中，变换的欲望是最为善变的。[一旦失去后，转变的欲望不能直接重新获得。]",
+		startdescription:"在所有事物中，转变的欲望最为善变。[蜕变的欲望一旦失去，不能再度直接获得。]",
 		description: "我重新确认了自己的目标。那些经历就像这个世界表皮之下被掩盖的脉络。我将会知道它们最深层的秘密，尽管这也许会将我吞噬。",
 		warmup: 60,
 		craftable:true
@@ -61,7 +76,7 @@
 		requirements: {passion:1},
 		effects:{desire:-1,ascensionpowera:1},
 		startdescription:"或许力量是最令人信服的追求。",
-		description: "我重新确认了自己的目标。我的前辈们曾经掌控过重塑之力：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
+		description: "我重新确认了自己的目标。我的前辈们曾经掌控过再造之力：这是一种无论女皇、将军还是物理学家们都只能幻想的力量。我也应当拥有它，尽管，一旦当我尝试承载这种力量，它会将我灼干。",
 },
 {
         id: "dreamascension_switchto_sensation",
@@ -75,7 +90,7 @@
 
 {
         id: "dreamascension_switchto_enlightenment",
-		label: "现在，我以启智为追求。",
+		label: "现在，我以启明为追求。",
 		actionId: "dream",
 		requirements: {reason:1},
 				effects:{desire:-1,ascensionenlightenmenta:1},
@@ -85,11 +100,11 @@
 
 {
         id: "dreamascension_upgrade_power_1to2",
-		label: "投身于火",
+		label: "追奉火",
 		actionId: "dream",
 		requirements: {lore:1,forge:1},
-		startdescription:"我将投身追寻力量。",
-		description: "我低语着那些铁匠对铁、凶手对受害者、火焰对燃料所说的话。只有我自己知道我做了什么，但它已经为我开辟了一条道路。[我向着可怖的飞升又进了一步。]",
+		startdescription:"我将奉身于追求力量。",
+		description: "我低语着那些铁匠对铁、凶手对受害者、炉火对燃料所说的话。只有我自己知道我做了什么，但它已经为我开辟了一条通路。[我向着可怖的飞升又进了一步。]",
 		effects:{ascensionpowera:-1,ascensionpowerb:1},
 		burnimage: "forgededication"
 },
@@ -97,20 +112,20 @@
 
 {
         id: "dreamascension_upgrade_sensation_1to2m",
-		label: "投身于血",
+		label: "追奉血",
 		actionId: "dream",
 		requirements: {lore:1,grail:1},
-		startdescription:"我将投身追求感官。",
+		startdescription:"我将奉身于追求感官。",
 		description: "有些话语悦耳。有些话语可口。美妙的味道洋溢于我的舌尖，令我永远无法忘怀。[我向着可怖的飞升又进了一步。]",
 		effects:{ascensionsensationa:-1,ascensionsensationbm:1},
 		burnimage: "graildedication"
 },
 {
         id: "dreamascension_upgrade_sensation_1to2f",
-		label: "投身于血",
+		label: "追奉血",
 		actionId: "dream",
 		requirements: {lore:1,grail:1},
-		startdescription:"我将投身追求感官。",
+		startdescription:"我将奉身于追求感官。",
 		description: "有些话语悦耳。有些话语可口。美妙的味道洋溢于我的舌尖，令我永远无法忘怀。[我向着可怖的飞升又进了一步。]",
 		effects:{ascensionsensationa:-1,ascensionsensationbf:1},		
 		burnimage: "graildedication"
@@ -118,11 +133,11 @@
 
 {
         id: "dreamascension_upgrade_enlightenment_1to2",
-		label: "投身于光",
+		label: "追奉光",
 		actionId: "dream",
 		requirements: {lore:1,lantern:1},
-		startdescription:"我将投身追求知识。",
-		description: "我曾说过这样的话：“时枢神皆有其颜色，但颜色只出现在有光存在的地方。”我会去有光的地方，并让光将我漂至透明。[我向着可怖的飞升又进了一步。]",
+		startdescription:"我将奉身于追求知识。",
+		description: "我曾说过这样的话：“司辰(Hour)各有其颜色，但颜色只存在于有光的地方。”我会去有光的地方，并让光将我漂至透明。[我向着可怖的飞升又进了一步。]",
 		effects:{ascensionenlightenmenta:-1,ascensionenlightenmentb:1},		
 		burnimage: "lanterndedication"
 },
@@ -181,7 +196,7 @@
 	actionId: "dream",
 	requirements: {vitality:1},
 	startdescription: "今天我将会梦见——",
-	description: "我什么也没梦见。我醒了，伸了伸懒腰。那几个小时的安静时光令我精神焕发。",
+	description: "我什么也没梦见。我醒了，伸了伸懒腰。这段安静时光令我精神焕发。",
 	warmup: 10,
 	},
 	{
@@ -190,7 +205,7 @@
 	actionId: "dream",
 	requirements: {glimmering:1},
 	startdescription: "今天我将梦见一个展览馆。",
-	description: "在不存在的展览馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚硬盒子中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一听装着风暴的锡罐。我总会在看到走廊尽头前醒来。",
+	description: "在不存在的展览馆的展柜中，我总看见一颗白如雪，坚如石的苹果，一只放在坚固小盒中的金色甲壳虫，一个静待我抚摸的羞赧的几何体，一封被弹簧弹开的黑色信笺，一口放置测量和记录用仪器的黄铜戏箱，一场盛在罐中的暴风。我总会在看到走廊尽头前醒来。",
 	warmup: 10,
 	},
 		{
@@ -214,7 +229,7 @@
 	actionId: "dream",
 	requirements: {dread: 1},
 	alternativerecipes: [{id: "nightmarehersaultsuccess",chance: 30}],
-	startdescription: "我下去了。",
+	startdescription: "我朝下而行。",
 	description: "我记得海索记录过此事。我撬起地板，紧紧地挤进地板下。现在我被压在它们下面，就像一具不为人知的尸体。空气中充满了热灰的臭气。我的嘴里满是刺人的渣子。这一次，我还没能学会我希望学到东西——不管那是什么。",
 	warmup: 10,
 	},

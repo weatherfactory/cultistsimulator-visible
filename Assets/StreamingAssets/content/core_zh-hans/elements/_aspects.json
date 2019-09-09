@@ -1,5 +1,6 @@
 {"elements":
     [
+
    {
             id: "acquaintance",
             label: "熟人",
@@ -15,7 +16,7 @@
 		        {
             id: "benefactor",
             label: "金主",
-			description: "对我所做的工作感兴趣之人，我与之走的愈发近了。",
+			description: "对我的工作成果感兴趣之人，我与之走的愈发近了。",
             isAspect: true
         }, 				
         {
@@ -36,9 +37,15 @@
             isAspect: true
         },
 				     {
+            id: "devotee",
+            label: "义徒",
+			description: "眼下，此人全心全意尽义祀奉。但此情很快便会消退，到那时他或许会质问自己都做下了什么。",
+			isAspect:true
+        },
+				     {
             id: "exalted",
-            label: "圣徒",
-			description: "不能再晋升之人……至少在我麾下不能。",
+            label: "已擢升",
+			description: "此人无法再进一步晋升……至少在我麾下不能。",
             isAspect: true
         },
 		        {
@@ -50,7 +57,7 @@
 		        {
             id: "hunter",
             label: "猎人",
-			description: "虽然文明世界的法律出现晚于时枢神的法则，但是它们共通之处在于，有时需要献上牺牲。此人是法律的代行人。",
+			description: "虽然文明世界的法律出现晚于司辰的法则，但是它们共通之处在于，有时需要献上牺牲。这个祭品是法律的代行人。",
             isAspect: true
         },
 				        {
@@ -62,7 +69,7 @@
 						        {
             id: "approval",
             label: "认可",
-			description: "有人越来越认可我了。",
+			description: "有人越来越认可我这个人了。",
             isAspect: true
         },
 						        {
@@ -86,14 +93,14 @@
         {
             id: "edge",
             label: "刃",
-			description: "一切征服都在<b>刃</b>处开始。有一位居于此处之人目盲且不受创伤。而另一位，则是强力无匹，且越战越强。[<b>刃</b>是战争与纷争的准则。]",
+			description: "一切征服都在<b>刃</b>处开始。有一位居于此处之人目盲且不受创伤。而另一位，则是强力无匹，且越战越强。[<b>刃</b>是战斗与抗争的准则。]",
             isAspect: true,
 			noartneeded:true
 			},
         {
             id: "forge",
             label: "铸",
-			description: "我曾经看到过这样一句话，“火是严冬，却是带有温度。火是暖春，却会燃尽一切。” [<b>铸</b>是变换与毁灭的准则。]",
+			description: "我曾经看到过这样一句话，“火是严冬，却是带有温度。火是暖春，却会耗尽一切。” [<b>铸</b>是变换与毁灭的准则。]",
             isAspect: true
         },
 		     
@@ -120,7 +127,7 @@
 			 {
             id: "lantern",
             label: "灯",
-			description: "“生命是束纯净的火焰，我们内心都拥有一颗不可见的太阳。”——托马斯·布朗。[<b>灯</b>是有“太阳之居所”之称的神秘之地与其上光芒的准则。]",
+			description: "“生命是束纯净的火焰，我们内心都拥有一颗无形的太阳。”——托马斯·布朗。[<b>灯</b>是有“太阳之居屋”之称的隐秘场所与其上光芒的准则。]",
             isAspect: true,
 			induces:[{id:"lanterninduction",chance:5}]
         },
@@ -128,13 +135,13 @@
         id: "moth",
         label: "蛾",
         isAspect: true,
-		description: "我知道有一个人会将蛾子捉来关在玻璃罩下。然后在如今夜一般的夜晚，将它们逐个放出，令其死于火烛。[<b>蛾</b>，狂野又危险，是混沌与向往的准则。]",
+		description: "我知道有一个人会将蛾子捉来关在玻璃罩下。然后在如今夜一般的夜晚，将它们逐个放出，令其死于火烛。[<b>蛾</b>，狂野又凶险，是混沌与渴慕的准则。]",
 			induces:[{id:"mothinduction",chance:10}]
     },
 	        {
             id: "secrethistories",
             label: "秘史",
-			        description: "历史是时间在世界身上镌刻的伤痕。[<b>秘史</b>描绘世上的未解之谜，及其各种各样的过去。]",
+			        description: "历史是时间在世界身上留下的伤疤。[<b>秘史</b>描绘了世界不为人知的千头万绪及它的重重过往。]",
             isAspect: true
         },
 
@@ -152,9 +159,9 @@
         },
 										{
             id: "scar",
-            label: "伤痕",
+            label: "伤疤",
             isAspect: true,
-			description: "这是不可逆转的行为导致的必然结果。"
+			description: "一种不可逆的行为导致的不可逆的结果。"
         },
 										{
             id: "advancement",
@@ -184,21 +191,21 @@
         },
 					{
             id: "ecdysijob",
-            label: "一份蜕变俱乐部的工作",
+            label: "一份蜕衣俱乐部的工作",
             isAspect: true,
-			description: "我获得了一份在蜕变俱乐部舞台上演出的工作。"
+			description: "我获得了一份在蜕衣俱乐部的舞台上演出的工作。"
         },
 								{
             id: "demotion",
             label: "降职",
             isAspect: true,
-			description: "我已经很长时间没有工作了。"
+			description: "我已经很长时间没有上班了。"
         },
 		{
             id: "ritual",
             label: "仪式",
             isAspect: true,
-			description: "“当我们以适当的方式，适当的顺序，做适当的事情时，神就会帮助我们。”——或为海索所说。[在仪式中集齐属性以进行召唤。]"
+			description: "“以适当的方式，适当的顺序，做适当的事情。愿上神帮助我们所有人。”——或为海索所说。[在仪式中集齐性相以进行召唤。]"
         },
 				{
             id: "society",
@@ -206,6 +213,11 @@
             isAspect: true,
 			description: "要想招募信徒，我必须构建一些让他们笃信的东西。"
         },
+		{id:"rededicable",
+		label:"未确定",
+		description:"组织的宗旨已经开始动摇。我能够施加压力来调整它的方向。",
+		isAspect:true
+		},
 		        {
             id: "ingredient",
             label: "原料",
@@ -230,7 +242,7 @@
             id: "influence",
             label: "影响",
             isAspect: true,
-			description: "某种反响、共鸣和调和。很快便会消逝。"
+			description: "某种反响、共鸣、调和。很快便会消逝。"
         },
         {
             id: "tool",
@@ -246,7 +258,7 @@
         },
 		{
 		id: "riddle",
-		label: "谜题",
+		label: "谜语",
 		isAspect: true,
 		description: "有些问题只有一个答案；而有些问题从来没有答案。"
 		},
@@ -265,13 +277,13 @@
         },
 						 {
             id: "suspicious",
-            label: "嫌疑",
+            label: "可疑",
             isAspect: true,
-			description: "警探大概会希望将其调查清楚吧。"
+			description: "可能会引得警探调查。"
         },
 						 {
             id: "healthskill",
-            label: "力量",
+            label: "力气",
             isAspect: true,
 			description: "我身强体壮，不论白天还是晚上。[这可以让你在做体力劳动，或做舞者时有更好的表现。]"
         },
@@ -279,7 +291,7 @@
             id: "murderskill",
             label: "危险",
             isAspect: true,
-			description: "直接与之对抗是不明智的。但如果万不得已，狭路相逢，我将陷入高度的险情。"
+			description: "直接对抗总是不明智的。但万不得已时，若不得不战，我将陷入高度的危险。"
         },
 								 {
             id: "passionskill",
@@ -291,12 +303,12 @@
             id: "reasonskill",
             label: "学识",
             isAspect: true,
-			description: "我乃智慧七柱之一。[它目前仅能让你提高理性。]"
+			description: "我乃智慧七柱之一。[此卡目前仅能让你进一步增长理性。]"
         },
 		{id: "way",
-		label: "回归梦境",
+		label: "重返梦境之途",
 		isAspect: true,
-		description: "有些记忆是描绘梦境的草图。但有些记忆超越了梦境的边际，抵达了林地和其上的居所。"
+		description: "有些记忆是描绘梦境的草图。但有些记忆穿过了梦的边境，抵达了林地和其上的居屋。"
 		},
 			{id: "desire",
 		label: "欲望",
@@ -307,33 +319,39 @@
 					{id: "promise",
 		label: "诺言",
 		isAspect: true,
-		description: "对结果的承诺。"
+		description: "对结局的承诺。"
 		},
 								{id: "rivalmarks",
-		label: "对手的飞升",
+		label: "对手飞升",
 		isAspect: true,
-		description: "虽说对手飞升到太阳之居所的可能性微乎其微。但如果他成功了，我或许会失去飞升的机会。[如果你的对手率先得到第七印记，此人将夺走你的游戏胜利。]"
+		description: "虽说对手飞升到日之居所的可能性微乎其微。但如果他成功了，我或许会失去飞升的机会。[如果你的对手率先得到第七印记，在下一个野心勃发的时节，此人将有机会夺走你的游戏胜利。]"
 		},
 		
 						{id: "changemarks",
-		label: "转变的形体",
+		label: "蜕变的形体",
 		isAspect: true,
 		description: "每次转变，我都会丢掉一些东西。"
 		},
 				{id: "powermarks",
 		label: "塑之印记",
 		isAspect: true,
-		description: "我可以向名为光阴之炉的时枢神寻求永生与力量。她的触碰能为我带来独特的欲望，以及印记。"
+		description: "我可以向名为白日铸炉的司辰寻求永生与力量。她的触碰能为我带来独特的食欲，以及印记。"
 		},
 						{id: "sensationmarks",
 		label: "悦之印记",
 		isAspect: true,
-		description: "我可以向名为赤杯的时枢神寻求永生与愉悦。她的触碰能为我带来独特的欲望，以及印记。"
+		description: "我可以向名为赤杯的司辰寻求永生与愉悦。她的触碰能为我带来独特的食欲，以及印记。"
 		},
 						{id: "enlightenmentmarks",
 		label: "光之印记",
 		isAspect: true,
-		description: "我可以向名为守夜人的时枢神寻求永生与启明。他的触碰能为我带来独特的欲望，以及印记。"
+		description: "我可以向名为守夜人的司辰寻求永生与启明。他的触碰能为我带来独特的食欲，以及印记。"
+		},
+								{id: "remembrancemarks",
+		label: "回忆之爪",
+		isAspect: true,
+		description: "泥土之下是骸骨。骸骨之中是回忆。回忆之内是色彩。",
+		comments:"Important! this is used to trigger the extra corpse-remnants discovery from Expeditions for Ghoul"
 		},
 			{id: "follower_lustenlightenment",
 			isAspect:true,
@@ -385,7 +403,7 @@ isHidden:true
 		{id:"descend",
 		label: "下降",
 		isAspect:true,
-		description: "如果新的欲望未能得到满足，我的印记将消失。",
+		description: "如果新的食欲未能得到满足，我的印记将消失。",
 			noartneeded: true,
 		comments: "Recipe aspect"},
 		
@@ -401,6 +419,12 @@ isHidden:true
             isAspect: true,
 			description: "书籍是不死的记忆。"
         },
+        {
+            id: "legacyplotitem",
+            isAspect: true,
+            isHidden: true,
+            comments: "Used for plot items that shouldn't be passed down to another legacy through LEVER_LastBook, since they can break flows."
+        },
 				{
             id: "autographed",
             label: "亲笔签名作",
@@ -411,7 +435,21 @@ isHidden:true
             id: "lore",
             label: "密传",
             isAspect: true,
-			description: "有关无形之术的知识。我可以利用它来吸引追随者，举行仪式，开启通往漫索的道路，或是寻觅飞升之法……[“密传”片段能通过与同属性的片段一同研究来提升等级。]"
+			description: "有关无形之术的知识。我可以利用它来吸引追随者，举行仪式，开启通往漫宿的道路，或是寻觅飞升之法……[“密传”片段能通过与同性相的片段一同研究来提升等级。]"
+        },
+        {
+            id: "subvertable_lore",
+            label: "可拗转的密传",
+            isAspect: true,
+            isHidden: true,
+            noartneeded: true
+        },
+		
+		{
+        id: "memory",
+            label: "回忆",
+			isAspect:true,
+            description: "我们铭记死者，直至将其遗忘。"
         },
 				{
             id: "language",
@@ -433,9 +471,9 @@ isHidden:true
         },
 								{
             id: "tutoraramaic",
-            label: "亚拉姆语学者",
+            label: "亚兰语学者",
             isAspect: true,
-			description: "若你向亚拉姆语学者求教，你便会获得其指导。"
+			description: "若你向亚兰语学者求教，你便会获得其指导。"
         },
 								{
             id: "tutorsanskrit",
@@ -463,6 +501,22 @@ isHidden:true
             isAspect: true,
 			description: "如果你了解其他相关语言，该灵体可能会教给你渊深曼达安语。"
         },
+		
+		
+{id:"spiritsicknessprotector",
+label:"抗病大师",
+description:"我可以与此物谈论我的健康，它能给予人针对疾病的防护。",
+isAspect:true},
+
+{id:"spiriteatspassion",
+label:"失物之灯",
+description:"我可以与此物交谈，向它献上我的激情。",
+isAspect:true},
+
+{id:"spiriteatsreason",
+label:"褪思者",
+description:"我可以与此物交谈，向它献上我的理性。",
+isAspect:true},
 								        {
             id: "auctionable",
             label: "可拍卖",
@@ -472,7 +526,7 @@ isHidden:true
 						        {
             id: "compensationvalue",
             label: "古币面值",
-			description: "斯宾特里亚古钱币是隐秘世界的通行货币。有的古钱币价值比其它的更高。不过可别指望花它能找零，它可不是寻常物件。",
+			description: "斯宾特里亚(spintria, 古罗马钱币)古币是隐秘世界的通行货币。有的古币价值比其它的更高。不过可别指望花它能找零，它可不是寻常物件。",
             isAspect: true
         },
 		        {
@@ -490,9 +544,10 @@ isHidden:true
 },
 		        {
             id: "movehq",
-            label: "移到新总部",
+            label: "搬迁到新总部",
 			description: "Recipe aspect",
-        isAspect: true
+        isAspect: true,
+		noartneeded:true
 },
 
 {id:"library",
@@ -528,7 +583,7 @@ isAspect:true
        {
             id: "vaultcapital",
             label: "位于首都",
-			description: "我所居住的这个拥挤的首都中的一处隐秘之地。",
+			description: "我所居住的这个拥挤的首都中的一处隐秘场所。",
         isAspect: true
 },
       {
@@ -552,7 +607,7 @@ isAspect:true
 
      {
             id: "vaultrendingmountains",
-            label: "位于撕剥山脉",
+            label: "位于撕身山脉",
 			description: "山侧土黄、山顶盖雪，叫天天不应。",
         isAspect: true
 },
@@ -560,7 +615,7 @@ isAspect:true
      {
             id: "vaultloneandlevelsands",
             label: "荒寂而平阔的沙地",
-			description: "在这个干燥又遥远之地，放眼望去只有绵延的沙丘。",
+			description: "在这个干旱又遥远之地，放眼望去只有绵延的沙丘。",
         isAspect: true
 },
 
@@ -573,7 +628,7 @@ isAspect:true
        {
             id: "peril",
             label: "危机",
-			description: "一种阻碍、危险或是为时过早的结果。",
+			description: "一种阻碍、危险或是为时过早的结局。",
         isAspect: true
 },
       {
@@ -596,58 +651,58 @@ isAspect:true
 },
       {
             id: "vault",
-            label: "藏宝库",
+            label: "藏宝地",
 			description: "藏有一些珍贵之物。",
         isAspect: true
 },
       {
             id: "challenge.knowledge",
-            label: "需要学问",
-			description: "这是一方缺失拼片的拼图。也许我会在学海的偏远之隅找到这些片段。[要想升级或转换此片段，你需要“博学”，或有藏书室的总部。]",
+            label: "知识所需",
+			description: "这是一方缺失拼片的拼图。也许我会在学海的偏远之隅找到这些片段。[要想升级或拗转此片段，你需要“博闻”，或有藏书室的总部。]",
         isAspect: true
 },
 
 
       {
             id: "challenge.intuition",
-            label: "需要直觉",
-			description: "若付出时间与静思，有时答案会不请自来。[要想升级或转换此片段，你需要“灵感”，或有圣所的总部。]",
+            label: "直觉所需",
+			description: "若付出时间与静思，有时答案会不请自来。[要想升级或拗转此片段，你需要“灵感”，或有圣所的总部。]",
         isAspect: true
 },
 
       {
             id: "challenge.grim",
-            label: "需要严酷的教训",
-			description: "我会记得。[要想升级或转换此片段，你需要恐惧（可能越增越多），技能“无声的厚重”，或一处有坑穴的总部。]",
+            label: "严酷的教训所需",
+			description: "我会记得。[要想升级或拗转此片段，你需要恐惧（可能越增越多），技能“无声的厚重”，或一处有坑穴的总部。]",
         isAspect: true
 },
 
       {
             id: "challenge.obsessive",
-            label: "需要令人痴迷的研究",
-			description: "这个课题需要投入超出安全范围的注意力。[要想升级或转换此片段，你需要有藏书室的总部，或技能“永无止尽”，或一张“理性”。理性有极小可能将永久受损。]",
+            label: "走火入魔的研究所需",
+			description: "这个课题需要投入超出安全范围的注意力。[要想升级或拗转此片段，你需要有藏书室的总部，或技能“永无止尽”，或一张“理性”。理性有极小可能将永久受损。]",
         isAspect: true
 },
 
       {
             id: "challenge.paradox",
-            label: "需要自相矛盾的决心",
-			description: "真理是一条蛇。答案是喂饱它的饵食。[要想升级或转换此片段，你需要有圣所的总部，或技能“洞开的灵魂”，或一张“激情”。激情有极小可能将永久受损。]",
+            label: "矛盾的解法所需",
+			description: "真理是一条蛇。答案是喂饱它的饵食。[要想升级或拗转此片段，你需要有圣所的总部，或技能“洞开的灵魂”，或一张“激情”。激情有极小可能将永久受损。]",
         isAspect: true
 },
 
 
       {
             id: "challenge.illumination",
-            label: "需要光照",
-			description: "水注满杯，光注满思维。[要想升级或转换此片段，你需要“入迷”（可能越增越多），或有圣所的总部，或技能“高深的思维”。]",
+            label: "光照所需",
+			description: "水注满杯，光注满头脑。[要想升级或拗转此片段，你需要“入迷”（可能越增越多），或有图书馆的总部，或技能“高深的思维”。]",
         isAspect: true
 },
 
       {
             id: "challenge.practical",
-            label: "需要应用试验",
-			description: "痛苦只在当下；知识则会被长久铭记。[要想升级或转换此片段，你需要冒“健康”风险，或者派出一名囚犯。]",
+            label: "应用试验所需",
+			description: "疼痛只在当下；知识则会被长久铭记。[要想升级或拗转此片段，你需要冒“健康”风险，或者派出一名囚犯。]",
         isAspect: true
 },
 
@@ -709,6 +764,14 @@ isAspect:true
 			description: "延长雇工的时限。",
             isAspect: true,
 			comments: "Recipe aspect. Use to rehire hirelings.",
+			noartneeded: true
+        },
+		{
+            id: "refiring",
+            label: "重燃",
+			description: "演出召唤物的召唤时限。",
+            isAspect: true,
+			comments: "Recipe aspect. Use to refire devotees.",
 			noartneeded: true
         },
 		{
@@ -785,7 +848,7 @@ isAspect:true
         },
 							 {
             id: "rival_promotion",
-            label: "提升：对手",
+            label: "晋升：对手",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
@@ -816,7 +879,7 @@ isAspect:true
 					 {
             id: "decline",
             label: "拒绝",
-			description: "了结了一些事。",
+			description: "终结某事。",
             isAspect: true,
 			comments: "Recipe aspect; runs when we want to decay something like an investment.",
 			noartneeded: true
@@ -824,7 +887,7 @@ isAspect:true
 				{
             id: "avowal",
             label: "宣誓",
-			description: "忠诚度的正面变化",
+			description: "忠诚提升",
             isAspect: true,
 			comments: "Recipe aspect; runs when we want to flip someone's loyalties positively",
 			noartneeded: true
@@ -832,14 +895,14 @@ isAspect:true
 		{
             id: "rejection",
             label: "拒绝",
-			description: "忠诚度变化",
+			description: "忠诚生变",
             isAspect: true,
 			comments: "Recipe aspect; runs when we want to flip someone's loyalties",
 			noartneeded: true
         },
 		{id:"scarability",
-		label:"伤痕能力",
-		description:"永久的将一种(激活的或消耗掉的)能力转化为其伤痕版本",
+		label:"伤疤能力",
+		description:"永久的将一种（激活的和耗尽的均可）能力转化为其伤疤版本",
 		isAspect:true,
 		noartneeded:true},
 		
@@ -960,6 +1023,14 @@ isAspect:true
 			comments: "Recipe aspect",
 			noartneeded: true
         },
+        {
+            id: "killmanifesting",
+            label: "杀死显形的召唤物",
+            description: "召唤物变作调味影响或阻碍召唤之人。",
+            isAspect: true,
+            comments: "Recipe aspect",
+            noartneeded: true
+        },
 								 {
             id: "dissolution",
             label: "融解",
@@ -971,14 +1042,14 @@ isAspect:true
 		
 							 {
             id: "raiseshattered",
-            label: "将尸体转变成破碎行尸",
+            label: "把尸体转化为破碎行尸",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
         },
 									 {
             id: "raiseburgeoning",
-            label: "将尸体转变成抽芽行尸",
+            label: "将把体转化为抽芽行尸",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
@@ -1062,7 +1133,7 @@ isAspect:true
 						 {
             id: "plead",
             label: "恳求",
-			description: "可能会获得宽容。",
+			description: "可能会获得宽赦。",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded:true
@@ -1101,8 +1172,8 @@ isAspect:true
         },
 	
 {id:"glorify",
-label:"迈向<b>荣</b>光",
-description:"将恐惧转化为入迷，还可将其他元素转换为更加<b>荣</b>耀的同等元素。",
+label:"迈 向<i>光</i>军光",
+description:"将恐惧转化为入迷，还可将其他元素转换为更加<b>辉</b>煌的同等元素。",
 isAspect:true,noartneeded:true
 },									 {
             id: "depiphany",
@@ -1160,13 +1231,13 @@ isAspect:true,noartneeded:true
 		},
 		{id:"season",
 		label:"时节",
-		description: "很快会发生一些相关的事情",
+		description: "不久便会发生其名所述的事情。",
 		isAspect: true,
 		comments:"identifies card draws for Time seasonal events" 
 		},
 		{id: "devourer",
 		label: "吞噬者",
-		description: "如果它挣脱了束缚，可能会攻击你或是你的追随者。",
+		description: "如果挣脱了束缚，可能会攻击你或吞吃你的追随者。",
 		isAspect: true
 		},
 	{id: "deceiver",
@@ -1176,7 +1247,7 @@ isAspect:true,noartneeded:true
 		},
 		{id:"mystic",
 		label:"神秘主义者",
-		description:"该猎人通常能在漫索生物的攻击下逃出一命，即便此类攻击对其他人而言是不可阻挡的。",
+		description:"该猎人通常能在漫宿生物的攻击下逃出一命，即便此类攻击对其他人而言是不可阻挡的。",
 		isAspect:true},
 		{id:"brilliant",
 		label:"出类拔萃",
@@ -1204,7 +1275,7 @@ isAspect:true,noartneeded:true
 		isAspect:true},
 				{id:"grim",
 		label:"冷峻",
-		description:"冷峻的猎人不会因光界的诱惑而动摇……然而他自己的绝望或许能摧毁他。",
+		description:"冷峻的猎人不会因辉光的诱惑而动摇……然而他自己的绝望或许能摧毁他。",
 		isAspect:true},
 						{id:"idealist",
 		label:"理想主义者",
@@ -1213,54 +1284,54 @@ isAspect:true,noartneeded:true
 
 			{id: "venerationedge",
 		label: "崇敬：刃",
-		description: "该组织崇敬<b>刃</b>之准则，我们特以上校和锻狮之名拜请<b>刃</b>之力。",
+		description: "该组织崇敬<b>刃</b>之准则，我们特以上校和狮子匠之名拜请<b>刃</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationforge",
 		label: "崇敬：铸",
-		description: "该组织崇敬<b>铸</b>之准则，我们特以光阴之炉本人和拂晓之名拜请<b>铸</b>之力。",
+		description: "该组织崇敬<b>铸</b>之准则，我们特以白日铸炉本尊和昕旦之名拜请<b>铸</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationgrail",
 		label: "崇敬：杯",
-		description: "该组织崇敬<b>杯</b>之准则，我们特以赤杯本身和双生女巫之名拜请<b>杯</b>之力。",
+		description: "该组织崇敬<b>杯</b>之准则，我们特以赤杯本尊和双生女巫之名拜请<b>杯</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationheart",
 		label: "崇敬：心",
-		description: "该组织崇敬<b>心</b>之准则，我们特以怒号之皮和鹄绒之名拜请<b>心</b>之力。",
+		description: "该组织崇敬<b>心</b>之准则，我们特以轰雷之皮和丝毧之名拜请<b>心</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationknock",
 		label: "崇敬：启",
-		description: "该组织崇敬<b>启</b>之准则，我们特以蚁母和痕月之名拜请<b>启</b>之力。",
+		description: "该组织崇敬<b>启</b>之准则，我们特以蚁母和弧月之名拜请<b>启</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationlantern",
 		label: "崇敬：灯",
-		description: "该组织崇敬<b>灯</b>之准则，我们特以瞳中之扉和圃仙人之名拜请<b>灯</b>之力。",
+		description: "该组织崇敬<b>灯</b>之准则，我们特以瞳中扉和制花人之名拜请<b>灯</b>之力。",
 		isAspect: true
 		},
 							{id: "venerationmoth",
 		label: "崇敬：蛾",
-		description: "该组织崇敬<b>蛾</b>之准则，我们特以蛾本身和双生巫女之名拜请<b>蛾</b>之力。",
+		description: "该组织崇敬<b>蛾</b>之准则，我们特以飞蛾本尊和双生巫女之名拜请<b>蛾</b>之力。",
 		isAspect: true
 		},
 					{id: "venerationwinter",
 		label: "崇敬：冬",
-		description: "该组织崇敬<b>冬</b>准则，我们特以残阳和双角斧之名拜请<b>冬</b>之力。",
+		description: "该组织崇敬<b>冬</b>准则，我们特以残阳和双角利斧之名拜请<b>冬</b>之力。",
 		isAspect: true
 		},
 				{
 		id: "textlatin",
 		label: "以拉丁语写就",
-		description: "一门已死去的语言：如金刚石般失去生机。[部分书籍需翻译后方可阅读。]",
+		description: "一门死去的语言：如金刚石般失去生机。[部分书籍需翻译后方可阅读。]",
 		isAspect:true
 		},
 					{
 		id: "textfucine",
 		label: "以富奇诺语写就",
-		description: "已经消失的富奇诺湖东侧曾有人居住。贺拉斯曾警告说，那里是女巫之地。而这便是她们的语言。有些人将之称作“干瘪之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
+		description: "已经消失的富奇诺湖东侧曾有人居住。贺拉斯曾警告说，那里是女巫之地。而这便是她们的语言。有些人将之称作“干涸之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
 		isAspect:true
 		},
 				{
@@ -1272,13 +1343,13 @@ isAspect:true,noartneeded:true
 					{
 		id: "textphrygian",
 		label: "以弗里吉亚语写就",
-		description: "弗里吉亚人崇拜的“伟大母亲”就是我们所称的赤杯。他们的土地曾见证过结绳姐妹会诞生，而这门语言便是怒号之皮飞升时用于恳求的语言。[部分书籍需翻译后方可阅读。]",
+		description: "弗里吉亚人崇拜的“伟大母亲”就是我们所称的圣杯。他们的土地曾见证过绳结姐妹会诞生，而这门语言便是轰雷之皮飞升时用于恳求的语言。[部分书籍需翻译后方可阅读。]",
 		isAspect:true
 		},
 						{
 		id: "textaramaic",
-		label: "以亚拉姆语写就",
-		description: "亚拉姆与她这三千多年以来所养育的众多孩子所使用的语言。[部分书籍需翻译后方可阅读。]",
+		label: "以亚兰语写就",
+		description: "亚兰与她这三千多年以来所养育的众多孩子所使用的语言。[部分书籍需翻译后方可阅读。]",
 		isAspect:true
 		},
 							{
@@ -1295,8 +1366,8 @@ isAspect:true,noartneeded:true
 		},
 									{
 		id: "textvak",
-		label: "以伐迦语写就",
-		description: "这是早于诸神自血中诞生，更早于猿人直立行走前，就能在太阳居所里听到的语言。[部分书籍需翻译后方可阅读。]",
+		label: "以伐诃语写就",
+		description: "这是早于诸神自血中诞生，更早于猿人直立行走前，就能在太阳居屋里听到的语言。[部分书籍需翻译后方可阅读。]",
 		isAspect:true
 		},
 				        {
@@ -1319,32 +1390,28 @@ isAspect:true,noartneeded:true
 		},
 				{id: "follower_wound",
 		label:"受创",
-		description:"此人因为我办事而受了伤。[受伤的追随者不算追随者，也不能做助手和使者。此人也许会在多病时节死亡。使用<b>谈话</b>可治疗此人。]",
-		isAspect:true,
-		xtriggers:{killmortal:corpse_scar}
+		description:"此人因为我办事而受了伤。[受伤的追随者不能作为追随者使用，也不能作使者和助手。此人也许会在“多病的时节”死亡。你可以通过<b>谈话</b>治疗此人。]",
+		isAspect:true
 		},
 		{id: "follower_scar_edge",
-		label:"伤痕：残暴的经历",
-		description:"浮士德：我觉得地狱是无稽之谈。梅菲利斯：嗳，就这么想吧，直到你被体验改变想法。[三道同样的伤痕将会杀死凡人。]",
-		isAspect:true,
-		xtriggers:{killmortal:corpse_scar}
+		label:"伤疤：残暴的经历",
+		description:"<b>浮 士 德</b>： 我以为地狱只是个传说。<b>梅 菲 斯 托 费 勒 斯<b>：嗳，尽管这么想吧，经历会改变你的看法。[落下三道同样伤疤的凡人必死无疑。]",
+		isAspect:true
 		},
 		
 				{id: "follower_scar_knock",
-		label:"伤痕：半愈的瘘管",
-		description:"并非所有门洞都是创口，但所有创口都是门洞。[三道同样的伤痕将会杀死凡人。]",
-		isAspect:true,
-		xtriggers:{killmortal:corpse_scar}
+		label:"伤疤：半愈的瘘管",
+		description:"并非所有门洞都是创口，但所有创口都是门洞。[落下三道同样伤疤的凡人必死无疑。]",
+		isAspect:true
 		},
 				{id: "follower_scar_winter",
-		label:"伤痕：旧伤",
-		description:"更近一步走向日落，已看到夜晚的初星。[三道同样的伤痕会杀死一个凡人。]",
-		isAspect:true,
-		xtriggers:{killmortal:corpse_scar}
+		label:"伤疤：旧伤",
+		description:"更近一步走向日落，已看到夜晚的初星。[落下三道同样伤疤的凡人必死无疑。]",
+		isAspect:true
 		},
 						{id: "corpse_scar",
-		label:"旧伤痕",
-		description:"某个尝过痛苦滋味的人。",
+		label:"旧伤疤",
+		description:"某个知晓痛苦滋味的人。",
 		isAspect:true
 		},
 								{id: "resentment",
@@ -1354,28 +1421,28 @@ isAspect:true,noartneeded:true
 		isAspect:true
 		},
 									{id: "boredom",
-		label:"无聊",
-		description:"我的金主最终会对我失去兴趣。",
+		label:"厌倦",
+		description:"我的金主终会对我丧失兴味。",
 		isAspect:true
 		},
 											{id: "besotment",
-		label:"酒醉",
+		label:"迷醉",
 		description:"我的金主颇有好感地看着我。",
 		isAspect:true
 		},
 		{id: "benefactor_proposal",
 	label: "来自金主的求婚",
-	description: "在激情的推动下，我的金主提出结婚。如果我能抓住机会接受求婚，我的人生将会改变……并失去其他的前路。[在金主的热情消退前与他交谈。]",
+	description: "在一瞬激情的推动下，我的金主提出结婚。如果我能抓住机会接受，我的人生将会改变……并失去其他的前路。[在金主的热情消退前与他交谈。]",
 	isAspect:true
 },
 											{id: "desiremoth_track",
-		label:"古老的形体",
+		label:"旧形体",
 		description:"我开始了解一支从第一大陆上雨水丰沛的森林中发源的舞蹈。",
 		isAspect:true
 		},
 													{id: "desireheart_track",
-		label:"全新的形体",
-		description:"我开始了解一支从干燥地带的山松下发源的舞蹈。",
+		label:"新形体",
+		description:"我开始了解一支从干旱之地的山松下发源的舞蹈。",
 		isAspect:true
 		},
 															{id: "potentialbenefactorm",
@@ -1390,7 +1457,7 @@ isAspect:true,noartneeded:true
 		isAspect:true
 		},
 																			{id: "potentialecdysiast",
-		label:"眼光锐利的观者",
+		label:"目光炯炯的观者",
 		description:"有时她坐在第二排，为她的特殊团体寻找新血。被她雇佣的人则很少出现在城里。",
 		isAspect:true
 		},
@@ -1406,13 +1473,13 @@ description:"我们的塑形者选中他，用于航向世界的破绽处——�
 isAspect:true},
 		
 {id:"apostleforge.pillar4",
-label:"汝双眼得见",
-description:"对除我们要寻找的世界破绽外，一概盲目之人。维也纳有一处；不过离家近得多的地方也有一处，此地的名称始终如一，自凯尔·伊苏（意为伊苏城）起便是。他能带领我们找到世界的瑕疵，用破晓器核心，完成我们的大业。",
+label:"你亲眼看见了(类圣经中言)",
+description:"此人对一切尽皆盲目，只在对我们要寻找的世界破绽除外。维也纳有一处；不过离家近得多的地方也有一处，此地的名称始终如一，自凯尔·伊苏(Caer Ys, 伊苏城)起便是。他能带领我们找到世界的瑕疵，用破晓器核心，施行我们的大功业。",
 isAspect:true},
 
 {id:"mentor",
 label:"导师",
-description:"我们的秘密统治者，握有我们忠诚之人，我们会用我们的付出将他托得更高。",
+description:"我们的秘密统治者，握有我们忠诚之人，我们会用我们的作为将他托得更高。",
 isAspect:true},
 
 {id:"intention.assault",
@@ -1476,34 +1543,34 @@ isAspect:true
 
 
 {id:"long.dreamwork",
-label:"星光之浩大",
-description:"随着时间推移，这名长生者将会得知我们梦境的形状，增强他从漫索攻击我们的能力。[如果长生者的等级达到10，他会考虑直接攻击你。]",
+label:"浩如星光",
+description:"随着时间推移，这名长生者将会得知我们梦境的形状，增强他从漫宿攻击我们的能力。[如果长生者的等级达到10，他会考虑直接攻击你。]",
 isAspect:true
 },
 
 {id:"long.enemy",
 label:"永生不死的敌人",
-description:"许多长生者为时枢神效力。他们强烈反对晋升新具名者，只是因为他们将来可能，仅仅是可能，篡夺时枢神之位。部分长生者则仇恨时枢神。然而，他们对新晋具名者的反对可以说是更甚。",
+description:"许多长生者为司辰效力。他们强烈反对晋升新具名者，只是因为他们将来可能，仅仅是可能，篡夺司辰之位。部分长生者则仇恨司辰。然而，他们对新晋具名者的反对可以说是更甚。",
 isAspect:true,
 isHidden:true
 },
 
 
 {id:"greatwork",
-label:"大业的一环",
-description:"当大业竟成，我们的创教者，我们的灵感会升入更高的境界。",
+label:"大功业的一环",
+description:"当功业竟成，我们的创教者，我们的灵感会升入更高的境界。",
 isAspect:true
 },
 
 {id:"greatwork.sabotaged",
 label:"遭到破坏！",
-description:"大业处于倾覆之际。 [可用一名<b>铸</b>之追随者和一枚古银币修复。]",
+description:"大功业岌岌可危。 [可用一名<b>铸</b>之追随者和一枚古银币修复。]",
 isAspect:true
 },
 
 {id:"sabotage",
 label:"蓄意破坏！",
-description:"会将“大业”卡牌转变为其不稳定，待修复的版本。",
+description:"会将“大功业”卡牌转变为其不稳定，待修复的版本。",
 isAspect:true,
 noartneeded:true
 },
@@ -1521,7 +1588,7 @@ isAspect:true
 },
 {id:"heartflavour",
 label:"咸",
-description:"铜、没药、锈。",
+description:"铜、没药、锈迹。",
 isAspect:true
 },
 {id:"mothflavour",
@@ -1531,7 +1598,7 @@ isAspect:true
 },
 
 {id:"vitulationupgrade",
-label:"升级欢庆祭的客人",
+label:"升级谢肉祭的客人",
 description:"客人聚齐！",
 isAspect:true,
 noartneeded:true
@@ -1560,20 +1627,20 @@ induces:[{id:"poison.notoriety.induction",chance:30}]
 
 {id:"poison.passion.dread",
 label:"被毒所侵的激情",
-description: "我的情绪被使人毛骨悚然的恐怖感染了。[在任何地方使用此卡都可能生成“恐惧”。]",
+description: "我的情绪赶染上了使人毛骨悚然的恐怖。[在任何地方使用此卡都大概率会生成“恐惧”。]",
 isAspect:true,
 induces:[{id:"poison.passion.dread.induction",chance:70}]
 },
 {id:"poison.reason.fascination",
-label:"绚烂的感染",
-description: "我被反复出现在梦中的烛火撩拨着。[在任何地方使用此卡都可能生成“入迷”。]",
+label:"骄盛灿烂的侵染",
+description: "我被反复出现在梦中的烛火撩拨着。[在任何地方使用此卡都大概率会生成“入迷”。]",
 isAspect:true,
 induces:[{id:"poison.reason.fascination.induction",chance:70}]
 },
 
 {id:"poison.health.dread",
 label:"衰弱的肉体",
-description: "我已成了如影随形的疼痛的俘虏。[在任何地方使用此卡都可能生成“恐惧”。]",
+description: "我已成了如影随形的疼痛的俘虏。[在任何地方使用此卡都大概率会生成“恐惧”。]",
 isAspect:true,
 induces:[{id:"poison.health.dread.induction",chance:70}]
 },
@@ -1595,6 +1662,113 @@ label:"道路在监视下",
 description: "长生者派人监视着这条道路。若我走过，他就会在我的睡眠中更了解我。",
 isAspect:true
 },
+
+			     {
+        id: "lockscar",
+            label: "伤疤锁",
+            description: "也许蛇亲吻过我，也许刀子啜饮过我，也许是我把梦做得太锋利。[在仪式中使用相当强度的<b>启</b>或可开启此伤疤。]",
+		isAspect:true
+			},
+						     {
+        id: "openedlockscar",
+            label: "开启伤疤锁",
+            description: "[此伤疤正在开启。]",
+		isAspect:true
+			},
+									     {
+        id: "unlockscar",
+            label: "伤疤将会开启。",
+            description: "Recipe aspect.",
+		isAspect:true,
+		noartneeded:true
+			},
+       
+       
+{id:"ghoul.hunger",
+label:"墓地之口",
+description:"如今我已尝过了墓地的果实，这种饥饿便时常来烦扰我。闻见腐败的芳香我的嘴就流涎水，肚肠像狗一样嚎叫。[食用<b>残骸</b>可使之轻减。不要让它累积到七，到那时游戏将结束，且结束得并不令人愉快。]",
+isAspect:true
+},
+
+
+{id:"colours.furious",
+label:"蟠七之色",
+description:"于低垂的红太阳下，沙丘连成的沙床上，一头怪兽与自己扭打着，身侧围拥着随同者们。它体型松弛肥大，色如不纯的硫磺；数条生着獠牙、触角般的脖颈像猫仔一样互相扭打着。它欢快地撕扯着自己的肉，淌下的血是金色的。它重重翻倒，摔成一滩肉褶山肉片海，压死了一团随同者，令余下的边是尖叫边是欢呼。",
+isAspect:true},
+
+{id:"colours.luxurious",
+label:"潮水之色",
+description:"在漫宿蓝色的夜雾中，游弋着一个珊瑚所制的既为宫殿又为王冠之物，此物时不时让位于月亮。它用它的前沿吸进那些不显要的具名者，将自己的矿物和汁液涂裹其上；它从它的后沿排出他们，其已抛光磨亮仿若宝石余下的用于喂饱它那颗带刺的浪潮之心。",
+isAspect:true},
+
+{id:"colours.liminal",
+label:"双重门关之色",
+description:"当我回忆双角利斧，我想起了山楂花的香味。我想起了透射着金红霞光的紫色暮空。我想起了方做过活不久的她双刃淋漓的样子。",
+isAspect:true},
+
+{id:"colours.horizon",
+label:"天际之色",
+description:"在雾气散去，太阳或被误认为是月亮之时，于天幕上的某些斑块可见一种黯淡的白金色。我们屏住呼吸，看着它转亮，直到每一重颜色与临近的分离开来，仿若一个个新铸的文字。逆孵之卵。" ,
+isAspect:true},
+
+{id:"colours.splendid",
+label:"已逝之色",
+description:"玫红极光与蓝青电光争夺着天空。无夜晚亦无黎明，只存在预备为午的时辰和停滞于午的时辰。我们每一个人都向天空射下的金针敞开心胸。一切色彩在骄阳下皆显得更浓。",
+isAspect:true},
+
+{id:"colours.endless",
+label:"转动之色",
+description:"随着一轮一轮地转动，它的纤毛有节奏地颠扑扭摆，它的身体由透明涨成猩红。它或许丑陋，但它却美丽好似玻璃迷宫褪去鲜血。它不会停歇，且它通体缠卷永无穷尽。转轮。",
+isAspect:true},
+
+{id:"colours.wildering",
+label:"非黑之色",
+description:"没入黑暗前的林地与其莹绿好似带毒的果实、其色如肉红石髓的根茎。飞蛾的眼睛因饥饿而透出欢喜。他正在捕猎。",
+isAspect:true},
+
+{id:"colours.golden",
+label:"古焰之色",
+description:"它只是一块石头而已，尽管被打磨得光滑锋锐臻至午夜之境。然而待再细看：它的每个刻面都映现着一个光点。也许是火光的闪烁，也许每个都是一颗不同的<b>星星</b>。",
+isAspect:true},
+
+{id:"colours.honeyed",
+label:"将现之色",
+description:"我们的翅膀舒展而闪耀，我们的鳞片如黑曜石般泛着柔光，我们的双眼拥有宝石般的刻面，我们的脚爪黯黑到无懈可击。",
+isAspect:true},
+
+
+{id:"ascension.remembrance.offering",
+label:"悼歌诗人的开价",
+description:"悼歌诗人乃被剥夺至夺无可夺之司辰，一一唤亡者以姓名之司辰。每隔一段漫长的时间，他便会收取极大的代价，将亡者中的一人唤出乌有乡，使其得以续命，独行于世，毫发不伤，直至其迎来自己的终末之冬。",
+isAspect:true
+},
+
+
+
+{id:"remnant",
+label:"残骸",
+description:"别人曾用的肉身。",
+isAspect:true
+},
+
+{id:"manifesting",
+label:"显形",
+description:"此灵体正在进入现世。这比分娩要容易，但不像穿过一扇门那么容易。",
+isAspect:true
+},
+
+{id:"stale",
+label:"厌烦",
+description:"我开始重复我自己了。[厌烦情绪越严重，对你的作品影响越大。产出非常高质量的作品可以逐步减少“厌烦”。]",
+isAspect:true,
+icon:boredom
+},
+
+{id:"project",
+label:"课题",
+description:"研究课题的提纲",
+isHidden:true,
+isAspect:true}
 
 
 

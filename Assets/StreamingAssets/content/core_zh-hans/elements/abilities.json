@@ -8,8 +8,8 @@
             {illhealth: 1,
 			  grail: 2,
 			  ingredient:1},
-			  slots: [{id:"nourishment",label:"营养",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
-            description: "为了恢复，我需要休息与营养。但是，当我涎水直淌，视线游离之际，我看见了那个赤色的杯子；它时不时便会同我讲话。[在“饥饿”消失前将其入梦可恢复“健康”。]",
+			  slots: [{id:"nourishment",label:"食物",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
+            description: "要想恢复，我需要休息和有营养的食物。但是，当我涎水直淌，视线游离之际，我看见了那个赤色的杯子；它时不时便会同我讲话。[在“饥饿”消失前将其入梦可恢复“健康”。]",
 			xtriggers: {restorehealth: health,scar_ability:scar_heart},
 			lifetime:60,
 			decayTo:"decrepitude"
@@ -25,12 +25,12 @@
             },
             animFrames: 1,
 			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue,scar_ability:scar_heart},
-			description: "属于我的这具身体。世间存在各种各样的身体，但这一具是属于我的。我的思想需要它，正如真菌需要泥土。[你可以用足量的活力获得更多健康。]"
+			description: "属于我的这具身体。世间存在各种各样的身体，但这一具是属于我的。我的头脑需要它，正如菌菇需要泥土。[你可以用足量的活力获得更多健康。]"
         },
 				 {
             id: "vitality",
             label: "活力",
-				  slots: [{id:"morevitality",label:"更多的活力",actionId:"study",description: "如果拥有足够多的活力——或者一些更加独特的东西——我能增加我的健康。",required:{vitality:1,influenceheart:1}}],
+				  slots: [{id:"morevitality",label:"更多活力",actionId:"study",description: "With enough Vitality - or sometimes something more exotic - I can increase my Health.",required:{vitality:1,influenceheart:1}}],
           aspects:
             {advancement:1,heart:1,influence:1},
             description: "锻炼，或者其他更少见的东西，令我精神振奋。[与另一张“活力”一同使用可提升技能。如果不使用，将会在三分钟后消失。]",
@@ -52,8 +52,8 @@
             id: "restlessness",
             label: "躁动",
             aspects:
-            {influence:1, forge:2,heart:2,grail:2,lantern:2,moth:2},
-            description: "我为一种躁动的期待所俘。我似乎产生了某种……<i>企图</i>。究竟是何种企图？",
+            {influence:1, forge:2,heart:2,grail:2,lantern:2,moth:2,memory:1},
+            description: "我为一种躁动的向往所俘。我似乎产生了某种……<i>企图</i>。究竟是何企图？",
 		lifetime: 60,
 		decayTo:"dread"
         },
@@ -71,9 +71,9 @@
             {illhealth: 1,
 			  knock: 2,
 			  ingredient:1},
-			  			slots: [{id:"medicines",label:"用药，或者……",actionId:"dream",description: "我可以花钱请医生…",required:{funds:1},actionId:"dream"},
-			{id:"vitality",label:"……活力",description: "…可是我或许只要稍微休息一下就能恢复。",required:{vitality:1},actionId:"dream"}],
-            description: "要想恢复，我需要休养与食物。然而蚁母和善地看着伤口。[在“伤口”消失前将其入梦也可恢复“健康”。]",
+			  			slots: [{id:"medicines",label:"用药，或者…",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
+			{id:"vitality",label:"…活力",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
+            description: "要想恢复，我需要休息和有营养的食物。不过蚁母在和善地看着人的伤口。[在“伤口”消失前将其入梦也可恢复“健康”。]",
 			xtriggers: {restorehealth: health,scar_ability:scar_heart},
 			lifetime: 150,
 			decayTo: "decrepitude"
@@ -85,7 +85,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 												{
@@ -95,7 +95,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth,toreason:concentration},
+			xtriggers:{scarability:scar_moth,toreason:concentration,damagepassion:fascination},
 			resaturate: true
 			},
 						{
@@ -115,9 +115,9 @@
             label: "病痛",
             aspects:{illhealth: 1, winter:2,ingredient:1},
 			xtriggers: {restorehealth: health,scarability:scar_heart},
-						slots: [{id: "medicine",label:"用药，或者……",actionId:"dream",description: "我可以花钱请医生…",required:{funds:1}},
-			{id:"vitality",label:"……活力",actionId:"dream",description: "…可是我或许只要稍微休息一下就能恢复。",required:{vitality:1}}],
-            description: "疾病令我虚弱。为了恢复，我需要休息和营养。[在“病痛”消失前将其入梦也可恢复“健康”。]",
+						slots: [{id: "medicine",label:"用药，或者…",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
+			{id:"vitality",label:"…活力",actionId:"dream",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
+            description: "疾病令我虚弱。要想恢复，我需要休息和有营养的食物。[在“病痛”退化前将其入梦也可恢复“健康”。]",
 			lifetime: 180,
 			decayTo: "decrepitude"
 			},
@@ -131,9 +131,9 @@
 				ability:1
             },
             animFrames: 1,
-			description: "“在完全现实的情况下，有机体不可能长久地存活下去。”——雪莉·杰克逊
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
-[博闻能够用于研究并凭之提升理性。]",
+[With Erudition, you can Study to gain more Reason.]",
 				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern}
 				
         },
@@ -144,25 +144,25 @@
 			lifetime:60,
 			decayTo:"reason",		
 		icon:"reason",
-			xtriggers:{scarability:scar_lantern,topassion:passionexhausted},
+			xtriggers:{scarability:scar_lantern,topassion:passionexhausted,damagereason:dread},
 			resaturate: true
         },
 				 {
             id: "erudition",
-            label: "博学",
-			slots: [{id:"moreerudition",label:"更多的博学",actionId:"study",description: "如果拥有足够多的博学——有时再加一些更加异域的东西——我能增进自己的理性。",required:{erudition:1,influencelantern:1}}],
+            label: "博闻",
+			slots: [{id:"moreerudition",label:"更多博闻",actionId:"study",description: "With enough Erudition - or sometimes something more exotic -  I can increase my Reason.",required:{erudition:1,influencelantern:1}}],
             aspects: {advancement:1,lantern:1,influence:1},
-            description: "我如饥似渴地吸取知识，仿佛影子吞噬光线。也许我离提升不远了。[研究“博学”能获得更多“理性”。如果不使用，将会在三分钟后消失。]",
+            description: "我如饥似渴地吸收着知识，仿佛影子吸收光线。也许我离提升不远了。[研究“博闻”能获得更多“理性”。如果不使用，将会在三分钟后消失。]",
 lifetime: 180,
 	xtriggers:{upgradeinfluence:influencelanternc},
         },
 		
 								 {
             id: "eruditionplus",
-            label: "博学：学有所成",
+            label: "博闻：学有所成",
           aspects:
             {advancement:1,lantern:2,influence:1},
-            description: "我已经准备好改变了。[与“学识”技能一起使用可提升该技能并获得“理性”。五分钟后会退化回“博学”。]",
+            description: "我已经准备好改变了。[与“学识”技能一起使用可提升该技能并获得“理性”。五分钟后会退化回“博闻”。]",
 		lifetime: 300,
 			xtriggers:{upgradeinfluence:influencelanternc},
 			decayTo:"erudition"
@@ -173,10 +173,11 @@ lifetime: 180,
             {edge: 2,
 			inducesdespair: 1,
 			influence:1,
-			illhealth:1},
-			slots:	[{id:"reminders",label:"回忆",actionId:"dream",required: {contentment:1},description:"我需要一点点的平静，或者一刻的欣喜。[过多的恐惧会摧毁你。安逸能治愈恐惧。]"},
-			{id:"with",label:"加上",description:"或许我可以使用恐惧来增强一个危险的影响。",required:{influenceedge:1,influencewinter:1},actionId:"study"},
-			{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关密传中有坚实的基础。]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
+			illhealth:1,
+			memory:1},
+			slots:	[{id:"reminders",label:"忆起",actionId:"dream",required: {contentment:1},description:"I need a little peace, or a moment of happiness. [Too much Dread will destroy you. Contentment can cure it.]"},
+			{id:"with",label:"加上",description:"Perhaps I can use my Dread to strengthen a dangerous influence.",required:{influenceedge:1,influencewinter:1},actionId:"study"},
+			{id:"knowledge",label:"知识",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
             description: "我已经见得太多了。不知名的恐惧正在用利齿啃噬着我的希望；一种关于存在本身的的恐惧。",
 			lifetime: 180,
 			xtriggers:{upgradeinfluence:influenceedgec,glorify:fascination}
@@ -191,9 +192,9 @@ lifetime: 180,
 				ability:1
             },
             animFrames: 1,
-			description: "“迟钝的头脑既缺乏直觉，也不通逻辑。”——布莱士·帕斯卡
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
-[如果你拥有足量的“灵感”，你可以通过<b>研究</b>获得更多“激情”。]",
+[With enough Glimmering, you can Study to gain more Passion.]",
 			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason,ritual:passionexhausted,society:passionexhausted}
         },
 		
@@ -202,14 +203,15 @@ lifetime: 180,
             id: "decrepitude",
             label: "衰老",
 			description: "有些伤口永远不会完全愈合。[没能及时处理的伤口和饥饿会转变为衰老，且永远不会恢复为健康。衰老在你死亡之前会一直存在。]",
-			aspects: {ability:1,winter:1},
-			xtriggers: {tohealth:health}
+			aspects: {ability:1,winter:1,remnant:1},
+			xtriggers: {tohealth:health,alzabo:memory.honeyed},
+			slots:[{id:"consume",label:"消耗",required:{ingredient:1},forbidden:{poison:1}, actionId:"dream"}]
             },
 		
 					 {
             id: "glimmering",
             label: "灵感",
-			slots: [{id:"moreglimmering",label:"更多的灵感",actionId:"study",description: "With enough Glimmering - or sometimes something more exotic - I can increase my Passion.",required:{glimmering:1,influencemoth:1}}],
+			slots: [{id:"moreglimmering",label:"更多灵感",actionId:"study",description: "With enough Glimmering - or sometimes something more exotic - I can increase my Passion.",required:{glimmering:1,influencemoth:1}}],
             aspects:
             {advancement:1,moth:1,influence:1},
             description: "我的情绪比平常更为高昂。有些事物我永远也不会理解，因而永远都那么珍贵，而如今我离它们更近了一点。[在研究中使用“灵感”可获得“激情”。如果不使用，将会在三分钟后消失。]",
@@ -230,41 +232,41 @@ lifetime: 180,
 		{id: "fascination",
             label: "入迷",
             aspects:
-            {moth:2,illhealth:1,influence:1},
-			              		slots:[{id:"reminders",label:"回忆",required: {dread:1,fleeting:1},actionId:"dream",description:"灰色的现实会使我的灵魂稳定。"},
-			{id:"with",label:"加上",description:"我或许可以使用入迷来增强一个诱人的影响。",required:{influencemoth:1,influencelantern:1},actionId:"study"},
-			{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关密传中有坚实的基础。]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
-            description: "光透过<b>裂缝漏入</b>。我的思想比<b>任何时候</b>都<b>更清晰</b>。<b>我升得越高，见得越多。</b>",
+            {moth:2,illhealth:1,influence:1,memory:1},
+			              		slots:[{id:"reminders",label:"忆起",required: {dread:1,fleeting:1},actionId:"dream",description:"Grey reality will steady my soul."},
+			{id:"with",label:"加上",description:"Perhaps I can use my Fascination to strengthen a tempting influence.",required:{influencemoth:1,influencelantern:1},actionId:"study"},
+			{id:"knowledge",label:"知识",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+            description: "光透过<b>裂 缝 漏 入</b>。我的头脑比<b>任 何 时 候</b>都<b>更 清 晰</b>。<b>我 升 得 越 高，见 得 越 多。</b>",
 			lifetime: 180,
 						xtriggers:{upgradeinfluence:influencemothc}
 			},
 		{
 		id: "scholarlatin",
-		label: "学术：拉丁语",
+		label: "学问：拉丁语",
 		aspects: {language:1},
 		slots: [{id:"Text",
 		label: "未翻译文献",
 				required: {textlatin:1},
 				actionId:"study",
 			}],
-		description: "一门已死去的语言：如金刚石般失去生机。[部分书籍需翻译后方可阅读。]",
+		description: "一门死去的语言：如金刚石般失去生机。[部分书籍需翻译后方可阅读。]",
 		unique:true
 		},
 					{
 		id: "scholarfucine",
-		label: "学术：富奇诺语",
+		label: "学问：富奇诺语",
 		aspects: {language:1},
 				slots: [{id:"Text",
 				label: "未翻译文献",
 				required: {textfucine:1},
 				actionId:"study",
 			}],
-		description: "已经消失的富奇诺湖东侧曾有过一些住户。贺拉斯曾警告说，那里是女巫之地。而这便是他们所使用的语言。有些人将之称作“干瘪之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
+		description: "已经消失的富奇诺(Fucino)湖东侧曾有过一些住户。贺拉斯曾警告说，那里是女巫之地。而这便是他们所使用的语言。有些人将之称作“干涸之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
 		unique:true
 		},
 				{
 		id: "scholargreek",
-		label: "学术：希腊语",
+		label: "学问：希腊语",
 		aspects: {language:1},
 						slots: [{id:"Text",
 						label: "未翻译文献",
@@ -276,31 +278,31 @@ lifetime: 180,
 		},
 					{
 		id: "scholarphrygian",
-		label: "学术：弗里吉亚语",
+		label: "学问：弗里吉亚语",
 		slots: [{id:"Text",
 		label: "未翻译文献",
 				required: {textphrygian:1},
 				actionId:"study",
 			}],
 		aspects: {language:1},
-		description: "弗里吉亚人崇拜的“伟大母亲”就是我们所称的赤杯。他们的土地曾见证过结绳姐妹会诞生，而这门语言便是怒号之皮飞升时用于恳求的语言。[部分书籍需翻译后方可阅读。]",
+		description: "弗里吉亚人崇拜的“伟大母亲”就是我们所称的圣杯。他们的土地曾见证过绳结姐妹会诞生，而这门语言便是轰雷之皮飞升时用于恳求的语言。[部分书籍需翻译后方可阅读。]",
 		unique:true
 		},
 						{
 		id: "scholararamaic",
-		label: "学术：亚拉姆语",
+		label: "学问：亚兰语",
 						slots: [{id:"Text",
 						label: "未翻译文献",
 				required: {textaramaic:1},
 				actionId:"study",
 			}],
 		aspects: {language:1},
-		description: "亚拉姆与她这三千多年以来所养育的众多孩子所使用的语言。[部分书籍需翻译后方可阅读。]",
+		description: "亚兰与她这三千多年以来所养育的众多孩子所使用的语言。[部分书籍需翻译后方可阅读。]",
 		unique:true
 		},
 							{
 		id: "scholarmandaic",
-		label: "学术：渊深曼达安语",
+		label: "学问：渊深曼达安语",
 						slots: [{id:"Text",
 						label: "未翻译文献",
 				required: {textmandaic:1},
@@ -312,7 +314,7 @@ lifetime: 180,
 		},
 									{
 		id: "scholarsanskrit",
-		label: "学术：梵语",
+		label: "学问：梵语",
 						slots: [{id:"Text",
 						label: "未翻译文献",
 				required: {textsanskrit:1},
@@ -324,24 +326,24 @@ lifetime: 180,
 		},
 									{
 		id: "scholarvak",
-		label: "学术：伐迦语",
+		label: "学问：伐诃语",
 						slots: [{id:"Text",
 						label: "未翻译文献",
 				required: {textvak:1},
 				actionId:"study",
 			}],
 		aspects: {language:1},
-		description: "这是早于诸神自血中诞生，更早于猿人直立行走前，就能在太阳居所里听到的语言。[部分书籍需翻译后方可阅读。]",
+		description: "这是早于诸神自血中诞生，更早于猿人直立行走前，就能在太阳居屋里听到的语言。[部分书籍需翻译后方可阅读。]",
 		unique:true
 		},
 		
 			 {
             id: "fleeting",
-            label: "一瞬回想",
-            description: "某个瞬间的回忆。下个瞬间即告消逝。",
-			aspects: {secrethistories: 2,moth:2,influence:1},
-				slots:[{id:"with",label:"加上",description:"我或许能从我的记忆中寻找一些东西来增强一个短暂的影响。",required:{influencemoth:1,influencelantern:1},actionId:"study"},
-			{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关密传中有坚实的基础。]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+            label: "一瞬追忆",
+            description: "回首某个瞬间。下个瞬间即告消逝。",
+			aspects: {secrethistories: 2,moth:2,influence:1,memory:1},
+				slots:[{id:"with",label:"加上",description:"Perhaps I can find something in my memories to strengthen a transient influence.",required:{influencemoth:1,influencelantern:1},actionId:"study"},
+			{id:"knowledge",label:"知识",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
 			lifetime:120,
 			xtriggers:{upgradeinfluence:influencemothc}
         },
@@ -350,69 +352,49 @@ lifetime: 180,
 		label: "安逸",
 		aspects: {lantern:2,heart:2,influence:1},
 		description: "我很开心，大概吧。[安逸可以抵御恐惧，但安逸难以久存。]",
-					slots:[{id:"with",label:"加上",description:"我或许能使用安逸来增强正面影响。",required:{influencelantern:1,influenceheart:1,influencewinter:1,influenceforge:1},actionId:"study"},
-			{id:"knowledge",label:"知识",description:"如果我准备强化或转化某些影响，我在操作的时候就必须理解它们。[你需要在相关密传中有坚实的基础。]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
+					slots:[{id:"with",label:"加上",description:"Perhaps I can use my Contentment to strengthen a positive influence.",required:{influencelantern:1,influenceheart:1,influencewinter:1,influenceforge:1},actionId:"study"},
+			{id:"knowledge",label:"知识",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
 		lifetime: 60,
 			xtriggers:{upgradeinfluence:influenceheartc}
 		},
-									 {
-            id: "memorybittersweet",
-            label: "苦中有乐的回忆",
-            description: "我能够回想起那段苦乐交织的时光。",
-			aspects: {way:1},
-			lifetime:300
-        },
-					 {
-            id: "memorypleasant",
-            label: "甜蜜的回忆",
-            description: "我能够回想起那段更加快乐的时光。",
-			aspects: {way:1},
-			lifetime:300
-        },
-							 {
-            id: "memorypassionate",
-            label: "激情的回忆",
-            description: "我能够回想起那段更加温暖的时光。",
-			aspects: {way:1},
-			lifetime:300
-        },
+					
 				{id: "scar_edge",
-		label:"伤痕：残暴的经历",
-		description:"浮士德： 我以为地狱只是传说。梅菲斯托费勒斯：尽管这么想吧，经验会改变你的看法。[你已为力量做出了永久的牺牲。]",
+		label:"伤疤：残暴的经历",
+		description:"<b>浮 士 德</b>： 我以为地狱只是个传说。<b>梅 菲 斯 托 费 勒 斯<b>：嗳，尽管这么想吧，经历会改变你的看法。[你已为力量做出了永久的牺牲。]",
 		aspects:{tool:1,edge:4,scar:1}
 		},
 		
 				{id: "scar_knock",
-		label:"伤痕：半愈的瘘管",
+		label:"伤疤：半愈的瘘管",
 		description:"并非所有门洞都是创口，但所有创口都是门洞。[你已为力量做出了永久的牺牲。]",
 		aspects:{tool:1,knock:4,scar:1}
 		},
 				{id: "scar_winter",
-		label:"伤痕：旧伤",
+		label:"伤疤：旧伤",
 		description:"又朝日落走近了些，看到了夜空中的第一颗星。[你已为力量做出了永久的牺牲。]",
 		aspects:{tool:1,winter:4,scar:1}
 		},
 						{id: "scar_heart",
-		label:"伤痕：浪游之心",
+		label:"伤疤：浪游之心",
 		description:"我拥有如此之多的生命，很难停止不动。我坐下休息时，关节痛如火烧。我知道我一旦止息，或许便是永远。[你已为力量做出了永久的牺牲。小心：此卡不像“健康”，无法缓解生病和饥饿。]",
 		aspects:{tool:1,heart:4,scar:1},
 		xtriggers:{job:scar_heart_fatigued,employment:scar_heart_fatigued,ritual:scar_heart_fatigued}
 		},
 								{id: "scar_heart_fatigued",
-		label:"伤痕：浪游之心（耗竭）",
+		label:"伤疤：浪游之心（耗竭）",
 		description:"我的动脉在呻吟，我的血管在燃烧。我无法再逼迫自己前进了。[请等待。]",
 	decayTo: scar_heart,
 	lifetime:60,
 			resaturate: true
 		},
 					{id: "scar_moth",
-		label:"伤痕：百变之相",
+		label:"伤疤：百变之相",
 		description:"我换上过无数副假面孔。每一副假面孔都让我更难回想起自己的本来面目。即便在情绪高扬时，我面上的筋骨依然柔软可塑。[你已为力量做出了永久的牺牲。]",
 		aspects:{tool:1,moth:4,scar:1},
 		xtriggers:{job:scar_moth_fatigued,employment:scar_moth_fatigued,ritual:scar_moth_fatigued}
 		},
 							{id: "scar_moth_fatigued",
-		label:"伤痕：百变之相（耗竭）",
+		label:"伤疤：百变之相（耗竭）",
 		description:"我每换上一副表情，五官就像水一样起涟漪。如果我不加小心，我将彻底溶解。[请等待。]",
 		decayTo: scar_moth,
 		lifetime:60,
@@ -420,7 +402,7 @@ lifetime: 180,
 		},
 		
 						{id: "scar_lantern",
-		label:"伤痕：半隐半现",
+		label:"伤疤：半隐半现",
 	description:"现在我有时会露出皮肤下的美貌。当我转向合适的角度——当我的衣服滑落一旁——当遇上锐利的眼光——我的形状被完美地揭示无余。[你已为力量做出了永久的牺牲。]",
 		aspects:{tool:1,lantern:4,scar:1}
 		},

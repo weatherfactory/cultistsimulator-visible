@@ -17,52 +17,52 @@
         },
 		 {
             id: "ascensionenlightenmenta",
-            label: "诱惑：启智",
+            label: "诱惑：启明",
             aspects:
             {desire: 1,enlightenmentmarks:1},
-            description: "我突然意识到我手里握着前往智慧的钥匙。[此卡可通达“启智胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",uniquenessgroup:"uqdesire"
+            description: "我突然意识到我手里握着前往智慧的钥匙。[此卡可通达“启明胜利”，只要将其升级到一定程度。以之“入梦”可以使之升级或转变。]",uniquenessgroup:"uqdesire"
         },
 				 {
             id: "ascensionpowerb",
-            label: "致力：力量",
+            label: "追奉：力量",
             aspects:
             {desire: 2,powermarks:2},
-            description: "我将不惜一切代价获取永恒的力量。[进一步升级此卡，追求“力量胜利”。我必须真正地融入漫索。我需要做一些<b>铸</b>属性的<b>工作</b>来祈求光阴之炉，开始我的转变。]",
-			slots: [{id:"Know", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
-			{id: "Power", actionId: "work", required: {forge:1},description: "我需要足够的从炉而来的狂野炙热。"}],
+            description: "我已奉身于获取永恒的力量。[进一步升级此卡，追求“力量胜利”。我必须真正地融入漫宿。我需要进行<b>铸</b>相的<b><作业></b>来祈求白日铸炉，开始改变。]",
+			slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
+			{id: "Power", label:"力量", actionId: "work", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
 			uniquenessgroup:"uqdesire"
 			
         },
 				 {
             id: "ascensionsensationbm",
-            label: "致力：感官",
+            label: "追奉：感官",
             aspects:
             {desire: 2,sensationmarks:2},
-            description: "我将不惜一切代价对感官展开永恒的追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
-			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
+            description: "我将奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
+			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
+			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			uniquenessgroup:"uqdesire"
 			
         },
 						 {
             id: "ascensionsensationbf",
-            label: "致力：感官",
+            label: "追奉：感官",
             aspects:
             {desire: 2,sensationmarks:2},
-            description: "我将不惜一切代价对感官展开永恒的追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让自己能够被赤杯接纳。]",
-			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
-			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的从<b>杯</b>而来的快感冲击。"}],
+            description: "我已奉身于对感官的永恒追求。[进一步升级此卡，追求“感官胜利”。我必须真正地融入漫宿。我需要进行<b>杯</b>相的<b><作业></b>，让自己能够被赤杯接纳。]",
+			slots: [{id:"Know", label:"通晓者",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a 通晓者, may take this step. The 通晓者 are those who have passed the Stag Door, in dreams."},
+			{id:"Power", label:"力量", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			uniquenessgroup:"uqdesire"
 			
         },
 		 {
             id: "ascensionenlightenmentb",
-            label: "致力：启智",
+            label: "追奉：启明",
             aspects:
             {desire: 2,enlightenmentmarks:2},
-            description: "我致力于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[进一步升级此卡，追求“启智胜利”。我必须真正地融入漫索。我需要做一些<b>杯</b>属性的<b>工作</b>，让守夜人能够看到我。]",
-						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过雄鹿之门之人。"},
-			{id:"Power", actionId: "work", required: {lantern:1},description: "我需要象征漫索无情之光的标志。"}],
+            description: "我已奉身于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[进一步升级此卡，追求“启明胜利”。我必须真正地融入漫宿。我需要进行<b>灯</b>相的<b><作业></b>，让守夜人能够看到我。]",
+						slots: [{id:"Know", label:"通晓者", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的学徒，所谓的通晓者，才可能做到这一步。通晓者即在梦境中穿过牡鹿之门之人。"},
+			{id:"Power", label:"力量", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
 			uniquenessgroup:"uqdesire"
         },
 		{
@@ -70,7 +70,7 @@
 		label: "飞升：力量",
 		aspects: {desire:3,powermarks:3},
 		xtriggers: {ascend:ascensionpowerd},
-		description:"光阴之炉在我肉体上点燃了回应的火花。我越发渴望接触到火焰的炙热。我想很快我就将在睡梦中燃火。这是十分迫切的需求，就像生命对水的需求一样。我很确定这就是第三印记。",
+		description:"铸炉在我肉体上点燃了回应的火花。我极度渴求火焰的热力。我想很快我就将在睡梦中燃火。这是十分迫切的需求，就像生命对水的需求一样。我很确定这就是第三印记。",
 		uniquenessgroup:"uqdesire"
 		},
 				{
@@ -78,7 +78,7 @@
 		label: "飞升：力量",
 		aspects: {desire:4,powermarks:4},
 		xtriggers: {ascend:ascensionpowere,descend:ascensionpowerc},
-		description:"虽然火焰让我遍体伤痕，但想炙伤我的肉体也是越来越难。我现在开始渐渐习惯火焰，如同一条龙或一块石头。这是第四印记。",
+		description:"虽然火焰让我遍体伤疤，但想炙伤我的肉体也是越来越难。我现在开始渐渐习惯火焰，如同一条龙或一块石头。这是第四印记。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
@@ -110,7 +110,7 @@
 		label: "飞升：感官",
 		aspects: {desire:4,sensationmarks:4},
 		xtriggers:{ascend:ascensionsensatione,descend:ascensionsensationc},
-		description:"第四印记是皮肤上断断续续的进展，从手臂到大腿的痕迹成补丁状生长。洁净，柔软，而透着红光，好似爬出山泉水的新生儿的皮肤。只是一块一块的。",
+		description:"第四印记是皮肤上断断续续的改善，从手臂到大腿的痕迹成补丁状生长。洁净，柔软，而透着红光，好似爬出山泉水的新生儿的皮肤。只是一块一块的。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
@@ -132,15 +132,15 @@
 		
 				{
 		id:"ascensionenlightenmentc",
-		label: "飞升：启智",
+		label: "飞升：启明",
 		aspects: {desire:3,enlightenmentmarks:3},
 		xtriggers:{ascend:ascensionenlightenmentd},
-		description:"守夜人，即瞳中之扉，触碰了我。现在每天我的好奇心都会增强：这是一种急迫的，生理上的需求，就像饥饿一样折磨我。我知道这就是第三印记。",
+		description:"守夜人，即瞳中扉，触碰了我。现在每天我的好奇心都会增强：这是一种急迫的，生理上的需求，就像饥饿一样折磨我。我知道这就是第三印记。",
 		uniquenessgroup:"uqdesire"
 		},
 				{
 		id:"ascensionenlightenmentd",
-		label: "飞升：启智",
+		label: "飞升：启明",
 		aspects: {desire:4,enlightenmentmarks:4},
 		xtriggers:{ascend:ascensionenlightenmente,descend:ascensionenlightenmentc},
 		description:"第四印记是眼中亮着的光，但是却难以发现。大多数情况下，人们只有在油灯熄灭时或者午夜的黑暗之中才能看到它；虽然当我瞪大眼睛的时候，会有更多的光开始溢出。我开始日渐消瘦了。",
@@ -148,15 +148,15 @@
 		},
 						{
 		id:"ascensionenlightenmente",
-		label: "飞升：启智",
+		label: "飞升：启明",
 		aspects: {desire:5,enlightenmentmarks:5},
 		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightenmentd},
-		description:"在第五印记时，光芒会从皮肤乌青或被剥皮之处泄露出来。我的皮肤开始逐渐松弛了，只因我日渐消瘦。我现在已经相当的瘦弱了。我总是很饥饿。",
+		description:"在第五印记时，光芒会从皮肤乌青或被剥皮之处泄露出来。我的皮肤开始逐渐松弛了，只因我日渐消瘦。我现在相当瘦弱。我总是很饥饿。",
 		uniquenessgroup:"uqdesire"
 		},
 						{
 		id:"ascensionenlightenmentf",
-		label: "飞升：启智",
+		label: "飞升：启明",
 		aspects: {desire:6,enlightenmentmarks:6},
 		xtriggers:{descend:ascensionenlightenmente},
 		description:"据说第六印记出现的标记就是虎口间的皮肤可以拉到小指关节处。我的皮肤已经变得非常非常松弛了。我觉得我的骨头也开始变得酥软了。我的双眼丧失了属于人类的色泽。",
@@ -164,7 +164,21 @@
 		},
 		
 	
+{id:"temptation.remembrance",
+label:"诱惑：铭记",
+description:"赤红的太阳低垂天际时的凉风。海浪原先的话音。在我们身边一同跋涉积雪的虚影。都压在时间的玻璃板下，变得粉碎。我须得重温失去的事物。",
+aspects:{desire:1,remembrancemarks:1},
+xtriggers:{ascend:dedication.remembrance}
+
+},
+
+{id:"dedication.remembrance",
+label:"追奉：铭记",
+description:"赤红的太阳低垂天际时的凉风。海浪原先的话音。在我们身边一同跋涉积雪的虚影。都压在时间的玻璃板下，变得粉碎。我须得重温失去的事物……尽管其味醇熟而怪异。",
+aspects:{desire:1,remembrancemarks:2}
+
+}
 
 		
 ]
-};
+}

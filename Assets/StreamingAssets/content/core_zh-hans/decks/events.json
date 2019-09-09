@@ -20,7 +20,7 @@ resetonexhaustion:true
 	},
 	{id: "cabaretevents",
 		label:"俱乐部一夜",
-	description:"每个夜晚都会带来不同的愉悦，但是，偶尔会有不测发生。",
+	description:"每个夜晚都会带来不同的愉悦，但是，偶尔会有险情发生。",
 	spec:
 	["contentment",
 	"contentment",
@@ -37,7 +37,7 @@ defaultcard: "contentment",
 resetonexhaustion:true	
 	},
 	{id:"roserewards",
-	label:"浪漫的回报",
+	label:"爱情的回报",
 	description:"那时，此时，何时？",
 		spec:
 	["memorybittersweet",
@@ -73,7 +73,7 @@ resetonexhaustion:true
 	},
 		{id: "paintingresults",
 				label:"艺术的回报",
-	description:"作画通常能带来安逸。不过，有时候，我的作品也会引人关注。。",
+	description:"作画通常能带来安逸。不过，有时候，我的作品也会引人关注。",
 	spec:
 	["glimmering",
 "glimmering",
@@ -100,10 +100,10 @@ resetonexhaustion:true
 				label:"名誉的回报",
 	description:"名能生利。",
 	spec:
-	["funds",
-"funds",
-"funds",
-"funds",
+	["overexposure",
+"overexposure",
+"overexposure",
+"overexposure",
 "funds",
 "funds",
 "funds",
@@ -124,7 +124,7 @@ resetonexhaustion:true
 	},
 	
 		{id: "ecdysisrewards",
-					label:"结束的奉礼",
+					label:"结束时的奉礼",
 	description:"俱乐部有保底报酬，但是有时观众也会献出自己所有。",
 	spec:
 	["funds",
@@ -152,7 +152,7 @@ resetonexhaustion:true
 	
 			{id: "robberyrewards",
 					label:"罪业的报偿",
-	description:"我的手下经常能为我带回琐碎的财宝；有时只是些垃圾；然而，极少情况下，会是奇特的物什。",
+	description:"我的手下经常能为我带回琐碎的宝物；有时只是些垃圾；然而，极少情况下，会是奇特的物什。",
 	spec:
 	["funds",
 	"funds",
@@ -214,7 +214,7 @@ resetonexhaustion:true
 	
 	
 			{id: "schemeevents",
-		label:"阴谋潜伏",
+		label:"阴谋诡计",
 	description:"我的对手密谋着……",
 	spec:[
 	"schememurder",
@@ -281,7 +281,7 @@ resetonexhaustion:true
 	},
 	
 				{id:"forgelong",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description: "我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"julian_unknown",
 	"welland_unknown",
@@ -290,7 +290,7 @@ resetonexhaustion:true
 	},
 	
 					{id:"graillong",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["tryphon_unknown",
 	"tryphon_unknown",
@@ -299,7 +299,7 @@ resetonexhaustion:true
 	},
 	
 					{id:"lanternlong",
-	label:"大业之敌",
+	label:"大功业之敌",
 		description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["julian_unknown",
 		"diarist_unknown",
@@ -308,7 +308,7 @@ resetonexhaustion:true
 	},
 	
 						{id:"long.strategies",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",
@@ -320,7 +320,7 @@ resetonexhaustion:true
 	
 		
 						{id:"long.strategies.preference.assault",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:["strategy.assault.concealed",
 	"strategy.assault.concealed",
@@ -331,7 +331,7 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 							{id:"long.strategies.preference.intrigue",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",
@@ -343,7 +343,7 @@ resetonexhaustion:true
 	},
 	
 							{id:"long.strategies.preference.dreamwork",
-	label:"大业之敌",
+	label:"大功业之敌",
 	description:"我们的敌人选择了常见的攻击方式，直到他实施计划之前我们永远无法知晓他的计划细节，但是我们或许可以占卜出他大致的动向。",
 	spec:[	"strategy.assault.concealed",
 	"strategy.intrigue.concealed",
@@ -352,8 +352,46 @@ resetonexhaustion:true
 	"strategy.downtime.concealed"],
 	defaultcard: "strategy.downtime",
 resetonexhaustion:true	
-	}
+	},
 	
+	{id:"priest.repevent",
+	label:"会众们的激情",
+	description:"将带来什么结果？",
+	spec:["notoriety",
+	"notoriety",
+	"notoriety",
+	"notoriety",
+	"mystique",
+	"mystique",
+	"mystique",
+	"mystique",
+	"funds",
+	"funds",
+	"funds",
+	"funds"
+	],
+	resetonexhaustion:true
+	},
+		
+	{id:"ghoul.memory",
+	label:"种种回忆",
+	description:"我将记住被其他所有人忘却的。",
+	spec:["memory.unexpected",
+	"memory.joyful",
+	"memory.profitable",
+	"memory.shameful",
+	"memory.menacing",
+	"memory.joyful",
+	"memory.profitable",
+	"memory.shameful",
+	"memory.menacing",
+	"memory.joyful",
+	"memory.profitable",
+	"memory.shameful",
+	"memory.menacing",
+	],
+	resetonexhaustion:true
+	},
 	
 	]
 }

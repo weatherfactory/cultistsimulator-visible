@@ -4,7 +4,7 @@
 {id: "long.spawn.forge",
 label: "某人已至",
 actionId: "long",
-startdescription: "在烛火中，在炉火中，在飘摇如帘的烟气中，征兆确凿。我们塑形者的大敌——阻止我们大业之人——已来到这座城市。",
+startdescription: "在烛火中，在炉火中，在飘摇如帘的烟气中，征兆确凿。我们塑形者的大敌——妨害我们成就功业之人——已来到这座城市。",
 deckeffect: {forgelong:1},
 warmup:60,
 craftable: false,
@@ -13,7 +13,7 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.spawn.grail",
 label: "某人已至",
 actionId: "long",
-startdescription: "滋味的变化，血滴的掉落，码头居民区生育频次激增的报道，都在对我们发出警告。我们愉悦者的大敌——阻止我们大业之人——已来到这座城市。",
+startdescription: "滋味的变化，血滴的掉落，码头居民区生育频次激增的报道，都在对我们发出警告。我们愉悦者的大敌——妨害我们成就功业之人——已来到这座城市。",
 deckeffect: {graillong:1},
 warmup:60,
 craftable: false,
@@ -22,7 +22,7 @@ linked:[{id:"long.cycle",chance:100}]},
 {id: "long.spawn.lantern",
 label: "某人已至",
 actionId: "long",
-startdescription: "太阳的颜色，月亮的被掩，透镜的碎裂，都在对我们发出警告。我们的沐光明者的大敌——阻止我们大业之人——已来到这座城市。",
+startdescription: "太阳的颜色，月亮的被掩，透镜的碎裂，都在对我们发出警告。我们的沐光明者的大敌——妨害我们成就功业之人——已来到这座城市。",
 deckeffect: {lanternlong:1},
 warmup:60,
 craftable: false,
@@ -34,7 +34,7 @@ actionId: "long",
 effects: {intention.assault:-9,intention.intrigue:-9,intention.dreams:-9,intention.downtime:-9,strategy.prep:-9,strategy.prep.delayed:-9},
 startdescription: "藏形匿影的不死者在谋划他的下一步。",
 warmup:60,
-slots:[{id:"longlesson",label:"习学",description:"我们越挑衅敌人，敌人越从中了解我们，这会令其攻击更致命。",required:{long.lesson:1},greedy:true}],
+slots:[{id:"longlesson",label:"习学",description:"As we provoke our enemy, and as they learn from us, their attacks will grow deadlier.",required:{long.lesson:1},greedy:true}],
 craftable: false,
 alternativerecipes:[{id:"long.upgrade.might",chance:100},
 {id:"long.upgrade.connections",chance:100},
@@ -128,9 +128,18 @@ linked:[{id:"long.preparestrategy",chance:100}]},
 {id:"long.preparestrategy",
 actionId:"long",
 label:"准备行动",
-startdescription:"我们永生不死的敌人正在准备下一次行动。[放入长于<sprite name=knock> <sprite name=lantern>的追随者可尝试勘破长生者的策略。放入长于<sprite name=edge> <sprite name=forge>的追随者可尝试推迟“袭击”，长于<sprite name=grail> <sprite name=heart>者推迟“阴谋”，长于<sprite name=moth> <sprite name=winter>者推迟“星光”攻击。]",
-slots:[{id:"spy",label:"密探",description:"密探可以探知长生者的计划。如果你得知或猜出了计划的性质，恰当的密探便可以推迟计划实行。", required:{follower:1}}],
-alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
+startdescription:"Our immortal enemy is preparing their next action.
+
+[Add a follower strong in <sprite name=knock> <sprite name=lantern> to try to uncover the Long's strategy.
+Add a follower strong in
+<sprite name=edge> <sprite name=forge> to try to delay Assaults,
+<sprite name=grail> <sprite name=heart> for Intrigues, 
+<sprite name=moth> <sprite name=winter> for Starlight attacks.]",
+slots:[{id:"spy",label:"密探",description:"Spies can learn of the Long's plans. If you know or guess the nature of those plans, the right spies can delay them.", required:{follower:1}}],
+alt:[{id:"expelallspies",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.might",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.connections",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}},
+{id:"expelallspies_beforeconfrontation.dreamwork",chance:100,additional:true,expulsion:{limit:9,filter:{follower:1}}}],
 effects:{strategy.prep:1},
 warmup:60,
 craftable:false,
@@ -185,6 +194,32 @@ requirements:{follower:3},
 startdescription:"我们的敌人警醒不怠。我们派的密探太多了——只要多于两人，便会功亏一篑。",
 warmup:10},
 
+{id:"expelallspies_beforeconfrontation.might",
+actionId:"expelallspies",
+label:"风暴前夕",
+requirements:{long.might:10,follower:1},
+startdescription:"我们的敌人就要做好直接袭击我们的准备了。我们已召回密探。",
+warmup:10},
+
+{id:"expelallspies_beforeconfrontation.connections",
+actionId:"expelallspies",
+label:"风暴前夕",
+requirements:{long.connections:10,follower:1},
+startdescription:"我们的敌人就要做好直接袭击我们的准备了。我们已召回密探。",
+warmup:10},
+
+
+
+{id:"expelallspies_beforeconfrontation.dreamwork",
+actionId:"expelallspies",
+label:"风暴前夕",
+requirements:{long.dreamwork:10,follower:1},
+startdescription:"我们的敌人就要做好直接袭击我们的准备了。我们已召回密探。",
+warmup:10},
+
+
+
+
 
 
 {id:"long.spyonstrategy.success",
@@ -203,14 +238,14 @@ linked:[{id:"long.preparestrategy",chance:100}]
 
 {id:"long.revealidentity.success.might",
 actionId:"long",
-label:"我们敌人的身份",
+label:"敌人的身份",
 requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.might:3},
 linked:[{id:"long.revealidentity.success"}]
 },
 
 {id:"long.revealidentity.success.connections",
 actionId:"long",
-label:"我们敌人的身份",
+label:"敌人的身份",
 requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.connections:3},
 linked:[{id:"long.revealidentity.success"}]
 },
@@ -218,7 +253,7 @@ linked:[{id:"long.revealidentity.success"}]
 
 {id:"long.revealidentity.success.dreamwork",
 actionId:"long",
-label:"我们敌人的身份",
+label:"敌人的身份",
 requirements:{follower:1,julian:-1,welland:-1,tryphon:-1,diarist:-1,long.dreamwork:3},
 linked:[{id:"long.revealidentity.success"}]
 },
@@ -227,8 +262,11 @@ linked:[{id:"long.revealidentity.success"}]
 
 {id:"long.revealidentity.success",
 actionId:"long",
-label:"我们敌人的身份",
-startdescription:"@#welland_unknown|我们的敌人叫韦兰上尉，一名在许多具名者麾下打过许多大仗的<b>铸</b>之长生者。他同时向锻狮与光阴之炉效忠。他喜欢直接发动袭击，但也不是只会蛮干的士兵。@#tryphon_unknown|我们的敌人叫特里芬女士，一名在全大陆顶级酒店留下一连串心碎灵魂的<b>杯</b>之长生者。她为赤杯与圃仙人所深爱。她倾向于耍弄阴谋，但对暴力也不陌生。#diarist_unknown|我们的敌人是一名人称“日记作者”的<b>灯</b>之长生者，如其所有同类，他为了漫索抛弃了自己的实体。他被上校与痕月所宠爱。他偏好在梦中侵袭我们，但也别低估他在醒时世界的盟友。#julian_unknown|我们的敌人是一名缩写为“J·C”的<b>冬</b>之长生者。此人动机不明：他一向声称与忘却会及其后继者共进退，而该会从不插手时枢神的战争。不过他还是来了，来坏我们的好事。@",
+label:"敌人的身份",
+startdescription:"@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.
+@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.
+#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate. He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.
+#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.@",
 aspects:{revealidentity:1},
 warmup:10,
 linked:[{id:"long.spyonstrategy.success",chance:100}]

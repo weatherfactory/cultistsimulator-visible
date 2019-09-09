@@ -26,7 +26,7 @@ draws:2
 actionId:"irt",
 label:"ERROR",
 startdescription:"ERROR",
-alt:[{id:"ERROR",actionId:"irt",startdescription:"ERROR"}],
+alt:[{id:"irt2",actionId:"irt",startdescription:"ERROR"}],
 warmup:10},
 
  
@@ -380,8 +380,8 @@ ritetoolconsumeingredient:1
         actionId: "healthend",
         requirements: {health: -1},
         effects: {},
-        startdescription: "我的生命正在流逝——",
-        description: "他们会在哪里找到我？这里没有我。",
+        startdescription: "我的生命正在流失——",
+        description: "他们会在哪里将我找见呢？我不在此处。",
         warmup: 10,
         craftable: false,
 		signalEndingFlavour:Melancholy,
@@ -398,55 +398,55 @@ ritetoolconsumeingredient:1
         craftable: false,
     },
 	 {id: "wolfatthedooreats_work",
-label: "狼来了",
+label: "Here is the Wolf",
 actionId: "work",
 requirements: {wolfatthedoor:1},
 effects: {wolfatthedoor:-1},
-startdescription: "我们遥听狼嗥响起……",
-description: "紧随其后是另一声狼嗥。",
+startdescription: "We hear his howls...",
+description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
 {id: "wolfatthedooreats_dream",
-label: "狼来了",
+label: "Here is the Wolf",
 actionId: "dream",
 requirements: {wolfatthedoor:1},
 effects: {wolfatthedoor:-1},
-startdescription: "我们遥听狼嗥响起……",
-description: "紧随其后是另一声狼嗥。",
+startdescription: "We hear his howls...",
+description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
 
 {id: "wolfatthedooreats_study",
-label: "狼来了",
+label: "Here is the Wolf",
 actionId: "study",
 requirements: {wolfatthedoor:1},
 effects: {wolfatthedoor:-1},
-startdescription: "我们遥听狼嗥响起……",
-description: "紧随其后是另一声狼嗥。",
+startdescription: "We hear his howls...",
+description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
 
 {id: "wolfatthedooreats_explore",
-label: "狼来了",
+label: "Here is the Wolf",
 actionId: "explore",
 requirements: {wolfatthedoor:1},
 effects: {wolfatthedoor:-1},
-startdescription: "我们遥听狼嗥响起……",
-description: "紧随其后是另一声狼嗥。",
+startdescription: "We hear his howls...",
+description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
 
 {id: "wolfatthedooreats_talk",
-label: "狼来了",
+label: "Here is the Wolf",
 actionId: "talk",
 requirements: {wolfatthedoor:1},
 effects: {wolfatthedoor:-1},
-startdescription: "我们遥听狼嗥响起……",
-description: "紧随其后是另一声狼嗥。",
+startdescription: "We hear his howls...",
+description: "...and then his growls.",
 warmup: 0,
 craftable:true
 },
@@ -496,6 +496,24 @@ craftable:true
 	 warmup:1
 
    },
+   
+   
+
+{id:"_ghoulmemories",
+actionId:"gm",
+label:"MEMORIES",
+startdescription:"ALL ALONE IN THE A BYSS",
+effects:{
+memory.furious:1,
+	memory.luxurious:1,
+	memory.liminal:1,
+	memory.horizon:1,
+	memory.splendid:1,
+	memory.endless:1,
+	memory.wildering:1,
+	memory.golden:1,
+	memory.honeyed:1},
+warmup:1}
    
 
 ]

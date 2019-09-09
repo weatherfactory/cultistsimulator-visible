@@ -29,13 +29,13 @@ UI_OPT_INFODURATION,Info Window Duration,信息窗口持续时长 ,Показы�
 UI_OPT_UISCALING,UI Scaling,UI尺寸 ,Размер интерфейса
 UI_OPT_AUTOSAVEINTERVAL,Autosave Interval,自动保存间隔,Автосохранение
 UI_OPT_GRIDSNAPSIZE,Grid Snap Size,网格对齐大小,Сетка для карт
-UI_OPT_CONTRAST,High Contrast Mode,,
-UI_OPT_ACCESSIBLE_CARDS,Accessible Card Text,,
+UI_OPT_CONTRAST,High Contrast Mode,高对比字体（中文慎用）,
+UI_OPT_ACCESSIBLE_CARDS,Accessible Card Text,卡牌放大镜,
 UI_OPT_BIRDWORM,Bird / Worm,虫/鸟,Птица / Червь
 UI_BIRD,Bird,虫,Птица
 UI_WORM,Worm,鸟,Червь
 UI_CARD,Card,张卡牌,карта
-UI_ON,On,,
+UI_ON,On,开启,
 UI_OFF,Off,关闭,Откл.
 UI_SNAP_0,Off,关闭,Откл.
 UI_SNAP_1,1 Card,1张卡牌,1 карта
@@ -49,27 +49,27 @@ UI_TIME_SEPERATOR,".",".",","
 UI_KNOWN_LINUX,KNOWN LINUX ISSUES,已知Linux版本问题,Известные проблемы Linux
 UI_KNOWN_LINUX_1,- Keystrokes may register twice when naming your characters. This is a Unity issue; hoping for a fix!,- 在为角色命名时，键盘输入有可能会被计入两次。这是一个Unity的问题，希望能得到修复！,"— При вводе имён персонажей нажатия клавиш могут «двоиться». Это проблема Unity — надеемся, она будет исправлена! "
 UI_PURGE_SAVE,PURGE SAVE,清除存档,Уничтожить сохранение
-UI_DLC_AND_MODS,DLC & Mods,,
+UI_DLC_AND_MODS,DLC & Mods,DLC与模组,
 UI_LEAVE_GAME,LEAVE,离开,Выйти
-UI_DLC,DLC,,
-UI_DLC_INSTALLED,Installed!,,
-UI_DLC_PURCHASE,Purchase,,
-UI_DLC_TITLE_DANCER,The Dancer,,
-UI_DLC_TITLE_PRIEST,The Priest,,
-UI_DLC_TITLE_GHOUL,The Ghoul,,
-UI_DLC_DESCRIPTION_DANCER,You must not be stilled.,,
-UI_DLC_DESCRIPTION_PRIEST,Unseal and unseam.,,
-UI_DLC_DESCRIPTION_GHOUL,Call each of the Dead by name.,,
+UI_DLC,DLC,DLC,
+UI_DLC_INSTALLED,Installed!,已安装！,
+UI_DLC_PURCHASE,Purchase,购买,
+UI_DLC_TITLE_DANCER,The Dancer,舞者,
+UI_DLC_TITLE_PRIEST,The Priest,教士,
+UI_DLC_TITLE_GHOUL,The Ghoul,食尸鬼,
+UI_DLC_DESCRIPTION_DANCER,You must not be stilled.,你绝不能静止下来。,
+UI_DLC_DESCRIPTION_PRIEST,Unseal and unseam.,已开封与拆解。,
+UI_DLC_DESCRIPTION_GHOUL,Call each of the Dead by name.,来一一唤亡者以姓名吧。,
 UI_DLC_UNAVAILABLE,"DLC isn't available on itch.io! To buy Cultist Simulator DLC, go to Steam, GOG or Humble.",,
-UI_INSTALLED_MODS,Installed mods,,
-UI_MODS_INTRODUCTION,Visit the <link="https://steamcommunity.com/app/718670/discussions/1/"><color=#ccd2e8><b><u>Steam community forums</u></b></color></link> to find and download mods for Cultist Simulator.,,
-UI_MODS_NO_MODS,No mods are currently installed.,,
+UI_INSTALLED_MODS,Installed mods,已安装的模组,
+UI_MODS_INTRODUCTION,Visit the <link="https://steamcommunity.com/app/718670/discussions/1/"><color=#ccd2e8><b><u>Steam community forums</u></b></color></link> to find and download mods for Cultist Simulator.,欲寻找、下载《密教模拟器》模组，请前往 <link="https://steamcommunity.com/app/718670/discussions/1/"><color=#ccd2e8><b><u>steam社区论坛</u></b></color></link> 。,
+UI_MODS_NO_MODS,No mods are currently installed.,尚未安装任何模组。,
 UI_CREDITS,WHO IS RESPONSIBLE?,谁在游戏幕后？,Кто в ответе?
 UI_BEGIN_GAME,BEGIN GAME,开始游戏,Начать игру
 UI_INCOMPATIBLE_SAVE,INCOMPATIBLE SAVE,不兼容存档,Несовместимое сохранение
 UI_INCOMPATIBLE_SAVE_1,You have an ANTIQUE and BLASPHEMOUS save file from a previous build! Purge it to continue.,你现在的存档来自之前的游戏版本，如今已经老若古董，充满渎神气息！清除它方能继续游戏。,Ваш файл сохранения — пережиток прошлой версии игры. Мы не можем допустить это ДРЕВНЕЕ ЗЛО! Уничтожьте его.
-UI_CORRUPTED_SAVE_TITLE,CORRUPTED SAVE,,
-UI_CORRUPTED_SAVE_DESC,"Regrettably, we couldn't recover your save. Click here to see your backup save files - one may still be usable.",,
+UI_CORRUPTED_SAVE_TITLE,CORRUPTED SAVE,已损坏存档,
+UI_CORRUPTED_SAVE_DESC,"Regrettably, we couldn't recover your save. Click here to see your backup save files - one may still be usable.",遗憾的是，我们无法恢复你的存档。请点击这里查看备份，或者其中还有没有损坏的存档。,
 UI_OPTIONS_FE,Options,选项,Настройки
 UI_MANAGE_SAVES,MANAGE SAVES,管理存档,СОХРАНЕНИЯ
 UI_MANAGE_SAVES_TITLE,Manage Saves and Backups,管理存档与备份,"Сохранения, резервные копии"
@@ -87,13 +87,13 @@ UI_RESPONSIBILITIES,RESPONSIBILITIES,负责工作,Ответственные
 UI_CREDITS_ROLES,"Design, Writing, Coding\n\nProduction, Marketing, Biz\n\nUI Design and Coding\n\nArt\n\n\n\n\nMusic\n\n\n\n\nAudio\n\nAdditional Writing\n\nAdditional Coding\n\n\n\n\nAdditional Design\n\nMarketing & PR\n\nSpecial Thanks",,
 UI_CREDITS_NAMES,"Alexis Kennedy\n\nLottie Bevan\n\nMartin Nerurkar\n\nCatherine Unger,\nClockwork Cuckoo,\nLottie Bevan,\nSarah Gordon\n\nMaribeth Solomon\nBrent Barkman\nMicky Erbe\nfor Mickymar Productions Ltd.\n\nSoundcuts\n\nLottie Bevan\n\nFraser McCormick\nChris Payne\nMarc Gagné (Lyrositor)\nHannah Rose\n\nCaolain Porter\n\nClaire Sharkey\n\n\nSonja & PK; Matt Hosty; Haley Uyrus; and literally everyone who has ever sent feedback or a bug report. Thank you.\n\n","Alexis Kennedy\n\nLottie Bevan\n\nMartin Nerurkar\n\nCatherine Unger,\nClockwork Cuckoo,\nLottie Bevan,\nSarah Gordon\n\nMaribeth Solomon\nBrent Barkman\nMicky Erbe\nfor Mickymar Productions Ltd.\n\nSoundcuts\n\nLottie Bevan\n\nFraser McCormick\nChris Payne\nMarc Gagné (Lyrositor)\nHannah Rose\n\nCaolain Porter\n\nClaire Sharkey\n\n\nSonja & PK; Matt Hosty; Haley Uyrus……我们也非常感谢每一位反馈bug和意见的玩家。谢谢你们。","Alexis Kennedy\n\nLottie Bevan\n\nMartin Nerurkar\n\nCatherine Unger,\nClockwork Cuckoo,\nLottie Bevan,\nSarah Gordon\n\nMaribeth Solomon\nBrent Barkman\nMicky Erbe\nfor Mickymar Productions Ltd.\n\nSoundcuts\n\nLottie Bevan\n\nFraser McCormick\nChris Payne\nMarc Gagné (Lyrositor)\nHannah Rose\n\nCaolain Porter\n\nClaire Sharkey\n\n\nSonja & PK; Matt Hosty; Haley Uyrus...а также буквально все, кто оставил нам отзыв или послал отчёт об ошибке. Спасибо."
 UI_BROWSE_SAVES,VIEW SAVE FILE,查看存档文件,Открыть файл сохранения
-UI_ENABLE,Enable,,
-UI_DISABLE,Disable,,
+UI_ENABLE,Enable,开启,
+UI_DISABLE,Disable,关闭,
 UI_BRING_THE_DAWN,Bring the Dawn,启明,Путём Рассвета
 UI_PERPETUAL_EDITION,Perpetual Edition,永恒版,Вечная версия
 UI_LOADEDTITLE,Where were we?,我们身在何处？,На чём мы остановились?
 UI_LOADEDDESC,- we have loaded the game.,我们已加载游戏进度。,Мы загрузили игру.
-UI_LOADFAILEDTITLE,Failed to load game,,
+UI_LOADFAILEDTITLE,Failed to load game,无法载入游戏,
 UI_LOADFAILEDDESC,Your save file appears to be corrupt. Try restoring a backup save file or purging your save.,,
 LOADING_QUOTE_1,"“The Wood grows around the walls of the Mansus.\n\nAs any student of Histories knows, the Mansus has no walls.”\n\nChristopher Illopoly, <i>Travelling at Night</i>",“林地坐落于漫索的围墙之外。\n\n而研习历史的人都知道，漫索并无围墙。”\n\n克里斯托弗·依洛波里，《夜行漫记》,"Лес растёт вокруг стен Обители.\n\nКак знают все, изучавшие Истории, у Обители нет стен.\n\n<i>Кристофер Иллополи. Странствуя в Ночи</i>"
 LOADING_QUOTE_2,"<i>Explore. Take risks.\n\nYou won't always know what to do next. Keep experimenting, and you'll master it.</i>",探索一切。风险自偿。\n\n你不可能总是能知道下面该做什么。多加尝试，你会逐渐掌握其中的规律。,"Исследуйте. Рискуйте.\n\nВам не всегда будет ясно, что делать дальше. Не сдавайтесь, и вы освоитесь."

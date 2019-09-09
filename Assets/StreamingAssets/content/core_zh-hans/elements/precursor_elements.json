@@ -15,8 +15,8 @@
 		
 						 {
             id: "preerudition",
-            label: "博学",
-            description: "[“博学”源自一瞬的顿悟……]",
+            label: "博闻",
+            description: "[博闻源于一瞬顿悟……]",
 		lifetime: 1,
 		icon:erudition,
 		decayTo:"erudition"
@@ -25,7 +25,7 @@
 						 {
             id: "prerestlessness",
             label: "躁动",
-            description: "[躁动之心颤动……]",
+            description: "[躁动之心骚然……]",
 		lifetime: 1,
 		icon:restlessness,
 		decayTo:"restlessness"
@@ -43,7 +43,7 @@
 						 {
             id: "predread",
             label: "恐惧",
-            description: "[恐惧令我心惊胆寒……]",
+            description: "[恐惧使我胆寒……]",
 		lifetime: 1,
 		icon:dread,
 		decayTo:"dread"
@@ -52,12 +52,57 @@
 						 {
             id: "prefascination",
             label: "入迷",
-            description: "[为光而着迷……]",
+            description: "[入迷之光更甚……]",
 		lifetime: 1,
 		icon:fascination,
 		decayTo:"fascination"
         },
 		
+		 {
+        id: "pre.fragmentedgeb",
+            label: "暗示：刃",
+            description: "我正在对无形之术生出新的理解。",
+			lifetime:1,
+			decayTo:fragmentedgeb,
+			icon:fragmentedgeb
+
+        },
+		 {
+        id: "pre.fragmentforgeb",
+            label: "暗示：铸",
+            description: "我正在对无形之术生出新的理解。",
+			lifetime:1,
+			decayTo:fragmentforgeb,
+			icon:fragmentforgeb
+
+        },
+				 {
+        id: "pre.fragmentgrailb",
+            label: "暗示：杯",
+            description: "我正在对无形之术生出新的理解。",
+			lifetime:1,
+			decayTo:fragmentgrailb,
+			icon:fragmentgrailb
+
+        },
+				 {
+        id: "pre.fragmentheartb",
+            label: "暗示：心",
+            description: "我正在对无形之术生出新的理解。",
+			lifetime:1,
+			decayTo:fragmentheartb,
+			icon:fragmentheartb
+
+        },
+				 {
+        id: "pre.fragmentknockb",
+            label: "暗示：启",
+            description: "我正在对无形之术生出新的理解。",
+			lifetime:1,
+			decayTo:fragmentknockb,
+			icon:fragmentknockb
+
+        },
 		
 ]
 };

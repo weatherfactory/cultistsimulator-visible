@@ -15,7 +15,7 @@
 	label: "第二个自我？",
 	actionId: "explore",
 	requirements: {vault:1,sending:1},
-	startdescription: "如果这次探索成功，非我之我会代我实现形体。[如果成功，除了收获一般的奖赏，还会在转变飞升上更进一步。]",
+	startdescription: "如果这次探索成功，非我之我会代我实现形体。[如果成功，除了收获一般的奖赏，还会在蜕变飞升上更进一步。]",
 	hintonly:true,
 	craftable: false,
 	},
@@ -52,10 +52,29 @@
 	label: "旧的形体与新的",
 	actionId: "explore",
 	requirements: {locationcabaret:1,sulochana:1},
-	startdescription: "[如果你有舞者扩展包，你可以使用这项组合来在蜕变俱乐部谋得一份工作，并追求转变的飞升。]",
+	startdescription: "[如果你有舞者扩展包，你可以使用这项组合来在蜕衣俱乐部谋得一份工作，并追求蜕变飞升。]",
 	hintonly:true,
 	craftable: false,
 	},
+	
+	{id:"explore.searchgraveyard.hint",
+actionId:"explore",
+requirements:{location.cemetery:1},
+label:"掘墓？",
+startdescription:"我需要运用自己的力气，或者用朋友的。",
+craftable:false,
+hintonly:true
+},
+
+
+{id:"explore.searchgraveyard.closing.hint",
+actionId:"explore",
+requirements:{location.cemetery.closing:1},
+label:"小心谨慎地掘墓？",
+startdescription:"我需要运用自己的力气，或者用朋友的。",
+craftable:false,
+hintonly:true
+},
 	
 ]
 }
