@@ -17,7 +17,7 @@ warmup:10
 label:"和苏洛恰那聊天",
 actionId:"talk",
 requirements:{sulochana:1},
-slots: [{id:"话题",label:"话题",description:"谈话的主题"}],
+slots: [{id:"Subject",label:"话题",description:"谈话的主题"}],
 startdescription:"	@#ascensionlessonhearta|“想知道更多？”
 #ascensionlessonheartb|“想知道更多？”
 #ascensionlessonheartc|“想知道更多？”
@@ -79,7 +79,7 @@ label:"探讨蜕衣俱乐部",
 actionId:"talk",
 requirements:{sulochana:1,locationcabaret:1},
 startdescription:"“怎么？”",
-description:"“有条你能走的路，起点就在我家房子里。你要想和我聊聊这条路，就去我家找我。"""
+description:"“有条你能走的路，起点就在我家房子里。你要想和我聊聊这条路，就去我家找我。”"
 },
 {id:"sulochanachat_desireheart_track",
 label:"探讨新形体",
@@ -132,7 +132,7 @@ actionId:"talk",
 label:"探讨通往白骨之途",
 requirements:{sulochana:1,fragmentsecrethistoriesg:1},
 startdescription:"“你要去午港？哈，对你表示遗憾。”苏洛恰那的话中透出非同寻常的恶毒。",
-description:"""给你。这张地图短时间会有点用。要是他们有谁问起我，你就告诉他我下一个就找上他的孩子。”",
+description:"“给你。这张地图短时间会有点用。要是他们有谁问起我，你就告诉他我下一个就找上他的孩子。”",
 effects:{lore:-1,vaulteveningislesdefault:1}
 },
 

@@ -16,7 +16,7 @@
 	actionId:"haunting",
 	startdescription: "那只从你处逃走的召唤物在此地作乱，寻找凡人来吞噬。[吞噬者的性相越高，他就更加容易去伤害凡人。]",
 	description: "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
-	slots: [{id:"摄食",label:"摄食",required: {mortal:1},greedy:true}],
+	slots: [{id:"Consuming",label:"摄食",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"devourer_haunting_mortal_highdevourer",chance:100},
@@ -173,7 +173,7 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	actionId:"haunting",
 	startdescription: "那只从你处逃走的召唤物骚扰着着你，试图使你陷入绝望——",
 	description: "你召唤出来的生物已经回到了属于它的地方。它不会给你造成伤害了，至少现下如此。",
-	slots: [{id:"摄食",label:"摄食",required: {reason:1},greedy:true}],
+	slots: [{id:"Consuming",label:"摄食",required: {reason:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"deceiver_haunting_reason_highdeceiver",chance:100},

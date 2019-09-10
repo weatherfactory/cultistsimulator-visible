@@ -107,7 +107,7 @@ craftable: false},
 label: "解决案件",
 actionId: "work",
 requirements: {myevidenceb:1},
-slots:[{id:"犯人",label:"犯人",required:{independent:1},greedy:true}],
+slots:[{id:"Culprit",label:"犯人",required:{independent:1},greedy:true}],
 startdescription: "我已将收集到的证据上交给防剿局局长助理……",
 description: "我已经向防剿局提供了充足的证据来实施追捕……但是已经没有需要再逮捕的犯人了。",
 alternativerecipes:[

@@ -5,7 +5,7 @@
         label: "在拍卖中竞价",
         actionId: "explore",
 		effects: {},
-		slots:[{id:"出价",label:"出价",required: {funds:1}}],
+		slots:[{id:"Bid",label:"出价",required: {funds:1}}],
         startdescription: "人群中是一张张绷紧的面孔和一双双发光的眼睛。谁会出价呢？[拍品显示在右边。如果竞拍失败，该物品将永久消失。]",
         description: ".",
         warmup: 30,
