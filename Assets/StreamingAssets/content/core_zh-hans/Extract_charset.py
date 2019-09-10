@@ -28,7 +28,7 @@ def ExtractCharSet( filename ):
 gcharset = ''
 print("Extracting unique chars...")
 print("NOTE: easiest way to extract UI strings is to make a temp copy of content/strings.csv in the target folder, and remove all the unwanted language columns.")
-for root, dirs, files in os.walk("C:\Projects\csunityclean\Assets\StreamingAssets\content\core_zh-hans"):
+for root, dirs, files in os.walk("."):
 	path = root.split(os.sep)
 	print((len(path) - 1) * '---', os.path.basename(root))
 	for file in files:
