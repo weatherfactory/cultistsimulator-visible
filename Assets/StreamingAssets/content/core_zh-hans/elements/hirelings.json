@@ -2,7 +2,7 @@
     [
 				 {
         id: "thugedgeminor",
-            label: "大块头",
+            label: "大块头之人",
             aspects:
             {mortal: 1,hireling:1,follower:1,edge:3},
               description: "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
@@ -11,7 +11,7 @@
         },
 			 {
         id: "thugmothminor",
-            label: "一名狡猾的女子",
+            label: "狡诈的女人",
             aspects:
             {mortal: 1,hireling:1,follower:1,moth:3},
               description: "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙。]",
@@ -32,7 +32,7 @@
             label: "炸弹制造师",
             aspects:
             {mortal: 1,hireling:1,follower:1,forge:5,edge:3},
-            description: "“也许我们这会儿不应该谈论政治。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙]",
+            description: "“也许我们这会儿不该谈政治。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎人和找你麻烦的家伙]",
 			xtriggers: {hiring:thugforgeedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },

@@ -1,11 +1,11 @@
  {"recipes": [
 	{
         id: "heartinduction",
-        label: "心之历程",
+        label: "心之行程",
         actionId: "heartinduction",
         effects: {previtality:1},
-		startdescription: "每及<b>心</b>之准则出现时，我便可能获得活力。",
-        description: "今天，我自己的心搏动地更有力了。",
+		startdescription: "每当心之准则浮现时，我便可以获得<b>活力</b>。",
+        description: "今天，我自己的心脏搏动地更有力了。",
         warmup: 30,
         craftable: false
     },
@@ -14,7 +14,7 @@
         label: "颅内之光",
         actionId: "lanterninduction",
         effects: {preerudition:1},
-		startdescription: "每当<b>灯</b>之准则放光时，我便可能多记起一些残篇知识。",
+		startdescription: "每当灯之准则放光时，我便可以多记起一些残篇知识。",
         description: "脑海中的灰尘一扫而空，至少暂时如此。",
         warmup: 30,
         craftable: false
@@ -25,7 +25,7 @@
         actionId: "mothinduction",
         effects: {prerestlessness:1},
 		startdescription: "蛾在黑暗中寻见光，我亦如是。",
-        description: "一种似有似无的惆怅感染了我。",
+        description: "一种似有似无的惆怅染上了我。",
         warmup: 30,
         craftable: false
     },
@@ -45,7 +45,7 @@
         actionId: "grailinduction",
         effects: {preglimmering:1},
 		startdescription: "从满足欲望的过程中能学到什么吗？",
-        description: "有种启蒙般的感觉。",
+        description: "有种启明般的感觉。",
         warmup: 30,
         craftable: false
     },
@@ -98,7 +98,7 @@
 {id:"poison.notoriety.induction",
 actionId:"poison.notoriety.induction",
 label:"众目睽睽",
-startdescription:"我们派的追随者有些过分出名了。监管局也许会听闻此事。",
+startdescription:"我们派的追随者有些过分出名了。防剿局也许会听闻此事。",
 effects:{notoriety:1},
 warmup:30},
 
@@ -118,7 +118,7 @@ warmup:30
 },
 {id:"poison.health.dread.induction",
 actionId:"poison.health.dread.induction",
-label:"款待痛楚",
+label:"款待痛苦",
 startdescription:"我邀请一位老友在我的肌骨里再居留一天。",
 effects:{dread:1},
 warmup:30
@@ -129,7 +129,7 @@ warmup:30
 actionId:"unsuspicion",
 label:"隐私的好处",
 startdescription:"我们已特意将总部设在某个冷僻无人的地方……",
-description:"……也许能让监管局更难摸上门。要维持响亮的声名可能也更难了。",
+description:"……也许能让防剿局更难摸上门。要维持响亮的声名可能也更难了。",
 slots:[{id:"reputation",label:"声名",required:{reputation:1},greedy:true}],
 warmup:180,
 effects:{reputation:-1}

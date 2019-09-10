@@ -1,5 +1,14 @@
  {"recipes":
  [
+      			{
+        id: "temptationremembrancehintdream",
+        label: "诱惑？",
+        actionId: "dream",
+        requirements: {temptation.remembrance:1},
+        startdescription: "这世上有着各种颜色，漫宿则有另一番色彩，而其他的，便是失落的色彩。它们的缺失让我放不下画刀。[回忆的诱惑已将它的牙齿没入了你，其他的诱惑将不会再对你染指。]",
+        craftable: false,
+		hintonly: true
+    },
      			{
         id: "vitalityhintdream",
         label: "活力",
@@ -13,7 +22,7 @@
     },
 	    			{
         id: "eruditionhintdream",
-        label: "博学",
+        label: "博闻",
         actionId: "dream",
         requirements: {erudition:1},
         startdescription: "它无法激发梦境。但研究它能增进我的理性。",
@@ -36,7 +45,7 @@
         label: "安逸",
         actionId: "dream",
         requirements: {contentment:1},
-        startdescription: "安逸不是通往梦境的钥匙，但梦境有时让我感到安逸……",
+        startdescription: "安逸不是通往梦境的钥匙，但梦境有时让我感到安逸。",
         craftable: false,
 		hintonly: true,
 				comments: "Not currently possible with restrictions on Dream primary slot"
@@ -46,7 +55,7 @@
         label: "下一步",
         actionId: "dream",
         requirements: {ascensionpowerb:1},
-        startdescription: "我已在梦中行至我所能的最远处。我得履行<b>工作</b>了。",
+        startdescription: "我已在梦中行至我所能的最远处。我须得(在<b><作业></b>槽)施行“功业(the Work)”了。",
         craftable: false,
 		hintonly: true,
 		
@@ -57,7 +66,7 @@
         label: "下一步",
         actionId: "dream",
         requirements: {ascensionenlightenmentb:1},
-        startdescription: "我已在梦中行至我所能的最远处。我得履行<b>工作</b>了。",
+        startdescription: "我已在梦中行至我所能的最远处。我须得(在<b><作业></b>槽)施行“功业(the Work)”了。",
         craftable: false,
 		hintonly: true
     },
@@ -75,7 +84,7 @@ hintonly:true,
         label: "放空头脑？",
         actionId: "dream",
         requirements: {dread: 1},
-        startdescription: "我只记得我有所改变；但我暂时想不起来是如何改变的。[可用适切的资源平息“恐惧”。]",
+        startdescription: "我只记得我有所改变；但我暂时想不起来是如何改变的。[可用适切的资源消除“恐惧”。]",
      hintonly:true,
         craftable: false
     },

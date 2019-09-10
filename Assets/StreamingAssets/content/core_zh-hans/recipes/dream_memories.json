@@ -4,7 +4,7 @@
 
 	{
         id: "dreampleasantmemory",
-        label: "沉浸于甜蜜的回忆",
+        label: "沉浸于愉快的回忆",
         actionId: "dream",
 		requirements:{memorypleasant:1},
 		effects: {memorypleasant:-1,contentment:1,fleeting:1},
@@ -19,7 +19,7 @@ startdescription: "理解后那甜蜜的沉静？冬日暖光中的一刻？",
         actionId: "dream",
 		requirements:{memorypassionate:1},
 		effects: {memorypassionate:-1,restlessness:1,contentment:1,vitality:1},
-startdescription: "喘息与共，四肢交缠？不为人知的黑暗中的火热？",
+startdescription: "喘息与共，肢体交缠？不为人知的黑暗中的火热？",
 		description: "这也许会使我分心。",
         craftable: true,
 		warmup:10
@@ -31,8 +31,8 @@ startdescription: "喘息与共，四肢交缠？不为人知的黑暗中的火�
         actionId: "dream",
 		requirements:{memorybittersweet:1},
 		effects: {memorybittersweet:-1,dread:1,contentment:1,glimmering:1},
-startdescription: "一份无人敢说出声的理解？争执，与其后果？",
-		description: "这也许能使我犹豫。",
+startdescription: "一份双方都不敢大声道出的互相理解？一次争执及其余波？",
+		description: "或能宽限给我一些犹豫的时间。",
         craftable: true,
 		warmup:10
     },

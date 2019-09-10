@@ -2,15 +2,15 @@
     [	
 	{
         id: "vaultcapital1",
-            label: "斯特拉思科因的宅邸",
+            label: "斯特拉思科因的寓所",
             aspects:{vault:1,location:1,vaultcapital:1},
 			
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "这里是斯特拉思科因的宅邸，此人专爱收藏各式稀罕物件。斯特拉思科因收藏的宝贝概不售卖。不过若能得一个狡诈的共犯，我们或许有办法进入宅邸自行取用。",
+            description: "这里是斯特拉思科因的宅邸，此人专爱收藏各式稀罕物件。斯特拉思科因收藏的宝贝概不出售。不过若能得一个狡诈的共犯，我们或许有办法进入宅邸自行取用。",
 			unique:true
         },
 								{
@@ -18,7 +18,7 @@
             label: "被遗忘的密特拉寺",
             aspects:{vault:1,location:1,vaultcapital:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -30,7 +30,7 @@
             label: "凯特与赫洛有限公司",
             aspects:{vault:1,location:1,vaultcapital:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -39,10 +39,10 @@
         },
 				{
         id: "vaultcapital4",
-            label: "圣阿格尼丝医院",
+            label: "圣亚割妮医院",
             aspects:{vault:1,location:1,vaultcapital:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -54,7 +54,7 @@
             label: "许伦的圣菲利克斯之会众",
             aspects:{vault:1,location:1,vaultcapital:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -63,10 +63,10 @@
         },
 				{
         id: "vaultcapitaldefault",
-            label: "被抛弃的河岸街",
+            label: "荒废的河岸街",
             aspects:{vault:1,location:1,vaultcapital:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -77,7 +77,7 @@
             label: "格拉德温湖",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -89,11 +89,11 @@
             label: "洛克伍德沼地",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "散发着臭气的晦黯沼地里遍布着阴险鬼祟的生命。沉默寡言的当地人依然为那些小而隐秘，能使祈祷<i>成真</i>的神明守望着圣地。",
+            description: "(洛克伍德意为锁-树林)散发着臭气的晦黯沼地里遍布着阴险鬼祟的生命。沉默寡言的当地人依然为那些小而隐秘，能使祈祷<i>成真</i>的神明守望着圣地。",
 			unique:true
         },
 				{
@@ -101,11 +101,11 @@
             label: "克罗基斯山丘",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "远古的部落将这片安息之地留给某位存在，他最终会成为那位毫无悲悯之心的时枢神的侍奉者，此人最终变得更像伤痕，而非人类。他们用咒歌和混着砂浆的血液封住了这里的入口。",
+            description: "(克罗基斯意为乌鸦-吻)远古的部落将这片安息之地留给某人，他最终会成为某位无情司辰的侍奉者，此人最终变得更像伤疤，而非人类。他们用咒歌和混着砂浆的血液封住了这里的入口。",
 			unique:true
         },
 				{
@@ -113,11 +113,11 @@
             label: "凯格琳的财宝",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "罗马人在这里采挖银矿，直到挖到他们不该碰的，具名者藏匿不宜见日光之物的地方。之后又有许多人来过此地，坑洞崩塌时亦然。一些人再也没有回去。",
+            description: "罗马人在这里采挖银矿，直到挖到他们不该碰的，具名者们藏匿不宜见日光之物的地方。之后又有许多人来过此地，坑洞崩塌时亦然。一些人再也没有回去。",
 			unique:true
         },
 						{
@@ -125,11 +125,11 @@
             label: "高威尔旅馆",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "在大海吞噬它之前，高威尔旅馆踞守于灰色海面之上的摇摇欲坠的悬崖。拜访它的客人极少——自打旅馆主人向来访学者关闭了他臭名昭著的藏书室后，客人就更少了。",
+            description: "在被大海冲垮以前，高威尔旅馆踞守于灰色海面之上的摇摇欲坠的悬崖。拜访它的客人极少——自打旅馆主人向来访学者关闭了他臭名昭著的藏书室后，客人就更少了。",
 			unique:true
         },
 				{
@@ -137,13 +137,13 @@
             label: "凯尔伊苏姆",
             aspects:{vault:1,location:1,vaultshires:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
-							{id:"sending",label:"派遣",description:"Now and then, the expedition might have another purpose.",required:{sendingheartb:1,sendingmothb:1},actionId:"explore"},
+							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendingheartb:1,sendingmothb:1},actionId:"explore"},
 
 			],
-            description: "我们沿着白垩丘陵驶向海岸，驶向灰绿色大地与大西洋的灰色海水的交接处，一路寻找通往凯尔伊苏姆镇的道路。那个地方难得寻见，哪怕你曾经去到过也是一样。那里的居民用咒骂，棍棒，和紧紧拴住的门来保守他们的秘密。[你已找到所有位于各郡的探险地点，不过你仍可以再次找到并造访凯尔伊苏姆。]"
+            description: "我们沿着白垩丘陵(downs)驶向海岸，驶向灰绿色大地与大西洋的灰色海水的交接处，一路寻找通往凯尔伊苏姆镇的道路。那个地方难得寻见，哪怕你曾经去到过也是一样。那里的居民用咒骂，棍棒，和紧紧拴住的门来保守他们的秘密。[你已找到所有位于各郡的探险地点，不过你仍可以再次找到并造访凯尔伊苏姆。]"
         },
 		
 					{
@@ -151,11 +151,11 @@
             label: "拉维林城堡",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "关于拉维林伯爵家，风行的传闻称他们是 <i>最初的</i>太阳王的后裔。还有传闻讲述他们如何化为狼形潜伏在森林之中。这个家族早已消亡，只余朽坏的家族城堡，其中尚有未为人所查的凶险之处。",
+            description: "关于拉维林伯爵家(原文为法语)，风行的传闻称他们是 <i>最初的</i>太阳王的后裔。还有传闻讲述他们如何化为狼形巡猎于森林之中。这个家族早已消亡，只余朽坏的家族城堡(法语)，其中尚有未为人所查的凶险之处。",
 			unique:true
         },
 								{
@@ -163,11 +163,11 @@
             label: "费米尔修道院",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "罗伯特·费米尔将他很多来路不正的财富捐赠给了这座坐落于密林之中的宏大修道院。这里的僧侣不喜欢访客。他们的教义很难说符合正统。他们以某种惹人憎恶的活力庆祝某个收获的节日。",
+            description: "罗伯特·费米尔将他很多来路不正的财富捐赠给了这座坐落于密林之中的宏大修道院。这里的僧侣不喜欢访客。他们的教义不能算正统。他们以某种惹人憎恶的活力庆祝某个收获的节日。",
 			unique:true
         },
 				{
@@ -175,11 +175,11 @@
             label: "俄耳托斯树林",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "松树林犹如狗背脊上的毛发般浓密。树林深处的空气混着松脂和尘土，厚重得令人窒息。根据消息来源的说法，每当日出时分，树林黑暗深处那棵最大的树上，会栖有一只蒙面的巨鸦。",
+            description: "松树林犹如狗背脊上的毛发般浓密。树林深处的空气混着松脂和尘土，厚重得令人窒息。根据消息来源的说法，每当黎明时分，树林黑暗深处那棵最大的树上，会栖有一只蒙面的巨鸦。",
 			unique:true
         },
 				{
@@ -187,7 +187,7 @@
             label: "范德沙夫收藏馆",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -200,11 +200,11 @@
             label: "福曼的家宅",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "菲利普·福曼是一名寄生虫学家和文物学家。到他的研究对象逃跑前，他在家中的工作一直完成地很好。虫患已被消灭，但是他们说福曼直至今天仍在厅堂徘徊，守着他的藏书与他的耻辱。",
+            description: "菲利普·福曼是一名寄生虫学家和文物学家。他最好的研究都是在他居住的祖宅中完成的，直到他的研究对象从中脱逃。虫患已被消灭，但是他们说福曼直至今天仍在厅堂徘徊，守着他的藏书与他的耻辱。",
 			unique:true
         },
 		
@@ -213,12 +213,12 @@
             label: "钥匙猎人的阁楼",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
 
-            description: "维也纳是少数几个在每段历史中都拥有着相同名字的城市之一，尽管学徒们称之为白城，抑或是纯白之城。在满是白雪的街道上，在一个扭曲的房子中，在发出吱嘎声的高高的阁楼上，我们听说了一名狩猎空想之钥的古怪猎人所著的一小批古怪书籍。",
+            description: "维也纳是少数几个在每重历史中都拥有着相同名字的城市之一，尽管学徒们称之为白城，抑或是纯白之城。在满是白雪的街道上，在一栋扭曲的房子中，在发出吱嘎声的高高的阁楼上，我们听说了一名狩猎空想之钥的古怪猎人所著的一小批古怪书籍。",
 			unique:true
         },
 				{
@@ -226,13 +226,13 @@
             label: "一望无际的巨石阵",
             aspects:{vault:1,location:1,vaultcontinent:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
-							{id:"sending",label:"派遣",description:"Now and then, the expedition might have another purpose.",required:{sendingheartc:1,sendingmothc:1},actionId:"explore"},
+							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendingheartc:1,sendingmothc:1},actionId:"explore"},
 
 			],
-            description: "巨石由早已逝去的祭祀阶层排成整齐到偏执的行列。时间早已洗去了原本的血渍，但是当无月之夜来临，当地人会补充残留下的东西。隐秘的暗室中或许藏有隐秘的宝物。[你已找到所有位于大陆的探险地点，不过你仍可以再次找到并造访巨石阵。]"
+            description: "巨石由早已逝去的祭司阶层排成整齐到偏执的行列。时间早已洗去了原本的血渍，但是当无月之夜来临，当地人会补充残留下的东西。隐秘的暗室中或许藏有隐秘的宝物。[你已找到所有位于大陆的探险地点，不过你仍可以再次找到并造访巨石阵。]"
         },
 		
 							{
@@ -240,7 +240,7 @@
             label: "蜡烛岩洞",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -252,31 +252,31 @@
             label: "大公的城塞",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "在土耳其人势力滔天的年代，一位有力之人曾统治此地。许多年间他平息了许多人的干渴，直到败给自己的干渴。我听说他的金银财宝，加上为他所害的人们，或许还留存在这座城堡下的某个不为人知的地下金库中。",
+            description: "在突厥人势力滔天的年代，一位有力之人曾统治此地。许多年间，他平复了许多人的干渴，直到败给自己的干渴。我听说他的金银财宝，加上为他所害的人们，或许还留存在这座城堡下的某个无人涉足的地下宝库中。",
 			unique:true
         },
 				{
         id: "vaultlandbeyondforest3",
-            label: "格吕内瓦尔德的马戏团",
+            label: "格吕内瓦尔德的长驻马戏团",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "刷了白石灰的农场外围驻扎着一群裰着补丁的帐篷，仿佛一座小小的城市。格吕内瓦尔德女士将她可观的财产投入到了维护这个组织的运转上：没人知道为什么。马戏团演员讨厌别人擅闯幕后。",
+            description: "刷了白石灰的农场外围驻扎着一群裰着补丁的帐篷，仿佛一座小小的城市。格吕内瓦尔德女士(原文为德语)将她可观的财产投入到了维护这个组织的运转上：没人知道为什么。马戏团演员讨厌别人擅闯幕后。",
 			unique:true
         },
 				{
         id: "vaultlandbeyondforest4",
-            label: "瑞弗克之塔",
+            label: "瑞弗克塔楼",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -285,14 +285,14 @@
         },
 						{
         id: "vaultlandbeyondforest5",
-            label: "库兹涅佐夫捐赠的楼群",
+            label: "库兹涅佐夫的捐赠",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "库兹涅佐夫公爵将他沾满鲜血的财富的四分之一捐给了这座地方大学，以建立末世学学部。那里的员工现在变得怪里怪气，楼群则烂在了一片冰封的沼泽里，不过库兹涅佐夫公爵的遗赠或许有部分被花在了购置财宝上。",
+            description: "库兹涅佐夫公爵将他沾满鲜血的财富的四分之一捐给这座地方大学以建立末世学学部。学部的员工现在变得怪里怪气，捐赠的楼房则烂在了一片冰封的沼泽里，不过库兹涅佐夫公爵的遗赠或许有部分被花在了购置财宝上。",
 			unique:true
         },
 				{
@@ -300,13 +300,13 @@
             label: "狐百合原野",
             aspects:{vault:1,location:1,vaultlandbeyondforest:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
-							{id:"sending",label:"派遣",description:"Now and then, the expedition might have another purpose.",required:{sendingheartd:1,sendingmothd:1},actionId:"explore"},
+							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendingheartd:1,sendingmothd:1},actionId:"explore"},
 
 			],
-            description: "狐百合的花香能够勾起人如狼似虎的胃口。它们只在这个海拔生长或许是人的幸运。农民们已经组织起来驱逐寻宝者，但有些寻宝者还是被狐百合变成了饥饿的俘虏。他们自己的宝物落在自己的白骨旁，周而复始。[你已找到所有位于森林尽头之地的探险地点，不过你仍可以再次找到并造访这片原野。]"
+            description: "狐百合的花香能够勾起人如狼似虎的食欲。它们只在这个海拔生长或许是人的幸运。农民们已经组织起来驱逐寻宝者，但有些寻宝者还是被狐百合变成了饥饿的俘虏。他们自己的宝物落在自己的白骨旁，周而复始。[你已找到所有位于森林尽头之地的探险地点，不过你仍可以再次找到并造访这片原野。]"
         },
 		
 		
@@ -315,7 +315,7 @@
             label: "猎手之穴",
             aspects:{vault:1,location:1,vaultrendingmountains:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -327,7 +327,7 @@
             label: "避雪神庙",
             aspects:{vault:1,location:1,vaultrendingmountains:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -339,7 +339,7 @@
             label: "伊克玛维之眼",
             aspects:{vault:1,location:1,vaultrendingmountains:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -351,7 +351,7 @@
             label: "石狼陵墓",
             aspects:{vault:1,location:1,vaultrendingmountains:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -360,21 +360,21 @@
         },
 				{
         id: "vaultrendingmountainsdefault",
-            label: "无影列王的墓群",
+            label: "无影众王的墓群",
             aspects:{vault:1,location:1,vaultrendingmountains:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "在一方斜插出土，色若金狮的岩层中，劳工们为这片土地最初的列王凿刻出一片墓群。列王生前曾向往永生不死，或许其中确有一人实现了愿望。其他人则已躺进成堆的随葬品间。此处有代代相传的守卫团严密把守。[你已找到所有位于撕剥山脉的探险地点，不过你仍可以再次找到并造访这片墓群。]"
+            description: "在一方斜插出土，色若金狮的岩层中，劳工们为这片土地最初的众王凿刻出一片墓群。众王生前曾向往永生不死，或许其中确有一人实现了愿望。其他人则已躺进成堆的随葬品间。此处有代代相传的守卫团严密把守。[你已找到所有位于撕身山脉的探险地点，不过你仍可以再次找到并造访这片墓群。]"
         },
 					{
         id: "vaultloneandlevelsands1",
             label: "被星辰击碎的神殿",
             aspects:{vault:1,location:1,vaultloneandlevelsands:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -386,7 +386,7 @@
             label: "拉贡之墓",
             aspects:{vault:1,location:1,vaultloneandlevelsands:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -395,10 +395,10 @@
         },
 				{
         id: "vaultloneandlevelsands3",
-            label: "墨西拿",
+            label: "墨萨拿",
             aspects:{vault:1,location:1,vaultloneandlevelsands:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -410,11 +410,11 @@
             label: "七蟠寺",
             aspects:{vault:1,location:1,vaultloneandlevelsands:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "那是山隘中一座坍圮的寺庙。貌似建于第三史，那里蠕虫横行欧洲的时间要晚得多，不过它现在存在于所有的历史中。",
+            description: "那是山隘中一座坍圮的寺庙。貌似建于第三史，那里蠕虫横行欧洲的时间要晚得多，不过它现在存在于每一重历史中。",
 			unique:true
         },
 				{
@@ -422,10 +422,10 @@
             label: "弥阿",
             aspects:{vault:1,location:1,vaultloneandlevelsands:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
-							{id:"sending",label:"派遣",description:"Now and then, the expedition might have another purpose.",required:{sendinghearte:1,sendingmothe:1},actionId:"explore"},
+							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendinghearte:1,sendingmothe:1},actionId:"explore"},
 
 			],
             description: "这里曾有一座城市。我们可以像豺狗搜刮陈年骨殖一样搜刮城市残迹——宫殿墙壁，被掩埋的道路，残破不堪的喷泉。有时是我们寻到死者拥有的知识，有时是死者寻到我们。[你已找到所有位于沙地的探险地点，不过你仍可以再次找到并造访弥阿。]"
@@ -436,11 +436,11 @@
             label: "渡鸦屿",
             aspects:{vault:1,location:1,vaulteveningisles:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "一座死火山从错综缠结的翡翠色丛林中探出头来。受同类最卑劣的罪行所害的不死者被流放到这里生息，捕食不设防的旅人，大吃大嚼他们的血和碎裂的骨头。这些年间他们肯定抓到了不少有意思的玩具。",
+            description: "一座死火山从错综缠结的翡翠色丛林中探出头来。受同类最卑劣的罪行所害的不死者被流放到这里生息，捕食不设防的旅客，大吃大嚼他们的血和碎裂的骨头。这些年间他们肯定抓到了不少有意思的玩具。",
 			unique:true
         },
 								{
@@ -448,7 +448,7 @@
             label: "格里克堡",
             aspects:{vault:1,location:1,vaulteveningisles:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -457,10 +457,10 @@
         },
 				{
         id: "vaulteveningisles3",
-            label: "克丽斯塔贝号的残骸",
+            label: "克丽斯塔贝号船骸",
             aspects:{vault:1,location:1,vaulteveningisles:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -472,7 +472,7 @@
             label: "深邃之门的圣滕特雷托之僧院",
             aspects:{vault:1,location:1,vaulteveningisles:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
@@ -484,25 +484,25 @@
             label: "午港",
             aspects:{vault:1,location:1,vaulteveningisles:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
-							{id:"sending",label:"派遣",description:"Now and then, the expedition might have another purpose.",required:{sendingheartf:1,sendingmothf:1},actionId:"explore"},
+							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendingheartf:1,sendingmothf:1},actionId:"explore"},
 
 			],
-            description: "每个不死者都要面对下列抉择：侍奉时枢神，打回凡籍，还是自行消灭。这座阳光明媚，名为“午”的小小岛港是拒绝上述选项者的流放地。[你已找到所有位于薄暮群屿的探险地点，不过你仍可以再次找到并造访午港。]"
+            description: "每个不死者都要面对下列抉择：侍奉一位司辰，打回凡籍，还是自行消灭。这座阳光明媚，名为“午”的小小岛港是拒绝上述选项者的流放地。[你已找到所有位于薄暮群屿的探险地点，不过你仍可以再次找到并造访午港。]"
         },
 						{
         id: "vaultfloating1",
             label: "赫柏·斯坦顿号",
             aspects:{vault:1,location:1},
 			slots:[
-			{id:"expeditionmember",label:"领袖",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"助手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
+			{id:"expeditionmember",label:"领队",description:"我需要至少派出一名追随者才能开始探险。之后可以再追加人数。",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"援手",description:"现在，如果认为追加人手有用，我可以选择再派出其他追随者。",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"}
 
 			],
-            description: "一艘破旧但又拥有着令人惊异豪华度的轮船，大多数时候为逃离绯闻的明星们所用，为不愿露富的百万富翁们所用，为密教学者们所用。他们在水流之上时感到更安心；并且，仅仅一次，为丽姬亚俱乐部所用，而他们租用了整艘船来仅仅使用七个船舱。", 
+            description: "一艘破旧却惊人豪华的蒸汽轮船，多为躲避丑闻的演员、不愿露富的百万富翁、感觉身下有活水更为安全的密教学者所用；并且仅有一次，为丽姬亚(Ligeia)俱乐部所用，此团体因要使用七间客舱而包下了整艘轮船。", 
 unique:true			},
 
 ]

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -68,7 +69,7 @@ public class LanguageManager : MonoBehaviour
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
 
-		string defaultCulture = "en";
+		string defaultCulture = null;
 		string defaultConfigLocation = "Assets/StreamingAssets/content/defaults.ini";
 
 	    if (File.Exists(defaultConfigLocation))
@@ -80,15 +81,44 @@ public class LanguageManager : MonoBehaviour
 	        {
 	            defaultCulture = "en";
 	        }
-			if (contents.Contains("lang=ru"))
+			else if (contents.Contains("lang=ru"))
 	        {
 	            defaultCulture = "ru";
 	        }
-			if (contents.Contains("lang=zh"))
+			else if (contents.Contains("lang=zh"))
 	        {
 	            defaultCulture = "zh-hans";
 	        }
 		}
+
+	    if (defaultCulture == null)
+	    {
+		    switch (Application.systemLanguage)
+		    {
+			    case SystemLanguage.Russian:
+				    defaultCulture = "ru";
+				    break;
+			    case SystemLanguage.Chinese:
+				case SystemLanguage.ChineseSimplified:
+				case SystemLanguage.ChineseTraditional:
+				    defaultCulture = "zh-hans";
+				    break;
+			    default:
+				    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
+				    {
+					    case "zh":
+						    defaultCulture = "zh-hans";
+						    break;
+					    case "ru":
+						    defaultCulture = "ru";
+						    break;
+						default:
+							defaultCulture = "en";
+							break;
+				    }
+				    break;
+		    }
+	    }
 
 		if (PlayerPrefs.HasKey(CULTURE))
 		{

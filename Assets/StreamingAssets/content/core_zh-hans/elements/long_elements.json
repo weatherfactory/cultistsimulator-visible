@@ -34,15 +34,15 @@
 				 {
         id: "welland",
             label: "韦兰上尉",
-            description: "“这并非高贵之举。我们不会让随便哪个小屁孩蹿上居所的席位。”[韦兰更倾向用“袭击”攻击你。]",
+            description: "“这并非高贵之举。我们不会让随便哪个小屁孩蹿上居屋的席位。”[韦兰更倾向用“袭击”攻击你。]",
 			aspects:{long.enemy:1,long.preference.assault:1},
 			verbicon:"long-forge",
 			xtriggers:{longded:welland.defeated}
         },
 				 {
         id: "tryphon",
-            label: "特里芬女士",
-            description: "“不，他不可能伤害你；他不可能找到你。但我不用受类似的制约。”[特里芬更倾向用“阴谋”攻击你。]",
+            label: "特里丰女士",
+            description: "“不，他不可能伤害你；他不可能找到你。但我不用受类似的制约。”[特里丰更倾向用“阴谋”攻击你。]",
 			aspects:{long.enemy:1,long.preference.intrigue:1},
 			verbicon:"long-grail",
 			xtriggers:{longded:tryphon.defeated}
@@ -66,33 +66,74 @@
 			xtriggers:{longded:julian.defeated}
         },
 {id:"welland.defeated",
-label:"一封来自韦兰的信",
-description:"“<b>先生</b>——（韦兰以前似乎没想过自己竟不是被别人，而是被一个“先生”击败）我是你要面对的敌人中最危险的，而我击败过的人远比你强大。你只做燃料可惜了。我力劝你斩断身上的枷锁，如很久以前的锻狮，在长生者中获得一席之地。我会附上大流士告诉亚历山大的秘密。请明智地使用。此致，W”[秘密在附件中，你可以用它摆脱你导师的控制。]",
-slots:[{id:"mentor",label:"赋形者",required:{apostleforge.mentor:1},actionId:study}],
-aspects:{text:1}
+label:"韦兰的来信",
+description:"“<b>先 生</b>——（韦兰似乎认定击败他之人只能是位“先生”而不可能是其他）
+
+我是你要面对的敌人中最危险的，而我击败过的人远比你强大。你只做燃料可惜了。我力劝你斩断身上的枷锁，如很久以前的狮子匠，在长生者中获得一席之地。
+	
+我会附上大流士告诉亚历山大的秘密。请明智地使用。
+
+此致
+	
+W”
+	
+[秘密在附件中，你可以用它摆脱你导师的控制。]
+",
+slots:[{id:"mentor",label:"塑形者",required:{apostleforge.mentor:1},actionId:study}],
+aspects:{legacyplotitem:1}
 },	
 
 {id:"tryphon.defeated",
-label:"一封来自特里芬女士的信",
-description:"“亲爱的，我输了，你征服了我，我把自己奉献与你。我将自己的一块残片封在信中，然后大步前去，拥抱自己的死亡。吃掉我的残余，我们便会合为一体，如圃仙人一直谋求的那样。摒弃你的“愉悦”罢，你身负的天命比那远大得多。你会发问：‘这可是你最后的把戏？可是孤注一掷假意背叛的计谋？’而我只能回答：品尝我，然后且看。永远是你美味的朋友，T·E”[吃掉信中特里芬女士的残片，你便可以摆脱你导师的控制。]",
+label:"特里丰女士的来信",
+description:"“亲爱的：
+
+我输了，你征服了我，我把自己奉献与你。我将自己的一块残片封在信中，然后大步前去，拥抱自己的死亡。
+
+摄食我的残余吧，我们当合为一体，如制花人一直谋求的那样。摒弃你的“愉悦”罢，你身负的天命比那远大得多。
+
+你会发问：‘这可是你最后的把戏？可是孤注一掷假意背叛的计谋？’而我只能回答：品尝我，然后且看。
+
+依然是，
+
+你美味的朋友，
+
+T·E”
+
+[If you consume the enclosed morsel of Lady Tryphon, you can break free of your Mentor.]
+",
 slots:[{id:"mentor",label:"愉悦者",required:{apostlegrail.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{legacyplotitem:1}
 },
 
 {id:"diarist.defeated",
 label:"日记作者的一场梦",
-description:"从缮写室西窗射入的阳光正渐渐衰落。随着日记作者撰写下最后一篇日记，房中转寒，金色被冻成了灰色。他啪的一声合上他的小本子。“死亡是朝下的，”他解释说。“而我已在失去高度。我不会怨恨于你，不过，我还是希望你们的沐光明者在飞升中摔跟头，掉将下来。”他的脸开始自我擦除，如同逆转书写过程，而他的眼睛已经消失了。他把他的小本子递给你。“这是你最后的机会，你可以去我去过的地方，或你正要去的地方。我知道两者哪个更好。”他的嘴像拉拉链一样自行收拢，而后他成了空空的白纸。[仔细琢磨日记之梦，你便可以摆脱你导师的控制。]",
+description:"从缮写室西窗射入的阳光正渐渐衰落。随着日记作者撰写下最后一篇日记，房中转寒，金色被冻成了灰白。他啪的一声合上他的小本子。“死亡是朝下的，”他解释说。“而我已在失去高度。我不会怨恨于你。不过我和你说，
+
+[仔细琢磨日记之梦，你便可以摆脱你导师的控制。]
+
+",
 slots:[{id:"mentor",label:"沐光明者",required:{apostlelantern.mentor:1},actionId:study}],
-aspects:{text:1},
+aspects:{legacyplotitem:1},
 lifetime:120
 },
 
 	
 {id:"julian.defeated",
-label:"一封来自朱利安·寇兹利的信",
-description:"“吾敌，勿要以为我会轻易毁灭。但我承认你打败了我，故我将致你以忠告，以资奖励：你只是个被傻瓜诱骗的傻瓜，给漫索之墙又添上一块石头。你完全可以，只要你愿意，把那块石头丢进黑夜。若你如此选择，你将在孤独和空虚中死去，和所有人 ，也包括长生者一样。你将会自由地死去。——朱利安上”[将朱利安的教导记在心上，你便可以摆脱你导师的控制。]",
+label:"朱利安·科赛利的来信",
+description:"“吾敌：
+
+勿要以为我会轻易毁灭。但我承认你打败了我，故我将致你以忠告，以资奖励：
+
+你只是个被傻瓜诱骗的傻瓜，给漫宿之墙又添了一块石头。只要你愿意，你完全可以把那块石头丢进黑夜。
+
+若你如此选择，你将在孤独和空虚中死去，和所有人 ，也包括长生者一样。你将会自由地死去。
+
+——朱利安上”
+
+[将朱利安的教导记在心上，你便可以摆脱你导师的控制。]
+",
 slots:[{id:"mentor",label:"创教者",required:{apostleforge.mentor:1,apostlegrail.mentor:1,apostlelantern.mentor:1},actionId:study}],
-aspects:{text:1}
+aspects:{legacyplotitem:1}
 },
 
 {id:"strategy.prep",
@@ -102,7 +143,7 @@ lifetime:1},
 
 {id:"strategy.prep.delayed",
 label:"准备工作被搅黄！",
-description:"我方的密探颠覆了敌人准备工作中的一些环节。[你破坏了长生者的一次“准备工作”。]",
+description:"我方的密探颠覆了敌人准备工作中的一些环节。[长生者因你的破坏失去了一份<b>准备工作</b>。]",
 lifetime:1},
 	
 	
@@ -162,7 +203,7 @@ lifetime:1
 },
 {id:"strategy.dreams.revealed",
 label:"长生者的计划暴露：梦境",
-description:"这次，我们的敌人准备通过漫索找到我们。",
+description:"这次，我们的敌人准备通过漫宿找到我们。",
 aspects:{intention.dreams:1,strategy.revealed:1},
 xtriggers:{revealstrategy:strategy.dreams.revealed},
 lifetime:1
@@ -179,7 +220,7 @@ lifetime:1
 
 {id:"strategy.dreams.preference",
 label:"预感：习学灵魂",
-description:"为了下次行动，这名长生者很可能会试图在梦中得知我们的弱点——哪怕他计划的说辞经常是另外一回事。",
+description:"为了下次行动，这名长生者大概会试图在梦中得知我们的弱点——哪怕他计划的说辞经常是另外一回事。",
 comments: "This is currently unused - it became less relevant once tablereqs came in.",
 lifetime:1,
 noartneeded:true

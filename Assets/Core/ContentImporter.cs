@@ -608,8 +608,16 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 			for (int j=0; j<fieldsToTranslate.Length; j++)
 			{
 				if (src.ContainsKey(fieldsToTranslate[j]))
-				{
-					dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+                {
+                    var source = src[fieldsToTranslate[j]];
+                    if (source.GetType() == typeof(Hashtable))
+                    {
+                        CopyFields((Hashtable) dest[fieldsToTranslate[j]], (Hashtable) source, new string[] {}, true, autorepair, ref changedDst);
+                    }
+                    else
+                    {
+                        dest[fieldsToTranslate[j]] = source.ToString();
+                    }
 				}
 				else if (dest.ContainsKey(fieldsToTranslate[j]))
 				{

@@ -25,6 +25,8 @@ public class Babelfish : MonoBehaviour
 	[SerializeField] private bool						highContrastEnabled = true;
 	[SerializeField] private bool						highContrastBold = true;
 
+	[SerializeField] private bool                       forceBold = false;
+
 
 	private Color		defaultColor;
 	private FontStyles	defaultStyle;
@@ -105,6 +107,18 @@ public class Babelfish : MonoBehaviour
 				if (highContrastBold)
 					tmpText.fontStyle = defaultStyle;
 			}
+		}
+
+		// Always disable bold for Chinese, since it can make the text
+		// unreadable
+		if (LanguageTable.targetCulture == "zh-hans")
+		{
+			tmpText.fontStyle &= ~FontStyles.Bold;
+		}
+
+		if (forceBold)
+		{
+			tmpText.fontStyle |= FontStyles.Bold;
 		}
     }
 }

@@ -22,20 +22,20 @@
 	effects: {project_upgrade_edge:1},
 	linked: [
 	{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "一切重大纷争皆以死亡告终。利刃的密传掌握着纷争的教训。",
+	startdescription: "一切重大抗争皆以死亡告终。利刃的密传掌握着抗争的经验。",
 	description: ".",
 	warmup:30,
 	craftable: true
 	},
 		{
 	id: "studysubvertlore_edgetowinter",
-	label: "转化利刃的密传",
+	label: "拗转利刃的密传",
 	actionId: "study",
 	requirements: {lore:2, edge:1,winter:1},
 	effects: {project_subvert_edgetowinter:1},
 	linked: [
 	{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "万事皆有终结。我将思索如何用忍耐战胜力量。[将<b>刃</b>转化为<b>冬</b>之密传。]",
+	startdescription: "万事皆有终结。我将思忖耐心胜于蛮力的道理。[将<b>刃</b>拗转为<b>冬</b>之密传。]",
 	description: ".",
 	warmup:30,
 	craftable: true
@@ -58,14 +58,14 @@
 
 		{
 	id: "studysubvertlore_forgetoedge",
-	label: "转化燃烧的密传",
+	label: "拗转燃烧的密传",
 	actionId: "study",
 	requirements: {lore:2, forge:1,edge:1},
 	effects:{project_subvert_forgetoedge:1},
 
 	linked: [
 	{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "被称为锻狮的时枢神打碎其剑，以此逃脱主人的支配。只要有足够的力量，万事万物皆可被战胜。[将<b>铸</b>转化为<b>刃</b>之密传。]",
+	startdescription: "名为狮子匠的司辰打碎其剑，以此逃脱其主的支配。只要拥有足够的武力，万事万物皆可被战胜。[将<b>铸</b>拗转为<b>刃</b>之密传。]",
 
 	warmup:30,
 	craftable: true
@@ -73,13 +73,13 @@
 
 			{
 	id: "studygraillore",
-	label: "研究诱惑的密传",
+	label: "研究甘美的密传",
 	actionId: "study",
 	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock:-1},
 	effects:{project_upgrade_grail:1},
 
 	linked: [{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "某些话语渴望被说出口。花费时间来考虑它们还挺诱人的——不仅诱人，或许也有用。",
+	startdescription: "某些言辞会乞求人们将其说出口。花费时间来考虑这些乞求还挺诱人的——不仅诱人，或许也有用。",
 
 	warmup:30,
 	craftable: true,
@@ -88,13 +88,13 @@
 
 			{
 	id: "studysubvertlore_grailtomoth",
-	label: "转化诱惑的密传",
+	label: "拗转甘美的密传",
 	actionId: "study",
 	requirements: {lore:2, grail:1,moth:1},
 	effects:{project_subvert_grailtomoth:1},
 
 	linked: [{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "据说<b>杯</b>诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>转化为<b>蛾</b>之密传。]",
+	startdescription: "据说杯诞生于第一场献祭。然而蛾知道真相并非如此。[将<b>杯</b>拗转为<b>蛾</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
@@ -117,13 +117,13 @@
 
 					{
 	id: "studysubvertlore_hearttograil",
-	label: "转化不休的密传",
+	label: "拗转不休的密传",
 	actionId: "study",
 	requirements: {lore:2, heart:1,grail:1},
 	effects:{project_subvert_hearttograil:1},
 
 	linked: [{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "不休之物终将屈从诱惑。[将<b>心</b>转化为<b>杯</b>之密传。]",
+	startdescription: "不休之物终将屈从诱惑。[将<b>心</b>拗转为<b>杯</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
@@ -138,20 +138,20 @@
 	effects:{project_upgrade_lantern:1},
 
 	linked: [{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "无形之术的施行者中流传着一句谚语：“辉光会造访这栋‘没有围墙的居所’。”我想了解光。",
+	startdescription: "无形之术的施行者中流传着一句谚语：“辉光会造访‘无墙的居屋’。”我想了解辉光。",
 
 	warmup:30,
 	craftable: true,
 	},
 			{
 	id: "studysubvertlore_lanterntoforge",
-	label: "转化辉煌的密传",
+	label: "拗转辉煌的密传",
 	actionId: "study",
 	requirements: {lore:2, lantern:1,forge:1},
 	effects:{project_subvert_lanterntoforge:1},
 
 	linked: [{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "占星师朱利安·寇兹利声称光阴之炉分裂了太阳。也许他是对的。[将<b>灯</b>转化为<b>铸</b>之密传。]",
+	startdescription: "术士(magus)朱利安·科赛利声称白日铸炉分裂了太阳。也许他是对的。[将<b>灯</b>拗转为<b>铸</b>之密传。]",
 
 	warmup:30,
 	craftable: true,
@@ -173,14 +173,14 @@
 
 				{
 	id: "studysubvertlore_mothtolantern",
-	label: "转化林地的密传",
+	label: "拗转林地的密传",
 	actionId: "study",
 	requirements: {lore:2, moth:1,lantern:1},
 	effects:{project_subvert_mothtolantern:1},
 
 	linked: [
 	{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "若辉光是一个疑问，蛾总以肯定作答。[将<b>蛾</b>转化为<b>灯</b>之密传。]",
+	startdescription: "辉光是一个疑问，飞蛾总以肯定作答。[将<b>蛾</b>拗转为<b>灯</b>之密传。]",
 
 	warmup:30,
 	craftable: true
@@ -216,14 +216,14 @@
 	},
 			{
 	id: "subvertwinterlore",
-	label: "转化破败的密传",
+	label: "拗转破败的密传",
 	actionId: "study",
 	requirements: {lore:2, winter:1,heart:1},
 	effects:{project_subvert_wintertoheart:1},
 
 	linked: [
 	{id: "studyresearch.entrypoint",chance:100}],
-	startdescription: "纵使在雪，在静默中，在没有色彩的纯白中，生命亦不尽休止。[将<b>冬</b>转化为<b>心</b>之影响。]",
+	startdescription: "纵使在雪，在静默中，在没有色彩的纯白中，生命亦不尽休止。[将<b>冬</b>拗转为<b>心</b>之影响。]",
 
 	warmup:30,
 	craftable: true
@@ -233,9 +233,9 @@
 	label:"利刃的密传",
 	actionId:"study",
 	requirements:{project_upgrade_edge:1},
-	effects:{edge:-1},
+	effects:{project:-1,edge:-1},
 	aspects:{epiphany:1},
-	description:"我对利刃的密传更加精通了，这种密传可据其属性称为<b>刃</b>。"
+	description:"我对利刃的密传更加精通了，这种密传可据其性相称为<b>刃</b>。"
 	},
 
 
@@ -244,131 +244,131 @@
 	label:"燃烧的密传",
 	actionId:"study",
 	requirements:{project_upgrade_forge:1},
-	effects:{forge:-1},
+	effects:{project:-1,forge:-1},
 	aspects:{epiphany:1},
-	description:"我对燃烧的密传更加精通了，这种密传可据其属性称为<b>铸</b>。"
+	description:"我对燃烧的密传更加精通了，这种密传可据其性相称为<b>铸</b>。"
 	},
 			{id:"studyproject_upgrade_grail",
-	label:"诱惑的密传",
+	label:"甘美的密传",
 	actionId:"study",
 	requirements:{project_upgrade_grail:1},
-	effects:{grail:-1},
+	effects:{project:-1,grail:-1},
 	aspects:{epiphany:1},
-	description:"我对诱惑的密传更加精通了，这种密传可据其属性称为<b>杯</b>。"
+	description:"我对甘美的密传更加精通了，这种密传可据其性相称为<b>杯</b>。"
 	},
 			{id:"studyproject_upgrade_heart",
 	label:"不休的密传",
 	actionId:"study",
 	requirements:{project_upgrade_heart:1},
-	effects:{heart:-1},
+	effects:{project:-1,heart:-1},
 	aspects:{epiphany:1},
-	description:"我对不休的密传更加精通了，这种密传可据其属性称为<b>心</b>。"
+	description:"我对不休的密传更加精通了，这种密传可据其性相称为<b>心</b>。"
 	},
 			{id:"studyproject_upgrade_lantern",
 	label:"辉煌的密传",
 	actionId:"study",
 	requirements:{project_upgrade_lantern:1},
-	effects:{lantern:-1},
+	effects:{project:-1,lantern:-1},
 	aspects:{epiphany:1},
-	description:"我对辉煌的密传更加精通了，这种密传可据其属性称为<b>灯</b>。"
+	description:"我对辉煌的密传更加精通了，这种密传可据其性相称为<b>灯</b>。"
 	},
 			{id:"studyproject_upgrade_moth",
 	label:"林地的密传",
 	actionId:"study",
 	requirements:{project_upgrade_moth:1},
-	effects:{moth:-1},
+	effects:{project:-1,moth:-1},
 	aspects:{epiphany:1},
-	description:"我对林地的密传更加精通了，这种密传可据其属性称为<b>蛾</b>。"
+	description:"我对林地的密传更加精通了，这种密传可据其性相称为<b>蛾</b>。"
 	},
 			{id:"studyproject_upgrade_secrethistories",
-	label:"秘史",
+	label:"隐秘的历史",
 	actionId:"study",
 	requirements:{project_upgrade_secrethistories:1},
-	effects:{secrethistories:-1},
+	effects:{project:-1,secrethistories:-1},
 	aspects:{epiphany:1},
-	description:"我对秘史相关的知识更加精通了，秘史是世人皆知的历史背后的历史。"
+	description:"我对秘史相关的知识更加精通了，秘史是藏于我们所知的历史背后的历史。"
 	},
 			{id:"studyproject_upgrade_winter",
 	label:"破败的密传",
 	actionId:"study",
 	requirements:{project_upgrade_winter:1},
-	effects:{winter:-1},
+	effects:{project:-1,winter:-1},
 	aspects:{epiphany:1},
-	description:"我对破败的密传更加精通了，这种密传可据其属性称为<b>冬</b>。"
+	description:"我对破败的密传更加精通了，这种密传可据其性相称为<b>冬</b>。"
 	},
 
 
 
 			{id:"studyproject_subvert_edgetowinter",
-	label:"万物终有结末",
+	label:"万事皆有终结",
 	actionId:"study",
 	requirements:{project_subvert_edgetowinter:1},
-	effects:{edge:-1},
+	effects:{project:-1,edge:-1},
 	aspects:{epiphany:1},
-	description:"忍耐战胜力量。我将<b>刃</b>之密传转化为<b>冬</b>。"
+	description:"耐心胜过蛮力。我已把<b>刃</b>之密传拗转为<b>冬</b>。"
 	},
 
 			{id:"studyproject_subvert_forgetoedge",
-	label:"力量征服万物",
+	label:"武力征服万物",
 	actionId:"study",
 	requirements:{project_subvert_forgetoedge:1},
-	effects:{forge:-1},
+	effects:{project:-1,forge:-1},
 	aspects:{epiphany:1},
-	description:"我打碎了过往的信仰，将<b>铸</b>之密传转化为<b>刃</b>。"
+	description:"我打碎了过往的信仰，将<b>铸</b>之密传拗转为<b>刃</b>。"
 	},
 			{id:"studyproject_subvert_grailtomoth",
-	label:"欲望为昧",
+	label:"欲令智昏",
 	actionId:"study",
 	requirements:{project_subvert_grailtomoth:1},
-	effects:{grail:-1},
+	effects:{project:-1,grail:-1},
 	aspects:{epiphany:1},
-	description:"即使是赤杯也深受脑中低语之害。我将<b>杯</b>之密传转化为<b>蛾</b>。"
+	description:"即使是赤杯也深受脑中低语之害。我已把<b>杯</b>之密传拗转为<b>蛾</b>。"
 	},
 			{id:"studyproject_subvert_hearttograil",
 	label:"不休之物终将屈服",
 	actionId:"study",
 	requirements:{project_subvert_hearttograil:1},
-	effects:{heart:-1},
+	effects:{project:-1,heart:-1},
 	aspects:{epiphany:1},
-	description:"所有会动的东西必将被欲望压垮。我将<b>心</b>之密传转化为<b>杯</b>。"
+	description:"一切有生之物必将被饥饿压垮。我已把<b>心</b>之密传拗转为<b>杯</b>。"
 	},
 			{id:"studyproject_subvert_lanterntoforge",
-	label:"正午日落",
+	label:"午时日落",
 	actionId:"study",
 	requirements:{project_subvert_lanterntoforge:1},
-	effects:{lantern:-1},
+	effects:{project:-1,lantern:-1},
 	aspects:{epiphany:1},
-	description:"炉神有技可裂日。我将<b>灯</b>之密传转化为<b>铸</b>。"
+	description:"铸炉有技可裂日。我已把<b>灯</b>之密传拗转为<b>铸</b>。"
 	},
 			{id:"studyproject_subvert_mothtolantern",
 	label:"凌驾万物之光",
 	actionId:"study",
 	requirements:{project_subvert_mothtolantern:1},
-	effects:{moth:-1},
+	effects:{project:-1,moth:-1},
 	aspects:{epiphany:1},
-	description:"若辉光是一个疑问，蛾总以肯定作答。我将<b>蛾</b>之密传转化为<b>灯</b>。"
+	description:"辉光是一个疑问，飞蛾总以肯定作答。我已把<b>蛾</b>之密传拗转为<b>灯</b>。"
 	},
 
 			{id:"studyproject_subvert_wintertoheart",
 	label:"生机暗涌",
 	actionId:"study",
 	requirements:{project_subvert_wintertoheart:1},
-	effects:{winter:-1},
+	effects:{project:-1,winter:-1},
 	aspects:{epiphany:1},
-	description:"降临的冬终将让位于春。我将<b>冬</b>之密传转化为<b>心</b>。"
+	description:"降临的冬终将让位于春。我已把<b>冬</b>之密传拗转为<b>心</b>。"
 	},
 
 				{id:"studyproject_upgrade_subvert_knock",
-	label:"万物都将开启",
+	label:"万物均将开启",
 	actionId:"study",
 	requirements:{project_upgrade_subvert_knock:1},
-	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
+	effects:{project:-1,subvertable_lore:-1},
 	aspects:{epiphany:1},
-	description:"打开某物，便知其本质。我加深了对关于开启的密传的理解，这种密传可据其属性称为<b>启</b>。",
+	description:"打开某物，便知其本质。我加深了对关于开启的密传的理解，这种密传可据其性相称为<b>启</b>。",
 	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
-	label:"万物都将开启",
+	label:"万物均将开启",
 	comments:"This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
 	actionId:"study",
 	requirements:{lore:2},
@@ -400,7 +400,7 @@
 	aspects:{fatiguing:1},
 	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedgeb:-1,fragmentedge:2},
+	effects:{project:-1,fragmentedgeb:-1,fragmentedge:2},
 	warmup:60,
 	craftable: true
 	},
@@ -414,7 +414,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedgec:-1,fragmentedgeb:2},
+	effects:{project:-1,fragmentedgec:-1,fragmentedgeb:2},
 	warmup:60,
 	craftable: true
 	},
@@ -427,7 +427,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedged:-1,fragmentedgec:2},
+	effects:{project:-1,fragmentedged:-1,fragmentedgec:2},
 	warmup:60,
 	craftable: true
 	},
@@ -440,7 +440,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedgee:-1,fragmentedged:2},
+	effects:{project:-1,fragmentedgee:-1,fragmentedged:2},
 	warmup:60,
 	craftable: true
 	},
@@ -453,7 +453,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedgef:-1,fragmentedgee:2},
+	effects:{project:-1,fragmentedgef:-1,fragmentedgee:2},
 	warmup:60,
 	craftable: true
 	},
@@ -466,7 +466,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentedgeg:-1,fragmentedgef:2},
+	effects:{project:-1,fragmentedgeg:-1,fragmentedgef:2},
 	warmup:60,
 	craftable: true
 	},
@@ -484,7 +484,7 @@
 	aspects:{fatiguing:1},
 	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforgeb:-1,fragmentforge:2},
+	effects:{project:-1,fragmentforgeb:-1,fragmentforge:2},
 	warmup:60,
 	craftable: true
 	},
@@ -498,7 +498,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforgec:-1,fragmentforgeb:2},
+	effects:{project:-1,fragmentforgec:-1,fragmentforgeb:2},
 	warmup:60,
 	craftable: true
 	},
@@ -511,7 +511,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforged:-1,fragmentforgec:2},
+	effects:{project:-1,fragmentforged:-1,fragmentforgec:2},
 	warmup:60,
 	craftable: true
 	},
@@ -524,7 +524,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforgee:-1,fragmentforged:2},
+	effects:{project:-1,fragmentforgee:-1,fragmentforged:2},
 	warmup:60,
 	craftable: true
 	},
@@ -537,7 +537,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforgef:-1,fragmentforgee:2},
+	effects:{project:-1,fragmentforgef:-1,fragmentforgee:2},
 	warmup:60,
 	craftable: true
 	},
@@ -550,7 +550,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentforgeg:-1,fragmentforgef:2},
+	effects:{project:-1,fragmentforgeg:-1,fragmentforgef:2},
 	warmup:60,
 	craftable: true
 	},
@@ -567,7 +567,7 @@
 	aspects:{fatiguing:1},
 	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgrailb:-1,fragmentgrail:2},
+	effects:{project:-1,fragmentgrailb:-1,fragmentgrail:2},
 	warmup:60,
 	craftable: true
 	},
@@ -581,7 +581,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgrailc:-1,fragmentgrailb:2},
+	effects:{project:-1,fragmentgrailc:-1,fragmentgrailb:2},
 	warmup:60,
 	craftable: true
 	},
@@ -594,7 +594,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgraild:-1,fragmentgrailc:2},
+	effects:{project:-1,fragmentgraild:-1,fragmentgrailc:2},
 	warmup:60,
 	craftable: true
 	},
@@ -607,7 +607,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgraile:-1,fragmentgraild:2},
+	effects:{project:-1,fragmentgraile:-1,fragmentgraild:2},
 	warmup:60,
 	craftable: true
 	},
@@ -620,7 +620,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgrailf:-1,fragmentgraile:2},
+	effects:{project:-1,fragmentgrailf:-1,fragmentgraile:2},
 	warmup:60,
 	craftable: true
 	},
@@ -633,7 +633,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentgrailg:-1,fragmentgrailf:2},
+	effects:{project:-1,fragmentgrailg:-1,fragmentgrailf:2},
 	warmup:60,
 	craftable: true
 	},
@@ -651,7 +651,7 @@
 	aspects:{fatiguing:1},
 	startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentheartb:-1,fragmentheart:2},
+	effects:{project:-1,fragmentheartb:-1,fragmentheart:2},
 	warmup:60,
 	craftable: true
 	},
@@ -665,7 +665,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentheartc:-1,fragmentheartb:2},
+	effects:{project:-1,fragmentheartc:-1,fragmentheartb:2},
 	warmup:60,
 	craftable: true
 	},
@@ -678,7 +678,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentheartd:-1,fragmentheartc:2},
+	effects:{project:-1,fragmentheartd:-1,fragmentheartc:2},
 	warmup:60,
 	craftable: true
 	},
@@ -691,7 +691,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmenthearte:-1,fragmentheartd:2},
+	effects:{project:-1,fragmenthearte:-1,fragmentheartd:2},
 	warmup:60,
 	craftable: true
 	},
@@ -704,7 +704,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentheartf:-1,fragmenthearte:2},
+	effects:{project:-1,fragmentheartf:-1,fragmenthearte:2},
 	warmup:60,
 	craftable: true
 	},
@@ -717,7 +717,7 @@
 	aspects:{fatiguing:1},
 		startdescription: "有时，我可能需要从更基础的层面理解某个密传。[将密传分解为两篇更低等级的片段。之后你能将其重组，但不会和分解它一样容易。]",
 	description: "分析为一种解剖，而理性为其刀刃。",
-	effects:{fragmentheartg:-1,fragmentheartf:2},
+	effects:{project:-1,fragmentheartg:-1,fragmentheartf:2},
 	warmup:60,
 	craftable: true
 	},
