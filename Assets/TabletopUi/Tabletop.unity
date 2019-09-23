@@ -147,6 +147,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &18
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +835,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &117
 GameObject:
   m_ObjectHideFlags: 0
@@ -11219,7 +11221,7 @@ ParticleSystem:
 --- !u!199 &186965453
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 199482367758206654, guid: bed742eae2a4060438e017c513130a7b,
     type: 3}
   m_PrefabInstance: {fileID: 0}
@@ -18048,6 +18050,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1001 &678812401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18514,6 +18517,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &689196553
 GameObject:
   m_ObjectHideFlags: 0
@@ -18702,6 +18706,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!224 &690040967 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224000011432727912, guid: b61b75a0ff5f8434fb2f202cca9514bb,
@@ -19705,6 +19710,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &788429830
 GameObject:
   m_ObjectHideFlags: 0
@@ -20699,6 +20705,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &839027548
 GameObject:
   m_ObjectHideFlags: 0
@@ -21387,6 +21394,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &867542149
 GameObject:
   m_ObjectHideFlags: 0
@@ -22075,67 +22083,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_text
-      value: "The parallels in mystic dreams experienced by carpenters, masons and
-        other artisans, and what they purport to reveal about the architecture of
-        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
-        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
-        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
-        No-one has ever explained why Galmier devoted herself to this quixotic exploration
-        of artisan's dreams."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 312
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.materialCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_subTextObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1571225336}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 16.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114681621770573970, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224870385522298112, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -22225,6 +22172,67 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 114681621770573970, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_text
+      value: "The parallels in mystic dreams experienced by carpenters, masons and
+        other artisans, and what they purport to reveal about the architecture of
+        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
+        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
+        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
+        No-one has ever explained why Galmier devoted herself to this quixotic exploration
+        of artisan's dreams."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 312
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_subTextObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1571225336}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb00c042628c48cfa9eef03d318a4ba, type: 3}
@@ -25769,6 +25777,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &1194530666
 GameObject:
   m_ObjectHideFlags: 0
@@ -28879,6 +28888,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!1 &1506403063
 GameObject:
   m_ObjectHideFlags: 0
@@ -30992,6 +31002,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!224 &1648940665 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224000011999988054, guid: 6956a1f4fac3a4786a39778dc3cd2f8b,
@@ -32630,15 +32641,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114014354813750090, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: m_MaxValue
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 114573490335598324, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: m_Spacing
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114014354813750090, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b01924c99f42946fd8aba56d7f2c1aa2, type: 3}
@@ -35557,6 +35568,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 0
+  forceBold: 0
 --- !u!114 &1986614135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37059,7 +37071,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Here is room for a surprisingly large amount of text. 4 rows, 8pt.
+  m_text: Here is ample room for a surprisingly large amount of text, which localisations
+    might occasionally need. It allows for up to 6 rows, 5pt.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -37092,7 +37105,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 8
+  m_fontSizeMin: 5
   m_fontSizeMax: 18
   m_fontStyle: 1
   m_textAlignment: 514
@@ -37137,11 +37150,11 @@ MonoBehaviour:
     lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -37440,6 +37453,7 @@ MonoBehaviour:
   forceFontLanguage: 
   highContrastEnabled: 1
   highContrastBold: 1
+  forceBold: 0
 --- !u!1 &5264781275166087238
 GameObject:
   m_ObjectHideFlags: 0
