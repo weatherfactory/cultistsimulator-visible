@@ -153,6 +153,11 @@ namespace Noon
 		private static int screenLogStart = 0;
 		private static bool screenLogVisible = false;
 
+		static NoonUtility()
+		{
+			LanguageManager.LanguageChanged += OnLanguageChanged;
+		}
+
         public static void Log(string message, int verbosityNeeded=0, int messageLevel=0)
         {
             if(verbosityNeeded<=CurrentVerbosity)
@@ -347,6 +352,10 @@ namespace Noon
 			}
 		}
 
+		private static void OnLanguageChanged()
+		{
+			stringsUpdated = false;
+		}
     }
 
 }
