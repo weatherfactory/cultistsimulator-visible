@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using TabletopUi.Scripts.UI;
 
 namespace Assets.CS.TabletopUI {
     public class AspectDetailsWindow : BaseDetailsWindow {
@@ -14,6 +15,7 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
         [SerializeField] Vector2 posWithTokenDetails = new Vector2(0f, -220f);
+        [SerializeField] private BackgroundAdjusterForText adjuster;
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
@@ -51,6 +53,7 @@ namespace Assets.CS.TabletopUI {
 		{
             ShowImage(ResourcesManager.GetSpriteForAspect(element.Icon));
             ShowText(LanguageTable.Get("UI_ASPECT") + element.Label, element.Description);
+            adjuster.Adjust();
         }
     }
 }
