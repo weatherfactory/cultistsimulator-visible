@@ -34,8 +34,8 @@ public abstract class AnimatedNoteBase : MonoBehaviour {
 			SoundManager.PlaySfx(soundOut);
             anim.Play(clipName);
 
-            //while (anim.isPlaying)
-             //   yield return null;
+            while (anim.isPlaying)
+                yield return null;
         }
 
         if (onOutDone != null)

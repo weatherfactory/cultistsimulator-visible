@@ -17,7 +17,7 @@ namespace TabletopUi.Scripts.UI
         {
             text.ForceMeshUpdate();
             var midLineRect = backgroundMidLine.GetComponent<RectTransform>().rect;
-            var numChildren = (int) (text.renderedHeight/midLineRect.height) + 1;
+            var numChildren = (int) (text.renderedHeight/midLineRect.height) - 2;
             
             foreach (Transform mid in backgroundMidContainer.Cast<Transform>().ToArray())
                 DestroyImmediate(mid.gameObject);
