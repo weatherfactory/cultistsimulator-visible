@@ -13,11 +13,17 @@ namespace TabletopUi.Scripts.UI
 
         [SerializeField] private TextMeshProUGUI text;
 
+        [SerializeField] private int minimumLines;
+
         public void Adjust()
         {
             text.ForceMeshUpdate();
             var midLineRect = backgroundMidLine.GetComponent<RectTransform>().rect;
-            var numChildren = (int) (text.renderedHeight/midLineRect.height) - 2;
+            var numChildren = (int) (text.renderedHeight/midLineRect.height) + 1;
+            if (numChildren < minimumLines + 1)
+            {
+                numChildren = minimumLines + 1;
+            }
             
             foreach (Transform mid in backgroundMidContainer.Cast<Transform>().ToArray())
                 DestroyImmediate(mid.gameObject);

@@ -14,7 +14,6 @@ namespace Assets.CS.TabletopUI {
 
 		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
-        [SerializeField] Vector2 posWithTokenDetails = new Vector2(0f, -220f);
         [SerializeField] private BackgroundAdjusterForText adjuster;
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
