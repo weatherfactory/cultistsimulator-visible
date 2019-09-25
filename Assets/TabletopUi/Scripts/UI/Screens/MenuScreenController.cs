@@ -68,6 +68,9 @@ public class MenuScreenController : MonoBehaviour {
     public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
 
+    [Header("Localisation")]
+    public Button russianLanguageButton;
+
     bool canTakeInput;
     int sceneToLoad;
 	private string cultureContentLoaded = "none";	// Used to track which culture we have got loaded. If language changes on the Menu screen, we must re-import the content.
@@ -238,6 +241,10 @@ public class MenuScreenController : MonoBehaviour {
 #else
         LinuxHints.gameObject.SetActive(false);
 #endif
+
+        // Enable Russian button only if requested by config override, since
+        // the Russian localisation isn't ready yet
+        russianLanguageButton.gameObject.SetActive(Config.Instance.showAllLanguages);
 
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();

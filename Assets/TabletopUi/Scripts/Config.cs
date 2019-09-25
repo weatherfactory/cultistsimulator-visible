@@ -11,6 +11,8 @@ public class Config
 	public bool skiplogo = false;
 	public int verbosity = 0;
     public bool knock = false;
+    public string culture;
+    public bool showAllLanguages;
 
     // simple singleton declaration
     private static Config _instance;
@@ -38,7 +40,6 @@ public class Config
             if(contents.Contains("skiplogo=1"))
             { 
 				skiplogo = true;
-	            return;
             }
 
 	        if (contents.Contains("verbosity=10")) //yeah I know. Sorry future me
@@ -50,6 +51,28 @@ public class Config
 	        if (contents.Contains("knock=1"))
 	        {
 	            knock = true;
+	        }
+
+	        if (contents.Contains("lang=en"))
+	        {
+		        culture = "en";
+	        }
+	        else if (contents.Contains("lang=ru"))
+	        {
+		        culture = "ru";
+	        }
+	        else if (contents.Contains("lang=zh"))
+	        {
+		        culture = "zh-hans";
+	        }
+	        else
+	        {
+		        culture = null;
+	        }
+
+	        if (contents.Contains("showAllLanguages=1"))
+	        {
+		        showAllLanguages = true;
 	        }
         }
 	    else

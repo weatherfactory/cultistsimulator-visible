@@ -69,61 +69,47 @@ public class LanguageManager : MonoBehaviour
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
 
-		string defaultCulture = null;
-		string defaultConfigLocation = "Assets/StreamingAssets/content/defaults.ini";
+		string defaultCulture;
 
-	    if (File.Exists(defaultConfigLocation))
+		// Try to auto-detect the culture from the system language first
+	    switch (Application.systemLanguage)
 	    {
-			string contents = File.ReadAllText(defaultConfigLocation);
-
-			// Quick and dirty mapping for the three langs we support...
-			if (contents.Contains("lang=en"))
-	        {
-	            defaultCulture = "en";
-	        }
-			else if (contents.Contains("lang=ru"))
-	        {
-	            defaultCulture = "ru";
-	        }
-			else if (contents.Contains("lang=zh"))
-	        {
-	            defaultCulture = "zh-hans";
-	        }
-		}
-
-	    if (defaultCulture == null)
-	    {
-		    switch (Application.systemLanguage)
-		    {
-			    case SystemLanguage.Russian:
-				    defaultCulture = "ru";
-				    break;
-			    case SystemLanguage.Chinese:
-				case SystemLanguage.ChineseSimplified:
-				case SystemLanguage.ChineseTraditional:
-				    defaultCulture = "zh-hans";
-				    break;
-			    default:
-				    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
-				    {
-					    case "zh":
-						    defaultCulture = "zh-hans";
-						    break;
-					    case "ru":
-						    defaultCulture = "ru";
-						    break;
-						default:
-							defaultCulture = "en";
-							break;
-				    }
-				    break;
-		    }
+		    case SystemLanguage.Russian:
+			    defaultCulture = "ru";
+			    break;
+		    case SystemLanguage.Chinese:
+			case SystemLanguage.ChineseSimplified:
+			case SystemLanguage.ChineseTraditional:
+			    defaultCulture = "zh-hans";
+			    break;
+		    default:
+			    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
+			    {
+				    case "zh":
+					    defaultCulture = "zh-hans";
+					    break;
+				    case "ru":
+					    defaultCulture = "ru";
+					    break;
+					default:
+						defaultCulture = "en";
+						break;
+			    }
+			    break;
 	    }
 
+	    // If the player has already chosen a culture, use that one instead
 		if (PlayerPrefs.HasKey(CULTURE))
 		{
 			defaultCulture = PlayerPrefs.GetString(CULTURE);
 		}
+
+		// If an override is specified, ignore everything else and use that
+		if (Config.Instance.culture != null)
+		{
+			defaultCulture = Config.Instance.culture;
+		}
+
 		LanguageTable.LoadCulture( defaultCulture );	// Initial load
 
 		FixFontStyleSlots();
