@@ -1769,37 +1769,5 @@ label:"Project",
 description:"Research project agenda",
 isHidden:true,
 isAspect:true},
-
-        
-        {
-            id:"text.short",
-            label: "Short Text",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas tellus magna, at mollis diam hendrerit id. In luctus commodo libero, at fermentum est porttitor consectetur.",
-            isAspect: true,
-            icon: "colours.honeyed"
-        },
-
-        {
-            id:"text.medium",
-            label: "Medium Text",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas tellus magna, at mollis diam hendrerit id. In luctus commodo libero, at fermentum est porttitor consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent mollis ornare orci sodales porta. Mauris diam ligula, pretium eu tincidunt eu, mollis vel turpis. Quisque consequat metus in orci imperdiet, at varius justo efficitur.",
-            isAspect: true,
-            icon: "colours.golden"
-        },
-
-        {
-            id:"text.long",
-            label: "Long Text",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas tellus magna, at mollis diam hendrerit id. In luctus commodo libero, at fermentum est porttitor consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent mollis ornare orci sodales porta. Mauris diam ligula, pretium eu tincidunt eu, mollis vel turpis. Quisque consequat metus in orci imperdiet, at varius justo efficitur. Suspendisse feugiat elit sed sem mattis aliquam. Pellentesque in erat at nunc auctor interdum. Nunc nec dapibus enim, sit amet finibus eros. Maecenas vel dolor purus. Etiam tincidunt feugiat sapien, in rhoncus sem rhoncus et. Praesent sit amet placerat lorem. Suspendisse blandit pulvinar nulla, eget porta ipsum imperdiet in. Donec velit dui, viverra in felis sed, posuere semper enim. Suspendisse tristique vestibulum neque dignissim ornare.",
-            isAspect: true,
-            icon: "colours.widlering"
-        },
-
-        {
-            id: "text.test",
-            label: "Text",
-            aspects: {"text.short": 1, "text.medium": 1, "text.long": 1},
-            description: "Test text aspects."
-        }
 ]
 }

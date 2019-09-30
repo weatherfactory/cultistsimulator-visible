@@ -11,7 +11,7 @@
 
 	{id: "legacyapostleforgejob",
 	label: "宝地",
-	description: "我在我们塑形者的左手上已等待太久。随我成就“大功业(the Great Work)”之时已至。",
+	description: "我在我们塑形者的左手上已等待太久。随我成就“大功业”之时已至。",
 	aspects: {job:1},
 	icon:apostleforge.pillar1
 
@@ -28,7 +28,7 @@ icon:mentorguidance
 
 {id: "apostleforge.pillar1",
 label: "破晓技术",
-description: "<b>塑 形 者 言 道</b>：“我须得扮演铸炉。命你放置尸骸火花于引擎之正中心，用最高等级的奥秘将其唤醒，最猛烈的炼金素材为其燃料，找到在每重历史中名字都相同的大地边缘处的破绽，将装置带到那里，连带丽姬亚成员苏洛恰那所知的咬噬之钥。唤起铸炉最猛烈的热力，使用最强大的开启之秘；而后我将目送你融解。”"
+description: "<b>塑形者言道</b>：“我须得扮演铸炉。命你放置尸骸火花于引擎之正中心，用最高等级的奥秘将其唤醒，最猛烈的炼金素材为其燃料，找到在每重历史中名字都相同的大地边缘处的破绽，将装置带到那里，连带丽姬亚成员苏洛恰那所知的咬噬之钥。唤起铸炉最猛烈的热力，使用最强大的开启之秘；而后我将目送你融解。”"
 	},
 	{id: "apostleforge.pillar2.dormant",
 label: "休眠中的破晓器核心",
@@ -50,7 +50,7 @@ xtriggers:{sabotage:apostleforge.pillar3.sabotaged}
 
 			{id: "apostleforge.pillar5",
 label: "E夫人的协助",
-description: "E夫人给了我一个小小的青铜制的喀迈拉(chimaera, 狮蛇怪)头颅，作为信物。待我们做好正式仪式的准备，她将怀揣她所持的钥匙前往世界的破绽处，好让漫宿在我带来黎明之时为我们的塑形者敞开大门。但她不会永远等待下去。",
+description: "E夫人交给我一个小小的青铜喀迈拉头颅作为信物。待我们做好正式仪式的准备，她将怀揣她所持的钥匙前往世界的破绽处，好让漫宿在我带来黎明之时为我们的塑形者敞开大门。但她不会永远等待下去。",
 aspects:{promise:1},
 unique:true,
 lifetime:600
@@ -78,7 +78,7 @@ xtriggers:{sabotage.repair:apostleforge.pillar3}
 
 		{id: "apostlegrail.mentor",
 	label: "我们的愉悦者#PREVIOUSCHARACTERNAME#",
-	description: "我们以之为甘露和欢乐之源者，斯人静待于放逐之途，直到最盛大的筵宴——“谢肉祭(the Vitulation)”来临。",
+	description: "我们以之为甘露和欢乐之源者，斯人静待于放逐之途，直到最盛大的筵宴——“谢肉祭”来临。",
 	comments: "Is an acquaintance so we can hijack the cult foundation recipe.",
 	aspects: {mentor:1}
 
@@ -197,7 +197,7 @@ xtriggers:{sabotage:apostlegrail.pillar4.inprogress4}
 	},
 
 	{id: "apostlegrail.pillar4",
-label: "东道主(Host)与宾客",
+label: "东道主与宾客",
 description: "一声令下，大批宴主即集合一处，死命瞪大眼睛——张大嘴巴——来飨食与被食——吸去我身上我们愉悦者的血。属于我们的愉悦将指引他们宴饮，操线仙娥则将拧转钥匙。",
 aspects:{summoned:1}
 	},

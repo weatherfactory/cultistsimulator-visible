@@ -93,7 +93,7 @@
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "(洛克伍德意为锁-树林)散发着臭气的晦黯沼地里遍布着阴险鬼祟的生命。沉默寡言的当地人依然为那些小而隐秘，能使祈祷<i>成真</i>的神明守望着圣地。",
+            description: "散发着臭气的晦黯沼地里遍布着阴险鬼祟的生命。沉默寡言的当地人依然为那些小而隐秘，能使祈祷<i>成真</i>的神明守望着圣地。",
 			unique:true
         },
 				{
@@ -105,7 +105,7 @@
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "(克罗基斯意为乌鸦-吻)远古的部落将这片安息之地留给某人，他最终会成为某位无情司辰的侍奉者，此人最终变得更像伤疤，而非人类。他们用咒歌和混着砂浆的血液封住了这里的入口。",
+            description: "远古的部落将这片安息之地留给某人，他最终会成为某位无情司辰的侍奉者，此人最终变得更像伤疤，而非人类。他们用咒歌和混着砂浆的血液封住了这里的入口。",
 			unique:true
         },
 				{
@@ -143,7 +143,7 @@
 							{id:"sending",label:"派遣",description:"探险偶尔也会缘于另一个目的。",required:{sendingheartb:1,sendingmothb:1},actionId:"explore"},
 
 			],
-            description: "我们沿着白垩丘陵(downs)驶向海岸，驶向灰绿色大地与大西洋的灰色海水的交接处，一路寻找通往凯尔伊苏姆镇的道路。那个地方难得寻见，哪怕你曾经去到过也是一样。那里的居民用咒骂，棍棒，和紧紧拴住的门来保守他们的秘密。[你已找到所有位于各郡的探险地点，不过你仍可以再次找到并造访凯尔伊苏姆。]"
+            description: "我们沿着白垩丘陵驶向海岸，驶向灰绿色大地与大西洋的灰色海水的交接处，一路寻找通往凯尔伊苏姆镇的道路。那个地方难得寻见，哪怕你曾经去到过也是一样。那里的居民用咒骂，棍棒，和紧紧拴住的门来保守他们的秘密。[你已找到所有位于各郡的探险地点，不过你仍可以再次找到并造访凯尔伊苏姆。]"
         },
 		
 					{
@@ -155,7 +155,7 @@
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "关于拉维林伯爵家(原文为法语)，风行的传闻称他们是 <i>最初的</i>太阳王的后裔。还有传闻讲述他们如何化为狼形巡猎于森林之中。这个家族早已消亡，只余朽坏的家族城堡(法语)，其中尚有未为人所查的凶险之处。",
+            description: "关于拉维林伯爵家，风行的传闻称他们是 <i>最初的</i>太阳王的后裔。还有传闻讲述他们如何化为狼形巡猎于森林之中。这个家族早已消亡，只余朽坏的家族城堡，其中尚有未为人所查的凶险之处。",
 			unique:true
         },
 								{
@@ -268,7 +268,7 @@
 			{id:"expeditionfunds",label:"资金",description:"我需要至少一份资金才能开始探险。",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"},
 			],
-            description: "刷了白石灰的农场外围驻扎着一群裰着补丁的帐篷，仿佛一座小小的城市。格吕内瓦尔德女士(原文为德语)将她可观的财产投入到了维护这个组织的运转上：没人知道为什么。马戏团演员讨厌别人擅闯幕后。",
+            description: "刷了白石灰的农场外围驻扎着一群裰着补丁的帐篷，仿佛一座小小的城市。格吕内瓦尔德女士将她可观的财产投入到了维护这个组织的运转上：没人知道为什么。马戏团演员讨厌别人擅闯幕后。",
 			unique:true
         },
 				{
@@ -502,7 +502,7 @@
 			{id:"expeditionfunds2",label:"追加资金",description:"如果担心资金耗尽，我可以考虑多投一些。",required:{funds:1},actionId:"explore"}
 
 			],
-            description: "一艘破旧却惊人豪华的蒸汽轮船，多为躲避丑闻的演员、不愿露富的百万富翁、感觉身下有活水更为安全的密教学者所用；并且仅有一次，为丽姬亚(Ligeia)俱乐部所用，此团体因要使用七间客舱而包下了整艘轮船。", 
+            description: "一艘破旧却惊人豪华的蒸汽轮船，多为躲避丑闻的演员、不愿露富的百万富翁、感觉身下有活水更为安全的密教学者所用；并且仅有一次，为丽姬亚俱乐部所用，此团体因要使用七间客舱而包下了整艘轮船。", 
 unique:true			},
 
 ]

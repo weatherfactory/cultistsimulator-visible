@@ -327,7 +327,7 @@ craftable: true
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream5:1,autographed:-1},
 	  actionId:"talk",
 	  startdescription:"“所以你到底是在哪里找到它的？”",
-	  description:"“我会给你签名。但不是以我的名(Name)。还不行，大概永远都不行。”",
+	  description:"“我会给你签名。但我自己还并具名。还不行，大概永远都不行。”",
 	  effects:{glimmering:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
 	  },

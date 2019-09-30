@@ -14,7 +14,7 @@
 	},
 				{id: "tooledged",
 	label: "比德之刃",
-	description: "这把刀刃割出的伤口会在愈合前不停流血。一说“比德(Biedde)”是十八世纪图卢兹一名喜欢收集刀具的外科医生兼路匪。另一说“比德”只是阿拉伯语“蚊子”的讹传。",
+	description: "这把刀刃割出的伤口会在愈合前不停流血。一说“比德”是十八世纪图卢兹一名喜欢收集刀具的外科医生兼路匪。另一说“比德”只是阿拉伯语“蚊子”的讹传。",
 	aspects: {edge:8,auctionable:5,tool:1},
 	unique:true
 	},
@@ -56,7 +56,7 @@
 	},
 		{id: "toolgraild",
 	label: "封圣高冠",
-	description: "(高冠原文为polos)这是一顶属于野人母亲的环冕，上染着萃取液，以零碎毛发编织，并以皮肤残片祝福。",
+	description: "这是一顶属于野人母亲的环冕，上染着萃取液，以零碎毛发编织，并以皮肤残片祝福。",
 	aspects: {grail:8,auctionable:5,tool:1},
 	unique:true
 	},
@@ -68,7 +68,7 @@
 	},
 					{id: "toolheartb",
 	label: "马尔鲁维姆人偶",
-	description: "马尔鲁维姆(Marruvium)人制作木头小人偶以安抚他们所惧怕的湖中孪生女巫。如今湖水基本干涸，但湖底的人偶和孪生女巫仍存，虽然被<b>心</b>之性相所荫蔽。",
+	description: "马尔鲁维姆人制作木头小人偶以安抚他们所惧怕的湖中孪生女巫。如今湖水基本干涸，但湖底的人偶和孪生女巫仍存，虽然被<b>心</b>之性相所荫蔽。",
 	aspects: {heart:4,auctionable:3,tool:1},
 	comments: "Not unique; we can get an extra one from the Dancer legacy."
 	},
@@ -80,7 +80,7 @@
 	},
 	{id: "toolheartf",
 	label: "王皮框鼓",
-	description: "(框鼓原文为bodhrán)在密林中，那位君主交出了他不得不交出的最后一样东西，以之造出此永庇疆土之器。后来，可想而知，一个帝国盗走了这面鼓，用帝国一贯的做法。",
+	description: "密林中，那位君主交出了他不得不交出的最后一样东西，以之造出此永庇疆土之器。后来，可想而知，一个帝国盗走了这面鼓，用帝国一贯的做法。",
 	aspects: {heart:12,auctionable:6,tool:1},
 	unique:true
 	},
@@ -98,14 +98,14 @@
 	},
 	{id: "toolknockf",
 	label: "碎门之钥",
-	description: "(碎门之钥原文为拉丁语)有用来开门的钥匙，也有用来毁门的钥匙。",
+	description: "有用来开门的钥匙，也有用来毁门的钥匙。",
 	aspects: {knock:12,auctionable:6,tool:1},
 	unique:true
 	},
 
 				{id: "toollanternb",
 	label: "午之石",
-	description: "“Noon（午）”这个词，如人们所说，已不是从前的定义；但这块光亮的石头仍保有夕阳的光彩。",
+	description: "“午的含义，在现代的语言中，已经和古语有所不同。但是，这块石头仍透着夕阳般的光彩。",
 	aspects: {lantern:4,auctionable:3,tool:1},
 	xtriggers: {crackmirror:toollanternbcracked},comments: "Not unique; we can get multiples if cracked ones are supplied."
 	},
@@ -177,17 +177,17 @@
 	
 					{id: "toollanternbcracked",
 	label: "裂损的午之石",
-	description: "“Noon（午）”这个词，如人们所说，已不是从前的定义；但这块石头仍保有熹微的光彩。它被弄裂了。<b>铸</b>相的追随者可以将其复原，资材足够的话——又或者我可以用光里面残余的法力。",
+	description: "“午的含义，在现代的语言中，已经和古语有所不同。但是，这块石头仍透着夕阳般的光彩。它已经被裂开了。如果有相应的材料，<b>铸</b>相的追随者应该可以将其复原——又或者，我可以用光里面残余的法力。",
 	aspects: {lantern:1,ingredient:1}
 	},
 		{id: "toollanterndcracked",
 	label: "裂损的迷途之镜",
-	description: "一道深深的裂痕划过这块亮灿灿的金属。<b>铸</b>相追随者可以将其修复，资材足够的话——又或者我可以用光里面残余的法力。",
+	description: "一道深深的裂痕划过这块亮灿灿的金属。如果有相应的材料，<b>铸</b>相追随者可以将其修复——又或者，我可以用光里面残余的法力。",
 	aspects: {lantern:2,ingredient:1}
 	},
 	{id: "toollanternfcracked",
 	label: "裂损的守夜人之镜",
-	description: "<b>铸</b>相的追随者可以将其修复，但花费高昂——又或者我可以用光里面残余的法力。",
+	description: "<b>铸</b>相的追随者可以将其修复，但代价高昂——又或者，我可以用光里面残余的法力。",
 	aspects: {lantern:3,ingredient:1}
 	},
 	{id:"paintingmasteredge",label:"“上校与狮子匠”",description:"自伊苏斯时代他们便起纷争。",aspects:{edge:8,auctionable:5,tool:1},unique:true},
@@ -211,7 +211,7 @@ aspects:{}
 
 {id:"painting.palest",
 label:"淡白至极的画作",
-description:"“六者已失，卅者留存。”画布不是白色的。凑近看，你将隐约看到早已失落的司辰的形影，沿曲折的路途走进通往乌有乡之门。凑得太近，你将湎于落泪而不能自拔。",
+description:"“六者已失，卅者留存。”画布不是白色的。凑近看，你将隐约看到早已失落的司辰的形影，沿曲折的路途走进通往虚界之门。凑得太近，你将湎于落泪而不能自拔。",
 aspects:{ascension.remembrance.offering:1},
 },
 

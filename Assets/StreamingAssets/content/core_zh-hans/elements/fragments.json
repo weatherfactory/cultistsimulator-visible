@@ -237,7 +237,7 @@ description: "上校在不同的时代有着不同的形象。他目盲；他耳
             label: "伊库维姆仪式之一",
             aspects:
             {knock: 4,lore:1,challenge.knowledge:1},
-            description: "漫宿的每一道门在开启前都需要献祭。伊库维姆(Iguvium)诸仪式则规定了献祭的方式。[几乎所有召唤<b>仪式</b>都需要<b>启</b>之影响，此密传可提供之。]",
+            description: "漫宿的每一道门在开启前都需要献祭。伊库维姆诸仪式则规定了献祭的方式。[几乎所有召唤<b>仪式</b>都需要<b>启</b>之影响，此密传可提供之。]",
 			slots:[{id:"with",label:"加上",description:"与同等级（除<b>秘史</b>外）的任意密传片段一同研究可使其提升为更高等级的<b>启</b>之密传。或者，与理性一同研究可使密传分解为低等级的片段。",required:{fragmentedgeb:1,fragmentforgeb:1,fragmentgrailb:1,fragmentheartb:1,fragmentknockb:1,fragmentlanternb:1,fragmentmothb:1,fragmentwinterb:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockc}
         },
 						          {
@@ -382,7 +382,7 @@ description: "上校在不同的时代有着不同的形象。他目盲；他耳
             label: "杉中牝马",
             aspects:
             {moth:14,lore:1,subvertable_lore:1},
-            description: "真正的司辰不会面见乌有源之神，环杉却在林地茂盛处与树中牝马会面。她们的交合是被禁止的，而被禁止的事物拥有力量。此即他们交合的故事。",
+            description: "真正的司辰不会面见虚源之神，环杉却在林地茂盛处与树中牝马会面。她们的交合是被禁止的，而被禁止的事物拥有力量。此即他们交合的故事。",
 			slots:[{id:"with",label:"加上",description:"与理性一同研究可使密传分解为低等级的片段。",required:{reason:1},actionId:"study"}],	
 			unique:true
         },
@@ -476,7 +476,7 @@ description: "上校在不同的时代有着不同的形象。他目盲；他耳
             label: "失落司辰的吟诵",
             aspects:
             {winter:10,lore:1,subvertable_lore:1,challenge.knowledge:1,challenge.grim:1,challenge.obsessive:1},
-            description: "六位已逝。五位源自岩石，一位源自光。现都归于乌有。但他们的回忆仍具神力，而我们现在要拜请这种神力。[将其与“马氏膏”以及一名追奉<b>启</b>的助手——或其他有着同等力的资源——一同运用于<b>仪式</b>中，可召唤镜中少女。]",
+            description: "六位已逝。五位源自岩石，一位源自光。现都归于虚界。但他们的回忆仍具神力，而我们现在要拜请这种神力。[将其与“马氏膏”以及一名追奉<b>启</b>的助手——或其他有着同等力的资源——一同运用于<b>仪式</b>中，可召唤镜中少女。]",
 			slots:[{id:"with",label:"加上",description:"与同等级的<b>冬</b>之密传片段一同研究可使其提升至下一等级。与同等级的<b>心</b>之密传一同研究可将其拗转，获得<b>心</b>之密传。或者，与理性一同研究可使密传分解为低等级的片段。",required:{fragmentwintere:1,fragmenthearte:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentwinterf}
         },
 		{  id: "fragmentwinterf",
@@ -519,7 +519,7 @@ description:"此配方用于复苏处于生人肚中的腐肉的回忆。这种�
 comments: "RIP Gene Wolfe, 1931-2019. 'Some are haunted by ghosts. I am haunted by stories.'",
 aspects:{lore:1},
 slots:[{id:"desire",label:"欲望",description:"古老的回忆钻入地下，于是再不能寻见——但在钻得过于深远之前，它们会先在另一处地方栖息。",actionId:"study",required:{remembrancemarks:1}},
-{id:"feast",label:"享食",description:"喝下灵药(elixir)后，消化的酶成为了复活的信使。死者复生——只是在我回忆之中。",actionId:"study",required:{remnant:1}}]
+{id:"feast",label:"享食",description:"喝下灵药后，消化的酶成为了复活的信使。死者复生——只是在我回忆之中。",actionId:"study",required:{remnant:1}}]
 },
 
 ]

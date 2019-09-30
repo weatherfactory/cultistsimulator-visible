@@ -41,10 +41,10 @@
 
 	  {
             "id": "explore",
-            "label": "探索 ",
+            "label": "探索",
             "description": "投入健康或者追随者来探索城市；调查各个地点；探究密传之所示。探索的结果通常难以预期。",
 			"atStart":false,
-			  slots: [{id:"explore",label:"探索 ",description: "地点，人物，场所，秘密。",
+			  slots: [{id:"explore",label:"探索",description: "地点，人物，场所，秘密。",
 			  required:{health:1,follower:1,secrethistories:1,location:1,ghoul.hunger:1},
 			  forbidden:{hireling:1}}],
         },

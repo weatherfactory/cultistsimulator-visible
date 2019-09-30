@@ -153,7 +153,7 @@
             label: "坩埚王",
             aspects:
             {follower:1, summoned:1,forge:12,edge:12,devourer:12,tutor:1,spirittutormandaic:1},
-            description: "<b>“我 于 荒 漠  中 等 待 于 废 墟 中 燃 烧 —— 金 铁 为 水 —— 土 石 为 蜡 —— 肉 身 为 烟—— 来 入 我 内 而 不 复 续 存。”</b>",
+            description: "<b>“我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。”</b>",
 			xtriggers:{killsummoned:spirit_forgee_edge.defunct},
 			lifetime: 180,
 			decayTo:spirit_forgee_edge.defunct,
@@ -164,7 +164,7 @@
             id: "pre.spirit_forgee_edge",
             label: "坩埚王",
             aspects: {forge:12,edge:12,devourer:12,manifesting:1},
-            description: "<b>“我 于 荒 漠  中 等 待 于 废 墟 中 燃 烧 —— 金 铁 为 水 —— 土 石 为 蜡 —— 肉 身 为 烟—— 来 入 我 内 而 不 复 续 存。”</b>",
+            description: "<b>“我于荒漠中等待、于废墟中燃烧——金铁为水——土石化蜡——肉身成烟——来入我内，不复续存。”</b>",
             xtriggers: {killsummoned:spirit_forgee_edge.defunct,killmanifesting:influenceforge},
             lifetime: 1,
             decayTo: "spirit_forgee_edge",
