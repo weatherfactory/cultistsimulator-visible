@@ -106,23 +106,23 @@ LEGACY_START_NEW_GAME,Start new game,开始新游戏,Новая игра
 LEGACY_BECAUSE_PREFIX,[Always available after ,[完成,[Всегда доступно после
 LEGACY_BECAUSE_POSTFIX,],之后的一轮必定可选],]
 VERB_START,[S]tart,[S]开始,Вперёд
-VERB_COLLECT,[C]ollect All,[C]收集全部,Забрать всё
-VERB_RUNNING,Running...,进行中……,В процессе
+VERB_COLLECT,[C]ollect All,[C]收下,Забрать всё
+VERB_RUNNING,Running...,进行中…,В процессе
 VERB_ACCEPT,Accept [C],[C]接受,Принять
-UI_ASPECT,Aspect: ,属性：,Аспект:
-UI_SLOT,Slot: ,栏位：,Разъём:
-UI_GREEDY,Grabs a card to fill its void,抓取一张卡牌来填充它 ,"Забирает карту, чтобы насытить свою пустоту "
-UI_CONSUMES,Consumes its contents,消耗其内容 ,Поглощает содержимое
-UI_UNIQUE,Unique: Can only exist once,独有：仅能出现一次 ,Неповторимо: существует лишь однажды
+UI_ASPECT,Aspect: ,性相：,Аспект:
+UI_SLOT,Slot: ,卡槽：,Разъём:
+UI_GREEDY,Grabs a card to fill its void,会自动吸取卡牌填补自身的空洞,"Забирает карту, чтобы насытить свою пустоту "
+UI_CONSUMES,Consumes its contents,会消耗自身的内容,Поглощает содержимое
+UI_UNIQUE,Unique: Can only exist once,独一：不可同时存在复数个。,Неповторимо: существует лишь однажды
 UI_UPCOMINGDRAWS,Upcoming draws: ,即将抽取：,Я получаю карты:
-UI_DECAYS,This type of cards decays and can not be stacked.,这种卡牌会随着时间推移消失，无法进行堆叠。 ,Срок жизни таких карт ограничен; их нельзя сложить в стопку.
-UI_EMPTYSPACE,“It is the empty space which makes the bowl useful” - Lao Tzu,“埏埴以为器，当其无，有器之用。” —— 老子,«Употребление сосудов зависит от пустоты в них» — Лао Цзы.
-UI_CANTMERGE,Can't merge cards,无法合并牌组,Не могу соединить эти карты
-UI_CANTPUT,I can't put that there -,我不能把它放在这里……,Не могу положить это сюда —
-UI_ASPECTSREQUIRED,That card must have at least one of these aspects: ,放在此处的卡牌必须至少拥有下列属性之一： ,У карты должен быть хотя бы один из указанных аспектов:
-UI_ASPECTSFORBIDDEN,A card may not go here if it has any of these aspects: ,含有下列属性的卡牌无法挪至该处： ,Здесь недопустимы карты с любым из указанных аспектов:
+UI_DECAYS,This type of cards decays and can not be stacked.,此类卡牌会随时间推移消失，故无法堆叠。,Срок жизни таких карт ограничен; их нельзя сложить в стопку.
+UI_EMPTYSPACE,“It is the empty space which makes the bowl useful” - Lao Tzu,“埏埴以为器，当其无，有器之用（碗空方有容物之用）。” —— 老子,«Употребление сосудов зависит от пустоты в них» — Лао Цзы.
+UI_CANTMERGE,Can't merge cards,卡牌无法合并,Не могу соединить эти карты
+UI_CANTPUT,I can't put that there -,不能放在这里——,Не могу положить это сюда —
+UI_ASPECTSREQUIRED,That card must have at least one of these aspects: ,此处<b>只能</b>放入下列性相的卡牌：,У карты должен быть хотя бы один из указанных аспектов:
+UI_ASPECTSFORBIDDEN,A card may not go here if it has any of these aspects: ,此处<b>不能</b>放入下列性相的卡牌：,Здесь недопустимы карты с любым из указанных аспектов:
 UI_OR,", or ", 或者 ,", или "
 UI_FULLSTOP,".","。","."
 UI_HINT,Hint:,提示：,Подсказка:
-UI_DEFAULTNAME,J.N. Sinombre,J.N. Sinombre,Эли Мярек
-UI_LANGSWITCHNOTES,"Note: we recommend starting a new game after you switch languages. Switching mid-game can cause issues with the display of some text.",,
+UI_DEFAULTNAME,J.N. Sinombre,W·M·氏,Эли Мярек
+UI_LANGSWITCHNOTES,"Note: we recommend starting a new game after you switch languages. Switching mid-game can cause issues with the display of some text.","温馨提示：我们推荐您在切换语言后重新开始游戏。在游戏中局切换语言可能会导致游戏文本不能以正确的语言显示。","Примечание. Мы не рекомендуем менять язык после начала игры. Смена языка во время игровой сессии может вызвать ошибки, связанные с отображением текста."
