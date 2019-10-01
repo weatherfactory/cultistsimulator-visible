@@ -421,6 +421,7 @@ isHidden:true
         },
         {
             id: "legacyplotitem",
+            label: "Legacy Item",
             isAspect: true,
             isHidden: true,
             comments: "Used for plot items that shouldn't be passed down to another legacy through LEVER_LastBook, since they can break flows."
