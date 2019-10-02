@@ -22284,10 +22284,66 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 114886493606689152, guid: deb00c042628c48cfa9eef03d318a4ba,
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
-      propertyPath: m_Size
+      propertyPath: m_text
+      value: "The parallels in mystic dreams experienced by carpenters, masons and
+        other artisans, and what they purport to reveal about the architecture of
+        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
+        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
+        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
+        No-one has ever explained why Galmier devoted herself to this quixotic exploration
+        of artisan's dreams."
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 312
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_subTextObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1571225336}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 224707539595644502, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 224417031444728264, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
@@ -22304,15 +22360,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224707539595644502, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
-      objectReference: {fileID: 0}
     - target: {fileID: 224000011530422946, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114886493606689152, guid: deb00c042628c48cfa9eef03d318a4ba,
+        type: 3}
+      propertyPath: m_Size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224870385522298112, guid: deb00c042628c48cfa9eef03d318a4ba,
         type: 3}
@@ -22408,62 +22464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_text
-      value: "The parallels in mystic dreams experienced by carpenters, masons and
-        other artisans, and what they purport to reveal about the architecture of
-        the world. \n\nSurprisingly mordant and even funny. <sprite name=edge> <sprite
-        name=forge> <sprite name=grail> <sprite name=heart><sprite name=knock><sprite
-        name=lantern> <sprite name=moth> <sprite name=secrethistories> <sprite name=winter>
-        No-one has ever explained why Galmier devoted herself to this quixotic exploration
-        of artisan's dreams."
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 312
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.materialCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_subTextObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1571225336}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 16.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010320515620, guid: deb00c042628c48cfa9eef03d318a4ba,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb00c042628c48cfa9eef03d318a4ba, type: 3}
@@ -27455,6 +27455,7 @@ GameObject:
   - component: {fileID: 1310819801}
   - component: {fileID: 1310819803}
   - component: {fileID: 1310819802}
+  - component: {fileID: 1310819804}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -27518,6 +27519,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310819800}
   m_CullTransparentMesh: 0
+--- !u!114 &1310819804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310819800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - language: 0
+    sprite: {fileID: 21300000, guid: 61c9f524251f303488d8997f662d85c9, type: 3}
+  - language: 1
+    sprite: {fileID: 21300000, guid: 7cb604c7d8bfbde4f9edaf46831fe012, type: 3}
+  - language: 2
+    sprite: {fileID: 21300000, guid: f3db911d01c524a4c9cde8db2c2ec0c5, type: 3}
+  usesOverride: 0
 --- !u!1 &1324122548
 GameObject:
   m_ObjectHideFlags: 0
@@ -30866,11 +30887,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 187}
     m_Modifications:
-    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
-        type: 3}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30902,6 +30918,11 @@ PrefabInstance:
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
@@ -32323,6 +32344,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5625409661193204545, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625409661193204545, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: windowGO
@@ -33031,16 +33062,6 @@ PrefabInstance:
     - target: {fileID: 2518357552969490899, guid: b01924c99f42946fd8aba56d7f2c1aa2,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625409661193204545, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625409661193204545, guid: b01924c99f42946fd8aba56d7f2c1aa2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114573490335598324, guid: b01924c99f42946fd8aba56d7f2c1aa2,
@@ -35194,16 +35215,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35293,6 +35304,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114961501245325788, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224333853204506148, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
