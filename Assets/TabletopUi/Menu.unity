@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1683235854}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -44201,7 +44201,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 53fb50f99da7ded4b9d67512fd1c2b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc393af5639c0d642b20da7cadfdb9e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -60523,7 +60523,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.99999994}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -62785,11 +62785,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuScreenBackgroundMusic
       objectReference: {fileID: 0}
-    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
-        type: 3}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_LocalPosition.x
       value: -263.342
@@ -62821,6 +62816,11 @@ PrefabInstance:
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114682934411112886, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
