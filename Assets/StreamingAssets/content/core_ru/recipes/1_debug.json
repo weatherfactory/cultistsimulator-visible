@@ -2,215 +2,221 @@
     "recipes": [
         {
             "id": "internaldecktest",
+            "label": "x",
             "description": "!",
-            "startdescription": "?",
-            "label": "x"
+            "startdescription": "?"
         },
         {
             "id": "irt1",
+            "label": "irt1",
             "startdescription": "irt1",
-            "label": "irt1"
+            "alt": [
+                {
+                    "id": "irt2",
+                    "startdescription": "irt2"
+                }
+            ]
         },
         {
             "id": "droo",
+            "label": "Заказать суши в Deliveroo",
             "description": "Вкуснейшие суши привезут прямо к вашей двери всего через несколько минут. А ещё вы регулярно будете получать уведомления о том, где находится ваш заказ!",
             "startdescription": "Вкуснейшие суши привезут прямо к вашей двери всего через несколько минут. А ещё вы регулярно будете получать уведомления о том, где находится ваш заказ!",
             "slots": [
                 {
-                    "label": "Заказ",
-                    "id": "funds"
+                    "id": "funds",
+                    "label": "Заказ"
                 }
-            ],
-            "label": "Заказать суши в Deliveroo"
+            ]
         },
         {
             "id": "droostart",
-            "startdescription": "М-м, суши!",
-            "label": "Ваш заказ готовится в ресторане"
+            "label": "Ваш заказ готовится в ресторане",
+            "startdescription": "М-м, суши!"
         },
         {
             "id": "droogo"
         },
         {
             "id": "droogosickness",
-            "startdescription": "Осталось чуть-чуть!",
-            "label": "Ваш курьер ожидает в ресторане"
+            "label": "Ваш курьер ожидает в ресторане",
+            "startdescription": "Осталось чуть-чуть!"
         },
         {
             "id": "droogodespair",
-            "startdescription": "Хотите знать, кто это будет?",
-            "label": "Мы выбираем для вас курьера"
+            "label": "Мы выбираем для вас курьера",
+            "startdescription": "Хотите знать, кто это будет?"
         },
         {
             "id": "droogovisions",
-            "startdescription": "Здорово! Курьер скоро будет в ресторане.",
-            "label": "Мы выбрали для вас курьера"
+            "label": "Мы выбрали для вас курьера",
+            "startdescription": "Здорово! Курьер скоро будет в ресторане."
         },
         {
             "id": "droogoambition",
-            "startdescription": "Здорово! Заказ скоро будет в пути.",
-            "label": "Ваш курьер ожидает в ресторане"
+            "label": "Ваш курьер ожидает в ресторане",
+            "startdescription": "Здорово! Заказ скоро будет в пути."
         },
         {
             "id": "droogoardours",
-            "startdescription": "В ресторане заявили, будто я отменяю заказ? Странно. Ну да ладно: я ничего не хочу отменять, и теперь они об этом знают. Наверняка всё будет в порядке.",
-            "label": "Звонок из центра поддержки Deliveroo?"
+            "label": "Звонок из центра поддержки Deliveroo?",
+            "startdescription": "В ресторане заявили, будто я отменяю заказ? Странно. Ну да ладно: я ничего не хочу отменять, и теперь они об этом знают. Наверняка всё будет в порядке."
         },
         {
             "id": "droogosuspicion",
-            "startdescription": "Здорово! Курьер скоро будет в ресторане.",
-            "label": "A Rider Has Been Assigned To Your Заказ"
+            "label": "A Rider Has Been Assigned To Your Заказ",
+            "startdescription": "Здорово! Курьер скоро будет в ресторане."
         },
         {
             "id": "droogosilence",
-            "startdescription": "Here's your money back!\r\n\r\nWe apologise for any inconvenience caused.\r\n\r\nIf you'd like to try again, it'll be £15 cheaper next time!'",
-            "label": "Ваш заказ отменён"
+            "label": "Ваш заказ отменён",
+            "startdescription": "Here's your money back!\r\n\r\nWe apologise for any inconvenience caused.\r\n\r\nIf you'd like to try again, it'll be £15 cheaper next time!'"
         },
         {
             "id": "debugsnare",
             "label": "Создать крупные капканы"
         },
         {
-            "label": "Создать крупные капканы+",
-            "id": "debugsnareaddmutation"
+            "id": "debugsnareaddmutation",
+            "label": "Создать крупные капканы+"
         },
         {
+            "id": "_testexpelled",
             "description": "end test expelled",
-            "startdescription": "test expelled",
-            "id": "_testexpelled"
+            "startdescription": "test expelled"
         },
         {
             "id": "_testmutations",
             "label": "Тестирование мутации"
         },
         {
-            "label": "Набор адепта",
-            "id": "_adeptskit"
+            "id": "_adeptskit",
+            "label": "Набор адепта"
         },
         {
             "id": "_memoryvault",
-            "startdescription": "Что у нас было:",
-            "label": "Заберите вещи из хранилища"
+            "label": "Заберите вещи из хранилища",
+            "startdescription": "Что у нас было:"
         },
         {
             "id": "_ascensionending",
+            "label": "Показать концовку вознесения",
             "description": "Текст концовки",
-            "startdescription": "Ну, вперёд",
-            "label": "Показать концовку вознесения"
+            "startdescription": "Ну, вперёд"
         },
         {
             "id": "_arrest",
+            "label": "Показать концовку заключения",
             "description": "Текст концовки",
-            "startdescription": "Ну, вперёд",
-            "label": "Показать концовку заключения"
+            "startdescription": "Ну, вперёд"
         },
         {
             "id": "_mansustest",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansusteststag",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansustestpeacock",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansustestgate",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansustestspider",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansustestwhite",
+            "label": "Опробовать эффект Обители",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_mansustest2",
+            "label": "Опробовать эффект Обители на двери",
             "description": "Вход в Обитель откроется при появлении",
-            "startdescription": "Вход в Обитель откроется по завершении",
-            "label": "Опробовать эффект Обители на двери"
+            "startdescription": "Вход в Обитель откроется по завершении"
         },
         {
             "id": "_dream",
+            "label": "Создать карту сна",
             "description": "...",
-            "startdescription": ".",
-            "label": "Создать карту сна"
+            "startdescription": "."
         },
         {
             "id": "_study",
+            "label": "Создать карту изучения",
             "description": "...",
-            "startdescription": ".",
-            "label": "Создать карту изучения"
+            "startdescription": "."
         },
         {
             "id": "_talk",
+            "label": "Создать карту разговора",
             "description": "...",
-            "startdescription": ".",
-            "label": "Создать карту разговора"
+            "startdescription": "."
         },
         {
             "id": "_explore",
+            "label": "Создать карту исследования",
             "description": "...",
-            "startdescription": ".",
-            "label": "Создать карту исследования"
+            "startdescription": "."
         },
         {
             "id": "testdeathcountdown",
+            "label": "Не осталось здоровья",
             "description": "Где найдут меня? Я больше не здесь.",
-            "startdescription": "Жизнь покидает моё тело...",
-            "label": "Не осталось здоровья"
+            "startdescription": "Жизнь покидает моё тело..."
         },
         {
             "id": "testemptyresults",
+            "label": "«Сколь сильно человек отрицает реальность, столь же сильно его захватывают фантазии». Ле Гуин",
             "description": "Здесь ничего нет. Заклинило.",
-            "startdescription": "test empty coming up -",
-            "label": "«Сколь сильно человек отрицает реальность, столь же сильно его захватывают фантазии». Ле Гуин"
+            "startdescription": "test empty coming up -"
         },
         {
             "id": "wolfatthedooreats_work",
+            "label": "А вот и волк",
             "description": "...и его рык.",
-            "startdescription": "Мы слышим его вой...",
-            "label": "А вот и волк"
+            "startdescription": "Мы слышим его вой..."
         },
         {
             "id": "wolfatthedooreats_dream",
+            "label": "А вот и волк",
             "description": "...и его рык.",
-            "startdescription": "Мы слышим его вой...",
-            "label": "А вот и волк"
+            "startdescription": "Мы слышим его вой..."
         },
         {
             "id": "wolfatthedooreats_study",
+            "label": "А вот и волк",
             "description": "...и его рык.",
-            "startdescription": "Мы слышим его вой...",
-            "label": "А вот и волк"
+            "startdescription": "Мы слышим его вой..."
         },
         {
             "id": "wolfatthedooreats_explore",
+            "label": "А вот и волк",
             "description": "...и его рык.",
-            "startdescription": "Мы слышим его вой...",
-            "label": "А вот и волк"
+            "startdescription": "Мы слышим его вой..."
         },
         {
             "id": "wolfatthedooreats_talk",
+            "label": "А вот и волк",
             "description": "...и его рык.",
-            "startdescription": "Мы слышим его вой...",
-            "label": "А вот и волк"
+            "startdescription": "Мы слышим его вой..."
         },
         {
             "id": "_wrap_cultfoundation"
@@ -231,8 +237,8 @@
         },
         {
             "id": "_ghoulmemories",
-            "startdescription": "ОДИНОЧЕСТВО В БЕЗДНЕ",
-            "label": "ВОСПОМИНАНИЯ"
+            "label": "ВОСПОМИНАНИЯ",
+            "startdescription": "ОДИНОЧЕСТВО В БЕЗДНЕ"
         }
     ]
 }
