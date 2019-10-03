@@ -74,9 +74,9 @@ public class LanguageManager : MonoBehaviour
 		// Try to auto-detect the culture from the system language first
 	    switch (Application.systemLanguage)
 	    {
-		    case SystemLanguage.Russian:
+		    /*case SystemLanguage.Russian:
 			    defaultCulture = "ru";
-			    break;
+			    break;*/
 		    case SystemLanguage.Chinese:
 			case SystemLanguage.ChineseSimplified:
 			case SystemLanguage.ChineseTraditional:
@@ -88,9 +88,9 @@ public class LanguageManager : MonoBehaviour
 				    case "zh":
 					    defaultCulture = "zh-hans";
 					    break;
-				    case "ru":
+				    /*case "ru":
 					    defaultCulture = "ru";
-					    break;
+					    break;*/
 					default:
 						defaultCulture = "en";
 						break;
