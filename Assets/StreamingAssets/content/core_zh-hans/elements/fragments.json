@@ -260,7 +260,7 @@ description: "上校在不同的时代有着不同的形象。他目盲；他耳
             label: "蚺虵法术",
             aspects:
             {knock:10,lore:1,challenge.knowledge:1,challenge.grim:1,challenge.paradox:1},
-            description: "蛇是不容拒绝的访客 。[几乎所有召唤<b>仪式</b>都需要<b>启</b>之影响，此密传可提供之。]",
+            description: "蛇是不容拒绝的访客。[几乎所有召唤<b>仪式</b>都需要<b>启</b>之影响，此密传可提供之。]",
 			slots:[{id:"with",label:"加上",description:"与同等级（除<b>秘史</b>外）的任意密传片段一同研究可使其提升为更高等级的<b>启</b>之密传。或者，与理性一同研究可使密传分解为低等级的片段。",required:{fragmentedgee:1,fragmentforgee:1,fragmentgraile:1,fragmenthearte:1,fragmentknocke:1,fragmentlanterne:1,fragmentmothe:1,fragmentwintere:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockf}
         },
 		{  id: "fragmentknockf",

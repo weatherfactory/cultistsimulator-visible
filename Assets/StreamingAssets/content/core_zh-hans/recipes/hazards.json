@@ -15,7 +15,7 @@
 		{id:"despairdefeated",chance:100}]
     },
 	{  id: "despairactive",
-        label: "绝  望",
+        label: "绝望",
         actionId: "despair",
 		requirements: {inducesdespair: 1},
 		startdescription: "绝望似狼，吞噬念想。[你可以投入“安逸”来战胜<b>绝望</b>，否则若“恐惧”累积至3份，你将被它毁灭。]",
@@ -30,7 +30,7 @@
 	},
 	
 				{  id: "despairwarning",
-        label: "绝  望",
+        label: "绝望",
         actionId: "despair",
 		requirements: {dread: 2,contentment:-1},
 		startdescription: "绝望随紧跟不舍。[你可以投入“安逸”来战胜<b>绝望</b>，否则若“恐惧”累积至3份，你将被它毁灭。]",
@@ -56,7 +56,7 @@
 	},
 		   {
         id: "despairdeath",
-        label: "绝  望  将  我  淹  没",
+        label: "绝望将我淹没",
         actionId: "despair",
         requirements: {inducesdespair: 3},
 		slots: [{id:"Thoughts",label:"思绪",required: {contentment: 1},greedy:true}],

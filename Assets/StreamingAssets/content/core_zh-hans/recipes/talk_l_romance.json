@@ -43,7 +43,7 @@ startdescription:"@#uqrose|萝丝倚回我的臂弯，满足地微笑着。“�
 #uqsaliba|萨利巴边沉思边把手指伸进我的头发里转。“不会有好结果的，”他说着，脸上露出一些满意的神色。
 #uqvictor|在桌台之上，可见之处，维克多是一位完美的绅士。他一直搁在桌上的那只手手掌朝上。一只蛾子落到摊开的掌中：他合上手将它碾碎。“叫我想起了美好回忆，”他说。“我们走吧。”
 #uqviolet|维奥莱特不知何时改换成了与我面面相对的姿势，开始为我印上点点雪片一样转瞬即化的吻。“我不等人，”她警告我，“你要还知道好歹，就带我回家。
-#uqrenira|芮妮拉在旁人交汇的目光下风度大方地端坐着。有些旁观的会员投给她的眼光更多于给那些跳舞的人。我们像一滴热蜡流向另一滴一样并肩走开。“我很希望你接下来别做傻事”，她用极轻的声音说道，我们的双唇随即相接。 @",
+#uqrenira|芮妮拉在旁人交汇的目光下风度大方地端坐着。有些旁观的会员投给她的眼光更多于给那些跳舞的人。我们像一滴热蜡流向另一滴一样并肩走开。“我很希望你接下来别做傻事”，她用极轻的声音说道，我们的双唇随即相接。@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
@@ -63,7 +63,7 @@ startdescription:"@#uqenid|伊妮德徐徐向我行来，近一点，又近一�
 #uqneville|内维尔好像控制不住脸上的微笑。他急切地听着我说的每一个字。“我从没想过——”他用极轻的声音吐出。
 #uqslee|看样子，思雷准备了一首诗献给我。诗写得十分恭维。不过确实有点没完没了。吻他是个打住他的好法子。@
 
- ",
+",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:lantern,mutationLevel:1}],
@@ -94,7 +94,7 @@ label:"另一人？",
 actionId:"rose",
 requirements:{romanticinterest:1,summoned:-1,corpse:-1},
 comments:"re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
-slots: [{id:"Who?",label:"是谁？",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},forbidden:{summoned:-1,corpse:-1},greedy:true}],
+slots: [{id:"Who?",label:"是谁？",description:"手与手相牵，目与目相对。",required:{romanticinterest:1},forbidden:{summoned:-1,corpse:-1},greedy:true}],
 startdescription: "还有另一个人吗？",
 description:".",
 linked:[{id:"L_activatejealousy",chance:100},

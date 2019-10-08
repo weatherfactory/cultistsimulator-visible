@@ -21,7 +21,7 @@
             id: "evidence",
 			aspects:{evidencelevel:1},
             label: "不确凿证据",
-            description: "一名猎人发现了我的罪证——或许为真实，或许为臆造。 [拥有密教活动“证据”的猎人会变得更加危险。证据在制作它的猎人死后仍继续存在。]",
+            description: "一名猎人发现了我的罪证——或许为真实，或许为臆造。[拥有密教活动“证据”的猎人会变得更加危险。证据在制作它的猎人死后仍继续存在。]",
 						xtriggers:{investigatingsuccess:evidenceb,investigatingsetback:notoriety},
 						lifetime: 600,
 			

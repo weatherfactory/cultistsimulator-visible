@@ -93,7 +93,7 @@ craftable:true
         requirements: {locationbookdealer:1,funds:1},
 		effects: {},
 		deckeffect: {"commontomes":1},
-        startdescription: "沙里淘金，壳里拾粒，水中萃血，皆需工夫。 如果我买下足够多的书，总会发现些有趣的事情。",
+        startdescription: "沙里淘金，壳里拾粒，水中萃血，皆需工夫。如果我买下足够多的书，总会发现些有趣的事情。",
         description: "我发现了值得注意的东西。",
         warmup: 30,
         craftable: true,
@@ -104,7 +104,7 @@ craftable:true
         label: "莫兰书店要关张了！",
         actionId: "explore",
         requirements: {genericrubbishbook:1},
-        description: "“我打算改行了，”莫兰小姐告诉你， “我的存货售出了大半，也引起了防剿局的注目。 所以就此道别吧。最后这本书内容不知所云，不过我在封底塞了几页有趣的文章，作为对你常来光顾的谢礼。”",
+        description: "“我打算改行了，”莫兰小姐告诉你，“我的存货售出了大半，也引起了防剿局的注目。所以就此道别吧。最后这本书内容不知所云，不过我在封底塞了几页有趣的文章，作为对你常来光顾的谢礼。”",
 		deckeffect:{oneoffrewards:1},
         warmup: 1,
 aspects:{exhaustlocation:1}
@@ -116,7 +116,7 @@ aspects:{exhaustlocation:1}
         requirements: {locationauctionhouse:1,auctionable:-1},
 		effects: {},
 		deckeffect: {"auctionedcommontomes":1},
-        startdescription: "我们身处一间无窗、墙壁为鲜艳燃橙色的拍卖室，坐在外观扎眼、里特费尔德出品的椅子里，等待拍卖师宣布待拍的商品。 新油漆的气味让人脑子发晕。 [点击“开始”查看待拍物品，或放入你想售卖的物品。]",
+        startdescription: "我们身处一间无窗、墙壁为鲜艳燃橙色的拍卖室，坐在外观扎眼、里特费尔德出品的椅子里，等待拍卖师宣布待拍的商品。新油漆的气味让人脑子发晕。[点击“开始”查看待拍物品，或放入你想售卖的物品。]",
         description: ".",
 			
         warmup: 5,
@@ -132,7 +132,7 @@ aspects:{exhaustlocation:1}
 		
 		deckeffect: {"streetsstrangefinds":1},
         startdescription: "于名为弧月的时辰，街巷现出异相。",
-        description: "幻像跳着优雅的帕凡舞从我身旁经过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃做成的女子。 待回家时，我将心怀不舍。",
+        description: "幻像跳着优雅的帕凡舞从我身旁经过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃做成的女子。待回家时，我将心怀不舍。",
         warmup: 30,
         craftable: true
     },
@@ -193,7 +193,7 @@ aspects:{exhaustlocation:1}
         id: "explorechoosepaycriminal",
         label: "雇工？",
         actionId: "explore",
-        startdescription: "我找到了一个收钱办事的人，我或许可以雇他去做那些我心不忍而又不得不为的事情。 [添加“资金”，在一定时间内雇佣此人。]",
+        startdescription: "我找到了一个收钱办事的人，我或许可以雇他去做那些我心不忍而又不得不为的事情。[添加“资金”，在一定时间内雇佣此人。]",
 slots:[{id:"Payment",label:"薪酬",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},

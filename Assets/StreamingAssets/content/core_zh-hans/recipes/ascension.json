@@ -146,14 +146,14 @@ actionId: "work",
 
 {
 id: "majorgrailvictory",
-label: "筵  宴  将  至",
+label: "筵宴将至",
 actionId: "work",
 requirements: {ritual: 1,
 ascensionsensationf:1,
 grail:50},
 effects: {},
 startdescription: "[This text is available when advanced legacies arrive.]",
-description: "筵宴开幕。 Remember that the ending text will contain the payload.",
+description: "筵宴开幕。Remember that the ending text will contain the payload.",
 warmup: 60,
 craftable: false
 },
@@ -669,7 +669,7 @@ warmup:30
 
 {id:"ending.minorcrownedgrowthvictory",
 actionId:"ambition",
-label:"去  侵  染  和  成  为 ",
+label:"去侵染和成为",
 requirements:{ghoul.hunger:7},
 startdescription:"我的食欲已成为超越我本身的一种东西，但并未出离我本身之外。我的腹腔中孳殖满了硕果。太迟了。",
 ending:"minorcrownedgrowthvictory",
