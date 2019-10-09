@@ -39,7 +39,7 @@
         {
             "id": "gloverandgloverjunior_diligence_promotion",
             "label": "Повышение!",
-            "description": "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!\r\n\t\t\r\nMy new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
+            "description": "Мистер Олден, отвечающий за всю бумажную работу, вызвал меня в кабинет, чтобы поблагодарить за усердие. Я смотрю на бородавку у него на шее, а он всё говорит и говорит, говорит, говорит... Но в конце оказывается, что меня повысили!\r\n\t\t\r\nНа новом месте лучше платят, а стол стоит около окна на улицу. Но при этом я работаю напрямую с мистером Олденом. А мистер Олден очень требователен.",
             "startdescription": ""
         },
         {
@@ -82,13 +82,13 @@
         {
             "id": "gloverandglover_difficultbossa_patienceisavirtue",
             "label": "Мистер Олден выходит на пенсию!",
-            "description": "'You <i>have</i> shown some improvement, under my direction. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'\r\n\t\r\n'One more thing! I had almost forgotten - '\r\n\t\r\n'Be especially punctual tomorrow, please.'\r\n\t",
+            "description": "«Под моим наставничеством вы доказали, что <i>можете</i> учиться. Помните всё, чему я вас научил, и когда-нибудь вас начнут ставить в пример. Всё, можете идти».\r\n\t\r\n«А, чуть не забыл».\r\n\t\r\n«Завтра нужно показать себя с лучшей стороны. Пожалуйста».\r\n\t",
             "startdescription": "«Завтра я покину \"Гловер и Гловер\". Когда закончите дела, зайдите ко мне»."
         },
         {
             "id": "gloverandglover_difficultbossa_overtime_initial",
             "label": "Работать сверхурочно по настоянию мистера Олдена",
-            "description": "'On this occasion I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "description": "«В таком случае, я признаю вашу работу соответствующей нашим стандартам. Можете идти. Завтра не опаздывайте, пожалуйста».\r\n\t\r\n[Должен быть способ разобраться с мистером Олденом.]",
             "startdescription": "«Работа заканчивается, когда я считаю её законченной, но не раньше. Надеюсь, мы хорошо друг друга понимаем».",
             "slots": [
                 {
@@ -101,7 +101,7 @@
         {
             "id": "gloverandglover_difficultbossa_overtime",
             "label": "Работать сверхурочно по настоянию мистера Олдена",
-            "description": "'Once again, I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "description": "«Я вновь признаю вашу работу соответствующей нашим стандартам. Можете идти. Завтра не опаздывайте, пожалуйста».\r\n\t\r\n[Должен быть способ разобраться с мистером Олденом.]",
             "startdescription": "«Работа заканчивается, когда я считаю её законченной, но не раньше. Надеюсь, мы хорошо друг друга понимаем».",
             "slots": [
                 {
@@ -114,7 +114,7 @@
         {
             "id": "gloverandglover_difficultbossa_overtime_fail",
             "label": "Работать сверхурочно по настоянию мистера Олдена",
-            "description": "'I would like to say that I am disappointed, but my expectations of you were already low. I have no choice but to withhold a portion of your pay. You may go, but be punctual tomorrow, please.'\r\n\t\r\n[There may be ways to deal with Mr Alden.]",
+            "description": "«Я бы мог сказать, что разочарован, но мои ожидания и так были минимальны. Мне придется удержать часть вашей заработной платы. Ступайте, но постарайтесь завтра не опаздывать, пожалуйста».\r\n\t\r\n[Должен быть способ разобраться с мистером Олденом.]",
             "startdescription": "«Я не могу поверить, что вы не понимаете, насколько важна наша работа. Нужно <i>полностью</i> ей отдаваться». [Добавить разум, чтобы удовлетворить мистера Олдена.]"
         },
         {
@@ -187,7 +187,7 @@
         },
         {
             "id": "gloverandgloverseniorworkyoungerglovergone",
-            "label": "Work at Glover & Glover",
+            "label": "Работа в «Гловер и Гловер»",
             "description": "Закрыв глаза, я вижу внутренним взором пляшущие цифры. Когда открываю, мне больно от света.",
             "startdescription": "Нужно свернуть мои руки должным образом и можно начинать.",
             "slots": [
@@ -211,7 +211,7 @@
         },
         {
             "id": "gloverandglovertopwork",
-            "label": "Work at Glover & Glover",
+            "label": "Работа в «Гловер и Гловер»",
             "description": "Сердцем «Гловер и Гловер» можно считать бухгалтерию, где деньги текут, как весенние ручьи. Конечностями можно считать администраторов и продавцов, тихих и расторопных. Я же вместе с другими директорами сижу в черепе, на самом верху, где мне пока не страшны скандалы и финансовые сложности.",
             "startdescription": "Меня ждут ещё долгие часы рабочего дня. Как бы хотелось уйти домой сразу после ланча...",
             "slots": [
@@ -230,7 +230,7 @@
         },
         {
             "id": "gloverandglovertopjob_tainted",
-            "label": "Work at Glover & Glover",
+            "label": "Работа в «Гловер и Гловер»",
             "description": "Я проверяю аккуратные столбики цифр в своем опрятном кабинете на пятом этаже. Из окна видно реку. Каждые пятьдесят восемь минут секретарша приносит мне горячий кофе. У реки тот же цвет, что и у дождя.",
             "startdescription": "Проходят дни, прежде чем я могу отправиться домой после ланча. Коллеги начинают подозревать, кто я. Но они даже не подозревают, кем я могу быть.",
             "slots": [
