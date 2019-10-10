@@ -242,10 +242,6 @@ public class MenuScreenController : MonoBehaviour {
         LinuxHints.gameObject.SetActive(false);
 #endif
 
-        // Enable Russian button only if requested by config override, since
-        // the Russian localisation isn't ready yet
-        russianLanguageButton.gameObject.SetActive(Config.Instance.showAllLanguages);
-
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
         FadeIn();

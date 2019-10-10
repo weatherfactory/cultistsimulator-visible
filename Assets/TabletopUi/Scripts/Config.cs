@@ -12,7 +12,6 @@ public class Config
 	public int verbosity = 0;
     public bool knock = false;
     public string culture;
-    public bool showAllLanguages;
 
     // simple singleton declaration
     private static Config _instance;
@@ -69,12 +68,7 @@ public class Config
 	        {
 		        culture = null;
 	        }
-
-	        if (contents.Contains("showAllLanguages=1"))
-	        {
-		        showAllLanguages = true;
-	        }
-        }
+	    }
 	    else
 	    {
 	        
