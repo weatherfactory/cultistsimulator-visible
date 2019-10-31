@@ -68,6 +68,9 @@ public class MenuScreenController : MonoBehaviour {
     public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
 
+    [Header("Localisation")]
+    public Button russianLanguageButton;
+
     bool canTakeInput;
     int sceneToLoad;
 	private string cultureContentLoaded = "none";	// Used to track which culture we have got loaded. If language changes on the Menu screen, we must re-import the content.

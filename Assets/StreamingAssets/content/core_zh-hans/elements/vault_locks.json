@@ -4,7 +4,7 @@
 	{id: "peril_treacherousground",
 	label: "诡变多端的地面",
 	aspects: {peril:1},
-	description: "坑洼，泥沼和峭壁。 这里的土地不可信任。 我们需要强健的双手或者锐利的目光——<b>铸</b>或<b>灯</b>。"
+	description: "坑洼，泥沼和峭壁。这里的土地不可信任。我们需要强健的双手或者锐利的目光——<b>铸</b>或<b>灯</b>。"
 	},
 		{id: "peril_forest",
 	label: "危机四伏的森林",
@@ -46,19 +46,19 @@
 		{id: "guardian_watchers",
 	label: "看守",
 	aspects: {guardian:1},
-	description: "凡人。甚至可能是些普通的凡人。 但是数量很多。 他们可以被打倒，被诱惑，或者被欺骗。"
+	description: "凡人。甚至可能是些普通的凡人。但是数量很多。他们可以被打倒，被诱惑，或者被欺骗。"
 	},
 
 			{id: "guardian_monks",
 	label: "僧侣",
 	aspects: {guardian:1},
-	description: "被赏赐或被强迫在这里侍奉的沉思者们。被他们那奇妙的誓言所约束。 我们可以杀死他们，欺骗他们，但无法诱惑他们。"
+	description: "被赏赐或被强迫在这里侍奉的沉思者们。被他们那奇妙的誓言所约束。我们可以杀死他们，欺骗他们，但无法诱惑他们。"
 	},
 	
 			{id: "guardian_dead",
 	label: "烦躁的亡者",
 	aspects: {guardian:1},
-	description: "不是所有亡者都能轻易安息。 这里的亡者不喜欢我们打扰。 我们可以用<b>刃</b>战胜他们；他们也可能服从以<b>冬</b>之名来访的人。"
+	description: "不是所有亡者都能轻易安息。这里的亡者不喜欢我们打扰。我们可以用<b>刃</b>战胜他们；他们也可能服从以<b>冬</b>之名来访的人。"
 	},
 	
 	
@@ -71,7 +71,7 @@
 		{id: "guardian_watchers_pre",
 	label: "看守",
 	aspects: {guardian:1},
-	description: "凡人。甚至可能是些普通的凡人。 但是数量很多。 他们可以被打倒，被诱惑，或者被欺骗。",
+	description: "凡人。甚至可能是些普通的凡人。但是数量很多。他们可以被打倒，被诱惑，或者被欺骗。",
 	isAspect:true,
 	icon:"guardian"
 	},
@@ -79,7 +79,7 @@
 			{id: "guardian_monks_pre",
 	label: "僧侣",
 	aspects: {guardian:1},
-	description: "被赏赐或被强迫在这里侍奉的沉思者们。被他们那奇妙的誓言所约束。 我们可以杀死他们，欺骗他们，但无法诱惑他们。",
+	description: "被赏赐或被强迫在这里侍奉的沉思者们。被他们那奇妙的誓言所约束。我们可以杀死他们，欺骗他们，但无法诱惑他们。",
 	isAspect:true,
 	icon:"guardian"
 	},
@@ -87,7 +87,7 @@
 			{id: "guardian_dead_pre",
 	label: "烦躁的亡者",
 	aspects: {guardian:1},
-	description: "不是所有亡者都能轻易安息。 这里的亡者不喜欢我们打扰。 我们可以用<b>刃</b>战胜他们；他们也可能服从以<b>冬</b>之名来访的人。",
+	description: "不是所有亡者都能轻易安息。这里的亡者不喜欢我们打扰。我们可以用<b>刃</b>战胜他们；他们也可能服从以<b>冬</b>之名来访的人。",
 	isAspect:true,
 	icon:"guardian"
 	},
@@ -100,28 +100,28 @@
 					{id: "guardian_long",
 	label: "长生者",
 	aspects: {guardian:1},
-	description: "杀死一个已经通过三尖门的人是非常困难的。 而且这里有很多这样的人。不过也许我们可以欺骗一个，或者投其所好。"
+	description: "杀死一个已经通过三尖门的人是非常困难的。而且这里有很多这样的人。不过也许我们可以欺骗一个，或者投其所好。"
 	},
 	
 		{id: "curse_dread",
 	label: "涸魂诅咒",
 	aspects: {curse:1},
-	description: "我们需要<b>心</b>或<b>灯</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
+	description: "我们需要<b>心</b>或<b>灯</b>来压制这种诅咒。否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 		{id: "curse_visions",
 	label: "第五目诅咒",
 	aspects: {curse:1},
-	description: "我们需要<b>心</b>或者<b>冬</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
+	description: "我们需要<b>心</b>或者<b>冬</b>来压制这种诅咒。否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 	{id: "curse_affliction",
 	label: "迟息诅咒",
 	aspects: {curse:1},
-	description: "我们需要<b>心</b>或者<b>杯</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
+	description: "我们需要<b>心</b>或者<b>杯</b>来压制这种诅咒。否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 		{id: "curse_nowhere",
 	label: "世间的蠕虫",
 	aspects: {curse:1},
-	description: "我们需要<b>灯</b>或者<b>蛾</b>来压制这种诅咒。 否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
+	description: "我们需要<b>灯</b>或者<b>蛾</b>来压制这种诅咒。否则，它虽然不会让我们偏离目标，却可能会在将来困扰我们。"
 	},
 
 

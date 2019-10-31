@@ -4,7 +4,7 @@
         id: "dehoris1latin",
             unique:true, label: "《司辰志·卷一》",
             aspects:{text:1,auctionable:1,textlatin:1},
-            description: "(De Horis)拉丁语著。一本于四世纪成书于十四世纪被译为拉丁语的书籍在十九世纪的重印本（作者为不知疲倦的纳撒尼尔·达西-埃弗斯）。",
+            description: "拉丁语著。一本于四世纪成书于十四世纪被译为拉丁语的书籍在十九世纪的重印本（作者为不知疲倦的纳撒尼尔·达西-埃弗斯）。",
 			xtriggers: {scholarlatin: dehoris1}
         },
 			          {
@@ -12,14 +12,14 @@
             unique:true, label: "《司辰志·卷二》",
             aspects:
             {text:1,auctionable:1,textlatin:1},
-            description: "(De Horis)拉丁语著。一本于四世纪成书于十四世纪被译为拉丁语的书籍在十九世纪的重印本（作者为不知疲倦的纳撒尼尔·达西-埃弗斯）。",
+            description: "拉丁语著。一本于四世纪成书于十四世纪被译为拉丁语的书籍在十九世纪的重印本（作者为不知疲倦的纳撒尼尔·达西-埃弗斯）。",
 			xtriggers: {scholarlatin: dehoris2}
         },
 
 		{id:"debellismurorumlatin",
 		unique:true, label:"《墙垣之战》",
 		aspects: {text:1,auctionable:1,textlatin:1},
-		description:"(De Bellis Murorum)拉丁语著。十八世纪史诗，作者托名为“索利浦西斯托斯”。",
+		description:"拉丁语著。十八世纪史诗，作者托名为“索利浦西斯托斯”。",
 		xtriggers: {scholarlatin:debellismurorum}},
 		
 		{id:"onwhatiscontainedbysilvergreek",
@@ -304,7 +304,7 @@
             unique:true, label: "《剥皮密续》",
             aspects:
             {text:1,auctionable:2,textsanskrit:1},
-            description: "据记载，该密续由一个人称“褪皮”的神秘人物口述而来，介绍了神话中的那伽大蛇(naga)的很多习性。《剥皮密续》在亚历山大·斯派鹭那本充满被害妄想的小册子里占很大比重。",
+            description: "据记载，该密续由一个人称“褪皮”的神秘人物口述而来，介绍了神话中的那伽大蛇的很多习性。《剥皮密续》在亚历山大·斯派鹭那本充满被害妄想的小册子里占很大比重。",
 			xtriggers: {scholarsanskrit: flayedtantra}
         },
 		{
@@ -352,7 +352,7 @@
             unique:true, label: "《铁之书》",
             aspects:
             {text:1,auctionable:2,textfucine:1},
-            description: "利米亚教团(原文为拉丁语)的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚(Hispania Gallaecia)，利米亚(Limia)河源头一块隐秘的飞地。",
+            description: "利米亚教团的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚，利米亚河源头一块隐秘的飞地。",
 			xtriggers: {scholarfucine: ironbook}
         },
 		{
@@ -360,7 +360,7 @@
             unique:true, label: "《银之书》",
             aspects:
             {text:1,auctionable:2,textfucine:1},
-            description: "利米亚教团(原文为拉丁语)的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚(Hispania Gallaecia)，利米亚(Limia)河源头一块隐秘的飞地。",
+            description: "利米亚教团的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚，利米亚河源头一块隐秘的飞地。",
 			xtriggers: {scholarfucine: silverbook}
         },
 		{
@@ -368,7 +368,7 @@
             unique:true, label: "《白骨之书》",
             aspects:
             {text:1,auctionable:2,textfucine:1},
-            description: "利米亚教团(原文为拉丁语)的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚(Hispania Gallaecia)，利米亚(Limia)河源头一块隐秘的飞地。",
+            description: "利米亚教团的指南书。该教团由类不死者组成，占据了罗马行省西斯班尼亚·加拉埃西亚，利米亚河源头一块隐秘的飞地。",
 			xtriggers: {scholarfucine: ivorybook}
         },
 		{
@@ -376,7 +376,7 @@
             unique:true, label: "《世界从不落泪》",
             aspects:
             {text:1,auctionable:2,textaramaic:1},
-            description: "“棕色” 约书亚在哈马城中的一口井里找到了本书。有不可信的传说称本书为亚历山大从伊苏斯撤退时所弃。",
+            description: "“棕色”约书亚在哈马城中的一口井里找到了本书。有不可信的传说称本书为亚历山大从伊苏斯撤退时所弃。",
 			xtriggers: {scholararamaic: worlddoesnotweep}
         },
 		{
@@ -432,7 +432,7 @@
             unique:true, label: "《黑林地的静谧》",
             aspects:
             {text:1,auctionable:2,textgreek:1},
-            description: "关于“遗忘家族”的寓言式史书，书中暗示该组织受蜈蚣的启发。时至如今，“塞雷诺·布莱克伍德(意为静谧黑林地)”一直是对密教的别称。",
+            description: "关于“遗忘家族”的寓言式史书，书中暗示该组织受蜈蚣的启发。时至如今，“塞雷诺·布莱克伍德（意为静谧黑林地）”一直是对密教的别称。",
 			xtriggers: {scholargreek: serenityofblackwood}
         },
 		{
@@ -455,7 +455,7 @@
             unique:true, label: "《真血之书》",
             aspects:
             {text:1,auctionable:2,textlatin:1},
-            description: " 由圣多默派教徒卡西乌斯所作。",
+            description: "由圣多默派教徒卡西乌斯所作。",
 			xtriggers: {scholarlatin: bookoftrueblood}
         },
 		{
@@ -635,7 +635,7 @@
             unique:true, label: "《关于维持一切事物……》",
             aspects:
             {text:1,auctionable:2,textmandaic:1},
-            description: "《关于维持一切事物存续的教令》。大马士革绳结姐妹会的头领“黑色”艾丽遭到了皇帝狄第乌斯·尤利安努斯(Didius Julianus)囚禁。据记载，她曾命人将这些秘密教义记录成书，以保其免于遗失，永远存续。遗憾的是，据传说狄第乌斯·尤利安努斯命人将本作随她葬入了一个没有标记的墓室。",
+            description: "《关于维持一切事物存续的教令》。大马士革绳结姐妹会的头领“黑色”艾丽遭到了皇帝狄第乌斯·尤利安努斯囚禁。据记载，她曾命人将这些秘密教义记录成书，以保其免于遗失，永远存续。遗憾的是，据传说狄第乌斯·尤利安努斯命人将本作随她葬入了一个没有标记的墓室。",
 			xtriggers: {scholarmandaic: commandspreservationallexists}
         },
 						{

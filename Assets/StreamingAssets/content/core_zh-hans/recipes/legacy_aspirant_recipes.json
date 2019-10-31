@@ -59,7 +59,7 @@ actionId: "study",
 requirements: {bequestintro:1,reason:1},
 effects: {bequestintro: -1,ascensionenlightenmenta: 1, mapbookdealer: 1,fragmentlantern:1,contactintro:1},
 startdescription: "我会一丝不苟地检查每件物品。",
-description: "来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰(Hour)、辉光(Glory)。他们知晓时间与世界表皮下隐藏的秘密。<b>我开始燃起新的好奇之念。</b>\n
+description: "来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰、辉光。他们知晓时间与世界表皮下隐藏的秘密。<b>我开始燃起新的好奇之念。</b>\n
 这里有一份笔记——提到如何前往一家不宣传自家货品的书店……\n",
 warmup: 30,
 craftable: true
@@ -71,7 +71,7 @@ actionId: "study",
 requirements: {bequestintro:1,passion:1},
 effects: {bequestintro: -1,ascensionpowera: 1, mapbookdealer:1,fragmentforge:1,contactintro:1},
 startdescription: "我会阅读，会来回踱步，会打着草稿，会惊讶地抓自己的头发，高兴到手舞足蹈，绝望到精神崩溃。",
-description: "来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰(Hour)、辉光(Glory)。我察觉到那里有连将军和国王也会嫉妒的力量。<b>我开始燃起新的欲望之念。</b>\n
+description: "来信者准确地描述了我的梦境！他们的用词充满既视感——居屋、林地、司辰、辉光。我察觉到那里有连将军和国王也会嫉妒的力量。<b>我开始燃起新的欲望之念。</b>\n
 这里有一份笔记——提到如何前往一家不宣传自家货品的书店……\n",
 warmup: 30,
 craftable: true
@@ -85,7 +85,7 @@ craftable: true
 		effects: {contactintro:-1,mystique:1},
 		alternativerecipes:	[{id: "findacquaintanceopentalk",chance:100, additional: true}],
         startdescription: "我掌握了一个名字，一份描述，一些撩人的细节……但是，这座城市有千千万万张面孔。",
-        description: "现在我知道了一个地址！我将寄一封信过去，然后提议安排一次见面。 [解锁<b>谈话</b>。]",
+        description: "现在我知道了一个地址！我将寄一封信过去，然后提议安排一次见面。[解锁<b>谈话</b>。]",
         warmup: 30,
         craftable: true,
 		comments: "This is one way the Talk verb may be opened."

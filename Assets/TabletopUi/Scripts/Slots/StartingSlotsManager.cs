@@ -95,8 +95,8 @@ namespace Assets.TabletopUi.SlotsContainers {
             situationController.StartingSlotsUpdated();
         }
 
-        protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {
-            var slot = base.BuildSlot(slotName, slotSpecification, parentSlot);
+        protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {
+            var slot = base.BuildSlot(slotName, slotSpecification, parentSlot, wideLabel);
             gridManager.AddSlot(slot);
             return slot;
         }

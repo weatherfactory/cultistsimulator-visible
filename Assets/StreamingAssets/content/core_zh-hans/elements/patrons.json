@@ -253,13 +253,13 @@ icon:"poppy"
 		
 		{id:"kleidouchos",
 		label: "施鲁塞尔女士",
-		description:"(施鲁塞尔女士原文为德语, 施鲁塞尔意为钥匙)一个精神矍铄，魄力十足的女人，衣着黑白分明，脸上满布皱纹。没人见过她眨眼。一只小小的黑毛狗崽从她裙底探出头来。",
+		description:"一个精神矍铄，魄力十足的女人，衣着黑白分明，脸上满布皱纹。没人见过她眨眼。一只小小的黑毛狗崽从她裙底探出头来。",
 		aspects:{patron:1}
 		},
 		
 		{id:"naenia",
 label:"“挽歌儿小姐”",
-description:"一幅画作，画中肤色深暗的女人拥有雪色的双眸和剪得很短的骨白色头发，站在一个长满白花藤的小型大理石墓前。署名为“乔纳斯(意为鸽子)·B·蒙克，作于1811年。”",
+description:"一幅画作，画中肤色深暗的女人拥有雪色的双眸和剪得很短的骨白色头发，站在一个长满白花藤的小型大理石墓前。署名为“乔纳斯·B·蒙克，作于1811年。”",
 slots:[{id:"subject",label:"回忆",description:"挽歌儿小姐从不对我开口——她不过是一幅画——但过后我总能记得她说过什么。",
 actionId:"talk",required:{memory:1,ascension.remembrance.offering:1}}],
 aspects:{patron:1}

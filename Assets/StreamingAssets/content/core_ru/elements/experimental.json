@@ -1,39 +1,39 @@
 {
     "elements": [
         {
+            "id": "owl",
             "label": "Сова без шляпы",
-            "description": "Сова говорит, что последний наш персонаж — #PREVIOUSCHARACTERNAME#, последнее желание — #LAST_DESIRE#, самый верный последователь — #LAST_FOLLOWER#, а последняя книга — #LAST_BOOK#.",
-            "id": "owl"
+            "description": "Сова говорит, что последний наш персонаж — #PREVIOUSCHARACTERNAME#, последнее желание — #LAST_DESIRE#, самый верный последователь — #LAST_FOLLOWER#, а последняя книга — #LAST_BOOK#."
         },
         {
             "id": "wolfatthedoor",
+            "label": "Волк у дверей",
             "description": "Волк примет всё, что ему предложат, и всё пожрёт.",
             "slots": [
                 {
-                    "label": "Meal5",
-                    "id": "Meal5"
+                    "id": "Meal5",
+                    "label": "Meal5"
                 }
-            ],
-            "label": "Волк у дверей"
+            ]
         },
         {
             "id": "wolf"
         },
         {
-            "label": "Лев в паутине",
-            "id": "lionweb"
+            "id": "lionweb",
+            "label": "Лев в паутине"
         },
         {
-            "label": "Вепрь в словах",
-            "id": "boarwords"
+            "id": "boarwords",
+            "label": "Вепрь в словах"
         },
         {
-            "label": "Мир в Быке",
-            "id": "worldbull"
+            "id": "worldbull",
+            "label": "Мир в Быке"
         },
         {
-            "label": "Возможно, Птица",
-            "id": "notaworm"
+            "id": "notaworm",
+            "label": "Возможно, Птица"
         }
     ]
 }

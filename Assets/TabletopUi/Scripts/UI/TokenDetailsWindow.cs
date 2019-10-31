@@ -10,6 +10,7 @@ using System.Collections;
 using System;
 using System.Linq;
 using Assets.Core.Entities;
+using TabletopUi.Scripts.Elements;
 using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.CS.TabletopUI {
@@ -34,9 +35,8 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] TextMeshProUGUI deckInfos;
 
         [Header("Aspect Display")]
+        [SerializeField] AspectSetsDisplay aspectsDisplayRequiredAndForbidden;
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
-        [SerializeField] AspectsDisplay aspectsDisplayRequired;
-        [SerializeField] AspectsDisplay aspectsDisplayForbidden;
 
         Coroutine infoHighlight;
 
@@ -171,8 +171,7 @@ namespace Assets.CS.TabletopUI {
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(0); // Make sure the other hint icons are gone
-            aspectsDisplayForbidden.DisplayAspects(null);
-            aspectsDisplayRequired.DisplayAspects(null);
+            aspectsDisplayRequiredAndForbidden.Clear();
 
         }
 
@@ -196,8 +195,8 @@ namespace Assets.CS.TabletopUI {
             ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(null);
-            aspectsDisplayForbidden.DisplayAspects(slotSpec.Forbidden);
-            aspectsDisplayRequired.DisplayAspects(slotSpec.Required);
+            aspectsDisplayRequiredAndForbidden.AddAspectSet(0, slotSpec.Required);
+            aspectsDisplayRequiredAndForbidden.AddAspectSet(1, slotSpec.Forbidden);
         }
 
         void SetDeck(IDeckSpec deckId, int deckQuantity) {
@@ -215,8 +214,7 @@ namespace Assets.CS.TabletopUI {
             ShowDeckInfos(deckQuantity);
 
             aspectsDisplayFlat.DisplayAspects(null);
-            aspectsDisplayForbidden.DisplayAspects(null);
-            aspectsDisplayRequired.DisplayAspects(null);
+            aspectsDisplayRequiredAndForbidden.Clear();
         }
 
         // SUB VISUAL SETTERS
@@ -251,7 +249,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void ShowDeckInfos(int quantity) {
-            deckInfos.gameObject.SetActive(quantity > 0);
+            deckInfos.enabled = quantity > 0;
             deckInfos.text = quantity > 0 ? LanguageTable.Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 

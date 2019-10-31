@@ -21,7 +21,7 @@
 	},
      					{
 	id: "explorevault_hint_addfunds",
-	label: "为探险做准备？ ",
+	label: "为探险做准备？",
 	actionId: "explore",
 	requirements: {vault:1,follower:1},
 	startdescription: "如果我投入至少一份资金，我就可以开始探险了。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
@@ -30,7 +30,7 @@
 	},
 			{
 	id: "explorevault_hint_addfollower",
-	label: "为探险做准备？ ",
+	label: "为探险做准备？",
 	actionId: "explore",
 	requirements: {vault:1,funds:1},
 	startdescription: "如果我派遣至少一名追随者，我就可以开始探险了。[探险时，突破一个阻碍需消耗至少一份资金；阻碍由追随者负责突破。资金或追随者耗尽时，探险将终止。]",
@@ -39,7 +39,7 @@
 	},
       					{
 	id: "explorevault_hint",
-	label: "为探险做准备？ ",
+	label: "为探险做准备？",
 	actionId: "explore",
 	requirements: {vault:1},
 	startdescription: "我可以派出一支探险队前往这里寻找书籍、宝藏以及存有法力的工具。但我需要可供派遣的追随者，和用来供给他们的资金。",

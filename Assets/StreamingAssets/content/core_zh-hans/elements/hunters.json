@@ -5,7 +5,7 @@
             label: "韦克菲尔德督察",
             aspects:
             {hunter:1,mortal:1,meticulous:1,grim:1},
-            description: "扎迦利·韦克菲尔德(意为醒时之境)：一名悒悒不乐却又冷酷无情的督察警官。他最近被借调到了防剿局。",
+            description: "扎迦利·韦克菲尔德（意为醒时之境）：一名悒悒不乐却又冷酷无情的督察警官。他最近被借调到了防剿局。",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:zachary_r_c,capturehunter:investigator1prisoner,dissolution:influencewintere}
         },
@@ -58,7 +58,7 @@ lifetime:600,decayTo:"corpse"
         },
 								 {
         id: "investigator2prisoner",
-            label: "斯宾塞·霍布森 ：俘获！",
+            label: "斯宾塞·霍布森：俘获！",
             aspects:
             {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,knock:3},
               description: "霍布森当过记者，私家侦探和——时间极短的——教士。让我们确保他死在牢中。",

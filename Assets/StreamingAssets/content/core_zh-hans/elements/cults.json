@@ -34,7 +34,7 @@
 			{id:"Trappings", label:"礼器", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "用于制造仪式感。消耗<b>原料</b>和<b>影响</b>；使用，但不消耗<b>工具</b>。"
 			}],
 
-            description: "密教社团，追奉生育、鲜血与食欲之奥秘。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为纵情者(Cyprian)。]",
+            description: "密教社团，追奉生育、鲜血与食欲之奥秘。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为纵情者。]",
 				unique:true
         },
 		          {
@@ -48,7 +48,7 @@
 			{id:"Trappings", label:"礼器", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "用于制造仪式感。消耗<b>原料</b>和<b>影响</b>；使用，但不消耗<b>工具</b>。"
 			}],
 
-            description: "密教社团，追奉永无止息的鼓点。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为蛊舞者(Tarantellist)。]",
+            description: "密教社团，追奉永无止息的鼓点。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为蛊舞者。]",
 				unique:true
         },
 		          {
@@ -73,7 +73,7 @@
 			{id:"Ceremony", label:"典仪", actionId:"talk", required: {lore:1},description: "如要发展新的信众，我只消示现些小小的奥秘，而其中更加究竟的东西，则只能展现给立下更深誓约的人们。"},
 			{id:"Trappings", label:"礼器", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "用于制造仪式感。消耗<b>原料</b>和<b>影响</b>；使用，但不消耗<b>工具</b>。"
 			}],
-            description: "密教社团，追求解明泄露自更猛烈处的光芒。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为先见者(Seer)。]",
+            description: "密教社团，追求解明泄露自更猛烈处的光芒。[将<b>教派</b>放入<b>谈话</b>中可以招募，擢升追随者并外派他们执行任务，收集资源。信徒可以擢升为门徒；而少数天赋异禀的门徒还可以进一步擢升为先见者。]",
 				unique:true
         },
 		          {
@@ -96,7 +96,7 @@
 			slots: [{id:"Associate", label:"对谁", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "一名新信众，或坚定的门徒。"},
 			{id:"Ceremony", label:"典仪", actionId:"talk",  required: {lore:1},description: "想要触及更高阶的奥秘，必须立下更深刻的誓约。"},
 			{id:"Trappings", label:"礼器", actionId:"talk", required: {tool: 1,ingredient:1,influence:1},description: "用于制造仪式感。消耗<b>原料</b>和<b>影响</b>；使用，但不消耗<b>工具</b>。"}],
-            description: "密教社团，追求研究五大历史，及其数以千计、亦虚亦实的分支。[“圣许德拉(Hydra, 九头蛇)”与其他教派不同，任何性相都可用于擢升信徒，但不存在使徒一阶。]",
+            description: "密教社团，追求研究五大历史，及其数以千计、亦虚亦实的分支。[“圣许德拉”与其他教派不同，任何性相都可用于擢升信徒，但不存在使徒一阶。]",
 				unique:true
         },
 		          {

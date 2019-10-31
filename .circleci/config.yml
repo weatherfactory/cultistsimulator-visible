@@ -2,9 +2,9 @@ version: 2.1
 executors:
   csunity-ci:
     docker:
-      - image: lyrositor/wfunity-ci:latest
+      - image: weatherfactoryci/wfunity-ci
         auth:
-          username: lyrositor
+          username: weatherfactoryci
           password: $DOCKERHUB_PASSWORD
 jobs:
   build:

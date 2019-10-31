@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
 
         [Header("Prefabs")]
         public ElementStackSimple elementStackSimplePrefab;
-      
+
 
         [Header("Selected Legacy")]
         public CanvasGroupFader canvasFader;
@@ -54,6 +54,7 @@ namespace Assets.CS.TabletopUI {
             canvasFader.SetAlpha(0f);
 
 			FadeIn();
+			SelectLegacy(0);
 			canInteract = true;
         }
 

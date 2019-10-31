@@ -62,7 +62,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return slotToReturn;
     }
 
-    protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {
+    protected virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot, bool wideLabel = false) {
         var slot = PrefabFactory.CreateLocally<RecipeSlot>(transform);
 
         slot.name = slotName + (slotSpecification != null ? " - " + slotSpecification.Id : "");
@@ -70,6 +70,12 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         slot.Initialise(slotSpecification);
         slot.onCardDropped += RespondToStackAdded;
         slot.onCardRemoved += RespondToStackRemoved;
+        if (wideLabel)
+        {
+            var slotTransform = slot.SlotLabel.GetComponent<RectTransform>();
+            var originalSize = slotTransform.sizeDelta;
+            slotTransform.sizeDelta = new Vector2(originalSize.x * 1.5f, originalSize.y * 0.75f);
+        }
 
         validSlots.Add(slot);
 

@@ -2,55 +2,55 @@
     "recipes": [
         {
             "id": "long.spawn.forge",
-            "startdescription": "В пламени свечей, в огне очага, в струящемся дыме чётко видны предзнаменования. В город прибыл заклятый враг мастера — тот, кто может помешать нашему труду.",
-            "label": "Кто-то прибыл"
+            "label": "Кто-то прибыл",
+            "startdescription": "В пламени свечей, в огне очага, в струящемся дыме чётко видны предзнаменования. В город прибыл заклятый враг мастера — тот, кто может помешать нашему труду."
         },
         {
             "id": "long.spawn.grail",
-            "startdescription": "Нас предупреждало об этом изменение оттенков цвета, шум падения кровавых капель, рождение уродливого скота в кварталах у порта. В город прибыл заклятый враг Отрады — тот, кто может помешать нашему труду.",
-            "label": "Кто-то прибыл"
+            "label": "Кто-то прибыл",
+            "startdescription": "Нас предупреждало об этом изменение оттенков цвета, шум падения кровавых капель, рождение уродливого скота в кварталах у порта. В город прибыл заклятый враг Отрады — тот, кто может помешать нашему труду."
         },
         {
             "id": "long.spawn.lantern",
-            "startdescription": "Нас предупреждал об этом цвет солнца, лунное затмение, трещина в линзе телескопа. В город прибыл заклятый враг Зарева — тот, кто может помешать нашему труду.",
-            "label": "Кто-то прибыл"
+            "label": "Кто-то прибыл",
+            "startdescription": "Нас предупреждал об этом цвет солнца, лунное затмение, трещина в линзе телескопа. В город прибыл заклятый враг Зарева — тот, кто может помешать нашему труду."
         },
         {
             "id": "long.cycle",
+            "label": "Кто-то смотрит",
             "startdescription": "Бессмертный в тени обдумывает следующий шаг.",
             "slots": [
                 {
+                    "id": "longlesson",
                     "label": "Уроки",
-                    "description": "Мы провоцируем врага, а он учится, чтобы в следующий раз нанести более сильный удар.",
-                    "id": "longlesson"
+                    "description": "Мы провоцируем врага, а он учится, чтобы в следующий раз нанести более сильный удар."
                 }
-            ],
-            "label": "Кто-то смотрит"
+            ]
         },
         {
             "id": "expelspy",
-            "startdescription": "Наш шпион вернулся.",
-            "label": "Из ночи"
+            "label": "Из ночи",
+            "startdescription": "Наш шпион вернулся."
         },
         {
             "id": "long.upgrade.might",
-            "startdescription": "Мощь Вечного растёт.",
-            "label": "Большая мощь"
+            "label": "Большая мощь",
+            "startdescription": "Мощь Вечного растёт."
         },
         {
             "id": "long.upgrade.connections",
-            "startdescription": "Этот Вечный развивает свои связи.",
-            "label": "Более глубокие связи"
+            "label": "Более глубокие связи",
+            "startdescription": "Этот Вечный развивает свои связи."
         },
         {
             "id": "long.upgrade.dreamwork",
-            "startdescription": "Этот Вечный нашёл способ проникнуть глубже в мои сны.",
-            "label": "Звёздность расцветает"
+            "label": "Звёздность расцветает",
+            "startdescription": "Этот Вечный нашёл способ проникнуть глубже в мои сны."
         },
         {
             "id": "long.selectstrategy",
-            "startdescription": "Наш бессмертный враг выбрал план действий.",
-            "label": "Решение"
+            "label": "Решение",
+            "startdescription": "Наш бессмертный враг выбрал план действий."
         },
         {
             "id": "long.preparestrategy.preference.assault",
@@ -66,77 +66,77 @@
         },
         {
             "id": "long.preparestrategy",
-            "startdescription": "Our immortal enemy is preparing their next action.\r\n\r\n[Add a follower strong in <sprite name=knock> <sprite name=lantern> to try to uncover the Long's strategy.\r\nAdd a follower strong in\r\n<sprite name=edge> <sprite name=forge> to try to delay Assaults,\r\n<sprite name=grail> <sprite name=heart> for Intrigues, \r\n<sprite name=moth> <sprite name=winter> for Starlight attacks.]",
+            "label": "Подготовка к действиям",
+            "startdescription": "Бессмертный враг готовиться к следующему шагу.\r\n\r\n\r\n\r\n[<sprite name=knock> <sprite name=lantern> позволят последователю разгадать стратегию Вечного.\r\n\r\n\r\n\r\n<sprite name=edge> <sprite name=forge> позволят последователю задержать штурм,\r\n\r\n<sprite name=grail> <sprite name=heart> — задержать интригу, \r\n\r\n<sprite name=moth> <sprite name=winter> — задержать звёздную атаку.]",
             "slots": [
                 {
+                    "id": "spy",
                     "label": "Шпион",
-                    "description": "Шпионы могут вызнать планы Вечного. Угадав или выведав планы, хорошие шпионы могут затянуть их выполнение.",
-                    "id": "spy"
+                    "description": "Шпионы могут вызнать планы Вечного. Угадав или выведав планы, хорошие шпионы могут затянуть их выполнение."
                 }
-            ],
-            "label": "Подготовка к действиям"
+            ]
         },
         {
             "id": "expelallspies",
-            "startdescription": "Наш враг не дремлет. Мы отправили слишком много наблюдателей — если отправим больше, чем двоих, потерпим неудачу.",
-            "label": "Потому что нас слишком много"
+            "label": "Потому что нас слишком много",
+            "startdescription": "Наш враг не дремлет. Мы отправили слишком много наблюдателей — если отправим больше, чем двоих, потерпим неудачу."
         },
         {
             "id": "expelallspies_beforeconfrontation.might",
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "label": "Перед бурей"
+            "label": "Перед бурей",
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "expelallspies_beforeconfrontation.connections",
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "label": "Перед бурей"
+            "label": "Перед бурей",
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "expelallspies_beforeconfrontation.dreamwork",
-            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов.",
-            "label": "Перед бурей"
+            "label": "Перед бурей",
+            "startdescription": "Наш враг почти готов напасть на нас. Мы отозвали своих шпионов."
         },
         {
             "id": "long.spyonstrategy.success",
-            "startdescription": "Общие очертания стратегии Вечного ясны.",
-            "label": "Отчёт нашего шпиона"
+            "label": "Отчёт нашего шпиона",
+            "startdescription": "Общие очертания стратегии Вечного ясны."
         },
         {
-            "label": "Личность нашего врага",
-            "id": "long.revealidentity.success.might"
-        },
-        {
-            "label": "Личность нашего врага",
-            "id": "long.revealidentity.success.connections"
-        },
-        {
-            "label": "Личность нашего врага",
-            "id": "long.revealidentity.success.dreamwork"
-        },
-        {
-            "id": "long.revealidentity.success",
-            "startdescription": "@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.\r\n@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.\r\n#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate. He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.\r\n#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.@",
+            "id": "long.revealidentity.success.might",
             "label": "Личность нашего врага"
         },
         {
+            "id": "long.revealidentity.success.connections",
+            "label": "Личность нашего врага"
+        },
+        {
+            "id": "long.revealidentity.success.dreamwork",
+            "label": "Личность нашего врага"
+        },
+        {
+            "id": "long.revealidentity.success",
+            "label": "Личность нашего врага",
+            "startdescription": "@#welland_unknown|Наш враг — капитан Велланд, Вечный Кузни, под разными именами сражавшийся во множестве войн. Он был верен Львиному Кузнецу и Кузне Дней. Ему всегда была симпатична идея прямого штурма, но он не какой-то там простой солдат.\r\n\r\n@#tryphon_unknown|Наш враг — леди Триффон, Вечная Чаши, оставившая за собой след сломленных душ во всех лучших отелях на континенте. Она любима Чашей и Цветоводом. Ей нравится интриговать, но она готова применить и насилие.\r\n\r\n#diarist_unknown|Наш враг — Вечный Лампады по прозвищу Мемуарист, отринувший физическое обличье ради Обители. Он обласкан Полковником и Менискатой. Обычно он наносит удар через сны, но у него должны быть друзья и в мире яви.\r\n\r\n#julian_unknown|Наш враг — Вечный Зимы, который носит инициалы «Д. К.»; мотивы его неясны. Он всегда держался с Забвенными и их последователями, не вмешивающимися в войны Часов. Тем не менее, сейчас он мешает нам.@"
+        },
+        {
             "id": "long.delayaction.success.assault",
-            "startdescription": "Мы узнали, что Вечный собирался устроить штурм, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "label": "Штурм задерживается"
+            "label": "Штурм задерживается",
+            "startdescription": "Мы узнали, что Вечный собирался устроить штурм, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success.intrigue",
-            "startdescription": "Мы узнали, что Вечный собирался устроить интригу, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "label": "Интрига задерживается!"
+            "label": "Интрига задерживается!",
+            "startdescription": "Мы узнали, что Вечный собирался устроить интригу, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success.dreams",
-            "startdescription": "Мы узнали, что Вечный собирался напасть на нас через сны, но сумели это затянуть. [Это возможно только один раз за действие.]",
-            "label": "Луна в затмении"
+            "label": "Луна в затмении",
+            "startdescription": "Мы узнали, что Вечный собирался напасть на нас через сны, но сумели это затянуть. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.delayaction.success",
-            "startdescription": "Они могут только замедлить действия Вечного, не предотвратить. [Это возможно только один раз за действие.]",
-            "label": "Наш шпион сумел задержать врага"
+            "label": "Наш шпион сумел задержать врага",
+            "startdescription": "Они могут только замедлить действия Вечного, не предотвратить. [Это возможно только один раз за действие.]"
         },
         {
             "id": "long.refinestrategy.assault.assassination"
