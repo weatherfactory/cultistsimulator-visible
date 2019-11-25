@@ -65,7 +65,7 @@ namespace Assets.Core.Utility
         [MenuItem("Tools/Build (Linux)")]
         public static void PerformLinuxBuild()
         {
-            PerformBuild(BuildTarget.StandaloneLinuxUniversal, "Linux");
+            PerformBuild(BuildTarget.StandaloneLinux64, "Linux");
         }
         
         private static void PerformBuild(BuildTarget target, string label)
