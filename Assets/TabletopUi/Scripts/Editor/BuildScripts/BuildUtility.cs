@@ -99,7 +99,7 @@ namespace Assets.Core.Utility
             if (target != BuildTarget.StandaloneWindows
                 && target != BuildTarget.StandaloneWindows64
                 && target != BuildTarget.StandaloneOSX
-                && target != BuildTarget.StandaloneLinuxUniversal)
+                && target != BuildTarget.StandaloneLinux64)
             {
                 return;
             }
@@ -238,7 +238,7 @@ namespace Assets.Core.Utility
                     return "cultistsimulator.exe";
                 case BuildTarget.StandaloneOSX:
                     return "OSX.app";
-                case BuildTarget.StandaloneLinuxUniversal:
+                case BuildTarget.StandaloneLinux64:
                     return "CS.x86";
                 default:
                     throw new ApplicationException("We don't know how to handle this build target: " + target);
@@ -261,7 +261,7 @@ namespace Assets.Core.Utility
                     return "Windows";
                 case BuildTarget.StandaloneOSX:
                     return "OSX";
-                case BuildTarget.StandaloneLinuxUniversal:
+                case BuildTarget.StandaloneLinux64:
                     return "Linux";
                 default:
                     throw new ApplicationException("We don't know how to handle this build target: " + target);
