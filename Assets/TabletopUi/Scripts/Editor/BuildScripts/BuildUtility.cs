@@ -88,7 +88,7 @@ namespace Assets.Core.Utility
                 locationPathName = JoinPaths(buildRootPath, GetExeNameForTarget(target)),
                 scenes = Scenes
             };
-            Log("Building " + label + " version to " + buildPlayerOptions.locationPathName);
+            Log("Building " + label + " version to build directory: " + buildPlayerOptions.locationPathName);
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
         }
@@ -107,49 +107,90 @@ namespace Assets.Core.Utility
             PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName, Path.GetFileName(pathToBuiltProject));
         }
 
-        private static void PostBuildFileTasks(BuildTarget target, string rootPath, string exeName)
+        private static void PostBuildFileTasks(BuildTarget buildTarget, string builtAtPath, string exeName)
         {
-            // Move the build output into its build- and platform-specific subdirectory
-            var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
-            var buildPath = JoinPaths(rootPath, outputFolder);
-            var platformDirName = GetPlatformFolderForTarget(target);
-            var baseEditionPath = JoinPaths(buildPath, platformDirName);
-            if (Directory.Exists(baseEditionPath))
-                Directory.Delete(baseEditionPath, true);
-            CopyDirectoryRecursively(rootPath, baseEditionPath);
-            
-            // Copy some extra files directly from the Unity project
-            Log("Copying Steam libraries");
-            CopySteamLibraries.Copy(target, baseEditionPath);
-            Log("Copying Galaxy libraries");
-            CopyGalaxyLibraries.Copy(target, baseEditionPath);
-            Log("Adding version number");
-            AddVersionNumber(baseEditionPath);
-            
-            // Set up the Perpetual Edition, with all its DLC
-            string perpetualEditionPath = JoinPaths(buildPath, CONST_PERPETUALEDITIONLOCATION, platformDirName);
-            Log("Copying whole project with DLC from " + baseEditionPath + " to " + perpetualEditionPath);
-            if (Directory.Exists(perpetualEditionPath))
-                Directory.Delete(perpetualEditionPath, true);
-            CopyDirectoryRecursively(baseEditionPath, perpetualEditionPath);
-            
-            // Take the DLCs out of the base edition and into their own directories
-            var dlcPath = JoinPaths(buildPath, CONST_DLC);
-            foreach (var dlcContentType in ContentTypes)
-                foreach (var locale in Locales)
-                    MoveDlcContent(baseEditionPath, dlcPath, target, exeName, dlcContentType, locale);
+            // For CI, we moved the build output into a build- and platform-specific subdirectory
+            //Now I'm back to deploying from a local machine, I no longer do this, because it's not straightforward to 
+            //var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
+            //var buildPath = JoinPaths(builtAtPath, outputFolder);
+            //var platformDirName = GetPlatformFolderForTarget(buildTarget);
+            //var baseEditionPath = JoinPaths(buildPath, platformDirName);
+            //if (Directory.Exists(baseEditionPath))
+            //{
+            //    Log("Deleting base edition path " + baseEditionPath +" because it already exists");
+            //    Directory.Delete(baseEditionPath, true);
+            //}
 
-            // Run the content tests, but only for Windows, since otherwise we'll end up with three copies
-            if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
+           // Log("Copying root path (" + builtAtPath + ") contents to base edition path (" + baseEditionPath + ")");
+            //CopyDirectoryRecursively(builtAtPath, baseEditionPath);
+            
+            // Copy APIs/integration for storefronts
+            CopyStorefrontLibraries(buildTarget, builtAtPath);
+
+            AddVersionNumber(builtAtPath);
+            
+            BuildPerpetualEdition(buildTarget,builtAtPath,exeName);
+
+            ExtractDLCs(builtAtPath,buildTarget, exeName);
+
+            RunContentTests(buildTarget, builtAtPath);
+        }
+
+        private static void RunContentTests(BuildTarget buildTarget, string builtAtPath)
+        {
+// Run the content tests, but only for Windows, since otherwise we'll end up with three copies
+            if (buildTarget == BuildTarget.StandaloneWindows || buildTarget == BuildTarget.StandaloneWindows64)
             {
                 ContentTester.ValidateContentAssertions(false);
-                FileUtil.ReplaceFile(ContentTester.JUnitResultsPath, Path.Combine(rootPath, "csunity-tests.xml"));
+                FileUtil.ReplaceFile(ContentTester.JUnitResultsPath, Path.Combine(builtAtPath, "csunity-tests.xml"));
             }
         }
 
-        private static void MoveDlcContent(string baseEditionPath, string dlcPath, BuildTarget target, string exeName, string contentOfType, string locale)
+        private static void BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string exeName)
         {
-            var baseEditionContentPath = GetCoreContentPath(baseEditionPath, exeName, contentOfType, locale);
+            // Set up the Perpetual Edition, with all its DLC
+            string grandfatherPath = GetParentDirectory(builtAtPath);
+            string perpetualEditionForPlatformPath = JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
+
+            Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
+
+            if (Directory.Exists(perpetualEditionForPlatformPath))
+                Directory.Delete(perpetualEditionForPlatformPath, true);
+            CopyDirectoryRecursively(builtAtPath, perpetualEditionForPlatformPath);
+
+
+            // Create the Perpetual Edition DLC
+            string semperPath = JoinPaths(
+                perpetualEditionForPlatformPath,
+                GetDataFolderForTarget(exeName),
+                CONST_PERPETUALEDITION_SEMPER_PATH);
+
+            WriteSemperFile(semperPath, buildTarget, exeName);
+        }
+
+        private static void ExtractDLCs(string builtAtPath,BuildTarget buildTarget, string exeName)
+        {
+// Take the DLCs out of the base edition and into their own directories
+            string grandfatherPath = GetParentDirectory(builtAtPath);
+            var dlcPath = JoinPaths(grandfatherPath, CONST_DLC);
+            foreach (var dlcContentType in ContentTypes)
+            foreach (var locale in Locales)
+                MoveDlcContent(builtAtPath, dlcPath, buildTarget, exeName, dlcContentType, locale);
+        }
+
+ 
+
+        private static void CopyStorefrontLibraries(BuildTarget target, string builtAtPath)
+        {
+            Log("Copying Steam libraries to build: " + builtAtPath);
+            CopySteamLibraries.Copy(target, builtAtPath);
+            Log("Copying Galaxy libraries to build: " + builtAtPath);
+            CopyGalaxyLibraries.Copy(target, builtAtPath);
+        }
+
+        private static void MoveDlcContent(string builtAtPath, string dlcPath, BuildTarget target, string exeName, string contentOfType, string locale)
+        {
+            var baseEditionContentPath = GetCoreContentPath(builtAtPath, exeName, contentOfType, locale);
             Log("Searching for DLC in " + baseEditionContentPath);
             
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
@@ -171,6 +212,7 @@ namespace Assets.Core.Utility
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
                     JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
+
                 string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
                 {
@@ -183,7 +225,7 @@ namespace Assets.Core.Utility
                 Log("Moving file " + contentFilePath + " to " + dlcFileDestinationPath);
                 File.Move(contentFilePath, dlcFileDestinationPath);
             }
-            
+
             // Create the Perpetual Edition DLC
             string semperPath = JoinPaths(
                 dlcPath,
@@ -191,11 +233,21 @@ namespace Assets.Core.Utility
                 GetPlatformFolderForTarget(target),
                 GetDataFolderForTarget(exeName),
                 CONST_PERPETUALEDITION_SEMPER_PATH);
+
+            WriteSemperFile(semperPath, target, exeName);
+        }
+
+        private static void WriteSemperFile(string semperPath, BuildTarget target, string exeName)
+        {
+            //semper.txt is a dumbfile that activates the PERPETUAL EDITION menu banner.
+            //This needs to be created as a tiny piece of DLC, but also injected into the /edition folder of the Perpetual Edition build.
+
             string semperDirPath = Path.GetDirectoryName(semperPath);
             if (semperDirPath != null && !Directory.Exists(semperDirPath))
             {
                 Directory.CreateDirectory(semperDirPath);
             }
+
             File.WriteAllText(semperPath, string.Empty);
         }
 
@@ -241,7 +293,7 @@ namespace Assets.Core.Utility
                 case BuildTarget.StandaloneLinux64:
                     return "CS.x86";
                 default:
-                    throw new ApplicationException("We don't know how to handle this build target: " + target);
+                    throw new ApplicationException("We don't know how to handle this build buildTarget: " + target);
             }
         }
 
@@ -264,7 +316,7 @@ namespace Assets.Core.Utility
                 case BuildTarget.StandaloneLinux64:
                     return "Linux";
                 default:
-                    throw new ApplicationException("We don't know how to handle this build target: " + target);
+                    throw new ApplicationException("We don't know how to handle this build buildTarget: " + target);
             }
         }
 
@@ -286,13 +338,18 @@ namespace Assets.Core.Utility
         {
             var oldStackTraceLogType = Application.GetStackTraceLogType(LogType.Log);
             Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.None);
-            Debug.Log(">>>>> " + message);
+            Debug.Log("CS>>>>> " + message);
             Application.SetStackTraceLogType(LogType.Log, oldStackTraceLogType);
         }
 
         private static string JoinPaths(params string[] paths)
         {
-            return paths.Aggregate("", Path.Combine);
+            return paths.Aggregate("",Path.Combine);
+        }
+
+        private static string GetParentDirectory(string path)
+        {
+            return Path.GetFullPath(Path.Combine(path, @"../"));
         }
     }
 }
