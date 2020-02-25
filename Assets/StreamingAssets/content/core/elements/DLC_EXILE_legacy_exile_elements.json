@@ -1,6 +1,39 @@
 {"elements":
     [
-			  
+
+{id:"tracerisk",
+label:"Trace Risk",
+description:"FNORD",
+isAspect:true
+},
+	  
+     {id: "obscurity",
+      label: "Obscurity",
+      aspects:{},
+      description:"This might be the only defence against the stopper lords. It might be no defence at all.",
+	  },
+	  
+	  {id:"decade.stolen",
+	  label: "Stolen Decade",
+	  description:"Ten years of generously donated life."
+	  },
+	  	  {id:"year.stolen",
+	  label: "Stolen Year",
+	  description:"A year of generously donated life."
+	  },
+	  {id:"trace",
+	  label:"Trace",
+	  description:"A betraying clue that your pursuers might recognise.",
+	  lifetime:60
+	  },
+	  
+	  
+	  {id: "op.doctorspractice",
+label: "Doctor's Practice",
+aspects: {tracerisk:1},
+description:"By recommendation only."
+}
+	
 	
 ]
 };
