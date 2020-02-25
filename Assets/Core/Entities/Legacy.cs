@@ -47,9 +47,7 @@ public string StartingVerbId { get; private set; }
                 StartingVerbId = NoonConstants.DEFAULT_STARTING_VERB_ID;
             else
                 StartingVerbId =
-                    startingVerbId; //hack in case someone has outdated DLC json that doesn't specify startingverbid
-            //which they shouldn't, but you never know right
-            //sure enough, we had some DLC nonsense here
+                    startingVerbId;
 
         }
     }
