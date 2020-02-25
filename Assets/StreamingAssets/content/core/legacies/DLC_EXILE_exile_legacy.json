@@ -4,11 +4,12 @@
 {id: "exile",
 label: "Exile",
 description: "I've stopped running... for now.",
-startdescription: "How long will I be safe here?'.",
-effects: {passion:1,funds:5},
+startdescription: "How long will I be safe here?",
+effects: {decade.stolen:10,vienna:1},
 image: "exile",
-fromEnding:"workvictory",
-availableWithoutEndingMatch:true
+fromEnding:"wintersacrifice",
+availableWithoutEndingMatch:true,
+startingVerbId: "travel.exile"
 }
 
 ]

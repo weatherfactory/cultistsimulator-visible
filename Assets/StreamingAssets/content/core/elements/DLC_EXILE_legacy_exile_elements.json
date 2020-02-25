@@ -6,7 +6,26 @@ label:"Trace Risk",
 description:"FNORD",
 isAspect:true
 },
-	  
+
+{id:"defiancemarks",
+label:"The Exercise of Defiance",
+description: "Cunning may answer Strength, Strength may answer Cunning, but Agony finds no answer.",
+isAspect:true
+},
+
+{id:"destination",
+label:"Destination",
+description:"I might find safety there for a little longer... if they don't get there first.",
+isAspect:true
+},
+
+
+
+{id:"tick",
+label:"Before...",
+description:"'The strongest of all warriors are these two - Time and Patience.' - Tolstoy"
+},
+
      {id: "obscurity",
       label: "Obscurity",
       aspects:{},
@@ -27,6 +46,17 @@ isAspect:true
 	  lifetime:60
 	  },
 	  
+	  {id: "vienna",
+label: "Vienna",
+aspects: {destination:1},
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing."
+},
+	  
+	  {id: "ascension.defiance",
+label: "Temptation: Defiance",
+aspects: {defiancemarks:1},
+description:"Some there are who will not yield. Perhaps this is a virtue."
+},
 	  
 	  {id: "op.doctorspractice",
 label: "Doctor's Practice",

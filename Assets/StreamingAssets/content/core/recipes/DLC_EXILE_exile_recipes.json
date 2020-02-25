@@ -1,7 +1,37 @@
 {
 "recipes": [
 
+{id:"travel.first",
+actionId:"travel.exile",
+label:"First Arrival",
+startdescription:"FNORD Let's get there.",
+description:"FNORD I have arrived.",
+requirements:{vienna:1,destination:1},
+effects:{obscurity:1},
+mutations:[{filterOnAspectId:destination,mutateAspectId:destination,mutationLevel:-1}],
+warmup:10,
+craftable:true,
+alt:[{id:"tick.refill",additional:true}]
+},
 
+{id:"tick.refill",
+actionId:"time.exile",
+label:"The Wheel Turns",
+startdescription:"FNORD time refill",
+requirements:{tick:-1},
+effects:{tick:3},
+warmup:60,
+linked:[{id:"tick.next"}]},
+
+{id:"tick.next",
+actionId:"time.exile",
+label:"The Wheel Turns",
+startdescription:"FNORD timenext",
+requirements:{tick:1},
+effects:{tick:-1},
+warmup:60,
+linked:[{id:"tick.refill"},
+{id:"tick.next"}]}
 
 
 ]
