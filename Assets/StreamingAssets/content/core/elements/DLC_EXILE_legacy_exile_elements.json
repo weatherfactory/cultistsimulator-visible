@@ -78,32 +78,38 @@ description:"'The strongest of all warriors are these two - Time and Patience.' 
       label: "Obscurity",
       aspects:{},
       description:"This might be the only defence against the stopper lords. It might be no defence at all.",
+	  icon: diarist_unknown
 	  },
 	  
 	  {id:"decade.stolen",
 	  label: "Stolen Decade",
-	  description:"Ten years of generously donated life."
+	  description:"Ten years of generously donated life.",
+	  icon: articlewinterc
 	  },
 	  	  {id:"year.stolen",
 	  label: "Stolen Year",
-	  description:"A year of generously donated life."
+	  description:"A year of generously donated life.",
+	  icon: articlewintera
 	  },
 	  {id:"trace",
 	  label:"Trace",
 	  description:"A betraying clue that your pursuers might recognise.",
-	  lifetime:60
+	  lifetime:180,
+	  icon:rumour
 	  },
 	  
 	  {id: "vienna",
 label: "Vienna",
 aspects: {destination:1},
-description:"One of those few cities which has the same name in every History... if you believe that sort of thing."
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
+icon: vaultcontinent6
 },
 	  
 	  {id: "ascension.defiance",
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1},
-description:"Some there are who will not yield. Perhaps this is a virtue."
+description:"Some there are who will not yield. Perhaps this is a virtue.",
+icon: bloodshed
 },
 	  
 	  {id: "op.doctorspractice",

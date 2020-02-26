@@ -46,7 +46,7 @@
 			atStart:false,
 			icon:"scandal.notoriety",
 			  slots: [{id:"lurk",label:"Lurk",description: "Secrecy can be expensive.",
-			  required:{asset:1}}],
+			  required:{obscurity:1,asset:1}}],
         },
 					  {
             id: "travel.exile",

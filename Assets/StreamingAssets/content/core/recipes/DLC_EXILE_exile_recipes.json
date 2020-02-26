@@ -15,12 +15,22 @@ alt:[{id:"tick.refill",additional:true}]
 },
 
 {id:"lurk.first",
-actionId:"lurk",
+actionId:"lurk.exile",
 label:"FNORD lurk instructions",
 startdescription:"FNORD lurking opens",
 effects: {obscurity:1},
 warmup:10,
 comments:"opened by initial time recipe"
+},
+{id:"lurk.victory",
+actionId:"lurk.exile",
+label:"FNORD win",
+startdescription:"FNORD lurk win beginning...",
+requirements:{obscurity:1},
+extantreqs:{obscurity:7},
+warmup:60,
+craftable:true,
+ending: obscurityvictory
 },
 
 {id:"tick.refill",
