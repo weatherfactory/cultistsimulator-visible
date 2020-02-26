@@ -26,6 +26,39 @@ alt: [{id:"spawn.trace",additional:true}],
 deckeffect:{destinations.cities:1},
 craftable:true},
 
+{id:"travel.depart",
+actionId:"travel",
+label:"Departure",
+startdescription:"I'm ready to go. FNORD",
+requirements:{destination:1},
+warmup:10,
+craftable:true,
+linked:[{id:"travel.departing"}]},
+
+{id:"travel.departing",
+actionId:"travel",
+label:"Departing",
+startdescription:"I'm leaving... FNORD",
+slots:[{id:"trace",label:"Fading Traces",required:{trace:1},greedy:true}],
+effects:{trace:-1},
+warmup:5,
+linked:[
+{id:"travel.enroute"},
+{id:"travel.departing"}
+]
+},
+
+{id:"travel.enroute",
+actionId:"travel",
+label:"En Route",
+startdescription:"I'm en route... FNORD.",
+description:"I'm here. FNORD",
+tablereqs:{trace:-1},
+mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1},
+{filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
+warmup:60},
+
+
 {id:"lurk.first",
 actionId:"lurk",
 label:"FNORD lurk instructions",
