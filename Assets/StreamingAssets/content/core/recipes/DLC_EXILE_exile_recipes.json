@@ -50,6 +50,9 @@ startdescription:"FNORD timenext",
 requirements:{tick:1},
 effects:{tick:-1},
 warmup:60,
+alt:[
+{id:"searchers.arrive.traces",additional:true,chance:10},
+{id:"searchers.arrive.no.traces",additional:true,chance:1}],
 linked:[{id:"turn.complete"},
 {id:"turn.nexttick"}]},
 
@@ -70,7 +73,34 @@ label:"Time's Child",
 startdescription:"If Truth is Time's daughter, whose child is Forgetfulness?",
 extantreqs: {trace:-1},
 effects:{obscurity:1},
-warmup:10}
+warmup:10},
+
+{id:"searchers.arrive.traces",
+actionId:"searchers",
+label:"Stoppers have entered the city",
+startdescription:"FNORD Stoppers are here, because of traces",
+description:"FNORD",
+extantreqs:{trace:1},
+warmup:50,
+linked:[{id:"searchers.active"}]},
+
+{id:"searchers.arrive.no.traces",
+actionId:"searchers",
+label:"Stoppers have entered the city",
+startdescription:"FNORD Stoppers are here, because of sheer ill luck",
+description:"FNORD",
+extantreqs:{trace:-1},
+warmup:50,
+linked:[{id:"searchers.active"}]},
+
+{id:"searchers.active",
+actionId:"searchers",
+label:"Stoppers are searching the city",
+startdescription:"FNORD What will they do?",
+warmup:50,
+linked:[{id:"searchers.active"}]}
+
+
 
 
 ]
