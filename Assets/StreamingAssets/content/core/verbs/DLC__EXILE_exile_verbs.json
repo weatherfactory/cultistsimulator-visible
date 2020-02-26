@@ -40,7 +40,7 @@
         },
 
 	  {
-            id: "lurk.exile",
+            id: "lurk",
             label: "Lurk",
             description: "Take shelter. FNORD.",
 			atStart:false,
@@ -49,12 +49,12 @@
 			  required:{obscurity:1,asset:1}}],
         },
 					  {
-            id: "travel.exile",
+            id: "travel",
             label: "Travel",
-            description: "Some travels are intended to broaden one mind: others, to lengthen one's life.",
+            description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
 			atStart:false,
-				  slots: [{id:"destination",label:"Destination",description: "An end.",
-			  required:{destination:1}}]
+				  slots: [{id:"direction",label:"Direction",description: "A road, or its end?",
+			  required:{destination:1,domicile:1}}]
         },
 			  {
             id: "time.exile",

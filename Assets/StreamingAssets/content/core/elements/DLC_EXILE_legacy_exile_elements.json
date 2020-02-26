@@ -13,6 +13,13 @@ description: "Cunning may answer Strength, Strength may answer Cunning, but Agon
 isAspect:true
 },
 
+
+{id:"domicile",
+label:"City of Residence",
+description:"I'm here, for now.",
+isAspect:true
+},
+
 {id:"destination",
 label:"Destination",
 description:"I might find safety there for a little longer... if they don't get there first.",
@@ -98,11 +105,66 @@ description:"Don't attract attention. [When all these are gone, you'll gain an O
 	  icon:rumour
 	  },
 	  
-	  {id: "vienna",
+	  {id: "city.vienna",
 label: "Vienna",
 aspects: {destination:1},
 description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
 icon: vaultcontinent6
+},
+
+	  {id: "city.paris",
+label: "Paris",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent4
+},
+
+	  {id: "city.krakow",
+label: "Krakow",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+	  {id: "city.istanbul",
+label: "Istanbul",
+aspects: {destination:1},
+description:"FNORD",
+icon:vaultrendingmountains3
+},
+
+	  {id: "city.moscow",
+label: "Moscow",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3
+},
+
+	  {id: "city.alexandria",
+label: "Alexandria",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultloneandlevelsands2
+},
+
+	  {id: "city.shanghai",
+label: "",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultloneandlevelsands1
+},
+
+	  {id: "city.wilderness",
+label: "Wilderness",
+aspects: {destination:1},
+description:"FNORD the final resort.",
+icon: vaultshires1
+},
+
+{id: "location.telegraph",
+label: "Telegraph Office",
+aspects: {location:1},
+description:"Here, I might investigate other possible destinations.",
 },
 	  
 	  {id: "ascension.defiance",

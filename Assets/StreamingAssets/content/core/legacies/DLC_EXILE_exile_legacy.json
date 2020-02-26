@@ -5,11 +5,11 @@
 label: "Exile",
 description: "I've stopped running... for now.",
 startdescription: "How long will I be safe here?",
-effects: {decade.stolen:10,vienna:1},
+effects: {decade.stolen:10,city.vienna:1},
 image: "exile",
 fromEnding:"wintersacrifice",
 availableWithoutEndingMatch:true,
-startingVerbId: "travel.exile"
+startingVerbId: "travel"
 }
 
 ]
