@@ -41,7 +41,7 @@ label:"Departing",
 startdescription:"I'm leaving... FNORD",
 slots:[{id:"trace",label:"Fading Traces",required:{trace:1},greedy:true}],
 effects:{trace:-1},
-warmup:5,
+warmup:2,
 linked:[
 {id:"travel.enroute"},
 {id:"travel.departing"}
