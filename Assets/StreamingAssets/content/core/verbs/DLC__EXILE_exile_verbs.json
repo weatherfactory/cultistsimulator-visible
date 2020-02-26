@@ -40,25 +40,27 @@
         },
 
 	  {
-            "id": "exile_explore",
-            "label": "Explore",
-            "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
-			"atStart":false,
-			  slots: [{id:"explore",label:"Explore",description: "A place; a person; a location; a secret.",
-			  required:{health:1,follower:1,secrethistories:1,location:1,ghoul.hunger:1},
-			  forbidden:{hireling:1}}],
+            id: "lurk.exile",
+            label: "Lurk",
+            description: "Take shelter. FNORD.",
+			atStart:false,
+			icon:"scandal.notoriety",
+			  slots: [{id:"lurk",label:"Lurk",description: "Secrecy can be expensive.",
+			  required:{asset:1}}],
         },
 					  {
-            "id": "travel.exile",
-            "label": "Travel",
-            "description": "Some travels are intended to broaden one mind: others, to lengthen one's life.",
-			"atStart":false
+            id: "travel.exile",
+            label: "Travel",
+            description: "Some travels are intended to broaden one mind: others, to lengthen one's life.",
+			atStart:false,
+				  slots: [{id:"destination",label:"Destination",description: "An end.",
+			  required:{destination:1}}]
         },
 			  {
-            "id": "time.exile",
-            "label": "Time",
-            "description": "The sundial's shadow.",
-			"atStart":false
+            id: "time.exile",
+            label: "Time",
+            description: "The final enemy?",
+			atStart:false
         }
 		]
 		

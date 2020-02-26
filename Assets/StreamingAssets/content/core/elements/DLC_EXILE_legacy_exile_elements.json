@@ -19,6 +19,54 @@ description:"I might find safety there for a little longer... if they don't get 
 isAspect:true
 },
 
+{id:"asset",
+label:"Asset",
+description:"Asset FNORD",
+isAspect:true
+},
+
+{id: "assets.a",
+label: "A",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.b",
+label: "B",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.c",
+label: "C",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.d",
+label: "D",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.e",
+label: "Assets A",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.f",
+label: "F",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "assets.g",
+label: "G",
+aspects: {asset:1},
+description:"FNORD"
+},
+
 
 
 {id:"tick",
