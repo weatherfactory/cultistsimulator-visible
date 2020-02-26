@@ -11,7 +11,7 @@ effects:{assets.a:1},
 mutations:[{filterOnAspectId:destination,mutateAspectId:destination,mutationLevel:-1}],
 warmup:10,
 craftable:true,
-alt:[{id:"tick.refill",additional:true}]
+alt:[{id:"turn.begin",additional:true}]
 },
 
 {id:"lurk.first",
@@ -33,25 +33,44 @@ craftable:true,
 ending: obscurityvictory
 },
 
-{id:"tick.refill",
+{id:"turn.begin",
 actionId:"time.exile",
 label:"The Wheel Turns",
-startdescription:"FNORD time refill",
+startdescription:"FNORD time begin",
 requirements:{tick:-1},
 effects:{tick:3},
 warmup:60,
 alt:[{id:"lurk.first",additional:true}],
-linked:[{id:"tick.next"}]},
+linked:[{id:"turn.nexttick"}]},
 
-{id:"tick.next",
+{id:"turn.nexttick",
 actionId:"time.exile",
 label:"The Wheel Turns",
 startdescription:"FNORD timenext",
 requirements:{tick:1},
 effects:{tick:-1},
 warmup:60,
-linked:[{id:"tick.refill"},
-{id:"tick.next"}]}
+linked:[{id:"turn.complete"},
+{id:"turn.nexttick"}]},
+
+{id:"turn.complete",
+actionId:"time.exile",
+label:"The Operation of Memory",
+startdescription:"[When this completes, it'll eat a Trace, if you have any; or give you an Obscurity card, if you have no Traces.]",
+requirements:{tick:-1},
+slots:[{id:"trace.fading",label:"Fading Traces", required:{trace:1},greedy:true}],
+alt: [{id:"event.obscurity",additional:true}],
+effects:{trace:-1},
+warmup:60,
+linked:[{id:"turn.begin"}]},
+
+{id:"event.obscurity",
+actionId:"spawn.obscurity",
+label:"Time's Child",
+startdescription:"If Truth is Time's daughter, whose child is Forgetfulness?",
+extantreqs: {trace:-1},
+effects:{obscurity:1},
+warmup:10}
 
 
 ]

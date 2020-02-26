@@ -70,14 +70,14 @@ description:"FNORD"
 
 
 {id:"tick",
-label:"Before...",
-description:"'The strongest of all warriors are these two - Time and Patience.' - Tolstoy"
+label:"Caution...",
+description:"Don't attract attention. [When all these are gone, you'll gain an Obscurity, unless there are any Traces on the board. Then the cycle will begin again.]"
 },
 
      {id: "obscurity",
       label: "Obscurity",
-      aspects:{},
-      description:"This might be the only defence against the stopper lords. It might be no defence at all.",
+      aspects:{desire:1},
+      description:"This might be the only defence against the stopper lords. It might be no defence at all. [If this reaches seven, you've found sufficient safety to win.]",
 	  icon: diarist_unknown
 	  },
 	  
@@ -94,7 +94,7 @@ description:"'The strongest of all warriors are these two - Time and Patience.' 
 	  {id:"trace",
 	  label:"Trace",
 	  description:"A betraying clue that your pursuers might recognise.",
-	  lifetime:180,
+	  aspects:{influence:1},
 	  icon:rumour
 	  },
 	  
