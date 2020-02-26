@@ -16,13 +16,13 @@ alt:[{id:"turn.begin",additional:true}]
 },
 
 
-
 {id:"travel.investigate",
 actionId:"travel",
 label:"Investigate other destinations",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but once you've started investigating it, the stoppers might notice, and get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but investigation risks Traces. Worse, the stoppers might get there before you.]",
 requirements:{domicile:1},
 warmup:60,
+alt: [{id:"spawn.trace",additional:true}],
 deckeffect:{destinations.cities:1},
 craftable:true},
 
@@ -74,18 +74,28 @@ label:"The Operation of Memory",
 startdescription:"[When this completes, it'll eat a Trace, if you have any; or give you an Obscurity card, if you have no Traces.]",
 requirements:{tick:-1},
 slots:[{id:"trace.fading",label:"Fading Traces", required:{trace:1},greedy:true}],
-alt: [{id:"event.obscurity",additional:true}],
+alt: [{id:"spawn.obscurity",additional:true}],
 effects:{trace:-1},
 warmup:60,
 linked:[{id:"turn.begin"}]},
 
-{id:"event.obscurity",
+{id:"spawn.obscurity",
 actionId:"spawn.obscurity",
 label:"Time's Child",
-startdescription:"If Truth is Time's daughter, whose child is Forgetfulness?",
+startdescription:"If Truth is Time's daughter, whose child is Forgetfulness? [You have gained Obscurity.]",
 extantreqs: {trace:-1},
 effects:{obscurity:1},
 warmup:10},
+
+
+{id:"spawn.trace",
+actionId:"spawn.trace",
+label:"Traces FNORD",
+startdescription:"FNORD [If you leave a Trace of your activities. Stoppers might be able to use it to track you down.]",
+comments:"Consider trace risk being determined in here.",
+effects:{trace:1},
+warmup:10},
+
 
 {id:"searchers.arrive.traces",
 actionId:"searchers",
