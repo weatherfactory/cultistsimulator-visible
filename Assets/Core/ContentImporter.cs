@@ -1414,6 +1414,27 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         htEachRecipe.Remove(NoonConstants.KEFFECTS);
 
+
+        /////////////////////////////////////////////
+        //PURGES
+
+        try
+        {
+            Hashtable htPurge = htEachRecipe.GetHashtable(NoonConstants.KPURGE);
+            if(htPurge!=null)
+                foreach (string elementToPurgeId in htPurge.Keys)
+                {
+                    LogIfNonexistentElementId(elementToPurgeId,r.Id,"purges");
+                    r.Purge.Add(elementToPurgeId,Convert.ToInt32(htPurge[elementToPurgeId]));
+                }
+        }
+        catch (Exception e)
+        {
+           LogProblem("Problem importing purges for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+        htEachRecipe.Remove(NoonConstants.KPURGE);
+
         /////////////////////////////////////////////
         //DECKS
 
@@ -1435,6 +1456,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
         htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
+
+
+
 
 
         ///////////INTERNAL DECKS - NB the deck is not stored with the recipe

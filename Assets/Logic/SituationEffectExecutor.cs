@@ -24,6 +24,7 @@ namespace Assets.Logic
             //But I can always pass something through an empty recipe if I gotta.
             RunMutationEffects(command, stacksManager);
 
+
             //note: xtriggers for recipe aspects happen before xtriggers for card aspects. Within that precedence, aspects take effect in non-specific order.
             //I think this will generally make sense. Recipe aspects are 'specifically, I want to do this'
             //Card aspects are 'this should generally happen'
@@ -36,9 +37,19 @@ namespace Assets.Logic
             RunDeckEffect(command,stacksManager,storage);
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
+
+            //Penultimate: run purges. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
+            RunPurges(command, stacksManager);
+
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
+
+       private void RunPurges(ISituationEffectCommand command, IElementStacksManager stacksManager)
+       {
+           if(command.Recipe.Purge.Any())
+               Debug.Log("Purge found in " + command.Recipe.Id + " - " + command.Recipe.Purge.First());
+       }
 
        private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
        {
