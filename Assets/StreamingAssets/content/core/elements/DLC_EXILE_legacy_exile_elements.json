@@ -28,6 +28,14 @@ isAspect:true,
 icon:potential
 },
 
+
+{id:"op",
+label:"Operation",
+description:"Operation FNORD",
+isAspect:true,
+icon:venerationforge
+},
+
 {id:"asset",
 label:"Asset",
 description:"Asset FNORD",
@@ -178,7 +186,7 @@ icon: bloodshed
 	  
 	  {id: "op.doctorspractice",
 label: "Doctor's Practice",
-aspects: {tracerisk:1},
+aspects: {tracerisk:1,op:1},
 description:"By recommendation only."
 }
 	
