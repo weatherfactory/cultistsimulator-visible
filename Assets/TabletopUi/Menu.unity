@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PURGE_PURGE
+  locLabel: UI_PLAYDLC_PURGE
   fontStyle: 2
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -2391,6 +2391,7 @@ MonoBehaviour:
   language: {fileID: 1825211677}
   versionHints: {fileID: 1516159739}
   modsPanel: {fileID: 1507364684}
+  startDLCLegacyConfirmPanel: {fileID: 676880556}
   optionsPanel: {fileID: 476850260}
   fadeOverlay: {fileID: 2027384887}
   fadeDuration: 0.5
@@ -16459,7 +16460,7 @@ GameObject:
   - component: {fileID: 639693800}
   - component: {fileID: 639693799}
   m_Layer: 5
-  m_Name: Button_PurgeSave (1)
+  m_Name: Button_BeginGameAsLegacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16562,8 +16563,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 182394258}
-        m_MethodName: PurgeSave
+      - m_Target: {fileID: 676880557}
+        m_MethodName: BeginGameWithRelevantLegacy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21678,6 +21679,7 @@ GameObject:
   - component: {fileID: 676880555}
   - component: {fileID: 676880554}
   - component: {fileID: 676880553}
+  - component: {fileID: 676880557}
   m_Layer: 5
   m_Name: OverlayWindow_StartDLCLegacyConfirm
   m_TagString: Untagged
@@ -21778,6 +21780,19 @@ MonoBehaviour:
   keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
+--- !u!114 &676880557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676880551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cfbe27633ba7746ad90a91d829ab05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msc: {fileID: 0}
 --- !u!1 &678012477
 GameObject:
   m_ObjectHideFlags: 0
@@ -21895,7 +21910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PURGE_CONFIRM
+  locLabel: UI_PLAYDLC_CONFIRM
   fontStyle: 1
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -46238,7 +46253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PURGE_KEEP
+  locLabel: UI_PLAYDLC_KEEP
   fontStyle: 2
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -47028,7 +47043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PURGE_DESC
+  locLabel: UI_PLAYDLC_DESC
   fontStyle: 0
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -47052,8 +47067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This will begin a new game based on the DLC you've chosen. This will irrevocably
-    destroy your saved progress. Are you quite sure?
+  m_text: play DLC content
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,

@@ -44,6 +44,8 @@ public class MenuScreenController : MonoBehaviour {
 	public CanvasGroupFader language;
     public CanvasGroupFader versionHints;
     public CanvasGroupFader modsPanel;
+    public CanvasGroupFader startDLCLegacyConfirmPanel;
+
 	public OptionsPanel optionsPanel;
 
     [Header("Version News")]
@@ -387,6 +389,14 @@ public class MenuScreenController : MonoBehaviour {
         Invoke("UpdateAndShowMenu", fadeDuration);
     }
 
+    public void BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(string legacyId)
+    {
+        saveGameManager.DeleteCurrentSave();
+        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetLegacyById(legacyId));
+        // Load directly into the game scene, no legacy select
+        LoadScene(SceneNumber.GameScene);
+    }
+
     public void ShowCredits() {
         if (!canTakeInput)
             return;
@@ -441,7 +451,16 @@ public class MenuScreenController : MonoBehaviour {
 #endif
     }
 
+    public void ShowStartDLCLegacyConfirmPanel(string legacyId)
+    {
+        HideCurrentOverlay();
+        StartDLCLegacyConfirm confirmPanelComponent=startDLCLegacyConfirmPanel.GetComponent<StartDLCLegacyConfirm>();
+        confirmPanelComponent.LegacyId = legacyId;
+        confirmPanelComponent.msc = this;
 
+        ShowOverlay(startDLCLegacyConfirmPanel);
+        
+    }
 
     private void BuildDlcPanel()
     {
@@ -452,7 +471,7 @@ public class MenuScreenController : MonoBehaviour {
         {
             var dlcEntry = Instantiate(dlcEntryPrefab, dlcEntries);
             var hasDlc = dlc.Contains(dlcEntrySpec.Id);
-            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc);
+            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc,this);
             hasAnyDlc |= hasDlc;
         }
 

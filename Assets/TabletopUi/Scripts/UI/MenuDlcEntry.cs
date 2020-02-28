@@ -17,9 +17,11 @@ namespace TabletopUi.Scripts.UI
         private const string InstalledLocLabel = "UI_DLC_INSTALLED";
         private const string PurchaseLocLabel = "UI_DLC_PURCHASE";
         private Spec _spec;
-        public void Initialize(Spec spec, Storefront store, bool isInstalled)
+        private MenuScreenController _menuScreenController;
+        public void Initialize(Spec spec, Storefront store, bool isInstalled,MenuScreenController menuScreenController)
         {
             _spec = spec;
+            _menuScreenController = menuScreenController;
             name = "DLCEntry_" + spec.Id;
             title.SetLocLabel(DlcTitleLocLabelPrefix + spec.Id);
             icon.sprite = ResourcesManager.GetSpriteForDlc(spec.Id, isInstalled);
@@ -53,7 +55,9 @@ namespace TabletopUi.Scripts.UI
 
         public void TryBeginDLC()
         {
-            Debug.Log("click worked for " + _spec.Id);
+            _menuScreenController.ShowStartDLCLegacyConfirmPanel(_spec.Id.ToLower());
+            Debug.Log("click worked for " + _spec.Id.ToLower());
+
         }
     }
 }
