@@ -8,14 +8,20 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Assets.Logic
 {
    public class SituationEffectExecutor
    {
+       private ITabletopManager _ttm;
+       public SituationEffectExecutor(ITabletopManager ttm)
+       {
+           _ttm = ttm;
+       }
 
-        public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
+       public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var recipeAspects = command.Recipe.Aspects;
             var cardAspects = stacksManager.GetTotalAspects();
@@ -39,16 +45,19 @@ namespace Assets.Logic
             RunRecipeEffects(command, stacksManager);
 
             //Penultimate: run purges. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
-            RunPurges(command, stacksManager);
+            RunPurges(command, _ttm);
 
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
-       private void RunPurges(ISituationEffectCommand command, IElementStacksManager stacksManager)
+    
+       private void RunPurges(ISituationEffectCommand command, ITabletopManager ttm)
        {
-           if(command.Recipe.Purge.Any())
-               Debug.Log("Purge found in " + command.Recipe.Id + " - " + command.Recipe.Purge.First());
+        foreach(var p in command.Recipe.Purge)
+        {
+            ttm.PurgeElement(p.Key,p.Value);
+        }
        }
 
        private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)

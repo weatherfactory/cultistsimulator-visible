@@ -342,7 +342,7 @@ namespace Assets.TabletopUi {
             }
 
             currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
-            var executor = new SituationEffectExecutor();
+            var executor = new SituationEffectExecutor(tabletopManager);
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter);
 
             if (command.Recipe.EndingFlag != null) {

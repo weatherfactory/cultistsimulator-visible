@@ -14,7 +14,8 @@ public class Context {
         Retire,
         Debug,
         ChangeTo,
-		DoubleClickSend
+		DoubleClickSend,
+        Purge
     }
 
     public ActionSource actionSource;

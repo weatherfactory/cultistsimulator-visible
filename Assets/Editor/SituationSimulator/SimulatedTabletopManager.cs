@@ -152,5 +152,10 @@ namespace Assets.Editor
         public void GroupAllStacks()
         {
         }
+
+        public void PurgeElement(string elementId, int maxToPurge)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

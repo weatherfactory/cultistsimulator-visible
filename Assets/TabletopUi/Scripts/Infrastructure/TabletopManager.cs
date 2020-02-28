@@ -461,6 +461,12 @@ namespace Assets.CS.TabletopUI {
                 element.Retire(true); //looks daft but pretty on reset
         }
 
+        public void PurgeElement(string elementId, int maxToPurge)
+        {
+            //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
+            _tabletop.GetElementStacksManager().ReduceElement(elementId, -maxToPurge,new Context(Context.ActionSource.Purge));
+        }
+
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             CrossSceneState.RestartingGame();

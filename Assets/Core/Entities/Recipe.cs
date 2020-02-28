@@ -34,8 +34,8 @@ public class Recipe
     public AspectsDictionary Aspects { get; set; }
     public List<MutationEffect> MutationEffects { get; set; }
     /// <summary>
-    /// Elements that should be purged from the board, and from slots. Int value is max number elements to be purged. Board prioritised over slots. (We might purge situations later too, but not yet)
-    /// </summary>
+    /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
+    /// </summary>)
     public Dictionary<string,int> Purge { get; set; }
     public EndingFlavour SignalEndingFlavour { get; set; } //separate from Ending, because some recipes may be menacing but route to another recipe that actually does the ending
 
