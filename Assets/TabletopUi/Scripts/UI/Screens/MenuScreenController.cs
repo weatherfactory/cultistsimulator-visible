@@ -110,6 +110,15 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_ghoul"},
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"}
             }),
+        new MenuDlcEntry.Spec(
+            "EXILE",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile/"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"}
+            }
+            )
     };
     private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
         "OST",
@@ -431,6 +440,8 @@ public class MenuScreenController : MonoBehaviour {
         ShowOverlay(modsPanel);
 #endif
     }
+
+
 
     private void BuildDlcPanel()
     {
