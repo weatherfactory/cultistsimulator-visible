@@ -21,6 +21,13 @@ isAspect:true,
 icon:hq
 },
 
+{id:"lifespan.stolen",
+label:"Stolen Lifespan",
+description:"FNORD",
+icon:boredom,
+isAspect:true
+},
+
 {id:"destination",
 label:"Destination",
 description:"I might find safety there for a little longer... if they don't get there first.",
@@ -42,43 +49,43 @@ description:"Asset FNORD",
 isAspect:true
 },
 
-{id: "assets.a",
+{id: "asset.a",
 label: "A",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.b",
+{id: "asset.b",
 label: "B",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.c",
+{id: "asset.c",
 label: "C",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.d",
+{id: "asset.d",
 label: "D",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.e",
+{id: "asset.e",
 label: "Assets A",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.f",
+{id: "asset.f",
 label: "F",
 aspects: {asset:1},
 description:"FNORD"
 },
 
-{id: "assets.g",
+{id: "asset.g",
 label: "G",
 aspects: {asset:1},
 description:"FNORD"
@@ -100,12 +107,14 @@ description:"Don't attract attention. [When all these are gone, you'll gain an O
 	  
 	  {id:"decade.stolen",
 	  label: "Stolen Decade",
-	  description:"Ten years of generously donated life.",
+	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
+	  aspects:{lifespan.stolen:10},
 	  icon: articlewinterc
 	  },
 	  	  {id:"year.stolen",
 	  label: "Stolen Year",
-	  description:"A year of generously donated life.",
+	  description:"A year of generously donated life, as entered in the Cindered Tally.",
+	  aspects:{lifespan.stolen:1},
 	  icon: articlewintera
 	  },
 	  {id:"trace",

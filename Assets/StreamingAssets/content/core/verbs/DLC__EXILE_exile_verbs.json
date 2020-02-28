@@ -38,6 +38,17 @@
 			  forbidden:{wary:1}}]
 		
         },
+		
+			  {
+            id: "conspire",
+            label: "Conspire",
+            description: "This verb name will probably change. FNORD.",
+			atStart:false,
+			icon:"scheme",
+			  slots: [{id:"conspire",label:"Conspire",
+			  required:{asset:1}}],
+        },
+			
 
 	  {
             id: "lurk",
@@ -45,8 +56,8 @@
             description: "Take shelter. FNORD.",
 			atStart:false,
 			icon:"scandal.notoriety",
-			  slots: [{id:"lurk",label:"Lurk",description: "Secrecy can be expensive.",
-			  required:{obscurity:1,asset:1}}],
+			  slots: [{id:"lurk",label:"Lurk",
+			  required:{asset:1}}],
         },
 					  {
             id: "travel",

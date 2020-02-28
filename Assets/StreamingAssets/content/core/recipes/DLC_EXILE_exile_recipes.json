@@ -7,7 +7,7 @@ label:"First Arrival",
 startdescription:"FNORD Let's get there.",
 description:"FNORD I have arrived.",
 requirements:{city.vienna:1,destination:1},
-effects:{assets.a:1},
+effects:{obscurity:1},
 mutations:[{filterOnAspectId:city.vienna,mutateAspectId:destination,mutationLevel:-1},
 {filterOnAspectId:city.vienna,mutateAspectId:domicile,mutationLevel:1}],
 warmup:10,
@@ -53,6 +53,15 @@ mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1
 {filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
 warmup:60},
 
+{id:"conspire.first",
+actionId:"conspire",
+label:"FNORD conspire instructions",
+startdescription:"FNORD conspire opens",
+effects: {asset.a:1},
+warmup:10,
+comments:"opened by initial time recipe"
+},
+
 
 {id:"lurk.first",
 actionId:"lurk",
@@ -60,7 +69,7 @@ label:"FNORD lurk instructions",
 startdescription:"FNORD lurking opens",
 effects: {obscurity:1},
 warmup:10,
-comments:"opened by initial time recipe"
+comments:"NOT CURRENTLY AVAILABLE. opened by certain conspiracy actions?"
 },
 {id:"lurk.victory",
 actionId:"lurk",
@@ -80,7 +89,7 @@ startdescription:"FNORD time begin",
 requirements:{tick:-1},
 effects:{tick:3},
 warmup:60,
-alt:[{id:"lurk.first",additional:true}],
+alt:[{id:"conspire.first",additional:true}],
 linked:[{id:"turn.nexttick"}]},
 
 {id:"turn.nexttick",
