@@ -29,7 +29,7 @@ namespace TabletopUi.Scripts.UI
             installedLabel.gameObject.SetActive(isInstalled);
             storeLink.gameObject.SetActive(!isInstalled);
 
-            installedLabel.SetTemplate($"<i><b>{{{InstalledLocLabel}}}</b>\n{{{DlcDescriptionLocLabelPrefix}{spec.Id}}}</i>");
+            installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id}}}\n<b>{{{InstalledLocLabel}}}</b></i>");
             if (spec.StoreLinks.TryGetValue(store, out var storeLinkUrl))
             {
                 storeLink.SetTemplate($"<link=\"{storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
