@@ -7,6 +7,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.Logic;
@@ -458,7 +459,7 @@ namespace Assets.CS.TabletopUI {
                 sc.Retire();
 
             foreach (var element in tc.GetElementStacksManager().GetStacks())
-                element.Retire(true); //looks daft but pretty on reset
+                element.Retire(CardVFX.None); //looks daft but pretty on reset
         }
 
         public void PurgeElement(string elementId, int maxToPurge)

@@ -18,6 +18,8 @@ namespace Assets.Core.Enums
         CardTaken,
         CardTakenShadow,
         CardTakenShadowSlow,
-        CardTransformWhite
+        CardTransformWhite,
+        CardHide,
+        None
     }
 }

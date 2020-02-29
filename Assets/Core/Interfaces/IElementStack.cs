@@ -32,8 +32,7 @@ namespace Assets.Core.Interfaces
         IElementStack SplitAllButNCardsToNewStack(int n, Context context);
         bool AllowsIncomingMerge();	// Can cards be merged onto this stack?
 		bool AllowsOutgoingMerge();	// Can this stack be merged onto another stack?
-        bool Retire(bool withVfx);
-        bool Retire(string vfxName);
+        bool Retire(CardVFX vfxName);
         void Decay(float interval);
 
         bool IsFront();

@@ -81,7 +81,7 @@ namespace Assets.Logic
             {
                 if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption)
                 {
-                    stacks.ElementAt(i).Retire(true);
+                    stacks.ElementAt(i).Retire(CardVFX.CardBurn);
                 }
             }
         }

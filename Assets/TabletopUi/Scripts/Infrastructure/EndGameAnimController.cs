@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -73,7 +74,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 			cameraZoom.StartFixedZoom(0f, zoomDuration);
 
             // Start hiding all tokens
-            RetireAllStacks("CardBurn");
+            RetireAllStacks(CardVFX.CardBurn);
 
             // (Spawn specific effect based on token, depending on end-game-type)
             if (!string.IsNullOrEmpty(fxName))
@@ -117,7 +118,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return go;
         }
 
-        void RetireAllStacks(string anim) {
+        void RetireAllStacks(CardVFX anim) {
             var stacks = _tabletopManager._tabletop.GetElementStacksManager().GetStacks();
 
             foreach (var item in stacks)

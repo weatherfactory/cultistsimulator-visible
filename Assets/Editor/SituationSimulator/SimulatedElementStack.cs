@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -90,7 +91,7 @@ namespace Assets.Editor
         {
             _quantity = quantity;
             if (quantity <= 0) {
-                Retire(true);
+                Retire(CardVFX.CardBurn);
                 return;
             }
 
@@ -166,12 +167,9 @@ namespace Assets.Editor
             return false;
         }
 
-        public bool Retire(bool withVfx)
-        {
-            return Retire(null);
-        }
 
-        public bool Retire(string vfxName)
+
+        public bool Retire(CardVFX vfxName)
         {
             SetStackManager(null);
             return true;
