@@ -68,7 +68,7 @@ public class ElementStacksManager : IElementStacksManager {
                 return unsatisfiedChange;
 
             int originalQuantity = stackToAffect.Quantity;
-            stackToAffect.ModifyQuantity(unsatisfiedChange);
+            stackToAffect.ModifyQuantity(unsatisfiedChange,context);
             unsatisfiedChange += originalQuantity;
 
         }

@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Sprite spriteUniqueTextBG;
         [SerializeField] GameObject shadow;
 
-        [SerializeField] string defaultRetireFX = "CardBurn";
+        [SerializeField] string defaultRetireFX = CardVFX.CardBurn.ToString();
 
         protected IElementStacksManager CurrentStacksManager;
 
@@ -168,7 +168,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void SetQuantity(int quantity)
+        public void SetQuantity(int quantity, Context context)
 		{
 			_quantity = quantity;
 			if (quantity <= 0)
@@ -185,8 +185,8 @@ namespace Assets.CS.TabletopUI {
 			DisplayInfo();
         }
 
-        public void ModifyQuantity(int change) {
-            SetQuantity(_quantity + change);
+        public void ModifyQuantity(int change,Context context) {
+            SetQuantity(_quantity + change, context);
         }
 
         void SetCardBG(bool unique, bool decays) {
@@ -335,7 +335,7 @@ namespace Assets.CS.TabletopUI {
 
             try
 			{
-                SetQuantity(quantity); // this also toggles badge visibility through second call
+                SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
                 name = "Card_" + elementId;
@@ -551,7 +551,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
-            SetQuantity(Quantity + merge.Quantity);
+            SetQuantity(Quantity + merge.Quantity,new Context(Context.ActionSource.Merge));
             merge.Retire(false);
         }
 
@@ -680,8 +680,7 @@ namespace Assets.CS.TabletopUI {
             else
                 return true;	// If outgoing, it doesn't matter what it's current container is - CP
         }
-
-        #region -- Interaction ------------------------------------------------------------------------------------
+        
 
 		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
 		{
@@ -858,7 +857,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
-                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
+                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 DraggableToken.SetReturn(false, "was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
@@ -901,7 +900,7 @@ namespace Assets.CS.TabletopUI {
                 originStack = cardLeftBehind;
 
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-                SetQuantity(n);
+                SetQuantity(n,context);
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
@@ -1083,8 +1082,7 @@ namespace Assets.CS.TabletopUI {
 		{
             shadow.gameObject.SetActive(show);
         }
-
-        #endregion
+        
 
 
         public bool ChangeThisCardOnDesktopTo(string elementId)

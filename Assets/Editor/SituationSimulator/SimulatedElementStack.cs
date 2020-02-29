@@ -81,12 +81,12 @@ namespace Assets.Editor
             return _element.XTriggers;
         }
 
-        public void ModifyQuantity(int change)
+        public void ModifyQuantity(int change,Context context)
         {
-            SetQuantity(_quantity + change);
+            SetQuantity(_quantity + change,context);
         }
 
-        public void SetQuantity(int quantity)
+        public void SetQuantity(int quantity, Context context)
         {
             _quantity = quantity;
             if (quantity <= 0) {
@@ -116,7 +116,7 @@ namespace Assets.Editor
             if (!string.IsNullOrEmpty(_element.UniquenessGroup))
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
-            SetQuantity(quantity);
+            SetQuantity(quantity,new Context(Context.ActionSource.Unknown));
             LifetimeRemaining = _element.Lifetime;
             MarkedForConsumption = false;
             StackSource = source;
@@ -148,7 +148,7 @@ namespace Assets.Editor
                 foreach (var m in GetCurrentMutations())
                     cardLeftBehind.SetMutation(m.Key, m.Value, false);
 
-                SetQuantity(n);
+                SetQuantity(n,context);
                 
                 return cardLeftBehind;
             }

@@ -23,8 +23,8 @@ namespace Assets.Core.Interfaces
         void SetMutation(string aspectId, int value,bool additive);
         Dictionary<string, string> GetXTriggers();
         //should return false if Remove has already been called on this card
-        void ModifyQuantity(int change);
-        void SetQuantity(int quantity);
+        void ModifyQuantity(int change,Context context);
+        void SetQuantity(int quantity, Context context);
         void Populate(string elementId, int quantity,Source source);
         void SetStackManager(IElementStacksManager manager);
         List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb);

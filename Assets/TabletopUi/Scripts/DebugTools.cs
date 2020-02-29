@@ -257,7 +257,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
             {
                 if (stack.EntityId == elementId && !stack.GetCurrentMutations().Any())
                 {
-                    stack.ModifyQuantity(1);
+                    stack.ModifyQuantity(1,new Context(Context.ActionSource.Debug));
                     return;
                 }
             }
