@@ -67,6 +67,16 @@ comments:"opened by initial travel recipe"
 
 
 
+{id:"scout.generic",
+actionId:"scout",
+label:"Reconnoitre the City",
+startdescription:"FNORD find opportunities",
+requirements:{domicile:1},
+deckeffect:{opportunities.destination.generic:1},
+warmup:60,
+craftable:true},
+
+
 {id:"conspire.first",
 actionId:"Conspire",
 label:"FNORD Conspire",
