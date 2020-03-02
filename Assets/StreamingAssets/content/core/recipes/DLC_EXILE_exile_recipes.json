@@ -40,6 +40,7 @@ actionId:"travel",
 label:"Departing",
 startdescription:"I'm leaving... FNORD",
 purge:{trace:100,asset:100,op:100},
+deleteverb:{searchers:1},
 warmup:2,
 linked:[{id:"travel.enroute"}]
 },
