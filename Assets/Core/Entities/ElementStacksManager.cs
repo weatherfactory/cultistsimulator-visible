@@ -193,6 +193,13 @@ public class ElementStacksManager : IElementStacksManager {
         _catalogue.NotifyStacksChanged();
     }
 
+    public void RemoveAllStacks()
+    {
+        var stacksListCopy=new List<IElementStack>(_stacks);
+        foreach (IElementStack s in stacksListCopy)
+            RemoveStack(s);
+    }
+
     private void NotifyStacksChanged() {
         if (_catalogue == null)
             throw new ApplicationException("StacksManager is trying to notify the catalogue, but there's no catalogue! - for stacksmanager " + Name);

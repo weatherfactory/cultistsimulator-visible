@@ -466,6 +466,7 @@ namespace Assets.CS.TabletopUI {
         {
             //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
             _tabletop.GetElementStacksManager().ReduceElement(elementId, -maxToPurge,new Context(Context.ActionSource.Purge));
+            
         }
 
         public void RestartGame() {

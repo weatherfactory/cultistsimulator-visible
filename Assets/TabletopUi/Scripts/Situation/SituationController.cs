@@ -152,8 +152,8 @@ namespace Assets.TabletopUi {
         }
 
         public void Retire() {
-            situationToken.Retire();
             situationWindow.Retire();
+            situationToken.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
         }
 

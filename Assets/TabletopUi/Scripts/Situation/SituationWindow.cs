@@ -110,6 +110,8 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void Retire() {
+            GetStorageStacksManager().RemoveAllStacks();
+            GetResultsStacksManager().RemoveAllStacks();
             Destroy(gameObject);
         }
 

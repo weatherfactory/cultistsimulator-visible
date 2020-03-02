@@ -32,5 +32,6 @@ namespace Assets.Core.Interfaces
         string Name { get; set; }
 
         void Deregister();
+        void RemoveAllStacks();
     }
 }
