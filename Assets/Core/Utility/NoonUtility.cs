@@ -31,6 +31,7 @@ namespace Noon
         public const string KFROMENDING = "fromEnding";
         public const string KAVAILABLEWITHOUTENDINGMATCH = "availableWithoutEndingMatch";
 	    public const string KEXCLUDESONENDING = "excludesOnEnding";
+        public const string KSTATUSBARELEMENTS = "statusbarelements";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
         public const string KPORTALEFFECT = "portaleffect";

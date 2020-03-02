@@ -1092,9 +1092,15 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 // randomly-selected legacies after an ending
                 bool availableWithoutEndingMatch =
                     Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH]);
+
                 List<string> excludesOnEnding = new List<string>();
                 if (htEachLegacy.ContainsKey(NoonConstants.KEXCLUDESONENDING))
                     excludesOnEnding = htEachLegacy.GetArrayList(NoonConstants.KEXCLUDESONENDING).Cast<string>().ToList();
+                
+                List<string> statusBarElements=new List<string>();
+                if (htEachLegacy.Contains(NoonConstants.KSTATUSBARELEMENTS))
+                    statusBarElements = htEachLegacy.GetArrayList(NoonConstants.KSTATUSBARELEMENTS).Cast<string>()
+                        .ToList();
 
                 string startingVerbId = string.Empty;
                 if (htEachLegacy.ContainsKey(NoonConstants.KSTARTINGVERBID))
@@ -1108,6 +1114,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     htEachLegacy[NoonConstants.KFROMENDING].ToString(),
                     availableWithoutEndingMatch,
                     excludesOnEnding,
+                    statusBarElements,
                     startingVerbId
                 );
 

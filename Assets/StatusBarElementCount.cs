@@ -11,11 +11,14 @@ public class StatusBarElementCount : MonoBehaviour
     [SerializeField] public Image ElementImage;
     [SerializeField] public TextMeshProUGUI ElementCount;
     [SerializeField] public TextMeshProUGUI FatiguedElementCount;
+    public Element Element;
 
 
-    public void PopulateImageForElement(string elementId)
+    public void PopulateWithElement(Element element)
     {
-        ElementImage.sprite= ResourcesManager.GetSpriteForElement(elementId);
+        this.gameObject.SetActive(true);
+        Element = element;
+        ElementImage.sprite= ResourcesManager.GetSpriteForElement(Element.Icon);
     }
 
     public void SetCount(int count)
