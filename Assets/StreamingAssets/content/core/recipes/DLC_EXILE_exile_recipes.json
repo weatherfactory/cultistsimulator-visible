@@ -40,7 +40,7 @@ linked:[{id:"travel.departing"}]},
 actionId:"travel",
 label:"Departing",
 startdescription:"I'm leaving... FNORD",
-purge:{trace:100,asset:100,op:100},
+purge:{trace:100,asset:100,op:100,opportunity:100},
 deleteverb:{searchers:1},
 warmup:2,
 linked:[{id:"travel.enroute"}]
@@ -78,7 +78,7 @@ craftable:true},
 
 
 {id:"conspire.first",
-actionId:"Conspire",
+actionId:"conspire",
 label:"FNORD Conspire",
 startdescription:"Conspire instructions: get opportunities, put them here and use assets.",
 effects:{cash:1},
@@ -111,6 +111,24 @@ aspects:{majortracerisk:1},
 warmup:60,
 craftable:true},
 
+
+{id:"conspire.negotiate",
+actionId:"conspire",
+label:"Attempt to Negotiate Something Useful",
+startdescription:"FNORD generic negotiation",
+requirements:{connection:1,asset:1},
+aspects:{negotiation:1},
+warmup:30,
+craftable:true},
+
+{id:"conspire.purchase",
+actionId:"conspire",
+label:"Attempt to Purchase Something Useful",
+startdescription:"FNORD generic purchase",
+requirements:{asset:1},
+aspects:{purchase:1},
+warmup:30,
+craftable:true},
 
 
 

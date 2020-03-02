@@ -17,7 +17,8 @@ resetonexhaustion:false},
 {id: "opportunities.destination.generic",
 				label:"OpportunitiesS",
 	description:"What might come?",
-	spec:["opportunity.connection"],
+	spec:["opportunity.connection",
+	"opportunity.licence.medical"],
 	defaultcard:"opportunity.discreetoffice",
 resetonexhaustion:false}
 	

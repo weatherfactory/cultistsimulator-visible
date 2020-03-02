@@ -50,10 +50,10 @@
 						  {
             id: "conspire",
             label: "Conspire",
-            description: "[Use this to address Opportunities, or to convert years to cash.]",
+            description: "[Use this to address Opportunities, to run Operations, or to convert years to cash.]",
 			atStart:false,
-			  slots: [{id:"purchase",label:"Purchase",
-			  required:{opportunity:1,lifespan.stolen:1}}],
+			  slots: [{id:"plan",label:"Plan",
+			  required:{operation:1,opportunity:1,lifespan.stolen:1}}],
         },
 
 	  {

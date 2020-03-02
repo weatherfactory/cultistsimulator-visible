@@ -4,28 +4,47 @@
 label:"Minor Trace Risk",
 description:"FNORD",
 isAspect:true,
-induces:[{id:"spawn.trace",chance:10}]
+induces:[{id:"spawn.trace",chance:10}],
+noartneeded:true
 },
 {id:"tracerisk",
 label:"Trace Risk",
 description:"FNORD",
 isAspect:true,
-induces:[{id:"spawn.trace",chance:30}]
+induces:[{id:"spawn.trace",chance:30}],
+noartneeded:true
 },
 
 {id:"majortracerisk",
 label:"Major Trace Risk",
 description:"FNORD",
 isAspect:true,
-induces:[{id:"spawn.trace",chance:70}]
+induces:[{id:"spawn.trace",chance:70}],
+noartneeded:true
 },
 
 {id:"terribletracerisk",
 label:"Terrible Trace Risk",
 description:"FNORD",
 isAspect:true,
-induces:[{id:"spawn.trace",chance:90}]
+induces:[{id:"spawn.trace",chance:90}],
+noartneeded:true
 },
+
+{id:"negotiation",
+label:"Negotiation",
+description:"FNORD recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"purchase",
+label:"Purchase",
+description:"FNORD recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
 
 
 
@@ -80,11 +99,65 @@ isAspect:true,
 icon:compensationvalue
 },
 
+
+{id: "opportunity.discreetoffice",
+label: "Opportunity: Discreet Office?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{purchase:discreetoffice},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "opportunity.licence.medical",
+label: "Opportunity: A Medical Licence?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{negotiation:licence.medical},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true},
+{actionId:conspire,id:"connection",label:"Connection",required:{connection:1}}],
+lifetime:180
+},
+
+
+	  	  {id: "opportunity.connection",
+label: "Opportunity: Connection?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{purchase:connection},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+
 {id: "cash",
 label: "Cash",
 aspects: {asset:1},
-description:"An unglamorously portable shorthand for what is desired.",
-icon:funds
+description:"An unglamorously portable shorthand for objects of desire.",
+icon:funds,
+comments: "Don't forget spintriae"
+},
+
+{id:"discreetoffice",
+label:"Discreet Office",
+aspects:{asset:1},
+description:"Discreet Office FNORD",
+icon:vaultcapital1
+},
+
+
+{id:"licence.medical",
+label:"Medical Licence",
+aspects:{asset:1},
+description:"Medical Licence FNORD",
+icon:fragmentheart
+},
+
+{id:"connection",
+label:"Connection",
+aspects:{asset:1},
+description:"Connection FNORD",
+icon:favour
 },
 
 {id: "asset.a",
@@ -230,19 +303,7 @@ description:"Some there are who will not yield. Perhaps this is a virtue.",
 icon: bloodshed
 },
 	  
-	  	  {id: "opportunity.discreetoffice",
-label: "Opportunity: Discreet Office?",
-aspects: {opportunity:1},
-description:"FNORD.",
-lifetime:180
-},
 
-	  	  {id: "opportunity.connection",
-label: "Opportunity: Connection?",
-aspects: {opportunity:1},
-description:"FNORD.",
-lifetime:180
-},
 	
 	  
 	  {id: "op.doctorspractice",
