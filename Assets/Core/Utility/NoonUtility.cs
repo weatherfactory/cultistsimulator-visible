@@ -46,6 +46,8 @@ namespace Noon
         public const string KMUTATIONS = "mutations";
         public const string KDECKEFFECT = "deckeffect";
         public const string KPURGE = "purge";
+        public const string KHALTVERB = "haltverb";
+        public const string KDELETEVERB = "deleteverb";
         public const string KINTERNALDECK = "internaldeck";
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";

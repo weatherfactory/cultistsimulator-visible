@@ -469,6 +469,39 @@ namespace Assets.CS.TabletopUI {
             
         }
 
+        public void HaltVerb(string verbId, int maxToHalt)
+        {
+            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            int i = 0;
+
+            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            {
+                if (s.GetTokenId() == verbId.Trim())
+                {
+                    s.Halt();
+                    i++;
+                }
+                if (i >= maxToHalt)
+                    break;
+            }
+        }
+
+        public void DeleteVerb(string verbId, int maxToDelete)
+        {
+            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            int i = 0;
+            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            {
+                if (s.GetTokenId() == verbId.Trim())
+                {
+                    s.Retire();
+                    i++;
+                }
+                if(i>=maxToDelete)
+                    break;
+            }
+        }
+
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             CrossSceneState.RestartingGame();

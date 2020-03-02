@@ -44,14 +44,18 @@ namespace Assets.Logic
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
 
-            //Penultimate: run purges. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
+            //Penultimate: run purges and verb manipulations. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
             RunPurges(command, _ttm);
+
+            RunVerbManipulations(command, _ttm);
+
+
 
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
-    
+
        private void RunPurges(ISituationEffectCommand command, ITabletopManager ttm)
        {
         foreach(var p in command.Recipe.Purge)
@@ -60,7 +64,16 @@ namespace Assets.Logic
         }
        }
 
-       private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
+
+
+       private void RunVerbManipulations(ISituationEffectCommand command, ITabletopManager ttm)
+       {
+           foreach (var h in command.Recipe.HaltVerb)
+               ttm.HaltVerb(h.Key, h.Value);
+       }
+
+
+        private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
        {
            foreach(var mutationEffect in command.Recipe.MutationEffects)
            { 

@@ -315,25 +315,13 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void HaltVerb(string verbId)
     {
-        var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
-        foreach (var s in situationsCatalogue.GetRegisteredSituations())
-        {
-            if(s.GetTokenId()==verbId.Trim())
-                s.Halt();
-        }
+        Registry.Retrieve<ITabletopManager>().HaltVerb(verbId, 1);
+
     }
 
     private void DeleteVerb(string verbId)
     {
-        var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
-        foreach (var s in situationsCatalogue.GetRegisteredSituations())
-        {
-            if(s.GetTokenId()==verbId.Trim())
-            {
-                s.Retire();
-            }
-        }
-
+        Registry.Retrieve<ITabletopManager>().DeleteVerb(verbId,1);
     }
 
     void BeginLegacy(string legacyId)

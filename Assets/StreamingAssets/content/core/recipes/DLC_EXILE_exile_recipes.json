@@ -1,6 +1,16 @@
 {
 "recipes": [
 
+
+{id:"_halt",
+actionId:"h",
+label:"Halting",
+startdescription:"!",
+haltverb: {time.exile:1},
+warmup:1,
+craftable:false
+},
+
 {id:"travel.first",
 actionId:"travel",
 label:"First Arrival",

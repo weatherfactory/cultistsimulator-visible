@@ -1436,6 +1436,40 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         htEachRecipe.Remove(NoonConstants.KPURGE);
 
         /////////////////////////////////////////////
+        //VERB HALTS
+        try
+        {
+            Hashtable htHaltVerb = htEachRecipe.GetHashtable(NoonConstants.KHALTVERB);
+            if(htHaltVerb!=null)
+                foreach (string verbToHaltId in (htHaltVerb.Keys))
+                {
+                    r.HaltVerb.Add(verbToHaltId,Convert.ToInt32(htHaltVerb[verbToHaltId]));
+                }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+        /////////////////////////////////////////////
+        //VERB DELETIONS
+        try
+        {
+            Hashtable htdeleteVerb = htEachRecipe.GetHashtable(NoonConstants.KDELETEVERB);
+            if (htdeleteVerb != null)
+                foreach (string verbTodeleteId in (htdeleteVerb.Keys))
+                {
+                    r.DeleteVerb.Add(verbTodeleteId, Convert.ToInt32(htdeleteVerb[verbTodeleteId]));
+                }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+
+
+        /////////////////////////////////////////////
         //DECKS
 
         try

@@ -45,5 +45,8 @@ namespace TabletopUi.Scripts.Interfaces
         AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation);
         void GroupAllStacks();
         void PurgeElement(string elementId, int maxToPurge);
+        void HaltVerb(string verbId, int maxToHalt);
+        void DeleteVerb(string verbId, int maxToDelete);
+
     }
 }

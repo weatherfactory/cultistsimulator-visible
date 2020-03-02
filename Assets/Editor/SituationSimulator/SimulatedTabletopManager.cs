@@ -157,5 +157,15 @@ namespace Assets.Editor
         {
             throw new NotImplementedException();
         }
+
+        public void HaltVerb(string hKey, int hValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteVerb(string verbId, int maxToDelete)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
