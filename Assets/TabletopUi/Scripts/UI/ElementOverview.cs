@@ -53,6 +53,7 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
                 break;
         }
 
+        UpdateDisplay(); //we might, eg, just have loaded the game, or have a legacy that has provided some of these things to start with
     }
 
     public void NotifyStacksChanged() {

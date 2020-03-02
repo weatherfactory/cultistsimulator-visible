@@ -12,17 +12,18 @@ mutations:[{filterOnAspectId:city.vienna,mutateAspectId:destination,mutationLeve
 {filterOnAspectId:city.vienna,mutateAspectId:domicile,mutationLevel:1}],
 warmup:10,
 craftable:true,
-alt:[{id:"turn.begin",additional:true}]
+alt:[{id:"turn.begin",additional:true},
+{id:"conspire.first",additional:true}]
 },
 
 
 {id:"travel.investigate",
 actionId:"travel",
 label:"Investigate other destinations",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but investigation risks Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
 requirements:{domicile:1},
 warmup:60,
-alt: [{id:"spawn.trace",additional:true}],
+aspects:{minortracerisk:1},
 deckeffect:{destinations.cities:1},
 craftable:true},
 
@@ -57,11 +58,48 @@ warmup:60},
 {id:"conspire.first",
 actionId:"conspire",
 label:"FNORD conspire instructions",
-startdescription:"FNORD conspire opens",
-effects: {asset.a:1},
+startdescription:"FNORD conspire opens. I'll need ready cash to take advantage of it.", 
+effects: {opportunity.discreetoffice:1},
 warmup:10,
-comments:"opened by initial time recipe"
+comments:"opened by initial travel recipe"
 },
+
+{id:"conspire.unpackdecade",
+actionId:"conspire",
+label:"Break down a Stolen Decade",
+startdescription:"Stolen life is more easily sold by the year, not the decade. I have the tools to make the necessary changes, but I must be very careful with my pen-strokes. She who comes before the Sun looks unkindly on sloppiness.",
+description:"At last it's done. I have drawn up ten careful drafts against the Tally, and burnt the decade draft. Each of my new drafts is worth forty-two million human heartbeats. I fancy I can almost hear them.",
+requirements:{decade.stolen:1},
+effects:{decade.stolen:-1,year.stolen:10},
+warmup:30,
+craftable:true,
+alt:[{id:"purchase.first",additional:true}]
+},
+
+
+
+{id:"conspire.convertyear",
+actionId:"conspire",
+label:"Raise Cash Hurriedly",
+startdescription:"Selling lifespan directly for cash is unsafe, and will quickly draw the attention of the reckoners. I should do it as little as possible.",
+description:"FNORD",
+requirements:{year.stolen:1},
+effects:{year.stolen:-1,cash:10},
+aspects:{majortracerisk:1},
+warmup:60,
+craftable:true},
+
+
+
+{id:"purchase.first",
+actionId:"purchase",
+label:"FNORD Purchase",
+startdescription:"Purchase instructions: get opportunities, put them here and use assets.",
+effects:{cash:1},
+warmup:10,
+craftable:false},
+
+
 
 
 {id:"lurk.first",

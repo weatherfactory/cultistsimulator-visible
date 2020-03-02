@@ -1458,6 +1458,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
         }
 
+        htEachRecipe.Remove(NoonConstants.KHALTVERB);
+
         /////////////////////////////////////////////
         //VERB DELETIONS
         try
@@ -1474,7 +1476,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
         }
 
-
+        htEachRecipe.Remove(NoonConstants.KDELETEVERB);
 
         /////////////////////////////////////////////
         //DECKS

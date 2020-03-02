@@ -44,11 +44,17 @@
             label: "Conspire",
             description: "This verb name will probably change. FNORD.",
 			atStart:false,
-			icon:"scheme",
 			  slots: [{id:"conspire",label:"Conspire",
-			  required:{asset:1}}],
+			  required:{lifespan.stolen:1}}],
         },
-			
+						  {
+            id: "purchase",
+            label: "Purchase",
+            description: "[Use this to address Opportunities, or to convert years to cash.]",
+			atStart:false,
+			  slots: [{id:"purchase",label:"Purchase",
+			  required:{opportunity:1}}],
+        },
 
 	  {
             id: "lurk",

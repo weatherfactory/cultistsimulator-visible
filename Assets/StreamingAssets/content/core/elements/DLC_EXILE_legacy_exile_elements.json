@@ -1,11 +1,33 @@
 {"elements":
     [
-
+{id:"minortracerisk",
+label:"Minor Trace Risk",
+description:"FNORD",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:10}]
+},
 {id:"tracerisk",
 label:"Trace Risk",
 description:"FNORD",
-isAspect:true
+isAspect:true,
+induces:[{id:"spawn.trace",chance:30}]
 },
+
+{id:"majortracerisk",
+label:"Major Trace Risk",
+description:"FNORD",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:70}]
+},
+
+{id:"terribletracerisk",
+label:"Terrible Trace Risk",
+description:"FNORD",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:90}]
+},
+
+
 
 {id:"defiancemarks",
 label:"The Exercise of Defiance",
@@ -43,10 +65,26 @@ isAspect:true,
 icon:venerationforge
 },
 
+
+{id:"opportunity",
+label:"Opportunity",
+description:"Opportunity FNORD",
+isAspect:true,
+icon:benign
+},
+
 {id:"asset",
 label:"Asset",
 description:"Asset FNORD",
-isAspect:true
+isAspect:true,
+icon:compensationvalue
+},
+
+{id: "cash",
+label: "Cash",
+aspects: {asset:1},
+description:"An unglamorously portable shorthand for what is desired.",
+icon:funds
 },
 
 {id: "asset.a",
@@ -54,7 +92,6 @@ label: "A",
 aspects: {asset:1},
 description:"FNORD"
 },
-
 {id: "asset.b",
 label: "B",
 aspects: {asset:1},
@@ -193,9 +230,16 @@ description:"Some there are who will not yield. Perhaps this is a virtue.",
 icon: bloodshed
 },
 	  
+	  	  {id: "opportunity.discreetoffice",
+label: "Opportunity: Discreet Office?",
+aspects: {opportunity:1},
+description:"FNORD."
+},
+	
+	  
 	  {id: "op.doctorspractice",
 label: "Doctor's Practice",
-aspects: {tracerisk:1,op:1},
+aspects: {op:1},
 description:"By recommendation only."
 }
 	
