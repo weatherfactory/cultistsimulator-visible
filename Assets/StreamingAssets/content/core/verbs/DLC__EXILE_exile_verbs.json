@@ -40,20 +40,20 @@
         },
 		
 			  {
-            id: "conspire",
-            label: "Conspire",
+            id: "scout",
+            label: "Reconnoitre",
             description: "This verb name will probably change. FNORD.",
 			atStart:false,
 			  slots: [{id:"conspire",label:"Conspire",
-			  required:{lifespan.stolen:1}}],
+			  required:{domicile:1}}],
         },
 						  {
-            id: "purchase",
-            label: "Purchase",
+            id: "conspire",
+            label: "Conspire",
             description: "[Use this to address Opportunities, or to convert years to cash.]",
 			atStart:false,
 			  slots: [{id:"purchase",label:"Purchase",
-			  required:{opportunity:1}}],
+			  required:{opportunity:1,lifespan.stolen:1}}],
         },
 
 	  {

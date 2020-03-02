@@ -13,7 +13,7 @@ mutations:[{filterOnAspectId:city.vienna,mutateAspectId:destination,mutationLeve
 warmup:10,
 craftable:true,
 alt:[{id:"turn.begin",additional:true},
-{id:"conspire.first",additional:true}]
+{id:"scout.first",additional:true}]
 },
 
 
@@ -55,14 +55,27 @@ mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1
 {filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
 warmup:60},
 
-{id:"conspire.first",
-actionId:"conspire",
-label:"FNORD conspire instructions",
-startdescription:"FNORD conspire opens. I'll need ready cash to take advantage of it.", 
+{id:"scout.first",
+actionId:"scout",
+label:"FNORD scout instructions",
+startdescription:"FNORD scout opens. I'll need ready cash to take advantage of it.", 
 effects: {opportunity.discreetoffice:1},
+alt:[{id:"conspire.first",additional:true}],
 warmup:10,
 comments:"opened by initial travel recipe"
 },
+
+
+
+{id:"conspire.first",
+actionId:"Conspire",
+label:"FNORD Conspire",
+startdescription:"Conspire instructions: get opportunities, put them here and use assets.",
+effects:{cash:1},
+warmup:30,
+craftable:false},
+
+
 
 {id:"conspire.unpackdecade",
 actionId:"conspire",
@@ -72,8 +85,7 @@ description:"At last it's done. I have drawn up ten careful drafts against the T
 requirements:{decade.stolen:1},
 effects:{decade.stolen:-1,year.stolen:10},
 warmup:30,
-craftable:true,
-alt:[{id:"purchase.first",additional:true}]
+craftable:true
 },
 
 
@@ -88,16 +100,6 @@ effects:{year.stolen:-1,cash:10},
 aspects:{majortracerisk:1},
 warmup:60,
 craftable:true},
-
-
-
-{id:"purchase.first",
-actionId:"purchase",
-label:"FNORD Purchase",
-startdescription:"Purchase instructions: get opportunities, put them here and use assets.",
-effects:{cash:1},
-warmup:10,
-craftable:false},
 
 
 
