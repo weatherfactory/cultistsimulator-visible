@@ -108,16 +108,30 @@ description:"FNORD. Check back later.",
 requirements:{licence.medical:1,discreetoffice:1},
 aspects:{minortracerisk:1},
 warmup:10,
-alt:[{id:"operation.doctorspractice", additional:true, expulsion:{limit:1,filter:{discreetoffice:1}}}]
+alt:[{id:"operation.doctorspractice", additional:true, expulsion:{limit:1,filter:{discreetoffice:1}}}],
 craftable:true},
 
 {id:"operation.doctorspractice",
+actionId:"operation.doctorspractice",
 label:"FNORD practice running...",
 startdescription:"FNORD practice",
+description:"Just raised some cash FNORD",
+effects:{cash:1},
+slots:[{id:"year",label:"Year",required:{year.stolen:1}}],
+alt:[{id:"operation.doctorspractice.yearslaundered"}],
+aspects:{op:1},
 warmup:120,
-slots:[]
-aspects:{op:1,years.launder:1}
 },
+
+{id:"operation.doctorspractice.yearslaundered",
+actionId:"operation.doctorspractice",
+label:"FNORD years laundered in practice",
+startdescription:"FNORD years laundered in practice",
+requirements:{year.stolen:1},
+effects:{year.stolen:-1,cash:10},
+aspects:{op:1}
+},
+
 
 
 
@@ -125,10 +139,10 @@ aspects:{op:1,years.launder:1}
 {id:"conspire.convertyear",
 actionId:"conspire",
 label:"Raise Cash Hurriedly",
-startdescription:"Selling lifespan directly for cash is unsafe, and will quickly draw the attention of the reckoners. I should do it as little as possible.",
+startdescription:"Selling lifespan directly for cash gets a lower price, and will quickly draw reckoner attention. I should do it as little as possible.",
 description:"FNORD",
 requirements:{year.stolen:1},
-effects:{year.stolen:-1,cash:10},
+effects:{year.stolen:-1,cash:5},
 aspects:{majortracerisk:1},
 warmup:60,
 craftable:true},
