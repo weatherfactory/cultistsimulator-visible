@@ -45,7 +45,12 @@ isAspect:true,
 noartneeded:true
 },
 
-
+{id:"op",
+label:"Operation",
+description:"Operation FNORD",
+isAspect:true,
+noartneeded:true
+},
 
 
 {id:"defiancemarks",
@@ -77,12 +82,6 @@ icon:potential
 },
 
 
-{id:"op",
-label:"Operation",
-description:"Operation FNORD",
-isAspect:true,
-icon:venerationforge
-},
 
 
 {id:"opportunity",
@@ -150,6 +149,7 @@ icon:vaultcapital1
 label:"Medical Licence",
 aspects:{asset:1},
 description:"Medical Licence FNORD",
+slots:[{actionId:conspire,id:"location",label:"Location",required:{discreetoffice:1}}],
 icon:fragmentheart
 },
 
@@ -304,14 +304,6 @@ icon: bloodshed
 },
 	  
 
-	
-	  
-	  {id: "op.doctorspractice",
-label: "Doctor's Practice",
-aspects: {op:1},
-description:"By recommendation only."
-}
-	
 	
 ]
 };

@@ -100,6 +100,28 @@ craftable:true
 
 
 
+{id:"conspire.doctorspractice",
+actionId:"conspire",
+label:"Run a Doctor's Practice",
+startdescription:"FNORD. Small chance of trace",
+description:"FNORD. Check back later.",
+requirements:{licence.medical:1,discreetoffice:1},
+aspects:{minortracerisk:1},
+warmup:10,
+alt:[{id:"operation.doctorspractice", additional:true, expulsion:{limit:1,filter:{discreetoffice:1}}}]
+craftable:true},
+
+{id:"operation.doctorspractice",
+label:"FNORD practice running...",
+startdescription:"FNORD practice",
+warmup:120,
+slots:[]
+aspects:{op:1,years.launder:1}
+},
+
+
+
+
 {id:"conspire.convertyear",
 actionId:"conspire",
 label:"Raise Cash Hurriedly",
@@ -116,7 +138,7 @@ craftable:true},
 actionId:"conspire",
 label:"Attempt to Negotiate Something Useful",
 startdescription:"FNORD generic negotiation",
-requirements:{connection:1,asset:1},
+requirements:{opportunity:1,connection:1,asset:1},
 aspects:{negotiation:1},
 warmup:30,
 craftable:true},
@@ -125,8 +147,18 @@ craftable:true},
 actionId:"conspire",
 label:"Attempt to Purchase Something Useful",
 startdescription:"FNORD generic purchase",
-requirements:{asset:1},
+requirements:{opportunity:1,asset:1},
 aspects:{purchase:1},
+warmup:30,
+craftable:true},
+
+
+{id:"conspire.sell",
+actionId:"conspire",
+label:"Attempt to Sell an Asset for Cash",
+startdescription:"FNORD warning you'll lose this.",
+requirements:{asset:1},
+effects:{asset:-1,cash:1},
 warmup:30,
 craftable:true},
 

@@ -53,7 +53,7 @@
             description: "[Use this to address Opportunities, to run Operations, or to convert years to cash.]",
 			atStart:false,
 			  slots: [{id:"plan",label:"Plan",
-			  required:{operation:1,opportunity:1,lifespan.stolen:1}}],
+			  required:{asset:1,opportunity:1,lifespan.stolen:1}}],
         },
 
 	  {
