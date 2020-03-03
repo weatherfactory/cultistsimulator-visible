@@ -471,37 +471,80 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public void HaltVerb(string verbId, int maxToHalt)
+        public void HaltVerb(string toHaltId, int maxToHalt)
         {
             var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
             int i = 0;
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
 
-            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            if (toHaltId.Contains('*'))
             {
-                if (s.GetTokenId() == verbId.Trim())
+                string wildcardToDelete = toHaltId.Remove(toHaltId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
                 {
-                    s.Halt();
-                    i++;
+                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    {
+                        s.Halt();
+                        i++;
+                    }
+
+                    if (i >= maxToHalt)
+                        break;
                 }
-                if (i >= maxToHalt)
-                    break;
+            }
+
+            else
+            {
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.GetTokenId() == toHaltId.Trim())
+                    {
+                        s.Halt();
+                        i++;
+                    }
+                    if (i >= maxToHalt)
+                        break;
+                }
             }
         }
 
-        public void DeleteVerb(string verbId, int maxToDelete)
+        public void DeleteVerb(string toDeleteId, int maxToDelete)
         {
             var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
             int i = 0;
-            foreach (var s in situationsCatalogue.GetRegisteredSituations())
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toDeleteId.Contains('*'))
             {
-                if (s.GetTokenId() == verbId.Trim())
+                string wildcardToDelete = toDeleteId.Remove(toDeleteId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
                 {
-                    s.Retire();
-                    i++;
+                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    {
+                        s.Retire();
+                        i++;
+                    }
+
+                    if (i >= maxToDelete)
+                        break;
                 }
-                if(i>=maxToDelete)
-                    break;
             }
+
+            else
+                {
+                    foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                    {
+                 if (s.GetTokenId() == toDeleteId.Trim())
+                        {
+                            s.Retire();
+                            i++;
+                        }
+                        if (i >= maxToDelete)
+                            break;
+                    }
+                }
         }
 
         public void RestartGame() {

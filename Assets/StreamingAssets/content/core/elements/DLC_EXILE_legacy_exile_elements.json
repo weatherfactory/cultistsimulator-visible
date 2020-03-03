@@ -2,14 +2,14 @@
     [
 {id:"minortracerisk",
 label:"Minor Trace Risk",
-description:"FNORD",
+description:"recipe aspect",
 isAspect:true,
 induces:[{id:"spawn.trace",chance:10}],
 noartneeded:true
 },
 {id:"tracerisk",
 label:"Trace Risk",
-description:"FNORD",
+description:"recipe aspect",
 isAspect:true,
 induces:[{id:"spawn.trace",chance:30}],
 noartneeded:true
@@ -17,7 +17,7 @@ noartneeded:true
 
 {id:"majortracerisk",
 label:"Major Trace Risk",
-description:"FNORD",
+description:"recipe aspect",
 isAspect:true,
 induces:[{id:"spawn.trace",chance:70}],
 noartneeded:true
@@ -25,7 +25,7 @@ noartneeded:true
 
 {id:"terribletracerisk",
 label:"Terrible Trace Risk",
-description:"FNORD",
+description:"recipe aspect",
 isAspect:true,
 induces:[{id:"spawn.trace",chance:90}],
 noartneeded:true
@@ -33,24 +33,45 @@ noartneeded:true
 
 {id:"negotiation",
 label:"Negotiation",
-description:"FNORD recipe aspect",
+description:"recipe aspect",
 isAspect:true,
 noartneeded:true
 },
 
 {id:"purchase",
 label:"Purchase",
-description:"FNORD recipe aspect",
+description:"recipe aspect",
 isAspect:true,
 noartneeded:true
 },
 
-{id:"op",
-label:"Operation",
-description:"Operation FNORD",
+{id:"rkx.promote",
+label:"Reckoner Promotion",
+description:"recipe aspect",
 isAspect:true,
 noartneeded:true
 },
+
+{id:"rkx.demote",
+label:"Reckoner Demotion",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.event",
+label:"Reckoner plans",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"rkx.rank",
+label:"Reckoner rank",
+description:"FNORD",
+isAspect:true
+},
+
+
 
 
 {id:"defiancemarks",
@@ -302,6 +323,51 @@ aspects: {defiancemarks:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
 icon: bloodshed
 },
+
+{id: "rkx.scout",
+label: "Reckoner Scout",
+description:"FNORD",
+verbicon:"rkx.scout",
+xtriggers:{rkx.promote:rkx.enforcer}
+},
+
+{id: "rkx.enforcer",
+label: "Reckoner Enforcer",
+description:"FNORD",
+verbicon:"rkx.enforcer",
+aspects:{rkx.rank:1},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout}
+},
+{id: "rkx.underboss",
+label: "Reckoner Underboss",
+description:"FNORD",
+verbicon:"rkx.underboss",
+aspects:{rkx.rank:2},
+xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer}
+},
+{id: "rkx.foe",
+label: "Your Foe",
+description:"FNORD",
+verbicon:"rkx.foe",
+aspects:{rkx.rank:3},
+xtriggers:{rkx.demote:rkx.underboss}
+},
+
+{id: "rkx.event.aggressive",
+label: "Reckoners: Aggressive",
+aspects:{rkx.event:1},
+description:"FNORD",
+},
+{id: "rkx.event.passive",
+label: "Reckoners: Passive",
+aspects:{rkx.event:1},
+description:"FNORD",
+},
+
+
+
+	  
+
 	  
 
 	

@@ -70,6 +70,9 @@ namespace Assets.Logic
        {
            foreach (var h in command.Recipe.HaltVerb)
                ttm.HaltVerb(h.Key, h.Value);
+
+           foreach (var d in command.Recipe.DeleteVerb)
+               ttm.DeleteVerb(d.Key, d.Value);
        }
 
 
