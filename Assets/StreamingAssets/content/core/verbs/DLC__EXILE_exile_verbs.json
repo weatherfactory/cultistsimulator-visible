@@ -55,23 +55,13 @@
 			  slots: [{id:"plan",label:"Plan",
 			  required:{asset:1,opportunity:1,lifespan.stolen:1}}],
         },
-
-	  {
-            id: "lurk",
-            label: "Lurk",
-            description: "Take shelter. FNORD.",
-			atStart:false,
-			icon:"scandal.notoriety",
-			  slots: [{id:"lurk",label:"Lurk",
-			  required:{asset:1}}],
-        },
-					  {
+		{
             id: "travel",
             label: "Travel",
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
 			atStart:false,
-				  slots: [{id:"direction",label:"Direction",description: "A road, or its end?",
-			  required:{destination:1,domicile:1}}]
+				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
+			  required:{destination:1,domicile:1,cash:1}}]
         },
 			  {
             id: "time.exile",

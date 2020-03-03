@@ -71,6 +71,12 @@ description:"FNORD",
 isAspect:true
 },
 
+{id:"cash.sent",
+label:"Preparations",
+description:"I've sent funds ahead to make life in this place easier.",
+isAspect:true
+},
+
 
 
 
@@ -154,6 +160,7 @@ lifetime:180
 label: "Cash",
 aspects: {asset:1},
 description:"An unglamorously portable shorthand for objects of desire.",
+slots:[{actionId:travel,id:"destination",label:"Destination",required:{destination:1}}],
 icon:funds,
 comments: "Don't forget spintriae"
 },
@@ -349,8 +356,7 @@ xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer}
 label: "Your Foe",
 description:"FNORD",
 verbicon:"rkx.foe",
-aspects:{rkx.rank:3},
-xtriggers:{rkx.demote:rkx.underboss}
+aspects:{rkx.rank:3}
 },
 
 {id: "rkx.event.aggressive",
