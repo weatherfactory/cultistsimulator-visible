@@ -338,7 +338,7 @@ linked:[
 {id:"rkx.promote"},
 {id:"rkx.obscurity.seek"},
 {id:"rkx.leave"},
-{id:"rkx.demote"},
+{id:"rkx.lookfurtherafield"},
 {id:"rkx.wait"}]},
 
 {id:"rkx.promote",
@@ -410,14 +410,57 @@ requirements:{rkx.event.passive:1,trace:-1,rkx.rank:-1},
 deleteverb:{rkx:1},
 warmup:50},
 
+{id:"rkx.lookfurtherafield",
+actionId:"rkx",
+label:"Reckoners are reducing their presence FNORD",
+startdescription:"Reckoners are reducing their presence FNORD",
+requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
+slots:[{id:"destination",label:"A Lead?",required:{destination:1},forbidden:{rkx.infected:1},greedy:true}],
+warmup:50,
+linked:[
+{id:"rkx.infect.becauseprep",chance:70},
+{id:"rkx.infect.noprep",chance:30},
+{id:"rkx.demote"}]},
+
+
+{id:"rkx.infect.becauseprep",
+actionId:"rkx",
+label:"FNORD they're off elsewhere!",
+startdescription:"FNORD",
+requirements:{destination:1,cash.sent:1},
+mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
+warmup:50,
+linked:[{id:"rkx.demote"}]},
+
+{id:"rkx.infect.noprep",
+actionId:"rkx",
+label:"FNORD they're off elsewhere!",
+startdescription:"FNORD",
+requirements:{destination:1,cash.sent:-1},
+mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
+warmup:50,
+linked:[{id:"rkx.demote"}]},
+
+
+
 {id:"rkx.demote",
 actionId:"rkx",
 label:"Reckoners are reducing their presence FNORD",
 startdescription:"Reckoners are reducing their presence FNORD",
 requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
 aspects:{rkx.demote:1},
+comments:"If we infected a destination in the previous step, spit the destination out",
+alt:[{id:"spit.infected.destination", additional:true, expulsion:{limit:1,filter:{rkx.infected:1}}}],
 warmup:50,
 linked:[{id:"rkx.reset"}]},
+
+{id:"spit.infected.destination",
+actionId:"spit.infected.destination",
+label:"Perils Ahead",
+startdescription:"FNORD",
+requirements:{rkx.infected:1},
+warmup:2,
+},
 
 
 {id:"rkx.wait",
