@@ -63,6 +63,14 @@
 				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
 			  required:{destination:1,domicile:1,cash:1}}]
         },
+				{
+            id: "send",
+            label: "Send",
+            description: "Telegrams and taunts.",
+			atStart:false,
+				  slots: [{id:"send",label:"Send",
+			  required:{obscurity:1,cash:1,cash.sent:1}}]
+        },
 			  {
             id: "time.exile",
             label: "Time",

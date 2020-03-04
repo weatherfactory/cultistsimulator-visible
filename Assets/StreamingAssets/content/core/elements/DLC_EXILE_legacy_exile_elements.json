@@ -151,7 +151,7 @@ icon:compensationvalue
 label: "Cash",
 aspects: {asset:1,portable:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
-slots:[{actionId:travel,id:"destination",label:"Destination",required:{destination:1}}],
+slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
 icon:funds,
 comments: "Don't forget spintriae"
 },
@@ -328,7 +328,7 @@ icon: vaultloneandlevelsands2
 },
 
 	  {id: "city.shanghai",
-label: "",
+label: "Shanghai",
 aspects: {destination:1},
 description:"FNORD",
 icon: vaultloneandlevelsands1
@@ -370,7 +370,7 @@ xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout}
 },
 {id: "rkx.underboss",
 label: "Reckoner Underboss",
-description:"FNORD",
+description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
 verbicon:"rkx.underboss",
 aspects:{rkx.rank:2},
 xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer}
