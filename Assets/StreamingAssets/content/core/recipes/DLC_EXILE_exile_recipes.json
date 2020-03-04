@@ -62,6 +62,26 @@ mutations:[{filterOnAspectId:domicile,mutateAspectId:cash.sent,mutationLevel:-1,
 effects:{cash:1},
 linked:[{id:"send.getsentahead.cash.loop"}]},
 
+{id:"send.victory.hint",
+actionId:"send",
+label:"Security Through Obscurity?",
+startdescription:"[If your Obscurity reaches 7, you cam send a taunting message to your reckoner Foe before you disappear forever.]",
+requirements:{notion.obscurity:1},
+craftable:false,
+hintonly:true
+},
+
+
+{id:"send.victory",
+actionId:"send",
+label:"FNORD win",
+startdescription:"FNORD obscurity win beginning...",
+requirements:{notion.obscurity:1,obscurity:7},
+warmup:60,
+craftable:true,
+ending: obscurityvictory
+},
+
 
 {id:"travel.investigate",
 actionId:"travel",
@@ -166,8 +186,9 @@ craftable:false},
 
 {id:"send.first",
 actionId:"send",
-label:"FNORD Send",
-startdescription:"Send instructions. I don't have anything to put in Effects yet. Obscurity desire?",
+label:"Send",
+startdescription:"I have excellent reasons not to contact anyone from my old life. But that might yet change.",
+effects:{notion.obscurity:1},
 comments:"opened by initial conspire recipe",
 warmup:30,
 craftable:false},
@@ -262,17 +283,7 @@ effects:{asset:-1,cash:1},
 warmup:30,
 craftable:true},
 
-{id:"lurk.victory",
-actionId:"lurk",
-label:"FNORD win",
-startdescription:"FNORD lurk win beginning...",
-requirements:{obscurity:1},
-extantreqs:{obscurity:7},
-comments: "NOT CURRENTLY AVAILABLE. PIN TO TRAVEL OR CONSPIRACY",
-warmup:60,
-craftable:true,
-ending: obscurityvictory
-},
+
 
 {id:"turn.begin",
 actionId:"time.exile",

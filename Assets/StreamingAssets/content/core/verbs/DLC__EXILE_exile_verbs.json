@@ -66,10 +66,10 @@
 				{
             id: "send",
             label: "Send",
-            description: "Telegrams and taunts.",
+            description: "Messages, moneys and more.",
 			atStart:false,
 				  slots: [{id:"send",label:"Send",
-			  required:{obscurity:1,cash:1,cash.sent:1}}]
+			  required:{desire:1,cash:1,cash.sent:1}}]
         },
 			  {
             id: "time.exile",
