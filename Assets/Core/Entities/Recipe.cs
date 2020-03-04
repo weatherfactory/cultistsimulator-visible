@@ -33,6 +33,14 @@ public class Recipe
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
     public List<MutationEffect> MutationEffects { get; set; }
+    /// <summary>
+    /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
+    /// </summary>)
+    public Dictionary<string,int> Purge { get; set; }
+    public Dictionary<string, int> HaltVerb { get; set; }
+    public Dictionary<string, int> DeleteVerb { get; set; }
+
+
     public EndingFlavour SignalEndingFlavour { get; set; } //separate from Ending, because some recipes may be menacing but route to another recipe that actually does the ending
 
     public Boolean Craftable { get; set; }
@@ -110,7 +118,10 @@ public class Recipe
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         DeckEffects=new Dictionary<string,int>();
-        MutationEffects=new List<MutationEffect>();
+        Purge=new Dictionary<string, int>();
+        HaltVerb = new Dictionary<string, int>();
+        DeleteVerb = new Dictionary<string, int>();
+        MutationEffects = new List<MutationEffect>();
         PortalEffect = PortalEffect.None;
     }
 

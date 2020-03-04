@@ -8,14 +8,20 @@ using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Noon;
+using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Assets.Logic
 {
    public class SituationEffectExecutor
    {
+       private ITabletopManager _ttm;
+       public SituationEffectExecutor(ITabletopManager ttm)
+       {
+           _ttm = ttm;
+       }
 
-        public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
+       public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var recipeAspects = command.Recipe.Aspects;
             var cardAspects = stacksManager.GetTotalAspects();
@@ -23,6 +29,7 @@ namespace Assets.Logic
             //MutationEffects happen first. I often regret this, because I sometimes create a card and want to apply a mutationeffect to it.
             //But I can always pass something through an empty recipe if I gotta.
             RunMutationEffects(command, stacksManager);
+
 
             //note: xtriggers for recipe aspects happen before xtriggers for card aspects. Within that precedence, aspects take effect in non-specific order.
             //I think this will generally make sense. Recipe aspects are 'specifically, I want to do this'
@@ -36,11 +43,40 @@ namespace Assets.Logic
             RunDeckEffect(command,stacksManager,storage);
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
+
+            //Penultimate: run purges and verb manipulations. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
+            RunPurges(command, _ttm);
+
+            RunVerbManipulations(command, _ttm);
+
+
+
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
-       private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
+
+       private void RunPurges(ISituationEffectCommand command, ITabletopManager ttm)
+       {
+        foreach(var p in command.Recipe.Purge)
+        {
+            ttm.PurgeElement(p.Key,p.Value);
+        }
+       }
+
+
+
+       private void RunVerbManipulations(ISituationEffectCommand command, ITabletopManager ttm)
+       {
+           foreach (var h in command.Recipe.HaltVerb)
+               ttm.HaltVerb(h.Key, h.Value);
+
+           foreach (var d in command.Recipe.DeleteVerb)
+               ttm.DeleteVerb(d.Key, d.Value);
+       }
+
+
+        private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
        {
            foreach(var mutationEffect in command.Recipe.MutationEffects)
            { 
@@ -61,7 +97,7 @@ namespace Assets.Logic
             {
                 if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption)
                 {
-                    stacks.ElementAt(i).Retire(true);
+                    stacks.ElementAt(i).Retire(CardVFX.CardBurn);
                 }
             }
         }

@@ -1,0 +1,418 @@
+{"elements":
+    [
+{id:"minortracerisk",
+label:"Minor Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:10}],
+noartneeded:true
+},
+{id:"tracerisk",
+label:"Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:30}],
+noartneeded:true
+},
+
+{id:"majortracerisk",
+label:"Major Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:70}],
+noartneeded:true
+},
+
+{id:"terribletracerisk",
+label:"Terrible Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:90}],
+noartneeded:true
+},
+
+{id:"negotiation",
+label:"Negotiation",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"purchase",
+label:"Purchase",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.promote",
+label:"Reckoner Promotion",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.demote",
+label:"Reckoner Demotion",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.event",
+label:"Reckoner plans",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"rkx.rank",
+label:"Reckoner rank",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"cash.sent",
+label:"Preparations",
+description:"I've sent funds ahead to make life in this place easier. [Once you've arrived, use this card with Travel again to retrieve your funds.]",
+isAspect:true
+},
+
+
+
+{id:"rkx.infected",
+label:"Reckoner presence",
+description:"FNORD!!",
+isAspect:true
+},
+
+
+{id:"defiancemarks",
+label:"The Exercise of Defiance",
+description: "Cunning may answer Strength, Strength may answer Cunning, but how might we answer Agony?",
+isAspect:true
+},
+
+
+{id:"domicile",
+label:"City of Residence",
+description:"I'm here, for now.",
+isAspect:true,
+icon:hq
+},
+
+{id:"lifespan.stolen",
+label:"Stolen Lifespan",
+description:"FNORD",
+icon:boredom,
+isAspect:true
+},
+
+{id:"destination",
+label:"Destination",
+description:"I might find safety there for a little longer... if they don't get there first.",
+isAspect:true,
+icon:potential
+},
+
+
+
+
+{id:"opportunity",
+label:"Opportunity",
+description:"Opportunity FNORD",
+isAspect:true,
+icon:benign
+},
+
+{id:"asset",
+label:"Asset",
+description:"Asset FNORD",
+isAspect:true,
+icon:compensationvalue
+},
+
+{id:"portable",
+label:"Portable",
+description:"An asset that might travel with you.",
+isAspect:true
+},
+
+
+{id:"asset.packed",
+label:"Asset (Packed)",
+description:"An Asset, ready for travelling",
+isAspect:true,
+icon:compensationvalue
+},
+
+
+
+{id: "cash",
+label: "Cash",
+aspects: {asset:1,portable:1},
+description:"An unglamorously convenient shorthand for objects of desire.",
+slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
+icon:funds,
+comments: "Don't forget spintriae"
+},
+
+
+{id: "opportunity.discreetoffice",
+label: "Opportunity: Discreet Office?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{purchase:discreetoffice},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "opportunity.licence.medical",
+label: "Opportunity: A Medical Licence?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{negotiation:licence.medical},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true},
+{actionId:conspire,id:"connection",label:"Connection",required:{connection:1}}],
+lifetime:180
+},
+
+
+	  	  {id: "opportunity.connection",
+label: "Opportunity: Connection?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{purchase:connection},
+slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+
+
+{id:"discreetoffice",
+label:"Discreet Office",
+aspects:{asset:1},
+description:"Discreet Office FNORD",
+icon:vaultcapital1
+},
+
+
+{id:"licence.medical",
+label:"Medical Licence",
+aspects:{asset:1},
+description:"Medical Licence FNORD",
+slots:[{actionId:conspire,id:"location",label:"Location",required:{discreetoffice:1}}],
+icon:fragmentheart
+},
+
+{id:"connection",
+label:"Connection",
+aspects:{asset:1},
+description:"Connection FNORD",
+icon:favour
+},
+
+{id: "asset.a",
+label: "A",
+aspects: {asset:1},
+description:"FNORD"
+},
+{id: "asset.b",
+label: "B",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.c",
+label: "C",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.d",
+label: "D",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.e",
+label: "Assets A",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.f",
+label: "F",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.g",
+label: "G",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+
+
+{id:"tick",
+label:"Caution...",
+description:"Don't attract attention. [When all these are gone, you'll gain an Obscurity, unless there are any Traces on the board. Then the cycle will begin again.]"
+},
+
+     {id: "obscurity",
+      label: "Obscurity",
+      description:"This might be the only defence against the reckoner lords. It might be no defence at all. ",
+	  icon: diarist_unknown
+	  },
+	  
+	  {id: "notion.obscurity",
+label: "Notion: A Final Message",
+aspects: {desire:1},
+icon:julian.defeated,
+slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity2",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity3",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity4",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity5",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity6",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
+],
+description:"I've stolen a fortune in years from the a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
+},
+	  
+	  {id:"decade.stolen",
+	  label: "Stolen Decade",
+	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
+	  aspects:{lifespan.stolen:10},
+	  icon: articlewinterc
+	  },
+	  	  {id:"year.stolen",
+	  label: "Stolen Year",
+	  description:"A year of generously donated life, as entered in the Cindered Tally.",
+	  aspects:{lifespan.stolen:1},
+	  icon: articlewintera
+	  },
+	  {id:"trace",
+	  label:"Trace",
+	  description:"A betraying clue that your pursuers might recognise.",
+	  aspects:{influence:1},
+	  icon:rumour
+	  },
+	  
+	  {id: "city.vienna",
+label: "Vienna",
+aspects: {destination:1},
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
+icon: vaultcontinent6
+},
+
+	  {id: "city.paris",
+label: "Paris",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent4
+},
+
+	  {id: "city.krakow",
+label: "Krakow",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+	  {id: "city.istanbul",
+label: "Istanbul",
+aspects: {destination:1},
+description:"FNORD",
+icon:vaultrendingmountains3
+},
+
+	  {id: "city.moscow",
+label: "Moscow",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3
+},
+
+	  {id: "city.alexandria",
+label: "Alexandria",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultloneandlevelsands2
+},
+
+	  {id: "city.shanghai",
+label: "Shanghai",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultloneandlevelsands1
+},
+
+	  {id: "city.wilderness",
+label: "Wilderness",
+aspects: {destination:1},
+description:"FNORD the final resort.",
+icon: vaultshires1
+},
+
+{id: "location.telegraph",
+label: "Telegraph Office",
+aspects: {location:1},
+description:"Here, I might investigate other possible destinations.",
+},
+	  
+	  {id: "ascension.defiance",
+label: "Temptation: Defiance",
+aspects: {defiancemarks:1},
+description:"Some there are who will not yield. Perhaps this is a virtue.",
+icon: bloodshed
+},
+
+{id: "rkx.scout",
+label: "Reckoner Scout",
+description:"FNORD",
+verbicon:"rkx.scout",
+xtriggers:{rkx.promote:rkx.enforcer}
+},
+
+{id: "rkx.enforcer",
+label: "Reckoner Enforcer",
+description:"FNORD",
+verbicon:"rkx.enforcer",
+aspects:{rkx.rank:1},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout}
+},
+{id: "rkx.underboss",
+label: "Reckoner Underboss",
+description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
+verbicon:"rkx.underboss",
+aspects:{rkx.rank:2},
+xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer}
+},
+{id: "rkx.foe",
+label: "Your Foe",
+description:"FNORD",
+verbicon:"rkx.foe",
+aspects:{rkx.rank:3}
+},
+
+{id: "rkx.event.aggressive",
+label: "Reckoners: Aggressive",
+aspects:{rkx.event:1},
+description:"FNORD",
+},
+{id: "rkx.event.passive",
+label: "Reckoners: Passive",
+aspects:{rkx.event:1},
+description:"FNORD",
+},
+
+
+
+	  
+
+	  
+
+	
+]
+};

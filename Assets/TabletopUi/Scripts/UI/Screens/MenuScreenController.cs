@@ -44,6 +44,8 @@ public class MenuScreenController : MonoBehaviour {
 	public CanvasGroupFader language;
     public CanvasGroupFader versionHints;
     public CanvasGroupFader modsPanel;
+    public CanvasGroupFader startDLCLegacyConfirmPanel;
+
 	public OptionsPanel optionsPanel;
 
     [Header("Version News")]
@@ -110,6 +112,15 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_ghoul"},
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"}
             }),
+        new MenuDlcEntry.Spec(
+            "EXILE",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile/"},
+                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"}
+            }
+            )
     };
     private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
         "OST",
@@ -378,6 +389,14 @@ public class MenuScreenController : MonoBehaviour {
         Invoke("UpdateAndShowMenu", fadeDuration);
     }
 
+    public void BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(string legacyId)
+    {
+        saveGameManager.DeleteCurrentSave();
+        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetLegacyById(legacyId));
+        // Load directly into the game scene, no legacy select
+        LoadScene(SceneNumber.GameScene);
+    }
+
     public void ShowCredits() {
         if (!canTakeInput)
             return;
@@ -432,6 +451,17 @@ public class MenuScreenController : MonoBehaviour {
 #endif
     }
 
+    public void ShowStartDLCLegacyConfirmPanel(string legacyId)
+    {
+        HideCurrentOverlay();
+        StartDLCLegacyConfirm confirmPanelComponent=startDLCLegacyConfirmPanel.GetComponent<StartDLCLegacyConfirm>();
+        confirmPanelComponent.LegacyId = legacyId;
+        confirmPanelComponent.msc = this;
+
+        ShowOverlay(startDLCLegacyConfirmPanel);
+        
+    }
+
     private void BuildDlcPanel()
     {
         var dlc = new HashSet<string>(ContentImporter.GetInstalledDlc());
@@ -441,7 +471,7 @@ public class MenuScreenController : MonoBehaviour {
         {
             var dlcEntry = Instantiate(dlcEntryPrefab, dlcEntries);
             var hasDlc = dlc.Contains(dlcEntrySpec.Id);
-            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc);
+            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc,this);
             hasAnyDlc |= hasDlc;
         }
 

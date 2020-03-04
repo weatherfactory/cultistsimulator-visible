@@ -7,6 +7,7 @@ using Assets.CS.TabletopUI;
 using UnityEngine;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Logic;
 using TabletopUi.Scripts.Interfaces;
 
@@ -120,7 +121,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     if (cards[i] != cardTurned)
                     {
                         cards[i].FlipToFaceUp();
-                        cards[i].Retire("CardLightDramatic");
+                        cards[i].Retire(CardVFX.CardLightDramatic);
                     }
 
             cards = null;
@@ -140,7 +141,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (cards != null) {
                 foreach (var item in cards) {
                     if (item != pickedStack)
-                        item.Retire(false);
+                        item.Retire(CardVFX.None);
                 }
             }
 

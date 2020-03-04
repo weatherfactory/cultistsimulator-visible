@@ -16,6 +16,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Services;
 
 namespace Assets.CS.TabletopUI {
@@ -109,7 +110,18 @@ namespace Assets.CS.TabletopUI {
             storage.Initialise();
 		}
 
-        public void Retire() {
+        public void Retire()
+        {
+            var startingStacks = new List<IElementStack>(GetStartingStacks());
+            foreach (var s in startingStacks)
+                s.Retire(CardVFX.None);
+            var ongoingStacks=new List<IElementStack>(GetOngoingStacks());
+           foreach (var o in ongoingStacks)
+               o.Retire(CardVFX.None);
+
+
+            GetStorageStacksManager().RemoveAllStacks();
+            GetResultsStacksManager().RemoveAllStacks();
             Destroy(gameObject);
         }
 

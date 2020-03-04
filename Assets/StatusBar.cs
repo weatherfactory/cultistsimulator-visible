@@ -31,14 +31,8 @@ public class StatusBar : MonoBehaviour
     {
         CharacterName.text = storage.Name;
         CharacterProfession.text = storage.Profession;
-        RemoteSettings.Completed += TtoBAlternateClue;
     }
 
-    public void TtoBAlternateClue(bool wasUpdatedFromServer, bool settingsChanged, int serverResponse)
-    {
-        var remoteName = RemoteSettings.GetString(Registry.Retrieve<Character>().Name.Replace(" ","").ToUpper());
-        if(!string.IsNullOrEmpty(remoteName))
-            CharacterName.text = remoteName;
-    }
+
 
 }

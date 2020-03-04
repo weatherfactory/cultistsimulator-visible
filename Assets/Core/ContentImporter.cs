@@ -1092,9 +1092,15 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 // randomly-selected legacies after an ending
                 bool availableWithoutEndingMatch =
                     Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH]);
+
                 List<string> excludesOnEnding = new List<string>();
                 if (htEachLegacy.ContainsKey(NoonConstants.KEXCLUDESONENDING))
                     excludesOnEnding = htEachLegacy.GetArrayList(NoonConstants.KEXCLUDESONENDING).Cast<string>().ToList();
+                
+                List<string> statusBarElements=new List<string>();
+                if (htEachLegacy.Contains(NoonConstants.KSTATUSBARELEMENTS))
+                    statusBarElements = htEachLegacy.GetArrayList(NoonConstants.KSTATUSBARELEMENTS).Cast<string>()
+                        .ToList();
 
                 string startingVerbId = string.Empty;
                 if (htEachLegacy.ContainsKey(NoonConstants.KSTARTINGVERBID))
@@ -1108,6 +1114,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     htEachLegacy[NoonConstants.KFROMENDING].ToString(),
                     availableWithoutEndingMatch,
                     excludesOnEnding,
+                    statusBarElements,
                     startingVerbId
                 );
 
@@ -1414,6 +1421,63 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         htEachRecipe.Remove(NoonConstants.KEFFECTS);
 
+
+        /////////////////////////////////////////////
+        //PURGES
+
+        try
+        {
+            Hashtable htPurge = htEachRecipe.GetHashtable(NoonConstants.KPURGE);
+            if(htPurge!=null)
+                foreach (string elementToPurgeId in htPurge.Keys)
+                {
+                    LogIfNonexistentElementId(elementToPurgeId,r.Id,"purges");
+                    r.Purge.Add(elementToPurgeId,Convert.ToInt32(htPurge[elementToPurgeId]));
+                }
+        }
+        catch (Exception e)
+        {
+           LogProblem("Problem importing purges for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+        htEachRecipe.Remove(NoonConstants.KPURGE);
+
+        /////////////////////////////////////////////
+        //VERB HALTS
+        try
+        {
+            Hashtable htHaltVerb = htEachRecipe.GetHashtable(NoonConstants.KHALTVERB);
+            if(htHaltVerb!=null)
+                foreach (string verbToHaltId in (htHaltVerb.Keys))
+                {
+                    r.HaltVerb.Add(verbToHaltId,Convert.ToInt32(htHaltVerb[verbToHaltId]));
+                }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+        htEachRecipe.Remove(NoonConstants.KHALTVERB);
+
+        /////////////////////////////////////////////
+        //VERB DELETIONS
+        try
+        {
+            Hashtable htdeleteVerb = htEachRecipe.GetHashtable(NoonConstants.KDELETEVERB);
+            if (htdeleteVerb != null)
+                foreach (string verbTodeleteId in (htdeleteVerb.Keys))
+                {
+                    r.DeleteVerb.Add(verbTodeleteId, Convert.ToInt32(htdeleteVerb[verbTodeleteId]));
+                }
+        }
+        catch (Exception e)
+        {
+            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+        }
+
+        htEachRecipe.Remove(NoonConstants.KDELETEVERB);
+
         /////////////////////////////////////////////
         //DECKS
 
@@ -1435,6 +1499,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
         htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
+
+
+
 
 
         ///////////INTERNAL DECKS - NB the deck is not stored with the recipe

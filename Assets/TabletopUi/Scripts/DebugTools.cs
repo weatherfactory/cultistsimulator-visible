@@ -35,6 +35,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnBeginSituation;
     [SerializeField] private Button btnHaltVerb;
+    [SerializeField] private Button btnDeleteVerb;
     [SerializeField] public Button btnTriggerAchievement;
     [SerializeField] private Button btnResetAchivement;
     [SerializeField] private Button btnFastForward;
@@ -79,6 +80,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
         btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
+        btnDeleteVerb.onClick.AddListener(() => DeleteVerb(input.text));
+
         btnTriggerAchievement.onClick.AddListener(()=>TriggerAchievement(input.text));
         btnResetAchivement.onClick.AddListener(() => ResetAchievement(input.text));
 
@@ -108,6 +111,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
 
     }
+
+
 
     public bool ProcessInput()
     {
@@ -257,7 +262,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
             {
                 if (stack.EntityId == elementId && !stack.GetCurrentMutations().Any())
                 {
-                    stack.ModifyQuantity(1);
+                    stack.ModifyQuantity(1,new Context(Context.ActionSource.Debug));
                     return;
                 }
             }
@@ -310,13 +315,13 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void HaltVerb(string verbId)
     {
-        var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
-        foreach (var s in situationsCatalogue.GetRegisteredSituations())
-        {
-            if(s.GetTokenId()==verbId.Trim())
-                s.Halt();
-        }
+        Registry.Retrieve<ITabletopManager>().HaltVerb(verbId, 1);
 
+    }
+
+    private void DeleteVerb(string verbId)
+    {
+        Registry.Retrieve<ITabletopManager>().DeleteVerb(verbId,1);
     }
 
     void BeginLegacy(string legacyId)

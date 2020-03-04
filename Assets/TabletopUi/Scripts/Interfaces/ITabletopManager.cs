@@ -44,5 +44,9 @@ namespace TabletopUi.Scripts.Interfaces
         void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec);
         AspectsInContext GetAspectsInContext(IAspectsDictionary aspectsInSituation);
         void GroupAllStacks();
+        void PurgeElement(string elementId, int maxToPurge);
+        void HaltVerb(string verbId, int maxToHalt);
+        void DeleteVerb(string verbId, int maxToDelete);
+
     }
 }

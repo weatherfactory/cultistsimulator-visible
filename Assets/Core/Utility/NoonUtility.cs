@@ -31,6 +31,7 @@ namespace Noon
         public const string KFROMENDING = "fromEnding";
         public const string KAVAILABLEWITHOUTENDINGMATCH = "availableWithoutEndingMatch";
 	    public const string KEXCLUDESONENDING = "excludesOnEnding";
+        public const string KSTATUSBARELEMENTS = "statusbarelements";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
         public const string KPORTALEFFECT = "portaleffect";
@@ -45,6 +46,9 @@ namespace Noon
         public const string KEFFECTS = "effects";
         public const string KMUTATIONS = "mutations";
         public const string KDECKEFFECT = "deckeffect";
+        public const string KPURGE = "purge";
+        public const string KHALTVERB = "haltverb";
+        public const string KDELETEVERB = "deleteverb";
         public const string KINTERNALDECK = "internaldeck";
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";

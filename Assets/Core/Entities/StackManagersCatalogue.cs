@@ -34,7 +34,8 @@ namespace Assets.Core.Entities {
         }
 
         public void Subscribe(IStacksChangeSubscriber subscriber) {
-            _subscribers.Add(subscriber);
+            if(!_subscribers.Contains(subscriber))
+                   _subscribers.Add(subscriber);
         }
 
         //called whenever a stack quantity is modified, or a stack moves to another StacksManager

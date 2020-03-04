@@ -28,10 +28,11 @@ namespace Assets.Core.Entities
         public bool AvailableWithoutEndingMatch { get; set; }
         public IAspectsDictionary Effects;
         public List<string> ExcludesOnEnding;
+        public List<string> StatusBarElements;
 public string StartingVerbId { get; private set; }
 
         public Legacy(string id, string label, string description, string startdescription, string image,
-            string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding,string startingVerbId)
+            string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding, List<string> statusBarElements, string startingVerbId)
         {
             Id = id;
             Label = label;
@@ -41,15 +42,14 @@ public string StartingVerbId { get; private set; }
             Effects = new AspectsDictionary();
             FromEnding = fromEnding;
             AvailableWithoutEndingMatch = availableWithoutEndingMatch;
+            StatusBarElements = statusBarElements;
             ExcludesOnEnding = excludesOnEnding;
 
             if (string.IsNullOrEmpty(startingVerbId))
                 StartingVerbId = NoonConstants.DEFAULT_STARTING_VERB_ID;
             else
                 StartingVerbId =
-                    startingVerbId; //hack in case someone has outdated DLC json that doesn't specify startingverbid
-            //which they shouldn't, but you never know right
-            //sure enough, we had some DLC nonsense here
+                    startingVerbId;
 
         }
     }

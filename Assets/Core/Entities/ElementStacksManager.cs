@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Noon;
@@ -68,7 +69,7 @@ public class ElementStacksManager : IElementStacksManager {
                 return unsatisfiedChange;
 
             int originalQuantity = stackToAffect.Quantity;
-            stackToAffect.ModifyQuantity(unsatisfiedChange);
+            stackToAffect.ModifyQuantity(unsatisfiedChange,context);
             unsatisfiedChange += originalQuantity;
 
         }
@@ -168,14 +169,14 @@ public class ElementStacksManager : IElementStacksManager {
             
             if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId) {
                 NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!",10);
-                existingStack.Retire("hide");
+                existingStack.Retire(CardVFX.CardHide);
                 return; // should only ever be one stack to retire!
                         // Otherwise this crashes because Retire changes the collection we are looking at
             }
             else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
             {
                 if (existingStack.UniquenessGroup == incomingStack.UniquenessGroup)
-                    existingStack.Retire("hide"); //goddammit Martin this should be a constant
+                    existingStack.Retire(CardVFX.CardHide);
 
             }
         }
@@ -190,6 +191,13 @@ public class ElementStacksManager : IElementStacksManager {
     public void RemoveStack(IElementStack stack) {
         _stacks.Remove(stack);
         _catalogue.NotifyStacksChanged();
+    }
+
+    public void RemoveAllStacks()
+    {
+        var stacksListCopy=new List<IElementStack>(_stacks);
+        foreach (IElementStack s in stacksListCopy)
+            RemoveStack(s);
     }
 
     private void NotifyStacksChanged() {

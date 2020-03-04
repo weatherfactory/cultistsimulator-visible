@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Sprite spriteUniqueTextBG;
         [SerializeField] GameObject shadow;
 
-        [SerializeField] string defaultRetireFX = "CardBurn";
+        [SerializeField] CardVFX defaultRetireFX = CardVFX.CardBurn;
 
         protected IElementStacksManager CurrentStacksManager;
 
@@ -168,12 +168,15 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public void SetQuantity(int quantity)
+        public void SetQuantity(int quantity, Context context)
 		{
 			_quantity = quantity;
 			if (quantity <= 0)
 			{
-				Retire(true);
+			    if (context.actionSource == Context.ActionSource.Purge)
+			        Retire(CardVFX.CardLight);
+                else
+				Retire(CardVFX.CardBurn);
 				return;
 			}
 
@@ -185,8 +188,8 @@ namespace Assets.CS.TabletopUI {
 			DisplayInfo();
         }
 
-        public void ModifyQuantity(int change) {
-            SetQuantity(_quantity + change);
+        public void ModifyQuantity(int change,Context context) {
+            SetQuantity(_quantity + change, context);
         }
 
         void SetCardBG(bool unique, bool decays) {
@@ -335,7 +338,7 @@ namespace Assets.CS.TabletopUI {
 
             try
 			{
-                SetQuantity(quantity); // this also toggles badge visibility through second call
+                SetQuantity(quantity, new Context(Context.ActionSource.Unknown)); // this also toggles badge visibility through second call
                 SetCardBG(_element.Unique, Decays);
 
                 name = "Card_" + elementId;
@@ -370,7 +373,7 @@ namespace Assets.CS.TabletopUI {
             catch (Exception e)
 			{
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
-                Retire(false);
+                Retire(CardVFX.None);
             }
         }
 
@@ -551,8 +554,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
-            SetQuantity(Quantity + merge.Quantity);
-            merge.Retire(false);
+            SetQuantity(Quantity + merge.Quantity,new Context(Context.ActionSource.Merge));
+            merge.Retire(CardVFX.None);
         }
 
 
@@ -589,12 +592,8 @@ namespace Assets.CS.TabletopUI {
 			return Retire(defaultRetireFX);
         }
 
-        public bool Retire(bool useDefaultFX)
-		{
-			return Retire(useDefaultFX ? defaultRetireFX : null);
-        }
 
-        public bool Retire(string vfxName)
+        public bool Retire(CardVFX vfxName)
 		{
 			if (Defunct)
 				return false;
@@ -610,17 +609,17 @@ namespace Assets.CS.TabletopUI {
             AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
 
-            if (vfxName == "hide" || vfxName == "Hide") {
+            if (vfxName ==CardVFX.CardHide || vfxName == CardVFX.CardHide) {
                 StartCoroutine(FadeCard(0.5f));
             }
             else {
                 // Check if we have an effect
                 CardEffectRemove effect;
 
-                if (string.IsNullOrEmpty(vfxName) || !gameObject.activeInHierarchy)
+                if (vfxName==CardVFX.None || !gameObject.activeInHierarchy)
                     effect = null;
                 else
-                    effect = InstantiateEffect(vfxName);
+                    effect = InstantiateEffect(vfxName.ToString());
 
                 if (effect != null)
                     effect.StartAnim(this.transform);
@@ -680,8 +679,7 @@ namespace Assets.CS.TabletopUI {
             else
                 return true;	// If outgoing, it doesn't matter what it's current container is - CP
         }
-
-        #region -- Interaction ------------------------------------------------------------------------------------
+        
 
 		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
 		{
@@ -858,7 +856,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
             if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
-                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
+                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity,new Context(Context.ActionSource.Unknown));
                 DraggableToken.SetReturn(false, "was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
@@ -867,7 +865,7 @@ namespace Assets.CS.TabletopUI {
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
 
-                this.Retire(false);
+                this.Retire(CardVFX.None);
             }
             else {
                 ShowNoMergeMessage(stackDroppedOn);
@@ -901,7 +899,7 @@ namespace Assets.CS.TabletopUI {
                 originStack = cardLeftBehind;
 
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-                SetQuantity(n);
+                SetQuantity(n,context);
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
@@ -999,7 +997,7 @@ namespace Assets.CS.TabletopUI {
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(_element.DecayTo))
-                    Retire(true);
+                    Retire(CardVFX.CardBurn);
                 else
                     ChangeThisCardOnDesktopTo(_element.DecayTo);
             }
@@ -1083,8 +1081,7 @@ namespace Assets.CS.TabletopUI {
 		{
             shadow.gameObject.SetActive(show);
         }
-
-        #endregion
+        
 
 
         public bool ChangeThisCardOnDesktopTo(string elementId)
@@ -1112,7 +1109,7 @@ namespace Assets.CS.TabletopUI {
             cardLeftBehind.transform.position = transform.position;
 
             // Note, this is a temp effect
-            Retire("CardTransformWhite");
+            Retire(CardVFX.CardTransformWhite);
 
             return true;
         }

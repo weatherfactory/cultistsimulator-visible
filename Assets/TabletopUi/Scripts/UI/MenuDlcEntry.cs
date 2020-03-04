@@ -16,9 +16,12 @@ namespace TabletopUi.Scripts.UI
         private const string DlcDescriptionLocLabelPrefix = "UI_DLC_DESCRIPTION_";
         private const string InstalledLocLabel = "UI_DLC_INSTALLED";
         private const string PurchaseLocLabel = "UI_DLC_PURCHASE";
-
-        public void Initialize(Spec spec, Storefront store, bool isInstalled)
+        private Spec _spec;
+        private MenuScreenController _menuScreenController;
+        public void Initialize(Spec spec, Storefront store, bool isInstalled,MenuScreenController menuScreenController)
         {
+            _spec = spec;
+            _menuScreenController = menuScreenController;
             name = "DLCEntry_" + spec.Id;
             title.SetLocLabel(DlcTitleLocLabelPrefix + spec.Id);
             icon.sprite = ResourcesManager.GetSpriteForDlc(spec.Id, isInstalled);
@@ -26,7 +29,7 @@ namespace TabletopUi.Scripts.UI
             installedLabel.gameObject.SetActive(isInstalled);
             storeLink.gameObject.SetActive(!isInstalled);
 
-            installedLabel.SetTemplate($"<i><b>{{{InstalledLocLabel}}}</b>\n{{{DlcDescriptionLocLabelPrefix}{spec.Id}}}</i>");
+            installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id}}}\n<b>{{{InstalledLocLabel}}}</b></i>");
             if (spec.StoreLinks.TryGetValue(store, out var storeLinkUrl))
             {
                 storeLink.SetTemplate($"<link=\"{storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
@@ -47,6 +50,14 @@ namespace TabletopUi.Scripts.UI
                 Id = id;
                 StoreLinks = storeLinks;
             }
+        }
+
+
+        public void TryBeginDLC()
+        {
+            _menuScreenController.ShowStartDLCLegacyConfirmPanel(_spec.Id.ToLower());
+            Debug.Log("click worked for " + _spec.Id.ToLower());
+
         }
     }
 }

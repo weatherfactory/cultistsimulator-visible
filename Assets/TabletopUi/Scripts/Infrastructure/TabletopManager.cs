@@ -7,6 +7,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.Logic;
@@ -363,9 +364,6 @@ namespace Assets.CS.TabletopUI {
             var situationsCatalogue = new SituationsCatalogue();
             var elementStacksCatalogue = new StackManagersCatalogue();
 
-            //ensure we get updates about stack changes
-            _elementOverview.Initialise(elementStacksCatalogue);
-
             var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
             if(CrossSceneState.GetMetaInfo()==null)
             {
@@ -396,6 +394,11 @@ namespace Assets.CS.TabletopUI {
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 			registry.Register<DebugTools>(debugTools);
+
+            //element overview needs to be initialised with
+            // - legacy - in case we're displaying unusual info
+            // stacks catalogue - so it can subscribe for notifications re changes
+            _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
 
         }
 
@@ -458,7 +461,90 @@ namespace Assets.CS.TabletopUI {
                 sc.Retire();
 
             foreach (var element in tc.GetElementStacksManager().GetStacks())
-                element.Retire(true); //looks daft but pretty on reset
+                element.Retire(CardVFX.None); //looks daft but pretty on reset
+        }
+
+        public void PurgeElement(string elementId, int maxToPurge)
+        {
+            //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
+            _tabletop.GetElementStacksManager().ReduceElement(elementId, -maxToPurge,new Context(Context.ActionSource.Purge));
+            
+        }
+
+        public void HaltVerb(string toHaltId, int maxToHalt)
+        {
+            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            int i = 0;
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toHaltId.Contains('*'))
+            {
+                string wildcardToDelete = toHaltId.Remove(toHaltId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    {
+                        s.Halt();
+                        i++;
+                    }
+
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+
+            else
+            {
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.GetTokenId() == toHaltId.Trim())
+                    {
+                        s.Halt();
+                        i++;
+                    }
+                    if (i >= maxToHalt)
+                        break;
+                }
+            }
+        }
+
+        public void DeleteVerb(string toDeleteId, int maxToDelete)
+        {
+            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            int i = 0;
+            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+
+            if (toDeleteId.Contains('*'))
+            {
+                string wildcardToDelete = toDeleteId.Remove(toDeleteId.IndexOf('*'));
+
+                foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                {
+                    if (s.GetTokenId().StartsWith(wildcardToDelete))
+                    {
+                        s.Retire();
+                        i++;
+                    }
+
+                    if (i >= maxToDelete)
+                        break;
+                }
+            }
+
+            else
+                {
+                    foreach (var s in situationsCatalogue.GetRegisteredSituations())
+                    {
+                 if (s.GetTokenId() == toDeleteId.Trim())
+                        {
+                            s.Retire();
+                            i++;
+                        }
+                        if (i >= maxToDelete)
+                            break;
+                    }
+                }
         }
 
         public void RestartGame() {
@@ -545,6 +631,8 @@ namespace Assets.CS.TabletopUI {
                 Debug.LogException(e, this);
             }
             _speedController.SetPausedState(true, false, true);
+
+            _elementOverview.Initialise(storage.ActiveLegacy, Registry.Retrieve<StackManagersCatalogue>(), compendium);
         }
 
         public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
