@@ -2,20 +2,29 @@
 "recipes": [
 
 
-{id:"travel.first",
+{id:"travel.start",
 actionId:"travel",
-label:"First Arrival",
-startdescription:"FNORD Let's get there.",
-description:"FNORD I have arrived.",
-requirements:{city.vienna:1,destination:1},
-effects:{obscurity:1},
-mutations:[{filterOnAspectId:city.vienna,mutateAspectId:destination,mutationLevel:-1},
-{filterOnAspectId:city.vienna,mutateAspectId:domicile,mutationLevel:1}],
+label:"From Under Their Noses",
+startdescription:"The reckoners are out in force tonight! As I run, I seem to hear their whistles and their finger-snapping at every corner. But I've made it to the station just ahead of their enforcers.",
+description:"I'm here.",
+requirements:{ticket.train:1},
+effects:{obscurity:1,ticket.train:-1},
+internaldeck: {spec: [city.vienna,city.prague,city.krakow,city.sanmarino,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+
+alt:[{id:"turn.begin",additional:true},
+{id:"scout.first",additional:true}],
 warmup:10,
 craftable:true,
-alt:[{id:"turn.begin",additional:true},
-{id:"scout.first",additional:true}]
+linked:[{id:"travel.destination.to.domicile"}]
 },
+
+{id:"travel.destination.to.domicile",
+actionId:"travel",
+label:"Arrival",
+mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1},
+{filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
+},
+
 
 {id:"send.ahead.cash.hint",
 actionId:"send",
@@ -90,8 +99,50 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 requirements:{domicile:1},
 warmup:60,
 aspects:{minortracerisk:1},
-deckeffect:{destinations.cities:1},
+linked:[{id:"travel.investigate.vienna"},
+{id:"travel.investigate.prague"},
+{id:"travel.investigate.krakow"},
+{id:"travel.investigate.munich"},
+{id:"travel.investigate.sanmarino"}],
 craftable:true},
+
+{id:"travel.investigate.vienna",
+actionId:"travel",
+label:"Onward from Vienna",
+requirements:{city.vienna:1},
+	internaldeck: {spec: [city.prague,city.krakow,city.sanmarino,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+},
+
+{id:"travel.investigate.prague",
+actionId:"travel",
+label:"Onward from Prague",
+requirements:{city.prague:1},
+	internaldeck: {spec: [city.rostock,city.kaunas,city.vienna,city.aachen], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+},
+
+{id:"travel.investigate.krakow",
+actionId:"travel",
+label:"Onward from Kraków",
+requirements:{city.krakow:1},
+	internaldeck: {spec: [city.kaunas,city.kiev,city.budapest,city.vienna], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+},
+
+
+{id:"travel.investigate.munich",
+actionId:"travel",
+label:"Onward from Munich",
+requirements:{city.munich:1},
+	internaldeck: {spec: [city.aachen,city.vienna,city.avignon,city.strasbourg], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+},
+
+
+{id:"travel.investigate.sanmarino",
+actionId:"travel",
+label:"Onward from San Marino",
+requirements:{city.sanmarino:1},
+	internaldeck: {spec: [city.vienna,city.budapest,city.valletta,city.avignon], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+},
+
 
 
 

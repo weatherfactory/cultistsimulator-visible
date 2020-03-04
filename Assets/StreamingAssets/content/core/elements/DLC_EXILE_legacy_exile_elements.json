@@ -211,6 +211,13 @@ description:"Connection FNORD",
 icon:favour
 },
 
+{id: "ticket.train",
+label: "A Train Ticket",
+aspects: {opportunity:1,destination:1},
+description:"A ticket to the very first destination that came to mind - ",
+icon:startingletter
+},
+
 {id: "asset.a",
 label: "A",
 aspects: {asset:1},
@@ -299,68 +306,355 @@ description:"I've stolen a fortune in years from the a reckoner lord who trusted
 	  icon:rumour
 	  },
 	  
-	  {id: "city.vienna",
-label: "Vienna",
+	  
+	  	  {id: "end.bornholm",
+label: "Bornholm",
 aspects: {destination:1},
-description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
-icon: vaultcontinent6
+description:"FNORD",
+icon: vaultcontinent1
 },
+
+
+	  
+	  	  {id: "end.nuorgam",
+label: "Nuorgam",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+	  
+	  	  {id: "end.taiga",
+label: "The Northern Taiga",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+
+	  
+	  	  {id: "end.lhasa",
+label: "Lhasa",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+	  
+	  	  {id: "end.manama",
+label: "Manama",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+
+	  
+	  	  {id: "end.ghardaia",
+label: "Ghardaia-Pentapolis",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+
+	  
+	  	  {id: "end.morbihan",
+label: "The Morbihan",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1
+},
+	  
+	  	  {id: "city.london",
+label: "London",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.amsterdam",
+label: "Amsterdam",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.rostock",
+label: "Rostock",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
 
 	  {id: "city.paris",
 label: "Paris",
 aspects: {destination:1},
 description:"FNORD",
-icon: vaultcontinent4
+icon: vaultcontinent4,
+unique:true
+},
+	  {id: "city.aachen",
+label: "Rhenish Achen",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.prague",
+label: "Prague",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.kaunas",
+label: "Kaunas (Little Paris)",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.stpetersburg",
+label: "St Petersburg",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.nizhny",
+label: "Nizhny Novgorod",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+
+
+	  {id: "city.strasbourg",
+label: "Strasbourg",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.munich",
+label: "Munich",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.vienna",
+label: "Vienna",
+aspects: {destination:1},
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
+icon: vaultcontinent6,
+unique:true
 },
 
 	  {id: "city.krakow",
-label: "Krakow",
+label: "Kraków",
 aspects: {destination:1},
 description:"FNORD",
-icon: vaultcontinent1
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.kiev",
+label: "Kiev",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.stalingrad",
+label: "Stalingrad",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+
+	  {id: "city.yekaterinburg",
+label: "Yekaterinburg",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.sansebastian",
+label: "San Sebastian",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.avignon",
+label: "Avignon",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.sanmarino",
+label: "San Marino",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.budapest",
+label: "Nudapest",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.cluj",
+label: "Cluj-Napoca",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.tiflis",
+label: "Tiflis",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.samarkand",
+label: "Samarkand",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.marrakech",
+label: "Marrakech",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.algiers",
+label: "Algiers",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.valletta",
+label: "Valletta",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.tirana",
+label: "Tirana",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
 },
 
 	  {id: "city.istanbul",
 label: "Istanbul",
 aspects: {destination:1},
 description:"FNORD",
-icon:vaultrendingmountains3
+icon:vaultrendingmountains3,
+unique:true
 },
 
-	  {id: "city.moscow",
-label: "Moscow",
+
+	  {id: "city.baghdad",
+label: "Baghdad",
 aspects: {destination:1},
 description:"FNORD",
-icon: vaultcapital3
+icon: vaultloneandlevelsands1,
+unique:true
+},
+
+	  {id: "city.meshad",
+label: "Meshad",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.tripoli",
+label: "Tripoli dell'ovest",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.candia",
+label: "Candia-Heraklion",
+aspects: {destination:1},
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
 },
 
 	  {id: "city.alexandria",
 label: "Alexandria",
 aspects: {destination:1},
 description:"FNORD",
-icon: vaultloneandlevelsands2
+icon: vaultloneandlevelsands2,
+unique:true
 },
 
-	  {id: "city.shanghai",
-label: "Shanghai",
-aspects: {destination:1},
-description:"FNORD",
-icon: vaultloneandlevelsands1
-},
-
-	  {id: "city.wilderness",
+	  {id: "wilderness",
 label: "Wilderness",
 aspects: {destination:1},
-description:"FNORD the final resort.",
+description:"No other way out FNORD",
 icon: vaultshires1
 },
 
-{id: "location.telegraph",
-label: "Telegraph Office",
-aspects: {location:1},
-description:"Here, I might investigate other possible destinations.",
-},
-	  
+
 	  {id: "ascension.defiance",
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1},
