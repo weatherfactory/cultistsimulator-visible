@@ -126,6 +126,9 @@ startdescription:"Farewell. FNORD",
 requirements:{destination:1},
 purge:{trace:100,asset:100,opportunity:100,domicile:1},
 deleteverb:{rkx*:100,opx*:100},
+comments:"Deleting the rkx verb and then recreating it with the alt works fine because effect execution occurs in turn inside each recipe, and alt additional=true 
+gives us another recipe. But keep an eye on this.",
+alt:[{id:"rkx.arrive.ahead",additional:true}],
 warmup:10,
 linked:[{id:"travel.enroute"}]},
 
@@ -135,7 +138,8 @@ label:"En Route",
 startdescription:"I'm en route... FNORD.",
 description:"I'm here. FNORD",
 mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1},
-{filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
+{filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1},
+{filterOnAspectId:domicile,mutateAspectId:rkx.infected,mutationLevel:-1}],
 warmup:60,
 linked:[{id:"travel.end"}]},
 
@@ -148,8 +152,6 @@ comments:"Always run this after a travel attempt! It converts packed assets back
 mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:1},
 {filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:-1}],
 },
-
-
 
 {id:"scout.first",
 actionId:"scout",
@@ -337,6 +339,15 @@ effects:{trace:1},
 warmup:10},
 
 
+{id:"rkx.arrive.ahead",
+actionId:"rkx",
+label:"Reckoners Are Here First",
+startdescription:"The reckoners guessed I might come here. They already have scounts in this city.",
+requirements:{rkx.infected:1},
+effects:{rkx.scout:1},
+warmup:50,
+linked:[{id:"rkx.selector"}]},
+
 {id:"rkx.arrive.traces",
 actionId:"rkx",
 label:"Reckoners have entered the city",
@@ -443,8 +454,8 @@ warmup:50},
 
 {id:"rkx.lookfurtherafield",
 actionId:"rkx",
-label:"Reckoners are reducing their presence FNORD",
-startdescription:"Reckoners are reducing their presence FNORD",
+label:"Reckoners are Looking Further Afield",
+startdescription:"If my pursuers can't find me here, they might look to other cities - particularly those in which I've shown an interest. [Reckoners will sometimes go ahead of you to a Destination. This is more likely if you've sent Funds there.",
 requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
 slots:[{id:"destination",label:"A Lead?",required:{destination:1},forbidden:{rkx.infected:1},greedy:true}],
 warmup:50,
