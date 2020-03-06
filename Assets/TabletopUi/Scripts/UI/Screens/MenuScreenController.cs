@@ -111,16 +111,17 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Steam, "https://store.steampowered.com/app/871900/Cultist_Simulator_The_Ghoul/"},
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_ghoul"},
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"}
-            }),
-        new MenuDlcEntry.Spec(
-            "EXILE",
-            new Dictionary<Storefront, string>
-            {
-                {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile/"},
-                {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
-                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"}
-            }
-            )
+            })
+        //,
+        //new MenuDlcEntry.Spec(
+        //    "EXILE",
+        //    new Dictionary<Storefront, string>
+        //    {
+        //        {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile/"},
+        //        {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
+        //        {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"}
+        //    }
+        //    )
     };
     private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
         "OST",

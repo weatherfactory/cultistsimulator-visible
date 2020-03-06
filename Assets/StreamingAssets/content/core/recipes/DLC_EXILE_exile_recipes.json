@@ -2,6 +2,17 @@
 "recipes": [
 
 
+
+
+{id:"fnord",
+actionId:"fnord",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+
+purge:{obscurity:1},
+warmup:1},
+
 {id:"travel.start",
 actionId:"travel",
 label:"From Under Their Noses",
@@ -173,7 +184,7 @@ linked:[{id:"travel.prepare"}]},
 {id:"travel.depart",
 actionId:"travel",
 label:"Departure",
-startdescription:"Farewell. FNORD",
+startdescription:"Farewell.",
 requirements:{destination:1},
 purge:{trace:100,asset:100,opportunity:100,domicile:1},
 deleteverb:{rkx*:100,opx*:100},
@@ -186,7 +197,7 @@ linked:[{id:"travel.enroute"}]},
 {id:"travel.enroute",
 actionId:"travel",
 label:"En Route",
-startdescription:"I'm en route... FNORD.",
+startdescription:"I'm en route...",
 description:"I'm here. FNORD",
 mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1},
 {filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1},
