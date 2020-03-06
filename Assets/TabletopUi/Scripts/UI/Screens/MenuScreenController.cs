@@ -166,13 +166,13 @@ public class MenuScreenController : MonoBehaviour {
         var edition = File.ReadAllText(storeFilePath).Trim();
         switch (edition)
         {
-            case "steam":
+            case "Steam":
                 return Storefront.Steam;
-            case "gog":
+            case "Gog":
                 return Storefront.Gog;
-            case "humble":
+            case "Humble":
                 return Storefront.Humble;
-            case "itch":
+            case "Itch":
                 return Storefront.Itch;
             default:
                 return Storefront.Unknown;

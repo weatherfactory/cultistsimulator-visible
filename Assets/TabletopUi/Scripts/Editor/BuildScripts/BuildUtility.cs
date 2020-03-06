@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Editor;
 using Galaxy;
 using Noon;
+using TabletopUi.Scripts.Services;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -15,9 +16,11 @@ namespace Assets.Core.Utility
         private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_DIR = "build";
         private const string CONST_DLC = "DLC";
+        private const string CONST_STOREFRONTS = "STOREFRONT_DISTRIBUTIONS";
         private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
         private const string CONST_PERPETUALEDITION_DLC = "PERPETUAL";
-        private const string CONST_PERPETUALEDITION_SEMPER_PATH = "StreamingAssets/edition/semper.txt";
+        private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets/edition/semper.txt";
+        private const string CONST_STOREFRONT_RELATIVE_PATH_TO_FILE = "StreamingAssets/edition/store.txt";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
@@ -124,8 +127,9 @@ namespace Assets.Core.Utility
            // Log("Copying root path (" + builtAtPath + ") contents to base edition path (" + baseEditionPath + ")");
             //CopyDirectoryRecursively(builtAtPath, baseEditionPath);
             
-            // Copy APIs/integration for storefronts
-            CopyStorefrontLibraries(buildTarget, builtAtPath);
+       
+
+           // WriteStoreFile()
 
             AddVersionNumber(builtAtPath);
             
@@ -133,8 +137,50 @@ namespace Assets.Core.Utility
 
             ExtractDLCs(builtAtPath,buildTarget, exeName);
 
-            RunContentTests(buildTarget, builtAtPath);
+          //  RunContentTests(buildTarget, builtAtPath);
+
+
+            // Copy APIs/integration for storefronts
+            CopyStorefrontLibraries(buildTarget, builtAtPath);
+
+
+            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Steam);
+            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Gog);
+            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Humble);
+            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Itch);
+
+            
+            //do all this again for perpetual
         }
+
+
+        private static void BakeDistribution(BuildTarget buildTarget, string builtAtPath,string exeName,Storefront storefront)
+        {
+            var storefrontsPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_STOREFRONTS);
+            var distributionDir = JoinPaths(storefrontsPath, storefront.ToString());
+            var osDirForDistribution = JoinPaths(distributionDir, GetPlatformFolderForTarget(buildTarget));
+            
+            Log("Removing old " + storefront + " distribution directory: " + osDirForDistribution);
+            Directory.Delete(osDirForDistribution, true);
+            
+            Log("Creating new " + storefront + " distribution directory: " + osDirForDistribution);
+            Directory.CreateDirectory(osDirForDistribution);
+
+            CopyDirectoryRecursively(builtAtPath, osDirForDistribution);
+
+            var storefrontFilePath = JoinPaths(osDirForDistribution,
+                GetDataFolderForTarget(exeName),
+                    CONST_STOREFRONT_RELATIVE_PATH_TO_FILE);
+
+            Log("Writing storefront info to " + storefrontFilePath);
+
+            File.WriteAllText(storefrontFilePath, storefront.ToString());
+        }
+
+
+
+
+
 
         private static void RunContentTests(BuildTarget buildTarget, string builtAtPath)
         {
@@ -146,11 +192,11 @@ namespace Assets.Core.Utility
             }
         }
 
-        private static void BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string exeName)
+        private static string BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string exeName)
         {
             // Set up the Perpetual Edition, with all its DLC
-            string grandfatherPath = GetParentDirectory(builtAtPath);
-            string perpetualEditionForPlatformPath = JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
+            ;
+            string perpetualEditionForPlatformPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
 
             Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
 
@@ -163,16 +209,17 @@ namespace Assets.Core.Utility
             string semperPath = JoinPaths(
                 perpetualEditionForPlatformPath,
                 GetDataFolderForTarget(exeName),
-                CONST_PERPETUALEDITION_SEMPER_PATH);
+                CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
 
-            WriteSemperFile(semperPath, buildTarget, exeName);
+            WriteSemperFile(semperPath);
+
+            return perpetualEditionForPlatformPath;
         }
 
         private static void ExtractDLCs(string builtAtPath,BuildTarget buildTarget, string exeName)
         {
 // Take the DLCs out of the base edition and into their own directories
-            string grandfatherPath = GetParentDirectory(builtAtPath);
-            var dlcPath = JoinPaths(grandfatherPath, CONST_DLC);
+            var dlcPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_DLC);
             foreach (var dlcContentType in ContentTypes)
             foreach (var locale in Locales)
                 MoveDlcContent(builtAtPath, dlcPath, buildTarget, exeName, dlcContentType, locale);
@@ -232,12 +279,12 @@ namespace Assets.Core.Utility
                 CONST_PERPETUALEDITION_DLC,
                 GetPlatformFolderForTarget(target),
                 GetDataFolderForTarget(exeName),
-                CONST_PERPETUALEDITION_SEMPER_PATH);
+                CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
 
-            WriteSemperFile(semperPath, target, exeName);
+            WriteSemperFile(semperPath);
         }
 
-        private static void WriteSemperFile(string semperPath, BuildTarget target, string exeName)
+        private static void WriteSemperFile(string semperPath)
         {
             //semper.txt is a dumbfile that activates the PERPETUAL EDITION menu banner.
             //This needs to be created as a tiny piece of DLC, but also injected into the /edition folder of the Perpetual Edition build.
@@ -351,5 +398,11 @@ namespace Assets.Core.Utility
         {
             return Path.GetFullPath(Path.Combine(path, @"../"));
         }
+
+        private static string GetGrandfatherPath(string path)
+        {
+            return GetParentDirectory(GetParentDirectory(path));
+        }
+
     }
 }
