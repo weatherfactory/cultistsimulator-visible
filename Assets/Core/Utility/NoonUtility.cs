@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Assets.Core;
@@ -244,6 +245,11 @@ namespace Noon
 
         }
 
+        public static string JoinPaths(params string[] paths)
+        {
+            return paths.Aggregate("", Path.Combine);
+        }
+
         public static Dictionary<string, string> HashtableToStringStringDictionary(Hashtable table)
         {
             if (table == null)
@@ -255,6 +261,34 @@ namespace Noon
 
             return dictionary;
 
+        }
+
+        public static void CopyDirectoryRecursively(string source, string destination, bool move = false)
+        {
+            DirectoryInfo sourceDirectory = new DirectoryInfo(source);
+            DirectoryInfo destinationDirectory = new DirectoryInfo(destination);
+            if (!destinationDirectory.Exists)
+                destinationDirectory.Create();
+            foreach (var file in sourceDirectory.GetFiles().Where(IsPermittedFileToCopy))
+            {
+                if (move)
+                    file.MoveTo(NoonUtility.JoinPaths(destination, file.Name));
+                else
+                    file.CopyTo(NoonUtility.JoinPaths(destination, file.Name), true);
+            }
+
+            foreach (var directory in sourceDirectory.GetDirectories()
+                .Where(d => !destinationDirectory.FullName.StartsWith(d.FullName)))
+            {
+                CopyDirectoryRecursively(directory.FullName, NoonUtility.JoinPaths(destination, directory.Name), move);
+                if (move)
+                    Directory.Delete(directory.FullName);
+            }
+        }
+
+        private static bool IsPermittedFileToCopy(FileSystemInfo file)
+        {
+            return file.Name != ".dropbox";
         }
 
 

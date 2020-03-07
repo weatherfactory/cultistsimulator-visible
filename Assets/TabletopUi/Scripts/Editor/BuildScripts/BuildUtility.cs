@@ -150,7 +150,7 @@ namespace Assets.Core.Utility
         {
             // Set up the Perpetual Edition, with all its DLC
             string grandfatherPath = GetParentDirectory(builtAtPath);
-            string perpetualEditionForPlatformPath = JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
+            string perpetualEditionForPlatformPath = NoonUtility.JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
 
             Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
 
@@ -160,7 +160,7 @@ namespace Assets.Core.Utility
 
 
             // Create the Perpetual Edition DLC
-            string semperPath = JoinPaths(
+            string semperPath = NoonUtility.JoinPaths(
                 perpetualEditionForPlatformPath,
                 GetDataFolderForTarget(exeName),
                 CONST_PERPETUALEDITION_SEMPER_PATH);
@@ -172,7 +172,7 @@ namespace Assets.Core.Utility
         {
 // Take the DLCs out of the base edition and into their own directories
             string grandfatherPath = GetParentDirectory(builtAtPath);
-            var dlcPath = JoinPaths(grandfatherPath, CONST_DLC);
+            var dlcPath = NoonUtility.JoinPaths(grandfatherPath, CONST_DLC);
             foreach (var dlcContentType in ContentTypes)
             foreach (var locale in Locales)
                 MoveDlcContent(builtAtPath, dlcPath, buildTarget, exeName, dlcContentType, locale);
@@ -211,9 +211,9 @@ namespace Assets.Core.Utility
 
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
-                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
+                    NoonUtility.JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
 
-                string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
+                string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
                 {
                     Directory.Delete(dlcDestinationDir, true);
@@ -227,7 +227,7 @@ namespace Assets.Core.Utility
             }
 
             // Create the Perpetual Edition DLC
-            string semperPath = JoinPaths(
+            string semperPath = NoonUtility.JoinPaths(
                 dlcPath,
                 CONST_PERPETUALEDITION_DLC,
                 GetPlatformFolderForTarget(target),
@@ -251,32 +251,11 @@ namespace Assets.Core.Utility
             File.WriteAllText(semperPath, string.Empty);
         }
 
-        private static void CopyDirectoryRecursively(string source, string destination, bool move = false)
-        {
-            DirectoryInfo sourceDirectory = new DirectoryInfo(source);
-            DirectoryInfo destinationDirectory = new DirectoryInfo(destination);
-            if (!destinationDirectory.Exists)
-                destinationDirectory.Create();
-            foreach (var file in sourceDirectory.GetFiles().Where(IsPermittedFileToCopy))
-            {
-                if (move)
-                    file.MoveTo(JoinPaths(destination, file.Name));
-                else
-                    file.CopyTo(JoinPaths(destination, file.Name), true);
-            }
 
-            foreach (var directory in sourceDirectory.GetDirectories()
-                .Where(d => !destinationDirectory.FullName.StartsWith(d.FullName)))
-            {
-                CopyDirectoryRecursively(directory.FullName, JoinPaths(destination, directory.Name), move);
-                if (move)
-                    Directory.Delete(directory.FullName);
-            }
-        }
 
         private static void AddVersionNumber(string exeFolder)
         {
-            string versionPath = JoinPaths(exeFolder, "version.txt");
+            string versionPath = NoonUtility.JoinPaths(exeFolder, "version.txt");
             Log("Writing version to " + versionPath);
             File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
         }
@@ -322,17 +301,13 @@ namespace Assets.Core.Utility
 
         private static string GetCoreContentPath(string basePath, string exeName, string contentOfType, string locale)
         {
-            return JoinPaths(
+            return NoonUtility.JoinPaths(
                 basePath, 
                 GetDataFolderForTarget(exeName), 
                 CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""), 
                 contentOfType);
         }
 
-        private static bool IsPermittedFileToCopy(FileSystemInfo file)
-        {
-            return file.Name != ".dropbox";
-        }
 
         public static void Log(string message)
         {
@@ -342,10 +317,7 @@ namespace Assets.Core.Utility
             Application.SetStackTraceLogType(LogType.Log, oldStackTraceLogType);
         }
 
-        private static string JoinPaths(params string[] paths)
-        {
-            return paths.Aggregate("",Path.Combine);
-        }
+
 
         private static string GetParentDirectory(string path)
         {
