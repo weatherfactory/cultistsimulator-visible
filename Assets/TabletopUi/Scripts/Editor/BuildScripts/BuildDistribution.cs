@@ -60,3 +60,4 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
         }
     }
 }
+ 

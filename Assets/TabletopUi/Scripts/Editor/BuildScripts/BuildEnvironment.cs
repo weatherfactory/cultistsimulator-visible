@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
         public string GetProductWithOSBuildPath(Product p, OS o)
         {
-            return NoonUtility.JoinPaths(BasePath, p.GetRelativeBuildPath(), o.OSId.ToString());
+            return NoonUtility.JoinPaths(BasePath, p.GetRelativePath(), o.OSId.ToString());
         }
 
         public void Log(string message)
