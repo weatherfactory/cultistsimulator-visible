@@ -92,28 +92,132 @@ namespace Assets.Core.Utility
         [MenuItem("Tools/Make Distribution (Steam)")]
         public static void MakeSteamDistribution()
         {
-            MakeDistribution(Storefront.Steam);
+            
+            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+
+            List<BuildOS> OSs=new List<BuildOS>();
+            List<BuildProduct> products=new List<BuildProduct>();
+
+            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
+            BuildOS oso=new BuildOS(BuildTarget.StandaloneOSX);
+            BuildOS osl=new BuildOS(BuildTarget.StandaloneLinux64);
+            OSs.Add(osw);
+            OSs.Add(oso);
+            OSs.Add(osl);
+
+
+            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
+         //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+
+            products.Add(vanillaEdition);
+            products.Add(perpetualDLC);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
+          //  products.Add(ExileDLC);
+
+            BuildStorefront buildStorefront=new BuildStorefront(Storefront.Steam,OSs,products);
+
+            MakeDistribution(buildStorefront);
+
 
         }
 
         [MenuItem("Tools/Make Distribution (Gog)")]
         public static void MakeGogDistribution()
         {
-            MakeDistribution(Storefront.Gog);
+            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+
+            List<BuildOS> OSs=new List<BuildOS>();
+            List<BuildProduct> products=new List<BuildProduct>();
+
+            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
+            BuildOS oso=new BuildOS(BuildTarget.StandaloneOSX);
+            BuildOS osl=new BuildOS(BuildTarget.StandaloneLinux64);
+            OSs.Add(osw);
+            OSs.Add(oso);
+            OSs.Add(osl);
+
+
+            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
+         //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+
+            products.Add(vanillaEdition);
+            products.Add(perpetualDLC);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
+         //   products.Add(ExileDLC);
+
+            BuildStorefront buildStorefront=new BuildStorefront(Storefront.Gog,OSs,products);
+
+            MakeDistribution(buildStorefront);
 
         }
 
         [MenuItem("Tools/Make Distribution (Humble)")]
         public static void MakeHumbleDistribution()
         {
-            MakeDistribution(Storefront.Humble);
+            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+
+            List<BuildOS> OSs=new List<BuildOS>();
+            List<BuildProduct> products=new List<BuildProduct>();
+
+            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
+            OSs.Add(osw);
+
+
+            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
+            //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+
+            products.Add(vanillaEdition);
+            products.Add(perpetualDLC);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
+            //   products.Add(ExileDLC);
+
+            BuildStorefront buildStorefront=new BuildStorefront(Storefront.Humble,OSs,products);
+
+            MakeDistribution(buildStorefront);
 
         }
 
         [MenuItem("Tools/Make Distribution (Itch)")]
         public static void MakeItchDistribution()
         {
-            MakeDistribution(Storefront.Itch);
+            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+
+            List<BuildOS> OSs=new List<BuildOS>();
+            List<BuildProduct> products=new List<BuildProduct>();
+
+            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
+            OSs.Add(osw);
+
+
+            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
+            //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+
+            products.Add(vanillaEdition);
+            products.Add(perpetualDLC);
+            //   products.Add(ExileDLC);
+
+            BuildStorefront buildStorefront=new BuildStorefront(Storefront.Itch,OSs,products);
+
+            MakeDistribution(buildStorefront);
 
         }
 
@@ -176,41 +280,11 @@ namespace Assets.Core.Utility
 
         }
 
-        private static void MakeDistribution(Storefront storefront)
+        private static void MakeDistribution(BuildStorefront storefront)
         {
             BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
 
-            List<BuildOS> OSs=new List<BuildOS>();
-            List<BuildProduct> products=new List<BuildProduct>();
-
-            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
-            BuildOS oso=new BuildOS(BuildTarget.StandaloneOSX);
-            BuildOS osl=new BuildOS(BuildTarget.StandaloneLinux64);
-            OSs.Add(osw);
-            OSs.Add(oso);
-            OSs.Add(osl);
-
-
-            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualEdition=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
-            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
-            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
-            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
-            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
-
-            products.Add(vanillaEdition);
-            products.Add(perpetualEdition);
-            products.Add(perpetualDLC);
-            products.Add(DancerDLC);
-            products.Add(PriestDLC);
-            products.Add(GhoulDLC);
-            products.Add(ExileDLC);
-
-
-            BuildStorefront buildStorefront=new BuildStorefront(storefront,OSs,products);
-
-            var distributions = buildStorefront.GetDistributionsForStorefront(env);
+            var distributions = storefront.GetDistributionsForStorefront(env);
 
             foreach(var d in distributions)
                 d.CopyFilesFromEnvironment(env);
