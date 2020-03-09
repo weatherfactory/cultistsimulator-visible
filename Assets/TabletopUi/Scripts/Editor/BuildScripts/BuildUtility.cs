@@ -11,14 +11,20 @@ using UnityEngine;
 
 namespace Assets.Core.Utility
 {
+
     public static class BuildUtility
     {
+        private enum EditionLevel
+        {
+            VANILLA=1,
+            PERPETUAL_ALLDLC=2,
+            DLC=3
+        }
         private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_DIR = "build";
         private const string CONST_DLC = "DLC";
         private const string CONST_STOREFRONTS = "STOREFRONT_DISTRIBUTIONS";
-        private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
-        private const string CONST_PERPETUALEDITION_DLC = "PERPETUAL";
+        private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets/edition/semper.txt";
         private const string CONST_STOREFRONT_RELATIVE_PATH_TO_FILE = "StreamingAssets/edition/store.txt";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
@@ -110,7 +116,7 @@ namespace Assets.Core.Utility
             PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName, Path.GetFileName(pathToBuiltProject));
         }
 
-        private static void PostBuildFileTasks(BuildTarget buildTarget, string builtAtPath, string exeName)
+        private static void PostBuildFileTasks(BuildTarget buildTarget, string outputPath, string exeName)
         {
             // For CI, we moved the build output into a build- and platform-specific subdirectory
             //Now I'm back to deploying from a local machine, I no longer do this, because it's not straightforward to 
@@ -130,45 +136,63 @@ namespace Assets.Core.Utility
        
 
            // WriteStoreFile()
+            CopyStorefrontLibraries(buildTarget, outputPath);
+            AddVersionNumber(outputPath);
 
-            AddVersionNumber(builtAtPath);
-            
-            BuildPerpetualEdition(buildTarget,builtAtPath,exeName);
+            string perpetualEditionsFolderPath = JoinPaths(GetGrandfatherPath(outputPath), EditionLevel.PERPETUAL_ALLDLC.ToString());
+            string perpetualEditionForThisPlatformPath = JoinPaths(perpetualEditionsFolderPath, GetPlatformFolderForTarget(buildTarget));
+            BuildPerpetualEdition(buildTarget,outputPath,perpetualEditionForThisPlatformPath, exeName);
 
-            ExtractDLCs(builtAtPath,buildTarget, exeName);
+            string DLCFolderPath=JoinPaths(GetGrandfatherPath(outputPath), EditionLevel.DLC + "\\PRIEST");
+            string DLCForThisPlatformPath= JoinPaths(DLCFolderPath, GetPlatformFolderForTarget(buildTarget));
+
+            ExtractDLCFilesFromBaseBuilds(outputPath,buildTarget, exeName); //nb this doesn't use the paths from above - may need shotgun surgery later
 
           //  RunContentTests(buildTarget, builtAtPath);
 
 
-            // Copy APIs/integration for storefronts
-            CopyStorefrontLibraries(buildTarget, builtAtPath);
 
+            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Steam,EditionLevel.VANILLA.ToString());
+            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Gog,EditionLevel.VANILLA.ToString());
+            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Humble,EditionLevel.VANILLA.ToString());
+            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Itch,EditionLevel.VANILLA.ToString());
 
-            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Steam);
-            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Gog);
-            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Humble);
-            BakeDistribution(buildTarget, builtAtPath,exeName,Storefront.Itch);
+            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.PERPETUAL_ALLDLC.ToString());
+
+            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.DLC  + "\\PRIEST");
+            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.DLC  + "\\PRIEST");
+            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.DLC  + "\\PRIEST");
+            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.DLC + "\\PRIEST");;
 
             
-            //do all this again for perpetual
+            
         }
 
 
-        private static void BakeDistribution(BuildTarget buildTarget, string builtAtPath,string exeName,Storefront storefront)
+        private static void BakeDistribution(BuildTarget buildTarget, string builtAtPath,string exeName,Storefront storefront,string editionLevel)
         {
-            var storefrontsPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_STOREFRONTS);
-            var distributionDir = JoinPaths(storefrontsPath, storefront.ToString());
-            var osDirForDistribution = JoinPaths(distributionDir, GetPlatformFolderForTarget(buildTarget));
+            var distributionsPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_STOREFRONTS);
+            var thisDistributionPath = JoinPaths(distributionsPath, storefront.ToString());
+            var thisOSAndDistributionPath = JoinPaths(thisDistributionPath, editionLevel, GetPlatformFolderForTarget(buildTarget));
             
-            Log("Removing old " + storefront + " distribution directory: " + osDirForDistribution);
-            Directory.Delete(osDirForDistribution, true);
-            
-            Log("Creating new " + storefront + " distribution directory: " + osDirForDistribution);
-            Directory.CreateDirectory(osDirForDistribution);
+            if(Directory.Exists(thisOSAndDistributionPath))
+            {
+            Log("Removing old " + storefront + " distribution directory: " + thisOSAndDistributionPath);
+            Directory.Delete(thisOSAndDistributionPath, true);
+            }
+            else
+            Log("Distribution directory " + thisOSAndDistributionPath + " doesn't exist yet.");
 
-            CopyDirectoryRecursively(builtAtPath, osDirForDistribution);
 
-            var storefrontFilePath = JoinPaths(osDirForDistribution,
+            Log("Creating new " + storefront + " distribution directory: " + thisOSAndDistributionPath);
+            Directory.CreateDirectory(thisOSAndDistributionPath);
+
+            CopyDirectoryRecursively(builtAtPath, thisOSAndDistributionPath);
+
+            var storefrontFilePath = JoinPaths(thisOSAndDistributionPath,
                 GetDataFolderForTarget(exeName),
                     CONST_STOREFRONT_RELATIVE_PATH_TO_FILE);
 
@@ -176,6 +200,8 @@ namespace Assets.Core.Utility
 
             File.WriteAllText(storefrontFilePath, storefront.ToString());
         }
+
+        
 
 
 
@@ -192,11 +218,11 @@ namespace Assets.Core.Utility
             }
         }
 
-        private static string BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string exeName)
+        private static string BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string perpetualEditionForPlatformPath, string exeName)
         {
             // Set up the Perpetual Edition, with all its DLC
             ;
-            string perpetualEditionForPlatformPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
+       
 
             Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
 
@@ -216,7 +242,7 @@ namespace Assets.Core.Utility
             return perpetualEditionForPlatformPath;
         }
 
-        private static void ExtractDLCs(string builtAtPath,BuildTarget buildTarget, string exeName)
+        private static void ExtractDLCFilesFromBaseBuilds(string builtAtPath,BuildTarget buildTarget, string exeName)
         {
 // Take the DLCs out of the base edition and into their own directories
             var dlcPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_DLC);
@@ -276,7 +302,7 @@ namespace Assets.Core.Utility
             // Create the Perpetual Edition DLC
             string semperPath = JoinPaths(
                 dlcPath,
-                CONST_PERPETUALEDITION_DLC,
+                CONST_PERPETUALEDITION_DLCTITLE,
                 GetPlatformFolderForTarget(target),
                 GetDataFolderForTarget(exeName),
                 CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
