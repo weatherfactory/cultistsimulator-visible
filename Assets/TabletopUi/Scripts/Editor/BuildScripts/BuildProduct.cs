@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Noon;
@@ -30,11 +31,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
                 return Id.ToString();
         }
 
-        public string BuiltAtPath()
-        {
-            return NoonUtility.JoinPaths(_fromEnvironment.BaseBasePath, GetRelativePath());
 
-        }
     }
 
 

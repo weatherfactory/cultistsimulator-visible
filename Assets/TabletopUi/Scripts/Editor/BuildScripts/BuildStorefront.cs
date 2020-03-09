@@ -35,7 +35,8 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
             {
                 foreach (var p in ProductList)
                 {
-                    var d=new Distribution(this,p,o);
+                   distributions.Add(new Distribution(this,p,o));
+                   
                 }
             }
 

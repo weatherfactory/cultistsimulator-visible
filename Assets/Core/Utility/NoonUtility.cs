@@ -106,7 +106,7 @@ namespace Noon
         public const string TOKEN_LAST_HEADQUARTERS = "#LAST_HEADQUARTERS#";
         public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";
 
-        public const string STOREFRONT_FILE_NAME = "store.txt";
+        public const string STOREFRONT_PATH_IN_STREAMINGASSETS = "edition/store.txt";
 
         public const string BIRDWORMSLIDER = "BirdWormSlider";
 		public const string HIGHCONTRAST = "HighContrast";

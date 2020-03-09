@@ -14,6 +14,8 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
         private BuildProduct _product;
         private BuildOS _os;
 
+        private const string CONST_STOREFRONTS_FOLDER = "STOREFRONT_DISTRIBUTIONS";
+
         
         public Distribution(BuildStorefront storefront, BuildProduct product, BuildOS os)
         {
@@ -24,38 +26,41 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
         public void CopyFilesFromEnvironment(BuildEnvironment fromEnvironment)
         {
+            string fromDirectory = fromEnvironment.GetProductWithOSBuildPath(_product, _os);
+
+            string toDirectory = GetDistributionDestinationPath(fromEnvironment);
 
             if (!Directory.Exists(fromEnvironment.GetProductWithOSBuildPath(_product, _os)))
             {
-                fromEnvironment.Log("Can't find source path: terminating distribution creation-  " + fromEnvironment.GetProductWithOSBuildPath(_product,_os));
+                fromEnvironment.Log("Can't find source path: terminating distribution creation -  " + fromDirectory);
                 return;
             }
             if (Directory.Exists(GetDistributionDestinationPath(fromEnvironment)))
             {
-                fromEnvironment.Log("Deleting distribution output path: " + GetDistributionDestinationPath(fromEnvironment));
-                Directory.Delete(GetDistributionDestinationPath(fromEnvironment));
+                fromEnvironment.Log("Deleting distribution output path: " + toDirectory);
+                Directory.Delete(toDirectory,true);
             }
             else
             {
-                fromEnvironment.Log("Distribution output path does not yet exist: " + GetDistributionDestinationPath(fromEnvironment));
+                fromEnvironment.Log("Distribution output path does not yet exist: " + toDirectory);
+                fromEnvironment.Log("Creating distribution output path: " + toDirectory);
+                Directory.CreateDirectory(toDirectory);
             }
 
-            fromEnvironment.Log("Creating distribution output path: " + GetDistributionDestinationPath(fromEnvironment));
-            Directory.CreateDirectory(GetDistributionDestinationPath(fromEnvironment));
+            NoonUtility.CopyDirectoryRecursively(fromDirectory, toDirectory);
 
-            NoonUtility.CopyDirectoryRecursively(fromEnvironment.GetProductWithOSBuildPath(_product, _os), GetDistributionDestinationPath(fromEnvironment));
-
-            File.WriteAllText(GetStoreFileDestinationPath(fromEnvironment), _storefront.StoreId.ToString());
+            if(!_product.IsDLC)
+                File.WriteAllText(GetStoreFileDestinationPath(fromEnvironment), _storefront.StoreId.ToString());
         }
 
         public string GetDistributionDestinationPath(BuildEnvironment fromEnvironment)
         {
-            return NoonUtility.JoinPaths(fromEnvironment.BaseBasePath, _storefront.GetRelativePath(), _os.GetRelativePath(),_product.GetRelativePath());
+            return NoonUtility.JoinPaths(fromEnvironment.BuildRoot, CONST_STOREFRONTS_FOLDER, _storefront.GetRelativePath(), _product.GetRelativePath(),_os.GetRelativePath());
         }
 
         public string GetStoreFileDestinationPath(BuildEnvironment fromEnvironment)
         {
-            return NoonUtility.JoinPaths(GetDistributionDestinationPath(fromEnvironment), _os.GetStreamingAssetsLocation(), NoonConstants.STOREFRONT_FILE_NAME);
+            return NoonUtility.JoinPaths(GetDistributionDestinationPath(fromEnvironment), _os.GetStreamingAssetsPath(), NoonConstants.STOREFRONT_PATH_IN_STREAMINGASSETS);
         }
     }
 }

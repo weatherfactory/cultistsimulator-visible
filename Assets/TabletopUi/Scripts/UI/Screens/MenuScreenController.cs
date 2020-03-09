@@ -157,7 +157,7 @@ public class MenuScreenController : MonoBehaviour {
 
     private static Storefront GetCurrentStorefront()
     {
-        var storeFilePath = Path.Combine(Application.streamingAssetsPath, "edition", NoonConstants.STOREFRONT_FILE_NAME);
+        var storeFilePath = Path.Combine(Application.streamingAssetsPath, NoonConstants.STOREFRONT_PATH_IN_STREAMINGASSETS);
         if (!File.Exists(storeFilePath))
         {
             return Storefront.Unknown;
