@@ -31,7 +31,7 @@ namespace Assets.Core.Utility
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
 
-        private static readonly string[] Scenes = 
+        private static readonly string[] Scenes =
         {
             "Assets/TabletopUi/Logo.unity",
             "Assets/TabletopUi/Quote.unity",
@@ -58,7 +58,7 @@ namespace Assets.Core.Utility
             "ru",
             "zh-hans"
         };
-        
+
         [MenuItem("Tools/Build (Windows)")]
         public static void PerformWindowsBuild()
         {
@@ -82,12 +82,12 @@ namespace Assets.Core.Utility
         {
             NoonUtility.Log("well dang");
         }
-        
+
         private static void PerformBuild(BuildTarget target, string label)
         {
             var args = Environment.GetCommandLineArgs();
             var buildRootPath = args.Length > 1 ? Environment.GetCommandLineArgs()[1] : DEFAULT_BUILD_DIR;
-            
+
             // Clear the build directory of any of the intermediate results of a previous build
             // This excludes any existing build directories, so that we can easily combine builds for different
             // platforms and versions
@@ -107,7 +107,7 @@ namespace Assets.Core.Utility
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
         }
-        
+
         [PostProcessBuild]
         public static void OnBuildComplete(BuildTarget target, string pathToBuiltProject)
         {
@@ -125,7 +125,7 @@ namespace Assets.Core.Utility
         private static void PostBuildFileTasks(BuildTarget buildTarget, string outputPath, string exeName)
         {
             // For CI, we moved the build output into a build- and platform-specific subdirectory
-            //Now I'm back to deploying from a local machine, I no longer do this, because it's not straightforward to 
+            //Now I'm back to deploying from a local machine, I no longer do this, because it's not straightforward to
             //var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
             //var buildPath = JoinPaths(builtAtPath, outputFolder);
             //var platformDirName = GetPlatformFolderForTarget(buildTarget);
@@ -138,8 +138,8 @@ namespace Assets.Core.Utility
 
            // Log("Copying root path (" + builtAtPath + ") contents to base edition path (" + baseEditionPath + ")");
             //CopyDirectoryRecursively(builtAtPath, baseEditionPath);
-            
-       
+
+
 
            // WriteStoreFile()
             CopyStorefrontLibraries(buildTarget, outputPath);
@@ -173,13 +173,13 @@ namespace Assets.Core.Utility
             //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.DLC  + "\\PRIEST");
             //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.DLC + "\\PRIEST");;
 
-            
-            
+
+
         }
 
         private static void BakeDistribution()
         {
-         //   BuildEnvironment 
+         //   BuildEnvironment
         }
 
 
@@ -188,7 +188,7 @@ namespace Assets.Core.Utility
             var distributionsPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_STOREFRONTS);
             var thisDistributionPath = JoinPaths(distributionsPath, storefront.ToString());
             var thisOSAndDistributionPath = JoinPaths(thisDistributionPath, editionLevel, GetPlatformFolderForTarget(buildTarget));
-            
+
             if(Directory.Exists(thisOSAndDistributionPath))
             {
             Log("Removing old " + storefront + " distribution directory: " + thisOSAndDistributionPath);
@@ -212,7 +212,7 @@ namespace Assets.Core.Utility
             File.WriteAllText(storefrontFilePath, storefront.ToString());
         }
 
-        
+
 
 
 
@@ -232,8 +232,9 @@ namespace Assets.Core.Utility
         private static string BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string perpetualEditionForPlatformPath, string exeName)
         {
             // Set up the Perpetual Edition, with all its DLC
-            ;
-       
+            string grandfatherPath = GetParentDirectory(builtAtPath);
+            string perpetualEditionForPlatformPath = NoonUtility.JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
+
 
             Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
 
@@ -243,7 +244,7 @@ namespace Assets.Core.Utility
 
 
             // Create the Perpetual Edition DLC
-            string semperPath = JoinPaths(
+            string semperPath = NoonUtility.JoinPaths(
                 perpetualEditionForPlatformPath,
                 GetDataFolderForTarget(exeName),
                 CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
@@ -256,13 +257,15 @@ namespace Assets.Core.Utility
         private static void ExtractDLCFilesFromBaseBuilds(string builtAtPath,BuildTarget buildTarget, string exeName)
         {
 // Take the DLCs out of the base edition and into their own directories
-            var dlcPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_DLC);
+
+            string grandfatherPath = GetParentDirectory(builtAtPath);
+            var dlcPath = NoonUtility.JoinPaths(grandfatherPath, CONST_DLC);
             foreach (var dlcContentType in ContentTypes)
             foreach (var locale in Locales)
                 MoveDlcContent(builtAtPath, dlcPath, buildTarget, exeName, dlcContentType, locale);
         }
 
- 
+
 
         private static void CopyStorefrontLibraries(BuildTarget target, string builtAtPath)
         {
@@ -276,16 +279,16 @@ namespace Assets.Core.Utility
         {
             var baseEditionContentPath = GetCoreContentPath(builtAtPath, exeName, contentOfType, locale);
             Log("Searching for DLC in " + baseEditionContentPath);
-            
+
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
             foreach (var contentFilePath in contentFiles)
             {
                 int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
 
                 // Does it begin with "DLC_"?
-                if (dlcMarkerIndex <= -1) 
+                if (dlcMarkerIndex <= -1)
                     continue;
-                
+
                 // Extract the DLC title so it can be moved to the appropriate subdirectory
                 string dlcFilenameWithoutPath = contentFilePath.Substring(dlcMarkerIndex);
                 Log("DLC file found: " + dlcFilenameWithoutPath);
@@ -295,9 +298,9 @@ namespace Assets.Core.Utility
 
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
-                    JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
+                    NoonUtility.JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
 
-                string dlcFileDestinationPath = JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
+                string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
                 {
                     Directory.Delete(dlcDestinationDir, true);
@@ -311,7 +314,7 @@ namespace Assets.Core.Utility
             }
 
             // Create the Perpetual Edition DLC
-            string semperPath = JoinPaths(
+            string semperPath = NoonUtility.JoinPaths(
                 dlcPath,
                 CONST_PERPETUALEDITION_DLCTITLE,
                 GetPlatformFolderForTarget(target),
@@ -335,32 +338,11 @@ namespace Assets.Core.Utility
             File.WriteAllText(semperPath, string.Empty);
         }
 
-        private static void CopyDirectoryRecursively(string source, string destination, bool move = false)
-        {
-            DirectoryInfo sourceDirectory = new DirectoryInfo(source);
-            DirectoryInfo destinationDirectory = new DirectoryInfo(destination);
-            if (!destinationDirectory.Exists)
-                destinationDirectory.Create();
-            foreach (var file in sourceDirectory.GetFiles().Where(IsPermittedFileToCopy))
-            {
-                if (move)
-                    file.MoveTo(JoinPaths(destination, file.Name));
-                else
-                    file.CopyTo(JoinPaths(destination, file.Name), true);
-            }
 
-            foreach (var directory in sourceDirectory.GetDirectories()
-                .Where(d => !destinationDirectory.FullName.StartsWith(d.FullName)))
-            {
-                CopyDirectoryRecursively(directory.FullName, JoinPaths(destination, directory.Name), move);
-                if (move)
-                    Directory.Delete(directory.FullName);
-            }
-        }
 
         private static void AddVersionNumber(string exeFolder)
         {
-            string versionPath = JoinPaths(exeFolder, "version.txt");
+            string versionPath = NoonUtility.JoinPaths(exeFolder, "version.txt");
             Log("Writing version to " + versionPath);
             File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
         }
@@ -406,17 +388,13 @@ namespace Assets.Core.Utility
 
         private static string GetCoreContentPath(string basePath, string exeName, string contentOfType, string locale)
         {
-            return JoinPaths(
-                basePath, 
-                GetDataFolderForTarget(exeName), 
-                CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""), 
+            return NoonUtility.JoinPaths(
+                basePath,
+                GetDataFolderForTarget(exeName),
+                CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""),
                 contentOfType);
         }
 
-        private static bool IsPermittedFileToCopy(FileSystemInfo file)
-        {
-            return file.Name != ".dropbox";
-        }
 
         public static void Log(string message)
         {
@@ -426,10 +404,7 @@ namespace Assets.Core.Utility
             Application.SetStackTraceLogType(LogType.Log, oldStackTraceLogType);
         }
 
-        private static string JoinPaths(params string[] paths)
-        {
-            return paths.Aggregate("",Path.Combine);
-        }
+
 
         private static string GetParentDirectory(string path)
         {
