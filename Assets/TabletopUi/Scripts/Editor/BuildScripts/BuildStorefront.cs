@@ -3,24 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 {
-    public class Storefront
+    public class BuildStorefront
     {
-        public string StoreId { get; private set; }
-        public List<Product> ProductList;
+        public Storefront StoreId { get; private set; }
+        public List<BuildOS> OSList;
+        public List<BuildProduct> ProductList;
 
 
-        public Storefront(string id,List<Product> list)
+
+        public BuildStorefront(Storefront id,List<BuildOS> oss,List<BuildProduct> products)
         {
             StoreId = id;
-            ProductList = list;
+            ProductList = products;
+            OSList = oss;
+
         }
 
         public string GetRelativePath()
         {
-            return StoreId;
+            return StoreId.ToString();
+        }
+
+        public List<Distribution> GetDistributionsForStorefront(BuildEnvironment env)
+        {
+            List<Distribution> distributions=new List<Distribution>();
+            foreach (var o in OSList)
+            {
+                foreach (var p in ProductList)
+                {
+                    var d=new Distribution(this,p,o);
+                }
+            }
+
+            return distributions;
         }
     }
 }

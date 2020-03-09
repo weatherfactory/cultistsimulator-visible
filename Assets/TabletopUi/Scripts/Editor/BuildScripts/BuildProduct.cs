@@ -8,14 +8,14 @@ using Noon;
 
 namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 {
-    public class Product
+    public class BuildProduct
     {
-        public string Id { get; private set; }
+        public Product Id { get; private set; }
         public bool IsDLC { get; private set; }
         private BuildEnvironment _fromEnvironment;
 
 
-        public Product(BuildEnvironment fromEnvironment, string id, bool isDLC)
+        public BuildProduct(BuildEnvironment fromEnvironment, Product id, bool isDLC)
         {
             _fromEnvironment = fromEnvironment;
             Id = id;
@@ -25,15 +25,28 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
         public string GetRelativePath()
         {
             if (IsDLC)
-                return NoonUtility.JoinPaths("DLC\\", Id);
+                return NoonUtility.JoinPaths("DLC\\", Id.ToString());
             else
-                return Id;
+                return Id.ToString();
         }
 
         public string BuiltAtPath()
         {
-            return NoonUtility.JoinPaths(_fromEnvironment.BasePath, GetRelativePath());
+            return NoonUtility.JoinPaths(_fromEnvironment.BaseBasePath, GetRelativePath());
 
         }
+    }
+
+
+    public enum Product
+    {
+        VANILLA=1,
+        PERPETUAL_ALLDLC=2,
+        PERPETUAL=3,
+        DANCER=4,
+        PRIEST=5,
+        GHOUL=6,
+        EXILE=7
+
     }
 }

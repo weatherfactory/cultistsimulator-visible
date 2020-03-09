@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 {
-    public class OS
+    public class BuildOS
     {
         public OSId OSId { get; private set; }
 
 
-        public OS(OSId id)
+        public BuildOS(OSId id)
         {
             OSId = id;
 

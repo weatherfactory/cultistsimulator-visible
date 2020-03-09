@@ -11,16 +11,16 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 {
     public class BuildEnvironment
     {
-        public string BasePath { get; private set; }
+        public string BaseBasePath { get; private set; }
 
-        public BuildEnvironment(string path)
+        public BuildEnvironment(string basePath)
         {
-            BasePath = path;
+            BaseBasePath = basePath;
         }
 
-        public string GetProductWithOSBuildPath(Product p, OS o)
+        public string GetProductWithOSBuildPath(BuildProduct p, BuildOS o)
         {
-            return NoonUtility.JoinPaths(BasePath, p.GetRelativePath(), o.OSId.ToString());
+            return NoonUtility.JoinPaths(BaseBasePath, p.GetRelativePath(), o.OSId.ToString());
         }
 
         public void Log(string message)

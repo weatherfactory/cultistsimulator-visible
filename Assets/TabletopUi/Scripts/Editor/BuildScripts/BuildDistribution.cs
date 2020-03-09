@@ -10,53 +10,52 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 {
     public class Distribution
     {
-        Storefront _storefront;
-        Product _product;
-        OS _os;
-        private BuildEnvironment _env;
+        private BuildStorefront _storefront;
+        private BuildProduct _product;
+        private BuildOS _os;
 
-        public Distribution(BuildEnvironment environment, Storefront storefront, Product product, OS os)
+        
+        public Distribution(BuildStorefront storefront, BuildProduct product, BuildOS os)
         {
-            _env = environment;
             _storefront = storefront;
             _product = product;
             _os = os;
         }
 
-        public void Create(BuildEnvironment fromEnvironment)
+        public void CopyFilesFromEnvironment(BuildEnvironment fromEnvironment)
         {
 
-            if (!Directory.Exists(_env.GetProductWithOSBuildPath(_product, _os)))
+            if (!Directory.Exists(fromEnvironment.GetProductWithOSBuildPath(_product, _os)))
             {
-                fromEnvironment.Log("Can't find source path: terminating distribution creation-  " + _env.GetProductWithOSBuildPath(_product,_os));
+                fromEnvironment.Log("Can't find source path: terminating distribution creation-  " + fromEnvironment.GetProductWithOSBuildPath(_product,_os));
                 return;
             }
-            if (Directory.Exists(GetDistributionDestinationPath()))
+            if (Directory.Exists(GetDistributionDestinationPath(fromEnvironment)))
             {
-                fromEnvironment.Log("Deleting distribution output path: " + GetDistributionDestinationPath());
-                Directory.Delete(GetDistributionDestinationPath());
+                fromEnvironment.Log("Deleting distribution output path: " + GetDistributionDestinationPath(fromEnvironment));
+                Directory.Delete(GetDistributionDestinationPath(fromEnvironment));
             }
             else
             {
-                fromEnvironment.Log("Distribution output path does not yet exist: " + GetDistributionDestinationPath());
+                fromEnvironment.Log("Distribution output path does not yet exist: " + GetDistributionDestinationPath(fromEnvironment));
             }
 
-            fromEnvironment.Log("Creating distribution output path: " + GetDistributionDestinationPath());
-            Directory.CreateDirectory(GetDistributionDestinationPath());
+            fromEnvironment.Log("Creating distribution output path: " + GetDistributionDestinationPath(fromEnvironment));
+            Directory.CreateDirectory(GetDistributionDestinationPath(fromEnvironment));
 
-            NoonUtility.CopyDirectoryRecursively(fromEnvironment.GetProductWithOSBuildPath(_product, _os), GetDistributionDestinationPath());
+            NoonUtility.CopyDirectoryRecursively(fromEnvironment.GetProductWithOSBuildPath(_product, _os), GetDistributionDestinationPath(fromEnvironment));
 
-            File.WriteAllText(GetStoreFileDestinationPath(), _storefront.StoreId);
+            File.WriteAllText(GetStoreFileDestinationPath(fromEnvironment), _storefront.StoreId.ToString());
         }
 
-        public string GetDistributionDestinationPath()
+        public string GetDistributionDestinationPath(BuildEnvironment fromEnvironment)
         {
-            return NoonUtility.JoinPaths(_env.BasePath, _storefront.GetRelativePath(), _os.GetRelativePath(),_product.GetRelativePath());
+            return NoonUtility.JoinPaths(fromEnvironment.BaseBasePath, _storefront.GetRelativePath(), _os.GetRelativePath(),_product.GetRelativePath());
         }
 
-        public string GetStoreFileDestinationPath()
+        public string GetStoreFileDestinationPath(BuildEnvironment fromEnvironment)
         {
-            return NoonUtility.JoinPaths(GetDistributionDestinationPath(), _os.GetStreamingAssetsLocation(), "store.txt");
+            return NoonUtility.JoinPaths(GetDistributionDestinationPath(fromEnvironment), _os.GetStreamingAssetsLocation(), NoonConstants.STOREFRONT_FILE_NAME);
         }
     }
 }

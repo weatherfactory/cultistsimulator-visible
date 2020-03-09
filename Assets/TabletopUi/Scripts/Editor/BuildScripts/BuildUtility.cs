@@ -1,28 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Editor;
+using Assets.TabletopUi.Scripts.Editor.BuildScripts;
 using Galaxy;
 using Noon;
-using TabletopUi.Scripts.Services;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using Storefront = TabletopUi.Scripts.Services.Storefront;
 
 namespace Assets.Core.Utility
 {
 
     public static class BuildUtility
     {
-        private enum EditionLevel
-        {
-            VANILLA=1,
-            PERPETUAL_ALLDLC=2,
-            DLC=3
-        }
+
         private const string BUILD_DIR_PREFIX = "csunity-";
-        private const string DEFAULT_BUILD_DIR = "build";
-        private const string CONST_DLC = "DLC";
+        private const string DEFAULT_BUILD_DIR_ROOT = "G:\\cs\\build_outputs\\BASE_OS_BUILDS";
+        private const string CONST_DLC_FOLDER = "DLC";
         private const string CONST_STOREFRONTS = "STOREFRONT_DISTRIBUTIONS";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets/edition/semper.txt";
@@ -59,58 +56,78 @@ namespace Assets.Core.Utility
             "zh-hans"
         };
 
+        [MenuItem("Tools/Build (All)")]
+        public static void PerformAllBuilds()
+        {
+            PerformWindowsBuild();
+            PerformOsxBuild();
+            PerformLinuxBuild();
+        }
+
         [MenuItem("Tools/Build (Windows)")]
         public static void PerformWindowsBuild()
         {
-            PerformBuild(BuildTarget.StandaloneWindows, "Windows");
+            PerformBuild(BuildTarget.StandaloneWindows);
         }
 
         [MenuItem("Tools/Build (OSX)")]
         public static void PerformOsxBuild()
         {
-            PerformBuild(BuildTarget.StandaloneOSX, "OSX");
+            PerformBuild(BuildTarget.StandaloneOSX);
         }
 
         [MenuItem("Tools/Build (Linux)")]
         public static void PerformLinuxBuild()
         {
-            PerformBuild(BuildTarget.StandaloneLinux64, "Linux");
+            PerformBuild(BuildTarget.StandaloneLinux64);
         }
 
-        [MenuItem("Tools/Make Distribution (Steam")]
-        public static void MakeDistribution()
+        [MenuItem("Tools/Make Distribution (Steam)")]
+        public static void MakeSteamDistribution()
         {
-            NoonUtility.Log("well dang");
-        }
+            MakeDistribution(Storefront.Steam);
 
-        private static void PerformBuild(BuildTarget target, string label)
+            }
+
+        private static void PerformBuild(BuildTarget target)
         {
-            var args = Environment.GetCommandLineArgs();
-            var buildRootPath = args.Length > 1 ? Environment.GetCommandLineArgs()[1] : DEFAULT_BUILD_DIR;
 
             // Clear the build directory of any of the intermediate results of a previous build
-            // This excludes any existing build directories, so that we can easily combine builds for different
-            // platforms and versions
-            DirectoryInfo rootDir = new DirectoryInfo(buildRootPath);
+            DirectoryInfo rootDir = new DirectoryInfo(DEFAULT_BUILD_DIR_ROOT);
             foreach (var file in rootDir.GetFiles())
                 File.Delete(file.FullName);
-            foreach (var directory in rootDir.GetDirectories().Where(d => !d.Name.StartsWith(BUILD_DIR_PREFIX)))
+            foreach (var directory in rootDir.GetDirectories())
                 Directory.Delete(directory.FullName, true);
 
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 target = target,
-                locationPathName = JoinPaths(buildRootPath, GetExeNameForTarget(target)),
+                locationPathName = NoonUtility.JoinPaths(GetEditionSpecificBuildDirectory(DEFAULT_BUILD_DIR_ROOT,Product.VANILLA,target), GetExeNameForTarget(target)),
                 scenes = Scenes
             };
-            Log("Building " + label + " version to build directory: " + buildPlayerOptions.locationPathName);
+            Log("Building " + target + " version to build directory: " + buildPlayerOptions.locationPathName);
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
+            
+        }
+
+        private static string GetOsSpecificBuildDirectory(string root,BuildTarget target)
+        {
+            return NoonUtility.JoinPaths(DEFAULT_BUILD_DIR_ROOT, GetPlatformFolderForTarget(target));
+        }
+
+        private static string GetEditionSpecificBuildDirectory(string root,Product product, BuildTarget target)
+        {
+            var osBuildPath = GetOsSpecificBuildDirectory(root, target);
+
+            return NoonUtility.JoinPaths(osBuildPath, product.ToString());
         }
 
         [PostProcessBuild]
         public static void OnBuildComplete(BuildTarget target, string pathToBuiltProject)
         {
+          //  BuildEnvironment environment=
+
             if (target != BuildTarget.StandaloneWindows
                 && target != BuildTarget.StandaloneWindows64
                 && target != BuildTarget.StandaloneOSX
@@ -119,103 +136,69 @@ namespace Assets.Core.Utility
                 return;
             }
 
-            PostBuildFileTasks(target, Directory.GetParent(pathToBuiltProject).FullName, Path.GetFileName(pathToBuiltProject));
+            PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), Path.GetFileName(pathToBuiltProject));
         }
 
-        private static void PostBuildFileTasks(BuildTarget buildTarget, string outputPath, string exeName)
+        private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject, string exeName)
         {
-            // For CI, we moved the build output into a build- and platform-specific subdirectory
-            //Now I'm back to deploying from a local machine, I no longer do this, because it's not straightforward to
-            //var outputFolder = BUILD_DIR_PREFIX + NoonUtility.VersionNumber;
-            //var buildPath = JoinPaths(builtAtPath, outputFolder);
-            //var platformDirName = GetPlatformFolderForTarget(buildTarget);
-            //var baseEditionPath = JoinPaths(buildPath, platformDirName);
-            //if (Directory.Exists(baseEditionPath))
-            //{
-            //    Log("Deleting base edition path " + baseEditionPath +" because it already exists");
-            //    Directory.Delete(baseEditionPath, true);
-            //}
 
-           // Log("Copying root path (" + builtAtPath + ") contents to base edition path (" + baseEditionPath + ")");
-            //CopyDirectoryRecursively(builtAtPath, baseEditionPath);
+            CopyStorefrontLibraries(buildTarget, pathToBuiltProject);
+            AddVersionNumber(pathToBuiltProject);
 
+            string perpetualEditionsFolderPath =NoonUtility.JoinPaths(GetOsSpecificBuildDirectory(DEFAULT_BUILD_DIR_ROOT,buildTarget), Product.PERPETUAL_ALLDLC.ToString());
+            BuildPerpetualEdition(pathToBuiltProject,perpetualEditionsFolderPath);
 
+            string DLCFolderPath=NoonUtility.JoinPaths(GetOsSpecificBuildDirectory(DEFAULT_BUILD_DIR_ROOT,buildTarget), CONST_DLC_FOLDER);
 
-           // WriteStoreFile()
-            CopyStorefrontLibraries(buildTarget, outputPath);
-            AddVersionNumber(outputPath);
-
-            string perpetualEditionsFolderPath = JoinPaths(GetGrandfatherPath(outputPath), EditionLevel.PERPETUAL_ALLDLC.ToString());
-            string perpetualEditionForThisPlatformPath = JoinPaths(perpetualEditionsFolderPath, GetPlatformFolderForTarget(buildTarget));
-            BuildPerpetualEdition(buildTarget,outputPath,perpetualEditionForThisPlatformPath, exeName);
-
-            string DLCFolderPath=JoinPaths(GetGrandfatherPath(outputPath), EditionLevel.DLC + "\\PRIEST");
-            string DLCForThisPlatformPath= JoinPaths(DLCFolderPath, GetPlatformFolderForTarget(buildTarget));
-
-            ExtractDLCFilesFromBaseBuilds(outputPath,buildTarget, exeName); //nb this doesn't use the paths from above - may need shotgun surgery later
+            ExtractDLCFilesFromBaseBuilds(pathToBuiltProject,DLCFolderPath,buildTarget, exeName);
 
           //  RunContentTests(buildTarget, builtAtPath);
 
 
 
-            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Steam,EditionLevel.VANILLA.ToString());
-            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Gog,EditionLevel.VANILLA.ToString());
-            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Humble,EditionLevel.VANILLA.ToString());
-            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Itch,EditionLevel.VANILLA.ToString());
-
-            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.PERPETUAL_ALLDLC.ToString());
-
-            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.DLC  + "\\PRIEST");
-            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.DLC  + "\\PRIEST");
-            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.DLC  + "\\PRIEST");
-            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.DLC + "\\PRIEST");;
-
-
-
         }
 
-        private static void BakeDistribution()
+        private static void MakeDistribution(Storefront storefront)
         {
-         //   BuildEnvironment
+            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_DIR_ROOT);
+
+            List<BuildOS> OSs=new List<BuildOS>();
+            List<BuildProduct> products=new List<BuildProduct>();
+
+            BuildOS osw=new BuildOS(OSId.Windows);
+            BuildOS oso=new BuildOS(OSId.OSX);
+            BuildOS osl=new BuildOS(OSId.Linux);
+            OSs.Add(osw);
+            OSs.Add(oso);
+            OSs.Add(osl);
+
+
+            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+            BuildProduct perpetualEdition=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
+            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
+            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+
+            products.Add(vanillaEdition);
+            products.Add(perpetualEdition);
+            products.Add(perpetualDLC);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
+            products.Add(ExileDLC);
+
+
+            BuildStorefront buildStorefront=new BuildStorefront(storefront,OSs,products);
+
+            var distributions = buildStorefront.GetDistributionsForStorefront(env);
+
+            foreach(var d in distributions)
+                d.CopyFilesFromEnvironment(env);
+
+
         }
-
-
-        private static void BakeDistribution(BuildTarget buildTarget, string builtAtPath,string exeName,Storefront storefront,string editionLevel)
-        {
-            var distributionsPath = JoinPaths(GetGrandfatherPath(builtAtPath), CONST_STOREFRONTS);
-            var thisDistributionPath = JoinPaths(distributionsPath, storefront.ToString());
-            var thisOSAndDistributionPath = JoinPaths(thisDistributionPath, editionLevel, GetPlatformFolderForTarget(buildTarget));
-
-            if(Directory.Exists(thisOSAndDistributionPath))
-            {
-            Log("Removing old " + storefront + " distribution directory: " + thisOSAndDistributionPath);
-            Directory.Delete(thisOSAndDistributionPath, true);
-            }
-            else
-            Log("Distribution directory " + thisOSAndDistributionPath + " doesn't exist yet.");
-
-
-            Log("Creating new " + storefront + " distribution directory: " + thisOSAndDistributionPath);
-            Directory.CreateDirectory(thisOSAndDistributionPath);
-
-            CopyDirectoryRecursively(builtAtPath, thisOSAndDistributionPath);
-
-            var storefrontFilePath = JoinPaths(thisOSAndDistributionPath,
-                GetDataFolderForTarget(exeName),
-                    CONST_STOREFRONT_RELATIVE_PATH_TO_FILE);
-
-            Log("Writing storefront info to " + storefrontFilePath);
-
-            File.WriteAllText(storefrontFilePath, storefront.ToString());
-        }
-
-
-
-
-
 
 
 
@@ -229,40 +212,26 @@ namespace Assets.Core.Utility
             }
         }
 
-        private static string BuildPerpetualEdition(BuildTarget buildTarget,string builtAtPath,string perpetualEditionForPlatformPath, string exeName)
+        private static void BuildPerpetualEdition(string from,string to)
         {
             // Set up the Perpetual Edition, with all its DLC
-            string grandfatherPath = GetParentDirectory(builtAtPath);
-            string perpetualEditionForPlatformPath = NoonUtility.JoinPaths(grandfatherPath, CONST_PERPETUALEDITIONLOCATION, GetPlatformFolderForTarget(buildTarget));
 
+            Log("Copying whole project with DLC from " + from + " to " + to);
 
-            Log("Copying whole project with DLC from " + builtAtPath + " to " + perpetualEditionForPlatformPath);
-
-            if (Directory.Exists(perpetualEditionForPlatformPath))
-                Directory.Delete(perpetualEditionForPlatformPath, true);
-            CopyDirectoryRecursively(builtAtPath, perpetualEditionForPlatformPath);
-
-
-            // Create the Perpetual Edition DLC
-            string semperPath = NoonUtility.JoinPaths(
-                perpetualEditionForPlatformPath,
-                GetDataFolderForTarget(exeName),
-                CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
-
-            WriteSemperFile(semperPath);
-
-            return perpetualEditionForPlatformPath;
+            if (Directory.Exists(to))
+                Directory.Delete(to, true);
+            NoonUtility.CopyDirectoryRecursively(from, to);
         }
 
-        private static void ExtractDLCFilesFromBaseBuilds(string builtAtPath,BuildTarget buildTarget, string exeName)
+
+        private static void ExtractDLCFilesFromBaseBuilds(string from,string to,BuildTarget buildTarget, string exeName)
         {
 // Take the DLCs out of the base edition and into their own directories
 
-            string grandfatherPath = GetParentDirectory(builtAtPath);
-            var dlcPath = NoonUtility.JoinPaths(grandfatherPath, CONST_DLC);
+   
             foreach (var dlcContentType in ContentTypes)
             foreach (var locale in Locales)
-                MoveDlcContent(builtAtPath, dlcPath, buildTarget, exeName, dlcContentType, locale);
+                MoveDlcContent(from, to, buildTarget, exeName, dlcContentType, locale);
         }
 
 
@@ -275,15 +244,15 @@ namespace Assets.Core.Utility
             CopyGalaxyLibraries.Copy(target, builtAtPath);
         }
 
-        private static void MoveDlcContent(string builtAtPath, string dlcPath, BuildTarget target, string exeName, string contentOfType, string locale)
+        private static void MoveDlcContent(string from, string to, BuildTarget target, string exeName, string contentOfType, string locale)
         {
-            var baseEditionContentPath = GetCoreContentPath(builtAtPath, exeName, contentOfType, locale);
+            var baseEditionContentPath = GetCoreContentPath(from, exeName, contentOfType, locale);
             Log("Searching for DLC in " + baseEditionContentPath);
 
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
             foreach (var contentFilePath in contentFiles)
             {
-                int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
+                int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC_FOLDER + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
 
                 // Does it begin with "DLC_"?
                 if (dlcMarkerIndex <= -1)
@@ -298,7 +267,7 @@ namespace Assets.Core.Utility
 
                 //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
                 string dlcDestinationDir = GetCoreContentPath(
-                    NoonUtility.JoinPaths(dlcPath, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
+                    NoonUtility.JoinPaths(to, dlcTitle, GetPlatformFolderForTarget(target)), exeName, contentOfType, locale);
 
                 string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
                 if (Directory.Exists(dlcDestinationDir))
@@ -315,7 +284,7 @@ namespace Assets.Core.Utility
 
             // Create the Perpetual Edition DLC
             string semperPath = NoonUtility.JoinPaths(
-                dlcPath,
+                to,
                 CONST_PERPETUALEDITION_DLCTITLE,
                 GetPlatformFolderForTarget(target),
                 GetDataFolderForTarget(exeName),
@@ -411,10 +380,7 @@ namespace Assets.Core.Utility
             return Path.GetFullPath(Path.Combine(path, @"../"));
         }
 
-        private static string GetGrandfatherPath(string path)
-        {
-            return GetParentDirectory(GetParentDirectory(path));
-        }
+ 
 
     }
 }

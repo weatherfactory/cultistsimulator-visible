@@ -58,7 +58,7 @@ public class MenuScreenController : MonoBehaviour {
     public GameObject purgeSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
-    public GameObject LinuxHints;
+   
 
     public MenuSubtitle Subtitle;
 
@@ -85,7 +85,7 @@ public class MenuScreenController : MonoBehaviour {
     private ModManager _modManager;
 #endif
 
-    private const string StorefrontFileName = "store.txt";
+
     private static readonly MenuDlcEntry.Spec[] DlcEntrySpecs =
     {
         new MenuDlcEntry.Spec(
@@ -157,22 +157,22 @@ public class MenuScreenController : MonoBehaviour {
 
     private static Storefront GetCurrentStorefront()
     {
-        var storeFilePath = Path.Combine(Application.streamingAssetsPath, "edition", StorefrontFileName);
+        var storeFilePath = Path.Combine(Application.streamingAssetsPath, "edition", NoonConstants.STOREFRONT_FILE_NAME);
         if (!File.Exists(storeFilePath))
         {
             return Storefront.Unknown;
         }
 
-        var edition = File.ReadAllText(storeFilePath).Trim();
+        var edition = File.ReadAllText(storeFilePath).Trim().ToUpper();
         switch (edition)
         {
-            case "Steam":
+            case "STEAM":
                 return Storefront.Steam;
-            case "Gog":
+            case "GOG":
                 return Storefront.Gog;
-            case "Humble":
+            case "HUMBLE":
                 return Storefront.Humble;
-            case "Itch":
+            case "ITCH":
                 return Storefront.Itch;
             default:
                 return Storefront.Unknown;
@@ -247,13 +247,6 @@ public class MenuScreenController : MonoBehaviour {
 
         // Show the purge message if needed
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
-        //warn about possible Linux issues
-#if UNITY_STANDALONE_LINUX
-        LinuxHints.gameObject.SetActive(true);
-#else
-        LinuxHints.gameObject.SetActive(false);
-#endif
-
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
         FadeIn();
