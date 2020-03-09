@@ -76,6 +76,12 @@ namespace Assets.Core.Utility
         {
             PerformBuild(BuildTarget.StandaloneLinux64, "Linux");
         }
+
+        [MenuItem("Tools/Make Distribution (Steam")]
+        public static void MakeDistribution()
+        {
+            NoonUtility.Log("well dang");
+        }
         
         private static void PerformBuild(BuildTarget target, string label)
         {
@@ -152,23 +158,28 @@ namespace Assets.Core.Utility
 
 
 
-            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Steam,EditionLevel.VANILLA.ToString());
-            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Gog,EditionLevel.VANILLA.ToString());
-            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Humble,EditionLevel.VANILLA.ToString());
-            BakeDistribution(buildTarget, outputPath,exeName,Storefront.Itch,EditionLevel.VANILLA.ToString());
+            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Steam,EditionLevel.VANILLA.ToString());
+            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Gog,EditionLevel.VANILLA.ToString());
+            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Humble,EditionLevel.VANILLA.ToString());
+            //BakeDistribution(buildTarget, outputPath,exeName,Storefront.Itch,EditionLevel.VANILLA.ToString());
 
-            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.PERPETUAL_ALLDLC.ToString());
-            BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.PERPETUAL_ALLDLC.ToString());
+            //BakeDistribution(buildTarget, perpetualEditionForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.PERPETUAL_ALLDLC.ToString());
 
-            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.DLC  + "\\PRIEST");
-            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.DLC  + "\\PRIEST");
-            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.DLC  + "\\PRIEST");
-            BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.DLC + "\\PRIEST");;
+            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Steam,EditionLevel.DLC  + "\\PRIEST");
+            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Gog,EditionLevel.DLC  + "\\PRIEST");
+            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Itch,EditionLevel.DLC  + "\\PRIEST");
+            //BakeDistribution(buildTarget, DLCForThisPlatformPath,exeName,Storefront.Humble,EditionLevel.DLC + "\\PRIEST");;
 
             
             
+        }
+
+        private static void BakeDistribution()
+        {
+         //   BuildEnvironment 
         }
 
 
