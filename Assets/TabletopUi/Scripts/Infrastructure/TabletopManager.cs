@@ -1002,6 +1002,11 @@ namespace Assets.CS.TabletopUI {
 			accessibleCards = on;
 		}
 
+        public static void SetWindowed( bool on )
+        {
+            
+        }
+
         public static void SetResolution(float resolution)
         {
 
@@ -1256,6 +1261,10 @@ namespace Assets.CS.TabletopUI {
 			// Allowing this in final build to allow users to screengrab errors
 			NoonUtility.DrawLog();
 		}
-	}
+
+        public static void SetGraphicsLevel(float value)
+        {
+        }
+    }
 
 }

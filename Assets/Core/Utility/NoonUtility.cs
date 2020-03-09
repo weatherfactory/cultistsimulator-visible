@@ -112,6 +112,8 @@ namespace Noon
 		public const string HIGHCONTRAST = "HighContrast";
 		public const string ACCESSIBLECARDS = "AccessibleCards";
         public const string RESOLUTION = "Resolution";
+        public const string WINDOWED = "Windowed";
+        public const string GRAPHICSLEVEL = "GraphicsLevel";
 
 
         public const string DECK_PREFIX = "deck:";
