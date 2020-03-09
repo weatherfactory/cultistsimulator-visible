@@ -1002,6 +1002,11 @@ namespace Assets.CS.TabletopUI {
 			accessibleCards = on;
 		}
 
+        public static void SetResolution(float resolution)
+        {
+
+        }
+
 		public static bool GetAccessibleCards()
 		{
 			return accessibleCards;

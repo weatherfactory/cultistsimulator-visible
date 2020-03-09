@@ -111,6 +111,7 @@ namespace Noon
         public const string BIRDWORMSLIDER = "BirdWormSlider";
 		public const string HIGHCONTRAST = "HighContrast";
 		public const string ACCESSIBLECARDS = "AccessibleCards";
+        public const string RESOLUTION = "Resolution";
 
 
         public const string DECK_PREFIX = "deck:";

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Noon;
 using UnityEngine.Audio;
@@ -29,6 +31,9 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private Slider birdWormSlider;
     [SerializeField] private Slider contrastSlider;
     [SerializeField] private Slider accessibleCardsSlider;
+    [SerializeField] private Slider resolution;
+    [SerializeField] private Slider graphicsLevel;
+    [SerializeField] private Slider windowed;
 
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
@@ -39,6 +44,12 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI snapGridSliderValue;
     [SerializeField] private TextMeshProUGUI contrastSliderValue;
     [SerializeField] private TextMeshProUGUI accessibleCardsSliderValue;
+
+    [SerializeField] private TextMeshProUGUI resolutionValue;
+    [SerializeField] private TextMeshProUGUI graphicsLevelValue;
+    [SerializeField] private TextMeshProUGUI windowedValue;
+
+    
 
     [SerializeField] private RestartButton restartButton;
 
@@ -90,8 +101,22 @@ public class OptionsPanel : MonoBehaviour {
     //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
     private bool _isInGame = true;
 
+    private List<GameObject> GameSettingsControls;
+    private List<GameObject> SystemSettingsControls;
+
     public void InitPreferences( SpeedController spdctrl,bool isInGame)
 	{
+
+	    GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
+	    SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
+
+	    foreach(var c in GameSettingsControls)
+	        c.SetActive(true);
+
+	    foreach(var c in SystemSettingsControls)
+	        c.SetActive(false);
+        
+
 		windowGO.SetActive(false);
         _isInGame = isInGame;
 
@@ -304,6 +329,15 @@ public class OptionsPanel : MonoBehaviour {
 		manageSavesWindow.SetActive( open );
     }
 
+    public void SwitchSettingsDisplay(bool showSystemSettings)
+    {
+        foreach(var c in GameSettingsControls)
+            c.SetActive(!showSystemSettings);
+
+        foreach(var c in SystemSettingsControls)
+            c.SetActive(showSystemSettings);
+    }
+
 	public void SaveErrorContinue()
 	{
 		// Just close window and resume play
@@ -405,6 +439,20 @@ public class OptionsPanel : MonoBehaviour {
 	    SoundManager.PlaySfx("UISliderMove");
     }
 
+
+    public void SetResolution(float value)
+    {
+        PlayerPrefs.SetFloat(NoonConstants.RESOLUTION, value);
+        TabletopManager.SetResolution(value);
+        
+        RefreshOptionsText();
+
+        if (gameObject.activeInHierarchy == false)
+            return; // don't update anything if we're not visible.
+
+        SoundManager.PlaySfx("UISliderMove");
+    }
+
     public void SetSnapGrid(float value)
 	{
         if (gameObject.activeInHierarchy == false)
@@ -448,6 +496,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Accessible Cards
         accessibleCardsSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF" );
+
+	 resolutionValue.text = PlayerPrefs.GetFloat(NoonConstants.RESOLUTION).ToString(CultureInfo.InvariantCulture);
 
 	    }
 	    catch (NullReferenceException)
