@@ -108,6 +108,25 @@ public class OptionsPanel : MonoBehaviour {
     private List<GameObject> GameSettingsControls;
     private List<GameObject> SystemSettingsControls;
     private List<Resolution> availableResolutions;
+    private int deferredResolutionChangeToIndex=-1;
+
+    public void Update()
+    {
+        //eg: we don't want to change  resolution until the mouse button is released
+        if (!Input.GetMouseButton(0))
+            RunAnyDeferredCommands();
+    }
+
+    public void RunAnyDeferredCommands()
+    {
+        if(deferredResolutionChangeToIndex >=0)
+        { 
+            NoonUtility.Log("Res to " + getResolutionDescription(availableResolutions[deferredResolutionChangeToIndex]));
+            TabletopManager.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
+            deferredResolutionChangeToIndex = -1;
+        }
+
+    }
 
     public void InitPreferences( SpeedController spdctrl,bool isInGame)
 	{
@@ -115,6 +134,7 @@ public class OptionsPanel : MonoBehaviour {
 
         GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
 	    SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
+      
 
 	    foreach(var c in GameSettingsControls)
 	        c.SetActive(true);
@@ -150,7 +170,7 @@ public class OptionsPanel : MonoBehaviour {
             }
             
             resolutionSlider.value = r;
-            SetResolution(r);
+            SetResolutionDeferred(r);
             
             //windowedness!
             float w;
@@ -498,19 +518,20 @@ public class OptionsPanel : MonoBehaviour {
     }
 
 
-    public void SetResolution(float value)
+    public void SetResolutionDeferred(float value)
     {
         int r = Convert.ToInt32(value);
         PlayerPrefs.SetInt(NoonConstants.RESOLUTION,r );
-     
-        TabletopManager.SetResolution(availableResolutions[r]);
 
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
-
-        SoundManager.PlaySfx("UISliderMove");
+        else
+        { 
+                deferredResolutionChangeToIndex = r;
+          SoundManager.PlaySfx("UISliderMove");
+        }
     }
 
     
@@ -531,7 +552,6 @@ public class OptionsPanel : MonoBehaviour {
     {
         int g = Convert.ToInt32(value);
         PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
-        Debug.Log(g);
         TabletopManager.SetGraphicsLevel(g);
         RefreshOptionsText();
 
