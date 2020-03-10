@@ -16,6 +16,7 @@ namespace TabletopUi.Scripts.UI
         private const string DlcTitleLocLabelPrefix = "UI_DLC_TITLE_";
         private const string DlcDescriptionLocLabelPrefix = "UI_DLC_DESCRIPTION_";
         private const string PurchaseLocLabel = "UI_DLC_PURCHASE";
+        private const string ComingSoonLocLabel = "UI_DLC_COMING_SOON";
         private Spec _spec;
         private string _storeLinkUrl;
         private MenuScreenController _menuScreenController;
@@ -38,7 +39,10 @@ namespace TabletopUi.Scripts.UI
             installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id}}}\n</i>");
             if (spec.StoreLinks.TryGetValue(store, out _storeLinkUrl))
             {
+                if(spec.Released)
                 storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
+                else
+                    storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{ComingSoonLocLabel}}}</u></b></link>");
             }
             else
             {
@@ -50,11 +54,13 @@ namespace TabletopUi.Scripts.UI
         {
             public string Id { get; }
             public Dictionary<Storefront, string> StoreLinks { get; }
+            public bool Released;
 
-            public Spec(string id, Dictionary<Storefront, string> storeLinks)
+            public Spec(string id, Dictionary<Storefront, string> storeLinks,bool released)
             {
                 Id = id;
                 StoreLinks = storeLinks;
+                Released = released;
             }
         }
 

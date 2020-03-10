@@ -94,34 +94,42 @@ public class MenuScreenController : MonoBehaviour {
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871650/Cultist_Simulator_The_Dancer/"},
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_dancer"},
-                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-dancer"}
-            }),
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-dancer"},
+                {Storefront.Unknown,"https://www.cultistsimulator.com" }
+            },
+            true),
         new MenuDlcEntry.Spec(
             "PRIEST",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871651/Cultist_Simulator_The_Priest/"},
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_priest"},
-                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-priest"}
-            }),
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-priest"},
+                {Storefront.Unknown,"https://www.cultistsimulator.com" }
+            },
+            true),
         new MenuDlcEntry.Spec(
             "GHOUL",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871900/Cultist_Simulator_The_Ghoul/"},
                 {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_ghoul"},
-                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"}
-            })
-        //,
-        //new MenuDlcEntry.Spec(
-        //    "EXILE",
-        //    new Dictionary<Storefront, string>
-        //    {
-        //        {Storefront.Steam, "https://store.steampowered.com/app/1259930/Cultist_Simulator_The_Exile/"},
-        //        {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_the_exile"},
-        //        {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-exile"}
-        //    }
-        //    )
+                {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"},
+                {Storefront.Unknown,"https://www.cultistsimulator.com" }
+            },
+            true)
+        ,
+        new MenuDlcEntry.Spec(
+            "EXILE",
+            new Dictionary<Storefront, string>
+            {
+                {Storefront.Steam, "https://weatherfactory.biz/mar-1-edmund/"},
+                {Storefront.Gog, "https://weatherfactory.biz/mar-1-edmund/"},
+                {Storefront.Humble, "https://weatherfactory.biz/mar-1-edmund/"},
+                {Storefront.Unknown, "https://weatherfactory.biz/mar-1-edmund/" }
+            },
+            false
+            )
     };
     private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
         "OST",
@@ -130,7 +138,8 @@ public class MenuScreenController : MonoBehaviour {
             {Storefront.Steam, "https://store.steampowered.com/app/988320/Cultist_Simulator_Original_Soundtrack/"},
             {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_original_soundtrack"},
             {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-original-soundtrack"},
-        });
+        },
+        true);
     
     void Start() {
         // make sure the screen is black
