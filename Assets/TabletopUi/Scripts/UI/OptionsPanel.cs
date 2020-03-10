@@ -121,13 +121,50 @@ public class OptionsPanel : MonoBehaviour {
 		windowGO.SetActive(false);
         _isInGame = isInGame;
 
-		if (_isInGame) {
-			speedController = spdctrl;
-		}
 
-        float value;
+
+        if (_isInGame) {
+			speedController = spdctrl;
+        }
+        else
+        {
+            float r;
+
+            if (PlayerPrefs.HasKey(NoonConstants.RESOLUTION))
+                r = PlayerPrefs.GetFloat(NoonConstants.RESOLUTION);
+            else
+                r = 0f;
+
+            SetResolution(r);
+            resolutionSlider.value = r;
+
+            float w;
+
+            if (PlayerPrefs.HasKey(NoonConstants.WINDOWED))
+                w = PlayerPrefs.GetFloat(NoonConstants.WINDOWED);
+            else
+                w = 0f;
+
+            SetWindowed(w);
+            windowedSlider.value = w;
+
+
+            float g;
+
+            if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
+                g = PlayerPrefs.GetFloat(NoonConstants.GRAPHICSLEVEL);
+            else
+                g = 0f;
+
+            SetGraphicsLevel(g);
+            graphicsLevelSlider.value = g;
+        }
+
 
         // Loading Music / Setting default
+
+	    float value;
+
 
         if (PlayerPrefs.HasKey(MUSICVOLUME))
             value = PlayerPrefs.GetFloat(MUSICVOLUME);
@@ -220,31 +257,9 @@ public class OptionsPanel : MonoBehaviour {
         SetAccessibleCards(value);
         accessibleCardsSlider.value = value;
 
-	    if (PlayerPrefs.HasKey(NoonConstants.RESOLUTION))
-	        value = PlayerPrefs.GetFloat(NoonConstants.RESOLUTION);
-	    else
-	        value = 0f;
-
-	    SetResolution(value);
-	    resolutionSlider.value = value;
+    
 
 
-	    if (PlayerPrefs.HasKey(NoonConstants.WINDOWED))
-	        value = PlayerPrefs.GetFloat(NoonConstants.WINDOWED);
-	    else
-	        value = 0f;
-
-	    SetWindowed(value);
-	    windowedSlider.value = value;
-
-
-	    if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
-	        value = PlayerPrefs.GetFloat(NoonConstants.GRAPHICSLEVEL);
-	    else
-	        value = 0f;
-
-	    SetGraphicsLevel(value);
-	    graphicsLevelSlider.value = value;
 
         
 	}
