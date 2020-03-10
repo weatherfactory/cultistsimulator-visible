@@ -15,6 +15,7 @@ using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using TabletopUi.Scripts.Interfaces;
+using UnityEngine.Analytics;
 
 public class OptionsPanel : MonoBehaviour {
 
@@ -162,9 +163,8 @@ public class OptionsPanel : MonoBehaviour {
                 r = PlayerPrefs.GetInt(NoonConstants.RESOLUTION);
             else
             {
-                Resolution currentRes = Screen.currentResolution;
                 r = availableResolutions.FindIndex(res =>
-                    res.height == currentRes.height && res.width == currentRes.width);
+                    res.height == Screen.height && res.width == Screen.width);
               if(r==-1)
                   r = availableResolutions.Count / 2;
             }
@@ -731,7 +731,7 @@ public class OptionsPanel : MonoBehaviour {
 
     private string getResolutionDescription(Resolution r)
     {
-        string desc = r.height + "\n x \n" + r.width;
+        string desc = r.width + "\n x \n" + r.height;
         return desc;
     }
 

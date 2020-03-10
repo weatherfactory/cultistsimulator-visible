@@ -1006,15 +1006,15 @@ namespace Assets.CS.TabletopUI {
         {
             if (windowed)
 
-                Screen.SetResolution(Screen.currentResolution.height,Screen.currentResolution.width,false);
+               Screen.SetResolution(Screen.width,Screen.height,false);
             else
-                Screen.SetResolution(Screen.currentResolution.height, Screen.currentResolution.width, true);
+                Screen.SetResolution(Screen.width, Screen.height, true);
             
         }
 
         public static void SetResolution(Resolution resolution)
         {
-            Screen.SetResolution(resolution.height,resolution.width,Screen.fullScreen);
+            Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
         }
 
         public static void SetGraphicsLevel(int level)
