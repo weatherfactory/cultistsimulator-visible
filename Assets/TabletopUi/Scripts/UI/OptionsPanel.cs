@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using Noon;
 using UnityEngine.Audio;
 using TMPro;
@@ -140,7 +141,14 @@ public class OptionsPanel : MonoBehaviour {
             if (PlayerPrefs.HasKey(NoonConstants.RESOLUTION))
                 r = PlayerPrefs.GetInt(NoonConstants.RESOLUTION);
             else
-                r = availableResolutions.Count/2;
+            {
+                Resolution currentRes = Screen.currentResolution;
+                r = availableResolutions.FindIndex(res =>
+                    res.height == currentRes.height && res.width == currentRes.width);
+              if(r==-1)
+                  r = availableResolutions.Count / 2;
+            }
+            
             resolutionSlider.value = r;
             SetResolution(r);
             
@@ -149,7 +157,10 @@ public class OptionsPanel : MonoBehaviour {
             if (PlayerPrefs.HasKey(NoonConstants.WINDOWED))
                 w = PlayerPrefs.GetFloat(NoonConstants.WINDOWED);
             else
-                w = 0f;
+            {
+                w = Screen.fullScreen ? 0f : 1f;
+            }
+
             SetWindowed(w);
             windowedSlider.value = w;
 
@@ -578,7 +589,7 @@ public class OptionsPanel : MonoBehaviour {
 
 	   resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
     
-	    windowedValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "WINDOWED_ON" : "WINDOWED_OFF" );
+	    windowedValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
         
 	        int graphicsLevel =  PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
 	        switch (graphicsLevel)
