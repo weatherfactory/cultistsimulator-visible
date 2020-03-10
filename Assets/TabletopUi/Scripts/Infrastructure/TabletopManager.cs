@@ -1002,17 +1002,28 @@ namespace Assets.CS.TabletopUI {
 			accessibleCards = on;
 		}
 
-        public static void SetWindowed( bool on )
+        public static void SetWindowed(bool windowed)
         {
+            if (windowed)
+
+                Screen.SetResolution(Screen.currentResolution.height,Screen.currentResolution.width,false);
+            else
+                Screen.SetResolution(Screen.currentResolution.height, Screen.currentResolution.width, true);
             
         }
 
-        public static void SetResolution(float resolution)
+        public static void SetResolution(Resolution resolution)
         {
-
+            Screen.SetResolution(resolution.height,resolution.width,Screen.fullScreen);
         }
 
-		public static bool GetAccessibleCards()
+        public static void SetGraphicsLevel(int level)
+        {
+            QualitySettings.SetQualityLevel(level);
+           
+        }
+
+        public static bool GetAccessibleCards()
 		{
 			return accessibleCards;
 		}
@@ -1262,9 +1273,7 @@ namespace Assets.CS.TabletopUI {
 			NoonUtility.DrawLog();
 		}
 
-        public static void SetGraphicsLevel(float value)
-        {
-        }
+
     }
 
 }

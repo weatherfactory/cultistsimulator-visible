@@ -96,19 +96,23 @@ public class OptionsPanel : MonoBehaviour {
 	private const string SCREENCANVASSIZE = "ScreenCanvasSize";
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
     private const string GRIDSNAPSIZE = "GridSnapSize";
-    private const string GRAPHICSLEVEL = "GraphicsLevel";
+
+  
 
     //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
     //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
     private bool _isInGame = true;
+    private bool _initialised = false;
 
     private List<GameObject> GameSettingsControls;
     private List<GameObject> SystemSettingsControls;
+    private List<Resolution> availableResolutions;
 
     public void InitPreferences( SpeedController spdctrl,bool isInGame)
 	{
+	    windowGO.SetActive(true); //so we can use tags. SO HACKY
 
-	    GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
+        GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
 	    SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
 
 	    foreach(var c in GameSettingsControls)
@@ -122,40 +126,40 @@ public class OptionsPanel : MonoBehaviour {
         _isInGame = isInGame;
 
 
-
         if (_isInGame) {
 			speedController = spdctrl;
         }
         else
         {
-            float r;
-
+            //resolutions!
+            int r;
+            availableResolutions= new List<Resolution>(Screen.resolutions);
+            resolutionSlider.minValue = 0;
+            resolutionSlider.maxValue = availableResolutions.Count-1;
+            resolutionSlider.wholeNumbers = true;
             if (PlayerPrefs.HasKey(NoonConstants.RESOLUTION))
-                r = PlayerPrefs.GetFloat(NoonConstants.RESOLUTION);
+                r = PlayerPrefs.GetInt(NoonConstants.RESOLUTION);
             else
-                r = 0f;
-
-            SetResolution(r);
+                r = availableResolutions.Count/2;
             resolutionSlider.value = r;
-
+            SetResolution(r);
+            
+            //windowedness!
             float w;
-
             if (PlayerPrefs.HasKey(NoonConstants.WINDOWED))
                 w = PlayerPrefs.GetFloat(NoonConstants.WINDOWED);
             else
                 w = 0f;
-
             SetWindowed(w);
             windowedSlider.value = w;
 
-
+            //graphics quality!
             float g;
-
             if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
-                g = PlayerPrefs.GetFloat(NoonConstants.GRAPHICSLEVEL);
+                g = PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
             else
-                g = 0f;
-
+                g = 3;
+            
             SetGraphicsLevel(g);
             graphicsLevelSlider.value = g;
         }
@@ -257,16 +261,15 @@ public class OptionsPanel : MonoBehaviour {
         SetAccessibleCards(value);
         accessibleCardsSlider.value = value;
 
-    
+	    _initialised = true;
 
 
-
-        
 	}
 
     private void OnEnable()
     {
-        RefreshOptionsText();
+    
+       RefreshOptionsText();
     }
 
 	public bool GetVisibility()
@@ -486,9 +489,11 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetResolution(float value)
     {
-        PlayerPrefs.SetFloat(NoonConstants.RESOLUTION, value);
-        TabletopManager.SetResolution(value);
-        
+        int r = Convert.ToInt32(value);
+        PlayerPrefs.SetInt(NoonConstants.RESOLUTION,r );
+     
+        TabletopManager.SetResolution(availableResolutions[r]);
+
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
@@ -501,6 +506,7 @@ public class OptionsPanel : MonoBehaviour {
     public void SetWindowed(float value)
     {
         PlayerPrefs.SetFloat(NoonConstants.WINDOWED, value);
+
         TabletopManager.SetWindowed(value > 0.5f);
         RefreshOptionsText();
 
@@ -512,8 +518,10 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetGraphicsLevel(float value)
     {
-        PlayerPrefs.SetFloat(NoonConstants.GRAPHICSLEVEL, value);
-        TabletopManager.SetGraphicsLevel(value);
+        int g = Convert.ToInt32(value);
+        PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
+        Debug.Log(g);
+        TabletopManager.SetGraphicsLevel(g);
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
@@ -536,10 +544,10 @@ public class OptionsPanel : MonoBehaviour {
 
 	public void RefreshOptionsText()
 	{
+	    if (!_initialised)
+	        return;
 	    int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
 
-	    try
-	    {
 
         // Inspect time
         inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
@@ -568,26 +576,21 @@ public class OptionsPanel : MonoBehaviour {
         // Accessible Cards
         accessibleCardsSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF" );
 
-    	 resolutionValue.text = PlayerPrefs.GetFloat(NoonConstants.RESOLUTION).ToString(CultureInfo.InvariantCulture);
-
+	   resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
+    
 	    windowedValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "WINDOWED_ON" : "WINDOWED_OFF" );
         
-	        int graphicsLevel = Mathf.RoundToInt( PlayerPrefs.GetFloat(GRIDSNAPSIZE) );
-	        switch (snap)
+	        int graphicsLevel =  PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
+	        switch (graphicsLevel)
 	        {
-	            default:
-	            case 0:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_0" ); break;
 	            case 1:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_1" ); break;
 	            case 2:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_2" ); break;
-	           
+	            case 3:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_3" ); break;
 	        }
-
-	    }
-	    catch (NullReferenceException)
-	    {
-	        NoonUtility.Log("Not currently using loc text for options panel controls - needs fix from loc branch for nullref when called early",10);
-	    }
+        
 	}
+
+
 
     // INTERNAL Setters
 
@@ -694,4 +697,11 @@ public class OptionsPanel : MonoBehaviour {
         PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
 		TabletopManager.SetHighContrast( value>0f );
     }
+
+    private string getResolutionDescription(Resolution r)
+    {
+        string desc = r.height + "\n x \n" + r.width;
+        return desc;
+    }
+
 }

@@ -193,7 +193,7 @@ public class MenuScreenController : MonoBehaviour {
         modsButton.enabled = false;
 #endif
 
-		InitialiseContent();	// Moved content into it's own function, so it can happen again after language select if necessary
+		InitialiseContent();	// Moved content into its own function, so it can happen again after language select if necessary
 
         var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
         registry.Register<MetaInfo>(metaInfo);
