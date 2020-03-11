@@ -33,28 +33,15 @@ public class RedistCopy {
                 pluginsDir = Path.Combine(baseDir, "Plugins");
                 break;
             }
-#if !UNITY_2019_2_OR_NEWER
-            case BuildTarget.StandaloneLinux:
-            {
-                baseDir = Path.Combine(Path.GetDirectoryName(pathToBuiltProject), Path.GetFileNameWithoutExtension(pathToBuiltProject) + "_Data");
-                pluginsDir = Path.Combine(Path.Combine(baseDir, "Plugins"), "x86");
-                break;
-            }
-            case BuildTarget.StandaloneLinuxUniversal:
-#endif
+
             case BuildTarget.StandaloneLinux64:
             {
                 baseDir = Path.Combine(Path.GetDirectoryName(pathToBuiltProject), Path.GetFileNameWithoutExtension(pathToBuiltProject) + "_Data");
-                pluginsDir = Path.Combine(Path.Combine(baseDir, "Plugins"), "x86_64");
+               // pluginsDir = Path.Combine(Path.Combine(baseDir, "Plugins"), "x86_64");
+                pluginsDir = Path.Combine(baseDir, "Plugins");
                 break;
             }
-#if UNITY_2017_3_OR_NEWER
             case BuildTarget.StandaloneOSX:
-#else
-		    case BuildTarget.StandaloneOSXIntel:
-		    case BuildTarget.StandaloneOSXIntel64:
-		    case BuildTarget.StandaloneOSXUniversal:
-#endif
             {
                 baseDir = Path.Combine(Path.GetDirectoryName(pathToBuiltProject), Path.GetFileNameWithoutExtension(pathToBuiltProject) + ".app");
                 baseDir = Path.Combine(baseDir, "Contents");

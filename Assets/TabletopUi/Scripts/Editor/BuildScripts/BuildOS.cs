@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
        else if (target == BuildTarget.StandaloneLinux64)
        {
            OSId = OSId.Linux;
-           ExeName = "CS.x86";
+           ExeName = "CS.x86_64";
 
        }
        else 
