@@ -573,44 +573,58 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove");
     }
 
-	public void RefreshOptionsText()
-	{
-	    if (!_initialised)
-	        return;
-	    int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+    public void RefreshOptionsText()
+    {
+        if (!_initialised)
+            return;
+        int mins = (int) PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
 
 
         // Inspect time
-        inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
+        inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NOTIFICATIONTIME)) +
+                                         LanguageTable.Get("UI_SECONDS_POSTFIX");
 
-		// Autosave
+        // Autosave
 
-        autosaveSliderValue.text = mins + LanguageTable.Get( "UI_MINUTES_POSTFIX" );
+        autosaveSliderValue.text = mins + LanguageTable.Get("UI_MINUTES_POSTFIX");
 
-		// Snap grid
-		int snap = Mathf.RoundToInt( PlayerPrefs.GetFloat(GRIDSNAPSIZE) );
-		switch (snap)
-		{
-		default:
-		case 0:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_0" ); break;
-		case 1:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_1" ); break;
-		case 2:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_2" ); break;
-		case 3:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_3" ); break;
-		}
+        // Snap grid
+        int snap = Mathf.RoundToInt(PlayerPrefs.GetFloat(GRIDSNAPSIZE));
+        switch (snap)
+        {
+            default:
+            case 0:
+                snapGridSliderValue.text = LanguageTable.Get("UI_SNAP_0");
+                break;
+            case 1:
+                snapGridSliderValue.text = LanguageTable.Get("UI_SNAP_1");
+                break;
+            case 2:
+                snapGridSliderValue.text = LanguageTable.Get("UI_SNAP_2");
+                break;
+            case 3:
+                snapGridSliderValue.text = LanguageTable.Get("UI_SNAP_3");
+                break;
+        }
 
-		// Bird/worm
-        birdWormSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM" );
+        // Bird/worm
+        birdWormSliderValue.text =
+            LanguageTable.Get(PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM");
 
-		// High Contrast
-        contrastSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF" );
+        // High Contrast
+        contrastSliderValue.text =
+            LanguageTable.Get(PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF");
 
         // Accessible Cards
-        accessibleCardsSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF" );
+        accessibleCardsSliderValue.text =
+            LanguageTable.Get(PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF");
 
-	   resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
-    
-	    windowedValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
+        if (!_isInGame)
+        {
         
+
+       resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
+	    windowedValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
 	        int graphicsLevel =  PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
 	        switch (graphicsLevel)
 	        {
@@ -618,6 +632,8 @@ public class OptionsPanel : MonoBehaviour {
 	            case 2:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_2" ); break;
 	            case 3:		graphicsLevelValue.text = LanguageTable.Get( "GRAPHICS_LEVEL_3" ); break;
 	        }
+
+        }
         
 	}
 
