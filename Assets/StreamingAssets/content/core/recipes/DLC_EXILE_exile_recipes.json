@@ -20,7 +20,7 @@ startdescription:"The reckoners are out in force tonight! I hear their whistles 
 description:"I'm here.",
 requirements:{ticket.train:1},
 effects:{obscurity:1,ticket.train:-1},
-internaldeck: {spec: [city.aachen,city.prague,city.munichcity.vienna,city.krakow,city.kiev,city.avignon,city.sanmarino,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+internaldeck: {spec: [city.aachen,city.prague,city.munich,city.vienna,city.krakow,city.kiev,city.avignon,city.sanmarino,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 
 alt:[{id:"turn.begin",additional:true},
 {id:"scout.first",additional:true}],
@@ -798,7 +798,7 @@ slots:[{id:"trace",label:"Trace",required:{trace:1},greedy:true}],
 deckeffect:{rkx.events:1},
 warmup:50,
 linked:[
-{id:"rkx.foe.attack"},
+{id:"rkx.obscurity.seek.foe"},
 {id:"rkx.promote"},
 {id:"rkx.obscurity.seek"},
 {id:"rkx.leave"},
@@ -836,25 +836,73 @@ effects:{obscurity:-1},
 warmup:10,
 linked:[{id:"rkx.reset"}]},
 
-{id:"rkx.foe.attack",
+{id:"rkx.obscurity.seek.foe",
 actionId:"rkx",
-label:"THE FOE IS AT MY DOOR FNORD",
+label:"My Foe is in the city!",
 startdescription:"Foe right here FNORD",
 comments:"Foe don't care about events",
 requirements:{obscurity:-1,rkx.foe:1},
 slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
-alt:[{id:"rkx.foe.obscurity.saved"}],
+alt:[{id:"rkx.foe.obscurity.reduced"}],
 warmup:50,
-ending:"foecaughtup"},
+linked:[{id:"rkx.foe.attack"}]},
 
 
-{id:"rkx.foe.obscurity.saved",
+{id:"rkx.foe.obscurity.reduced",
 actionId:"rkx",
-label:"I've Slipped From Sight",
-startdescription:"Saved by a hair FNORD",
+label:"Closing In",
+startdescription:"My Foe is almost at my door FNORD",
 requirements:{obscurity:1},
 effects:{obscurity:-1},
 linked:[{id:"rkx.reset"}]},
+
+
+
+{id:"rkx.foe.attack",
+actionId:"rkx",
+label:"FNORD Foe attacking",
+startdescription:"FNORD foe attacking",
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,circ:1}}],
+warmup:50,
+linked:[{id:"rxk.foe.attack.success"},
+{id:"rxk.foe.attack.failure"}]},
+
+
+{id:"rxk.foe.attack.success",
+actionId:"rkx",
+label:"FNORD attack success",
+startdescription:"FNORD",
+aspects:{fatiguing:1},
+alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,circ:1}}}],
+requirements:{lore:-1,weapon:-1,circ:-1},
+linked:[{id:"rkx.foe.attack"}],
+warmup:10},
+
+
+{id:"spit.foe.attack.success",
+actionId:"spit.foe.attack",
+label:"FNORD I was hurt!",
+startdescription:"FNORD done",
+effects: {wound.exile:1},
+aspects:{fatiguing:1},
+warmup:2},
+
+
+{id:"rxk.foe.attack.failure",
+actionId:"rkx",
+label:"FNORD attack failure",
+startdescription:"FNORD",
+alt:[{id:"spit.foe.attack.failure", additional:true, expulsion:{limit:23,filter:{lore:1,weapon:1,circ:1}}}],
+linked:[{id:"rkx.foe.attack"}],
+warmup:10},
+
+{id:"spit.foe.attack.failure",
+actionId:"spit.foe.attack",
+label:"FNORD I defended myself!",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+warmup:2},
+
 
 
 {id:"rkx.promote.no.obscurity",

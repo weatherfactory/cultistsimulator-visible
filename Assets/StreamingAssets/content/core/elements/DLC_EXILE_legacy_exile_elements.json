@@ -121,8 +121,19 @@ isAspect:true
 },
 
 
+{id: "circ",
+label: "Circumstance",
+description:"A particular condition of this place.",
+isAspect:true,
+icon:sanctuary
+},
 
-
+{id: "weapon",
+label: "Weapon",
+description:"'Reach for the book - it is a weapon.' - Brecht",
+isAspect:true,
+icon:long.might
+},
 
 {id:"opportunity",
 label:"Opportunity",
@@ -143,6 +154,13 @@ label:"Portable",
 description:"An asset that might travel with you.",
 isAspect:true
 },
+
+{id:"exhausted",
+label:"Exhausted",
+description:"With a little time, this will recover.",
+isAspect:true
+},
+
 
 
 {id:"asset.packed",
@@ -224,6 +242,19 @@ aspects: {opportunity:1,destination:1},
 description:"A ticket to the very first destination that came to mind - ",
 icon:startingletter
 },
+
+{id: "fragment.exhausted",
+label: "Fragment (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD"
+},
+
+{id: "weapon.exhausted",
+label: "Weapon (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD"
+},
+
 
 {id: "asset.a",
 label: "A",
@@ -659,6 +690,88 @@ description:"No other way out FNORD",
 icon: vaultshires1
 },
 
+{id: "circ.cold",
+label: "Chill Winds",
+aspects: {circ:1},
+description:"This week, frost walks here."
+},
+
+{id: "circ.hot",
+label: "Trembling Heat",
+aspects: {circ:1},
+description:"This week,air bakes in the heat."
+},
+
+{id: "circ.port",
+label: "Sea Port",
+aspects: {circ:1},
+description:"The sea bears gifts: peace, or death, or escape."
+},
+      {
+        id: "fragmentedge.exile",
+            label: "A Knife's Secret",
+            aspects:
+            {edge: 2,lore:1},
+            description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns.",
+			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedge
+        },
+		 {
+        id: "fragmentedgeb.exile",
+            label: "Chiliarch's Lesson",
+            aspects:
+            {edge: 4,lore:1},
+            description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. ",
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedgeb
+        },
+				 {
+        id: "fragmentedgec.exile",
+            label: "An Operation of the Labhite",
+            aspects:
+            {edge: 6,lore:1},
+            description: "A series of mystic exercises that requires both dedication and terror.",
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedgec
+        },
+						 {
+        id: "fragmentedged.exile",
+            label: "The Colonel's Names",
+            aspects:
+            {edge: 8,lore:1},
+description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+			
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedged
+        },{
+        id: "fragmentedgee.exile",
+            label: "The Lionsmith's Names",
+            aspects:
+            {edge: 10,lore:1},
+			
+                        description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedgee
+        },
+		{
+        id: "fragmentedgef.exile",
+            label: "The Alignments of Murder",
+            aspects:
+            {edge: 12,lore:1},
+			
+            description: "These are the arts that ensure an ending.",
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragment.exhausted},
+			icon:fragmentedgef
+        },
+		   {   id: "fragmentedgeg.exile",
+            label: "The Mysteries of Force",
+            aspects:
+            {edge: 14,lore:1},
+            description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+			icon:fragmentedgeg
+        },
+
+
 
 	  {id: "ascension.defiance",
 label: "Temptation: Defiance",
@@ -666,6 +779,16 @@ aspects: {defiancemarks:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
 icon: bloodshed
 },
+
+
+	  {id: "wound.exile",
+label: "Wound",
+aspects: {},
+description:"Three of these will kill me.",
+lifetime:300,
+icon: scar_edge
+},
+
 
 {id: "rkx.scout",
 label: "Reckoner Scout",
