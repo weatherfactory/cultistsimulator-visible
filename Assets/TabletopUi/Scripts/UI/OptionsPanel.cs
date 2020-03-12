@@ -293,8 +293,6 @@ public class OptionsPanel : MonoBehaviour {
         accessibleCardsSlider.value = value;
 
 	    _initialised = true;
-
-
 	}
 
     private void OnEnable()
