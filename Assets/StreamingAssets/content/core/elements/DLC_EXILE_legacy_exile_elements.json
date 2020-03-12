@@ -246,15 +246,47 @@ icon:startingletter
 {id: "fragment.exhausted",
 label: "Fragment (Exhausted)",
 aspects: {exhausted:1},
-description:"FNORD"
+description:"FNORD",
+resaturate:true
 },
 
-{id: "weapon.exhausted",
+{id: "weapon.biedde.exhausted",
 label: "Weapon (Exhausted)",
 aspects: {exhausted:1},
-description:"FNORD"
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.biedde,
+resaturate:true,
+icon:tooledged
+},
+{id: "weapon.lionhunter.exhausted",
+label: "Weapon (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.lionhunter,
+resaturate:true,
+icon:tooledgeb
 },
 
+
+
+
+{id: "weapon.biedde",
+label: "Biedde's Blade",
+aspects: {weapon:1},
+xtriggers:{fatiguing:weapon.biedde.exhausted},
+description:"FNORD",
+icon:tooledged
+},
+
+{id: "weapon.lionhunter",
+label: "Lionhunter's Rifle",
+aspects: {weapon:1},
+xtriggers:{fatiguing:weapon.lionhunter.exhausted},
+description:"FNORD",
+icon:tooledgeb
+},
 
 {id: "asset.a",
 label: "A",
