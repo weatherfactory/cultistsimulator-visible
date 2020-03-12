@@ -85,10 +85,10 @@ namespace Assets.Logic
                     if(stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
                         stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel,mutationEffect.Additive);
                }
-            }
+           }
         }
 
-       private void RunConsumptions(IElementStacksManager stacksManager)
+        private void RunConsumptions(IElementStacksManager stacksManager)
         {
 
             var stacks = stacksManager.GetStacks();
@@ -144,75 +144,75 @@ namespace Assets.Logic
             }
         }
 
-       private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent)
-       {
-           ICompendium _compendium = Registry.Retrieve<ICompendium>();
+        private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent)
+        {
+            ICompendium _compendium = Registry.Retrieve<ICompendium>();
 
-           foreach (var eachStack in stacksManager.GetStacks())
-           {
+            foreach (var eachStack in stacksManager.GetStacks())
+            {
 
-               foreach (var eachStackMutation in eachStack.GetCurrentMutations())
-               {
-                   //first we apply xtriggers to mutations - but not to the default stack aspects.
-                   //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
-                   var stackMutationBaseAspect = _compendium.GetElementById(eachStackMutation.Key);
-                   if (stackMutationBaseAspect == null)
-                   {
-                       NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
-                   }
-                   else
-                   {
-                       foreach (var mutationXTrigger in stackMutationBaseAspect.XTriggers)
-                       {
-                           if (aspectsPresent.ContainsKey(mutationXTrigger.Key))
-                           {
-                               string newMutationId = mutationXTrigger.Value;
-                               string oldMutationId = eachStackMutation.Key;
-                               int existingLevel = eachStackMutation.Value;
-                               eachStack.SetMutation(oldMutationId, 0, false);
-                               eachStack.SetMutation(newMutationId, existingLevel,
-                                   true); //make it additive rather than overwriting, just in case
-                           }
+                foreach (var eachStackMutation in eachStack.GetCurrentMutations())
+                {
+                    //first we apply xtriggers to mutations - but not to the default stack aspects.
+                    //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
+                    var stackMutationBaseAspect = _compendium.GetElementById(eachStackMutation.Key);
+                    if (stackMutationBaseAspect == null)
+                    {
+                        NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
+                    }
+                    else
+                    {
+                        foreach (var mutationXTrigger in stackMutationBaseAspect.XTriggers)
+                        {
+                            if (aspectsPresent.ContainsKey(mutationXTrigger.Key))
+                            {
+                                string newMutationId = mutationXTrigger.Value;
+                                string oldMutationId = eachStackMutation.Key;
+                                int existingLevel = eachStackMutation.Value;
+                                eachStack.SetMutation(oldMutationId, 0, false);
+                                eachStack.SetMutation(newMutationId, existingLevel,
+                                    true); //make it additive rather than overwriting, just in case
+                            }
 
-                       }
-                   }
-               }
+                        }
+                    }
+                }
 
-               //run xtriggers on stacks: repopulate that stack with the replacing element
-               var xTriggers = eachStack.GetXTriggers();
+                //run xtriggers on stacks: repopulate that stack with the replacing element
+                var xTriggers = eachStack.GetXTriggers();
                 
 
-               foreach (var triggerKey in xTriggers.Keys)
-                   //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
-                   if (aspectsPresent.ContainsKey(triggerKey))
-                   {
-                       Element effectElement = _compendium.GetElementById(xTriggers[triggerKey]);
-                       if (effectElement == null)
-                       {
-                           NoonUtility.Log(
-                               "Tried to run an xtrigger with an element effect id that doesn't exist: " +
-                               xTriggers[triggerKey], 1);
-                           return;
-                       }
+                foreach (var triggerKey in xTriggers.Keys)
+                    //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
+                    if (aspectsPresent.ContainsKey(triggerKey))
+                    {
+                        Element effectElement = _compendium.GetElementById(xTriggers[triggerKey]);
+                        if (effectElement == null)
+                        {
+                            NoonUtility.Log(
+                                "Tried to run an xtrigger with an element effect id that doesn't exist: " +
+                                xTriggers[triggerKey], 1);
+                            return;
+                        }
 
-                       {
-                           string newElementId = xTriggers[triggerKey];
-                           string oldElementId = eachStack.EntityId;
-                           int existingQuantity = eachStack.Quantity;
+                        {
+                            string newElementId = xTriggers[triggerKey];
+                            string oldElementId = eachStack.EntityId;
+                            int existingQuantity = eachStack.Quantity;
 
-                           eachStack.Populate(newElementId, existingQuantity, Source.Existing());
+                            eachStack.Populate(newElementId, existingQuantity, Source.Existing());
 
 
-                           NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + oldElementId +
-                                           " to transform into " +
-                                           newElementId, 10);
+                            NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + oldElementId +
+                                            " to transform into " +
+                                            newElementId, 10);
 
-                       }
-                   }
+                        }
+                    }
                
 
-           }
-       }
+            }
+        }
 
 
    }
