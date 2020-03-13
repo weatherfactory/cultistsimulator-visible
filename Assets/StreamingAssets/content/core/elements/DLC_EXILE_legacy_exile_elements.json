@@ -7,7 +7,7 @@
 {id:"uq.rkx.weakness.sea",label:"Weakness: Sea",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.faith",label:"Weakness: Faith",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.cats",label:"Weakness: Cats",isAspect:true,isHidden:true},
-{id:"uq.rkx.weakness.heights",label:"Weakness: Height",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.heights",label:"Weakness: heights",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.horned",label:"Weakness: Horned",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
@@ -757,6 +757,49 @@ aspects: {opportunity:1},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
+
+{id: "opportunity.faith",
+label: "Opportunity: Faith",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "opportunity.cats",
+label: "Opportunity: Cats",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "opportunity.heights",
+label: "Opportunity: Heights",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "opportunity.horned",
+label: "Opportunity: Horned",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "opportunity.wolf",
+label: "Opportunity: Wolf",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "opportunity.flowermaker",
+label: "Opportunity: Flowermaker",
+aspects: {opportunity:1},
+description:"FNORD",
+lifetime:180
+},
+
       {
         id: "fragmentedge.exile",
             label: "A Knife's Secret",
@@ -1029,13 +1072,13 @@ uniquenessgroup:"uq.rkx.weakness.heat"
 
 {id: "rkx.weakness.sea.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's cold",
+description:"FNORD it's sea",
 uniquenessgroup:"uq.rkx.weakness.sea"
 },
 
 {id: "rkx.weakness.faith.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's cold",
+description:"FNORD it's faith",
 uniquenessgroup:"uq.rkx.weakness.faith"
 },
 
