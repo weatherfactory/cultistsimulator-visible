@@ -36,7 +36,7 @@ mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1
 {filterOnAspectId:domicile,mutateAspectId:destination,mutationLevel:-1}],
 },
 
-{id:"send.defiance.hint",
+{id:"send.defiance.alreadysent.hint",
 actionId:"send",
 label:"A Message of Defiance: Already Sent",
 startdescription:"My Foe already knows exactly where I am.",
@@ -666,6 +666,29 @@ requirements:{lore:1},
 extantreqs:{rkx.foe:1,obscurity:1},
 hintonly:true,
 craftable:false},
+
+{id:"use.attack.weapon.first",
+actionId:"use",
+label:"Dangerous Possibilities",
+startdescription:"They used to say it would take a silver bullet to kill my Foe. I saw that tried, and I saw it fail. But what about this?",
+description:"No Reckoner is ever foolish enough to pass into the higher levels of the Mansus. To draw the attention of the true Long - or their masters - would invite annihilation. But my Foe certainly knew something of the invisible arts. Perhaps I should, too.",
+requirements:{weapon:1},
+extantreqs:{ascension.defiance:-1},
+effects:{ascension.defiance:1},
+warmup:30,
+craftable:true},
+
+{id:"use.attack.lore.first",
+actionId:"use",
+label:"The Deadliest of Weapons",
+startdescription:"No Reckoner is ever foolish enough to pass into the higher levels of the Mansus. To draw the attention of the true Long - or their masters - would invite annihilation. But my Foe had some traffic with the Hours of struggle and conquest. They enjoyed certain protections.",
+description:"My Foe knows something of the 'invisible arts.' Perhaps it's time I applied myself to their study, too.",
+requirements:{lore:1},
+extantreqs:{ascension.defiance:-1},
+effects:{ascension.defiance:1},
+warmup:30,
+craftable:true},
+
 
 
 

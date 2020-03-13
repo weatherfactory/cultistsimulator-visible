@@ -1,5 +1,8 @@
 {"elements":
     [
+	
+{id:"uqedgelore.exile",label:"Exile: Edge Lore",description:"",isAspect:true,isHidden:true},
+	
 {id:"minortracerisk",
 label:"Minor Trace Risk",
 description:"recipe aspect",
@@ -259,12 +262,23 @@ description:"A ticket to the very first destination that came to mind - ",
 icon:startingletter
 },
 
-{id: "fragment.exhausted",
-label: "Fragment (Exhausted)",
-aspects: {exhausted:1},
+
+{id: "weapon.biedde",
+label: "Biedde's Blade",
+aspects: {weapon:1,edge:8},
+xtriggers:{fatiguing:weapon.biedde.exhausted},
 description:"FNORD",
-resaturate:true
+icon:tooledged
 },
+
+{id: "weapon.lionhunter",
+label: "Lionhunter's Rifle",
+aspects: {weapon:1,edge:4},
+xtriggers:{fatiguing:weapon.lionhunter.exhausted},
+description:"FNORD",
+icon:tooledgeb
+},
+
 
 {id: "weapon.biedde.exhausted",
 label: "Weapon (Exhausted)",
@@ -285,24 +299,6 @@ resaturate:true,
 icon:tooledgeb
 },
 
-
-
-
-{id: "weapon.biedde",
-label: "Biedde's Blade",
-aspects: {weapon:1,edge:8},
-xtriggers:{fatiguing:weapon.biedde.exhausted},
-description:"FNORD",
-icon:tooledged
-},
-
-{id: "weapon.lionhunter",
-label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4},
-xtriggers:{fatiguing:weapon.lionhunter.exhausted},
-description:"FNORD",
-icon:tooledgeb
-},
 
 {id: "asset.a",
 label: "A",
@@ -761,8 +757,9 @@ description:"The sea bears gifts: peace, or death, or escape."
             aspects:
             {edge: 2,lore:1},
             description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns.",
-			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedge
+			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragmentedge.exile.exhausted},
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
         },
 		 {
         id: "fragmentedgeb.exile",
@@ -770,8 +767,9 @@ description:"The sea bears gifts: peace, or death, or escape."
             aspects:
             {edge: 4,lore:1},
             description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. ",
-			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedgeb
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted},
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
         },
 				 {
         id: "fragmentedgec.exile",
@@ -779,8 +777,9 @@ description:"The sea bears gifts: peace, or death, or escape."
             aspects:
             {edge: 6,lore:1},
             description: "A series of mystic exercises that requires both dedication and terror.",
-			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedgec
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted},
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
         },
 						 {
         id: "fragmentedged.exile",
@@ -789,8 +788,9 @@ description:"The sea bears gifts: peace, or death, or escape."
             {edge: 8,lore:1},
 description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
 			
-			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedged
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted},
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
         },{
         id: "fragmentedgee.exile",
             label: "The Lionsmith's Names",
@@ -798,8 +798,9 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 10,lore:1},
 			
                         description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
-			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedgee
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgef.exile.exhausted},
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
         },
 		{
         id: "fragmentedgef.exile",
@@ -808,15 +809,93 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 12,lore:1},
 			
             description: "These are the arts that ensure an ending.",
-			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragment.exhausted},
-			icon:fragmentedgef
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgeg.exile.exhausted},
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
         },
 		   {   id: "fragmentedgeg.exile",
             label: "The Mysteries of Force",
             aspects:
             {edge: 14,lore:1},
             description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
-			icon:fragmentedgeg
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+
+   {
+        id: "fragmentedge.exile.exhausted",
+            label: "A Knife's Secret (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:180,
+			decayTo:fragmentedge.exile,
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		 {
+        id: "fragmentedgeb.exile.exhausted",
+            label: "Chiliarch's Lesson (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:160,
+			decayTo:fragmentedgeb.exile,
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+				 {
+        id: "fragmentedgec.exile.exhausted",
+            label: "An Operation of the Labhite (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:140,
+			decayTo:fragmentedgec.exile,
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+						 {
+        id: "fragmentedged.exile.exhausted",
+            label: "The Colonel's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:120,
+			decayTo:fragmentedged.exile,
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
+        },{
+        id: "fragmentedgee.exile.exhausted",
+            label: "The Lionsmith's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:100,
+			decayTo:fragmentedgee.exile,
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		{
+        id: "fragmentedgef.exile.exhausted",
+            label: "The Alignments of Murder (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:80,
+			decayTo:fragmentedgef.exile,
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		   {   id: "fragmentedgeg.exile.exhausted",
+            label: "The Mysteries of Force (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:60,
+			decayTo:fragmentedgeg.exile,
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
         },
 
 
