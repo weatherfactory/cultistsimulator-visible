@@ -52,6 +52,22 @@ isAspect:true,
 noartneeded:true
 },
 
+{id:"rkx.promotetofoe",
+label:"Reckoner Promotion - directly to Foe",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"lure.foe",
+label:"Foe Lure",
+description:"hidden mutation applied to domicile that infallibly brings the Foe if an rkx verb is running",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
 {id:"rkx.demote",
 label:"Reckoner Demotion",
 description:"recipe aspect",
@@ -187,7 +203,7 @@ label: "Opportunity: Discreet Office?",
 aspects: {opportunity:1},
 description:"FNORD.",
 xtriggers:{purchase:discreetoffice},
-slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
 },
 
@@ -196,8 +212,8 @@ label: "Opportunity: A Medical Licence?",
 aspects: {opportunity:1},
 description:"FNORD.",
 xtriggers:{negotiation:licence.medical},
-slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true},
-{actionId:conspire,id:"connection",label:"Connection",required:{connection:1}}],
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
+{actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
 lifetime:180
 },
 
@@ -207,7 +223,7 @@ label: "Opportunity: Connection?",
 aspects: {opportunity:1},
 description:"FNORD.",
 xtriggers:{purchase:connection},
-slots:[{actionId:conspire,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
 },
 
@@ -225,7 +241,7 @@ icon:vaultcapital1
 label:"Medical Licence",
 aspects:{asset:1},
 description:"Medical Licence FNORD",
-slots:[{actionId:conspire,id:"location",label:"Location",required:{discreetoffice:1}}],
+slots:[{actionId:use,id:"location",label:"Location",required:{discreetoffice:1}}],
 icon:fragmentheart
 },
 
@@ -274,7 +290,7 @@ icon:tooledgeb
 
 {id: "weapon.biedde",
 label: "Biedde's Blade",
-aspects: {weapon:1},
+aspects: {weapon:1,edge:8},
 xtriggers:{fatiguing:weapon.biedde.exhausted},
 description:"FNORD",
 icon:tooledged
@@ -282,7 +298,7 @@ icon:tooledged
 
 {id: "weapon.lionhunter",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1},
+aspects: {weapon:1,edge:4},
 xtriggers:{fatiguing:weapon.lionhunter.exhausted},
 description:"FNORD",
 icon:tooledgeb
@@ -807,18 +823,25 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 
 	  {id: "ascension.defiance",
 label: "Temptation: Defiance",
-aspects: {defiancemarks:1},
+aspects: {defiancemarks:1,desire:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
+slots:[{id:"location",label:"Location",required:{domicile:1},actionId:"send"}],
 icon: bloodshed
 },
 
 
 	  {id: "wound.exile",
 label: "Wound",
-aspects: {},
-description:"Seven of these will kill me.",
-lifetime:30,
+description:"Seven of these will end me.",
+lifetime:600,
 icon: scar_edge
+},
+
+	  {id: "wound.foe",
+label: "Wound",
+description:"Seven of these will end my enemy.",
+lifetime:600,
+icon: scar_heart
 },
 
 
@@ -826,7 +849,7 @@ icon: scar_edge
 label: "Reckoner Scout",
 description:"FNORD",
 verbicon:"rkx.scout",
-xtriggers:{rkx.promote:rkx.enforcer}
+xtriggers:{rkx.promote:rkx.enforcer,rkx.promotetofoe:rkx.foe}
 },
 
 {id: "rkx.enforcer",
@@ -834,14 +857,14 @@ label: "Reckoner Enforcer",
 description:"FNORD",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
-xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout}
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
 },
 {id: "rkx.underboss",
 label: "Reckoner Underboss",
 description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
 verbicon:"rkx.underboss",
 aspects:{rkx.rank:2},
-xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer}
+xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe}
 },
 {id: "rkx.foe",
 label: "Your Foe",
@@ -861,11 +884,6 @@ aspects:{rkx.event:1},
 description:"FNORD",
 },
 
-
-
-	  
-
-	  
 
 	
 ]

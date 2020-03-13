@@ -1,43 +1,5 @@
     {"verbs":
 	[
-        {
-            "id": "exile_work",
-            "label": "Work",
-            "description": "Earn a living, or practice the invisible arts.",
-			"atStart": true,
-						  slots: [{id:"work",label:"Work",description: "Something I can do; something I know; or something I am.",
-			  required:{ability:1,job:1,ritual:1,desire:1,benefactor:1},
-			  forbidden:{reasonskill:1}
-			  }],
-			
-        },
-        {
-            "id": "exile_dream",
-            "label": "Dream",
-            "description": "Rest; reconsider your priorities; or risk yourself in exploration of the kingdoms of sleep.",
-			"atStart": false,
-			 slots: [{id:"dream",label:"Dream",description: "A direction for my dreams; or a trouble to recover from.",
-			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
-			  }],
-        },
-				{
-            "id": "exile_study",
-            "label": "Study",
-            "description": "Unlock books and other treasures.",
-			"atStart": false,
-						 slots: [{id:"study",label:"Study",description: "The invisible arts could occupy ten lifetimes of study.",
-						 required:{text:1,lore:1,ability:1, influence:1,tutor:1,language:1,legacyplotitem:1}}],
-        },
-		{
-            "id": "exile_talk",
-            "label": "Talk",
-            "description": "Interrogate, intimidate, beguile, instruct, recruit.",
-				"atStart": false,
-			 slots: [{id:"talk",label:"Talk",description: "An ally, an enemy, or something in between.",
-			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1},
-			  forbidden:{wary:1}}]
-		
-        },
 		
 			  {
             id: "scout",
@@ -48,12 +10,12 @@
 			  required:{domicile:1}}],
         },
 						  {
-            id: "conspire",
-            label: "Conspire",
-            description: "[Use this to address Opportunities, to run Operations, or to convert years to cash.]",
+            id: "use",
+            label: "Employ",
+            description: "Make use of something. [Address Opportunities, run Operations, or convert years to cash.]",
 			atStart:false,
 			  slots: [{id:"plan",label:"Plan",
-			  required:{asset:1,opportunity:1,lifespan.stolen:1}}],
+			  required:{asset:1,opportunity:1,lifespan.stolen:1,edge:1}}],
         },
 		{
             id: "travel",
@@ -65,8 +27,8 @@
         },
 				{
             id: "send",
-            label: "Send",
-            description: "Messages, moneys and more.",
+            label: "Communicate",
+            description: "Send messages, moneys and more. Be careful.",
 			atStart:false,
 				  slots: [{id:"send",label:"Send",
 			  required:{desire:1,cash:1,cash.sent:1}}]
