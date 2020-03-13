@@ -8,13 +8,6 @@ namespace Assets.Core.Interfaces
 {
     public interface IElementStacksManager
     {
-        /// <summary>
-        /// Reduces matching stacks until change is satisfied - NB a match is also a stack which possesses this aspect
-        /// </summary>
-        /// <param name="elementId"></param>
-        /// <param name="quantityChange">must be negative</param>
-        /// <returns>returns any unsatisfied change remaining</returns>
-        int ReduceElement(string elementId, int quantityChange, Context context);
         int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorId = null);
 
         int GetCurrentElementQuantity(string elementId);
@@ -33,5 +26,7 @@ namespace Assets.Core.Interfaces
 
         void Deregister();
         void RemoveAllStacks();
+     int PurgeElement(Element element, int maxToPurge, Context context);
+        int ReduceElement(string elementId, int quantityChange, Context context);
     }
 }

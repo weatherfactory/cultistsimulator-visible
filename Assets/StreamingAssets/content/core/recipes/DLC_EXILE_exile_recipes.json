@@ -1043,6 +1043,7 @@ label:"FNORD cold weakness!",
 startdescription:"FNORD their weakness is COLD",
 requirements:{opportunity.cold:1},
 extantreqs:{uq.rkx.weakness.cold:1},
+purge:{rkx.weakness.cold.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 {id:"rkx.foe.weaknessexploited.heat",
@@ -1051,6 +1052,7 @@ label:"FNORD heat weakness!",
 startdescription:"FNORD their weakness is heat",
 requirements:{opportunity.heat:1},
 extantreqs:{uq.rkx.weakness.heat:1},
+purge:{rkx.weakness.heat.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1060,6 +1062,7 @@ label:"FNORD sea weakness!",
 startdescription:"FNORD their weakness is sea",
 requirements:{opportunity.sea:1},
 extantreqs:{uq.rkx.weakness.sea:1},
+purge:{rkx.weakness.sea.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1069,6 +1072,7 @@ label:"FNORD faith weakness!",
 startdescription:"FNORD their weakness is faith",
 requirements:{opportunity.faith:1},
 extantreqs:{uq.rkx.weakness.faith:1},
+purge:{rkx.weakness.faith.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1078,6 +1082,7 @@ label:"FNORD cats weakness!",
 startdescription:"FNORD their weakness is cats",
 requirements:{opportunity.cats:1},
 extantreqs:{uq.rkx.weakness.cats:1},
+purge:{rkx.weakness.cats.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1087,6 +1092,7 @@ label:"FNORD heights weakness!",
 startdescription:"FNORD their weakness is heights",
 requirements:{opportunity.heights:1},
 extantreqs:{uq.rkx.weakness.heights:1},
+purge:{rkx.weakness.heights.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1096,6 +1102,7 @@ label:"FNORD horned weakness!",
 startdescription:"FNORD their weakness is horned",
 requirements:{opportunity.horned:1},
 extantreqs:{uq.rkx.weakness.horned:1},
+purge:{rkx.weakness.horned.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1105,6 +1112,7 @@ label:"FNORD wolf weakness!",
 startdescription:"FNORD their weakness is wolf",
 requirements:{opportunity.wolf:1},
 extantreqs:{uq.rkx.weakness.wolf:1},
+purge:{rkx.weakness.wolf.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 
@@ -1115,6 +1123,7 @@ label:"FNORD flowermaker weakness!",
 startdescription:"FNORD their weakness is flowermaker",
 requirements:{opportunity.flowermaker:1},
 extantreqs:{uq.rkx.weakness.flowermaker:1},
+purge:{rkx.weakness.flowermaker.hidden:1},
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 

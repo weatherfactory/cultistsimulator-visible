@@ -76,6 +76,8 @@ public class ElementStacksManager : IElementStacksManager {
         return unsatisfiedChange;
     }
 
+
+
     private static void CheckQuantityChangeIsNegative(string elementId, int quantityChange) {
         if (quantityChange >= 0)
             throw new ArgumentException("Tried to call ReduceElement for " + elementId + " with a >=0 change (" +
@@ -224,6 +226,41 @@ public class ElementStacksManager : IElementStacksManager {
         }
 
         return matchingStacks;
+    }
+
+    public int PurgeElement(Element element, int maxToPurge, Context context)
+    {
+
+        if (string.IsNullOrEmpty(element.DecayTo))
+        {
+            //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
+          return  ReduceElement(element.Id, -maxToPurge, context);
+        }
+        else
+        { 
+            int unsatisfiedChange = maxToPurge;
+            while (unsatisfiedChange > 0)
+            {
+                
+                //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
+                IElementStack stackToAffect = _stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(element.Id));
+
+                if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
+                    //so end execution here, and return the unsatisfied change amount
+                    return unsatisfiedChange;
+
+                int originalQuantity = stackToAffect.Quantity;
+                stackToAffect.Decay(-1);
+                //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
+                unsatisfiedChange -= originalQuantity;
+            }
+            return unsatisfiedChange;
+        }
+        
+
+
+
+        
     }
 }
 

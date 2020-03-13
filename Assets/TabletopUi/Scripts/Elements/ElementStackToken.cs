@@ -126,7 +126,7 @@ namespace Assets.CS.TabletopUI {
 
         virtual public bool Decays
 		{
-            get { return _element.Lifetime > 0; }
+            get { return _element.Lifetime > 0 ; }
         }
 
         virtual public int Quantity {
@@ -972,8 +972,10 @@ namespace Assets.CS.TabletopUI {
 
 
         public void Decay(float interval) {
-            if (!Decays)
+            //passing a negative interval overrides and ensures it'll always decay
+            if (!Decays && interval>=0)
 			    return;
+            
 
 			var stackAnim = this.gameObject.GetComponent<TokenAnimationToSlot>();
 			if (stackAnim)
@@ -986,7 +988,7 @@ namespace Assets.CS.TabletopUI {
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
-            if (LifetimeRemaining <= 0) {
+            if (LifetimeRemaining <= 0 || interval<0) {
                 // We're dragging this thing? Then return it?
                 if (DraggableToken.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos

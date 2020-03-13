@@ -36,6 +36,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private Button btnBeginSituation;
     [SerializeField] private Button btnHaltVerb;
     [SerializeField] private Button btnDeleteVerb;
+    [SerializeField] private Button btnPurgeElement;
     [SerializeField] public Button btnTriggerAchievement;
     [SerializeField] private Button btnResetAchivement;
     [SerializeField] private Button btnFastForward;
@@ -81,6 +82,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
         btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
         btnDeleteVerb.onClick.AddListener(() => DeleteVerb(input.text));
+        btnPurgeElement.onClick.AddListener(() => PurgeElement(input.text));
+
 
         btnTriggerAchievement.onClick.AddListener(()=>TriggerAchievement(input.text));
         btnResetAchivement.onClick.AddListener(() => ResetAchievement(input.text));
@@ -323,6 +326,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         Registry.Retrieve<ITabletopManager>().DeleteVerb(verbId,1);
     }
+
+    private void PurgeElement(string elementId)
+    {
+        Registry.Retrieve<ITabletopManager>().PurgeElement(elementId, 1);
+    }
+
 
     void BeginLegacy(string legacyId)
     {

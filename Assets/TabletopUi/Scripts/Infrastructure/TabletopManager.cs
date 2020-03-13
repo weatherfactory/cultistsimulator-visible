@@ -466,9 +466,11 @@ namespace Assets.CS.TabletopUI {
 
         public void PurgeElement(string elementId, int maxToPurge)
         {
-            //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
-            _tabletop.GetElementStacksManager().ReduceElement(elementId, -maxToPurge,new Context(Context.ActionSource.Purge));
-            
+            var compendium = Registry.Retrieve<ICompendium>();
+
+            Element purgedElement = compendium.GetElementById(elementId);
+
+                _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge, new Context(Context.ActionSource.Purge));
         }
 
         public void HaltVerb(string toHaltId, int maxToHalt)
