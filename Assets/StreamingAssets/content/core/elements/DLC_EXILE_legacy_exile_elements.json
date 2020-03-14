@@ -80,6 +80,18 @@ noartneeded:true,
 isHidden:true
 },
 
+{id:"defiance.weaponsent",
+label:"Sent a weapon to the Foe",
+isAspect:true,
+isHidden:true
+},
+
+{id:"defiance.foespared",
+label:"Spared the Foe",
+isAspect:true,
+isHidden:true
+},
+
 
 {id:"rkx.demote",
 label:"Reckoner Demotion",
@@ -348,7 +360,8 @@ description:"FNORD"
 
 {id:"tick",
 label:"Caution...",
-description:"Don't attract attention. [When all these are gone, you'll gain an Obscurity, unless there are any Traces on the board. Then the cycle will begin again.]"
+description:"Don't attract attention. [When all these are gone, you'll gain an Obscurity, unless there are any Traces on the board. Then the cycle will begin again.]",
+comments: "Not currently in use."
 },
 
      {id: "obscurity",
@@ -953,7 +966,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1,desire:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
-slots:[{id:"location",label:"Location",required:{domicile:1},actionId:"send"}],
+slots:[{id:"location",label:"Location",required:{domicile:1,weapon:1},actionId:"send"}],
 icon: bloodshed
 },
 
