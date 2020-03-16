@@ -93,15 +93,13 @@ isHidden:true
 },
 
 {id:"defiance.consecration.colonel",
-label:"Sent a weapon to the Foe",
-isAspect:true,
-isHidden:true
+label:"Consecrated: Colonel",
+isAspect:true
 },
 
 {id:"defiance.consecration.lionsmith",
 label:"Consecrated: Lionsmith",
-isAspect:true,
-isHidden:true
+isAspect:true
 },
 
 
@@ -226,6 +224,15 @@ slots:[{actionId:send,id:"destination",label:"Destination",required:{destination
 icon:funds,
 comments: "Don't forget spintriae"
 },
+
+{id: "opportunity.shrine.lionsmith",
+label: "Opportunity: Shrine of the Lionsmith",
+aspects: {opportunity:1},
+description:"FNORD.",
+slots:[{actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
+lifetime:180
+},
+
 
 
 {id: "opportunity.discreetoffice",
@@ -394,14 +401,13 @@ slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}
 {actionId:"send",id:"obscurity6",label:"Obscurity",required:{obscurity:1}},
 {actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
 ],
-description:"I've stolen a fortune in years from the a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
+description:"I've stolen a fortune in years from a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
 },
 	  
 	  {id:"decade.stolen",
 	  label: "Stolen Decade",
 	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
 	  aspects:{lifespan.stolen:10},
-	  icon: articlewinterc
 	  },
 	  	  {id:"year.stolen",
 	  label: "Stolen Year",
