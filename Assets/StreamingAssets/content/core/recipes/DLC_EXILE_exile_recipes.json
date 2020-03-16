@@ -731,7 +731,7 @@ startdescription:"FNORD",
 description:"FNORD",
 requirements:{weapon:1},
 extantreqs:{rkx.foe:1,obscurity:-1},
-effects:{},
+effects:{wound.foe:1},
 warmup:30,
 craftable:true},
 
@@ -742,7 +742,7 @@ startdescription:"FNORD",
 description:"FNORD",
 requirements:{lore:1},
 extantreqs:{rkx.foe:1,obscurity:-1},
-effects:
+effects:{wound.foe:1},
 warmup:30,
 craftable:true},
 
