@@ -92,6 +92,18 @@ isAspect:true,
 isHidden:true
 },
 
+{id:"defiance.consecration.colonel",
+label:"Sent a weapon to the Foe",
+isAspect:true,
+isHidden:true
+},
+
+{id:"defiance.consecration.lionsmith",
+label:"Consecrated: Lionsmith",
+isAspect:true,
+isHidden:true
+},
+
 
 {id:"rkx.demote",
 label:"Reckoner Demotion",
@@ -1012,6 +1024,12 @@ label: "Your Foe",
 description:"FNORD",
 verbicon:"rkx.foe",
 aspects:{rkx.rank:3}
+},
+
+{id: "rkx.foe.defeated",
+label: "A Trophy of your Foe",
+description:"FNORD",
+verbicon:"rkx.foe.defeated",
 },
 
 
