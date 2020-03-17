@@ -102,11 +102,6 @@ label:"Consecrated: Lionsmith",
 isAspect:true
 },
 
-{id:"city.cult.lionsmith",
-label:"Lionsmith influence",
-isAspect:true,
-isHidden:true}
-
 
 {id:"rkx.demote",
 label:"Reckoner Demotion",
@@ -230,7 +225,7 @@ icon:funds,
 comments: "Don't forget spintriae"
 },
 
-{id: "opportunity.shrine.lionsmith",
+{id: "op.shrine.lionsmith",
 label: "Opportunity: Shrine of the Lionsmith",
 aspects: {opportunity:1},
 description:"FNORD.",
@@ -240,7 +235,7 @@ lifetime:180
 
 
 
-{id: "opportunity.discreetoffice",
+{id: "op.discreetoffice",
 label: "Opportunity: Discreet Office?",
 aspects: {opportunity:1},
 description:"FNORD.",
@@ -249,7 +244,7 @@ slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
 },
 
-	  	  {id: "opportunity.licence.medical",
+	  	  {id: "op.licence.medical",
 label: "Opportunity: A Medical Licence?",
 aspects: {opportunity:1},
 description:"FNORD.",
@@ -260,7 +255,7 @@ lifetime:180
 },
 
 
-	  	  {id: "opportunity.connection",
+	  	  {id: "op.connection",
 label: "Opportunity: Connection?",
 aspects: {opportunity:1},
 description:"FNORD.",
@@ -643,7 +638,7 @@ unique:true
 
 	  {id: "city.venice",
 label: "Venice",
-aspects: {destination:1,city.cult.lionsmith:1},
+aspects: {destination:1},
 description:"FNORD",
 icon: vaultcapital3,
 unique:true
@@ -675,7 +670,7 @@ unique:true
 
 	  {id: "city.samarkand",
 label: "Samarkand",
-aspects: {destination:1,city.cult.lionsmith:1},
+aspects: {destination:1},
 description:"FNORD",
 icon: vaultcapital3,
 unique:true
@@ -692,7 +687,7 @@ unique:true
 
 	  {id: "city.algiers",
 label: "Algiers",
-aspects: {destination:1,city.cult.lionsmith:1},
+aspects: {destination:1},
 description:"FNORD",
 icon: vaultcapital3,
 unique:true
@@ -734,7 +729,7 @@ unique:true
 
 	  {id: "city.meshad",
 label: "Meshad",
-aspects: {destination:1,city.cult.lionsmith:1},
+aspects: {destination:1},
 description:"FNORD",
 icon: vaultcapital3,
 unique:true
@@ -760,7 +755,7 @@ unique:true
 
 	  {id: "city.alexandria",
 label: "Alexandria",
-aspects: {destination:1,city.cult.lionsmith:1},
+aspects: {destination:1},
 description:"FNORD",
 icon: vaultloneandlevelsands2,
 unique:true
@@ -773,63 +768,63 @@ description:"No other way out FNORD",
 icon: vaultshires1
 },
 
-{id: "opportunity.cold",
+{id: "op.cold",
 label: "Chill Winds",
 aspects: {opportunity:1},
 description:"This week, frost walks here.",
 lifetime:180
 },
 
-{id: "opportunity.heat",
+{id: "op.heat",
 label: "Trembling Heat",
 aspects: {opportunity:1},
 description:"This week, the air shimmers.",
 lifetime:180
 },
 
-{id: "opportunity.sea",
+{id: "op.sea",
 label: "Sea Port",
 aspects: {opportunity:1},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
 
-{id: "opportunity.faith",
+{id: "op.faith",
 label: "Opportunity: Faith",
 aspects: {opportunity:1},
 description:"FNORD",
 lifetime:180
 },
 
-{id: "opportunity.cats",
+{id: "op.cats",
 label: "Opportunity: Cats",
 aspects: {opportunity:1},
 description:"FNORD",
 lifetime:180
 },
 
-{id: "opportunity.heights",
+{id: "op.heights",
 label: "Opportunity: Heights",
 aspects: {opportunity:1},
 description:"FNORD",
 lifetime:180
 },
 
-{id: "opportunity.horned",
+{id: "op.horned",
 label: "Opportunity: Horned",
 aspects: {opportunity:1},
 description:"FNORD",
 lifetime:180
 },
 
-{id: "opportunity.wolf",
+{id: "op.wolf",
 label: "Opportunity: Wolf",
 aspects: {opportunity:1},
 description:"FNORD",
 lifetime:180
 },
 
-{id: "opportunity.flowermaker",
+{id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
 aspects: {opportunity:1},
 description:"FNORD",
