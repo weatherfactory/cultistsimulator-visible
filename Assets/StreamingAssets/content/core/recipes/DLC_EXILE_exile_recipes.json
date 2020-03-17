@@ -733,7 +733,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.paris:1},
-	internaldeck: {spec: [city.london,city.aachen,city.strasbourg,end.morbihan], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.aachen",
@@ -744,7 +744,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.aachen:1},
-	internaldeck: {spec: [city.amsterdam,city.paris,city.prague,city.munich], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -756,7 +756,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.prague:1},
-	internaldeck: {spec: [city.rostock,city.kaunas,city.vienna,city.aachen], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -769,7 +769,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.kaunas:1},
-	internaldeck: {spec: [end.slettnes,city.stpetersburg,city.krakow,city.prague,city.rostock], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -781,7 +781,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.stpetersburg:1},
-	internaldeck: {spec: [end.slettnes,city.nizhny,city.kiev,city.kaunas], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -793,7 +793,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.nizhny:1},
-	internaldeck: {spec: [end.cheko,city.yekaterinburg,city.stalingrad,city.stpetersburg], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -805,7 +805,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.strasbourg:1},
-	internaldeck: {spec: [city.paris,city.aachen,city.granada,end.morbihan], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -819,7 +819,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.munich:1},
-	internaldeck: {spec: [city.aachen,city.vienna,city.avignon,city.strasbourg], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.vienna",
@@ -830,7 +830,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.vienna:1},
-	internaldeck: {spec: [city.prague,city.krakow,city.venice,city.munich], draws: 1, defaultcard: op.connection, resetonexhaustion: false}
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -842,7 +842,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.krakow:1},
-	internaldeck: {spec: [city.kaunas,city.kiev,city.budapest,city.vienna], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -855,7 +855,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.kiev:1},
-	internaldeck: {spec: [city.stpetersburg,city.stalingrad,city.cluj,city.krakow], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -867,7 +867,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.stalingrad:1},
-	internaldeck: {spec: [city.nizhny,city.yekaterinburg,city.tiflis,city.kiev], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -879,7 +879,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.yekaterinburg:1},
-	internaldeck: {spec: [end.cheko,end.paro,city.samarkand,city.stalingrad,city.nizhny], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -891,7 +891,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.granada:1},
-	internaldeck: {spec: [city.strasbourg,city.avignon,city.marrakech,end.morbihan], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -903,19 +903,19 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.avignon:1},
-	internaldeck: {spec: [city.munich,city.venice,city.algiers,city.granada], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
 {id:"scout.venice",
 actionId:"scout",
-label:"Reconnoitre venice",
+label:"Reconnoitre Venice",
 startdescription:"FNORD Reconnoitre",
 warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.venice:1},
-	internaldeck: {spec: [city.vienna,city.budapest,city.valletta,city.avignon], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.cult.lionsmith], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.budapest",
@@ -926,14 +926,14 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.budapest:1},
-	internaldeck: {spec: [city.krakow,city.cluj,city.tirana,city.venice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.cluj",
 actionId:"scout",
 label:"Reconnoitre Cluj-Napoca",
 requirements:{domicile:1,city.cluj:1},
-	internaldeck: {spec: [city.kiev,city.tiflis,city.istanbul,city.budapest], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.tiflis",
@@ -944,7 +944,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.tiflis:1},
-	internaldeck: {spec: [city.stalingrad,city.samarkand,city.baghdad,city.cluj], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.samarkand",
@@ -955,7 +955,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.samarkand:1},
-	internaldeck: {spec: [city.yekaterinburg,end.paro,city.meshad,city.tiflis], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.marrakech",
@@ -966,7 +966,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.marrakech:1},
-	internaldeck: {spec: [city.granada,city.algiers,end.ghardaia,end.morbihan], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.algiers",
@@ -977,7 +977,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.algiers:1},
-	internaldeck: {spec: [city.avignon,city.valletta,city.tripoli,end.ghardaia,city.marrakech], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.valletta",
@@ -988,7 +988,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.valletta:1},
-	internaldeck: {spec: [city.venice,city.tirana,city.tripoli,city.algiers], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.tirana",
@@ -999,7 +999,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.tirana:1},
-	internaldeck: {spec: [city.budapest,city.istanbul,city.candia,city.valletta], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.istanbul",
@@ -1010,7 +1010,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.istanbul:1},
-	internaldeck: {spec: [city.cluj,city.baghdad,city.alexandria,city.tirana], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.baghdad",
@@ -1021,7 +1021,7 @@ startdescription:"FNORD Reconnoitre",
 warmup:60,
 aspects:{},
 craftable:true,
-	internaldeck: {spec: [city.tiflis,city.meshad,end.messana,city.alexandria,city.istanbul], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.meshad",
@@ -1032,7 +1032,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.meshad:1},
-	internaldeck: {spec: [city.samarkand,end.paro,end.messana,city.baghdad], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.tripoli",
@@ -1043,7 +1043,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.tripoli:1},
-	internaldeck: {spec: [city.valletta,city.candia,end.ghardaia,city.algiers], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.candia",
@@ -1054,7 +1054,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile:1,city.candia:1},
-	internaldeck: {spec: [city.tirana,city.alexandria,end.messana,city.tripoli], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -1066,7 +1066,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile:1,city.alexandria:1},
-	internaldeck: {spec: [city.istanbul,city.baghdad,end.messana,city.candia], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 

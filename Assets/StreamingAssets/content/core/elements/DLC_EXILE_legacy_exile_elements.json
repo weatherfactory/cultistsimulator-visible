@@ -255,6 +255,15 @@ lifetime:180
 },
 
 
+	  	  {id: "op.cult.lionsmith",
+label: "Opportunity: Shrine of the Lionsmith?",
+aspects: {opportunity:1},
+description:"FNORD.",
+xtriggers:{purchase:connection},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
 	  	  {id: "op.connection",
 label: "Opportunity: Connection?",
 aspects: {opportunity:1},
