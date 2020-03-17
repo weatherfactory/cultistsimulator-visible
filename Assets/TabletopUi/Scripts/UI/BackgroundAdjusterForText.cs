@@ -7,13 +7,12 @@ namespace TabletopUi.Scripts.UI
 {
     public class BackgroundAdjusterForText : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private RectTransform backgroundMidContainer;
-
         [SerializeField] private Image backgroundMidLine;
-
         [SerializeField] private TextMeshProUGUI text;
-
         [SerializeField] private int minimumLines;
+#pragma warning restore 649
 
         public void Adjust()
         {

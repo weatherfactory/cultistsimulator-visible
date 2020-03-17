@@ -8,13 +8,13 @@ namespace TabletopUi.Scripts.Elements
 {
     public class AspectSetsDisplay : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private bool isWithinDetailsWindow;
         [SerializeField] private bool hideIfEmpty;
         [SerializeField] private bool hasBrightBackground;
-
         [SerializeField] private Transform[] setPrefixes;
         [SerializeField] private Transform aspectsDisplay;
-
+#pragma warning restore 649
         private readonly List<IAspectsDictionary> _aspectSets = new List<IAspectsDictionary>();
 
         public void AddAspectSet(int setIndex, IAspectsDictionary aspects)

@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heart: {fileID: 597}
   _speedController: {fileID: 1065654874}
-  _cardAnimationController: {fileID: 1506403065}
+  _intermittentAnimatableController: {fileID: 1506403065}
   _endGameAnimController: {fileID: 2130193020}
   _tabletop: {fileID: 730}
   Limbo: {fileID: 68}
@@ -5966,6 +5966,26 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 550, y: -40}
   m_Pivot: {x: 1, y: 1}
+--- !u!1 &142838719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1130984174194782, guid: 4a301205d1f0cd5468035325fd3480a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1685399715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &142838720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142838719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3533b247d2cfcde41bf17596b6e070e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAnims: 5
+  timeBetweenAnimsVariation: 1
 --- !u!1 &143136196
 GameObject:
   m_ObjectHideFlags: 0
@@ -29285,7 +29305,7 @@ GameObject:
   - component: {fileID: 1506403064}
   - component: {fileID: 1506403065}
   m_Layer: 0
-  m_Name: CardAnimationController
+  m_Name: IntermittentAnimatableController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29314,9 +29334,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506403063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4038811daa9a5134b939d77bb81bef3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3533b247d2cfcde41bf17596b6e070e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenAnims: 5
+  timeBetweenAnimsVariation: 1
 --- !u!1 &1511701991
 GameObject:
   m_ObjectHideFlags: 0

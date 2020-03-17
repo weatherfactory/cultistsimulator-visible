@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,50 @@ using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
 {
+
     public const string PLACEHOLDER_IMAGE_NAME = "_x";
 
-	public static Sprite GetSpriteForVerbLarge(string verbId)
+    private static readonly Dictionary<string,List<Sprite>> _cachedVerbFrames=new Dictionary<string, List<Sprite>>();
+    private static readonly Dictionary<string, List<Sprite>> _cachedElementFrames = new Dictionary<string, List<Sprite>>();
+
+
+    public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
         return GetSprite("icons100/verbs/", verbId);
     }
 
-	public static Sprite GetSpriteForElement(string imageName)
+
+    public static List<Sprite> GetAnimFramesForVerb(string verbId)
+    {
+        if(_cachedVerbFrames.ContainsKey(verbId))
+            return _cachedVerbFrames[verbId];
+        
+
+        List<Sprite> frames=new List<Sprite>();
+
+        int i = 0;
+
+        while (true)
+        {
+            var s= GetSprite("icons100/verbs/anim/", verbId + "_" + i, false);
+            if (s != null)
+            {
+                frames.Add(s);
+                i++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        _cachedVerbFrames[verbId] = frames;
+
+        return frames;
+    }
+
+
+    public static Sprite GetSpriteForElement(string imageName)
     {
         return GetSprite("elementArt/", imageName);
     }
@@ -29,6 +66,36 @@ public class ResourcesManager: MonoBehaviour
         //but might be a good way to spot missing animations
         return GetSprite("elementArt/anim/", imageName + "_" + animFrame, false);
     }
+
+    public static List<Sprite> GetAnimFramesForElement(string imageName)
+    {
+        if (_cachedElementFrames.ContainsKey(imageName))
+            return _cachedElementFrames[imageName];
+
+
+        List<Sprite> frames = new List<Sprite>();
+
+        int i = 0;
+
+        while (true)
+        {
+            var s = GetSprite("elementArt/anim/", imageName + "_" + i, false);
+            if (s != null)
+            {
+                frames.Add(s);
+                i++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        _cachedElementFrames[imageName] = frames;
+
+        return frames;
+    }
+
 
     public static Sprite GetSpriteForCardBack(string backId) {
         return GetSprite("cardBacks/", backId);

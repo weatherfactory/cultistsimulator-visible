@@ -19,13 +19,14 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView
+    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView,IAnimatable
     {
         public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
@@ -76,6 +77,8 @@ namespace Assets.CS.TabletopUI {
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
+        private List<Sprite> frames;
+
 
         //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
         public bool PlacementAlreadyChronicled=false;
@@ -347,6 +350,7 @@ namespace Assets.CS.TabletopUI {
 
                 DisplayInfo();
                 DisplayIcon();
+                frames = ResourcesManager.GetAnimFramesForElement(elementId);
                 ShowGlow(false, false);
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
@@ -1199,7 +1203,7 @@ namespace Assets.CS.TabletopUI {
             if (_element == null)
                 return false;
 
-            return _element.AnimFrames > 0;
+            return frames.Any();
         }
 
         /// <summary>
@@ -1217,30 +1221,40 @@ namespace Assets.CS.TabletopUI {
 
             // TODO: pull data from element itself and use that to drive the values below
             float duration = 0.2f;
-            int frameCount = _element.AnimFrames;
+            int frameCount = frames.Count;
             int frameIndex = 0;
 
             animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
-        IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
+       public IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
             Sprite[] animSprites = new Sprite[frameCount];
 
             for (int i = 0; i < animSprites.Length; i++)
                 animSprites[i] = ResourcesManager.GetSpriteForElement(_element.Icon, frameIndex + i);
 
             float time = 0f;
-            int spriteIndex = -1;
             int lastSpriteIndex = -1;
 
-            while (time < duration) {
+            while (time < duration)
+            {
                 time += Time.deltaTime;
-                spriteIndex = (frameCount == 1 ? 0 : Mathf.FloorToInt(time / duration * frameCount));
+                int spriteIndex;
+                if (frameCount == 1)
+                    spriteIndex = 0;
+                else
+                    spriteIndex = Mathf.FloorToInt(time / duration * frameCount);
 
-                if (spriteIndex != lastSpriteIndex) {
+
+                if (spriteIndex != lastSpriteIndex)
+                {
                     lastSpriteIndex = spriteIndex;
-                    // Ternary operator since the spriteIndex math will sometimes result in the last frame popping out of range, which is fine.
-                    artwork.overrideSprite = (spriteIndex < animSprites.Length ? animSprites[spriteIndex] : null);
+                    if (spriteIndex < frames.Count)
+                    {
+                        artwork.overrideSprite = frames[spriteIndex];
+                    }
+                    else
+                        artwork.overrideSprite = null;
                 }
                 yield return null;
             }

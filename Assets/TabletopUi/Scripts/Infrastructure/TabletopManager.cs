@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         private SpeedController _speedController;
         [SerializeField]
-        private CardAnimationController _cardAnimationController;
+        private IntermittentAnimatableController _intermittentAnimatableController;
         [SerializeField]
         private EndGameAnimController _endGameAnimController;
 
@@ -163,7 +163,7 @@ namespace Assets.CS.TabletopUI {
 			// But some things do have to be updated outside the main gameplay Heart.Beat
 			//
             _hotkeyWatcher.WatchForGameplayHotkeys();
-            _cardAnimationController.CheckForCardAnimations();
+            _intermittentAnimatableController.CheckForCardAnimations();
 
 			if (_heart.IsPaused)
 			{
@@ -214,7 +214,7 @@ namespace Assets.CS.TabletopUI {
             InitialiseSubControllers(
                 _speedController,
                 _hotkeyWatcher,
-                _cardAnimationController,
+                _intermittentAnimatableController,
                 _mapController,
                 _endGameAnimController,
                 _notifier,
@@ -307,7 +307,7 @@ namespace Assets.CS.TabletopUI {
 
         private void InitialiseSubControllers(SpeedController speedController,
                                               HotkeyWatcher hotkeyWatcher,
-                                              CardAnimationController cardAnimationController,
+                                              IntermittentAnimatableController intermittentAnimatableController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController,
                                               Notifier notifier,
@@ -315,7 +315,7 @@ namespace Assets.CS.TabletopUI {
 
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
-            cardAnimationController.Initialise(_tabletop.GetElementStacksManager());
+            intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Retrieve<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();

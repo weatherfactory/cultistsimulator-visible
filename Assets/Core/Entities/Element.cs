@@ -50,7 +50,7 @@ public class Element
         set { _description = value ?? ""; }
     }
 
-    public int AnimFrames { get; set; }
+    private int AnimFrames { get; set; } //no longer used; leaving it in here in case we find we need it after all
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
     public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects. It will only work on aspect displays, anyhoo

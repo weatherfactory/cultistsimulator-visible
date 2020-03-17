@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
 
-    public class SituationToken : DraggableToken, ISituationAnchor {
+    public class SituationToken : DraggableToken, ISituationAnchor,IAnimatable {
 
         [SerializeField] Image artwork;
 
@@ -56,6 +56,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] SituationEditor situationEditor;
 
         private IVerb _verb;
+        private Coroutine animCoroutine;
+        private List<Sprite> frames;
+
 
         public SituationController SituationController {
             get; private set;
@@ -86,7 +89,8 @@ namespace Assets.CS.TabletopUI {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + EntityId;
-			isNew = true;
+			isNew = true; 
+            frames= ResourcesManager.GetAnimFramesForVerb(_verb.Id);
 
             DisplayIcon(verb);
             SetAsLightweight(verb.Transient);
@@ -342,5 +346,73 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        /// Trigger an animation on the card
+        /// </summary>
+        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
+        /// <param name="frameCount">How many frames to show. Default is 1</param>
+        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+        public void StartArtAnimation()
+        {
+            if (!CanAnimate())
+                return;
+
+            if (animCoroutine != null)
+                StopCoroutine(animCoroutine);
+
+            //verb animations are long-duration!
+            float duration = 0.8f;
+            int frameCount = frames.Count;
+            int frameIndex = 0;
+
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
+        }
+
+        public IEnumerator DoAnim(float duration, int frameCount, int frameIndex)
+        {
+            
+            float time = 0f;
+            int lastSpriteIndex = -1;
+
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                int spriteIndex;
+                if (frameCount == 1)
+                    spriteIndex = 0;
+                else
+                    spriteIndex = Mathf.FloorToInt(time / duration * frameCount);
+
+
+                if (spriteIndex != lastSpriteIndex)
+                {
+                    lastSpriteIndex = spriteIndex;
+                    if (spriteIndex < frames.Count)
+                    { 
+                        artwork.overrideSprite = frames[spriteIndex];
+                    }
+                    else
+                        artwork.overrideSprite = null;
+                }
+                yield return null;
+            }
+
+            // remove anim
+            artwork.overrideSprite = null;
+        }
+
+
+        public bool CanAnimate()
+        {
+            if (gameObject == null)
+                return false;
+
+            if (gameObject.activeInHierarchy == false)
+                return false; // can not animate if deactivated
+
+            if (_verb == null)
+                return false;
+
+            return frames.Any();
+        }
     }
 }

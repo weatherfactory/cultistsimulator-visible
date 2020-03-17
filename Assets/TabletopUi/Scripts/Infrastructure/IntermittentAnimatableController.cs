@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class CardAnimationController: MonoBehaviour
+    public class IntermittentAnimatableController: MonoBehaviour
     {
-        float timeBetweenAnims = 5f;
-        float timeBetweenAnimsVariation = 1f;
+       public float timeBetweenAnims = 5f;
+       public float timeBetweenAnimsVariation = 1f;
         private float nextAnimTime;
-        private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
+        private string lastAnimID; // to not animate the same twice. Keep player on their toes
         private IElementStacksManager _tabletopStacksManager;
-		int numAnimsRemainingToAirSound = 0;
+        private SituationsCatalogue _situationsCatalogue;
+        int numAnimsRemainingToAirSound = 0;
 
-        public void Initialise(IElementStacksManager tabletopStacksManager)
+        public void Initialise(IElementStacksManager tabletopStacksManager,SituationsCatalogue situationsCatalogue)
         {
             _tabletopStacksManager = tabletopStacksManager;
+            _situationsCatalogue = situationsCatalogue;
             SetNextAnimTime();
 			SetNextAirSoundCount();
         }
@@ -59,18 +64,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
             var stacks = _tabletopStacksManager.GetStacks();
 
-            var animatableStacks = new List<IElementStack>();
-
+            var animatables = new List<IAnimatable>();
+            
             foreach (var stack in stacks)
                 if (!stack.Defunct && stack.CanAnimate() && stack.EntityId != lastAnimID)
-                    animatableStacks.Add(stack);
+                    animatables.Add(stack as IAnimatable);
 
-            if (animatableStacks.Count > 0)
+            List<IAnimatable> tokens =new List<IAnimatable>(_situationsCatalogue.GetAnimatables());
+
+            animatables.AddRange(tokens.Where(t => t.EntityId != lastAnimID));
+
+
+
+            if (animatables.Count > 0)
             {
-                int index = UnityEngine.Random.Range(0, animatableStacks.Count);
+                int index = UnityEngine.Random.Range(0, animatables.Count);
 
-                animatableStacks[index].StartArtAnimation();
-                lastAnimID = animatableStacks[index].EntityId;
+                animatables[index].StartArtAnimation();
+                lastAnimID = animatables[index].EntityId;
 				numAnimsRemainingToAirSound--;
 
 				if (numAnimsRemainingToAirSound <= 8) {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Interfaces;
 
 namespace Assets.Core.Entities
 {
@@ -21,6 +22,7 @@ namespace Assets.Core.Entities
             return _currentSituationControllers.ToList();
         }
 
+
         public void RegisterSituation(SituationController controller)
         {
             _currentSituationControllers.Add(controller);
@@ -35,5 +37,12 @@ namespace Assets.Core.Entities
         {
             return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
     }
+
+        public IEnumerable<IAnimatable> GetAnimatables()
+        {
+            var situationTokens = GetRegisteredSituations().Select(s => s.situationToken as IAnimatable);
+
+            return situationTokens.Where(s => s.CanAnimate());
+        }
     }
 }

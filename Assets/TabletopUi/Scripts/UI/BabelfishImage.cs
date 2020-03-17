@@ -19,9 +19,9 @@ public class SpriteMapping
 
 public class BabelfishImage : MonoBehaviour
 {
-//#pragma warning disable 649
     [Tooltip("Custom images per language")]
-    [SerializeField] private SpriteMapping[]			sprites = new SpriteMapping[ (int)LanguageManager.eLanguage.maxLanguages ];
+    //#pragma warning disable 649
+	[SerializeField] private SpriteMapping[]			sprites = new SpriteMapping[ (int)LanguageManager.eLanguage.maxLanguages ];
     [SerializeField] private bool			            usesOverride;
 //#pragma warning restore 649
 
