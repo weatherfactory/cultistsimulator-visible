@@ -20,7 +20,7 @@ startdescription:"The reckoners are out in force tonight! I hear their whistles 
 description:"I'm here.",
 requirements:{ticket.train:1},
 effects:{obscurity:1,ticket.train:-1},
-internaldeck: {spec: [city.aachen,city.prague,city.munich,city.vienna,city.krakow,city.kiev,city.avignon,city.sanmarino,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+internaldeck: {spec: [city.aachen,city.prague,city.munich,city.vienna,city.krakow,city.kiev,city.avignon,city.venice,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 
 alt:[{id:"turn.begin",additional:true},
 {id:"scout.first",additional:true}],
@@ -243,7 +243,7 @@ linked:[{id:"travel.investigate.munich"},
 {id:"travel.investigate.vienna"},
 {id:"travel.investigate.prague"},
 {id:"travel.investigate.krakow"},
-{id:"travel.investigate.sanmarino"}],
+{id:"travel.investigate.venice"}],
 craftable:true},
 
 
@@ -360,7 +360,7 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.strasbourg:1},
-	internaldeck: {spec: [city.paris,city.aachen,city.sansebastian,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.paris,city.aachen,city.granada,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
 
@@ -385,7 +385,7 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.vienna:1},
-	internaldeck: {spec: [city.prague,city.krakow,city.sanmarino,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.prague,city.krakow,city.venice,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
 
@@ -438,14 +438,14 @@ requirements:{domicile:1,city.yekaterinburg:1},
 },
 
 
-{id:"travel.investigate.sansebastian",
+{id:"travel.investigate.granada",
 actionId:"travel",
 label:"Onwards from granada",
 startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.sansebastian:1},
+requirements:{domicile:1,city.granada:1},
 	internaldeck: {spec: [city.strasbourg,city.avignon,city.marrakech,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -458,18 +458,18 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.avignon:1},
-	internaldeck: {spec: [city.munich,city.sanmarino,city.algiers,city.sansebastian], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+	internaldeck: {spec: [city.munich,city.venice,city.algiers,city.granada], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 
-{id:"travel.investigate.sanmarino",
+{id:"travel.investigate.venice",
 actionId:"travel",
 label:"Onwards from venice",
 startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.sanmarino:1},
+requirements:{domicile:1,city.venice:1},
 	internaldeck: {spec: [city.vienna,city.budapest,city.valletta,city.avignon], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -481,7 +481,7 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.budapest:1},
-	internaldeck: {spec: [city.krakow,city.cluj,city.tirana,city.sanmarino], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+	internaldeck: {spec: [city.krakow,city.cluj,city.tirana,city.venice], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.cluj",
@@ -521,7 +521,7 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.marrakech:1},
-	internaldeck: {spec: [city.sansebastian,city.algiers,end.ghardaia,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+	internaldeck: {spec: [city.granada,city.algiers,end.ghardaia,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.algiers",
@@ -543,7 +543,7 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.valletta:1},
-	internaldeck: {spec: [city.sanmarino,city.tirana,city.tripoli,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+	internaldeck: {spec: [city.venice,city.tirana,city.tripoli,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.tirana",
