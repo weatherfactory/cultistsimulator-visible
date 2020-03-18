@@ -154,7 +154,6 @@ icon:hq
 {id:"lifespan.stolen",
 label:"Stolen Lifespan",
 description:"FNORD",
-icon:boredom,
 isAspect:true
 },
 
@@ -221,16 +220,22 @@ label: "Cash",
 aspects: {asset:1,portable:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
-icon:funds,
 comments: "Don't forget spintriae"
 },
 
-{id: "op.shrine.lionsmith",
-label: "Opportunity: Shrine of the Lionsmith",
-aspects: {opportunity:1},
+{id: "loc.shrine.colonel",
+label: "Location: an Iron Shrine",
+aspects: {location:1},
 description:"FNORD.",
-slots:[{actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
-lifetime:180
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+},
+
+
+{id: "loc.shrine.lionsmith",
+label: "Location: a Golden Shrine",
+aspects: {location:1},
+description:"FNORD.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
 
 
@@ -395,7 +400,6 @@ comments: "Not currently in use."
      {id: "obscurity",
       label: "Obscurity",
       description:"This might be the only defence against the reckoner lords. It might be no defence at all. ",
-	  icon: diarist_unknown
 	  },
 	  
 	  {id: "temptation.obscurity",
@@ -421,8 +425,7 @@ description:"I've stolen a fortune in years from a reckoner lord who trusted me.
 	  	  {id:"year.stolen",
 	  label: "Stolen Year",
 	  description:"A year of generously donated life, as entered in the Cindered Tally.",
-	  aspects:{lifespan.stolen:1},
-	  icon: articlewintera
+	  aspects:{lifespan.stolen:1}
 	  },
 	  {id:"trace",
 	  label:"Trace",
