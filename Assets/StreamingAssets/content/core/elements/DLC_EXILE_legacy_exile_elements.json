@@ -102,6 +102,13 @@ label:"Consecrated: Lionsmith",
 isAspect:true
 },
 
+{id: "shrine.edge",
+label: "Shrine of the Edge",
+description:"A place dedicated to an Hour of struggle and conflict.",
+isAspect:true,
+isHidden:true
+},
+
 
 {id:"rkx.demote",
 label:"Reckoner Demotion",
@@ -225,7 +232,7 @@ comments: "Don't forget spintriae"
 
 {id: "loc.shrine.colonel",
 label: "Location: an Iron Shrine",
-aspects: {location:1},
+aspects: {location:1,shrine.edge:1},
 description:"FNORD.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
@@ -233,7 +240,7 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 
 {id: "loc.shrine.lionsmith",
 label: "Location: a Golden Shrine",
-aspects: {location:1},
+aspects: {location:1,shrine.edge:1},
 description:"FNORD.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
