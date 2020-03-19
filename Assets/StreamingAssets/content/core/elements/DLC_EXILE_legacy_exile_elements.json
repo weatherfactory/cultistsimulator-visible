@@ -171,6 +171,14 @@ isAspect:true,
 icon:potential
 },
 
+
+{id:"remote",
+label:"Remote",
+description:"FNORD",
+isAspect:true,
+icon:erratic
+},
+
 {id:"end",
 label:"Map's Edge",
 description:"The time may come when I can run no further. Then I must choose whether to lose myself in the loneliest place I can find... or choose that place to turn and face my Foe.",
@@ -198,6 +206,15 @@ description:"Asset FNORD",
 isAspect:true,
 icon:compensationvalue
 },
+
+
+{id:"vault.library",
+label:"Library",
+description:"If one is permitted to enter this space, one may benefit from conversations with both the living and the dead. But only in strictest silence.",
+isAspect:true,
+icon:text
+},
+
 
 {id:"portable",
 label:"Portable",
@@ -243,6 +260,22 @@ label: "Location: a Golden Shrine",
 aspects: {location:1,shrine.edge:1},
 description:"FNORD.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+},
+
+{
+id:"loc.library.serapeum",
+label:"The Invisible Serapeum",
+aspects:{location:1,vault.library:1},
+description:"FNORD.",
+icon:"vaultlandbeyondforest5"
+},
+
+{
+id:"loc.treasures.tarascon",
+label:"Chateau Tarascon",
+aspects:{location:1,vault:1},
+description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
+icon:"vaultlandbeyondforest2"
 },
 
 

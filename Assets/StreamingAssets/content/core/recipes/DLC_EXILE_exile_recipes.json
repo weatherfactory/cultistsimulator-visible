@@ -223,6 +223,29 @@ craftable:true,
 ending: obscurityvictory
 },
 
+
+{id:"travel.visit.vault.library",
+actionId:"travel",
+label:"Visit Library",
+startdescription:"FNORD placeholder",
+description:"FNORD",
+requirements:{vault.library:1},
+effects:{location:-1,fragmentedge.exile:1},
+warmup:30,
+craftable:true},
+
+
+{id:"travel.visit.vault.treasures",
+actionId:"travel",
+label:"Visit Vault",
+startdescription:"FNORD placeholder",
+description:"FNORD",
+requirements:{vault:1},
+effects:{location:-1, weapon.biedde:1},
+warmup:30,
+craftable:true},
+
+
 {id:"travel.visit.shrine.colonel",
 actionId:"travel",
 label:"Visit an Iron Shrine",
@@ -846,7 +869,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile:1,city.alexandria:1},
-	internaldeck: {spec: [loc.shrine.lionsmith], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [loc.shrine.lionsmith,loc.library.serapeum], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -879,8 +902,9 @@ startdescription:"FNORD Reconnoitre",
 warmup:60,
 aspects:{},
 craftable:true,
+craftable:true,
 requirements:{domicile:1,city.avignon:1},
-	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice,loc.treasures.tarascon], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.baghdad",

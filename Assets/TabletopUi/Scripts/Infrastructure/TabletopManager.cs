@@ -1022,7 +1022,11 @@ namespace Assets.CS.TabletopUI {
         public static void SetGraphicsLevel(int level)
         {
             QualitySettings.SetQualityLevel(level);
-           
+            if (level == 1)
+                Application.targetFrameRate = 30; //ram down the frame rate for v low quality
+            else
+                Application.targetFrameRate = 60;
+
         }
 
         public static bool GetAccessibleCards()
