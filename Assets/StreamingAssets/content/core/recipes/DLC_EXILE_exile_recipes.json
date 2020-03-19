@@ -397,7 +397,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.london:1},
+requirements:{domicile:1,cash:1,city.london:1},
 	internaldeck: {spec: [end.bornholm,city.amsterdam,city.paris,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -408,7 +408,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.amsterdam:1},
+requirements:{domicile:1,cash:1,city.amsterdam:1},
 	internaldeck: {spec: [end.bornholm,city.aachen,city.rostock,city.london], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -419,7 +419,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.rostock:1},
+requirements:{domicile:1,cash:1,city.rostock:1},
 	internaldeck: {spec: [end.bornholm,city.kaunas,city.prague], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 {id:"travel.investigate.paris",
@@ -429,7 +429,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.paris:1},
+requirements:{domicile:1,cash:1,city.paris:1},
 	internaldeck: {spec: [city.london,city.aachen,city.strasbourg,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -440,7 +440,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.aachen:1},
+requirements:{domicile:1,cash:1,city.aachen:1},
 	internaldeck: {spec: [city.amsterdam,city.paris,city.prague,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -452,7 +452,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.prague:1},
+requirements:{domicile:1,cash:1,city.prague:1},
 	internaldeck: {spec: [city.rostock,city.kaunas,city.vienna,city.aachen], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -465,7 +465,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.kaunas:1},
+requirements:{domicile:1,cash:1,city.kaunas:1},
 	internaldeck: {spec: [end.slettnes,city.stpetersburg,city.krakow,city.prague,city.rostock], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -477,7 +477,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.stpetersburg:1},
+requirements:{domicile:1,cash:1,city.stpetersburg:1},
 	internaldeck: {spec: [end.slettnes,city.nizhny,city.kiev,city.kaunas], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -485,11 +485,11 @@ requirements:{domicile:1,city.stpetersburg:1},
 {id:"travel.investigate.nizhny",
 actionId:"travel",
 label:"Onwards from Nizhny",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.nizhny:1},
+requirements:{domicile:1,cash:3,city.nizhny:1},
 	internaldeck: {spec: [end.cheko,city.yekaterinburg,city.stalingrad,city.stpetersburg], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -501,7 +501,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.strasbourg:1},
+requirements:{domicile:1,cash:1,city.strasbourg:1},
 	internaldeck: {spec: [city.paris,city.aachen,city.granada,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -515,7 +515,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.munich:1},
+requirements:{domicile:1,cash:1,city.munich:1},
 	internaldeck: {spec: [city.aachen,city.vienna,city.avignon,city.strasbourg], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -526,7 +526,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.vienna:1},
+requirements:{domicile:1,cash:1,city.vienna:1},
 	internaldeck: {spec: [city.prague,city.krakow,city.venice,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
 },
 
@@ -538,7 +538,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.krakow:1},
+requirements:{domicile:1,cash:1,city.krakow:1},
 	internaldeck: {spec: [city.kaunas,city.kiev,city.budapest,city.vienna], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -551,7 +551,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.kiev:1},
+requirements:{domicile:1,cash:1,city.kiev:1},
 	internaldeck: {spec: [city.stpetersburg,city.stalingrad,city.cluj,city.krakow], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -559,11 +559,11 @@ requirements:{domicile:1,city.kiev:1},
 {id:"travel.investigate.stalingrad",
 actionId:"travel",
 label:"Onwards from Stalingrad",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.stalingrad:1},
+requirements:{domicile:1,cash:3,city.stalingrad:1},
 	internaldeck: {spec: [city.nizhny,city.yekaterinburg,city.tiflis,city.kiev], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -571,11 +571,11 @@ requirements:{domicile:1,city.stalingrad:1},
 {id:"travel.investigate.yekaterinburg",
 actionId:"travel",
 label:"Onwards from Yekaterinburg",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.yekaterinburg:1},
+requirements:{domicile:1,cash:3,city.yekaterinburg:1},
 	internaldeck: {spec: [end.cheko,end.paro,city.samarkand,city.stalingrad,city.nizhny], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -587,7 +587,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.granada:1},
+requirements:{domicile:1,cash:1,city.granada:1},
 	internaldeck: {spec: [city.strasbourg,city.avignon,city.marrakech,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -599,7 +599,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.avignon:1},
+requirements:{domicile:1,cash:1,city.avignon:1},
 	internaldeck: {spec: [city.munich,city.venice,city.algiers,city.granada], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -611,7 +611,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.venice:1},
+requirements:{domicile:1,cash:1,city.venice:1},
 	internaldeck: {spec: [city.vienna,city.budapest,city.valletta,city.avignon], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -622,14 +622,14 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.budapest:1},
+requirements:{domicile:1,cash:1,city.budapest:1},
 	internaldeck: {spec: [city.krakow,city.cluj,city.tirana,city.venice], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.cluj",
 actionId:"travel",
 label:"Onwards from Cluj-Napoca",
-requirements:{domicile:1,city.cluj:1},
+requirements:{domicile:1,cash:1,city.cluj:1},
 	internaldeck: {spec: [city.kiev,city.tiflis,city.istanbul,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -640,7 +640,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.tiflis:1},
+requirements:{domicile:1,cash:1,city.tiflis:1},
 	internaldeck: {spec: [city.stalingrad,city.samarkand,city.baghdad,city.cluj], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -651,7 +651,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.samarkand:1},
+requirements:{domicile:1,cash:1,city.samarkand:1},
 	internaldeck: {spec: [city.yekaterinburg,end.paro,city.meshad,city.tiflis], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -662,7 +662,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.marrakech:1},
+requirements:{domicile:1,cash:1,city.marrakech:1},
 	internaldeck: {spec: [city.granada,city.algiers,end.ghardaia,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -673,18 +673,18 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.algiers:1},
+requirements:{domicile:1,cash:1,city.algiers:1},
 	internaldeck: {spec: [city.avignon,city.valletta,city.tripoli,end.ghardaia,city.marrakech], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.valletta",
 actionId:"travel",
 label:"Onwards from Valletta",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.valletta:1},
+requirements:{domicile:1,cash:3,city.valletta:1},
 	internaldeck: {spec: [city.venice,city.tirana,city.tripoli,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -695,7 +695,7 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.tirana:1},
+requirements:{domicile:1,cash:1,city.tirana:1},
 	internaldeck: {spec: [city.budapest,city.istanbul,city.candia,city.valletta], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -706,14 +706,14 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.istanbul:1},
+requirements:{domicile:1,cash:1,city.istanbul:1},
 	internaldeck: {spec: [city.cluj,city.baghdad,city.alexandria,city.tirana], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.baghdad",
 actionId:"travel",
 label:"Onwards from Baghdad",
-requirements:{domicile:1,city.baghdad:1},
+requirements:{domicile:1,cash:1,city.baghdad:1},
 startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
 warmup:60,
 aspects:{minortracerisk:1},
@@ -724,11 +724,11 @@ craftable:true,
 {id:"travel.investigate.meshad",
 actionId:"travel",
 label:"Onwards from Meshad",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.meshad:1},
+requirements:{domicile:1,cash:3,city.meshad:1},
 	internaldeck: {spec: [city.samarkand,end.paro,end.messana,city.baghdad], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -739,18 +739,18 @@ startdescription:"I'll make discreet enquiries about other cities. [This allows 
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.tripoli:1},
+requirements:{domicile:1,cash:1,city.tripoli:1},
 	internaldeck: {spec: [city.valletta,city.candia,end.ghardaia,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
 {id:"travel.investigate.candia",
 actionId:"travel",
 label:"Onwards from Candia-Heraklion",
-startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
+startdescription:"I'll make discreet enquiries about other cities. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you. And you're a long way from anywhere. It'll be expensive.]",
 warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
-requirements:{domicile:1,city.candia:1},
+requirements:{domicile:1,cash:3,city.candia:1},
 	internaldeck: {spec: [city.tirana,city.alexandria,end.messana,city.tripoli], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
@@ -762,9 +762,25 @@ aspects:{minortracerisk:1},
 craftable:true,
 actionId:"travel",
 label:"Onwards from Alexandria",
-requirements:{domicile:1,city.alexandria:1},
+requirements:{domicile:1,cash:1,city.alexandria:1},
 	internaldeck: {spec: [city.istanbul,city.baghdad,end.messana,city.candia], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
+
+{id:"travel.investigate.hint.remote",
+actionId:"travel",
+label:"Onwards?",
+startdescription:"All the roads from here are long. It'll be expensive to find another place to run.",
+requirements:{domicile:1,remote:1},
+hintonly:true,
+craftable:false},
+
+{id:"travel.investigate.hint",
+actionId:"travel",
+label:"Onwards?",
+startdescription:"I'll need cash to pay sources, if I'm to find another place to run.",
+requirements:{domicile:1},
+hintonly:true,
+craftable:false},
 
 
 {id:"travel.prepare.end",
