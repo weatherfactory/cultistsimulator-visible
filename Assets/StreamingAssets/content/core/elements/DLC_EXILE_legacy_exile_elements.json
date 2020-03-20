@@ -1003,6 +1003,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 14,lore:1},
             description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted},
 			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -1095,14 +1096,14 @@ icon: bloodshed
 
 
 	  {id: "wound.exile",
-label: "Wound",
+label: "My Wound",
 description:"Seven of these will end me.",
 lifetime:600,
 icon: long.wound
 },
 
 	  {id: "wound.foe",
-label: "Wound",
+label: "Foe's Wound",
 description:"Seven of these will end my enemy.",
 lifetime:600,
 icon: scar_heart
