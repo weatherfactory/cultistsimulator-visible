@@ -167,8 +167,7 @@ isAspect:true
 {id:"destination",
 label:"Destination",
 description:"I might find safety there for a little longer... if they don't get there first.",
-isAspect:true,
-icon:potential
+isAspect:true
 },
 
 
@@ -290,7 +289,7 @@ lifetime:180
 },
 
 	  	  {id: "op.licence.medical",
-label: "Opportunity: A Medical Licence?",
+label: "Opportunity: Medical Credentials?",
 aspects: {opportunity:1},
 description:"FNORD.",
 xtriggers:{negotiation:licence.medical},
@@ -300,7 +299,7 @@ lifetime:180
 },
 
 	  	  {id: "op.connection",
-label: "Opportunity: Connection?",
+label: "Opportunity: Official Connection?",
 aspects: {opportunity:1},
 description:"FNORD.",
 xtriggers:{purchase:connection},
@@ -327,7 +326,7 @@ icon:fragmentheart
 },
 
 {id:"connection",
-label:"Connection",
+label:"Official Connection",
 aspects:{asset:1},
 description:"Connection FNORD",
 icon:favour
