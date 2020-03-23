@@ -1,5 +1,5 @@
 {
-"recipes": 
+"recipes": [
 
 
 
@@ -11,7 +11,6 @@ description:"I'm here.",
 requirements:{ticket.train:1},
 effects:{obscurity:1,ticket.train:-1},
 internaldeck: {spec: [city.aachen,city.prague,city.munich,city.vienna,city.krakow,city.kiev,city.avignon,city.venice,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
-
 alt:[{id:"turn.begin",additional:true},
 {id:"scout.first",additional:true}],
 warmup:10,
