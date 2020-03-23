@@ -277,10 +277,16 @@ icon:"vaultlandbeyondforest2"
 },
 
 
+{id: "op.giorgiou",
+label: "Opportunity: Giorgiou",
+aspects: {op:1},
+description:""
+}
+
 
 {id: "op.discreetoffice",
 label: "Opportunity: Discreet Office?",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD.",
 xtriggers:{purchase:discreetoffice},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
@@ -289,7 +295,7 @@ lifetime:180
 
 	  	  {id: "op.licence.medical",
 label: "Opportunity: Medical Credentials?",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD.",
 xtriggers:{negotiation:licence.medical},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
@@ -299,7 +305,7 @@ lifetime:180
 
 	  	  {id: "op.connection",
 label: "Opportunity: Official Connection?",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD.",
 xtriggers:{purchase:connection},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
@@ -333,7 +339,7 @@ icon:favour
 
 {id: "ticket.train",
 label: "A Hastily Purchased Train Ticket",
-aspects: {opportunity:1,destination:1},
+aspects: {op:1,destination:1},
 description:"A ticket to the very first destination that came to mind - "
 },
 
@@ -878,63 +884,63 @@ icon: vaultshires1
 
 {id: "op.cold",
 label: "Chill Winds",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"This week, frost walks here.",
 lifetime:180
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"This week, the air shimmers.",
 lifetime:180
 },
 
 {id: "op.sea",
 label: "Sea Port",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
 
 {id: "op.faith",
 label: "Opportunity: Faith",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.cats",
 label: "Opportunity: Cats",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.heights",
 label: "Opportunity: Heights",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.horned",
 label: "Opportunity: Horned",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
-aspects: {opportunity:1},
+aspects: {op:1},
 description:"FNORD",
 lifetime:180
 },

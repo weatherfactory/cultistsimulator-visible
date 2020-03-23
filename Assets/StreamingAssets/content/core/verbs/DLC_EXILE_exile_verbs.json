@@ -15,7 +15,7 @@
             description: "Make use of something. [Address Opportunities, run Operations, or convert years to cash.]",
 			atStart:false,
 			  slots: [{id:"plan",label:"Plan",
-			  required:{asset:1,opportunity:1,lifespan.stolen:1,edge:1}}],
+			  required:{asset:1,op:1,lifespan.stolen:1,edge:1}}],
         },
 		{
             id: "travel",
