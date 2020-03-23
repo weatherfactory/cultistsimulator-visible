@@ -1,6 +1,5 @@
 {"elements":
     [
-	
 {id:"uqedgelore.exile",label:"Exile: Edge Lore",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.cold",label:"Weakness: Cold",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.heat",label:"Weakness: Heat",isAspect:true,isHidden:true},
@@ -1116,16 +1115,22 @@ icon: scar_heart
 
 
 {id: "rkx.scout",
-label: "Reckoner Scout",
+label: "Reckoner Informants",
 description:"FNORD",
-comments:"rkx.scout",
-xtriggers:{rkx.promote:rkx.enforcer,rkx.promotetofoe:rkx.foe}
+xtriggers:{rkx.promote:[{id:rkx.enforcer,chance:50},{id:rkx.operative}],rkx.promotetofoe:rkx.foe}
+},
+{id: "rkx.operative",
+label: "Reckoner Operative",
+description:"FNORD",
+verbicon:"rkx.operative",
+aspects:{rkx.rank:1},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
 },
 
 {id: "rkx.enforcer",
 label: "Reckoner Enforcer",
 description:"FNORD",
-comments:"rkx.enforcer",
+verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
 },

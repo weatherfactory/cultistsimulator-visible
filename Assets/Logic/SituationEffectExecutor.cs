@@ -13,19 +13,22 @@ using UnityEngine;
 
 namespace Assets.Logic
 {
-   public class SituationEffectExecutor
-   {
-       private ITabletopManager _ttm;
-       public SituationEffectExecutor(ITabletopManager ttm)
-       {
-           _ttm = ttm;
-       }
+    public class SituationEffectExecutor
+    {
+        private ITabletopManager _ttm;
 
-       public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
+        public SituationEffectExecutor(ITabletopManager ttm)
+        {
+            _ttm = ttm;
+        }
+
+        public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,
+            IGameEntityStorage storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
             var cardAspects = stacksManager.GetTotalAspects();
- 
+            IDice dice = d;
+
             //MutationEffects happen first. I often regret this, because I sometimes create a card and want to apply a mutationeffect to it.
             //But I can always pass something through an empty recipe if I gotta.
             RunMutationEffects(command, stacksManager);
@@ -36,11 +39,11 @@ namespace Assets.Logic
             //Card aspects are 'this should generally happen'
             //If this basic logic doesn't work, solutions under consideration: (1) xtrigger priorities (2) feeding a stack back in if it's transformed to react to its new xtriggers (with guard against loop)
 
-            RunXTriggers(stacksManager, recipeAspects);
-            RunXTriggers(stacksManager, cardAspects);
+            RunXTriggers(stacksManager, recipeAspects, dice);
+            RunXTriggers(stacksManager, cardAspects, dice);
 
             //note: standard effects happen *after* XTrigger effects
-            RunDeckEffect(command,stacksManager,storage);
+            RunDeckEffect(command, stacksManager, storage);
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
 
@@ -52,40 +55,42 @@ namespace Assets.Logic
 
 
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
-            RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
+            RunConsumptions(
+                stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
 
-       private void RunPurges(ISituationEffectCommand command, ITabletopManager ttm)
-       {
-        foreach(var p in command.Recipe.Purge)
+        private void RunPurges(ISituationEffectCommand command, ITabletopManager ttm)
         {
-            ttm.PurgeElement(p.Key,p.Value);
+            foreach (var p in command.Recipe.Purge)
+            {
+                ttm.PurgeElement(p.Key, p.Value);
+            }
         }
-       }
 
 
 
-       private void RunVerbManipulations(ISituationEffectCommand command, ITabletopManager ttm)
-       {
-           foreach (var h in command.Recipe.HaltVerb)
-               ttm.HaltVerb(h.Key, h.Value);
+        private void RunVerbManipulations(ISituationEffectCommand command, ITabletopManager ttm)
+        {
+            foreach (var h in command.Recipe.HaltVerb)
+                ttm.HaltVerb(h.Key, h.Value);
 
-           foreach (var d in command.Recipe.DeleteVerb)
-               ttm.DeleteVerb(d.Key, d.Value);
-       }
+            foreach (var d in command.Recipe.DeleteVerb)
+                ttm.DeleteVerb(d.Key, d.Value);
+        }
 
 
         private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
-       {
-           foreach(var mutationEffect in command.Recipe.MutationEffects)
-           { 
-               foreach (var stack in stacksManager.GetStacks())
-               {
-                    if(stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
-                        stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel,mutationEffect.Additive);
-               }
-           }
+        {
+            foreach (var mutationEffect in command.Recipe.MutationEffects)
+            {
+                foreach (var stack in stacksManager.GetStacks())
+                {
+                    if (stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
+                        stack.SetMutation(mutationEffect.MutateAspectId, mutationEffect.MutationLevel,
+                            mutationEffect.Additive);
+                }
+            }
         }
 
         private void RunConsumptions(IElementStacksManager stacksManager)
@@ -140,80 +145,121 @@ namespace Assets.Logic
             foreach (var kvp in command.GetElementChanges())
             {
                 var source = Source.Fresh(); //might later be eg Transformed
-                stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value, source, new Context(Context.ActionSource.SituationEffect));
+                stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value, source,
+                    new Context(Context.ActionSource.SituationEffect));
             }
         }
 
-        private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent)
+        private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent,
+            IDice dice)
         {
             ICompendium _compendium = Registry.Retrieve<ICompendium>();
 
             foreach (var eachStack in stacksManager.GetStacks())
             {
+                RunXTriggersOnMutationsForStack(aspectsPresent, dice, eachStack, _compendium);
 
-                foreach (var eachStackMutation in eachStack.GetCurrentMutations())
+
+                RunXTriggersOnStackItself(stacksManager, aspectsPresent, dice, eachStack, _compendium);
+            }
+        }
+
+        private static void RunXTriggersOnMutationsForStack(AspectsDictionary aspectsPresent, IDice dice,
+            IElementStack eachStack, ICompendium _compendium)
+        {
+            foreach (var eachStackMutation in eachStack.GetCurrentMutations())
+            {
+                //first we apply xtriggers to mutations - but not to the default stack aspects.
+                //i.e., mutations can get replaced by other mutations thanks to xtrigger morphs
+                //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
+                var stackMutationBaseAspect = _compendium.GetElementById(eachStackMutation.Key);
+                if (stackMutationBaseAspect == null)
                 {
-                    //first we apply xtriggers to mutations - but not to the default stack aspects.
-                    //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
-                    var stackMutationBaseAspect = _compendium.GetElementById(eachStackMutation.Key);
-                    if (stackMutationBaseAspect == null)
+                    NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
+                }
+                else
+                {
+                    foreach (var mutationXTrigger in stackMutationBaseAspect.XTriggers)
                     {
-                        NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
-                    }
-                    else
-                    {
-                        foreach (var mutationXTrigger in stackMutationBaseAspect.XTriggers)
+                        if (aspectsPresent.ContainsKey(mutationXTrigger.Key))
                         {
-                            if (aspectsPresent.ContainsKey(mutationXTrigger.Key))
+                            foreach (var morph in mutationXTrigger.Value)
                             {
-                                string newMutationId = mutationXTrigger.Value;
-                                string oldMutationId = eachStackMutation.Key;
-                                int existingLevel = eachStackMutation.Value;
-                                eachStack.SetMutation(oldMutationId, 0, false);
-                                eachStack.SetMutation(newMutationId, existingLevel,
-                                    true); //make it additive rather than overwriting, just in case
-                            }
+                                if (morph.Chance >= dice.Rolld100())
+                                {
+                                    string newMutationId = morph.Id;
+                                    string currentMutationId = eachStackMutation.Key;
+                                    int existingLevel = eachStackMutation.Value;
 
+                                    if (!morph.Additional)
+                                    {
+                                        eachStack.SetMutation(currentMutationId, 0, false);
+                                        eachStack.SetMutation(newMutationId, existingLevel,
+                                            true); //make it additive rather than overwriting, just in case
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        eachStack.SetMutation(newMutationId, existingLevel, true);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+            }
+        }
 
-                //run xtriggers on stacks: repopulate that stack with the replacing element
-                var xTriggers = eachStack.GetXTriggers();
-                
+        private static void RunXTriggersOnStackItself(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent,
+            IDice dice, IElementStack eachStack, ICompendium _compendium)
+        {
+            var xTriggers = eachStack.GetXTriggers();
 
-                foreach (var triggerKey in xTriggers.Keys)
-                    //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
-                    if (aspectsPresent.ContainsKey(triggerKey))
+            foreach (var triggerKey in xTriggers.Keys)
+            {
+                //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
+                if (aspectsPresent.ContainsKey(triggerKey))
+                {
+                    foreach (var morph in xTriggers[triggerKey])
                     {
-                        Element effectElement = _compendium.GetElementById(xTriggers[triggerKey]);
+                        Element effectElement = _compendium.GetElementById(morph.Id);
                         if (effectElement == null)
                         {
                             NoonUtility.Log(
                                 "Tried to run an xtrigger with an element effect id that doesn't exist: " +
                                 xTriggers[triggerKey], 1);
-                            return;
                         }
 
+                        else if (morph.Chance >= dice.Rolld100())
                         {
-                            string newElementId = xTriggers[triggerKey];
+                            string newElementId = morph.Id;
                             string oldElementId = eachStack.EntityId;
                             int existingQuantity = eachStack.Quantity;
+                            if (!morph.Additional)
+                            {
+                                eachStack.Populate(newElementId, existingQuantity, Source.Existing());
+                                NoonUtility.Log(
+                                    "xtrigger aspect " + triggerKey + " caused " + oldElementId +
+                                    " to transform into " + newElementId, 10);
+                                break;
+                            }
+                            else
+                            {
+                                var newStack = stacksManager.AddAndReturnStack(newElementId, existingQuantity,
+                                    Source.Existing(),
+                                    new Context(Context.ActionSource.ChangeTo));
+                                foreach (var mutation in eachStack.GetCurrentMutations())
+                                    newStack.SetMutation(mutation.Key, mutation.Value, false);
 
-                            eachStack.Populate(newElementId, existingQuantity, Source.Existing());
-
-
-                            NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + oldElementId +
-                                            " to transform into " +
-                                            newElementId, 10);
-
+                                NoonUtility.Log(
+                                    "xtrigger aspect marked additional=true " + triggerKey + " caused " +
+                                    oldElementId + " to spawn a new " + newElementId, 10);
+                            }
                         }
                     }
-               
-
+                }
             }
         }
-
-
-   }
+    }
 }
+

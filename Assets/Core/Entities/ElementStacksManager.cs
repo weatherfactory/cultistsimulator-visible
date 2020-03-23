@@ -94,6 +94,8 @@ public class ElementStacksManager : IElementStacksManager {
         return quantityChange;
     }
 
+    
+
 
     public int GetCurrentElementQuantity(string elementId) {
         return _stacks.Where(e => e.EntityId == elementId).Sum(e => e.Quantity);
@@ -134,6 +136,15 @@ public class ElementStacksManager : IElementStacksManager {
     public IEnumerable<IElementStack> GetStacks() {
         return _stacks.Where(s => !s.Defunct).ToList();
     }
+
+    public IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context)
+    {
+        var newStack = _tokenContainer.ProvisionElementStack(elementId, quantity, stackSource);
+        AcceptStack(newStack,context);
+        return newStack;
+
+    }
+
     /// <summary>
     /// Accept a stack into this StackManager. This also notifies the related TokenContainer to accept it in the view.
     /// </summary>

@@ -77,7 +77,7 @@ namespace Assets.Editor
                 _currentMutations.Add(aspectId,value);
         }
 
-        public Dictionary<string, string> GetXTriggers()
+        public Dictionary<string, List<MorphDetails>> GetXTriggers()
         {
             return _element.XTriggers;
         }

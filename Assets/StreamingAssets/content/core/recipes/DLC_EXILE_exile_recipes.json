@@ -1,17 +1,7 @@
 {
-"recipes": [
+"recipes": 
 
 
-
-
-{id:"fnord",
-actionId:"fnord",
-label:"FNORD",
-startdescription:"FNORD",
-description:"FNORD",
-
-purge:{obscurity:1},
-warmup:1},
 
 {id:"travel.start",
 actionId:"travel",
@@ -766,6 +756,14 @@ requirements:{domicile:1,cash:1,city.alexandria:1},
 	internaldeck: {spec: [city.istanbul,city.baghdad,end.messana,city.candia], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 },
 
+{id:"travel.investigate.hint.wilderness",
+actionId:"travel",
+label:"Onwards?",
+startdescription:"I'll have to take the first chance that presents itself. I might end up anywhere.",
+requirements:{domicile:1,wilderness:1},
+hintonly:true,
+craftable:false},
+
 {id:"travel.investigate.hint.remote",
 actionId:"travel",
 label:"Onwards?",
@@ -787,8 +785,8 @@ actionId:"travel",
 label:"Anywhere but Here",
 startdescription:"FNORD",
 description:"FNORD",
-requirements:{wilderness:1, domicile:1, funds:1},
-effect:{wilderness:-1},
+requirements:{wilderness:1, domicile:1, cash:1},
+effects:{wilderness:-1},
 internaldeck: {spec: [end.bornholm, end.slettnes,end.cheko,end.paro,end.messana,end.ghardaia,end.morbihan,
 city.alexandria,city.algiers,city.amsterdam,city.avignon,city.baghdad,city.budapest,city.candia,city.cluj,city.granada,city.istanbul,city.kaunas,city.kiev,city.krakow,city.london,city.marrakech,city.meshad,city.munich,city.nizhny,city.paris,city.prague,city.aachen,city.rostock,city.samarkand,city.stpetersburg,city.stalingrad,city.strasbourg,city.tiflis,city.tirana,city.tripoli,city.valletta,city.venice,city.vienna,city.yekaterinburg], draws: 1, defaultcard: end.slettnes, resetonexhaustion: false},
 warmup:30,

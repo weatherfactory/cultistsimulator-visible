@@ -236,7 +236,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        virtual public Dictionary<string, string> GetXTriggers() {
+        virtual public Dictionary<string, List<MorphDetails>> GetXTriggers() {
             return _element.XTriggers;
         }
 

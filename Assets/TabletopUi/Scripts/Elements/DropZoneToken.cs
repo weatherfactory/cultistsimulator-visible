@@ -105,9 +105,9 @@ namespace Assets.CS.TabletopUI {
         {
         }
 
-        public override Dictionary<string, string> GetXTriggers()
+        public override Dictionary<string, List<MorphDetails>> GetXTriggers()
 		{
-            return new Dictionary<string, string>();
+            return new Dictionary<string, List<MorphDetails>>();
         }
 
         public override IAspectsDictionary GetAspects(bool includeSelf = true)

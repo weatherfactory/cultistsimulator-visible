@@ -16,7 +16,7 @@ public class Element
     /// then the box would become an open_box regardless of what else happened in the recipe.
     /// XTriggers run *before* the rest of the recipe (so if the recipe affected open_box elements but not locked_box elements, those effects would take place if there was a Knock in the mix).
     /// </summary>
-    public Dictionary<string, string> XTriggers;
+    public Dictionary<string, List<MorphDetails>> XTriggers;
 
     private string _label="";
     private string _description="";
@@ -106,7 +106,7 @@ public class Element
 
         ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
-        XTriggers=new Dictionary<string, string>();
+        XTriggers=new Dictionary<string, List<MorphDetails>>();
 
         Induces=new List<LinkedRecipeDetails>();
 
@@ -126,5 +126,44 @@ public class Element
 
 
     }
+
+
 }
 
+
+public class MorphDetails
+{
+    private readonly bool _additional;
+    private readonly string _id;
+    private readonly int _chance;
+    
+    public string Id
+    {
+        get { return _id; }
+    }
+
+    public int Chance
+    {
+        get { return _chance; }
+    }
+
+    public bool Additional
+    {
+        get { return _additional; }
+    }
+    public MorphDetails(string id)
+    {
+        _id = id;
+        _additional = false;
+        _chance = 100;
+
+    }
+
+    public MorphDetails(string id, int chance, bool additional)
+    {
+        _additional = additional;
+        _id = id;
+        _chance = chance;
+
+    }
+}

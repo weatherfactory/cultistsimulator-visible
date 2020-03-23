@@ -761,8 +761,12 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             foreach (var xt in e.Value.XTriggers)
             {
-                if (!Elements.ContainsKey(xt.Value))
-                    LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
+                foreach(var m in xt.Value)
+                { 
+                    if (!Elements.ContainsKey(m.Id))
+                        LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
+
+                }
             }
             if(!string.IsNullOrEmpty(e.Value.DecayTo))
             {
@@ -860,10 +864,44 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 {
                     foreach (string k in htXTriggers.Keys)
                     {
-                        //the element we want to transform this element to when the trigger fires
-                        var xid = htXTriggers[k].ToString();
-                        element.XTriggers.Add(k, xid);
+                        if(htXTriggers[k].GetType()==typeof(ArrayList))
+                        { 
+                            ArrayList alMorphs = htXTriggers.GetArrayList(k);
+                            if (alMorphs != null)
+                            {
+                                List<MorphDetails> morphsForThisXTrigger=new List<MorphDetails>();
+                                foreach (Hashtable m in alMorphs)
+                                {
+                                    string morphTo = m[NoonConstants.KID].ToString();
+                                    int morphChance = Convert.ToInt32(m[NoonConstants.KCHANCE]);
+                                    if (morphChance == 0)
+                                        morphChance = 100; // if left at default, it's 100%
+
+                                    bool morphAdditional = Convert.ToBoolean(m[NoonConstants.KADDITIONAL] ?? false);
+                                    MorphDetails thisMorph= new MorphDetails(morphTo, morphChance, morphAdditional);
+                                    morphsForThisXTrigger.Add(thisMorph);
+                                }
+
+                                element.XTriggers.Add(k, morphsForThisXTrigger);
+                            }
+                        }
+                        else if (htXTriggers[k] is string)
+                        {
+                            var xid = htXTriggers[k].ToString();
+                            MorphDetails basicMorph = new MorphDetails(xid, 100, false);
+                            element.XTriggers.Add(k, new List<MorphDetails>{ basicMorph });
+                        }
+                        else
+                        {
+                            LogProblem("Can't process xtrigger " + k + " in " + element.Id);
+                        }
+
                     }
+                    
+
+
+     
+                    
                 }
 
                 Elements.Add(element.Id, element);

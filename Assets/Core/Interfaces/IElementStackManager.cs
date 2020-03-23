@@ -8,7 +8,7 @@ namespace Assets.Core.Interfaces
 {
     public interface IElementStacksManager
     {
-        int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorId = null);
+        
 
         int GetCurrentElementQuantity(string elementId);
         IDictionary<string, int> GetCurrentElementTotals();
@@ -26,7 +26,10 @@ namespace Assets.Core.Interfaces
 
         void Deregister();
         void RemoveAllStacks();
-     int PurgeElement(Element element, int maxToPurge, Context context);
+     
+        int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorId = null);
         int ReduceElement(string elementId, int quantityChange, Context context);
+        int PurgeElement(Element element, int maxToPurge, Context context);
+        IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context);
     }
 }

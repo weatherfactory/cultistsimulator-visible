@@ -21,7 +21,7 @@ namespace Assets.Core.Interfaces
         IAspectsDictionary GetAspects(bool includingSelf = true);
         Dictionary<string,int> GetCurrentMutations();
         void SetMutation(string aspectId, int value,bool additive);
-        Dictionary<string, string> GetXTriggers();
+        Dictionary<string, List<MorphDetails>> GetXTriggers();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change,Context context);
         void SetQuantity(int quantity, Context context);
