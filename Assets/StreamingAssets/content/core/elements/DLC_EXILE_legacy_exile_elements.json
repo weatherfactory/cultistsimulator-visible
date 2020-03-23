@@ -11,6 +11,12 @@
 {id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
 
+
+{id:"un",
+label:"Unremarkable",
+description:"Don't worry about it",
+ishidden:true,
+noartneeded:true},
 	
 {id:"minortracerisk",
 label:"Minor Trace Risk",
@@ -52,6 +58,27 @@ noartneeded:true
 
 {id:"purchase",
 label:"Purchase",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"bribery",
+label:"Bribery",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"betrayal",
+label:"Betrayal",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"acquaintance.intro",
+label:"Acquaintance intro",
 description:"recipe aspect",
 isAspect:true,
 noartneeded:true
@@ -135,7 +162,6 @@ isAspect:true
 },
 
 
-
 {id:"rkx.infected",
 label:"Reckoner presence",
 description:"FNORD!!",
@@ -191,7 +217,7 @@ isAspect:true,
 icon:long.might
 },
 
-{id:"opportunity",
+{id:"op",
 label:"Opportunity",
 description:"Opportunity FNORD",
 isAspect:true,
@@ -204,6 +230,27 @@ description:"Asset FNORD",
 isAspect:true,
 icon:compensationvalue
 },
+
+{id:"ally",
+label:"Ally",
+description:"One who is prepared to accompany you on your journey.",
+isAspect:true,
+icon:follower
+},
+
+{id: "corpse.exile",
+label: "A Human Corpse",
+description:"They're not here any more. I should make sure I'm not, either."
+},
+
+
+{id:"avaricious",
+label:"Avaricious",
+description:"'Everybody needs money. That's why they call it money.' - Mamet",
+icon:hireling,
+isAspect:true
+},
+
 
 
 {id:"vault.library",
@@ -235,6 +282,17 @@ isAspect:true,
 icon:compensationvalue
 },
 
+{id: "progress",
+label: "Making Progress",
+description:"FNORD getting there.",
+lifetime:1
+},
+{id: "payment",
+label: "Payment",
+description:"FNORD paid off",
+lifetime:1,
+icon:bid
+},
 
 
 {id: "cash",
@@ -242,7 +300,7 @@ label: "Cash",
 aspects: {asset:1,portable:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
-comments: "Don't forget spintriae"
+xtriggers:{bribery:[{id:"progress",additional:true},{id:"payment"}]}
 },
 
 {id: "loc.shrine.colonel",
@@ -265,23 +323,49 @@ id:"loc.library.serapeum",
 label:"The Invisible Serapeum",
 aspects:{location:1,vault.library:1},
 description:"FNORD.",
-icon:"vaultlandbeyondforest5"
+icon:"vaultlandbeyondforest5",
+unique:true
 },
 
 {
 id:"loc.treasures.tarascon",
 label:"Chateau Tarascon",
 aspects:{location:1,vault:1},
+slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
+{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}],
 description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
-icon:"vaultlandbeyondforest2"
+icon:"vaultlandbeyondforest2",
+unique:true
+},
+
+{
+id:"loc.treasures.smuggler",
+label:"Collector's Mansion",
+aspects:{location:1,vault:1},
+slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
+{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}],
+description:"FNORD ",
+icon:"vaultcapital5",
+unique:true
 },
 
 
-{id: "op.giorgiou",
-label: "Opportunity: Giorgiou",
-aspects: {op:1},
-description:""
-}
+{id: "npc.smuggler",
+label: "Giorgiou",
+description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+aspects:{acquaintance:1},
+xtriggers:{acquaintance.intro:[{id:"loc.treasures.smuggler",additional:true},{id:"npc.smuggler.introduced"}],
+betrayal:[{id:corpse.exile},{id:progress}]},
+icon:diarist
+},
+
+{id: "npc.smuggler.introduced",
+label: "Giorgiou",
+description:"FNORD A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+aspects:{acquaintance:1,edge:1,avaricious:1},
+icon:diarist
+},
+
 
 
 {id: "op.discreetoffice",
@@ -441,6 +525,12 @@ slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}
 {actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
 ],
 description:"I've stolen a fortune in years from a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
+},
+
+{id: "temptation.wealth",
+label: "Temptation: Wealth",
+aspects: {desire:1},
+description:"None of this has gone as I planned. But I'd still like to retire in style."
 },
 	  
 	  {id:"decade.stolen",

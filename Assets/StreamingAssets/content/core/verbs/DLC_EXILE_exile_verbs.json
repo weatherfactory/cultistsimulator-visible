@@ -31,7 +31,7 @@
             description: "Send messages, moneys and more. Be careful.",
 			atStart:false,
 				  slots: [{id:"send",label:"Send",
-			  required:{desire:1,cash:1,cash.sent:1}}]
+			  required:{desire:1,cash:1,cash.sent:1,acquaintance:1}}]
         },
 			  {
             id: "time.exile",

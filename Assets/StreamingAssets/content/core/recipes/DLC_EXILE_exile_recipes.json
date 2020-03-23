@@ -27,7 +27,7 @@ mutations:[{filterOnAspectId:destination,mutateAspectId:domicile,mutationLevel:1
 
 {id:"send.first",
 actionId:"send",
-label:"Send",
+label:"Communication",
 startdescription:"I have excellent reasons not to contact anyone from my old life. But that might yet change.",
 effects:{temptation.obscurity:1},
 comments:"opened by initial use recipe",
@@ -213,6 +213,18 @@ ending: obscurityvictory
 },
 
 
+
+{id:"send.acquaintance.intro",
+actionId:"send",
+label:"Speak with an Acquaintance",
+startdescription:"@#npc.smuggler|FNORD A meeting with Giorgiou.@",
+description:"@#npc.smuggler|FNORD Giorgiou has a plan.@",
+requirements:{acquaintance:1,edge:-1},
+aspects:{acquaintance.intro:1},
+warmup:10,
+craftable:true},
+
+
 {id:"travel.visit.vault.library",
 actionId:"travel",
 label:"Visit Library",
@@ -224,15 +236,85 @@ warmup:30,
 craftable:true},
 
 
-{id:"travel.visit.vault.treasures",
+{id:"travel.rob.vault",
 actionId:"travel",
-label:"Visit Vault",
+label:"A Robbery",
 startdescription:"FNORD placeholder",
 description:"FNORD",
-requirements:{vault:1},
-effects:{location:-1, weapon.biedde:1},
+requirements:{vault:1,edge:1},
+aspects:{tracerisk:1},
+alt:[{id:"opx.rob.vault.next", additional:true, expulsion:{limit:3,filter:{vault:1,edge:1}}}],
 warmup:30,
 craftable:true},
+
+{id:"opx.rob.vault.next",
+actionId:"opx.rob.vault",
+label:"FNORD robbery running...",
+startdescription:"FNORD robbery",
+warmup:60,
+linked:[{id:"opx.rob.vault.success"},
+{id:"opx.rob.vault.event.avaricious"},
+{id:"opx.rob.vault.progress"}],
+},
+
+{id:"opx.rob.vault.event.avaricious",
+actionId:"opx.rob.vault",
+label:"A Complication: Avarice",
+startdescription:"My accomplice has chosen this moment to ask for a larger share.",
+requirements:{avaricious:1,payment:-1},
+slots:[{id:"response",label:"Response",required:{cash:1,temptation.defiance:1}}],
+alt:[{id:"opx.rob.vault.bribery"},
+{id:"opx.rob.vault.stab"}],
+warmup:30,
+linked:[{id:"opx.rob.vault.failure"}]
+},
+
+{id:"opx.rob.vault.bribery",
+actionId:"opx.rob.vault",
+label:"FNORD bribery!",
+startdescription:"FNORD bribery successful",
+requirements:{cash:1},
+aspects:{bribery:1},
+linked:[{id:"opx.rob.vault.next"}],
+},
+
+{id:"opx.rob.vault.stab",
+actionId:"opx.rob.vault",
+label:"FNORD stab!",
+startdescription:"FNORD I've dealt with them.",
+requirements:{temptation.defiance:1},
+aspects:{betrayal:1},
+linked:[{id:"opx.rob.vault.next"}],
+},
+
+
+{id:"opx.rob.vault.progress",
+actionId:"opx.rob.vault",
+label:"FNORD progress!",
+startdescription:"FNORD made progress!",
+effects:{progress:1},
+warmup:10,
+linked:[{id:"opx.rob.vault.next"}]
+},
+
+
+{id:"opx.rob.vault.success",
+actionId:"opx.rob.vault",
+label:"FNORD robbery success!",
+startdescription:"FNORD robbery done!",
+requirements:{progress:3},
+effects:{progress:-100,vault:-1, weapon.biedde:1},
+},
+
+{id:"opx.rob.vault.failure",
+actionId:"opx.rob.vault",
+label:"FNORD robbery failed!",
+startdescription:"FNORD robbery failed!",
+effects:{progress:-100,trace:1}
+},
+
+
+
 
 
 {id:"travel.visit.shrine.colonel",
