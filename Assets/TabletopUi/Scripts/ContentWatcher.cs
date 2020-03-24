@@ -26,7 +26,7 @@ public static class WatcherQueue
     {
         LastFileChange = fileChange;
         NeedsRevalidation = true;
-        //Debug.Log($" - filechange at {DateTime.Now}...");
+        Debug.Log($" - filechange at {DateTime.Now}...");
     }
 
 }
@@ -48,6 +48,7 @@ public class ContentWatcher : MonoBehaviour
         WatcherQueue.Reset();
         StatusMessages.text="Content Watcher ready at " + DateTime.Now.ToShortTimeString();
         ValidationMessages.text = String.Empty;
+        validationInProgress = false;
 
         FileSystemWatcher watcher = new FileSystemWatcher
         {
@@ -88,7 +89,7 @@ async void Update()
         
         if (WatcherQueue.NeedsRevalidation && !validationInProgress)
         {
-            //Debug.Log("Validating at " + DateTime.Now.ToLongTimeString());
+            Debug.Log("Validating at " + DateTime.Now.ToLongTimeString());
 
             ValidationBeginning();
             Task<AsyncContentImportResult> resultsTask = Validate();
