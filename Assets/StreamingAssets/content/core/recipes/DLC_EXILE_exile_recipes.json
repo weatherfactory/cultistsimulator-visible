@@ -1986,7 +1986,7 @@ startdescription:"FNORD",
 requirements:{destination:1,cash.sent:-1},
 mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
 warmup:50,
-linked:[{id:"rkx.demote"}]},
+linked:[{id:"rkx.demote"}]}, 
 
 
 
@@ -1999,16 +1999,15 @@ aspects:{rkx.demote:1},
 comments:"If we infected a destination in the previous step, spit the destination out",
 alt:[{id:"spit.infected.destination", additional:true, expulsion:{limit:1,filter:{rkx.infected:1}}}],
 warmup:50,
-linked:[{id:"rkx.reset"}]},
+linked:[{id:"rkx.reset"}]}, 
 
 {id:"spit.infected.destination",
 actionId:"spit.infected.destination",
 label:"Perils Ahead",
 startdescription:"FNORD",
 requirements:{rkx.infected:1},
-warmup:2,
-}, 
-
+warmup:2, 
+},
 
 {id:"rkx.wait",
 actionId:"rkx",
@@ -2018,17 +2017,13 @@ comments:"There's a trace here, but they've missed it",
 requirements:{rkx.event.passive:1,trace:1},
 effects:{trace:-1},
 warmup:50,
-linked:[{id:"rkx.reset"}]},
-
-
+linked:[{id:"rkx.reset"}]}, 
 
 
 {id:"rkx.reset",
 actionId:"rkx",
 effects:{rkx.event:-1},
 linked:[{id:"rkx.selector"}]}
-
-
 
 ]
 }

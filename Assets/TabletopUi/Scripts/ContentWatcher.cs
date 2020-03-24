@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Assets.Core;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
@@ -12,66 +14,19 @@ using UnityEngine;
 
 public static class WatcherQueue
 {
-    public static List<string> StatusMessages=new List<string>();
-    public static List<string> ValidationMessages= new List<string>();
-
+    public static string LastFileChange;
     public static bool NeedsRevalidation;
-    public static bool InProgress;
-
+    
     public static void Reset()
     {
-        StatusMessages = new List<string>();
-        ValidationMessages = new List<string>();
-
-        InProgress = false;
         NeedsRevalidation = false;
     }
 
-    public static void AddStatusMessage(string message)
+    public static void NotifyContentFileChanged(string fileChange)
     {
-        StatusMessages.Add(message);
-    }
-
-    public static void AddValidationMessage(string message)
-    {
-        ValidationMessages.Add(message);
-    }
-    public static void ClearValidations()
-    { ValidationMessages.Clear();}
-
-    public static string GetStatus()
-    {
-        string status = string.Empty;
-        foreach (var s in StatusMessages)
-        {
-            status += (s + "\n");
-        }
-
-        return status;
-
-        //return DateTime.Now.ToLongTimeString();
-    }
-
-    public static string GetValidations()
-    {
-        string validations = string.Empty;
-        foreach (var v in ValidationMessages)
-        {
-            validations += (v + "\n");
-        }
-
-        return validations;
-        //   return DateTime.Now.ToLongTimeString(); ;
-    }
-
-
-    public static void NotifyContentFileChanged(string message)
-    {
-      //  AddStatusMessage(message + $" - revalidating at { DateTime.Now}...");
-      AddStatusMessage($" - revalidating at {DateTime.Now}...");
+        LastFileChange = fileChange;
         NeedsRevalidation = true;
-        Debug.Log($" - revalidating at {DateTime.Now}...");
-
+        //Debug.Log($" - filechange at {DateTime.Now}...");
     }
 
 }
@@ -86,20 +41,23 @@ public class ContentWatcher : MonoBehaviour
     // Start is called before the first frame update
 
     public bool Initialised = false;
+    private bool validationInProgress = false;
 
     void Initialise()
     {
         WatcherQueue.Reset();
+        StatusMessages.text="Content Watcher ready at " + DateTime.Now.ToShortTimeString();
+        ValidationMessages.text = String.Empty;
 
         FileSystemWatcher watcher = new FileSystemWatcher
         {
-            Path = Application.streamingAssetsPath + "/content/core/recipes/",
+            Path = Application.streamingAssetsPath + "/content/core/",
             NotifyFilter = NotifyFilters.LastAccess
                            | NotifyFilters.LastWrite
                            | NotifyFilters.FileName
                            | NotifyFilters.DirectoryName,
-            Filter = "*.json"
-         //   IncludeSubdirectories = true
+            Filter = "*.json",
+            IncludeSubdirectories = true
         };
 
         watcher.Changed += OnChanged;
@@ -108,18 +66,16 @@ public class ContentWatcher : MonoBehaviour
 
         // Begin watching.
         watcher.EnableRaisingEvents = true;
-        WatcherQueue.AddStatusMessage("Watching " + watcher.Path);
+        StatusMessages.text="Watching " + watcher.Path;
         Initialised = true;
     }
 
     // Define the event handlers.
     private static void OnChanged(object source, FileSystemEventArgs e) =>
-
         WatcherQueue.NotifyContentFileChanged($"{e.FullPath} {e.ChangeType}");
 
 
-
-void Update()
+async void Update()
     {
         if (Application.isPlaying)
         {
@@ -127,47 +83,69 @@ void Update()
             return;
         }
 
-
         if (!Initialised)
             Initialise();
-
-        StatusMessages.text = WatcherQueue.GetStatus();
-        ValidationMessages.text = WatcherQueue.GetValidations();
-
-
-        if (WatcherQueue.NeedsRevalidation && !WatcherQueue.InProgress)
+        
+        if (WatcherQueue.NeedsRevalidation && !validationInProgress)
         {
-            Validate();
+            //Debug.Log("Validating at " + DateTime.Now.ToLongTimeString());
+
+            ValidationBeginning();
+            Task<AsyncContentImportResult> resultsTask = Validate();
+            AsyncContentImportResult result = await resultsTask;
+            ValidationMessages.text = result.ContentImportMessages.Aggregate(string.Empty, (current, m) => current + (m.Description + "\n"));
+            ValidationComplete();
         }
-
-
     }
 
-    private void Validate()
+private void ValidationBeginning()
+{
+    StatusMessages.text = "Began validation at " + DateTime.Now.ToLongTimeString();
+     ValidationMessages.text = string.Empty;
+    validationInProgress = true;
+}
+
+private void ValidationComplete()
+{
+    WatcherQueue.NeedsRevalidation = false;
+    validationInProgress = false;
+    StatusMessages.text += "\n\nCompleted validation at " + DateTime.Now.ToLongTimeString();
+}
+
+    private async Task<AsyncContentImportResult> Validate()
     {
-        WatcherQueue.InProgress = true;
-        WatcherQueue.ClearValidations();
+        WatcherQueue.NeedsRevalidation = false;
+        AsyncContentImportResult result;
+
 #if MODS
         new Registry().Register(new ModManager(false));
 #endif
         var contentImporter = new ContentImporter();
-        var validationInfoMessages = contentImporter.PopulateCompendium(new Compendium());
+        var contentImportMessages = contentImporter.PopulateCompendium(new Compendium());
+        var importantMessages = contentImportMessages.Where(i => i.MessageLevel > 0).ToList();
 
-        var importantMessages = validationInfoMessages.Where(i => i.MessageLevel > 0);
-
-        var contentImportMessages = importantMessages.ToList();
-        if (!contentImportMessages.Any())
-            WatcherQueue.AddValidationMessage($"All content good at {DateTime.Now.ToShortTimeString()}");
+        if (!importantMessages.Any())
+            result=new AsyncContentImportResult(new ContentImportMessage($"All content good at {DateTime.Now.ToLongTimeString()}"));
         else
-        {
-            foreach (var p in contentImportMessages)
-                WatcherQueue.AddValidationMessage(p.Description);
-        }
+            result=new AsyncContentImportResult(importantMessages);
+        
+        return result;
+    }
 
+}
 
-        WatcherQueue.InProgress = false;
-        WatcherQueue.NeedsRevalidation = false;
+public class AsyncContentImportResult
+{
+    public List<ContentImportMessage> ContentImportMessages;
 
+    public AsyncContentImportResult(List<ContentImportMessage> messages)
+    {
+        ContentImportMessages = messages.ToList();
+    }
+
+    public AsyncContentImportResult(ContentImportMessage message)
+    {
+        ContentImportMessages = new List<ContentImportMessage>{message};
     }
 
 }
