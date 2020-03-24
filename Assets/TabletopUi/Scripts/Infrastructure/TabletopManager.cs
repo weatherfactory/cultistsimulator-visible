@@ -351,7 +351,9 @@ namespace Assets.CS.TabletopUI {
 #endif
             var compendium = new Compendium();
             var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
+            var problems=contentImporter.PopulateCompendium(compendium);
+            foreach (var p in problems)
+                NoonUtility.Log(p.Description,p.MessageLevel);
 
             Character character;
             if (CrossSceneState.GetChosenLegacy() != null)

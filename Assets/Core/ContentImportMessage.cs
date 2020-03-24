@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Core
 {
-    public class ContentImportProblem
+    public class ContentImportMessage
     {
         private string _description;
 
@@ -15,9 +15,18 @@ namespace Assets.Core
             set { _description = value ?? "Unspecified"; }
         }
 
-        public ContentImportProblem(string description)
+        public int MessageLevel { get; private set; }
+
+        public ContentImportMessage(string description)
         {
             Description = description;
+            MessageLevel = 2;
+        }
+
+        public ContentImportMessage(string description, int messageLevel)
+        {
+            Description = description;
+            MessageLevel = 0;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Assets.CS.TabletopUI;
 using System.Collections;
 using System.Collections.Generic;
+using Noon;
 #if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
@@ -28,7 +29,9 @@ public class DebugLoadCompendium : MonoBehaviour
 #endif
         var compendium = new Compendium();
         var contentImporter = new ContentImporter();
-        contentImporter.PopulateCompendium(compendium);
+       var problems= contentImporter.PopulateCompendium(compendium);
+       foreach (var p in problems)
+           NoonUtility.Log(p.Description, messageLevel: 2);
 
         registry.Register<ICompendium>(compendium);
 	}

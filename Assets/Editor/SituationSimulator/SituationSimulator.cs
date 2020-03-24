@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Noon;
 using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.Editor
@@ -33,7 +34,9 @@ namespace Assets.Editor
             // Import all the content first
             ContentImporter contentImporter = new ContentImporter();
             _compendium = new Compendium();
-            contentImporter.PopulateCompendium(_compendium);
+            var problems=contentImporter.PopulateCompendium(_compendium);
+            foreach (var p in problems)
+               NoonUtility.Log(p.Description, messageLevel: 2);
             _character = new Character(_compendium.GetAllLegacies().First());
             
             // Initialise all decks

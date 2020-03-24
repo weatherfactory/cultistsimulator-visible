@@ -26,7 +26,7 @@ using UnityEditor;
 
 public class ContentImporter
 {
-    private IList<ContentImportProblem> contentImportProblems;
+    private IList<ContentImportMessage> contentImportMessages;
     private const string CONST_CONTENTDIR = "content/";
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
@@ -51,7 +51,7 @@ public class ContentImporter
 
     public ContentImporter()
     {
-        contentImportProblems = new List<ContentImportProblem>();
+        contentImportMessages = new List<ContentImportMessage>();
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
@@ -69,14 +69,14 @@ public class ContentImporter
             select match.Groups[1].Value;
     }
 
-    public IList<ContentImportProblem> GetContentImportProblems()
-    {
-        return contentImportProblems;
-    }
-
     private void LogProblem(string problemDesc)
     {
-        contentImportProblems.Add(new ContentImportProblem(problemDesc));
+        contentImportMessages.Add(new ContentImportMessage(problemDesc));
+    }
+
+    private void LogInfo(string desc)
+    {
+        contentImportMessages.Add(new ContentImportMessage(desc,0));
     }
 
     public List<SlotSpecification> AddSlotsFromArrayList(ArrayList alSlots)
@@ -154,7 +154,7 @@ public class ContentImporter
         allContentFiles.AddRange(coreContentFiles);
         allContentFiles.AddRange(overridecontentFiles);
         if (!allContentFiles.Any())
-            NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
+            LogProblem("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
@@ -169,7 +169,7 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message, messageLevel: 2);
+                LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 continue;
             }
 
@@ -188,7 +188,7 @@ public class ContentImporter
 					}
 					catch (Exception e)
 					{
-						NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message, messageLevel: 2);
+						LogProblem("This file broke: " + contentFile + " with error " + e.Message);
 					    continue;
 					}
 
@@ -755,7 +755,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         totalElementsFound += PopulateElements(alElements);
 
-        NoonUtility.Log("Total elements found: " + totalElementsFound,2);
+        LogInfo("Total elements found: " + totalElementsFound);
 
         foreach (var e in Elements)
         {
@@ -954,7 +954,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
         ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
         PopulateRecipeList(recipesArrayList);
-        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
+        LogInfo("Total recipes found: " + recipesArrayList.Count);
 
     }
 
@@ -1713,7 +1713,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         foreach (var k in htEachRecipe.Keys)
         {
-            NoonUtility.Log("Unprocessed recipe property for " + r.Id + ": " + k);
+            LogProblem("Unprocessed recipe property for " + r.Id + ": " + k);
         }
     }
 
@@ -1806,13 +1806,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1, messageLevel: 0);
+            LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages,1, messageLevel: 0);
+            LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
     }
 
-    public void PopulateCompendium(ICompendium compendium)
+    public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
     {
         _compendium = compendium;
         ImportVerbs();
@@ -1853,9 +1853,8 @@ foreach(var d in _compendium.GetAllDeckSpecs())
 #endif
 
 
+        return contentImportMessages;
 
-        foreach (var p in GetContentImportProblems())
-            NoonUtility.Log(p.Description, messageLevel: 2);
 
     }
 
@@ -1893,7 +1892,8 @@ foreach(var d in _compendium.GetAllDeckSpecs())
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        NoonUtility.Log("Words (based on spaces +1 count): " + words,1);
+        LogInfo("Words (based on spaces +1 count): " + words);
+
     }
 
     private void LogFnords()
@@ -1936,10 +1936,10 @@ foreach(var d in _compendium.GetAllDeckSpecs())
 
 
         if (elementFnords != "")
-            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,1);
+            LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
 
         if (recipeFnords != "")
-            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,1);
+            LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
 
 
     }

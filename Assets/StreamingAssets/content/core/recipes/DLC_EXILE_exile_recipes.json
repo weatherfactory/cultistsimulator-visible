@@ -287,19 +287,18 @@ aspects:{betrayal:1},
 linked:[{id:"opx.rob.vault.next"}],
 },
 
-
-{id:"opx.rob.vault.progress",
+{id:"opx.rob.vault.progress", 
 actionId:"opx.rob.vault",
 label:"FNORD progress!",
 startdescription:"FNORD made progress!",
 effects:{progress:1},
 warmup:10,
 linked:[{id:"opx.rob.vault.next"}]
-},
+}, 
 
 
 {id:"opx.rob.vault.success",
-actionId:"opx.rob.vault",
+actionId:"opx.rob.vault", 
 label:"FNORD robbery success!",
 startdescription:"FNORD robbery done!",
 requirements:{progress:3},
@@ -308,14 +307,10 @@ effects:{progress:-100,vault:-1, weapon.biedde:1},
 
 {id:"opx.rob.vault.failure",
 actionId:"opx.rob.vault",
-label:"FNORD robbery failed!",
+label:"FNORD robbery failed!", 
 startdescription:"FNORD robbery failed!",
-effects:{progress:-100,trace:1}
+effects:{progress:-100,trace:1} 
 },
-
-
-
-
 
 {id:"travel.visit.shrine.colonel",
 actionId:"travel",
@@ -328,7 +323,6 @@ effects:{fragmentedge.exile:1,location:-1},
 warmup:60,
 craftable:true},
 
-
 {id:"travel.visit.shrine.lionsmith",
 actionId:"travel",
 label:"Visit a Golden Shrine",
@@ -339,8 +333,6 @@ extantreqs:{lore:-1},
 effects:{fragmentedge.exile:1,location:-1},
 warmup:60,
 craftable:true},
-
-
 
 {id:"travel.visit.shrine.abandonobscurity.hint",
 actionId:"travel",
@@ -359,7 +351,6 @@ comments:"This should trigger only if neither Consecration recipe does.",
 requirements:{shrine.edge:1,temptation.defiance:1},
 hintonly:true,
 craftable:false},
-
 
 {id:"travel.visit.shrine.colonel.upgrade.hint",
 actionId:"travel",
@@ -399,7 +390,6 @@ effects:{location:-1},
 warmup:60,
 craftable:true},
 
-
 {id:"travel.visit.shrine.consecration.colonel",
 actionId:"travel",
 label:"A Consecration to the Colonel",
@@ -423,7 +413,6 @@ mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mu
 effects:{location:-1},
 warmup:60,
 craftable:true},
-
 
 {id:"travel.visit.shrine.colonel.abandonobscurity",
 actionId:"travel",
@@ -451,6 +440,7 @@ effects:{temptation.obscurity:-1,location:-1},
 warmup:60,
 craftable:true},
 
+
 {id:"travel.investigate.end",
 actionId:"travel",
 label:"No Further",
@@ -458,7 +448,7 @@ startdescription:"You might call this place the edge of the world.",
 requirements:{end:1,domicile:1},
 hintonly:true,
 craftable:false
-},
+}, 
 
 
 {id:"travel.investigate.london",
@@ -2017,7 +2007,7 @@ label:"Perils Ahead",
 startdescription:"FNORD",
 requirements:{rkx.infected:1},
 warmup:2,
-},
+}, 
 
 
 {id:"rkx.wait",

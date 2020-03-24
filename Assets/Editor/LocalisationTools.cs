@@ -54,7 +54,9 @@ namespace Assets.Editor
 #endif
             var compendium = new Compendium();
             var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
+          var problems= contentImporter.PopulateCompendium(compendium);
+          foreach (var p in problems)
+              NoonUtility.Log(p.Description, messageLevel: 2);
             using (var file = new StreamWriter(path, false))
             {
                 // Decks
