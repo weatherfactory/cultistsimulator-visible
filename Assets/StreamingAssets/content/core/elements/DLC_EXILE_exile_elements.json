@@ -218,6 +218,13 @@ isAspect:true,
 icon:benign
 },
 
+{id:"distraction",
+label:"Distraction",
+description:"With the right angle, anything can be a weapon.",
+isAspect:true,
+icon:annoyance
+},
+
 {id:"asset",
 label:"Asset",
 description:"Asset FNORD",
@@ -981,63 +988,63 @@ icon: vaultshires1
 
 {id: "op.cold",
 label: "Freezing Winds",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"Frost walks here.",
 lifetime:180
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"The air shimmers like a naked furnace.",
 lifetime:180
 },
 
 {id: "op.sea",
 label: "Sea Port",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
 
 {id: "op.faith",
 label: "Opportunity: Faith",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.cats",
 label: "Opportunity: Cats",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.heights",
 label: "Opportunity: Heights",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.horned",
 label: "Opportunity: Horned",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
-aspects: {op:1},
+aspects: {op:1,distraction:1},
 description:"FNORD",
 lifetime:180
 },

@@ -1735,6 +1735,7 @@ requirements:{trace:1},
 effects:{trace:-1},
 linked:[{id:"rkx.underboss.active"},
 {id:"rkx.underboss.passive"},
+{id:"rkx.enforcer.active"},
 {id:"rkx.enforcer.passive"},
 {id:"rkx.operative.active"},
 {id:"rkx.operative.passive"},
@@ -1780,27 +1781,91 @@ actionId:"rkx",
 label:"A Hostile Move!",
 startdescription:"FNORD attacking",
 requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
 warmup:40,
-linked:[{id:"rkx.enforcer.attack.success"}]},
+linked:[
+{id:"rkx.underling.slain"},
+{id:"rkx.underling.distracted"},
+{id:"rkx.underling.attack.success"},
+{id:"rkx.underling.attack.failure"}]},
 
-{id:"rkx.enforcer.attack.success",
+
+{id:"rkx.underling.slain",
+actionId:"rkx",
+label:"FNORD",
+startdescription:"FNORD",
+description:"FNORD",
+requirements:{cash:10000},
+effects:{},
+warmup:10},
+
+
+{id:"rkx.underling.distracted",
+actionId:"rkx",
+label:"A Successful Distraction!",
+startdescription:"...",
+requirements:{distraction:1},
+linked:[{id:"rkx.underling.attack.failure"}],
+},
+
+
+{id:"rkx.underling.attack.success",
 actionId:"rkx",
 label:"FNORD attack success",
 startdescription:"FNORD",
 aspects:{fatiguing:1},
-alt:[{id:"spit.enforcer.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,op:1}}}],
+alt:[{id:"spit.underling.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,op:1}}}],
 requirements:{lore:-1,weapon:-1},
-linked:[
-{id:"rkx.reset"}],
+linked:[{id:"rkx.reset"}],
 warmup:10},
 
-{id:"spit.enforcer.attack.success",
-actionId:"spit.enforcer.attack",
+{id:"spit.underling.attack.success",
+actionId:"spit.underling.attack",
 label:"FNORD I was hurt!",
 startdescription:"FNORD done",
 aspects:{fatiguing:1},
 effects: {wound.exile:1},
 warmup:2},
+
+{id:"rkx.underling.attack.failure",
+actionId:"rkx",
+label:"FNORD attack failure",
+startdescription:"@#op.cold|Snow falls like night. I've left my pursuer floundering in the drifts.
+#op.heat|I've led my pursuer a dance through the noonday sun, until they're staggering with the heat.
+#op.sea|I've lost my pursuer in the bustle of the port.
+#op.faith|Reckoners are traditionally chary of sacred places. I've used that to slip away.
+#op.cats|The Colonel - the Hour that protects my Foe - has long disliked cats. Among my enemies, a wariness about felines has become a powerful superstition. I've slipped away while my pursuer hesitates.
+#op.height|I've hidden myself in the heights were few go, and my pursuer has been left behind.
+#op.horned|Reckoners are wary of the Hours. The shadows here are sharp with the presence of the Horned Axe. My pursuer hesitated, and I slipped away.
+#op.wolf|All fear the Wolf-Divided, and his breath has touched this place. My pursuer is reluctant to follow me into his shadow, and I've slipped away.
+#op.flowermaker|This place is sweet with the Flowermaker's scents. The airs here bewildered my pursuer long enough for me to slip away.
+#|Something distracted the underling!@",
+alt:[{id:"spit.underling.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
+{id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
+effects:{distraction:-1},
+linked:[{id:"rkx.underling.slain"},
+{id:"rkx.reset"}],
+warmup:10},
+
+{id:"spit.underling.attack.failure.lore",
+actionId:"spit.underling.attack",
+requirements:{lore:1},
+label:"FNORD I defended myself with a skill! - which left a Trace",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+effects:{trace:1},
+warmup:2},
+
+{id:"spit.underling.attack.failure.weapon",
+actionId:"spit.underling.attack",
+requirements:{weapon:1},
+label:"FNORD I defended myself with a weapon! - which left a Trace",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+effects:{trace:1},
+warmup:2},
+
+
 
 {id:"rkx.enforcer.passive",
 actionId:"rkx",
@@ -1928,8 +1993,8 @@ linked:[{id:"rkx.reset"}]},
 actionId:"rkx",
 label:"FNORD Foe attacking",
 startdescription:"FNORD foe attacking",
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,op:1}}],
-warmup:50,
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+warmup:30,
 purge:{obscurity:100},
 linked:[
 {id:"rkx.foe.slain"},
@@ -2060,7 +2125,7 @@ actionId:"rkx",
 label:"FNORD attack success",
 startdescription:"FNORD",
 aspects:{fatiguing:1},
-alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,op:1}}}],
+alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
 requirements:{lore:-1,weapon:-1},
 linked:[
 {id:"rkx.foe.slain"},
