@@ -70,22 +70,23 @@ namespace Assets.Core
 
                 if (candidateRecipe == null)
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + lr.Id,1);
+                    NoonUtility.Log(recipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + lr.Id);
                 }
                 else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.",5);
+                    NoonUtility.Log(recipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.");
                 }
                 else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
                 {
-                    NoonUtility.Log(recipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute", 5);
+                    NoonUtility.Log(recipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute");
                 }
             else
                 {
 
                     if (lr.Chance >= 100)
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + lr.Id + " is a suitable linked recipe with chance >=100! Executing it next.", 5);
+                        NoonUtility.Log(recipe.Id + " says: " + lr.Id +
+                                        " is a suitable linked recipe with chance >=100! Executing it next.");
                         return candidateRecipe;
 
                     }
@@ -97,17 +98,17 @@ namespace Assets.Core
                     if (diceResult > challengeArbiter.GetArbitratedChance())
                     {
                         NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + challengeArbiter.GetArbitratedChance() +
-                                        " for linked recipe " + lr.Id + "; will try to execute next linked recipe", 5);
+                                        " for linked recipe " + lr.Id + "; will try to execute next linked recipe");
                     }
                     else
                     {
-                        NoonUtility.Log(recipe.Id + " says: " + lr.Id + " is a suitable linked recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance() + ". Executing it next.", 5);
+                        NoonUtility.Log(recipe.Id + " says: " + lr.Id + " is a suitable linked recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance() + ". Executing it next.");
                         return candidateRecipe;
                     }
                 }
             }
 
-            NoonUtility.Log(recipe.Id + " says: " + "No suitable linked recipe found", 5);
+            NoonUtility.Log(recipe.Id + " says: " + "No suitable linked recipe found");
 
             return null;
         }
@@ -200,12 +201,12 @@ namespace Assets.Core
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
                     {
-                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id,5);
+                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id);
                         continue;
                     }
                     if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
                     {
-                        NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id,5);
+                        NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id);
                         continue;
                     }
                     if (ar.Additional)

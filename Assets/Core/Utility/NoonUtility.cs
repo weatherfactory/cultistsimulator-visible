@@ -145,7 +145,7 @@ namespace Noon
     {
         public static bool UnitTestingMode { get; set; }
 
-        public static int CurrentVerbosity =1;
+        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.SystemChatter);
 
         public static VersionNumber VersionNumber
         {

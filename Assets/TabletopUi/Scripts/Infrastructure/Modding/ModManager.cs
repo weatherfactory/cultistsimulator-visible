@@ -55,7 +55,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 return;
             }
             
-            NoonUtility.Log("Loading all mods");
             Mods.Clear();
 
             // Check if the mods folder exists
@@ -133,7 +132,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 NoonUtility.Log("Loaded mod '" + modId + "'");
                 Mods.Add(modId, mod);
             }
-            NoonUtility.Log("Loaded all mods");
+            
 
             // Check the dependencies to see if there are any missing or invalid ones
             foreach (var mod in Mods)

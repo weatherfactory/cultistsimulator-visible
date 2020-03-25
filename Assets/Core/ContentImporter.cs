@@ -79,6 +79,7 @@ public class ContentImporter
         contentImportMessages.Add(new ContentImportMessage(desc,0));
     }
 
+
     public List<SlotSpecification> AddSlotsFromArrayList(ArrayList alSlots)
     {
         List<SlotSpecification> cssList = new List<SlotSpecification>();

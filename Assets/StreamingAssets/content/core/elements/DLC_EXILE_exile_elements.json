@@ -71,8 +71,8 @@ isAspect:true,
 noartneeded:true
 },
 
-{id:"acquaintance.introduce",
-label:"Acquaintance intro",
+{id:"mortal.introduce",
+label:"Mortal intro",
 description:"recipe aspect",
 isAspect:true,
 noartneeded:true
@@ -225,9 +225,16 @@ isAspect:true,
 icon:compensationvalue
 },
 
+{id:"associate",
+label:"Associate",
+description:"They'll work with me... for now.",
+isAspect:true,
+icon:devotee
+},
+
 {id:"ally",
 label:"Ally",
-description:"One who is prepared to accompany you on your journey.",
+description:"One who is prepared to accompany me on my journey.",
 isAspect:true,
 icon:follower
 },
@@ -257,7 +264,14 @@ icon:text
 label: "_vault",
 aspects:{location:1,vault:1},
 slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
-{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}]
+{id:"assistance",actionId:"travel",label:"Assistance",required:{associate:1,ally:1}}]
+},
+
+{id: "_npc.mortal",
+label: "_npc.mortal",
+aspects:{mortal:1},
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress}]},
+icon:diarist 
 },
 
 
@@ -332,7 +346,7 @@ id:"loc.treasures.tarascon",
 label:"Chateau Tarascon",
 aspects:{location:1,vault:1},
 slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
-{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}],
+{id:"assistance",actionId:"travel",label:"Assistance",required:{ally:1,follower:1}}],
 description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
 icon:"vaultlandbeyondforest2",
 unique:true
@@ -350,10 +364,10 @@ unique:true
 
 {id: "npc.smuggler",
 label: "Giorgiou",
+inherits:_npc.mortal,
 description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-aspects:{acquaintance:1,avaricious:1},
-xtriggers:{acquaintance.introduce:[{id:"loc.treasures.smuggler",morpheffect:spawn},{id:"edge",morpheffect:mutate}],
-betrayal:[{id:corpse.exile},{id:progress}]},
+aspects:{avaricious:1},
+xtriggers:{mortal.introduce:[{id:"loc.treasures.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 icon:diarist 
 },
 
@@ -528,6 +542,7 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  {id:"decade.stolen",
 	  label: "Stolen Decade",
 	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
+	  slots:[{actionId: "relinquish", id:"wound",label:"My Wound",required:{wound.exile:1}}],
 	  aspects:{lifespan.stolen:10},
 	  },
 	  	  {id:"year.stolen",
@@ -965,16 +980,16 @@ icon: vaultshires1
 },
 
 {id: "op.cold",
-label: "Chill Winds",
+label: "Freezing Winds",
 aspects: {op:1},
-description:"This week, frost walks here.",
+description:"Frost walks here.",
 lifetime:180
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
 aspects: {op:1},
-description:"This week, the air shimmers.",
+description:"The air shimmers like a naked furnace.",
 lifetime:180
 },
 
@@ -1203,20 +1218,20 @@ icon: scar_heart
 
 {id: "rkx.scout",
 label: "Reckoner Informants",
-description:"FNORD",
+description:"FNORD. Can track you down, but doesn't always.",
 xtriggers:{rkx.promote:[{id:rkx.enforcer,chance:50},{id:rkx.operative}],rkx.promotetofoe:rkx.foe}
 },
 {id: "rkx.operative",
 label: "Reckoner Operative",
-description:"FNORD",
+description:"FNORD. Remorseless, will try to steal assets.",
 verbicon:"rkx.operative",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
 },
 
 {id: "rkx.enforcer",
-label: "Reckoner Enforcer",
-description:"FNORD",
+label: "Reckoner Assassin",
+description:"FNORD. Remorseless, will try to steal assets.",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
@@ -1367,6 +1382,8 @@ label: "Reckoners: Aggressive",
 aspects:{rkx.event:1},
 description:"FNORD",
 },
+
+
 {id: "rkx.event.passive",
 label: "Reckoners: Passive",
 aspects:{rkx.event:1},

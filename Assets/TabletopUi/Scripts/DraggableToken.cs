@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI {
         public static void SetReturn(bool value, string reason = "") {
             resetToStartPos = value;
 			resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )",10 );
+			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )",0,VerbosityLevel.Trivia );
             //log here if necessary
         }
 

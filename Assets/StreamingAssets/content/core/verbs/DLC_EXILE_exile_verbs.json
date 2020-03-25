@@ -15,7 +15,7 @@
             description: "Make use of something. [Address Opportunities, run Operations, or convert years to cash.]",
 			atStart:false,
 			  slots: [{id:"plan",label:"Plan",
-			  required:{asset:1,op:1,lifespan.stolen:1,edge:1}}],
+			  required:{asset:1,op:1,edge:1}}],
         },
 		{
             id: "travel",
@@ -31,7 +31,16 @@
             description: "Send messages, moneys and more. Be careful.",
 			atStart:false,
 				  slots: [{id:"send",label:"Send",
-			  required:{desire:1,cash:1,cash.sent:1,acquaintance:1}}]
+			  required:{desire:1,cash:1,cash.sent:1,mortal:1}}]
+        },
+		
+						{
+            id: "relinquish",
+            label: "Relinquish",
+            description: "Sell; abandon; surrender.",
+			atStart:false,
+				  slots: [{id:"relinquish",label:"Relinquish",
+			  required:{asset:1,lifespan.stolen:1}}]
         },
 			  {
             id: "time.exile",

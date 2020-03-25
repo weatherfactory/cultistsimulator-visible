@@ -75,7 +75,7 @@ namespace Assets.CS.TabletopUI {
                 i++;
             }
 
-            NoonUtility.Log(debugText,10);
+            NoonUtility.Log(debugText);
         }
 
         List<IElementStack> SortStacks(IEnumerable<IElementStack> elementStacks) {

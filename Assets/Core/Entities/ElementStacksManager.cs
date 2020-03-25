@@ -181,7 +181,7 @@ public class ElementStacksManager : IElementStacksManager {
         foreach (var existingStack in new List<IElementStack>(_stacks)) {
             
             if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId) {
-                NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!",10);
+                NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!");
                 existingStack.Retire(CardVFX.CardHide);
                 return; // should only ever be one stack to retire!
                         // Otherwise this crashes because Retire changes the collection we are looking at

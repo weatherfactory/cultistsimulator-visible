@@ -205,7 +205,7 @@ namespace Assets.Logic
                                             new Context(Context.ActionSource.ChangeTo));
                                         NoonUtility.Log(
                                             "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
-                                            currentMutationId + " to spawn a new " + newElementId, 10);
+                                            currentMutationId + " to spawn a new " + newElementId);
                                     }
                                     else if(morph.MorphEffect==MorphEffectType.Mutate) 
                                     {
@@ -236,7 +236,7 @@ namespace Assets.Logic
                         {
                             NoonUtility.Log(
                                 "Tried to run an xtrigger with an element effect id that doesn't exist: " +
-                                xTriggers[triggerKey], 1);
+                                xTriggers[triggerKey]);
                         }
 
                         else if (morph.Chance >= dice.Rolld100())
@@ -249,7 +249,7 @@ namespace Assets.Logic
                                 eachStack.Populate(newElementId, existingQuantity, Source.Existing());
                                 NoonUtility.Log(
                                     "Transform xtrigger " + triggerKey + " caused " + oldElementId +
-                                    " to transform into " + newElementId, 10);
+                                    " to transform into " + newElementId);
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
@@ -258,7 +258,7 @@ namespace Assets.Logic
                                     new Context(Context.ActionSource.ChangeTo));
                                 NoonUtility.Log(
                                     "Spawn xtrigger " + triggerKey + " caused " +
-                                    oldElementId + " to spawn a new " + newElementId, 10);
+                                    oldElementId + " to spawn a new " + newElementId);
                             }
                             else if (morph.MorphEffect == MorphEffectType.Mutate)
                             {

@@ -109,7 +109,7 @@ namespace Assets.Core.Entities
         ///remove this from the undrawn cards. This won't affect default draws.
         private void RemoveCardFromDeckInstance(string elementId, List<string> cardsList)
         {
-            NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id, 10);
+            NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id);
             cardsList.RemoveAll(c => c == elementId);
             _cards = new Stack<string>(cardsList);
         }

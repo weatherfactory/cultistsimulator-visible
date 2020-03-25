@@ -367,8 +367,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var contentImporter = new ContentImporter();
         var compendium = Registry.Retrieve<ICompendium>();
        var problems= contentImporter.PopulateCompendium(compendium);
-       foreach (var p in problems)
-           NoonUtility.Log(p.Description, messageLevel: 2);
+       foreach (var p in problems.Where(p=>p.MessageLevel>1))
+           NoonUtility.Log(p.Description, p.MessageLevel);
 
         // Populate the new decks
         IGameEntityStorage storage = Registry.Retrieve<Character>();

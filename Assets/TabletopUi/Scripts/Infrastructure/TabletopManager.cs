@@ -211,11 +211,11 @@ namespace Assets.CS.TabletopUI {
 
             var problems=ImportContent(registry);
 
-            foreach (var p in problems)
-                NoonUtility.Log(p.Description, p.MessageLevel);
-
             if (problems.Any(p=>p.MessageLevel>1))
             {
+                foreach (var p in problems.Where(p=>p.MessageLevel>1))
+                    NoonUtility.Log(p.Description, p.MessageLevel);
+
                 disabled = true;
             }
             else

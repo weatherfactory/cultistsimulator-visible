@@ -200,7 +200,7 @@ namespace Assets.CS.TabletopUI {
             if (IsBeingAnimated || DraggableToken.itemBeingDragged == null || !(DraggableToken.itemBeingDragged is ElementStackToken))
                 return;
 
-            NoonUtility.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged,10);
+            NoonUtility.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged,0,VerbosityLevel.Trivia);
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
             //it's not an element stack; just put it down
