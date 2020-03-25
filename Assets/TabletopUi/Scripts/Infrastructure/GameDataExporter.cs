@@ -76,7 +76,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
             {
                 htMetaInfo.Add(NoonConstants.BIRDWORMSLIDER, PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER));
-                htMetaInfo.Add("WeAwaitSTE", "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull, and present it in turn to the sky.");
+                htMetaInfo.Add("WeAwaitSTE", "Hello, Seeker. If you're lookng for enigmas, find the page on our site which references the eidesis in which were presented the Lion, the Boar and the Bull.");
             }
             return htMetaInfo;
         }

@@ -127,43 +127,70 @@ public class Element
 
     }
 
+    /// <summary>
+    /// inherit certain specific behaviours.
+    /// Use with care. This is intended to be used in content import only, before these behaviours are added for the actual element, and it can't cope with duplicate keys.
+    /// </summary>
+    /// <param name="inheritFromElement"></param>
+    public void InheritFrom(Element inheritFromElement)
+    {
+        Aspects.CombineAspects(inheritFromElement.Aspects);
+        //no mutations: base elements don't have mutations
+        foreach (string k in inheritFromElement.XTriggers.Keys)
+        {
+            XTriggers.Add(k,inheritFromElement.XTriggers[k]);
+        }
+
+        foreach (SlotSpecification s in inheritFromElement.ChildSlotSpecifications)
+        {
+            ChildSlotSpecifications.Add(s);
+        }
+
+        foreach (LinkedRecipeDetails i in inheritFromElement.Induces)
+        {
+            Induces.Add(i);
+        }
+
+        UniquenessGroup = inheritFromElement.UniquenessGroup; //we would probably want to do this anyway, but also we are already inheriting aspects so we have to for tidiness
+
+    }
 
 }
 
 
 public class MorphDetails
 {
-    private readonly bool _additional;
-    private readonly string _id;
-    private readonly int _chance;
     
-    public string Id
-    {
-        get { return _id; }
-    }
 
-    public int Chance
-    {
-        get { return _chance; }
-    }
+    public string Id { get; private set; }
 
-    public bool Additional
-    {
-        get { return _additional; }
-    }
+    public int Chance { get; private set; }
+
+    public int Level { get; private set; }
+    public MorphEffectType MorphEffect { get; private set; }
+
     public MorphDetails(string id)
     {
-        _id = id;
-        _additional = false;
-        _chance = 100;
+        Id = id;
+        Chance = 100;
+        MorphEffect = MorphEffectType.Transform;
+        Level = 1;
 
     }
 
-    public MorphDetails(string id, int chance, bool additional)
+    public MorphDetails(string id, int chance, MorphEffectType morphEffect,int level)
     {
-        _additional = additional;
-        _id = id;
-        _chance = chance;
+        Id = id;
+        Chance = chance;
+        MorphEffect = morphEffect;
+        Level = level;
 
     }
+}
+
+public enum MorphEffectType
+{
+    Transform=1,
+    Spawn=2,
+    Mutate=3
 }

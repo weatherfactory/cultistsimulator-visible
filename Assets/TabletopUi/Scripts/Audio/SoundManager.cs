@@ -123,7 +123,7 @@ public class SoundManager : AudioManager {
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
 
-		NoonUtility.Log("Playing sound: " + name + " add " + Time.time, 10);
+		NoonUtility.Log("Playing sound: " + name + " add " + Time.time);
 
         return Instance.PlaySound(name, -1);
     }

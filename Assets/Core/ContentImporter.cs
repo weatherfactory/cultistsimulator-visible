@@ -170,7 +170,7 @@ public class ContentImporter
             catch (Exception e)
             {
                 LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                continue;
+                return null;
             }
 
 			// Now look for localised language equivalent of the same file and parse that
@@ -189,7 +189,7 @@ public class ContentImporter
 					catch (Exception e)
 					{
 						LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-					    continue;
+                        return null;
 					}
 
 
@@ -746,10 +746,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 		indent--;
 	}
 
-    public void ImportElements()
+    public void ImportElements(ArrayList alElements)
     {
 
-        ArrayList alElements = GetContentItems(CONST_ELEMENTS);
 
         int totalElementsFound = 0;
 
@@ -810,101 +809,130 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             try
             {
 
-                if (htElement.ContainsKey(NoonConstants.KLIFETIME))
-                    element.Lifetime = float.Parse(htElement[NoonConstants.KLIFETIME].ToString());
-                if (htElement.ContainsKey(NoonConstants.KDECAYTO))
-                    element.DecayTo = htElement.GetString(NoonConstants.KDECAYTO);
+                    if (htElement.ContainsKey(NoonConstants.KLIFETIME))
+                        element.Lifetime = float.Parse(htElement[NoonConstants.KLIFETIME].ToString());
+                    if (htElement.ContainsKey(NoonConstants.KDECAYTO))
+                        element.DecayTo = htElement.GetString(NoonConstants.KDECAYTO);
 
-                if (htElement.GetString(NoonConstants.KISASPECT) == "true")
-                    element.IsAspect = true;
-                else
-                    element.IsAspect = false;
+                    if (htElement.GetString(NoonConstants.KISASPECT) == "true")
+                        element.IsAspect = true;
+                    else
+                        element.IsAspect = false;
 
-                if (htElement.GetString(NoonConstants.KISHIDDEN) == "true")
-                    element.IsHidden = true;
-                else
-                    element.IsHidden = false;
+                    if (htElement.GetString(NoonConstants.KISHIDDEN) == "true")
+                        element.IsHidden = true;
+                    else
+                        element.IsHidden = false;
 
-                if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
-                    element.NoArtNeeded = true;
-                else
-                    element.NoArtNeeded = false;
+                    if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
+                        element.NoArtNeeded = true;
+                    else
+                        element.NoArtNeeded = false;
 
-                if (htElement.GetString(NoonConstants.KRESATURATE) == "true")
-                    element.Resaturate = true;
-                else
-                    element.Resaturate = false;
+                    if (htElement.GetString(NoonConstants.KRESATURATE) == "true")
+                        element.Resaturate = true;
+                    else
+                        element.Resaturate = false;
 
-                if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
-                    element.Unique = true;
-                else
-                    element.Unique = false;
+                    if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
+                        element.Unique = true;
+                    else
+                        element.Unique = false;
 
-                element.OverrideVerbIcon = htElement.GetString(NoonConstants.KVERBOVERRIDEICON);
+                    element.OverrideVerbIcon = htElement.GetString(NoonConstants.KVERBOVERRIDEICON);
 
-                
-                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
+                    //INHERITANCE! only affects the properties below this line.
 
-                if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
-                {
-                    element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
-                    //and also... uniqueness groups are now also imported as aspects
-                    //so this line needs to go below the assignment of aspects
-                    element.Aspects.Add(element.UniquenessGroup,1);
-                }
-
-                if (alSlots!=null)
-                element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
-                foreach(var css in element.ChildSlotSpecifications)
-                {
-                    if(string.IsNullOrEmpty(css.ForVerb))
-                LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
-                }
-                if (htXTriggers != null)
-                {
-                    foreach (string k in htXTriggers.Keys)
+                    if (htElement.ContainsKey(NoonConstants.KINHERITS))
                     {
-                        if(htXTriggers[k].GetType()==typeof(ArrayList))
-                        { 
-                            ArrayList alMorphs = htXTriggers.GetArrayList(k);
-                            if (alMorphs != null)
-                            {
-                                List<MorphDetails> morphsForThisXTrigger=new List<MorphDetails>();
-                                foreach (Hashtable m in alMorphs)
-                                {
-                                    string morphTo = m[NoonConstants.KID].ToString();
-                                    int morphChance = Convert.ToInt32(m[NoonConstants.KCHANCE]);
-                                    if (morphChance == 0)
-                                        morphChance = 100; // if left at default, it's 100%
+                        string inheritFromId = htElement.GetString(NoonConstants.KINHERITS);
 
-                                    bool morphAdditional = Convert.ToBoolean(m[NoonConstants.KADDITIONAL] ?? false);
-                                    MorphDetails thisMorph= new MorphDetails(morphTo, morphChance, morphAdditional);
-                                    morphsForThisXTrigger.Add(thisMorph);
-                                }
-
-                                element.XTriggers.Add(k, morphsForThisXTrigger);
-                            }
-                        }
-                        else if (htXTriggers[k] is string)
+                        if (!LogIfNonexistentElementId(inheritFromId, element.Id,
+                            " (Trying to inherit from a nonexistent element)"))
                         {
-                            var xid = htXTriggers[k].ToString();
-                            MorphDetails basicMorph = new MorphDetails(xid, 100, false);
-                            element.XTriggers.Add(k, new List<MorphDetails>{ basicMorph });
+                            Element inheritFromElement = Elements[inheritFromId];
+                            element.InheritFrom(inheritFromElement);
                         }
-                        else
-                        {
-                            LogProblem("Can't process xtrigger " + k + " in " + element.Id);
-                        }
-
                     }
+
+
+                    element.Aspects.CombineAspects(NoonUtility.ReplaceConventionValues(htAspects)); //nb combine: we might have just inherited aspects
+
+                    if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
+                    {
+                        element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
+                        //and also... uniqueness groups are now also imported as aspects
+                        //so this line needs to go below the assignment of aspects
+                        element.Aspects.Add(element.UniquenessGroup,1);
+                    }
+
+                    if (alSlots!=null)
+                        element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
+                    foreach(var css in element.ChildSlotSpecifications)
+                    {
+                        if(string.IsNullOrEmpty(css.ForVerb))
+                            LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
+                    }
+                    if (htXTriggers != null)
+                    {
+                        foreach (string k in htXTriggers.Keys)
+                        {
+                            if(htXTriggers[k].GetType()==typeof(ArrayList))
+                            { 
+                                ArrayList alMorphs = htXTriggers.GetArrayList(k);
+                                if (alMorphs != null)
+                                {
+                                    List<MorphDetails> morphsForThisXTrigger=new List<MorphDetails>();
+                                    foreach (Hashtable m in alMorphs)
+                                    {
+                                        string morphTo = m.GetString(NoonConstants.KID);
+                                        int morphChance = Convert.ToInt32(m[NoonConstants.KCHANCE]);
+                                        if (morphChance == 0)
+                                            morphChance = 100; // if left at default, it's 100%
+
+                                        int morphLevel = Convert.ToInt32(m[NoonConstants.KLEVEL]);
+                                        if (morphLevel == 0)
+                                            morphLevel = 1; // if left at default, it's 1
+
+
+                                        MorphEffectType effectType=MorphEffectType.Transform;
+                                        string possibleMorphEffect = m.GetString(NoonConstants.KMORPHEFFECT);
+                                        if(!string.IsNullOrEmpty(possibleMorphEffect))
+                                            try
+                                            {
+                                                effectType = (MorphEffectType)Enum.Parse(typeof(MorphEffectType), possibleMorphEffect, true);
+                                            }
+                                            catch
+                                            {
+                                                LogProblem(element.Id + " has a MorphEffect specified that we don't think is right: " +
+                                                           possibleMorphEffect);
+                                            }
+
+
+
+                                        MorphDetails thisMorph= new MorphDetails(morphTo, morphChance,effectType,morphLevel);
+                                        morphsForThisXTrigger.Add(thisMorph);
+                                    }
+
+                                    element.XTriggers.Add(k, morphsForThisXTrigger);
+                                }
+                            }
+                            else if (htXTriggers[k] is string)
+                            {
+                                var xid = htXTriggers[k].ToString();
+                                MorphDetails basicMorph = new MorphDetails(xid);
+                                element.XTriggers.Add(k, new List<MorphDetails>{ basicMorph });
+                            }
+                            else
+                            {
+                                LogProblem("Can't process xtrigger " + k + " in " + element.Id);
+                            }
+
+                        }
                     
+                    }
 
-
-     
-                    
-                }
-
-                Elements.Add(element.Id, element);
+                    Elements.Add(element.Id, element);
             }
             catch (Exception e)
             {
@@ -949,22 +977,20 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return alElements.Count;
     }
 
-    public void ImportRecipes()
+    public void ImportRecipes(ArrayList recipesArrayList)
     {
         //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-        ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
+       
         PopulateRecipeList(recipesArrayList);
         LogInfo("Total recipes found: " + recipesArrayList.Count);
 
     }
 
-    public void ImportVerbs()
+    public void ImportVerbs(ArrayList verbsArrayList)
     {
 
             //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
 
-
-        ArrayList verbsArrayList = GetContentItems(CONST_VERBS);
 
 
         foreach (Hashtable h in verbsArrayList)
@@ -989,9 +1015,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
 
-    private void ImportDeckSpecs()
+    private void ImportDeckSpecs(ArrayList decksArrayList)
     {
-        ArrayList decksArrayList = GetContentItems(CONST_DECKS);
 
         for (int i = 0; i < decksArrayList.Count; i++)
         {
@@ -1113,9 +1138,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     }
 
 
-    public void ImportLegacies()
+    public void ImportLegacies(ArrayList legaciesArrayList)
     {
-        ArrayList legaciesArrayList = GetContentItems(CONST_LEGACIES);
 
         for (int i = 0; i < legaciesArrayList.Count; i++)
         {
@@ -1178,9 +1202,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     }
 
-    public void ImportEndings()
+    public void ImportEndings(ArrayList endingsArrayList)
     {
-        ArrayList endingsArrayList = GetContentItems(CONST_ENDINGS);
 
         for (int i = 0; i < endingsArrayList.Count; i++)
         {
@@ -1754,10 +1777,15 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return possibleExpulsion;
     }
 
-    private void LogIfNonexistentElementId(string elementId, string containerId, string context)
+    private bool LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
         if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
+        { 
             LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
+            return true;
+        }
+
+        return false;
     }
 
     private void LogIfNonexistentDeckId(string deckId, string containerId)
@@ -1814,13 +1842,29 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
     {
-        _compendium = compendium;
-        ImportVerbs();
-        ImportElements();
-        ImportDeckSpecs();
-        ImportRecipes();
-        ImportLegacies();
-		ImportEndings();
+        try
+        {
+            _compendium = compendium;
+            ArrayList alVerbs = GetContentItems(CONST_VERBS);
+            ArrayList alElements = GetContentItems(CONST_ELEMENTS);
+            
+            ArrayList alDeckSpecs = GetContentItems(CONST_DECKS);
+            ArrayList alRecipes = GetContentItems(CONST_RECIPES);
+            ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
+            ArrayList alEndings = GetContentItems(CONST_ENDINGS);
+
+            if (contentImportMessages.Any())
+                //at least one file is broken. Bug out and report.
+                return contentImportMessages;
+
+            ImportVerbs(alVerbs);
+        ImportElements(alElements);
+        ImportDeckSpecs(alDeckSpecs);
+        ImportRecipes(alRecipes);
+        ImportLegacies(alLegacies);
+		ImportEndings(alEndings);
+
+
 
         //I'm not sure why I use fields rather than local variables returned from the import methods?
         //that might be something to tidy up; I suspect it's left from an early design
@@ -1849,9 +1893,14 @@ foreach(var d in _compendium.GetAllDeckSpecs())
                     LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
             }
         }
-      
-#endif
 
+#endif
+        }
+        catch (Exception e)
+        {
+            LogProblem(e.Message);
+            return contentImportMessages;
+        }
 
         return contentImportMessages;
 

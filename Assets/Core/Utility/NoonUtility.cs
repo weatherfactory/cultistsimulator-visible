@@ -77,12 +77,12 @@ namespace Noon
         public static string DEFAULT_STARTING_VERB_ID="work";
 
         public const string KINDUCES = "induces";
-
-
+        public const string KLEVEL = "level";
 
 
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
+        public const string KMORPHEFFECT = "morpheffect";
 
         public const string KLIFETIME = "lifetime";
         public const string KDECAYTO = "decayTo";
@@ -91,6 +91,7 @@ namespace Noon
         public const string KISHIDDEN = "isHidden";
         public const string KNOARTNEEDED = "noartneeded";
         public const string KRESATURATE = "resaturate";
+        public const string KINHERITS = "inherits";
 
         public const string KUNIQUE = "unique";
         public const string KUNIQUENESSGROUP = "uniquenessgroup";
@@ -168,8 +169,9 @@ namespace Noon
 			LanguageManager.LanguageChanged += OnLanguageChanged;
 		}
 
-        public static void Log(string message, int verbosityNeeded=0, int messageLevel=0)
+        public static void Log(string message, int messageLevel=0,int verbosityNeeded=0)
         {
+
             if(verbosityNeeded<=CurrentVerbosity)
             {
 				if (message != null)
@@ -203,14 +205,16 @@ namespace Noon
 				            Debug.LogError(formattedMessage);
 				            break;
 			            default:
-				            throw new ArgumentOutOfRangeException("messageLevel");
-		            }
-	            }
+                            Debug.LogError(formattedMessage);
+                            break;
+                            //  throw new ArgumentOutOfRangeException("messageLevel " + messageLevel);
+                    }
+                }
             }
         }
-        public static void Log(string message, VerbosityLevel verbosityNeeded, int messageLevel=0)
+        public static void Log(string message, int messageLevel, VerbosityLevel verbosityNeeded)
         {
-            Log(message,Convert.ToInt32(verbosityNeeded), messageLevel);
+            Log(message, messageLevel,Convert.ToInt32(verbosityNeeded));
         }
 
         public static string GetGameSaveLocation(int index = 0)

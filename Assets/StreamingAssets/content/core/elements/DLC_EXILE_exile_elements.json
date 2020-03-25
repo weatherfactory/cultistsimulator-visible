@@ -11,12 +11,6 @@
 {id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
 
-
-{id:"un",
-label:"Unremarkable",
-description:"Don't worry about it",
-ishidden:true,
-noartneeded:true},
 	
 {id:"minortracerisk",
 label:"Minor Trace Risk",
@@ -77,7 +71,7 @@ isAspect:true,
 noartneeded:true
 },
 
-{id:"acquaintance.intro",
+{id:"acquaintance.introduce",
 label:"Acquaintance intro",
 description:"recipe aspect",
 isAspect:true,
@@ -252,12 +246,18 @@ isAspect:true
 },
 
 
-
 {id:"vault.library",
 label:"Library",
 description:"If one is permitted to enter this space, one may benefit from conversations with both the living and the dead. But only in strictest silence.",
 isAspect:true,
 icon:text
+},
+
+{id: "_vault.treasures",
+label: "_vault",
+aspects:{location:1,vault:1},
+slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
+{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}]
 },
 
 
@@ -300,7 +300,7 @@ label: "Cash",
 aspects: {asset:1,portable:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
-xtriggers:{bribery:[{id:"progress",additional:true},{id:"payment"}]}
+xtriggers:{bribery:[{id:"progress"},{id:"payment",morpheffect:spawn}]}
 },
 
 {id: "loc.shrine.colonel",
@@ -341,10 +341,8 @@ unique:true
 {
 id:"loc.treasures.smuggler",
 label:"Collector's Mansion",
-aspects:{location:1,vault:1},
-slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
-{id:"assistance",actionId:"travel",label:"Assistance",required:{acquaintance:1,ally:1}}],
 description:"FNORD ",
+inherits: "_vault.treasures",
 icon:"vaultcapital5",
 unique:true
 },
@@ -353,18 +351,12 @@ unique:true
 {id: "npc.smuggler",
 label: "Giorgiou",
 description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-aspects:{acquaintance:1},
-xtriggers:{acquaintance.intro:[{id:"loc.treasures.smuggler",additional:true},{id:"npc.smuggler.introduced"}],
+aspects:{acquaintance:1,avaricious:1},
+xtriggers:{acquaintance.introduce:[{id:"loc.treasures.smuggler",morpheffect:spawn},{id:"edge",morpheffect:mutate}],
 betrayal:[{id:corpse.exile},{id:progress}]},
-icon:diarist
+icon:diarist 
 },
 
-{id: "npc.smuggler.introduced",
-label: "Giorgiou",
-description:"FNORD A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-aspects:{acquaintance:1,edge:1,avaricious:1},
-icon:diarist
-},
 
 
 

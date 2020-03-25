@@ -87,7 +87,7 @@ namespace Assets.Editor
                 }
                 catch (Exception e)
                 {
-                    NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message, -1, messageLevel: 2);
+                    NoonUtility.Log("Failed content test: " + test.Id + "\n" + e.Message,  messageLevel: 2,verbosityNeeded:VerbosityLevel.SystemChatter);
                     numFailedTests++;
                     testResults[test.Id] = e.Message;
                 }
@@ -95,7 +95,7 @@ namespace Assets.Editor
             
             watch.Stop();
             var elapsedSeconds = watch.Elapsed.TotalSeconds;
-            NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.", -1, messageLevel: numFailedTests > 0 ? 1 : 0);
+            NoonUtility.Log("Testing complete. " + numFailedTests + " failed tests.",  messageLevel: numFailedTests > 0 ? 1 : 0, verbosityNeeded: VerbosityLevel.SystemChatter);
             NoonUtility.CurrentVerbosity = oldVerbosity;
             
             // Write the JUnit report for CI integration

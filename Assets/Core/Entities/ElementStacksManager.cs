@@ -154,7 +154,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (stack == null)
             return;
 
-        NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.Name, 10);
+        NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.Name,0,VerbosityLevel.Trivia);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
         if (EnforceUniqueStacksInThisStackManager) 

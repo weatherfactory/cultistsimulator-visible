@@ -50,7 +50,7 @@ public class BackgroundMusic : MonoBehaviour {
         audioSource.Stop();
         currentClip = clips.ElementAt(trackNumber);
         audioSource.PlayOneShot(currentClip);
-        NoonUtility.Log("Playing" + currentClip.name, 8);
+        NoonUtility.Log("Playing" + currentClip.name, 0,VerbosityLevel.Trivia);
     }
 
     public void PlayRandomClip() {

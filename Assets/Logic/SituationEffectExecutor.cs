@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using JetBrains.Annotations;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
@@ -157,15 +158,15 @@ namespace Assets.Logic
 
             foreach (var eachStack in stacksManager.GetStacks())
             {
-                RunXTriggersOnMutationsForStack(aspectsPresent, dice, eachStack, _compendium);
+                RunXTriggersOnMutationsForStack(stacksManager, aspectsPresent, dice, eachStack, _compendium);
 
 
                 RunXTriggersOnStackItself(stacksManager, aspectsPresent, dice, eachStack, _compendium);
             }
         }
 
-        private static void RunXTriggersOnMutationsForStack(AspectsDictionary aspectsPresent, IDice dice,
-            IElementStack eachStack, ICompendium _compendium)
+        private static void RunXTriggersOnMutationsForStack(IElementStacksManager stacksManager,[CanBeNull] AspectsDictionary aspectsPresent, [CanBeNull] IDice dice,
+            [CanBeNull] IElementStack eachStack, [CanBeNull] ICompendium _compendium)
         {
             foreach (var eachStackMutation in eachStack.GetCurrentMutations())
             {
@@ -187,20 +188,28 @@ namespace Assets.Logic
                             {
                                 if (morph.Chance >= dice.Rolld100())
                                 {
-                                    string newMutationId = morph.Id;
+                                    string newElementId = morph.Id;
                                     string currentMutationId = eachStackMutation.Key;
                                     int existingLevel = eachStackMutation.Value;
 
-                                    if (!morph.Additional)
+                                    if (morph.MorphEffect == MorphEffectType.Transform)
                                     {
                                         eachStack.SetMutation(currentMutationId, 0, false);
-                                        eachStack.SetMutation(newMutationId, existingLevel,
+                                        eachStack.SetMutation(newElementId, existingLevel * morph.Level,
                                             true); //make it additive rather than overwriting, just in case
-                                        break;
                                     }
-                                    else
+                                    else if (morph.MorphEffect == MorphEffectType.Spawn)
                                     {
-                                        eachStack.SetMutation(newMutationId, existingLevel, true);
+                                        stacksManager.AddAndReturnStack(newElementId, morph.Level,
+                                            Source.Existing(),
+                                            new Context(Context.ActionSource.ChangeTo));
+                                        NoonUtility.Log(
+                                            "xtrigger aspect marked additional=true " + mutationXTrigger + " caused " +
+                                            currentMutationId + " to spawn a new " + newElementId, 10);
+                                    }
+                                    else if(morph.MorphEffect==MorphEffectType.Mutate) 
+                                    {
+                                        eachStack.SetMutation(newElementId, morph.Level, true);
                                     }
                                 }
                             }
@@ -235,25 +244,25 @@ namespace Assets.Logic
                             string newElementId = morph.Id;
                             string oldElementId = eachStack.EntityId;
                             int existingQuantity = eachStack.Quantity;
-                            if (!morph.Additional)
+                            if (morph.MorphEffect==MorphEffectType.Transform)
                             {
                                 eachStack.Populate(newElementId, existingQuantity, Source.Existing());
                                 NoonUtility.Log(
-                                    "xtrigger aspect " + triggerKey + " caused " + oldElementId +
+                                    "Transform xtrigger " + triggerKey + " caused " + oldElementId +
                                     " to transform into " + newElementId, 10);
-                                break;
                             }
-                            else
+                            else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {
-                                var newStack = stacksManager.AddAndReturnStack(newElementId, existingQuantity,
+                                stacksManager.AddAndReturnStack(newElementId, morph.Level,
                                     Source.Existing(),
                                     new Context(Context.ActionSource.ChangeTo));
-                                foreach (var mutation in eachStack.GetCurrentMutations())
-                                    newStack.SetMutation(mutation.Key, mutation.Value, false);
-
                                 NoonUtility.Log(
-                                    "xtrigger aspect marked additional=true " + triggerKey + " caused " +
+                                    "Spawn xtrigger " + triggerKey + " caused " +
                                     oldElementId + " to spawn a new " + newElementId, 10);
+                            }
+                            else if (morph.MorphEffect == MorphEffectType.Mutate)
+                            {
+                                eachStack.SetMutation(newElementId, morph.Level, true);
                             }
                         }
                     }

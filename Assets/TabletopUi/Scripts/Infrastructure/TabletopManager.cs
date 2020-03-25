@@ -99,6 +99,8 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
+        private bool disabled = false;
+
 		// Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
 		[NonSerialized]
 #if ENABLE_ASPECT_CACHING
@@ -157,11 +159,13 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void Update()
-		{
-			//
-			// Game is structured to minimise Update processing, so keep this lean - CP
-			// But some things do have to be updated outside the main gameplay Heart.Beat
-			//
+        {
+            if (disabled)
+                return; //we've had to shut down because of a critical error
+
+            // Game is structured to minimise Update processing, so keep this lean - CP
+            // But some things do have to be updated outside the main gameplay Heart.Beat
+            //
             _hotkeyWatcher.WatchForGameplayHotkeys();
             _intermittentAnimatableController.CheckForCardAnimations();
 
@@ -202,25 +206,36 @@ namespace Assets.CS.TabletopUI {
             SetFrameRateForCurrentGraphicsLevel();
 
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
-            NoonUtility.Log("Setting up services",10);
-            //register everything used gamewide
-            SetupServices(_situationBuilder, _tabletop);
 
-            NoonUtility.Log("Initialising token containers", 10);
-            // This ensures that we have an ElementStackManager in Limbo & Tabletop
-            InitializeTokenContainers();
+            var registry=new Registry();
 
-            NoonUtility.Log("Initialising subcontrollers", 10);
+            var problems=ImportContent(registry);
 
-            //we hand off board functions to individual controllers
-            InitialiseSubControllers(
-                _speedController,
-                _hotkeyWatcher,
-                _intermittentAnimatableController,
-                _mapController,
-                _endGameAnimController,
-                _notifier,
-                _optionsPanel
+            foreach (var p in problems)
+                NoonUtility.Log(p.Description, p.MessageLevel);
+
+            if (problems.Any(p=>p.MessageLevel>1))
+            {
+                disabled = true;
+            }
+            else
+            { 
+                //register everything used gamewide
+                SetupServices(registry,_situationBuilder, _tabletop);
+
+                // This ensures that we have an ElementStackManager in Limbo & Tabletop
+                InitializeTokenContainers();
+
+
+                //we hand off board functions to individual controllers
+                InitialiseSubControllers(
+                    _speedController,
+                    _hotkeyWatcher,
+                    _intermittentAnimatableController,
+                    _mapController,
+                    _endGameAnimController,
+                    _notifier,
+                    _optionsPanel
                 );
 
             InitialiseListeners();
@@ -231,6 +246,7 @@ namespace Assets.CS.TabletopUI {
 
 
             BeginGame(_situationBuilder);
+            }
         }
 
         /// <summary>
@@ -242,11 +258,10 @@ namespace Assets.CS.TabletopUI {
             //this is all a bit post facto and could do with being tidied up
             //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
 			bool shouldStartPaused = false;
-            NoonUtility.Log("Checking chosen legacy", 10);
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
             if (chosenLegacy == null)
             {
-                NoonUtility.Log("No initial Legacy specified",VerbosityLevel.Trivia);
+                NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
                 chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
                 CrossSceneState.SetChosenLegacy(chosenLegacy);
                 Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
@@ -254,13 +269,11 @@ namespace Assets.CS.TabletopUI {
 
             if (CrossSceneState.GameState == GameState.Restarting)
             {
-                NoonUtility.Log("Restarting game", 11);
                 CrossSceneState.RestartingGame();
                 BeginNewGame(builder);
             }
             else
             {
-                NoonUtility.Log("Checking if save game exists", 10);
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
                 bool isSaveCorrupted = false;
                 bool shouldContinueGame;
@@ -278,13 +291,11 @@ namespace Assets.CS.TabletopUI {
 
                 if (shouldContinueGame)
                 {
-                    NoonUtility.Log("Loading game", 10);
                     LoadGame();
 					shouldStartPaused = true;
                 }
                 else
                 {
-                    NoonUtility.Log("Beginning new game", 10);
                     BeginNewGame(builder);
                 }
 
@@ -342,18 +353,31 @@ namespace Assets.CS.TabletopUI {
             mapTokenContainer.Initialise();
         }
 
-        private void SetupServices(SituationBuilder builder, TabletopTokenContainer container) {
-            var registry = new Registry();
+        private IList<ContentImportMessage> ImportContent(Registry registry)
+        {
+            
 #if MODS
             var modManager = new ModManager(true);
             modManager.LoadAll();
             registry.Register(modManager);
 #endif
             var compendium = new Compendium();
+            registry.Register<ICompendium>(compendium);
+
             var contentImporter = new ContentImporter();
-            var problems=contentImporter.PopulateCompendium(compendium);
-            foreach (var p in problems)
-                NoonUtility.Log(p.Description,p.MessageLevel);
+            var problems = contentImporter.PopulateCompendium(compendium);
+
+            return problems;
+
+
+        }
+
+        private void SetupServices(Registry registry,SituationBuilder builder, TabletopTokenContainer container)
+        {
+
+
+            ICompendium compendium = Registry.Retrieve<ICompendium>();
+
 
             Character character;
             if (CrossSceneState.GetChosenLegacy() != null)
@@ -372,7 +396,7 @@ namespace Assets.CS.TabletopUI {
             if(CrossSceneState.GetMetaInfo()==null)
             {
                           //This can happen if we start running the scene in the editor, so it hasn't been set in menu screen
-                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",10);
+                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
                 CrossSceneState.SetMetaInfo(metaInfo);
             }
 
@@ -382,7 +406,6 @@ namespace Assets.CS.TabletopUI {
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
 
-            registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice(debugTools));
             registry.Register<ITabletopManager>(this);

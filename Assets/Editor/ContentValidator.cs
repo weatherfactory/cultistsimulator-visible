@@ -30,7 +30,7 @@ namespace Assets.Editor
             var messages = contentImporter.PopulateCompendium(new Compendium());
 
             foreach (var p in messages)
-                NoonUtility.Log(p.Description, messageLevel: 2);
+                NoonUtility.Log(p.Description, messageLevel: p.MessageLevel);
 
             NoonUtility.Log("-- Verification complete --");
 
