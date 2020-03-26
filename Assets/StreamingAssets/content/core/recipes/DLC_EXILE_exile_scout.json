@@ -30,7 +30,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile:1,city.alexandria:1},
-	internaldeck: {spec: [loc.shrine.lionsmith,loc.library.serapeum], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [loc.shrine.lionsmith,loc.vault.serapeum], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
@@ -65,7 +65,7 @@ aspects:{},
 craftable:true,
 craftable:true,
 requirements:{domicile:1,city.avignon:1},
-	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice,loc.treasures.tarascon], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [op.connection,op.licence.medical,op.discreetoffice,vault.tarascon], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 {id:"scout.baghdad",

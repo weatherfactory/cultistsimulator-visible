@@ -283,15 +283,8 @@ isAspect:true
 },
 
 
-{id:"vault.library",
-label:"Library",
-description:"If one is permitted to enter this space, one may benefit from conversations with both the living and the dead. But only in strictest silence.",
-isAspect:true,
-icon:text
-},
-
-{id: "_vault.treasures",
-label: "_vault",
+{id: "_vault.exile",
+label: "_vault.exile",
 aspects:{location:1,vault:1},
 slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
 {id:"assistance",actionId:"travel",label:"Assistance",required:{associate:1,ally:1}}]
@@ -369,30 +362,28 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 },
 
 {
-id:"loc.library.serapeum",
+id:"vault.serapeum",
 label:"The Invisible Serapeum",
-aspects:{location:1,vault.library:1},
+inherits: "_vault.exile",
 description:"FNORD.",
 icon:"vaultlandbeyondforest5",
 unique:true
 },
 
 {
-id:"loc.treasures.tarascon",
+id:"vault.tarascon",
 label:"Chateau Tarascon",
-aspects:{location:1,vault:1},
-slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
-{id:"assistance",actionId:"travel",label:"Assistance",required:{ally:1,follower:1}}],
+inherits: "_vault.exile",
 description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
 icon:"vaultlandbeyondforest2",
 unique:true
 },
 
 {
-id:"loc.treasures.smuggler",
+id:"vault.smuggler",
 label:"Collector's Mansion",
 description:"FNORD ",
-inherits: "_vault.treasures",
+inherits: "_vault.exile",
 icon:"vaultcapital5",
 unique:true
 },
@@ -403,7 +394,7 @@ label: "Giorgiou",
 inherits:_npc.mortal,
 description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 aspects:{avaricious:1},
-xtriggers:{mortal.introduce:[{id:"loc.treasures.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+xtriggers:{mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 icon:diarist 
 },
 
