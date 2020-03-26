@@ -312,6 +312,13 @@ isAspect:true
 },
 
 
+{id:"deception",
+label:"Deception",
+description:"'There is nothing more deceptive than an obvious fact.' - Arthur Conan Doyle.  [Anything with this aspect can be used to defeat Traces.]",
+isAspect:true
+},
+
+
 
 {id:"asset.packed",
 label:"Asset (Packed)",
@@ -446,8 +453,8 @@ icon:fragmentheart
 
 {id:"connection",
 label:"Official Connection",
-aspects:{asset:1},
-description:"Connection FNORD",
+aspects:{asset:1,deception:1},
+description:"A mutually beneficial arrangement with someone in authority.",
 icon:favour
 },
 

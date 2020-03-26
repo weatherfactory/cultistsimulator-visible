@@ -1,0 +1,585 @@
+{
+"recipes": [
+
+
+
+
+
+{id:"rkx.arrive.ahead",
+actionId:"rkx",
+label:"Reckoners Are Here First",
+startdescription:"The reckoners guessed I might come here. They already have scounts in this city.",
+requirements:{rkx.infected:1},
+effects:{rkx.scout:1},
+extantreqs:{rkx.foe.defeated:-1},
+warmup:50,
+linked:[{id:"rkx.selector"}]},
+
+{id:"rkx.arrive.traces",
+actionId:"rkx",
+label:"Reckoners have arrived!",
+startdescription:"FNORD Reckoners are here, because of traces",
+description:"FNORD",
+extantreqs:{trace:1,rkx.foe.defeated:-1},
+effects:{rkx.scout:1},
+warmup:50,
+linked:[{id:"rkx.selector"}]},
+
+{id:"rkx.arrive.no.traces",
+actionId:"rkx",
+label:"Reckoners have arrived!",
+startdescription:"FNORD Reckoners are here, because of sheer ill luck",
+description:"FNORD",
+extantreqs:{trace:-1},
+effects:{rkx.scout:1,rkx.foe.defeated:-1},
+warmup:50,
+linked:[{id:"rkx.selector"}]},
+
+{id:"rkx.arrive.defiance",
+actionId:"rkx",
+label:"I've brought my Foe here!",
+startdescription:"Let's hope I don't regret it.",
+effects:{rkx.foe:1},
+extantreqs:{rkx.foe.defeated:-1},
+warmup:20,
+linked:[{id:"rkx.foe.attack"}]},
+
+
+{id:"rkx.selector",
+actionId:"rkx",
+label:"Reckoners are searching the city",
+startdescription:"FNORD If they find a Trace, they'll move against me.",
+slots:[{id:"trace",label:"Trace",required:{trace:1},greedy:true}],
+deckeffect:{rkx.events:1},
+warmup:30,
+linked:[
+{id:"rkx.defiance"},
+{id:"rkx.obscurity.seek.foe"},
+{id:"rkx.trace.selector"},
+{id:"rkx.obscurity.seek.2"},
+{id:"rkx.obscurity.seek.1"},
+{id:"rkx.obscurity.seek.0"}]},
+
+
+{id:"rkx.defiance",
+actionId:"rkx",
+label:"The Foe!",
+startdescription:"The Foe!",
+extantreqs:{lure.foe:1},
+aspects:{rkx.promotetofoe:1},
+linked:[{id:"rkx.obscurity.seek.foe"}]},
+
+
+
+{id:"rkx.trace.selector",
+actionId:"rkx.trace.selector",
+label:"Reckoners have found traces",
+startdescription:"Reckoners have found traces",
+requirements:{trace:1},
+effects:{trace:-1},
+linked:[{id:"rkx.underboss.active.violent",chance:50},
+{id:"rkx.underboss.active.cunning"},
+{id:"rkx.underboss.passive"},
+{id:"rkx.enforcer.active"},
+{id:"rkx.enforcer.passive"},
+{id:"rkx.operative.active"},
+{id:"rkx.operative.passive"},
+{id:"rkx.scouts.active"},
+{id:"rkx.scouts.passive"}]
+},
+
+{id:"rkx.zero.obscurity.selector",
+actionId:"rkx.trace.selector",
+label:"Reckoners have found traces",
+startdescription:"Reckoners have found traces",
+requirements:{obscurity:-1},
+linked:[{id:"rkx.underboss.active"},
+{id:"rkx.underboss.passive"},
+{id:"rkx.enforcer.active"},
+{id:"rkx.enforcer.passive"},
+{id:"rkx.operative.active"},
+{id:"rkx.operative.passive"},
+{id:"rkx.scouts.active"},
+{id:"rkx.scouts.passive"}]
+},
+
+{id:"rkx.underboss.active",
+actionId:"rkx",
+label:"A Hostile Move!",
+startdescription:"FNORD stealing",
+requirements:{rkx.underboss:1,rkx.event.aggressive:1},
+warmup:40,
+linked:[{id:"rkx.reset"}]},
+
+{id:"rkx.underboss.active.cunning",
+actionId:"rkx",
+label:"A Hostile Move!",
+startdescription:"The Underboss will rely on sabotage or theft to attack my assets.",
+slots:[{id:"asset",label:"Target",required:{asset:1},greedy:true}],
+requirements:{rkx.underboss:1,rkx.event.aggressive:1},
+warmup:40,
+effects:{asset:-1},
+linked:[{id:"rkx.reset"}]},
+
+{id:"rkx.underboss.active.violent",
+actionId:"rkx",
+label:"A Hostile Move!",
+startdescription:"FNORD attacking",
+requirements:{rkx.underboss:1,rkx.event.aggressive:1},
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+warmup:40,
+linked:[
+{id:"rkx.underling.distracted"},
+{id:"rkx.underling.attack.success"},
+{id:"rkx.underling.attack.failure"}]},
+
+
+{id:"rkx.underboss.passive",
+actionId:"rkx",
+label:"Reinforcements!",
+startdescription:"A reckoner underboss has evidence that I'm here, but they haven't moved against me. This can only mean that they've sent for their superior.",
+requirements:{rkx.underboss:1,rkx.event.passive:1},
+aspects:{rkx.promote:1},
+warmup:40,
+linked:[{id:"rkx.reset"}]},
+
+
+{id:"rkx.enforcer.active",
+actionId:"rkx",
+label:"A Hostile Move!",
+startdescription:"FNORD attacking",
+requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+warmup:40,
+linked:[
+{id:"rkx.underling.distracted"},
+{id:"rkx.underling.attack.success"},
+{id:"rkx.underling.attack.failure"}]},
+
+{id:"rkx.underling.distracted",
+actionId:"rkx",
+label:"A Successful Distraction!",
+startdescription:"...",
+requirements:{distraction:1},
+linked:[{id:"rkx.underling.attack.failure"}],
+},
+
+
+{id:"rkx.underling.attack.success",
+actionId:"rkx",
+label:"FNORD attack success",
+startdescription:"FNORD",
+aspects:{fatiguing:1},
+alt:[{id:"spit.underling.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,op:1}}}],
+requirements:{lore:-1,weapon:-1},
+linked:[{id:"rkx.reset"}],
+warmup:10},
+
+{id:"spit.underling.attack.success",
+actionId:"spit.underling.attack",
+label:"FNORD I was hurt!",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+effects: {wound.exile:1},
+warmup:2},
+
+{id:"rkx.underling.attack.failure",
+actionId:"rkx",
+label:"FNORD attack failure",
+startdescription:"@#op.cold|Snow falls like night. I've left my pursuer floundering in the drifts.
+#op.heat|I've led my pursuer a dance through the noonday sun, until they're staggering with the heat.
+#op.sea|I've lost my pursuer in the bustle of the port.
+#op.faith|Reckoners are traditionally chary of sacred places. I've used that to slip away.
+#op.cats|The Colonel - the Hour that protects my Foe - has long disliked cats. Among my enemies, a wariness about felines has become a powerful superstition. I've slipped away while my pursuer hesitates.
+#op.height|I've hidden myself in the heights were few go, and my pursuer has been left behind.
+#op.horned|Reckoners are wary of the Hours. The shadows here are sharp with the presence of the Horned Axe. My pursuer hesitated, and I slipped away.
+#op.wolf|All fear the Wolf-Divided, and his breath has touched this place. My pursuer is reluctant to follow me into his shadow, and I've slipped away.
+#op.flowermaker|This place is sweet with the Flowermaker's scents. The airs here bewildered my pursuer long enough for me to slip away.
+#|Something distracted the underling!@",
+alt:[{id:"spit.underling.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
+{id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
+effects:{distraction:-1},
+linked:[{id:"rkx.reset"}],
+warmup:10},
+
+{id:"spit.underling.attack.failure.lore",
+actionId:"spit.underling.attack",
+requirements:{lore:1},
+label:"FNORD I defended myself with a skill! - which left a Trace",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+effects:{trace:1},
+warmup:2},
+
+{id:"spit.underling.attack.failure.weapon",
+actionId:"spit.underling.attack",
+requirements:{weapon:1},
+label:"FNORD I defended myself with a weapon! - which left a Trace",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+effects:{trace:1},
+warmup:2},
+
+
+
+{id:"rkx.enforcer.passive",
+actionId:"rkx",
+label:"Reinforcements!",
+startdescription:"A reckoner assassin has evidence that I'm here, but they haven't moved against me. This can only mean that they've sent for their superior.",
+requirements:{rkx.enforcer:1,rkx.event.passive:1},
+aspects:{rkx.promote:1},
+warmup:40,
+linked:[{id:"rkx.reset"}]},
+
+{id:"rkx.operative.active",
+actionId:"rkx",
+label:"A Hostile Move!",
+startdescription:"The reckoner operative will rely on sabotage or theft to attack my assets.",
+slots:[{id:"asset",label:"Target",required:{asset:1},greedy:true}],
+requirements:{rkx.operative:1,rkx.event.aggressive:1},
+warmup:40,
+effects:{asset:-1},
+linked:[{id:"rkx.reset"}]},
+
+{id:"rkx.operative.passive",
+actionId:"rkx",
+label:"Reinforcements!",
+startdescription:"A reckoner operative has evidence that I'm here, but they haven't moved against me. This can only mean that they've sent for their superior.",
+requirements:{rkx.operative:1,rkx.event.passive:1},
+aspects:{rkx.promote:1},
+warmup:40,
+linked:[{id:"rkx.reset"}]},
+
+
+
+{id:"rkx.scouts.active",
+actionId:"rkx",
+label:"Reinforcements!",
+startdescription:"Reckoners have evidence that I'm here. They're summoning help to smoke me out.",
+requirements:{rkx.event.aggressive:1},
+aspects:{rkx.promote:1},
+warmup:50,
+linked:[{id:"rkx.reset"}]},
+
+
+{id:"rkx.scouts.passive",
+actionId:"rkx",
+label:"Hesitation",
+startdescription:"My pursuers - cautious or cowardly or uncertain of their proof - have done nothing yet.",
+requirements:{rkx.event.passive:1},
+effects:{trace:-1},
+aspects:{rkx.promote:1},
+warmup:50,
+linked:[{id:"rkx.reset"}]},
+
+
+
+
+{id:"rkx.obscurity.seek.2",
+actionId:"rkx",
+label:"Scouring the Shadows",
+startdescription:"Reckoners are searching for me. Without the protection of Obscurity, I'll suffer. FNORD",
+slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
+requirements:{rkx.rank:2},
+warmup:30,
+linked:[
+{id:"rkx.obscurity.eating"},
+{id:"rkx.zero.obscurity.selector"},
+{id:"rkx.reset"}]},
+
+
+{id:"rkx.obscurity.seek.1",
+actionId:"rkx",
+label:"Scouring the Shadows",
+startdescription:"Reckoners are searching for me. Without the protection of Obscurity, I'll suffer.FNORD",
+slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
+requirements:{rkx.rank:1},
+warmup:40,
+linked:[
+{id:"rkx.obscurity.eating"},
+{id:"rkx.zero.obscurity.selector"},
+{id:"rkx.reset"}]},
+
+{id:"rkx.obscurity.seek.0",
+actionId:"rkx",
+label:"Scouring the Shadows",
+startdescription:"Reckoners are searching for me. Without the protection of Obscurity, I'll suffer.FNORD",
+slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
+warmup:50,
+linked:[
+{id:"rkx.obscurity.eating"},
+{id:"rkx.zero.obscurity.selector"},
+{id:"rkx.reset"}]},
+
+{id:"rkx.obscurity.eating",
+actionId:"rkx",
+label:"Eating obscurity FNORD",
+startdescription:"Eating obscurity which will keep them busy FNORD",
+requirements:{obscurity:1},
+effects:{obscurity:-1},
+warmup:10,
+linked:[{id:"rkx.lookfurtherafield"},
+{id:"rkx.leave"},
+{id:"rkx.reset"}]},
+
+{id:"rkx.obscurity.seek.foe",
+actionId:"rkx",
+label:"My Foe is in the city!",
+startdescription:"Foe right here FNORD",
+comments:"Foe don't care about events",
+requirements:{obscurity:-1,rkx.foe:1},
+slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
+alt:[{id:"rkx.foe.obscurity.reduced"}],
+warmup:20,
+linked:[{id:"rkx.foe.attack"}]},
+
+
+{id:"rkx.foe.obscurity.reduced",
+actionId:"rkx",
+label:"Closing In",
+startdescription:"My Foe is almost at my door FNORD",
+requirements:{obscurity:1},
+effects:{obscurity:-1},
+linked:[{id:"rkx.reset"}]},
+
+
+
+{id:"rkx.foe.attack",
+actionId:"rkx",
+label:"FNORD Foe attacking",
+startdescription:"FNORD foe attacking",
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+warmup:30,
+purge:{obscurity:100},
+linked:[
+{id:"rkx.foe.weaknessexploited.cold"},
+{id:"rkx.foe.weaknessexploited.heat"},
+{id:"rkx.foe.weaknessexploited.sea"},
+{id:"rkx.foe.weaknessexploited.faith"},
+{id:"rkx.foe.weaknessexploited.cats"},
+{id:"rkx.foe.weaknessexploited.heights"},
+{id:"rkx.foe.weaknessexploited.horned"},
+{id:"rkx.foe.weaknessexploited.wolf"},
+{id:"rkx.foe.weaknessexploited.flowermaker"},
+{id:"rkx.foe.attack.success"},
+{id:"rkx.foe.attack.failure"}]},
+
+
+
+
+
+
+{id:"rkx.foe.weaknessexploited.cold",
+actionId:"rkx",
+label:"FNORD cold weakness!",
+startdescription:"FNORD their weakness is COLD",
+requirements:{op.cold:1},
+extantreqs:{uq.rkx.weakness.cold:1},
+purge:{rkx.weakness.cold.hidden:1},
+effects:{op.cold:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+{id:"rkx.foe.weaknessexploited.heat",
+actionId:"rkx",
+label:"FNORD heat weakness!",
+startdescription:"FNORD their weakness is heat",
+requirements:{op.heat:1},
+extantreqs:{uq.rkx.weakness.heat:1},
+purge:{rkx.weakness.heat.hidden:1},
+effects:{op.heat:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.sea",
+actionId:"rkx",
+label:"FNORD sea weakness!",
+startdescription:"FNORD their weakness is sea",
+requirements:{op.sea:1},
+extantreqs:{uq.rkx.weakness.sea:1},
+purge:{rkx.weakness.sea.hidden:1},
+effects:{op.sea:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.faith",
+actionId:"rkx",
+label:"FNORD faith weakness!",
+startdescription:"FNORD their weakness is faith",
+requirements:{op.faith:1},
+extantreqs:{uq.rkx.weakness.faith:1},
+purge:{rkx.weakness.faith.hidden:1},
+effects:{op.faith:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.cats",
+actionId:"rkx",
+label:"FNORD cats weakness!",
+startdescription:"FNORD their weakness is cats",
+requirements:{op.cats:1},
+extantreqs:{uq.rkx.weakness.cats:1},
+purge:{rkx.weakness.cats.hidden:1},
+effects:{op.cats:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.heights",
+actionId:"rkx",
+label:"FNORD heights weakness!",
+startdescription:"FNORD their weakness is heights",
+requirements:{op.heights:1},
+extantreqs:{uq.rkx.weakness.heights:1},
+purge:{rkx.weakness.heights.hidden:1},
+effects:{op.heights:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.horned",
+actionId:"rkx",
+label:"FNORD horned weakness!",
+startdescription:"FNORD their weakness is horned",
+requirements:{op.horned:1},
+extantreqs:{uq.rkx.weakness.horned:1},
+purge:{rkx.weakness.horned.hidden:1},
+effects:{op.horned:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.weaknessexploited.wolf",
+actionId:"rkx",
+label:"FNORD wolf weakness!",
+startdescription:"FNORD their weakness is wolf",
+requirements:{op.wolf:1},
+extantreqs:{uq.rkx.weakness.wolf:1},
+purge:{rkx.weakness.wolf.hidden:1},
+effects:{op.wolf:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+
+{id:"rkx.foe.weaknessexploited.flowermaker",
+actionId:"rkx",
+label:"FNORD flowermaker weakness!",
+startdescription:"FNORD their weakness is flowermaker",
+requirements:{op.flowermaker:1},
+extantreqs:{uq.rkx.weakness.flowermaker:1},
+purge:{rkx.weakness.flowermaker.hidden:1},
+effects:{op.flowermaker:-1},
+linked:[{id:"rkx.foe.attack.failure"}]
+},
+
+{id:"rkx.foe.attack.success",
+actionId:"rkx",
+label:"FNORD attack success",
+startdescription:"FNORD",
+aspects:{fatiguing:1},
+alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
+requirements:{lore:-1,weapon:-1},
+linked:[{id:"rkx.foe.attack"}],
+warmup:10},
+
+{id:"spit.foe.attack.success",
+actionId:"spit.foe.attack",
+label:"FNORD I was hurt!",
+startdescription:"FNORD done",
+effects: {wound.exile:1},
+aspects:{fatiguing:1},
+warmup:2},
+
+
+{id:"rkx.foe.attack.failure",
+actionId:"rkx",
+label:"FNORD attack failure",
+startdescription:"FNORD",
+alt:[{id:"spit.foe.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
+{id:"spit.foe.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
+linked:[{id:"rkx.foe.attack"}],
+warmup:10},
+
+{id:"spit.foe.attack.failure.lore",
+actionId:"spit.foe.attack",
+requirements:{lore:1},
+label:"FNORD I defended myself with a skill!",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+warmup:2},
+
+{id:"spit.foe.attack.failure.weapon",
+actionId:"spit.foe.attack",
+requirements:{weapon:1},
+label:"FNORD I defended myself with a weapon!",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+warmup:2},
+
+
+
+{id:"rkx.leave",
+actionId:"rkx",
+label:"Reckoners are leaving FNORD",
+startdescription:"Reckoners are leaving, because they feel like it and they can't find traces FNORD",
+requirements:{rkx.event.passive:1,trace:-1,rkx.rank:-1},
+deleteverb:{rkx:1},
+warmup:50},
+
+{id:"rkx.lookfurtherafield",
+actionId:"rkx",
+label:"Reckoners are Looking Further Afield",
+startdescription:"If my pursuers can't find me here, they might look to other cities - particularly those in which I've shown an interest. [Reckoners will sometimes go ahead of you to a Destination. This is more likely if you've sent Funds there.]",
+requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
+slots:[{id:"destination",label:"A Lead?",required:{destination:1},forbidden:{rkx.infected:1},greedy:true}],
+warmup:50,
+linked:[
+{id:"rkx.infect.becauseprep",chance:70},
+{id:"rkx.infect.noprep",chance:30},
+{id:"rkx.demote"}]},
+
+
+{id:"rkx.infect.becauseprep",
+actionId:"rkx",
+label:"FNORD they're off elsewhere!",
+startdescription:"FNORD",
+requirements:{destination:1,cash.sent:1},
+mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
+warmup:50,
+linked:[{id:"rkx.demote"}]},
+
+{id:"rkx.infect.noprep",
+actionId:"rkx",
+label:"FNORD they're off elsewhere!",
+startdescription:"FNORD",
+requirements:{destination:1,cash.sent:-1},
+tablereqs:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
+warmup:50,
+linked:[{id:"rkx.demote"}]}, 
+ 
+
+
+{id:"rkx.demote",
+actionId:"rkx",
+label:"Reckoners are reducing their presence FNORD",
+startdescription:"Reckoners are reducing their presence FNORD",
+requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
+aspects:{rkx.demote:1},
+comments:"If we infected a destination in the previous step, spit the destination out",
+alt:[{id:"spit.infected.destination", additional:true, expulsion:{limit:1,filter:{rkx.infected:1}}}],
+warmup:50,
+linked:[{id:"rkx.reset"}]}, 
+
+{id:"spit.infected.destination",
+actionId:"spit.infected.destination",
+label:"Perils Ahead",
+startdescription:"FNORD",
+requirements:{rkx.infected:1},
+warmup:2, 
+},
+
+
+
+{id:"rkx.reset",
+actionId:"rkx",
+effects:{rkx.event:-1},
+linked:[{id:"rkx.selector"}]}
+
+]
+}
