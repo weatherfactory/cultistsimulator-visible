@@ -235,8 +235,13 @@ icon:annoyance
 label:"Asset",
 description:"Asset FNORD",
 isAspect:true,
-icon:compensationvalue
 },
+
+{label:"space",
+description:"A venue, or a base of operations.",
+isAspect:true
+},
+
 
 {id:"associate",
 label:"Associate",
@@ -324,8 +329,7 @@ isAspect:true
 {id:"asset.packed",
 label:"Asset (Packed)",
 description:"An Asset, ready for travelling",
-isAspect:true,
-icon:compensationvalue
+isAspect:true
 },
 
 {id: "progress",
@@ -438,7 +442,7 @@ lifetime:180
 
 {id:"discreetoffice",
 label:"Discreet Office",
-aspects:{asset:1},
+aspects:{asset:1,space:1},
 description:"Discreet Office FNORD",
 icon:vaultcapital1
 },
@@ -446,7 +450,7 @@ icon:vaultcapital1
 
 {id:"licence.medical",
 label:"Medical Licence",
-aspects:{asset:1},
+aspects:{asset:1,portable:1},
 description:"Medical Licence FNORD",
 slots:[{actionId:use,id:"location",label:"Location",required:{discreetoffice:1}}],
 icon:fragmentheart
