@@ -30,7 +30,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile:1,city.alexandria:1},
-	internaldeck: {spec: [loc.shrine.lionsmith,loc.vault.serapeum], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
+	internaldeck: {spec: [loc.shrine.lionsmith,vault.serapeum], draws: 1, defaultcard: op.connection, resetonexhaustion: false},
 },
 
 
