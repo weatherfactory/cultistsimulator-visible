@@ -1463,6 +1463,22 @@ requirements:{domicile:1,end.morbihan:1},
 	internaldeck: {spec: [op.faith,op.horned,op.sea], draws: 1, resetonexhaustion: true},
 },
 
+{id:"scout.wilderness",
+actionId:"scout",
+label:"Reconnoitre",
+startdescription:"Where even am I?",
+description:"@#op.cold|Somewhere floundering in the snow.
+#op.heat|Somewhere where the wind blows dry and hot.
+#op.sea|Somewhere by a nighted sea.
+#|Who even knows?@",
+warmup:60,
+craftable:true,
+requirements:{domicile:1,wilderness:1},
+	internaldeck: {spec: [op.cold,op.heat,op.sea], draws: 1, resetonexhaustion: true},
+},
+
+
+
 
 
 {id:"use.first",
