@@ -1402,7 +1402,48 @@ craftable:false},
 
 
 
-{id:"use.attack.weapon.first",
+{id:"use.attack.weapon.underling",
+actionId:"use",
+label:"Attack my Pursuer",
+startdescription:"FNORD Use a sacred weapon to attack my pursuer. [This will destroy all Obscurity.]",
+comments:"Priority>createdefiance, in case someone is actually under attack from a pursuer",
+description:"FNORD",
+requirements:{weapon:1},
+extantreqs:{rkx.rank:1},
+purge:{obscurity:100},
+aspects:{fatiguing:1},
+effects:{wound.underling:1}, 
+warmup:30,
+craftable:true,
+linked:[{id:"use.attack.underling.slain"}]},
+
+{id:"use.attack.lore.underling",
+actionId:"use",
+label:"Attack my Pursuer",
+comments:"Priority>createdefiance, in case someone is actually under attack from a pursuer",
+startdescription:"Use an Edge technique to attack my pursuer. [This will destroy all Obscurity.]",
+description:"FNORD",
+requirements:{lore:1},
+extantreqs:{rkx.rank:1},
+purge:{obscurity:100},
+aspects:{fatiguing:1},
+effects:{wound.underling:1},
+warmup:30,
+craftable:true,
+linked:[{id:"use.attack.underling.slain"}]},
+
+{id:"use.attack.underling.slain",
+actionId:"use",
+label:"I've Slain my Pursuer!",
+startdescription:"Reckoners aren't immortal. We only buy years and sell them. If that ever needed proving, I've proved it tonight.",
+description:"Reckoners aren't immortal. We only buy years and sell them. If that ever needed proving, I've proved it tonight. [I've disposed of my pursuer. But more will already be on the way.]",
+extantreqs:{wound.underling:2},
+haltverb:{rkx:1},
+effects:{trace:1,corpse.exile:1},
+warmup:1},
+
+
+{id:"use.attack.weapon.createdefiance",
 actionId:"use",
 label:"A Sacred Weapon",
 startdescription:"They used to say it would take a silver bullet to kill my Foe. I saw that tried, and I saw it fail. But what about this?",
@@ -1415,8 +1456,7 @@ craftable:true,
 linked:[{id:"foe.weaknesses.generate"}]},
 
 
-
-{id:"use.attack.lore.first",
+{id:"use.attack.lore.createdefiance",
 actionId:"use",
 label:"The Deadliest of Weapons",
 startdescription:"No reckoner is ever foolish enough to pass into the higher levels of the Mansus. To draw the attention of the true Long - or their masters - would invite annihilation. But my Foe had some traffic with the Hours of struggle and conquest. They enjoyed certain protections.",
@@ -1436,9 +1476,7 @@ deckeffect:{rkx.weaknesses.environment:1,rkx.weaknesses.quirk:1,rkx.weaknesses.d
 },
 
 
-
-
-{id:"use.attack.weapon",
+{id:"use.attack.weapon.foe",
 actionId:"use",
 label:"Use a sacred weapon to attack my Foe",
 startdescription:"FNORD",
@@ -1449,11 +1487,12 @@ purge:{obscurity:100},
 aspects:{fatiguing:1},
 effects:{wound.foe:1},
 warmup:30,
-craftable:true},
+craftable:true,
+linked:[{id:"use.attack.foe.slain"}]},
 
-{id:"use.attack.lore",
+{id:"use.attack.lore.foe",
 actionId:"use",
-label:"Use an Edge technique to attack my Foe",
+label:"Use an Edge technique to attack my Foe. [This will destroy all Obscurity.]",
 startdescription:"FNORD",
 description:"FNORD",
 requirements:{lore:1},
@@ -1462,9 +1501,20 @@ purge:{obscurity:100},
 aspects:{fatiguing:1},
 effects:{wound.foe:1},
 warmup:30,
-craftable:true},
+craftable:true,
+linked:[{id:"use.attack.foe.slain"}]},
 
-{id:"use.attack.weapon.nofoe",
+{id:"use.attack.foe.slain",
+actionId:"use",
+label:"A Bloody Victory",
+startdescription:"My Foe's body is pierced with seven wounds, as a city wall might be pierced with seven gates: and every wound has ceased to bleed. My heart lies trembling in your bloodied hand. They're dead. It's over. My own wounds will strengthen to scars. Now My pursuers will fall to squabbling over My Foe's territory, and leave me alone here... all alone.",
+extantreqs:{wound.foe:7},
+deleteverb:{rkx:1},
+effects:{rkx.foe.defeated:1},
+purge:{wound.foe:100,temptation.defiance:1}},
+
+
+{id:"use.attack.weapon.notarget",
 actionId:"use",
 label:"A Sacred Weapon?",
 startdescription:"This might be effective against my Foe's protections. I might even be able to duel them. If they were alone. And if I had some reason to believe I could actually defeat them in single combat.",
@@ -1473,7 +1523,7 @@ extantreqs:{rkx.foe:-1},
 hintonly:true,
 craftable:false},
 
-{id:"use.attack.lore.nofoe",
+{id:"use.attack.lore.notarget",
 actionId:"use",
 label:"A Sacred Technique?",
 startdescription:"I've learnt something of the protections that my Foe uses. I might even be able to duel them. If they were alone. And if I had some reason to believe I could actually defeat them in single combat.",
@@ -1703,11 +1753,11 @@ linked:[{id:"rkx.foe.attack"}]},
 {id:"rkx.selector",
 actionId:"rkx",
 label:"Reckoners are searching the city",
-startdescription:"FNORD What will they do?",
+startdescription:"FNORD If they find a Trace, they'll move against me.",
 
 slots:[{id:"trace",label:"Trace",required:{trace:1},greedy:true}],
 deckeffect:{rkx.events:1},
-warmup:50,
+warmup:30,
 linked:[
 {id:"rkx.defiance"},
 {id:"rkx.obscurity.seek.foe"},
@@ -1784,20 +1834,11 @@ requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
 slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
 warmup:40,
 linked:[
-{id:"rkx.underling.slain"},
 {id:"rkx.underling.distracted"},
 {id:"rkx.underling.attack.success"},
 {id:"rkx.underling.attack.failure"}]},
 
 
-{id:"rkx.underling.slain",
-actionId:"rkx",
-label:"FNORD",
-startdescription:"FNORD",
-description:"FNORD",
-requirements:{cash:10000},
-effects:{},
-warmup:10},
 
 
 {id:"rkx.underling.distracted",
@@ -1843,8 +1884,7 @@ startdescription:"@#op.cold|Snow falls like night. I've left my pursuer flounder
 alt:[{id:"spit.underling.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
 {id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
 effects:{distraction:-1},
-linked:[{id:"rkx.underling.slain"},
-{id:"rkx.reset"}],
+linked:[{id:"rkx.reset"}],
 warmup:10},
 
 {id:"spit.underling.attack.failure.lore",
@@ -1997,7 +2037,6 @@ slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
 warmup:30,
 purge:{obscurity:100},
 linked:[
-{id:"rkx.foe.slain"},
 {id:"rkx.foe.weaknessexploited.cold"},
 {id:"rkx.foe.weaknessexploited.heat"},
 {id:"rkx.foe.weaknessexploited.sea"},
@@ -2012,13 +2051,7 @@ linked:[
 
 
 
-{id:"rkx.foe.slain",
-actionId:"rkx",
-label:"A Bloody Victory",
-startdescription:"My Foe's body is pierced with seven wounds, as a city wall might be pierced with seven gates: and every wound has ceased to bleed. My heart lies trembling in your bloodied hand. They're dead. It's over. My own wounds will strengthen to scars. Now My pursuers will fall to squabbling over My Foe's territory, and leave me alone here - all alone.",
-extantreqs:{wound.foe:7},
-effects:{rkx.foe.defeated:1,rkx.foe:-1},
-purge:{wound.foe:100,temptation.defiance:1}},
+
 
 
 {id:"rkx.foe.weaknessexploited.cold",
@@ -2127,9 +2160,7 @@ startdescription:"FNORD",
 aspects:{fatiguing:1},
 alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
 requirements:{lore:-1,weapon:-1},
-linked:[
-{id:"rkx.foe.slain"},
-{id:"rkx.foe.attack"}],
+linked:[{id:"rkx.foe.attack"}],
 warmup:10},
 
 {id:"spit.foe.attack.success",
@@ -2141,17 +2172,13 @@ aspects:{fatiguing:1},
 warmup:2},
 
 
-
-
-
 {id:"rkx.foe.attack.failure",
 actionId:"rkx",
 label:"FNORD attack failure",
 startdescription:"FNORD",
 alt:[{id:"spit.foe.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
 {id:"spit.foe.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
-linked:[{id:"rkx.foe.slain"},
-{id:"rkx.foe.attack"}],
+linked:[{id:"rkx.foe.attack"}],
 warmup:10},
 
 {id:"spit.foe.attack.failure.lore",

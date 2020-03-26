@@ -248,7 +248,9 @@ icon:follower
 
 {id: "corpse.exile",
 label: "A Human Corpse",
-description:"They're not here any more. I should make sure I'm not, either."
+description:"They're not here any more. I should make sure I'm not, either.",
+decayTo:"trace",
+lifetime:60
 },
 
 
@@ -1212,49 +1214,68 @@ icon: bloodshed
 label: "My Wound",
 description:"Seven of these will end me.",
 lifetime:600,
-icon: long.wound
+icon: long.scar_heart
 },
 
 	  {id: "wound.foe",
 label: "Foe's Wound",
 description:"Seven of these will end my enemy.",
 lifetime:600,
-icon: scar_heart
+icon: follower_wound
 },
+
+	  {id: "wound.underling",
+label: "Pursuer's Wound",
+description:"One more of these will kill my pursuer.",
+lifetime:600,
+icon: long_wound
+},
+
 
 
 {id: "rkx.scout",
 label: "Reckoner Informants",
 description:"FNORD. Can track you down, but doesn't always.",
-xtriggers:{rkx.promote:[{id:rkx.enforcer,chance:50},{id:rkx.operative}],rkx.promotetofoe:rkx.foe}
+xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
+rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile
 },
 {id: "rkx.operative",
 label: "Reckoner Operative",
 description:"FNORD. Remorseless, will try to steal assets.",
 verbicon:"rkx.operative",
 aspects:{rkx.rank:1},
-xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile
 },
 
 {id: "rkx.enforcer",
 label: "Reckoner Assassin",
-description:"FNORD. Remorseless, will try to steal assets.",
+description:"FNORD. Remorseless, will try to muder me.",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
-xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe}
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile
 },
 {id: "rkx.underboss",
 label: "Reckoner Underboss",
 description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
 verbicon:"rkx.underboss",
 aspects:{rkx.rank:2},
-xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe}
+xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile
 },
 {id: "rkx.foe",
 label: "Your Foe",
 description:"FNORD",
 verbicon:"rkx.foe",
-aspects:{rkx.rank:3}
+aspects:{rkx.rank:3},
+lifetime:1,
+decayTo:corpse.exile
 },
 
 {id: "rkx.foe.defeated",
@@ -1388,6 +1409,7 @@ decayTo:"rkx.weakness.flowermaker"
 label: "Reckoners: Aggressive",
 aspects:{rkx.event:1},
 description:"FNORD",
+lifetime:1
 },
 
 
@@ -1395,6 +1417,7 @@ description:"FNORD",
 label: "Reckoners: Passive",
 aspects:{rkx.event:1},
 description:"FNORD",
+lifetime:1
 },
 
 
