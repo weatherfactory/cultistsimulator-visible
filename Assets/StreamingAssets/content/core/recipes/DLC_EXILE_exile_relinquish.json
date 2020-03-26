@@ -11,14 +11,6 @@ comments:"opened by initial send recipe",
 warmup:60,
 craftable:false},
 
-{id:"relinquish.sell",
-actionId:"relinquish",
-label:"Attempt to Sell an Asset for Cash",
-startdescription:"FNORD warning you'll lose this.",
-requirements:{asset:1,cash:-1},
-effects:{asset:-1,cash:1},
-warmup:30,
-craftable:true},
 
 {id:"relinquish.decade.healwound",
 actionId:"relinquish",
@@ -53,8 +45,6 @@ aspects:{majortracerisk:1},
 warmup:60,
 craftable:true},
 
-
-
 {id:"relinquish.corpse.exile.underling.defiance",
 actionId:"relinquish",
 label:"Celebrate my Victory",
@@ -79,6 +69,29 @@ aspects:{epiphany:1},
 warmup:60,
 craftable:true},
 
+
+{id:"relinquish.corpse.exile",
+actionId:"relinquish",
+label:"A Discreet Burial",
+startdescription:"It would be indecent to leave them unburied. But there's no need to make a fuss.",
+description:"We've made sure this poor shell has been put quietly out of the way..",
+requirements:{corpse.exile:1,deception:1},
+effects:{corpse.exile:-1},
+warmup:10,
+craftable:true},
+
+
+{id:"relinquish.trace",
+actionId:"relinquish",
+label:"Cover My Tracks",
+startdescription:"With the right means, I can bury the clues that might betray me to my enemies.",
+description:"I've disposed of that Trace. But I can't keep this up forever.",
+requirements:{trace:1,deception:1},
+effects:{trace:-1},
+warmup:10,
+craftable:true},
+
+
 {id:"relinquish.corpse.exile.underling.defiance.already.hint",
 actionId:"relinquish",
 label:"Already Recognised",
@@ -90,11 +103,31 @@ craftable:false},
 
 {id:"relinquish.corpse.exile.underling.hint",
 actionId:"relinquish",
-label:"Mortal Uses",
+label:"Mortal Uses?",
 startdescription:"A human corpse is an inconvenient property, but also, now and then, a valuable one.",
 requirements:{corpse.exile.underling:1},
 hintonly:true,
 craftable:false},
+
+{id:"relinquish.trace.hint",
+actionId:"relinquish",
+label:"Cover My Tracks?",
+startdescription:"With the right means, I can bury the clues that might betray me to my enemies.",
+requirements:{trace:1,deception:-1},
+hintonly:true,
+craftable:false},
+
+{id:"relinquish.sell",
+actionId:"relinquish",
+label:"Attempt to Sell an Asset for Cash",
+startdescription:"FNORD warning you'll lose this.",
+requirements:{asset:1,cash:-1},
+effects:{asset:-1,cash:1},
+warmup:30,
+craftable:true},
+
+
+
 
 
 

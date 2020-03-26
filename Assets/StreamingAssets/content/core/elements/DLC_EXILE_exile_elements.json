@@ -256,6 +256,7 @@ icon:follower
 label: "A Human Corpse",
 aspects:{trace:1},
 description:"They're not here any more. I should make sure I'm not, either.",
+slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
 icon:corpse
 },
 
@@ -583,7 +584,8 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  },
 	  {id:"trace",
 	  label:"Trace",
-	  description:"A betraying clue that your pursuers might recognise.",
+	  description:"A betraying clue that my pursuers might recognise.",
+	  slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
 	  aspects:{influence:1},
 	  icon:rumour
 	  },
