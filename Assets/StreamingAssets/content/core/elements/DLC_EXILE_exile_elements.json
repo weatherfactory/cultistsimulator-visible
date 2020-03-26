@@ -100,6 +100,12 @@ noartneeded:true,
 isHidden:true
 },
 
+{id:"defiance.underlingdefeated",
+label:"Defeated at least one underling and proved it corpsily",
+isAspect:true,
+isHidden:true
+},
+
 {id:"defiance.weaponsent",
 label:"Sent a weapon to the Foe",
 isAspect:true,
@@ -248,9 +254,18 @@ icon:follower
 
 {id: "corpse.exile",
 label: "A Human Corpse",
+aspects:{trace:1},
 description:"They're not here any more. I should make sure I'm not, either.",
+icon:corpse
+},
+
+{id: "corpse.exile.underling",
+label: "A Reckoner Corpse",
+aspects:{trace:1},
+description:"Proof of a victory. This is going to make my Foe very upset.",
 decayTo:"trace",
-lifetime:60
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1}}],
+icon:corpse
 },
 
 
@@ -1248,7 +1263,7 @@ verbicon:"rkx.operative",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
 lifetime:1,
-decayTo:corpse.exile
+decayTo:corpse.exile.underling
 },
 
 {id: "rkx.enforcer",
@@ -1258,7 +1273,7 @@ verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
 lifetime:1,
-decayTo:corpse.exile
+decayTo:corpse.exile.underling
 },
 {id: "rkx.underboss",
 label: "Reckoner Underboss",
@@ -1267,21 +1282,22 @@ verbicon:"rkx.underboss",
 aspects:{rkx.rank:2},
 xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
 lifetime:1,
-decayTo:corpse.exile
+decayTo:corpse.exile.underling
 },
+
+
 {id: "rkx.foe",
 label: "Your Foe",
 description:"FNORD",
 verbicon:"rkx.foe",
 aspects:{rkx.rank:3},
 lifetime:1,
-decayTo:corpse.exile
+decayTo:rkx.foe.defeated
 },
 
 {id: "rkx.foe.defeated",
 label: "A Trophy of your Foe",
-description:"FNORD",
-verbicon:"rkx.foe.defeated",
+description:"FNORD"
 },
 
 

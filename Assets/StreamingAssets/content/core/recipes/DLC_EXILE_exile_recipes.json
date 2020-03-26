@@ -847,7 +847,7 @@ craftable:false},
 {id:"travel.investigate.hint",
 actionId:"travel",
 label:"Onwards?",
-startdescription:"I'll need cash to pay sources, if I'm to find another place to run.",
+startdescription:"I'll need Cash to pay my sources, if I'm to find another place to run.",
 requirements:{domicile:1},
 hintonly:true,
 craftable:false},
@@ -1439,7 +1439,8 @@ startdescription:"Reckoners aren't immortal. We only buy years and sell them. If
 description:"Reckoners aren't immortal. We only buy years and sell them. If that ever needed proving, I've proved it tonight. [I've disposed of my pursuer. But more will already be on the way.]",
 extantreqs:{wound.underling:2},
 haltverb:{rkx:1},
-effects:{trace:1,corpse.exile:1},
+effects:{trace:1,wound.underling:-1},
+purge:{wound.underling:100},
 warmup:1},
 
 
@@ -1509,8 +1510,8 @@ actionId:"use",
 label:"A Bloody Victory",
 startdescription:"My Foe's body is pierced with seven wounds, as a city wall might be pierced with seven gates: and every wound has ceased to bleed. My heart lies trembling in your bloodied hand. They're dead. It's over. My own wounds will strengthen to scars. Now My pursuers will fall to squabbling over My Foe's territory, and leave me alone here... all alone.",
 extantreqs:{wound.foe:7},
-deleteverb:{rkx:1},
-effects:{rkx.foe.defeated:1},
+haltverb:{rkx:1},
+effects:{trace:1},
 purge:{wound.foe:100,temptation.defiance:1}},
 
 
@@ -1639,6 +1640,50 @@ effects:{year.stolen:-1,cash:5},
 aspects:{majortracerisk:1},
 warmup:60,
 craftable:true},
+
+
+
+{id:"relinquish.corpse.exile.underling.defiance",
+actionId:"relinquish",
+label:"Celebrate my Victory",
+startdescription:"The Hours of struggle and conquest acknowledge victories. I can offer this trophy to increase my standing in their eyes.",
+description:"It's done. In the hour when day battles night, the Many-Winged Ones descend to judge my prize, and when they depart, nothing remains but scraps.",
+requirements:{corpse.exile.underling:1,temptation.defiance:1,defiance.underlingdefeated:-1},
+effects:{corpse.exile.underling:-1},
+mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiance.underlingdefeated,mutationLevel:1},
+{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+warmup:60,
+craftable:true},
+
+
+{id:"relinquish.corpse.exile.underling.lore",
+actionId:"relinquish",
+label:"Learn from my Victory",
+startdescription:"Certain techniques can only be articulated in an enemy's blood.",
+description:"This wasn't a tidy or a pleasant process... but I have developed my understanding of the many kinds of mortal action.",
+requirements:{corpse.exile.underling:1,lore:1},
+effects:{corpse.exile.underling:-1},
+aspects:{epiphany:1},
+warmup:60,
+craftable:true},
+
+{id:"relinquish.corpse.exile.underling.defiance.already.hint",
+actionId:"relinquish",
+label:"Already Recognised",
+startdescription:"The Many-Winged Ones who judge the slain have already acknowledged one victory of this nature. I shouldn't trouble them again.",
+requirements:{corpse.exile.underling:1,temptation.defiance:1,defiance.underlingdefeated:1},
+hintonly:true,
+craftable:false},
+
+
+{id:"relinquish.corpse.exile.underling.hint",
+actionId:"relinquish",
+label:"Mortal Uses",
+startdescription:"A human corpse is an inconvenient property, but also, now and then, a valuable one.",
+requirements:{corpse.exile.underling:1},
+hintonly:true,
+craftable:false},
+
 
 
 
