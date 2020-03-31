@@ -365,22 +365,32 @@ public class DebugTools : MonoBehaviour,IRollOverride
         Registry.Retrieve<ModManager>().LoadAll();
 #endif
         var contentImporter = new ContentImporter();
-        var compendium = Registry.Retrieve<ICompendium>();
-       var problems= contentImporter.PopulateCompendium(compendium);
-       foreach (var p in problems.Where(p=>p.MessageLevel>1))
-           NoonUtility.Log(p.Description, p.MessageLevel);
-
-        // Populate the new decks
-        IGameEntityStorage storage = Registry.Retrieve<Character>();
-        foreach (var ds in compendium.GetAllDeckSpecs())
-        {
-            if (storage.GetDeckInstanceById(ds.Id) == null)
-            {
-                IDeckInstance di = new DeckInstance(ds);
-                storage.DeckInstances.Add(di);
-                di.Reset();
-            }
+        var newCompendium =new Compendium();
+            
+       var problems= contentImporter.PopulateCompendium(newCompendium);
+       if(problems.Any(p=>p.MessageLevel>1))
+        { 
+            NoonUtility.Log("Problems with content import: ",2);
+            foreach (var p in problems.Where(p=>p.MessageLevel>1))
+                NoonUtility.Log(p.Description, p.MessageLevel);
         }
+       else
+       {
+           Registry.Replace<ICompendium>(newCompendium);
+
+           // Populate the new decks
+           IGameEntityStorage storage = Registry.Retrieve<Character>();
+           foreach (var ds in newCompendium.GetAllDeckSpecs())
+           {
+               if (storage.GetDeckInstanceById(ds.Id) == null)
+               {
+                   IDeckInstance di = new DeckInstance(ds);
+                   storage.DeckInstances.Add(di);
+                   di.Reset();
+               }
+           }
+
+       }
     }
 
     void NextTrack()

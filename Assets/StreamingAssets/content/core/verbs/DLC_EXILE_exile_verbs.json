@@ -23,7 +23,7 @@
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
 			atStart:false,
 				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
-			  required:{destination:1,domicile:1,cash:1,location:1}}]
+			  required:{destination:1,cash:1,location:1}}]
         },
 				{
             id: "send",
@@ -31,7 +31,7 @@
             description: "Send messages, moneys and more. Be careful.",
 			atStart:false,
 				  slots: [{id:"send",label:"Send",
-			  required:{desire:1,cash:1,cash.sent:1,mortal:1}}]
+			  required:{desire:1,domicile:1,cash:1,cash.sent:1,mortal:1}}]
         },
 		
 						{

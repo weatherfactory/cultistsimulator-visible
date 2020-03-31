@@ -283,6 +283,20 @@ icon:hireling,
 isAspect:true
 },
 
+{id:"venerates.colonel",
+label:"Respects the Colonel",
+description:"Patience before strength.",
+icon:winter,
+isAspect:true
+},
+
+{id:"venerates.lionsmith",
+label:"Respects the Lionsmith",
+description:"Courage before cunning.",
+icon:forge,
+isAspect:true
+},
+
 
 {id: "_vault.exile",
 label: "_vault.exile",
@@ -389,6 +403,16 @@ icon:"vaultcapital5",
 unique:true
 },
 
+{
+id:"vault.huntress",
+label:"The Merry Feaster's Lair",
+description:"FNORD ",
+inherits: "_vault.exile",
+icon:"vaultcapital1",
+unique:true
+},
+
+
 
 {id: "npc.smuggler",
 label: "Giorgiou",
@@ -397,6 +421,15 @@ description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, ra
 aspects:{avaricious:1},
 xtriggers:{mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 icon:diarist 
+},
+
+{id: "npc.huntress",
+label: "Lalla Chaima, the Snare",
+inherits:_npc.mortal,
+description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
+aspects:{venerates.colonel:1},
+xtriggers:{mortal.introduce:[{id:"vault.huntress",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+icon:renira_a 
 },
 
 
@@ -740,8 +773,8 @@ unique:true
 },
 
 
-	  {id: "city.stpetersburg",
-label: "St Petersburg",
+	  {id: "city.leningrad",
+label: "Leningrad",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"FNORD",
@@ -823,8 +856,8 @@ unique:true
 
 
 
-	  {id: "city.yekaterinburg",
-label: "Yekaterinburg",
+	  {id: "city.sverdlovsk",
+label: "Sverdlovsk",
 aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},

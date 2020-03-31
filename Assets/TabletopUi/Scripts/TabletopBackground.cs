@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.Core.Entities;
+using Noon;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
@@ -8,17 +11,30 @@ namespace Assets.CS.TabletopUI
         public event System.Action onDropped;
         public event System.Action onClicked;
 
+        [SerializeField] Image Cover;
+        [SerializeField] Image Edge;
+
+
         public void OnDrop(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged == null)
                 return;
 
-            if (onDropped != null)
-                onDropped();
+            onDropped?.Invoke();
         }
 
-        public void OnPointerClick(PointerEventData eventData) {
-            if (onClicked != null)
-                onClicked();
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            onClicked?.Invoke();
         }
+
+        public void ShowTabletopFor(Legacy characterActiveLegacy)
+        {
+            if (characterActiveLegacy.Id == "exile")
+            {
+                var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
+                Cover.sprite = exileLeather;
+            }
+        }
+
     }
 }

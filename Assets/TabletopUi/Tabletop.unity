@@ -2897,6 +2897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba0d41a947e9408c8dcb470aa199f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cover: {fileID: 679}
+  Edge: {fileID: 784}
 --- !u!114 &578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3156,6 +3158,7 @@ MonoBehaviour:
   _intermittentAnimatableController: {fileID: 1506403065}
   _endGameAnimController: {fileID: 2130193020}
   _tabletop: {fileID: 730}
+  tabletopBackground: {fileID: 577}
   Limbo: {fileID: 68}
   aspectDetailsWindow: {fileID: 566079818}
   tokenDetailsWindow: {fileID: 114111364633692442}
@@ -24366,7 +24369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15, y: -15.0000305}
+  m_AnchoredPosition: {x: -15, y: -15}
   m_SizeDelta: {x: 550, y: -35}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1041049462
@@ -24463,6 +24466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba0d41a947e9408c8dcb470aa199f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cover: {fileID: 0}
+  Edge: {fileID: 0}
 --- !u!114 &1041490182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27253,7 +27258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -5.0000305}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1243788745

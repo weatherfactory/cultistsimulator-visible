@@ -44,6 +44,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         public TabletopTokenContainer _tabletop;
         [SerializeField]
+        TabletopBackground tabletopBackground;
+
+        [SerializeField]
         private Limbo Limbo;
 
         [Header("Detail Windows")]
@@ -426,10 +429,11 @@ namespace Assets.CS.TabletopUI {
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
             _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
+            tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
 
         }
 
-
+ 
 
         #region -- Build / Reset -------------------------------
 
@@ -662,6 +666,8 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(true, false, true);
 
             _elementOverview.Initialise(storage.ActiveLegacy, Registry.Retrieve<StackManagersCatalogue>(), compendium);
+            tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
+
         }
 
         public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
