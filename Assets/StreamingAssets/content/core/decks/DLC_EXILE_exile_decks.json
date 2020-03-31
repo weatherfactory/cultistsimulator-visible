@@ -1,0 +1,46 @@
+{"decks":
+    [
+
+
+{id: "rkx.events",
+				label:"Reckoner Plans",
+	description:"The reckoners are planning their next move.",
+	spec:["rkx.event.aggressive",
+	"rkx.event.aggressive",
+	"rkx.event.aggressive",
+	"rkx.event.passive",
+	],
+resetonexhaustion:true},
+
+{id: "rkx.weaknesses.environment",
+label:"Foe Weaknesses: Environment",
+spec:["rkx.weakness.cold.hidden",
+"rkx.weakness.heat.hidden",
+"rkx.weakness.sea.hidden",
+],
+resetonexhaustion:true
+},
+
+{id: "rkx.weaknesses.quirk",
+label:"Foe Weaknesses: Quirk",
+spec:["rkx.weakness.faith.hidden",
+"rkx.weakness.cats.hidden",
+"rkx.weakness.heights.hidden",
+],
+resetonexhaustion:true
+},
+
+
+{id: "rkx.weaknesses.disfavour",
+label:"Foe Weaknesses: Disfavour",
+spec:["rkx.weakness.horned.hidden",
+"rkx.weakness.wolf.hidden",
+"rkx.weakness.flowermaker.hidden",
+],
+resetonexhaustion:true
+},
+
+
+	
+	]
+}

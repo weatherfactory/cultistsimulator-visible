@@ -1,0 +1,1447 @@
+{"elements":
+    [
+{id:"uqedgelore.exile",label:"Exile: Edge Lore",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.cold",label:"Weakness: Cold",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.heat",label:"Weakness: Heat",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.sea",label:"Weakness: Sea",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.faith",label:"Weakness: Faith",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.cats",label:"Weakness: Cats",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.heights",label:"Weakness: heights",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.horned",label:"Weakness: Horned",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
+{id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
+
+	
+{id:"minortracerisk",
+label:"Minor Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:10}],
+noartneeded:true
+},
+{id:"tracerisk",
+label:"Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:30}],
+noartneeded:true
+},
+
+{id:"majortracerisk",
+label:"Major Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:70}],
+noartneeded:true
+},
+
+{id:"terribletracerisk",
+label:"Terrible Trace Risk",
+description:"recipe aspect",
+isAspect:true,
+induces:[{id:"spawn.trace",chance:90}],
+noartneeded:true
+},
+
+{id:"negotiation",
+label:"Negotiation",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"purchase",
+label:"Purchase",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"bribery",
+label:"Bribery",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"betrayal",
+label:"Betrayal",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"mortal.introduce",
+label:"Mortal intro",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.promote",
+label:"Reckoner Promotion",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.promotetofoe",
+label:"Reckoner Promotion - directly to Foe",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"lure.foe",
+label:"Foe Lure",
+description:"hidden mutation applied to domicile that infallibly brings the Foe if an rkx verb is running",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+{id:"defiance.underlingdefeated",
+label:"Defeated at least one underling and proved it corpsily",
+isAspect:true,
+isHidden:true
+},
+
+{id:"defiance.weaponsent",
+label:"Sent a weapon to the Foe",
+isAspect:true,
+isHidden:true
+},
+
+{id:"defiance.foespared",
+label:"Spared the Foe",
+isAspect:true,
+isHidden:true
+},
+
+{id:"defiance.consecration.colonel",
+label:"Consecrated: Colonel",
+isAspect:true
+},
+
+{id:"defiance.consecration.lionsmith",
+label:"Consecrated: Lionsmith",
+isAspect:true
+},
+
+{id: "shrine.edge",
+label: "Shrine of the Edge",
+description:"A place dedicated to an Hour of struggle and conflict.",
+isAspect:true,
+isHidden:true
+},
+
+
+{id:"rkx.demote",
+label:"Reckoner Demotion",
+description:"recipe aspect",
+isAspect:true,
+noartneeded:true
+},
+
+{id:"rkx.event",
+label:"Reckoner plans",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"rkx.rank",
+label:"Reckoner rank",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"cash.sent",
+label:"Preparations",
+description:"I've sent funds ahead to make life in this place easier. [Once you've arrived, use this card with Travel again to retrieve your funds.]",
+isAspect:true
+},
+
+
+{id:"rkx.infected",
+label:"Reckoner presence",
+description:"FNORD!!",
+isAspect:true
+},
+
+
+{id:"defiancemarks",
+label:"The Exercise of Defiance",
+description: "Cunning may answer Strength, Strength may answer Cunning, but how might we answer Agony?",
+isAspect:true
+},
+
+
+{id:"domicile",
+label:"Place of Residence",
+description:"I'm here, for now.",
+isAspect:true,
+icon:hq
+},
+
+{id:"lifespan.stolen",
+label:"Stolen Lifespan",
+description:"FNORD",
+isAspect:true
+},
+
+{id:"destination",
+label:"Destination",
+description:"I might find safety there for a little longer... if they don't get there first.",
+isAspect:true
+},
+
+
+{id:"remote",
+label:"Remote",
+description:"It'll be a long hard journey. But, in my current circumstances, perhaps that should make it more attractive. [Travelling to this Destination is more expensive, but will earn you an Obscurity.]",
+isAspect:true,
+icon:erratic
+},
+
+{id:"end",
+label:"Map's Edge",
+description:"The time may come when I can run no further. Then I must choose whether to lose myself in the loneliest place I can find... or choose that place to turn and face my Foe.",
+isAspect:true
+},
+
+
+{id: "weapon",
+label: "Weapon",
+description:"'Reach for the book - it is a weapon.' - Brecht",
+isAspect:true,
+icon:long.might
+},
+
+{id:"op",
+label:"Opportunity",
+description:"Opportunity FNORD",
+isAspect:true,
+icon:benign
+},
+
+{id:"distraction",
+label:"Distraction",
+description:"With the right angle, anything can be a weapon.",
+isAspect:true,
+icon:annoyance
+},
+
+{id:"asset",
+label:"Asset",
+description:"Asset FNORD",
+isAspect:true,
+},
+
+{id:"space",
+label:"space",
+description:"A venue, or a base of operations.",
+isAspect:true
+},
+
+
+{id:"associate",
+label:"Associate",
+description:"They'll work with me... for now.",
+isAspect:true,
+icon:devotee
+},
+
+{id:"ally",
+label:"Ally",
+description:"One who is prepared to accompany me on my journey.",
+isAspect:true,
+icon:follower
+},
+
+{id: "corpse.exile",
+label: "A Human Corpse",
+aspects:{trace:1},
+description:"They're not here any more. I should make sure I'm not, either.",
+slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
+icon:corpse
+},
+
+{id: "corpse.exile.underling",
+label: "A Reckoner Corpse",
+aspects:{trace:1},
+description:"Proof of a victory. This is going to make my Foe very upset.",
+decayTo:"trace",
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1}}],
+icon:corpse
+},
+
+
+{id:"avaricious",
+label:"Avaricious",
+description:"'Everybody needs money. That's why they call it money.' - Mamet",
+icon:hireling,
+isAspect:true
+},
+
+
+{id: "_vault.exile",
+label: "_vault.exile",
+aspects:{location:1,vault:1},
+slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
+{id:"assistance",actionId:"travel",label:"Assistance",required:{associate:1,ally:1}}]
+},
+
+{id: "_npc.mortal",
+label: "_npc.mortal",
+aspects:{mortal:1},
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress}]},
+icon:diarist 
+},
+
+
+{id:"portable",
+label:"Portable",
+description:"An asset that might travel with you.",
+isAspect:true
+},
+
+{id:"exhausted",
+label:"Exhausted",
+description:"With a little time, this will recover.",
+isAspect:true
+},
+
+
+{id:"deception",
+label:"Deception",
+description:"'There is nothing more deceptive than an obvious fact.' - Arthur Conan Doyle.  [Anything with this aspect can be used to defeat Traces.]",
+isAspect:true
+},
+
+
+
+{id:"asset.packed",
+label:"Asset (Packed)",
+description:"An Asset, ready for travelling",
+isAspect:true
+},
+
+{id: "progress",
+label: "Making Progress",
+description:"FNORD getting there.",
+lifetime:1
+},
+{id: "payment",
+label: "Payment",
+description:"FNORD paid off",
+lifetime:1,
+icon:bid
+},
+
+
+{id: "cash",
+label: "Cash",
+aspects: {asset:1,portable:1},
+description:"An unglamorously convenient shorthand for objects of desire.",
+slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
+xtriggers:{bribery:[{id:"progress"},{id:"payment",morpheffect:spawn}]}
+},
+
+{id: "loc.shrine.colonel",
+label: "Location: an Iron Shrine",
+aspects: {location:1,shrine.edge:1},
+description:"FNORD.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+},
+
+
+{id: "loc.shrine.lionsmith",
+label: "Location: a Golden Shrine",
+aspects: {location:1,shrine.edge:1},
+description:"FNORD.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+},
+
+{
+id:"vault.serapeum",
+label:"The Invisible Serapeum",
+inherits: "_vault.exile",
+description:"FNORD.",
+icon:"vaultlandbeyondforest5",
+unique:true
+},
+
+{
+id:"vault.tarascon",
+label:"Chateau Tarascon",
+inherits: "_vault.exile",
+description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
+icon:"vaultlandbeyondforest2",
+unique:true
+},
+
+{
+id:"vault.smuggler",
+label:"Collector's Mansion",
+description:"FNORD ",
+inherits: "_vault.exile",
+icon:"vaultcapital5",
+unique:true
+},
+
+
+{id: "npc.smuggler",
+label: "Giorgiou",
+inherits:_npc.mortal,
+description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+aspects:{avaricious:1},
+xtriggers:{mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+icon:diarist 
+},
+
+
+
+
+{id: "op.discreetoffice",
+label: "Opportunity: Discreet Office?",
+aspects: {op:1},
+description:"FNORD.",
+xtriggers:{purchase:discreetoffice},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "op.licence.medical",
+label: "Opportunity: Medical Credentials?",
+aspects: {op:1},
+description:"FNORD.",
+xtriggers:{negotiation:licence.medical},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
+{actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
+lifetime:180
+},
+
+	  	  {id: "op.connection",
+label: "Opportunity: Official Connection?",
+aspects: {op:1},
+description:"FNORD.",
+xtriggers:{purchase:connection},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+
+
+{id:"discreetoffice",
+label:"Discreet Office",
+aspects:{asset:1,space:1},
+description:"Discreet Office FNORD",
+icon:vaultcapital1
+},
+
+
+{id:"licence.medical",
+label:"Medical Licence",
+aspects:{asset:1,portable:1},
+description:"Medical Licence FNORD",
+slots:[{actionId:use,id:"location",label:"Location",required:{discreetoffice:1}}],
+icon:fragmentheart
+},
+
+{id:"connection",
+label:"Official Connection",
+aspects:{asset:1,deception:1},
+description:"A mutually beneficial arrangement with someone in authority.",
+icon:favour
+},
+
+{id: "ticket.train",
+label: "A Hastily Purchased Train Ticket",
+aspects: {op:1,destination:1},
+description:"A ticket to the very first destination that came to mind - "
+},
+
+
+{id: "weapon.biedde",
+label: "Biedde's Blade",
+aspects: {weapon:1,edge:8},
+xtriggers:{fatiguing:weapon.biedde.exhausted},
+description:"FNORD",
+icon:tooledged
+},
+
+{id: "weapon.lionhunter",
+label: "Lionhunter's Rifle",
+aspects: {weapon:1,edge:4},
+xtriggers:{fatiguing:weapon.lionhunter.exhausted},
+description:"FNORD",
+icon:tooledgeb
+},
+
+
+{id: "weapon.biedde.exhausted",
+label: "Weapon (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.biedde,
+resaturate:true,
+icon:tooledged
+},
+{id: "weapon.lionhunter.exhausted",
+label: "Weapon (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.lionhunter,
+resaturate:true,
+icon:tooledgeb
+},
+
+
+{id: "asset.a",
+label: "A",
+aspects: {asset:1},
+description:"FNORD"
+},
+{id: "asset.b",
+label: "B",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.c",
+label: "C",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.d",
+label: "D",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.e",
+label: "Assets A",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.f",
+label: "F",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+{id: "asset.g",
+label: "G",
+aspects: {asset:1},
+description:"FNORD"
+},
+
+
+     {id: "obscurity",
+      label: "Obscurity",
+      description:"This might be the only defence against the reckoner lords. It might be no defence at all. ",
+	  },
+	  
+	  {id: "temptation.obscurity",
+label: "Temptation: A Final Message",
+aspects: {desire:1},
+icon:julian.defeated,
+slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity2",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity3",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity4",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity5",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity6",label:"Obscurity",required:{obscurity:1}},
+{actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
+],
+description:"I've stolen a fortune in years from a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
+},
+
+{id: "temptation.wealth",
+label: "Temptation: Wealth",
+aspects: {desire:1},
+description:"None of this has gone as I planned. But I'd still like to retire in style."
+},
+	  
+	  {id:"decade.stolen",
+	  label: "Stolen Decade",
+	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
+	  slots:[{actionId: "relinquish", id:"wound",label:"My Wound",required:{wound.exile:1}}],
+	  aspects:{lifespan.stolen:10},
+	  },
+	  	  {id:"year.stolen",
+	  label: "Stolen Year",
+	  description:"A year of generously donated life, as entered in the Cindered Tally.",
+	  aspects:{lifespan.stolen:1}
+	  },
+	  {id:"trace",
+	  label:"Trace",
+	  description:"A betraying clue that my pursuers might recognise.",
+	  slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
+	  aspects:{influence:1},
+	  icon:rumour
+	  },
+	  
+	  
+	  	  {id: "end.bornholm",
+label: "Sunshine Island",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"The light is famously good - enough so that a small colony of artists toils here - but it's still an optimistic name for a storm-beaten tumble of Baltic granite.",
+icon: vaultcontinent1,
+unique:true
+},
+ 
+	  	  {id: "end.slettnes",
+label: "Fogfire Point",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
+icon: vaultcontinent1,
+unique:true
+},
+
+	  
+	  	  {id: "end.cheko",
+label: "Wounded Moon Lake",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"Deep in the taiga forests of Siberia, a hunting lodge decays gracefully into an ice-blue lake - a lake, it's said, that a falling moon-fragment scarred from the forest.",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  
+	  	  {id: "end.paro",
+label: "The Tiger's Nest",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"High in the abode of eternal snows, a monastery of the Diamond Vehicle clings improbably to a cliff face like flowers on lichen.",
+icon: vaultcontinent1,
+unique:true
+},
+
+	  
+	  	  {id: "end.messana",
+label: "Hermitage of the Scythe",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"Across the deadly sands, an oasis where peculiarly healthy villagers thrive. In the hills above, a sunny, rocky cell of three windows.",
+icon: vaultloneandlevelsands3,
+unique:true
+},
+
+
+	  
+	  	  {id: "end.ghardaia",
+label: "The Pentapolis",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"On a high far limestone plateau in the greatest of deserts, the Mozabites built five citadel villages to be a refuge for their people. Now, one is a refuge for me.",
+icon: vaultloneandlevelsands2,
+unique:true
+},
+
+	  
+	  	  {id: "end.morbihan",
+label: "Priory of Captains",
+aspects: {destination:1,end:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"In the little sea called Morbihan, the gate to the western ocean, there's an isle famed for its sailors. On its westmost tip lies a quiet priory. The monks enjoy their privacy, but they've been known to offer sanctuary.",
+icon: vaultcontinentdefault,
+unique:true
+},
+	  
+	  	  {id: "city.london",
+label: "London",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.amsterdam",
+label: "Amsterdam",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.rostock",
+label: "Rostock",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+
+	  {id: "city.paris",
+label: "Paris",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent4,
+unique:true
+},
+	  {id: "city.aachen",
+label: "Rhenish Aachen",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.prague",
+label: "Prague",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.kaunas",
+label: "Kaunas (Little Paris)",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.stpetersburg",
+label: "St Petersburg",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.nizhny",
+label: "Nizhny Novgorod",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+
+
+	  {id: "city.strasbourg",
+label: "Strasbourg",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.munich",
+label: "Munich",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.vienna",
+label: "Vienna",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
+icon: vaultcontinent6,
+unique:true
+},
+
+	  {id: "city.krakow",
+label: "Kraków",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcontinent1,
+unique:true
+},
+
+
+	  {id: "city.kiev",
+label: "Kiev",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.stalingrad",
+label: "Stalingrad",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+
+	  {id: "city.yekaterinburg",
+label: "Yekaterinburg",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.granada",
+label: "granada",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.avignon",
+label: "Avignon",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.venice",
+label: "Venice",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.budapest",
+label: "Budapest",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.cluj",
+label: "Cluj-Napoca",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.tiflis",
+label: "Tiflis",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.samarkand",
+label: "Samarkand",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.marrakech",
+label: "Marrakech",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.algiers",
+label: "Algiers",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.valletta",
+label: "Valletta",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.tirana",
+label: "Tirana",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.istanbul",
+label: "Istanbul",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon:vaultrendingmountains3,
+unique:true
+},
+
+
+	  {id: "city.baghdad",
+label: "Baghdad",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultloneandlevelsands1,
+unique:true
+},
+
+	  {id: "city.meshad",
+label: "Meshad",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.tripoli",
+label: "Tripoli dell'ovest",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.candia",
+label: "Candia-Heraklion",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.alexandria",
+label: "Alexandria",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultloneandlevelsands2,
+unique:true
+},
+
+{id: "wilderness",
+label: "A Dash Cross-Country",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"Out into the wilds. This should be my last resort. [Cew opportunities of any use, and you'll have to take whatever road presents itself.]",
+icon: vaultshires1
+},
+
+{id: "op.cold",
+label: "Freezing Winds",
+aspects: {op:1,distraction:1},
+description:"Frost walks here.",
+lifetime:180
+},
+
+{id: "op.heat",
+label: "Trembling Heat",
+aspects: {op:1,distraction:1},
+description:"The air shimmers like a naked furnace.",
+lifetime:180
+},
+
+{id: "op.sea",
+label: "Sea Port",
+aspects: {op:1,distraction:1},
+description:"The sea bears gifts: peace, or death, or escape.",
+lifetime:180
+},
+
+{id: "op.faith",
+label: "Opportunity: Faith",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "op.cats",
+label: "Opportunity: Cats",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "op.heights",
+label: "Opportunity: Heights",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "op.horned",
+label: "Opportunity: Horned",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "op.wolf",
+label: "Opportunity: Wolf",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+{id: "op.flowermaker",
+label: "Opportunity: Flowermaker",
+aspects: {op:1,distraction:1},
+description:"FNORD",
+lifetime:180
+},
+
+      {
+        id: "fragmentedge.exile",
+            label: "A Knife's Secret",
+            aspects:
+            {edge: 2,lore:1},
+            description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns.",
+			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragmentedge.exile.exhausted},
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		 {
+        id: "fragmentedgeb.exile",
+            label: "Chiliarch's Lesson",
+            aspects:
+            {edge: 4,lore:1},
+            description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. ",
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted},
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+				 {
+        id: "fragmentedgec.exile",
+            label: "An Operation of the Labhite",
+            aspects:
+            {edge: 6,lore:1},
+            description: "A series of mystic exercises that requires both dedication and terror.",
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted},
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+						 {
+        id: "fragmentedged.exile",
+            label: "The Colonel's Names",
+            aspects:
+            {edge: 8,lore:1},
+description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+			
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted},
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
+        },{
+        id: "fragmentedgee.exile",
+            label: "The Lionsmith's Names",
+            aspects:
+            {edge: 10,lore:1},
+			
+                        description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgef.exile.exhausted},
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		{
+        id: "fragmentedgef.exile",
+            label: "The Alignments of Murder",
+            aspects:
+            {edge: 12,lore:1},
+			
+            description: "These are the arts that ensure an ending.",
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgeg.exile.exhausted},
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		   {   id: "fragmentedgeg.exile",
+            label: "The Mysteries of Force",
+            aspects:
+            {edge: 14,lore:1},
+            description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted},
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+
+   {
+        id: "fragmentedge.exile.exhausted",
+            label: "A Knife's Secret (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:180,
+			decayTo:fragmentedge.exile,
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		 {
+        id: "fragmentedgeb.exile.exhausted",
+            label: "Chiliarch's Lesson (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:160,
+			decayTo:fragmentedgeb.exile,
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+				 {
+        id: "fragmentedgec.exile.exhausted",
+            label: "An Operation of the Labhite (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:140,
+			decayTo:fragmentedgec.exile,
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+						 {
+        id: "fragmentedged.exile.exhausted",
+            label: "The Colonel's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:120,
+			decayTo:fragmentedged.exile,
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
+        },{
+        id: "fragmentedgee.exile.exhausted",
+            label: "The Lionsmith's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:100,
+			decayTo:fragmentedgee.exile,
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		{
+        id: "fragmentedgef.exile.exhausted",
+            label: "The Alignments of Murder (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:80,
+			decayTo:fragmentedgef.exile,
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		   {   id: "fragmentedgeg.exile.exhausted",
+            label: "The Mysteries of Force (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:60,
+			decayTo:fragmentedgeg.exile,
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+
+
+
+	  {id: "temptation.defiance",
+label: "Temptation: Defiance",
+aspects: {defiancemarks:1,desire:1},
+description:"Some there are who will not yield. Perhaps this is a virtue.",
+slots:[{id:"location",label:"Location",required:{domicile:1,weapon:1},actionId:"send"}],
+icon: bloodshed
+},
+
+
+	  {id: "wound.exile",
+label: "My Wound",
+description:"Seven of these will end me.",
+lifetime:600,
+icon: long.scar_heart
+},
+
+	  {id: "wound.foe",
+label: "Foe's Wound",
+description:"Seven of these will end my enemy.",
+lifetime:600,
+icon: follower_wound
+},
+
+	  {id: "wound.underling",
+label: "Pursuer's Wound",
+description:"One more of these will kill my pursuer.",
+lifetime:600,
+icon: long_wound
+},
+
+
+
+{id: "rkx.scout",
+label: "Reckoner Informants",
+description:"FNORD. Can track you down, but doesn't always.",
+xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
+rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile
+},
+{id: "rkx.operative",
+label: "Reckoner Operative",
+description:"FNORD. Remorseless, will try to steal assets.",
+verbicon:"rkx.operative",
+aspects:{rkx.rank:1},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile.underling
+},
+
+{id: "rkx.enforcer",
+label: "Reckoner Assassin",
+description:"FNORD. Remorseless, will try to muder me.",
+verbicon:"rkx.enforcer",
+aspects:{rkx.rank:1},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile.underling
+},
+{id: "rkx.underboss",
+label: "Reckoner Underboss",
+description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
+verbicon:"rkx.underboss",
+aspects:{rkx.rank:2},
+xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
+lifetime:1,
+decayTo:corpse.exile.underling
+},
+
+
+{id: "rkx.foe",
+label: "Your Foe",
+description:"FNORD",
+verbicon:"rkx.foe",
+aspects:{rkx.rank:3},
+lifetime:1,
+decayTo:rkx.foe.defeated
+},
+
+{id: "rkx.foe.defeated",
+label: "A Trophy of your Foe",
+description:"FNORD"
+},
+
+
+{id: "rkx.weakness.cold",
+label: "Weakness: Cold",
+description:"FNORD it's cold",
+uniquenessgroup:"uq.rkx.weakness.cold"
+},
+
+{id: "rkx.weakness.heat",
+label: "Weakness: Heat",
+description:"FNORD it's heat",
+uniquenessgroup:"uq.rkx.weakness.heat"
+},
+
+{id: "rkx.weakness.sea",
+label: "Weakness: the Sea",
+description:"FNORD it's cold",
+uniquenessgroup:"uq.rkx.weakness.sea"
+},
+
+{id: "rkx.weakness.faith",
+label: "Weakness: Faith",
+description:"A religious upbringing? A persistent superstition? My enemy is reluctant to desecrate holy places.",
+uniquenessgroup:"uq.rkx.weakness.faith"
+},
+
+{id: "rkx.weakness.cats",
+label: "Weakness: Cats",
+description:"FNORD it's cats",
+uniquenessgroup:"uq.rkx.weakness.cats"
+},
+
+{id: "rkx.weakness.heights",
+label: "Weakness: Heights",
+description:"FNORD it's heights",
+uniquenessgroup:"uq.rkx.weakness.heights"
+},
+
+{id: "rkx.weakness.horned",
+label: "Weakness: Horned Axe's Disfavour",
+description:"FNORD it's horned",
+uniquenessgroup:"uq.rkx.weakness.horned"
+},
+
+{id: "rkx.weakness.wolf",
+label: "Weakness: Wolf-Divided's Hatred",
+description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, its rage burns a fraction hotter.",
+uniquenessgroup:"uq.rkx.weakness.wolf"
+},
+
+{id: "rkx.weakness.flowermaker",
+label: "Weakness: Flowermaker",
+description:"FNORD it's flowermaker",
+uniquenessgroup:"uq.rkx.weakness.flowermaker"
+},
+
+
+
+{id: "rkx.weakness.cold.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's cold",
+uniquenessgroup:"uq.rkx.weakness.cold",
+decayTo:"rkx.weakness.cold"
+},
+
+{id: "rkx.weakness.heat.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's heat",
+uniquenessgroup:"uq.rkx.weakness.heat",
+decayTo:"rkx.weakness.heat"
+},
+
+{id: "rkx.weakness.sea.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's sea",
+uniquenessgroup:"uq.rkx.weakness.sea",
+decayTo:"rkx.weakness.sea"
+},
+
+{id: "rkx.weakness.faith.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's faith",
+uniquenessgroup:"uq.rkx.weakness.faith",
+decayTo:"rkx.weakness.faith"
+},
+
+{id: "rkx.weakness.cats.hidden",
+label: "An Unknown Weakness",
+description:"FNORD (it's cats actually)",
+uniquenessgroup:"uq.rkx.weakness.cats",
+decayTo:"rkx.weakness.cats"
+},
+
+{id: "rkx.weakness.heights.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's heights",
+uniquenessgroup:"uq.rkx.weakness.heights",
+decayTo:"rkx.weakness.heights"
+},
+
+{id: "rkx.weakness.horned.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's horned",
+uniquenessgroup:"uq.rkx.weakness.horned",
+decayTo:"rkx.weakness.horned"
+},
+
+{id: "rkx.weakness.wolf.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's wolf",
+uniquenessgroup:"uq.rkx.weakness.wolf",
+decayTo:"rkx.weakness.wolf"
+},
+
+{id: "rkx.weakness.flowermaker.hidden",
+label: "An Unknown Weakness",
+description:"FNORD it's flowermaker",
+uniquenessgroup:"uq.rkx.weakness.flowermaker",
+decayTo:"rkx.weakness.flowermaker"
+},
+
+
+{id: "rkx.event.aggressive",
+label: "Reckoners: Aggressive",
+aspects:{rkx.event:1},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "rkx.event.passive",
+label: "Reckoners: Passive",
+aspects:{rkx.event:1},
+description:"FNORD",
+lifetime:1
+},
+
+
+	
+]
+};
