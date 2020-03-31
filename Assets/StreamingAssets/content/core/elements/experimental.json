@@ -9,13 +9,14 @@
         },
 				 {
             id: "wolfatthedoor",
-            label: "The Wolf at the Door",
+            label: "T H  E  WO L  F  W  H  O   L  I  V  E  S IN THE BIG HOUSE",
             aspects:{ability:1,location:1,acquaintance:1},
 			slots: [{id:"Meal1",consumes:true,actionId:"work"}],
 			slots: [{id:"Meal2",consumes:true,actionId:"dream"}],
 			slots: [{id:"Meal3",consumes:true,actionId:"study"}],
 			slots: [{id:"Meal4",consumes:true,actionId:"talk"}],
 			slots: [{id:"Meal5",consumes:true,actionId:"explore"}],
+			icon:violet_p,
             description: "The Wolf will accept anything, and then devour everything, no matter what.",
 			noartneeded:true
         },
@@ -23,30 +24,35 @@
             id: "wolf",
       lifetime:1,
 	  decayTo:"wolfatthedoor",
+	  description:"",
 			noartneeded:true
         },
 				 {
             id: "lionweb",
             label: "The Lion in the Web",
 			comments:"Information lives in the sky.",
+			icon:valciane_p,
 			noartneeded:true
         },
 		{
             id: "boarwords",
             label: "The Boar in the Words",
 			comments:"Titles are criminal.",
+			icon:victor_p,
 			noartneeded:true
         },
 				{
             id: "worldbull",
             label: "The World in the Bull",
 			comments: "The crime At the beginning",
+			icon:clifton_p,
 			noartneeded:true
         },
 						{
             id: "notaworm",
             label: "Possibly a Bird",
 			comments: "We Await S.T.E.",
+			icon:clovette_p,
 			noartneeded:true
         },
 ]
