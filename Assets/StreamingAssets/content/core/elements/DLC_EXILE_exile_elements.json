@@ -71,6 +71,12 @@ isAspect:true,
 noartneeded:true
 },
 
+{id:"arriving",
+label:"Arriving",
+description:"recipe aspect",
+noartneeded:true
+},
+
 {id:"mortal.introduce",
 label:"Mortal intro",
 description:"recipe aspect",
@@ -549,20 +555,18 @@ icon:tooledgeb,
 unique:true
 },
 
-
-
-
-{id: "weapon.d.exhausted",
-label: "Weapon (Exhausted)",
+{id: "weapon.a.exhausted",
+label: "Weapon A (Exhausted)",
 aspects: {exhausted:1},
 description:"FNORD",
 lifetime:60,
-decayTo:weapon.d,
+decayTo:weapon.a,
 resaturate:true,
 icon:tooledged
 },
+
 {id: "weapon.b.exhausted",
-label: "Weapon (Exhausted)",
+label: "Lionhunter's Rifle (Exhausted)",
 aspects: {exhausted:1},
 description:"FNORD",
 lifetime:60,
@@ -570,6 +574,39 @@ decayTo:weapon.b,
 resaturate:true,
 icon:tooledgeb
 },
+
+{id: "weapon.c.exhausted",
+label: "Weapon C (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.c,
+resaturate:true,
+icon:tooledgeb
+},
+
+
+{id: "weapon.d.exhausted",
+label: "Biedde's Blade (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.d,
+resaturate:true,
+icon:tooledged
+},
+
+{id: "weapon.e.exhausted",
+label: "Weapon E (Exhausted)",
+aspects: {exhausted:1},
+description:"FNORD",
+lifetime:60,
+decayTo:weapon.e,
+resaturate:true,
+icon:tooledgeb
+},
+
+
 
 
 {id: "asset.a",
@@ -783,14 +820,7 @@ description:"FNORD",
 icon: vaultcontinent4,
 unique:true
 },
-	  {id: "city.aachen",
-label: "Rhenish Aachen",
-aspects: {destination:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
-icon: vaultcontinent1,
-unique:true
-},
+
 
 
 	  {id: "city.prague",
@@ -883,18 +913,6 @@ icon: vaultcapital3,
 unique:true
 },
 
-	  {id: "city.stalingrad",
-label: "Stalingrad",
-aspects: {destination:1,remote:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
-icon: vaultcapital3,
-unique:true
-},
-
-
 
 	  {id: "city.sverdlovsk",
 label: "Sverdlovsk",
@@ -907,29 +925,23 @@ icon: vaultcapital3,
 unique:true
 },
 
-	  {id: "city.granada",
-label: "granada",
+	  {id: "city.aachen",
+label: "Rhenish Aachen",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"FNORD",
-icon: vaultcapital3,
+xtriggers:{arriving:[{id:"npc.huntress",morpheffect:spawn}]},
+icon: vaultcontinent1,
 unique:true
 },
+
 
 	  {id: "city.avignon",
 label: "Avignon",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"FNORD",
-icon: vaultcapital3,
-unique:true
-},
-
-	  {id: "city.venice",
-label: "Venice",
-aspects: {destination:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+xtriggers:{arriving:[{id:"npc.smuggler",morpheffect:spawn}]},
 icon: vaultcapital3,
 unique:true
 },
@@ -951,6 +963,39 @@ description:"FNORD",
 icon: vaultcapital3,
 unique:true
 },
+
+	  {id: "city.granada",
+label: "granada",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+	  {id: "city.stalingrad",
+label: "Stalingrad",
+aspects: {destination:1,remote:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
+{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+	  {id: "city.venice",
+label: "Venice",
+aspects: {destination:1},
+slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+description:"FNORD",
+icon: vaultcapital3,
+unique:true
+},
+
+
+
 
 	  {id: "city.tiflis",
 label: "Tiflis",
