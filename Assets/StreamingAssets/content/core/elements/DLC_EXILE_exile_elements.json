@@ -710,7 +710,6 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  {id:"decade.stolen",
 	  label: "Stolen Decade",
 	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
-	  slots:[{actionId: "relinquish", id:"wound",label:"My Wound",required:{wound.exile:1}}],
 	  aspects:{lifespan.stolen:10},
 	  },
 	  	  {id:"year.stolen",
@@ -1381,6 +1380,7 @@ icon: bloodshed
 	  {id: "wound.exile",
 label: "My Wound",
 description:"Seven of these will end me.",
+	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
 lifetime:600,
 icon: long.scar_heart
 },
