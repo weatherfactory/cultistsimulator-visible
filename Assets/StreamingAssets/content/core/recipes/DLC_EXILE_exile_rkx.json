@@ -126,7 +126,7 @@ actionId:"rkx",
 label:"A Hostile Move!",
 startdescription:"FNORD attacking",
 requirements:{rkx.underboss:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1}}],
 warmup:40,
 linked:[
 {id:"rkx.underling.distracted"},
@@ -149,7 +149,7 @@ actionId:"rkx",
 label:"A Hostile Move!",
 startdescription:"FNORD attacking",
 requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1}}],
 warmup:40,
 linked:[
 {id:"rkx.underling.distracted"},
@@ -170,8 +170,8 @@ actionId:"rkx",
 label:"FNORD attack success",
 startdescription:"FNORD",
 aspects:{fatiguing:1},
-alt:[{id:"spit.underling.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,op:1}}}],
-requirements:{lore:-1,weapon:-1},
+alt:[{id:"spit.underling.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,associate:1}}}],
+requirements:{lore:-1,weapon:-1,associate:-1},
 linked:[{id:"rkx.reset"}],
 warmup:10},
 
@@ -186,7 +186,10 @@ warmup:2},
 {id:"rkx.underling.attack.failure",
 actionId:"rkx",
 label:"FNORD attack failure",
-startdescription:"@#op.cold|Snow falls like night. I've left my pursuer floundering in the drifts.
+startdescription:"@#lore|I've used my skills to hold my pursuer at bay.
+#weapon|I've used a weapon to keep my pursuer at bay.
+#associate|A friend has lent me their protection.
+#op.cold|Snow falls like night. I've left my pursuer floundering in the drifts.
 #op.heat|I've led my pursuer a dance through the noonday sun, until they're staggering with the heat.
 #op.sea|I've lost my pursuer in the bustle of the port.
 #op.faith|Reckoners are traditionally chary of sacred places. I've used that to slip away.
@@ -197,7 +200,8 @@ startdescription:"@#op.cold|Snow falls like night. I've left my pursuer flounder
 #op.flowermaker|This place is sweet with the Flowermaker's scents. The airs here bewildered my pursuer long enough for me to slip away.
 #|Something distracted the underling!@",
 alt:[{id:"spit.underling.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
-{id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
+{id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}},
+{id:"spit.underling.attack.failure.associate", additional:true, expulsion:{limit:1,filter:{associate:1}}}],
 effects:{distraction:-1},
 linked:[{id:"rkx.reset"}],
 warmup:10},
@@ -219,6 +223,16 @@ startdescription:"FNORD done",
 aspects:{fatiguing:1},
 effects:{trace:1},
 warmup:2},
+
+{id:"spit.underling.attack.failure.associate",
+actionId:"spit.underling.attack",
+requirements:{associate:1},
+label:"A Friend in Need",
+startdescription:"My associate defended me! which was decent of them, but now the reckoner mob has more clues to follow.",
+aspects:{fatiguing:1},
+effects:{trace:1},
+warmup:2},
+
 
 
 
@@ -348,7 +362,7 @@ linked:[{id:"rkx.reset"}]},
 actionId:"rkx",
 label:"FNORD Foe attacking",
 startdescription:"FNORD foe attacking",
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,defiance.consecration.lionsmith:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1,defiance.consecration.lionsmith:1}}],
 alt:[{id:"rkx.foe.mock"}],
 warmup:30,
 purge:{obscurity:100},
@@ -502,7 +516,7 @@ label:"FNORD attack success",
 startdescription:"FNORD",
 aspects:{fatiguing:1},
 alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
-requirements:{lore:-1,weapon:-1},
+requirements:{lore:-1,weapon:-1,associate:-1},
 linked:[{id:"rkx.foe.attack"}],
 warmup:10},
 
@@ -520,7 +534,8 @@ actionId:"rkx",
 label:"FNORD attack failure",
 startdescription:"FNORD",
 alt:[{id:"spit.foe.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
-{id:"spit.foe.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}}],
+{id:"spit.foe.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}},
+{id:"spit.foe.attack.failure.associate", additional:true, expulsion:{limit:1,filter:{associate:1}}}],
 linked:[{id:"rkx.foe.attack"}],
 warmup:10},
 
@@ -539,6 +554,25 @@ label:"FNORD I defended myself with a weapon!",
 startdescription:"FNORD done",
 aspects:{fatiguing:1},
 warmup:2},
+
+{id:"spit.foe.attack.failure.associate",
+actionId:"spit.foe.attack",
+requirements:{associate:1}, 
+label:"A Friend in Need",
+startdescription:"FNORD done",
+aspects:{fatiguing:1},
+linked:[{id:"spit.foe.attack.failure.associate.killed",chance:30}],
+warmup:2},
+
+{id:"spit.foe.attack.failure.associate.killed",
+actionId:"spit.foe.attack",
+label:"An Unexpected Sacrifice",
+startdescription:"My friend's fallen in bitter battle! But they gave my Foe something to remember them by. [Allies and associates sometimes die when fighting the Foe.]",
+aspects:{killmortal:1},
+effects:{wound.foe:1},
+warmup:2},
+
+
 
 
 

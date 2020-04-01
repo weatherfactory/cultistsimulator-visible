@@ -257,16 +257,17 @@ icon:approval
 },
 
 
+
 {id:"associate",
 label:"Associate",
-description:"They'll work with me... for now.",
+description:"They'll work with me.",
 isAspect:true,
 icon:devotee
 },
 
 {id:"ally",
 label:"Ally",
-description:"One who is prepared to accompany me on my journey.",
+description:"I've won their trust. They'll follow me when I leave.",
 isAspect:true,
 icon:follower
 },
@@ -327,8 +328,12 @@ slots:[{id:"resource",actionId:"travel",label:"Resource",required:{lore:1,weapon
 {id: "_npc.mortal",
 label: "_npc.mortal",
 aspects:{mortal:1},
-xtriggers:{betrayal:[{id:corpse.exile},{id:progress}]},
-icon:diarist 
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress}],killmortal:corpse.exile}
+},
+{id: "_npc.mortal.fatigued",
+label: "_npc.mortal.fatigued",
+aspects:{mortal:1,fatigued:1},
+xtriggers:{killmortal:corpse.exile}
 },
 
 
@@ -437,8 +442,8 @@ unique:true
 {id: "npc.smuggler",
 label: "Giorgiou",
 inherits:_npc.mortal,
-description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-xtriggers:{mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+description:"A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+xtriggers:{fatiguing:npc.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 aspects:{avaricious:1,edge:2,moth:4},
 icon:diarist 
 },
@@ -448,10 +453,29 @@ label: "Lalla Chaima, the Snare",
 inherits:_npc.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
 aspects:{venerates.colonel:1,edge:6},
-xtriggers:{mortal.introduce:[{id:"vault.huntress",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+xtriggers:{fatiguing:npc.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 icon:renira_a 
 },
 
+{id: "npc.smuggler.fatigued",
+label: "Giorgiou",
+description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
+inherits:_npc.mortal.fatigued,
+icon:diarist,
+decayTo:npc.smuggler,
+lifetime:120,
+resaturate:true
+},
+
+{id: "npc.huntress.fatigued",
+label: "Lalla Chaima, the Snare",
+description:"Chaima has gone wherever she goes to lick her wounds in darkness.",
+inherits:_npc.mortal.fatigued,
+icon:renira_a,
+decayTo:npc.huntress,
+lifetime:120,
+resaturate:true
+},
 
 
 
@@ -698,7 +722,7 @@ slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}
 {actionId:"send",id:"obscurity6",label:"Obscurity",required:{obscurity:1}},
 {actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
 ],
-description:"I've stolen a fortune in years from a reckoner lord who trusted me. They'll pursue me across continents, but even their reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
+description:"I've stolen a fortune in years from a reckoner lord who trusted me. He'll pursue me across continents, but even his reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
 },
 
 {id: "temptation.wealth",
@@ -1440,7 +1464,7 @@ decayTo:corpse.exile.underling
 
 
 {id: "rkx.foe",
-label: "Your Foe",
+label: "My Foe",
 description:"FNORD",
 verbicon:"rkx.foe",
 aspects:{rkx.rank:3},
@@ -1449,7 +1473,7 @@ decayTo:rkx.foe.defeated
 },
 
 {id: "rkx.foe.defeated",
-label: "A Trophy of your Foe",
+label: "A Trophy of my Foe",
 description:"FNORD"
 },
 
@@ -1498,7 +1522,7 @@ uniquenessgroup:"uq.rkx.weakness.horned"
 
 {id: "rkx.weakness.wolf",
 label: "Weakness: Wolf-Divided's Hatred",
-description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, its rage burns a fraction hotter.",
+description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, the Wolf's rage burns a fraction hotter.",
 uniquenessgroup:"uq.rkx.weakness.wolf"
 },
 
