@@ -249,6 +249,13 @@ description:"A venue, or a base of operations.",
 isAspect:true
 },
 
+{id:"comfort",
+label:"Comfort",
+description:"There are joys that even money can't buy. This is not numbered among them.",
+isAspect:true,
+icon:approval
+},
+
 
 {id:"associate",
 label:"Associate",
@@ -420,7 +427,7 @@ id:"vault.huntress",
 label:"The Merry Feaster's Lair",
 description:"FNORD ",
 inherits: "_vault.exile",
-icon:"vaultcapital2",
+icon:"hq.abandoned",
 aspects:{devourer.exile:1},
 unique:true
 },
@@ -448,11 +455,11 @@ icon:renira_a
 
 
 
-{id: "op.discreetoffice",
+{id: "op.office",
 label: "Opportunity: Discreet Office?",
 aspects: {op:1},
 description:"FNORD.",
-xtriggers:{purchase:discreetoffice},
+xtriggers:{purchase:office},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
 },
@@ -478,19 +485,42 @@ lifetime:180
 
 
 
-{id:"discreetoffice",
+{id:"office",
 label:"Discreet Office",
 aspects:{asset:1,space:1},
 description:"Discreet Office FNORD",
 icon:vaultcapital1
 },
 
+{id:"warehouse",
+label:"Quiet Warehouse",
+aspects:{asset:1,space:2},
+description:"Discreet Office FNORD",
+icon:vaultcapitaldefault
+},
+
+{id:"townhouse",
+label:"Grand Townhouse",
+aspects:{asset:1,space:2,comfort:4},
+description:"Discreet Office FNORD",
+icon:hq.townhouse
+},
+
+
+{id:"villa",
+label:"Secluded Villa",
+aspects:{asset:1,space:3,comfort:8},
+description:"Discreet Office FNORD",
+icon:vaultcontinent5
+},
+
+
 
 {id:"licence.medical",
 label:"Medical Licence",
 aspects:{asset:1,portable:1},
 description:"Medical Licence FNORD",
-slots:[{actionId:use,id:"location",label:"Location",required:{discreetoffice:1}}],
+slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}],
 icon:fragmentheart
 },
 

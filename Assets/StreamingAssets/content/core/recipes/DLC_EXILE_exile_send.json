@@ -179,17 +179,94 @@ craftable:false,
 hintonly:true
 },
 
+{id:"send.victory.obscurity.c.begin",
+actionId:"send",
+label:"FNORD win C",
+startdescription:"FNORD paramount obscurity win beginning...[If you still have Assets worth at least twenty Comfort at the moment you disappear, you'll achieve a greater victory.]",
+requirements:{temptation.obscurity:1,obscurity:7},
+warmup:60,
+extantreqs: {comfort:20},
+craftable:true,
+signalEndingFlavour:Grand,
+linked:[{id:"send.victory.obscurity.c"},
+{id:"send.victory.obscurity.b"},
+{id:"send.victory.obscurity.a"},
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.b.foeslain"},
+{id:"send.victory.obscurity.a.foeslain"}]
+},
 
-{id:"send.victory",
+
+{id:"send.victory.obscurity.b.begin",
+actionId:"send",
+label:"FNORD win B",
+startdescription:"FNORD higher level obscurity win beginning...  [If you have Assets worth at least twenty Comfort at the moment you disappear, you'll achieve a greater victory.]",
+requirements:{temptation.obscurity:1,obscurity:7},
+extantreqs: {comfort:10},
+warmup:60,
+craftable:true,
+signalEndingFlavour:Grand,
+linked:[{id:"send.victory.obscurity.c"},
+{id:"send.victory.obscurity.b"},
+{id:"send.victory.obscurity.a"},
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.b.foeslain"},
+{id:"send.victory.obscurity.a.foeslain"}]
+},
+
+
+
+{id:"send.victory.obscurity.a.begin",
 actionId:"send",
 label:"FNORD win",
-startdescription:"FNORD obscurity win beginning...",
+startdescription:"FNORD obscurity win beginning... [If you have Assets worth at least ten Comfort at the moment you disappear, you'll achieve a greater victory.]",
 requirements:{temptation.obscurity:1,obscurity:7},
 warmup:60,
 craftable:true,
-ending: obscurityvictory
+signalEndingFlavour:Pale,
+linked:[{id:"send.victory.obscurity.c"},
+{id:"send.victory.obscurity.b"},
+{id:"send.victory.obscurity.a"},
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.b.foeslain"},
+{id:"send.victory.obscurity.a.foeslain"}]
 },
 
+
+{id:"send.victory.obscurity.c",
+actionId:"send",
+label:"DELIGHT",
+extantreqs:{comfort:20},
+ending:obscurityvictoryc},
+
+{id:"send.victory.obscurity.b",
+actionId:"send",
+label:"EASE",
+extantreqs:{comfort:10},
+ending:obscurityvictoryb},
+
+{id:"send.victory.obscurity.a",
+actionId:"send",
+label:"SILENCE",
+ending:obscurityvictorya},
+
+{id:"send.victory.obscurity.c.foeslain",
+actionId:"send",
+label:"DELIGHT",
+extantreqs:{comfort:20,rkx.foe.defeated:1},
+ending:obscurityvictorycfoeslain},
+
+{id:"send.victory.obscurity.b.foeslain",
+actionId:"send",
+label:"EASE",
+extantreqs:{comfort:10,rkx.foe.defeated:1},
+ending:obscurityvictorybfoeslain},
+
+{id:"send.victory.obscurity.a.foeslain",
+actionId:"send",
+label:"SILENCE",
+extantreqs:{rkx.foe.defeated:1},
+ending:obscurityvictoryafoeslain},
 
 
 {id:"send.mortal.intro",
