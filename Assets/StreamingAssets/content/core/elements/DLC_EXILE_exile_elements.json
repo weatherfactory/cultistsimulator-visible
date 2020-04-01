@@ -342,7 +342,7 @@ slots:[{id:"resource",actionId:"travel",label:"Resource",required:{lore:1,weapon
 {id: "_npc.mortal",
 label: "_npc.mortal",
 aspects:{mortal:1},
-xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile,recruiting:[{id:ally,morpheffect:mutate}]}
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile,recruiting:[{id:ally,morpheffect:mutate,level:1}]}
 },
 {id: "_npc.mortal.fatigued",
 label: "_npc.mortal.fatigued",
