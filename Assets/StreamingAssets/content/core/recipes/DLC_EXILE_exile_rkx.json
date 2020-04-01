@@ -348,7 +348,8 @@ linked:[{id:"rkx.reset"}]},
 actionId:"rkx",
 label:"FNORD Foe attacking",
 startdescription:"FNORD foe attacking",
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,defiance.consecration.lionsmith:1}}],
+alt:[{id:"rkx.foe.mock"}],
 warmup:30,
 purge:{obscurity:100},
 linked:[
@@ -365,6 +366,33 @@ linked:[
 {id:"rkx.foe.attack.failure"}]},
 
 
+
+
+{id:"rkx.foe.mock",
+actionId:"rkx",
+label:"Laugh as the Lionsmith Laughed",
+startdescription:"I could lampoon my Foe with a certain very ancient mocking gesture... leaving myself open to attack. Perhaps the Hour called Lionsmith would enjoy my audacity. [Suffer <i>two</i> Wounds but gain a level of Defiance.]",
+requirements:{defiance.consecration.lionsmith:1},
+mutations:[{filterOnAspectId:defiance.consecration.lionsmith,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+alt:[{id:"spit.foe.attack.success.mocked", additional:true, expulsion:{limit:1,filter:{desire:1}}}],
+linked:[{id:"rkx.foe.attack.success.mocked"}]},
+
+{id:"rkx.foe.attack.success.mocked",
+actionId:"rkx",
+label:"Strength before Cunning",
+startdescription:"Blood runs down my legs to pool at my feet, and my Foe snarls with fury!",
+aspects:{fatiguing:1},
+linked:[{id:"rkx.foe.attack"}],
+warmup:10},
+
+
+{id:"spit.foe.attack.success.mocked",
+actionId:"spit.foe.attack",
+label:"Badly wounded!",
+startdescription:"I've paid the price for my audacity -",
+effects: {wound.exile:2},
+aspects:{fatiguing:1},
+warmup:2},
 
 
 
