@@ -276,6 +276,13 @@ icon:corpse
 },
 
 
+{id: "devourer.exile",
+label: "Devourer",
+description: "Some monsters are the Lionsmith's children; some Echidna's; some both. Others are worse.",
+isAspect: true,
+icon:devourer
+},
+
 {id:"avaricious",
 label:"Avaricious",
 description:"'Everybody needs money. That's why they call it money.' - Mamet",
@@ -301,8 +308,7 @@ isAspect:true
 {id: "_vault.exile",
 label: "_vault.exile",
 aspects:{location:1,vault:1},
-slots:[{id:"tool",actionId:"travel",label:"Tool",required:{lore:1,weapon:1}},
-{id:"assistance",actionId:"travel",label:"Assistance",required:{associate:1,ally:1}}]
+slots:[{id:"resource",actionId:"travel",label:"Resource",required:{lore:1,weapon:1,associate:1,ally:1}}]
 },
 
 {id: "_npc.mortal",
@@ -408,7 +414,8 @@ id:"vault.huntress",
 label:"The Merry Feaster's Lair",
 description:"FNORD ",
 inherits: "_vault.exile",
-icon:"vaultcapital1",
+icon:"vaultcapital2",
+aspects:{devourer.exile:1},
 unique:true
 },
 
@@ -418,8 +425,8 @@ unique:true
 label: "Giorgiou",
 inherits:_npc.mortal,
 description:"FNORD A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-aspects:{avaricious:1},
 xtriggers:{mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+aspects:{avaricious:1,edge:2,moth:4},
 icon:diarist 
 },
 
@@ -427,7 +434,7 @@ icon:diarist
 label: "Lalla Chaima, the Snare",
 inherits:_npc.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
-aspects:{venerates.colonel:1},
+aspects:{venerates.colonel:1,edge:6},
 xtriggers:{mortal.introduce:[{id:"vault.huntress",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
 icon:renira_a 
 },
@@ -494,39 +501,72 @@ aspects: {op:1,destination:1},
 description:"A ticket to the very first destination that came to mind - "
 },
 
-
-{id: "weapon.biedde",
-label: "Biedde's Blade",
-aspects: {weapon:1,edge:8},
-xtriggers:{fatiguing:weapon.biedde.exhausted},
+{id: "weapon.a",
+label: "Weapon A",
+aspects: {weapon:1,edge:2},
+xtriggers:{fatiguing:weapon.a.exhausted},
 description:"FNORD",
-icon:tooledged
+icon:tooledgeb,
+unique:true
 },
 
-{id: "weapon.lionhunter",
+
+{id: "weapon.b",
 label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4},
-xtriggers:{fatiguing:weapon.lionhunter.exhausted},
+xtriggers:{fatiguing:weapon.b.exhausted},
 description:"FNORD",
-icon:tooledgeb
+icon:tooledgeb,
+unique:true
 },
 
 
-{id: "weapon.biedde.exhausted",
+{id: "weapon.c",
+label: "Weapon C",
+aspects: {weapon:1,edge:6},
+xtriggers:{fatiguing:weapon.c.exhausted},
+description:"FNORD",
+icon:tooledgeb,
+unique:true
+},
+
+
+{id: "weapon.d",
+label: "Biedde's Blade",
+aspects: {weapon:1,edge:8},
+xtriggers:{fatiguing:weapon.d.exhausted},
+description:"FNORD",
+icon:tooledged,
+unique:true
+},
+
+{id: "weapon.e",
+label: "Weapon E",
+aspects: {weapon:1,edge:10},
+xtriggers:{fatiguing:weapon.e.exhausted},
+description:"FNORD",
+icon:tooledgeb,
+unique:true
+},
+
+
+
+
+{id: "weapon.d.exhausted",
 label: "Weapon (Exhausted)",
 aspects: {exhausted:1},
 description:"FNORD",
 lifetime:60,
-decayTo:weapon.biedde,
+decayTo:weapon.d,
 resaturate:true,
 icon:tooledged
 },
-{id: "weapon.lionhunter.exhausted",
+{id: "weapon.b.exhausted",
 label: "Weapon (Exhausted)",
 aspects: {exhausted:1},
 description:"FNORD",
 lifetime:60,
-decayTo:weapon.lionhunter,
+decayTo:weapon.b,
 resaturate:true,
 icon:tooledgeb
 },
@@ -1043,63 +1083,63 @@ icon: vaultshires1
 
 {id: "op.cold",
 label: "Freezing Winds",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,winter:1,edge:1},
 description:"Frost walks here.",
 lifetime:180
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,forge:1,moth:1},
 description:"The air shimmers like a naked furnace.",
 lifetime:180
 },
 
 {id: "op.sea",
 label: "Sea Port",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,moth:1,winter:1},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
 
 {id: "op.faith",
 label: "Opportunity: Faith",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,lantern:1,heart:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.cats",
 label: "Opportunity: Cats",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,grail:1,moth:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.heights",
 label: "Opportunity: Heights",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,lantern:1,moth:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.horned",
 label: "Opportunity: Horned",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,knock:1,winter:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,edge:1,winter:1},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
-aspects: {op:1,distraction:1},
+aspects: {op:1,distraction:1,grail:1,lantern:1},
 description:"FNORD",
 lifetime:180
 },

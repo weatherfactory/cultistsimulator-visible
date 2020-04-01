@@ -26,13 +26,6 @@ namespace Assets.CS.TabletopUI
             return got;
         }
 
-        public static void Replace<T>(T toRegister) where T : class
-        {
-            if (!registered.ContainsKey(typeof(T)))
-                throw new ApplicationException(typeof(T).Name + " hadn't been registered - can't replace it.");
-            registered[typeof(T)] = toRegister;
-        }
-
         public void Register<T>(T toRegister) where T: class
         {
             registered[typeof(T)] = toRegister;

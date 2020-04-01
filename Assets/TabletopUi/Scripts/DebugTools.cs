@@ -364,10 +364,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
 #if MODS
         Registry.Retrieve<ModManager>().LoadAll();
 #endif
-        var contentImporter = new ContentImporter();
-        var newCompendium =new Compendium();
+        var testContentImporter = new ContentImporter();
+        var testCompendium =new Compendium();
             
-       var problems= contentImporter.PopulateCompendium(newCompendium);
+       var problems= testContentImporter.PopulateCompendium(testCompendium);
        if(problems.Any(p=>p.MessageLevel>1))
         { 
             NoonUtility.Log("Problems with content import: ",2);
@@ -376,11 +376,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
        else
        {
-           Registry.Replace<ICompendium>(newCompendium);
+           //Registry.Replace<ICompendium>(newCompendium);
+           var existingCompendium = Registry.Retrieve<ICompendium>();
+           var contentImporter = new ContentImporter();
+        contentImporter.PopulateCompendium(existingCompendium);
 
            // Populate the new decks
            IGameEntityStorage storage = Registry.Retrieve<Character>();
-           foreach (var ds in newCompendium.GetAllDeckSpecs())
+           foreach (var ds in existingCompendium.GetAllDeckSpecs())
            {
                if (storage.GetDeckInstanceById(ds.Id) == null)
                {

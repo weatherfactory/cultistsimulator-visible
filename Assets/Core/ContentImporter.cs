@@ -1854,7 +1854,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
             ArrayList alEndings = GetContentItems(CONST_ENDINGS);
 
-            if (contentImportMessages.Any())
+            if (contentImportMessages.Any(m=>m.MessageLevel>1))
                 //at least one file is broken. Bug out and report.
                 return contentImportMessages;
 
