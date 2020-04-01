@@ -278,12 +278,54 @@ startdescription:"@#npc.smuggler|FNORD A meeting with Giorgiou.
 description:"@#npc.smuggler|FNORD Giorgiou has a plan.
 #npc.huntress|Lalla Chaima wants to kill the beast. FNORD
 #|U MET A SOMEONE@",
-requirements:{mortal:1,associate:-1},
+requirements:{mortal:1,associate:-1,ally:-1},
 aspects:{mortal.introduce:1},
 warmup:10,
 craftable:true},
 
+{id:"send.smuggler.upgrade",
+actionId:"send",
+label:"Giorgiou wants this business over with.",
+startdescription:"FNORD?",
+description:"FNORD.",
+requirements:{npc.smuggler:1,associate:1,ally:-1},
+slots:[{id:"done",label:"FNORD",required:{vault.smuggler.completed:1},greedy:true}],
+warmup:10,
+craftable:true},
 
+
+{id:"send.huntress.upgrade",
+actionId:"send",
+label:"Challa's keen to fulfil her contract",
+startdescription:"'My Sergent-Chef friend's growing anxious. I think he lacks faith in my abilities.'",
+description:"'We don't have much time.'",
+requirements:{npc.huntress:1,associate:1,ally:-1},
+slots:[{id:"done",label:"The Feaster's Carcass",required:{vault.huntress.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+
+{id:"send.associate.upgraded",
+actionId:"send",
+label:"An Ally",
+requirements:{vault.completed:1},
+startdescription:"We clasp hands. [Your Associate is now an Ally. They'll follow you when you leave the city... unless you're headed for a final confrontation.]",
+description:"@#npc.smuggler|'I suppose I owe you this much.'
+#npc.huntress|'I'm looking forward to hunting with you.'
+#|U MET A SOMEONE@",
+aspects:{recruiting:1},
+effects:{vault.completed:-1}},
+
+{id:"send.ally.hint",
+actionId:"send",
+label:"Your Ally Follows",
+startdescription:"@#npc.smuggler|'Onwards to final dissolution, I suppose.'
+#npc.huntress|'Let's see about this Foe of yours.'
+#|U GOT A SOMEONE@",
+requirements:{mortal:1,ally:1},
+hintonly:true,
+craftable:false},
 
 {id:"send.investigate.end",
 actionId:"send",

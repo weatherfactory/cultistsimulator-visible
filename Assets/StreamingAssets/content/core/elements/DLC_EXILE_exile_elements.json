@@ -77,6 +77,12 @@ description:"recipe aspect",
 noartneeded:true
 },
 
+{id:"success",
+label:"Success",
+description:"recipe aspect",
+noartneeded:true
+},
+
 {id:"mortal.introduce",
 label:"Mortal intro",
 description:"recipe aspect",
@@ -319,6 +325,14 @@ isAspect:true
 },
 
 
+
+{id:"vault.completed",
+label:"Done!",
+isAspect:true,
+isHidden:true
+},
+
+
 {id: "_vault.exile",
 label: "_vault.exile",
 aspects:{location:1,vault:1},
@@ -328,7 +342,7 @@ slots:[{id:"resource",actionId:"travel",label:"Resource",required:{lore:1,weapon
 {id: "_npc.mortal",
 label: "_npc.mortal",
 aspects:{mortal:1},
-xtriggers:{betrayal:[{id:corpse.exile},{id:progress}],killmortal:corpse.exile}
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile,recruiting:[{id:ally,morpheffect:mutate}]}
 },
 {id: "_npc.mortal.fatigued",
 label: "_npc.mortal.fatigued",
@@ -424,6 +438,7 @@ label:"Collector's Mansion",
 description:"FNORD ",
 inherits: "_vault.exile",
 icon:"vaultcapital5",
+xtriggers:{success:vault.smuggler.completed},
 unique:true
 },
 
@@ -434,7 +449,20 @@ description:"FNORD ",
 inherits: "_vault.exile",
 icon:"hq.abandoned",
 aspects:{devourer.exile:1},
+xtriggers:{success:vault.huntress.completed},
 unique:true
+},
+
+{id: "vault.smuggler.completed",
+label: "FNORD",
+aspects: {vault.completed:1},
+description:"FNORD"
+},
+
+{id: "vault.huntress.completed",
+label: "The Merry Feaster's Carcass",
+aspects: {vault.completed:1},
+description:"FNORD"
 },
 
 
