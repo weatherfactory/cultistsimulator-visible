@@ -594,7 +594,7 @@ warmup:50,
 linked:[
 {id:"rkx.infect.becauseprep",chance:70},
 {id:"rkx.infect.noprep",chance:30},
-{id:"rkx.demote"}]},
+{id:"rkx.notfollowinglead"}]},
 
 
 {id:"rkx.infect.becauseprep",
@@ -603,29 +603,37 @@ label:"FNORD they're off elsewhere!",
 startdescription:"FNORD",
 requirements:{destination:1,cash.sent:1},
 mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
-warmup:50,
-linked:[{id:"rkx.demote"}]},
+warmup:10,
+linked:[{id:"rkx.infect.demote"}]},
 
 {id:"rkx.infect.noprep",
 actionId:"rkx",
 label:"FNORD they're off elsewhere!",
 startdescription:"FNORD",
 requirements:{destination:1,cash.sent:-1},
-tablereqs:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
-warmup:50,
-linked:[{id:"rkx.demote"}]}, 
+mutations:[{filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:1}],
+warmup:10,
+linked:[{id:"rkx.infect.demote"}]
+}, 
+
+{id:"rkx.notfollowinglead",
+actionId:"rkx",
+label:"Reckoners are Holding Steady",
+startdescription:"My pursuers are convinced I'm still here.",
+alt:[{id:"spit.uninfected.destination", additional:true, expulsion:{limit:1,filter:{destination:1}}}],
+warmup:10,
+linked:[{id:"rkx.reset"}]
+},
  
 
-
-{id:"rkx.demote",
+{id:"rkx.infect.demote",
 actionId:"rkx",
 label:"Reckoners are reducing their presence FNORD",
-startdescription:"Reckoners are reducing their presence FNORD",
-requirements:{rkx.event.passive:1,trace:-1,rkx.rank:1},
+startdescription:"Reckoners are reducing their presence because they've gone elsewhere",
 aspects:{rkx.demote:1},
 comments:"If we infected a destination in the previous step, spit the destination out",
 alt:[{id:"spit.infected.destination", additional:true, expulsion:{limit:1,filter:{rkx.infected:1}}}],
-warmup:50,
+warmup:10,
 linked:[{id:"rkx.reset"}]}, 
 
 {id:"spit.infected.destination",
@@ -636,6 +644,12 @@ requirements:{rkx.infected:1},
 warmup:2, 
 },
 
+{id:"spit.uninfected.destination",
+actionId:"spit.uninfected.destination",
+label:"A Rejected Lead",
+startdescription:"My pursuers are convinced I'm still here. They've decided not to go to this destination.",
+warmup:2, 
+},
 
 
 {id:"rkx.reset",

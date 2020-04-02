@@ -192,7 +192,7 @@ isAspect:true
 label:"Place of Residence",
 description:"I'm here, for now.",
 isAspect:true,
-icon:hq
+icon:vaultcapital
 },
 
 {id:"lifespan.stolen",
@@ -245,9 +245,11 @@ icon:annoyance
 
 {id:"asset",
 label:"Asset",
-description:"Asset FNORD",
+description:"Something that won't object to being owned.",
 isAspect:true,
 },
+
+
 
 {id:"space",
 label:"space",
@@ -262,7 +264,12 @@ isAspect:true,
 icon:approval
 },
 
-
+{id:"contact.local",
+label:"Local Contact",
+description:"Someone who belongs here.",
+isAspect:true,
+icon:vaultcapital
+},
 
 {id:"associate",
 label:"Associate",
@@ -339,13 +346,13 @@ aspects:{location:1,vault:1},
 slots:[{id:"resource",actionId:"travel",label:"Resource",required:{lore:1,weapon:1,associate:1,ally:1}}]
 },
 
-{id: "_npc.mortal",
-label: "_npc.mortal",
-aspects:{mortal:1},
+{id: "_contact.mortal",
+label: "_contact.mortal",
+aspects:{mortal:1,contact.local:1},
 xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile,recruiting:[{id:ally,morpheffect:mutate,level:1}]}
 },
-{id: "_npc.mortal.fatigued",
-label: "_npc.mortal.fatigued",
+{id: "_contact.mortal.fatigued",
+label: "_contact.mortal.fatigued",
 aspects:{mortal:1,fatigued:1},
 xtriggers:{killmortal:corpse.exile}
 },
@@ -467,40 +474,40 @@ description:"FNORD"
 
 
 
-{id: "npc.smuggler",
+{id: "contact.smuggler",
 label: "Giorgiou",
-inherits:_npc.mortal,
+inherits:_contact.mortal,
 description:"A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-xtriggers:{fatiguing:npc.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
 aspects:{avaricious:1,edge:2,moth:4},
 icon:diarist 
 },
 
-{id: "npc.huntress",
+{id: "contact.huntress",
 label: "Lalla Chaima, the Snare",
-inherits:_npc.mortal,
+inherits:_contact.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
 aspects:{venerates.colonel:1,edge:6},
-xtriggers:{fatiguing:npc.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn},{id:"associate",morpheffect:mutate,level:1}]},
+xtriggers:{fatiguing:contact.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn}]},
 icon:renira_a 
 },
 
-{id: "npc.smuggler.fatigued",
+{id: "contact.smuggler.fatigued",
 label: "Giorgiou",
 description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
-inherits:_npc.mortal.fatigued,
+inherits:_contact.mortal.fatigued,
 icon:diarist,
-decayTo:npc.smuggler,
+decayTo:contact.smuggler,
 lifetime:120,
 resaturate:true
 },
 
-{id: "npc.huntress.fatigued",
+{id: "contact.huntress.fatigued",
 label: "Lalla Chaima, the Snare",
 description:"Chaima has gone wherever she goes to lick her wounds in darkness.",
-inherits:_npc.mortal.fatigued,
+inherits:_contact.mortal.fatigued,
 icon:renira_a,
-decayTo:npc.huntress,
+decayTo:contact.huntress,
 lifetime:120,
 resaturate:true
 },
@@ -1011,7 +1018,7 @@ label: "Rhenish Aachen",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"FNORD",
-xtriggers:{arriving:[{id:"npc.huntress",morpheffect:spawn}]},
+xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
 icon: vaultcontinent1,
 unique:true
 },
@@ -1022,7 +1029,7 @@ label: "Avignon",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"FNORD",
-xtriggers:{arriving:[{id:"npc.smuggler",morpheffect:spawn}]},
+xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn}]},
 icon: vaultcapital3,
 unique:true
 },
