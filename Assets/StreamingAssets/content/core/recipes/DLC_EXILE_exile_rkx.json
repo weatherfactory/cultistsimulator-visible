@@ -368,6 +368,7 @@ alt:[{id:"rkx.foe.mock"}],
 warmup:30,
 purge:{obscurity:100},
 linked:[
+{id:"rkx.foe.ligeian"},
 {id:"rkx.foe.weaknessexploited.cold"},
 {id:"rkx.foe.weaknessexploited.heat"},
 {id:"rkx.foe.weaknessexploited.sea"},
@@ -409,7 +410,15 @@ effects: {wound.exile:2},
 aspects:{fatiguing:1},
 warmup:2},
 
-
+{id:"rkx.foe.ligeian",
+actionId:"rkx",
+label:"FNORD Ligeian's kept them away!",
+startdescription:"FNORD Ligeian!",
+requirements:{ligeian:1},
+effects:{ligeian:-1},
+alt:[{id:"spit.foe.attack.failure.ligeian",additional:true}],
+linked:[{id:"rkx.foe.attack.failure"}]
+},
 
 
 {id:"rkx.foe.weaknessexploited.cold",
@@ -570,6 +579,13 @@ actionId:"spit.foe.attack",
 label:"An Unexpected Sacrifice",
 startdescription:"My friend's fallen in bitter battle! But they gave my Foe something to remember them by. [Allies and associates sometimes die when fighting the Foe.]",
 aspects:{killmortal:1},
+effects:{wound.foe:1},
+warmup:2},
+
+{id:"spit.foe.attack.failure.ligeian",
+actionId:"spit.foe.attack",
+label:"Something Greater",
+startdescription:"My Foe tangled with a member of the Ligeia Club, and now regrets it.",
 effects:{wound.foe:1},
 warmup:2},
 
