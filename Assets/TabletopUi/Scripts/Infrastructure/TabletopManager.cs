@@ -310,6 +310,7 @@ namespace Assets.CS.TabletopUI {
             }
 			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
 			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
+            _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 		}
 
         private void BeginNewGame(SituationBuilder builder)
@@ -1191,14 +1192,28 @@ namespace Assets.CS.TabletopUI {
 				else
 					_tabletopAspects.Clear();
 
-				var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
-				foreach(var s in tabletopStacks)
-				    _tabletopAspects.CombineAspects(s.GetAspects());
 
-				if (_enableAspectCaching)
-					_tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
+				var tabletopStacks = _tabletop.GetElementStacksManager()?.GetStacks();
+                if(tabletopStacks!=null)
+                { 
+                    foreach(var tabletopStack in tabletopStacks)
+                    {
+                        IAspectsDictionary stackAspects = tabletopStack.GetAspects();
+                        IAspectsDictionary multipliedAspects=new AspectsDictionary();
 
-				_allAspectsExtantDirty = true;		// Force the aspects below to recalc
+                        //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
+                        //but bear it in mind in case there's ever a similar issue inside situations
+                      foreach(var aspect in stackAspects)
+                        { multipliedAspects.Add(aspect.Key,aspect.Value*tabletopStack.Quantity);}
+
+                        _tabletopAspects.CombineAspects(multipliedAspects);
+
+                    }
+
+                    if (_enableAspectCaching)
+                        _tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
+                }
+                _allAspectsExtantDirty = true;		// Force the aspects below to recalc
 			}
 
 			if (_allAspectsExtantDirty)

@@ -18,6 +18,15 @@ namespace Assets.Core
 
     public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary
     {
+        public AspectsDictionary():this(new Dictionary<string, int>())
+        { }
+
+        public AspectsDictionary(Dictionary<string, int> aspectsAsDictionary)
+        {
+            foreach(var kvp in aspectsAsDictionary)
+                Add(kvp.Key,kvp.Value);
+        }
+
         public List<string> KeysAsList()
         {
             return Keys.ToList();

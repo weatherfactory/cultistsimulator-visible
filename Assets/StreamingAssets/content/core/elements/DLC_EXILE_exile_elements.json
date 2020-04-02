@@ -197,7 +197,7 @@ icon:vaultcapital
 
 {id:"lifespan.stolen",
 label:"Stolen Lifespan",
-description:"FNORD",
+description:"Years from the lives of others: bought, stolen or extorted.",
 isAspect:true
 },
 
@@ -243,13 +243,17 @@ isAspect:true,
 icon:annoyance
 },
 
+{id:"ligeian",
+label:"Ligeian Presence",
+description:"I don't know precisely what the Ligeian Club is; but all reckoners do know that its members are older and hungrier than any of our mobs. We've learnt to avoid them.",
+isAspect:true
+},
+
 {id:"asset",
 label:"Asset",
 description:"Something that won't object to being owned.",
 isAspect:true,
 },
-
-
 
 {id:"space",
 label:"space",
@@ -1275,6 +1279,54 @@ label: "Opportunity: Flowermaker",
 aspects: {op:1,distraction:1,grail:1,lantern:1},
 description:"FNORD",
 lifetime:180
+},
+
+{id: "op.echidna",
+label: "Opportunity: Mme E",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"Here at the desert's edge, the thing that calls itself 'Mme E' doesn't always bother with human form. With luck, I'll never see what shape it prefers.",
+lifetime:180,
+icon:echidna
+},
+
+{id: "op.kleidouchos",
+label: "Opportunity: Frau Schlüssel",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
+lifetime:180,
+icon:kleidouchos
+},
+
+
+{id: "op.marinette",
+label: "Opportunity: Our Lady of Wires",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
+lifetime:180,
+icon:marinette
+},
+
+{id: "op.medusa",
+label: "Opportunity: What is Not Seen?",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"In all of this city, there is not one statue whose eyes are not wide open. Why is that?",
+lifetime:180
+},
+
+{id: "op.morgen",
+label: "Opportunity: Mme Matutine",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at harbour here. Mme Matutine has a lethal reputation.",
+lifetime:180
+},
+
+
+{id: "op.sulochana",
+label: "Opportunity: Sulochana",
+aspects: {op:1,distraction:1,ligeian:1},
+description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
+lifetime:180,
+icon:sulochana
 },
 
       {
