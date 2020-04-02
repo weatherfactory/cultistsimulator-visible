@@ -221,12 +221,17 @@ description:"The time may come when I can run no further. Then I must choose whe
 isAspect:true
 },
 
-
 {id: "weapon",
 label: "Weapon",
 description:"'Reach for the book - it is a weapon.' - Brecht",
 isAspect:true,
 icon:long.might
+},
+
+{id: "uses.remaining",
+label: "Uses Remaining",
+description:"Something with no uses is, literally, useless.",
+isAspect:true
 },
 
 {id:"op",
@@ -555,6 +560,13 @@ description:"Discreet Office FNORD",
 icon:vaultcapital1
 },
 
+{id:"curio",
+label:"A Curio",
+aspects:{asset:1,portable:1,comfort:1},
+description:"A treasure, at least if one has a discerning eye.",
+icon:locationauctionhouse
+},
+
 {id:"warehouse",
 label:"Quiet Warehouse",
 aspects:{asset:1,space:2},
@@ -612,13 +624,31 @@ unique:true
 
 {id: "weapon.b",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4},
-xtriggers:{fatiguing:weapon.b.exhausted},
-description:"FNORD",
+aspects: {weapon:1,edge:4,uses.remaining:3},
+xtriggers:{fatiguing:weapon.b.2.exhausted},
+description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
 icon:tooledgeb,
 unique:true
 },
 
+
+{id: "weapon.b.2",
+label: "Lionhunter's Rifle",
+aspects: {weapon:1,edge:4,uses.remaining:2},
+xtriggers:{fatiguing:weapon.b.1.exhausted},
+description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
+icon:tooledgeb,
+unique:true
+},
+
+{id: "weapon.b.1",
+label: "Lionhunter's Rifle",
+aspects: {weapon:1,edge:4,uses.remaining:1},
+xtriggers:{fatiguing:curio},
+description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
+icon:tooledgeb,
+unique:true
+},
 
 {id: "weapon.c",
 label: "Weapon C",
@@ -658,15 +688,27 @@ resaturate:true,
 icon:tooledged
 },
 
-{id: "weapon.b.exhausted",
+
+{id: "weapon.b.2.exhausted",
 label: "Lionhunter's Rifle (Exhausted)",
-aspects: {exhausted:1},
-description:"FNORD",
-lifetime:60,
-decayTo:weapon.b,
+aspects: {exhausted:1,uses.remaining:2},
+description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
+lifetime:40,
+decayTo:weapon.b.2,
 resaturate:true,
 icon:tooledgeb
 },
+
+{id: "weapon.b.1.exhausted",
+label: "Lionhunter's Rifle (Exhausted)",
+aspects: {exhausted:1,uses.remaining:1},
+description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
+lifetime:40,
+decayTo:weapon.b.1,
+resaturate:true,
+icon:tooledgeb
+},
+
 
 {id: "weapon.c.exhausted",
 label: "Weapon C (Exhausted)",
