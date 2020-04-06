@@ -83,6 +83,19 @@ description:"recipe aspect",
 noartneeded:true
 },
 
+{id:"striking.foe",
+label:"Striking Foe",
+description:"recipe aspect - hit an foe with a weapon",
+noartneeded:true
+},
+
+{id:"striking.underling",
+label:"Striking Underling",
+description:"recipe aspect - hit an underling with a weapon",
+noartneeded:true
+},
+
+
 {id:"mortal.introduce",
 label:"Mortal intro",
 description:"recipe aspect",
@@ -203,7 +216,7 @@ isAspect:true
 
 {id:"destination",
 label:"Destination",
-description:"I might find safety there for a little longer... if they don't get there first.",
+description:"I might find safety here for a little longer...",
 isAspect:true
 },
 
@@ -224,14 +237,34 @@ isAspect:true
 {id: "weapon",
 label: "Weapon",
 description:"'Reach for the book - it is a weapon.' - Brecht",
-isAspect:true,
-icon:long.might
+isAspect:true
 },
 
 {id: "uses.remaining",
 label: "Uses Remaining",
 description:"Something with no uses is, literally, useless.",
 isAspect:true
+},
+
+
+{id:"damage.foe",
+description:"Allows multiple elements to count towards Foe damage",
+isAspect:true,
+isHidden:true
+},
+
+
+{id:"damage.underling",
+description:"Allows multiple elements to count towards Underling damage",
+isAspect:true,
+isHidden:true
+},
+
+{id:"weapon.profane",
+label:"Profane Weapon",
+description:"A fine weapon, but a worldly one. [Ordinary weapons can harm most of your pursuers, but not your Foe.]",
+isAspect:true,
+icon:accursed
 },
 
 {id:"op",
@@ -488,7 +521,7 @@ label: "Giorgiou",
 inherits:_contact.mortal,
 description:"A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
-aspects:{avaricious:1,edge:2,moth:4},
+aspects:{avaricious:1,edge:4,moth:4},
 icon:diarist 
 },
 
@@ -496,7 +529,7 @@ icon:diarist
 label: "Lalla Chaima, the Snare",
 inherits:_contact.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
-aspects:{venerates.colonel:1,edge:6},
+aspects:{venerates.colonel:1,edge:6,lantern:6},
 xtriggers:{fatiguing:contact.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn}]},
 icon:renira_a 
 },
@@ -613,10 +646,12 @@ description:"A ticket to the very first destination that came to mind - "
 },
 
 {id: "weapon.a",
-label: "Weapon A",
-aspects: {weapon:1,edge:2},
-xtriggers:{fatiguing:weapon.a.exhausted},
-description:"FNORD",
+label: "Unusual Imported Pistol",
+aspects: {weapon:1,edge:4,weapon.profane:1},
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:weapon.a.exhausted},
+description:"I stole this from my Foe's personal collection, the night I took the years. I may yet need it.",
 icon:tooledgeb,
 unique:true
 },
@@ -625,8 +660,10 @@ unique:true
 {id: "weapon.b",
 label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:3},
-xtriggers:{fatiguing:weapon.b.2.exhausted},
-description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:weapon.b.2.exhausted},
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Three taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
 icon:tooledgeb,
 unique:true
 },
@@ -635,8 +672,10 @@ unique:true
 {id: "weapon.b.2",
 label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:2},
-xtriggers:{fatiguing:weapon.b.1.exhausted},
-description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:weapon.b.1.exhausted},
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Two taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 icon:tooledgeb,
 unique:true
 },
@@ -644,17 +683,21 @@ unique:true
 {id: "weapon.b.1",
 label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:1},
-xtriggers:{fatiguing:curio},
-description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:curio},
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Only one taenite-iron ball remains. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 icon:tooledgeb,
 unique:true
 },
 
 {id: "weapon.c",
-label: "Weapon C",
-aspects: {weapon:1,edge:6},
-xtriggers:{fatiguing:weapon.c.exhausted},
-description:"FNORD",
+label: "Ebrehel, the Ragged Sword",
+aspects: {weapon:1,edge:6,knock:6,forge:6},
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:weapon.c.exhausted},
+description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
 icon:tooledgeb,
 unique:true
 },
@@ -663,18 +706,21 @@ unique:true
 {id: "weapon.d",
 label: "Biedde's Blade",
 aspects: {weapon:1,edge:8},
-xtriggers:{fatiguing:weapon.d.exhausted},
-description:"FNORD",
+xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
+striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
+fatiguing:weapon.d.exhausted},
+description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'.",
 icon:tooledged,
 unique:true
 },
 
 {id: "weapon.e",
-label: "Weapon E",
+label: "Imhullune Tectrix",
 aspects: {weapon:1,edge:10},
-xtriggers:{fatiguing:weapon.e.exhausted},
-description:"FNORD",
-icon:tooledgeb,
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:weapon.e.exhausted},
+description:"It doesn't look like much, but at its touch, flesh perishes. Perhaps it really is a last fragment of the weapon that slew the Seven-Coiled from within.",
 unique:true
 },
 
@@ -1262,63 +1308,63 @@ icon: vaultshires1
 
 {id: "op.cold",
 label: "Freezing Winds",
-aspects: {op:1,distraction:1,winter:1,edge:1},
+aspects: {op:1,distraction:1,winter:2,edge:2},
 description:"Frost walks here.",
 lifetime:180
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {op:1,distraction:1,forge:1,moth:1},
+aspects: {op:1,distraction:1,forge:2,moth:2},
 description:"The air shimmers like a naked furnace.",
 lifetime:180
 },
 
 {id: "op.sea",
 label: "Sea Port",
-aspects: {op:1,distraction:1,moth:1,winter:1},
+aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
 lifetime:180
 },
 
 {id: "op.faith",
 label: "Opportunity: Faith",
-aspects: {op:1,distraction:1,lantern:1,heart:1},
+aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.cats",
 label: "Opportunity: Cats",
-aspects: {op:1,distraction:1,grail:1,moth:1},
+aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.heights",
 label: "Opportunity: Heights",
-aspects: {op:1,distraction:1,lantern:1,moth:1},
+aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.horned",
 label: "Opportunity: Horned",
-aspects: {op:1,distraction:1,knock:1,winter:1},
+aspects: {op:1,distraction:1,knock:2,winter:2},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
-aspects: {op:1,distraction:1,edge:1,winter:1},
+aspects: {op:1,distraction:1,edge:2,winter:2},
 description:"FNORD",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
-aspects: {op:1,distraction:1,grail:1,lantern:1},
+aspects: {op:1,distraction:1,grail:2,lantern:2},
 description:"FNORD",
 lifetime:180
 },
@@ -1535,21 +1581,39 @@ label: "My Wound",
 description:"Seven of these will end me.",
 	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
 lifetime:600,
-icon: long.scar_heart
+icon: scar_heart
 },
 
 	  {id: "wound.foe",
 label: "Foe's Wound",
 description:"Seven of these will end my enemy.",
 lifetime:600,
-icon: follower_wound
+aspects:{damage.foe:1},
+icon: scar_winter
+},
+
+	  {id: "wound.foe.unstanchable",
+label: "Foe's Unstanchable Wound",
+description:"Seven wounds will end my enemy. [This Wound will take twice as long to heal.]",
+lifetime:1200,
+aspects:{damage.foe:1},
+icon: scar_winter
 },
 
 	  {id: "wound.underling",
 label: "Pursuer's Wound",
 description:"One more of these will kill my pursuer.",
 lifetime:600,
-icon: long_wound
+aspects:{damage.underling:1},
+icon: scar_edge
+},
+
+	  {id: "wound.underling.unstanchable",
+label: "Pursuer's Unstanchable Wound",
+description:"Seven wounds will kill my pursuer. [This Wound will take twice as long to heal.]",
+lifetime:1200,
+aspects:{damage.underling:1},
+icon: scar_edge
 },
 
 
@@ -1558,9 +1622,7 @@ icon: long_wound
 label: "Reckoner Informants",
 description:"FNORD. Can track you down, but doesn't always.",
 xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
-rkx.promotetofoe:rkx.foe},
-lifetime:1,
-decayTo:corpse.exile
+rkx.promotetofoe:rkx.foe}
 },
 {id: "rkx.operative",
 label: "Reckoner Operative",
