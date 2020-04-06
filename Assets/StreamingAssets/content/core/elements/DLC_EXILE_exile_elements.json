@@ -156,14 +156,12 @@ noartneeded:true
 },
 
 {id:"rkx.event",
-label:"Reckoner plans",
-description:"FNORD",
+label:"Reckoner Plans",
 isAspect:true
 },
 
 {id:"rkx.rank",
-label:"Reckoner rank",
-description:"FNORD",
+label:"Reckoner Rank",
 isAspect:true
 },
 
@@ -175,8 +173,8 @@ isAspect:true
 
 
 {id:"rkx.infected",
-label:"Reckoner presence",
-description:"FNORD!!",
+label:"Reckoner Presence",
+description:"My pursuers have already established a presence here.",
 isAspect:true
 },
 
@@ -236,21 +234,21 @@ isAspect:true
 
 {id:"op",
 label:"Opportunity",
-description:"Opportunity FNORD",
+description:"Unrealised potential.",
 isAspect:true,
 icon:benign
 },
 
 {id:"distraction",
 label:"Distraction",
-description:"With the right angle, anything can be a weapon.",
+description:"At the right angle, anything can be a weapon.",
 isAspect:true,
 icon:annoyance
 },
 
 {id:"ligeian",
 label:"Ligeian Presence",
-description:"I don't know precisely what the Ligeian Club is; but all reckoners do know that its members are older and hungrier than any of our mobs. We've learnt to avoid them.",
+description:"I don't know precisely what the Ligeia Club is; but all reckoners do know that its members are older and hungrier than any of our mobs. We've learnt to avoid them.",
 isAspect:true
 },
 
@@ -396,12 +394,12 @@ isAspect:true
 
 {id: "progress",
 label: "Making Progress",
-description:"FNORD getting there.",
+description:"[Three Progress will complete a Caper.]",
 lifetime:1
 },
 {id: "payment",
 label: "Payment",
-description:"FNORD paid off",
+description:"I've paid off a problem.",
 lifetime:1,
 icon:bid
 },
@@ -418,15 +416,15 @@ xtriggers:{bribery:[{id:"progress"},{id:"payment",morpheffect:spawn}]}
 {id: "loc.shrine.colonel",
 label: "Location: an Iron Shrine",
 aspects: {location:1,shrine.edge:1},
-description:"FNORD.",
+description:"A secret shrine of the Hour known as the Colonel.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
 
 
 {id: "loc.shrine.lionsmith",
-label: "Location: a Golden Shrine",
+label: "Location: a Brazen Shrine",
 aspects: {location:1,shrine.edge:1},
-description:"FNORD.",
+description:"A secret shrine of the Hour known as the Lionsmith.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
 
@@ -434,34 +432,26 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 id:"vault.serapeum",
 label:"The Invisible Serapeum",
 inherits: "_vault.exile",
-description:"FNORD.",
+description:"The Forge of Days does not usually favour libraries, but the Serapeum favours non-combustible materials.",
 icon:"vaultlandbeyondforest5",
 unique:true
 },
 
 {
-id:"vault.tarascon",
+id:"vault.smuggler",
 label:"Chateau Tarascon",
 inherits: "_vault.exile",
-description:"FNORD. THE TARASCO: There was, at that time, on the banks of the Rhône, in a marsh between Arles and Avignon, a dragon, half animal, half fish, thicker than an ox, longer than an horse, with teeth like swords and big as horns, he hid in the river where he took the life of all passers-by and submerged vessels. and a tail like a scorpion's sting. Plainly Lionsmith stuff.",
+description:"The family of the Duc de Tarascon has long been rumoured to breed monsters.",
 icon:"vaultlandbeyondforest2",
-unique:true
-},
-
-{
-id:"vault.smuggler",
-label:"Collector's Mansion",
-description:"FNORD ",
-inherits: "_vault.exile",
-icon:"vaultcapital5",
 xtriggers:{success:vault.smuggler.completed},
 unique:true
 },
 
+
 {
 id:"vault.huntress",
 label:"The Merry Feaster's Lair",
-description:"FNORD ",
+description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works.",
 inherits: "_vault.exile",
 icon:"hq.abandoned",
 aspects:{devourer.exile:1},
@@ -470,15 +460,15 @@ unique:true
 },
 
 {id: "vault.smuggler.completed",
-label: "FNORD",
+label: "Chateau Tarascon [Completed]",
 aspects: {vault.completed:1},
-description:"FNORD"
+description:"I have what I need."
 },
 
 {id: "vault.huntress.completed",
 label: "The Merry Feaster's Carcass",
 aspects: {vault.completed:1},
-description:"FNORD"
+description:"It's dissolving quickly as its internal structures corrode."
 },
 
 
@@ -526,7 +516,7 @@ resaturate:true
 {id: "op.office",
 label: "Opportunity: Discreet Office?",
 aspects: {op:1},
-description:"FNORD.",
+description:"I could lease a quiet place to work.",
 xtriggers:{purchase:office},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
@@ -535,7 +525,7 @@ lifetime:180
 	  	  {id: "op.licence.medical",
 label: "Opportunity: Medical Credentials?",
 aspects: {op:1},
-description:"FNORD.",
+description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
 xtriggers:{negotiation:licence.medical},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
 {actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
@@ -545,7 +535,7 @@ lifetime:180
 	  	  {id: "op.connection",
 label: "Opportunity: Official Connection?",
 aspects: {op:1},
-description:"FNORD.",
+description:"I could always use more friends.",
 xtriggers:{purchase:connection},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
@@ -556,7 +546,7 @@ lifetime:180
 {id:"office",
 label:"Discreet Office",
 aspects:{asset:1,space:1},
-description:"Discreet Office FNORD",
+description:"Not too obvious, and not too far out of the way.",
 icon:vaultcapital1
 },
 
@@ -570,14 +560,14 @@ icon:locationauctionhouse
 {id:"warehouse",
 label:"Quiet Warehouse",
 aspects:{asset:1,space:2},
-description:"Discreet Office FNORD",
+description:"There's plenty of space here, although not much else to recommend it.",
 icon:vaultcapitaldefault
 },
 
 {id:"townhouse",
 label:"Grand Townhouse",
 aspects:{asset:1,space:2,comfort:4},
-description:"Discreet Office FNORD",
+description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
 
@@ -585,7 +575,7 @@ icon:hq.townhouse
 {id:"villa",
 label:"Secluded Villa",
 aspects:{asset:1,space:3,comfort:8},
-description:"Discreet Office FNORD",
+description:"I could live out my days here very happily, if it weren't for certain immediate practical difficulties...",
 icon:vaultcontinent5
 },
 
@@ -594,7 +584,7 @@ icon:vaultcontinent5
 {id:"licence.medical",
 label:"Medical Licence",
 aspects:{asset:1,portable:1},
-description:"Medical Licence FNORD",
+description:"The name on the licence isn't exactly mine, but it's close enough for my purposes.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}],
 icon:fragmentheart
 },
@@ -1609,19 +1599,19 @@ description:"FNORD"
 
 {id: "rkx.weakness.cold",
 label: "Weakness: Cold",
-description:"FNORD it's cold",
+description:"The rumours are true - snow makes my Foe slow and stupid.",
 uniquenessgroup:"uq.rkx.weakness.cold"
 },
 
 {id: "rkx.weakness.heat",
 label: "Weakness: Heat",
-description:"FNORD it's heat",
+description:"The rumours are true - when the weather is hot enough, my foe becomes slow and stupid.",
 uniquenessgroup:"uq.rkx.weakness.heat"
 },
 
 {id: "rkx.weakness.sea",
 label: "Weakness: the Sea",
-description:"FNORD it's cold",
+description:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe fears its touch.",
 uniquenessgroup:"uq.rkx.weakness.sea"
 },
 
@@ -1633,19 +1623,19 @@ uniquenessgroup:"uq.rkx.weakness.faith"
 
 {id: "rkx.weakness.cats",
 label: "Weakness: Cats",
-description:"FNORD it's cats",
+description:"My Foe fears cats! He's long been ready to murder anyone who even hinted as much. Now I know why.",
 uniquenessgroup:"uq.rkx.weakness.cats"
 },
 
 {id: "rkx.weakness.heights",
 label: "Weakness: Heights",
-description:"FNORD it's heights",
+description:"High places dizzy and demoralise my Foe.",
 uniquenessgroup:"uq.rkx.weakness.heights"
 },
 
 {id: "rkx.weakness.horned",
 label: "Weakness: Horned Axe's Disfavour",
-description:"FNORD it's horned",
+description:"The Horned Axe does not favour my Foe, and where its shadow falls, he hesitates.",
 uniquenessgroup:"uq.rkx.weakness.horned"
 },
 
@@ -1657,71 +1647,70 @@ uniquenessgroup:"uq.rkx.weakness.wolf"
 
 {id: "rkx.weakness.flowermaker",
 label: "Weakness: Flowermaker",
-description:"FNORD it's flowermaker",
+description:"Something about the Flowermaker's influence confounds my Foe. I may never know exactly what.",
 uniquenessgroup:"uq.rkx.weakness.flowermaker"
 },
 
 
-
 {id: "rkx.weakness.cold.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's cold",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cold",
 decayTo:"rkx.weakness.cold"
 },
 
 {id: "rkx.weakness.heat.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's heat",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heat",
 decayTo:"rkx.weakness.heat"
 },
 
 {id: "rkx.weakness.sea.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's sea",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.sea",
 decayTo:"rkx.weakness.sea"
 },
 
 {id: "rkx.weakness.faith.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's faith",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.faith",
 decayTo:"rkx.weakness.faith"
 },
 
 {id: "rkx.weakness.cats.hidden",
 label: "An Unknown Weakness",
-description:"FNORD (it's cats actually)",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cats",
 decayTo:"rkx.weakness.cats"
 },
 
 {id: "rkx.weakness.heights.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's heights",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heights",
 decayTo:"rkx.weakness.heights"
 },
 
 {id: "rkx.weakness.horned.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's horned",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.horned",
 decayTo:"rkx.weakness.horned"
 },
 
 {id: "rkx.weakness.wolf.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's wolf",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.wolf",
 decayTo:"rkx.weakness.wolf"
 },
 
 {id: "rkx.weakness.flowermaker.hidden",
 label: "An Unknown Weakness",
-description:"FNORD it's flowermaker",
+description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.flowermaker",
 decayTo:"rkx.weakness.flowermaker"
 },
@@ -1730,7 +1719,7 @@ decayTo:"rkx.weakness.flowermaker"
 {id: "rkx.event.aggressive",
 label: "Reckoners: Aggressive",
 aspects:{rkx.event:1},
-description:"FNORD",
+description:"My pursuers are active tonight",
 lifetime:1
 },
 
@@ -1738,7 +1727,7 @@ lifetime:1
 {id: "rkx.event.passive",
 label: "Reckoners: Passive",
 aspects:{rkx.event:1},
-description:"FNORD",
+description:"My pursuers are hesitating",
 lifetime:1
 },
 
