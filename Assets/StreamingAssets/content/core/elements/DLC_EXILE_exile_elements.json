@@ -699,7 +699,7 @@ aspects: {weapon:1,edge:8},
 xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
 striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
-description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'.",
+description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
 icon:tooledged,
 unique:true
 },
@@ -715,18 +715,17 @@ unique:true
 },
 
 {id: "weapon.a.exhausted",
-label: "Weapon A (Exhausted)",
+label: "Unusual Imported Pistol (Readying)",
 aspects: {exhausted:1},
-description:"FNORD",
+description:"I stole this from my Foe's personal collection, the night I took the years. I may yet need it.",
 lifetime:60,
 decayTo:weapon.a,
 resaturate:true,
 icon:tooledged
 },
 
-
 {id: "weapon.b.2.exhausted",
-label: "Lionhunter's Rifle (Exhausted)",
+label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:2},
 description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 lifetime:40,
@@ -736,7 +735,7 @@ icon:tooledgeb
 },
 
 {id: "weapon.b.1.exhausted",
-label: "Lionhunter's Rifle (Exhausted)",
+label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:1},
 description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 lifetime:40,
@@ -745,22 +744,20 @@ resaturate:true,
 icon:tooledgeb
 },
 
-
 {id: "weapon.c.exhausted",
-label: "Weapon C (Exhausted)",
+label: "Ebrehel, the Ragged Sword (Readying)",
 aspects: {exhausted:1},
-description:"FNORD",
+description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
 lifetime:60,
 decayTo:weapon.c,
 resaturate:true,
 icon:tooledgeb
 },
 
-
 {id: "weapon.d.exhausted",
-label: "Biedde's Blade (Exhausted)",
+label: "Biedde's Blade (Readying)",
 aspects: {exhausted:1},
-description:"FNORD",
+description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
 lifetime:60,
 decayTo:weapon.d,
 resaturate:true,
@@ -768,9 +765,9 @@ icon:tooledged
 },
 
 {id: "weapon.e.exhausted",
-label: "Weapon E (Exhausted)",
+label: "Imhullune Tectrix (Readying)",
 aspects: {exhausted:1},
-description:"FNORD",
+description:"It doesn't look like much, but at its touch, flesh perishes. Perhaps it really is a last fragment of the weapon that slew the Seven-Coiled from within.",
 lifetime:60,
 decayTo:weapon.e,
 resaturate:true,
@@ -778,48 +775,6 @@ icon:tooledgeb
 },
 
 
-
-
-{id: "asset.a",
-label: "A",
-aspects: {asset:1},
-description:"FNORD"
-},
-{id: "asset.b",
-label: "B",
-aspects: {asset:1},
-description:"FNORD"
-},
-
-{id: "asset.c",
-label: "C",
-aspects: {asset:1},
-description:"FNORD"
-},
-
-{id: "asset.d",
-label: "D",
-aspects: {asset:1},
-description:"FNORD"
-},
-
-{id: "asset.e",
-label: "Assets A",
-aspects: {asset:1},
-description:"FNORD"
-},
-
-{id: "asset.f",
-label: "F",
-aspects: {asset:1},
-description:"FNORD"
-},
-
-{id: "asset.g",
-label: "G",
-aspects: {asset:1},
-description:"FNORD"
-},
 
 
      {id: "obscurity",
@@ -955,7 +910,7 @@ unique:true
 label: "London",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
 icon: vaultcontinent1,
 unique:true
 },
@@ -965,7 +920,7 @@ unique:true
 label: "Amsterdam",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The Golden Age is over, but glory lingers like fading music. Bicycles rattle across cobbles. A woman in white throws open the shutters of a high window. On misty evenings, the Nameless Name of the Velvet walks here.",
 icon: vaultcontinent1,
 unique:true
 },
@@ -975,7 +930,7 @@ unique:true
 label: "Rostock",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
 icon: vaultcontinent1,
 unique:true
 },
@@ -986,7 +941,7 @@ unique:true
 label: "Paris",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
 icon: vaultcontinent4,
 unique:true
 },
@@ -997,7 +952,7 @@ unique:true
 label: "Prague",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The City of a Hundred Spires, flexing its republican muscles beneath the benign gaze of Masaryk and his Castlemen. Statues watch the bridges each night. This is Europe's heart, and for a while longer, it will beat with cheery vigour.",
 icon: vaultcontinent1,
 unique:true
 },
@@ -1007,7 +962,7 @@ unique:true
 label: "Kaunas (Little Paris)",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"They call it Little Paris, and the lamplight glows in the cafes and the ",
 icon: vaultcontinent1,
 unique:true
 },
