@@ -962,7 +962,7 @@ unique:true
 label: "Kaunas (Little Paris)",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"They call it Little Paris, and the lamplight glows in the cafes and the ",
+description:"Half of Lithuania has fallen to Poland, and the peace is desperately fragile, but this is the capital now. They call it Little Paris, and the lamplight glows in the cafes and the dance halls. But there is a new president, and now the Association of the Iron Wolf begins to tighten its jaws.",
 icon: vaultcontinent1,
 unique:true
 },
@@ -972,7 +972,7 @@ unique:true
 label: "Leningrad",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 icon: vaultcontinent1,
 unique:true
 },
@@ -984,19 +984,16 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
 icon: vaultcontinent1,
 unique:true
 },
-
-
-
 
 	  {id: "city.strasbourg",
 label: "Strasbourg",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I've always liked so much.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1005,7 +1002,7 @@ unique:true
 label: "Munich",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1014,7 +1011,7 @@ unique:true
 label: "Vienna",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"One of those few cities which has the same name in every History... if you believe that sort of thing.",
+description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
 icon: vaultcontinent6,
 unique:true
 },
@@ -1023,7 +1020,7 @@ unique:true
 label: "Kraków",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The castle on the hill where the dragon died looks out across a city mellow with October sunlight. Just don't speak ill of the Marshal.",
 icon: vaultcontinent1,
 unique:true
 },
@@ -1033,7 +1030,7 @@ unique:true
 label: "Kiev",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1045,7 +1042,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1054,7 +1051,7 @@ unique:true
 label: "Rhenish Aachen",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
 icon: vaultcontinent1,
 unique:true
@@ -1065,7 +1062,7 @@ unique:true
 label: "Avignon",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Sleepy Avignon, where the mistral blows.",
 xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn}]},
 icon: vaultcapital3,
 unique:true
@@ -1075,7 +1072,7 @@ unique:true
 label: "Budapest",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Winter in Budapest, and the Danube is dusted with snow. The Dual Monarchy has collapsed, but somehow this city is once again the capital of the Kingdom of Hungary. The King has twice tried to return, and twice been driven out. Politics.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1084,7 +1081,7 @@ unique:true
 label: "Cluj-Napoca",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Nestled in the mountains of sunset lies the city of the Archangel Michael. I remember it mostly as the place where I drank too much tsuica and got into a fight with bricklayers. We've all been young.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1093,7 +1090,7 @@ unique:true
 label: "granada",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",
 icon: vaultcapital3,
 unique:true
 },
