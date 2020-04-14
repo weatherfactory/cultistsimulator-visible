@@ -274,7 +274,7 @@ actionId:"send",
 label:"Arrange an Initial Meeting",
 startdescription:"@#contact.smuggler| A meeting with M. Giorgiou, the smuggler.
 #contact.huntress|A meeting with Chaima, the Snare.
-#|U MET A SOMEONE@",
+#|FNORD U MET A SOMEONE@",
 description:"@#contact.smuggler| Giorgiou has a plan. There are treasures for the taking in the Chateau Tarrascon.
 #contact.huntress|Lalla Chaima's been engaged to kill the Merry Feaster, which lairs in the Aachen sewers, and emerges to eat drunks and soldiers. The French Army doesn't believe it, of course, but there's a sergeant in the Goumiers who knows the work of the Lionsmith when he smells it.
 #|--@",
@@ -340,6 +340,53 @@ craftable:false
 }, 
 
 
+{id:"send.investigate.description",
+actionId:"send",
+label:"Onwards?",
+startdescription:"@#city.aachen|A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help.
+#city.alexandria|Back before the rising against the British, I was invited to the Invisible Serapeum in Alexandria. With luck, the invitation is still open.
+#city.algiers|My smuggler contact, M. Giorgiou, has people in Algiers. They could get me in there quietly.
+#city.amsterdam|Over the years I've found a dozen treasures for the Stegenga twins in Amsterdam. Perhaps they'll give me shelter now.
+#city.avignon|A smuggler contact in Avignon, M. Giorgiou, has a proposition for me.
+#city.baghdad|Percy Styles is still in Baghdad, doing whatever it is he does for the British government in Mandatory Iraq. He'd probably still be glad to see me.
+#city.budapest|I hear my old friend Lili has moved her black market operations to Budapest.
+#city.candia|It's a long time since I was in Crete, but I've been dreaming about it again, and about the scent of hawthorn...
+#city.cluj|My old friend Lili's operations in Cluj have suffered since Hungary gave the city up, but her name will still get me a place to sleep.
+#city.granada|I've had dealings with a gallery owner in Granada. Last year she invited me to stay with her.
+#city.istanbul|My old comrade-in-arms Kara Kemal has connections with the Black Arm remnants in Istanbul. Perhaps his name will still open doors.
+#city.kaunas|Dominykas the Baker has done well for himself: high-level connections in the Iron Wolf in Kaunas. We never really got on, but he owes me, and I can't be fussy.
+#city.kiev|I've heard rumours the hungriest of the Ligeians is abroad in Kiev. My pursuers will need to tread carefully there, but then, so will I.
+#city.krakow|Yitzchok Ashlag in Krakow has relied on me for years for the rarer occult texts. He's a hospitable man.
+#city.leningrad|The 'Athenians' who sell years in Russia are sworn enemies of the Reckoner mobs, but I've been known to get drunk with a certain Sushkin. Let's hope he remembers me.
+#city.london|Ottavio Berton in London has put out the word that he'd like my help. He's a scoundrel, but we go back a long way.
+#city.marrakech|A marabout named Navil has somehow discovered I'm here. His message reads only 'COME TO MARRAKECH, FOR GLORY'
+#city.meshad|A very old poet in Meshad has long been a favourite customer of mine. She'll certainly extend me hospitality.
+#city.munich|I have a standing invitation from Count Gottlieb Jannings, of Munich, to attend a meeting of the duelling society he favours.
+#city.nizhny|Sushkin of the 'Athenians' has kept his import-export operation in Nizhny running, but it's difficult under the Soviets. His people there might be glad of my help.
+#city.paris|Tante Adeline used to run the Marais. She's moved on, but she still has people in Paris, and they'll give me shelter.
+#city.prague|The old rogue in Prague who calls herself 'Tante Adeline' could use my help.
+#city.rostock|My correspondent Count Jannings has a house in Rostock that I could use.
+#city.samarkand|I used to supply proscribed materials to a Jadidist magus in Samarkand. Perhaps he remembers me.
+#city.stalingrad|The criminal adepts called the Bird-Eaters have set their faces against the laws of both man and Mansus. I had heard that Zulfiya the Barber had joined them in Stalingrad. The Bird-Eaters are not good people. But I always liked Zulfiya.
+#city.strasbourg|The Hügelkinder of the Vosges sometimes take human shape to walk the streets of Strasbourg. I've dealt with them before. They know as well as anyone how to be unobtrusive: perhaps they can help.
+#city.sverdlovsk|Zulfiya the Barber used to buy life from me  with jewels in the city of Sverdlovsk. She's turned strange and moved on to another city, but she introduced me to some of her contacts, back before the Civil War.
+#city.tiflis|Vasil the Fivegoer took refuge from the reckoners in Tiflis long ago. He owes me, though he might not welcome my visit.
+#city.tirana|Before all this went bad, I was negotiating a sale of life with one of President Zogu's people in Tirana. I still have her address.
+#city.tripoli|I don't have any people in Tripoli. I don't remember it at all. But quite some time ago, in the days of the Ottomans, I was born here.
+#city.valletta|My old comrade-in-arms Kara Kemal is in exile in Valletta. It's been a while, but I did save his life in the Great War...
+#city.venice|A woman named Orsolina lives in a decaying palazzo in Venice. She wasn't always a woman. But she's lived there a very long time.
+#city.vienna|It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time.
+#wilderness|I've come up empty, and the roads and railways are under surveillance. My only chance is to strike out cross-country.
+#end.bornholm|There's a rugged little island in the Baltic where few ships go. Perhaps my Foe won't find me there, and if he does, perhaps it's time to make a stand.
+#end.cheko|FNORD
+#end.ghardaia|FNORD
+#end.messana|FNORD
+#end.morbihan|There's a peculiar priory in the Gulf of Morbihan, as far west as you can go without crossing the greater sea. Perhaps my Foe won't find me there, and if he does, perhaps it's time to make a stand.
+#end.paro|FNORD
+#end.slettnes|FNORD
+@",
+},
+
 {id:"send.investigate.london",
 actionId:"send",
 label:"Send Discreet Messages from London",
@@ -349,6 +396,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.london:1},
 	internaldeck: {spec: [end.bornholm,city.amsterdam,city.paris,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+	linked:[{id:"send.investigate.description"}]
 },
 
 {id:"send.investigate.amsterdam",
@@ -359,7 +407,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.amsterdam:1},
-	internaldeck: {spec: [end.bornholm,city.aachen,city.rostock,city.london], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [end.bornholm,city.aachen,city.rostock,city.london], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 {id:"send.investigate.rostock",
@@ -370,7 +419,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.rostock:1},
-	internaldeck: {spec: [end.bornholm,city.kaunas,city.prague], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [end.bornholm,city.kaunas,city.prague], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 {id:"send.investigate.paris",
 actionId:"send",
@@ -380,7 +430,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.paris:1},
-	internaldeck: {spec: [city.london,city.aachen,city.strasbourg,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.london,city.aachen,city.strasbourg,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 {id:"send.investigate.aachen",
@@ -391,7 +442,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.aachen:1},
-	internaldeck: {spec: [city.amsterdam,city.paris,city.prague,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.amsterdam,city.paris,city.prague,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -405,7 +457,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.prague:1},
-	internaldeck: {spec: [city.rostock,city.kaunas,city.vienna,city.aachen], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.rostock,city.kaunas,city.vienna,city.aachen], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -418,7 +471,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.kaunas:1},
-	internaldeck: {spec: [end.slettnes,city.leningrad,city.krakow,city.prague,city.rostock], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [end.slettnes,city.leningrad,city.krakow,city.prague,city.rostock], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -430,7 +484,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.leningrad:1},
-	internaldeck: {spec: [end.slettnes,city.nizhny,city.kiev,city.kaunas], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [end.slettnes,city.nizhny,city.kiev,city.kaunas], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -442,7 +497,8 @@ warmup:60,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.nizhny:1},
-	internaldeck: {spec: [end.cheko,city.sverdlovsk,city.stalingrad,city.leningrad], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [end.cheko,city.sverdlovsk,city.stalingrad,city.leningrad], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -456,7 +512,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.strasbourg:1},
-	internaldeck: {spec: [city.paris,city.aachen,city.granada,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.paris,city.aachen,city.granada,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -470,7 +527,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.munich:1},
-	internaldeck: {spec: [city.aachen,city.vienna,city.avignon,city.strasbourg], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.aachen,city.vienna,city.avignon,city.strasbourg], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 {id:"send.investigate.vienna",
@@ -481,7 +539,8 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.vienna:1},
-	internaldeck: {spec: [city.prague,city.krakow,city.venice,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false}
+	internaldeck: {spec: [city.prague,city.krakow,city.venice,city.munich], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}]
 },
 
 
@@ -494,6 +553,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.krakow:1},
 	internaldeck: {spec: [city.kaunas,city.kiev,city.budapest,city.vienna], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -507,6 +567,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.kiev:1},
 	internaldeck: {spec: [city.leningrad,city.stalingrad,city.cluj,city.krakow], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -519,6 +580,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.stalingrad:1},
 	internaldeck: {spec: [city.nizhny,city.sverdlovsk,city.tiflis,city.kiev], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -531,6 +593,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.sverdlovsk:1},
 	internaldeck: {spec: [end.cheko,end.paro,city.samarkand,city.stalingrad,city.nizhny], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -543,6 +606,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.granada:1},
 	internaldeck: {spec: [city.strasbourg,city.avignon,city.marrakech,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -555,6 +619,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.avignon:1},
 	internaldeck: {spec: [city.munich,city.venice,city.algiers,city.granada], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -567,6 +632,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.venice:1},
 	internaldeck: {spec: [city.vienna,city.budapest,city.valletta,city.avignon], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.budapest",
@@ -578,6 +644,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.budapest:1},
 	internaldeck: {spec: [city.krakow,city.cluj,city.tirana,city.venice], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.cluj",
@@ -585,6 +652,7 @@ actionId:"send",
 label:"Send Discreet Messages from Cluj-Napoca",
 requirements:{domicile:1,city.cluj:1},
 	internaldeck: {spec: [city.kiev,city.tiflis,city.istanbul,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.tiflis",
@@ -596,6 +664,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.tiflis:1},
 	internaldeck: {spec: [city.stalingrad,city.samarkand,city.baghdad,city.cluj], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.samarkand",
@@ -607,6 +676,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.samarkand:1},
 	internaldeck: {spec: [city.sverdlovsk,end.paro,city.meshad,city.tiflis], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.marrakech",
@@ -618,6 +688,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.marrakech:1},
 	internaldeck: {spec: [city.granada,city.algiers,end.ghardaia,end.morbihan], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.algiers",
@@ -629,6 +700,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.algiers:1},
 	internaldeck: {spec: [city.avignon,city.valletta,city.tripoli,end.ghardaia,city.marrakech], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.valletta",
@@ -640,6 +712,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.valletta:1},
 	internaldeck: {spec: [city.venice,city.tirana,city.tripoli,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.tirana",
@@ -651,6 +724,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.tirana:1},
 	internaldeck: {spec: [city.budapest,city.istanbul,city.candia,city.valletta], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.istanbul",
@@ -662,6 +736,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.istanbul:1},
 	internaldeck: {spec: [city.cluj,city.baghdad,city.alexandria,city.tirana], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.baghdad",
@@ -673,6 +748,7 @@ warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
 	internaldeck: {spec: [city.tiflis,city.meshad,end.messana,city.alexandria,city.istanbul], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.meshad",
@@ -684,6 +760,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.meshad:1},
 	internaldeck: {spec: [city.samarkand,end.paro,end.messana,city.baghdad], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.tripoli",
@@ -695,6 +772,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.tripoli:1},
 	internaldeck: {spec: [city.valletta,city.candia,end.ghardaia,city.algiers], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.candia",
@@ -706,6 +784,7 @@ aspects:{minortracerisk:1},
 craftable:true,
 requirements:{domicile:1,city.candia:1},
 	internaldeck: {spec: [city.tirana,city.alexandria,end.messana,city.tripoli], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 
@@ -718,6 +797,7 @@ actionId:"send",
 label:"Send Discreet Messages from Alexandria",
 requirements:{domicile:1,city.alexandria:1},
 	internaldeck: {spec: [city.istanbul,city.baghdad,end.messana,city.candia], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+linked:[{id:"send.investigate.description"}],
 },
 
 {id:"send.investigate.hint.wilderness",
