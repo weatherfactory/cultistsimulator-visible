@@ -727,7 +727,7 @@ icon:tooledged
 {id: "weapon.b.2.exhausted",
 label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:2},
-description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 lifetime:40,
 decayTo:weapon.b.2,
 resaturate:true,
@@ -737,7 +737,7 @@ icon:tooledgeb
 {id: "weapon.b.1.exhausted",
 label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:1},
-description:"FNORD [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 lifetime:40,
 decayTo:weapon.b.1,
 resaturate:true,
@@ -1101,7 +1101,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1111,19 +1111,17 @@ unique:true
 label: "Venice",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
 icon: vaultcapital3,
 unique:true
 },
-
-
 
 
 	  {id: "city.tiflis",
 label: "Tiflis",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1134,7 +1132,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1143,7 +1141,7 @@ unique:true
 label: "Marrakech",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1153,7 +1151,7 @@ unique:true
 label: "Algiers",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1164,7 +1162,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral..",
 icon: vaultcapital3,
 unique:true
 },
@@ -1174,16 +1172,16 @@ unique:true
 label: "Tirana",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Flower-thronged Tirana, where Zogist soldiers crowd the cafes with drunken laughter, where the Flowermaker hums his dreamy songs in the bee-droning shadows.",
 icon: vaultcapital3,
 unique:true
 },
 
-	  {id: "city.istanbul",
+{id: "city.istanbul",
 label: "Istanbul",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 icon:vaultrendingmountains3,
 unique:true
 },
@@ -1193,7 +1191,7 @@ unique:true
 label: "Baghdad",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
 icon: vaultloneandlevelsands1,
 unique:true
 },
@@ -1204,7 +1202,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1214,7 +1212,7 @@ unique:true
 label: "Tripoli dell'ovest",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1226,7 +1224,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
 icon: vaultcapital3,
 unique:true
 },
@@ -1235,7 +1233,7 @@ unique:true
 label: "Alexandria",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"FNORD",
+description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
 icon: vaultloneandlevelsands2,
 unique:true
 },
@@ -1272,42 +1270,42 @@ lifetime:180
 {id: "op.faith",
 label: "Opportunity: Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
-description:"FNORD",
+description:"I've passed a place of worship.",
 lifetime:180
 },
 
 {id: "op.cats",
 label: "Opportunity: Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
-description:"FNORD",
+description:"I've found a little alley alert with cats.",
 lifetime:180
 },
 
 {id: "op.heights",
 label: "Opportunity: Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
-description:"FNORD",
+description:"A high place. Don't look down.",
 lifetime:180
 },
 
 {id: "op.horned",
-label: "Opportunity: Horned",
+label: "Opportunity: Horned Axe",
 aspects: {op:1,distraction:1,knock:2,winter:2},
-description:"FNORD",
+description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
 aspects: {op:1,distraction:1,edge:2,winter:2},
-description:"FNORD",
+description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
 aspects: {op:1,distraction:1,grail:2,lantern:2},
-description:"FNORD",
+description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
 lifetime:180
 },
 
@@ -1562,13 +1560,13 @@ icon: scar_edge
 
 {id: "rkx.scout",
 label: "Reckoner Informants",
-description:"FNORD. Can track you down, but doesn't always.",
+description:"The reckoner mob has turned its attention to this city. [Informants won't harm you directly, but more dangerous enemies may follow if they find you.]",
 xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
 rkx.promotetofoe:rkx.foe}
 },
 {id: "rkx.operative",
 label: "Reckoner Operative",
-description:"FNORD. Remorseless, will try to steal assets.",
+description:"I recognised a face in the street. We worked together once. Was I spotted?[Reckoner Operatives will try to steal your Assets.]",
 verbicon:"rkx.operative",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
@@ -1578,7 +1576,7 @@ decayTo:corpse.exile.underling
 
 {id: "rkx.enforcer",
 label: "Reckoner Assassin",
-description:"FNORD. Remorseless, will try to muder me.",
+description:"Someone is asking after me. I recognise the description, too well. [Assassins will try to murder you.]",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
@@ -1587,7 +1585,7 @@ decayTo:corpse.exile.underling
 },
 {id: "rkx.underboss",
 label: "Reckoner Underboss",
-description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years.",
+description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years. [Underbosses may steal assets, attack you directly, or summon the Foe.]",
 verbicon:"rkx.underboss",
 aspects:{rkx.rank:2},
 xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
@@ -1598,7 +1596,7 @@ decayTo:corpse.exile.underling
 
 {id: "rkx.foe",
 label: "My Foe",
-description:"FNORD",
+description:"Seasoned like oak and scarred like sea-cliffs. I have seen his strength, and I would be a fool not to fear it.",
 verbicon:"rkx.foe",
 aspects:{rkx.rank:3},
 lifetime:1,
@@ -1607,7 +1605,7 @@ decayTo:rkx.foe.defeated
 
 {id: "rkx.foe.defeated",
 label: "A Trophy of my Foe",
-description:"FNORD"
+description:"How many times did this heart beat? How many of those beats were stolen from another? It is withering now."
 },
 
 
