@@ -4,9 +4,9 @@
 			  {
             id: "scout",
             label: "Reconnoitre",
-            description: "This verb name will probably change. FNORD.",
+            description: "Sniff out possibilities.",
 			atStart:false,
-			  slots: [{id:"conspire",label:"Conspire",
+			  slots: [{id:"scout",label:"scout",
 			  required:{domicile:1}}],
         },
 						  {
