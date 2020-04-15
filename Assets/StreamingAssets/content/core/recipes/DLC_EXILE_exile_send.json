@@ -384,6 +384,7 @@ startdescription:"@#city.aachen|A message from Aachen has found me. An old acqua
 #end.morbihan|There's a peculiar priory in the Gulf of Morbihan, as far west as you can go without crossing the greater sea. Perhaps my Foe won't find me there, and if he does, perhaps it's time to make a stand.
 #end.paro|FNORD
 #end.slettnes|FNORD
+#|Somewhere?
 @",
 },
 
@@ -451,8 +452,6 @@ linked:[{id:"send.investigate.description"}]
 actionId:"send",
 label:"Send Discreet Messages from Prague",
 startdescription:"If I run, I should run somewhere I have an old friend - or at least an old acquaintance. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
-description:"@#city.aachen|An old acquaintance from Marrakech is on the hunt. She's asked me to help.
-#|A promising possibility.@",
 warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
@@ -506,8 +505,6 @@ linked:[{id:"send.investigate.description"}]
 actionId:"send",
 label:"Send Discreet Messages from Strasbourg",
 startdescription:"If I run, I should run somewhere I have an old friend - or at least an old acquaintance. [This allows you to find a place to flee to - but there is a small risk of Traces. Worse, the reckoners might get there before you.]",
-description:"@#city.aachen|An old acquaintance from Marrakech needs my help.
-#|A promising possibility.@",
 warmup:30,
 aspects:{minortracerisk:1},
 craftable:true,
