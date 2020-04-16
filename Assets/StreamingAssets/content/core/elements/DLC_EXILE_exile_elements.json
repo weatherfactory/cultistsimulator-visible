@@ -1700,14 +1700,19 @@ unique:true,
 xtriggers:{arriving:[{id:"domicile.vienna",morpheffect:transform}]}
 },
 
-
-
-
 {id: "wilderness",
 label: "A Dash Cross-Country",
 aspects: {destination:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Out into the wilds. This should be my last resort. [Cew opportunities of any use, and you'll have to take whatever road presents itself.]",
+description:"Out into the wilds. This should be my last resort. [Few opportunities of any use, and you can't survive out there for long.]",
+icon: vaultshires1,
+xtriggers:{arriving:[{id:"domicile.wilderness",morpheffect:transform}]},
+lifetime:60
+},
+
+{id: "domicile.wilderness",
+label: "Lonely Places Between",
+aspects: {domicile:1},
+description:"There are always choices. I could die of thirst, or cold, or hunger. [Few opportunities of any use, and you'll have to take whatever road onwards presents itself.]",
 icon: vaultshires1
 },
 
@@ -1720,8 +1725,8 @@ lifetime:180
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {op:1,distraction:1,forge:2,moth:2},
-description:"The air shimmers like a naked furnace.",
+aspects: {op:1,distraction:1,forge:2,grail:2},
+description:"The air shimmers like a naked furnace. Serpents' weather.",
 lifetime:180
 },
 
@@ -1755,21 +1760,21 @@ lifetime:180
 
 {id: "op.horned",
 label: "Opportunity: Horned Axe",
-aspects: {op:1,distraction:1,knock:2,winter:2},
+aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 lifetime:180
 },
 
 {id: "op.wolf",
 label: "Opportunity: Wolf",
-aspects: {op:1,distraction:1,edge:2,winter:2},
+aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
 lifetime:180
 },
 
 {id: "op.flowermaker",
 label: "Opportunity: Flowermaker",
-aspects: {op:1,distraction:1,grail:2,lantern:2},
+aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
 lifetime:180
 },
@@ -1980,9 +1985,21 @@ slots:[{id:"location",label:"Location",required:{domicile:1,weapon:1},actionId:"
 icon: bloodshed
 },
 
+{id: "tranquillity",
+label: "Tranquillity",
+aspects: {heart:6,winter:6},
+description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come."
+},
+
+{id: "rage",
+label: "Rage",
+aspects: {edge:6,heart:6},
+description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'"
+},
 
 	  {id: "wound.exile",
 label: "My Wound",
+aspects:{knock:2},
 description:"Seven of these will end me.",
 	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
 lifetime:600,
