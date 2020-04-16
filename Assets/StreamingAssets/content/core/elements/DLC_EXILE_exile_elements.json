@@ -343,12 +343,82 @@ icon:corpse
 },
 
 
-{id: "devourer.exile",
+{id: "ee.devourer",
 label: "Devourer",
-description: "Some monsters are the Lionsmith's children; some Echidna's; some both. Others are worse.",
+description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
 isAspect: true,
 icon:devourer
 },
+
+{id: "ee.ligeian",
+label: "Ligeian",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.soldiers",
+label: "Soldiers ",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.armouredgate",
+label: "Armoured Gate",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.bosk",
+label: "Bosk",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.miasma",
+label: "Miasma",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.thugs",
+label: "Thugs",
+aspects: {season:1},
+description:"FNORD"
+},
+
+
+{id: "ee.unknownlocation",
+label: "An Unknown Location",
+aspects: {season:1},
+description:"FNORD"
+},
+
+
+{id: "ee.creepingdread",
+label: "Creeping Dread",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.shadowedway",
+label: "Shadowed Way",
+aspects: {season:1},
+description:"FNORD"
+},
+
+{id: "ee.mist",
+label: "Mist",
+aspects: {season:1},
+description:"FNORD"
+},
+
+
+{id: "ee.storm",
+label: "Storm",
+aspects: {season:1},
+description:"FNORD"
+},
+
 
 {id:"avaricious",
 label:"Avaricious",
@@ -487,7 +557,6 @@ label:"The Merry Feaster's Lair",
 description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works.",
 inherits: "_vault.exile",
 icon:"hq.abandoned",
-aspects:{devourer.exile:1},
 xtriggers:{success:vault.huntress.completed},
 unique:true
 },
