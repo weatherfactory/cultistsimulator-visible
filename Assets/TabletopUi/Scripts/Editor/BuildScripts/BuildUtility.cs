@@ -350,8 +350,11 @@ namespace Assets.Core.Utility
             Log("Searching for DLC in " + baseEditionContentPath);
 
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
+            string dlcTitleLastLoop =
+                "This is a dummy string: whenever it's a new title, we want to create a new directory, but we don't want to recreate it every loop for the same title or we lose previous files of that content type.";
             foreach (var contentFilePath in contentFiles)
             {
+
                 int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC_FOLDER + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
 
                 // Does it begin with "DLC_"?
@@ -369,6 +372,8 @@ namespace Assets.Core.Utility
                 string dlcDestinationDir =NoonUtility.JoinPaths(to,dlcTitle, os.GetRelativePath(), os.GetCoreContentPath(locale), contentOfType);
 
                 string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
+
+                if (dlcTitle != dlcTitleLastLoop)
                 if (Directory.Exists(dlcDestinationDir))
                 {
                     Directory.Delete(dlcDestinationDir, true);
@@ -379,6 +384,8 @@ namespace Assets.Core.Utility
 
                 Log("Moving file " + contentFilePath + " to " + dlcFileDestinationPath);
                 File.Move(contentFilePath, dlcFileDestinationPath);
+
+                dlcTitleLastLoop = dlcTitle;
             }
 
             // Create the Perpetual Edition DLC
