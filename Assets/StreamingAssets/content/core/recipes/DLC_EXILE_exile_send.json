@@ -173,7 +173,7 @@ linked:[{id:"send.getsentahead.cash.loop"}]},
 {id:"send.victory.hint",
 actionId:"send",
 label:"Security Through Obscurity?",
-startdescription:"[If your Obscurity reaches 7, you cam send a taunting message to your reckoner Foe before you disappear forever.]",
+startdescription:"[If your Obscurity reaches 7, you can send a taunting message to your reckoner Foe before you disappear forever.]",
 requirements:{temptation.obscurity:1},
 craftable:false,
 hintonly:true
@@ -849,29 +849,6 @@ requirements:{domicile.wilderness:1},
 linked:[{id:"send.investigate.description"}],
 },
 
-{id:"send.investigate.hint.wilderness",
-actionId:"send",
-label:"Onwards?",
-startdescription:"I'll have to take the first chance that presents itself. I might end up anywhere.",
-requirements:{domicile:1,wilderness:1},
-hintonly:true,
-craftable:false},
-
-{id:"send.investigate.hint.remote",
-actionId:"send",
-label:"Onwards?",
-startdescription:"All the roads from here are long. It'll be expensive to find another place to run.",
-requirements:{domicile:1,remote:1},
-hintonly:true,
-craftable:false},
-
-{id:"send.investigate.hint",
-actionId:"send",
-label:"Onwards?",
-startdescription:"I'll need cash to pay my sources, if I'm to find another place to run.",
-requirements:{domicile:1},
-hintonly:true,
-craftable:false},
 
 
 

@@ -399,9 +399,11 @@ namespace Assets.CS.TabletopUI {
             var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
             if(CrossSceneState.GetMetaInfo()==null)
             {
-                          //This can happen if we start running the scene in the editor, so it hasn't been set in menu screen
+                          //We've stated running the scene in the editor, so it hasn't been set in menu screen
                 NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
                 CrossSceneState.SetMetaInfo(metaInfo);
+                    //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
+                SetGraphicsLevel(3);
             }
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
@@ -1199,16 +1201,22 @@ namespace Assets.CS.TabletopUI {
                     foreach(var tabletopStack in tabletopStacks)
                     {
                         IAspectsDictionary stackAspects = tabletopStack.GetAspects();
-                        IAspectsDictionary multipliedAspects=new AspectsDictionary();
-
+                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
                         //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
                         //but bear it in mind in case there's ever a similar issue inside situations
-                      foreach(var aspect in stackAspects)
-                        { multipliedAspects.Add(aspect.Key,aspect.Value*tabletopStack.Quantity);}
+                        //However! To complicate matters, if we're counting elements, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
+                        foreach (var aspect in stackAspects)
+                        {
 
+                          if(aspect.Key==tabletopStack.EntityId)
+                              multipliedAspects.Add(aspect.Key, aspect.Value);
+                          else
+                              multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
+                        }
                         _tabletopAspects.CombineAspects(multipliedAspects);
-
                     }
+
+                  
 
                     if (_enableAspectCaching)
                         _tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
