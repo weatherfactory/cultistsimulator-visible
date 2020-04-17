@@ -43,6 +43,13 @@ induces:[{id:"spawn.trace",chance:90}],
 noartneeded:true
 },
 
+{id:"complication",
+label:"Complication",
+description:"Used to mark opx internal events",
+isAspect:true,
+noartneeded:true
+},
+
 {id:"negotiation",
 label:"Negotiation",
 description:"recipe aspect",
@@ -52,13 +59,6 @@ noartneeded:true
 
 {id:"purchase",
 label:"Purchase",
-description:"recipe aspect",
-isAspect:true,
-noartneeded:true
-},
-
-{id:"bribery",
-label:"Bribery",
 description:"recipe aspect",
 isAspect:true,
 noartneeded:true
@@ -76,6 +76,13 @@ label:"Arriving",
 description:"recipe aspect",
 noartneeded:true
 },
+
+{id:"opx.populate",
+label:"Op Populate",
+description:"recipe aspect: populates an operation with event spawns based on the card this triggers, eg a vault",
+noartneeded:true
+},
+
 
 {id:"success",
 label:"Success",
@@ -346,77 +353,88 @@ icon:corpse
 {id: "ee.devourer",
 label: "Devourer",
 description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
-isAspect: true,
-icon:devourer
+icon:devourer,
+lifetime:1
 },
 
 {id: "ee.ligeian",
 label: "Ligeian",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.soldiers",
 label: "Soldiers ",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.armouredgate",
 label: "Armoured Gate",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.bosk",
 label: "Bosk",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.miasma",
 label: "Miasma",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.thugs",
 label: "Thugs",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 
 {id: "ee.unknownlocation",
 label: "An Unknown Location",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 
 {id: "ee.creepingdread",
 label: "Creeping Dread",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.shadowedway",
 label: "Shadowed Way",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 {id: "ee.mist",
 label: "Mist",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 
 {id: "ee.storm",
 label: "Storm",
-aspects: {season:1},
-description:"FNORD"
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
 },
 
 
@@ -498,7 +516,8 @@ isAspect:true
 {id: "progress",
 label: "Making Progress",
 description:"[Three Progress will complete a Caper.]",
-lifetime:1
+lifetime:1,
+icon:promise
 },
 {id: "payment",
 label: "Payment",
@@ -512,8 +531,7 @@ icon:bid
 label: "Cash",
 aspects: {asset:1,portable:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
-slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}],
-xtriggers:{bribery:[{id:"progress"},{id:"payment",morpheffect:spawn}]}
+slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
 
 {id: "loc.shrine.colonel",
@@ -546,7 +564,8 @@ label:"Chateau Tarascon",
 inherits: "_vault.exile",
 description:"The family of the Duc de Tarascon has long been rumoured to breed monsters.",
 icon:"vaultlandbeyondforest2",
-xtriggers:{success:vault.smuggler.completed},
+xtriggers:{success:[{id:vault.smuggler.completed}],
+opx.populate:[{id:ee.mist,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
 unique:true
 },
 
@@ -578,7 +597,7 @@ description:"It's dissolving quickly as its internal structures corrode."
 {id: "contact.smuggler",
 label: "Giorgiou",
 inherits:_contact.mortal,
-description:"A melancholy and philosopical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
 aspects:{avaricious:1,edge:4,moth:4},
 icon:diarist 
