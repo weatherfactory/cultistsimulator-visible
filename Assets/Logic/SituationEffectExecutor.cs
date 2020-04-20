@@ -49,11 +49,9 @@ namespace Assets.Logic
             RunRecipeEffects(command, stacksManager);
 
             //Penultimate: run purges and verb manipulations. This means purges will occur *after* any elements have been mutated or xtrigger-transformed.
-            RunPurges(command, _ttm);
+             RunPurges(command, _ttm);
 
-            RunVerbManipulations(command, _ttm);
-
-
+            RunVerbManipulations(command, _ttm); 
 
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
             RunConsumptions(

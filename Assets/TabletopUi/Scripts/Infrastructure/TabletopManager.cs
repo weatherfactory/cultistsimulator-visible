@@ -511,7 +511,7 @@ namespace Assets.CS.TabletopUI {
         {
             var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
             int i = 0;
-            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+            //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
 
             if (toHaltId.Contains('*'))
             {

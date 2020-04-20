@@ -63,13 +63,14 @@ namespace Assets.Core.Entities {
 
 		public void Halt()
 		{
-			Complete();
+			if(State!=SituationState.Complete && State!=SituationState.Unstarted) //don't halt if the situation is not running. This is not only superfluous but dangerous: 'complete' called from an already completed verb has bad effects
+			    Complete();
 		}
 
 		public void Start(Recipe primaryRecipe) {
 			currentPrimaryRecipe = primaryRecipe;
 			TimeRemaining = primaryRecipe.Warmup;
-			State = global::SituationState.FreshlyStarted;
+			State = SituationState.FreshlyStarted;
 		}
 
 

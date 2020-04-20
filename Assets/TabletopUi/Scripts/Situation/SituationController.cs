@@ -365,7 +365,7 @@ namespace Assets.TabletopUi {
             string overrideIcon = compendium.GetVerbIconOverrideFromAspects(forAspects);
             if (!string.IsNullOrEmpty(overrideIcon))
             { 
-                situationToken.DisplayIcon(overrideIcon);
+                situationToken.DisplayOverrideIcon(overrideIcon);
                 situationWindow.DisplayIcon(overrideIcon);
             }
         }

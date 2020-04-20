@@ -286,11 +286,9 @@ public class Compendium : ICompendium
                 var e = GetElementById(a.Key);
                 try
                 {
-
-          
-                //assume only one override, but out after
-                if (!string.IsNullOrEmpty(e.OverrideVerbIcon))
-                    return e.OverrideVerbIcon;
+                    //assume only one override, but out after
+                    if (!string.IsNullOrEmpty(e.OverrideVerbIcon))
+                        return e.OverrideVerbIcon;
                 }
                 catch (Exception)
                 {
