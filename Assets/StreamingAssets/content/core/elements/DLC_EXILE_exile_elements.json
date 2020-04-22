@@ -349,28 +349,6 @@ slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.de
 icon:corpse
 },
 
-
-{id: "ee.devourer",
-label: "Devourer",
-description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
-icon:devourer,
-lifetime:1
-},
-
-{id: "ee.ligeian",
-label: "Ligeian",
-aspects: {complication:1},
-description:"FNORD",
-lifetime:1
-},
-
-{id: "ee.soldiers",
-label: "Soldiers ",
-aspects: {complication:1},
-description:"FNORD",
-lifetime:1
-},
-
 {id: "ee.armouredgate",
 label: "Armoured Gate",
 aspects: {complication:1},
@@ -385,12 +363,148 @@ description:"FNORD",
 lifetime:1
 },
 
+{id: "ee.creepinghorror",
+label: "Creeping Horror",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.deceiver",
+label: "Deceiver",
+description: "FNORD",
+icon:devourer,
+lifetime:1
+},
+
+
+{id: "ee.devourer",
+label: "Devourer",
+description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
+icon:devourer,
+lifetime:1
+},
+
+{id: "ee.fretfuldead",
+label: "Fretful Dead",
+description: ".",
+icon:devourer,
+lifetime:1
+},
+
+{id: "ee.guardedcompound",
+label: "Guarded Compound",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.labyrinth Seal",
+label: "Labyrinth Seal",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.ligeian",
+label: "Ligeian",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
 {id: "ee.miasma",
 label: "Miasma",
 aspects: {complication:1},
 description:"FNORD",
 lifetime:1
 },
+
+{id: "ee.mist",
+label: "Mist",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.monks",
+label: "Monks",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+
+
+{id: "ee.ordeal.agony",
+label: "Ordeal: Agony",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.ordeal.desolation",
+label: "Ordeal: Desolation",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.ordeal.enigma",
+label: "Ordeal: Enigma",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.percussigant",
+label: "Percussigant",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.scarredduellist",
+label: "Scarred Duellist",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.securevault",
+label: "Secure Vault",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+{id: "ee.shadowedway",
+label: "Shadowed Way",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.soldiers",
+label: "Soldiers ",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.storm",
+label: "Storm",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.strixriddenadversary",
+label: "Strix-Ridden Adversary",
+aspects: {complication:1},
+description:"FNORD",
+lifetime:1
+},
+
 
 {id: "ee.thugs",
 label: "Thugs",
@@ -407,35 +521,28 @@ description:"FNORD",
 lifetime:1
 },
 
-
-{id: "ee.creepingdread",
-label: "Creeping Dread",
+{id: "ee.unwelcomememories",
+label: "Unwelcome Memories",
 aspects: {complication:1},
 description:"FNORD",
 lifetime:1
 },
 
-{id: "ee.shadowedway",
-label: "Shadowed Way",
-aspects: {complication:1},
-description:"FNORD",
-lifetime:1
-},
-
-{id: "ee.mist",
-label: "Mist",
+{id: "ee.vigil",
+label: "Vigil",
 aspects: {complication:1},
 description:"FNORD",
 lifetime:1
 },
 
 
-{id: "ee.storm",
-label: "Storm",
-aspects: {complication:1},
-description:"FNORD",
-lifetime:1
-},
+
+
+
+
+
+
+
 
 
 {id:"avaricious",
@@ -469,7 +576,7 @@ isHidden:true
 
 
 {id: "_vault.exile",
-label: "_vault.exile",
+label: "FNORD",
 aspects:{location:1,vault:1},
 slots:[{id:"resource",actionId:"travel",label:"Resource",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,winter:1}}]
 },
@@ -559,6 +666,61 @@ unique:true
 },
 
 {
+id:"vault.barber",
+label:"Knotwingknot Nest",
+inherits: "_vault.exile",
+description:"",
+icon:"vaultcontinent3",
+xtriggers:{success:[{id:vault.barber.completed}],
+opx.populate:[{id:ee.thugs,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
+
+unique:true
+},
+{
+id:"vault.delver",
+label:"Palazzo Dario",
+inherits: "_vault.exile",
+description:"FNORD",
+icon:"vaultcapital3",
+xtriggers:{success:[{id:vault.delver.completed}],
+opx.populate:[{id:ee.mist,morpheffect:spawn},{id:ee.fretfuldead,morpheffect:spawn},{id:ee.securevault,morpheffect:spawn}]},
+unique:true
+},
+
+{
+id:"vault.fivegoer",
+label:"Yeshiva Tigris",
+inherits: "_vault.exile",
+description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals.",
+icon:"vaultlandbeyondforest5",
+xtriggers:{success:[{id:vault.fivegoer.completed}],
+opx.populate:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.monks,morpheffect:spawn},{id:ee.deceiver,morpheffect:spawn}]},
+unique:true
+},
+
+{
+id:"vault.ghoul",
+label:"Skyrius T",
+inherits: "_vault.exile",
+description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena.",
+icon:"vaultcapital4",
+xtriggers:{success:[{id:vault.ghoul.completed}],
+opx.populate:[{id:ee.unknownlocation,morpheffect:spawn},{id:ee.guardedcompound,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn}]},
+unique:true
+},
+
+{
+id:"vault.huntress",
+label:"The Merry Feaster's Lair",
+description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works.",
+inherits: "_vault.exile",
+icon:"hq.abandoned",
+xtriggers:{success:[{id:vault.ghoul.completed}],
+opx.populate:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.miasma,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
+unique:true
+},
+
+{
 id:"vault.smuggler",
 label:"Chateau Tarascon",
 inherits: "_vault.exile",
@@ -569,15 +731,57 @@ opx.populate:[{id:ee.mist,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn},
 unique:true
 },
 
+{
+id:"vault.visionary",
+label:"Duende Midnight",
+inherits: "_vault.exile",
+description:"High in the Alpujarras, there is an enclave of those who dance for the Thunderskin. They dislike spies.",
+icon:peril_mountains,
+xtriggers:{success:[{id:vault.visionary.completed}],
+opx.populate:[{id:ee.storm,morpheffect:spawn},{id:ee.percussigant,morpheffect:spawn},{id:ee.vigil,morpheffect:spawn}]},
+unique:true
+},
 
 {
-id:"vault.huntress",
-label:"The Merry Feaster's Lair",
-description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works.",
+id:"vault.vivisectionist",
+label:"Corpshaus Mamurra München",
 inherits: "_vault.exile",
-icon:"hq.abandoned",
-xtriggers:{success:vault.huntress.completed},
+description:"FNORD",
+icon:"vaultcapital5",
+xtriggers:{success:[{id:vault.vivisectionist.completed}],
+opx.populate:[{id:ee.scarredduellist,morpheffect:spawn},{id:ee.strixriddenadversary,morpheffect:spawn},{id:ee.ordeal.agony,morpheffect:spawn}]},
 unique:true
+},
+
+
+{id: "vault.barber.completed",
+label: "FNORD",
+aspects: {vault.completed:1},
+description:"."
+},
+
+{id: "vault.delver.completed",
+label: "FNORD",
+aspects: {vault.completed:1},
+description:"."
+},
+
+{id: "vault.fivegoer.completed",
+label: "FNORD",
+aspects: {vault.completed:1},
+description:"."
+},
+
+{id: "vault.ghoul.completed",
+label: "FNORD",
+aspects: {vault.completed:1},
+description:"."
+},
+
+{id: "vault.huntress.completed",
+label: "The Merry Feaster's Carcass",
+aspects: {vault.completed:1},
+description:"It's dissolving quickly as its internal structures corrode."
 },
 
 {id: "vault.smuggler.completed",
@@ -586,16 +790,24 @@ aspects: {vault.completed:1},
 description:"I have what I need."
 },
 
-{id: "vault.huntress.completed",
-label: "The Merry Feaster's Carcass",
+{id: "vault.visionary.completed",
+label: "FNORD",
 aspects: {vault.completed:1},
-description:"It's dissolving quickly as its internal structures corrode."
+description:"."
 },
+
+{id: "vault.vivisectionist.completed",
+label: "",
+aspects: {vault.completed:1},
+description:"."
+},
+
+
 {id: "contact.barber",
 label: "Zulfiya, the Barber",
 inherits:_contact.mortal,
 description:"Zulfiya never goes anywhere without her scissors.",
-xtriggers:{fatiguing:contact.barber.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.barber.fatigued,mortal.introduce:[{id:"vault.barber",morpheffect:spawn}]},
 aspects:{moth:6},
 icon:ysabet_a 
 },
@@ -604,7 +816,7 @@ icon:ysabet_a
 label: "Orsolina, the Delver",
 inherits:_contact.mortal,
 description:"A muscular woman with a steady gaze. Her diet has changed since her days in the Lionsmith's service, but she still retains some of her old strength.",
-xtriggers:{fatiguing:contact.delver.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.delver.fatigued,mortal.introduce:[{id:"vault.delver",morpheffect:spawn}]},
 aspects:{forge:6},
 icon:valciane_a 
 },
@@ -614,9 +826,8 @@ icon:valciane_a
 label: "Vasil, the Fivegoer",
 inherits:_contact.mortal,
 description:"A smoothly handsome man whose unhuman ancestry is not apparent, unless you know to look for his abnormally flexible fingers, or wonder why his nose tends to run.",
-xtriggers:{fatiguing:contact.fivegoer.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
-aspects:{grail:6},
-icon:laidlaw_a 
+xtriggers:{fatiguing:contact.fivegoer.fatigued,mortal.introduce:[{id:"vault.fivegoer",morpheffect:spawn}]},
+aspects:{grail:6}
 },
 
 
@@ -624,9 +835,9 @@ icon:laidlaw_a
 label: "Dominykas, the Baker",
 inherits:_contact.mortal,
 description:"Dominykas has a ready smile and an unfortunate habit of picking his teeth.",
-xtriggers:{fatiguing:contact.ghoul.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.ghoul.fatigued,mortal.introduce:[{id:"vault.ghoul",morpheffect:spawn}]},
 aspects:{winter:6},
-icon:slee_a 
+icon:clifton_a 
 },
 
 
@@ -667,45 +878,44 @@ icon:jannings
 },
 
 {id: "contact.barber.fatigued",
-label: "Zulfiya, ",
-description:".",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+label: "Zulfiya, Dreaming",
+description:"Zulfiya has left a scrawled note indicating that she will be 'walking the Wood' for some time yet.",
+inherits:_contact.mortal.fatigued,
+icon:ysabet_a,
+decayTo:contact.barber,
 lifetime:120,
 resaturate:true
 },
 
 {id: "contact.delver.fatigued",
 label: "Orsolina, Dormant",
-description:".",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+description:"To recover her strength, Orsolina needs time alone and close to the earth.",
+inherits:_contact.mortal.fatigued,
+icon:valciane_a,
+decayTo:contact.delver,
 lifetime:120,
 resaturate:true
 },
 
 {id: "contact.fivegoer.fatigued",
 label: "Vasil, Depleted",
-description:".",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+description:"Vasil's exertions have softened his shape. For now he has retreated, dripping and cawing, to somewhere warmer.",
+inherits:_contact.mortal.fatigued,
+icon:contact.fivegoer,
+decayTo:contact.fivegoer,
 lifetime:120,
 resaturate:true
 },
 
 {id: "contact.ghoul.fatigued",
 label: "Dominykas, Famished",
-description:"Dominykas has left to ",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+description:"Dominykas has left to replenish himself, at the hearth and with the shovel.",
+inherits:_contact.mortal.fatigued,
+icon:clifton_a,
+decayTo:contact.ghoul,
 lifetime:120,
 resaturate:true
 },
-
 
 
 {id: "contact.smuggler.fatigued",
@@ -730,26 +940,23 @@ resaturate:true
 
 {id: "contact.visionary.fatigued",
 label: "Mireya, Indisposed",
-description:".",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+description:"Mireya is hiding, shivering, beneath her coverlet.",
+inherits:_contact.mortal.fatigued,
+icon:dorothy_a,
+decayTo:contact.visionary,
 lifetime:120,
 resaturate:true
 },
 
 {id: "contact.vivisectionist.fatigued",
-label: "Jannings, ",
-description:".",
-inherits:_contact.mortal.,
-icon:,
-decayTo:contact.,
+label: "Jannings, Reprovisioning",
+description:"Jannings has retired from the field until his new supplies arrive.",
+inherits:_contact.mortal.fatigued,
+icon:jannings,
+decayTo:contact.vivisectionist,
 lifetime:120,
 resaturate:true
 },
-
-
-
 
 
 
