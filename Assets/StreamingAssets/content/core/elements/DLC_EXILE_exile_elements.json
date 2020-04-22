@@ -591,29 +591,125 @@ label: "The Merry Feaster's Carcass",
 aspects: {vault.completed:1},
 description:"It's dissolving quickly as its internal structures corrode."
 },
-
-
-
-{id: "contact.smuggler",
-label: "Giorgiou",
+{id: "contact.barber",
+label: "Zulfiya, the Barber",
 inherits:_contact.mortal,
-description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
-aspects:{avaricious:1,edge:4,moth:4},
-icon:diarist 
+description:"Zulfiya never goes anywhere without her scissors.",
+xtriggers:{fatiguing:contact.barber.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+aspects:{moth:6},
+icon:ysabet_a 
 },
 
+{id: "contact.delver",
+label: "Orsolina, the Delver",
+inherits:_contact.mortal,
+description:"A muscular woman with a steady gaze. Her diet has changed since her days in the Lionsmith's service, but she still retains some of her old strength.",
+xtriggers:{fatiguing:contact.delver.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+aspects:{forge:6},
+icon:valciane_a 
+},
+
+
+{id: "contact.fivegoer",
+label: "Vasil, the Fivegoer",
+inherits:_contact.mortal,
+description:"A smoothly handsome man whose unhuman ancestry is not apparent, unless you know to look for his abnormally flexible fingers, or wonder why his nose tends to run.",
+xtriggers:{fatiguing:contact.fivegoer.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+aspects:{grail:6},
+icon:laidlaw_a 
+},
+
+
+{id: "contact.ghoul",
+label: "Dominykas, the Baker",
+inherits:_contact.mortal,
+description:"Dominykas has a ready smile and an unfortunate habit of picking his teeth.",
+xtriggers:{fatiguing:contact.ghoul.fatigued,mortal.introduce:[{id:"vault.",morpheffect:spawn}]},
+aspects:{winter:6},
+icon:slee_a 
+},
+
+
 {id: "contact.huntress",
-label: "Lalla Chaima, the Snare",
+label: "Lalla Chaima, the Huntress",
 inherits:_contact.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
-aspects:{venerates.colonel:1,edge:6,lantern:6},
+aspects:{venerates.colonel:1,edge:6},
 xtriggers:{fatiguing:contact.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn}]},
 icon:renira_a 
 },
+{id: "contact.smuggler",
+label: "Giorgiou, the Smuggler",
+inherits:_contact.mortal,
+description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
+aspects:{avaricious:1,moth:6},
+icon:diarist 
+},
+
+{id: "contact.visionary",
+label: "Mireya, the Visionary",
+inherits:_contact.mortal,
+description:"A plump, dreamy, hesitant woman with very bright eyes.",
+xtriggers:{fatiguing:contact.visionary.fatigued,mortal.introduce:[{id:"vault.visionary",morpheffect:spawn}]},
+aspects:{lantern:6},
+icon:dorothy_a 
+},
+
+
+{id: "contact.vivisectionist",
+label: "Jannings, the Vivisectionist",
+inherits:_contact.mortal,
+description:"A specialist in disassembly and also in assembly.",
+xtriggers:{fatiguing:contact.vivisectionist.fatigued,mortal.introduce:[{id:"vault.vivisectionist",morpheffect:spawn}]},
+aspects:{heart:6},
+icon:jannings 
+},
+
+{id: "contact.barber.fatigued",
+label: "Zulfiya, ",
+description:".",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+{id: "contact.delver.fatigued",
+label: "Orsolina, Dormant",
+description:".",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+{id: "contact.fivegoer.fatigued",
+label: "Vasil, Depleted",
+description:".",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+{id: "contact.ghoul.fatigued",
+label: "Dominykas, Famished",
+description:"Dominykas has left to ",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+
 
 {id: "contact.smuggler.fatigued",
-label: "Giorgiou",
+label: "Giorgiou, Unavailable",
 description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
 inherits:_contact.mortal.fatigued,
 icon:diarist,
@@ -623,7 +719,7 @@ resaturate:true
 },
 
 {id: "contact.huntress.fatigued",
-label: "Lalla Chaima, the Snare",
+label: "Lalla Chaima, Unseen",
 description:"Chaima has gone wherever she goes to lick her wounds in darkness.",
 inherits:_contact.mortal.fatigued,
 icon:renira_a,
@@ -631,6 +727,31 @@ decayTo:contact.huntress,
 lifetime:120,
 resaturate:true
 },
+
+{id: "contact.visionary.fatigued",
+label: "Mireya, Indisposed",
+description:".",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+{id: "contact.vivisectionist.fatigued",
+label: "Jannings, ",
+description:".",
+inherits:_contact.mortal.,
+icon:,
+decayTo:contact.,
+lifetime:120,
+resaturate:true
+},
+
+
+
+
+
 
 
 
@@ -989,7 +1110,7 @@ unique:true
 {id: "end.cheko",
 label: "Wounded Moon Lake",
 aspects: {destination:1,end:1,remote:1},
-xtriggers:{arriving:[{id:"domicile.bornholm",morpheffect:transform}]},
+xtriggers:{arriving:[{id:"domicile.cheko",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -1002,7 +1123,7 @@ unique:true
 {id: "end.ghardaia",
 label: "The Pentapolis",
 aspects: {destination:1,end:1,remote:1},
-xtriggers:{arriving:[{id:"domicile.bornholm",morpheffect:transform}]},
+xtriggers:{arriving:[{id:"domicile.ghardaia",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
