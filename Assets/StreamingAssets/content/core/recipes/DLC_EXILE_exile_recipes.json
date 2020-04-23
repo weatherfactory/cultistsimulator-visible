@@ -540,8 +540,6 @@ warmup:20,
 linked:[{id:"travel.end.depart"},
 {id:"travel.depart"}]},
 
-
-
 {id:"travel.packing",
 actionId:"travel",
 label:"Packing...",
@@ -586,6 +584,8 @@ aspects:{arriving:1},
 warmup:30,
 linked:[{id:"travel.stillenroute.remote"},
 {id:"travel.end"}]},
+
+
 
 
 {id:"travel.stillenroute.remote",

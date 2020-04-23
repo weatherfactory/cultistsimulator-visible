@@ -802,11 +802,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 htElement.GetInt(NoonConstants.KANIMFRAMES),
                 htElement.GetString(NoonConstants.KICON));
 
-            if(element.Label==null)
-                LogProblem("No label for element " + element.Id);
-
-            if (element.Description == null)
-                LogProblem("No description for element " + element.Id);
             try
             {
 
@@ -1382,7 +1377,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(requirements)");
-                    r.Requirements.Add(k, Convert.ToInt32(htReqs[k]));
+                    r.Requirements.Add(k, htReqs.GetString(k));
                 }
             }
         }
@@ -1403,7 +1398,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htTableReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(table requirements)");
-                    r.TableReqs.Add(k, Convert.ToInt32(htTableReqs[k]));
+                    r.TableReqs.Add(k, htTableReqs.GetString(k));
                 }
             }
         }
@@ -1426,7 +1421,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htExtantReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(extant requirements)");
-                    r.ExtantReqs.Add(k, Convert.ToInt32(htExtantReqs[k]));
+                    r.ExtantReqs.Add(k, htExtantReqs.GetString(k));
                 }
             }
         }
