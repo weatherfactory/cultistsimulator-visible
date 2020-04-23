@@ -43,6 +43,61 @@ induces:[{id:"spawn.trace",chance:90}],
 noartneeded:true
 },
 
+{id: "minedge",
+label: "Needs Edge",
+description:"Edge needed to resolve this.",
+isAspect:true
+},
+
+{id: "minforge",
+label: "Needs Forge",
+description:"Forge needed to resolve this.",
+isAspect:true
+},
+
+{id: "mingrail",
+label: "Needs Grail",
+description:"Grail needed to resolve this.",
+isAspect:true
+},
+
+{id: "minheart",
+label: "Needs Heart",
+description:"Heart needed to resolve this.",
+isAspect:true
+},
+
+{id: "minknock",
+label: "Needs Knock",
+description:"Knock needed to resolve this.",
+isAspect:true
+},
+
+{id: "minlantern",
+label: "Needs Lantern",
+description:"Lantern needed to resolve this.",
+isAspect:true
+},
+
+{id: "minmoth",
+label: "Needs Moth",
+description:"Moth needed to resolve this.",
+isAspect:true
+},
+
+{id: "minsecrethistories",
+label: "Needs Secret Histories",
+description:"Secret Histories needed to resolve this.",
+isAspect:true
+},
+
+{id: "minwinter",
+label: "Needs Winter",
+description:"Winter needed to resolve this.",
+isAspect:true
+},
+
+
 {id:"complication",
 label:"Complication",
 description:"Used to mark opx internal events",
@@ -77,9 +132,23 @@ description:"recipe aspect",
 noartneeded:true
 },
 
-{id:"opx.populate",
-label:"Op Populate",
-description:"recipe aspect: populates an operation with event spawns based on the card this triggers, eg a vault",
+{id:"opx.progress2",
+label:"Op Populate 2",
+description:"recipe aspect: populates an operation with third escalation event spawns",
+noartneeded:true
+},
+
+
+{id:"opx.progress1",
+label:"Opx Populate 1",
+description:"recipe aspect: populates an operation with second escalation event spawns",
+noartneeded:true
+},
+
+
+{id:"opx.progress0",
+label:"Opx Populate 0",
+description:"recipe aspect: populates an operation with first escalation event spawns",
 noartneeded:true
 },
 
@@ -126,7 +195,7 @@ noartneeded:true
 
 {id:"lure.foe",
 label:"Foe Lure",
-description:"hidden mutation applied to domicile that infallibly brings the Foe if an rkx verb is running",
+comments:"hidden mutation applied to domicile that infallibly brings the Foe if an rkx verb is running",
 isAspect:true,
 noartneeded:true,
 isHidden:true
@@ -382,6 +451,7 @@ lifetime:1
 label: "Devourer",
 description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
 icon:devourer,
+aspects:{complication:1,minedge:10,minmoth:10},
 lifetime:1
 },
 
@@ -422,7 +492,7 @@ lifetime:1
 
 {id: "ee.mist",
 label: "Mist",
-aspects: {complication:1},
+aspects: {complication:1,minforge:2,minlantern:2},
 description:"FNORD",
 lifetime:1
 },
@@ -486,7 +556,7 @@ lifetime:1
 
 {id: "ee.soldiers",
 label: "Soldiers ",
-aspects: {complication:1},
+aspects: {complication:1,minedge:8,mingrail:8,minmoth:8},
 description:"FNORD",
 lifetime:1
 },
@@ -672,7 +742,7 @@ inherits: "_vault.exile",
 description:"",
 icon:"vaultcontinent3",
 xtriggers:{success:[{id:vault.barber.completed}],
-opx.populate:[{id:ee.thugs,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
+opx.progress0:[{id:ee.thugs,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
 
 unique:true
 },
@@ -683,7 +753,7 @@ inherits: "_vault.exile",
 description:"FNORD",
 icon:"vaultcapital3",
 xtriggers:{success:[{id:vault.delver.completed}],
-opx.populate:[{id:ee.mist,morpheffect:spawn},{id:ee.fretfuldead,morpheffect:spawn},{id:ee.securevault,morpheffect:spawn}]},
+opx.progress0:[{id:ee.mist,morpheffect:spawn},{id:ee.fretfuldead,morpheffect:spawn},{id:ee.securevault,morpheffect:spawn}]},
 unique:true
 },
 
@@ -694,7 +764,7 @@ inherits: "_vault.exile",
 description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals.",
 icon:"vaultlandbeyondforest5",
 xtriggers:{success:[{id:vault.fivegoer.completed}],
-opx.populate:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.monks,morpheffect:spawn},{id:ee.deceiver,morpheffect:spawn}]},
+opx.progress0:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.monks,morpheffect:spawn},{id:ee.deceiver,morpheffect:spawn}]},
 unique:true
 },
 
@@ -705,7 +775,7 @@ inherits: "_vault.exile",
 description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena.",
 icon:"vaultcapital4",
 xtriggers:{success:[{id:vault.ghoul.completed}],
-opx.populate:[{id:ee.unknownlocation,morpheffect:spawn},{id:ee.guardedcompound,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn}]},
+opx.progress0:[{id:ee.unknownlocation,morpheffect:spawn},{id:ee.guardedcompound,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn}]},
 unique:true
 },
 
@@ -716,7 +786,7 @@ description:"In the sewers below Aachen prowls one of the Lionsmith's less digni
 inherits: "_vault.exile",
 icon:"hq.abandoned",
 xtriggers:{success:[{id:vault.ghoul.completed}],
-opx.populate:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.miasma,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
+opx.progress0:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.miasma,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
 unique:true
 },
 
@@ -727,7 +797,9 @@ inherits: "_vault.exile",
 description:"The family of the Duc de Tarascon has long been rumoured to breed monsters.",
 icon:"vaultlandbeyondforest2",
 xtriggers:{success:[{id:vault.smuggler.completed}],
-opx.populate:[{id:ee.mist,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
+opx.progress0:[{id:ee.mist,morpheffect:spawn}],
+opx.progress1:[{id:ee.soldiers,morpheffect:spawn}],
+opx.progress2:[{id:ee.devourer,morpheffect:spawn}]},
 unique:true
 },
 
@@ -738,7 +810,7 @@ inherits: "_vault.exile",
 description:"High in the Alpujarras, there is an enclave of those who dance for the Thunderskin. They dislike spies.",
 icon:peril_mountains,
 xtriggers:{success:[{id:vault.visionary.completed}],
-opx.populate:[{id:ee.storm,morpheffect:spawn},{id:ee.percussigant,morpheffect:spawn},{id:ee.vigil,morpheffect:spawn}]},
+opx.progress0:[{id:ee.storm,morpheffect:spawn},{id:ee.percussigant,morpheffect:spawn},{id:ee.vigil,morpheffect:spawn}]},
 unique:true
 },
 
@@ -749,7 +821,7 @@ inherits: "_vault.exile",
 description:"FNORD",
 icon:"vaultcapital5",
 xtriggers:{success:[{id:vault.vivisectionist.completed}],
-opx.populate:[{id:ee.scarredduellist,morpheffect:spawn},{id:ee.strixriddenadversary,morpheffect:spawn},{id:ee.ordeal.agony,morpheffect:spawn}]},
+opx.progress0:[{id:ee.scarredduellist,morpheffect:spawn},{id:ee.strixriddenadversary,morpheffect:spawn},{id:ee.ordeal.agony,morpheffect:spawn}]},
 unique:true
 },
 
@@ -2089,7 +2161,7 @@ aspects: {destination:1,remote:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral..",
+description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
 icon: vaultcapital3,
 unique:true,
 xtriggers:{arriving:[{id:"domicile.valletta",morpheffect:transform}]}
