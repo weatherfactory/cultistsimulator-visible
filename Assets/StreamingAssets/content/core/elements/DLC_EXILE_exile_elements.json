@@ -420,27 +420,28 @@ icon:corpse
 
 {id: "ee.armouredgate",
 label: "Armoured Gate",
-aspects: {complication:1},
+aspects: {complication:1,minforge:8,minknock:8},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.bosk",
 label: "Bosk",
-aspects: {complication:1},
+aspects: {complication:1,minlantern:8,minmoth:8,minwinter:8},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.creepinghorror",
 label: "Creeping Horror",
-aspects: {complication:1},
+aspects: {complication:1,minedge:4,minheart:4,minwinter:4},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.deceiver",
 label: "Deceiver",
+aspects: {complication:1,minlantern:10,minmoth:10},
 description: "FNORD",
 icon:devourer,
 lifetime:1
@@ -455,8 +456,17 @@ aspects:{complication:1,minedge:10,minmoth:10},
 lifetime:1
 },
 
+{id: "ee.feast",
+label: "A Feast",
+aspects: {complication:1,mingrail:2,minwinter:2},
+description: ".",
+icon:ghoul.hunger,
+lifetime:1
+},
+
 {id: "ee.fretfuldead",
 label: "Fretful Dead",
+aspects: {complication:1,minedge:8,minwinter:8},
 description: ".",
 icon:devourer,
 lifetime:1
@@ -464,28 +474,28 @@ lifetime:1
 
 {id: "ee.guardedcompound",
 label: "Guarded Compound",
-aspects: {complication:1},
+aspects: {complication:1,minforge:6,minknock:6,minmoth:6},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.labyrinth Seal",
 label: "Labyrinth Seal",
-aspects: {complication:1},
+aspects: {complication:1,minforge:12,minknock:12},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.ligeian",
 label: "Ligeian",
-aspects: {complication:1},
+aspects: {complication:1,minedge:12,mingrail:12,minmoth:12},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.miasma",
 label: "Miasma",
-aspects: {complication:1},
+aspects: {complication:1,minforge:6,minheart:6,minwinter:6},
 description:"FNORD",
 lifetime:1
 },
@@ -498,8 +508,8 @@ lifetime:1
 },
 
 {id: "ee.monks",
-label: "Monks",
-aspects: {complication:1},
+label: "Holy Men",
+aspects: {complication:1,minedge:6,minmoth:6},
 description:"FNORD",
 lifetime:1
 },
@@ -508,48 +518,48 @@ lifetime:1
 
 {id: "ee.ordeal.agony",
 label: "Ordeal: Agony",
-aspects: {complication:1},
+aspects: {complication:1,minedge:12,minheart:12,minwinter:12},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.ordeal.desolation",
 label: "Ordeal: Desolation",
-aspects: {complication:1},
+aspects: {complication:1,minheart:12,minwinter:12},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.ordeal.enigma",
 label: "Ordeal: Enigma",
-aspects: {complication:1},
+aspects: {complication:1,minlantern:12,minmoth:12},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.percussigant",
 label: "Percussigant",
-aspects: {complication:1},
+aspects: {complication:1,minedge:8,mingrail:8,minheart:8},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.scarredduellist",
 label: "Scarred Duellist",
-aspects: {complication:1},
+aspects: {complication:1,minedge:4,minmoth:4},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.securevault",
 label: "Secure Vault",
-aspects: {complication:1},
+aspects: {complication:1,minforge:10,minknock:10},
 description:"FNORD",
 lifetime:1
 },
 {id: "ee.shadowedway",
 label: "Shadowed Way",
-aspects: {complication:1},
+aspects: {complication:1,minknock:4,minlantern:4},
 description:"FNORD",
 lifetime:1
 },
@@ -563,14 +573,14 @@ lifetime:1
 
 {id: "ee.storm",
 label: "Storm",
-aspects: {complication:1},
+aspects: {complication:1,minforge:2,minheart:2},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.strixriddenadversary",
 label: "Strix-Ridden Adversary",
-aspects: {complication:1},
+aspects: {complication:1,minedge:8,minmoth:8},
 description:"FNORD",
 lifetime:1
 },
@@ -578,7 +588,7 @@ lifetime:1
 
 {id: "ee.thugs",
 label: "Thugs",
-aspects: {complication:1},
+aspects: {complication:1,minedge:4,mingrail:4,minmoth:4},
 description:"FNORD",
 lifetime:1
 },
@@ -586,21 +596,21 @@ lifetime:1
 
 {id: "ee.unknownlocation",
 label: "An Unknown Location",
-aspects: {complication:1},
+aspects: {complication:1,minknock:2,minlantern:2},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.unwelcomememories",
 label: "Unwelcome Memories",
-aspects: {complication:1},
+aspects: {complication:1,minheart:8,minlantern:8,minmoth:8,minwinter:8},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.vigil",
 label: "Vigil",
-aspects: {complication:1},
+aspects: {complication:1,minedge:10,minheart:10,minlantern:10,minwinter:10},
 description:"FNORD",
 lifetime:1
 },
@@ -742,7 +752,7 @@ inherits: "_vault.exile",
 description:"",
 icon:"vaultcontinent3",
 xtriggers:{success:[{id:vault.barber.completed}],
-opx.progress0:[{id:ee.thugs,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
+opx.progress0:[{id:ee.feast,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
 
 unique:true
 },
