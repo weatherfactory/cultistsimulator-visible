@@ -760,7 +760,9 @@ inherits: "_vault.exile",
 description:"",
 icon:"vaultcontinent3",
 xtriggers:{success:[{id:vault.barber.completed}],
-opx.progress0:[{id:ee.feast,morpheffect:spawn},{id:ee.unwelcomememories,morpheffect:spawn},{id:ee.ordeal.enigma,morpheffect:spawn}]},
+opx.progress0:[{id:ee.feast,morpheffect:spawn}],
+opx.progress1:[{id:ee.unwelcomememories,morpheffect:spawn}],
+opx.progress2:[{id:ee.ordeal.enigma,morpheffect:spawn}]},
 
 unique:true
 },
@@ -771,7 +773,9 @@ inherits: "_vault.exile",
 description:"FNORD",
 icon:"vaultcapital3",
 xtriggers:{success:[{id:vault.delver.completed}],
-opx.progress0:[{id:ee.mist,morpheffect:spawn},{id:ee.fretfuldead,morpheffect:spawn},{id:ee.securevault,morpheffect:spawn}]},
+opx.progress0:[{id:ee.mist,morpheffect:spawn}],
+opx.progress1:[{id:ee.fretfuldead,morpheffect:spawn}],
+opx.progress2:[{id:ee.securevault,morpheffect:spawn}]},
 unique:true
 },
 
@@ -782,7 +786,9 @@ inherits: "_vault.exile",
 description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals.",
 icon:"vaultlandbeyondforest5",
 xtriggers:{success:[{id:vault.fivegoer.completed}],
-opx.progress0:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.monks,morpheffect:spawn},{id:ee.deceiver,morpheffect:spawn}]},
+opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
+opx.progress1:[{id:ee.monks,morpheffect:spawn}],
+opx.progress2:[{id:ee.deceiver,morpheffect:spawn}]},
 unique:true
 },
 
@@ -793,7 +799,9 @@ inherits: "_vault.exile",
 description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena.",
 icon:"vaultcapital4",
 xtriggers:{success:[{id:vault.ghoul.completed}],
-opx.progress0:[{id:ee.unknownlocation,morpheffect:spawn},{id:ee.guardedcompound,morpheffect:spawn},{id:ee.soldiers,morpheffect:spawn}]},
+opx.progress0:[{id:ee.unknownlocation,morpheffect:spawn}],
+opx.progress1:[{id:ee.guardedcompound,morpheffect:spawn}],
+opx.progress2:[{id:ee.ordeal.desolation,morpheffect:spawn}]},
 unique:true
 },
 
@@ -804,7 +812,9 @@ description:"In the sewers below Aachen prowls one of the Lionsmith's less digni
 inherits: "_vault.exile",
 icon:"hq.abandoned",
 xtriggers:{success:[{id:vault.ghoul.completed}],
-opx.progress0:[{id:ee.shadowedway,morpheffect:spawn},{id:ee.miasma,morpheffect:spawn},{id:ee.devourer,morpheffect:spawn}]},
+opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
+opx.progress1:[{id:ee.miasma,morpheffect:spawn}],
+opx.progress2:[{id:ee.devourer,morpheffect:spawn}]},
 unique:true
 },
 
@@ -828,7 +838,9 @@ inherits: "_vault.exile",
 description:"High in the Alpujarras, there is an enclave of those who dance for the Thunderskin. They dislike spies.",
 icon:peril_mountains,
 xtriggers:{success:[{id:vault.visionary.completed}],
-opx.progress0:[{id:ee.storm,morpheffect:spawn},{id:ee.percussigant,morpheffect:spawn},{id:ee.vigil,morpheffect:spawn}]},
+opx.progress0:[{id:ee.storm,morpheffect:spawn}],
+opx.progress1:[{id:ee.percussigant,morpheffect:spawn}],
+opx.progress2:[{id:ee.vigil,morpheffect:spawn}]},
 unique:true
 },
 
@@ -839,7 +851,9 @@ inherits: "_vault.exile",
 description:"FNORD",
 icon:"vaultcapital5",
 xtriggers:{success:[{id:vault.vivisectionist.completed}],
-opx.progress0:[{id:ee.scarredduellist,morpheffect:spawn},{id:ee.strixriddenadversary,morpheffect:spawn},{id:ee.ordeal.agony,morpheffect:spawn}]},
+opx.progress0:[{id:ee.scarredduellist,morpheffect:spawn}],
+opx.progress1:[{id:ee.strixriddenadversary,morpheffect:spawn}],
+opx.progress2:[{id:ee.ordeal.agony,morpheffect:spawn}]},
 unique:true
 },
 
