@@ -29,7 +29,7 @@ namespace Assets.Core.Interfaces
      
         int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorId = null);
         int ReduceElement(string elementId, int quantityChange, Context context);
-        int PurgeElement(Element element, int maxToPurge, Context context);
+        int PurgeElement(Element element, int maxToPurge);
         IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context);
     }
 }

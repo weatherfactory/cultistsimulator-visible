@@ -239,13 +239,13 @@ public class ElementStacksManager : IElementStacksManager {
         return matchingStacks;
     }
 
-    public int PurgeElement(Element element, int maxToPurge, Context context)
+    public int PurgeElement(Element element, int maxToPurge)
     {
 
         if (string.IsNullOrEmpty(element.DecayTo))
         {
             //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
-          return  ReduceElement(element.Id, -maxToPurge, context);
+          return  ReduceElement(element.Id, -maxToPurge, new Context(Context.ActionSource.Purge));
         }
         else
         { 

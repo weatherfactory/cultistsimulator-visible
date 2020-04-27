@@ -605,6 +605,7 @@ namespace Assets.CS.TabletopUI {
 			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
+            
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.

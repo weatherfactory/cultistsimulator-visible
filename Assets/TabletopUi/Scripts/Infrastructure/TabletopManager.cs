@@ -503,8 +503,36 @@ namespace Assets.CS.TabletopUI {
             var compendium = Registry.Retrieve<ICompendium>();
 
             Element purgedElement = compendium.GetElementById(elementId);
+            //I don't think MaxToPurge is being usefully decremented here - should return int
 
-                _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge, new Context(Context.ActionSource.Purge));
+           _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge);
+
+           var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+           foreach (var s in situationsCatalogue.GetRegisteredSituations())
+           {
+
+               if (s.SituationClock.State == SituationState.Unstarted)
+               {
+                   var slotsToTryPurge = new List<RecipeSlot>(s.situationWindow.GetStartingSlots());
+
+                   slotsToTryPurge.Reverse();
+                   foreach (var slot in slotsToTryPurge)
+                       slot.TryPurgeElement(purgedElement, maxToPurge);
+               }
+               //If the situation has finished, purge any matching elements in the results.
+                else if (s.SituationClock.State==SituationState.Complete)
+                { 
+                   s.situationWindow.GetResultsStacksManager()
+                       .PurgeElement(purgedElement, maxToPurge);
+
+                }
+                else
+                 {
+                   //if the situation is still ongoing, any elements actually inside it are protected. However, elements in the slot are not protected.
+                   s.situationWindow.GetOngoingSlots().FirstOrDefault()
+                       ?.TryPurgeElement(purgedElement, maxToPurge);
+                 }
+           }
         }
 
         public void HaltVerb(string toHaltId, int maxToHalt)

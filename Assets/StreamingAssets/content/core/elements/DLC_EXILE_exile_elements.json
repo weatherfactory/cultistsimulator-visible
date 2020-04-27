@@ -97,10 +97,17 @@ description:"Winter needed to resolve this.",
 isAspect:true
 },
 
+{id:"rkx.internal",
+label:"Reckoner internal",
+description:"Used to mark rkx internal components",
+isAspect:true,
+noartneeded:true
+},
+
 
 {id:"complication",
 label:"Complication",
-description:"Used to mark opx internal events",
+description:"Used to mark opx events",
 isAspect:true,
 noartneeded:true
 },
@@ -251,6 +258,7 @@ isAspect:true
 
 {id:"rkx.rank",
 label:"Reckoner Rank",
+description:"Lower-ranked reckoners are just people paid to do bad things. Higher-ranked reckoners are cunning, well-connected and armoured in stolen years.",
 isAspect:true
 },
 
@@ -2540,6 +2548,7 @@ icon: scar_edge
 
 {id: "rkx.scout",
 label: "Reckoner Informants",
+aspects:{rkx.internal:1},
 description:"The reckoner mob has turned its attention to this city. [Informants won't harm you directly, but more dangerous enemies may follow if they find you.]",
 xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
 rkx.promotetofoe:rkx.foe}
@@ -2548,7 +2557,7 @@ rkx.promotetofoe:rkx.foe}
 label: "Reckoner Operative",
 description:"I recognised a face in the street. We worked together once. Was I spotted?[Reckoner Operatives will try to steal your Assets.]",
 verbicon:"rkx.operative",
-aspects:{rkx.rank:1},
+aspects:{rkx.rank:1,rkx.internal:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
 lifetime:1,
 decayTo:corpse.exile.underling
@@ -2558,7 +2567,7 @@ decayTo:corpse.exile.underling
 label: "Reckoner Assassin",
 description:"Someone is asking after me. I recognise the description, too well. [Assassins will try to murder you.]",
 verbicon:"rkx.enforcer",
-aspects:{rkx.rank:1},
+aspects:{rkx.rank:1,rkx.internal:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
 lifetime:1,
 decayTo:corpse.exile.underling
@@ -2567,7 +2576,7 @@ decayTo:corpse.exile.underling
 label: "Reckoner Underboss",
 description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years. [Underbosses may steal assets, attack you directly, or summon the Foe.]",
 verbicon:"rkx.underboss",
-aspects:{rkx.rank:2},
+aspects:{rkx.rank:2,rkx.internal:1},
 xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
 lifetime:1,
 decayTo:corpse.exile.underling
@@ -2578,7 +2587,7 @@ decayTo:corpse.exile.underling
 label: "My Foe",
 description:"Seasoned like oak and scarred like sea-cliffs. I have seen his strength, and I would be a fool not to fear it.",
 verbicon:"rkx.foe",
-aspects:{rkx.rank:3},
+aspects:{rkx.rank:3,rkx.internal:1},
 lifetime:1,
 decayTo:rkx.foe.defeated
 },
@@ -2710,7 +2719,7 @@ decayTo:"rkx.weakness.flowermaker"
 
 {id: "rkx.event.aggressive",
 label: "Reckoners: Aggressive",
-aspects:{rkx.event:1},
+aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are active tonight",
 lifetime:1
 },
@@ -2718,7 +2727,7 @@ lifetime:1
 
 {id: "rkx.event.passive",
 label: "Reckoners: Passive",
-aspects:{rkx.event:1},
+aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are hesitating",
 lifetime:1
 },
