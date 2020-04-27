@@ -62,6 +62,7 @@ startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
 #ee.soldiers|Armed men guard this place. 
 #ee.mist|The Nameless Name of the Velvet has passed this way. This mist is the hem of her grey garment. It'll be hell to find a way through.
 #|A complication lies ahead.@
+
 [Most Complications can be defeated with enough of the appropriate Aspect.]",
 warmup:60,
 slots:[{id:"response",label:"Response",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
@@ -74,7 +75,8 @@ alt:[{id:"opx.caper.tryresolve.edge"},
 {id:"opx.caper.tryresolve.moth"},
 {id:"opx.caper.tryresolve.secrethistories"},
 {id:"opx.caper.tryresolve.winter"}],
-linked:[{id:"opx.caper.failure"}]
+linked:[{chance:30,id:"opx.caper.lucky"},
+{id:"opx.caper.failure"}]
 },
 
 
@@ -152,6 +154,13 @@ startdescription:"@#|I've used patience.@",
 requirements:{minwinter:1,winter:minwinter},
 linked:[{id:"opx.caper.makeprogress"}]},
 
+{id:"opx.caper.lucky",
+actionId:"opx.caper",
+label:"Good Fortune",
+startdescription:"Someone else would have given up. [Occasionally, you'll defeat a Complication even if you lack the right Aspects.]",
+warmup:10,
+linked:[{id:"opx.caper.makeprogress"}]},
+
 
 {id:"opx.caper.makeprogress",
 actionId:"opx.caper",
@@ -201,7 +210,8 @@ label:"Success!",
 startdescription:"Safely away with my haul!",
 requirements:{progress:3},
 aspects:{success:1,fatiguing:1},
-effects:{progress:-100,cash:-100,complication:-100},
+effects:{complication:-100},
+linked:[{id:"opx.caper.cleanup"}]
 },
 
 {id:"opx.caper.failure",
@@ -209,7 +219,8 @@ actionId:"opx.caper",
 label:"Disaster!",
 startdescription:"The caper's failed!",
 aspects:{fatiguing:1},
-effects:{progress:-100,cash:-100,complication:-100,trace:1}
+effects:{trace:1},
+linked:[{id:"opx.caper.cleanup"}]
 },
 
 {id:"opx.rob.vault.failure.wounded",
@@ -217,8 +228,14 @@ actionId:"opx.rob.vault",
 label:"Injured!",
 startdescription:"I've been injured, and forced to retreat.",
 aspects:{fatiguing:1},
-effects:{progress:-100,cash:-100,complication:-100,trace:1,wound.exile:1}
+effects:{trace:1,wound.exile:1},
+linked:[{id:"opx.caper.cleanup"}]
 },
+
+
+{id:"opx.caper.cleanup",
+actionId:"opx.rob.vault",
+effects:{progress:-100,cash:-100,complication:-100,ingredient:-100,op:-100}}
 
 {id:"travel.visit.shrine.colonel",
 actionId:"travel",
@@ -467,8 +484,6 @@ aspects:{arriving:1},
 warmup:30,
 linked:[{id:"travel.stillenroute.remote"},
 {id:"travel.end"}]},
-
-
 
 
 {id:"travel.stillenroute.remote",

@@ -272,11 +272,23 @@ ending:obscurityvictoryafoeslain},
 {id:"send.mortal.intro",
 actionId:"send",
 label:"Arrange an Initial Meeting",
-startdescription:"@#contact.smuggler| A meeting with M. Giorgiou, the smuggler.
-#contact.huntress|A meeting with Chaima, the Snare.
+startdescription:"@#contact.barber|A meeting with Zulfiya, who they call the Barber.
+#contact.delver|A meeting with Orsolina,'the Delver'.
+#contact.fivegoer|A meeting with Vasil, a Fivegoer.
+#contact.ghoul|A meeting with Dominykas, the Baker.
+#contact.huntress|A meeting with Lalla Chaima, sometimes called the Snare.
+#contact.smuggler|A meeting with M. Giorgiou, a smuggler.
+#contact.visionary|A meeting with the painter Mireya.
+#contact.vivisectionist|A meeting with Count Jannings, the surgeon, duellist, and vivisectionist.
 #|FNORD U MET A SOMEONE@",
-description:"@#contact.smuggler| Giorgiou has a proposal. There are treasures for the taking in the Chateau Tarrascon. There is also 'the possibility of a monster', but, he points out, after all, where there are no monsters, we generally invent our own. He begins to illustrate this with reference to recent European history, but fortunately at this point the wine arrives.
+description:"@#contact.barber|Zulfiya fastens on me eagerly. 'I want you in the Wood,' she insists. 'Bring me what you find to drink below the Knotwingnot.'
+#contact.delver|Orsolina welcomes me with a huge fierce hug, and listens to my troubles. 'Of course I will help,' she insists, 'but it is not easy for me to cross the lagoon, not in my condition. I have eaten too much from the sea. But there is still something that may help me in the vault of the Palazzo Dario. The Palazzo is haunted, but not too haunted for us, I think.'
+#contact.fivegoer|Vasil shakes my hand warmly, with that boneless but irresistible grip I remember so clearly. 'Of course I owe you,' he tells me, 'but I owe someone else more. My great-grandmother is here in the city, in the keeping of very unsympathetic men. If you and I can address that, I'll be free to come with you.'
+#contact.ghoul|Dominykas serves me spiced honey cakes with kvass, and chats amiably about a rival who's got hold of a 'seasoning' Dominykas needs. He hopes it won't be too much trouble for me to help him acquire it, and then, of course, he will be free to help me in turn.
 #contact.huntress|Lalla Chaima's been engaged to kill the Merry Feaster, which lairs in the Aachen sewers, and emerges to eat drunks and soldiers. The French Army doesn't believe it, of course, but there's a sergeant in the Goumiers who knows the work of the Lionsmith when he smells it.
+#contact.smuggler|Giorgiou has a proposal. There are treasures for the taking in the Chateau Tarrascon. There is also 'the possibility of a monster', but, he points out, after all, where there are no monsters, we generally invent our own. He begins to illustrate this with reference to recent European history, but fortunately at this point the wine arrives.
+#contact.visionary|Mireya bursts into tears. 'God has sent you,' she gasps. 'I've done something - something - ' and then she breaks down altogether. As far as I can eventually make out, she spied on a cult of the Thunderskin for one of her paintings. They've found out, and now they're coming for her.
+#contact.vivisectionist|Count Jannings clicks his heels and bows. 'I have heard of your troubles,' he tells me. 'It would be interesting to accompany you. But first, let me invite you to participate in a competitive social occasion. No no. I must insist.'
 #|--@",
 requirements:{mortal:1,associate:-1,ally:-1},
 aspects:{mortal.introduce:1},
@@ -284,13 +296,46 @@ mutations:[{filterOnAspectId:mortal,mutateAspectId:associate,mutationLevel:1,add
 warmup:10,
 craftable:true},
 
-{id:"send.smuggler.upgrade",
+{id:"send.barber.upgrade",
 actionId:"send",
-label:"Giorgiou wants this business over with.'",
-startdescription:"Is it done?",
-description:"'That could have gone worse, I suppose.'",
-requirements:{contact.smuggler:1,associate:1,ally:-1},
-slots:[{id:"done",label:"Result",required:{vault.smuggler.completed:1},greedy:true}],
+label:"Zulfiya paces, clicking her fingers",
+startdescription:"'Where is it? Where is it??'",
+description:"'A wall has many stones; but you will not forget that we are both of us flesh.'",
+requirements:{contact.barber:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Goo",required:{vault.barber.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+{id:"send.delver.upgrade",
+actionId:"send",
+label:"Orsolina has lit the lamps in her workshop - oil, not electric.",
+startdescription:"'I appreciate the trouble you're taking.'",
+description:"Orsolina shrugs. 'If not now, then then.'",
+requirements:{contact.delver:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Redness",required:{vault.delver.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+{id:"send.fivegoer.upgrade",
+actionId:"send",
+label:"Vasil is soft with anticipation",
+startdescription:"'Well? How are we doing?'",
+description:"'I suppose the old horror can wait a little longer.'",
+requirements:{contact.fivegoer:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Undergoer",required:{vault.fivegoer.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+{id:"send.ghoul.upgrade",
+actionId:"send",
+label:"Dominykas deploys a smile of amiable patience",
+startdescription:"'My honey cake is still far short of its full potential.'",
+description:"'Time's growing short, you know. For both of us.'",
+requirements:{contact.ghoul:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Seasoning",required:{vault.ghoul.completed:1},greedy:true}],
 alt:[{id:"send.associate.upgraded"}],
 warmup:10,
 craftable:true},
@@ -302,10 +347,45 @@ label:"Challa's keen to fulfil her contract",
 startdescription:"'My Goumier friend's growing anxious. I think he lacks faith in my abilities.'",
 description:"'We don't have much time.'",
 requirements:{contact.huntress:1,associate:1,ally:-1},
-slots:[{id:"done",label:"The Feaster's Carcass",required:{vault.huntress.completed:1},greedy:true}],
+slots:[{id:"done",label:"Carcass",required:{vault.huntress.completed:1},greedy:true}],
 alt:[{id:"send.associate.upgraded"}],
 warmup:10,
 craftable:true},
+
+
+{id:"send.smuggler.upgrade",
+actionId:"send",
+label:"Giorgiou wants this business over with",
+startdescription:"Is it done?",
+description:"'That could have gone worse, I suppose.'",
+requirements:{contact.smuggler:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Relic",required:{vault.smuggler.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+{id:"send.visionary.upgrade",
+actionId:"send",
+label:"Mireya trembles like water",
+startdescription:"'Are they still out there?'",
+description:"'Please hurry. Please.'",
+requirements:{contact.visionary:1,associate:1,ally:-1},
+slots:[{id:"done",label:" Skin",required:{vault.visionary.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
+{id:"send.vivisectionist.upgrade",
+actionId:"send",
+label:"Jannings greets me curtly",
+startdescription:"'So?'",
+description:"'I trust you will find the time soon.'",
+requirements:{contact.vivisectionist:1,associate:1,ally:-1},
+slots:[{id:"done",label:"Duelling Scar",required:{vault.vivisectionist.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
+warmup:10,
+craftable:true},
+
 
 
 {id:"send.associate.upgraded",
@@ -313,8 +393,14 @@ actionId:"send",
 label:"An Ally",
 requirements:{vault.completed:1},
 startdescription:"We clasp hands. [Your Associate is now an Ally. They'll follow you when you leave the city... unless you're headed for a final confrontation at the map's edge.]",
-description:"@#contact.smuggler|'I owe you this much.'
+description:"@#contact.barber|'The Mother pierces,' Zulfiya says conversationally, tugging at her fingernails. 'The Witch demands, and the Sister dissolves.'
+#contact.delver|''
+#contact.fivegoer|There is a sticky crash from the back room to which we consigned the Undergoer. Vasil rolls his eyes. 'Family. You know how they can be. Give me half an hour to say goodbye to her properly, and she'll be fine.'
+#contact.ghoul|'Four stolen seasonings and I'll have a stolen year, I suppose,' Dominykas says genially. He pokes you with an elbow.
 #contact.huntress|'I'm looking forward to hunting with you.'
+#contact.smuggler|'I owe you this much.'
+#contact.visionary|'Thank you so much. I'll repay you however I can. Although I'm afraid I don't know how to shoot.'
+#contact.vivisectionist|'I'm afraid we have made you quite distinctive indeed. Still, very good. Yes, very good.'
 #|--@",
 aspects:{recruiting:1},
 comments:"IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",

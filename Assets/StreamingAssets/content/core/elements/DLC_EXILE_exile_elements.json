@@ -624,15 +624,6 @@ lifetime:1
 },
 
 
-
-
-
-
-
-
-
-
-
 {id:"avaricious",
 label:"Avaricious",
 description:"'Everybody needs money. That's why they call it money.' - Mamet",
@@ -676,7 +667,7 @@ xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmort
 },
 {id: "_contact.mortal.fatigued",
 label: "_contact.mortal.fatigued",
-aspects:{mortal:1,fatigued:1},
+aspects:{mortal:1,exhausted:1},
 xtriggers:{killmortal:corpse.exile}
 },
 
@@ -712,7 +703,7 @@ isAspect:true
 label: "Making Progress",
 description:"[Three Progress will complete a Caper.]",
 lifetime:1,
-icon:promise
+icon:compensationd
 },
 {id: "payment",
 label: "Payment",
@@ -748,7 +739,7 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 id:"vault.serapeum",
 label:"The Invisible Serapeum",
 inherits: "_vault.exile",
-description:"The Forge of Days does not usually favour libraries, but the Serapeum favours non-combustible materials.",
+description:"The Forge of Days does not usually favour libraries, but the Serapeum has made a commitment to non-combustible materials.",
 icon:"vaultlandbeyondforest5",
 unique:true
 },
@@ -757,20 +748,19 @@ unique:true
 id:"vault.barber",
 label:"Knotwingknot Nest",
 inherits: "_vault.exile",
-description:"",
+description:"There is a dark Wood that presses against the windows of the sleeping mind. There is a nest in the branches woven of black silk and white hair. Zulfiya has prepared a feast to take me there tonight, and inked something on the skin of my back, which she claims is a map I must not see.",
 icon:"vaultcontinent3",
 xtriggers:{success:[{id:vault.barber.completed}],
 opx.progress0:[{id:ee.feast,morpheffect:spawn}],
 opx.progress1:[{id:ee.unwelcomememories,morpheffect:spawn}],
 opx.progress2:[{id:ee.ordeal.enigma,morpheffect:spawn}]},
-
 unique:true
 },
 {
 id:"vault.delver",
 label:"Palazzo Dario",
 inherits: "_vault.exile",
-description:"FNORD",
+description:"Two hundred years ago, an immortal named Hokobald worked alchemy here. In another hundred years, it may slide into the canal. It's wreathed in mist and prowled by gloomy dead, but Orsolina believes its vault has never been breached.",
 icon:"vaultcapital3",
 xtriggers:{success:[{id:vault.delver.completed}],
 opx.progress0:[{id:ee.mist,morpheffect:spawn}],
@@ -783,7 +773,7 @@ unique:true
 id:"vault.fivegoer",
 label:"Yeshiva Tigris",
 inherits: "_vault.exile",
-description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals.",
+description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals. We'll have to find it to breach it; the rabbis and students will give us difficulty; and the Undergoer itself may need toi be subdued..",
 icon:"vaultlandbeyondforest5",
 xtriggers:{success:[{id:vault.fivegoer.completed}],
 opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
@@ -796,7 +786,7 @@ unique:true
 id:"vault.ghoul",
 label:"Skyrius T",
 inherits: "_vault.exile",
-description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena.",
+description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena. Once we've found its location, we'll have to breach its walls and weather the ghastly influences radiating from its heart.",
 icon:"vaultcapital4",
 xtriggers:{success:[{id:vault.ghoul.completed}],
 opx.progress0:[{id:ee.unknownlocation,morpheffect:spawn}],
@@ -808,10 +798,10 @@ unique:true
 {
 id:"vault.huntress",
 label:"The Merry Feaster's Lair",
-description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works.",
+description:"In the sewers below Aachen prowls one of the Lionsmith's less dignified works. We'll have to locate a hidden entrance and survive the sewers' atmosphere before we face the Feaster itself.",
 inherits: "_vault.exile",
 icon:"hq.abandoned",
-xtriggers:{success:[{id:vault.ghoul.completed}],
+xtriggers:{success:[{id:vault.huntress.completed}],
 opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
 opx.progress1:[{id:ee.miasma,morpheffect:spawn}],
 opx.progress2:[{id:ee.devourer,morpheffect:spawn}]},
@@ -822,9 +812,9 @@ unique:true
 id:"vault.smuggler",
 label:"Chateau Tarascon",
 inherits: "_vault.exile",
-description:"The family of the Duc de Tarascon has long been rumoured to breed monsters.",
+description:"The family of the Duc de Tarascon has long been rumoured to breed monsters. They've employed French and German deserters to guard their mist-shrouded chateau.",
 icon:"vaultlandbeyondforest2",
-xtriggers:{success:[{id:vault.smuggler.completed}],
+xtriggers:{success:[{id:vault.smuggler.completed},{id:curio,morpheffect:spawn},{id:cash,morpheffect:spawn}],
 opx.progress0:[{id:ee.mist,morpheffect:spawn}],
 opx.progress1:[{id:ee.soldiers,morpheffect:spawn}],
 opx.progress2:[{id:ee.devourer,morpheffect:spawn}]},
@@ -835,7 +825,7 @@ unique:true
 id:"vault.visionary",
 label:"Duende Midnight",
 inherits: "_vault.exile",
-description:"High in the Alpujarras, there is an enclave of those who dance for the Thunderskin. They dislike spies.",
+description:"High in the Alpujarras, there is an enclave of those who dance for the Thunderskin. They dislike being spied upon, and unless I prevent it, they will enact their dislike on the painter Mireya. I'll have to fight their sendings off and stay awake until dawn.",
 icon:peril_mountains,
 xtriggers:{success:[{id:vault.visionary.completed}],
 opx.progress0:[{id:ee.storm,morpheffect:spawn}],
@@ -848,7 +838,7 @@ unique:true
 id:"vault.vivisectionist",
 label:"Corpshaus Mamurra München",
 inherits: "_vault.exile",
-description:"FNORD",
+description:"A charming brick house with crow-stepped gables and a pair of venerable pines at the front door. In the attic, the Mamurren perform their rites of pain and courage. This will hurt.",
 icon:"vaultcapital5",
 xtriggers:{success:[{id:vault.vivisectionist.completed}],
 opx.progress0:[{id:ee.scarredduellist,morpheffect:spawn}],
@@ -859,51 +849,76 @@ unique:true
 
 
 {id: "vault.barber.completed",
-label: "FNORD",
-aspects: {vault.completed:1},
-description:"."
+label: "Fluttering Goo",
+description:"When I woke from the Wood, this is what I found in the sealed bottle beside my bed.",
+aspects: {vault.completed:1,moth:12,asset:1,portable:1,ingredient:1},
+icon:ingredientmothf
 },
 
 {id: "vault.delver.completed",
-label: "FNORD",
-aspects: {vault.completed:1},
-description:"."
+label: "Hokobald's Alchemical Substance",
+description:"Red as a forgotten sun.",
+aspects: {vault.completed:1,forge:12,asset:1,portable:1,ingredient:1},
+icon: ingredientforgef
 },
 
 {id: "vault.fivegoer.completed",
-label: "FNORD",
-aspects: {vault.completed:1},
-description:"."
+label: "A Snoozing Undergoer",
+aspects: {vault.completed:1,asset:1},
+description:"When active, an undergoer is a flexile, half-formed, horribly alluring thing, happy to consume or be impregnated by mortals. But in its dormant state, it's a friendly knot of tentacled flesh, cawing, dribbling and snoring by turns.",
+icon:spirit_grailc_moth
 },
 
 {id: "vault.ghoul.completed",
-label: "FNORD",
-aspects: {vault.completed:1},
-description:"."
+label: "Maggot-Spice?",
+description:"The 'seasoning' Dominykas wanted: a pot of nasty-looking larval remnants. The pot is icy cold to the touch.",
+aspects: {vault.completed:1,winter:12,asset:1,portable:1,ingredient:1},
+icon:"ingredientwinterf"
 },
 
 {id: "vault.huntress.completed",
 label: "The Merry Feaster's Carcass",
-aspects: {vault.completed:1},
-description:"It's dissolving quickly as its internal structures corrode."
+aspects: {vault.completed:1,asset:1},
+description:"It's dissolving quickly as its internal structures corrode.",
+lifetime:180
 },
 
 {id: "vault.smuggler.completed",
-label: "Chateau Tarascon [Completed]",
-aspects: {vault.completed:1},
-description:"I have what I need."
+label: "Tarrasquine Relic",
+aspects: {vault.completed:1,grail:4,winter:4,asset:1,portable:1},
+description:"I have what I need.",
+icon:corpse.splendid
 },
 
 {id: "vault.visionary.completed",
-label: "FNORD",
-aspects: {vault.completed:1},
-description:"."
+label: "Percussigant Pelt!",
+aspects: {vault.completed:1,asset:1,portable:1,heart:4},
+description:"<i>E pur si muove!</i>",
+xtriggers:{recruiting:pelt.percussigant},
+icon:spirit_heartc_edge
+},
+
+{id: "pelt.percussigant",
+label: "Percussigant Pelt!",
+aspects: {asset:1,portable:1,heart:4},
+description:"<i>E pur si muove!</i>",
+icon:spirit_heartc_edge
 },
 
 {id: "vault.vivisectionist.completed",
-label: "",
-aspects: {vault.completed:1},
-description:"."
+label: "Mamurren Scar",
+aspects: {vault.completed:1,heart:2,winter:2},
+description:"Jannings says that some lessons can only be written on skin. That might be so, but it might be that Jannings just enjoys his work a little too much.",
+xtriggers:{recruiting:scar_mamurren},
+icon:"scar_winter",
+comments:"We switch it to a slightly different element so it doesn't get consumed by the ally recruitment recipe."
+},
+
+{id: "scar_mamurren",
+label: "Mamurren Scar",
+aspects: {heart:2,winter:2},
+description:"Jannings says that some lessons can only be written on skin. That might be so, but it might be that Jannings just enjoys his work a little too much.",
+icon:"scar_winter"
 },
 
 
@@ -958,7 +973,7 @@ label: "Giorgiou, the Smuggler",
 inherits:_contact.mortal,
 description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
-aspects:{avaricious:1,moth:6},
+aspects:{avaricious:1,knock:6},
 icon:diarist 
 },
 
