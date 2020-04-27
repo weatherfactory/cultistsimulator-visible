@@ -1948,7 +1948,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",
 icon: vaultcapital3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.granada",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.granada",morpheffect:transform}]}
 },
 
 {id: "city.istanbul",
@@ -1969,7 +1969,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Half of Lithuania has fallen to Poland, and the peace is desperately fragile, but this is the capital now. They call it Little Paris, and the lamplight glows in the cafes and the dance halls. But there is a new president, and now the Association of the Iron Wolf begins to tighten its jaws.",
 icon: vaultcontinent3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.kaunas",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.ghoul",morpheffect:spawn},{id:"domicile.kaunas",morpheffect:transform}]}
 },
 
 
@@ -2045,7 +2045,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 icon: vaultcapital3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.munich",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domicile.munich",morpheffect:transform}]}
 },
 
 
@@ -2124,7 +2124,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
 icon: vaultcapital3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.stalingrad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stalingrad",morpheffect:transform}]}
 },
 
 
@@ -2161,7 +2161,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
 icon: vaultcapital3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.tiflis",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.fivegoer",morpheffect:spawn},{id:"domicile.tiflis",morpheffect:transform}]}
 },
 
 
@@ -2206,7 +2206,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
 icon: vaultcapital3,
 unique:true,
-xtriggers:{arriving:[{id:"domicile.venice",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"contact.delver",morpheffect:spawn},{id:"domicile.venice",morpheffect:transform}]}
 },
 
 
