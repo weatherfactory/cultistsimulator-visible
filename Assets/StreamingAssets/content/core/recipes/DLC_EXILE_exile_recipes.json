@@ -61,8 +61,8 @@ label:"The Next Complication",
 startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
 #ee.soldiers|Armed men guard this place. 
 #ee.mist|The Nameless Name of the Velvet has passed this way. This mist is the hem of her grey garment. It'll be hell to find a way through.
-#|A complication lies ahead.
-@[Most Complications can be defeated with enough of the appropriate Aspect.]",
+#|A complication lies ahead.@
+[Most Complications can be defeated with enough of the appropriate Aspect.]",
 warmup:60,
 slots:[{id:"response",label:"Response",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
 alt:[{id:"opx.caper.tryresolve.edge"},
@@ -200,7 +200,7 @@ actionId:"opx.caper",
 label:"Success!",
 startdescription:"Safely away with my haul!",
 requirements:{progress:3},
-aspects:{success:1},
+aspects:{success:1,fatiguing:1},
 effects:{progress:-100,cash:-100,complication:-100},
 },
 
@@ -208,6 +208,7 @@ effects:{progress:-100,cash:-100,complication:-100},
 actionId:"opx.caper",
 label:"Disaster!",
 startdescription:"The caper's failed!",
+aspects:{fatiguing:1},
 effects:{progress:-100,cash:-100,complication:-100,trace:1}
 },
 
@@ -215,6 +216,7 @@ effects:{progress:-100,cash:-100,complication:-100,trace:1}
 actionId:"opx.rob.vault",
 label:"Injured!",
 startdescription:"I've been injured, and forced to retreat.",
+aspects:{fatiguing:1},
 effects:{progress:-100,cash:-100,complication:-100,trace:1,wound.exile:1}
 },
 

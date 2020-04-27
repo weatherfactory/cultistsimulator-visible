@@ -275,7 +275,7 @@ label:"Arrange an Initial Meeting",
 startdescription:"@#contact.smuggler| A meeting with M. Giorgiou, the smuggler.
 #contact.huntress|A meeting with Chaima, the Snare.
 #|FNORD U MET A SOMEONE@",
-description:"@#contact.smuggler| Giorgiou has a plan. There are treasures for the taking in the Chateau Tarrascon.
+description:"@#contact.smuggler| Giorgiou has a proposal. There are treasures for the taking in the Chateau Tarrascon. There is also 'the possibility of a monster', but, he points out, after all, where there are no monsters, we generally invent our own. He begins to illustrate this with reference to recent European history, but fortunately at this point the wine arrives.
 #contact.huntress|Lalla Chaima's been engaged to kill the Merry Feaster, which lairs in the Aachen sewers, and emerges to eat drunks and soldiers. The French Army doesn't believe it, of course, but there's a sergeant in the Goumiers who knows the work of the Lionsmith when he smells it.
 #|--@",
 requirements:{mortal:1,associate:-1,ally:-1},
@@ -286,11 +286,12 @@ craftable:true},
 
 {id:"send.smuggler.upgrade",
 actionId:"send",
-label:"Giorgiou wants this business over with.",
+label:"Giorgiou wants this business over with.'",
 startdescription:"Is it done?",
-description:"That could have gone worse, I suppose.",
+description:"'That could have gone worse, I suppose.'",
 requirements:{contact.smuggler:1,associate:1,ally:-1},
 slots:[{id:"done",label:"Result",required:{vault.smuggler.completed:1},greedy:true}],
+alt:[{id:"send.associate.upgraded"}],
 warmup:10,
 craftable:true},
 
@@ -311,7 +312,7 @@ craftable:true},
 actionId:"send",
 label:"An Ally",
 requirements:{vault.completed:1},
-startdescription:"We clasp hands. [Your Associate is now an Ally. They'll follow you when you leave the city... unless you're headed for a final confrontation.]",
+startdescription:"We clasp hands. [Your Associate is now an Ally. They'll follow you when you leave the city... unless you're headed for a final confrontation at the map's edge.]",
 description:"@#contact.smuggler|'I owe you this much.'
 #contact.huntress|'I'm looking forward to hunting with you.'
 #|--@",
