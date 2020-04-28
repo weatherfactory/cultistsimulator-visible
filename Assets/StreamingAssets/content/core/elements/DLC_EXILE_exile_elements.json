@@ -672,13 +672,25 @@ slots:[{id:"resource",actionId:"travel",label:"Resource",required:{edge:1,forge:
 {id: "_contact.mortal",
 label: "_contact.mortal",
 aspects:{mortal:1,contact.local:1},
-xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile,recruiting:[{id:ally,morpheffect:mutate,level:1}]}
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile}
 },
 {id: "_contact.mortal.fatigued",
 label: "_contact.mortal.fatigued",
-aspects:{mortal:1,exhausted:1},
+aspects:{mortal:1,exhausted:1,contact.local:1},
 xtriggers:{killmortal:corpse.exile}
 },
+
+{id: "_ally.mortal",
+label: "_ally.mortal",
+aspects:{mortal:1,ally:1,associate:1},
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile}
+},
+{id: "_ally.mortal.fatigued",
+label: "_ally.mortal.fatigued",
+aspects:{mortal:1,exhausted:1,ally:1,associate:1},
+xtriggers:{killmortal:corpse.exile}
+},
+
 
 
 {id:"portable",
@@ -935,7 +947,7 @@ icon:"scar_winter"
 label: "Zulfiya, the Barber",
 inherits:_contact.mortal,
 description:"Zulfiya never goes anywhere without her scissors.",
-xtriggers:{fatiguing:contact.barber.fatigued,mortal.introduce:[{id:"vault.barber",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.barber.fatigued,recruiting:ally.barber, mortal.introduce:[{id:"vault.barber",morpheffect:spawn}]},
 aspects:{moth:6},
 icon:npc.barber 
 },
@@ -1082,6 +1094,163 @@ description:"Jannings has retired from the field until his new supplies arrive."
 inherits:_contact.mortal.fatigued,
 icon:jannings,
 decayTo:contact.vivisectionist,
+lifetime:120,
+resaturate:true
+},
+
+
+
+{id: "ally.barber",
+label: "Zulfiya, the Barber",
+inherits:_ally.mortal,
+description:"Zulfiya never goes anywhere without her scissors.",
+xtriggers:{fatiguing:ally.barber.fatigued},
+aspects:{moth:6},
+icon:npc.barber 
+},
+
+{id: "ally.delver",
+label: "Orsolina, the Delver",
+inherits:_ally.mortal,
+description:"A muscular woman with a steady gaze. Her diet has changed since her days in the Lionsmith's service, but she still retains some of her old strength.",
+xtriggers:{fatiguing:ally.delver.fatigued},
+aspects:{forge:6},
+icon:npc.delver
+},
+
+
+{id: "ally.fivegoer",
+label: "Vasil, the Fivegoer",
+inherits:_ally.mortal,
+description:"A smoothly handsome man whose unhuman ancestry is not apparent, unless you know to look for his abnormally flexible fingers, or wonder why his nose tends to run.",
+xtriggers:{fatiguing:ally.fivegoer.fatigued},
+aspects:{grail:6},
+icon:npc.fivegoer
+},
+
+
+{id: "ally.ghoul",
+label: "Dominykas, the Baker",
+inherits:_ally.mortal,
+description:"Dominykas has a ready smile and an unfortunate habit of picking his teeth.",
+xtriggers:{fatiguing:ally.ghoul.fatigued},
+aspects:{winter:6},
+icon:npc.ghoul
+},
+
+
+{id: "ally.huntress",
+label: "Lalla Chaima, the Huntress",
+inherits:_ally.mortal,
+description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
+aspects:{venerates.colonel:1,edge:6},
+xtriggers:{fatiguing:ally.huntress.fatigued},
+icon:npc.huntress
+},
+{id: "ally.smuggler",
+label: "Giorgiou, the Smuggler",
+inherits:_ally.mortal,
+description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
+xtriggers:{fatiguing:ally.smuggler.fatigued},
+aspects:{avaricious:1,knock:6},
+icon:npc.smuggler
+},
+
+{id: "ally.visionary",
+label: "Mireya, the Visionary",
+inherits:_ally.mortal,
+description:"A plump, dreamy, hesitant woman with very bright eyes.",
+xtriggers:{fatiguing:ally.visionary.fatigued},
+aspects:{lantern:6},
+icon:npc.visionary 
+},
+
+
+{id: "ally.vivisectionist",
+label: "Jannings, the Vivisectionist",
+inherits:_ally.mortal,
+description:"A specialist in disassembly and also in assembly.",
+xtriggers:{fatiguing:ally.vivisectionist.fatigued},
+aspects:{heart:6},
+icon:jannings 
+},
+
+{id: "ally.barber.fatigued",
+label: "Zulfiya, Dreaming",
+description:"Zulfiya has left a scrawled note indicating that she will be 'walking the Wood' for some time yet.",
+inherits:_ally.mortal.fatigued,
+icon:npc.barber,
+decayTo:ally.barber,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.delver.fatigued",
+label: "Orsolina, Dormant",
+description:"To recover her strength, Orsolina needs time alone and close to the earth.",
+inherits:_ally.mortal.fatigued,
+icon:npc.delver,
+decayTo:ally.delver,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.fivegoer.fatigued",
+label: "Vasil, Depleted",
+description:"Vasil's exertions have softened his shape. For now he has retreated, dripping and cawing, to somewhere warmer.",
+inherits:_ally.mortal.fatigued,
+icon:ally.fivegoer,
+decayTo:ally.fivegoer,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.ghoul.fatigued",
+label: "Dominykas, Famished",
+description:"Dominykas has left to replenish himself, at the hearth and with the shovel.",
+inherits:_ally.mortal.fatigued,
+icon:npc.ghoul,
+decayTo:ally.ghoul,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.huntress.fatigued",
+label: "Lalla Chaima, Unseen",
+description:"Chaima has gone wherever she goes to lick her wounds in darkness.",
+inherits:_ally.mortal.fatigued,
+icon:npc.huntress,
+decayTo:ally.huntress,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.smuggler.fatigued",
+label: "Giorgiou, Unavailable",
+description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
+inherits:_ally.mortal.fatigued,
+icon:npc.smuggler,
+decayTo:ally.smuggler,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.visionary.fatigued",
+label: "Mireya, Indisposed",
+description:"Mireya is hiding, shivering, beneath her coverlet.",
+inherits:_ally.mortal.fatigued,
+icon:npc.visionary,
+decayTo:ally.visionary,
+lifetime:120,
+resaturate:true
+},
+
+{id: "ally.vivisectionist.fatigued",
+label: "Jannings, Reprovisioning",
+description:"Jannings has retired from the field until his new supplies arrive.",
+inherits:_ally.mortal.fatigued,
+icon:jannings,
+decayTo:ally.vivisectionist,
 lifetime:120,
 resaturate:true
 },

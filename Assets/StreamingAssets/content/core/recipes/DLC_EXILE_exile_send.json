@@ -393,14 +393,14 @@ actionId:"send",
 label:"An Ally",
 requirements:{vault.completed:1},
 startdescription:"We clasp hands. [Your Associate is now an Ally. They'll follow you when you leave the city... unless you're headed for a final confrontation at the map's edge.]",
-description:"@#contact.barber|'The Mother pierces,' Zulfiya says conversationally, tugging at her fingernails. 'The Witch demands, and the Sister dissolves.'
-#contact.delver|''
-#contact.fivegoer|There is a sticky crash from the back room to which we consigned the Undergoer. Vasil rolls his eyes. 'Family. You know how they can be. Give me half an hour to say goodbye to her properly, and she'll be fine.'
-#contact.ghoul|'Four stolen seasonings and I'll have a stolen year, I suppose,' Dominykas says genially. He pokes you with an elbow.
-#contact.huntress|'I'm looking forward to hunting with you.'
-#contact.smuggler|'I owe you this much.'
-#contact.visionary|'Thank you so much. I'll repay you however I can. Although I'm afraid I don't know how to shoot.'
-#contact.vivisectionist|'I'm afraid we have made you quite distinctive indeed. Still, very good. Yes, very good.'
+description:"@#ally.barber|'The Mother pierces,' Zulfiya says conversationally, tugging at her fingernails. 'The Witch demands, and the Sister dissolves.'
+#ally.delver|''
+#ally.fivegoer|There is a sticky crash from the back room to which we consigned the Undergoer. Vasil rolls his eyes. 'Family. You know how they can be. Give me half an hour to say goodbye to her properly, and she'll be fine.'
+#ally.ghoul|'Four stolen seasonings and I'll have a stolen year, I suppose,' Dominykas says genially. He pokes you with an elbow.
+#ally.huntress|'I'm looking forward to hunting with you.'
+#ally.smuggler|'I owe you this much.'
+#ally.visionary|'Thank you so much. I'll repay you however I can. Although I'm afraid I don't know how to shoot.'
+#ally.vivisectionist|'I'm afraid we have made you quite distinctive indeed. Still, very good. Yes, very good.'
 #|--@",
 aspects:{recruiting:1},
 comments:"IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",
