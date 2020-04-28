@@ -807,7 +807,7 @@ unique:true
 id:"vault.ghoul",
 label:"Skyrius T",
 inherits: "_vault.exile",
-description:"The Lithuanian government maintains a clandestine department dedicated to teratogenic phenomena. Once we've found its location, we'll have to breach its walls and weather the ghastly influences radiating from its heart.",
+description:"The authorities maintain a clandestine department dedicated to teratogenic phenomena. Once we've found its location, we'll have to breach its walls and weather the ghastly influences radiating from its heart.",
 icon:"vaultcapital4",
 xtriggers:{success:[{id:vault.ghoul.completed}],
 opx.progress0:[{id:ee.unknownlocation,morpheffect:spawn}],
@@ -906,7 +906,7 @@ lifetime:180
 
 {id: "vault.smuggler.completed",
 label: "Tarrasquine Relic",
-aspects: {vault.completed:1,grail:4,winter:4,asset:1,portable:1},
+aspects: {vault.completed:1,grail:2,winter:4,asset:1,portable:1},
 description:"I have what I need.",
 icon:corpse.splendid
 },
@@ -1289,30 +1289,111 @@ lifetime:180
 
 
 
+{id:"curio",
+label:"Beguiling Curio",
+aspects:{asset:1,portable:1,comfort:1,grail:2},
+description:"This will sit handsomely on a shelf, if I ever have shelves again.",
+icon:locationauctionhouse
+},
+
+
+{id:"curio.forge",
+label:"Curio: Adept's Powder",
+aspects:{asset:1,portable:1,forge:4,grail:2,supplies:1},
+description:"A pinch of this goes up like lightning-struck thermite."
+},
+
+{id:"curio.grail",
+label:"Curio: Crème de Carmine",
+aspects:{asset:1,portable:1,comfort:1,grail:8,supplies:1},
+description:"I'd say it tasted like blood, if it didn't taste so good."
+},
+
+{id:"curio.heart",
+label:"Curio: Venetian Mommet",
+aspects:{asset:1,portable:1,comfort:1,heart:4,grail:2},
+description:"Ugly little thing, but there's a cheering warmth to it."
+},
+
+{id:"curio.knock",
+label:"Curio: Bohemian Saint",
+aspects:{asset:1,portable:1,knock:4,grail:2},
+description:"A nasty little illustration of what the pagans used to get up to. Or the Church. I don't know the history. I do know this icon has some kind of power over locks."
+},
+
+{id:"curio.lantern",
+label:"Curio: Pages from the Book of Suns",
+aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2},
+description:"Gorgeously illustrated manuscript pages, ripped from the original binding to be sold separately. I don't know the language - Persian? Arabic? but somehow I can read the words in sufficiently bright light. Something about a war between Hours. Not much practical information, but there's something about the sounds that unknots the mind."
+},
+
+{id:"curio.moth",
+label:"Curio: Threadbare Angel",
+aspects:{asset:1,portable:1,moth:4,grail:2},
+description:"It smells like unopened rooms. Somehow I keep thinking it's changing its shape when I don't look at it, but I never catch it in the act."
+},
+
+{id:"rarity.forge",
+label:"Rarity: Odd Little Bone",
+aspects:{asset:1,portable:1,comfort:1,forge:8,grail:4},
+description:"Tiny, fragile-looking, but it packs a hell of a wallop."
+},
+
+{id:"rarity.heart",
+label:"Rarity: Grese Guitar",
+aspects:{asset:1,portable:1,comfort:2,heart:8,grail:6},
+description:"A ten-stringed guitar from the House of Stradivari, shaped from softly glowing Illyrian maple and inlaid with a design of almond leaves and pomegranates. I'd heard one had been stolen from the Gräfin von Grese's collection last year. It might be the last of its kind in a playable condition. "
+},
+
+{id:"rarity.lantern",
+label:"Rarity: The Book of Suns, Reassembled",
+aspects:{asset:1,portable:1,comfort:1,lantern:8,grail:4},
+description:"There's a forgotten and golden truth in these images - a truth from the times before the Sun was divided. It's not meant for me. It's nothing I'll ever understand. But even the reflected light of that truth is an illumination."
+},
+
+{id:"rarity.knock",
+label:"Rarity: Atlas of the Unsuspected",
+aspects:{asset:1,portable:1,comfort:1,knock:8,grail:4},
+description:"This began life as an atlas of the cities of Europe. Over decades it's been extended and annotated by a dozen hands - adepts, burglars, soldiers, spies - to show secret routes and hiding-nooks."
+},
+
+{id:"rarity.paintingmoth",
+label:"Rarity: 'Green as Remembered Rain'",
+aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4},
+description:"A painting of a final horizon, in green-and-gold and glory."
+},
+
+{id:"rarity.paintingwinter",
+label:"'Abydos Unveiled'",
+aspects:{asset:1,portable:1,comfort:1,winter:8,grail:4},
+description:"A painting of a city foundered in deep snow. Behind its bleakest tower, a sickle moon rises."
+},
+
+
+{id:"rarity.grail",
+label:"Rarity: Case of 1865 Domaine Raveline",
+aspects:{asset:1,portable:1,comfort:2,grail:12},
+description:"A great vintage wrung from a <i>terroir</i> ripe with secrets in the times before the Grand Blight. With discipline, patience, and resolution, it is <i>possible</i> to taste a glass of this wine and not to finish the bottle."
+},
+
+
 {id:"office",
 label:"Discreet Office",
-aspects:{asset:1,space:1},
+aspects:{asset:1,space:1,heart:2},
 description:"Not too obvious, and not too far out of the way.",
 icon:vaultcapital1
 },
 
-{id:"curio",
-label:"A Curio",
-aspects:{asset:1,portable:1,comfort:1},
-description:"A treasure, at least if one has a discerning eye.",
-icon:locationauctionhouse
-},
-
 {id:"warehouse",
 label:"Quiet Warehouse",
-aspects:{asset:1,space:2},
+aspects:{asset:1,space:2,forge:4,heart:4},
 description:"There's plenty of space here, although not much else to recommend it.",
 icon:vaultcapitaldefault
 },
 
 {id:"townhouse",
 label:"Grand Townhouse",
-aspects:{asset:1,space:2,comfort:4},
+aspects:{asset:1,space:2,comfort:4,heart:4,grail>4},
 description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
@@ -1320,7 +1401,7 @@ icon:hq.townhouse
 
 {id:"villa",
 label:"Secluded Villa",
-aspects:{asset:1,space:3,comfort:8},
+aspects:{asset:1,space:3,comfort:8,heart:6,grail:6},
 description:"I could live out my days here very happily, if it weren't for certain immediate practical difficulties...",
 icon:vaultcontinent5
 },
