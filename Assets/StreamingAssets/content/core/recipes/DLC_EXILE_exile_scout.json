@@ -30,7 +30,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile.alexandria:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,vault.serapeum,op.heat], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,vault.serapeum,op.heat,op.faith,op.cats], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -42,7 +42,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.algiers:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.heat,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.heat,op.heights,op.cats], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.amsterdam",
@@ -76,7 +76,7 @@ startdescription:"FNORD Reconnoitre",
 warmup:60,
 aspects:{},
 craftable:true,
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.faith], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -101,7 +101,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.candia:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel,op.heat,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel,op.heat,op.heights,op.horned], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -122,7 +122,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.granada:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.heights,op.cats,op.flowermaker], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -134,7 +134,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.istanbul:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.heights,op.faith,op.cats], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -146,7 +146,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.kaunas:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold,op.faith,op.wolf], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -158,7 +158,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.kiev:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.marinette,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.marinette,op.heights,op.faith], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -170,7 +170,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.krakow:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights,op.faith], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.leningrad",
@@ -181,7 +181,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.leningrad:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold,loc.shrine.colonel], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -204,7 +204,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.marrakech:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.echidna,op.heat], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.echidna,op.heat,op.faith,op.cats,loc.shrine.lionsmith], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -217,7 +217,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.meshad:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.heat], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.heat,op.faith,op.cats], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -229,7 +229,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.munich:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel,op.horned], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -242,7 +242,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.nizhny:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.cold,loc.shrine.colonel], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -255,7 +255,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.paris:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights,op.flowermaker], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -292,10 +292,8 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.samarkand:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.faith,op.cats], draws: 1, resetonexhaustion: true},
 },
-
-
 
 
 {id:"scout.stalingrad",
@@ -306,7 +304,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.stalingrad:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel,op.cold], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel,op.cold,op.wolf], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -318,7 +316,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.strasbourg:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.horned], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.sverdlovsk",
@@ -341,7 +339,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.tirana:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.flowermaker], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -353,7 +351,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.tiflis:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heights,op.wolf], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -365,7 +363,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.tripoli:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.heat,op.cats,loc.shrine.lionsmith], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -378,7 +376,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.valletta:1},
-	internaldeck: {spec: [loc.shrine.colonel], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.colonel], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -390,7 +388,7 @@ warmup:60,
 aspects:{},
 craftable:true,
 requirements:{domicile.venice:1},
-	internaldeck: {spec: [loc.shrine.lionsmith], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,loc.shrine.lionsmith,op.faith,op.cats], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.vienna",
