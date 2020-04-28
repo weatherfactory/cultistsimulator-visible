@@ -1278,15 +1278,59 @@ slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
 lifetime:180
 },
 
-	  	  {id: "op.connection",
-label: "Opportunity: Official Connection?",
+	  	  {id: "op.connection.official",
+label: "Opportunity: An Official Connection?",
 aspects: {op:1},
 description:"I could always use more friends.",
-xtriggers:{purchase:connection},
+xtriggers:{purchase:connection.official},
 slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
 lifetime:180
 },
 
+	  	  {id: "op.connection.ruler",
+label: "Opportunity: a Connection with a Ruler?",
+aspects: {op:1},
+description:"A chance to get acquainted with someone of real importance.",
+xtriggers:{purchase:connection.ruler},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "op.connection.imam",
+label: "Opportunity: a Connection with an Imam?",
+aspects: {op:1},
+description:"Charity brings clarity.",
+xtriggers:{purchase:connection.imam},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "op.connection.priest",
+label: "Opportunity: a Connection with a Priest?",
+aspects: {op:1},
+description:"Charity brings clarity.",
+xtriggers:{purchase:connection.priest},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "op.connection.radicals",
+label: "Opportunity: a Connection with Radicals?",
+aspects: {op:1},
+description:"They don't care where the money comes from.",
+xtriggers:{purchase:connection.radicals},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
+
+	  	  {id: "op.connection.underworld",
+label: "Opportunity: an Underworld Connection?",
+aspects: {op:1},
+description:"They're no friends of the reckoner mobs.",
+xtriggers:{purchase:connection.underworld},
+slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+lifetime:180
+},
 
 
 {id:"curio",
@@ -1300,25 +1344,29 @@ icon:locationauctionhouse
 {id:"curio.forge",
 label:"Curio: Adept's Powder",
 aspects:{asset:1,portable:1,forge:4,grail:2,supplies:1},
-description:"A pinch of this goes up like lightning-struck thermite."
+description:"A pinch of this goes up like lightning-struck thermite.",
+icon:ingredientforgeb
 },
 
 {id:"curio.grail",
 label:"Curio: Crème de Carmine",
 aspects:{asset:1,portable:1,comfort:1,grail:8,supplies:1},
-description:"I'd say it tasted like blood, if it didn't taste so good."
+description:"I'd say it tasted like blood, if it didn't taste so good.",
+icon: ingredientgraild
 },
 
 {id:"curio.heart",
 label:"Curio: Venetian Mommet",
 aspects:{asset:1,portable:1,comfort:1,heart:4,grail:2},
-description:"Ugly little thing, but there's a cheering warmth to it."
+description:"Ugly little thing, but there's a cheering warmth to it.",
+icon:toolheartb
 },
 
 {id:"curio.knock",
 label:"Curio: Bohemian Saint",
 aspects:{asset:1,portable:1,knock:4,grail:2},
-description:"A nasty little illustration of what the pagans used to get up to. Or the Church. I don't know the history. I do know this icon has some kind of power over locks."
+description:"A nasty little illustration of what the pagans used to get up to. Or the Church. I don't know the history. I do know this icon has some kind of power over locks.",
+icon:toolknockb
 },
 
 {id:"curio.lantern",
@@ -1330,13 +1378,15 @@ description:"Gorgeously illustrated manuscript pages, ripped from the original b
 {id:"curio.moth",
 label:"Curio: Threadbare Angel",
 aspects:{asset:1,portable:1,moth:4,grail:2},
-description:"It smells like unopened rooms. Somehow I keep thinking it's changing its shape when I don't look at it, but I never catch it in the act."
+description:"It smells like unopened rooms. Somehow I keep thinking it's changing its shape when I don't look at it, but I never catch it in the act.",
+icon:toolmothb
 },
 
 {id:"rarity.forge",
 label:"Rarity: Odd Little Bone",
 aspects:{asset:1,portable:1,comfort:1,forge:8,grail:4},
-description:"Tiny, fragile-looking, but it packs a hell of a wallop."
+description:"Tiny, fragile-looking, but it packs a hell of a wallop.",
+icon:toolforged
 },
 
 {id:"rarity.heart",
@@ -1360,13 +1410,15 @@ description:"This began life as an atlas of the cities of Europe. Over decades i
 {id:"rarity.paintingmoth",
 label:"Rarity: 'Green as Remembered Rain'",
 aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4},
-description:"A painting of a final horizon, in green-and-gold and glory."
+description:"An oil painting of a final horizon, in green-and-gold and glory.",
+icon:paintingmastermoth
 },
 
 {id:"rarity.paintingwinter",
 label:"'Abydos Unveiled'",
 aspects:{asset:1,portable:1,comfort:1,winter:8,grail:4},
-description:"A painting of a city foundered in deep snow. Behind its bleakest tower, a sickle moon rises."
+description:"An oil painting of a city foundered in deep snow. Behind its bleakest tower, a sickle moon rises.",
+icon:paintingmasterwinter
 },
 
 
@@ -1416,12 +1468,43 @@ slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}],
 icon:fragmentheart
 },
 
-{id:"connection",
+{id:"connection.official",
 label:"Official Connection",
-aspects:{asset:1,deception:1},
-description:"A mutually beneficial arrangement with someone in authority.",
-icon:favour
+aspects:{asset:1,deception:1,grail:6,lantern:6},
+description:"A mutually beneficial arrangement with someone in authority."
 },
+
+
+{id:"connection.ruler",
+label:"Connection: Ruler",
+aspects:{asset:1,deception:1,edge:10,grail:10,knock:10},
+description:"A mutually beneficial arrangement with someone of real power."
+},
+
+{id:"connection.imam",
+label:"Connection: Imam",
+aspects:{asset:1,deception:1,heart:8,lantern:8},
+description:"A mutually beneficial arrangement with a learned holy man."
+},
+
+{id:"connection.priest",
+label:"Connection: Priest",
+aspects:{asset:1,deception:1,heart:8,lantern:8},
+description:"A mutually beneficial arrangement with a learned holy man."
+},
+
+{id:"connection.radicals",
+label:"Connection: Radicals",
+aspects:{asset:1,deception:1,edge:8,moth:8,forge:6},
+description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts."
+},
+
+{id:"connection.underworld",
+label:"Connection: Underworld",
+aspects:{asset:1,deception:1,edge:8,moth:8,knock:6},
+description:"A mutually beneficial arrangement with relevant professionals."
+},
+
 
 {id: "ticket.train",
 label: "A Hastily Purchased Train Ticket",
