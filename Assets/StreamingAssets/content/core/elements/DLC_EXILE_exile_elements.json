@@ -2400,7 +2400,6 @@ label: "Paris",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
-icon: vaultcontinent4,
 unique:true,
 xtriggers:{arriving:[{id:"domicile.paris",morpheffect:transform}]}
 },
