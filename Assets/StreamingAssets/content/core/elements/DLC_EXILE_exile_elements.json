@@ -105,6 +105,15 @@ noartneeded:true
 },
 
 
+
+{id:"supplies",
+label:"Supplies",
+description:"Finite, like a lifetime. [Supplies are consumed when used.]",
+isAspect:true,
+icon: ingredient
+},
+
+
 {id:"complication",
 label:"Complication",
 description:"Used to mark opx events",
@@ -618,7 +627,7 @@ lifetime:1
 
 {id: "ee.vigil",
 label: "Vigil",
-aspects: {complication:1,minedge:10,minheart:10,minlantern:10,minwinter:10},
+aspects: {complication:1,minheart:10,minlantern:10,minwinter:10},
 description:"FNORD",
 lifetime:1
 },
@@ -773,7 +782,7 @@ unique:true
 id:"vault.fivegoer",
 label:"Yeshiva Tigris",
 inherits: "_vault.exile",
-description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals. We'll have to find it to breach it; the rabbis and students will give us difficulty; and the Undergoer itself may need toi be subdued..",
+description:"For fifty years this secret yeshiva has taught the Four Traditions of the Bei Ilai: the imprisonment of spirits, the expulsion of monsters, the conclusion of tenacious curses and the sealing of troublesome portals. We'll have to find it to breach it; the rabbis and students will give us difficulty; and the Undergoer itself may need to be subdued.",
 icon:"vaultlandbeyondforest5",
 xtriggers:{success:[{id:vault.fivegoer.completed}],
 opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
@@ -851,28 +860,28 @@ unique:true
 {id: "vault.barber.completed",
 label: "Fluttering Goo",
 description:"When I woke from the Wood, this is what I found in the sealed bottle beside my bed.",
-aspects: {vault.completed:1,moth:12,asset:1,portable:1,ingredient:1},
+aspects: {vault.completed:1,moth:12,asset:1,portable:1,supplies:1},
 icon:ingredientmothf
 },
 
 {id: "vault.delver.completed",
 label: "Hokobald's Alchemical Substance",
 description:"Red as a forgotten sun.",
-aspects: {vault.completed:1,forge:12,asset:1,portable:1,ingredient:1},
+aspects: {vault.completed:1,forge:12,asset:1,portable:1,supplies:1},
 icon: ingredientforgef
 },
 
 {id: "vault.fivegoer.completed",
 label: "A Snoozing Undergoer",
 aspects: {vault.completed:1,asset:1},
-description:"When active, an undergoer is a flexile, half-formed, horribly alluring thing, happy to consume or be impregnated by mortals. But in its dormant state, it's a friendly knot of tentacled flesh, cawing, dribbling and snoring by turns.",
+description:"When active, an undergoer is a flexile, half-formed, horribly alluring thing, eager to consume or be impregnated by mortals. But in its dormant state, it's a friendly knot of tentacled flesh, cawing, dribbling and snoring by turns.",
 icon:spirit_grailc_moth
 },
 
 {id: "vault.ghoul.completed",
 label: "Maggot-Spice?",
 description:"The 'seasoning' Dominykas wanted: a pot of nasty-looking larval remnants. The pot is icy cold to the touch.",
-aspects: {vault.completed:1,winter:12,asset:1,portable:1,ingredient:1},
+aspects: {vault.completed:1,winter:12,asset:1,portable:1,supplies:1},
 icon:"ingredientwinterf"
 },
 
@@ -1001,7 +1010,7 @@ icon:jannings
 label: "Zulfiya, Dreaming",
 description:"Zulfiya has left a scrawled note indicating that she will be 'walking the Wood' for some time yet.",
 inherits:_contact.mortal.fatigued,
-icon:npc.barber
+icon:npc.barber,
 decayTo:contact.barber,
 lifetime:120,
 resaturate:true
@@ -1011,7 +1020,7 @@ resaturate:true
 label: "Orsolina, Dormant",
 description:"To recover her strength, Orsolina needs time alone and close to the earth.",
 inherits:_contact.mortal.fatigued,
-icon:npc.barber
+icon:npc.delver,
 decayTo:contact.delver,
 lifetime:120,
 resaturate:true
@@ -1021,7 +1030,7 @@ resaturate:true
 label: "Vasil, Depleted",
 description:"Vasil's exertions have softened his shape. For now he has retreated, dripping and cawing, to somewhere warmer.",
 inherits:_contact.mortal.fatigued,
-icon:contact.fivegoer
+icon:contact.fivegoer,
 decayTo:contact.fivegoer,
 lifetime:120,
 resaturate:true
@@ -1031,19 +1040,8 @@ resaturate:true
 label: "Dominykas, Famished",
 description:"Dominykas has left to replenish himself, at the hearth and with the shovel.",
 inherits:_contact.mortal.fatigued,
-icon:npc.barber
+icon:npc.ghoul,
 decayTo:contact.ghoul,
-lifetime:120,
-resaturate:true
-},
-
-
-{id: "contact.smuggler.fatigued",
-label: "Giorgiou, Unavailable",
-description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
-inherits:_contact.mortal.fatigued,
-icon:npc.barber
-decayTo:contact.smuggler,
 lifetime:120,
 resaturate:true
 },
@@ -1052,8 +1050,18 @@ resaturate:true
 label: "Lalla Chaima, Unseen",
 description:"Chaima has gone wherever she goes to lick her wounds in darkness.",
 inherits:_contact.mortal.fatigued,
-icon:npc.barber
+icon:npc.huntress,
 decayTo:contact.huntress,
+lifetime:120,
+resaturate:true
+},
+
+{id: "contact.smuggler.fatigued",
+label: "Giorgiou, Unavailable",
+description:"Giorgiou is in hiding until (he says) his nerves have recovered.",
+inherits:_contact.mortal.fatigued,
+icon:npc.smuggler,
+decayTo:contact.smuggler,
 lifetime:120,
 resaturate:true
 },
@@ -1062,7 +1070,7 @@ resaturate:true
 label: "Mireya, Indisposed",
 description:"Mireya is hiding, shivering, beneath her coverlet.",
 inherits:_contact.mortal.fatigued,
-icon:npc.barber
+icon:npc.visionary,
 decayTo:contact.visionary,
 lifetime:120,
 resaturate:true
@@ -1503,9 +1511,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
 icon: vaultcontinent3,
 unique:true
-},
-
-	 
+},	 
 	  
 
 
@@ -1515,7 +1521,7 @@ aspects: {domicile:1},
 
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
-icon: vaultcapital4,
+icon: city.aachen,
 unique:true
 },
 
@@ -1524,7 +1530,7 @@ label: "Alexandria",
 aspects: {domicile:1},
 
 description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
-icon: vaultcapital4,
+icon: city.alexandria,
 unique:true
 },
 
@@ -1534,7 +1540,7 @@ label: "Algiers",
 aspects: {domicile:1},
 
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
-icon: vaultcapital4,
+icon: city.algiers,
 unique:true
 },
 
@@ -1546,7 +1552,7 @@ label: "Amsterdam",
 aspects: {domicile:1},
 
 description:"The Golden Age is over, but glory lingers like fading music. Bicycles rattle across cobbles. A woman in white throws open the shutters of a high window. On misty evenings, the Nameless Name of the Velvet walks here.",
-icon: vaultcapital4,
+icon: city.amsterdam,
 unique:true
 },
 
@@ -1557,7 +1563,7 @@ aspects: {domicile:1},
 
 description:"Sleepy Avignon, where the mistral blows.",
 xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn}]},
-icon: vaultcapital4,
+icon: city.avignon,
 unique:true
 },
 
@@ -1566,7 +1572,7 @@ label: "Baghdad",
 aspects: {domicile:1},
 
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
-icon: vaultcapital4,
+icon: city.baghdad,
 unique:true
 },
 
@@ -1576,7 +1582,7 @@ label: "Budapest",
 aspects: {domicile:1},
 
 description:"Winter in Budapest, and the Danube is dusted with snow. The Dual Monarchy has collapsed, but somehow this city is once again the capital of the Kingdom of Hungary. The King has twice tried to return, and twice been driven out. Politics.",
-icon: vaultcapital4,
+icon: city.budapest,
 unique:true
 },
 
@@ -1587,7 +1593,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
-icon: vaultcapital4,
+icon: city.candia,
 unique:true
 },
 
@@ -1597,7 +1603,7 @@ label: "Cluj-Napoca",
 aspects: {domicile:1},
 
 description:"Nestled in the mountains of sunset lies the city of the Archangel Michael. I remember it mostly as the place where I drank too much tsuica and got into a fight with bricklayers. We've all been young.",
-icon: vaultcapital4,
+icon: city.cluj,
 unique:true
 },
 
@@ -1606,7 +1612,7 @@ label: "Granada",
 aspects: {domicile:1},
 
 description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",
-icon: vaultcapital4,
+icon: city.granada,
 unique:true
 },
 
@@ -1615,7 +1621,7 @@ label: "Istanbul",
 aspects: {domicile:1},
 
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
-icon:vaultcapital4,
+icon:city.istanbul,
 unique:true
 },
 
@@ -1627,7 +1633,7 @@ label: "Kaunas (Little Paris)",
 aspects: {domicile:1},
 
 description:"Half of Lithuania has fallen to Poland, and the peace is desperately fragile, but this is the capital now. They call it Little Paris, and the lamplight glows in the cafes and the dance halls. But there is a new president, and now the Association of the Iron Wolf begins to tighten its jaws.",
-icon: vaultcapital4,
+icon: city.kaunas,
 unique:true
 },
 
@@ -1637,7 +1643,7 @@ label: "Kiev",
 aspects: {domicile:1},
 
 description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
-icon: vaultcapital4,
+icon: city.kiev,
 unique:true
 },
 	  {id: "domicile.krakow",
@@ -1645,7 +1651,7 @@ label: "Kraków",
 aspects: {domicile:1},
 
 description:"The castle on the hill where the dragon died looks out across a city mellow with October sunlight. Just don't speak ill of the Marshal.",
-icon: vaultcapital4,
+icon: city.krakow,
 unique:true
 },
 
@@ -1656,7 +1662,7 @@ label: "Leningrad",
 aspects: {domicile:1},
 
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
-icon: vaultcapital4,
+icon: city.leningrad,
 unique:true
 },
 
@@ -1665,7 +1671,7 @@ label: "London",
 aspects: {domicile:1},
 
 description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
-icon: vaultcapital4,
+icon: city.london,
 unique:true
 },
 
@@ -1674,7 +1680,7 @@ label: "Marrakech",
 aspects: {domicile:1},
 
 description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
-icon: vaultcapital4,
+icon: city.marrakech,
 unique:true
 },
 
@@ -1686,7 +1692,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
-icon: vaultcapital4,
+icon: city.meshad,
 unique:true
 },
 
@@ -1696,7 +1702,7 @@ label: "Munich",
 aspects: {domicile:1},
 
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
-icon: vaultcapital4,
+icon: city.munich,
 unique:true
 },
 
@@ -1708,7 +1714,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
-icon: vaultcapital4,
+icon: city.nizhny,
 unique:true
 },
 
@@ -1720,7 +1726,7 @@ label: "Paris",
 aspects: {domicile:1},
 
 description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
-icon: vaultcapital4,
+icon: city.paris,
 unique:true
 },
 
@@ -1731,7 +1737,7 @@ label: "Prague",
 aspects: {domicile:1},
 
 description:"The City of a Hundred Spires, flexing its republican muscles beneath the benign gaze of Masaryk and his Castlemen. Statues watch the bridges each night. This is Europe's heart, and for a while longer, it will beat with cheery vigour.",
-icon: vaultcapital4,
+icon: city.prague,
 unique:true
 },
 
@@ -1742,7 +1748,7 @@ label: "Rostock",
 aspects: {domicile:1},
 
 description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
-icon: vaultcapital4,
+icon: city.rostock,
 unique:true
 },
 
@@ -1757,7 +1763,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
-icon: vaultcapital4,
+icon: city.samarkand,
 unique:true
 },
 
@@ -1769,7 +1775,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
-icon: vaultcapital4,
+icon: city.stalingrad,
 unique:true
 },
 
@@ -1779,7 +1785,7 @@ label: "Strasbourg",
 aspects: {domicile:1},
 
 description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I've always liked so much.",
-icon: vaultcapital4,
+icon: city.strasbourg,
 unique:true
 },
 
@@ -1792,7 +1798,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
-icon: vaultcapital4,
+icon: city.sverdlovsk,
 unique:true
 },
 
@@ -1803,7 +1809,7 @@ label: "Tiflis",
 aspects: {domicile:1},
 
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
-icon: vaultcapital4,
+icon: city.tiflis,
 unique:true
 },
 
@@ -1813,7 +1819,7 @@ label: "Tirana",
 aspects: {domicile:1},
 
 description:"Flower-thronged Tirana, where Zogist soldiers crowd the cafes with drunken laughter, where the Flowermaker hums his dreamy songs in the bee-droning shadows.",
-icon: vaultcapital4,
+icon: city.tirana,
 unique:true
 },
 
@@ -1823,7 +1829,7 @@ label: "Tripoli dell'ovest",
 aspects: {domicile:1},
 
 description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
-icon: vaultcapital4,
+icon: city.tripoli,
 unique:true
 },
 
@@ -1835,7 +1841,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
-icon: vaultcapital4,
+icon: city.valletta,
 unique:true
 },
 
@@ -1844,7 +1850,7 @@ label: "Venice",
 aspects: {domicile:1},
 
 description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
-icon: vaultcapital4,
+icon: city.venice,
 unique:true
 },
 
@@ -1854,7 +1860,7 @@ label: "Vienna",
 aspects: {domicile:1},
 
 description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
-icon: vaultcapital4,
+icon: city.vienna,
 unique:true
 },
 
@@ -1949,7 +1955,7 @@ xtriggers:{arriving:[{id:"domicile.cluj",morpheffect:transform}]}
 },
 
 	  {id: "city.granada",
-label: "granada",
+label: "Granada",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",

@@ -29,6 +29,14 @@ alt:[{id:"opx.caper.populate", additional:true, expulsion:{limit:2,filter:{vault
 warmup:30,
 craftable:true},
 
+{id:"opx.caper.progress3",
+actionId:"opx.caper",
+label:"The Prize!",
+startdescription:"This is what I came for.",
+requirements:{progress:3},
+warmup:5,
+linked:[{id:"opx.caper.end"}]},
+
 {id:"opx.caper.progress2",
 actionId:"opx.caper",
 label:"A Final Complication...",
@@ -76,7 +84,7 @@ alt:[{id:"opx.caper.tryresolve.edge"},
 {id:"opx.caper.tryresolve.secrethistories"},
 {id:"opx.caper.tryresolve.winter"}],
 linked:[{chance:30,id:"opx.caper.lucky"},
-{id:"opx.caper.failure"}]
+{id:"opx.caper.end"}]
 },
 
 
@@ -94,8 +102,8 @@ linked:[{id:"opx.caper.makeprogress"}]},
 actionId:"opx.caper",
 label:"Hammer and Anvil",
 startdescription:"@#ee.mist|Once again, fire and ingenuity have served me well.
-#ee.soldiers|I've come to an arrangement with the soldiers guarding this place.
-#|I've used bribery.@",
+#ee.securevault|I've breached the vault.
+#|I've used ingenuity.@",
 requirements:{minforge:1,forge:minforge},
 linked:[{id:"opx.caper.makeprogress"}]},
 
@@ -167,7 +175,7 @@ actionId:"opx.caper",
 label:"Progress",
 startdescription:"What's next?",
 effects:{complication:-1,progress:1},
-linked:[{id:"opx.caper.success"},
+linked:[{id:"opx.caper.progress3"},
 {id:"opx.caper.progress2"},
 {id:"opx.caper.progress1"}]},
 
@@ -202,16 +210,20 @@ aspects:{betrayal:1},
 linked:[{id:"opx.caper.next"}],
 },
 
-
+{id:"opx.caper.end",
+actionId:"opx.rob.vault",
+effects:{cash:-100,complication:-100,supplies:-100,op:-100},
+linked:[{id:"opx.caper.success"},
+{id:"opx.caper.failure"}]
+},
 
 {id:"opx.caper.success",
 actionId:"opx.caper",
 label:"Success!",
 startdescription:"Safely away with my haul!",
 requirements:{progress:3},
-aspects:{success:1,fatiguing:1},
-effects:{complication:-100},
-linked:[{id:"opx.caper.cleanup"}]
+effects:{progress:-3},
+aspects:{success:1,fatiguing:1}
 },
 
 {id:"opx.caper.failure",
@@ -219,23 +231,11 @@ actionId:"opx.caper",
 label:"Disaster!",
 startdescription:"The caper's failed!",
 aspects:{fatiguing:1},
-effects:{trace:1},
-linked:[{id:"opx.caper.cleanup"}]
-},
-
-{id:"opx.rob.vault.failure.wounded",
-actionId:"opx.rob.vault",
-label:"Injured!",
-startdescription:"I've been injured, and forced to retreat.",
-aspects:{fatiguing:1},
-effects:{trace:1,wound.exile:1},
-linked:[{id:"opx.caper.cleanup"}]
+effects:{progress:-3},
+effects:{trace:1}
 },
 
 
-{id:"opx.caper.cleanup",
-actionId:"opx.rob.vault",
-effects:{progress:-100,cash:-100,complication:-100,ingredient:-100,op:-100}}
 
 {id:"travel.visit.shrine.colonel",
 actionId:"travel",
