@@ -9,7 +9,7 @@
             aspects:
             {edge: 2,lore:1},
             description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns.",
-			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragmentedge.exile.exhausted},
+			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragmentedge.exile.exhausted,epiphany.colonel:fragmentedgeb.colonel,epiphany.lionsmith:fragmentedgeb.lionsmith},
 			icon:fragmentedge,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -19,7 +19,7 @@
             aspects:
             {edge: 4,lore:1},
             description: "Biedde said: blood can be replenished. Time cannot.",
-			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted},
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted,epiphany.colonel:fragmentedgec.colonel,epiphany.lionsmith:fragmentedgec.lionsmith},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -29,7 +29,7 @@
             aspects:
             {edge: 6,lore:1},
             description: "Where warriors fall, the many-winged striges gather to honour their flesh. Where heroes fall, the Many-Winged Ones gather to convey their souls before the Hours. This technique is one means by which a hero is distinguished from a warrior.",
-			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted},
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted,epiphany.colonel:fragmentedged.colonel,epiphany.lionsmith:fragmentedged.lionsmith},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -38,8 +38,8 @@
             label: "The Names of the Wolf",
             aspects:
             {edge: 8,lore:1},
-description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and at last, he unmaketh. His Names teach only that unmaking, but in unmaking there is power.",
-			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted},
+description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at the last, he unmaketh. Accordingly his Names teach only this unmaking.",
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted,epiphany.colonel:fragmentedgee.colonel,epiphany.lionsmith:fragmentedgee.lionsmith},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.exile"
         },{
@@ -47,7 +47,7 @@ description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and
             label: "The Cinnabar Forms",
             aspects:
             {edge: 10,lore:1},description: "Here are seven times seven techniques of unmaking.",
-			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.exile.exhausted},
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.exile.exhausted,epiphany.colonel:fragmentedgef.colonel,epiphany.lionsmith:fragmentedgef.lionsmith},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -58,7 +58,7 @@ description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and
             {edge: 12,lore:1},
 			
             description: "These are the arts that ensure an ending.",
-			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.exile.exhausted},
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.exile.exhausted,epiphany.colonel:fragmentedgeg.colonel,epiphany.lionsmith:fragmentedgeg.lionsmith},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -152,9 +152,9 @@ description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and
         id: "fragmentedgeb.colonel",
             label: "The Chiliarch's Lesson",
             aspects:
-            {edge: 4,lore:1},
+            {edge: 4,lantern:2,winter:2,lore:1},
             description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. ",
-			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.colonel.exhausted},
+			xtriggers:{epiphany.colonel:fragmentedgec.colonel,fatiguing:fragmentedgeb.colonel.exhausted},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -162,9 +162,9 @@ description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and
         id: "fragmentedgec.colonel",
             label: "An Operation of the Histid",
             aspects:
-            {edge: 6,lore:1},
+            {edge: 6,lantern:3,winter:3,lore:1},
             description: "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
-			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.colonel.exhausted},
+			xtriggers:{epiphany.colonel:fragmentedged.colonel,fatiguing:fragmentedgec.colonel.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -172,19 +172,19 @@ description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and
         id: "fragmentedged.colonel",
             label: "The Colonel's Names",
             aspects:
-            {edge: 8,lore:1},
+            {edge: 8,lantern:4,winter:4,lore:1},
 description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
 			
-			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.colonel.exhausted},
+			xtriggers:{epiphany.colonel:fragmentedgee.colonel,fatiguing:fragmentedged.colonel.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.colonel"
         },{
         id: "fragmentedgee.colonel",
             label: "The Iron Forms",
             aspects:
-            {edge: 10,lore:1},
+            {edge: 10,lantern:5,winter:5,lore:1},
 			description: "Seven times seven techniques for the sundering of flesh.",
-			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.colonel.exhausted},
+			xtriggers:{epiphany.colonel:fragmentedgef.colonel,fatiguing:fragmentedgee.colonel.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -192,16 +192,16 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentedgef.colonel",
             label: "Moduli of the Langet",
             aspects:
-            {edge: 12,lore:1},
+            {edge: 12,lantern:6,winter:6,lore:1},
             description: "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
-			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.colonel.exhausted},
+			xtriggers:{epiphany.colonel:fragmentedgeg.colonel,fatiguing:fragmentedgef.colonel.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		   {   id: "fragmentedgeg.colonel",
             label: "The Scarred Mysteries",
             aspects:
-            {edge: 14,lore:1},
+            {edge: 14,lantern:7,winter:7,lore:1},
             description: "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
 			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted},
 			icon:fragmentedgeg,
@@ -276,9 +276,9 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentedgeb.lionsmith",
             label: "The Shahpur's Lesson",
             aspects:
-            {edge: 4,lore:1},
+            {edge: 4,forge:2,heart:2,lore:1},
             description: "This is the lesson the Great One's Son found in the breaking of his blade. Even now it glints like shards of metal in the Persian sun.",
-			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.lionsmith.exhausted},
+			xtriggers:{epiphany.lionsmith:fragmentedgec.lionsmith,fatiguing:fragmentedgeb.lionsmith.exhausted},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -286,9 +286,9 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentedgec.lionsmith",
             label: "An Operation of the Labhite",
             aspects:
-            {edge: 6,lore:1},
+            {edge: 6,forge:3,heart:3,lore:1},
             description: "A series of mystic exercises that requires both dedication and terror.",
-			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.lionsmith.exhausted},
+			xtriggers:{epiphany.lionsmith:fragmentedged.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -296,19 +296,19 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentedged.lionsmith",
             label: "The Lionsmith's Names",
             aspects:
-            {edge: 8,lore:1},
+            {edge: 8,forge:4,heart:4,lore:1},
 description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
 			
-			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.lionsmith.exhausted},
+			xtriggers:{epiphany.lionsmith:fragmentedgee.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },{
         id: "fragmentedgee.lionsmith",
             label: "The Brass Forms",
             aspects:
-            {edge: 10,lore:1},
+            {edge: 10,forge:5,heart:5,lore:1},
             description: "Seven times seven techniques for the shattering of bone.",
-			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.lionsmith.exhausted},
+			xtriggers:{epiphany.lionsmith:fragmentedgef.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -316,17 +316,17 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
         id: "fragmentedgef.lionsmith",
             label: "Consummations of the Helve",
             aspects:
-            {edge: 12,lore:1},
+            {edge: 12,forge:6,heart:6,lore:1},
 			
             description: "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
-			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.lionsmith.exhausted},
+			xtriggers:{epiphany.lionsmith:fragmentedgeg.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		   {   id: "fragmentedgeg.lionsmith",
             label: "The Shattered Mysteries",
             aspects:
-            {edge: 14,lore:1},
+            {edge: 14,forge:7,heart:7,lore:1},
             description: "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
 			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted},
 			icon:fragmentedgeg,
