@@ -1,0 +1,404 @@
+  {"elements":
+    [
+	{id:"uqedgelore.exile",label:"Exile: Edge Lore",isAspect:true,isHidden:true},
+	{id:"uqedgelore.colonel",label:"Colonel: Edge Lore",isAspect:true,isHidden:true},
+	{id:"uqedgelore.lionsmith",label:"Lionsmith: Edge Lore",isAspect:true,isHidden:true},
+  {
+        id: "fragmentedge.exile",
+            label: "A Knife's Secret",
+            aspects:
+            {edge: 2,lore:1},
+            description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns.",
+			xtriggers:{epiphany:fragmentedgeb.exile,fatiguing:fragmentedge.exile.exhausted},
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		 {
+        id: "fragmentedgeb.exile",
+            label: "Biedde's Lesson",
+            aspects:
+            {edge: 4,lore:1},
+            description: "Biedde said: blood can be replenished. Time cannot.",
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted},
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+				 {
+        id: "fragmentedgec.exile",
+            label: "An Operation of the Strix",
+            aspects:
+            {edge: 6,lore:1},
+            description: "Where warriors fall, the many-winged striges gather to honour their flesh. Where heroes fall, the Many-Winged Ones gather to convey their souls before the Hours. This technique is one means by which a hero is distinguished from a warrior.",
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted},
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+						 {
+        id: "fragmentedged.exile",
+            label: "The Names of the Wolf",
+            aspects:
+            {edge: 8,lore:1},
+description: "Three natures hath the Wolf Divided; he unmaketh; he unmaketh; and at last, he unmaketh. His Names teach only that unmaking, but in unmaking there is power.",
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted},
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
+        },{
+        id: "fragmentedgee.exile",
+            label: "The Cinnabar Forms",
+            aspects:
+            {edge: 10,lore:1},description: "Here are seven times seven techniques of unmaking.",
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.exile.exhausted},
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		{
+        id: "fragmentedgef.exile",
+            label: "The Alignments of Murder",
+            aspects:
+            {edge: 12,lore:1},
+			
+            description: "These are the arts that ensure an ending.",
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.exile.exhausted},
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		   {   id: "fragmentedgeg.exile",
+            label: "The Mysteries of Force",
+            aspects:
+            {edge: 14,lore:1},
+            description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted},
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+
+   {
+        id: "fragmentedge.exile.exhausted",
+            label: "A Knife's Secret (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:180,
+			decayTo:fragmentedge.exile,
+			icon:fragmentedge,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		 {
+        id: "fragmentedgeb.exile.exhausted",
+            label: "Biedde's Lesson (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:160,
+			decayTo:fragmentedgeb.exile,
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+				 {
+        id: "fragmentedgec.exile.exhausted",
+            label: "An Operation of the Strix (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:140,
+			decayTo:fragmentedgec.exile,
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+						 {
+        id: "fragmentedged.exile.exhausted",
+            label: "The Names of the Wolf (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:120,
+			decayTo:fragmentedged.exile,
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.exile"
+        },{
+        id: "fragmentedgee.exile.exhausted",
+            label: "The Cinnabar Forms (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:100,
+			decayTo:fragmentedgee.exile,
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		{
+        id: "fragmentedgef.exile.exhausted",
+            label: "The Alignments of Murder (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:80,
+			decayTo:fragmentedgef.exile,
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		   {   id: "fragmentedgeg.exile.exhausted",
+            label: "The Mysteries of Force (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:60,
+			decayTo:fragmentedgeg.exile,
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.exile"
+        },
+		
+		 {
+        id: "fragmentedgeb.colonel",
+            label: "The Chiliarch's Lesson",
+            aspects:
+            {edge: 4,lore:1},
+            description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. ",
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.colonel.exhausted},
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+				 {
+        id: "fragmentedgec.colonel",
+            label: "An Operation of the Histid",
+            aspects:
+            {edge: 6,lore:1},
+            description: "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.colonel.exhausted},
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+						 {
+        id: "fragmentedged.colonel",
+            label: "The Colonel's Names",
+            aspects:
+            {edge: 8,lore:1},
+description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+			
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.colonel.exhausted},
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.colonel"
+        },{
+        id: "fragmentedgee.colonel",
+            label: "The Iron Forms",
+            aspects:
+            {edge: 10,lore:1},
+			description: "Seven times seven techniques for the sundering of flesh.",
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.colonel.exhausted},
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+		{
+        id: "fragmentedgef.colonel",
+            label: "Moduli of the Langet",
+            aspects:
+            {edge: 12,lore:1},
+            description: "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.colonel.exhausted},
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+		   {   id: "fragmentedgeg.colonel",
+            label: "The Scarred Mysteries",
+            aspects:
+            {edge: 14,lore:1},
+            description: "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
+			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted},
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+
+		 {
+        id: "fragmentedgeb.colonel.exhausted",
+            label: "Chiliarch's Lesson (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:160,
+			decayTo:fragmentedgeb.exile,
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+				 {
+        id: "fragmentedgec.colonel.exhausted",
+            label: "An Operation of the Histid (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:140,
+			decayTo:fragmentedgec.exile,
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+						 {
+        id: "fragmentedged.colonel.exhausted",
+            label: "The Colonel's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:120,
+			decayTo:fragmentedged.exile,
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.colonel"
+        },{
+        id: "fragmentedgee.colonel.exhausted",
+            label: "The Iron Forms (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:100,
+			decayTo:fragmentedgee.exile,
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+		{
+        id: "fragmentedgef.colonel.exhausted",
+            label: "Moduli of the Langet (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:80,
+			decayTo:fragmentedgef.exile,
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+		   {   id: "fragmentedgeg.colonel.exhausted",
+            label: "The Scarred Mysteries (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:60,
+			decayTo:fragmentedgeg.exile,
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.colonel"
+        },
+		 {
+        id: "fragmentedgeb.lionsmith",
+            label: "The Shahpur's Lesson",
+            aspects:
+            {edge: 4,lore:1},
+            description: "This is the lesson the Great One's Son found in the breaking of his blade. Even now it glints like shards of metal in the Persian sun.",
+			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.lionsmith.exhausted},
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+				 {
+        id: "fragmentedgec.lionsmith",
+            label: "An Operation of the Labhite",
+            aspects:
+            {edge: 6,lore:1},
+            description: "A series of mystic exercises that requires both dedication and terror.",
+			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.lionsmith.exhausted},
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+						 {
+        id: "fragmentedged.lionsmith",
+            label: "The Lionsmith's Names",
+            aspects:
+            {edge: 8,lore:1},
+description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+			
+			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.lionsmith.exhausted},
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },{
+        id: "fragmentedgee.lionsmith",
+            label: "The Brass Forms",
+            aspects:
+            {edge: 10,lore:1},
+            description: "Seven times seven techniques for the shattering of bone.",
+			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.lionsmith.exhausted},
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+		{
+        id: "fragmentedgef.lionsmith",
+            label: "Consummations of the Helve",
+            aspects:
+            {edge: 12,lore:1},
+			
+            description: "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
+			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.lionsmith.exhausted},
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+		   {   id: "fragmentedgeg.lionsmith",
+            label: "The Shattered Mysteries",
+            aspects:
+            {edge: 14,lore:1},
+            description: "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
+			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted},
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+
+		 {
+        id: "fragmentedgeb.lionsmith.exhausted",
+            label: "The Shahpur's Lesson (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:160,
+			decayTo:fragmentedgeb.exile,
+			icon:fragmentedgeb,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+				 {
+        id: "fragmentedgec.lionsmith.exhausted",
+            label: "An Operation of the Labhite (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:140,
+			decayTo:fragmentedgec.exile,
+			icon:fragmentedgec,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+						 {
+        id: "fragmentedged.lionsmith.exhausted",
+            label: "The Lionsmith's Names (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:120,
+			decayTo:fragmentedged.exile,
+			icon:fragmentedged,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },{
+        id: "fragmentedgee.lionsmith.exhausted",
+            label: "The Brass Forms (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:100,
+			decayTo:fragmentedgee.exile,
+			icon:fragmentedgee,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+		{
+        id: "fragmentedgef.lionsmith.exhausted",
+            label: "Consummations of the Helve (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:80,
+			decayTo:fragmentedgef.exile,
+			icon:fragmentedgef,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+		   {   id: "fragmentedgeg.lionsmith.exhausted",
+            label: "The Shattered Mysteries (Exhausted)",
+            description: "[I'll need time to recover before I can use this again.]",
+			aspects:{exhausted:1},
+			resaturate:true,
+			lifetime:60,
+			decayTo:fragmentedgeg.exile,
+			icon:fragmentedgeg,
+			uniquenessgroup:"uqedgelore.lionsmith"
+        },
+		
+		
+		
+		]
+		}
