@@ -1295,11 +1295,50 @@ unique:true
 {id: "op.office",
 label: "Opportunity: Discreet Office?",
 aspects: {op:1,price:1},
-description:"I could lease a quiet place to work.",
+description:"I can lease a quiet place to work. [An Office provides a little Space, and, as a place of shelter, a little Heart.] ",
 xtriggers:{purchase:office},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
+{id: "op.warehouse",
+label: "Opportunity: Quiet Warehouse?",
+aspects: {op:1,price:2},
+description:"I can lease space somewhere out of the way. [A Warehouse provides significant Space. As a good place to rest up or work on noisy projects, it also provides both Heart and Forge.]",
+xtriggers:{purchase:warehouse},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+],
+lifetime:180
+},
+{id: "op.townhouse",
+label: "Opportunity: Grand Townhouse?",
+aspects: {op:1,price:4},
+description:"I can acquire property. [A Townhouse provides significant Space. As a good place to take refuge or entertain guests, it provides both Heart and Grail. If you plan to retire here, it will also provide considerable Comfort.]",
+xtriggers:{purchase:townhouse},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+],
+lifetime:180
+},
+{id: "op.villa",
+label: "Opportunity: Secluded Villa?",
+aspects: {op:1,price:8},
+description:"I can acquire property. [A Villa provides significant Space, Forge, Heart, and Grail. If you plan to retire here, it will also provide tremendous Comfort.]",
+xtriggers:{purchase:villa},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+],
+lifetime:180
+},
+
 
 	  	  {id: "op.licence.medical",
 label: "Opportunity: Medical Credentials?",
@@ -1477,7 +1516,7 @@ icon:hq.townhouse
 
 {id:"villa",
 label:"Secluded Villa",
-aspects:{asset:1,space:3,comfort:8,heart:6,grail:6,worth:8},
+aspects:{asset:1,space:2,comfort:8,forge:6,heart:6,grail:6,worth:8},
 description:"I could live out my days here very happily, if it weren't for certain immediate practical difficulties...",
 icon:vaultcontinent5
 },
