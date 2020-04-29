@@ -721,14 +721,25 @@ aspects:{negotiation:1},
 warmup:30,
 craftable:true},
 
+
+
 {id:"use.purchase",
 actionId:"use",
 label:"Purchase",
 startdescription:"Attempt to Purchase Something Useful",
-requirements:{op:1,asset:1},
+requirements:{op:1,worth:price},
 aspects:{purchase:1},
 warmup:30,
 craftable:true},
+
+{id:"use.purchase.hint",
+actionId:"use",
+label:"Purchase?",
+startdescription:"[Add enough items of Worth to match the price.]",
+requirements:{op:1,price:1},
+hintonly:true,
+craftable:false},
+
 
 
 

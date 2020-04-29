@@ -396,6 +396,20 @@ description:"Something that won't object to being owned.",
 isAspect:true,
 },
 
+{id:"worth",
+label:"Worth",
+description:"If I had to convert this into cash, how much would it be worth?",
+isAspect:true,
+icon:compensationvalue
+},
+
+{id:"price",
+label:"Price",
+description:"'PRICE, n. Value, plus a reasonable sum for the wear and tear of conscience in demanding it.' - Bierce. [Provide this or greater in Worth.]",
+isAspect:true,
+icon:evidencelevel
+},
+
 {id:"space",
 label:"space",
 description:"A venue, or a base of operations.",
@@ -748,7 +762,7 @@ icon:bid
 
 {id: "cash",
 label: "Cash",
-aspects: {asset:1,portable:1},
+aspects: {asset:1,portable:1,worth:1},
 description:"An unglamorously convenient shorthand for objects of desire.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
@@ -884,14 +898,14 @@ unique:true
 {id: "vault.barber.completed",
 label: "Fluttering Goo",
 description:"When I woke from the Wood, this is what I found in the sealed bottle beside my bed.",
-aspects: {vault.completed:1,moth:12,asset:1,portable:1,supplies:1},
+aspects: {vault.completed:1,moth:12,asset:1,portable:1,supplies:1,worth:1},
 icon:ingredientmothf
 },
 
 {id: "vault.delver.completed",
 label: "Hokobald's Alchemical Substance",
 description:"Red as a forgotten sun.",
-aspects: {vault.completed:1,forge:12,asset:1,portable:1,supplies:1},
+aspects: {vault.completed:1,forge:12,asset:1,portable:1,supplies:1,worth:1},
 icon: ingredientforgef
 },
 
@@ -905,7 +919,7 @@ icon:spirit_grailc_moth
 {id: "vault.ghoul.completed",
 label: "Maggot-Spice?",
 description:"The 'seasoning' Dominykas wanted: a pot of nasty-looking larval remnants. The pot is icy cold to the touch.",
-aspects: {vault.completed:1,winter:12,asset:1,portable:1,supplies:1},
+aspects: {vault.completed:1,winter:12,asset:1,portable:1,supplies:1,worth:1},
 icon:"ingredientwinterf"
 },
 
@@ -918,14 +932,14 @@ lifetime:180
 
 {id: "vault.smuggler.completed",
 label: "Tarrasquine Relic",
-aspects: {vault.completed:1,grail:2,winter:4,asset:1,portable:1},
+aspects: {vault.completed:1,grail:2,winter:4,asset:1,portable:1,worth:1},
 description:"I have what I need.",
 icon:corpse.splendid
 },
 
 {id: "vault.visionary.completed",
 label: "Percussigant Pelt!",
-aspects: {vault.completed:1,asset:1,portable:1,heart:4},
+aspects: {vault.completed:1,asset:1,portable:1,heart:4,worth:2},
 description:"<i>E pur si muove!</i>",
 xtriggers:{recruiting:pelt.percussigant},
 icon:spirit_heartc_edge
@@ -933,7 +947,7 @@ icon:spirit_heartc_edge
 
 {id: "pelt.percussigant",
 label: "Percussigant Pelt!",
-aspects: {asset:1,portable:1,heart:4},
+aspects: {asset:1,portable:1,heart:4,worth:2},
 description:"<i>E pur si muove!</i>",
 icon:spirit_heartc_edge
 },
@@ -1267,35 +1281,42 @@ lifetime:120,
 resaturate:true
 },
 
-
-
+{id: "op.purchase.weapon.b",
+label: "Opportunity: Purchase an Unusual Weapon?",
+aspects: {op:1,price:1},
+description:"A battered-looking rifle sits prosaically on a stall in a flea market. The stall-holder has no idea what she's selling.",
+xtriggers:{purchase:weapon.b},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:180,
+unique:true
+},
 
 
 {id: "op.office",
 label: "Opportunity: Discreet Office?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"I could lease a quiet place to work.",
 xtriggers:{purchase:office},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
 	  	  {id: "op.licence.medical",
 label: "Opportunity: Medical Credentials?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
 xtriggers:{negotiation:licence.medical},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
 lifetime:180
 },
 
 	  	  {id: "op.connection.official",
 label: "Opportunity: An Official Connection?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"I could always use more friends.",
 xtriggers:{purchase:connection.official},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
@@ -1304,7 +1325,7 @@ label: "Opportunity: a Connection with a Ruler?",
 aspects: {op:1},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
@@ -1313,7 +1334,7 @@ label: "Opportunity: a Connection with a Holy Man?",
 aspects: {op:1},
 description:"Charity brings clarity.",
 xtriggers:{purchase:connection.holy},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
@@ -1322,7 +1343,7 @@ label: "Opportunity: a Connection with Radicals?",
 aspects: {op:1},
 description:"They don't care where the money comes from.",
 xtriggers:{purchase:connection.radicals},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
@@ -1331,14 +1352,14 @@ label: "Opportunity: an Underworld Connection?",
 aspects: {op:1},
 description:"They're no friends of the reckoner mobs.",
 xtriggers:{purchase:connection.underworld},
-slots:[{actionId:use,id:"cash",label:"Cash",required:{cash:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:180
 },
 
 
 {id:"curio",
 label:"Beguiling Curio",
-aspects:{asset:1,portable:1,comfort:1,grail:2},
+aspects:{asset:1,portable:1,comfort:1,grail:2,worth:1},
 description:"This will sit handsomely on a shelf, if I ever have shelves again.",
 icon:locationauctionhouse
 },
@@ -1346,35 +1367,35 @@ icon:locationauctionhouse
 
 {id:"curio.forge",
 label:"Curio: Adept's Powder",
-aspects:{asset:1,portable:1,forge:4,grail:2,supplies:1},
+aspects:{asset:1,portable:1,forge:4,grail:2,supplies:1,worth:1},
 description:"A pinch of this goes up like lightning-struck thermite.",
 icon:ingredientforgeb
 },
 
 {id:"curio.grail",
 label:"Curio: Crème de Carmine",
-aspects:{asset:1,portable:1,comfort:1,grail:8,supplies:1},
+aspects:{asset:1,portable:1,comfort:1,grail:8,supplies:1,worth:2},
 description:"I'd say it tasted like blood, if it didn't taste so good.",
 icon: ingredientgraild
 },
 
 {id:"curio.heart",
 label:"Curio: Venetian Mommet",
-aspects:{asset:1,portable:1,comfort:1,heart:4,grail:2},
+aspects:{asset:1,portable:1,comfort:1,heart:4,grail:2,worth:1},
 description:"Ugly little thing, but there's a cheering warmth to it.",
 icon:toolheartb
 },
 
 {id:"curio.knock",
 label:"Curio: Bohemian Saint",
-aspects:{asset:1,portable:1,knock:4,grail:2},
+aspects:{asset:1,portable:1,knock:4,grail:2,worth:1},
 description:"A nasty little illustration of what the pagans used to get up to. Or the Church. I don't know the history. I do know this icon has some kind of power over locks.",
 icon:toolknockb
 },
 
 {id:"curio.lantern",
 label:"Curio: Pages from the Book of Suns",
-aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2},
+aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2,worth:1},
 description:"Gorgeously illustrated manuscript pages, ripped from the original binding to be sold separately. I don't know the language - Persian? Arabic? but somehow I can read the words in sufficiently bright light. A dispute between Hours, a lineage concealed, a secret which shattered loyalties... not much practical information, but there's something about the sounds that sharpens the soul."
 },
 
@@ -1387,39 +1408,39 @@ icon:toolmothb
 
 {id:"rarity.forge",
 label:"Rarity: Odd Little Bone",
-aspects:{asset:1,portable:1,comfort:1,forge:8,grail:4},
+aspects:{asset:1,portable:1,comfort:1,forge:8,grail:4,worth:2},
 description:"Tiny, fragile-looking, but it packs a hell of a wallop.",
 icon:toolforged
 },
 
 {id:"rarity.heart",
 label:"Rarity: Grese Guitar",
-aspects:{asset:1,portable:1,comfort:2,heart:8,grail:6},
+aspects:{asset:1,portable:1,comfort:2,heart:8,grail:6,worth:3},
 description:"A ten-stringed guitar from the House of Stradivari, shaped from softly glowing Illyrian maple and inlaid with a design of almond leaves and pomegranates. I'd heard one had been stolen from the Gräfin von Grese's collection last year. It might be the last of its kind in a playable condition. "
 },
 
 {id:"rarity.lantern",
 label:"Rarity: The Book of Suns, Reassembled",
-aspects:{asset:1,portable:1,comfort:1,lantern:8,grail:4},
+aspects:{asset:1,portable:1,comfort:1,lantern:8,grail:4,worth:2},
 description:"There's a forgotten and golden truth in these images - a truth from the times before the Sun was divided. I don't understand it. It's not meant for me. But even the reflected light of that truth is an illumination."
 },
 
 {id:"rarity.knock",
 label:"Rarity: Atlas of the Unsuspected",
-aspects:{asset:1,portable:1,comfort:1,knock:8,grail:4},
+aspects:{asset:1,portable:1,comfort:1,knock:8,grail:4,worth:3},
 description:"This began life as an atlas of the cities of Europe. Over decades it's been extended and annotated by a dozen hands - adepts, burglars, soldiers, spies - to show secret routes and hiding-nooks."
 },
 
 {id:"rarity.paintingmoth",
 label:"Rarity: 'Green as Remembered Rain'",
-aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4},
+aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4,worth:2},
 description:"An oil painting of a final horizon, in green-and-gold and glory.",
 icon:paintingmastermoth
 },
 
 {id:"rarity.paintingwinter",
 label:"'Abydos Unveiled'",
-aspects:{asset:1,portable:1,comfort:1,winter:8,grail:4},
+aspects:{asset:1,portable:1,comfort:1,winter:8,grail:4,worth:2},
 description:"An oil painting of a city foundered in deep snow. Behind its bleakest tower, a sickle moon rises.",
 icon:paintingmasterwinter
 },
@@ -1427,28 +1448,28 @@ icon:paintingmasterwinter
 
 {id:"rarity.grail",
 label:"Rarity: Case of 1865 Domaine Raveline",
-aspects:{asset:1,portable:1,comfort:2,grail:12},
+aspects:{asset:1,portable:1,comfort:2,grail:12,worth:4},
 description:"A great vintage wrung from a <i>terroir</i> ripe with secrets in the times before the Grand Blight. With discipline, patience, and resolution, it is <i>possible</i> to taste a glass of this wine and not to finish the bottle."
 },
 
 
 {id:"office",
 label:"Discreet Office",
-aspects:{asset:1,space:1,heart:2},
+aspects:{asset:1,space:1,heart:2,worth:1},
 description:"Not too obvious, and not too far out of the way.",
 icon:vaultcapital1
 },
 
 {id:"warehouse",
 label:"Quiet Warehouse",
-aspects:{asset:1,space:2,forge:4,heart:4},
+aspects:{asset:1,space:2,forge:4,heart:4,worth:2},
 description:"There's plenty of space here, although not much else to recommend it.",
 icon:vaultcapitaldefault
 },
 
 {id:"townhouse",
 label:"Grand Townhouse",
-aspects:{asset:1,space:2,comfort:4,heart:4,grail:4},
+aspects:{asset:1,space:2,comfort:4,heart:4,grail:4,worth:4},
 description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
@@ -1456,7 +1477,7 @@ icon:hq.townhouse
 
 {id:"villa",
 label:"Secluded Villa",
-aspects:{asset:1,space:3,comfort:8,heart:6,grail:6},
+aspects:{asset:1,space:3,comfort:8,heart:6,grail:6,worth:8},
 description:"I could live out my days here very happily, if it weren't for certain immediate practical difficulties...",
 icon:vaultcontinent5
 },
@@ -1465,7 +1486,7 @@ icon:vaultcontinent5
 
 {id:"licence.medical",
 label:"Medical Licence",
-aspects:{asset:1,portable:1},
+aspects:{asset:1,portable:1,worth:1},
 description:"The name on the licence isn't exactly mine, but it's close enough for my purposes.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}],
 icon:fragmentheart
@@ -1513,7 +1534,7 @@ description:"A ticket to the very first destination that came to mind - "
 
 {id: "weapon.a",
 label: "Unusual Imported Pistol",
-aspects: {weapon:1,edge:4,weapon.profane:1},
+aspects: {weapon:1,edge:4,weapon.profane:1,worth:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
@@ -1525,7 +1546,7 @@ unique:true
 
 {id: "weapon.b",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:3},
+aspects: {weapon:1,edge:4,uses.remaining:3,worth:2},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.2.exhausted},
@@ -1537,7 +1558,7 @@ unique:true
 
 {id: "weapon.b.2",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:2},
+aspects: {weapon:1,edge:4,uses.remaining:2,worth:2},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.1.exhausted},
@@ -1548,7 +1569,7 @@ unique:true
 
 {id: "weapon.b.1",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:1},
+aspects: {weapon:1,edge:4,uses.remaining:1,worth:2},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:curio},
@@ -1559,7 +1580,7 @@ unique:true
 
 {id: "weapon.c",
 label: "Ebrehel, the Ragged Sword",
-aspects: {weapon:1,edge:6,knock:6,forge:6},
+aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
@@ -1571,7 +1592,7 @@ unique:true
 
 {id: "weapon.d",
 label: "Biedde's Blade",
-aspects: {weapon:1,edge:8},
+aspects: {weapon:1,edge:8,worth:3},
 xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
 striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
@@ -1582,7 +1603,7 @@ unique:true
 
 {id: "weapon.e",
 label: "Imhullune Tectrix",
-aspects: {weapon:1,edge:10},
+aspects: {weapon:1,edge:10,worth:4},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.e.exhausted},
