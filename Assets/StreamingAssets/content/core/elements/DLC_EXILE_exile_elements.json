@@ -42,6 +42,19 @@ induces:[{id:"spawn.trace",chance:90}],
 noartneeded:true
 },
 
+
+{id:"epiphany.colonel",
+label:"Epiphany: Colonel",
+description:"recipe aspect",
+isAspect:true
+},
+
+{id:"epiphany.lionsmith",
+label:"Epiphany: Lionsmith",
+description:"recipe aspect",
+isAspect:true
+},
+
 {id: "minedge",
 label: "Needs Edge",
 description:"There is a complication, but this much Edge would resolve it.",
@@ -743,7 +756,7 @@ slots:[{actionId:send,id:"destination",label:"Destination",required:{destination
 {id: "loc.shrine.colonel",
 label: "Location: an Iron Shrine",
 aspects: {location:1,shrine.edge:1},
-description:"A secret shrine of the Hour known as the Colonel.",
+description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
 
@@ -751,7 +764,7 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 {id: "loc.shrine.lionsmith",
 label: "Location: a Brazen Shrine",
 aspects: {location:1,shrine.edge:1},
-description:"A secret shrine of the Hour known as the Lionsmith.",
+description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
 },
 
