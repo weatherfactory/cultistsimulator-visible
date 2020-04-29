@@ -331,6 +331,14 @@ isAspect:true,
 icon:erratic
 },
 
+{id:"troubled",
+label:"Troubled",
+description:"This place has seen better days. [It's harder to purchase desirable things in Troubled cities, and there may be other effects.]",
+isAspect:true,
+icon:resentment
+},
+
+
 {id:"end",
 label:"Map's Edge",
 description:"The time may come when I can run no further. Then I must choose whether to lose myself in the loneliest place I can find... or choose that place to turn and face my Foe. [It's not possible to leave an End location.]",
@@ -1909,7 +1917,7 @@ unique:true
 
 	  {id: "domicile.aachen",
 label: "Rhenish Aachen",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
@@ -1961,7 +1969,7 @@ unique:true
 
 	  {id: "domicile.baghdad",
 label: "Baghdad",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
 icon: city.baghdad,
@@ -2032,7 +2040,7 @@ unique:true
 
 	  {id: "domicile.kiev",
 label: "Kiev",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
 icon: city.kiev,
@@ -2051,7 +2059,7 @@ unique:true
 	  
 	  {id: "domicile.leningrad",
 label: "Leningrad",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 icon: city.leningrad,
@@ -2060,7 +2068,7 @@ unique:true
 
 	  	  {id: "domicile.london",
 label: "London",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
 icon: city.london,
@@ -2091,7 +2099,7 @@ unique:true
 
 	  {id: "domicile.munich",
 label: "Munich",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 icon: city.munich,
@@ -2101,7 +2109,7 @@ unique:true
 
 	  {id: "domicile.nizhny",
 label: "Nizhny Novgorod",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2150,7 +2158,7 @@ unique:true
 
 	  {id: "domicile.samarkand",
 label: "Samarkand",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2162,7 +2170,7 @@ unique:true
 
 	  {id: "domicile.stalingrad",
 label: "Stalingrad",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2185,7 +2193,7 @@ unique:true
 
 	  {id: "domicile.sverdlovsk",
 label: "Sverdlovsk",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2198,7 +2206,7 @@ unique:true
 
 	  {id: "domicile.tiflis",
 label: "Tiflis",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
 icon: city.tiflis,
@@ -2260,7 +2268,7 @@ unique:true
 
 	  {id: "city.aachen",
 label: "Rhenish Aachen",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn},{id:"domicile.aachen"}]},
@@ -2308,7 +2316,7 @@ unique:true
 
 	  {id: "city.baghdad",
 label: "Baghdad",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
 unique:true,
@@ -2357,7 +2365,7 @@ xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.gr
 
 {id: "city.istanbul",
 label: "Istanbul",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 unique:true,
@@ -2399,7 +2407,7 @@ xtriggers:{arriving:[{id:"domicile.krakow",morpheffect:transform}]}
 	  
 	  {id: "city.leningrad",
 label: "Leningrad",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 
@@ -2409,9 +2417,9 @@ xtriggers:{arriving:[{id:"domicile.leningrad",morpheffect:transform}]}
 
 	  	  {id: "city.london",
 label: "London",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
+description:"Mass strikes and martial law have paralysed the Big Smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
 
 unique:true,
 xtriggers:{arriving:[{id:"domicile.london",morpheffect:transform}]}
@@ -2443,7 +2451,7 @@ xtriggers:{arriving:[{id:"domicile.meshad",morpheffect:transform}]}
 
 	  {id: "city.munich",
 label: "Munich",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 
@@ -2454,7 +2462,7 @@ xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domici
 
 	  {id: "city.nizhny",
 label: "Nizhny Novgorod",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2506,7 +2514,7 @@ xtriggers:{arriving:[{id:"domicile.rostock",morpheffect:transform}]}
 
 	  {id: "city.samarkand",
 label: "Samarkand",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2519,7 +2527,7 @@ xtriggers:{arriving:[{id:"domicile.samarkand",morpheffect:transform}]}
 
 	  {id: "city.stalingrad",
 label: "Stalingrad",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2544,7 +2552,7 @@ xtriggers:{arriving:[{id:"domicile.strasbourg",morpheffect:transform}]}
 
 	  {id: "city.sverdlovsk",
 label: "Sverdlovsk",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2558,7 +2566,7 @@ xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
 
 	  {id: "city.tiflis",
 label: "Tiflis",
-aspects: {destination:1},
+aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
 
