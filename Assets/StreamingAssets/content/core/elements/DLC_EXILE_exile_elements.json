@@ -10,6 +10,21 @@
 {id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
 
+{id:"weakness.foe.unknown",
+label:"Foe: An Unknown Weakness",
+description:"My Foe is vulnerable to certain distractions. [You can find out exactly what through experimentation or revelation.]",
+isAspect:true,
+icon:lockscar
+},
+
+{id:"weakness.foe",
+label:"Foe: A Weakness",
+description:"My Foe is vulnerable to this particular distraction... which might help me decide where best to face him.",
+isAspect:true,
+icon:lockopen
+},
+
+
 	
 {id:"minortracerisk",
 label:"Minor Trace Risk",
@@ -115,7 +130,6 @@ description:"Used to mark rkx internal components",
 isAspect:true,
 noartneeded:true
 },
-
 
 
 {id:"supplies",
@@ -2876,55 +2890,64 @@ description:"How many times did this heart beat? How many of those beats were st
 {id: "rkx.weakness.cold",
 label: "Weakness: Cold",
 description:"The rumours are true - snow makes my Foe slow and stupid.",
-uniquenessgroup:"uq.rkx.weakness.cold"
+uniquenessgroup:"uq.rkx.weakness.cold",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.heat",
 label: "Weakness: Heat",
 description:"The rumours are true - when the weather is hot enough, my foe becomes slow and stupid.",
-uniquenessgroup:"uq.rkx.weakness.heat"
+uniquenessgroup:"uq.rkx.weakness.heat",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.sea",
 label: "Weakness: the Sea",
 description:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe fears its touch.",
-uniquenessgroup:"uq.rkx.weakness.sea"
+uniquenessgroup:"uq.rkx.weakness.sea",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.faith",
 label: "Weakness: Faith",
 description:"A religious upbringing? A persistent superstition? My enemy is reluctant to desecrate holy places.",
-uniquenessgroup:"uq.rkx.weakness.faith"
+uniquenessgroup:"uq.rkx.weakness.faith",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.cats",
 label: "Weakness: Cats",
 description:"My Foe fears cats! He's long been ready to murder anyone who even hinted as much. Now I know why.",
-uniquenessgroup:"uq.rkx.weakness.cats"
+uniquenessgroup:"uq.rkx.weakness.cats",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.heights",
 label: "Weakness: Heights",
 description:"High places dizzy and demoralise my Foe.",
-uniquenessgroup:"uq.rkx.weakness.heights"
+uniquenessgroup:"uq.rkx.weakness.heights",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.horned",
 label: "Weakness: Horned Axe's Disfavour",
 description:"The Horned Axe does not favour my Foe, and where its shadow falls, he hesitates.",
-uniquenessgroup:"uq.rkx.weakness.horned"
+uniquenessgroup:"uq.rkx.weakness.horned",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.wolf",
 label: "Weakness: Wolf-Divided's Hatred",
 description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, the Wolf's rage burns a fraction hotter.",
-uniquenessgroup:"uq.rkx.weakness.wolf"
+uniquenessgroup:"uq.rkx.weakness.wolf",
+aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.flowermaker",
 label: "Weakness: Flowermaker",
 description:"Something about the Flowermaker's influence confounds my Foe. I may never know exactly what.",
-uniquenessgroup:"uq.rkx.weakness.flowermaker"
+uniquenessgroup:"uq.rkx.weakness.flowermaker",
+aspects:{weakness.foe:1}
 },
 
 
@@ -2932,63 +2955,72 @@ uniquenessgroup:"uq.rkx.weakness.flowermaker"
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cold",
-decayTo:"rkx.weakness.cold"
+decayTo:"rkx.weakness.cold",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.heat.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heat",
-decayTo:"rkx.weakness.heat"
+decayTo:"rkx.weakness.heat",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.sea.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.sea",
-decayTo:"rkx.weakness.sea"
+decayTo:"rkx.weakness.sea",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.faith.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.faith",
-decayTo:"rkx.weakness.faith"
+decayTo:"rkx.weakness.faith",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.cats.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cats",
-decayTo:"rkx.weakness.cats"
+decayTo:"rkx.weakness.cats",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.heights.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heights",
-decayTo:"rkx.weakness.heights"
+decayTo:"rkx.weakness.heights",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.horned.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.horned",
-decayTo:"rkx.weakness.horned"
+decayTo:"rkx.weakness.horned",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.wolf.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.wolf",
-decayTo:"rkx.weakness.wolf"
+decayTo:"rkx.weakness.wolf",
+aspects:{weakness.foe.unknown:1}
 },
 
 {id: "rkx.weakness.flowermaker.hidden",
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.flowermaker",
-decayTo:"rkx.weakness.flowermaker"
+decayTo:"rkx.weakness.flowermaker",
+aspects:{weakness.foe.unknown:1}
 },
 
 

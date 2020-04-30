@@ -62,6 +62,7 @@ namespace Assets.Logic
 
         private void RunElementPurges(ISituationEffectCommand command, ITabletopManager ttm)
         {
+            //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
             {
                 ttm.PurgeElement(p.Key, p.Value);
