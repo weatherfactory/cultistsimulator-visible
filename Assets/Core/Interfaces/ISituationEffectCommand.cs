@@ -11,7 +11,7 @@ namespace Assets.Core.Interfaces
         string Title { get; }
         string Description { get; }
         Recipe Recipe { get; }
-        Dictionary<string, int> GetElementChanges();
+        Dictionary<string, string> GetElementChanges();
         bool AsNewSituation { get; }
         Expulsion Expulsion { get; set; }
 

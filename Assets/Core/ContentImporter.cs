@@ -1467,8 +1467,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htEffects.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(effects)");
-                    r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                    r.Effects.Add(k, htEffects.GetString(k));
                 }
+
             }
         }
         catch (Exception e)

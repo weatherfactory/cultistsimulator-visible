@@ -145,7 +145,7 @@ namespace Assets.Logic
             foreach (var kvp in command.GetElementChanges())
             {
                 var source = Source.Fresh(); //might later be eg Transformed
-                stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value, source,
+                stacksManager.ModifyElementQuantity(kvp.Key, Convert.ToInt32(kvp.Value), source,
                     new Context(Context.ActionSource.SituationEffect));
             }
         }
