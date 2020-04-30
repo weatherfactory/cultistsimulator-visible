@@ -144,8 +144,15 @@ namespace Assets.Logic
         {
             foreach (var kvp in command.GetElementChanges())
             {
+
+                if (!int.TryParse(kvp.Value, out var effectValue))
+                {
+                    //it's a string not an int, so it must be a reference to a quantity of another element
+                    effectValue = stacksManager.GetTotalAspects(true).AspectValue(kvp.Value);
+                }
+
                 var source = Source.Fresh(); //might later be eg Transformed
-                stacksManager.ModifyElementQuantity(kvp.Key, Convert.ToInt32(kvp.Value), source,
+                stacksManager.ModifyElementQuantity(kvp.Key, effectValue, source,
                     new Context(Context.ActionSource.SituationEffect));
             }
         }
