@@ -1368,7 +1368,7 @@ aspects: {op:1,price:1},
 description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
 xtriggers:{negotiation:licence.medical},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
+{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1}}],
 lifetime:300
 },
 
@@ -1549,8 +1549,7 @@ icon:vaultcontinent5
 label:"Medical Licence",
 aspects:{asset:1,portable:1,worth:1},
 description:"The name on the licence isn't exactly mine, but it's close enough for my purposes.",
-slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}],
-icon:fragmentheart
+slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}]
 },
 
 {id:"connection.official",
