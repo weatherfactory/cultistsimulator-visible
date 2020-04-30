@@ -990,7 +990,7 @@ icon:npc.barber
 label: "Orsolina, the Delver",
 inherits:_contact.mortal,
 description:"A muscular woman with a steady gaze. Her diet has changed since her days in the Lionsmith's service, but she still retains some of her old strength.",
-xtriggers:{fatiguing:contact.delver.fatigued,mortal.introduce:[{id:"vault.delver",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.delver.fatigued,recruiting:ally.delver,mortal.introduce:[{id:"vault.delver",morpheffect:spawn}]},
 aspects:{forge:6},
 icon:npc.delver
 },
@@ -1000,7 +1000,7 @@ icon:npc.delver
 label: "Vasil, the Fivegoer",
 inherits:_contact.mortal,
 description:"A smoothly handsome man whose unhuman ancestry is not apparent, unless you know to look for his abnormally flexible fingers, or wonder why his nose tends to run.",
-xtriggers:{fatiguing:contact.fivegoer.fatigued,mortal.introduce:[{id:"vault.fivegoer",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.fivegoer.fatigued,recruiting:ally.fivegoer,mortal.introduce:[{id:"vault.fivegoer",morpheffect:spawn}]},
 aspects:{grail:6},
 icon:npc.fivegoer
 },
@@ -1010,7 +1010,7 @@ icon:npc.fivegoer
 label: "Dominykas, the Baker",
 inherits:_contact.mortal,
 description:"Dominykas has a ready smile and an unfortunate habit of picking his teeth.",
-xtriggers:{fatiguing:contact.ghoul.fatigued,mortal.introduce:[{id:"vault.ghoul",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.ghoul.fatigued,recruiting:ally.ghoul,mortal.introduce:[{id:"vault.ghoul",morpheffect:spawn}]},
 aspects:{winter:6},
 icon:npc.ghoul
 },
@@ -1021,14 +1021,14 @@ label: "Lalla Chaima, the Huntress",
 inherits:_contact.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
 aspects:{venerates.colonel:1,edge:6},
-xtriggers:{fatiguing:contact.huntress.fatigued,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.huntress.fatigued,recruiting:ally.huntress,mortal.introduce:[{id:"vault.huntress",morpheffect:spawn}]},
 icon:npc.huntress
 },
 {id: "contact.smuggler",
 label: "Giorgiou, the Smuggler",
 inherits:_contact.mortal,
 description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-xtriggers:{fatiguing:contact.smuggler.fatigued,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.smuggler.fatigued,recruiting:ally.smuggler,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
 aspects:{avaricious:1,knock:6},
 icon:npc.smuggler
 },
@@ -1037,7 +1037,7 @@ icon:npc.smuggler
 label: "Mireya, the Visionary",
 inherits:_contact.mortal,
 description:"A plump, dreamy, hesitant woman with very bright eyes.",
-xtriggers:{fatiguing:contact.visionary.fatigued,mortal.introduce:[{id:"vault.visionary",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.visionary.fatigued,recruiting:ally.visionary,mortal.introduce:[{id:"vault.visionary",morpheffect:spawn}]},
 aspects:{lantern:6},
 icon:npc.visionary 
 },
@@ -1047,7 +1047,7 @@ icon:npc.visionary
 label: "Jannings, the Vivisectionist",
 inherits:_contact.mortal,
 description:"A specialist in disassembly and also in assembly.",
-xtriggers:{fatiguing:contact.vivisectionist.fatigued,mortal.introduce:[{id:"vault.vivisectionist",morpheffect:spawn}]},
+xtriggers:{fatiguing:contact.vivisectionist.fatigued,recruiting:ally.vivisectionist,mortal.introduce:[{id:"vault.vivisectionist",morpheffect:spawn}]},
 aspects:{heart:6},
 icon:jannings 
 },
@@ -2625,7 +2625,6 @@ label: "Vienna",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
-icon: vaultcontinent6,
 unique:true,
 xtriggers:{arriving:[{id:"domicile.vienna",morpheffect:transform}]}
 },
@@ -2668,49 +2667,49 @@ lifetime:180
 },
 
 {id: "op.faith",
-label: "Opportunity: Faith",
+label: "Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
 lifetime:180
 },
 
 {id: "op.cats",
-label: "Opportunity: Cats",
+label: "Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
-description:"I've found a little alley alert with cats.",
+description:"I've found a place rich with cats.",
 lifetime:180
 },
 
 {id: "op.heights",
-label: "Opportunity: Heights",
+label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
 lifetime:180
 },
 
 {id: "op.horned",
-label: "Opportunity: Horned Axe",
+label: "THe Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 lifetime:180
 },
 
 {id: "op.wolf",
-label: "Opportunity: Wolf",
+label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
 lifetime:180
 },
 
 {id: "op.flowermaker",
-label: "Opportunity: Flowermaker",
+label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
 lifetime:180
 },
 
 {id: "op.echidna",
-label: "Opportunity: Mme E",
+label: "Mme E",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Here at the desert's edge, the thing that calls itself 'Mme E' doesn't always bother with human form. With luck, I'll never see what shape it prefers.",
 lifetime:180,
@@ -2718,7 +2717,7 @@ icon:echidna
 },
 
 {id: "op.kleidouchos",
-label: "Opportunity: Frau Schlüssel",
+label: "Frau Schlüssel",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
 lifetime:180,
@@ -2727,7 +2726,7 @@ icon:kleidouchos
 
 
 {id: "op.marinette",
-label: "Opportunity: Our Lady of Wires",
+label: "Our Lady of Wires",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
 lifetime:180,
@@ -2735,14 +2734,14 @@ icon:marinette
 },
 
 {id: "op.medusa",
-label: "Opportunity: What is Not Seen?",
+label: "What is Not Seen?",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"In all of this city, there is not one statue whose eyes are not wide open. Why is that?",
 lifetime:180
 },
 
 {id: "op.morgen",
-label: "Opportunity: Mme Matutine",
+label: "Mme Matutine",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at harbour here. Mme Matutine has a lethal reputation.",
 lifetime:180
@@ -2750,7 +2749,7 @@ lifetime:180
 
 
 {id: "op.sulochana",
-label: "Opportunity: Sulochana",
+label: "Sulochana",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
 lifetime:180,
