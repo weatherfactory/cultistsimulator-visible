@@ -465,7 +465,7 @@ label: "A Reckoner Corpse",
 aspects:{trace:1},
 description:"Proof of a victory. This is going to make my Foe very upset.",
 decayTo:"trace",
-slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1}}],
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}],
 icon:corpse
 },
 
@@ -779,7 +779,7 @@ slots:[{actionId:send,id:"destination",label:"Destination",required:{destination
 label: "Location: an Iron Shrine",
 aspects: {location:1,shrine.edge:1},
 description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}]
 },
 
 
@@ -787,7 +787,7 @@ slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}
 label: "Location: a Brazen Shrine",
 aspects: {location:1,shrine.edge:1},
 description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1}}]
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}]
 },
 
 {
@@ -935,7 +935,7 @@ icon:"ingredientwinterf"
 label: "The Merry Feaster's Carcass",
 aspects: {vault.completed:1,asset:1},
 description:"It's dissolving quickly as its internal structures corrode.",
-lifetime:180
+lifetime:300
 },
 
 {id: "vault.smuggler.completed",
@@ -1295,7 +1295,7 @@ aspects: {op:1,price:1},
 description:"A battered-looking rifle sits prosaically on a stall in a flea market. The stall-holder has no idea what she's selling.",
 xtriggers:{purchase:weapon.b},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180,
+lifetime:300,
 unique:true
 },
 
@@ -1306,7 +1306,7 @@ aspects: {op:1,price:1},
 description:"I can lease a quiet place to work. [An Office provides a little Space, and, as a place of shelter, a little Heart.] ",
 xtriggers:{purchase:office},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 {id: "op.warehouse",
 label: "Opportunity: Quiet Warehouse?",
@@ -1316,7 +1316,7 @@ xtriggers:{purchase:warehouse},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
 ],
-lifetime:180
+lifetime:300
 },
 {id: "op.townhouse",
 label: "Opportunity: Grand Townhouse?",
@@ -1328,7 +1328,7 @@ slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:tr
 {actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
 ],
-lifetime:180
+lifetime:300
 },
 {id: "op.villa",
 label: "Opportunity: Secluded Villa?",
@@ -1344,7 +1344,7 @@ slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:tr
 {actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
 ],
-lifetime:180
+lifetime:300
 },
 
 
@@ -1355,7 +1355,7 @@ description:"I could take this opportunity to qualify, extremely rapidly, as a d
 xtriggers:{negotiation:licence.medical},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"connection",label:"Connection",required:{connection:1}}],
-lifetime:180
+lifetime:300
 },
 
 	  	  {id: "op.connection.official",
@@ -1364,7 +1364,7 @@ aspects: {op:1,price:1},
 description:"I could always use more friends.",
 xtriggers:{purchase:connection.official},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 
 	  	  {id: "op.connection.ruler",
@@ -1373,7 +1373,7 @@ aspects: {op:1},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 
 	  	  {id: "op.connection.holy",
@@ -1382,7 +1382,7 @@ aspects: {op:1},
 description:"Charity brings clarity.",
 xtriggers:{purchase:connection.holy},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 
 	  	  {id: "op.connection.radicals",
@@ -1391,7 +1391,7 @@ aspects: {op:1},
 description:"They don't care where the money comes from.",
 xtriggers:{purchase:connection.radicals},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 
 	  	  {id: "op.connection.underworld",
@@ -1400,7 +1400,7 @@ aspects: {op:1},
 description:"They're no friends of the reckoner mobs.",
 xtriggers:{purchase:connection.underworld},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:180
+lifetime:300
 },
 
 
@@ -2649,70 +2649,70 @@ icon: vaultshires1
 label: "Freezing Winds",
 aspects: {op:1,distraction:1,winter:2,edge:2},
 description:"Frost walks here.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
 aspects: {op:1,distraction:1,forge:2,grail:2},
 description:"The air shimmers like a naked furnace. Serpents' weather.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.sea",
 label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.faith",
 label: "Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.cats",
 label: "Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"I've found a place rich with cats.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.heights",
 label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.horned",
 label: "THe Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.wolf",
 label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.flowermaker",
 label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.echidna",
 label: "Mme E",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Here at the desert's edge, the thing that calls itself 'Mme E' doesn't always bother with human form. With luck, I'll never see what shape it prefers.",
-lifetime:180,
+lifetime:300,
 icon:echidna
 },
 
@@ -2720,7 +2720,7 @@ icon:echidna
 label: "Frau Schlüssel",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
-lifetime:180,
+lifetime:300,
 icon:kleidouchos
 },
 
@@ -2729,7 +2729,7 @@ icon:kleidouchos
 label: "Our Lady of Wires",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
-lifetime:180,
+lifetime:300,
 icon:marinette
 },
 
@@ -2737,14 +2737,14 @@ icon:marinette
 label: "What is Not Seen?",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"In all of this city, there is not one statue whose eyes are not wide open. Why is that?",
-lifetime:180
+lifetime:300
 },
 
 {id: "op.morgen",
 label: "Mme Matutine",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at harbour here. Mme Matutine has a lethal reputation.",
-lifetime:180
+lifetime:300
 },
 
 
@@ -2752,15 +2752,11 @@ lifetime:180
 label: "Sulochana",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
-lifetime:180,
+lifetime:300,
 icon:sulochana
 },
 
-    
-
-
-
-	  {id: "temptation.defiance",
+{id: "temptation.defiance",
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1,desire:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
@@ -2770,29 +2766,31 @@ icon: bloodshed
 
 {id: "tranquillity",
 label: "Tranquillity",
-aspects: {heart:6,winter:6},
-description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come."
+aspects: {heart:4,winter:4},
+description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come.",
+lifetime:300
 },
 
 {id: "rage",
 label: "Rage",
-aspects: {edge:6,heart:6},
-description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'"
+aspects: {edge:4,heart:4},
+description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'",
+lifetime:300
 },
 
 	  {id: "wound.exile",
 label: "My Wound",
-aspects:{knock:2},
+aspects:{knock:4,winter:4},
 description:"Seven of these will end me.",
 	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
-lifetime:600,
+lifetime:1200,
 icon: scar_heart
 },
 
 	  {id: "wound.foe",
 label: "Foe's Wound",
 description:"Seven of these will end my enemy.",
-lifetime:600,
+lifetime:1200,
 aspects:{damage.foe:1},
 icon: scar_winter
 },
@@ -2800,7 +2798,7 @@ icon: scar_winter
 	  {id: "wound.foe.unstanchable",
 label: "Foe's Unstanchable Wound",
 description:"Seven wounds will end my enemy. [This Wound will take twice as long to heal.]",
-lifetime:1200,
+lifetime:2400,
 aspects:{damage.foe:1},
 icon: scar_winter
 },
@@ -2808,7 +2806,7 @@ icon: scar_winter
 	  {id: "wound.underling",
 label: "Pursuer's Wound",
 description:"One more of these will kill my pursuer.",
-lifetime:600,
+lifetime:1200,
 aspects:{damage.underling:1},
 icon: scar_edge
 },
@@ -2816,7 +2814,7 @@ icon: scar_edge
 	  {id: "wound.underling.unstanchable",
 label: "Pursuer's Unstanchable Wound",
 description:"Seven wounds will kill my pursuer. [This Wound will take twice as long to heal.]",
-lifetime:1200,
+lifetime:2400,
 aspects:{damage.underling:1},
 icon: scar_edge
 },
