@@ -281,7 +281,7 @@ hintonly:true,
 craftable:false},
 
 
-{id:"travel.visit.shrine.colonel.consecrated.upgrade",
+{id:"travel.visit.shrine.colonel.consecrated.revelation",
 actionId:"travel",
 label:"Make a Pilgrimage to an Iron Shrine, for a Revelation",
 startdescription:"The Colonel's shrines sometimes smell of gunpowder, and sometimes of snow. Meditation here will improve my understanding of the techniques the Colonel's Names teach.",
@@ -334,7 +334,7 @@ requirements:{loc.shrine.lionsmith:1,lore:-1},
 hintonly:true,
 craftable:false},
 
-{id:"travel.visit.shrine.lionsmith.consecrated.revelations",
+{id:"travel.visit.shrine.lionsmith.consecrated.revelation",
 actionId:"travel",
 label:"Make a Pilgrimage to a Brazen Shrine, for a Revelation",
 startdescription:"The Lionsmith's shrines are bright with the scent of hot brass, and rank with the scent of big cats. I have mastered his mysteries. If I meditate in his shrine, perhaps I will hear his voice. [Each Lionsmith meditation creates a Rage.]",
@@ -764,6 +764,59 @@ startdescription:"My patients have paid generously. They'll live long. I've guar
 requirements:{year.stolen:1},
 effects:{year.stolen:-1,cash:10},
 },
+
+
+{id:"use.dawn",
+actionId:"use",
+label:"Watch the Dawn",
+startdescription:"Is there something on my mind?",
+requirements:{op.dawn:1},
+slots:[{id:"temptation",label:"Temptation",required:{desire:1}}],
+warmup:10,
+alt:[{id:"tourism.tranquillity"},
+{id:"tourism.rage"}],
+effects:{op.dawn:-1,fascination:1},
+craftable:true},
+
+
+{id:"use.sunset",
+actionId:"use",
+label:"Watch the Sunset",
+startdescription:"Is there something on my mind?",
+requirements:{op.sunset:1},
+slots:[{id:"temptation",label:"Temptation",required:{desire:1}}],
+warmup:10,
+alt:[{id:"tourism.tranquillity"},
+{id:"tourism.rage"}],
+effects:{op.sunset:-1,restlessness:1},
+craftable:true},
+
+{id:"use.night",
+actionId:"use",
+label:"Walk the Streets at Night",
+startdescription:"Is there something on my mind?",
+requirements:{op.night:1},
+slots:[{id:"temptation",label:"Temptation",required:{desire:1}}],
+warmup:10,
+alt:[{id:"tourism.tranquillity"},
+{id:"tourism.rage"}],
+effects:{op.night:-1,dread:1},
+craftable:true},
+
+
+{id:"tourism.tranquillity",
+actionId:"use",
+label:"Thoughts of Peace",
+startdescription:" It's been a long time since I knew peace. This could be a fresh start.",
+requirements:{temptation.obscurity:1},
+effects:{op:-1,tranquillity:1}},
+
+{id:"tourism.rage",
+actionId:"use",
+label:"Thoughts of Fury",
+startdescription:"I clench my fists, feel the strength in them. The time is coming when I'll stop running. Sooner than they think.",
+requirements:{temptation.defiance:1},
+effects:{op:-1,rage:1}},
 
 
 

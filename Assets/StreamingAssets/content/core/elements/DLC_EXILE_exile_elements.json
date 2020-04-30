@@ -2769,6 +2769,29 @@ lifetime:300,
 icon:sulochana
 },
 
+{id: "op.dawn",
+label: "Dawn",
+aspects: {op:1},
+description:"Sunrise, when the world is clean.",
+lifetime:15,
+icon:ascensionenlightenmentb
+},
+{id: "op.sunset",
+label: "Sunset",
+aspects: {op:1},
+description:"Sunset, when the light is richer.",
+lifetime:15,
+icon:vaulteveningislesdefault
+},
+
+{id: "op.night",
+label: "Night",
+aspects: {op:1},
+description:"The deep watches of the night, and again I can't sleep.",
+lifetime:15,
+icon:seasondespair
+},
+
 {id: "temptation.defiance",
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1,desire:1},
@@ -2781,14 +2804,16 @@ icon: bloodshed
 label: "Tranquillity",
 aspects: {heart:4,winter:4},
 description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come.",
-lifetime:300
+lifetime:300,
+icon:seasonserenities
 },
 
 {id: "rage",
 label: "Rage",
 aspects: {edge:4,heart:4},
 description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'",
-lifetime:300
+lifetime:300,
+icon:skillhealthd_strength
 },
 
 	  {id: "wound.exile",
