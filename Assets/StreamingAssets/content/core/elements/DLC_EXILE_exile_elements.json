@@ -278,6 +278,17 @@ isAspect:true,
 isHidden:true
 },
 
+{id: "shrine.colonel",
+label: "Shrine: Colonel",
+description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines."
+},
+
+
+{id: "shrine.lionsmith",
+label: "Shrine: Lionsmith",
+description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines."
+},
+
 
 {id:"rkx.demote",
 label:"Reckoner Demotion",
@@ -789,20 +800,126 @@ description:"An unglamorously convenient shorthand for objects of desire.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
 
-{id: "loc.shrine.colonel",
-label: "Location: an Iron Shrine",
-aspects: {location:1,shrine.edge:1},
-description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}]
+{id: "loc.shrine.colonel.aachen",
+label: "Chapel of St Andrew Stratelates",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"There's a side chapel in Aachen cathedral to a warrior saint who fought against the Persians. On certain days, a deacon will lock the door and perform unorthodox ceremonies for veterans",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id: "loc.shrine.colonel.candia",
+label: "Roadside Shrine to an Iron Saint",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"Beneath a rocky overhang, an ancient cast-iron statue stands in a whitewashed shelter. Its face has been scarred to unrecognisability, but one hand still holds a spear.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id: "loc.shrine.colonel.leningrad",
+label: "Repurposed Datsan",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"Unexpectedly, here's a Buddhist temple with painted doors and stained glass windows. But the paint is peeling and most of the windows have been boarded up. A certain Red Army battalion commander has taken the place over - supposedly for storage, but those of us who know the pass-words are permitted to join in stern ceremonies before the scarred face of the Buddha.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
 },
 
 
-{id: "loc.shrine.lionsmith",
-label: "Location: a Brazen Shrine",
-aspects: {location:1,shrine.edge:1},
-description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}]
+{id: "loc.shrine.colonel.munich",
+label: "Cellar Wotan",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"In the deepest cellar of the Nationaltheater stands a stern image carved of Black Forest oak. Sixty years ago the Swan King staged a grandiose première of his favourite composer's new opera. It didn't go well. The stage-trappings were banished down here and forgotten. Now the image's eye has been scarred out to make him blind, and those who know of the place's power perform their harsh devotions before it.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
 },
+
+{id: "loc.shrine.colonel.nizhny",
+label: "Scarred Lodge",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"In a burnt-out hunting lodge at the edge of town, charred bone has been carved into chess-pieces, and a chess-board scored in the stone of the hearth.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.colonel.stalingrad",
+label: "Fane of the One-Armed",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"An abandoned grain silo has been adopted by a secret cult honouring an odd hero: the one-armed Briton who stormed the city for the White Russians, alone in a single tank. Perhaps he is now a Name. Perhaps he's only dead. But those who venerate the Colonel remember him.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id: "loc.shrine.colonel.valletta",
+label: "Mortal Shrine",
+aspects: {location:1,shrine.edge:1,shrine.colonel:1},
+description:"Malta is the Nurse of the Mediterranean, where soldiers come to be healed, and there are those among the healers who practice the invisible arts. They keep shrines in locked rooms in their hospitals to invoke the healing Hours. No-one prays to the Colonel for healing. They only visit this rotting room under the eaves to invoke him when death would be a mecy.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id: "loc.shrine.lionsmith.alexandria",
+label: "Anvil of the Bull",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id: "loc.shrine.lionsmith.algiers",
+label: "Skaptodon Tomb",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.lionsmith.marrakech",
+label: "Hall of Brass Mirrors",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.lionsmith.meshad",
+label: "Šhahrewar Stone",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.lionsmith.samarkand",
+label: "The Crossroads Altar",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.lionsmith.tripoli",
+label: "Antaeum",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
+{id: "loc.shrine.lionsmith.venice",
+label: "The Lion of Many",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"FNORD",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+
 
 {
 id:"vault.serapeum",
@@ -2276,8 +2393,6 @@ description:"One of those few cities which has the same name in every History...
 icon: city.vienna,
 unique:true
 },
-
-
 
 	  {id: "city.aachen",
 label: "Rhenish Aachen",
