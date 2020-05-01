@@ -829,7 +829,7 @@ description:"@#licence.medical#And good morning to <i>you</i>, Doctor.
 comments:"The slots on the purchaseable item are what restrict to a relevant connection.",
 requirements:{op:1,connection:1},
 aspects:{negotiation:1},
-warmup:30,
+warmup:10,
 craftable:true},
 
 {id:"use.purchase.lifespan",
@@ -839,7 +839,7 @@ startdescription:"Here's someone who will only accept payment in the currency of
 description:"And done.",
 requirements:{op:1,price.lifespan.stolen:1,lifespan.stolen:price.lifespan.stolen},
 aspects:{purchase:1},
-warmup:30,
+warmup:10,
 craftable:true},
 
 {id:"use.purchase.lifespan.hint",
@@ -859,7 +859,7 @@ startdescription:"Purchase something useful.",
 description:"And done.",
 requirements:{op:1,price:1,worth:price},
 aspects:{purchase:1},
-warmup:30,
+warmup:10,
 craftable:true},
 
 {id:"use.purchase.hint",

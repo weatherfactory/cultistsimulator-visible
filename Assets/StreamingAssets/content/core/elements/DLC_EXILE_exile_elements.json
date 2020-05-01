@@ -1456,11 +1456,95 @@ lifetime:120,
 resaturate:true
 },
 
-{id: "op.purchase.weapon.b",
+{id: "op.weapon.b",
 label: "Opportunity: Purchase an Unusual Weapon?",
 aspects: {op:1,price:1},
 description:"A battered-looking rifle sits prosaically on a stall in a flea market. The stall-holder has no idea what she's selling.",
 xtriggers:{purchase:weapon.b},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.curio.forge",
+label: "Opportunity: Purchase a Dangerous Substance?",
+aspects: {op:1,price:1},
+description:"This would be illegal, except that not enough people know it exists.[A Forge curio.]",
+xtriggers:{purchase:curio.forge},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+comments: "not unique: can be purchased multiple times"
+},
+{id: "op.curio.grail",
+label: "Opportunity: Purchase Red Temptation?",
+aspects: {op:1,price:2},
+description:"Something viscous and sweet.[A Grail curio.]",
+xtriggers:{purchase:curio.grail},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment2",required:{worth:1},consumes:true}],
+lifetime:300,
+comments: "not unique: can be purchased multiple times"
+},
+
+{id: "op.curio.heart",
+label: "Opportunity: Purchase an Odd Image?",
+aspects: {op:1,price:1},
+description:"'Authentic,' I'm assured, 'just like the real thing.' [A Heart curio.]",
+xtriggers:{purchase:curio.heart},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.curio.knock",
+label: "Opportunity: Purchase a Menacing Icon?",
+aspects: {op:1,price:1},
+description:"This kind of thing is one reason I don't go to church. [A Knock curio.]",
+xtriggers:{purchase:curio.knock},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+
+{id: "op.curio.lantern1",
+label: "Opportunity: Purchase a Mutilated Manuscript?",
+aspects: {op:1,price:2},
+description:"A fistful of badly mistreated pages.[A Lantern curio.]",
+xtriggers:{purchase:curio.lantern},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.curio.lantern2",
+label: "Opportunity: Purchase a Mutilated Manuscript?",
+aspects: {op:1,price:2},
+description:"A fistful of badly mistreated pages.[A Lantern curio.]",
+xtriggers:{purchase:curio.lantern},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.curio.lantern3",
+label: "Opportunity: Purchase a Mutilated Manuscript?",
+aspects: {op:1,price:2},
+description:"A fistful of badly mistreated pages.[A Lantern curio.]",
+xtriggers:{purchase:curio.lantern},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.curio.moth",
+label: "Opportunity: Purchase an Unsettling Doll?",
+aspects: {op:1,price:1},
+description:"'It'll be back,' the seller informs me, gloomily. 'Do what you can with it in the meantime.' [A Moth curio.]",
+xtriggers:{purchase:curio.moth},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
 unique:true
@@ -1608,14 +1692,14 @@ icon:toolknockb
 
 {id:"curio.lantern",
 label:"Curio: Pages from the Book of Suns",
-aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2,worth:1},
+aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2,worth:2},
 description:"Gorgeously illustrated manuscript pages, ripped from the original binding to be sold separately. I don't know the language - Persian? Arabic? but somehow I can read the words in sufficiently bright light. A dispute between Hours, a lineage concealed, a secret which shattered loyalties... not much practical information, but there's something about the sounds that sharpens the soul."
 },
 
 {id:"curio.moth",
 label:"Curio: Threadbare Angel",
 aspects:{asset:1,portable:1,moth:4,grail:2},
-description:"It smells like unopened rooms. Somehow I keep thinking it's changing its shape when I don't look at it, but I never catch it in the act.",
+description:"It smells like unopened rooms. Somehow I keep thinking it's changing its shape when I don't look at it, but I never catch it in the act. [No-one will buy this.]",
 icon:toolmothb
 },
 
@@ -1634,7 +1718,7 @@ description:"A ten-stringed guitar from the House of Stradivari, shaped from sof
 
 {id:"rarity.lantern",
 label:"Rarity: The Book of Suns, Reassembled",
-aspects:{asset:1,portable:1,comfort:1,lantern:8,grail:4,worth:2},
+aspects:{asset:1,portable:1,comfort:2,lantern:8,grail:4,worth:10},
 description:"There's a forgotten and golden truth in these images - a truth from the times before the Sun was divided. I don't understand it. It's not meant for me. But even the reflected light of that truth is an illumination."
 },
 
