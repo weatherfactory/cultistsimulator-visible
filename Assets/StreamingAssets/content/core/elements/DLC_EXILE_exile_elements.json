@@ -526,8 +526,7 @@ label: "A Reckoner Corpse",
 aspects:{trace:1},
 description:"Proof of a victory. This is going to make my Foe very upset.",
 decayTo:"trace",
-slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}],
-icon:corpse
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
 },
 
 {id: "ee.armouredgate",
