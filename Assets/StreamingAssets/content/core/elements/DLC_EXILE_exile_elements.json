@@ -1499,8 +1499,7 @@ label: "Opportunity: Medical Credentials?",
 aspects: {op:1,price:1},
 description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
 xtriggers:{negotiation:licence.medical},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],
+slots:[{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],
 lifetime:300
 },
 
