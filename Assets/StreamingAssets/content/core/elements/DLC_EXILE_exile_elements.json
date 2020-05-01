@@ -290,11 +290,24 @@ label: "Shrine: Colonel",
 description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines."
 },
 
+{id: "shrine.colonel.marker",
+label: "A Cult of the Colonel",
+description:"If my intelligence is correct, there's a cult of the Colonel somewhere in this city.",
+icon:shrine.colonel
+},
+
 
 {id: "shrine.lionsmith",
 label: "Shrine: Lionsmith",
 description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines."
 },
+
+{id: "shrine.lionsmith.marker",
+label: "A Cult of the Lionsmith",
+description:"If my intelligence is correct, there's a cult of the Lionsmith somewhere in this city.",
+icon:shrine.lionsmith
+},
+
 
 
 {id:"rkx.demote",
@@ -2069,7 +2082,7 @@ unique:true
 
 	  {id: "domicile.aachen",
 label: "Rhenish Aachen",
-aspects: {domicile:1,troubled:1},
+aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
@@ -2079,7 +2092,7 @@ unique:true
 
 	  {id: "domicile.alexandria",
 label: "Alexandria",
-aspects: {domicile:1},
+aspects: {domicile:1,shrine.lionsmith.marker:1},
 
 description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
 icon: city.alexandria,
@@ -2140,7 +2153,7 @@ unique:true
 
 	  {id: "domicile.candia",
 label: "Candia-Heraklion",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2211,7 +2224,7 @@ unique:true
 	  
 	  {id: "domicile.leningrad",
 label: "Leningrad",
-aspects: {domicile:1,troubled:1},
+aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 icon: city.leningrad,
@@ -2251,7 +2264,7 @@ unique:true
 
 	  {id: "domicile.munich",
 label: "Munich",
-aspects: {domicile:1,troubled:1},
+aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 icon: city.munich,
@@ -2261,7 +2274,7 @@ unique:true
 
 	  {id: "domicile.nizhny",
 label: "Nizhny Novgorod",
-aspects: {domicile:1,remote:1,troubled:1},
+aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2322,7 +2335,7 @@ unique:true
 
 	  {id: "domicile.stalingrad",
 label: "Stalingrad",
-aspects: {domicile:1,remote:1,troubled:1},
+aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2388,7 +2401,7 @@ unique:true
 
 	  {id: "domicile.valletta",
 label: "Valletta",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2418,7 +2431,7 @@ unique:true
 
 	  {id: "city.aachen",
 label: "Rhenish Aachen",
-aspects: {destination:1,troubled:1},
+aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn},{id:"domicile.aachen"}]},
@@ -2427,7 +2440,7 @@ unique:true
 
 	  {id: "city.alexandria",
 label: "Alexandria",
-aspects: {destination:1},
+aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
 unique:true,
@@ -2437,7 +2450,7 @@ xtriggers:{arriving:[{id:"domicile.alexandria",morpheffect:transform}]}
 
 	  {id: "city.algiers",
 label: "Algiers",
-aspects: {destination:1},
+aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
 unique:true,
@@ -2485,7 +2498,7 @@ xtriggers:{arriving:[{id:"domicile.budapest",morpheffect:transform}]}
 
 	  {id: "city.candia",
 label: "Candia-Heraklion",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2557,7 +2570,7 @@ xtriggers:{arriving:[{id:"domicile.krakow",morpheffect:transform}]}
 	  
 	  {id: "city.leningrad",
 label: "Leningrad",
-aspects: {destination:1,troubled:1},
+aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 
@@ -2577,7 +2590,7 @@ xtriggers:{arriving:[{id:"domicile.london",morpheffect:transform}]}
 
 	  {id: "city.marrakech",
 label: "Marrakech",
-aspects: {destination:1},
+aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
 
@@ -2588,7 +2601,7 @@ xtriggers:{arriving:[{id:"domicile.marrakech",morpheffect:transform}]}
 
 	  {id: "city.meshad",
 label: "Meshad",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2601,7 +2614,7 @@ xtriggers:{arriving:[{id:"domicile.meshad",morpheffect:transform}]}
 
 	  {id: "city.munich",
 label: "Munich",
-aspects: {destination:1,troubled:1},
+aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 
@@ -2612,7 +2625,7 @@ xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domici
 
 	  {id: "city.nizhny",
 label: "Nizhny Novgorod",
-aspects: {destination:1,remote:1,troubled:1},
+aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2664,7 +2677,7 @@ xtriggers:{arriving:[{id:"domicile.rostock",morpheffect:transform}]}
 
 	  {id: "city.samarkand",
 label: "Samarkand",
-aspects: {destination:1,remote:1,troubled:1},
+aspects: {destination:1,remote:1,troubled:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2677,7 +2690,7 @@ xtriggers:{arriving:[{id:"domicile.samarkand",morpheffect:transform}]}
 
 	  {id: "city.stalingrad",
 label: "Stalingrad",
-aspects: {destination:1,remote:1,troubled:1},
+aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2738,7 +2751,7 @@ xtriggers:{arriving:[{id:"domicile.tirana",morpheffect:transform}]}
 
 	  {id: "city.tripoli",
 label: "Tripoli dell'ovest",
-aspects: {destination:1},
+aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
 
@@ -2749,7 +2762,7 @@ xtriggers:{arriving:[{id:"domicile.tripoli",morpheffect:transform}]}
 
 	  {id: "city.valletta",
 label: "Valletta",
-aspects: {destination:1,remote:1},
+aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
@@ -2761,7 +2774,7 @@ xtriggers:{arriving:[{id:"domicile.valletta",morpheffect:transform}]}
 
 	  {id: "city.venice",
 label: "Venice",
-aspects: {destination:1},
+aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
 
