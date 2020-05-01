@@ -436,6 +436,14 @@ description:"Something that won't object to being owned.",
 isAspect:true,
 },
 
+
+{id: "connection",
+label: "Connection",
+description:"[Hidden aspect]",
+isAspect:true,
+isHidden:true
+},
+
 {id:"worth",
 label:"Worth",
 description:"If I had to convert this into cash, how much would it be worth?",
@@ -1490,9 +1498,9 @@ lifetime:300
 label: "Opportunity: Medical Credentials?",
 aspects: {op:1,price:1},
 description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
-xtriggers:{negotiation:licence.medical,renewal.exile:op.licence.medical},
+xtriggers:{negotiation:licence.medical},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1}}],
+{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],
 lifetime:300
 },
 
@@ -1507,7 +1515,7 @@ lifetime:300
 
 	  	  {id: "op.connection.ruler",
 label: "Opportunity: a Connection with a Ruler?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
@@ -1516,7 +1524,7 @@ lifetime:300
 
 	  	  {id: "op.connection.holy",
 label: "Opportunity: a Connection with a Holy Man?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"Charity brings clarity.",
 xtriggers:{purchase:connection.holy},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
@@ -1525,7 +1533,7 @@ lifetime:300
 
 	  	  {id: "op.connection.radicals",
 label: "Opportunity: a Connection with Radicals?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"They don't care where the money comes from.",
 xtriggers:{purchase:connection.radicals},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
@@ -1534,7 +1542,7 @@ lifetime:300
 
 	  	  {id: "op.connection.underworld",
 label: "Opportunity: an Underworld Connection?",
-aspects: {op:1},
+aspects: {op:1,price:1},
 description:"They're no friends of the reckoner mobs.",
 xtriggers:{purchase:connection.underworld},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
@@ -1678,34 +1686,34 @@ slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}]
 
 {id:"connection.official",
 label:"Official Connection",
-aspects:{asset:1,deception:1,grail:6,lantern:6},
+aspects:{connection:1,asset:1,deception:1,grail:6,lantern:6},
 description:"A mutually beneficial arrangement with someone in authority."
 },
 
 
 {id:"connection.ruler",
 label:"Connection: Ruler",
-aspects:{asset:1,deception:1,edge:10,grail:10,knock:10},
+aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
 description:"A mutually beneficial arrangement with someone of real power."
 },
 
 
 {id:"connection.holy",
 label:"Connection: Holy Man",
-aspects:{asset:1,deception:1,heart:8,lantern:8},
+aspects:{connection:1,asset:1,deception:1,heart:8,lantern:8},
 description:"A mutually beneficial arrangement with a learned holy man."
 },
 
 
 {id:"connection.radicals",
 label:"Connection: Radicals",
-aspects:{asset:1,deception:1,edge:8,moth:8,forge:6},
+aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,forge:6},
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts."
 },
 
 {id:"connection.underworld",
 label:"Connection: Underworld",
-aspects:{asset:1,deception:1,edge:8,moth:8,knock:6},
+aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
 description:"A mutually beneficial arrangement with relevant professionals."
 },
 
