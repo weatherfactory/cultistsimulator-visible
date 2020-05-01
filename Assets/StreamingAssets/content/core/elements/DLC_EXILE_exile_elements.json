@@ -451,6 +451,14 @@ isAspect:true,
 icon:compensationvalue
 },
 
+{id:"price.lifespan.stolen",
+label:"Price in Years",
+description:"Some things are too precious to buy with money. Fewer things are too precious to buy with heartbeats.",
+isAspect:true,
+icon:wary
+},
+
+
 {id:"price",
 label:"Price",
 description:"'PRICE, n. Value, plus a reasonable sum for the wear and tear of conscience in demanding it.' - Bierce. [Provide this or greater in Worth.]",
@@ -1514,10 +1522,10 @@ lifetime:300
 
 	  	  {id: "op.connection.ruler",
 label: "Opportunity: a Connection with a Ruler?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.lifespan.stolen:5},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
 lifetime:300
 },
 
