@@ -835,7 +835,7 @@ craftable:true},
 actionId:"use",
 label:"Purchase",
 startdescription:"Attempt to Purchase Something Useful",
-requirements:{op:1,worth:price},
+requirements:{op:1,price:1,worth:price},
 aspects:{purchase:1},
 warmup:30,
 craftable:true},
@@ -851,6 +851,14 @@ craftable:false},
 
 
 
+{id:"use.renew",
+actionId:"use",
+label:"Reserve",
+startdescription:"I'll make a mental note. [This will renew the lifespan of the Opportunity in case you need it later.]",
+description:"There.",
+requirements:{op:1},
+aspects:{renewal.exile:1},
+warmup:30,craftable:true},
 
 
 {id:"turn.begin",
