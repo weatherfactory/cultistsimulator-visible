@@ -1938,7 +1938,7 @@ foreach(var d in _compendium.GetAllDeckSpecs())
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        LogInfo("Words (based on spaces +1 count): " + words);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words);
 
     }
 
