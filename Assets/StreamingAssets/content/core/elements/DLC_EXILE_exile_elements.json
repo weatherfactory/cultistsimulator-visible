@@ -529,6 +529,22 @@ decayTo:"trace",
 slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
 },
 
+{id: "ee.medical1.heart.grail",
+label: "FNORD Heart or Grail dr complication",
+aspects: {complication:1,minheart:2,mingrail:2},
+xtriggers:{next:ee.medical1.heart.knock},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.medical2.heart.knock",
+label: "FNORD Heart or Knock dr complication",
+aspects: {complication:1,minheart:6,mingrail:6},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
 {id: "ee.armouredgate",
 label: "Armoured Gate",
 aspects: {complication:1,minforge:8,minknock:8},
@@ -820,6 +836,31 @@ description:"[Three Progress will complete a Caper.]",
 lifetime:1,
 icon:compensationd
 },
+
+{id: "progress.subtlety",
+label: "Subtlety",
+description:"[Each level of Subtlety reduces the risk of spawning a Trace.]",
+lifetime:1,
+icon:changemarks
+},
+
+{id: "progress.effectiveness",
+label: "Effectiveness",
+description:"[Each level of Effectiveness improves the final result.]",
+lifetime:1,
+icon:idealist
+},
+
+
+
+{id:"next",
+label:"Next",
+description:"Recipe Effect",
+isAspect:true,
+noartneeded:true
+},
+
+
 {id: "payment",
 label: "Payment",
 description:"I've paid off a problem.",
@@ -831,7 +872,7 @@ icon:bid
 {id: "cash",
 label: "Cash",
 aspects: {asset:1,portable:1,worth:1},
-description:"An unglamorously convenient shorthand for objects of desire.",
+description:"A considerable sum. I wouldn't want to be caught carrying this much.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
 
@@ -1458,7 +1499,7 @@ resaturate:true
 {id: "op.weapon.b",
 label: "Opportunity: Purchase an Unusual Weapon?",
 aspects: {op:1,price:1},
-description:"A battered-looking rifle sits prosaically on a stall in a flea market. The stall-holder has no idea what she's selling.",
+description:"A battered-looking rifle sits prosaically on a counter in an antique shop.",
 xtriggers:{purchase:weapon.b},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
@@ -1784,7 +1825,8 @@ icon:vaultcontinent5
 label:"Medical Licence",
 aspects:{asset:1,portable:1,worth:1},
 description:"The name on the licence isn't exactly mine, but it's close enough for my purposes.",
-slots:[{actionId:use,id:"location",label:"Location",required:{space:1}}]
+slots:[{actionId:use,id:"location",label:"Location",required:{space:1}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
 },
 
 {id:"connection.official",

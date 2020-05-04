@@ -1,0 +1,151 @@
+{
+"recipes": [
+
+
+{id:"use.doctorspractice",
+actionId:"use",
+label:"Run a Doctor's Practice",
+startdescription:"My treatments may not be quite what they seem... but my results are always excellent. [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"The Practice is open.",
+requirements:{licence.medical:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.doctorspractice", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}],
+craftable:true},
+
+{id:"opx.doctorspractice.begin",
+actionId:"opx.doctorspractice",
+label:"A Doctor's Practice",
+startdescription:"Business hours.",
+warmup:10,
+effects:{ee.medical1.heart.grail:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.challenge",
+actionId:"opx.",
+label:"A Challenge",
+startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
+#|A complication lies ahead.@
+
+[Solving complications with Heart, Grail, Moth, or Winter increases Subtlety. Solving complications with Edge, Forge, Knock or Lantern increases Effectiveness.]",
+warmup:60,
+requirements:{complication:1},
+slots:[{id:"response",label:"Response",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+alt:[{id:"opx.tryresolve.edge"},
+{id:"opx.tryresolve.forge"},
+{id:"opx.tryresolve.grail"},
+{id:"opx.tryresolve.heart"},
+{id:"opx.tryresolve.knock"},
+{id:"opx.tryresolve.lantern"},
+{id:"opx.tryresolve.moth"},
+{id:"opx.tryresolve.secrethistories"},
+{id:"opx.tryresolve.winter"}]]
+},
+
+
+{id:"opx.tryresolve.edge",
+actionId:"opx.",
+label:"Violence Is A Solution",
+startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I'm more a match for it.
+#ee.soldiers| Noisy, messy, necessary. Now I'll have to clean my boots.
+#|I've used force.@",
+requirements:{minedge:1,edge:minedge},
+effects:{progress.effectiveness:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.forge",
+actionId:"opx.",
+label:"Hammer and Anvil",
+startdescription:"@#ee.mist|Once again, fire and ingenuity have served me well.
+#ee.securevault|I've breached the vault.
+#|I've used ingenuity.@",
+requirements:{minforge:1,forge:minforge},
+effects:{progress.effectiveness:1},
+linked:[{id:"opx.makeprogress"}]},
+
+
+{id:"opx.tryresolve.grail",
+actionId:"opx.",
+label:"Greed and Beguilement",
+startdescription:"@#ee.soldiers|I've come to an arrangement with the soldiers guarding this place.
+#|I've used bribery.@",
+requirements:{mingrail:1,grail:mingrail},
+effects:{progress.subtlety:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.heart",
+actionId:"opx.",
+label:"The Drum Unceasing",
+startdescription:"@#|I've used persistence.@",
+requirements:{minheart:1,heart:minheart},
+effects:{progress.subtlety:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.knock",
+actionId:"opx.",
+label:"All Wounds Are Doors",
+startdescription:"@#|I've opened what was sealed.@",
+requirements:{minknock:1,knock:minknock},
+effects:{progress.effectiveness:1},
+linked:[{id:"opx.makeprogress"}]},
+
+
+{id:"opx.tryresolve.lantern",
+actionId:"opx.",
+label:"Illumination",
+startdescription:"@#ee.mist|The Watchman comes before the Velvet' is the kind of thing adepts say. I think it means that mist is only really a damper sort of darkness.
+#|I've dissolved a darkness.@",
+requirements:{minlantern:1,lantern:minlantern},
+effects:{progress.effectiveness:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.moth",
+actionId:"opx.",
+label:"Smoke and Mirrors",
+startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I can't face it head-on, so I've turned to trickery.
+#ee.soldiers|The soldiers who should be guarding this place have gone thundering off into the night. I'll have just enough time to finish here before they get back -
+#|I've used trickery.@",
+requirements:{minmoth:1,moth:minmoth},
+effects:{progress.subtlety:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.secrethistories",
+actionId:"opx.",
+label:"Not Only One History",
+startdescription:"@#|I've used knowledge.@",
+requirements:{minsecrethistories:1,secrethistories:minsecrethistories},
+effects:{progress.subtlety:1},
+linked:[{id:"opx.makeprogress"}]},
+
+{id:"opx.tryresolve.winter",
+actionId:"opx.",
+label:"Night Deepens",
+startdescription:"@#|I've used patience.@",
+requirements:{minwinter:1,winter:minwinter},
+effects:{progress.subtlety:1},
+linked:[{id:"opx.makeprogress"}]},
+
+
+{id:"opx.makeprogress",
+actionId:"opx.",
+label:"Progress",
+startdescription:"What's next?",
+aspects:{next:1},
+linked:[{id:"opx.challenge"},
+{id:"opx.end"}]},
+
+
+
+{id:"opx.end",
+actionId:"opx.rob.vault",
+effects:{supplies:-100,distraction:-100,op:-100,cash:success.effectiveness}]
+},
+
+
+
+
+
+]
+}
