@@ -25,7 +25,7 @@ craftable:true},
 
 {id:"use.miracles",
 actionId:"use",
-label:"Run a Miracle Cult",
+label:"Run a Faith-Healing Cult",
 startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash.]",
 description:"The congregation is assembling.",
 requirements:{connection.holy:1,space:1,year.stolen:1},
@@ -106,10 +106,99 @@ actionId:"opx.doctorspractice",
 label:"A Doctor's Practice",
 startdescription:"Business hours. [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
-slots:[{id:"preparations",label:"Prepartions",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
 effects:{ee.medical1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
+
+
+{id:"opx.sanatorium.begin",
+actionId:"opx.sanatorium",
+label:"A Sanatorium",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+{id:"opx.miracles.begin",
+actionId:"opx.miracles",
+label:"A Faith-Healing Cult",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.import.begin",
+actionId:"opx.import",
+label:"An Import Business",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.counterfeiting.begin",
+actionId:"opx.counterfeiting",
+label:"A Counterfeiting Operation",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.smuggling.begin",
+actionId:"opx.smuggling",
+label:"A Smuggling Operation",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.fights.begin",
+actionId:"opx.fights",
+label:"Fighting",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+
+{id:"opx.uprising.begin",
+actionId:"opx.uprising",
+label:"Uprising",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.patronage.begin",
+actionId:"opx.patronage",
+label:"",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee...:1},
+linked:[{id:"opx.challenge"}]
+},
+
 
 
 {id:"opx.challenge",
