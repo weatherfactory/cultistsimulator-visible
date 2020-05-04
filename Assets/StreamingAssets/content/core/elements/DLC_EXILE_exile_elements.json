@@ -2029,6 +2029,7 @@ label:"Import Licence",
 aspects:{asset:1,worth:1},
 description:"The name on the licence isn't exactly mine, but it's close enough.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
+{actionId:use,id:"means",label:"Means",required:{op.sea:1}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
 },
 
