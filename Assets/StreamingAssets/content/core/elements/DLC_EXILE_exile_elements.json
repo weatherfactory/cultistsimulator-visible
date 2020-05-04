@@ -151,7 +151,8 @@ icon: ingredient
 label:"Complication",
 description:"Used to mark opx events",
 isAspect:true,
-noartneeded:true
+noartneeded:true,
+isHidden:true
 },
 
 {id:"negotiation",
@@ -531,15 +532,15 @@ slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.de
 
 {id: "ee.medical1.heart.grail",
 label: "FNORD Heart or Grail dr complication",
-aspects: {complication:1,minheart:2,mingrail:2},
-xtriggers:{next:ee.medical1.heart.knock},
+aspects: {complication:1,minheart:4,mingrail:4},
+xtriggers:{next:ee.medical2.heart.knock},
 description:"FNORD",
 lifetime:1
 },
 
 {id: "ee.medical2.heart.knock",
 label: "FNORD Heart or Knock dr complication",
-aspects: {complication:1,minheart:6,mingrail:6},
+aspects: {complication:1,minheart:8,mingrail:8},
 xtriggers:{next:progress},
 description:"FNORD",
 lifetime:1
@@ -839,6 +840,7 @@ icon:compensationd
 
 {id: "progress.subtlety",
 label: "Subtlety",
+isAspect:true,
 description:"[Each level of Subtlety reduces the risk of spawning a Trace.]",
 lifetime:1,
 icon:changemarks
@@ -846,6 +848,7 @@ icon:changemarks
 
 {id: "progress.effectiveness",
 label: "Effectiveness",
+isAspect:true,
 description:"[Each level of Effectiveness improves the final result.]",
 lifetime:1,
 icon:idealist

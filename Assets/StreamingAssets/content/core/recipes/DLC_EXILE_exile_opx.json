@@ -10,14 +10,15 @@ description:"The Practice is open.",
 requirements:{licence.medical:1,space:1,year.stolen:1},
 effects:{year.stolen:-1},
 warmup:5,
-alt:[{id:"opx.doctorspractice", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}],
+alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
 craftable:true},
 
 {id:"opx.doctorspractice.begin",
 actionId:"opx.doctorspractice",
 label:"A Doctor's Practice",
-startdescription:"Business hours.",
+startdescription:"Business hours. [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
+slots:[{id:"preparations",label:"Prepartions",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
 effects:{ee.medical1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
@@ -27,21 +28,22 @@ linked:[{id:"opx.challenge"}]
 actionId:"opx.",
 label:"A Challenge",
 startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
-#|A complication lies ahead.@
+#|A challenge lies ahead.@
 
-[Solving complications with Heart, Grail, Moth, or Winter increases Subtlety. Solving complications with Edge, Forge, Knock or Lantern increases Effectiveness.]",
+[If you match the Challenge with Edge, Forge, Knock or Lantern, you'll increase Effectiveness. Otherwise, use Heart, Grail, Moth, or Winter to increase Subtlety.]",
 warmup:60,
 requirements:{complication:1},
 slots:[{id:"response",label:"Response",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
 alt:[{id:"opx.tryresolve.edge"},
 {id:"opx.tryresolve.forge"},
+{id:"opx.tryresolve.lantern"},
+{id:"opx.tryresolve.knock"},
 {id:"opx.tryresolve.grail"},
 {id:"opx.tryresolve.heart"},
-{id:"opx.tryresolve.knock"},
-{id:"opx.tryresolve.lantern"},
 {id:"opx.tryresolve.moth"},
 {id:"opx.tryresolve.secrethistories"},
-{id:"opx.tryresolve.winter"}]]
+{id:"opx.tryresolve.winter"}],
+linked: [{id:"opx.next"}]
 },
 
 
@@ -53,7 +55,7 @@ startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I'm 
 #|I've used force.@",
 requirements:{minedge:1,edge:minedge},
 effects:{progress.effectiveness:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.forge",
 actionId:"opx.",
@@ -63,7 +65,7 @@ startdescription:"@#ee.mist|Once again, fire and ingenuity have served me well.
 #|I've used ingenuity.@",
 requirements:{minforge:1,forge:minforge},
 effects:{progress.effectiveness:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 
 {id:"opx.tryresolve.grail",
@@ -73,7 +75,7 @@ startdescription:"@#ee.soldiers|I've come to an arrangement with the soldiers gu
 #|I've used bribery.@",
 requirements:{mingrail:1,grail:mingrail},
 effects:{progress.subtlety:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.heart",
 actionId:"opx.",
@@ -81,7 +83,7 @@ label:"The Drum Unceasing",
 startdescription:"@#|I've used persistence.@",
 requirements:{minheart:1,heart:minheart},
 effects:{progress.subtlety:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.knock",
 actionId:"opx.",
@@ -89,7 +91,7 @@ label:"All Wounds Are Doors",
 startdescription:"@#|I've opened what was sealed.@",
 requirements:{minknock:1,knock:minknock},
 effects:{progress.effectiveness:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 
 {id:"opx.tryresolve.lantern",
@@ -99,7 +101,7 @@ startdescription:"@#ee.mist|The Watchman comes before the Velvet' is the kind of
 #|I've dissolved a darkness.@",
 requirements:{minlantern:1,lantern:minlantern},
 effects:{progress.effectiveness:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.moth",
 actionId:"opx.",
@@ -109,7 +111,7 @@ startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I ca
 #|I've used trickery.@",
 requirements:{minmoth:1,moth:minmoth},
 effects:{progress.subtlety:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.secrethistories",
 actionId:"opx.",
@@ -117,7 +119,7 @@ label:"Not Only One History",
 startdescription:"@#|I've used knowledge.@",
 requirements:{minsecrethistories:1,secrethistories:minsecrethistories},
 effects:{progress.subtlety:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.winter",
 actionId:"opx.",
@@ -125,23 +127,86 @@ label:"Night Deepens",
 startdescription:"@#|I've used patience.@",
 requirements:{minwinter:1,winter:minwinter},
 effects:{progress.subtlety:1},
-linked:[{id:"opx.makeprogress"}]},
+linked:[{id:"opx.next"}]},
 
 
-{id:"opx.makeprogress",
+{id:"opx.next",
 actionId:"opx.",
 label:"Progress",
 startdescription:"What's next?",
 aspects:{next:1},
+warmup:5,
 linked:[{id:"opx.challenge"},
 {id:"opx.end"}]},
 
 
 
 {id:"opx.end",
-actionId:"opx.rob.vault",
-effects:{supplies:-100,distraction:-100,op:-100,cash:success.effectiveness}]
+actionId:"opx.",
+effects:{supplies:-100,distraction:-100,op:-100,cash:2},
+linked:[{id:opx.end.subtlety3},
+{id:opx.end.subtlety2},
+{id:opx.end.subtlety1},
+{id:opx.end.subtlety0},
+{id:opx.end.effectiveness}]
 },
+
+
+{id:"opx.end.subtlety3",
+actionId:"opx.",
+warmup:5,
+label:"An Invisible Art?",
+startdescription:"I've left no trace.",
+requirements:{progress.subtlety:3},
+effects:{progress.subtlety:-3},
+linked:[{id:opx.end.effectiveness}]
+},
+
+{id:"opx.end.subtlety2",
+actionId:"opx.",
+warmup:5,
+label:"A Light Touch",
+startdescription:"I've been careful. [A slight risk of a Trace.]",
+requirements:{progress.subtlety:2},
+aspects:{minortracerisk:1},
+effects:{progress.subtlety:-3},
+linked:[{id:opx.end.effectiveness}]
+},
+
+{id:"opx.end.subtlety1",
+actionId:"opx.",
+warmup:5,
+label:"For Those With Eyes To See",
+startdescription:"I could have been subtler. [A significant risk of a Trace.]",
+requirements:{progress.subtlety:1},
+aspects:{tracerisk:1},
+effects:{progress.subtlety:-3},
+linked:[{id:opx.end.effectiveness}]
+},
+
+{id:"opx.end.subtlety0",
+actionId:"opx.",
+warmup:5,
+label:"Loose Ends",
+startdescription:"Subtlety wasn't my priority here. [A serious risk of a Trace.]",
+aspects:{majortracerisk:1},
+effects:{progress.subtlety:-3},
+linked:[{id:opx.end.effectiveness}]
+}
+
+
+{id:"opx.end.effectiveness",
+actionId:"opx.",
+label:"Return on Investment",
+startdescription:"I've got good value for my years."
+warmup:5,
+requirements:{progress.effectiveness:1}
+effects:{cash:progress.effectiveness,progress.effectiveness:-3}
+},
+
+
+
+
 
 
 
