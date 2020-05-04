@@ -541,10 +541,194 @@ lifetime:1
 {id: "ee.medical2.heart.knock",
 label: "FNORD Heart or Knock dr complication",
 aspects: {complication:1,minheart:8,mingrail:8},
+xtriggers:{next:ee.medical3.heart.forge},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.medical3.heart.forge",
+label: "FNORD complication",
+aspects: {complication:1,minheart:12,minforge:12},
 xtriggers:{next:progress},
 description:"FNORD",
 lifetime:1
 },
+
+{id: "ee.miracles1.moth.lantern",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:4,minlantern:4},
+xtriggers:{next:ee.miracles2.moth.grail},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.miracles2.moth.grail",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:8,mingrail:8},
+xtriggers:{next:ee.miracles3.moth.winter},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.miracles3.moth.winter",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:12,minwinter:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.import1.lantern.heart",
+label: "FNORD complication",
+aspects: {complication:1,minlantern:4,minheart:4},
+xtriggers:{next:ee.import2.lantern.forge},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.import2.lantern.forge",
+label: "FNORD complication",
+aspects: {complication:1,minlantern:8,minforge:8},
+xtriggers:{next:ee.import3.lantern.winter},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.import3.lantern.winter",
+label: "FNORD complication",
+aspects: {complication:1,minlantern:12,minwinter:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.counterfeiting1.forge.winter",
+label: "FNORD complication",
+aspects: {complication:1,minforge:4,minwinter:4},
+xtriggers:{next:ee.counterfeiting2.forge.moth},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.counterfeiting2.forge.moth",
+label: "FNORD complication",
+aspects: {complication:1,minforge:8,minmoth:8},
+xtriggers:{next:ee.counterfeiting3.forge.grail},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.counterfeiting3.forge.grail",
+label: "FNORD complication",
+aspects: {complication:1,minforge:12,mingrail:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.smuggling1.moth.knock",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:4,minknock:4},
+xtriggers:{next:ee.smuggling2.moth.heart},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.smuggling2.moth.heart",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:8,minheart:8},
+xtriggers:{next:ee.smuggling3.moth.winter},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.smuggling3.moth.winter",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:12,minwinter:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.fights1.edge.grail",
+label: "FNORD complication",
+aspects: {complication:1,minedge:4,mingrail:4},
+xtriggers:{next:ee.fights2.edge.moth},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.fights2.edge.moth",
+label: "FNORD complication",
+aspects: {complication:1,minedge:8,minmoth:8},
+xtriggers:{next:ee.fights3.edge.forge},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.fights3.edge.forge",
+label: "FNORD complication",
+aspects: {complication:1,minedge:12,minforge:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.uprising1.edge.grail",
+label: "FNORD complication",
+aspects: {complication:1,minedge:4,mingrail:4},
+xtriggers:{next:ee.uprising2.edge.moth},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.uprising2.edge.moth",
+label: "FNORD complication",
+aspects: {complication:1,minedge:8,minmoth:8},
+xtriggers:{next:ee.uprising3.edge.forge},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.uprising3.edge.forge",
+label: "FNORD complication",
+aspects: {complication:1,minedge:12,minforge:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.patronage1.heart.grail",
+label: "FNORD complication",
+aspects: {complication:1,minheart:4,mingrail:4},
+xtriggers:{next:ee.patronage2.moth.lantern},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.patronage2.moth.lantern",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:8,minlantern:8},
+xtriggers:{next:ee.patronage3.forge.winter},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.patronage3.forge.winter",
+label: "FNORD complication",
+aspects: {complication:1,minforge:12,minwinter:12},
+xtriggers:{next:progress},
+description:"FNORD",
+lifetime:1
+},
+
 
 {id: "ee.armouredgate",
 label: "Armoured Gate",

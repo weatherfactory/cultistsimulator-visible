@@ -118,7 +118,7 @@ label:"A Sanatorium",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.medical1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -128,7 +128,7 @@ label:"A Faith-Healing Cult",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.miracles1.moth.lantern:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -139,7 +139,7 @@ label:"An Import Business",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.import1.lantern.heart:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -150,7 +150,7 @@ label:"A Counterfeiting Operation",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.counterfeiting1.forge.winter:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -161,7 +161,7 @@ label:"A Smuggling Operation",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.smuggling1.moth.knock:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -172,7 +172,7 @@ label:"Fighting",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.fights1.edge.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -184,7 +184,7 @@ label:"Uprising",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.uprising1.edge.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -195,7 +195,7 @@ label:"",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee...:1},
+effects:{ee.patronage1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
