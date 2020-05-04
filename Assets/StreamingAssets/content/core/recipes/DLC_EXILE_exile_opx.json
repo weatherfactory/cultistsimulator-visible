@@ -1,7 +1,6 @@
 {
 "recipes": [
 
-
 {id:"use.doctorspractice",
 actionId:"use",
 label:"Run a Doctor's Practice",
@@ -12,6 +11,95 @@ effects:{year.stolen:-1},
 warmup:5,
 alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
 craftable:true},
+
+{id:"use.sanatorium",
+actionId:"use",
+label:"Run a Sanatorium",
+startdescription:"FNORD Sanatorium [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"The Sanatorium is open.",
+requirements:{licence.medical:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.sanatorium.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
+craftable:true},
+
+{id:"use.miracles",
+actionId:"use",
+label:"Run a Miracle Cult",
+startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"The congregation is assembling.",
+requirements:{connection.holy:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.miracles.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.holy:1}}}],
+craftable:true},
+
+{id:"use.import",
+actionId:"use",
+label:"Run an Import Business",
+startdescription:"FNORD import [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"I've opened up shop.",
+requirements:{licence.import:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.import.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.import:1}}}],
+craftable:true},
+ 
+{id:"use.counterfeiting",
+actionId:"use",
+label:"Run a Counterfeiting Operation",
+startdescription:"Counterfeiting FNORD [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"The presses are almost ready.",
+requirements:{connection.underworld:1,forge:6,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.counterfeiting.begin", additional:true, expulsion:{limit:3,filter:{space:1,forge:6}}}],
+craftable:true},
+
+{id:"use.smuggling",
+actionId:"use",
+label:"Run a Smuggling Operation",
+startdescription:"Smuggling FNORD [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"Everything is ready.",
+requirements:{connection.underworld:1,op.sea:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.smuggling.begin", additional:true, expulsion:{limit:3,filter:{space:1,op.sea:1}}}],
+craftable:true},
+
+{id:"use.fights",
+actionId:"use",
+label:"Attend Illegal Fights",
+startdescription:"FNORD fights [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"FNORD",
+requirements:{space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.fights.begin", additional:true, expulsion:{limit:3,filter:{space:1}}}],
+craftable:true},
+
+{id:"use.uprising",
+actionId:"use",
+label:"Assist an Uprising",
+startdescription:"FNORD uprising [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"FNORD",
+requirements:{connection.radicals:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.radicals:1}}}],
+craftable:true},
+
+{id:"use.patronage",
+actionId:"use",
+label:"FNORD patronage",
+startdescription:"FNORD patronage [A reasonably safe way to convert stolen lifespan into cash.]",
+description:"FNORD patronage",
+requirements:{connection.ruler:1,space:1,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.patronage.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.ruler:1}}}],
+craftable:true},
+
 
 {id:"opx.doctorspractice.begin",
 actionId:"opx.doctorspractice",
@@ -192,15 +280,14 @@ startdescription:"Subtlety wasn't my priority here. [A serious risk of a Trace.]
 aspects:{majortracerisk:1},
 effects:{progress.subtlety:-3},
 linked:[{id:opx.end.effectiveness}]
-}
-
+},
 
 {id:"opx.end.effectiveness",
 actionId:"opx.",
 label:"Return on Investment",
-startdescription:"I've got good value for my years."
+startdescription:"I've got good value for my years.",
 warmup:5,
-requirements:{progress.effectiveness:1}
+requirements:{progress.effectiveness:1},
 effects:{cash:progress.effectiveness,progress.effectiveness:-3}
 },
 

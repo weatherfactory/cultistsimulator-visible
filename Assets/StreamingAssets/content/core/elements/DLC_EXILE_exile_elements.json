@@ -1651,6 +1651,15 @@ slots:[{actionId:use,id:"connection",label:"Connection",required:{connection.off
 lifetime:300
 },
 
+	  	  {id: "op.licence.import",
+label: "Opportunity: Import Licence?",
+aspects: {op:1,price:1},
+description:"Certain goods are normally restricted; but I have friends now.",
+xtriggers:{negotiation:licence.import},
+slots:[{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],
+lifetime:300
+},
+
 	  	  {id: "op.connection.official",
 label: "Opportunity: An Official Connection?",
 aspects: {op:1,price:1},
@@ -1823,12 +1832,19 @@ icon:vaultcontinent5
 },
 
 
-
 {id:"licence.medical",
-label:"Medical Licence",
+label:"Medical Credentials",
 aspects:{asset:1,portable:1,worth:1},
-description:"The name on the licence isn't exactly mine, but it's close enough for my purposes.",
+description:"The name on the licence isn't exactly mine, but it's close enough.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:1}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
+},
+
+{id:"licence.import",
+label:"Import Licence",
+aspects:{asset:1,worth:1},
+description:"The name on the licence isn't exactly mine, but it's close enough.",
+slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
 },
 
@@ -1849,6 +1865,8 @@ description:"A mutually beneficial arrangement with someone of real power."
 {id:"connection.holy",
 label:"Connection: Holy Man",
 aspects:{connection:1,asset:1,deception:1,heart:8,lantern:8},
+slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with a learned holy man."
 },
 
@@ -1862,6 +1880,9 @@ description:"A mutually beneficial arrangement with revolutionaries or other ent
 {id:"connection.underworld",
 label:"Connection: Underworld",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
+slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
+{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with relevant professionals."
 },
 
