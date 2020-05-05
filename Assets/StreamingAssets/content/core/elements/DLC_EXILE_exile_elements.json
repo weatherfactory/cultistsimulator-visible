@@ -139,6 +139,101 @@ noartneeded:true
 },
 
 
+{id:"opx.doctor",
+label:"Doctor op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+{id:"opx.sanatorium",
+label:"sanatorium op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+{id:"opx.miracles",
+label:"Miracles op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+{id:"opx.flowermaker",
+label:"flowermaker op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.horned",
+label:"horned op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.wolf",
+label:"wolf op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+
+{id:"opx.smuggling",
+label:"smuggling op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.import",
+label:"import op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.fights",
+label:"fights op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.uprising",
+label:"uprising op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+{id:"opx.betrayal",
+label:"betrayal op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+{id:"opx.patronage",
+label:"patronage op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
+
+
+
 {id:"supplies",
 label:"Supplies",
 description:"Finite, like a lifetime. [Supplies are consumed when used.]",
@@ -530,33 +625,74 @@ decayTo:"trace",
 slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
 },
 
-{id: "ee.medical1.heart.grail",
+{id: "ee.doctor1.heart.grail",
 label: "FNORD Heart or Grail dr complication",
-aspects: {complication:1,minheart:4,mingrail:4},
-xtriggers:{next:ee.medical2.heart.knock},
+aspects: {complication:1,minheart:4,mingrail:4,opx.doctor:1},
+xtriggers:{next:ee.doctor2.heart.knock},
 description:"FNORD",
 lifetime:1
 },
 
-{id: "ee.medical2.heart.knock",
+{id: "ee.doctor2.heart.knock",
 label: "FNORD Heart or Knock dr complication",
-aspects: {complication:1,minheart:8,mingrail:8},
-xtriggers:{next:ee.medical3.heart.forge},
+aspects: {complication:1,minheart:8,mingrail:8,opx.doctor:1},
+xtriggers:{next:ee.doctor3.heart.forge},
 description:"FNORD",
 lifetime:1
 },
 
-{id: "ee.medical3.heart.forge",
+
+{id: "ee.doctor3.heart.forge",
 label: "FNORD complication",
-aspects: {complication:1,minheart:12,minforge:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minheart:12,minforge:12,opx.doctor:1},
+xtriggers:{next:opx.doctor.complete},
 description:"FNORD",
 lifetime:1
 },
+
+{id:"opx.doctor.complete",
+label:"Doctor's Practice Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.doctor:1,opx.basepayout:2},
+lifetime:1
+},
+
+
+{id: "ee.sanatorium1.heart.grail",
+label: "FNORD Heart or Grail dr complication",
+aspects: {complication:1,minheart:4,mingrail:4,opx.sanatorium:1},
+xtriggers:{next:ee.sanatorium2.heart.knock},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.sanatorium2.heart.knock",
+label: "FNORD Heart or Knock dr complication",
+aspects: {complication:1,minheart:8,mingrail:8,opx.sanatorium:1},
+xtriggers:{next:ee.sanatorium3.heart.forge},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.sanatorium3.heart.forge",
+label: "FNORD complication",
+aspects: {complication:1,minheart:12,minforge:12,opx.sanatorium:1},
+xtriggers:{next:opx.sanatorium.complete},
+description:"FNORD",
+lifetime:1
+},
+
+{id:"opx.sanatorium.complete",
+label:"Sanatorium Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.sanatorium:1,opx.basepayout:4},
+lifetime:1
+},
+
 
 {id: "ee.miracles1.moth.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:4,minlantern:4},
+aspects: {complication:1,minmoth:4,minlantern:4,opx.miracles:1},
 xtriggers:{next:ee.miracles2.moth.grail},
 description:"FNORD",
 lifetime:1
@@ -564,7 +700,7 @@ lifetime:1
 
 {id: "ee.miracles2.moth.grail",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:8,mingrail:8},
+aspects: {complication:1,minmoth:8,mingrail:8,opx.miracles:1},
 xtriggers:{next:ee.miracles3.moth.winter},
 description:"FNORD",
 lifetime:1
@@ -572,15 +708,23 @@ lifetime:1
 
 {id: "ee.miracles3.moth.winter",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:12,minwinter:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minmoth:12,minwinter:12,opx.miracles:1},
+xtriggers:{next:opx.miracles.complete},
 description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.miracles.complete",
+label:"Healing Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.miracles:1,opx.basepayout:2},
+lifetime:1
+},
+
+
 {id: "ee.import1.lantern.heart",
 label: "FNORD complication",
-aspects: {complication:1,minlantern:4,minheart:4},
+aspects: {complication:1,minlantern:4,minheart:4,opx.import:1},
 xtriggers:{next:ee.import2.lantern.forge},
 description:"FNORD",
 lifetime:1
@@ -588,7 +732,7 @@ lifetime:1
 
 {id: "ee.import2.lantern.forge",
 label: "FNORD complication",
-aspects: {complication:1,minlantern:8,minforge:8},
+aspects: {complication:1,minlantern:8,minforge:8,opx.import:1},
 xtriggers:{next:ee.import3.lantern.winter},
 description:"FNORD",
 lifetime:1
@@ -596,15 +740,23 @@ lifetime:1
 
 {id: "ee.import3.lantern.winter",
 label: "FNORD complication",
-aspects: {complication:1,minlantern:12,minwinter:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minlantern:12,minwinter:12,opx.import:1},
+xtriggers:{next:opx.import.complete},
 description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.import.complete",
+label:"Import Business Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.import:1,opx.basepayout:2},
+lifetime:1
+},
+
+
 {id: "ee.counterfeiting1.forge.winter",
 label: "FNORD complication",
-aspects: {complication:1,minforge:4,minwinter:4},
+aspects: {complication:1,minforge:4,minwinter:4,opx.counterfeiting:1},
 xtriggers:{next:ee.counterfeiting2.forge.moth},
 description:"FNORD",
 lifetime:1
@@ -612,7 +764,7 @@ lifetime:1
 
 {id: "ee.counterfeiting2.forge.moth",
 label: "FNORD complication",
-aspects: {complication:1,minforge:8,minmoth:8},
+aspects: {complication:1,minforge:8,minmoth:8,opx.counterfeiting:1},
 xtriggers:{next:ee.counterfeiting3.forge.grail},
 description:"FNORD",
 lifetime:1
@@ -620,15 +772,23 @@ lifetime:1
 
 {id: "ee.counterfeiting3.forge.grail",
 label: "FNORD complication",
-aspects: {complication:1,minforge:12,mingrail:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minforge:12,mingrail:12,opx.counterfeiting:1},
+xtriggers:{next:opx.counterfeiting.complete},
 description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.counterfeiting.complete",
+label:"Counterfeiting Operation Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.counterfeiting:1,opx.basepayout:2},
+lifetime:1
+},
+
+
 {id: "ee.smuggling1.moth.knock",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:4,minknock:4},
+aspects: {complication:1,minmoth:4,minknock:4,opx.smuggling:1},
 xtriggers:{next:ee.smuggling2.moth.heart},
 description:"FNORD",
 lifetime:1
@@ -637,7 +797,7 @@ lifetime:1
 
 {id: "ee.smuggling2.moth.heart",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:8,minheart:8},
+aspects: {complication:1,minmoth:8,minheart:8,opx.smuggling:1},
 xtriggers:{next:ee.smuggling3.moth.winter},
 description:"FNORD",
 lifetime:1
@@ -646,15 +806,23 @@ lifetime:1
 
 {id: "ee.smuggling3.moth.winter",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:12,minwinter:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minmoth:12,minwinter:12,opx.smuggling:1},
+xtriggers:{next:opx.smuggling.complete},
 description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.smuggling.complete",
+label:"Smuggling Operation Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.smuggling:1,opx.basepayout:2},
+lifetime:1
+},
+
+
 {id: "ee.fights1.edge.grail",
 label: "FNORD complication",
-aspects: {complication:1,minedge:4,mingrail:4},
+aspects: {complication:1,minedge:4,mingrail:4,opx.fights:1},
 xtriggers:{next:ee.fights2.edge.moth},
 description:"FNORD",
 lifetime:1
@@ -662,7 +830,7 @@ lifetime:1
 
 {id: "ee.fights2.edge.moth",
 label: "FNORD complication",
-aspects: {complication:1,minedge:8,minmoth:8},
+aspects: {complication:1,minedge:8,minmoth:8,opx.fights:1},
 xtriggers:{next:ee.fights3.edge.forge},
 description:"FNORD",
 lifetime:1
@@ -670,15 +838,23 @@ lifetime:1
 
 {id: "ee.fights3.edge.forge",
 label: "FNORD complication",
-aspects: {complication:1,minedge:12,minforge:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minedge:12,minforge:12,opx.fights:1},
+xtriggers:{next:opx.fights.complete},
 description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.fights.complete",
+label:"Fights Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.fights:1,opx.basepayout:2},
+lifetime:1
+},
+
+
 {id: "ee.uprising1.edge.grail",
 label: "FNORD complication",
-aspects: {complication:1,minedge:4,mingrail:4},
+aspects: {complication:1,minedge:4,mingrail:4,opx.uprising:1},
 xtriggers:{next:ee.uprising2.edge.moth},
 description:"FNORD",
 lifetime:1
@@ -687,7 +863,7 @@ lifetime:1
 
 {id: "ee.uprising2.edge.moth",
 label: "FNORD complication",
-aspects: {complication:1,minedge:8,minmoth:8},
+aspects: {complication:1,minedge:8,minmoth:8,opx.uprising:1},
 xtriggers:{next:ee.uprising3.edge.forge},
 description:"FNORD",
 lifetime:1
@@ -696,11 +872,19 @@ lifetime:1
 
 {id: "ee.uprising3.edge.forge",
 label: "FNORD complication",
-aspects: {complication:1,minedge:12,minforge:12},
-xtriggers:{next:progress},
+aspects: {complication:1,minedge:12,minforge:12,opx.uprising:1},
+xtriggers:{next:opx.uprising.complete},
 description:"FNORD",
 lifetime:1
 },
+
+{id:"opx.uprising.complete",
+label:"Uprising Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.uprising:1,opx.basepayout:2},
+lifetime:1
+},
+
 
 
 {id: "ee.patronage1.heart.grail",
@@ -724,10 +908,18 @@ lifetime:1
 {id: "ee.patronage3.forge.winter",
 label: "FNORD complication",
 aspects: {complication:1,minforge:12,minwinter:12},
-xtriggers:{next:progress},
+xtriggers:{next:opx.patronage.complete},
 description:"FNORD",
 lifetime:1
 },
+
+{id:"opx.patronage.complete",
+label:"Patronage Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.patronage:1,opx.basepayout:4},
+lifetime:1
+},
+
 
 
 {id: "ee.armouredgate",
