@@ -625,6 +625,14 @@ decayTo:"trace",
 slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
 },
 
+
+{id:"opx.basepayout",
+label:"Payout aspect for operations DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
 {id: "ee.doctor1.heart.grail",
 label: "FNORD Heart or Grail dr complication",
 aspects: {complication:1,minheart:4,mingrail:4,opx.doctor:1},
@@ -690,17 +698,17 @@ lifetime:1
 },
 
 
-{id: "ee.miracles1.moth.lantern",
+{id: "ee.miracles1.moth.grail",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:4,minlantern:4,opx.miracles:1},
-xtriggers:{next:ee.miracles2.moth.grail},
+aspects: {complication:1,minmoth:4,mingrail:4,opx.miracles:1},
+xtriggers:{next:ee.miracles2.moth.lantern},
 description:"FNORD",
 lifetime:1
 },
 
-{id: "ee.miracles2.moth.grail",
+{id: "ee.miracles2.moth.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:8,mingrail:8,opx.miracles:1},
+aspects: {complication:1,minmoth:8,minlantern:8,opx.miracles:1},
 xtriggers:{next:ee.miracles3.moth.winter},
 description:"FNORD",
 lifetime:1
@@ -715,26 +723,58 @@ lifetime:1
 },
 
 {id:"opx.miracles.complete",
-label:"Healing Cult Paying Off",
+label:"Faith-Healing Cult Paying Off",
 description:"Here come the rewards.",
 aspects:{opx.miracles:1,opx.basepayout:2},
-xtriggers:{success:opx.miracles.cultseed},
+xtriggers:{success:op.miracles.cultseed},
 lifetime:1
 },
 
-{id:"opx.miracles.cultseed",
-label:"A New Faith?",
-description:"The congregation are hungry for something more. Could I provide it?",
-slots:[{actionId:use,id:"influence",label:"influence",required:{op.flowermaker:1,op.horned:1,op.wolf:1}}],
-aspects:{op:1,opx.basepayout:2}
+{id:"opx.flowermaker.complete",
+label:"Flowermaker Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.flowermaker:1,opx.basepayout:1},
+comments:"NB this is in addition to the cult seed base payout",
+lifetime:1
 },
 
-{id:"opx.basepayout",
-label:"Payout aspect for operations DO NOT TRANSLATE",
-isAspect:true,
-noartneeded:true,
-isHidden:true
+{id:"op.miracles.cultseed",
+label:"A New Faith?",
+description:"The congregation are hungry for something more. [If you achieve at least one Effectiveness when running a Faith-Healing Cult, you might be able to establish an Esoteric Cult.]",
+slots:[{actionId:use,id:"influence",label:"influence",required:{op.flowermaker:1,op.horned:1,op.wolf:1}},
+{actionId:use,id:"meetingplace",label:"Meeting Place",required:{space:1}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
+xtriggers:{renewal.exile:op.miracles.cultseed},
+aspects:{op:1,opx.basepayout:2},
+lifetime:300
 },
+
+
+{id: "ee.flowermaker1.grail.lantern",
+label: "FNORD complication",
+aspects: {complication:1,minmoth:4,mingrail:4,opx.flowermaker:1},
+xtriggers:{next:ee.flowermaker2.grail.knock},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.flowermaker2.grail.knock",
+label: "FNORD complication",
+aspects: {complication:1,mingrail:8,minknock:8,opx.flowermaker:1},
+xtriggers:{next:ee.flowermaker3.grail.winter},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.flowermaker3.grail.winter",
+label: "FNORD complication",
+aspects: {complication:1,mingrail:12,minwinter:12,opx.flowermaker:1},
+xtriggers:{next:opx.flowermaker.complete},
+description:"FNORD",
+lifetime:1
+},
+
+
 
 
 {id: "ee.import1.lantern.heart",
@@ -2327,8 +2367,8 @@ description:"A mutually beneficial arrangement with someone of real power."
 
 {id:"connection.holy",
 label:"Connection: Holy Man",
-aspects:{connection:1,asset:1,deception:1,heart:8,lantern:8},
-slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
+aspects:{connection:1,asset:1,deception:1,heart:4,lantern:4},
+slots:[{actionId:use,id:"venue",label:"Venue",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with a learned holy man."
 },
@@ -3438,7 +3478,7 @@ lifetime:300
 label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
-xtriggers:{,renewal.exile:op.sea},
+xtriggers:{renewal.exile:op.sea},
 lifetime:300
 },
 
@@ -3446,7 +3486,7 @@ lifetime:300
 label: "Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
-xtriggers:{,renewal.exile:op.faith},
+xtriggers:{renewal.exile:op.faith},
 lifetime:300
 },
 
@@ -3454,7 +3494,7 @@ lifetime:300
 label: "Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"I've found a place bristling with excitable cats.",
-xtriggers:{,renewal.exile:op.cats},
+xtriggers:{renewal.exile:op.cats},
 lifetime:300
 },
 
@@ -3462,7 +3502,7 @@ lifetime:300
 label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
-xtriggers:{,renewal.exile:op.heights},
+xtriggers:{renewal.exile:op.heights},
 lifetime:300
 },
 
@@ -3470,7 +3510,7 @@ lifetime:300
 label: "THe Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
-xtriggers:{,renewal.exile:op.horned},
+xtriggers:{renewal.exile:op.horned},
 lifetime:300
 },
 
@@ -3478,7 +3518,7 @@ lifetime:300
 label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
-xtriggers:{,renewal.exile:op.wolf},
+xtriggers:{renewal.exile:op.wolf},
 lifetime:300
 },
 
@@ -3486,7 +3526,7 @@ lifetime:300
 label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
-xtriggers:{,renewal.exile:op.flowermaker},
+xtriggers:{renewal.exile:op.flowermaker},
 lifetime:300
 },
 
@@ -3494,7 +3534,7 @@ lifetime:300
 label: "Mme E",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Here at the desert's edge, the thing that calls itself 'Mme E' doesn't always bother with human form. With luck, I'll never see what shape it prefers.",
-xtriggers:{,renewal.exile:op.echidna},
+xtriggers:{renewal.exile:op.echidna},
 lifetime:300,
 icon:echidna
 },
@@ -3503,7 +3543,7 @@ icon:echidna
 label: "Frau Schlüssel",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
-xtriggers:{,renewal.exile:op.kleidouchos},
+xtriggers:{renewal.exile:op.kleidouchos},
 lifetime:300,
 icon:kleidouchos
 },
@@ -3513,7 +3553,7 @@ icon:kleidouchos
 label: "Our Lady of Wires",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
-xtriggers:{,renewal.exile:op.marinette},
+xtriggers:{renewal.exile:op.marinette},
 lifetime:300,
 icon:marinette
 },
@@ -3522,7 +3562,7 @@ icon:marinette
 label: "What is Not Seen?",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"In all of this city, there is not one statue whose eyes are not wide open. Why is that?",
-xtriggers:{,renewal.exile:op.medusa},
+xtriggers:{renewal.exile:op.medusa},
 lifetime:300
 },
 
@@ -3530,7 +3570,7 @@ lifetime:300
 label: "Mme Matutine",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at harbour here. Mme Matutine has a lethal reputation.",
-xtriggers:{,renewal.exile:op.morgen},
+xtriggers:{renewal.exile:op.morgen},
 lifetime:300
 },
 
@@ -3539,7 +3579,7 @@ lifetime:300
 label: "Sulochana",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
-xtriggers:{,renewal.exile:op.sulochana},
+xtriggers:{renewal.exile:op.sulochana},
 lifetime:300,
 icon:sulochana
 },
