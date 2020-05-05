@@ -47,6 +47,28 @@ warmup:5,
 alt:[{id:"opx.flowermaker.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
 craftable:true},
 
+{id:"use.cultseed.horned",
+actionId:"use",
+label:"Assemble a Cult of the Horned Axe",
+startdescription:"FNORD  [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+description:"The congregation is assembling.",
+requirements:{op.miracles.cultseed:1,op.horned:1,space:1,year.stolen:1},
+effects:{year.stolen:-1,op.horned:-1},
+warmup:5,
+alt:[{id:"opx.horned.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+craftable:true},
+
+{id:"use.cultseed.wolf",
+actionId:"use",
+label:"Assemble a Cult of the Wolf Divided",
+startdescription:"FNORD  [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+description:"The congregation is assembling.",
+requirements:{op.miracles.cultseed:1,op.wolf:1,space:1,year.stolen:1},
+effects:{year.stolen:-1,op.wolf:-1},
+warmup:5,
+alt:[{id:"opx.wolf.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+craftable:true},
+
 {id:"use.import",
 actionId:"use",
 label:"Run an Import Business",
@@ -156,6 +178,28 @@ slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,
 effects:{ee.flowermaker1.grail.lantern:1},
 linked:[{id:"opx.challenge"}]
 },
+
+{id:"opx.horned.begin",
+actionId:"opx.horned",
+label:"A Cult of the Horned-Axe",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee.horned1.knock.winter:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+{id:"opx.wolf.begin",
+actionId:"opx.wolf",
+label:"A Cult of the Wolf Divided",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee.wolf1.edge.winter:1},
+linked:[{id:"opx.challenge"}]
+},
+
 
 
 

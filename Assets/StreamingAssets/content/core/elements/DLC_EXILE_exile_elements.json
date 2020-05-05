@@ -576,8 +576,8 @@ icon:evidencelevel
 },
 
 {id:"space",
-label:"space",
-description:"A venue, or a base of operations.",
+label:"Space",
+description:"Room for a venue, or a base of operations.",
 isAspect:true
 },
 
@@ -739,6 +739,26 @@ comments:"NB this is in addition to the cult seed base payout",
 lifetime:1
 },
 
+{id:"opx.horned.complete",
+label:"Horned-Axe Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.horned:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.horned",morpheffect:spawn}]},
+comments:"NB this is in addition to the cult seed base payout",
+lifetime:1
+},
+
+
+{id:"opx.wolf.complete",
+label:"Wolf-Divided Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.wolf:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.wolf",morpheffect:spawn}]},
+comments:"NB this is in addition to the cult seed base payout",
+lifetime:1
+},
+
+
 {id:"op.miracles.cultseed",
 label:"A New Faith?",
 description:"The congregation are hungry for something more. [If you achieve at least one Effectiveness when running a Faith-Healing Cult, you might be able to establish an Esoteric Cult.]",
@@ -753,7 +773,7 @@ lifetime:300
 
 {id: "ee.flowermaker1.grail.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:4,mingrail:4,opx.flowermaker:1},
+aspects: {complication:1,mingrail:4,minlantern:4,opx.flowermaker:1},
 xtriggers:{next:ee.flowermaker2.grail.knock},
 description:"FNORD",
 lifetime:1
@@ -775,7 +795,53 @@ description:"FNORD",
 lifetime:1
 },
 
+{id: "ee.horned1.knock.winter",
+label: "FNORD complication",
+aspects: {complication:1,minknock:4,minwinter:4,opx.horned:1},
+xtriggers:{next:ee.horned2.knock.forge},
+description:"FNORD",
+lifetime:1
+},
 
+{id: "ee.horned2.knock.forge",
+label: "FNORD complication",
+aspects: {complication:1,minknock:8,minforge:8,opx.horned:1},
+xtriggers:{next:ee.horned3.knock.lantern},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.horned3.knock.lantern",
+label: "FNORD complication",
+aspects: {complication:1,minknock:12,minlantern:12,opx.horned:1},
+xtriggers:{next:opx.horned.complete},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.wolf1.edge.winter",
+label: "FNORD complication",
+aspects: {complication:1,minwinter:4,minwinter:4,opx.wolf:1},
+xtriggers:{next:ee.wolf2.edge.lantern},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.wolf2.edge.lantern",
+label: "FNORD complication",
+aspects: {complication:1,minedge:8,minlantern:8,opx.wolf:1},
+xtriggers:{next:ee.wolf3.grail.winter},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.wolf3.grail.winter",
+label: "FNORD complication",
+aspects: {complication:1,minedge:12,minknock:12,opx.wolf:1},
+xtriggers:{next:opx.wolf.complete},
+description:"FNORD",
+lifetime:1
+},
 
 
 {id: "ee.import1.lantern.heart",
@@ -1623,7 +1689,7 @@ label: "Flowermaker-Touched",
 inherits:_contact.mortal,
 description:"One of my congregation knows things when they touch the skin of strangers, as long as their fingers are a little damp. They enjoy it far too much, too. [A Flowermaker Cult generates a cultist if you achieve at least one Effectiveness.]",
 xtriggers:{fatiguing:contact.cultist.flowermaker.fatigued},
-aspects:{grail:3,lantern:3},
+aspects:{grail:4,lantern:4},
 icon:devotee_grail
 },
 
@@ -1636,6 +1702,38 @@ decayTo:contact.cultist.flowermaker,
 lifetime:120,
 resaturate:true
 },
+
+{id: "contact.cultist.horned",
+label: "Divided Soul",
+inherits:_contact.mortal,
+description:"One of my congregation has achieved a preternatural understanding of where entities begin, and where they end.[A Horned-Axe Cult generates a cultist if you achieve at least one Effectiveness.]",
+xtriggers:{fatiguing:contact.cultist.horned.fatigued},
+aspects:{knock:4,winter:4},
+icon:devotee_knock
+},
+
+{id: "contact.cultist.horned.fatigued",
+label: "Divided Soul, Recovering",
+description:"'That was the day. Now this is the night.'",
+inherits:_contact.mortal.fatigued,
+icon:devotee_knock,
+decayTo:contact.cultist.horned,
+lifetime:120,
+resaturate:true
+},
+
+
+{id: "contact.cultist.wolf",
+label: "Damned",
+inherits:_contact.mortal,
+description:"One of my congregation is eager to embrace their  end. [A Wolf Divided Cult generates a cultist if you achieve at least one Effectiveness.]",
+xtriggers:{fatiguing:corpse.exile},
+aspects:{edge:6,winter:6},
+icon:devotee_edge
+},
+
+
+
 
 
 {id: "contact.barber",
