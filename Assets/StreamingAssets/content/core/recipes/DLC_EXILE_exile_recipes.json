@@ -13,6 +13,8 @@ effects:{ticket.train:-1},
 internaldeck: {spec: [domicile.aachen,domicile.prague,domicile.munich,domicile.vienna,domicile.krakow,domicile.kiev,domicile.avignon,domicile.venice,domicile.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 alt:[{id:"turn.begin",additional:true},
 {id:"use.first",additional:true}],
+haltverb:{rkx*:100,opx*:100},
+purge:{trace:100,asset:100,op:100,location:100,destination:100,contact.local:100,rkx.internal:100,domicile:1},
 warmup:10,
 craftable:true
 },
