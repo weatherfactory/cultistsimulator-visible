@@ -718,7 +718,22 @@ lifetime:1
 label:"Healing Cult Paying Off",
 description:"Here come the rewards.",
 aspects:{opx.miracles:1,opx.basepayout:2},
+xtriggers:{success:opx.miracles.cultseed},
 lifetime:1
+},
+
+{id:"opx.miracles.cultseed",
+label:"A New Faith?",
+description:"The congregation are hungry for something more. Could I provide it?",
+slots:[{actionId:use,id:"influence",label:"influence",required:{op.flowermaker:1,op.horned:1,op.wolf:1}}],
+aspects:{op:1,opx.basepayout:2}
+},
+
+{id:"opx.basepayout",
+label:"Payout aspect for operations DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
 },
 
 

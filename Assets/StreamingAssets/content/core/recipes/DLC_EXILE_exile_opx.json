@@ -1,6 +1,17 @@
 {
 "recipes": [
 
+{id:"use.sanatorium",
+actionId:"use",
+label:"Run a Sanatorium",
+startdescription:"FNORD Sanatorium [A reasonably safe way to convert stolen lifespan into cash. Heart aspect cards are often useful when running a Sanatorium.]",
+description:"The Sanatorium is open.",
+requirements:{licence.medical:1,space:2,year.stolen:1},
+effects:{year.stolen:-1},
+warmup:5,
+alt:[{id:"opx.sanatorium.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
+craftable:true},
+
 {id:"use.doctorspractice",
 actionId:"use",
 label:"Run a Doctor's Practice",
@@ -12,16 +23,7 @@ warmup:5,
 alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
 craftable:true},
 
-{id:"use.sanatorium",
-actionId:"use",
-label:"Run a Sanatorium",
-startdescription:"FNORD Sanatorium [A reasonably safe way to convert stolen lifespan into cash. Heart aspect cards are often useful when running a Sanatorium.]",
-description:"The Sanatorium is open.",
-requirements:{licence.medical:1,space:2,year.stolen:1},
-effects:{year.stolen:-1},
-warmup:5,
-alt:[{id:"opx.sanatorium.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
-craftable:true},
+
 
 {id:"use.miracles",
 actionId:"use",
@@ -101,6 +103,18 @@ alt:[{id:"opx.patronage.begin", additional:true, expulsion:{limit:3,filter:{spac
 craftable:true},
 
 
+{id:"opx.sanatorium.begin",
+actionId:"opx.sanatorium",
+label:"A Sanatorium",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee.sanatorium1.heart.grail:1},
+linked:[{id:"opx.challenge"}]
+},
+
+
+
 {id:"opx.doctorspractice.begin",
 actionId:"opx.doctorspractice",
 label:"A Doctor's Practice",
@@ -111,16 +125,6 @@ effects:{ee.doctor1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
-
-{id:"opx.sanatorium.begin",
-actionId:"opx.sanatorium",
-label:"A Sanatorium",
-startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
-warmup:10,
-slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.sanatorium1.heart.grail:1},
-linked:[{id:"opx.challenge"}]
-},
 
 {id:"opx.miracles.begin",
 actionId:"opx.miracles",
@@ -378,6 +382,7 @@ linked:[{id:opx.end.effectiveness}]
 actionId:"opx.",
 label:"Operation Complete: Return on Investment",
 startdescription:"I've got good value for my years.",
+aspects:{success:1},
 warmup:5,
 requirements:{progress.effectiveness:1},
 effects:{cash:progress.effectiveness,progress.effectiveness:-3}
