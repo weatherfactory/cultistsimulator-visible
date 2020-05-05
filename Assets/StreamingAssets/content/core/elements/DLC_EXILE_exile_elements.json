@@ -734,6 +734,7 @@ lifetime:1
 label:"Flowermaker Cult Paying Off",
 description:"Here come the rewards.",
 aspects:{opx.flowermaker:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.flowermaker",morpheffect:spawn}]},
 comments:"NB this is in addition to the cult seed base payout",
 lifetime:1
 },
@@ -1615,6 +1616,25 @@ label: "Mamurren Scar",
 aspects: {heart:2,winter:2},
 description:"Jannings says that some lessons can only be written on skin. That might be so, but it might be that Jannings just enjoys his work a little too much.",
 icon:"scar_winter"
+},
+
+{id: "contact.cultist.flowermaker",
+label: "Flowermaker-Touched",
+inherits:_contact.mortal,
+description:"One of my congregation knows things when they touch the skin of strangers, as long as their fingers are a little damp. They enjoy it far too much, too. [A Flowermaker Cult generates a cultist if you achieve at least one Effectiveness.]",
+xtriggers:{fatiguing:contact.cultist.flowermaker.fatigued},
+aspects:{grail:3,lantern:3},
+icon:devotee_grail
+},
+
+{id: "contact.cultist.flowermaker.fatigued",
+label: "Flowermaker-Touched, Recovering",
+description:"'I can't stop thinking about them. I should sleep.'",
+inherits:_contact.mortal.fatigued,
+icon:devotee_grail,
+decayTo:contact.cultist.flowermaker,
+lifetime:120,
+resaturate:true
 },
 
 
