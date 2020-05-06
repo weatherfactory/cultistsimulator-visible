@@ -166,10 +166,10 @@ actionId:"use",
 label:"FNORD patronage",
 startdescription:"FNORD patronage [A reasonably safe way to convert stolen lifespan into cash.]",
 description:"FNORD patronage",
-requirements:{connection.ruler:1,space:1,year.stolen:1},
+requirements:{connection.ruler:1,year.stolen:1},
 effects:{year.stolen:-1},
 warmup:5,
-alt:[{id:"opx.patronage.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.ruler:1}}}],
+alt:[{id:"opx.patronage.begin", additional:true, expulsion:{limit:3,filter:{connection.ruler:1}}}],
 craftable:true},
 
 
@@ -310,7 +310,7 @@ label:"",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.patronage1.heart.grail:1},
+effects:{ee.patronage1.heart.lantern:1},
 linked:[{id:"opx.challenge"}]
 },
 

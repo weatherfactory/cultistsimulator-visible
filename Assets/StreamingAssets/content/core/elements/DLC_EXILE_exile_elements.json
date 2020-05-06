@@ -1070,27 +1070,27 @@ lifetime:1
 
 
 
-{id: "ee.patronage1.heart.grail",
+{id: "ee.patronage1.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minheart:4,mingrail:4},
-xtriggers:{next:ee.patronage2.moth.lantern},
+aspects: {complication:1,minheart:4,minlantern:4},
+xtriggers:{next:ee.patronage2.heart.lantern},
 description:"FNORD",
 lifetime:1
 },
 
 
-{id: "ee.patronage2.moth.lantern",
+{id: "ee.patronage2.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minmoth:8,minlantern:8},
-xtriggers:{next:ee.patronage3.forge.winter},
+aspects: {complication:1,minheart:8,minlantern:8},
+xtriggers:{next:ee.patronage3.heart.lantern},
 description:"FNORD",
 lifetime:1
 },
 
 
-{id: "ee.patronage3.forge.winter",
+{id: "ee.patronage3.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minforge:12,minwinter:12},
+aspects: {complication:1,minheart:12,minlantern:12},
 xtriggers:{next:opx.patronage.complete},
 description:"FNORD",
 lifetime:1
@@ -1100,6 +1100,7 @@ lifetime:1
 label:"Patronage Paying Off",
 description:"Here come the rewards.",
 aspects:{opx.patronage:1,opx.basepayout:4},
+xtriggers:{success:townhouse},
 lifetime:1
 },
 
@@ -2544,6 +2545,7 @@ description:"A mutually beneficial arrangement with someone in authority."
 {id:"connection.ruler",
 label:"Connection: Ruler",
 aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
+slots:[{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with someone of real power.",
 icon:xg
 },
