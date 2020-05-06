@@ -141,12 +141,24 @@ hintonly:true},
 {id:"use.uprising",
 actionId:"use",
 label:"Assist an Uprising",
-startdescription:"FNORD uprising [A reasonably safe way to convert stolen lifespan into cash. Should this be Winter instead??",
+startdescription:"FNORD uprising",
 description:"FNORD",
-requirements:{connection.radicals:1,space:1,year.stolen:1},
-effects:{year.stolen:-1},
+comments:"forge requirement below based on assumption of forge 6 from radicals, so this will break if rebalanced",
+requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1},
+effects:{connection.radicals:-1},
 warmup:5,
-alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.radicals:1}}}],
+alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.radicals:1,domicile:1,temptation.defiance:1}}}],
+craftable:true},
+
+{id:"use.betrayal",
+actionId:"use",
+label:"Betray an Uprising",
+startdescription:"FNORD betrayal",
+description:"FNORD",
+requirements:{connection.radicals:1,winter:2,domicile:1,temptation.defiance:1},
+effects:{connection.radicals:-1},
+warmup:5,
+alt:[{id:"opx.betrayal.begin", additional:true, expulsion:{limit:3,filter:{space:1,connection.radicals:1,domicile:1,temptation.defiance:1}}}],
 craftable:true},
 
 {id:"use.patronage",
@@ -271,18 +283,26 @@ effects:{ee.fights1.edge.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
-
-
 {id:"opx.uprising.begin",
-actionId:"opx.uprising",
+actionId:"opx.uprising.betrayal",
 label:"Uprising",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.uprising1.edge.grail:1},
+effects:{ee.uprising1.edge.heart:1},
 linked:[{id:"opx.challenge"}]
 },
 
+
+{id:"opx.betrayal.begin",
+actionId:"opx.uprising.betrayal",
+label:"Betrayal",
+startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
+warmup:10,
+slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
+effects:{ee.betrayal1.winter.heart:1},
+linked:[{id:"opx.challenge"}]
+},
 
 {id:"opx.patronage.begin",
 actionId:"opx.patronage",
@@ -436,6 +456,7 @@ linked:[{id:opx.end.subtlety3},
 },
 
 
+
 {id:"opx.end.subtlety3",
 actionId:"opx.",
 warmup:5,
@@ -443,7 +464,8 @@ label:"Operation Complete: An Invisible Art?",
 startdescription:"I've left no trace. [You achieved three Subtlety.]",
 requirements:{progress.subtlety:3},
 effects:{progress.subtlety:-3},
-linked:[{id:opx.end.effectiveness}]
+linked:[{id:opx.end.effectiveness},
+{id:opx.end.special.router}]
 },
 
 {id:"opx.end.subtlety2",
@@ -454,7 +476,8 @@ startdescription:"I've been careful. [You achieved two Subtlety. There is a slig
 requirements:{progress.subtlety:2},
 aspects:{minortracerisk:1},
 effects:{progress.subtlety:-3},
-linked:[{id:opx.end.effectiveness}]
+linked:[{id:opx.end.effectiveness},
+{id:opx.end.special.router}]
 },
 
 {id:"opx.end.subtlety1",
@@ -465,7 +488,8 @@ startdescription:"I could have been subtler. [You achieved one Subtlety. THere i
 requirements:{progress.subtlety:1},
 aspects:{tracerisk:1},
 effects:{progress.subtlety:-3},
-linked:[{id:opx.end.effectiveness}]
+linked:[{id:opx.end.effectiveness},
+{id:opx.end.special.router}]
 },
 
 {id:"opx.end.subtlety0",
@@ -475,7 +499,8 @@ label:"Operation Complete: Loose Ends",
 startdescription:"Subtlety wasn't my priority here. [You achieved one Subtlety. There is a serious risk of a Trace.]",
 aspects:{majortracerisk:1},
 effects:{progress.subtlety:-3},
-linked:[{id:opx.end.effectiveness}]
+linked:[{id:opx.end.effectiveness},
+{id:opx.end.special.router}]
 },
 
 {id:"opx.end.effectiveness",
@@ -485,7 +510,36 @@ startdescription:"I've got good value for my years.",
 aspects:{success:1},
 warmup:5,
 requirements:{progress.effectiveness:1},
-effects:{cash:progress.effectiveness,progress.effectiveness:-3}
+effects:{cash:progress.effectiveness,progress.effectiveness:-3},
+linked:[{id:opx.end.effectiveness},
+{id:opx.end.special.router}]
+},
+
+{id:"opx.end.special.router",
+actionId:"opx.",
+label:"[Special Outcomes]",
+linked:[{id:opx.end.uprising},
+{id:opx.end.betrayal}]
+},
+
+{id:"opx.end.uprising",
+actionId:"opx.",
+label:"An Uprising!",
+startdescription:"FNORD Uprising completing",
+description:"FNORD uprising complete",
+aspects:{uprising:1},
+requirements:{opx.uprising.complete},
+warmup:30,
+},
+
+{id:"opx.end.betrayal",
+actionId:"opx.",
+label:"An Uprising Betrayed!",
+startdescription:"FNORD betraying uprising",
+description:"FNORD betrayal complete",
+requirements:{opx.betrayal.complete},
+effects:{connection.ruler:1},
+warmup:30,
 },
 
 

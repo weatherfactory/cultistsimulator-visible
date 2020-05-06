@@ -209,7 +209,7 @@ isHidden:true
 },
 
 
-{id:"opx.uprising",
+{id:"opx.turmoil",
 label:"uprising op marker: DO NOT TRANSLATE",
 isAspect:true,
 noartneeded:true,
@@ -980,27 +980,27 @@ lifetime:1
 },
 
 
-{id: "ee.uprising1.edge.grail",
+{id: "ee.uprising1.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:4,mingrail:4,opx.uprising:1},
-xtriggers:{next:ee.uprising2.edge.moth},
+aspects: {complication:1,minedge:4,minheart:4,opx.turmoil:1},
+xtriggers:{next:ee.uprising2.edge.heart},
 description:"FNORD",
 lifetime:1
 },
 
 
-{id: "ee.uprising2.edge.moth",
+{id: "ee.uprising2.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:8,minmoth:8,opx.uprising:1},
-xtriggers:{next:ee.uprising3.edge.forge},
+aspects: {complication:1,minedge:8,minheart:8,opx.turmoil:1},
+xtriggers:{next:ee.uprising3.edge.heart},
 description:"FNORD",
 lifetime:1
 },
 
 
-{id: "ee.uprising3.edge.forge",
+{id: "ee.uprising3.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:12,minforge:12,opx.uprising:1},
+aspects: {complication:1,minedge:12,minheart:12,opx.turmoil:1},
 xtriggers:{next:opx.uprising.complete},
 description:"FNORD",
 lifetime:1
@@ -1009,7 +1009,40 @@ lifetime:1
 {id:"opx.uprising.complete",
 label:"Uprising Paying Off",
 description:"Here come the rewards.",
-aspects:{opx.uprising:1,opx.basepayout:2},
+aspects:{opx.turmoil:1,opx.basepayout:4},
+lifetime:1
+},
+
+{id: "ee.betrayal1.winter.heart",
+label: "FNORD complication",
+aspects: {complication:1,minwinter:4,minheart:4,opx.betrayal:1},
+xtriggers:{next:ee.betrayal2.winter.heart},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.betrayal2.winter.heart",
+label: "FNORD complication",
+aspects: {complication:1,minwinter:8,minheart:8,opx.betrayal:1},
+xtriggers:{next:ee.betrayal3.winter.heart},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.betrayal3.winter.heart",
+label: "FNORD complication",
+aspects: {complication:1,minwinter:12,minheart:12,opx.betrayal:1},
+xtriggers:{next:opx.betrayal.complete},
+description:"FNORD",
+lifetime:1
+},
+
+{id:"opx.betrayal.complete",
+label:"betrayal Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.betrayal:1,opx.basepayout:4},
 lifetime:1
 },
 
@@ -2506,6 +2539,9 @@ icon:xl
 {id:"connection.radicals",
 label:"Connection: Radicals",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,forge:6},
+slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2}},
+{actionId:use,id:"city",label:"City",required:{domicile:1}},
+{actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
 icon:xe
 },
@@ -2860,12 +2896,9 @@ icon: vaultcontinent3,
 unique:true
 },	 
 	  
-
-
 	  {id: "domicile.aachen",
 label: "Rhenish Aachen",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
-
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
 icon: city.aachen,
@@ -3210,6 +3243,111 @@ description:"One of those few cities which has the same name in every History...
 icon: city.vienna,
 unique:true
 },
+
+	  {id: "domicile.aachen.turmoil",
+label: "Aachen in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Rehenish separatists are fighting German loyalists in the streets. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+	  {id: "domicile.baghdad.turmoil",
+label: "Aachen in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Hashemite forces are fighting nationalists in the streets. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.istanbul.turmoil",
+label: "Istanbul in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.kiev.turmoil",
+label: "Kiev in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.leningrad.turmoil",
+label: "Leningrad in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.london.turmoil",
+label: "London in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Police are fighting pitched battles with workers in the streets. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.munich.turmoil",
+label: "Munich in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Communists and and nationalists are fighting street-to-street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.nizhny.turmoil",
+label: "Nizhny Novgorod in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.samarkand.turmoil",
+label: "Samarkand in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Soviets and Jadidists are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.stalingrad.turmoil",
+label: "Stalingrad in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+	  {id: "domicile.sverdlovsk.turmoil",
+label: "Sverdlovsk in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+
+	  {id: "domicile.tiflis.turmoil",
+label: "Tiflis in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Revolutionaries and counter-revolutionaries are fighting street to street. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
 
 	  {id: "city.aachen",
 label: "Rhenish Aachen",
