@@ -183,7 +183,12 @@ noartneeded:true,
 isHidden:true
 },
 
-
+{id:"opx.counterfeiting",
+label:"counterfeiting op marker: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
 
 {id:"opx.smuggling",
 label:"smuggling op marker: DO NOT TRANSLATE",
@@ -758,34 +763,6 @@ xtriggers:{success:op.miracles.cultseed},
 lifetime:1
 },
 
-{id:"opx.flowermaker.complete",
-label:"Flowermaker Cult Paying Off",
-description:"Here come the rewards.",
-aspects:{opx.flowermaker:1,opx.basepayout:1},
-xtriggers:{success:[{id:"contact.cultist.flowermaker",morpheffect:spawn}]},
-comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
-},
-
-{id:"opx.horned.complete",
-label:"Horned-Axe Cult Paying Off",
-description:"Here come the rewards.",
-aspects:{opx.horned:1,opx.basepayout:1},
-xtriggers:{success:[{id:"contact.cultist.horned",morpheffect:spawn}]},
-comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
-},
-
-
-{id:"opx.wolf.complete",
-label:"Wolf-Divided Cult Paying Off",
-description:"Here come the rewards.",
-aspects:{opx.wolf:1,opx.basepayout:1},
-xtriggers:{success:[{id:"contact.cultist.wolf",morpheffect:spawn}]},
-comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
-},
-
 
 {id:"op.miracles.cultseed",
 label:"A New Faith?",
@@ -823,6 +800,15 @@ description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.flowermaker.complete",
+label:"Flowermaker Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.flowermaker:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.flowermaker",morpheffect:spawn}]},
+comments:"NB this is in addition to the cult seed base payout",
+lifetime:1
+},
+
 {id: "ee.horned1.knock.winter",
 label: "FNORD complication",
 aspects: {complication:1,minknock:4,minwinter:4,opx.horned:1},
@@ -847,6 +833,15 @@ description:"FNORD",
 lifetime:1
 },
 
+{id:"opx.horned.complete",
+label:"Horned-Axe Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.horned:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.horned",morpheffect:spawn}]},
+comments:"NB this is in addition to the cult seed base payout",
+lifetime:1
+},
+
 {id: "ee.wolf1.edge.winter",
 label: "FNORD complication",
 aspects: {complication:1,minwinter:4,minwinter:4,opx.wolf:1},
@@ -868,6 +863,15 @@ label: "FNORD complication",
 aspects: {complication:1,minedge:12,minknock:12,opx.wolf:1},
 xtriggers:{next:opx.wolf.complete},
 description:"FNORD",
+lifetime:1
+},
+
+{id:"opx.wolf.complete",
+label:"Wolf-Divided Cult Paying Off",
+description:"Here come the rewards.",
+aspects:{opx.wolf:1,opx.basepayout:1},
+xtriggers:{success:[{id:"contact.cultist.wolf",morpheffect:spawn}]},
+comments:"NB this is in addition to the cult seed base payout",
 lifetime:1
 },
 
@@ -1072,7 +1076,7 @@ lifetime:1
 
 {id: "ee.patronage1.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minheart:4,minlantern:4},
+aspects: {complication:1,minheart:4,minlantern:4,opx.patronage:1},
 xtriggers:{next:ee.patronage2.heart.lantern},
 description:"FNORD",
 lifetime:1
@@ -1081,7 +1085,7 @@ lifetime:1
 
 {id: "ee.patronage2.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minheart:8,minlantern:8},
+aspects: {complication:1,minheart:8,minlantern:8,opx.patronage:1},
 xtriggers:{next:ee.patronage3.heart.lantern},
 description:"FNORD",
 lifetime:1
@@ -1090,7 +1094,7 @@ lifetime:1
 
 {id: "ee.patronage3.heart.lantern",
 label: "FNORD complication",
-aspects: {complication:1,minheart:12,minlantern:12},
+aspects: {complication:1,minheart:12,minlantern:12,opx.patronage:1},
 xtriggers:{next:opx.patronage.complete},
 description:"FNORD",
 lifetime:1

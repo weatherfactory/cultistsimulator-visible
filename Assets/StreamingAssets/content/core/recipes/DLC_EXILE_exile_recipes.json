@@ -603,7 +603,7 @@ mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
 actionId:"time.exile",
 label:"The Wheel Turns",
 startdescription:"The sun crosses the sky. Night pursues it.",
-warmup:180,
+warmup:60,
 comments: "No enemies arrive in the first turn.",
 alt:[{id:"use.first",additional:true}],
 linked:[{id:"turn.next"}]},
@@ -611,14 +611,37 @@ linked:[{id:"turn.next"}]},
 {id:"turn.next",
 actionId:"time.exile",
 label:"The Wheel Turns",
-startdescription:"The sun crosses the sky. Night pursues it. [At the end of each cycle, reckoners may also enter the city. This is much more likely if you've created Traces.]",
+startdescription:"The sun crosses the sky. Night pursues it. [At the end of each cycle, reckoners may also enter the city. This is more likely if you've created a Trace, and much more likely if you've creatd more than one.]",
 warmup:60,
-alt:[
-{id:"wounds.exile.danger"},
-{id:"rkx.arrive.traces",additional:true,chance:30},
-{id:"rkx.arrive.no.traces",additional:true,chance:10}],
+comments: "using linked recipes so we can select just one possible additional trace response",
+alt:[{id:"wounds.exile.danger"}],
+linked:[{id:"turn.next.traces"},
+{id:"turn.next.trace"},
+{id:"turn.next.no.trace"}]},
+
+
+{id:"turn.next.traces",
+actionId:"time.exile",
+extantreqs:{trace:2},
+alt:[{id:"rkx.arrive.traces",additional:true,chance:70}],
 linked:[{id:"wounds.exile.danger"},
 {id:"turn.next"}]},
+
+{id:"turn.next.trace",
+actionId:"time.exile",
+extantreqs:{trace:1},
+alt:[{id:"rkx.arrive.trace",additional:true,chance:30}],
+linked:[{id:"wounds.exile.danger"},
+{id:"turn.next"}]},
+
+{id:"turn.next.no.trace",
+actionId:"time.exile",
+extantreqs:{trace:-1},
+alt:[{id:"rkx.arrive.no.trace",additional:true,chance:10}],
+linked:[{id:"wounds.exile.danger"},
+{id:"turn.next"}]},
+
+
 
 
 {id:"wounds.exile.danger",
@@ -654,7 +677,6 @@ label:"A Trace!",
 startdescription:"It's hard to pass through the world and leave no footprints. [Reckoners use Traces to find you.]",
 effects:{trace:1},
 warmup:5},
-
 
 ]
 }
