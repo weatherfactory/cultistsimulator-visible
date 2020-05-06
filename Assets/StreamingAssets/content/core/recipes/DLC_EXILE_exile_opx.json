@@ -33,14 +33,13 @@ alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter
 craftable:true},
 
 
-
 {id:"use.miracles",
 actionId:"use",
 label:"Run a Faith-Healing Cult",
 startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{connection.holy:1,space:1,year.stolen:1},
-effects:{year.stolen:-1,,connection.holy:-1},
+effects:{year.stolen:-1,connection.holy:-1},
 warmup:5,
 alt:[{id:"opx.miracles.begin", additional:true, expulsion:{limit:3,filter:{space:1}}}],
 craftable:true},
@@ -76,6 +75,17 @@ requirements:{op.miracles.cultseed:1,op.wolf:1,space:1,year.stolen:1},
 effects:{year.stolen:-1,op.wolf:-1},
 warmup:5,
 alt:[{id:"opx.wolf.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+craftable:true},
+
+{id:"use.cultseed.miracles",
+actionId:"use",
+label:"Continue a Faith-Healing Cult",
+startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+description:"The congregation is assembling, again.",
+requirements:{op.miracles.cultseed:1,space:1,year.stolen:1},
+effects:{year.stolen:-1,progress.effectiveness:1},
+warmup:5,
+alt:[{id:"opx.miracles.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,progress.effectiveness:1,space:1}}}],
 craftable:true},
 
 {id:"use.import",

@@ -762,9 +762,9 @@ lifetime:1
 {id:"op.miracles.cultseed",
 label:"A New Faith?",
 description:"The congregation are hungry for something more. [If you achieve at least one Effectiveness when running a Faith-Healing Cult, you might be able to establish an Esoteric Cult.]",
-slots:[{actionId:use,id:"influence",label:"Influence",required:{op.flowermaker:1,op.horned:1,op.wolf:1}},
-{actionId:use,id:"meetingplace",label:"Meeting Place",required:{space:1}},
-{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
+slots:[{actionId:use,id:"meetingplace",label:"Meeting Place",required:{space:1}},
+{actionId:use,id:"year",label:"Year",required:{year.stolen:1}},
+{actionId:use,id:"influence",label:"Influence",required:{op.flowermaker:1,op.horned:1,op.wolf:1}}],
 xtriggers:{renewal.exile:op.miracles.cultseed},
 aspects:{op:1,opx.basepayout:2},
 lifetime:300
