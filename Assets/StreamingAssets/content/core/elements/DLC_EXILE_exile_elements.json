@@ -2200,7 +2200,8 @@ description:"'It'll be back,' the seller informs me, gloomily. 'Do what you can 
 xtriggers:{purchase:curio.moth},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
-unique:true
+unique:true,
+icon:toolmothb
 },
 
 {id: "op.rarity.forge",
