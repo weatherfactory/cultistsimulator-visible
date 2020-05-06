@@ -304,6 +304,12 @@ description:"recipe aspect",
 noartneeded:true
 },
 
+{id:"failure",
+label:"Failure",
+description:"recipe aspect",
+noartneeded:true
+},
+
 {id:"striking.foe",
 label:"Striking Foe",
 description:"recipe aspect - hit an foe with a weapon",
@@ -945,7 +951,7 @@ lifetime:1
 {id: "ee.fights1.edge.grail",
 label: "FNORD complication",
 aspects: {complication:1,minedge:4,mingrail:4,opx.fights:1},
-xtriggers:{next:ee.fights2.edge.moth},
+xtriggers:{next:ee.fights2.edge.moth,failure:[{id:"wound.exile",morpheffect:spawn}]},
 description:"FNORD",
 lifetime:1
 },
@@ -953,7 +959,7 @@ lifetime:1
 {id: "ee.fights2.edge.moth",
 label: "FNORD complication",
 aspects: {complication:1,minedge:8,minmoth:8,opx.fights:1},
-xtriggers:{next:ee.fights3.edge.forge},
+xtriggers:{next:ee.fights3.edge.forge,failure:[{id:"wound.exile",morpheffect:spawn}]},
 description:"FNORD",
 lifetime:1
 },
@@ -961,7 +967,7 @@ lifetime:1
 {id: "ee.fights3.edge.forge",
 label: "FNORD complication",
 aspects: {complication:1,minedge:12,minforge:12,opx.fights:1},
-xtriggers:{next:opx.fights.complete},
+xtriggers:{next:opx.fights.complete,failure:[{id:"wound.exile",morpheffect:spawn}]},
 description:"FNORD",
 lifetime:1
 },
@@ -2282,47 +2288,51 @@ lifetime:300
 
 	  	  {id: "op.connection.official",
 label: "Opportunity: An Official Connection?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.lifespan.stolen:1},
 description:"I could always use more friends.",
 xtriggers:{purchase:connection.official},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
 lifetime:300
 },
 
 	  	  {id: "op.connection.ruler",
 label: "Opportunity: a Connection with a Ruler?",
-aspects: {op:1,price.lifespan.stolen:5},
+aspects: {op:1,price.lifespan.stolen:1},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
-lifetime:300
+lifetime:300,
+icon:xg
 },
 
 	  	  {id: "op.connection.holy",
 label: "Opportunity: a Connection with a Holy Man?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.lifespan.stolen:1},
 description:"Charity brings clarity.",
 xtriggers:{purchase:connection.holy},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:300
+slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
+lifetime:300,
+icon:xl
 },
 
 	  	  {id: "op.connection.radicals",
 label: "Opportunity: a Connection with Radicals?",
-aspects: {op:1,price:1},
-description:"They don't care where the money comes from.",
+aspects: {op:1,price.lifespan.stolen:1},
+description:"This might have consequences. But I'm probably not planning to stick around.",
 xtriggers:{purchase:connection.radicals},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:300
+slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
+lifetime:300,
+icon:xe
 },
 
 	  	  {id: "op.connection.underworld",
 label: "Opportunity: an Underworld Connection?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.lifespan.stolen:1},
 description:"They're no friends of the reckoner mobs.",
 xtriggers:{purchase:connection.underworld},
-slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:300
+slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
+lifetime:300,
+icon:xm
 },
 
 
@@ -2465,8 +2475,7 @@ label:"Import Licence",
 aspects:{asset:1,worth:1},
 description:"The name on the licence isn't exactly mine, but it's close enough.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
-{actionId:use,id:"means",label:"Means",required:{op.sea:1}},
-{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
+{actionId:use,id:"means",label:"Means",required:{op.sea:1}}]
 },
 
 {id:"connection.official",
@@ -2479,7 +2488,8 @@ description:"A mutually beneficial arrangement with someone in authority."
 {id:"connection.ruler",
 label:"Connection: Ruler",
 aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
-description:"A mutually beneficial arrangement with someone of real power."
+description:"A mutually beneficial arrangement with someone of real power.",
+icon:xg
 },
 
 
@@ -2488,23 +2498,25 @@ label:"Connection: Holy Man",
 aspects:{connection:1,asset:1,deception:1,heart:4,lantern:4},
 slots:[{actionId:use,id:"venue",label:"Venue",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
-description:"A mutually beneficial arrangement with a learned holy man."
+description:"A mutually beneficial arrangement with a learned holy man.",
+icon:xl
 },
 
 
 {id:"connection.radicals",
 label:"Connection: Radicals",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,forge:6},
-description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts."
+description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
+icon:xe
 },
 
 {id:"connection.underworld",
 label:"Connection: Underworld",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
-slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
-{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1}},
-{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
-description:"A mutually beneficial arrangement with relevant professionals."
+slots:[{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1,year.stolen:1}},
+{actionId:use,id:"location",label:"Location",required:{space:2}}],
+description:"A mutually beneficial arrangement with relevant professionals.",
+icon:xm
 },
 
 
@@ -3582,14 +3594,16 @@ icon: vaultshires1
 label: "Freezing Winds",
 aspects: {op:1,distraction:1,winter:2,edge:2},
 description:"Frost walks here.",
-lifetime:300
+lifetime:300,
+icon:xw
 },
 
 {id: "op.heat",
 label: "Trembling Heat",
 aspects: {op:1,distraction:1,forge:2,grail:2},
 description:"The air shimmers like a naked furnace. Serpents' weather.",
-lifetime:300
+lifetime:300,
+icon:xf
 },
 
 {id: "op.sea",
@@ -3597,7 +3611,8 @@ label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
 xtriggers:{renewal.exile:op.sea},
-lifetime:300
+lifetime:300,
+icon:xw
 },
 
 {id: "op.faith",
@@ -3605,7 +3620,8 @@ label: "Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
 xtriggers:{renewal.exile:op.faith},
-lifetime:300
+lifetime:300,
+icon:xl
 },
 
 {id: "op.cats",
@@ -3613,7 +3629,8 @@ label: "Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"I've found a place bristling with excitable cats.",
 xtriggers:{renewal.exile:op.cats},
-lifetime:300
+lifetime:300,
+icon:xm
 },
 
 {id: "op.heights",
@@ -3621,7 +3638,8 @@ label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
 xtriggers:{renewal.exile:op.heights},
-lifetime:300
+lifetime:300,
+icon:xl
 },
 
 {id: "op.horned",
@@ -3629,7 +3647,8 @@ label: "THe Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 xtriggers:{renewal.exile:op.horned},
-lifetime:300
+lifetime:300,
+icon:xk
 },
 
 {id: "op.wolf",
@@ -3637,7 +3656,8 @@ label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
 xtriggers:{renewal.exile:op.wolf},
-lifetime:300
+lifetime:300,
+icon:xe
 },
 
 {id: "op.flowermaker",
@@ -3645,7 +3665,8 @@ label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
 xtriggers:{renewal.exile:op.flowermaker},
-lifetime:300
+lifetime:300,
+icon:xg
 },
 
 {id: "op.echidna",
