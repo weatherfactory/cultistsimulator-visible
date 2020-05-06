@@ -10,6 +10,14 @@ warmup:10,
 comments:"opened by initial travel recipe"
 },
 
+{id:"scout.turmoil",
+actionId:"scout",
+label:"A City in Turmoil",
+startdescription:"I should leave - and soon.",
+requirements:{turmoil:1},
+craftable:false,
+hintonly:true
+},
 
 {id:"scout.aachen",
 actionId:"scout",
@@ -162,7 +170,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.kiev:1},
-	internaldeck: {spec: [op.curio.knock,op.connection.official,op.licence.medical,op.office,op.warehouse,op.marinette,op.heights,op.faith,op.connection.holy,op.sunset], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.knock,op.connection.official,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.marinette,op.heights,op.faith,op.connection.holy,op.sunset], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -233,7 +241,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.munich:1},
-	internaldeck: {spec: [op.connection.official,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.munich,op.horned,op.weapon.b,op.night], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.radicals,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.munich,op.horned,op.weapon.b,op.night], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -246,7 +254,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.nizhny:1},
-	internaldeck: {spec: [op.curio.forge,op.connection.official,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.nizhny,op.sunset], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.nizhny,op.sunset], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -296,7 +304,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.samarkand:1},
-	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.licence.medical,op.office,op.warehouse,loc.shrine.lionsmith.samarkand,op.faith,op.connection.holy,op.cats,op.dawn], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.connection.radicals,op.licence.medical,op.office,op.warehouse,loc.shrine.lionsmith.samarkand,op.faith,op.connection.holy,op.cats,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -342,7 +350,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.tiflis:1},
-	internaldeck: {spec: [op.curio.lantern2,op.connection.official,op.licence.medical,op.office,op.warehouse,op.heights,op.wolf,op.weapon.b,op.dawn], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern2,op.connection.official,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.heights,op.wolf,op.weapon.b,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -379,7 +387,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.valletta:1},
-	internaldeck: {spec: [op.curio.forge,op.connection.official,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.colonel.valletta,op.sea,op.connection.radicals,op.dawn], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.forge,op.connection.official,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.colonel.valletta,op.sea,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 

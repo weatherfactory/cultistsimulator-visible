@@ -209,7 +209,7 @@ isHidden:true
 },
 
 
-{id:"opx.turmoil",
+{id:"opx.uprising",
 label:"uprising op marker: DO NOT TRANSLATE",
 isAspect:true,
 noartneeded:true,
@@ -231,7 +231,12 @@ noartneeded:true,
 isHidden:true
 },
 
-
+{id:"turmoil",
+label:"turmoil flag: DO NOT TRANSLATE",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
 
 
 {id:"supplies",
@@ -306,6 +311,12 @@ noartneeded:true
 
 {id:"failure",
 label:"Failure",
+description:"recipe aspect",
+noartneeded:true
+},
+
+{id:"uprising",
+label:"Uprising",
 description:"recipe aspect",
 noartneeded:true
 },
@@ -982,7 +993,7 @@ lifetime:1
 
 {id: "ee.uprising1.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:4,minheart:4,opx.turmoil:1},
+aspects: {complication:1,minedge:4,minheart:4,opx.uprising:1},
 xtriggers:{next:ee.uprising2.edge.heart},
 description:"FNORD",
 lifetime:1
@@ -991,7 +1002,7 @@ lifetime:1
 
 {id: "ee.uprising2.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:8,minheart:8,opx.turmoil:1},
+aspects: {complication:1,minedge:8,minheart:8,opx.uprising:1},
 xtriggers:{next:ee.uprising3.edge.heart},
 description:"FNORD",
 lifetime:1
@@ -1000,7 +1011,7 @@ lifetime:1
 
 {id: "ee.uprising3.edge.heart",
 label: "FNORD complication",
-aspects: {complication:1,minedge:12,minheart:12,opx.turmoil:1},
+aspects: {complication:1,minedge:12,minheart:12,opx.uprising:1},
 xtriggers:{next:opx.uprising.complete},
 description:"FNORD",
 lifetime:1
@@ -1009,7 +1020,7 @@ lifetime:1
 {id:"opx.uprising.complete",
 label:"Uprising Paying Off",
 description:"Here come the rewards.",
-aspects:{opx.turmoil:1,opx.basepayout:4},
+aspects:{opx.uprising:1,opx.basepayout:4},
 lifetime:1
 },
 
@@ -3247,13 +3258,21 @@ unique:true
 	  {id: "domicile.aachen.turmoil",
 label: "Aachen in Flames",
 aspects: {domicile:1,turmoil:1},
-description:"Rehenish separatists are fighting German loyalists in the streets. I should leave while I still can.",
+description:"Rhenish separatists are fighting German loyalists in the streets. I should leave while I still can.",
+icon: city.aachen,
+unique:true
+},
+
+	  {id: "domicile.algiers.turmoil",
+label: "Algiers in Flames",
+aspects: {domicile:1,turmoil:1},
+description:"Nationalists are fighting French troops in the streets. I should leave while I still can.",
 icon: city.aachen,
 unique:true
 },
 
 	  {id: "domicile.baghdad.turmoil",
-label: "Aachen in Flames",
+label: "Baghdad in Flames",
 aspects: {domicile:1,turmoil:1},
 description:"Hashemite forces are fighting nationalists in the streets. I should leave while I still can.",
 icon: city.aachen,
@@ -3347,7 +3366,6 @@ description:"Revolutionaries and counter-revolutionaries are fighting street to 
 icon: city.aachen,
 unique:true
 },
-
 
 	  {id: "city.aachen",
 label: "Rhenish Aachen",
