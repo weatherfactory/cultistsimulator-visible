@@ -584,9 +584,8 @@ actionId:"send",
 label:"Send Discreet Messages from Cluj-Napoca",
 requirements:{domicile.cluj:1},
 	internaldeck: {spec: [city.kiev,city.tiflis,city.istanbul,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
-linked:[{id:"send.investigate.description"}],
-
-
+linked:[{id:"send.investigate.description"}]
+},
 
 
 {id:"send.investigate.granada",
@@ -726,6 +725,7 @@ craftable:true,
 requirements:{domicile.nizhny:1},
 	internaldeck: {spec: [end.cheko,city.sverdlovsk,city.stalingrad,city.leningrad], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 linked:[{id:"send.investigate.description"}]
+},
 
 
 {id:"send.investigate.paris",
@@ -753,7 +753,7 @@ requirements:{domicile.prague:1},
 linked:[{id:"send.investigate.description"}]
 },
 
-},
+
 {id:"send.investigate.rostock",
 actionId:"send",
 label:"Send Discreet Messages from Rostock",
@@ -930,7 +930,7 @@ warmup:30,
 aspects:{majortracerisk:1},
 craftable:true,
 requirements:{domicile.istanbul.turmoil:1},
-nternaldeck: {spec: [city.cluj,city.baghdad,city.alexandria,city.tirana], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+internaldeck: {spec: [city.cluj,city.baghdad,city.alexandria,city.tirana], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 linked:[{id:"send.investigate.description"}]
 },
 

@@ -2828,8 +2828,8 @@ label: "Sunshine Island",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.bornholm",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"The light is famously good - enough so that a small colony of artists toils here - but it's still an optimistic name for a storm-beaten tumble of Baltic granite.",
 icon: vaultcontinent3,
 unique:true
@@ -2841,8 +2841,8 @@ label: "Wounded Moon Lake",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.cheko",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"Deep in the taiga forests of Siberia, a hunting lodge decays gracefully into an ice-blue lake - a lake, it's said, that a falling moon-fragment scarred from the forest.",
 icon: vaultcontinent3,
 unique:true
@@ -2854,8 +2854,8 @@ label: "The Pentapolis",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.ghardaia",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"On a high far limestone plateau in the greatest of deserts, the Mozabites built five citadel villages to be a refuge for their people. Now, one is a refuge for me.",
 icon: vaultloneandlevelsands2,
 unique:true
@@ -2866,8 +2866,8 @@ label: "Hermitage of the Scythe",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.messana",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"Across the deadly sands, an oasis where peculiarly healthy villagers thrive. In the hills above, a sunny, rocky cell of three windows.",
 icon: vaultloneandlevelsands3,
 unique:true
@@ -2877,8 +2877,8 @@ label: "Priory of Captains",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.morbihan",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"In the little sea called Morbihan, the gate to the western ocean, there's an isle famed for its sailors. On its westmost tip lies a quiet priory. The monks enjoy their privacy, but they've been known to offer sanctuary.",
 icon: vaultcontinentdefault,
 unique:true
@@ -2889,8 +2889,8 @@ label: "The Tiger's Nest",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.paro",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"High in the abode of eternal snows, a monastery of the Diamond Vehicle clings improbably to a cliff face like flowers on lichen.",
 icon: vaultcontinent3,
 unique:true
@@ -2900,8 +2900,8 @@ label: "Fogfire Point",
 aspects: {destination:1,end:1,remote:1},
 xtriggers:{arriving:[{id:"domicile.slettnes",morpheffect:transform}]},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
 icon: vaultcontinent3,
 unique:true
@@ -2911,7 +2911,7 @@ unique:true
 label: "Rhenish Aachen",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
-xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}]},
+xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}],uprising:domicile.aachen.turmoil},
 icon: city.aachen,
 unique:true
 },
@@ -2934,9 +2934,6 @@ description:"Pine scent and bougainvillea, white walls and ocean light, sirocco 
 icon: city.algiers,
 unique:true
 },
-
-
-
 
 	  {id: "domicile.amsterdam",
 label: "Amsterdam",
@@ -2961,7 +2958,7 @@ unique:true
 	  {id: "domicile.baghdad",
 label: "Baghdad",
 aspects: {domicile:1,troubled:1},
-
+xtriggers:{uprising:domicile.baghdad.turmoil},
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
 icon: city.baghdad,
 unique:true
@@ -2980,9 +2977,6 @@ unique:true
 	  {id: "domicile.candia",
 label: "Candia-Heraklion",
 aspects: {domicile:1,remote:1,shrine.colonel.marker:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
 icon: city.candia,
 unique:true
@@ -3010,7 +3004,7 @@ unique:true
 {id: "domicile.istanbul",
 label: "Istanbul",
 aspects: {domicile:1},
-
+xtriggers:{uprising:domicile.baghdad.turmoil},
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 icon:city.istanbul,
 unique:true
@@ -3032,7 +3026,7 @@ unique:true
 	  {id: "domicile.kiev",
 label: "Kiev",
 aspects: {domicile:1,troubled:1},
-
+xtriggers:{uprising:domicile.kiev.turmoil},
 description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
 icon: city.kiev,
 unique:true
@@ -3051,7 +3045,7 @@ unique:true
 	  {id: "domicile.leningrad",
 label: "Leningrad",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
-
+xtriggers:{uprising:domicile.leningrad.turmoil},
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 icon: city.leningrad,
 unique:true
@@ -3060,7 +3054,7 @@ unique:true
 	  	  {id: "domicile.london",
 label: "London",
 aspects: {domicile:1,troubled:1},
-
+xtriggers:{uprising:domicile.london.turmoil},
 description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
 icon: city.london,
 unique:true
@@ -3079,9 +3073,6 @@ unique:true
 	  {id: "domicile.meshad",
 label: "Meshad",
 aspects: {domicile:1,remote:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 icon: city.meshad,
 unique:true
@@ -3091,7 +3082,7 @@ unique:true
 	  {id: "domicile.munich",
 label: "Munich",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
-
+xtriggers:{uprising:domicile.munich.turmoil},
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
 icon: city.munich,
 unique:true
@@ -3101,9 +3092,7 @@ unique:true
 	  {id: "domicile.nizhny",
 label: "Nizhny Novgorod",
 aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+xtriggers:{uprising:domicile.nizhny.turmoil},
 description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
 icon: city.nizhny,
 unique:true
@@ -3150,9 +3139,7 @@ unique:true
 	  {id: "domicile.samarkand",
 label: "Samarkand",
 aspects: {domicile:1,remote:1,troubled:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+xtriggers:{uprising:domicile.samarkand.turmoil},
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
 icon: city.samarkand,
 unique:true
@@ -3162,9 +3149,7 @@ unique:true
 	  {id: "domicile.stalingrad",
 label: "Stalingrad",
 aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+xtriggers:{uprising:domicile.stalingrad.turmoil},
 description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
 icon: city.stalingrad,
 unique:true
@@ -3174,7 +3159,6 @@ unique:true
 	  {id: "domicile.strasbourg",
 label: "Strasbourg",
 aspects: {domicile:1},
-
 description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I like.",
 icon: city.strasbourg,
 unique:true
@@ -3185,9 +3169,7 @@ unique:true
 	  {id: "domicile.sverdlovsk",
 label: "Sverdlovsk",
 aspects: {domicile:1,remote:1,troubled:1},
-slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+xtriggers:{uprising:domicile.sverdlovsk.turmoil},
 description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
 icon: city.sverdlovsk,
 unique:true
@@ -3198,7 +3180,7 @@ unique:true
 	  {id: "domicile.tiflis",
 label: "Tiflis",
 aspects: {domicile:1,troubled:1},
-
+xtriggers:{uprising:domicile.tiflis.turmoil},
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
 icon: city.tiflis,
 unique:true
@@ -3229,8 +3211,8 @@ unique:true
 label: "Valletta",
 aspects: {domicile:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
 icon: city.valletta,
 unique:true
@@ -3438,8 +3420,8 @@ xtriggers:{arriving:[{id:"domicile.budapest",morpheffect:transform}]}
 label: "Candia-Heraklion",
 aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
 unique:true,
 xtriggers:{arriving:[{id:"domicile.candia",morpheffect:transform}]}
@@ -3541,8 +3523,8 @@ xtriggers:{arriving:[{id:"domicile.marrakech",morpheffect:transform}]}
 label: "Meshad",
 aspects: {destination:1,remote:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 
 unique:true,
@@ -3565,8 +3547,8 @@ xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domici
 label: "Nizhny Novgorod",
 aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
 
 unique:true,
@@ -3617,8 +3599,8 @@ xtriggers:{arriving:[{id:"domicile.rostock",morpheffect:transform}]}
 label: "Samarkand",
 aspects: {destination:1,remote:1,troubled:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
 
 unique:true,
@@ -3630,8 +3612,8 @@ xtriggers:{arriving:[{id:"domicile.samarkand",morpheffect:transform}]}
 label: "Stalingrad",
 aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
 
 unique:true,
@@ -3655,8 +3637,8 @@ xtriggers:{arriving:[{id:"domicile.strasbourg",morpheffect:transform}]}
 label: "Sverdlovsk",
 aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
 
 unique:true,
@@ -3702,8 +3684,8 @@ xtriggers:{arriving:[{id:"domicile.tripoli",morpheffect:transform}]}
 label: "Valletta",
 aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
-{id:"cash3",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
+{id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
+],
 description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
 
 unique:true,
