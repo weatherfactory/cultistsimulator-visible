@@ -574,7 +574,7 @@ startdescription:"I'm en route...",
 mutations:[{filterOnAspectId:destination,mutateAspectId:lure.foe,mutationLevel:-1},
 {filterOnAspectId:destination,mutateAspectId:rkx.infected,mutationLevel:-1}],
 aspects:{arriving:1},
-warmup:30,
+
 linked:[{id:"travel.stillenroute.remote"},
 {id:"travel.arrive"}]},
 
@@ -600,51 +600,52 @@ mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
 
 {id:"travel.arrive",
 actionId:"travel",
-label:"Disembark",
-startdescription:"@#domicile.aachen|
-#domicile.alexandria|
+label:"Arrival",
+startdescription:"@#domicile.aachen|Lalla Chaima has left a message at the hotel where I used to stay. It's one word: 'Noon.' It doesn't tell me where I need to be at noon, but Chaima has always been good at finding people when she needs to.
+#domicile.alexandria|The Invisible Serapeum is invisible even from the inside. I might already be considered to have entered it, the moment I step off the boat. It'll be a while before I'm sure.
 #domicile.algiers|A tumble of white houses above a sunny quayside. I have an address for one of M. Giorgiou's people.
-#domicile.amsterdam|
-#domicile.avignon|
-#domicile.baghdad|
-#domicile.budapest|
-#domicile.candia|
-#domicile.cluj|
-#domicile.granada|
-#domicile.istanbul|
-#domicile.kiev|
-#domicile.krakow|
-#domicile.leningrad|
-#domicile.london|
-#domicile.marrakech|
-#domicile.meshad|
-#domicile.munich|
-#domicile.nizhny|
-#domicile.paris|
-#domicile.prague|
-#domicile.rostock|
-#domicile.samarkand|
-#domicile.stalingrad|
-#domicile.sverdlovsk|
-#domicile.strasbourg|
-#domicile.tiflis|
-#domicile.tirana|
-#domicile.tripoli|
-#domicile.valletta|
-#domicile.venice|
-#domicile.vienna|
-#domicile.bornholm|
-#domicile.cheko|
-#domicile.ghardaia|
-#domicile.messana|
-#domicile.morbihan|
-#domicile.paro|
-#domicile.slettnes|
+#domicile.amsterdam|The Stegenga twins are out of town - perhaps not coincidentally - and their many-windowed house is empty. But their major-domo has a message for me. They've asked one of their more influential clients to help me out.
+#domicile.avignon|M. Giorgiou has invited me to dine in the rooms he keeps by the Palais des Papes. 
+#domicile.baghdad|Percy Styles is waiting for me at the station. His hair is still an absurd frizz, but it's whitened with age. He looks more than ever like a merrily dissolute bishop. He holds up a finger. 'One favour,' he says. 'That's all I can afford. Make it a good one.'
+#domicile.budapest|It's freezing, but Lili is holding court in her usual place at the Városliget, in her usual widow's black, playing chess between meetings with clients. 'I thought you might turn up,' she says resignedly. 'Please tell me you haven't brought them here yet?'
+#domicile.candia|On the night before I arrive in Crete, I dreamt about gods underground. When I woke, I went up on deck. The stars blazed relentlessly, as if holes had peen pierced in the night above. The night was clear; the horizon scalpel-sharp. A woman's voice behind me spoke a word I didn't recognise - 'zenodika'? When I turned, I saw she only had half a face, and the other half was scaled like a butterfly's wing. Then I woke truly, alone in the hot iron dark of my cabin.
+#domicile.cluj|The regulars at the Cafe Oradea shake their heads sadly when I mention Lili's name. 'She was not kind, but she was patient,' one asserts. 'Not like this butcher from Vaslui. But you need to meet him, we must suppose. I'll make an introduction.'
+#domicile.granada|Mireya's place is in the Albaicin, which in the original Arabic possibly means 'the place at the very top of all the hills after you've been travelling all day, and none of the streets are lit'.
+#domicile.istanbul|Kemal's name gets me a meeting with a hawk-faced Karakol veteran in a grimy Taksim coffeehouse. He mostly seems to want to complain that their President is too close to the British, but when I've listened long enough he reluctantly offers me his help.
+#domicile.kiev|As soon as I step off the train, I smell blood. I turn my head. Nothing: only smoke and sweat. I must have imagined it. But there it is again. That red copper.
+#domicile.krakow|Yitzchok has prepared a room for me in the attic. 'I'm too old to be murdered,' he assures me. 'If they come for you, I'll hide under the table and cry.'
+#domicile.leningrad|Sushkin, the 'Athenian', does indeed remember me. 'I will buy you a prodigious funeral,' he tells me delightedly. 'I have a plot picked out for you in the Tikhvin. It's a little small, but I don't imagine your friends will leave very much of you. No no. I insist. It is the least I can do.'
+#domicile.london|Ottavio is waiting for me outside Victoria station, shaking his head sorrowfully at demonstrators marching past. 'A man must be paid, of course,' he laments, 'but all this. There's no need for it. The racecourses are closed, do you know that? And police! like a hive of bees. Perhaps I should strike too. Let them catch real criminals..'
+#domicile.marrakech|I don't recognise Navil, but he recognises me, and greets me warmly. 'Your heart is steel,' he explains, 'but steel can also be a mirror, and in mirrors we find Glory. You don't know what I mean, do you? Never mind! Accept my help, and leave whenever you wish. That's all you need to do.'
+#domicile.meshad|My friend had retired to a village outside Meshad. Because she was of the old religion, when she fell ill, she had gone to Bazehoor Fire Temple to seek healing. She died before sunset. By the time I arrived, they had already taken her body to the tower for the excarnation.
+#domicile.munich|Count Jannings has sent a scarred and silent servant to bring me to our meeting.
+#domicile.nizhny|Sushkin's people are wary, but one claps me on the shoulder when I mention my pursuers. He says something filthy about reckoners that I pretend not to be offended by.
+#domicile.paris|Tante Adeline's man is a surly, lanky fellow in a leather apron. He doesn't speak to me at all - just sits there feeding gobbets of raw meat to his dogs - but he listens as I explain, and he motions to a huge Corsican to follow me when I leave.
+#domicile.prague|Tante Adeline is a sparrow-eyed, bear-necked, florid-cheeked mountain of a woman, with an incongruously sweet voice. 'Here to crack some heads for me?' she asks enthusiastically.
+#domicile.rostock|Jannings' staff have been told to expect me. I'm welcome here for as long as I like.
+#domicile.samarkand|My Jadidist friend is bowed with sorrow. He can barely speak. But I can count on his help.
+#domicile.stalingrad|The Bird-Eaters lair in a burnt-out church. I'm certain I see a great serpent - shining like wet leather - slither away through the rubble as I approach. But Zulfiya and the others insist that it was nothing.
+#domicile.sverdlovsk|Zulfiya's friend is a commissar now. He'll see me right, he assures me, if I don't get into too much trouble.
+#domicile.strasbourg|There's a tall shape waiting for me in a little garden by the museum. If I don't look too closely, it could be a man draped in blankets. Let's say it is. I don't look at him as he whispers to me, but I come away with some knowledge of the hidden ways of Strasbourg.
+#domicile.tiflis|Cheery gramophone music drifts from Vasil's open window as I knock on his door.
+#domicile.tirana|My Zogist friend shakes my hand firmly. 'I can give you an introduction,' she says, 'if you have years to win his favour.'
+#domicile.tripoli|FNORD -
+#domicile.valletta|Kemal is waiting for me on the quayside. 'I'll do what I can,' he assures me. 'I have the governor's ear. You know the British. Very reliable. Though not so bright.'
+#domicile.venice|Orsolina keeps a little fish restaurant in the Cannaregio. 'You know my trouble,' she told me last visit. 'Bacalá was always my weakness. If I'd never tasted it, I'd still be living in the earth, no doubt of that.'
+#domicile.vienna|As I leave the station, I see a grey-haired woman in black and white watching me from across the street. The crowds closes in front of her, and she's gone. It feels like a warning.
+#domicile.bornholm|I find a room above the harbour. When my Foe comes, I'll wait for him out on the cliffs.
+#domicile.cheko|I light a fire in the main room of the lodge, and do what I can to repair the shutters. I don't know how long I'll have to wait.
+#domicile.ghardaia|Each evening as the sky darkens, the desert air is crisp as fresh snow, and I almost forget why I am here.
+#domicile.messana|It's very quiet here. However silently he approaches, I'll hear him. I think, though, that he'll be too proud for stealth.
+#domicile.morbihan|'You can stay,' the Prior tells me. 'But I won't take your money. It's the Devil who is coming for you. There's no sanctuary for you here, or anywhere on the face of the earth.'
+#domicile.paro|It's a long climb. Not too long for my Foe, I'm sure. But I can watch him as he comes.
+#domicile.slettnes|I arrive at dusk. The light flickers, flickers. It'll draw him here too.
 
-#|I'm here.@",
+#|I've arrived.@",
 comments:"Converts packed assets back into assets.",
 mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
 {filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:-1}],
+warmup:30
 },
 
 

@@ -1583,7 +1583,7 @@ unique:true
 id:"vault.serapeum",
 label:"The Invisible Serapeum",
 inherits: "_vault.exile",
-description:"The Forge of Days does not usually favour libraries, but the Serapeum has made a commitment to non-combustible materials.",
+description:"The Forge of Days does not usually favour libraries, but the Serapeum has made a commitment to non-combustible materials. [THIS ISN'T WORKING QUITE YET]",
 icon:"vaultlandbeyondforest5",
 unique:true
 },
@@ -2537,6 +2537,14 @@ aspects:{asset:1,space:2,comfort:4,heart:4,grail:4,worth:4},
 description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
+
+{id:"townhouse.jannings",
+label:"Jannings' Townhouse",
+aspects:{asset:1,space:2,comfort:4,heart:4,grail:4},
+description:"The envy of every passerby. Let's close the curtains tightly.",
+icon:hq.townhouse
+},
+
 
 
 {id:"villa",
@@ -3545,7 +3553,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "London",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Mass strikes and martial law have paralysed the Big Smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
+description:"Mass strikes and martial law have paralysed the Big Smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.london",morpheffect:transform}]}
@@ -3571,7 +3579,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 
 unique:true,
-xtriggers:{arriving:[{id:"op.dawn",morpheffect:spawn},{id:"domicile.meshad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"grief",morpheffect:spawn},{id:"domicile.meshad",morpheffect:transform}]}
 },
 
 
@@ -3631,7 +3639,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
 
 unique:true,
-xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.rostock",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"townhouse.jannings",morpheffect:spawn},{id:"domicile.rostock",morpheffect:transform}]}
 },
 
 
@@ -3941,6 +3949,14 @@ aspects: {heart:4,winter:4},
 description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come.",
 lifetime:300,
 icon:seasonserenities
+},
+
+{id: "grief",
+label: "Grief",
+aspects: {winter:6},
+description:"Everything ends.",
+lifetime:300,
+icon:apostlelantern.pillar2
 },
 
 {id: "rage",
