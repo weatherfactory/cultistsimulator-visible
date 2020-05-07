@@ -645,22 +645,36 @@ isAspect:true,
 icon:follower
 },
 
-{id: "corpse.exile",
-label: "A Human Corpse",
-aspects:{trace:1},
-description:"They're not here any more. I should make sure I'm not, either.",
-slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
-{id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
-icon:corpse
+
+{id:"avaricious",
+label:"Avaricious",
+description:"'Everybody needs money. That's why they call it money.' - Mamet",
+icon:hireling,
+isAspect:true
 },
 
-{id: "corpse.exile.underling",
-label: "A Reckoner Corpse",
-aspects:{trace:1},
-description:"Proof of a victory. This is going to make my Foe very upset.",
-decayTo:"trace",
-slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
+{id:"venerates.colonel",
+label:"Respects the Colonel",
+description:"Patience before strength.",
+icon:winter,
+isAspect:true
 },
+
+{id:"venerates.lionsmith",
+label:"Respects the Lionsmith",
+description:"Courage before cunning.",
+icon:forge,
+isAspect:true
+},
+
+
+
+{id:"vault.completed",
+label:"Done!",
+isAspect:true,
+isHidden:true
+},
+
 
 
 {id:"opx.basepayout",
@@ -668,6 +682,34 @@ label:"Payout aspect for operations DO NOT TRANSLATE",
 isAspect:true,
 noartneeded:true,
 isHidden:true
+},
+
+
+{id:"portable",
+label:"Portable",
+description:"An asset that might travel with you.",
+isAspect:true
+},
+
+{id:"exhausted",
+label:"Exhausted",
+description:"With a little time, this will recover.",
+isAspect:true
+},
+
+
+{id:"deception",
+label:"Assists Deception",
+description:"'There is nothing more deceptive than an obvious fact.' - Arthur Conan Doyle.  [Anything with this aspect can be used to defeat Traces.]",
+isAspect:true
+},
+
+
+
+{id:"asset.packed",
+label:"Asset (Packed)",
+description:"An Asset, ready for travelling",
+isAspect:true
 },
 
 {id: "ee.doctor1.heart.grail",
@@ -1312,33 +1354,12 @@ lifetime:1
 },
 
 
-{id:"avaricious",
-label:"Avaricious",
-description:"'Everybody needs money. That's why they call it money.' - Mamet",
-icon:hireling,
-isAspect:true
-},
-
-{id:"venerates.colonel",
-label:"Respects the Colonel",
-description:"Patience before strength.",
-icon:winter,
-isAspect:true
-},
-
-{id:"venerates.lionsmith",
-label:"Respects the Lionsmith",
-description:"Courage before cunning.",
-icon:forge,
-isAspect:true
-},
-
-
-
-{id:"vault.completed",
-label:"Done!",
-isAspect:true,
-isHidden:true
+{id: "husk",
+label: "Husk",
+aspects: {exhausted:1},
+description:"Something's been used up.",
+icon:jumble,
+lifetime:1
 },
 
 
@@ -1370,34 +1391,24 @@ aspects:{mortal:1,exhausted:1,ally:1,associate:1},
 xtriggers:{killmortal:corpse.exile}
 },
 
-
-
-{id:"portable",
-label:"Portable",
-description:"An asset that might travel with you.",
-isAspect:true
+{id: "corpse.exile",
+label: "A Human Corpse",
+aspects:{trace:1},
+description:"They're not here any more. I should make sure I'm not, either.",
+slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
+{id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
+icon:corpse
 },
 
-{id:"exhausted",
-label:"Exhausted",
-description:"With a little time, this will recover.",
-isAspect:true
-},
-
-
-{id:"deception",
-label:"Deception",
-description:"'There is nothing more deceptive than an obvious fact.' - Arthur Conan Doyle.  [Anything with this aspect can be used to defeat Traces.]",
-isAspect:true
+{id: "corpse.exile.underling",
+label: "A Reckoner Corpse",
+aspects:{trace:1},
+description:"Proof of a victory. This is going to make my Foe very upset.",
+decayTo:"trace",
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
 },
 
 
-
-{id:"asset.packed",
-label:"Asset (Packed)",
-description:"An Asset, ready for travelling",
-isAspect:true
-},
 
 {id: "progress",
 label: "Momentum",
@@ -1685,6 +1696,7 @@ unique:true
 label: "Fluttering Goo",
 description:"When I woke from the Wood, this is what I found in the sealed bottle beside my bed.",
 aspects: {vault.completed:1,moth:12,asset:1,portable:1,supplies:1,worth:1},
+xtriggers:{fatiguing:husk},
 icon:ingredientmothf
 },
 
@@ -1692,6 +1704,7 @@ icon:ingredientmothf
 label: "Hokobald's Alchemical Substance",
 description:"Red as a forgotten sun.",
 aspects: {vault.completed:1,forge:12,asset:1,portable:1,supplies:1,worth:1},
+xtriggers:{fatiguing:husk},
 icon: ingredientforgef
 },
 
@@ -1706,6 +1719,7 @@ icon:spirit_grailc_moth
 label: "Maggot-Spice?",
 description:"The 'seasoning' Dominykas wanted: a pot of nasty-looking larval remnants. The pot is icy cold to the touch.",
 aspects: {vault.completed:1,winter:12,asset:1,portable:1,supplies:1,worth:1},
+xtriggers:{fatiguing:husk},
 icon:"ingredientwinterf"
 },
 
@@ -2413,6 +2427,7 @@ icon:locationauctionhouse
 label:"Curio: Adept's Powder",
 aspects:{asset:1,portable:1,forge:4,grail:2,supplies:1,worth:1},
 description:"A pinch of this goes up like lightning-struck thermite.",
+xtriggers:{fatiguing:husk},
 icon:ingredientforgeb
 },
 
@@ -2420,6 +2435,7 @@ icon:ingredientforgeb
 label:"Curio: Crème de Carmine",
 aspects:{asset:1,portable:1,comfort:1,grail:8,supplies:1,worth:2},
 description:"I'd say it tasted like blood, if it didn't taste so good.",
+xtriggers:{fatiguing:husk},
 icon: ingredientgraild
 },
 

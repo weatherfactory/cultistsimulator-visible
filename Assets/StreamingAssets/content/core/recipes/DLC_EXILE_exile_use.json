@@ -292,7 +292,16 @@ requirements:{op:1,price:1},
 hintonly:true,
 craftable:false},
 
-
+{id:"use.comfort",
+actionId:"use",
+label:"Relax",
+startdescription:"I've risked so much for this business. I may as well enjoy its fruits.",
+description:"Nothing lasts. That's something to be grateful for.",
+requirements:{comfort:1},
+effects:{contentment:comfort},
+warmup:60,
+craftable:true,
+linked:[{id:"use.fatiguing"}]},
 
 
 {id:"use.renew",
@@ -303,6 +312,14 @@ description:"There.",
 requirements:{op:1,price:-1,price.lifespan.stolen:-1},
 aspects:{renewal.exile:1},
 warmup:30,craftable:true},
+
+
+
+{id:"use.fatiguing",
+actionId:"use",
+comments:"Follow-on recipe to fatigue resources and tidy up consumables",
+aspects:{fatiguing:1}
+}
 
 
 
