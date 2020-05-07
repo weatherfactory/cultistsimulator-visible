@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
 
         public void ShowTabletopFor(Legacy characterActiveLegacy)
         {
-            if (characterActiveLegacy.Id == "exile")
+            if (characterActiveLegacy.Id.ToLower().Contains("exile"))
             {
                 var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
                 Cover.sprite = exileLeather;

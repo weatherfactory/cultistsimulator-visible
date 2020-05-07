@@ -432,7 +432,7 @@ namespace Assets.CS.TabletopUI {
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
             _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
-            //tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
+            tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
 
         }
 
@@ -697,7 +697,7 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(true, false, true);
 
             _elementOverview.Initialise(storage.ActiveLegacy, Registry.Retrieve<StackManagersCatalogue>(), compendium);
-           // tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
+            tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
 
         }
 
