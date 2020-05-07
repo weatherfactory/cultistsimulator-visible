@@ -2456,7 +2456,11 @@ icon:toolknockb
 {id:"curio.lantern",
 label:"Curio: Pages from the Book of Suns",
 aspects:{asset:1,portable:1,comfort:1,lantern:4,grail:2,worth:2},
-description:"Gorgeously illustrated manuscript pages, ripped from the original binding to be sold separately. I don't know the language - Persian? Arabic? but somehow I can read the words in sufficiently bright light. A dispute between Hours, a lineage concealed, a secret which shattered loyalties... not much practical information, but there's something about the sounds that sharpens the soul."
+slots: [{id:"parttwo",label:"Pages",actionId:"use",required: {curio.lantern:1}},
+{id:"parttwo",label:"Pages",actionId:"use",required: {curio.lantern:1}},
+{id:"cost",label:"Cost",actionId:"use",description:"I'll need to pay a specialist to restore and rebind the Book of Suns.",required: {cash:1},consumes:true}],
+description:"Gorgeously illustrated manuscript pages, ripped from the original binding to be sold separately. I don't know the language - Persian? Arabic? but somehow I can read the words in sufficiently bright light. A dispute between Hours, a lineage concealed, a secret which shattered loyalties... not much practical information, but there's something about the sounds that sharpens the soul.",
+icon:xl
 },
 
 {id:"curio.moth",
@@ -2481,7 +2485,7 @@ description:"A ten-stringed guitar from the House of Stradivari, shaped from sof
 
 {id:"rarity.lantern",
 label:"Rarity: The Book of Suns, Reassembled",
-aspects:{asset:1,portable:1,comfort:2,lantern:8,grail:4,worth:10},
+aspects:{asset:1,portable:1,comfort:2,lantern:8,grail:4,worth:5},
 description:"There's a forgotten and golden truth in these images - a truth from the times before the Sun was divided. I don't understand it. It's not meant for me. But even the reflected light of that truth is an illumination."
 },
 
