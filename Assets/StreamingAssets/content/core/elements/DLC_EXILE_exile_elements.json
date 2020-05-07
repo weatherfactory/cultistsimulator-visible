@@ -369,15 +369,18 @@ isHidden:true
 },
 
 {id:"defiance.underlingdefeated",
-label:"Defeated at least one underling and proved it corpsily",
-isAspect:true,
-isHidden:true
+label:"Defeated a reckoner and proved it with a trophy.",
+isAspect:true
 },
 
 {id:"defiance.weaponsent",
-label:"Sent a weapon to the Foe",
-isAspect:true,
-isHidden:true
+label:"Sent a weapon to the Foe.",
+isAspect:true
+},
+
+{id:"defiance.foetaunted",
+label:"Taunted the Foe.",
+isAspect:true
 },
 
 {id:"defiance.foespared",
@@ -397,12 +400,12 @@ isAspect:true
 },
 
 {id:"defiance.uprising",
-label:"Assisted an Uprising",
+label:"Assisted an Uprising.",
 isAspect:true
 },
 
 {id:"defiance.betrayal",
-label:"Betrayed an Uprising",
+label:"Betrayed an Uprising.",
 isAspect:true
 },
 
@@ -646,7 +649,8 @@ icon:follower
 label: "A Human Corpse",
 aspects:{trace:1},
 description:"They're not here any more. I should make sure I'm not, either.",
-slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
+slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
+{id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
 icon:corpse
 },
 
@@ -2772,7 +2776,8 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  {id:"trace",
 	  label:"Trace",
 	  description:"A betraying clue that my pursuers might recognise.",
-	  slots:[{id:"means",actionId:"relinquish",label:"Means",required:{deception:1},consumes:true}],
+	  slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
+	  {id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
 	  aspects:{influence:1},
 	  icon:rumour
 	  },
