@@ -2407,7 +2407,7 @@ icon:xe
 	  	  {id: "op.connection.underworld",
 label: "Opportunity: an Underworld Connection?",
 aspects: {op:1,price.lifespan.stolen:1},
-description:"They're no friends of the reckoner mobs.",
+description:"I've been around, and when you get around, you get to know a certain kind of professional. That's just how it is.",
 xtriggers:{purchase:connection.underworld},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
 lifetime:300,
@@ -3407,7 +3407,7 @@ aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.alexandria",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"vault.serapeum",morpheffect:spawn},{id:"domicile.alexandria",morpheffect:transform}]}
 },
 
 
@@ -3417,7 +3417,7 @@ aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.algiers",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.algiers",morpheffect:transform}]}
 },
 
 
@@ -3427,7 +3427,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"The Golden Age is over, but glory lingers like fading music. Bicycles rattle across cobbles. A woman in white throws open the shutters of a high window. On misty evenings, the Nameless Name of the Velvet walks here.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.amsterdam",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.amsterdam",morpheffect:transform}]}
 },
 
 
@@ -3446,7 +3446,7 @@ aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.baghdad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.baghdad",morpheffect:transform}]}
 },
 
 
@@ -3456,7 +3456,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Winter in Budapest, and the Danube is dusted with snow. The Dual Monarchy has collapsed, but somehow this city is once again the capital of the Kingdom of Hungary. The King has twice tried to return, and twice been driven out. Politics.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.budapest",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.budapest",morpheffect:transform}]}
 },
 
 	  {id: "city.candia",
@@ -3467,7 +3467,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 ],
 description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.candia",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.horned",morpheffect:spawn},{id:"domicile.candia",morpheffect:transform}]}
 },
 
 
@@ -3477,7 +3477,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Nestled in the mountains of sunset lies the city of the Archangel Michael. I remember it mostly as the place where I drank too much tsuica and got into a fight with bricklayers. We've all been young.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.cluj",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.cluj",morpheffect:transform}]}
 },
 
 	  {id: "city.granada",
@@ -3495,7 +3495,7 @@ aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.istanbul",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.radicals",morpheffect:spawn},{id:"domicile.istanbul",morpheffect:transform}]}
 },
 
 
@@ -3517,7 +3517,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.kiev",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.marinette",morpheffect:spawn},{id:"domicile.kiev",morpheffect:transform}]}
 },
 	  {id: "city.krakow",
 label: "Kraków",
@@ -3526,7 +3526,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"The castle on the hill where the dragon died looks out across a city mellow with October sunlight. Just don't speak ill of the Marshal.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.krakow",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.krakow",morpheffect:transform}]}
 },
 
 
@@ -3538,7 +3538,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.leningrad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.leningrad",morpheffect:transform}]}
 },
 
 	  	  {id: "city.london",
@@ -3548,7 +3548,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Mass strikes and martial law have paralysed the Big Smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.london",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.london",morpheffect:transform}]}
 },
 
 	  {id: "city.marrakech",
@@ -3558,7 +3558,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.marrakech",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.marrakech",morpheffect:transform}]}
 },
 
 
@@ -3571,7 +3571,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.meshad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.dawn",morpheffect:spawn},{id:"domicile.meshad",morpheffect:transform}]}
 },
 
 
@@ -3595,7 +3595,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.nizhny",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.nizhny",morpheffect:transform}]}
 },
 
 
@@ -3607,7 +3607,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.paris",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.paris",morpheffect:transform}]}
 },
 
 
@@ -3619,7 +3619,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"The City of a Hundred Spires, flexing its republican muscles beneath the benign gaze of Masaryk and his Castlemen. Statues watch the bridges each night. This is Europe's heart, and for a while longer, it will beat with cheery vigour.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.prague",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.prague",morpheffect:transform}]}
 },
 
 
@@ -3631,7 +3631,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.rostock",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.rostock",morpheffect:transform}]}
 },
 
 
@@ -3647,7 +3647,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.samarkand",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.samarkand",morpheffect:transform}]}
 },
 
 
@@ -3657,7 +3657,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
+description:"Midnight in Stalingrad. Everywhere, posters of the Georgian radiate avuncular menace across the moonlit streets.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stalingrad",morpheffect:transform}]}
@@ -3671,7 +3671,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I've always liked so much.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.strasbourg",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"obscurity",morpheffect:spawn},{id:"domicile.strasbourg",morpheffect:transform}]}
 },
 
 
@@ -3708,7 +3708,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Flower-thronged Tirana, where Zogist soldiers crowd the cafes with drunken laughter, where the Flowermaker hums his dreamy songs in the bee-droning shadows.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.tirana",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.tirana",morpheffect:transform}]}
 },
 
 
@@ -3732,7 +3732,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.valletta",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.valletta",morpheffect:transform}]}
 },
 
 	  {id: "city.venice",
@@ -3752,7 +3752,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
 unique:true,
-xtriggers:{arriving:[{id:"domicile.vienna",morpheffect:transform}]}
+xtriggers:{arriving:[{{id:"op.kleidouchos",morpheffect:spawn},id:"domicile.vienna",morpheffect:transform}]}
 },
 
 {id: "wilderness",
