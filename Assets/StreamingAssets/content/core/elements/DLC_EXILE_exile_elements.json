@@ -528,6 +528,15 @@ description:"'Reach for the book - it is a weapon.' - Brecht",
 isAspect:true
 },
 
+{id: "documents",
+label: "Documents",
+description:"With the right papers, you can prove anything.",
+isAspect:true,
+icon:article,
+comments: "Chiefly here to allow some things to be slottable in Use"
+},
+
+
 {id: "uses.remaining",
 label: "Uses Remaining",
 description:"Something with no uses is, literally, useless.",
@@ -2557,7 +2566,7 @@ icon:vaultcontinent5
 
 {id:"licence.medical",
 label:"Medical Credentials",
-aspects:{asset:1,portable:1,worth:1},
+aspects:{asset:1,portable:1,worth:1,documents:1},
 description:"The name on the licence isn't exactly mine, but it's close enough.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:1}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}]
@@ -2565,7 +2574,7 @@ slots:[{actionId:use,id:"location",label:"Location",required:{space:1}},
 
 {id:"licence.import",
 label:"Import Licence",
-aspects:{asset:1,worth:1},
+aspects:{asset:1,worth:1,documents:1},
 description:"The name on the licence isn't exactly mine, but it's close enough. [Import licences are only valid in the city where you acquire them.]",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
 {actionId:use,id:"means",label:"Means",required:{op.sea:1}}]
