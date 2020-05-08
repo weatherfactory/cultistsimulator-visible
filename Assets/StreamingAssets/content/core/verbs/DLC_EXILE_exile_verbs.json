@@ -23,7 +23,7 @@
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
 			atStart:false,
 				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
-			  required:{destination:1,cash:1,location:1}}]
+			  required:{destination:1,location:1}}]
         },
 				{
             id: "send",
