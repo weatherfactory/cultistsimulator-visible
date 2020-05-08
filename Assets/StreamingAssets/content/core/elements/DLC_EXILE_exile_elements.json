@@ -2141,6 +2141,16 @@ lifetime:120,
 resaturate:true
 },
 
+{id: "op.weapon.a",
+label: "Opportunity: Purchase a Profane Weapon?",
+aspects: {op:1,price:1},
+description:"A battered-looking rifle sits prosaically on a counter in an antique shop.",
+xtriggers:{purchase:weapon.a,renewal.exile:op.weapon.a},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
 {id: "op.weapon.b",
 label: "Opportunity: Purchase an Unusual Weapon?",
 aspects: {op:1,price:1},
@@ -2627,18 +2637,18 @@ icon:xm
 
 
 {id: "ticket.train",
-label: "A Hastily Purchased Train Ticket",
-aspects: {op:1,destination:1},
-description:"A ticket to the very first destination that came to mind - "
+label: "An Escape Plan",
+aspects: {op:1},
+description:"I need to get somewhere I'll be safe - at least for a little while."
 },
 
 {id: "weapon.a",
-label: "Unusual Imported Pistol",
-aspects: {weapon:1,edge:4,weapon.profane:1,worth:1},
+label: "Profane Weapon",
+aspects: {weapon:1,edge:2,weapon.profane:1,asset:1,portable:1,worth:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
-description:"I stole this from my Foe's personal collection, the night I took the years. I may yet need it.",
+description:"An awkward weight.",
 icon:tooledgeb,
 unique:true
 },
@@ -2646,7 +2656,7 @@ unique:true
 
 {id: "weapon.b",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:3,worth:2},
+aspects: {weapon:1,edge:4,uses.remaining:3,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.2.exhausted},
@@ -2658,7 +2668,7 @@ unique:true
 
 {id: "weapon.b.2",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:2,worth:2},
+aspects: {weapon:1,edge:4,uses.remaining:2,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.1.exhausted},
@@ -2669,7 +2679,7 @@ unique:true
 
 {id: "weapon.b.1",
 label: "Lionhunter's Rifle",
-aspects: {weapon:1,edge:4,uses.remaining:1,worth:2},
+aspects: {weapon:1,edge:4,uses.remaining:1,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:curio},
@@ -2680,7 +2690,7 @@ unique:true
 
 {id: "weapon.c",
 label: "Ebrehel, the Ragged Sword",
-aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3},
+aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
@@ -2692,7 +2702,7 @@ unique:true
 
 {id: "weapon.d",
 label: "Biedde's Blade",
-aspects: {weapon:1,edge:8,worth:3},
+aspects: {weapon:1,edge:8,worth:3,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
 striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
@@ -2703,7 +2713,7 @@ unique:true
 
 {id: "weapon.e",
 label: "Imhullune Tectrix",
-aspects: {weapon:1,edge:10,worth:4},
+aspects: {weapon:1,edge:10,worth:4,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.e.exhausted},
@@ -2713,7 +2723,7 @@ unique:true
 
 {id: "weapon.a.exhausted",
 label: "Unusual Imported Pistol (Readying)",
-aspects: {exhausted:1},
+aspects: {exhausted:1,asset:1,portable:1},
 description:"I stole this from my Foe's personal collection, the night I took the years. I may yet need it.",
 lifetime:60,
 decayTo:weapon.a,
@@ -2723,7 +2733,7 @@ icon:tooledged
 
 {id: "weapon.b.2.exhausted",
 label: "Lionhunter's Rifle (Readying)",
-aspects: {exhausted:1,uses.remaining:2},
+aspects: {exhausted:1,uses.remaining:2,asset:1,portable:1},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 lifetime:40,
 decayTo:weapon.b.2,
@@ -2733,7 +2743,7 @@ icon:tooledgeb
 
 {id: "weapon.b.1.exhausted",
 label: "Lionhunter's Rifle (Readying)",
-aspects: {exhausted:1,uses.remaining:1},
+aspects: {exhausted:1,uses.remaining:1,asset:1,portable:1},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 lifetime:40,
 decayTo:weapon.b.1,
@@ -2743,7 +2753,7 @@ icon:tooledgeb
 
 {id: "weapon.c.exhausted",
 label: "Ebrehel, the Ragged Sword (Readying)",
-aspects: {exhausted:1},
+aspects: {exhausted:1,asset:1,portable:1},
 description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
 lifetime:60,
 decayTo:weapon.c,
@@ -2753,7 +2763,7 @@ icon:tooledgeb
 
 {id: "weapon.d.exhausted",
 label: "Biedde's Blade (Readying)",
-aspects: {exhausted:1},
+aspects: {exhausted:1,asset:1,portable:1},
 description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
 lifetime:60,
 decayTo:weapon.d,
@@ -2763,7 +2773,7 @@ icon:tooledged
 
 {id: "weapon.e.exhausted",
 label: "Imhullune Tectrix (Readying)",
-aspects: {exhausted:1},
+aspects: {exhausted:1,asset:1,portable:1},
 description:"It doesn't look like much, but at its touch, flesh perishes. Perhaps it really is a last fragment of the weapon that slew the Seven-Coiled from within.",
 lifetime:60,
 decayTo:weapon.e,
@@ -3412,7 +3422,7 @@ unique:true
 label: "Rhenish Aachen",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
+description:"A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn},{id:"domicile.aachen"}]},
 unique:true
 },
@@ -3421,7 +3431,7 @@ unique:true
 label: "Alexandria",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
+description:"Back before the war, I was invited to the Invisible Serapeum in Alexandria. With luck, the invitation is still open.",
 unique:true,
 xtriggers:{arriving:[{id:"vault.serapeum",morpheffect:spawn},{id:"domicile.alexandria",morpheffect:transform}]}
 },
@@ -3431,7 +3441,7 @@ xtriggers:{arriving:[{id:"vault.serapeum",morpheffect:spawn},{id:"domicile.alexa
 label: "Algiers",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
+description:"My smuggler contact, M. Giorgiou, has people in Algiers. They could get me in there quietly.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.algiers",morpheffect:transform}]}
 },
@@ -3441,7 +3451,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Amsterdam",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The Golden Age is over, but glory lingers like fading music. Bicycles rattle across cobbles. A woman in white throws open the shutters of a high window. On misty evenings, the Nameless Name of the Velvet walks here.",
+description:"Over the years I've found a dozen treasures for the Stegenga twins in Amsterdam. They may give me shelter.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.amsterdam",morpheffect:transform}]}
 },
@@ -3451,7 +3461,7 @@ xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.
 label: "Avignon",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Sleepy Avignon, where the mistral blows.",
+description:"A smuggler contact in Avignon, M. Giorgiou, has a proposition for me.",
 xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn},{id:"domicile.avignon",morpheffect:transform}]},
 unique:true
 },
@@ -3460,7 +3470,7 @@ unique:true
 label: "Baghdad",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
+description:"Percy Styles is still in Baghdad, doing whatever it is he does for the British government in Mandatory Iraq. He'd probably still be glad to see me..",
 unique:true,
 xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.baghdad",morpheffect:transform}]}
 },
@@ -3470,7 +3480,7 @@ xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.
 label: "Budapest",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Winter in Budapest, and the Danube is dusted with snow. The Dual Monarchy has collapsed, but somehow this city is once again the capital of the Kingdom of Hungary. The King has twice tried to return, and twice been driven out. Politics.",
+description:"I hear my old friend Lili has moved her black market operations to Budapest.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.budapest",morpheffect:transform}]}
 },
@@ -3481,7 +3491,7 @@ aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
+description:"It's a long time since I was in Crete, but I've been dreaming about it again, and about the scent of hawthorn...",
 unique:true,
 xtriggers:{arriving:[{id:"op.horned",morpheffect:spawn},{id:"domicile.candia",morpheffect:transform}]}
 },
@@ -3491,7 +3501,7 @@ xtriggers:{arriving:[{id:"op.horned",morpheffect:spawn},{id:"domicile.candia",mo
 label: "Cluj-Napoca",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Nestled in the mountains of sunset lies the city of the Archangel Michael. I remember it mostly as the place where I drank too much tsuica and got into a fight with bricklayers. We've all been young.",
+description:"My old friend Lili's operations in Cluj have suffered since Hungary gave the city up, but her name might still open doors.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.cluj",morpheffect:transform}]}
 },
@@ -3500,7 +3510,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Granada",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",
+description:"I've had dealings with a gallery owner in Granada. Last year she invited me to stay with her.",
 unique:true,
 xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.granada",morpheffect:transform}]}
 },
@@ -3509,7 +3519,7 @@ xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.gr
 label: "Istanbul",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
+description:"My old comrade-in-arms Kara Kemal has connections with the Black Arm remnants in Istanbul. Perhaps his name will still open doors.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.radicals",morpheffect:spawn},{id:"domicile.istanbul",morpheffect:transform}]}
 },
@@ -3519,7 +3529,7 @@ xtriggers:{arriving:[{id:"connection.radicals",morpheffect:spawn},{id:"domicile.
 label: "Kaunas (Little Paris)",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Half of Lithuania has fallen to Poland, and the peace is desperately fragile, but this is the capital now. They call it Little Paris, and the lamplight glows in the cafes and the dance halls. But there is a new president, and now the Association of the Iron Wolf begins to tighten its jaws.",
+description:"Dominykas the Baker has done well for himself: high-level connections in the Iron Wolf in Kaunas. We never really got on, but he owes me, and I can't be fussy.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.ghoul",morpheffect:spawn},{id:"domicile.kaunas",morpheffect:transform}]}
@@ -3530,7 +3540,7 @@ xtriggers:{arriving:[{id:"contact.ghoul",morpheffect:spawn},{id:"domicile.kaunas
 label: "Kiev",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
+description:"I've heard rumours the hungriest of the Ligeians is abroad in Kiev. My pursuers will need to tread carefully there, but then, so will I.",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.marinette",morpheffect:spawn},{id:"domicile.kiev",morpheffect:transform}]}
@@ -3539,7 +3549,7 @@ xtriggers:{arriving:[{id:"op.marinette",morpheffect:spawn},{id:"domicile.kiev",m
 label: "Kraków",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The castle on the hill where the dragon died looks out across a city mellow with October sunlight. Just don't speak ill of the Marshal.",
+description:"Yitzchok Ashlag in Krakow has relied on me for years for the rarer occult texts. He's a hospitable man.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.krakow",morpheffect:transform}]}
@@ -3551,7 +3561,7 @@ xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.krak
 label: "Leningrad",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
+description:"The 'Athenians' who sell years in Russia are sworn enemies of the Reckoner mobs, but I've been known to get drunk with a certain Sushkin. Let's hope he remembers me.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.leningrad",morpheffect:transform}]}
@@ -3561,7 +3571,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "London",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Mass strikes and martial law have paralysed the Big Smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs.",
+description:"Ottavio Berton in London has put out the word that he'd like my help. He's a scoundrel, but we go back a long way.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.london",morpheffect:transform}]}
@@ -3571,7 +3581,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Marrakech",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
+description:"A marabout named Navil has somehow discovered I'm here. His message reads only 'COME TO MARRAKECH, FOR GLORY'",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.marrakech",morpheffect:transform}]}
@@ -3584,7 +3594,7 @@ aspects: {destination:1,remote:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
+description:"A very old poet in Meshad has long been a favourite customer of mine. She'll certainly offer me hospitality.",
 
 unique:true,
 xtriggers:{arriving:[{id:"grief",morpheffect:spawn},{id:"domicile.meshad",morpheffect:transform}]}
@@ -3595,7 +3605,7 @@ xtriggers:{arriving:[{id:"grief",morpheffect:spawn},{id:"domicile.meshad",morphe
 label: "Munich",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
+description:"I have a standing invitation from Count Gottlieb Jannings, of Munich, to attend a meeting of the duelling society he favours.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domicile.munich",morpheffect:transform}]}
@@ -3608,7 +3618,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
+description:"Sushkin of the 'Athenians' has kept his import-export operation in Nizhny running, but it's difficult under the Soviets. His people there might be glad of my help.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.nizhny",morpheffect:transform}]}
@@ -3621,7 +3631,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Paris",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
+description:"Tante Adeline's moved on, but she still has people in Paris, and they'll give me shelter.",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.paris",morpheffect:transform}]}
 },
@@ -3632,7 +3642,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Prague",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The City of a Hundred Spires, flexing its republican muscles beneath the benign gaze of Masaryk and his Castlemen. Statues watch the bridges each night. This is Europe's heart, and for a while longer, it will beat with cheery vigour.",
+description:"The old rogue in Prague who calls herself 'Tante Adeline' could use my help.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.prague",morpheffect:transform}]}
@@ -3644,7 +3654,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Rostock",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
+description:"My correspondent Count Jannings has a house in Rostock that I could use.",
 
 unique:true,
 xtriggers:{arriving:[{id:"townhouse.jannings",morpheffect:spawn},{id:"domicile.rostock",morpheffect:transform}]}
@@ -3660,7 +3670,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
+description:"I used to supply proscribed materials to a Jadidist magus in Samarkand. Perhaps he remembers me.",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.samarkand",morpheffect:transform}]}
@@ -3673,7 +3683,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"Midnight in Stalingrad. Everywhere, posters of the Georgian radiate avuncular menace across the moonlit streets.",
+description:"The criminal adepts called the Bird-Eaters have set their faces against the laws of both man and Mansus. I had heard that Zulfiya the Barber had joined them in Stalingrad. The Bird-Eaters are not good people. But I always liked Zulfiya.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stalingrad",morpheffect:transform}]}
@@ -3684,7 +3694,7 @@ xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stali
 label: "Strasbourg",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I've always liked so much.",
+description:"The Hügelkinder of the Vosges sometimes take human shape to walk the streets of Strasbourg. I've dealt with them before. They know as well as anyone how to be unobtrusive: perhaps they can help.",
 
 unique:true,
 xtriggers:{arriving:[{id:"obscurity",morpheffect:spawn},{id:"domicile.strasbourg",morpheffect:transform}]}
@@ -3698,7 +3708,7 @@ aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
+description:"Zulfiya the Barber used to buy life from me with jewels in the city of Sverdlovsk. She's turned strange and moved on to another city, but she introduced me to some of her contacts, back before the Civil War.",
 
 unique:true,
 xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
@@ -3710,7 +3720,7 @@ xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
 label: "Tiflis",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
+description:"Vasil the Fivegoer took refuge from the reckoners in Tiflis long ago. He owes me, though he might not welcome my visit.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.fivegoer",morpheffect:spawn},{id:"domicile.tiflis",morpheffect:transform}]}
@@ -3721,7 +3731,7 @@ xtriggers:{arriving:[{id:"contact.fivegoer",morpheffect:spawn},{id:"domicile.tif
 label: "Tirana",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Flower-thronged Tirana, where Zogist soldiers crowd the cafes with drunken laughter, where the Flowermaker hums his dreamy songs in the bee-droning shadows.",
+description:"Before all this went bad, I was negotiating a sale of life with one of President Zogu's people in Tirana. I still have her address.",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.tirana",morpheffect:transform}]}
@@ -3732,7 +3742,7 @@ xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.
 label: "Tripoli dell'ovest",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
+description:"I don't have any people in Tripoli. I don't remember it at all. But quite some time ago, in the days of the Ottomans, I was born here.",
 
 unique:true,
 xtriggers:{arriving:[{id:"domicile.tripoli",morpheffect:transform}]}
@@ -3745,7 +3755,7 @@ aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
+description:"My old comrade-in-arms Kara Kemal is in exile in Valletta. It's been a while, but I did save his life in the Great War...",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.valletta",morpheffect:transform}]}
@@ -3755,7 +3765,7 @@ xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.
 label: "Venice",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
+description:"I know a woman named Orsolina in Venice. She wasn't always a woman. But she's lived there a very long time.",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.delver",morpheffect:spawn},{id:"domicile.venice",morpheffect:transform}]}
@@ -3766,7 +3776,7 @@ xtriggers:{arriving:[{id:"contact.delver",morpheffect:spawn},{id:"domicile.venic
 label: "Vienna",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
+description:"It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time.",
 unique:true,
 xtriggers:{arriving:[{{id:"op.kleidouchos",morpheffect:spawn},id:"domicile.vienna",morpheffect:transform}]}
 },
@@ -3820,7 +3830,6 @@ aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
 xtriggers:{renewal.exile:op.faith},
 lifetime:300,
-icon:xl
 },
 
 {id: "op.cats",
@@ -3829,7 +3838,6 @@ aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"I've found a place bristling with excitable cats.",
 xtriggers:{renewal.exile:op.cats},
 lifetime:300,
-icon:xm
 },
 
 {id: "op.heights",
@@ -3846,8 +3854,7 @@ label: "THe Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 xtriggers:{renewal.exile:op.horned},
-lifetime:300,
-icon:xk
+lifetime:300
 },
 
 {id: "op.wolf",
@@ -3855,8 +3862,7 @@ label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
 xtriggers:{renewal.exile:op.wolf},
-lifetime:300,
-icon:xe
+lifetime:300
 },
 
 {id: "op.flowermaker",
@@ -3864,8 +3870,7 @@ label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
 xtriggers:{renewal.exile:op.flowermaker},
-lifetime:300,
-icon:xg
+lifetime:300
 },
 
 {id: "op.echidna",
@@ -3952,7 +3957,7 @@ xtriggers:{renewal.exile:op.night}
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1,desire:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
-slots:[{id:"location",label:"Location",required:{domicile:1,weapon:1},actionId:"send"}],
+slots:[{id:"contents",label:"Contents",description:"A taunting gift, or a location.", required:{domicile:1,weapon:1},actionId:"send"}],
 icon: bloodshed
 },
 
@@ -4028,7 +4033,8 @@ label: "Reckoner Informants",
 aspects:{rkx.internal:1},
 description:"The reckoner mob has turned its attention to this city. [Informants won't harm you directly, but more dangerous enemies may follow if they find you.]",
 xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
-rkx.promotetofoe:rkx.foe}
+rkx.promotetofoe:rkx.foe},
+lifetime:1,
 },
 {id: "rkx.operative",
 label: "Reckoner Operative",
@@ -4042,7 +4048,7 @@ decayTo:corpse.exile.underling
 
 {id: "rkx.enforcer",
 label: "Reckoner Assassin",
-description:"Someone is asking after me. I recognise the description, too well. [Assassins will try to murder you.]",
+description:"Someone has been asking after me. I recognise the description of that someone, too well. [Assassins will try to murder you.]",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1,rkx.internal:1},
 xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},

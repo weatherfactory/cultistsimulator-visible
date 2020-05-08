@@ -1,23 +1,12 @@
 {
 "recipes": [
 
-
-
-{id:"travel.start",
+{id:"travel.first",
 actionId:"travel",
-label:"From Under Their Noses",
-startdescription:"The reckoners are out in force tonight! I hear their whistles and their finger-snapping at every corner. But I've made it to the station just ahead of their enforcers.",
-description:"I'm here.",
-requirements:{ticket.train:1},
-effects:{ticket.train:-1},
-internaldeck: {spec: [domicile.aachen,domicile.prague,domicile.munich,domicile.vienna,domicile.krakow,domicile.kiev,domicile.avignon,domicile.venice,domicile.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
-alt:[{id:"turn.begin",additional:true},
-{id:"use.first",additional:true}],
-haltverb:{rkx*:100,opx*:100},
-purge:{trace:100,asset:100,op:100,location:100,destination:100,contact.local:100,rkx.internal:100,domicile:1},
-warmup:10,
-craftable:true
-},
+label:"Far Enough and Fast Enough ",
+startdescription:"I have more than enough cash for the journey - but I might need to travel light. [Leaving a city will shake off your pursuers - but they'll find you again eventually.",
+effects:{cash:3},
+warmup:1},
 
 
 {id:"travel.caper.begin",
@@ -586,12 +575,12 @@ label:"En Route...",
 startdescription:"Through the darkness into a new day. I've gone far enough that the reckoners will have to look harder than usual. Unless they're already here?",
 requirements:{remote:1},
 effects:{obscurity:1},
-warmup:30,
+warmup:10,
 linked:[{id:"travel.arrive"}]},
 
 {id:"travel.cancel",
 actionId:"travel",
-label:"C Change of Plans",
+label:"A Change of Plans",
 startdescription:"I'll stay a while longer.",
 requirements:{domicile:1},
 comments:"Converts packed assets back into assets.",
@@ -644,6 +633,7 @@ startdescription:"@#domicile.aachen|Lalla Chaima has left a message at the hotel
 
 #|I've arrived.@",
 comments:"Converts packed assets back into assets.",
+alt:[{id:"scout.first",additional:true}],
 mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
 {filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:-1}],
 warmup:30

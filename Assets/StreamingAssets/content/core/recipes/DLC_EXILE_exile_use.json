@@ -2,18 +2,20 @@
 "recipes": [
 
 
-
-
-
 {id:"use.first",
 actionId:"use",
-label:"Use",
-startdescription:"Take advantage of opportunities and assets.",
-comments:"opened by initial travel recipe",
-effects:{weapon.a:1,fragmentedge.exile:1},
-warmup:30,
-alt:[{id:"scout.first",additional:true}],
-craftable:false},
+label:"From Under Their Noses",
+startdescription:"My old confederates are out searching for me. I hear their whistles and their finger-snapping at every corner. And no wonder, given what I've just stolen. But enough was enough.",
+requirements:{ticket.train:1},
+effects:{ticket.train:-1}, 
+internaldeck: {spec: [city.aachen,city.prague,city.munich,city.london,city.krakow,city.avignon,city.venice,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
+alt:[{id:"rkx.first",additional:true},
+{id:"travel.first",additional:true}],
+warmup:2,
+craftable:true,
+linked:[{id:"send.investigate.description"}]
+},
+
 
 
 {id:"use.attack.weapon.underling",

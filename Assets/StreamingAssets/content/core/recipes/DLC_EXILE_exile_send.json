@@ -7,8 +7,6 @@ actionId:"send",
 label:"Communication",
 startdescription:"I have excellent reasons not to contact anyone from my old life. But that might yet change.",
 effects:{temptation.obscurity:1},
-comments:"opened by initial use recipe",
-alt:[{id:"relinquish.first",additional:true}],
 warmup:30,
 craftable:false},
 
@@ -141,7 +139,7 @@ description:"It's done. If I need to run, I might have a softer landing.",
 requirements:{cash:1,destination:1},
 effects:{cash:-1},
 mutations:[{filterOnAspectId:destination,mutateAspectId:cash.sent,mutationLevel:1,additive:true}],
-warmup:10,
+warmup:60,
 craftable:true},
 
 {id:"send.getsentahead.cash.hint",
@@ -157,7 +155,7 @@ actionId:"send",
 label:"Take Advantage of my Preparations",
 startdescription:"I should retrieve the cash I sent ahead.",
 requirements:{domicile:1,cash.sent:1},
-warmup:5,
+warmup:10,
 craftable:true,
 linked:[{id:"send.getsentahead.cash.loop"}]},
 
@@ -430,7 +428,7 @@ craftable:false
 {id:"send.investigate.description",
 actionId:"send",
 label:"Onwards?",
-startdescription:"@#city.aachen|A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help.
+description:"@#city.aachen|A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help.
 #city.alexandria|Back before the rising against the British, I was invited to the Invisible Serapeum in Alexandria. With luck, the invitation is still open.
 #city.algiers|My smuggler contact, M. Giorgiou, has people in Algiers. They could get me in there quietly.
 #city.amsterdam|Over the years I've found a dozen treasures for the Stegenga twins in Amsterdam. Perhaps they'll give me shelter now.
@@ -461,7 +459,7 @@ startdescription:"@#city.aachen|A message from Aachen has found me. An old acqua
 #city.tirana|Before all this went bad, I was negotiating a sale of life with one of President Zogu's people in Tirana. I still have her address.
 #city.tripoli|I don't have any people in Tripoli. I don't remember it at all. But quite some time ago, in the days of the Ottomans, I was born here.
 #city.valletta|My old comrade-in-arms Kara Kemal is in exile in Valletta. It's been a while, but I did save his life in the Great War...
-#city.venice|A woman named Orsolina lives in a decaying palazzo in Venice. She wasn't always a woman. But she's lived there a very long time.
+#city.venice|I know a woman named Orsolina in Venice. She wasn't always a woman. But she's lived there a very long time.
 #city.vienna|It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time.
 #wilderness|There are no other prospects of help in this region, and the roads and railways are too closely watched. My only chance is to strike out cross-country.
 #end.bornholm|There's a rugged little island in the Baltic where few ships go. Perhaps my Foe won't find me there, and if he does, perhaps it's time to make a stand.

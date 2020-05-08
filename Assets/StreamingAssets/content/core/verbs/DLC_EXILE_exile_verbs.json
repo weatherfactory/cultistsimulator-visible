@@ -5,7 +5,6 @@
             id: "scout",
             label: "Reconnoitre",
             description: "Sniff out possibilities.",
-			atStart:false,
 			  slots: [{id:"scout",label:"Reconnoitre",
 			  required:{domicile:1}}],
         },
@@ -13,15 +12,14 @@
             id: "use",
             label: "Employ",
             description: "Make use of something. [Address Opportunities, run Operations, or convert years to cash.]",
-			atStart:false,
 			  slots: [{id:"plan",label:"Plan",
-			  required:{connection:1,op:1,weapon:1,lore:1,comfort:1,documents:1},forbidden:{exhausted:1}}],
+			  required:{connection:1,op:1,weapon:1,lore:1,comfort:1,documents:1}}],
         },
 		{
             id: "travel",
             label: "Travel",
+			atStart:true,
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
-			atStart:false,
 				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
 			  required:{destination:1,location:1}}]
         },
@@ -29,7 +27,6 @@
             id: "send",
             label: "Communicate",
             description: "Send messages, moneys and more. Be careful.",
-			atStart:false,
 				  slots: [{id:"send",label:"Send",
 			  required:{desire:1,domicile:1,cash:1,mortal:1}}]
         },
@@ -38,15 +35,13 @@
             id: "relinquish",
             label: "Relinquish",
             description: "Sell; abandon; extirpate; surrender.",
-			atStart:false,
 				  slots: [{id:"relinquish",label:"Relinquish",
 			  required:{asset:1,lifespan.stolen:1,trace:1,wound.exile:1}}]
         },
 			  {
             id: "time.exile",
             label: "Time",
-            description: "The final enemy?",
-			atStart:false
+            description: "The final enemy?"
         }
 		]
 		

@@ -4,11 +4,12 @@
 {id:"relinquish.first",
 actionId:"relinquish",
 label:"Relinquish",
-startdescription:"I was shot during my escape. I'd almost forgotten. The pain is not so very much.",
+startdescription:"Someone took a shot at me as I got out with the years. I'd almost forgotten.",
 description:"I've changed the dressing. I can move well enough. I could wait for it to heal, or heal it with stolen years if I'm in a hurry - but it'll take a whole Decade, and it'll certainly be noticed.",
 effects:{wound.exile:1},
-comments:"opened by initial send recipe",
-warmup:60,
+comments:"opened by initial scout recipe",
+alt:[{id:"send.first",additional:true}],
+warmup:10,
 craftable:false},
 
 
