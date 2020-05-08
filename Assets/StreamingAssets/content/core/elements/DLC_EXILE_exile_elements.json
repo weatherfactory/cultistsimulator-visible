@@ -2385,7 +2385,7 @@ lifetime:300
 
 	  	  {id: "op.connection.ruler",
 label: "Opportunity: a Connection with a Ruler?",
-aspects: {op:1,price.lifespan.stolen:1},
+aspects: {op:1,price.lifespan.stolen:10},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
@@ -2815,7 +2815,6 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  description:"A betraying clue that my pursuers might recognise.",
 	  slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
 	  {id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
-	  aspects:{influence:1},
 	  icon:rumour
 	  },
 	  
