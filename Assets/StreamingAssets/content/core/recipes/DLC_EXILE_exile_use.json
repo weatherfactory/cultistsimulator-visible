@@ -126,7 +126,7 @@ label:"A Bloody Victory",
 startdescription:"My Foe's body is pierced with seven wounds, as a city wall might be pierced with seven gates: and every wound has ceased to bleed. His heart lies trembling in my bloodied hand. He's dead. It's over. My own wounds will strengthen to scars. And now my pursuers will fall to squabbling over his territory, and leave me alone here... all alone.",
 extantreqs:{damage.foe:7},
 haltverb:{rkx:1,rkx.foe:1},
-effects:{trace:1},
+effects:{trace:1,rkx.foe.defeated:1},
 purge:{damage.foe:100,damage.underling:100,temptation.defiance:1}},
 
 

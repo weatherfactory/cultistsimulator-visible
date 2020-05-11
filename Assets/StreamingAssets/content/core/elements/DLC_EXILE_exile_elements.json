@@ -4057,15 +4057,15 @@ decayTo:corpse.exile.underling
 {id: "rkx.foe",
 label: "My Foe",
 description:"Seasoned like oak and scarred like sea-cliffs. I have seen his strength, and I would be a fool not to fear it.",
-aspects:{rkx.rank:3,rkx.internal:1},
-lifetime:1,
-decayTo:rkx.foe.defeated
+aspects:{rkx.rank:3,rkx.internal:1}, 
+lifetime:1
 },
 
 {id: "rkx.foe.defeated",
 label: "A Trophy of my Foe",
 description:"How many times did this heart beat? How many of those beats were stolen from another? It is withering now.",
-aspects:{rkx.underlings.blocker:1}
+aspects:{rkx.underlings.blocker:1},
+unique:true
 },
 
 

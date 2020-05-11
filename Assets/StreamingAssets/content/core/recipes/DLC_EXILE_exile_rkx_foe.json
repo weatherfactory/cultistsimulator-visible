@@ -1,15 +1,25 @@
 {
 "recipes": [
 
+
 {id:"rkx.foe.arrive",
 actionId:"rkx.foe",
 label:"My Foe's arrived!",
 startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
 effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
-warmup:20,
+warmup:5,
 alt:[{id:"rkx.spawn.escort",additional:true}],
 linked:[{id:"rkx.foe.attack"}]},
+
+{id:"rkx.foe.arrive.mapedge",
+actionId:"rkx.foe",
+label:"My Foe is Here",
+startdescription:"Honour, or arrogance, has brought him here alone.",
+extantreqs:{end:1},
+linked:[{id:"rkx.foe.obscured"},
+{id:"rkx.foe.attack"}]},
+
 
 {id:"rkx.foe.arrive.defiance",
 actionId:"rkx.foe",
@@ -24,29 +34,20 @@ linked:[{id:"rkx.foe.attack"}]},
 {id:"rkx.foe.selector",
 actionId:"rkx.foe",
 label:"My Foe is here!",
-startdescription:"FNORD",
+startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
 warmup:10,
-alt:[{id:"rkx.edgeofmap"}],
 linked:[
 {id:"rkx.foe.obscured"},
 {id:"rkx.foe.attack"}]
 },
 
 
-{id:"rkx.edgeofmap",
-actionId:"rkx.foe",
-label:"My Foe is Here",
-startdescription:"Honour, or arrogance, has brought him here alone.",
-extantreqs:{end:1},
-linked:[{id:"rkx.foe.obscured"},
-{id:"rkx.foe.attack"}]},
-
 
 
 {id:"rkx.foe.obscured",
 actionId:"rkx.foe",
-label:"My Foe is in the city!",
-startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
+label:"My Foe is close!",
+startdescription:"I can't hide much longer.",
 extantreqs:{obscurity:1},
 effects:{obscurity:-1},
 slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
