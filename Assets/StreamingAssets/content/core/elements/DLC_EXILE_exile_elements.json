@@ -138,6 +138,12 @@ isAspect:true,
 noartneeded:true
 },
 
+{id:"rkx.underlings.blocker",
+label:"Safety from Pursuit",
+description:"[You won't see Reckoner pursuit while this is on the board.]",
+isAspect:true,
+icon:mystic
+},
 
 {id:"opx.doctor",
 label:"Doctor op marker: DO NOT TRANSLATE",
@@ -348,13 +354,6 @@ noartneeded:true
 
 {id:"rkx.promote",
 label:"Reckoner Promotion",
-description:"recipe aspect",
-isAspect:true,
-noartneeded:true
-},
-
-{id:"rkx.promotetofoe",
-label:"Reckoner Promotion - directly to Foe",
 description:"recipe aspect",
 isAspect:true,
 noartneeded:true
@@ -2820,7 +2819,7 @@ description:"None of this has gone as I planned. But I'd still like to retire in
 	  
 	  	  	  {id: "domicile.bornholm",
 label: "Sunshine Island",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 description:"The light is famously good - enough so that a small colony of artists toils here - but it's still an optimistic name for a storm-beaten tumble of Baltic granite.",
 icon: vaultcontinent3,
 unique:true
@@ -2829,7 +2828,7 @@ unique:true
  
 	  	  {id: "domicile.cheko",
 label: "Wounded Moon Lake",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"Deep in the taiga forests of Siberia, a hunting lodge decays gracefully into an ice-blue lake - a lake, it's said, that a falling moon-fragment scarred from the forest.",
 icon: vaultcontinent3,
@@ -2840,7 +2839,7 @@ unique:true
 	  
 	  	  {id: "domicile.ghardaia",
 label: "The Pentapolis",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"On a high far limestone plateau in the greatest of deserts, the Mozabites built five citadel villages to be a refuge for their people. Now, one is a refuge for me.",
 icon: vaultloneandlevelsands2,
@@ -2850,7 +2849,7 @@ unique:true
 
 {id: "domicile.messana",
 label: "Hermitage of the Scythe",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"Across the deadly sands, an oasis where peculiarly healthy villagers thrive. In the hills above, a sunny, rocky cell of three windows.",
 icon: vaultloneandlevelsands3,
@@ -2858,7 +2857,7 @@ unique:true
 },
 	  	  {id: "domicile.morbihan",
 label: "Priory of Captains",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"In the little sea called Morbihan, the gate to the western ocean, there's an isle famed for its sailors. On its westmost tip lies a quiet priory. The monks enjoy their privacy, but they've been known to offer sanctuary.",
 icon: vaultcontinentdefault,
@@ -2867,7 +2866,7 @@ unique:true
 
 	  	  {id: "domicile.paro",
 label: "The Tiger's Nest",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"High in the abode of eternal snows, a monastery of the Diamond Vehicle clings improbably to a cliff face like flowers on lichen.",
 icon: vaultcontinent3,
@@ -2875,7 +2874,7 @@ unique:true
 },
 	  	  {id: "domicile.slettnes",
 label: "Fogfire Point",
-aspects: {domicile:1,end:1,remote:1},
+aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
 icon: vaultcontinent3,
@@ -4022,8 +4021,7 @@ icon: scar_edge
 label: "Reckoner Informants",
 aspects:{rkx.internal:1},
 description:"The reckoner mob has turned its attention to this city. [Informants won't harm you directly, but more dangerous enemies may follow if they find you.]",
-xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}],
-rkx.promotetofoe:rkx.foe},
+xtriggers:{rkx.promote:[{id:rkx.operative},{id:rkx.enforcer,chance:50}]},
 lifetime:1,
 },
 {id: "rkx.operative",
@@ -4031,7 +4029,7 @@ label: "Reckoner Operative",
 description:"I recognised a face in the street. We worked together once. Was I spotted?[Reckoner Operatives will try to steal your Assets.]",
 verbicon:"rkx.operative",
 aspects:{rkx.rank:1,rkx.internal:1},
-xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout},
 lifetime:1,
 decayTo:corpse.exile.underling
 },
@@ -4041,7 +4039,7 @@ label: "Reckoner Assassin",
 description:"Someone has been asking after me. I recognise the description of that someone, too well. [Assassins will try to murder you.]",
 verbicon:"rkx.enforcer",
 aspects:{rkx.rank:1,rkx.internal:1},
-xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout,rkx.promotetofoe:rkx.foe},
+xtriggers:{rkx.promote:rkx.underboss,rkx.demote:rkx.scout},
 lifetime:1,
 decayTo:corpse.exile.underling
 },
@@ -4050,7 +4048,7 @@ label: "Reckoner Underboss",
 description:"A reckoner lieutenant, winnowed from the ranks by ferocity and guile, grown sleek on borrowed years. [Underbosses may steal assets, attack you directly, or summon the Foe.]",
 verbicon:"rkx.underboss",
 aspects:{rkx.rank:2,rkx.internal:1},
-xtriggers:{rkx.promote:rkx.foe,rkx.demote:rkx.enforcer,rkx.promotetofoe:rkx.foe},
+xtriggers:{rkx.demote:rkx.enforcer},
 lifetime:1,
 decayTo:corpse.exile.underling
 },
@@ -4059,7 +4057,6 @@ decayTo:corpse.exile.underling
 {id: "rkx.foe",
 label: "My Foe",
 description:"Seasoned like oak and scarred like sea-cliffs. I have seen his strength, and I would be a fool not to fear it.",
-verbicon:"rkx.foe",
 aspects:{rkx.rank:3,rkx.internal:1},
 lifetime:1,
 decayTo:rkx.foe.defeated
@@ -4067,7 +4064,8 @@ decayTo:rkx.foe.defeated
 
 {id: "rkx.foe.defeated",
 label: "A Trophy of my Foe",
-description:"How many times did this heart beat? How many of those beats were stolen from another? It is withering now."
+description:"How many times did this heart beat? How many of those beats were stolen from another? It is withering now.",
+aspects:{rkx.underlings.blocker:1}
 },
 
 
