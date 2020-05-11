@@ -504,8 +504,7 @@ isAspect:true
 {id:"remote",
 label:"Remote",
 description:"It'll be a long hard journey. But, in my current circumstances, perhaps that should make it more attractive. [Travelling to this Destination is more expensive, but will earn you an Obscurity.]",
-isAspect:true,
-icon:erratic
+isAspect:true
 },
 
 {id:"troubled",
@@ -643,8 +642,7 @@ icon:vaultcapital
 {id:"associate",
 label:"Associate",
 description:"They'll work with me.",
-isAspect:true,
-icon:devotee
+isAspect:true
 },
 
 {id:"ally",
@@ -654,13 +652,6 @@ isAspect:true,
 icon:follower
 },
 
-
-{id:"avaricious",
-label:"Avaricious",
-description:"'Everybody needs money. That's why they call it money.' - Mamet",
-icon:hireling,
-isAspect:true
-},
 
 {id:"venerates.colonel",
 label:"Respects the Colonel",
@@ -1422,8 +1413,7 @@ slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.de
 {id: "progress",
 label: "Momentum",
 description:"[Achieve three Momentum to complete a Caper.]",
-lifetime:1,
-icon:compensationd
+lifetime:1
 },
 
 {id: "progress.subtlety",
@@ -1462,8 +1452,8 @@ icon:bid
 
 {id: "cash",
 label: "Cash",
-aspects: {asset:1,portable:1,worth:1},
-description:"A considerable sum. I wouldn't want to be caught carrying this much.",
+aspects: {asset:1,portable:1,worth:1,supplies:1,forge:2,grail:2,knock:2},
+description:"A considerable sum - enough to open a door, fund a project, or excite avarice.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
 
@@ -1881,7 +1871,7 @@ label: "Giorgiou, the Smuggler",
 inherits:_contact.mortal,
 description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 xtriggers:{fatiguing:contact.smuggler.fatigued,recruiting:ally.smuggler,mortal.introduce:[{id:"vault.smuggler",morpheffect:spawn}]},
-aspects:{avaricious:1,knock:6},
+aspects:{knock:6},
 icon:npc.smuggler
 },
 
@@ -2038,7 +2028,7 @@ label: "Giorgiou, the Smuggler",
 inherits:_ally.mortal,
 description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
 xtriggers:{fatiguing:ally.smuggler.fatigued},
-aspects:{avaricious:1,knock:6},
+aspects:{knock:6},
 icon:npc.smuggler
 },
 
@@ -3850,7 +3840,7 @@ icon:xl
 },
 
 {id: "op.horned",
-label: "THe Horned Axe's Shadow",
+label: "The Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
 xtriggers:{renewal.exile:op.horned},

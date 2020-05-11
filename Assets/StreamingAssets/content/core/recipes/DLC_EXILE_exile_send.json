@@ -580,6 +580,7 @@ linked:[{id:"send.investigate.description"}],
 {id:"send.investigate.cluj",
 actionId:"send",
 label:"Send Discreet Messages from Cluj-Napoca",
+craftable:true,
 requirements:{domicile.cluj:1},
 	internaldeck: {spec: [city.kiev,city.tiflis,city.istanbul,city.budapest], draws: 1, defaultcard: wilderness, resetonexhaustion: false},
 linked:[{id:"send.investigate.description"}]

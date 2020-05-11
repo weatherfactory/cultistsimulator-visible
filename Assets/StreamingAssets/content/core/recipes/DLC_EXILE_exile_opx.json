@@ -28,7 +28,7 @@ label:"Run a Doctor's Practice",
 startdescription:"My treatments may not be quite what they seem... but my results are always excellent. [A reasonably safe way to convert stolen lifespan into cash. Heart aspect cards are often useful when running a Practice.]",
 description:"The Practice is open.",
 requirements:{licence.medical:1,space:1,year.stolen:1},
-extantreqs:{opx.doctor:-1},
+
 effects:{year.stolen:-1},
 warmup:5,
 alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
