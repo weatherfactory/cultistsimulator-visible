@@ -1,13 +1,14 @@
 {
 "recipes": [
 
-{id:"rkx.foe.arrive.reinforcements",
+{id:"rkx.foe.arrive",
 actionId:"rkx.foe",
 label:"My Foe's arrived!",
 startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
 effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
 warmup:20,
+alt:[{id:"rkx.spawn.escort",additional:true}],
 linked:[{id:"rkx.foe.attack"}]},
 
 {id:"rkx.foe.arrive.defiance",
