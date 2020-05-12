@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         TabletopBackground tabletopBackground;
 
-        [SerializeField] private HighlightLocationsCatalogue highlightLocationsCatalogue;
+        [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
         [SerializeField]
         private Limbo Limbo;
@@ -432,9 +432,9 @@ namespace Assets.CS.TabletopUI {
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 			registry.Register<DebugTools>(debugTools);
-            registry.Register<HighlightLocationsCatalogue>(highlightLocationsCatalogue);
+            registry.Register<HighlightLocationsController>(_highlightLocationsController);
 
-            highlightLocationsCatalogue.ScanChildHighlightLocations();
+            _highlightLocationsController.ScanChildHighlightLocations();
 
 
             //element overview needs to be initialised with

@@ -8,14 +8,13 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-  public  class HighlightLocationsCatalogue:MonoBehaviour
+  public  class HighlightLocationsController:MonoBehaviour
   {
 
-
-        private HashSet<HighlightLocation> highlightLocations;
+ private HashSet<HighlightLocation> highlightLocations;
       
 
-      public HighlightLocationsCatalogue()
+      public HighlightLocationsController()
       {
           highlightLocations = new HashSet<HighlightLocation>();
       }
@@ -41,7 +40,7 @@ namespace Assets.TabletopUi.Scripts.UI
       {
           foreach (var hl in highlightLocations)
                   hl.Deactivate(0f);
-        }
+      }
 
       public void ActivateMatchingHighlightLocation(string elementId)
       {
@@ -49,10 +48,12 @@ namespace Assets.TabletopUi.Scripts.UI
             var hlToActivate = highlightLocations.SingleOrDefault(hl => hl.MatchElementId == elementId);
           if(hlToActivate!=null)
               hlToActivate.Activate();
-
-  
-
       }
 
-  }
+      public void ActivateOnlyMatchingHighlightLocation(string elementId)
+      {
+          DeactivateAllHighlightLocations();
+          ActivateMatchingHighlightLocation(elementId);
+      }
+    }
 }

@@ -13,7 +13,7 @@ public class HighlightLocation : MonoBehaviour
     private TMP_Text _label;
     [SerializeField] public string MatchElementId;
 
-    public void Activate(float duration=0.5f)
+    public void Activate(float duration=1f)
     {
       _sprite.gameObject.SetActive(true);
       _sprite.canvasRenderer.SetAlpha(0f);
@@ -24,7 +24,7 @@ public class HighlightLocation : MonoBehaviour
       _label.CrossFadeAlpha(1f, duration, true);
     }
 
-    public void Deactivate(float duration = 0.5f)
+    public void Deactivate(float duration = 1f)
     {
         _sprite.gameObject.SetActive(false);
         _sprite.canvasRenderer.SetAlpha(1f);
