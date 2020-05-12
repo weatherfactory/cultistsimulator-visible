@@ -1,22 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1730258267366884}
-  m_IsPrefabParent: 1
 --- !u!1 &1730258267366884
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4576313819546230}
   - component: {fileID: 114937700222485204}
@@ -29,11 +19,12 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4576313819546230
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730258267366884}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -42,9 +33,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114937700222485204
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730258267366884}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -145,6 +137,12 @@ MonoBehaviour:
     loop: 0
     volume: 0.4
     pitchVariation: 0
+  - name: FXEndGameDoom
+    randomizedClips:
+    - {fileID: 8300000, guid: 4b301721b26bb71409ddf354c197836c, type: 3}
+    loop: 0
+    volume: 0.365
+    pitchVariation: 0
   - name: FXEndGameGlory
     randomizedClips:
     - {fileID: 8300000, guid: 58e5c81dc3daa3046849ed5d1a7bf047, type: 3}
@@ -157,23 +155,17 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: FXEndGameDoom
-    randomizedClips:
-    - {fileID: 8300000, guid: 4b301721b26bb71409ddf354c197836c, type: 3}
-    loop: 0
-    volume: 0.365
-    pitchVariation: 0
-  - name: InfoWindowShow
-    randomizedClips:
-    - {fileID: 8300000, guid: 4c84cf5b45c044221b99d311995d267d, type: 3}
-    loop: 0
-    volume: 0.15
-    pitchVariation: 0.05
   - name: InfoWindowHide
     randomizedClips:
     - {fileID: 8300000, guid: d414975f3375a457eb4e5044342e4480, type: 3}
     loop: 0
     volume: 0.1
+    pitchVariation: 0.05
+  - name: InfoWindowShow
+    randomizedClips:
+    - {fileID: 8300000, guid: 4c84cf5b45c044221b99d311995d267d, type: 3}
+    loop: 0
+    volume: 0.15
     pitchVariation: 0.05
   - name: MansusEntry
     randomizedClips:
@@ -265,12 +257,6 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: TokenHover
-    randomizedClips:
-    - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
-    loop: 0
-    volume: 0.1
-    pitchVariation: 0.05
   - name: TokenAnimAir
     randomizedClips:
     - {fileID: 8300000, guid: 7e42381e946ff447d80167d7fbf89c11, type: 3}
@@ -280,6 +266,12 @@ MonoBehaviour:
     loop: 0
     volume: 0.15
     pitchVariation: 0.02
+  - name: TokenHover
+    randomizedClips:
+    - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
+    loop: 0
+    volume: 0.1
+    pitchVariation: 0.05
   - name: UIButtonClick
     randomizedClips:
     - {fileID: 8300000, guid: 810cb91932f714ded93c69e6388ceba6, type: 3}
@@ -316,3 +308,9 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitchVariation: 0
+  - name: HighlightLocation
+    randomizedClips:
+    - {fileID: 8300000, guid: 602997d3bd4e57e4a8e42eb5bd917a53, type: 3}
+    loop: 0
+    volume: 0.25
+    pitchVariation: 0.149

@@ -15,6 +15,9 @@ public class HighlightLocation : MonoBehaviour
 
     public void Activate(float duration=1f)
     {
+
+        SoundManager.PlaySfx("HighlightLocation");
+
       _sprite.gameObject.SetActive(true);
       _sprite.canvasRenderer.SetAlpha(0f);
       _sprite.CrossFadeAlpha(1f, duration, true);
