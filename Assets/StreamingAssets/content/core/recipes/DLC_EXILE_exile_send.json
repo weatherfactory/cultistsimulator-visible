@@ -420,6 +420,24 @@ comments:"IMPORTANT - this mutation stops them being removed on departure. The A
 mutations:[{filterOnAspectId:contact.local,mutateAspectId:contact.local,mutationLevel:-1,additive:true}],
 effects:{vault.completed:-1}},
 
+{id:"send.ally.upgrade",
+actionId:"send",
+label:"Potential, Realised",
+startdescription:"I could talk with my Ally about what they've learnt. [This will add a point to your Ally's aspect.]",
+description:"@#ally.barber|'Snip, snip. Snip.'
+#ally.delver|'I'm beginning to feel more like my old self.'
+#ally.fivegoer|'Ahhh. <i>Limber</i>.'
+#ally.ghoul|'Experience is the best spice. I didn't really believe it until now.'
+#ally.huntress|'Not bad, hmm?'
+#ally.smuggler|'I'm tired. I think perhaps that I will always be tired...'
+#ally.visionary|'Where did I put my sketchbook?'
+#ally.vivisectionist|'Yes. Very good.'
+#|--@",
+requirements:{mortal:1,ally:1,experience.exile.ally:3},
+aspects:{upgrade.exile.ally:1},
+warmup:60,
+craftable:true},
+
 {id:"send.ally.hint",
 actionId:"send",
 label:"Your Ally Follows",

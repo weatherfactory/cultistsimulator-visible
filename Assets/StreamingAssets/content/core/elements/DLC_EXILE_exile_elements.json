@@ -662,6 +662,21 @@ isAspect:true,
 icon:follower
 },
 
+{id:"experience.exile.ally",
+label:"Experience",
+description:"There's always something you don't know yet. [Once an Ally has three experience, you can increase their power.]",
+isAspect:true,
+icon:advancement
+},
+
+{id:"upgrade.exile.ally",
+label:"Ally Upgrade",
+description:"Recipe Aspect",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
 
 {id:"venerates.colonel",
 label:"Respects the Colonel",
@@ -1990,7 +2005,8 @@ resaturate:true
 label: "Zulfiya, the Barber",
 inherits:_ally.mortal,
 description:"Zulfiya never goes anywhere without her scissors.",
-xtriggers:{fatiguing:ally.barber.fatigued},
+xtriggers:{fatiguing:[{id:"ally.barber.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"moth",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{moth:6},
 icon:npc.barber 
 },
@@ -1999,7 +2015,8 @@ icon:npc.barber
 label: "Orsolina, the Delver",
 inherits:_ally.mortal,
 description:"A muscular woman with a steady gaze. Her diet has changed since her days in the Lionsmith's service, but she still retains some of her old strength.",
-xtriggers:{fatiguing:ally.delver.fatigued},
+xtriggers:{fatiguing:[{id:"ally.delver.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"forge",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{forge:6},
 icon:npc.delver
 },
@@ -2009,7 +2026,8 @@ icon:npc.delver
 label: "Vasil, the Fivegoer",
 inherits:_ally.mortal,
 description:"A smoothly handsome man whose unhuman ancestry is not apparent, unless you know to look for his abnormally flexible fingers, or wonder why his nose tends to run.",
-xtriggers:{fatiguing:ally.fivegoer.fatigued},
+xtriggers:{fatiguing:[{id:"ally.fivegoer.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"grail",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{grail:6},
 icon:npc.fivegoer
 },
@@ -2019,7 +2037,8 @@ icon:npc.fivegoer
 label: "Dominykas, the Baker",
 inherits:_ally.mortal,
 description:"Dominykas has a ready smile and an unfortunate habit of picking his teeth.",
-xtriggers:{fatiguing:ally.ghoul.fatigued},
+xtriggers:{fatiguing:[{id:"ally.ghoul.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"winter",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{winter:6},
 icon:npc.ghoul
 },
@@ -2030,14 +2049,16 @@ label: "Lalla Chaima, the Huntress",
 inherits:_ally.mortal,
 description:"A lithe, hard-faced Berber woman in the grey-brown striped jellaba of a French-Moroccan auxiliary.",
 aspects:{venerates.colonel:1,edge:6},
-xtriggers:{fatiguing:ally.huntress.fatigued},
+xtriggers:{fatiguing:[{id:"ally.huntress.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"edge",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 icon:npc.huntress
 },
 {id: "ally.smuggler",
 label: "Giorgiou, the Smuggler",
 inherits:_ally.mortal,
 description:"A melancholy and philosophical smuggler of rare cigarettes, rare poisons and rarer weapons.",
-xtriggers:{fatiguing:ally.smuggler.fatigued},
+xtriggers:{fatiguing:[{id:"ally.smuggler.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"knock",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{knock:6},
 icon:npc.smuggler
 },
@@ -2046,7 +2067,8 @@ icon:npc.smuggler
 label: "Mireya, the Visionary",
 inherits:_ally.mortal,
 description:"A plump, dreamy, hesitant woman with very bright eyes.",
-xtriggers:{fatiguing:ally.visionary.fatigued},
+xtriggers:{fatiguing:[{id:"ally.visionary.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"lantern",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{lantern:6},
 icon:npc.visionary 
 },
@@ -2056,7 +2078,8 @@ icon:npc.visionary
 label: "Jannings, the Vivisectionist",
 inherits:_ally.mortal,
 description:"A specialist in disassembly and also in assembly.",
-xtriggers:{fatiguing:ally.vivisectionist.fatigued},
+xtriggers:{fatiguing:[{id:"ally.vivisectionist.fatigued"},{id:"experience.exile.ally",morpheffect:mutate,level:1}],
+upgrade.exile.ally:[{id:"heart",morpheffect:mutate,level:1},{id:"experience.exile.ally",morpheffect:mutate,level:-3}]},
 aspects:{heart:6},
 icon:jannings 
 },

@@ -28,7 +28,7 @@
             label: "Communicate",
             description: "Send messages, moneys and more. Be careful.",
 				  slots: [{id:"send",label:"Send",
-			  required:{desire:1,domicile:1,cash:1,mortal:1}}]
+			  required:{desire:1,domicile:1,cash:1,mortal:1},forbidden:{exhausted:1}}]
         },
 		
 						{
