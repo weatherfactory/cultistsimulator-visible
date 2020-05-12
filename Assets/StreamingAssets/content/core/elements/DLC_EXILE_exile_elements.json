@@ -615,6 +615,13 @@ isAspect:true,
 icon:wary
 },
 
+{id:"price.connection",
+label:"Price: a Helping Hand",
+description:"[Use an appropriate Connection to purchase this.]",
+isAspect:true,
+icon:wary
+},
+
 
 {id:"price",
 label:"Price",
@@ -2362,7 +2369,7 @@ lifetime:300
 
 	  	  {id: "op.licence.medical",
 label: "Opportunity: Medical Credentials?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.connection:1},
 description:"I could take this opportunity to qualify, extremely rapidly, as a doctor.",
 xtriggers:{negotiation:licence.medical,renewal.exile:op.licence.medical},
 slots:[{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],
@@ -2371,7 +2378,7 @@ lifetime:300
 
 	  	  {id: "op.licence.import",
 label: "Opportunity: Import Licence?",
-aspects: {op:1,price:1},
+aspects: {op:1,price.connection:1},
 description:"Certain goods are normally restricted; but I have friends now. [Import licences are only valid in the city where you acquire them.]",
 xtriggers:{negotiation:licence.import,renewal.exile:op.licence.import},
 slots:[{actionId:use,id:"connection",label:"Connection",required:{connection.official:1,connection.ruler:1},consumes:true}],

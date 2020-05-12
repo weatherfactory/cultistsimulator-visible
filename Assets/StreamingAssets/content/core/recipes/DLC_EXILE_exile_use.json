@@ -220,12 +220,21 @@ startdescription:"I clench my fists, feel the strength in them. The time is comi
 requirements:{temptation.defiance:1},
 effects:{op:-1,rage:1}},
 
+{id:"use.negotiate.hint",
+actionId:"use",
+label:"Negotiate?",
+startdescription:"[Add an appropriate Connection.]",
+requirements:{op:1,price.connection:1},
+hintonly:true,
+craftable:false},
+
 
 {id:"use.negotiate",
 actionId:"use",
 label:"A Negotiation",
-startdescription:"I don't have time to do this right. Lucky, then, that I have the connections to do it quick.",
-description:"@#licence.medical#And good morning to <i>you</i>, Doctor.
+startdescription:"I don't have time to do this the right way. Lucky, then, that I have the connections to do it the fast way.",
+description:"@#licence.medical|'And good morning to <i>you</i>, Doctor.'
+#licence.import|'We don't need to worry about these details. Not among friends.'
 #And done.|@",
 comments:"The slots on the purchaseable item are what restrict to a relevant connection.",
 requirements:{op:1,connection:1},
@@ -323,7 +332,7 @@ actionId:"use",
 label:"Reserve",
 startdescription:"I'll make a mental note. [This will renew the lifespan of the Opportunity in case you need it later.]",
 description:"There.",
-requirements:{op:1,price:-1,price.lifespan.stolen:-1},
+requirements:{op:1,price:-1,price.connection:-1,price.lifespan.stolen:-1},
 aspects:{renewal.exile:1},
 warmup:30,craftable:true},
 
