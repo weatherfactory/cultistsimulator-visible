@@ -20,6 +20,7 @@ using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 
@@ -809,6 +810,11 @@ namespace Assets.CS.TabletopUI {
 
 			    // Add the element name to the debug panel if it's active
 			    Registry.Retrieve<DebugTools>().SetInput(_element.Id);
+
+                //Display any HighlightLocations tagged for this element
+                var hlc= Registry.Retrieve<HighlightLocationsCatalogue>();
+                hlc.DeactivateAllHighlightLocations();
+                hlc.ActivateMatchingHighlightLocation(_element.Id);
 
 				if (isFront)
 				{

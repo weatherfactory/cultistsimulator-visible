@@ -18,6 +18,7 @@ using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.UI;
 using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
@@ -45,6 +46,8 @@ namespace Assets.CS.TabletopUI {
         public TabletopTokenContainer _tabletop;
         [SerializeField]
         TabletopBackground tabletopBackground;
+
+        [SerializeField] private HighlightLocationsCatalogue highlightLocationsCatalogue;
 
         [SerializeField]
         private Limbo Limbo;
@@ -412,6 +415,8 @@ namespace Assets.CS.TabletopUI {
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
 
+            
+
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice(debugTools));
             registry.Register<ITabletopManager>(this);
@@ -427,12 +432,17 @@ namespace Assets.CS.TabletopUI {
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 			registry.Register<DebugTools>(debugTools);
+            registry.Register<HighlightLocationsCatalogue>(highlightLocationsCatalogue);
+
+            highlightLocationsCatalogue.ScanChildHighlightLocations();
+
 
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
             _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
             tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
+
 
         }
 
