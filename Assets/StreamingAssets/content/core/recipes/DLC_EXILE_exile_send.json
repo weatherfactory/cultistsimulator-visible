@@ -438,12 +438,10 @@ aspects:{upgrade.exile.ally:1},
 warmup:60,
 craftable:true},
 
-{id:"send.ally.hint",
+{id:"send.ally.upgrade.hint",
 actionId:"send",
-label:"Your Ally Follows",
-startdescription:"@#contact.smuggler|'Onwards to final dissolution, I suppose.'
-#contact.huntress|'Let's see about this Foe of yours.'
-#|--@",
+label:"Potential?",
+startdescription:"My Ally has their own reasons for travelling with me. Among those reasons: a thirst for new experiences. [When your Ally has gained three Experience, you can increase their power.]",
 requirements:{mortal:1,ally:1},
 hintonly:true,
 craftable:false},
