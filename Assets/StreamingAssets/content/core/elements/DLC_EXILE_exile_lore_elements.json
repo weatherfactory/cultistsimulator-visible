@@ -154,7 +154,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             aspects:
             {edge: 4,lantern:2,winter:2,lore:1},
             description: "'This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss.' It's more practical than it sounds.",
-			xtriggers:{epiphany.colonel:fragmentedgec.colonel,fatiguing:fragmentedgeb.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgec.colonel,epiphany.colonel:fragmentedgec.colonel,fatiguing:fragmentedgeb.colonel.exhausted},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -164,7 +164,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             aspects:
             {edge: 6,lantern:3,winter:3,lore:1},
             description: "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
-			xtriggers:{epiphany.colonel:fragmentedged.colonel,fatiguing:fragmentedgec.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedged.colonel,epiphany.colonel:fragmentedged.colonel,fatiguing:fragmentedgec.colonel.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -175,7 +175,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             {edge: 8,lantern:4,winter:4,lore:1},
 description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
 			
-			xtriggers:{epiphany.colonel:fragmentedgee.colonel,fatiguing:fragmentedged.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgee.colonel,epiphany.colonel:fragmentedgee.colonel,fatiguing:fragmentedged.colonel.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.colonel"
         },{
@@ -184,7 +184,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 10,lantern:5,winter:5,lore:1},
 			description: "Seven times seven techniques for the sundering of flesh.",
-			xtriggers:{epiphany.colonel:fragmentedgef.colonel,fatiguing:fragmentedgee.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgef.colonel,epiphany.colonel:fragmentedgef.colonel,fatiguing:fragmentedgee.colonel.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -194,7 +194,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 12,lantern:6,winter:6,lore:1},
             description: "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
-			xtriggers:{epiphany.colonel:fragmentedgeg.colonel,fatiguing:fragmentedgef.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgeg.colonel,epiphany.colonel:fragmentedgeg.colonel,fatiguing:fragmentedgef.colonel.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -278,7 +278,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 4,forge:2,heart:2,lore:1},
             description: "'This is the lesson the Great One's Son found in the breaking of his blade. Even now it glints like shards of metal in the Persian sun.' It's more practical than it sounds.",
-			xtriggers:{epiphany.lionsmith:fragmentedgec.lionsmith,fatiguing:fragmentedgeb.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgec.lionsmith,epiphany.lionsmith:fragmentedgec.lionsmith,fatiguing:fragmentedgeb.lionsmith.exhausted},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -288,7 +288,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 6,forge:3,heart:3,lore:1},
             description: "A series of mystic exercises that require both dedication and terror.",
-			xtriggers:{epiphany.lionsmith:fragmentedged.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedged.lionsmith,epiphany.lionsmith:fragmentedged.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -299,7 +299,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 8,forge:4,heart:4,lore:1},
 description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
 			
-			xtriggers:{epiphany.lionsmith:fragmentedgee.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgee.lionsmith,epiphany.lionsmith:fragmentedgee.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },{
@@ -308,7 +308,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             aspects:
             {edge: 10,forge:5,heart:5,lore:1},
             description: "Seven times seven techniques for the shattering of bone.",
-			xtriggers:{epiphany.lionsmith:fragmentedgef.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgef.lionsmith,epiphany.lionsmith:fragmentedgef.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -319,7 +319,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             {edge: 12,forge:6,heart:6,lore:1},
 			
             description: "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
-			xtriggers:{epiphany.lionsmith:fragmentedgeg.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgeg.lionsmith,epiphany.lionsmith:fragmentedgeg.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },

@@ -1813,7 +1813,7 @@ resaturate:true
 {id: "contact.cultist.wolf",
 label: "Damned",
 inherits:_contact.mortal,
-description:"One of my congregation is eager to embrace their  end. [A Wolf Divided Cult generates a cultist if you achieve at least one Effectiveness.]",
+description:"One of my congregation is eager to embrace their end. [A Wolf Divided Cult generates a cultist if you achieve at least one Effectiveness.]",
 xtriggers:{fatiguing:corpse.exile},
 aspects:{edge:6,winter:6},
 icon:devotee_edge
@@ -2781,6 +2781,7 @@ icon:tooledgeb
      {id: "obscurity",
       label: "Obscurity",
       description:"This might be the only defence against the reckoner lords. It might be no defence at all. ",
+	  aspects:{moth:2,winter:2,supplies:1},
 	  },
 	  
 	  {id: "temptation.obscurity",
