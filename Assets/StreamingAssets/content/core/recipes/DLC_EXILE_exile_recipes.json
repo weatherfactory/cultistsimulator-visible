@@ -428,6 +428,17 @@ hintonly:true,
 craftable:false
 },
 
+{id:"travel.ally.duplicate.hint",
+actionId:"travel",
+label:"Too Much Confusion",
+startdescription:"[You can't send more than one Ally at a time to create False Trails.]",
+requirements:{ally:1},
+extantreqs:{apx.trail.false.exile:1},
+craftable:false,
+hintonly:true
+},
+
+
 {id:"travel.ally.hint",
 actionId:"travel",
 label:"Send an Ally to create a False Trail?",
@@ -443,8 +454,10 @@ actionId:"travel",
 label:"Send an Ally to create a False Trail",
 startdescription:"It's chancy, but what isn't? [A False Trail will prevent Reckoners from finding you for as long as it lasts. You won't ever be able to travel to this city. Your Ally will be unavailable for a while, and there's a small chance they'll never return.]",
 description:"They're en route.",
-requirements:{ally:1,exhausted:-1,destination:1,end:-1,wilderness:-1},
-alt:[{id:"ally.trail.false.begin",additional:true,expulsion:{limit:2,filter:{ally:1,destination:1}}}],
+requirements:{ally:1,destination:1,exhausted:-1,end:-1,wilderness:-1},
+extantreqs:{apx.trail.false.exile:-1},
+effects:{apx.trail.false.exile:1},
+alt:[{id:"ally.trail.false.begin",additional:true,expulsion:{limit:3,filter:{ally:1,destination:1,apx.trail.false.exile:1}}}],
 craftable:true,
 warmup:60
 },
@@ -453,7 +466,14 @@ warmup:60
 {id:"ally.trail.false.begin",
 actionId:"ally.trail.false.1",
 label:"Creating a False Trail",
-startdescription:"FNORD creating diversion",
+startdescription:"@#ally.barber|Zulfiya is arranging a suitable chaos.
+#ally.delver|Orsolina is methodically at work.
+#ally.fivegoer|Vasil seems to be planning some sort of party.
+#ally.ghoul|Dominykas is at his schemes.
+#ally.huntress|Lalla Chaima is causing useful havoc.
+#ally.smuggler|Giorgiou is planning to turn a profit while diverting attention.
+#ally.visionary|Mireya is arranging something memorable.
+#ally.vivisectionist|Jannings is deploying his resources.@ [A modest chance each turn of completing the task.]",
 warmup:60,
 linked:[{id:"ally.trail.false.create",chance:30},
 {id:"ally.trail.false.begin"}]
@@ -462,7 +482,14 @@ linked:[{id:"ally.trail.false.create",chance:30},
 {id:"ally.trail.false.create",
 actionId:"ally.trail.false.1",
 label:"Created a False Trail",
-startdescription:"FNORD created diversion",
+startdescription:"@#ally.barber|Zulfiya has arranged a suitable chaos.
+#ally.delver|Orsolina has methodically completed her work.
+#ally.fivegoer|Vasil's celebration has attracted all kinds of attention.
+#ally.ghoul|Dominykas has completed his schemes.
+#ally.huntress|Lalla Chaima has caused useful havoc.
+#ally.smuggler|Giorgiou has managed to turn a profit while diverting attention.
+#ally.visionary|Mireya has arranged something memorable.
+#ally.vivisectionist|Jannings has deployed his resources.@",
 alt:[{id:"ally.trail.false.waiting",additional:true,expulsion:{limit:2,filter:{ally:1,destination:1}}}],
 effects:{trail.false.exile:1},
 warmup:60
@@ -471,7 +498,14 @@ warmup:60
 {id:"ally.trail.false.waiting",
 actionId:"ally.trail.false.2",
 label:"Waiting...",
-startdescription:"FNORD waiting",
+startdescription:"@#ally.barber|Zulfiya's work is done. She'll be back as soon as she can travel safely.
+#ally.delver|Orsolina's work is done. She'll be back as soon as she can travel safely.
+#ally.fivegoer|Vasil's work is done. He'll be back as soon as he can travel safely.
+#ally.ghoul|Dominykas' work is done. He'll be back as soon as he can travel safely.
+#ally.huntress|Lalla Chaima's work is done. She'll be back as soon as she can travel safely.
+#ally.smuggler|Giorgiou's work is done. He'll be back as soon as he can travel safely.
+#ally.visionary|Mireya's work is done. She'll be back as soon as she can travel safely.
+#ally.vivisectionist|@",
 warmup:60,
 linked:[{id:"ally.trail.false.returning",chance:30},
 {id:"ally.trail.false.lost",chance:10},
@@ -482,7 +516,14 @@ linked:[{id:"ally.trail.false.returning",chance:30},
 {id:"ally.trail.false.returning",
 actionId:"ally.trail.false.2",
 label:"Returning...",
-startdescription:"FNORD returning",
+startdescription:"@#ally.barber|Zulfiya's on her way back.
+#ally.delver|Orsolina's on her way back.
+#ally.fivegoer|Vasil's on his way back.
+#ally.ghoul|Dominykas is on his way back.
+#ally.huntress|Lalla Chaima's on her way back.
+#ally.smuggler|Giorgiou's on his way back.
+#ally.visionary|Mireya's on her way back.
+#ally.vivisectionist|Jannings is on his way back.@",
 warmup:60,
 aspects:{fatiguing:1},
 effects:{destination:-1}
@@ -491,7 +532,14 @@ effects:{destination:-1}
 {id:"ally.trail.false.lost",
 actionId:"ally.trail.false.2",
 label:"Lost...",
-startdescription:"FNORD lost",
+startdescription:"@#ally.barber|Zulfiya's disappeared. That could mean anything. But I don't think I'll see her again.
+#ally.delver|One way or another, I think Orsolina must have gone back into the earth.
+#ally.fivegoer|I almost missed the article: a report about a body found in a suitcase with some very distinctive ' anatomical peculiarities'. It can only be Vasil.
+#ally.ghoul|An article reports that a Lithuanian dignitary has been found poisoned. Dominykas would probably have liked being called a 'dignitary'.
+#ally.huntress|Chaima's body was found with the corpses of three men all shot neatly between the eyes. She went down fighting.
+#ally.smuggler|Giorgiou's past has caught up with him, it seems. It wasn't even the reckoners - just one of his many competitors.
+#ally.visionary|Mireya has been arrested for 'crimes of revelation.'
+#ally.vivisectionist|I read today a report on a German aristocrat who was volunteering in a hospital, treating victims of a typhus outbreak, when the disease claimed him too. Jannings was a complicated man. I'll miss him.@",
 effects:{ally:-1,destination:-1,grief:1},
 warmup:60,
 },
@@ -580,6 +628,7 @@ startdescription:"This is as far as my allies will go. Time to say goodbye.",
 requirements:{end:1},
 extantreqs:{ally:1},
 purge:{ally:100},
+deleteverb:{ally.trail.false*:1},
 warmup:10,
 linked:[{id:"travel.depart"}]},
 
