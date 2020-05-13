@@ -3621,7 +3621,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Yitzchok Ashlag in Krakow has relied on me for years for the rarer occult texts. He's a hospitable man.",
 
 unique:true,
-xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.krakow",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"vault.yitzchok",morpheffect:spawn},{id:"domicile.krakow",morpheffect:transform}]}
 },
 
 
