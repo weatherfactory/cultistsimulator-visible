@@ -2752,11 +2752,11 @@ unique:true
 
 {id: "weapon.c",
 label: "Ebrehel, the Ragged Sword",
-aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1},
+aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1,pentiment:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
-description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
+description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by a king against an unbuilt city in an unknown season, but it will cut bits off mortals and immortals just fine.",
 icon:tooledgeb,
 unique:true
 },
