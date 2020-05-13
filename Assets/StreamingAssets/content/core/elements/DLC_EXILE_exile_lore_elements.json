@@ -19,7 +19,7 @@
             aspects:
             {edge: 4,lore:1},
             description: "Biedde said: 'Blood can be replenished. Time cannot.' Biedde knew what he was about.",
-			xtriggers:{epiphany:fragmentedgec.exile,fatiguing:fragmentedgeb.exile.exhausted,epiphany.colonel:fragmentedgec.colonel,epiphany.lionsmith:fragmentedgec.lionsmith},
+			xtriggers:{epiphany:fragmentedgec.exile, depiphany:fragmentedge.exile,fatiguing:fragmentedgeb.exile.exhausted,epiphany.colonel:fragmentedgec.colonel,epiphany.lionsmith:fragmentedgec.lionsmith},
 			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -29,7 +29,7 @@
             aspects:
             {edge: 6,lore:1},
             description: "'Where warriors fall, the many-winged striges gather to honour their flesh. Where heroes fall, the Many-Winged Ones gather to convey their souls before the Hours.' I don't intend to fall, so I've learnt how the striges protect themselves.",
-			xtriggers:{epiphany:fragmentedged.exile,fatiguing:fragmentedgec.exile.exhausted,epiphany.colonel:fragmentedged.colonel,epiphany.lionsmith:fragmentedged.lionsmith},
+			xtriggers:{epiphany:fragmentedged.exile, depiphany:fragmentedgeb.exile,fatiguing:fragmentedgec.exile.exhausted,epiphany.colonel:fragmentedged.colonel,epiphany.lionsmith:fragmentedged.lionsmith},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -39,7 +39,7 @@
             aspects:
             {edge: 8,lore:1},
 description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at the last, he unmaketh.' You don't have to like an Hour to learn from it.",
-			xtriggers:{epiphany:fragmentedgee.exile,fatiguing:fragmentedged.exile.exhausted,epiphany.colonel:fragmentedgee.colonel,epiphany.lionsmith:fragmentedgee.lionsmith},
+			xtriggers:{epiphany:fragmentedgee.exile, depiphany:fragmentedgec.exile,fatiguing:fragmentedged.exile.exhausted,epiphany.colonel:fragmentedgee.colonel,epiphany.lionsmith:fragmentedgee.lionsmith},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.exile"
         },{
@@ -47,7 +47,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             label: "The Cinnabar Forms",
             aspects:
             {edge: 10,lore:1},description: "Seven times seven techniques of unmaking.",
-			xtriggers:{epiphany:fragmentedgef.exile,fatiguing:fragmentedgee.exile.exhausted,epiphany.colonel:fragmentedgef.colonel,epiphany.lionsmith:fragmentedgef.lionsmith},
+			xtriggers:{epiphany:fragmentedgef.exile, depiphany:fragmentedged.exile,fatiguing:fragmentedgee.exile.exhausted,epiphany.colonel:fragmentedgef.colonel,epiphany.lionsmith:fragmentedgef.lionsmith},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -58,7 +58,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             {edge: 12,lore:1},
 			
             description: "These are the arts that ensure an ending.",
-			xtriggers:{epiphany:fragmentedgeg.exile,fatiguing:fragmentedgef.exile.exhausted,epiphany.colonel:fragmentedgeg.colonel,epiphany.lionsmith:fragmentedgeg.lionsmith},
+			xtriggers:{epiphany:fragmentedgeg.exile, depiphany:fragmentedgee.exile,fatiguing:fragmentedgef.exile.exhausted,epiphany.colonel:fragmentedgeg.colonel,epiphany.lionsmith:fragmentedgeg.lionsmith},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -67,7 +67,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             aspects:
             {edge: 14,lore:1},
             description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
-			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted,epiphany:[{id:vitality,morpheffect:spawn}]},
+			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted, depiphany:fragmentedgef.exile,epiphany:[{id:vitality,morpheffect:spawn}]},
 			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.exile"
         },
@@ -164,7 +164,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             aspects:
             {edge: 6,lantern:3,winter:3,lore:1},
             description: "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
-			xtriggers:{epiphany:fragmentedged.colonel,epiphany.colonel:fragmentedged.colonel,fatiguing:fragmentedgec.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedged.colonel,epiphany.colonel:fragmentedged.colonel, depiphany:fragmentedgeb.colonel,fatiguing:fragmentedgec.colonel.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -175,7 +175,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             {edge: 8,lantern:4,winter:4,lore:1},
 description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
 			
-			xtriggers:{epiphany:fragmentedgee.colonel,epiphany.colonel:fragmentedgee.colonel,fatiguing:fragmentedged.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgee.colonel,epiphany.colonel:fragmentedgee.colonel, depiphany:fragmentedgec.colonel,fatiguing:fragmentedged.colonel.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.colonel"
         },{
@@ -184,7 +184,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 10,lantern:5,winter:5,lore:1},
 			description: "Seven times seven techniques for the sundering of flesh.",
-			xtriggers:{epiphany:fragmentedgef.colonel,epiphany.colonel:fragmentedgef.colonel,fatiguing:fragmentedgee.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgef.colonel,epiphany.colonel:fragmentedgef.colonel, depiphany:fragmentedged.colonel,fatiguing:fragmentedgee.colonel.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -194,7 +194,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 12,lantern:6,winter:6,lore:1},
             description: "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
-			xtriggers:{epiphany:fragmentedgeg.colonel,epiphany.colonel:fragmentedgeg.colonel,fatiguing:fragmentedgef.colonel.exhausted},
+			xtriggers:{epiphany:fragmentedgeg.colonel,epiphany.colonel:fragmentedgeg.colonel, depiphany:fragmentedgee.colonel,fatiguing:fragmentedgef.colonel.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -203,7 +203,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 14,lantern:7,winter:7,lore:1},
             description: "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
-			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted},
+			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted,depiphany:fragmentedgef.colonel},
 			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.colonel"
         },
@@ -288,7 +288,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 6,forge:3,heart:3,lore:1},
             description: "A series of mystic exercises that require both dedication and terror.",
-			xtriggers:{epiphany:fragmentedged.lionsmith,epiphany.lionsmith:fragmentedged.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedged.lionsmith,epiphany.lionsmith:fragmentedged.lionsmith,depiphany:fragmentedgeb.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
 			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -299,7 +299,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 8,forge:4,heart:4,lore:1},
 description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
 			
-			xtriggers:{epiphany:fragmentedgee.lionsmith,epiphany.lionsmith:fragmentedgee.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgee.lionsmith,epiphany.lionsmith:fragmentedgee.lionsmith,depiphany:fragmentedgec.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
 			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },{
@@ -308,7 +308,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             aspects:
             {edge: 10,forge:5,heart:5,lore:1},
             description: "Seven times seven techniques for the shattering of bone.",
-			xtriggers:{epiphany:fragmentedgef.lionsmith,epiphany.lionsmith:fragmentedgef.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgef.lionsmith,epiphany.lionsmith:fragmentedgef.lionsmith,depiphany:fragmentedged.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
 			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -319,7 +319,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             {edge: 12,forge:6,heart:6,lore:1},
 			
             description: "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
-			xtriggers:{epiphany:fragmentedgeg.lionsmith,epiphany.lionsmith:fragmentedgeg.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
+			xtriggers:{epiphany:fragmentedgeg.lionsmith,epiphany.lionsmith:fragmentedgeg.lionsmith,depiphany:fragmentedgee.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
 			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
@@ -328,7 +328,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             aspects:
             {edge: 14,forge:7,heart:7,lore:1},
             description: "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
-			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted},
+			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted,depiphany:fragmentedgef.lionsmith,},
 			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },

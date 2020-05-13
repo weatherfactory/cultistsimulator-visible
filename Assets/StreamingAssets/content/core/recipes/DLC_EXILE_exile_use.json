@@ -326,15 +326,37 @@ warmup:60,
 craftable:true,
 linked:[{id:"use.fatiguing"}]},
 
+{id:"use.renew.op.cats",
+actionId:"use",
+label:"Follow",
+startdescription:"I'll investigate a little more closely. [This will renew the lifespan of the Opportunity in case you need it later.]",
+description:"There.",
+requirements:{op.cats:1,price:-1,price.connection:-1,price.lifespan.stolen:-1},
+slots:[{id:"light",label:"Light",description:"'When all candles be out, all cats be grey.'", required:{lantern:1},consumes:true}],
+alt:[{id:"use.find.nameless"}],
+aspects:{renewal.exile:1},
+warmup:30,craftable:true},
+
 
 {id:"use.renew",
 actionId:"use",
 label:"Reserve",
-startdescription:"I'll make a mental note. [This will renew the lifespan of the Opportunity in case you need it later.]",
+startdescription:"I'll investigate a little more closely. [This will renew the lifespan of the Opportunity in case you need it later.]",
 description:"There.",
 requirements:{op:1,price:-1,price.connection:-1,price.lifespan.stolen:-1},
 aspects:{renewal.exile:1},
 warmup:30,craftable:true},
+
+
+
+
+{id:"use.find.nameless",
+actionId:"use",
+label:"Follow",
+startdescription:"The Velvet, who conceals secrets, has a Nameless Name. In that Name's mists, the defeated find solace. That Name is never seen; except, now and then, by the very greyest of cats. [This will consume both the Opportunity and the light.]",
+description:"I follow the swaying tail of a grey cat through the streets after sunset.",
+requirements:{lantern:1},
+effects:{loc.shrine.nameless:1,op.cats:-1}},
 
 
 

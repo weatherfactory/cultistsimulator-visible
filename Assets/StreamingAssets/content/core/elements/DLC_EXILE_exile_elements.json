@@ -1498,6 +1498,15 @@ description:"A considerable sum - enough to open a door, fund a project, or exci
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
 
+{id:"loc.shrine.nameless",
+label:"Misty Nook",
+aspects:{location:1},
+description:"An unremarkable location that's somehow easier to stumble across at night. A nondescript candle has been jammed haphazardly into a crevice in the wall.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1},forbidden:{fragmentedge.exile:1,fragmentedgeb.colonel:1,fragmentedgeb.lionsmith:1}}],
+unique:true,
+icon:nameless
+},
+
 {id: "loc.shrine.colonel.aachen",
 label: "Chapel of St Andrew Stratelates",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
