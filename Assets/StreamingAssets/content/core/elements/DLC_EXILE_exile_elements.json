@@ -2829,14 +2829,17 @@ resaturate:true,
 icon:tooledgeb
 },
 
+{id: "obscurity",
+label: "Obscurity",
+description:"This might be the only defence against a reckoner lord. It might be no defence at all. ",
+aspects:{moth:2,winter:2,supplies:1},
+},
 
+{id: "pentiment",
+label: "Pentiment",
+description:"Something might have been different.",
+},
 
-
-     {id: "obscurity",
-      label: "Obscurity",
-      description:"This might be the only defence against the reckoner lords. It might be no defence at all. ",
-	  aspects:{moth:2,winter:2,supplies:1},
-	  },
 	  
 	  {id: "temptation.obscurity",
 label: "Temptation: A Final Message",
@@ -2889,7 +2892,7 @@ lifetime:180
 label: "Sunshine Island",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 description:"The light is famously good - enough so that a small colony of artists toils here - but it's still an optimistic name for a storm-beaten tumble of Baltic granite.",
-icon: vaultcontinent3,
+icon: end.bornholm,
 unique:true
 },
  
@@ -2899,7 +2902,7 @@ label: "Wounded Moon Lake",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"Deep in the taiga forests of Siberia, a hunting lodge decays gracefully into an ice-blue lake - a lake, it's said, that a falling moon-fragment scarred from the forest.",
-icon: vaultcontinent3,
+icon: end.cheko,
 unique:true
 },
 
@@ -2910,7 +2913,7 @@ label: "The Pentapolis",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"On a high far limestone plateau in the greatest of deserts, the Mozabites built five citadel villages to be a refuge for their people. Now, one is a refuge for me.",
-icon: vaultloneandlevelsands2,
+icon: end.ghardaia,
 unique:true
 },
 	  
@@ -2920,7 +2923,7 @@ label: "Hermitage of the Scythe",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"Across the deadly sands, an oasis where peculiarly healthy villagers thrive. In the hills above, a sunny, rocky cell of three windows.",
-icon: vaultloneandlevelsands3,
+icon: end.messana,
 unique:true
 },
 	  	  {id: "domicile.morbihan",
@@ -2928,7 +2931,7 @@ label: "Priory of Captains",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"In the little sea called Morbihan, the gate to the western ocean, there's an isle famed for its sailors. On its westmost tip lies a quiet priory. The monks enjoy their privacy, but they've been known to offer sanctuary.",
-icon: vaultcontinentdefault,
+icon: end.morbihan,
 unique:true
 },
 
@@ -2937,7 +2940,7 @@ label: "The Tiger's Nest",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"High in the abode of eternal snows, a monastery of the Diamond Vehicle clings improbably to a cliff face like flowers on lichen.",
-icon: vaultcontinent3,
+icon: end.paro,
 unique:true
 },
 	  	  {id: "domicile.slettnes",
@@ -2945,7 +2948,7 @@ label: "Fogfire Point",
 aspects: {domicile:1,end:1,remote:1,rkx.underlings.blocker:1},
 
 description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
-icon: vaultcontinent3,
+icon: end.slettnes,
 unique:true
 },
 
@@ -2957,7 +2960,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"The light is famously good - enough so that a small colony of artists toils here - but it's still an optimistic name for a storm-beaten tumble of Baltic granite.",
-icon: vaultcontinent3,
 unique:true
 },
  
@@ -2970,7 +2972,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"Deep in the taiga forests of Siberia, a hunting lodge decays gracefully into an ice-blue lake - a lake, it's said, that a falling moon-fragment scarred from the forest.",
-icon: vaultcontinent3,
 unique:true
 },
 
@@ -2983,7 +2984,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"On a high far limestone plateau in the greatest of deserts, the Mozabites built five citadel villages to be a refuge for their people. Now, one is a refuge for me.",
-icon: vaultloneandlevelsands2,
 unique:true
 },
 	  
@@ -2995,7 +2995,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"Across the deadly sands, an oasis where peculiarly healthy villagers thrive. In the hills above, a sunny, rocky cell of three windows.",
-icon: vaultloneandlevelsands3,
 unique:true
 },
 	  	  {id: "end.morbihan",
@@ -3006,7 +3005,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"In the little sea called Morbihan, the gate to the western ocean, there's an isle famed for its sailors. On its westmost tip lies a quiet priory. The monks enjoy their privacy, but they've been known to offer sanctuary.",
-icon: vaultcontinentdefault,
 unique:true
 },
 
