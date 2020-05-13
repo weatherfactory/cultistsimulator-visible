@@ -1732,13 +1732,27 @@ id:"vault.vivisectionist",
 label:"Corpshaus Mamurra München",
 inherits: "_vault.exile",
 description:"A charming brick house with crow-stepped gables and a pair of venerable pines at the front door. In the attic, the Mamurren perform their rites of pain and courage. This will hurt.",
-icon:"vaultcapital5",
+icon:"vaultcontinent4",
 xtriggers:{success:[{id:vault.vivisectionist.completed}],
 opx.progress0:[{id:ee.scarredduellist,morpheffect:spawn}],
 opx.progress1:[{id:ee.strixriddenadversary,morpheffect:spawn}],
 opx.progress2:[{id:ee.ordeal.agony,morpheffect:spawn}]},
 unique:true
 },
+
+{
+id:"vault.yitzchok",
+label:"Church of St Marzanna the White",
+inherits: "_vault.exile",
+description:"On a hill above the city where the wind blows keen and fierce, a decaying wooden church stands in a bleak grove of leafless oak trees. Yitzchok tells me there's something in there I'll find useful, but he warns me: 'I looked in all my books for this St Marzanna. Where did I find her? Nowhere.'",
+icon:"vaultcapital5",
+xtriggers:{success:[{id:weapon.c}],
+opx.progress0:[{id:ee.creepinghorror,morpheffect:spawn}],
+opx.progress1:[{id:ee.bosk,morpheffect:spawn}],
+opx.progress2:[{id:ee.ordeal.desolation,morpheffect:spawn}]},
+unique:true
+},
+
 
 
 {id: "vault.barber.completed",
