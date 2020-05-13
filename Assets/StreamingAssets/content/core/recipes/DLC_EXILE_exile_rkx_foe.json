@@ -276,7 +276,7 @@ actionId:"spit.foe.attack",
 label:"An Unexpected Sacrifice",
 startdescription:"My friend's fallen in bitter battle! But they gave my Foe something to remember them by. [Allies and associates sometimes die when fighting the Foe.]",
 aspects:{killmortal:1},
-effects:{wound.foe:1},
+effects:{wound.foe:1,grief:1},
 warmup:2},
 
 {id:"spit.foe.attack.failure.ligeian",

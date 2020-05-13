@@ -425,7 +425,76 @@ requirements:{destination:1},
 comments:"This is only a hint, so the Wilderness recipe will override it.",
 extantreqs:{rage:1},
 hintonly:true,
-craftable:false},
+craftable:false
+},
+
+{id:"travel.ally.hint",
+actionId:"travel",
+label:"Send an Ally to create a False Trail?",
+startdescription:"[Add a city you haven't yet visited.]",
+requirements:{ally:1,exhausted:-1},
+craftable:false,
+hintonly:true
+},
+
+
+{id:"travel.ally",
+actionId:"travel",
+label:"Send an Ally to create a False Trail",
+startdescription:"It's chancy, but what isn't? [A False Trail will prevent Reckoners from finding you for as long as it lasts. You won't ever be able to travel to this city. Your Ally will be unavailable for a while, and there's a small chance they'll never return.]",
+description:"They're en route.",
+requirements:{ally:1,exhausted:-1,destination:1,end:-1,wilderness:-1},
+alt:[{id:"ally.trail.false.begin",additional:true,expulsion:{limit:2,filter:{ally:1,destination:1}}}],
+craftable:true,
+warmup:60
+},
+
+
+{id:"ally.trail.false.begin",
+actionId:"ally.trail.false.1",
+label:"Creating a False Trail",
+startdescription:"FNORD creating diversion",
+warmup:60,
+linked:[{id:"ally.trail.false.create",chance:30},
+{id:"ally.trail.false.begin"}]
+},
+
+{id:"ally.trail.false.create",
+actionId:"ally.trail.false.1",
+label:"Created a False Trail",
+startdescription:"FNORD created diversion",
+alt:[{id:"ally.trail.false.waiting",additional:true,expulsion:{limit:2,filter:{ally:1,destination:1}}}],
+effects:{trail.false.exile:1},
+warmup:60
+},
+
+{id:"ally.trail.false.waiting",
+actionId:"ally.trail.false.2",
+label:"Waiting...",
+startdescription:"FNORD waiting",
+warmup:60,
+linked:[{id:"ally.trail.false.returning",chance:30},
+{id:"ally.trail.false.lost",chance:10},
+{id:"ally.trail.false.waiting"}]
+},
+
+
+{id:"ally.trail.false.returning",
+actionId:"ally.trail.false.2",
+label:"Returning...",
+startdescription:"FNORD returning",
+warmup:60,
+aspects:{fatiguing:1},
+effects:{destination:-1}
+},
+
+{id:"ally.trail.false.lost",
+actionId:"ally.trail.false.2",
+label:"Lost...",
+startdescription:"FNORD lost",
+effects:{ally:-1,destination:-1,grief:1},
+warmup:60,
+},
 
 
 {id:"travel.prepare.end",
