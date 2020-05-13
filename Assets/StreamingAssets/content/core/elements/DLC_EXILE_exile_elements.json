@@ -1401,6 +1401,7 @@ xtriggers:{killmortal:corpse.exile}
 {id: "_ally.mortal",
 label: "_ally.mortal",
 aspects:{mortal:1,ally:1,associate:1},
+slots:[{id:"destination",label:"Destination",actionId:travel,required:{destination:1},forbidden:{end:1,wilderness:1}}],
 xtriggers:{killmortal:[{id:"corpse.exile"},{id:"experience.exile.ally",morpheffect:mutate,level:-3},{id:"edge",morpheffect:mutate,level:-99},{id:"forge",morpheffect:mutate,level:-99},{id:"grail",morpheffect:mutate,level:-99},{id:"heart",morpheffect:mutate,level:-99},{id:"knock",morpheffect:mutate,level:-99},{id:"moth",morpheffect:mutate,level:-99},{id:"winter",morpheffect:mutate,level:-99}]}
 },
 {id: "_ally.mortal.fatigued",
@@ -2827,23 +2828,31 @@ aspects: {desire:1},
 description:"None of this has gone as I planned. But I'd still like to retire in style."
 },
 	  
-	  {id:"decade.stolen",
-	  label: "Stolen Decade",
-	  description:"Ten years of generously donated life, as entered in the Cindered Tally.",
-	  aspects:{lifespan.stolen:10},
-	  },
-	  	  {id:"year.stolen",
-	  label: "Stolen Year",
-	  description:"A year of generously donated life, as entered in the Cindered Tally.",
-	  aspects:{lifespan.stolen:1}
-	  },
-	  {id:"trace",
-	  label:"Trace",
-	  description:"A betraying clue that my pursuers might recognise.",
-	  slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
-	  {id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
-	  icon:rumour
-	  },
+{id:"decade.stolen",
+label: "Stolen Decade",
+description:"Ten years of generously donated life, as entered in the Cindered Tally.",
+aspects:{lifespan.stolen:10},
+},
+
+  {id:"year.stolen",
+label: "Stolen Year",
+description:"A year of generously donated life, as entered in the Cindered Tally.",
+aspects:{lifespan.stolen:1}
+},
+
+{id:"trace",
+label:"Trace",
+description:"A betraying clue that my pursuers might recognise.",
+slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
+{id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
+icon:rumour
+},
+
+{id:"trail.false.exile",
+label:"False Trail",
+description:"False but persuasive evidence that I'm somewhere I'm not. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
+lifetime:180
+},
 	  
 	  	  	  {id: "domicile.bornholm",
 label: "Sunshine Island",
