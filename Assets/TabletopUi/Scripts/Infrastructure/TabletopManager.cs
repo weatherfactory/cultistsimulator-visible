@@ -29,7 +29,7 @@ using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, ITabletopManager {
+    public class TabletopManager : MonoBehaviour, ITabletopManager,IStacksChangeSubscriber {
 
         [Header("Game Control")]
         [SerializeField]
@@ -397,7 +397,8 @@ namespace Assets.CS.TabletopUI {
             var chronicler = new Chronicler(character,compendium);
 
             var situationsCatalogue = new SituationsCatalogue();
-            var elementStacksCatalogue = new StackManagersCatalogue();
+            var stackManagersCatalogue = new StackManagersCatalogue();
+            stackManagersCatalogue.Subscribe(this);
 
             var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
             if(CrossSceneState.GetMetaInfo()==null)
@@ -428,19 +429,19 @@ namespace Assets.CS.TabletopUI {
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
             registry.Register<SituationsCatalogue>(situationsCatalogue);
-            registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
+            registry.Register<StackManagersCatalogue>(stackManagersCatalogue);
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 			registry.Register<DebugTools>(debugTools);
             registry.Register<HighlightLocationsController>(_highlightLocationsController);
 
-            _highlightLocationsController.ScanChildHighlightLocations();
+            _highlightLocationsController.Initialise(stackManagersCatalogue);
 
 
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
-            _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
+            _elementOverview.Initialise(character.ActiveLegacy, stackManagersCatalogue,compendium);
             tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
 
 
@@ -1380,6 +1381,10 @@ namespace Assets.CS.TabletopUI {
 		}
 
 
+        public void NotifyStacksChanged()
+        {
+          NotifyAspectsDirty();
+        }
     }
 
 }

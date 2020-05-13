@@ -272,7 +272,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
         //if we didn't jump out of loop with return, above
 		Context debugContext = new Context(Context.ActionSource.Debug);
-        stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), debugContext);
+        stackManager.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
 		// Find the card we just added and move it to the dropzone
 		existingStacks = stackManager.GetStacks();

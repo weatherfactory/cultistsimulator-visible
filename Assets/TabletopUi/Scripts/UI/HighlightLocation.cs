@@ -8,34 +8,115 @@ public class HighlightLocation : MonoBehaviour
 {
 
     [SerializeField]
-    private Image _sprite;
+    private Image _glowMarker;
     [SerializeField]
-    private TMP_Text _label;
-    [SerializeField] public string MatchElementId;
+    private Image _label;
+    [SerializeField]
+    private Image _domicile;
 
-    public void Activate(float duration=1f)
+    private bool _displayingForPresence = false;
+    private bool _highlightingForInteraction = false;
+    /// <summary>
+    /// Highlight while element is interacted with
+    /// </summary>
+    [SerializeField] public string HighlightWhileElementIdInteracting;
+    /// <summary>
+    /// Display, including additional domicile marker, when this element is present
+    /// </summary>
+    [SerializeField] public string DisplayWhileElementIdPresent;
+
+
+    public void HighlightForInteracted(float duration=1f)
     {
+        _highlightingForInteraction = true;
 
         SoundManager.PlaySfx("HighlightLocation");
 
-      _sprite.gameObject.SetActive(true);
-      _sprite.canvasRenderer.SetAlpha(0f);
-      _sprite.CrossFadeAlpha(1f, duration, true);
+      _glowMarker.gameObject.SetActive(true);
+      _glowMarker.canvasRenderer.SetAlpha(0f);
+      _glowMarker.CrossFadeAlpha(1f, duration, true);
 
-      _label.gameObject.SetActive(true);
+        if(!_displayingForPresence)
+        {
+            _label.gameObject.SetActive(true);
       _label.canvasRenderer.SetAlpha(0f);
       _label.CrossFadeAlpha(1f, duration, true);
+        }
     }
 
-    public void Deactivate(float duration = 1f)
+    public void HideForNoInteraction()
     {
-        _sprite.gameObject.SetActive(false);
-        _sprite.canvasRenderer.SetAlpha(1f);
-        _sprite.CrossFadeAlpha(0f, duration, true);
+        if(_highlightingForInteraction)
+        {
+            _highlightingForInteraction = false;
+            float duration = 0.5f;
+            
+            _glowMarker.gameObject.SetActive(false);
+            _glowMarker.canvasRenderer.SetAlpha(1f);
+            _glowMarker.CrossFadeAlpha(0f, duration, true);
+
+            if (!_displayingForPresence)
+            {
+                _label.gameObject.SetActive(false);
+                _label.canvasRenderer.SetAlpha(1f);
+                _label.CrossFadeAlpha(0f, duration,true);
+            }
+
+        }
+
+    }
+
+    public void DisplayForPresence(float duration = 1f)
+    {
+        _displayingForPresence = true;
+
+        _label.gameObject.SetActive(true);
+        _label.canvasRenderer.SetAlpha(0f);
+        _label.CrossFadeAlpha(1f, duration, true);
+
+        _domicile.gameObject.SetActive(true);
+        _domicile.canvasRenderer.SetAlpha(0f);
+        _domicile.CrossFadeAlpha(1f, duration, true);
+    }
+
+    public void HideForNoPresence()
+    {
+        if (_displayingForPresence)
+        {
+            _displayingForPresence = false;
+
+            _domicile.gameObject.SetActive(false);
+            _domicile.canvasRenderer.SetAlpha(1f);
+            _domicile.CrossFadeAlpha(0f, 0f, true);
+
+            if (!_highlightingForInteraction)
+            {
+                _label.gameObject.SetActive(false);
+                _label.canvasRenderer.SetAlpha(1f);
+                _label.CrossFadeAlpha(0f, 0f, true);
+            }
+        }
+    }
+
+
+
+    public void HideCompletely(float duration = 1f)
+    {
+        _displayingForPresence = false;
+        _highlightingForInteraction = false;
+
+        _glowMarker.gameObject.SetActive(false);
+        _glowMarker.canvasRenderer.SetAlpha(1f);
+        _glowMarker.CrossFadeAlpha(0f, duration, true);
 
         _label.gameObject.SetActive(false);
         _label.canvasRenderer.SetAlpha(1f);
         _label.CrossFadeAlpha(0f, duration, true);
 
+        _domicile.gameObject.SetActive(false);
+        _domicile.canvasRenderer.SetAlpha(1f);
+        _domicile.CrossFadeAlpha(0f, duration, true);
     }
+
+
 }

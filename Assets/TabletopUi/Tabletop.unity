@@ -5568,68 +5568,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525472692}
     m_Modifications:
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_text
-      value: Strasbourg
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_fontSize
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_margin.y
-      value: 33.3219
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_margin.x
-      value: 70.29639
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_margin.z
-      value: 72.215515
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522539819329047663, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_Name
-      value: Marker
-      objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
       propertyPath: m_Name
       value: Strasbourg
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974435, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
@@ -5738,14 +5680,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
-      propertyPath: MatchElementId
+      propertyPath: HighlightWhileElementIdInteracting
       value: city.strasbourg
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
-      propertyPath: _label
+      propertyPath: DisplayWhileElementIdPresent
+      value: domicile.strasbourg
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
+        type: 3}
+      propertyPath: _glowMarker
       value: 
-      objectReference: {fileID: 230412469}
+      objectReference: {fileID: 499313631}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
 --- !u!224 &114657586 stripped
@@ -12173,18 +12120,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219008797}
   m_CullTransparentMesh: 0
---- !u!114 &230412469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f,
-    type: 3}
-  m_PrefabInstance: {fileID: 114657585}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &231971808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13067,18 +13002,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b61b75a0ff5f8434fb2f202cca9514bb, type: 3}
---- !u!114 &298302186 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7522539820319185488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &298463429 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114517360162051302, guid: ea82801221b5ee843a4659abfa127edc,
@@ -13795,6 +13718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392807927}
+  - component: {fileID: 392807928}
   m_Layer: 5
   m_Name: TabletopWindowContainer
   m_TagString: Untagged
@@ -13821,6 +13745,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: -100, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &392807928
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392807926}
+  m_CullTransparentMesh: 0
 --- !u!114 &393029569 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8634670142250003021, guid: b01924c99f42946fd8aba56d7f2c1aa2,
@@ -15344,18 +15276,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486805149}
   m_CullTransparentMesh: 0
---- !u!114 &487432940 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1997956821}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &489042945
 GameObject:
   m_ObjectHideFlags: 0
@@ -15450,6 +15370,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &499313631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7522539819329047569, guid: f33b050490b439942b62e9dcfd67070f,
+    type: 3}
+  m_PrefabInstance: {fileID: 114657585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &502330422
@@ -16390,6 +16322,18 @@ MonoBehaviour:
   keepActiveOnHide: 0
   durationTurnOn: 0.25
   durationTurnOff: 0.1
+--- !u!114 &563033641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7522539819329047569, guid: f33b050490b439942b62e9dcfd67070f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7522539820319185488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &563948322
 GameObject:
   m_ObjectHideFlags: 0
@@ -24606,7 +24550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15, y: -15.0000305}
+  m_AnchoredPosition: {x: -15, y: -15}
   m_SizeDelta: {x: 550, y: -35}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1041049462
@@ -27495,7 +27439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -5.0000305}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1243788745
@@ -36894,20 +36838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525472692}
     m_Modifications:
-    - target: {fileID: 7522539819329047663, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_Name
-      value: Marker
-      objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
       propertyPath: m_Name
       value: London
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974435, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
@@ -37016,9 +36950,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
-      propertyPath: _label
+      propertyPath: _glowMarker
       value: 
-      objectReference: {fileID: 487432940}
+      objectReference: {fileID: 1997956825}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
 --- !u!224 &1997956822 stripped
@@ -37027,6 +36961,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1997956821}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997956825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7522539819329047569, guid: f33b050490b439942b62e9dcfd67070f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1997956821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2003508760 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224197569407620388, guid: ea82801221b5ee843a4659abfa127edc,
@@ -43601,28 +43547,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525472692}
     m_Modifications:
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_text
-      value: Aachen
-      objectReference: {fileID: 0}
-    - target: {fileID: 298302186, guid: f33b050490b439942b62e9dcfd67070f, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522539819329047663, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_Name
-      value: Marker
-      objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
       propertyPath: m_Name
       value: Aachen
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522539820375974434, guid: f33b050490b439942b62e9dcfd67070f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974435, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
@@ -43731,13 +43659,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
-      propertyPath: MatchElementId
+      propertyPath: HighlightWhileElementIdInteracting
       value: city.aachen
       objectReference: {fileID: 0}
     - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
         type: 3}
-      propertyPath: _label
+      propertyPath: DisplayWhileElementIdPresent
+      value: domicile.aachen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522539820375974438, guid: f33b050490b439942b62e9dcfd67070f,
+        type: 3}
+      propertyPath: _glowMarker
       value: 
-      objectReference: {fileID: 298302186}
+      objectReference: {fileID: 563033641}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33b050490b439942b62e9dcfd67070f, type: 3}

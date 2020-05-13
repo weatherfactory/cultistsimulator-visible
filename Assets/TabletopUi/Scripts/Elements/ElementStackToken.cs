@@ -798,7 +798,7 @@ namespace Assets.CS.TabletopUI {
 
             //Display any HighlightLocations tagged for this element
             var hlc = Registry.Retrieve<HighlightLocationsController>();
-            hlc.DeactivateAllHighlightLocations();
+            hlc.DeactivateHighlightLocations();
         }
 
 		public override void OnPointerClick(PointerEventData eventData)
