@@ -1573,6 +1573,7 @@ icon:bid
 {id: "cash",
 label: "Cash",
 aspects: {asset:1,portable:1,worth:1,supplies:1,forge:2,grail:2,knock:2},
+xtriggers:{fatiguing:husk},
 description:"A considerable sum - enough to open a door, fund a project, or excite avarice.",
 slots:[{actionId:send,id:"destination",label:"Destination",required:{destination:1}}]
 },
@@ -1706,13 +1707,15 @@ unique:true
 },
 
 
-
-{
-id:"vault.serapeum",
+{id:"vault.serapeum",
 label:"The Invisible Serapeum",
 inherits: "_vault.exile",
-description:"The Forge of Days does not usually favour libraries, but the Serapeum has made a commitment to non-combustible materials. [THIS ISN'T WORKING QUITE YET]",
+description:"The Serapeum is almost impossible to find... even when you're already inside it. With an invitation I have a better chance, though.",
 icon:"vaultlandbeyondforest5",
+xtriggers:{success:[{id:vault.serapeum.completed}],
+opx.progress0:[{id:ee.shadowedway,morpheffect:spawn}],
+opx.progress1:[{id:ee.unwelcomememories,morpheffect:spawn}],
+opx.progress2:[{id:ee.ordeal.enigma,morpheffect:spawn}]},
 unique:true
 },
 
@@ -1724,7 +1727,7 @@ description:"There is a dark Wood that presses against the windows of the sleepi
 icon:"vaultcontinent3",
 xtriggers:{success:[{id:vault.barber.completed}],
 opx.progress0:[{id:ee.feast,morpheffect:spawn}],
-opx.progress1:[{id:ee.unwelcomememories,morpheffect:spawn}],
+opx.progress1:[{id:ee.bosk,morpheffect:spawn}],
 opx.progress2:[{id:ee.ordeal.enigma,morpheffect:spawn}]},
 unique:true
 },
@@ -1902,6 +1905,15 @@ xtriggers:{recruiting:scar_mamurren},
 icon:"scar_winter",
 comments:"We switch it to a slightly different element so it doesn't get consumed by the ally recruitment recipe."
 },
+
+{id: "vault.serapeum.completed",
+label: "Serapeum Peristasis",
+aspects: {vault.completed:1,location:1},
+description:"I've entered one of the outer elements of the Invisible Serapeum - a sunny pillared porch of paradoxical size, where a certain Dr Blackwood will offer me a seat and a glass of iced hibiscus tea.",
+icon:"vaultlandbeyondforest5",
+},
+
+
 
 {id: "scar_mamurren",
 label: "Mamurren Scar",
@@ -2797,7 +2809,7 @@ aspects: {weapon:1,edge:2,weapon.profane:1,asset:1,portable:1,worth:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
-description:"An awkward weight.",
+description:"A prosaic weight.",
 icon:tooledgeb,
 unique:true
 },
@@ -2871,9 +2883,9 @@ unique:true
 },
 
 {id: "weapon.a.exhausted",
-label: "Unusual Imported Pistol (Readying)",
+label: "Profane Weapon (Readying)",
 aspects: {exhausted:1,asset:1,portable:1},
-description:"I stole this from my Foe's personal collection, the night I took the years. I may yet need it.",
+description:"A prosaic weight.",
 lifetime:60,
 decayTo:weapon.a,
 resaturate:true,
@@ -4156,7 +4168,8 @@ icon: scar_heart
 	  {id: "wound.exile.medusa",
 label: "My Unhealing Wound",
 aspects:{knock:4,winter:4,damage.exile:1,pentiment:1,pentiment.6:1},
-description:"Six more wounds will end me. This wound will never heal.",
+description:"Six more wounds will end me. This wound will not heal without extraordinary measures.",
+	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
 icon: scar_heart
 },
 
