@@ -594,7 +594,8 @@ namespace Assets.CS.TabletopUI {
 
         public override bool Retire()
 		{
-			return Retire(defaultRetireFX);
+            return Retire(defaultRetireFX);
+   
         }
 
 
@@ -602,8 +603,11 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (Defunct)
 				return false;
-			
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+
+            var hlc = Registry.Retrieve<HighlightLocationsController>();
+            hlc.DeactivateMatchingHighlightLocation(_element.Id);
+
+            var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
@@ -786,9 +790,12 @@ namespace Assets.CS.TabletopUI {
 			else
 				tabletopManager.SetHighlightedElement(null);
 
-            //Display any HighlightLocations tagged for this element
-            var hlc = Registry.Retrieve<HighlightLocationsController>();
-            hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+            if (DraggableToken.itemBeingDragged==null)
+            { 
+                //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
+                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+            }
         }
 
 		public override void OnPointerExit(PointerEventData eventData)
@@ -797,13 +804,17 @@ namespace Assets.CS.TabletopUI {
 			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(null);
 
             //Display any HighlightLocations tagged for this element
-            var hlc = Registry.Retrieve<HighlightLocationsController>();
-            hlc.DeactivateHighlightLocations();
+            if(DraggableToken.itemBeingDragged!=this)
+            { 
+                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                hlc.DeactivateMatchingHighlightLocation(_element.Id);
+            }
         }
 
 		public override void OnPointerClick(PointerEventData eventData)
-		{
-			if (eventData.clickCount > 1)
+        {
+
+            if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
@@ -819,8 +830,6 @@ namespace Assets.CS.TabletopUI {
 			    // Add the element name to the debug panel if it's active
 			    Registry.Retrieve<DebugTools>().SetInput(_element.Id);
 
-    
-
 
                 if (isFront)
 				{
@@ -830,11 +839,15 @@ namespace Assets.CS.TabletopUI {
 					{
 						if (DraggableToken.itemBeingDragged != null)
 						{
-							OnEndDrag( eventData );
+
+                            OnEndDrag( eventData );
 						}
 						else
 						{
-							OnBeginDrag( eventData );
+                            //we need it here as well as on OnPointerEnter because otherwise if you grab and drag it quickly, it can fail to show up because the pointer overtakes the card
+                            var hlc = Registry.Retrieve<HighlightLocationsController>();
+                            hlc.DeactivateMatchingHighlightLocation(_element.Id);
+                            OnBeginDrag( eventData );
 						}
 					}
 				}

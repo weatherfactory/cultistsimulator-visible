@@ -51,13 +51,21 @@ namespace Assets.TabletopUi.Scripts.UI
 
       public void ActivateMatchingHighlightLocation(string elementId)
       {
-
-            var hlToActivate = highlightLocations.SingleOrDefault(hl =>(hl.HighlightWhileElementIdInteracting == elementId || hl.DisplayWhileElementIdPresent == elementId));
+          var hlToActivate = highlightLocations.SingleOrDefault(hl =>(hl.HighlightWhileElementIdInteracting == elementId || hl.DisplayWhileElementIdPresent == elementId));
           if(hlToActivate!=null)
               hlToActivate.HighlightForInteracted();
       }
 
-      public void ActivateOnlyMatchingHighlightLocation(string elementId)
+      public void DeactivateMatchingHighlightLocation(string elementId)
+      {
+          var hlToActivate = highlightLocations.SingleOrDefault(hl => (hl.HighlightWhileElementIdInteracting == elementId || hl.DisplayWhileElementIdPresent == elementId));
+          if (hlToActivate != null)
+            { 
+              hlToActivate.HideForNoInteraction();
+            }
+        }
+
+        public void ActivateOnlyMatchingHighlightLocation(string elementId)
       {
           DeactivateHighlightLocations();
           ActivateMatchingHighlightLocation(elementId);

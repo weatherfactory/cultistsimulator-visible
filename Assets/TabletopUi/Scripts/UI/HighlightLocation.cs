@@ -26,7 +26,7 @@ public class HighlightLocation : MonoBehaviour
     [SerializeField] public string DisplayWhileElementIdPresent;
 
 
-    public void HighlightForInteracted(float duration=1f)
+    public void HighlightForInteracted(float duration=0.5f)
     {
         _highlightingForInteraction = true;
 
