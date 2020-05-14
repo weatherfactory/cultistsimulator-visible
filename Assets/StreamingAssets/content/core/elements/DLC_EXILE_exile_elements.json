@@ -2576,6 +2576,14 @@ aspects:{asset:1,portable:1,comfort:1,knock:8,grail:4,worth:3},
 description:"This began life as an atlas of the cities of Europe. Over decades it's been extended and annotated by a dozen hands - adepts, burglars, soldiers, spies - to show secret routes and hiding-nooks."
 },
 
+	{id: "rarity.knock.poison",
+label: "Stranger's Water",
+description: "A little jar of aggressively invasive saliva, like a viscid skeleton key.",
+aspects: {asset:1,portable:1,knock:8,edge:8,supplies:1,worth:1},
+icon:ingredientknockd
+},
+
+
 {id:"rarity.moth",
 label:"Rarity: 'Green as Remembered Rain'",
 aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4,worth:2},
@@ -2752,11 +2760,11 @@ unique:true
 
 {id: "weapon.c",
 label: "Ebrehel, the Ragged Sword",
-aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1,pentiment:1},
+aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1,pentiment:1,pentiment.1:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
-description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by a king against an unbuilt city in an unknown season, but it will cut bits off mortals and immortals just fine.",
+description:"In its long career (Yitzchok tells me), this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was, apparently, commissioned to be borne by a king against an unbuilt city in an unknown season. It was turned to other purposes, however, and it will cut bits off mortals and immortals just fine.",
 icon:tooledgeb,
 unique:true
 },
@@ -2815,7 +2823,7 @@ icon:tooledgeb
 
 {id: "weapon.c.exhausted",
 label: "Ebrehel, the Ragged Sword (Readying)",
-aspects: {exhausted:1,asset:1,portable:1},
+aspects: {exhausted:1,asset:1,portable:1,pentiment:1,pentiment.1:1},
 description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
 lifetime:60,
 decayTo:weapon.c,
@@ -2850,6 +2858,33 @@ aspects:{moth:2,winter:2,supplies:1},
 },
 
 {id: "pentiment",
+label: "Pentiment",
+description:"",
+noartneeded:true,
+isHidden:true
+},
+
+{id: "pentiment.1",
+label: "Pentiment",
+description:"Once, something else was intended.",
+},
+
+{id: "pentiment.2",
+label: "Pentiment",
+description:"Perhaps something strayed in from another History.",
+},
+
+{id: "pentiment.3",
+label: "Pentiment",
+description:"An Hour hesitated.",
+},
+
+{id: "pentiment.4",
+label: "Pentiment",
+description:"Something might have been different.",
+},
+
+{id: "pentiment.5",
 label: "Pentiment",
 description:"Something might have been different.",
 },
@@ -4301,6 +4336,12 @@ description:"My pursuers are hesitating",
 lifetime:1
 },
 
+{id: "pentiment.knock",
+label: "Half-Smoked Cigarette",
+aspects: {pentiment:1,pentiment.2:1,knock:2,heart:2},
+description:"Once, at a place and time of power and division, this knew the hands and mouth of a renegade immortal. In at least one History, he finished smoking it.",
+icon:bytflavour
+}
 
 	
 ]
