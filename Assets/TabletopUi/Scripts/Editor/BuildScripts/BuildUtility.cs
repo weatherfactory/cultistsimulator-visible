@@ -209,10 +209,16 @@ namespace Assets.Core.Utility
 
             BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
             BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,true);
-            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct DancerDLC = new BuildProduct(env, Product.DANCER, true);
+            BuildProduct PriestDLC = new BuildProduct(env, Product.PRIEST, true);
+            BuildProduct GhoulDLC = new BuildProduct(env, Product.GHOUL, true);
+            BuildProduct ExileDLC = new BuildProduct(env, Product.EXILE, true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualAllDlc);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
             products.Add(ExileDLC);
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Itch,OSs,products);

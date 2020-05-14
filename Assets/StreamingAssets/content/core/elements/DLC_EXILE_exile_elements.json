@@ -560,6 +560,13 @@ description:"Something with no uses is, literally, useless.",
 isAspect:true
 },
 
+{id:"damage.exile",
+description:"Allows multiple elements to count towards Exile damage",
+isAspect:true,
+isHidden:true
+},
+
+
 
 {id:"damage.foe",
 description:"Allows multiple elements to count towards Foe damage",
@@ -741,6 +748,78 @@ isAspect:true
 {id:"deception",
 label:"Assists Deception",
 description:"'There is nothing more deceptive than an obvious fact.' - Arthur Conan Doyle.  [Anything with this aspect can be used to defeat Traces.]",
+isAspect:true
+},
+
+
+{id: "pentiment",
+label: "Pentiment",
+description:"",
+noartneeded:true,
+isHidden:true,
+isAspect:true
+},
+
+{id: "pentiment.1",
+label: "Pentiment",
+description:"Once, this was intended for a different purpose.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.2",
+label: "Pentiment",
+description:"Perhaps something strayed in from another History.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.3",
+label: "Pentiment",
+description:"An Hour hesitated.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.4",
+label: "Pentiment",
+description:"Something might have been different.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.5",
+label: "Pentiment",
+description:"Something might have been different.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.6",
+label: "Pentiment",
+description:"Perhaps the author of this wound altered her intentions when she discovered who I was.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.7",
+label: "Pentiment",
+description:"Something might have been different.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.8",
+label: "Pentiment",
+description:"Once, this was strung in a very different configuration.",
+icon:pentiment,
+isAspect:true
+},
+
+{id: "pentiment.9",
+label: "Pentiment",
+description:"Once, something might have been different.",
+icon:pentiment,
 isAspect:true
 },
 
@@ -2560,8 +2639,8 @@ icon:toolforged
 
 {id:"rarity.heart",
 label:"Rarity: Grese Guitar",
-aspects:{asset:1,portable:1,comfort:2,heart:8,grail:6,worth:3},
-description:"A ten-stringed guitar from the House of Stradivari, shaped from softly glowing Illyrian maple and inlaid with a design of almond leaves and pomegranates. I'd heard one had been stolen from the Gräfin von Grese's collection last year. It might be the last of its kind in a playable condition. "
+aspects:{asset:1,portable:1,comfort:2,heart:8,grail:6,worth:3,pentiment:1,pentiment.8:1},
+description:"A guitar purchased long ago from the House of Stradivari, shaped from softly glowing Illyrian maple and inlaid with a design of almond leaves and pomegranates. I'd heard one had been stolen from the Gräfin von Grese's collection last year. It might be the last of its kind in a playable condition. "
 },
 
 {id:"rarity.lantern",
@@ -2586,7 +2665,7 @@ icon:ingredientknockd
 
 {id:"rarity.moth",
 label:"Rarity: 'Green as Remembered Rain'",
-aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4,worth:2},
+aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4,worth:2,pentiment:1,pentiment.7:1},
 description:"An oil painting of a final horizon, in green-and-gold and glory.",
 icon:paintingmastermoth
 },
@@ -2857,37 +2936,6 @@ description:"This might be the only defence against a reckoner lord. It might be
 aspects:{moth:2,winter:2,supplies:1},
 },
 
-{id: "pentiment",
-label: "Pentiment",
-description:"",
-noartneeded:true,
-isHidden:true
-},
-
-{id: "pentiment.1",
-label: "Pentiment",
-description:"Once, something else was intended.",
-},
-
-{id: "pentiment.2",
-label: "Pentiment",
-description:"Perhaps something strayed in from another History.",
-},
-
-{id: "pentiment.3",
-label: "Pentiment",
-description:"An Hour hesitated.",
-},
-
-{id: "pentiment.4",
-label: "Pentiment",
-description:"Something might have been different.",
-},
-
-{id: "pentiment.5",
-label: "Pentiment",
-description:"Something might have been different.",
-},
 
 	  
 	  {id: "temptation.obscurity",
@@ -3983,7 +4031,8 @@ aspects: {op:1,distraction:1,ligeian:1},
 description:"Here at the desert's edge, the thing that calls itself 'Mme E' doesn't always bother with human form. With luck, I'll never see what shape it prefers.",
 xtriggers:{renewal.exile:op.echidna},
 lifetime:300,
-icon:echidna
+icon:echidna,
+unique:true
 },
 
 {id: "op.kleidouchos",
@@ -3992,7 +4041,8 @@ aspects: {op:1,distraction:1,ligeian:1},
 description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
 xtriggers:{renewal.exile:op.kleidouchos},
 lifetime:300,
-icon:kleidouchos
+icon:kleidouchos,
+unique:true
 },
 
 
@@ -4002,15 +4052,17 @@ aspects: {op:1,distraction:1,ligeian:1},
 description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
 xtriggers:{renewal.exile:op.marinette},
 lifetime:300,
-icon:marinette
+icon:marinette,
+unique:true
 },
 
 {id: "op.medusa",
 label: "What is Not Seen?",
-aspects: {op:1,distraction:1,ligeian:1},
-description:"In all of this city, there is not one statue whose eyes are not wide open. Why is that?",
+aspects: {op:1,distraction:1,ligeian:1,pentiment:1,pentiment.9:1},
+description:"In all of this city, there is not one statue whose eyes are open. Why is that?",
 xtriggers:{renewal.exile:op.medusa},
-lifetime:300
+lifetime:300,
+unique:true
 },
 
 {id: "op.morgen",
@@ -4018,7 +4070,8 @@ label: "Mme Matutine",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at harbour here. Mme Matutine has a lethal reputation.",
 xtriggers:{renewal.exile:op.morgen},
-lifetime:300
+lifetime:300,
+unique:true
 },
 
 
@@ -4028,7 +4081,8 @@ aspects: {op:1,distraction:1,ligeian:1},
 description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
 xtriggers:{renewal.exile:op.sulochana},
 lifetime:300,
-icon:sulochana
+icon:sulochana,
+unique:true
 },
 
 {id: "op.dawn",
@@ -4092,10 +4146,17 @@ icon:skillhealthd_strength
 
 	  {id: "wound.exile",
 label: "My Wound",
-aspects:{knock:4,winter:4},
+aspects:{knock:4,winter:4,damage.exile:1},
 description:"Seven of these will end me.",
 	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
 lifetime:1200,
+icon: scar_heart
+},
+
+	  {id: "wound.exile.medusa",
+label: "My Unhealing Wound",
+aspects:{knock:4,winter:4,damage.exile:1,pentiment:1,pentiment.6:1},
+description:"Six more wounds will end me. This wound will never heal.",
 icon: scar_heart
 },
 
@@ -4340,7 +4401,7 @@ lifetime:1
 {id: "pentiment.knock",
 label: "Half-Smoked Cigarette",
 aspects: {pentiment:1,pentiment.2:1,knock:2,heart:2},
-description:"Once, at a place and time of power and division, this knew the hands and mouth of a renegade immortal. In at least one History, he finished smoking it.",
+description:"Once, at a place and time of power and division, this knew the hands and mouth of a renegade Knock-Long. In at least one History, he finished smoking it.",
 icon:bytflavour
 }
 
