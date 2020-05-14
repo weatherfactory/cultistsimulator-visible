@@ -3966,8 +3966,7 @@ label: "Freezing Winds",
 aspects: {op:1,distraction:1,winter:2,edge:2},
 description:"Frost walks here.",
 lifetime:300,
-xtriggers:{renewal.exile:op.cold},
-icon:xw
+xtriggers:{renewal.exile:op.cold}
 },
 
 {id: "op.heat",
@@ -3975,8 +3974,7 @@ label: "Trembling Heat",
 aspects: {op:1,distraction:1,forge:2,grail:2},
 description:"The air shimmers like a naked furnace. Serpents' weather.",
 lifetime:300,
-xtriggers:{renewal.exile:op.heat},
-icon:xf
+xtriggers:{renewal.exile:op.heat}
 },
 
 {id: "op.sea",
@@ -3984,8 +3982,7 @@ label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
 xtriggers:{renewal.exile:op.sea},
-lifetime:300,
-icon:xw
+lifetime:300
 },
 
 {id: "op.faith",
@@ -4009,8 +4006,7 @@ label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
 xtriggers:{renewal.exile:op.heights},
-lifetime:300,
-icon:xl
+lifetime:300
 },
 
 {id: "op.horned",
@@ -4136,8 +4132,7 @@ icon: bloodshed
 label: "Tranquillity",
 aspects: {heart:4,winter:4},
 description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come.",
-lifetime:300,
-icon:seasonserenities
+lifetime:300
 },
 
 {id: "grief",
@@ -4152,8 +4147,7 @@ icon:apostlelantern.pillar2
 label: "Rage",
 aspects: {edge:4,heart:4},
 description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'",
-lifetime:300,
-icon:skillhealthd_strength
+lifetime:300
 },
 
 	  {id: "wound.exile",
@@ -4328,7 +4322,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cold",
 decayTo:"rkx.weakness.cold",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.heat.hidden",
@@ -4336,7 +4331,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heat",
 decayTo:"rkx.weakness.heat",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.sea.hidden",
@@ -4344,7 +4340,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.sea",
 decayTo:"rkx.weakness.sea",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.faith.hidden",
@@ -4352,7 +4349,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.faith",
 decayTo:"rkx.weakness.faith",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.cats.hidden",
@@ -4360,7 +4358,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.cats",
 decayTo:"rkx.weakness.cats",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.heights.hidden",
@@ -4368,7 +4367,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.heights",
 decayTo:"rkx.weakness.heights",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.horned.hidden",
@@ -4376,7 +4376,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.horned",
 decayTo:"rkx.weakness.horned",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.wolf.hidden",
@@ -4384,7 +4385,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.wolf",
 decayTo:"rkx.weakness.wolf",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 {id: "rkx.weakness.flowermaker.hidden",
@@ -4392,7 +4394,8 @@ label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.flowermaker",
 decayTo:"rkx.weakness.flowermaker",
-aspects:{weakness.foe.unknown:1}
+aspects:{weakness.foe.unknown:1},
+icon:rkx.weakness.unknown
 },
 
 
