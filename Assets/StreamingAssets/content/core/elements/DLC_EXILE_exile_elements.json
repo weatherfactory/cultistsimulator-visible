@@ -495,7 +495,7 @@ isAspect:true
 
 {id:"defiancemarks",
 label:"The Exercise of Defiance",
-description: "Cunning may answer Strength, Strength may answer Cunning, but how might we answer Agony?",
+description: "Cunning may answer Strength, Strength may answer Cunning, but how might we answer Agony? [As your Defiance rises, you'll draw the attention of the Edge Hours. If it reaches 7, you may be able to achieve something unexpected.]",
 isAspect:true
 },
 
@@ -4064,6 +4064,7 @@ description:"Some there are who will not yield. Perhaps this is a virtue.",
 slots:[{id:"contents",label:"Contents",description:"A taunting gift, or a location.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1},actionId:"send"}],
 icon: bloodshed
 },
+
 
 {id: "tranquillity",
 label: "Tranquillity",
