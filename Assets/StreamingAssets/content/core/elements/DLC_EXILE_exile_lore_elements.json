@@ -67,7 +67,7 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             aspects:
             {edge: 14,lore:1},
             description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
-			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted, depiphany:fragmentedgef.exile,epiphany:[{id:vitality,morpheffect:spawn}]},
+			xtriggers:{fatiguing:fragmentedgeg.exile.exhausted, epiphany.colonel:fragmentedgeg.colonel, epiphany.lionsmith:fragmentedgeg.lionsmith,depiphany:fragmentedgef.exile,epiphany:[{id:vitality,morpheffect:spawn}]},
 			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.exile"
         },

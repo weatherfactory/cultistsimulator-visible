@@ -60,6 +60,11 @@ public class ResourcesManager: MonoBehaviour
         return GetSprite("elementArt/", imageName);
     }
 
+    public static Sprite GetSpriteForAspectInStatusBar(string imageName)
+    {
+        return GetSprite("statusbaricons/", imageName);
+    }
+
     public static Sprite GetSpriteForElement(string imageName, int animFrame) {
 
         //This doesn't look for the placeholder image: this is intentional (we don't want a flickering pink question mark)
