@@ -175,7 +175,10 @@ linked:[{id:"rkx.reset"}]},
 {id:"rkx.underboss.aggressive.cunning.undefended",
 actionId:"rkx",
 label:"Losing Ground",
-startdescription:"The reckoner operative has denied me some of my resources.",
+startdescription:"@#connection|The underboss has driven a wedge between me and my ally.
+#space|One of my properties has mysteriously burnt to the ground.
+#portable|Something's missing! The underboss or their agents must have broken in.
+#|The underboss is working to rob me of my resources.@",
 slots:[{id:"asset",label:"Target",required:{asset:1},greedy:true}],
 requirements:{connection.ruler:-1,connection.underworld:-1,connection.radicals:-1},
 warmup:10,
@@ -260,7 +263,10 @@ linked:[{id:"rkx.reset"}]},
 {id:"rkx.operative.aggressive.undefended",
 actionId:"rkx",
 label:"Losing Ground",
-startdescription:"The reckoner operative has denied me some of my resources.",
+startdescription:"@#connection|The reckoner operative has driven a wedge between me and my ally.
+#space|One of my properties has mysteriously burnt to the ground.
+#portable|Something's missing! The reckoner operative, or their agents, must have broken in.
+#|The reckoner operative is working to rob me of my resources.@",
 slots:[{id:"asset",label:"Target",required:{asset:1},greedy:true}],
 requirements:{connection.ruler:-1,connection.underworld:-1,connection.radicals:-1},
 warmup:10,
