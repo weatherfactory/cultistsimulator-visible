@@ -2329,7 +2329,7 @@ aspects: {op:1,price:2},
 description:"Something viscous and sweet.[A Grail curio.]",
 xtriggers:{purchase:curio.grail,renewal.exile:op.curio.grail},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment2",label:"Payment2",required:{worth:1},consumes:true}],
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
 comments: "not unique: can be purchased multiple times"
 },
