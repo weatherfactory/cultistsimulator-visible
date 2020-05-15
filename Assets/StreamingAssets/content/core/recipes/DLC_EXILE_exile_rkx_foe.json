@@ -26,6 +26,7 @@ label:"I've brought my Foe here!",
 startdescription:"Let's hope I don't regret it.",
 effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
+alt:[{id:"foe.weaknesses.generate.backup",additional:true}],
 warmup:5,
 linked:[{id:"rkx.foe.attack"}]},
 

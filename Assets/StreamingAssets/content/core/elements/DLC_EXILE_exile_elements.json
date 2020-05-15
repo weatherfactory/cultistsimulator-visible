@@ -402,11 +402,6 @@ label:"Taunted the Foe.",
 isAspect:true
 },
 
-{id:"defiance.foespared",
-label:"Spared the Foe",
-isAspect:true,
-isHidden:true
-},
 
 {id:"defiance.consecration.colonel",
 label:"Consecrated: Colonel",
@@ -2951,7 +2946,7 @@ aspects:{moth:2,winter:2,supplies:1},
 
 	  
 	  {id: "temptation.obscurity",
-label: "Temptation: A Final Message",
+label: "Temptation: Escape",
 aspects: {desire:1},
 icon:julian.defeated,
 slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}},
