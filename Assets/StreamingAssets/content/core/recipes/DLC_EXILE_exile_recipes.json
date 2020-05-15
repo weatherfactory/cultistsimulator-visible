@@ -831,7 +831,7 @@ startdescription:"I'll stay a while longer.",
 requirements:{domicile:1},
 comments:"Converts packed assets back into assets.",
 mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
-{filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:-1}],
+{filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:0}],
 },
 
 {id:"travel.arrive",
@@ -881,7 +881,7 @@ startdescription:"@#domicile.aachen|Lalla Chaima has left a message at the hotel
 comments:"Converts packed assets back into assets.",
 alt:[{id:"scout.first",additional:true}],
 mutations:[{filterOnAspectId:asset.packed,mutateAspectId:asset,mutationLevel:0},
-{filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:-1}],
+{filterOnAspectId:asset,mutateAspectId:asset.packed,mutationLevel:0}],
 warmup:30
 },
 
