@@ -745,6 +745,22 @@ description:"'There is nothing more deceptive than an obvious fact.' - Arthur Co
 isAspect:true
 },
 
+{id: "choice.merciless",
+label: "Merciless Choice",
+description:"",
+noartneeded:true,
+isHidden:true,
+isAspect:true
+},
+
+{id: "choice.merciful",
+label: "Merciful Choice",
+description:"",
+noartneeded:true,
+isHidden:true,
+isAspect:true
+},
+
 
 {id: "pentiment",
 label: "Pentiment",
@@ -770,14 +786,14 @@ isAspect:true
 
 {id: "pentiment.3",
 label: "Pentiment",
-description:"An Hour hesitated.",
+description:"Someone wasn't what they were meant to be.",
 icon:pentiment,
 isAspect:true
 },
 
 {id: "pentiment.4",
 label: "Pentiment",
-description:"Something might have been different.",
+description:"Was the choice life, or death?",
 icon:pentiment,
 isAspect:true
 },
@@ -1659,7 +1675,7 @@ unique:true
 {id: "loc.shrine.lionsmith.marrakech",
 label: "Hall of Brass Mirrors",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"The marabout Navil spends much of his time here, although he denies being in the service of the Lionsmith. 'The greatest lion is the lion who has overcome <i>himself</i>,' he helpfully insists.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 unique:true
 },
@@ -1686,7 +1702,7 @@ unique:true
 {id: "loc.shrine.lionsmith.tripoli",
 label: "Antaeum",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"It's widely acknowledged that the Berber hero-king Antaeus was something more than human. Exactly what he was is much less widely known.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 unique:true
 },
@@ -1963,6 +1979,15 @@ xtriggers:{fatiguing:corpse.exile},
 aspects:{edge:6,winter:6},
 icon:devotee_edge
 },
+
+
+{id: "contact.labhite.fallen",
+label: "Fallen Labhite",
+inherits:_contact.mortal,
+description:"Labhites maintain their power and their position as long as they consume only those things that are found in the sky. This one's apparently been seduced by Echidna's notorious milks... which raises a number of questions, but the most urgent question is, what are we to do with him now?",
+icon:genericprisonermupgraded
+},
+
 
 
 
@@ -2629,6 +2654,22 @@ description:"Gorgeously illustrated manuscript pages, ripped from the original b
 icon:xl
 },
 
+{id: "memento.edge",
+label: "Labhitic Memento",
+description:"The remains of someone who was not what their maker intended.",
+aspects:{asset:1,portable:1,comfort:1,edge:8,supplies:1,pentiment:1,pentiment.3:1},
+icon:ingredientedged
+},
+
+{id: "memento.lantern",
+label: "Sun-Kissed Stone",
+description:"A gift from someone who is not as he was.",
+aspects:{asset:1,portable:1,comfort:1,lantern:4,pentiment:1,pentiment.3:1},
+icon:toollanternb
+},
+
+
+
 {id:"curio.moth",
 label:"Curio: Threadbare Angel",
 aspects:{asset:1,portable:1,moth:4,grail:2},
@@ -2946,7 +2987,7 @@ aspects:{moth:2,winter:2,supplies:1},
 	  
 	  {id: "temptation.obscurity",
 label: "Temptation: Escape",
-aspects: {desire:1},
+aspects: {desire:1,choice.merciful:1},
 icon:julian.defeated,
 slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}},
 {actionId:"send",id:"obscurity2",label:"Obscurity",required:{obscurity:1}},
@@ -4115,7 +4156,7 @@ xtriggers:{renewal.exile:op.night}
 
 {id: "temptation.defiance",
 label: "Temptation: Defiance",
-aspects: {defiancemarks:1,desire:1},
+aspects: {defiancemarks:1,desire:1,choice.merciless:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
 slots:[{id:"contents",label:"Contents",description:"A taunting gift, or a location.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1},actionId:"send"}],
 icon: bloodshed
@@ -4124,7 +4165,7 @@ icon: bloodshed
 
 {id: "tranquillity",
 label: "Tranquillity",
-aspects: {heart:4,winter:4},
+aspects: {heart:4,winter:4,choice.merciful:1},
 description:"Even in a life like mine, there are moments when it's possible to think: what may come, may come.",
 lifetime:300
 },
@@ -4139,7 +4180,7 @@ icon:apostlelantern.pillar2
 
 {id: "rage",
 label: "Rage",
-aspects: {edge:4,heart:4},
+aspects: {edge:4,heart:4,choice.merciless:1},
 description:"'Beware the fury of a patient man.' - Dryden, 'Absalom and Achitophel'",
 lifetime:300
 },

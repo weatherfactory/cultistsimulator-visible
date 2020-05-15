@@ -291,6 +291,36 @@ label:"SILENCE",
 extantreqs:{rkx.foe.defeated:1},
 ending:obscurityvictoryafoeslain},
 
+{id:"send.labhite.fallen.intro",
+actionId:"send",
+requirements:{contact.labhite.fallen:1},
+label:"Decide the Fallen Labhite's Fate",
+startdescription:"Even before Echidna corrupted the labhite, Chaima would have killed him in the Colonel's Name. Now he's not only a monster, but a corrupt monster. Navil, meanwhile, has counselled mercy. 'The pretence of perfection,' he says grandly, 'is the deepest sickness of the soul. Exile him into the desert, and he'll find the sun again.' 
+
+Chaima isn't impressed. But she respects you and her father - enough to stay her hand if you insist.",
+slots:[{id:"decision",label:"Decision",required:{temptation.defiance:1,temptation.obscurity:1,rage:1,tranquillity:1}}],
+description:"The Fallen Labhite can spend a little while longer in his cage.",
+warmup:30,
+alt:[{id:"send.labhite.fallen.merciless"},{id:"send.labhite.fallen.merciful"},],
+craftable:true},
+
+
+{id:"send.labhite.fallen.merciless",
+actionId:"send",
+label:"No Mercy",
+startdescription:"'He's betrayed what the Lionsmith intended. Let him die.'",
+description:"Chaima takes the Labhite away to finish the matter. When she's made the offerings to the Colonel, she offers you a little pot of golden powder. 'Memento,' she says.",
+requirements:{choice.merciless:1},
+effects:{memento.edge:1,contact.labhite.fallen:-1}},
+
+{id:"send.labhite.fallen.merciful",
+actionId:"send",
+label:"Mercy",
+startdescription:"He's something the Lionsmith never intended. Who knows what else he might become?",
+description:"Chaima shrugs and turns her back. Navil accompanies you to the desert's edge. The Labhite, who has still not spoken a word, lifts a flat rock from the ground, kisses it and passes it to you. Then he lopes off into the dunes without a backwards look.",
+requirements:{choice.merciful:1},
+effects:{memento.lantern:1,contact.labhite.fallen:-1}},
+
 
 {id:"send.mortal.intro",
 actionId:"send",

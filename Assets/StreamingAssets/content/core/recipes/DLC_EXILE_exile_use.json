@@ -381,6 +381,29 @@ startdescription:"The stranger nods, and stubs out his cigarette on the trunk of
 effects:{pentiment.knock:1,op.horned:-1},
 warmup:30},
 
+{id:"use.renew.op.echidna",
+actionId:"use",
+label:"Chaima's Pursuit",
+startdescription:"At the first rumour of Echidna's presence..." ,
+description:"Something's presented Chaima from going.",
+slots:[{id:"chaima",label:"Chaima",description:"Chaima has business at the desert's edge.", required:{ally.huntress:1},greedy:true}],
+alt:[{id:"use.renew.op.echidna.2"}],
+requirements:{op.echidna:1},
+extantreqs:{ally.huntress:1},
+comments:"Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+aspects:{renewal.exile:1},
+warmup:60,craftable:true},
+
+
+{id:"use.renew.op.echidna.2",
+actionId:"use",
+label:"Chaima's Prey",
+startdescription:"At the first rumour of Echidna's presence, Chaima vanished into the desert. She left one of her characteristically curt notes: 'Hunting. Not hunting the Ligeian.'",
+description:"Chaima's returned with a hollow-eyed man of uncommon beauty, tied and trailing. Unhuman muscles ripple beneath the man' skin. 'Found it,' Chaima informs me.",
+requirements:{ally.huntress:1},
+effects:{op.echidna:-1,contact.labhite.fallen:1}},
+
+
 {id:"use.renew.op.medusa",
 actionId:"use",
 label:"Search for Something Unseen",
