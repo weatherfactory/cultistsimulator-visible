@@ -180,8 +180,8 @@ namespace Assets.CS.TabletopUI {
 			    if (context.actionSource == Context.ActionSource.Purge)
 			        Retire(CardVFX.CardLight);
                 else
-				Retire(CardVFX.CardBurn);
-				return;
+				    Retire(CardVFX.CardBurn);
+                return;
 			}
 
 			if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
@@ -190,6 +190,8 @@ namespace Assets.CS.TabletopUI {
 			}
 			_aspectsDirtyInc = true;
 			DisplayInfo();
+
+            CurrentStacksManager.NotifyStacksChanged();
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -392,6 +394,7 @@ namespace Assets.CS.TabletopUI {
             text.text = _element.Label;
             stackBadge.gameObject.SetActive(Quantity > 1);
             stackCountText.text = Quantity.ToString();
+
         }
 
         private void DisplayIcon() {

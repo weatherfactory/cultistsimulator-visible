@@ -1242,8 +1242,8 @@ namespace Assets.CS.TabletopUI {
                         IAspectsDictionary stackAspects = tabletopStack.GetAspects();
                         IAspectsDictionary multipliedAspects = new AspectsDictionary();
                         //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
-                        //but bear it in mind in case there's ever a similar issue inside situations
-                        //However! To complicate matters, if we're counting elements, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
+                        //but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
+                        //However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
                         foreach (var aspect in stackAspects)
                         {
 
@@ -1255,7 +1255,6 @@ namespace Assets.CS.TabletopUI {
                         _tabletopAspects.CombineAspects(multipliedAspects);
                     }
 
-                  
 
                     if (_enableAspectCaching)
                         _tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
@@ -1272,9 +1271,31 @@ namespace Assets.CS.TabletopUI {
 
 				var allSituations = Registry.Retrieve<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
-					_allAspectsExtant.CombineAspects(s.GetAspectsInSituation());
+                {
+                    var stacksInSituation = new List<IElementStack>();
+                    stacksInSituation.AddRange(s.GetStartingStacks());
+                    stacksInSituation.AddRange(s.GetOngoingStacks());
+                    stacksInSituation.AddRange(s.GetStoredStacks());
+                    stacksInSituation.AddRange(s.GetOutputStacks());
 
-				_allAspectsExtant.CombineAspects(_tabletopAspects);
+                    foreach (var situationStack in stacksInSituation)
+                    {
+                        IAspectsDictionary stackAspects = situationStack.GetAspects();
+                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
+                        //See notes above. We need to multiply aspects to take account of stack quantities here too.
+                        foreach (var aspect in stackAspects)
+                        {
+
+                            if (aspect.Key == situationStack.EntityId)
+                                multipliedAspects.Add(aspect.Key, aspect.Value);
+                            else
+                                multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);
+                        }
+                        _allAspectsExtant.CombineAspects(multipliedAspects);
+                    }
+
+                }
+                _allAspectsExtant.CombineAspects(_tabletopAspects);
 
 				if (_enableAspectCaching)
 					_allAspectsExtantDirty = false;		// If left dirty the aspects will recalc every frame

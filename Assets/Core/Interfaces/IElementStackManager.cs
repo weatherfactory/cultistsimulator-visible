@@ -31,5 +31,6 @@ namespace Assets.Core.Interfaces
         int ReduceElement(string elementId, int quantityChange, Context context);
         int PurgeElement(Element element, int maxToPurge);
         IElementStack AddAndReturnStack(string elementId, int quantity, Source stackSource, Context context);
+        void NotifyStacksChanged();
     }
 }

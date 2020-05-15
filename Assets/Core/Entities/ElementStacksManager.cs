@@ -47,8 +47,6 @@ public class ElementStacksManager : IElementStacksManager {
             IncreaseElement(elementId, quantityChange, stackSource, context);
         else
             ReduceElement(elementId, quantityChange, context);
-
-        _catalogue.NotifyStacksChanged();
     }
 
     /// <summary>
@@ -213,7 +211,7 @@ public class ElementStacksManager : IElementStacksManager {
             RemoveStack(s);
     }
 
-    private void NotifyStacksChanged() {
+    public void NotifyStacksChanged() {
         if (_catalogue == null)
             throw new ApplicationException("StacksManager is trying to notify the catalogue, but there's no catalogue! - for stacksmanager " + Name);
         _catalogue.NotifyStacksChanged();
