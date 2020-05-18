@@ -778,6 +778,14 @@ noartneeded:true,
 isHidden:true,
 isAspect:true
 },
+{id: "pentiment.display",
+label: "Pentiment",
+comments:"For Nameless shrine slot",
+description:"I remember a quote from Illopoly: 'The Nameless Name has been known to hunt out secrets in the Wake, and to bring them as gifts to the Velvet in the Wood. Cats have been known to bring mice indoors as gifts for their owners, but I don't think that always meets with the same degree of approval.'",
+icon:pentiment,
+isAspect:true
+},
+
 
 {id: "pentiment.1",
 label: "Pentiment",
@@ -1601,7 +1609,7 @@ slots:[{actionId:send,id:"destination",label:"Destination",required:{destination
 label:"Misty Nook",
 aspects:{location:1},
 description:"An unremarkable location that's somehow easier to stumble across at night. A nondescript candle has been jammed haphazardly into a crevice in the wall.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1},forbidden:{fragmentedge.exile:1,fragmentedgeb.colonel:1,fragmentedgeb.lionsmith:1}}],
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,pentiment:1,pentiment.display:1},forbidden:{fragmentedge.exile:1,fragmentedgeb.colonel:1,fragmentedgeb.lionsmith:1}}],
 unique:true,
 icon:nameless
 },
@@ -3071,11 +3079,32 @@ slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{decep
 icon:rumour
 },
 
+
+{id:"diversion.exile",
+label:"Diversion Effect for False Trails",
+description:"DO NOT TRANSLATE",
+isAspect:true,
+isHidden:true,
+noartneeded:true
+},
+
+
+
 {id:"trail.false.exile",
 label:"False Trail",
 description:"False but persuasive evidence that I'm somewhere I'm not. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
+aspects:{diversion.exile:1},
 lifetime:180
 },
+
+{id:"trail.false.exile.nameless",
+label:"A Nameless Blessing",
+description:"For a while yet, I'll walk in mist. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
+aspects:{diversion.exile:1},
+lifetime:600,
+icon:nameless
+},
+
 	  
 	  	  	  {id: "domicile.bornholm",
 label: "Sunshine Island",
