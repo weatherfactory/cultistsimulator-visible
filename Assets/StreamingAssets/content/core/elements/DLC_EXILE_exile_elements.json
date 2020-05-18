@@ -2703,6 +2703,14 @@ description:"Gorgeously illustrated manuscript pages, ripped from the original b
 icon:xl
 },
 
+{id:"curio.morgen",
+label:"Curio: Flûte Matutine",
+aspects:{winter:4,uses.remaining:1},
+description:"'No-one had any use for it, not any more, so I have made from it something both practical and charming, no?' [This can only be used when you have access to a Sea Port card.]",
+icon: toolwinterb
+},
+
+
 {id: "memento.edge",
 label: "Labhitic Memento",
 description:"The remains of someone who was not what their maker intended.",
@@ -4099,6 +4107,7 @@ xtriggers:{renewal.exile:op.heat}
 label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
+slots:[{id:"more",label:"More",actionId:"use",description:"Something I can only use by the sea.",required:{curio.morgen:1}}],
 xtriggers:{renewal.exile:op.sea},
 lifetime:300
 },
