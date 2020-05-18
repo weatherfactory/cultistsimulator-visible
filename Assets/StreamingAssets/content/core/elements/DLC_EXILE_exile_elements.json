@@ -1711,15 +1711,15 @@ unique:true
 {id: "loc.shrine.lionsmith.tripoli",
 label: "Antaeum",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"The Imazighen - the people the world knows as the Berbers - venerate Antaios, the Son of Earth, Opponent, as a hero-king. It's widely acknowledged that the Berber hero-king Antaeus was something more than human. Exactly what he was is much less widely known.",
+description:"The Imazighen - the people the world knows as the Berbers - venerate Antaios as a hero-king. Of course Antaios the Opponent, the Son of Earth, was a great enemy of the Lionsmith, but the Lionsmith has always respected his great enemies - or so say the initiates of the Antaeum.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1,contact.retainer:1},forbidden:{exhausted:1}}],
 unique:true
 },
 
 {id: "contact.retainer",
-label: "Old Retainer",
+label: "Last Antaean Initiate",
 comments:"no killmortal trigger because we want him permanently on the board.",
-description:"some dude who knew your mum",
+description:"An old man in a beaded skullcap, with deeply seamed cheeks, a whitening stubbled beard, and old sorrow in his eyes.",
 xtriggers:{fatiguing:contact.retainer.exhausted,mortal.introduce:[{id:"loc.shrine.lionsmith.tripoli",morpheffect:spawn}]},
 aspects:{forge:3,heart:3,mortal:1,contact.local:1},
 unique:true
@@ -2691,9 +2691,10 @@ icon:ingredientedged
 },
 
 {id: "memento.grail",
-label: "My Caul",
+label: "Khirqa-Caul",
 description:"This was my first garment in the world of air.",
-aspects:{grail:4,pentiment:1,pentiment.4:1},
+aspects:{grail:2,lantern:2,pentiment:1,pentiment.4:1},
+icon:ingredientgrailf
 },
 
 {id: "memento.knock",
