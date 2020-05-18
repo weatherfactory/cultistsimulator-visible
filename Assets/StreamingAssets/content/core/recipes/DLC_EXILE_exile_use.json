@@ -298,11 +298,7 @@ craftable:false},
 actionId:"use",
 label:"Purchase",
 startdescription:"Purchase something useful.",
-description:"@#office|Tripoli office purchase
-#warehouse|Tripoli warehouse purchase
-#townhouse|Tripoli townhouse purchase
-#villa|Tripoli office purchase
-#|And done.@",
+description:"@#office|The vendor is an old man in a beaded skullcap, with deeply seamed cheeks, a whitening stubbled beard, and dark, sorrowful eyes. We shake hands to solemnise the purchase, and he takes my hand in both of his and examines my face. 'Yes,' he says. 'You are her son.'",
 requirements:{op:1,price:1,worth:price,purchase.property:1},
 effects:{contact.retainer:1},
 extantreqs:{domicile.tripoli:1,contact.retainer:-1,contact.retainer.exhausted:-1},
@@ -346,7 +342,8 @@ linked:[{id:"use.fatiguing"}]},
 {id:"use.comfort",
 actionId:"use",
 label:"Relax",
-startdescription:"I've risked so much for this business. I may as well enjoy its fruits.",
+startdescription:"@#domicile.tripoli|Something in the airs of this city, or the light, is familiar...
+#|I've risked so much for this pocket fortune. I may as well enjoy its benefits.@",
 description:"Nothing lasts. That's something to be grateful for.",
 requirements:{comfort:1},
 effects:{contentment:comfort},
