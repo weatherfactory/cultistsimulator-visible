@@ -40608,7 +40608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -115, y: 0}
+  m_AnchoredPosition: {x: -114.99997, y: 0}
   m_SizeDelta: {x: -970, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1909590238 stripped
@@ -41093,6 +41093,16 @@ PrefabInstance:
     - target: {fileID: 4576313819546230, guid: 3d901299a57def14ca66ec6931695e22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937700222485204, guid: 3d901299a57def14ca66ec6931695e22,
+        type: 3}
+      propertyPath: sounds.Array.data[43].randomizedClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e92f413f3ee14847a5e3f17df60b5ae, type: 3}
+    - target: {fileID: 114937700222485204, guid: 3d901299a57def14ca66ec6931695e22,
+        type: 3}
+      propertyPath: sounds.Array.data[43].pitchVariation
+      value: 0.201
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d901299a57def14ca66ec6931695e22, type: 3}
