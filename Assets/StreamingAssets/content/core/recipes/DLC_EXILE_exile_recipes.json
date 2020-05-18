@@ -312,6 +312,28 @@ label:"A Conversation with Dr Blackwood",
 startdescription:"'He'll find you in the end, I'm afraid. But I don't see why we should make it easy for him. [This will purge all current Traces and create a False Trail.]",
 purge:{trace:7},
 effects:{vault.serapeum.completed:-1,trail.false.exile:1}},
+
+
+{id:"travel.visit.shrine.lionsmith.tripoli.pentiment",
+actionId:"travel",
+requirements:{loc.shrine.lionsmith.tripoli:1,contact.retainer:1},
+extantreqs:{memento.grail:-1},
+label:"In the Antaeum",
+startdescription:"about your mum",
+warmup:30,
+effects:{memento.grail:1},
+craftable:true},
+
+{id:"travel.visit.shrine.lionsmith.tripoli.pentiment.after",
+actionId:"travel",
+requirements:{loc.shrine.lionsmith.tripoli:1,contact.retainer:1},
+extantreqs:{memento.grail:1},
+label:"In the Antaeum",
+startdescription:"already talked about your mum FNORD",
+hintonly:true,
+craftable:false},
+
+
  
 {id:"travel.visit.serapeum.peristasis.obscure",
 actionId:"travel",

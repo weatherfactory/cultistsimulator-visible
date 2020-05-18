@@ -321,6 +321,17 @@ description:"Chaima shrugs and turns her back. Navil accompanies you to the dese
 requirements:{choice.merciful:1},
 effects:{memento.lantern:1,contact.labhite.fallen:-1}},
 
+{id:"send.retainer.chat",
+actionId:"send",
+label:"History",
+startdescription:"FNORD about how the foe loved your mum",
+description:"FNORD",
+requirements:{contact.retainer:1,associate:1},
+effects:{grief:1,rage:1},
+aspects:{fatiguing:1},
+warmup:30,
+craftable:true},
+
 
 {id:"send.mortal.intro",
 actionId:"send",
@@ -333,6 +344,7 @@ startdescription:"@#contact.barber|A meeting with Zulfiya, who is known, nowaday
 #contact.smuggler|A meeting with M. Giorgiou, a smuggler.
 #contact.visionary|A meeting with the painter Mireya.
 #contact.vivisectionist|A meeting with Count Jannings, the surgeon, duellist, and vivisectionist.
+#contact.retainer|A meeting with a family friend
 #|FNORD U MET A SOMEONE@",
 description:"@#contact.barber|Zulfiya fastens on me eagerly. 'I want you in the Wood,' she insists. 'Bring me what you find to drink below the Knotwingnot.'
 #contact.delver|Orsolina welcomes me with a huge fierce hug, and listens to my troubles. 'Of course I will help,' she insists, 'but it is not easy for me to cross the lagoon, not in my condition. I have eaten too much from the sea. But there is still something that may help me in the vault of the Palazzo Dario. The Palazzo is haunted, but not too haunted for us, I think.'
@@ -342,6 +354,7 @@ description:"@#contact.barber|Zulfiya fastens on me eagerly. 'I want you in the 
 #contact.smuggler|Giorgiou has a proposal. There are treasures for the taking in the Chateau Tarrascon. There is also 'the possibility of a monster', but, he points out, after all, where there are no monsters, we generally invent our own. He begins to illustrate this with reference to recent European history, but fortunately at this point the wine arrives.
 #contact.visionary|Mireya bursts into tears. 'God has sent you,' she gasps. 'I've done something - something - ' and then she breaks down altogether. As far as I can eventually make out, she spied on a cult of the Thunderskin for one of her paintings. They've found out, and now they're coming for her.
 #contact.vivisectionist|Count Jannings clicks his heels and bows. 'I have heard of your troubles,' he tells me. 'It would be interesting to accompany you. But first, let me invite you to participate in a competitive social occasion. No no. I must insist.'
+#contact.retainer|Here's the Antaeum
 #|--@",
 requirements:{mortal:1,associate:-1,ally:-1},
 aspects:{mortal.introduce:1},

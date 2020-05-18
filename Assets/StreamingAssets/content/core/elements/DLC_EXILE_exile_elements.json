@@ -131,6 +131,14 @@ description:"There is a complication, but this much Winter would resolve it.",
 isAspect:true
 },
 
+{id:"purchase.property",
+label:"A property purchase opportunity",
+description:"Used to mark rkx internal components",
+isAspect:true,
+noartneeded:true,
+isHidden:true
+},
+
 {id:"rkx.internal",
 label:"Reckoner internal",
 description:"Used to mark rkx internal components",
@@ -1703,11 +1711,31 @@ unique:true
 {id: "loc.shrine.lionsmith.tripoli",
 label: "Antaeum",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"It's widely acknowledged that the Berber hero-king Antaeus was something more than human. Exactly what he was is much less widely known.",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+description:"The Imazighen - the people the world knows as the Berbers - venerate Antaios, the Son of Earth, Opponent, as a hero-king. It's widely acknowledged that the Berber hero-king Antaeus was something more than human. Exactly what he was is much less widely known.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1,contact.retainer:1},forbidden:{exhausted:1}}],
 unique:true
 },
 
+{id: "contact.retainer",
+label: "Old Retainer",
+comments:"no killmortal trigger because we want him permanently on the board.",
+description:"some dude who knew your mum",
+xtriggers:{fatiguing:contact.retainer.exhausted,mortal.introduce:[{id:"loc.shrine.lionsmith.tripoli",morpheffect:spawn}]},
+aspects:{forge:3,heart:3,mortal:1,contact.local:1},
+unique:true
+},
+
+{id: "contact.retainer.exhausted",
+label: "Old Retainer (Exhausted)",
+comments:"no killmortal trigger because we want him permanently on the board.",
+description:"some dude who knew your mum",
+aspects:{exhausted:1,mortal:1},
+decayTo:contact.retainer,
+lifetime:300,
+unique:true,
+icon:contact.retainer,
+resaturate:true
+},
 
 {id: "loc.shrine.lionsmith.venice",
 label: "The Lion of Many",
@@ -2493,7 +2521,7 @@ unique:true
 
 {id: "op.office",
 label: "Opportunity: Discreet Office?",
-aspects: {op:1,price:1},
+aspects: {op:1,price:1,purchase.property:1},
 description:"I can lease a quiet place to work. [An Office provides a little Space, and, as a place of shelter, a little Heart.] ",
 xtriggers:{purchase:office,renewal.exile:op.office},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
@@ -2501,39 +2529,39 @@ lifetime:300
 },
 {id: "op.warehouse",
 label: "Opportunity: Quiet Warehouse?",
-aspects: {op:1,price:2},
+aspects: {op:1,price:2,purchase.property:1},
 description:"I can lease space somewhere out of the way. [A Warehouse provides significant Space. As a good place to rest up or work on noisy projects, it also provides both Heart and Forge.]",
 xtriggers:{purchase:warehouse,renewal.exile:op.warehouse},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}
 ],
 lifetime:300
 },
 {id: "op.townhouse",
 label: "Opportunity: Grand Townhouse?",
-aspects: {op:1,price:4},
+aspects: {op:1,price:4,purchase.property:1},
 description:"I can acquire property. [A Townhouse provides significant Space. As a good place to take refuge or entertain guests, it provides both Heart and Grail. If you plan to retire here, it will also provide considerable Comfort.]",
 xtriggers:{purchase:townhouse,renewal.exile:op.townhouse},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment3",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment4",label:"Payment",required:{worth:1},consumes:true}
 ],
 lifetime:300
 },
 {id: "op.villa",
 label: "Opportunity: Secluded Villa?",
-aspects: {op:1,price:8},
+aspects: {op:1,price:8,purchase.property:1},
 description:"I can acquire property. [A Villa provides significant Space, Forge, Heart, and Grail. If you plan to retire here, it will also provide tremendous Comfort.]",
 xtriggers:{purchase:villa,renewal.exile:op.villa},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
-{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment3",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment4",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment5",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment6",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment7",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment8",label:"Payment",required:{worth:1},consumes:true}
 ],
 lifetime:300
 },
@@ -2662,12 +2690,27 @@ aspects:{asset:1,portable:1,comfort:1,edge:8,supplies:1,pentiment:1,pentiment.3:
 icon:ingredientedged
 },
 
+{id: "memento.grail",
+label: "My Caul",
+description:"This was my first garment in the world of air.",
+aspects:{grail:4,pentiment:1,pentiment.4:1},
+},
+
+{id: "memento.knock",
+label: "Half-Smoked Cigarette",
+aspects: {pentiment:1,pentiment.2:1,knock:2,heart:2},
+description:"Once, at a place and time of power and division, this knew the hands and mouth of a renegade Knock-Long. In at least one History, he finished smoking it.",
+icon:bytflavour
+},
+
 {id: "memento.lantern",
 label: "Sun-Kissed Stone",
 description:"A gift from someone who is not as he was.",
 aspects:{asset:1,portable:1,comfort:1,lantern:4,pentiment:1,pentiment.3:1},
 icon:toollanternb
 },
+
+
 
 
 
@@ -2846,7 +2889,7 @@ xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
 description:"A prosaic weight.",
-icon:tooledgeb,
+icon:weapon.a,
 unique:true
 },
 
@@ -2858,7 +2901,7 @@ xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.2.exhausted},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Three taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
-icon:tooledgeb,
+icon:weapon.b,
 unique:true
 },
 
@@ -2870,7 +2913,7 @@ xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.1.exhausted},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Two taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
-icon:tooledgeb,
+icon:weapon.b,
 unique:true
 },
 
@@ -2881,7 +2924,7 @@ xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:curio},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Only one taenite-iron ball remains. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
-icon:tooledgeb,
+icon:weapon.b,
 unique:true
 },
 
@@ -2925,7 +2968,7 @@ description:"A prosaic weight.",
 lifetime:60,
 decayTo:weapon.a,
 resaturate:true,
-icon:tooledged
+icon:"weapon.a"
 },
 
 {id: "weapon.b.2.exhausted",
@@ -2935,7 +2978,7 @@ description:"An antique rifle incised with the five-fold mark of the Many-Winged
 lifetime:40,
 decayTo:weapon.b.2,
 resaturate:true,
-icon:tooledgeb
+icon:weapon.b,
 },
 
 {id: "weapon.b.1.exhausted",
@@ -2945,7 +2988,7 @@ description:"An antique rifle incised with the five-fold mark of the Many-Winged
 lifetime:40,
 decayTo:weapon.b.1,
 resaturate:true,
-icon:tooledgeb
+icon:weapon.b,
 },
 
 {id: "weapon.c.exhausted",
@@ -3985,7 +4028,6 @@ xtriggers:{arriving:[{{id:"op.kleidouchos",morpheffect:spawn},id:"domicile.vienn
 label: "A Dash Cross-Country",
 aspects: {destination:1},
 description:"Out into the wilds. This should be my last resort. [Few opportunities of any use, and you can't survive out there for long.]",
-icon: vaultshires1,
 xtriggers:{arriving:[{id:"domicile.wilderness",morpheffect:transform}]},
 lifetime:60
 },
@@ -4450,12 +4492,7 @@ description:"My pursuers are hesitating",
 lifetime:1
 },
 
-{id: "pentiment.knock",
-label: "Half-Smoked Cigarette",
-aspects: {pentiment:1,pentiment.2:1,knock:2,heart:2},
-description:"Once, at a place and time of power and division, this knew the hands and mouth of a renegade Knock-Long. In at least one History, he finished smoking it.",
-icon:bytflavour
-}
+
 
 	
 ]

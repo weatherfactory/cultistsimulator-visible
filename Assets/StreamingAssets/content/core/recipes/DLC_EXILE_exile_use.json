@@ -294,13 +294,31 @@ requirements:{op:1,price.lifespan.stolen:1},
 hintonly:true,
 craftable:false},
 
+{id:"use.purchase.property.tripoli",
+actionId:"use",
+label:"Purchase",
+startdescription:"Purchase something useful.",
+description:"@#office|Tripoli office purchase
+#warehouse|Tripoli warehouse purchase
+#townhouse|Tripoli townhouse purchase
+#villa|Tripoli office purchase
+#|And done.@",
+requirements:{op:1,price:1,worth:price,purchase.property:1},
+effects:{contact.retainer:1},
+extantreqs:{domicile.tripoli:1,contact.retainer:-1,contact.retainer.exhausted:-1},
+aspects:{purchase:1},
+warmup:10,
+craftable:true},
+
 
 
 {id:"use.purchase",
 actionId:"use",
 label:"Purchase",
 startdescription:"Purchase something useful.",
-description:"And done.",
+description:"@#townhouse|A good place to rest up, or invite contacts I want to impress. I've taken on a couple of discreet staff, and installed extra locks on the doors, but that won't slow down my pursuers much.
+#villa|Far enough out of town to get some peace. A good place to recover, to work on projects out of the public eye, or to host guests I want to win over. It'll be a nightmare to defend if it comes to that, though.
+#|And done.@",
 requirements:{op:1,price:1,worth:price},
 aspects:{purchase:1},
 warmup:10,
@@ -378,7 +396,7 @@ actionId:"use",
 label:"At the Fane of Owls",
 requirements:{pentiment:1},
 startdescription:"The stranger nods, and stubs out his cigarette on the trunk of the tree. He begins to peel an orange instead. 'It's always too late, eventually,' he observes through a mouthful of orange, 'but until then, it's not. Alexandros thought that was important. The Lionsmith never did.' He passes me the remnant of his cigarette. 'Some things are better left unsaid,' he adds over his shoulder as he saunters off. 'It was nice to see you again.'",
-effects:{pentiment.knock:1,op.horned:-1},
+effects:{memento.knock:1,op.horned:-1},
 warmup:30},
 
 {id:"use.renew.op.echidna",
