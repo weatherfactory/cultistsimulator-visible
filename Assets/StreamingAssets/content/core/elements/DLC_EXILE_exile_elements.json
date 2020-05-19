@@ -4319,48 +4319,42 @@ label: "My Wound",
 aspects:{knock:4,winter:4,damage.exile:1},
 description:"Seven of these will end me.",
 	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
-lifetime:1200,
-icon: scar_heart
+lifetime:1200
 },
 
 	  {id: "wound.exile.medusa",
 label: "My Unhealing Wound",
 aspects:{knock:4,winter:4,damage.exile:1,pentiment:1,pentiment.6:1},
 description:"Six more wounds will end me. This wound will not heal without extraordinary measures.",
-	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
-icon: scar_heart
+	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}]
 },
 
 	  {id: "wound.foe",
 label: "Foe's Wound",
 description:"Seven of these will end my enemy.",
 lifetime:1200,
-aspects:{damage.foe:1},
-icon: scar_winter
+aspects:{damage.foe:1}
 },
 
 	  {id: "wound.foe.unstanchable",
 label: "Foe's Unstanchable Wound",
 description:"Seven wounds will end my enemy. [This Wound will take twice as long to heal.]",
 lifetime:2400,
-aspects:{damage.foe:1},
-icon: scar_winter
+aspects:{damage.foe:1}
 },
 
 	  {id: "wound.underling",
 label: "Pursuer's Wound",
 description:"One more of these will kill my pursuer.",
 lifetime:1200,
-aspects:{damage.underling:1},
-icon: scar_edge
+aspects:{damage.underling:1}
 },
 
 	  {id: "wound.underling.unstanchable",
 label: "Pursuer's Unstanchable Wound",
 description:"Seven wounds will kill my pursuer. [This Wound will take twice as long to heal.]",
 lifetime:2400,
-aspects:{damage.underling:1},
-icon: scar_edge
+aspects:{damage.underling:1}
 },
 
 

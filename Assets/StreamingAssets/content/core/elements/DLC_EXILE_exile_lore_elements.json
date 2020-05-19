@@ -155,7 +155,6 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             {edge: 4,lantern:2,winter:2,lore:1},
             description: "'This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss.' It's more practical than it sounds.",
 			xtriggers:{epiphany:fragmentedgec.colonel,epiphany.colonel:fragmentedgec.colonel,fatiguing:fragmentedgeb.colonel.exhausted},
-			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 				 {
@@ -165,7 +164,6 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
             {edge: 6,lantern:3,winter:3,lore:1},
             description: "A set of exacting exercises that will armour the skin and make each digit lethal as a spear-point.",
 			xtriggers:{epiphany:fragmentedged.colonel,epiphany.colonel:fragmentedged.colonel, depiphany:fragmentedgeb.colonel,fatiguing:fragmentedgec.colonel.exhausted},
-			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 						 {
@@ -176,7 +174,6 @@ description: "'Three natures hath the Wolf Divided; he unmaketh; he unmaketh; at
 description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
 			
 			xtriggers:{epiphany:fragmentedgee.colonel,epiphany.colonel:fragmentedgee.colonel, depiphany:fragmentedgec.colonel,fatiguing:fragmentedged.colonel.exhausted},
-			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.colonel"
         },{
         id: "fragmentedgee.colonel",
@@ -185,7 +182,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 10,lantern:5,winter:5,lore:1},
 			description: "Seven times seven techniques for the sundering of flesh.",
 			xtriggers:{epiphany:fragmentedgef.colonel,epiphany.colonel:fragmentedgef.colonel, depiphany:fragmentedged.colonel,fatiguing:fragmentedgee.colonel.exhausted},
-			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		{
@@ -195,7 +191,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 12,lantern:6,winter:6,lore:1},
             description: "If I am to be a weapon, I must know where my soul is reinforced by its history, and where my limits become fundamental.",
 			xtriggers:{epiphany:fragmentedgeg.colonel,epiphany.colonel:fragmentedgeg.colonel, depiphany:fragmentedgee.colonel,fatiguing:fragmentedgef.colonel.exhausted},
-			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		   {   id: "fragmentedgeg.colonel",
@@ -204,7 +199,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 14,lantern:7,winter:7,lore:1},
             description: "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
 			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted,depiphany:fragmentedgef.colonel},
-			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 
@@ -216,7 +210,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:160,
 			decayTo:fragmentedgeb.colonel,
-			icon:fragmentedgeb,
+			icon:fragmentedgeb.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 				 {
@@ -227,7 +221,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:140,
 			decayTo:fragmentedgec.colonel,
-			icon:fragmentedgec,
+			icon:fragmentedgec.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 						 {
@@ -238,7 +232,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:120,
 			decayTo:fragmentedged.colonel,
-			icon:fragmentedged,
+			icon:fragmentedged.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },{
         id: "fragmentedgee.colonel.exhausted",
@@ -248,7 +242,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:100,
 			decayTo:fragmentedgee.colonel,
-			icon:fragmentedgee,
+			icon:fragmentedgee.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		{
@@ -259,7 +253,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:80,
 			decayTo:fragmentedgef.colonel,
-			icon:fragmentedgef,
+			icon:fragmentedgef.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		   {   id: "fragmentedgeg.colonel.exhausted",
@@ -269,7 +263,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 			resaturate:true,
 			lifetime:60,
 			decayTo:fragmentedgeg.colonel,
-			icon:fragmentedgeg,
+			icon:fragmentedgeg.colonel,
 			uniquenessgroup:"uqedgelore.colonel"
         },
 		 {
@@ -279,7 +273,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 4,forge:2,heart:2,lore:1},
             description: "'This is the lesson the Great One's Son found in the breaking of his blade. Even now it glints like shards of metal in the Persian sun.' It's more practical than it sounds.",
 			xtriggers:{epiphany:fragmentedgec.lionsmith,epiphany.lionsmith:fragmentedgec.lionsmith,fatiguing:fragmentedgeb.lionsmith.exhausted},
-			icon:fragmentedgeb,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 				 {
@@ -289,7 +282,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             {edge: 6,forge:3,heart:3,lore:1},
             description: "A series of mystic exercises that require both dedication and terror.",
 			xtriggers:{epiphany:fragmentedged.lionsmith,epiphany.lionsmith:fragmentedged.lionsmith,depiphany:fragmentedgeb.lionsmith,fatiguing:fragmentedgec.lionsmith.exhausted},
-			icon:fragmentedgec,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 						 {
@@ -300,7 +292,6 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
 description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
 			
 			xtriggers:{epiphany:fragmentedgee.lionsmith,epiphany.lionsmith:fragmentedgee.lionsmith,depiphany:fragmentedgec.lionsmith,fatiguing:fragmentedged.lionsmith.exhausted},
-			icon:fragmentedged,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },{
         id: "fragmentedgee.lionsmith",
@@ -309,7 +300,6 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             {edge: 10,forge:5,heart:5,lore:1},
             description: "Seven times seven techniques for the shattering of bone.",
 			xtriggers:{epiphany:fragmentedgef.lionsmith,epiphany.lionsmith:fragmentedgef.lionsmith,depiphany:fragmentedged.lionsmith,fatiguing:fragmentedgee.lionsmith.exhausted},
-			icon:fragmentedgee,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		{
@@ -320,7 +310,6 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			
             description: "I am the weapon that will be broken, and remade again without flaw. The argument of my flesh will at last be irrefragable.",
 			xtriggers:{epiphany:fragmentedgeg.lionsmith,epiphany.lionsmith:fragmentedgeg.lionsmith,depiphany:fragmentedgee.lionsmith,fatiguing:fragmentedgef.lionsmith.exhausted},
-			icon:fragmentedgef,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		   {   id: "fragmentedgeg.lionsmith",
@@ -329,7 +318,6 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             {edge: 14,forge:7,heart:7,lore:1},
             description: "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
 			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted,depiphany:fragmentedgef.lionsmith,},
-			icon:fragmentedgeg,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 
@@ -341,7 +329,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:160,
 			decayTo:fragmentedgeb.lionsmith,
-			icon:fragmentedgeb,
+			icon:fragmentedgeb.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 				 {
@@ -352,7 +340,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:140,
 			decayTo:fragmentedgec.lionsmith,
-			icon:fragmentedgec,
+			icon:fragmentedgec.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 						 {
@@ -363,7 +351,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:120,
 			decayTo:fragmentedged.lionsmith,
-			icon:fragmentedged,
+			icon:fragmentedged.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },{
         id: "fragmentedgee.lionsmith.exhausted",
@@ -373,7 +361,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:100,
 			decayTo:fragmentedgee.lionsmith,
-			icon:fragmentedgee,
+			icon:fragmentedgee.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		{
@@ -384,7 +372,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:80,
 			decayTo:fragmentedgef.lionsmith,
-			icon:fragmentedgef,
+			icon:fragmentedgef.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		   {   id: "fragmentedgeg.lionsmith.exhausted",
@@ -394,7 +382,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
 			resaturate:true,
 			lifetime:60,
 			decayTo:fragmentedgeg.lionsmith,
-			icon:fragmentedgeg,
+			icon:fragmentedgeg.lionsmith,
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 		
