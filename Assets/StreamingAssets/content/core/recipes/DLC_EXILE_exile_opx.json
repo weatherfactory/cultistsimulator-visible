@@ -4,7 +4,7 @@
 {id:"use.sanatorium",
 actionId:"use",
 label:"Run a Sanatorium",
-startdescription:"FNORD Sanatorium [A reasonably safe way to convert stolen lifespan into cash. Heart aspect cards are often useful when running a Sanatorium.]",
+startdescription:"Once I've treated a couple of wealthy widows, the word will spread quickly. [A reasonably safe way to convert stolen lifespan into cash. Heart aspect cards are often useful when running a Sanatorium.]",
 description:"The Sanatorium is open.",
 requirements:{licence.medical:1,space:2,comfort:4, year.stolen:1},
 extantreqs:{opx.sanatorium:-1},
@@ -38,7 +38,7 @@ craftable:true},
 {id:"use.miracles",
 actionId:"use",
 label:"Run a Faith-Healing Cult",
-startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+startdescription:"I can bring genuine healing miracles to a congregation. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{connection.holy:1,space:1,year.stolen:1},
 extantreqs:{opx.miracles:-1},
@@ -50,7 +50,7 @@ craftable:true},
 {id:"use.cultseed.flowermaker",
 actionId:"use",
 label:"Assemble a Cult of the Flowermaker",
-startdescription:"FNORD  [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+startdescription:"The Flowermaker's presence is strong here. I'll let the enthusiasts in the congregation pursue their pleasures. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{op.miracles.cultseed:1,op.flowermaker:1,space:1,year.stolen:1},
 extantreqs:{opx.flowermaker:-1},
@@ -62,7 +62,7 @@ craftable:true},
 {id:"use.cultseed.horned",
 actionId:"use",
 label:"Assemble a Cult of the Horned Axe",
-startdescription:"FNORD  [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+startdescription:"The Horned-Axe's presence is strong here. Some of the congregation will be drawn to her. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{op.miracles.cultseed:1,op.horned:1,space:1,year.stolen:1},
 extantreqs:{opx.horned:-1},
@@ -74,7 +74,7 @@ craftable:true},
 {id:"use.cultseed.wolf",
 actionId:"use",
 label:"Assemble a Cult of the Wolf Divided",
-startdescription:"FNORD  [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+startdescription:"The Wolf Divided's presence is strong here. The more violent members of the congregation will respond to that. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{op.miracles.cultseed:1,op.wolf:1,space:1,year.stolen:1},
 extantreqs:{opx.wolf:-1},
@@ -86,7 +86,7 @@ craftable:true},
 {id:"use.cultseed.miracles",
 actionId:"use",
 label:"Continue a Faith-Healing Cult",
-startdescription:"FNORD Miracles [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
+startdescription:"Everyone's happy. The show must go on. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling, again.",
 requirements:{op.miracles.cultseed:1,space:1,year.stolen:1},
 extantreqs:{opx.miracles:-1},
@@ -98,7 +98,7 @@ craftable:true},
 {id:"use.import",
 actionId:"use",
 label:"Run an Import Business",
-startdescription:"FNORD import [A reasonably safe way to convert stolen lifespan into cash. Lantern aspect cards are often useful when running an Import Business.]",
+startdescription:"And everything's legal. So legal it's a little unnerving. [A reasonably safe way to generate cash. Lantern aspect cards are often useful when running an Import Business.]",
 description:"I've opened up shop.",
 requirements:{licence.import:1,space:1,op.sea:1},
 extantreqs:{opx.import:-1},
@@ -109,7 +109,7 @@ craftable:true},
 {id:"use.counterfeiting",
 actionId:"use",
 label:"Run a Counterfeiting Operation",
-startdescription:"Counterfeiting FNORD [A reasonably safe way to convert stolen lifespan into cash. Forge aspect cards are often useful when running a Counterfeiting Operation.]",
+startdescription:"As long as I have the connections and the resources, I can... make money. [A reasonably safe way to generate cash. Forge aspect cards are often useful when running a Counterfeiting Operation.]",
 description:"The presses are almost ready.",
 requirements:{connection.underworld:1,forge:6,space:1},
 extantreqs:{opx.counterfeiting:-1},
@@ -120,7 +120,7 @@ craftable:true},
 {id:"use.smuggling",
 actionId:"use",
 label:"Run a Smuggling Operation",
-startdescription:"Smuggling FNORD [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a  Smuggling Operation.]",
+startdescription:"Everything's valuable somewhere. [A reasonably safe way to generate cash. Smuggling operations are generally Subtle, but pay well anyway. Moth aspect cards are often useful when running a  Smuggling Operation.]",
 description:"Everything is ready.",
 requirements:{connection.underworld:1,op.sea:1,space:1},
 extantreqs:{opx.smuggling:-1},
@@ -132,7 +132,7 @@ craftable:true},
 {id:"use.fights",
 actionId:"use",
 label:"Compete in Illegal Fights",
-startdescription:"FNORD fights [Any failed challenges will result in a Wound, which you won't be able to heal until the Operation is complete. Edge aspect cards are often useful when competing in Illegal Fights.]",
+startdescription:"It'll keep me in practice. [Any failed challenges will result in a Wound, which you won't be able to heal until the Operation is complete. Edge aspect cards are often useful when competing in Illegal Fights.]",
 description:"FNORD",
 requirements:{connection.underworld:1,year.stolen:1},
 extantreqs:{opx.fights:-1},
@@ -152,8 +152,7 @@ hintonly:true},
 {id:"use.uprising",
 actionId:"use",
 label:"Assist an Uprising",
-startdescription:"FNORD uprising",
-description:"FNORD",
+startdescription:"It'll be messy, but it might even make the world a better place, eventually. [There will be an opportunity for profit; and it'll be harder for the reckoners to pick up your trail. The Lionsmith likes rebellions.]",
 comments:"forge requirement below based on assumption of forge 6 from radicals, so this will break if rebalanced",
 requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1,turmoil:-1},
 extantreqs:{opx.uprising:-1},
@@ -165,8 +164,7 @@ craftable:true},
 {id:"use.betrayal",
 actionId:"use",
 label:"Betray an Uprising",
-startdescription:"FNORD betrayal",
-description:"FNORD",
+startdescription:"This has been a century for revolutions, and it's hardly begun. I'll be saving lives [There will be an opportunity for profit, and you'll win favour with the local authorities. The Colonel likes the stats quo.]",
 requirements:{connection.radicals:1,winter:2,domicile:1,temptation.defiance:1},
 extantreqs:{opx.betrayal:-1},
 effects:{connection.radicals:-1},
@@ -176,9 +174,8 @@ craftable:true},
 
 {id:"use.patronage",
 actionId:"use",
-label:"FNORD patronage",
-startdescription:"FNORD patronage [A reasonably safe way to convert stolen lifespan into cash.]",
-description:"FNORD patronage",
+label:"Accept Patronage",
+startdescription:"There's nothing a ruler wants more than more life, and there's no-one who pays better. I'll need to make sure my patron doesn't understand my methods, though, or they might get ideas. [A reasonably safe way to convert stolen lifespan into cash.]",
 requirements:{connection.ruler:1,year.stolen:1},
 extantreqs:{opx.patronage:-1},
 effects:{year.stolen:-1},
@@ -333,10 +330,48 @@ linked:[{id:"opx.challenge"}]
 {id:"opx.challenge",
 actionId:"opx.",
 label:"A Challenge",
-startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
+startdescription:"@#ee.doctor1.heart.grail|Cure the sick, or give the old a shot of youth?
+#ee.doctor2.heart.knock|Quietly cure the sick, or focus on miraculously healing the wounded?
+#ee.doctor3.heart.forge|Quietly cure the sick, or build showy props?
+#ee.sanatorium1.heart.grail|Cure the sick, or give the old a shot of youth?
+#ee.sanatorium2.heart.knock|Quietly cure the sick, or focus on miraculously healing the wounded?
+#ee.sanatorium3.heart.forge|Quietly cure the sick, or build showy props?
+#ee.miracles1.moth.grail|Preach parables, or pleasure?
+#ee.miracles2.moth.lantern|Be carefully vague, or share real secrets?
+#ee.miracles3.moth.winter|Comforting misdirection, or bleak revelation?
+#ee.flowermaker1.grail.lantern|Ceremonies of private pleasure or of public revelation?
+#ee.flowermaker2.grail.knock|Draw the velvet curtains close, or fling wide the doors of sensation?
+#ee.flowermaker3.grail.winter|Seduction, or awe?
+#ee.horned1.knock.winter|Call up whatever visitors may come, or put down what will not go?
+#ee.horned2.knock.forge|Ask assistance from whatever visitors may come, or set the congregation to work?
+#ee.horned3.knock.lantern|The door, or the lamp?
+#ee.wolf1.edge.winter|Agony, or ice?
+#ee.wolf2.edge.lantern|Agony, or blindness?
+#ee.wolf3.grail.winter|Ice, or blood?
+#ee.import1.lantern.heart|Look for new opportunities, or keep the business ticking over?
+#ee.import2.lantern.forge|Look for new opportunities, or improve what you have?
+#ee.import3.lantern.winter|Look for new opportunities, or begin preparations to move on?
+#ee.counterfeiting1.forge.winter|Increase production, or show caution?
+#ee.counterfeiting2.forge.moth|Increase production, or focus on deception?
+#ee.counterfeiting3.forge.grail|Increase production, or pay off troublemakers?
+#ee.smuggling1.moth.knock|More camouflage, or more shipments?
+#ee.smuggling2.moth.heart|More camouflage, or more care?
+#ee.smuggling3.moth.winter|Stealthily, or quietly?
+#ee.fights1.edge.grail|Boldness, or bribery?
+#ee.fights2.edge.moth|Tough, or quick?
+#ee.fights3.edge.forge|Fists, or weapons?
+#ee.uprising1.edge.heart|Words, or guns?
+#ee.uprising2.edge.heart|Words, or guns?
+#ee.uprising3.edge.heart|Words, or guns?
+#ee.betrayal1.winter.heart|Persuasion, or murder?
+#ee.betrayal2.winter.heart|Persuasion, or murder?
+#ee.betrayal3.winter.heart|Persuasion, or murder?
+#ee.patronage1.heart.lantern|Discreet, or dramatic?
+#ee.patronage2.heart.lantern|Discreet, or dramatic?
+#ee.patronage3.heart.lantern|Discreet, or dramatic?
 #|A challenge lies ahead.@
 
-[If you match the Challenge with Edge, Forge, Knock or Lantern, you'll increase Effectiveness. Otherwise, use Heart, Grail, Moth, or Winter to increase Subtlety.]",
+[Match the Challenge with Edge, Forge, Knock or Lantern to increase Effectiveness. Alternatively, match it with Heart, Grail, Moth, or Winter to increase Subtlety.]",
 warmup:60,
 requirements:{complication:1},
 slots:[{id:"response",label:"Response",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
@@ -355,10 +390,8 @@ linked: [{id:"opx.challenge.failed"}]
 
 {id:"opx.tryresolve.edge",
 actionId:"opx.",
-label:"Violence Is A Solution",
-startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I'm more a match for it.
-#ee.soldiers| Noisy, messy, necessary. Now I'll have to clean my boots.
-#|I've used force.@",
+label:"The Bright Edge",
+startdescription:"I'm addressing a challenge with Edge. This will increase Effectiveness.",
 requirements:{minedge:1,edge:minedge},
 effects:{progress.effectiveness:1},
 linked:[{id:"opx.next"}]},
@@ -366,9 +399,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.forge",
 actionId:"opx.",
 label:"Hammer and Anvil",
-startdescription:"@#ee.mist|Once again, fire and ingenuity have served me well.
-#ee.securevault|I've breached the vault.
-#|I've used ingenuity.@",
+startdescription:"I'm addressing a challenge with Forge. This will increase Effectiveness.",
 requirements:{minforge:1,forge:minforge},
 effects:{progress.effectiveness:1},
 linked:[{id:"opx.next"}]},
@@ -376,9 +407,8 @@ linked:[{id:"opx.next"}]},
 
 {id:"opx.tryresolve.grail",
 actionId:"opx.",
-label:"Greed and Beguilement",
-startdescription:"@#ee.soldiers|I've come to an arrangement with the soldiers guarding this place.
-#|I've used bribery.@",
+label:"Delight and its Daughters",
+startdescription:"I'm addressing a challenge with Grail. This will increase Subtlety.",
 requirements:{mingrail:1,grail:mingrail},
 effects:{progress.subtlety:1},
 linked:[{id:"opx.next"}]},
@@ -386,7 +416,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.heart",
 actionId:"opx.",
 label:"The Drum Unceasing",
-startdescription:"@#|I've used persistence.@",
+startdescription:"I'm addressing a challenge with Heart. This will increase Subtlety.",
 requirements:{minheart:1,heart:minheart},
 effects:{progress.subtlety:1},
 linked:[{id:"opx.next"}]},
@@ -394,7 +424,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.knock",
 actionId:"opx.",
 label:"All Wounds Are Doors",
-startdescription:"@#|I've opened what was sealed.@",
+startdescription:"I'm addressing a challenge with Knock. This will increase Effectiveness.",
 requirements:{minknock:1,knock:minknock},
 effects:{progress.effectiveness:1},
 linked:[{id:"opx.next"}]},
@@ -403,8 +433,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.lantern",
 actionId:"opx.",
 label:"Illumination",
-startdescription:"@#ee.mist|The Watchman comes before the Velvet' is the kind of thing adepts say. I think it means that mist is only really a damper sort of darkness.
-#|I've dissolved a darkness.@",
+startdescription:"I'm addressing a challenge with Lantern. This will increase Effectiveness.",
 requirements:{minlantern:1,lantern:minlantern},
 effects:{progress.effectiveness:1},
 linked:[{id:"opx.next"}]},
@@ -412,9 +441,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.moth",
 actionId:"opx.",
 label:"Smoke and Mirrors",
-startdescription:"@#ee.devourer|A creature of crushing strength lairs here. I can't face it head-on, so I've turned to trickery.
-#ee.soldiers|The soldiers who should be guarding this place have gone thundering off into the night. I'll have just enough time to finish here before they get back -
-#|I've used trickery.@",
+startdescription:"I'm addressing a challenge with Moth. This will increase Subtlety.",
 requirements:{minmoth:1,moth:minmoth},
 effects:{progress.subtlety:1},
 linked:[{id:"opx.next"}]},
@@ -422,7 +449,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.secrethistories",
 actionId:"opx.",
 label:"Not Only One History",
-startdescription:"@#|I've used knowledge.@",
+startdescription:"I'm addressing a challenge with Secret Histories. This will increase Subtlety.",
 requirements:{minsecrethistories:1,secrethistories:minsecrethistories},
 effects:{progress.subtlety:1},
 linked:[{id:"opx.next"}]},
@@ -430,7 +457,7 @@ linked:[{id:"opx.next"}]},
 {id:"opx.tryresolve.winter",
 actionId:"opx.",
 label:"Night Deepens",
-startdescription:"@#|I've used patience.@",
+startdescription:"I'm addressing a challenge with Winter. This will increase Subtlety.",
 requirements:{minwinter:1,winter:minwinter},
 effects:{progress.subtlety:1},
 linked:[{id:"opx.next"}]},
@@ -446,8 +473,20 @@ linked:[{id:"opx.next"}]},
 
 {id:"opx.next",
 actionId:"opx.",
-label:"Progress",
-startdescription:"What's next?",
+label:"The Operation Continues",
+startdescription:"@#opx.doctor|'Next.'
+#opx.sanatorium|'My staff will see you to your room.'
+#opx.miracles|'Rejoice!'
+#opx.flowermaker|'Love is the law, but there is more.'
+#opx.horned|'We will divide what should not be joined.'
+#opx.wolf|'The gate of vengeance is agony.'
+#opx.counterfeiting|'Keep it running.'
+#opx.smuggling|'No lights!'
+#opx.import|'Sign here.'
+#opx.fights|'Who's NEXT?'
+#opx.uprising|'Very soon, now.'
+#opx.betrayal|'You can trust me.'
+#opx.patronage|'Yes, I'm expected. Go ahead and check.'@",
 aspects:{next:1},
 warmup:5,
 linked:[{id:"opx.challenge"},
@@ -457,8 +496,20 @@ linked:[{id:"opx.challenge"},
 
 {id:"opx.end",
 actionId:"opx.",
-label:"Operation Complete!",
-startdescription:"Time to reap the rewards.",
+label:"The Operation is Complete",
+startdescription:"@#opx.doctor|'I'm delighted to see you looking so much better.'
+#opx.sanatorium|'See you next year.'
+#opx.miracles|'And now, I must leave you.'
+#opx.flowermaker|'Remember me fondly.'
+#opx.horned|'An end, a beginning.'
+#opx.wolf|'Your time has come.'
+#opx.counterfeiting|'Shut it down.'
+#opx.smuggling|'Close it up.'
+#opx.import|'Bring me the ledgers.'
+#opx.fights|'...ugh.'
+#opx.uprising|'This is the day we've worked for!'
+#opx.betrayal|'You'll find them at this address...'
+#opx.patronage|'There's a little business I need to take care of.'@",
 warmup:5,
 aspects:{fatiguing:1},
 effects:{distraction:-100,op:-100,cash:opx.basepayout},
@@ -498,7 +549,7 @@ linked:[{id:opx.end.effectiveness},
 actionId:"opx.",
 warmup:5,
 label:"Operation Complete: For Those With Eyes To See",
-startdescription:"I could have been subtler. [You achieved one Subtlety. THere is a significant risk of a Trace.]",
+startdescription:"I could have been subtler. [You achieved one Subtlety. There is a significant risk of a Trace.]",
 requirements:{progress.subtlety:1},
 aspects:{tracerisk:1},
 effects:{progress.subtlety:-3},
@@ -546,6 +597,7 @@ purge:{trace:100,op:100,connection.ruler:100,connection.official:100},
 warmup:10,
 requirements:{opx.uprising.complete:1},
 warmup:30,
+effects:{trail.false.exile:1},
 linked:[{id:"opx.end.uprising.colonel"},
 {id:"opx.end.uprising.lionsmith"}]
 },
