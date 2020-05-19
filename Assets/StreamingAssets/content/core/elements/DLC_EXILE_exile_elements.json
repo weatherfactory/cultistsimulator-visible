@@ -858,100 +858,100 @@ isAspect:true
 },
 
 {id: "ee.doctor1.heart.grail",
-label: "FNORD Heart or Grail dr complication",
+label: "--",
 aspects: {complication:1,minheart:4,mingrail:4,opx.doctor:1},
 xtriggers:{next:ee.doctor2.heart.knock},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.doctor2.heart.knock",
-label: "FNORD Heart or Knock dr complication",
+label: "--",
 aspects: {complication:1,minheart:8,mingrail:8,opx.doctor:1},
 xtriggers:{next:ee.doctor3.heart.forge},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.doctor3.heart.forge",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minheart:12,minforge:12,opx.doctor:1},
 xtriggers:{next:opx.doctor.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.doctor.complete",
 label:"Doctor's Practice Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.doctor:1,opx.basepayout:2},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.sanatorium1.heart.grail",
-label: "FNORD Heart or Grail dr complication",
+label: "--",
 aspects: {complication:1,minheart:4,mingrail:4,opx.sanatorium:1},
 xtriggers:{next:ee.sanatorium2.heart.knock},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.sanatorium2.heart.knock",
-label: "FNORD Heart or Knock dr complication",
+label: "--",
 aspects: {complication:1,minheart:8,mingrail:8,opx.sanatorium:1},
 xtriggers:{next:ee.sanatorium3.heart.forge},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.sanatorium3.heart.forge",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minheart:12,minforge:12,opx.sanatorium:1},
 xtriggers:{next:opx.sanatorium.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.sanatorium.complete",
 label:"Sanatorium Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.sanatorium:1,opx.basepayout:4},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.miracles1.moth.grail",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:4,mingrail:4,opx.miracles:1},
 xtriggers:{next:ee.miracles2.moth.lantern},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.miracles2.moth.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:8,minlantern:8,opx.miracles:1},
 xtriggers:{next:ee.miracles3.moth.winter},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.miracles3.moth.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:12,minwinter:12,opx.miracles:1},
 xtriggers:{next:opx.miracles.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.miracles.complete",
-label:"Faith-Healing Cult Paying Off",
-description:"Here come the rewards.",
+label:"--",
+description:"--",
 aspects:{opx.miracles:1,opx.basepayout:2},
 xtriggers:{success:op.miracles.cultseed},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
@@ -968,335 +968,335 @@ lifetime:300
 
 
 {id: "ee.flowermaker1.grail.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,mingrail:4,minlantern:4,opx.flowermaker:1},
 xtriggers:{next:ee.flowermaker2.grail.knock},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.flowermaker2.grail.knock",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,mingrail:8,minknock:8,opx.flowermaker:1},
 xtriggers:{next:ee.flowermaker3.grail.winter},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.flowermaker3.grail.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,mingrail:12,minwinter:12,opx.flowermaker:1},
 xtriggers:{next:opx.flowermaker.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.flowermaker.complete",
 label:"Flowermaker Cult Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.flowermaker:1,opx.basepayout:1},
 xtriggers:{success:[{id:"contact.cultist.flowermaker",morpheffect:spawn}]},
 comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.horned1.knock.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minknock:4,minwinter:4,opx.horned:1},
 xtriggers:{next:ee.horned2.knock.forge},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.horned2.knock.forge",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minknock:8,minforge:8,opx.horned:1},
 xtriggers:{next:ee.horned3.knock.lantern},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.horned3.knock.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minknock:12,minlantern:12,opx.horned:1},
 xtriggers:{next:opx.horned.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.horned.complete",
 label:"Horned-Axe Cult Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.horned:1,opx.basepayout:1},
 xtriggers:{success:[{id:"contact.cultist.horned",morpheffect:spawn}]},
 comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.wolf1.edge.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minwinter:4,minwinter:4,opx.wolf:1},
 xtriggers:{next:ee.wolf2.edge.lantern},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.wolf2.edge.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:8,minlantern:8,opx.wolf:1},
 xtriggers:{next:ee.wolf3.grail.winter},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.wolf3.grail.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:12,minknock:12,opx.wolf:1},
 xtriggers:{next:opx.wolf.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.wolf.complete",
 label:"Wolf-Divided Cult Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.wolf:1,opx.basepayout:1},
 xtriggers:{success:[{id:"contact.cultist.wolf",morpheffect:spawn}]},
 comments:"NB this is in addition to the cult seed base payout",
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.import1.lantern.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minlantern:4,minheart:4,opx.import:1},
 xtriggers:{next:ee.import2.lantern.forge},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.import2.lantern.forge",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minlantern:8,minforge:8,opx.import:1},
 xtriggers:{next:ee.import3.lantern.winter},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.import3.lantern.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minlantern:12,minwinter:12,opx.import:1},
 xtriggers:{next:opx.import.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.import.complete",
 label:"Import Business Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.import:1,opx.basepayout:3},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.counterfeiting1.forge.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minforge:4,minwinter:4,opx.counterfeiting:1},
 xtriggers:{next:ee.counterfeiting2.forge.moth},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.counterfeiting2.forge.moth",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minforge:8,minmoth:8,opx.counterfeiting:1},
 xtriggers:{next:ee.counterfeiting3.forge.grail},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.counterfeiting3.forge.grail",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minforge:12,mingrail:12,opx.counterfeiting:1},
 xtriggers:{next:opx.counterfeiting.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.counterfeiting.complete",
 label:"Counterfeiting Operation Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.counterfeiting:1,opx.basepayout:2},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.smuggling1.moth.knock",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:4,minknock:4,opx.smuggling:1},
 xtriggers:{next:ee.smuggling2.moth.heart},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.smuggling2.moth.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:8,minheart:8,opx.smuggling:1},
 xtriggers:{next:ee.smuggling3.moth.winter},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.smuggling3.moth.winter",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minmoth:12,minwinter:12,opx.smuggling:1},
 xtriggers:{next:opx.smuggling.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.smuggling.complete",
 label:"Smuggling Operation Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.smuggling:1,opx.basepayout:4},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.fights1.edge.grail",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:4,mingrail:4,opx.fights:1},
 xtriggers:{next:ee.fights2.edge.moth,failure:[{id:"wound.exile",morpheffect:spawn}]},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.fights2.edge.moth",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:8,minmoth:8,opx.fights:1},
 xtriggers:{next:ee.fights3.edge.forge,failure:[{id:"wound.exile",morpheffect:spawn}]},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.fights3.edge.forge",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:12,minforge:12,opx.fights:1},
 xtriggers:{next:opx.fights.complete,failure:[{id:"wound.exile",morpheffect:spawn}]},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.fights.complete",
 label:"Fights Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.fights:1,opx.basepayout:2},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.uprising1.edge.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:4,minheart:4,opx.uprising:1},
 xtriggers:{next:ee.uprising2.edge.heart},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.uprising2.edge.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:8,minheart:8,opx.uprising:1},
 xtriggers:{next:ee.uprising3.edge.heart},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.uprising3.edge.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minedge:12,minheart:12,opx.uprising:1},
 xtriggers:{next:opx.uprising.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.uprising.complete",
 label:"Uprising Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.uprising:1,opx.basepayout:4},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id: "ee.betrayal1.winter.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minwinter:4,minheart:4,opx.betrayal:1},
 xtriggers:{next:ee.betrayal2.winter.heart},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.betrayal2.winter.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minwinter:8,minheart:8,opx.betrayal:1},
 xtriggers:{next:ee.betrayal3.winter.heart},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.betrayal3.winter.heart",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minwinter:12,minheart:12,opx.betrayal:1},
 xtriggers:{next:opx.betrayal.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.betrayal.complete",
 label:"betrayal Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.betrayal:1,opx.basepayout:4},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 
 {id: "ee.patronage1.heart.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minheart:4,minlantern:4,opx.patronage:1},
 xtriggers:{next:ee.patronage2.heart.lantern},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.patronage2.heart.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minheart:8,minlantern:8,opx.patronage:1},
 xtriggers:{next:ee.patronage3.heart.lantern},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
 {id: "ee.patronage3.heart.lantern",
-label: "FNORD complication",
+label: "--",
 aspects: {complication:1,minheart:12,minlantern:12,opx.patronage:1},
 xtriggers:{next:opx.patronage.complete},
-description:"FNORD",
-lifetime:1
+description:"--",
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 {id:"opx.patronage.complete",
 label:"Patronage Paying Off",
-description:"Here come the rewards.",
+description:"--",
 aspects:{opx.patronage:1,opx.basepayout:4},
 xtriggers:{success:townhouse},
-lifetime:1
+lifetime:1,isHidden:true,noartneeded:true
 },
 
 
@@ -1346,14 +1346,14 @@ lifetime:1
 {id: "ee.deceiver",
 label: "Deceiver",
 aspects: {complication:1,minlantern:10,minmoth:10},
-description: "FNORD",
+description: "--",
 lifetime:1
 },
 
 
 {id: "ee.devourer",
 label: "Devourer",
-description: "FNORD",
+description: "--",
 aspects:{complication:1,minedge:10,minmoth:10},
 lifetime:1
 },
@@ -1525,7 +1525,7 @@ lifetime:1
 
 
 {id: "_vault.exile",
-label: "FNORD",
+label: "_vault.exile",
 aspects:{location:1,vault:1},
 slots:[{id:"resource",actionId:"travel",label:"Resource",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,winter:1}}]
 },
