@@ -1300,32 +1300,31 @@ lifetime:1
 },
 
 
-
 {id: "ee.armouredgate",
 label: "Armoured Gate",
 aspects: {complication:1,minforge:8,minknock:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.avidadept",
 label: "Avid Adept",
 aspects: {complication:1,mingrail:10,minmoth:10},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.bosk",
 label: "Bosk",
 aspects: {complication:1,minlantern:8,minmoth:8,minwinter:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.coiltrace",
 label: "Coil-Trace",
 aspects: {complication:1,minedge:14,minwinter:14},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
@@ -1333,14 +1332,14 @@ lifetime:1
 {id: "ee.crags",
 label: "Crags",
 aspects: {complication:1,minforge:6,minheart:6},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.creepinghorror",
 label: "Creeping Horror",
 aspects: {complication:1,minedge:4,minheart:4,minwinter:4},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
@@ -1348,15 +1347,13 @@ lifetime:1
 label: "Deceiver",
 aspects: {complication:1,minlantern:10,minmoth:10},
 description: "FNORD",
-icon:devourer,
 lifetime:1
 },
 
 
 {id: "ee.devourer",
 label: "Devourer",
-description: "Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.",
-icon:devourer,
+description: "FNORD",
 aspects:{complication:1,minedge:10,minmoth:10},
 lifetime:1
 },
@@ -1365,7 +1362,6 @@ lifetime:1
 label: "A Feast",
 aspects: {complication:1,mingrail:2,minwinter:2},
 description: ".",
-icon:ghoul.hunger,
 lifetime:1
 },
 
@@ -1373,120 +1369,118 @@ lifetime:1
 label: "Fretful Dead",
 aspects: {complication:1,minedge:8,minwinter:8},
 description: ".",
-icon:devourer,
 lifetime:1
 },
 
 {id: "ee.guardedcompound",
 label: "Guarded Compound",
 aspects: {complication:1,minforge:6,minknock:6,minmoth:6},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
-{id: "ee.labyrinth Seal",
+{id: "ee.labyrinthseal",
 label: "Labyrinth Seal",
 aspects: {complication:1,minforge:12,minknock:12},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.ligeian",
 label: "Ligeian",
 aspects: {complication:1,minedge:12,mingrail:12,minmoth:12},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.miasma",
 label: "Miasma",
 aspects: {complication:1,minforge:6,minheart:6,minwinter:6},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.mist",
 label: "Mist",
 aspects: {complication:1,minforge:2,minlantern:2},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.monks",
 label: "Holy Men",
 aspects: {complication:1,minedge:6,minmoth:6},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
-
 
 
 {id: "ee.ordeal.agony",
 label: "Ordeal: Agony",
 aspects: {complication:1,minedge:12,minheart:12,minwinter:12},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.ordeal.desolation",
 label: "Ordeal: Desolation",
 aspects: {complication:1,minheart:12,minwinter:12},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.ordeal.enigma",
 label: "Ordeal: Enigma",
 aspects: {complication:1,minlantern:12,minmoth:12},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.percussigant",
 label: "Percussigant",
 aspects: {complication:1,minedge:8,mingrail:8,minheart:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.scarredduellist",
 label: "Scarred Duellist",
 aspects: {complication:1,minedge:4,minmoth:4},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.securevault",
 label: "Secure Vault",
 aspects: {complication:1,minforge:10,minknock:10},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 {id: "ee.shadowedway",
 label: "Shadowed Way",
 aspects: {complication:1,minknock:4,minlantern:4},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.soldiers",
 label: "Soldiers ",
 aspects: {complication:1,minedge:8,mingrail:8,minmoth:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.storm",
 label: "Storm",
 aspects: {complication:1,minforge:2,minheart:2},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.strixriddenadversary",
 label: "Strix-Ridden Adversary",
 aspects: {complication:1,minedge:8,minmoth:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
@@ -1494,7 +1488,7 @@ lifetime:1
 {id: "ee.thugs",
 label: "Thugs",
 aspects: {complication:1,minedge:4,mingrail:4,minmoth:4},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
@@ -1502,21 +1496,21 @@ lifetime:1
 {id: "ee.unknownlocation",
 label: "An Unknown Location",
 aspects: {complication:1,minknock:2,minlantern:2},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.unwelcomememories",
 label: "Unwelcome Memories",
 aspects: {complication:1,minheart:8,minlantern:8,minmoth:8,minwinter:8},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 {id: "ee.vigil",
 label: "Vigil",
 aspects: {complication:1,minheart:10,minlantern:10,minwinter:10},
-description:"FNORD",
+description:"--",isHidden:true,noartneeded:true,
 lifetime:1
 },
 
@@ -1565,7 +1559,8 @@ aspects:{trace:1,remnant:1,winter:2,grail:2,supplies:1},
 description:"They're not here any more. I should make sure I'm not, either.",
 slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
 {id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
-icon:corpse
+icon:corpse,
+xtriggers:{fatiguing:husk}
 },
 
 {id: "corpse.exile.underling",
@@ -1573,7 +1568,8 @@ label: "A Reckoner Corpse",
 aspects:{trace:1,remnant:1,winter:2,grail:2,supplies:1},
 description:"Proof of a victory. This is going to make my Foe very upset.",
 decayTo:"trace",
-slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}]
+slots:[{actionId:relinquish,id:"purpose",label:"Purpose",required:{temptation.defiance:1,lore:1},forbidden:{exhausted:1}}],
+xtriggers:{fatiguing:husk}
 },
 
 
@@ -1694,7 +1690,7 @@ unique:true
 {id: "loc.shrine.colonel.valletta",
 label: "Mortal Shrine",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
-description:"Malta is the Nurse of the Mediterranean, where soldiers come to be healed, and there are those among the healers who practice the invisible arts. They keep shrines in locked rooms in their hospitals to invoke the healing Hours. No-one prays to the Colonel for healing. They only visit this rotting room under the eaves to invoke him when death would be a mecy.",
+description:"Malta is the Nurse of the Mediterranean, where soldiers come to be healed, and there are those among the healers who practice the invisible arts. They keep shrines in locked rooms in their hospitals to invoke the healing Hours. No-one prays to the Colonel for healing. They only visit this rotting room under the eaves to invoke him when death would be a mercy.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.colonel,
 unique:true
@@ -1703,7 +1699,7 @@ unique:true
 {id: "loc.shrine.lionsmith.alexandria",
 label: "Anvil of the Bull",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"The 'anvil' here is a bronze altar of Apis, the Bull. Bronze is not a good metal for anvils, but the only material forged on this one is, the priests say, the human spirit.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.lionsmith,
 unique:true
@@ -1712,7 +1708,7 @@ unique:true
 {id: "loc.shrine.lionsmith.algiers",
 label: "Skaptodon Tomb",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"Sometimes a skaptodon greedy, starts eating things they don't find in the earth, and degenerates to something like human shape. I learnt the hard way that it's much more difficult to kill a skaptodon that still has all its old strength. But one fell in battle here, and the shrine honours its bones. ",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.lionsmith,
 unique:true
@@ -1730,9 +1726,9 @@ unique:true
 
 
 {id: "loc.shrine.lionsmith.meshad",
-label: "Šhahrewar Stone",
+label: "Shahrewar Stone",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"My poet friend told me the story of this place: that in the days when the sky was a polished roof of the hardest stone, the Lionsmith struck it with his hammer so that this great rock would fall to earth. It looks to me like a taenite meteorite, but that doesn't mean her story wasn't true. And that's why I try not to think too hard about the Histories.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.lionsmith,
 unique:true
@@ -1740,9 +1736,9 @@ unique:true
 
 
 {id: "loc.shrine.lionsmith.samarkand",
-label: "The Crossroads Altar",
+label: "Crossroads Ateshgah",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
+description:"The Party drove the worshippers out of this fire temple. Now a small cadre of military engineers operates here. But they've put considerable effort into maintaining the gas pipes that fuel the eternal flame, and their practices are notably eccentric.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.lionsmith,
 unique:true
@@ -1758,6 +1754,15 @@ icon:shrine.lionsmith,
 unique:true
 },
 
+
+{id: "loc.shrine.lionsmith.venice",
+label: "Chapel of St Mark of the Hammer",
+aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
+description:"The chivalric <i>Ordine di San Marco</i> was formally dissolved a century or so ago, but that didn't stop their more determined members from meeting in secret, continuing their less Christian rituals, and selling their services to the practitioners of the invisible arts. Their chapel is open to anyone they like enough, and we've always got on.",
+slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
 {id: "contact.retainer",
 label: "Last Antaean Initiate",
 comments:"no killmortal trigger because we want him permanently on the board.",
@@ -1770,7 +1775,7 @@ unique:true
 {id: "contact.retainer.exhausted",
 label: "Old Retainer (Exhausted)",
 comments:"no killmortal trigger because we want him permanently on the board.",
-description:"some dude who knew your mum",
+description:"An elderly man in a beaded skullcap, with deeply seamed cheeks, a whitening stubbled beard, and old sorrow in his eyes.",
 aspects:{exhausted:1,mortal:1},
 decayTo:contact.retainer,
 lifetime:300,
@@ -1779,13 +1784,6 @@ icon:contact.retainer,
 resaturate:true
 },
 
-{id: "loc.shrine.lionsmith.venice",
-label: "The Lion of Many",
-aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"FNORD",
-slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-unique:true
-},
 
 {id:"vault.imhullu",
 label:"Althiban Abyss",
@@ -2749,7 +2747,8 @@ icon: toolwinterb
 label: "Labhitic Memento",
 description:"The remains of someone who was not what their maker intended.",
 aspects:{asset:1,portable:1,comfort:1,edge:8,supplies:1,pentiment:1,pentiment.3:1},
-icon:ingredientedged
+icon:ingredientedged,
+xtriggers:{fatiguing:husk}
 },
 
 {id: "memento.grail",
@@ -2813,7 +2812,8 @@ description:"This began life as an atlas of the cities of Europe. Over decades i
 label: "Stranger's Water",
 description: "A little jar of aggressively invasive saliva, like a viscid skeleton key.",
 aspects: {asset:1,portable:1,knock:8,edge:8,supplies:1,worth:1},
-icon:ingredientknockd
+icon:ingredientknockd,
+xtriggers:{fatiguing:husk}
 },
 
 
@@ -2895,7 +2895,8 @@ slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
 {id:"connection.official",
 label:"Official Connection",
 aspects:{connection:1,asset:1,deception:1,grail:6,lantern:6},
-description:"A mutually beneficial arrangement with someone in authority."
+description:"A mutually beneficial arrangement with someone in authority.",
+xtriggers:{fatiguing:op.connection.official}
 },
 
 
@@ -2904,6 +2905,7 @@ label:"Connection: Ruler",
 aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
 slots:[{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with someone of real power.",
+xtriggers:{fatiguing:op.connection.ruler},
 icon:xg
 },
 
@@ -2914,6 +2916,7 @@ aspects:{connection:1,asset:1,deception:1,heart:4,lantern:4},
 slots:[{actionId:use,id:"venue",label:"Venue",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with a learned holy man.",
+xtriggers:{fatiguing:op.connection.holy},
 icon:xl
 },
 
@@ -2925,6 +2928,7 @@ slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2
 {actionId:use,id:"city",label:"City",required:{domicile:1}},
 {actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
+xtriggers:{fatiguing:op.connection.radicals},
 icon:xe
 },
 
@@ -2934,6 +2938,7 @@ aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
 slots:[{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1,year.stolen:1}},
 {actionId:use,id:"location",label:"Location",required:{space:2}}],
 description:"A mutually beneficial arrangement with relevant professionals.",
+xtriggers:{fatiguing:op.connection.underworld},
 icon:xm
 },
 
@@ -3086,6 +3091,7 @@ icon:tooledgeb
 label: "Obscurity",
 description:"This might be the only defence against a reckoner lord. It might be no defence at all. ",
 aspects:{moth:2,winter:2,supplies:1},
+xtriggers:{fatiguing:husk}
 },
 
 
@@ -4123,7 +4129,7 @@ label: "Freezing Winds",
 aspects: {op:1,distraction:1,winter:2,edge:2},
 description:"Frost walks here.",
 lifetime:300,
-xtriggers:{renewal.exile:op.cold}
+xtriggers:{renewal.exile:op.cold,fatiguing:husk},
 },
 
 {id: "op.heat",
@@ -4131,7 +4137,7 @@ label: "Trembling Heat",
 aspects: {op:1,distraction:1,forge:2,grail:2},
 description:"The air shimmers like a naked furnace. Serpents' weather.",
 lifetime:300,
-xtriggers:{renewal.exile:op.heat}
+xtriggers:{renewal.exile:op.heat,fatiguing:husk}
 },
 
 {id: "op.sea",
@@ -4139,7 +4145,7 @@ label: "Sea Port",
 aspects: {op:1,distraction:1,moth:2,winter:2},
 description:"The sea bears gifts: peace, or death, or escape.",
 slots:[{id:"more",label:"More",actionId:"use",description:"Something I can only use by the sea.",required:{curio.morgen:1}}],
-xtriggers:{renewal.exile:op.sea},
+xtriggers:{renewal.exile:op.sea,fatiguing:husk},
 lifetime:300
 },
 
@@ -4147,7 +4153,7 @@ lifetime:300
 label: "Faith",
 aspects: {op:1,distraction:1,lantern:2,heart:2},
 description:"I've passed a place of worship.",
-xtriggers:{renewal.exile:op.faith},
+xtriggers:{renewal.exile:op.faith,fatiguing:husk},
 lifetime:300,
 },
 
@@ -4155,7 +4161,7 @@ lifetime:300,
 label: "Cats",
 aspects: {op:1,distraction:1,grail:2,moth:2},
 description:"I've found a place bristling with excitable cats.",
-xtriggers:{renewal.exile:op.cats},
+xtriggers:{renewal.exile:op.cats,fatiguing:husk},
 lifetime:300,
 },
 
@@ -4163,7 +4169,7 @@ lifetime:300,
 label: "Heights",
 aspects: {op:1,distraction:1,lantern:2,moth:2},
 description:"A high place. Don't look down.",
-xtriggers:{renewal.exile:op.heights},
+xtriggers:{renewal.exile:op.heights,fatiguing:husk},
 lifetime:300
 },
 
@@ -4171,7 +4177,7 @@ lifetime:300
 label: "The Horned Axe's Shadow",
 aspects: {op:1,distraction:1,knock:6,winter:6},
 description:"The smell of hawthorn, and the colour of sunset bisected with shadow. The Horned Axe is strong here.",
-xtriggers:{renewal.exile:op.horned},
+xtriggers:{renewal.exile:op.horned,fatiguing:husk},
 lifetime:300
 },
 
@@ -4179,7 +4185,7 @@ lifetime:300
 label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
-xtriggers:{renewal.exile:op.wolf},
+xtriggers:{renewal.exile:op.wolf,fatiguing:husk},
 lifetime:300
 },
 
@@ -4187,7 +4193,7 @@ lifetime:300
 label: "The Flowermaker's Shadow",
 aspects: {op:1,distraction:1,grail:6,lantern:6},
 description:"Here are sweet airs, here are the beginnings of dreams... here our thoughts turn to the Hour called Flowermaker.",
-xtriggers:{renewal.exile:op.flowermaker},
+xtriggers:{renewal.exile:op.flowermaker,fatiguing:husk},
 lifetime:300
 },
 
@@ -4195,7 +4201,7 @@ lifetime:300
 label: "Echidna",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Here at the desert's edge, Echidna doesn't always bother with human form. With luck, I'll never see what shape she prefers.",
-xtriggers:{renewal.exile:op.echidna},
+xtriggers:{renewal.exile:op.echidna,fatiguing:husk},
 lifetime:300,
 icon:echidna,
 unique:true
@@ -4205,7 +4211,7 @@ unique:true
 label: "Frau Schlüssel",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"I know that Frau Schlüssel has lived here since long before the siege. If I don't call her attention, perhaps I'll be safe.",
-xtriggers:{renewal.exile:op.kleidouchos},
+xtriggers:{renewal.exile:op.kleidouchos,fatiguing:husk},
 lifetime:300,
 icon:kleidouchos,
 unique:true
@@ -4216,7 +4222,7 @@ unique:true
 label: "Our Lady of Wires",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Whatever 'Our Lady of Wires' might be, it has chosen Kiev for its feeding-grounds this year.",
-xtriggers:{renewal.exile:op.marinette},
+xtriggers:{renewal.exile:op.marinette,fatiguing:husk},
 lifetime:300,
 icon:marinette,
 unique:true
@@ -4226,7 +4232,7 @@ unique:true
 label: "What is Not Seen?",
 aspects: {op:1,distraction:1,ligeian:1,pentiment:1,pentiment.9:1},
 description:"In all of this city, there is not one statue whose eyes are open. Why is that?",
-xtriggers:{renewal.exile:op.medusa},
+xtriggers:{renewal.exile:op.medusa,fatiguing:husk},
 lifetime:300,
 unique:true
 },
@@ -4235,7 +4241,7 @@ unique:true
 label: "Mme Matutine",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Mme Matutine's yacht, the <i>Sapphire</i>, lies at anchor here. Mme Matutine has a lethal reputation.",
-xtriggers:{renewal.exile:op.morgen},
+xtriggers:{renewal.exile:op.morgen,fatiguing:husk},
 lifetime:300,
 unique:true
 },
@@ -4245,7 +4251,7 @@ unique:true
 label: "Sulochana",
 aspects: {op:1,distraction:1,ligeian:1},
 description:"Sulochana Amavasya lairs at the Ecdysis Club, but she's abroad in the city this week. I should avoid her.",
-xtriggers:{renewal.exile:op.sulochana},
+xtriggers:{renewal.exile:op.sulochana,fatiguing:husk},
 lifetime:300,
 icon:sulochana,
 unique:true

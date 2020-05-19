@@ -139,9 +139,37 @@ linked:[{id:"opx.caper.next"}]},
 {id:"opx.caper.next",
 actionId:"opx.caper",
 label:"The Next Complication",
-startdescription:"@#ee.Devourer|A creature of crushing strength lairs here!
-#ee.soldiers|Armed men guard this place. 
+startdescription:"@
+#ee.armouredgate|A heavy reinforced door bars my way.
+#ee.avidadept|'There's a Grail-adept already camped out near the site. You'll need to be ready for her tricks.'
+#ee.bosk|Thorned caressing branches, the scents of darkest green, furred movements beneath my hand, the black and beating darkness... the Wood runs close beneath the skin of the world here.
+#ee.coiltrace|'That power itself, the thing under the earth. Bureau says it started as a lesser tendril of the Seven-Coiled. Old god, d'you see? The god-flesh starts to rot and something else starts to breed in it. What they call Worms. I'd watch yourself. Fair warning.'
+#ee.crags|'Lot of the passes going up there have been blocked. You'll need to find a road or make one. I'd try to get you explosives, but the Bureau side doesn't like 'em, and the Army side doesn't like me.'
+#ee.creepinghorror|A creeping horror filters in through the skin. Come closer, says the night. Come closer.
+#ee.deceiver|A creature of twisting guile lurks here!
+#ee.devourer|A creature of crushing strength lurks here! Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.
+#ee.feast|The way to where I go requires something like a ritual, or a feast. I'd like to think of it as a party, though it's not the kind of party I'd choose. I'll need to keep a level head, weird intoxications or not. If I can't I'll come back with nothing more interesting than a hangover.
+#ee.fretfuldead|Cobwebby, reproachful remnants - fragile, but quicker than they look, and their touch will draw the years right out through the skin.
+#ee.guardedcompound|A guarded compound - walls, towers, and watchers.
+#ee.labyrinthseal|An extraordinary knot of mechanisms sealing an armoured vault door. I'm not clear if it's entirely occult or entirely mechanical in nature, but I know it's entirely going to make my life difficult.
+#ee.ligeian|A Ligeian! I can't defeat her, but I can convince her I'm not worth the trouble.
+#ee.miasma|A sticky, stenchy miasma. My head swims.
 #ee.mist|The Nameless Name of the Velvet has passed this way. This mist is the hem of her grey garment. It'll be hell to find a way through.
+#ee.monks|The guards of this place aren't susceptible to bribes or seduction. Some would say that's because of the holy oaths they've taken, but I suspect it's because they watch each other carefully.
+#ee.ordeal.agony|Now I face an Ordeal of Agony. I've done this kind of thing before, which is why I'm not looking forward to doing it again. I still carry the scars from last time, though not on my skin.
+#ee.ordeal.desolation|Now I face an Ordeal of Desolation - a sunset in the soul.
+#ee.ordeal.enigma|Now I face an Enigmatic Ordeal. There are two ways through: understand everything, or understand nothing.
+#ee.percussigant|A lolloping whirl of furred, clawed music demands my immediate attention. A Percussigant!
+#ee.scarredduellist|A scarred duellist salutes me.
+#ee.securevault|A heavy vault door with an impressive lock.
+#ee.shadowedway|The entrance is here, somewhere. I just need to find it.
+#ee.soldiers|Armed men guard this place.
+#ee.storm|Thunder stalks the lightning through the clouds, and the rain comes down like fists.
+#ee.strixriddenadversary|A duellist scuttles keening towards you. His muscles are taut and trembling, and his eyes are black and gold like an owl's. He's strix-ridden - possessed by a many-winged Names of the Edge powers.
+#ee.thugs|A surly band of miscreants loiters here, eager for trouble.
+#ee.unknownlocation|An unknown location. I'll need to start by finding exactly where this place even is.
+#ee.unwelcomememories|Unwelcome memories! The mirrors in the walls flash, and flash again, and I see myself, in my days of service to the Foe - what was done to me, and worse, what I did -
+#ee.vigil|The songs of the cultist soften into something like a lullaby. I find that I'm struggling to keep my eyes open. My head feels stuffed with feathers. Somehow, I'll have to stay awake until dawn.
 #|A complication lies ahead.@
 
 [Most Complications can be defeated with enough of the appropriate Aspect.]",
@@ -255,7 +283,7 @@ linked:[{id:"opx.caper.progress3"},
 
 {id:"opx.caper.end",
 actionId:"opx.rob.vault",
-effects:{cash:-100,complication:-100,supplies:-100,distraction:-100,op:-100},
+effects:{complication:-100},
 linked:[{id:"opx.caper.success"},
 {id:"opx.caper.failure"}]
 },
@@ -318,7 +346,7 @@ actionId:"travel",
 requirements:{loc.shrine.lionsmith.tripoli:1,contact.retainer:1},
 extantreqs:{memento.grail:-1,defiance.consecration.colonel:1},
 label:"In the Antaeum",
-startdescription:"The sanctuary is quiet, cool, though barred with sandstone sun. 'I am the last,' the old man says quietly. 'And so I am the last who knows she was laid to rest - here - beneath the great stone of the altar. A Child of Earth is a difficult birth for ordinary flesh, you see; and so her heart burst. Then he took you anyway...'",
+startdescription:"The sanctuary is quiet, cool, though barred with sandstone sun. 'I am the last,' the old man says quietly. 'And so I am the last who knows she was laid to rest - here - beneath the great stone of the altar. A Child of Earth is a difficult birth for ordinary flesh, you see; and so her heart burst. Then your father took you anyway...'",
 description:"I remain in the sanctuary after the old man has gone, until the stars wink outside the unglazed windows and the air is bitter with night. He pressed a gift into my hand before he left - a scrap of flesh I wore as I came into the world. 'You were born beneath the shattered sword,' he said, 'and so we always hoped you would choose to rebel. We had never thought you would rebel against the Lionsmith. But choice is freedom's shadow.'",
 warmup:30,
 aspects:{fatiguing:1},
@@ -331,7 +359,7 @@ actionId:"travel",
 requirements:{loc.shrine.lionsmith.tripoli:1,contact.retainer:1},
 extantreqs:{memento.grail:-1},
 label:"In the Antaeum",
-startdescription:"The sanctuary is quiet, cool, though barred with sandstone sun. 'I am the last,' the old man says quietly. 'And so I am the last who knows she was laid to rest - here - beneath the great stone of the altar. A Child of Earth is a difficult birth for ordinary flesh, you see; and so her heart burst. Then he took you anyway...'",
+startdescription:"The sanctuary is quiet, cool, though barred with sandstone sun. 'I am the last,' the old man says quietly. 'And so I am the last who knows she was laid to rest - here - beneath the great stone of the altar. A Child of Earth is a difficult birth for ordinary flesh, you see; and so her heart burst. Then your father took you anyway...'",
 description:"I remain in the sanctuary after the old man has gone, until the stars wink outside the unglazed windows and the air is bitter with night. He pressed a gift into my hand before he left - a scrap of flesh I wore as I came into the world. 'You were born beneath the shattered sword,' he said, 'and so we always hoped you would choose to rebel. After rebellion, of course, there comes the more difficult choice.'",
 warmup:30,
 aspects:{fatiguing:1},
