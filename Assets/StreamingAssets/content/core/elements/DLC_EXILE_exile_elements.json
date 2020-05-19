@@ -1308,9 +1308,31 @@ description:"FNORD",
 lifetime:1
 },
 
+{id: "ee.avidadept",
+label: "Avid Adept",
+aspects: {complication:1,mingrail:10,minmoth:10},
+description:"FNORD",
+lifetime:1
+},
+
 {id: "ee.bosk",
 label: "Bosk",
 aspects: {complication:1,minlantern:8,minmoth:8,minwinter:8},
+description:"FNORD",
+lifetime:1
+},
+
+{id: "ee.coiltrace",
+label: "Coil-Trace",
+aspects: {complication:1,minedge:14,minwinter:14},
+description:"FNORD",
+lifetime:1
+},
+
+
+{id: "ee.crags",
+label: "Crags",
+aspects: {complication:1,minforge:6,minheart:6},
 description:"FNORD",
 lifetime:1
 },
@@ -1762,6 +1784,18 @@ label: "The Lion of Many",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"FNORD",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+unique:true
+},
+
+{id:"vault.imhullu",
+label:"Althiban Abyss",
+inherits: "_vault.exile",
+description:"'There's a nasty sort of power stirring up in the mountains. Sealed away under the earth for years. But there was an earthquake, big hole opened up. Bureau tells me there's something weapon-y in there, and I'll be honest, I'd rather you had it than any of the local troublemakers.'",
+icon:"vaultrendingmountainsdefault",
+xtriggers:{success:[{id:weapon.e}],
+opx.progress0:[{id:ee.crags,morpheffect:spawn}],
+opx.progress1:[{id:ee.avidadept,morpheffect:spawn}],
+opx.progress2:[{id:ee.coiltrace,morpheffect:spawn}]},
 unique:true
 },
 
@@ -3306,11 +3340,8 @@ unique:true
 
 
 	  {id: "domicile.avignon",
-label: "Avignon",
-aspects: {domicile:1},
-
+label: "Avignon",aspects: {domicile:1},
 description:"Sleepy Avignon, where the mistral blows.",
-xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn}]},
 icon: city.avignon,
 unique:true
 },
@@ -3763,7 +3794,7 @@ aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"Percy Styles is still in Baghdad, doing whatever it is he does for the British government in Mandatory Iraq. He'd probably still be glad to see me..",
 unique:true,
-xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.baghdad",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"vault.imhullu",morpheffect:spawn},{id:"domicile.baghdad",morpheffect:transform}]}
 },
 
 
