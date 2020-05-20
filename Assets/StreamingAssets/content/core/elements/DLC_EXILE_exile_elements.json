@@ -4287,7 +4287,7 @@ xtriggers:{renewal.exile:op.night}
 label: "Temptation: Defiance",
 aspects: {defiancemarks:1,desire:1,choice.merciless:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
-slots:[{id:"contents",label:"Contents",description:"A taunting gift, or a location.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1},actionId:"send"}],
+slots:[{id:"contents",label:"Contents",description:"I could tell him my Foe where I am. Or even send him a gift.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1,weapon.profane:1},actionId:"send"}],
 icon: bloodshed
 },
 
