@@ -955,7 +955,7 @@ actionId:"travel",
 label:"Departure",
 startdescription:"Farewell.",
 requirements:{destination:1},
-haltverb:{rkx*:100,opx*:100,scout:1,use:1,send:1,relinquish:1},
+haltverb:{rkx*:100,opx*:100,scout:1,use:1,send:1,relinquish:1,spawn.*:100,spit.*:100},
 purge:{trace:100,asset:100,op:100,location:100,destination:100,contact.local:100,rkx.internal:100,damage.underling:100,domicile:1},
 comments:"Deleting the rkx verb and then recreating it with the alt works fine because effect execution occurs in turn inside each recipe, and alt additional=true
 gives us another recipe. But keep an eye on this.",

@@ -211,7 +211,7 @@ actionId:"rkx",
 label:"A Hostile Move!",
 startdescription:"The Assassin is moving against me!",
 requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{exhausted:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{remnant:1,exhausted:1}}],
 warmup:40,
 linked:[
 {id:"rkx.underling.distracted"},
