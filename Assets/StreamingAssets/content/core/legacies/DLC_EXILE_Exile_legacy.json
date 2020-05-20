@@ -139,5 +139,16 @@ fromEnding:"ascensionwolf",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
 startingVerbId: "use"},
+
+{id: "exile.victoryvelvet",
+label: "Exile",
+description: "What if it had been different? In another history, did I meet my maker?",
+startdescription: "Sunset. Time to go.",
+image: "exile",
+effects: {decade.stolen:10,ticket.train:1,trace:7},
+fromEnding:"victoryvelvet",
+availableWithoutEndingMatch:false,
+statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
+startingVerbId: "use"},
 ]
 }
