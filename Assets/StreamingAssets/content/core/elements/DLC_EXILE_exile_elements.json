@@ -4133,16 +4133,16 @@ xtriggers:{renewal.exile:op.cold,fatiguing:husk},
 
 {id: "op.heat",
 label: "Trembling Heat",
-aspects: {op:1,distraction:1,forge:2,grail:2},
+aspects: {op:1,distraction:1,forge:2, grail:2},
 description:"The air shimmers like a naked furnace. Serpents' weather.",
 lifetime:300,
 xtriggers:{renewal.exile:op.heat,fatiguing:husk}
 },
 
 {id: "op.sea",
-label: "Sea Port",
+label: "The Sea",
 aspects: {op:1,distraction:1,moth:2,winter:2},
-description:"The sea bears gifts: peace, or death, or escape.",
+description:"We're by the sea, here, and the sea bears gifts: peace, or death, or escape.",
 slots:[{id:"more",label:"More",actionId:"use",description:"Something I can only use by the sea.",required:{curio.morgen:1}}],
 xtriggers:{renewal.exile:op.sea,fatiguing:husk},
 lifetime:300

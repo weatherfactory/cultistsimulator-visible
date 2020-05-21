@@ -8,7 +8,7 @@ label:"My Foe's arrived!",
 startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
 effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
-warmup:5,
+warmup:10,
 alt:[{id:"rkx.spawn.escort",additional:true}],
 linked:[{id:"rkx.foe.attack"}]},
 
@@ -17,7 +17,8 @@ actionId:"rkx.foe",
 label:"My Foe has arrived!",
 startdescription:"Honour, or arrogance, has brought him here alone.", 
 linked:[{id:"rkx.foe.obscured"},
-{id:"rkx.foe.attack"}]},
+{id:"rkx.foe.attack"}],
+warmup:10},
 
 
 {id:"rkx.foe.arrive.defiance",
@@ -27,14 +28,14 @@ startdescription:"Let's hope I don't regret it.",
 effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
 alt:[{id:"foe.weaknesses.generate.backup",additional:true}],
-warmup:5,
+warmup:10,
 linked:[{id:"rkx.foe.attack"}]},
 
 
 {id:"rkx.foe.selector",
 actionId:"rkx.foe",
-label:"My Foe is here!",
-startdescription:"Frost pinches the windows and shadow crisps the candle-flames. I know too well what these signs mean.",
+label:"My Foe is Stalking Me",
+startdescription:"Even when I can't see him, I know he's there. He'll attack at any moment.",
 warmup:10,
 linked:[
 {id:"rkx.foe.obscured"},
@@ -59,7 +60,9 @@ linked:[{id:"rkx.foe.selector"}]},
 {id:"rkx.foe.attack",
 actionId:"rkx.foe",
 label:"Confrontation!",
-startdescription:"'You should have run further.'",
+startdescription:"'You should have run further.'
+
+[Add a card to defend against the Foe's attack. Distractions are most effective, but the Foe is only vulnerable to a few Distractions; you'll know which once you've uncovered his Weaknesses.]",
 slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1,defiance.consecration.lionsmith:1},
 forbidden:{weapon.profane:1,remnant:1,exhausted:1}}],
 alt:[{id:"rkx.spawn.escort",additional:true},{id:"rkx.foe.mock"}],
@@ -76,6 +79,7 @@ linked:[
 {id:"rkx.foe.weaknessexploited.horned"},
 {id:"rkx.foe.weaknessexploited.wolf"},
 {id:"rkx.foe.weaknessexploited.flowermaker"},
+{id:"rkx.foe.attack.success.wrongdistraction"},
 {id:"rkx.foe.attack.success"},
 {id:"rkx.foe.attack.failure"}]},
 
@@ -113,8 +117,9 @@ label:"Ligeian Interference",
 startdescription:"Even my Foe is wary of the Ligeians. He's hesitating.",
 requirements:{ligeian:1},
 effects:{ligeian:-1},
+warmup:30,
 alt:[{id:"spit.foe.attack.failure.ligeian",additional:true}],
-linked:[{id:"rkx.foe.attack.failure"}]
+linked:[{id:"rkx.foe.selector"}]
 },
 
 
@@ -126,6 +131,7 @@ requirements:{op.cold:1},
 extantreqs:{uq.rkx.weakness.cold:1},
 purge:{rkx.weakness.cold.hidden:1},
 effects:{op.cold:-1},
+warmup:30,
 linked:[{id:"rkx.foe.attack.failure"}]
 },
 {id:"rkx.foe.weaknessexploited.heat",
@@ -136,7 +142,8 @@ requirements:{op.heat:1},
 extantreqs:{uq.rkx.weakness.heat:1},
 purge:{rkx.weakness.heat.hidden:1},
 effects:{op.heat:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.sea",
@@ -147,7 +154,8 @@ requirements:{op.sea:1},
 extantreqs:{uq.rkx.weakness.sea:1},
 purge:{rkx.weakness.sea.hidden:1},
 effects:{op.sea:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.faith",
@@ -158,7 +166,8 @@ requirements:{op.faith:1},
 extantreqs:{uq.rkx.weakness.faith:1},
 purge:{rkx.weakness.faith.hidden:1},
 effects:{op.faith:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.cats",
@@ -169,7 +178,8 @@ requirements:{op.cats:1},
 extantreqs:{uq.rkx.weakness.cats:1},
 purge:{rkx.weakness.cats.hidden:1},
 effects:{op.cats:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.heights",
@@ -180,7 +190,8 @@ requirements:{op.heights:1},
 extantreqs:{uq.rkx.weakness.heights:1},
 purge:{rkx.weakness.heights.hidden:1},
 effects:{op.heights:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.horned",
@@ -191,7 +202,8 @@ requirements:{op.horned:1},
 extantreqs:{uq.rkx.weakness.horned:1},
 purge:{rkx.weakness.horned.hidden:1},
 effects:{op.horned:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 {id:"rkx.foe.weaknessexploited.wolf",
@@ -202,7 +214,8 @@ requirements:{op.wolf:1},
 extantreqs:{uq.rkx.weakness.wolf:1},
 purge:{rkx.weakness.wolf.hidden:1},
 effects:{op.wolf:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
 
 
@@ -214,12 +227,33 @@ requirements:{op.flowermaker:1},
 extantreqs:{uq.rkx.weakness.flowermaker:1},
 purge:{rkx.weakness.flowermaker.hidden:1},
 effects:{op.flowermaker:-1},
-linked:[{id:"rkx.foe.attack.failure"}]
+warmup:30,
+linked:[{id:"rkx.foe.selector"}]
 },
+
+{id:"rkx.foe.attack.success.wrongdistraction",
+actionId:"rkx.foe",
+label:"A Guttural Chuckle",
+requirements:{lore:-1,weapon:-1,associate:-1,distraction:1},
+startdescription:"'@#op.cold|'I was <i>born</i> in snow.'
+#op.heat|'Nice weather for what I intend.'
+#op.sea|'Good idea. I'll feed what's left to the sharks.'
+#op.cats|'Here, kitten. Here.'
+#op.heights|'.'
+#op.faith|'Wrong god.'
+#op.flowermaker|'I call upon the Flowermaker, who always has what I desire...'
+#op.horned|'The Horned-Axe, who separates and distinguished. Come here and be distinguished, then.'
+#op.wolf|'Appropriate. There'll be nothing left of you.'@",
+aspects:{fatiguing:1},
+alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
+
+effects:{distraction:-1},
+linked:[{id:"rkx.foe.selector"}],
+warmup:10},
 
 {id:"rkx.foe.attack.success",
 actionId:"rkx.foe",
-label:"My Foe's Wrath",
+label:"No Defence",
 startdescription:"'You were always too slow -'",
 aspects:{fatiguing:1},
 alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
@@ -249,16 +283,16 @@ warmup:10},
 {id:"spit.foe.attack.failure.lore",
 actionId:"spit.foe.attack",
 requirements:{lore:1},
-label:"My Foe, Stymied",
-startdescription:"I've held off his attack - ",
+label:"Defended with Training",
+startdescription:"This came in useful.",
 aspects:{fatiguing:1},
 warmup:2},
 
 {id:"spit.foe.attack.failure.weapon",
 actionId:"spit.foe.attack",
 requirements:{weapon:1},
-label:"My Foe, Stymied",
-startdescription:"I've held off his attack - ",
+label:"Defended with Weaponry",
+startdescription:"This came in useful.",
 aspects:{fatiguing:1},
 warmup:2},
 
