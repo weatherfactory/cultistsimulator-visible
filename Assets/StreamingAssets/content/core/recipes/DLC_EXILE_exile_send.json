@@ -10,6 +10,28 @@ effects:{temptation.obscurity:1},
 warmup:30,
 craftable:false},
 
+{id:"send.ligeian",
+actionId:"send",
+label:"Seek out a Ligeian",
+requirements:{ligeian:1},
+startdescription:"Like me, the Ligeians are criminals and fugitives. Unlike me, they've been cursed eternally  because they devoured their children fresh from the womb. Still, perhaps we can find some common ground.",
+slots:[{id:"gift",label:"Gift",required:{remnant:1},actionId:send}],
+warmup:30,
+craftable:true,
+linked:[{id:"send.ligeian.feed"}]},
+
+
+{id:"send.ligeian.feed",
+actionId:"send",
+label:"Ungodly Sounds",
+startdescription:"She's satisfied with my gift. She'll offer something in return.",
+slots:[{id:"advice",label:"Advice",description:"The Ligeians hear things, and they're very old.",required:{weakness.foe.unknown:1},actionId:send}],
+requirements:{remnant:1},
+aspects:{epiphany:1},
+warmup:30,
+effects:{remnant:-1}},
+
+
 
 
 
