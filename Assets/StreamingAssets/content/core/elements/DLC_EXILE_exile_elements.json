@@ -3028,7 +3028,7 @@ unique:true
 
 {id: "weapon.a.exhausted",
 label: "Profane Weapon (Readying)",
-aspects: {exhausted:1,asset:1,portable:1},
+aspects: {exhausted:1,asset:1,portable:1,worth:1},
 description:"A prosaic weight.",
 lifetime:60,
 decayTo:weapon.a,
@@ -3038,7 +3038,7 @@ icon:"weapon.a"
 
 {id: "weapon.b.2.exhausted",
 label: "Lionhunter's Rifle (Readying)",
-aspects: {exhausted:1,uses.remaining:2,asset:1,portable:1},
+aspects: {exhausted:1,uses.remaining:2,asset:1,portable:1,worth:2},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 lifetime:60,
 decayTo:weapon.b.2,
@@ -3048,7 +3048,7 @@ icon:weapon.b,
 
 {id: "weapon.b.1.exhausted",
 label: "Lionhunter's Rifle (Readying)",
-aspects: {exhausted:1,uses.remaining:1,asset:1,portable:1},
+aspects: {exhausted:1,uses.remaining:1,asset:1,portable:1,worth:2},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 lifetime:60,
 decayTo:weapon.b.1,
@@ -3058,7 +3058,7 @@ icon:weapon.b,
 
 {id: "weapon.c.exhausted",
 label: "Ebrehel, the Ragged Sword (Readying)",
-aspects: {exhausted:1,asset:1,portable:1,pentiment:1,pentiment.1:1},
+aspects: {exhausted:1,asset:1,portable:1,pentiment:1,pentiment.1:1,worth:3},
 description:"In its long career, this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was commissioned to be borne by kings against sieged cities, but it will cut bits off mortals and immortals just fine.",
 lifetime:90,
 decayTo:weapon.c,
@@ -3068,7 +3068,7 @@ icon:weapon.c
 
 {id: "weapon.d.exhausted",
 label: "Biedde's Blade (Readying)",
-aspects: {exhausted:1,asset:1,portable:1},
+aspects: {exhausted:1,asset:1,portable:1,worth:3},
 description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
 lifetime:90,
 decayTo:weapon.d,
@@ -3078,7 +3078,7 @@ icon:tooledged
 
 {id: "weapon.e.exhausted",
 label: "Imhullune Tectrix (Readying)",
-aspects: {exhausted:1,asset:1,portable:1},
+aspects: {exhausted:1,asset:1,portable:1,worth:4},
 description:"It doesn't look like much, but at its touch, flesh perishes. Perhaps it really is a last fragment of the weapon that slew the Seven-Coiled from within.",
 lifetime:60,
 decayTo:weapon.e,

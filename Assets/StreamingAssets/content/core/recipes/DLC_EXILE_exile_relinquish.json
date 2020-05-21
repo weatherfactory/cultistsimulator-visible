@@ -142,10 +142,24 @@ label:"Attempt to Sell an Asset for Cash",
 startdescription:"@#licence.medical|I can usually find someone who feels they really deserve to be a doctor.
 #|Perhaps I need cash more than I need this.@ [This will exchange the asset for Cash equal to its Worth.]",
 requirements:{worth:1,cash:-1},
+extantreqs:{asset.packed:-1},
 comments:"cash also has worth, but let's not convert it back to cash",
 effects:{cash:worth,asset:-1},
 warmup:30,
 craftable:true},
+
+{id:"relinquish.abandon",
+actionId:"relinquish",
+label:"Abandon an Asset",
+startdescription:"When the Devil is at your back, travel light. [Use this to get rid of any Portable Assets you don't have time to take with you.]",
+requirements:{asset:1},
+extantreqs:{asset.packed:1},
+effects:{asset:-1},
+effects:{asset:-1},
+warmup:1,
+craftable:true},
+
+
 
 ]
 }
