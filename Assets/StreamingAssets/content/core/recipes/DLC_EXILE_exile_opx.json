@@ -150,17 +150,6 @@ startdescription:"[Add Forge 6 and Space to begin a counterfeiting operation, a 
 craftable:false,
 hintonly:true},
 
-{id:"use.uprising",
-actionId:"use",
-label:"Assist an Uprising",
-startdescription:"It'll be messy, but it might even make the world a better place, eventually. [There will be an opportunity for profit; and it'll be harder for the reckoners to pick up your trail. The Lionsmith likes rebellions.]",
-requirements:{connection.radicals:1,forge:2,domicile:1,temptation.defiance:1,turmoil:-1},
-extantreqs:{opx.uprising:-1},
-aspects:{fatiguing:1},
-warmup:5,
-alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
-craftable:true},
-
 {id:"use.betrayal",
 actionId:"use",
 label:"Betray an Uprising",
@@ -171,6 +160,20 @@ aspects:{fatiguing:1},
 warmup:5,
 alt:[{id:"opx.betrayal.begin", additional:true, expulsion:{limit:5,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
 craftable:true},
+
+{id:"use.uprising",
+actionId:"use",
+label:"Assist an Uprising",
+startdescription:"It'll be messy, but it might even make the world a better place, eventually. [There will be an opportunity for profit; and it'll be harder for the reckoners to pick up your trail. The Lionsmith likes rebellions.]",
+comments:"Assumes Radicals add Forge 6",
+requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1,turmoil:-1},
+extantreqs:{opx.uprising:-1},
+aspects:{fatiguing:1},
+warmup:5,
+alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
+craftable:true},
+
+
 
 {id:"use.patronage",
 actionId:"use",
