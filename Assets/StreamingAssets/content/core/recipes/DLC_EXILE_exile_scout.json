@@ -422,7 +422,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.bornholm:1},
-	internaldeck: {spec: [op.cold,op.flowermaker,op.sea], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.flowermaker,op.sea,obscurity], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -433,7 +433,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.slettnes:1},
-	internaldeck: {spec: [op.cold,op.wolf,op.sea], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.wolf,op.sea,obscurity,op.sunset], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.cheko",
@@ -443,7 +443,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.cheko:1},
-	internaldeck: {spec: [op.cold,op.cats,op.wolf], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.cats,op.wolf,obscurity,op.night], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -454,7 +454,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.paro:1},
-	internaldeck: {spec: [op.cold,op.heights,op.faith,op.cats], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.heights,op.faith,op.cats,obscurity,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -465,7 +465,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.messana:1},
-	internaldeck: {spec: [op.heat,op.heights,op.horned], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.heat,op.heights,op.horned,obscurity,op.sunset], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.ghardaia",
@@ -475,7 +475,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.ghardaia:1},
-	internaldeck: {spec: [op.heat,op.cats,op.flowermaker], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.heat,op.cats,op.flowermaker,obscurity,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -486,7 +486,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.morbihan:1},
-	internaldeck: {spec: [op.faith,op.horned,op.sea], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.faith,op.horned,op.sea,obscurity,op.night], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.wilderness",
