@@ -262,12 +262,12 @@ warmup:60,
 extantreqs: {comfort:20},
 craftable:true,
 signalEndingFlavour:Grand,
-linked:[{id:"send.victory.obscurity.c"},
-{id:"send.victory.obscurity.b"},
-{id:"send.victory.obscurity.a"},
-{id:"send.victory.obscurity.a.foeslain"},
+linked:[{id:"send.victory.obscurity.c.foeslain"},
 {id:"send.victory.obscurity.b.foeslain"},
-{id:"send.victory.obscurity.a.foeslain"}]
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.c"},
+{id:"send.victory.obscurity.b"},
+{id:"send.victory.obscurity.a"}]
 },
 
 
@@ -280,12 +280,13 @@ extantreqs: {comfort:10},
 warmup:60,
 craftable:true,
 signalEndingFlavour:Grand,
-linked:[{id:"send.victory.obscurity.c"},
+linked:[{id:"send.victory.obscurity.c.foeslain"},
+{id:"send.victory.obscurity.b.foeslain"},
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.c"},
 {id:"send.victory.obscurity.b"},
 {id:"send.victory.obscurity.a"},
-{id:"send.victory.obscurity.a.foeslain"},
-{id:"send.victory.obscurity.b.foeslain"},
-{id:"send.victory.obscurity.a.foeslain"}]
+]
 },
 
 
@@ -298,12 +299,13 @@ requirements:{temptation.obscurity:1,obscurity:7},
 warmup:60,
 craftable:true,
 signalEndingFlavour:Pale,
-linked:[{id:"send.victory.obscurity.c"},
+linked:[{id:"send.victory.obscurity.c.foeslain"},
+{id:"send.victory.obscurity.b.foeslain"},
+{id:"send.victory.obscurity.a.foeslain"},
+{id:"send.victory.obscurity.c"},
 {id:"send.victory.obscurity.b"},
 {id:"send.victory.obscurity.a"},
-{id:"send.victory.obscurity.a.foeslain"},
-{id:"send.victory.obscurity.b.foeslain"},
-{id:"send.victory.obscurity.a.foeslain"}]
+]
 },
 
 

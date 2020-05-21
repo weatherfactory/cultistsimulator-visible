@@ -415,6 +415,25 @@ requirements:{domicile.vienna:1},
 
 
 
+
+{id:"scout.end.foe.defeated",
+actionId:"scout",
+label:"Rest and Wait",
+startdescription:"@#domicile.bornholm| 
+#domicile.cheko|Each day, sunrise comes a little earlier. The winds grow a little less savage. It's almost spring.
+#domicile.ghardaia|The buffeting half-silence of the high desert; the creeping sun. The locals still keep a respectful distance, but now they nod as I pass them.
+#domicile.messana|Shadows sprawl as each day passes. Sometimes, now, the villagers come up to leave me small gifts of food, and salute me.
+#domicile.morbihan|The brothers have tidied away the debris of the battle, and permit me to break fast with them in the long hall where the sunlight slants.
+#domicile.paro|Each morning I clamber up the steps and acropss the rickety bridges to watch the dawn. The monks smile at me as I pass.
+#domicile.slettnes|The sea crashes grey on the stones each morning, and grumbles at me all through the night. It's something to listen to when I can't sleep.@",
+warmup:30, 
+craftable:true,
+requirements:{domicile:1,end:1},
+extantreqs:{rkx.foe.defeated:1},
+effects:{obscurity:3},
+},
+
+
 {id:"scout.bornholm",
 actionId:"scout",
 label:"Reconnoitre Sunshine Island",
