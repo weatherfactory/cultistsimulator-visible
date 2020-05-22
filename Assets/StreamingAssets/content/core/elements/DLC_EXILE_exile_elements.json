@@ -1734,7 +1734,7 @@ unique:true
 {id: "loc.shrine.lionsmith.algiers",
 label: "Skaptodon Tomb",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
-description:"Sometimes a skaptodon greedy, starts eating things they don't find in the earth, and degenerates to something like human shape. I learnt the hard way that it's much more difficult to kill a skaptodon that still has all its old strength. But one fell in battle here, and the shrine honours its bones. ",
+description:"Sometimes a skaptodon becomes greedy, starts eating things they don't find in the earth, and degenerates to something like human shape. I learnt the hard way that it's much more difficult to kill a skaptodon that still has all its old strength. But one fell in battle here, and the shrine honours its bones. ",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.lionsmith,
 unique:true
@@ -3361,8 +3361,8 @@ unique:true
 
 	  {id: "domicile.algiers",
 label: "Algiers",
-aspects: {domicile:1},
-
+aspects: {domicile:1,troubled:1},
+xtriggers:{uprising:domicile.algiers.turmoil},
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
 icon: city.algiers,
 unique:true
@@ -3434,7 +3434,7 @@ unique:true
 {id: "domicile.istanbul",
 label: "Istanbul",
 aspects: {domicile:1},
-xtriggers:{uprising:domicile.baghdad.turmoil},
+xtriggers:{uprising:domicile.istanbul.turmoil},
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 icon:city.istanbul,
 unique:true
@@ -3783,7 +3783,7 @@ unique:true
 label: "Rhenish Aachen",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help.",
+description:"A message from Aachen has found me. An old acquaintance from Marrakech is hunting there. She'd like my help. [Once you leave the current city, this will never be available again.]",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn},{id:"domicile.aachen"}]},
 unique:true
 },
@@ -3792,7 +3792,7 @@ unique:true
 label: "Alexandria",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Back before the war, I was invited to the Invisible Serapeum in Alexandria. With luck, the invitation is still open.",
+description:"Back before the war, I was invited to the Invisible Serapeum in Alexandria. With luck, the invitation is still open. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"vault.serapeum",morpheffect:spawn},{id:"domicile.alexandria",morpheffect:transform}]}
 },
@@ -3800,9 +3800,9 @@ xtriggers:{arriving:[{id:"vault.serapeum",morpheffect:spawn},{id:"domicile.alexa
 
 	  {id: "city.algiers",
 label: "Algiers",
-aspects: {destination:1,shrine.lionsmith.marker:1},
+aspects: {destination:1,shrine.lionsmith.marker:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"My smuggler contact, M. Giorgiou, has people in Algiers. They could get me in there quietly.",
+description:"My smuggler contact, M. Giorgiou, has people in Algiers. They could get me in there quietly. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.algiers",morpheffect:transform}]}
 },
@@ -3812,7 +3812,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Amsterdam",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Over the years I've found a dozen treasures for the Stegenga twins in Amsterdam. They may give me shelter.",
+description:"Over the years I've found a dozen treasures for the Stegenga twins in Amsterdam. They may give me shelter. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.amsterdam",morpheffect:transform}]}
 },
@@ -3822,7 +3822,7 @@ xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"domicile.
 label: "Avignon",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"A smuggler contact in Avignon, M. Giorgiou, has a proposition for me.",
+description:"A smuggler contact in Avignon, M. Giorgiou, has a proposition for me. [Once you leave the current city, this will never be available again.]",
 xtriggers:{arriving:[{id:"contact.smuggler",morpheffect:spawn},{id:"domicile.avignon",morpheffect:transform}]},
 unique:true
 },
@@ -3831,7 +3831,7 @@ unique:true
 label: "Baghdad",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Percy Styles is still in Baghdad, doing whatever it is he does for the British government in Mandatory Iraq. He'd probably still be glad to see me..",
+description:"Percy Styles is still in Baghdad, doing whatever it is he does for the British government in Mandatory Iraq. He'd probably still be glad to see me.  [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"vault.imhullu",morpheffect:spawn},{id:"domicile.baghdad",morpheffect:transform}]}
 },
@@ -3841,7 +3841,7 @@ xtriggers:{arriving:[{id:"connection.official",morpheffect:spawn},{id:"vault.imh
 label: "Budapest",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I hear my old friend Lili has moved her black market operations to Budapest.",
+description:"I hear my old friend Lili has moved her black market operations to Budapest. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.budapest",morpheffect:transform}]}
 },
@@ -3852,7 +3852,7 @@ aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"It's a long time since I was in Crete, but I've been dreaming about it again, and about the scent of hawthorn...",
+description:"It's a long time since I was in Crete, but I've been dreaming about it again, and about the scent of hawthorn... [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"op.horned",morpheffect:spawn},{id:"domicile.candia",morpheffect:transform}]}
 },
@@ -3862,7 +3862,7 @@ xtriggers:{arriving:[{id:"op.horned",morpheffect:spawn},{id:"domicile.candia",mo
 label: "Cluj-Napoca",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"My old friend Lili's operations in Cluj have suffered since Hungary gave the city up, but her name might still open doors.",
+description:"My old friend Lili's operations in Cluj have suffered since Hungary gave the city up, but her name might still open doors. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.cluj",morpheffect:transform}]}
 },
@@ -3871,7 +3871,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Granada",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I've had dealings with a gallery owner in Granada. Last year she invited me to stay with her.",
+description:"I've had dealings with a gallery owner in Granada. Last year she invited me to stay with her. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.granada",morpheffect:transform}]}
 },
@@ -3880,7 +3880,7 @@ xtriggers:{arriving:[{id:"contact.visionary",morpheffect:spawn},{id:"domicile.gr
 label: "Istanbul",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"My old comrade-in-arms Kara Kemal has connections with the Black Arm remnants in Istanbul. Perhaps his name will still open doors.",
+description:"My old comrade-in-arms Kara Kemal has connections with the Black Arm remnants in Istanbul. Perhaps his name will still open doors. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.radicals",morpheffect:spawn},{id:"domicile.istanbul",morpheffect:transform}]}
 },
@@ -3890,7 +3890,7 @@ xtriggers:{arriving:[{id:"connection.radicals",morpheffect:spawn},{id:"domicile.
 label: "Kaunas (Little Paris)",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Dominykas the Baker has done well for himself: high-level connections in the Iron Wolf in Kaunas. We never really got on, but he owes me, and I can't be fussy.",
+description:"Dominykas the Baker has done well for himself: high-level connections in the Iron Wolf in Kaunas. We never really got on, but he owes me, and I can't be fussy. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.ghoul",morpheffect:spawn},{id:"domicile.kaunas",morpheffect:transform}]}
@@ -3901,7 +3901,7 @@ xtriggers:{arriving:[{id:"contact.ghoul",morpheffect:spawn},{id:"domicile.kaunas
 label: "Kiev",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I've heard rumours the hungriest of the Ligeians is abroad in Kiev. My pursuers will need to tread carefully there, but then, so will I.",
+description:"I've heard rumours the hungriest of the Ligeians is abroad in Kiev. My pursuers will need to tread carefully there, but then, so will I. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.marinette",morpheffect:spawn},{id:"domicile.kiev",morpheffect:transform}]}
@@ -3910,7 +3910,7 @@ xtriggers:{arriving:[{id:"op.marinette",morpheffect:spawn},{id:"domicile.kiev",m
 label: "Kraków",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Yitzchok Ashlag in Krakow has relied on me for years for the rarer occult texts. He's a hospitable man.",
+description:"Yitzchok Ashlag in Krakow has relied on me for years for the rarer occult texts. He's a hospitable man. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"vault.yitzchok",morpheffect:spawn},{id:"domicile.krakow",morpheffect:transform}]}
@@ -3922,7 +3922,7 @@ xtriggers:{arriving:[{id:"vault.yitzchok",morpheffect:spawn},{id:"domicile.krako
 label: "Leningrad",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The 'Athenians' who sell years in Russia are sworn enemies of the Reckoner mobs, but I've been known to get drunk with a certain Sushkin. Let's hope he remembers me.",
+description:"The 'Athenians' who sell years in Russia are sworn enemies of the Reckoner mobs, but I've been known to get drunk with a certain Sushkin. Let's hope he remembers me. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.leningrad",morpheffect:transform}]}
@@ -3932,7 +3932,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "London",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Ottavio Berton in London has put out the word that he'd like my help. He's a scoundrel, but we go back a long way.",
+description:"Ottavio Berton in London has put out the word that he'd like my help. He's a scoundrel, but we go back a long way. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.london",morpheffect:transform}]}
@@ -3942,7 +3942,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Marrakech",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"A marabout named Navil has somehow discovered I'm here. His message reads only 'COME TO MARRAKECH, FOR GLORY'",
+description:"A marabout named Navil has somehow discovered I'm here. His message reads only 'COME TO MARRAKECH, FOR GLORY' [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.marrakech",morpheffect:transform}]}
@@ -3955,7 +3955,7 @@ aspects: {destination:1,remote:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"A very old poet in Meshad has long been a favourite customer of mine. She'll certainly offer me hospitality.",
+description:"A very old poet in Meshad has long been a favourite customer of mine. She'll certainly offer me hospitality. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"grief",morpheffect:spawn},{id:"domicile.meshad",morpheffect:transform}]}
@@ -3966,7 +3966,7 @@ xtriggers:{arriving:[{id:"grief",morpheffect:spawn},{id:"domicile.meshad",morphe
 label: "Munich",
 aspects: {destination:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I have a standing invitation from Count Gottlieb Jannings, of Munich, to attend a meeting of the duelling society he favours.",
+description:"I have a standing invitation from Count Gottlieb Jannings, of Munich, to attend a meeting of the duelling society he favours. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.vivisectionist",morpheffect:spawn},{id:"domicile.munich",morpheffect:transform}]}
@@ -3979,7 +3979,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"Sushkin of the 'Athenians' has kept his import-export operation in Nizhny running, but it's difficult under the Soviets. His people there might be glad of my help.",
+description:"Sushkin of the 'Athenians' has kept his import-export operation in Nizhny running, but it's difficult under the Soviets. His people there might be glad of my help. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.nizhny",morpheffect:transform}]}
@@ -3992,7 +3992,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Paris",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Tante Adeline's moved on, but she still has people in Paris, and they'll give me shelter.",
+description:"Tante Adeline's moved on, but she still has people in Paris, and they'll give me shelter. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.paris",morpheffect:transform}]}
 },
@@ -4003,7 +4003,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Prague",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The old rogue in Prague who calls herself 'Tante Adeline' could use my help.",
+description:"The old rogue in Prague who calls herself 'Tante Adeline' could use my help. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicile.prague",morpheffect:transform}]}
@@ -4015,7 +4015,7 @@ xtriggers:{arriving:[{id:"connection.underworld",morpheffect:spawn},{id:"domicil
 label: "Rostock",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"My correspondent Count Jannings has a house in Rostock that I could use.",
+description:"My correspondent Count Jannings has a house in Rostock that I could use. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"townhouse.jannings",morpheffect:spawn},{id:"domicile.rostock",morpheffect:transform}]}
@@ -4031,7 +4031,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"I used to supply proscribed materials to a Jadidist magus in Samarkand. Perhaps he remembers me.",
+description:"I used to supply proscribed materials to a Jadidist magus in Samarkand. Perhaps he remembers me. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"connection.holy",morpheffect:spawn},{id:"domicile.samarkand",morpheffect:transform}]}
@@ -4044,7 +4044,7 @@ aspects: {destination:1,remote:1,troubled:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"The criminal adepts called the Bird-Eaters have set their faces against the laws of both man and Mansus. I had heard that Zulfiya the Barber had joined them in Stalingrad. The Bird-Eaters are not good people. But I always liked Zulfiya.",
+description:"The criminal adepts called the Bird-Eaters have set their faces against the laws of both man and Mansus. I had heard that Zulfiya the Barber had joined them in Stalingrad. The Bird-Eaters are not good people. But I always liked Zulfiya. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stalingrad",morpheffect:transform}]}
@@ -4055,7 +4055,7 @@ xtriggers:{arriving:[{id:"contact.barber",morpheffect:spawn},{id:"domicile.stali
 label: "Strasbourg",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"The Hügelkinder of the Vosges sometimes take human shape to walk the streets of Strasbourg. I've dealt with them before. They know as well as anyone how to be unobtrusive: perhaps they can help.",
+description:"The Hügelkinder of the Vosges sometimes take human shape to walk the streets of Strasbourg. I've dealt with them before. They know as well as anyone how to be unobtrusive: perhaps they can help. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"obscurity",morpheffect:spawn},{id:"domicile.strasbourg",morpheffect:transform}]}
@@ -4069,7 +4069,7 @@ aspects: {destination:1,remote:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"Zulfiya the Barber used to buy life from me with jewels in the city of Sverdlovsk. She's turned strange and moved on to another city, but she introduced me to some of her contacts, back before the Civil War.",
+description:"Zulfiya the Barber used to buy life from me with jewels in the city of Sverdlovsk. She's turned strange and moved on to another city, but she introduced me to some of her contacts, back before the Civil War. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
@@ -4081,7 +4081,7 @@ xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
 label: "Tiflis",
 aspects: {destination:1,troubled:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Vasil the Fivegoer took refuge from the reckoners in Tiflis long ago. He owes me, though he might not welcome my visit.",
+description:"Vasil the Fivegoer took refuge from the reckoners in Tiflis long ago. He owes me, though he might not welcome my visit. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.fivegoer",morpheffect:spawn},{id:"domicile.tiflis",morpheffect:transform}]}
@@ -4092,7 +4092,7 @@ xtriggers:{arriving:[{id:"contact.fivegoer",morpheffect:spawn},{id:"domicile.tif
 label: "Tirana",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"Before all this went bad, I was negotiating a sale of life with one of President Zogu's people in Tirana. I still have her address.",
+description:"Before all this went bad, I was negotiating a sale of life with one of President Zogu's people in Tirana. I still have her address. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.tirana",morpheffect:transform}]}
@@ -4103,7 +4103,7 @@ xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.
 label: "Tripoli dell'ovest",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I don't have any people in Tripoli. I don't remember it at all. But quite some time ago, in the days of the Ottomans, I was born here.",
+description:"I don't have any people in Tripoli. I don't remember it at all. But quite some time ago, in the days of the Ottomans, I was born here. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"domicile.tripoli",morpheffect:transform}]}
@@ -4116,7 +4116,7 @@ aspects: {destination:1,remote:1,shrine.colonel.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}},
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
-description:"My old comrade-in-arms Kara Kemal is in exile in Valletta. It's been a while, but I did save his life in the Great War...",
+description:"My old comrade-in-arms Kara Kemal is in exile in Valletta. It's been a while, but I did save his life in the Great War... [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.valletta",morpheffect:transform}]}
@@ -4126,7 +4126,7 @@ xtriggers:{arriving:[{id:"op.connection.ruler",morpheffect:spawn},{id:"domicile.
 label: "Venice",
 aspects: {destination:1,shrine.lionsmith.marker:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"I know a woman named Orsolina in Venice. She wasn't always a woman. But she's lived there a very long time.",
+description:"I know a woman named Orsolina in Venice. She wasn't always a woman. But she's lived there a very long time. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
 xtriggers:{arriving:[{id:"contact.delver",morpheffect:spawn},{id:"domicile.venice",morpheffect:transform}]}
@@ -4137,7 +4137,7 @@ xtriggers:{arriving:[{id:"contact.delver",morpheffect:spawn},{id:"domicile.venic
 label: "Vienna",
 aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
-description:"It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time.",
+description:"It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time. [Once you leave the current city, this will never be available again.]",
 unique:true,
 xtriggers:{arriving:[{{id:"op.kleidouchos",morpheffect:spawn},id:"domicile.vienna",morpheffect:transform}]}
 },
