@@ -479,7 +479,7 @@ actionId:"use",
 label:"Reserve",
 startdescription:"I'll investigate a little more closely. [This will renew the lifespan of the Opportunity in case you need it later.]",
 description:"There.",
-requirements:{op:1,price:-1,price.connection:-1,price.lifespan.stolen:-1},
+requirements:{op:1,asset:-1,price:-1,price.connection:-1,price.lifespan.stolen:-1},
 aspects:{renewal.exile:1},
 warmup:30,craftable:true},
 
