@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -202,6 +203,21 @@ namespace Assets.CS.TabletopUI {
 
         void Start()
 		{
+
+            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
+            if (File.Exists(appealToConscienceLocation))
+            {
+                var content = File.ReadLines(appealToConscienceLocation);
+                DateTime expiry = Convert.ToDateTime(content.First());
+                if(DateTime.Today>expiry)
+                { 
+                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
+                return;
+                }
+            }
+
+
+
        	    #if UNITY_STANDALONE_OSX
             // Vsync doesn't seem to limit the FPS on the mac so well, so we set it to 0 and force a target framerate (setting it to 0 any other way doesn't work, has to be done in code, apparently in Start not Awake too) - FM
             QualitySettings.vSyncCount = 0;
