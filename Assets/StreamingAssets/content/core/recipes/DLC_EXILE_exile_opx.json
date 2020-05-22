@@ -1,6 +1,133 @@
 {
 "recipes": [
 
+
+{id:"use.sanatorium.duplicate.hint",
+actionId:"use",
+label:"Run another Sanatorium?",
+startdescription:"One at a time is enough.",
+requirements:{licence.medical:1,space:2,comfort:4, year.stolen:1},
+extantreqs:{opx.sanatorium:1},
+alt:[{id:"opx.sanatorium.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
+craftable:false,hintonly:true},
+
+
+{id:"use.doctorspractice.duplicate.hint",
+actionId:"use",
+label:"Run another Doctor's Practice?",
+startdescription:"One at a time is enough.",
+requirements:{licence.medical:1,space:1,year.stolen:1},
+extantreqs:{opx.doctor:1},
+craftable:false,hintonly:true},
+
+
+{id:"use.miracles.duplicate.hint",
+actionId:"use", 
+label:"Run another Faith-Healing Cult?",
+startdescription:"One at a time is enough.",
+requirements:{connection.holy:1,space:1,year.stolen:1},
+extantreqs:{opx.miracles:1},
+craftable:false,hintonly:true},
+
+{id:"use.cultseed.flowermaker.duplicate.hint",
+actionId:"use",
+label:"Assemble another Esoteric Cult of the Flowermaker?",
+startdescription:"One at a time is enough.",
+description:"The congregation is assembling.",
+requirements:{op.miracles.cultseed:1,op.flowermaker:1,space:1,year.stolen:1},
+extantreqs:{opx.flowermaker:1},
+craftable:false,hintonly:true},
+
+{id:"use.cultseed.horned.duplicate.hint",
+actionId:"use",
+label:"Assemble another Esoteric Cult of the Horned Axe?",
+startdescription:"One at a time is enough.",
+description:"The congregation is assembling.",
+requirements:{op.miracles.cultseed:1,op.horned:1,space:1,year.stolen:1},
+extantreqs:{opx.horned:1},
+craftable:false,hintonly:true},
+
+{id:"use.cultseed.wolf.duplicate.hint",
+actionId:"use",
+label:"Assemble another Esoteric Cult of the Wolf Divided?",
+startdescription:"One at a time is enough.",
+description:"The congregation is assembling.",
+requirements:{op.miracles.cultseed:1,op.wolf:1,space:1,year.stolen:1},
+extantreqs:{opx.wolf:-},
+craftable:false,hintonly:true},
+
+{id:"use.cultseed.miracles.duplicate.hint",
+actionId:"use",
+label:"Continue another Faith-Healing Cult?",
+startdescription:"One at a time is enough.",
+description:"The congregation is assembling, again.",
+requirements:{op.miracles.cultseed:1,space:1,year.stolen:1},
+extantreqs:{opx.miracles:1},
+craftable:false,hintonly:true},
+
+{id:"use.import.duplicate.hint",
+actionId:"use",
+label:"Run another Import Business?",
+startdescription:"One at a time is enough.",
+description:"I've opened up shop.",
+requirements:{licence.import:1,space:1,op.sea:1},
+extantreqs:{opx.import:-},
+craftable:false,hintonly:true},
+ 
+{id:"use.counterfeiting.duplicate.hint",
+actionId:"use",
+label:"Run another Counterfeiting Operation?",
+startdescription:"One at a time is enough.",
+description:"The presses are almost ready.",
+requirements:{connection.underworld:1,forge:6,space:1},
+extantreqs:{opx.counterfeiting:1},
+craftable:false,hintonly:true},
+
+{id:"use.smuggling.duplicate.hint",
+actionId:"use",
+label:"Run another Smuggling Operation?",
+startdescription:"One at a time is enough.",
+description:"Everything is ready.",
+requirements:{connection.underworld:1,op.sea:1,space:1},
+extantreqs:{opx.smuggling:1},
+craftable:false,hintonly:true},
+
+{id:"use.fights.duplicate.hint",
+actionId:"use",
+label:"Compete in Even More Illegal Fights?",
+startdescription:"Seriously, though.",
+requirements:{connection.underworld:1,year.stolen:1},
+extantreqs:{opx.fights:1},
+craftable:false,hintonly:true},
+
+{id:"use.betrayal.duplicate.hint",
+actionId:"use",
+label:"Betray another Uprising?",
+startdescription:"One at a time is enough.",
+requirements:{connection.radicals:1,winter:2,domicile:1,temptation.defiance:1},
+extantreqs:{opx.betrayal:1},
+craftable:false,hintonly:true},
+
+{id:"use.uprising.duplicate.hint",
+actionId:"use",
+label:"Assist another Uprising?",
+startdescription:"One at a time is enough.",
+comments:"Assumes Radicals add Forge 6",
+requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1,turmoil:-1},
+extantreqs:{opx.uprising:1},
+craftable:false,hintonly:true},
+
+{id:"use.patronage.duplicate.hint",
+actionId:"use",
+label:"Pester the Ruler for Further Patronage?",
+startdescription:"Perhaps not.",
+requirements:{connection.ruler:1,year.stolen:1}, 
+extantreqs:{opx.patronage:1},
+craftable:false,hintonly:true},
+
+
+
+
 {id:"use.sanatorium",
 actionId:"use",
 label:"Run a Sanatorium",
@@ -10,7 +137,7 @@ requirements:{licence.medical:1,space:2,comfort:4, year.stolen:1},
 extantreqs:{opx.sanatorium:-1},
 effects:{year.stolen:-1},
 warmup:5,
-alt:[{id:"opx.sanatorium.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
+alt:[{id:"opx.sanatorium.setup", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
 craftable:true},
 
 {id:"use.sanatorium.hint",
@@ -31,7 +158,7 @@ requirements:{licence.medical:1,space:1,year.stolen:1},
 extantreqs:{opx.doctor:-1},
 effects:{year.stolen:-1},
 warmup:5,
-alt:[{id:"opx.doctorspractice.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
+alt:[{id:"opx.doctorspractice.setup", additional:true, expulsion:{limit:3,filter:{space:1,licence.medical:1}}}],
 craftable:true},
 
 
@@ -45,19 +172,19 @@ extantreqs:{opx.miracles:-1},
 effects:{year.stolen:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.miracles.begin", additional:true, expulsion:{limit:4,filter:{space:1,op.connection.holy:1}}}],
+alt:[{id:"opx.miracles.setup", additional:true, expulsion:{limit:4,filter:{space:1,op.connection.holy:1}}}],
 craftable:true},
 
 {id:"use.cultseed.flowermaker",
 actionId:"use",
-label:"Assemblean Esoteric Cult of the Flowermaker",
+label:"Assemble an Esoteric Cult of the Flowermaker",
 startdescription:"The Flowermaker's presence is strong here. I'll let the enthusiasts in the congregation pursue their pleasures. [A reasonably safe way to convert stolen lifespan into cash. Moth aspect cards are often useful when running a Cult.]",
 description:"The congregation is assembling.",
 requirements:{op.miracles.cultseed:1,op.flowermaker:1,space:1,year.stolen:1},
 extantreqs:{opx.flowermaker:-1},
 effects:{year.stolen:-1,op.flowermaker:-1},
 warmup:5,
-alt:[{id:"opx.flowermaker.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+alt:[{id:"opx.flowermaker.setup", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
 craftable:true},
 
 {id:"use.cultseed.horned",
@@ -69,7 +196,7 @@ requirements:{op.miracles.cultseed:1,op.horned:1,space:1,year.stolen:1},
 extantreqs:{opx.horned:-1},
 effects:{year.stolen:-1,op.horned:-1},
 warmup:5,
-alt:[{id:"opx.horned.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+alt:[{id:"opx.horned.setup", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
 craftable:true},
 
 {id:"use.cultseed.wolf",
@@ -81,7 +208,7 @@ requirements:{op.miracles.cultseed:1,op.wolf:1,space:1,year.stolen:1},
 extantreqs:{opx.wolf:-1},
 effects:{year.stolen:-1,op.wolf:-1},
 warmup:5,
-alt:[{id:"opx.wolf.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
+alt:[{id:"opx.wolf.setup", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,space:1}}}],
 craftable:true},
 
 {id:"use.cultseed.miracles",
@@ -93,7 +220,7 @@ requirements:{op.miracles.cultseed:1,space:1,year.stolen:1},
 extantreqs:{opx.miracles:-1},
 effects:{year.stolen:-1,progress.effectiveness:1},
 warmup:5,
-alt:[{id:"opx.miracles.begin", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,progress.effectiveness:1,space:1}}}],
+alt:[{id:"opx.miracles.setup", additional:true, expulsion:{limit:3,filter:{op.miracles.cultseed:1,progress.effectiveness:1,space:1}}}],
 craftable:true},
 
 {id:"use.import",
@@ -104,7 +231,7 @@ description:"I've opened up shop.",
 requirements:{licence.import:1,space:1,op.sea:1},
 extantreqs:{opx.import:-1},
 warmup:5,
-alt:[{id:"opx.import.begin", additional:true, expulsion:{limit:3,filter:{space:1,licence.import:1,op.sea:1}}}],
+alt:[{id:"opx.import.setup", additional:true, expulsion:{limit:3,filter:{space:1,licence.import:1,op.sea:1}}}],
 craftable:true},
  
 {id:"use.counterfeiting",
@@ -115,7 +242,7 @@ description:"The presses are almost ready.",
 requirements:{connection.underworld:1,forge:6,space:1},
 extantreqs:{opx.counterfeiting:-1},
 warmup:5,
-alt:[{id:"opx.counterfeiting.begin", additional:true, expulsion:{limit:4,filter:{op.connection.underworld:1,space:1,forge:6}}}],
+alt:[{id:"opx.counterfeiting.setup", additional:true, expulsion:{limit:4,filter:{op.connection.underworld:1,space:1,forge:6}}}],
 craftable:true},
 
 {id:"use.smuggling",
@@ -127,7 +254,7 @@ requirements:{connection.underworld:1,op.sea:1,space:1},
 extantreqs:{opx.smuggling:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.smuggling.begin", additional:true, expulsion:{limit:3,filter:{space:1,op.sea:1}}}],
+alt:[{id:"opx.smuggling.setup", additional:true, expulsion:{limit:3,filter:{space:1,op.sea:1}}}],
 craftable:true},
 
 {id:"use.fights",
@@ -139,7 +266,7 @@ extantreqs:{opx.fights:-1},
 effects:{year.stolen:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.fights.begin", additional:true, expulsion:{limit:3,filter:{op.connection.underworld:1,space:1}}}],
+alt:[{id:"opx.fights.setup", additional:true, expulsion:{limit:3,filter:{op.connection.underworld:1,space:1}}}],
 craftable:true},
 
 {id:"use.underworld.hint",
@@ -155,10 +282,10 @@ actionId:"use",
 label:"Betray an Uprising",
 startdescription:"This has been a century for revolutions, and it's hardly begun. I'll be saving lives [There will be an opportunity for profit, and you'll win favour with the local authorities. The Colonel likes the stats quo.]",
 requirements:{connection.radicals:1,winter:2,domicile:1,temptation.defiance:1},
-extantreqs:{opx.betrayal:-1},
+extantreqs:{opx.betrayal:-1,opx.uprising:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.betrayal.begin", additional:true, expulsion:{limit:5,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
+alt:[{id:"opx.betrayal.setup", additional:true, expulsion:{limit:5,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
 craftable:true},
 
 {id:"use.uprising",
@@ -167,10 +294,10 @@ label:"Assist an Uprising",
 startdescription:"It'll be messy, but it might even make the world a better place, eventually. [There will be an opportunity for profit; and it'll be harder for the reckoners to pick up your trail. The Lionsmith likes rebellions.]",
 comments:"Assumes Radicals add Forge 6",
 requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1,turmoil:-1},
-extantreqs:{opx.uprising:-1},
+extantreqs:{opx.uprising:-1,opx.betrayal:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.uprising.begin", additional:true, expulsion:{limit:3,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
+alt:[{id:"opx.uprising.setup", additional:true, expulsion:{limit:3,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
 craftable:true},
 
 
@@ -184,8 +311,127 @@ extantreqs:{opx.patronage:-1},
 effects:{year.stolen:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.patronage.begin", additional:true, expulsion:{limit:3,filter:{op.connection.ruler:1}}}],
+alt:[{id:"opx.patronage.setup", additional:true, expulsion:{limit:3,filter:{op.connection.ruler:1}}}],
 craftable:true},
+
+
+
+
+
+{id:"opx.sanatorium.setup",
+actionId:"opx.sanatorium",
+label:"A Sanatorium",
+startdescription:"Setting up...",
+effects:{ee.sanatorium1.heart.grail:1},
+linked:[{id:"opx.sanatorium.begin"}]
+},
+
+
+
+{id:"opx.doctorspractice.setup",
+actionId:"opx.doctorspractice",
+label:"A Doctor's Practice",
+startdescription:"Setting up...",
+effects:{ee.doctor1.heart.grail:1},
+linked:[{id:"opx.doctorspractice.begin"}]
+},
+
+
+{id:"opx.miracles.setup",
+actionId:"opx.miracles",
+label:"A Faith-Healing Cult",
+startdescription:"Setting up...",
+effects:{ee.miracles1.moth.grail:1},
+linked:[{id:"opx.miracles.begin"}]
+},
+
+{id:"opx.flowermaker.setup",
+actionId:"opx.flowermaker",
+label:"A Cult of the Flowermaker",
+startdescription:"Setting up...",
+effects:{ee.flowermaker1.grail.lantern:1},
+linked:[{id:"opx.flowermaker.begin"}]
+},
+
+{id:"opx.horned.setup",
+actionId:"opx.horned",
+label:"A Cult of the Horned-Axe",
+startdescription:"Setting up...",
+effects:{ee.horned1.knock.winter:1},
+linked:[{id:"opx.horned.begin"}]
+},
+
+
+{id:"opx.wolf.setup",
+actionId:"opx.wolf",
+label:"A Cult of the Wolf Divided",
+startdescription:"Setting up...",
+effects:{ee.wolf1.edge.winter:1},
+linked:[{id:"opx.wolf.begin"}]
+},
+
+
+{id:"opx.import.setup",
+actionId:"opx.import",
+label:"An Import Business",
+startdescription:"Setting up...",
+effects:{ee.import1.lantern.heart:1},
+linked:[{id:"opx.import.begin"}]
+},
+
+
+{id:"opx.counterfeiting.setup",
+actionId:"opx.counterfeiting",
+label:"A Counterfeiting Operation",
+startdescription:"Setting up...",
+effects:{ee.counterfeiting1.forge.winter:1},
+linked:[{id:"opx.counterfeiting.begin"}]
+},
+
+
+{id:"opx.smuggling.setup",
+actionId:"opx.smuggling",
+label:"A Smuggling Operation",
+startdescription:"Setting up...",
+effects:{ee.smuggling1.moth.knock:1},
+linked:[{id:"opx.smuggling.begin"}]
+},
+
+
+{id:"opx.fights.setup",
+actionId:"opx.fights",
+label:"Fighting",
+startdescription:"Setting up...",
+effects:{ee.fights1.edge.grail:1},
+linked:[{id:"opx.fights.begin"}]
+},
+
+{id:"opx.uprising.setup",
+actionId:"opx.uprising.betrayal",
+label:"Uprising",
+startdescription:"Setting up...",
+effects:{ee.uprising1.edge.heart:1},
+linked:[{id:"opx.uprising.begin"}]
+},
+
+
+{id:"opx.betrayal.setup",
+actionId:"opx.uprising.betrayal",
+label:"Betrayal",
+startdescription:"Setting up...",
+effects:{ee.betrayal1.winter.heart:1},
+linked:[{id:"opx.betrayal.begin"}]
+},
+
+{id:"opx.patronage.setup",
+actionId:"opx.patronage",
+label:"Patronage",
+startdescription:"Setting up...",
+effects:{ee.patronage1.heart.lantern:1},
+linked:[{id:"opx.patronage.begin"}]
+},
+
+
 
 
 {id:"opx.sanatorium.begin",
@@ -194,7 +440,6 @@ label:"A Sanatorium",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.sanatorium1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -206,7 +451,6 @@ label:"A Doctor's Practice",
 startdescription:"Business hours. [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.doctor1.heart.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -217,7 +461,6 @@ label:"A Faith-Healing Cult",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.miracles1.moth.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -227,7 +470,6 @@ label:"A Cult of the Flowermaker",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.flowermaker1.grail.lantern:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -237,7 +479,6 @@ label:"A Cult of the Horned-Axe",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.horned1.knock.winter:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -248,12 +489,8 @@ label:"A Cult of the Wolf Divided",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.wolf1.edge.winter:1},
 linked:[{id:"opx.challenge"}]
 },
-
-
-
 
 {id:"opx.import.begin",
 actionId:"opx.import",
@@ -261,7 +498,6 @@ label:"An Import Business",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.import1.lantern.heart:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -272,7 +508,6 @@ label:"A Counterfeiting Operation",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.counterfeiting1.forge.winter:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -283,7 +518,6 @@ label:"A Smuggling Operation",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.smuggling1.moth.knock:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -294,7 +528,6 @@ label:"Fighting",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.fights1.edge.grail:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -304,7 +537,6 @@ label:"Uprising",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.uprising1.edge.heart:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -315,7 +547,6 @@ label:"Betrayal",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.betrayal1.winter.heart:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -325,7 +556,6 @@ label:"Patronage",
 startdescription:" [Challenges will occur while your Operation is running. If you can match their Aspect requirements by adding cards, your Operation will be subtler, or more effective. Cards will remain in the Operation until the end.]",
 warmup:10,
 slots:[{id:"preparations",label:"Preparations",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,secrethistories:1,winter:1}}],
-effects:{ee.patronage1.heart.lantern:1},
 linked:[{id:"opx.challenge"}]
 },
 
@@ -477,20 +707,20 @@ linked:[{id:"opx.next"}]},
 
 {id:"opx.next",
 actionId:"opx.",
-label:"The Operation Continues",
-startdescription:"@#opx.doctor|'Next.'
-#opx.sanatorium|'My staff will see you to your room.'
-#opx.miracles|'Rejoice!'
-#opx.flowermaker|'Love is the law, but there is more.'
-#opx.horned|'We will divide what should not be joined.'
-#opx.wolf|'The gate of vengeance is agony.'
-#opx.counterfeiting|'Keep it running.'
-#opx.smuggling|'No lights!'
-#opx.import|'Sign here.'
-#opx.fights|'Who's NEXT?'
-#opx.uprising|'Very soon, now.'
-#opx.betrayal|'You can trust me.'
-#opx.patronage|'Yes, I'm expected.'@",
+label:"An Operation Continues",
+startdescription:"@#opx.doctor|'Next.' [A Doctor's Practice]
+#opx.sanatorium|'My staff will see you to your room.' [A Sanatorium]
+#opx.miracles|'Rejoice!' [A Faith-Healing Cult]
+#opx.flowermaker|'Love is the law, but there is more.' [An Esoteric Cult of the Flowermaker]
+#opx.horned|'We will divide what should not be joined.' [An Esoteric Cult of the Horned-Axe]
+#opx.wolf|'The gate of vengeance is agony.' [An Esoteric Cult of the Wolf Divided]
+#opx.counterfeiting|'Keep it running.' [Counterfeiting]
+#opx.smuggling|'No lights!' [Smuggling]
+#opx.import|'Sign here.' [Import Business]
+#opx.fights|'Who's NEXT?' [Illegal Fights]
+#opx.uprising|'Very soon, now.' [Uprising]
+#opx.betrayal|'You can trust me.' [Betray an Uprising]
+#opx.patronage|'Yes, I'm expected.' [Patronage] @",
 aspects:{next:1},
 warmup:5,
 linked:[{id:"opx.challenge"},
@@ -500,7 +730,7 @@ linked:[{id:"opx.challenge"},
 
 {id:"opx.end",
 actionId:"opx.",
-label:"The Operation is Complete",
+label:"An Operation is Complete",
 startdescription:"@#opx.doctor|'I'm delighted to see you looking so much better.'
 #opx.sanatorium|'See you next year.'
 #opx.miracles|'And now, I must leave you.'
