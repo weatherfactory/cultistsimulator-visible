@@ -2678,8 +2678,7 @@ aspects: {op:1,price.lifespan.stolen:10},
 description:"A chance to get acquainted with someone of real importance.",
 xtriggers:{purchase:connection.ruler,renewal.exile:op.connection.ruler},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{decade.stolen:1},consumes:true}],
-lifetime:300,
-icon:xg
+lifetime:300
 },
 
 	  	  {id: "op.connection.holy",
@@ -2688,8 +2687,7 @@ aspects: {op:1,price.lifespan.stolen:1},
 description:"Charity brings clarity.",
 xtriggers:{purchase:connection.holy,renewal.exile:op.connection.holy},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
-lifetime:300,
-icon:xl
+lifetime:300
 },
 
 	  	  {id: "op.connection.radicals",
@@ -2698,8 +2696,7 @@ aspects: {op:1,price.lifespan.stolen:1},
 description:"This might have consequences. But I'm probably not planning to stick around.",
 xtriggers:{purchase:connection.radicals,renewal.exile:op.connection.radicals},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
-lifetime:300,
-icon:xe
+lifetime:300
 },
 
 	  	  {id: "op.connection.underworld",
@@ -2708,8 +2705,7 @@ aspects: {op:1,price.lifespan.stolen:1},
 description:"I've been around, and when you get around, you get to know a certain kind of professional. That's just how it is.",
 xtriggers:{purchase:connection.underworld,renewal.exile:op.connection.underworld},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{lifespan.stolen:1},consumes:true}],
-lifetime:300,
-icon:xm
+lifetime:300
 },
 
 
@@ -2850,8 +2846,7 @@ xtriggers:{fatiguing:husk}
 {id:"rarity.moth",
 label:"Rarity: 'Green as Remembered Rain'",
 aspects:{asset:1,portable:1,comfort:1,moth:8,grail:4,worth:2,pentiment:1,pentiment.7:1},
-description:"An oil painting of a final horizon, in green-and-gold and glory.",
-icon:paintingmastermoth
+description:"An oil painting of a final horizon, in green-and-gold and glory."
 },
 
 {id:"rarity.winter",
@@ -2937,8 +2932,7 @@ label:"Connection: Ruler",
 aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
 slots:[{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with someone of real power.",
-xtriggers:{fatiguing:op.connection.ruler,provoking:connection.radicals},
-icon:xg
+xtriggers:{fatiguing:op.connection.ruler,provoking:connection.radicals}
 },
 
 
@@ -2948,8 +2942,7 @@ aspects:{connection:1,asset:1,deception:1,heart:4,lantern:4},
 slots:[{actionId:use,id:"venue",label:"Venue",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with a learned holy man.",
-xtriggers:{fatiguing:op.connection.holy,provoking:connection.radicals},
-icon:xl
+xtriggers:{fatiguing:op.connection.holy,provoking:connection.radicals}
 },
 
 
@@ -2960,8 +2953,7 @@ slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2
 {actionId:use,id:"city",label:"City",required:{domicile:1}},
 {actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
-xtriggers:{fatiguing:op.connection.radicals,provoking:connection.official},
-icon:xe
+xtriggers:{fatiguing:op.connection.radicals,provoking:connection.official}
 },
 
 {id:"connection.underworld",
@@ -2970,8 +2962,7 @@ aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
 slots:[{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1,year.stolen:1}},
 {actionId:use,id:"location",label:"Location",required:{space:2}}],
 description:"A mutually beneficial arrangement with relevant professionals.",
-xtriggers:{fatiguing:op.connection.underworld,provoking:connection.official},
-icon:xm
+xtriggers:{fatiguing:op.connection.underworld,provoking:connection.official}
 },
 
 
@@ -3132,7 +3123,6 @@ xtriggers:{fatiguing:husk}
 label: "Temptation: Escape",
 aspects: {desire:1,choice.merciful:1},
 unique:true,
-icon:julian.defeated,
 slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}},
 {actionId:"send",id:"obscurity2",label:"Obscurity",required:{obscurity:1}},
 {actionId:"send",id:"obscurity3",label:"Obscurity",required:{obscurity:1}},
@@ -3345,7 +3335,7 @@ label: "Rhenish Aachen",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 description:"Republics come and republics go since the Great War. Just now, Aachen has its own republic under French patronage. I should be gone before it collapses.",
 xtriggers:{arriving:[{id:"contact.huntress",morpheffect:spawn}],uprising:domicile.aachen.turmoil},
-icon: city.aachen,
+icon:domicile.aachen,
 unique:true
 },
 
@@ -3354,7 +3344,7 @@ label: "Alexandria",
 aspects: {domicile:1,shrine.lionsmith.marker:1},
 
 description:"Dignified men of business in tall red hats and immaculate white suits outside the Bourse; British soldiers bickering drunkenly by a melon-slice stall; theosophists playing backgammon in the Cafe Al Aktar. At the Rialto in Safiya Zaghloul, they're showing a German film about waxworks, but the power goes off and on and off again. Behind the curtain of night, the Invisible Serapeum waits.",
-icon: city.alexandria,
+icon:domicile.alexandria,
 unique:true
 },
 
@@ -3364,7 +3354,7 @@ label: "Algiers",
 aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.algiers.turmoil},
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
-icon: city.algiers,
+icon:domicile.algiers,
 unique:true
 },
 
@@ -3373,7 +3363,7 @@ label: "Amsterdam",
 aspects: {domicile:1},
 
 description:"The Golden Age is over, but glory lingers like fading music. Bicycles rattle across cobbles. A woman in white throws open the shutters of a high window. On misty evenings, the Nameless Name of the Velvet walks here.",
-icon: city.amsterdam,
+icon:domicile.amsterdam,
 unique:true
 },
 
@@ -3381,7 +3371,7 @@ unique:true
 	  {id: "domicile.avignon",
 label: "Avignon",aspects: {domicile:1},
 description:"Sleepy Avignon, where the mistral blows.",
-icon: city.avignon,
+icon:domicile.avignon,
 unique:true
 },
 
@@ -3390,7 +3380,7 @@ label: "Baghdad",
 aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.baghdad.turmoil},
 description:"Baking heat, dusty orange trees, tiled and genteel decay. The Ottomans did not favour Baghdad. Now the British have imported a Syrian puppet king, and alternate between building hospitals and bombing the locals into bloody compliance. The city is probably due another rebellion any day now.",
-icon: city.baghdad,
+icon:domicile.baghdad,
 unique:true
 },
 
@@ -3400,7 +3390,7 @@ label: "Budapest",
 aspects: {domicile:1},
 
 description:"Winter in Budapest, and the Danube is dusted with snow. The Dual Monarchy has collapsed, but somehow this city is once again the capital of the Kingdom of Hungary. The King has twice tried to return, and twice been driven out. Politics.",
-icon: city.budapest,
+icon:domicile.budapest,
 unique:true
 },
 
@@ -3408,7 +3398,7 @@ unique:true
 label: "Candia-Heraklion",
 aspects: {domicile:1,remote:1,shrine.colonel.marker:1},
 description:"A hard two decades. The Asia Minor Disaster; independence, and the Union with Greece; and then a monkey bit the King to death. But the Cretans and their island have endured four thousand years, and they endure still. The harbour is mountainous with fortifications, but Heraklion lies quiet in the afternoon sun.",
-icon: city.candia,
+icon:domicile.candia,
 unique:true
 },
 
@@ -3418,7 +3408,7 @@ label: "Cluj-Napoca",
 aspects: {domicile:1},
 
 description:"Nestled in the mountains of sunset lies the city of the Archangel Michael. I remember it mostly as the place where I drank too much tsuica and got into a fight with bricklayers. We've all been young.",
-icon: city.cluj,
+icon:domicile.cluj,
 unique:true
 },
 
@@ -3427,7 +3417,7 @@ label: "Granada",
 aspects: {domicile:1},
 
 description:"Cold clean air and hushed white streets and green-splashed patios and the mountains looking down. I might find something like respite.",
-icon: city.granada,
+icon:domicile.granada,
 unique:true
 },
 
@@ -3436,7 +3426,7 @@ label: "Istanbul",
 aspects: {domicile:1},
 xtriggers:{uprising:domicile.istanbul.turmoil},
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
-icon:city.istanbul,
+icon:domicile.istanbul,
 unique:true
 },
 
@@ -3448,7 +3438,7 @@ label: "Kaunas (Little Paris)",
 aspects: {domicile:1},
 
 description:"Half of Lithuania has fallen to Poland, and the peace is desperately fragile, but this is the capital now. They call it Little Paris, and the lamplight glows in the cafes and the dance halls. But there is a new president, and now the Association of the Iron Wolf begins to tighten its jaws.",
-icon: city.kaunas,
+icon:domicile.kaunas,
 unique:true
 },
 
@@ -3458,7 +3448,7 @@ label: "Kiev",
 aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.kiev.turmoil},
 description:"The city of the black earth and the golden gate. For a little while it was free, but first the Marshal and then the Red Army put an end to that.",
-icon: city.kiev,
+icon:domicile.kiev,
 unique:true
 },
 	  {id: "domicile.krakow",
@@ -3466,7 +3456,7 @@ label: "Kraków",
 aspects: {domicile:1},
 
 description:"The castle on the hill where the dragon died looks out across a city mellow with October sunlight. Just don't speak ill of the Marshal.",
-icon: city.krakow,
+icon:domicile.krakow,
 unique:true
 },
 
@@ -3477,7 +3467,7 @@ label: "Leningrad",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 xtriggers:{uprising:domicile.leningrad.turmoil},
 description:"Lenin is dead, and the old capital now carries his name. It carries, too, the scars of the Revolution, of the Red Terror, and now of the September Deluge. The streets still stink of the Neva mud. In a dim curtained office high in the Tauride Palace, Zinoviev awaits Stalin's next move.",
-icon: city.leningrad,
+icon:domicile.leningrad,
 unique:true
 },
 
@@ -3486,7 +3476,7 @@ label: "London",
 aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.london.turmoil},
 description:"Mass strikes and martial law have paralysed the big smoke this month. Tanks rumble along Pall Mall. Agitators conspire in the city's lethal fogs. Perhaps the Nameless Name will shield me with her mists...",
-icon: city.london,
+icon:domicile.london,
 unique:true
 },
 
@@ -3495,7 +3485,7 @@ label: "Marrakech",
 aspects: {domicile:1},
 
 description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
-icon: city.marrakech,
+icon:domicile.marrakech,
 unique:true
 },
 
@@ -3504,7 +3494,7 @@ unique:true
 label: "Meshad",
 aspects: {domicile:1,remote:1},
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
-icon: city.meshad,
+icon:domicile.meshad,
 unique:true
 },
 
@@ -3514,7 +3504,7 @@ label: "Munich",
 aspects: {domicile:1,troubled:1,shrine.colonel.marker:1},
 xtriggers:{uprising:domicile.munich.turmoil},
 description:"Munich is still a gracious city, and the chestnuts are very lovely in the spring. But hatreds old and new, and the privations of the Great War, make it a difficult place just now. More so since the beer-hall business last year with Ludendorff and that godawful little Austrian.",
-icon: city.munich,
+icon:domicile.munich,
 unique:true
 },
 
@@ -3524,7 +3514,7 @@ label: "Nizhny Novgorod",
 aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
 xtriggers:{uprising:domicile.nizhny.turmoil},
 description:"For a hundred years, here where the Volga and the Oka meet, all the riches of old Russia and beyond have met at Nizhny Great Fair. Now the Red Army garrisons the echoing old spaces, but still the goods come. Copper, salt, grain, tea; wool, coal, nails, flesh.",
-icon: city.nizhny,
+icon:domicile.nizhny,
 unique:true
 },
 
@@ -3536,7 +3526,7 @@ label: "Paris",
 aspects: {domicile:1},
 
 description:"This year in the City of Lights, the socialists battle the communists, the Métro grumbles, gaunt artists prowl bookshops on the Other Bank. Plus ça change.",
-icon: city.paris,
+icon:domicile.paris,
 unique:true
 },
 
@@ -3547,7 +3537,7 @@ label: "Prague",
 aspects: {domicile:1},
 
 description:"The City of a Hundred Spires, flexing its republican muscles beneath the benign gaze of Masaryk and his Castlemen. Statues watch the bridges each night. This is Europe's heart, and for a while longer, it will beat with cheery vigour.",
-icon: city.prague,
+icon:domicile.prague,
 unique:true
 },
 
@@ -3558,7 +3548,7 @@ label: "Rostock",
 aspects: {domicile:1},
 
 description:"Beyond the kerosene bustle of the great port, here by the dark sea where the amber comes to light, ancient clockwork drives the Warnemünde Lighthouse. Each night it winks at the horizon. ",
-icon: city.rostock,
+icon:domicile.rostock,
 unique:true
 },
 
@@ -3571,7 +3561,7 @@ label: "Samarkand",
 aspects: {domicile:1,remote:1,troubled:1},
 xtriggers:{uprising:domicile.samarkand.turmoil},
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
-icon: city.samarkand,
+icon:domicile.samarkand,
 unique:true
 },
 
@@ -3581,7 +3571,7 @@ label: "Stalingrad",
 aspects: {domicile:1,remote:1,troubled:1,shrine.colonel.marker:1},
 xtriggers:{uprising:domicile.stalingrad.turmoil},
 description:"Midnight in Stalingrad. Everywhere, statues of the Georgian radiate avuncular menace across the moonlit streets.",
-icon: city.stalingrad,
+icon:domicile.stalingrad,
 unique:true
 },
 
@@ -3590,7 +3580,7 @@ unique:true
 label: "Strasbourg",
 aspects: {domicile:1},
 description:"Here were sworn the great oaths that divided the empire of the great Charles between east and west. In consequence, the land has been contested for a thousand years; in consequence, the shadow of the Horned Axe lies long here. Also, there's a cheery little bistro where they serve that stew with juniper and white wine that I like.",
-icon: city.strasbourg,
+icon:domicile.strasbourg,
 unique:true
 },
 
@@ -3601,7 +3591,7 @@ label: "Sverdlovsk",
 aspects: {domicile:1,remote:1,troubled:1},
 xtriggers:{uprising:domicile.sverdlovsk.turmoil},
 description:"This was always the city of the jewel-merchants and the malachite miners. Now the Bolsheviks are remaking it as a crucible of heavy industry.",
-icon: city.sverdlovsk,
+icon:domicile.sverdlovsk,
 unique:true
 },
 
@@ -3612,7 +3602,7 @@ label: "Tiflis",
 aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.tiflis.turmoil},
 description:"The falcon-king found the sulphur-springs, and built his city here. Now it's the capital of the Transcaucasian Socialist Federative Soviet Republic, and there are motor-cars, a telegraph office. Progress.",
-icon: city.tiflis,
+icon:domicile.tiflis,
 unique:true
 },
 
@@ -3622,7 +3612,7 @@ label: "Tirana",
 aspects: {domicile:1},
 
 description:"Flower-thronged Tirana, where Zogist soldiers crowd the cafes with drunken laughter, where the Flowermaker hums his dreamy songs in the bee-droning shadows.",
-icon: city.tirana,
+icon:domicile.tirana,
 unique:true
 },
 
@@ -3632,7 +3622,7 @@ label: "Tripoli dell'ovest",
 aspects: {domicile:1,comfort:2},
 
 description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
-icon: city.tripoli,
+icon:domicile.tripoli,
 unique:true
 },
 
@@ -3644,7 +3634,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"Sunny seat of the Crown Colony of Malta. British sailors saunter along the sloping streets. The battleship <i>Royal Rose</i> dominates the harbour like an iron cathedral.",
-icon: city.valletta,
+icon:domicile.valletta,
 unique:true
 },
 
@@ -3653,7 +3643,7 @@ label: "Venice",
 aspects: {domicile:1},
 
 description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
-icon: city.venice,
+icon:domicile.venice,
 unique:true
 },
 
@@ -3663,7 +3653,7 @@ label: "Vienna",
 aspects: {domicile:1},
 
 description:"One of those few cities which has the same name in every History... if you believe that sort of thing. For a very long time it was the first heart of the Dual Empire, and for the longest time the adepts have known it as the White City. But now it's Red Vienna under the First Republic, and the streets are bright with dawn.",
-icon: city.vienna,
+icon:domicile.vienna,
 unique:true
 },
 
@@ -4322,7 +4312,7 @@ unique:true,
 aspects: {defiancemarks:1,desire:1,choice.merciless:1},
 description:"Some there are who will not yield. Perhaps this is a virtue.",
 slots:[{id:"contents",label:"Contents",description:"I could tell him my Foe where I am. Or even send him a gift.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1,weapon.profane:1},actionId:"send"}],
-icon: bloodshed
+icon:bloodshed
 },
 
 
