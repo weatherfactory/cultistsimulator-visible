@@ -633,9 +633,9 @@ isAspect:true,
 
 {id: "connection",
 label: "Connection",
-description:"[Hidden aspect]",
+description:"'We read that we ought to forgive our enemies; but we do not read that we ought to forgive our friends.' - Cosimo de'Medici",
 isAspect:true,
-isHidden:true
+icon:long.connections
 },
 
 {id:"worth",
@@ -2920,6 +2920,7 @@ slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
 label:"Official Connection",
 aspects:{connection:1,asset:1,deception:1,grail:6,lantern:6},
 description:"A mutually beneficial arrangement with someone in authority.",
+slots:[{actionId:use,id:"consideration",label:"Consideration",required:{worth:1}}],
 xtriggers:{fatiguing:op.connection.official}
 },
 
@@ -4146,7 +4147,7 @@ lifetime:60
 label: "Lonely Places Between",
 aspects: {domicile:1},
 description:"There are always choices. I could die of thirst, or cold, or hunger. [Few opportunities of any use, and you'll have to take whatever road onwards presents itself.]",
-icon: vaultshires1
+icon: wilderness
 },
 
 {id: "op.cold",

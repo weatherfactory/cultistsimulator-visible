@@ -500,7 +500,19 @@ effects:{loc.shrine.nameless:1,op.cats:-1}},
 actionId:"use",
 comments:"Follow-on recipe to fatigue resources and tidy up consumables",
 aspects:{fatiguing:1}
-}
+},
+
+
+{id:"use.connection.official",
+actionId:"use",
+label:"Possibilities",
+startdescription:"I can ask my contact to look out for opportunities. They'll need their expenses covered, of course. [This will create an Opportunity to purchase either a Medical License or an Import License.]",
+description:"This could help.",
+requirements:{connection.official:1,worth:1},
+internaldeck: {spec: [op.licence.medical,op.licence.import], draws: 1,  resetonexhaustion: true},
+aspects:{fatiguing:1},
+warmup:60,
+craftable:true}
 
 
 
