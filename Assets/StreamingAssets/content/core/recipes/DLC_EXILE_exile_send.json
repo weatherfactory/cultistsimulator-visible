@@ -211,10 +211,11 @@ startdescription:"@#op.echidna|'Sit down, sweetie. Let's have a chat.'
 #op.marinette|'<sprite name=secrethistories>?'
 #op.sulochana|Sulochana takes a long draw from a clove cigarette. 'I'm feeling indulgent,' she purrs. 'Go on.'@
 
-[Add an unknown Foe weakness to learn its nature, or wait to see what the Ligeian might give you.]",
+[Add an unknown Foe weakness to learn its nature. If you don't, the Ligeian will give you a gift, or eat a Reckoner without leaving a Trace - although she won't notice Informants and won't go after the Foe.]",
 slots:[{id:"advice",label:"Advice",description:"The Ligeians hear things, and they're very old.",required:{weakness.foe.unknown:1},actionId:send}],
 alt:[{id:"send.ligeian.revelation"}],
-linked:[{id:"send.ligeian.echidna.reward"},
+linked:[{id:"send.ligeian.ravage"},
+{id:"send.ligeian.echidna.reward"},
 {id:"send.ligeian.kleidouchos.reward"},
 {id:"send.ligeian.marinette.reward"},
 {id:"send.ligeian.sulochana.reward"}],
@@ -224,13 +225,25 @@ warmup:30},
 actionId:"send",
 label:"Intelligence",
 startdescription:"@#op.echidna|'Of course I remember him. I knew your mother, too. I had high hopes of her, once...'
-op.kleidouchos|'Mm. I have been aware of your Foe.'
+#op.kleidouchos|'Mm. I have been aware of your Foe.'
 #op.marinette|'<sprite name=lantern>.'
 #op.sulochana|'Oh, yes. He used to come in here all the time, back before the War.'@",
 requirements:{weakness.foe.unknown:1},
 aspects:{epiphany:1},
 effects:{ligeian:-1},
 },
+
+{id:"send.ligeian.ravage",
+actionId:"send",
+label:"Down In One",
+startdescription:"@#op.echidna|'Is someone tasty causing you trouble, moppet? Let Auntie E sort it out.'
+#op.kleidouchos|'I have registered my objections with your reckoner friend.'
+#op.marinette|'<sprite name=edge>, <sprite name=edge>, <sprite name=edge>... <sprite name=grail>.'
+#op.sulochana|'That was silly of him. Well, he won't do it again.'@",
+extantreqs:{rkx.rank:1},
+deleteverb:{rkx:1},
+effects:{ligeian:-1},
+warmup:10},
 
 {id:"send.ligeian.echidna.reward",
 actionId:"send",
