@@ -861,6 +861,13 @@ icon:pentiment,
 isAspect:true
 },
 
+{id: "pentiment.10",
+label: "Pentiment",
+description:"Mistakes were made. But that was not what had been intended, not at the beginning.",
+icon:pentiment,
+isAspect:true
+},
+
 
 
 {id:"asset.packed",
@@ -2763,9 +2770,16 @@ xtriggers:{fatiguing:husk}
 },
 
 {id: "memento.grail",
+label: "Stained Gloves",
+description:"At first I think they're still warm. After a little while, I realise they'll always be warm.",
+aspects:{asset:1,portable:1,grail:4,worth:1,pentiment:1,pentiment.10:1},
+icon:toolgrailb
+},
+
+{id: "memento.grail.lantern",
 label: "Khirqa-Caul",
 description:"This was my first garment in the world of air.",
-aspects:{grail:2,lantern:2,pentiment:1,pentiment.4:1},
+aspects:{asset:1,portable:1,grail:2,lantern:2,pentiment:1,pentiment.4:1},
 icon:ingredientgrailf
 },
 
@@ -2782,8 +2796,6 @@ description:"A gift from someone who is not as he was.",
 aspects:{asset:1,portable:1,comfort:1,lantern:4,pentiment:1,pentiment.3:1},
 icon:toollanternb
 },
-
-
 
 
 
@@ -4335,11 +4347,20 @@ description:"Seven of these will end me.",
 lifetime:1200
 },
 
+	  {id: "wound.exile.unstanchable",
+label: "My Wound",
+aspects:{knock:4,winter:4,damage.exile:1},
+description:"Seven of these will end me. [This Wound will take twice as long to heal.]",
+	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
+lifetime:2400
+},
+
 	  {id: "wound.exile.medusa",
 label: "My Unhealing Wound",
 aspects:{knock:4,winter:4,damage.exile:1,pentiment:1,pentiment.6:1},
 description:"Six more wounds will end me. This wound will not heal without extraordinary measures.",
-	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}]
+	  slots:[{actionId: "relinquish", id:"repurposedlife",label:"Repurposed Life",description:"This wound could cost me ten years - unless I replace those years.", required:{decade.stolen:1,vitality:1}}],
+icon:scar_knock
 },
 
 	  {id: "wound.foe",
