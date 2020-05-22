@@ -159,6 +159,32 @@ effects:{asset:-1},
 warmup:1,
 craftable:true},
 
+{id:"relinquish.provoke",
+actionId:"relinquish",
+label:"Provoke my Connections",
+startdescription:"I'm not the only one with enemies. If I arrange a public rift with this contact, I might gain @#connection.official|Underworld Connections
+#connection.holy|Radical Connections
+#connection.radicals|Official Connections
+#connection.ruler|Radical Connections
+#connection.underworld|Official Connections@ instead. Or I might just annoy my current contacts. [This will usually work, but sometimes fail and leave you with no Connections and a Trace.]",
+requirements:{connection:1},
+linked:[{id:"relinquish.provoke.success",chance:70},
+{id:"relinquish.provoke.failure"}],
+warmup:60,
+craftable:true},
+
+{id:"relinquish.provoke.success",
+actionId:"relinquish",
+label:"Success!",
+startdescription:"New friends.",
+aspects:{provoking:1}},
+
+
+{id:"relinquish.provoke.failure",
+actionId:"relinquish",
+label:"Whoops -",
+startdescription:"I knew that word was bad, but I didn't realise <i>how</i> bad.",
+effects:{connection:-1,trace:1}},
 
 
 ]

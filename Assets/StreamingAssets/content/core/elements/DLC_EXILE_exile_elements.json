@@ -329,6 +329,13 @@ description:"recipe aspect",
 noartneeded:true
 },
 
+{id:"provoking",
+label:"Provoking",
+description:"recipe aspect",
+noartneeded:true
+},
+
+
 {id:"opx.progress2",
 label:"Op Populate 2",
 description:"recipe aspect: populates an operation with third escalation event spawns",
@@ -2921,7 +2928,7 @@ label:"Official Connection",
 aspects:{connection:1,asset:1,deception:1,grail:6,lantern:6},
 description:"A mutually beneficial arrangement with someone in authority.",
 slots:[{actionId:use,id:"consideration",label:"Consideration",required:{worth:1}}],
-xtriggers:{fatiguing:op.connection.official}
+xtriggers:{fatiguing:op.connection.official,provoking:connection.underworld}
 },
 
 
@@ -2930,7 +2937,7 @@ label:"Connection: Ruler",
 aspects:{connection:1,asset:1,deception:1,edge:10,grail:10,knock:10},
 slots:[{actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with someone of real power.",
-xtriggers:{fatiguing:op.connection.ruler},
+xtriggers:{fatiguing:op.connection.ruler,provoking:connection.radicals},
 icon:xg
 },
 
@@ -2941,7 +2948,7 @@ aspects:{connection:1,asset:1,deception:1,heart:4,lantern:4},
 slots:[{actionId:use,id:"venue",label:"Venue",required:{space:2}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
 description:"A mutually beneficial arrangement with a learned holy man.",
-xtriggers:{fatiguing:op.connection.holy},
+xtriggers:{fatiguing:op.connection.holy,provoking:connection.radicals},
 icon:xl
 },
 
@@ -2953,7 +2960,7 @@ slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2
 {actionId:use,id:"city",label:"City",required:{domicile:1}},
 {actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
-xtriggers:{fatiguing:op.connection.radicals},
+xtriggers:{fatiguing:op.connection.radicals,provoking:connection.official},
 icon:xe
 },
 
@@ -2963,7 +2970,7 @@ aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,knock:6},
 slots:[{actionId:use,id:"means",label:"Means",required:{forge:1,op.sea:1,year.stolen:1}},
 {actionId:use,id:"location",label:"Location",required:{space:2}}],
 description:"A mutually beneficial arrangement with relevant professionals.",
-xtriggers:{fatiguing:op.connection.underworld},
+xtriggers:{fatiguing:op.connection.underworld,provoking:connection.official},
 icon:xm
 },
 
