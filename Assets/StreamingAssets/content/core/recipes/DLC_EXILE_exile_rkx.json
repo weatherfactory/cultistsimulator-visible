@@ -141,7 +141,7 @@ linked:[
 {id:"rkx.underboss.aggressive.violent",
 actionId:"rkx",
 label:"A Hostile Move!",
-startdescription:"The Underboss is attacking me directly! [Reckoner attacks usually, but not always, hit.]",
+startdescription:"The Underboss is attacking me directly! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed, unless you provide a card to defend yourself.]",
 requirements:{rkx.underboss:1,rkx.event.aggressive:1},
 slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{remnant:1,exhausted:1}}],
 warmup:40,
@@ -209,7 +209,7 @@ linked:[{id:"rkx.reset"}]},
 {id:"rkx.enforcer.aggressive",
 actionId:"rkx",
 label:"A Hostile Move!",
-startdescription:"The Assassin is moving against me! [Reckoner attacks usually, but not always, hit.]",
+startdescription:"The Assassin is moving against me! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed,unless you provide a card to defend yourself.]",
 requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
 slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{remnant:1,exhausted:1}}],
 warmup:40,
@@ -378,7 +378,7 @@ startdescription:"@#lore|I've used my skills to hold my pursuer at bay.
 #op.wolf|All fear the Wolf-Divided, and his breath has touched this place. My pursuer is reluctant to follow me into his shadow, and I've slipped away.
 #op.flowermaker|This place is sweet with the Flowermaker's scents. The airs here bewildered my pursuer long enough for me to slip away.
 #ligeian|A rapacity moves here - one that reckoners especially fear.
-#|Something distracted the underling!@",
+#|...I got lucky. [Sometimes, Reckoner attacks fail.]@",
 alt:[{id:"spit.underling.attack.failure.lore", additional:true, expulsion:{limit:1,filter:{lore:1}}},
 {id:"spit.underling.attack.failure.weapon", additional:true, expulsion:{limit:1,filter:{weapon:1}}},
 {id:"spit.underling.attack.failure.associate", additional:true, expulsion:{limit:1,filter:{associate:1}}}],

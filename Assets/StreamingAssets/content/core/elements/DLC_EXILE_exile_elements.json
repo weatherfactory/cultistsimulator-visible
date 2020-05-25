@@ -4310,7 +4310,7 @@ xtriggers:{renewal.exile:op.night}
 label: "Temptation: Defiance",
 unique:true,
 aspects: {defiancemarks:1,desire:1,choice.merciless:1},
-description:"Some there are who will not yield. Perhaps this is a virtue.",
+description:"'Caput gerat lupinum', they used to say of outlaws. 'This is the line of division.' Or something like that. Latin was never my strong point. I'm on the wrong side of that line of division now... but, you know, everything's an opportunity if you look at it the right way.",
 slots:[{id:"contents",label:"Contents",description:"I could tell him my Foe where I am. Or even send him a gift.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1,weapon.profane:1},actionId:"send"}],
 icon:bloodshed
 },
