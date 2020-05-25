@@ -59,7 +59,6 @@ namespace Assets.CS.TabletopUI {
         private Coroutine animCoroutine;
         private List<Sprite> frames;
 
-
         public SituationController SituationController {
             get; private set;
         }
@@ -89,10 +88,9 @@ namespace Assets.CS.TabletopUI {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + EntityId;
-			isNew = true; 
-            frames= ResourcesManager.GetAnimFramesForVerb(_verb.Id);
+			isNew = true;
 
-            DisplayIcon(verb);
+            DisplayBaseIcon(verb);
             SetAsLightweight(verb.Transient);
             SetTimerVisibility(false);
             SetCompletionCount(-1);
@@ -136,13 +134,20 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void DisplayIcon(IVerb v) {
-         DisplayIcon(v.Id);
+        public void DisplayBaseIcon(IVerb v)
+        {
+            displayIcon(v.Id);
         }
 
-        public void DisplayIcon(string icon)
+        public void DisplayOverrideIcon(string icon)
+        {
+            displayIcon(icon);
+        }
+
+        private void displayIcon(string icon)
         {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(icon);
+            frames = ResourcesManager.GetAnimFramesForVerb(icon);
             artwork.sprite = sprite;
         }
 
@@ -399,7 +404,6 @@ namespace Assets.CS.TabletopUI {
             // remove anim
             artwork.overrideSprite = null;
         }
-
 
         public bool CanAnimate()
         {

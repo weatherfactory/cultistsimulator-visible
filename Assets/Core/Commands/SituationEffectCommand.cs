@@ -24,7 +24,7 @@ namespace Assets.Core
             Expulsion = expulsion;
         }
 
-        public Dictionary<string, int> GetElementChanges()
+        public Dictionary<string, string> GetElementChanges()
         {
             return Recipe.Effects;
         }

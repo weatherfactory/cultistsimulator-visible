@@ -8,6 +8,9 @@ using System.IO;
 #if UNITY_STANDALONE_LINUX
 public class GogGalaxyManager : MonoBehaviour
     {
+    public string clientID = "foo";
+    public string clientSecret = "bar";
+//adding the fields here too stops the odd build error we get otherwise when we try to build just Linux after the editor knows about the fields
        private void Awake()
     {
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");

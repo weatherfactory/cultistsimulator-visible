@@ -802,11 +802,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 htElement.GetInt(NoonConstants.KANIMFRAMES),
                 htElement.GetString(NoonConstants.KICON));
 
-            if(element.Label==null)
-                LogProblem("No label for element " + element.Id);
-
-            if (element.Description == null)
-                LogProblem("No description for element " + element.Id);
             try
             {
 
@@ -1382,7 +1377,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(requirements)");
-                    r.Requirements.Add(k, Convert.ToInt32(htReqs[k]));
+                    r.Requirements.Add(k, htReqs.GetString(k));
                 }
             }
         }
@@ -1403,7 +1398,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htTableReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(table requirements)");
-                    r.TableReqs.Add(k, Convert.ToInt32(htTableReqs[k]));
+                    r.TableReqs.Add(k, htTableReqs.GetString(k));
                 }
             }
         }
@@ -1426,7 +1421,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htExtantReqs.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(extant requirements)");
-                    r.ExtantReqs.Add(k, Convert.ToInt32(htExtantReqs[k]));
+                    r.ExtantReqs.Add(k, htExtantReqs.GetString(k));
                 }
             }
         }
@@ -1472,8 +1467,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (string k in htEffects.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(effects)");
-                    r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                    r.Effects.Add(k, htEffects.GetString(k));
                 }
+
             }
         }
         catch (Exception e)
@@ -1854,7 +1850,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
             ArrayList alEndings = GetContentItems(CONST_ENDINGS);
 
-            if (contentImportMessages.Any())
+            if (contentImportMessages.Any(m=>m.MessageLevel>1))
                 //at least one file is broken. Bug out and report.
                 return contentImportMessages;
 
@@ -1942,7 +1938,7 @@ foreach(var d in _compendium.GetAllDeckSpecs())
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        LogInfo("Words (based on spaces +1 count): " + words);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words);
 
     }
 

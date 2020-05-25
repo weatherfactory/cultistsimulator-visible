@@ -86,14 +86,15 @@ namespace Assets.Editor
             return _verb.PrimarySlotSpecification;
         }
 
-        public void DisplayIcon(IVerb v)
+        public void DisplayBaseIcon(IVerb v)
         {
             //hakuna matata
         }
 
-        public void DisplayIcon(string icon)
+        public void DisplayOverrideIcon(string icon)
         {
-           //hakuna matata
+            //hakuna matata
         }
+
     }
 }

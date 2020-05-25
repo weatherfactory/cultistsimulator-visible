@@ -20,6 +20,7 @@ using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 
@@ -179,8 +180,8 @@ namespace Assets.CS.TabletopUI {
 			    if (context.actionSource == Context.ActionSource.Purge)
 			        Retire(CardVFX.CardLight);
                 else
-				Retire(CardVFX.CardBurn);
-				return;
+				    Retire(CardVFX.CardBurn);
+                return;
 			}
 
 			if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
@@ -189,6 +190,8 @@ namespace Assets.CS.TabletopUI {
 			}
 			_aspectsDirtyInc = true;
 			DisplayInfo();
+
+            CurrentStacksManager.NotifyStacksChanged();
         }
 
         public void ModifyQuantity(int change,Context context) {
@@ -391,6 +394,7 @@ namespace Assets.CS.TabletopUI {
             text.text = _element.Label;
             stackBadge.gameObject.SetActive(Quantity > 1);
             stackCountText.text = Quantity.ToString();
+
         }
 
         private void DisplayIcon() {
@@ -593,7 +597,8 @@ namespace Assets.CS.TabletopUI {
 
         public override bool Retire()
 		{
-			return Retire(defaultRetireFX);
+            return Retire(defaultRetireFX);
+   
         }
 
 
@@ -601,10 +606,14 @@ namespace Assets.CS.TabletopUI {
 		{
 			if (Defunct)
 				return false;
-			
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+
+            var hlc = Registry.Retrieve<HighlightLocationsController>();
+            hlc.DeactivateMatchingHighlightLocation(_element.Id);
+
+            var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
+            
             SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
@@ -783,17 +792,32 @@ namespace Assets.CS.TabletopUI {
 				tabletopManager.SetHighlightedElement(EntityId, Quantity);
 			else
 				tabletopManager.SetHighlightedElement(null);
-		}
+
+            if (DraggableToken.itemBeingDragged==null)
+            { 
+                //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
+                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
+            }
+        }
 
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			base.OnPointerExit(eventData);
 			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(null);
-		}
+
+            //Display any HighlightLocations tagged for this element
+            if(DraggableToken.itemBeingDragged!=this)
+            { 
+                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                hlc.DeactivateMatchingHighlightLocation(_element.Id);
+            }
+        }
 
 		public override void OnPointerClick(PointerEventData eventData)
-		{
-			if (eventData.clickCount > 1)
+        {
+
+            if (eventData.clickCount > 1)
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
@@ -809,7 +833,8 @@ namespace Assets.CS.TabletopUI {
 			    // Add the element name to the debug panel if it's active
 			    Registry.Retrieve<DebugTools>().SetInput(_element.Id);
 
-				if (isFront)
+
+                if (isFront)
 				{
 					//Debug.Log("LastTablePos: " + lastTablePos.Value.x +", "+ lastTablePos.Value.y);
 					notifier.ShowCardElementDetails(this._element, this);
@@ -817,11 +842,15 @@ namespace Assets.CS.TabletopUI {
 					{
 						if (DraggableToken.itemBeingDragged != null)
 						{
-							OnEndDrag( eventData );
+
+                            OnEndDrag( eventData );
 						}
 						else
 						{
-							OnBeginDrag( eventData );
+                            //we need it here as well as on OnPointerEnter because otherwise if you grab and drag it quickly, it can fail to show up because the pointer overtakes the card
+                            var hlc = Registry.Retrieve<HighlightLocationsController>();
+                            hlc.DeactivateMatchingHighlightLocation(_element.Id);
+                            OnBeginDrag( eventData );
 						}
 					}
 				}

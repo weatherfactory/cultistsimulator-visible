@@ -18,7 +18,10 @@ public class StatusBarElementCount : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         Element = element;
-        ElementImage.sprite= ResourcesManager.GetSpriteForElement(Element.Icon);
+        if (element.IsAspect)
+            ElementImage.sprite = ResourcesManager.GetSpriteForAspectInStatusBar(Element.Icon);
+        else
+            ElementImage.sprite = ResourcesManager.GetSpriteForAspectInStatusBar(Element.Icon);
     }
 
     public void SetCount(int count)

@@ -108,6 +108,7 @@ namespace Noon
         public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";
 
         public const string STOREFRONT_PATH_IN_STREAMINGASSETS = "edition/store.txt";
+        public const string CONSCIENCE_PATH_IN_STREAMINGASSETS = "edition/please_buy_our_game.txt";
 
         public const string BIRDWORMSLIDER = "BirdWormSlider";
 		public const string HIGHCONTRAST = "HighContrast";

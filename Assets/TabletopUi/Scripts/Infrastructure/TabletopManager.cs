@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -18,6 +19,7 @@ using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.UI;
 using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
@@ -28,7 +30,7 @@ using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, ITabletopManager {
+    public class TabletopManager : MonoBehaviour, ITabletopManager,IStacksChangeSubscriber {
 
         [Header("Game Control")]
         [SerializeField]
@@ -43,6 +45,11 @@ namespace Assets.CS.TabletopUI {
         [Header("Tabletop")]
         [SerializeField]
         public TabletopTokenContainer _tabletop;
+        [SerializeField]
+        TabletopBackground tabletopBackground;
+
+        [SerializeField] private HighlightLocationsController _highlightLocationsController;
+
         [SerializeField]
         private Limbo Limbo;
 
@@ -196,6 +203,21 @@ namespace Assets.CS.TabletopUI {
 
         void Start()
 		{
+
+            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
+            if (File.Exists(appealToConscienceLocation))
+            {
+                var content = File.ReadLines(appealToConscienceLocation);
+                DateTime expiry = Convert.ToDateTime(content.First());
+                if(DateTime.Today>expiry)
+                { 
+                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
+                return;
+                }
+            }
+
+
+
        	    #if UNITY_STANDALONE_OSX
             // Vsync doesn't seem to limit the FPS on the mac so well, so we set it to 0 and force a target framerate (setting it to 0 any other way doesn't work, has to be done in code, apparently in Start not Awake too) - FM
             QualitySettings.vSyncCount = 0;
@@ -307,6 +329,7 @@ namespace Assets.CS.TabletopUI {
             }
 			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
 			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
+            _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 		}
 
         private void BeginNewGame(SituationBuilder builder)
@@ -390,14 +413,17 @@ namespace Assets.CS.TabletopUI {
             var chronicler = new Chronicler(character,compendium);
 
             var situationsCatalogue = new SituationsCatalogue();
-            var elementStacksCatalogue = new StackManagersCatalogue();
+            var stackManagersCatalogue = new StackManagersCatalogue();
+            stackManagersCatalogue.Subscribe(this);
 
             var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
             if(CrossSceneState.GetMetaInfo()==null)
             {
-                          //This can happen if we start running the scene in the editor, so it hasn't been set in menu screen
+                          //We've stated running the scene in the editor, so it hasn't been set in menu screen
                 NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
                 CrossSceneState.SetMetaInfo(metaInfo);
+                    //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
+                SetGraphicsLevel(3);
             }
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
@@ -405,6 +431,8 @@ namespace Assets.CS.TabletopUI {
             var storeClientProvider=new StorefrontServicesProvider();
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
+
+            
 
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice(debugTools));
@@ -417,19 +445,25 @@ namespace Assets.CS.TabletopUI {
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
             registry.Register<SituationsCatalogue>(situationsCatalogue);
-            registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
+            registry.Register<StackManagersCatalogue>(stackManagersCatalogue);
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 			registry.Register<DebugTools>(debugTools);
+            registry.Register<HighlightLocationsController>(_highlightLocationsController);
+
+            _highlightLocationsController.Initialise(stackManagersCatalogue);
+
 
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
-            _elementOverview.Initialise(character.ActiveLegacy, elementStacksCatalogue,compendium);
+            _elementOverview.Initialise(character.ActiveLegacy, stackManagersCatalogue,compendium);
+            tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
+
 
         }
 
-
+ 
 
         #region -- Build / Reset -------------------------------
 
@@ -496,15 +530,43 @@ namespace Assets.CS.TabletopUI {
             var compendium = Registry.Retrieve<ICompendium>();
 
             Element purgedElement = compendium.GetElementById(elementId);
+            //I don't think MaxToPurge is being usefully decremented here - should return int
 
-                _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge, new Context(Context.ActionSource.Purge));
+           _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge);
+
+           var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+           foreach (var s in situationsCatalogue.GetRegisteredSituations())
+           {
+
+               if (s.SituationClock.State == SituationState.Unstarted)
+               {
+                   var slotsToTryPurge = new List<RecipeSlot>(s.situationWindow.GetStartingSlots());
+
+                   slotsToTryPurge.Reverse();
+                   foreach (var slot in slotsToTryPurge)
+                       slot.TryPurgeElement(purgedElement, maxToPurge);
+               }
+               //If the situation has finished, purge any matching elements in the results.
+                else if (s.SituationClock.State==SituationState.Complete)
+                { 
+                   s.situationWindow.GetResultsStacksManager()
+                       .PurgeElement(purgedElement, maxToPurge);
+
+                }
+                else
+                 {
+                   //if the situation is still ongoing, any elements actually inside it are protected. However, elements in the slot are not protected.
+                   s.situationWindow.GetOngoingSlots().FirstOrDefault()
+                       ?.TryPurgeElement(purgedElement, maxToPurge);
+                 }
+           }
         }
 
         public void HaltVerb(string toHaltId, int maxToHalt)
         {
             var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
             int i = 0;
-            //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
+            //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
 
             if (toHaltId.Contains('*'))
             {
@@ -662,6 +724,8 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(true, false, true);
 
             _elementOverview.Initialise(storage.ActiveLegacy, Registry.Retrieve<StackManagersCatalogue>(), compendium);
+            tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
+
         }
 
         public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
@@ -1185,14 +1249,33 @@ namespace Assets.CS.TabletopUI {
 				else
 					_tabletopAspects.Clear();
 
-				var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
-				foreach(var s in tabletopStacks)
-				    _tabletopAspects.CombineAspects(s.GetAspects());
 
-				if (_enableAspectCaching)
-					_tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
+				var tabletopStacks = _tabletop.GetElementStacksManager()?.GetStacks();
+                if(tabletopStacks!=null)
+                { 
+                    foreach(var tabletopStack in tabletopStacks)
+                    {
+                        IAspectsDictionary stackAspects = tabletopStack.GetAspects();
+                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
+                        //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
+                        //but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
+                        //However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
+                        foreach (var aspect in stackAspects)
+                        {
 
-				_allAspectsExtantDirty = true;		// Force the aspects below to recalc
+                          if(aspect.Key==tabletopStack.EntityId)
+                              multipliedAspects.Add(aspect.Key, aspect.Value);
+                          else
+                              multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
+                        }
+                        _tabletopAspects.CombineAspects(multipliedAspects);
+                    }
+
+
+                    if (_enableAspectCaching)
+                        _tabletopAspectsDirty = false;		// If left dirty the aspects will recalc every frame
+                }
+                _allAspectsExtantDirty = true;		// Force the aspects below to recalc
 			}
 
 			if (_allAspectsExtantDirty)
@@ -1204,9 +1287,31 @@ namespace Assets.CS.TabletopUI {
 
 				var allSituations = Registry.Retrieve<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
-					_allAspectsExtant.CombineAspects(s.GetAspectsInSituation());
+                {
+                    var stacksInSituation = new List<IElementStack>();
+                    stacksInSituation.AddRange(s.GetStartingStacks());
+                    stacksInSituation.AddRange(s.GetOngoingStacks());
+                    stacksInSituation.AddRange(s.GetStoredStacks());
+                    stacksInSituation.AddRange(s.GetOutputStacks());
 
-				_allAspectsExtant.CombineAspects(_tabletopAspects);
+                    foreach (var situationStack in stacksInSituation)
+                    {
+                        IAspectsDictionary stackAspects = situationStack.GetAspects();
+                        IAspectsDictionary multipliedAspects = new AspectsDictionary();
+                        //See notes above. We need to multiply aspects to take account of stack quantities here too.
+                        foreach (var aspect in stackAspects)
+                        {
+
+                            if (aspect.Key == situationStack.EntityId)
+                                multipliedAspects.Add(aspect.Key, aspect.Value);
+                            else
+                                multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);
+                        }
+                        _allAspectsExtant.CombineAspects(multipliedAspects);
+                    }
+
+                }
+                _allAspectsExtant.CombineAspects(_tabletopAspects);
 
 				if (_enableAspectCaching)
 					_allAspectsExtantDirty = false;		// If left dirty the aspects will recalc every frame
@@ -1313,6 +1418,10 @@ namespace Assets.CS.TabletopUI {
 		}
 
 
+        public void NotifyStacksChanged()
+        {
+          NotifyAspectsDirty();
+        }
     }
 
 }

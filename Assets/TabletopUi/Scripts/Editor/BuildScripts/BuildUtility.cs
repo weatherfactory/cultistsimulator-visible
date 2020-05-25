@@ -111,14 +111,14 @@ namespace Assets.Core.Utility
             BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
             BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
             BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-         //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+             BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualDLC);
             products.Add(DancerDLC);
             products.Add(PriestDLC);
             products.Add(GhoulDLC);
-          //  products.Add(ExileDLC);
+            products.Add(ExileDLC);
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Steam,OSs,products);
 
@@ -148,14 +148,14 @@ namespace Assets.Core.Utility
             BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
             BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
             BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-         //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualDLC);
             products.Add(DancerDLC);
             products.Add(PriestDLC);
             products.Add(GhoulDLC);
-         //   products.Add(ExileDLC);
+            products.Add(ExileDLC);
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Gog,OSs,products);
 
@@ -180,14 +180,14 @@ namespace Assets.Core.Utility
             BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
             BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
             BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-            //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualAllDlc);
             products.Add(DancerDLC);
             products.Add(PriestDLC);
             products.Add(GhoulDLC);
-            //   products.Add(ExileDLC);
+            products.Add(ExileDLC);
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Humble,OSs,products);
 
@@ -209,11 +209,17 @@ namespace Assets.Core.Utility
 
             BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
             BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,true);
-            //   BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct DancerDLC = new BuildProduct(env, Product.DANCER, true);
+            BuildProduct PriestDLC = new BuildProduct(env, Product.PRIEST, true);
+            BuildProduct GhoulDLC = new BuildProduct(env, Product.GHOUL, true);
+            BuildProduct ExileDLC = new BuildProduct(env, Product.EXILE, true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualAllDlc);
-            //   products.Add(ExileDLC);
+            products.Add(DancerDLC);
+            products.Add(PriestDLC);
+            products.Add(GhoulDLC);
+            products.Add(ExileDLC);
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Itch,OSs,products);
 
@@ -350,8 +356,11 @@ namespace Assets.Core.Utility
             Log("Searching for DLC in " + baseEditionContentPath);
 
             var contentFiles = Directory.GetFiles(baseEditionContentPath).ToList().Where(f => f.EndsWith(".json"));
+            string dlcTitleLastLoop =
+                "This is a dummy string: whenever it's a new title, we want to create a new directory, but we don't want to recreate it every loop for the same title or we lose previous files of that content type.";
             foreach (var contentFilePath in contentFiles)
             {
+
                 int dlcMarkerIndex = contentFilePath.IndexOf(CONST_DLC_FOLDER + CONST_NAME_SEPARATOR_CHAR, StringComparison.Ordinal);
 
                 // Does it begin with "DLC_"?
@@ -369,6 +378,8 @@ namespace Assets.Core.Utility
                 string dlcDestinationDir =NoonUtility.JoinPaths(to,dlcTitle, os.GetRelativePath(), os.GetCoreContentPath(locale), contentOfType);
 
                 string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
+
+                if (dlcTitle != dlcTitleLastLoop)
                 if (Directory.Exists(dlcDestinationDir))
                 {
                     Directory.Delete(dlcDestinationDir, true);
@@ -379,6 +390,8 @@ namespace Assets.Core.Utility
 
                 Log("Moving file " + contentFilePath + " to " + dlcFileDestinationPath);
                 File.Move(contentFilePath, dlcFileDestinationPath);
+
+                dlcTitleLastLoop = dlcTitle;
             }
 
             // Create the Perpetual Edition DLC

@@ -11,8 +11,14 @@ public class TokenAnimationToSlot : TokenAnimation {
 	TokenAndSlot targetTokenSlotPair;
 
     protected override Vector3 endPos {
-        get {
-            return targetTokenSlotPair.Token.GetOngoingSlotPosition();
+        get
+        {
+            //target token and/or slot might conceivably have been destroyed en route
+            //This should really be upstream, because it doesn't stop the scale shrinking
+            if (targetTokenSlotPair.Token == null || targetTokenSlotPair.RecipeSlot == null || targetTokenSlotPair.Token.Defunct || targetTokenSlotPair.RecipeSlot.Defunct)
+                return transform.localPosition;
+            else
+                return targetTokenSlotPair.Token.GetOngoingSlotPosition();
         }
     }
 

@@ -38,7 +38,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void ShowGlow(bool glowState, bool instant = false);
         void SetEditorActive(bool active);
         SlotSpecification GetPrimarySlotSpecificationForVerb();
-        void DisplayIcon(IVerb v);
-        void DisplayIcon(string icon);
+        void DisplayBaseIcon(IVerb v);
+        void DisplayOverrideIcon(string icon);
     }
 }

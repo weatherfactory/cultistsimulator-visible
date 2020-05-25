@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -304,10 +306,6 @@ namespace Assets.CS.TabletopUI {
         public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context)
 		{
             onCardRemoved(elementStackToken, context);
-            //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
-            //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
-            //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
-            // - or else not have it occur more than once on the same slot? mark as defunct?
         }
 
         public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
@@ -374,6 +372,31 @@ namespace Assets.CS.TabletopUI {
             bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
             Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
+
+        }
+        /// <summary>
+        ///  </summary>
+        /// <param name="element"></param>
+        /// <param name="maxToPurge"></param>
+        /// <param name="context"></param>
+        /// <returns>count of elements purged</returns>
+        public int TryPurgeElement(Element element, int maxToPurge)
+        {
+            if (maxToPurge <= 0)
+                return 0;
+
+            var stackInSlot = GetElementStackInSlot();
+            if (stackInSlot == null)
+                return 0;
+            //passing in maxToPurge just in case we someday want stacks in slots
+            if (!stackInSlot.Defunct && stackInSlot.GetAspects().ContainsKey(element.Id)) 
+            {
+                int originalQuantity = stackInSlot.Quantity;
+                stackInSlot.ModifyQuantity(-maxToPurge, new Context(Context.ActionSource.Purge));
+                return originalQuantity;
+            }
+
+            return 0;
 
         }
 

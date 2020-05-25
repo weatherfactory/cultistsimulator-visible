@@ -98,6 +98,8 @@ namespace Assets.CS.TabletopUI {
             foreach (var stack in stacks) {
                 element = Registry.Retrieve<ICompendium>().GetElementById(stack.EntityId);
 
+                if(!element.IsHidden)
+                { 
                 for (int q = 0; q < stack.Quantity; q++) {
                     if (i < aspectFrames.Length)
                         frame = aspectFrames[i];
@@ -107,6 +109,7 @@ namespace Assets.CS.TabletopUI {
                     frame.PopulateDisplay(element,1, stack as ElementStackToken);
                     frame.gameObject.SetActive(true);
                     i++;
+                }
                 }
             }
 

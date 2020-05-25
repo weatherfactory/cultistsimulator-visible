@@ -272,7 +272,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
         //if we didn't jump out of loop with return, above
 		Context debugContext = new Context(Context.ActionSource.Debug);
-        stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), debugContext);
+        stackManager.ModifyElementQuantity(elementId,1, Source.Fresh(), debugContext);
 
 		// Find the card we just added and move it to the dropzone
 		existingStacks = stackManager.GetStacks();
@@ -364,23 +364,36 @@ public class DebugTools : MonoBehaviour,IRollOverride
 #if MODS
         Registry.Retrieve<ModManager>().LoadAll();
 #endif
-        var contentImporter = new ContentImporter();
-        var compendium = Registry.Retrieve<ICompendium>();
-       var problems= contentImporter.PopulateCompendium(compendium);
-       foreach (var p in problems.Where(p=>p.MessageLevel>1))
-           NoonUtility.Log(p.Description, p.MessageLevel);
-
-        // Populate the new decks
-        IGameEntityStorage storage = Registry.Retrieve<Character>();
-        foreach (var ds in compendium.GetAllDeckSpecs())
-        {
-            if (storage.GetDeckInstanceById(ds.Id) == null)
-            {
-                IDeckInstance di = new DeckInstance(ds);
-                storage.DeckInstances.Add(di);
-                di.Reset();
-            }
+        var testContentImporter = new ContentImporter();
+        var testCompendium =new Compendium();
+            
+       var problems= testContentImporter.PopulateCompendium(testCompendium);
+       if(problems.Any(p=>p.MessageLevel>1))
+        { 
+            NoonUtility.Log("Problems with content import: ",2);
+            foreach (var p in problems.Where(p=>p.MessageLevel>1))
+                NoonUtility.Log(p.Description, p.MessageLevel);
         }
+       else
+       {
+           //Registry.Replace<ICompendium>(newCompendium);
+           var existingCompendium = Registry.Retrieve<ICompendium>();
+           var contentImporter = new ContentImporter();
+        contentImporter.PopulateCompendium(existingCompendium);
+
+           // Populate the new decks
+           IGameEntityStorage storage = Registry.Retrieve<Character>();
+           foreach (var ds in existingCompendium.GetAllDeckSpecs())
+           {
+               if (storage.GetDeckInstanceById(ds.Id) == null)
+               {
+                   IDeckInstance di = new DeckInstance(ds);
+                   storage.DeckInstances.Add(di);
+                   di.Reset();
+               }
+           }
+
+       }
     }
 
     void NextTrack()

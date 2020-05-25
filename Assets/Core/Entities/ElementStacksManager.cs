@@ -47,8 +47,6 @@ public class ElementStacksManager : IElementStacksManager {
             IncreaseElement(elementId, quantityChange, stackSource, context);
         else
             ReduceElement(elementId, quantityChange, context);
-
-        _catalogue.NotifyStacksChanged();
     }
 
     /// <summary>
@@ -213,7 +211,7 @@ public class ElementStacksManager : IElementStacksManager {
             RemoveStack(s);
     }
 
-    private void NotifyStacksChanged() {
+    public void NotifyStacksChanged() {
         if (_catalogue == null)
             throw new ApplicationException("StacksManager is trying to notify the catalogue, but there's no catalogue! - for stacksmanager " + Name);
         _catalogue.NotifyStacksChanged();
@@ -239,13 +237,13 @@ public class ElementStacksManager : IElementStacksManager {
         return matchingStacks;
     }
 
-    public int PurgeElement(Element element, int maxToPurge, Context context)
+    public int PurgeElement(Element element, int maxToPurge)
     {
 
         if (string.IsNullOrEmpty(element.DecayTo))
         {
             //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
-          return  ReduceElement(element.Id, -maxToPurge, context);
+          return  ReduceElement(element.Id, -maxToPurge, new Context(Context.ActionSource.Purge));
         }
         else
         { 

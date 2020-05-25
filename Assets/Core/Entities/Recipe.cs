@@ -5,6 +5,11 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 
+public class RequirementValue
+{
+
+}
+
 public enum PortalEffect
 {
     None=0,
@@ -27,10 +32,10 @@ public class Recipe
     private string _label="";
     public string Id { get; set; }
     public string ActionId { get; set; }
-    public Dictionary<string, int> Requirements { get; set; }
-    public Dictionary<string, int> TableReqs { get; set; }
-    public Dictionary<string, int> ExtantReqs { get; set; }
-    public Dictionary<string, int> Effects { get; set; }
+    public Dictionary<string, string> Requirements { get; set; }
+    public Dictionary<string, string> TableReqs { get; set; }
+    public Dictionary<string, string> ExtantReqs { get; set; }
+    public Dictionary<string, string> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
     public List<MutationEffect> MutationEffects { get; set; }
     /// <summary>
@@ -109,10 +114,10 @@ public class Recipe
 
     public Recipe()
     {
-        Requirements = new Dictionary<string, int>();
-        TableReqs = new Dictionary<string, int>();
-        ExtantReqs = new Dictionary<string, int>();
-        Effects = new Dictionary<string, int>();
+        Requirements = new Dictionary<string, string>();
+        TableReqs = new Dictionary<string, string>();
+        ExtantReqs = new Dictionary<string, string>();
+        Effects = new Dictionary<string, string>();
         AlternativeRecipes = new List<LinkedRecipeDetails>();
         LinkedRecipes=new List<LinkedRecipeDetails>();
         SlotSpecifications = new List<SlotSpecification>();
@@ -131,46 +136,43 @@ public class Recipe
     {
         foreach (var req in Requirements)
         {
-            if (req.Value <=-1) //this is a No More Than requirement
-            {
-                if (aspectsinContext.AspectsInSituation.AspectValue(req.Key) >= -req.Value)
-                    return false;
-            }
-            else if (!(aspectsinContext.AspectsInSituation.AspectValue(req.Key) >= req.Value))
-            {
-                //req >0 means there must be >=req of the element
-                return false;
-            }
+            if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsInSituation, req)) return false;
         }
 
         foreach (var treq in TableReqs)
         {
-            if (treq.Value <= -1) //this is a No More Than requirement
-            {
-                if (aspectsinContext.AspectsOnTable.AspectValue(treq.Key) >= -treq.Value)
-                    return false;
-            }
-            else if (!(aspectsinContext.AspectsOnTable.AspectValue(treq.Key) >= treq.Value))
-            {
-                //req >0 means there must be >=req of the element
-                return false;
-            }
+            if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsOnTable, treq)) return false;
+
         }
 
         foreach (var ereq in ExtantReqs)
         {
-            if (ereq.Value <= -1) //this is a No More Than requirement
+            if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsExtant, ereq)) return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckRequirementsSatisfiedForContext(IAspectsDictionary aspectsToCheck, KeyValuePair<string, string> req)
+    {
+        if (!int.TryParse(req.Value, out var reqValue))
+        {
+            //the value is not an int: it must be a reference to another aspect
+            reqValue = aspectsToCheck.AspectValue(req.Value);
+        }
+
+        {
+            if (reqValue <= -1) //this is a No More Than requirement
             {
-                if (aspectsinContext.AspectsExtant.AspectValue(ereq.Key) >= -ereq.Value)
+                if (aspectsToCheck.AspectValue(req.Key) >= -reqValue)
                     return false;
             }
-            else if (!(aspectsinContext.AspectsExtant.AspectValue(ereq.Key) >= ereq.Value))
+            else if (!(aspectsToCheck.AspectValue(req.Key) >= reqValue))
             {
                 //req >0 means there must be >=req of the element
                 return false;
             }
         }
-
         return true;
     }
 
