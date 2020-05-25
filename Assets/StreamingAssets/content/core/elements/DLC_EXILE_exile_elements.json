@@ -377,13 +377,25 @@ noartneeded:true
 
 {id:"striking.foe",
 label:"Striking Foe",
-description:"recipe aspect - hit an foe with a weapon",
+description:"recipe aspect - hit an foe with",
 noartneeded:true
 },
 
 {id:"striking.underling",
 label:"Striking Underling",
-description:"recipe aspect - hit an underling with a weapon",
+description:"recipe aspect - hit an underling",
+noartneeded:true
+},
+
+{id:"striking.foe.weapon",
+label:"Striking Foe with Weapon",
+description:"recipe aspect - hit an foe with specifically a weapon",
+noartneeded:true
+},
+
+{id:"striking.underling.weapon",
+label:"Striking Underling with Weapon",
+description:"recipe aspect - hit an underling with specifically a weapon",
 noartneeded:true
 },
 
@@ -568,8 +580,8 @@ description:"'Reach for the book - it is a weapon.' - Brecht",
 isAspect:true
 },
 
-{id: "documents",
-label: "Documents",
+{id: "proof",
+label: "Proof",
 description:"With the right papers, you can prove anything.",
 isAspect:true,
 icon:article,
@@ -1660,7 +1672,7 @@ icon:nameless
 {id: "loc.shrine.colonel.aachen",
 label: "Chapel of St Andrew Stratelates",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
-description:"There's a side chapel in Aachen cathedral to a warrior saint who fought against the Persians. On certain days, a deacon will lock the door and perform unorthodox ceremonies for veterans",
+description:"There's a side chapel in Aachen cathedral to a warrior saint who fought against the Persians. On certain days, a deacon will lock the door and perform unorthodox ceremonies for veterans.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
 icon:shrine.colonel,
 unique:true
@@ -2903,7 +2915,7 @@ icon:vaultcontinent5
 
 {id:"licence.medical",
 label:"Medical Credentials",
-aspects:{asset:1,portable:1,worth:1,documents:1},
+aspects:{asset:1,portable:1,worth:1,proof:1},
 description:"The name on the licence isn't exactly mine, but it's close enough.",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:1}},
 {actionId:use,id:"year",label:"Year",required:{year.stolen:1}}],
@@ -2912,7 +2924,7 @@ unique:true
 
 {id:"licence.import",
 label:"Import Licence",
-aspects:{asset:1,worth:1,documents:1},
+aspects:{asset:1,worth:1,proof:1},
 description:"The name on the licence isn't exactly mine, but it's close enough. [Import licences are only valid in the city where you acquire them.]",
 slots:[{actionId:use,id:"location",label:"Location",required:{space:2}},
 {actionId:use,id:"means",label:"Means",required:{op.sea:1}}]
@@ -2977,6 +2989,8 @@ label: "Profane Weapon",
 aspects: {weapon:1,edge:2,weapon.profane:1,asset:1,portable:1,worth:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
 description:"A prosaic weight.",
 icon:weapon.a,
@@ -2989,6 +3003,8 @@ label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:3,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.2.exhausted},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Three taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
 icon:weapon.b,
@@ -3001,6 +3017,8 @@ label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:2,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.1.exhausted},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Two taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
 icon:weapon.b,
@@ -3012,6 +3030,8 @@ label: "Lionhunter's Rifle",
 aspects: {weapon:1,edge:4,uses.remaining:1,worth:2,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:curio},
 description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Only one taenite-iron ball remains. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
 icon:weapon.b,
@@ -3023,6 +3043,8 @@ label: "Ebrehel, the Ragged Sword",
 aspects: {weapon:1,edge:6,knock:6,forge:6,worth:3,asset:1,portable:1,pentiment:1,pentiment.1:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
 description:"In its long career (Yitzchok tells me), this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was, apparently, commissioned to be borne by a king against an unbuilt city in an unknown season. It was turned to other purposes, however, and it will cut bits off mortals and immortals just fine.",
 unique:true
@@ -3034,6 +3056,8 @@ label: "Biedde's Blade",
 aspects: {weapon:1,edge:8,worth:3,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
 striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
 description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
 icon:tooledged,
@@ -3045,6 +3069,8 @@ label: "Imhullune Tectrix",
 aspects: {weapon:1,edge:10,worth:4,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.e.exhausted},
 description:"It doesn't look like much, but at its touch, flesh perishes. Perhaps it really is a last fragment of the weapon that slew the Seven-Coiled from within.",
 unique:true
@@ -3423,7 +3449,7 @@ unique:true
 
 {id: "domicile.istanbul",
 label: "Istanbul",
-aspects: {domicile:1},
+aspects: {domicile:1,troubled:1},
 xtriggers:{uprising:domicile.istanbul.turmoil},
 description:"Seven hills, three names, two continents and a hundred thousand cats. The bustle of the Grand Bazaar and the sudden silent dazzle of the Golden Horn.",
 icon:domicile.istanbul,
@@ -4062,7 +4088,7 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 description:"Zulfiya the Barber used to buy life from me with jewels in the city of Sverdlovsk. She's turned strange and moved on to another city, but she introduced me to some of her contacts, back before the Civil War. [Once you leave the current city, this will never be available again.]",
 
 unique:true,
-xtriggers:{arriving:[{id:"domicile.sverdlovsk",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.connection.official",morpheffect:spawn},{id:"domicile.sverdlovsk",morpheffect:transform}]}
 },
 
 
@@ -4285,7 +4311,6 @@ label: "Dawn",
 aspects: {op:1},
 description:"Sunrise, when the world is clean.",
 lifetime:15,
-icon:ascensionenlightenmentb,
 xtriggers:{renewal.exile:op.dawn}
 },
 {id: "op.sunset",
@@ -4293,7 +4318,6 @@ label: "Sunset",
 aspects: {op:1},
 description:"Sunset, when the light is richer.",
 lifetime:15,
-icon:vaulteveningislesdefault,
 xtriggers:{renewal.exile:op.sunset}
 },
 
@@ -4302,7 +4326,6 @@ label: "Night",
 aspects: {op:1},
 description:"The deep watches of the night, and again I can't sleep.",
 lifetime:15,
-icon:seasondespair,
 xtriggers:{renewal.exile:op.night}
 },
 
@@ -4310,9 +4333,8 @@ xtriggers:{renewal.exile:op.night}
 label: "Temptation: Defiance",
 unique:true,
 aspects: {defiancemarks:1,desire:1,choice.merciless:1},
-description:"'Caput gerat lupinum', they used to say of outlaws. 'This is the line of division.' Or something like that. Latin was never my strong point. I'm on the wrong side of that line of division now... but, you know, everything's an opportunity if you look at it the right way.",
-slots:[{id:"contents",label:"Contents",description:"I could tell him my Foe where I am. Or even send him a gift.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1,weapon.profane:1},actionId:"send"}],
-icon:bloodshed
+description:"'Caput gerat lupinum', they used to say of outlaws. 'This is the line of division.' Or something like that. Latin was never my strong point. I'm on the wrong side of that line of division now... but perhaps that's also an opportunity.",
+slots:[{id:"contents",label:"Contents",description:"I could tell him my Foe where I am. Or even send him a gift.", required:{domicile:1,weapon:1},forbidden:{domicile.wilderness:1,weapon.profane:1},actionId:"send"}]
 },
 
 
@@ -4439,7 +4461,7 @@ lifetime:1
 {id: "rkx.foe.defeated",
 label: "A Trophy of my Foe",
 description:"How many times did this heart beat? How many of those beats were stolen from another? It is withering now.",
-aspects:{rkx.underlings.blocker:1,op:1},
+aspects:{rkx.underlings.blocker:1,proof:1},
 unique:true
 },
 
@@ -4572,8 +4594,8 @@ icon:rkx.weakness.unknown
 label: "An Unknown Weakness",
 description:"If I can uncover this weakness, it'll give me an advantage.",
 uniquenessgroup:"uq.rkx.weakness.horned",
-decayTo:"rkx.weakness.horned",
 aspects:{weakness.foe.unknown:1},
+decayTo:"rkx.weakness.horned",
 xtriggers:{epiphany:rkx.weakness.horned},
 icon:rkx.weakness.unknown
 },
@@ -4603,7 +4625,8 @@ icon:rkx.weakness.unknown
 label: "Reckoners: Aggressive",
 aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are active tonight",
-lifetime:1
+lifetime:1,
+isHidden:true
 },
 
 
@@ -4611,7 +4634,8 @@ lifetime:1
 label: "Reckoners: Passive",
 aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are hesitating",
-lifetime:1
+lifetime:1,
+isHidden:true
 },
 
 

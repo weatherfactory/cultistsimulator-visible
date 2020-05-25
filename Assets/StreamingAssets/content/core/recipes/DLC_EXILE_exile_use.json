@@ -54,7 +54,7 @@ actionId:"use",
 requirements:{lore:1,weapon:1},
 label:"Steel and Science",
 startdescription:"I outmatch them, and it's time they knew it. [An attack that uses both an Edge technique and a weapon will always hit.]",
-linked:[{id:"use.attack.underling.hit"}]},
+linked:[{id:"use.attack.underling.hit.combo"}]},
 
 
 {id:"use.attack.underling.hit",
@@ -62,6 +62,15 @@ actionId:"use",
 label:"A Palpable Hit",
 startdescription:"Got them. [Two Wounds will kill this Reckoner.]",
 aspects:{striking.underling:1,fatiguing:1},
+warmup:10,
+linked:[{id:"use.attack.underling.slain"}]},
+
+{id:"use.attack.underling.hit.combo",
+actionId:"use",
+label:"A Palpable Hit",
+startdescription:"Got them. [Two Wounds will kill this Reckoner.]",
+comments:"We don't use the base striking aspect because we don't want to generate two wounds",
+aspects:{striking.underling.weapon:1,fatiguing:1},
 warmup:10,
 linked:[{id:"use.attack.underling.slain"}]},
 
@@ -171,6 +180,18 @@ startdescription:"'Don't think that will stop me -'",
 aspects:{striking.foe:1,fatiguing:1},
 warmup:10,
 linked:[{id:"use.attack.foe.slain"}]},
+
+{id:"use.attack.foe.hit.combo",
+actionId:"use",
+label:"I've wounded him!",
+startdescription:"'Don't think that will stop me -'",
+comments:"We don't use the base striking aspect because we don't want to generate two wounds",
+aspects:{striking.foe.weapon:1,fatiguing:1},
+warmup:10,
+linked:[{id:"use.attack.foe.slain"}]},
+
+
+
 
 {id:"use.attack.foe.miss",
 actionId:"use",
