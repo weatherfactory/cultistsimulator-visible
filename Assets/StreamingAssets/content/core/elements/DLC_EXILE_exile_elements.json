@@ -1385,27 +1385,27 @@ lifetime:1
 {id: "ee.deceiver",
 label: "Deceiver",
 aspects: {complication:1,minlantern:10,minmoth:10},
-description: "--",
+description: "--",,isHidden:true,noartneeded:true,
 lifetime:1
 },
 
 
 {id: "ee.devourer",
 label: "Devourer",
-description: "--",
+description: "--",,isHidden:true,noartneeded:true,
 aspects:{complication:1,minedge:10,minmoth:10},
 lifetime:1
 },
 
 {id: "ee.feast",
-label: "A Feast",
+label: "A Feast",,isHidden:true,noartneeded:true,
 aspects: {complication:1,mingrail:2,minwinter:2},
 description: ".",
 lifetime:1
 },
 
 {id: "ee.fretfuldead",
-label: "Fretful Dead",
+label: "Fretful Dead",,isHidden:true,noartneeded:true,
 aspects: {complication:1,minedge:8,minwinter:8},
 description: ".",
 lifetime:1
@@ -3007,7 +3007,7 @@ striking.underling:[{id:wound.underling,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
 striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.2.exhausted},
-description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Three taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired three times.]",
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Three taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be used three times.]",
 icon:weapon.b,
 unique:true
 },
@@ -3021,7 +3021,7 @@ striking.underling:[{id:wound.underling,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
 striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.b.1.exhausted},
-description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Two taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Two taenite-iron balls - monster-killers - remain. [The Lionhunter's Rifle is a sacred weapon, but it can only be used twice more.]",
 icon:weapon.b,
 unique:true
 },
@@ -3034,7 +3034,7 @@ striking.underling:[{id:wound.underling,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
 striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:curio},
-description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Only one taenite-iron ball remains. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. Only one taenite-iron ball remains. [The Lionhunter's Rifle is a sacred weapon, but it can only be used once more.]",
 icon:weapon.b,
 unique:true
 },
@@ -3047,7 +3047,7 @@ striking.underling:[{id:wound.underling,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
 striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.c.exhausted},
-description:"In its long career (Yitzchok tells me), this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was, apparently, commissioned to be borne by a king against an unbuilt city in an unknown season. It was turned to other purposes, however, and it will cut bits off mortals and immortals just fine.",
+description:"In its long career (Yitzchok tells me), this weapon has also been called Gatemaker, Scarsword, and the Orphan. It was, apparently, commissioned to be borne by a king against an unbuilt city in an unknown season. It was turned to other purposes, however, and it will cut bits off mortals and immortals just fine. [The Foe cannot break Ebrehel.]",
 unique:true
 },
 
@@ -3060,7 +3060,7 @@ striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
 striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
-description:"A cut from this blade will not cease bleeding until the wound is healed. One account has it that Biedde was a knife-collecting surgeon-highwayman in eighteenth-century Toulouse. Another claims Biedde is only the bastardisation of an Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names.",
+description:"One account has it that Biedde is a bastardised Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names. [Wounds from the Blade take much longer to heal.]",
 icon:tooledged,
 unique:true
 },
@@ -3081,7 +3081,7 @@ unique:true
 label: "Profane Weapon (Readying)",
 aspects: {exhausted:1,asset:1,portable:1,worth:1},
 description:"A prosaic weight.",
-lifetime:60,
+lifetime:120,
 decayTo:weapon.a,
 resaturate:true,
 icon:"weapon.a"
@@ -3090,8 +3090,8 @@ icon:"weapon.a"
 {id: "weapon.b.2.exhausted",
 label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:2,asset:1,portable:1,worth:2},
-description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired twice more.]",
-lifetime:60,
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle is a sacred weapon, but it can only be fired twice more.]",
+lifetime:90,
 decayTo:weapon.b.2,
 resaturate:true,
 icon:weapon.b,
@@ -3100,8 +3100,8 @@ icon:weapon.b,
 {id: "weapon.b.1.exhausted",
 label: "Lionhunter's Rifle (Readying)",
 aspects: {exhausted:1,uses.remaining:1,asset:1,portable:1,worth:2},
-description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle refreshes quickly, but it can only be fired once more.]",
-lifetime:60,
+description:"An antique rifle incised with the five-fold mark of the Many-Winged Ones. [The Lionhunter's Rifle is a sacred weapon, but it can only be fired once more.]",
+lifetime:90,
 decayTo:weapon.b.1,
 resaturate:true,
 icon:weapon.b,
@@ -3202,14 +3202,14 @@ noartneeded:true
 label:"False Trail",
 description:"False but persuasive evidence that I'm somewhere I'm not. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
 aspects:{diversion.exile:1},
-lifetime:180
+lifetime:360
 },
 
 {id:"trail.false.exile.nameless",
 label:"A Nameless Blessing",
 description:"For a while yet, I'll walk in mist. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
 aspects:{diversion.exile:1},
-lifetime:600,
+lifetime:720,
 icon:nameless
 },
 
@@ -4469,63 +4469,63 @@ unique:true
 
 {id: "rkx.weakness.cold",
 label: "Weakness: Cold",
-description:"The rumours are true - snow makes my Foe slow and stupid.",
+description:"The rumours are true - snow makes my Foe slow and stupid. (Heat and the sea don't trouble him, though.)",
 uniquenessgroup:"uq.rkx.weakness.cold",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.heat",
 label: "Weakness: Heat",
-description:"The rumours are true - when the weather is hot enough, my foe becomes slow and stupid.",
+description:"The rumours are true - when the weather is hot enough, my foe becomes slow and stupid. (Cold and the sea don't trouble him, though.)",
 uniquenessgroup:"uq.rkx.weakness.heat",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.sea",
 label: "Weakness: the Sea",
-description:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe fears its touch.",
+description:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe fears its touch. (Heat and cold don't bother him, though.)",
 uniquenessgroup:"uq.rkx.weakness.sea",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.faith",
 label: "Weakness: Faith",
-description:"A religious upbringing? A persistent superstition? My enemy is reluctant to desecrate holy places.",
+description:"A religious upbringing? A persistent superstition? My enemy is reluctant to desecrate holy places. (But he doesn't avoid cats, or heights.)",
 uniquenessgroup:"uq.rkx.weakness.faith",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.cats",
 label: "Weakness: Cats",
-description:"My Foe fears cats! He's long been ready to murder anyone who even hinted as much. Now I know why.",
+description:"My Foe fears cats! He's long been ready to murder anyone who even hinted as much. Now I know why. (But he doesn't avoid holy places, or heights.)",
 uniquenessgroup:"uq.rkx.weakness.cats",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.heights",
 label: "Weakness: Heights",
-description:"High places dizzy and demoralise my Foe.",
+description:"High places dizzy and demoralise my Foe. (But he doesn't avoid cats, or holy places.)",
 uniquenessgroup:"uq.rkx.weakness.heights",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.horned",
 label: "Weakness: Horned Axe's Disfavour",
-description:"The Horned Axe does not favour my Foe, and where its shadow falls, he hesitates.",
+description:"The Horned Axe does not favour my Foe, and where its shadow falls, he hesitates. (But he doesn't have any especial fear of the other Hours.)",
 uniquenessgroup:"uq.rkx.weakness.horned",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.wolf",
 label: "Weakness: Wolf-Divided's Hatred",
-description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, the Wolf's rage burns a fraction hotter.",
+description:"If half the stories of this thing are true, it hates everything with near-equal incandescence. But in my Foe's case, the Wolf's rage burns a fraction hotter. (He doesn't have any especial fear of the other Hours.)",
 uniquenessgroup:"uq.rkx.weakness.wolf",
 aspects:{weakness.foe:1}
 },
 
 {id: "rkx.weakness.flowermaker",
 label: "Weakness: Flowermaker",
-description:"Something about the Flowermaker's influence confounds my Foe. I may never know exactly what.",
+description:"Something about the Flowermaker's influence confounds my Foe. I may never know exactly what. (But he doesn't have any especial fear of the other Hours.)",
 uniquenessgroup:"uq.rkx.weakness.flowermaker",
 aspects:{weakness.foe:1}
 },

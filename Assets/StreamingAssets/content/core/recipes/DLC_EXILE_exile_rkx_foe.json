@@ -37,10 +37,11 @@ linked:[{id:"rkx.foe.attack"}]},
 actionId:"rkx.foe",
 label:"My Foe is Stalking Me",
 startdescription:"Even when I can't see him, I know he's there. He'll attack at any moment.",
-warmup:10,
+warmup:5,
 linked:[
 {id:"rkx.foe.obscured"},
-{id:"rkx.foe.attack"}]
+{id:"rkx.foe.attack",chance:30},
+{id:"rkx.foe.selector"}]
 },
 
 
@@ -55,19 +56,20 @@ effects:{obscurity:-1},
 slots:[{id:"obscurity",label:"Obscurity",required:{obscurity:1},greedy:true}],
 warmup:20,
 linked:[{id:"rkx.foe.selector"}]},
-
+ 
 
 
 {id:"rkx.foe.attack",
 actionId:"rkx.foe",
-label:"Confrontation!",
+label:"My Foe is Striking!",
 startdescription:"'You should have run further.'
 
-[The Foe's attacks will usually hit. Add a card to defend against them. Distractions are most effective, but the Foe is only vulnerable to a few Distractions; you'll know which once you've uncovered his Weaknesses.]",
+[The Foe's attacks will usually hit. Add an appropriate card to defend. Distractions will buy you extra respite, but the Foe is only vulnerable to a few Distractions; you'll know which once you've uncovered his Weaknesses. He may also sometimes break Weapons.]",
 slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1,defiance.consecration.lionsmith:1},
 forbidden:{weapon.profane:1,remnant:1,exhausted:1}}],
 alt:[{id:"rkx.spawn.escort",additional:true},{id:"rkx.foe.mock"}],
-warmup:30,
+warmup:20,
+effects:{husk:-1},
 purge:{obscurity:100},
 linked:[
 {id:"rkx.foe.ligeian"},
@@ -90,7 +92,7 @@ linked:[
 {id:"rkx.foe.mock",
 actionId:"rkx.foe",
 label:"Laugh as the Lionsmith Laughed",
-startdescription:"I could lampoon my Foe with a certain very ancient mocking gesture... leaving myself open to attack. Perhaps the Hour called Lionsmith would enjoy my audacity. [Suffer <i>two</i> Wounds but gain a level of Defiance.]",
+startdescription:"I could lampoon my Foe with a certain very ancient mocking gesture... leaving myself open to attack. Perhaps the Hour called Lionsmith would enjoy my audacity. [Suffer two Wounds but gain a level of Defiance.]",
 requirements:{defiance.consecration.lionsmith:1,defiance.foetaunted:-1},
 mutations:[{filterOnAspectId:defiance.consecration.lionsmith,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
 alt:[{id:"spit.foe.attack.success.mocked", additional:true, expulsion:{limit:1,filter:{desire:1}}}],
@@ -150,7 +152,7 @@ linked:[{id:"rkx.foe.selector"}]
 {id:"rkx.foe.weaknessexploited.sea",
 actionId:"rkx.foe",
 label:"The Sea is my shield -",
-startdescription:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe fears its touch.",
+startdescription:"All reckoners treat the sea with caution. But it's true what I've heard: my Foe especially fears its touch.",
 requirements:{op.sea:1},
 extantreqs:{uq.rkx.weakness.sea:1},
 purge:{rkx.weakness.sea.hidden:1},
@@ -264,9 +266,9 @@ warmup:10},
 
 {id:"spit.foe.attack.success",
 actionId:"spit.foe.attack",
-label:"I'm wounded!",
-startdescription:"[Seven Wounds will kill you.]",
-effects: {wound.exile:1},
+label:"A Crushing Blow!",
+startdescription:"The bastard's still damnably strong. [Seven Wounds will kill you.]",
+effects: {wound.exile:2},
 aspects:{fatiguing:1},
 warmup:2},
 
@@ -282,7 +284,7 @@ linked:[{id:"rkx.foe.selector"}],
 warmup:10},
 
 {id:"spit.foe.attack.failure.lore",
-actionId:"spit.foe.attack",
+actionId:"spit.foe.attack.failure",
 requirements:{lore:1},
 label:"Defended with Training",
 startdescription:"This came in useful.",
@@ -290,15 +292,30 @@ aspects:{fatiguing:1},
 warmup:2},
 
 {id:"spit.foe.attack.failure.weapon",
-actionId:"spit.foe.attack",
+actionId:"spit.foe.attack.failure",
 requirements:{weapon:1},
 label:"Defended with Weaponry",
 startdescription:"This came in useful.",
 aspects:{fatiguing:1},
+linked:[{id:"spit.foe.attack.failure.weapon.broken",chance:30}],
 warmup:2},
 
+
+
+{id:"spit.foe.attack.failure.weapon.broken",
+actionId:"spit.foe.attack.failure",
+label:"'I'll break you, too -'",
+startdescription:"@#weapon.b.2.exhausted|He's too close! He snatches the rifle, breaks it like a stick and tosses it aside.
+#weapon.b.1.exhausted|He's too close! He snatches the rifle, breaks it like a stick and tosses it aside.
+#weapon.d.exhausted|He's seized Biedde's blade! He snaps it in two, one-handed.
+#weapon.e.exhausted|He's swept the Tectrix from my hand! A wind snatches it, and it's gone.@",
+requirements:{weapon.c.exhausted:-1},
+effects:{exhausted:-3,curio:-1,husk:1},
+warmup:2,
+},
+
 {id:"spit.foe.attack.failure.associate",
-actionId:"spit.foe.attack",
+actionId:"spit.foe.attack.failure",
 requirements:{associate:1},
 label:"A Friend in Need",
 startdescription:"My associate's come to my defence!",
@@ -307,7 +324,7 @@ linked:[{id:"spit.foe.attack.failure.associate.killed",chance:30}],
 warmup:2},
 
 {id:"spit.foe.attack.failure.associate.killed",
-actionId:"spit.foe.attack",
+actionId:"spit.foe.attack.failure",
 label:"An Unexpected Sacrifice",
 startdescription:"My friend's fallen in bitter battle! But they gave my Foe something to remember them by. [Allies and associates sometimes die when fighting the Foe.]",
 aspects:{killmortal:1},
@@ -315,7 +332,7 @@ effects:{wound.foe:1,grief:1},
 warmup:2},
 
 {id:"spit.foe.attack.failure.ligeian",
-actionId:"spit.foe.attack",
+actionId:"spit.foe.attack.failure",
 label:"Something Greater",
 startdescription:"My Foe tangled with a member of the Ligeia Club, and now regrets it.",
 effects:{wound.foe:1},

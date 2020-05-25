@@ -27,7 +27,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.aachen:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.aachen,op.connection.radicals,op.weapon.b,op.night], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.aachen,op.connection.radicals,op.weapon.b,op.night,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.alexandria",
@@ -38,7 +38,7 @@ craftable:true,
 actionId:"scout",
 label:"Reconnoitre Alexandria",
 requirements:{domicile.alexandria:1},
-	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.lionsmith.alexandria,op.heat,op.faith,op.connection.holy,op.cats,op.sea,op.night], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.lionsmith.alexandria,op.heat,op.faith,op.connection.holy,op.cats,op.sea,op.night,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -61,7 +61,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.amsterdam:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.morgen,op.sea,op.weapon.b,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.morgen,op.sea,op.weapon.b,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.avignon",
@@ -73,7 +73,7 @@ aspects:{tracerisk:1},
 craftable:true,
 craftable:true,
 requirements:{domicile.avignon:1},
-	internaldeck: {spec: [op.curio.grail,op.rarity.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.grail,op.rarity.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.baghdad",
@@ -96,7 +96,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.budapest:1},
-	internaldeck: {spec: [op.curio.grail,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.medusa,op.connection.underworld,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.grail,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.medusa,op.connection.underworld,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -122,7 +122,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.cluj:1},
-	internaldeck: {spec: [op.weapon.b,op.rarity.winter,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heights,op.connection.ruler,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.weapon.b,op.rarity.winter,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heights,op.connection.ruler,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -134,7 +134,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.granada:1},
-	internaldeck: {spec: [op.curio.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heat,op.heights,op.cats,op.flowermaker,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heat,op.heights,op.cats,op.flowermaker,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -146,7 +146,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.istanbul:1},
-	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.heat,op.heights,op.faith,op.connection.holy,op.cats,op.sea,op.connection.radicals,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern1,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.heat,op.heights,op.faith,op.connection.holy,op.cats,op.sea,op.connection.radicals,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -158,7 +158,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.kaunas:1},
-	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.faith,op.connection.holy,op.wolf,op.connection.ruler,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.faith,op.connection.holy,op.wolf,op.connection.ruler,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -170,7 +170,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.kiev:1},
-	internaldeck: {spec: [op.curio.knock,op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.marinette,op.heights,op.faith,op.connection.holy,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.knock,op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.marinette,op.heights,op.faith,op.connection.holy,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -193,7 +193,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.leningrad:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.leningrad,op.connection.radicals,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.leningrad,op.connection.radicals,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -216,7 +216,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.marrakech:1},
-	internaldeck: {spec: [op.curio.lantern3,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.echidna,op.heat,op.faith,op.connection.holy,op.cats,loc.shrine.lionsmith.marrakech,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern3,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.echidna,op.heat,op.faith,op.connection.holy,op.cats,loc.shrine.lionsmith.marrakech,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -229,7 +229,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.meshad:1},
-	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.lionsmith.meshad,op.heat,op.faith,op.connection.holy,op.cats,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,loc.shrine.lionsmith.meshad,op.heat,op.faith,op.connection.holy,op.cats,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -241,7 +241,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.munich:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.munich,op.horned,op.weapon.b,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.munich,op.horned,op.weapon.b,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -254,7 +254,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.nizhny:1},
-	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.nizhny,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.forge,op.connection.official,op.connection.underworld,op.connection.radicals,op.licence.medical,op.office,op.warehouse,op.cold,loc.shrine.colonel.nizhny,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -267,7 +267,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.paris:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.rarity.grail,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heights,op.flowermaker,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.rarity.grail,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.heights,op.flowermaker,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -279,7 +279,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.prague:1},
-	internaldeck: {spec: [op.curio.knock,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.connection.ruler,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.knock,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.connection.ruler,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -292,7 +292,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.rostock:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.rarity.moth,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.sea,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.weapon.b,op.rarity.moth,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.cold,op.sea,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -316,7 +316,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.stalingrad:1},
-	internaldeck: {spec: [op.curio.moth,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.stalingrad,op.cold,op.wolf,op.connection.radicals,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.moth,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,loc.shrine.colonel.stalingrad,op.cold,op.wolf,op.connection.radicals,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -339,7 +339,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.sverdlovsk:1},
-	internaldeck: {spec: [op.curio.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.cold,op.connection.radicals,op.night,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.heart,op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.cold,op.connection.radicals,op.night,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.tiflis",
@@ -362,7 +362,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.tirana:1},
-	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.flowermaker,op.connection.ruler,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.connection.official,op.connection.underworld,op.licence.medical,op.office,op.warehouse,op.townhouse,op.villa,op.flowermaker,op.connection.ruler,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -374,7 +374,7 @@ warmup:30,
 aspects:{tracerisk:1},
 craftable:true,
 requirements:{domicile.tripoli:1},
-	internaldeck: {spec: [op.curio.lantern3,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.heat,op.cats,op.sea,op.sunset,op.weapon.a], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.curio.lantern3,op.connection.official,op.connection.underworld,op.licence.import,op.office,op.warehouse,op.townhouse,op.villa,op.heat,op.cats,op.sea,op.sunset,op.dawn,op.weapon.a], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -452,7 +452,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.slettnes:1},
-	internaldeck: {spec: [op.cold,op.wolf,op.sea,obscurity,op.sunset], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.wolf,op.sea,obscurity,op.sunset,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.cheko",
@@ -462,7 +462,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.cheko:1},
-	internaldeck: {spec: [op.cold,op.cats,op.wolf,obscurity,op.night], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.cold,op.cats,op.wolf,obscurity,op.night,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 
@@ -484,7 +484,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.messana:1},
-	internaldeck: {spec: [op.heat,op.heights,op.horned,obscurity,op.sunset], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.heat,op.heights,op.horned,obscurity,op.sunset,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.ghardaia",
@@ -505,7 +505,7 @@ startdescription:"Walk the city, seeking opportunities. [There is always a small
 warmup:60,
 craftable:true,
 requirements:{domicile.morbihan:1},
-	internaldeck: {spec: [op.faith,op.horned,op.sea,obscurity,op.night], draws: 1, resetonexhaustion: true},
+	internaldeck: {spec: [op.faith,op.horned,op.sea,obscurity,op.night,op.dawn], draws: 1, resetonexhaustion: true},
 },
 
 {id:"scout.wilderness",
