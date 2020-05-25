@@ -770,7 +770,7 @@ hintonly:true
 {id:"travel.ally",
 actionId:"travel",
 label:"Send an Ally to create a False Trail",
-startdescription:"It's chancy, but what isn't? [A False Trail will prevent Reckoners from finding you for as long as it lasts. You won't ever be able to travel to this city. Your Ally will be unavailable for a while, and there's a small chance they'll never return.]",
+startdescription:"It's chancy, but what isn't? [A False Trail will prevent Reckoners from finding you for as long as it lasts. You won't ever be able to travel to this city. Your Ally will take an unpredictable while to create the Trail; they won't be unavailable for an unpredictable while; and there's a small chance they'll never return.]",
 description:"They're en route.",
 requirements:{ally:1,destination:1,exhausted:-1,end:-1,wilderness:-1},
 extantreqs:{apx.trail.false.exile:-1},
@@ -783,7 +783,7 @@ warmup:60
 
 {id:"ally.trail.false.begin",
 actionId:"ally.trail.false.1",
-label:"Creating a False Trail",
+label:"Working on a False Trail...",
 startdescription:"@#ally.barber|Zulfiya is arranging a suitable chaos.
 #ally.delver|Orsolina is methodically at work.
 #ally.fivegoer|Vasil seems to be planning some sort of party.
@@ -791,7 +791,7 @@ startdescription:"@#ally.barber|Zulfiya is arranging a suitable chaos.
 #ally.huntress|Lalla Chaima is causing useful havoc.
 #ally.smuggler|Giorgiou is planning to turn a profit while diverting attention.
 #ally.visionary|Mireya is arranging something memorable.
-#ally.vivisectionist|Jannings is deploying his resources.@ [A modest chance each turn of completing the task.]",
+#ally.vivisectionist|Jannings is deploying his resources.@ [A modest chance each turn of creating a False Trail.]",
 warmup:60,
 linked:[{id:"ally.trail.false.create",chance:30},
 {id:"ally.trail.false.begin"}]
@@ -799,7 +799,7 @@ linked:[{id:"ally.trail.false.create",chance:30},
 
 {id:"ally.trail.false.create",
 actionId:"ally.trail.false.1",
-label:"Created a False Trail",
+label:"Creating a False Trail",
 startdescription:"@#ally.barber|Zulfiya has arranged a suitable chaos.
 #ally.delver|Orsolina has methodically completed her work.
 #ally.fivegoer|Vasil's celebration has attracted all kinds of attention.
@@ -808,12 +808,21 @@ startdescription:"@#ally.barber|Zulfiya has arranged a suitable chaos.
 #ally.smuggler|Giorgiou has managed to turn a profit while diverting attention.
 #ally.visionary|Mireya has arranged something memorable.
 #ally.vivisectionist|Jannings has deployed his resources.@",
+description:"My Ally's laid a false trail. They'll cover their tracks and return soon - I hope.",
+
 alt:[{id:"ally.trail.false.waiting",additional:true,expulsion:{limit:2,filter:{ally:1,destination:1}}}],
 effects:{trail.false.exile:1},
 warmup:60
 },
 
 {id:"ally.trail.false.waiting",
+actionId:"ally.trail.false.2",
+label:"Waiting...",
+startdescription:"Home soon?",
+linked:[{id:"ally.trail.false.waiting.displaytext"}]
+},
+
+{id:"ally.trail.false.waiting.displaytext",
 actionId:"ally.trail.false.2",
 label:"Waiting...",
 startdescription:"@#ally.barber|Zulfiya's work is done. She'll be back as soon as she can travel safely.
