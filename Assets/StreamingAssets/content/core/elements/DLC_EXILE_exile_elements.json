@@ -169,7 +169,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.heart
 },
 
 {id:"opx.sanatorium",
@@ -178,7 +178,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.heart
 },
 
 {id:"opx.miracles",
@@ -187,7 +187,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.lantern
 },
 
 {id:"opx.flowermaker",
@@ -196,7 +196,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.grail
 },
 
 
@@ -206,7 +206,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.knock
 },
 
 
@@ -216,7 +216,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.winter
 },
 
 {id:"opx.counterfeiting",
@@ -225,7 +225,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.moth
 },
 
 {id:"opx.smuggling",
@@ -234,7 +234,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.moth
 },
 
 
@@ -254,7 +254,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.edge
 },
 
 
@@ -263,7 +263,8 @@ label:"uprising op marker: DO NOT TRANSLATE",
 isAspect:true,
 noartneeded:true,
 isHidden:true,
-lifetime:1
+lifetime:1,
+verbicon:operation.forge
 },
 
 {id:"opx.betrayal",
@@ -272,7 +273,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.winter
 },
 
 
@@ -282,7 +283,7 @@ isAspect:true,
 noartneeded:true,
 isHidden:true,
 lifetime:1,
-verbicon:operation
+verbicon:operation.secrethistories
 },
 
 {id:"turmoil",
@@ -2877,7 +2878,7 @@ description:"A great vintage wrung from a <i>terroir</i> ripe with secrets in th
 
 {id:"office",
 label:"Discreet Office",
-aspects:{asset:1,space:1,heart:2,worth:1},
+aspects:{asset:1,space:1,heart:2,worth:1,comfort:1},
 description:"Not too obvious, and not too far out of the way.",
 icon:vaultcapital1
 },
