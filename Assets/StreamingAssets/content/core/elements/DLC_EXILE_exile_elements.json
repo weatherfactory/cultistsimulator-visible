@@ -4195,7 +4195,7 @@ aspects: {destination:1},
 slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}],
 description:"It was the White City once. Now they call it 'Red Vienna'. There's a Ligeian here, and the scars of the Worm Wars are still visible to those who know. But if I'm to die, I'd like to see the old place one more time. [Once you leave the current city, this will never be available again.]",
 unique:true,
-xtriggers:{arriving:[{{id:"op.kleidouchos",morpheffect:spawn},id:"domicile.vienna",morpheffect:transform}]}
+xtriggers:{arriving:[{id:"op.kleidouchos",morpheffect:spawn},{id:"domicile.vienna",morpheffect:transform}]}
 },
 
 {id: "wilderness",
