@@ -281,7 +281,7 @@ linked:[{id:"opx.caper.progress3"},
 
 
 {id:"opx.caper.end",
-actionId:"opx.rob.vault",
+actionId:"opx.caper",
 effects:{complication:-100},
 linked:[{id:"opx.caper.success"},
 {id:"opx.caper.failure"}]
@@ -293,6 +293,7 @@ label:"Success!",
 startdescription:"Safely away with my haul!",
 requirements:{progress:3},
 effects:{progress:-3},
+burnimage:"caper.complete",
 aspects:{fatiguing:1,success:1}
 },
 
