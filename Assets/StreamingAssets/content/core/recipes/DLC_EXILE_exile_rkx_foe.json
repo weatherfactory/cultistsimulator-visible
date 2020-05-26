@@ -10,7 +10,8 @@ effects:{rkx.foe:1},
 extantreqs:{rkx.foe.defeated:-1},
 warmup:10,
 alt:[{id:"rkx.spawn.escort",additional:true}],
-linked:[{id:"rkx.foe.attack"}]},
+linked:[{id:"rkx.foe.obscured"},
+{id:"rkx.foe.attack"}]},
 
 {id:"rkx.foe.arrive.mapedge",
 actionId:"rkx.foe",
@@ -242,11 +243,11 @@ startdescription:"'@#op.cold|'I was <i>born</i> in snow.'
 #op.heat|'Nice weather for what I intend.'
 #op.sea|'Good idea. I'll feed what's left to the sharks.'
 #op.cats|'Here, kitten. Here.'
-#op.heights|'.'
+#op.heights|'Long way down.'
 #op.faith|'Wrong god.'
 #op.flowermaker|'I call upon the Flowermaker, who always has what I desire...'
 #op.horned|'The Horned-Axe, who separates and distinguished. Come here and be distinguished, then.'
-#op.wolf|'Appropriate. There'll be nothing left of you.'@",
+#op.wolf|'Appropriate. There'll be nothing left of you.' [This is not one of the Foe's Weaknesses.]@",
 aspects:{fatiguing:1},
 alt:[{id:"spit.foe.attack.success", additional:true, expulsion:{limit:3,filter:{lore:1,weapon:1,distraction:1}}}],
 

@@ -474,25 +474,29 @@ isHidden:true
 
 {id: "shrine.colonel",
 label: "Shrine: Colonel",
-description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines."
+description:"A secret shrine of a secret god: the power sometimes known as the Colonel. My Foe had some dealings with the Colonel, and my old mob was discouraged from visiting his shrines.",
+isAspect:true
 },
 
 {id: "shrine.colonel.marker",
 label: "A Cult of the Colonel",
 description:"If my intelligence is correct, there's a cult of the Colonel somewhere in this city.",
-icon:shrine.colonel
+icon:shrine.colonel,
+isAspect:true
 },
 
 
 {id: "shrine.lionsmith",
 label: "Shrine: Lionsmith",
-description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines."
+description:"A secret shrine of a secret god: the power sometimes known as the Lionsmith. My old mob knew to avoid his shrines.",
+isAspect:true
 },
 
 {id: "shrine.lionsmith.marker",
 label: "A Cult of the Lionsmith",
 description:"If my intelligence is correct, there's a cult of the Lionsmith somewhere in this city.",
-icon:shrine.lionsmith
+icon:shrine.lionsmith,
+isAspect:true
 },
 
 
@@ -683,8 +687,7 @@ icon:wary
 {id:"price",
 label:"Price",
 description:"'PRICE, n. Value, plus a reasonable sum for the wear and tear of conscience in demanding it.' - Bierce. [Provide this or greater in Worth.]",
-isAspect:true,
-icon:evidencelevel
+isAspect:true
 },
 
 {id:"space",
@@ -1675,7 +1678,7 @@ label: "Chapel of St Andrew Stratelates",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"There's a side chapel in Aachen cathedral to a warrior saint who fought against the Persians. On certain days, a deacon will lock the door and perform unorthodox ceremonies for veterans.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1684,7 +1687,7 @@ label: "Roadside Shrine to an Iron Saint",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"Beneath a rocky overhang, an ancient cast-iron statue stands in a whitewashed shelter. Its face has been scarred to unrecognisability, but one hand still holds a spear.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1693,7 +1696,7 @@ label: "Repurposed Datsan",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"Unexpectedly, here's a Buddhist temple with painted doors and stained glass windows. But the paint is peeling and most of the windows have been boarded up. A certain Red Army battalion commander has taken the place over - supposedly for storage, but those of us who know the pass-words are permitted to join in stern ceremonies before the scarred face of the Buddha.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1703,7 +1706,7 @@ label: "Cellar Wotan",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"In the deepest cellar of the Nationaltheater stands a stern image carved of Black Forest oak. Sixty years ago the Swan King staged a grandiose première of his favourite composer's new opera. It didn't go well. The stage-trappings were banished down here and forgotten. Now the image's eye has been scarred out to make him blind, and those who know of the place's power perform their harsh devotions before it.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1712,7 +1715,7 @@ label: "Scarred Lodge",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"In a burnt-out hunting lodge at the edge of town, charred bone has been carved into chess-pieces, and a chess-board scored in the stone of the hearth.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1722,7 +1725,7 @@ label: "Fane of the One-Armed",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"An abandoned grain silo has been adopted by a secret cult honouring an odd hero: the one-armed Briton who stormed the city for the White Russians, alone in a single tank. Perhaps he is now a Name. Perhaps he's only dead. But those who venerate the Colonel remember him.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1740,7 +1743,7 @@ label: "Anvil of the Bull",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"The 'anvil' here is a bronze altar of Apis, the Bull. Bronze is not a good metal for anvils, but the only material forged on this one is, the priests say, the human spirit.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -1749,7 +1752,7 @@ label: "Skaptodon Tomb",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"Sometimes a skaptodon becomes greedy, starts eating things they don't find in the earth, and degenerates to something like human shape. I learnt the hard way that it's much more difficult to kill a skaptodon that still has all its old strength. But one fell in battle here, and the shrine honours its bones. ",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -1759,7 +1762,7 @@ label: "Hall of Brass Mirrors",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"The marabout Navil spends much of his time here, although he denies being in the service of the Lionsmith. 'The greatest lion is the lion who has overcome <i>himself</i>,' he helpfully insists.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -1769,7 +1772,7 @@ label: "Shahrewar Stone",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"My poet friend told me the story of this place: that in the days when the sky was a polished roof of the hardest stone, the Lionsmith struck it with his hammer so that this great rock would fall to earth. It looks to me like a taenite meteorite, but that doesn't mean her story wasn't true. And that's why I try not to think too hard about the Histories.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -1779,7 +1782,7 @@ label: "Crossroads Ateshgah",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"The Party drove the worshippers out of this fire temple. Now a small cadre of military engineers operates here. But they've put considerable effort into maintaining the gas pipes that fuel the eternal flame, and their practices are notably eccentric.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -1789,7 +1792,7 @@ label: "Antaeum",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"The Imazighen - the people the world knows as the Berbers - venerate Antaios as a hero-king. Of course Antaios the Opponent, the Son of Earth, was a great enemy of the Lionsmith, but the Lionsmith has always respected his great enemies - or so say the initiates of the Antaeum.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1,contact.retainer:1},forbidden:{exhausted:1}}],
-icon:shrine.lionsmith,
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -2563,7 +2566,7 @@ unique:true
 
 
 {id: "op.rarity.knock",
-label: "Opportunity: Purchase a Map of Secrets",
+label: "Opportunity: Purchase an Atlas of the Unsuspected",
 aspects: {op:1,price:3},
 description:"There's always a way. [A Knock rarity.]",
 xtriggers:{purchase:rarity.knock,renewal.exile:op.rarity.knock},
