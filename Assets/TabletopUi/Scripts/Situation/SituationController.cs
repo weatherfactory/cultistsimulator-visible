@@ -258,6 +258,9 @@ namespace Assets.TabletopUi {
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
 
+            if (withRecipe.BurnImage != null)
+                BurnImageUnderToken(withRecipe.BurnImage);
+
         }
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -700,6 +703,7 @@ namespace Assets.TabletopUi {
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
             CurrentEndingFlavourToSignal = nextRecipePrediction.SignalEndingFlavour;
             PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);
+
         }
 
         public void SetOutput(List<IElementStack> stacksForOutput) {

@@ -350,6 +350,7 @@ description:"I remain in the sanctuary after the old man has gone, until the sta
 warmup:30,
 aspects:{fatiguing:1},
 effects:{memento.grail.lantern:1,grief:1},
+burnimage:"pentiment",
 craftable:true},
 
 
@@ -363,6 +364,7 @@ description:"I remain in the sanctuary after the old man has gone, until the sta
 warmup:30,
 aspects:{fatiguing:1},
 effects:{memento.grail.lantern:1,grief:1},
+burnimage:"pentiment",
 craftable:true},
 
 
@@ -371,6 +373,7 @@ craftable:true},
 actionId:"travel",
 requirements:{loc.shrine.lionsmith.tripoli:1,contact.retainer:1},
 extantreqs:{memento.grail.lantern:1},
+burnimage:"pentiment",
 label:"In the Antaeum",
 startdescription:"There's no sign of the old man today.",
 hintonly:true,
@@ -575,6 +578,7 @@ extantreqs:{tranquillity:-1},
 mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true},
 {filterOnAspectId:temptation.defiance,mutateAspectId:defiance.consecration.colonel,mutationLevel:1}],
 effects:{location:-1,wound.exile:1},
+burnimage:"consecration.colonel",
 warmup:60,
 craftable:true},
 
@@ -588,6 +592,7 @@ extantreqs:{tranquillity:-1},
 mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true},
 {filterOnAspectId:temptation.defiance,mutateAspectId:defiance.consecration.lionsmith,mutationLevel:1}],
 effects:{location:-1,rage:1},
+burnimage:"consecration.lionsmith",
 warmup:60,
 craftable:true},
 
@@ -958,7 +963,7 @@ label:"Prepare to Depart",
 startdescription:"Time to go. Have I forgotten anything? [You can only take Portable Assets with you. Use Relinquish to abandon any Assets you don't want to bring. Departure will end all ongoing reckoner actions and remove all Traces, but it will also abandon Assets, Locations, Destinations, Local Contacts, and ongoing Operations.]",
 slots:[{id:"preparations",label:"Preparations",required:{portable:1},greedy:true}],
 alt:[{id:"travel.packing"}],
-warmup:20,
+warmup:10,
 linked:[{id:"travel.end.depart"},
 {id:"travel.depart"}]},
 
@@ -994,6 +999,7 @@ comments:"Deleting the rkx verb and then recreating it with the alt works fine b
 gives us another recipe. But keep an eye on this.",
 alt:[{id:"rkx.arrive.ahead",additional:true}],
 warmup:10,
+burnimage:"departure",
 linked:[{id:"travel.enroute"}]},
 
 {id:"travel.enroute",
