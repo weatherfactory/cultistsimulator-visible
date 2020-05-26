@@ -3080,6 +3080,30 @@ description:"It doesn't look like much, but at its touch, flesh perishes. Perhap
 unique:true
 },
 
+{id: "weapon.f.colonel",
+label: "Histid's Dart",
+aspects: {weapon:1,edge:12,worth:1,asset:1,portable:1},
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:husk},
+description:"The Tragulari, who are employed to hunt immortals, learnt their techniques from the Colonel's Histids. This dart is tipped with a skaptodon's tooth. [This is a sacred weapon that can only be used once.]",
+icon:ingredientedgef
+},
+
+{id: "weapon.f.lionsmith",
+label: "Skaptodon's Sacrifice",
+aspects: {weapon:1,edge:12,worth:1,asset:1,portable:1},
+xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
+striking.underling:[{id:wound.underling,morpheffect:spawn}],
+striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
+fatiguing:husk},
+description:"When a skaptodon falls in battle, the Lionsmith's servants often honour their sacrifice by shaping their teeth and claws into weapons. [This is a sacred weapon that can only be used once.]",
+icon:ingredientedgef
+},
+
 {id: "weapon.a.exhausted",
 label: "Profane Weapon (Readying)",
 aspects: {exhausted:1,asset:1,portable:1,worth:1},

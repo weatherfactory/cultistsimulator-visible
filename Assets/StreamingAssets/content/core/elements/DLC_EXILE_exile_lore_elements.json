@@ -198,7 +198,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {edge: 14,lantern:7,winter:7,lore:1},
             description: "Cunning is the root of victory. Experience is the root of cunning. There can be no experience without suffering, and a scar is suffering given form.",
-			xtriggers:{fatiguing:fragmentedgeg.colonel.exhausted,depiphany:fragmentedgef.colonel,striking.foe:[{id:wound.foe,morpheffect:spawn}],striking.underling:[{id:wound.underling,morpheffect:spawn}]},
+			xtriggers:{epiphany:[{id:weapon.f.colonel,morpheffect:spawn}], epiphany.colonel:[{id:weapon.f.colonel,morpheffect:spawn}],fatiguing:fragmentedgeg.colonel.exhausted,depiphany:fragmentedgef.colonel,striking.foe:[{id:wound.foe,morpheffect:spawn}],striking.underling:[{id:wound.underling,morpheffect:spawn}]},
 			uniquenessgroup:"uqedgelore.colonel"
         },
 
@@ -317,7 +317,7 @@ description: "The Lionsmith is young by the standards of the Hours, but old by t
             aspects:
             {edge: 14,forge:7,heart:7,lore:1},
             description: "In each rebirth there is greater strength. What has been broken can be reforged. What has never been broken must be reforged.",
-			xtriggers:{fatiguing:fragmentedgeg.lionsmith.exhausted,depiphany:fragmentedgef.lionsmith,striking.foe:[{id:wound.foe,morpheffect:spawn}],striking.underling:[{id:wound.underling,morpheffect:spawn}]},
+			xtriggers:{epiphany:[{id:weapon.f.lionsmith,morpheffect:spawn}],epiphany.lionsmith:[{id:weapon.f.lionsmith,morpheffect:spawn}],fatiguing:fragmentedgeg.lionsmith.exhausted,depiphany:fragmentedgef.lionsmith,striking.foe:[{id:wound.foe,morpheffect:spawn}],striking.underling:[{id:wound.underling,morpheffect:spawn}]},
 			uniquenessgroup:"uqedgelore.lionsmith"
         },
 
