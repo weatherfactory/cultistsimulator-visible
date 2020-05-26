@@ -110,7 +110,7 @@ namespace Noon
         public const string STOREFRONT_PATH_IN_STREAMINGASSETS = "edition/store.txt";
         public const string CONSCIENCE_PATH_IN_STREAMINGASSETS = "edition/please_buy_our_game.txt";
 
-        public const string BIRDWORMSLIDER = "BirdWormSlider";
+        public const string BIRDWORMSLIDER = "AllowExploits";
 		public const string HIGHCONTRAST = "HighContrast";
 		public const string ACCESSIBLECARDS = "AccessibleCards";
         public const string RESOLUTION = "Resolution";
@@ -347,12 +347,7 @@ namespace Noon
 
         }
 
-        public static void WormWar(float value)
-        {
-            //hi.
-        }
-
-		public static Vector3 SnapToGrid( Vector3 v )
+        public static Vector3 SnapToGrid( Vector3 v )
 		{
 			if (TabletopManager.GetGridSnapSize() > 0f)
 			{

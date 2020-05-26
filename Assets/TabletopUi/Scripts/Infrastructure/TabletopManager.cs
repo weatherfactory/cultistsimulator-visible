@@ -888,8 +888,16 @@ namespace Assets.CS.TabletopUI {
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
-      //      else if (DraggableToken.itemBeingDragged == stack)
-        //        return false; // don't pull cards being dragged unless Worm is set On
+
+            if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
+            {
+                var allowExploits = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
+                if (allowExploits > 0)
+                {
+                    if (DraggableToken.itemBeingDragged == stack)
+                        return false; // don't pull cards being dragged if Worm is set On}
+                }
+            }
 
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }

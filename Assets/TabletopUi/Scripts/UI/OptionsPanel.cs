@@ -266,15 +266,14 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Bird/Worm Slider
         if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-            value = PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER);
+            value = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
         else
-            value = UnityEngine.Random.Range(0, 1);
+            value = 0;
 
         SetBirdWorm(value);
         birdWormSlider.value = value;
-        NoonUtility.WormWar(value);
 
-        
+
         if (PlayerPrefs.HasKey(NoonConstants.HIGHCONTRAST))
             value = PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST);
         else
@@ -482,7 +481,7 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetBirdWorm(float value)
 	{
-        PlayerPrefs.SetFloat(NoonConstants.BIRDWORMSLIDER, value);
+        PlayerPrefs.SetInt(NoonConstants.BIRDWORMSLIDER, (int)value);
 		RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
@@ -607,7 +606,7 @@ public class OptionsPanel : MonoBehaviour {
 
         // Bird/worm
         birdWormSliderValue.text =
-            LanguageTable.Get(PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM");
+            LanguageTable.Get(PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER) > 0 ? "UI_WORM" : "UI_BIRD");
 
         // High Contrast
         contrastSliderValue.text =

@@ -72,12 +72,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var htMetaInfo=new Hashtable();
             htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER,metaInfo.VersionNumber);
-            //Bird, Worm enigma persist
-            if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-            {
-                htMetaInfo.Add(NoonConstants.BIRDWORMSLIDER, PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER));
-                htMetaInfo.Add("WeAwaitSTE", "Hello, Seeker. If you're lookng for enigmas, find the page on our site which references the eidesis in which were presented the Lion, the Boar and the Bull.");
-            }
             return htMetaInfo;
         }
 
