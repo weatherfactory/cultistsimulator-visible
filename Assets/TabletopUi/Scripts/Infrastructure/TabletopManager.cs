@@ -863,8 +863,16 @@ namespace Assets.CS.TabletopUI {
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
+                {
+                    if (DraggableToken.itemBeingDragged == stack)
+                    {
+                        DraggableToken.SetReturn(false,"Drag aborted by greedy slot"); DraggableToken.itemBeingDragged = null;
+                    }
+                
                     return stack;
+                }
 
+            
             return null;
         }
 
@@ -880,8 +888,8 @@ namespace Assets.CS.TabletopUI {
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
-            else if (DraggableToken.itemBeingDragged == stack)
-                return false; // don't pull cards being dragged
+      //      else if (DraggableToken.itemBeingDragged == stack)
+        //        return false; // don't pull cards being dragged unless Worm is set On
 
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
