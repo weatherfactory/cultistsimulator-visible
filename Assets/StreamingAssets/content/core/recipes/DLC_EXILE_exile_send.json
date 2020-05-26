@@ -696,7 +696,7 @@ description:"@#contact.barber|Zulfiya fastens on me eagerly. 'I want you in the 
 #|- now you know.@",
 requirements:{mortal:1,associate:-1,ally:-1},
 aspects:{mortal.introduce:1},
-mutations:[{filterOnAspectId:mortal,mutateAspectId:associate,mutationLevel:1,additive:true}],
+mutations:[{filterOnAspectId:mortal,mutateAspectId:associate,mutationLevel:1,additive:false}],
 warmup:10,
 craftable:true},
 
