@@ -3184,7 +3184,7 @@ aspects:{lifespan.stolen:1}
 
 {id:"trace",
 label:"Trace",
-description:"A betraying clue that my pursuers might recognise.",
+description:"A betraying clue that my pursuers might recognise. [Reckoners appear more quickly and are more powerful when there are more Traces on the board. The Foe himself can appear once there are at least five.]",
 slots:[{id:"assistance",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true},
 {id:"assistance2",actionId:"relinquish",label:"Assistance",required:{deception:1},consumes:true}],
 icon:rumour
