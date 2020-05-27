@@ -176,7 +176,7 @@ namespace Assets.Core.Utility
 
 
             BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,true);
+            BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
             BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
             BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
             BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
@@ -208,7 +208,7 @@ namespace Assets.Core.Utility
 
 
             BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,true);
+            BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
             BuildProduct DancerDLC = new BuildProduct(env, Product.DANCER, true);
             BuildProduct PriestDLC = new BuildProduct(env, Product.PRIEST, true);
             BuildProduct GhoulDLC = new BuildProduct(env, Product.GHOUL, true);

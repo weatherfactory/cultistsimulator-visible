@@ -37,6 +37,11 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
             NoonUtility.Log(message);
         }
 
+        public void LogError(string message)
+        {
+            NoonUtility.Log(message,2);
+        }
+
         public void DeleteProductWithOSBuildPath(BuildProduct p, BuildOS o)
         {
             // Clear the build directory of any of the intermediate results of a previous build

@@ -4440,14 +4440,14 @@ aspects:{damage.foe:1}
 
 	  {id: "wound.underling",
 label: "Pursuer's Wound",
-description:"One more of these will kill my pursuer.",
+description:"Two Wounds will kill most reckoners. Four will kill an Underboss.",
 lifetime:1200,
 aspects:{damage.underling:1}
 },
 
 	  {id: "wound.underling.unstanchable",
 label: "Pursuer's Unstanchable Wound",
-description:"Seven wounds will kill my pursuer. [This Wound will take twice as long to heal.]",
+description:"Two Wounds will kill most reckoners. Four will kill an Underboss. [This Wound will take twice as long to heal.]",
 lifetime:2400,
 aspects:{damage.underling:1}
 },

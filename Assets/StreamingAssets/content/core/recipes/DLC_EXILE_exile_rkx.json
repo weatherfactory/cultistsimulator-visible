@@ -67,6 +67,8 @@ startdescription:"@#rkx.underboss|I know the signs. A minor reckoner lord has en
 deckeffect:{rkx.events:1}, 
 warmup:10,
 linked:[
+{id:"rkx.underboss.slain"},
+{id:"rkx.reckoner.slain"},
 {id:"rkx.escort.attack"},
 {id:"rkx.underboss.aggressive.obscured"},
 {id:"rkx.underboss.aggressive.violent",chance:50},
@@ -87,6 +89,24 @@ linked:[
 {id:"rkx.scouts.passive.leave"}]
 
 },
+
+
+
+{id:"rkx.underboss.slain",
+actionId:"rkx",
+label:"Dead from Wounds",
+startdescription:"This underboss is finished.",
+requirements:{rkx.underboss:1},
+extantreqs:{damage.underling:4},
+purge:{damage.underling:5}},
+
+{id:"rkx.reckoner.slain",
+actionId:"rkx",
+label:"Dead from Wounds",
+startdescription:"This reckoner is finished.",
+requirements:{rkx.underboss:-1,rkx.rank:1},
+extantreqs:{damage.underling:2},
+purge:{damage.underling:3}},
 
 
 {id:"rkx.escort.attack",

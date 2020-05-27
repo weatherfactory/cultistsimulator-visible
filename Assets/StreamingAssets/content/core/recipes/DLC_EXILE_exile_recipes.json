@@ -467,15 +467,15 @@ description:"The shadows of the shrine thicken. I am blind as the Colonel. I can
 requirements:{shrine.colonel:1,fragmentedgeg.colonel:1},
 extantreqs:{defiance.consecration.colonel:1,tranquillity:-1},
 effects:{location:-1,wound.exile:1},
-linked:[{id:"cold.weakness.reveal.colonel",extantreqs:{rkx.weakness.cold.hidden:1},purge:{rkx.weakness.cold.hidden:1}},
-{id:"heat.weakness.reveal.colonel",extantreqs:{rkx.weakness.heat.hidden:1},purge:{rkx.weakness.heat.hidden:1}},
-{id:"sea.weakness.reveal.colonel",extantreqs:{rkx.weakness.sea.hidden:1},purge:{rkx.weakness.sea.hidden:1}},
-{id:"faith.weakness.reveal.colonel",extantreqs:{rkx.weakness.faith.hidden:1},purge:{rkx.weakness.faith.hidden:1}},
-{id:"heights.weakness.reveal.colonel",extantreqs:{rkx.weakness.heights.hidden:1},purge:{rkx.weakness.heights.hidden:1}},
-{id:"cats.weakness.reveal.colonel",extantreqs:{rkx.weakness.cats.hidden:1},purge:{rkx.weakness.cats.hidden:1}},
-{id:"flowermaker.weakness.reveal.colonel",extantreqs:{rkx.weakness.flowermaker.hidden:1},purge:{rkx.weakness.flowermaker.hidden:1}},
-{id:"horned.weakness.reveal.colonel",extantreqs:{rkx.weakness.horned.hidden:1},purge:{rkx.weakness.horned.hidden:1}},
-{id:"wolf.weakness.reveal.colonel",extantreqs:{rkx.weakness.wolf.hidden:1},purge:{rkx.weakness.wolf.hidden:1}}],
+linked:[{id:"cold.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.cold.hidden:1},purge:{rkx.weakness.cold.hidden:1}},
+{id:"heat.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.heat.hidden:1},purge:{rkx.weakness.heat.hidden:1}},
+{id:"sea.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.sea.hidden:1},purge:{rkx.weakness.sea.hidden:1}},
+{id:"faith.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.faith.hidden:1},purge:{rkx.weakness.faith.hidden:1}},
+{id:"heights.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.heights.hidden:1},purge:{rkx.weakness.heights.hidden:1}},
+{id:"cats.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.cats.hidden:1},purge:{rkx.weakness.cats.hidden:1}},
+{id:"flowermaker.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.flowermaker.hidden:1},purge:{rkx.weakness.flowermaker.hidden:1}},
+{id:"horned.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.horned.hidden:1},purge:{rkx.weakness.horned.hidden:1}},
+{id:"wolf.weakness.reveal.colonel",label:"Revelation",extantreqs:{rkx.weakness.wolf.hidden:1},purge:{rkx.weakness.wolf.hidden:1}}],
 warmup:60,
 craftable:true},
 
@@ -533,15 +533,15 @@ description:"The sunlight falls in my eyes like blood, and all I see is the gold
 requirements:{shrine.lionsmith:1,fragmentedgeg.lionsmith:1},
 extantreqs:{defiance.consecration.lionsmith:1,tranquillity:-1},
 effects:{location:-1,rage:1},
-linked:[{id:"cats.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.cats.hidden:1},purge:{rkx.weakness.cats.hidden:1}},
-{id:"heat.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.heat.hidden:1},purge:{rkx.weakness.heat.hidden:1}},
-{id:"sea.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.sea.hidden:1},purge:{rkx.weakness.sea.hidden:1}},
-{id:"faith.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.faith.hidden:1},purge:{rkx.weakness.faith.hidden:1}},
-{id:"heights.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.heights.hidden:1},purge:{rkx.weakness.heights.hidden:1}},
-{id:"cold.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.cold.hidden:1},purge:{rkx.weakness.cold.hidden:1}},
-{id:"flowermaker.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.flowermaker.hidden:1},purge:{rkx.weakness.flowermaker.hidden:1}},
-{id:"horned.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.horned.hidden:1},purge:{rkx.weakness.horned.hidden:1}},
-{id:"wolf.weakness.reveal.lionsmith",extantreqs:{rkx.weakness.wolf.hidden:1},purge:{rkx.weakness.wolf.hidden:1}}],
+linked:[{id:"cats.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.cats.hidden:1},purge:{rkx.weakness.cats.hidden:1}},
+{id:"heat.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.heat.hidden:1},purge:{rkx.weakness.heat.hidden:1}},
+{id:"sea.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.sea.hidden:1},purge:{rkx.weakness.sea.hidden:1}},
+{id:"faith.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.faith.hidden:1},purge:{rkx.weakness.faith.hidden:1}},
+{id:"heights.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.heights.hidden:1},purge:{rkx.weakness.heights.hidden:1}},
+{id:"cold.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.cold.hidden:1},purge:{rkx.weakness.cold.hidden:1}},
+{id:"flowermaker.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.flowermaker.hidden:1},purge:{rkx.weakness.flowermaker.hidden:1}},
+{id:"horned.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.horned.hidden:1},purge:{rkx.weakness.horned.hidden:1}},
+{id:"wolf.weakness.reveal.lionsmith",label:"Revelation",extantreqs:{rkx.weakness.wolf.hidden:1},purge:{rkx.weakness.wolf.hidden:1}}],
 warmup:60,
 craftable:true},
 
@@ -702,7 +702,7 @@ linked:[{id:"travel.visit.shrine.nameless.pentiment.vii"},
 {id:"travel.visit.shrine.nameless.pentiment.vii",
 actionId:"travel",
 requirements:{pentiment:6},
-label:"Offer a sixth Pentiment to the Nameless Name",
+label:"Offer a Seventh Pentiment to the Nameless Name",
 startdescription:"In the mist: the deep and grinding rumble of vast chains.",
 slots:[{id:"pentiment",label:"Pentiment",required:{pentiment:1}}],
 warmup:30,
@@ -1041,7 +1041,7 @@ startdescription:"@#domicile.aachen|Lalla Chaima has left a message at the hotel
 #domicile.kiev|As soon as I step off the train, I smell blood. I turn my head. Nothing: only smoke and sweat. I must have imagined it. But there it is again. That red copper.
 #domicile.krakow|Yitzchok has prepared a room for me in the attic. 'I'm too old to be murdered,' he assures me. 'If they come for you, I'll hide under the table and cry.'
 #domicile.leningrad|Sushkin, the 'Athenian', does indeed remember me. 'I will buy you a prodigious funeral,' he tells me delightedly. 'I have a plot picked out for you in the Tikhvin. It's a little small, but I don't imagine your friends will leave very much of you. No no. I insist. It is the least I can do.'
-#domicile.london|Ottavio is waiting for me outside Victoria station, shaking his head sorrowfully at demonstrators marching past. 'A man must be paid, of course,' he laments, 'but all this. There's no need for it. The racecourses are closed, do you know that? And police! like a hive of bees. Perhaps I should strike too. Let them catch real criminals..'
+#domicile.london|Ottavio is waiting for me outside Victoria station, shaking his head sorrowfully at demonstrators marching past. 'A man must be paid, of course,' he laments, 'but all this. There's no need for it. The racecourses are closed, do you know that? And the police! Like a hive of bees! Perhaps I should go on strike too. Let 'em try to catch real criminals instead.'
 #domicile.marrakech|I don't recognise Navil, but he recognises me, and greets me warmly. 'Your heart is steel,' he explains, 'but steel can also be a mirror, and in mirrors we find Glory. You don't know what I mean, do you? Never mind! Accept my help, and leave whenever you wish. That's all you need to do.'
 #domicile.meshad|My friend had retired to a village outside Meshad. Because she was of the old religion, when she fell ill, she had gone to Bazehoor Fire Temple to seek healing. She died before sunset. By the time I arrived, they had already taken her body to the tower for the excarnation.
 #domicile.munich|Count Jannings has sent a scarred and silent servant to bring me to our meeting.

@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
             if (!Directory.Exists(fromEnvironment.GetProductWithOSBuildPath(_product, _os)))
             {
-                fromEnvironment.Log("Can't find source path: terminating distribution creation -  " + fromDirectory);
+                fromEnvironment.LogError("Can't find source path: terminating distribution creation -  " + fromDirectory);
                 return;
             }
             if (Directory.Exists(GetDistributionDestinationPath(fromEnvironment)))
