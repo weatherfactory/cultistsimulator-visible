@@ -1633,7 +1633,8 @@ xtriggers:{fatiguing:husk}
 {id: "progress",
 label: "Momentum",
 description:"[Achieve three Momentum to complete a Caper.]",
-lifetime:1
+lifetime:1,
+icon:experience.exile.ally
 },
 
 {id: "progress.subtlety",
@@ -2530,7 +2531,8 @@ xtriggers:{purchase:curio.lantern,renewal.exile:op.curio.lantern2},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
-unique:true
+unique:true,
+icon:op.curio.lantern
 },
 
 {id: "op.curio.lantern3",
@@ -2541,7 +2543,8 @@ xtriggers:{purchase:curio.lantern,renewal.exile:op.curio.lantern3},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
-unique:true
+unique:true,
+icon:op.curio.lantern
 },
 
 {id: "op.curio.moth",
