@@ -161,25 +161,32 @@ linked:[
 {id:"rkx.underboss.aggressive.violent",
 actionId:"rkx",
 label:"A Hostile Move!",
-startdescription:"The Underboss is attacking me directly! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed, unless you provide a card to defend yourself.]",
+startdescription:"The Underboss is attacking me directly! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed, unless you provide a card to defend yourself. You can also try to bribe them with a Decade, though Underbosses are always greedy.]",
 requirements:{rkx.underboss:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{remnant:1,exhausted:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1,decade.stolen:1},forbidden:{remnant:1,exhausted:1}}],
 warmup:30,
+alt:[{id:"rkx.bossondeck.attack"}],
 linked:[
+{id:"rkx.underling.bribe.greedy"},
 {id:"rkx.underling.distracted"},
 {id:"rkx.underling.attack.success",chance:70},
 {id:"rkx.underling.attack.failure"}]},
 
+
+
+
 {id:"rkx.underboss.aggressive.cunning",
 actionId:"rkx",
 label:"Theft or Sabotage",
-startdescription:"The underboss is going after my Assets. [You can pre-empt them by spending a Connection: Radicals, Underworld, Ruler or Officials. Otherwise, they'll destroy a random Asset.]",
+startdescription:"The underboss is going after my Assets. [You can pre-empt them by spending a Connection: Radicals, Underworld, Ruler or Officials. Otherwise, they'll destroy a random Asset. You can also try to bribe them with a Decade, though Underbosses are always greedy.]",
 requirements:{rkx.underboss:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",description:"Spend a Connection: Radicals, Underworld, Official or Ruler. Otherwise, they'll destroy a random Asset.", required:{connection.ruler:1,connection.underworld:1,connection.radicals:1,connection.official:1}}],
-alt:[{id:"rkx.underboss.aggressive.cunning.defended"}],
+slots:[{id:"defence",label:"Defence",description:"Spend a Connection: Radicals, Underworld, Official or Ruler. Otherwise, they'll destroy a random Asset.", required:{connection.ruler:1,connection.underworld:1,connection.radicals:1,connection.official:1,decade.stolen:1}}],
+alt:[{id:"rkx.bossondeck.underboss.cunning"},
+{id:"rkx.underboss.aggressive.cunning.defended"}],
 warmup:30,
 effects:{asset:-1}, 
-linked:[{id:"rkx.underboss.aggressive.cunning.undefended"}]},
+linked:[{id:"rkx.underling.bribe.greedy"},
+{id:"rkx.underboss.aggressive.cunning.undefended"}]},
 
 
 {id:"rkx.underboss.aggressive.cunning.defended",
@@ -229,11 +236,14 @@ linked:[{id:"rkx.reset"}]},
 {id:"rkx.enforcer.aggressive",
 actionId:"rkx",
 label:"A Hostile Move!",
-startdescription:"The Assassin is moving against me! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed,unless you provide a card to defend yourself.]",
+startdescription:"The Assassin is moving against me! [Direct reckoner attacks cause Wounds if they succeed. They usually succeed, unless you provide a card to defend yourself.  You can also try to bribe them with a Decade, though they may get greedy.]",
 requirements:{rkx.enforcer:1,rkx.event.aggressive:1},
-slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1},forbidden:{remnant:1,exhausted:1}}],
+slots:[{id:"defence",label:"Defence",required:{lore:1,weapon:1,distraction:1,associate:1,decade.stolen:1},forbidden:{remnant:1,exhausted:1}}],
 warmup:40,
+alt:[{id:"rkx.bossondeck.attack"}],
 linked:[
+{id:"rkx.underling.bribe.greedy",chance:30},
+{id:"rkx.underling.bribe.success"},
 {id:"rkx.underling.distracted"},
 {id:"rkx.underling.attack.success",chance:70},
 {id:"rkx.underling.attack.failure"}]},
@@ -262,13 +272,16 @@ linked:[{id:"rkx.reset"}]},
 {id:"rkx.operative.aggressive",
 actionId:"rkx",
 label:"Theft or Sabotage",
-startdescription:"The reckoner operative's going after my Assets. [You can pre-empt them by spending a Connection: Radicals, Underworld, Official or Ruler. Otherwise, they'll destroy a random Asset.]",
-slots:[{id:"defence",label:"Defence",description:"Spend a Connection: Radicals, Underworld, Official or Ruler. Otherwise, they'll destroy a random Asset.", required:{connection.ruler:1,connection.underworld:1,connection.radicals:1,connection.official:1}}],
-alt:[{id:"rkx.operative.aggressive.defended"}],
+startdescription:"The reckoner operative's going after my Assets. [You can pre-empt them by spending a Connection: Radicals, Underworld, Official or Ruler. You can also try to bribe them with a Decade, though they may get greedy. Otherwise, they'll destroy a random Asset.]",
+slots:[{id:"defence",label:"Defence",description:"Spend a Connection: Radicals, Underworld, Official or Ruler. Otherwise, they'll destroy a random Asset.", required:{connection.ruler:1,connection.underworld:1,connection.radicals:1,connection.official:1,decade.stolen:1}}],
+alt:[{id:"rkx.bossondeck.operative"},
+{id:"rkx.operative.aggressive.defended"}],
 requirements:{rkx.operative:1,rkx.event.aggressive:1},
 warmup:30,
 effects:{asset:-1}, 
-linked:[{id:"rkx.operative.aggressive.undefended"}]},
+linked:[{id:"rkx.underling.bribe.greedy",chance:30},
+{id:"rkx.underling.bribe.success"},
+{id:"rkx.operative.aggressive.undefended"}]},
 
 {id:"rkx.operative.aggressive.defended",
 actionId:"rkx",
@@ -512,12 +525,75 @@ effects: {wound.underling:1},
 warmup:1,
 linked:[{id:"use.attack.underling.slain"}]},
 
+{id:"rkx.underling.bribe.greedy",
+actionId:"rkx",
+label:"A Higher Price",
+startdescription:"'@#rkx.underboss|'Be serious.'
+#rkx.enforcer|'Double.'
+#rkx.operative|'Keep talking...'
+#|'Keep talking...'@ [If you add another Decade, the bribe will succeed. If not, your pursuer will consume the first Decade and keep coming.']" ,
+requirements:{decade.stolen:1},
+slots:[{id:"more",label:"More",description:"Double it or walk away.",required:{decade.stolen:1}}],
+effects:{decade.stolen:-1},
+warmup:10,
+linked:[{id:"rkx.underling.bribe.success"}, 
+{id:"rkx.reset"}],
+},
+
+{id:"rkx.underling.bribe.success",
+actionId:"rkx",
+label:"A Successful Bribe",
+startdescription:"'@#rkx.underboss|'I always liked you, you know. If the Old Man ever meets with an accident... get in touch.'
+#rkx.enforcer|'Deal. And this never happened.'
+#rkx.operative|'You're not so bad. When the Old Man finally catches up... I'll pour one out for you.'
+#|'Lucky you were never here, eh?'@",
+requirements:{decade.stolen:1},
+effects:{decade.stolen:-1,rkx.rank:-1,rkx.event:-1,trail.false.bribe:1},
+purge:{damage.underling:100},
+warmup:10
+},
+
+{id:"rkx.bossondeck.attack",
+actionId:"rkx",
+label:"Too Late for That",
+startdescription:"No underlng will dare turn a blind eye to my presence while the Foe is here.",
+requirements:{decade.stolen:1},
+effects:{decade.stolen:-1},
+linked:[
+{id:"rkx.underling.attack.success",chance:70},
+{id:"rkx.underling.attack.failure"}]},
+
+{id:"rkx.bossondeck.underboss.cunning",
+actionId:"rkx",
+label:"Too Late for That",
+startdescription:"No underlng will dare turn a blind eye to my presence while the Foe is here.",
+requirements:{decade.stolen:1},
+effects:{decade.stolen:-1},
+linked:[{id:"rkx.underboss.aggressive.cunning.undefended"}]},
+
+{id:"rkx.bossondeck.operative",
+actionId:"rkx",
+label:"Too Late for That",
+startdescription:"No underlng will dare turn a blind eye to my presence while the Foe is here.",
+requirements:{decade.stolen:1},
+effects:{decade.stolen:-1},
+linked:[{id:"rkx.operative.aggressive.undefended"}]},
+
+
+
+
+
+
+
+
 {id:"rkx.reset",
 actionId:"rkx",
 label:"What Next?",
 startdescription:"What Next?",
 effects:{rkx.event:-1},
 linked:[{id:"rkx.selector"}]}
+
+
 
 ]
 }

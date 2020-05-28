@@ -510,7 +510,9 @@ noartneeded:true
 
 {id:"rkx.event",
 label:"Reckoner Plans",
-isAspect:true
+isAspect:true,
+isHidden:true,
+noartneeded:true
 },
 
 {id:"rkx.rank",
@@ -3243,6 +3245,15 @@ description:"False but persuasive evidence that I'm somewhere I'm not. [While th
 aspects:{diversion.exile:1},
 lifetime:360
 },
+
+{id:"trail.false.bribe",
+label:"False Report",
+description:"My pursuer's reported that I've left the city. I'll have a brief period of grace before any more searchers arrive. [While this is present on the board, reckoners won't arrive in your current city. But if they're already present, it won't help.]",
+aspects:{diversion.exile:1},
+lifetime:60,
+icon:trail.false.exile
+},
+
 
 {id:"trail.false.exile.nameless",
 label:"A Nameless Blessing",
