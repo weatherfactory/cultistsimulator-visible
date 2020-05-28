@@ -8,9 +8,9 @@ using System.IO;
 #if UNITY_STANDALONE_LINUX
 public class GogGalaxyManager : MonoBehaviour
     {
-    public string clientID = "foo";
-    public string clientSecret = "bar";
-//adding the fields here too stops the odd build error we get otherwise when we try to build just Linux after the editor knows about the fields
+  //  public string clientID = "foo";
+  //  public string clientSecret = "bar";
+//used to be that adding the fields here too stops the odd build error we get otherwise when we try to build just Linux after the editor knows about the fields. That doesn't seem to be the case any more.
        private void Awake()
     {
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
@@ -21,7 +21,7 @@ public class GogGalaxyManager : MonoBehaviour
 {
     private void Awake()
     {
-        Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
+        Debug.Log("WebGL build: not initialising GOG Galaxy, cos there's no support for it.");
     }
 }
 
