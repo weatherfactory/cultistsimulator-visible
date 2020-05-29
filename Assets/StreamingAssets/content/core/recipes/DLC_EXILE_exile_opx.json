@@ -278,6 +278,25 @@ startdescription:"[Add Forge 6 and Space to begin a counterfeiting operation, a 
 craftable:false,
 hintonly:true},
 
+{id:"use.radicals.hint",
+actionId:"use",
+label:"Use Connections with Radicals?",
+requirements:{connection.radicals:1},
+startdescription:"[Add Forge to assist an Uprising, or Winter to betray it.]",
+craftable:false,
+hintonly:true},
+
+{id:"use.uprising.wolf",
+actionId:"use",
+label:"Foment Chaos for the Wolf Divided",
+startdescription:"'Caput gerat lupinum.' Well, why not, then? What do I owe to anyone, after all? [This will cause suffering and destruction. There will be an opportunity for profit; and it'll be harder for the reckoners to pick up your trail.]",
+requirements:{connection.radicals:1,op.wolf:1,domicile:1,temptation.defiance:1,troubled:1,turmoil:-1},
+extantreqs:{opx.uprising:-1,opx.betrayal:-1},
+aspects:{fatiguing:1},
+warmup:5,
+alt:[{id:"opx.uprising.setup", additional:true, expulsion:{limit:5,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1,op.wolf.husk.active:1}}}],
+craftable:true},
+
 {id:"use.betrayal",
 actionId:"use",
 label:"Betray an Uprising",
@@ -298,8 +317,11 @@ requirements:{connection.radicals:1,forge:8,domicile:1,temptation.defiance:1,tro
 extantreqs:{opx.uprising:-1,opx.betrayal:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.uprising.setup", additional:true, expulsion:{limit:3,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
+alt:[{id:"opx.uprising.setup", additional:true, expulsion:{limit:5,filter:{space:1,op.connection.radicals:1,domicile:1,temptation.defiance:1}}}],
 craftable:true},
+
+
+
 
 
 
@@ -850,7 +872,8 @@ warmup:10,
 requirements:{opx.uprising.complete:1},
 warmup:30,
 effects:{trail.false.exile:1},
-linked:[{id:"opx.end.uprising.colonel"},
+linked:[{id:"opx.end.uprising.wolf"},
+{id:"opx.end.uprising.colonel"},
 {id:"opx.end.uprising.lionsmith"}]
 },
 
@@ -866,6 +889,15 @@ warmup:30,
 linked:[{id:"opx.end.betrayal.colonel"},
 {id:"opx.end.betrayal.lionsmith"}]
 },
+
+{id:"opx.end.uprising.wolf",
+actionId:"opx.",
+label:"A Feast of Fires",
+startdescription:"'When we know not whom we serve,' Julian Coseley said once, 'we serve the Wolf Divided.' But I knew what I was doing. [Defiance has been increased. There's no limit to the number of times you can do this.]",
+requirements:{op.wolf.husk.active:1},
+mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+},
+
 
 
 {id:"opx.end.uprising.colonel",
@@ -903,8 +935,6 @@ requirements:{defiance.betrayal:-1,defiance.consecration.lionsmith:1},
 mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:-1,additive:true},
 {filterOnAspectId:temptation.defiance,mutateAspectId:defiance.betrayal,mutationLevel:1,additive:false}],
 },
-
-
 
 
 

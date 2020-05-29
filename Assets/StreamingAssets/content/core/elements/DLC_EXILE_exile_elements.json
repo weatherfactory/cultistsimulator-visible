@@ -1633,8 +1633,7 @@ xtriggers:{fatiguing:husk}
 {id: "progress",
 label: "Momentum",
 description:"[Achieve three Momentum to complete a Caper.]",
-lifetime:1,
-icon:experience.exile.ally
+lifetime:1
 },
 
 {id: "progress.subtlety",
@@ -1749,7 +1748,7 @@ label: "Mortal Shrine",
 aspects: {location:1,shrine.edge:1,shrine.colonel:1},
 description:"Malta is the Nurse of the Mediterranean, where soldiers come to be healed, and there are those among the healers who practice the invisible arts. They keep shrines in locked rooms in their hospitals to invoke the healing Hours. No-one prays to the Colonel for healing. They only visit this rotting room under the eaves to invoke him when death would be a mercy.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
-icon:shrine.colonel,
+icon:loc.shrine.colonel,
 unique:true
 },
 
@@ -1817,6 +1816,7 @@ label: "Chapel of St Mark of the Hammer",
 aspects: {location:1,shrine.edge:1,shrine.lionsmith:1},
 description:"The chivalric <i>Ordine di San Marco</i> was formally dissolved a century or so ago, but that didn't stop their more determined members from meeting in secret, continuing their less Christian rituals, and selling their services to the practitioners of the invisible arts. Their chapel is open to anyone they like enough, and we've always got on.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,desire:1},forbidden:{exhausted:1}}],
+icon:loc.shrine.lionsmith,
 unique:true
 },
 
@@ -2230,7 +2230,7 @@ resaturate:true
 label: "Vasil, Depleted",
 description:"Vasil's exertions have softened his shape. For now he has retreated, dripping and cawing, to somewhere warmer.",
 inherits:_contact.mortal.fatigued,
-icon:contact.fivegoer,
+icon:npc.fivegoer,
 decayTo:contact.fivegoer,
 lifetime:120,
 resaturate:true
@@ -3430,7 +3430,7 @@ unique:true
 
 	  {id: "domicile.algiers",
 label: "Algiers",
-aspects: {domicile:1,troubled:1},
+aspects: {domicile:1,troubled:1,shrine.lionsmith.marker:1},
 xtriggers:{uprising:domicile.algiers.turmoil},
 description:"Pine scent and bougainvillea, white walls and ocean light, sirocco winds and the smoulder of revolution.",
 icon:domicile.algiers,
@@ -3561,7 +3561,7 @@ unique:true
 
 	  {id: "domicile.marrakech",
 label: "Marrakech",
-aspects: {domicile:1},
+aspects: {domicile:1,shrine.lionsmith.marker:1},
 
 description:"Five hundred miles away, the Republic of the Rif wages guerilla war against the French Protectorate. But here in Marrakech it's still mint tea and parasols.",
 icon:domicile.marrakech,
@@ -3571,7 +3571,7 @@ unique:true
 
 	  {id: "domicile.meshad",
 label: "Meshad",
-aspects: {domicile:1,remote:1},
+aspects: {domicile:1,remote:1,shrine.lionsmith.marker:1},
 description:"A mild and turquoise sunset in Meshad, and the lights along Khayam Boulevard flickering to life. Armoured cars growl past: the new Shah is wary. A thousand years ago, here between the mountains, Ferdowsi wrote: 'How shall a man escape from that which is written; How shall he flee from his destiny?' It's a good question, actually.",
 icon:domicile.meshad,
 unique:true
@@ -3698,7 +3698,7 @@ unique:true
 
 	  {id: "domicile.tripoli",
 label: "Tripoli dell'ovest",
-aspects: {domicile:1,comfort:2},
+aspects: {domicile:1,comfort:2,shrine.lionsmith.marker:1},
 
 description:"The Spanish took Tripoli from the Berbers, the Knights of St John took it from the Spanish, the Ottomans took it from the Knights, and now the Italians run the place. The Berbers called Tripoli 'the Bride of the Sea'. And, if I can believe my Foe, my mother called it 'home'.",
 icon:domicile.tripoli,
@@ -3719,7 +3719,7 @@ unique:true
 
 	  {id: "domicile.venice",
 label: "Venice",
-aspects: {domicile:1},
+aspects: {domicile:1,shrine.lionsmith.marker:1},
 
 description:"Deep fog has made Venice a pale city more heard than seen: the plash of waves, the purr of vaporettos, the scent of seaweed and sewage. The sun is a blind eye. If ever the Nameless Name of the Velvet walks by day, she must walk here.",
 icon:domicile.venice,
@@ -4287,8 +4287,16 @@ lifetime:300
 label: "The Wolf Divided's Shadow",
 aspects: {op:1,distraction:1,edge:6,winter:6},
 description:"That scent which is neither tar nor blood nor ozone. The Wolf-Divided's rage boils beneath the air.",
-xtriggers:{renewal.exile:op.wolf,fatiguing:husk},
+xtriggers:{renewal.exile:op.wolf,fatiguing:op.wolf.husk.active},
 lifetime:300
+},
+
+{id: "op.wolf.husk.active",
+label: "The Wolf Divided's Attention",
+aspects: {op:1,edge:6,winter:6},
+description:"An unclean flame smoulders beneath the world's skin. I've invoked the Wolf, and like it or not, I'm doing his work.",
+lifetime:1,
+icon:op.wolf
 },
 
 {id: "op.flowermaker",
