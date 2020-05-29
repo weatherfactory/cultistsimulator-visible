@@ -1683,8 +1683,7 @@ label:"Misty Nook",
 aspects:{location:1},
 description:"An unremarkable location that's somehow easier to stumble across at night. A nondescript candle has been jammed haphazardly into a crevice in the wall.",
 slots:[{actionId:travel,id:"purpose",label:"Purpose",required:{lore:1,pentiment:1,pentiment.display:1},forbidden:{fragmentedge.exile:1,fragmentedgeb.colonel:1,fragmentedgeb.lionsmith:1}}],
-unique:true,
-icon:nameless
+unique:true
 },
 
 {id: "loc.shrine.colonel.aachen",
@@ -4369,25 +4368,22 @@ unique:true
 
 {id: "op.dawn",
 label: "Dawn",
-aspects: {op:1},
+aspects: {op:1,knock:4,lantern:4},
 description:"Sunrise, when the world is clean.",
-lifetime:15,
-xtriggers:{renewal.exile:op.dawn}
+lifetime:15
 },
 {id: "op.sunset",
 label: "Sunset",
-aspects: {op:1},
+aspects: {op:1,forge:4,winter:4},
 description:"Sunset, when the light is richer.",
-lifetime:15,
-xtriggers:{renewal.exile:op.sunset}
+lifetime:15
 },
 
 {id: "op.night",
 label: "Night",
-aspects: {op:1,deception:1},
+aspects: {op:1,deception:1,moth:4,winter:4},
 description:"The deep watches of the night, and again I can't sleep.",
-lifetime:15,
-xtriggers:{renewal.exile:op.night}
+lifetime:15
 },
 
 {id: "temptation.defiance",
