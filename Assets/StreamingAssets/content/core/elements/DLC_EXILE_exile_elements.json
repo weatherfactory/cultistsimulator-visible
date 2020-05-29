@@ -2457,8 +2457,7 @@ aspects: {op:1,price:1},
 description:"A battered-looking rifle sits prosaically on a counter in an antique shop.",
 xtriggers:{purchase:weapon.a,renewal.exile:op.weapon.a},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
-lifetime:300,
-unique:true
+lifetime:300
 },
 
 {id: "op.weapon.b",
