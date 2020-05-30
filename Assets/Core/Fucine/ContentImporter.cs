@@ -27,7 +27,7 @@ using UnityEditor;
 public class ContentImporter
 {
     private IList<ContentImportMessage> contentImportMessages;
-    private const string CONST_CONTENTDIR = "content/";
+    //private const string CONST_CONTENTDIR = "content/";
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_ELEMENTS = "elements";
