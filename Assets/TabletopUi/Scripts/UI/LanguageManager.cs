@@ -48,7 +48,13 @@ public class LanguageManager : MonoBehaviour
 
     // simple singleton declaration
     private static LanguageManager _instance;
-    public static LanguageManager Instance
+
+	private static bool timeStringsUpdated = false;
+    private static string fixedspace = "<mspace=1.6em>";    // defaults are overriden by strings.csv
+    private static string secondsPostfix = "s";
+    private static string timeSeparator = ".";
+
+	public static LanguageManager Instance
     {
         get
         {
@@ -68,6 +74,8 @@ public class LanguageManager : MonoBehaviour
 		}
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
+
+
 
 		string defaultCulture;
 
@@ -141,7 +149,9 @@ public class LanguageManager : MonoBehaviour
     public static void LanguageChangeHasOccurred()
     {
         if (LanguageChanged != null) LanguageChanged();
-    }
+
+        timeStringsUpdated = false;
+	}
 
     // Pass standard language codes.
     public void SetLanguage(string lang)
@@ -190,12 +200,28 @@ public class LanguageManager : MonoBehaviour
 		return null;
 	}
 
+    public static string GetTimeStringForCurrentLanguage(float time)
+    {
+        if (!timeStringsUpdated)    // Slightly clumsy one-time lookup of strings, but this way they are guaranteed to be localised on first use and never looked up again
+        {
+            // One-time lookup of static strings, on first time request only
+            fixedspace = LanguageTable.Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
+            secondsPostfix = LanguageTable.Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
+            timeSeparator = LanguageTable.Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
+            timeStringsUpdated = true;
+        }
+
+        string s = time.ToString("0.0");
+        s = s.Replace('.', timeSeparator[0]);
+        return fixedspace + s + secondsPostfix;
+    }
+
 #if UNITY_EDITOR
 	bool showDebugLanguageSelect = false;
 
 	void OnGUI()
 	{
-		if (GUI.Button( new Rect(Screen.width - 400, 10, 90, 20), "LANGUAGE"))
+        if (GUI.Button( new Rect(Screen.width - 400, 10, 90, 20), "LANGUAGE"))
 		{
 			showDebugLanguageSelect = !showDebugLanguageSelect;
 		}

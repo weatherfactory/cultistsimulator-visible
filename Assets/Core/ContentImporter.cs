@@ -852,7 +852,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     }
 
 
-                    element.Aspects.CombineAspects(NoonUtility.ReplaceConventionValues(htAspects)); //nb combine: we might have just inherited aspects
 
                     if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
                     {

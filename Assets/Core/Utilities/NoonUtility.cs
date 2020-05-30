@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Assets.Core;
-using Assets.Core.Entities;
+using System.Text; 
 using UnityEngine;
-using Assets.CS.TabletopUI;
+
 
 namespace Noon
 {
@@ -148,27 +146,14 @@ namespace Noon
 
         public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.SystemChatter);
 
-        public static VersionNumber VersionNumber
-        {
-	        get { return new VersionNumber(Application.version); }
-        }
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
 
-		// Centralised the time string creation so it's 100% consistent throughout game - CP
-		private static bool stringsUpdated = false;
-		private static string fixedspace = "<mspace=1.6em>";	// defaults are overriden by strings.csv
-		private static string secondsPostfix = "s";
-		private static string timeSeperator = ".";
-
-		private static string[] screenLog;
+        private static string[] screenLog;
 		private static int screenLogStart = 0;
 		private static bool screenLogVisible = false;
 
-		static NoonUtility()
-		{
-			LanguageManager.LanguageChanged += OnLanguageChanged;
-		}
+
 
         public static void Log(string message, int messageLevel=0,int verbosityNeeded=0)
         {
@@ -302,82 +287,6 @@ namespace Noon
         }
 
 
-        public static IAspectsDictionary ReplaceConventionValues(Hashtable htAspects)
-        {
-
-            IAspectsDictionary Results=new AspectsDictionary();
-            if (htAspects == null)
-                return Results;
-            foreach (string k in htAspects.Keys)
-            {
-                string v = htAspects[k].ToString();
-                int intV;
-                switch (v)
-                {
-                    case "CONVENTIONS.QUANTITY_TINY":
-                        intV = 1;
-                        break;
-                    case "CONVENTIONS.QUANTITY_SMALL":
-                        intV = 2;
-                        break;
-                    case "CONVENTIONS.QUANTITY_MODEST":
-                        intV = 3;
-                        break;
-                    case "CONVENTIONS.QUANTITY_GENEROUS":
-                        intV = 4;
-                        break;
-                    case "CONVENTIONS.QUANTITY_SIGNIFICANT":
-                        intV = 6;
-                        break;
-                    case "CONVENTIONS.QUANTITY_MAJOR":
-                        intV = 8;
-                        break;
-                    case "CONVENTIONS.QUANTITY_EPISODE_END":
-                        intV = 7;
-                        break;
-                    default:
-                        intV = Convert.ToInt32(v);
-                        break;
-                }
-
-                Results.Add(k,intV);
-            }
-            return Results;
-
-
-        }
-
-        public static Vector3 SnapToGrid( Vector3 v )
-		{
-			if (TabletopManager.GetGridSnapSize() > 0f)
-			{
-				// Magical maths to snap cards to fractions of approx card dimensions - CP
-				float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
-				float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
-				float recip_x = 1.0f / snap_x;
-				float recip_y = 1.0f / snap_y;
-				v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
-				v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
-			}
-			return v;
-		}
-
-		public static string MakeTimeString( float time )
-		{
-			if (!stringsUpdated)	// Slightly clumsy one-time lookup of strings, but this way they are guaranteed to be localised on first use and never looked up again
-			{
-				// One-time lookup of static strings, on first time request only
-				fixedspace		= LanguageTable.Get("UI_FIXEDSPACE");				// Contains rich text fixed spacing size (and <b> for some langs)
-				secondsPostfix	= LanguageTable.Get("UI_SECONDS_POSTFIX_SHORT");	// Contains localised abbreviation for seconds, maybe a space and maybe a </b>
-				timeSeperator	= LanguageTable.Get("UI_TIME_SEPERATOR");			// '.' for most langs but some prefer ','
-				stringsUpdated	= true;
-			}
-
-			string s = time.ToString("0.0");
-			s = s.Replace( '.', timeSeperator[0] );
-			return fixedspace + s + secondsPostfix;
-		}
-
 		public static void ToggleLog()
 		{
 			screenLogVisible = !screenLogVisible;
@@ -395,10 +304,6 @@ namespace Noon
 			}
 		}
 
-		private static void OnLanguageChanged()
-		{
-			stringsUpdated = false;
-		}
     }
 
 }

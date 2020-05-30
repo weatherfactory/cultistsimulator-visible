@@ -416,7 +416,7 @@ namespace Assets.CS.TabletopUI {
             var stackManagersCatalogue = new StackManagersCatalogue();
             stackManagersCatalogue.Subscribe(this);
 
-            var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
+            var metaInfo = new MetaInfo(new VersionNumber(Application.version));
             if(CrossSceneState.GetMetaInfo()==null)
             {
                           //We've stated running the scene in the editor, so it hasn't been set in menu screen

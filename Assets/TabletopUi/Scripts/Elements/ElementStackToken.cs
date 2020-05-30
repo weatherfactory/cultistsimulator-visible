@@ -1093,7 +1093,7 @@ namespace Assets.CS.TabletopUI {
         // Public so TokenWindow can access this
         public string GetCardDecayTime()
 		{
-			return NoonUtility.MakeTimeString( LifetimeRemaining );
+			return LanguageManager.GetTimeStringForCurrentLanguage( LifetimeRemaining );
         }
 
         public void SetCardDecay(float percentage)

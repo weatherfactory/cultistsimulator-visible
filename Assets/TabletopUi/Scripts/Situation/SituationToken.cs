@@ -195,7 +195,7 @@ namespace Assets.CS.TabletopUI {
 				countdownBar.color = barColor;
 				countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
 				countdownText.color = barColor;
-				countdownText.text = NoonUtility.MakeTimeString( timeRemaining );
+				countdownText.text = LanguageManager.GetTimeStringForCurrentLanguage( timeRemaining );
 				countdownText.richText = true;
 			}
 			else

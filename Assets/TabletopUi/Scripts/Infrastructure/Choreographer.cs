@@ -147,7 +147,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 		{
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
-			centerPos = NoonUtility.SnapToGrid( centerPos );
+			centerPos = SnapToGrid( centerPos );
 			var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, token))
@@ -296,7 +296,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 					}
 
                     points[p] = new Vector2(pos.x + x * snap_x, pos.y + y * snap_y);
-					points[p] = NoonUtility.SnapToGrid( points[p] );
+					points[p] = SnapToGrid( points[p] );
 
                     if (_currentDebug != null) 
                         _currentDebug.checkedPoints.Add(points[p]);
@@ -449,7 +449,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.FlipToFaceUp(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken,TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken, TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
 		{
             var startPos = stack.RectTransform.anchoredPosition3D;
             var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
@@ -481,7 +481,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				else
 				{
 					// Assign element to new slot
-					tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+					tokenSlotPair.RecipeSlot.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
 					if (!tokenSlotPair.Token.SituationController.IsOpen)
 						tokenSlotPair.Token.OpenSituation();
 				}
@@ -500,7 +500,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return;
 
-            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+            tokenSlotPair.RecipeSlot.AcceptStack(element, new Context(Context.ActionSource.AnimEnd));
             tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
         }
 
@@ -510,5 +510,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #endregion
 
+        public static Vector3 SnapToGrid( Vector3 v )
+        {
+            if (TabletopManager.GetGridSnapSize() > 0f)
+            {
+                // Magical maths to snap cards to fractions of approx card dimensions - CP
+                float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
+                float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
+                float recip_x = 1.0f / snap_x;
+                float recip_y = 1.0f / snap_y;
+                v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
+                v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
+            }
+            return v;
+        }
     }
 }

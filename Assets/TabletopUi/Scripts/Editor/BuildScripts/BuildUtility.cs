@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.Editor;
 using Assets.TabletopUi.Scripts.Editor.BuildScripts;
 using Galaxy;
@@ -425,7 +426,7 @@ namespace Assets.Core.Utility
         {
             string versionPath = NoonUtility.JoinPaths(exeFolder, "version.txt");
             Log("Writing version to " + versionPath);
-            File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
+            File.WriteAllText(versionPath, new VersionNumber(Application.version).ToString());
         }
 
 

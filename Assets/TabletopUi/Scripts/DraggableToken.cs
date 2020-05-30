@@ -4,6 +4,7 @@ using System.Collections;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
@@ -124,7 +125,7 @@ namespace Assets.CS.TabletopUI {
 
 		public virtual void SnapToGrid()
 		{
-			transform.localPosition = NoonUtility.SnapToGrid( transform.localPosition );
+			transform.localPosition = Choreographer.SnapToGrid( transform.localPosition );
 		}
 
         public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {

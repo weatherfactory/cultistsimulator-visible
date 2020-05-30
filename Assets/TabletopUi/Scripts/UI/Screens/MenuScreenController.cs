@@ -204,7 +204,7 @@ public class MenuScreenController : MonoBehaviour {
 
 		InitialiseContent();	// Moved content into its own function, so it can happen again after language select if necessary
 
-        var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
+        var metaInfo = new MetaInfo(new VersionNumber(Application.version));
         registry.Register<MetaInfo>(metaInfo);
         CrossSceneState.SetMetaInfo(metaInfo);
 
