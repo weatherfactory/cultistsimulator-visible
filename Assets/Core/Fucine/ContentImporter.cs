@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 #if MODS
@@ -26,7 +27,7 @@ using UnityEditor;
 
 public class ContentImporter
 {
-    private IList<ContentImportMessage> contentImportMessages;
+
     //private const string CONST_CONTENTDIR = "content/";
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
@@ -48,10 +49,12 @@ public class ContentImporter
     
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
 
+    ContentImportLogger _logger=new ContentImportLogger();
+
 
     public ContentImporter()
     {
-        contentImportMessages = new List<ContentImportMessage>();
+       
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
@@ -67,16 +70,6 @@ public class ContentImporter
             select DlcLegacyRegex.Match(fileName) into match 
             where match.Success 
             select match.Groups[1].Value;
-    }
-
-    private void LogProblem(string problemDesc)
-    {
-        contentImportMessages.Add(new ContentImportMessage(problemDesc));
-    }
-
-    private void LogInfo(string desc)
-    {
-        contentImportMessages.Add(new ContentImportMessage(desc,0));
     }
 
 
@@ -128,7 +121,7 @@ public class ContentImporter
                 }
                 catch (Exception e)
                 {
-                    LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
+                    _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
                 }
 
                 cssList.Add(slotSpecification);
@@ -154,8 +147,7 @@ public class ContentImporter
 
         allContentFiles.AddRange(coreContentFiles);
         allContentFiles.AddRange(overridecontentFiles);
-        if (!allContentFiles.Any())
-            LogProblem("Can't find any " + contentOfType + " to import as content");
+        if (!allContentFiles.Any()) _logger.LogProblem("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
@@ -170,7 +162,7 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                _logger.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 return null;
             }
 
@@ -189,7 +181,7 @@ public class ContentImporter
 					}
 					catch (Exception e)
 					{
-						LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                        _logger.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                         return null;
 					}
 
@@ -755,7 +747,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         totalElementsFound += PopulateElements(alElements);
 
-        LogInfo("Total elements found: " + totalElementsFound);
+        _logger.LogInfo("Total elements found: " + totalElementsFound);
 
         foreach (var e in Elements)
         {
@@ -763,15 +755,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             {
                 foreach(var m in xt.Value)
                 { 
-                    if (!Elements.ContainsKey(m.Id))
-                        LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
+                    if (!Elements.ContainsKey(m.Id)) _logger.LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
 
                 }
             }
             if(!string.IsNullOrEmpty(e.Value.DecayTo))
             {
-                if(!Elements.ContainsKey(e.Value.DecayTo))
-                    LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
+                if(!Elements.ContainsKey(e.Value.DecayTo)) _logger.LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
 
             }
         }
@@ -782,7 +772,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         if (alElements == null)
         {
-            LogProblem("Elements were never imported; PopulateElements failed");
+            _logger.LogProblem("Elements were never imported; PopulateElements failed");
             return 0;
         }
 
@@ -865,8 +855,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
                     foreach(var css in element.ChildSlotSpecifications)
                     {
-                        if(string.IsNullOrEmpty(css.ForVerb))
-                            LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
+                        if(string.IsNullOrEmpty(css.ForVerb)) _logger.LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
                     }
                     if (htXTriggers != null)
                     {
@@ -899,8 +888,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                                             }
                                             catch
                                             {
-                                                LogProblem(element.Id + " has a MorphEffect specified that we don't think is right: " +
-                                                           possibleMorphEffect);
+                                                _logger.LogProblem(element.Id + " has a MorphEffect specified that we don't think is right: " +
+                                                                   possibleMorphEffect);
                                             }
 
 
@@ -920,7 +909,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                             }
                             else
                             {
-                                LogProblem("Can't process xtrigger " + k + " in " + element.Id);
+                                _logger.LogProblem("Can't process xtrigger " + k + " in " + element.Id);
                             }
 
                         }
@@ -931,8 +920,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
             catch (Exception e)
             {
-
-                LogProblem("Couldn't add all properties for element " + element.Id + ": " + e.Message);
+                _logger.LogProblem("Couldn't add all properties for element " + element.Id + ": " + e.Message);
 
             }
 
@@ -954,7 +942,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         if (lrChance == 0)
                         {
-                            LogProblem("Chance 0 or not specified in induced recipes for element " + element.Id);
+                            _logger.LogProblem("Chance 0 or not specified in induced recipes for element " + element.Id);
                         }
 
                         TryAddAsInternalRecipe(ir,null);
@@ -964,8 +952,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
             catch (Exception e)
             {
-
-                LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
+                _logger.LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
             }
         }
 
@@ -977,7 +964,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
        
         PopulateRecipeList(recipesArrayList);
-        LogInfo("Total recipes found: " + recipesArrayList.Count);
+        _logger.LogInfo("Total recipes found: " + recipesArrayList.Count);
 
     }
 
@@ -997,7 +984,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             {
         var slots=AddSlotsFromArrayList(alSlots);
                 if (slots.Count > 1)
-                    LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
+                    _logger.LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
                 else
                     v.PrimarySlotSpecification = slots.First();
             }
@@ -1039,8 +1026,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                       "' - " + e.Message);
+            _logger.LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                               "' - " + e.Message);
         }
 
 
@@ -1051,8 +1038,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                       "' - " + e.Message);
+            _logger.LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                               "' - " + e.Message);
         }
 
         string defaultCardId = "";
@@ -1066,8 +1053,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
             catch (Exception e)
             {
-                LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
+                _logger.LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                                   "' - " + e.Message);
             }
 
 
@@ -1084,8 +1071,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing defaultDraws  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                       "' - " + e.Message);
+            _logger.LogProblem("Problem importing defaultDraws  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                               "' - " + e.Message);
         }
 
 
@@ -1099,15 +1086,15 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (var drawmessagekey in d.DrawMessages.Keys)
                 {
                     if (!d.StartingCards.Contains(drawmessagekey))
-                        LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
-                                   ", but that card isn't in the list of drawable cards.");
+                        _logger.LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
+                                           ", but that card isn't in the list of drawable cards.");
                 }
             }
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                       "' - " + e.Message);
+            _logger.LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                               "' - " + e.Message);
         }
 
         try
@@ -1120,8 +1107,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                       "' - " + e.Message);
+            _logger.LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                               "' - " + e.Message);
         }
 
 
@@ -1190,7 +1177,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             catch
             {
-                LogProblem("Can't parse this legacy: " + htEachLegacy[NoonConstants.KID].ToString());
+                _logger.LogProblem("Can't parse this legacy: " + htEachLegacy[NoonConstants.KID].ToString());
             }
         }
 
@@ -1228,7 +1215,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             catch
             {
-                LogProblem("Can't parse this legacy: " + htEachEnding[NoonConstants.KID].ToString());
+                _logger.LogProblem("Can't parse this legacy: " + htEachEnding[NoonConstants.KID].ToString());
             }
         }
     }
@@ -1246,8 +1233,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
        //check for common issues in recipes
         foreach (var r in Recipes)
         {
-            if(r.Craftable && !r.Requirements.Any())
-                LogProblem(r.Id + " is craftable, but has no requirements, so it will make its verb useless :O ");
+            if(r.Craftable && !r.Requirements.Any()) _logger.LogProblem(r.Id + " is craftable, but has no requirements, so it will make its verb useless :O ");
 
             foreach (var n in r.LinkedRecipes)
                 LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
@@ -1291,8 +1277,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 }
                 catch
                 {
-                    LogProblem(r.Id + " has a PortalEffect specified that we don't think is right: " +
-                               possiblePortalEffect);
+                    _logger.LogProblem(r.Id + " has a PortalEffect specified that we don't think is right: " +
+                                       possiblePortalEffect);
                 }
             }
 
@@ -1307,7 +1293,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 if (defaultActionId != null)
                     r.ActionId = defaultActionId;
                 else
-                    LogProblem(r.Id + " has no actionId specified");
+                    _logger.LogProblem(r.Id + " has no actionId specified");
 
             }
             htEachRecipe.Remove(NoonConstants.KACTIONID);
@@ -1359,11 +1345,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             if (htEachRecipe[NoonConstants.KID] == null)
             {
-                LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
+                _logger.LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
             }
             else
             {
-                LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+                _logger.LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
         }
 
@@ -1382,7 +1368,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
         }
 
         //TABLE REQS
@@ -1403,7 +1389,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing table requirements for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing table requirements for recipe '" + r.Id + "' - " + e.Message);
         }
 
 
@@ -1426,7 +1412,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing extant requirements for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing extant requirements for recipe '" + r.Id + "' - " + e.Message);
         }
 
 
@@ -1449,7 +1435,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KASPECTS);
@@ -1473,7 +1459,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KEFFECTS);
@@ -1494,7 +1480,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-           LogProblem("Problem importing purges for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing purges for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KPURGE);
@@ -1512,7 +1498,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KHALTVERB);
@@ -1530,7 +1516,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KDELETEVERB);
@@ -1551,7 +1537,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         catch (Exception e)
         {
-            LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
         }
 
 
@@ -1582,12 +1568,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             ArrayList alSlots = htEachRecipe.GetArrayList(NoonConstants.KSLOTS);
             if (alSlots != null)
                 r.SlotSpecifications = AddSlotsFromArrayList(alSlots);
-            if (r.SlotSpecifications.Count > 1)
-                LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
+            if (r.SlotSpecifications.Count > 1) _logger.LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KSLOTS);
@@ -1627,7 +1612,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPES);
@@ -1666,7 +1651,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KLINKED);
@@ -1688,7 +1673,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     else if (htMutationEffect[NoonConstants.KFILTERONASPECTIDALT] != null)
                         filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTIDALT].ToString();
                     else
-                        LogProblem("Missing mutation filter specification for " + r.Id);
+                        _logger.LogProblem("Missing mutation filter specification for " + r.Id);
 
 
                     string mutateAspectId = string.Empty;
@@ -1698,7 +1683,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     else if (htMutationEffect[NoonConstants.KMUTATEASPECTIDALT] != null)
                         mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTIDALT].ToString();
                     else
-                        LogProblem("Missing mutation specification for " + r.Id);
+                        _logger.LogProblem("Missing mutation specification for " + r.Id);
 
 
                     int mutationLevel = 0;
@@ -1708,7 +1693,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     else if (htMutationEffect[NoonConstants.KMUTATIONLEVELALT] != null)
                         mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVELALT]);
                     else
-                        LogProblem("Missing mutation level specification for " + r.Id);
+                        _logger.LogProblem("Missing mutation level specification for " + r.Id);
 
                     bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
 
@@ -1718,7 +1703,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
         catch (Exception e)
         {
-            LogProblem("Problem importing mutationEffects recipes for recipe '" + r.Id + "' - " + e.Message);
+            _logger.LogProblem("Problem importing mutationEffects recipes for recipe '" + r.Id + "' - " + e.Message);
         }
 
         htEachRecipe.Remove(NoonConstants.KMUTATIONS);
@@ -1732,7 +1717,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         foreach (var k in htEachRecipe.Keys)
         {
-            LogProblem("Unprocessed recipe property for " + r.Id + ": " + k);
+            _logger.LogProblem("Unprocessed recipe property for " + r.Id + ": " + k);
         }
     }
 
@@ -1776,8 +1761,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     private bool LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
         if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
-        { 
-            LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
+        {
+            _logger.LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
             return true;
         }
 
@@ -1786,14 +1771,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     private void LogIfNonexistentDeckId(string deckId, string containerId)
     {
-        if (!DeckSpecs.ContainsKey(deckId))
-            LogProblem("'" + containerId + "' references non-existent deckSpec '" + deckId + "'");
+        if (!DeckSpecs.ContainsKey(deckId)) _logger.LogProblem("'" + containerId + "' references non-existent deckSpec '" + deckId + "'");
     }
 
     private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
     {
         if (referencedId != null && Recipes.All(r => r.Id != referencedId))
-            LogProblem(
+            _logger.LogProblem(
                 "'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
     }
 
@@ -1829,11 +1813,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
         }
 
-        if (missingAspectImages != "")
-            LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+        if (missingAspectImages != "") _logger.LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
 
-        if (missingElementImages != "")
-            LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
+        if (missingElementImages != "") _logger.LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
     }
 
     public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
@@ -1849,9 +1831,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
             ArrayList alEndings = GetContentItems(CONST_ENDINGS);
 
-            if (contentImportMessages.Any(m=>m.MessageLevel>1))
+            if (_logger.GetMessages().Any(m=>m.MessageLevel>1))
                 //at least one file is broken. Bug out and report.
-                return contentImportMessages;
+                return _logger.GetMessages();
 
             ImportVerbs(alVerbs);
         ImportElements(alElements);
@@ -1894,7 +1876,7 @@ foreach(var d in _compendium.GetAllDeckSpecs())
         }
         catch (Exception e)
         {
-            LogProblem(e.Message);
+            _logger.LogProblem(e.Message);
             return contentImportMessages;
         }
 
@@ -1980,11 +1962,9 @@ foreach(var d in _compendium.GetAllDeckSpecs())
         }
 
 
-        if (elementFnords != "")
-            LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
+        if (elementFnords != "") _logger.LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
 
-        if (recipeFnords != "")
-            LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
+        if (recipeFnords != "") _logger.LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
 
 
     }
