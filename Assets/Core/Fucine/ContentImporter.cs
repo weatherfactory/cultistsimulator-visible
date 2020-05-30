@@ -1111,11 +1111,26 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                                "' - " + e.Message);
         }
 
+        var deckProperties = typeof(DeckSpec).GetProperties();
 
-        if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
-            d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
-        if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
-            d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
+        foreach (var property in deckProperties)
+        {
+            FucineStringProperty attr= Attribute.GetCustomAttribute(property,typeof(FucineStringProperty)) as FucineStringProperty;
+
+            if(attr!=null)
+            {
+                if(htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                    property.SetValue(d, htEachDeck.GetValue(property.Name.ToLowerInvariant()).ToString());
+                else
+                    property.SetValue(d,attr.DefaultValue);
+            }
+        }
+
+
+       // if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
+       //     d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
+       // if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
+        //    d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
         return d;
     }
 
@@ -1877,10 +1892,10 @@ foreach(var d in _compendium.GetAllDeckSpecs())
         catch (Exception e)
         {
             _logger.LogProblem(e.Message);
-            return contentImportMessages;
+            return _logger.GetMessages();
         }
 
-        return contentImportMessages;
+        return _logger.GetMessages();
 
 
     }

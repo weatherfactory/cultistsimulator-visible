@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Noon;
 
@@ -14,7 +15,7 @@ namespace Assets.Core.Entities
         /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec
         /// </summary>
 
-        string Id { get; }
+        string Id { get; set; }
         List<string> StartingCards { get; set; }
         string DefaultCardId { get; set; }
         bool ResetOnExhaustion { get; set; }
@@ -48,17 +49,21 @@ namespace Assets.Core.Entities
 
  public class DeckSpec : IDeckSpec
     {
-        private string _id;
+        public string Id { get; set; }
         //DeckSpec startingCards determines which cards start in the deckSpec after each reset
         public List<string> StartingCards { get; set; }
         public string DefaultCardId { get; set; }
         public bool ResetOnExhaustion { get; set; }
 
-     /// <summary>
-     /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
-     /// </summary>
+        /// <summary>
+        /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
+        /// </summary>
+        [FucineIntProperty(1)]
         public int DefaultDraws { get; set; }
+
+        [FucineStringProperty(".")]
         public string Label { get; set; }
+        [FucineStringProperty(".")]
         public string Description { get; set; }
         public Dictionary<string,string> DrawMessages { get; set; }
         public Dictionary<string, string> DefaultDrawMessages { get; set; }
@@ -66,7 +71,7 @@ namespace Assets.Core.Entities
 
         public DeckSpec(string id, List<string> startingCards, string defaultCardId, bool resetOnExhaustion)
         {
-            _id = id;
+            Id = id;
             StartingCards = startingCards;
             DefaultCardId = defaultCardId;
             ResetOnExhaustion = resetOnExhaustion;
@@ -88,7 +93,7 @@ namespace Assets.Core.Entities
                 var e = compendium.GetElementById(c);
                 if (e == null)
                 {
-                    throw new ApplicationException("Can't find element '" + c + " from deck id " + _id + "'");
+                    throw new ApplicationException("Can't find element '" + c + " from deck id " + Id + "'");
                 }
 
                 if (!string.IsNullOrEmpty(e.UniquenessGroup))
@@ -114,19 +119,6 @@ namespace Assets.Core.Entities
 
 
         
-        }
-
-
-        
-
-
-        /// <summary>
-        /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec
-        /// </summary>
-
-        public string Id
-        {
-            get { return _id; }
         }
 
 
