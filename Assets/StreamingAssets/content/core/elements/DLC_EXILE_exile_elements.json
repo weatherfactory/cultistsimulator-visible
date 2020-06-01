@@ -2484,6 +2484,17 @@ lifetime:300,
 unique:true
 },
 
+{id: "op.weapon.d",
+label: "Opportunity: Purchase the 'Drinker's Knife'?",
+aspects: {op:1,price:2},
+description:"An unexpected find in a gloomy pawn-shop.",
+xtriggers:{purchase:weapon.d,renewal.exile:op.weapon.d},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
 {id: "op.curio.forge",
 label: "Opportunity: Purchase a Dangerous Substance?",
 aspects: {op:1,price:1},
