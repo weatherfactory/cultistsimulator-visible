@@ -376,8 +376,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
        else
        {
-           //Registry.Replace<ICompendium>(newCompendium);
-           var existingCompendium = Registry.Retrieve<ICompendium>();
+           foreach (var p in problems)
+               NoonUtility.Log(p.Description, p.MessageLevel);
+
+            //Registry.Replace<ICompendium>(newCompendium);
+            var existingCompendium = Registry.Retrieve<ICompendium>();
            var contentImporter = new ContentImporter();
         contentImporter.PopulateCompendium(existingCompendium);
 
