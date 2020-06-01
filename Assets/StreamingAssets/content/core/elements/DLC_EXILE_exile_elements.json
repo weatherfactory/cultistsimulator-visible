@@ -3008,7 +3008,7 @@ xtriggers:{fatiguing:op.connection.holy,provoking:connection.radicals}
 label:"Connection: Radicals",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,forge:6},
 slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2}},
-{actionId:use,id:"city",label:"City",required:{domicile:1}},
+{actionId:use,id:"city",label:"City",required:{troubled:1},forbidden:{destination:1}},
 {actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
 xtriggers:{fatiguing:op.connection.radicals,provoking:connection.official}
