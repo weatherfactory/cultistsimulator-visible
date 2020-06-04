@@ -204,17 +204,17 @@ namespace Assets.CS.TabletopUI {
         void Start()
 		{
 
-            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
-            if (File.Exists(appealToConscienceLocation))
-            {
-                var content = File.ReadLines(appealToConscienceLocation);
-                DateTime expiry = Convert.ToDateTime(content.First());
-                if(DateTime.Today>expiry)
-                { 
-                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
-                return;
-                }
-            }
+            //string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
+            //if (File.Exists(appealToConscienceLocation))
+            //{
+            //    var content = File.ReadLines(appealToConscienceLocation);
+            //    DateTime expiry = Convert.ToDateTime(content.First());
+            //    if(DateTime.Today>expiry)
+            //    { 
+            //        _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
+            //    return;
+            //    }
+            //}
 
 
 
