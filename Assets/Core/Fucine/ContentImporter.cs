@@ -841,7 +841,19 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         }
                     }
 
-                    element.Aspects.CombineAspects(NoonUtility.ReplaceConventionValues(htAspects)); //nb combine: we might have just inherited aspects
+
+                    var baseAspects=new AspectsDictionary();
+
+                    if(htAspects!=null)
+                    {
+                    foreach (string k in htAspects.Keys)
+                    {
+                        LogIfNonexistentElementId(k, element.Id, "(aspects)"); 
+                        baseAspects.Add(k, Convert.ToInt32(htAspects[k]));
+                    }
+                    }
+
+                element.Aspects.CombineAspects(baseAspects); //nb combine: we might have just inherited aspects
 
                 if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
                     {
