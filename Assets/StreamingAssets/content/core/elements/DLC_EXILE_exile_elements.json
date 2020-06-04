@@ -9,6 +9,11 @@
 {id:"uq.rkx.weakness.horned",label:"Weakness: Horned",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.wolf",label:"Weakness: Wolf",isAspect:true,isHidden:true},
 {id:"uq.rkx.weakness.flowermaker",label:"Weakness: Flowermaker",isAspect:true,isHidden:true},
+{id:"uq.weapon.profane",label:"Profane Weapon",description:"A fine weapon, but a worldly one. [Ordinary weapons can harm most of your pursuers, but not your Foe.]",
+isAspect:true,
+icon:accursed
+},
+
 
 {id:"weakness.foe.unknown",
 label:"Foe: An Unknown Weakness",
@@ -21,7 +26,7 @@ icon:lockscar
 label:"Foe: A Weakness",
 description:"My Foe is vulnerable to this particular distraction... which might help me decide where best to face him.",
 isAspect:true,
-icon:lockopen
+icon:openedlockscar
 },
 
 
@@ -68,13 +73,15 @@ noartneeded:true
 {id:"epiphany.colonel",
 label:"Epiphany: Colonel",
 description:"recipe aspect",
-isAspect:true
+isAspect:true,
+noartneeded:true
 },
 
 {id:"epiphany.lionsmith",
 label:"Epiphany: Lionsmith",
 description:"recipe aspect",
-isAspect:true
+isAspect:true,
+noartneeded:true
 },
 
 {id: "minedge",
@@ -425,22 +432,26 @@ isHidden:true
 
 {id:"defiance.foesummoned",
 label:"Sent a message to the Foe, revealing my whereabouts.",
-isAspect:true
+isAspect:true,
+icon:enlightenmentmarks
 },
 
 {id:"defiance.underlingdefeated",
 label:"Defeated a reckoner and proved it with a trophy.",
-isAspect:true
+isAspect:true,
+icon:remembrancemarks
 },
 
 {id:"defiance.weaponsent",
 label:"Sent a weapon to the Foe.",
-isAspect:true
+isAspect:true,
+icon:powermarks
 },
 
 {id:"defiance.foetaunted",
 label:"Taunted the Foe.",
-isAspect:true
+isAspect:true,
+icon:sensationmarks
 },
 
 
@@ -456,12 +467,14 @@ isAspect:true
 
 {id:"defiance.uprising",
 label:"Assisted an Uprising.",
-isAspect:true
+isAspect:true,
+icon:changemarks
 },
 
 {id:"defiance.betrayal",
 label:"Betrayed an Uprising.",
-isAspect:true
+isAspect:true,
+icon:rivalmarks
 },
 
 
@@ -623,12 +636,7 @@ isAspect:true,
 isHidden:true
 },
 
-{id:"weapon.profane",
-label:"Profane Weapon",
-description:"A fine weapon, but a worldly one. [Ordinary weapons can harm most of your pursuers, but not your Foe.]",
-isAspect:true,
-icon:accursed
-},
+
 
 {id:"op",
 label:"Opportunity",
@@ -647,7 +655,8 @@ icon:annoyance
 {id:"ligeian",
 label:"Ligeian Presence",
 description:"I don't know precisely what the Ligeia Club is; but all reckoners do know that its members are older and hungrier than any of our mobs. We've learnt to avoid them.",
-isAspect:true
+isAspect:true,
+icon:ghoul.hunger
 },
 
 {id:"asset",
@@ -1568,18 +1577,21 @@ lifetime:1
 {id: "_vault.exile",
 label: "_vault.exile",
 aspects:{location:1,vault:1},
-slots:[{id:"resource",actionId:"travel",label:"Resource",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,winter:1}}]
+slots:[{id:"resource",actionId:"travel",label:"Resource",required:{edge:1,forge:1,grail:1,heart:1,knock:1,lantern:1,moth:1,winter:1}}],
+noartneeded:true
 },
 
 {id: "_contact.mortal",
 label: "_contact.mortal",
 aspects:{mortal:1,contact.local:1},
-xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile}
+xtriggers:{betrayal:[{id:corpse.exile},{id:progress,morpheffect:spawn}],killmortal:corpse.exile},
+noartneeded:true
 },
 {id: "_contact.mortal.fatigued",
 label: "_contact.mortal.fatigued",
 aspects:{mortal:1,exhausted:1,contact.local:1},
-xtriggers:{killmortal:corpse.exile}
+xtriggers:{killmortal:corpse.exile},
+noartneeded:true
 },
 
 {id: "_ally.mortal",
@@ -1593,8 +1605,10 @@ xtriggers:{killmortal:[{id:"corpse.exile"},{id:"experience.exile.ally",morpheffe
 {id:"heart",morpheffect:mutate,level:-99},
 {id:"knock",morpheffect:mutate,level:-99},
 {id:"moth",morpheffect:mutate,level:-99},
-{id:"winter",morpheffect:mutate,level:-99}]}
+{id:"winter",morpheffect:mutate,level:-99}]},
+noartneeded:true
 },
+
 {id: "_ally.mortal.fatigued",
 label: "_ally.mortal.fatigued",
 aspects:{mortal:1,exhausted:1,ally:1,associate:1},
@@ -1606,7 +1620,8 @@ xtriggers:{killmortal:[{id:"corpse.exile"},
 {id:"heart",morpheffect:mutate,level:-99},
 {id:"knock",morpheffect:mutate,level:-99},
 {id:"moth",morpheffect:mutate,level:-99},
-{id:"winter",morpheffect:mutate,level:-99}]}
+{id:"winter",morpheffect:mutate,level:-99}]},
+noartneeded:true
 },
 
 {id: "corpse.exile",
@@ -1832,7 +1847,7 @@ unique:true
 label: "Old Retainer (Exhausted)",
 comments:"no killmortal trigger because we want him permanently on the board.",
 description:"An elderly man in a beaded skullcap, with deeply seamed cheeks, a whitening stubbled beard, and old sorrow in his eyes.",
-aspects:{exhausted:1,mortal:1},
+aspects:{exhausted:1,mortal:1,contact.local:1},
 decayTo:contact.retainer,
 lifetime:300,
 unique:true,
@@ -2453,7 +2468,7 @@ resaturate:true
 {id: "op.weapon.a",
 label: "Opportunity: Purchase a Profane Weapon?",
 aspects: {op:1,price:1},
-description:"A battered-looking rifle sits prosaically on a counter in an antique shop.",
+description:"It's much easier to find firearms now, since the War. [If you have a Profane Weapon already, this will replace it - which may be useful if it's Exhausted.]",
 xtriggers:{purchase:weapon.a,renewal.exile:op.weapon.a},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300
@@ -2465,6 +2480,17 @@ aspects: {op:1,price:1},
 description:"A battered-looking rifle sits prosaically on a counter in an antique shop.",
 xtriggers:{purchase:weapon.b,renewal.exile:op.weapon.b},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true}],
+lifetime:300,
+unique:true
+},
+
+{id: "op.weapon.d",
+label: "Opportunity: Purchase the 'Drinker's Knife'?",
+aspects: {op:1,price:2},
+description:"An unexpected find in a gloomy pawn-shop.",
+xtriggers:{purchase:weapon.d,renewal.exile:op.weapon.d},
+slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
+{actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
 unique:true
 },
@@ -2518,7 +2544,8 @@ xtriggers:{purchase:curio.lantern,renewal.exile:op.curio.lantern1},
 slots:[{actionId:use,id:"payment",label:"Payment",required:{worth:1},consumes:true},
 {actionId:use,id:"payment2",label:"Payment",required:{worth:1},consumes:true}],
 lifetime:300,
-unique:true
+unique:true,
+icon:op.curio.lantern
 },
 
 {id: "op.curio.lantern2",
@@ -2896,28 +2923,28 @@ description:"A great vintage wrung from a <i>terroir</i> ripe with secrets in th
 
 {id:"office",
 label:"Discreet Office",
-aspects:{asset:1,space:1,heart:2,worth:1,comfort:1},
+aspects:{asset:1,space:1,heart:2,worth:1,comfort:1,deception:1},
 description:"Not too obvious, and not too far out of the way.",
 icon:vaultcapital1
 },
 
 {id:"warehouse",
 label:"Quiet Warehouse",
-aspects:{asset:1,space:2,forge:4,heart:4,worth:2},
+aspects:{asset:1,space:2,forge:4,heart:4,worth:2,deception:1},
 description:"There's plenty of space here, although not much else to recommend it.",
 icon:vaultcapitaldefault
 },
 
 {id:"townhouse",
 label:"Grand Townhouse",
-aspects:{asset:1,space:2,comfort:4,heart:4,grail:4,worth:4},
+aspects:{asset:1,space:2,comfort:4,heart:4,grail:4,worth:4,deception:1},
 description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
 
 {id:"townhouse.jannings",
 label:"Jannings' Townhouse",
-aspects:{asset:1,space:2,comfort:4,heart:4,grail:4},
+aspects:{asset:1,space:2,comfort:4,heart:4,grail:4,deception:1},
 description:"The envy of every passerby. Let's close the curtains tightly.",
 icon:hq.townhouse
 },
@@ -2926,7 +2953,7 @@ icon:hq.townhouse
 
 {id:"villa",
 label:"Secluded Villa",
-aspects:{asset:1,space:2,comfort:8,forge:6,heart:6,grail:6,worth:8},
+aspects:{asset:1,space:2,comfort:8,forge:6,heart:6,grail:6,deception:1,worth:8},
 description:"I could live out my days here very happily, if it weren't for certain immediate practical difficulties...",
 icon:vaultcontinent5
 },
@@ -2981,7 +3008,7 @@ xtriggers:{fatiguing:op.connection.holy,provoking:connection.radicals}
 label:"Connection: Radicals",
 aspects:{connection:1,asset:1,deception:1,edge:8,moth:8,forge:6},
 slots:[{actionId:use,id:"direction",label:"Direction",required:{forge:2,winter:2}},
-{actionId:use,id:"city",label:"City",required:{domicile:1}},
+{actionId:use,id:"city",label:"City",required:{troubled:1},forbidden:{destination:1}},
 {actionId:use,id:"defiance",label:"Defiance",required:{temptation.defiance:1}}],
 description:"A mutually beneficial arrangement with revolutionaries or other enthusiasts.",
 xtriggers:{fatiguing:op.connection.radicals,provoking:connection.official}
@@ -3005,7 +3032,7 @@ description:"I need to get somewhere I'll be safe - at least for a little while.
 
 {id: "weapon.a",
 label: "Profane Weapon",
-aspects: {weapon:1,edge:2,weapon.profane:1,asset:1,portable:1,worth:1},
+aspects: {weapon:1,edge:2,asset:1,portable:1,worth:1},
 xtriggers:{striking.foe:[{id:wound.foe,morpheffect:spawn}],
 striking.underling:[{id:wound.underling,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
@@ -3013,7 +3040,7 @@ striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
 fatiguing:weapon.a.exhausted},
 description:"A prosaic weight.",
 icon:weapon.a,
-unique:true
+uniquenessgroup:uq.weapon.profane
 },
 
 
@@ -3126,7 +3153,8 @@ description:"A prosaic weight.",
 lifetime:120,
 decayTo:weapon.a,
 resaturate:true,
-icon:"weapon.a"
+icon:"weapon.a",
+uniquenessgroup:uq.weapon.profane
 },
 
 {id: "weapon.b.2.exhausted",
@@ -3201,12 +3229,6 @@ slots:[{actionId:"send",id:"obscurity1",label:"Obscurity",required:{obscurity:1}
 {actionId:"send",id:"obscurity7",label:"Obscurity",required:{obscurity:1}},
 ],
 description:"I've stolen a fortune in years from a reckoner lord who trusted me. He'll pursue me across continents, but even his reach has limits. [Achieve seven Obscurity to send a taunting message to your reckoner Foe, disappear forever, and win the game.]"
-},
-
-{id: "temptation.wealth",
-label: "Temptation: Wealth",
-aspects: {desire:1},
-description:"None of this has gone as I planned. But I'd still like to retire in style."
 },
 	  
 {id:"decade.stolen",
@@ -4683,7 +4705,8 @@ label: "Reckoners: Aggressive",
 aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are active tonight",
 lifetime:1,
-isHidden:true
+isHidden:true,
+noartneeded:true
 },
 
 
@@ -4692,7 +4715,8 @@ label: "Reckoners: Passive",
 aspects:{rkx.event:1,rkx.internal:1},
 description:"My pursuers are hesitating",
 lifetime:1,
-isHidden:true
+isHidden:true,
+noartneeded:true
 },
 
 

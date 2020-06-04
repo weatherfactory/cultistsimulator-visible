@@ -282,7 +282,7 @@ hintonly:true},
 actionId:"use",
 label:"Use Connections with Radicals?",
 requirements:{connection.radicals:1},
-startdescription:"[Add Forge to assist an Uprising, or Winter to betray it.]",
+startdescription:"[Use Forge to assist an Uprising, or Winter to betray it. This is only possible in Troubled cities.]",
 craftable:false,
 hintonly:true},
 
@@ -895,7 +895,7 @@ actionId:"opx.",
 label:"A Feast of Fires",
 startdescription:"'When we know not whom we serve,' Julian Coseley said once, 'we serve the Wolf Divided.' But I knew what I was doing. [Defiance has been increased. There's no limit to the number of times you can do this.]",
 requirements:{op.wolf.husk.active:1},
-mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:2,additive:true}],
 },
 
 

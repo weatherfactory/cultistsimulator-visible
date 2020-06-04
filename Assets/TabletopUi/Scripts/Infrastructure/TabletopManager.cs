@@ -204,17 +204,17 @@ namespace Assets.CS.TabletopUI {
         void Start()
 		{
 
-            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
-            if (File.Exists(appealToConscienceLocation))
-            {
-                var content = File.ReadLines(appealToConscienceLocation);
-                DateTime expiry = Convert.ToDateTime(content.First());
-                if(DateTime.Today>expiry)
-                { 
-                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
-                return;
-                }
-            }
+            //string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
+            //if (File.Exists(appealToConscienceLocation))
+            //{
+            //    var content = File.ReadLines(appealToConscienceLocation);
+            //    DateTime expiry = Convert.ToDateTime(content.First());
+            //    if(DateTime.Today>expiry)
+            //    { 
+            //        _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
+            //    return;
+            //    }
+            //}
 
 
 
@@ -231,17 +231,21 @@ namespace Assets.CS.TabletopUI {
 
             var registry=new Registry();
 
-            var problems=ImportContent(registry);
+            var messages=ImportContent(registry);
 
-            if (problems.Any(p=>p.MessageLevel>1))
+            if (messages.Any(p=>p.MessageLevel>1))
             {
-                foreach (var p in problems.Where(p=>p.MessageLevel>1))
+                foreach (var p in messages.Where(p=>p.MessageLevel>1))
                     NoonUtility.Log(p.Description, p.MessageLevel);
 
                 disabled = true;
             }
             else
             { 
+                foreach(var m in messages)
+                    NoonUtility.Log(m.Description, m.MessageLevel);
+
+
                 //register everything used gamewide
                 SetupServices(registry,_situationBuilder, _tabletop);
 
