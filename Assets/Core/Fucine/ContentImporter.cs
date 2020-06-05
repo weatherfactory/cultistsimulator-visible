@@ -1028,94 +1028,16 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
     {
 
-        DeckSpec d = new DeckSpec();
 
-        var deckProperties = typeof(DeckSpec).GetProperties();
+        FucinePropertyWalker<DeckSpec> deckWalker=new FucinePropertyWalker<DeckSpec>(_logger);
 
-        foreach (var property in deckProperties)
-        {
+        DeckSpec d= deckWalker.PopulateWith(htEachDeck);
 
-            try
-            {
-
-                if (Attribute.GetCustomAttribute(property, typeof(FucineString)) is FucineString stringProp)
-                {
-                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                        property.SetValue(d, htEachDeck.GetValue(property.Name.ToLowerInvariant()));
-                    else
-                    {
-                        if (stringProp.HasDefaultValue)
-                            property.SetValue(d, stringProp.DefaultValue);
-                        else
-                        {
-                            _logger.LogProblem("Couldn't find a mandatory property for a deckSpec: " + property.Name);
-                        }
-
-                    }
-                }
-
-                if (Attribute.GetCustomAttribute(property, typeof(FucineBool)) is FucineBool boolProp)
-                {
-                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                        property.SetValue(d, htEachDeck.GetBool(property.Name.ToLowerInvariant()));
-                    else
-                        property.SetValue(d, boolProp.DefaultValue);
-                }
-
-
-                if (Attribute.GetCustomAttribute(property, typeof(FucineInt)) is FucineInt intProp)
-                {
-                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                        property.SetValue(d, htEachDeck.GetInt(property.Name.ToLowerInvariant()));
-                    else
-                        property.SetValue(d, intProp.DefaultValue);
-                }
-
-
-                if (Attribute.GetCustomAttribute(property, typeof(FucineListString)) is FucineListString lsProp)
-                {
-                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                    {
-                        ArrayList alStringList = htEachDeck.GetArrayList(property.Name.ToLowerInvariant());
-                        List<string> stringList=new List<string>();
-                        foreach(string s in alStringList)
-                            stringList.Add(s);
-
-                        property.SetValue(d, stringList);
-                    }
-                    else
-                        _logger.LogProblem("Couldn't find a mandatory property for a deckSpec: " + property.Name);
-
-                }
-
-                if (Attribute.GetCustomAttribute(property, typeof(FucineDictStringString)) is FucineDictStringString
-                    dssProp)
-                {
-                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                    {
-                        var htDrawMessages = htEachDeck.GetHashtable(property.Name.ToLowerInvariant());
-                            property.SetValue(d,NoonUtility.HashtableToStringStringDictionary(htDrawMessages));
-
-                            foreach (var drawmessagekey in d.DrawMessages.Keys)
-                            {
-                                if (!d.Spec.Contains(drawmessagekey))
-                                    _logger.LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
-                                                       ", but that card isn't in the list of drawable cards.");
-                            }
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Problem importing property for a deckspec (" + property.Name + ") - " + e.Message);
-
-            }
-        }
-        
 
         return d;
     }
+
+  
 
 
     public void ImportLegacies(ArrayList legaciesArrayList)
