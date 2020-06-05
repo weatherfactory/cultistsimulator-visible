@@ -382,7 +382,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
             //Registry.Replace<ICompendium>(newCompendium);
             var existingCompendium = Registry.Retrieve<ICompendium>();
            var contentImporter = new ContentImporter();
+
+           var t = DateTime.Now;
         contentImporter.PopulateCompendium(existingCompendium);
+            NoonUtility.Log("Import time: " + (DateTime.Now-t));
 
            // Populate the new decks
            IGameEntityStorage storage = Registry.Retrieve<Character>();

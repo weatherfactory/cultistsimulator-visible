@@ -6,28 +6,76 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Assets.Core.Fucine
-{
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineIntProperty: System.Attribute
-    {
-        private readonly int _defaultValue;
 
-        public FucineIntProperty(int defaultValue)
+
+{
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineInt: System.Attribute
+    {
+        public int DefaultValue { get;  }
+
+        public FucineInt(int defaultValue)
         {
-            _defaultValue = defaultValue;
+            DefaultValue = defaultValue;
         }
         
     }
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineStringProperty : System.Attribute
+    public class FucineString : System.Attribute
     {
-        public  string DefaultValue { get; set; }
+        public  string DefaultValue { get;  }
 
-        public FucineStringProperty(string defaultValue)
+        public bool HasDefaultValue => DefaultValue != null;
+
+
+        public FucineString()
+        {
+        }
+
+        public FucineString(string defaultValue)
         {
             DefaultValue = defaultValue;
+        }
+
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineBool : System.Attribute
+    {
+        public bool DefaultValue { get;  }
+
+        public FucineBool(bool defaultValue)
+        {
+            DefaultValue = defaultValue;
+        }
+
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineListString : System.Attribute
+    {
+        public List<string> DefaultValue { get;  }
+
+        public FucineListString()
+        {
+            DefaultValue = new List<string>();
+        }
+
+    }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineDictStringString : System.Attribute
+    {
+        public Dictionary<string,string> DefaultValue { get;  }
+
+        public FucineDictStringString()
+        {
+            DefaultValue = new Dictionary<string, string>();
         }
 
     }

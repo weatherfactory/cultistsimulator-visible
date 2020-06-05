@@ -16,7 +16,7 @@ namespace Assets.Core.Entities
         /// </summary>
 
         string Id { get; set; }
-        List<string> StartingCards { get; set; }
+        List<string> Spec { get; set; }
         string DefaultCardId { get; set; }
         bool ResetOnExhaustion { get; set; }
         string Label { get; set; }
@@ -49,30 +49,53 @@ namespace Assets.Core.Entities
 
  public class DeckSpec : IDeckSpec
     {
+        [FucineString]
         public string Id { get; set; }
-        //DeckSpec startingCards determines which cards start in the deckSpec after each reset
-        public List<string> StartingCards { get; set; }
+
+        [FucineString("")]
         public string DefaultCardId { get; set; }
+
+        [FucineBool(false)]
         public bool ResetOnExhaustion { get; set; }
+
+        [FucineString(".")]
+        public string Label { get; set; }
+
+        [FucineString(".")]
+        public string Description { get; set; }
 
         /// <summary>
         /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
         /// </summary>
-        [FucineIntProperty(1)]
+        [FucineInt(1)]
         public int DefaultDraws { get; set; }
 
-        [FucineStringProperty(".")]
-        public string Label { get; set; }
-        [FucineStringProperty(".")]
-        public string Description { get; set; }
+
+        //Spec determines which cards start in the deckSpec after each reset
+        [FucineListString]
+        public List<string> Spec { get; set; }
+
+        [FucineDictStringString]
         public Dictionary<string,string> DrawMessages { get; set; }
+
+        [FucineDictStringString]
         public Dictionary<string, string> DefaultDrawMessages { get; set; }
+
+
+
         private Dictionary<string, List<string>> _uniquenessGroupsWithCards;
 
-        public DeckSpec(string id, List<string> startingCards, string defaultCardId, bool resetOnExhaustion)
+        public DeckSpec()
+        {
+            DrawMessages = new Dictionary<string, string>();
+            DefaultDrawMessages = new Dictionary<string, string>();
+            _uniquenessGroupsWithCards = new Dictionary<string, List<string>>();
+        }
+
+        public DeckSpec(string id, List<string> spec, string defaultCardId, bool resetOnExhaustion)
         {
             Id = id;
-            StartingCards = startingCards;
+            Spec = spec;
             DefaultCardId = defaultCardId;
             ResetOnExhaustion = resetOnExhaustion;
             DrawMessages = new Dictionary<string, string>();
@@ -85,10 +108,10 @@ namespace Assets.Core.Entities
 
         public void RegisterUniquenessGroups(ICompendium compendium)
         {
-            if(!StartingCards.Any())
+            if(!Spec.Any())
                 throw new NotImplementedException("We're trying to register uniqueness groups for a DeckSpec before populating it with cards.");
 
-            foreach (var c in StartingCards)
+            foreach (var c in Spec)
             { 
                 var e = compendium.GetElementById(c);
                 if (e == null)

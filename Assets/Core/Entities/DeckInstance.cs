@@ -40,7 +40,7 @@ namespace Assets.Core.Entities
         {
             var rnd = new Random();
             var unshuffledStack = new Stack<string>();
-            foreach (var eId in _deckSpec.StartingCards)
+            foreach (var eId in _deckSpec.Spec)
             {
                 if(!_eliminatedCards.Contains(eId))
                  unshuffledStack.Push(eId);
@@ -102,7 +102,7 @@ namespace Assets.Core.Entities
                 RemoveCardFromDeckInstance(elementId, cardsList);
             }
 
-            if(_deckSpec.StartingCards.Contains(elementId))
+            if(_deckSpec.Spec.Contains(elementId))
                 TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
 
         }

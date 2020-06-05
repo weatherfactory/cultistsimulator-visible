@@ -17,6 +17,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Newtonsoft.Json;
 #if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
@@ -158,7 +159,8 @@ public class ContentImporter
             string json = File.ReadAllText(contentFile);
             try
             {
-                originalArrayList = SimpleJsonImporter.Import(json).GetArrayList(contentOfType);
+              //  originalArrayList = JsonConvert.DeserializeObject<ArrayList>(json);
+              originalArrayList = SimpleJsonImporter.Import(json).GetArrayList(contentOfType);
             }
             catch (Exception e)
             {
@@ -1016,133 +1018,102 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
 
-            var d = PopulateDeckSpec(htEachDeck, htEachDeck["id"].ToString());
+            var d = PopulateDeckSpec(htEachDeck);
 
             DeckSpecs.Add(d.Id, d);
         }
 
     }
 
-    private DeckSpec PopulateDeckSpec(Hashtable htEachDeck,string deckId)
+    private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
     {
-//deckspec
-        var thisDeckSpec = new List<string>();
-        try
-        {
-            ArrayList htDeckSpec = htEachDeck.GetArrayList(NoonConstants.KDECKSPEC);
-            if (htDeckSpec != null)
-            {
-                foreach (string v in htDeckSpec)
-                    thisDeckSpec.Add(v);
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                               "' - " + e.Message);
-        }
 
-
-        bool resetOnExhaustion = false;
-        try
-        {
-            resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                               "' - " + e.Message);
-        }
-
-        string defaultCardId = "";
-        //if we reset on exhaustion, we'll never see a default card, and we don't want
-        //to throw an error on failing to import an unset default card.
-        //Of course someone could have no default card and resetonexhaustion = false, but that's fundamentally their problem.
-        if (!resetOnExhaustion)
-            try
-            {
-                defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                                   "' - " + e.Message);
-            }
-
-
-        DeckSpec d = new DeckSpec(deckId, thisDeckSpec, defaultCardId, resetOnExhaustion);
-
-
-        try
-        {
-            if (htEachDeck.GetValue(NoonConstants.KDECKDEFAULTDRAWS) != null)
-            {
-                var defaultDraws = Convert.ToInt32(htEachDeck.GetValue(NoonConstants.KDECKDEFAULTDRAWS));
-                d.DefaultDraws = defaultDraws;
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing defaultDraws  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                               "' - " + e.Message);
-        }
-
-
-        try
-        {
-            Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DRAWMESSAGES);
-            if (htDrawMessages != null)
-            {
-                d.DrawMessages = NoonUtility.HashtableToStringStringDictionary(htDrawMessages);
-
-                foreach (var drawmessagekey in d.DrawMessages.Keys)
-                {
-                    if (!d.StartingCards.Contains(drawmessagekey))
-                        _logger.LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
-                                           ", but that card isn't in the list of drawable cards.");
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                               "' - " + e.Message);
-        }
-
-        try
-        {
-            Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DEFAULTDRAWMESSAGES);
-            if (htDefaultDrawMessages != null)
-            {
-                d.DefaultDrawMessages = NoonUtility.HashtableToStringStringDictionary(htDefaultDrawMessages);
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                               "' - " + e.Message);
-        }
+        DeckSpec d = new DeckSpec();
 
         var deckProperties = typeof(DeckSpec).GetProperties();
 
         foreach (var property in deckProperties)
         {
-            FucineStringProperty attr= Attribute.GetCustomAttribute(property,typeof(FucineStringProperty)) as FucineStringProperty;
 
-            if(attr!=null)
+            try
             {
-                if(htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
-                    property.SetValue(d, htEachDeck.GetValue(property.Name.ToLowerInvariant()).ToString());
-                else
-                    property.SetValue(d,attr.DefaultValue);
+
+                if (Attribute.GetCustomAttribute(property, typeof(FucineString)) is FucineString stringProp)
+                {
+                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                        property.SetValue(d, htEachDeck.GetValue(property.Name.ToLowerInvariant()));
+                    else
+                    {
+                        if (stringProp.HasDefaultValue)
+                            property.SetValue(d, stringProp.DefaultValue);
+                        else
+                        {
+                            _logger.LogProblem("Couldn't find a mandatory property for a deckSpec: " + property.Name);
+                        }
+
+                    }
+                }
+
+                if (Attribute.GetCustomAttribute(property, typeof(FucineBool)) is FucineBool boolProp)
+                {
+                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                        property.SetValue(d, htEachDeck.GetBool(property.Name.ToLowerInvariant()));
+                    else
+                        property.SetValue(d, boolProp.DefaultValue);
+                }
+
+
+                if (Attribute.GetCustomAttribute(property, typeof(FucineInt)) is FucineInt intProp)
+                {
+                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                        property.SetValue(d, htEachDeck.GetInt(property.Name.ToLowerInvariant()));
+                    else
+                        property.SetValue(d, intProp.DefaultValue);
+                }
+
+
+                if (Attribute.GetCustomAttribute(property, typeof(FucineListString)) is FucineListString lsProp)
+                {
+                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                    {
+                        ArrayList alStringList = htEachDeck.GetArrayList(property.Name.ToLowerInvariant());
+                        List<string> stringList=new List<string>();
+                        foreach(string s in alStringList)
+                            stringList.Add(s);
+
+                        property.SetValue(d, stringList);
+                    }
+                    else
+                        _logger.LogProblem("Couldn't find a mandatory property for a deckSpec: " + property.Name);
+
+                }
+
+                if (Attribute.GetCustomAttribute(property, typeof(FucineDictStringString)) is FucineDictStringString
+                    dssProp)
+                {
+                    if (htEachDeck.ContainsKey(property.Name.ToLowerInvariant()))
+                    {
+                        var htDrawMessages = htEachDeck.GetHashtable(property.Name.ToLowerInvariant());
+                            property.SetValue(d,NoonUtility.HashtableToStringStringDictionary(htDrawMessages));
+
+                            foreach (var drawmessagekey in d.DrawMessages.Keys)
+                            {
+                                if (!d.Spec.Contains(drawmessagekey))
+                                    _logger.LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey +
+                                                       ", but that card isn't in the list of drawable cards.");
+                            }
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogProblem("Problem importing property for a deckspec (" + property.Name + ") - " + e.Message);
+
             }
         }
+        
 
-
-       // if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
-       //     d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
-       // if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
-        //    d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
         return d;
     }
 
@@ -1580,7 +1551,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         if (htInternalDeck != null)
         {
             string internalDeckId = "deck." + r.Id;
-            var internalDeck = PopulateDeckSpec(htInternalDeck, internalDeckId);
+            htInternalDeck.Add("id",internalDeckId);
+            var internalDeck = PopulateDeckSpec(htInternalDeck);
             r.DeckEffects.Add(internalDeckId, internalDeck.DefaultDraws);
             DeckSpecs.Add(internalDeckId, internalDeck);
 
@@ -1892,7 +1864,7 @@ foreach(var d in _compendium.GetAllDeckSpecs())
 
         foreach (var kvp in DeckSpecs)
         {
-            foreach (var c in kvp.Value.StartingCards)
+            foreach (var c in kvp.Value.Spec)
             {
                 if (!c.Contains(NoonConstants.DECK_PREFIX))
                     LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");

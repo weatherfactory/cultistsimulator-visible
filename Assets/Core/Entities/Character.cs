@@ -156,7 +156,16 @@ if(string.IsNullOrEmpty(value))
 
     public IDeckInstance GetDeckInstanceById(string id)
     {
+        try
+        {
+
         return  DeckInstances.SingleOrDefault(d => d.Id == id);
+        }
+        catch (Exception e)
+        {
+            NoonUtility.Log(e.Message + " for deck instance id " + id,2);
+            throw;
+        }
     }
 
     public string Name

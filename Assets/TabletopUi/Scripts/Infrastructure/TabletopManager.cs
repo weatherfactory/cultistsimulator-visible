@@ -868,7 +868,9 @@ namespace Assets.CS.TabletopUI {
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
                 {
+#pragma warning disable CS0253 // Possible unintended reference comparison; right hand side needs cast
                     if (DraggableToken.itemBeingDragged == stack)
+#pragma warning restore CS0253 // Possible unintended reference comparison; right hand side needs cast
                     {
                         DraggableToken.SetReturn(false,"Drag aborted by greedy slot"); DraggableToken.itemBeingDragged = null;
                     }
