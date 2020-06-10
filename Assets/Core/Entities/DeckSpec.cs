@@ -47,7 +47,7 @@ namespace Assets.Core.Entities
     }
 
 
- public class DeckSpec : IDeckSpec
+ public class DeckSpec : IDeckSpec,IEntity
     {
         [FucineString]
         public string Id { get; set; }

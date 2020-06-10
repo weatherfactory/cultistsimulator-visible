@@ -7,9 +7,9 @@ startdescription: "我孤身来到这个阴冷的城市，怀揣着一纸无用�
 然后呢？我能成为人上人吗？",
 effects: {introjob:1},
 image: "aspirant",
-fromEnding:"default",
+fromending:"default",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "brightyoungthing",
 label: "富家子弟",
@@ -17,9 +17,9 @@ description: "生来家境优渥，天赋出众。闲适的生活于我来说如
 startdescription: "我又睡过了黎明。我向来如此。反正黎明有的是。",
 effects: {legacybytjob:1,health:1},
 image: "byt",
-fromEnding:"deathofthebody",
+fromending:"deathofthebody",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "physician",
 label: "医师",
@@ -27,9 +27,9 @@ description: "每当病人陷入临终的谵妄，我都会把他们的话巨细
 startdescription: "今天是我返回研究所岗位的日子。我拥有事业，拥有声誉，我本该把心思放在这上面；然而我却开始梦见别的东西。",
 effects: {legacyphysicianjob:1,reason:1},
 image: "physician",
-fromEnding:"deathofthebody",
+fromending:"deathofthebody",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "detective",
 label: "警探",
@@ -37,9 +37,9 @@ description: "我是隶属首都警队的一名督察，负责调查人类对人
 startdescription: "我终结过盗窃犯、杀人犯、敲诈犯、纵火犯们的职业生涯。有些犯人的罪行更甚；而人们发现在有的清晨，当我醒来时，我的双手在发抖。",
 effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
-fromEnding:"arrest",
+fromending:"arrest",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "detectivepostpromotion",
 label: "警探",
@@ -47,10 +47,10 @@ description: "我是隶属首都警队的一名督察，负责调查人类对人
 startdescription: "我终结过盗窃犯、杀人犯、敲诈犯、纵火犯们的职业生涯。有些犯人的罪行更甚；而人们发现在有的清晨，当我醒来时，我的双手在发抖。",
 effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
-fromEnding:"workvictoryb",
+fromending:"workvictoryb",
 availableWithoutEndingMatch:false,
 excludesOnEnding: ["detective"],
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostleforge",
 label: "炙热使徒",
@@ -58,9 +58,9 @@ startdescription: "塑造我们之人飞升到了更高的境界……至少在�
 description: "我们伟大的塑形者的力量更强大了——且他拥有强大的敌人。他将隐于暗处，而此时我将作为器具供他所用。",
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
-fromEnding:"minorforgevictory",
+fromending:"minorforgevictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlegrail",
 label: "侍宴使徒",
@@ -68,9 +68,9 @@ startdescription: "滋养我们之人飞升到了更高的境界……至少在�
 description: "我们的愉悦者的力量更强大了——且他拥有强大的敌人。他将隐于暗处，而此时我将作为容器供他所用。",
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
-fromEnding:"minorgrailvictory",
+fromending:"minorgrailvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlelantern",
 label: "神示使徒",
@@ -78,9 +78,9 @@ startdescription: "受沐光明之人于太阳之居屋等待着——等待升�
 description: "我不记得发生了什么。我不记得我是谁。但是那些梦教给了我必须要做的事。",
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
-fromEnding:"minorlanternvictory",
+fromending:"minorlanternvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "apostleforgewithrisen",
@@ -89,9 +89,9 @@ startdescription: "塑造我们之人飞升到了更高的境界……至少在�
 description: "我们伟大的塑形者的力量更强大了——且他拥有强大的敌人。他将隐于暗处，而此时我将作为器具供他所用。",
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
-fromEnding:"minorforgevictorywithrisen",
+fromending:"minorforgevictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlegrailwithrisen",
 label: "侍宴使徒",
@@ -99,9 +99,9 @@ startdescription: "滋养我们之人飞升到了更高的境界……至少在�
 description: "我们的愉悦者的力量更强大了——且他拥有强大的敌人。他将隐于暗处，而此时我将作为容器供他所用。",
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
-fromEnding:"minorgrailvictorywithrisen",
+fromending:"minorgrailvictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlelanternwithrisen",
 label: "神示使徒",
@@ -109,9 +109,9 @@ startdescription: "受沐光明之人于太阳之居屋等待着——等待升�
 description: "我不记得发生了什么。我不记得我是谁。但是那些梦教给了我必须要做的事。",
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
-fromEnding:"minorlanternvictorywithrisen",
+fromending:"minorlanternvictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 
@@ -122,9 +122,9 @@ description: "——",
 startdescription: "——",
 effects: {funds:5},
 image: "moth",
-fromEnding:"_workvictory",
+fromending:"_workvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "survivor",
@@ -133,9 +133,9 @@ description: "有时，在镜中，在人群中，你会看到已逝者的面孔
 startdescription: "不详的起始音",
 effects: {introjob:1},
 image: "moth",
-fromEnding:"_wintersacrifice",
+fromending:"_wintersacrifice",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "cousin",
@@ -144,9 +144,9 @@ description: "一天清晨，太阳高悬，镜子也都封了起来，你家门
 startdescription: "继承人的起始音",
 effects: {introjob:1},
 image: "knock",
-fromEnding:"_",
+fromending:"_",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 

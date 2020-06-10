@@ -68,6 +68,20 @@ namespace Assets.Core.Fucine
 
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineAspectsDictionary : System.Attribute
+    {
+        public IAspectsDictionary DefaultValue { get; }
+        public string KeyMustExistIn { get; set; }
+
+
+        public FucineAspectsDictionary()
+        {
+            DefaultValue = new AspectsDictionary();
+        }
+
+    }
+
 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineDictStringString : System.Attribute

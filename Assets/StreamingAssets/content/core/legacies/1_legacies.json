@@ -7,9 +7,9 @@ startdescription: "Alone in this chilly city, with my useless education, and my 
 What now? Could I become something more?",
 effects: {introjob:1},
 image: "aspirant",
-fromEnding:"default",
+fromending:"default",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "brightyoungthing",
 label: "Bright Young Thing",
@@ -17,9 +17,9 @@ description: "Endowed from birth with wealth and talent. A life of ease, comfort
 startdescription: "I missed the dawn. I generally do. There'll be plenty more.",
 effects: {legacybytjob:1,health:1},
 image: "byt",
-fromEnding:"deathofthebody",
+fromending:"deathofthebody",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "physician",
 label: "Physician",
@@ -27,9 +27,9 @@ description: "As the patient descended into the final delirium, I made copious n
 startdescription: "Today is the day I return to my post at the Institute. I have a position, and a reputation. That should mean something; but I am beginning to dream of something else.",
 effects: {legacyphysicianjob:1,reason:1},
 image: "physician",
-fromEnding:"deathofthebody",
+fromending:"deathofthebody",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "detective",
 label: "Detective",
@@ -37,9 +37,9 @@ description: "I am an Inspector in the capital's police, charged with the invest
 startdescription: "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
 effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
-fromEnding:"arrest",
+fromending:"arrest",
 availableWithoutEndingMatch:true,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "detectivepostpromotion",
 label: "Detective",
@@ -47,10 +47,10 @@ description: "I am an Inspector in the capital's police, charged with the invest
 startdescription: "I have ended the careers of thieves, murderers, blackmailers, arsonists. Some criminals do worse still; and on some mornings, my hands have been known to tremble.",
 effects: {legacydetectivejob:1,reason:1,health:1},
 image: "detective",
-fromEnding:"workvictoryb",
+fromending:"workvictoryb",
 availableWithoutEndingMatch:false,
 excludesOnEnding: ["detective"],
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostleforge",
 label: "Apostle Aestuant",
@@ -58,9 +58,9 @@ startdescription: "The one who shaped us has ascended to a higher state... in on
 description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
-fromEnding:"minorforgevictory",
+fromending:"minorforgevictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlegrail",
 label: "Apostle Obsonate",
@@ -68,9 +68,9 @@ startdescription: "The one who nourished us has ascended to a higher state... in
 description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
-fromEnding:"minorgrailvictory",
+fromending:"minorgrailvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlelantern",
 label: "Apostle Entheate",
@@ -78,9 +78,9 @@ startdescription: "The Illuminated One waits in the House of the Sun - waits to 
 description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
-fromEnding:"minorlanternvictory",
+fromending:"minorlanternvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "apostleforgewithrisen",
@@ -89,9 +89,9 @@ startdescription: "The one who shaped us has ascended to a higher state... in on
 description: "Our Great Shaper is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their instrument.",
 effects: {health:2,legacyapostleforgejob:1},
 image: "apostleforge",
-fromEnding:"minorforgevictorywithrisen",
+fromending:"minorforgevictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlegrailwithrisen",
 label: "Apostle Obsonate",
@@ -99,9 +99,9 @@ startdescription: "The one who nourished us has ascended to a higher state... in
 description: "Our Delight is grown powerful - and they have powerful enemies. They will remain in hiding, while I serve as their vessel.",
 effects: {passion:1,health:1,legacyapostlegrailjob:1},
 image: "apostlegrail",
-fromEnding:"minorgrailvictorywithrisen",
+fromending:"minorgrailvictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 {id: "apostlelanternwithrisen",
 label: "Apostle Entheate",
@@ -109,9 +109,9 @@ startdescription: "The Illuminated One waits in the House of the Sun - waits to 
 description: "I don't remember what happened. I don't remember who I am. But the dreams have taught me what I must do.",
 effects: {reason:1,health:1,legacyapostlelanternjob:1},
 image: "apostlelantern",
-fromEnding:"minorlanternvictorywithrisen",
+fromending:"minorlanternvictorywithrisen",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 
@@ -122,9 +122,9 @@ description: "--",
 startdescription: "--",
 effects: {funds:5},
 image: "moth",
-fromEnding:"_workvictory",
+fromending:"_workvictory",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "survivor",
@@ -133,9 +133,9 @@ description: "At times, in mirrors, in crowds, you see the face of one now lost.
 startdescription: "Haunted starting note",
 effects: {introjob:1},
 image: "moth",
-fromEnding:"_wintersacrifice",
+fromending:"_wintersacrifice",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 {id: "cousin",
@@ -144,9 +144,9 @@ description: "One morning, when the Sun is high and the mirrors all are sealed, 
 startdescription: "Inheritor starting note",
 effects: {introjob:1},
 image: "knock",
-fromEnding:"_",
+fromending:"_",
 availableWithoutEndingMatch:false,
-startingVerbId:"work"
+startingverbid:"work"
 },
 
 

@@ -7,10 +7,10 @@ description: "No-one steals from a reckoner lord. And yet, I did. I had my reaso
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {trace:7,decade.stolen:7,year.stolen:7,ticket.train:1},
-fromEnding:"wintersacrifice",
+fromending:"wintersacrifice",
 availableWithoutEndingMatch:true,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -20,10 +20,10 @@ description: "What if it had been different? In another history, did I reap grea
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictorya",
+fromending:"obscurityvictorya",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -33,10 +33,10 @@ description: "What if it had been different? In another history, did I reap even
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictoryb",
+fromending:"obscurityvictoryb",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -46,10 +46,10 @@ description: "What if it had been different? In another history, did I rise high
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictoryc",
+fromending:"obscurityvictoryc",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -59,10 +59,10 @@ description: "What if it had been different? In another history, did I reap grea
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictoryafoeslain",
+fromending:"obscurityvictoryafoeslain",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -72,10 +72,10 @@ description: "What if it had been different? In another history, did I reap even
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictorybfoeslain",
+fromending:"obscurityvictorybfoeslain",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 {id: "exile.obscurityvictorycfoeslain",
 label: "Exile",
@@ -83,10 +83,10 @@ description: "What if it had been different? In another history, did I rise high
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"obscurityvictorycfoeslain",
+fromending:"obscurityvictorycfoeslain",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -97,10 +97,10 @@ description: "What if it had been different? In another history, did I survive?"
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"foecaughtup",
+fromending:"foecaughtup",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -111,10 +111,10 @@ description: "What if it had been different? In another history, did I find some
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"ascensioncolonel",
+fromending:"ascensioncolonel",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 
 
@@ -124,10 +124,10 @@ description: "What if it had been different? In another history, did I find some
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"ascensionlionsmith",
+fromending:"ascensionlionsmith",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 {id: "exile.ascensionwolf",
 label: "Exile",
@@ -135,10 +135,10 @@ description: "What if it had been different? In another history, was I also a de
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"ascensionwolf",
+fromending:"ascensionwolf",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 
 {id: "exile.victoryvelvet",
 label: "Exile",
@@ -146,9 +146,9 @@ description: "What if it had been different? In another history, did I meet my m
 startdescription: "Sunset. Time to go.",
 image: "exile",
 effects: {decade.stolen:7,year.stolen:7,ticket.train:1,trace:7},
-fromEnding:"victoryvelvet",
+fromending:"victoryvelvet",
 availableWithoutEndingMatch:false,
 statusbarelements: ["obscurity","comfort","damage.exile","lifespan.stolen"],
-startingVerbId: "use"},
+startingverbid: "use"},
 ]
 }
