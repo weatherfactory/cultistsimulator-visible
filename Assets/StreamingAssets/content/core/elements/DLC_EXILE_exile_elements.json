@@ -3106,7 +3106,7 @@ aspects: {weapon:1,edge:8,worth:3,asset:1,portable:1},
 xtriggers:{striking.foe:[{id:wound.foe.unstanchable,morpheffect:spawn}],
 striking.underling:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 striking.foe.weapon:[{id:wound.foe,morpheffect:spawn}],
-striking.underling.weapon:[{id:wound.underling,morpheffect:spawn}],
+striking.underling.weapon:[{id:wound.underling.unstanchable,morpheffect:spawn}],
 fatiguing:weapon.d.exhausted},
 description:"One account has it that Biedde is a bastardised Arabic word for 'mosquito'. But my Foe used to number Biedde among the Colonel's Names. [Wounds from the Blade take much longer to heal.]",
 icon:tooledged,
@@ -3418,7 +3418,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"High in the abode of eternal snows, a monastery of the Diamond Vehicle clings improbably to a cliff face like flowers on lichen.",
-icon: vaultcontinent3,
 unique:true
 },
 	  	  {id: "end.slettnes",
@@ -3429,7 +3428,6 @@ slots:[{id:"cash1",label:"Expenses",actionId:"travel",consumes:true,required:{ca
 {id:"cash2",label:"Expenses",actionId:"travel",consumes:true,required:{cash:1}}
 ],
 description:"On an icy promontory in northernmost Norway, a lonely lighthouse stands proudly with its back to the ocean.",
-icon: vaultcontinent3,
 unique:true
 },	 
 	  
@@ -3661,7 +3659,7 @@ unique:true
 
 	  {id: "domicile.samarkand",
 label: "Samarkand",
-aspects: {domicile:1,remote:1,troubled:1},
+aspects: {domicile:1,remote:1,troubled:1,shrine.lionsmith.marker:1},
 xtriggers:{uprising:domicile.samarkand.turmoil},
 description:"The metropolis of the conqueror Timur, the crossroads of the silk trade, the city of a hundred faiths. The Tsars and now the Bolsheviks have ruled here since the Manghit emirs were ousted.",
 icon:domicile.samarkand,

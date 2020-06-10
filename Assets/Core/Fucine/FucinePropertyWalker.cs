@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Entities;
 using Noon;
 using OrbCreationExtensions;
@@ -82,7 +83,39 @@ namespace Assets.Core.Fucine
                         if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
                         {
                             var htEntries = htEntityValues.GetHashtable(entityProperty.Name.ToLowerInvariant());
-                            entityProperty.SetValue(entityToPopulate, NoonUtility.HashtableToStringStringDictionary(htEntries));
+                            Dictionary<string, string> dictEntries =
+                                NoonUtility.HashtableToStringStringDictionary(htEntries);
+                            entityProperty.SetValue(entityToPopulate, dictEntries);
+
+                            if (dssProp.KeyMustExistIn != null)
+                            {
+                                var mustExistInProperty =
+                                    entityProperties.SingleOrDefault(p => p.Name == dssProp.KeyMustExistIn);
+                                if (mustExistInProperty != null)
+                                {
+                                    foreach (var key in dictEntries.Keys)
+                                    {
+                                        List<string> acceptableKeys = mustExistInProperty.GetValue(entityToPopulate) as List<string>;
+
+                                        if(acceptableKeys==null)
+                                            _logger.LogProblem($"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
+
+                                        if (!acceptableKeys.Contains(key))
+                                            _logger.LogProblem($"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+
+                                    }
+
+                                }
+                                else
+                                {
+                                            _logger.LogProblem($"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {dssProp.KeyMustExistIn}, but that property doesn't exist.");
+
+                                }
+
+                            }
+
+                            
+
 
                             //drawmessages property specifies a MustExist
                             //MustExist specifies spec

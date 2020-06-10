@@ -54,11 +54,12 @@ namespace Assets.Core.Fucine
         }
 
     }
-
+ 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineListString : System.Attribute
     {
         public List<string> DefaultValue { get;  }
+        public string MustExistIn { get; set; }
 
         public FucineListString()
         {
@@ -71,7 +72,9 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineDictStringString : System.Attribute
     {
-        public Dictionary<string,string> DefaultValue { get;  }
+        public Dictionary<string,string> DefaultValue { get; }
+        public string KeyMustExistIn { get; set; }
+
 
         public FucineDictStringString()
         {
