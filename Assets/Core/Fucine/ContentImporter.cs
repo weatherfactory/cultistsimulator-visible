@@ -985,20 +985,56 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     public void ImportVerbs(ArrayList verbsArrayList)
     {
 
-        FucinePropertyWalker<BasicVerb> verbWalker = new FucinePropertyWalker<BasicVerb>(_logger);
+        FucinePropertyWalker verbWalker = new FucinePropertyWalker(_logger,typeof(BasicVerb));
         
         foreach (Hashtable h in verbsArrayList)
         {
-            IVerb v = verbWalker.PopulateWith(h);
-            ArrayList alSlots = h.GetArrayList(NoonConstants.KSLOTS);
-            if (alSlots != null)
+            IVerb v = (IVerb) verbWalker.PopulateWith(h);
+            Hashtable htThisSlot = h.GetHashtable("slot");
+            string slotId = htThisSlot[NoonConstants.KID].ToString();
+
+            SlotSpecification slotSpecification = new SlotSpecification(slotId);
+            try
             {
-                var slots=AddSlotsFromArrayList(alSlots);
-                if (slots.Count > 1)
-                    _logger.LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
-                else
-                    v.PrimarySlotSpecification = slots.First();
+                if (htThisSlot[NoonConstants.KLABEL] != null)
+                    slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
+
+                if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
+                    slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
+
+                if ((string)htThisSlot[NoonConstants.KGREEDY] == "true")
+                    slotSpecification.Greedy = true;
+
+                if ((string)htThisSlot[NoonConstants.KCONSUMES] == "true")
+                    slotSpecification.Consumes = true;
+
+
+                if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
+                    slotSpecification.NoAnim = true;
+
+                if (htThisSlot[NoonConstants.KACTIONID] != null)
+                    slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+
+
+                Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
+                if (htRequired != null)
+                {
+                    foreach (string rk in htRequired.Keys)
+                        slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
+                }
+
+                Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
+                if (htForbidden != null)
+                {
+                    foreach (string fk in htForbidden.Keys)
+                        slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
+                }
             }
+            catch (Exception e)
+            {
+                _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
+            }
+
 
             Verbs.Add(v.Id, v);
         }
@@ -1022,8 +1058,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
     {
 
-        FucinePropertyWalker<DeckSpec> deckWalker=new FucinePropertyWalker<DeckSpec>(_logger);
-        DeckSpec d= deckWalker.PopulateWith(htEachDeck);
+        FucinePropertyWalker deckWalker=new FucinePropertyWalker(_logger,typeof(DeckSpec));
+        DeckSpec d= (DeckSpec)deckWalker.PopulateWith(htEachDeck);
         return d;
     }
 
@@ -1035,11 +1071,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
 
-            FucinePropertyWalker<Legacy> legacyWalker=new FucinePropertyWalker<Legacy>(_logger);
+            FucinePropertyWalker legacyWalker=new FucinePropertyWalker(_logger,typeof(Legacy));
 
             try
             {
-                Legacy l = legacyWalker.PopulateWith(htEachLegacy);
+                Legacy l = (Legacy)legacyWalker.PopulateWith(htEachLegacy);
                 Legacies.Add(l.Id, l);
             }
 

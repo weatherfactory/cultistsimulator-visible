@@ -104,4 +104,17 @@ namespace Assets.Core.Fucine
         }
 
     }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineEmanationProperty : System.Attribute
+    {
+        public Type ObjectType { get; }
+
+        public FucineEmanationProperty(Type objectType)
+        {
+            ObjectType = objectType;
+        }
+
+    }
 }

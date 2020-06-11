@@ -11,8 +11,7 @@ using Assets.Core.Interfaces;
 /// </summary>
     public abstract class AbstractVerb : IVerb,IEntity
 {
-    private SlotSpecification _primarySlotSpecification;
-
+    
     [FucineId]
     public string Id { get; set; }
         
@@ -21,15 +20,12 @@ using Assets.Core.Interfaces;
 
     [FucineString]
     public string Description { get; set; }
+    
+ //   [FucineEmanationProperty(typeof(SlotSpecification))]
+    public SlotSpecification Slot { get; set; }
+
 
     public abstract bool Transient { get; }
-
-    public SlotSpecification PrimarySlotSpecification
-    {
-        get { return _primarySlotSpecification; }
-        set { _primarySlotSpecification = value; }
-
-    }
 
     public AbstractVerb(string id, string label, string description)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Noon;
 
 /// <summary>
@@ -11,36 +12,47 @@ using Noon;
 /// </summary>
 public class SlotSpecification
 {
+    [FucineId]
     public string Id { get; set; }
+    [FucineString]
     public string Label { get; set; }
+    [FucineString]
     public string ForVerb { get; set; }
 
     /// <summary>
     /// currently, this is only used by the primary slot specification
     /// </summary>
+    [FucineString]
     public string Description { get; set; }
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
+    [FucineAspectsDictionary]
     public IAspectsDictionary Required { get; set; }
     /// <summary>
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
+    [FucineAspectsDictionary]
     public IAspectsDictionary Forbidden { get; set; }
+
     /// <summary>
     /// A Greedy slot will find a card on the desktop that matches its specification, and insert it.
     /// </summary>
-    public bool Greedy = false;
+    [FucineBool(false)]
+    public bool Greedy { get; set; }
     /// <summary>
     /// A Consuming slot will destroy its contents when a recipe begins
     /// </summary>
-    public bool Consumes = false;
+    [FucineBool(false)]
+    public bool Consumes { get; set; }
 
     /// <summary>
     /// An slot with NoAnim set to true won't display the VFX/SFX when it appears as an ongoing slot. So! it has no effect on startingslots
     /// </summary>
-    public bool NoAnim = false;
-    private const string PRIMARY_SLOT="primary";
+    [FucineBool(false)]
+    public bool NoAnim { get; set; }
+
+private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(string id)
     {
@@ -49,6 +61,12 @@ public class SlotSpecification
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ForVerb = string.Empty;
+    }
+
+    public SlotSpecification()
+    {
+        Required = new AspectsDictionary();
+        Forbidden = new AspectsDictionary();
     }
 
     public static SlotSpecification CreatePrimarySlotSpecification()

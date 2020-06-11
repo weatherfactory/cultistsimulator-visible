@@ -5,43 +5,44 @@
             id: "scout",
             label: "Reconnoitre",
             description: "Sniff out possibilities.",
-			  slots: [{id:"scout",label:"Reconnoitre",
-			  required:{domicile:1}}],
+			  slot: {id:"scout",label:"Reconnoitre",
+			  required:{domicile:1}},
         },
 						  {
             id: "use",
             label: "Employ",
             description: "Make use of something. [Address Opportunities, run Operations, or convert years to cash.]",
-			  slots: [{id:"plan",label:"Plan",
-			  required:{connection:1,op:1,weapon:1,lore:1,comfort:1,proof:1}}],
+			  slot: {id:"plan",label:"Plan",
+			  required:{connection:1,op:1,weapon:1,lore:1,comfort:1,proof:1}},
         },
 		{
             id: "travel",
             label: "Travel",
 			atStart:true,
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
-				  slots: [{id:"direction",label:"Intention",description: "A road, or its end?",
-			  required:{destination:1,location:1,ally:1},forbidden:{exhausted:1}}]
+				  slot: {id:"direction",label:"Intention",description: "A road, or its end?",
+			  required:{destination:1,location:1,ally:1},forbidden:{exhausted:1}}
         },
 				{
             id: "send",
             label: "Communicate",
             description: "Send messages, moneys and more. Be careful.",
-				  slots: [{id:"send",label:"Send",
-			  required:{desire:1,domicile:1,cash:1,mortal:1,ligeian:1},forbidden:{exhausted:1}}]
+				  slot: {id:"send",label:"Send",
+			  required:{desire:1,domicile:1,cash:1,mortal:1,ligeian:1},forbidden:{exhausted:1}}
         },
 		
 						{
             id: "relinquish",
             label: "Relinquish",
             description: "Sell; abandon; extirpate; surrender.",
-				  slots: [{id:"relinquish",label:"Relinquish",
-			  required:{asset:1,lifespan.stolen:1,trace:1,wound.exile:1}}]
+				  slot: {id:"relinquish",label:"Relinquish",
+			  required:{asset:1,lifespan.stolen:1,trace:1,wound.exile:1}}
         },
 			  {
             id: "time.exile",
             label: "Time",
-            description: "The final enemy?"
+            description: "The final enemy?",
+			slot:{id:"time",label:"Time"}
         }
 		]
 		

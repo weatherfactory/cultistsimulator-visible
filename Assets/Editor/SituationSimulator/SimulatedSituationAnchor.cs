@@ -83,7 +83,7 @@ namespace Assets.Editor
 
         public SlotSpecification GetPrimarySlotSpecificationForVerb()
         {
-            return _verb.PrimarySlotSpecification;
+            return _verb.Slot;
         }
 
         public void DisplayBaseIcon(IVerb v)

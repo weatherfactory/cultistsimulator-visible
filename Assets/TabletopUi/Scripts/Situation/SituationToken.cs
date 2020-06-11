@@ -69,7 +69,7 @@ namespace Assets.CS.TabletopUI {
 
         public SlotSpecification GetPrimarySlotSpecificationForVerb()
         {
-            return _verb.PrimarySlotSpecification;
+            return _verb.Slot;
         }
 
 
