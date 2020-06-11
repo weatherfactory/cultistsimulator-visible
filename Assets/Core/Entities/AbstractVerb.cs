@@ -21,7 +21,7 @@ using Assets.Core.Interfaces;
     [FucineString]
     public string Description { get; set; }
     
- //   [FucineEmanationProperty(typeof(SlotSpecification))]
+    [FucineEmanationProperty(typeof(SlotSpecification))]
     public SlotSpecification Slot { get; set; }
 
 

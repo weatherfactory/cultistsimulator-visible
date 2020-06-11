@@ -103,7 +103,6 @@ namespace Assets.Core.Fucine
         {
 
 
-
             if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
             {
                 FucinePropertyWalker emanationWalker=new FucinePropertyWalker(_logger,emanationProp.ObjectType);

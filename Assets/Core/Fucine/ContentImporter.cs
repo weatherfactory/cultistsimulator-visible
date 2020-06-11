@@ -994,46 +994,46 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             string slotId = htThisSlot[NoonConstants.KID].ToString();
 
             SlotSpecification slotSpecification = new SlotSpecification(slotId);
-            try
-            {
-                if (htThisSlot[NoonConstants.KLABEL] != null)
-                    slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
+            //try
+            //{
+            //    if (htThisSlot[NoonConstants.KLABEL] != null)
+            //        slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
 
-                if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
-                    slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
+            //    if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
+            //        slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
 
-                if ((string)htThisSlot[NoonConstants.KGREEDY] == "true")
-                    slotSpecification.Greedy = true;
+            //    if ((string)htThisSlot[NoonConstants.KGREEDY] == "true")
+            //        slotSpecification.Greedy = true;
 
-                if ((string)htThisSlot[NoonConstants.KCONSUMES] == "true")
-                    slotSpecification.Consumes = true;
-
-
-                if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
-                    slotSpecification.NoAnim = true;
-
-                if (htThisSlot[NoonConstants.KACTIONID] != null)
-                    slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+            //    if ((string)htThisSlot[NoonConstants.KCONSUMES] == "true")
+            //        slotSpecification.Consumes = true;
 
 
-                Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
-                if (htRequired != null)
-                {
-                    foreach (string rk in htRequired.Keys)
-                        slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
-                }
+            //    if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
+            //        slotSpecification.NoAnim = true;
 
-                Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
-                if (htForbidden != null)
-                {
-                    foreach (string fk in htForbidden.Keys)
-                        slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
-            }
+            //    if (htThisSlot[NoonConstants.KACTIONID] != null)
+            //        slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+
+
+            //    Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
+            //    if (htRequired != null)
+            //    {
+            //        foreach (string rk in htRequired.Keys)
+            //            slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
+            //    }
+
+            //    Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
+            //    if (htForbidden != null)
+            //    {
+            //        foreach (string fk in htForbidden.Keys)
+            //            slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
+            //}
 
 
             Verbs.Add(v.Id, v);

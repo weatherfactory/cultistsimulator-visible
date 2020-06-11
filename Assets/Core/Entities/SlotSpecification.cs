@@ -5,18 +5,19 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
+using Assets.Core.Interfaces;
 using Noon;
 
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification
+public class SlotSpecification:IEntity
 {
     [FucineId]
     public string Id { get; set; }
     [FucineString]
     public string Label { get; set; }
-    [FucineString]
+    [FucineString(".")]
     public string ForVerb { get; set; }
 
     /// <summary>
