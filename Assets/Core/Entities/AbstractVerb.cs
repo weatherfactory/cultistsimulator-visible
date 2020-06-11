@@ -2,42 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 
 
 /// <summary>
 /// just a bundle of properties
 /// </summary>
-    public abstract class AbstractVerb : IVerb
+    public abstract class AbstractVerb : IVerb,IEntity
 {
-        private string _id;
-        private string _label;
-        private string _description;
-    private bool _atStart;
     private SlotSpecification _primarySlotSpecification;
 
-    
+    [FucineId]
+    public string Id { get; set; }
+        
+    [FucineString]
+     public string Label { get; set; }
 
-    public string Id
-        {
-            get { return _id; }
-        }
-
-        public string Label
-        {
-            get { return _label; }
-        }
-
-        public string Description
-        {
-            get { return _description; }
-        }
-
-    public bool AtStart
-    {
-        get { return _atStart; }
-        set { _atStart = value; }
-    }
+    [FucineString]
+    public string Description { get; set; }
 
     public abstract bool Transient { get; }
 
@@ -50,9 +33,14 @@ using Assets.Core.Interfaces;
 
     public AbstractVerb(string id, string label, string description)
         {
-            _id = id;
-            _label = label;
-            _description = description;
+            Id= id;
+            Label = label;
+            Description = description;
         }
+
+    public AbstractVerb()
+    {
+
+    }
     }
 

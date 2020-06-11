@@ -15,7 +15,7 @@ namespace Assets.Core.Entities
     /// </summary>
     public class Legacy:IEntity
     {
-        [FucineString]
+        [FucineId]
         public string Id { get; set; }
 
         /// <summary>

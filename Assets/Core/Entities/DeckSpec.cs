@@ -49,7 +49,7 @@ namespace Assets.Core.Entities
 
  public class DeckSpec : IDeckSpec,IEntity
     {
-        [FucineString]
+        [FucineId]
         public string Id { get; set; }
 
         [FucineString("")]

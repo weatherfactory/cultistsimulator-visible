@@ -28,8 +28,19 @@ namespace Assets.Core.Fucine
 
             foreach (var entityProperty in entityProperties)
             {
+
                 try
                 {
+                    if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId idProp)
+                    {
+                        if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+                            entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name.ToLowerInvariant()));
+                        else
+                        {
+                            _logger.LogProblem("ID not specifieds for a " + typeof(T).Name);
+                        }
+                    }
+
                     if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineString)) is FucineString stringProp)
                     {
                         if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))

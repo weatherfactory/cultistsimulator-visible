@@ -23,6 +23,15 @@ namespace Assets.Core.Fucine
         
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineId : System.Attribute
+    {
+
+        public FucineId()
+        {
+        }
+
+    }
 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineString : System.Attribute
@@ -40,7 +49,6 @@ namespace Assets.Core.Fucine
         {
             DefaultValue = defaultValue;
         }
-
     }
 
     [AttributeUsage(AttributeTargets.Property)]

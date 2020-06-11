@@ -985,25 +985,21 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     public void ImportVerbs(ArrayList verbsArrayList)
     {
 
-            //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
-
-
-
+        FucinePropertyWalker<BasicVerb> verbWalker = new FucinePropertyWalker<BasicVerb>(_logger);
+        
         foreach (Hashtable h in verbsArrayList)
         {
-            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(),
-                Convert.ToBoolean(h["atStart"]));
+            IVerb v = verbWalker.PopulateWith(h);
             ArrayList alSlots = h.GetArrayList(NoonConstants.KSLOTS);
             if (alSlots != null)
             {
-        var slots=AddSlotsFromArrayList(alSlots);
+                var slots=AddSlotsFromArrayList(alSlots);
                 if (slots.Count > 1)
                     _logger.LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
                 else
                     v.PrimarySlotSpecification = slots.First();
             }
 
-            
             Verbs.Add(v.Id, v);
         }
 
@@ -1044,53 +1040,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             try
             {
                 Legacy l = legacyWalker.PopulateWith(htEachLegacy);
-
-            
-             //   string legacyId = htEachLegacy[NoonConstants.KID].ToString();
-
-             //   bool availableWithoutEndingMatch =
-             //       Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH]);
-
-
-                // Build the list of legacies to exclude, if provided
-                // This should ONLY be applied to ending-dependent legacies, to avoid combining them with conflicting
-                // randomly-selected legacies after an ending
-
-               // List<string> excludesOnEnding = new List<string>();
-             //   if (htEachLegacy.ContainsKey(NoonConstants.KEXCLUDESONENDING))
-             //       excludesOnEnding = htEachLegacy.GetArrayList(NoonConstants.KEXCLUDESONENDING).Cast<string>().ToList();
-                
-             //   List<string> statusBarElements=new List<string>();
-             //   if (htEachLegacy.Contains(NoonConstants.KSTATUSBARELEMENTS))
-             //       statusBarElements = htEachLegacy.GetArrayList(NoonConstants.KSTATUSBARELEMENTS).Cast<string>()
-            //             .ToList();
-            //
-                //string startingVerbId = string.Empty;
-                //if (htEachLegacy.ContainsKey(NoonConstants.KSTARTINGVERBID))
-                //    startingVerbId = htEachLegacy[NoonConstants.KSTARTINGVERBID].ToString();
-
-                //Legacy l = new Legacy(legacyId,
-                //    htEachLegacy[NoonConstants.KLABEL].ToString(),
-                //    htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
-                //    htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(),
-                //    htEachLegacy[NoonConstants.KIMAGE].ToString(),
-                //    htEachLegacy[NoonConstants.KFROMENDING].ToString(),
-                //    availableWithoutEndingMatch,
-                //    excludesOnEnding,
-                //    statusBarElements,
-                //    startingVerbId
-               // );
-
-                //Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
-                //if (htEffects != null)
-                //{
-                //    foreach (string k in htEffects.Keys)
-                //    {
-                //        LogIfNonexistentElementId(k, l.Id, "(effects)");
-                //        l.Effects.Add(k, Convert.ToInt32(htEffects[k]));
-                //    }
-                //}
-
                 Legacies.Add(l.Id, l);
             }
 
