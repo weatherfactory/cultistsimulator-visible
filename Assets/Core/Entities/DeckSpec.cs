@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
 
 
         //Spec determines which cards start in the deckSpec after each reset
-        [FucineList(typeof(string))]
+        [FucineListGeneric(typeof(string))]
         public List<string> Spec { get; set; }
 
         [FucineDictStringString(KeyMustExistIn = "Spec")]
