@@ -841,8 +841,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     }
 
                     if (alSlots!=null)
-                        element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
-                    foreach(var css in element.ChildSlotSpecifications)
+                        element.Slots = AddSlotsFromArrayList(alSlots);
+                    foreach(var css in element.Slots)
                     {
                         if(string.IsNullOrEmpty(css.ForVerb)) _logger.LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
                     }

@@ -7,7 +7,9 @@
 
 using UnityEngine;
 using System;
-using System.Collections;using Noon;
+using System.Collections;
+using System.Collections.Generic;
+using Noon;
 
 namespace OrbCreationExtensions
 {
@@ -484,6 +486,18 @@ namespace OrbCreationExtensions
             if(arr.Count>index && index>=0 && arr[index].GetType() == typeof(Hashtable)) return System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable((Hashtable)arr[index]);
             return null;
         }
+
+        public static IEnumerable<Hashtable> GetHashtablesCaseInsensitive(this ArrayList arr)
+        {
+          var hashtables=new List<Hashtable>();
+
+          foreach (Hashtable h in arr)
+          {
+              hashtables.Add(System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h));
+          }
+          return hashtables;
+        }
+
         public static ArrayList GetArrayList(this ArrayList arr, int index) {
             if(arr.Count>index && index>=0 && arr[index].GetType() == typeof(ArrayList)) return (ArrayList)arr[index];
             return null;

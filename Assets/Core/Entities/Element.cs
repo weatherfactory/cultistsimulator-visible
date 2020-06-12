@@ -74,7 +74,7 @@ namespace Assets.Core.Entities
         public IAspectsDictionary Aspects { get; set; }
 
         [FucineList(typeof(SlotSpecification))]
-        public List<SlotSpecification> ChildSlotSpecifications { get; set; }
+        public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
         /// XTriggers allow the triggering aspect to transform the element into something else. For example, if the Knock aspect were present, and the element was a locked_box with Knock:open_box,
@@ -117,7 +117,7 @@ namespace Assets.Core.Entities
         public Element()
         {
             
-            ChildSlotSpecifications = new List<SlotSpecification>();
+            Slots = new List<SlotSpecification>();
             Aspects = new AspectsDictionary();
             XTriggers = new Dictionary<string, List<MorphDetails>>();
 
@@ -133,7 +133,7 @@ namespace Assets.Core.Entities
             Description = description;
           //  AnimFrames = animFrames;
 
-            ChildSlotSpecifications=new List<SlotSpecification>();
+            Slots=new List<SlotSpecification>();
             Aspects=new AspectsDictionary();
             XTriggers=new Dictionary<string, List<MorphDetails>>();
 
@@ -150,7 +150,7 @@ namespace Assets.Core.Entities
 
         public Boolean HasChildSlotsForVerb(string forVerb)
         {
-            return ChildSlotSpecifications.Any(cs => cs.ForVerb == forVerb || cs.ForVerb == String.Empty);
+            return Slots.Any(cs => cs.ForVerb == forVerb || cs.ForVerb == String.Empty);
 
 
 
@@ -170,9 +170,9 @@ namespace Assets.Core.Entities
                 XTriggers.Add(k,inheritFromElement.XTriggers[k]);
             }
 
-            foreach (SlotSpecification s in inheritFromElement.ChildSlotSpecifications)
+            foreach (SlotSpecification s in inheritFromElement.Slots)
             {
-                ChildSlotSpecifications.Add(s);
+                Slots.Add(s);
             }
 
             foreach (LinkedRecipeDetails i in inheritFromElement.Induces)

@@ -133,7 +133,7 @@ namespace Assets.Editor
 
         public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb)
         {
-            return _element.ChildSlotSpecifications.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
+            return _element.Slots.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
         }
 
         public bool HasChildSlotsForVerb(string forVerb)

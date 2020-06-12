@@ -38,11 +38,11 @@ namespace Assets.Core.Fucine
                 {
                     if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId idProp)
                     {
-                        if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
-                            entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name.ToLowerInvariant()));
+                        if (htEntityValues.ContainsKey(entityProperty.Name))
+                            entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name));
                         else
                         {
-                            _logger.LogProblem("ID not specifieds for a " + _entityType.Name);
+                            _logger.LogProblem("ID not specified for a " + _entityType.Name);
                         }
                     }
 
@@ -112,7 +112,7 @@ namespace Assets.Core.Fucine
         private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanationProperty emanationProp)
         {
 
-            string entityPropertyName=entityProperty.Name.ToLowerInvariant();
+            string entityPropertyName=entityProperty.Name;
             if (htEntityValues.ContainsKey(entityPropertyName))
             {
                 FucinePropertyWalker emanationWalker=new FucinePropertyWalker(_logger,emanationProp.ObjectType);
@@ -132,8 +132,8 @@ namespace Assets.Core.Fucine
         private void PopulateString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineString stringProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name.ToLowerInvariant()));
+            if (htEntityValues.ContainsKey(entityProperty.Name))
+                entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name));
             else
             {
                 if (stringProp.HasDefaultValue)
@@ -149,8 +149,8 @@ namespace Assets.Core.Fucine
         private static void PopulateBool(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineBool boolProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetBool(entityProperty.Name.ToLowerInvariant()));
+            if (htEntityValues.ContainsKey(entityProperty.Name))
+                entityProperty.SetValue(entityToPopulate, htEntityValues.GetBool(entityProperty.Name));
             else
                 entityProperty.SetValue(entityToPopulate, boolProp.DefaultValue);
         }
@@ -158,8 +158,8 @@ namespace Assets.Core.Fucine
         private static void PopulateInt(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineInt intProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetInt(entityProperty.Name.ToLowerInvariant()));
+            if (htEntityValues.ContainsKey(entityProperty.Name))
+                entityProperty.SetValue(entityToPopulate, htEntityValues.GetInt(entityProperty.Name));
             else
                 entityProperty.SetValue(entityToPopulate, intProp.DefaultValue);
         }
@@ -167,8 +167,8 @@ namespace Assets.Core.Fucine
 
         private void PopulateFloat(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineFloat floatProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetFloat(entityProperty.Name.ToLowerInvariant()));
+            if (htEntityValues.ContainsKey(entityProperty.Name))
+                entityProperty.SetValue(entityToPopulate, htEntityValues.GetFloat(entityProperty.Name));
             else
                 entityProperty.SetValue(entityToPopulate, floatProp.DefaultValue);
         }
@@ -176,9 +176,9 @@ namespace Assets.Core.Fucine
         private static void PopulateListString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineListString lsProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            if (htEntityValues.ContainsKey(entityProperty.Name))
             {
-                ArrayList alStringList = htEntityValues.GetArrayList(entityProperty.Name.ToLowerInvariant());
+                ArrayList alStringList = htEntityValues.GetArrayList(entityProperty.Name);
                 List<string> stringList = new List<string>();
                 foreach (string s in alStringList)
                     stringList.Add(s);
@@ -192,18 +192,24 @@ namespace Assets.Core.Fucine
 
         private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineList lProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            if (htEntityValues.ContainsKey(entityProperty.Name))
             {
-                ArrayList al = htEntityValues.GetArrayList(entityProperty.Name.ToLowerInvariant());
+                ArrayList al = htEntityValues.GetArrayList(entityProperty.Name);
                 Type listType = typeof(List<>);
 
                 Type[] typeArgs = { lProp.MemberType };
 
                 Type constructedType = listType.MakeGenericType(typeArgs);
 
-              dynamic  list = Activator.CreateInstance(constructedType);
-              foreach (object o in al)
-                  list.Add(o);
+              IList  list = Activator.CreateInstance(constructedType) as IList;
+              foreach (Hashtable h in al.GetHashtablesCaseInsensitive())
+              {
+                  FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, lProp.MemberType);
+
+                  var subEntity = emanationWalker.PopulateWith(h);
+
+                  list.Add(subEntity as SlotSpecification);
+              }
 
                 entityProperty.SetValue(entityToPopulate, list);
             }
@@ -215,9 +221,9 @@ namespace Assets.Core.Fucine
         private void PopulateDictStringString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineDictStringString dssProp, PropertyInfo[] entityProperties)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            if (htEntityValues.ContainsKey(entityProperty.Name))
             {
-                var htEntries = htEntityValues.GetHashtable(entityProperty.Name.ToLowerInvariant());
+                var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
                 Dictionary<string, string> dictEntries =
                     NoonUtility.HashtableToStringStringDictionary(htEntries);
                 entityProperty.SetValue(entityToPopulate, dictEntries);
@@ -258,9 +264,9 @@ namespace Assets.Core.Fucine
         private void PopulateAspectsDictionary(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineAspectsDictionary aspectsProp, PropertyInfo[] entityProperties)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            if (htEntityValues.ContainsKey(entityProperty.Name))
             {
-                var htEntries = htEntityValues.GetHashtable(entityProperty.Name.ToLowerInvariant());
+                var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
 
                 IAspectsDictionary aspects = new AspectsDictionary();
 
