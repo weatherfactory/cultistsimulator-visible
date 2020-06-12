@@ -4,15 +4,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using UnityEngine;
 
 namespace Assets.Core.Entities
 {
-    ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties
+    ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
+    [FucineImport("elements")]
     public class Element:IEntity
     {
-        public IAspectsDictionary Aspects;
+        
+        
+        [FucineId]
+        public string Id { get; set; }
+
+        [FucineString]
+        public string Label { get; set; }
+
+        [FucineString]
+        public string Description { get; set;}
+
+        [FucineString]
+        public string Icon
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_icon))
+                    return Id;
+                return _icon;
+            }
+            set => _icon = value;
+        }
+
+        [FucineString]
+        public string OverrideVerbIcon { get; set; }
+
+        [FucineString]
+        public string DecayTo { get; set; }
+
+        [FucineString]
+        public string UniquenessGroup { get; set; }
+
+
+        //if true, when the card decays it should become more, rather than less saturated with colour (eg Fatigue->Health)
+        [FucineBool(false)]
+        public bool Resaturate { get; set; }
+
+        [FucineBool(false)]
+        public bool IsAspect { get; set; }
+
+        [FucineBool(false)]
+        public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects. It will only work on aspect displays, anyhow
+
+        [FucineBool(false)]
+        public bool NoArtNeeded { get; set; }
+
+        /// <summary>
+        /// If a Unique element is created and another one exists in games, the first one should be quietly removed. When a unique element is created, all references to it should be removed from all decks.
+        /// [Note: if a deck resets on exhaustion, the rest will add a new element. So ideally, whenever a card is drawn from a deck, it should be checked for existing uniqueness. Chris' Mansus-management deck is a good place to enforce this if it doesn't already do it..]
+        /// </summary>
+        [FucineBool(false)]
+        public bool Unique { get; set; }
+
+        [FucineFloat(0)]
+        public float Lifetime { get; set; }
+
+        [FucineAspectsDictionary]
+        public IAspectsDictionary Aspects { get; set; }
+
+
+        public List<SlotSpecification> ChildSlotSpecifications { get; set; }
+
         /// <summary>
         /// XTriggers allow the triggering aspect to transform the element into something else. For example, if the Knock aspect were present, and the element was a locked_box with Knock:open_box,
         /// then the box would become an open_box regardless of what else happened in the recipe.
@@ -20,62 +83,16 @@ namespace Assets.Core.Entities
         /// </summary>
         public Dictionary<string, List<MorphDetails>> XTriggers;
 
-        private string _label="";
-        private string _description="";
-        public string Id { get; set; }
         private string _icon;
-        private bool _resaturate;
 
-        public string Label
-        {
-            get { return _label; }
-            set { _label = value ?? ""; }
-        }
+
     
-
-        public string Icon
-        {
-            get { return _icon; }
-        }
-
-        //if true, when the card decays it should become more, rather than less saturated with colour (eg Fatigue->Health)
-        public bool Resaturate
-        {
-            get { return _resaturate; }
-            set { _resaturate = value; }
-        }
-
-
-        public string Description
-        {
-            get { return _description; }
-            set { _description = value ?? ""; }
-        }
-
-        private int AnimFrames { get; set; } //no longer used; leaving it in here in case we find we need it after all
-        public List<SlotSpecification> ChildSlotSpecifications { get; set; }
-        public bool IsAspect { get; set; }
-        public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects. It will only work on aspect displays, anyhoo
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string OverrideVerbIcon { get; set; }
-
-        public bool NoArtNeeded { get; set; }
-        public float Lifetime { get; set; }
-        public string DecayTo { get; set; }
+        
         /// <summary>
         /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
         /// </summary>
         public List<LinkedRecipeDetails> Induces { get; set; }
-        /// <summary>
-        /// If a Unique element is created and another one exists in games, the first one should be quietly removed. When a unique element is created, all references to it should be removed from all decks.
-        /// [Note: if a deck resets on exhaustion, the rest will add a new element. So ideally, whenever a card is drawn from a deck, it should be checked for existing uniqueness. Chris' Mansus-management deck is a good place to enforce this if it doesn't already do it..]
-        /// </summary>
-        public bool Unique { get; set; }
 
-        public string UniquenessGroup { get; set; }
 
         /// <summary>
         /// all aspects the element has, *including* the aspect itself as an element
@@ -97,14 +114,24 @@ namespace Assets.Core.Entities
         }
 
 
+        public Element()
+        {
+            
+            ChildSlotSpecifications = new List<SlotSpecification>();
+            Aspects = new AspectsDictionary();
+            XTriggers = new Dictionary<string, List<MorphDetails>>();
 
+            Induces = new List<LinkedRecipeDetails>();
+
+
+        }
 
         public Element(string id, string label, string description, int animFrames,string icon)
         {
             Id = id;
             Label = label;
             Description = description;
-            AnimFrames = animFrames;
+          //  AnimFrames = animFrames;
 
             ChildSlotSpecifications=new List<SlotSpecification>();
             Aspects=new AspectsDictionary();
@@ -114,9 +141,9 @@ namespace Assets.Core.Entities
 
             if (!string.IsNullOrEmpty(icon))
         
-                _icon = icon;
+                Icon = icon;
             else
-                _icon = id;
+                Icon = id;
         
         }
 

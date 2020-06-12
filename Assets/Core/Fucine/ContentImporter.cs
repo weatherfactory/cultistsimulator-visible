@@ -743,33 +743,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 		indent--;
 	}
 
-    public void ImportElements(ArrayList alElements)
-    {
-
-
-        int totalElementsFound = 0;
-
-        totalElementsFound += PopulateElements(alElements);
-
-        _logger.LogInfo("Total elements found: " + totalElementsFound);
-
-        foreach (var e in Elements)
-        {
-            foreach (var xt in e.Value.XTriggers)
-            {
-                foreach(var m in xt.Value)
-                { 
-                    if (!Elements.ContainsKey(m.Id)) _logger.LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
-
-                }
-            }
-            if(!string.IsNullOrEmpty(e.Value.DecayTo))
-            {
-                if(!Elements.ContainsKey(e.Value.DecayTo)) _logger.LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
-
-            }
-        }
-    }
 
     public int PopulateElements(ArrayList alElements)
     {
@@ -984,33 +957,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     }
 
-    public void ImportVerbs(ArrayList verbsArrayList)
-    {
-
-        FucinePropertyWalker verbWalker = new FucinePropertyWalker(_logger,typeof(BasicVerb));
-        
-        foreach (Hashtable h in verbsArrayList)
-        {
-            IVerb v = (IVerb) verbWalker.PopulateWith(h);
-
-            Verbs.Add(v.Id, v);
-        }
-
-    }
-
-
-
-    private void ImportDeckSpecs(ArrayList decksArrayList)
-    {
-
-        for (int i = 0; i < decksArrayList.Count; i++)
-        {
-            Hashtable htEachDeck = decksArrayList.GetHashtable(i);
-            var d = PopulateDeckSpec(htEachDeck);
-            DeckSpecs.Add(d.Id, d);
-        }
-
-    }
 
     private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
     {
@@ -1020,30 +966,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return d;
     }
 
-  
-    public void ImportLegacies(ArrayList legaciesArrayList)
-    {
-
-        for (int i = 0; i < legaciesArrayList.Count; i++)
-        {
-            Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
-
-            FucinePropertyWalker legacyWalker=new FucinePropertyWalker(_logger,typeof(Legacy));
-
-            try
-            {
-                Legacy l = (Legacy)legacyWalker.PopulateWith(htEachLegacy);
-                Legacies.Add(l.Id, l);
-            }
-
-            catch
-            {
-                _logger.LogProblem("Can't parse this legacy: " + htEachLegacy[NoonConstants.KID].ToString());
-            }
-        }
-
-
-    }
 
     public void ImportEndings(ArrayList endingsArrayList)
     {
@@ -1682,8 +1604,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
     {
-        try
-        {
+       // try
+      //  {
             _compendium = compendium;
             //ArrayList alVerbs = GetContentItems(CONST_VERBS);
             ArrayList alElements = GetContentItems(CONST_ELEMENTS);
@@ -1699,15 +1621,12 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            List<Type> importableTypes =new List<Type>();
-
             foreach (Type t in assembly.GetTypes())
             {
                 FucineImport importAttribute = (FucineImport) t.GetCustomAttribute(typeof(FucineImport), false);
                 
                 if(importAttribute!=null)
                 {
-                    importableTypes.Add(t);
                     if(!t.GetInterfaces().Contains(typeof(IEntity)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
                     ArrayList al = GetContentItems(importAttribute.TaggedAs);
@@ -1739,7 +1658,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
             //    ImportVerbs(alVerbs);
-            ImportElements(alElements);
+           // ImportElements(alElements);
             // ImportDeckSpecs(alDeckSpecs);
             ImportRecipes(alRecipes);
             // ImportLegacies(alLegacies);
@@ -1776,12 +1695,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
 
 #endif
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem(e.Message);
-            return _logger.GetMessages();
-        }
+       // }
+     //   catch (Exception e)
+     //   {
+
+            //    _logger.LogProblem(e.Message);
+            //  return _logger.GetMessages();
+     //   }
 
         return _logger.GetMessages();
 
@@ -1802,9 +1722,10 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             words += (r.Description.Count(char.IsWhiteSpace) + 1);
         }
 
+
+
         foreach (var e in Elements.Values)
         {
-
             words += (e.Label.Count(char.IsWhiteSpace) + 1);
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
         }

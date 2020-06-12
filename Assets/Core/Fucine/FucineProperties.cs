@@ -54,11 +54,15 @@ namespace Assets.Core.Fucine
 
         public FucineString()
         {
+            DefaultValue = string.Empty;
         }
 
         public FucineString(string defaultValue)
         {
-            DefaultValue = defaultValue;
+            if (DefaultValue == null)
+                DefaultValue = string.Empty;
+            else
+                DefaultValue = defaultValue;
         }
     }
 
@@ -73,7 +77,19 @@ namespace Assets.Core.Fucine
         }
 
     }
- 
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineFloat : System.Attribute
+    {
+        public float DefaultValue { get; }
+
+        public FucineFloat(float defaultValue)
+        {
+            DefaultValue = defaultValue;
+        }
+
+    }
+
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineListString : System.Attribute
     {
