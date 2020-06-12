@@ -77,6 +77,12 @@ namespace Assets.Core.Entities
         public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
+        /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
+        /// </summary>
+        [FucineListGeneric(typeof(LinkedRecipeDetails))]
+        public List<LinkedRecipeDetails> Induces { get; set; }
+
+        /// <summary>
         /// XTriggers allow the triggering aspect to transform the element into something else. For example, if the Knock aspect were present, and the element was a locked_box with Knock:open_box,
         /// then the box would become an open_box regardless of what else happened in the recipe.
         /// XTriggers run *before* the rest of the recipe (so if the recipe affected open_box elements but not locked_box elements, those effects would take place if there was a Knock in the mix).
@@ -88,10 +94,7 @@ namespace Assets.Core.Entities
 
     
         
-        /// <summary>
-        /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
-        /// </summary>
-        public List<LinkedRecipeDetails> Induces { get; set; }
+ 
 
 
         /// <summary>

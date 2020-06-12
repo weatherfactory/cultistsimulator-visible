@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 
 public class RequirementValue
@@ -187,8 +188,9 @@ public class Recipe: IEntity
 
 public class Expulsion
 {
- 
+ [FucineAspectsDictionary]
     public AspectsDictionary Filter { get; set; }
+    [FucineInt(1)]
     public int Limit { get; set; }
 
     public Expulsion()
@@ -198,29 +200,24 @@ public class Expulsion
     }
 }
 
-public class LinkedRecipeDetails
+public class LinkedRecipeDetails:IEntity
 {
-    private readonly bool _additional;
-    private readonly string _id;
-    private readonly int _chance;
-    private readonly Dictionary<string, string> _challenges;
     private Expulsion _expulsion;
 
-    public string Id
-    {
-        get { return _id; }
-    }
+    [FucineId]
+    public string Id { get; set; }
 
-    public int Chance
-    {
-        get { return _chance; }
-    }
+    [FucineInt(0)]
+    public int Chance { get; set; }
 
-    public bool Additional
-    {
-        get { return _additional; }
-    }
+    [FucineBool(false)]
+    public bool Additional { get; set; }
 
+
+    [FucineDictStringString]
+    public Dictionary<string, string> Challenges { get; set; }
+
+    [FucineEmanationProperty(typeof(Expulsion))]
     public Expulsion Expulsion
     {
         get
@@ -234,18 +231,20 @@ public class LinkedRecipeDetails
         }
     }
 
-    public Dictionary<string, string> Challenges
+    public LinkedRecipeDetails()
     {
-        get { return _challenges; }
+
+
     }
+
 
     public LinkedRecipeDetails(string id, int chance, bool additional,Expulsion expulsion, Dictionary<string, string> challenges)
     {
-        _additional = additional;
-        _id = id;
-        _chance = chance;
+        Additional = additional;
+        Id = id;
+        Chance = chance;
         Expulsion = expulsion;
-        _challenges = challenges ?? new Dictionary<string, string>();
+        Challenges = challenges ?? new Dictionary<string, string>();
 
     }
 
