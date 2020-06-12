@@ -91,13 +91,13 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineList : System.Attribute
+    public class FucineListGeneric : System.Attribute
     {
        public dynamic DefaultValue { get; private set; }
         public Type MemberType { get; private set; }
 
 
-        public FucineList(Type memberType)
+        public FucineListGeneric(Type memberType)
         {
             Type listType = typeof(List<>);
 
@@ -114,18 +114,18 @@ namespace Assets.Core.Fucine
     }
 
 
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineListString : System.Attribute
-    {
-        public List<string> DefaultValue { get;  }
-        public string MustExistIn { get; set; }
+    //[AttributeUsage(AttributeTargets.Property)]
+    //public class FucineListString : System.Attribute
+    //{
+    //    public List<string> DefaultValue { get;  }
+    //    public string MustExistIn { get; set; }
 
-        public FucineListString()
-        {
-            DefaultValue = new List<string>();
-        }
+    //    public FucineListString()
+    //    {
+    //        DefaultValue = new List<string>();
+    //    }
 
-    }
+    //}
 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineAspectsDictionary : System.Attribute

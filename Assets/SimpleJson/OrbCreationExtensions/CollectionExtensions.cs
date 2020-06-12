@@ -491,9 +491,10 @@ namespace OrbCreationExtensions
         {
           var hashtables=new List<Hashtable>();
 
-          foreach (Hashtable h in arr)
+          foreach (object o in arr)
           {
-              hashtables.Add(System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h));
+              if(o is Hashtable h)
+                 hashtables.Add(System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h));
           }
           return hashtables;
         }

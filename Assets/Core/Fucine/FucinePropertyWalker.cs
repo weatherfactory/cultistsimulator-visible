@@ -73,10 +73,10 @@ namespace Assets.Core.Fucine
                     }
 
 
-                    else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListString)) is FucineListString lsProp)
-                    {
-                        PopulateListString(htEntityValues, entityProperty, entityToPopulate, lsProp);
-                    }
+                    //else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListString)) is FucineListString lsProp)
+                    //{
+                    //    PopulateListString(htEntityValues, entityProperty, entityToPopulate, lsProp);
+                    //}
 
                     else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineDictStringString)) is
                         FucineDictStringString
@@ -173,21 +173,21 @@ namespace Assets.Core.Fucine
                 entityProperty.SetValue(entityToPopulate, floatProp.DefaultValue);
         }
 
-        private static void PopulateListString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineListString lsProp)
-        {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-            {
-                ArrayList alStringList = htEntityValues.GetArrayList(entityProperty.Name);
-                List<string> stringList = new List<string>();
-                foreach (string s in alStringList)
-                    stringList.Add(s);
+        //private static void PopulateListString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
+        //    FucineListString lsProp)
+        //{
+        //    if (htEntityValues.ContainsKey(entityProperty.Name))
+        //    {
+        //        ArrayList alStringList = htEntityValues.GetArrayList(entityProperty.Name);
+        //        List<string> stringList = new List<string>();
+        //        foreach (string s in alStringList)
+        //            stringList.Add(s);
 
-                entityProperty.SetValue(entityToPopulate, stringList);
-            }
-            else
-                entityProperty.SetValue(entityToPopulate, lsProp.DefaultValue);
-        }
+        //        entityProperty.SetValue(entityToPopulate, stringList);
+        //    }
+        //    else
+        //        entityProperty.SetValue(entityToPopulate, lsProp.DefaultValue);
+        //}
 
 
         private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineList lProp)
@@ -202,14 +202,21 @@ namespace Assets.Core.Fucine
                 Type constructedType = listType.MakeGenericType(typeArgs);
 
               IList  list = Activator.CreateInstance(constructedType) as IList;
-              foreach (Hashtable h in al.GetHashtablesCaseInsensitive())
+              foreach (var o in al)
               {
-                  FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, lProp.MemberType);
-
-                  var subEntity = emanationWalker.PopulateWith(h);
-
-                  list.Add(subEntity as SlotSpecification);
-              }
+                  
+                  if(o is Hashtable h)
+                  {
+                      Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+                      FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, lProp.MemberType);
+                      var subEntity = emanationWalker.PopulateWith(cih);
+                      list.Add(subEntity);
+                  }
+                  else
+                  {
+                      list.Add(o); //This might not work for things that aren't strings?
+                  }
+                }
 
                 entityProperty.SetValue(entityToPopulate, list);
             }
