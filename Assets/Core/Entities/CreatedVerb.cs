@@ -6,16 +6,30 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-   public class CreatedVerb: AbstractVerb
+   public class CreatedVerb: IVerb
     {
-        public CreatedVerb(string id, string label, string description) : base(id, label, description)
+        public CreatedVerb(string id, string label, string description)
         {
+            Id = id;
+            Label = label;
+            Description = description;
 
         }
 
-        public override bool Transient
+        public  bool Transient
         {
             get { return true; }
         }
-    }
+
+
+ public string Id { get; set; }
+
+        public string Label { get; set; }
+
+   public string Description { get; set; }
+
+        public SlotSpecification Slot { get; set; }
+
+
+}
 }

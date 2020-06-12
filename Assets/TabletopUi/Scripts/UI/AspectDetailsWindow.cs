@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Core.Entities;
 using TabletopUi.Scripts.UI;
 
 namespace Assets.CS.TabletopUI {

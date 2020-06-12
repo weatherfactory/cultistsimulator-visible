@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Assets.Core;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;

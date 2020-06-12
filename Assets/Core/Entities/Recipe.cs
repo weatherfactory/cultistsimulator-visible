@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 
 public class RequirementValue
 {
@@ -25,7 +26,7 @@ public enum PortalEffect
 /// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
 /// </summary>
 [Serializable]
-public class Recipe
+public class Recipe: IEntity
 {
     private string _description="";
     private string _startDescription="";
@@ -36,7 +37,7 @@ public class Recipe
     public Dictionary<string, string> TableReqs { get; set; }
     public Dictionary<string, string> ExtantReqs { get; set; }
     public Dictionary<string, string> Effects { get; set; }
-    public AspectsDictionary Aspects { get; set; }
+    public AspectsDictionary Aspects { get; set; } 
     public List<MutationEffect> MutationEffects { get; set; }
     /// <summary>
     /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.

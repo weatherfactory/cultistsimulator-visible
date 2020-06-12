@@ -10,6 +10,17 @@ namespace Assets.Core.Fucine
 
 {
 
+    [AttributeUsage(AttributeTargets.Class)]
+    public class FucineImport : System.Attribute
+    {
+        public string TaggedAs { get; }
+
+        public FucineImport(string taggedAs)
+        {
+            TaggedAs = taggedAs;
+        }
+    }
+
 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineInt: System.Attribute

@@ -7,7 +7,7 @@ using Assets.Core.Fucine;
 
 namespace Assets.Core.Interfaces
 {
-    public interface IEntity
+    public interface  IEntity
     {
         string Id { get; set; }
     }

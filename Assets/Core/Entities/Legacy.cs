@@ -13,6 +13,7 @@ namespace Assets.Core.Entities
     /// <summary>
     /// A specification for an effect available to the player after a game completes, which determines the starting situation of the next character.
     /// </summary>
+    [FucineImport("legacies")]
     public class Legacy:IEntity
     {
         [FucineId]

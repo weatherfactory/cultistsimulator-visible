@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

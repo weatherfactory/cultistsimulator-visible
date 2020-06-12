@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Core.Entities;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 

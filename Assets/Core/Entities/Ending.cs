@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
@@ -14,7 +15,7 @@ namespace Assets.Core.Entities
         Vile=4
     }
 
-    public class Ending
+    public class Ending:IEntity
     {
         public string Id { get; set; }
         public string Title { get; set; }
@@ -22,7 +23,6 @@ namespace Assets.Core.Entities
         public string ImageId { get; set; }
         public EndingFlavour EndingFlavour { get; set; }
         public string Anim { get; set; }
-        public string GivesLegacyId { get; set; }
         public string AchievementId { get; set; }
 
 

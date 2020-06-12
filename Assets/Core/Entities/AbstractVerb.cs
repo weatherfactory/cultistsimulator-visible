@@ -6,10 +6,9 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 
 
-/// <summary>
-/// just a bundle of properties
-/// </summary>
-    public abstract class AbstractVerb : IVerb,IEntity
+
+
+public abstract class AbstractVerb : IVerb,IEntity
 {
     
     [FucineId]

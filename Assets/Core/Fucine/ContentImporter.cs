@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -22,6 +23,7 @@ using Newtonsoft.Json;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
 using OrbCreationExtensions;
+using UnityEngine.UIElements;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -990,51 +992,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         foreach (Hashtable h in verbsArrayList)
         {
             IVerb v = (IVerb) verbWalker.PopulateWith(h);
-            Hashtable htThisSlot = h.GetHashtable("slot");
-            string slotId = htThisSlot[NoonConstants.KID].ToString();
-
-            SlotSpecification slotSpecification = new SlotSpecification(slotId);
-            //try
-            //{
-            //    if (htThisSlot[NoonConstants.KLABEL] != null)
-            //        slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
-
-            //    if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
-            //        slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
-
-            //    if ((string)htThisSlot[NoonConstants.KGREEDY] == "true")
-            //        slotSpecification.Greedy = true;
-
-            //    if ((string)htThisSlot[NoonConstants.KCONSUMES] == "true")
-            //        slotSpecification.Consumes = true;
-
-
-            //    if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
-            //        slotSpecification.NoAnim = true;
-
-            //    if (htThisSlot[NoonConstants.KACTIONID] != null)
-            //        slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
-
-
-            //    Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
-            //    if (htRequired != null)
-            //    {
-            //        foreach (string rk in htRequired.Keys)
-            //            slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
-            //    }
-
-            //    Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
-            //    if (htForbidden != null)
-            //    {
-            //        foreach (string fk in htForbidden.Keys)
-            //            slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
-            //}
-
 
             Verbs.Add(v.Id, v);
         }
@@ -1728,54 +1685,95 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         try
         {
             _compendium = compendium;
-            ArrayList alVerbs = GetContentItems(CONST_VERBS);
+            //ArrayList alVerbs = GetContentItems(CONST_VERBS);
             ArrayList alElements = GetContentItems(CONST_ELEMENTS);
             
-            ArrayList alDeckSpecs = GetContentItems(CONST_DECKS);
+            //ArrayList alDeckSpecs = GetContentItems(CONST_DECKS);
             ArrayList alRecipes = GetContentItems(CONST_RECIPES);
-            ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
+            //ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
             ArrayList alEndings = GetContentItems(CONST_ENDINGS);
 
             if (_logger.GetMessages().Any(m=>m.MessageLevel>1))
                 //at least one file is broken. Bug out and report.
                 return _logger.GetMessages();
 
-            ImportVerbs(alVerbs);
-        ImportElements(alElements);
-        ImportDeckSpecs(alDeckSpecs);
-        ImportRecipes(alRecipes);
-        ImportLegacies(alLegacies);
-		ImportEndings(alEndings);
+            var assembly = Assembly.GetExecutingAssembly();
+
+            List<Type> importableTypes =new List<Type>();
+
+            foreach (Type t in assembly.GetTypes())
+            {
+                FucineImport importAttribute = (FucineImport) t.GetCustomAttribute(typeof(FucineImport), false);
+                
+                if(importAttribute!=null)
+                {
+                    importableTypes.Add(t);
+                    if(!t.GetInterfaces().Contains(typeof(IEntity)))
+                        _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
+                    ArrayList al = GetContentItems(importAttribute.TaggedAs);
+
+                    foreach (Hashtable h in al)
+                    {
+                        FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
+
+                        IEntity entity = (IEntity)w.PopulateWith(h);
+
+                        if(entity is IVerb v)
+                            Verbs.Add(v.Id, v);
+
+                        else if (entity is Legacy l)
+                            Legacies.Add(l.Id, l);
+
+                        else if (entity is DeckSpec d)
+                            DeckSpecs.Add(d.Id, d);
+
+                        else if (entity is Element el)
+                            Elements.Add(el.Id, el);
+
+                        else if(entity is Recipe r)
+                            Recipes.Add(r);
+                    }
+                }
+            }
 
 
 
-        //I'm not sure why I use fields rather than local variables returned from the import methods?
-        //that might be something to tidy up; I suspect it's left from an early design
+            //    ImportVerbs(alVerbs);
+            ImportElements(alElements);
+            // ImportDeckSpecs(alDeckSpecs);
+            ImportRecipes(alRecipes);
+            // ImportLegacies(alLegacies);
+            ImportEndings(alEndings);
 
-        _compendium.UpdateRecipes(Recipes);
-        _compendium.UpdateElements(Elements);
-        _compendium.UpdateVerbs(Verbs);
-        _compendium.UpdateDeckSpecs(DeckSpecs);
-        _compendium.UpdateLegacies(Legacies);
-		_compendium.UpdateEndings(Endings);
 
-foreach(var d in _compendium.GetAllDeckSpecs())
-    d.RegisterUniquenessGroups(_compendium);
+
+            //I'm not sure why I use fields rather than local variables returned from the import methods?
+            //that might be something to tidy up; I suspect it's left from an early design
+
+            _compendium.UpdateRecipes(Recipes);
+            _compendium.UpdateElements(Elements);
+            _compendium.UpdateVerbs(Verbs);
+            _compendium.UpdateDeckSpecs(DeckSpecs);
+            _compendium.UpdateLegacies(Legacies);
+            _compendium.UpdateEndings(Endings);
+
+            foreach(var d in _compendium.GetAllDeckSpecs())
+                d.RegisterUniquenessGroups(_compendium);
 
 
 #if DEBUG
-        CountWords();
-        LogMissingImages();
-        LogFnords();
+            CountWords();
+            LogMissingImages();
+            LogFnords();
 
-        foreach (var kvp in DeckSpecs)
-        {
-            foreach (var c in kvp.Value.Spec)
+            foreach (var kvp in DeckSpecs)
             {
-                if (!c.Contains(NoonConstants.DECK_PREFIX))
-                    LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
+                foreach (var c in kvp.Value.Spec)
+                {
+                    if (!c.Contains(NoonConstants.DECK_PREFIX))
+                        LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
+                }
             }
-        }
 
 #endif
         }

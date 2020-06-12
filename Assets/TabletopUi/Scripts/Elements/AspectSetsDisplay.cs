@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Core;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
