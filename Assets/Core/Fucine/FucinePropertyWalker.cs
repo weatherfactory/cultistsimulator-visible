@@ -67,7 +67,7 @@ namespace Assets.Core.Fucine
                         PopulateFloat(htEntityValues, entityProperty, entityToPopulate, floatProp);
                     }
 
-                    else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is FucineList lProp)
+                    else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListGeneric)) is FucineListGeneric lProp)
                     {
                         PopulateList(htEntityValues, entityProperty, entityToPopulate, lProp);
                     }
@@ -190,7 +190,7 @@ namespace Assets.Core.Fucine
         //}
 
 
-        private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineList lProp)
+        private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
         {
             if (htEntityValues.ContainsKey(entityProperty.Name))
             {

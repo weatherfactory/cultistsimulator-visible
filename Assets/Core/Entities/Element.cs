@@ -73,7 +73,7 @@ namespace Assets.Core.Entities
         [FucineAspectsDictionary]
         public IAspectsDictionary Aspects { get; set; }
 
-       [FucineList(typeof(SlotSpecification))]
+       [FucineListGeneric(typeof(SlotSpecification))]
         public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
