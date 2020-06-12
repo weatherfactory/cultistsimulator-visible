@@ -1608,7 +1608,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
       //  {
             _compendium = compendium;
             //ArrayList alVerbs = GetContentItems(CONST_VERBS);
-            ArrayList alElements = GetContentItems(CONST_ELEMENTS);
+         //   ArrayList alElements = GetContentItems(CONST_ELEMENTS);
             
             //ArrayList alDeckSpecs = GetContentItems(CONST_DECKS);
             ArrayList alRecipes = GetContentItems(CONST_RECIPES);
@@ -1633,9 +1633,12 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                     foreach (Hashtable h in al)
                     {
+                        Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+
+
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntity entity = (IEntity)w.PopulateWith(h);
+                        IEntity entity = (IEntity)w.PopulateWith(caseInsensitiveH);
 
                         if(entity is IVerb v)
                             Verbs.Add(v.Id, v);

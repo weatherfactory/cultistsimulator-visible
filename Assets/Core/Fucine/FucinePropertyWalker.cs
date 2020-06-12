@@ -67,6 +67,11 @@ namespace Assets.Core.Fucine
                         PopulateFloat(htEntityValues, entityProperty, entityToPopulate, floatProp);
                     }
 
+                    else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is FucineList lProp)
+                    {
+                        PopulateList(htEntityValues, entityProperty, entityToPopulate, lProp);
+                    }
+
 
                     else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListString)) is FucineListString lsProp)
                     {
@@ -104,17 +109,15 @@ namespace Assets.Core.Fucine
             return entityToPopulate;
         }
 
-
-
         private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanationProperty emanationProp)
         {
 
-
-            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            string entityPropertyName=entityProperty.Name.ToLowerInvariant();
+            if (htEntityValues.ContainsKey(entityPropertyName))
             {
                 FucinePropertyWalker emanationWalker=new FucinePropertyWalker(_logger,emanationProp.ObjectType);
                 
-                var subEntity = emanationWalker.PopulateWith(htEntityValues);
+                var subEntity = emanationWalker.PopulateWith(htEntityValues.GetHashtable(entityPropertyName));
 
                 entityProperty.SetValue(entityToPopulate,subEntity);
             }
@@ -185,6 +188,29 @@ namespace Assets.Core.Fucine
             else
                 entityProperty.SetValue(entityToPopulate, lsProp.DefaultValue);
         }
+
+
+        private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineList lProp)
+        {
+            if (htEntityValues.ContainsKey(entityProperty.Name.ToLowerInvariant()))
+            {
+                ArrayList al = htEntityValues.GetArrayList(entityProperty.Name.ToLowerInvariant());
+                Type listType = typeof(List<>);
+
+                Type[] typeArgs = { lProp.MemberType };
+
+                Type constructedType = listType.MakeGenericType(typeArgs);
+
+              dynamic  list = Activator.CreateInstance(constructedType);
+              foreach (object o in al)
+                  list.Add(o);
+
+                entityProperty.SetValue(entityToPopulate, list);
+            }
+            else
+                entityProperty.SetValue(entityToPopulate, lProp.DefaultValue);
+        }
+
 
         private void PopulateDictStringString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineDictStringString dssProp, PropertyInfo[] entityProperties)
@@ -278,5 +304,8 @@ namespace Assets.Core.Fucine
                 entityProperty.SetValue(entityToPopulate, aspectsProp.DefaultValue);
             }
         }
+
+
+
     }
 }

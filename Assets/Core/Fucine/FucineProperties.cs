@@ -91,6 +91,30 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
+    public class FucineList : System.Attribute
+    {
+       public dynamic DefaultValue { get; private set; }
+        public Type MemberType { get; private set; }
+
+
+        public FucineList(Type memberType)
+        {
+            Type listType = typeof(List<>);
+
+            Type[] typeArgs = {memberType};
+
+            Type constructedType = listType.MakeGenericType(typeArgs);
+
+            DefaultValue = Activator.CreateInstance(constructedType);
+
+            MemberType = memberType;
+
+        }
+
+    }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
     public class FucineListString : System.Attribute
     {
         public List<string> DefaultValue { get;  }
