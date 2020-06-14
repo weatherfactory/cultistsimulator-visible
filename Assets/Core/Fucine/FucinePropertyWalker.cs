@@ -69,7 +69,7 @@ namespace Assets.Core.Fucine
 
                     else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListGeneric)) is FucineListGeneric lProp)
                     {
-                        PopulateList(htEntityValues, entityProperty, entityToPopulate, lProp);
+                        PopulateListGeneric(htEntityValues, entityProperty, entityToPopulate, lProp);
                     }
 
 
@@ -123,8 +123,9 @@ namespace Assets.Core.Fucine
             }
             else
             {
-                _logger.LogProblem("Couldn't find a mandatory property (tho we may later allow non-mandatory options) for a " + _entityType.Name + " " +
-                                   entityToPopulate.Id + ": " + entityProperty.Name);
+                entityProperty.SetValue(entityToPopulate,emanationProp.DefaultValue);
+              //  _logger.LogProblem("Couldn't find a mandatory property (tho we may later allow non-mandatory options) for a " + _entityType.Name + " " +
+               //                    entityToPopulate.Id + ": " + entityProperty.Name);
             }
 
         }
@@ -173,24 +174,8 @@ namespace Assets.Core.Fucine
                 entityProperty.SetValue(entityToPopulate, floatProp.DefaultValue);
         }
 
-        //private static void PopulateListString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-        //    FucineListString lsProp)
-        //{
-        //    if (htEntityValues.ContainsKey(entityProperty.Name))
-        //    {
-        //        ArrayList alStringList = htEntityValues.GetArrayList(entityProperty.Name);
-        //        List<string> stringList = new List<string>();
-        //        foreach (string s in alStringList)
-        //            stringList.Add(s);
 
-        //        entityProperty.SetValue(entityToPopulate, stringList);
-        //    }
-        //    else
-        //        entityProperty.SetValue(entityToPopulate, lsProp.DefaultValue);
-        //}
-
-
-        private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
+        private void PopulateListGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
         {
             if (htEntityValues.ContainsKey(entityProperty.Name))
             {
@@ -205,7 +190,7 @@ namespace Assets.Core.Fucine
               foreach (var o in al)
               {
                   
-                  if(o is Hashtable h)
+                  if(o is Hashtable h) //if the arraylist contains hashtables
                   {
                       Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
                       FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, lProp.MemberType);
@@ -224,99 +209,132 @@ namespace Assets.Core.Fucine
                 entityProperty.SetValue(entityToPopulate, lProp.DefaultValue);
         }
 
+        //private void PopulateDictionaryGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate,
+        //    FucineDictionaryGeneric dProp)
+        //{
+        //    if(htEntityValues.ContainsKey(entityProperty.Name))
+        //    {
+        //        Hashtable h = htEntityValues.GetHashtable(entityProperty.Name);
+        //        Type dictionaryType = typeof(Dictionary<,>);
 
-        private void PopulateDictStringString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineDictStringString dssProp, PropertyInfo[] entityProperties)
-        {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
+        //        Type[] typeArgs = { dProp.KeyType,dProp.ValueType };
+
+        //        Type constructedType = dictionaryType.MakeGenericType(typeArgs);
+
+        //        IDictionary dictionary = Activator.CreateInstance(constructedType) as IDictionary;
+        //        foreach (var o in h)
+        //        {
+        //              if(o is Hashtable innerH) //if the arraylist contains hashtables
+        //              {
+        //                  Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(innerH);
+        //                  FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dProp.ValueType);
+        //                  IEntity subEntity = emanationWalker.PopulateWith(cih) as IEntity;
+        //                  if(subEntity==null)
+        //                      _logger.LogProblem($"Emanation {dProp.ValueType.Name} is being added to a Fucine dictionary, but isn't an entity so doesn't have a FucineId" );
+
+        //                  dictionary.Add(subEntity.Id,subEntity);
+        //              }
+        //              else
+        //              {
+        //                  list.Add(o); //This might not work for things that aren't strings?
+        //              }
+        //        }
+
+        //    }
+
+
+            private void PopulateDictStringString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
+                FucineDictStringString dssProp, PropertyInfo[] entityProperties)
             {
-                var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
-                Dictionary<string, string> dictEntries =
-                    NoonUtility.HashtableToStringStringDictionary(htEntries);
-                entityProperty.SetValue(entityToPopulate, dictEntries);
-
-                if (dssProp.KeyMustExistIn != null)
+                if (htEntityValues.ContainsKey(entityProperty.Name))
                 {
-                    var mustExistInProperty =
-                        entityProperties.SingleOrDefault(p => p.Name == dssProp.KeyMustExistIn);
-                    if (mustExistInProperty != null)
+                    var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
+                    Dictionary<string, string> dictEntries =
+                        NoonUtility.HashtableToStringStringDictionary(htEntries);
+                    entityProperty.SetValue(entityToPopulate, dictEntries);
+
+                    if (dssProp.KeyMustExistIn != null)
                     {
-                        foreach (var key in dictEntries.Keys)
+                        var mustExistInProperty =
+                            entityProperties.SingleOrDefault(p => p.Name == dssProp.KeyMustExistIn);
+                        if (mustExistInProperty != null)
                         {
-                            List<string> acceptableKeys =
-                                mustExistInProperty.GetValue(entityToPopulate) as List<string>;
+                            foreach (var key in dictEntries.Keys)
+                            {
+                                List<string> acceptableKeys =
+                                    mustExistInProperty.GetValue(entityToPopulate) as List<string>;
 
-                            if (acceptableKeys == null)
-                                _logger.LogProblem(
-                                    $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                if (acceptableKeys == null)
+                                    _logger.LogProblem(
+                                        $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
-                            if (!acceptableKeys.Contains(key))
-                                _logger.LogProblem(
-                                    $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                if (!acceptableKeys.Contains(key))
+                                    _logger.LogProblem(
+                                        $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                            }
+                        }
+                        else
+                        {
+                            _logger.LogProblem(
+                                $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {dssProp.KeyMustExistIn}, but that property doesn't exist.");
                         }
                     }
-                    else
+                }
+                else
+                {
+                    entityProperty.SetValue(entityToPopulate, dssProp.DefaultValue);
+                }
+            }
+
+            private void PopulateAspectsDictionary(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
+                FucineAspectsDictionary aspectsProp, PropertyInfo[] entityProperties)
+            {
+                if (htEntityValues.ContainsKey(entityProperty.Name))
+                {
+                    var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
+
+                    IAspectsDictionary aspects = new AspectsDictionary();
+
+                    foreach (string k in htEntries.Keys)
                     {
-                        _logger.LogProblem(
-                            $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {dssProp.KeyMustExistIn}, but that property doesn't exist.");
+                        aspects.Add(k, Convert.ToInt32(htEntries[k]));
                     }
-                }
-            }
-            else
-            {
-                entityProperty.SetValue(entityToPopulate, dssProp.DefaultValue);
-            }
-        }
 
-        private void PopulateAspectsDictionary(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineAspectsDictionary aspectsProp, PropertyInfo[] entityProperties)
-        {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-            {
-                var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
-
-                IAspectsDictionary aspects = new AspectsDictionary();
-
-                foreach (string k in htEntries.Keys)
-                {
-                    aspects.Add(k, Convert.ToInt32(htEntries[k]));
-                }
-
-                entityProperty.SetValue(entityToPopulate, aspects);
+                    entityProperty.SetValue(entityToPopulate, aspects);
 
 
-                if (aspectsProp.KeyMustExistIn != null)
-                {
-                    var mustExistInProperty =
-                        entityProperties.SingleOrDefault(p => p.Name == aspectsProp.KeyMustExistIn);
-                    if (mustExistInProperty != null)
+                    if (aspectsProp.KeyMustExistIn != null)
                     {
-                        foreach (var key in htEntries.Keys)
+                        var mustExistInProperty =
+                            entityProperties.SingleOrDefault(p => p.Name == aspectsProp.KeyMustExistIn);
+                        if (mustExistInProperty != null)
                         {
-                            List<string> acceptableKeys =
-                                mustExistInProperty.GetValue(entityToPopulate) as List<string>;
+                            foreach (var key in htEntries.Keys)
+                            {
+                                List<string> acceptableKeys =
+                                    mustExistInProperty.GetValue(entityToPopulate) as List<string>;
 
-                            if (acceptableKeys == null)
-                                _logger.LogProblem(
-                                    $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                if (acceptableKeys == null)
+                                    _logger.LogProblem(
+                                        $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
-                            if (!acceptableKeys.Contains(key))
-                                _logger.LogProblem(
-                                    $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                if (!acceptableKeys.Contains(key))
+                                    _logger.LogProblem(
+                                        $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                            }
+                        }
+                        else
+                        {
+                            _logger.LogProblem(
+                                $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {aspectsProp.KeyMustExistIn}, but that property doesn't exist.");
                         }
                     }
-                    else
-                    {
-                        _logger.LogProblem(
-                            $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {aspectsProp.KeyMustExistIn}, but that property doesn't exist.");
-                    }
+                }
+                else
+                {
+                    entityProperty.SetValue(entityToPopulate, aspectsProp.DefaultValue);
                 }
             }
-            else
-            {
-                entityProperty.SetValue(entityToPopulate, aspectsProp.DefaultValue);
-            }
-        }
 
 
 

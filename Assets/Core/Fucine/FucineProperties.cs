@@ -10,6 +10,7 @@ namespace Assets.Core.Fucine
 
 {
 
+
     [AttributeUsage(AttributeTargets.Class)]
     public class FucineImport : System.Attribute
     {
@@ -22,8 +23,25 @@ namespace Assets.Core.Fucine
     }
 
 
+    public abstract class FucineEntityProperty : System.Attribute
+    {
+
+    }
+
+
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineInt: System.Attribute
+    public class FucineId : FucineEntityProperty
+    {
+
+        public FucineId()
+        {
+        }
+
+    }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineInt: FucineEntityProperty
     {
         public int DefaultValue { get;  }
 
@@ -34,18 +52,10 @@ namespace Assets.Core.Fucine
         
     }
 
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineId : System.Attribute
-    {
-
-        public FucineId()
-        {
-        }
-
-    }
+ 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineString : System.Attribute
+    public class FucineString : FucineEntityProperty
     {
         public  string DefaultValue { get;  }
 
@@ -67,7 +77,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineBool : System.Attribute
+    public class FucineBool : FucineEntityProperty
     {
         public bool DefaultValue { get;  }
 
@@ -79,7 +89,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineFloat : System.Attribute
+    public class FucineFloat : FucineEntityProperty
     {
         public float DefaultValue { get; }
 
@@ -91,7 +101,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineListGeneric : System.Attribute
+    public class FucineListGeneric : FucineEntityProperty
     {
        public dynamic DefaultValue { get; private set; }
         public Type MemberType { get; private set; }
@@ -113,22 +123,34 @@ namespace Assets.Core.Fucine
 
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineDictionaryGeneric : FucineEntityProperty
+    {
+        public dynamic DefaultValue { get; private set; }
+        public Type KeyType { get; private set; }
+        public Type ValueType { get; private set; }
 
-    //[AttributeUsage(AttributeTargets.Property)]
-    //public class FucineListString : System.Attribute
-    //{
-    //    public List<string> DefaultValue { get;  }
-    //    public string MustExistIn { get; set; }
 
-    //    public FucineListString()
-    //    {
-    //        DefaultValue = new List<string>();
-    //    }
+        public FucineDictionaryGeneric(Type keyType,Type valueType)
+        {
+            Type dictionaryType = typeof(Dictionary<,>);
 
-    //}
+            Type[] typeArgs = { keyType, valueType };
+
+            Type constructedType = dictionaryType.MakeGenericType(typeArgs);
+
+            DefaultValue = Activator.CreateInstance(constructedType);
+
+            KeyType = keyType;
+            ValueType = valueType;
+
+        }
+
+    }
+
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineAspectsDictionary : System.Attribute
+    public class FucineAspectsDictionary : FucineEntityProperty
     {
         public IAspectsDictionary DefaultValue { get; }
         public string KeyMustExistIn { get; set; }
@@ -143,7 +165,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictStringString : System.Attribute
+    public class FucineDictStringString : FucineEntityProperty
     {
         public Dictionary<string,string> DefaultValue { get; }
         public string KeyMustExistIn { get; set; }
@@ -158,9 +180,11 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineEmanationProperty : System.Attribute
+    public class FucineEmanationProperty : FucineEntityProperty
     {
         public Type ObjectType { get; }
+        public object DefaultValue => null;
+
 
         public FucineEmanationProperty(Type objectType)
         {
