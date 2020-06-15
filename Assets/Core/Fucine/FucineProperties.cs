@@ -23,7 +23,7 @@ namespace Assets.Core.Fucine
     }
 
 
-    public abstract class FucineEntityProperty : System.Attribute
+    public abstract class FucinePropertyAttribute : System.Attribute
     {
         public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
         public Type ObjectType { get; protected set; }
@@ -32,7 +32,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineId : FucineEntityProperty
+    public class FucineId : FucinePropertyAttribute
     {
 
         public FucineId()
@@ -44,7 +44,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineInt: FucineEntityProperty
+    public class FucineInt: FucinePropertyAttribute
     {
 
         public FucineInt(int defaultValue)
@@ -58,7 +58,7 @@ namespace Assets.Core.Fucine
  
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineString : FucineEntityProperty
+    public class FucineString : FucinePropertyAttribute
     {
 
         public FucineString()
@@ -80,7 +80,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineBool : FucineEntityProperty
+    public class FucineBool : FucinePropertyAttribute
     {
 
         public FucineBool(bool defaultValue)
@@ -92,7 +92,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineFloat : FucineEntityProperty
+    public class FucineFloat : FucinePropertyAttribute
     {
 
         public FucineFloat(float defaultValue)
@@ -104,7 +104,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineListGeneric : FucineEntityProperty
+    public class FucineListGeneric : FucinePropertyAttribute
     {
         public Type MemberType { get; private set; }
 
@@ -126,7 +126,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictionaryGeneric : FucineEntityProperty
+    public class FucineDictionaryGeneric : FucinePropertyAttribute
     {
         public Type KeyType { get; private set; }
         public Type ValueType { get; private set; }
@@ -151,7 +151,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineAspectsDictionary : FucineEntityProperty
+    public class FucineAspectsDictionary : FucinePropertyAttribute
     {
         public string KeyMustExistIn { get; set; }
         public FucineAspectsDictionary()
@@ -163,7 +163,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictStringString : FucineEntityProperty
+    public class FucineDictStringString : FucinePropertyAttribute
     {
         public string KeyMustExistIn { get; set; }
 
@@ -176,10 +176,10 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineEmanationProperty : FucineEntityProperty
+    public class FucineEmanationPropertyAttribute : FucinePropertyAttribute
     {
         
-        public FucineEmanationProperty(Type objectType)
+        public FucineEmanationPropertyAttribute(Type objectType)
         {
             ObjectType = objectType;
 

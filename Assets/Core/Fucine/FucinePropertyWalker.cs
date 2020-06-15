@@ -34,19 +34,21 @@ namespace Assets.Core.Fucine
 
             foreach (var entityProperty in entityProperties)
             {
+                if(Attribute.GetCustomAttribute(entityProperty,typeof(FucinePropertyAttribute)) is FucinePropertyAttribute fucinePropertyAttribute)
+                {
+                    if (htEntityData.ContainsKey(entityProperty.Name))
+                        PopulateProperty(htEntityData, entityProperty, entityToPopulate, entityProperties,fucinePropertyAttribute);
 
-                if (htEntityData.ContainsKey(entityProperty.Name))
-                    PopulateProperty(htEntityData, entityProperty, entityToPopulate, entityProperties);
-
-                else
-                   NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, entityProperties);
+                    else
+                        NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, entityProperties);
+                }
             }
 
             return entityToPopulate;
         }
 
         private void PopulateProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
-            PropertyInfo[] entityProperties)
+            PropertyInfo[] entityProperties,FucinePropertyAttribute fucinePropertyAttribute)
         {
             try
             {
@@ -84,15 +86,15 @@ namespace Assets.Core.Fucine
                         entityProperties);
                 }
 
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineEmanationProperty)) is
-                    FucineEmanationProperty objectProp)
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineEmanationPropertyAttribute)) is
+                    FucineEmanationPropertyAttribute objectProp)
                 {
                     PopulateEmanationProperty(htEntityValues, entityProperty, entityToPopulate, objectProp);
                 }
 
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineEntityProperty)) is FucineEntityProperty eProp)
+                else
                 {
-                    TypeConverter typeConverter = TypeDescriptor.GetConverter(eProp.ObjectType);
+                    TypeConverter typeConverter = TypeDescriptor.GetConverter(fucinePropertyAttribute.ObjectType);
 
                     entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
                 }
@@ -104,35 +106,6 @@ namespace Assets.Core.Fucine
             }
         }
 
-
-        private void PopulateString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineString stringProp)
-        {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(stringProp.ObjectType);
-
-                    entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
-        }
-
-        private static void PopulateBool(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineBool boolProp)
-        {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(boolProp.ObjectType);
-            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
-        }
-
-        private static void PopulateInt(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
-            FucineInt intProp)
-        {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(intProp.ObjectType);
-            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
-        }
-
-
-        private void PopulateFloat(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineFloat floatProp)
-        {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(floatProp.ObjectType);
-            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
-        }
 
 
         private void PopulateListGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
@@ -166,7 +139,7 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanationProperty emanationProp)
+        private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanationPropertyAttribute emanationProp)
         {
 
             string entityPropertyName = entityProperty.Name;
@@ -272,7 +245,7 @@ namespace Assets.Core.Fucine
 
                 else
                 {
-                    FucineEntityProperty feProp=Attribute.GetCustomAttribute(entityProperty,typeof(FucineEntityProperty)) as FucineEntityProperty;
+                    FucinePropertyAttribute feProp=Attribute.GetCustomAttribute(entityProperty,typeof(FucinePropertyAttribute)) as FucinePropertyAttribute;
                     if(feProp!=null) // can we use LINQ or something to 
                         entityProperty.SetValue(entityToPopulate, feProp.DefaultValue);
                 }
