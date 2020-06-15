@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
                         PopulateProperty(htEntityData, entityProperty, entityToPopulate, entityProperties,fucinePropertyAttribute);
 
                     else
-                        NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, entityProperties);
+                        NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, fucinePropertyAttribute);
                 }
             }
 
@@ -94,7 +94,8 @@ namespace Assets.Core.Fucine
 
                 else
                 {
-                    TypeConverter typeConverter = TypeDescriptor.GetConverter(fucinePropertyAttribute.ObjectType);
+                    //TypeConverter typeConverter = TypeDescriptor.GetConverter(fucinePropertyAttribute.ObjectType);
+                    TypeConverter typeConverter = TypeDescriptor.GetConverter(entityProperty.PropertyType);
 
                     entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
                 }
@@ -233,7 +234,7 @@ namespace Assets.Core.Fucine
         }
 
         private void NotSpecifiedProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
-            PropertyInfo[] entityProperties)
+           FucinePropertyAttribute attr)
         {
             try
             {
@@ -245,9 +246,7 @@ namespace Assets.Core.Fucine
 
                 else
                 {
-                    FucinePropertyAttribute feProp=Attribute.GetCustomAttribute(entityProperty,typeof(FucinePropertyAttribute)) as FucinePropertyAttribute;
-                    if(feProp!=null) // can we use LINQ or something to 
-                        entityProperty.SetValue(entityToPopulate, feProp.DefaultValue);
+                    entityProperty.SetValue(entityToPopulate, attr.DefaultValue);
                 }
 
             }
