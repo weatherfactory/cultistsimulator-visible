@@ -124,46 +124,31 @@ namespace Assets.Core.Fucine
         private void PopulateString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineString stringProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name));
-            else
-            {
-                    entityProperty.SetValue(entityToPopulate, stringProp.DefaultValue);
-            }
+                    entityProperty.SetValue(entityToPopulate, htEntityValues.GetString(entityProperty.Name));
         }
 
         private static void PopulateBool(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineBool boolProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
                 entityProperty.SetValue(entityToPopulate, htEntityValues.GetBool(entityProperty.Name));
-            else
-                entityProperty.SetValue(entityToPopulate, boolProp.DefaultValue);
         }
 
         private static void PopulateInt(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineInt intProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
                 entityProperty.SetValue(entityToPopulate, htEntityValues.GetInt(entityProperty.Name));
-            else
-                entityProperty.SetValue(entityToPopulate, intProp.DefaultValue);
         }
 
 
         private void PopulateFloat(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineFloat floatProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
                 entityProperty.SetValue(entityToPopulate, htEntityValues.GetFloat(entityProperty.Name));
-            else
-                entityProperty.SetValue(entityToPopulate, floatProp.DefaultValue);
         }
 
 
         private void PopulateListGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-            {
+
                 ArrayList al = htEntityValues.GetArrayList(entityProperty.Name);
                 Type listType = typeof(List<>);
 
@@ -189,37 +174,24 @@ namespace Assets.Core.Fucine
                 }
 
                 entityProperty.SetValue(entityToPopulate, list);
-            }
-            else
-                entityProperty.SetValue(entityToPopulate, lProp.DefaultValue);
+
         }
 
         private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanationProperty emanationProp)
         {
 
             string entityPropertyName = entityProperty.Name;
-            if (htEntityValues.ContainsKey(entityPropertyName))
-            {
                 FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, emanationProp.ObjectType);
 
                 var subEntity = emanationWalker.PopulateEntityWith(htEntityValues.GetHashtable(entityPropertyName));
 
                 entityProperty.SetValue(entityToPopulate, subEntity);
-            }
-            else
-            {
-                entityProperty.SetValue(entityToPopulate, emanationProp.DefaultValue);
-                //  _logger.LogProblem("Couldn't find a mandatory property (tho we may later allow non-mandatory options) for a " + _entityType.Name + " " +
-                //                    entityToPopulate.Id + ": " + entityProperty.Name);
-            }
 
         }
 
         private void PopulateDictStringString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
               FucineDictStringString dssProp, PropertyInfo[] entityProperties)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-            {
                 var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
                 Dictionary<string, string> dictEntries =
                     NoonUtility.HashtableToStringStringDictionary(htEntries);
@@ -251,19 +223,12 @@ namespace Assets.Core.Fucine
                             $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {dssProp.KeyMustExistIn}, but that property doesn't exist.");
                     }
                 }
-            }
-            else
-            {
-                entityProperty.SetValue(entityToPopulate, dssProp.DefaultValue);
-            }
         }
 
         private void PopulateAspectsDictionary(Hashtable htEntityValues, PropertyInfo entityProperty,
             IEntity entityToPopulate,
             FucineAspectsDictionary aspectsProp, PropertyInfo[] entityProperties)
         {
-            if (htEntityValues.ContainsKey(entityProperty.Name))
-            {
                 var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
 
                 IAspectsDictionary aspects = new AspectsDictionary();
@@ -302,23 +267,18 @@ namespace Assets.Core.Fucine
                             $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {aspectsProp.KeyMustExistIn}, but that property doesn't exist.");
                     }
                 }
-            }
-            else
-            {
-                entityProperty.SetValue(entityToPopulate, aspectsProp.DefaultValue);
-            }
 
         }
 
-    private void NotSpecifiedProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
-        PropertyInfo[] entityProperties)
+        private void NotSpecifiedProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
+            PropertyInfo[] entityProperties)
         {
             try
             {
                 if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId)
                 {
 
-                        _logger.LogProblem("ID not specified for a " + _entityType.Name);
+                    _logger.LogProblem("ID not specified for a " + _entityType.Name);
                 }
 
                 else
@@ -326,8 +286,6 @@ namespace Assets.Core.Fucine
                     FucineEntityProperty feProp=Attribute.GetCustomAttribute(entityProperty,typeof(FucineEntityProperty)) as FucineEntityProperty;
                     if(feProp!=null) // can we use LINQ or something to 
                         entityProperty.SetValue(entityToPopulate, feProp.DefaultValue);
-
-
                 }
 
             }
