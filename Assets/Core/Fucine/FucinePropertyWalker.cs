@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -59,30 +60,6 @@ namespace Assets.Core.Fucine
                     }
                 }
 
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineString)) is FucineString
-                    stringProp)
-                {
-                    PopulateString(htEntityValues, entityProperty, entityToPopulate, stringProp);
-                }
-
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineBool)) is FucineBool boolProp
-                )
-                {
-                    PopulateBool(htEntityValues, entityProperty, entityToPopulate, boolProp);
-                }
-
-
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineInt)) is FucineInt intProp)
-                {
-                    PopulateInt(htEntityValues, entityProperty, entityToPopulate, intProp);
-                }
-
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineFloat)) is FucineFloat
-                    floatProp)
-                {
-                    PopulateFloat(htEntityValues, entityProperty, entityToPopulate, floatProp);
-                }
-
                 else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListGeneric)) is
                     FucineListGeneric lProp)
                 {
@@ -112,6 +89,13 @@ namespace Assets.Core.Fucine
                 {
                     PopulateEmanationProperty(htEntityValues, entityProperty, entityToPopulate, objectProp);
                 }
+
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineEntityProperty)) is FucineEntityProperty eProp)
+                {
+                    TypeConverter typeConverter = TypeDescriptor.GetConverter(eProp.ObjectType);
+
+                    entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
+                }
             }
             catch (Exception e)
             {
@@ -124,25 +108,30 @@ namespace Assets.Core.Fucine
         private void PopulateString(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineString stringProp)
         {
-                    entityProperty.SetValue(entityToPopulate, htEntityValues.GetString(entityProperty.Name));
+            TypeConverter typeConverter = TypeDescriptor.GetConverter(stringProp.ObjectType);
+
+                    entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
         }
 
         private static void PopulateBool(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineBool boolProp)
         {
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetBool(entityProperty.Name));
+            TypeConverter typeConverter = TypeDescriptor.GetConverter(boolProp.ObjectType);
+            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
         }
 
         private static void PopulateInt(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate,
             FucineInt intProp)
         {
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetInt(entityProperty.Name));
+            TypeConverter typeConverter = TypeDescriptor.GetConverter(intProp.ObjectType);
+            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
         }
 
 
         private void PopulateFloat(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineFloat floatProp)
         {
-                entityProperty.SetValue(entityToPopulate, htEntityValues.GetFloat(entityProperty.Name));
+            TypeConverter typeConverter = TypeDescriptor.GetConverter(floatProp.ObjectType);
+            entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
         }
 
 
