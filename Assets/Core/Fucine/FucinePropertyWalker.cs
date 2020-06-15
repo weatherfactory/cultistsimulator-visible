@@ -155,29 +155,47 @@ namespace Assets.Core.Fucine
 
             Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(htAllEntityValues.GetHashtable(entityProperty.Name));
             Type dictType = entityProperty.PropertyType;
-            Type dicttMemberType = dictType.GetGenericArguments()[1];
+            Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
             IDictionary dict = Activator.CreateInstance(dictType) as IDictionary;
 
-
-            foreach (object o in subHashtable)
+            //always and ever a string/string proposition - like DrawMessages
+            if (dictMemberType == typeof(string))
             {
-
-                if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                foreach (DictionaryEntry de in subHashtable)
                 {
-                    Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
-                    FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dicttMemberType);
-                    IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
-                    dict.Add(subEntity.Id, subEntity);
-
-                }
-                else
-                {
-                    var entry = (DictionaryEntry) o;
-                    dict.Add(entry.Key,entry.Value);
+                    dict.Add(de.Key, de.Value);
                 }
 
+            }
+            else
+            {
+                
+                foreach (object o in subHashtable)
+                {
+
+                    if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                    {
+                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType);
+                        IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
+                        dict.Add(subEntity.Id, subEntity);
+
+                    }
+                    else
+                    {
+                        DictionaryEntry de = (DictionaryEntry) o;
+                        Hashtable minimalHashtable=new Hashtable();
+                        minimalHashtable.Add(de.Key,de.Value);  //ah, this doesn't work because there's no way to connect eg: fatiguing:concentration to id: fatiguing, morphdetails type id: concentration. mapping needed!
+                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(minimalHashtable);
+                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType);
+                        IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
+                        dict.Add(subEntity.Id, subEntity);
+                    }
+
+
+                }
 
             }
 

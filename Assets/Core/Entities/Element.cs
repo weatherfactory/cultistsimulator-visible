@@ -87,7 +87,8 @@ namespace Assets.Core.Entities
         /// then the box would become an open_box regardless of what else happened in the recipe.
         /// XTriggers run *before* the rest of the recipe (so if the recipe affected open_box elements but not locked_box elements, those effects would take place if there was a Knock in the mix).
         /// </summary>
-        public Dictionary<string, List<MorphDetails>> XTriggers;
+        [FucineDict]
+        public Dictionary<string, List<MorphDetails>> XTriggers { get; set; }
 
         private string _icon;
 
@@ -190,40 +191,4 @@ namespace Assets.Core.Entities
     }
 
 
-    public class MorphDetails
-    {
-    
-
-        public string Id { get; private set; }
-
-        public int Chance { get; private set; }
-
-        public int Level { get; private set; }
-        public MorphEffectType MorphEffect { get; private set; }
-
-        public MorphDetails(string id)
-        {
-            Id = id;
-            Chance = 100;
-            MorphEffect = MorphEffectType.Transform;
-            Level = 1;
-
-        }
-
-        public MorphDetails(string id, int chance, MorphEffectType morphEffect,int level)
-        {
-            Id = id;
-            Chance = chance;
-            MorphEffect = morphEffect;
-            Level = level;
-
-        }
-    }
-
-    public enum MorphEffectType
-    {
-        Transform=1,
-        Spawn=2,
-        Mutate=3
-    }
 }
