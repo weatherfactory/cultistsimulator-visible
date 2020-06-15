@@ -75,10 +75,10 @@ namespace Assets.Core.Entities
         [FucineList]
         public List<string> Spec { get; set; }
 
-        [FucineDictStringString(KeyMustExistIn = "Spec")]
+        [FucineDict(KeyMustExistIn = "Spec")]
         public Dictionary<string,string> DrawMessages { get; set; }
 
-        [FucineDictStringString]
+        [FucineDict]
         public Dictionary<string, string> DefaultDrawMessages { get; set; }
 
 

@@ -188,7 +188,7 @@ public class Recipe: IEntity
 
 public class Expulsion
 {
- [FucineAspectsDictionary]
+ [FucineAspects]
     public AspectsDictionary Filter { get; set; }
     [FucineValue(1)]
     public int Limit { get; set; }
@@ -214,7 +214,7 @@ public class LinkedRecipeDetails:IEntity
     public bool Additional { get; set; }
 
 
-    [FucineDictStringString]
+    [FucineDict]
     public Dictionary<string, string> Challenges { get; set; }
 
     [FucineSubEntity(typeof(Expulsion))]

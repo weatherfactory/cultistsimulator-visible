@@ -46,7 +46,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool AvailableWithoutEndingMatch { get; set; }
 
-        [FucineAspectsDictionary]
+        [FucineAspects]
         public IAspectsDictionary Effects { get; set; }
 
         [FucineList]

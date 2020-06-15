@@ -85,76 +85,6 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineList : Fucine
     {
-        //public Type MemberType { get; private set; }
-
-
-        //public FucineList(Type memberType)
-        //{
-        //    Type listType = typeof(List<>);
-
-        //    Type[] typeArgs = {memberType};
-
-        //    Type constructedType = listType.MakeGenericType(typeArgs);
-
-        //    DefaultValue = Activator.CreateInstance(constructedType);
-
-        //    MemberType = memberType;
-
-        //}
-
-        public FucineList()
-        {
-
-        }
-
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictionaryGeneric : Fucine
-    {
-        public Type KeyType { get; private set; }
-        public Type ValueType { get; private set; }
-
-
-        public FucineDictionaryGeneric(Type keyType,Type valueType)
-        {
-            Type dictionaryType = typeof(Dictionary<,>);
-
-            Type[] typeArgs = { keyType, valueType };
-
-            Type constructedType = dictionaryType.MakeGenericType(typeArgs);
-
-            DefaultValue = Activator.CreateInstance(constructedType);
-
-            KeyType = keyType;
-            ValueType = valueType;
-
-        }
-
-    }
-
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineAspectsDictionary : Fucine
-    {
-        public string KeyMustExistIn { get; set; }
-        public FucineAspectsDictionary()
-        {
-            DefaultValue = new AspectsDictionary();
-        }
-
-    }
-
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictStringString : Fucine
-    {
-        public string KeyMustExistIn { get; set; }
-
-        public FucineDictStringString()
-        {
-            DefaultValue = new Dictionary<string, string>();
-        }
 
     }
 
@@ -165,6 +95,21 @@ namespace Assets.Core.Fucine
 
 
     }
+
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineAspects : Fucine
+    {
+        public string KeyMustExistIn { get; set; }
+        public FucineAspects()
+        {
+            DefaultValue = new AspectsDictionary();
+        }
+
+    }
+
+
+
 
 
     [AttributeUsage(AttributeTargets.Property)]

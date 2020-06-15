@@ -28,12 +28,12 @@ public class SlotSpecification:IEntity
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
-    [FucineAspectsDictionary]
+    [FucineAspects]
     public IAspectsDictionary Required { get; set; }
     /// <summary>
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
-    [FucineAspectsDictionary]
+    [FucineAspects]
     public IAspectsDictionary Forbidden { get; set; }
 
     /// <summary>

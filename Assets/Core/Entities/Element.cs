@@ -70,7 +70,7 @@ namespace Assets.Core.Entities
         [FucineValue(0)]
         public float Lifetime { get; set; }
 
-        [FucineAspectsDictionary]
+        [FucineAspects]
         public IAspectsDictionary Aspects { get; set; }
 
        [FucineList]
