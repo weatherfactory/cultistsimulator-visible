@@ -19,13 +19,13 @@ namespace Assets.Core.Entities
         [FucineId]
         public string Id { get; set; }
 
-        [FucineString]
+        [FucineValue("")]
         public string Label { get; set; }
 
-        [FucineString]
+        [FucineValue("")]
         public string Description { get; set;}
 
-        [FucineString]
+        [FucineValue("")]
         public string Icon
         {
             get
@@ -37,37 +37,37 @@ namespace Assets.Core.Entities
             set => _icon = value;
         }
 
-        [FucineString]
+        [FucineValue("")]
         public string OverrideVerbIcon { get; set; }
 
-        [FucineString]
+        [FucineValue("")]
         public string DecayTo { get; set; }
 
-        [FucineString]
+        [FucineValue("")]
         public string UniquenessGroup { get; set; }
 
 
         //if true, when the card decays it should become more, rather than less saturated with colour (eg Fatigue->Health)
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool Resaturate { get; set; }
 
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool IsAspect { get; set; }
 
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects. It will only work on aspect displays, anyhow
 
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool NoArtNeeded { get; set; }
 
         /// <summary>
         /// If a Unique element is created and another one exists in games, the first one should be quietly removed. When a unique element is created, all references to it should be removed from all decks.
         /// [Note: if a deck resets on exhaustion, the rest will add a new element. So ideally, whenever a card is drawn from a deck, it should be checked for existing uniqueness. Chris' Mansus-management deck is a good place to enforce this if it doesn't already do it..]
         /// </summary>
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool Unique { get; set; }
 
-        [FucineFloat(0)]
+        [FucineValue(0)]
         public float Lifetime { get; set; }
 
         [FucineAspectsDictionary]

@@ -22,28 +22,28 @@ namespace Assets.Core.Entities
         /// <summary>
         /// Title that displays at game end
         /// </summary>
-        [FucineString]
+        [FucineValue("")]
         public string Label { get; set; }
 
         /// <summary>
         /// Detail that displays at game end
         /// </summary>
-        [FucineString]
+        [FucineValue("")]
         public string Description { get; set; }
 
         /// <summary>
         /// Displays after game start
         /// </summary>
-        [FucineString]
+        [FucineValue("")]
         public string StartDescription { get; set;}
-        
-        [FucineString]
+
+        [FucineValue("")]
         public string Image { get; set; }
         
-        [FucineString("")]
+        [FucineValue("")]
         public string FromEnding { get; set; }
 
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool AvailableWithoutEndingMatch { get; set; }
 
         [FucineAspectsDictionary]
@@ -55,7 +55,7 @@ namespace Assets.Core.Entities
         [FucineListGeneric(typeof(string))]
         public List<string> StatusBarElements { get; set; }
 
-        [FucineString]
+        [FucineValue(".")]
         public string StartingVerbId { get; set; }
 
         public Legacy()

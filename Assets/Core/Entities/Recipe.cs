@@ -190,7 +190,7 @@ public class Expulsion
 {
  [FucineAspectsDictionary]
     public AspectsDictionary Filter { get; set; }
-    [FucineInt(1)]
+    [FucineValue(1)]
     public int Limit { get; set; }
 
     public Expulsion()
@@ -207,17 +207,17 @@ public class LinkedRecipeDetails:IEntity
     [FucineId]
     public string Id { get; set; }
 
-    [FucineInt(0)]
+    [FucineValue(0)]
     public int Chance { get; set; }
 
-    [FucineBool(false)]
+    [FucineValue(false)]
     public bool Additional { get; set; }
 
 
     [FucineDictStringString]
     public Dictionary<string, string> Challenges { get; set; }
 
-    [FucineEmanationProperty(typeof(Expulsion))]
+    [FucineEmanation(typeof(Expulsion))]
     public Expulsion Expulsion
     {
         get

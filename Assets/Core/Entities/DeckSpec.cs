@@ -52,22 +52,22 @@ namespace Assets.Core.Entities
         [FucineId]
         public string Id { get; set; }
 
-        [FucineString("")]
+        [FucineValue("")]
         public string DefaultCardId { get; set; }
 
-        [FucineBool(false)]
+        [FucineValue(false)]
         public bool ResetOnExhaustion { get; set; }
 
-        [FucineString(".")]
+        [FucineValue(".")]
         public string Label { get; set; }
 
-        [FucineString(".")]
+        [FucineValue(".")]
         public string Description { get; set; }
 
         /// <summary>
         /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
         /// </summary>
-        [FucineInt(1)]
+        [FucineValue(1)]
         public int DefaultDraws { get; set; }
 
 

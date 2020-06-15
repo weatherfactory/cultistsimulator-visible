@@ -13,13 +13,13 @@ namespace Assets.Core.Entities
         [FucineId]
         public string Id { get; set; }
 
-        [FucineString]
+        [FucineValue(".")]
         public string Label { get; set; }
 
-        [FucineString]
+        [FucineValue(".")]
         public string Description { get; set; }
 
-        [FucineEmanationProperty(typeof(SlotSpecification))]
+        [FucineEmanation(typeof(SlotSpecification))]
         public SlotSpecification Slot { get; set; }
 
 

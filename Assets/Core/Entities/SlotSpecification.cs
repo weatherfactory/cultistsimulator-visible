@@ -15,15 +15,15 @@ public class SlotSpecification:IEntity
 {
     [FucineId]
     public string Id { get; set; }
-    [FucineString]
+    [FucineValue("")]
     public string Label { get; set; }
-    [FucineString(".")]
+    [FucineValue("")]
     public string ForVerb { get; set; }
 
     /// <summary>
     /// currently, this is only used by the primary slot specification
     /// </summary>
-    [FucineString]
+    [FucineValue("")]
     public string Description { get; set; }
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
@@ -39,18 +39,18 @@ public class SlotSpecification:IEntity
     /// <summary>
     /// A Greedy slot will find a card on the desktop that matches its specification, and insert it.
     /// </summary>
-    [FucineBool(false)]
+    [FucineValue(false)]
     public bool Greedy { get; set; }
     /// <summary>
     /// A Consuming slot will destroy its contents when a recipe begins
     /// </summary>
-    [FucineBool(false)]
+    [FucineValue(false)]
     public bool Consumes { get; set; }
 
     /// <summary>
     /// An slot with NoAnim set to true won't display the VFX/SFX when it appears as an ongoing slot. So! it has no effect on startingslots
     /// </summary>
-    [FucineBool(false)]
+    [FucineValue(false)]
     public bool NoAnim { get; set; }
 
 private const string PRIMARY_SLOT="primary";

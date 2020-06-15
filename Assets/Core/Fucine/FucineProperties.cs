@@ -23,16 +23,50 @@ namespace Assets.Core.Fucine
     }
 
 
-    public abstract class FucinePropertyAttribute : System.Attribute
+
+    public abstract class Fucine : System.Attribute
     {
         public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
         public Type ObjectType { get; protected set; }
+
+
+
+    }
+
+    public class FucineValue : Fucine
+    {
+
+        public FucineValue(int defaultValue)
+        {
+            ObjectType = typeof(int);
+            DefaultValue = defaultValue;
+        }
+
+        public FucineValue(string defaultValue)
+        {
+            DefaultValue = defaultValue;
+            ObjectType = typeof(string);
+
+        }
+
+        public FucineValue(bool defaultValue)
+        {
+            DefaultValue = defaultValue;
+            ObjectType = typeof(bool);
+        }
+
+        public FucineValue(float defaultValue)
+        {
+            DefaultValue = defaultValue;
+            ObjectType = typeof(float);
+        }
+
 
     }
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineId : FucinePropertyAttribute
+    public class FucineId : Fucine
     {
 
         public FucineId()
@@ -44,67 +78,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineInt: FucinePropertyAttribute
-    {
-
-        public FucineInt(int defaultValue)
-        {
-            ObjectType = typeof(int);
-            DefaultValue = defaultValue;
-        }
-        
-    }
-
- 
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineString : FucinePropertyAttribute
-    {
-
-        public FucineString()
-        {
-            DefaultValue = string.Empty;
-            ObjectType = typeof(string);
-        }
-
-        public FucineString(string defaultValue)
-        {
-            if (DefaultValue == null)
-                DefaultValue = string.Empty;
-            else
-                DefaultValue = defaultValue;
-
-            ObjectType = typeof(string);
-
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineBool : FucinePropertyAttribute
-    {
-
-        public FucineBool(bool defaultValue)
-        {
-            DefaultValue = defaultValue;
-            ObjectType = typeof(bool);
-        }
-
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineFloat : FucinePropertyAttribute
-    {
-
-        public FucineFloat(float defaultValue)
-        {
-            DefaultValue = defaultValue;
-            ObjectType = typeof(float);
-        }
-
-    }
-
-    [AttributeUsage(AttributeTargets.Property)]
-    public class FucineListGeneric : FucinePropertyAttribute
+    public class FucineListGeneric : Fucine
     {
         public Type MemberType { get; private set; }
 
@@ -126,7 +100,7 @@ namespace Assets.Core.Fucine
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictionaryGeneric : FucinePropertyAttribute
+    public class FucineDictionaryGeneric : Fucine
     {
         public Type KeyType { get; private set; }
         public Type ValueType { get; private set; }
@@ -151,7 +125,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineAspectsDictionary : FucinePropertyAttribute
+    public class FucineAspectsDictionary : Fucine
     {
         public string KeyMustExistIn { get; set; }
         public FucineAspectsDictionary()
@@ -163,7 +137,7 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineDictStringString : FucinePropertyAttribute
+    public class FucineDictStringString : Fucine
     {
         public string KeyMustExistIn { get; set; }
 
@@ -176,10 +150,10 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineEmanationPropertyAttribute : FucinePropertyAttribute
+    public class FucineEmanation : Fucine
     {
         
-        public FucineEmanationPropertyAttribute(Type objectType)
+        public FucineEmanation(Type objectType)
         {
             ObjectType = objectType;
 
