@@ -37,7 +37,7 @@ namespace Assets.Core.Fucine
                 if(Attribute.GetCustomAttribute(entityProperty,typeof(Fucine)) is Fucine fucinePropertyAttribute)
                 {
                     if (htEntityData.ContainsKey(entityProperty.Name))
-                        PopulateProperty(htEntityData, entityProperty, entityToPopulate, entityProperties,fucinePropertyAttribute);
+                        PopulateProperty(htEntityData, entityProperty, entityToPopulate, entityProperties);
 
                     else
                         NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, fucinePropertyAttribute);
@@ -48,10 +48,10 @@ namespace Assets.Core.Fucine
         }
 
         private void PopulateProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
-            PropertyInfo[] entityProperties,Fucine fucine)
+            PropertyInfo[] entityProperties)
         {
-            try
-            {
+            //try
+            //{
                 if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId idProp)
                 {
                     if (htEntityValues.ContainsKey(entityProperty.Name))
@@ -62,10 +62,10 @@ namespace Assets.Core.Fucine
                     }
                 }
 
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineListGeneric)) is
-                    FucineListGeneric lProp)
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is
+                    FucineList lProp)
                 {
-                    PopulateListGeneric(htEntityValues, entityProperty, entityToPopulate, lProp);
+                    PopulateListGeneric(htEntityValues, entityProperty, entityToPopulate);
                 }
 
 
@@ -86,10 +86,10 @@ namespace Assets.Core.Fucine
                         entityProperties);
                 }
 
-                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineEmanation)) is
-                    FucineEmanation objectProp)
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineSubEntity)) is
+                    FucineSubEntity objectProp)
                 {
-                    PopulateEmanationProperty(htEntityValues, entityProperty, entityToPopulate, objectProp);
+                    PopulateSubEntityProperty(htEntityValues, entityProperty, entityToPopulate, objectProp);
                 }
 
                 else
@@ -98,52 +98,86 @@ namespace Assets.Core.Fucine
 
                     entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
                 }
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
-                                   entityProperty.Name + ") - " + e.Message);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
+            //                       entityProperty.Name + ") - " + e.Message);
+            //}
         }
 
 
 
-        private void PopulateListGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineListGeneric lProp)
+        private void PopulateListGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate)
         {
 
                 ArrayList al = htEntityValues.GetArrayList(entityProperty.Name);
-                Type listType = typeof(List<>);
+                Type propertyListType = entityProperty.PropertyType;
+                Type listMemberType = propertyListType.GetGenericArguments()[0];
 
-                Type[] typeArgs = { lProp.MemberType };
 
-                Type constructedType = listType.MakeGenericType(typeArgs);
+            IList  list = Activator.CreateInstance(propertyListType) as IList;
 
-              IList  list = Activator.CreateInstance(constructedType) as IList;
-              foreach (var o in al)
-              {
+            entityProperty.SetValue(entityToPopulate, list);
+
+            foreach (var o in al)
+            {
                   
-                  if(o is Hashtable h) //if the arraylist contains hashtables
-                  {
-                      Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
-                      FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, lProp.MemberType);
-                      var subEntity = emanationWalker.PopulateEntityWith(cih);
-                      list.Add(subEntity);
-                  }
-                  else
-                  {
+                if(o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                    {
+                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, listMemberType);
+                        var subEntity = emanationWalker.PopulateEntityWith(cih);
+                        list.Add(subEntity);
+                    }
+                else
+                    {
                       list.Add(o); //This might not work for things that aren't strings?
-                  }
-                }
+                    }
+            }
 
-                entityProperty.SetValue(entityToPopulate, list);
 
         }
 
-        private void PopulateEmanationProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineEmanation emanationProp)
+
+        private void PopulateDictGeneric(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineList lProp)
+        {
+
+            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(htEntityValues.GetHashtable(entityProperty.Name));
+
+
+            Type dictType = entityProperty.PropertyType;
+            Type dicttMemberType = dictType.GetGenericArguments()[1];
+
+
+            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary;
+
+
+            foreach (var o in subHashtable)
+            {
+
+                if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                {
+                    Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+                    FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dicttMemberType);
+                    IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
+                    dict.Add(subEntity.Id, subEntity);
+                }
+                else
+                {
+                  throw new Exception($"{entityProperty.Name} has non-key/value members");
+                }
+            }
+
+            entityProperty.SetValue(entityToPopulate, dict);
+
+        }
+
+        private void PopulateSubEntityProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntity entityToPopulate, FucineSubEntity subEntityProp)
         {
 
             string entityPropertyName = entityProperty.Name;
-                FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, emanationProp.ObjectType);
+                FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, subEntityProp.ObjectType);
 
                 var subEntity = emanationWalker.PopulateEntityWith(htEntityValues.GetHashtable(entityPropertyName));
 
@@ -235,25 +269,32 @@ namespace Assets.Core.Fucine
         private void NotSpecifiedProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
            Fucine attr)
         {
-            try
-            {
+            //try
+            //{
                 if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId)
                 {
 
                     _logger.LogProblem("ID not specified for a " + _entityType.Name);
                 }
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is FucineList)
+                {
+                    Type listType = entityProperty.PropertyType;
+                    
+                    entityProperty.SetValue(entityToPopulate,Activator.CreateInstance(listType));
+                }
+
 
                 else
                 {
                     entityProperty.SetValue(entityToPopulate, attr.DefaultValue);
                 }
 
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
-                                   entityProperty.Name + ") - " + e.Message);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
+            //                       entityProperty.Name + ") - " + e.Message);
+            //}
         }
 
 

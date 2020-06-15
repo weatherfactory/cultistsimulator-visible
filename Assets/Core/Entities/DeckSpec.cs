@@ -58,10 +58,10 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool ResetOnExhaustion { get; set; }
 
-        [FucineValue(".")]
+        [FucineValue("")]
         public string Label { get; set; }
 
-        [FucineValue(".")]
+        [FucineValue("")]
         public string Description { get; set; }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
 
 
         //Spec determines which cards start in the deckSpec after each reset
-        [FucineListGeneric(typeof(string))]
+        [FucineList]
         public List<string> Spec { get; set; }
 
         [FucineDictStringString(KeyMustExistIn = "Spec")]

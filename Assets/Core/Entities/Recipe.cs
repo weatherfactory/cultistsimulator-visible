@@ -217,7 +217,7 @@ public class LinkedRecipeDetails:IEntity
     [FucineDictStringString]
     public Dictionary<string, string> Challenges { get; set; }
 
-    [FucineEmanation(typeof(Expulsion))]
+    [FucineSubEntity(typeof(Expulsion))]
     public Expulsion Expulsion
     {
         get

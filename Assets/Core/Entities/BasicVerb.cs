@@ -19,7 +19,7 @@ namespace Assets.Core.Entities
         [FucineValue(".")]
         public string Description { get; set; }
 
-        [FucineEmanation(typeof(SlotSpecification))]
+        [FucineSubEntity(typeof(SlotSpecification))]
         public SlotSpecification Slot { get; set; }
 
 

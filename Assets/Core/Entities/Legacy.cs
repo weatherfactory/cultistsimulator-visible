@@ -49,10 +49,10 @@ namespace Assets.Core.Entities
         [FucineAspectsDictionary]
         public IAspectsDictionary Effects { get; set; }
 
-        [FucineListGeneric(typeof(string))]
+        [FucineList]
         public List<string> ExcludesOnEnding { get; set; }
 
-        [FucineListGeneric(typeof(string))]
+        [FucineList]
         public List<string> StatusBarElements { get; set; }
 
         [FucineValue(".")]

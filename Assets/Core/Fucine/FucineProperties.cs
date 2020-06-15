@@ -61,6 +61,11 @@ namespace Assets.Core.Fucine
             ObjectType = typeof(float);
         }
 
+        public FucineValue(List<string> l)
+        {
+
+        }
+
 
     }
 
@@ -78,22 +83,27 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineListGeneric : Fucine
+    public class FucineList : Fucine
     {
-        public Type MemberType { get; private set; }
+        //public Type MemberType { get; private set; }
 
 
-        public FucineListGeneric(Type memberType)
+        //public FucineList(Type memberType)
+        //{
+        //    Type listType = typeof(List<>);
+
+        //    Type[] typeArgs = {memberType};
+
+        //    Type constructedType = listType.MakeGenericType(typeArgs);
+
+        //    DefaultValue = Activator.CreateInstance(constructedType);
+
+        //    MemberType = memberType;
+
+        //}
+
+        public FucineList()
         {
-            Type listType = typeof(List<>);
-
-            Type[] typeArgs = {memberType};
-
-            Type constructedType = listType.MakeGenericType(typeArgs);
-
-            DefaultValue = Activator.CreateInstance(constructedType);
-
-            MemberType = memberType;
 
         }
 
@@ -148,12 +158,20 @@ namespace Assets.Core.Fucine
 
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class FucineDict : Fucine
+    {
+        public string KeyMustExistIn { get; set; }
+
+
+    }
+
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class FucineEmanation : Fucine
+    public class FucineSubEntity : Fucine
     {
         
-        public FucineEmanation(Type objectType)
+        public FucineSubEntity(Type objectType)
         {
             ObjectType = objectType;
 

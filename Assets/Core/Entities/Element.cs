@@ -73,13 +73,13 @@ namespace Assets.Core.Entities
         [FucineAspectsDictionary]
         public IAspectsDictionary Aspects { get; set; }
 
-       [FucineListGeneric(typeof(SlotSpecification))]
-        public List<SlotSpecification> Slots { get; set; }
+       [FucineList]
+       public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
         /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
         /// </summary>
-        [FucineListGeneric(typeof(LinkedRecipeDetails))]
+        [FucineList]
         public List<LinkedRecipeDetails> Induces { get; set; }
 
         /// <summary>
