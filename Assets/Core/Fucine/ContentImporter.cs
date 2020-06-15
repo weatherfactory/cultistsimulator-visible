@@ -962,7 +962,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     {
 
         FucinePropertyWalker deckWalker=new FucinePropertyWalker(_logger,typeof(DeckSpec));
-        DeckSpec d= (DeckSpec)deckWalker.PopulateWith(htEachDeck);
+        DeckSpec d= (DeckSpec)deckWalker.PopulateEntityWith(htEachDeck);
         return d;
     }
 
@@ -1638,7 +1638,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntity entity = (IEntity)w.PopulateWith(caseInsensitiveH);
+                        IEntity entity = (IEntity)w.PopulateEntityWith(caseInsensitiveH);
 
                         if(entity is IVerb v)
                             Verbs.Add(v.Id, v);

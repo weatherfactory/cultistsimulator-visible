@@ -25,6 +25,8 @@ namespace Assets.Core.Fucine
 
     public abstract class FucineEntityProperty : System.Attribute
     {
+        public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
+        public Type ObjectType { get; protected set; }
 
     }
 
@@ -35,6 +37,7 @@ namespace Assets.Core.Fucine
 
         public FucineId()
         {
+            ObjectType = typeof(string);
         }
 
     }
@@ -43,10 +46,10 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineInt: FucineEntityProperty
     {
-        public int DefaultValue { get;  }
 
         public FucineInt(int defaultValue)
         {
+            ObjectType = typeof(int);
             DefaultValue = defaultValue;
         }
         
@@ -57,14 +60,11 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineString : FucineEntityProperty
     {
-        public  string DefaultValue { get;  }
-
-        public bool HasDefaultValue => DefaultValue != null;
-
 
         public FucineString()
         {
             DefaultValue = string.Empty;
+            ObjectType = typeof(string);
         }
 
         public FucineString(string defaultValue)
@@ -73,17 +73,20 @@ namespace Assets.Core.Fucine
                 DefaultValue = string.Empty;
             else
                 DefaultValue = defaultValue;
+
+            ObjectType = typeof(string);
+
         }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineBool : FucineEntityProperty
     {
-        public bool DefaultValue { get;  }
 
         public FucineBool(bool defaultValue)
         {
             DefaultValue = defaultValue;
+            ObjectType = typeof(bool);
         }
 
     }
@@ -91,11 +94,11 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineFloat : FucineEntityProperty
     {
-        public float DefaultValue { get; }
 
         public FucineFloat(float defaultValue)
         {
             DefaultValue = defaultValue;
+            ObjectType = typeof(float);
         }
 
     }
@@ -103,7 +106,6 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineListGeneric : FucineEntityProperty
     {
-       public dynamic DefaultValue { get; private set; }
         public Type MemberType { get; private set; }
 
 
@@ -126,7 +128,6 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineDictionaryGeneric : FucineEntityProperty
     {
-        public dynamic DefaultValue { get; private set; }
         public Type KeyType { get; private set; }
         public Type ValueType { get; private set; }
 
@@ -152,10 +153,7 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineAspectsDictionary : FucineEntityProperty
     {
-        public IAspectsDictionary DefaultValue { get; }
         public string KeyMustExistIn { get; set; }
-
-
         public FucineAspectsDictionary()
         {
             DefaultValue = new AspectsDictionary();
@@ -167,9 +165,7 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineDictStringString : FucineEntityProperty
     {
-        public Dictionary<string,string> DefaultValue { get; }
         public string KeyMustExistIn { get; set; }
-
 
         public FucineDictStringString()
         {
@@ -182,13 +178,12 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineEmanationProperty : FucineEntityProperty
     {
-        public Type ObjectType { get; }
-        public object DefaultValue => null;
-
-
+        
         public FucineEmanationProperty(Type objectType)
         {
             ObjectType = objectType;
+
+            DefaultValue = null;
         }
 
     }
