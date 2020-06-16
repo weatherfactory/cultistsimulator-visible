@@ -48,7 +48,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public void QuickPopulate(string value)
+        public void QuickSpec(string value)
         {
             Id = value;
             Chance = 100;
@@ -60,7 +60,11 @@ namespace Assets.Core.Entities
 
     public interface IQuickSpecEntity
     {
-        void QuickPopulate(string value);
+        /// <summary>
+        /// Populate a default instance based on a single value
+        /// </summary>
+        /// <param name="value"></param>
+        void QuickSpec(string value);
     }
 
 

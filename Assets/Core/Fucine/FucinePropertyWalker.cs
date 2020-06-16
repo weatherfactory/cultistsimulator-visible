@@ -162,11 +162,12 @@ namespace Assets.Core.Fucine
                 foreach (string k in subHashtable.Keys)
                 {
                     IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
-                    if (subHashtable[k] is string value)
+                    if (subHashtable[k] is string value && wrapperListMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
                     {
                         //{fatiguing:husk}
-                        var basicMorph=new MorphDetails(value);
-                        wrapperList.Add(basicMorph); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
+                        IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(wrapperListMemberType) as IQuickSpecEntity;
+                        quickSpecEntity.QuickSpec(value);
+                        wrapperList.Add(quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
                         dict.Add(k,wrapperList);
                     }
 
