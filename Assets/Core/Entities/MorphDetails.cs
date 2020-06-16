@@ -12,7 +12,7 @@ namespace Assets.Core.Entities
 {
 
 
-    public class MorphDetails : IEntity
+    public class MorphDetails : IEntity,IQuickSpecEntity
     {
 
         [FucineId]
@@ -47,6 +47,21 @@ namespace Assets.Core.Entities
             Level = level;
 
         }
+
+        public void QuickPopulate(string value)
+        {
+            Id = value;
+            Chance = 100;
+            MorphEffect = MorphEffectType.Transform;
+            Level = 1;
+
+        }
     }
+
+    public interface IQuickSpecEntity
+    {
+        void QuickPopulate(string value);
+    }
+
 
 }

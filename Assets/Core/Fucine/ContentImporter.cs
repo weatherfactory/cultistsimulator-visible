@@ -1636,7 +1636,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                     {
                         Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
 
-
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
                         IEntity entity = (IEntity)w.PopulateEntityWith(caseInsensitiveH);

@@ -28,11 +28,11 @@ namespace Assets.Core.Fucine
 
         public object PopulateEntityWith(Hashtable htEntityData)
         {
-            dynamic entityToPopulate = Activator.CreateInstance(_entityType);
+            dynamic entityToPopulate = Activator.CreateInstance(_entityType); 
+            
+            var entityProperties = _entityType.GetProperties(); 
 
-            var entityProperties = _entityType.GetProperties();
-
-            foreach (var entityProperty in entityProperties)
+            foreach (var entityProperty in entityProperties) 
             {
                 try
                 {
@@ -82,15 +82,6 @@ namespace Assets.Core.Fucine
                 {
                     PopulateDict(htEntityValues, entityProperty, entityToPopulate, dictAttribute, entityProperties);
                 }
-
-
-                //else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineDictStringString)) is
-                //    FucineDictStringString
-                //    dssProp)
-                //{
-                //    PopulateDictStringString(htEntityValues, entityProperty, entityToPopulate, dssProp,
-                //        entityProperties);
-                //}
 
 
                 else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineAspects)) is
@@ -153,15 +144,63 @@ namespace Assets.Core.Fucine
         private void PopulateDict(Hashtable htAllEntityValues, PropertyInfo entityProperty, object entityToPopulate,FucineDict dictAttribute, PropertyInfo[] entityProperties)
         {
 
-            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(htAllEntityValues.GetHashtable(entityProperty.Name));
-            Type dictType = entityProperty.PropertyType;
-            Type dictMemberType = dictType.GetGenericArguments()[1];
+            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(htAllEntityValues.GetHashtable(entityProperty.Name));  //a hashtable of <id: listofmorphdetails>
+            //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
+            Type dictType = entityProperty.PropertyType; //Dictionary<string,List<MorphDetails>
+            Type dictMemberType = dictType.GetGenericArguments()[1]; //List<MorphDetails>
 
 
-            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary;
+            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary; //Dictionary<string,MorphDetailsList>
+
+            //if dictMemberType is a list then create that list, then populate it with the individual entities 
+            if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition()==typeof(List<>)) //List<MorphDetails>, yup
+            {
+               
+                Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
+                //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
+                //either way, it's arbitrary keys: fatiguing, exiling...
+                foreach (string k in subHashtable.Keys)
+                {
+                    IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
+                    if (subHashtable[k] is string value)
+                    {
+                        //{fatiguing:husk}
+                        var basicMorph=new MorphDetails(value);
+                        wrapperList.Add(basicMorph); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
+                        dict.Add(k,wrapperList);
+                    }
+
+                    else if(subHashtable[k] is ArrayList list) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                    {
+                        foreach(Hashtable entityHash in list)
+                        {
+                            Hashtable ciEntityHash =
+                                System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
+                                    entityHash);
+
+                            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, wrapperListMemberType); //passing in <string,MorphDetailsList>
+                            IEntity subEntity = emanationWalker.PopulateEntityWith(ciEntityHash) as IEntity; //{id:husk,morpheffect:spawn}
+                            wrapperList.Add(subEntity);
+                        }
+                        //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
+
+                        dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+
+                    }
+                    else
+                    {
+                        throw new ApplicationException($"FucineDictionary {entityProperty.Name} on {entityToPopulate.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
+                    }
+                }
+
+
+            }
+
+
+          
 
             //always and ever a string/string proposition - like DrawMessages
-            if (dictMemberType == typeof(string))
+           else if (dictMemberType == typeof(string)) //nope, it's MorphDetailsList, so we never see this branch
             {
                 foreach (DictionaryEntry de in subHashtable)
                 {
@@ -169,7 +208,7 @@ namespace Assets.Core.Fucine
                 }
 
             }
-            else
+            else //it's an entity, not a string or a list
             {
                 
                 foreach (object o in subHashtable)
@@ -177,21 +216,15 @@ namespace Assets.Core.Fucine
 
                     if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                     {
-                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
-                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType);
+                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
                         IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
                         dict.Add(subEntity.Id, subEntity);
 
                     }
                     else
                     {
-                        DictionaryEntry de = (DictionaryEntry) o;
-                        Hashtable minimalHashtable=new Hashtable();
-                        minimalHashtable.Add(de.Key,de.Value);  //ah, this doesn't work because there's no way to connect eg: fatiguing:concentration to id: fatiguing, morphdetails type id: concentration. mapping needed!
-                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(minimalHashtable);
-                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType);
-                        IEntity subEntity = emanationWalker.PopulateEntityWith(cih) as IEntity;
-                        dict.Add(subEntity.Id, subEntity);
+                        throw new ApplicationException($"FucineDictionary {entityProperty.Name} on {entityToPopulate.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                     }
 
 
@@ -302,12 +335,16 @@ namespace Assets.Core.Fucine
                 else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is FucineList)
                 {
                     Type listType = entityProperty.PropertyType;
-                    
                     entityProperty.SetValue(entityToPopulate,Activator.CreateInstance(listType));
+                }
+                else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineDict)) is FucineDict)
+                {
+                    Type dictType = entityProperty.PropertyType;
+                    entityProperty.SetValue(entityToPopulate, Activator.CreateInstance(dictType));
                 }
 
 
-                else
+            else
                 {
                     entityProperty.SetValue(entityToPopulate, attr.DefaultValue);
                 }
