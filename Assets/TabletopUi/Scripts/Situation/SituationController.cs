@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;

@@ -5,29 +5,11 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 
-public class RequirementValue
-{
 
-}
-
-public enum PortalEffect
-{
-    None=0,
-    Wood=10,
-    WhiteDoor=20,
-    StagDoor=30,
-    SpiderDoor=40,
-    PeacockDoor=50,
-    TricuspidGate=60
-}
-
-/// <summary>
-/// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
-/// </summary>
-[Serializable]
 public class Recipe: IEntity
 {
     private string _description="";

@@ -2,6 +2,7 @@
 using Assets.Core.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Enums;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 using Random = UnityEngine.Random;
