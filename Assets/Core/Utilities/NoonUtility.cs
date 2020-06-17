@@ -27,10 +27,6 @@ namespace Noon
         public const string KADDITIVE = "additive";
         public const string KLABEL = "label";
         public const string KIMAGE = "image";
-        public const string KFROMENDING = "fromEnding";
-        public const string KAVAILABLEWITHOUTENDINGMATCH = "availableWithoutEndingMatch";
-	    public const string KEXCLUDESONENDING = "excludesOnEnding";
-        public const string KSTATUSBARELEMENTS = "statusbarelements";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
         public const string KPORTALEFFECT = "portaleffect";
@@ -51,7 +47,6 @@ namespace Noon
         public const string KINTERNALDECK = "internaldeck";
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";
-        public const string KVERBOVERRIDEICON = "verbicon";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KALTERNATIVERECIPESALT = "alt";
         public const string KSLOTS="slots";
@@ -61,39 +56,18 @@ namespace Noon
         public const string KCONSUMES = "consumes";
         public const string KNOANIM = "noanim";
         public const string KBURNIMAGE = "burnimage";
-        public const string KDECKSPEC = "spec";
-        public const string KDECKSPEC_DRAWMESSAGES = "drawmessages";
-        public const string KDECKSPEC_DEFAULTDRAWMESSAGES = "defaultdrawmessages";
-        public const string KDECKDEFAULTCARD = "defaultcard";
-        public const string KDECKDEFAULTDRAWS = "draws";
-        public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public static string KICON="icon";
         public static string KEXPULSION="expulsion";
         public static string KLIMIT = "limit";
         public static string KFILTER = "filter";
         public static string KCHALLENGES="challenges";
-        public static string DEFAULT_STARTING_VERB_ID="work";
-
         public const string KINDUCES = "induces";
-        public const string KLEVEL = "level";
 
 
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
-        public const string KMORPHEFFECT = "morpheffect";
 
-        public const string KLIFETIME = "lifetime";
-        public const string KDECAYTO = "decayTo";
         public const string KANIMFRAMES = "animFrames";
-        public const string KISASPECT = "isAspect";
-        public const string KISHIDDEN = "isHidden";
-        public const string KNOARTNEEDED = "noartneeded";
-        public const string KRESATURATE = "resaturate";
-        public const string KINHERITS = "inherits";
-
-        public const string KUNIQUE = "unique";
-        public const string KUNIQUENESSGROUP = "uniquenessgroup";
-
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
