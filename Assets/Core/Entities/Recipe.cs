@@ -7,99 +7,121 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
+    [FucineImportable("recipes")]
     public class Recipe : IEntity
     {
-        private string _description = "";
-        private string _startDescription = "";
-        private string _label = "";
+
+        [FucineId]
         public string Id { get; set; }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-        }
-
+        [FucineValue("enact")]
         public string ActionId { get; set; }
+
+        [FucineDict]
         public Dictionary<string, string> Requirements { get; set; }
+
+        [FucineDict]
         public Dictionary<string, string> TableReqs { get; set; }
+
+        [FucineDict]
         public Dictionary<string, string> ExtantReqs { get; set; }
+
+        [FucineDict]
         public Dictionary<string, string> Effects { get; set; }
+
+        [FucineAspects]
         public AspectsDictionary Aspects { get; set; }
+
+        [FucineList]
         public List<MutationEffect> MutationEffects { get; set; }
 
         /// <summary>
         /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
         /// </summary>)
+        [FucineDict]
         public Dictionary<string, int> Purge { get; set; }
 
+        [FucineDict]
         public Dictionary<string, int> HaltVerb { get; set; }
+
+        [FucineDict]
         public Dictionary<string, int> DeleteVerb { get; set; }
 
 
-        public EndingFlavour
-            SignalEndingFlavour
+        /// <summary>
+        /// do something grander like a bong when we loop this recipe
+        /// </summary>
+        [FucineValue(false)]
+        public bool SignalImportantLoop { get; set; }
+
+        /// <summary>
+        /// This is distinct from the EndingFlavour on Ending, because some recipes may be menacing but not end directly.
+        /// </summary>
+        [FucineValue((int)EndingFlavour.None)]
+        public EndingFlavour SignalEndingFlavour
         {
             get;
             set;
-        } //separate from Ending, because some recipes may be menacing but route to another recipe that actually does the ending
+        } 
 
+        [FucineValue(false)]
         public bool Craftable { get; set; }
 
         /// <summary>
         /// If HintOnly is true and Craftable is false, the recipe will display as a hint, but *only if no craftable recipes are available*
         /// </summary>
+        [FucineValue(false)]
         public bool HintOnly { get; set; }
 
-        public string Label
-        {
-            get => _label;
-            set => _label = value ?? "";
-        }
-
+        [FucineValue(10)]
         public int Warmup { get; set; }
 
+        [FucineValue(".")]
+        public string Label { get; set; }
+        
+        
         /// <summary>
-        /// displayed when we identify and when we are running a recipe; also appended to the Aside if predicted as an additional recipe
+        /// displayed when we identify and when we are running a recipe
         /// </summary>
-        public string StartDescription
-        {
-            get => _startDescription;
-            set => _startDescription = value ?? "";
-        }
+        [FucineValue(".")]
+        public string StartDescription { get; set; }
+
+        /// <summary>
+        /// displayed in the results when the recipe is complete. If we loop straight to another recipe, it won't usually be visible.
+        /// </summary>
+        [FucineValue(".")]
+        public string Description { get; set; }
 
         /// <summary>
         /// On completion, the recipe will draw
         ///from this deck and add the result to the outcome.
         /// </summary>
+        [FucineDict]
         public Dictionary<string, int> DeckEffects { get; set; }
 
-        /// <summary>
-        /// displayed in the results when the recipe is complete
-        /// </summary>
-        public string Description
-        {
-            get => _description;
-            set => _description = value ?? "";
-        }
+        [FucineList]
+        public List<LinkedRecipeDetails> Alt { get; set; }
 
-        public List<LinkedRecipeDetails> AlternativeRecipes { get; set; }
+        [FucineList]
         public List<LinkedRecipeDetails> LinkedRecipes { get; set; }
+
+        [FucineValue("")]
         public string EndingFlag { get; set; }
 
 
         /// <summary>
         /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
         /// </summary>
+        [FucineValue(0)]
         public int MaxExecutions { get; set; }
 
+        [FucineValue("")]
         public string BurnImage { get; set; }
 
-        public bool HasInfiniteExecutions()
-        {
-            return MaxExecutions == 0;
-        }
-
+        [FucineValue((int)PortalEffect.None)]
         public PortalEffect PortalEffect { get; set; }
 
+        [FucineList]
         public List<SlotSpecification> SlotSpecifications { get; set; }
 
         //recipe to execute next; may be the loop recipe; this is null if no loop has been set
@@ -110,7 +132,7 @@ namespace Assets.Core.Entities
             TableReqs = new Dictionary<string, string>();
             ExtantReqs = new Dictionary<string, string>();
             Effects = new Dictionary<string, string>();
-            AlternativeRecipes = new List<LinkedRecipeDetails>();
+            Alt = new List<LinkedRecipeDetails>();
             LinkedRecipes = new List<LinkedRecipeDetails>();
             SlotSpecifications = new List<SlotSpecification>();
             Aspects = new AspectsDictionary();
@@ -120,6 +142,15 @@ namespace Assets.Core.Entities
             DeleteVerb = new Dictionary<string, int>();
             MutationEffects = new List<MutationEffect>();
             PortalEffect = PortalEffect.None;
+        }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+        }
+
+        public bool UnlimitedExecutionsPermitted()
+        {
+            return MaxExecutions == 0;
         }
 
 
@@ -162,63 +193,5 @@ namespace Assets.Core.Entities
             return true;
         }
 
-
-        /// <summary>
-        /// do something grander like a bong when we loop this recipe
-        /// </summary>
-        public bool SignalImportantLoop { get; set; }
-    }
-
-    public class Expulsion
-    {
-        [FucineAspects] public AspectsDictionary Filter { get; set; }
-        [FucineValue(1)] public int Limit { get; set; }
-
-        public Expulsion()
-        {
-            Limit = 0;
-            Filter = new AspectsDictionary();
-        }
-    }
-
-    public class LinkedRecipeDetails : IEntity
-    {
-        private Expulsion _expulsion;
-
-        [FucineId] public string Id { get; set; }
-
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-        }
-
-        [FucineValue(0)] public int Chance { get; set; }
-
-        [FucineValue(false)] public bool Additional { get; set; }
-
-
-        [FucineDict] public Dictionary<string, string> Challenges { get; set; }
-
-        [FucineSubEntity(typeof(Expulsion))]
-        public Expulsion Expulsion
-        {
-            get => _expulsion;
-
-            set => _expulsion = value;
-        }
-
-        public LinkedRecipeDetails()
-        {
-        }
-
-
-        public LinkedRecipeDetails(string id, int chance, bool additional, Expulsion expulsion,
-            Dictionary<string, string> challenges)
-        {
-            Additional = additional;
-            Id = id;
-            Chance = chance;
-            Expulsion = expulsion;
-            Challenges = challenges ?? new Dictionary<string, string>();
-        }
     }
 }

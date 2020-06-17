@@ -132,7 +132,7 @@ namespace Assets.Core
             rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
 
 
-            foreach (var ar in currentRecipe.AlternativeRecipes)
+            foreach (var ar in currentRecipe.Alt)
             {
                 Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
 
@@ -177,11 +177,11 @@ namespace Assets.Core
         public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
         {
             IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null) }; ;
-            if (recipe.AlternativeRecipes.Count == 0)
+            if (recipe.Alt.Count == 0)
                 return recipeExecutionCommands;
 
 
-            foreach (var ar in recipe.AlternativeRecipes)
+            foreach (var ar in recipe.Alt)
             {
 
 

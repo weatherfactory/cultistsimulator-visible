@@ -872,13 +872,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             foreach (var n in r.LinkedRecipes)
                 LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
-            foreach (var a in r.AlternativeRecipes)
+            foreach (var a in r.Alt)
                 LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
 
             foreach (var m in r.MutationEffects)
             {
-                LogIfNonexistentElementId(m.FilterOnAspectId,r.Id," - as mutation filter");
-                LogIfNonexistentElementId(m.MutateAspectId, r.Id, " - as mutated aspect");
+                LogIfNonexistentElementId(m.Filter,r.Id," - as mutation filter");
+                LogIfNonexistentElementId(m.Mutate, r.Id, " - as mutated aspect");
             }
         }
     }
@@ -1239,7 +1239,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                             raChance = 0;
                     }
 
-                    r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,
+                    r.Alt.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,
                         NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
                     TryAddAsInternalRecipe(ra,r);

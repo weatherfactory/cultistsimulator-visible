@@ -113,7 +113,7 @@ public class Character:IGameEntityStorage
 
     public bool HasExhaustedRecipe(Recipe forRecipe)
     {
-        if (forRecipe.HasInfiniteExecutions())
+        if (forRecipe.UnlimitedExecutionsPermitted())
             return false;
 
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);

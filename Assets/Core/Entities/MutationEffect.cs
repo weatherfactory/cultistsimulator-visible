@@ -2,21 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Fucine;
 
 namespace Assets.Core.Entities
 {
     public class MutationEffect
     {
-        public string FilterOnAspectId { get; set; }
-        public string MutateAspectId { get; set; }
-        public int MutationLevel { get; set; }
+        [FucineValue("")]
+        public string Filter { get; set; }
+
+        [FucineValue("")]
+        public string Mutate { get; set; }
+
+        [FucineValue(0)]
+        public int Level { get; set; }
+
+        [FucineValue(false)]
         public bool Additive { get; set; }
 
-        public MutationEffect(string filterOnAspectId, string mutateAspectId, int mutationLevel, bool additive)
+        public MutationEffect(string filter, string mutate, int level, bool additive)
         {
-            FilterOnAspectId = filterOnAspectId;
-            MutateAspectId = mutateAspectId;
-            MutationLevel = mutationLevel;
+            Filter = filter;
+            Mutate = mutate;
+            Level = level;
             Additive = additive;
         }
     }
