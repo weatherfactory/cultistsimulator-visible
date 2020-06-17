@@ -16,29 +16,41 @@ namespace Assets.Core.Entities
         Pale=3,
         Vile=4
     }
-
+    [FucineImportable("endings")]
     public class Ending:IEntity
     {
+        [FucineId]
         public string Id { get; set; }
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-            
-        }
 
-        public string Title { get; set; }
+        [FucineValue("")]
+        public string Label { get; set; }
+
+        [FucineValue("")]
         public string Description { get; set; }
-        public string ImageId { get; set; }
+
+        [FucineValue("")]
+        public string Image { get; set; }
+
+        [FucineValue((int)EndingFlavour.Melancholy)]
         public EndingFlavour EndingFlavour { get; set; }
+
+        [FucineValue("")]
         public string Anim { get; set; }
+
+        [FucineValue("")]
         public string AchievementId { get; set; }
 
+        public Ending()
+        {
 
-        public Ending(string id, string title, string description,string imageId,EndingFlavour endingFlavour, string anim,string achievementId)
+        }
+
+        public Ending(string id, string label, string description,string image,EndingFlavour endingFlavour, string anim,string achievementId)
         {
             Id = id;
-            Title = title;
+            Label = label;
             Description = description;
-            ImageId = imageId;
+            Image = image;
             EndingFlavour = endingFlavour;
             Anim = anim;
             AchievementId = achievementId;
@@ -48,7 +60,25 @@ namespace Assets.Core.Entities
 
         public static Ending DefaultEnding()
         {
-        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", EndingFlavour.Melancholy, "DramaticLight",null);
+            Ending defaultEnding = new Ending
+            {
+                Id = "default",
+                Label = "IT'S ALWAYS TOO LATE, EVENTUALLY",
+                Description = "'... but until then, it's not.'",
+                Image = "suninrags",
+                EndingFlavour = EndingFlavour.Melancholy,
+                Anim = "DramaticLight",
+                AchievementId = null
+            };
+
+
+            return defaultEnding;
+
+        }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+
         }
     }
 }

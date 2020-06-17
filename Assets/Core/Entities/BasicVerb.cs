@@ -8,7 +8,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    [FucineImport("verbs")]
+    [FucineImportable("verbs")]
     public class BasicVerb: IVerb,IEntity
     {
         [FucineId]

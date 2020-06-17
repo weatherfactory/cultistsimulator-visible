@@ -78,7 +78,7 @@ namespace Assets.Editor
                 // Endings
                 foreach (var ending in compendium.GetAllEndings())
                 {
-                    Write(file, ending.Title);
+                    Write(file, ending.Label);
                     Write(file, ending.Description);
                 }
 

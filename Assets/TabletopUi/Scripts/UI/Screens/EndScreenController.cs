@@ -53,9 +53,9 @@ namespace Assets.CS.TabletopUI
 		{
 			PlayEndingMusic(ending);
 
-            header.text = ending.Title;
+            header.text = ending.Label;
             flavor.text = ending.Description;
-            image.sprite = ResourcesManager.GetSpriteForEnding(ending.ImageId);
+            image.sprite = ResourcesManager.GetSpriteForEnding(ending.Image);
         }
 
         private void PlayEndingMusic(Ending ending)

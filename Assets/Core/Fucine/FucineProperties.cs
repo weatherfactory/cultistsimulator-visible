@@ -12,11 +12,11 @@ namespace Assets.Core.Fucine
 
 
     [AttributeUsage(AttributeTargets.Class)]
-    public class FucineImport : System.Attribute
+    public class FucineImportable : System.Attribute
     {
         public string TaggedAs { get; }
 
-        public FucineImport(string taggedAs)
+        public FucineImportable(string taggedAs)
         {
             TaggedAs = taggedAs;
         }
@@ -58,12 +58,6 @@ namespace Assets.Core.Fucine
             DefaultValue = defaultValue;
             ObjectType = typeof(float);
         }
-
-        public FucineValue(List<string> l)
-        {
-
-        }
-
 
     }
 

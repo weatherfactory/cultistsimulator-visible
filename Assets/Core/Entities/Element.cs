@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
-    [FucineImport("elements")]
+    [FucineImportable("elements")]
     public class Element:IEntity
     {
         

@@ -46,7 +46,7 @@ namespace Assets.Core.Entities
         void EliminateCardsInUniquenessGroup(string elementUniquenessGroup);
     }
 
-    [FucineImport("decks")]
+    [FucineImportable("decks")]
  public class DeckSpec : IDeckSpec,IEntity
     {
         [FucineId]

@@ -19,10 +19,6 @@ namespace Assets.Core.Entities
         [FucineId]
         public string Id { get; set; }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-            
-        }
 
         [FucineValue(100)]
         public int Chance { get; private set; }
@@ -30,7 +26,7 @@ namespace Assets.Core.Entities
         [FucineValue(1)]
         public int Level { get; private set; }
 
-        [FucineValue(1)]
+        [FucineValue((int)MorphEffectType.Transform)]
         public MorphEffectType MorphEffect { get; private set; }
 
         public MorphDetails()
@@ -62,16 +58,13 @@ namespace Assets.Core.Entities
             Level = 1;
 
         }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+
+        }
     }
 
-    public interface IQuickSpecEntity
-    {
-        /// <summary>
-        /// Populate a default instance based on a single value
-        /// </summary>
-        /// <param name="value"></param>
-        void QuickSpec(string value);
-    }
 
 
 }

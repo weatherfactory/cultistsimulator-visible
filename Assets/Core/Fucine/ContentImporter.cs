@@ -1477,13 +1477,13 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         foreach (Type t in assembly.GetTypes())
             {
-                FucineImport importAttribute = (FucineImport) t.GetCustomAttribute(typeof(FucineImport), false);
+                FucineImportable importableAttribute = (FucineImportable) t.GetCustomAttribute(typeof(FucineImportable), false);
                 
-                if(importAttribute!=null)
+                if(importableAttribute!=null)
                 {
                     if(!t.GetInterfaces().Contains(typeof(IEntity)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
-                    ArrayList al = GetContentItems(importAttribute.TaggedAs);
+                    ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
                     foreach (Hashtable h in al)
                     {
@@ -1495,20 +1495,27 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         allEntities.Add(entity);
 
+
                         if (entity is IVerb v)
                             Verbs.Add(v.Id, v);
-
-                        else if (entity is Legacy l)
-                            Legacies.Add(l.Id, l);
-
-                        else if (entity is DeckSpec d)
-                            DeckSpecs.Add(d.Id, d);
 
                         else if (entity is Element el)
                             Elements.Add(el.Id, el);
 
-                        else if(entity is Recipe r)
+                        else if (entity is DeckSpec d)
+                            DeckSpecs.Add(d.Id, d);
+
+                        else if (entity is Legacy l)
+                            Legacies.Add(l.Id, l);
+
+                        else if (entity is Ending en)
+                            Endings.Add(en.Id, en);
+
+
+
+                    else if (entity is Recipe r)
                             Recipes.Add(r);
+
                     }
                 }
             }
@@ -1520,7 +1527,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             // ImportDeckSpecs(alDeckSpecs);
             ImportRecipes(alRecipes);
             // ImportLegacies(alLegacies);
-            ImportEndings(alEndings);
+            //ImportEndings(alEndings);
 
 
 
