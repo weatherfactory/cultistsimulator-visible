@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ public class SlotSpecification:IEntity
 {
     [FucineId]
     public string Id { get; set; }
+
+    public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+    {
+        
+    }
+
     [FucineValue("")]
     public string Label { get; set; }
     [FucineValue("")]

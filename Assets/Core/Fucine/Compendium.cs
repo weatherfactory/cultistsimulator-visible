@@ -42,6 +42,8 @@ public interface ICompendium
     IDeckSpec GetDeckSpecById(string id);
     void SupplyLevers(IGameEntityStorage populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
+
+    
 }
 
 public class Compendium : ICompendium

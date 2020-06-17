@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,12 @@ namespace Assets.Core.Entities
     {
         [FucineId]
         public string Id { get; set; }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
+
+        }
 
         /// <summary>
         /// Title that displays at game end

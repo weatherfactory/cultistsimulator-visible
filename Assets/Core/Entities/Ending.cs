@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
@@ -18,6 +20,11 @@ namespace Assets.Core.Entities
     public class Ending:IEntity
     {
         public string Id { get; set; }
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageId { get; set; }

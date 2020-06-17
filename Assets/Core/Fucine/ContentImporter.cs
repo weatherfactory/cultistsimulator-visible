@@ -748,12 +748,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     public int PopulateElements(ArrayList alElements)
     {
 
-        if (alElements == null)
-        {
-            _logger.LogProblem("Elements were never imported; PopulateElements failed");
-            return 0;
-        }
-
+        
 
         foreach (Hashtable htElement in alElements)
         {
@@ -772,40 +767,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             try
             {
-
-                    if (htElement.ContainsKey(NoonConstants.KLIFETIME))
-                        element.Lifetime = float.Parse(htElement[NoonConstants.KLIFETIME].ToString());
-                    if (htElement.ContainsKey(NoonConstants.KDECAYTO))
-                        element.DecayTo = htElement.GetString(NoonConstants.KDECAYTO);
-
-                    if (htElement.GetString(NoonConstants.KISASPECT) == "true")
-                        element.IsAspect = true;
-                    else
-                        element.IsAspect = false;
-
-                    if (htElement.GetString(NoonConstants.KISHIDDEN) == "true")
-                        element.IsHidden = true;
-                    else
-                        element.IsHidden = false;
-
-                    if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
-                        element.NoArtNeeded = true;
-                    else
-                        element.NoArtNeeded = false;
-
-                    if (htElement.GetString(NoonConstants.KRESATURATE) == "true")
-                        element.Resaturate = true;
-                    else
-                        element.Resaturate = false;
-
-                    if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
-                        element.Unique = true;
-                    else
-                        element.Unique = false;
-
-                    element.OverrideVerbIcon = htElement.GetString(NoonConstants.KVERBOVERRIDEICON);
-
-                    //INHERITANCE! only affects the properties below this line.
 
                     if (htElement.ContainsKey(NoonConstants.KINHERITS))
                     {
@@ -1622,7 +1583,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            foreach (Type t in assembly.GetTypes())
+            List<IEntity> allEntities = new List<IEntity>();
+
+        foreach (Type t in assembly.GetTypes())
             {
                 FucineImport importAttribute = (FucineImport) t.GetCustomAttribute(typeof(FucineImport), false);
                 
@@ -1640,7 +1603,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         IEntity entity = (IEntity)w.PopulateEntityWith(caseInsensitiveH);
 
-                        if(entity is IVerb v)
+                        allEntities.Add(entity);
+
+                        if (entity is IVerb v)
                             Verbs.Add(v.Id, v);
 
                         else if (entity is Legacy l)
@@ -1658,7 +1623,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 }
             }
 
-
+        
 
             //    ImportVerbs(alVerbs);
            // ImportElements(alElements);
@@ -1679,7 +1644,12 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             _compendium.UpdateLegacies(Legacies);
             _compendium.UpdateEndings(Endings);
 
-            foreach(var d in _compendium.GetAllDeckSpecs())
+            foreach (IEntity entity in allEntities)
+                entity.RefineWithCompendium(_logger, _compendium);
+
+
+
+        foreach (var d in _compendium.GetAllDeckSpecs())
                 d.RegisterUniquenessGroups(_compendium);
 
 

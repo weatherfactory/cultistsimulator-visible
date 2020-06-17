@@ -52,6 +52,11 @@ namespace Assets.Core.Entities
         [FucineId]
         public string Id { get; set; }
 
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
+        }
+
         [FucineValue("")]
         public string DefaultCardId { get; set; }
 

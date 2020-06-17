@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,11 @@ public class Recipe: IEntity
     private string _startDescription="";
     private string _label="";
     public string Id { get; set; }
+    public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+    {
+        
+    }
+
     public string ActionId { get; set; }
     public Dictionary<string, string> Requirements { get; set; }
     public Dictionary<string, string> TableReqs { get; set; }
@@ -206,6 +212,11 @@ public class LinkedRecipeDetails:IEntity
 
     [FucineId]
     public string Id { get; set; }
+
+    public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+    {
+        
+    }
 
     [FucineValue(0)]
     public int Chance { get; set; }

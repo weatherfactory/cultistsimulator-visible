@@ -29,8 +29,6 @@ namespace Assets.Core.Fucine
         public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
         public Type ObjectType { get; protected set; }
 
-
-
     }
 
     public class FucineValue : Fucine

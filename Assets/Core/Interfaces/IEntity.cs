@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,14 @@ namespace Assets.Core.Interfaces
     public interface  IEntity
     {
         string Id { get; set; }
+
+
+        /// <summary>
+        /// This is run for every entity when the compendium has been completely (re)populated. Use for entities that
+        /// need additional initialisation based on data from other entities
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="populatedCompendium"></param>
+        void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium);
     }
 }

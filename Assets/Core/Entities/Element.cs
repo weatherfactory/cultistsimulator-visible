@@ -46,7 +46,6 @@ namespace Assets.Core.Entities
         [FucineValue("")]
         public string UniquenessGroup { get; set; }
 
-
         //if true, when the card decays it should become more, rather than less saturated with colour (eg Fatigue->Health)
         [FucineValue(false)]
         public bool Resaturate { get; set; }
@@ -70,6 +69,9 @@ namespace Assets.Core.Entities
         [FucineValue(0)]
         public float Lifetime { get; set; }
 
+        [FucineValue("")]
+        public string Inherits { get; set; }
+
         [FucineAspects]
         public IAspectsDictionary Aspects { get; set; }
 
@@ -91,12 +93,7 @@ namespace Assets.Core.Entities
         public Dictionary<string, List<MorphDetails>> XTriggers { get; set; }
 
         private string _icon;
-
-
-    
         
- 
-
 
         /// <summary>
         /// all aspects the element has, *including* the aspect itself as an element
@@ -124,9 +121,7 @@ namespace Assets.Core.Entities
             Slots = new List<SlotSpecification>();
             Aspects = new AspectsDictionary();
             XTriggers = new Dictionary<string, List<MorphDetails>>();
-
             Induces = new List<LinkedRecipeDetails>();
-
 
         }
 
@@ -186,6 +181,19 @@ namespace Assets.Core.Entities
 
             UniquenessGroup = inheritFromElement.UniquenessGroup; //we would probably want to do this anyway, but also we are already inheriting aspects so we have to for tidiness
 
+        }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+
+            if (!string.IsNullOrEmpty(Inherits))
+            {
+
+                if (!populatedCompendium.IsKnownElement(Inherits))
+                    logger.LogProblem($"{Id} is trying to inherit from a nonexistent element, {Inherits}");
+                else
+                    InheritFrom(populatedCompendium.GetElementById(Inherits));
+            }
         }
 
     }

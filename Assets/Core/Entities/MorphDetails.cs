@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ namespace Assets.Core.Entities
 
         [FucineId]
         public string Id { get; set; }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
+        }
 
         [FucineValue(100)]
         public int Chance { get; private set; }
