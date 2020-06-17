@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 
 namespace Assets.Editor

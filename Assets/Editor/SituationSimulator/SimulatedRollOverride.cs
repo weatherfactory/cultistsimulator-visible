@@ -1,3 +1,5 @@
+using Assets.Core.Entities;
+
 namespace Assets.Editor
 {
     public class SimulatedRollOverride : IRollOverride
