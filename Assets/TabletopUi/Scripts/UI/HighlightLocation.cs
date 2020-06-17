@@ -8,11 +8,13 @@ public class HighlightLocation : MonoBehaviour
 {
 
     [SerializeField]
+#pragma warning disable 649
     private Image _glowMarker;
     [SerializeField]
     private Image _label;
     [SerializeField]
     private Image _domicile;
+#pragma warning restore 649
 
     private bool _displayingForPresence = false;
     private bool _highlightingForInteraction = false;

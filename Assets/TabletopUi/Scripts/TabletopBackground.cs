@@ -11,8 +11,10 @@ namespace Assets.CS.TabletopUI
         public event System.Action onDropped;
         public event System.Action onClicked;
 
+#pragma warning disable 649
         [SerializeField] Image Cover;
         [SerializeField] Image Edge;
+#pragma warning restore 649
 
 
         public void OnDrop(PointerEventData eventData) {
