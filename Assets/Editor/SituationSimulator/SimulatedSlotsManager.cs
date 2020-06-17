@@ -184,7 +184,7 @@ namespace Assets.Editor
         }
 
         public void SetupSlot(Recipe recipe) {
-            var slotSpec = (recipe != null && recipe.SlotSpecifications != null && recipe.SlotSpecifications.Count > 0) ? recipe.SlotSpecifications[0] : null;
+            var slotSpec = (recipe != null && recipe.Slots != null && recipe.Slots.Count > 0) ? recipe.Slots[0] : null;
             _ongoingSlot.Initialise(slotSpec);
             _isActive = slotSpec != null;
         }

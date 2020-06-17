@@ -103,10 +103,10 @@ namespace Assets.Core.Entities
         public List<LinkedRecipeDetails> Alt { get; set; }
 
         [FucineList]
-        public List<LinkedRecipeDetails> LinkedRecipes { get; set; }
+        public List<LinkedRecipeDetails> Linked { get; set; }
 
         [FucineValue("")]
-        public string EndingFlag { get; set; }
+        public string Ending { get; set; }
 
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Assets.Core.Entities
         public PortalEffect PortalEffect { get; set; }
 
         [FucineList]
-        public List<SlotSpecification> SlotSpecifications { get; set; }
+        public List<SlotSpecification> Slots { get; set; }
 
         //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
@@ -133,8 +133,8 @@ namespace Assets.Core.Entities
             ExtantReqs = new Dictionary<string, string>();
             Effects = new Dictionary<string, string>();
             Alt = new List<LinkedRecipeDetails>();
-            LinkedRecipes = new List<LinkedRecipeDetails>();
-            SlotSpecifications = new List<SlotSpecification>();
+            Linked = new List<LinkedRecipeDetails>();
+            Slots = new List<SlotSpecification>();
             Aspects = new AspectsDictionary();
             DeckEffects = new Dictionary<string, int>();
             Purge = new Dictionary<string, int>();

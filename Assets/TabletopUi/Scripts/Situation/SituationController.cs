@@ -109,7 +109,7 @@ namespace Assets.TabletopUi {
 
             situationWindow.SetOngoing(command.Recipe);
 
-            situationToken.DisplayMiniSlot(command.Recipe.SlotSpecifications);
+            situationToken.DisplayMiniSlot(command.Recipe.Slots);
             situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
 
@@ -251,7 +251,7 @@ namespace Assets.TabletopUi {
 
         public void SituationBeginning(Recipe withRecipe) {
             situationToken.DisplayStackInMiniSlot(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
-            situationToken.DisplayMiniSlot(withRecipe.SlotSpecifications);
+            situationToken.DisplayMiniSlot(withRecipe.Slots);
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
 
@@ -349,8 +349,8 @@ namespace Assets.TabletopUi {
             var executor = new SituationEffectExecutor(tabletopManager);
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter, Registry.Retrieve<IDice>());
 
-            if (command.Recipe.EndingFlag != null) {
-                var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
+            if (command.Recipe.Ending != null) {
+                var ending = compendium.GetEndingById(command.Recipe.Ending);
                 tabletopManager.EndGame(ending, this);
             }
 

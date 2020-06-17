@@ -56,10 +56,10 @@ namespace Assets.Core
         public Recipe GetLinkedRecipe(Recipe recipe)
         {
 
-            if (!recipe.LinkedRecipes.Any())
+            if (!recipe.Linked.Any())
                 return null;
 
-            foreach (var lr in recipe.LinkedRecipes)
+            foreach (var lr in recipe.Linked)
             {
                 if (lr.Additional)
                     throw new NotImplementedException(

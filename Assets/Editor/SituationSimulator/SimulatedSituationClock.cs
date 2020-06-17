@@ -43,7 +43,7 @@ namespace Assets.Editor
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {
-            return _currentPrimaryRecipe.SlotSpecifications.Any() ? _currentPrimaryRecipe.SlotSpecifications :
+            return _currentPrimaryRecipe.Slots.Any() ? _currentPrimaryRecipe.Slots :
                 new List<SlotSpecification>();
         }
 
