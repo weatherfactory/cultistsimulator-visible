@@ -255,7 +255,7 @@ requirements:{connection.underworld:1,op.sea:1,space:1},
 extantreqs:{opx.smuggling:-1},
 aspects:{fatiguing:1},
 warmup:5,
-alt:[{id:"opx.smuggling.setup", additional:true, expulsion:{limit:3,filter:{space:1,op.sea:1}}}],
+alt:[{id:"opx.smuggling.setup", additional:true, expulsion:{limit:3,filter:{op.connection.underworld:1,space:1,op.sea:1}}}],
 craftable:true},
 
 {id:"use.fights",
