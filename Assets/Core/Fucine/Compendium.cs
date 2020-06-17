@@ -289,12 +289,12 @@ public class Compendium : ICompendium
                 try
                 {
                     //assume only one override, but out after
-                    if (!string.IsNullOrEmpty(e.OverrideVerbIcon))
-                        return e.OverrideVerbIcon;
+                    if (!string.IsNullOrEmpty(e.VerbIcon))
+                        return e.VerbIcon;
                 }
                 catch (Exception)
                 {
-                   throw new ApplicationException("Couldn't find OverrideVerbIcon for element" + a.Key  + " - does that element exist?");
+                   throw new ApplicationException("Couldn't find VerbIcon for element" + a.Key  + " - does that element exist?");
                 }
             }
         }

@@ -38,7 +38,7 @@ namespace Assets.Core.Entities
         }
 
         [FucineValue("")]
-        public string OverrideVerbIcon { get; set; }
+        public string VerbIcon { get; set; }
 
         [FucineValue("")]
         public string DecayTo { get; set; }
