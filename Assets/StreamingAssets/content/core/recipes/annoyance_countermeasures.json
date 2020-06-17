@@ -99,7 +99,7 @@
 	  description:"My minion has returned, with a trophy. The Annoyance has been extirpated.",
 	  aspects:{endannoyance:1},
 	  effects: {corpse:1,notoriety:1},
-	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}],
+	  alt: [{id:"annoyancecapturesuccess",chance:30}],
 	  
 	  warmup:30	  
 	  },

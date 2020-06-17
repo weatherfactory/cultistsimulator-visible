@@ -5,7 +5,7 @@ label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjob:1},
 effects: {funds:3,legacybytjob:-1,legacybytjobmatured:1},
-alternativerecipes: [
+alt: [
 {id:bytopenexplore,chance:100,additional:true}],
 startdescription: "Possibly I'll get something done today.",
 description: "It's all going swimmingly. Although Papa's health is not improving. [<b>Explore</b> unlocked.]",
@@ -16,7 +16,7 @@ label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjobmatured:1},
 effects: {funds: 3},
-alternativerecipes: [
+alt: [
 {id:workbytjobend,chance:30}],
 startdescription: "Possibly I'll get something done today.",
 description: "It's all going swimmingly. Although Papa's health is still not improving.",
@@ -29,14 +29,14 @@ actionId: "work",
 startdescription: "Papa has summoned me! I must race to his bedside. All the family affairs are suspended, for now - ",
 craftable: false,
 effects:{legacybytjobmatured:-1,funds:2},
-alternativerecipes: [
+alt: [
 {id:"workbytjobepilogue",chance:100,additional:true}]
 },
 
 {id: "workbytjobepilogue",
 label: "Ghastly News",
 actionId: "legacyeventbad",
-alternativerecipes: [
+alt: [
 {id:"bytopenstudy",chance:100,additional:true}],
 effects: {health: 2, funds: 20},
 startdescription: "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. ",
@@ -58,7 +58,7 @@ craftable: false
 label: "Puzzling Papers",
 actionId: "study",
 startdescription:"I am to receive papers found among Papa's belongings, which might perhaps shed some sort of light on where exactly the hell all the money has gone.",
-alternativerecipes: [
+alt: [
 {id:"bytopendream",chance:100,additional:true}
 ],
 description: "I have received the papers. Poor Papa. Page after page after page of desperate scrawl on an invisible house and the colours of sleep and the invisible gods behind the world... but do you know, the more I read, the more it - well, not 'makes sense'. It doesn't make sense. But it does hang together. And here is Papa's diary.",
@@ -73,7 +73,7 @@ label: "Studying a Troubling Diary",
 actionId: "study",
 requirements: {legacydiarylastcharacter:1},
 
-alternativerecipes: [
+alt: [
 {id:"bytopentalk",chance:100,additional:true}
 ],
 effects: {legacydiarylastcharacter:-1,reason:1,fragmentgrail:1},
@@ -85,7 +85,7 @@ craftable: true
 {id: "bytopendream",
 label: "The House without Walls",
 actionId: "dream",
-alternativerecipes:[
+alt:[
 {id:despairrisk,chance:100,additional:true}
 ],
 startdescription:"The dreams begin. Papa spoke of them, and he said that his father before him had been so troubled. Something in our blood; a biting melancholy that kills the soul.",

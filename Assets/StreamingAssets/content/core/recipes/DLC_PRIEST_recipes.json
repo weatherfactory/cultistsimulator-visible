@@ -520,7 +520,7 @@ startdescription:"The deacon reads now from the Book of St Respicius: 'Bronze sh
 requirements:{restlessness:1},
 effects:{restlessness:-1},
 slots:[{id:"discipline",label:"Discipline",required:{injury:1,compensationb:1,hunger:1,vitality:1,erudition:1,glimmering:1,affliction:1}}],
-alternativerecipes:[{id:"a_scarhealth_edge",chance:100},
+alt:[{id:"a_scarhealth_edge",chance:100},
 	{id:"a_scarhealth_forge",chance:100},
 	{id:"a_scarhealth_grail",chance:100},
 	{id:"a_scarhealth_heart",chance:100},

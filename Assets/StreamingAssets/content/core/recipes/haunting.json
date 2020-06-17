@@ -18,7 +18,7 @@
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	slots: [{id:"Consuming",label:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
-	alternativerecipes:[
+	alt:[
 {id:"devourer_haunting_mortal_highdevourer",chance:100},
 {id:"devourer_haunting_mortal_middevourer",chance:100},
 {id:"devourer_haunting_mortal_lowdevourer",chance:100}
@@ -91,7 +91,7 @@
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	slots: [{id:"consuming",label:"Consuming",required: {health:1},greedy:true}],
 	warmup:30,
-alternativerecipes:	[
+alt:	[
 {id:"devourer_haunting_damageshealth_highdevourer",chance:100},
 {id:"devourer_haunting_damageshealth_middevourer",chance:100},
 {id:"devourer_haunting_damageshealth_lowdevourer",chance:100}
@@ -175,7 +175,7 @@ linked:[{id:"summoning_haunt_devourer_damages_health"}]
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	slots: [{id:"Consuming",label:"Consuming",required: {reason:1},greedy:true}],
 	warmup:30,
-alternativerecipes:	[
+alt:	[
 {id:"deceiver_haunting_reason_highdeceiver",chance:100},
 {id:"deceiver_haunting_reason_middeceiver",chance:100},
 {id:"deceiver_haunting_reason_lowdeceiver",chance:100}
@@ -246,7 +246,7 @@ linked:[{id:"summoning_haunt_deceiver_derangesreason"}]
 	aspects: {derangemortal:1},
 	slots: [{id:"Consuming",label:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
-	alternativerecipes:[
+	alt:[
 {id:"deceiver_haunting_mortal_highedge",chance:100},
 {id:"deceiver_haunting_mortal_midedge",chance:100},
 {id:"deceiver_haunting_mortal_lowedge",chance:100}

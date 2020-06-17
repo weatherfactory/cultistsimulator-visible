@@ -123,7 +123,7 @@ label:"Create Great Snares",
 actionId:"x",
 label:"Create Great Snares+",
 
-		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
+		mutations:[{filter:snare,mutate:snarelevel,level:3,additive:true}],
 		warmup:1
 		},
 
@@ -137,7 +137,7 @@ warmup:5},
 label: "Testing mutation",
 actionId: "work",
 requirements:{owl:1},
-mutations:[{filterOnAspectId:owl,mutateAspectId:dreadful,mutationLevel:10}],
+mutations:[{filter:owl,mutate:dreadful,level:10}],
 warmup: 1,
 craftable:true
 },

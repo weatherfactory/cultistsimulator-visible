@@ -7,7 +7,7 @@
         actionId: "study",
         requirements: {mapbookdealer:1},
 		effects: {mapbookdealer:-1,locationbookdealer:1},
-		alternativerecipes:	[{id: "openexplore",chance:100, additional: true}],
+		alt:	[{id: "openexplore",chance:100, additional: true}],
         startdescription: "The directions to Morland's shop are cryptic. When one deals in the kind of books my correspondent studied, one must be circumspect.",
         description: "An ill-lit street at an ill-favoured bend in a lesser river. A soft yellow light through a grimy window. Miss Morland nods as I enter, but doesn't rise. 'I never ask the names of my clients,' she informs me, before I have time to introduce myself.\n
 		[<b>Explore</b> is unlocked.]",

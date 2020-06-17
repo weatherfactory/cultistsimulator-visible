@@ -8,7 +8,7 @@ startdescription: "This one must serve another purpose now. Into the cupboard th
 description: "I've locked this one away safely. When their screaming and raving subsides, I will subdue them properly.",
 aspects: {capturefollower:1},
 effects: {notoriety:1},
-mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:-1}],
+mutations:[{filter:mortal,mutate:romanticinterest,level:-1}],
 craftable:true,
 warmup:10
 },
@@ -44,7 +44,7 @@ description:"@#ascensionlessonhearta|'Not my speciality.' Sulochana smiles
 #ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
 #ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
 #|Is she disappointed? It's difficult to tell, with Sulochana.@",
-alternativerecipes:[
+alt:[
 {id:"talk.apostleforge.sulochanaechidna"},
 {id:"talk.apostlegrail.sulochanamarinette"},
 {id:"apostlelantern.attemptrecruitkleidouchos.sulochana"},
@@ -196,7 +196,7 @@ label:"Speak to Poppy Lascelles",
 actionId: "talk",
 requirements: {poppyready: 1},
 slots: [{id:"Consent",label:"Consent",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
-alternativerecipes: [{id: "poppyofferaccept",chance:100},
+alt: [{id: "poppyofferaccept",chance:100},
 {id:"poppyofferquery",chance:100}],
 startdescription: "'My dear, I've been wanting to talk to you. Sometimes, I fund scholars of the invisible arts. I'd like to offer you my support. A substantial contribution. And all you need to do, some day, is to introduce me to someone else who'll end matters properly.' She smiles, benignly. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
 description: "I didn't take up Poppy's offer.",
@@ -210,7 +210,7 @@ requirements: {passion:1},
 startdescription: "'Yes, that's exactly right. I'll come back tonight.'",
 description: "A tiny packet of tiny treasures: a gift from Poppy. She'll see me again in the Season of Rags, for me to make the introduction I promised.",
 effects: {funds:10,compensationc:1,poppyready:-1},
-alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+alt: [{id:"poppytimebomb",chance:100,additional:true}]
 },
 {id: "poppyofferquery",
 label: "Question Poppy closely",
@@ -243,7 +243,7 @@ warmup:10
 label:"A Friendly Visit from Poppy",
 actionId: "poppytime",
 slots: [{id:"Sacrifice",label:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
-alternativerecipes: [{id:"poppysatiated",chance:100}],
+alt: [{id:"poppysatiated",chance:100}],
 warmup:60,
 signalEndingFlavour:Melancholy,
 ending: "wintersacrifice",

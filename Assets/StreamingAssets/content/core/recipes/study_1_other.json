@@ -5,7 +5,7 @@
         label: "Study a Dearly Departed's Papers",
         actionId: "study",
         requirements: {benefactorwill:1,funds:1},
-				alternativerecipes: [{id:"studybenefactorwill_suspicion",chance:30}],
+				alt: [{id:"studybenefactorwill_suspicion",chance:30}],
 				effects:{funds:49,benefactorwill:-1},
 		startdescription: "This situation requires discretion. Society considered our association improper.",
         description: "Our relations were never formalised. It would be unthinkable that I would inherit a significant portion of the estate. Nevertheless, I have been well provided for.",

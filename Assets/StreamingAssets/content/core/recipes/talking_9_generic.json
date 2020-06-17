@@ -23,7 +23,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
         requirements: {dayacquaintances:1},
 		slots:[{id:"escalation",label:"Passion",description:"I must be fervent and convincing.",required:{passion:1},greedy:true}],
         startdescription: "I've found someone who may be a kindred spirit - but I'll need to win them over. [Winning over an Acquaintance requires your Passion.]",
-		alternativerecipes:[{id:"talkmeetacquaintance",chance:100}],
+		alt:[{id:"talkmeetacquaintance",chance:100}],
         description: "I could not muster the Passion to bring them into my circle. Perhaps another time.",
 		effects:{season:-1},
         warmup: 60
@@ -35,7 +35,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
         requirements: {daypatrons:1},
 		slots:[{id:"escalation",label:"Reason",description:"I must be articulate and credible.",required:{reason:1},greedy:true}],
         startdescription: "I've found someone who may have resources of use to me - but I'll need to impress them. [Impressing a Patron demands your Reason.]",
-		alternativerecipes:[{id:"talkmeetpatron",chance:100}],
+		alt:[{id:"talkmeetpatron",chance:100}],
         description: "I could not muster the mental energy to show them what I am. Perhaps another time.",
 		effects:{season:-1},
         warmup: 60
@@ -70,7 +70,7 @@ label:"Arrange a meeting on neutral ground.",
 actionId: "talk",
 requirements: {independent: 1,society:-1,ritual:-1},
 slots: [{id:"Subject",label:"Subject",description:"A topic of conversation."}],
-alternativerecipes:[
+alt:[
 {id:"A_follower_settrap_independent",chance:100},
 {id:"independentloreconversation",chance:100},
 {id:"independentdesireconversation",chance:100},
@@ -110,7 +110,7 @@ deckeffect: {troublemakerconversations:1}
 	  requirements:{murderskill:1},
 	  startdescription:"We are meeting on neutral ground. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
 	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
-	  	  alternativerecipes:[{id:"independentfitewithswole_failure",chance:70}],
+	  	  alt:[{id:"independentfitewithswole_failure",chance:70}],
 	  effects:{notoriety:1},
 	  aspects:{killmortal:1},
 	  craftable:false
@@ -121,7 +121,7 @@ deckeffect: {troublemakerconversations:1}
 	  requirements:{healthskill:1},
 	  startdescription:"We are meeting on neutral ground. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
 	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
-	  	  alternativerecipes:[{id:"independentfitewithswole_failure",chance:90}],
+	  	  alt:[{id:"independentfitewithswole_failure",chance:90}],
 	  effects:{notoriety:1},
 	  aspects:{killmortal:1},
 	  craftable:false
@@ -133,8 +133,8 @@ deckeffect: {troublemakerconversations:1}
 	  description:"With a cry, they leap back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my rival. But I must leave immediately.",
 	  craftable:false,
 	  effects:{notoriety:1},
-	  	  mutations:[{filterOnAspectId:independent,mutateAspectId:wary,mutationLevel:1},
-		  {filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1, additive:true}],
+	  	  mutations:[{filter:independent,mutate:wary,level:1},
+		  {filter:independent,mutate:resentment,level:1, additive:true}],
 	  },
 	  
 	        {id: "independentspeakpoison",
@@ -143,8 +143,8 @@ deckeffect: {troublemakerconversations:1}
 	  requirements:{poison:1},
 	  startdescription:"'Do you like tea?'",
 	  description:"Your rival shakes their head in disappointment. 'Really?' They leave without another word, leaving their tea untouched on the table.",
-	  mutations:[{filterOnAspectId:independent,mutateAspectId:wary,mutationLevel:1},
-		  {filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1, additive:true}],
+	  mutations:[{filter:independent,mutate:wary,level:1},
+		  {filter:independent,mutate:resentment,level:1, additive:true}],
 	  craftable:false
 	  },
 
@@ -153,7 +153,7 @@ label:"Arrange a meeting with an adversary",
 actionId: "talk",
 requirements: {hunter: 1},
 slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a minion who will destroy them."}],
-alternativerecipes:[
+alt:[
 {id:"hunterfitewithextraswole"},
 {id:"hunterfitewithswole"},
 {id:"hunterspeakpoison_glassfinger"},
@@ -188,7 +188,7 @@ actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:1},
 slots: [{id:"Subject",label:"Subject",description:"A topic of conversation... or a target."}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
-alternativerecipes:[
+alt:[
 {id:"discusspassionsacrifice"},
 {id:"discussreasonsacrifice"},
 {id:"discusssicknessprotectionspirit"},
@@ -292,7 +292,7 @@ craftable: true
 	  startdescription:"'Shall I autograph it? I think that would be rather fun, wouldn't it?'",
 	  description:"'I used to live by Camden Lock, when I started writing this stuff down. If that isn't a joke of the Hours, I don't know what is. Let me tell you of my sources -'",
 	  effects:{erudition:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  mutations:[{filter:text,mutate:autographed,level:1}]	  
 	  },
 	  	  	  {id:"teresadiscusslocksmithsdream2",
 	  label:"Discuss the Locksmith's Dream, Volume 2",
@@ -301,7 +301,7 @@ craftable: true
 	  startdescription:"'Shall I autograph it? Would that be a little precious? No-one will believe it's the real thing, anyway. I'm supposed to be dead.'",
 	  description:"'I still think the Doors have to do with artisans' work - with making. I think that's how we begun to find our way into the House. But of course our ascents were always limited, until we learnt to speak. I'll try to explain...'",
 	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  mutations:[{filter:text,mutate:autographed,level:1}]	  
 	  },
 	  	  {id:"teresadiscusslocksmithsdream3",
 	  label:"Discuss the Locksmith's Dream, Volume 3",
@@ -310,7 +310,7 @@ craftable: true
 	  startdescription:"'I'll write my name in it, shall I? Only the name that Christopher called me. Not the name I use in here.'",
 	  description:"'Oh, my, I was in a state when I wrote this, wasn't I? Sorry about that. But I was right that death is down. That's one of the reasons I usually stay pretty high in the Mansus. I'll try to explain what I mean, a little -'",
 	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  mutations:[{filter:text,mutate:autographed,level:1}]	  
 	  },
 	  	  	  {id:"teresadiscusslocksmithsdream4",
 	  label:"Discuss the Locksmith's Dream, Volume 4",
@@ -319,7 +319,7 @@ craftable: true
 	  startdescription:"'I'll definitely sign that one. But I'm afraid no one will see the signature unless they're dreaming of the book.'",
 	  description:"'I got very excited about Janus, back then. Now I think that if Janus is anyone, that anyone must be the Watchman or the Meniscate. Riddles tend to expand, puzzles tend to resolve.'",
 	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  mutations:[{filter:text,mutate:autographed,level:1}]	  
 	  },
 	  
 	  	  	  	  {id:"teresadiscusslocksmithsdream5",
@@ -329,7 +329,7 @@ craftable: true
 	  startdescription:"'Now where exactly did you find this?'",
 	  description:"'I'll sign it. But not with my Name. Not yet, if ever.'",
 	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  mutations:[{filter:text,mutate:autographed,level:1}]	  
 	  },
 
 {
@@ -348,7 +348,7 @@ craftable: true
         id: "begincultfoundation_createcult",
         label: "Found a Mystical Organisation",
 		extantreqs:{society:-1},
-		alternativerecipes:
+		alt:
 		[{id: "cultfoundation", chance:100, additional: true}],
         actionId: "talk",
         effects: {notoriety:1},

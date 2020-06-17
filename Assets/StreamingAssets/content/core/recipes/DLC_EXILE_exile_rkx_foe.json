@@ -96,7 +96,7 @@ actionId:"rkx.foe",
 label:"Laugh as the Lionsmith Laughed",
 startdescription:"I could lampoon my Foe with a certain very ancient mocking gesture... leaving myself open to attack. Perhaps the Hour called Lionsmith would enjoy my audacity. [Suffer two Wounds but gain a level of Defiance.]",
 requirements:{defiance.consecration.lionsmith:1,defiance.foetaunted:-1},
-mutations:[{filterOnAspectId:defiance.consecration.lionsmith,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+mutations:[{filter:defiance.consecration.lionsmith,mutate:defiancemarks,level:1,additive:true}],
 alt:[{id:"spit.foe.attack.success.mocked", additional:true, expulsion:{limit:1,filter:{desire:1}}}],
 linked:[{id:"rkx.foe.attack.success.mocked"}]},
 

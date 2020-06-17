@@ -99,8 +99,8 @@ startdescription:"The Hours of struggle and conquest acknowledge victories. I ca
 description:"It's done. In the hour when day battles night, the Many-Winged Ones descend to judge my prize, and when they depart, they leave only scraps of bone and hanks of hair.",
 requirements:{corpse.exile.underling:1,temptation.defiance:1,defiance.underlingdefeated:-1},
 effects:{corpse.exile.underling:-1},
-mutations:[{filterOnAspectId:temptation.defiance,mutateAspectId:defiance.underlingdefeated,mutationLevel:1},
-{filterOnAspectId:temptation.defiance,mutateAspectId:defiancemarks,mutationLevel:1,additive:true}],
+mutations:[{filter:temptation.defiance,mutate:defiance.underlingdefeated,level:1},
+{filter:temptation.defiance,mutate:defiancemarks,level:1,additive:true}],
 warmup:60,
 craftable:true},
 

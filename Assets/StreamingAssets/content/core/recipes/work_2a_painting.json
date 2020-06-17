@@ -13,7 +13,7 @@
 					consumes:true,
 					description: "If I am restless, perhaps this is what I want.",
 				}],
-		alternativerecipes:[{id:"paintbasicsuccess",chance:30}],
+		alt:[{id:"paintbasicsuccess",chance:30}],
 		deckeffect:{paintingresultsbasic:1},
 		aspects:{fatiguing:1},
 		craftable:true,
@@ -43,7 +43,7 @@
         startdescription: "You never know. This might be a living. [Add Passion to make distinctive paintings. Add Mystique and especially Notoriety to attract attention and make more money. Be careful: if you use Notoriety, exhibiting paintings will keep you in the public eye.]",
         warmup: 20,
         craftable: true,
-		alternativerecipes:[
+		alt:[
 		{id:"painthasgrandmemory.nocanvas",chance:100},
 			{id:"painthasgrandmemory",chance:100},
 		{id:"painthaslore",chance:100},
@@ -376,7 +376,7 @@ warmup:30
 					label:"Paints",
 					required: {pigment:1,funds:1},
 				}],
-				alternativerecipes:[{id:"paintluck",chance:30}],
+				alt:[{id:"paintluck",chance:30}],
 				linked:[{id:"paintfourpassion",chance:100},
 				{id:"paintthreepassion",chance:100},
 				{id:"painttwopassion",chance:100},
@@ -452,7 +452,7 @@ warmup:30
 	},
 {id:"paintcheckpigment",
 actionId:"work",
-alternativerecipes:[
+alt:[
 {id:"painthasfunds",chance:100},
 {id:"painthaspigment",chance:100},
 {id:"paintresults",chance:100}

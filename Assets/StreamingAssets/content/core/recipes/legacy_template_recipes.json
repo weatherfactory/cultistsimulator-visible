@@ -6,7 +6,7 @@ actionId: "work",
 requirements: {legacytemplatejob:1},
 aspects: {careeradvancement:1},
 effects: {legacytemplate_plotitem:1},
-alternativerecipes: [{id:"templateopenstudy",chance:100,additional:true}],
+alt: [{id:"templateopenstudy",chance:100,additional:true}],
 startdescription: "",
 description: "",
 warmup:10,
@@ -16,7 +16,7 @@ craftable: true},
 label: "",
 actionId: "work",
 requirements: {legacytemplatejob_matured:1},
-alternativerecipes: [
+alt: [
 {id:needs,chance:100,additional:true}],
 effects: {funds:1},
 
@@ -42,7 +42,7 @@ description:"",
 effects: {LEVER_LastDesire:1},
 warmup:60,
 craftable: false,
-alternativerecipes:[
+alt:[
 {id:visionsrisk,chance:100,additional:true}
 ],
 },
@@ -53,7 +53,7 @@ label: "OPEN STUDY",
 actionId: "study",
 startdescription:"",
 description:"",
-alternativerecipes: [
+alt: [
 {id:"templateopendream",chance:100,additional:true}
 ],
 description: "",
@@ -89,7 +89,7 @@ label: "",
 actionId: "study",
 requirements: {legacytemplate_plotitem:1},
 
-alternativerecipes: [
+alt: [
 {id:"templateopendream",chance:100,additional:true}
 ],
 effects: {legacytemplate_plotitem:-1,fascination:1},

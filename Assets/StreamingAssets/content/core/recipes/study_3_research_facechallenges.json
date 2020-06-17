@@ -54,7 +54,7 @@ warmup:30
 actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved a Knowlege challenge.]",
-mutations: [{filter:lore,mutateAspectId:challenge.knowledge,level:-1}],
+mutations: [{filter:lore,mutate:challenge.knowledge,level:-1}],
 warmup:30,
 effects:{erudition:-1},
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
@@ -87,7 +87,7 @@ warmup:30
 actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved an Intuition challenge.]",
-mutations: [{filter:lore,mutateAspectId:challenge.intuition,level:-1}],
+mutations: [{filter:lore,mutate:challenge.intuition,level:-1}],
 warmup:30,
 effects:{glimmering:-1},
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
@@ -121,7 +121,7 @@ warmup:30
 actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved a Grim challenge.]",
-mutations: [{filter:lore,mutateAspectId:challenge.grim,level:-1}],
+mutations: [{filter:lore,mutate:challenge.grim,level:-1}],
 warmup:30,
 alt:[{id:"dreadinduction_ifdread",chance:70,additional:true}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
@@ -157,7 +157,7 @@ actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved an Obsessive challenge.]",
 aspects:{fatiguing:1},
-mutations: [{filter:lore,mutateAspectId:challenge.obsessive,level:-1}],
+mutations: [{filter:lore,mutate:challenge.obsessive,level:-1}],
 warmup:30,
 linked:[{id:"studyresearch.damagereason",chance:10},
 {id:"studyresearch.attemptsolve",chance:100}]
@@ -202,7 +202,7 @@ actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved a Paradoxical challenge.]",
 aspects:{fatiguing:1},
-mutations: [{filter:lore,mutateAspectId:challenge.paradox,level:-1}],
+mutations: [{filter:lore,mutate:challenge.paradox,level:-1}],
 warmup:30,
 linked:[{id:"studyresearch.damagepassion",chance:10},
 {id:"studyresearch.attemptsolve",chance:100}]
@@ -244,7 +244,7 @@ warmup:30
 actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved an Illumination challenge.]",
-mutations: [{filter:lore,mutateAspectId:challenge.illumination,level:-1}],
+mutations: [{filter:lore,mutate:challenge.illumination,level:-1}],
 warmup:30,
 alt:[{id:"fascinationinduction_iffascination",chance:70,additional:true}],
 linked:[{id:"studyresearch.attemptsolve",chance:100}]
@@ -279,7 +279,7 @@ actionId:"study",
 label:"Aha - !",
 startdescription:" - there it is. Is that it? [You have resolved a Practical challenge.]",
 aspects:{fatiguing:1},
-mutations: [{filter:lore,mutateAspectId:challenge.practical,level:-1}],
+mutations: [{filter:lore,mutate:challenge.practical,level:-1}],
 warmup:30,
 linked:[{id:"studyresearch.damagehealth",chance:30},
 {id:"studyresearch.attemptsolve",chance:100}]
@@ -311,13 +311,13 @@ startdescription:"Now - now I understand!",
 description:"",
 warmup:30,
 requirements:{challenge.knowledge:-1,challenge.intuition:-1,challenge.grim:-1,challenge.obsessive:-1,challenge.paradox:-1,challenge.illumination:-1,challenge.practical:-1},
-mutations:[{filter:lore,mutateAspectId:challenge.knowledge,level:0},
-{filter:lore,mutateAspectId:challenge.intuition,level:0},
-{filter:lore,mutateAspectId:challenge.grim,level:0},
-{filter:lore,mutateAspectId:challenge.obsessive,level:0},
-{filter:lore,mutateAspectId:challenge.paradox,level:0},
-{filter:lore,mutateAspectId:challenge.illumination,level:0},
-{filter:lore,mutateAspectId:challenge.practical,level:0}],
+mutations:[{filter:lore,mutate:challenge.knowledge,level:0},
+{filter:lore,mutate:challenge.intuition,level:0},
+{filter:lore,mutate:challenge.grim,level:0},
+{filter:lore,mutate:challenge.obsessive,level:0},
+{filter:lore,mutate:challenge.paradox,level:0},
+{filter:lore,mutate:challenge.illumination,level:0},
+{filter:lore,mutate:challenge.practical,level:0}],
 linked: [
 
 		{id:"studyproject_upgrade_edge",chance:100},
@@ -365,7 +365,7 @@ linked: [
 	requirements: {},
 	effects: {},
 	slots:[{id:"Reason",required: {reason:1}, greedy:true}],
-	alternativerecipes: [
+	alt: [
 	{id: "studyresearchreasonsuccess",chance:100}],
 	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
 	description: "I need to use my Reason to help my research.",
@@ -391,7 +391,7 @@ linked: [
 	requirements: {},
 	effects: {},
 	slots:[{id:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
-	alternativerecipes: [
+	alt: [
 	{id: "studyresearcheruditionsuccess",chance:100}],
 	startdescription: "My research needs Erudition.",
 	description: "My research needs Erudition.",
@@ -416,7 +416,7 @@ linked: [
 	requirements: {},
 	effects: {},
 	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
-	alternativerecipes: [
+	alt: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
 	startdescription: "My research needs a Glimmering. ",
 	description: ".",
@@ -438,12 +438,12 @@ linked: [
 	actionId: "study",
 	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
 	requirements: {insight: 3},
-	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
+	alt: [{id: "studyresearchconclusion",chance:100}]
 	},
 	{id: "studyresearchconclusion",
 	actionId: "study",
 	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
-	alternativerecipes: [
+	alt: [
 	{id: "studyresearchmaxinsight",chance:100},
 	{id: "studyresearchmoderateinsight",chance:100},
 	{id: "studyresearchminimalinsight",chance:100},
@@ -454,7 +454,7 @@ linked: [
 						{
 	id: "studyresearchmaxinsight",
 	label: "Research complete, max insight",
-		alternativerecipes: [
+		alt: [
 	{id: "studyresearchsuccess",chance:100}],
 	actionId: "study",
 	requirements: {insight:3},
@@ -467,7 +467,7 @@ linked: [
 					{
 	id: "studyresearchmoderateinsight",
 	label: "Research complete, some insight",
-		alternativerecipes: [
+		alt: [
 	{id: "studyresearchsuccess",chance:70},
 	{id: "studyresearchconsolation",chance:100}],
 	actionId: "study",
@@ -482,7 +482,7 @@ linked: [
 	label: "Research complete, minimal insight",
 	actionId: "study",
 	requirements: {insight:1},
-			alternativerecipes: [
+			alt: [
 	{id: "studyresearchsuccess",chance:30},
 	{id: "studyresearchconsolation",chance:100}],
 	requirements: {},

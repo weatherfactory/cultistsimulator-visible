@@ -10,7 +10,7 @@
         description: ".",
         warmup: 30,
         craftable: false,
-		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
+		alt:[{id:"playerincreasedbid",chance:100}],
 		linked:[{id:"auctionfailureclear",chance:100}],
 		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
        },
@@ -40,7 +40,7 @@ linked:[{id:"auctionbidmatched"}]},
 	   startdescription:"Someone else has matched my bid! I must match it with more funds, or forgo my prize.",
 	   description:".",
 	   slots:[{id:"Bid",required: {funds:1}}],
-		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
+		alt:[{id:"playerincreasedbid",chance:100}],
 		linked:[{id:"auctionfailureclear",chance:100}],
 		warmup:30
 	},

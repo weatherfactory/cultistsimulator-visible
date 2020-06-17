@@ -6,7 +6,7 @@
 	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without Lantern or Heart, it may follow us back home and dessicate the spirit.",
 	requirements: {curse_dread:1},
 	slots:[{id:"Assistance",label:"Assistance",description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
+	alt: [
 	{id: "explorevaultcurse_dread_highheart",chance:100},
 	{id: "explorevaultcurse_dread_highlantern",chance:100},
 	{id: "explorevaultcurse_dread_midheart",chance:100},
@@ -95,7 +95,7 @@
 	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
 	description: ".",
 	effects: {curse_dread:-1},
-	alternativerecipes: [{id: "curse_dread_dormant",chance:100,additional:true}],
+	alt: [{id: "curse_dread_dormant",chance:100,additional:true}],
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
 		warmup:30
@@ -108,7 +108,7 @@
 	startdescription: "The treasures ahead lie under a Fifth Eye Curse. Without Winter or Heart, it may follow us back home and tear open the eye of the soul.",
 	requirements: {curse_visions:1},
 	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
+	alt: [
 	{id: "explorevaultcurse_visions_highheart",chance:100},
 	{id: "explorevaultcurse_visions_highwinter",chance:100},
 	{id: "explorevaultcurse_visions_midheart",chance:100},
@@ -197,7 +197,7 @@
 	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
 	description: ".",
 	effects: {curse_visions:-1},
-	alternativerecipes: [{id: "curse_visions_dormant",chance:100,additional:true}],
+	alt: [{id: "curse_visions_dormant",chance:100,additional:true}],
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
 		warmup:30
@@ -212,7 +212,7 @@
 	startdescription: "The treasures ahead lie under a Creeping Breath Curse. Without Grail or Heart, it may follow us back home, and settle like spores into our lungs.",
 	requirements: {curse_affliction:1},
 	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
+	alt: [
 	{id: "explorevaultcurse_affliction_highheart",chance:100},
 	{id: "explorevaultcurse_affliction_highgrail",chance:100},
 	{id: "explorevaultcurse_affliction_midheart",chance:100},
@@ -301,7 +301,7 @@
 	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
 	description: ".",
 	effects: {curse_affliction:-1},
-	alternativerecipes: [{id: "curse_affliction_dormant",chance:100,additional:true}],
+	alt: [{id: "curse_affliction_dormant",chance:100,additional:true}],
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
 		warmup:30
@@ -317,7 +317,7 @@
 	startdescription: "Here is a place where the world's skin yellowed with fever. Lantern or Moth might protect us. Nothing else will. ",
 	requirements: {curse_nowhere:1},
 	slots:[{id:"Assistance",label:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
-	alternativerecipes: [
+	alt: [
 	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
 	{id: "explorevaultcurse_nowhere_highlantern",chance:100},
 	{id: "explorevaultcurse_nowhere_midmoth",chance:100},
@@ -406,7 +406,7 @@
 	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the Curse will tighten around us.",
 	description: ".",
 	effects: {curse_nowhere:-1},
-	alternativerecipes: [{id: "curse_nowhere_dormant",chance:100,additional:true}],
+	alt: [{id: "curse_nowhere_dormant",chance:100,additional:true}],
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
 		warmup:30

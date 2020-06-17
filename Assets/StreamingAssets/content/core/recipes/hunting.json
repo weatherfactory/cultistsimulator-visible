@@ -31,7 +31,7 @@
 		startdescription: "If a Hunter has found Notoriety, they will try to use it to create or upgrade Evidence. If they're Meticulous, they'll always succeed. If they're Erratic, they're more likely to fail... but they can occasionally create Evidence even without Notoriety.",
 		description: "I am safe, for now. My adversary has not enough evidence to bring a case against me, and they've found no new clues.",
 		slots: [{id:"Evidence",label:"Evidence",required: {evidenceb:1,evidence: 1}, greedy: true}],
-		alternativerecipes:[{id:"suspicionpretrial",chance:100},
+		alt:[{id:"suspicionpretrial",chance:100},
 		{id:"suspicionerratic_alwaysfail",chance:10},
 		{id:"suspicionpromoteevidencemeticulous",chance:100},
 		{id:"suspicionpromoteevidence",chance:70},
@@ -110,7 +110,7 @@
 		actionId: "suspicion",
 		startdescription: "The wrong kind of reputation might awaken the interest of the curious, the puritanical, or the vengeful. [A Reputation may inspire an adversary to emerge.]",
 		slots: [{id:"Clues",label:"Clues", required: {reputation: 1}, greedy: true}],
-		alternativerecipes:[{id:"suspicioncreatefirsthunter",chance:100},
+		alt:[{id:"suspicioncreatefirsthunter",chance:100},
 		{id:"suspicioncreatehunter",chance:100}],
 		description: "My name, just now, is clear. Any guardians remain in the shadows.",
 		effects:{contentment:1},
@@ -264,7 +264,7 @@
 	label:"The Bureau's Fury",
 				startdescription:"My associate has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go... though they may harbour a grudge against me. The Bureau has been stymied for the moment.",
 	aspects:{investigatingsetback:1},
-mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
+mutations:[{filter:follower,mutate:resentment,level:1,additional:true}]	
 	},
 	{
 	id:"suspicion_meexonerated",
@@ -298,7 +298,7 @@ mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:1,
 	label:"The Bureau's Fury",
 				startdescription:"My Rival has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go... though they will no doubt blame me for their hardships.",
 	aspects:{investigatingsetback:1},
-mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
+mutations:[{filter:independent,mutate:resentment,level:1,additional:true}]	
 	},
 
 

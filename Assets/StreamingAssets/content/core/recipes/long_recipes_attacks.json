@@ -356,8 +356,8 @@ effects:{long.lesson.might:1}
 actionId:"longassault",
 label:"A Defeat",
 startdescription:"We all suffer in the service of our Founder. Perhaps that suffering enhances our worthiness.",
-mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
-{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}] }],
+mutations:[{filter:mortal,mutate:follower_wound,level:1,additive:false},
+{filter:mortal,mutate:follower,level:-1,additive:false}] }],
 warmup:30},
 
 
@@ -400,7 +400,7 @@ label:"Petty Theft",
 startdescription:"Our enemy has set a pickpocket to bedevil me.",
 description:"So much the worse for my enemy: I have no money to steal.",
 slots:[{id:"funds",label:"Funds",required:{funds:1},greedy:true}],
-alternativerecipes:[{id:"long.executestrategy.assault.rob.continue",chance:100}],
+alt:[{id:"long.executestrategy.assault.rob.continue",chance:100}],
 warmup:10},
 
 {id:"long.executestrategy.assault.rob.continue",
@@ -1065,7 +1065,7 @@ description:"Our enemy has searched the Mansus-halls for the glint of my reflect
 slots:[{id:"impulses",label:"Impulses",greedy:true,required:{fascination:1}}],
 warmup:10,
 craftable:false,
-alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
+alt:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
 },
 
 
@@ -1085,7 +1085,7 @@ description:"My fears are lost in darkness. Our enemy has found nothing.",
 slots:[{id:"impulses",label:"Impulses",greedy:true,required:{dread:1}}],
 warmup:10,
 craftable:false,
-alternativerecipes:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
+alt:[{id:"long.executestrategy.dreams.learndreams.continue",chance:100}]
 },
 
 {id:"long.executestrategy.dreams.learnfears.continue",

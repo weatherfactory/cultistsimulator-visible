@@ -21,7 +21,7 @@ craftable:true
         actionId: "dream",
         requirements: {health:1},
 		effects: {fleeting:1},
-		alternativerecipes: [{id:"dreamhealthdread",chance:10},
+		alt: [{id:"dreamhealthdread",chance:10},
 		{id:"dreamhealthfascination",chance:10},
 		{id:"dreamhealthcontentment",chance:30},
 		{id:"dream_router",chance:30}],
@@ -172,7 +172,7 @@ craftable:true},
         description: "Oh, that deep peace. But I should not do this again.",
         warmup: 30,
         craftable: true,
-		alternativerecipes: [
+		alt: [
 		{id:"grailinduction",chance:30,additional:true},
 		{id:"despairrisk",chance:10,additional:true},
 		{id:"presickness",chance:10,additional:true}]

@@ -40,7 +40,7 @@
 	label: "Junior Work at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {gloverandgloverjuniorjob: 1,ritual:-1},
-	          alternativerecipes:
+	          alt:
 		[{id: "gloverandglover_diligence", chance:100}],
 		effects: { funds: 1},
 	actionId:"work",
@@ -59,7 +59,7 @@
 	label: "Extra Effort at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {reason: 1},
-	          alternativerecipes:[{id: "gloverandgloverjunior_diligence_promotion", chance:100}],
+	          alt:[{id: "gloverandgloverjunior_diligence_promotion", chance:100}],
 		effects: { funds: 1},
 	actionId:"work",
         startdescription: "I will apply extra effort. Perhaps they'll appreciate it.",
@@ -85,7 +85,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	label: "Junior Work at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {gloverandgloverjuniorjob_nodifficultbossa: 1,ritual:-1},
-	          alternativerecipes:
+	          alt:
 		[{id: "gloverandglover_diligence_again", chance:100}],
 		effects: { funds: 1},
 	actionId:"work",
@@ -104,7 +104,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	label: "Extra Effort at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {reason: 1},
-	          alternativerecipes:[{id: "gloverandgloverjunior_diligence_promotion_again", chance:100}],
+	          alt:[{id: "gloverandgloverjunior_diligence_promotion_again", chance:100}],
 		effects: { funds: 1},
 	actionId:"work",
         startdescription: "I will apply extra effort. Perhaps they'll appreciate it; perhaps I'll regain a higher position.",
@@ -175,7 +175,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	description:"'On this occasion I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
 	
 [There may be ways to deal with Mr Alden.]",
-	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
+	alt:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
 maxexecutions:1
@@ -194,7 +194,7 @@ maxexecutions:1
 	description:"'Once again, I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
 	
 [There may be ways to deal with Mr Alden.]",
-	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
+	alt:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
 	linked: [{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:2}]
@@ -231,7 +231,7 @@ maxexecutions:1
 	label: "Work at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {gloverandgloverjob: 1},
-	          alternativerecipes:
+	          alt:
 		[{id: "gloverandglover_diligence_promotion", chance:100}],
 		effects: {funds: 2},
 	actionId:"work",
@@ -262,7 +262,7 @@ maxexecutions:1
 	label: "Work at Glover & Glover",
 			aspects: {employment:1},
 	  requirements: {gloverandgloverjob_youngerglovergone: 1},
-	          alternativerecipes:
+	          alt:
 		[{id: "gloverandglover_diligence_promotion_again", chance:100}],
 		effects: {funds: 2},
 	actionId:"work",
@@ -304,7 +304,7 @@ maxexecutions:1
 					required: {passion: 1},
 					description: "I could devote my life to this."
 				}],
-				alternativerecipes: [{id: "workvictory",chance:100}],
+				alt: [{id: "workvictory",chance:100}],
 				craftable: true
 	},
 	
@@ -343,7 +343,7 @@ maxexecutions:1
 					required: {passion: 1},
 					description: "The younger Glover's board seat remains unoccupied..."
 				}],
-				alternativerecipes: [{id: "gloverandgloversenior_diligence_promotion",chance:30}],
+				alt: [{id: "gloverandgloversenior_diligence_promotion",chance:30}],
 				craftable: true
 	},
 						{id: "gloverandgloverseniorwork_youngerglovergone_hint",
@@ -381,7 +381,7 @@ maxexecutions:1
 	
 	effects: { funds: 4,notoriety:-1},
 	craftable: true,
-	alternativerecipes: [{id:"gloverandglovertopwork_scandal_a",chance:30}]
+	alt: [{id:"gloverandglovertopwork_scandal_a",chance:30}]
 	},
 		{id: "gloverandglovertopwork_scandal_a",
 				aspects: {employment:1},
@@ -409,7 +409,7 @@ maxexecutions:1
 	
 	effects: {funds: 4,notoriety:-1},
 	craftable: true,
-	alternativerecipes: [{id:"gloverandglovertopwork_scandal_b",chance:70}]
+	alt: [{id:"gloverandglovertopwork_scandal_b",chance:70}]
 	},
 			{id: "gloverandglovertopwork_scandal_b",
 	label: "Disgraced!",
@@ -439,7 +439,7 @@ maxexecutions:1
         effects: {
             funds: 1,dread:1
         },
-		alternativerecipes:[{id:"workbeg_lucky",chance:30}],
+		alt:[{id:"workbeg_lucky",chance:30}],
         startdescription: "I'll display my infirmities, and hope for compassion from passers-by.",
         description: "A long day. Some flung coins, most turned away. It is difficult to watch so many retreating backs for so many hours.",
         warmup: 90,
@@ -504,7 +504,7 @@ maxexecutions:1
 		{
         id: "workhealthskilla",
         label: "Unskilled Labour: Arms of Bronze",
-		alternativerecipes:
+		alt:
 		[{id: "workhealthinjury", chance:10}],
         actionId: "work",
         requirements: {health: 1,healthskill:1,ritual:-1,job:-1,benefactor:-1},
@@ -528,7 +528,7 @@ maxexecutions:1
         effects: {
           vitality:1,funds:1
         },
-		alternativerecipes:[{id: "needs", chance:100, additional:true}],
+		alt:[{id: "needs", chance:100, additional:true}],
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
@@ -539,7 +539,7 @@ maxexecutions:1
 	{
         id: "workhealth",
         label: "Unskilled Labour",
-		alternativerecipes:
+		alt:
 		[{id: "workhealthinjury", chance:30}],
         actionId: "work",
         requirements: {health: 1,ritual:-1,job:-1,benefactor:-1},

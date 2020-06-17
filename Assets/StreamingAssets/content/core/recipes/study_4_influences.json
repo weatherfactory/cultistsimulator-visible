@@ -20,7 +20,7 @@
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:-1,forge:-1,knock:-1},
 	effects: {project_influence_upgrade_edge:1},
-	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
+	alt:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All of the greatest struggles end in death. [This will upgrade your Edge influence.]",
@@ -34,7 +34,7 @@
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
-	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
+	alt:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All things end. I will meditate on the triumph of patience over strength. [This will create Winter influence instead of Edge.]",
@@ -161,7 +161,7 @@
 	label: "Embrace the Possibilities of Peril",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:-1,grail:-1,knock:-1},
-	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
+	alt:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_upgrade_moth:1},
 
 	linked: [
@@ -177,7 +177,7 @@
 	label: "Subvert Moth Influence",
 	actionId: "study",
 	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:1},
-	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
+	alt:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_subvert_mothtolantern:1},
 
 	linked: [

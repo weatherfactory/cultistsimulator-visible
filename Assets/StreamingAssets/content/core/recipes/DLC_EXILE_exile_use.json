@@ -463,7 +463,7 @@ startdescription:"A long harsh note like a gull's cry, which grows louder as I t
 description:"And there's the <i>Sapphire</i>, Mme Matutine's yacht, gliding into harbour like a white knife drawn across green glass.",
 requirements:{op.sea:1,curio.morgen:1,uses.remaining:1},
 effects:{op.morgen:1},
-mutations:[{filterOnAspectId:curio.morgen,mutateAspectId:uses.remaining,mutationLevel:-1,additive:true}],
+mutations:[{filter:curio.morgen,mutate:uses.remaining,level:-1,additive:true}],
 warmup:60,craftable:true},
 
 {id:"use.renew.op.cats",

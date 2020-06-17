@@ -13,7 +13,7 @@
         warmup: 60,
         craftable: true,
 		comments:"it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
-		mutations:[{filterOnAspectId:corpse,mutateAspectId:follower,mutationLevel:0}],
+		mutations:[{filter:corpse,mutate:follower,level:0}],
     },
   	{
         id: "summon_spirit_wintera_moth",
@@ -26,7 +26,7 @@
         warmup: 60,
         craftable: true,
 		comments:"it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
-		mutations:[{filterOnAspectId:corpse,mutateAspectId:follower,mutationLevel:0}]
+		mutations:[{filter:corpse,mutate:follower,level:0}]
     },
 	 
  	{
@@ -226,7 +226,7 @@
 	requirements: {},
 	startdescription: "The summoning is struggling against my control! I could use Reason to dismiss it safely, which is always reliable. I could try to reassert control with Passion, which is not reliable. Or I could let what will happen, happen.",
 	description: "It's escaped my control!",
-	alternativerecipes:[{id:"summoningshutitdown",chance:100},
+	alt:[{id:"summoningshutitdown",chance:100},
 	{id:"summoningfightformastery",chance:100}],
 	slots: [{id:"Effort",
 	label:"Effort",
@@ -266,7 +266,7 @@
 	startdescription: "It's free!",
 	description: "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
 	warmup:5,
-		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true,expulsion:{limit:1,filter:{manifesting:1}}},
+		alt: [{id: "summoning_haunt_devourer",chance:100,additional:true,expulsion:{limit:1,filter:{manifesting:1}}},
 		{id: "summoning_haunt_deceiver",chance:100,additional:true,expulsion:{limit:1,filter:{manifesting:1}}}]
 	},
 	
