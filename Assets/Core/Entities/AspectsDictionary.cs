@@ -14,6 +14,7 @@ namespace Assets.Core
         List<string> KeysAsList();
         void CombineAspects(IAspectsDictionary additionalAspects);
         void ApplyMutations(Dictionary<string, int> mutations);
+        
     }
 
     public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary

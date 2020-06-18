@@ -36,12 +36,12 @@ public class SlotSpecification:IEntityKeyed
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
     [FucineAspects]
-    public IAspectsDictionary Required { get; set; }
+    public AspectsDictionary Required { get; set; }
     /// <summary>
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
     [FucineAspects]
-    public IAspectsDictionary Forbidden { get; set; }
+    public AspectsDictionary Forbidden { get; set; }
 
     /// <summary>
     /// A Greedy slot will find a card on the desktop that matches its specification, and insert it.

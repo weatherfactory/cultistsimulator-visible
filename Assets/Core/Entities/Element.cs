@@ -73,7 +73,7 @@ namespace Assets.Core.Entities
         public string Inherits { get; set; }
 
         [FucineAspects]
-        public IAspectsDictionary Aspects { get; set; }
+        public AspectsDictionary Aspects { get; set; }
 
        [FucineList]
        public List<SlotSpecification> Slots { get; set; }

@@ -33,23 +33,14 @@ namespace Assets.Core.Fucine
             
            var entityProperties = _entityType.GetProperties();
 
-           FucineImportFactory importFactory = new FucineImportFactory(newEntity, importDataForEntity,_logger,_entityType);
-
-            foreach (var thisProperty in entityProperties) 
+            foreach (var thisProperty in entityProperties)
             {
-              
-                //Walk every property. If the property is a Fucine property, 
-                if (Attribute.GetCustomAttribute(thisProperty,typeof(Fucine)) is Fucine fucinePropertyAttribute)
-                    //check if the import data has a key *at this level* for that property
-                    if (importDataForEntity.ContainsKey(thisProperty.Name))
-                        //if it does, populate the property (which may subsequently turn out to be an entity in its own right)
-                       importFactory.PopulateProperty(importDataForEntity, thisProperty, newEntity, entityProperties);
+                if(Attribute.GetCustomAttributes(thisProperty,typeof(Fucine)).Any())
+                {
 
-                    else
-                        //if there's no value for the property in the data, deal with it as unspecified
-                        importFactory.FucineDefaultValuePopulation(thisProperty, newEntity,
-                            fucinePropertyAttribute);
-
+                   FucineImport import = FucineImport.CreateInstance(thisProperty, _logger, importDataForEntity);
+                    import.Populate(newEntity,importDataForEntity,_entityType);
+                }
             }
 
             return newEntity;
