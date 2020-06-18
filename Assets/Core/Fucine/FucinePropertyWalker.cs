@@ -35,9 +35,8 @@ namespace Assets.Core.Fucine
 
            FucineImportFactory importFactory = new FucineImportFactory(newEntity, importDataForEntity,_logger,_entityType);
 
-            foreach (var thisProperty in entityProperties)
+            foreach (var thisProperty in entityProperties) 
             {
-                FucineImport import=FucineImport.CreateInstance(Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)),_logger);
               
                 //Walk every property. If the property is a Fucine property, 
                 if (Attribute.GetCustomAttribute(thisProperty,typeof(Fucine)) is Fucine fucinePropertyAttribute)
