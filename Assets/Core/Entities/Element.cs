@@ -12,7 +12,7 @@ namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element:IEntity
+    public class Element:IEntityKeyed
     {
         
         

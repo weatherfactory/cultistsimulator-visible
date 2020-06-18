@@ -17,7 +17,7 @@ namespace Assets.Core.Entities
         Vile=4
     }
     [FucineImportable("endings")]
-    public class Ending:IEntity
+    public class Ending:IEntityKeyed
     {
         [FucineId]
         public string Id { get; set; }

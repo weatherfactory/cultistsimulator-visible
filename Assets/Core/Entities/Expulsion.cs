@@ -1,8 +1,9 @@
 ﻿using Assets.Core.Fucine;
+using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class Expulsion
+    public class Expulsion: IEntityAnonymous
     {
         [FucineAspects]
         public AspectsDictionary Filter { get; set; }
@@ -13,6 +14,11 @@ namespace Assets.Core.Entities
         public Expulsion()
         {
             Filter = new AspectsDictionary();
+        }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
         }
     }
 }

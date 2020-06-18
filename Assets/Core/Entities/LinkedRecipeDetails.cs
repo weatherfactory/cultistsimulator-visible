@@ -4,7 +4,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : IEntity
+    public class LinkedRecipeDetails : IEntityKeyed
     {
         
         [FucineId]

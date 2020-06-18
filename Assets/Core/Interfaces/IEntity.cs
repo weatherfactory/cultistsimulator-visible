@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +7,8 @@ using Assets.Core.Fucine;
 
 namespace Assets.Core.Interfaces
 {
-    public interface  IEntity
+    public interface IEntity
     {
-        string Id { get; set; }
-
 
         /// <summary>
         /// This is run for every entity when the compendium has been completely (re)populated. Use for entities that

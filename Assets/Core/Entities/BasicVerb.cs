@@ -9,7 +9,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: IVerb,IEntity
+    public class BasicVerb: IVerb,IEntityKeyed
     {
         [FucineId]
         public string Id { get; set; }

@@ -13,7 +13,7 @@ namespace Assets.Core.Entities
 {
 
 
-    public class MorphDetails : IEntity,IQuickSpecEntity
+    public class MorphDetails : IEntityKeyed,IQuickSpecEntity
     {
 
         [FucineId]

@@ -47,7 +47,7 @@ namespace Assets.Core.Entities
     }
 
     [FucineImportable("decks")]
- public class DeckSpec : IDeckSpec,IEntity
+ public class DeckSpec : IDeckSpec,IEntityKeyed
     {
         [FucineId]
         public string Id { get; set; }

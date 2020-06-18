@@ -12,7 +12,7 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification:IEntity
+public class SlotSpecification:IEntityKeyed
 {
     [FucineId]
     public string Id { get; set; }

@@ -1473,7 +1473,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            List<IEntity> allEntities = new List<IEntity>();
+            List<IEntityKeyed> allEntities = new List<IEntityKeyed>();
 
         foreach (Type t in assembly.GetTypes())
             {
@@ -1481,7 +1481,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
                 if(importableAttribute!=null)
                 {
-                    if(!t.GetInterfaces().Contains(typeof(IEntity)))
+                    if(!t.GetInterfaces().Contains(typeof(IEntityKeyed)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
                     ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
@@ -1491,27 +1491,27 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntity entity = (IEntity)w.PopulateEntityWith(caseInsensitiveH);
+                        IEntityKeyed entityKeyed = (IEntityKeyed)w.PopulateEntityWith(caseInsensitiveH);
 
-                        allEntities.Add(entity);
+                        allEntities.Add(entityKeyed);
 
 
-                        if (entity is IVerb v)
+                        if (entityKeyed is IVerb v)
                             Verbs.Add(v.Id, v);
 
-                        else if (entity is Element el)
+                        else if (entityKeyed is Element el)
                             Elements.Add(el.Id, el);
 
-                        else if (entity is DeckSpec d)
+                        else if (entityKeyed is DeckSpec d)
                             DeckSpecs.Add(d.Id, d);
 
-                        else if (entity is Legacy l)
+                        else if (entityKeyed is Legacy l)
                             Legacies.Add(l.Id, l);
 
-                        else if (entity is Ending en)
+                        else if (entityKeyed is Ending en)
                             Endings.Add(en.Id, en);
 
-                        else if (entity is Recipe r)
+                        else if (entityKeyed is Recipe r)
                             Recipes.Add(r);
 
                     }
@@ -1543,7 +1543,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 d.RegisterUniquenessGroups(_compendium);
 
 
-        foreach (IEntity entity in allEntities)
+        foreach (IEntityKeyed entity in allEntities)
                 entity.RefineWithCompendium(_logger, _compendium);
 
 
