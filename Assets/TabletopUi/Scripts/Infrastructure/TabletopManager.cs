@@ -106,7 +106,8 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
-        private bool disabled = false;
+        private bool disabled;
+        private bool _initialised;
 
 		// Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
 		[NonSerialized]
@@ -169,6 +170,9 @@ namespace Assets.CS.TabletopUI {
         {
             if (disabled)
                 return; //we've had to shut down because of a critical error
+
+            if (!_initialised)
+                return; //still setting up
 
             // Game is structured to minimise Update processing, so keep this lean - CP
             // But some things do have to be updated outside the main gameplay Heart.Beat
@@ -269,7 +273,7 @@ namespace Assets.CS.TabletopUI {
             // Make sure dragging is reenabled
             DraggableToken.draggingEnabled = true;
 
-
+            _initialised = true;
 
             BeginGame(_situationBuilder);
             }

@@ -12,7 +12,6 @@ namespace Assets.Core.Entities
 
         public Expulsion()
         {
-            Limit = 0;
             Filter = new AspectsDictionary();
         }
     }

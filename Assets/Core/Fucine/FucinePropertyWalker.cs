@@ -28,14 +28,15 @@ namespace Assets.Core.Fucine
 
         public object PopulateEntityWith(Hashtable htEntityData)
         {
-            dynamic entityToPopulate = Activator.CreateInstance(_entityType); 
+            //create an instance of the entity as 
+            IEntity entityToPopulate = Activator.CreateInstance(_entityType) as IEntity; 
             
             var entityProperties = _entityType.GetProperties(); 
 
             foreach (var entityProperty in entityProperties) 
             {
-                try
-                {
+                //try
+                //{
 
                     if (Attribute.GetCustomAttribute(entityProperty,typeof(Fucine)) is Fucine fucinePropertyAttribute)
                     {
@@ -46,12 +47,12 @@ namespace Assets.Core.Fucine
                             NotSpecifiedProperty(htEntityData, entityProperty, entityToPopulate, fucinePropertyAttribute);
                     }
 
-                }
-                catch (Exception e)
-                {
-                    _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
-                                       entityProperty.Name + ") - " + e.Message);
-                }
+                //}
+                //catch (Exception e)
+                //{
+                //    _logger.LogProblem("Problem importing property for a " + _entityType.Name + ": " +
+                //                       entityProperty.Name + ") - " + e.Message);
+                //}
             }
 
             return entityToPopulate;
@@ -225,6 +226,7 @@ namespace Assets.Core.Fucine
                     }
                     else
                     {
+                     //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
                         throw new ApplicationException($"FucineDictionary {entityProperty.Name} on {entityToPopulate.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                     }
 

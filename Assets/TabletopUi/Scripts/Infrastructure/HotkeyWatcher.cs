@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private DebugTools _debugTools;
         private OptionsPanel _optionsPanel;
 
-		public static bool IsInInputField() {
+        public static bool IsInInputField() {
 			return inInputField;
 		}
 

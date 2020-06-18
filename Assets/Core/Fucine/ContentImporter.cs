@@ -870,7 +870,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             if(r.Craftable && !r.Requirements.Any()) _logger.LogProblem(r.Id + " is craftable, but has no requirements, so it will make its verb useless :O ");
 
-            foreach (var n in r.LinkedRecipes)
+            foreach (var n in r.Linked)
                 LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
             foreach (var a in r.Alt)
                 LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
@@ -947,7 +947,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             htEachRecipe.Remove(NoonConstants.KWARMUP);
 
 
-            r.EndingFlag = htEachRecipe[NoonConstants.KENDING] == null
+            r.Ending = htEachRecipe[NoonConstants.KENDING] == null
                 ? null
                 : htEachRecipe[NoonConstants.KENDING].ToString();
             htEachRecipe.Remove(NoonConstants.KENDING);
@@ -1203,8 +1203,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         {
             ArrayList alSlots = htEachRecipe.GetArrayList(NoonConstants.KSLOTS);
             if (alSlots != null)
-                r.SlotSpecifications = AddSlotsFromArrayList(alSlots);
-            if (r.SlotSpecifications.Count > 1) _logger.LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
+                r.Slots = AddSlotsFromArrayList(alSlots);
+            if (r.Slots.Count > 1) _logger.LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
         }
         catch (Exception e)
         {
@@ -1278,7 +1278,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                             lrChance = 0;
                     }
 
-                    r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,
+                    r.Linked.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,
                         NoonUtility.HashtableToStringStringDictionary(htChallenges)));
 
                     TryAddAsInternalRecipe(lr,r);
@@ -1511,9 +1511,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                         else if (entity is Ending en)
                             Endings.Add(en.Id, en);
 
-
-
-                    else if (entity is Recipe r)
+                        else if (entity is Recipe r)
                             Recipes.Add(r);
 
                     }
@@ -1525,7 +1523,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             //    ImportVerbs(alVerbs);
            // ImportElements(alElements);
             // ImportDeckSpecs(alDeckSpecs);
-            ImportRecipes(alRecipes);
+          //  ImportRecipes(alRecipes);
             // ImportLegacies(alLegacies);
             //ImportEndings(alEndings);
 
@@ -1541,13 +1539,16 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             _compendium.UpdateLegacies(Legacies);
             _compendium.UpdateEndings(Endings);
 
-            foreach (IEntity entity in allEntities)
+            foreach (var d in _compendium.GetAllDeckSpecs())
+                d.RegisterUniquenessGroups(_compendium);
+
+
+        foreach (IEntity entity in allEntities)
                 entity.RefineWithCompendium(_logger, _compendium);
 
 
 
-        foreach (var d in _compendium.GetAllDeckSpecs())
-                d.RegisterUniquenessGroups(_compendium);
+
 
 
 #if DEBUG

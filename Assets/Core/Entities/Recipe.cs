@@ -38,13 +38,13 @@ namespace Assets.Core.Entities
         /// <summary>
         /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
         /// </summary>)
-        [FucineDict]
+       // [FucineDict]
         public Dictionary<string, int> Purge { get; set; }
 
-        [FucineDict]
+        //[FucineDict]
         public Dictionary<string, int> HaltVerb { get; set; }
 
-        [FucineDict]
+        // [FucineDict]
         public Dictionary<string, int> DeleteVerb { get; set; }
 
 
@@ -99,10 +99,10 @@ namespace Assets.Core.Entities
         [FucineDict]
         public Dictionary<string, int> DeckEffects { get; set; }
 
-        [FucineList]
+       // [FucineList]
         public List<LinkedRecipeDetails> Alt { get; set; }
 
-        [FucineList]
+      //  [FucineList]
         public List<LinkedRecipeDetails> Linked { get; set; }
 
         [FucineValue("")]
@@ -115,7 +115,7 @@ namespace Assets.Core.Entities
         [FucineValue(0)]
         public int MaxExecutions { get; set; }
 
-        [FucineValue("")]
+        [FucineValue(null)]
         public string BurnImage { get; set; }
 
         [FucineValue((int)PortalEffect.None)]
