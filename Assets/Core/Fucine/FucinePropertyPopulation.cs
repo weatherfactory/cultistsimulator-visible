@@ -11,84 +11,106 @@ using OrbCreationExtensions;
 
 namespace Assets.Core.Fucine
 {
-   public class FucinePopulator
+   
+    public abstract class FucineImport
     {
-        private readonly IEntity _entity;
-        private readonly Hashtable _entityData;
-        private readonly ContentImportLogger _logger;
-        private readonly Type _entityType;
+        protected ContentImportLogger _logger;
+        protected PropertyInfo _property;
 
-        public FucinePopulator(IEntity entity, Hashtable entityData,ContentImportLogger logger,Type entityType)
+        protected FucineImport(ContentImportLogger logger)
         {
-            _entity = entity;
-            _entityData = entityData;
             _logger = logger;
-            _entityType = entityType;
         }
 
-        public void PopulateProperty(Hashtable htEntityValues, PropertyInfo entityProperty, dynamic entityToPopulate,
-                   PropertyInfo[] entityProperties)
+        public abstract void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger,
+            Type entityType);
+
+        public static FucineImport CreateInstance(PropertyInfo property,ContentImportLogger logger)
         {
 
-            if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId idProp)
-            {
-                if (htEntityValues.ContainsKey(entityProperty.Name))
-                    entityProperty.SetValue(entityToPopulate, htEntityValues.GetValue(entityProperty.Name));
+            
+                if (Attribute.GetCustomAttribute(property, typeof(FucineId)) is FucineId)
+                    return new FucineImportId(logger);
+
+
+                else if (Attribute.GetCustomAttribute(property, typeof(FucineList)) is FucineList)
+                    return new FucineImportList(logger);
+            
+                else if (Attribute.GetCustomAttribute(property, typeof(FucineDict)) is FucineDict)
+                    return new FucineImportDict(logger);
+
+                else if (Attribute.GetCustomAttribute(property, typeof(FucineAspects)) is FucineAspects)
+                    return new FucineImportAspects(logger);
+
+                else if (Attribute.GetCustomAttribute(property, typeof(FucineSubEntity)) is FucineSubEntity)
+                    return new FucineImportSubEntity(logger);
+
+                else if (Attribute.GetCustomAttribute(property, typeof(FucineValue)) is FucineValue)
+                    return new FucineImportValue(logger);
+
+                //doesn't take account of unpopulated /default yet
+
                 else
-                {
-                    _logger.LogProblem("ID not specified for a " + _entityType.Name);
-                }
-            }
+                    throw new ApplicationException("Unknown Fucine property type on: " + property.Name);
+                
 
-            else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineList)) is
-                FucineList)
-            {
-                PopulateList(htEntityValues, entityProperty, entityToPopulate);
-            }
+        }
+    }
 
-            else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineDict)) is
-                FucineDict dictAttribute)
-            {
-                PopulateDict(htEntityValues, entityProperty, entityToPopulate, dictAttribute, entityProperties);
-            }
+    public class FucineImportId : FucineImport
+    {
+        public FucineImportId(ContentImportLogger logger) : base(logger)
+        {
 
+        }
 
-            else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineAspects)) is
-                FucineAspects
-                aspectsProp)
-            {
-                PopulateAspectsDictionary(htEntityValues, entityProperty, entityToPopulate, aspectsProp,
-                    entityProperties);
-            }
-
-            else if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineSubEntity)) is
-                FucineSubEntity objectProp)
-            {
-                PopulateSubEntityProperty(htEntityValues, entityProperty, entityToPopulate, objectProp);
-            }
-
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
+        {
+            if (entityData.ContainsKey(_property.Name))
+                _property.SetValue(entity, entityData.GetValue(_property.Name));
             else
             {
-                TypeConverter typeConverter = TypeDescriptor.GetConverter(entityProperty.PropertyType);
-
-                entityProperty.SetValue(entityToPopulate, typeConverter.ConvertFromString(htEntityValues[entityProperty.Name].ToString()));
+                _logger.LogProblem("ID not specified for a " + entityType.Name);
             }
+        }
+    }
 
+    public class FucineImportValue : FucineImport
+    {
+        public FucineImportValue(ContentImportLogger logger) : base(logger)
+        {
         }
 
-
-
-        private void PopulateList(Hashtable htEntityValues, PropertyInfo entityProperty, object entityToPopulate)
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
         {
+            TypeConverter typeConverter = TypeDescriptor.GetConverter(_property.PropertyType);
 
-            ArrayList al = htEntityValues.GetArrayList(entityProperty.Name);
-            Type propertyListType = entityProperty.PropertyType;
+            _property.SetValue(entity, typeConverter.ConvertFromString(entityData[_property.Name].ToString()));
+        }
+    }
+
+
+
+    public class FucineImportList : FucineImport
+    {
+
+        public FucineImportList(ContentImportLogger logger) : base(logger)
+        {
+        }
+        private readonly Type _entityType;
+        private ContentImportLogger _logger;
+
+
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
+        {
+            ArrayList al = entityData.GetArrayList(_property.Name);
+            Type propertyListType = _property.PropertyType;
             Type listMemberType = propertyListType.GetGenericArguments()[0];
 
 
             IList list = Activator.CreateInstance(propertyListType) as IList;
 
-            entityProperty.SetValue(entityToPopulate, list);
+            _property.SetValue(entity, list);
 
             foreach (var o in al)
             {
@@ -106,16 +128,23 @@ namespace Assets.Core.Fucine
                 }
             }
 
+        }
+    }
 
+    public class FucineImportDict : FucineImport
+    {
+        public FucineImportDict(ContentImportLogger logger) : base(logger)
+        {
         }
 
-
-        private void PopulateDict(Hashtable htAllEntityValues, PropertyInfo entityProperty, object entityToPopulate, FucineDict dictAttribute, PropertyInfo[] entityProperties)
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
         {
+            var dictAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineDict)) as FucineDict;
+            var entityProperties = entityType.GetProperties();
 
-            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(htAllEntityValues.GetHashtable(entityProperty.Name));  //a hashtable of <id: listofmorphdetails>
+            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(entityData.GetHashtable(_property.Name));  //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
-            Type dictType = entityProperty.PropertyType; //Dictionary<string,List<MorphDetails>
+            Type dictType = _property.PropertyType; //Dictionary<string,List<MorphDetails>
             Type dictMemberType = dictType.GetGenericArguments()[1]; //List<MorphDetails>
 
 
@@ -159,7 +188,7 @@ namespace Assets.Core.Fucine
                     }
                     else
                     {
-                        throw new ApplicationException($"FucineDictionary {entityProperty.Name} on {entityToPopulate.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
+                        throw new ApplicationException($"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
                     }
                 }
 
@@ -195,7 +224,7 @@ namespace Assets.Core.Fucine
                     else
                     {
                         //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
-                        throw new ApplicationException($"FucineDictionary {entityProperty.Name} on {entityToPopulate.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
+                        throw new ApplicationException($"FucineDictionary {_property.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                     }
 
 
@@ -203,7 +232,7 @@ namespace Assets.Core.Fucine
 
             }
 
-            entityProperty.SetValue(entityToPopulate, dict);
+            _property.SetValue(entity, dict);
 
 
             if (dictAttribute.KeyMustExistIn != null)
@@ -215,85 +244,115 @@ namespace Assets.Core.Fucine
                     foreach (var key in dict.Keys)
                     {
                         List<string> acceptableKeys =
-                            mustExistInProperty.GetValue(entityToPopulate) as List<string>;
+                            mustExistInProperty.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
                             _logger.LogProblem(
-                                $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             _logger.LogProblem(
-                                $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     _logger.LogProblem(
-                        $"{entityToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_property.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
+        }
+    }
 
+    public class FucineImportAspects : FucineImport
+    {
+        public FucineImportAspects(ContentImportLogger logger) : base(logger)
+        {
         }
 
-        private void PopulateSubEntityProperty(Hashtable htEntityValues, PropertyInfo entityProperty, IEntityKeyed entityKeyedToPopulate, FucineSubEntity subEntityProp)
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
         {
-
-            string entityPropertyName = entityProperty.Name;
-            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, subEntityProp.ObjectType);
-
-            var subEntity = emanationWalker.PopulateEntityWith(htEntityValues.GetHashtable(entityPropertyName));
-
-            entityProperty.SetValue(entityKeyedToPopulate, subEntity);
-
-        }
-
-
-        private void PopulateAspectsDictionary(Hashtable htEntityValues, PropertyInfo entityProperty,
-            IEntityKeyed entityKeyedToPopulate,
-            FucineAspects aspectsProp, PropertyInfo[] entityProperties)
-        {
-            var htEntries = htEntityValues.GetHashtable(entityProperty.Name);
+            var htEntries = entityData.GetHashtable(_property.Name);
 
             IAspectsDictionary aspects = new AspectsDictionary();
+
+            var aspectsAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineAspects)) as FucineAspects;
+            var entityProperties = entityType.GetProperties();
 
             foreach (string k in htEntries.Keys)
             {
                 aspects.Add(k, Convert.ToInt32(htEntries[k]));
             }
 
-            entityProperty.SetValue(entityKeyedToPopulate, aspects);
+            _property.SetValue(entity, aspects);
 
 
-            if (aspectsProp.KeyMustExistIn != null)
+            if (aspectsAttribute.KeyMustExistIn != null)
             {
                 var mustExistInProperty =
-                    entityProperties.SingleOrDefault(p => p.Name == aspectsProp.KeyMustExistIn);
+                    entityProperties.SingleOrDefault(p => p.Name == aspectsAttribute.KeyMustExistIn);
                 if (mustExistInProperty != null)
                 {
                     foreach (var key in htEntries.Keys)
                     {
                         List<string> acceptableKeys =
-                            mustExistInProperty.GetValue(entityKeyedToPopulate) as List<string>;
+                            mustExistInProperty.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
                             _logger.LogProblem(
-                                $"{entityKeyedToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             _logger.LogProblem(
-                                $"{entityKeyedToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     _logger.LogProblem(
-                        $"{entityKeyedToPopulate.GetType().Name} insists that {entityProperty.Name} should exist in {aspectsProp.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_property.Name} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
+        }
+    }
 
+    public class FucineImportSubEntity : FucineImport
+    {
+        public FucineImportSubEntity(ContentImportLogger logger) : base(logger)
+        {
         }
 
-        public void PopulateWithDefaultValue(PropertyInfo entityProperty, dynamic entityToPopulate, Fucine attr)
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
+        {
+            var subEntityAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineSubEntity)) as FucineSubEntity;
+
+
+            string entityPropertyName = _property.Name;
+            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, subEntityAttribute.ObjectType);
+
+            var subEntity = emanationWalker.PopulateEntityWith(entityData.GetHashtable(entityPropertyName));
+
+            _property.SetValue(entity, subEntity);
+        }
+    }
+
+    public class FucineImportDefault : FucineImport
+    {
+        public FucineImportDefault(ContentImportLogger logger) : base(logger)
+        {
+        }
+
+        public override void Populate(IEntity entity, Hashtable entityData, ContentImportLogger logger, Type entityType)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FucineImportFactory
+    {
+
+        
+        public void FucineDefaultValuePopulation(PropertyInfo entityProperty, dynamic entityToPopulate, Fucine attr)
         {
 
             if (Attribute.GetCustomAttribute(entityProperty, typeof(FucineId)) is FucineId)
