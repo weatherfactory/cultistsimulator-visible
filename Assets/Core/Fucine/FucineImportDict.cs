@@ -8,32 +8,76 @@ using OrbCreationExtensions;
 
 namespace Assets.Core.Fucine
 {
+
+    
     public class FucineImportDict : FucineImport
     {
+
         public FucineImportDict(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
         {
         }
 
+        public void PopulateAsDictionaryOfStrings(IEntity entity, Hashtable subHashtable, IDictionary dictionary)
+        {
+            //Dictionary<string,string> - like DrawMessages
+                foreach (DictionaryEntry de in subHashtable)
+                {
+                    dictionary.Add(de.Key, de.Value);
+                }
+
+                _property.SetValue(entity, dictionary);
+        }
+
+        public void PopulateAsDictionaryOfInts(IEntity entity, Hashtable subHashtable, IDictionary dictionary)
+        {
+            //Dictionary<string,int> - like HaltVerbs
+            foreach (DictionaryEntry de in subHashtable)
+            {
+                int value = Int32.Parse(de.Value.ToString());
+                dictionary.Add(de.Key, value);
+            }
+
+            _property.SetValue(entity,dictionary);
+        }
+
         public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
         {
+            //Dictionary<string,string> 
+            //Dictionary<string,int> 
+            //Dictionary<string,T>
+            //Dictionary<string,List<T>> where T is an IEntityUnique (and might be a QuickSpecEntity)
+            //Dictionary<string,List<T>> where T is an IEntityAnonymous (and might be a QuickSpecEntity)
+
+            //Check for / warn against any dictionaries without string as a key.
+
+
             var dictAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineDict)) as FucineDict;
             var entityProperties = entityType.GetProperties();
 
             Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(entityData.GetHashtable(_property.Name));  //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
-            Type dictType = _property.PropertyType; //Dictionary<string,List<MorphDetails>
-            Type dictMemberType = dictType.GetGenericArguments()[1]; //List<MorphDetails>
+            Type dictType = _property.PropertyType; 
+            Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
-            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary; //Dictionary<string,MorphDetailsList>
+            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary;
+
+            if (dictMemberType == typeof(string))
+            {
+                PopulateAsDictionaryOfStrings(entity, subHashtable, dict);
+            }
+            else if (dictMemberType == typeof(int))
+            {
+                PopulateAsDictionaryOfInts(entity,subHashtable,dict);
+            }
 
             //if Dictionary<T,List<T>> where T: entity then create that list, then populate it with the individual entities 
-            if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) //List<MorphDetails>, yup
+            else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) //List<MorphDetails>, yup
             {
 
                 Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
                 //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
-                //either way, it's arbitrary keys: fatiguing, exiling... ie it's an IEntityAnonymous, but it might also be a QuickSpecEntity
+                //either way, it's implicit keys: fatiguing, exiling... 
                 foreach (string k in subHashtable.Keys)
                 {
                     IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
@@ -72,15 +116,7 @@ namespace Assets.Core.Fucine
 
             }
 
-            //Dictionary<T,string> - like DrawMessages
-            else if (dictMemberType == typeof(string)) //nope, it's MorphDetailsList, so we never see this branch
-            {
-                foreach (DictionaryEntry de in subHashtable)
-                {
-                    dict.Add(de.Key, de.Value);
-                }
 
-            }
             else //it's an entity, not a string or a list
             {
 

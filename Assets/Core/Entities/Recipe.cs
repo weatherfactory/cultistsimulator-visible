@@ -48,13 +48,13 @@ namespace Assets.Core.Entities
         /// <summary>
         /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
         /// </summary>)
-       // [FucineDict]
+        [FucineDict]
         public Dictionary<string, int> Purge { get; set; }
 
-        //[FucineDict]
+        [FucineDict]
         public Dictionary<string, int> HaltVerb { get; set; }
 
-        // [FucineDict]
+         [FucineDict]
         public Dictionary<string, int> DeleteVerb { get; set; }
 
 
