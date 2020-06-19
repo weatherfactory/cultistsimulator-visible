@@ -109,10 +109,10 @@ namespace Assets.Core.Entities
         [FucineDict]
         public Dictionary<string, int> DeckEffects { get; set; }
 
-       // [FucineList]
+        [FucineList]
         public List<LinkedRecipeDetails> Alt { get; set; }
 
-      //  [FucineList]
+       [FucineList]
         public List<LinkedRecipeDetails> Linked { get; set; }
 
         [FucineValue("")]

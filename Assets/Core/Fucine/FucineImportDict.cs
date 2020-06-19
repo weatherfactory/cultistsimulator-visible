@@ -54,7 +54,9 @@ namespace Assets.Core.Fucine
             var dictAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineDict)) as FucineDict;
             var entityProperties = entityType.GetProperties();
 
-            Hashtable subHashtable = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(entityData.GetHashtable(_property.Name));  //a hashtable of <id: listofmorphdetails>
+            Hashtable hSubEntity = entityData.GetHashtable(_property.Name);
+
+            Hashtable cihSubEntity = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(hSubEntity);  //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
             Type dictType = _property.PropertyType; 
             Type dictMemberType = dictType.GetGenericArguments()[1];
@@ -64,23 +66,23 @@ namespace Assets.Core.Fucine
 
             if (dictMemberType == typeof(string))
             {
-                PopulateAsDictionaryOfStrings(entity, subHashtable, dict);
+                PopulateAsDictionaryOfStrings(entity, cihSubEntity, dict);
             }
             else if (dictMemberType == typeof(int))
             {
-                PopulateAsDictionaryOfInts(entity,subHashtable,dict);
+                PopulateAsDictionaryOfInts(entity,cihSubEntity,dict);
             }
 
          
             else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) 
             {
-                PopulateAsDictionaryOfLists(entity, dictMemberType, subHashtable, dict);
+                PopulateAsDictionaryOfLists(entity, dictMemberType, cihSubEntity, dict);
             }
 
 
             else //it's an entity, not a string or a list
             {
-                PopulateAsDictionaryOfEntities(entity, subHashtable, dictMemberType, dict);
+                PopulateAsDictionaryOfEntities(entity, cihSubEntity, dictMemberType, dict);
             }
 
           
@@ -125,7 +127,7 @@ namespace Assets.Core.Fucine
                 IList wrapperList = Activator.CreateInstance(wrapperListType) as IList;
                 if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
                 {
-                    AddQuickSpecEntityToWrapperList(subHashtable, dict, listMemberType, k, wrapperList);
+                    AddQuickSpecEntityToWrapperList(subHashtable, listMemberType, k, wrapperList);
                 }
 
                 else if (subHashtable[k] is ArrayList list
@@ -145,7 +147,7 @@ namespace Assets.Core.Fucine
             _property.SetValue(entity, dict);
         }
 
-        private static void AddQuickSpecEntityToWrapperList(Hashtable subHashtable, IDictionary dict, Type listMemberType, string k,
+        private static void AddQuickSpecEntityToWrapperList(Hashtable subHashtable, Type listMemberType, string k,
             IList wrapperList)
         {
             //{fatiguing:husk}

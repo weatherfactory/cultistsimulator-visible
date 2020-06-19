@@ -40,13 +40,13 @@ namespace Assets.Core.Entities
         }
 
         public LinkedRecipeDetails(string id, int chance, bool additional, Expulsion expulsion,
-            Dictionary<string, string> challenges)
+            Dictionary<string, string> Challenges)
         {
             Additional = additional;
             _id = id;
             Chance = chance;
             Expulsion = expulsion;
-            Challenges = challenges ?? new Dictionary<string, string>();
+            this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
