@@ -114,21 +114,20 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void PopulateAsDictionaryOfLists(IEntity entity, Type dictMemberType, Hashtable subHashtable, IDictionary dict)
+        private void PopulateAsDictionaryOfLists(IEntity entity, Type wrapperListType, Hashtable subHashtable, IDictionary dict)
         {
             //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
-
-            Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
+            Type listMemberType = wrapperListType.GetGenericArguments()[0];
             //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
             //either way, it's implicit keys: fatiguing, exiling... 
             foreach (string k in subHashtable.Keys)
             {
-                IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
-                if (subHashtable[k] is string value && wrapperListMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
+                IList wrapperList = Activator.CreateInstance(wrapperListType) as IList;
+                if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
                 {
                     //{fatiguing:husk}
-                    IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(wrapperListMemberType) as IQuickSpecEntity;
-                    quickSpecEntity.QuickSpec(value);
+                    IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
+                    quickSpecEntity.QuickSpec(subHashtable[k] as string);
                     wrapperList.Add(
                         quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
                     dict.Add(k, wrapperList);
@@ -145,7 +144,7 @@ namespace Assets.Core.Fucine
 
                         FucinePropertyWalker
                             emanationWalker =
-                                new FucinePropertyWalker(_logger, wrapperListMemberType); //passing in <string,MorphDetailsList>
+                                new FucinePropertyWalker(_logger, listMemberType); //passing in <string,MorphDetailsList>
                         IEntityUnique
                             sub = emanationWalker
                                 .PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
