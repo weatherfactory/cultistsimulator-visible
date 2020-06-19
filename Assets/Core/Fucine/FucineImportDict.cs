@@ -27,13 +27,13 @@ namespace Assets.Core.Fucine
 
             IDictionary dict = Activator.CreateInstance(dictType) as IDictionary; //Dictionary<string,MorphDetailsList>
 
-            //if dictMemberType is a list then create that list, then populate it with the individual entities 
+            //if Dictionary<T,List<T>> where T: entity then create that list, then populate it with the individual entities 
             if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) //List<MorphDetails>, yup
             {
 
                 Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
                 //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
-                //either way, it's arbitrary keys: fatiguing, exiling...
+                //either way, it's arbitrary keys: fatiguing, exiling... ie it's an IEntityAnonymous, but it might also be a QuickSpecEntity
                 foreach (string k in subHashtable.Keys)
                 {
                     IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
@@ -72,10 +72,7 @@ namespace Assets.Core.Fucine
 
             }
 
-
-
-
-            //always and ever a string/string proposition - like DrawMessages
+            //Dictionary<T,string> - like DrawMessages
             else if (dictMemberType == typeof(string)) //nope, it's MorphDetailsList, so we never see this branch
             {
                 foreach (DictionaryEntry de in subHashtable)

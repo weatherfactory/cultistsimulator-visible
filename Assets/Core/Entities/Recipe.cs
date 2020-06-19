@@ -40,7 +40,7 @@ namespace Assets.Core.Entities
         public Dictionary<string, string> Effects { get; set; }
 
         [FucineAspects]
-        public AspectsDictionary Aspects { get; set; }
+        public AspectsDictionary Aspects {get; set; }
 
         [FucineList]
         public List<MutationEffect> MutationEffects { get; set; }
