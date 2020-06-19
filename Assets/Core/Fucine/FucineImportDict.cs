@@ -71,78 +71,19 @@ namespace Assets.Core.Fucine
                 PopulateAsDictionaryOfInts(entity,subHashtable,dict);
             }
 
-            //if Dictionary<T,List<T>> where T: entity then create that list, then populate it with the individual entities 
-            else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) //List<MorphDetails>, yup
+         
+            else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) 
             {
-
-                Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
-                //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
-                //either way, it's implicit keys: fatiguing, exiling... 
-                foreach (string k in subHashtable.Keys)
-                {
-                    IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
-                    if (subHashtable[k] is string value && wrapperListMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
-                    {
-                        //{fatiguing:husk}
-                        IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(wrapperListMemberType) as IQuickSpecEntity;
-                        quickSpecEntity.QuickSpec(value);
-                        wrapperList.Add(quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
-                        dict.Add(k, wrapperList);
-                    }
-
-                    else if (subHashtable[k] is ArrayList list) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    {
-                        foreach (Hashtable entityHash in list)
-                        {
-                            Hashtable ciEntityHash =
-                                System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
-                                    entityHash);
-
-                            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, wrapperListMemberType); //passing in <string,MorphDetailsList>
-                            IEntityUnique sub = emanationWalker.PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
-                            wrapperList.Add(sub);
-                        }
-                        //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
-
-                        dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-
-                    }
-                    else
-                    {
-                        throw new ApplicationException($"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
-                    }
-                }
-
-
+                PopulateAsDictionaryOfLists(entity, dictMemberType, subHashtable, dict);
             }
 
 
             else //it's an entity, not a string or a list
             {
-
-                foreach (object o in subHashtable)
-                {
-
-                    if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
-                    {
-                        Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                        FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
-                        IEntityUnique sub = emanationWalker.PopulateEntityWith(cih) as IEntityUnique;
-                        dict.Add(sub.Id, sub);
-
-                    }
-                    else
-                    {
-                        //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
-                        throw new ApplicationException($"FucineDictionary {_property.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
-                    }
-
-
-                }
-
+                PopulateAsDictionaryOfEntities(entity, subHashtable, dictMemberType, dict);
             }
 
-            _property.SetValue(entity, dict);
+          
 
 
             if (dictAttribute.KeyMustExistIn != null)
@@ -169,6 +110,82 @@ namespace Assets.Core.Fucine
                 {
                     _logger.LogProblem(
                         $"{entity.GetType().Name} insists that {_property.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                }
+            }
+        }
+
+        private void PopulateAsDictionaryOfLists(IEntity entity, Type dictMemberType, Hashtable subHashtable, IDictionary dict)
+        {
+            //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
+
+            Type wrapperListMemberType = dictMemberType.GetGenericArguments()[0];
+            //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
+            //either way, it's implicit keys: fatiguing, exiling... 
+            foreach (string k in subHashtable.Keys)
+            {
+                IList wrapperList = Activator.CreateInstance(dictMemberType) as IList;
+                if (subHashtable[k] is string value && wrapperListMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
+                {
+                    //{fatiguing:husk}
+                    IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(wrapperListMemberType) as IQuickSpecEntity;
+                    quickSpecEntity.QuickSpec(value);
+                    wrapperList.Add(
+                        quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
+                    dict.Add(k, wrapperList);
+                }
+
+                else if (subHashtable[k] is ArrayList list
+                ) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                {
+                    foreach (Hashtable entityHash in list)
+                    {
+                        Hashtable ciEntityHash =
+                            System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
+                                entityHash);
+
+                        FucinePropertyWalker
+                            emanationWalker =
+                                new FucinePropertyWalker(_logger, wrapperListMemberType); //passing in <string,MorphDetailsList>
+                        IEntityUnique
+                            sub = emanationWalker
+                                .PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
+                        wrapperList.Add(sub);
+                    }
+                    //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
+
+                    dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                    _property.SetValue(entity, dict);
+                }
+                else
+                {
+                    throw new ApplicationException(
+                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
+                }
+            }
+        }
+
+        private void PopulateAsDictionaryOfEntities(IEntity entity, Hashtable subHashtable, Type dictMemberType, IDictionary dict)
+        {
+            foreach (object o in subHashtable)
+            {
+                if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                {
+                    Hashtable cih =
+                        System.Collections.Specialized.CollectionsUtil
+                            .CreateCaseInsensitiveHashtable(
+                                h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                    FucinePropertyWalker
+                        emanationWalker =
+                            new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
+                    IEntityUnique sub = emanationWalker.PopulateEntityWith(cih) as IEntityUnique;
+                    dict.Add(sub.Id, sub);
+                    _property.SetValue(entity, dict);
+                }
+                else
+                {
+                    //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
+                    throw new ApplicationException(
+                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                 }
             }
         }
