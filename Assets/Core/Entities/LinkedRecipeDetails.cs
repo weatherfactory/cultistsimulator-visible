@@ -4,11 +4,21 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : IEntityKeyed
+    public class LinkedRecipeDetails : IEntityUnique
     {
-        
+
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
 
         [FucineValue(0)]
@@ -33,7 +43,7 @@ namespace Assets.Core.Entities
             Dictionary<string, string> challenges)
         {
             Additional = additional;
-            Id = id;
+            _id = id;
             Chance = chance;
             Expulsion = expulsion;
             Challenges = challenges ?? new Dictionary<string, string>();

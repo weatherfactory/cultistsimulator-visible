@@ -9,10 +9,20 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: IVerb,IEntityKeyed
+    public class BasicVerb: IVerb,IEntityUnique
     {
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
@@ -36,7 +46,7 @@ namespace Assets.Core.Entities
 
         public BasicVerb(string id, string label, string description)
         {
-            Id = id;
+            _id = id;
             Label = label;
             Description = description;
         }

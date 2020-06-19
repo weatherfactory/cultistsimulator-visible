@@ -30,36 +30,34 @@ namespace Assets.Core.Fucine
         public static FucineImport CreateInstance(PropertyInfo property,ContentImportLogger logger,Hashtable entityData)
         {
                         if (entityData.ContainsKey(property.Name))
-            {
-                if (Attribute.GetCustomAttribute(property, typeof(FucineId)) is FucineId)
-                    return new FucineImportId(property,logger);
+                        {
+                            if (Attribute.GetCustomAttribute(property, typeof(FucineId)) is FucineId)
+                                return new FucineImportId(property,logger);
 
 
-                else if (Attribute.GetCustomAttribute(property, typeof(FucineList)) is FucineList)
-                    return new FucineImportList(property, logger);
+                            else if (Attribute.GetCustomAttribute(property, typeof(FucineList)) is FucineList)
+                                return new FucineImportList(property, logger);
             
-                else if (Attribute.GetCustomAttribute(property, typeof(FucineDict)) is FucineDict)
-                    return new FucineImportDict(property, logger);
+                            else if (Attribute.GetCustomAttribute(property, typeof(FucineDict)) is FucineDict)
+                                return new FucineImportDict(property, logger);
 
-                else if (Attribute.GetCustomAttribute(property, typeof(FucineAspects)) is FucineAspects)
-                    return new FucineImportAspects(property, logger);
+                            else if (Attribute.GetCustomAttribute(property, typeof(FucineAspects)) is FucineAspects)
+                                return new FucineImportAspects(property, logger);
 
-                else if (Attribute.GetCustomAttribute(property, typeof(FucineSubEntity)) is FucineSubEntity)
-                    return new FucineImportSubEntity(property, logger);
+                            else if (Attribute.GetCustomAttribute(property, typeof(FucineSubEntity)) is FucineSubEntity)
+                                return new FucineImportSubEntity(property, logger);
 
-                else if(Attribute.GetCustomAttribute(property, typeof(FucineValue)) is FucineValue)
-                    return new FucineImportValue(property, logger);
-                else
-                    throw new ApplicationException("Unknown Fucine property type on: " + property.Name);
+                            else if(Attribute.GetCustomAttribute(property, typeof(FucineValue)) is FucineValue)
+                                return new FucineImportValue(property, logger);
+                            else
+                                throw new ApplicationException("Unknown Fucine property type on: " + property.Name);
                 
 
-            }
-            else
-            {
-                return new FucineImportDefault(property, logger);
-            }
-
-
+                        }
+                        else
+                        {
+                            return new FucineImportDefault(property, logger);
+                        }
         }
     }
 
@@ -73,7 +71,8 @@ namespace Assets.Core.Fucine
         public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
         {
             if (entityData.ContainsKey(_property.Name))
-                _property.SetValue(entity, entityData.GetValue(_property.Name));
+                (entity as IEntityUnique).SetId(entityData.GetValue(_property.Name) as string);
+
             else
             {
                 _logger.LogProblem("ID not specified for a " + entityType.Name);
@@ -103,8 +102,6 @@ namespace Assets.Core.Fucine
         public FucineImportList(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
         {
         }
-        private readonly Type _entityType;
-        private ContentImportLogger _logger;
 
 
         public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
@@ -184,7 +181,7 @@ namespace Assets.Core.Fucine
                                     entityHash);
 
                             FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, wrapperListMemberType); //passing in <string,MorphDetailsList>
-                            IEntityKeyed sub = emanationWalker.PopulateEntityWith(ciEntityHash) as IEntityKeyed; //{id:husk,morpheffect:spawn}
+                            IEntityUnique sub = emanationWalker.PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
                             wrapperList.Add(sub);
                         }
                         //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
@@ -223,7 +220,7 @@ namespace Assets.Core.Fucine
                     {
                         Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                         FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
-                        IEntityKeyed sub = emanationWalker.PopulateEntityWith(cih) as IEntityKeyed;
+                        IEntityUnique sub = emanationWalker.PopulateEntityWith(cih) as IEntityUnique;
                         dict.Add(sub.Id, sub);
 
                     }

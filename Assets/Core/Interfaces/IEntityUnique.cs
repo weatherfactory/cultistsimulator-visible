@@ -8,8 +8,9 @@ using Assets.Core.Fucine;
 
 namespace Assets.Core.Interfaces
 {
-    public interface  IEntityKeyed:IEntity
+    interface  IEntityUnique:IEntity
     {
-        string Id { get; set; }
+        string Id { get; }
+        void SetId(string id);
     }
 }

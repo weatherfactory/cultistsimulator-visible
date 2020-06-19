@@ -17,10 +17,20 @@ namespace Assets.Core.Entities
         Vile=4
     }
     [FucineImportable("endings")]
-    public class Ending:IEntityKeyed
+    public class Ending:IEntityUnique
     {
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
         [FucineValue("")]
         public string Label { get; set; }
@@ -47,7 +57,7 @@ namespace Assets.Core.Entities
 
         public Ending(string id, string label, string description,string image,EndingFlavour endingFlavour, string anim,string achievementId)
         {
-            Id = id;
+            _id = id;
             Label = label;
             Description = description;
             Image = image;
@@ -62,7 +72,7 @@ namespace Assets.Core.Entities
         {
             Ending defaultEnding = new Ending
             {
-                Id = "default",
+                _id = "default",
                 Label = "IT'S ALWAYS TOO LATE, EVENTUALLY",
                 Description = "'... but until then, it's not.'",
                 Image = "suninrags",

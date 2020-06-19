@@ -15,7 +15,7 @@ namespace Assets.Core.Entities
         /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec
         /// </summary>
 
-        string Id { get; set; }
+        string Id { get; }
         List<string> Spec { get; set; }
         string DefaultCardId { get; set; }
         bool ResetOnExhaustion { get; set; }
@@ -47,10 +47,20 @@ namespace Assets.Core.Entities
     }
 
     [FucineImportable("decks")]
- public class DeckSpec : IDeckSpec,IEntityKeyed
+ public class DeckSpec : IDeckSpec,IEntityUnique
     {
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
@@ -100,7 +110,7 @@ namespace Assets.Core.Entities
 
         public DeckSpec(string id, List<string> spec, string defaultCardId, bool resetOnExhaustion)
         {
-            Id = id;
+            _id = id;
             Spec = spec;
             DefaultCardId = defaultCardId;
             ResetOnExhaustion = resetOnExhaustion;

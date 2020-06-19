@@ -888,7 +888,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         Recipe r = new Recipe();
         try
         {
-            r.Id = htEachRecipe[NoonConstants.KID].ToString();
+            r.SetId(htEachRecipe[NoonConstants.KID].ToString());
             htEachRecipe.Remove(NoonConstants.KID);
 
             r.Label = htEachRecipe[NoonConstants.KLABEL] == null
@@ -1473,7 +1473,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            List<IEntityKeyed> allEntities = new List<IEntityKeyed>();
+            List<IEntityUnique> allEntities = new List<IEntityUnique>();
 
         foreach (Type t in assembly.GetTypes())
             {
@@ -1481,7 +1481,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
                 if(importableAttribute!=null)
                 {
-                    if(!t.GetInterfaces().Contains(typeof(IEntityKeyed)))
+                    if(!t.GetInterfaces().Contains(typeof(IEntityUnique)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
                     ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
@@ -1491,27 +1491,27 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntityKeyed entityKeyed = (IEntityKeyed)w.PopulateEntityWith(caseInsensitiveH);
+                        IEntityUnique entityUnique = (IEntityUnique)w.PopulateEntityWith(caseInsensitiveH);
 
-                        allEntities.Add(entityKeyed);
+                        allEntities.Add(entityUnique);
 
 
-                        if (entityKeyed is IVerb v)
+                        if (entityUnique is IVerb v)
                             Verbs.Add(v.Id, v);
 
-                        else if (entityKeyed is Element el)
+                        else if (entityUnique is Element el)
                             Elements.Add(el.Id, el);
 
-                        else if (entityKeyed is DeckSpec d)
+                        else if (entityUnique is DeckSpec d)
                             DeckSpecs.Add(d.Id, d);
 
-                        else if (entityKeyed is Legacy l)
+                        else if (entityUnique is Legacy l)
                             Legacies.Add(l.Id, l);
 
-                        else if (entityKeyed is Ending en)
+                        else if (entityUnique is Ending en)
                             Endings.Add(en.Id, en);
 
-                        else if (entityKeyed is Recipe r)
+                        else if (entityUnique is Recipe r)
                             Recipes.Add(r);
 
                     }
@@ -1543,7 +1543,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 d.RegisterUniquenessGroups(_compendium);
 
 
-        foreach (IEntityKeyed entity in allEntities)
+        foreach (IEntityUnique entity in allEntities)
                 entity.RefineWithCompendium(_logger, _compendium);
 
 

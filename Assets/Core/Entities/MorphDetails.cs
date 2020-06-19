@@ -13,11 +13,21 @@ namespace Assets.Core.Entities
 {
 
 
-    public class MorphDetails : IEntityKeyed,IQuickSpecEntity
+    public class MorphDetails : IEntityUnique,IQuickSpecEntity
     {
 
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
 
         [FucineValue(100)]
@@ -34,7 +44,7 @@ namespace Assets.Core.Entities
 
         public MorphDetails(string id)
         {
-            Id = id;
+            _id = id;
             Chance = 100;
             MorphEffect = MorphEffectType.Transform;
             Level = 1;
@@ -43,7 +53,7 @@ namespace Assets.Core.Entities
 
         public MorphDetails(string id, int chance, MorphEffectType morphEffect, int level)
         {
-            Id = id;
+            _id = id;
             Chance = chance;
             MorphEffect = morphEffect;
             Level = level;
@@ -52,7 +62,7 @@ namespace Assets.Core.Entities
 
         public void QuickSpec(string value)
         {
-            Id = value;
+            _id = value;
             Chance = 100;
             MorphEffect = MorphEffectType.Transform;
             Level = 1;

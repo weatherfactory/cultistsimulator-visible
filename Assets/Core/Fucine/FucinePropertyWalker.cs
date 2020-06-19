@@ -15,7 +15,7 @@ namespace Assets.Core.Fucine
 {
     public class FucinePropertyWalker
     {
-        private readonly IEntityKeyed _entityKeyedToPopulate;
+        private readonly IEntityUnique _entityUniqueToPopulate;
         private readonly ContentImportLogger _logger;
         private readonly Type _entityType;
 

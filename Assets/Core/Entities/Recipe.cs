@@ -8,11 +8,21 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : IEntityKeyed
+    public class Recipe : IEntityUnique
     {
 
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
         [FucineValue("enact")]
         public string ActionId { get; set; }

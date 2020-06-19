@@ -12,12 +12,20 @@ namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element:IEntityKeyed
+    public class Element:IEntityUnique
     {
-        
-        
+        private string _id;
+
         [FucineId]
-        public string Id { get; set; }
+        public string Id
+        {
+            get => _id;
+        }
+
+        public void SetId(string id)
+        {
+            _id = id;
+        }
 
         [FucineValue("")]
         public string Label { get; set; }
@@ -93,7 +101,8 @@ namespace Assets.Core.Entities
         public Dictionary<string, List<MorphDetails>> XTriggers { get; set; }
 
         private string _icon;
-        
+
+
 
         /// <summary>
         /// all aspects the element has, *including* the aspect itself as an element
@@ -127,7 +136,7 @@ namespace Assets.Core.Entities
 
         public Element(string id, string label, string description, int animFrames,string icon)
         {
-            Id = id;
+            _id = id;
             Label = label;
             Description = description;
           //  AnimFrames = animFrames;

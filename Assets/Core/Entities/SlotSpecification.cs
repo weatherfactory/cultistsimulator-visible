@@ -12,10 +12,20 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification:IEntityKeyed
+public class SlotSpecification:IEntityUnique
 {
+    private string _id;
+
     [FucineId]
-    public string Id { get; set; }
+    public string Id
+    {
+        get => _id;
+    }
+
+    public void SetId(string id)
+    {
+        _id = id;
+    }
 
     public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
     {
@@ -64,7 +74,7 @@ private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(string id)
     {
-        Id = id;
+        _id = id;
         Label = id;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
