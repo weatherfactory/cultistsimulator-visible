@@ -125,43 +125,58 @@ namespace Assets.Core.Fucine
                 IList wrapperList = Activator.CreateInstance(wrapperListType) as IList;
                 if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
                 {
-                    //{fatiguing:husk}
-                    IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
-                    quickSpecEntity.QuickSpec(subHashtable[k] as string);
-                    wrapperList.Add(
-                        quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
-                    dict.Add(k, wrapperList);
+                    AddQuickSpecEntityToWrapperList(subHashtable, dict, listMemberType, k, wrapperList);
                 }
 
                 else if (subHashtable[k] is ArrayList list
                 ) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                 {
-                    foreach (Hashtable entityHash in list)
-                    {
-                        Hashtable ciEntityHash =
-                            System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
-                                entityHash);
-
-                        FucinePropertyWalker
-                            emanationWalker =
-                                new FucinePropertyWalker(_logger, listMemberType); //passing in <string,MorphDetailsList>
-                        IEntityUnique
-                            sub = emanationWalker
-                                .PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
-                        wrapperList.Add(sub);
-                    }
-                    //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
-
-                    dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    _property.SetValue(entity, dict);
+                    AddFullSpecEntitiesToWrapperList(list, listMemberType, wrapperList);
                 }
                 else
                 {
                     throw new ApplicationException(
                         $"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
                 }
+
+                dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
             }
+
+            _property.SetValue(entity, dict);
         }
+
+        private static void AddQuickSpecEntityToWrapperList(Hashtable subHashtable, IDictionary dict, Type listMemberType, string k,
+            IList wrapperList)
+        {
+            //{fatiguing:husk}
+            IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
+            quickSpecEntity.QuickSpec(subHashtable[k] as string);
+            wrapperList.Add(
+                quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
+
+        }
+
+        private void AddFullSpecEntitiesToWrapperList(ArrayList list, Type listMemberType, IList wrapperList)
+        {
+            foreach (Hashtable entityHash in list)
+            {
+                Hashtable ciEntityHash =
+                    System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
+                        entityHash);
+
+                FucinePropertyWalker
+                    emanationWalker =
+                        new FucinePropertyWalker(_logger, listMemberType); //passing in <string,MorphDetailsList>
+                IEntityUnique
+                    sub = emanationWalker
+                        .PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
+                wrapperList.Add(sub);
+            }
+
+            //list is now: [{ id: husk,morpheffect: spawn}, {id: smoke,morpheffect: spawn}]
+        }
+
+
 
         private void PopulateAsDictionaryOfEntities(IEntity entity, Hashtable subHashtable, Type dictMemberType, IDictionary dict)
         {
