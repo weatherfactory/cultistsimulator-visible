@@ -13,7 +13,7 @@ namespace Assets.Core.Entities
 {
 
 
-    public class MorphDetails : IEntityUnique,IQuickSpecEntity
+    public class MorphDetails : IEntityWithId,IQuickSpecEntity
     {
 
         private string _id;

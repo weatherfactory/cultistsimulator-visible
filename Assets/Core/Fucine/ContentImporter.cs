@@ -77,64 +77,6 @@ public class ContentImporter
     }
 
 
-    public List<SlotSpecification> AddSlotsFromArrayList(ArrayList alSlots)
-    {
-        List<SlotSpecification> cssList = new List<SlotSpecification>();
-
-
-            foreach (Hashtable htThisSlot in alSlots)
-            {
-                string slotId = htThisSlot[NoonConstants.KID].ToString();
-
-                SlotSpecification slotSpecification = new SlotSpecification(slotId);
-                try
-                {
-                    if (htThisSlot[NoonConstants.KLABEL] != null)
-                        slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
-
-                if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
-                        slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
-
-                    if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
-                        slotSpecification.Greedy = true;
-
-                    if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
-                        slotSpecification.Consumes = true;
-
-
-                    if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
-                        slotSpecification.NoAnim = true;
-
-                if (htThisSlot[NoonConstants.KACTIONID] != null)
-                        slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
-
-
-                Hashtable htRequired = htThisSlot[NoonConstants.KREQUIRED] as Hashtable;
-                    if (htRequired != null)
-                    {
-                        foreach (string rk in htRequired.Keys)
-                            slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
-                    }
-
-                    Hashtable htForbidden = htThisSlot[NoonConstants.KFORBIDDEN] as Hashtable;
-                    if (htForbidden != null)
-                    {
-                        foreach (string fk in htForbidden.Keys)
-                            slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
-                    }
-                }
-                catch (Exception e)
-                {
-                    _logger.LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
-                }
-
-                cssList.Add(slotSpecification);
-            }
-
-
-        return cssList;
-
-    }
 
     private ArrayList GetContentItems(string contentOfType)
     {
@@ -748,7 +690,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     public int PopulateElements(ArrayList alElements)
     {
 
-        
 
         foreach (Hashtable htElement in alElements)
         {
@@ -800,14 +741,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return alElements.Count;
     }
 
-    public void ImportRecipes(ArrayList recipesArrayList)
-    {
-        //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-       
-        PopulateRecipeList(recipesArrayList);
-        _logger.LogInfo("Total recipes found: " + recipesArrayList.Count);
 
-    }
+
 
 
     private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
@@ -818,42 +753,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return d;
     }
 
-
-    public void ImportEndings(ArrayList endingsArrayList)
-    {
-
-        for (int i = 0; i < endingsArrayList.Count; i++)
-        {
-            Hashtable htEachEnding = endingsArrayList.GetHashtable(i);
-
-            try
-            {
-                string endingId = htEachEnding[NoonConstants.KID].ToString();
-
-				EndingFlavour flavour = EndingFlavour.Melancholy;
-				if (htEachEnding[NoonConstants.KFLAVOUR].ToString().CompareTo(EndingFlavour.Grand.ToString()) == 0)
-					flavour = EndingFlavour.Grand;
-				if (htEachEnding[NoonConstants.KFLAVOUR].ToString().CompareTo(EndingFlavour.Melancholy.ToString()) == 0)
-					flavour = EndingFlavour.Melancholy;
-
-                Ending end = new Ending(endingId,
-                    htEachEnding[NoonConstants.KLABEL].ToString(),
-                    htEachEnding[NoonConstants.KDESCRIPTION].ToString(),
-                    htEachEnding[NoonConstants.KIMAGE].ToString(),
-                    flavour,
-                    htEachEnding[NoonConstants.KANIM].ToString(),
-                    htEachEnding[NoonConstants.KACHIEVEMENT].ToString()
-                );
-
-                Endings.Add(endingId, end);
-            }
-
-            catch
-            {
-                _logger.LogProblem("Can't parse this legacy: " + htEachEnding[NoonConstants.KID].ToString());
-            }
-        }
-    }
 
 
     public void PopulateRecipeList(ArrayList importedRecipes)
@@ -886,300 +785,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     private void ImportRecipe(Hashtable htEachRecipe,string defaultActionId)
     {
         Recipe r = new Recipe();
-        try
-        {
-            r.SetId(htEachRecipe[NoonConstants.KID].ToString());
-            htEachRecipe.Remove(NoonConstants.KID);
-
-            r.Label = htEachRecipe[NoonConstants.KLABEL] == null
-                ? r.Id
-                : htEachRecipe[NoonConstants.KLABEL].ToString();
-            htEachRecipe.Remove(NoonConstants.KLABEL);
-
-            r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
-            htEachRecipe.Remove(NoonConstants.KCRAFTABLE);
-
-            r.SignalImportantLoop = Convert.ToBoolean(htEachRecipe[NoonConstants.KSIGNALIMPORTANTLOOP]);
-            htEachRecipe.Remove(NoonConstants.KSIGNALIMPORTANTLOOP);
-
-            if (htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
-            {
-                string possiblePortalEffect = htEachRecipe[NoonConstants.KPORTALEFFECT].ToString();
-                try
-                {
-                    r.PortalEffect = (PortalEffect) Enum.Parse(typeof(PortalEffect), possiblePortalEffect, true);
-                    htEachRecipe.Remove(NoonConstants.KPORTALEFFECT);
-                }
-                catch
-                {
-                    _logger.LogProblem(r.Id + " has a PortalEffect specified that we don't think is right: " +
-                                       possiblePortalEffect);
-                }
-            }
-
-            r.HintOnly = Convert.ToBoolean(htEachRecipe[NoonConstants.KHINTONLY]);
-            htEachRecipe.Remove(NoonConstants.KHINTONLY);
-
-            r.ActionId = htEachRecipe[NoonConstants.KACTIONID] == null
-                ? null
-                : htEachRecipe[NoonConstants.KACTIONID].ToString();
-            if (r.ActionId == null)
-            {
-                if (defaultActionId != null)
-                    r.ActionId = defaultActionId;
-                else
-                    _logger.LogProblem(r.Id + " has no actionId specified");
-
-            }
-            htEachRecipe.Remove(NoonConstants.KACTIONID);
-
-            if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
-                r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
-            htEachRecipe.Remove(NoonConstants.KSTARTDESCRIPTION);
-
-
-            if (htEachRecipe.ContainsKey(NoonConstants.KDESCRIPTION))
-                r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
-            htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
-
-
-            r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
-            htEachRecipe.Remove(NoonConstants.KWARMUP);
-
-
-            r.Ending = htEachRecipe[NoonConstants.KENDING] == null
-                ? null
-                : htEachRecipe[NoonConstants.KENDING].ToString();
-            htEachRecipe.Remove(NoonConstants.KENDING);
-
-            if (htEachRecipe[NoonConstants.KSIGNALENDINGFLAVOUR] == null)
-
-                r.SignalEndingFlavour = EndingFlavour.None;
-            else
-            {
-                string possibleSignalEndingFlavour = htEachRecipe[NoonConstants.KSIGNALENDINGFLAVOUR].ToString();
-                r.SignalEndingFlavour =
-                    (EndingFlavour) Enum.Parse(typeof(EndingFlavour), possibleSignalEndingFlavour, true);
-                htEachRecipe.Remove(NoonConstants.KSIGNALENDINGFLAVOUR);
-            }
-
-
-            if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
-                r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
-            htEachRecipe.Remove(NoonConstants.KMAXEXECUTIONS);
-
-            if (htEachRecipe.ContainsKey(NoonConstants.KBURNIMAGE))
-                r.BurnImage = htEachRecipe[NoonConstants.KBURNIMAGE].ToString();
-            htEachRecipe.Remove(NoonConstants.KBURNIMAGE);
-        }
-        catch (Exception e)
-        {
-            string rawOutput = string.Empty;
-            foreach (var v in htEachRecipe.Values)
-                rawOutput = rawOutput + v + "||";
-
-            if (htEachRecipe[NoonConstants.KID] == null)
-            {
-                _logger.LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
-            }
-            else
-            {
-                _logger.LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
-            }
-        }
-
-        //REQUIREMENTS
-        try
-        {
-            Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
-            if (htReqs != null)
-            {
-                foreach (string k in htReqs.Keys)
-                {
-                    LogIfNonexistentElementId(k, r.Id, "(requirements)");
-                    r.Requirements.Add(k, htReqs.GetString(k));
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        //TABLE REQS
-
-        htEachRecipe.Remove(NoonConstants.KREQUIREMENTS);
-
-        try
-        {
-            Hashtable htTableReqs = htEachRecipe.GetHashtable(NoonConstants.KTABLEREQS);
-            if (htTableReqs != null)
-            {
-                foreach (string k in htTableReqs.Keys)
-                {
-                    LogIfNonexistentElementId(k, r.Id, "(table requirements)");
-                    r.TableReqs.Add(k, htTableReqs.GetString(k));
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing table requirements for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-
-        htEachRecipe.Remove(NoonConstants.KTABLEREQS);
-
-
-        //extant REQS
-
-        try
-        {
-            Hashtable htExtantReqs = htEachRecipe.GetHashtable(NoonConstants.KEXTANTREQS);
-            if (htExtantReqs != null)
-            {
-                foreach (string k in htExtantReqs.Keys)
-                {
-                    LogIfNonexistentElementId(k, r.Id, "(extant requirements)");
-                    r.ExtantReqs.Add(k, htExtantReqs.GetString(k));
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing extant requirements for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-
-        htEachRecipe.Remove(NoonConstants.KEXTANTREQS);
-
-        /////////////////////////////////////////////
-
-        //ASPECTS
-        try
-        {
-            Hashtable htAspects = htEachRecipe.GetHashtable(NoonConstants.KASPECTS);
-            if (htAspects != null)
-            {
-                foreach (string k in htAspects.Keys)
-                {
-                    LogIfNonexistentElementId(k, r.Id, "(aspects)");
-                    r.Aspects.Add(k, Convert.ToInt32(htAspects[k]));
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KASPECTS);
-
-        /////////////////////////////////////////////
-
-
-        //EFFECTS
-        try
-        {
-            Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
-            if (htEffects != null)
-            {
-                foreach (string k in htEffects.Keys)
-                {
-                    LogIfNonexistentElementId(k, r.Id, "(effects)");
-                    r.Effects.Add(k, htEffects.GetString(k));
-                }
-
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KEFFECTS);
-
-
-        /////////////////////////////////////////////
-        //PURGES
-
-        try
-        {
-            Hashtable htPurge = htEachRecipe.GetHashtable(NoonConstants.KPURGE);
-            if(htPurge!=null)
-                foreach (string elementToPurgeId in htPurge.Keys)
-                {
-                    LogIfNonexistentElementId(elementToPurgeId,r.Id,"purges");
-                    r.Purge.Add(elementToPurgeId,Convert.ToInt32(htPurge[elementToPurgeId]));
-                }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing purges for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KPURGE);
-
-        /////////////////////////////////////////////
-        //VERB HALTS
-        try
-        {
-            Hashtable htHaltVerb = htEachRecipe.GetHashtable(NoonConstants.KHALTVERB);
-            if(htHaltVerb!=null)
-                foreach (string verbToHaltId in (htHaltVerb.Keys))
-                {
-                    r.HaltVerb.Add(verbToHaltId,Convert.ToInt32(htHaltVerb[verbToHaltId]));
-                }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KHALTVERB);
-
-        /////////////////////////////////////////////
-        //VERB DELETIONS
-        try
-        {
-            Hashtable htdeleteVerb = htEachRecipe.GetHashtable(NoonConstants.KDELETEVERB);
-            if (htdeleteVerb != null)
-                foreach (string verbTodeleteId in (htdeleteVerb.Keys))
-                {
-                    r.DeleteVerb.Add(verbTodeleteId, Convert.ToInt32(htdeleteVerb[verbTodeleteId]));
-                }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing verb halts for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KDELETEVERB);
-
-        /////////////////////////////////////////////
-        //DECKS
-
-        try
-        {
-            Hashtable htDecks = htEachRecipe.GetHashtable(NoonConstants.KDECKEFFECT);
-            if (htDecks != null)
-                foreach (string deckId in htDecks.Keys)
-                {
-                    LogIfNonexistentDeckId(deckId, r.Id);
-                    r.DeckEffects.Add(deckId, Convert.ToInt32(htDecks[deckId]));
-                }
-        }
-
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-
-        htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
-
-
-
+    
 
 
         ///////////INTERNAL DECKS - NB the deck is not stored with the recipe
@@ -1197,62 +803,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
 
 
-        /////////////////////////////////////////////
-        //SLOTS
-        try
-        {
-            ArrayList alSlots = htEachRecipe.GetArrayList(NoonConstants.KSLOTS);
-            if (alSlots != null)
-                r.Slots = AddSlotsFromArrayList(alSlots);
-            if (r.Slots.Count > 1) _logger.LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
-        }
 
-        htEachRecipe.Remove(NoonConstants.KSLOTS);
-        /////////////////////////////////////////////
-        //ALTERNATIVES
-        try
-        {
-            ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
-            if (alRecipeAlternatives == null)
-                alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPESALT);
-            if (alRecipeAlternatives != null)
-            {
-                foreach (Hashtable ra in alRecipeAlternatives)
-                {
-                    string raID = ra[NoonConstants.KID].ToString();
-                    int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
-                    bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
-
-                    var raExpulsion = GetExpulsionDetailsIfAny(ra);
-
-                    var htChallenges = ra.GetHashtable(NoonConstants.KCHALLENGES);
-
-                    if (raChance == 0)
-                    {
-                        if (htChallenges == null)
-                            raChance = 100;
-                        else
-                            raChance = 0;
-                    }
-
-                    r.Alt.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion,
-                        NoonUtility.HashtableToStringStringDictionary(htChallenges)));
-
-                    TryAddAsInternalRecipe(ra,r);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPES);
-        htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPESALT);
 
 
         try
@@ -1293,61 +844,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         htEachRecipe.Remove(NoonConstants.KLINKED);
 
 
-        /////////////////////////////////////////////
-        //MUTATIONEFFECTS
-        try
-        {
-            ArrayList alMutations = htEachRecipe.GetArrayList(NoonConstants.KMUTATIONS);
-            if (alMutations != null)
-            {
-                foreach (Hashtable htMutationEffect in alMutations)
-                {
-                    string filterOnAspectId = string.Empty;
-
-                    if (htMutationEffect[NoonConstants.KMUTATIONLEVEL] != null)
-                        filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
-                    else if (htMutationEffect[NoonConstants.KFILTERONASPECTIDALT] != null)
-                        filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTIDALT].ToString();
-                    else
-                        _logger.LogProblem("Missing mutation filter specification for " + r.Id);
-
-
-                    string mutateAspectId = string.Empty;
-
-                    if (htMutationEffect[NoonConstants.KMUTATEASPECTID] != null)
-                        mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
-                    else if (htMutationEffect[NoonConstants.KMUTATEASPECTIDALT] != null)
-                        mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTIDALT].ToString();
-                    else
-                        _logger.LogProblem("Missing mutation specification for " + r.Id);
-
-
-                    int mutationLevel = 0;
-
-                    if (htMutationEffect[NoonConstants.KMUTATIONLEVEL] != null)
-                        mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
-                    else if (htMutationEffect[NoonConstants.KMUTATIONLEVELALT] != null)
-                        mutationLevel = Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVELALT]);
-                    else
-                        _logger.LogProblem("Missing mutation level specification for " + r.Id);
-
-                    bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
-
-                    r.MutationEffects.Add(new MutationEffect(filterOnAspectId, mutateAspectId, mutationLevel, additive));
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing mutationEffects recipes for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KMUTATIONS);
-
-
-        //Finished! Import, tidy up.
-        Recipes.Add(r);
-
+      
         htEachRecipe.Remove("comment"); //this should be the only nonprocessed property at this point
         htEachRecipe.Remove("comments"); //this should be the only nonprocessed property at this point
 
@@ -1473,7 +970,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            List<IEntityUnique> allEntities = new List<IEntityUnique>();
+            List<IEntity> allEntities = new List<IEntity>();
 
         foreach (Type t in assembly.GetTypes())
             {
@@ -1481,7 +978,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
                 if(importableAttribute!=null)
                 {
-                    if(!t.GetInterfaces().Contains(typeof(IEntityUnique)))
+                    if(!t.GetInterfaces().Contains(typeof(IEntity)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
                     ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
@@ -1491,7 +988,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntityUnique entityUnique = (IEntityUnique)w.PopulateEntityWith(caseInsensitiveH);
+                        IEntity entityUnique = (IEntity)w.PopulateEntityWith(caseInsensitiveH);
 
                         allEntities.Add(entityUnique);
 
@@ -1520,15 +1017,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         
 
-            //    ImportVerbs(alVerbs);
-           // ImportElements(alElements);
-            // ImportDeckSpecs(alDeckSpecs);
-          //  ImportRecipes(alRecipes);
-            // ImportLegacies(alLegacies);
-            //ImportEndings(alEndings);
-
-
-
             //I'm not sure why I use fields rather than local variables returned from the import methods?
             //that might be something to tidy up; I suspect it's left from an early design
 
@@ -1543,7 +1031,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 d.RegisterUniquenessGroups(_compendium);
 
 
-        foreach (IEntityUnique entity in allEntities)
+        foreach (IEntity entity in allEntities)
                 entity.RefineWithCompendium(_logger, _compendium);
 
 

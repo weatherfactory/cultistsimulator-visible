@@ -4,7 +4,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : IEntityUnique
+    public class LinkedRecipeDetails : IEntityWithId
     {
 
         private string _id;

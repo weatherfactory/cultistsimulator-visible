@@ -8,7 +8,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : IEntityUnique
+    public class Recipe : IEntityWithId
     {
 
         private string _id;
@@ -134,6 +134,9 @@ namespace Assets.Core.Entities
         [FucineList]
         public List<SlotSpecification> Slots { get; set; }
 
+        [FucineSubEntity(typeof(DeckSpec))]
+        public DeckSpec InternalDeck { get; set; }
+
         //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
         public Recipe()
@@ -156,6 +159,11 @@ namespace Assets.Core.Entities
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
+            //add internal decks to Compendium decks
+
+            
+
+
         }
 
         public bool UnlimitedExecutionsPermitted()

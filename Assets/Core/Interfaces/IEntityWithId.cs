@@ -11,7 +11,7 @@ namespace Assets.Core.Interfaces
     /// <summary>
     /// This is unique *in context*, not necessarily across the whole game. e.g.: a particular
     /// </summary>
-    interface  IEntityUnique:IEntity
+    interface  IEntityWithId:IEntity
     {
         string Id { get; }
         void SetId(string id);

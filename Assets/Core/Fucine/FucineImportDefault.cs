@@ -17,11 +17,7 @@ namespace Assets.Core.Fucine
             {
                 _property.SetValue(entity, fucineValueAttr.DefaultValue);
             }
-            else if(Attribute.GetCustomAttribute(_property, typeof(FucineId)) is FucineId )
-            {
 
-                _logger.LogProblem("ID not specified for a " + entityType.Name);
-            }
             else 
             {
                 Type type = _property.PropertyType;

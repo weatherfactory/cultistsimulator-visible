@@ -15,13 +15,14 @@ namespace Assets.Core.Fucine
 
         public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
         {
-            if (entityData.ContainsKey(_property.Name))
-                (entity as IEntityUnique).SetId(entityData.GetValue(_property.Name) as string);
+            if (entity is IEntityWithId entityWithId)
+                if(entityData.ContainsKey(_property.Name))
+                    entityWithId.SetId(entityData.GetValue(_property.Name) as string);
+                else 
+                    entityWithId.SetId(_property.Name);
 
             else
-            {
                 _logger.LogProblem("ID not specified for a " + entityType.Name);
-            }
+        }
         }
     }
-}

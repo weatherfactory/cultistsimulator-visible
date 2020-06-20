@@ -169,9 +169,9 @@ namespace Assets.Core.Fucine
                 FucinePropertyWalker
                     emanationWalker =
                         new FucinePropertyWalker(_logger, listMemberType); //passing in <string,MorphDetailsList>
-                IEntityUnique
+                IEntityWithId
                     sub = emanationWalker
-                        .PopulateEntityWith(ciEntityHash) as IEntityUnique; //{id:husk,morpheffect:spawn}
+                        .PopulateEntityWith(ciEntityHash) as IEntityWithId; //{id:husk,morpheffect:spawn}
                 wrapperList.Add(sub);
             }
 
@@ -193,7 +193,7 @@ namespace Assets.Core.Fucine
                     FucinePropertyWalker
                         emanationWalker =
                             new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
-                    IEntityUnique sub = emanationWalker.PopulateEntityWith(cih) as IEntityUnique;
+                    IEntityWithId sub = emanationWalker.PopulateEntityWith(cih) as IEntityWithId;
                     dict.Add(sub.Id, sub);
                     _property.SetValue(entity, dict);
                 }
