@@ -88,36 +88,36 @@ namespace Assets.Core.Entities
 
         //Spec determines which cards start in the deckSpec after each reset
         [FucineList]
-        public List<string> Spec { get; set; }
+        public List<string> Spec
+        {
+            get => _spec;
+            set => _spec = value;
+        }
 
         [FucineDict(KeyMustExistIn = "Spec")]
-        public Dictionary<string,string> DrawMessages { get; set; }
+        public Dictionary<string, string> DrawMessages
+        {
+            get => _drawMessages;
+            set => _drawMessages = value;
+        }
 
         [FucineDict]
-        public Dictionary<string, string> DefaultDrawMessages { get; set; }
+        public Dictionary<string, string> DefaultDrawMessages
+        {
+            get => _defaultDrawMessages;
+            set => _defaultDrawMessages = value;
+        }
 
 
-       //----------
-
-        private Dictionary<string, List<string>> _uniquenessGroupsWithCards;
+        //----------
+        private List<string> _spec = new List<string>();
+        private readonly Dictionary<string, List<string>> _uniquenessGroupsWithCards = new Dictionary<string, List<string>>();
+        private Dictionary<string, string> _defaultDrawMessages = new Dictionary<string, string>();
+        private Dictionary<string, string> _drawMessages = new Dictionary<string, string>();
+      
 
         public DeckSpec()
         {
-            DrawMessages = new Dictionary<string, string>();
-            DefaultDrawMessages = new Dictionary<string, string>();
-            _uniquenessGroupsWithCards = new Dictionary<string, List<string>>();
-        }
-
-        public DeckSpec(string id, List<string> spec, string defaultCardId, bool resetOnExhaustion)
-        {
-            _id = id;
-            Spec = spec;
-            DefaultCardId = defaultCardId;
-            ResetOnExhaustion = resetOnExhaustion;
-            DrawMessages = new Dictionary<string, string>();
-            DefaultDrawMessages = new Dictionary<string, string>();
-            _uniquenessGroupsWithCards=new Dictionary<string, List<string>>();
-            DefaultDraws = 1;
         }
 
 

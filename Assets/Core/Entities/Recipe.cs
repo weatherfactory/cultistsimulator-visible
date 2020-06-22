@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
@@ -159,11 +160,14 @@ namespace Assets.Core.Entities
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
-            //add internal decks to Compendium decks
-
-            
-
-
+            if (InternalDeck.Spec.Any())
+            {
+                InternalDeck.SetId("deck." + Id);
+                if(populatedCompendium.TryAddDeckSpec(InternalDeck))
+                    DeckEffects.Add(InternalDeck.Id, InternalDeck.DefaultDraws);
+                else
+                logger.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);
+            }
         }
 
         public bool UnlimitedExecutionsPermitted()

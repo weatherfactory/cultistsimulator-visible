@@ -349,7 +349,7 @@ namespace Assets.TabletopUi {
             var executor = new SituationEffectExecutor(tabletopManager);
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter, Registry.Retrieve<IDice>());
 
-            if (command.Recipe.Ending != null) {
+            if (!string.IsNullOrEmpty(command.Recipe.Ending)) {
                 var ending = compendium.GetEndingById(command.Recipe.Ending);
                 tabletopManager.EndGame(ending, this);
             }

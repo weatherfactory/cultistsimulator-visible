@@ -43,7 +43,9 @@ public interface ICompendium
     void SupplyLevers(IGameEntityStorage populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
-    
+    bool TryAddDeckSpec(DeckSpec deck);
+
+
 }
 
 public class Compendium : ICompendium
@@ -216,6 +218,18 @@ public class Compendium : ICompendium
         return deck;
     }
 
+
+    public bool TryAddDeckSpec(DeckSpec deck)
+    {
+        if (!_decks.ContainsKey(deck.Id))
+        {
+            _decks.Add(deck.Id,deck);
+            return true;
+        }
+
+        return false;
+    }
+
     public Legacy GetLegacyById(string legacyId) {
         Legacy legacy;
         _legacies.TryGetValue(legacyId, out legacy);
@@ -301,4 +315,6 @@ public class Compendium : ICompendium
 
         return null;
     }
+
+
 }

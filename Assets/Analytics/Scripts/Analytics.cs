@@ -320,7 +320,7 @@ public class Analytics : MonoBehaviour
                 sendSystemInfoEvent(category, "supportsLocationService", SystemInfo.supportsLocationService ? "yes" : "no", SystemInfo.supportsLocationService ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsVibration", SystemInfo.supportsVibration ? "yes" : "no", SystemInfo.supportsVibration ? 1 : 0);
 
-                sendSystemInfoEvent(category, "supportsImageEffects", SystemInfo.supportsImageEffects ? "yes" : "no", SystemInfo.supportsImageEffects ? 1 : 0);
+               // sendSystemInfoEvent(category, "supportsImageEffects", SystemInfo.supportsImageEffects ? "yes" : "no", SystemInfo.supportsImageEffects ? 1 : 0);
 
                 PlayerPrefs.SetInt(prefKey, getPOSIXTime());
                 PlayerPrefs.Save();

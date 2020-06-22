@@ -21,7 +21,7 @@ namespace Assets.Core.Entities
         }
 
 
-        [FucineValue(0)]
+        [FucineValue(100)]
         public int Chance { get; set; }
 
         [FucineValue(false)]
