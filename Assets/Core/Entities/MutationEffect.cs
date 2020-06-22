@@ -20,12 +20,8 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additive { get; set; }
 
-        public MutationEffect(string filter, string mutate, int level, bool additive)
+        public MutationEffect()
         {
-            Filter = filter;
-            Mutate = mutate;
-            Level = level;
-            Additive = additive;
         }
     }
 }

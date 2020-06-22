@@ -60,7 +60,7 @@ namespace Assets.CS.TabletopUI
 
         private void PlayEndingMusic(Ending ending)
         {
-            endingMusic = ResourcesManager.GetEndingMusic(ending.EndingFlavour).First();
+            endingMusic = ResourcesManager.GetEndingMusic(ending.Flavour).First();
             audioSource.Stop();
             audioSource.PlayOneShot(endingMusic);
         }

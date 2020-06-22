@@ -10,6 +10,7 @@ using Assets.Core.Interfaces;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine;
+using static System.String;
 
 namespace Assets.Core.Fucine
 {
@@ -40,6 +41,17 @@ namespace Assets.Core.Fucine
 
                    FucineImport import = FucineImport.CreateInstance(thisProperty, _logger, importDataForEntity);
                     import.Populate(newEntity,importDataForEntity,_entityType);
+                }
+            }
+
+            foreach (var k in importDataForEntity.Keys)
+            {
+             
+                if(entityProperties.All(e => !string.Equals(e.Name, k.ToString(), StringComparison.InvariantCultureIgnoreCase)))
+                {
+                    
+                    _logger.LogInfo($"Unknown property in import: {k} for {_entityType.Name} with ID {(newEntity as IEntityWithId)?.Id}");
+
                 }
             }
 

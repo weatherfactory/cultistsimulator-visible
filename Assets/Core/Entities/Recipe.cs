@@ -44,7 +44,7 @@ namespace Assets.Core.Entities
         public AspectsDictionary Aspects {get; set; }
 
         [FucineList]
-        public List<MutationEffect> MutationEffects { get; set; }
+        public List<MutationEffect> Mutations { get; set; }
 
         /// <summary>
         /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
@@ -103,6 +103,9 @@ namespace Assets.Core.Entities
         [FucineValue(".")]
         public string Description { get; set; }
 
+        [FucineValue("")]
+        public string Comments { get; set; }
+
         /// <summary>
         /// On completion, the recipe will draw
         ///from this deck and add the result to the outcome.
@@ -154,7 +157,7 @@ namespace Assets.Core.Entities
             Purge = new Dictionary<string, int>();
             HaltVerb = new Dictionary<string, int>();
             DeleteVerb = new Dictionary<string, int>();
-            MutationEffects = new List<MutationEffect>();
+            Mutations = new List<MutationEffect>();
             PortalEffect = PortalEffect.None;
         }
 

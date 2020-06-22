@@ -774,7 +774,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             foreach (var a in r.Alt)
                 LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
 
-            foreach (var m in r.MutationEffects)
+            foreach (var m in r.Mutations)
             {
                 LogIfNonexistentElementId(m.Filter,r.Id," - as mutation filter");
                 LogIfNonexistentElementId(m.Mutate, r.Id, " - as mutated aspect");

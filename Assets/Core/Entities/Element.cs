@@ -34,6 +34,9 @@ namespace Assets.Core.Entities
         public string Description { get; set;}
 
         [FucineValue("")]
+        public string Comments { get; set; }
+
+        [FucineValue("")]
         public string Icon
         {
             get
@@ -158,7 +161,7 @@ namespace Assets.Core.Entities
 
         public Boolean HasChildSlotsForVerb(string forVerb)
         {
-            return Slots.Any(cs => cs.ForVerb == forVerb || cs.ForVerb == String.Empty);
+            return Slots.Any(cs => cs.ActionId == forVerb || cs.ActionId == String.Empty);
 
 
 

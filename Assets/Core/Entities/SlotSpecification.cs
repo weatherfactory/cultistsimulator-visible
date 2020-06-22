@@ -35,7 +35,7 @@ public class SlotSpecification:IEntityWithId
     [FucineValue("")]
     public string Label { get; set; }
     [FucineValue("")]
-    public string ForVerb { get; set; }
+    public string ActionId { get; set; }
 
     /// <summary>
     /// currently, this is only used by the primary slot specification
@@ -78,7 +78,7 @@ private const string PRIMARY_SLOT="primary";
         Label = id;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
-        ForVerb = string.Empty;
+        ActionId = string.Empty;
     }
 
     public SlotSpecification()

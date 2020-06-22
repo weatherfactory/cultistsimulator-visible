@@ -82,7 +82,7 @@ namespace Assets.Core.Entities
             else
                 //if either the deck didn't reset on exhaustion,
                 //or a reset has still left us with no cards, always return the default card
-                return _deckSpec.DefaultCardId;
+                return _deckSpec.DefaultCard;
         }
 
 

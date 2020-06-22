@@ -42,28 +42,28 @@ namespace Assets.Core.Entities
         public string Image { get; set; }
 
         [FucineValue((int)EndingFlavour.Melancholy)]
-        public EndingFlavour EndingFlavour { get; set; }
+        public EndingFlavour Flavour { get; set; }
 
         [FucineValue("")]
         public string Anim { get; set; }
 
         [FucineValue("")]
-        public string AchievementId { get; set; }
+        public string Achievement { get; set; }
 
         public Ending()
         {
 
         }
 
-        public Ending(string id, string label, string description,string image,EndingFlavour endingFlavour, string anim,string achievementId)
+        public Ending(string id, string label, string description,string image,EndingFlavour flavour, string anim,string achievement)
         {
             _id = id;
             Label = label;
             Description = description;
             Image = image;
-            EndingFlavour = endingFlavour;
+            Flavour = flavour;
             Anim = anim;
-            AchievementId = achievementId;
+            Achievement = achievement;
         }
 
         
@@ -76,9 +76,9 @@ namespace Assets.Core.Entities
                 Label = "IT'S ALWAYS TOO LATE, EVENTUALLY",
                 Description = "'... but until then, it's not.'",
                 Image = "suninrags",
-                EndingFlavour = EndingFlavour.Melancholy,
+                Flavour = EndingFlavour.Melancholy,
                 Anim = "DramaticLight",
-                AchievementId = null
+                Achievement = null
             };
 
 

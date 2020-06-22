@@ -91,15 +91,15 @@ namespace Assets.Core.Services
         
         private void SetAchievementsForEnding(Ending ending)
         {
-            if (string.IsNullOrEmpty(ending.AchievementId))
+            if (string.IsNullOrEmpty(ending.Achievement))
                 return;
 
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
-            storefrontServicesProvider.SetAchievementForCurrentStorefronts(ending.AchievementId, true);
+            storefrontServicesProvider.SetAchievementForCurrentStorefronts(ending.Achievement, true);
 
-            if (ending.AchievementId == NoonConstants.A_ENDING_MAJORFORGEVICTORY ||
-				ending.AchievementId == NoonConstants.A_ENDING_MAJORGRAILVICTORY ||
-				ending.AchievementId == NoonConstants.A_ENDING_MAJORLANTERNVICTORY)
+            if (ending.Achievement == NoonConstants.A_ENDING_MAJORFORGEVICTORY ||
+				ending.Achievement == NoonConstants.A_ENDING_MAJORGRAILVICTORY ||
+				ending.Achievement == NoonConstants.A_ENDING_MAJORLANTERNVICTORY)
 			{
 				storefrontServicesProvider.SetAchievementForCurrentStorefronts(NoonConstants.A_ENDING_MAJORVICTORYGENERIC, true);
 			}

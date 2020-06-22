@@ -296,7 +296,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         virtual public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
-            return _element.Slots.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
+            return _element.Slots.Where(cs=>cs.ActionId==forVerb || cs.ActionId==string.Empty).ToList();
         }
 
         virtual public bool HasChildSlotsForVerb(string verb) {

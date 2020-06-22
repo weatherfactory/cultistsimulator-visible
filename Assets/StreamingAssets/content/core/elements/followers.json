@@ -6,7 +6,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "Auclair has a scholarly aspect and a morbid streak. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic,rebellion:auclair_r},
 			uniquenessgroup:"uqauclair"
         },
@@ -15,7 +15,7 @@
             label: "Auclair, a believer",
             aspects:
             {mortal: 1, follower: 1,winter: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "Auclair is quiet, meticulous and remorseless.",
 			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r},
 			uniquenessgroup:"uqauclair"
@@ -27,7 +27,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,winter:5,follower_lustenlightenment:1},
             description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r_c},
 			uniquenessgroup:"uqauclair"
         },
@@ -37,7 +37,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,winter:10,follower_lustenlightenment:1},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,rebellion:auclair_r_d},
 			uniquenessgroup:"uqauclair"
         },
@@ -49,7 +49,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "'Cat Caro', as she styles herself, earns a living as a stage medium and a fortune-teller. She may have deeper talents. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: cat_b,killmortal:corpse,derangemortal:lunatic,rebellion:cat_r},
 			uniquenessgroup:"uqcat"
         },
@@ -58,7 +58,7 @@
             label: "Cat Caro, a believer",
             aspects:
             {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "A bright-eyed, watchful woman who recalls her dreams perfectly.",
 			xtriggers: {promotiontodisciple: cat_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r},
 			uniquenessgroup:"uqcat"
@@ -70,7 +70,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
             description: "She still performs in the theatres sometimes. 'Cat Caro,' the posters say, 'finds the path; Cat Caro knows the way.'",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_lantern: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r_c},
 			uniquenessgroup:"uqcat"
         },
@@ -80,7 +80,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "Archaeologists find treasures in tombs. Farmers bring harvest from the fields. What does Cat Caro unearth in dreams?",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r_d},
 			uniquenessgroup:"uqcat"
         },
@@ -90,7 +90,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "A bellowing and unorthodox Catholic with a mystic streak and an untrimmed beard. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: clifton_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqclifton"
         },
@@ -99,7 +99,7 @@
             label: "'Pope' Clifton, a believer",
             aspects:
             {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "Now Clifton improvises new prayers rich with solar metaphors. He still shouts like a soldier and drinks like a sailor.",
 			xtriggers: {promotiontodisciple: clifton_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r},
 			uniquenessgroup:"uqclifton"
@@ -112,7 +112,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
             description: "Clifton's devotions have grown complex. His eyes have grown wide and shining. His voice has become even louder.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r_c},
 			uniquenessgroup:"uqclifton"
         },
@@ -122,7 +122,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "Clifton still recites his prayers, but they are grown strange as old mirrors. He rises every morning to greet the dawn. He looks it full in the face, and tells you exactly what he sees.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r_d},
 			uniquenessgroup:"uqclifton"
         },
@@ -133,7 +133,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Clovette is happy in a way that brooks no counter-argument to happiness. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: clovette_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqclovette"
         },
@@ -142,7 +142,7 @@
             label: "Clovette, a believer",
             aspects:
             {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Clovette's determined happiness now borders on the fanatical.",
 			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
 			uniquenessgroup:"uqclovette"
@@ -153,7 +153,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,heart:5,follower_lustchange:1},
             description: "Clovette's optimism is daunting. She wields her joy like a hammer.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_heart: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r_c},
 			uniquenessgroup:"uqclovette"
         },
@@ -163,7 +163,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,heart:10,follower_lustchange:1},
             description: "Clovette is always in motion. She laughs easily. Her smile is the crescent at the edge of the moon.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r_d},
 			uniquenessgroup:"uqclovette"
         },
@@ -173,7 +173,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,edge:5,grail:4},
             description: "Connie's found one last gambit she couldn't resist... or perhaps she's just enjoying life.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,promotionto_d_edge:connie_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
 			uniquenessgroup:"uqconnie",
 			icon:"connie_r"
@@ -185,7 +185,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,edge:10,grail:7},
             description: "It's not in Connie's nature to serve. One day she'll rise as a river rises. But for now, she stoops to conquer.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_d},
 			uniquenessgroup:"uqconnie",
 			icon:"connie_r"
@@ -196,7 +196,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Dorothy is an enthusiastic sort with an eclectic reading habit. She's fascinated by my hints about the shapes beneath the world's skin. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: dorothy_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqdorothy"
         },
@@ -205,7 +205,7 @@
             label: "Dorothy, a believer",
             aspects:
             {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Dorothy is an enthusiastic sort, and I have turned her enthusiasm to our advantage.",
 			xtriggers: {promotiontodisciple: dorothy_c,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r},
 			uniquenessgroup:"uqdorothy"
@@ -216,7 +216,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,heart:5,follower_lustchange:1},
             description: "Dorothy's enthusiasm has become obsession. She will not cease; and how she loves to dance.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r_c},
 			uniquenessgroup:"uqdorothy"
         },
@@ -226,7 +226,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,heart:10,follower_lustchange:1},
             description: "When Dorothy moves, we hear the drum. When she speaks, we see the dance. Her determination is her shield and her weapon.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r_d},
 			uniquenessgroup:"uqdorothy"
         },
@@ -236,7 +236,7 @@
             label: "Douglas, a believer",
             aspects:
             {mortal: 1, follower: 1,forge: 2},
-            animFrames: 1,
+
 			description: "Douglas has exchanged the Force for the Forge.",
 			xtriggers: {promotiontodisciple: douglas_c,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
 			uniquenessgroup:"uqdouglas",
@@ -248,7 +248,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,forge:5},
             description: "Douglas doesn't like hammers. They remind him of an Incident. But he uses what instruments he must.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_forge: douglas_d,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r_c},
 			uniquenessgroup:"uqdouglas",
 			icon:"douglas_r"
@@ -259,7 +259,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
             description: "Douglas has changed so much. His eyes glow like smithy windows in fog. His voice is the rattle of coal in the chute. His arm is long.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r_d},
 			uniquenessgroup:"uqdouglas",
 			icon:"douglas_r"
@@ -270,7 +270,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustpower:1},
             description: "An elegant man of inelegant habits. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqelridge"
         },
@@ -279,7 +279,7 @@
             label: "Elridge, a believer",
             aspects:
             {mortal: 1, follower: 1,edge: 2,follower_lustpower:1},
-            animFrames: 1,
+
 			description: "Elridge has almost learnt not to pick his teeth with his knife in conversation. He has not yet learnt to leave his knife in his boot.",
 			xtriggers: {promotiontodisciple: elridge_c,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r},
 			uniquenessgroup:"uqelridge"
@@ -291,7 +291,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustpower:1},
             description: "Elridge is waiting patiently until it's time to knife someone again.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_edge: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r_c},
 			uniquenessgroup:"uqelridge"
         },
@@ -300,7 +300,7 @@
             label: "Elridge, an Assassin",
             aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustpower:1},
             description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r_d},
 			uniquenessgroup:"uqelridge"
         },
@@ -310,7 +310,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. It may be that you've dreamed the same dreams. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: enid_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqenid"
         },
@@ -319,7 +319,7 @@
             label: "Enid, a believer",
             aspects:
             {mortal: 1, follower: 1, knock: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. She sees things that others don't.",
 			xtriggers: {promotiontodisciple: enid_c,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r_c},
 			uniquenessgroup:"uqenid"
@@ -330,7 +330,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,knock:5,follower_lustenlightenment:1},
             description: "Enid sees what others do not. It is becoming difficult for her, but it is very useful.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_knock: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r_d},
 			uniquenessgroup:"uqenid"
         },
@@ -340,7 +340,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10,follower_lustenlightenment:1},
             description: "Enid sees the gaps between things, and the arts that she has learned permit her, sometimes, to place her fingers in that gap.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r},
 			uniquenessgroup:"uqenid"
         },
@@ -350,7 +350,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustpower:1},
             description: "Laidlaw is a tinkerer and mechanic with an uncanny knack. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: laidlaw_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqlaidlaw"
         },
@@ -359,7 +359,7 @@
             label: "Laidlaw, a believer",
             aspects:
             {mortal: 1, follower: 1,forge: 2,follower_lustpower:1},
-            animFrames: 1,
+
 			description: "Laidlaw has begun to understand the limitations of ingenuity, and the power of sacrifice.",
 			xtriggers: {promotiontodisciple: laidlaw_c,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r},
 			uniquenessgroup:"uqlaidlaw"
@@ -372,7 +372,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
             description: "Laidlaw has learnt the cleverer uses of fire and copper, wax and acid.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_forge: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r_c},
 			uniquenessgroup:"uqlaidlaw"
         },
@@ -382,7 +382,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
             description: "Laidlaw can shape what is broken into what is necessary.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r_d},
 			uniquenessgroup:"uqlaidlaw"
         },
@@ -393,7 +393,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Leo is an earnest sort with an interest in the occult. He hangs on your hints about the invisible arts. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting:leo_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqleo"
         },
@@ -402,7 +402,7 @@
             label: "Leo, a believer",
             aspects:
             {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Leo is an earnest sort, but he's prepared to do what he must.",
 			xtriggers: {promotiontodisciple: leo_c,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r},
 			uniquenessgroup:"uqleo"
@@ -413,7 +413,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1, heart:5,follower_lustchange:1},
             description: "Leo still yearns to preserve what is good and valuable; but he understands that to protect one's ideals, one must sometimes do questionable things.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_heart:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r_c},
 			uniquenessgroup:"uqleo"
         },
@@ -423,7 +423,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1, heart:10,follower_lustchange:1},
             description: "Leo will preserve, at all costs. He will not cease.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r_d},
 			uniquenessgroup:"uqleo"
         },
@@ -433,7 +433,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:5,forge:4},
             description: "Natalia never follows unquestioningly - but for now, she follows.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:natalia_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
 			uniquenessgroup:"uqnatalia",
 			icon:"natalia_r"
@@ -444,7 +444,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,forge:7},
             description: "Natalia has aligned herself with the brightest path she can find.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse, derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_d},
 			uniquenessgroup:"uqnatalia",
 			icon:"natalia_r"
@@ -456,7 +456,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "Neville pauses before he speaks, and flinches easily. He laughs whenever he thinks you've made a joke. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: neville_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqneville"
         },
@@ -465,7 +465,7 @@
             label: "Neville, a believer",
             aspects:
             {mortal: 1, follower: 1, knock: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "Neville pauses before he speaks, and flinches easily. He's sensitive to deeper matters.",
 			xtriggers: {promotiontodisciple: neville_c,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r},
 			uniquenessgroup:"uqneville"
@@ -476,7 +476,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,knock:5,follower_lustenlightenment:1},
             description: "Neville's gaze has grown furtive, and his voice is sometimes shrill. He speaks freely of his dreams.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_knock: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r_c},
 			uniquenessgroup:"uqneville"
         },
@@ -486,7 +486,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10,follower_lustenlightenment:1},
             description: "In his dreams, Neville sees the flaws where the world and its ways can be opened.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r_d},
 			uniquenessgroup:"uqneville"
         },
@@ -497,7 +497,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Porter was a barber, until the court case. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: porter_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqporter"
         },
@@ -506,7 +506,7 @@
             label: "Porter, a believer",
             aspects:
             {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Porter plies his razor and his scissors, to the great advantage of his friends.",
 			xtriggers: {promotiontodisciple: porter_c,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r},
 			uniquenessgroup:"uqporter"
@@ -518,7 +518,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
             description: "Porter goes unnoticed, until he's ready.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_moth: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r_c},
 			uniquenessgroup:"uqporter"
         },
@@ -528,7 +528,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
             description: "Porter, like a spider, is found in the most unexpected places.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r_d},
 			uniquenessgroup:"uqporter"
         },
@@ -539,7 +539,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
             description: "Renira has been found not guilty three times in three separate jurisdictions. She will likely never be found guilty of anything. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqrenira"
         },
@@ -548,7 +548,7 @@
             label: "Renira, a believer",
             aspects:
             {mortal: 1, follower: 1,grail: 2,follower_lustsensation:1},
-            animFrames: 1,
+
 			description: "Renira continues to pursue her appetites discreetly, although her ambitions have grown. ",
 			xtriggers: {promotiontodisciple: renira_c,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r},
 			uniquenessgroup:"uqrenira"
@@ -561,7 +561,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,grail:5,follower_lustsensation:1},
             description: "Renira commands admiration wherever she goes. She reserves her attentions  for those who merit admiration in return.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_grail: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r_c},
 			uniquenessgroup:"uqrenira"
         },
@@ -571,7 +571,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,grail:10,follower_lustsensation:1},
             description: "Renira receives tokens from admirers almost daily. Some gifts are flowers, others poetry. Sometimes she receives jewels; sometimes, desperate gifts wrapped tightly in blood-stained crepe paper.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r_d},
 			uniquenessgroup:"uqrenira"
         },
@@ -581,7 +581,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
             description: "Rose is a sly miss, and she recognises you as someone uncommon. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: rose_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqrose"
         },
@@ -590,7 +590,7 @@
             label: "Rose, a believer",
             aspects:
             {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
-            animFrames: 1,
+
 			description: "Rose is a sly miss, but loyal.",
 			xtriggers: {promotiontodisciple: rose_c,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r},
 			uniquenessgroup:"uqrose"
@@ -601,7 +601,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustsensation:1},
             description: "Rose has sharpened her cunning to a concentrated point.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_edge: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r_c},
 			uniquenessgroup:"uqrose"
         },
@@ -611,7 +611,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustsensation:1},
             description: "The night before Rose meets her subject, the subject will receive a package with a single yellow rose.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r_d},
 			uniquenessgroup:"uqrose"
         },
@@ -622,7 +622,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
             description: "Saliba is a man of prodigious appetites. He is long past the point where their satisfaction has given him any pleasure; but he has learnt so very much. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqsaliba"
         },
@@ -631,7 +631,7 @@
             label: "Saliba, a believer",
             aspects:
             {mortal: 1, follower: 1,grail: 2,follower_lustsensation:1},
-            animFrames: 1,
+
 			description: "Saliba understands blood. He does not yet understand birth.",
 			xtriggers: {promotiontodisciple: saliba_c,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r},
 			uniquenessgroup:"uqsaliba"
@@ -644,7 +644,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,grail:5,follower_lustsensation:1},
             description: "Saliba's pleasures are taken in a room without windows. His companions return to him again and again, even though each time they are a little less.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r_c},
 			uniquenessgroup:"uqsaliba"
         },
@@ -654,7 +654,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,grail:10,follower_lustsensation:1},
             description: "Saliba's charisma strikes with the force of a hammer. It is horribly difficult to refuse his desires.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r_d},
 			uniquenessgroup:"uqsaliba"
         },
@@ -664,7 +664,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "Craig Slee, the astronomer and avant-garde poet, has developed an interest in the esoteric as his health wanes. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: slee_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqslee"
         },
@@ -673,7 +673,7 @@
             label: "Slee, a believer",
             aspects:
             {mortal: 1, follower: 1,lantern: 2,follower_lustenlightenment:1},
-            animFrames: 1,
+
 			description: "Slee speaks earnestly of his theories to all who will listen: the stars as tiny wounds, and the Sun as a haemorrhage of glory. His poetry is more eccentric than ever.",
 			xtriggers: {promotiontodisciple: slee_c,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r},
 			uniquenessgroup:"uqslee"
@@ -685,7 +685,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,lantern:5,follower_lustenlightenment:1},
             description: "Slee's headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_lantern: slee_d,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r_c},
 			uniquenessgroup:"uqslee"
         },
@@ -695,7 +695,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,follower_lustenlightenment:1},
             description: "Slee speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r_d},
 			uniquenessgroup:"uqslee"
         },
@@ -706,7 +706,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,knock:5,moth:4},
             description: "Spencer carries a tiny icon of St Agnes on a chain around his neck, to rest on the scar above his heart.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:spencer_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_c},
 			uniquenessgroup:"uqspencer",
 			icon:"spencer_r"
@@ -718,7 +718,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10,moth:7},
             description: "Some follow the Way, and some are the Way for others. Spencer no longer tells us he made a decision: instead, he suggests that the decision has made him.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
 			uniquenessgroup:"uqspencer",
 			icon:"spencer_r"
@@ -730,7 +730,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Sylvia lost her eye in the woods when she was nine years old. Every year, at Candlemas, she returns to the place she buried it. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqsylvia"
         },
@@ -739,7 +739,7 @@
             label: "Sylvia, a believer",
             aspects:
             {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Sylvia has a detailed knowledge of roof-ridges, of the river at low tide, of Irish whiskey, and of conjuring tricks.",
 			xtriggers: {promotiontodisciple: sylvia_c,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r},
 			uniquenessgroup:"uqsylvia"
@@ -751,7 +751,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
             description: "Sylvia's favourite tactic is to smile and close her eye. It is remarkable how often her interlocutor will blurt out exactly what they are thinking.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_moth: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r_c},
 			uniquenessgroup:"uqsylvia"
         },
@@ -761,7 +761,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
             description: "Sylvia has learnt to get out of a place almost before she has gotten in. Sometimes, she leaves dead leaves beneath the window-sill. Sometimes, she writes her name where it won't be found.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r_d},
 			uniquenessgroup:"uqsylvia"
         },
@@ -771,7 +771,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustpower:1},
             description: "Tristan dislikes distractions. Tristan gets things done. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: tristan_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqtristan"
         },
@@ -780,7 +780,7 @@
             label: "Tristan, a believer",
             aspects:
             {mortal: 1, follower: 1,forge:2,follower_lustpower:1},
-            animFrames: 1,
+
 			description: "Tristan dislikes distractions; Tristan likes results.",
 						xtriggers: {promotiontodisciple: tristan_c,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r},
 			uniquenessgroup:"uqtristan"
@@ -791,7 +791,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
             description: "Tristan will do what is necessary. To create, sometimes one must first destroy.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_forge: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r_c},
 			uniquenessgroup:"uqtristan"
         },
@@ -801,7 +801,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
             description: "In another age, Tristan might have been a smith. In another life, he might have been a bomb-maker.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,rebellion:tristan_r_d},
 			uniquenessgroup:"uqtristan"
         },
@@ -812,7 +812,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustpower:1},
             description: "Valciane has operated her establishment for almost twenty years. She has never employed an assistant. Her hands are terribly strong. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqvalciane"
         },
@@ -821,7 +821,7 @@
             label: "Valciane, a believer",
             aspects:
             {mortal: 1, follower: 1,forge: 2,follower_lustpower:1},
-            animFrames: 1,
+
 			description: "Valciane's ingenuities are endless, and her grip is stronger than a blacksmith's.",
 			xtriggers: {promotiontodisciple: valciane_c,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r},
 			uniquenessgroup:"uqvalciane"
@@ -834,7 +834,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,forge:5,follower_lustpower:1},
             description: "Valciane is not a machine. We are reasonably confident of that, because she has been observed, now and then, to commit quite human errors.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_forge: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r_c},
 			uniquenessgroup:"uqvalciane"
         },
@@ -844,7 +844,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10,follower_lustpower:1},
             description: "Valciane has begun to work without tools. 'They get in the way,' she claims.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r_d},
 			uniquenessgroup:"uqvalciane"
         },
@@ -854,7 +854,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
             description: "Victor is a sly fellow, and he knows an unusual opportunity when he sees it. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: victor_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqvictor"
         },
@@ -863,7 +863,7 @@
             label: "Victor, a believer",
             aspects:
             {mortal: 1, follower: 1,edge:2,follower_lustsensation:1},
-            animFrames: 1,
+
 			description: "Victor is a sly fellow, but loyal.",
 			xtriggers: {promotiontodisciple: victor_c,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r},
 			uniquenessgroup:"uqvictor"
@@ -874,7 +874,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,edge:5,follower_lustsensation:1},
             description: "Victor has sharpened his cunning to a concentrated point.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_edge: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r_c},
 			uniquenessgroup:"uqvictor"
         },
@@ -884,7 +884,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustsensation:1},
             description: "Victor likes to become acquainted with his subjects, so he can apologise to them personally, just before the end.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r_d},
 			uniquenessgroup:"uqvictor"
         },
@@ -895,7 +895,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustsensation:1},
             description: "Violet has always given unstintingly of her time, easing the pain of the dying. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqviolet"
         },
@@ -904,7 +904,7 @@
             label: "Violet, a believer",
             aspects:
             {mortal: 1, follower: 1,winter: 2,follower_lustsensation:1},
-            animFrames: 1,
+
 			description: "Violet likes to paint. She has a gift, although she's always been very modest about it. She never puts human figures in her paintings. There are enough people in the world.",
 			xtriggers: {promotiontodisciple: violet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r},
 			uniquenessgroup:"uqviolet"
@@ -917,7 +917,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,winter:5,follower_lustsensation:1},
             description: "Violet is always very careful.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_winter: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r_c},
 			uniquenessgroup:"uqviolet"
         },
@@ -927,7 +927,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,winter:10,follower_lustsensation:1},
             description: "Sleep, now. Don't worry about a thing.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r_d},
 			uniquenessgroup:"uqviolet"
         },
@@ -938,7 +938,7 @@
             aspects:
             {mortal: 1,acquaintance:1,follower_lustchange:1},
             description: "Ysabet has always been most comfortable by moonlight. She has excellent night vision. She is often overlooked in daylight.[You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic},
 			uniquenessgroup:"uqysabet"
         },
@@ -947,7 +947,7 @@
             label: "Ysabet, a believer",
             aspects:
             {mortal: 1, follower: 1,moth: 2,follower_lustchange:1},
-            animFrames: 1,
+
 			description: "Ysabet sleeps in fits and starts. She rises at dusk to do the things an Ysabet does.",
 			xtriggers: {promotiontodisciple: ysabet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r},
 			uniquenessgroup:"uqysabet"
@@ -959,7 +959,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,potential:1,moth:5,follower_lustchange:1},
             description: "Ysabet was just here, just a moment ago. Just here. Almost certainly.",
-			animFrames: 1,
+			
 			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r_c},
 			uniquenessgroup:"uqysabet"
         },
@@ -969,7 +969,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10,follower_lustchange:1},
             description: "Ysabet never lies, now. She doesn't need to.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r_d},
 			uniquenessgroup:"uqysabet"
         },
@@ -980,7 +980,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,winter:5,lantern:4},
             description: "Zachary's reasoning is as certain as ever, but now, it is chillier.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,promotionto_d_winter:zachary_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
 			uniquenessgroup:"uqzachary",
 			icon:"zachary_r"
@@ -992,7 +992,7 @@
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,winter:10,lantern:7},
             description: "Zachary has chosen his ending.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_d},
 			uniquenessgroup:"uqzachary",
 			icon:"zachary_r"
@@ -1004,7 +1004,7 @@
             aspects:
             {mortal:1, prisoner:1,winter:5,grail:3,heart:3},
             description: "Auclair does not speak or eat.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqauclair"
@@ -1015,7 +1015,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
             description: "The woman who used to call herself 'Cat Caro' sleeps whenever she can.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqcat"
@@ -1026,7 +1026,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
             description: "Clifton roars and curses, but the bars hold, and the walls are thick.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqclifton"
@@ -1038,7 +1038,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
             description: "Clovette is waiting for things to turn around.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqclovette"
@@ -1049,7 +1049,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
             description: "Dorothy's constant expostulations wear on the nerves.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqdorothy"
@@ -1060,7 +1060,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
             description: "Douglas shakes his head sadly. 'Never thought I'd end on the wrong side of the bars. Should have listened to me old mum.'",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqdouglas",
@@ -1072,7 +1072,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
             description: "Enid doesn't speak any more.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqenid"
@@ -1084,7 +1084,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
             description: "Elridge is not permitted a spoon, or a plate. It is probably unwise to permit him even the sharper vegetables.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqelridge"
@@ -1095,7 +1095,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
             description: "Laidlaw's door is bolted, not locked. We know better than that.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqlaidlaw"
@@ -1106,7 +1106,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:5},
             description: "Leo doesn't understand what he did wrong.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqleo"
@@ -1117,7 +1117,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5},
             description: "Neville is weeping.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqneville"
@@ -1128,7 +1128,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
             description: "Porter waits, still as a lizard.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqporter"
@@ -1139,7 +1139,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
             description: "Renira always finds ways to pass the time.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqrenira"
@@ -1151,7 +1151,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
             description: "Rose has not given up. I suspect her of hiding cutlery.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqrose"
@@ -1162,7 +1162,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:5,grail:3,heart:3},
             description: "Slee writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqslee"
@@ -1173,7 +1173,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
             description: "Tristan will make the best of his situation.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqtristan"
@@ -1184,7 +1184,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:5,heart:3},
             description: "Saliba's anger burns like buried lava.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqsaliba"
@@ -1195,7 +1195,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
             description: "We check on Sylvia every hour, just in case.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqsylvia"
@@ -1206,7 +1206,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
             description: "It is very important never to get within arm's reach of Valciane.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqvalciane"
@@ -1218,7 +1218,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5},
             description: "Victor's eyes are wells of rage.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqvictor"
@@ -1229,7 +1229,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,winter:5},
             description: "Violet insists that she's fine. She's fine.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqviolet"
@@ -1240,7 +1240,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5},
             description: "If Ysabet is weeping, she does so with dry eyes.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqysabet"
@@ -1251,7 +1251,7 @@
             aspects:
             {mortal: 1,acquaintance:1},
             description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
+			
 			comments:"legacy element to keep saves valid",
 			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic,rebellion:generic_r}
         },
@@ -1260,7 +1260,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_edge}
         },
@@ -1269,7 +1269,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_forge}
         },
@@ -1278,7 +1278,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_grail}
         },
@@ -1287,7 +1287,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_heart}
         },
@@ -1296,7 +1296,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_knock}
         },
@@ -1305,7 +1305,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_lantern}
         },
@@ -1314,7 +1314,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,recruiting:generic_b_moth}
         },
@@ -1323,7 +1323,7 @@
             label: "A Hanger-On",
             aspects:
             {mortal: 1,acquaintance:1},
-            animFrames: 1,
+
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_winter}
         },
@@ -1332,7 +1332,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			comments: "This is a legacy element to support older saves.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
@@ -1342,7 +1342,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
         },
@@ -1351,7 +1351,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
         },
@@ -1360,7 +1360,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
         },
@@ -1369,7 +1369,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
         },
@@ -1378,7 +1378,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
         },
@@ -1387,7 +1387,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
         },
@@ -1396,7 +1396,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_moth}
         },
@@ -1405,7 +1405,7 @@
             label: "A Pawn",
             aspects:
             {mortal: 1, follower: 1,edge:1},
-            animFrames: 1,
+
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
         },
@@ -1414,7 +1414,7 @@
             label: "A Sturdy Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:2},
-            animFrames: 1,
+
 			description: "Loyalty, and muscles.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1423,7 +1423,7 @@
             label: "A Practical Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
-            animFrames: 1,
+
 			description: "Loyal, and good with their hands.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1432,7 +1432,7 @@
             label: "An Avid Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
-            animFrames: 1,
+
 			description: "Loyal, but greedy.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1441,7 +1441,7 @@
             label: "A Lively Disciple ",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
-            animFrames: 1,
+
 			description: "Loyal, and always ready with a song.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1450,7 +1450,7 @@
             label: "A Dextrous Disciple ",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
-            animFrames: 1,
+
 			description: "Loyal, and clever with locks.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1460,7 +1460,7 @@
             label: "A Percipient Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
-            animFrames: 1,
+
 			description: "Loyal, and keen-sighted.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1469,7 +1469,7 @@
             label: "An Erratic Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
-            animFrames: 1,
+
 			description: "Loyal, if peculiar; peculiar even for one of our kind.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
 			lifetime:600,
@@ -1480,7 +1480,7 @@
             label: "A Silent Disciple",
             aspects:
             {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
-            animFrames: 1,
+
 			description: "Loyal, and quiet as falling snow.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
@@ -1491,7 +1491,7 @@
             aspects:
             {mortal:1, prisoner:1,lantern:3,grail:3,heart:3},
             description: "This one rails weakly against their fate.",
-			animFrames: 1,
+			
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse"
         },

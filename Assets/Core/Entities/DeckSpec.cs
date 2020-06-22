@@ -17,7 +17,7 @@ namespace Assets.Core.Entities
 
         string Id { get; }
         List<string> Spec { get; set; }
-        string DefaultCardId { get; set; }
+        string DefaultCard { get; set; }
         bool ResetOnExhaustion { get; set; }
         string Label { get; set; }
         string Description { get; set; }
@@ -68,7 +68,7 @@ namespace Assets.Core.Entities
         }
 
         [FucineValue("")]
-        public string DefaultCardId { get; set; }
+        public string DefaultCard { get; set; }
 
         [FucineValue(false)]
         public bool ResetOnExhaustion { get; set; }
@@ -78,6 +78,9 @@ namespace Assets.Core.Entities
 
         [FucineValue("")]
         public string Description { get; set; }
+
+        [FucineValue("")]
+      public string Comments { get; set; }
 
         /// <summary>
         /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.

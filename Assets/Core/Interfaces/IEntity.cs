@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,7 @@ namespace Assets.Core.Interfaces
         /// <param name="logger"></param>
         /// <param name="populatedCompendium"></param>
         void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium);
+     
+
     }
 }

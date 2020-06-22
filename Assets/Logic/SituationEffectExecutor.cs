@@ -82,7 +82,7 @@ namespace Assets.Logic
 
         private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
         {
-            foreach (var mutationEffect in command.Recipe.MutationEffects)
+            foreach (var mutationEffect in command.Recipe.Mutations)
             {
                 foreach (var stack in stacksManager.GetStacks())
                 {

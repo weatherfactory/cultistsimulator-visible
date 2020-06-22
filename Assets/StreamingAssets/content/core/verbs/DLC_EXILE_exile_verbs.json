@@ -18,7 +18,6 @@
 		{
             id: "travel",
             label: "Travel",
-			atStart:true,
             description: "Some travels are intended to broaden one's mind: others, to lengthen one's life.",
 				  slot: {id:"direction",label:"Intention",description: "A road, or its end?",
 			  required:{destination:1,location:1,ally:1},forbidden:{exhausted:1}}
