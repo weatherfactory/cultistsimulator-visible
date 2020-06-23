@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
+using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class MutationEffect
+    public class MutationEffect: IEntity
     {
         [FucineValue("")]
         public string Filter { get; set; }
@@ -22,6 +23,11 @@ namespace Assets.Core.Entities
 
         public MutationEffect()
         {
+        }
+
+        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        {
+            
         }
     }
 }

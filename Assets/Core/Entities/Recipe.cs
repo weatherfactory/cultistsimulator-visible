@@ -167,7 +167,7 @@ namespace Assets.Core.Entities
             {
                 InternalDeck.SetId("deck." + Id);
                 if(populatedCompendium.TryAddDeckSpec(InternalDeck))
-                    DeckEffects.Add(InternalDeck.Id, InternalDeck.DefaultDraws);
+                    DeckEffects.Add(InternalDeck.Id, InternalDeck.Draws);
                 else
                 logger.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);
             }

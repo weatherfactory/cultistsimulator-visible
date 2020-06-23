@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
                 {
 
                    FucineImport import = FucineImport.CreateInstance(thisProperty, _logger, importDataForEntity);
-                    import.Populate(newEntity,importDataForEntity,_entityType);
+                   import.Populate(newEntity,importDataForEntity,_entityType);
                 }
             }
 

@@ -340,7 +340,7 @@ description:"@#reputation|Our devotion has drawn comment...
 slots:[{id:"society",label:"Inner Circle",description:"I could introduce the most enthusiastic worshippers to an inner circle...",required:{society:1}}],
 alt:[{id:"priest.repevent.devotee.edge",
 requirements:{venerationedge:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Division! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -348,7 +348,7 @@ effects:{funds:2,devotee_edge:1}
 },
 {id:"priest.repevent.devotee.forge",
 requirements:{venerationforge:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Fires! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -356,7 +356,7 @@ effects:{funds:2,devotee_forge:1}
 },
 {id:"priest.repevent.devotee.grail",
 requirements:{venerationgrail:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes the Red! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -364,7 +364,7 @@ effects:{funds:2,devotee_grail:1}
 },
 {id:"priest.repevent.devotee.heart",
 requirements:{venerationheart:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Drum! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -372,7 +372,7 @@ effects:{funds:2,devotee_heart:1}
 },
 {id:"priest.repevent.devotee.knock",
 requirements:{venerationknock:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Threshold! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -380,7 +380,7 @@ effects:{funds:2,devotee_knock:1}
 },
 {id:"priest.repevent.devotee.lantern",
 requirements:{venerationlantern:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Candle! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -388,7 +388,7 @@ effects:{funds:2,devotee_lantern:1}
 },
 {id:"priest.repevent.devotee.moth",
 requirements:{venerationmoth:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has dreamt of St Agnes of the Shears! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
@@ -396,14 +396,14 @@ effects:{funds:2,devotee_moth:1}
 },
 {id:"priest.repevent.devotee.winter",
 requirements:{venerationwinter:1},
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 label:"Inspiration",
 description:"A worshipper has come who will not speak of their dreams; but, indeed, they need not! Meanwhile, @#reputation|our devotion has drawn comment...
 #funds|the rest of the congregation has donated generously, and they haven't limited those donations to the collection plate.@",
 effects:{funds:2,devotee_winter:1}
 },
 ],
-deckeffect:{priest.repevent:1},
+deckeffects:{priest.repevent:1},
 effects:{funds:1},
 warmup:30,
 },

@@ -39,6 +39,9 @@ namespace Assets.Core.Entities
         public string Description { get; set; }
 
         [FucineValue("")]
+        public string Comments { get; set; }
+
+        [FucineValue("")]
         public string Image { get; set; }
 
         [FucineValue((int)EndingFlavour.Melancholy)]

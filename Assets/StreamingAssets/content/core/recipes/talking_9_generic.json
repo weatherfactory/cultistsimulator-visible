@@ -10,7 +10,7 @@ startdescription: "Talking publicly about the invisible arts will attract attent
 description: ".",
 warmup: 60,
 craftable: true,
-deckeffect: {talkevents:1},
+deckeffects: {talkevents:1},
 linked:[{id: "talkfindacquaintance", chance: 100},
 		{id: "talkfindpatron",chance:100}],
 },
@@ -48,7 +48,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 		requirements:{passion:1},
         startdescription: "'Come with me.'",
         description: ".",
-		deckeffect: {"acquaintances":1},
+		deckeffects: {"acquaintances":1},
 				effects:{season:-1},
         warmup: 5
     },
@@ -59,7 +59,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 		requirements:{reason:1},
         startdescription: "'We can learn from each other.'",
         description: ".",
-		deckeffect: {"scholarpatrons":1},
+		deckeffects: {"scholarpatrons":1},
 				effects:{season:-1},
         warmup: 5
     },
@@ -91,7 +91,7 @@ actionId: "talk",
 requirements: {lore: 1},
 startdescription: "'It seems we <i>do</i> have something to discuss...'",
 description:"A hushed and elliptical conversation by lamp-light, with glints of truth like gold in river-mud. Who knows? Perhaps, one day, we might speak less guardedly.",
-deckeffect: {troublemakerconversations:1}
+deckeffects: {troublemakerconversations:1}
 
 },
 
@@ -101,7 +101,7 @@ actionId: "talk",
 requirements: {desire: 1},
 startdescription: "'Do you propose we make common cause? Are you serious?'",
 description:"'Perhaps. Eventually. Prove yourself to me. Let's talk...' [If you have a cult, it is possible, although difficult, to win a Troublemaker to your side.]",
-deckeffect: {troublemakerconversations:1}
+deckeffects: {troublemakerconversations:1}
 },
 
             {id: "independentfitewithextraswole",
@@ -378,7 +378,7 @@ craftable: false},
         warmup: 30,
         craftable: false,
 		comments: "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
-		deckeffect: {"acquaintances":1},
+		deckeffects: {"acquaintances":1},
 		maxexecutions:1
     }
 ]

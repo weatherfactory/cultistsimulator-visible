@@ -116,9 +116,9 @@ private const string PRIMARY_SLOT="primary";
         {
             if (aspects.ContainsKey(k))
             { 
-            int aspectAtValue = aspects[k];
-            if (aspectAtValue >= Required[k])
-                return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
+                int aspectAtValue = aspects[k];
+                if (aspectAtValue >= Required[k])
+                    return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
             }
         }
 

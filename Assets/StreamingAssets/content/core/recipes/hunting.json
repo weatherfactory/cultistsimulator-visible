@@ -134,7 +134,7 @@
 		requirements:{reputation:1},
 		startdescription: "Someone is meddling.",
 		description:"There's always someone who doesn't understand, or who understands too well. This troublemaker may seek evidence on my activities to share with the authorities.",
-		deckeffect: {"hunters":1},
+		deckeffects: {"hunters":1},
 		effects: {reputation:-1},
 		warmup:0},
 
@@ -264,7 +264,7 @@
 	label:"The Bureau's Fury",
 				startdescription:"My associate has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go... though they may harbour a grudge against me. The Bureau has been stymied for the moment.",
 	aspects:{investigatingsetback:1},
-mutations:[{filter:follower,mutate:resentment,level:1,additional:true}]	
+mutations:[{filter:follower,mutate:resentment,level:1,additive:true}]	
 	},
 	{
 	id:"suspicion_meexonerated",
@@ -298,7 +298,7 @@ mutations:[{filter:follower,mutate:resentment,level:1,additional:true}]
 	label:"The Bureau's Fury",
 				startdescription:"My Rival has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go... though they will no doubt blame me for their hardships.",
 	aspects:{investigatingsetback:1},
-mutations:[{filter:independent,mutate:resentment,level:1,additional:true}]	
+mutations:[{filter:independent,mutate:resentment,level:1,additive:true}]	
 	},
 
 

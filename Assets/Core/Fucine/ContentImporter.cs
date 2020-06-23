@@ -796,7 +796,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             string internalDeckId = "deck." + r.Id;
             htInternalDeck.Add("id",internalDeckId);
             var internalDeck = PopulateDeckSpec(htInternalDeck);
-            r.DeckEffects.Add(internalDeckId, internalDeck.DefaultDraws);
+            r.DeckEffects.Add(internalDeckId, internalDeck.Draws);
             DeckSpecs.Add(internalDeckId, internalDeck);
 
             htEachRecipe.Remove(NoonConstants.KINTERNALDECK);

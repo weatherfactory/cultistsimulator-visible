@@ -12,7 +12,11 @@ namespace Assets.Core.Fucine
 
         public IEntity CreateEntity(Type entityType)
         {
-            return Activator.CreateInstance(entityType) as IEntity;
+            if (!(Activator.CreateInstance(entityType) is IEntity createdEntity))
+             throw new ApplicationException(
+                 $"Couldn't create a Fucine IEntity of type {entityType}. (Does this type implement IEntity?)");
+
+            return createdEntity;
         }
     }
 }

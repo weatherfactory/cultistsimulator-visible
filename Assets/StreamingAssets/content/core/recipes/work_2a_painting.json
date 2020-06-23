@@ -14,7 +14,7 @@
 					description: "If I am restless, perhaps this is what I want.",
 				}],
 		alt:[{id:"paintbasicsuccess",chance:30}],
-		deckeffect:{paintingresultsbasic:1},
+		deckeffects:{paintingresultsbasic:1},
 		aspects:{fatiguing:1},
 		craftable:true,
 		warmup:60
@@ -24,7 +24,7 @@
 		label:"I've sold a painting!",
 		actionId:"work",
 		description:"I've found a customer! She'll probably hang it in her spare bedroom and never look at it again. But her money is good. [Sometimes, painting will gain you Glimmerings. <b>Study</b> them to unlock more advanced painting options.]",
-		deckeffect:{paintingresultsbasic:2},
+		deckeffects:{paintingresultsbasic:2},
 		aspects:{fatiguing:1},
 		effects:{funds:2}
 		},
@@ -607,21 +607,21 @@ warmup:5,
 		{id:"paintingqualityglorious",actionId:"work",warmup:5,
 		label:"Glorious Work",
 		startdescription:"If I never touch another canvas, I have earned my place in history.",
-		requirements:{insight:8},deckeffect:{paintingresults:6},
+		requirements:{insight:8},deckeffects:{paintingresults:6},
 		mutations:[{filter:passionskill,mutate:stale,level:-1,additive:true}],
 		linked:[{id:"paintingreputationcheck",chance:100}],effects:{insight:-99,fascination:1}},
 		
 				{id:"paintingqualitymagnificent",actionId:"work",warmup:5,
 		label:"Magnificent Work",
 		startdescription:"I've created something both distinctive and beautiful. It will very likely enhance my reputation.",
-		requirements:{insight:6},deckeffect:{paintingresults:5},
+		requirements:{insight:6},deckeffects:{paintingresults:5},
 		mutations:[{filter:passionskill,mutate:stale,level:-1,additive:true}],
 		linked:[{id:"paintingreputationcheck",chance:100}],effects:{insight:-99,fascination:1}},
 		
 		{id:"paintingqualityexceptional",actionId:"work",warmup:5,
 				label:"Exceptional Work",
 		startdescription:"This is something special. It may provoke a reaction.",
-		requirements:{insight:4},deckeffect:{paintingresults:4},
+		requirements:{insight:4},deckeffects:{paintingresults:4},
 		mutations:[{filter:passionskill,mutate:stale,level:-1,additive:true}],
 		linked:[{id:"paintingreputationcheck",chance:100}],effects:{insight:-99}},
 		
@@ -629,13 +629,13 @@ warmup:5,
 		{id:"paintingqualitygood",actionId:"work",warmup:5,
 				label:"Good Work",
 		startdescription:"This is work I can be proud of. With enough publicity, it will sell.",
-		requirements:{insight:2},deckeffect:{paintingresults:3},
+		requirements:{insight:2},deckeffects:{paintingresults:3},
 		linked:[{id:"paintingreputationcheck",chance:100}],effects:{insight:-99}},
 		
 		{id:"paintingqualitycompetent",actionId:"work",warmup:5,
 				label:"Competent Work",
 		startdescription:"There's nothing to be ashamed of here.",
-		requirements:{insight:1},deckeffect:{paintingresults:2},
+		requirements:{insight:1},deckeffects:{paintingresults:2},
 		linked:[{id:"paintingreputationcheck",chance:100}],effects:{insight:-99}},
 		
 		
@@ -662,26 +662,26 @@ warmup:5,
 			label:"The Artist's Reward?",
 			description:"My recent work is celebrated! My name is known, and my work has done well.",
 			
-			actionId:"work",requirements:{reputation:9,stale:-1},deckeffect:{paintingresultsreputation:7},
+			actionId:"work",requirements:{reputation:9,stale:-1},deckeffects:{paintingresultsreputation:7},
 linked:[{id:"painting.reputation.overexposure"}]},
 
 		{id:"paintingreputation_famed",
 			label:"The Artist's Reward?",
 			description:"My recent work has accrued modest fame! My paintings have reviewed well.",
 			
-			actionId:"work",requirements:{reputation:7,stale:-2},deckeffect:{paintingresultsreputation:6},
+			actionId:"work",requirements:{reputation:7,stale:-2},deckeffects:{paintingresultsreputation:6},
 linked:[{id:"painting.reputation.overexposure"}]},
 		{id:"paintingreputation_notable",
 			label:"The Artist's Reward?",
 			description:"My recent work is considered notable! I've exhibited the latest paintings publicly. Surely someone will buy something.",
 			
-			actionId:"work",requirements:{reputation:5,stale:-3},deckeffect:{paintingresultsreputation:4},
+			actionId:"work",requirements:{reputation:5,stale:-3},deckeffects:{paintingresultsreputation:4},
 linked:[{id:"painting.reputation.overexposure"}]},
 		{id:"paintingreputation_significant",
 			label:"The Artist's Reward?",
 			description:"My recent work is considered significant! I may yet earn a living from this, but nothing is certain.",
 			
-			actionId:"work",requirements:{reputation:3,stale:-4},deckeffect:{paintingresultsreputation:3},
+			actionId:"work",requirements:{reputation:3,stale:-4},deckeffects:{paintingresultsreputation:3},
 linked:[{id:"painting.reputation.overexposure"}]},
 
 
@@ -689,7 +689,7 @@ linked:[{id:"painting.reputation.overexposure"}]},
 			label:"The Artist's Reward?",
 			description:"My recent work has drawn some attention. Something should sell.",
 			
-			actionId:"work",requirements:{reputation:2,stale:-5},deckeffect:{paintingresultsreputation:2}},
+			actionId:"work",requirements:{reputation:2,stale:-5},deckeffects:{paintingresultsreputation:2}},
 			
 			
 {id:"paintingreputation_noticed",
@@ -697,7 +697,7 @@ comments:"No links to over-exposure risk. The overexposure cards will happily de
 			label:"The Artist's Reward?",
 			description:"My recent work has attracted a couple of callers. With luck, something will sell.",
 			
-			actionId:"work",requirements:{reputation:1},deckeffect:{paintingresultsreputation:1}},
+			actionId:"work",requirements:{reputation:1},deckeffects:{paintingresultsreputation:1}},
 			
 			
 		{id:"paintingreputation_unknown",

@@ -858,7 +858,7 @@ label:"A Desperate Attempt",
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a carefully packaged prisoner.",
 	  effects: {notoriety:1, funds:1},
-	  deckeffect: {"randomvictim":1},
+	  deckeffects: {"randomvictim":1},
 	  warmup:30	  
 	  },	  
 	  
@@ -920,7 +920,7 @@ label:"A Desperate Attempt",
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a fresh corpse and its former belongings.",
 	  effects: {notoriety:1,corpse:1},
-	  deckeffect: {"robberyrewards":2},
+	  deckeffects: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -981,7 +981,7 @@ label:"A Desperate Attempt",
 	  actionId:"talk",
 	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
 	  description:"My follower has returned with the rewards of their labour.",
-	  deckeffect: {"robberyrewards":2},
+	  deckeffects: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -1041,7 +1041,7 @@ label:"A Desperate Attempt",
 	  startdescription: "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
 	  description:"My minion has returned, attended by a prisoner rendered docile with delight.",
 	  effects: {notoriety:1, funds:1},
-	  deckeffect: {"randomvictim":1},
+	  deckeffects: {"randomvictim":1},
 	  warmup:30	  
 	  },	  
 	  
@@ -1104,7 +1104,7 @@ label:"A Desperate Attempt",
 	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
 	  description:"My follower has returned with their haul.",
 	  effects: {notoriety:1,funds:1},
-	  deckeffect: {"robberyrewards":2},
+	  deckeffects: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -1221,7 +1221,7 @@ label:"A Desperate Attempt",
 	  startdescription: "Hours of scholarship and meditation...",
 	  description:"My follower has found one more way to align our work with the greater work of the Hours.",
 	  effects: {erudition:1},
-	  deckeffect: {"randominfluencelow":1},
+	  deckeffects: {"randominfluencelow":1},
 	  warmup:30	  
 	  },	  
 	  
@@ -1284,7 +1284,7 @@ label:"A Desperate Attempt",
 	  startdescription: "My follower is attempting a profitable deception.",
 	  description:"A successful deception! Here are the rewards.",
 	  effects: {notoriety:1,funds:1},
-	  deckeffect: {"robberyrewards":2},
+	  deckeffects: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  

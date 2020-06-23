@@ -86,7 +86,7 @@ namespace Assets.Core.Entities
         /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.
         /// </summary>
         [FucineValue(1)]
-        public int DefaultDraws { get; set; }
+        public int Draws { get; set; }
 
 
         //Spec determines which cards start in the deckSpec after each reset

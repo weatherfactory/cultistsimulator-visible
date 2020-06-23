@@ -144,7 +144,7 @@ linked:[{id:"foe.weaknesses.generate"}]},
 actionId:"use",
 label:"Dangerous Possibilities",
 startdescription:"Even my Foe has weaknesses - but he guarded them carefully. [Discover what Distractions will work against your Foe, and you'll be able to choose the most advantageous place to fight him.]",
-deckeffect:{rkx.weaknesses.environment:1,rkx.weaknesses.quirk:1,rkx.weaknesses.disfavour:1},
+deckeffects:{rkx.weaknesses.environment:1,rkx.weaknesses.quirk:1,rkx.weaknesses.disfavour:1},
 },
 
 {id:"foe.weaknesses.generate.backup",
@@ -153,7 +153,7 @@ label:"Dangerous Possibilities",
 startdescription:"Even my Foe has weaknesses - but he guarded them carefully. [Discover what Distractions will work against your Foe, and you'll be able to choose the most advantageous place to fight him.]",
 comments:"To be triggered from Defiance use - just in case weaknesses haven't been generated when meeting the Foe",
 extantreqs:{weakness.foe:-1,weakness.foe.unknown:-1},
-deckeffect:{rkx.weaknesses.environment:1,rkx.weaknesses.quirk:1,rkx.weaknesses.disfavour:1},
+deckeffects:{rkx.weaknesses.environment:1,rkx.weaknesses.quirk:1,rkx.weaknesses.disfavour:1},
 },
 
 
