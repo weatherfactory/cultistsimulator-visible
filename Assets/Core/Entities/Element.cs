@@ -209,6 +209,11 @@ namespace Assets.Core.Entities
                     InheritFrom(populatedCompendium.GetElementById(Inherits));
             }
 
+            //if the element is a member of a uniqueness group, add it as an aspect also.
+            if (!string.IsNullOrEmpty(UniquenessGroup))
+             Aspects.Add(UniquenessGroup,1);
+            
+
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
             {

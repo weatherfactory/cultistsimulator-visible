@@ -56,8 +56,15 @@ namespace Assets.Core.Entities
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
             {
-                foreach (var k in unknownProperties.Keys)
-                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
+                //unknown properties in a LinkedRecipeDetails are probably an internal recipe
+                unknownProperties.Add("id",Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
+
+                FucinePropertyWalker w = new FucinePropertyWalker(logger, typeof(Recipe));
+                Recipe internalRecipe = (Recipe)w.PopulateEntityWith(unknownProperties);
+
+                 populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
+
+                 internalRecipe.RefineWithCompendium(logger,populatedCompendium); //this will log any issues with the import
             }
         }
 

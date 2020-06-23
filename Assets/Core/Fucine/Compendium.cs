@@ -89,10 +89,11 @@ public class Compendium : ICompendium
     {
         foreach (var d in allEntities.Values)
         {
-            foreach (var e in d.Values)
-            {
-                (e as IEntity)?.RefineWithCompendium(logger,this);
-            }
+            HashSet <IEntity> entities= new HashSet<IEntity>((IEnumerable<IEntity>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
+
+            foreach (var e in entities)
+                e.RefineWithCompendium(logger,this);
+
         }
     }
 

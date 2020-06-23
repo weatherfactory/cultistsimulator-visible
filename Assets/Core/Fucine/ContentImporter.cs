@@ -990,45 +990,17 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
 
-                      //  allEntities.Add(entityUnique);
                       compendium.AddEntity(entityUnique.Id,t,entityUnique);
-
-                        //if (entityUnique is IVerb v)
-                        //    Verbs.Add(v.Id, v);
-
-                        //else if (entityUnique is Element el)
-                        //    Elements.Add(el.Id, el);
-
-                        //else if (entityUnique is DeckSpec d)
-                        //    DeckSpecs.Add(d.Id, d);
-
-                        //else if (entityUnique is Legacy l)
-                        //    Legacies.Add(l.Id, l);
-
-                        //else if (entityUnique is Ending en)
-                        //    Endings.Add(en.Id, en);
-
-                        //else if (entityUnique is Recipe r)
-                        //    Recipes.Add(r);
 
                     }
                 }
             }
 
 
-
         compendium.RefineAllEntities(_logger);
 
             foreach (var d in _compendium.GetAllDeckSpecs())
                 d.RegisterUniquenessGroups(_compendium);
-
-
- //       foreach (IEntity entity in allEntities)
-    //            entity.RefineWithCompendium(_logger, _compendium);
-
-
-
-
 
 
 #if DEBUG

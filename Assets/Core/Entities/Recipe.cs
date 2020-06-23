@@ -15,6 +15,7 @@ namespace Assets.Core.Entities
     {
         private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
         private string _id;
+        private bool _refined=false;
 
         [FucineId]
         public string Id
@@ -165,6 +166,10 @@ namespace Assets.Core.Entities
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
+            if (_refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
+                return;
+
+            _refined = true;
             if (InternalDeck.Spec.Any())
             {
                 InternalDeck.SetId("deck." + Id);
@@ -175,11 +180,18 @@ namespace Assets.Core.Entities
             }
 
             Hashtable unknownProperties = PopAllUnknownProperties();
+
             if (unknownProperties.Keys.Count > 0)
             {
                 foreach (var k in unknownProperties.Keys)
                     logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
             }
+
+            foreach(var l in Linked)
+                l.RefineWithCompendium(logger,populatedCompendium);
+
+            foreach (var a in Alt)
+                a.RefineWithCompendium(logger, populatedCompendium);
         }
 
         public void PushUnknownProperty(object key, object value)
