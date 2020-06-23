@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Noon;
@@ -15,12 +16,6 @@ using UnityEngine.Analytics;
 
 public interface ICompendium
 {
-    //void UpdateRecipes(List<Recipe> allRecipes);
-    //void UpdateElements(Dictionary<string, Element> elements);
-    //void UpdateVerbs(Dictionary<string, IVerb> verbs);
-    //void UpdateLegacies(Dictionary<string, Legacy> legacies);
-    //void UpdateEndings(Dictionary<string, Ending> endings);
-    //void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
@@ -46,6 +41,10 @@ public interface ICompendium
     bool TryAddDeckSpec(DeckSpec deck);
 
     void AddEntity(string id, Type type, IEntityWithId entity);
+    /// <summary>
+    /// Run all second-stage populations that occur between / across entities
+    /// </summary>
+    void RefineAllEntities(ContentImportLogger logger);
 
 
 }
@@ -86,6 +85,17 @@ public class Compendium : ICompendium
             _recipes.Add(entity as Recipe);
     }
 
+    public void RefineAllEntities(ContentImportLogger logger)
+    {
+        foreach (var d in allEntities.Values)
+        {
+            foreach (var e in d.Values)
+            {
+                (e as IEntity)?.RefineWithCompendium(logger,this);
+            }
+        }
+    }
+
     // -- Update Collections ------------------------------
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -103,33 +113,6 @@ public class Compendium : ICompendium
             _recipeDict.Add(item.Id, item);
         }
     }
-
-    //public void UpdateElements(Dictionary<string, Element> elements)
-    //{
-    //    _elements = elements;
-    //}
-
-    //public void UpdateVerbs(Dictionary<string, IVerb> verbs)
-    //{
-    //    _verbs = verbs;
-    //}
-
-    //public void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs)
-    //{
-    //    _decks = deckSpecs;
-    //}
-
-    //public void UpdateLegacies(Dictionary<string, Legacy> legacies)
-    //{
-    //    _legacies = legacies;
-    //}
-
-    //public void UpdateEndings(Dictionary<string, Ending> endings)
-    //{
-    //    _endings = endings;
-    //}
-
-    // -- Misc Getters ------------------------------
 
     /// <summary>
 

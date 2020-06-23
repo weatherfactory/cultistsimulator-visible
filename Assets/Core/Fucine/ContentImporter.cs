@@ -1015,17 +1015,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 }
             }
 
-        
 
-            //I'm not sure why I use fields rather than local variables returned from the import methods?
-            //that might be something to tidy up; I suspect it's left from an early design
 
-            //_compendium.UpdateRecipes(Recipes);
-            //_compendium.UpdateElements(Elements);
-            //_compendium.UpdateVerbs(Verbs);
-            //_compendium.UpdateDeckSpecs(DeckSpecs);
-            //_compendium.UpdateLegacies(Legacies);
-            //_compendium.UpdateEndings(Endings);
+        compendium.RefineAllEntities(_logger);
 
             foreach (var d in _compendium.GetAllDeckSpecs())
                 d.RegisterUniquenessGroups(_compendium);
