@@ -49,8 +49,7 @@ namespace Assets.Core.Fucine
              
                 if(entityProperties.All(e => !string.Equals(e.Name, k.ToString(), StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    
-                    _logger.LogInfo($"Unknown property in import: {k} for {_entityType.Name} with ID {(newEntity as IEntityWithId)?.Id}");
+                    newEntity.PushUnknownProperty(k,importDataForEntity[k]);
 
                 }
             }

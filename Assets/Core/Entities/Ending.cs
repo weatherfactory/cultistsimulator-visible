@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
@@ -19,6 +20,7 @@ namespace Assets.Core.Entities
     [FucineImportable("endings")]
     public class Ending:IEntityWithId
     {
+        private Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
         private string _id;
 
         [FucineId]
@@ -91,7 +93,24 @@ namespace Assets.Core.Entities
 
         public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
+            Hashtable unknownProperties = PopAllUnknownProperties();
+            if (unknownProperties.Keys.Count > 0)
+            {
+                foreach (var k in unknownProperties.Keys)
+                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
+            }
+        }
 
+        public void PushUnknownProperty(object key, object value)
+        {
+            _unknownProperties.Add(key, value);
+        }
+
+        public Hashtable PopAllUnknownProperties()
+        {
+            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
+            _unknownProperties.Clear();
+            return propertiesPopped;
         }
     }
 }

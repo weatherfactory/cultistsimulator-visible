@@ -970,7 +970,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             var assembly = Assembly.GetExecutingAssembly();
 
-            List<IEntity> allEntities = new List<IEntity>();
+         
 
         foreach (Type t in assembly.GetTypes())
             {
@@ -988,28 +988,28 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                         FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        IEntity entityUnique = (IEntity)w.PopulateEntityWith(caseInsensitiveH);
+                        IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
 
-                        allEntities.Add(entityUnique);
+                      //  allEntities.Add(entityUnique);
+                      compendium.AddEntity(entityUnique.Id,t,entityUnique);
 
+                        //if (entityUnique is IVerb v)
+                        //    Verbs.Add(v.Id, v);
 
-                        if (entityUnique is IVerb v)
-                            Verbs.Add(v.Id, v);
+                        //else if (entityUnique is Element el)
+                        //    Elements.Add(el.Id, el);
 
-                        else if (entityUnique is Element el)
-                            Elements.Add(el.Id, el);
+                        //else if (entityUnique is DeckSpec d)
+                        //    DeckSpecs.Add(d.Id, d);
 
-                        else if (entityUnique is DeckSpec d)
-                            DeckSpecs.Add(d.Id, d);
+                        //else if (entityUnique is Legacy l)
+                        //    Legacies.Add(l.Id, l);
 
-                        else if (entityUnique is Legacy l)
-                            Legacies.Add(l.Id, l);
+                        //else if (entityUnique is Ending en)
+                        //    Endings.Add(en.Id, en);
 
-                        else if (entityUnique is Ending en)
-                            Endings.Add(en.Id, en);
-
-                        else if (entityUnique is Recipe r)
-                            Recipes.Add(r);
+                        //else if (entityUnique is Recipe r)
+                        //    Recipes.Add(r);
 
                     }
                 }
@@ -1020,19 +1020,19 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             //I'm not sure why I use fields rather than local variables returned from the import methods?
             //that might be something to tidy up; I suspect it's left from an early design
 
-            _compendium.UpdateRecipes(Recipes);
-            _compendium.UpdateElements(Elements);
-            _compendium.UpdateVerbs(Verbs);
-            _compendium.UpdateDeckSpecs(DeckSpecs);
-            _compendium.UpdateLegacies(Legacies);
-            _compendium.UpdateEndings(Endings);
+            //_compendium.UpdateRecipes(Recipes);
+            //_compendium.UpdateElements(Elements);
+            //_compendium.UpdateVerbs(Verbs);
+            //_compendium.UpdateDeckSpecs(DeckSpecs);
+            //_compendium.UpdateLegacies(Legacies);
+            //_compendium.UpdateEndings(Endings);
 
             foreach (var d in _compendium.GetAllDeckSpecs())
                 d.RegisterUniquenessGroups(_compendium);
 
 
-        foreach (IEntity entity in allEntities)
-                entity.RefineWithCompendium(_logger, _compendium);
+ //       foreach (IEntity entity in allEntities)
+    //            entity.RefineWithCompendium(_logger, _compendium);
 
 
 

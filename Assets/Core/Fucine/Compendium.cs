@@ -15,12 +15,12 @@ using UnityEngine.Analytics;
 
 public interface ICompendium
 {
-    void UpdateRecipes(List<Recipe> allRecipes);
-    void UpdateElements(Dictionary<string, Element> elements);
-    void UpdateVerbs(Dictionary<string, IVerb> verbs);
-    void UpdateLegacies(Dictionary<string, Legacy> legacies);
-    void UpdateEndings(Dictionary<string, Ending> endings);
-    void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
+    //void UpdateRecipes(List<Recipe> allRecipes);
+    //void UpdateElements(Dictionary<string, Element> elements);
+    //void UpdateVerbs(Dictionary<string, IVerb> verbs);
+    //void UpdateLegacies(Dictionary<string, Legacy> legacies);
+    //void UpdateEndings(Dictionary<string, Ending> endings);
+    //void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
@@ -29,7 +29,7 @@ public interface ICompendium
     Boolean IsKnownElement(string elementId);
 
     List<IVerb> GetAllVerbs();
-    IVerb GetVerbById(string verbId);
+    BasicVerb GetVerbById(string verbId);
     IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
 
     List<Ending> GetAllEndings();
@@ -39,33 +39,59 @@ public interface ICompendium
     Legacy GetLegacyById(string legacyId);
 
     List<IDeckSpec> GetAllDeckSpecs();
-    IDeckSpec GetDeckSpecById(string id);
+    DeckSpec GetDeckSpecById(string id);
     void SupplyLevers(IGameEntityStorage populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
     bool TryAddDeckSpec(DeckSpec deck);
+
+    void AddEntity(string id, Type type, IEntityWithId entity);
 
 
 }
 
 public class Compendium : ICompendium
 {
-    private List<Recipe> _recipes;
-    private Dictionary<string, Recipe> _recipeDict;
-    private Dictionary<string, Element> _elements;
-    private Dictionary<string, IVerb> _verbs;
-    private Dictionary<string, Legacy> _legacies;
-    private Dictionary<string, Ending> _endings;
-    private Dictionary<string, IDeckSpec> _decks;
+    private Dictionary<Type, IDictionary> allEntities =
+        new Dictionary<Type, IDictionary>();
+
+    private List<Recipe> _recipes=new List<Recipe>();
     private Dictionary<LegacyEventRecordId, string> _pastLevers;
+
+    private Dictionary<string, Recipe> _recipeDict=new Dictionary<string, Recipe>();
+    private Dictionary<string, Element> _elements = new Dictionary<string, Element>();
+    private Dictionary<string, BasicVerb> _verbs = new Dictionary<string, BasicVerb>();
+    private Dictionary<string, Legacy> _legacies = new Dictionary<string, Legacy>();
+    private Dictionary<string, Ending> _endings = new Dictionary<string, Ending>();
+    private Dictionary<string, DeckSpec> _decks = new Dictionary<string, DeckSpec>();
+
+
+    public Compendium()
+    {
+        allEntities.Add(typeof(Recipe),_recipeDict);
+        allEntities.Add(typeof(Element), _elements);
+        allEntities.Add(typeof(BasicVerb), _verbs);
+        allEntities.Add(typeof(Legacy), _legacies);
+        allEntities.Add(typeof(Ending), _endings);
+        allEntities.Add(typeof(DeckSpec), _decks);
+
+
+    }
+    public void AddEntity(string id, Type type, IEntityWithId entity)
+    {
+        var relevantStore = allEntities[type];
+        relevantStore.Add(id,entity);
+
+        if(type==typeof(Recipe))
+            _recipes.Add(entity as Recipe);
+    }
 
     // -- Update Collections ------------------------------
 
     public void UpdateRecipes(List<Recipe> allRecipes)
     {
         _recipes = allRecipes;
-        _recipeDict = new Dictionary<string, Recipe>();
-
+        
         foreach (var item in allRecipes) {
             if (_recipeDict.ContainsKey(item.Id)) {
                 #if UNITY_EDITOR
@@ -78,30 +104,30 @@ public class Compendium : ICompendium
         }
     }
 
-    public void UpdateElements(Dictionary<string, Element> elements)
-    {
-        _elements = elements;
-    }
+    //public void UpdateElements(Dictionary<string, Element> elements)
+    //{
+    //    _elements = elements;
+    //}
 
-    public void UpdateVerbs(Dictionary<string, IVerb> verbs)
-    {
-        _verbs = verbs;
-    }
+    //public void UpdateVerbs(Dictionary<string, IVerb> verbs)
+    //{
+    //    _verbs = verbs;
+    //}
 
-    public void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs)
-    {
-        _decks = deckSpecs;
-    }
+    //public void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs)
+    //{
+    //    _decks = deckSpecs;
+    //}
 
-    public void UpdateLegacies(Dictionary<string, Legacy> legacies)
-    {
-        _legacies = legacies;
-    }
+    //public void UpdateLegacies(Dictionary<string, Legacy> legacies)
+    //{
+    //    _legacies = legacies;
+    //}
 
-    public void UpdateEndings(Dictionary<string, Ending> endings)
-    {
-        _endings = endings;
-    }
+    //public void UpdateEndings(Dictionary<string, Ending> endings)
+    //{
+    //    _endings = endings;
+    //}
 
     // -- Misc Getters ------------------------------
 
@@ -204,15 +230,15 @@ public class Compendium : ICompendium
         return element;
     }
 
-    public IVerb GetVerbById(string verbId) {
-        IVerb verb;
+    public BasicVerb GetVerbById(string verbId) {
+        BasicVerb verb;
         _verbs.TryGetValue(verbId, out verb);
 
         return verb;
     }
 
-    public IDeckSpec GetDeckSpecById(string id) {
-        IDeckSpec deck;
+    public DeckSpec GetDeckSpecById(string id) {
+        DeckSpec deck;
         _decks.TryGetValue(id, out deck);
 
         return deck;
@@ -229,6 +255,8 @@ public class Compendium : ICompendium
 
         return false;
     }
+
+
 
     public Legacy GetLegacyById(string legacyId) {
         Legacy legacy;
@@ -285,7 +313,7 @@ public class Compendium : ICompendium
 
         foreach (var k in _elements.Keys)
         {
-            var e = _elements[k];
+            var e = _elements[k] as Element;
             e.Label = tr.ReplaceTextFor(e.Label);
             e.Description = tr.ReplaceTextFor(e.Description);
 

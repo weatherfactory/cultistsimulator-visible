@@ -18,7 +18,10 @@ namespace Assets.Core.Interfaces
         /// <param name="logger"></param>
         /// <param name="populatedCompendium"></param>
         void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium);
-     
+
+        void PushUnknownProperty(object key, object value);
+        Hashtable PopAllUnknownProperties();
+
 
     }
 }

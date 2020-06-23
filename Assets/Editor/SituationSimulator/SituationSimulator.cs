@@ -63,7 +63,7 @@ namespace Assets.Editor
             Dictionary<string, SimulatedElementStack> additionalStacks = null)
         {
             // Check that the verb exists, create it otherwise
-            IVerb verb = _compendium.GetVerbById(verbId) ?? new CreatedVerb(verbId, "", "");
+            IVerb verb = (IVerb) _compendium.GetVerbById(verbId) ?? new CreatedVerb(verbId, "", "");
 
             // Initialize all the simulation components for this situation
             SituationController controller = new SituationController(_compendium, _character);
