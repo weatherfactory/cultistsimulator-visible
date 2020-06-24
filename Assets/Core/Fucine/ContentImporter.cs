@@ -35,12 +35,7 @@ public class ContentImporter
     //private const string CONST_CONTENTDIR = "content/";
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
-    private const string CONST_ELEMENTS = "elements";
-    private const string CONST_RECIPES = "recipes";
-    private const string CONST_VERBS = "verbs";
-    private const string CONST_DECKS = "decks";
-    private const string CONST_LEGACIES = "legacies";
-    private const string CONST_ENDINGS = "endings";
+    private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
     public ICompendium _compendium { get; private set; }
 
 
@@ -687,210 +682,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 	}
 
 
-    public int PopulateElements(ArrayList alElements)
-    {
-
-
-        foreach (Hashtable htElement in alElements)
-        {
-
-
-            Hashtable htAspects = htElement.GetHashtable(NoonConstants.KASPECTS);
-            ArrayList alSlots = htElement.GetArrayList(NoonConstants.KSLOTS);
-            Hashtable htXTriggers = htElement.GetHashtable(NoonConstants.KXTRIGGERS);
-
-
-            Element element = new Element(htElement.GetString(NoonConstants.KID),
-              htElement.GetString(NoonConstants.KLABEL),
-                htElement.GetString(NoonConstants.KDESCRIPTION),
-                htElement.GetInt(NoonConstants.KANIMFRAMES),
-                htElement.GetString(NoonConstants.KICON));
-
-            try
-            {
-                ArrayList alInducedRecipes = htElement.GetArrayList(NoonConstants.KINDUCES);
-                if (alInducedRecipes != null)
-                {
-                    foreach (Hashtable ir in alInducedRecipes)
-                    {
-                        string lrID = ir[NoonConstants.KID].ToString();
-                        int lrChance = Convert.ToInt32(ir[NoonConstants.KCHANCE]);
-                        bool lrAdditional = Convert.ToBoolean(ir[NoonConstants.KADDITIONAL] ?? false);
-
-                        var lrExpulsion = GetExpulsionDetailsIfAny(ir);
-
-
-                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,null));
-
-                        if (lrChance == 0)
-                        {
-                            _logger.LogProblem("Chance 0 or not specified in induced recipes for element " + element.Id);
-                        }
-
-                        TryAddAsInternalRecipe(ir,null);
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                _logger.LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
-            }
-        }
-
-        return alElements.Count;
-    }
 
 
 
 
-
-    private DeckSpec PopulateDeckSpec(Hashtable htEachDeck)
-    {
-
-        FucinePropertyWalker deckWalker=new FucinePropertyWalker(_logger,typeof(DeckSpec));
-        DeckSpec d= (DeckSpec)deckWalker.PopulateEntityWith(htEachDeck);
-        return d;
-    }
-
-
-
-    public void PopulateRecipeList(ArrayList importedRecipes)
-    {
-        for (int i = 0; i < importedRecipes.Count; i++)
-        {
-            Hashtable htEachRecipe = importedRecipes.GetHashtable(i);
-
-            ImportRecipe(htEachRecipe,null);
-        }
-
-       //check for common issues in recipes
-        foreach (var r in Recipes)
-        {
-            if(r.Craftable && !r.Requirements.Any()) _logger.LogProblem(r.Id + " is craftable, but has no requirements, so it will make its verb useless :O ");
-
-            foreach (var n in r.Linked)
-                LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
-            foreach (var a in r.Alt)
-                LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
-
-            foreach (var m in r.Mutations)
-            {
-                LogIfNonexistentElementId(m.Filter,r.Id," - as mutation filter");
-                LogIfNonexistentElementId(m.Mutate, r.Id, " - as mutated aspect");
-            }
-        }
-    }
-
-    private void ImportRecipe(Hashtable htEachRecipe,string defaultActionId)
-    {
-        Recipe r = new Recipe();
-    
-
-
-        ///////////INTERNAL DECKS - NB the deck is not stored with the recipe
-
-        var htInternalDeck = htEachRecipe.GetHashtable(NoonConstants.KINTERNALDECK);
-        if (htInternalDeck != null)
-        {
-            string internalDeckId = "deck." + r.Id;
-            htInternalDeck.Add("id",internalDeckId);
-            var internalDeck = PopulateDeckSpec(htInternalDeck);
-            r.DeckEffects.Add(internalDeckId, internalDeck.Draws);
-            DeckSpecs.Add(internalDeckId, internalDeck);
-
-            htEachRecipe.Remove(NoonConstants.KINTERNALDECK);
-        }
-
-
-
-
-
-        try
-        {
-            ArrayList alLinkedRecipes = htEachRecipe.GetArrayList(NoonConstants.KLINKED);
-            if (alLinkedRecipes != null)
-            {
-                foreach (Hashtable lr in alLinkedRecipes)
-                {
-                    string lrID = lr[NoonConstants.KID].ToString();
-                    int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
-                    bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
-
-                    var lrExpulsion = GetExpulsionDetailsIfAny(lr);
-                    var htChallenges = lr.GetHashtable(NoonConstants.KCHALLENGES);
-
-
-                    if (lrChance == 0)
-                    {
-                        if (htChallenges == null)
-                            lrChance = 100;
-                        else
-                            lrChance = 0;
-                    }
-
-                    r.Linked.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion,
-                        NoonUtility.HashtableToStringStringDictionary(htChallenges)));
-
-                    TryAddAsInternalRecipe(lr,r);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            _logger.LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
-        }
-
-        htEachRecipe.Remove(NoonConstants.KLINKED);
-
-
-      
-        htEachRecipe.Remove("comment"); //this should be the only nonprocessed property at this point
-        htEachRecipe.Remove("comments"); //this should be the only nonprocessed property at this point
-
-        foreach (var k in htEachRecipe.Keys)
-        {
-            _logger.LogProblem("Unprocessed recipe property for " + r.Id + ": " + k);
-        }
-    }
-
-    private void TryAddAsInternalRecipe(Hashtable ra,Recipe wrappingRecipe)
-    {
-        ra.Remove(NoonConstants.KCHANCE);
-        ra.Remove(NoonConstants.KADDITIONAL);
-        ra.Remove(NoonConstants.KCHALLENGES);
-        ra.Remove(NoonConstants.KEXPULSION);
-
-        string possibleDefaultActionId = null;
-
-        if (wrappingRecipe != null)
-            possibleDefaultActionId = wrappingRecipe.ActionId;
-
-        //internal recipe? can be specified inline, and then goes into the recipes list as standard
-        if (ra.Count > 1) //for a non-internal recipe, ID is the only remaining property
-            ImportRecipe(ra, possibleDefaultActionId);
-    }
-
-    private static Expulsion GetExpulsionDetailsIfAny(Hashtable linkedrecipedetails)
-    {
-        Expulsion possibleExpulsion = null;
-
-        Hashtable htExpulsion = linkedrecipedetails.GetHashtable(NoonConstants.KEXPULSION);
-        if (htExpulsion != null)
-        {
-            possibleExpulsion = new Expulsion();
-            possibleExpulsion.Limit = htExpulsion.GetInt(NoonConstants.KLIMIT);
-            Hashtable htFilter = htExpulsion.GetHashtable(NoonConstants.KFILTER);
-            foreach (var k in htFilter.Keys)
-            {
-                possibleExpulsion.Filter.Add(k.ToString(), Convert.ToInt32(htFilter[k]));
-            }
-        }
-
-
-        return possibleExpulsion;
-    }
-
+  
     private bool LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
         if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
@@ -902,17 +698,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         return false;
     }
 
-    private void LogIfNonexistentDeckId(string deckId, string containerId)
-    {
-        if (!DeckSpecs.ContainsKey(deckId)) _logger.LogProblem("'" + containerId + "' references non-existent deckSpec '" + deckId + "'");
-    }
-
-    private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
-    {
-        if (referencedId != null && Recipes.All(r => r.Id != referencedId))
-            _logger.LogProblem(
-                "'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
-    }
 
     private void LogMissingImages()
     {
@@ -936,8 +721,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
             else
             {
-
-
                 if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingElementImages += (" " + k);
@@ -953,16 +736,8 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
     public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
     {
-       // try
-      //  {
             _compendium = compendium;
-            //ArrayList alVerbs = GetContentItems(CONST_VERBS);
-         //   ArrayList alElements = GetContentItems(CONST_ELEMENTS);
-            
-            //ArrayList alDeckSpecs = GetContentItems(CONST_DECKS);
-            ArrayList alRecipes = GetContentItems(CONST_RECIPES);
-            //ArrayList alLegacies = GetContentItems(CONST_LEGACIES);
-            ArrayList alEndings = GetContentItems(CONST_ENDINGS);
+
 
             if (_logger.GetMessages().Any(m=>m.MessageLevel>1))
                 //at least one file is broken. Bug out and report.
@@ -997,7 +772,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
 
 
-        compendium.RefineAllEntities(_logger);
+            compendium.RefineAllEntities(_logger);
 
             foreach (var d in _compendium.GetAllDeckSpecs())
                 d.RegisterUniquenessGroups(_compendium);
@@ -1018,22 +793,12 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             }
 
 #endif
-       // }
-     //   catch (Exception e)
-     //   {
-
-            //    _logger.LogProblem(e.Message);
-            //  return _logger.GetMessages();
-     //   }
 
         return _logger.GetMessages();
 
 
     }
 
-	private void OnLanguageChanged()
-	{
-	}
 
     private void CountWords()
     {
