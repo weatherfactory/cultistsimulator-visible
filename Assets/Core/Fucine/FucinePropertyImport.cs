@@ -20,7 +20,7 @@ namespace Assets.Core.Fucine
             _logger = logger;
         }
 
-        public abstract void Populate(Entity entity, Hashtable entityData,
+        public abstract void Populate(AbstractEntity entity, Hashtable entityData,
             Type entityType);
 
         public static FucineImport CreateInstance(PropertyInfo property,ContentImportLogger logger,Hashtable entityData)

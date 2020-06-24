@@ -11,7 +11,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : Entity, IEntityWithId
+    public class Recipe : AbstractEntity, IEntityWithId
     {
         private string _id;
         private bool _refined=false;

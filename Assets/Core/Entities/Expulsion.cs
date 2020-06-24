@@ -5,7 +5,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class Expulsion: Entity
+    public class Expulsion: AbstractEntity
     {
 
         [FucineAspects]

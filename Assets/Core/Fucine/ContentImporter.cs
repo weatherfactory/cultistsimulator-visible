@@ -978,7 +978,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
                 if(importableAttribute!=null)
                 {
-                    if(!t.GetInterfaces().Contains(typeof(Entity)))
+                    if(!t.GetInterfaces().Contains(typeof(AbstractEntity)))
                         _logger.LogProblem($"A FucineImportable should implement IFucineEntity, but {t.Name} doesn't. This will probably break.");
                     ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 

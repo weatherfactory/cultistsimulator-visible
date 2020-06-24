@@ -10,7 +10,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: Entity,IVerb, IEntityWithId
+    public class BasicVerb: AbstractEntity,IVerb, IEntityWithId
     {
         private string _id;
 

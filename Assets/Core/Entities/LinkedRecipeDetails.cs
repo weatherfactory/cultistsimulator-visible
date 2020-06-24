@@ -6,7 +6,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : Entity, IEntityWithId
+    public class LinkedRecipeDetails : AbstractEntity, IEntityWithId
     {
         private string _id;
 

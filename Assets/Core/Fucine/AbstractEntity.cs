@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 
 namespace Assets.Core.Fucine
 {
-    public abstract class Entity
+    public abstract class AbstractEntity
     {
         protected readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
 

@@ -9,7 +9,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class MutationEffect: Entity
+    public class MutationEffect: AbstractEntity
     {
         [FucineValue("")]
         public string Filter { get; set; }

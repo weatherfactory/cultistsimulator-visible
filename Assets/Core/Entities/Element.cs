@@ -13,7 +13,7 @@ namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element: Entity, IEntityWithId
+    public class Element: AbstractEntity, IEntityWithId
     {
         private string _id;
 

@@ -10,9 +10,9 @@ namespace Assets.Core.Fucine
    public class FucineEntityFactory
     {
 
-        public Entity CreateEntity(Type entityType)
+        public AbstractEntity CreateEntity(Type entityType)
         {
-            if (!(Activator.CreateInstance(entityType) is Entity createdEntity))
+            if (!(Activator.CreateInstance(entityType) is AbstractEntity createdEntity))
              throw new ApplicationException(
                  $"Couldn't create a Fucine IEntity of type {entityType}. (Does this type implement IEntity?)");
 

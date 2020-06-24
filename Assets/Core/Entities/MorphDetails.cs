@@ -13,7 +13,7 @@ using JetBrains.Annotations;
 namespace Assets.Core.Entities
 {
 
-    public class MorphDetails : Entity, IEntityWithId,IQuickSpecEntity
+    public class MorphDetails : AbstractEntity, IEntityWithId,IQuickSpecEntity
     {
 
         private string _id;

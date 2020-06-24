@@ -13,7 +13,7 @@ namespace Assets.Core.Fucine
 
         }
 
-        public override void Populate(Entity entity, Hashtable entityData, Type entityType)
+        public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             if (entity is IEntityWithId entityWithId)
                 if(entityData.ContainsKey(_property.Name))

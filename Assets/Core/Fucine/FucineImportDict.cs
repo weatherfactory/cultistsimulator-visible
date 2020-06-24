@@ -17,7 +17,7 @@ namespace Assets.Core.Fucine
         {
         }
 
-        public void PopulateAsDictionaryOfStrings(Entity entity, Hashtable subHashtable, IDictionary dictionary)
+        public void PopulateAsDictionaryOfStrings(AbstractEntity entity, Hashtable subHashtable, IDictionary dictionary)
         {
             //Dictionary<string,string> - like DrawMessages
                 foreach (DictionaryEntry de in subHashtable)
@@ -28,7 +28,7 @@ namespace Assets.Core.Fucine
                 _property.SetValue(entity, dictionary);
         }
 
-        public void PopulateAsDictionaryOfInts(Entity entity, Hashtable subHashtable, IDictionary dictionary)
+        public void PopulateAsDictionaryOfInts(AbstractEntity entity, Hashtable subHashtable, IDictionary dictionary)
         {
             //Dictionary<string,int> - like HaltVerbs
             foreach (DictionaryEntry de in subHashtable)
@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
             _property.SetValue(entity,dictionary);
         }
 
-        public override void Populate(Entity entity, Hashtable entityData, Type entityType)
+        public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             //Dictionary<string,string> 
             //Dictionary<string,int> 
@@ -116,7 +116,7 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void PopulateAsDictionaryOfLists(Entity entity, Type wrapperListType, Hashtable subHashtable, IDictionary dict)
+        private void PopulateAsDictionaryOfLists(AbstractEntity entity, Type wrapperListType, Hashtable subHashtable, IDictionary dict)
         {
             //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
             Type listMemberType = wrapperListType.GetGenericArguments()[0];
@@ -180,7 +180,7 @@ namespace Assets.Core.Fucine
 
 
 
-        private void PopulateAsDictionaryOfEntities(Entity entity, Hashtable subHashtable, Type dictMemberType, IDictionary dict)
+        private void PopulateAsDictionaryOfEntities(AbstractEntity entity, Hashtable subHashtable, Type dictMemberType, IDictionary dict)
         {
             foreach (object o in subHashtable)
             {

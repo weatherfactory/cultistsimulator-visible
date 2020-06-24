@@ -13,7 +13,7 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification: Entity, IEntityWithId
+public class SlotSpecification: AbstractEntity, IEntityWithId
 {
     private string _id;
 
