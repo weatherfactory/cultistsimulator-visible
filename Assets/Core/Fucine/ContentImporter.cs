@@ -774,8 +774,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
             compendium.RefineAllEntities(_logger);
 
-            foreach (var d in _compendium.GetAllDeckSpecs())
-                d.RegisterUniquenessGroups(_compendium);
 
 
 #if DEBUG
