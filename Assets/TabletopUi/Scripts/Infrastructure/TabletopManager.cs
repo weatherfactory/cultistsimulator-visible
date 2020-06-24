@@ -9,6 +9,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.Logic;
@@ -235,7 +236,7 @@ namespace Assets.CS.TabletopUI {
 
             var registry=new Registry();
 
-            var messages=ImportContent(registry);
+            var messages=ImportContent(registry).GetMessages();
 
             if (messages.Any(p=>p.MessageLevel>1))
             {
@@ -384,7 +385,7 @@ namespace Assets.CS.TabletopUI {
             mapTokenContainer.Initialise();
         }
 
-        private IList<ContentImportMessage> ImportContent(Registry registry)
+        private ContentImportLog ImportContent(Registry registry)
         {
             
 #if MODS
@@ -396,9 +397,9 @@ namespace Assets.CS.TabletopUI {
             registry.Register<ICompendium>(compendium);
 
             var contentImporter = new ContentImporter();
-            var problems = contentImporter.PopulateCompendium(compendium);
+            var log=contentImporter.PopulateCompendium(compendium);
 
-            return problems;
+            return log;
 
 
         }

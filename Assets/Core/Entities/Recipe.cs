@@ -162,7 +162,7 @@ namespace Assets.Core.Entities
             PortalEffect = PortalEffect.None;
         }
 
-        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
                 return;
@@ -173,7 +173,7 @@ namespace Assets.Core.Entities
                 if(populatedCompendium.TryAddDeckSpec(InternalDeck))
                     DeckEffects.Add(InternalDeck.Id, InternalDeck.Draws);
                 else
-                    logger.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);
+                    log.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);
             }
 
             Hashtable unknownProperties = PopAllUnknownProperties();
@@ -181,14 +181,14 @@ namespace Assets.Core.Entities
             if (unknownProperties.Keys.Count > 0)
             {
                 foreach (var k in unknownProperties.Keys)
-                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
+                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
             }
 
             foreach(var l in Linked)
-                l.RefineWithCompendium(logger,populatedCompendium);
+                l.RefineWithCompendium(log,populatedCompendium);
 
             foreach (var a in Alt)
-                a.RefineWithCompendium(logger, populatedCompendium);
+                a.RefineWithCompendium(log, populatedCompendium);
 
 
             Refined = true;

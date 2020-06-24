@@ -34,9 +34,9 @@ namespace Assets.Editor
             // Import all the content first
             ContentImporter contentImporter = new ContentImporter();
             _compendium = new Compendium();
-            var problems=contentImporter.PopulateCompendium(_compendium);
-            foreach (var p in problems)
-               NoonUtility.Log(p.Description, messageLevel: 2);
+            var log=contentImporter.PopulateCompendium(_compendium);
+            foreach (var p in log.GetMessages())
+               NoonUtility.Log(p.Description, p.MessageLevel);
             _character = new Character(_compendium.GetAllLegacies().First());
             
             // Initialise all decks

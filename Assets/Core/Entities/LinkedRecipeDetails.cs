@@ -59,7 +59,7 @@ namespace Assets.Core.Entities
             this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
-        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
@@ -67,12 +67,12 @@ namespace Assets.Core.Entities
                 //unknown properties in a LinkedRecipeDetails are probably an internal recipe
                 unknownProperties.Add("id",Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
 
-                FucinePropertyWalker w = new FucinePropertyWalker(logger, typeof(Recipe));
+                FucinePropertyWalker w = new FucinePropertyWalker(log, typeof(Recipe));
                 Recipe internalRecipe = (Recipe)w.PopulateEntityWith(unknownProperties);
 
                  populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
 
-                 internalRecipe.RefineWithCompendium(logger,populatedCompendium); //this will log any issues with the import
+                 internalRecipe.RefineWithCompendium(log,populatedCompendium); //this will log any issues with the import
             }
         }
     }

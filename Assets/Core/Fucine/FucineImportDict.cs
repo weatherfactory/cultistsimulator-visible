@@ -13,7 +13,7 @@ namespace Assets.Core.Fucine
     public class FucineImportDict : FucineImport
     {
 
-        public FucineImportDict(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportDict(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
         }
 
@@ -100,17 +100,17 @@ namespace Assets.Core.Fucine
                             mustExistInProperty.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
-                            _logger.LogProblem(
+                            Log.LogProblem(
                                 $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
-                            _logger.LogProblem(
+                            Log.LogProblem(
                                 $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
-                    _logger.LogProblem(
+                    Log.LogProblem(
                         $"{entity.GetType().Name} insists that {_property.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
@@ -173,7 +173,7 @@ namespace Assets.Core.Fucine
 
                 FucinePropertyWalker
                     emanationWalker =
-                        new FucinePropertyWalker(_logger, listMemberType); //passing in <string,MorphDetailsList>
+                        new FucinePropertyWalker(Log, listMemberType); //passing in <string,MorphDetailsList>
                 IEntityWithId
                     sub = emanationWalker
                         .PopulateEntityWith(ciEntityHash) as IEntityWithId; //{id:husk,morpheffect:spawn}
@@ -197,7 +197,7 @@ namespace Assets.Core.Fucine
                                 h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                     FucinePropertyWalker
                         emanationWalker =
-                            new FucinePropertyWalker(_logger, dictMemberType); //passing in <string,MorphDetailsList>
+                            new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
                     IEntityWithId sub = emanationWalker.PopulateEntityWith(cih) as IEntityWithId;
                     dict.Add(sub.Id, sub);
                     _property.SetValue(entity, dict);

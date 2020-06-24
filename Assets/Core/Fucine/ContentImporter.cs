@@ -47,7 +47,7 @@ public class ContentImporter
     
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
 
-    ContentImportLogger _logger=new ContentImportLogger();
+    ContentImportLog _log=new ContentImportLog();
 
 
     public ContentImporter()
@@ -87,7 +87,7 @@ public class ContentImporter
 
         allContentFiles.AddRange(coreContentFiles);
         allContentFiles.AddRange(overridecontentFiles);
-        if (!allContentFiles.Any()) _logger.LogProblem("Can't find any " + contentOfType + " to import as content");
+        if (!allContentFiles.Any()) _log.LogProblem("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
 		ArrayList originalArrayList = new ArrayList();
@@ -103,7 +103,7 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                _logger.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 return null;
             }
 
@@ -122,7 +122,7 @@ public class ContentImporter
 					}
 					catch (Exception e)
 					{
-                        _logger.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                        _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                         return null;
 					}
 
@@ -690,7 +690,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     {
         if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
         {
-            _logger.LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
+            _log.LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
             return true;
         }
 
@@ -700,7 +700,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
 
-    public IList<ContentImportMessage> PopulateCompendium(ICompendium compendiumToPopulate)
+    public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
 
         compendiumToPopulate.Reset();
@@ -716,14 +716,14 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             if(importableAttribute!=null)
             {
                 if(!t.IsSubclassOf(typeof(AbstractEntity)))
-                    _logger.LogProblem($"A FucineImportable should inherit from AbstractEntity, but {t.Name} doesn't. This will probably break.");
+                    _log.LogProblem($"A FucineImportable should inherit from AbstractEntity, but {t.Name} doesn't. This will probably break.");
                 ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
                 foreach (Hashtable h in al)
                 {
                     Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
 
-                    FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
+                    FucinePropertyWalker w = new FucinePropertyWalker(_log, t);
 
                     IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
 
@@ -732,20 +732,20 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 }
             }
 
-            if (_logger.GetMessages().Any(m => m.MessageLevel > 1))
+            if (_log.GetMessages().Any(m => m.MessageLevel > 1))
                 //at least one file is broken. Bug out and report.
-                return _logger.GetMessages();
+                return _log;
         }
 
 
-        compendiumToPopulate.RefineAllEntities(_logger);
+        compendiumToPopulate.RefineAllEntities(_log);
 
 
 
 #if DEBUG
-        compendiumToPopulate.CountWords(_logger);
-        compendiumToPopulate.LogMissingImages(_logger);
-        compendiumToPopulate.LogFnords(_logger);
+        compendiumToPopulate.CountWords(_log);
+        compendiumToPopulate.LogMissingImages(_log);
+        compendiumToPopulate.LogFnords(_log);
 
         foreach (var kvp in DeckSpecs)
         {
@@ -758,7 +758,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 #endif
 
-        return _logger.GetMessages();
+        return _log;
 
 
     }

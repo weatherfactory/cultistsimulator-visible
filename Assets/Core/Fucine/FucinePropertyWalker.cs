@@ -17,12 +17,12 @@ namespace Assets.Core.Fucine
     public class FucinePropertyWalker
     {
         private readonly IEntityWithId _entityWithIdToPopulate;
-        private readonly ContentImportLogger _logger;
+        private readonly ContentImportLog _log;
         private readonly Type _entityType;
 
-        public FucinePropertyWalker(ContentImportLogger logger,Type entityType)
+        public FucinePropertyWalker(ContentImportLog log,Type entityType)
         {
-            _logger = logger;
+            _log = log;
             _entityType = entityType;
         }
 
@@ -39,7 +39,7 @@ namespace Assets.Core.Fucine
                 if(Attribute.GetCustomAttributes(thisProperty,typeof(Fucine)).Any())
                 {
 
-                   FucineImport import = FucineImport.CreateInstance(thisProperty, _logger, importDataForEntity);
+                   FucineImport import = FucineImport.CreateInstance(thisProperty, _log, importDataForEntity);
                    import.Populate(newEntity,importDataForEntity,_entityType);
                 }
             }

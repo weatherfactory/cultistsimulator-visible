@@ -69,14 +69,14 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if(unknownProperties.Keys.Count>0)
             {
                 foreach(var k in unknownProperties.Keys)
 
-                        logger.LogInfo($"Unknown property in import: {k} for MorphDetails ({Id} {Chance} {MorphEffect} {Level})");
+                        log.LogInfo($"Unknown property in import: {k} for MorphDetails ({Id} {Chance} {MorphEffect} {Level})");
                 
             }
         }

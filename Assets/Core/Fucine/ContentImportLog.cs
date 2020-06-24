@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Core.Fucine
 {
-    public class ContentImportLogger
+    public class ContentImportLog
     {
         private IList<ContentImportMessage> _contentImportMessages= new List<ContentImportMessage>();
 

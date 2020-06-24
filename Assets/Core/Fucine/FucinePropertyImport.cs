@@ -11,40 +11,40 @@ namespace Assets.Core.Fucine
    
     public abstract class FucineImport
     {
-        protected ContentImportLogger _logger;
+        protected ContentImportLog Log;
         protected PropertyInfo _property;
 
-        protected FucineImport(PropertyInfo property, ContentImportLogger logger)
+        protected FucineImport(PropertyInfo property, ContentImportLog log)
         {
             _property = property;
-            _logger = logger;
+            Log = log;
         }
 
         public abstract void Populate(AbstractEntity entity, Hashtable entityData,
             Type entityType);
 
-        public static FucineImport CreateInstance(PropertyInfo property,ContentImportLogger logger,Hashtable entityData)
+        public static FucineImport CreateInstance(PropertyInfo property,ContentImportLog log,Hashtable entityData)
         {
             if (Attribute.GetCustomAttribute(property, typeof(FucineId)) is FucineId)
-                return new FucineImportId(property, logger);
+                return new FucineImportId(property, log);
             //Try whether the key exists or not: we might be using an arbitrary internal key
 
             else if (entityData.ContainsKey(property.Name))
             {
                 if (Attribute.GetCustomAttribute(property, typeof(FucineList)) is FucineList)
-                    return new FucineImportList(property, logger);
+                    return new FucineImportList(property, log);
             
                 else if (Attribute.GetCustomAttribute(property, typeof(FucineDict)) is FucineDict)
-                    return new FucineImportDict(property, logger);
+                    return new FucineImportDict(property, log);
 
                 else if (Attribute.GetCustomAttribute(property, typeof(FucineAspects)) is FucineAspects)
-                    return new FucineImportAspects(property, logger);
+                    return new FucineImportAspects(property, log);
 
                 else if (Attribute.GetCustomAttribute(property, typeof(FucineSubEntity)) is FucineSubEntity)
-                    return new FucineImportSubEntity(property, logger);
+                    return new FucineImportSubEntity(property, log);
 
                 else if(Attribute.GetCustomAttribute(property, typeof(FucineValue)) is FucineValue)
-                    return new FucineImportValue(property, logger);
+                    return new FucineImportValue(property, log);
                 else
                     throw new ApplicationException("Unknown Fucine property type on: " + property.Name);
                 
@@ -52,7 +52,7 @@ namespace Assets.Core.Fucine
             }
             else
             {
-                return new FucineImportDefault(property, logger);
+                return new FucineImportDefault(property, log);
             }
         }
     }

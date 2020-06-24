@@ -8,7 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportValue : FucineImport
     {
-        public FucineImportValue(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportValue(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
         }
 

@@ -198,7 +198,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined)
                 return;
@@ -210,7 +210,7 @@ namespace Assets.Core.Entities
             {
 
                 if (!populatedCompendium.IsKnownElement(Inherits))
-                    logger.LogProblem($"{Id} is trying to inherit from a nonexistent element, {Inherits}");
+                    log.LogProblem($"{Id} is trying to inherit from a nonexistent element, {Inherits}");
                 else
                     InheritFrom(populatedCompendium.GetElementById(Inherits));
             }
@@ -224,11 +224,11 @@ namespace Assets.Core.Entities
             if (unknownProperties.Keys.Count > 0)
             {
                 foreach (var k in unknownProperties.Keys)
-                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
+                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
             }
 
             foreach(var i in Induces)
-                i.RefineWithCompendium(logger,populatedCompendium);
+                i.RefineWithCompendium(log,populatedCompendium);
 
           
 

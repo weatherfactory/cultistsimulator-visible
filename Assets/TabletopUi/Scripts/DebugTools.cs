@@ -8,6 +8,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
@@ -369,7 +370,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
            var contentImporter = new ContentImporter();
 
            var startImport = DateTime.Now;
-           contentImporter.PopulateCompendium(existingCompendium);
+           var log=contentImporter.PopulateCompendium(existingCompendium);
+        foreach(var m in log.GetMessages())
+            NoonUtility.Log(m.Description,m.MessageLevel);
+
            NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
 
            // Populate current decks with new cards (this will shuffle the deck)
@@ -384,7 +388,40 @@ public class DebugTools : MonoBehaviour,IRollOverride
                }
            }
 
+           
+
        
+    }
+
+    public void WordCount()
+    {
+        var compendium = Registry.Retrieve<ICompendium>();
+        var log=new ContentImportLog();
+        compendium.CountWords(log);
+        foreach (var m in log.GetMessages())
+            NoonUtility.Log(m.Description, m.MessageLevel);
+
+    }
+
+    public void FnordCount()
+    {
+        var compendium = Registry.Retrieve<ICompendium>();
+        var log = new ContentImportLog();
+        compendium.LogFnords(log);
+        foreach (var m in log.GetMessages())
+            NoonUtility.Log(m.Description, m.MessageLevel);
+
+    }
+
+    public void ImageCheck()
+    {
+
+        var compendium = Registry.Retrieve<ICompendium>();
+        var log = new ContentImportLog();
+        compendium.LogMissingImages(log);
+        foreach (var m in log.GetMessages())
+            NoonUtility.Log(m.Description, m.MessageLevel);
+
     }
 
     void NextTrack()

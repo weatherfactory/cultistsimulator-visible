@@ -121,10 +121,10 @@ namespace Assets.Core.Entities
         }
 
 
-        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             RegisterUniquenessGroups(populatedCompendium);
-            base.RefineWithCompendium(logger, populatedCompendium);
+            base.RefineWithCompendium(log, populatedCompendium);
         }
 
 

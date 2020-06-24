@@ -8,7 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportSubEntity : FucineImport
     {
-        public FucineImportSubEntity(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportSubEntity(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
         }
 
@@ -18,7 +18,7 @@ namespace Assets.Core.Fucine
 
 
             string entityPropertyName = _property.Name;
-            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, subEntityAttribute.ObjectType);
+            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, subEntityAttribute.ObjectType);
 
             var subEntity = emanationWalker.PopulateEntityWith(entityData.GetHashtable(entityPropertyName));
 

@@ -8,7 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportId : FucineImport
     {
-        public FucineImportId(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportId(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
 
         }
@@ -22,7 +22,7 @@ namespace Assets.Core.Fucine
                     entityWithId.SetId(_property.Name);
 
             else
-                _logger.LogProblem("ID not specified for a " + entityType.Name);
+                Log.LogProblem("ID not specified for a " + entityType.Name);
         }
         }
     }

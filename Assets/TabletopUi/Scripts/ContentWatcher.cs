@@ -78,25 +78,25 @@ public class ContentWatcher : MonoBehaviour
 
 async void Update()
     {
-        if (Application.isPlaying)
-        {
-            this.gameObject.SetActive(false);
-            return;
-        }
+        //if (Application.isPlaying)
+        //{
+        //    this.gameObject.SetActive(false);
+        //    return;
+        //}
 
-        if (!Initialised)
-            Initialise();
+        //if (!Initialised)
+        //    Initialise();
         
-        if (WatcherQueue.NeedsRevalidation && !validationInProgress)
-        {
-            Debug.Log("Validating at " + DateTime.Now.ToLongTimeString());
+        //if (WatcherQueue.NeedsRevalidation && !validationInProgress)
+        //{
+        //    Debug.Log("Validating at " + DateTime.Now.ToLongTimeString());
 
-            ValidationBeginning();
-            Task<AsyncContentImportResult> resultsTask = Validate();
-            AsyncContentImportResult result = await resultsTask;
-            ValidationMessages.text = result.ContentImportMessages.Aggregate(string.Empty, (current, m) => current + (m.Description + "\n"));
-            ValidationComplete();
-        }
+        //    ValidationBeginning();
+        //    Task<AsyncContentImportResult> resultsTask = Validate();
+        //    AsyncContentImportResult result = await resultsTask;
+        //    ValidationMessages.text = result.ContentImportMessages.Aggregate(string.Empty, (current, m) => current + (m.Description + "\n"));
+        //    ValidationComplete();
+        //}
     }
 
 private void ValidationBeginning()
@@ -108,29 +108,29 @@ private void ValidationBeginning()
 
 private void ValidationComplete()
 {
-    WatcherQueue.NeedsRevalidation = false;
-    validationInProgress = false;
-    StatusMessages.text += "\n\nCompleted validation at " + DateTime.Now.ToLongTimeString();
-}
+//    WatcherQueue.NeedsRevalidation = false;
+//    validationInProgress = false;
+//    StatusMessages.text += "\n\nCompleted validation at " + DateTime.Now.ToLongTimeString();
+//}
 
-    private async Task<AsyncContentImportResult> Validate()
-    {
-        WatcherQueue.NeedsRevalidation = false;
-        AsyncContentImportResult result;
+//    private async Task<AsyncContentImportResult> Validate()
+//    {
+//        WatcherQueue.NeedsRevalidation = false;
+//        AsyncContentImportResult result;
 
-#if MODS
-        new Registry().Register(new ModManager(false));
-#endif
-        var contentImporter = new ContentImporter();
-        var contentImportMessages = contentImporter.PopulateCompendium(new Compendium());
-        var importantMessages = contentImportMessages.Where(i => i.MessageLevel > 0).ToList();
+//#if MODS
+//        new Registry().Register(new ModManager(false));
+//#endif
+//        var contentImporter = new ContentImporter();
+//        var contentImportMessages = contentImporter.PopulateCompendium(new Compendium());
+//        var importantMessages = contentImportMessages.Where(i => i.MessageLevel > 0).ToList();
 
-        if (!importantMessages.Any())
-            result=new AsyncContentImportResult(new ContentImportMessage($"All content good at {DateTime.Now.ToLongTimeString()}"));
-        else
-            result=new AsyncContentImportResult(importantMessages);
+//        if (!importantMessages.Any())
+//            result=new AsyncContentImportResult(new ContentImportMessage($"All content good at {DateTime.Now.ToLongTimeString()}"));
+//        else
+//            result=new AsyncContentImportResult(importantMessages);
         
-        return result;
+//        return result;
     }
 
 }

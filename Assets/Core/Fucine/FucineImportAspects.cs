@@ -10,7 +10,7 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportAspects : FucineImport
     {
-        public FucineImportAspects(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportAspects(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
         }
 
@@ -43,17 +43,17 @@ namespace Assets.Core.Fucine
                             mustExistInProperty.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
-                            _logger.LogProblem(
+                            Log.LogProblem(
                                 $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
-                            _logger.LogProblem(
+                            Log.LogProblem(
                                 $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
-                    _logger.LogProblem(
+                    Log.LogProblem(
                         $"{entity.GetType().Name} insists that {_property.Name} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }

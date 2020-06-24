@@ -9,7 +9,7 @@ namespace Assets.Core.Fucine
     public class FucineImportList : FucineImport
     {
 
-        public FucineImportList(PropertyInfo property, ContentImportLogger logger) : base(property, logger)
+        public FucineImportList(PropertyInfo property, ContentImportLog log) : base(property, log)
         {
         }
 
@@ -31,7 +31,7 @@ namespace Assets.Core.Fucine
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
                     Hashtable cih = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
-                    FucinePropertyWalker emanationWalker = new FucinePropertyWalker(_logger, listMemberType);
+                    FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, listMemberType);
                     var subEntity = emanationWalker.PopulateEntityWith(cih);
                     list.Add(subEntity);
                 }

@@ -40,13 +40,13 @@ public interface ICompendium
     /// <summary>
     /// Run all second-stage populations that occur between / across entities
     /// </summary>
-    void RefineAllEntities(ContentImportLogger logger);
+    void RefineAllEntities(ContentImportLog log);
 
     void Reset();
 
-    void LogFnords(ContentImportLogger logger);
-    void CountWords(ContentImportLogger logger);
-    void LogMissingImages(ContentImportLogger logger);
+    void LogFnords(ContentImportLog log);
+    void CountWords(ContentImportLog log);
+    void LogMissingImages(ContentImportLog log);
 }
 
 public class Compendium : ICompendium
@@ -98,14 +98,14 @@ public class Compendium : ICompendium
             _recipes.Add(entity as Recipe);
     }
 
-    public void RefineAllEntities(ContentImportLogger logger)
+    public void RefineAllEntities(ContentImportLog log)
     {
         foreach (var d in allEntities.Values)
         {
             HashSet <AbstractEntity> entities= new HashSet<AbstractEntity>((IEnumerable<AbstractEntity>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
 
             foreach (var e in entities)
-                e.RefineWithCompendium(logger,this);
+                e.RefineWithCompendium(log,this);
 
         }
     }
@@ -342,7 +342,7 @@ public class Compendium : ICompendium
     }
 
 
-    public void LogFnords(ContentImportLogger logger)
+    public void LogFnords(ContentImportLog log)
     {
         const string FNORD = "FNORD";
 
@@ -381,14 +381,18 @@ public class Compendium : ICompendium
         }
 
 
-        if (elementFnords != "") logger.LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
-
-        if (recipeFnords != "") logger.LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
-
+        if (elementFnords != "") 
+            log.LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
+        else
+            log.LogInfo("No fnords found for elements.");
+        if (recipeFnords != "")
+            log.LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
+        else
+            log.LogInfo("No fnords found for recipes.");
 
     }
 
-    public void CountWords(ContentImportLogger logger)
+    public void CountWords(ContentImportLog log)
     {
         int words = 0;
         foreach (var r in _recipes)
@@ -419,11 +423,11 @@ public class Compendium : ICompendium
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        logger.LogInfo("Words (based on spaces +1 count): " + words);
+        log.LogInfo("Words (based on spaces +1 count): " + words);
 
     }
 
-    public void LogMissingImages(ContentImportLogger logger)
+    public void LogMissingImages(ContentImportLog log)
     {
         //check for missing images
         var allElements = GetAllElementsAsDictionary();
@@ -453,9 +457,15 @@ public class Compendium : ICompendium
             }
         }
 
-        if (missingAspectImages != "") logger.LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+        if (missingAspectImages != "")
+            log.LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+        else
+            log.LogInfo("No missing aspect images found.");
 
-        if (missingElementImages != "") logger.LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
+        if (missingElementImages != "")
+            log.LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
+        else
+            log.LogInfo("No missing elephant images found.");
     }
 
 

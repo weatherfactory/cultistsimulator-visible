@@ -14,9 +14,9 @@ namespace Assets.Core.Fucine
         /// It's not explicitly run for subentities - that's up to individual entities.
         /// Overriding implementations should set refined to true, and not run it if it isn't - this isn't yet enforced
         /// </summary>
-        /// <param name="logger"></param>
+        /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
-        public virtual void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public virtual void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined)
                 return;
@@ -25,7 +25,7 @@ namespace Assets.Core.Fucine
             if (unknownProperties.Keys.Count > 0)
             {
                 foreach (var k in unknownProperties.Keys)
-                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name}");
+                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name}");
             }
 
             Refined = true;
