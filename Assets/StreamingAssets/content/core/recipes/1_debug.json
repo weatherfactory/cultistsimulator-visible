@@ -1,23 +1,5 @@
  {"recipes":
  [
-      	{
-        id: "challengetest",
-        label: "Challenge test",
-        actionId: "x",
-        startdescription: "We used to set Chance to 0 explicitly if there were challenges and no explicit chance. What happens if we no longer do this and there are challenges?",
-		description:"missed challenge",
-        warmup:2,
-		slots:[{id:"s"}],
-		linked:[{id:"challengetestsuccess",challenges:{forge:base}}]
-    },
-	
-	
-        {
-        id: "challengetestsuccess",
-        label: "Challenge test successful!",
-        actionId: "x",
-         startdescription: "Passed the challenge",
-    },			
 
 	
 	

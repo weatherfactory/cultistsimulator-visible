@@ -31,5 +31,6 @@ namespace Assets.CS.TabletopUI
             registered[typeof(T)] = toRegister;
         }
 
+
     }
 }

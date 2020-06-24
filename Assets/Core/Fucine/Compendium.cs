@@ -2,16 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Assets.Core;
-using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Noon;
-using OrbCreationExtensions;
-using UnityEngine.Rendering;
 using UnityEngine.Analytics;
 
 public interface ICompendium
@@ -46,6 +42,7 @@ public interface ICompendium
     /// </summary>
     void RefineAllEntities(ContentImportLogger logger);
 
+    void Reset();
 
     void LogFnords(ContentImportLogger logger);
     void CountWords(ContentImportLogger logger);
@@ -54,31 +51,44 @@ public interface ICompendium
 
 public class Compendium : ICompendium
 {
-    private Dictionary<Type, IDictionary> allEntities =
-        new Dictionary<Type, IDictionary>();
+    private Dictionary<Type, IDictionary> allEntities;
 
     private List<Recipe> _recipes=new List<Recipe>();
     private Dictionary<LegacyEventRecordId, string> _pastLevers;
 
-    private Dictionary<string, Recipe> _recipeDict=new Dictionary<string, Recipe>();
-    private Dictionary<string, Element> _elements = new Dictionary<string, Element>();
-    private Dictionary<string, BasicVerb> _verbs = new Dictionary<string, BasicVerb>();
-    private Dictionary<string, Legacy> _legacies = new Dictionary<string, Legacy>();
-    private Dictionary<string, Ending> _endings = new Dictionary<string, Ending>();
-    private Dictionary<string, DeckSpec> _decks = new Dictionary<string, DeckSpec>();
+    private Dictionary<string, Recipe> _recipeDict;
+    private Dictionary<string, Element> _elements;
+    private Dictionary<string, BasicVerb> _verbs;
+    private Dictionary<string, Legacy> _legacies;
+    private Dictionary<string, Ending> _endings;
+    private Dictionary<string, DeckSpec> _decks;
 
 
     public Compendium()
     {
-        allEntities.Add(typeof(Recipe),_recipeDict);
+    Reset(); //a little inelegant to call this twice - we call it explicitly in the content importer too
+    }
+
+    public void Reset()
+    {
+        allEntities= new Dictionary<Type, IDictionary>();
+
+        _recipeDict = new Dictionary<string, Recipe>();
+    _elements = new Dictionary<string, Element>();
+    _verbs = new Dictionary<string, BasicVerb>();
+    _legacies = new Dictionary<string, Legacy>();
+    _endings = new Dictionary<string, Ending>();
+    _decks = new Dictionary<string, DeckSpec>();
+
+         allEntities.Add(typeof(Recipe), _recipeDict);
         allEntities.Add(typeof(Element), _elements);
         allEntities.Add(typeof(BasicVerb), _verbs);
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
         allEntities.Add(typeof(DeckSpec), _decks);
-
-
     }
+
+
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
         var relevantStore = allEntities[type];

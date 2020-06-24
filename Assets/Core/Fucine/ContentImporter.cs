@@ -703,9 +703,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     public IList<ContentImportMessage> PopulateCompendium(ICompendium compendiumToPopulate)
     {
 
+        compendiumToPopulate.Reset();
 
-
-            var assembly = Assembly.GetExecutingAssembly();
+       var assembly = Assembly.GetExecutingAssembly();
 
          
 

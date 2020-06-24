@@ -364,28 +364,13 @@ public class DebugTools : MonoBehaviour,IRollOverride
 #if MODS
         Registry.Retrieve<ModManager>().LoadAll();
 #endif
-        var testContentImporter = new ContentImporter();
-        var testCompendium =new Compendium();
-            
-       var problems= testContentImporter.PopulateCompendium(testCompendium);
-       if(problems.Any(p=>p.MessageLevel>1))
-        { 
-            NoonUtility.Log("Problems with content import: ",2);
-            foreach (var p in problems.Where(p=>p.MessageLevel>1))
-                NoonUtility.Log(p.Description, p.MessageLevel);
-        }
-       else
-       {
-           foreach (var p in problems)
-               NoonUtility.Log(p.Description, p.MessageLevel);
-
             
            var existingCompendium = Registry.Retrieve<ICompendium>();
            var contentImporter = new ContentImporter();
 
-           var t = DateTime.Now;
+           var startImport = DateTime.Now;
            contentImporter.PopulateCompendium(existingCompendium);
-           NoonUtility.Log("Total time to import: " + (DateTime.Now-t));
+           NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
 
            // Populate current decks with new cards (this will shuffle the deck)
            IGameEntityStorage storage = Registry.Retrieve<Character>();
@@ -399,7 +384,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
                }
            }
 
-       }
+       
     }
 
     void NextTrack()
