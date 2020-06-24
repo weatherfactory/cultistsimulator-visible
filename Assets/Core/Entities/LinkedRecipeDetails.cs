@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
+using UnityEngine.UIElements;
 
 namespace Assets.Core.Entities
 {
@@ -28,13 +29,21 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
-
+        /// <summary>
+        /// Specify a challenge based on aspect quality, as either base or advanced. If there's more than one challenge,
+        /// the most generous % chance will be used.
+        /// </summary>
         [FucineDict]
         public Dictionary<string, string> Challenges { get; set; }
 
         [FucineSubEntity(typeof(Expulsion))]
         public Expulsion Expulsion { get; set; }
-  
+
+        public bool ShouldAlwaysSucceed()
+        {
+            return Chance >= 100 && Challenges.Count <= 0;
+        }
+
 
         public LinkedRecipeDetails()
         {

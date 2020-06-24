@@ -80,13 +80,13 @@ namespace Assets.Core
                 {
                     NoonUtility.Log(recipe.Id + " says: " + lr.Id + " has been exhausted, so won't execute");
                 }
-            else
+                else
                 {
 
-                    if (lr.Chance >= 100)
+                    if (lr.ShouldAlwaysSucceed())
                     {
                         NoonUtility.Log(recipe.Id + " says: " + lr.Id +
-                                        " is a suitable linked recipe with chance >=100! Executing it next.");
+                                        " is a suitable linked recipe no chance or challenges specified. Executing it next.");
                         return candidateRecipe;
 
                     }
@@ -147,7 +147,7 @@ namespace Assets.Core
                 {
                     if (!ar.Additional)
                     {
-                        if (ar.Chance >= 100)
+                        if (ar.ShouldAlwaysSucceed())
                         {
                             //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
                             //alternative will have a useful description.

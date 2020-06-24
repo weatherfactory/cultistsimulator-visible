@@ -23,7 +23,10 @@ namespace Assets.Logic
 
         public int GetArbitratedChance()
         {
-            int arbitratedChance = _link.Chance;
+            if (_link.Challenges.Count == 0)
+                return _link.Chance;
+
+            int arbitratedChance = 0; 
 
             foreach (var kvp in _link.Challenges)
             {
@@ -33,7 +36,7 @@ namespace Assets.Logic
                 else if (kvp.Value == ADVANCED_CONVENTION_ID)
                     chanceFromAspect = ChanceForAdvancedConvention(_aspectsToConsider.AspectValue(kvp.Key));
                 else
-                throw new ApplicationException("We don't know what to do with this difficulty convention: " + kvp.Value);
+                    throw new ApplicationException("We don't know what to do with this difficulty convention: " + kvp.Value);
                  
                 if (chanceFromAspect > arbitratedChance)
                     arbitratedChance = chanceFromAspect;

@@ -85,7 +85,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool HintOnly { get; set; }
 
-        [FucineValue(10)]
+        [FucineValue(0)]
         public int Warmup { get; set; }
 
         [FucineValue(".")]
