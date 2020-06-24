@@ -122,15 +122,20 @@ namespace Assets.Core.Fucine
             Type listMemberType = wrapperListType.GetGenericArguments()[0];
             //if it's {fatiguing:husk}, then it's a hashtable. If it's {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}], then it's also a hashtable.
             //either way, it's implicit keys: fatiguing, exiling... 
-            foreach (string k in subHashtable.Keys)
+            foreach (string dictKeyForList in subHashtable.Keys)
             {
                 IList wrapperList = Activator.CreateInstance(wrapperListType) as IList;
-                if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)))
+
+                //if it's potentially a QuickSpecEntity 
+                if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)) && (subHashtable[dictKeyForList] is string quickSpecEntityValue))
                 {
-                    AddQuickSpecEntityToWrapperList(subHashtable, listMemberType, k, wrapperList);
+                    //quick spec entities started out as a simple key:value pair, e.g. {fatiguing:husk}, but later had their possible definition extended to be potentially more complex, e.g fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                    //it's a quick spec entity if (i) it implements IQuickSpecEntity (ii) the value resolves to a string (rather than a list)
+                    AddQuickSpecEntityToWrapperList(listMemberType, quickSpecEntityValue, wrapperList);
                 }
 
-                else if (subHashtable[k] is ArrayList list
+                //either it's not a quickspeccable entity, or it's a quickspeccableentity whose json resolves to a full list 
+                else if (subHashtable[dictKeyForList] is ArrayList list
                 ) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                 {
                     AddFullSpecEntitiesToWrapperList(list, listMemberType, wrapperList);
@@ -138,21 +143,21 @@ namespace Assets.Core.Fucine
                 else
                 {
                     throw new ApplicationException(
-                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[k].GetType().Name}");
+                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[dictKeyForList].GetType().Name}");
                 }
 
-                dict.Add(k, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+                dict.Add(dictKeyForList, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
             }
 
             _property.SetValue(entity, dict);
         }
 
-        private static void AddQuickSpecEntityToWrapperList(Hashtable subHashtable, Type listMemberType, string k,
+        private static void AddQuickSpecEntityToWrapperList(Type listMemberType, string quickSpecEntityValue,
             IList wrapperList)
         {
-            //{fatiguing:husk}
+            // eg {fatiguing:husk}
             IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
-            quickSpecEntity.QuickSpec(subHashtable[k] as string);
+            quickSpecEntity.QuickSpec(quickSpecEntityValue);
             wrapperList.Add(
                 quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
 

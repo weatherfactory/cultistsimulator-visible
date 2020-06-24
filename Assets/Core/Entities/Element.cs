@@ -92,6 +92,7 @@ namespace Assets.Core.Entities
        public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
+        /// Inductions ONLY OCCUR WHEN A RECIPE COMPLETES. This ensures we don't get inductions spamming over and over.
         /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
         /// </summary>
         [FucineList]
@@ -199,6 +200,11 @@ namespace Assets.Core.Entities
 
         public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
+            if (Refined)
+                return;
+            Refined = true;
+
+
 
             if (!string.IsNullOrEmpty(Inherits))
             {
@@ -221,6 +227,10 @@ namespace Assets.Core.Entities
                     logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
             }
 
+            foreach(var i in Induces)
+                i.RefineWithCompendium(logger,populatedCompendium);
+
+          
 
         }
     }

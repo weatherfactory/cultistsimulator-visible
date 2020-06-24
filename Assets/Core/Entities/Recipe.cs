@@ -14,7 +14,6 @@ namespace Assets.Core.Entities
     public class Recipe : AbstractEntity, IEntityWithId
     {
         private string _id;
-        private bool _refined=false;
 
         [FucineId]
         public string Id
@@ -165,10 +164,9 @@ namespace Assets.Core.Entities
 
         public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
-            if (_refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
+            if (Refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
                 return;
 
-            _refined = true;
             if (InternalDeck.Spec.Any())
             {
                 InternalDeck.SetId("deck." + Id);
@@ -191,6 +189,9 @@ namespace Assets.Core.Entities
 
             foreach (var a in Alt)
                 a.RefineWithCompendium(logger, populatedCompendium);
+
+
+            Refined = true;
         }
 
 
