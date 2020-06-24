@@ -36,7 +36,6 @@ public class ContentImporter
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
-    public ICompendium _compendium { get; private set; }
 
 
     public Dictionary<string, IVerb> Verbs;
@@ -699,96 +698,63 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     }
 
 
-    private void LogMissingImages()
+
+
+    public IList<ContentImportMessage> PopulateCompendium(ICompendium compendiumToPopulate)
     {
-        //check for missing images
-        var allElements = _compendium.GetAllElementsAsDictionary();
-        string missingAspectImages = "";
-        int missingAspectImageCount = 0;
-        string missingElementImages = "";
-        int missingElementImageCount = 0;
-        foreach (var k in allElements.Keys)
-        {
-           var thisElement = allElements[k];
-
-            if (thisElement.IsAspect )
-            {
-                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(thisElement.Icon) == null || ResourcesManager.GetSpriteForAspect(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
-                {
-                    missingAspectImages += (" " + k);
-                    missingAspectImageCount++;
-                }
-            }
-            else
-            {
-                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
-                {
-                    missingElementImages += (" " + k);
-                    missingElementImageCount++;
-                }
-            }
-        }
-
-        if (missingAspectImages != "") _logger.LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
-
-        if (missingElementImages != "") _logger.LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
-    }
-
-    public IList<ContentImportMessage> PopulateCompendium(ICompendium compendium)
-    {
-            _compendium = compendium;
 
 
-            if (_logger.GetMessages().Any(m=>m.MessageLevel>1))
-                //at least one file is broken. Bug out and report.
-                return _logger.GetMessages();
 
             var assembly = Assembly.GetExecutingAssembly();
 
          
 
         foreach (Type t in assembly.GetTypes())
-            {
-                FucineImportable importableAttribute = (FucineImportable) t.GetCustomAttribute(typeof(FucineImportable), false);
+        {
+            FucineImportable importableAttribute = (FucineImportable) t.GetCustomAttribute(typeof(FucineImportable), false);
                 
-                if(importableAttribute!=null)
+            if(importableAttribute!=null)
+            {
+                if(!t.IsSubclassOf(typeof(AbstractEntity)))
+                    _logger.LogProblem($"A FucineImportable should inherit from AbstractEntity, but {t.Name} doesn't. This will probably break.");
+                ArrayList al = GetContentItems(importableAttribute.TaggedAs);
+
+                foreach (Hashtable h in al)
                 {
-                    if(!t.IsSubclassOf(typeof(AbstractEntity)))
-                        _logger.LogProblem($"A FucineImportable should inherit from AbstractEntity, but {t.Name} doesn't. This will probably break.");
-                    ArrayList al = GetContentItems(importableAttribute.TaggedAs);
+                    Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
 
-                    foreach (Hashtable h in al)
-                    {
-                        Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
+                    FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
 
-                        FucinePropertyWalker w = new FucinePropertyWalker(_logger, t);
+                    IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
 
-                        IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
+                    compendiumToPopulate.AddEntity(entityUnique.Id,t,entityUnique);
 
-                      compendium.AddEntity(entityUnique.Id,t,entityUnique);
-
-                    }
                 }
             }
 
+            if (_logger.GetMessages().Any(m => m.MessageLevel > 1))
+                //at least one file is broken. Bug out and report.
+                return _logger.GetMessages();
+        }
 
-            compendium.RefineAllEntities(_logger);
+
+        compendiumToPopulate.RefineAllEntities(_logger);
 
 
 
 #if DEBUG
-            CountWords();
-            LogMissingImages();
-            LogFnords();
+        compendiumToPopulate.CountWords(_logger);
+        compendiumToPopulate.LogMissingImages(_logger);
+        compendiumToPopulate.LogFnords(_logger);
 
-            foreach (var kvp in DeckSpecs)
+        foreach (var kvp in DeckSpecs)
+        {
+            foreach (var c in kvp.Value.Spec)
             {
-                foreach (var c in kvp.Value.Spec)
-                {
-                    if (!c.Contains(NoonConstants.DECK_PREFIX))
-                        LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
-                }
+                if (!c.Contains(NoonConstants.DECK_PREFIX))
+                    LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
             }
+        }
 
 #endif
 
@@ -798,85 +764,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     }
 
 
-    private void CountWords()
-    {
-        int words = 0;
-        foreach (var r in Recipes)
-        {
-            words += (r.Label.Count(char.IsWhiteSpace)+1);
-            words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
-            words += (r.Description.Count(char.IsWhiteSpace) + 1);
-        }
 
-
-
-        foreach (var e in Elements.Values)
-        {
-            words += (e.Label.Count(char.IsWhiteSpace) + 1);
-            words += (e.Description.Count(char.IsWhiteSpace) + 1);
-        }
-
-        foreach (var v in Verbs.Values)
-        {
-            words += (v.Label.Count(char.IsWhiteSpace) + 1);
-            words += (v.Description.Count(char.IsWhiteSpace) + 1);
-        }
-
-        foreach (var l in Legacies.Values)
-        {
-            words += (l.Label.Count(char.IsWhiteSpace) + 1);
-            words += (l.StartDescription.Count(char.IsWhiteSpace) + 1);
-            words += (l.Description.Count(char.IsWhiteSpace) + 1);
-        }
-
-        _logger.LogInfo("Words (based on spaces +1 count): " + words);
-
-    }
-
-    private void LogFnords()
-    {
-        const string FNORD = "FNORD";
-
-        var allElements = _compendium.GetAllElementsAsDictionary();
-        string elementFnords = "";
-        int elementFnordCount = 0;
-        foreach (var k in allElements.Keys)
-        {
-            var thisElement = allElements[k];
-
-            if (thisElement.Label.ToUpper().Contains(FNORD)
-            || thisElement.Description.ToUpper().Contains(FNORD)
-            )
-            {
-                    elementFnords += (" " + k);
-                    elementFnordCount++;
-            }
-        }
-
-        var allRecipes = _compendium.GetAllRecipesAsList();
-        string recipeFnords = "";
-        int recipeFnordCount = 0;
-        foreach (var r in allRecipes)
-        {
-
-            if (r.Label.ToUpper().Contains(FNORD)
-                || r.StartDescription.ToUpper().Contains(FNORD)
-                || r.Description.ToUpper().Contains(FNORD)
-
-            )
-            {
-
-                recipeFnords += (" " + r.Id);
-                recipeFnordCount++;
-            }
-        }
-
-
-        if (elementFnords != "") _logger.LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
-
-        if (recipeFnords != "") _logger.LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
-
-
-    }
+   
 
 }

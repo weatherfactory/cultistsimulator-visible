@@ -47,6 +47,9 @@ public interface ICompendium
     void RefineAllEntities(ContentImportLogger logger);
 
 
+    void LogFnords(ContentImportLogger logger);
+    void CountWords(ContentImportLogger logger);
+    void LogMissingImages(ContentImportLogger logger);
 }
 
 public class Compendium : ICompendium
@@ -326,6 +329,123 @@ public class Compendium : ICompendium
         }
 
         return null;
+    }
+
+
+    public void LogFnords(ContentImportLogger logger)
+    {
+        const string FNORD = "FNORD";
+
+        var allElements = GetAllElementsAsDictionary();
+        string elementFnords = "";
+        int elementFnordCount = 0;
+        foreach (var k in allElements.Keys)
+        {
+            var thisElement = allElements[k];
+
+            if (thisElement.Label.ToUpper().Contains(FNORD)
+                || thisElement.Description.ToUpper().Contains(FNORD)
+            )
+            {
+                elementFnords += (" " + k);
+                elementFnordCount++;
+            }
+        }
+
+        var allRecipes = GetAllRecipesAsList();
+        string recipeFnords = "";
+        int recipeFnordCount = 0;
+        foreach (var r in allRecipes)
+        {
+
+            if (r.Label.ToUpper().Contains(FNORD)
+                || r.StartDescription.ToUpper().Contains(FNORD)
+                || r.Description.ToUpper().Contains(FNORD)
+
+            )
+            {
+
+                recipeFnords += (" " + r.Id);
+                recipeFnordCount++;
+            }
+        }
+
+
+        if (elementFnords != "") logger.LogInfo(elementFnordCount + "  fnords for elements:" + elementFnords);
+
+        if (recipeFnords != "") logger.LogInfo(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
+
+
+    }
+
+    public void CountWords(ContentImportLogger logger)
+    {
+        int words = 0;
+        foreach (var r in _recipes)
+        {
+            words += (r.Label.Count(char.IsWhiteSpace) + 1);
+            words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
+            words += (r.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+
+
+        foreach (var e in _elements.Values)
+        {
+            words += (e.Label.Count(char.IsWhiteSpace) + 1);
+            words += (e.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        foreach (var v in _verbs.Values)
+        {
+            words += (v.Label.Count(char.IsWhiteSpace) + 1);
+            words += (v.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        foreach (var l in _legacies.Values)
+        {
+            words += (l.Label.Count(char.IsWhiteSpace) + 1);
+            words += (l.StartDescription.Count(char.IsWhiteSpace) + 1);
+            words += (l.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        logger.LogInfo("Words (based on spaces +1 count): " + words);
+
+    }
+
+    public void LogMissingImages(ContentImportLogger logger)
+    {
+        //check for missing images
+        var allElements = GetAllElementsAsDictionary();
+        string missingAspectImages = "";
+        int missingAspectImageCount = 0;
+        string missingElementImages = "";
+        int missingElementImageCount = 0;
+        foreach (var k in allElements.Keys)
+        {
+            var thisElement = allElements[k];
+
+            if (thisElement.IsAspect)
+            {
+                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(thisElement.Icon) == null || ResourcesManager.GetSpriteForAspect(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                {
+                    missingAspectImages += (" " + k);
+                    missingAspectImageCount++;
+                }
+            }
+            else
+            {
+                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME)
+                {
+                    missingElementImages += (" " + k);
+                    missingElementImageCount++;
+                }
+            }
+        }
+
+        if (missingAspectImages != "") logger.LogInfo("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+
+        if (missingElementImages != "") logger.LogInfo("Missing " + missingElementImageCount + " images for elephants:" + missingElementImages);
     }
 
 

@@ -379,15 +379,15 @@ public class DebugTools : MonoBehaviour,IRollOverride
            foreach (var p in problems)
                NoonUtility.Log(p.Description, p.MessageLevel);
 
-            //Registry.Replace<ICompendium>(newCompendium);
-            var existingCompendium = Registry.Retrieve<ICompendium>();
+            
+           var existingCompendium = Registry.Retrieve<ICompendium>();
            var contentImporter = new ContentImporter();
 
            var t = DateTime.Now;
-        contentImporter.PopulateCompendium(existingCompendium);
-            NoonUtility.Log("Import time: " + (DateTime.Now-t));
+           contentImporter.PopulateCompendium(existingCompendium);
+           NoonUtility.Log("Total time to import: " + (DateTime.Now-t));
 
-           // Populate the new decks
+           // Populate current decks with new cards (this will shuffle the deck)
            IGameEntityStorage storage = Registry.Retrieve<Character>();
            foreach (var ds in existingCompendium.GetAllDeckSpecs())
            {
