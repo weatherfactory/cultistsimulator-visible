@@ -16,9 +16,8 @@ namespace Assets.Core.Entities
     /// A specification for an effect available to the player after a game completes, which determines the starting situation of the next character.
     /// </summary>
     [FucineImportable("legacies")]
-    public class Legacy:IEntityWithId
+    public class Legacy: Entity, IEntityWithId
     {
-        private Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
         private string _id;
 
         [FucineId]
@@ -32,28 +31,6 @@ namespace Assets.Core.Entities
             _id = id;
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-            Hashtable unknownProperties = PopAllUnknownProperties();
-            if (unknownProperties.Keys.Count > 0)
-            {
-                foreach (var k in unknownProperties.Keys)
-                    logger.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
-            }
-
-        }
-
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
-        }
 
         /// <summary>
         /// Title that displays at game end

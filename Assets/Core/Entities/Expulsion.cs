@@ -5,9 +5,8 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class Expulsion: IEntity
+    public class Expulsion: Entity
     {
-        private Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
 
         [FucineAspects]
         public AspectsDictionary Filter { get; set; }
@@ -20,21 +19,5 @@ namespace Assets.Core.Entities
             Filter = new AspectsDictionary();
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
-        {
-            
-        }
-
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
-        }
     }
 }

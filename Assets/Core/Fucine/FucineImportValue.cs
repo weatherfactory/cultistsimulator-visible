@@ -12,7 +12,7 @@ namespace Assets.Core.Fucine
         {
         }
 
-        public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
+        public override void Populate(Entity entity, Hashtable entityData, Type entityType)
         {
             TypeConverter typeConverter = TypeDescriptor.GetConverter(_property.PropertyType);
 

@@ -27,10 +27,10 @@ namespace Assets.Core.Fucine
         }
 
 
-        public IEntity PopulateEntityWith(Hashtable importDataForEntity)
+        public Entity PopulateEntityWith(Hashtable importDataForEntity)
         {
            FucineEntityFactory factory=new FucineEntityFactory();
-           IEntity newEntity = factory.CreateEntity(_entityType);
+           Entity newEntity = factory.CreateEntity(_entityType);
             
            var entityProperties = _entityType.GetProperties();
 

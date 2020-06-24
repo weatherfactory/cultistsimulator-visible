@@ -9,10 +9,8 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class MutationEffect: IEntity
+    public class MutationEffect: Entity
     {
-        private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
-
         [FucineValue("")]
         public string Filter { get; set; }
 
@@ -29,7 +27,7 @@ namespace Assets.Core.Entities
         {
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
@@ -37,18 +35,6 @@ namespace Assets.Core.Entities
                 foreach (var k in unknownProperties.Keys)
                     logger.LogInfo($"Unknown property in import: {k} for MutationEffect (filter:{Filter}, mutate:{Mutate}, additive:{Additive})");
             }
-        }
-
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
         }
     }
 }

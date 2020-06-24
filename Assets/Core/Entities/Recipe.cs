@@ -11,9 +11,8 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : IEntityWithId
+    public class Recipe : Entity, IEntityWithId
     {
-        private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
         private string _id;
         private bool _refined=false;
 
@@ -164,7 +163,7 @@ namespace Assets.Core.Entities
             PortalEffect = PortalEffect.None;
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
             if (_refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
                 return;
@@ -194,17 +193,6 @@ namespace Assets.Core.Entities
                 a.RefineWithCompendium(logger, populatedCompendium);
         }
 
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
-        }
 
         public bool UnlimitedExecutionsPermitted()
         {

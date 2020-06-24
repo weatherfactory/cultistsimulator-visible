@@ -13,10 +13,10 @@ namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element:IEntityWithId
+    public class Element: Entity, IEntityWithId
     {
         private string _id;
-        private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
+
 
         [FucineId]
         public string Id
@@ -197,7 +197,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
 
             if (!string.IsNullOrEmpty(Inherits))
@@ -222,18 +222,6 @@ namespace Assets.Core.Entities
             }
 
 
-        }
-
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
         }
     }
 

@@ -13,9 +13,8 @@ using JetBrains.Annotations;
 namespace Assets.Core.Entities
 {
 
-    public class MorphDetails : IEntityWithId,IQuickSpecEntity
+    public class MorphDetails : Entity, IEntityWithId,IQuickSpecEntity
     {
-        private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
 
         private string _id;
 
@@ -70,7 +69,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if(unknownProperties.Keys.Count>0)
@@ -82,17 +81,6 @@ namespace Assets.Core.Entities
             }
         }
 
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
-        }
     }
 
 

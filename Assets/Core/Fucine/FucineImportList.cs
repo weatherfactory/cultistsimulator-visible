@@ -14,7 +14,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
+        public override void Populate(Entity entity, Hashtable entityData, Type entityType)
         {
             ArrayList al = entityData.GetArrayList(_property.Name);
             Type propertyListType = _property.PropertyType;

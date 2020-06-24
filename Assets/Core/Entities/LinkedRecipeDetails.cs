@@ -6,9 +6,8 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : IEntityWithId
+    public class LinkedRecipeDetails : Entity, IEntityWithId
     {
-        private readonly Hashtable _unknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
         private string _id;
 
         [FucineId]
@@ -51,7 +50,7 @@ namespace Assets.Core.Entities
             this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
-        public void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
+        public override void RefineWithCompendium(ContentImportLogger logger, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
@@ -66,18 +65,6 @@ namespace Assets.Core.Entities
 
                  internalRecipe.RefineWithCompendium(logger,populatedCompendium); //this will log any issues with the import
             }
-        }
-
-        public void PushUnknownProperty(object key, object value)
-        {
-            _unknownProperties.Add(key, value);
-        }
-
-        public Hashtable PopAllUnknownProperties()
-        {
-            Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(_unknownProperties);
-            _unknownProperties.Clear();
-            return propertiesPopped;
         }
     }
 }

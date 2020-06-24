@@ -11,7 +11,7 @@ namespace Assets.Core.Fucine
         {
         }
 
-        public override void Populate(IEntity entity, Hashtable entityData, Type entityType)
+        public override void Populate(Entity entity, Hashtable entityData, Type entityType)
         {
             if (Attribute.GetCustomAttribute(_property, typeof(FucineValue)) is FucineValue fucineValueAttr)
             {
