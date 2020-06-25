@@ -20,7 +20,7 @@ namespace Assets.Core.Fucine
             Log = log;
         }
 
-        public abstract void Populate(AbstractEntity entity, Hashtable entityData,
+        public abstract bool TryImport(AbstractEntity entity, Hashtable entityData,
             Type entityType);
 
     }

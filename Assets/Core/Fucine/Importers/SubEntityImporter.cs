@@ -12,25 +12,28 @@ namespace Assets.Core.Fucine
         {
         }
 
-        public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
+            string entityPropertyName = _cachedFucinePropertyToPopulate.Name;
+            var hsubEntityHashtable = entityData.GetHashtable(entityPropertyName);
+
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            if (!entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
+            if (hsubEntityHashtable==null)
             {
                 Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
                 _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
-                return;
+                return false;
             }
 
             var subEntityAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineSubEntity;
 
-
-            string entityPropertyName = _cachedFucinePropertyToPopulate.Name;
             FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, subEntityAttribute.ObjectType);
 
-            var subEntity = emanationWalker.PopulateEntityWith(entityData.GetHashtable(entityPropertyName));
+            var subEntity = emanationWalker.PopulateEntityWith(hsubEntityHashtable);
 
             _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, subEntity);
+
+            return true;
         }
     }
 }

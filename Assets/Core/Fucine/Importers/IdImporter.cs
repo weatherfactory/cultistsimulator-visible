@@ -13,16 +13,23 @@ namespace Assets.Core.Fucine
 
         }
 
-        public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             if (entity is IEntityWithId entityWithId)
-                if(entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
-                    entityWithId.SetId(entityData.GetValue(_cachedFucinePropertyToPopulate.Name) as string);
+            {
+                var idFromData = entityData.GetValue(_cachedFucinePropertyToPopulate.Name);
+
+                if (idFromData!=null)
+                    entityWithId.SetId(idFromData as string);
                 else 
-                    entityWithId.SetId(_cachedFucinePropertyToPopulate.Name);
+                    entityWithId.SetId(_cachedFucinePropertyToPopulate.Name); //do I want to make this assumption, if it's a missing id? It's usually right, because we're just using the identifier next level up, but...
+                return true;
+            }
 
             else
                 Log.LogProblem("ID not specified for a " + entityType.Name);
+
+            return false;
         }
         }
     }

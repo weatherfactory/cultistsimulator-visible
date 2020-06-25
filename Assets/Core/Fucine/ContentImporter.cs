@@ -702,9 +702,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         compendiumToPopulate.Reset();
 
        var assembly = Assembly.GetExecutingAssembly();
-
-         
-
+        
         foreach (Type t in assembly.GetTypes())
         {
             FucineImportable importableAttribute = (FucineImportable) t.GetCustomAttribute(typeof(FucineImportable), false);

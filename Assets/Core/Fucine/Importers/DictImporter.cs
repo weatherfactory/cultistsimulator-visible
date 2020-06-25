@@ -40,14 +40,17 @@ namespace Assets.Core.Fucine
             _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,dictionary);
         }
 
-        public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            if (!entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
+            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
+
+
+            if (hSubEntity==null)
             {
                 Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
                 _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
-                return;
+                return false;
             }
 
 
@@ -64,7 +67,7 @@ namespace Assets.Core.Fucine
             var dictAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineDict;
             var entityProperties = entityType.GetProperties();
 
-            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
+
 
             Hashtable cihSubEntity = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(hSubEntity);  //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
@@ -124,6 +127,8 @@ namespace Assets.Core.Fucine
                         $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
+
+            return true;
         }
 
         private void PopulateAsDictionaryOfLists(AbstractEntity entity, Type wrapperListType, Hashtable subHashtable, IDictionary dict)
