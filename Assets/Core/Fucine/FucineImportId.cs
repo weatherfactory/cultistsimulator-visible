@@ -8,7 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportId : FucineImport
     {
-        public FucineImportId(PropertyInfo property, ContentImportLog log) : base(property, log)
+        public FucineImportId(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
 
         }
@@ -16,10 +16,10 @@ namespace Assets.Core.Fucine
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             if (entity is IEntityWithId entityWithId)
-                if(entityData.ContainsKey(_property.Name))
-                    entityWithId.SetId(entityData.GetValue(_property.Name) as string);
+                if(entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
+                    entityWithId.SetId(entityData.GetValue(_cachedFucinePropertyToPopulate.Name) as string);
                 else 
-                    entityWithId.SetId(_property.Name);
+                    entityWithId.SetId(_cachedFucinePropertyToPopulate.Name);
 
             else
                 Log.LogProblem("ID not specified for a " + entityType.Name);

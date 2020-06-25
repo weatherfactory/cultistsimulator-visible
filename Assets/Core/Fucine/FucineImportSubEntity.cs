@@ -8,21 +8,21 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportSubEntity : FucineImport
     {
-        public FucineImportSubEntity(PropertyInfo property, ContentImportLog log) : base(property, log)
+        public FucineImportSubEntity(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
         }
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            var subEntityAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineSubEntity)) as FucineSubEntity;
+            var subEntityAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineSubEntity;
 
 
-            string entityPropertyName = _property.Name;
+            string entityPropertyName = _cachedFucinePropertyToPopulate.Name;
             FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, subEntityAttribute.ObjectType);
 
             var subEntity = emanationWalker.PopulateEntityWith(entityData.GetHashtable(entityPropertyName));
 
-            _property.SetValue(entity, subEntity);
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, subEntity);
         }
     }
 }

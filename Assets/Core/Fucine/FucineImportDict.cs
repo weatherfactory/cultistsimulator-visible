@@ -13,7 +13,7 @@ namespace Assets.Core.Fucine
     public class FucineImportDict : FucineImport
     {
 
-        public FucineImportDict(PropertyInfo property, ContentImportLog log) : base(property, log)
+        public FucineImportDict(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
         }
 
@@ -25,7 +25,7 @@ namespace Assets.Core.Fucine
                     dictionary.Add(de.Key, de.Value);
                 }
 
-                _property.SetValue(entity, dictionary);
+                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dictionary);
         }
 
         public void PopulateAsDictionaryOfInts(AbstractEntity entity, Hashtable subHashtable, IDictionary dictionary)
@@ -37,7 +37,7 @@ namespace Assets.Core.Fucine
                 dictionary.Add(de.Key, value);
             }
 
-            _property.SetValue(entity,dictionary);
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,dictionary);
         }
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
@@ -51,14 +51,14 @@ namespace Assets.Core.Fucine
             //Check for / warn against any dictionaries without string as a key.
 
 
-            var dictAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineDict)) as FucineDict;
+            var dictAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineDict;
             var entityProperties = entityType.GetProperties();
 
-            Hashtable hSubEntity = entityData.GetHashtable(_property.Name);
+            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
 
             Hashtable cihSubEntity = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(hSubEntity);  //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
-            Type dictType = _property.PropertyType; 
+            Type dictType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType; 
             Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
@@ -101,17 +101,17 @@ namespace Assets.Core.Fucine
 
                         if (acceptableKeys == null)
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     Log.LogProblem(
-                        $"{entity.GetType().Name} insists that {_property.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
         }
@@ -143,13 +143,13 @@ namespace Assets.Core.Fucine
                 else
                 {
                     throw new ApplicationException(
-                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[dictKeyForList].GetType().Name}");
+                        $"FucineDictionary {_cachedFucinePropertyToPopulate.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[dictKeyForList].GetType().Name}");
                 }
 
                 dict.Add(dictKeyForList, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
             }
 
-            _property.SetValue(entity, dict);
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
         }
 
         private static void AddQuickSpecEntityToWrapperList(Type listMemberType, string quickSpecEntityValue,
@@ -200,13 +200,13 @@ namespace Assets.Core.Fucine
                             new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
                     IEntityWithId sub = emanationWalker.PopulateEntityWith(cih) as IEntityWithId;
                     dict.Add(sub.Id, sub);
-                    _property.SetValue(entity, dict);
+                    _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
                 }
                 else
                 {
                     //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
                     throw new ApplicationException(
-                        $"FucineDictionary {_property.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
+                        $"FucineDictionary {_cachedFucinePropertyToPopulate.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                 }
             }
         }

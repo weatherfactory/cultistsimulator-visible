@@ -10,17 +10,17 @@ namespace Assets.Core.Fucine
 {
     public class FucineImportAspects : FucineImport
     {
-        public FucineImportAspects(PropertyInfo property, ContentImportLog log) : base(property, log)
+        public FucineImportAspects(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
         }
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            var htEntries = entityData.GetHashtable(_property.Name);
+            var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
 
             IAspectsDictionary aspects = new AspectsDictionary();
 
-            var aspectsAttribute = Attribute.GetCustomAttribute(_property, typeof(FucineAspects)) as FucineAspects;
+            var aspectsAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineAspects;
             var entityProperties = entityType.GetProperties();
 
             foreach (string k in htEntries.Keys)
@@ -28,7 +28,7 @@ namespace Assets.Core.Fucine
                 aspects.Add(k, Convert.ToInt32(htEntries[k]));
             }
 
-            _property.SetValue(entity, aspects);
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, aspects);
 
 
             if (aspectsAttribute.KeyMustExistIn != null)
@@ -44,17 +44,17 @@ namespace Assets.Core.Fucine
 
                         if (acceptableKeys == null)
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_property.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     Log.LogProblem(
-                        $"{entity.GetType().Name} insists that {_property.Name} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
         }

@@ -31,23 +31,22 @@ namespace Assets.Core.Fucine
         {
            FucineEntityFactory factory=new FucineEntityFactory();
            AbstractEntity newEntity = factory.CreateEntity(_entityType);
+
             
-           var entityProperties = _entityType.GetProperties();
+               var fucineProperties = newEntity.GetFucinePropertiesCached();
 
-            foreach (var thisProperty in entityProperties)
+
+            foreach (var fucineProperty in fucineProperties)
             {
-                if(Attribute.GetCustomAttributes(thisProperty,typeof(Fucine)).Any())
-                {
 
-                   FucineImport import = FucineImport.CreateInstance(thisProperty, _log, importDataForEntity);
+                   FucineImport import = FucineImport.CreateInstance(fucineProperty, _log, importDataForEntity);
                    import.Populate(newEntity,importDataForEntity,_entityType);
-                }
             }
 
             foreach (var k in importDataForEntity.Keys)
             {
              
-                if(entityProperties.All(e => !string.Equals(e.Name, k.ToString(), StringComparison.InvariantCultureIgnoreCase)))
+                if(fucineProperties.All(e => !string.Equals(e.PropertyInfo.Name, k.ToString(), StringComparison.InvariantCultureIgnoreCase)))
                 {
                     newEntity.PushUnknownProperty(k,importDataForEntity[k]);
 

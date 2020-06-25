@@ -24,6 +24,8 @@ using Newtonsoft.Json;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
 using OrbCreationExtensions;
+using Unity.Profiling;
+using UnityEngine.Profiling;
 using UnityEngine.UIElements;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -31,7 +33,7 @@ using UnityEditor;
 
 public class ContentImporter
 {
-
+    
     //private const string CONST_CONTENTDIR = "content/";
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
@@ -681,10 +683,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 	}
 
 
-
-
-
-
   
     private bool LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
@@ -698,11 +696,9 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     }
 
 
-
-
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
-
+        
         compendiumToPopulate.Reset();
 
        var assembly = Assembly.GetExecutingAssembly();

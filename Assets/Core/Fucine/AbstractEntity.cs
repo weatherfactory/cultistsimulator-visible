@@ -1,5 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
+using System.Reflection;
+using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
@@ -32,17 +37,46 @@ namespace Assets.Core.Fucine
         }
 
     public virtual void PushUnknownProperty(object key, object value)
-        {
+     {
             UnknownProperties.Add(key, value);
-        }
+     }
 
     public virtual Hashtable PopAllUnknownProperties()
      {
         Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(UnknownProperties);
         UnknownProperties.Clear();
         return propertiesPopped;
+     }
+
+
+
+    public HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+    {
+        var entityTypeProperties = GetType().GetProperties();
+        var entityTypeFucineProperties = new HashSet<CachedFucineProperty>();
+
+        foreach (var thisProperty in entityTypeProperties)
+        {
+            if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
+            {
+                CachedFucineProperty cachedProperty= new CachedFucineProperty {PropertyInfo = thisProperty,FucineAttribute = fucineAttribute};
+                entityTypeFucineProperties.Add(cachedProperty);
+            }
         }
+
+        return entityTypeFucineProperties;
+
+    }
 
 
     }
+
+    public class CachedFucineProperty
+    {
+
+        public PropertyInfo PropertyInfo { get; set; }
+        public Fucine FucineAttribute { get; set; }
+        public string Name => PropertyInfo.Name;
+    }
+
 }
