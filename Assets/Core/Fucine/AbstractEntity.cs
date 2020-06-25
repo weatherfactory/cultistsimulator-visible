@@ -9,7 +9,7 @@ namespace Assets.Core.Fucine
     public abstract class AbstractEntity
     {
         protected bool Refined = false;
-        protected readonly Hashtable UnknownProperties = CollectionsUtil.CreateCaseInsensitiveHashtable();
+        protected readonly Hashtable UnknownProperties = new Hashtable();
 
         /// <summary>
         /// This is run for every top-level entity when the compendium has been completely (re)populated. Use for entities that
@@ -41,7 +41,7 @@ namespace Assets.Core.Fucine
 
     public virtual Hashtable PopAllUnknownProperties()
      {
-        Hashtable propertiesPopped = CollectionsUtil.CreateCaseInsensitiveHashtable(UnknownProperties);
+        Hashtable propertiesPopped = new Hashtable(UnknownProperties);
         UnknownProperties.Clear();
         return propertiesPopped;
      }

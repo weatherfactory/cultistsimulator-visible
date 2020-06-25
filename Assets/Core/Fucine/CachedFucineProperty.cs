@@ -7,6 +7,6 @@ namespace Assets.Core.Fucine
 
         public PropertyInfo PropertyInfo { get; set; }
         public Fucine FucineAttribute { get; set; }
-        public string Name => PropertyInfo.Name;
+        public string Name => PropertyInfo.Name.ToLowerInvariant();
     }
 }

@@ -29,7 +29,7 @@ namespace OrbCreationExtensions
         public static Hashtable GetHashtable(this Hashtable hash, object key) {
             if(hash.ContainsKey(key) && hash[key].GetType() == typeof(Hashtable)) 
                 
-                return System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable((Hashtable)hash[key]);
+              return (Hashtable)hash[key];
             return null;
         }
         public static ArrayList GetArrayList(this Hashtable hash, object key) {
@@ -448,7 +448,7 @@ namespace OrbCreationExtensions
                 if(node!=null) {
                     Hashtable result = null;
                     // since ArrayLists do not have keys, we can only pass the search on to the elements
-                    if(node.GetType() == typeof(Hashtable)) result = GetNodeWithProperty(System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable((Hashtable)node), aKey, aValue);
+                    if(node.GetType() == typeof(Hashtable)) result = GetNodeWithProperty((Hashtable)node, aKey, aValue);
                     else if(node.GetType() == typeof(ArrayList)) result = GetNodeWithProperty((ArrayList)node, aKey, aValue);
                     if(result!=null) return result;
                 }
@@ -483,7 +483,7 @@ namespace OrbCreationExtensions
 
         
         public static Hashtable GetHashtable(this ArrayList arr, int index) {
-            if(arr.Count>index && index>=0 && arr[index].GetType() == typeof(Hashtable)) return System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable((Hashtable)arr[index]);
+            if(arr.Count>index && index>=0 && arr[index].GetType() == typeof(Hashtable)) return (Hashtable)arr[index];
             return null;
         }
 
@@ -494,7 +494,7 @@ namespace OrbCreationExtensions
           foreach (object o in arr)
           {
               if(o is Hashtable h)
-                 hashtables.Add(System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h));
+                 hashtables.Add(h);
           }
           return hashtables;
         }

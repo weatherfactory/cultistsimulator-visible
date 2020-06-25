@@ -101,7 +101,7 @@ public class ContentImporter
             try
             {
               //  originalArrayList = JsonConvert.DeserializeObject<ArrayList>(json);
-              originalArrayList = SimpleJsonImporter.Import(json).GetArrayList(contentOfType);
+              originalArrayList = SimpleJsonImporter.Import(json,true).GetArrayList(contentOfType);
             }
             catch (Exception e)
             {
@@ -715,11 +715,10 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
                 foreach (Hashtable h in al)
                 {
-                    Hashtable caseInsensitiveH = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(h);
 
                     FucinePropertyWalker w = new FucinePropertyWalker(_log, t);
 
-                    IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(caseInsensitiveH);
+                    IEntityWithId entityUnique = (IEntityWithId)w.PopulateEntityWith(h);
 
                     compendiumToPopulate.AddEntity(entityUnique.Id,t,entityUnique);
 

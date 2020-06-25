@@ -69,7 +69,7 @@ namespace Assets.Core.Fucine
 
 
 
-            Hashtable cihSubEntity = System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(hSubEntity);  //a hashtable of <id: listofmorphdetails>
+    //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
             Type dictType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType; 
             Type dictMemberType = dictType.GetGenericArguments()[1];
@@ -79,23 +79,23 @@ namespace Assets.Core.Fucine
 
             if (dictMemberType == typeof(string))
             {
-                PopulateAsDictionaryOfStrings(entity, cihSubEntity, dict);
+                PopulateAsDictionaryOfStrings(entity, hSubEntity, dict);
             }
             else if (dictMemberType == typeof(int))
             {
-                PopulateAsDictionaryOfInts(entity,cihSubEntity,dict);
+                PopulateAsDictionaryOfInts(entity, hSubEntity, dict);
             }
 
          
             else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) 
             {
-                PopulateAsDictionaryOfLists(entity, dictMemberType, cihSubEntity, dict);
+                PopulateAsDictionaryOfLists(entity, dictMemberType, hSubEntity, dict);
             }
 
 
             else //it's an entity, not a string or a list
             {
-                PopulateAsDictionaryOfEntities(entity, cihSubEntity, dictMemberType, dict);
+                PopulateAsDictionaryOfEntities(entity, hSubEntity, dictMemberType, dict);
             }
 
           
@@ -182,16 +182,13 @@ namespace Assets.Core.Fucine
         {
             foreach (Hashtable entityHash in list)
             {
-                Hashtable ciEntityHash =
-                    System.Collections.Specialized.CollectionsUtil.CreateCaseInsensitiveHashtable(
-                        entityHash);
 
                 FucinePropertyWalker
                     emanationWalker =
                         new FucinePropertyWalker(Log, listMemberType); //passing in <string,MorphDetailsList>
                 IEntityWithId
                     sub = emanationWalker
-                        .PopulateEntityWith(ciEntityHash) as IEntityWithId; //{id:husk,morpheffect:spawn}
+                        .PopulateEntityWith(entityHash) as IEntityWithId; //{id:husk,morpheffect:spawn}
                 wrapperList.Add(sub);
             }
 
@@ -206,14 +203,11 @@ namespace Assets.Core.Fucine
             {
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    Hashtable cih =
-                        System.Collections.Specialized.CollectionsUtil
-                            .CreateCaseInsensitiveHashtable(
-                                h); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
+  //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                     FucinePropertyWalker
                         emanationWalker =
                             new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
-                    IEntityWithId sub = emanationWalker.PopulateEntityWith(cih) as IEntityWithId;
+                    IEntityWithId sub = emanationWalker.PopulateEntityWith(h) as IEntityWithId;
                     dict.Add(sub.Id, sub);
                     _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
                 }
