@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
@@ -19,5 +20,9 @@ namespace Assets.Core.Entities
             Filter = new AspectsDictionary();
         }
 
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<Expulsion>.GetCachedFucinePropertiesForType();
+        }
     }
 }

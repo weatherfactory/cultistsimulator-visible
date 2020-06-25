@@ -194,6 +194,11 @@ namespace Assets.Core.Entities
             Refined = true;
         }
 
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<Recipe>.GetCachedFucinePropertiesForType();
+        }
+
 
         public bool UnlimitedExecutionsPermitted()
         {

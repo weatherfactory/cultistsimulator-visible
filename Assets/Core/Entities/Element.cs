@@ -233,6 +233,11 @@ namespace Assets.Core.Entities
           
 
         }
+
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<Element>.GetCachedFucinePropertiesForType();
+        }
     }
 
 

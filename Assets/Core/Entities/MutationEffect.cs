@@ -36,5 +36,10 @@ namespace Assets.Core.Entities
                     log.LogInfo($"Unknown property in import: {k} for MutationEffect (filter:{Filter}, mutate:{Mutate}, additive:{Additive})");
             }
         }
+
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<MutationEffect>.GetCachedFucinePropertiesForType();
+        }
     }
 }

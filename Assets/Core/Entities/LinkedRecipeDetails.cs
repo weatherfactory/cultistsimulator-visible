@@ -75,5 +75,10 @@ namespace Assets.Core.Entities
                  internalRecipe.RefineWithCompendium(log,populatedCompendium); //this will log any issues with the import
             }
         }
+
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<LinkedRecipeDetails>.GetCachedFucinePropertiesForType();
+        }
     }
 }

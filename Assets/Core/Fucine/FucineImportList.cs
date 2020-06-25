@@ -9,21 +9,21 @@ namespace Assets.Core.Fucine
     public class FucineImportList : FucineImport
     {
 
-        public FucineImportList(PropertyInfo property, ContentImportLog log) : base(property, log)
+        public FucineImportList(CachedFucineProperty property, ContentImportLog log) : base(property, log)
         {
         }
 
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            ArrayList al = entityData.GetArrayList(_property.Name);
-            Type propertyListType = _property.PropertyType;
+            ArrayList al = entityData.GetArrayList(_cachedFucinePropertyToPopulate.Name);
+            Type propertyListType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
             Type listMemberType = propertyListType.GetGenericArguments()[0];
 
 
             IList list = Activator.CreateInstance(propertyListType) as IList;
 
-            _property.SetValue(entity, list);
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, list);
 
             foreach (var o in al)
             {

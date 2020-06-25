@@ -739,9 +739,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
 
 #if DEBUG
-        compendiumToPopulate.CountWords(_log);
-        compendiumToPopulate.LogMissingImages(_log);
-        compendiumToPopulate.LogFnords(_log);
 
         foreach (var kvp in DeckSpecs)
         {

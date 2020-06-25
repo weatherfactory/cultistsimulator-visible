@@ -123,6 +123,11 @@ private const string PRIMARY_SLOT="primary";
 
 
     }
+
+    public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+    {
+        return TypeInfoCache<SlotSpecification>.GetCachedFucinePropertiesForType();
+    }
 }
 
 

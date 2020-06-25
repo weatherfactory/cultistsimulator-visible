@@ -97,5 +97,9 @@ namespace Assets.Core.Entities
         //            startingVerbId;
 
         //}
+        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<Legacy>.GetCachedFucinePropertiesForType();
+        }
     }
 }
