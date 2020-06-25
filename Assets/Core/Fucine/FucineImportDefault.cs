@@ -5,7 +5,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
-    public class FucineImportDefault : FucineImport
+    public class FucineImportDefault : AbstractFucineImporter
     {
         public FucineImportDefault(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {

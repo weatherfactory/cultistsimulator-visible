@@ -6,9 +6,9 @@ using OrbCreationExtensions;
 
 namespace Assets.Core.Fucine
 {
-    public class FucineImportId : FucineImport
+    public class IdImporter : AbstractFucineImporter
     {
-        public FucineImportId(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
+        public IdImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
 
         }

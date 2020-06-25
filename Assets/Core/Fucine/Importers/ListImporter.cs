@@ -6,10 +6,10 @@ using OrbCreationExtensions;
 
 namespace Assets.Core.Fucine
 {
-    public class FucineImportList : FucineImport
+    public class ListImporter : AbstractFucineImporter
     {
 
-        public FucineImportList(CachedFucineProperty property, ContentImportLog log) : base(property, log)
+        public ListImporter(CachedFucineProperty property, ContentImportLog log) : base(property, log)
         {
         }
 

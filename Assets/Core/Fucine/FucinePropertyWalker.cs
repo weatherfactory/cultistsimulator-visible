@@ -33,16 +33,29 @@ namespace Assets.Core.Fucine
            AbstractEntity newEntity = factory.CreateEntity(_entityType);
 
             
-               var fucineProperties = newEntity.GetFucinePropertiesCached();
-
+          var fucineProperties = newEntity.GetFucinePropertiesCached();
 
             foreach (var fucineProperty in fucineProperties)
             {
+                AbstractFucineImporter importer;
 
-                   FucineImport import = FucineImport.CreateInstance(fucineProperty, _log, importDataForEntity);
-                   import.Populate(newEntity,importDataForEntity,_entityType);
+                if (fucineProperty.FucineAttribute is FucineId)
+                    importer= new IdImporter(fucineProperty, _log);
+                //Try whether the key exists or not: we might be using an arbitrary internal key
+
+                else if (importDataForEntity.ContainsKey(fucineProperty.Name))
+                {
+                    importer=fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
+                }
+                else
+                {
+                    importer =new FucineImportDefault(fucineProperty, _log);
+                }
+
+                importer.Populate(newEntity,importDataForEntity,_entityType);
             }
 
+            
             foreach (var k in importDataForEntity.Keys)
             {
              

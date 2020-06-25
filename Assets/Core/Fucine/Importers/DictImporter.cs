@@ -10,10 +10,10 @@ namespace Assets.Core.Fucine
 {
 
     
-    public class FucineImportDict : FucineImport
+    public class DictImporter : AbstractFucineImporter
     {
 
-        public FucineImportDict(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
+        public DictImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
         }
 

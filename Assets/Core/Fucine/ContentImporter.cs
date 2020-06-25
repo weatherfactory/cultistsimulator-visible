@@ -736,21 +736,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
         compendiumToPopulate.RefineAllEntities(_log);
 
-
-
-#if DEBUG
-
-        foreach (var kvp in DeckSpecs)
-        {
-            foreach (var c in kvp.Value.Spec)
-            {
-                if (!c.Contains(NoonConstants.DECK_PREFIX))
-                    LogIfNonexistentElementId(c,kvp.Key, "(deckSpec spec items)");
-            }
-        }
-
-#endif
-
         return _log;
 
 

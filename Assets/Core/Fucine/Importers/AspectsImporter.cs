@@ -5,12 +5,11 @@ using System.Linq;
 using System.Reflection;
 using Assets.Core.Interfaces;
 using OrbCreationExtensions;
-
 namespace Assets.Core.Fucine
 {
-    public class FucineImportAspects : FucineImport
+    public class AspectsImporter : AbstractFucineImporter
     {
-        public FucineImportAspects(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
+        public AspectsImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
         }
 
