@@ -7,7 +7,7 @@ using Assets.Core.Interfaces;
 using OrbCreationExtensions;
 namespace Assets.Core.Fucine
 {
-    public class AspectsImporter : AbstractFucineImporter
+    public class AspectsImporter : AbstractImporter
     {
         public AspectsImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
@@ -15,6 +15,15 @@ namespace Assets.Core.Fucine
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
+            //If no value can be found, initialise the property with a default instance of the correct type, then return
+            if (!entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
+            {
+                Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
+                return;
+            }
+
+
             var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
 
             IAspectsDictionary aspects = new AspectsDictionary();

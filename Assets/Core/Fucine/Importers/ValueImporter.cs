@@ -6,7 +6,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
-    public class ValueImporter : AbstractFucineImporter
+    public class ValueImporter : AbstractImporter
     {
         public ValueImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
         {
@@ -14,9 +14,14 @@ namespace Assets.Core.Fucine
 
         public override void Populate(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            TypeConverter typeConverter = TypeDescriptor.GetConverter(_cachedFucinePropertyToPopulate.PropertyInfo.PropertyType);
+            if (!entityData.ContainsKey(_cachedFucinePropertyToPopulate.Name))
+                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, _cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, typeConverter.ConvertFromString(entityData[_cachedFucinePropertyToPopulate.Name].ToString()));
+            else
+            {
+                TypeConverter typeConverter = TypeDescriptor.GetConverter(_cachedFucinePropertyToPopulate.PropertyInfo.PropertyType);
+                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, typeConverter.ConvertFromString(entityData[_cachedFucinePropertyToPopulate.Name].ToString()));
+            }
         }
     }
 }

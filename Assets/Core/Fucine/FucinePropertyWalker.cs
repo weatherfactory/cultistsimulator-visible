@@ -37,21 +37,9 @@ namespace Assets.Core.Fucine
 
             foreach (var fucineProperty in fucineProperties)
             {
-                AbstractFucineImporter importer;
+                AbstractImporter importer;
 
-                if (fucineProperty.FucineAttribute is FucineId)
-                    importer= new IdImporter(fucineProperty, _log);
-                //Try whether the key exists or not: we might be using an arbitrary internal key
-
-                else if (importDataForEntity.ContainsKey(fucineProperty.Name))
-                {
-                    importer=fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
-                }
-                else
-                {
-                    importer =new FucineImportDefault(fucineProperty, _log);
-                }
-
+                importer = fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
                 importer.Populate(newEntity,importDataForEntity,_entityType);
             }
 
