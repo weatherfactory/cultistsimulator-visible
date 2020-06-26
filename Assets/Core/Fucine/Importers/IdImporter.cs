@@ -8,7 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class IdImporter : AbstractImporter
     {
-        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
+        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
             Type entityType, ContentImportLog log)
         {
             if (entity is IEntityWithId entityWithId)

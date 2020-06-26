@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
@@ -31,7 +32,8 @@ namespace Assets.Core.Fucine
 
         public void SetValue(TTarget target,object value)
         {
-            FastInvokeSetter(target, value);
+            
+            FastInvokeSetter(target, Convert.ChangeType(value,PropertyInfo.PropertyType));
         }
 
     }

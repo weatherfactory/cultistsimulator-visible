@@ -14,7 +14,7 @@ namespace Assets.Core.Fucine
         protected ContentImportLog Log;
 
 
-        public abstract bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> property, Hashtable entityData,
+        public abstract bool TryImport<T>(T entity, CachedFucineProperty<T> property, Hashtable entityData,
             Type entityType,ContentImportLog log) where T:AbstractEntity<T>;
 
     }

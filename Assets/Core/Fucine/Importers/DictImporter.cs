@@ -13,7 +13,7 @@ namespace Assets.Core.Fucine
     public class DictImporter:AbstractImporter
     {
 
-        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
+        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
             Type entityType, ContentImportLog log)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
@@ -129,7 +129,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void PopulateAsDictionaryOfLists<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Type wrapperListType, Hashtable subHashtable, IDictionary dict, ContentImportLog log) where T: AbstractEntity<T>
+        private void PopulateAsDictionaryOfLists<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Type wrapperListType, Hashtable subHashtable, IDictionary dict, ContentImportLog log) where T: AbstractEntity<T>
         {
             //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
             Type listMemberType = wrapperListType.GetGenericArguments()[0];
@@ -196,7 +196,7 @@ namespace Assets.Core.Fucine
 
 
 
-        private void PopulateAsDictionaryOfEntities<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate,Hashtable subHashtable, Type dictMemberType, IDictionary dict,ContentImportLog log) where T:AbstractEntity<T>
+        private void PopulateAsDictionaryOfEntities<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate,Hashtable subHashtable, Type dictMemberType, IDictionary dict,ContentImportLog log) where T:AbstractEntity<T>
         {
             foreach (object o in subHashtable)
             {

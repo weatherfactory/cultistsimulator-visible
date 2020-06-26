@@ -11,7 +11,7 @@ namespace Assets.Core.Fucine
 
 
 
-        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
+        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
         {
 
             ArrayList al = entityData.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);

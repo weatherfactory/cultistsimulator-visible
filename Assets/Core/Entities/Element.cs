@@ -132,7 +132,7 @@ namespace Assets.Core.Entities
 
         public Element(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
-            
+
             Slots = new List<SlotSpecification>();
             Aspects = new AspectsDictionary();
             XTriggers = new Dictionary<string, List<MorphDetails>>();

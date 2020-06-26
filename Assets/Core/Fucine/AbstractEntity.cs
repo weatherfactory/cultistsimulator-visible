@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -51,13 +52,16 @@ namespace Assets.Core.Fucine
             return propertiesPopped;
         }
 
-        public HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
-        }
+        //public HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached()
+        //{
+        //    return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
+        //}
 
         protected AbstractEntity (Hashtable importDataForEntity,ContentImportLog log)
         {
+            try
+            {
+
 
 
             var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
@@ -65,7 +69,7 @@ namespace Assets.Core.Fucine
             foreach (var cachedProperty in fucineProperties)
             {
                 var importer = cachedProperty.GetImporterForProperty();
-                bool imported = importer.TryImport<T>(this, cachedProperty, importDataForEntity,
+                bool imported = importer.TryImport<T>(this as T, cachedProperty, importDataForEntity,
                     typeof(T), log);
                 if (imported)
                     importDataForEntity.Remove(cachedProperty.LowerCaseName);
@@ -76,8 +80,13 @@ namespace Assets.Core.Fucine
             {
                 PushUnknownProperty(k, importDataForEntity[k]);
             }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
-         
         }
 
         protected AbstractEntity()

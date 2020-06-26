@@ -9,7 +9,7 @@ namespace Assets.Core.Fucine
     public class SubEntityImporter : AbstractImporter
     {
 
-        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
+        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
         {
             string entityPropertyName = _cachedFucinePropertyToPopulate.LowerCaseName;
             var hsubEntityHashtable = entityData.GetHashtable(entityPropertyName);
