@@ -6,9 +6,12 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
+    public interface IEntity
+    {
+    void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium);
+    }
 
-
-    public abstract class AbstractEntity<T>  where T : AbstractEntity<T>
+    public abstract class AbstractEntity<T>: IEntity where T : AbstractEntity<T>
     {
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();
