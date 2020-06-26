@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
                 {
                     
                     FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, listMemberType);
-                    var subEntity = FucineEntityFactory<>  emanationWalker.PopulateEntityWith(h);
+                    var subEntity = Activator.CreateInstance(listMemberType, h, log);
                     list.Add(subEntity);
                 }
                 else

@@ -81,6 +81,11 @@ namespace Assets.Core.Entities
             }
         }
 
+        public MorphDetails()
+        {
+
+        }
+
     }
 
 

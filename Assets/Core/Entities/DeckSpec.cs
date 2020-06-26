@@ -166,7 +166,8 @@ namespace Assets.Core.Entities
         
         }
 
-
+        public DeckSpec()
+        {}
 
 
 

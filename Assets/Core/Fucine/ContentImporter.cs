@@ -711,14 +711,14 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
             {
 
                 Type fucineEntityFactoryConstructedType=typeof(AbstractEntity<>).MakeGenericType(t);
-                dynamic fucineEntityFactory = Activator.CreateInstance(fucineEntityFactoryConstructedType);
+ 
 
                 ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
                 foreach (Hashtable h in al)
                 {
 
-                    IEntityWithId entityUnique = (IEntityWithId) fucineEntityFactory.CreateEntity();
+                    IEntityWithId entityUnique = (IEntityWithId) Activator.CreateInstance(t,h,_log);
 
                     compendiumToPopulate.AddEntity(entityUnique.Id,t,entityUnique);
 

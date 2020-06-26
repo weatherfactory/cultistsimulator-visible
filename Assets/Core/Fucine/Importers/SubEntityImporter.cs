@@ -24,9 +24,12 @@ namespace Assets.Core.Fucine
 
             var subEntityAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineSubEntity;
 
-            FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, subEntityAttribute.ObjectType);
+         //   FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, subEntityAttribute.ObjectType);
 
-            var subEntity = emanationWalker.PopulateEntityWith(hsubEntityHashtable);
+         var subEntity = Activator.CreateInstance(subEntityAttribute.ObjectType, hsubEntityHashtable, log);
+
+                //emanationWalker.PopulateEntityWith(hsubEntityHashtable);
+
 
             _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, subEntity);
 

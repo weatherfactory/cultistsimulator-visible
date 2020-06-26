@@ -9,6 +9,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
+    //this is a battlefield
    public class FucineEntityFactory<T> where T:AbstractEntity<T>
     {
 

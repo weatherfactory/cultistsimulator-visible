@@ -20,5 +20,8 @@ namespace Assets.Core.Entities
             Filter = new AspectsDictionary();
         }
 
+        public Expulsion()
+        {}
+
     }
 }
