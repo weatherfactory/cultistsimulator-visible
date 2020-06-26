@@ -4,13 +4,13 @@ using System.Reflection;
 
 namespace Assets.Core.Fucine
 {
-    public class CachedFucineProperty<T>
+    public class CachedFucineProperty<TTarget> where TTarget : AbstractEntity<TTarget>
     {
 
         public PropertyInfo PropertyInfo { get; }
         public Fucine FucineAttribute { get; }
         public string LowerCaseName { get; }
-        public Action<T, object> FastInvokeSetter { get; } //should this be abstractsetter or propertyinfo?
+        private readonly Action<TTarget, object> FastInvokeSetter;
 
 
         public CachedFucineProperty(PropertyInfo propertyInfo, Fucine fucineAttribute)
@@ -20,19 +20,26 @@ namespace Assets.Core.Fucine
             LowerCaseName = propertyInfo.Name.ToLowerInvariant();
            if(propertyInfo.CanWrite)
 
-               FastInvokeSetter = FastInvoke.BuildUntypedSetter<T>(propertyInfo);
+               FastInvokeSetter = FastInvoke.BuildUntypedSetter<TTarget>(propertyInfo);
         }
 
         public AbstractImporter GetImporterForProperty()
         {
             return FucineAttribute.CreateImporterInstance();
         }
+
+
+        public void SetValue(TTarget target,object value)
+        {
+            FastInvokeSetter(target, value);
+        }
+
     }
 
 
     public static class FastInvoke
     {
-        public static Action<T, object> BuildUntypedSetter<T>(PropertyInfo propertyInfo) 
+        public static Action<TEntity, object> BuildUntypedSetter<TEntity>(PropertyInfo propertyInfo) where TEntity:AbstractEntity<TEntity>
         {
             var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
             if(targetType==null)
@@ -45,7 +52,7 @@ namespace Assets.Core.Fucine
             var exValue = Expression.Parameter(typeof(object), "p");
             var exConvertedValue=Expression.Convert(exValue,propertyInfo.PropertyType);
             var exBody = Expression.Assign(exMemberAccess, exConvertedValue);
-            var lambda=Expression.Lambda<Action<T,object>> (exBody, exInstance, exValue);
+            var lambda=Expression.Lambda<Action<TEntity,object>> (exBody, exInstance, exValue);
             var action = lambda.Compile();
             return action;
         }

@@ -15,8 +15,9 @@ namespace Assets.Core.Fucine
 
             if (valueInData==null)
             {
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,
-                    _cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
+                _cachedFucinePropertyToPopulate.SetValue(entity,_cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
+                //_cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,
+                //    _cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
                 return false;
             }
             else

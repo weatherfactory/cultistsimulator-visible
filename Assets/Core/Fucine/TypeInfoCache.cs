@@ -5,7 +5,7 @@ namespace Assets.Core.Fucine
 {
     //Credit Florian Doyon: using a generic in a static class means that a different static instance is created (with the private constructor each time) for each distinct type
     //argument used when the class is referenced
-    public static class TypeInfoCache<T>
+    public static class TypeInfoCache<T> where T: AbstractEntity<T>
     {
         // ReSharper disable once StaticMemberInGenericType - ReSharper is concerned we might not realise that a distinct field is stored for each different type argument
         private static readonly HashSet<CachedFucineProperty<T>> FucinePropertiesForType = new HashSet<CachedFucineProperty<T>>();
