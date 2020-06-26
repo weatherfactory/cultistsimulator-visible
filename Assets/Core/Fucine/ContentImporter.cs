@@ -709,8 +709,10 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
             if(importableAttribute!=null)
             {
-                if(!t.IsSubclassOf(typeof(AbstractEntity)))
-                    _log.LogProblem($"A FucineImportable should inherit from AbstractEntity, but {t.Name} doesn't. This will probably break.");
+
+                Type constructedEntityType=typeof(AbstractEntity<>).MakeGenericType(t);
+
+
                 ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 
                 foreach (Hashtable h in al)

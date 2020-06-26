@@ -12,16 +12,10 @@ namespace Assets.Core.Fucine
     public abstract class AbstractImporter
     {
         protected ContentImportLog Log;
-        protected CachedFucineProperty _cachedFucinePropertyToPopulate;
 
-        protected AbstractImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log)
-        {
-            _cachedFucinePropertyToPopulate = cachedFucinePropertyToPopulate;
-            Log = log;
-        }
 
-        public abstract bool TryImport(AbstractEntity entity, Hashtable entityData,
-            Type entityType);
+        public abstract bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> property, Hashtable entityData,
+            Type entityType,ContentImportLog log) where T:AbstractEntity<T>;
 
     }
 }

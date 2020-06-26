@@ -10,43 +10,17 @@ namespace Assets.Core.Fucine
 {
 
     
-    public class DictImporter : AbstractImporter
+    public class DictImporter:AbstractImporter
     {
 
-        public DictImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
-        {
-        }
-
-        public void PopulateAsDictionaryOfStrings(AbstractEntity entity, Hashtable subHashtable, IDictionary dictionary)
-        {
-            //Dictionary<string,string> - like DrawMessages
-                foreach (DictionaryEntry de in subHashtable)
-                {
-                    dictionary.Add(de.Key, de.Value);
-                }
-
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dictionary);
-        }
-
-        public void PopulateAsDictionaryOfInts(AbstractEntity entity, Hashtable subHashtable, IDictionary dictionary)
-        {
-            //Dictionary<string,int> - like HaltVerbs
-            foreach (DictionaryEntry de in subHashtable)
-            {
-                int value = Int32.Parse(de.Value.ToString());
-                dictionary.Add(de.Key, value);
-            }
-
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,dictionary);
-        }
-
-        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
+            Type entityType, ContentImportLog log)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
 
 
-            if (hSubEntity==null)
+            if (hSubEntity == null)
             {
                 Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
                 _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
@@ -69,9 +43,9 @@ namespace Assets.Core.Fucine
 
 
 
-    //a hashtable of <id: listofmorphdetails>
+            //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
-            Type dictType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType; 
+            Type dictType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
             Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
@@ -79,26 +53,26 @@ namespace Assets.Core.Fucine
 
             if (dictMemberType == typeof(string))
             {
-                PopulateAsDictionaryOfStrings(entity, hSubEntity, dict);
+                PopulateAsDictionaryOfStrings(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict);
             }
             else if (dictMemberType == typeof(int))
             {
-                PopulateAsDictionaryOfInts(entity, hSubEntity, dict);
+                PopulateAsDictionaryOfInts(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict);
             }
 
-         
-            else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>)) 
+
+            else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>))
             {
-                PopulateAsDictionaryOfLists(entity, dictMemberType, hSubEntity, dict);
+                PopulateAsDictionaryOfLists(entity, _cachedFucinePropertyToPopulate, dictMemberType, hSubEntity, dict);
             }
 
 
             else //it's an entity, not a string or a list
             {
-                PopulateAsDictionaryOfEntities(entity, hSubEntity, dictMemberType, dict);
+                PopulateAsDictionaryOfEntities(entity, _cachedFucinePropertyToPopulate, hSubEntity, dictMemberType, dict);
             }
 
-          
+
 
 
             if (dictAttribute.KeyMustExistIn != null)
@@ -131,7 +105,31 @@ namespace Assets.Core.Fucine
             return true;
         }
 
-        private void PopulateAsDictionaryOfLists(AbstractEntity entity, Type wrapperListType, Hashtable subHashtable, IDictionary dict)
+        public void PopulateAsDictionaryOfStrings<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary) where T:AbstractEntity<T>
+        {
+            //Dictionary<string,string> - like DrawMessages
+                foreach (DictionaryEntry de in subHashtable)
+                {
+                    dictionary.Add(de.Key, de.Value);
+                }
+
+                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dictionary);
+        }
+
+        public void PopulateAsDictionaryOfInts<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary) where T : AbstractEntity<T>
+        {
+            //Dictionary<string,int> - like HaltVerbs
+            foreach (DictionaryEntry de in subHashtable)
+            {
+                int value = Int32.Parse(de.Value.ToString());
+                dictionary.Add(de.Key, value);
+            }
+
+            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,dictionary);
+        }
+
+
+        private void PopulateAsDictionaryOfLists<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Type wrapperListType, Hashtable subHashtable, IDictionary dict) where T: AbstractEntity<T>
         {
             //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
             Type listMemberType = wrapperListType.GetGenericArguments()[0];
@@ -197,7 +195,7 @@ namespace Assets.Core.Fucine
 
 
 
-        private void PopulateAsDictionaryOfEntities(AbstractEntity entity, Hashtable subHashtable, Type dictMemberType, IDictionary dict)
+        private void PopulateAsDictionaryOfEntities<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate,Hashtable subHashtable, Type dictMemberType, IDictionary dict) where T:AbstractEntity<T>
         {
             foreach (object o in subHashtable)
             {

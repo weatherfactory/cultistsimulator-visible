@@ -46,12 +46,36 @@ namespace Assets.Core.Fucine
             return propertiesPopped;
         }
 
-
-
         public HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached()
         {
             return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
         }
+
+        protected AbstractEntity (Hashtable importDataForEntity,ContentImportLog log)
+        {
+
+
+            var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
+
+            foreach (var cachedProperty in fucineProperties)
+            {
+                var importer = cachedProperty.GetImporterForProperty<T>(log);
+                bool imported = importer.TryImport<T>(this, importDataForEntity);
+                if (imported)
+                    importDataForEntity.Remove(cachedProperty.LowerCaseName);
+            }
+
+
+            foreach (var k in importDataForEntity.Keys)
+            {
+
+                this.PushUnknownProperty(k, importDataForEntity[k]);
+
+            }
+
+         
+        }
+
 
     }
 

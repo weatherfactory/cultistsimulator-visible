@@ -8,12 +8,8 @@ namespace Assets.Core.Fucine
 {
     public class IdImporter : AbstractImporter
     {
-        public IdImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
-        {
-
-        }
-
-        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
+            Type entityType, ContentImportLog log)
         {
             if (entity is IEntityWithId entityWithId)
             {

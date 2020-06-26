@@ -14,7 +14,7 @@ namespace Assets.Core.Fucine
         {
             if (!(Activator.CreateInstance(entityType) is AbstractEntity<T> createdEntity))
              throw new ApplicationException(
-                 $"Couldn't create a Fucine IEntity of type {entityType}. (Does this type implement IEntity?)");
+                 $"Couldn't create a Fucine AbstractEntity of type {entityType}. (Does this type implement AbstractEntity?)");
 
             return createdEntity;
         }

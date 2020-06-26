@@ -29,7 +29,7 @@ namespace Assets.Core.Fucine
         public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
         public Type ObjectType { get; protected set; }
 
-        public abstract AbstractImporter CreateImporterInstance(CachedFucineProperty property,ContentImportLog log);
+        public abstract AbstractImporter CreateImporterInstance();
 
     }
 
@@ -62,9 +62,9 @@ namespace Assets.Core.Fucine
         }
 
 
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new ValueImporter(property,log);
+            return new ValueImporter();
         }
     }
 
@@ -78,9 +78,9 @@ namespace Assets.Core.Fucine
             ObjectType = typeof(string);
         }
 
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new IdImporter(property, log);
+            return new IdImporter();
         }
     }
 
@@ -88,9 +88,9 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineList : Fucine
     {
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new ListImporter(property, log);
+            return new ListImporter();
 
         }
     }
@@ -101,9 +101,9 @@ namespace Assets.Core.Fucine
         public string KeyMustExistIn { get; set; }
 
 
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new DictImporter(property, log);
+            return new DictImporter();
         }
     }
 
@@ -117,9 +117,9 @@ namespace Assets.Core.Fucine
             DefaultValue = new AspectsDictionary();
         }
 
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new AspectsImporter(property, log);
+            return new AspectsImporter();
 
         }
     }
@@ -136,9 +136,9 @@ namespace Assets.Core.Fucine
             DefaultValue = null;
         }
 
-        public override AbstractImporter CreateImporterInstance(CachedFucineProperty property, ContentImportLog log)
+        public override AbstractImporter CreateImporterInstance()
         {
-            return new SubEntityImporter(property, log);
+            return new SubEntityImporter();
 
         }
     }

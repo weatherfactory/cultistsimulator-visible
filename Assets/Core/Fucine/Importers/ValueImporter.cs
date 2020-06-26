@@ -8,11 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class ValueImporter : AbstractImporter
     {
-        public ValueImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log) : base(cachedFucinePropertyToPopulate, log)
-        {
-        }
-
-        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
         {
             object valueInData = entityData[_cachedFucinePropertyToPopulate.LowerCaseName];
 

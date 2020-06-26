@@ -22,6 +22,11 @@ namespace Assets.Core.Fucine
 
                FastInvokeSetter = FastInvoke.BuildUntypedSetter<T>(propertyInfo);
         }
+
+        public AbstractImporter GetImporterForProperty(ContentImportLog log)
+        {
+            return null;
+        }
     }
 
 

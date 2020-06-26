@@ -14,7 +14,7 @@ using static System.String;
 
 namespace Assets.Core.Fucine
 {
-    public class FucinePropertyWalker<T> where T:AbstractEntity<T>
+    public class FucinePropertyWalker
     {
         private readonly IEntityWithId _entityWithIdToPopulate;
         private readonly ContentImportLog _log;

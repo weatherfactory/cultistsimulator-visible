@@ -9,12 +9,9 @@ namespace Assets.Core.Fucine
     public class ListImporter : AbstractImporter
     {
 
-        public ListImporter(CachedFucineProperty property, ContentImportLog log) : base(property, log)
-        {
-        }
 
 
-        public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
+        public override bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, Type entityType, ContentImportLog log)
         {
 
             ArrayList al = entityData.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);
