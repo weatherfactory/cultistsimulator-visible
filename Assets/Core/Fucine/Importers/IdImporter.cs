@@ -17,12 +17,12 @@ namespace Assets.Core.Fucine
         {
             if (entity is IEntityWithId entityWithId)
             {
-                var idFromData = entityData.GetValue(_cachedFucinePropertyToPopulate.Name);
+                var idFromData = entityData.GetValue(_cachedFucinePropertyToPopulate.LowerCaseName);
 
                 if (idFromData!=null)
                     entityWithId.SetId(idFromData as string);
                 else 
-                    entityWithId.SetId(_cachedFucinePropertyToPopulate.Name); //do I want to make this assumption, if it's a missing id? It's usually right, because we're just using the identifier next level up, but...
+                    entityWithId.SetId(_cachedFucinePropertyToPopulate.LowerCaseName); //do I want to make this assumption, if it's a missing id? It's usually right, because we're just using the identifier next level up, but...
                 return true;
             }
 

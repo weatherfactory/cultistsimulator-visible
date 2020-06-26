@@ -14,7 +14,7 @@ namespace Assets.Core.Fucine
 
         public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            object valueInData = entityData[_cachedFucinePropertyToPopulate.Name];
+            object valueInData = entityData[_cachedFucinePropertyToPopulate.LowerCaseName];
 
 
             if (valueInData==null)

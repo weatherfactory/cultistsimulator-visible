@@ -14,7 +14,7 @@ namespace Assets.Core.Fucine
 
         public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
-            string entityPropertyName = _cachedFucinePropertyToPopulate.Name;
+            string entityPropertyName = _cachedFucinePropertyToPopulate.LowerCaseName;
             var hsubEntityHashtable = entityData.GetHashtable(entityPropertyName);
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return

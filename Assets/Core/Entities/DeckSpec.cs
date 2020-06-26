@@ -48,7 +48,7 @@ namespace Assets.Core.Entities
     }
 
     [FucineImportable("decks")]
- public class DeckSpec : AbstractEntity, IDeckSpec,IEntityWithId
+ public class DeckSpec : AbstractEntity<DeckSpec>, IDeckSpec,IEntityWithId
     {
         private string _id;
 
@@ -127,7 +127,7 @@ namespace Assets.Core.Entities
             base.RefineWithCompendium(log, populatedCompendium);
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        public override HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>()
         {
           
                 return TypeInfoCache<DeckSpec>.GetCachedFucinePropertiesForType();

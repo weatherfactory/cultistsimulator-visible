@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
                 var importer = fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
              bool imported=importer.TryImport(newEntity,importDataForEntity,_entityType);
              if(imported)
-                 importDataForEntity.Remove(fucineProperty.Name);
+                 importDataForEntity.Remove(fucineProperty.LowerCaseName);
             }
 
           

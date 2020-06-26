@@ -8,8 +8,8 @@ namespace Assets.Core.Fucine
     public static class TypeInfoCache<T>
     {
         // ReSharper disable once StaticMemberInGenericType - ReSharper is concerned we might not realise that a distinct field is stored for each different type argument
-        private static readonly HashSet<CachedFucineProperty> FucinePropertiesForType = new HashSet<CachedFucineProperty>();
-        private static readonly List<string> FucinePropertyNamesForType= new List<string>();
+        private static readonly HashSet<CachedFucineProperty<T>> FucinePropertiesForType = new HashSet<CachedFucineProperty<T>>();
+     //   private static readonly List<string> FucinePropertyNamesForType= new List<string>();
 
 
         //private constructor - it's a static class
@@ -23,15 +23,14 @@ namespace Assets.Core.Fucine
             {
                 if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
                 {
-                    CachedFucineProperty cachedProperty = new CachedFucineProperty
-                        {PropertyInfo = thisProperty, FucineAttribute = fucineAttribute};
+                    CachedFucineProperty<T> cachedProperty = new CachedFucineProperty<T>( thisProperty, fucineAttribute);
                     FucinePropertiesForType.Add(cachedProperty);
-                    FucinePropertyNamesForType.Add(cachedProperty.Name);
+                  //  FucinePropertyNamesForType.Add(cachedProperty.LowerCaseName);
                 }
             }
         }
 
-            public static HashSet<CachedFucineProperty> GetCachedFucinePropertiesForType()
+            public static HashSet<CachedFucineProperty<T>> GetCachedFucinePropertiesForType()
         {
             //This will return the cached results for the type referenced as a parameter when calling the static class - 
             //so we don't need to specify it again here

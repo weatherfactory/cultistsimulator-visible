@@ -16,7 +16,7 @@ namespace Assets.Core.Fucine
         public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
+            var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
             if (htEntries==null)
             {
                 _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, new AspectsDictionary());
@@ -49,17 +49,17 @@ namespace Assets.Core.Fucine
 
                         if (acceptableKeys == null)
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     Log.LogProblem(
-                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public abstract class AbstractEntity
+    public abstract class AbstractEntity<T> where T: class
     {
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();
@@ -48,7 +48,7 @@ namespace Assets.Core.Fucine
 
 
 
-    public abstract HashSet<CachedFucineProperty> GetFucinePropertiesCached();
+    public abstract HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>() where T:AbstractEntity;
 
 
     }

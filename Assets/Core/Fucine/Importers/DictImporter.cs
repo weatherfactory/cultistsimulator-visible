@@ -43,7 +43,7 @@ namespace Assets.Core.Fucine
         public override bool TryImport(AbstractEntity entity, Hashtable entityData, Type entityType)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.Name);
+            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
 
 
             if (hSubEntity==null)
@@ -114,17 +114,17 @@ namespace Assets.Core.Fucine
 
                         if (acceptableKeys == null)
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but that property is empty.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
                             Log.LogProblem(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {mustExistInProperty}, but the key {key} doesn't.");
+                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
                     Log.LogProblem(
-                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.Name} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
+                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {dictAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }
 
@@ -158,7 +158,7 @@ namespace Assets.Core.Fucine
                 else
                 {
                     throw new ApplicationException(
-                        $"FucineDictionary {_cachedFucinePropertyToPopulate.Name} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[dictKeyForList].GetType().Name}");
+                        $"FucineDictionary {_cachedFucinePropertyToPopulate.LowerCaseName} on {entity.GetType().Name} is a List<T>, but the <T> isn't drawing from strings or hashtables, but rather a {subHashtable[dictKeyForList].GetType().Name}");
                 }
 
                 dict.Add(dictKeyForList, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
@@ -215,7 +215,7 @@ namespace Assets.Core.Fucine
                 {
                     //we would hit this branch with subentities, like Expulsion, that don't have an id of their own
                     throw new ApplicationException(
-                        $"FucineDictionary {_cachedFucinePropertyToPopulate.Name} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
+                        $"FucineDictionary {_cachedFucinePropertyToPopulate.LowerCaseName} on {entity.GetType().Name} isn't a List<T>, a string, or drawing from a hashtable / IEntity - we don't know how to treat a {o.GetType().Name}");
                 }
             }
         }

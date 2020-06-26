@@ -10,7 +10,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: AbstractEntity,IVerb, IEntityWithId
+    public class BasicVerb: AbstractEntity<BasicVerb>,IVerb, IEntityWithId
     {
         private string _id;
 
@@ -54,9 +54,9 @@ namespace Assets.Core.Entities
 
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
+        public override HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>()
         {
-            return TypeInfoCache<BasicVerb>.GetCachedFucinePropertiesForType();
+            return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
         }
     }
 }
