@@ -13,7 +13,7 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification: AbstractEntity, IEntityWithId
+public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
 {
     private string _id;
 
@@ -124,10 +124,6 @@ private const string PRIMARY_SLOT="primary";
 
     }
 
-    public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-    {
-        return TypeInfoCache<SlotSpecification>.GetCachedFucinePropertiesForType();
-    }
 }
 
 

@@ -127,12 +127,6 @@ namespace Assets.Core.Entities
             base.RefineWithCompendium(log, populatedCompendium);
         }
 
-        public override HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>()
-        {
-          
-                return TypeInfoCache<DeckSpec>.GetCachedFucinePropertiesForType();
-        }
-
 
         public void RegisterUniquenessGroups(ICompendium compendium)
         {

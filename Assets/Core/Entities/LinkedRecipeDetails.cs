@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace Assets.Core.Entities
 {
-    public class LinkedRecipeDetails : AbstractEntity, IEntityWithId
+    public class LinkedRecipeDetails : AbstractEntity<LinkedRecipeDetails>, IEntityWithId
     {
         private string _id;
 
@@ -76,9 +76,5 @@ namespace Assets.Core.Entities
             }
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<LinkedRecipeDetails>.GetCachedFucinePropertiesForType();
-        }
     }
 }

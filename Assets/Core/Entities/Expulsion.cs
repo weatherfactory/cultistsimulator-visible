@@ -6,7 +6,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class Expulsion: AbstractEntity
+    public class Expulsion: AbstractEntity<Expulsion>
     {
 
         [FucineAspects]
@@ -20,9 +20,5 @@ namespace Assets.Core.Entities
             Filter = new AspectsDictionary();
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<Expulsion>.GetCachedFucinePropertiesForType();
-        }
     }
 }

@@ -18,7 +18,7 @@ namespace Assets.Core.Entities
         Vile=4
     }
     [FucineImportable("endings")]
-    public class Ending: AbstractEntity, IEntityWithId
+    public class Ending: AbstractEntity<Ending>, IEntityWithId
     {
         private string _id;
 
@@ -88,11 +88,6 @@ namespace Assets.Core.Entities
 
             return defaultEnding;
 
-        }
-
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<Ending>.GetCachedFucinePropertiesForType();
         }
     }
 }

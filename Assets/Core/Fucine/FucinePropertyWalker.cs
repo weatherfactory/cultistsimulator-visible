@@ -14,7 +14,7 @@ using static System.String;
 
 namespace Assets.Core.Fucine
 {
-    public class FucinePropertyWalker
+    public class FucinePropertyWalker<T> where T:AbstractEntity<T>
     {
         private readonly IEntityWithId _entityWithIdToPopulate;
         private readonly ContentImportLog _log;
@@ -27,10 +27,10 @@ namespace Assets.Core.Fucine
         }
 
 
-        public AbstractEntity PopulateEntityWith(Hashtable importDataForEntity)
+        public AbstractEntity<T> PopulateEntityWith(Hashtable importDataForEntity)
         {
-           FucineEntityFactory factory=new FucineEntityFactory();
-           AbstractEntity newEntity = factory.CreateEntity(_entityType);
+           FucineEntityFactory<T> factory =new FucineEntityFactory<T>();
+           AbstractEntity<T> newEntity = factory.CreateEntity(_entityType);
 
    
           var fucineProperties = newEntity.GetFucinePropertiesCached();

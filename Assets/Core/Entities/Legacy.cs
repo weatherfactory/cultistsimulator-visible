@@ -16,7 +16,7 @@ namespace Assets.Core.Entities
     /// A specification for an effect available to the player after a game completes, which determines the starting situation of the next character.
     /// </summary>
     [FucineImportable("legacies")]
-    public class Legacy: AbstractEntity, IEntityWithId
+    public class Legacy: AbstractEntity<Legacy>, IEntityWithId
     {
         private string _id;
 
@@ -97,9 +97,5 @@ namespace Assets.Core.Entities
         //            startingVerbId;
 
         //}
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<Legacy>.GetCachedFucinePropertiesForType();
-        }
     }
 }

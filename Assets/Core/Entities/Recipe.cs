@@ -11,7 +11,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : AbstractEntity, IEntityWithId
+    public class Recipe : AbstractEntity<Recipe>, IEntityWithId
     {
         private string _id;
 
@@ -192,11 +192,6 @@ namespace Assets.Core.Entities
 
 
             Refined = true;
-        }
-
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<Recipe>.GetCachedFucinePropertiesForType();
         }
 
 

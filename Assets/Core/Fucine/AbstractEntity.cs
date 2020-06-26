@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public abstract class AbstractEntity<T> where T: class
+    public abstract class AbstractEntity<T> where T : class
     {
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();
@@ -34,24 +34,25 @@ namespace Assets.Core.Fucine
             Refined = true;
         }
 
-    public virtual void PushUnknownProperty(object key, object value)
-     {
+        public virtual void PushUnknownProperty(object key, object value)
+        {
             UnknownProperties.Add(key, value);
-     }
+        }
 
-    public virtual Hashtable PopAllUnknownProperties()
-     {
-        Hashtable propertiesPopped = new Hashtable(UnknownProperties);
-        UnknownProperties.Clear();
-        return propertiesPopped;
-     }
+        public virtual Hashtable PopAllUnknownProperties()
+        {
+            Hashtable propertiesPopped = new Hashtable(UnknownProperties);
+            UnknownProperties.Clear();
+            return propertiesPopped;
+        }
 
 
 
-    public abstract HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>() where T:AbstractEntity;
-
+        public HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached()
+        {
+            return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
+        }
 
     }
-
 
 }

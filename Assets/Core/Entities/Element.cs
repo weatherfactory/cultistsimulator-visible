@@ -13,7 +13,7 @@ namespace Assets.Core.Entities
 {
     ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element: AbstractEntity, IEntityWithId
+    public class Element: AbstractEntity<Element>, IEntityWithId
     {
         private string _id;
 
@@ -234,10 +234,6 @@ namespace Assets.Core.Entities
 
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<Element>.GetCachedFucinePropertiesForType();
-        }
     }
 
 

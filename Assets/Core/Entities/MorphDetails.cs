@@ -13,7 +13,7 @@ using JetBrains.Annotations;
 namespace Assets.Core.Entities
 {
 
-    public class MorphDetails : AbstractEntity, IEntityWithId,IQuickSpecEntity
+    public class MorphDetails : AbstractEntity<MorphDetails>, IEntityWithId,IQuickSpecEntity
     {
 
         private string _id;
@@ -81,10 +81,6 @@ namespace Assets.Core.Entities
             }
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<MorphDetails>.GetCachedFucinePropertiesForType();
-        }
     }
 
 

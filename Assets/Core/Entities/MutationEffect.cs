@@ -9,7 +9,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class MutationEffect: AbstractEntity
+    public class MutationEffect: AbstractEntity<MutationEffect>
     {
         [FucineValue("")]
         public string Filter { get; set; }
@@ -37,9 +37,5 @@ namespace Assets.Core.Entities
             }
         }
 
-        public override HashSet<CachedFucineProperty> GetFucinePropertiesCached()
-        {
-            return TypeInfoCache<MutationEffect>.GetCachedFucinePropertiesForType();
-        }
     }
 }

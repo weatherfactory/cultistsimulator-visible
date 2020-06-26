@@ -54,9 +54,5 @@ namespace Assets.Core.Entities
 
         }
 
-        public override HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached<T>()
-        {
-            return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
-        }
     }
 }
