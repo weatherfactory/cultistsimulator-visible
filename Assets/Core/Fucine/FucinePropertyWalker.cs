@@ -27,32 +27,32 @@ namespace Assets.Core.Fucine
         }
 
 
-        public AbstractEntity<T> PopulateEntityWith(Hashtable importDataForEntity)
-        {
-           FucineEntityFactory<T> factory =new FucineEntityFactory<T>();
-           AbstractEntity<T> newEntity = factory.CreateEntity(_entityType);
+        //public AbstractEntity<T> PopulateEntityWith(Hashtable importDataForEntity)
+        //{
+        //   FucineEntityFactory<T> factory =new FucineEntityFactory<T>();
+        //   AbstractEntity<T> newEntity = factory.CreateEntity(_entityType);
 
    
-          var fucineProperties = newEntity.GetFucinePropertiesCached();
+        //  var fucineProperties = newEntity.GetFucinePropertiesCached();
 
-            foreach (var fucineProperty in fucineProperties)
-            {
-                var importer = fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
-             bool imported=importer.TryImport(newEntity,importDataForEntity,_entityType);
-             if(imported)
-                 importDataForEntity.Remove(fucineProperty.LowerCaseName);
-            }
+        //    foreach (var fucineProperty in fucineProperties)
+        //    {
+        //        var importer = fucineProperty.FucineAttribute.CreateImporterInstance(fucineProperty, _log);
+        //     bool imported=importer.TryImport(newEntity,importDataForEntity,_entityType);
+        //     if(imported)
+        //         importDataForEntity.Remove(fucineProperty.LowerCaseName);
+        //    }
 
           
-            foreach (var k in importDataForEntity.Keys)
-            {
+        //    foreach (var k in importDataForEntity.Keys)
+        //    {
              
-                newEntity.PushUnknownProperty(k,importDataForEntity[k]);
+        //        newEntity.PushUnknownProperty(k,importDataForEntity[k]);
 
-            }
+        //    }
 
-            return newEntity;
-        }
+        //    return newEntity;
+        //}
 
        
 

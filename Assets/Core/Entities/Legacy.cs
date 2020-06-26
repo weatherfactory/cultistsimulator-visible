@@ -71,7 +71,7 @@ namespace Assets.Core.Entities
         [FucineValue(".")]
         public string StartingVerbId { get; set; }
 
-        public Legacy()
+        public Legacy(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }

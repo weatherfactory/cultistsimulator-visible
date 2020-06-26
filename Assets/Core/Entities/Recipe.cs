@@ -144,7 +144,7 @@ namespace Assets.Core.Entities
 
         //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
-        public Recipe()
+        public Recipe(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
             Requirements = new Dictionary<string, string>();
             TableReqs = new Dictionary<string, string>();

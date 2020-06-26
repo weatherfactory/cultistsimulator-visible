@@ -130,7 +130,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public Element()
+        public Element(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
             
             Slots = new List<SlotSpecification>();
@@ -140,26 +140,26 @@ namespace Assets.Core.Entities
 
         }
 
-        public Element(string id, string label, string description, int animFrames,string icon)
-        {
-            _id = id;
-            Label = label;
-            Description = description;
-          //  AnimFrames = animFrames;
+        //public Element(string id, string label, string description, int animFrames,string icon)
+        //{
+        //    _id = id;
+        //    Label = label;
+        //    Description = description;
+        //  //  AnimFrames = animFrames;
 
-            Slots=new List<SlotSpecification>();
-            Aspects=new AspectsDictionary();
-            XTriggers=new Dictionary<string, List<MorphDetails>>();
+        //    Slots=new List<SlotSpecification>();
+        //    Aspects=new AspectsDictionary();
+        //    XTriggers=new Dictionary<string, List<MorphDetails>>();
 
-            Induces=new List<LinkedRecipeDetails>();
+        //    Induces=new List<LinkedRecipeDetails>();
 
-            if (!string.IsNullOrEmpty(icon))
+        //    if (!string.IsNullOrEmpty(icon))
         
-                Icon = icon;
-            else
-                Icon = id;
+        //        Icon = icon;
+        //    else
+        //        Icon = id;
         
-        }
+        //}
 
 
         public Boolean HasChildSlotsForVerb(string forVerb)

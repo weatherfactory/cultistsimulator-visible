@@ -299,18 +299,6 @@ namespace Assets.Core.Utility
 
         }
 
-
-
-        private static void RunContentTests(BuildTarget buildTarget, string builtAtPath)
-        {
-// Run the content tests, but only for Windows, since otherwise we'll end up with three copies
-            if (buildTarget == BuildTarget.StandaloneWindows || buildTarget == BuildTarget.StandaloneWindows64)
-            {
-                ContentTester.ValidateContentAssertions(false);
-                FileUtil.ReplaceFile(ContentTester.JUnitResultsPath, Path.Combine(builtAtPath, "csunity-tests.xml"));
-            }
-        }
-
         private static void BuildPerpetualEdition(string from,string to,BuildOS os)
         {
             // Set up the Perpetual Edition, with all its DLC

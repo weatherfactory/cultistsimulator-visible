@@ -42,14 +42,14 @@ namespace Assets.Core.Entities
             get { return false; }
         }
 
-        public BasicVerb(string id, string label, string description)
-        {
-            _id = id;
-            Label = label;
-            Description = description;
-        }
+        //public BasicVerb(string id, string label, string description)
+        //{
+        //    _id = id;
+        //    Label = label;
+        //    Description = description;
+        //}
 
-        public BasicVerb()
+        public BasicVerb(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }

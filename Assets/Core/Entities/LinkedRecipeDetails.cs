@@ -45,7 +45,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public LinkedRecipeDetails()
+        public LinkedRecipeDetails(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
 
@@ -68,7 +68,8 @@ namespace Assets.Core.Entities
                 unknownProperties.Add("id",Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
 
                 FucinePropertyWalker w = new FucinePropertyWalker(log, typeof(Recipe));
-                Recipe internalRecipe = (Recipe)w.PopulateEntityWith(unknownProperties);
+                Recipe internalRecipe =new Recipe(unknownProperties,log);
+                
 
                  populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
 

@@ -39,8 +39,8 @@ namespace Assets.Core.Entities
         [FucineValue((int)MorphEffectType.Transform)]
         public MorphEffectType MorphEffect { get; private set; }
 
-        public MorphDetails()
-        {}
+        public MorphDetails(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        { }
 
         public MorphDetails(string id)
         {

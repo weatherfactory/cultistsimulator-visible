@@ -15,7 +15,7 @@ namespace Assets.Core.Entities
         [FucineValue(1)] 
         public int Limit { get; set; }
 
-        public Expulsion()
+        public Expulsion(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
             Filter = new AspectsDictionary();
         }

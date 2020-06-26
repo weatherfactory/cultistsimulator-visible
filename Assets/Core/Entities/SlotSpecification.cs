@@ -78,7 +78,7 @@ private const string PRIMARY_SLOT="primary";
         ActionId = string.Empty;
     }
 
-    public SlotSpecification()
+    public SlotSpecification(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();

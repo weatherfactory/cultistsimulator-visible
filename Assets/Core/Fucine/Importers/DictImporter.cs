@@ -53,23 +53,23 @@ namespace Assets.Core.Fucine
 
             if (dictMemberType == typeof(string))
             {
-                PopulateAsDictionaryOfStrings(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict);
+                PopulateAsDictionaryOfStrings(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict, log);
             }
             else if (dictMemberType == typeof(int))
             {
-                PopulateAsDictionaryOfInts(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict);
+                PopulateAsDictionaryOfInts(entity, _cachedFucinePropertyToPopulate, hSubEntity, dict, log);
             }
 
 
             else if (dictMemberType.IsGenericType && dictMemberType.GetGenericTypeDefinition() == typeof(List<>))
             {
-                PopulateAsDictionaryOfLists(entity, _cachedFucinePropertyToPopulate, dictMemberType, hSubEntity, dict);
+                PopulateAsDictionaryOfLists(entity, _cachedFucinePropertyToPopulate, dictMemberType, hSubEntity, dict,log);
             }
 
 
             else //it's an entity, not a string or a list
             {
-                PopulateAsDictionaryOfEntities(entity, _cachedFucinePropertyToPopulate, hSubEntity, dictMemberType, dict);
+                PopulateAsDictionaryOfEntities(entity, _cachedFucinePropertyToPopulate, hSubEntity, dictMemberType, dict, log);
             }
 
 
@@ -105,7 +105,7 @@ namespace Assets.Core.Fucine
             return true;
         }
 
-        public void PopulateAsDictionaryOfStrings<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary) where T:AbstractEntity<T>
+        public void PopulateAsDictionaryOfStrings<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary,ContentImportLog log) where T:AbstractEntity<T>
         {
             //Dictionary<string,string> - like DrawMessages
                 foreach (DictionaryEntry de in subHashtable)
@@ -116,7 +116,7 @@ namespace Assets.Core.Fucine
                 _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dictionary);
         }
 
-        public void PopulateAsDictionaryOfInts<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary) where T : AbstractEntity<T>
+        public void PopulateAsDictionaryOfInts<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary, ContentImportLog log) where T : AbstractEntity<T>
         {
             //Dictionary<string,int> - like HaltVerbs
             foreach (DictionaryEntry de in subHashtable)
@@ -129,7 +129,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void PopulateAsDictionaryOfLists<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Type wrapperListType, Hashtable subHashtable, IDictionary dict) where T: AbstractEntity<T>
+        private void PopulateAsDictionaryOfLists<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Type wrapperListType, Hashtable subHashtable, IDictionary dict, ContentImportLog log) where T: AbstractEntity<T>
         {
             //if Dictionary<T,List<T>> where T: entity then first create a wrapper list, then populate it with the individual entities //List<MorphDetails>, yup
             Type listMemberType = wrapperListType.GetGenericArguments()[0];
@@ -144,14 +144,14 @@ namespace Assets.Core.Fucine
                 {
                     //quick spec entities started out as a simple key:value pair, e.g. {fatiguing:husk}, but later had their possible definition extended to be potentially more complex, e.g fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                     //it's a quick spec entity if (i) it implements IQuickSpecEntity (ii) the value resolves to a string (rather than a list)
-                    AddQuickSpecEntityToWrapperList(listMemberType, quickSpecEntityValue, wrapperList);
+                    AddQuickSpecEntityToWrapperList(listMemberType, quickSpecEntityValue, wrapperList,log);
                 }
 
                 //either it's not a quickspeccable entity, or it's a quickspeccableentity whose json resolves to a full list 
                 else if (subHashtable[dictKeyForList] is ArrayList list
                 ) //fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                 {
-                    AddFullSpecEntitiesToWrapperList(list, listMemberType, wrapperList);
+                    AddFullSpecEntitiesToWrapperList(list, listMemberType, wrapperList,log);
                 }
                 else
                 {
@@ -166,7 +166,7 @@ namespace Assets.Core.Fucine
         }
 
         private static void AddQuickSpecEntityToWrapperList(Type listMemberType, string quickSpecEntityValue,
-            IList wrapperList)
+            IList wrapperList, ContentImportLog log)
         {
             // eg {fatiguing:husk}
             IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
@@ -176,7 +176,7 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void AddFullSpecEntitiesToWrapperList(ArrayList list, Type listMemberType, IList wrapperList)
+        private void AddFullSpecEntitiesToWrapperList(ArrayList list, Type listMemberType, IList wrapperList, ContentImportLog log)
         {
             foreach (Hashtable entityHash in list)
             {
@@ -184,9 +184,10 @@ namespace Assets.Core.Fucine
                 FucinePropertyWalker
                     emanationWalker =
                         new FucinePropertyWalker(Log, listMemberType); //passing in <string,MorphDetailsList>
+
                 IEntityWithId
-                    sub = emanationWalker
-                        .PopulateEntityWith(entityHash) as IEntityWithId; //{id:husk,morpheffect:spawn}
+                    sub = Activator.CreateInstance(listMemberType, entityHash, log) as IEntityWithId;
+
                 wrapperList.Add(sub);
             }
 
@@ -195,7 +196,7 @@ namespace Assets.Core.Fucine
 
 
 
-        private void PopulateAsDictionaryOfEntities<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate,Hashtable subHashtable, Type dictMemberType, IDictionary dict) where T:AbstractEntity<T>
+        private void PopulateAsDictionaryOfEntities<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate,Hashtable subHashtable, Type dictMemberType, IDictionary dict,ContentImportLog log) where T:AbstractEntity<T>
         {
             foreach (object o in subHashtable)
             {
@@ -205,7 +206,7 @@ namespace Assets.Core.Fucine
                     FucinePropertyWalker
                         emanationWalker =
                             new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
-                    IEntityWithId sub = emanationWalker.PopulateEntityWith(h) as IEntityWithId;
+                    IEntityWithId sub = Activator.CreateInstance(dictMemberType, h, log) as IEntityWithId;
                     dict.Add(sub.Id, sub);
                     _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
                 }

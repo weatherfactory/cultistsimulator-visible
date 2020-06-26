@@ -23,7 +23,7 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool Additive { get; set; }
 
-        public MutationEffect()
+        public MutationEffect(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
 

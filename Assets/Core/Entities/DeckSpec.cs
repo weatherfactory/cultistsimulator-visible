@@ -116,7 +116,7 @@ namespace Assets.Core.Entities
         private Dictionary<string, string> _drawMessages = new Dictionary<string, string>();
       
 
-        public DeckSpec()
+        public DeckSpec(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
 

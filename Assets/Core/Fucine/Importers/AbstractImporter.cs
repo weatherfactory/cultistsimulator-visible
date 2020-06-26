@@ -9,19 +9,13 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Fucine
 {
    
-    public abstract class AbstractFucineImporter
+    public abstract class AbstractImporter
     {
         protected ContentImportLog Log;
-        protected CachedFucineProperty _cachedFucinePropertyToPopulate;
 
-        protected AbstractFucineImporter(CachedFucineProperty cachedFucinePropertyToPopulate, ContentImportLog log)
-        {
-            _cachedFucinePropertyToPopulate = cachedFucinePropertyToPopulate;
-            Log = log;
-        }
 
-        public abstract void Populate(AbstractEntity entity, Hashtable entityData,
-            Type entityType);
+        public abstract bool TryImport<T>(AbstractEntity<T> entity, CachedFucineProperty<T> property, Hashtable entityData,
+            Type entityType,ContentImportLog log) where T:AbstractEntity<T>;
 
     }
 }

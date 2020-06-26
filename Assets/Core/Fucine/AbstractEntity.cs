@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public abstract class AbstractEntity<T> where T : class
+    public abstract class AbstractEntity<T> where T : AbstractEntity<T>
     {
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();
@@ -34,7 +34,7 @@ namespace Assets.Core.Fucine
             Refined = true;
         }
 
-        public virtual void PushUnknownProperty(object key, object value)
+        public void PushUnknownProperty(object key, object value)
         {
             UnknownProperties.Add(key, value);
         }
@@ -59,8 +59,9 @@ namespace Assets.Core.Fucine
 
             foreach (var cachedProperty in fucineProperties)
             {
-                var importer = cachedProperty.GetImporterForProperty<T>(log);
-                bool imported = importer.TryImport<T>(this, importDataForEntity);
+                var importer = cachedProperty.GetImporterForProperty();
+                bool imported = importer.TryImport<T>(this, cachedProperty, importDataForEntity,
+                    typeof(T), log);
                 if (imported)
                     importDataForEntity.Remove(cachedProperty.LowerCaseName);
             }
@@ -68,15 +69,16 @@ namespace Assets.Core.Fucine
 
             foreach (var k in importDataForEntity.Keys)
             {
-
-                this.PushUnknownProperty(k, importDataForEntity[k]);
-
+                PushUnknownProperty(k, importDataForEntity[k]);
             }
 
          
         }
 
+        protected AbstractEntity()
+        {
 
+        }
     }
 
 }

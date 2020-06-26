@@ -54,7 +54,7 @@ namespace Assets.Core.Entities
         [FucineValue("")]
         public string Achievement { get; set; }
 
-        public Ending()
+        public Ending(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }
@@ -70,7 +70,10 @@ namespace Assets.Core.Entities
             Achievement = achievement;
         }
 
-        
+        private Ending()
+        {
+        }
+
 
         public static Ending DefaultEnding()
         {
