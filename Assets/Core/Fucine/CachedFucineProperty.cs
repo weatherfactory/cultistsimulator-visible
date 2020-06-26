@@ -8,20 +8,20 @@ namespace Assets.Core.Fucine
     public class CachedFucineProperty<TTarget> where TTarget : AbstractEntity<TTarget>
     {
 
-        public PropertyInfo PropertyInfo { get; }
+        public PropertyInfo ThisPropInfo { get; }
         public Fucine FucineAttribute { get; }
         public string LowerCaseName { get; }
         private readonly Action<TTarget, object> FastInvokeSetter;
 
 
-        public CachedFucineProperty(PropertyInfo propertyInfo, Fucine fucineAttribute)
+        public CachedFucineProperty(PropertyInfo thisPropInfo, Fucine fucineAttribute)
         {
-            PropertyInfo = propertyInfo;
+            ThisPropInfo = thisPropInfo;
             FucineAttribute = fucineAttribute;
-            LowerCaseName = propertyInfo.Name.ToLowerInvariant();
-           if(propertyInfo.CanWrite)
+            LowerCaseName = thisPropInfo.Name.ToLowerInvariant();
+           if(thisPropInfo.CanWrite)
 
-               FastInvokeSetter = FastInvoke.BuildUntypedSetter<TTarget>(propertyInfo);
+               FastInvokeSetter = FastInvoke.BuildUntypedSetter<TTarget>(thisPropInfo);
         }
 
         public AbstractImporter GetImporterForProperty()
@@ -30,10 +30,12 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void SetValue(TTarget target,object value)
+        public void SetValueFastInvoke(TTarget target,object value)
         {
-            
-            FastInvokeSetter(target, Convert.ChangeType(value,PropertyInfo.PropertyType));
+      if(ThisPropInfo.PropertyType.IsEnum)
+          FastInvokeSetter(target,Enum.ToObject(ThisPropInfo.PropertyType,value));
+      else
+            FastInvokeSetter(target, Convert.ChangeType(value,ThisPropInfo.PropertyType));
         }
 
     }

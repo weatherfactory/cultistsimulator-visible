@@ -710,9 +710,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 
             if(importableAttribute!=null)
             {
-                Debug.Log(t.Name);
-                Type fucineEntityFactoryConstructedType=typeof(AbstractEntity<>).MakeGenericType(t);
- 
 
                 ArrayList al = GetContentItems(importableAttribute.TaggedAs);
 

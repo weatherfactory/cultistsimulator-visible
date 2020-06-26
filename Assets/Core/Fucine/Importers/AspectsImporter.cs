@@ -17,7 +17,7 @@ namespace Assets.Core.Fucine
             var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
             if (htEntries==null)
             {
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, new AspectsDictionary());
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, new AspectsDictionary());
                 return false;
             }
 
@@ -31,7 +31,7 @@ namespace Assets.Core.Fucine
                 aspects.Add(k, Convert.ToInt32(htEntries[k]));
             }
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, aspects);
+            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, aspects);
 
 
             if (aspectsAttribute.KeyMustExistIn != null)

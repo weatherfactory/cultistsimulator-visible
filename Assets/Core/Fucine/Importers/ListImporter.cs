@@ -19,19 +19,19 @@ namespace Assets.Core.Fucine
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (al==null)
             {
-                Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
+                Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(type));
                 return false;
             }
 
 
-            Type propertyListType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
+            Type propertyListType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
             Type listMemberType = propertyListType.GetGenericArguments()[0];
 
 
             IList list = Activator.CreateInstance(propertyListType) as IList;
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, list);
+            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, list);
 
             foreach (var o in al)
             {

@@ -22,8 +22,8 @@ namespace Assets.Core.Fucine
 
             if (hSubEntity == null)
             {
-                Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
+                Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(type));
                 return false;
             }
 
@@ -45,7 +45,7 @@ namespace Assets.Core.Fucine
 
             //a hashtable of <id: listofmorphdetails>
             //eg, {fatiguing:husk} or eg: {fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}],exiling:[{id:exiled,morpheffect:mutate},{id:liberated,morpheffect:mutate}]}
-            Type dictType = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
+            Type dictType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
             Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
@@ -113,7 +113,7 @@ namespace Assets.Core.Fucine
                     dictionary.Add(de.Key, de.Value);
                 }
 
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dictionary);
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dictionary);
         }
 
         public void PopulateAsDictionaryOfInts<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary, ContentImportLog log) where T : AbstractEntity<T>
@@ -125,7 +125,7 @@ namespace Assets.Core.Fucine
                 dictionary.Add(de.Key, value);
             }
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity,dictionary);
+            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity,dictionary);
         }
 
 
@@ -162,7 +162,7 @@ namespace Assets.Core.Fucine
                 dict.Add(dictKeyForList, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
             }
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
+            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dict);
         }
 
         private static void AddQuickSpecEntityToWrapperList(Type listMemberType, string quickSpecEntityValue,
@@ -208,7 +208,7 @@ namespace Assets.Core.Fucine
                             new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
                     IEntityWithId sub = Activator.CreateInstance(dictMemberType, h, log) as IEntityWithId;
                     dict.Add(sub.Id, sub);
-                    _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, dict);
+                    _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dict);
                 }
                 else
                 {

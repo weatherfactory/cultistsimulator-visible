@@ -17,8 +17,8 @@ namespace Assets.Core.Fucine
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (hsubEntityHashtable==null)
             {
-                Type type = _cachedFucinePropertyToPopulate.PropertyInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, Activator.CreateInstance(type));
+                Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(type));
                 return false;
             }
 
@@ -31,7 +31,7 @@ namespace Assets.Core.Fucine
                 //emanationWalker.PopulateEntityWith(hsubEntityHashtable);
 
 
-            _cachedFucinePropertyToPopulate.PropertyInfo.SetValue(entity, subEntity);
+            _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, subEntity);
 
             return true;
         }
