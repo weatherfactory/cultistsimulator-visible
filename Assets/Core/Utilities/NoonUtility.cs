@@ -11,61 +11,8 @@ namespace Noon
 {
     public class NoonConstants
     {
-        public const string KLINKED="linked";
         public const string KENDING="ending";
-        public const string KSIGNALENDINGFLAVOUR = "signalEndingFlavour";
-        public const string KMAXEXECUTIONS = "maxexecutions";
-        public const string KID = "id";
-        public const string KFILTERONASPECTID = "filterOnAspectId";
-        public const string KFILTERONASPECTIDALT = "filter";
-        public const string KMUTATEASPECTID = "mutateAspectId";
-        public const string KMUTATEASPECTIDALT = "mutate";
-        public const string KMUTATIONLEVEL = "mutationLevel";
-        public const string KMUTATIONLEVELALT = "level";
-        public const string KADDITIVE = "additive";
-        public const string KLABEL = "label";
-        public const string KIMAGE = "image";
-        public const string KACTIONID = "actionId";
-        public const string KCRAFTABLE = "craftable";
-        public const string KPORTALEFFECT = "portaleffect";
-        public const string KHINTONLY = "hintonly";
-        public const string KSTARTDESCRIPTION = "startdescription";
-        public const string KDESCRIPTION = "description";
-        public const string KSIGNALIMPORTANTLOOP = "signalimportantloop";
-        public const string KWARMUP = "warmup";
-        public const string KREQUIREMENTS = "requirements";
-        public const string KTABLEREQS = "tablereqs";
-        public const string KEXTANTREQS = "extantreqs";
-        public const string KEFFECTS = "effects";
-        public const string KMUTATIONS = "mutations";
-        public const string KDECKEFFECT = "deckeffect";
-        public const string KPURGE = "purge";
-        public const string KHALTVERB = "haltverb";
-        public const string KDELETEVERB = "deleteverb";
-        public const string KINTERNALDECK = "internaldeck";
-        public const string KASPECTS = "aspects";
-        public const string KXTRIGGERS = "xtriggers";
-        public const string KALTERNATIVERECIPES = "alternativerecipes";
-        public const string KALTERNATIVERECIPESALT = "alt";
-        public const string KSLOTS="slots";
-        public const string KREQUIRED="required";
-        public const string KFORBIDDEN = "forbidden";
-        public const string KGREEDY = "greedy";
-        public const string KCONSUMES = "consumes";
-        public const string KNOANIM = "noanim";
-        public const string KBURNIMAGE = "burnimage";
-        public static string KICON="icon";
-        public static string KEXPULSION="expulsion";
-        public static string KLIMIT = "limit";
-        public static string KFILTER = "filter";
-        public static string KCHALLENGES="challenges";
-        public const string KINDUCES = "induces";
-
-
-        public const string KCHANCE = "chance";
-        public const string KADDITIONAL = "additional";
-
-        public const string KANIMFRAMES = "animFrames";
+      
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
@@ -93,9 +40,6 @@ namespace Noon
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
 
-		public const string KANIM = "anim";
-		public const string KFLAVOUR = "flavour";
-		public const string KACHIEVEMENT = "achievement";
 
 
         public const string A_ENDING_MAJORFORGEVICTORY = "A_ENDING_MAJORFORGEVICTORY";
