@@ -62,24 +62,22 @@ namespace Assets.Core.Fucine
             try
             {
 
+                var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
+
+                foreach (var cachedProperty in fucineProperties)
+                {
+                    var importer = cachedProperty.GetImporterForProperty();
+                    bool imported = importer.TryImport<T>(this as T, cachedProperty, importDataForEntity,
+                        typeof(T), log);
+                    if (imported)
+                        importDataForEntity.Remove(cachedProperty.LowerCaseName);
+                }
 
 
-            var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
-
-            foreach (var cachedProperty in fucineProperties)
-            {
-                var importer = cachedProperty.GetImporterForProperty();
-                bool imported = importer.TryImport<T>(this as T, cachedProperty, importDataForEntity,
-                    typeof(T), log);
-                if (imported)
-                    importDataForEntity.Remove(cachedProperty.LowerCaseName);
-            }
-
-
-            foreach (var k in importDataForEntity.Keys)
-            {
-                PushUnknownProperty(k, importDataForEntity[k]);
-            }
+                foreach (var k in importDataForEntity.Keys)
+                {
+                    PushUnknownProperty(k, importDataForEntity[k]);
+                }
             }
             catch (Exception e)
             {
