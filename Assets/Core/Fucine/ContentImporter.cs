@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -703,10 +704,10 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 
        var assembly = Assembly.GetExecutingAssembly();
 
-       foreach (Type t in assembly.GetTypes())
+       foreach (Type T in assembly.GetTypes())
         {
 
-            FucineImportable importableAttribute = (FucineImportable) t.GetCustomAttribute(typeof(FucineImportable), false);
+            FucineImportable importableAttribute = (FucineImportable) T.GetCustomAttribute(typeof(FucineImportable), false);
                 
             if(importableAttribute!=null)
             {
@@ -716,9 +717,11 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (Hashtable h in al)
                 {
 
-                    IEntityWithId entityUnique = (IEntityWithId) Activator.CreateInstance(t,h,_log);
+                    //IEntityWithId entityUnique = (IEntityWithId) Activator.CreateInstance(t,h,_log);
+                    IEntityWithId newEntity = FucineEntityFactory.CreateEntity(T, h, _log);
 
-                    compendiumToPopulate.AddEntity(entityUnique.Id,t,entityUnique);
+
+                    compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
 
                 }
             }
@@ -737,7 +740,6 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
     }
 
 
-
-   
-
 }
+
+

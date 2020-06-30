@@ -10,37 +10,37 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Fucine
 {
     //this is a battlefield
-   public class FucineEntityFactory<T> where T:AbstractEntity<T>
+   public class FucineEntityFactory
     {
 
-        public static AbstractEntity<T> CreateEntity(Hashtable importDataForEntity, ContentImportLog log)
+        public static IEntityWithId CreateEntity(Type T, Hashtable importDataForEntity, ContentImportLog log)
         {
-             if (typeof(T) == typeof(BasicVerb))
-                return new BasicVerb(importDataForEntity,log) as AbstractEntity<T>;
-           else if (typeof(T)==typeof(DeckSpec))
-                return new DeckSpec(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Element))
-                return new Element(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Ending))
-                return new Ending(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Expulsion))
-                return new Expulsion(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Legacy))
-                return new Legacy(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(LinkedRecipeDetails))
-                return new LinkedRecipeDetails(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(MorphDetails))
-                return new MorphDetails(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(MutationEffect))
-                return new MutationEffect(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Recipe))
-                return new Recipe(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(SlotSpecification))
-                return new SlotSpecification(importDataForEntity, log) as AbstractEntity<T>;
-             else
-             {
-                 throw new ApplicationException("Don't know about" + typeof(T).Name);
-             }
+            if (T == typeof(BasicVerb))
+                return new BasicVerb(importDataForEntity, log);
+            else if (T == typeof(DeckSpec))
+                return new DeckSpec(importDataForEntity, log);
+            else if (T == typeof(Element))
+                return new Element(importDataForEntity, log);
+            else if (T == typeof(Ending))
+                return new Ending(importDataForEntity, log);
+            else if (T == typeof(Expulsion))
+                return new Expulsion(importDataForEntity, log);
+            else if (T == typeof(Legacy))
+                return new Legacy(importDataForEntity, log);
+            else if (T == typeof(LinkedRecipeDetails))
+                return new LinkedRecipeDetails(importDataForEntity, log);
+            else if (T == typeof(MorphDetails))
+                return new MorphDetails(importDataForEntity, log);
+            else if (T == typeof(MutationEffect))
+                return new MutationEffect(importDataForEntity, log);
+            else if (T == typeof(Recipe))
+                return new Recipe(importDataForEntity, log);
+            else if (T == typeof(SlotSpecification))
+                return new SlotSpecification(importDataForEntity, log);
+            else
+            {
+                throw new ApplicationException("Don't know about" + T.Name);
+            }
 
         }
     }

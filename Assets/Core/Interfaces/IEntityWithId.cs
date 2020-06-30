@@ -8,9 +8,7 @@ using Assets.Core.Fucine;
 
 namespace Assets.Core.Interfaces
 {
-    /// <summary>
-    /// This is unique *in context*, not necessarily across the whole game. e.g.: a particular
-    /// </summary>
+
     public interface  IEntityWithId
     {
         string Id { get; }

@@ -6,8 +6,15 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
 {
-    public class Expulsion: AbstractEntity<Expulsion>
+    public class Expulsion: AbstractEntity<Expulsion>,IEntityWithId
     {
+        public string Id { get; private set; }
+
+        public void SetId(string id)
+        {
+            Id = id;
+        }
+
 
         [FucineAspects]
         public AspectsDictionary Filter { get; set; }
@@ -22,6 +29,7 @@ namespace Assets.Core.Entities
 
         public Expulsion()
         {}
+
 
     }
 }
