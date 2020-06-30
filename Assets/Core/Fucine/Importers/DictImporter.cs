@@ -28,7 +28,7 @@ namespace Assets.Core.Fucine
             }
 
 
-
+            //possibilities:
             //Dictionary<string,string> 
             //Dictionary<string,int> 
             //Dictionary<string,T>
@@ -180,13 +180,8 @@ namespace Assets.Core.Fucine
         {
             foreach (Hashtable entityHash in list)
             {
-
-                FucinePropertyWalker
-                    emanationWalker =
-                        new FucinePropertyWalker(Log, listMemberType); //passing in <string,MorphDetailsList>
-
                 IEntityWithId
-                    sub = Activator.CreateInstance(listMemberType, entityHash, log) as IEntityWithId;
+                    sub =FucineEntityFactory.CreateEntity(listMemberType, entityHash, log);
 
                 wrapperList.Add(sub);
             }
