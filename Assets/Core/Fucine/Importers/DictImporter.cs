@@ -198,7 +198,7 @@ namespace Assets.Core.Fucine
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
                 //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    IEntityWithId sub = Activator.CreateInstance(dictMemberType, h, log) as IEntityWithId;
+                    IEntityWithId sub = FucineEntityFactory.CreateEntity(dictMemberType, h, log);
                     dict.Add(sub.Id, sub);
                     _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dict);
                 }

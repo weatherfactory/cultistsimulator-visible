@@ -38,7 +38,7 @@ namespace Assets.Core.Fucine
 
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    var subEntity = Activator.CreateInstance(listMemberType, h, log);
+                    var subEntity = FucineEntityFactory.CreateEntity(listMemberType, h, log);
                     list.Add(subEntity);
                 }
                 else

@@ -10,7 +10,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Fucine
 {
     //this is a battlefield
-   public class FucineEntityFactory
+    public class FucineEntityFactory
     {
 
         public static IEntityWithId CreateEntity(Type T, Hashtable importDataForEntity, ContentImportLog log)
@@ -39,9 +39,14 @@ namespace Assets.Core.Fucine
                 return new SlotSpecification(importDataForEntity, log);
             else
             {
-                throw new ApplicationException("Don't know about" + T.Name);
+                return Activator.CreateInstance(T, importDataForEntity, log) as IEntityWithId;
             }
 
+        }
+
+        public static IEntityWithId CreateEntity(Type T)
+        {
+            return Activator.CreateInstance(T) as IEntityWithId;
         }
     }
 }
