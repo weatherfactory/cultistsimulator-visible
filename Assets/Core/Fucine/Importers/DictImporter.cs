@@ -197,10 +197,7 @@ namespace Assets.Core.Fucine
             {
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-  //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    FucinePropertyWalker
-                        emanationWalker =
-                            new FucinePropertyWalker(Log, dictMemberType); //passing in <string,MorphDetailsList>
+                //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                     IEntityWithId sub = Activator.CreateInstance(dictMemberType, h, log) as IEntityWithId;
                     dict.Add(sub.Id, sub);
                     _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dict);

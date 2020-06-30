@@ -38,8 +38,6 @@ namespace Assets.Core.Fucine
 
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    
-                    FucinePropertyWalker emanationWalker = new FucinePropertyWalker(Log, listMemberType);
                     var subEntity = Activator.CreateInstance(listMemberType, h, log);
                     list.Add(subEntity);
                 }
