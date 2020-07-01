@@ -23,7 +23,7 @@ namespace Assets.Core.Fucine
             if (hSubEntity == null)
             {
                 Type typeForDefaultSubEntity = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(typeForDefaultSubEntity));
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(typeForDefaultSubEntity));
                 return false;
             }
 
@@ -162,7 +162,7 @@ namespace Assets.Core.Fucine
                 dict.Add(dictKeyForList, wrapperList); //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
             }
 
-            _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, dict);
+            _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dict);
         }
 
         private static void AddQuickSpecEntityToWrapperList(Type listMemberType, string quickSpecEntityValue,
@@ -200,7 +200,7 @@ namespace Assets.Core.Fucine
                 //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
                     IEntityWithId sub = WIPFactory.CreateEntity(dictMemberType, h, log);
                     dict.Add(sub.Id, sub);
-                   _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, dict);
+                   _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dict);
                 }
                 else
                 {

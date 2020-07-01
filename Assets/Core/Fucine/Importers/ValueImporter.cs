@@ -15,13 +15,13 @@ namespace Assets.Core.Fucine
 
             if (valueInData==null)
             {
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity,_cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity,_cachedFucinePropertyToPopulate.FucineAttribute.DefaultValue);
                 return false;
             }
             else
             {
                 TypeConverter typeConverter = TypeDescriptor.GetConverter(_cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType);
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, typeConverter.ConvertFromString(valueInData.ToString()));
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, typeConverter.ConvertFromString(valueInData.ToString()));
                 return true;
             }
         }

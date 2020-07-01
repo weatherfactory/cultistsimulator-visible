@@ -20,7 +20,7 @@ namespace Assets.Core.Fucine
             if (al==null)
             {
                 Type propertyType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(propertyType));
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(propertyType));
                 return false;
             }
 
@@ -30,7 +30,7 @@ namespace Assets.Core.Fucine
 
             IList list = WIPFactory.CreateObjectWithDefaultConstructor(propertyListType) as IList;
 
-            _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, list);
+            _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, list);
 
             foreach (var o in al)
             {

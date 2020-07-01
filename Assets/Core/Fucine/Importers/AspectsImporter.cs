@@ -17,7 +17,7 @@ namespace Assets.Core.Fucine
             var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
             if (htEntries==null)
             {
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, new AspectsDictionary());
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, new AspectsDictionary());
                 return false;
             }
 
