@@ -20,14 +20,14 @@ namespace Assets.Core.Fucine
             {
                 Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
                 subEntity = WIPFactory.CreateEntity(type, new Hashtable(), log);
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, subEntity);
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, subEntity);
                 return false;
             }
 
             if(_cachedFucinePropertyToPopulate.FucineAttribute is FucineSubEntity subEntityAttribute)
             {
                 subEntity = WIPFactory.CreateEntity(subEntityAttribute.ObjectType, hsubEntityHashtable, log);
-                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, subEntity);
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, subEntity);
             }
             else
             

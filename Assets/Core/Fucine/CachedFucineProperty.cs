@@ -29,7 +29,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void SetValueFastInvoke(TTarget target,object value)
+        public void SetViaFastInvoke(TTarget target,object value)
         {
       if(ThisPropInfo.PropertyType.IsEnum)
           FastInvokeSetter(target,Enum.ToObject(ThisPropInfo.PropertyType,value));
