@@ -20,7 +20,7 @@ namespace Assets.Core.Fucine
             if (al==null)
             {
                 Type propertyType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(propertyType));
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, FactoryInstantiator.CreateObjectWithDefaultConstructor(propertyType));
                 return false;
             }
 
@@ -28,7 +28,7 @@ namespace Assets.Core.Fucine
             Type propertyListType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
             Type listMemberType = propertyListType.GetGenericArguments()[0];
 
-            IList list = WIPFactory.CreateObjectWithDefaultConstructor(propertyListType) as IList;
+            IList list = FactoryInstantiator.CreateObjectWithDefaultConstructor(propertyListType) as IList;
 
             _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, list);
 
@@ -37,7 +37,7 @@ namespace Assets.Core.Fucine
 
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    var subEntity = WIPFactory.CreateEntity(listMemberType, h, log);
+                    var subEntity = FactoryInstantiator.CreateEntity(listMemberType, h, log);
                     list.Add(subEntity);
                 }
                 else

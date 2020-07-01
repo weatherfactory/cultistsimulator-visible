@@ -22,7 +22,7 @@ namespace Assets.Core.Fucine
             if (hSubEntity == null)
             {
                 Type typeForDefaultSubEntity = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, WIPFactory.CreateObjectWithDefaultConstructor(typeForDefaultSubEntity));
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, FactoryInstantiator.CreateObjectWithDefaultConstructor(typeForDefaultSubEntity));
                 return false;
             }
 
@@ -48,7 +48,7 @@ namespace Assets.Core.Fucine
             Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
-            IDictionary dict =   WIPFactory.CreateObjectWithDefaultConstructor(dictType) as IDictionary;
+            IDictionary dict =   FactoryInstantiator.CreateObjectWithDefaultConstructor(dictType) as IDictionary;
 
             if (dictMemberType == typeof(string))
             {
@@ -109,7 +109,7 @@ namespace Assets.Core.Fucine
             //either way, it's implicit keys: fatiguing, exiling... 
             foreach (string dictKeyForList in subHashtable.Keys)
             {
-                IList wrapperList = WIPFactory.CreateObjectWithDefaultConstructor(wrapperListType) as IList;
+                IList wrapperList = FactoryInstantiator.CreateObjectWithDefaultConstructor(wrapperListType) as IList;
 
                 //if it's potentially a QuickSpecEntity 
                 if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)) && (subHashtable[dictKeyForList] is string quickSpecEntityValue))
@@ -141,7 +141,7 @@ namespace Assets.Core.Fucine
             IList wrapperList, ContentImportLog log)
         {
             // eg {fatiguing:husk}
-            IQuickSpecEntity quickSpecEntity = WIPFactory.CreateObjectWithDefaultConstructor(listMemberType) as IQuickSpecEntity;
+            IQuickSpecEntity quickSpecEntity = FactoryInstantiator.CreateObjectWithDefaultConstructor(listMemberType) as IQuickSpecEntity;
             quickSpecEntity.QuickSpec(quickSpecEntityValue);
             wrapperList.Add(
                 quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object
@@ -153,7 +153,7 @@ namespace Assets.Core.Fucine
             foreach (Hashtable entityHash in list)
             {
                 IEntityWithId
-                    sub =WIPFactory.CreateEntity(listMemberType, entityHash, log);
+                    sub =FactoryInstantiator.CreateEntity(listMemberType, entityHash, log);
 
                 wrapperList.Add(sub);
             }
@@ -170,7 +170,7 @@ namespace Assets.Core.Fucine
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
                 //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    IEntityWithId sub = WIPFactory.CreateEntity(dictMemberType, h, log);
+                    IEntityWithId sub = FactoryInstantiator.CreateEntity(dictMemberType, h, log);
                     dict.Add(sub.Id, sub);
                    _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dict);
                 }

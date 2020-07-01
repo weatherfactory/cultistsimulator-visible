@@ -10,8 +10,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
-    //this is a battlefield
-    public class WIPFactory
+    public class FactoryInstantiator
     {
         public static Dictionary<Type, IEntityFactory> CachedEntityFactories = new Dictionary<Type, IEntityFactory>();
         public static Dictionary<Type,INonEntityFactory> CachedNonEntityFactories=new Dictionary<Type, INonEntityFactory>();
