@@ -21,7 +21,6 @@ namespace Assets.Core.Fucine
             {
                 Type propertyType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
                 _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, WIPFactory.CreateObjectWithDefaultConstructor(propertyType));
-               // _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(propertyType));
                 return false;
             }
 
@@ -29,8 +28,7 @@ namespace Assets.Core.Fucine
             Type propertyListType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
             Type listMemberType = propertyListType.GetGenericArguments()[0];
 
-
-            IList list = Activator.CreateInstance(propertyListType) as IList;
+            IList list = WIPFactory.CreateObjectWithDefaultConstructor(propertyListType) as IList;
 
             _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, list);
 

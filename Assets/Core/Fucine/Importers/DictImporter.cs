@@ -49,7 +49,7 @@ namespace Assets.Core.Fucine
             Type dictMemberType = dictType.GetGenericArguments()[1];
 
 
-            IDictionary dict = Activator.CreateInstance(dictType) as IDictionary;
+            IDictionary dict =   WIPFactory.CreateObjectWithDefaultConstructor(dictType) as IDictionary;
 
             if (dictMemberType == typeof(string))
             {
@@ -169,7 +169,7 @@ namespace Assets.Core.Fucine
             IList wrapperList, ContentImportLog log)
         {
             // eg {fatiguing:husk}
-            IQuickSpecEntity quickSpecEntity = Activator.CreateInstance(listMemberType) as IQuickSpecEntity;
+            IQuickSpecEntity quickSpecEntity = WIPFactory.CreateObjectWithDefaultConstructor(listMemberType) as IQuickSpecEntity;
             quickSpecEntity.QuickSpec(quickSpecEntityValue);
             wrapperList.Add(
                 quickSpecEntity); //this is just the value/effect, eg :husk, wrapped up in a more complex object in a list. So the list will only contain this one object

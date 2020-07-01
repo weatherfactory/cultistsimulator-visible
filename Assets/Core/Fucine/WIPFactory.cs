@@ -46,16 +46,16 @@ namespace Assets.Core.Fucine
 
         }
 
-        public static IEntityWithId CreateEntityTest(Type T,Hashtable h, ContentImportLog log)
-        {
+        //public static IEntityWithId CreateEntityTest(Type T,Hashtable h, ContentImportLog log)
+        //{
 
-            Type cachedEntityType = typeof(EntityFactory<>);
-            Type cachedEntityTypeConstructed = cachedEntityType.MakeGenericType(T);
-            dynamic cachedEntityInfo = Activator.CreateInstance(cachedEntityTypeConstructed);
+        //    Type cachedEntityType = typeof(EntityFactory<>);
+        //    Type cachedEntityTypeConstructed = cachedEntityType.MakeGenericType(T);
+        //    dynamic cachedEntityInfo = Activator.CreateInstance(cachedEntityTypeConstructed);
 
-            return cachedEntityInfo.ConstructorFastInvoke(h,log);
+        //    return cachedEntityInfo.ConstructorFastInvoke(h,log);
 
-        }
+        //}
 
         public static object CreateObjectWithDefaultConstructor(Type typeToCreate)
         {
