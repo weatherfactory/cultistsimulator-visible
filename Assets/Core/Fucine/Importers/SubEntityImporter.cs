@@ -9,29 +9,29 @@ namespace Assets.Core.Fucine
     public class SubEntityImporter : AbstractImporter
     {
 
-        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> cachedFucinePropertyToPopulate, Hashtable entityData, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> propertyToValidate, Hashtable entityData, ContentImportLog log)
         {
-            string entityPropertyName = cachedFucinePropertyToPopulate.LowerCaseName;
+            string entityPropertyName = propertyToValidate.LowerCaseName;
             var hsubEntityHashtable = entityData.GetHashtable(entityPropertyName);
             IEntityWithId subEntity;
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (hsubEntityHashtable==null)
             {
-                Type type = cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                Type type = propertyToValidate.ThisPropInfo.PropertyType;
                 subEntity = FactoryInstantiator.CreateEntity(type, new Hashtable(), log);
-                cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, subEntity);
+                propertyToValidate.SetViaFastInvoke(entity, subEntity);
                 return false;
             }
 
-            if(cachedFucinePropertyToPopulate.FucineAttribute is FucineSubEntity subEntityAttribute)
+            if(propertyToValidate.FucineAttribute is FucineSubEntity subEntityAttribute)
             {
                 subEntity = FactoryInstantiator.CreateEntity(subEntityAttribute.ObjectType, hsubEntityHashtable, log);
-                cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, subEntity);
+                propertyToValidate.SetViaFastInvoke(entity, subEntity);
             }
             else
             
-             log.LogProblem($"Tried to import an subentity for property {cachedFucinePropertyToPopulate.LowerCaseName} on entity {entity.GetType().Name}, but it isn't marked with FucineSubEntity");
+             log.LogProblem($"Tried to import an subentity for property {propertyToValidate.LowerCaseName} on entity {entity.GetType().Name}, but it isn't marked with FucineSubEntity");
 
             return true;
         }

@@ -57,7 +57,6 @@ namespace Assets.Core.Fucine
         {
             try
             {
-
                 var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 
                 foreach (var cachedProperty in fucineProperties)
