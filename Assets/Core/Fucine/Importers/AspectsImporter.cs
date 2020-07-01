@@ -45,17 +45,17 @@ namespace Assets.Core.Fucine
                             mustExistInProperty.ThisPropInfo.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
-                            Log.LogProblem(
+                            log.LogWarning(
                                 $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but that property is empty.");
 
                         if (!acceptableKeys.Contains(key))
-                            Log.LogProblem(
+                            log.LogWarning(
                                 $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but the key {key} doesn't.");
                     }
                 }
                 else
                 {
-                    Log.LogProblem(
+                    log.LogWarning(
                         $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
                 }
             }

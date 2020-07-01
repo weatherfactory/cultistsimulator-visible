@@ -22,7 +22,7 @@ namespace Assets.Core.Fucine
             }
 
             else
-                Log.LogProblem("ID not specified for a " + typeof(T).Name);
+                log.LogProblem("ID not specified for a " + typeof(T).Name);
 
             return false;
         }

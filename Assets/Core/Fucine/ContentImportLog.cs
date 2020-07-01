@@ -15,6 +15,11 @@ namespace Assets.Core.Fucine
             _contentImportMessages.Add(new ContentImportMessage(problemDesc));
         }
 
+        public void LogWarning(string desc)
+        {
+            _contentImportMessages.Add(new ContentImportMessage(desc, 1));
+        }
+
         public void LogInfo(string desc)
         {
             _contentImportMessages.Add(new ContentImportMessage(desc,0));
