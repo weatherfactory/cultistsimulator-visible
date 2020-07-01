@@ -19,14 +19,14 @@ namespace Assets.Core.Fucine
             if (hsubEntityHashtable==null)
             {
                 Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                subEntity = FucineEntityFactory.CreateEntity(type, new Hashtable(), log);
+                subEntity = WIPFactory.CreateEntity(type, new Hashtable(), log);
                 _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, subEntity);
                 return false;
             }
 
             if(_cachedFucinePropertyToPopulate.FucineAttribute is FucineSubEntity subEntityAttribute)
             {
-                subEntity = FucineEntityFactory.CreateEntity(subEntityAttribute.ObjectType, hsubEntityHashtable, log);
+                subEntity = WIPFactory.CreateEntity(subEntityAttribute.ObjectType, hsubEntityHashtable, log);
                 _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, subEntity);
             }
             else

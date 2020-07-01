@@ -140,6 +140,16 @@ namespace Assets.Core.Entities
 
         }
 
+        public Element()
+        {
+
+            Slots = new List<SlotSpecification>();
+            Aspects = new AspectsDictionary();
+            XTriggers = new Dictionary<string, List<MorphDetails>>();
+            Induces = new List<LinkedRecipeDetails>();
+
+        }
+
         //public Element(string id, string label, string description, int animFrames,string icon)
         //{
         //    _id = id;
@@ -154,11 +164,11 @@ namespace Assets.Core.Entities
         //    Induces=new List<LinkedRecipeDetails>();
 
         //    if (!string.IsNullOrEmpty(icon))
-        
+
         //        Icon = icon;
         //    else
         //        Icon = id;
-        
+
         //}
 
 

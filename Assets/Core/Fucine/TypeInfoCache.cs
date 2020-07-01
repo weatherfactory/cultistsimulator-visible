@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Assets.Core.Entities;
 
 namespace Assets.Core.Fucine
@@ -12,38 +13,6 @@ namespace Assets.Core.Fucine
         // ReSharper disable once StaticMemberInGenericType - ReSharper is concerned we might not realise that a distinct field is stored for each different type argument
         private static readonly HashSet<CachedFucineProperty<T>> FucinePropertiesForType = new HashSet<CachedFucineProperty<T>>();
         //   private static readonly List<string> FucinePropertyNamesForType= new List<string>();
-
-        public static AbstractEntity<T> CreateEntity(Hashtable importDataForEntity, ContentImportLog log)
-        {
-            if (typeof(T) == typeof(BasicVerb))
-                return new BasicVerb(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(DeckSpec))
-                return new DeckSpec(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Element))
-                return new Element(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Ending))
-                return new Ending(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Expulsion))
-                return new Expulsion(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Legacy))
-                return new Legacy(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(LinkedRecipeDetails))
-                return new LinkedRecipeDetails(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(MorphDetails))
-                return new MorphDetails(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(MutationEffect))
-                return new MutationEffect(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(Recipe))
-                return new Recipe(importDataForEntity, log) as AbstractEntity<T>;
-            else if (typeof(T) == typeof(SlotSpecification))
-                return new SlotSpecification(importDataForEntity, log) as AbstractEntity<T>;
-            else
-            {
-                throw new ApplicationException("Don't know about" + typeof(T).Name);
-            }
-
-        }
-
 
 
         //private constructor - it's a static class
@@ -59,7 +28,6 @@ namespace Assets.Core.Fucine
                 {
                     CachedFucineProperty<T> cachedProperty = new CachedFucineProperty<T>( thisProperty, fucineAttribute);
                     FucinePropertiesForType.Add(cachedProperty);
-                  //  FucinePropertyNamesForType.Add(cachedProperty.LowerCaseName);
                 }
             }
         }

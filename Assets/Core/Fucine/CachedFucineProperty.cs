@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using System.Reflection;
 using UnityEngine;
 
@@ -39,32 +38,4 @@ namespace Assets.Core.Fucine
         }
 
     }
-
-
-    public static class FastInvoke
-    {
-        public static Action<TEntity, object> BuildUntypedSetter<TEntity>(PropertyInfo propertyInfo) where TEntity:AbstractEntity<TEntity>
-        {
-            var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
-            if(targetType==null)
-                throw new ApplicationException("Import error: can't find a declaring type for property " + propertyInfo.Name);
-
-            var exInstance = Expression.Parameter(targetType, "t"); //t.PropertyName
-            var exMemberAccess = Expression.MakeMemberAccess(exInstance, propertyInfo);
-
-            //t.propertyValue(Convert(p))
-            var exValue = Expression.Parameter(typeof(object), "p");
-            var exConvertedValue=Expression.Convert(exValue,propertyInfo.PropertyType);
-            var exBody = Expression.Assign(exMemberAccess, exConvertedValue);
-            var lambda=Expression.Lambda<Action<TEntity,object>> (exBody, exInstance, exValue);
-            var action = lambda.Compile();
-            return action;
-        }
-
-
-    }
-
-
-
-
 }

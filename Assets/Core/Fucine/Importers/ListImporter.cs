@@ -19,8 +19,9 @@ namespace Assets.Core.Fucine
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (al==null)
             {
-                Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(type));
+                Type propertyType = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, WIPFactory.CreateObjectWithDefaultConstructor(propertyType));
+               // _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(propertyType));
                 return false;
             }
 
@@ -38,7 +39,7 @@ namespace Assets.Core.Fucine
 
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    var subEntity = FucineEntityFactory.CreateEntity(listMemberType, h, log);
+                    var subEntity = WIPFactory.CreateEntity(listMemberType, h, log);
                     list.Add(subEntity);
                 }
                 else

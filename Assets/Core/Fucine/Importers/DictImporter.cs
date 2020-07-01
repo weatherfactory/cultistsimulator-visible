@@ -181,7 +181,7 @@ namespace Assets.Core.Fucine
             foreach (Hashtable entityHash in list)
             {
                 IEntityWithId
-                    sub =FucineEntityFactory.CreateEntity(listMemberType, entityHash, log);
+                    sub =WIPFactory.CreateEntity(listMemberType, entityHash, log);
 
                 wrapperList.Add(sub);
             }
@@ -198,7 +198,7 @@ namespace Assets.Core.Fucine
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
                 //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    IEntityWithId sub = FucineEntityFactory.CreateEntity(dictMemberType, h, log);
+                    IEntityWithId sub = WIPFactory.CreateEntity(dictMemberType, h, log);
                     dict.Add(sub.Id, sub);
                     _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dict);
                 }

@@ -52,10 +52,6 @@ namespace Assets.Core.Fucine
             return propertiesPopped;
         }
 
-        //public HashSet<CachedFucineProperty<T>> GetFucinePropertiesCached()
-        //{
-        //    return TypeInfoCache<T>.GetCachedFucinePropertiesForType();
-        //}
 
         protected AbstractEntity (Hashtable importDataForEntity,ContentImportLog log)
         {

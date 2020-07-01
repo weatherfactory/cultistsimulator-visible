@@ -717,7 +717,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
                 foreach (Hashtable h in al)
                 {
 
-                    IEntityWithId newEntity = FucineEntityFactory.CreateEntity(T, h, _log);
+                    IEntityWithId newEntity = WIPFactory.CreateEntity(T, h, _log);
 
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
 
