@@ -730,7 +730,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
         }
 
 
-        compendiumToPopulate.RefineAllEntities(_log);
+        compendiumToPopulate.OnPostImport(_log);
 
         return _log;
 

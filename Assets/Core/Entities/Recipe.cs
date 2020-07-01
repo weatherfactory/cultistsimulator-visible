@@ -50,7 +50,7 @@ namespace Assets.Core.Entities
         /// <summary>
         /// Elements that should be purged from the board (including currently dragged card if any). Int value is max number elements to be purged. (Later might also purge from slots and even maybe situations.
         /// </summary>)
-        [FucineDict]
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, int> Purge { get; set; }
 
         [FucineDict]
@@ -146,23 +146,10 @@ namespace Assets.Core.Entities
 
         public Recipe(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
-            Requirements = new Dictionary<string, string>();
-            TableReqs = new Dictionary<string, string>();
-            ExtantReqs = new Dictionary<string, string>();
-            Effects = new Dictionary<string, string>();
-            Alt = new List<LinkedRecipeDetails>();
-            Linked = new List<LinkedRecipeDetails>();
-            Slots = new List<SlotSpecification>();
-            Aspects = new AspectsDictionary();
-            DeckEffects = new Dictionary<string, int>();
-            Purge = new Dictionary<string, int>();
-            HaltVerb = new Dictionary<string, int>();
-            DeleteVerb = new Dictionary<string, int>();
-            Mutations = new List<MutationEffect>();
-            PortalEffect = PortalEffect.None;
+
         }
 
-        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
+        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
                 return;
@@ -185,10 +172,10 @@ namespace Assets.Core.Entities
             }
 
             foreach(var l in Linked)
-                l.RefineWithCompendium(log,populatedCompendium);
+                l.OnPostImport(log,populatedCompendium);
 
             foreach (var a in Alt)
-                a.RefineWithCompendium(log, populatedCompendium);
+                a.OnPostImport(log, populatedCompendium);
 
 
             Refined = true;

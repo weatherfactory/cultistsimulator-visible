@@ -26,16 +26,19 @@ namespace Assets.Core.Fucine
 
     public abstract class Fucine : System.Attribute
     {
-        public object DefaultValue { get; protected set; } //might it be necessary to make this dynamic, later?
+        public object DefaultValue { get; set; } //might it be necessary to make this dynamic, later?
+        public bool ValidateAsElementId { get; set; }
         public Type ObjectType { get; protected set; }
-
+    
         public abstract AbstractImporter CreateImporterInstance();
 
     }
 
     public class FucineValue : Fucine
     {
-
+        public FucineValue()
+        {
+        }
         public FucineValue(int defaultValue)
         {
             ObjectType = typeof(int);

@@ -85,7 +85,7 @@ namespace Assets.Core.Entities
         [FucineValue("")]
         public string Inherits { get; set; }
 
-        [FucineAspects]
+        [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Aspects { get; set; }
 
        [FucineList]
@@ -132,11 +132,6 @@ namespace Assets.Core.Entities
 
         public Element(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
-
-            Slots = new List<SlotSpecification>();
-            Aspects = new AspectsDictionary();
-            XTriggers = new Dictionary<string, List<MorphDetails>>();
-            Induces = new List<LinkedRecipeDetails>();
 
         }
 
@@ -208,14 +203,28 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
+        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined)
                 return;
             Refined = true;
 
-            //confirm aspect ids are valid
-         
+            var fucineProperties = TypeInfoCache<Element>.GetCachedFucinePropertiesForType();
+
+            foreach (var cachedProperty in fucineProperties)
+            {
+                if(cachedProperty.FucineAttribute.ValidateAsElementId)
+                {
+                    object toValidate = cachedProperty.GetViaFastInvoke(this);
+                    populatedCompendium.AddElementIdsToValidate(toValidate);
+
+                }
+            }
+
+
+
+
+
 
             //Apply inherits
             if (!string.IsNullOrEmpty(Inherits))
@@ -242,7 +251,7 @@ namespace Assets.Core.Entities
             }
 
             foreach(var i in Induces)
-                i.RefineWithCompendium(log,populatedCompendium);
+                i.OnPostImport(log,populatedCompendium);
 
           
 

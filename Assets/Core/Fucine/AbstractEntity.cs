@@ -9,7 +9,7 @@ namespace Assets.Core.Fucine
 {
     public interface IEntity
     {
-    void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium);
+    void OnPostImport(ContentImportLog log, ICompendium populatedCompendium);
     }
 
     public abstract class AbstractEntity<T>: IEntity where T : AbstractEntity<T>
@@ -25,7 +25,7 @@ namespace Assets.Core.Fucine
         /// </summary>
         /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
-        public virtual void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
+        public virtual void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined)
                 return;

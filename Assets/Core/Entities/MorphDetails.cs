@@ -69,7 +69,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
+        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if(unknownProperties.Keys.Count>0)

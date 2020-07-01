@@ -40,13 +40,14 @@ public interface ICompendium
     /// <summary>
     /// Run all second-stage populations that occur between / across entities
     /// </summary>
-    void RefineAllEntities(ContentImportLog log);
+    void OnPostImport(ContentImportLog log);
 
     void Reset();
 
     void LogFnords(ContentImportLog log);
     void CountWords(ContentImportLog log);
     void LogMissingImages(ContentImportLog log);
+    void AddElementIdsToValidate(object validateThis);
 }
 
 public class Compendium : ICompendium
@@ -62,6 +63,26 @@ public class Compendium : ICompendium
     private Dictionary<string, Legacy> _legacies;
     private Dictionary<string, Ending> _endings;
     private Dictionary<string, DeckSpec> _decks;
+
+    private List<string> aspectIdsToValidate=new List<string>();
+
+
+    public void AddElementIdsToValidate(object validateThis)
+    {
+        if (validateThis is Dictionary<string, string> di)
+            aspectIdsToValidate.AddRange(di.Keys);
+        if (validateThis is Dictionary<string, string> ds)
+            aspectIdsToValidate.AddRange(ds.Keys);
+        else if(validateThis is IAspectsDictionary a)
+            aspectIdsToValidate.AddRange(a.KeysAsList());
+        else if(validateThis is List<string> l)
+            aspectIdsToValidate.AddRange(l);
+        else if(validateThis is string s)
+            aspectIdsToValidate.Add(s);
+        else
+           throw new ArgumentException("Unknown argument for element validation: " + validateThis.ToString());
+    }
+
 
 
     public Compendium()
@@ -86,6 +107,8 @@ public class Compendium : ICompendium
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
         allEntities.Add(typeof(DeckSpec), _decks);
+
+
     }
 
 
@@ -98,14 +121,20 @@ public class Compendium : ICompendium
             _recipes.Add(entity as Recipe);
     }
 
-    public void RefineAllEntities(ContentImportLog log)
+    public void OnPostImport(ContentImportLog log)
     {
         foreach (var d in allEntities.Values)
         {
             HashSet <IEntity> entities= new HashSet<IEntity>((IEnumerable<IEntity>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
 
             foreach (var e in entities)
-                e.RefineWithCompendium(log,this);
+                e.OnPostImport(log,this);
+
+
+            var missingAspects = aspectIdsToValidate. Except(_elements.Keys);
+            foreach (var missingAspect in missingAspects)
+              log.LogWarning("missing" + missingAspect);
+
 
         }
     }

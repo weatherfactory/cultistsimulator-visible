@@ -59,7 +59,7 @@ namespace Assets.Core.Entities
             this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
-        public override void RefineWithCompendium(ContentImportLog log, ICompendium populatedCompendium)
+        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
 
                  populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
 
-                 internalRecipe.RefineWithCompendium(log,populatedCompendium); //this will log any issues with the import
+                 internalRecipe.OnPostImport(log,populatedCompendium); //this will log any issues with the import
             }
         }
 
