@@ -59,22 +59,20 @@ namespace Assets.Core.Entities
             this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
             {
                 //unknown properties in a LinkedRecipeDetails are probably an internal recipe
-                unknownProperties.Add("id",Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
+                unknownProperties.Add("id", Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
 
-                Recipe internalRecipe =new Recipe(unknownProperties,log);
-                
+                Recipe internalRecipe = new Recipe(unknownProperties, log);
 
-                 populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
+                populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
 
-                 internalRecipe.OnPostImport(log,populatedCompendium); //this will log any issues with the import
+                internalRecipe.OnPostImport(log, populatedCompendium); //this will log any issues with the import
             }
         }
-
     }
 }

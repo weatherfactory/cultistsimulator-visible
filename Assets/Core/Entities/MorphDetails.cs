@@ -69,15 +69,15 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
-            if(unknownProperties.Keys.Count>0)
+            if (unknownProperties.Keys.Count > 0)
             {
-                foreach(var k in unknownProperties.Keys)
+                foreach (var k in unknownProperties.Keys)
 
-                        log.LogInfo($"Unknown property in import: {k} for MorphDetails ({Id} {Chance} {MorphEffect} {Level})");
-                
+                    log.LogInfo($"Unknown property in import: {k} for MorphDetails ({Id} {Chance} {MorphEffect} {Level})");
+
             }
         }
 

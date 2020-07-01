@@ -124,6 +124,10 @@ private const string PRIMARY_SLOT="primary";
 
     }
 
+    protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+    {
+        
+    }
 }
 
 

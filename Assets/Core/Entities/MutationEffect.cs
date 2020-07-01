@@ -35,7 +35,8 @@ namespace Assets.Core.Entities
         {
         }
 
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)
@@ -44,6 +45,5 @@ namespace Assets.Core.Entities
                     log.LogInfo($"Unknown property in import: {k} for MutationEffect (filter:{Filter}, mutate:{Mutate}, additive:{Additive})");
             }
         }
-
     }
 }

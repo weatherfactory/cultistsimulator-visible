@@ -92,5 +92,10 @@ namespace Assets.Core.Entities
             return defaultEnding;
 
         }
+
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+        {
+            
+        }
     }
 }

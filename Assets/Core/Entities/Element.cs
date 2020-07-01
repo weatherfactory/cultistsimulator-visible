@@ -203,29 +203,10 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
         {
-            if (Refined)
-                return;
-            Refined = true;
-
-            var fucineProperties = TypeInfoCache<Element>.GetCachedFucinePropertiesForType();
-
-            foreach (var cachedProperty in fucineProperties)
-            {
-                if(cachedProperty.FucineAttribute.ValidateAsElementId)
-                {
-                    object toValidate = cachedProperty.GetViaFastInvoke(this);
-                    populatedCompendium.AddElementIdsToValidate(toValidate);
-
-                }
-            }
-
-
-
-
-
-
+ 
+           
             //Apply inherits
             if (!string.IsNullOrEmpty(Inherits))
             {
@@ -237,25 +218,17 @@ namespace Assets.Core.Entities
 
             //if the element is a member of a uniqueness group, add it as an aspect also.
             if (!string.IsNullOrEmpty(UniquenessGroup))
-                if(!populatedCompendium.IsKnownElement(UniquenessGroup))
+                if (!populatedCompendium.IsKnownElement(UniquenessGroup))
                     log.LogProblem($"{Id} has {UniquenessGroup} specified as a UniquenessGroup, but there's no aspect of that name");
                 else
-                    Aspects.Add(UniquenessGroup,1);
-            
-            //log unknown properties
-            Hashtable unknownProperties = PopAllUnknownProperties();
-            if (unknownProperties.Keys.Count > 0)
-            {
-                foreach (var k in unknownProperties.Keys)
-                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
-            }
+                    Aspects.Add(UniquenessGroup, 1);
 
-            foreach(var i in Induces)
-                i.OnPostImport(log,populatedCompendium);
-
-          
+         
+            foreach (var i in Induces)
+                i.OnPostImport(log, populatedCompendium);
 
         }
+
 
     }
 

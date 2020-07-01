@@ -76,26 +76,9 @@ namespace Assets.Core.Entities
 
         }
 
-        //public Legacy(string id, string label, string description, string startdescription, string image,
-        //    string fromEnding, bool availableWithoutEndingMatch, List<string> excludesOnEnding, List<string> statusBarElements, string startingVerbId)
-        //{
-        //    Id = id;
-        //    Label = label;
-        //    Description = description;
-        //    StartDescription = startdescription;
-        //    Image = image;
-        //    Effects = new AspectsDictionary();
-        //    FromEnding = fromEnding;
-        //    AvailableWithoutEndingMatch = availableWithoutEndingMatch;
-        //    StatusBarElements = statusBarElements;
-        //    ExcludesOnEnding = excludesOnEnding;
-
-        //    if (string.IsNullOrEmpty(startingVerbId))
-        //        StartingVerbId = NoonConstants.DEFAULT_STARTING_VERB_ID;
-        //    else
-        //        StartingVerbId =
-        //            startingVerbId;
-
-        //}
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+        {
+            
+        }
     }
 }

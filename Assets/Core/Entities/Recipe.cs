@@ -154,31 +154,28 @@ namespace Assets.Core.Entities
             if (Refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
                 return;
 
+          
+        }
+
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+        {
             if (InternalDeck.Spec.Any())
             {
                 InternalDeck.SetId("deck." + Id);
-                if(populatedCompendium.TryAddDeckSpec(InternalDeck))
+                if (populatedCompendium.TryAddDeckSpec(InternalDeck))
                     DeckEffects.Add(InternalDeck.Id, InternalDeck.Draws);
                 else
                     log.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);
             }
 
-            Hashtable unknownProperties = PopAllUnknownProperties();
 
-            if (unknownProperties.Keys.Count > 0)
-            {
-                foreach (var k in unknownProperties.Keys)
-                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name} with ID {Id}");
-            }
 
-            foreach(var l in Linked)
-                l.OnPostImport(log,populatedCompendium);
+            foreach (var l in Linked)
+                l.OnPostImport(log, populatedCompendium);
 
             foreach (var a in Alt)
                 a.OnPostImport(log, populatedCompendium);
 
-
-            Refined = true;
         }
 
 

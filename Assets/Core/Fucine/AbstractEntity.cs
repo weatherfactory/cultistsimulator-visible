@@ -29,6 +29,23 @@ namespace Assets.Core.Fucine
         {
             if (Refined)
                 return;
+
+            var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
+
+            foreach (var cachedProperty in fucineProperties)
+            {
+                if (cachedProperty.FucineAttribute.ValidateAsElementId)
+                {
+                    object toValidate = cachedProperty.GetViaFastInvoke(this as T);
+                    populatedCompendium.AddElementIdsToValidate(toValidate);
+
+                }
+            }
+
+
+            OnPostImportEntitySpecifics(log,populatedCompendium);
+
+
             Hashtable unknownProperties = PopAllUnknownProperties();
 
             if (unknownProperties.Keys.Count > 0)
@@ -39,6 +56,8 @@ namespace Assets.Core.Fucine
 
             Refined = true;
         }
+
+        protected abstract void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium);
 
         public void PushUnknownProperty(object key, object value)
         {

@@ -120,11 +120,10 @@ namespace Assets.Core.Entities
         {
         }
 
-
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
         {
             RegisterUniquenessGroups(populatedCompendium);
-            base.OnPostImport(log, populatedCompendium);
+
         }
 
 
