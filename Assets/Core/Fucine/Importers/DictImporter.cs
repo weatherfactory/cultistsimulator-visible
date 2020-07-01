@@ -71,43 +71,10 @@ namespace Assets.Core.Fucine
                 PopulateAsDictionaryOfEntities(entity, _cachedFucinePropertyToPopulate, hSubEntity, dictMemberType, dict, log);
             }
 
-
-
-
-            ValidateKeyMustExistIn(entity, _cachedFucinePropertyToPopulate, dictAttribute.KeyMustExistIn, entityProperties, dict,log);
+            if(dictAttribute!=null && dict!=null)
+              ValidateKeysMustExistIn(entity, _cachedFucinePropertyToPopulate, dictAttribute.KeyMustExistIn, entityProperties, dict.Keys,log);
 
             return true;
-        }
-
-        private void ValidateKeyMustExistIn<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, string KeyMustExistInPropertyName,
-            HashSet<CachedFucineProperty<T>> entityProperties, IDictionary dict,ContentImportLog log) where T:AbstractEntity<T>
-        {
-            if (!string.IsNullOrEmpty(KeyMustExistInPropertyName))
-            {
-                var mustExistInProperty =
-                    entityProperties.SingleOrDefault(p => p.ThisPropInfo.Name == KeyMustExistInPropertyName);
-                if (mustExistInProperty != null)
-                {
-                    foreach (var key in dict.Keys)
-                    {
-                        List<string> acceptableKeys =
-                            mustExistInProperty.ThisPropInfo.GetValue(entity) as List<string>;
-
-                        if (acceptableKeys == null)
-                            log.LogWarning(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {KeyMustExistInPropertyName}, but that property is empty.");
-
-                       else if (!acceptableKeys.Contains(key))
-                            log.LogWarning(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {KeyMustExistInPropertyName}, but the key {key} doesn't.");
-                    }
-                }
-                else
-                {
-                    log.LogWarning(
-                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {KeyMustExistInPropertyName}, but that property doesn't exist.");
-                }
-            }
         }
 
         public void PopulateAsDictionaryOfStrings<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary,ContentImportLog log) where T:AbstractEntity<T>

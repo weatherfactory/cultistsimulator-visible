@@ -10,6 +10,7 @@ namespace Assets.Core.Fucine
         public PropertyInfo ThisPropInfo { get; }
         public Fucine FucineAttribute { get; }
         public string LowerCaseName { get; }
+        private readonly Func<TTarget, object> FastInvokeGetter;
         private readonly Action<TTarget, object> FastInvokeSetter;
 
 
@@ -18,7 +19,11 @@ namespace Assets.Core.Fucine
             ThisPropInfo = thisPropInfo;
             FucineAttribute = fucineAttribute;
             LowerCaseName = thisPropInfo.Name.ToLowerInvariant();
-           if(thisPropInfo.CanWrite)
+
+            if(thisPropInfo.CanRead)
+               FastInvokeGetter = FastInvoke.BuildUntypedGetter<TTarget>(thisPropInfo);
+
+            if (thisPropInfo.CanWrite)
 
                FastInvokeSetter = FastInvoke.BuildUntypedSetter<TTarget>(thisPropInfo);
         }
@@ -28,6 +33,10 @@ namespace Assets.Core.Fucine
             return FucineAttribute.CreateImporterInstance();
         }
 
+        public object GetViaFastInvoke(TTarget target)
+        {
+            return FastInvokeGetter(target);
+        }
 
         public void SetViaFastInvoke(TTarget target, IAspectsDictionary value)
         {

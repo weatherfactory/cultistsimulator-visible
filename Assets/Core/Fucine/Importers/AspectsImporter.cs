@@ -32,33 +32,9 @@ namespace Assets.Core.Fucine
 
             _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, aspects);
 
+            if (aspectsAttribute != null)
+                ValidateKeysMustExistIn(entity, _cachedFucinePropertyToPopulate, aspectsAttribute.KeyMustExistIn, entityProperties, htEntries.Keys, log);
 
-            if (aspectsAttribute.KeyMustExistIn != null)
-            {
-                var mustExistInProperty =
-                    entityProperties.SingleOrDefault(p => p.LowerCaseName == aspectsAttribute.KeyMustExistIn);
-                if (mustExistInProperty != null)
-                {
-                    foreach (var key in htEntries.Keys)
-                    {
-                        List<string> acceptableKeys =
-                            mustExistInProperty.ThisPropInfo.GetValue(entity) as List<string>;
-
-                        if (acceptableKeys == null)
-                            log.LogWarning(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but that property is empty.");
-
-                        if (!acceptableKeys.Contains(key))
-                            log.LogWarning(
-                                $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {mustExistInProperty}, but the key {key} doesn't.");
-                    }
-                }
-                else
-                {
-                    log.LogWarning(
-                        $"{entity.GetType().Name} insists that {_cachedFucinePropertyToPopulate.LowerCaseName} should exist in {aspectsAttribute.KeyMustExistIn}, but that property doesn't exist.");
-                }
-            }
 
             return true;
         }

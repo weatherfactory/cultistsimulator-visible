@@ -7,6 +7,23 @@ namespace Assets.Core.Fucine
 {
     public static class FastInvoke
     {
+
+        public static Func<TEntity,object> BuildUntypedGetter<TEntity>(PropertyInfo propertyInfo) where TEntity : AbstractEntity<TEntity>
+        {
+            var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
+            if (targetType == null)
+                throw new ApplicationException("Import error: can't find a declaring type for property " + propertyInfo.Name);
+
+            var exInstance = Expression.Parameter(targetType, "t"); //t.PropertyName
+            var exMemberAccess = Expression.MakeMemberAccess(exInstance, propertyInfo);
+
+            //t.propertyValue(Convert(p))
+            var exConvertToObject = Expression.Convert(exMemberAccess, typeof(object));
+            var lambda = Expression.Lambda<Func<TEntity,object>>(exConvertToObject, exInstance);
+            var func = lambda.Compile();
+            return func;
+        }
+
         public static Action<TEntity, object> BuildUntypedSetter<TEntity>(PropertyInfo propertyInfo) where TEntity:AbstractEntity<TEntity>
         {
             var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
