@@ -5,16 +5,18 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
-
-    public interface IFactory
+    public interface IEntityFactory
     {
-        object ConstructorFastInvoke();
+        object ConstructorFastInvoke(Hashtable data, ContentImportLog log);
+
     }
     
-    public class EntityFactory<T> where T: AbstractEntity<T>
+    
+    public class EntityFactory<T>: IEntityFactory where T: AbstractEntity<T>
     {
 
         private readonly Func<Hashtable,ContentImportLog,T> FastInvokeConstructor;
@@ -26,15 +28,20 @@ namespace Assets.Core.Fucine
             FastInvokeConstructor = FastInvoke.BuildEntityConstructor<T>();
         }
 
-        public T ConstructorFastInvoke(Hashtable data, ContentImportLog log)
+        public object ConstructorFastInvoke(Hashtable data, ContentImportLog log)
         {
            return FastInvokeConstructor(data,log);
         }
 
     }
 
+    public interface INonEntityFactory
+    {
+        object ConstructorFastInvoke();
+    }
 
-    public class NonEntityFactory<T>:IFactory
+
+    public class NonEntityFactory<T>:INonEntityFactory
     {
 
         private readonly Func<T> FastInvokeConstructor;
