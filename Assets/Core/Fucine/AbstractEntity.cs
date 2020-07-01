@@ -63,8 +63,7 @@ namespace Assets.Core.Fucine
                 foreach (var cachedProperty in fucineProperties)
                 {
                     var importer = cachedProperty.GetImporterForProperty();
-                    bool imported = importer.TryImport<T>(this as T, cachedProperty, importDataForEntity,
-                        typeof(T), log);
+                    bool imported = importer.TryImportProperty<T>(this as T, cachedProperty, importDataForEntity, log);
                     if (imported)
                         importDataForEntity.Remove(cachedProperty.LowerCaseName);
                 }

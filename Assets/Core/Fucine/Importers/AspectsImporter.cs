@@ -10,8 +10,7 @@ namespace Assets.Core.Fucine
     public class AspectsImporter : AbstractImporter
     {
 
-        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
-            Type entityType, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, ContentImportLog log)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             var htEntries = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);

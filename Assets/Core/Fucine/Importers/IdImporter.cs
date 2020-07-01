@@ -8,8 +8,7 @@ namespace Assets.Core.Fucine
 {
     public class IdImporter : AbstractImporter
     {
-        public override bool TryImport<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,
-            Type entityType, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData,ContentImportLog log)
         {
             if (entity is IEntityWithId entityWithId)
             {
@@ -23,7 +22,7 @@ namespace Assets.Core.Fucine
             }
 
             else
-                Log.LogProblem("ID not specified for a " + entityType.Name);
+                Log.LogProblem("ID not specified for a " + typeof(T).Name);
 
             return false;
         }
