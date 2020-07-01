@@ -105,7 +105,7 @@ namespace Assets.Core.Fucine
             return true;
         }
 
-        public void PopulateAsDictionaryOfStrings<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary,ContentImportLog log) where T:AbstractEntity<T>
+        public void PopulateAsDictionaryOfStrings<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary,ContentImportLog log) where T:AbstractEntity<T>
         {
             //Dictionary<string,string> - like DrawMessages
                 foreach (DictionaryEntry de in subHashtable)
@@ -113,10 +113,10 @@ namespace Assets.Core.Fucine
                     dictionary.Add(de.Key, de.Value);
                 }
 
-                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, dictionary);
+                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dictionary);
         }
 
-        public void PopulateAsDictionaryOfInts<T>(AbstractEntity<T> entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary, ContentImportLog log) where T : AbstractEntity<T>
+        public void PopulateAsDictionaryOfInts<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable subHashtable, IDictionary dictionary, ContentImportLog log) where T : AbstractEntity<T>
         {
             //Dictionary<string,int> - like HaltVerbs
             foreach (DictionaryEntry de in subHashtable)
@@ -125,7 +125,7 @@ namespace Assets.Core.Fucine
                 dictionary.Add(de.Key, value);
             }
 
-            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity,dictionary);
+            _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity,dictionary);
         }
 
 
