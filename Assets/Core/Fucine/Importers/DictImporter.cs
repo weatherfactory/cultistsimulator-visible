@@ -39,7 +39,7 @@ namespace Assets.Core.Fucine
 
 
             var dictAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineDict;
-            var entityProperties = entityType.GetProperties();
+            var entityProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 
 
 
@@ -78,13 +78,13 @@ namespace Assets.Core.Fucine
             if (dictAttribute.KeyMustExistIn != null)
             {
                 var mustExistInProperty =
-                    entityProperties.SingleOrDefault(p => p.Name == dictAttribute.KeyMustExistIn);
+                    entityProperties.SingleOrDefault(p => p.ThisPropInfo.Name == dictAttribute.KeyMustExistIn);
                 if (mustExistInProperty != null)
                 {
                     foreach (var key in dict.Keys)
                     {
                         List<string> acceptableKeys =
-                            mustExistInProperty.GetValue(entity) as List<string>;
+                            mustExistInProperty.ThisPropInfo.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
                             Log.LogProblem(

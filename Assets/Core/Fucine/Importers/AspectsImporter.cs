@@ -24,7 +24,7 @@ namespace Assets.Core.Fucine
             IAspectsDictionary aspects = new AspectsDictionary();
 
             var aspectsAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineAspects;
-            var entityProperties = entityType.GetProperties();
+            var entityProperties =TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 
             foreach (string k in htEntries.Keys)
             {
@@ -37,13 +37,13 @@ namespace Assets.Core.Fucine
             if (aspectsAttribute.KeyMustExistIn != null)
             {
                 var mustExistInProperty =
-                    entityProperties.SingleOrDefault(p => p.Name == aspectsAttribute.KeyMustExistIn);
+                    entityProperties.SingleOrDefault(p => p.LowerCaseName == aspectsAttribute.KeyMustExistIn);
                 if (mustExistInProperty != null)
                 {
                     foreach (var key in htEntries.Keys)
                     {
                         List<string> acceptableKeys =
-                            mustExistInProperty.GetValue(entity) as List<string>;
+                            mustExistInProperty.ThisPropInfo.GetValue(entity) as List<string>;
 
                         if (acceptableKeys == null)
                             Log.LogProblem(
