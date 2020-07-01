@@ -20,7 +20,7 @@ namespace Assets.Core.Fucine
             {
                 Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
                 subEntity = WIPFactory.CreateEntity(type, new Hashtable(), log);
-                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, subEntity);
+                _cachedFucinePropertyToPopulate.SetValueFastInvoke(entity, subEntity);
                 return false;
             }
 
