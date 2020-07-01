@@ -29,6 +29,11 @@ namespace Assets.Core.Fucine
         }
 
 
+        public void SetViaFastInvoke(TTarget target, IAspectsDictionary value)
+        {
+                FastInvokeSetter(target, value);
+        }
+
         public void SetViaFastInvoke(TTarget target,object value)
         {
       if(ThisPropInfo.PropertyType.IsEnum)

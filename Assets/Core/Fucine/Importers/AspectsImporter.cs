@@ -31,7 +31,7 @@ namespace Assets.Core.Fucine
                 aspects.Add(k, Convert.ToInt32(htEntries[k]));
             }
 
-            _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, aspects);
+            _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, aspects);
 
 
             if (aspectsAttribute.KeyMustExistIn != null)
