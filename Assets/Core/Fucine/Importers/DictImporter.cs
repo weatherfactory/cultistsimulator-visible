@@ -22,8 +22,8 @@ namespace Assets.Core.Fucine
 
             if (hSubEntity == null)
             {
-                Type type = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
-                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, Activator.CreateInstance(type));
+                Type typeForDefaultSubEntity = _cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType;
+                _cachedFucinePropertyToPopulate.ThisPropInfo.SetValue(entity, WIPFactory.CreateObjectWithDefaultConstructor(typeForDefaultSubEntity));
                 return false;
             }
 
@@ -137,7 +137,7 @@ namespace Assets.Core.Fucine
             //either way, it's implicit keys: fatiguing, exiling... 
             foreach (string dictKeyForList in subHashtable.Keys)
             {
-                IList wrapperList = Activator.CreateInstance(wrapperListType) as IList;
+                IList wrapperList = WIPFactory.CreateObjectWithDefaultConstructor(wrapperListType) as IList;
 
                 //if it's potentially a QuickSpecEntity 
                 if (listMemberType.GetInterfaces().Contains(typeof(IQuickSpecEntity)) && (subHashtable[dictKeyForList] is string quickSpecEntityValue))
