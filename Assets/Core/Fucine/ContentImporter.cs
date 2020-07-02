@@ -39,13 +39,6 @@ public class ContentImporter
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
 
-
-    public Dictionary<string, IVerb> Verbs;
-    public Dictionary<string, Element> Elements;
-    public Dictionary<string, Legacy> Legacies;
-    public Dictionary<string, Ending> Endings;
-    public List<Recipe> Recipes;
-    private Dictionary<string, IDeckSpec> DeckSpecs;
     
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
 
@@ -55,12 +48,7 @@ public class ContentImporter
     public ContentImporter()
     {
        
-        Verbs = new Dictionary<string, IVerb>();
-        Elements = new Dictionary<string, Element>();
-        Recipes = new List<Recipe>();
-        DeckSpecs = new Dictionary<string, IDeckSpec>();
-        Legacies = new Dictionary<string, Legacy>();
-		Endings = new Dictionary<string, Ending>();
+
     }
 
     public static IEnumerable<string> GetInstalledDlc()
