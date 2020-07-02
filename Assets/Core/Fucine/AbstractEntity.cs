@@ -84,6 +84,7 @@ namespace Assets.Core.Fucine
 
         protected AbstractEntity (Hashtable importDataForEntity,ContentImportLog log)
         {
+            //this still needs an empty body (or not empty if I want specific logic) in each of the subclasses, or the FastInvoke constructor won't work
             try
             {
                 var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();

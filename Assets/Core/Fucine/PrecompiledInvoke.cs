@@ -5,10 +5,10 @@ using System.Reflection;
 
 namespace Assets.Core.Fucine
 {
-    public static class FastInvoke
+    public static class PrecompiledInvoke
     {
 
-        public static Func<TEntity,object> BuildUntypedGetter<TEntity>(PropertyInfo propertyInfo) where TEntity : AbstractEntity<TEntity>
+        public static Func<TEntity,object> BuildGetter<TEntity>(PropertyInfo propertyInfo) where TEntity : AbstractEntity<TEntity>
         {
             var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
             if (targetType == null)
@@ -24,7 +24,7 @@ namespace Assets.Core.Fucine
             return func;
         }
 
-        public static Action<TEntity, object> BuildUntypedSetter<TEntity>(PropertyInfo propertyInfo) where TEntity:AbstractEntity<TEntity>
+        public static Action<TEntity, object> BuildSetter<TEntity>(PropertyInfo propertyInfo) where TEntity:AbstractEntity<TEntity>
         {
             var targetType = propertyInfo.DeclaringType; //this is the type of the class object of which the property is a member
             if(targetType==null)

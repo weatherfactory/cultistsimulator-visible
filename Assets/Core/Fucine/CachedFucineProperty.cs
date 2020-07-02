@@ -21,11 +21,11 @@ namespace Assets.Core.Fucine
             LowerCaseName = thisPropInfo.Name.ToLowerInvariant();
 
             if(thisPropInfo.CanRead)
-               FastInvokeGetter = FastInvoke.BuildUntypedGetter<TTarget>(thisPropInfo);
+               FastInvokeGetter = PrecompiledInvoke.BuildGetter<TTarget>(thisPropInfo);
 
             if (thisPropInfo.CanWrite)
 
-               FastInvokeSetter = FastInvoke.BuildUntypedSetter<TTarget>(thisPropInfo);
+               FastInvokeSetter = PrecompiledInvoke.BuildSetter<TTarget>(thisPropInfo);
         }
 
         public AbstractImporter GetImporterForProperty()

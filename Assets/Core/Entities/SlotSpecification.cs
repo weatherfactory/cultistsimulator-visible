@@ -80,8 +80,6 @@ private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
-        Required = new AspectsDictionary();
-        Forbidden = new AspectsDictionary();
     }
 
     public static SlotSpecification CreatePrimarySlotSpecification()

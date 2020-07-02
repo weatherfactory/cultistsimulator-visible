@@ -24,7 +24,7 @@ namespace Assets.Core.Fucine
         public EntityFactory()
         {
 
-            _fastInvokeConstructor = FastInvoke.BuildEntityConstructor<T>();
+            _fastInvokeConstructor = PrecompiledInvoke.BuildEntityConstructor<T>();
         }
 
         public object ConstructorFastInvoke(Hashtable data, ContentImportLog log)
