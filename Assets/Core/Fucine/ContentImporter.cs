@@ -38,18 +38,9 @@ public class ContentImporter
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
-
-    
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
+    readonly ContentImportLog _log=new ContentImportLog();
 
-    ContentImportLog _log=new ContentImportLog();
-
-
-    public ContentImporter()
-    {
-       
-
-    }
 
     public static IEnumerable<string> GetInstalledDlc()
     {
@@ -62,10 +53,10 @@ public class ContentImporter
 
 
 
-    private ArrayList GetContentItems(string contentOfType)
+    private ArrayList GetEntityDataFromFiles(string entityFolder)
     {
-        var contentFolder = CORE_CONTENT_DIR + contentOfType;
-        var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
+        var contentFolder = CORE_CONTENT_DIR + entityFolder;
+        var contentOverrideFolder = MORE_CONTENT_DIR + entityFolder;
         var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
         if(coreContentFiles.Any())
           coreContentFiles.Sort();
@@ -74,13 +65,10 @@ public class ContentImporter
              overridecontentFiles.Sort();
 
         
-        var contentItemArrayList = ContentImportForLoc.GetContentItemsWithLocalisation(contentOfType, coreContentFiles, overridecontentFiles,_log);
-#if MODS
+        var contentItemArrayList = ContentImportForLoc.GetContentItemsWithLocalisation(entityFolder, coreContentFiles, overridecontentFiles,_log);
+
         var contentImportForMods=new ContentImportForMods();
-        return contentImportForMods.ProcessContentItemsWithMods(contentItemArrayList, contentOfType);
-#else
-        return contentItemArrayList;
-#endif
+        return contentImportForMods.ProcessContentItemsWithMods(contentItemArrayList, entityFolder);
     }
 
     
@@ -97,7 +85,7 @@ public class ContentImporter
                
             if(importableAttribute!=null)
             {
-                ArrayList al = GetContentItems(importableAttribute.TaggedAs);
+                ArrayList al = GetEntityDataFromFiles(importableAttribute.TaggedAs);
 
                 foreach (Hashtable h in al)
                 {
@@ -107,7 +95,7 @@ public class ContentImporter
             }
 
             if (_log.GetMessages().Any(m => m.MessageLevel > 1))
-                //serious problem: bug out and report.
+                //found a serious problem: bug out and report.
                 return _log;
         }
 
