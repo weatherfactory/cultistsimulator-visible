@@ -16,7 +16,7 @@ namespace Assets.Core.Entities
         }
 
 
-        [FucineAspects]
+        [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Filter { get; set; }
         
         [FucineValue(1)] 

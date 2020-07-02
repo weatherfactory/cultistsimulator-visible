@@ -87,7 +87,7 @@ namespace Assets.Core.Entities
 
 
         //Spec determines which cards start in the deckSpec after each reset
-        [FucineList]
+        [FucineList(ValidateAsElementId = true)]
         public List<string> Spec
         {
             get => _spec;
