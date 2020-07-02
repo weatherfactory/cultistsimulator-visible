@@ -85,104 +85,8 @@ public class ContentImporter
         if(overridecontentFiles.Any())
              overridecontentFiles.Sort();
 
-        List<string> allContentFiles = new List<string>();
-
-        allContentFiles.AddRange(coreContentFiles);
-        allContentFiles.AddRange(overridecontentFiles);
-        if (!allContentFiles.Any()) _log.LogProblem("Can't find any " + contentOfType + " to import as content");
-
-        ArrayList contentItemArrayList = new ArrayList();
-		ArrayList originalArrayList = new ArrayList();
-        ArrayList localisedArrayList = new ArrayList();
-    
-        //into alpha order
-        allContentFiles.Sort();
-      
-       foreach (var contentFile in allContentFiles)
-        {
-            //json for each content file
-            string json = File.ReadAllText(contentFile);
-            try
-            {
-                //populate relevant array list
-              originalArrayList = SimpleJsonImporter.Import(json,true).GetArrayList(contentOfType);
-            }
-            catch (Exception e)
-            {
-                _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                return null;
-            }
-
-			// Now look for localised language equivalent of the same file and parse that
-			string locFolder = "core_" + LanguageTable.targetCulture; //ahem. - AK
-			string locFile = contentFile;
-			locFile = locFile.Replace( "core", locFolder ); //ahem, further. - AK
-            if (File.Exists(locFile))	// If no file exists, no localisation happens
-			{
-				json = File.ReadAllText(locFile);
-				if (json.Length > 0)
-				{
-					try
-					{
-						localisedArrayList = SimpleJsonImporter.Import(json,true).GetArrayList(contentOfType);
-					}
-					catch (Exception e)
-					{
-                        _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                        return null;
-					}
-
-
-
-					bool repair = false;
-					bool changed = false;
-#if UNITY_EDITOR && LOC_AUTO_REPAIR
-					//if (locFile.EndsWith("events.json"))
-						repair = true;
-#endif
-					// We now have two sets of data which SHOULD match pair for pair - english and translated.
-					// Traverse the dataset copying the following fields into the core data. Add new fields here if they need translating.
-					// If the field is a list it will have ALL contents inside localised
-					string[] fieldsToTranslate = { "label", "description", "startdescription", "drawmessages" };
-
-					//
-					// COPY LOCALISATION DATA INTO originalArrayList
-					//
-                    var  thisIsATemporaryHomeForThisMethod=new ContentImportForMods();
-                    thisIsATemporaryHomeForThisMethod.CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate, false, repair, ref changed );
-
-#if UNITY_EDITOR && LOC_AUTO_REPAIR
-NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be here?
-    //(a) we don't actually autofix the file unless one is missing, and
-    //(b) the log is currently showing messages about the /more files, which shouldn't be localised to /core anyway.
-					if (changed)
-					{
-						bool testOutput = false;
-						if (testOutput)
-						{
-							/*
-							string backupFile = locFile.Replace( ".json", "_backup.json" );
-							if (!File.Exists(backupFile))
-							{
-								FileUtil.CopyFileOrDirectory(locFile,backupFile);	// Soft backup - skip if already there
-							}
-							*/
-							string outputFile = locFile.Replace( ".json", "_out.json" );
-							Export( outputFile, contentOfType, originalArrayList );
-							//FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
-						}
-						else
-						{
-							Export( locFile, contentOfType, originalArrayList );
-						}
-						NoonUtility.Log("Exported ["+ locFile +"]");
-					}
-#endif
-                }
-            }
-
-			contentItemArrayList.AddRange( originalArrayList );
-        }
+        
+        var contentItemArrayList = ContentImportForLoc.GetContentItemsWithLocalisation(contentOfType, coreContentFiles, overridecontentFiles,_log);
 #if MODS
         var contentImportForMods=new ContentImportForMods();
         return contentImportForMods.ProcessContentItemsWithMods(contentItemArrayList, contentOfType);
@@ -191,7 +95,7 @@ NoonUtility.Log("Localising ["+ locFile +"]");  //AK: I think this should be her
 #endif
     }
 
-
+    
 
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
