@@ -25,11 +25,31 @@ namespace Assets.Core.Fucine
         /// </summary>
         /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
-        public virtual void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
+        public void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (Refined)
                 return;
 
+            SupplyValidationRequirementsToCompendium(populatedCompendium);
+            OnPostImportForSpecificEntity(log,populatedCompendium);
+            PopUnknownKeysToLog(log);
+
+            Refined = true;
+        }
+
+        private void PopUnknownKeysToLog(ContentImportLog log)
+        {
+            Hashtable unknownProperties = PopAllUnknownProperties();
+
+            if (unknownProperties.Keys.Count > 0)
+            {
+                foreach (var k in unknownProperties.Keys)
+                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name}");
+            }
+        }
+
+        private void SupplyValidationRequirementsToCompendium(ICompendium populatedCompendium)
+        {
             var fucineProperties = TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 
             foreach (var cachedProperty in fucineProperties)
@@ -38,26 +58,11 @@ namespace Assets.Core.Fucine
                 {
                     object toValidate = cachedProperty.GetViaFastInvoke(this as T);
                     populatedCompendium.AddElementIdsToValidate(toValidate);
-
                 }
             }
-
-
-            OnPostImportEntitySpecifics(log,populatedCompendium);
-
-
-            Hashtable unknownProperties = PopAllUnknownProperties();
-
-            if (unknownProperties.Keys.Count > 0)
-            {
-                foreach (var k in unknownProperties.Keys)
-                    log.LogInfo($"Unknown property in import: {k} for {GetType().Name}");
-            }
-
-            Refined = true;
         }
 
-        protected abstract void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium);
+        protected abstract void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium);
 
         public void PushUnknownProperty(object key, object value)
         {

@@ -59,7 +59,7 @@ namespace Assets.Core.Entities
             this.Challenges = Challenges ?? new Dictionary<string, string>();
         }
 
-        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
             if (unknownProperties.Keys.Count > 0)

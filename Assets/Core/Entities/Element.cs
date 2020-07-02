@@ -203,7 +203,7 @@ namespace Assets.Core.Entities
 
         }
 
-        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
  
            

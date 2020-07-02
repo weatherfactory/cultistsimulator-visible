@@ -69,9 +69,9 @@ public class Compendium : ICompendium
 
     public void AddElementIdsToValidate(object validateThis)
     {
-        if (validateThis is Dictionary<string, string> di)
+        if (validateThis is Dictionary<string, int> di)
             aspectIdsToValidate.AddRange(di.Keys);
-        if (validateThis is Dictionary<string, string> ds)
+        else if (validateThis is Dictionary<string, string> ds)
             aspectIdsToValidate.AddRange(ds.Keys);
         else if(validateThis is IAspectsDictionary a)
             aspectIdsToValidate.AddRange(a.KeysAsList());
@@ -133,7 +133,7 @@ public class Compendium : ICompendium
 
             var missingAspects = aspectIdsToValidate. Except(_elements.Keys);
             foreach (var missingAspect in missingAspects)
-              log.LogWarning("missing" + missingAspect);
+              log.LogWarning("unknown element id specified: " + missingAspect);
 
 
         }

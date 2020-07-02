@@ -42,12 +42,12 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
-    [FucineAspects]
+    [FucineAspects(ValidateAsElementId = true)]
     public AspectsDictionary Required { get; set; }
     /// <summary>
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
-    [FucineAspects]
+    [FucineAspects(ValidateAsElementId = true)]
     public AspectsDictionary Forbidden { get; set; }
 
     /// <summary>
@@ -124,7 +124,7 @@ private const string PRIMARY_SLOT="primary";
 
     }
 
-    protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+    protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
     {
         
     }

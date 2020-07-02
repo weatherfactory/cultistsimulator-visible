@@ -26,22 +26,22 @@ namespace Assets.Core.Entities
             _id = id;
         }
 
-        [FucineValue("enact")]
+        [FucineValue("x")]
         public string ActionId { get; set; }
 
-        [FucineDict]
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> Requirements { get; set; }
 
-        [FucineDict]
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> TableReqs { get; set; }
 
-        [FucineDict]
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> ExtantReqs { get; set; }
 
-        [FucineDict]
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> Effects { get; set; }
 
-        [FucineAspects]
+        [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Aspects {get; set; }
 
         [FucineList]
@@ -149,15 +149,8 @@ namespace Assets.Core.Entities
 
         }
 
-        public override void OnPostImport(ContentImportLog log, ICompendium populatedCompendium)
-        {
-            if (Refined) //don't want to get refined more than once, which might  happen if eg recipes are refined after elements - because those populate and refine their internal recipes
-                return;
-
-          
-        }
-
-        protected override void OnPostImportEntitySpecifics(ContentImportLog log, ICompendium populatedCompendium)
+ 
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
             if (InternalDeck.Spec.Any())
             {
