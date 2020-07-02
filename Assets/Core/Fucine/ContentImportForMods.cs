@@ -426,7 +426,7 @@ namespace Assets.Core
             return true;
         }
 
-        void Export(string fname, string contentType, ArrayList list)
+     public   void Export(string fname, string contentType, ArrayList list)
         {
             int indent = 0;
             StreamWriter writer = new StreamWriter(fname, false, System.Text.Encoding.UTF8);

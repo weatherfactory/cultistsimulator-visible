@@ -21,9 +21,7 @@ using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Newtonsoft.Json;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-#endif
 using OrbCreationExtensions;
 using Unity.Profiling;
 using UnityEngine.Profiling;
@@ -32,11 +30,13 @@ using UnityEngine.UIElements;
 using UnityEditor;
 #endif
 
+
+
+
 public class ContentImporter
 {
     
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
-    private static readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
     readonly ContentImportLog _log=new ContentImportLog();
@@ -56,19 +56,17 @@ public class ContentImporter
     private ArrayList GetEntityDataFromFiles(string entityFolder)
     {
         var contentFolder = CORE_CONTENT_DIR + entityFolder;
-        var contentOverrideFolder = MORE_CONTENT_DIR + entityFolder;
         var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
         if(coreContentFiles.Any())
           coreContentFiles.Sort();
-        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
-        if(overridecontentFiles.Any())
-             overridecontentFiles.Sort();
 
-        
-        var contentItemArrayList = ContentImportForLoc.GetContentItemsWithLocalisation(entityFolder, coreContentFiles, overridecontentFiles,_log);
+        DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(entityFolder, LanguageTable.targetCulture);
+
+
+        dataImporterForEntity.GetContentItemsWithLocalisation(entityFolder, coreContentFiles,_log);
 
         var contentImportForMods=new ContentImportForMods();
-        return contentImportForMods.ProcessContentItemsWithMods(contentItemArrayList, entityFolder);
+        return contentImportForMods.ProcessContentItemsWithMods(dataImporterForEntity.OriginalData, entityFolder);
     }
 
     
