@@ -21,10 +21,10 @@ namespace Assets.Core.Services
         public string ReplaceTextFor(string text)
         {
             
-            string previousCharacterName = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastCharacterName);
-            string lastFollowerId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastFollower);
-            string lastDesireId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastDesire);
-            string lastBookId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastBook);
+            string previousCharacterName = _character.GetPastLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString());
+            string lastFollowerId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString());
+            string lastDesireId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString());
+            string lastBookId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.lastbook.ToString());
             string lastBookLabel = string.Empty;
             string lastDesireLabel=String.Empty;
             string lastFollowerLabel = String.Empty;

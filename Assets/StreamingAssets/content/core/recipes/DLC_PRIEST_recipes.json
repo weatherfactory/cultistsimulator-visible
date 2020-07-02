@@ -76,7 +76,7 @@ warmup:30
 actionId:"talk",
 label:"A Welcome",
 startdescription:"The deacon and the sacristan have come to speak with me on a private matter. They've brought a guest - someone I've never met, but someone who now drops to one knee to honour me. All three now do me honour - ",
-effects:{LEVER_LastCult:1,LEVER_LastFollower:1},
+effects:{lever_LastCult:1,lever_LastFollower:1},
 warmup:30,
 linked:[{id:"talk.priest.open.followup"}]
 },

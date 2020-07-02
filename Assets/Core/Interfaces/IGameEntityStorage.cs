@@ -16,13 +16,13 @@ namespace Assets.Core.Interfaces
         void AddExecutionsToHistory(string forRecipeId,int executions);
         int GetExecutionsCount(string forRecipeId);
         bool HasExhaustedRecipe(Recipe forRecipe);
-        void SetFutureLegacyEventRecord(LegacyEventRecordId id,string value);
-        void SetOrOverwritePastLegacyEventRecord(LegacyEventRecordId id, string value);
-        string GetFutureLegacyEventRecord(LegacyEventRecordId forId);
-        string GetPastLegacyEventRecord(LegacyEventRecordId forId);
+        void SetFutureLegacyEventRecord(string id,string value);
+        void SetOrOverwritePastLegacyEventRecord(string id, string value);
+        string GetFutureLegacyEventRecord(string forId);
+        string GetPastLegacyEventRecord(string forId);
 
-        Dictionary<LegacyEventRecordId, string> GetAllFutureLegacyEventRecords();
-        Dictionary<LegacyEventRecordId, string> GetAllPastLegacyEventRecords();
+        Dictionary<string, string> GetAllFutureLegacyEventRecords();
+        Dictionary<string, string> GetAllPastLegacyEventRecords();
 
         Legacy ActiveLegacy { get; set; }
     }

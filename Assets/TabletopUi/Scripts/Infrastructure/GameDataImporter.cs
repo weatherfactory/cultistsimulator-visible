@@ -88,10 +88,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htPastLevers = htCharacter.GetHashtable(SaveConstants.SAVE_PAST_LEVERS);
                 foreach (var key in htPastLevers.Keys)
                 {
-                    var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                    //var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
                     string value = htPastLevers[key].ToString();
                     if(!string.IsNullOrEmpty(value))
-                        storage.SetOrOverwritePastLegacyEventRecord(enumKey, htPastLevers[key].ToString());
+                        storage.SetOrOverwritePastLegacyEventRecord(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
                 }
             }
@@ -101,8 +101,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htFutureLevers = htCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
                 foreach (var key in htFutureLevers.Keys)
                 {
-                    var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                    storage.SetFutureLegacyEventRecord(enumKey, htFutureLevers[key].ToString());
+                  //  var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                    storage.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
 
                 }
             }
@@ -152,8 +152,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var htFutureLevers = htDefunctCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
                     foreach (var key in htFutureLevers.Keys)
                     {
-                        var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                        defunctCharacter.SetFutureLegacyEventRecord(enumKey, htFutureLevers[key].ToString());
+                        //    var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                        defunctCharacter.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
                     }
                 }

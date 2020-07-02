@@ -20,8 +20,7 @@ namespace Assets.Core.Fucine
         /// <summary>
         /// This is run for every top-level entity when the compendium has been completely (re)populated. Use for entities that
         /// need additional population based on data from other entities.
-        /// It's not explicitly run for subentities - that's up to individual entities.
-        /// Overriding implementations should set refined to true, and not run it if it isn't - this isn't yet enforced
+        /// It's not explicitly run for subentities - that's up to their parent entities.
         /// </summary>
         /// <param name="log"></param>
         /// <param name="populatedCompendium"></param>
@@ -36,6 +35,12 @@ namespace Assets.Core.Fucine
 
             Refined = true;
         }
+        /// <summary>
+        /// This is overridden wherever we need more logic in each subclass
+        /// </summary>
+        /// <param name="log"></param>
+        /// <param name="populatedCompendium"></param>
+        protected abstract void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium);
 
         private void PopUnknownKeysToLog(ContentImportLog log)
         {
@@ -62,7 +67,7 @@ namespace Assets.Core.Fucine
             }
         }
 
-        protected abstract void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium);
+
 
         public void PushUnknownProperty(object key, object value)
         {

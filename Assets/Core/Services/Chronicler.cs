@@ -59,7 +59,7 @@ namespace Assets.Core.Services
 
         public void CharacterNameChanged(string newName)
         {
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCharacterName,newName);
+            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
         }
 
         public void TokenPlacedOnTabletop(ElementStackToken token)
@@ -163,7 +163,7 @@ namespace Assets.Core.Services
 
             if(currentFollower!=null)
 
-            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastFollower, currentFollower.Id);
+            _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
 
         }
 
@@ -229,7 +229,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
 				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastHeadquarters, token.EntityId);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.EntityId);
 			}
         }
 
@@ -238,7 +238,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
 				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.EntityId);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -284,7 +284,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
 				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastTool, token.EntityId);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.EntityId);
 			}
         }
 
@@ -297,17 +297,17 @@ namespace Assets.Core.Services
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_POWER" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionpowera");
+                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
 				}
                 else if (tokenAspects.Keys.Contains(SENSATION_ASPECT))
                 {
 					Analytics.CustomEvent( "A_DESIRE_SENSATION" );
-				    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionsensationa");
+				    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
 				}
                 else if (tokenAspects.Keys.Contains(ENLIGHTENMENT_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_ENLIGHTENMENT" );
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionenlightenmenta");
+                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
 				}
             }
         }
@@ -317,7 +317,7 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
 				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.EntityId);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.EntityId);
 			}
         }
 

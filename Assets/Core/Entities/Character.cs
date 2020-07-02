@@ -12,15 +12,15 @@ using Noon;
 
 public enum LegacyEventRecordId
 {
-    LastCharacterName,
-    LastDesire,
-    LastTool,
-    LastBook,
-    LastSignificantPainting,
-    LastCult,
-    LastHeadquarters,
-    LastFollower,
-    LastPersonKilled
+    lastcharactername,
+    lastdesire,
+    lasttool,
+    lastbook,
+    lastsignificantpainting,
+    lastcult,
+    lastheadquarters,
+    lastfollower,
+    lastpersonkilled
 
 }
 
@@ -30,8 +30,8 @@ public class Character:IGameEntityStorage
     
     public CharacterState State { get; set; }
     public List<IDeckInstance> DeckInstances { get; set; }
-    private Dictionary<LegacyEventRecordId, string> _futureLegacyEventRecords;
-    private Dictionary<LegacyEventRecordId, string> _pastLegacyEventRecords;
+    private Dictionary<string, string> _futureLegacyEventRecords;
+    private Dictionary<string, string> _pastLegacyEventRecords;
     public Legacy ActiveLegacy { get; set; }
 
     private Dictionary<string, int> recipeExecutions;
@@ -54,14 +54,14 @@ public class Character:IGameEntityStorage
         }
         //otherwise, create a blank slate
         else 
-            _pastLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
+            _pastLegacyEventRecords = new Dictionary<string, string>();
 
         //the history builder will then provide a default value for any empty ones.
         HistoryBuilder hb = new HistoryBuilder();
         _pastLegacyEventRecords = hb.FillInDefaultPast(_pastLegacyEventRecords);
 
         //finally, set our starting future to be our present, ie our past.
-        _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
+        _futureLegacyEventRecords = new Dictionary<string, string>(_pastLegacyEventRecords);
 
         ActiveLegacy = activeLegacy;
 
@@ -78,7 +78,7 @@ public class Character:IGameEntityStorage
             _futureLegacyEventRecords = currentCharacter.GetAllPastLegacyEventRecords(),
 
             // Turn all past records back into future records, to simulate a character whose run ended
-            _pastLegacyEventRecords = new HistoryBuilder().FillInDefaultPast(new Dictionary<LegacyEventRecordId, string>()),
+            _pastLegacyEventRecords = new HistoryBuilder().FillInDefaultPast(new Dictionary<string, string>()),
             
             // Load in a default legacy, since it doesn't matter for the defunct character
             ActiveLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First()
@@ -119,7 +119,7 @@ public class Character:IGameEntityStorage
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
 
-    public void SetOrOverwritePastLegacyEventRecord(LegacyEventRecordId id, string value)
+    public void SetOrOverwritePastLegacyEventRecord(string id, string value)
     {
 if(string.IsNullOrEmpty(value))
     throw new ApplicationException("Error in LegacyEventRecord overwrite: shouldn't overwrite with an empty value, trying to erase the past for " + id.ToString());
@@ -130,14 +130,14 @@ if(string.IsNullOrEmpty(value))
     }
 
 
-    public void SetFutureLegacyEventRecord(LegacyEventRecordId id, string value)
+    public void SetFutureLegacyEventRecord(string id, string value)
     {
         if (_futureLegacyEventRecords.ContainsKey(id))
             _futureLegacyEventRecords[id] = value;
         else
             _futureLegacyEventRecords.Add(id, value);
     }
-    public string GetFutureLegacyEventRecord(LegacyEventRecordId forId)
+    public string GetFutureLegacyEventRecord(string forId)
     {
         if (_futureLegacyEventRecords.ContainsKey(forId))
             return _futureLegacyEventRecords[forId];
@@ -146,7 +146,7 @@ if(string.IsNullOrEmpty(value))
     }
 
 
-    public string GetPastLegacyEventRecord(LegacyEventRecordId forId)
+    public string GetPastLegacyEventRecord(string forId)
     {
         if (_pastLegacyEventRecords.ContainsKey(forId))
             return _pastLegacyEventRecords[forId];
@@ -185,14 +185,14 @@ if(string.IsNullOrEmpty(value))
 
 
 
-    public Dictionary<LegacyEventRecordId, string> GetAllFutureLegacyEventRecords()
+    public Dictionary<string, string> GetAllFutureLegacyEventRecords()
     {
-        return new Dictionary<LegacyEventRecordId, string>(_futureLegacyEventRecords);
+        return new Dictionary<string, string>(_futureLegacyEventRecords);
     }
 
-    public Dictionary<LegacyEventRecordId, string> GetAllPastLegacyEventRecords()
+    public Dictionary<string, string> GetAllPastLegacyEventRecords()
     {
-        return new Dictionary<LegacyEventRecordId,string>(_pastLegacyEventRecords);
+        return new Dictionary<string, string>(_pastLegacyEventRecords);
     }
 
     

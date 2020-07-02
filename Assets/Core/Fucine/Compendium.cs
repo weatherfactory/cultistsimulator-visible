@@ -55,7 +55,7 @@ public class Compendium : ICompendium
     private Dictionary<Type, IDictionary> allEntities;
 
     private List<Recipe> _recipes=new List<Recipe>();
-    private Dictionary<LegacyEventRecordId, string> _pastLevers;
+    private Dictionary<string, string> _pastLevers;
 
     private Dictionary<string, Recipe> _recipeDict;
     private Dictionary<string, Element> _elements;
@@ -131,10 +131,12 @@ public class Compendium : ICompendium
                 e.OnPostImport(log,this);
 
 
-            var missingAspects = aspectIdsToValidate. Except(_elements.Keys);
+            var missingAspects = aspectIdsToValidate.Except(_elements.Keys);
             foreach (var missingAspect in missingAspects)
-              log.LogWarning("unknown element id specified: " + missingAspect);
-
+            {
+              //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
+                    log.LogWarning("unknown element id specified: " + missingAspect);
+            }
 
         }
     }
@@ -184,9 +186,6 @@ public class Compendium : ICompendium
         return null;
     }
 
-    public Boolean IsKnownElement(string elementId) {
-        return _elements.ContainsKey(elementId);
-    }
 
     // -- Get All ------------------------------
 
@@ -230,28 +229,28 @@ public class Compendium : ICompendium
 
     }
 
-    public Element GetElementById(string elementId) {
-        Element element;
-        if (elementId.StartsWith(NoonConstants.LEVER_PREFIX))
-        {
+    public Boolean IsKnownElement(string elementId)
+    {
+        //return _elements.ContainsKey(elementId);
+        return (GetElementById(elementId) != null);
+    }
 
-            string leverId = elementId.Replace(NoonConstants.LEVER_PREFIX, "");
-            if (!Enum.IsDefined(typeof(LegacyEventRecordId), leverId))
+    public Element GetElementById(string elementId) {
+        
+        Element element;
+        _elements.TryGetValue(elementId, out element);
+
+        if (element == null)
+            return null;
+
+        if (!string.IsNullOrEmpty(element.Lever))
+        {
+            if (!_pastLevers.ContainsKey(element.Lever))
                 return null;
             else
-            {
-            LegacyEventRecordId leverEnum = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), leverId);
-                if (!_pastLevers.ContainsKey(leverEnum))
-                    return null;
-                else
-                elementId = _pastLevers[leverEnum];
-
-            }
+                return GetElementById(_pastLevers[element.Lever]);
 
         }
-
-
-        _elements.TryGetValue(elementId, out element);
 
         return element;
     }
