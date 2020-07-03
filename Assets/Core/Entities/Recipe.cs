@@ -88,20 +88,20 @@ namespace Assets.Core.Entities
         [FucineValue(0)]
         public int Warmup { get; set; }
 
-        [FucineValue(".")]
+        [FucineValue(DefaultValue = ".", Localise = true)]
         public string Label { get; set; }
-        
-        
+
+
         /// <summary>
         /// displayed when we identify and when we are running a recipe
         /// </summary>
-        [FucineValue(".")]
+        [FucineValue(DefaultValue = ".", Localise = true)]
         public string StartDescription { get; set; }
 
         /// <summary>
         /// displayed in the results when the recipe is complete. If we loop straight to another recipe, it won't usually be visible.
         /// </summary>
-        [FucineValue(".")]
+        [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
 
         [FucineValue("")]

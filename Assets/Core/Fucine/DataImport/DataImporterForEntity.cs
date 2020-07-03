@@ -40,7 +40,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        public ArrayList ReturnEntityDataFromFolder()
+        public void LoadEntityData()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolder;
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
@@ -52,7 +52,7 @@ namespace Assets.Core.Fucine
             GetContentItemsWithLocalisation(EntityFolder, coreContentFiles, _log);
 
             var contentImportForMods = new ContentImportForMods();
-            return contentImportForMods.ProcessContentItemsWithMods(this.OriginalData, EntityFolder);
+            contentImportForMods.ProcessContentItemsWithMods(this.OriginalData, EntityFolder);
         }
 
 

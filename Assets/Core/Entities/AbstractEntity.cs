@@ -91,6 +91,8 @@ namespace Assets.Core.Fucine
 
                 foreach (var cachedProperty in fucineProperties)
                 {
+                    //don't forget defaultdrawmessages is both localisable and a Dictionary<string,string>
+
                     var importer = cachedProperty.GetImporterForProperty();
                     bool imported = importer.TryImportProperty<T>(this as T, cachedProperty, importDataForEntity, log);
                     if (imported)

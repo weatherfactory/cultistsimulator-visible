@@ -35,19 +35,19 @@ namespace Assets.Core.Entities
         /// <summary>
         /// Title that displays at game end
         /// </summary>
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Label { get; set; }
 
         /// <summary>
         /// Detail that displays at game end
         /// </summary>
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Displays after game start
         /// </summary>
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string StartDescription { get; set;}
 
         [FucineValue("")]

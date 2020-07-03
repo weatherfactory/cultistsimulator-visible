@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Noon;
+using UnityEngine.SocialPlatforms;
 
 namespace Assets.Core.Entities
 {
@@ -70,10 +71,10 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool ResetOnExhaustion { get; set; }
 
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Label { get; set; }
 
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Description { get; set; }
 
         [FucineValue("")]
@@ -94,7 +95,7 @@ namespace Assets.Core.Entities
             set => _spec = value;
         }
 
-        [FucineDict(KeyMustExistIn = "Spec")]
+        [FucineDict(KeyMustExistIn = "Spec",Localise=true)]
         public Dictionary<string, string> DrawMessages
         {
             get => _drawMessages;

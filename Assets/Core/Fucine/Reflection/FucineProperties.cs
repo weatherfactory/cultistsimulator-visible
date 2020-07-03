@@ -28,6 +28,7 @@ namespace Assets.Core.Fucine
     {
         public object DefaultValue { get; set; } //might it be necessary to make this dynamic, later?
         public bool ValidateAsElementId { get; set; }
+        public bool Localise { get; set; }
         public Type ObjectType { get; protected set; }
     
         public abstract AbstractImporter CreateImporterInstance();

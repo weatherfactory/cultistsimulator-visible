@@ -85,9 +85,9 @@ public class ContentImporter
             {
                  DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
-                 ArrayList al = dataImporterForEntity.ReturnEntityDataFromFolder();
+                dataImporterForEntity.LoadEntityData();
 
-                foreach (Hashtable h in al)
+                foreach (Hashtable h in dataImporterForEntity.OriginalData)
                 {
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, h, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);

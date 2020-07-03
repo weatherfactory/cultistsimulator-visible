@@ -29,15 +29,16 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
     }
 
 
-    [FucineValue("")]
+    [FucineValue(DefaultValue = "", Localise = true)]
     public string Label { get; set; }
+
     [FucineValue("")]
     public string ActionId { get; set; }
 
     /// <summary>
     /// currently, this is only used by the primary slot specification
     /// </summary>
-    [FucineValue("")]
+    [FucineValue(DefaultValue = "", Localise = true)]
     public string Description { get; set; }
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
