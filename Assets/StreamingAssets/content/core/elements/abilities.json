@@ -10,7 +10,7 @@
 			  ingredient:1},
 			  slots: [{id:"nourishment",label:"Nourishment",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
-			xtriggers: {restorehealth: health,scar_ability:scar_heart},
+			xtriggers: {restorehealth: "health",scar_ability:"scar_heart"},
 			lifetime:60,
 			decayTo:"decrepitude"
 			},
