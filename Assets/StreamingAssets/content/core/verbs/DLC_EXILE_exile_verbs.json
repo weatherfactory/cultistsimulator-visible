@@ -35,7 +35,7 @@
             label: "Relinquish",
             description: "Sell; abandon; extirpate; surrender.",
 				  slot: {id:"relinquish",label:"Relinquish",
-			  required:{asset:1,lifespan.stolen:1,trace:1,wound.exile:1}}
+			  required:{asset:1,"lifespan.stolen":1,trace:1,"wound.exile":1}}
         },
 			  {
             id: "time.exile",

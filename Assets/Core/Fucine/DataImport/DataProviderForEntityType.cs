@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Core.Fucine.DataImport;
+using Boo.Lang;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine;
@@ -57,12 +58,12 @@ namespace Assets.Core.Fucine
 
 
 
-        public void GetContentItemsWithLocalisation(string contentOfType, List<string> coreContentFiles, ContentImportLog log)
+        public void GetContentItemsWithLocalisation(string contentOfType, System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
         {
 
 
             //allcontentfiles contains both core and override json
-            List<string> allContentFiles = new List<string>();
+            System.Collections.Generic.List<string> allContentFiles = new System.Collections.Generic.List<string>();
             allContentFiles.AddRange(coreContentFiles);
             if (!allContentFiles.Any()) log.LogProblem("Can't find any " + contentOfType + " to import as content");
 
@@ -77,7 +78,21 @@ namespace Assets.Core.Fucine
 
                 try
                 {
-                    OriginalData.AddRange(SimpleJsonImporter.Import(json, true).GetArrayList(contentOfType));
+
+                  JObject jObject=JObject.Parse(json);
+
+                    foreach(JObject v in jObject[contentOfType])
+                    {
+                        var h = v.ToObject<Hashtable>();
+                    }
+
+                    OriginalData.AddRange(jObject[contentOfType].ToObject<ArrayList>());
+
+                    //Dictionary<string, object> dict = fileContentsAsJArray.ToDictionary(
+                    //    k => ((JObject) k).Properties().First().Value.ToString(), v => v.Values().First().Value<object>());
+
+
+                    // OriginalData.AddRange(SimpleJsonImporter.Import(json, true).GetArrayList(contentOfType));
                 }
                 catch (Exception e)
                 {

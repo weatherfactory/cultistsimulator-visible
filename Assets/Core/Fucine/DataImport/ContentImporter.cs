@@ -23,6 +23,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Newtonsoft.Json;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Newtonsoft.Json.Linq;
 using OrbCreationExtensions;
 using Unity.Profiling;
 using UnityEngine.Profiling;
@@ -54,25 +55,6 @@ public class ContentImporter
 
 
 
-    private ArrayList GetEntityDataFromFiles(string entityFolder)
-    {
-        var contentFolder = CORE_CONTENT_DIR + entityFolder;
-        var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
-        if(coreContentFiles.Any())
-          coreContentFiles.Sort();
-
-        DataProviderForEntityType dataProviderForEntityType = new DataProviderForEntityType(entityFolder, LanguageTable.targetCulture,_log);
-
-
-        dataProviderForEntityType.GetContentItemsWithLocalisation(entityFolder, coreContentFiles,_log);
-
-        var contentImportForMods=new ContentImportForMods();
-        return contentImportForMods.ProcessContentItemsWithMods(dataProviderForEntityType.OriginalData, entityFolder);
-    }
-
-    
-
-
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
         compendiumToPopulate.Reset();
@@ -97,8 +79,9 @@ public class ContentImporter
 
 
 
-                foreach (Hashtable h in dataProviderForEntityType.OriginalData)
+                foreach (JObject j in dataProviderForEntityType.OriginalData)
                 {
+                    var h = j.ToObject<Hashtable>();
                     EntityData entityData=new EntityData(h);
 
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
