@@ -7,12 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Noon;
 using OrbCreationExtensions;
+using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
     public class DataImporterForEntity
     {
+        private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+
+
         public readonly string EntityFolder;
+        private readonly ContentImportLog _log;
         public ArrayList OriginalData { get; set; }
         public ArrayList LocalisedData { get; set; }
         public string BaseCulture { get; } = "en";
@@ -25,14 +30,30 @@ namespace Assets.Core.Fucine
         }
 
 
-        public DataImporterForEntity(string entityFolder, string currentCulture)
+        public DataImporterForEntity(string entityFolder, string currentCulture, ContentImportLog log)
         {
             EntityFolder = entityFolder;
+            _log = log;
             this.CurrentCulture = currentCulture;
             OriginalData = new ArrayList();
             LocalisedData = new ArrayList();
         }
 
+
+        public ArrayList ReturnEntityDataFromFolder()
+        {
+            var contentFolder = CORE_CONTENT_DIR + EntityFolder;
+            var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+            if (coreContentFiles.Any())
+                coreContentFiles.Sort();
+
+
+
+            GetContentItemsWithLocalisation(EntityFolder, coreContentFiles, _log);
+
+            var contentImportForMods = new ContentImportForMods();
+            return contentImportForMods.ProcessContentItemsWithMods(this.OriginalData, EntityFolder);
+        }
 
 
 

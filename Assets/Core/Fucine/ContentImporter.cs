@@ -60,7 +60,7 @@ public class ContentImporter
         if(coreContentFiles.Any())
           coreContentFiles.Sort();
 
-        DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(entityFolder, LanguageTable.targetCulture);
+        DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(entityFolder, LanguageTable.targetCulture,_log);
 
 
         dataImporterForEntity.GetContentItemsWithLocalisation(entityFolder, coreContentFiles,_log);
@@ -83,7 +83,9 @@ public class ContentImporter
                
             if(importableAttribute!=null)
             {
-                ArrayList al = GetEntityDataFromFiles(importableAttribute.TaggedAs);
+                 DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
+
+                 ArrayList al = dataImporterForEntity.ReturnEntityDataFromFolder();
 
                 foreach (Hashtable h in al)
                 {
