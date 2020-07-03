@@ -28,7 +28,6 @@ namespace Assets.Core.Fucine
     {
         public object DefaultValue { get; set; } //might it be necessary to make this dynamic, later?
         public bool ValidateAsElementId { get; set; }
-        public bool Localise { get; set; }
         public Type ObjectType { get; protected set; }
     
         public abstract AbstractImporter CreateImporterInstance();
@@ -37,6 +36,7 @@ namespace Assets.Core.Fucine
 
     public class FucineValue : Fucine
     {
+        public bool Localise { get; set; }
         public FucineValue()
         {
         }
@@ -103,7 +103,7 @@ namespace Assets.Core.Fucine
     public class FucineDict : Fucine
     {
         public string KeyMustExistIn { get; set; }
-
+        public bool Localise { get; set; }
 
         public override AbstractImporter CreateImporterInstance()
         {
