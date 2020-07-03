@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Noon;
 using UnityEngine.SocialPlatforms;
@@ -117,7 +118,7 @@ namespace Assets.Core.Entities
         private Dictionary<string, string> _drawMessages = new Dictionary<string, string>();
       
 
-        public DeckSpec(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public DeckSpec(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
 

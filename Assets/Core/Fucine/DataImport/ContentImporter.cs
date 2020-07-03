@@ -18,6 +18,7 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Newtonsoft.Json;
@@ -60,13 +61,13 @@ public class ContentImporter
         if(coreContentFiles.Any())
           coreContentFiles.Sort();
 
-        DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(entityFolder, LanguageTable.targetCulture,_log);
+        DataProviderForEntityType dataProviderForEntityType = new DataProviderForEntityType(entityFolder, LanguageTable.targetCulture,_log);
 
 
-        dataImporterForEntity.GetContentItemsWithLocalisation(entityFolder, coreContentFiles,_log);
+        dataProviderForEntityType.GetContentItemsWithLocalisation(entityFolder, coreContentFiles,_log);
 
         var contentImportForMods=new ContentImportForMods();
-        return contentImportForMods.ProcessContentItemsWithMods(dataImporterForEntity.OriginalData, entityFolder);
+        return contentImportForMods.ProcessContentItemsWithMods(dataProviderForEntityType.OriginalData, entityFolder);
     }
 
     
@@ -83,13 +84,24 @@ public class ContentImporter
                
             if(importableAttribute!=null)
             {
-                 DataImporterForEntity dataImporterForEntity = new DataImporterForEntity(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
+                 DataProviderForEntityType dataProviderForEntityType = new DataProviderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
-                dataImporterForEntity.LoadEntityData();
+                dataProviderForEntityType.LoadEntityData();
 
-                foreach (Hashtable h in dataImporterForEntity.OriginalData)
+                //pass the entitydata for each entity along with *all* the localised data
+                //we can't match the localised data via index reliably, so we do it via id; but we don't know the id at this point
+                //but no, that's silly. We should match it when the entityData object is created
+                //but no, we can't do that if it's all still in arraylists
+                //so really, we need an arraylist with an id attached to the top, which sounds to me like a hashset or a dictionary<int,hashtable>
+                
+
+
+
+                foreach (Hashtable h in dataProviderForEntityType.OriginalData)
                 {
-                    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, h, _log);
+                    EntityData entityData=new EntityData(h);
+
+                    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
                 }
             }

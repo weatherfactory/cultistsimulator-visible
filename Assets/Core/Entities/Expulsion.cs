@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
@@ -22,7 +23,7 @@ namespace Assets.Core.Entities
         [FucineValue(1)] 
         public int Limit { get; set; }
 
-        public Expulsion(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public Expulsion(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
             Filter = new AspectsDictionary();
         }

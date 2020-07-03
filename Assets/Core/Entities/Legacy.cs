@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.SlotsContainers;
 using Noon;
@@ -71,7 +72,7 @@ namespace Assets.Core.Entities
         [FucineValue(".")]
         public string StartingVerbId { get; set; }
 
-        public Legacy(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public Legacy(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }

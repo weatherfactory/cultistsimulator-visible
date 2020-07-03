@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using OrbCreationExtensions;
 
@@ -150,10 +151,10 @@ namespace Assets.Core.Fucine
 
         private void AddFullSpecEntitiesToWrapperList(ArrayList list, Type listMemberType, IList wrapperList, ContentImportLog log)
         {
-            foreach (Hashtable entityHash in list)
+            foreach (var entityHash in list)
             {
                 IEntityWithId
-                    sub =FactoryInstantiator.CreateEntity(listMemberType, entityHash, log);
+                    sub =FactoryInstantiator.CreateEntity(listMemberType, new EntityData(entityHash as Hashtable), log);
 
                 wrapperList.Add(sub);
             }
@@ -170,7 +171,7 @@ namespace Assets.Core.Fucine
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
                 //{fatiguing:[{id:husk,morpheffect:spawn},{id:smoke,morpheffect:spawn}]
-                    IEntityWithId sub = FactoryInstantiator.CreateEntity(dictMemberType, h, log);
+                    IEntityWithId sub = FactoryInstantiator.CreateEntity(dictMemberType, new EntityData(), log);
                     dict.Add(sub.Id, sub);
                    _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dict);
                 }

@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
@@ -49,7 +50,7 @@ namespace Assets.Core.Entities
         //    Description = description;
         //}
 
-        public BasicVerb(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }

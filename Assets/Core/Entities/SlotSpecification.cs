@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Noon;
 
@@ -79,7 +80,7 @@ private const string PRIMARY_SLOT="primary";
         ActionId = string.Empty;
     }
 
-    public SlotSpecification(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+    public SlotSpecification(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
     {
     }
 

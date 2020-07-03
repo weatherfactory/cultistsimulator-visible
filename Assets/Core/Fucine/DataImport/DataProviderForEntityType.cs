@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public class DataImporterForEntity
+    public class DataProviderForEntityType
     {
         private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
 
@@ -30,13 +30,13 @@ namespace Assets.Core.Fucine
         }
 
 
-        public DataImporterForEntity(string entityFolder, string currentCulture, ContentImportLog log)
+        public DataProviderForEntityType(string entityFolder, string currentCulture, ContentImportLog log)
         {
             EntityFolder = entityFolder;
             _log = log;
             this.CurrentCulture = currentCulture;
             OriginalData = new ArrayList();
-            LocalisedData = new ArrayList();
+                LocalisedData = new ArrayList();
         }
 
 

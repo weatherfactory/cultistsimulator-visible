@@ -6,6 +6,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
@@ -144,7 +145,7 @@ namespace Assets.Core.Entities
 
         //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
-        public Recipe(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
+        public Recipe(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
 
         }

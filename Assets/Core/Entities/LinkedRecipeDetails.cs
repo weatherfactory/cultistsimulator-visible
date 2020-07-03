@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using UnityEngine.UIElements;
 
@@ -45,7 +46,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public LinkedRecipeDetails(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public LinkedRecipeDetails(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
 
@@ -62,12 +63,13 @@ namespace Assets.Core.Entities
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
             Hashtable unknownProperties = PopAllUnknownProperties();
+           var entityData=new EntityData(unknownProperties);
             if (unknownProperties.Keys.Count > 0)
             {
                 //unknown properties in a LinkedRecipeDetails are probably an internal recipe
                 unknownProperties.Add("id", Id); //the LinkedRecipeDetails will already have absorbed the recipe ID
 
-                Recipe internalRecipe = new Recipe(unknownProperties, log);
+                Recipe internalRecipe = new Recipe(entityData, log);
 
                 populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
 

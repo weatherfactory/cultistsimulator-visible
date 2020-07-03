@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Enums;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using JetBrains.Annotations;
 
@@ -39,7 +40,7 @@ namespace Assets.Core.Entities
         [FucineValue((int)MorphEffectType.Transform)]
         public MorphEffectType MorphEffect { get; private set; }
 
-        public MorphDetails(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public MorphDetails(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         { }
 
         public MorphDetails(string id)

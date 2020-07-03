@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Reflection;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using OrbCreationExtensions;
 
@@ -37,7 +38,7 @@ namespace Assets.Core.Fucine
 
                 if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    var subEntity = FactoryInstantiator.CreateEntity(listMemberType, h, log);
+                    var subEntity = FactoryInstantiator.CreateEntity(listMemberType, new EntityData(), log);
                     list.Add(subEntity);
                 }
                 else

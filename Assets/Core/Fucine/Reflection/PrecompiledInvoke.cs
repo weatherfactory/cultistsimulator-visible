@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq.Expressions;
 using System.Reflection;
+using Assets.Core.Fucine.DataImport;
 
 namespace Assets.Core.Fucine
 {
@@ -57,17 +58,17 @@ namespace Assets.Core.Fucine
             return func;
         }
 
-        public static Func<Hashtable,ContentImportLog, TEntity> BuildEntityConstructor<TEntity>() where TEntity : AbstractEntity<TEntity>
+        public static Func<EntityData,ContentImportLog, TEntity> BuildEntityConstructor<TEntity>() where TEntity : AbstractEntity<TEntity>
         {
             //var exValue = Expression.Parameter(typeof(TEntity), "t");
-            Type[] constructorTypeArgs = {typeof(Hashtable), typeof(ContentImportLog)};
+            Type[] constructorTypeArgs = {typeof(EntityData), typeof(ContentImportLog)};
 
             var constructorInfo = typeof(TEntity).GetConstructor(constructorTypeArgs);
 
             if (constructorInfo == null)
                 throw new ApplicationException($"Couldn't find a suitable entity constructor for {typeof(TEntity).Name}");
 
-            var exDataParam = Expression.Parameter(typeof(Hashtable), "entitydata");
+            var exDataParam = Expression.Parameter(typeof(EntityData), "entitydata");
             var exLogParam = Expression.Parameter(typeof(ContentImportLog), "log");
 
 
@@ -75,7 +76,7 @@ namespace Assets.Core.Fucine
             
 
 
-            var lambda = Expression.Lambda<Func<Hashtable, ContentImportLog, TEntity>>(exBody, exDataParam, exLogParam);
+            var lambda = Expression.Lambda<Func<EntityData, ContentImportLog, TEntity>>(exBody, exDataParam, exLogParam);
             var func = lambda.Compile();
             return func;
         }

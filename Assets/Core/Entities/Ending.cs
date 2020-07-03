@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Entities
@@ -54,7 +55,7 @@ namespace Assets.Core.Entities
         [FucineValue("")]
         public string Achievement { get; set; }
 
-        public Ending(Hashtable importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        public Ending(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
 
         }

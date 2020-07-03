@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using Assets.Core.Fucine.DataImport;
 using UnityEngine;
 
 namespace Assets.Core.Fucine
@@ -82,7 +83,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        protected AbstractEntity (Hashtable importDataForEntity,ContentImportLog log)
+        protected AbstractEntity(EntityData importDataForEntity, ContentImportLog log)
         {
             //this still needs an empty body (or not empty if I want specific logic) in each of the subclasses, or the FastInvoke constructor won't work
             try
@@ -94,15 +95,15 @@ namespace Assets.Core.Fucine
                     //don't forget defaultdrawmessages is both localisable and a Dictionary<string,string>
 
                     var importer = cachedProperty.GetImporterForProperty();
-                    bool imported = importer.TryImportProperty<T>(this as T, cachedProperty, importDataForEntity, log);
+                    bool imported = importer.TryImportProperty<T>(this as T, cachedProperty, importDataForEntity.Data, log);
                     if (imported)
-                        importDataForEntity.Remove(cachedProperty.LowerCaseName);
+                        importDataForEntity.Data.Remove(cachedProperty.LowerCaseName);
                 }
 
 
-                foreach (var k in importDataForEntity.Keys)
+                foreach (var k in importDataForEntity.Data.Keys)
                 {
-                    PushUnknownProperty(k, importDataForEntity[k]);
+                    PushUnknownProperty(k, importDataForEntity.Data[k]);
                 }
             }
             catch (Exception e)

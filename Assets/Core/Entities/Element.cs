@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using UnityEngine;
 
@@ -133,7 +134,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public Element(Hashtable importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
+        public Element(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {
 
         }

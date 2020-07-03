@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
@@ -15,7 +16,7 @@ namespace Assets.Core.Fucine
         public static Dictionary<Type, IEntityFactory> CachedEntityFactories = new Dictionary<Type, IEntityFactory>();
         public static Dictionary<Type,INonEntityFactory> CachedNonEntityFactories=new Dictionary<Type, INonEntityFactory>();
 
-        public static IEntityWithId CreateEntity(Type T, Hashtable importDataForEntity, ContentImportLog log)
+        public static IEntityWithId CreateEntity(Type T, EntityData importDataForEntity, ContentImportLog log)
         {
             IEntityFactory entityFactory;
 
