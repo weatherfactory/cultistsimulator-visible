@@ -29,10 +29,10 @@ namespace Assets.Core.Entities
             _id = id;
         }
 
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Label { get; set; }
 
-        [FucineValue("")]
+        [FucineValue(DefaultValue = "", Localise = true)]
         public string Description { get; set;}
 
         [FucineValue("")]
