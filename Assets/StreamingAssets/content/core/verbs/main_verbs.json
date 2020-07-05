@@ -1,55 +1,110 @@
-    {"verbs":
-	[
+{
+    "verbs": [
         {
             "id": "work",
             "label": "Work",
             "description": "Earn a living, or practice the invisible arts.",
-						  slot: {id:"work",label:"Work",description: "Something I can do; something I know; or something I am.",
-			  required:{ability:1,job:1,ritual:1,desire:1,benefactor:1},
-			  forbidden:{reasonskill:1}
-			  },
-			
+            "slot": {
+                "id": "work",
+                "label": "Work",
+                "description": "Something I can do; something I know; or something I am.",
+                "required": {
+                    "ability": 1,
+                    "job": 1,
+                    "ritual": 1,
+                    "desire": 1,
+                    "benefactor": 1
+                },
+                "forbidden": {
+                    "reasonskill": 1
+                }
+            }
         },
         {
             "id": "dream",
             "label": "Dream",
             "description": "Rest; reconsider your priorities; or risk yourself in exploration of the kingdoms of sleep.",
-			 slot: {id:"dream",label:"Dream",description: "A direction for my dreams; or a trouble to recover from.",
-			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
-			  },
+            "slot": {
+                "id": "dream",
+                "label": "Dream",
+                "description": "A direction for my dreams; or a trouble to recover from.",
+                "required": {
+                    "ability": 1,
+                    "desire": 1,
+                    "illhealth": 1,
+                    "way": 1,
+                    "funds": 1
+                }
+            }
         },
-				{
+        {
             "id": "study",
             "label": "Study",
             "description": "Unlock books and other treasures.",
-						 slot: {id:"study",label:"Study",description: "The invisible arts could occupy ten lifetimes of study.",
-						 required:{text:1,lore:1,ability:1, influence:1,tutor:1,language:1,legacyplotitem:1}},
+            "slot": {
+                "id": "study",
+                "label": "Study",
+                "description": "The invisible arts could occupy ten lifetimes of study.",
+                "required": {
+                    "text": 1,
+                    "lore": 1,
+                    "ability": 1,
+                    "influence": 1,
+                    "tutor": 1,
+                    "language": 1,
+                    "legacyplotitem": 1
+                }
+            }
         },
-		{
+        {
             "id": "talk",
             "label": "Talk",
             "description": "Interrogate, intimidate, beguile, instruct, recruit.",
-			 slot: {id:"talk",label:"Talk",description: "An ally, an enemy, or something in between.",
-			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1},
-			  forbidden:{wary:1}}
-		
+            "slot": {
+                "id": "talk",
+                "label": "Talk",
+                "description": "An ally, an enemy, or something in between.",
+                "required": {
+                    "mortal": 1,
+                    "summoned": 1,
+                    "patron": 1,
+                    "society": 1,
+                    "hq": 1,
+                    "lore": 1
+                },
+                "forbidden": {
+                    "wary": 1
+                }
+            }
         },
-
-	  {
+        {
             "id": "explore",
             "label": "Explore",
             "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
-			  slot: {id:"explore",label:"Explore",description: "A place; a person; a location; a secret.",
-			  required:{health:1,follower:1,secrethistories:1,location:1,"ghoul.hunger":1},
-			  forbidden:{hireling:1}},
+            "slot": {
+                "id": "explore",
+                "label": "Explore",
+                "description": "A place; a person; a location; a secret.",
+                "required": {
+                    "health": 1,
+                    "follower": 1,
+                    "secrethistories": 1,
+                    "location": 1,
+                    "ghoul.hunger": 1
+                },
+                "forbidden": {
+                    "hireling": 1
+                }
+            }
         },
-			  {
+        {
             "id": "time",
             "label": "Time",
             "description": "The sundial's shadow.",
-			slot:{id:"time",label:"Time"}
+            "slot": {
+                "id": "time",
+                "label": "Time"
+            }
         }
-		]
-		
-    }
-	
+    ]
+}
