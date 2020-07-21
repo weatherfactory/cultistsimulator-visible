@@ -76,20 +76,27 @@ public class ContentImporter
                 //but no, that's silly. We should match it when the entityData object is created
                 //but no, we can't do that if it's all still in arraylists
                 //so really, we need an arraylist with an id attached to the top, which sounds to me like a hashset or a dictionary<int,hashtable>
-                
 
-                foreach (JObject j in dataProviderForEntityType.CoreData)
+
+                //foreach (JObject j in dataProviderForEntityType.CoreData)
+                //{
+
+
+                //    Hashtable h=new Hashtable();
+
+                //    foreach (var eachKVP in (JObject)j)
+                //        AddTokenToHashtable(eachKVP.Key, h, eachKVP.Value);
+
+
+                //    EntityData entityData =new EntityData(h);
+
+                //    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
+                //    compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
+                //}
+
+
+                foreach (EntityData entityData in dataProviderForEntityType.CoreData)
                 {
-
-
-                    Hashtable h=new Hashtable();
-
-                    foreach (var eachKVP in (JObject)j)
-                        AddTokenToHashtable(eachKVP.Key, h, eachKVP.Value);
-
-
-                    EntityData entityData =new EntityData(h);
-
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
                 }
@@ -108,90 +115,6 @@ public class ContentImporter
 
     }
 
-    private void AddTokenToHashtable(string id,Hashtable currentH, JToken jToken)
-    {
-        id = id.ToLower();
-        
-        if (jToken.Type == JTokenType.String)
-        {
-            currentH.Add(id,jToken.ToString());
-        }
-
-        else if (jToken.Type == JTokenType.Integer)
-        {
-            currentH.Add(id, (int)jToken);
-        }
-
-
-        else if (jToken.Type == JTokenType.Boolean)
-        {
-            currentH.Add(id, (bool)jToken);
-        }
-
-        else if (jToken.Type == JTokenType.Array)
-        {
-            var nextList = new ArrayList();
-            foreach(var eachItem in (JArray)jToken)
-                AddTokenToArray(nextList,eachItem);
-            currentH.Add(id,nextList);
-
-        }
-
-        else if(jToken.Type == JTokenType.Object)
-        {
-            var nextH=new Hashtable();
-          foreach(var eachKVP in (JObject)jToken)
-            AddTokenToHashtable(eachKVP.Key, nextH, eachKVP.Value);
-
-          currentH.Add(id,nextH);
-            
-        }
-
-        else
-        {
-            throw new ApplicationException("Unexpected jtoken type: " + jToken.Type);
-        }
-    }
-
-    private void AddTokenToArray(ArrayList currentList, JToken jToken)
-    {
-        if (jToken.Type == JTokenType.String)
-        {
-            currentList.Add((string) jToken);
-        }
-
-        else  if (jToken.Type == JTokenType.Integer)
-        {
-            currentList.Add((int)jToken);
-        }
-
-        else if (jToken.Type == JTokenType.Boolean)
-        {
-            currentList.Add((bool)jToken);
-        }
-
-        else if (jToken.Type == JTokenType.Array)
-        {
-            var nextList=new ArrayList();
-            foreach(var eachItem in (JArray)jToken)
-                AddTokenToArray(nextList, eachItem);
-
-            currentList.Add(nextList);
-        }
-
-        else if (jToken.Type == JTokenType.Object)
-        {
-            var nextHashtable=new Hashtable();
-            foreach(var eachKVP in (JObject)jToken)
-                AddTokenToHashtable(eachKVP.Key,nextHashtable,eachKVP.Value);
-
-            currentList.Add(nextHashtable);
-        }
-        else
-        {
-            throw new ApplicationException("Unexpected jtoken type: " + jToken.Type);
-        }
-    }
 
 
 }
