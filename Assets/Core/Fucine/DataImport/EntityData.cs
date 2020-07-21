@@ -10,23 +10,24 @@ namespace Assets.Core.Fucine.DataImport
 {
    public class EntityData
     {
-        public Hashtable Data { get; set; }
+        //This should contain Hashtables, ArrayLists and strings all the way down
+        public Hashtable CoreData { get; set; }
         public Hashtable LocalisedData { get; set; }
 
         public EntityData()
         {
-            Data = new Hashtable();
+            CoreData = new Hashtable();
         }
 
         public EntityData(Hashtable data)
         {
-            Data = data;
+            CoreData = data;
         }
 
 
         public EntityData(Hashtable data, Hashtable localisedData)
         {
-            Data = data;
+            CoreData = data;
             LocalisedData = localisedData;
         }
     }
