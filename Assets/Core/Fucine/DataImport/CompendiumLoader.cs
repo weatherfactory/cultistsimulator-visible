@@ -1,8 +1,4 @@
 ﻿
-//#define LOC_AUTO_REPAIR		// Useful for importing fresh loc data into game. Merges current data with localised strings and outputs partially localised files with new data annotated - CP
-								// NB. Running autorepair repeatedly will flush the "NEW" comments out because it modifies the source data in-place,
-								// so on the second run the added hashtables are not considered new.
-								// Enable this #define...run ONCE on target language, then turn it off again to test the autorepaired data.
 
 using UnityEngine;
 using System;

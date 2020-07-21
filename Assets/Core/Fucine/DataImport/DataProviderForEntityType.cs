@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core.Fucine.DataImport;
@@ -20,7 +21,7 @@ namespace Assets.Core.Fucine
         public readonly string EntityFolderName;
         private readonly ContentImportLog _log;
         public ArrayList CoreData { get; set; }
-        public ArrayList LocalisedValuesData { get; set; }
+        public Dictionary<string,string> LocalisedValuesData { get; set; }
         public string BaseCulture { get; } = "en";
         public string CurrentCulture { get; set; }
 
@@ -37,21 +38,23 @@ namespace Assets.Core.Fucine
             _log = log;
             this.CurrentCulture = currentCulture;
             CoreData = new ArrayList();
-            LocalisedValuesData = new ArrayList();
+            LocalisedValuesData = new Dictionary<string, string>();
         }
 
 
         public void LoadEntityData()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
-         
-            GetCoreDataForContentType(contentFolder, _log);
 
             if (BaseCulture != CurrentCulture)
             {
                 GetLocDataForContentType(contentFolder);
             }
-                
+
+            GetCoreDataForContentType(contentFolder);
+
+
+
 
             var contentImportForMods = new ContentImportForMods();
             contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolderName);
@@ -59,31 +62,99 @@ namespace Assets.Core.Fucine
 
         private void GetLocDataForContentType(string contentFolder)
         {
-            string locFolder = "core_" + LanguageTable.targetCulture;
+            string locFolder = contentFolder.Replace("core","core_" + LanguageTable.targetCulture);
 
             var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (locContentFiles.Any())
                 locContentFiles.Sort();
 
+
+            foreach (var contentFile in locContentFiles)
+            {
+                //json string for each content file - in English initially
+                string json = File.ReadAllText(contentFile);
+
+                try
+                {
+
+                    JToken topLevelObject = JObject.Parse(json);
+
+                    JArray topLevelArrayList = (JArray)topLevelObject[EntityFolderName];
+
+
+                    foreach (var eachObject in topLevelArrayList)
+                    {
+                        UnpackLocalisedObject(eachObject as JObject,string.Empty);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                }
+
+
+            }
+
+        }
+
+        private void UnpackLocalisedObject(JObject jObject,string currentKey)
+        {
+            string nextKey = currentKey+ (string)jObject["id"] + "|".ToLower();
+
+
+            foreach (var eachProperty in jObject)
+            {
+                if (eachProperty.Value.Type == JTokenType.String)
+                {
+                    if(eachProperty.Key!="id")
+                    {
+                        string leafKey = $"{nextKey}{eachProperty.Key}";
+                        LocalisedValuesData.Add(leafKey, eachProperty.Value.ToString());
+                     Debug.Log(leafKey + ": " + eachProperty.Value.ToString());
+
+                    }
+                }
+                    
+
+                else if (eachProperty.Value.Type == JTokenType.Object)
+                {
+                    string objectKey = $"{nextKey}{{{eachProperty.Key}";
+                    UnpackLocalisedObject(eachProperty.Value as JObject, objectKey);
+                }
+                else if (eachProperty.Value.Type == JTokenType.Array)
+                {
+                    foreach (var item in eachProperty.Value)
+                    {
+                        UnpackLocalisedObject(item as JObject, nextKey + "[");
+                    }
+                }
+         
+
+                else
+
+                {
+                    throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
+                }
+
+            }
+
+
         }
 
 
-        public void GetCoreDataForContentType(string contentFolder, ContentImportLog log)
+
+        public void GetCoreDataForContentType(string contentFolder)
         {
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (coreContentFiles.Any())
                 coreContentFiles.Sort();
+            else
+                _log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
 
+            
 
-            System.Collections.Generic.List<string> allContentFiles = new System.Collections.Generic.List<string>();
-            allContentFiles.AddRange(coreContentFiles);
-            if (!allContentFiles.Any()) log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
-
-            //into alpha order rather than core followed by override
-            allContentFiles.Sort();
-
-
-            foreach (var contentFile in allContentFiles)
+            foreach (var contentFile in coreContentFiles)
             {
                 //json string for each content file - in English initially
                 string json = File.ReadAllText(contentFile);
@@ -99,12 +170,12 @@ namespace Assets.Core.Fucine
                     foreach (var eachObject in topLevelArrayList)
                   {
 
-                      Hashtable hashtableEachObject = new Hashtable();
+                      Hashtable currentHashtable = new Hashtable();
 
                       foreach (var eachKVP in (JObject)eachObject)
-                          UnpackTokenToHashtable(eachKVP.Key, hashtableEachObject, eachKVP.Value);
+                          UnpackTokenToHashtable(eachKVP.Key, currentHashtable, eachKVP.Value);
 
-                      EntityData entityData = new EntityData(hashtableEachObject);
+                      EntityData entityData = new EntityData(currentHashtable);
 
                       CoreData.Add(entityData);
                   } 
@@ -113,7 +184,7 @@ namespace Assets.Core.Fucine
                 }
                 catch (Exception e)
                 {
-                    log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                    _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 }
 
 
@@ -121,89 +192,6 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void TryToLocalise(string contentOfType, ContentImportLog log, string contentFile)
-        {
-
-            //get all locdata for current loc
-            //unpack it to hashtable (revisit perf on this)
-            //walk it, replace any properties on matching id objects
-
-
-            string json;
-            string
-                locFolder = "core_" + LanguageTable.targetCulture; //ahem. Let's move this to a LocalisedText object or similar
-            string locFile = contentFile;
-            locFile = locFile.Replace("core", locFolder); //ahem, further. - AK
-            if (File.Exists(locFile)) // If no file exists, no localisation happens
-            {
-                //get the json string from the localised file. This shouild probably use the same code as above
-                json = File.ReadAllText(locFile);
-                if (json.Length > 0)
-                {
-                    try
-                    {
-                        //yup, still the same
-                        LocalisedValuesData.AddRange(SimpleJsonImporter.Import(json, true)
-                            .GetArrayList(contentOfType));
-                    }
-                    catch (Exception e)
-                    {
-                        log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                    }
-
-
-                    bool repair = false;
-                    bool changed = false;
-#if UNITY_EDITOR && LOC_AUTO_REPAIR //all this should be moved to a button on debug that appears only in the editor
-						repair = true;
-#endif
-                    // We now have two sets of data which SHOULD match pair for pair - english and translated.
-                    // Traverse the dataset copying the following fields into the core data. Add new fields here if they need translating.
-                    // If the field is a list it will have ALL contents inside localised
-                    string[] fieldsToTranslate = { "label", "description", "startdescription", "drawmessages" };
-
-                    //
-                    // COPY LOCALISATION DATA INTO originalArrayList
-                    //
-                    var thisIsATemporaryHomeForThisMethod = new ContentImportForMods();
-                    thisIsATemporaryHomeForThisMethod.CopyFields(CoreData,
-                        LocalisedValuesData, fieldsToTranslate,
-                        false, repair, ref changed);
-
-                    if (repair)
-                    {
-                        NoonUtility.Log("Localising [" + locFile + "]"); //AK: I think this should be here?
-                                                                         //(a) we don't actually autofix the file unless one is missing, and
-                                                                         //(b) the log is currently showing messages about the /more files, which shouldn't be localised to /core anyway.
-                        if (changed)
-                        {
-                            bool testOutput = false;
-                            if (testOutput)
-                            {
-                                /*
-                            string backupFile = locFile.Replace( ".json", "_backup.json" );
-                            if (!File.Exists(backupFile))
-                            {
-                                FileUtil.CopyFileOrDirectory(locFile,backupFile);	// Soft backup - skip if already there
-                            }
-                            */
-                                string outputFile = locFile.Replace(".json", "_out.json");
-                                thisIsATemporaryHomeForThisMethod.Export(outputFile, contentOfType,
-                                    CoreData);
-                                //FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
-                            }
-                            else
-                            {
-                                thisIsATemporaryHomeForThisMethod.Export(locFile, contentOfType,
-                                    CoreData);
-                            }
-
-                            NoonUtility.Log("Exported [" + locFile + "]");
-                        }
-                    }
-                }
-            }
-        }
 
 
 
