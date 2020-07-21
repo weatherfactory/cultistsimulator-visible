@@ -19,8 +19,8 @@ namespace Assets.Core.Fucine
 
         public readonly string EntityFolder;
         private readonly ContentImportLog _log;
-        public ArrayList OriginalData { get; set; }
-        public ArrayList LocalisedData { get; set; }
+        public ArrayList CoreData { get; set; }
+        public ArrayList LocalisedValuesData { get; set; }
         public string BaseCulture { get; } = "en";
         public string CurrentCulture { get; set; }
 
@@ -36,8 +36,8 @@ namespace Assets.Core.Fucine
             EntityFolder = entityFolder;
             _log = log;
             this.CurrentCulture = currentCulture;
-            OriginalData = new ArrayList();
-                LocalisedData = new ArrayList();
+            CoreData = new ArrayList();
+            LocalisedValuesData = new ArrayList();
         }
 
 
@@ -47,18 +47,15 @@ namespace Assets.Core.Fucine
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (coreContentFiles.Any())
                 coreContentFiles.Sort();
-
-
-
-            GetContentItemsWithLocalisation(EntityFolder, coreContentFiles, _log);
+            GetCoreAndLocDataForContentType(EntityFolder, coreContentFiles, _log);
 
             var contentImportForMods = new ContentImportForMods();
-            contentImportForMods.ProcessContentItemsWithMods(this.OriginalData, EntityFolder);
+            contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolder);
         }
 
 
 
-        public void GetContentItemsWithLocalisation(string contentOfType, System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
+        public void GetCoreAndLocDataForContentType(string contentOfType, System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
         {
 
 
@@ -79,14 +76,11 @@ namespace Assets.Core.Fucine
                 try
                 {
 
-                  JObject jObject=JObject.Parse(json);
+                  JToken jObject=JObject.Parse(json);
 
-                    foreach(JObject v in jObject[contentOfType])
-                    {
-                        var h = v.ToObject<Hashtable>();
-                    }
 
-                    OriginalData.AddRange(jObject[contentOfType].ToObject<ArrayList>());
+  
+                    CoreData.AddRange(jObject[contentOfType].ToObject<ArrayList>());
 
                     //Dictionary<string, object> dict = fileContentsAsJArray.ToDictionary(
                     //    k => ((JObject) k).Properties().First().Value.ToString(), v => v.Values().First().Value<object>());
@@ -121,7 +115,7 @@ namespace Assets.Core.Fucine
                     try
                     {
                         //yup, still the same
-                        LocalisedData.AddRange(SimpleJsonImporter.Import(json, true)
+                        LocalisedValuesData.AddRange(SimpleJsonImporter.Import(json, true)
                             .GetArrayList(contentOfType));
                     }
                     catch (Exception e)
@@ -144,8 +138,8 @@ namespace Assets.Core.Fucine
                     // COPY LOCALISATION DATA INTO originalArrayList
                     //
                     var thisIsATemporaryHomeForThisMethod = new ContentImportForMods();
-                    thisIsATemporaryHomeForThisMethod.CopyFields(OriginalData,
-                        LocalisedData, fieldsToTranslate,
+                    thisIsATemporaryHomeForThisMethod.CopyFields(CoreData,
+                        LocalisedValuesData, fieldsToTranslate,
                         false, repair, ref changed);
 
                     if (repair)
@@ -167,13 +161,13 @@ namespace Assets.Core.Fucine
                             */
                                 string outputFile = locFile.Replace(".json", "_out.json");
                                 thisIsATemporaryHomeForThisMethod.Export(outputFile, contentOfType,
-                                    OriginalData);
+                                    CoreData);
                                 //FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
                             }
                             else
                             {
                                 thisIsATemporaryHomeForThisMethod.Export(locFile, contentOfType,
-                                    OriginalData);
+                                    CoreData);
                             }
 
                             NoonUtility.Log("Exported [" + locFile + "]");

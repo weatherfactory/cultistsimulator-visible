@@ -77,9 +77,7 @@ public class ContentImporter
                 //so really, we need an arraylist with an id attached to the top, which sounds to me like a hashset or a dictionary<int,hashtable>
                 
 
-
-
-                foreach (JObject j in dataProviderForEntityType.OriginalData)
+                foreach (JObject j in dataProviderForEntityType.CoreData)
                 {
                     var h = j.ToObject<Hashtable>();
                     EntityData entityData=new EntityData(h);
