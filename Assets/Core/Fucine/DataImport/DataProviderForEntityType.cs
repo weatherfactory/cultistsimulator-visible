@@ -17,7 +17,7 @@ namespace Assets.Core.Fucine
         private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
 
 
-        public readonly string EntityFolder;
+        public readonly string EntityFolderName;
         private readonly ContentImportLog _log;
         public ArrayList CoreData { get; set; }
         public ArrayList LocalisedValuesData { get; set; }
@@ -31,9 +31,9 @@ namespace Assets.Core.Fucine
         }
 
 
-        public DataProviderForEntityType(string entityFolder, string currentCulture, ContentImportLog log)
+        public DataProviderForEntityType(string entityFolderName, string currentCulture, ContentImportLog log)
         {
-            EntityFolder = entityFolder;
+            EntityFolderName = entityFolderName; //
             _log = log;
             this.CurrentCulture = currentCulture;
             CoreData = new ArrayList();
@@ -43,26 +43,26 @@ namespace Assets.Core.Fucine
 
         public void LoadEntityData()
         {
-            var contentFolder = CORE_CONTENT_DIR + EntityFolder;
+            var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (coreContentFiles.Any())
                 coreContentFiles.Sort();
-            GetCoreAndLocDataForContentType(EntityFolder, coreContentFiles, _log);
+            GetCoreAndLocDataForContentType(coreContentFiles, _log);
 
             var contentImportForMods = new ContentImportForMods();
-            contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolder);
+            contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolderName);
         }
 
 
 
-        public void GetCoreAndLocDataForContentType(string contentOfType, System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
+        public void GetCoreAndLocDataForContentType(System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
         {
 
 
             //allcontentfiles contains both core and override json
             System.Collections.Generic.List<string> allContentFiles = new System.Collections.Generic.List<string>();
             allContentFiles.AddRange(coreContentFiles);
-            if (!allContentFiles.Any()) log.LogProblem("Can't find any " + contentOfType + " to import as content");
+            if (!allContentFiles.Any()) log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
 
             //into alpha order rather than core followed by override
             allContentFiles.Sort();
@@ -73,13 +73,12 @@ namespace Assets.Core.Fucine
                 //json string for each content file - in English initially
                 string json = File.ReadAllText(contentFile);
 
-
                 try
                 {
 
                   JToken topLevelObject=JObject.Parse(json);
 
-                  JArray topLevelArrayList = (JArray) topLevelObject[contentOfType];
+                  JArray topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
 
                     foreach (var eachObject in topLevelArrayList)
@@ -103,7 +102,7 @@ namespace Assets.Core.Fucine
                 }
 
                 if (BaseCulture != CurrentCulture)
-                    TryToLocalise(contentOfType, log, contentFile);
+                    TryToLocalise(EntityFolderName, log, contentFile);
             }
 
         }

@@ -71,29 +71,6 @@ public class CompendiumLoader
 
                 dataProviderForEntityType.LoadEntityData();
 
-                //pass the entitydata for each entity along with *all* the localised data
-                //we can't match the localised data via index reliably, so we do it via id; but we don't know the id at this point
-                //but no, that's silly. We should match it when the entityData object is created
-                //but no, we can't do that if it's all still in arraylists
-                //so really, we need an arraylist with an id attached to the top, which sounds to me like a hashset or a dictionary<int,hashtable>
-
-
-                //foreach (JObject j in dataProviderForEntityType.CoreData)
-                //{
-
-
-                //    Hashtable h=new Hashtable();
-
-                //    foreach (var eachKVP in (JObject)j)
-                //        AddTokenToHashtable(eachKVP.Key, h, eachKVP.Value);
-
-
-                //    EntityData entityData =new EntityData(h);
-
-                //    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
-                //    compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
-                //}
-
 
                 foreach (EntityData entityData in dataProviderForEntityType.CoreData)
                 {
