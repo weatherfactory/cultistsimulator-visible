@@ -83,7 +83,7 @@ namespace Assets.Core.Fucine
             //Dictionary<string,string> - like DrawMessages
                 foreach (DictionaryEntry de in subHashtable)
                 {
-                    dictionary.Add(de.Key, de.Value);
+                    dictionary.Add(de.Key, de.Value.ToString());
                 }
 
                 _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dictionary);
