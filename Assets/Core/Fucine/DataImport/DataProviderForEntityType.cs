@@ -100,42 +100,55 @@ namespace Assets.Core.Fucine
 
         private void UnpackLocalisedObject(JObject jObject,string currentKey)
         {
-            string nextKey = currentKey+ (string)jObject["id"] + "|".ToLower();
-
+            //string nextKey = currentKey+ (string)jObject["id"] + "|".ToLower();
+            
 
             foreach (var eachProperty in jObject)
             {
-                if (eachProperty.Value.Type == JTokenType.String)
-                {
-                    if(eachProperty.Key!="id")
-                    {
-                        string leafKey = $"{nextKey}{eachProperty.Key}";
-                        LocalisedValuesData.Add(leafKey, eachProperty.Value.ToString());
-                     Debug.Log(leafKey + ": " + eachProperty.Value.ToString());
+                LocHashKeyBuilder keyBuilder = new LocHashKeyBuilder(currentKey, (string)jObject["id"]);
+                if (eachProperty.Value.Type == JTokenType.Object)
+                 {
+                     //string objectKey = $"{nextKey}{{{eachProperty.Key}";
+                     keyBuilder.WithObjectProperty(eachProperty.Key);
+
+                     //UnpackLocalisedObject(eachProperty.Value as JObject, objectKey);
+
+                     UnpackLocalisedObject(eachProperty.Value as JObject, keyBuilder.Key);
+                }
+                 else if (eachProperty.Value.Type == JTokenType.Array)
+                 {
+
+
+                     foreach (var item in eachProperty.Value)
+                     {
+                        // UnpackLocalisedObject(item as JObject, nextKey + "[");
+                        keyBuilder.WithArray();
+                        UnpackLocalisedObject(item as JObject, keyBuilder.Key);
+                    }
+                 }
+
+                 else if (eachProperty.Value.Type == JTokenType.String)
+                 {
+                     if (eachProperty.Key != "id")
+                     {
+                         //string leafKey = $"{nextKey}{eachProperty.Key}";
+
+                         //LocalisedValuesData.Add(leafKey, eachProperty.Value.ToString());
+                         //Debug.Log(leafKey + ": " + eachProperty.Value.ToString());
+
+                         keyBuilder.WithLeaf(eachProperty.Key);
+                        LocalisedValuesData.Add(keyBuilder.Key, eachProperty.Value.ToString());
+                        Debug.Log(keyBuilder.Key + ": " + eachProperty.Value.ToString());
 
                     }
                 }
-                    
 
-                else if (eachProperty.Value.Type == JTokenType.Object)
-                {
-                    string objectKey = $"{nextKey}{{{eachProperty.Key}";
-                    UnpackLocalisedObject(eachProperty.Value as JObject, objectKey);
-                }
-                else if (eachProperty.Value.Type == JTokenType.Array)
-                {
-                    foreach (var item in eachProperty.Value)
-                    {
-                        UnpackLocalisedObject(item as JObject, nextKey + "[");
-                    }
-                }
-         
 
-                else
+                 else
 
-                {
-                    throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
-                }
+                 {
+                     throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
+                 }
 
             }
 
