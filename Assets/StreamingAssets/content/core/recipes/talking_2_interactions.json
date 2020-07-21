@@ -3,7 +3,7 @@
         {
             "id": "lockfollowerincupboard",
             "label": "Betray and Imprison a Follower",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "hq": 1,
                 "follower": 1
@@ -29,7 +29,7 @@
         {
             "id": "sulochanachat",
             "label": "A Chat with Sulochana",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "sulochana": 1
             },
@@ -86,7 +86,7 @@
         },
         {
             "id": "sulochanachat_health",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Body's Strengths",
             "requirements": {
                 "sulochana": 1,
@@ -98,7 +98,7 @@
         {
             "id": "sulochanachat_passion",
             "label": "On Passion",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "sulochana": 1,
                 "passion": 1
@@ -109,7 +109,7 @@
         {
             "id": "sulochanachat_cabaret",
             "label": "On the Ecdysis Club",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "sulochana": 1,
                 "locationcabaret": 1
@@ -120,7 +120,7 @@
         {
             "id": "sulochanachat_desireheart_track",
             "label": "On the New Form",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "sulochana": 1,
                 "desireheart_track": 1
@@ -133,7 +133,7 @@
         },
         {
             "id": "sulochanachat_desiremoth_track",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Old Form",
             "requirements": {
                 "sulochana": 1,
@@ -147,7 +147,7 @@
         },
         {
             "id": "sulochanachat_desire_change",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On Desire",
             "requirements": {
                 "sulochana": 1,
@@ -158,7 +158,7 @@
         },
         {
             "id": "sulochanachat_desire",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On Desire",
             "requirements": {
                 "sulochana": 1,
@@ -169,7 +169,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesrouter",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On Secret Places",
             "requirements": {
                 "sulochana": 1,
@@ -211,7 +211,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesg",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Road to Ivory",
             "requirements": {
                 "sulochana": 1,
@@ -226,7 +226,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesf",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Road to Pupil",
             "requirements": {
                 "sulochana": 1,
@@ -241,7 +241,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriese",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Not there - ",
             "requirements": {
                 "sulochana": 1,
@@ -253,7 +253,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesd",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Road to Stigma",
             "requirements": {
                 "sulochana": 1,
@@ -268,7 +268,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesc",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Road to Antumbra",
             "requirements": {
                 "sulochana": 1,
@@ -283,7 +283,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesb",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Road to Pearl",
             "requirements": {
                 "sulochana": 1,
@@ -298,7 +298,7 @@
         },
         {
             "id": "sulochanachat_secrethistoriesa",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "On the Roads to Change",
             "requirements": {
                 "sulochana": 1,
@@ -310,7 +310,7 @@
         {
             "id": "poppyoffer",
             "label": "Speak to Poppy Lascelles",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "poppyready": 1
             },
@@ -343,7 +343,7 @@
         {
             "id": "poppyofferaccept",
             "label": "Accept Poppy's Offer",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "passion": 1
             },
@@ -365,7 +365,7 @@
         {
             "id": "poppyofferquery",
             "label": "Question Poppy closely",
-            "actionId": "talk",
+            "actionid": "talk",
             "requirements": {
                 "reason": 1
             },
@@ -378,7 +378,7 @@
         {
             "id": "poppytimebomb",
             "label": "Poppy's Request",
-            "actionId": "poppytime",
+            "actionid": "poppytime",
             "startdescription": "In the 'Season of Rags', Poppy will return...",
             "description": ".",
             "linked": [
@@ -395,7 +395,7 @@
         },
         {
             "id": "poppysafefornow",
-            "actionId": "poppytime",
+            "actionid": "poppytime",
             "label": "Silence from Poppy",
             "startdescription": "Poppy is seen around town, assisting at charitable events, smiling benignly.",
             "description": ".",
@@ -410,7 +410,7 @@
         {
             "id": "poppywantssoul",
             "label": "A Friendly Visit from Poppy",
-            "actionId": "poppytime",
+            "actionid": "poppytime",
             "slots": [
                 {
                     "id": "Sacrifice",
@@ -438,7 +438,7 @@
         },
         {
             "id": "poppysatiated",
-            "actionId": "poppytime",
+            "actionid": "poppytime",
             "label": "A Suitable Conclusion",
             "requirements": {
                 "follower": 1

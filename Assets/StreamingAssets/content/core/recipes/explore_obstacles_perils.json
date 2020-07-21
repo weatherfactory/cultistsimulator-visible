@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "explorevaultperil_treacherousground_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Treacherous Ground",
             "startdescription": "Sucking mud, tricksy fissures: the earth is hungry. We need Lantern to show us a way, or Forge to make one.",
             "requirements": {
@@ -56,7 +56,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_highlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 10
             },
@@ -76,7 +76,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_midlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 5
             },
@@ -96,7 +96,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_lowlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 1
             },
@@ -116,7 +116,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -136,7 +136,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -156,7 +156,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -176,7 +176,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Safe Across the Treacherous Ground",
             "startdescription": "We're mud-spattered and thorn-scratched, but we've made it through.",
             "description": ".",
@@ -194,7 +194,7 @@
         },
         {
             "id": "explorevaultperil_treacherousground_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Earth is Hungry",
             "startdescription": "A promising route reveals itself as a sucking snare. We'll have to go round and try again.",
             "description": ".",
@@ -222,7 +222,7 @@
         },
         {
             "id": "explorevaultperil_forest_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Peril-Prowled Forest",
             "startdescription": "The darkness under the trees is quiet, for now, but we're not alone in here. Moth aspect will guide us through, or Forge aspect will clear a path.",
             "requirements": {
@@ -276,7 +276,7 @@
         },
         {
             "id": "explorevaultperil_forest_highmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 10
             },
@@ -296,7 +296,7 @@
         },
         {
             "id": "explorevaultperil_forest_midmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 5
             },
@@ -316,7 +316,7 @@
         },
         {
             "id": "explorevaultperil_forest_lowmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 1
             },
@@ -336,7 +336,7 @@
         },
         {
             "id": "explorevaultperil_forest_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -356,7 +356,7 @@
         },
         {
             "id": "explorevaultperil_forest_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -376,7 +376,7 @@
         },
         {
             "id": "explorevaultperil_forest_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -396,7 +396,7 @@
         },
         {
             "id": "explorevaultperil_forest_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "'A Light Through the Trees...'",
             "startdescription": "There's something up ahead. We've made it through the forest.",
             "description": ".",
@@ -414,7 +414,7 @@
         },
         {
             "id": "explorevaultperil_forest_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Deepening Silence",
             "startdescription": "We've lost the path. The forest towers against the dusk sky. The beasts of the forest are silent, but now and then we see their eyes.",
             "description": ".",
@@ -442,7 +442,7 @@
         },
         {
             "id": "explorevaultperil_mountains_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The High Passes",
             "startdescription": "Savage peaks scar the sky. Winter aspect may preserve us from chill, and Forge aspect may give us a path. If we have neither, our expedition will fail.",
             "requirements": {
@@ -496,7 +496,7 @@
         },
         {
             "id": "explorevaultperil_mountains_highwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 10
             },
@@ -516,7 +516,7 @@
         },
         {
             "id": "explorevaultperil_mountains_midwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 5
             },
@@ -536,7 +536,7 @@
         },
         {
             "id": "explorevaultperil_mountains_lowwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 1
             },
@@ -556,7 +556,7 @@
         },
         {
             "id": "explorevaultperil_mountains_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -576,7 +576,7 @@
         },
         {
             "id": "explorevaultperil_mountains_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -596,7 +596,7 @@
         },
         {
             "id": "explorevaultperil_mountains_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -616,7 +616,7 @@
         },
         {
             "id": "explorevaultperil_mountains_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Through the High Passes",
             "startdescription": "Frost-scarred and shivering, we've made it through the mountains.",
             "description": ".",
@@ -634,7 +634,7 @@
         },
         {
             "id": "explorevaultperil_mountains_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Furious Echoes",
             "startdescription": "Rock-slides and avalanches drive us back. We'll try another route, if we survive.",
             "description": ".",
@@ -662,7 +662,7 @@
         },
         {
             "id": "explorevaultperil_desert_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Desolation",
             "startdescription": "An immense and tawny furnace barely contained by its horizons. At night, a chilly wilderness of stars. We must go carefully, with Forge to shape our way or Grail to secure us against thirst.",
             "requirements": {
@@ -716,7 +716,7 @@
         },
         {
             "id": "explorevaultperil_desert_highgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 10
             },
@@ -736,7 +736,7 @@
         },
         {
             "id": "explorevaultperil_desert_midgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 5
             },
@@ -756,7 +756,7 @@
         },
         {
             "id": "explorevaultperil_desert_lowgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 1
             },
@@ -776,7 +776,7 @@
         },
         {
             "id": "explorevaultperil_desert_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -796,7 +796,7 @@
         },
         {
             "id": "explorevaultperil_desert_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -816,7 +816,7 @@
         },
         {
             "id": "explorevaultperil_desert_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -836,7 +836,7 @@
         },
         {
             "id": "explorevaultperil_desert_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Sun in Splendour",
             "startdescription": "The sun is setting. We look back across the desolation we crossed, and at all the colours it assumes in the evening light. Night falls. Stars prickle. The wind presses cold hands to our faces. Onwards.",
             "description": ".",
@@ -854,7 +854,7 @@
         },
         {
             "id": "explorevaultperil_desert_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Sun in Wrath",
             "startdescription": "Day after day, the sun tautens our skin, dries our mouths, floods our skulls with savage light. We might be lost. It's possible we're lost.",
             "description": ".",
@@ -882,7 +882,7 @@
         },
         {
             "id": "explorevaultperil_sea_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Sea around the Evening Isles",
             "startdescription": "The sea we sail is plagued by storms. The isles we seek are tucked in the corners of unmapped history. We will need Heart or Forge or both.",
             "requirements": {
@@ -936,7 +936,7 @@
         },
         {
             "id": "explorevaultperil_sea_highheart",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "heart": 10
             },
@@ -956,7 +956,7 @@
         },
         {
             "id": "explorevaultperil_sea_midheart",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "heart": 5
             },
@@ -976,7 +976,7 @@
         },
         {
             "id": "explorevaultperil_sea_lowheart",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "heart": 1
             },
@@ -996,7 +996,7 @@
         },
         {
             "id": "explorevaultperil_sea_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -1016,7 +1016,7 @@
         },
         {
             "id": "explorevaultperil_sea_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -1036,7 +1036,7 @@
         },
         {
             "id": "explorevaultperil_sea_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -1056,7 +1056,7 @@
         },
         {
             "id": "explorevaultperil_sea_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Safe Across the Sea",
             "startdescription": "Wave-lashed and sea-spattered, sun-scorched and salt-stained. But here.",
             "description": ".",
@@ -1074,7 +1074,7 @@
         },
         {
             "id": "explorevaultperil_sea_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Labyrinths of Salt and Basalt",
             "startdescription": "Another day battered by storms. We must be close. But the isles are a maddening maze, and the places we seek lie on no published chart.",
             "description": ".",

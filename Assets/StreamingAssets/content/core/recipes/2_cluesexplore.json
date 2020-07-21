@@ -3,7 +3,7 @@
         {
             "id": "explore_movehq_hint",
             "label": "A Change of Premises?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "hq.potential": 1
             },
@@ -14,7 +14,7 @@
         {
             "id": "explorevault_hint_sending",
             "label": "A Second Self?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "vault": 1,
                 "sending": 1
@@ -26,7 +26,7 @@
         {
             "id": "explorevault_hint_addfunds",
             "label": "Preparations for an Expedition?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "vault": 1,
                 "follower": 1
@@ -38,7 +38,7 @@
         {
             "id": "explorevault_hint_addfollower",
             "label": "Preparations for an Expedition?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "vault": 1,
                 "funds": 1
@@ -50,7 +50,7 @@
         {
             "id": "explorevault_hint",
             "label": "Preparations for an Expedition?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "vault": 1
             },
@@ -61,7 +61,7 @@
         {
             "id": "exploresulochanacabaret_hint",
             "label": "The Old Form and the New",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "locationcabaret": 1,
                 "sulochana": 1
@@ -72,7 +72,7 @@
         },
         {
             "id": "explore.searchgraveyard.hint",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery": 1
             },
@@ -83,7 +83,7 @@
         },
         {
             "id": "explore.searchgraveyard.closing.hint",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery.closing": 1
             },

@@ -4,7 +4,7 @@
         {
             "id": "workbytjobstart",
             "label": "A Golden Day of Occasional Work",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacybytjob": 1
             },
@@ -28,7 +28,7 @@
         {
             "id": "workbytjob",
             "label": "A Golden Day of Occasional Work",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacybytjobmatured": 1
             },
@@ -49,7 +49,7 @@
         {
             "id": "workbytjobend",
             "label": "A Cloud on the Horizon",
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "Papa has summoned me! I must race to his bedside. All the family affairs are suspended, for now - ",
             "craftable": false,
             "effects": {
@@ -67,7 +67,7 @@
         {
             "id": "workbytjobepilogue",
             "label": "Ghastly News",
-            "actionId": "legacyeventbad",
+            "actionid": "legacyeventbad",
             "alt": [
                 {
                     "id": "bytopenstudy",
@@ -87,7 +87,7 @@
         {
             "id": "bytopenexplore",
             "label": "A World of Possibilities!",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "Some ripping sorts are introducing me to some ripping sorts of places.",
             "description": "If I ever have trouble deciding how to spend my money, the good people at these spots can certainly be of assistance!",
             "warmup": 10,
@@ -100,7 +100,7 @@
         {
             "id": "bytopenstudy",
             "label": "Puzzling Papers",
-            "actionId": "study",
+            "actionid": "study",
             "startdescription": "I am to receive papers found among Papa's belongings, which might perhaps shed some sort of light on where exactly the hell all the money has gone.",
             "alt": [
                 {
@@ -120,7 +120,7 @@
         {
             "id": "bytstudydiary",
             "label": "Studying a Troubling Diary",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "legacydiarylastcharacter": 1
             },
@@ -144,7 +144,7 @@
         {
             "id": "bytopendream",
             "label": "The House without Walls",
-            "actionId": "dream",
+            "actionid": "dream",
             "alt": [
                 {
                     "id": "despairrisk",
@@ -164,7 +164,7 @@
         {
             "id": "bytopentalk",
             "label": "Summoning a Stranger",
-            "actionId": "talk",
+            "actionid": "talk",
             "startdescription": "I've contacted the individual named in this troubling document. I have little reason to believe they will be able to enlighten me on the nature of what went before. But perhaps they can help with what is to come.",
             "description": "My new acquaintance speaks authoritatively of Papa. He knew he was dying. He had hoped to taste unknown pleasures before his end - pleasures denied to healthy society. My new acquaintance suggests that I might finish what he began - that if I do so, I might save myself from the despair which haunts my family.",
             "effects": {

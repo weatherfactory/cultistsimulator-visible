@@ -3,7 +3,7 @@
         {
             "id": "auctionbuy",
             "label": "Bid in an Auction",
-            "actionId": "explore",
+            "actionid": "explore",
             "effects": {},
             "slots": [
                 {
@@ -34,7 +34,7 @@
         },
         {
             "id": "playerincreasedbid",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "I've bid!",
             "requirements": {
                 "funds": 1
@@ -62,7 +62,7 @@
         },
         {
             "id": "auctionbidmatched.grailapostlepillar3",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "bid": -6,
                 "apostlegrail.pillar3": 1
@@ -76,7 +76,7 @@
         {
             "id": "auctionbidmatched",
             "label": "Another bidder!",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "Someone else has matched my bid! I must match it with more funds, or forgo my prize.",
             "description": ".",
             "slots": [
@@ -103,7 +103,7 @@
         },
         {
             "id": "auctionfailureclear",
-            "actionId": "explore",
+            "actionid": "explore",
             "effects": {
                 "text": -1,
                 "tool": -1,
@@ -120,7 +120,7 @@
         },
         {
             "id": "auctionfailure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "I haven't won the auction",
             "aspects": {
                 "restore": 1
@@ -132,7 +132,7 @@
         {
             "id": "auctionsuccess",
             "label": "I've won the auction!",
-            "actionId": "explore",
+            "actionid": "explore",
             "effects": {
                 "funds": -100,
                 "bid": -100
@@ -145,7 +145,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultshires3",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "The others who came here all overlooked the secrets locked within the warrior-king's corpse. I will not make the same mistake.",
             "extantreqs": {
@@ -158,7 +158,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultcapital5",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "I should not neglect this last piece of priest. It will, no doubt, be chewy, but there is power and knowledge within.",
             "extantreqs": {
@@ -171,7 +171,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultloneandlevelsands2",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "I will gather what I can of Lagun's remains. I will find a way to unlock the memories within. Even if I have to steep it in tea.",
             "extantreqs": {
@@ -184,7 +184,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultrendingmountainsdefault",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "I will keep what is left of the King to myself.",
             "extantreqs": {
@@ -200,7 +200,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultshires4",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "'Caput gerat lupinum'. When a human passes beyond the permissible, they were once considered to have become a wolf.",
             "extantreqs": {
@@ -213,7 +213,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultshires3.ransackedbyrival",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "My rival, like all the others who have come here, overlooked the secrets locked within the warrior-king's corpse. I will not make the same mistake.",
             "requirements": {
@@ -229,7 +229,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultcapital5.ransackedbyrival",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "Now that my rival has gone, we can steal in and scavenge this last piece of priest. It will, no doubt, be chewy, but there is power and knowledge within.",
             "requirements": {
@@ -245,7 +245,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultloneandlevelsands2.ransackedbyrival",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "Now that my rival has gone, we can steal in and scavenge the once-immortal remains I require. I will gather what I can of Lagun's remains. I will find a way to unlock the memories within. Even if I have to steep it in tea.",
             "requirements": {
@@ -261,7 +261,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultrendingmountainsdefault.ransackedbyrival",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "Now that my rival has gone, we can steal in and scavenge the half-mortal remains I require. I will keep what is left of the King to myself.",
             "requirements": {
@@ -280,7 +280,7 @@
         },
         {
             "id": "expedition.corpse.find.vaultshires4.ransackedbyrival",
-            "actionId": "expedition.corpse.find",
+            "actionid": "expedition.corpse.find",
             "label": "One More Treasure",
             "startdescription": "Now that my rival has gone, we can steal in and scavenge the mortal remains we require.",
             "requirements": {

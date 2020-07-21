@@ -3,7 +3,7 @@
         {
             "id": "health_expel_to_scar",
             "label": "Health: Scarred",
-            "actionId": "scar_ability",
+            "actionid": "scar_ability",
             "startdescription": "My body is changing...",
             "description": "Some movements leave a deeper mark than others. [Health has permanently changed to a Scar. Be careful: Sickness and Starvation are not satisfied by Scars.]",
             "requirements": {
@@ -17,7 +17,7 @@
         {
             "id": "passion_expel_to_scar",
             "label": "Passion: Scarred",
-            "actionId": "scar_ability",
+            "actionid": "scar_ability",
             "startdescription": "My sentiments are changing me...",
             "description": "My thoughts bind my flesh and my spirit more tightly than is safe. [Passion has permanently changed to a Scar.]",
             "requirements": {
@@ -31,14 +31,14 @@
         {
             "id": "expel_independent",
             "label": "Safely Unaware",
-            "actionId": "expel_independent",
+            "actionid": "expel_independent",
             "startdescription": "My Rival cannot know what awaits them.",
             "warmup": 1
         },
         {
             "id": "expel_corpses",
             "label": "A Frail Shadow",
-            "actionId": "expel_corpse",
+            "actionid": "expel_corpse",
             "requirements": {
                 "corpse": 1
             },
@@ -48,7 +48,7 @@
         {
             "id": "expel_injury",
             "label": "A Trail of Blood",
-            "actionId": "expel_injury",
+            "actionid": "expel_injury",
             "requirements": {
                 "injury": 1
             },

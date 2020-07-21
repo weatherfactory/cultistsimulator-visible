@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "ambition.apostlegrail.emitfuel",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Guidance from our Delight",
             "requirements": {
                 "apostlegrail.mentor": 1
@@ -14,7 +14,7 @@
         },
         {
             "id": "work.apostlegrail.majorvictory.postbetrayal",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Nevertheless, the Vitulation",
             "extantreqs": {
                 "apostlegrail.mentor": -1
@@ -37,7 +37,7 @@
         },
         {
             "id": "work.apostlegrail.majorvictory",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Last Elements of the Vitulation",
             "extantreqs": {
                 "apostlegrail.mentor": 1
@@ -60,7 +60,7 @@
         },
         {
             "id": "explore.apostlegrail.purchase.apostlegrail.pillar3",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Bid for Rare Spices",
             "startdescription": "Our Delight's blood is a payment towards certain special goods for particular connoisseurs. Everything must be just right for the Vitulation.",
             "requirements": {
@@ -81,7 +81,7 @@
         },
         {
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.finished",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Seven Graces are Prepared",
             "startdescription": "The Seven Graces and the Three Savours: the Salt, the Sweet, the Sweetest. We who are the choicest of the Host shall so annoint ourselves.",
             "requirements": {
@@ -96,7 +96,7 @@
         },
         {
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Prepare the Seven Graces",
             "startdescription": "The scents and savours must be precisely as the Recipe dictates. Only so can I, and my colleagues, be sufficiently appetising - appetising enough to arouse a pitch of appetite not seen in the waking world.",
             "requirements": {
@@ -135,7 +135,7 @@
         },
         {
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.grail",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Flowermaker's Gift",
             "startdescription": "If we die, yet shall we live on in those who slew us.",
             "requirements": {
@@ -160,7 +160,7 @@
         },
         {
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.heart",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Janus' Savour",
             "startdescription": "Janus is the god that rose not, but reigns. Janus is the saint that died not, but is dead. Janus is the door between what cannot be, and what must be.",
             "requirements": {
@@ -185,7 +185,7 @@
         },
         {
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3.flavourwith.moth",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Black-Flax's Savour",
             "startdescription": "It is necessary that we forget what we were.",
             "requirements": {
@@ -210,7 +210,7 @@
         },
         {
             "id": "talk.apostlegrail.createpillar4",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Begin Preparations for the Vitulation",
             "startdescription": "There will be a great celebration when our Delight proves their appetite.",
             "description": "We cannot know the final date, until we know the time of the Grail's greatest influence. But we can, we must, begin to select those who will comprise the Host.",
@@ -225,7 +225,7 @@
         },
         {
             "id": "talk.apostlegrail.upgradepillar4.attempt",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Invite our Final Guest",
             "startdescription": "Without the Key-Holder, all this preparation will be in vain.",
             "description": "We do not yet have our Key-Holder",
@@ -254,7 +254,7 @@
         },
         {
             "id": "talk.apostlegrail.upgradepillar4.inprogress.attempt",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Augment the Host",
             "startdescription": "We seek more attendees. Our allies: greed; curiosity; prurience; unalloyed idleness.",
             "description": "We could not stoke excitement's oven sufficiently.",
@@ -280,7 +280,7 @@
         },
         {
             "id": "talk.apostlegrail.upgradepillar4.marinetteready",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "The Key-Holder",
             "startdescription": "'<sprite name=winter>.'",
             "requirements": {
@@ -297,7 +297,7 @@
         },
         {
             "id": "talk.apostlegrail.upgradepillar4.marinettenotready",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Not Yet Enough",
             "startdescription": "'...<sprite name=grail>.' [Marinette is not yet sated.]",
             "requirements": {
@@ -307,7 +307,7 @@
         },
         {
             "id": "talk.apostlegrail.upgradepillar4.succeed",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "The Host Grows",
             "startdescription": "More names for the list which is equal parts sacred and secret; more faces for the great night.",
             "requirements": {
@@ -324,7 +324,7 @@
         },
         {
             "id": "talk.apostlegrail.sulochanamarinette",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "An Introduction to Our Lady of Wires",
             "startdescription": "'You're really going to do it?' Sulochana meditatively rocks the sole of one booted foot over the wreck of her cigarette. 'Then I'm leaving, now. Don't worry. I'll send your message to the necessary sister. I'm sure she'll come... if there's blood enough.'",
             "description": "",
@@ -339,7 +339,7 @@
         },
         {
             "id": "talk.apostlegrail.marinette.ready.hint",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Marinette is Sated",
             "startdescription": "'<sprite name=heart>'. [You can now add Marinette to your Guests.]",
             "requirements": {
@@ -351,7 +351,7 @@
         },
         {
             "id": "talk.apostlegrail.marinette",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Petitioning Marinette of the Wires",
             "startdescription": "'<sprite name=grail>?'",
             "description": "'<sprite name=grail>. <sprite name=grail>. <sprite name=grail>!'",
@@ -384,7 +384,7 @@
         },
         {
             "id": "talk.apostlegrail.marinettenext.hireling",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Blood",
             "startdescription": "Marinette always leaves the skin. Sometimes she leaves the bones. She'll consume the hired help eagerly enough, but the hired help generally objects, and then there is generally a fuss.",
             "requirements": {
@@ -407,7 +407,7 @@
         },
         {
             "id": "talk.apostlegrail.marinettenext.follower",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Blood",
             "startdescription": "Marinette always leaves the skin. Sometimes she leaves the bones. If we tell our loyal followers to close their eyes, it's over very quickly.",
             "mutations": [

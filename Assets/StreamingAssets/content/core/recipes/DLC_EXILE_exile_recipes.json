@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "_cities",
-            "actionId": "spawner",
+            "actionid": "spawner",
             "effects": {
                 "city.aachen": 1,
                 "city.alexandria": 1,
@@ -42,7 +42,7 @@
         },
         {
             "id": "_domiciles",
-            "actionId": "spawner",
+            "actionid": "spawner",
             "effects": {
                 "domicile.aachen": 1,
                 "domicile.alexandria": 1,
@@ -82,7 +82,7 @@
         },
         {
             "id": "travel.first",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Far Enough and Fast Enough ",
             "startdescription": "I have more than enough cash for the journey - but I might need to travel light. [Leaving a city will shake off your pursuers - but they'll find you again eventually.",
             "effects": {
@@ -92,7 +92,7 @@
         },
         {
             "id": "travel.caper.begin",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Begin a Caper",
             "startdescription": "Get in, get the goods, get out. I don't think it's ever been that simple.",
             "description": "I've begun. [Keep an eye on the Operation. Complications will arise along the way.]",
@@ -128,7 +128,7 @@
         },
         {
             "id": "opx.caper.progress3",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "The Prize!",
             "startdescription": "This is what I came for.",
             "requirements": {
@@ -143,7 +143,7 @@
         },
         {
             "id": "opx.caper.progress2",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "A Final Complication...",
             "startdescription": "Nearly there -",
             "requirements": {
@@ -161,7 +161,7 @@
         },
         {
             "id": "opx.caper.progress1",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Another Complication...",
             "startdescription": "What now?",
             "requirements": {
@@ -179,7 +179,7 @@
         },
         {
             "id": "opx.caper.populate",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "A Busy Night Lies Ahead",
             "startdescription": "Ready. [Three Momentum means success. There'll be complications before that.]",
             "aspects": {
@@ -194,7 +194,7 @@
         },
         {
             "id": "opx.caper.next",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "A Complication",
             "startdescription": "@#ee.armouredgate|A heavy reinforced door bars my way.\n#ee.avidadept|'There's a Grail-adept already camped out near the site. You'll need to be ready for her tricks.'\n#ee.bosk|Thorned caressing branches, the scents of darkest green, furred movements beneath my hand, the black and beating darkness... the Wood runs close beneath the skin of the world here.\n#ee.coiltrace|'That power itself, the thing under the earth. Bureau says it started as a lesser tendril of the Seven-Coiled. Old god, d'you see? The god-flesh starts to rot and something else starts to breed in it. What they call Worms. I'd watch yourself. Fair warning.'\n#ee.crags|'Lot of the passes going up there have been blocked. You'll need to find a road or make one. I'd try to get you explosives, but the Bureau side doesn't like 'em, and the Army side doesn't like me.'\n#ee.creepinghorror|A creeping horror filters in through the skin. Come closer, says the night. Come closer.\n#ee.deceiver|A creature of twisting guile lurks here!\n#ee.devourer|A creature of crushing strength lurks here! Some monsters are the Lionsmith's children; some are Echidna's; some are both. Others are worse.\n#ee.feast|The way to where I go requires something like a ritual, or a feast. I'd like to think of it as a party, though it's not the kind of party I'd choose. I'll need to keep a level head, weird intoxications or not. If I can't I'll come back with nothing more interesting than a hangover.\n#ee.fretfuldead|Cobwebby, reproachful remnants - fragile, but quicker than they look, and their touch will draw the years right out through the skin.\n#ee.guardedcompound|A guarded compound - walls, towers, and watchers.\n#ee.labyrinthseal|An extraordinary knot of mechanisms sealing an armoured vault door. I'm not clear if it's entirely occult or entirely mechanical in nature, but I know it's entirely going to make my life difficult.\n#ee.ligeian|A Ligeian! I can't defeat her, but I can convince her I'm not worth the trouble.\n#ee.miasma|A sticky, stenchy miasma. My head swims.\n#ee.mist|The Nameless Name of the Velvet has passed this way. This mist is the hem of her grey garment. It'll be hell to find a way through.\n#ee.monks|The guards of this place aren't susceptible to bribes or seduction. Some would say that's because of the holy oaths they've taken, but I suspect it's because they watch each other carefully.\n#ee.ordeal.agony|Now I face an Ordeal of Agony. I've done this kind of thing before, which is why I'm not looking forward to doing it again. I still carry the scars from last time, though not on my skin.\n#ee.ordeal.desolation|Now I face an Ordeal of Desolation - a sunset in the soul.\n#ee.ordeal.enigma|Now I face an Enigmatic Ordeal. There are two ways through: understand everything, or understand nothing.\n#ee.percussigant|A lolloping whirl of furred, clawed music demands my immediate attention. A Percussigant!\n#ee.scarredduellist|A scarred duellist salutes me.\n#ee.securevault|A heavy vault door with an impressive lock.\n#ee.shadowedway|The entrance is here, somewhere. I just need to find it.\n#ee.soldiers|Armed men guard this place.\n#ee.storm|Thunder stalks the lightning through the clouds, and the rain comes down like fists.\n#ee.strixriddenadversary|A duellist scuttles keening towards you. His muscles are taut and trembling, and his eyes are black and gold like an owl's. He's strix-ridden - possessed by a many-winged Names of the Edge powers.\n#ee.thugs|A surly band of miscreants loiters here, eager for trouble.\n#ee.unknownlocation|An unknown location. I'll need to start by finding exactly where this place even is.\n#ee.unwelcomememories|Unwelcome memories! The mirrors in the walls flash, and flash again, and I see myself, in my days of service to the Foe - what was done to me, and worse, what I did -\n#ee.vigil|The songs of the cultist soften into something like a lullaby. I find that I'm struggling to keep my eyes open. My head feels stuffed with feathers. Somehow, I'll have to stay awake until dawn.\n#|A complication lies ahead.@\n\n[Most Complications can be defeated with enough of the appropriate Aspect.]",
             "warmup": 60,
@@ -256,7 +256,7 @@
         },
         {
             "id": "opx.caper.tryresolve.edge",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Violence Is A Solution",
             "startdescription": "@#ee.devourer|A creature of crushing strength lairs here. I'm more a match for it.\n#ee.soldiers| Noisy, messy, necessary. Now I'll have to clean my boots.\n#|I've used force.@",
             "requirements": {
@@ -271,7 +271,7 @@
         },
         {
             "id": "opx.caper.tryresolve.forge",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Hammer and Anvil",
             "startdescription": "@#ee.mist|Once again, fire and ingenuity have served me well.\n#ee.securevault|I've breached the vault.\n#|I've used ingenuity.@",
             "requirements": {
@@ -286,7 +286,7 @@
         },
         {
             "id": "opx.caper.tryresolve.grail",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Greed and Beguilement",
             "startdescription": "\"@#ee.soldiers|I've come to an arrangement with the soldiers guarding this place.\r\n#|I've used bribery.@\"",
             "requirements": {
@@ -301,7 +301,7 @@
         },
         {
             "id": "opx.caper.tryresolve.heart",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "The Drum Unceasing",
             "startdescription": "@#|I've used persistence.@",
             "requirements": {
@@ -316,7 +316,7 @@
         },
         {
             "id": "opx.caper.tryresolve.knock",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "All Wounds Are Doors",
             "startdescription": "@#|I've opened what was sealed.@",
             "requirements": {
@@ -331,7 +331,7 @@
         },
         {
             "id": "opx.caper.tryresolve.lantern",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Illumination",
             "startdescription": "\"@#ee.mist|'The Watchman comes before the Velvet' is the kind of thing adepts say. I think it means that mist is only really a damper sort of darkness.\r\n#|I've dissolved a darkness.@\"",
             "requirements": {
@@ -346,7 +346,7 @@
         },
         {
             "id": "opx.caper.tryresolve.moth",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Smoke and Mirrors",
             "startdescription": "@#ee.devourer|A creature of crushing strength lairs here. I can't face it head-on, so I've turned to trickery.\n#ee.soldiers|The soldiers who should be guarding this place have gone thundering off into the night. I'll have just enough time to finish here before they get back -\n#|I've used trickery.@",
             "requirements": {
@@ -361,7 +361,7 @@
         },
         {
             "id": "opx.caper.tryresolve.secrethistories",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Not Only One History",
             "startdescription": "@#|I've used knowledge.@",
             "requirements": {
@@ -376,7 +376,7 @@
         },
         {
             "id": "opx.caper.tryresolve.winter",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Night Deepens",
             "startdescription": "@#|I've used patience.@",
             "requirements": {
@@ -391,7 +391,7 @@
         },
         {
             "id": "opx.caper.lucky",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Good Fortune",
             "startdescription": "Someone else would have given up. [Occasionally, you'll defeat a Complication even if you lack the right Aspects.]",
             "warmup": 10,
@@ -403,7 +403,7 @@
         },
         {
             "id": "opx.caper.makeprogress",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Momentum",
             "startdescription": "What's next?",
             "effects": {
@@ -424,7 +424,7 @@
         },
         {
             "id": "opx.caper.end",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "effects": {
                 "complication": -100
             },
@@ -439,7 +439,7 @@
         },
         {
             "id": "opx.caper.success",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Success!",
             "startdescription": "Safely away with my haul!",
             "requirements": {
@@ -456,7 +456,7 @@
         },
         {
             "id": "opx.caper.failure",
-            "actionId": "opx.caper",
+            "actionid": "opx.caper",
             "label": "Disaster!",
             "startdescription": "The caper's failed!",
             "aspects": {
@@ -468,14 +468,14 @@
         },
         {
             "id": "travel.visit.serapeum.peristasis",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "A Conversation with Dr Blackwood",
             "startdescription": "'You know that I've never approved of your career choices,' she tells me, 'and I don't have much time for your choice of resignation method, either. But I'm pleased to see you parting ways with that scoundrel. I'm going to assume it was a moral decision, in the end. And of course, you will have what little assistance I am permitted to offer.'",
             "slots": [
                 {
                     "id": "assistancewith",
                     "label": "Assistance With",
-                    "actionId": "travel",
+                    "actionid": "travel",
                     "required": {
                         "rarity.lantern": 1,
                         "wound.exile": 1,
@@ -507,7 +507,7 @@
         },
         {
             "id": "travel.visit.serapeum.peristasis.pentiment",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "rarity.lantern": 1
             },
@@ -516,7 +516,7 @@
         },
         {
             "id": "travel.visit.serapeum.peristasis.heal",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "damage.exile": 1
             },
@@ -531,7 +531,7 @@
         },
         {
             "id": "travel.visit.serapeum.peristasis.hide",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "trace": 1
             },
@@ -547,7 +547,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.tripoli.pentiment.colonel",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "loc.shrine.lionsmith.tripoli": 1,
                 "contact.retainer": 1
@@ -572,7 +572,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.tripoli.pentiment",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "loc.shrine.lionsmith.tripoli": 1,
                 "contact.retainer": 1
@@ -596,7 +596,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.tripoli.pentiment.after",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "loc.shrine.lionsmith.tripoli": 1,
                 "contact.retainer": 1
@@ -612,7 +612,7 @@
         },
         {
             "id": "travel.visit.serapeum.peristasis.obscure",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "temptation.obscurity": 1
             },
@@ -625,7 +625,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.blocked.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "An Enemy Shrine?",
             "startdescription": "My loyalty is to the Lionsmith, the Colonel's eternal enemy. I am not welcome here.",
             "extantreqs": {
@@ -639,7 +639,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.blocked.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "An Enemy Shrine?",
             "startdescription": "My loyalty is to the Colonel, the Lionsmith's eternal enemy. I am not welcome here.",
             "extantreqs": {
@@ -653,7 +653,7 @@
         },
         {
             "id": "travel.visit.shrine.blocked.tranquillity",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "The Opposite of Peace",
             "startdescription": "Not today. I walk on, whistling a tune I thought I'd forgotten.  [You can't make use of a shrine to either the Lionsmith or the Colonel while you have Tranquillity on the board.]",
             "extantreqs": {
@@ -667,7 +667,7 @@
         },
         {
             "id": "travel.visit.shrine.abandonobscurity.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "A Possible Sacrifice?",
             "startdescription": "The power honoured here might accept a certain vow. But you would gain nothing from that just yet. [Try this again once you have a Defiance Temptation on the table.]",
             "requirements": {
@@ -682,7 +682,7 @@
         },
         {
             "id": "travel.visit.shrine.consecration.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "You are Consecrated",
             "startdescription": "A consecration to the powers of conflict is irrevocable as a scar or a betrayal. [You cannot be consecrated twice.]",
             "comments": "This should trigger only if neither Consecration recipe does.",
@@ -695,7 +695,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.upgrade.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Visit an Iron Shrine?",
             "startdescription": "I've spent decades staying out of the Hours' way. Perhaps it's time to change that.",
             "requirements": {
@@ -710,7 +710,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.consecrated.weapon",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to an Iron Shrine, to Retrieve a Relic",
             "startdescription": "The Colonel's shrines sometimes smell of gunpowder, and sometimes of snow. I have mastered his mysteries. If I meditate in his shrine, perhaps I will find something that has been left for me.\n[Each Colonel meditation creates a Wound.]",
             "description": "In the space beneath the altar, I've found something left for me long ago.",
@@ -735,7 +735,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.consecrated.revelation",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to an Iron Shrine, for a Revelation",
             "startdescription": "The Colonel's shrines sometimes smell of gunpowder, and sometimes of snow. I have mastered his mysteries. If I meditate in his shrine, perhaps I will hear his voice. [Each Colonel meditation creates a Wound.]",
             "description": "The shadows of the shrine thicken. I am blind as the Colonel. I cannot see the Name Quirinus, who stands before me with his two-headed spear. 'Child of Earth,' he whispers, 'here is wisdom for you.' [You have learnt one of your Foe's weaknesses.]",
@@ -848,7 +848,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.consecrated.upgrade",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to an Iron Shrine",
             "startdescription": "The Colonel's shrines sometimes smell of gunpowder, and sometimes of snow. Meditation here will improve my understanding of the techniques the Colonel's Names teach. [Each Colonel meditation gives you a Wound.]",
             "description": "The rites cost blood, every time. In my delirium, as I lie half-conscious in the shrine, I think I hear the Many-Winged Ones whispering in the rafters. 'Blood returns to the earth. Blood returns...'",
@@ -872,7 +872,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.upgrade",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Visit an Iron Shrine",
             "startdescription": "The Colonel's shrines sometimes smell of gunpowder, and sometimes of snow. @#fragmentedgeg.exile|I won't learn anything more here, but I could gain a Vitality so I can heal a Wound.#|I can learn more of the battle-mysteries of the Edge here.@",
             "description": "My bones creak. My hearing seems sharper.",
@@ -895,7 +895,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.upgrade.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Visit a Brazen Shrine?",
             "startdescription": "I've spent decades staying out of the Hours' way. Perhaps it's time to change that.",
             "requirements": {
@@ -910,7 +910,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.consecrated.weapon",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to a Brazen Shrine, to Retrieve a Relic",
             "startdescription": "The Lionsmith's shrines are bright with the scent of hot brass, and rank with the scent of big cats. I have mastered his mysteries. If I meditate in his shrine, perhaps I will find something that has been left for me. [Each Lionsmith meditation creates a Rage.]",
             "description": "In the space beneath the altar, I've found something left for me long ago.",
@@ -935,7 +935,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.consecrated.revelation",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to a Brazen Shrine, for a Revelation",
             "startdescription": "The Lionsmith's shrines are bright with the scent of hot brass, and rank with the scent of big cats. I have mastered his mysteries. If I meditate in his shrine, perhaps I will hear his voice. [Each Lionsmith meditation creates a Rage.]",
             "description": "The sunlight falls in my eyes like blood, and all I see is the gold. The Name Menhit stands growling in the light, though I cannot see her. 'Child of Earth!' she hisses. 'Hear me!' [You have learnt one of your Foe's weaknesses.] ",
@@ -1048,7 +1048,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.consecrated.upgrade",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Make a Pilgrimage to a Brazen Shrine",
             "startdescription": "The Lionsmith's shrines are bright with the scent of hot brass, and rank with the scent of big cats. Meditation here will improve my understanding of the techniques the Lionsmith's Names teach. [Each Lionsmith meditation creates a Rage.]",
             "description": "My strength overwhelms my thoughts, and I circle the shrine, growling like a beast. Through the haze of my rage I think I hear the Many-Winged Ones whispering in the rafters. 'The strength of the earth. Of the earth...'",
@@ -1072,7 +1072,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.upgrade",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Visit a Brazen Shrine",
             "startdescription": "The Lionsmith's shrines are bright with the scent of hot brass, and rank with the scent of big cats. @#fragmentedgeg.exile|I won't learn anything more here, but I could gain a Vitality so I can heal a Wound.#|I can learn more of the battle-techniques of the Edge here.@",
             "description": "I am growing stronger.",
@@ -1095,7 +1095,7 @@
         },
         {
             "id": "travel.visit.shrine.consecration.colonel",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "A Consecration to the Colonel",
             "startdescription": "I could dedicate myself to the Colonel. [This will harm you and limit your dealings with the Lionsmith, but increase Defiance and open the Colonel's mysteries.]",
             "description": "I have masked my eyes and scarred my skin. I have bound myself with the Nine Patient Oaths. I am a soldier of the Colonel, who will not release me.",
@@ -1131,7 +1131,7 @@
         },
         {
             "id": "travel.visit.shrine.consecration.lionsmith",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "A Consecration to the Lionsmith",
             "startdescription": "I could dedicate myself to the Lionsmith. [This will enrage you and limit your dealings with the Colonel, but increase Defiance, and open the Lionsmith's mysteries.]",
             "description": "I have spilt the beast's blood and scorched my skin. I have undergone the Three Valorous Trials. I am a warrior of the Lionsmith, unless some day he releases me.",
@@ -1167,7 +1167,7 @@
         },
         {
             "id": "travel.visit.shrine.colonel.abandonobscurity",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "The Unflinching Vow",
             "startdescription": "I might choose to take the Unflinching Vow, which demands tenacity at no matter what cost. [This will give you a Wound, and make it impossible to win the game with an Obscurity victory, but will increase your Defiance.]",
             "description": "'Each torment is a lesson. Each scar is a weapon. There is no defeat but annihilation.'",
@@ -1208,7 +1208,7 @@
         },
         {
             "id": "travel.visit.shrine.lionsmith.abandonobscurity",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "The Brazen Vow",
             "startdescription": "I might choose to take the Brazen Vow, which demands boldness in even the direst circumstances. [This will give you a Rage, and make it impossible to win the game with an Obscurity victory, but will increase your Defiance.]",
             "description": "'From valour, strength. From strength, valour. There is no defeat but shame.'",
@@ -1249,7 +1249,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Stalk Away",
             "startdescription": "I won't waste any more time here. [The presence of Rage precludes use of this shrine.]",
             "requirements": {
@@ -1263,7 +1263,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Offer a Pentiment to the Nameless Name",
             "startdescription": "Something will be forgotten - properly, this time.",
             "requirements": {
@@ -1286,7 +1286,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.ii",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 1
             },
@@ -1313,7 +1313,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.iii",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 2
             },
@@ -1340,7 +1340,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.iv",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 3
             },
@@ -1367,7 +1367,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.v",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 4
             },
@@ -1394,7 +1394,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.vi",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 5
             },
@@ -1421,7 +1421,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.vii",
-            "actionId": "travel",
+            "actionid": "travel",
             "requirements": {
                 "pentiment": 6
             },
@@ -1451,7 +1451,7 @@
             "requirements": {
                 "pentiment": 7
             },
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Into the Mist",
             "startdescription": "It's done. I stretch, and crack my neck. Around me, the mist is dissolving... but not quite. The Velvet must have liked my gifts. For a little while, I'll walk in the shelter of the Nameless Name's garment. Which is to say, good luck finding me <i>now</i>, you bastards.",
             "warmup": 30,
@@ -1465,7 +1465,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.pentiment.break",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Dawn is Coming",
             "startdescription": "This is a start. But there aren't enough secrets here yet to draw the Velvet's attention. These things always happen in sevens. The mist dissolves around me, and the shrine is gone.",
             "effects": {
@@ -1475,7 +1475,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless.downgrade",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Offer a Secret to the Mist",
             "startdescription": "I light the candle, and wait. [This will permanently downgrade your Lore by one level, but give you an Obscurity as well as a Tranquillity.]",
             "description": "The mist does not exactly move, but neither is it exactly still. The night is very quiet. After a while, the candle-flame bows its head, struggles gracefully for a moment, and dies in a welter of wax. Nothing more occurs.",
@@ -1499,7 +1499,7 @@
         },
         {
             "id": "travel.visit.shrine.nameless",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Rest for a While in the Mist",
             "startdescription": "I lean against the wall, and wait. [This will provide a Tranquillity.]",
             "description": "The mist does not exactly move, but neither is it exactly still. The night is very quiet. After an hour, I head back to my bed, where I'll enjoy a night of restful sleep.",
@@ -1518,7 +1518,7 @@
         },
         {
             "id": "travel.wilderness.leave",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Anywhere but Here",
             "startdescription": "I need to move on. [You might end up anywhere.]",
             "comments": "You can leave wilderness even if you have outstanding Rage. I'm not a monster.",
@@ -1587,7 +1587,7 @@
         },
         {
             "id": "travel.rage.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "NO",
             "startdescription": "My blood seethes at the thought of running <i>again</i>. Unless this fury subsides, I can only turn and fight. [You can't leave a city while you're experiencing Rage.]",
             "requirements": {
@@ -1602,7 +1602,7 @@
         },
         {
             "id": "travel.ally.duplicate.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Too Much Confusion",
             "startdescription": "[You can't send more than one Ally at a time to create False Trails.]",
             "requirements": {
@@ -1616,7 +1616,7 @@
         },
         {
             "id": "travel.ally.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Send an Ally to create a False Trail?",
             "startdescription": "[Add a city you haven't yet visited.]",
             "requirements": {
@@ -1628,7 +1628,7 @@
         },
         {
             "id": "travel.ally",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Send an Ally to create a False Trail",
             "startdescription": "It's chancy, but what isn't? [A False Trail will prevent Reckoners from finding you for as long as it lasts. You won't ever be able to travel to this city. Your Ally will take an unpredictable while to create the Trail; they won't be unavailable for an unpredictable while; and there's a small chance they'll never return.]",
             "description": "They're en route.",
@@ -1664,7 +1664,7 @@
         },
         {
             "id": "ally.trail.false.begin",
-            "actionId": "ally.trail.false.1",
+            "actionid": "ally.trail.false.1",
             "label": "Working on a False Trail...",
             "startdescription": "@#ally.barber|Zulfiya is arranging a suitable chaos.\n#ally.delver|Orsolina is methodically at work.\n#ally.fivegoer|Vasil seems to be planning some sort of party.\n#ally.ghoul|Dominykas is at his schemes.\n#ally.huntress|Lalla Chaima is causing useful havoc.\n#ally.smuggler|Giorgiou is planning to turn a profit while diverting attention.\n#ally.visionary|Mireya is arranging something memorable.\n#ally.vivisectionist|Jannings is deploying his resources.@ [A modest chance each turn of creating a False Trail.]",
             "warmup": 60,
@@ -1680,7 +1680,7 @@
         },
         {
             "id": "ally.trail.false.create",
-            "actionId": "ally.trail.false.1",
+            "actionid": "ally.trail.false.1",
             "label": "Creating a False Trail",
             "startdescription": "@#ally.barber|Zulfiya has arranged a suitable chaos.\n#ally.delver|Orsolina has methodically completed her work.\n#ally.fivegoer|Vasil's celebration has attracted all kinds of attention.\n#ally.ghoul|Dominykas has completed his schemes.\n#ally.huntress|Lalla Chaima has caused useful havoc.\n#ally.smuggler|Giorgiou has managed to turn a profit while diverting attention.\n#ally.visionary|Mireya has arranged something memorable.\n#ally.vivisectionist|Jannings has deployed his resources.@",
             "description": "My Ally's laid a false trail. They'll cover their tracks and return soon - I hope.",
@@ -1704,7 +1704,7 @@
         },
         {
             "id": "ally.trail.false.waiting",
-            "actionId": "ally.trail.false.2",
+            "actionid": "ally.trail.false.2",
             "label": "Waiting...",
             "startdescription": "Home soon?",
             "linked": [
@@ -1715,7 +1715,7 @@
         },
         {
             "id": "ally.trail.false.waiting.displaytext",
-            "actionId": "ally.trail.false.2",
+            "actionid": "ally.trail.false.2",
             "label": "Waiting...",
             "startdescription": "\"@#ally.barber|Zulfiya's work is done. She'll be back as soon as she can travel safely.\\n#ally.delver|Orsolina's work is done. She'll be back as soon as she can travel safely.\\n#ally.fivegoer|Vasil's work is done. He'll be back as soon as he can travel safely.\\n#ally.ghoul|Dominykas' work is done. He'll be back as soon as he can travel safely.\\n#ally.huntress|Lalla Chaima's work is done. She'll be back as soon as she can travel safely.\\n#ally.smuggler|Giorgiou's work is done. He'll be back as soon as he can travel safely.\\n#ally.visionary|Mireya's work is done. She'll be back as soon as she can travel safely.\\n\r\n#ally.vivisectionist|@\"",
             "warmup": 60,
@@ -1735,7 +1735,7 @@
         },
         {
             "id": "ally.trail.false.returning",
-            "actionId": "ally.trail.false.2",
+            "actionid": "ally.trail.false.2",
             "label": "Returning...",
             "startdescription": "@#ally.barber|Zulfiya's on her way back.\n#ally.delver|Orsolina's on her way back.\n#ally.fivegoer|Vasil's on his way back.\n#ally.ghoul|Dominykas is on his way back.\n#ally.huntress|Lalla Chaima's on her way back.\n#ally.smuggler|Giorgiou's on his way back.\n#ally.visionary|Mireya's on her way back.\n#ally.vivisectionist|Jannings is on his way back.@",
             "warmup": 60,
@@ -1748,7 +1748,7 @@
         },
         {
             "id": "ally.trail.false.lost",
-            "actionId": "ally.trail.false.2",
+            "actionid": "ally.trail.false.2",
             "label": "Lost...",
             "startdescription": "@#ally.barber|Zulfiya's disappeared. That could mean anything. But I don't think I'll see her again.\n#ally.delver|One way or another, I think Orsolina must have gone back into the earth.\n#ally.fivegoer|I almost missed the article: a report about a body found in a suitcase with some very distinctive 'anatomical peculiarities'. It can only be Vasil.\n#ally.ghoul|An article reports that a Lithuanian dignitary has been found poisoned. Dominykas would probably have liked being called a 'dignitary'.\n#ally.huntress|Chaima's body was found with the corpses of three men all shot neatly between the eyes. She went down fighting.\n#ally.smuggler|Giorgiou's past has caught up with him, it seems. It wasn't even the reckoners - just one of his many competitors.\n#ally.visionary|Mireya has been arrested for 'crimes of revelation.'\n#ally.vivisectionist|I read today a report on a German aristocrat who was volunteering in a hospital, treating victims of a typhus outbreak, when the disease claimed him too. Jannings was a complicated man. I'll miss him.@",
             "effects": {
@@ -1760,7 +1760,7 @@
         },
         {
             "id": "travel.prepare.end",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "A Final Departure",
             "startdescription": "My train leaves at dawn. Have I forgotten anything? [This is a destination at the Map's Edge. There's no onward travel. Once you arrive, you'll need to be ready to end this business. Allies won't follow you to the Map's Edge.]",
             "requirements": {
@@ -1780,7 +1780,7 @@
         },
         {
             "id": "travel.prepare.wilderness",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Into the Wilds",
             "startdescription": "This is a last resort. I'll be easier to track outside the safety of crowds. I don't know the lie of the land. I might easily die an undignified death. [You can only take Portable Assets with you. Departure will end all ongoing reckoner actions and remove all Traces, but it will also abandon Assets, Locations, Destinations, Local Contacts, and ongoing Operations.]",
             "requirements": {
@@ -1799,7 +1799,7 @@
         },
         {
             "id": "travel.prepare.remote",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Prepare to Depart for a Remote Destination",
             "startdescription": "My train leaves at dawn. Have I forgotten anything? [You can only take Portable Assets with you. Departure will end all ongoing reckoner actions and remove all Traces, but it will also abandon Assets, Locations, Destinations, Local Contacts, and ongoing Operations.]",
             "requirements": {
@@ -1819,7 +1819,7 @@
         },
         {
             "id": "travel.prepare",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Prepare to Depart",
             "startdescription": "Time to go. Have I forgotten anything? [You can only take Portable Assets with you. Departure will end all ongoing reckoner actions and remove all Traces, but it will also abandon Assets, Locations, Destinations, Local Contacts, and ongoing Operations.]",
             "requirements": {
@@ -1840,7 +1840,7 @@
         },
         {
             "id": "travel.prepare.remote.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Prepare to Depart?",
             "startdescription": "This is a Remote destination. I'll need sufficient Cash to pay my way.",
             "requirements": {
@@ -1854,7 +1854,7 @@
         },
         {
             "id": "travel.prepare.hint",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Prepare to Depart?",
             "startdescription": "I'll need Cash to pay my way.",
             "requirements": {
@@ -1867,7 +1867,7 @@
         },
         {
             "id": "travel.showslot",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Prepare to Depart",
             "startdescription": "Time to go. Have I forgotten anything? [You can only take Portable Assets with you. Use Relinquish to abandon any Assets you don't want to bring. Departure will end all ongoing reckoner actions and remove all Traces, but it will also abandon Assets, Locations, Destinations, Local Contacts, and ongoing Operations.]",
             "slots": [
@@ -1897,7 +1897,7 @@
         },
         {
             "id": "travel.packing",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Packing...",
             "startdescription": "I may need this. [You can take anything Portable with you, but it'll lengthen your preparations.]",
             "requirements": {
@@ -1923,7 +1923,7 @@
         },
         {
             "id": "travel.end.depart",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "To the Map's Edge",
             "startdescription": "This is as far as my allies will go. Time to say goodbye.",
             "requirements": {
@@ -1947,7 +1947,7 @@
         },
         {
             "id": "travel.depart",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Departure",
             "startdescription": "Farewell.",
             "requirements": {
@@ -1991,7 +1991,7 @@
         },
         {
             "id": "travel.enroute",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "En Route",
             "startdescription": "I'm en route...",
             "mutations": [
@@ -2020,7 +2020,7 @@
         },
         {
             "id": "travel.stillenroute.remote",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "En Route...",
             "startdescription": "Through the darkness into a new day. I've gone far enough that the reckoners will have to look harder than usual. Unless they're already here?",
             "requirements": {
@@ -2038,7 +2038,7 @@
         },
         {
             "id": "travel.arrive",
-            "actionId": "travel",
+            "actionid": "travel",
             "label": "Arrival",
             "startdescription": "@#domicile.aachen|Lalla Chaima has left a message at the hotel where I used to stay. It's one word: 'Noon.' It doesn't tell me where I need to be at noon, but Chaima has always been good at finding people when she needs to.\n#domicile.alexandria|The Invisible Serapeum is invisible even from the inside. I might already be considered to have entered it, the moment I step off the boat. It'll be a while before I'm sure.\n#domicile.algiers|A tumble of white houses above a sunny quayside. I have an address for one of M. Giorgiou's people.\n#domicile.amsterdam|The Stegenga twins are out of town - perhaps not coincidentally - and their many-windowed house is empty. But their major-domo has a message for me. They've asked one of their more influential clients to help me out.\n#domicile.avignon|M. Giorgiou has invited me to dine in the rooms he keeps by the Palais des Papes. \n#domicile.baghdad|Percy Styles is waiting for me at the station. His hair is still an absurd frizz, but it's whitened with age. He looks more than ever like a merrily dissolute bishop. 'Dashed good timing,' he says, pumping my hand. 'Got a chance here for a spot of mutual back-scratching.'\n#domicile.budapest|It's freezing, but Lili is holding court in her usual place at the Városliget, in her usual widow's black, playing chess between meetings with clients. 'I thought you might turn up,' she says resignedly. 'Please tell me you haven't brought them here yet?'\n#domicile.candia|On the night before I arrive in Crete, I dreamt about gods underground. When I woke, I went up on deck. The stars blazed relentlessly, as if holes had been pierced in the night above. The night was clear; the horizon scalpel-sharp. A woman's voice behind me spoke a crackling word I didn't recognise. When I turned, I saw she only had half a face, and the other half was scaled like a butterfly's wing. Then I woke truly, alone in the hot iron dark of my cabin.\n#domicile.cluj|The regulars at the Cafe Oradea shake their heads sadly when I mention Lili's name. 'She was not kind, but she was patient,' one asserts. 'Not like this butcher from Vaslui. But you need to meet him, we must suppose. I'll make an introduction.'\n#domicile.granada|Mireya's place is in the Albaicin, which in the original Arabic means 'the place at the very top of all the hills after you've been travelling all day, and none of the streets are lit'.\n#domicile.istanbul|Kemal's name gets me a meeting with a hawk-faced Karakol veteran in a grimy Taksim coffeehouse. He mostly seems to want to complain that their President is too close to the British, but when I've listened long enough he reluctantly offers me his help.\n#domicile.kiev|As soon as I step off the train, I smell blood. I turn my head. Nothing: only smoke and sweat. I must have imagined it. But there it is again. That red copper.\n#domicile.krakow|Yitzchok has prepared a room for me in the attic. 'I'm too old to be murdered,' he assures me. 'If they come for you, I'll hide under the table and cry.'\n#domicile.leningrad|Sushkin, the 'Athenian', does indeed remember me. 'I will buy you a prodigious funeral,' he tells me delightedly. 'I have a plot picked out for you in the Tikhvin. It's a little small, but I don't imagine your friends will leave very much of you. No no. I insist. It is the least I can do.'\n#domicile.london|Ottavio is waiting for me outside Victoria station, shaking his head sorrowfully at demonstrators marching past. 'A man must be paid, of course,' he laments, 'but all this. There's no need for it. The racecourses are closed, do you know that? And the police! Like a hive of bees! Perhaps I should go on strike too. Let 'em try to catch real criminals instead.'\n#domicile.marrakech|I don't recognise Navil, but he recognises me, and greets me warmly. 'Your heart is steel,' he explains, 'but steel can also be a mirror, and in mirrors we find Glory. You don't know what I mean, do you? Never mind! Accept my help, and leave whenever you wish. That's all you need to do.'\n#domicile.meshad|My friend had retired to a village outside Meshad. Because she was of the old religion, when she fell ill, she had gone to Bazehoor Fire Temple to seek healing. She died before sunset. By the time I arrived, they had already taken her body to the tower for the excarnation.\n#domicile.munich|Count Jannings has sent a scarred and silent servant to bring me to our meeting.\n#domicile.nizhny|Sushkin's people are wary, but one claps me on the shoulder when I mention my pursuers. He says something filthy about reckoners that I pretend not to be offended by.\n#domicile.paris|Tante Adeline's man is a surly, lanky fellow in a leather apron. He doesn't speak to me at all - just sits there feeding gobbets of raw meat to his dogs - but he listens as I explain, and he motions to a huge Corsican to follow me when I leave.\n#domicile.prague|Tante Adeline is a sparrow-eyed, bear-necked, florid-cheeked mountain of a woman, with an incongruously sweet voice. 'Here to crack some heads for me?' she asks enthusiastically.\n#domicile.rostock|Jannings' staff have been told to expect me. I'm welcome here for as long as I like.\n#domicile.samarkand|My Jadidist friend is bowed with sorrow. He can barely speak. But I can count on his help.\n#domicile.stalingrad|The Bird-Eaters lair in a burnt-out church. I'm certain I see a great serpent - shining like wet leather - slither away through the rubble as I approach. But Zulfiya and the others insist that it was nothing.\n#domicile.sverdlovsk|Zulfiya's friend is a commissar now. He'll see me right, he assures me, if I don't get into too much trouble.\n#domicile.strasbourg|There's a tall shape waiting for me in a little garden by the museum. If I don't look too closely, it could be a man draped in blankets. Let's say it is. I don't look at him as he whispers to me, but I come away with some knowledge of the hidden ways of Strasbourg.\n#domicile.tiflis|Cheery gramophone music drifts from Vasil's open window as I knock on his door.\n#domicile.tirana|My Zogist friend shakes my hand firmly. 'I can give you an introduction,' she says, 'if you have years to win his favour.'\n#domicile.tripoli|A shout of blue sky as I step from the train; a crumble of golden stone. I'm shaken by a sudden gust of impossible homesickness. \n#domicile.valletta|Kemal is waiting for me on the quayside. 'I'll do what I can,' he assures me. 'I have the governor's ear. You know the British. Very reliable. Though not so bright.'\n#domicile.venice|Orsolina keeps a little fish restaurant in the Cannaregio. 'You know my trouble,' she told me last visit. 'Baccalà was always my weakness. If I'd never tasted it, I'd still be living in the earth, no doubt of that.'\n#domicile.vienna|As I leave the station, I see a grey-haired woman in black and white watching me from across the street. The crowds closes in front of her, and she's gone.\n#domicile.bornholm|I find a room above the harbour. When my Foe comes, I'll wait for him out on the cliffs.\n#domicile.cheko|I light a fire in the main room of the lodge, and do what I can to repair the shutters. I don't know how long I'll have to wait.\n#domicile.ghardaia|Each evening as the sky darkens, the desert air is crisp as fresh snow, and I almost forget why I am here.\n#domicile.messana|It's very quiet here. However silently he approaches, I'll hear him. I think, though, that he'll be too proud for stealth.\n#domicile.morbihan|'You can stay,' the Prior tells me. 'But I won't take your money. It's the Devil who is coming for you. There's no sanctuary for you here, or anywhere on the face of the earth.'\n#domicile.paro|It's a long climb. Not too long for my Foe, I'm sure. But I can watch him as he comes.\n#domicile.slettnes|I arrive at dusk. The light flickers, flickers. It'll draw him here too.\n\n#|I've arrived.@",
             "comments": "Converts packed assets back into assets.",
@@ -2068,7 +2068,7 @@
         },
         {
             "id": "meeting.navil.chaima",
-            "actionId": "meeting.navil.chaima",
+            "actionid": "meeting.navil.chaima",
             "label": "A Reunion",
             "startdescription": "'Chaima!' Navil cries joyously. 'Father,' she acknowledges him, more cautiously. They share a hug, and Navil turns to beam at me. 'My daughter hunts monsters for the Colonel, and I heal them for the Lionsmith. But I am always glad to see her. After all, was not the Lionsmith the child of the Colonel's body, before they became enemies? You, of all people, must know that.' [Keep an eye out for Echidna. Chaima has an interest in her.]",
             "extantreqs": {
@@ -2079,7 +2079,7 @@
         },
         {
             "id": "turn.begin",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "label": "The Wheel Turns",
             "startdescription": "The sun crosses the sky. Night pursues it.",
             "warmup": 60,
@@ -2098,7 +2098,7 @@
         },
         {
             "id": "turn.next",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "label": "The Wheel Turns",
             "startdescription": "The sun crosses the sky. Night pursues it. [At the end of each cycle, reckoners may also enter the city. This is more likely if you've created a Trace, and much more likely if you've created more than one.]",
             "warmup": 60,
@@ -2132,7 +2132,7 @@
         },
         {
             "id": "turn.check.traces",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "trace": 2,
                 "rkx.underlings.blocker": -1,
@@ -2157,7 +2157,7 @@
         },
         {
             "id": "turn.check.trace",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "trace": 1,
                 "rkx.underlings.blocker": -1,
@@ -2182,7 +2182,7 @@
         },
         {
             "id": "turn.check.no.trace",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "trace": -1,
                 "rkx.underlings.blocker": -1,
@@ -2207,7 +2207,7 @@
         },
         {
             "id": "turn.check.mapedge.traces",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "trace": 2,
                 "rkx.foe": -1,
@@ -2233,7 +2233,7 @@
         },
         {
             "id": "turn.check.mapedge.trace",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "trace": 1,
                 "rkx.foe": -1,
@@ -2259,7 +2259,7 @@
         },
         {
             "id": "turn.check.mapedge.no.trace",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "extantreqs": {
                 "rkx.foe": -1,
                 "rkx.underlings.blocker": 1,
@@ -2284,7 +2284,7 @@
         },
         {
             "id": "wounds.exile.danger",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "label": "A Reckoning Comes",
             "startdescription": "The sky is going. Then everything else will. [If you still have seven Wounds when this completes, you'll die.]",
             "extantreqs": {
@@ -2303,7 +2303,7 @@
         },
         {
             "id": "wounds.exile.ending",
-            "actionId": "time.exile",
+            "actionid": "time.exile",
             "label": "A Reckoning Comes",
             "extantreqs": {
                 "damage.exile": 7
@@ -2312,7 +2312,7 @@
         },
         {
             "id": "spawn.obscurity",
-            "actionId": "spawn.obscurity",
+            "actionid": "spawn.obscurity",
             "label": "Time's Child",
             "startdescription": "If Truth is Time's daughter, whose child is Forgetfulness? [You have gained Obscurity.]",
             "extantreqs": {
@@ -2325,7 +2325,7 @@
         },
         {
             "id": "spawn.trace",
-            "actionId": "spawn.trace",
+            "actionid": "spawn.trace",
             "label": "A Trace!",
             "startdescription": "It's hard to pass through the world and leave no footprints. [Reckoners use Traces to find you.]",
             "effects": {

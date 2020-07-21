@@ -3,7 +3,7 @@
         {
             "id": "ascensionpower_upgradetoobsession",
             "label": "The Burning Key",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ascensionpowerb": 1,
                 "waystag_after": 1,
@@ -23,7 +23,7 @@
             "comments": "male and female flavour; //TODO implement more elegantly",
             "id": "ascensionsensation_upgradetoobsessionm",
             "label": "The Sighing Key",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ascensionsensationbm": 1,
                 "waystag_after": 1,
@@ -43,7 +43,7 @@
             "comments": "male and female flavour; //TODO implement more elegantly",
             "id": "ascensionsensation_upgradetoobsessionf",
             "label": "The Sighing Key",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ascensionsensationbf": 1,
                 "waystag_after": 1,
@@ -62,7 +62,7 @@
         {
             "id": "ascensionsensation_switchpolarity_mtof",
             "label": "Preferences",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "ascensionsensationbm": 1
             },
@@ -78,7 +78,7 @@
         {
             "id": "ascensionsensation_switchpolarity_ftom",
             "label": "Preferences",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "ascensionsensationbf": 1
             },
@@ -94,7 +94,7 @@
         {
             "id": "ascensionenlightenment_upgradetoobsession",
             "label": "The Blinding Key",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ascensionenlightenmentb": 1,
                 "waystag_after": 1,
@@ -113,7 +113,7 @@
         {
             "id": "majorforgevictory",
             "label": "THE DAWN IS COME",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "ascensionpowerf": 1,
@@ -127,7 +127,7 @@
         },
         {
             "id": "minorforgevictory_trigger",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Conflagration of the Heart",
             "startdescription": "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
             "requirements": {
@@ -153,7 +153,7 @@
         {
             "id": "minorforgevictory_overture",
             "label": "The Conflagration of the Heart",
-            "actionId": "work",
+            "actionid": "work",
             "description": "I am becoming a name of fire. Remember that the ending text will contain the payload.",
             "warmup": 60,
             "slots": [
@@ -193,7 +193,7 @@
                 "ascensionpowerf": 1
             },
             "ending": "minorforgevictory",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "minorforgevictorywithrisen",
@@ -203,12 +203,12 @@
             },
             "label": "The Conflagration of the Heart",
             "ending": "minorforgevictorywithrisen",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "majorgrailvictory",
             "label": "THE FEAST IS NIGH",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "ascensionsensationf": 1,
@@ -223,7 +223,7 @@
         {
             "id": "minorgrailvictory_withromanticsacrifice",
             "label": "The Feast of the Heart's Remembrance",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "ascensionsensationf": 1,
@@ -239,7 +239,7 @@
         },
         {
             "id": "minorgrailvictory_trigger",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Feast of the True Birth",
             "startdescription": "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
             "requirements": {
@@ -265,7 +265,7 @@
         {
             "id": "minorgrailvictory_overture",
             "label": "The Feast of the True Birth",
-            "actionId": "work",
+            "actionid": "work",
             "description": ".",
             "warmup": 60,
             "signalEndingFlavour": "Grand",
@@ -305,7 +305,7 @@
                 "ascensionsensationf": 1
             },
             "ending": "minorgrailvictory",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "minorgrailvictorywithrisen",
@@ -315,12 +315,12 @@
             },
             "label": "The Feast of the True Birth",
             "ending": "minorgrailvictorywithrisen",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "majorlanternvictory",
             "label": "THE LANTERN",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "ascensionenlightenmentf": 1,
@@ -335,7 +335,7 @@
         {
             "id": "belovedfarewell",
             "label": "The Threshold Choice",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "summoned": -1
@@ -446,7 +446,7 @@
         {
             "id": "auclairvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -462,7 +462,7 @@
         {
             "id": "catvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -478,7 +478,7 @@
         {
             "id": "clovettevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -494,7 +494,7 @@
         {
             "id": "cliftonvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -510,7 +510,7 @@
         {
             "id": "dorothyvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -526,7 +526,7 @@
         {
             "id": "elridgevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -542,7 +542,7 @@
         {
             "id": "enidvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -558,7 +558,7 @@
         {
             "id": "laidlawvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -574,7 +574,7 @@
         {
             "id": "leovictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -590,7 +590,7 @@
         {
             "id": "nevillevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -606,7 +606,7 @@
         {
             "id": "portervictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -622,7 +622,7 @@
         {
             "id": "reniravictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -638,7 +638,7 @@
         {
             "id": "rosevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -654,7 +654,7 @@
         {
             "id": "salibavictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -670,7 +670,7 @@
         {
             "id": "sleevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -686,7 +686,7 @@
         {
             "id": "sylviavictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -702,7 +702,7 @@
         {
             "id": "tristanvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -718,7 +718,7 @@
         {
             "id": "valcianevictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -734,7 +734,7 @@
         {
             "id": "victorvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -750,7 +750,7 @@
         {
             "id": "violetvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -766,7 +766,7 @@
         {
             "id": "ysabetvictory",
             "label": "Love?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "romanticinterest": 1,
                 "passion": 1,
@@ -783,7 +783,7 @@
             "id": "imnotinlove",
             "label": "Dedication",
             "startdescription": "Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
-            "actionId": "work",
+            "actionid": "work",
             "craftable": false,
             "alt": [
                 {
@@ -802,7 +802,7 @@
         },
         {
             "id": "minorlanternvictory_trigger",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Incursus",
             "startdescription": "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
             "requirements": {
@@ -828,7 +828,7 @@
         {
             "id": "minorlanternvictory_overture",
             "label": "The Incursus",
-            "actionId": "work",
+            "actionid": "work",
             "description": ".",
             "warmup": 60,
             "slots": [
@@ -868,7 +868,7 @@
                 "ascensionenlightenmentf": 1
             },
             "ending": "minorlanternvictory",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "minorlanternvictorywithrisen",
@@ -878,7 +878,7 @@
             },
             "label": "The Incursus",
             "ending": "minorlanternvictorywithrisen",
-            "actionId": "work"
+            "actionid": "work"
         },
         {
             "id": "ambition",
@@ -886,7 +886,7 @@
                 "seasonambitions": 1
             },
             "label": "Exotic Cravings?",
-            "actionId": "craving",
+            "actionid": "craving",
             "slots": [
                 {
                     "id": "Obsessions",
@@ -1002,7 +1002,7 @@
             "requirements": {
                 "independent": 1
             },
-            "actionId": "ambition",
+            "actionid": "ambition",
             "deckeffects": {
                 "schemeevents": 1
             },
@@ -1016,7 +1016,7 @@
         {
             "id": "L_independent_router",
             "label": "Rivalry!",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "requirements": {
                 "independent": 1
             },
@@ -1061,7 +1061,7 @@
         },
         {
             "id": "L_ascension_rival",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "requirements": {
                 "rivalmarks": 7
             },
@@ -1076,7 +1076,7 @@
         },
         {
             "id": "L_ascension_rival_apostle",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "requirements": {
                 "rivalmarks": 7
             },
@@ -1092,7 +1092,7 @@
         {
             "id": "L_rebellion_activate",
             "label": "Rebellion!",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "requirements": {
                 "resentment": 3
             },
@@ -1106,7 +1106,7 @@
         {
             "id": "L_rebellion_noactivation",
             "label": "Discontent",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "requirements": {
                 "resentment": 3
             },
@@ -1124,7 +1124,7 @@
         },
         {
             "id": "ending.minorcrownedgrowthvictory",
-            "actionId": "ambition",
+            "actionid": "ambition",
             "label": "TO INFECT AND BECOME",
             "requirements": {
                 "ghoul.hunger": 7
@@ -1137,7 +1137,7 @@
         {
             "id": "ascensionnotyet",
             "label": "Mortal Frustrations",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "enlightenmentmarks": -1,
                 "powermarks": -1,
@@ -1198,7 +1198,7 @@
         {
             "id": "ascensionhintpower2",
             "label": "The Forge's Roar",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionpowerb": 1
             },
@@ -1212,7 +1212,7 @@
         {
             "id": "ascensionhintenlightenment2",
             "label": "The Watchman's Light",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionenlightenmentb": 1
             },
@@ -1226,7 +1226,7 @@
         {
             "id": "ascensionhintsensation2m",
             "label": "The Grail's Touch",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionsensationbm": 1
             },
@@ -1240,7 +1240,7 @@
         {
             "id": "ascensionhintsensation2f",
             "label": "The Grail's Touch",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionsensationbf": 1
             },
@@ -1254,7 +1254,7 @@
         {
             "id": "ascensionhintpower1",
             "label": "The Forge's Glow",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionpowera": 1
             },
@@ -1268,7 +1268,7 @@
         {
             "id": "ascensionhintenlightenment1",
             "label": "The Watchman's Footsteps",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionenlightenmenta": 1
             },
@@ -1282,7 +1282,7 @@
         {
             "id": "ascensionhintsensation1",
             "label": "The Grail's Whispers",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionsensationa": 1
             },
@@ -1296,7 +1296,7 @@
         {
             "id": "ascensioncravingpower",
             "label": "The Shaping Heat",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "powermarks": 1
             },
@@ -1327,7 +1327,7 @@
         {
             "id": "ascensionsuccesscravingpower_descend",
             "label": "The Ashes of Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "funds": -1
             },
@@ -1357,7 +1357,7 @@
         {
             "id": "ascensioncravingpower_ascend",
             "label": "Another Mark",
-            "actionId": "craving",
+            "actionid": "craving",
             "startdescription": "",
             "description": "The flames yearn for me as I for them. Their touch is much more than pain. I have another Mark.",
             "effects": {
@@ -1371,7 +1371,7 @@
         {
             "id": "ascensioncravingsensation",
             "label": "The Red Need",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "sensationmarks": 1
             },
@@ -1404,7 +1404,7 @@
         {
             "id": "ascensionsuccesscravingsensation_descend",
             "label": "The Desert Inside",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "corpse": -1,
                 "lunatic": -1,
@@ -1436,7 +1436,7 @@
         {
             "id": "ascensioncravingsensation_ascend",
             "label": "Another Mark",
-            "actionId": "craving",
+            "actionid": "craving",
             "effects": {
                 "glimmering": 2,
                 "corpse": -1,
@@ -1452,7 +1452,7 @@
         {
             "id": "ascensioncravingenlightenment",
             "label": "The Curiosities of Light",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "enlightenmentmarks": 1
             },
@@ -1483,7 +1483,7 @@
         {
             "id": "ascensionsuccesscravingenlightenment_descend",
             "label": "The Desert Inside",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "prisoner": -1
             },
@@ -1513,7 +1513,7 @@
         {
             "id": "ascensioncravingenlightenment_ascend",
             "label": "Another Mark",
-            "actionId": "craving",
+            "actionid": "craving",
             "effects": {
                 "erudition": 2,
                 "prisoner": -1
@@ -1527,7 +1527,7 @@
         {
             "id": "ascensioncravingremembrance",
             "label": "The Hunger that Grows in Dark Earth",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "remembrancemarks": 2,
                 "ghoul.hunger": 1
@@ -1546,7 +1546,7 @@
         {
             "id": "ascensioncravingremembrancenegative",
             "label": "The Hunger that Grows in Dark Earth",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "remembrancemarks": 2
             },
@@ -1565,7 +1565,7 @@
         {
             "id": "ascensioncravingchange_tryascendfroma",
             "label": "The Temptation of Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionchangea": 1
             },
@@ -1601,7 +1601,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfroma",
             "label": "Garments, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonhearta": 1
             },
@@ -1625,7 +1625,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfroma",
             "label": "Garments, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmotha": 1
             },
@@ -1649,7 +1649,7 @@
         {
             "id": "ascensioncravingchange_tryascendfromb",
             "label": "Toward the Second Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionchangeb": 1
             },
@@ -1685,7 +1685,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfromb",
             "label": "Integument, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonheartb": 1
             },
@@ -1709,7 +1709,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfromb",
             "label": "Integument, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmothb": 1
             },
@@ -1733,7 +1733,7 @@
         {
             "id": "ascensioncravingchange_tryascendfromc",
             "label": "Toward the Third Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionchangec": 1
             },
@@ -1769,7 +1769,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfromc",
             "label": "Steps, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonheartc": 1
             },
@@ -1793,7 +1793,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfromc",
             "label": "Steps, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmothc": 1
             },
@@ -1818,7 +1818,7 @@
         {
             "id": "ascensioncravingchange_tryascendfromd",
             "label": "Toward the Fourth Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionchanged": 1
             },
@@ -1854,7 +1854,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfromd",
             "label": "Hues Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonheartd": 1
             },
@@ -1878,7 +1878,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfromd",
             "label": "Hues, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmothd": 1
             },
@@ -1902,7 +1902,7 @@
         {
             "id": "ascensioncravingchange_tryascendfrome",
             "label": "Toward the Fifth Change",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionchangee": 1
             },
@@ -1938,7 +1938,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfrome",
             "label": "Sight, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonhearte": 1
             },
@@ -1962,7 +1962,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfrome",
             "label": "Sight, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmothe": 1
             },
@@ -1985,7 +1985,7 @@
         },
         {
             "id": "ascensioncravingchange_tryascendfromg",
-            "actionId": "craving",
+            "actionid": "craving",
             "label": "The Pulse Inside",
             "requirements": {
                 "ascensionchangeg": 1
@@ -2007,7 +2007,7 @@
         },
         {
             "id": "ascensioncravingchange_tryascendfromf",
-            "actionId": "craving",
+            "actionid": "craving",
             "label": "Toward the Sixth Change",
             "requirements": {
                 "ascensionchangef": 1
@@ -2044,7 +2044,7 @@
         {
             "id": "ascensioncravingchange_heartlessonascendfromf",
             "label": "Bones, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonheartf": 1
             },
@@ -2068,7 +2068,7 @@
         {
             "id": "ascensioncravingchange_mothlessonascendfromf",
             "label": "Bones, Surrendered",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "ascensionlessonmothf": 1
             },
@@ -2092,7 +2092,7 @@
         {
             "id": "ascensioncravingchange_noascension",
             "label": "The Same Self",
-            "actionId": "craving",
+            "actionid": "craving",
             "description": "I am no further along my path of change. In the movements of the secret Forms must I find my lesson.",
             "effects": {
                 "restlessness": 1

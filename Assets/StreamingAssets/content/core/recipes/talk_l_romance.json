@@ -3,7 +3,7 @@
         {
             "id": "L_talk_roseopportunity",
             "label": "A Liaison?",
-            "actionId": "talk",
+            "actionid": "talk",
             "slots": [
                 {
                     "id": "ascension",
@@ -38,7 +38,7 @@
         },
         {
             "id": "A_startrose_power_initiate",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "To Rise Together",
             "requirements": {
                 "follower_lustpower": 1,
@@ -63,7 +63,7 @@
         },
         {
             "id": "A_startrose_sensation_initiate",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Fellow Explorers",
             "requirements": {
                 "follower_lustsensation": 1,
@@ -88,7 +88,7 @@
         },
         {
             "id": "A_startrose_enlightenment_initiate",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Shared Light",
             "requirements": {
                 "follower_lustenlightenment": 1,
@@ -113,7 +113,7 @@
         },
         {
             "id": "A_startrose_change_initiate",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Those Who Will Be Different",
             "requirements": {
                 "follower_lustchange": 1,
@@ -144,7 +144,7 @@
         {
             "id": "L_checkjealousy",
             "label": "Another?",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "romanticinterest": 1,
                 "summoned": -1,
@@ -183,7 +183,7 @@
         {
             "id": "L_activatejealousy",
             "label": "O Rose Thou Art Sick",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "romanticinterest": 2
             },
@@ -218,7 +218,7 @@
         },
         {
             "id": "A_roseend_expulsion",
-            "actionId": "roseextra",
+            "actionid": "roseextra",
             "comments": "allows us to have only one of a jealous lover break up with the player",
             "label": "Consequences!",
             "startdescription": "@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge\n#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose\n#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan\n#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#|My lover@ will tolerate my neglect no longer.",
@@ -249,7 +249,7 @@
         },
         {
             "id": "L_roserouter",
-            "actionId": "rose",
+            "actionid": "rose",
             "linked": [
                 {
                     "id": "L_continuerose_corpse",
@@ -284,7 +284,7 @@
         },
         {
             "id": "L_continuerose_corpse",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Desolate And Sick of an Old Passion",
             "requirements": {
                 "corpse": 1,
@@ -300,7 +300,7 @@
         },
         {
             "id": "L_continuerose_risen",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Never Let Me Go",
             "requirements": {
                 "summoned": 1,
@@ -343,7 +343,7 @@
         },
         {
             "id": "A_continuerose_risen_success",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "Never Let Me Go",
             "requirements": {
                 "health": 1
@@ -363,7 +363,7 @@
         },
         {
             "id": "L_continuerose_power",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Uses of Strength",
             "requirements": {
                 "follower_lustpower": 1,
@@ -416,7 +416,7 @@
         },
         {
             "id": "A_continuerose_power_success",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Uses of Strength",
             "requirements": {
                 "health": 1
@@ -436,7 +436,7 @@
         },
         {
             "id": "L_continuerose_sensation",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Imperatives of Delight",
             "requirements": {
                 "follower_lustsensation": 1,
@@ -489,7 +489,7 @@
         },
         {
             "id": "A_continuerose_sensation_success",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Imperatives of Delight",
             "requirements": {
                 "passion": 1
@@ -509,7 +509,7 @@
         },
         {
             "id": "L_continuerose_enlightenment",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Raptures of Understanding",
             "requirements": {
                 "follower_lustenlightenment": 1,
@@ -562,7 +562,7 @@
         },
         {
             "id": "A_continuerose_enlightenment_success",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: the Raptures of Understanding",
             "requirements": {
                 "reason": 1
@@ -582,7 +582,7 @@
         },
         {
             "id": "L_continuerose_change",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: When We Were...",
             "requirements": {
                 "follower_lustchange": 1,
@@ -634,7 +634,7 @@
         },
         {
             "id": "A_continuerose_change_success",
-            "actionId": "rose",
+            "actionid": "rose",
             "label": "A Liaison: When We Were...",
             "requirements": {
                 "passion": 1
@@ -655,7 +655,7 @@
         {
             "id": "L_continuerose_noone",
             "label": "Solitude",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {},
             "startdescription": "I am alone, but there is peace in that also.",
             "description": "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
@@ -666,7 +666,7 @@
         },
         {
             "id": "L_roseend",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "resentment": 3
             },
@@ -699,7 +699,7 @@
         },
         {
             "id": "L_roseend_risen",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "resentment": 3,
                 "summoned": 1
@@ -733,7 +733,7 @@
         },
         {
             "id": "A_rose_binoff_dread",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "dread": 1
             },
@@ -759,7 +759,7 @@
         },
         {
             "id": "A_rose_binoff_funds",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "funds": 1
             },

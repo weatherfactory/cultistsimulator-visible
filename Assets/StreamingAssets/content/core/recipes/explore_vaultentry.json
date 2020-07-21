@@ -3,7 +3,7 @@
         {
             "id": "explorevault_expeditionbegun",
             "label": "The Expedition Sets Off",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "vault": 1,
                 "follower": 1,
@@ -33,7 +33,7 @@
         },
         {
             "id": "explorevault.add.watchers",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "guardian_watchers_pre": 1,
                 "guardian_watchers": -1
@@ -49,7 +49,7 @@
         },
         {
             "id": "explorevault.add.monks",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "guardian_monks_pre": 1,
                 "guardian_monks": -1
@@ -65,7 +65,7 @@
         },
         {
             "id": "explorevault.add.dead",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "guardian_dead_pre": 1,
                 "guardian_dead": -1
@@ -81,7 +81,7 @@
         },
         {
             "id": "explorevault.add.serpent",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "guardian_serpent_pre": 1,
                 "guardian_serpent": -1
@@ -99,7 +99,7 @@
             "id": "explorevaulttick",
             "comments": "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
             "label": "The Expedition Continues",
-            "actionId": "explore",
+            "actionid": "explore",
             "slots": [
                 {
                     "id": "Assistance",
@@ -205,7 +205,7 @@
         },
         {
             "id": "explorevaultfailure_nofunds",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Logistical Difficulties",
             "startdescription": "Supplies are low. Unless I send more funds, we will have to abandon the expedition.",
             "description": "We can try again, when the dust has settled.",
@@ -224,7 +224,7 @@
         },
         {
             "id": "explorevaultfailure_nofollowers",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "No Traveller Returns",
             "startdescription": "No expedition members remain. I must send help, or this expedition will be over.",
             "description": "No-one returns. I can attempt the expedition again. I can even reuse the supplies.",
@@ -250,7 +250,7 @@
                 "guardian": -1,
                 "curse": -1
             },
-            "actionId": "explore",
+            "actionid": "explore",
             "comments": "Separate recipe link to remove the confusing slot from Success, next.",
             "linked": [
                 {
@@ -262,7 +262,7 @@
         {
             "id": "explorevaultsuccess",
             "label": "Treasures Lie Before Us",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "Success! I'll know more soon...",
             "description": ".",
             "effects": {
@@ -441,7 +441,7 @@
         },
         {
             "id": "explorevault_casualty",
-            "actionId": "explorevault_casualty",
+            "actionid": "explorevault_casualty",
             "label": "An expedition member has fallen!",
             "startdescription": "Our numbers dwindle.",
             "description": "Their wounds are grievous. [Heal a fallen Follower with Talk.]",
@@ -470,7 +470,7 @@
         },
         {
             "id": "explorevault_casualty_summoning",
-            "actionId": "explorevault_casualty",
+            "actionid": "explorevault_casualty",
             "requirements": {
                 "summoned": 1
             },

@@ -3,7 +3,7 @@
         {
             "id": "deathofthebody",
             "label": "No Health is left",
-            "actionId": "healthend",
+            "actionid": "healthend",
             "requirements": {
                 "health": -1,
                 "fatigue": -1
@@ -19,7 +19,7 @@
         {
             "id": "forlornblooddeathofthebody",
             "label": "No Health is left",
-            "actionId": "healthend",
+            "actionid": "healthend",
             "requirements": {
                 "health": -1,
                 "fatigue": -1,
@@ -36,7 +36,7 @@
         {
             "id": "workvictory",
             "label": "I will settle into a comfortable existence",
-            "actionId": "workwin",
+            "actionid": "workwin",
             "requirements": {
                 "passion": 1
             },

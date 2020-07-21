@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "ambition.apostleforge.emitfuel",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Guidance from our Shaper",
             "requirements": {
                 "apostleforge.mentor": 1
@@ -14,7 +14,7 @@
         },
         {
             "id": "work.apostleforge.majorvictory.postbetrayal",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Nevertheless, the Great Work Continues",
             "extantreqs": {
                 "apostleforge.mentor": -1
@@ -35,7 +35,7 @@
         },
         {
             "id": "work.apostleforge.majorvictory",
-            "actionId": "work",
+            "actionid": "work",
             "label": "The Last Pieces of the Great Work",
             "extantreqs": {
                 "apostleforge.mentor": 1
@@ -56,7 +56,7 @@
         },
         {
             "id": "work.apostleforge.createcore",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Forging the Dawnbreaker Core",
             "startdescription": "With the guidance of our Shaper, and a mote of the old Sun, we can begin the construction of the Dawnbreaker Device.",
             "description": "We hum as we work, the old song: what shall not change shall end. At last the Core is complete. The Device slumbers. The Mysteries of Making will raise it to life.",
@@ -74,7 +74,7 @@
         },
         {
             "id": "work.apostleforge.awakencore",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Awakening the Dawnbreaker Core",
             "startdescription": "The Forge, the Madrugad and the Meniscate all recall the Sun. We shall build their memory as an armature around the Core, and it will flicker into terrible awareness.",
             "description": "The Device wakes to purring life, and like all life, it knows hunger. Only the highest products of alchemy will feed it.",
@@ -91,7 +91,7 @@
         },
         {
             "id": "work.apostleforge.upgradeingredientforgeb",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Refine Bitterblack Salts",
             "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
             "description": "Black clarifies to yellow.",
@@ -109,7 +109,7 @@
         },
         {
             "id": "work.apostleforge.upgradeingredientforged",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Refine Xanthotic Essence",
             "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
             "description": "Yellow ripens to red.",
@@ -127,7 +127,7 @@
         },
         {
             "id": "work.apostleforge.prepareingredientforgef",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Refine Iotic Essence",
             "startdescription": "With the guidance of our Shaper, we can refine this to something greater.",
             "description": "Red thrills to blue.",
@@ -145,7 +145,7 @@
         },
         {
             "id": "work.apostleforge.baptisefollower",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Choose the Compass",
             "startdescription": "With our Shaper's assistance, we can prepare a follower to find the way to a flaw in the world. Once they've found it, they will find nothing else, ever again.",
             "description": "The eyes, embers. The heart, a waiting temple.",
@@ -171,7 +171,7 @@
         },
         {
             "id": "explore.apostleforge.findflaw",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Flaw in the World",
             "startdescription": "Few eyes can see the flaw, and those that see it once will never see anything else.",
             "description": "This is the place where the Histories align - the rawness in the world's skin. Each wound here will be a sevenfold harm. If we detonate the Dawnbreaker Device here, it might turn the Biting Key in the lock of the Savage Door, and our Shaper will pass as did the gods-who-were-stone.",
@@ -230,7 +230,7 @@
         },
         {
             "id": "talk.apostleforge.sulochanaechidna",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "An Introduction to Mrs E.",
             "startdescription": "'Your Shaper wants to pass the Savage Door, hm? Do they really know what they're at? I've seen Forge-long try. Generally, they fail. But I'll see what I can do. I have a sister who holds the key you want. I'll get in touch with her... but it'll take a while.'",
             "description": "",
@@ -245,7 +245,7 @@
         },
         {
             "id": "talk.apostleforge.echidna",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Petitioning Mrs E.",
             "startdescription": "'Of course I can help, moppet. Lucky you came to me. I'm much more accommodating than our other sisters. But I will want someone tasty... unless you can give me a good reason.'",
             "description": "'No? I'll be around a little while longer.'",
@@ -278,7 +278,7 @@
         },
         {
             "id": "talk.apostleforge.echidnahelp.independent",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Someone Tasty",
             "startdescription": "'Have you two had a falling-out? Don't you worry, I'll tidy everything up. Listen, though - I'm a woman of my word, but I'm not a patient woman.  Wait until you're ready, and then I'll meet your tasty little problem.'",
             "description": "'Take this. Don't lose it. I'll be there.'",
@@ -294,7 +294,7 @@
         },
         {
             "id": "talk.apostleforge.echidnahelp",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "Someone Tasty",
             "startdescription": "'Oh, goody. Listen, though - I'm a woman of my word, but I'm not a patient woman. Don't give me your friend until you're ready.'",
             "description": "'Take this. Don't lose it. I'll be there.'",
@@ -310,7 +310,7 @@
         },
         {
             "id": "talk.apostleforge.echidnahelp.sthydra",
-            "actionId": "talk",
+            "actionid": "talk",
             "label": "A Good Reason",
             "startdescription": "'I see we both suckle serpents. As my sister likes to say: Ligeia remembers. I'll indulge you. (Did you ever wonder why it was five, not seven? Two missing Histories. Well, why only two? But we don't have time for that now. I'm not a patient woman.) Don't ask for my help until you're ready.'",
             "description": "'Take this. Don't lose it. I'll be there.'",

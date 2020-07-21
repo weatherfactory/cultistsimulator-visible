@@ -3,7 +3,7 @@
         {
             "id": "studybenefactorwill",
             "label": "Study a Dearly Departed's Papers",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "benefactorwill": 1,
                 "funds": 1
@@ -26,7 +26,7 @@
         {
             "id": "studybenefactorwill_suspicion",
             "label": ".",
-            "actionId": "study",
+            "actionid": "study",
             "effects": {
                 "notoriety": 1,
                 "benefactorwill": -1
@@ -35,7 +35,7 @@
         },
         {
             "id": "study.welland.defeated",
-            "actionId": "study",
+            "actionid": "study",
             "label": "As At Issus",
             "startdescription": "I have the opportunity to turn against our Shaper, as the Lionsmith did against the Colonel. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Forge victory. It will have no other effect.]",
             "description": "The chain of loyalty is shattered. My followers will suspect nothing. By the time our Shaper can return from their exile, I will be gone, or I will be forever.",
@@ -53,7 +53,7 @@
         },
         {
             "id": "study.tryphon.defeated",
-            "actionId": "study",
+            "actionid": "study",
             "label": "The Selectest of Menus",
             "startdescription": "If I consume what remains of Lady Tryphon, I will not be consumed. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Grail victory. It will have no other effect.]",
             "description": "The taste is bright on my tongue. There will be no Vitulation for our Delight. My followers will serve my desires. For now, I will devour; I will not be devoured.",
@@ -71,7 +71,7 @@
         },
         {
             "id": "study.diarist.defeated",
-            "actionId": "study",
+            "actionid": "study",
             "label": "One Door Closes",
             "startdescription": "The Diarist has given me the means to abandon our Illuminated One to the Mansus. [This will prevent your previous character from ever ascending, but give you the opportunity to win a standard Lantern victory. It will have no other effect.]",
             "description": "I have closed the door in my eye. I have sealed it with wax. That eye is blind, but the other sees new horizons. Our organisation will serve a different end. Perhaps one day I will greet our Founder as a peer.",
@@ -89,7 +89,7 @@
         },
         {
             "id": "study.julian.defeated",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Empty and Alone",
             "startdescription": "'One more stone in the Mansus-wall.' Is that all I am? Is there anything else? [This will prevent your previous character from ever ascending, and add Dread to the board. It will have no other effect.]",
             "description": "I will live out my life according to my choices. What I am is what I will be, until I am nothing at all.",

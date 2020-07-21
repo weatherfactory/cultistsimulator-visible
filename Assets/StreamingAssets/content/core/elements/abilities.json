@@ -12,7 +12,7 @@
                 {
                     "id": "nourishment",
                     "label": "Nourishment",
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "description": "To recover, I must eat.",
                     "required": {
                         "funds": 1
@@ -55,7 +55,7 @@
                 {
                     "id": "morevitality",
                     "label": "More Vitality",
-                    "actionId": "study",
+                    "actionid": "study",
                     "description": "With enough Vitality - or sometimes something more exotic - I can increase my Health.",
                     "required": {
                         "vitality": 1,
@@ -123,7 +123,7 @@
                 {
                     "id": "medicines",
                     "label": "Medicines, or...",
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "description": "I could pay for a doctor's visit...",
                     "required": {
                         "funds": 1
@@ -136,7 +136,7 @@
                     "required": {
                         "vitality": 1
                     },
-                    "actionId": "dream"
+                    "actionid": "dream"
                 }
             ],
             "description": "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
@@ -211,7 +211,7 @@
                 {
                     "id": "medicine",
                     "label": "Medicines, or...",
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "description": "I could pay for a doctor's visit...",
                     "required": {
                         "funds": 1
@@ -220,7 +220,7 @@
                 {
                     "id": "vitality",
                     "label": "...Vitality",
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "description": "...but perhaps I just need a little rest.",
                     "required": {
                         "vitality": 1
@@ -272,7 +272,7 @@
                 {
                     "id": "moreerudition",
                     "label": "More Erudition",
-                    "actionId": "study",
+                    "actionid": "study",
                     "description": "With enough Erudition - or sometimes something more exotic -  I can increase my Reason.",
                     "required": {
                         "erudition": 1,
@@ -320,7 +320,7 @@
                 {
                     "id": "reminders",
                     "label": "Reminders",
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "required": {
                         "contentment": 1
                     },
@@ -334,7 +334,7 @@
                         "influenceedge": 1,
                         "influencewinter": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 },
                 {
                     "id": "knowledge",
@@ -347,7 +347,7 @@
                         "fragmentedgef": 1,
                         "fragmentedgeg": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "description": "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
@@ -400,7 +400,7 @@
                     "forbidden": {
                         "poison": 1
                     },
-                    "actionId": "dream"
+                    "actionid": "dream"
                 }
             ]
         },
@@ -411,7 +411,7 @@
                 {
                     "id": "moreglimmering",
                     "label": "More Glimmering",
-                    "actionId": "study",
+                    "actionid": "study",
                     "description": "With enough Glimmering - or sometimes something more exotic - I can increase my Passion.",
                     "required": {
                         "glimmering": 1,
@@ -462,7 +462,7 @@
                         "dread": 1,
                         "fleeting": 1
                     },
-                    "actionId": "dream",
+                    "actionid": "dream",
                     "description": "Grey reality will steady my soul."
                 },
                 {
@@ -473,7 +473,7 @@
                         "influencemoth": 1,
                         "influencelantern": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 },
                 {
                     "id": "knowledge",
@@ -486,7 +486,7 @@
                         "fragmentmothf": 1,
                         "fragmentmothg": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "description": "Light LEAKS through the CRACKS. My mind is BRIGHTER than it EVER was. THE HIGHER I RISE THE MORE I SEE.",
@@ -508,7 +508,7 @@
                     "required": {
                         "textlatin": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "description": "A dead language: dead as diamonds. [Some books must be translated before they can be read.]",
@@ -527,7 +527,7 @@
                     "required": {
                         "textfucine": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "description": "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]",
@@ -546,7 +546,7 @@
                     "required": {
                         "textgreek": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "description": "No doubt you're conversant with every variety of Greek, from the beginning to Byzantium. But it's a good thing you have those reference works. [Some books must be translated before they can be read.]",
@@ -562,7 +562,7 @@
                     "required": {
                         "textphrygian": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "aspects": {
@@ -581,7 +581,7 @@
                     "required": {
                         "textaramaic": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "aspects": {
@@ -600,7 +600,7 @@
                     "required": {
                         "textmandaic": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "aspects": {
@@ -619,7 +619,7 @@
                     "required": {
                         "textsanskrit": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "aspects": {
@@ -638,7 +638,7 @@
                     "required": {
                         "textvak": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "aspects": {
@@ -666,7 +666,7 @@
                         "influencemoth": 1,
                         "influencelantern": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 },
                 {
                     "id": "knowledge",
@@ -679,7 +679,7 @@
                         "fragmentmothf": 1,
                         "fragmentmothg": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "lifetime": 120,
@@ -707,7 +707,7 @@
                         "influencewinter": 1,
                         "influenceforge": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 },
                 {
                     "id": "knowledge",
@@ -720,7 +720,7 @@
                         "fragmentheartf": 1,
                         "fragmentheartg": 1
                     },
-                    "actionId": "study"
+                    "actionid": "study"
                 }
             ],
             "lifetime": 60,

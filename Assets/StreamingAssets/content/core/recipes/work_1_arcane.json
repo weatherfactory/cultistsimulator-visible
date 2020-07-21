@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "work.poison.fascination.longlesson.trap",
-            "actionId": "work",
+            "actionid": "work",
             "label": "An Enemy Ever Vigilant",
             "startdescription": "Our enemy watches our operations from a high window of the Mansus. They have learnt more of us.",
             "requirements": {
@@ -25,7 +25,7 @@
         {
             "label": "Reason's Glory [Grand]",
             "id": "arcane_lantern_edge_grand",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -62,7 +62,7 @@
         {
             "label": "Reason's Glory [Major]",
             "id": "arcane_lantern_edge_major",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -99,7 +99,7 @@
         {
             "label": "Reason's Glory [Minor]",
             "id": "arcane_lantern_edge_minor",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -136,7 +136,7 @@
         {
             "id": "arcane_lantern_edge_failure",
             "label": "Reason's Glory [Failure!]",
-            "actionId": "work",
+            "actionid": "work",
             "description": "This magic has gone awry. An invisible light has ensnared me.",
             "effects": {
                 "fascination": 1
@@ -145,7 +145,7 @@
         {
             "label": "Passion's Gyre [Grand]",
             "id": "arcane_moth_edge_grand",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -188,7 +188,7 @@
         {
             "label": "Passion's Gyre [Major]",
             "id": "arcane_moth_edge_major",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -231,7 +231,7 @@
         {
             "label": "Passion's Gyre [Minor]",
             "id": "arcane_moth_edge_minor",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -274,7 +274,7 @@
         {
             "id": "arcane_moth_edge_failure",
             "label": "Passion's Gyre [Failure!]",
-            "actionId": "work",
+            "actionid": "work",
             "description": "This magic has gone askew. Dread has drowned my delight.",
             "effects": {
                 "dread": 1
@@ -283,7 +283,7 @@
         {
             "id": "arcane_moth_edge_runaway_link",
             "label": "Passion's Gyre [UNCEASING!]",
-            "actionId": "work",
+            "actionid": "work",
             "warmup": 2,
             "linked": [
                 {
@@ -295,7 +295,7 @@
         {
             "id": "arcane_moth_edge_runaway",
             "label": "Passion's Gyre [UNCEASING!]",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -340,7 +340,7 @@
         {
             "label": "Forge's Redemption [Grand]",
             "id": "arcane_forge_grail_grand",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -380,7 +380,7 @@
         {
             "label": "Forge's Redemption [Major]",
             "id": "arcane_forge_grail_major",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -420,7 +420,7 @@
         {
             "label": "Forge's Redemption [Minor]",
             "id": "arcane_forge_grail_minor",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -459,7 +459,7 @@
         {
             "id": "arcane_forge_grail_failure",
             "label": "Forge's Redemption [Failure!]",
-            "actionId": "work",
+            "actionid": "work",
             "description": "The Forge of Days has failed me, or I have failed it. This magic has brought me only nightmares, and peril.",
             "effects": {
                 "dread": 1,
@@ -469,7 +469,7 @@
         {
             "label": "The End is Beautiful [Grand]",
             "id": "arcane_winter_lantern_grand",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -512,7 +512,7 @@
         {
             "label": "The End is Beautiful [Major]",
             "id": "arcane_winter_lantern_major",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -555,7 +555,7 @@
         {
             "label": "The End is Beautiful [Minor]",
             "id": "arcane_winter_lantern_minor",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "ritual": 1,
                 "knock": -1,
@@ -598,7 +598,7 @@
         {
             "id": "arcane_winter_lantern_failure",
             "label": "The End is Beautiful [Failure!]",
-            "actionId": "work",
+            "actionid": "work",
             "description": "The Sun-in-Rags will not answer my call. This magic has brought me only the foreknowledge of winter.",
             "effects": {
                 "dread": 1,

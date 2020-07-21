@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "dream.poison.fascination.longlesson.trap",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "An Enemy Ever Vigilant",
             "startdescription": "Our enemy has learnt from my dreams.",
             "requirements": {
@@ -25,7 +25,7 @@
         {
             "id": "dreamhealth",
             "label": "An Early Night",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "health": 1
             },
@@ -58,7 +58,7 @@
         {
             "id": "dreamhealthcontentment",
             "label": "An Early Night",
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "contentment": 1
             },
@@ -68,7 +68,7 @@
         {
             "id": "dreamhealthdread",
             "label": "An Early Night",
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "dread": 1
             },
@@ -78,7 +78,7 @@
         {
             "id": "dreamhealthfascination",
             "label": "An Early Night",
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "fascination": 1
             },
@@ -88,7 +88,7 @@
         {
             "id": "recoverhunger",
             "label": "Restore my Strength",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "funds": 1,
                 "hunger": 1
@@ -107,7 +107,7 @@
         {
             "id": "recoverfatigue",
             "label": "Nap to recover from Fatigue",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "fatigue": 1
             },
@@ -121,7 +121,7 @@
         },
         {
             "id": "recover.apostlegrail.pillar2",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "The Dream of the End",
             "startdescription": "I consume the little vial of blood, lie back, close my eyes. Tomorrow, I will be stronger.",
             "description": "I am much recovered - more than that - I am sumptuous. The sclera of my eyes, the veins in my wrists, are aswim with gorgeous serums. When the Vitulation comes, I will be the centre-piece, for our Delight to prove their appetite, to enact the Grail.",
@@ -141,7 +141,7 @@
         {
             "id": "recoverillhealthfunds",
             "label": "Heal",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "funds": 1,
                 "illhealth": 1
@@ -160,7 +160,7 @@
         {
             "id": "recoverillhealthfundsvitality",
             "label": "Heal",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "vitality": 1,
                 "illhealth": 1
@@ -179,7 +179,7 @@
         {
             "id": "reducedread",
             "label": "Clear my Mind",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "contentment": 1,
                 "dread": 1
@@ -197,7 +197,7 @@
         {
             "id": "reducefascination",
             "label": "Composure",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "dread": 1,
                 "fascination": 1
@@ -215,7 +215,7 @@
         {
             "id": "reducefascinationfleeting",
             "label": "Composure",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "fleeting": 1,
                 "fascination": 1
@@ -232,7 +232,7 @@
         {
             "id": "dreamfunds",
             "label": "Purchase a Tincture of Opium",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "funds": 1
             },
@@ -264,7 +264,7 @@
         },
         {
             "id": "dream.decrepitude",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "Desperate Measures",
             "startdescription": "My soul haunts my failing flesh like a swamp-wisp. My heart slows, and one day it will cease. Perhaps if I were to consume some exotic substance it might restore the strength that is lost. But it seems unlikely.",
             "requirements": {
@@ -284,7 +284,7 @@
         },
         {
             "id": "dream.decrepitude.ingredientheartf",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "January's Quickening",
             "startdescription": "At the faint rust-tang of the blood, my heart leaps, painful as a stabbing sunrise.",
             "description": "St January has opened the door of years and the door of agonies, and through that twin gate, pain and history flee.",
@@ -304,7 +304,7 @@
         },
         {
             "id": "dream.decrepitude.failure",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "Only The Strangest Taste",
             "startdescription": "My heart limps on. I have gained no benefit - except, I suppose, hard-won knowledge.",
             "effects": {

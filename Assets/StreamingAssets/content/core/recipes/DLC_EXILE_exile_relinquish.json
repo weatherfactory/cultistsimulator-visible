@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "relinquish.first",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Relinquish",
             "startdescription": "Someone took a shot at me as I got out with the years. I'd almost forgotten.",
             "description": "I've changed the dressing. I can move well enough. I could wait for it to heal, or heal it with stolen years if I'm in a hurry - but it'll take a whole Decade, and it'll certainly be noticed.",
@@ -21,7 +21,7 @@
         },
         {
             "id": "relinquish.decade.healwound.foe",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound with a Stolen Decade",
             "startdescription": "The years must be burned in silence just as dawn begins and the wound dressed with the ashes. On any day this is tricky, but with the Foe stalking me through the night, it's going to be no fun at all. [You'll need a Dawn opportunity to complete this.]",
             "description": "I couldn't find enough time or silence. [Be ready with a Dawn opportunity.]",
@@ -52,7 +52,7 @@
         },
         {
             "id": "relinquish.decade.healwound.success.foe",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound with a Stolen Decade",
             "startdescription": "I've bought a little time back from the Madrugad.",
             "requirements": {
@@ -68,7 +68,7 @@
         },
         {
             "id": "relinquish.decade.healwound",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound with a Stolen Decade",
             "startdescription": "The years must be burned in silence just as dawn begins - the Madrugad is picky about that - and the wound dressed with the ashes. [You'll need a Dawn opportunity to complete this.]",
             "description": "I couldn't find enough time or silence. [Be ready with a Dawn opportunity.]",
@@ -96,7 +96,7 @@
         },
         {
             "id": "relinquish.decade.healwound.success",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound with a Stolen Decade",
             "startdescription": "The Madrugad is not merciful. She always exacts what is necessary. But then, I've never been the kind to ask for mercy. [Your reckoner pursuers have scented burning years.]",
             "requirements": {
@@ -113,7 +113,7 @@
         },
         {
             "id": "relinquish.vitality.healwound",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound with Vitality",
             "startdescription": "As a reckoner, I learnt long ago to redirect life's sudden surges.",
             "description": "A student of the invisible arts would no doubt pray to the Thunderskin just now. I know better.",
@@ -130,7 +130,7 @@
         },
         {
             "id": "relinquish.healwound.hint",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Heal a Wound?",
             "startdescription": "I could use a Stolen Decade to heal my Wound - though this may attract reckoners. Or if I have identified a source of Vitality, I could use that. Of course, if I have time, I can just wait for my wound to heal.",
             "requirements": {
@@ -141,7 +141,7 @@
         },
         {
             "id": "relinquish.decade.unpack",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Break down a Stolen Decade",
             "startdescription": "Stolen life is more easily sold by the year than the decade. I have the tools to make the necessary changes, but I must be very careful with my pen-strokes. She who comes before the Sun looks unkindly on sloppiness. [Decades cannot be sold. Years cannot be used to heal Wounds. Years cannot be converted back into Decades.]",
             "description": "At last it's done. I have drawn up ten careful drafts against the Tally, and burnt the decade draft. Each of my new drafts is worth forty-two million human heartbeats. I fancy I can hear them trembling in the paper...",
@@ -157,7 +157,7 @@
         },
         {
             "id": "relinquish.convertyear",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Raise Cash Hurriedly",
             "startdescription": "Selling lifespan directly for cash gets a lower price, and will quickly draw reckoner attention. Once I find a better alternative, I should do it as little as possible.",
             "description": "Smoky rooms; crumpled banknotes. I'm tired of this. [Operations are a much safer way to convert years to cash. Most Operations require Connections.]",
@@ -176,7 +176,7 @@
         },
         {
             "id": "relinquish.corpse.exile.underling.defiance",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Celebrate my Victory",
             "startdescription": "The Hours of struggle and conquest acknowledge victories. I can offer this trophy to increase my standing in their eyes.",
             "description": "It's done. In the hour when day battles night, the Many-Winged Ones descend to judge my prize, and when they depart, they leave only scraps of bone and hanks of hair.",
@@ -206,7 +206,7 @@
         },
         {
             "id": "relinquish.corpse.exile.underling.lore",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Learn from my Victory",
             "startdescription": "Certain techniques can only be articulated in an enemy's blood.",
             "description": "This wasn't a tidy or a pleasant process... but I have developed my understanding of the many kinds of mortal action.",
@@ -225,7 +225,7 @@
         },
         {
             "id": "relinquish.corpse.exile",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "A Discreet Burial",
             "startdescription": "It would be indecent to leave them unburied. But there's no need to make a fuss.",
             "description": "We've made sure this poor shell has been put quietly out of the way. Anyone looking for them will find a trail of false clues to follow.",
@@ -242,7 +242,7 @@
         },
         {
             "id": "relinquish.trace.connections",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks",
             "startdescription": "My confederates will help me manipulate the necessary records.",
             "description": "'Books are the memory that does not die' ...said someone who'd never met a competent forger.",
@@ -260,7 +260,7 @@
         },
         {
             "id": "relinquish.night.connection",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks",
             "startdescription": "When the moon sets, we'll put our plans in motion.",
             "description": "The sun rises on another lost history.",
@@ -279,7 +279,7 @@
         },
         {
             "id": "relinquish.trace.space.connection",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks",
             "startdescription": "My friends will ensure the address remains occupied by a decoy.",
             "description": "I've donated an old overcoat for the decoy. I hope they don't get overly murdered.",
@@ -298,7 +298,7 @@
         },
         {
             "id": "relinquish.trace.space.night",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks",
             "startdescription": "I'll slip out at night.",
             "description": "No-one will know I'm gone from there, not for days... and by then I'll be gone from somewhere else.",
@@ -317,7 +317,7 @@
         },
         {
             "id": "relinquish.trace.space",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks?",
             "startdescription": "[You can erase a Trace using a dwelling with a Night or Connection card, but not with two dwellings.]",
             "requirements": {
@@ -330,7 +330,7 @@
         },
         {
             "id": "relinquish.trace",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks",
             "startdescription": "I can misdirect the enemies following my trail.",
             "description": "As if I were mist.",
@@ -347,7 +347,7 @@
         },
         {
             "id": "relinquish.corpse.exile.underling.defiance.already.hint",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Already Recognised",
             "startdescription": "The Many-Winged Ones who judge the slain have already acknowledged one victory of this nature. I shouldn't trouble them again.",
             "requirements": {
@@ -360,7 +360,7 @@
         },
         {
             "id": "relinquish.corpse.exile.underling.hint",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Mortal Uses?",
             "startdescription": "A human corpse is an inconvenient property, but also, now and then, a valuable one.",
             "requirements": {
@@ -371,7 +371,7 @@
         },
         {
             "id": "relinquish.trace.hint.space",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks?",
             "startdescription": "Somewhere I'll never go again... [Add another card with Deception, but not a second address.]",
             "requirements": {
@@ -383,7 +383,7 @@
         },
         {
             "id": "relinquish.trace.hint.connection",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks?",
             "startdescription": "With assistance from friends who know the city well... [Add another card with Deception.]",
             "requirements": {
@@ -395,7 +395,7 @@
         },
         {
             "id": "relinquish.trace.hint.night",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks?",
             "startdescription": "When night blinds watchful eyes... [Add another card with Deception.]",
             "requirements": {
@@ -407,7 +407,7 @@
         },
         {
             "id": "relinquish.trace.hint",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Cover My Tracks?",
             "startdescription": "With the right resources, I could throw my enemies off the scent. [Use two cards with Deception - but no more than one address.]",
             "requirements": {
@@ -418,7 +418,7 @@
         },
         {
             "id": "relinquish.sell",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Attempt to Sell an Asset for Cash",
             "startdescription": "@#licence.medical|I can usually find someone who feels they really deserve to be a doctor.\n#|Perhaps I need cash more than I need this.@ [This will exchange the asset for Cash equal to its Worth.]",
             "requirements": {
@@ -439,7 +439,7 @@
         },
         {
             "id": "relinquish.abandon",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Abandon an Asset",
             "startdescription": "When the Devil is at your back, travel light. [Use this to get rid of any Portable Assets you don't have time to take with you.]",
             "requirements": {
@@ -457,7 +457,7 @@
         },
         {
             "id": "relinquish.provoke",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Provoke my Connections",
             "startdescription": "I'm not the only one with enemies. If I arrange a public rift with this contact, I might gain @#connection.official|Underworld Connections\n#connection.holy|Radical Connections\n#connection.radicals|Official Connections\n#connection.ruler|Radical Connections\n#connection.underworld|Official Connections@ instead. Or I might just annoy my current contacts. [This will usually work, but sometimes fail and leave you with no Connections and a Trace.]",
             "requirements": {
@@ -478,7 +478,7 @@
         },
         {
             "id": "relinquish.provoke.success",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Success!",
             "startdescription": "New friends.",
             "aspects": {
@@ -487,7 +487,7 @@
         },
         {
             "id": "relinquish.provoke.failure",
-            "actionId": "relinquish",
+            "actionid": "relinquish",
             "label": "Whoops -",
             "startdescription": "I knew that word was bad, but I didn't realise <i>how</i> bad.",
             "effects": {

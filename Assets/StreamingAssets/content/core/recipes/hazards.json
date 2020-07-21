@@ -3,7 +3,7 @@
         {
             "id": "despairrisk",
             "label": "Bleak Thoughts",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {},
             "effects": {},
             "slots": [
@@ -34,7 +34,7 @@
         {
             "id": "despairactive",
             "label": "DESPAIR",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {
                 "inducesdespair": 1
             },
@@ -78,7 +78,7 @@
         {
             "id": "despairwarning",
             "label": "DESPAIR",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {
                 "dread": 2,
                 "contentment": -1
@@ -105,7 +105,7 @@
         {
             "id": "despairabate",
             "label": "Despair Abates",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {
                 "contentment": 1
             },
@@ -131,7 +131,7 @@
         {
             "id": "despairdeath",
             "label": "DESPAIR OVERWHELMS ME",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {
                 "inducesdespair": 3
             },
@@ -163,7 +163,7 @@
         {
             "id": "despairdefeated",
             "label": "The Clouds Part",
-            "actionId": "despair",
+            "actionid": "despair",
             "effects": {
                 "fleeting": 1
             },
@@ -174,7 +174,7 @@
         {
             "id": "visionsrisk",
             "label": "A Trembling in the Air",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {},
             "slots": [
                 {
@@ -204,7 +204,7 @@
         {
             "id": "visionsactive",
             "label": "I Am Seeing Things",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "fascination": 1
             },
@@ -253,7 +253,7 @@
         {
             "id": "visionswarning",
             "label": "I Am Seeing Things!",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "fascination": 2,
                 "dread": -1,
@@ -285,7 +285,7 @@
         {
             "id": "visionsdeath",
             "label": "Help Me - ",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "fascination": 3
             },
@@ -321,7 +321,7 @@
         {
             "id": "visionsabate",
             "label": "Visions Abate",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "dread": 1
             },
@@ -347,7 +347,7 @@
         {
             "id": "visionsabatefleeting",
             "label": "Visions Abate",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "fleeting": 1
             },
@@ -373,7 +373,7 @@
         {
             "id": "visionsdefeated",
             "label": "The World as it Is",
-            "actionId": "visions",
+            "actionid": "visions",
             "effects": {
                 "fleeting": 1
             },
@@ -384,7 +384,7 @@
         {
             "id": "curse_dread_dormant",
             "label": "Dormant Dry Soul Curse",
-            "actionId": "curse_dread",
+            "actionid": "curse_dread",
             "startdescription": "The Dry Soul Curse has not yet taken effect.",
             "alt": [
                 {
@@ -407,7 +407,7 @@
             "requirements": {
                 "reason": -1
             },
-            "actionId": "curse_dread",
+            "actionid": "curse_dread",
             "startdescription": "The Dry Soul Curse settles softly, like a withered hand on the shoulder.",
             "slots": [
                 {
@@ -434,7 +434,7 @@
         {
             "id": "curse_dread_attempt_mitigation",
             "label": "The Dry Soul Curse: A Last Chance",
-            "actionId": "curse_dread",
+            "actionid": "curse_dread",
             "slots": [
                 {
                     "id": "Protection",
@@ -461,7 +461,7 @@
         {
             "id": "curse_dread_mitigation_successful",
             "label": "The Thunderskin's Favour",
-            "actionId": "curse_dread",
+            "actionid": "curse_dread",
             "requirements": {
                 "influence": 1
             },
@@ -474,7 +474,7 @@
         {
             "id": "curse_visions_dormant",
             "label": "Dormant Fifth Eye Curse",
-            "actionId": "curse_visions",
+            "actionid": "curse_visions",
             "startdescription": "The Fifth Eye Curse has not yet taken effect.",
             "alt": [
                 {
@@ -494,7 +494,7 @@
         {
             "id": "curse_visions_active",
             "label": "Fifth Eye Curse",
-            "actionId": "curse_visions",
+            "actionid": "curse_visions",
             "requirements": {
                 "passion": -1
             },
@@ -524,7 +524,7 @@
         {
             "id": "curse_visions_attempt_mitigation",
             "label": "The Fifth Eye Curse: A Last Chance",
-            "actionId": "curse_visions",
+            "actionid": "curse_visions",
             "slots": [
                 {
                     "id": "Protection",
@@ -551,7 +551,7 @@
         {
             "id": "curse_visions_mitigation_successful",
             "label": "The Thunderskin's Favour",
-            "actionId": "curse_visions",
+            "actionid": "curse_visions",
             "requirements": {
                 "influence": 1
             },
@@ -564,7 +564,7 @@
         {
             "id": "curse_affliction_dormant",
             "label": "Dormant Creeping Breath Curse",
-            "actionId": "curse_affliction",
+            "actionid": "curse_affliction",
             "startdescription": "The Creeping Breath curse has not yet come due.",
             "alt": [
                 {
@@ -584,7 +584,7 @@
         {
             "id": "curse_affliction_active",
             "label": "Creeping Breath Curse",
-            "actionId": "curse_affliction",
+            "actionid": "curse_affliction",
             "requirements": {
                 "health": -1
             },
@@ -614,7 +614,7 @@
         {
             "id": "curse_affliction_attempt_mitigation",
             "label": "The Creeping Breath Curse: A Last Chance",
-            "actionId": "curse_affliction",
+            "actionid": "curse_affliction",
             "slots": [
                 {
                     "id": "Protection",
@@ -641,7 +641,7 @@
         {
             "id": "curse_affliction_mitigation_successful",
             "label": "The Thunderskin's Favour",
-            "actionId": "curse_affliction",
+            "actionid": "curse_affliction",
             "requirements": {
                 "influence": 1
             },
@@ -654,7 +654,7 @@
         {
             "id": "curse_nowhere_dormant",
             "label": "Something's Come Back With Us",
-            "actionId": "curse_nowhere",
+            "actionid": "curse_nowhere",
             "startdescription": "I glimpse subtle movement in the world - like the floaters which sometimes move through the eye, but slyer. Sometimes, too, I hear them.",
             "alt": [
                 {
@@ -674,7 +674,7 @@
         {
             "id": "curse_nowhere_active",
             "label": "The Worms in the World",
-            "actionId": "curse_nowhere",
+            "actionid": "curse_nowhere",
             "requirements": {
                 "mortal": -1
             },
@@ -704,7 +704,7 @@
         {
             "id": "curse_nowhere_attempt_mitigation",
             "label": "The Worms in the World: A Last Chance",
-            "actionId": "curse_nowhere",
+            "actionid": "curse_nowhere",
             "slots": [
                 {
                     "id": "Protection",
@@ -732,7 +732,7 @@
         {
             "id": "curse_nowhere_mitigation_successful",
             "label": "The Thunderskin's Favour",
-            "actionId": "curse_nowhere",
+            "actionid": "curse_nowhere",
             "requirements": {
                 "influence": 1
             },

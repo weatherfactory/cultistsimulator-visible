@@ -3,7 +3,7 @@
         {
             "id": "long.spawn.forge",
             "label": "Someone has Arrived",
-            "actionId": "long",
+            "actionid": "long",
             "startdescription": "In candle-flames, in hearth-fires, in the hanging sway of smoke, the omens are certain. A great enemy of our Shaper has come to the city - someone who would prevent our Work.",
             "deckeffects": {
                 "forgelong": 1
@@ -20,7 +20,7 @@
         {
             "id": "long.spawn.grail",
             "label": "Someone has Arrived",
-            "actionId": "long",
+            "actionid": "long",
             "startdescription": "We are warned by the alteration of savours, by the fall of blood-drops, by the prodigal births reported in the dockside districts. A great enemy of our Delight has come to the city - someone who would prevent our Work.",
             "deckeffects": {
                 "graillong": 1
@@ -37,7 +37,7 @@
         {
             "id": "long.spawn.lantern",
             "label": "Someone has Arrived",
-            "actionId": "long",
+            "actionid": "long",
             "startdescription": "We are warned by the colours in the sun, by the occlusion of the moon, by the fracture of the lens. A great enemy of our Illuminated One has come to the city - someone who would prevent our Work.",
             "deckeffects": {
                 "lanternlong": 1
@@ -54,7 +54,7 @@
         {
             "id": "long.cycle",
             "label": "Someone is Watching",
-            "actionId": "long",
+            "actionid": "long",
             "effects": {
                 "intention.assault": -9,
                 "intention.intrigue": -9,
@@ -111,7 +111,7 @@
         },
         {
             "id": "expelspy",
-            "actionId": "expelspy",
+            "actionid": "expelspy",
             "label": "In from the Night",
             "requirements": {
                 "follower": 1
@@ -121,7 +121,7 @@
         },
         {
             "id": "long.upgrade.might",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Greater Might",
             "startdescription": "This Long's Might is increasing.",
             "requirements": {
@@ -148,7 +148,7 @@
         },
         {
             "id": "long.upgrade.connections",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Deeper Connections",
             "startdescription": "This Long is developing their Connections.",
             "requirements": {
@@ -175,7 +175,7 @@
         },
         {
             "id": "long.upgrade.dreamwork",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Starlight, Burgeoning",
             "startdescription": "This Long has found their way deeper into my dreams.",
             "requirements": {
@@ -202,7 +202,7 @@
         },
         {
             "id": "long.selectstrategy",
-            "actionId": "long",
+            "actionid": "long",
             "label": "A Decision",
             "startdescription": "Our immortal enemy has decided on a course of action.",
             "requirements": {},
@@ -232,7 +232,7 @@
         {
             "id": "long.preparestrategy.preference.assault",
             "label": "A Decision",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "long.preference.assault": 1
             },
@@ -249,7 +249,7 @@
         {
             "id": "long.preparestrategy.preference.intrigue",
             "label": "A Decision",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "long.preference.intrigue": 1
             },
@@ -266,7 +266,7 @@
         {
             "id": "long.preparestrategy.preference.dreamwork",
             "label": "A Decision",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "long.preference.dreamwork": 1
             },
@@ -282,7 +282,7 @@
         },
         {
             "id": "long.preparestrategy",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Preparing an Action",
             "startdescription": "Our immortal enemy is preparing their next action.\n\n[Add a follower strong in <sprite name=knock> <sprite name=lantern> to try to uncover the Long's strategy.\nAdd a follower strong in\n<sprite name=edge> <sprite name=forge> to try to delay Assaults,\n<sprite name=grail> <sprite name=heart> for Intrigues,\n<sprite name=moth> <sprite name=winter> for Starlight attacks.]",
             "slots": [
@@ -527,7 +527,7 @@
         },
         {
             "id": "expelallspies",
-            "actionId": "expelallspies",
+            "actionid": "expelallspies",
             "label": "Because We Are Too Many",
             "requirements": {
                 "follower": 3
@@ -537,7 +537,7 @@
         },
         {
             "id": "expelallspies_beforeconfrontation.might",
-            "actionId": "expelallspies",
+            "actionid": "expelallspies",
             "label": "Before the Storm",
             "requirements": {
                 "long.might": 10,
@@ -548,7 +548,7 @@
         },
         {
             "id": "expelallspies_beforeconfrontation.connections",
-            "actionId": "expelallspies",
+            "actionid": "expelallspies",
             "label": "Before the Storm",
             "requirements": {
                 "long.connections": 10,
@@ -559,7 +559,7 @@
         },
         {
             "id": "expelallspies_beforeconfrontation.dreamwork",
-            "actionId": "expelallspies",
+            "actionid": "expelallspies",
             "label": "Before the Storm",
             "requirements": {
                 "long.dreamwork": 10,
@@ -570,7 +570,7 @@
         },
         {
             "id": "long.spyonstrategy.success",
-            "actionId": "long",
+            "actionid": "long",
             "label": "A Report from our Spy",
             "alt": [
                 {
@@ -601,7 +601,7 @@
         },
         {
             "id": "long.revealidentity.success.might",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Our Enemy's Identity",
             "requirements": {
                 "follower": 1,
@@ -619,7 +619,7 @@
         },
         {
             "id": "long.revealidentity.success.connections",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Our Enemy's Identity",
             "requirements": {
                 "follower": 1,
@@ -637,7 +637,7 @@
         },
         {
             "id": "long.revealidentity.success.dreamwork",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Our Enemy's Identity",
             "requirements": {
                 "follower": 1,
@@ -655,7 +655,7 @@
         },
         {
             "id": "long.revealidentity.success",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Our Enemy's Identity",
             "startdescription": "@#welland_unknown|Our enemy is one Captain Welland, a Forge-long who has fought under many names in many wars. He has demonstrated allegiance to both the Lionsmith and the Forge of Days. He has a preference for direct assault, but he is no simple soldier.\n@#tryphon_unknown|Our enemy is one Lady Tryphon, a Grail-long who has left a trail of broken souls through the best hotels on the Continent. She is beloved of the Grail and the Flowermaker. She inclines to intrigue, but she is no stranger to violence.\n#diarist_unknown|Our enemy is the Lantern-long called the Diarist, who like all his kind abandoned physical form for the Mansus. He has known the favour of the Colonel and the Meniscate. He will prefer to strike at us through dreams, but never doubt he also has allies in the waking world.\n#julian_unknown|Our enemy is a Winter-long identified by the initials 'J.C'. His motives are obscure: he has always professed alignment with the Obliviates and their successors, who have no truck with the wars of the Hours. But here he is, to spoil our day.@",
             "aspects": {
@@ -671,7 +671,7 @@
         },
         {
             "id": "long.delayaction.success.assault",
-            "actionId": "long",
+            "actionid": "long",
             "label": "An Assault Delayed",
             "startdescription": "We divined that the Long intended to launch an assault; we've delayed it a little. [This is only possible once each action.]",
             "requirements": {
@@ -697,7 +697,7 @@
         },
         {
             "id": "long.delayaction.success.intrigue",
-            "actionId": "long",
+            "actionid": "long",
             "label": "An Intrigue Delayed!",
             "startdescription": "We divined that the Long intended to launch an intrigue; we've delayed it a little. [This is only possible once each action.]",
             "requirements": {
@@ -723,7 +723,7 @@
         },
         {
             "id": "long.delayaction.success.dreams",
-            "actionId": "long",
+            "actionid": "long",
             "label": "The Moon, Occluded",
             "startdescription": "We divined that the Long intended to come at us through our dreams; we've delayed that a little. [This is only possible once each action.]",
             "requirements": {
@@ -749,7 +749,7 @@
         },
         {
             "id": "long.delayaction.success",
-            "actionId": "long",
+            "actionid": "long",
             "label": "Our Spy Has Delayed Our Enemy",
             "comments": "This generic recipe is included only for backwards compatibility with beta folks",
             "startdescription": "They can slow the Long's action, though not prevent it. [This is only possible once each action.]",
@@ -772,7 +772,7 @@
         },
         {
             "id": "long.refinestrategy.assault.assassination",
-            "actionId": "long",
+            "actionid": "long",
             "extantreqs": {
                 "assassinationinprogress.player": -1,
                 "assassinationinprogress.follower": -1
@@ -798,7 +798,7 @@
         },
         {
             "id": "long.refinestrategy.assault.forge.greatwork",
-            "actionId": "long",
+            "actionid": "long",
             "extantreqs": {
                 "greatwork": 1,
                 "apostleforge.mentor": 1
@@ -824,7 +824,7 @@
         },
         {
             "id": "long.refinestrategy.assault.destroyhealth",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3,
@@ -849,7 +849,7 @@
         },
         {
             "id": "long.refinestrategy.assault.abduct.follower",
-            "actionId": "long",
+            "actionid": "long",
             "extantreqs": {
                 "abductioninprogress": -1
             },
@@ -874,7 +874,7 @@
         },
         {
             "id": "long.refinestrategy.assault.setambush.expedition",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3,
@@ -899,7 +899,7 @@
         },
         {
             "id": "long.refinestrategy.assault.injurefollower",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3,
@@ -924,7 +924,7 @@
         },
         {
             "id": "long.refinestrategy.assault.injurehealth",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3,
@@ -946,7 +946,7 @@
         },
         {
             "id": "long.refinestrategy.assault.rob",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3
@@ -967,7 +967,7 @@
         },
         {
             "id": "long.refinestrategy.assault.intimidate",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.assault": 1,
                 "strategy.prep": 3
@@ -988,7 +988,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.scandal",
-            "actionId": "long",
+            "actionid": "long",
             "extantreqs": {
                 "scandalinprogress": -1
             },
@@ -1013,7 +1013,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.follower.seduce",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "resentment": 1
             },
@@ -1038,7 +1038,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.grail.greatwork",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "uqvitulation": 1
             },
@@ -1063,7 +1063,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.poison.follower.resentment",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "follower": 1
             },
@@ -1088,7 +1088,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.detective.assist",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "hunter": 1
             },
@@ -1113,7 +1113,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.adversary.assist",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.intrigue": 1,
                 "strategy.prep": 3,
@@ -1138,7 +1138,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.poison.follower.notoriety",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "follower": 1
             },
@@ -1163,7 +1163,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.mystiquetonotoriety",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "mystique": 1
             },
@@ -1188,7 +1188,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.fraud",
-            "actionId": "long",
+            "actionid": "long",
             "tablereqs": {
                 "funds": 2
             },
@@ -1212,7 +1212,7 @@
         },
         {
             "id": "long.refinestrategy.intrigue.createmystique",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.intrigue": 1,
                 "strategy.prep": 3
@@ -1233,7 +1233,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.drysoul",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1255,7 +1255,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.fiftheye",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1277,7 +1277,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.poisonway",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1302,7 +1302,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.lantern.greatwork",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1327,7 +1327,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.poisonpassionwithdread",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1352,7 +1352,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.poisonreasonwithfascination",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1377,7 +1377,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.createfascination.poisoned",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1399,7 +1399,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.dreadtofascination.poisoned",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3,
@@ -1424,7 +1424,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.createfascination",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3
@@ -1445,7 +1445,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.learndreams.followup",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3
@@ -1469,7 +1469,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.learnfears.followup",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3
@@ -1493,7 +1493,7 @@
         },
         {
             "id": "long.refinestrategy.dreams.learndreams",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.dreams": 1,
                 "strategy.prep": 3
@@ -1514,7 +1514,7 @@
         },
         {
             "id": "long.refinestrategy.downtime.learn.winter",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.downtime": 1,
                 "strategy.prep": 3,
@@ -1536,7 +1536,7 @@
         },
         {
             "id": "long.refinestrategy.downtime.learn",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.downtime": 1,
                 "strategy.prep": 3,
@@ -1558,7 +1558,7 @@
         },
         {
             "id": "long.refinestrategy.downtime.rest",
-            "actionId": "long",
+            "actionid": "long",
             "requirements": {
                 "intention.downtime": 1,
                 "strategy.prep": 3

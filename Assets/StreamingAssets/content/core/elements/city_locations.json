@@ -14,7 +14,7 @@
                         "funds": 1
                     },
                     "consumes": true,
-                    "actionId": "explore"
+                    "actionid": "explore"
                 }
             ],
             "description": "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books.",
@@ -35,7 +35,7 @@
                 {
                     "id": "Old HQ",
                     "description": "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "hq": 1
                     }
@@ -61,7 +61,7 @@
                     "required": {
                         "auctionable": 1
                     },
-                    "actionId": "explore"
+                    "actionid": "explore"
                 }
             ],
             "unique": true
@@ -90,7 +90,7 @@
                 {
                     "id": "Entry",
                     "label": "Entry",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1,
                         "sulochana": 1
@@ -131,7 +131,7 @@
                     "id": "Cupboard",
                     "label": "Cupboard",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -159,7 +159,7 @@
                 {
                     "id": "Attic",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -171,7 +171,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Grail-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -195,7 +195,7 @@
                 {
                     "id": "Vestry",
                     "description": "Lock a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -207,7 +207,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Knock-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -232,7 +232,7 @@
                 {
                     "id": "Chains",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -244,7 +244,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Lantern-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -269,7 +269,7 @@
                 {
                     "id": "Cell",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -281,7 +281,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Knock-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -305,7 +305,7 @@
                 {
                     "id": "Cellar",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -317,7 +317,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Heart-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -342,7 +342,7 @@
                 {
                     "id": "Shed",
                     "description": "Place a Follower in here to convert them, permanently, into a Prisoner.",
-                    "actionId": "talk",
+                    "actionid": "talk",
                     "required": {
                         "follower": 1
                     },
@@ -354,7 +354,7 @@
                     "id": "funds",
                     "label": "Funds",
                     "description": "Place Funds in here to raise Forge-influence.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "funds": 1
                     }
@@ -377,7 +377,7 @@
                 {
                     "id": "Old HQ",
                     "description": "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "hq": 1
                     }
@@ -401,7 +401,7 @@
                 {
                     "id": "Old HQ",
                     "description": "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "hq": 1
                     }
@@ -425,7 +425,7 @@
                 {
                     "id": "Old HQ",
                     "description": "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "hq": 1
                     }
@@ -449,7 +449,7 @@
                 {
                     "id": "Old HQ",
                     "description": "Place an old HQ here to abandon it and move to this new location. No return will be possible.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "hq": 1
                     }
@@ -487,7 +487,7 @@
                     "id": "muscle",
                     "label": "Muscle",
                     "description": "I can employ a helper, or do the digging myself.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "health": 1,
                         "follower": 1
@@ -510,7 +510,7 @@
                     "id": "muscle",
                     "label": "Muscle",
                     "description": "I can employ a helper, or do the digging myself.",
-                    "actionId": "explore",
+                    "actionid": "explore",
                     "required": {
                         "health": 1,
                         "follower": 1

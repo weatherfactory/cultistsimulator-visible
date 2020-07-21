@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "explorevaultguardian_serpent_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Younger Sister: a Serpent",
             "startdescription": "The Serpent watches us closely, swaying its great head. WIthout Edge or Knock, we cannot prevail against it.",
             "requirements": {
@@ -56,7 +56,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_highedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 10
             },
@@ -76,7 +76,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_midedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 5
             },
@@ -96,7 +96,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_lowedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 1
             },
@@ -116,7 +116,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_highknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 10
             },
@@ -136,7 +136,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_midknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 5
             },
@@ -156,7 +156,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_lowknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 1
             },
@@ -176,7 +176,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_success_edge",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Serpent's Struggles",
             "startdescription": "The Serpent rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
             "description": ".",
@@ -194,7 +194,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_success_knock",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Serpent's Sorrow",
             "startdescription": "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
             "description": ".",
@@ -212,7 +212,7 @@
         },
         {
             "id": "explorevaultguardian_serpent_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Serpent's Strength",
             "startdescription": "Back. Back! It's too much for us!",
             "description": ".",
@@ -240,7 +240,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Watchers",
             "startdescription": "Locals with a grudge or a duty or a mercenary contract. We might trick them with Moth, seduce them with Grail, or battle them with Edge.",
             "requirements": {
@@ -306,7 +306,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_highedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 10
             },
@@ -326,7 +326,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_midedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 5
             },
@@ -346,7 +346,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_lowedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 1
             },
@@ -366,7 +366,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_highgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 10
             },
@@ -386,7 +386,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_midgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 5
             },
@@ -406,7 +406,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_lowgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 1
             },
@@ -426,7 +426,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_highmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 10
             },
@@ -446,7 +446,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_midmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 5
             },
@@ -466,7 +466,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_lowmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 1
             },
@@ -486,7 +486,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_success_edge",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Watchers' End",
             "startdescription": "Their blood pumps bright, then dark. They should not have opposed us. We move on.",
             "description": ".",
@@ -504,7 +504,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_success_grail",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Watchers' Fall",
             "startdescription": "Their present pleasures will end ill for them. Perhaps they'll think it's worth it. Meanwhile, we can pass.",
             "description": ".",
@@ -522,7 +522,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_success_moth",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Watchers' Confusion",
             "startdescription": "Their bewilderment is our opportunity. We'll pass in silent secrecy.",
             "description": ".",
@@ -540,7 +540,7 @@
         },
         {
             "id": "explorevaultguardian_watchers_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Watchers' Victory",
             "startdescription": "They are more cunning and more numerous than we'd expected! This will end in blood for us -",
             "description": ".",
@@ -568,7 +568,7 @@
         },
         {
             "id": "explorevaultguardian_monks_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Monks",
             "startdescription": "An order of guardians bound by oath and custom. They are too steadfast for the Grail's seductions - we must defeat them with Edge or bedazzle them with Moth.",
             "requirements": {
@@ -622,7 +622,7 @@
         },
         {
             "id": "explorevaultguardian_monks_highedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 10
             },
@@ -642,7 +642,7 @@
         },
         {
             "id": "explorevaultguardian_monks_midedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 5
             },
@@ -662,7 +662,7 @@
         },
         {
             "id": "explorevaultguardian_monks_lowedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 1
             },
@@ -682,7 +682,7 @@
         },
         {
             "id": "explorevaultguardian_monks_highmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 10
             },
@@ -702,7 +702,7 @@
         },
         {
             "id": "explorevaultguardian_monks_midmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 5
             },
@@ -722,7 +722,7 @@
         },
         {
             "id": "explorevaultguardian_monks_lowmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 1
             },
@@ -742,7 +742,7 @@
         },
         {
             "id": "explorevaultguardian_monks_success_edge",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Monks' Silence",
             "startdescription": "Their bodies lie in robed huddles, each indistinguishable from the next. Step over, move on.",
             "description": ".",
@@ -760,7 +760,7 @@
         },
         {
             "id": "explorevaultguardian_monks_success_moth",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Monks' Delusion",
             "startdescription": "Faith is a double-edged weapon. These monks have great talent in the matter of believing, and so they have believed our lies.",
             "description": ".",
@@ -778,7 +778,7 @@
         },
         {
             "id": "explorevaultguardian_monks_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Monks' Wrath",
             "startdescription": "They're stronger and wiser than we had supposed. And now their blows have found a mark - ",
             "description": ".",
@@ -806,7 +806,7 @@
         },
         {
             "id": "explorevaultguardian_dead_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Fretful Dead",
             "startdescription": "The Dead clot in the air around us like stale corpse-light. Without Edge or Winter, we have no chance against them.",
             "requirements": {
@@ -860,7 +860,7 @@
         },
         {
             "id": "explorevaultguardian_dead_highedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 10
             },
@@ -880,7 +880,7 @@
         },
         {
             "id": "explorevaultguardian_dead_midedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 5
             },
@@ -900,7 +900,7 @@
         },
         {
             "id": "explorevaultguardian_dead_lowedge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "edge": 1
             },
@@ -920,7 +920,7 @@
         },
         {
             "id": "explorevaultguardian_dead_highwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 10
             },
@@ -940,7 +940,7 @@
         },
         {
             "id": "explorevaultguardian_dead_midwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 5
             },
@@ -960,7 +960,7 @@
         },
         {
             "id": "explorevaultguardian_dead_lowwinter",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "winter": 1
             },
@@ -980,7 +980,7 @@
         },
         {
             "id": "explorevaultguardian_dead_success_edge",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Wretched Dead",
             "startdescription": "When the Dead return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
             "description": ".",
@@ -998,7 +998,7 @@
         },
         {
             "id": "explorevaultguardian_dead_success_winter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Wary Dead",
             "startdescription": "The Dead draw back, their almost-faces flat and watchful. They will not trouble us.",
             "description": ".",
@@ -1016,7 +1016,7 @@
         },
         {
             "id": "explorevaultguardian_dead_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Wrath of the Dead",
             "startdescription": "The Dead are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
             "description": ".",
@@ -1044,7 +1044,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Soucouyants in the Dark",
             "startdescription": "The night air rattles with them. Duck low. They are much too strong to be fought, but we may be able to deceive them, or drive them off with Mansus-light.",
             "requirements": {
@@ -1098,7 +1098,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_highlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 10
             },
@@ -1118,7 +1118,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_midlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 5
             },
@@ -1138,7 +1138,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_lowlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 1
             },
@@ -1158,7 +1158,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_highmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 10
             },
@@ -1178,7 +1178,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_midmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 5
             },
@@ -1198,7 +1198,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_lowmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 1
             },
@@ -1218,7 +1218,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_success_lantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Soucouyants' Retreat",
             "startdescription": "They won't come close. They call out taunts in the voices of carrion birds and children; they rattle the tree-tops; they fling stones from the dark. But they won't come close. We will pass.",
             "description": ".",
@@ -1236,7 +1236,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_success_moth",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Soucouyants' Frustrations",
             "startdescription": "Hurry from the shadow to deeper shadow. Press faces into the spongy earth. They know we're here, but they don't know where. Their cries fade behind us.",
             "description": ".",
@@ -1254,7 +1254,7 @@
         },
         {
             "id": "explorevaultguardian_soucouyants_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Soucouyants' Hungers",
             "startdescription": "They're on us! With a leathery crack of wings, and a body is borne shrieking up into the dark - ",
             "description": ".",
@@ -1282,7 +1282,7 @@
         },
         {
             "id": "explorevaultguardian_long_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Long",
             "startdescription": "Port Noon was founded on the site of a notorious Spring: drink from it, and the world will forget you. Some among the Long have retired there from the affairs of the greater world. They don't treat trespassers kindly, and it would be foolish to assault them. But they may be susceptible to the amusements of Moth, or the seductions of Grail.",
             "requirements": {
@@ -1336,7 +1336,7 @@
         },
         {
             "id": "explorevaultguardian_long_highgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 10
             },
@@ -1356,7 +1356,7 @@
         },
         {
             "id": "explorevaultguardian_long_midgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 5
             },
@@ -1376,7 +1376,7 @@
         },
         {
             "id": "explorevaultguardian_long_lowgrail",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "grail": 1
             },
@@ -1396,7 +1396,7 @@
         },
         {
             "id": "explorevaultguardian_long_highmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 10
             },
@@ -1416,7 +1416,7 @@
         },
         {
             "id": "explorevaultguardian_long_midmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 5
             },
@@ -1436,7 +1436,7 @@
         },
         {
             "id": "explorevaultguardian_long_lowmoth",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "moth": 1
             },
@@ -1456,7 +1456,7 @@
         },
         {
             "id": "explorevaultguardian_long_success_grail",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Long and Golden Afternoon",
             "startdescription": "Did this Long really fall prey to the Grail's seductions? Or did they know exactly what they were doing? In any case, we have won both space and time enough -",
             "description": ".",
@@ -1474,7 +1474,7 @@
         },
         {
             "id": "explorevaultguardian_long_success_moth",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Long Deception",
             "startdescription": "The immortal denizens of Noon are deceived, or amused, or caught up in the knots of a greater scheme yet. They won't interfere, this time.",
             "description": ".",
@@ -1492,7 +1492,7 @@
         },
         {
             "id": "explorevaultguardian_long_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Long Agony",
             "startdescription": "An immortal is angry. They may choose to strike someone down, or they may withhold their anger. It's very difficult to tell, with immortals - ",
             "description": ".",

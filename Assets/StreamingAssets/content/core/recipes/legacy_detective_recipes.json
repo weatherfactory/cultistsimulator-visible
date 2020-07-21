@@ -3,7 +3,7 @@
         {
             "id": "workdetectivejob_start",
             "label": "At the Station",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacydetectivejob": 1
             },
@@ -42,7 +42,7 @@
         {
             "id": "detectiveopendream",
             "label": "Dreaming...",
-            "actionId": "dream",
+            "actionid": "dream",
             "startdescription": "The Suppression Bureau publishes memoranda on the dangers of dreams. Every week, there's another.",
             "description": "'Report dreams of moonlight. Report dreams of a night-bound forest. Draw back your curtains to be woken by the sun. Do not cut your hair before you sleep. Never sleep before a cracked mirror.'",
             "effects": {
@@ -54,7 +54,7 @@
         {
             "id": "workdetectivejob_matured_investigate_hint",
             "label": "Pursuing an Investigation?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacydetectivejob_matured": 1,
                 "suspicious": 1
@@ -66,7 +66,7 @@
         {
             "id": "workdetectivejob_matured_pursuepromotion",
             "label": "A Kind of Ascension",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacydetectivejob_matured": 1,
                 "favour": 1
@@ -81,7 +81,7 @@
         {
             "id": "workdetectivejob_matured_investigate",
             "label": "Pursuing an Investigation",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacydetectivejob_matured": 1,
                 "suspicious": 1,
@@ -121,7 +121,7 @@
         {
             "id": "workdetectivejob_matured_investigate_threereason_success",
             "label": "Progress!",
-            "actionId": "work",
+            "actionid": "work",
             "alt": [
                 {
                     "id": "detectiveopenstudy",
@@ -147,7 +147,7 @@
         {
             "id": "workdetectivejob_matured_investigate_tworeason_success",
             "label": "Progress!",
-            "actionId": "work",
+            "actionid": "work",
             "alt": [
                 {
                     "id": "detectiveopenstudy",
@@ -173,7 +173,7 @@
         {
             "id": "workdetectivejob_matured_investigate_onereason_success",
             "label": "Progress!",
-            "actionId": "work",
+            "actionid": "work",
             "alt": [
                 {
                     "id": "detectiveopenstudy",
@@ -199,7 +199,7 @@
         {
             "id": "workdetectivejob_matured_investigate_successresults",
             "label": "Progress!",
-            "actionId": "work",
+            "actionid": "work",
             "effects": {
                 "funds": 3,
                 "myevidence": 1
@@ -216,7 +216,7 @@
         {
             "id": "workdetectivejob_matured_attemptsolvecase",
             "label": "Solving the case",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "myevidenceb": 1
             },
@@ -256,7 +256,7 @@
         {
             "id": "workdetectivejob_matured_solvecase_withbackup",
             "label": "Solving the case",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "myevidenceb": 1,
                 "independent": 1
@@ -290,7 +290,7 @@
         {
             "id": "workdetectivejob_matured_solvecase",
             "label": "Solving the case",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "myevidenceb": 1,
                 "independent": 1
@@ -320,7 +320,7 @@
         {
             "id": "workdetectivejob_newrival",
             "label": "Another Miscreant?",
-            "actionId": "newrival",
+            "actionid": "newrival",
             "startdescription": "Will it ever end? Can we ever call the law, the city, the world 'safe'?",
             "description": "There are reports - troubling reports - of this one.",
             "deckeffects": {
@@ -337,7 +337,7 @@
         {
             "id": "workdetectivejob_newrival_recruit",
             "label": "Another Miscreant?",
-            "actionId": "newrival",
+            "actionid": "newrival",
             "startdescription": ".",
             "description": ".",
             "aspects": {
@@ -354,7 +354,7 @@
             "id": "workdetectivejob_start_promote_lever_believer",
             "comments": "left unrenamed for backwards compatibility",
             "label": "Be Wary...",
-            "actionId": "newrival",
+            "actionid": "newrival",
             "aspects": {
                 "promotiontodisciple": 1
             },
@@ -374,7 +374,7 @@
             "id": "workdetectivejob_start_promote_lever_disciple",
             "comments": "left unrenamed for backwards compatibility",
             "label": "Be Wary...",
-            "actionId": "newrival",
+            "actionid": "newrival",
             "aspects": {
                 "promotionto_d_edge": 1,
                 "promotionto_d_forge": 1,
@@ -397,7 +397,7 @@
             "id": "workdetectivejob_start_rebellion",
             "comments": "left unrenamed for backwards compatibility",
             "label": "Be Wary...",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "rebellion": 1
             },
@@ -406,7 +406,7 @@
         {
             "id": "workdetectivejob_matured_plead",
             "label": "Plead for reinstatement!",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacydetectivejob_suspended": 1,
                 "passion": 1
@@ -422,7 +422,7 @@
         {
             "id": "workdetectivejob_epilogue",
             "label": "",
-            "actionId": "work",
+            "actionid": "work",
             "effects": {
                 "legacydetectivejob_matured": -1
             },
@@ -433,7 +433,7 @@
         {
             "id": "legacydetectiveplotitem_tempt",
             "label": "The Scent of the Pages",
-            "actionId": "craving",
+            "actionid": "craving",
             "requirements": {
                 "detectivetemptation": 1
             },
@@ -447,7 +447,7 @@
         {
             "id": "legacydetectiveplotitem_tempt_addslot",
             "label": "The Scent of the Pages",
-            "actionId": "craving",
+            "actionid": "craving",
             "slots": [
                 {
                     "id": "resist",
@@ -486,7 +486,7 @@
             "requirements": {
                 "reason": 1
             },
-            "actionId": "craving",
+            "actionid": "craving",
             "startdescription": "I am discipline. I am all discipline. I haven't lasted this long to give up so easily.",
             "aspects": {
                 "fatiguing": 1
@@ -508,7 +508,7 @@
                     "additional": true
                 }
             ],
-            "actionId": "study",
+            "actionid": "study",
             "startdescription": "Now and then, I have a little time to improve myself.",
             "description": "No doubt, somewhere out there, I can find materials for study.",
             "effects": {
@@ -520,7 +520,7 @@
         {
             "id": "detectiveopenexplore",
             "label": "Exploring...",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "I have a map of the capital on the wall of my office, bristling with dark-headed pins, spidery with annotations.",
             "description": "I know this city well, but it would take a lifetime to know it completely.",
             "warmup": 10,
@@ -539,7 +539,7 @@
         {
             "id": "detectiveopentalk",
             "label": "Talking...",
-            "actionId": "talk",
+            "actionid": "talk",
             "startdescription": "I might make a friendship, or end one.",
             "description": "",
             "effects": {},
@@ -549,7 +549,7 @@
         {
             "id": "detectivestudy_plotitem",
             "label": "I Should Not Open the File",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "detectivetemptation": 1
             },
@@ -575,7 +575,7 @@
         {
             "id": "detectivestudy_plotitem_afterfirsttime",
             "label": "I Should Not Open the File",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "detectivetemptation": 1
             },
@@ -600,7 +600,7 @@
         {
             "id": "detectivework_plotitem",
             "label": "Burn the File",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "detectivetemptation": 1,
                 "legacydetective_plotitem_burning": -1

@@ -3,7 +3,7 @@
         {
             "id": "dreamascensionpowera",
             "label": "Meditate on my goal of unearthly power",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "ascensionpowera": 1
             },
@@ -46,7 +46,7 @@
         {
             "id": "dreamascensionsensationa",
             "label": "Meditate on the pursuit of sensation",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "ascensionsensationa": 1
             },
@@ -93,7 +93,7 @@
         {
             "id": "dreamascensionenlightenmenta",
             "label": "Meditate on my goal of unearthly knowledge",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "ascensionenlightenmenta": 1
             },
@@ -135,7 +135,7 @@
         },
         {
             "id": "dreamascension_abandontemptation",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "Purge myself of Temptation",
             "startdescription": "My own desires are nothing. I am the Threshold. I am the road that my people will walk. I will set myself irrevocably to that purpose. [This will destroy your Temptation permanently. Be sure that's what you want.]",
             "description": "I might say that I have chosen, but that is not quite true. I <i>have been</i> chosen.",
@@ -153,7 +153,7 @@
             "requirements": {
                 "ascensionchangea": 1
             },
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "desire": -1,
                 "ascensionsensationa": 1
@@ -166,7 +166,7 @@
         {
             "id": "dreamascension_switchto_power",
             "label": "My goal is Power, now.",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "passion": 1
             },
@@ -180,7 +180,7 @@
         {
             "id": "dreamascension_switchto_sensation",
             "label": "My goal is Sensation, now.",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "health": 1
             },
@@ -194,7 +194,7 @@
         {
             "id": "dreamascension_switchto_enlightenment",
             "label": "My goal is Enlightenment, now.",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "reason": 1
             },
@@ -208,7 +208,7 @@
         {
             "id": "dreamascension_upgrade_power_1to2",
             "label": "Flame's Dedication",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "lore": 1,
                 "forge": 1
@@ -224,7 +224,7 @@
         {
             "id": "dreamascension_upgrade_sensation_1to2m",
             "label": "Blood's Dedication",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "lore": 1,
                 "grail": 1
@@ -240,7 +240,7 @@
         {
             "id": "dreamascension_upgrade_sensation_1to2f",
             "label": "Blood's Dedication",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "lore": 1,
                 "grail": 1
@@ -256,7 +256,7 @@
         {
             "id": "dreamascension_upgrade_enlightenment_1to2",
             "label": "Light's Dedication",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "lore": 1,
                 "lantern": 1
@@ -272,7 +272,7 @@
         {
             "id": "dreamreason",
             "label": "The Wandering Mind",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "reason": 1
             },
@@ -291,7 +291,7 @@
         {
             "id": "dream_router",
             "label": "The Crowds of Sleep",
-            "actionId": "dream",
+            "actionid": "dream",
             "deckeffects": {
                 "dreamreasonresults": 1
             },
@@ -326,7 +326,7 @@
         {
             "id": "dreamcontentment",
             "label": "Dreams of the Rain",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "contentment": 1
             },
@@ -337,7 +337,7 @@
         {
             "id": "dreamrestlessness",
             "label": "Dreams of Doors",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "restlessness": 1
             },
@@ -348,7 +348,7 @@
         {
             "id": "dreamvitality",
             "label": "A Profound and Restful Sleep",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "vitality": 1
             },
@@ -359,7 +359,7 @@
         {
             "id": "dreamglimmering",
             "label": "Dreams of Curios behind Glass",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "glimmering": 1
             },
@@ -370,7 +370,7 @@
         {
             "id": "nightmarecleansingdawn",
             "label": "Nightmare: The Cleansing Dawn",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "fascination": 1
             },
@@ -386,7 +386,7 @@
         },
         {
             "id": "nightmarecleansingdawnsuccess",
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "influencelanternc": 1
             },
@@ -395,7 +395,7 @@
         {
             "id": "nightmarehersault",
             "label": "Hersault's Nightmare",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {
                 "dread": 1
             },
@@ -412,7 +412,7 @@
         {
             "id": "nightmarehersaultsuccess",
             "label": "Hersault's Nightmare",
-            "actionId": "dream",
+            "actionid": "dream",
             "effects": {
                 "influenceknockc": 1
             },

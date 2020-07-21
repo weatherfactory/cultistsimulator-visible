@@ -3,7 +3,7 @@
         {
             "id": "workintrojob",
             "label": "Another Shift at the Hospital",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "introjob": 1
             },
@@ -27,7 +27,7 @@
         {
             "id": "introdream",
             "label": "Recall my Dreams",
-            "actionId": "dream",
+            "actionid": "dream",
             "requirements": {},
             "effects": {
                 "passion": 1,
@@ -49,7 +49,7 @@
         {
             "id": "bequestcountdown",
             "label": "A Change in the Air",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "startdescription": "I need Funds to live. But perhaps this recent upset in my circumstances is a secret blessing. Is there something to my dreams? There is a change in the air.",
             "description": ".",
@@ -65,7 +65,7 @@
         {
             "id": "bequestarrives",
             "label": "A Bequest Arrives",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "effects": {
                 "reason": 1,
@@ -82,7 +82,7 @@
         {
             "id": "studybequestreason",
             "label": "Examine the Bequest, employing Reason",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "bequestintro": 1,
                 "reason": 1
@@ -102,7 +102,7 @@
         {
             "id": "studybequestpassion",
             "label": "Examine my Bequest, employing Passion",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "bequestintro": 1,
                 "passion": 1
@@ -122,7 +122,7 @@
         {
             "id": "studycontactintro",
             "label": "Find a potential collaborator",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "contactintro": 1
             },

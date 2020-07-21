@@ -3,7 +3,7 @@
         {
             "id": "worktemplatejob",
             "label": "Start template Job",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacytemplatejob": 1
             },
@@ -28,7 +28,7 @@
         {
             "id": "worktemplatejob_matured",
             "label": "",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacytemplatejob_matured": 1
             },
@@ -50,7 +50,7 @@
         {
             "id": "worktemplatejob_epilogue",
             "label": "",
-            "actionId": "work",
+            "actionid": "work",
             "effects": {
                 "legacytemplatejob_matured": -1
             },
@@ -61,7 +61,7 @@
         {
             "id": "templateopendream",
             "label": "OPEN DREAM",
-            "actionId": "dream",
+            "actionid": "dream",
             "startdescription": "",
             "description": "",
             "effects": {
@@ -80,7 +80,7 @@
         {
             "id": "templateopenstudy",
             "label": "OPEN STUDY",
-            "actionId": "study",
+            "actionid": "study",
             "startdescription": "",
             "description": "",
             "alt": [
@@ -99,7 +99,7 @@
         {
             "id": "templateopenexplore",
             "label": "OPEN EXPLORE",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "",
             "description": "",
             "warmup": 10,
@@ -112,7 +112,7 @@
         {
             "id": "templateopentalk",
             "label": "",
-            "actionId": "talk",
+            "actionid": "talk",
             "startdescription": "",
             "description": "",
             "effects": {},
@@ -122,7 +122,7 @@
         {
             "id": "templatestudy_plotitem",
             "label": "",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "legacytemplate_plotitem": 1
             },

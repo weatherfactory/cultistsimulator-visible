@@ -3,7 +3,7 @@
         {
             "id": "findclericalwork",
             "label": "Find Clerical Work",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "reason": 1,
                 "ritual": -1,
@@ -22,7 +22,7 @@
         {
             "id": "job_plead_hint",
             "label": "Plead to Keep my Job?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "demotion": 1
             },
@@ -36,7 +36,7 @@
         {
             "id": "job_plead",
             "label": "Plead to Keep my Job",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "passion": 1,
                 "demotion": 1
@@ -68,7 +68,7 @@
             "effects": {
                 "funds": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
             "description": "The clerks file out in silence. I am free for now.",
             "warmup": 60,
@@ -103,7 +103,7 @@
             "effects": {
                 "funds": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "I will apply extra effort. Perhaps they'll appreciate it.",
             "description": "The end of the day. My neck aches. There is as much work to do tomorrow as there ever was.",
             "warmup": 0,
@@ -122,7 +122,7 @@
             "aspects": {
                 "careeradvancement": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "",
             "description": "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!\n\nMy new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
             "warmup": 0
@@ -146,7 +146,7 @@
             "effects": {
                 "funds": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
             "description": "The clerks file out in silence. I am free for now.",
             "warmup": 60,
@@ -181,7 +181,7 @@
             "effects": {
                 "funds": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "I will apply extra effort. Perhaps they'll appreciate it; perhaps I'll regain a higher position.",
             "description": "The end of the day. My neck aches. There is as much work to do tomorrow as there ever was.",
             "warmup": 0,
@@ -200,14 +200,14 @@
             "aspects": {
                 "careeradvancement": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "",
             "description": "I have regained a higher position.",
             "warmup": 0
         },
         {
             "id": "gloverandgloverwork_difficultbossa",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -239,7 +239,7 @@
         },
         {
             "id": "gloverandglover_difficultbossa_no_overtime",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -249,7 +249,7 @@
         },
         {
             "id": "gloverandglover_difficultbossa_patienceisavirtue",
-            "actionId": "work",
+            "actionid": "work",
             "label": "Mr Alden is retiring!",
             "startdescription": "'I shall be leaving Glover & Glover tomorrow. When you've finished your work for the day, come and see me.'",
             "description": "'You <i>have</i> shown some improvement, under my direction. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'\n\n'One more thing! I had almost forgotten - '\n\n'Be especially punctual tomorrow, please.'",
@@ -262,7 +262,7 @@
         {
             "id": "gloverandglover_difficultbossa_overtime_initial",
             "comments": "Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -291,7 +291,7 @@
         },
         {
             "id": "gloverandglover_difficultbossa_overtime",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -326,7 +326,7 @@
         },
         {
             "id": "gloverandglover_difficultbossa_overtime_fail",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -343,7 +343,7 @@
         },
         {
             "id": "gloverandgloverwork_difficultbossa_gone",
-            "actionId": "work",
+            "actionid": "work",
             "aspects": {
                 "employment": 1
             },
@@ -379,7 +379,7 @@
             "effects": {
                 "funds": 2
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "The work is more demanding, now, but it's better-paid.",
             "description": "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
             "warmup": 70,
@@ -408,7 +408,7 @@
             "effects": {
                 "funds": 3
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "",
             "description": "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for his father.",
             "warmup": 0
@@ -431,7 +431,7 @@
             "effects": {
                 "funds": 2
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "The work is more demanding, now, but it's better-paid.",
             "description": "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
             "warmup": 70,
@@ -459,7 +459,7 @@
             "effects": {
                 "funds": 2
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "",
             "description": "I have regained my senior position.",
             "warmup": 0
@@ -477,7 +477,7 @@
             "effects": {
                 "funds": 3
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "Curl my hands into the correct shapes, and begin.",
             "description": "I am always the last to leave, even after the elder Glover.",
             "warmup": 70,
@@ -512,7 +512,7 @@
             "effects": {
                 "funds": 3
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "Curl my hands into the correct shapes, and begin.",
             "description": "I am always the last to leave, even after the elder Glover. I am on good terms with the younger Glover. He likes to joke that I might take his job next. I won't, of course. His father will see to that. He makes the joke to put me in my place. It is beginning to annoy me.",
             "warmup": 70,
@@ -521,7 +521,7 @@
         {
             "id": "gloverandgloverseniorwork_hint",
             "label": "Work at Glover & Glover?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "gloverandgloverseniorjob": 1
             },
@@ -542,7 +542,7 @@
             "effects": {
                 "funds": 3
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "Curl my hands into the correct shapes, and begin.",
             "description": "When I close my eyes, figures march behind my eyelids. When I open them, the light hurts.",
             "warmup": 70,
@@ -567,7 +567,7 @@
         {
             "id": "gloverandgloverseniorwork_youngerglovergone_hint",
             "label": "Work at Glover & Glover?",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "gloverandgloverseniorjob_youngerglovergone": 1
             },
@@ -587,7 +587,7 @@
             "aspects": {
                 "careeradvancement": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": ".",
             "description": "'My son,' the elder Glover confides, 'was a dear boy, but he did lack ambition. You, on the other hand, burn with it. I see myself in you, do you know that? I do. Well, I think we can find you a place on the board of directors.'"
         },
@@ -597,7 +597,7 @@
             "aspects": {
                 "employment": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "gloverandglovertopjob": 1
             },
@@ -633,7 +633,7 @@
                 "employment": 1
             },
             "label": "An Expression of Concern",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "notoriety": 1
             },
@@ -652,7 +652,7 @@
                 "employment": 1
             },
             "label": "Work at Glover & Glover",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "gloverandglovertopjob_tainted": 1
             },
@@ -685,7 +685,7 @@
         {
             "id": "gloverandglovertopwork_scandal_b",
             "label": "Disgraced!",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "notoriety": 1
             },
@@ -707,7 +707,7 @@
             "effects": {
                 "funds": 2
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": "There is a dank and clinging smell to the Institute halls that never quite leaves one. Perhaps it is the paint. Perhaps it is the patients. Perhaps it is something in the walls.",
             "description": "I have done some good. My patients are quieter than when I began.",
             "warmup": 60,
@@ -716,7 +716,7 @@
         {
             "id": "workbeg",
             "label": "Beg in the Streets",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "decrepitude": 1
             },
@@ -738,7 +738,7 @@
         {
             "id": "workbeg_lucky",
             "label": "Beg in the Streets",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "decrepitude": 1
             },
@@ -751,7 +751,7 @@
         {
             "id": "workhealthskilld_edge",
             "label": "Unskilled Labour: Like the Mountain",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "skillhealthd_strength": 1,
@@ -774,7 +774,7 @@
         {
             "id": "workhealthskillc",
             "label": "Unskilled Labour: Arms of Steel",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "healthskill": 3,
@@ -797,7 +797,7 @@
         {
             "id": "workhealthskillb",
             "label": "Unskilled Labour: Arms of Iron",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "healthskill": 2,
@@ -826,7 +826,7 @@
                     "chance": 10
                 }
             ],
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "healthskill": 1,
@@ -849,7 +849,7 @@
         {
             "id": "workhealth_noinjurychance",
             "label": "Unskilled Labour",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "ritual": -1,
@@ -886,7 +886,7 @@
                     "chance": 30
                 }
             ],
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "health": 1,
                 "ritual": -1,
@@ -908,7 +908,7 @@
         {
             "id": "workhealthinjury",
             "label": "An injury at work!",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {},
             "effects": {
                 "health": -1,
@@ -923,7 +923,7 @@
         {
             "id": "workinvestmentjobc",
             "label": "Manage my Affairs",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "investmentsjobc": 1
             },
@@ -944,7 +944,7 @@
         {
             "id": "workinvestmentjobb",
             "label": "Manage my Affairs",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "investmentsjobb": 1
             },
@@ -965,7 +965,7 @@
         {
             "id": "workinvestmentjoba",
             "label": "Manage my Affairs",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "investmentsjoba": 1
             },
@@ -989,7 +989,7 @@
             "aspects": {
                 "decline": 1
             },
-            "actionId": "work",
+            "actionid": "work",
             "startdescription": ".",
             "description": "I have received the usual cheque, but it comes with disquieting news. My investments have suffered - ill luck, or, just possibly, an enemy's malice.",
             "warmup": 5,

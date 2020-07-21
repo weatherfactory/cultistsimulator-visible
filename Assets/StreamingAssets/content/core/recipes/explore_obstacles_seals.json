@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "explorevaultseal_hiddendoor_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Hidden Door",
             "startdescription": "There must be a door here. But without Lantern or Knock, we can't uncover it.",
             "requirements": {
@@ -56,7 +56,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_highlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 10
             },
@@ -76,7 +76,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_midlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 5
             },
@@ -96,7 +96,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_lowlantern",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "lantern": 1
             },
@@ -116,7 +116,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_highknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 10
             },
@@ -136,7 +136,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_midknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 5
             },
@@ -156,7 +156,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_lowknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 1
             },
@@ -176,7 +176,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Way through the Hidden Door",
             "startdescription": "Faint lines in stone; a surface that yields to pressure. We've found it! The Hidden Door moves, with a grating shudder and a shower of dust.",
             "description": ".",
@@ -194,7 +194,7 @@
         },
         {
             "id": "explorevaultseal_hiddendoor_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Fruitless Search",
             "startdescription": "Where is it? We could use more Knock, or Lantern.",
             "description": ".",
@@ -209,7 +209,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_encounter",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Warded Door",
             "startdescription": "This door has held fast for a long time. Unless we bring Forge or Knock, it will hold fast against us too.",
             "requirements": {
@@ -263,7 +263,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_highforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 10
             },
@@ -283,7 +283,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_midforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 5
             },
@@ -303,7 +303,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_lowforge",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "forge": 1
             },
@@ -323,7 +323,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_highknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 10
             },
@@ -343,7 +343,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_midknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 5
             },
@@ -363,7 +363,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_lowknock",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "knock": 1
             },
@@ -383,7 +383,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_success",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Death of a Door",
             "startdescription": "All doors must open, as all lives must end. This door has found its end here today.",
             "description": ".",
@@ -401,7 +401,7 @@
         },
         {
             "id": "explorevaultseal_wardeddoor_failure",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Purposes of Doors",
             "startdescription": "Doors have two purposes: to open, and to remain closed. Today, this door remains true to its second purpose.",
             "description": ".",

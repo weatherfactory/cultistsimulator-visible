@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "drawseason",
-            "actionId": "time",
+            "actionid": "time",
             "deckeffects": {
                 "seasonevents": 1
             },
@@ -17,7 +17,7 @@
         {
             "id": "needs",
             "label": "Time Passes",
-            "actionId": "time",
+            "actionid": "time",
             "requirements": {},
             "alt": [
                 {
@@ -91,7 +91,7 @@
         },
         {
             "id": "discardseason",
-            "actionId": "time",
+            "actionid": "time",
             "effects": {
                 "season": -1,
                 "funds": -999
@@ -107,7 +107,7 @@
         {
             "id": "presickness",
             "label": "The Price of Joy",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "comments": "to lead into actual sickness from opium abuse, which requires Season Of",
             "startdescription": "My breathing has been laboured; my thoughts confused. Perhaps I should not have indulged so freely in that cure for pain.",
             "effects": {
@@ -123,7 +123,7 @@
         {
             "id": "sickness",
             "label": "Sickness",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "startdescription": "I've become unwell!",
             "description": "This illness has damaged my health. I'll need to rest before I am fully recovered. [Cure your Affliction with Funds or Vitality.]",
             "requirements": {
@@ -170,7 +170,7 @@
         },
         {
             "id": "signalupcomingsicknessdeath",
-            "actionId": "sickness",
+            "actionid": "sickness",
             "label": "Sickness",
             "requirements": {
                 "health": -1,
@@ -188,7 +188,7 @@
         },
         {
             "id": "sickness.nohealthavailable.tryforstayofexecution",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "label": "Mortal Peril",
             "slots": [
                 {
@@ -211,7 +211,7 @@
             "alt": [
                 {
                     "id": "protectedagainstsickness",
-                    "actionId": "sickness",
+                    "actionid": "sickness",
                     "label": "Not This Time",
                     "requirements": {
                         "sicknessprotection": 1
@@ -225,7 +225,7 @@
                 {
                     "id": "mareendingsickness",
                     "chance": 100,
-                    "actionId": "sickness",
+                    "actionid": "sickness",
                     "label": "The Mare In Me",
                     "startdescription": "SHE COMES",
                     "description": "--",
@@ -242,7 +242,7 @@
         {
             "id": "forlornbloodsickness",
             "label": "Sickness",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "extantreqs": {
                 "apostlegrail.pillar2.dormant": 1
             },
@@ -277,7 +277,7 @@
         },
         {
             "id": "savorousbloodrespite",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "label": "A Respite",
             "requirements": {
                 "apostlegrail.pillar2": 1
@@ -287,7 +287,7 @@
         },
         {
             "id": "deathofthewoundedfollower",
-            "actionId": "time",
+            "actionid": "time",
             "label": "My Follower is dying!",
             "requirements": {
                 "follower_wound": 1
@@ -304,7 +304,7 @@
         {
             "id": "rosenext",
             "label": "Trysts and Interludes",
-            "actionId": "rose",
+            "actionid": "rose",
             "requirements": {
                 "seasonardours": 1
             },
@@ -343,7 +343,7 @@
         {
             "id": "pleasantday",
             "label": "A Pleasant Day",
-            "actionId": "pleasantday",
+            "actionid": "pleasantday",
             "requirements": {
                 "seasonserenities": 1
             },
@@ -359,7 +359,7 @@
         {
             "id": "despairrisklink",
             "label": "despairrisklink",
-            "actionId": "despair",
+            "actionid": "despair",
             "requirements": {
                 "seasondespair": 1
             },
@@ -375,7 +375,7 @@
         {
             "id": "visionsrisklink",
             "label": "visionsrisklink",
-            "actionId": "visions",
+            "actionid": "visions",
             "requirements": {
                 "seasonvisions": 1
             },
@@ -391,7 +391,7 @@
         {
             "id": "starvation",
             "label": "Starvation",
-            "actionId": "illhealth",
+            "actionid": "illhealth",
             "requirements": {
                 "funds": -1
             },
@@ -402,7 +402,7 @@
             "alt": [
                 {
                     "id": "mareendingstarvation",
-                    "actionId": "illhealth",
+                    "actionid": "illhealth",
                     "label": "The Mare In Me",
                     "startdescription": "SHE COMES",
                     "description": "--",

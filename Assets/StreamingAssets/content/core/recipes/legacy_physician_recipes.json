@@ -3,7 +3,7 @@
         {
             "id": "legacyphysicianwork",
             "label": "Work at the Institute",
-            "actionId": "work",
+            "actionid": "work",
             "requirements": {
                 "legacyphysicianjob": 1
             },
@@ -28,7 +28,7 @@
         },
         {
             "id": "legacyphysicianopenstudy",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Notes in the Case of #PREVIOUSCHARACTERNAME#",
             "startdescription": "My notes spill from the desk drawer where I had thrust them.",
             "description": "The patient spoke of things that could have no meaning. The house without walls. The divided sun. The invisible light. But when I recall how they spoke of that invisible light, my heart surges. I can ignore the notes no longer.\n[<b>Time</b> is now passing.]",
@@ -46,7 +46,7 @@
         },
         {
             "id": "legacyphysicianstudynotes",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "legacyphysiciannotes": 1
             },
@@ -70,7 +70,7 @@
         },
         {
             "id": "legacyphysicianopendream",
-            "actionId": "dream",
+            "actionid": "dream",
             "label": "The Invisible Light",
             "startdescription": "In sleep, I am a crooked tree. Moths crawl my bark. Dawn begins, although the light is invisible. At its touch, I straighten, to reach for the sun.",
             "description": "When I wake, my face is wracked with tears of joy. That light! cleaner than anything I touch in waking life. But I saw what these dreams did to #PREVIOUSCHARACTERNAME# at the end. It would not be wise or safe to follow them.",
@@ -88,7 +88,7 @@
         },
         {
             "id": "legacyphysicianhook",
-            "actionId": "hookplot",
+            "actionid": "hookplot",
             "label": "Belief?",
             "startdescription": "I could give in to the dreams. But they <i>will</i> devour my Reason.",
             "description": ".",
@@ -118,7 +118,7 @@
         },
         {
             "id": "legacyphysicianhookfulfilment",
-            "actionId": "hookplot",
+            "actionid": "hookplot",
             "label": "The Watchman's Eye",
             "requirements": {
                 "reason": 1
@@ -142,7 +142,7 @@
         {
             "id": "legacyphysicianopentalk",
             "label": "Kindred Spirits",
-            "actionId": "talk",
+            "actionid": "talk",
             "startdescription": "One of the patients at the Institute also has a bandaged eye. A self-inflicted wound, they say. Perhaps we'll speak soon.",
             "description": "My wound has healed, and so has theirs. They don't understand why they did it. But they dreamt of me, that night. We are connected.",
             "deckeffects": {

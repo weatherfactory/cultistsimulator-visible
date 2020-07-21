@@ -83,7 +83,7 @@ namespace Assets.Core.Fucine
             //Dictionary<string,string> - like DrawMessages
                 foreach (DictionaryEntry de in subHashtable)
                 {
-                    dictionary.Add(de.Key, de.Value.ToString());
+                    dictionary.Add(de.Key, de.Value.ToString()); //if an aspect value rather than a rich aspect value has been passed in, we need to convert it back to a strjng
                 }
 
                 _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, dictionary);

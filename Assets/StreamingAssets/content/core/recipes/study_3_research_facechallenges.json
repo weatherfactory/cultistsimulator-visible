@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "studyresearch.entrypoint",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Into the Night",
             "startdescription": "Wisdom is a country, and these are its maps. [Solve all the challenges on both fragments of lore to complete a research task. You can return to a task later, if you fail.]",
             "description": ".",
@@ -21,7 +21,7 @@
         },
         {
             "id": "studyresearch.attemptsolve",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Into the Night",
             "startdescription": "Wisdom is a country, and these are its maps. [Solve all the challenges on both fragments of lore to complete a research task. You can return to a task later, if you fail.]",
             "linked": [
@@ -53,7 +53,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.knowledge",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Knowledge",
             "requirements": {
                 "challenge.knowledge": 1
@@ -82,7 +82,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.knowledge",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -93,7 +93,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.knowledge",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved a Knowlege challenge.]",
             "mutations": [
@@ -116,7 +116,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.intuition",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Intuition",
             "requirements": {
                 "challenge.intuition": 1
@@ -145,7 +145,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.intuition",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -156,7 +156,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.intuition",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved an Intuition challenge.]",
             "mutations": [
@@ -179,7 +179,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.grim",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Grim Lessons",
             "requirements": {
                 "challenge.grim": 1
@@ -209,7 +209,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.grim",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -221,7 +221,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.grim",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved a Grim challenge.]",
             "mutations": [
@@ -248,7 +248,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.obsessive",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Obsessive Research",
             "requirements": {
                 "challenge.obsessive": 1
@@ -278,7 +278,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.obsessive",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -290,7 +290,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.obsessive",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved an Obsessive challenge.]",
             "aspects": {
@@ -317,7 +317,7 @@
         },
         {
             "id": "studyresearch.damagereason",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Obsession's Burden",
             "startdescription": "I have sharpened my thoughts like a blade. Now the point of that blade has snapped. [Reason has been permanently damaged.]",
             "requirements": {
@@ -336,7 +336,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.paradox",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Paradoxical Resolution",
             "requirements": {
                 "challenge.paradox": 1
@@ -366,7 +366,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.paradox",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -378,7 +378,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.paradox",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved a Paradoxical challenge.]",
             "aspects": {
@@ -405,7 +405,7 @@
         },
         {
             "id": "studyresearch.damagepassion",
-            "actionId": "study",
+            "actionid": "study",
             "label": "The Labyrinth's Heart",
             "startdescription": "I followed my passions through the labyrinth, and here I am at its heart. The heart of the labyrinth is a black and hollow place, charred like wood. [Passion has been permanently damaged.]",
             "requirements": {
@@ -424,7 +424,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.illumination",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Illumination",
             "requirements": {
                 "challenge.illumination": 1
@@ -454,7 +454,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.illumination",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -466,7 +466,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.illumination",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved an Illumination challenge.]",
             "mutations": [
@@ -493,7 +493,7 @@
         },
         {
             "id": "studyresearch.attemptsolve.challenge.practical",
-            "actionId": "study",
+            "actionid": "study",
             "label": "A Challenge: Practical Experimentation",
             "requirements": {
                 "challenge.practical": 1
@@ -522,7 +522,7 @@
         },
         {
             "id": "studyresearch.failed.challenge.practical",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Balked!",
             "startdescription": "My studies have been stymied, for now.",
             "requirements": {
@@ -533,7 +533,7 @@
         },
         {
             "id": "studyresearch.solved.challenge.practical",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Aha - !",
             "startdescription": " - there it is. Is that it? [You have resolved a Practical challenge.]",
             "aspects": {
@@ -560,7 +560,7 @@
         },
         {
             "id": "studyresearch.damagehealth",
-            "actionId": "study",
+            "actionid": "study",
             "label": "The Damage",
             "startdescription": "Pain is a teacher, they say, especially if they aren't in pain. [Health has been injured.]",
             "requirements": {
@@ -579,7 +579,7 @@
         },
         {
             "id": "studyresearch.nochallengesremaining",
-            "actionId": "study",
+            "actionid": "study",
             "label": "Blinking in the Light",
             "startdescription": "Now - now I understand!",
             "description": "",
@@ -701,7 +701,7 @@
             "id": "studyresearchtick",
             "comments": "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
             "label": "Promising Research",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "lore": 2
             },
@@ -730,7 +730,7 @@
         {
             "id": "studyresearchneedsreason",
             "label": "Confusion's Shadow",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "effects": {},
             "slots": [
@@ -762,7 +762,7 @@
         {
             "id": "studyresearchreasonsuccess",
             "label": "The Intellect's Light!",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "reason": 1
             },
@@ -784,7 +784,7 @@
         {
             "id": "studyresearchneedserudition",
             "label": "The Pieces of the Puzzle",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "effects": {},
             "slots": [
@@ -817,7 +817,7 @@
         {
             "id": "studyresearcheruditionsuccess",
             "label": "The Pieces Fit!",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "erudition": 1
             },
@@ -836,7 +836,7 @@
         {
             "id": "studyresearchneedsglimmering",
             "label": "The Gates of Intuition",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "effects": {},
             "slots": [
@@ -869,7 +869,7 @@
         {
             "id": "studyresearchglimmeringsuccess",
             "label": "The Gates of Intuition are opened!",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "glimmering": 1
             },
@@ -887,7 +887,7 @@
         },
         {
             "id": "studyresearchearlyconclusion",
-            "actionId": "study",
+            "actionid": "study",
             "comments": "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
             "requirements": {
                 "insight": 3
@@ -901,7 +901,7 @@
         },
         {
             "id": "studyresearchconclusion",
-            "actionId": "study",
+            "actionid": "study",
             "comments": "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
             "alt": [
                 {
@@ -931,7 +931,7 @@
                     "chance": 100
                 }
             ],
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "insight": 3
             },
@@ -954,7 +954,7 @@
                     "chance": 100
                 }
             ],
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {
                 "insight": 2
             },
@@ -966,7 +966,7 @@
         {
             "id": "studyresearchminimalinsight",
             "label": "Research complete, minimal insight",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "alt": [
                 {
@@ -986,7 +986,7 @@
         {
             "id": "studyresearchsuccess",
             "label": "Success!",
-            "actionId": "study",
+            "actionid": "study",
             "requirements": {},
             "aspects": {
                 "restore": 1

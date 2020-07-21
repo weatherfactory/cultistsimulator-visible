@@ -2,7 +2,7 @@
     "recipes": [
         {
             "id": "exploremovehq",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "A Change of Premises",
             "startdescription": "Move our organisation's headquarters to a new location. [This will permanently relocate your headquarters. No return is possible. It can reduce Notoriety.]",
             "description": "No address is really ever permanent. Like our bodies, we leave them all in the end. But for now, this is home.",
@@ -32,7 +32,7 @@
         },
         {
             "id": "explorehq.townhouse",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "--",
             "startdescription": "--",
             "description": "--",
@@ -49,7 +49,7 @@
         },
         {
             "id": "explorehq.hospital",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "Where It Opens",
             "startdescription": "The first wardens of this place practised their incisions and their transections until the world parted like fruit-peel. Those openings have long since healed, but nothing ever heals completely.",
             "description": "There is always discomfort, at first, but we have made sure that everything is done cleanly, and so we touch the bright skirts of the Mother-of-Ants.",
@@ -66,7 +66,7 @@
         },
         {
             "id": "explorehq.mithraeum",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Sun Beneath Us",
             "startdescription": "This was a holy place of the Sun Unconquered, the Sun Undivided. With the purest of candles, we can touch the light that still swims in the stone.",
             "description": "The lucent, the translucent, the memory of splendour. Much is lost, and much remains, of the Sun Invisible and Indivisible.",
@@ -83,7 +83,7 @@
         },
         {
             "id": "explorehq.church",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Wounds of Wisdom",
             "startdescription": "'Not all doors are wounds, but every wound is a door.' The history of this place is rich with both wounds and doors. With the right materials, we can soften the air where once the air opened.",
             "description": "Tonight, no door in this church will close; no lock will require a key; and every heart will be opened.",
@@ -100,7 +100,7 @@
         },
         {
             "id": "explorehq.bookshop",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "The Guarded Hearth",
             "startdescription": "We will warm the spaces behind the shop with fire-light, enliven them with the kettle's whistle and the gramophone's hum. Not all our celebrations require the shedding of blood.",
             "description": "Bookshops give solace to the anxious, the ignorant and the troubled in spirit. Even after Morland brought her curious wares here, this solace lingers. Tonight the Hour called Thunderskin steps softly.",
@@ -117,7 +117,7 @@
         },
         {
             "id": "explorehq.warehouse",
-            "actionId": "explore",
+            "actionid": "explore",
             "label": "In Memory of Engines",
             "startdescription": "Before this was a warehouse, it was a mansion of machines: a house of steam and iron and, from time to time, torn flesh and screaming. We will pour the oils that commemorate that time. ",
             "description": "Once more we have flames, once more we have iron, and once more flesh will know heat's kiss; though nowhere it will show, not by daylight. Far above, far below, the Forge of Days performs her purifications.",
@@ -135,7 +135,7 @@
         {
             "id": "explorelocationbookdealer",
             "label": "Add to your Library",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "locationbookdealer": 1,
                 "funds": 1
@@ -158,7 +158,7 @@
         {
             "id": "explorelocationbookdealer_exhausted",
             "label": "Morland's is Closing!",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "genericrubbishbook": 1
             },
@@ -174,7 +174,7 @@
         {
             "id": "explorelocationauctionhouse",
             "label": "Attend an Auction at Oriflamme's",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "locationauctionhouse": 1,
                 "auctionable": -1
@@ -197,7 +197,7 @@
         {
             "id": "explorelocationstreetsstrange",
             "label": "Explore an uncanny tangle of streets by the light of the moon.",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "locationstreetsstrange": 1
             },
@@ -212,7 +212,7 @@
         {
             "id": "explorefollower",
             "label": "Search the City",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "follower": 1,
                 "location": -1
@@ -238,7 +238,7 @@
         {
             "id": "explorerumour",
             "label": "Track down a rumour",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "rumour": 1
             },
@@ -257,7 +257,7 @@
         {
             "id": "explorehealth",
             "label": "Search the City",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "health": 1,
                 "location": -1
@@ -286,7 +286,7 @@
         {
             "id": "explorefindcriminal",
             "label": "A Hireling?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "daycriminals": 1
             },
@@ -307,7 +307,7 @@
         {
             "id": "explorechoosepaycriminal",
             "label": "A Hireling?",
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "I've found someone whom I might pay to enact regrettable necessities. [Add Funds to hire them, for a limited time.]",
             "slots": [
                 {
@@ -337,7 +337,7 @@
             "requirements": {
                 "funds": 1
             },
-            "actionId": "explore",
+            "actionid": "explore",
             "startdescription": "This will buy their loyalty, for now.",
             "effects": {
                 "funds": -1
@@ -346,7 +346,7 @@
         {
             "id": "explorefindplace",
             "label": "An Overlooked Place?",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "dayplaces": 1
             },
@@ -362,7 +362,7 @@
         },
         {
             "id": "explore.searchgraveyard.self",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery": 1,
                 "health": 1
@@ -382,7 +382,7 @@
         },
         {
             "id": "explore.searchgraveyard.follower",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery": 1,
                 "follower": 1
@@ -399,7 +399,7 @@
         },
         {
             "id": "explore.searchgraveyard.closing.self",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery.closing": 1,
                 "health": 1
@@ -419,7 +419,7 @@
         },
         {
             "id": "explore.searchgraveyard.closing.follower",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "location.cemetery.closing": 1,
                 "follower": 1
@@ -436,7 +436,7 @@
         },
         {
             "id": "explore.fleeting",
-            "actionId": "explore",
+            "actionid": "explore",
             "requirements": {
                 "fleeting": 1
             },

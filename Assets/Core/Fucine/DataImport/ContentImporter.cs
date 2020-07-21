@@ -9,6 +9,7 @@ using System;
 using Noon;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -109,6 +110,7 @@ public class ContentImporter
 
     private void AddTokenToHashtable(string id,Hashtable currentH, JToken jToken)
     {
+        id = id.ToLower();
         
         if (jToken.Type == JTokenType.String)
         {
@@ -172,7 +174,7 @@ public class ContentImporter
         {
             var nextList=new ArrayList();
             foreach(var eachItem in (JArray)jToken)
-                AddTokenToArray(nextList,jToken);
+                AddTokenToArray(nextList, eachItem);
 
             currentList.Add(nextList);
         }
