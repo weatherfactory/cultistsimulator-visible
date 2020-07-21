@@ -44,22 +44,37 @@ namespace Assets.Core.Fucine
         public void LoadEntityData()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
-            var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
-            if (coreContentFiles.Any())
-                coreContentFiles.Sort();
-            GetCoreAndLocDataForContentType(coreContentFiles, _log);
+         
+            GetCoreDataForContentType(contentFolder, _log);
+
+            if (BaseCulture != CurrentCulture)
+            {
+                GetLocDataForContentType(contentFolder);
+            }
+                
 
             var contentImportForMods = new ContentImportForMods();
             contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolderName);
         }
 
-
-
-        public void GetCoreAndLocDataForContentType(System.Collections.Generic.List<string> coreContentFiles, ContentImportLog log)
+        private void GetLocDataForContentType(string contentFolder)
         {
+            string locFolder = "core_" + LanguageTable.targetCulture;
+
+            var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
+            if (locContentFiles.Any())
+                locContentFiles.Sort();
+
+        }
 
 
-            //allcontentfiles contains both core and override json
+        public void GetCoreDataForContentType(string contentFolder, ContentImportLog log)
+        {
+            var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+            if (coreContentFiles.Any())
+                coreContentFiles.Sort();
+
+
             System.Collections.Generic.List<string> allContentFiles = new System.Collections.Generic.List<string>();
             allContentFiles.AddRange(coreContentFiles);
             if (!allContentFiles.Any()) log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
@@ -84,12 +99,12 @@ namespace Assets.Core.Fucine
                     foreach (var eachObject in topLevelArrayList)
                   {
 
-                      Hashtable h = new Hashtable();
+                      Hashtable hashtableEachObject = new Hashtable();
 
                       foreach (var eachKVP in (JObject)eachObject)
-                          AddTokenToHashtable(eachKVP.Key, h, eachKVP.Value);
+                          UnpackTokenToHashtable(eachKVP.Key, hashtableEachObject, eachKVP.Value);
 
-                      EntityData entityData = new EntityData(h);
+                      EntityData entityData = new EntityData(hashtableEachObject);
 
                       CoreData.Add(entityData);
                   } 
@@ -101,14 +116,19 @@ namespace Assets.Core.Fucine
                     log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 }
 
-                if (BaseCulture != CurrentCulture)
-                    TryToLocalise(EntityFolderName, log, contentFile);
+
             }
 
         }
 
         private void TryToLocalise(string contentOfType, ContentImportLog log, string contentFile)
         {
+
+            //get all locdata for current loc
+            //unpack it to hashtable (revisit perf on this)
+            //walk it, replace any properties on matching id objects
+
+
             string json;
             string
                 locFolder = "core_" + LanguageTable.targetCulture; //ahem. Let's move this to a LocalisedText object or similar
@@ -188,7 +208,7 @@ namespace Assets.Core.Fucine
 
 
 
-        private void AddTokenToHashtable(string id, Hashtable currentH, JToken jToken)
+        private void UnpackTokenToHashtable(string id, Hashtable currentH, JToken jToken)
         {
             id = id.ToLower();
 
@@ -212,7 +232,7 @@ namespace Assets.Core.Fucine
             {
                 var nextList = new ArrayList();
                 foreach (var eachItem in (JArray)jToken)
-                    AddTokenToArray(nextList, eachItem);
+                    UnpackTokenToArrayList(nextList, eachItem);
                 currentH.Add(id, nextList);
 
             }
@@ -221,7 +241,7 @@ namespace Assets.Core.Fucine
             {
                 var nextH = new Hashtable();
                 foreach (var eachKVP in (JObject)jToken)
-                    AddTokenToHashtable(eachKVP.Key, nextH, eachKVP.Value);
+                    UnpackTokenToHashtable(eachKVP.Key, nextH, eachKVP.Value);
 
                 currentH.Add(id, nextH);
 
@@ -233,7 +253,7 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void AddTokenToArray(ArrayList currentList, JToken jToken)
+        private void UnpackTokenToArrayList(ArrayList currentList, JToken jToken)
         {
             if (jToken.Type == JTokenType.String)
             {
@@ -254,7 +274,7 @@ namespace Assets.Core.Fucine
             {
                 var nextList = new ArrayList();
                 foreach (var eachItem in (JArray)jToken)
-                    AddTokenToArray(nextList, eachItem);
+                    UnpackTokenToArrayList(nextList, eachItem);
 
                 currentList.Add(nextList);
             }
@@ -263,7 +283,7 @@ namespace Assets.Core.Fucine
             {
                 var nextHashtable = new Hashtable();
                 foreach (var eachKVP in (JObject)jToken)
-                    AddTokenToHashtable(eachKVP.Key, nextHashtable, eachKVP.Value);
+                    UnpackTokenToHashtable(eachKVP.Key, nextHashtable, eachKVP.Value);
 
                 currentList.Add(nextHashtable);
             }
