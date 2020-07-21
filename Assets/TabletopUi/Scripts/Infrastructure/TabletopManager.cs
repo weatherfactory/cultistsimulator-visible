@@ -396,7 +396,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
 
-            var contentImporter = new ContentImporter();
+            var contentImporter = new CompendiumLoader();
             var log=contentImporter.PopulateCompendium(compendium);
 
             return log;

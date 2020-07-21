@@ -27,7 +27,7 @@ namespace Assets.Editor
 #if MODS
             new Registry().Register(new ModManager(false));
 #endif
-            var contentImporter = new ContentImporter();
+            var contentImporter = new CompendiumLoader();
             var messages = contentImporter.PopulateCompendium(new Compendium());
 
             foreach (var p in messages.GetMessages().Where(m=>m.MessageLevel>0))

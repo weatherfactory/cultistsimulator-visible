@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var registry = new Registry();
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
-            var contentImporter = new ContentImporter();
+            var contentImporter = new CompendiumLoader();
             contentImporter.PopulateCompendium(compendium);
         }
         

@@ -227,7 +227,7 @@ public class MenuScreenController : MonoBehaviour {
 		var compendium = new Compendium();
 		registry.Register<ICompendium>(compendium);
 
-		var contentImporter = new ContentImporter();
+		var contentImporter = new CompendiumLoader();
 		contentImporter.PopulateCompendium(compendium);
 
 		cultureContentLoaded = LanguageTable.targetCulture;
@@ -467,7 +467,7 @@ public class MenuScreenController : MonoBehaviour {
 
     private void BuildDlcPanel()
     {
-        var dlc = new HashSet<string>(ContentImporter.GetInstalledDlc());
+        var dlc = new HashSet<string>(CompendiumLoader.GetInstalledDlc());
         var store = GetCurrentStorefront();
         var hasAnyDlc = false;
         foreach (var dlcEntrySpec in DlcEntrySpecs)

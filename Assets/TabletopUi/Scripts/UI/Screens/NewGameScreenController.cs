@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
 #endif
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
-            var contentImporter = new ContentImporter();
+            var contentImporter = new CompendiumLoader();
             contentImporter.PopulateCompendium(compendium);
 
             InitLegacyButtons();

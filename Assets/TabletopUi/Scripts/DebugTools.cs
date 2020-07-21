@@ -367,7 +367,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 #endif
             
            var existingCompendium = Registry.Retrieve<ICompendium>();
-           var contentImporter = new ContentImporter();
+           var contentImporter = new CompendiumLoader();
 
            var startImport = DateTime.Now;
            var log=contentImporter.PopulateCompendium(existingCompendium);

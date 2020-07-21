@@ -36,7 +36,7 @@ using UnityEditor;
 
 
 
-public class ContentImporter
+public class CompendiumLoader
 {
     
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";

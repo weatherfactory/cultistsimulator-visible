@@ -28,7 +28,7 @@ public class DebugLoadCompendium : MonoBehaviour
         registry.Register(new ModManager(false));
 #endif
         var compendium = new Compendium();
-        var contentImporter = new ContentImporter();
+        var contentImporter = new CompendiumLoader();
        var messages= contentImporter.PopulateCompendium(compendium);
        foreach (var m in messages.GetMessages())
            NoonUtility.Log(m.Description, m.MessageLevel);

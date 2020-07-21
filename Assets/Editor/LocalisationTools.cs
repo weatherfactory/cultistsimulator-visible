@@ -53,7 +53,7 @@ namespace Assets.Editor
             new Registry().Register(new ModManager(false));
 #endif
             var compendium = new Compendium();
-            var contentImporter = new ContentImporter();
+            var contentImporter = new CompendiumLoader();
           var log= contentImporter.PopulateCompendium(compendium);
           foreach (var p in log.GetMessages())
               NoonUtility.Log(p.Description, p.MessageLevel);
