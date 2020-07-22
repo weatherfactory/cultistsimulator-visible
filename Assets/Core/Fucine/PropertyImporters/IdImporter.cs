@@ -13,10 +13,11 @@ namespace Assets.Core.Fucine
         {
             if (entity is IEntityWithId entityWithId)
             {
-                var idFromData = entityData.CoreData.GetValue(_cachedFucinePropertyToPopulate.LowerCaseName);
+                //    var idFromData = entityData.CoreData.GetValue(_cachedFucinePropertyToPopulate.LowerCaseName);
+                var idFromData = entityData.Id;
 
                 if (idFromData!=null)
-                    entityWithId.SetId(idFromData as string);
+                    entityWithId.SetId(idFromData);
                 else 
                     entityWithId.SetId(_cachedFucinePropertyToPopulate.LowerCaseName); //do I want to make this assumption, if it's a missing id? It's usually right, because we're just using the identifier next level up, but...
                 return true;

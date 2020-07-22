@@ -105,7 +105,7 @@ namespace Assets.Core.Fucine
 
             foreach (var eachProperty in jObject)
             {
-                LocHashKeyBuilder keyBuilder = new LocHashKeyBuilder(currentKey, (string)jObject["id"]);
+                LocHashKeyBuilder keyBuilder = new LocHashKeyBuilder(currentKey, (string)jObject[NoonConstants.ID]);
                 if (eachProperty.Value.Type == JTokenType.Object)
                  {
                      //string objectKey = $"{nextKey}{{{eachProperty.Key}";

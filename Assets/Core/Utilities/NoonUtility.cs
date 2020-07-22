@@ -11,8 +11,8 @@ namespace Noon
 {
     public class NoonConstants
     {
-        public const string KENDING="ending";
-      
+
+        public const string ID = "id";
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
