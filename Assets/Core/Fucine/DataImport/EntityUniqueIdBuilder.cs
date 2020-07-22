@@ -9,32 +9,41 @@ namespace Assets.Core.Fucine.DataImport
 {
     public class EntityUniqueIdBuilder
     {
-        private StringBuilder nextKey;
+        private StringBuilder uniqueId;
 
-        public EntityUniqueIdBuilder(string currentKey,string id)
+        public string BuiltId => uniqueId.ToString();
+
+
+        public EntityUniqueIdBuilder(string startingId)
         {
-            nextKey=new StringBuilder($"{currentKey}|{id?.ToLower()}");
+            uniqueId = new StringBuilder(startingId);
         }
 
-        public string Key => nextKey.ToString();
-
-
-        public void WithObjectProperty(string key)
+        public EntityUniqueIdBuilder(EntityUniqueIdBuilder basedOn)
         {
-            nextKey = nextKey.Append($"{nextKey}{{{key}");
+            uniqueId = new StringBuilder(basedOn.BuiltId);
         }
 
 
 
-        public void WithArray()
+
+
+        public void WithObjectProperty(string containerId, string itemId)
         {
-            nextKey.Append("[");
+            uniqueId = uniqueId.Append($"::{containerId}[{itemId}]");
+        }
+
+
+
+        public void WithArray(string arrayId)
+        {
+            uniqueId.Append($">{arrayId}>");
         }
 
 
         public void WithLeaf(string propertyId)
         {
-            nextKey.Append("|" + propertyId);
+            uniqueId.Append("." + propertyId);
         }
 
     }

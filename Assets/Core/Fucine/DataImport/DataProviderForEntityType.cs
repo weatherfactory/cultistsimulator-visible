@@ -62,6 +62,7 @@ namespace Assets.Core.Fucine
 
         private void GetLocDataForContentType(string contentFolder)
         {
+            return;
             string locFolder = contentFolder.Replace("core","core_" + LanguageTable.targetCulture);
 
             var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
@@ -77,14 +78,16 @@ namespace Assets.Core.Fucine
                 try
                 {
 
-                    JToken topLevelObject = JObject.Parse(json);
+                    JToken fileLevelObject = JObject.Parse(json);
 
-                    JArray topLevelArrayList = (JArray)topLevelObject[EntityFolderName];
+                    JArray arrayOfEntitiesOfType = (JArray)fileLevelObject[EntityFolderName];
 
-
-                    foreach (var eachObject in topLevelArrayList)
+                
+                    foreach (var eachObject in arrayOfEntitiesOfType)
                     {
-                        UnpackLocalisedObject(eachObject as JObject,EntityFolderName);
+                        var idBuilder = new EntityUniqueIdBuilder(String.Empty);
+                        idBuilder.WithObjectProperty(EntityFolderName, (string)eachObject[NoonConstants.ID]);
+                        UnpackLocalisedObject(eachObject as JObject, idBuilder.BuiltId);
                     }
 
                 }
@@ -127,12 +130,15 @@ namespace Assets.Core.Fucine
                     foreach (var eachObject in topLevelArrayList)
                   {
 
-                      Hashtable currentHashtable = new Hashtable();
+                      Hashtable eachObjectHashtable = new Hashtable();
+                      EntityUniqueIdBuilder idBuilder = new EntityUniqueIdBuilder(String.Empty);
+                      idBuilder.WithObjectProperty(EntityFolderName, (string)eachObject[NoonConstants.ID]);
 
-                      foreach (var eachKVP in (JObject)eachObject)
-                          UnpackTokenToHashtable(eachKVP.Key, currentHashtable, eachKVP.Value);
+                        foreach (var eachToken in (JObject)eachObject)
+                            eachObjectHashtable.Add(eachToken.Key, UnpackToken(eachToken.Value,idBuilder));
+//
 
-                      EntityData entityData = new EntityData(currentHashtable);
+                      EntityData entityData = new EntityData(eachObjectHashtable);
 
                       CoreData.Add(entityData);
                   } 
@@ -150,36 +156,34 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void UnpackLocalisedObject(JObject jObject, string currentKey)
+        private void UnpackLocalisedObject(JObject jObject, string currentUniqueKey)
         {
-
-            foreach (var eachProperty in jObject)
+           foreach (var eachProperty in jObject)
             {
-                var idBuilder = new EntityUniqueIdBuilder(currentKey, (string)jObject[NoonConstants.ID]);
+         
                 if (eachProperty.Value.Type == JTokenType.Object)
                 {
-                    idBuilder.WithObjectProperty(eachProperty.Key);
+                    var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
+                    idBuilder.WithObjectProperty(eachProperty.Key, (string)jObject[NoonConstants.ID]);
 
-                    UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.Key);
+                    UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.BuiltId);
                 }
                 else if (eachProperty.Value.Type == JTokenType.Array)
                 {
                     foreach (var item in eachProperty.Value)
                     {
-                        // UnpackLocalisedObject(item as JObject, nextKey + "[");
-                        idBuilder.WithArray();
-                        UnpackLocalisedObject(item as JObject, idBuilder.Key);
+                        var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
+                        idBuilder.WithArray(eachProperty.Key);
+                        UnpackLocalisedObject(item as JObject, idBuilder.BuiltId);
                     }
                 }
 
                 else if (eachProperty.Value.Type == JTokenType.String)
                 {
-                    if (eachProperty.Key != "id")
-                    {
+                        var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
                         idBuilder.WithLeaf(eachProperty.Key);
-                        LocalisedValuesData.Add(idBuilder.Key, eachProperty.Value.ToString());
-                        Debug.Log(idBuilder.Key + ": " + eachProperty.Value.ToString());
-                    }
+                      //  LocalisedValuesData.Add(idBuilder.BuiltId, eachProperty.Value.ToString());
+                        NoonUtility.Log(idBuilder.BuiltId + ": " + eachProperty.Value);
                 }
 
 
@@ -192,93 +196,68 @@ namespace Assets.Core.Fucine
         }
 
 
-
-        private void UnpackTokenToHashtable(string id, Hashtable currentH, JToken jToken)
+        private object UnpackToken(JToken jToken, EntityUniqueIdBuilder idBuilder)
         {
-            id = id.ToLower();
- 
 
 
-            if (jToken.Type == JTokenType.String)
-            {
-                currentH.Add(id, jToken.ToString());
-            }
 
-            else if (jToken.Type == JTokenType.Integer)
-            {
-                currentH.Add(id, (int)jToken);
-            }
-
-
-            else if (jToken.Type == JTokenType.Boolean)
-            {
-                currentH.Add(id, (bool)jToken);
-            }
-
-            else if (jToken.Type == JTokenType.Array)
+            if (jToken.Type == JTokenType.Array)
             {
                 var nextList = new ArrayList();
                 foreach (var eachItem in (JArray)jToken)
-                    UnpackTokenToArrayList(nextList, eachItem);
-                currentH.Add(id, nextList);
+                    nextList.Add(UnpackToken(eachItem, idBuilder));
+
+                return nextList;
 
             }
 
             else if (jToken.Type == JTokenType.Object)
             {
                 var nextH = new Hashtable();
-                foreach (var eachKVP in (JObject)jToken)
-                    UnpackTokenToHashtable(eachKVP.Key, nextH, eachKVP.Value);
 
-                currentH.Add(id, nextH);
+                var thisBuilder = new EntityUniqueIdBuilder(idBuilder);
+
+             //   thisBuilder.WithObjectProperty(id, (string)jToken[NoonConstants.ID]); ;
+
+                foreach (var eachKVP in (JObject)jToken)
+                {
+                    nextH.Add(eachKVP.Key.ToLower(), UnpackToken(eachKVP.Value,idBuilder)); //SOME SORT OF ISSUE AROUND THIS I CAN'T WORK OUT
+                }
+
+                return nextH;
 
             }
 
             else
             {
-                throw new ApplicationException("Unexpected jtoken type: " + jToken.Type);
+                if (jToken.Type == JTokenType.String)
+                {
+                   return jToken.ToString();
+                }
+
+                else if (jToken.Type == JTokenType.Integer)
+                {
+                    return (int) jToken;
+                }
+
+
+                else if (jToken.Type == JTokenType.Boolean)
+                {
+                    return (bool)jToken;
+                }
+
+                else if (jToken.Type == JTokenType.Float)
+                {
+                    return (double)jToken;
+                }
+                else
+                {
+                    throw new ApplicationException("Unexpected jtoken type: " + jToken.Type);
+                }
             }
         }
 
-        private void UnpackTokenToArrayList(ArrayList currentList, JToken jToken)
-        {
-            if (jToken.Type == JTokenType.String)
-            {
-                currentList.Add((string)jToken);
-            }
 
-            else if (jToken.Type == JTokenType.Integer)
-            {
-                currentList.Add((int)jToken);
-            }
-
-            else if (jToken.Type == JTokenType.Boolean)
-            {
-                currentList.Add((bool)jToken);
-            }
-
-            else if (jToken.Type == JTokenType.Array)
-            {
-                var nextList = new ArrayList();
-                foreach (var eachItem in (JArray)jToken)
-                    UnpackTokenToArrayList(nextList, eachItem);
-
-                currentList.Add(nextList);
-            }
-
-            else if (jToken.Type == JTokenType.Object)
-            {
-                var nextHashtable = new Hashtable();
-                foreach (var eachKVP in (JObject)jToken)
-                    UnpackTokenToHashtable(eachKVP.Key, nextHashtable, eachKVP.Value);
-
-                currentList.Add(nextHashtable);
-            }
-            else
-            {
-                throw new ApplicationException("Unexpected jtoken type: " + jToken.Type);
-            }
-        }
 
 
 
