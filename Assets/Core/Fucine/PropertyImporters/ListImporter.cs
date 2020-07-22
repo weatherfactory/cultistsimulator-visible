@@ -12,10 +12,10 @@ namespace Assets.Core.Fucine
 
 
 
-        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, EntityData entityData, ContentImportLog log)
         {
 
-            ArrayList al = entityData.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);
+            ArrayList al = entityData.CoreData.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (al==null)

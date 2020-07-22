@@ -23,10 +23,11 @@ namespace Assets.Core.Fucine
     }
 
 
-
+    [AttributeUsage(AttributeTargets.Property)]
     public abstract class Fucine : System.Attribute
     {
-        public object DefaultValue { get; set; } //might it be necessary to make this dynamic, later?
+        public object DefaultValue { get; set; }
+        public bool Localise { get; set; }
         public bool ValidateAsElementId { get; set; }
         public Type ObjectType { get; protected set; }
     
@@ -34,9 +35,10 @@ namespace Assets.Core.Fucine
 
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
     public class FucineValue : Fucine
     {
-        public bool Localise { get; set; }
+
         public FucineValue()
         {
         }
@@ -103,8 +105,6 @@ namespace Assets.Core.Fucine
     public class FucineDict : Fucine
     {
         public string KeyMustExistIn { get; set; }
-        public bool Localise { get; set; }
-
         public override AbstractImporter CreateImporterInstance()
         {
             return new DictImporter();

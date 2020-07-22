@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
@@ -16,7 +17,7 @@ namespace Assets.Core.Fucine
 
 
         public abstract bool TryImportProperty<T>(T entity, CachedFucineProperty<T> propertyToValidate,
-            Hashtable entityData, ContentImportLog log) where T : AbstractEntity<T>;
+            EntityData entityData, ContentImportLog log) where T : AbstractEntity<T>;
 
 
 

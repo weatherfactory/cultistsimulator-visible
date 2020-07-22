@@ -2,16 +2,21 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Reflection;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
     public class ValueImporter : AbstractImporter
     {
-        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, EntityData entityData, ContentImportLog log)
         {
-            object valueInData = entityData[_cachedFucinePropertyToPopulate.LowerCaseName];
+            object valueInData;
 
+            if (_cachedFucinePropertyToPopulate.FucineAttribute.Localise)
+                valueInData = entityData.CoreData[_cachedFucinePropertyToPopulate.LowerCaseName];
+            else
+                 valueInData = entityData.CoreData[_cachedFucinePropertyToPopulate.LowerCaseName];
 
             if (valueInData==null)
             {

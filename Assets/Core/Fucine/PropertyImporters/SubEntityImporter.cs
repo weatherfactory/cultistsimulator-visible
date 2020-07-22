@@ -10,10 +10,10 @@ namespace Assets.Core.Fucine
     public class SubEntityImporter : AbstractImporter
     {
 
-        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> propertyToValidate, Hashtable entityData, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> propertyToValidate, EntityData entityData, ContentImportLog log)
         {
             string entityPropertyName = propertyToValidate.LowerCaseName;
-            var hsubEntityHashtable = entityData.GetHashtable(entityPropertyName);
+            var hsubEntityHashtable = entityData.CoreData.GetHashtable(entityPropertyName);
             IEntityWithId subEntity;
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return

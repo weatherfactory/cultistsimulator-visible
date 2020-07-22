@@ -14,10 +14,10 @@ namespace Assets.Core.Fucine
     public class DictImporter:AbstractImporter
     {
 
-        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, Hashtable entityData, ContentImportLog log)
+        public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, EntityData entityData, ContentImportLog log)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            Hashtable hSubEntity = entityData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
+            Hashtable hSubEntity = entityData.CoreData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
 
 
             if (hSubEntity == null)
