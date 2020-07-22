@@ -13,8 +13,7 @@ namespace Assets.Core.Fucine.DataImport
 
         public EntityUniqueIdBuilder(string currentKey,string id)
         {
-            nextKey=new StringBuilder(currentKey);
-            nextKey = nextKey.Append(id + "|".ToLower());
+            nextKey=new StringBuilder($"{currentKey}|{id?.ToLower()}");
         }
 
         public string Key => nextKey.ToString();
@@ -35,7 +34,7 @@ namespace Assets.Core.Fucine.DataImport
 
         public void WithLeaf(string propertyId)
         {
-            nextKey.Append(propertyId);
+            nextKey.Append("|" + propertyId);
         }
 
     }

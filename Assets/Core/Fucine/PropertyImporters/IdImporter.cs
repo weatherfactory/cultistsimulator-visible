@@ -20,6 +20,7 @@ namespace Assets.Core.Fucine
                     entityWithId.SetId(idFromData);
                 else 
                     entityWithId.SetId(_cachedFucinePropertyToPopulate.LowerCaseName); //do I want to make this assumption, if it's a missing id? It's usually right, because we're just using the identifier next level up, but...
+               //AFAICT the only instance where this currently occurs is an internal deck. It should probably actually use a composite key.
                 return true;
             }
 

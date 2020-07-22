@@ -84,7 +84,7 @@ namespace Assets.Core.Fucine
 
                     foreach (var eachObject in topLevelArrayList)
                     {
-                        UnpackLocalisedObject(eachObject as JObject,string.Empty);
+                        UnpackLocalisedObject(eachObject as JObject,EntityFolderName);
                     }
 
                 }
@@ -98,59 +98,7 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void UnpackLocalisedObject(JObject jObject,string currentKey)
-        {
-            //string nextKey = currentKey+ (string)jObject["id"] + "|".ToLower();
-            
-
-            foreach (var eachProperty in jObject)
-            {
-                EntityUniqueIdBuilder idBuilder = new EntityUniqueIdBuilder(currentKey, (string)jObject[NoonConstants.ID]);
-                if (eachProperty.Value.Type == JTokenType.Object)
-                 {
-                     //string objectKey = $"{nextKey}{{{eachProperty.Key}";
-                     idBuilder.WithObjectProperty(eachProperty.Key);
-
-                     //UnpackLocalisedObject(eachProperty.Value as JObject, objectKey);
-
-                     UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.Key);
-                }
-                 else if (eachProperty.Value.Type == JTokenType.Array)
-                 {
-
-
-                     foreach (var item in eachProperty.Value)
-                     {
-                        // UnpackLocalisedObject(item as JObject, nextKey + "[");
-                        idBuilder.WithArray();
-                        UnpackLocalisedObject(item as JObject, idBuilder.Key);
-                    }
-                 }
-
-                 else if (eachProperty.Value.Type == JTokenType.String)
-                 {
-                     if (eachProperty.Key != "id")
-                     {
-
-                         idBuilder.WithLeaf(eachProperty.Key);
-                        LocalisedValuesData.Add(idBuilder.Key, eachProperty.Value.ToString());
-                      //  Debug.Log(idBuilder.Key + ": " + eachProperty.Value.ToString());
-
-                    }
-                }
-
-
-                 else
-
-                 {
-                     throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
-                 }
-
-            }
-
-
-        }
-
+     
 
 
         public void GetCoreDataForContentType(string contentFolder)
@@ -202,12 +150,54 @@ namespace Assets.Core.Fucine
         }
 
 
+        private void UnpackLocalisedObject(JObject jObject, string currentKey)
+        {
+
+            foreach (var eachProperty in jObject)
+            {
+                var idBuilder = new EntityUniqueIdBuilder(currentKey, (string)jObject[NoonConstants.ID]);
+                if (eachProperty.Value.Type == JTokenType.Object)
+                {
+                    idBuilder.WithObjectProperty(eachProperty.Key);
+
+                    UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.Key);
+                }
+                else if (eachProperty.Value.Type == JTokenType.Array)
+                {
+                    foreach (var item in eachProperty.Value)
+                    {
+                        // UnpackLocalisedObject(item as JObject, nextKey + "[");
+                        idBuilder.WithArray();
+                        UnpackLocalisedObject(item as JObject, idBuilder.Key);
+                    }
+                }
+
+                else if (eachProperty.Value.Type == JTokenType.String)
+                {
+                    if (eachProperty.Key != "id")
+                    {
+                        idBuilder.WithLeaf(eachProperty.Key);
+                        LocalisedValuesData.Add(idBuilder.Key, eachProperty.Value.ToString());
+                        Debug.Log(idBuilder.Key + ": " + eachProperty.Value.ToString());
+                    }
+                }
+
+
+                else
+
+                {
+                    throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
+                }
+            }
+        }
 
 
 
         private void UnpackTokenToHashtable(string id, Hashtable currentH, JToken jToken)
         {
             id = id.ToLower();
+ 
+
 
             if (jToken.Type == JTokenType.String)
             {
