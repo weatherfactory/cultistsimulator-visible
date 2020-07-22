@@ -105,15 +105,15 @@ namespace Assets.Core.Fucine
 
             foreach (var eachProperty in jObject)
             {
-                LocHashKeyBuilder keyBuilder = new LocHashKeyBuilder(currentKey, (string)jObject[NoonConstants.ID]);
+                EntityUniqueIdBuilder idBuilder = new EntityUniqueIdBuilder(currentKey, (string)jObject[NoonConstants.ID]);
                 if (eachProperty.Value.Type == JTokenType.Object)
                  {
                      //string objectKey = $"{nextKey}{{{eachProperty.Key}";
-                     keyBuilder.WithObjectProperty(eachProperty.Key);
+                     idBuilder.WithObjectProperty(eachProperty.Key);
 
                      //UnpackLocalisedObject(eachProperty.Value as JObject, objectKey);
 
-                     UnpackLocalisedObject(eachProperty.Value as JObject, keyBuilder.Key);
+                     UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.Key);
                 }
                  else if (eachProperty.Value.Type == JTokenType.Array)
                  {
@@ -122,8 +122,8 @@ namespace Assets.Core.Fucine
                      foreach (var item in eachProperty.Value)
                      {
                         // UnpackLocalisedObject(item as JObject, nextKey + "[");
-                        keyBuilder.WithArray();
-                        UnpackLocalisedObject(item as JObject, keyBuilder.Key);
+                        idBuilder.WithArray();
+                        UnpackLocalisedObject(item as JObject, idBuilder.Key);
                     }
                  }
 
@@ -131,14 +131,10 @@ namespace Assets.Core.Fucine
                  {
                      if (eachProperty.Key != "id")
                      {
-                         //string leafKey = $"{nextKey}{eachProperty.Key}";
 
-                         //LocalisedValuesData.Add(leafKey, eachProperty.Value.ToString());
-                         //Debug.Log(leafKey + ": " + eachProperty.Value.ToString());
-
-                         keyBuilder.WithLeaf(eachProperty.Key);
-                        LocalisedValuesData.Add(keyBuilder.Key, eachProperty.Value.ToString());
-                        Debug.Log(keyBuilder.Key + ": " + eachProperty.Value.ToString());
+                         idBuilder.WithLeaf(eachProperty.Key);
+                        LocalisedValuesData.Add(idBuilder.Key, eachProperty.Value.ToString());
+                      //  Debug.Log(idBuilder.Key + ": " + eachProperty.Value.ToString());
 
                     }
                 }

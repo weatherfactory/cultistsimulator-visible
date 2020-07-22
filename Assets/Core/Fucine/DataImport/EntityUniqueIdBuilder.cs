@@ -7,11 +7,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Assets.Core.Fucine.DataImport
 {
-    public class LocHashKeyBuilder
+    public class EntityUniqueIdBuilder
     {
         private StringBuilder nextKey;
 
-        public LocHashKeyBuilder(string currentKey,string id)
+        public EntityUniqueIdBuilder(string currentKey,string id)
         {
             nextKey=new StringBuilder(currentKey);
             nextKey = nextKey.Append(id + "|".ToLower());

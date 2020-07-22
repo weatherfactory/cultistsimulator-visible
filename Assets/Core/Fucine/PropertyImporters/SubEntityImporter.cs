@@ -20,7 +20,9 @@ namespace Assets.Core.Fucine
             if (hsubEntityHashtable==null)
             {
                 Type type = propertyToValidate.ThisPropInfo.PropertyType;
-                subEntity = FactoryInstantiator.CreateEntity(type, new EntityData(), log);
+                subEntity = FactoryInstantiator.CreateObjectWithDefaultConstructor(type) as IEntityWithId;
+
+                //subEntity = FactoryInstantiator.CreateEntity(type, new EntityData(), log);
                 propertyToValidate.SetViaFastInvoke(entity, subEntity);
                 return false;
             }
