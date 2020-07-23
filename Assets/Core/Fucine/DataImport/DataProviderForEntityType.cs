@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core.Fucine.DataImport;
-using Boo.Lang;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Noon;
@@ -20,7 +19,7 @@ namespace Assets.Core.Fucine
 
         public readonly string EntityFolderName;
         private readonly ContentImportLog _log;
-        public ArrayList CoreData { get; set; }
+        public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedValuesData { get; set; }
         public string BaseCulture { get; } = "en";
         public string CurrentCulture { get; set; }
@@ -37,7 +36,7 @@ namespace Assets.Core.Fucine
             EntityFolderName = entityFolderName; //
             _log = log;
             this.CurrentCulture = currentCulture;
-            CoreData = new ArrayList();
+            Entities = new List<EntityData>();
             LocalisedValuesData = new Dictionary<string, string>();
         }
 
@@ -57,7 +56,7 @@ namespace Assets.Core.Fucine
 
 
             var contentImportForMods = new ContentImportForMods();
-            contentImportForMods.ProcessContentItemsWithMods(this.CoreData, EntityFolderName);
+            contentImportForMods.ProcessContentItemsWithMods(new ArrayList(this.Entities), EntityFolderName);
         }
 
         private void GetLocDataForContentType(string contentFolder)
@@ -157,7 +156,7 @@ namespace Assets.Core.Fucine
                         var entityData = new EntityData(eachObjectHashtable);
                         //  eachObjectHashtable.Add(NoonConstants.UID, entityBuilder.UniqueId);
 
-                        CoreData.Add(entityData);
+                        Entities.Add(entityData);
                     }
                 }
                 catch (Exception e)

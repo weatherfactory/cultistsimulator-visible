@@ -68,7 +68,7 @@ public class CompendiumLoader
                 dataProviderForEntityType.LoadEntityData();
 
 
-                foreach (EntityData entityData in dataProviderForEntityType.CoreData)
+                foreach (EntityData entityData in dataProviderForEntityType.Entities)
                 {
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
