@@ -83,13 +83,26 @@ namespace Assets.Core.Fucine
                             .First(); //there should be exactly one property, which contains all the relevant entities
                     var containerBuilder = new EntityUniqueIdBuilder(containerProperty);
 
+                    var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
-                    foreach (var eachObject in containerProperty)
+
+                    foreach (var eachObject in topLevelArrayList)
                     {
+                        var eachObjectHashtable = new Hashtable();
 
-                        RegisterLocalisedObject(eachObject as JObject, containerBuilder);
+                        var entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
+
+
+                        foreach (var eachProperty in ((JObject) eachObject).Properties())
+                        {
+                            var propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
+
+                         RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+
+
+                        }
+
                     }
-
                 }
                 catch (Exception e)
                 {
@@ -99,6 +112,48 @@ namespace Assets.Core.Fucine
 
             }
 
+        }
+
+        private void RegisterLocalisedValues(JToken jtoken, EntityUniqueIdBuilder idBuilder)
+        {
+  
+
+            if (jtoken.Type == JTokenType.Object) {
+
+                EntityUniqueIdBuilder subObjectBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+
+                foreach (JProperty property in ((JObject)jtoken).Properties())
+                {
+                    RegisterLocalisedValues(property, subObjectBuilder);
+
+                }
+            }
+
+            else if (jtoken.Type == JTokenType.Array)
+            {
+
+                EntityUniqueIdBuilder arrayBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+
+                foreach (var item in ((JArray)jtoken))
+                {
+                    RegisterLocalisedValues(item, arrayBuilder);
+                }
+            }
+
+            else if(jtoken.Type == JTokenType.String)
+            {
+                EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+
+              NoonUtility.Log(propertyBuilder.UniqueId + ": " + ((JProperty)jtoken).Value);
+
+            }
+
+            else
+
+            {
+                throw new ApplicationException("Unexpected jtoken type for localised data: " + jtoken.Type);
+            }
+        
         }
 
 
@@ -168,38 +223,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void RegisterLocalisedObject(JObject jObject, EntityUniqueIdBuilder idBuilder)
-        {
-           foreach (var eachProperty in jObject)
-           {
-         
-               if (eachProperty.Value.Type == JTokenType.Object)
-               {
-
-                   RegisterLocalisedObject(eachProperty.Value as JObject, idBuilder);
-               }
-               else if (eachProperty.Value.Type == JTokenType.Array)
-               {
-                   foreach (var item in eachProperty.Value)
-                   {
-                       RegisterLocalisedObject(item as JObject, idBuilder);
-                   }
-               }
-
-               else if (eachProperty.Value.Type == JTokenType.String)
-               {
-                   LocalisedValuesData.Add(idBuilder.UniqueId, eachProperty.Value.ToString());
-                        
-               }
-
-
-               else
-
-               {
-                   throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
-               }
-           }
-        }
+      
 
 
         private object UnpackToken(JToken jToken, EntityUniqueIdBuilder idBuilder)
