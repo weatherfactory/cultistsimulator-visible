@@ -13,18 +13,7 @@ namespace Assets.Core.Entities
     [FucineImportable("verbs")]
     public class BasicVerb: AbstractEntity<BasicVerb>,IVerb, IEntityWithId
     {
-        private string _id;
 
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
 
 
 

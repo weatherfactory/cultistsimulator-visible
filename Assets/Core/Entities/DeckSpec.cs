@@ -52,19 +52,6 @@ namespace Assets.Core.Entities
     [FucineImportable("decks")]
  public class DeckSpec : AbstractEntity<DeckSpec>, IDeckSpec,IEntityWithId
     {
-        private string _id;
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
-
 
         [FucineValue("")]
         public string DefaultCard { get; set; }

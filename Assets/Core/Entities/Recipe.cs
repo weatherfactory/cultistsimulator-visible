@@ -14,18 +14,6 @@ namespace Assets.Core.Entities
     [FucineImportable("recipes")]
     public class Recipe : AbstractEntity<Recipe>, IEntityWithId
     {
-        private string _id;
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
 
         [FucineValue("x")]
         public string ActionId { get; set; }

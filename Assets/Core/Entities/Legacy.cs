@@ -19,18 +19,6 @@ namespace Assets.Core.Entities
     [FucineImportable("legacies")]
     public class Legacy: AbstractEntity<Legacy>, IEntityWithId
     {
-        private string _id;
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
 
 
         /// <summary>

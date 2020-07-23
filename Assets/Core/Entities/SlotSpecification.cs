@@ -16,19 +16,6 @@ using Noon;
 /// </summary>
 public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
 {
-    private string _id;
-
-    [FucineId]
-    public string Id
-    {
-        get => _id;
-    }
-
-    public void SetId(string id)
-    {
-        _id = id;
-    }
-
 
     [FucineValue(DefaultValue = "", Localise = true)]
     public string Label { get; set; }

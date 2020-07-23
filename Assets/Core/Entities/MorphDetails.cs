@@ -17,19 +17,6 @@ namespace Assets.Core.Entities
     public class MorphDetails : AbstractEntity<MorphDetails>, IEntityWithId,IQuickSpecEntity
     {
 
-        private string _id;
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
-
 
         [FucineValue(100)]
         public int Chance { get; private set; }

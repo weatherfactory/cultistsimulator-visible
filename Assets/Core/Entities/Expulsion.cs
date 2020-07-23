@@ -9,12 +9,6 @@ namespace Assets.Core.Entities
 {
     public class Expulsion: AbstractEntity<Expulsion>,IEntityWithId
     {
-        public string Id { get; private set; }
-
-        public void SetId(string id)
-        {
-            Id = id;
-        }
 
         [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Filter { get; set; }

@@ -10,18 +10,6 @@ namespace Assets.Core.Entities
 {
     public class LinkedRecipeDetails : AbstractEntity<LinkedRecipeDetails>, IEntityWithId
     {
-        private string _id;
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
 
 
         [FucineValue(100)]

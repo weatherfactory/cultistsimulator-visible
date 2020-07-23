@@ -16,19 +16,6 @@ namespace Assets.Core.Entities
     [FucineImportable("elements")]
     public class Element: AbstractEntity<Element>, IEntityWithId
     {
-        private string _id;
-
-
-        [FucineId]
-        public string Id
-        {
-            get => _id;
-        }
-
-        public void SetId(string id)
-        {
-            _id = id;
-        }
 
         [FucineValue(DefaultValue = "", Localise = true)]
         public string Label { get; set; }
