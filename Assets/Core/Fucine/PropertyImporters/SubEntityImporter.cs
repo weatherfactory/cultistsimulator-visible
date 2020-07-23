@@ -13,11 +13,11 @@ namespace Assets.Core.Fucine
         public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> propertyToValidate, EntityData entityData, ContentImportLog log)
         {
             string entityPropertyName = propertyToValidate.LowerCaseName;
-            var hsubEntityHashtable = entityData.CoreData.GetHashtable(entityPropertyName);
+           EntityData subEntityData = entityData.ValuesTable[entityPropertyName] as EntityData;
             IEntityWithId subEntity;
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            if (hsubEntityHashtable==null)
+            if (subEntityData == null)
             {
                 Type type = propertyToValidate.ThisPropInfo.PropertyType;
                 subEntity = FactoryInstantiator.CreateObjectWithDefaultConstructor(type) as IEntityWithId;
@@ -29,7 +29,7 @@ namespace Assets.Core.Fucine
 
             if(propertyToValidate.FucineAttribute is FucineSubEntity subEntityAttribute)
             {
-                subEntity = FactoryInstantiator.CreateEntity(subEntityAttribute.ObjectType, new EntityData( hsubEntityHashtable), log);
+                subEntity = FactoryInstantiator.CreateEntity(subEntityAttribute.ObjectType, subEntityData, log);
                 propertyToValidate.SetViaFastInvoke(entity, subEntity);
             }
             else

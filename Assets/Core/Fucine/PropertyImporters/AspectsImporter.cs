@@ -14,8 +14,8 @@ namespace Assets.Core.Fucine
         public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, EntityData entityData, ContentImportLog log)
         {
             //If no value can be found, initialise the property with a default instance of the correct type, then return
-            var htEntries = entityData.CoreData.GetHashtable(_cachedFucinePropertyToPopulate.LowerCaseName);
-            if (htEntries==null)
+            var aspectsEntity = entityData.ValuesTable[_cachedFucinePropertyToPopulate.LowerCaseName] as EntityData;
+            if (aspectsEntity == null)
             {
                 _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, new AspectsDictionary());
                 return false;
@@ -26,15 +26,15 @@ namespace Assets.Core.Fucine
             var aspectsAttribute = _cachedFucinePropertyToPopulate.FucineAttribute as FucineAspects;
             var entityProperties =TypeInfoCache<T>.GetCachedFucinePropertiesForType();
 
-            foreach (string k in htEntries.Keys)
+            foreach (string k in aspectsEntity.ValuesTable.Keys)
             {
-                aspects.Add(k, Convert.ToInt32(htEntries[k]));
+                aspects.Add(k, Convert.ToInt32(aspectsEntity.ValuesTable[k]));
             }
 
             _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, aspects);
 
             if (aspectsAttribute != null)
-                ValidateKeysMustExistIn(entity, _cachedFucinePropertyToPopulate, aspectsAttribute.KeyMustExistIn, entityProperties, htEntries.Keys, log);
+                ValidateKeysMustExistIn(entity, _cachedFucinePropertyToPopulate, aspectsAttribute.KeyMustExistIn, entityProperties, aspectsEntity.ValuesTable.Keys, log);
 
 
             return true;

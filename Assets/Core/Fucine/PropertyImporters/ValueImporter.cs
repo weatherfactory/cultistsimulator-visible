@@ -14,9 +14,9 @@ namespace Assets.Core.Fucine
             object valueInData;
 
             if (_cachedFucinePropertyToPopulate.FucineAttribute.Localise)
-                valueInData = entityData.CoreData[_cachedFucinePropertyToPopulate.LowerCaseName];
+                valueInData = entityData.ValuesTable[_cachedFucinePropertyToPopulate.LowerCaseName];
             else
-                 valueInData = entityData.CoreData[_cachedFucinePropertyToPopulate.LowerCaseName];
+                 valueInData = entityData.ValuesTable[_cachedFucinePropertyToPopulate.LowerCaseName];
 
             if (valueInData==null)
             {

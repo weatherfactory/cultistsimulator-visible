@@ -100,8 +100,6 @@ namespace Assets.Core.Fucine
 
         }
 
-     
-
 
         public void GetCoreDataForContentType(string contentFolder)
         {
@@ -111,42 +109,38 @@ namespace Assets.Core.Fucine
             else
                 _log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
 
-            
 
             foreach (var contentFile in coreContentFiles)
             {
                 //json string for each content file - in English initially
-                string json = File.ReadAllText(contentFile);
+                var json = File.ReadAllText(contentFile);
 
                 try
                 {
+                    var topLevelObject = JObject.Parse(json);
+                    var containerProperty =
+                        topLevelObject.Properties()
+                            .First(); //there should be exactly one property, which contains all the relevant entities
+                    var containerBuilder = new EntityUniqueIdBuilder(containerProperty);
 
-                    JObject topLevelObject =JObject.Parse(json);
-                    JProperty containerProperty = topLevelObject.Properties().First(); //there should be exactly one property, which contains all the relevant entities
-                  EntityUniqueIdBuilder containerBuilder = new EntityUniqueIdBuilder(containerProperty);
+
+                    var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
 
-                    JArray topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
-                  
-                    
                     foreach (var eachObject in topLevelArrayList)
-                  {
-                      Hashtable eachObjectHashtable = new Hashtable();
+                    {
+                        var eachObjectHashtable = new Hashtable();
 
-                        EntityUniqueIdBuilder entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
+                        var entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
 
-                       
 
-                      foreach (var eachProperty in ((JObject) eachObject).Properties())
-                      {
+                        foreach (var eachProperty in ((JObject) eachObject).Properties())
+                        {
+                            var propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
 
-                            EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
+                            eachObjectHashtable.Add(eachProperty.Name.ToLower(),
+                                UnpackToken(eachProperty.Value, propertyBuilder));
 
-                            NoonUtility.Log(propertyBuilder.UniqueId);
-
-                            eachObjectHashtable.Add(eachProperty.Name.ToLower(), UnpackToken(eachProperty.Value, propertyBuilder));
-
-     
 
                             //the fundamental problem is still: we want to refer to entities by their id, not their index.
                             //if we get the id, we can use that as the referrer in a path.
@@ -158,24 +152,19 @@ namespace Assets.Core.Fucine
                             //{"foo":{anotherproperty:3}
                             //however, we do need the ID from each previous stage, too.
                             //We could get that via Parent, but then we might as well pass down the IDbuilder
-
                         }
 
-                      EntityData entityData = new EntityData(eachObjectHashtable);
+                        var entityData = new EntityData(eachObjectHashtable);
+                        //  eachObjectHashtable.Add(NoonConstants.UID, entityBuilder.UniqueId);
 
-                      CoreData.Add(entityData);
-                  } 
-                    
-                    
+                        CoreData.Add(entityData);
+                    }
                 }
                 catch (Exception e)
                 {
                     _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                 }
-
-
             }
-
         }
 
 
@@ -238,14 +227,18 @@ namespace Assets.Core.Fucine
 
                 var subObjectBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
 
+              //  subObjectH.Add(NoonConstants.UID, subObjectBuilder.UniqueId);
+
                 foreach (var eachKVP in (JObject)jToken)
                 {
                     //add each property to that hashtable
                     subObjectH.Add(eachKVP.Key.ToLower(), UnpackToken(eachKVP.Value, subObjectBuilder));
                 }
 
-                //return the hashtable so it can be added in its turn, with the unpacked object
-                return subObjectH;
+                
+                EntityData subEntityData=new EntityData(subObjectH);
+                //return the entityData so it can be added in its turn, with the unpacked object
+                return subEntityData;
             }
 
             else

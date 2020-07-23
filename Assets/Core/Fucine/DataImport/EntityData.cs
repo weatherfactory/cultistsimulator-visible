@@ -16,31 +16,35 @@ namespace Assets.Core.Fucine.DataImport
         {
             get
             {
-                var id= CoreData[NoonConstants.ID];
+                var id= ValuesTable[NoonConstants.ID];
                 return
                     id?.ToString();
             }
         }
 
-        //This should contain Hashtables, ArrayLists and strings all the way down
-        public Hashtable CoreData { get; set; }
-        public Hashtable LocalisedData { get; set; }
+        public string UniqueId
+        {
+            get
+            {
+                var uid = ValuesTable["uid"];
+                return
+                    uid?.ToString();
+            }
+        }
+
+
+        public Hashtable ValuesTable { get; set; }
 
         public EntityData()
         {
-            CoreData = new Hashtable();
+            ValuesTable = new Hashtable();
         }
 
         public EntityData(Hashtable data)
         {
-            CoreData = data;
+            ValuesTable = data;
         }
 
 
-        public EntityData(Hashtable data, Hashtable localisedData)
-        {
-            CoreData = data;
-            LocalisedData = localisedData;
-        }
     }
 }

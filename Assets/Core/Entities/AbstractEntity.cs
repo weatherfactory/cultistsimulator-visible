@@ -112,13 +112,13 @@ namespace Assets.Core.Fucine
                     var importer = cachedProperty.GetImporterForProperty();
                     bool imported = importer.TryImportProperty<T>(this as T, cachedProperty, importDataForEntity, log);
                     if (imported)
-                        importDataForEntity.CoreData.Remove(cachedProperty.LowerCaseName);
+                        importDataForEntity.ValuesTable.Remove(cachedProperty.LowerCaseName);
                 }
 
 
-                foreach (var k in importDataForEntity.CoreData.Keys)
+                foreach (var k in importDataForEntity.ValuesTable.Keys)
                 {
-                    PushUnknownProperty(k, importDataForEntity.CoreData[k]);
+                    PushUnknownProperty(k, importDataForEntity.ValuesTable[k]);
                 }
             }
             catch (Exception e)

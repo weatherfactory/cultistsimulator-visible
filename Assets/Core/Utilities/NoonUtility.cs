@@ -13,6 +13,7 @@ namespace Noon
     {
 
         public const string ID = "id";
+        public const string UID = "uid";
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";

@@ -15,7 +15,7 @@ namespace Assets.Core.Fucine
         public override bool TryImportProperty<T>(T entity, CachedFucineProperty<T> _cachedFucinePropertyToPopulate, EntityData entityData, ContentImportLog log)
         {
 
-            ArrayList al = entityData.CoreData.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);
+            ArrayList al = entityData.ValuesTable.GetArrayList(_cachedFucinePropertyToPopulate.LowerCaseName);
 
             //If no value can be found, initialise the property with a default instance of the correct type, then return
             if (al==null)
@@ -36,9 +36,9 @@ namespace Assets.Core.Fucine
             foreach (var o in al)
             {
 
-                if (o is Hashtable h) //if the arraylist contains hashtables, then it contains subentities / emanations
+                if (o is EntityData e) //if the arraylist contains hashtables, then it contains subentities / emanations
                 {
-                    var subEntity = FactoryInstantiator.CreateEntity(listMemberType, new EntityData(h), log);
+                    var subEntity = FactoryInstantiator.CreateEntity(listMemberType, e, log);
                     list.Add(subEntity);
                 }
                 else
