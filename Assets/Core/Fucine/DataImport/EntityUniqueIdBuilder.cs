@@ -4,47 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Noon;
 
 namespace Assets.Core.Fucine.DataImport
 {
     public class EntityUniqueIdBuilder
     {
-        private StringBuilder uniqueId;
+        private readonly StringBuilder _uniqueId=new StringBuilder();
+        public string UniqueId => _uniqueId.ToString();
 
-        public string BuiltId => uniqueId.ToString();
 
-
-        public EntityUniqueIdBuilder(string startingId)
+        public EntityUniqueIdBuilder(JToken forToken)
         {
-            uniqueId = new StringBuilder(startingId);
-        }
+           _uniqueId=new StringBuilder(BuildIdForToken(forToken));
 
-        public EntityUniqueIdBuilder(EntityUniqueIdBuilder basedOn)
-        {
-            uniqueId = new StringBuilder(basedOn.BuiltId);
         }
 
 
-
-
-
-        public void WithObjectProperty(string containerId, string itemId)
+        public EntityUniqueIdBuilder(JToken forToken, EntityUniqueIdBuilder soFar)
         {
-            uniqueId = uniqueId.Append($"::{containerId}[{itemId}]");
+            _uniqueId = new StringBuilder(soFar.UniqueId);
+            _uniqueId.Append(BuildIdForToken(forToken));
+
         }
 
-
-
-        public void WithArray(string arrayId)
+        private string BuildIdForToken(JToken forToken)
         {
-            uniqueId.Append($">{arrayId}>");
+            string buildingId = string.Empty; 
+
+            //if this token is a value, use the key from its immediate ancestor
+            if (forToken is JProperty propertyToken)
+            {
+                buildingId=$".{propertyToken.Name}";
+            }
+
+            else if (forToken is JObject objectToken)
+            {
+                //if this token has an id, use that with ">" notation
+                var tokenId = objectToken[NoonConstants.ID];
+                if (tokenId?.Type == JTokenType.String)
+                {
+                    buildingId = $"\"{tokenId}\"";
+                }
+            }
+
+
+
+            return buildingId;
         }
 
-
-        public void WithLeaf(string propertyId)
-        {
-            uniqueId.Append("." + propertyId);
-        }
 
     }
 }

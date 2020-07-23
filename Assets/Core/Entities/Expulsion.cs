@@ -16,7 +16,6 @@ namespace Assets.Core.Entities
             Id = id;
         }
 
-
         [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Filter { get; set; }
         
@@ -29,7 +28,10 @@ namespace Assets.Core.Entities
         }
 
         public Expulsion()
-        {}
+        {
+            Limit = 0; //initialised as a blank/default, not imported
+            Filter = new AspectsDictionary();
+        }
 
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)

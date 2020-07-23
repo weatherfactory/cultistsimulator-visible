@@ -12,6 +12,7 @@ namespace Assets.Core.Interfaces
     public interface  IEntityWithId
     {
         string Id { get; }
+        string UniqueId { get; }
         void SetId(string id);
     }
 }

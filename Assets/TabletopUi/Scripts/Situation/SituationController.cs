@@ -318,7 +318,7 @@ namespace Assets.TabletopUi {
 
                 List<IElementStack> stacksToAddToNewSituation=new List<IElementStack>();
                 //if there's an expulsion
-                if (command.Expulsion != null)
+                if (command.Expulsion.Limit>0)
                 {
                     //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
                     AspectMatchFilter filter = new AspectMatchFilter(command.Expulsion.Filter);

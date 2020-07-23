@@ -15,6 +15,7 @@ namespace Assets.Core.Fucine
 
     public abstract class AbstractEntity<T>: IEntity where T : AbstractEntity<T>
     {
+        public string UniqueId { get; set; }
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();
 

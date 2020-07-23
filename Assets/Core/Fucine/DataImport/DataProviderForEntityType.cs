@@ -85,9 +85,8 @@ namespace Assets.Core.Fucine
                 
                     foreach (var eachObject in arrayOfEntitiesOfType)
                     {
-                        var idBuilder = new EntityUniqueIdBuilder(String.Empty);
-                        idBuilder.WithObjectProperty(EntityFolderName, (string)eachObject[NoonConstants.ID]);
-                        UnpackLocalisedObject(eachObject as JObject, idBuilder.BuiltId);
+
+                        UnpackLocalisedObject(eachObject as JObject, new EntityUniqueIdBuilder(eachObject));
                     }
 
                 }
@@ -122,21 +121,45 @@ namespace Assets.Core.Fucine
                 try
                 {
 
-                  JToken topLevelObject=JObject.Parse(json);
+                    JObject topLevelObject =JObject.Parse(json);
+                    JProperty containerProperty = topLevelObject.Properties().First(); //there should be exactly one property, which contains all the relevant entities
+                  EntityUniqueIdBuilder containerBuilder = new EntityUniqueIdBuilder(containerProperty);
 
-                  JArray topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
-
+                    JArray topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+                  
+                    
                     foreach (var eachObject in topLevelArrayList)
                   {
-
                       Hashtable eachObjectHashtable = new Hashtable();
-                      EntityUniqueIdBuilder idBuilder = new EntityUniqueIdBuilder(String.Empty);
-                      idBuilder.WithObjectProperty(EntityFolderName, (string)eachObject[NoonConstants.ID]);
 
-                        foreach (var eachToken in (JObject)eachObject)
-                            eachObjectHashtable.Add(eachToken.Key, UnpackToken(eachToken.Value,idBuilder));
-//
+                        EntityUniqueIdBuilder entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
+
+                       
+
+                      foreach (var eachProperty in ((JObject) eachObject).Properties())
+                      {
+
+                            EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
+
+                            NoonUtility.Log(propertyBuilder.UniqueId);
+
+                            eachObjectHashtable.Add(eachProperty.Name.ToLower(), UnpackToken(eachProperty.Value, propertyBuilder));
+
+     
+
+                            //the fundamental problem is still: we want to refer to entities by their id, not their index.
+                            //if we get the id, we can use that as the referrer in a path.
+                            //BUT it's not actually the referrer in a path. We don't use ID as the key in a hashtable: we have a series of arrays in which
+                            //ID is used internally as a property. This is really the whole problem with the whole thing, but I don't want to change it now.
+                            //or to put it another way, we sometimes move from 
+                            //[{id:"foo",anotherproperty:3}]
+                            //to
+                            //{"foo":{anotherproperty:3}
+                            //however, we do need the ID from each previous stage, too.
+                            //We could get that via Parent, but then we might as well pass down the IDbuilder
+
+                        }
 
                       EntityData entityData = new EntityData(eachObjectHashtable);
 
@@ -156,43 +179,37 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void UnpackLocalisedObject(JObject jObject, string currentUniqueKey)
+        private void UnpackLocalisedObject(JObject jObject, EntityUniqueIdBuilder idBuilder)
         {
            foreach (var eachProperty in jObject)
-            {
+           {
          
-                if (eachProperty.Value.Type == JTokenType.Object)
-                {
-                    var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
-                    idBuilder.WithObjectProperty(eachProperty.Key, (string)jObject[NoonConstants.ID]);
+               if (eachProperty.Value.Type == JTokenType.Object)
+               {
 
-                    UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder.BuiltId);
-                }
-                else if (eachProperty.Value.Type == JTokenType.Array)
-                {
-                    foreach (var item in eachProperty.Value)
-                    {
-                        var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
-                        idBuilder.WithArray(eachProperty.Key);
-                        UnpackLocalisedObject(item as JObject, idBuilder.BuiltId);
-                    }
-                }
+                   UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder);
+               }
+               else if (eachProperty.Value.Type == JTokenType.Array)
+               {
+                   foreach (var item in eachProperty.Value)
+                   {
+                       UnpackLocalisedObject(item as JObject, idBuilder);
+                   }
+               }
 
-                else if (eachProperty.Value.Type == JTokenType.String)
-                {
-                        var idBuilder = new EntityUniqueIdBuilder(currentUniqueKey);
-                        idBuilder.WithLeaf(eachProperty.Key);
-                      //  LocalisedValuesData.Add(idBuilder.BuiltId, eachProperty.Value.ToString());
-                        NoonUtility.Log(idBuilder.BuiltId + ": " + eachProperty.Value);
-                }
+               else if (eachProperty.Value.Type == JTokenType.String)
+               {
+                   LocalisedValuesData.Add(idBuilder.UniqueId, eachProperty.Value.ToString());
+                        
+               }
 
 
-                else
+               else
 
-                {
-                    throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
-                }
-            }
+               {
+                   throw new ApplicationException("Unexpected jtoken type for localised data: " + jObject.Type);
+               }
+           }
         }
 
 
@@ -200,12 +217,15 @@ namespace Assets.Core.Fucine
         {
 
 
-
             if (jToken.Type == JTokenType.Array)
             {
                 var nextList = new ArrayList();
                 foreach (var eachItem in (JArray)jToken)
-                    nextList.Add(UnpackToken(eachItem, idBuilder));
+                {
+                    var nextBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
+                    nextList.Add(UnpackToken(eachItem, nextBuilder));
+                    
+                }
 
                 return nextList;
 
@@ -213,23 +233,25 @@ namespace Assets.Core.Fucine
 
             else if (jToken.Type == JTokenType.Object)
             {
-                var nextH = new Hashtable();
+                //create a hashtable to represent the object
+                var subObjectH = new Hashtable();
 
-                var thisBuilder = new EntityUniqueIdBuilder(idBuilder);
-
-             //   thisBuilder.WithObjectProperty(id, (string)jToken[NoonConstants.ID]); ;
+                var subObjectBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
 
                 foreach (var eachKVP in (JObject)jToken)
                 {
-                    nextH.Add(eachKVP.Key.ToLower(), UnpackToken(eachKVP.Value,idBuilder)); //SOME SORT OF ISSUE AROUND THIS I CAN'T WORK OUT
+                    //add each property to that hashtable
+                    subObjectH.Add(eachKVP.Key.ToLower(), UnpackToken(eachKVP.Value, subObjectBuilder));
                 }
 
-                return nextH;
-
+                //return the hashtable so it can be added in its turn, with the unpacked object
+                return subObjectH;
             }
 
             else
             {
+
+
                 if (jToken.Type == JTokenType.String)
                 {
                    return jToken.ToString();
