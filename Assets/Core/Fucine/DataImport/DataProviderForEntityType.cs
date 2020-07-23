@@ -61,7 +61,7 @@ namespace Assets.Core.Fucine
 
         private void GetLocDataForContentType(string contentFolder)
         {
-            return;
+     
             string locFolder = contentFolder.Replace("core","core_" + LanguageTable.targetCulture);
 
             var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
@@ -77,15 +77,17 @@ namespace Assets.Core.Fucine
                 try
                 {
 
-                    JToken fileLevelObject = JObject.Parse(json);
+                    var topLevelObject = JObject.Parse(json);
+                    var containerProperty =
+                        topLevelObject.Properties()
+                            .First(); //there should be exactly one property, which contains all the relevant entities
+                    var containerBuilder = new EntityUniqueIdBuilder(containerProperty);
 
-                    JArray arrayOfEntitiesOfType = (JArray)fileLevelObject[EntityFolderName];
 
-                
-                    foreach (var eachObject in arrayOfEntitiesOfType)
+                    foreach (var eachObject in containerProperty)
                     {
 
-                        UnpackLocalisedObject(eachObject as JObject, new EntityUniqueIdBuilder(eachObject));
+                        RegisterLocalisedObject(eachObject as JObject, containerBuilder);
                     }
 
                 }
@@ -153,8 +155,7 @@ namespace Assets.Core.Fucine
                             //We could get that via Parent, but then we might as well pass down the IDbuilder
                         }
 
-                        var entityData = new EntityData(eachObjectHashtable);
-                        //  eachObjectHashtable.Add(NoonConstants.UID, entityBuilder.UniqueId);
+                        var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
 
                         Entities.Add(entityData);
                     }
@@ -167,7 +168,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        private void UnpackLocalisedObject(JObject jObject, EntityUniqueIdBuilder idBuilder)
+        private void RegisterLocalisedObject(JObject jObject, EntityUniqueIdBuilder idBuilder)
         {
            foreach (var eachProperty in jObject)
            {
@@ -175,13 +176,13 @@ namespace Assets.Core.Fucine
                if (eachProperty.Value.Type == JTokenType.Object)
                {
 
-                   UnpackLocalisedObject(eachProperty.Value as JObject, idBuilder);
+                   RegisterLocalisedObject(eachProperty.Value as JObject, idBuilder);
                }
                else if (eachProperty.Value.Type == JTokenType.Array)
                {
                    foreach (var item in eachProperty.Value)
                    {
-                       UnpackLocalisedObject(item as JObject, idBuilder);
+                       RegisterLocalisedObject(item as JObject, idBuilder);
                    }
                }
 
@@ -226,7 +227,6 @@ namespace Assets.Core.Fucine
 
                 var subObjectBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
 
-              //  subObjectH.Add(NoonConstants.UID, subObjectBuilder.UniqueId);
 
                 foreach (var eachKVP in (JObject)jToken)
                 {
@@ -235,7 +235,7 @@ namespace Assets.Core.Fucine
                 }
 
                 
-                EntityData subEntityData=new EntityData(subObjectH);
+                EntityData subEntityData=new EntityData(subObjectBuilder.UniqueId,subObjectH);
                 //return the entityData so it can be added in its turn, with the unpacked object
                 return subEntityData;
             }

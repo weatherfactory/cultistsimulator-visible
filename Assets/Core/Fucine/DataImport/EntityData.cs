@@ -11,7 +11,8 @@ namespace Assets.Core.Fucine.DataImport
 {
    public class EntityData
     {
-        
+        private readonly string _uniqueId;
+
         public string Id
         {
             get
@@ -24,12 +25,7 @@ namespace Assets.Core.Fucine.DataImport
 
         public string UniqueId
         {
-            get
-            {
-                var uid = ValuesTable["uid"];
-                return
-                    uid?.ToString();
-            }
+            get => _uniqueId;
         }
 
 
@@ -42,6 +38,12 @@ namespace Assets.Core.Fucine.DataImport
 
         public EntityData(Hashtable data)
         {
+            ValuesTable = data;
+        }
+
+        public EntityData(string uniqueId,Hashtable data)
+        {
+            _uniqueId = uniqueId;
             ValuesTable = data;
         }
 

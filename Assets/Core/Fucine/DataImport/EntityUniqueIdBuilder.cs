@@ -10,7 +10,7 @@ namespace Assets.Core.Fucine.DataImport
 {
     public class EntityUniqueIdBuilder
     {
-        private readonly StringBuilder _uniqueId=new StringBuilder();
+        private readonly StringBuilder _uniqueId;
         public string UniqueId => _uniqueId.ToString();
 
 
@@ -44,7 +44,7 @@ namespace Assets.Core.Fucine.DataImport
                 var tokenId = objectToken[NoonConstants.ID];
                 if (tokenId?.Type == JTokenType.String)
                 {
-                    buildingId = $"\"{tokenId}\"";
+                    buildingId = $"'{tokenId}'";
                 }
             }
 
