@@ -65,7 +65,7 @@ public class CompendiumLoader
             {
                  DataProviderForEntityType dataProviderForEntityType = new DataProviderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
-                dataProviderForEntityType.LoadEntityData();
+                dataProviderForEntityType.LoadEntityDataFromJson();
 
 
                 foreach (EntityData entityData in dataProviderForEntityType.Entities)

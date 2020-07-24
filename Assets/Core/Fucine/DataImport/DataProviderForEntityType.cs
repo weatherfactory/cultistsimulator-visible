@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Assets.Core.Fucine.DataImport;
+using Newtonsoft.Json.Linq;
+using Noon;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.Core.Fucine.DataImport;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Noon;
-using OrbCreationExtensions;
 using UnityEngine;
 
 namespace Assets.Core.Fucine
@@ -20,7 +18,7 @@ namespace Assets.Core.Fucine
         public readonly string EntityFolderName;
         private readonly ContentImportLog _log;
         public List<EntityData> Entities { get; set; }
-        public Dictionary<string,string> LocalisedValuesData { get; set; }
+        public Dictionary<string,string> LocalisedTextValues { get; set; }
         public string BaseCulture { get; } = "en";
         public string CurrentCulture { get; set; }
 
@@ -37,11 +35,11 @@ namespace Assets.Core.Fucine
             _log = log;
             this.CurrentCulture = currentCulture;
             Entities = new List<EntityData>();
-            LocalisedValuesData = new Dictionary<string, string>();
+            LocalisedTextValues = new Dictionary<string, string>();
         }
 
 
-        public void LoadEntityData()
+        public void LoadEntityDataFromJson()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
 
@@ -81,18 +79,18 @@ namespace Assets.Core.Fucine
                     var containerProperty =
                         topLevelObject.Properties()
                             .First(); //there should be exactly one property, which contains all the relevant entities
-                    var containerBuilder = new EntityUniqueIdBuilder(containerProperty);
+                    var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
                     var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
 
                     foreach (var eachObject in topLevelArrayList)
                     {
-                        var entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
+                        var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
                         foreach (var eachProperty in ((JObject) eachObject).Properties())
                         {
-                            var propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
+                            var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
 
                          RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
 
@@ -111,17 +109,17 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void RegisterLocalisedValues(JToken jtoken, EntityUniqueIdBuilder propertyNameBuilder)
+        private void RegisterLocalisedValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder)
         {
   
 
             if (jtoken.Type == JTokenType.Object) {
 
-                EntityUniqueIdBuilder subObjectBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
+                FucineUniqueIdBuilder subObjectBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
 
                 foreach (JProperty jProperty in ((JObject) jtoken).Properties())
                 {
-                    var subPropertyBuilder = new EntityUniqueIdBuilder(jProperty, subObjectBuilder);
+                    var subPropertyBuilder = new FucineUniqueIdBuilder(jProperty, subObjectBuilder);
                     RegisterLocalisedValues(jProperty.Value, subPropertyBuilder);
                 
                 }
@@ -130,7 +128,7 @@ namespace Assets.Core.Fucine
             else if (jtoken.Type == JTokenType.Array)
             {
 
-                EntityUniqueIdBuilder arrayBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
+                FucineUniqueIdBuilder arrayBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
 
                 foreach (var item in ((JArray)jtoken))
                 {
@@ -140,9 +138,9 @@ namespace Assets.Core.Fucine
 
             else if(jtoken.Type == JTokenType.String)
             {
-                EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
+                FucineUniqueIdBuilder builder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
 
-              NoonUtility.Log(propertyBuilder.UniqueId + ": " + ((string)jtoken));
+              LocalisedTextValues.Add(builder.UniqueId, ((string)jtoken));
 
             }
 
@@ -175,7 +173,7 @@ namespace Assets.Core.Fucine
                     var containerProperty =
                         topLevelObject.Properties()
                             .First(); //there should be exactly one property, which contains all the relevant entities
-                    var containerBuilder = new EntityUniqueIdBuilder(containerProperty);
+                    var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
 
                     var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
@@ -185,27 +183,13 @@ namespace Assets.Core.Fucine
                     {
                         var eachObjectHashtable = new Hashtable();
 
-                        var entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
+                        var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
 
                         foreach (var eachProperty in ((JObject) eachObject).Properties())
                         {
-                            var propertyBuilder = new EntityUniqueIdBuilder(eachProperty, entityBuilder);
-
                             eachObjectHashtable.Add(eachProperty.Name.ToLower(),
-                                UnpackToken(eachProperty.Value, propertyBuilder));
-
-
-                            //the fundamental problem is still: we want to refer to entities by their id, not their index.
-                            //if we get the id, we can use that as the referrer in a path.
-                            //BUT it's not actually the referrer in a path. We don't use ID as the key in a hashtable: we have a series of arrays in which
-                            //ID is used internally as a property. This is really the whole problem with the whole thing, but I don't want to change it now.
-                            //or to put it another way, we sometimes move from 
-                            //[{id:"foo",anotherproperty:3}]
-                            //to
-                            //{"foo":{anotherproperty:3}
-                            //however, we do need the ID from each previous stage, too.
-                            //We could get that via Parent, but then we might as well pass down the IDbuilder
+                                UnpackToken(eachProperty, entityBuilder));
                         }
 
                         var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
@@ -224,16 +208,21 @@ namespace Assets.Core.Fucine
       
 
 
-        private object UnpackToken(JToken jToken, EntityUniqueIdBuilder idBuilder)
+        private object UnpackToken(JToken jToken, FucineUniqueIdBuilder tokenIdBuilder)
         {
+            if (jToken.Type == JTokenType.Property)
+            {
+                var propertyBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
+                return UnpackToken(((JProperty) jToken).Value, propertyBuilder);
 
+            }
 
             if (jToken.Type == JTokenType.Array)
             {
                 var nextList = new ArrayList();
                 foreach (var eachItem in (JArray)jToken)
                 {
-                    var nextBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
+                    var nextBuilder = new FucineUniqueIdBuilder(jToken,tokenIdBuilder);
                     nextList.Add(UnpackToken(eachItem, nextBuilder));
                     
                 }
@@ -247,7 +236,7 @@ namespace Assets.Core.Fucine
                 //create a hashtable to represent the object
                 var subObjectH = new Hashtable();
 
-                var subObjectBuilder = new EntityUniqueIdBuilder(jToken,idBuilder);
+                var subObjectBuilder = new FucineUniqueIdBuilder(jToken,tokenIdBuilder);
 
 
                 foreach (var eachKVP in (JObject)jToken)
@@ -268,6 +257,7 @@ namespace Assets.Core.Fucine
 
                 if (jToken.Type == JTokenType.String)
                 {
+                    NoonUtility.Log(new FucineUniqueIdBuilder(jToken.Parent,tokenIdBuilder).UniqueId);
                    return jToken.ToString();
                 }
 

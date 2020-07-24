@@ -8,20 +8,24 @@ using Noon;
 
 namespace Assets.Core.Fucine.DataImport
 {
-    public class EntityUniqueIdBuilder
+    /// <summary>
+    /// determines the unique ID for an entity or property based on its position in the original data hierarchy at import.
+    /// Used to identify loc strings, but will probably be useful elsewhere too.
+    /// </summary>
+    public class FucineUniqueIdBuilder
     {
         private readonly StringBuilder _uniqueId;
         public string UniqueId => _uniqueId.ToString();
 
 
-        public EntityUniqueIdBuilder(JToken forToken)
+        public FucineUniqueIdBuilder(JToken forToken)
         {
            _uniqueId=new StringBuilder(BuildIdForToken(forToken));
 
         }
 
 
-        public EntityUniqueIdBuilder(JToken forToken, EntityUniqueIdBuilder soFar)
+        public FucineUniqueIdBuilder(JToken forToken, FucineUniqueIdBuilder soFar)
         {
             _uniqueId = new StringBuilder(soFar.UniqueId);
             _uniqueId.Append(BuildIdForToken(forToken));
