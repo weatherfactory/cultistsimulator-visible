@@ -88,10 +88,7 @@ namespace Assets.Core.Fucine
 
                     foreach (var eachObject in topLevelArrayList)
                     {
-                        var eachObjectHashtable = new Hashtable();
-
                         var entityBuilder = new EntityUniqueIdBuilder(eachObject, containerBuilder);
-
 
                         foreach (var eachProperty in ((JObject) eachObject).Properties())
                         {
@@ -114,25 +111,26 @@ namespace Assets.Core.Fucine
 
         }
 
-        private void RegisterLocalisedValues(JToken jtoken, EntityUniqueIdBuilder idBuilder)
+        private void RegisterLocalisedValues(JToken jtoken, EntityUniqueIdBuilder propertyNameBuilder)
         {
   
 
             if (jtoken.Type == JTokenType.Object) {
 
-                EntityUniqueIdBuilder subObjectBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+                EntityUniqueIdBuilder subObjectBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
 
-                foreach (JProperty property in ((JObject)jtoken).Properties())
+                foreach (JProperty jProperty in ((JObject) jtoken).Properties())
                 {
-                    RegisterLocalisedValues(property, subObjectBuilder);
-
+                    var subPropertyBuilder = new EntityUniqueIdBuilder(jProperty, subObjectBuilder);
+                    RegisterLocalisedValues(jProperty.Value, subPropertyBuilder);
+                
                 }
             }
 
             else if (jtoken.Type == JTokenType.Array)
             {
 
-                EntityUniqueIdBuilder arrayBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+                EntityUniqueIdBuilder arrayBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
 
                 foreach (var item in ((JArray)jtoken))
                 {
@@ -142,9 +140,9 @@ namespace Assets.Core.Fucine
 
             else if(jtoken.Type == JTokenType.String)
             {
-                EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(jtoken, idBuilder);
+                EntityUniqueIdBuilder propertyBuilder = new EntityUniqueIdBuilder(jtoken, propertyNameBuilder);
 
-              NoonUtility.Log(propertyBuilder.UniqueId + ": " + ((JProperty)jtoken).Value);
+              NoonUtility.Log(propertyBuilder.UniqueId + ": " + ((string)jtoken));
 
             }
 

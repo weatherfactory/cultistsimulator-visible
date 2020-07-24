@@ -44,7 +44,7 @@ namespace Assets.Core.Fucine.DataImport
                 var tokenId = objectToken[NoonConstants.ID];
                 if (tokenId?.Type == JTokenType.String)
                 {
-                    buildingId = $"'{tokenId}'";
+                    buildingId = $">[{tokenId}]";
                 }
             }
 
