@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public class DataProviderForEntityType
+    public class DataLoaderForEntityType
     {
         private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
 
@@ -26,13 +26,13 @@ namespace Assets.Core.Fucine
 
         public string GetBaseFolderForLocalisedData()
         {
-            return "core_" + CurrentCulture;
+            return NoonConstants.LOC_FOLDER_PREFIX + CurrentCulture;
         }
 
 
-        public DataProviderForEntityType(string entityFolderName, string currentCulture, ContentImportLog log)
+        public DataLoaderForEntityType(string entityFolderName, string currentCulture, ContentImportLog log)
         {
-            EntityFolderName = entityFolderName; //
+            EntityFolderName = entityFolderName;
             _log = log;
             this.CurrentCulture = currentCulture;
             Entities = new List<EntityData>();
@@ -46,22 +46,20 @@ namespace Assets.Core.Fucine
 
             if (BaseCulture != CurrentCulture)
             {
-                GetLocDataForContentType(contentFolder);
+                LoadLocDataForEntityType(contentFolder);
             }
 
-            GetCoreDataForContentType(contentFolder);
-
-
+            LoadCoreDataForEntityType(contentFolder);
 
 
             var contentImportForMods = new ContentImportForMods();
             contentImportForMods.ProcessContentItemsWithMods(new ArrayList(this.Entities), EntityFolderName);
         }
 
-        private void GetLocDataForContentType(string contentFolder)
+        private void LoadLocDataForEntityType(string contentFolder)
         {
      
-            string locFolder = contentFolder.Replace("core","core_" + LanguageTable.targetCulture);
+            string locFolder = contentFolder.Replace(NoonConstants.CORE_FOLDER_NAME, GetBaseFolderForLocalisedData());
 
             var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (locContentFiles.Any())
@@ -155,7 +153,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void GetCoreDataForContentType(string contentFolder)
+        public void LoadCoreDataForEntityType(string contentFolder)
         {
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (coreContentFiles.Any())
@@ -264,6 +262,9 @@ namespace Assets.Core.Fucine
 
                 if (jToken.Type == JTokenType.String)
                 {
+
+                    //ASSUMPTION!! Only strings are replaced in loc
+
                     string uniqueTokenId= new FucineUniqueIdBuilder(jToken, tokenIdBuilder).UniqueId;
                     if (CurrentCulture!=BaseCulture && LocalisedTextValues.TryGetValue(uniqueTokenId, out var localisedString))
                         return localisedString;

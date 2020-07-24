@@ -78,7 +78,7 @@ namespace Assets.Core.Fucine
                 if (cachedProperty.FucineAttribute.ValidateAsElementId)
                 {
                     object toValidate = cachedProperty.GetViaFastInvoke(this as T);
-                    populatedCompendium.AddElementIdsToValidate(toValidate);
+                    populatedCompendium.SupplyElementIdsForValidation(toValidate);
                 }
             }
         }

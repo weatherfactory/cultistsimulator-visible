@@ -63,12 +63,12 @@ public class CompendiumLoader
                
             if(importableAttribute!=null)
             {
-                 DataProviderForEntityType dataProviderForEntityType = new DataProviderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
+                 DataLoaderForEntityType dataLoaderForEntityType = new DataLoaderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
-                dataProviderForEntityType.LoadEntityDataFromJson();
+                dataLoaderForEntityType.LoadEntityDataFromJson();
 
 
-                foreach (EntityData entityData in dataProviderForEntityType.Entities)
+                foreach (EntityData entityData in dataLoaderForEntityType.Entities)
                 {
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);

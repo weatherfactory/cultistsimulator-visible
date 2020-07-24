@@ -10,6 +10,44 @@ using Assets.Core.Services;
 using Noon;
 using UnityEngine.Analytics;
 
+public class EntityStore<T> where T:IEntityWithId
+{
+    private Dictionary<string, T> _entities;
+
+    public EntityStore()
+    {
+    }
+
+    public bool TryAddEntity(T entityToAdd)
+    {
+        if (!_entities.ContainsKey(entityToAdd.Id))
+        {
+            AddEntity(entityToAdd);
+            return true;
+        }
+
+        return false;
+    }
+
+
+    public void AddEntity(T entityToAdd)
+    {
+            _entities.Add(entityToAdd.Id, entityToAdd);
+
+    }
+
+
+    public List<T> GetAllAsList()
+    {
+        return new List<T>(_entities.Values);
+    }
+
+    public Dictionary<string, T> GetAll()
+    {
+        return new Dictionary<string,T>(_entities);
+    }
+}
+
 public interface ICompendium
 {
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
@@ -47,7 +85,7 @@ public interface ICompendium
     void LogFnords(ContentImportLog log);
     void CountWords(ContentImportLog log);
     void LogMissingImages(ContentImportLog log);
-    void AddElementIdsToValidate(object validateThis);
+    void SupplyElementIdsForValidation(object validateThis);
 }
 
 public class Compendium : ICompendium
@@ -67,7 +105,7 @@ public class Compendium : ICompendium
     private List<string> aspectIdsToValidate=new List<string>();
 
 
-    public void AddElementIdsToValidate(object validateThis)
+    public void SupplyElementIdsForValidation(object validateThis)
     {
         if (validateThis is Dictionary<string, int> di)
             aspectIdsToValidate.AddRange(di.Keys);
@@ -114,8 +152,8 @@ public class Compendium : ICompendium
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
-        var relevantStore = allEntities[type];
-        relevantStore.Add(id,entity);
+        var entityStore = allEntities[type];
+        entityStore.Add(id,entity);
 
         if(type==typeof(Recipe))
             _recipes.Add(entity as Recipe);
