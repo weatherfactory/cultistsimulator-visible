@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Assets.Core.Fucine
@@ -67,43 +68,44 @@ namespace Assets.Core.Fucine
                 locContentFiles.Sort();
 
 
-            foreach (var contentFile in locContentFiles)
+            foreach (var locContentFile in locContentFiles)
             {
-                //json string for each content file - in English initially
-                string json = File.ReadAllText(contentFile);
-
-                try
+                using (StreamReader file = File.OpenText(locContentFile))
+                using (JsonTextReader reader = new JsonTextReader(file))
                 {
-
-                    var topLevelObject = JObject.Parse(json);
-                    var containerProperty =
-                        topLevelObject.Properties()
-                            .First(); //there should be exactly one property, which contains all the relevant entities
-                    var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-                    var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
-
-
-                    foreach (var eachObject in topLevelArrayList)
+                
+                    try
                     {
-                        var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
-                        foreach (var eachProperty in ((JObject) eachObject).Properties())
+                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                        var containerProperty =
+                            topLevelObject.Properties()
+                                .First(); //there should be exactly one property, which contains all the relevant entities
+                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
+
+                        var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+
+
+                        foreach (var eachObject in topLevelArrayList)
                         {
-                            var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
+                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
-                         RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+                            foreach (var eachProperty in ((JObject) eachObject).Properties())
+                            {
+                                var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
 
+                                RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+
+
+                            }
 
                         }
-
+                    }
+                    catch (Exception e)
+                    {
+                        _log.LogProblem("This file broke: " + locContentFile + " with error " + e.Message);
                     }
                 }
-                catch (Exception e)
-                {
-                    _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                }
-
 
             }
 
@@ -165,41 +167,46 @@ namespace Assets.Core.Fucine
             foreach (var contentFile in coreContentFiles)
             {
                 //json string for each content file - in English initially
-                var json = File.ReadAllText(contentFile);
+             //   var json = File.ReadAllText(contentFile);
 
-                try
+                // read JSON directly from a file
+                using ( StreamReader file = File.OpenText(contentFile))
+                using (JsonTextReader reader = new JsonTextReader(file))
                 {
-                    var topLevelObject = JObject.Parse(json);
-                    var containerProperty =
-                        topLevelObject.Properties()
-                            .First(); //there should be exactly one property, which contains all the relevant entities
-                    var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-
-                    var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
-
-
-                    foreach (var eachObject in topLevelArrayList)
+                    try
                     {
-                        var eachObjectHashtable = new Hashtable();
+                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                        var containerProperty =
+                            topLevelObject.Properties()
+                                .First(); //there should be exactly one property, which contains all the relevant entities
+                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
-                        var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+
+                        var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
 
 
-                        foreach (var eachProperty in ((JObject) eachObject).Properties())
+                        foreach (var eachObject in topLevelArrayList)
                         {
-                            eachObjectHashtable.Add(eachProperty.Name.ToLower(),
-                                UnpackToken(eachProperty, entityBuilder));
+                            var eachObjectHashtable = new Hashtable();
+
+                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+
+
+                            foreach (var eachProperty in ((JObject) eachObject).Properties())
+                            {
+                                eachObjectHashtable.Add(eachProperty.Name.ToLower(),
+                                    UnpackToken(eachProperty, entityBuilder));
+                            }
+
+                            var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
+
+                            Entities.Add(entityData);
                         }
-
-                        var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
-
-                        Entities.Add(entityData);
                     }
-                }
-                catch (Exception e)
-                {
-                    _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                    catch (Exception e)
+                    {
+                        _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
+                    }
                 }
             }
         }
