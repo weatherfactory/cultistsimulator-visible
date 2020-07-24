@@ -257,11 +257,11 @@ namespace Assets.Core.Fucine
 
                 if (jToken.Type == JTokenType.String)
                 {
-                    string uniqueTokenId= new FucineUniqueIdBuilder(jToken.Parent, tokenIdBuilder).UniqueId;
-                    string localisedString;
-                    if (LocalisedTextValues.TryGetValue(uniqueTokenId, out localisedString))
-                        NoonUtility.Log(uniqueTokenId + ": " + localisedString);
-                   return jToken.ToString();
+                    string uniqueTokenId= new FucineUniqueIdBuilder(jToken, tokenIdBuilder).UniqueId;
+                    if (CurrentCulture!=BaseCulture && LocalisedTextValues.TryGetValue(uniqueTokenId, out var localisedString))
+                        return localisedString;
+                    else
+                        return jToken.ToString();
                 }
 
                 else if (jToken.Type == JTokenType.Integer)
