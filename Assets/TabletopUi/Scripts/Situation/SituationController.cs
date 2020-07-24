@@ -414,7 +414,7 @@ namespace Assets.TabletopUi {
 
             AttemptAspectInductions();
 
-            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+            var currentRecipe = compendium.GetEntityById<Recipe>(SituationClock.RecipeId);
 
             if (currentRecipe.PortalEffect != PortalEffect.None)
             {
@@ -451,7 +451,7 @@ namespace Assets.TabletopUi {
                    inducingAspects.CombineAspects(os.GetAspects());
             }
 
-            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+            var currentRecipe = compendium.GetEntityById<Recipe>(SituationClock.RecipeId);
 
             inducingAspects.CombineAspects(currentRecipe.Aspects);
 
@@ -471,7 +471,7 @@ namespace Assets.TabletopUi {
                 var d = Registry.Retrieve<IDice>();
 
                 if (d.Rolld100() <= induction.Chance)
-                    CreateRecipeFromInduction(compendium.GetRecipeById(induction.Id), aspectElement.Id);
+                    CreateRecipeFromInduction(compendium.GetEntityById<Recipe>(induction.Id), aspectElement.Id);
             }
         }
 
@@ -820,7 +820,7 @@ namespace Assets.TabletopUi {
         /// <param name="recipeId"></param>
         public void OverrideCurrentRecipe(string recipeId)
         {
-            var newRecipe = compendium.GetRecipeById(recipeId);
+            var newRecipe = compendium.GetEntityById<Recipe>(recipeId);
 
             if (newRecipe == null)
             {

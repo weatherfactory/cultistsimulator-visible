@@ -66,7 +66,7 @@ namespace Assets.Core
                         lr.Id +
                         " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
 
-                Recipe candidateRecipe = compendium.GetRecipeById(lr.Id);
+                Recipe candidateRecipe = compendium.GetEntityById<Recipe>(lr.Id);
 
                 if (candidateRecipe == null)
                 {
@@ -134,7 +134,7 @@ namespace Assets.Core
 
             foreach (var ar in currentRecipe.Alt)
             {
-                Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
+                Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
 
                 if (candidateRecipe == null)
                 {
@@ -161,7 +161,7 @@ namespace Assets.Core
                         
                         // Print a warning when we encounter a non-certain alternative recipe with a start description
                         // and no description, since its text won't get displayed.
-                        var arRecipe = compendium.GetRecipeById(ar.Id);
+                        var arRecipe = compendium.GetEntityById<Recipe>(ar.Id);
                         if (!string.IsNullOrEmpty(arRecipe.StartDescription) && string.IsNullOrEmpty(arRecipe.Description))
                             Debug.LogWarning(
                                 $"Recipe {ar.Id} should not be listed as an alternative recipe for {currentRecipe.Id}" +
@@ -197,7 +197,7 @@ namespace Assets.Core
                 }
                 else
                 {
-                    Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
+                    Recipe candidateRecipe = compendium.GetEntityById<Recipe>(ar.Id);
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
                     {

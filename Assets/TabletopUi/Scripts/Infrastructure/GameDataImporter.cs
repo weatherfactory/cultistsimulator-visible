@@ -304,7 +304,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
 
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
-                var recipe = compendium.GetRecipeById(recipeId);
+                var recipe = compendium.GetEntityById<Recipe>(recipeId);
 
                 string verbId= htSituationValues[SaveConstants.SAVE_VERBID].ToString();
                 

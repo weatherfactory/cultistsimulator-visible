@@ -231,7 +231,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(ICompendium compendium, string prompt)
     {
-        return compendium.GetAllRecipesAsList().
+        return compendium.GetEntitiesAsList<Recipe>().
             Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, false)).ToList();
     }
 
@@ -304,7 +304,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     void BeginSituation(string recipeId)
     {
         var compendium = Registry.Retrieve<ICompendium>();
-        var recipe = compendium.GetRecipeById(recipeId.Trim());
+        var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
             var situationEffectCommand=new SituationEffectCommand(recipe,true,null);

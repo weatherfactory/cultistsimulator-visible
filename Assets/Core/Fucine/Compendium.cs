@@ -10,15 +10,13 @@ using Assets.Core.Services;
 using Noon;
 using UnityEngine.Analytics;
 
-public class EntityStore<T> where T:IEntityWithId
+
+public class EntityStore
 {
-    private Dictionary<string, T> _entities;
+    private Dictionary<string, IEntityWithId> _entities=new Dictionary<string, IEntityWithId>();
 
-    public EntityStore()
-    {
-    }
 
-    public bool TryAddEntity(T entityToAdd)
+    public bool TryAddEntity(IEntityWithId entityToAdd)
     {
         if (!_entities.ContainsKey(entityToAdd.Id))
         {
@@ -30,29 +28,59 @@ public class EntityStore<T> where T:IEntityWithId
     }
 
 
-    public void AddEntity(T entityToAdd)
+    public void AddEntity(IEntityWithId entityToAdd)
     {
             _entities.Add(entityToAdd.Id, entityToAdd);
 
     }
 
-
-    public List<T> GetAllAsList()
+    public bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId
     {
-        return new List<T>(_entities.Values);
+        IEntityWithId retrievedEntity;
+        if(_entities.TryGetValue(entityId, out retrievedEntity))
+        {
+            entity = retrievedEntity as T;
+            return true;
+        }
+        else
+        {
+            entity = null;
+            return false;
+        }
+
+
     }
 
-    public Dictionary<string, T> GetAll()
+
+    public T GetEntityById<T>(string entityId) where T : class, IEntityWithId
     {
-        return new Dictionary<string,T>(_entities);
+        return _entities[entityId] as T;
+    }
+
+
+    public List<IEntityWithId> GetAllAsList()
+    {
+        return new List<IEntityWithId>(_entities.Values);
+    }
+
+
+    public List<T> GetAllAsList<T>() where T: class, IEntityWithId
+    {
+        
+        return new List<T>(_entities.Values.Cast<T>().ToList());
+    }
+
+    public Dictionary<string, IEntityWithId> GetAll()
+    {
+        return new Dictionary<string, IEntityWithId>(_entities);
     }
 }
 
 public interface ICompendium
 {
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
-    List<Recipe> GetAllRecipesAsList();
-    Recipe GetRecipeById(string recipeId);
+    List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
+    T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
     Dictionary<string,Element> GetAllElementsAsDictionary();
     Element GetElementById(string elementId);
     Boolean IsKnownElement(string elementId);
@@ -91,11 +119,12 @@ public interface ICompendium
 public class Compendium : ICompendium
 {
     private Dictionary<Type, IDictionary> allEntities;
+    private Dictionary<Type, EntityStore> allEntityStores;
 
-    private List<Recipe> _recipes=new List<Recipe>();
+   // private List<Recipe> _recipes=new List<Recipe>();
     private Dictionary<string, string> _pastLevers;
 
-    private Dictionary<string, Recipe> _recipeDict;
+  //  private Dictionary<string, Recipe> _recipeDict;
     private Dictionary<string, Element> _elements;
     private Dictionary<string, BasicVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
@@ -103,6 +132,11 @@ public class Compendium : ICompendium
     private Dictionary<string, DeckSpec> _decks;
 
     private List<string> aspectIdsToValidate=new List<string>();
+
+    private EntityStore getEntitiesStoreOfType(Type type)
+    {
+        return allEntityStores[type];
+    }
 
 
     public void SupplyElementIdsForValidation(object validateThis)
@@ -128,24 +162,31 @@ public class Compendium : ICompendium
     Reset(); //a little inelegant to call this twice - we call it explicitly in the content importer too
     }
 
+
     public void Reset()
     {
         allEntities= new Dictionary<Type, IDictionary>();
 
-        _recipeDict = new Dictionary<string, Recipe>();
+        allEntityStores=new Dictionary<Type,EntityStore>();
+        
+    //    _recipeDict = new Dictionary<string, Recipe>();
     _elements = new Dictionary<string, Element>();
     _verbs = new Dictionary<string, BasicVerb>();
     _legacies = new Dictionary<string, Legacy>();
     _endings = new Dictionary<string, Ending>();
     _decks = new Dictionary<string, DeckSpec>();
 
-         allEntities.Add(typeof(Recipe), _recipeDict);
+       //  allEntities.Add(typeof(Recipe), _recipeDict);
         allEntities.Add(typeof(Element), _elements);
         allEntities.Add(typeof(BasicVerb), _verbs);
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
         allEntities.Add(typeof(DeckSpec), _decks);
 
+
+
+        var recipeStore = new EntityStore();
+        allEntityStores.Add(typeof(Recipe),recipeStore);
 
     }
 
@@ -156,7 +197,11 @@ public class Compendium : ICompendium
         entityStore.Add(id,entity);
 
         if(type==typeof(Recipe))
-            _recipes.Add(entity as Recipe);
+        {
+     //       _recipes.Add(entity as Recipe);
+     var recipesStore = allEntityStores[typeof(Recipe)];
+            recipesStore.AddEntity(entity as Recipe);
+        }
     }
 
     public void OnPostImport(ContentImportLog log)
@@ -177,25 +222,42 @@ public class Compendium : ICompendium
             }
 
         }
+
+        foreach (var d in allEntityStores.Values)
+        {
+            HashSet<IEntity> entities = new HashSet<IEntity>((IEnumerable<IEntity>)d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
+
+            foreach (var e in entities)
+                e.OnPostImport(log, this);
+
+
+            var missingAspects = aspectIdsToValidate.Except(_elements.Keys);
+            foreach (var missingAspect in missingAspects)
+            {
+                //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
+                log.LogWarning("unknown element id specified: " + missingAspect);
+            }
+
+        }
     }
 
     // -- Update Collections ------------------------------
 
-    public void UpdateRecipes(List<Recipe> allRecipes)
-    {
-        _recipes = allRecipes;
+    //public void UpdateRecipes(List<Recipe> allRecipes)
+    //{
+    //    _recipes = allRecipes;
         
-        foreach (var item in allRecipes) {
-            if (_recipeDict.ContainsKey(item.Id)) {
-                #if UNITY_EDITOR
-                UnityEngine.Debug.LogWarning("Duplicate Recipe Id " + item.Id + "! Skipping...");
-                #endif
-                continue;
-            }
+    //    foreach (var item in allRecipes) {
+    //        if (_recipeDict.ContainsKey(item.Id)) {
+    //            #if UNITY_EDITOR
+    //            UnityEngine.Debug.LogWarning("Duplicate Recipe Id " + item.Id + "! Skipping...");
+    //            #endif
+    //            continue;
+    //        }
 
-            _recipeDict.Add(item.Id, item);
-        }
-    }
+    //        _recipeDict.Add(item.Id, item);
+    //    }
+    //}
 
     /// <summary>
 
@@ -211,7 +273,8 @@ public class Compendium : ICompendium
         aspectsInContext.ThrowErrorIfNotPopulated(verb);
         //for each recipe,
         //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-        List<Recipe> candidateRecipes=_recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
+        var _recipes = getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>();
+        List<Recipe> candidateRecipes= _recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
         foreach (var recipe in candidateRecipes )
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
@@ -227,8 +290,11 @@ public class Compendium : ICompendium
 
     // -- Get All ------------------------------
 
-    public List<Recipe> GetAllRecipesAsList() {
-        return _recipes;
+    public List<T> GetEntitiesAsList<T>() where T: class, IEntityWithId
+    {
+        EntityStore entityStore = allEntityStores[typeof(T)];
+
+        return entityStore.GetAllAsList<T>();
     }
 
     public Dictionary<string, Element> GetAllElementsAsDictionary() {
@@ -253,23 +319,25 @@ public class Compendium : ICompendium
 
     // -- Get By Id ------------------------------
 
-    public Recipe GetRecipeById(string recipeId)
+    public T GetEntityById<T> (string entityId) where T: class, IEntityWithId
     {
-        if (recipeId == null || recipeId=="NULL") //sometimes this gets parsed out of the save data?
-            return null;
-        if (_recipeDict.ContainsKey(recipeId))
+        EntityStore entityStore = allEntityStores[typeof(T)];
+
+        T entity;
+
+        if (entityStore.TryGetEntityById(entityId,out entity))
         {
-            var recipe = _recipeDict[recipeId];
-            return recipe;
+            return entity;
         }
         else
-        throw new ApplicationException("Can't find recipe id '" + recipeId + "'");
+            throw new ApplicationException("Can't find entity id '" + entityId + "' of type " + typeof(T));
 
     }
 
     public Boolean IsKnownElement(string elementId)
     {
         //return _elements.ContainsKey(elementId);
+
         return (GetElementById(elementId) != null);
     }
 
@@ -366,7 +434,9 @@ public class Compendium : ICompendium
         _pastLevers = populatedCharacter.GetAllPastLegacyEventRecords();
         TokenReplacer tr = new TokenReplacer(populatedCharacter,this);
 
-        foreach (var r in _recipes)
+        EntityStore recipesStore = allEntityStores[typeof(Recipe)];
+
+        foreach (var r in recipesStore.GetAllAsList<Recipe>())
         {
 
             r.Label = tr.ReplaceTextFor(r.Label);
@@ -428,7 +498,7 @@ public class Compendium : ICompendium
             }
         }
 
-        var allRecipes = GetAllRecipesAsList();
+        var allRecipes = getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>();
         string recipeFnords = "";
         int recipeFnordCount = 0;
         foreach (var r in allRecipes)
@@ -461,7 +531,7 @@ public class Compendium : ICompendium
     public void CountWords(ContentImportLog log)
     {
         int words = 0;
-        foreach (var r in _recipes)
+        foreach (var r in getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>())
         {
             words += (r.Label.Count(char.IsWhiteSpace) + 1);
             words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
