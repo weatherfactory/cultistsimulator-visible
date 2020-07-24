@@ -257,7 +257,10 @@ namespace Assets.Core.Fucine
 
                 if (jToken.Type == JTokenType.String)
                 {
-                    NoonUtility.Log(new FucineUniqueIdBuilder(jToken.Parent,tokenIdBuilder).UniqueId);
+                    string uniqueTokenId= new FucineUniqueIdBuilder(jToken.Parent, tokenIdBuilder).UniqueId;
+                    string localisedString;
+                    if (LocalisedTextValues.TryGetValue(uniqueTokenId, out localisedString))
+                        NoonUtility.Log(uniqueTokenId + ": " + localisedString);
                    return jToken.ToString();
                 }
 
