@@ -14,5 +14,6 @@ namespace Assets.Core.Interfaces
         string Id { get; }
         string UniqueId { get; }
         void SetId(string id);
+        void OnPostImport(ContentImportLog log, ICompendium populatedCompendium);
     }
 }

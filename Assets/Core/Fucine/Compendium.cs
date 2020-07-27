@@ -193,22 +193,27 @@ public class Compendium : ICompendium
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
+        if (type == typeof(Recipe))
+        {
+            //       _recipes.Add(entity as Recipe);
+            var recipesStore = allEntityStores[typeof(Recipe)];
+            recipesStore.AddEntity(entity as Recipe);
+        }
+        else
+        {
+         
         var entityStore = allEntities[type];
         entityStore.Add(id,entity);
 
-        if(type==typeof(Recipe))
-        {
-     //       _recipes.Add(entity as Recipe);
-     var recipesStore = allEntityStores[typeof(Recipe)];
-            recipesStore.AddEntity(entity as Recipe);
         }
+
     }
 
     public void OnPostImport(ContentImportLog log)
     {
         foreach (var d in allEntities.Values)
         {
-            HashSet <IEntity> entities= new HashSet<IEntity>((IEnumerable<IEntity>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
+            HashSet <IEntityWithId> entities= new HashSet<IEntityWithId>((IEnumerable<IEntityWithId>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
 
             foreach (var e in entities)
                 e.OnPostImport(log,this);
@@ -225,9 +230,9 @@ public class Compendium : ICompendium
 
         foreach (var d in allEntityStores.Values)
         {
-            HashSet<IEntity> entities = new HashSet<IEntity>((IEnumerable<IEntity>)d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
+            var entityList = new List<IEntityWithId>(d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
 
-            foreach (var e in entities)
+            foreach (var e in entityList)
                 e.OnPostImport(log, this);
 
 
@@ -325,12 +330,17 @@ public class Compendium : ICompendium
 
         T entity;
 
-        if (entityStore.TryGetEntityById(entityId,out entity))
+        if (entityStore.TryGetEntityById(entityId, out entity))
         {
             return entity;
         }
         else
-            throw new ApplicationException("Can't find entity id '" + entityId + "' of type " + typeof(T));
+        {
+            NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
+            return null;
+        }
+         
+            
 
     }
 

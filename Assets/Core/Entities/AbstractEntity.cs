@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using Assets.Core.Fucine.DataImport;
+using Assets.Core.Interfaces;
 using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public interface IEntity
-    {
-    void OnPostImport(ContentImportLog log, ICompendium populatedCompendium);
-    }
 
-    public abstract class AbstractEntity<T>: IEntity where T : AbstractEntity<T>
+    public abstract class AbstractEntity<T>: IEntityWithId where T : AbstractEntity<T>
     {
         protected string _id;
 
