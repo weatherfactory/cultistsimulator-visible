@@ -54,7 +54,7 @@ public class Compendium : ICompendium
     }
 
     /// <summary>
-    /// Very forgiving method that accepts strings or collections in a varietyy of formats to log elementids for later validation
+    /// Very forgiving method that accepts strings or collections in a variety of formats to log element  ids for later validation
     /// </summary>
     /// <param name="validateThis"></param>
     public void SupplyElementIdsForValidation(object validateThis)
