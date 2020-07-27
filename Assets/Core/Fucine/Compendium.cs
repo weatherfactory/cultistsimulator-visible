@@ -13,7 +13,7 @@ using UnityEngine.Analytics;
 
 public interface ICompendium
 {
-    Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
+    Recipe GetFirstMatchingRecipe(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
     bool TryAddEntity(IEntityWithId entity);
@@ -46,27 +46,29 @@ public class Compendium : ICompendium
 
  private Dictionary<string, string> _pastLevers;
 
+ private readonly List<string> elementIdsToValidate=new List<string>();
 
-    private List<string> aspectIdsToValidate=new List<string>();
-
-    private EntityStore entityStoreFor(Type type)
+    private EntityStore EntityStoreFor(Type type)
     {
         return entityStores[type];
     }
 
-
+    /// <summary>
+    /// Very forgiving method that accepts strings or collections in a varietyy of formats to log elementids for later validation
+    /// </summary>
+    /// <param name="validateThis"></param>
     public void SupplyElementIdsForValidation(object validateThis)
     {
         if (validateThis is Dictionary<string, int> di)
-            aspectIdsToValidate.AddRange(di.Keys);
+            elementIdsToValidate.AddRange(di.Keys);
         else if (validateThis is Dictionary<string, string> ds)
-            aspectIdsToValidate.AddRange(ds.Keys);
+            elementIdsToValidate.AddRange(ds.Keys);
         else if(validateThis is IAspectsDictionary a)
-            aspectIdsToValidate.AddRange(a.KeysAsList());
+            elementIdsToValidate.AddRange(a.KeysAsList());
         else if(validateThis is List<string> l)
-            aspectIdsToValidate.AddRange(l);
+            elementIdsToValidate.AddRange(l);
         else if(validateThis is string s)
-            aspectIdsToValidate.Add(s);
+            elementIdsToValidate.Add(s);
         else
            throw new ArgumentException("Unknown argument for element validation: " + validateThis.ToString());
     }
@@ -99,7 +101,7 @@ public class Compendium : ICompendium
     public bool TryAddEntity(IEntityWithId entityToAdd)
     {
         var type = entityToAdd.GetType();
-        var entitiesStore = entityStoreFor(type);
+        var entitiesStore = EntityStoreFor(type);
         return entitiesStore.TryAddEntity(entityToAdd);
 
     }
@@ -108,53 +110,37 @@ public class Compendium : ICompendium
     public void OnPostImport(ContentImportLog log)
     {
 
-        var elements = entityStores[typeof(Element)].GetAll();
 
-      
-        foreach (var d in entityStores.Values)
+
+      //run OnPostImport for every entity in every store
+        foreach (var entityStore in entityStores.Values)
         {
-            var entityList = new List<IEntityWithId>(d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
+            var entityList = new List<IEntityWithId>(entityStore.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
 
             foreach (var e in entityList)
                 e.OnPostImport(log, this);
-
-
-            var missingAspects = aspectIdsToValidate.Except(elements.Keys);
-            foreach (var missingAspect in missingAspects)
-            {
-                //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
-                log.LogWarning("unknown element id specified: " + missingAspect);
-            }
-
         }
+
+
+        ValidateAspectIds(log);
     }
 
-    
-    /// </summary>
-    /// <param name="aspects"></param>
-    /// <param name="verb"></param>
-    /// <param name="character"></param>
-    /// <param name="getHintRecipes">If true, get recipes with hintonly=true (and *only* hintonly=true)</param>
-    /// <returns></returns>
-    public Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character, bool getHintRecipes)
+    private void ValidateAspectIds(ContentImportLog log)
     {
+        var elements = entityStores[typeof(Element)].GetAll();
 
-        aspectsInContext.ThrowErrorIfNotPopulated(verb);
-        //for each recipe,
-        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-        var _recipes = entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
-        List<Recipe> candidateRecipes= _recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
-        foreach (var recipe in candidateRecipes )
+        var missingAspects = elementIdsToValidate.Except(elements.Keys);
+
+        foreach (var missingAspect in missingAspects)
         {
-            //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
-
-            if (recipe.RequirementsSatisfiedBy(aspectsInContext) )
-                return recipe;
-
+            //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
+            log.LogWarning("unknown element id specified: " + missingAspect);
         }
-
-        return null;
     }
+
+
+
+
 
 
 
@@ -201,9 +187,30 @@ public class Compendium : ICompendium
 
     }
 
+    ///<summary>
+    ///<param name="character">supplied so we can check maxexecutions (ugh) and possibly other contextual lmitations</param>
+    /// <param name="getHintRecipes">If true, get recipes with hintonly=true (and *only* hintonly=true)</param>
+    /// </summary>
+    public Recipe GetFirstMatchingRecipe(AspectsInContext aspectsInContext, string verb, Character character, bool getHintRecipes)
+    {
+
+        aspectsInContext.ThrowErrorIfNotPopulated(verb);
+
+        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
+        var _recipes = EntityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
+        List<Recipe> candidateRecipes = _recipes.Where(r => r.ActionId == verb && (r.Craftable || getHintRecipes) && r.HintOnly == getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
+        foreach (var recipe in candidateRecipes)
+        {
+            if (recipe.RequirementsSatisfiedBy(aspectsInContext))
+                return recipe;
+        }
+
+        return null;
+    }
 
 
-	
+
+
     /// <summary>
     /// allow the character to specify levers (legacy event records)
     /// replace tokens with lever values, and also store the levers for later use
@@ -236,7 +243,11 @@ public class Compendium : ICompendium
         }
 
     }
-
+    /// <summary>
+    /// If any of the aspects in currentAspects specify a verb icon override, return that icon override value
+    /// </summary>
+    /// <param name="currentAspects"></param>
+    /// <returns></returns>
     public string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects)
     {
         if (currentAspects != null)
@@ -279,7 +290,7 @@ public class Compendium : ICompendium
             }
         }
 
-        var allRecipes = entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
+        var allRecipes = EntityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
         string recipeFnords = "";
         int recipeFnordCount = 0;
         foreach (var r in allRecipes)
@@ -312,7 +323,7 @@ public class Compendium : ICompendium
     public void CountWords(ContentImportLog log)
     {
         int words = 0;
-        foreach (var r in entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>())
+        foreach (var r in EntityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>())
         {
             words += (r.Label.Count(char.IsWhiteSpace) + 1);
             words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
@@ -335,7 +346,7 @@ public class Compendium : ICompendium
             words += (verb.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var l in entityStoreFor(typeof(Legacy)).GetAllAsList<Legacy>())
+        foreach (var l in EntityStoreFor(typeof(Legacy)).GetAllAsList<Legacy>())
         {
             words += (l.Label.Count(char.IsWhiteSpace) + 1);
             words += (l.StartDescription.Count(char.IsWhiteSpace) + 1);

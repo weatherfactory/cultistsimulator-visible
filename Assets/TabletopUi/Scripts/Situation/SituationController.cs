@@ -631,7 +631,7 @@ namespace Assets.TabletopUi {
             var tabletopManager = Registry.Retrieve<ITabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
         
-            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
+            Recipe matchingRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
 
             // Update the aspects in the window
             IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
@@ -646,7 +646,7 @@ namespace Assets.TabletopUi {
             }
 
             //if we can't find a matching craftable recipe, check for matching hint recipes
-            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext, situationToken.EntityId, currentCharacter, true); ;
+            Recipe matchingHintRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationToken.EntityId, currentCharacter, true); ;
 
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
             if (matchingHintRecipe != null)
@@ -759,7 +759,7 @@ namespace Assets.TabletopUi {
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 
 
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspectsInContext, situationToken.EntityId, currentCharacter, false);
+            var recipe = compendium.GetFirstMatchingRecipe(aspectsInContext, situationToken.EntityId, currentCharacter, false);
 
             //no recipe found? get outta here
             if (recipe == null)
