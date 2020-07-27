@@ -54,15 +54,18 @@ public class CompendiumLoader
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
-        compendiumToPopulate.Reset();
         var assembly = Assembly.GetExecutingAssembly();
+        var importableTypes =
+            assembly.GetTypes().Where(t => t.GetCustomAttribute(typeof(FucineImportable), false) != null);
 
-       foreach (Type T in assembly.GetTypes())
+        compendiumToPopulate.InitialiseForTypes(importableTypes);
+
+
+       foreach (Type T in importableTypes)
         {
             FucineImportable importableAttribute = (FucineImportable) T.GetCustomAttribute(typeof(FucineImportable), false);
                
-            if(importableAttribute!=null)
-            {
+
                  DataLoaderForEntityType dataLoaderForEntityType = new DataLoaderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
                 dataLoaderForEntityType.LoadEntityDataFromJson();
@@ -73,7 +76,7 @@ public class CompendiumLoader
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
                     compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
                 }
-            }
+
 
             if (_log.GetMessages().Any(m => m.MessageLevel > 1))
                 //found a serious problem: bug out and report.

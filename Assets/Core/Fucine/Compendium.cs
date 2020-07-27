@@ -29,7 +29,7 @@ public interface ICompendium
     /// </summary>
     void OnPostImport(ContentImportLog log);
 
-    void Reset();
+    void InitialiseForTypes(IEnumerable<Type> entityTypes);
 
     void LogFnords(ContentImportLog log);
     void CountWords(ContentImportLog log);
@@ -72,23 +72,26 @@ public class Compendium : ICompendium
 
 
 
-    public Compendium()
-    {
-    Reset(); //a little inelegant to call this twice - we call it explicitly in the content importer too
-    }
-
-
-    public void Reset()
+    /// <summary>
+    /// A Compendium is initialised with all the entity types it'll contain
+    /// </summary>
+    /// <param name="entityTypes"></param>
+    public void InitialiseForTypes(IEnumerable<Type> entityTypes)
     {
 
         allEntityStores=new Dictionary<Type,EntityStore>();
 
-        allEntityStores.Add(typeof(BasicVerb), new EntityStore());
-        allEntityStores.Add(typeof(DeckSpec), new EntityStore());
-        allEntityStores.Add(typeof(Element), new EntityStore());
-        allEntityStores.Add(typeof(Ending), new EntityStore());
-        allEntityStores.Add(typeof(Legacy), new EntityStore());
-        allEntityStores.Add(typeof(Recipe),new EntityStore());
+
+        foreach(Type t in entityTypes)
+        {
+            allEntityStores.Add(t,new EntityStore());
+        }
+        //allEntityStores.Add(typeof(BasicVerb), new EntityStore());
+        //allEntityStores.Add(typeof(DeckSpec), new EntityStore());
+        //allEntityStores.Add(typeof(Element), new EntityStore());
+        //allEntityStores.Add(typeof(Ending), new EntityStore());
+        //allEntityStores.Add(typeof(Legacy), new EntityStore());
+        //allEntityStores.Add(typeof(Recipe),new EntityStore());
 
 
     }
