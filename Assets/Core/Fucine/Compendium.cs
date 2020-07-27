@@ -262,20 +262,14 @@ public class Compendium : ICompendium
 
         if (entityStore.TryGetById(entityId, out entity))
         {
-            if (typeof(T) == typeof(Element))
-            {
-                var element = entity as Element;
-                if (!string.IsNullOrEmpty(element.Lever))
+                if (!string.IsNullOrEmpty(entity.Lever) && _pastLevers.ContainsKey(entity.Lever))
                 {
-                    if (!_pastLevers.ContainsKey(element.Lever))
-                        return null;
-                    return GetEntityById<T>(_pastLevers[element.Lever]);
+                    entity= GetEntityById<T>(_pastLevers[entity.Lever]);
+
                 }
 
-                return entity;
-            }
+           return entity;
 
-            return entity;
 
         }
         else

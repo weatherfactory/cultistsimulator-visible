@@ -26,6 +26,15 @@ namespace Assets.Core.Fucine
         }
 
 
+        /// <summary>
+        /// If a 'lever' value can be set to the id of another entity (currently, just elements)
+        /// then that entity should be retrieved from a compendium as, instead, the contents (in the saved file) of the specified lever - i.e., the entity from a previous game or context.
+        /// This allows us to have e.g. a template lever_lastbook element which is always replaced by the current value of the lastbook lever - i.e. the value from the previous game.
+        /// </summary>
+        [FucineValue("")]
+        public string Lever { get; set; }
+
+
         public string UniqueId { get; set; }
         protected bool Refined = false;
         protected readonly Hashtable UnknownProperties = new Hashtable();

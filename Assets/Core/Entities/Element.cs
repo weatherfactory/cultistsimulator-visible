@@ -60,8 +60,6 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool NoArtNeeded { get; set; }
 
-        [FucineValue("")]
-        public string Lever { get; set; }
 
         /// <summary>
         /// If a Unique element is created and another one exists in games, the first one should be quietly removed. When a unique element is created, all references to it should be removed from all decks.
