@@ -92,12 +92,10 @@ public interface ICompendium
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
 
-    List<IDeckSpec> GetAllDeckSpecs();
-    DeckSpec GetDeckSpecById(string id);
     void SupplyLevers(IGameEntityStorage populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
-    bool TryAddDeckSpec(DeckSpec deck);
+    bool TryAddEntity(IEntityWithId entity);
 
     void AddEntity(string id, Type type, IEntityWithId entity);
     /// <summary>
@@ -169,31 +167,35 @@ public class Compendium : ICompendium
     _elements = new Dictionary<string, Element>();
     _legacies = new Dictionary<string, Legacy>();
     _endings = new Dictionary<string, Ending>();
-    _decks = new Dictionary<string, DeckSpec>();
-
+    
        //  allEntities.Add(typeof(Recipe), _recipeDict);
         allEntities.Add(typeof(Element), _elements);
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
-        allEntities.Add(typeof(DeckSpec), _decks);
 
 
-        var verbStore = new EntityStore();
-        allEntityStores.Add(typeof(BasicVerb), verbStore);
 
-        var recipeStore = new EntityStore();
-        allEntityStores.Add(typeof(Recipe),recipeStore);
+        allEntityStores.Add(typeof(BasicVerb), new EntityStore());
+        allEntityStores.Add(typeof(DeckSpec), new EntityStore());
+        allEntityStores.Add(typeof(Recipe),new EntityStore());
+
 
     }
 
+    public bool TryAddEntity(IEntityWithId entityToAdd)
+    {
+        var type = entityToAdd.GetType();
+        var entitiesStore = allEntityStores[type];
+        return entitiesStore.TryAddEntity(entityToAdd);
+
+    }
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
-        if (type == typeof(Recipe) || type==typeof(BasicVerb))
+        if (type == typeof(Recipe) || type==typeof(BasicVerb) || type == typeof(DeckSpec))
         {
-            //       _recipes.Add(entity as Recipe);
-            var recipesStore = allEntityStores[type];
-            recipesStore.AddEntity(entity);
+           var entitiesStore = allEntityStores[type];
+            entitiesStore.AddEntity(entity);
         }
         else
         {
@@ -305,10 +307,6 @@ public class Compendium : ICompendium
     }
 
 
-    public List<IDeckSpec> GetAllDeckSpecs() {
-        return new List<IDeckSpec>(_decks.Values);
-    }
-
     public List<Legacy> GetAllLegacies() {
         return new List<Legacy>(_legacies.Values);
     }
@@ -369,25 +367,6 @@ public class Compendium : ICompendium
         return element;
     }
 
-
-    public DeckSpec GetDeckSpecById(string id) {
-        DeckSpec deck;
-        _decks.TryGetValue(id, out deck);
-
-        return deck;
-    }
-
-
-    public bool TryAddDeckSpec(DeckSpec deck)
-    {
-        if (!_decks.ContainsKey(deck.Id))
-        {
-            _decks.Add(deck.Id,deck);
-            return true;
-        }
-
-        return false;
-    }
 
 
 

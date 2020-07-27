@@ -379,8 +379,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
            // Populate current decks with new cards (this will shuffle the deck)
            IGameEntityStorage storage = Registry.Retrieve<Character>();
-           foreach (var ds in existingCompendium.GetAllDeckSpecs())
+           foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
            {
+               
                if (storage.GetDeckInstanceById(ds.Id) == null)
                {
                    IDeckInstance di = new DeckInstance(ds);

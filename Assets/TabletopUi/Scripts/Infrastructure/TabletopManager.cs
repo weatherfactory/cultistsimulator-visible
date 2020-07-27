@@ -506,7 +506,7 @@ namespace Assets.CS.TabletopUI {
         private void DealStartingDecks() {
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var compendium = Registry.Retrieve<ICompendium>();
-            foreach (var ds in compendium.GetAllDeckSpecs()) {
+            foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>()) {
                 IDeckInstance di = new DeckInstance(ds);
                 character.DeckInstances.Add(di);
                 di.Reset();

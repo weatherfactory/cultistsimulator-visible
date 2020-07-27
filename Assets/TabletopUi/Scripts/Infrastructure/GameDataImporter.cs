@@ -257,7 +257,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
-                IDeckSpec spec = compendium.GetDeckSpecById(k.ToString());
+                IDeckSpec spec = compendium.GetEntityById<DeckSpec>(k.ToString());
 
                 if (spec == null)
                     NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
@@ -286,7 +286,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //But it's possible a deck spec has been added since the game was saved, in a new version of the game.
             //Create and reset any new deckspecs
 
-            foreach (var ds in compendium.GetAllDeckSpecs())
+            foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>())
             {
                 if (storage.GetDeckInstanceById(ds.Id) == null)
                 {

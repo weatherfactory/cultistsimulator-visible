@@ -144,7 +144,7 @@ namespace Assets.Core.Entities
             if (InternalDeck.Spec.Any())
             {
                 InternalDeck.SetId("deck." + Id);
-                if (populatedCompendium.TryAddDeckSpec(InternalDeck))
+                if (populatedCompendium.TryAddEntity(InternalDeck))
                     DeckEffects.Add(InternalDeck.Id, InternalDeck.Draws);
                 else
                     log.LogProblem("Duplicate internal deck id: " + InternalDeck.Id);

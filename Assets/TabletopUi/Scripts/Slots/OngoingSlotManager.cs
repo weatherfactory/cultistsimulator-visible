@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI {
 
             // Populate those we need
             foreach (var item in deckEffects) {
-                deckSpec = Registry.Retrieve<ICompendium>().GetDeckSpecById(item.Key);
+                deckSpec = Registry.Retrieve<ICompendium>().GetEntityById<DeckSpec>(item.Key);
                 deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;
