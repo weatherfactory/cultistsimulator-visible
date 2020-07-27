@@ -46,7 +46,7 @@ namespace Assets.Core.Entities
             {
                 if (problemAspects != "")
                     problemAspects += LanguageTable.Get("UI_OR");
-                problemAspects += compendium.GetElementById(problemAspectId).Label;
+                problemAspects += compendium.GetEntityById<Element>(problemAspectId).Label;
             }
 			problemAspects += LanguageTable.Get("UI_FULLSTOP");
             return problemAspects;

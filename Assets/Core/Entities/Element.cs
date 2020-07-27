@@ -177,15 +177,15 @@ namespace Assets.Core.Entities
             //Apply inherits
             if (!string.IsNullOrEmpty(Inherits))
             {
-                if (!populatedCompendium.IsKnownElement(Inherits))
+                if (!populatedCompendium.EntityExists<Element>(Inherits))
                     log.LogProblem($"{Id} is trying to inherit from a nonexistent element, {Inherits}");
                 else
-                    InheritFrom(populatedCompendium.GetElementById(Inherits));
+                    InheritFrom(populatedCompendium.GetEntityById<Element>(Inherits));
             }
 
             //if the element is a member of a uniqueness group, add it as an aspect also.
             if (!string.IsNullOrEmpty(UniquenessGroup))
-                if (!populatedCompendium.IsKnownElement(UniquenessGroup))
+                if (!populatedCompendium.EntityExists<Element>(UniquenessGroup))
                     log.LogProblem($"{Id} has {UniquenessGroup} specified as a UniquenessGroup, but there's no aspect of that name");
                 else
                     Aspects.Add(UniquenessGroup, 1);

@@ -30,7 +30,7 @@ namespace Assets.CS.TabletopUI {
         private int _quantity;
 
         public void Populate(string elementId, int quantity) {
-            _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            _element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(elementId);
             _quantity = quantity;
 
             if (_element == null)

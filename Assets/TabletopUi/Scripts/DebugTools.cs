@@ -225,8 +225,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(ICompendium compendium, string prompt)
     {
-        return compendium.GetAllElementsAsDictionary().Keys.
-            Where(e => e.StartsWith(prompt)).Select(id => MakeAutocompleteSuggestion(compendium, id, true)).ToList();
+        return compendium.GetEntitiesAsList<Element>().
+            Where(e => e.Id.StartsWith(prompt)).Select(e => MakeAutocompleteSuggestion(compendium, e.Id, true)).ToList();
     }
 
     List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(ICompendium compendium, string prompt)
@@ -243,7 +243,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         // Show the element image if applicable
         if (isElement)
-            suggestion.SetIconForElement(compendium.GetElementById(suggestedId));
+            suggestion.SetIconForElement(compendium.GetEntityById<Element>(suggestedId));
 
         return suggestion;
     }
@@ -253,7 +253,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var stackManager = tabletop.GetElementStacksManager();
         var existingStacks = stackManager.GetStacks();
 
-        var element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+        var element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(elementId);
 
         if (element == null) {
             Debug.LogWarning("No Element with ID " + elementId + " found!");

@@ -123,7 +123,7 @@ namespace Assets.Core.Entities
 
             foreach (var c in Spec)
             { 
-                var e = compendium.GetElementById(c);
+                var e = compendium.GetEntityById<Element>(c);
                 if (e == null)
                 {
                     throw new ApplicationException("Can't find element '" + c + " from deck id " + Id + "'");

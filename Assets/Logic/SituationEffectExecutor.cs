@@ -179,7 +179,7 @@ namespace Assets.Logic
                 //first we apply xtriggers to mutations - but not to the default stack aspects.
                 //i.e., mutations can get replaced by other mutations thanks to xtrigger morphs
                 //we do this first in the expectation that the stack will generally get repopulated next, if there's a relevant xtrigger
-                var stackMutationBaseAspect = _compendium.GetElementById(eachStackMutation.Key);
+                var stackMutationBaseAspect = _compendium.GetEntityById<Element>(eachStackMutation.Key);
                 if (stackMutationBaseAspect == null)
                 {
                     NoonUtility.Log("Mutation aspect id doesn't exist: " + eachStackMutation.Key);
@@ -237,7 +237,7 @@ namespace Assets.Logic
                 {
                     foreach (var morph in xTriggers[triggerKey])
                     {
-                        Element effectElement = _compendium.GetElementById(morph.Id);
+                        Element effectElement = _compendium.GetEntityById<Element>(morph.Id);
                         if (effectElement == null)
                         {
                             NoonUtility.Log(

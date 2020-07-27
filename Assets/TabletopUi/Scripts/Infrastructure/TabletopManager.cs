@@ -538,7 +538,7 @@ namespace Assets.CS.TabletopUI {
         {
             var compendium = Registry.Retrieve<ICompendium>();
 
-            Element purgedElement = compendium.GetElementById(elementId);
+            Element purgedElement = compendium.GetEntityById<Element>(elementId);
             //I don't think MaxToPurge is being usefully decremented here - should return int
 
            _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge);

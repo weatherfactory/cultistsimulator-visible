@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Noon;
 
@@ -34,17 +35,17 @@ namespace Assets.Core.Services
 				previousCharacterName = LanguageTable.Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
 			}
 
-            var lastBook = _compendium.GetElementById(lastBookId);
+            var lastBook = _compendium.GetEntityById<Element>(lastBookId);
             if (lastBook == null)
                 NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastBookId, 1);
             else lastBookLabel = lastBook.Label;
 
-            var lastDesire = _compendium.GetElementById(lastDesireId);
+            var lastDesire = _compendium.GetEntityById<Element>(lastDesireId);
             if (lastDesire == null)
                 NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastDesireId, 1);
             else lastDesireLabel = lastDesire.Label;
 
-            var lastFollower = _compendium.GetElementById(lastFollowerId);
+            var lastFollower = _compendium.GetEntityById<Element>(lastFollowerId);
             if (lastFollower == null)
                 NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastFollowerId, 1);
             else lastFollowerLabel = lastFollower.Label;

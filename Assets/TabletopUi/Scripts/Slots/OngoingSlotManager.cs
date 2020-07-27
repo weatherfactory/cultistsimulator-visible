@@ -96,7 +96,7 @@ namespace Assets.CS.TabletopUI {
             Element element;
 
             foreach (var stack in stacks) {
-                element = Registry.Retrieve<ICompendium>().GetElementById(stack.EntityId);
+                element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(stack.EntityId);
 
                 if(!element.IsHidden)
                 { 

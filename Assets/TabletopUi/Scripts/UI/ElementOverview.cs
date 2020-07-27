@@ -49,7 +49,7 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
         
         foreach (var e in _activeLegacy.StatusBarElements)
         {
-            elementCounts[i].PopulateWithElement(compendium.GetElementById(e));
+            elementCounts[i].PopulateWithElement(compendium.GetEntityById<Element>(e));
             i++;
             if (i >= MAX_ELEMENTS)
                 break;

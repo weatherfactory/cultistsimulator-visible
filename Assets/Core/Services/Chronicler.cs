@@ -144,18 +144,18 @@ namespace Assets.Core.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetElementById(stack.EntityId);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
 
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
                     {
-                        currentFollower = _compendium.GetElementById(stack.EntityId);
+                        currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
                     }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetElementById(stack.EntityId);
+                    currentFollower = _compendium.GetEntityById<Element>(stack.EntityId);
 
                 }
 

@@ -11,80 +11,12 @@ using Noon;
 using UnityEngine.Analytics;
 
 
-public class EntityStore
-{
-    private Dictionary<string, IEntityWithId> _entities=new Dictionary<string, IEntityWithId>();
-
-
-    public bool TryAddEntity(IEntityWithId entityToAdd)
-    {
-        if (!_entities.ContainsKey(entityToAdd.Id))
-        {
-            AddEntity(entityToAdd);
-            return true;
-        }
-
-        return false;
-    }
-
-
-    public void AddEntity(IEntityWithId entityToAdd)
-    {
-            _entities.Add(entityToAdd.Id, entityToAdd);
-
-    }
-
-    public bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId
-    {
-        IEntityWithId retrievedEntity;
-        if(_entities.TryGetValue(entityId, out retrievedEntity))
-        {
-            entity = retrievedEntity as T;
-            return true;
-        }
-        else
-        {
-            entity = null;
-            return false;
-        }
-
-
-    }
-
-
-    public T GetEntityById<T>(string entityId) where T : class, IEntityWithId
-    {
-        return _entities[entityId] as T;
-    }
-
-
-    public List<IEntityWithId> GetAllAsList()
-    {
-        return new List<IEntityWithId>(_entities.Values);
-    }
-
-
-    public List<T> GetAllAsList<T>() where T: class, IEntityWithId
-    {
-        
-        return new List<T>(_entities.Values.Cast<T>().ToList());
-    }
-
-    public Dictionary<string, IEntityWithId> GetAll()
-    {
-        return new Dictionary<string, IEntityWithId>(_entities);
-    }
-}
-
 public interface ICompendium
 {
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
-   bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId;
-    Dictionary<string,Element> GetAllElementsAsDictionary();
-    Element GetElementById(string elementId);
-    Boolean IsKnownElement(string elementId);
+
 
     List<Ending> GetAllEndings();
     Ending GetEndingById(string endingFlag);
@@ -109,6 +41,7 @@ public interface ICompendium
     void CountWords(ContentImportLog log);
     void LogMissingImages(ContentImportLog log);
     void SupplyElementIdsForValidation(object validateThis);
+    bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 }
 
 public class Compendium : ICompendium
@@ -120,10 +53,8 @@ public class Compendium : ICompendium
     private Dictionary<string, string> _pastLevers;
 
   //  private Dictionary<string, Recipe> _recipeDict;
-    private Dictionary<string, Element> _elements;
     private Dictionary<string, Legacy> _legacies;
     private Dictionary<string, Ending> _endings;
-    private Dictionary<string, DeckSpec> _decks;
 
     private List<string> aspectIdsToValidate=new List<string>();
 
@@ -164,12 +95,11 @@ public class Compendium : ICompendium
         allEntityStores=new Dictionary<Type,EntityStore>();
         
     //    _recipeDict = new Dictionary<string, Recipe>();
-    _elements = new Dictionary<string, Element>();
+
     _legacies = new Dictionary<string, Legacy>();
     _endings = new Dictionary<string, Ending>();
     
        //  allEntities.Add(typeof(Recipe), _recipeDict);
-        allEntities.Add(typeof(Element), _elements);
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
 
@@ -177,6 +107,7 @@ public class Compendium : ICompendium
 
         allEntityStores.Add(typeof(BasicVerb), new EntityStore());
         allEntityStores.Add(typeof(DeckSpec), new EntityStore());
+        allEntityStores.Add(typeof(Element), new EntityStore());
         allEntityStores.Add(typeof(Recipe),new EntityStore());
 
 
@@ -192,7 +123,7 @@ public class Compendium : ICompendium
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
-        if (type == typeof(Recipe) || type==typeof(BasicVerb) || type == typeof(DeckSpec))
+        if (type == typeof(Recipe) || type==typeof(BasicVerb) || type == typeof(DeckSpec) ||  type == typeof(Element))
         {
            var entitiesStore = allEntityStores[type];
             entitiesStore.AddEntity(entity);
@@ -209,6 +140,9 @@ public class Compendium : ICompendium
 
     public void OnPostImport(ContentImportLog log)
     {
+
+        var elements = allEntityStores[typeof(Element)].GetAll();
+
         foreach (var d in allEntities.Values)
         {
             HashSet <IEntityWithId> entities= new HashSet<IEntityWithId>((IEnumerable<IEntityWithId>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
@@ -217,7 +151,9 @@ public class Compendium : ICompendium
                 e.OnPostImport(log,this);
 
 
-            var missingAspects = aspectIdsToValidate.Except(_elements.Keys);
+            
+
+            var missingAspects = aspectIdsToValidate.Except(elements.Keys);
             foreach (var missingAspect in missingAspects)
             {
               //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
@@ -234,7 +170,7 @@ public class Compendium : ICompendium
                 e.OnPostImport(log, this);
 
 
-            var missingAspects = aspectIdsToValidate.Except(_elements.Keys);
+            var missingAspects = aspectIdsToValidate.Except(elements.Keys);
             foreach (var missingAspect in missingAspects)
             {
                 //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
@@ -291,7 +227,6 @@ public class Compendium : ICompendium
     }
 
 
-    // -- Get All ------------------------------
 
     public List<T> GetEntitiesAsList<T>() where T: class, IEntityWithId
     {
@@ -302,10 +237,6 @@ public class Compendium : ICompendium
 
 
 
-    public Dictionary<string, Element> GetAllElementsAsDictionary() {
-        return _elements;
-    }
-
 
     public List<Legacy> GetAllLegacies() {
         return new List<Legacy>(_legacies.Values);
@@ -315,58 +246,47 @@ public class Compendium : ICompendium
         return new List<Ending>(_endings.Values);
     }
 
+    public bool EntityExists<T>(string entityId) where T : class, IEntityWithId
+    {
+        EntityStore entityStore = allEntityStores[typeof(T)];
 
-    public T GetEntityById<T> (string entityId) where T: class, IEntityWithId
+        return (entityStore.TryGetById(entityId, out T entity));
+
+    }
+
+    public T GetEntityById<T>(string entityId) where T : class, IEntityWithId
     {
         EntityStore entityStore = allEntityStores[typeof(T)];
 
         T entity;
 
-        if (entityStore.TryGetEntityById(entityId, out entity))
+        if (entityStore.TryGetById(entityId, out entity))
         {
+            if (typeof(T) == typeof(Element))
+            {
+                var element = entity as Element;
+                if (!string.IsNullOrEmpty(element.Lever))
+                {
+                    if (!_pastLevers.ContainsKey(element.Lever))
+                        return null;
+                    return GetEntityById<T>(_pastLevers[element.Lever]);
+                }
+
+                return entity;
+            }
+
             return entity;
+
         }
         else
         {
+
             NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
             return null;
         }
+
+
     }
-
-
-    public bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId
-    {
-        EntityStore entityStore = allEntityStores[typeof(T)];
-        return entityStore.TryGetEntityById(entityId, out entity);
-    }
-
-    public Boolean IsKnownElement(string elementId)
-    {
-        //return _elements.ContainsKey(elementId);
-
-        return (GetElementById(elementId) != null);
-    }
-
-    public Element GetElementById(string elementId) {
-        
-        Element element;
-        _elements.TryGetValue(elementId, out element);
-
-        if (element == null)
-            return null;
-
-        if (!string.IsNullOrEmpty(element.Lever))
-        {
-            if (!_pastLevers.ContainsKey(element.Lever))
-                return null;
-            else
-                return GetElementById(_pastLevers[element.Lever]);
-
-        }
-
-        return element;
-    }
-
 
 
 
@@ -415,9 +335,11 @@ public class Compendium : ICompendium
             r.Description = tr.ReplaceTextFor(r.Description);
         }
 
-        foreach (var k in _elements.Keys)
+        var elements = allEntityStores[typeof(Element)].GetAll();
+
+        foreach (var k in elements.Keys)
         {
-            var e = _elements[k] as Element;
+            var e = elements[k] as Element;
             e.Label = tr.ReplaceTextFor(e.Label);
             e.Description = tr.ReplaceTextFor(e.Description);
 
@@ -431,7 +353,7 @@ public class Compendium : ICompendium
         {
             foreach (var a in currentAspects.Where(a=>a.Value>0))
             { 
-                var e = GetElementById(a.Key);
+                var e = allEntityStores[typeof(Element)].GetById<Element>(a.Key);
                 try
                 {
                     //assume only one override, but out after
@@ -453,18 +375,16 @@ public class Compendium : ICompendium
     {
         const string FNORD = "FNORD";
 
-        var allElements = GetAllElementsAsDictionary();
+        var allElements = allEntityStores[typeof(Element)].GetAllAsList<Element>();
         string elementFnords = "";
         int elementFnordCount = 0;
-        foreach (var k in allElements.Keys)
+        foreach (var e in allElements)
         {
-            var thisElement = allElements[k];
-
-            if (thisElement.Label.ToUpper().Contains(FNORD)
-                || thisElement.Description.ToUpper().Contains(FNORD)
+            if (e.Label.ToUpper().Contains(FNORD)
+                || e.Description.ToUpper().Contains(FNORD)
             )
             {
-                elementFnords += (" " + k);
+                elementFnords += (" " + e.Id);
                 elementFnordCount++;
             }
         }
@@ -511,7 +431,7 @@ public class Compendium : ICompendium
 
 
 
-        foreach (var e in _elements.Values)
+        foreach (var e in  allEntityStores[typeof(Element)].GetAllAsList<Element>())
         {
             words += (e.Label.Count(char.IsWhiteSpace) + 1);
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
@@ -539,28 +459,27 @@ public class Compendium : ICompendium
     public void LogMissingImages(ContentImportLog log)
     {
         //check for missing images
-        var allElements = GetAllElementsAsDictionary();
+        var allElements = allEntityStores[typeof(Element)].GetAllAsList<Element>();
         string missingAspectImages = "";
         int missingAspectImageCount = 0;
         string missingElementImages = "";
         int missingElementImageCount = 0;
-        foreach (var k in allElements.Keys)
+        foreach (var e in allElements)
         {
-            var thisElement = allElements[k];
 
-            if (thisElement.IsAspect)
+            if (e.IsAspect)
             {
-                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(thisElement.Icon) == null || ResourcesManager.GetSpriteForAspect(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if ((!e.NoArtNeeded && !e.IsHidden) && (ResourcesManager.GetSpriteForAspect(e.Icon) == null || ResourcesManager.GetSpriteForAspect(e.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
-                    missingAspectImages += (" " + k);
+                    missingAspectImages += (" " + e.Id);
                     missingAspectImageCount++;
                 }
             }
             else
             {
-                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME)
+                if (!e.NoArtNeeded && ResourcesManager.GetSpriteForElement(e.Icon).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
-                    missingElementImages += (" " + k);
+                    missingElementImages += (" " + e.Id);
                     missingElementImageCount++;
                 }
             }

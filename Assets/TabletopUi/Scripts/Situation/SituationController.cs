@@ -464,7 +464,7 @@ namespace Assets.TabletopUi {
 
 
             foreach (var a in inducingAspects) {
-                var aspectElement = compendium.GetElementById(a.Key);
+                var aspectElement = compendium.GetEntityById<Element>(a.Key);
 
                 if (aspectElement != null)
                     PerformAspectInduction(aspectElement);
