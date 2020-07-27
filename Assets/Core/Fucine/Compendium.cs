@@ -81,13 +81,10 @@ public interface ICompendium
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
+   bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId;
     Dictionary<string,Element> GetAllElementsAsDictionary();
     Element GetElementById(string elementId);
     Boolean IsKnownElement(string elementId);
-
-    List<IVerb> GetAllVerbs();
-    BasicVerb GetVerbById(string verbId);
-    IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
 
     List<Ending> GetAllEndings();
     Ending GetEndingById(string endingFlag);
@@ -126,7 +123,6 @@ public class Compendium : ICompendium
 
   //  private Dictionary<string, Recipe> _recipeDict;
     private Dictionary<string, Element> _elements;
-    private Dictionary<string, BasicVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
     private Dictionary<string, Ending> _endings;
     private Dictionary<string, DeckSpec> _decks;
@@ -171,19 +167,19 @@ public class Compendium : ICompendium
         
     //    _recipeDict = new Dictionary<string, Recipe>();
     _elements = new Dictionary<string, Element>();
-    _verbs = new Dictionary<string, BasicVerb>();
     _legacies = new Dictionary<string, Legacy>();
     _endings = new Dictionary<string, Ending>();
     _decks = new Dictionary<string, DeckSpec>();
 
        //  allEntities.Add(typeof(Recipe), _recipeDict);
         allEntities.Add(typeof(Element), _elements);
-        allEntities.Add(typeof(BasicVerb), _verbs);
         allEntities.Add(typeof(Legacy), _legacies);
         allEntities.Add(typeof(Ending), _endings);
         allEntities.Add(typeof(DeckSpec), _decks);
 
 
+        var verbStore = new EntityStore();
+        allEntityStores.Add(typeof(BasicVerb), verbStore);
 
         var recipeStore = new EntityStore();
         allEntityStores.Add(typeof(Recipe),recipeStore);
@@ -193,11 +189,11 @@ public class Compendium : ICompendium
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
-        if (type == typeof(Recipe))
+        if (type == typeof(Recipe) || type==typeof(BasicVerb))
         {
             //       _recipes.Add(entity as Recipe);
-            var recipesStore = allEntityStores[typeof(Recipe)];
-            recipesStore.AddEntity(entity as Recipe);
+            var recipesStore = allEntityStores[type];
+            recipesStore.AddEntity(entity);
         }
         else
         {
@@ -302,13 +298,12 @@ public class Compendium : ICompendium
         return entityStore.GetAllAsList<T>();
     }
 
+
+
     public Dictionary<string, Element> GetAllElementsAsDictionary() {
         return _elements;
     }
 
-    public List<IVerb> GetAllVerbs() {
-        return new List<IVerb>(_verbs.Values);
-    }
 
     public List<IDeckSpec> GetAllDeckSpecs() {
         return new List<IDeckSpec>(_decks.Values);
@@ -322,7 +317,6 @@ public class Compendium : ICompendium
         return new List<Ending>(_endings.Values);
     }
 
-    // -- Get By Id ------------------------------
 
     public T GetEntityById<T> (string entityId) where T: class, IEntityWithId
     {
@@ -339,9 +333,13 @@ public class Compendium : ICompendium
             NoonUtility.Log("Can't find entity id '" + entityId + "' of type " + typeof(T));
             return null;
         }
-         
-            
+    }
 
+
+    public bool TryGetEntityById<T>(string entityId, out T entity) where T : class, IEntityWithId
+    {
+        EntityStore entityStore = allEntityStores[typeof(T)];
+        return entityStore.TryGetEntityById(entityId, out entity);
     }
 
     public Boolean IsKnownElement(string elementId)
@@ -371,12 +369,6 @@ public class Compendium : ICompendium
         return element;
     }
 
-    public BasicVerb GetVerbById(string verbId) {
-        BasicVerb verb;
-        _verbs.TryGetValue(verbId, out verb);
-
-        return verb;
-    }
 
     public DeckSpec GetDeckSpecById(string id) {
         DeckSpec deck;
@@ -421,17 +413,7 @@ public class Compendium : ICompendium
 
     // -- Assorted Methods ------------------------------
 
-    public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
-    {
-        var candidateVerb = GetVerbById(command.Recipe.ActionId);
 
-        if (candidateVerb != null)
-            return candidateVerb;
-
-        var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,command.Recipe.Description);
-
-        return createdVerb;
-    }
 	
     /// <summary>
     /// allow the character to specify levers (legacy event records)
@@ -556,10 +538,12 @@ public class Compendium : ICompendium
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var v in _verbs.Values)
+        foreach (var v in allEntityStores[typeof(BasicVerb)].GetAllAsList())
         {
-            words += (v.Label.Count(char.IsWhiteSpace) + 1);
-            words += (v.Description.Count(char.IsWhiteSpace) + 1);
+            var verb = (BasicVerb) v;
+
+            words += (verb.Label.Count(char.IsWhiteSpace) + 1);
+            words += (verb.Description.Count(char.IsWhiteSpace) + 1);
         }
 
         foreach (var l in _legacies.Values)

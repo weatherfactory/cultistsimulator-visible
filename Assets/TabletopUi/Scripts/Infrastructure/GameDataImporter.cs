@@ -308,7 +308,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 string verbId= htSituationValues[SaveConstants.SAVE_VERBID].ToString();
                 
-                IVerb situationVerb = compendium.GetVerbById(verbId);
+                IVerb situationVerb = compendium.GetEntityById<BasicVerb>(verbId);
 
                 //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
                 if (situationVerb == null && recipe==null)

@@ -338,7 +338,14 @@ namespace Assets.TabletopUi {
 
                     //take this opportunity to tidy stacks??
                 }
-                IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
+
+                IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(command.Recipe.ActionId);
+
+                if (verbForNewSituation == null)
+                    verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label, command.Recipe.Description);
+
+         
+
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
                 situationWindow.DisplayStoredElements();             //in case expulsions have removed anything

@@ -307,10 +307,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
-            var situationEffectCommand=new SituationEffectCommand(recipe,true,null);
+            IVerb verbForNewSituation = compendium.GetEntityById<BasicVerb>(recipe.Id);
+            if(verbForNewSituation==null)
+                verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
-        IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(situationEffectCommand);
-        SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
+            SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
         Registry.Retrieve<ITabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
         }
         else

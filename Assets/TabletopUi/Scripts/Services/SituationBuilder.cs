@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
 
             // build verbs
-            IVerb v = Registry.Retrieve<ICompendium>().GetVerbById(legacy.StartingVerbId);
+            IVerb v = Registry.Retrieve<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
                
  
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
