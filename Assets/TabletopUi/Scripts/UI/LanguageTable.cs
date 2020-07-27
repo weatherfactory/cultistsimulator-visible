@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Noon;
 using UnityEngine;
 
 class LocTriplet
@@ -39,7 +40,7 @@ class LocTriplet
 public class LanguageTable : MonoBehaviour
 {
 	public static string csvFile = "content/strings.csv";
-	public static string targetCulture = "en";
+	public static string targetCulture = NoonConstants.DEFAULT_CULTURE;
 
 	private static List<LocTriplet> locTriplets;
 	private static List<LocTriplet> cultures;

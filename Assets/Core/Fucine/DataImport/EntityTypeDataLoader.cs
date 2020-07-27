@@ -21,7 +21,7 @@ namespace Assets.Core.Fucine
         private readonly ContentImportLog _log;
         public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedTextValues { get; set; }
-        public string BaseCulture { get; } = "en";
+        public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
         public string CurrentCulture { get; set; }
 
 
@@ -46,19 +46,17 @@ namespace Assets.Core.Fucine
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
 
-            if (BaseCulture != CurrentCulture)
-            {
-                LoadLocDataForEntityType(contentFolder);
-            }
 
-            LoadCoreDataForEntityType(contentFolder);
+
+
+            LoadDataForEntityType(contentFolder);
 
 
             var contentImportForMods = new ContentImportForMods();
             contentImportForMods.ProcessContentItemsWithMods(new ArrayList(this.Entities), EntityFolderName);
         }
 
-        private void LoadLocDataForEntityType(string contentFolder)
+        private void LoadLocalisedDataForEntityType(string contentFolder)
         {
      
             string locFolder = contentFolder.Replace(NoonConstants.CORE_FOLDER_NAME, GetBaseFolderForLocalisedData());
@@ -155,8 +153,17 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void LoadCoreDataForEntityType(string contentFolder)
+        public void LoadDataForEntityType(string contentFolder)
         {
+            //load localised data if we're using a non-default culture.
+            //We'll use the unique field ids to replace data with localised data further on, if we find matching ids
+            if (BaseCulture != CurrentCulture)
+            {
+                LoadLocalisedDataForEntityType(contentFolder);
+            }
+
+
+
             var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
             if (coreContentFiles.Any())
                 coreContentFiles.Sort();
