@@ -67,10 +67,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Legacy chosenLegacyForCharacter;
             if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
                 chosenLegacyForCharacter =
-                    compendium.GetAllLegacies()
+                    compendium.GetEntitiesAsList<Legacy>()
                         .First(); //support active legacies for characters who preceded saved active legacies
             else
-                chosenLegacyForCharacter = compendium.GetLegacyById(chosenLegacyForCharacterId);
+                chosenLegacyForCharacter = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
 
             storage.ActiveLegacy = chosenLegacyForCharacter;
 
@@ -120,14 +120,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
             //load current ending, if it exists
             if (htSave.ContainsKey(SaveConstants.SAVE_CURRENTENDING))
-              crossSceneState.CurrentEnding =compendium.GetEndingById(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
+              crossSceneState.CurrentEnding =compendium.GetEntityById<Ending>(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
 
             //load legacies, if they exist
             var htLegacies = htSave.GetHashtable(SaveConstants.SAVE_AVAILABLELEGACIES);
             
             foreach (var k in htLegacies.Keys)
             {
-                Legacy l = compendium.GetLegacyById(k.ToString());
+                Legacy l = compendium.GetEntityById<Legacy>(k.ToString());
                 if(l!=null)
                     crossSceneState.AvailableLegacies.Add(l);
             }
@@ -140,10 +140,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 Legacy chosenLegacyForDefunctCharacter;
                 if (string.IsNullOrEmpty(chosenLegacyForDefunctCharacterId))
                     chosenLegacyForDefunctCharacter =
-                        compendium.GetAllLegacies()
+                        compendium.GetEntitiesAsList<Legacy>()
                             .First(); //support active legacies for characters who preceded saved active legacies
                 else
-                    chosenLegacyForDefunctCharacter = compendium.GetLegacyById(chosenLegacyForDefunctCharacterId);
+                    chosenLegacyForDefunctCharacter = compendium.GetEntityById<Legacy>(chosenLegacyForDefunctCharacterId);
 
                 Character defunctCharacter=new Character(chosenLegacyForDefunctCharacter);
 

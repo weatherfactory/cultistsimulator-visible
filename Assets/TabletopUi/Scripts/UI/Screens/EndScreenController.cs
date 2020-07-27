@@ -117,8 +117,7 @@ namespace Assets.CS.TabletopUI
 		{
 			Rect buttonRect = new Rect(5,5,200,20);
 			var compendium = Registry.Retrieve<ICompendium>();
-			List<Ending> endings = compendium.GetAllEndings();
-
+            List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
 			foreach (Ending ending in endings)
 			{
 				if (GUI.Button(buttonRect, ending.Id))

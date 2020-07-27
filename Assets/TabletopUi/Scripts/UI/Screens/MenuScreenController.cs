@@ -324,7 +324,7 @@ public class MenuScreenController : MonoBehaviour {
             return;
 		
         // Set the legacy to the first in the list; this should be the starting legacy
-        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
+        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>().First());
         // Load directly into the game scene, no legacy select
         LoadScene(SceneNumber.GameScene);
     }
@@ -395,7 +395,7 @@ public class MenuScreenController : MonoBehaviour {
     public void BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(string legacyId)
     {
         saveGameManager.DeleteCurrentSave();
-        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetLegacyById(legacyId));
+        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(legacyId));
         // Load directly into the game scene, no legacy select
         LoadScene(SceneNumber.GameScene);
     }

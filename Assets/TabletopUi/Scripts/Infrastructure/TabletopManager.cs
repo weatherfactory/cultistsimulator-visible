@@ -293,7 +293,7 @@ namespace Assets.CS.TabletopUI {
             if (chosenLegacy == null)
             {
                 NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
-                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+                chosenLegacy = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>().First();
                 CrossSceneState.SetChosenLegacy(chosenLegacy);
                 Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
             }
@@ -415,7 +415,7 @@ namespace Assets.CS.TabletopUI {
             if (CrossSceneState.GetChosenLegacy() != null)
                 character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
             else
-                character = new Character(compendium.GetAllLegacies().First());
+                character = new Character(compendium.GetEntitiesAsList<Legacy>().First());
 
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
@@ -706,7 +706,7 @@ namespace Assets.CS.TabletopUI {
 	            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
 	            /////
 	            if (storage.ActiveLegacy == null)
-	                storage.ActiveLegacy = compendium.GetAllLegacies().First();
+	                storage.ActiveLegacy = compendium.GetEntitiesAsList<Legacy>().First();
 	            /////
 	            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
 	            StatusBar.UpdateCharacterDetailsView(storage);

@@ -81,7 +81,7 @@ public class Character:IGameEntityStorage
             _pastLegacyEventRecords = new HistoryBuilder().FillInDefaultPast(new Dictionary<string, string>()),
             
             // Load in a default legacy, since it doesn't matter for the defunct character
-            ActiveLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First()
+            ActiveLegacy = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>().First()
         };
     }
 

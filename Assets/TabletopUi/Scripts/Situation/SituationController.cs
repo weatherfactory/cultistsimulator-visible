@@ -357,7 +357,7 @@ namespace Assets.TabletopUi {
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter, Registry.Retrieve<IDice>());
 
             if (!string.IsNullOrEmpty(command.Recipe.Ending)) {
-                var ending = compendium.GetEndingById(command.Recipe.Ending);
+                var ending = compendium.GetEntityById<Ending>(command.Recipe.Ending);
                 tabletopManager.EndGame(ending, this);
             }
 

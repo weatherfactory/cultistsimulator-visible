@@ -337,7 +337,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void BeginLegacy(string legacyId)
     {
-        var l = Registry.Retrieve<ICompendium>().GetAllLegacies().SingleOrDefault(leg => leg.Id == legacyId);
+        var l = Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(legacyId);
         if (l == null)
             return;
 
@@ -436,7 +436,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         var compendium = Registry.Retrieve<ICompendium>();
 
-        var ending = compendium.GetEndingById(endingId);
+        var ending = compendium.GetEntityById<Ending>(endingId);
 
         ending.Anim = endingAnimFXName;
 

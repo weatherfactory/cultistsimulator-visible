@@ -16,20 +16,14 @@ public interface ICompendium
     Recipe GetFirstRecipeForAspectsWithVerb(AspectsInContext aspectsInContext, string verb, Character character,bool getHintRecipes);
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
-
-
-    List<Ending> GetAllEndings();
-    Ending GetEndingById(string endingFlag);
-
-    List<Legacy> GetAllLegacies();
-    Legacy GetLegacyById(string legacyId);
+    bool TryAddEntity(IEntityWithId entity);
+    void AddEntity(string id, Type type, IEntityWithId entity);
+    bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 
     void SupplyLevers(IGameEntityStorage populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
-    bool TryAddEntity(IEntityWithId entity);
 
-    void AddEntity(string id, Type type, IEntityWithId entity);
     /// <summary>
     /// Run all second-stage populations that occur between / across entities
     /// </summary>
@@ -41,24 +35,20 @@ public interface ICompendium
     void CountWords(ContentImportLog log);
     void LogMissingImages(ContentImportLog log);
     void SupplyElementIdsForValidation(object validateThis);
-    bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
+    
 }
 
 public class Compendium : ICompendium
 {
-    private Dictionary<Type, IDictionary> allEntities;
+    
     private Dictionary<Type, EntityStore> allEntityStores;
 
-   // private List<Recipe> _recipes=new List<Recipe>();
-    private Dictionary<string, string> _pastLevers;
+ private Dictionary<string, string> _pastLevers;
 
-  //  private Dictionary<string, Recipe> _recipeDict;
-    private Dictionary<string, Legacy> _legacies;
-    private Dictionary<string, Ending> _endings;
 
     private List<string> aspectIdsToValidate=new List<string>();
 
-    private EntityStore getEntitiesStoreOfType(Type type)
+    private EntityStore entityStoreFor(Type type)
     {
         return allEntityStores[type];
     }
@@ -90,24 +80,14 @@ public class Compendium : ICompendium
 
     public void Reset()
     {
-        allEntities= new Dictionary<Type, IDictionary>();
 
         allEntityStores=new Dictionary<Type,EntityStore>();
-        
-    //    _recipeDict = new Dictionary<string, Recipe>();
-
-    _legacies = new Dictionary<string, Legacy>();
-    _endings = new Dictionary<string, Ending>();
-    
-       //  allEntities.Add(typeof(Recipe), _recipeDict);
-        allEntities.Add(typeof(Legacy), _legacies);
-        allEntities.Add(typeof(Ending), _endings);
-
-
 
         allEntityStores.Add(typeof(BasicVerb), new EntityStore());
         allEntityStores.Add(typeof(DeckSpec), new EntityStore());
         allEntityStores.Add(typeof(Element), new EntityStore());
+        allEntityStores.Add(typeof(Ending), new EntityStore());
+        allEntityStores.Add(typeof(Legacy), new EntityStore());
         allEntityStores.Add(typeof(Recipe),new EntityStore());
 
 
@@ -116,25 +96,15 @@ public class Compendium : ICompendium
     public bool TryAddEntity(IEntityWithId entityToAdd)
     {
         var type = entityToAdd.GetType();
-        var entitiesStore = allEntityStores[type];
+        var entitiesStore = entityStoreFor(type);
         return entitiesStore.TryAddEntity(entityToAdd);
 
     }
 
     public void AddEntity(string id, Type type, IEntityWithId entity)
     {
-        if (type == typeof(Recipe) || type==typeof(BasicVerb) || type == typeof(DeckSpec) ||  type == typeof(Element))
-        {
-           var entitiesStore = allEntityStores[type];
+           var entitiesStore = entityStoreFor(type);
             entitiesStore.AddEntity(entity);
-        }
-        else
-        {
-         
-        var entityStore = allEntities[type];
-        entityStore.Add(id,entity);
-
-        }
 
     }
 
@@ -143,25 +113,7 @@ public class Compendium : ICompendium
 
         var elements = allEntityStores[typeof(Element)].GetAll();
 
-        foreach (var d in allEntities.Values)
-        {
-            HashSet <IEntityWithId> entities= new HashSet<IEntityWithId>((IEnumerable<IEntityWithId>) d.Values); //we might modify the collection as it gets refined, so we need to copy it first
-
-            foreach (var e in entities)
-                e.OnPostImport(log,this);
-
-
-            
-
-            var missingAspects = aspectIdsToValidate.Except(elements.Keys);
-            foreach (var missingAspect in missingAspects)
-            {
-              //  if(!IsKnownElement(missingAspect))//double-checking that it is a genuinely missing element: there's extra logic to check if e.g. it's a lever or other token
-                    log.LogWarning("unknown element id specified: " + missingAspect);
-            }
-
-        }
-
+      
         foreach (var d in allEntityStores.Values)
         {
             var entityList = new List<IEntityWithId>(d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
@@ -180,26 +132,7 @@ public class Compendium : ICompendium
         }
     }
 
-    // -- Update Collections ------------------------------
-
-    //public void UpdateRecipes(List<Recipe> allRecipes)
-    //{
-    //    _recipes = allRecipes;
-        
-    //    foreach (var item in allRecipes) {
-    //        if (_recipeDict.ContainsKey(item.Id)) {
-    //            #if UNITY_EDITOR
-    //            UnityEngine.Debug.LogWarning("Duplicate Recipe Id " + item.Id + "! Skipping...");
-    //            #endif
-    //            continue;
-    //        }
-
-    //        _recipeDict.Add(item.Id, item);
-    //    }
-    //}
-
-    /// <summary>
-
+    
     /// </summary>
     /// <param name="aspects"></param>
     /// <param name="verb"></param>
@@ -212,7 +145,7 @@ public class Compendium : ICompendium
         aspectsInContext.ThrowErrorIfNotPopulated(verb);
         //for each recipe,
         //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-        var _recipes = getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>();
+        var _recipes = entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
         List<Recipe> candidateRecipes= _recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
         foreach (var recipe in candidateRecipes )
         {
@@ -237,15 +170,6 @@ public class Compendium : ICompendium
 
 
 
-
-    public List<Legacy> GetAllLegacies() {
-        return new List<Legacy>(_legacies.Values);
-    }
-
-    public List<Ending> GetAllEndings() {
-        return new List<Ending>(_endings.Values);
-    }
-
     public bool EntityExists<T>(string entityId) where T : class, IEntityWithId
     {
         EntityStore entityStore = allEntityStores[typeof(T)];
@@ -258,9 +182,7 @@ public class Compendium : ICompendium
     {
         EntityStore entityStore = allEntityStores[typeof(T)];
 
-        T entity;
-
-        if (entityStore.TryGetById(entityId, out entity))
+        if (entityStore.TryGetById(entityId, out T entity))
         {
                 if (!string.IsNullOrEmpty(entity.Lever) && _pastLevers.ContainsKey(entity.Lever))
                 {
@@ -268,7 +190,7 @@ public class Compendium : ICompendium
 
                 }
 
-           return entity;
+                return entity;
 
 
         }
@@ -282,29 +204,6 @@ public class Compendium : ICompendium
 
     }
 
-
-
-    public Legacy GetLegacyById(string legacyId) {
-        Legacy legacy;
-        _legacies.TryGetValue(legacyId, out legacy);
-
-        return legacy;
-    }
-
-    public Ending GetEndingById(string endingId)
-	{
-		Analytics.CustomEvent( "A_ENDING", new Dictionary<string,object>{ {"id",endingId} } );
-
-        Ending ending;
-		if (_endings.TryGetValue(endingId, out ending))
-		{
-			return ending;
-		}
-
-		return Ending.DefaultEnding();
-    }
-
-    // -- Assorted Methods ------------------------------
 
 
 	
@@ -383,7 +282,7 @@ public class Compendium : ICompendium
             }
         }
 
-        var allRecipes = getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>();
+        var allRecipes = entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
         string recipeFnords = "";
         int recipeFnordCount = 0;
         foreach (var r in allRecipes)
@@ -416,7 +315,7 @@ public class Compendium : ICompendium
     public void CountWords(ContentImportLog log)
     {
         int words = 0;
-        foreach (var r in getEntitiesStoreOfType(typeof(Recipe)).GetAllAsList<Recipe>())
+        foreach (var r in entityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>())
         {
             words += (r.Label.Count(char.IsWhiteSpace) + 1);
             words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
@@ -431,7 +330,7 @@ public class Compendium : ICompendium
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var v in allEntityStores[typeof(BasicVerb)].GetAllAsList())
+        foreach (var v in allEntityStores[typeof(BasicVerb)].GetAllAsList<BasicVerb>())
         {
             var verb = (BasicVerb) v;
 
@@ -439,7 +338,7 @@ public class Compendium : ICompendium
             words += (verb.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var l in _legacies.Values)
+        foreach (var l in entityStoreFor(typeof(Legacy)).GetAllAsList<Legacy>())
         {
             words += (l.Label.Count(char.IsWhiteSpace) + 1);
             words += (l.StartDescription.Count(char.IsWhiteSpace) + 1);

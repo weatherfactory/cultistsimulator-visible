@@ -23,7 +23,7 @@ namespace Assets.Logic
 
 
             //try to find a legacy that matches the death.
-            Legacy deathDependentLegacy = _compendium.GetAllLegacies().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
+            Legacy deathDependentLegacy = _compendium.GetEntitiesAsList<Legacy>().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
 
             //there should be one! but in case there's not, log it, and get prepped to draw an extra random legacy.
             if (deathDependentLegacy == null)
@@ -41,7 +41,7 @@ namespace Assets.Logic
             //- available for random draw
             //- not the death-dependent legacy, if there is one
             //- not excluded by the death-dependent legacy
-            IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(
+            IEnumerable<Legacy> drawingLegacies = _compendium.GetEntitiesAsList<Legacy>().Where(
                     l => l.AvailableWithoutEndingMatch
                          && (deathDependentLegacy == null || !deathDependentLegacy.ExcludesOnEnding.Contains(l.Id)))
                 .OrderBy(l => rnd.Next()).ToList();
