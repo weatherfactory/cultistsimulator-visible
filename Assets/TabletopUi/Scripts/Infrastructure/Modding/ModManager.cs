@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using Assets.Core.Fucine;
 using Noon;
 using UnityEngine;
 
@@ -15,6 +18,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt") ;
 
+        /// <summary>
+        /// TODO: base this on importable types
+        /// </summary>
         private readonly HashSet<string> _entityCategories = new HashSet<string>
         {
             "decks",
@@ -25,6 +31,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             "verbs"
         };
 
+        /// <summary>
+        /// TODO: base this on importable type tags
+        /// </summary>
         private readonly HashSet<string> _imagesDirectories = new HashSet<string>
         {
             "burnImages/",
@@ -47,8 +56,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             IsActive = isActive;
         }
 
-        public void LoadAll()
+        public void LoadAllIfActive()
         {
+            //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
+
             // Don't do anything if it is currently disabled
             if (!IsActive)
             {
@@ -61,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             if (!Directory.Exists(ModsPath))
             {
                 Directory.CreateDirectory(ModsPath);
-                NoonUtility.Log("Mods folder not found, creating", messageLevel: 1);
+                NoonUtility.Log($"Mods folder not found, creating it at {ModsPath}", messageLevel: 1);
             }
 
             // Load the mod data from the file system
@@ -84,6 +95,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                         messageLevel: 2);
                     continue;
                 }
+                //TODO: refactor to JSON.NET
                 var manifestData = SimpleJsonImporter.Import(File.ReadAllText(manifestPath));
                 if (manifestData == null)
                 {
@@ -210,8 +222,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 string.Join("\n", Mods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
         }
 
-        public IEnumerable<Hashtable> GetContentForCategory(string category)
+        public IEnumerable<Hashtable> LoadContentForEntityType(Type forEntityType)
         {
+            FucineImportable importableAttributeForEntityType =
+                (FucineImportable)forEntityType.GetCustomAttribute(typeof(FucineImportable), false);
+
+
             var categoryContent = new List<Hashtable>();
 
             if (!IsActive)
@@ -223,9 +239,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             {
                 if (!mod.Value.Enabled)
                     continue;
-                if (!mod.Value.Contents.ContainsKey(category)) 
+                if (!mod.Value.Contents.ContainsKey(importableAttributeForEntityType.TaggedAs)) 
                     continue;
-                foreach (var entry in mod.Value.Contents[category])
+                foreach (var entry in mod.Value.Contents[importableAttributeForEntityType.TaggedAs])
                     categoryContent.Add(entry.DeepClone());
             }
 

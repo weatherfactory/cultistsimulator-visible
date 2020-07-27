@@ -1,4 +1,4 @@
-#if MODS
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -164,4 +164,3 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
     }
 }
-#endif

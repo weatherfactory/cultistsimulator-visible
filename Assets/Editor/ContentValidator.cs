@@ -6,9 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.Core;
 using Assets.CS.TabletopUI;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-#endif
 using Noon;
 using UnityEditor;
 using UnityEngine;

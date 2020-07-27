@@ -1,4 +1,4 @@
-#if MODS
+
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
     public enum DependencyOperator
@@ -10,4 +10,3 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         Equal
     }
 }
-#endif

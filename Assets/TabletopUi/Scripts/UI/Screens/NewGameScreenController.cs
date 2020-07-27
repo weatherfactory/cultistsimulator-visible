@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-#endif
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,11 +38,11 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             var registry = new Registry();
-#if MODS
+
             var modManager = new ModManager(true);
-            modManager.LoadAll();
+            modManager.LoadAllIfActive();
             registry.Register(modManager);
-#endif
+
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new CompendiumLoader();

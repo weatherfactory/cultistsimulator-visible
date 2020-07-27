@@ -5,9 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-#endif
 using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
@@ -172,7 +170,6 @@ public class ResourcesManager: MonoBehaviour
     
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
-#if MODS
         // Try to find the image in a mod first, in case it overrides an existing one
         var modManager = Registry.Retrieve<ModManager>();
         var modSprite = modManager.GetSprite(folder + file);
@@ -180,7 +177,6 @@ public class ResourcesManager: MonoBehaviour
         {
             return modSprite;
         }
-#endif
 
         // Try to load the image from the packed resources next, and show the placeholder if not found
         var sprite = Resources.Load<Sprite>(folder + file);

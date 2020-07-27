@@ -28,8 +28,8 @@ namespace Assets.Core.Fucine.DataImport
             get => _uniqueId;
         }
 
-
         public Hashtable ValuesTable { get; set; }
+
 
         public EntityData()
         {

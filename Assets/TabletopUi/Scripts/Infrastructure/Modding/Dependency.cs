@@ -1,4 +1,3 @@
-#if MODS
 using System;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
@@ -9,5 +8,3 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public DependencyOperator VersionOperator;
         public Version Version;
     }
-}
-#endif

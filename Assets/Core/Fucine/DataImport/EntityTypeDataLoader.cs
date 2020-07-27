@@ -15,6 +15,12 @@ namespace Assets.Core.Fucine
     {
         private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
 
+        private static readonly string MODS_CONTENT_DIR = Path.Combine(Application.persistentDataPath, "mods");
+
+        private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
+        
+        private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
+
 
         public readonly Type EntityType;
         public readonly string EntityFolderName;
@@ -42,25 +48,39 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void LoadDataForEntities()
+        public void LoadCoreData()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
 
+            var coreEntitiesLoaded= GetDataForEntityType(contentFolder);
+            Entities.AddRange(coreEntitiesLoaded);
 
+            
+ 
 
+        }
 
-            LoadDataForEntityType(contentFolder);
+        public void LoadModData()
+        {
+            //#IN PROGRESS
+            //get each active mod
+            //load data from it
+            //replace as appropriate
 
+            var moddedContentFolder = MODS_CONTENT_DIR + EntityFolderName; //this won't work: it needs the subfolder for each mod
 
-            var contentImportForMods = new ContentImportForMods();
-            contentImportForMods.ProcessContentItemsWithMods(new ArrayList(this.Entities), EntityFolderName);
+            var moddedEntitiesLoaded=GetDataForEntityType(moddedContentFolder)
+
+          //  var contentImportForMods = new ContentImportForMods();
+           // contentImportForMods.UpdateEntityDataFromMods(new ArrayList(this.Entities), EntityType);
         }
 
       
 
 
-        public void LoadDataForEntityType(string contentFolder)
+        public List<EntityData> GetDataForEntityType(string contentFolder)
         {
+            List<EntityData> entitiesLoaded=new List<EntityData>();
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data further on, if we find matching ids
             if (BaseCulture != CurrentCulture)
@@ -79,10 +99,7 @@ namespace Assets.Core.Fucine
 
             foreach (var contentFile in coreContentFiles)
             {
-                //json string for each content file - in English initially
-             //   var json = File.ReadAllText(contentFile);
 
-                // read JSON directly from a file
                 using ( StreamReader file = File.OpenText(contentFile))
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
@@ -113,15 +130,19 @@ namespace Assets.Core.Fucine
 
                             var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
 
-                            Entities.Add(entityData);
+                            entitiesLoaded.Add(entityData);
                         }
                     }
                     catch (Exception e)
                     {
                         _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
                     }
+
+                   
                 }
             }
+
+            return entitiesLoaded;
         }
 
 

@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
@@ -15,10 +17,14 @@ namespace Assets.Core
 {
     class ContentImportForMods
     {
-        public ArrayList ProcessContentItemsWithMods(ArrayList items, string contentOfType)
+        public ArrayList UpdateEntityDataFromMods(ArrayList items, Type forEntityType)
         {
+
+            FucineImportable importableAttributeForEntityType =
+                (FucineImportable)forEntityType.GetCustomAttribute(typeof(FucineImportable), false);
+
             var modManager = Registry.Retrieve<ModManager>();
-            var moddedItems = modManager.GetContentForCategory(contentOfType);
+            var moddedItems = modManager.LoadContentForEntityType(forEntityType);
             foreach (var moddedItem in moddedItems)
             {
                 var moddedItemId = moddedItem.GetString("id");

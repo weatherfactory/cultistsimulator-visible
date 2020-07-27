@@ -15,9 +15,8 @@ using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;    
-#endif
+
 using Noon;
 using TabletopUi.Scripts.Services;
 using TabletopUi.Scripts.UI;
@@ -192,15 +191,12 @@ public class MenuScreenController : MonoBehaviour {
 	{
         var registry = new Registry();
 
-#if MODS
         _modManager = new ModManager(true);
-        _modManager.LoadAll();
+        _modManager.LoadAllIfActive();
         registry.Register(_modManager);
         BuildDlcPanel();
         BuildModsPanel();
-#else
-        modsButton.enabled = false;
-#endif
+
 
 		InitialiseContent();	// Moved content into its own function, so it can happen again after language select if necessary
 
@@ -481,7 +477,7 @@ public class MenuScreenController : MonoBehaviour {
         dlcUnavailableLabel.SetActive(store == Storefront.Itch && !hasAnyDlc);
     }
     
-#if MODS
+
     private void BuildModsPanel()
     {
         // Clear the list and repopulate with one entry per loaded mod
@@ -496,7 +492,6 @@ public class MenuScreenController : MonoBehaviour {
         }
         modEmptyMessage.enabled = !_modManager.Mods.Any();
     }
-#endif
     
     public void CloseCurrentOverlay() {
         if (!canTakeInput)

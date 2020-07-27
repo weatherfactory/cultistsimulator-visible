@@ -13,11 +13,6 @@ public class DebugLoadCompendium : MonoBehaviour
         SetupServices();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 	private void SetupServices()
 	{

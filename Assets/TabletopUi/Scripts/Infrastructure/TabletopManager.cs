@@ -15,9 +15,7 @@ using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
-#if MODS
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
-#endif
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.UI;
@@ -389,7 +387,6 @@ namespace Assets.CS.TabletopUI {
         {
             
             var modManager = new ModManager(true);
-            modManager.LoadAll();
             registry.Register(modManager);
 
             var compendium = new Compendium();

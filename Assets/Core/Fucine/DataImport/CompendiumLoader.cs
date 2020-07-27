@@ -57,7 +57,10 @@ public class CompendiumLoader
         List<EntityTypeDataLoader> dataLoaders=new List<EntityTypeDataLoader>();
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
-        
+
+
+        Registry.Retrieve<ModManager>().LoadAllIfActive();
+
         foreach (Type type in assembly.GetTypes())
         {
             FucineImportable importableAttribute =
@@ -76,9 +79,10 @@ public class CompendiumLoader
        foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
         {
             
-                dataLoaderForEntityType.LoadDataForEntities();
+                dataLoaderForEntityType.LoadCoreData();
+                dataLoaderForEntityType.LoadModData();
 
-                foreach (EntityData entityData in dataLoaderForEntityType.Entities)
+            foreach (EntityData entityData in dataLoaderForEntityType.Entities)
                 {
                     IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dataLoaderForEntityType.EntityType, entityData, _log);
                     if(!compendiumToPopulate.TryAddEntity(newEntity))
