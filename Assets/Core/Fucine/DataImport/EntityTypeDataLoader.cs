@@ -11,11 +11,12 @@ using UnityEngine;
 
 namespace Assets.Core.Fucine
 {
-    public class DataLoaderForEntityType
+    public class EntityTypeDataLoader
     {
         private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
 
 
+        public readonly Type EntityType;
         public readonly string EntityFolderName;
         private readonly ContentImportLog _log;
         public List<EntityData> Entities { get; set; }
@@ -30,8 +31,9 @@ namespace Assets.Core.Fucine
         }
 
 
-        public DataLoaderForEntityType(string entityFolderName, string currentCulture, ContentImportLog log)
+        public EntityTypeDataLoader(Type entityType,string entityFolderName, string currentCulture, ContentImportLog log)
         {
+            EntityType = entityType;
             EntityFolderName = entityFolderName;
             _log = log;
             this.CurrentCulture = currentCulture;
@@ -40,7 +42,7 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void LoadEntityDataFromJson()
+        public void LoadDataForEntities()
         {
             var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
 

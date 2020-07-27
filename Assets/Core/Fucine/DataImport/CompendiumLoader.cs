@@ -54,33 +54,41 @@ public class CompendiumLoader
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
+        List<EntityTypeDataLoader> dataLoaders=new List<EntityTypeDataLoader>();
+        List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
-        var importableTypes =
-            assembly.GetTypes().Where(t => t.GetCustomAttribute(typeof(FucineImportable), false) != null);
-
-        compendiumToPopulate.InitialiseForEntityTypes(importableTypes);
-
-
-       foreach (Type T in compendiumToPopulate.GetEntityTypes())
+        
+        foreach (Type type in assembly.GetTypes())
         {
-            FucineImportable importableAttribute = (FucineImportable) T.GetCustomAttribute(typeof(FucineImportable), false);
-               
+            FucineImportable importableAttribute =
+                (FucineImportable) type.GetCustomAttribute(typeof(FucineImportable), false);
+            if (importableAttribute != null)
+            {
+                dataLoaders.Add(new EntityTypeDataLoader(type,importableAttribute.TaggedAs, LanguageTable.targetCulture, _log));
+                importableEntityTypes.Add(type);
+            }
+        }
 
-                 DataLoaderForEntityType dataLoaderForEntityType = new DataLoaderForEntityType(importableAttribute.TaggedAs, LanguageTable.targetCulture,_log);
 
-                dataLoaderForEntityType.LoadEntityDataFromJson();
+        compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
 
+
+       foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
+        {
+            
+                dataLoaderForEntityType.LoadDataForEntities();
 
                 foreach (EntityData entityData in dataLoaderForEntityType.Entities)
                 {
-                    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(T, entityData, _log);
-                    compendiumToPopulate.AddEntity(newEntity.Id,T, newEntity);
+                    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dataLoaderForEntityType.EntityType, entityData, _log);
+                    if(!compendiumToPopulate.TryAddEntity(newEntity))
+                        _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
                 }
 
 
-            if (_log.GetMessages().Any(m => m.MessageLevel > 1))
-                //found a serious problem: bug out and report.
-                return _log;
+                if (_log.GetMessages().Any(m => m.MessageLevel > 1))
+                    //found a serious problem: bug out and report.
+                    return _log;
         }
 
 

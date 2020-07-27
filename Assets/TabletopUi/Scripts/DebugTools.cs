@@ -17,11 +17,11 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 #endif
 using Assets.TabletopUi.Scripts.Services;
-using Noon;
 using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.VR;
+using static Noon.NoonUtility;
 
 public class DebugTools : MonoBehaviour,IRollOverride
 {
@@ -373,22 +373,22 @@ public class DebugTools : MonoBehaviour,IRollOverride
            var startImport = DateTime.Now;
            var log=compendiumLoader.PopulateCompendium(existingCompendium);
         foreach(var m in log.GetMessages())
-            NoonUtility.Log(m.Description,m.MessageLevel);
+            Log(m.Description,m.MessageLevel);
 
-           NoonUtility.Log("Total time to import: " + (DateTime.Now-startImport));
+        Log("Total time to import: " + (DateTime.Now-startImport));
 
-           // Populate current decks with new cards (this will shuffle the deck)
-           IGameEntityStorage storage = Registry.Retrieve<Character>();
-           foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
-           {
+        // Populate current decks with new cards (this will shuffle the deck)
+        IGameEntityStorage storage = Registry.Retrieve<Character>();
+        foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
+        {
                
-               if (storage.GetDeckInstanceById(ds.Id) == null)
-               {
-                   IDeckInstance di = new DeckInstance(ds);
-                   storage.DeckInstances.Add(di);
-                   di.Reset();
-               }
-           }
+            if (storage.GetDeckInstanceById(ds.Id) == null)
+            {
+                IDeckInstance di = new DeckInstance(ds);
+                storage.DeckInstances.Add(di);
+                di.Reset();
+            }
+        }
 
            
 
@@ -401,7 +401,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var log=new ContentImportLog();
         compendium.CountWords(log);
         foreach (var m in log.GetMessages())
-            NoonUtility.Log(m.Description, m.MessageLevel);
+            Log(m.Description, m.MessageLevel);
 
     }
 
@@ -411,7 +411,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var log = new ContentImportLog();
         compendium.LogFnords(log);
         foreach (var m in log.GetMessages())
-            NoonUtility.Log(m.Description, m.MessageLevel);
+            Log(m.Description, m.MessageLevel);
 
     }
 
@@ -422,7 +422,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var log = new ContentImportLog();
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
-            NoonUtility.Log(m.Description, m.MessageLevel);
+            Log(m.Description, m.MessageLevel);
 
     }
 
@@ -463,10 +463,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var character= Registry.Retrieve<Character>();
         foreach(var di in character.DeckInstances)
         {di.Reset();
-            NoonUtility.Log("Reset " + di.Id + " - now contains ");
+            Log("Reset " + di.Id + " - now contains ");
             foreach (var card in di.GetCurrentCardsAsList())
             {
-                NoonUtility.Log(card + "\n" );
+                Log(card + "\n" );
             }
         }
     }
@@ -529,14 +529,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         if (!CheckDebugSaveExists(index))
             return;
-        File.Delete(NoonUtility.GetGameSaveLocation(index + 1));
+        File.Delete(GetGameSaveLocation(index + 1));
         loadButtons[index].interactable = false;
         delButtons[index].interactable = false;
     }
 
     private bool CheckDebugSaveExists(int index)
     {
-        return File.Exists(NoonUtility.GetGameSaveLocation(index + 1));
+        return File.Exists(GetGameSaveLocation(index + 1));
     }
 }
 

@@ -17,7 +17,6 @@ public interface ICompendium
     List<T> GetEntitiesAsList<T>() where T : class, IEntityWithId;
     T GetEntityById<T>(string entityId) where  T: class,IEntityWithId;
     bool TryAddEntity(IEntityWithId entity);
-    void AddEntity(string id, Type type, IEntityWithId entity);
     bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 
     void SupplyLevers(IGameEntityStorage populatedCharacter);
@@ -105,12 +104,6 @@ public class Compendium : ICompendium
 
     }
 
-    public void AddEntity(string id, Type type, IEntityWithId entity)
-    {
-           var entitiesStore = entityStoreFor(type);
-            entitiesStore.AddEntity(entity);
-
-    }
 
     public void OnPostImport(ContentImportLog log)
     {

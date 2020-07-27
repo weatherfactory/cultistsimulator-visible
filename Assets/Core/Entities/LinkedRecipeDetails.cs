@@ -38,15 +38,6 @@ namespace Assets.Core.Entities
         {
         }
 
-        //public LinkedRecipeDetails(string id, int chance, bool additional, Expulsion expulsion,
-        //    Dictionary<string, string> Challenges)
-        //{
-        //    Additional = additional;
-        //    _id = id;
-        //    Chance = chance;
-        //    Expulsion = expulsion;
-        //    this.Challenges = Challenges ?? new Dictionary<string, string>();
-        //}
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
@@ -59,7 +50,7 @@ namespace Assets.Core.Entities
 
                 Recipe internalRecipe = new Recipe(entityData, log);
 
-                populatedCompendium.AddEntity(internalRecipe.Id, typeof(Recipe), internalRecipe);
+                populatedCompendium.TryAddEntity(internalRecipe);
 
                 internalRecipe.OnPostImport(log, populatedCompendium); //this will log any issues with the import
             }
