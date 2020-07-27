@@ -118,9 +118,8 @@ private void ValidationComplete()
 //        WatcherQueue.NeedsRevalidation = false;
 //        AsyncContentImportResult result;
 
-//#if MODS
 //        new Registry().Register(new ModManager(false));
-//#endif
+
 //        var contentImporter = new ContentImporter();
 //        var contentImportMessages = contentImporter.PopulateCompendium(new Compendium());
 //        var importantMessages = contentImportMessages.Where(i => i.MessageLevel > 0).ToList();

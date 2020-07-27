@@ -24,9 +24,9 @@ namespace Assets.Editor
             EditorUtils.ClearConsole();
 
             NoonUtility.Log("-- Checking content files for errors --");
-#if MODS
+
             new Registry().Register(new ModManager(false));
-#endif
+
             var contentImporter = new CompendiumLoader();
             var messages = contentImporter.PopulateCompendium(new Compendium());
 

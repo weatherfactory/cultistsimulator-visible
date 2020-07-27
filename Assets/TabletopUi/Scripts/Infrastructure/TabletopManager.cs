@@ -388,11 +388,10 @@ namespace Assets.CS.TabletopUI {
         private ContentImportLog ImportContent(Registry registry)
         {
             
-#if MODS
             var modManager = new ModManager(true);
             modManager.LoadAll();
             registry.Register(modManager);
-#endif
+
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
 
