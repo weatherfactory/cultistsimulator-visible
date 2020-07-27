@@ -56,101 +56,7 @@ namespace Assets.Core.Fucine
             contentImportForMods.ProcessContentItemsWithMods(new ArrayList(this.Entities), EntityFolderName);
         }
 
-        private void LoadLocalisedDataForEntityType(string contentFolder)
-        {
-     
-            string locFolder = contentFolder.Replace(NoonConstants.CORE_FOLDER_NAME, GetBaseFolderForLocalisedData());
-
-            var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
-            if (locContentFiles.Any())
-                locContentFiles.Sort();
-
-
-            foreach (var locContentFile in locContentFiles)
-            {
-                using (StreamReader file = File.OpenText(locContentFile))
-                using (JsonTextReader reader = new JsonTextReader(file))
-                {
-                
-                    try
-                    {
-
-                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
-                        var containerProperty =
-                            topLevelObject.Properties()
-                                .First(); //there should be exactly one property, which contains all the relevant entities
-                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-                        var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
-
-
-                        foreach (var eachObject in topLevelArrayList)
-                        {
-                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
-
-                            foreach (var eachProperty in ((JObject) eachObject).Properties())
-                            {
-                                var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
-
-                                RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
-
-
-                            }
-
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        _log.LogProblem("This file broke: " + locContentFile + " with error " + e.Message);
-                    }
-                }
-
-            }
-
-        }
-
-        private void RegisterLocalisedValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder)
-        {
-  
-
-            if (jtoken.Type == JTokenType.Object) {
-
-                FucineUniqueIdBuilder subObjectBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
-
-                foreach (JProperty jProperty in ((JObject) jtoken).Properties())
-                {
-                    var subPropertyBuilder = new FucineUniqueIdBuilder(jProperty, subObjectBuilder);
-                    RegisterLocalisedValues(jProperty.Value, subPropertyBuilder);
-                
-                }
-            }
-
-            else if (jtoken.Type == JTokenType.Array)
-            {
-
-                FucineUniqueIdBuilder arrayBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
-
-                foreach (var item in ((JArray)jtoken))
-                {
-                    RegisterLocalisedValues(item, arrayBuilder);
-                }
-            }
-
-            else if(jtoken.Type == JTokenType.String)
-            {
-                FucineUniqueIdBuilder builder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
-
-              LocalisedTextValues.Add(builder.UniqueId, ((string)jtoken));
-
-            }
-
-            else
-
-            {
-                throw new ApplicationException("Unexpected jtoken type for localised data: " + jtoken.Type);
-            }
-        
-        }
+      
 
 
         public void LoadDataForEntityType(string contentFolder)
@@ -303,7 +209,102 @@ namespace Assets.Core.Fucine
             }
         }
 
+        private void LoadLocalisedDataForEntityType(string contentFolder)
+        {
 
+            string locFolder = contentFolder.Replace(NoonConstants.CORE_FOLDER_NAME, GetBaseFolderForLocalisedData());
+
+            var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
+            if (locContentFiles.Any())
+                locContentFiles.Sort();
+
+
+            foreach (var locContentFile in locContentFiles)
+            {
+                using (StreamReader file = File.OpenText(locContentFile))
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+
+                    try
+                    {
+
+                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                        var containerProperty =
+                            topLevelObject.Properties()
+                                .First(); //there should be exactly one property, which contains all the relevant entities
+                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
+
+                        var topLevelArrayList = (JArray)topLevelObject[EntityFolderName];
+
+
+                        foreach (var eachObject in topLevelArrayList)
+                        {
+                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+
+                            foreach (var eachProperty in ((JObject)eachObject).Properties())
+                            {
+                                var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
+
+                                RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+
+
+                            }
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        _log.LogProblem("This file broke: " + locContentFile + " with error " + e.Message);
+                    }
+                }
+
+            }
+
+        }
+
+        private void RegisterLocalisedValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder)
+        {
+
+
+            if (jtoken.Type == JTokenType.Object)
+            {
+
+                FucineUniqueIdBuilder subObjectBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
+
+                foreach (JProperty jProperty in ((JObject)jtoken).Properties())
+                {
+                    var subPropertyBuilder = new FucineUniqueIdBuilder(jProperty, subObjectBuilder);
+                    RegisterLocalisedValues(jProperty.Value, subPropertyBuilder);
+
+                }
+            }
+
+            else if (jtoken.Type == JTokenType.Array)
+            {
+
+                FucineUniqueIdBuilder arrayBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
+
+                foreach (var item in ((JArray)jtoken))
+                {
+                    RegisterLocalisedValues(item, arrayBuilder);
+                }
+            }
+
+            else if (jtoken.Type == JTokenType.String)
+            {
+                FucineUniqueIdBuilder builder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
+
+                LocalisedTextValues.Add(builder.UniqueId, ((string)jtoken));
+
+            }
+
+            else
+
+            {
+                throw new ApplicationException("Unexpected jtoken type for localised data: " + jtoken.Type);
+            }
+
+        }
 
 
 
