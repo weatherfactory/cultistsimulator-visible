@@ -29,19 +29,21 @@ public interface ICompendium
     /// </summary>
     void OnPostImport(ContentImportLog log);
 
-    void InitialiseForTypes(IEnumerable<Type> entityTypes);
+    void InitialiseForEntityTypes(IEnumerable<Type> entityTypes);
+    IEnumerable<Type> GetEntityTypes();
 
     void LogFnords(ContentImportLog log);
     void CountWords(ContentImportLog log);
     void LogMissingImages(ContentImportLog log);
     void SupplyElementIdsForValidation(object validateThis);
-    
+
+
 }
 
 public class Compendium : ICompendium
 {
     
-    private Dictionary<Type, EntityStore> allEntityStores;
+    private Dictionary<Type, EntityStore> entityStores;
 
  private Dictionary<string, string> _pastLevers;
 
@@ -50,7 +52,7 @@ public class Compendium : ICompendium
 
     private EntityStore entityStoreFor(Type type)
     {
-        return allEntityStores[type];
+        return entityStores[type];
     }
 
 
@@ -76,24 +78,23 @@ public class Compendium : ICompendium
     /// A Compendium is initialised with all the entity types it'll contain
     /// </summary>
     /// <param name="entityTypes"></param>
-    public void InitialiseForTypes(IEnumerable<Type> entityTypes)
+    public void InitialiseForEntityTypes(IEnumerable<Type> entityTypes)
     {
-
-        allEntityStores=new Dictionary<Type,EntityStore>();
-
-
+        entityStores=new Dictionary<Type,EntityStore>();
+        
         foreach(Type t in entityTypes)
         {
-            allEntityStores.Add(t,new EntityStore());
+            if(!typeof(IEntityWithId).IsAssignableFrom(t))
+                throw new ApplicationException($"Type {t.Name} doesn't implement {nameof(IEntityWithId)} - it shouldn't be specified to compendium as an entity type");
+            entityStores.Add(t,new EntityStore());
         }
-        //allEntityStores.Add(typeof(BasicVerb), new EntityStore());
-        //allEntityStores.Add(typeof(DeckSpec), new EntityStore());
-        //allEntityStores.Add(typeof(Element), new EntityStore());
-        //allEntityStores.Add(typeof(Ending), new EntityStore());
-        //allEntityStores.Add(typeof(Legacy), new EntityStore());
-        //allEntityStores.Add(typeof(Recipe),new EntityStore());
+        
+    }
 
-
+    public IEnumerable<Type> GetEntityTypes()
+    {
+        var allEntityTypes = entityStores.Keys;
+        return new List<Type>(allEntityTypes);
     }
 
     public bool TryAddEntity(IEntityWithId entityToAdd)
@@ -114,10 +115,10 @@ public class Compendium : ICompendium
     public void OnPostImport(ContentImportLog log)
     {
 
-        var elements = allEntityStores[typeof(Element)].GetAll();
+        var elements = entityStores[typeof(Element)].GetAll();
 
       
-        foreach (var d in allEntityStores.Values)
+        foreach (var d in entityStores.Values)
         {
             var entityList = new List<IEntityWithId>(d.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first
 
@@ -166,7 +167,7 @@ public class Compendium : ICompendium
 
     public List<T> GetEntitiesAsList<T>() where T: class, IEntityWithId
     {
-        EntityStore entityStore = allEntityStores[typeof(T)];
+        EntityStore entityStore = entityStores[typeof(T)];
 
         return entityStore.GetAllAsList<T>();
     }
@@ -175,7 +176,7 @@ public class Compendium : ICompendium
 
     public bool EntityExists<T>(string entityId) where T : class, IEntityWithId
     {
-        EntityStore entityStore = allEntityStores[typeof(T)];
+        EntityStore entityStore = entityStores[typeof(T)];
 
         return (entityStore.TryGetById(entityId, out T entity));
 
@@ -183,7 +184,7 @@ public class Compendium : ICompendium
 
     public T GetEntityById<T>(string entityId) where T : class, IEntityWithId
     {
-        EntityStore entityStore = allEntityStores[typeof(T)];
+        EntityStore entityStore = entityStores[typeof(T)];
 
         if (entityStore.TryGetById(entityId, out T entity))
         {
@@ -221,7 +222,7 @@ public class Compendium : ICompendium
         _pastLevers = populatedCharacter.GetAllPastLegacyEventRecords();
         TokenReplacer tr = new TokenReplacer(populatedCharacter,this);
 
-        EntityStore recipesStore = allEntityStores[typeof(Recipe)];
+        EntityStore recipesStore = entityStores[typeof(Recipe)];
 
         foreach (var r in recipesStore.GetAllAsList<Recipe>())
         {
@@ -231,7 +232,7 @@ public class Compendium : ICompendium
             r.Description = tr.ReplaceTextFor(r.Description);
         }
 
-        var elements = allEntityStores[typeof(Element)].GetAll();
+        var elements = entityStores[typeof(Element)].GetAll();
 
         foreach (var k in elements.Keys)
         {
@@ -249,7 +250,7 @@ public class Compendium : ICompendium
         {
             foreach (var a in currentAspects.Where(a=>a.Value>0))
             { 
-                var e = allEntityStores[typeof(Element)].GetById<Element>(a.Key);
+                var e = entityStores[typeof(Element)].GetById<Element>(a.Key);
                 try
                 {
                     //assume only one override, but out after
@@ -271,7 +272,7 @@ public class Compendium : ICompendium
     {
         const string FNORD = "FNORD";
 
-        var allElements = allEntityStores[typeof(Element)].GetAllAsList<Element>();
+        var allElements = entityStores[typeof(Element)].GetAllAsList<Element>();
         string elementFnords = "";
         int elementFnordCount = 0;
         foreach (var e in allElements)
@@ -327,13 +328,13 @@ public class Compendium : ICompendium
 
 
 
-        foreach (var e in  allEntityStores[typeof(Element)].GetAllAsList<Element>())
+        foreach (var e in  entityStores[typeof(Element)].GetAllAsList<Element>())
         {
             words += (e.Label.Count(char.IsWhiteSpace) + 1);
             words += (e.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        foreach (var v in allEntityStores[typeof(BasicVerb)].GetAllAsList<BasicVerb>())
+        foreach (var v in entityStores[typeof(BasicVerb)].GetAllAsList<BasicVerb>())
         {
             var verb = (BasicVerb) v;
 
@@ -355,7 +356,7 @@ public class Compendium : ICompendium
     public void LogMissingImages(ContentImportLog log)
     {
         //check for missing images
-        var allElements = allEntityStores[typeof(Element)].GetAllAsList<Element>();
+        var allElements = entityStores[typeof(Element)].GetAllAsList<Element>();
         string missingAspectImages = "";
         int missingAspectImageCount = 0;
         string missingElementImages = "";

@@ -58,10 +58,10 @@ public class CompendiumLoader
         var importableTypes =
             assembly.GetTypes().Where(t => t.GetCustomAttribute(typeof(FucineImportable), false) != null);
 
-        compendiumToPopulate.InitialiseForTypes(importableTypes);
+        compendiumToPopulate.InitialiseForEntityTypes(importableTypes);
 
 
-       foreach (Type T in importableTypes)
+       foreach (Type T in compendiumToPopulate.GetEntityTypes())
         {
             FucineImportable importableAttribute = (FucineImportable) T.GetCustomAttribute(typeof(FucineImportable), false);
                
