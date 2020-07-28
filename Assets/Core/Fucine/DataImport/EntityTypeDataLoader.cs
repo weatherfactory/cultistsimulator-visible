@@ -25,7 +25,8 @@ namespace Assets.Core.Fucine
         public readonly Type EntityType;
         public readonly string EntityTag;
         private readonly ContentImportLog _log;
-        private List<LoadedContentFile> _contentFiles=new List<LoadedContentFile>();
+        private List<LoadedContentFile> _coreContentFiles=new List<LoadedContentFile>();
+        private List<LoadedContentFile> _locContentFiles = new List<LoadedContentFile>();
         public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedTextValues { get; set; }
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
@@ -46,9 +47,10 @@ namespace Assets.Core.Fucine
         }
 
 
-    public void SupplyLoadedContentFiles(IEnumerable<LoadedContentFile> filesToAdd)
+    public void SupplyContentFiles(IEnumerable<LoadedContentFile> coreContentFiles,IEnumerable<LoadedContentFile> locContentFiles)
         {
-            _contentFiles.AddRange(filesToAdd);
+            _coreContentFiles.AddRange(coreContentFiles);
+            _locContentFiles.AddRange(locContentFiles);
         }
 
         public void LoadCoreData()
@@ -79,15 +81,15 @@ namespace Assets.Core.Fucine
         {
             List<EntityData> entitiesLoaded=new List<EntityData>();
             //load localised data if we're using a non-default culture.
-            //We'll use the unique field ids to replace data with localised data further on, if we find matching ids
-            //if (BaseCulture != CurrentCulture)
-            //{
-            //    LoadLocalisedDataForEntityType(locContentFiles);
-            //}
+            //We'll use the unique field ids to replace data with localised data down in UnpackToken, if we find matching ids
+            if (BaseCulture != CurrentCulture)
+            {
+                LoadLocalisedDataForEntityType();
+            }
 
 
 
-            foreach (var contentFile in _contentFiles)
+            foreach (var contentFile in _coreContentFiles)
             {
 
                             var containerBuilder = new FucineUniqueIdBuilder(contentFile.EntityContainer);
@@ -203,35 +205,21 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void LoadLocalisedDataForEntityType(List<string> locContentFiles)
+        private void LoadLocalisedDataForEntityType()
         {
 
 
 
-            foreach (var locContentFile in locContentFiles)
+            foreach (var locContentFile in _locContentFiles)
             {
-                using (StreamReader file = File.OpenText(locContentFile))
-                using (JsonTextReader reader = new JsonTextReader(file))
-                {
-
-                    try
-                    {
-
-                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
-                        var containerProperty =
-                            topLevelObject.Properties()
-                                .First(); //there should be exactly one property, which contains all the relevant entities
-                        //check that the entity in the file matches the tag; if it doesn't, skip this file
-                        //This is probably pretty inefficient, so TODO rework
-                        //also this arrowhead is probably good to refactor with the core entity loading
-                        if (containerProperty.Name.ToLowerInvariant() == EntityTag.ToLowerInvariant())
-                        {
-                            var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-                            var topLevelArrayList = (JArray) topLevelObject[EntityTag];
 
 
-                            foreach (var eachObject in topLevelArrayList)
+                            var containerBuilder = new FucineUniqueIdBuilder(locContentFile.EntityContainer);
+
+                            var topLevelArrayList = (JArray)locContentFile.EntityContainer.Value;
+
+
+                    foreach (var eachObject in topLevelArrayList)
                             {
                                 var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
@@ -242,13 +230,7 @@ namespace Assets.Core.Fucine
                                     RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
                                 }
                             }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        _log.LogProblem("This file broke: " + locContentFile + " with error " + e.Message);
-                    }
-                }
+
 
             }
 

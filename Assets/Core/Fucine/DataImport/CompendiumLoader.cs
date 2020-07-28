@@ -83,7 +83,12 @@ public class CompendiumLoader
         foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders.Values)
         {
 
-            dataLoaderForEntityType.SupplyLoadedContentFiles(coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag));
+            var coreContentFiles= coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag);
+            var locContentFiles =
+                locContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag);
+
+
+            dataLoaderForEntityType.SupplyContentFiles(coreContentFiles, locContentFiles);
 
             
             dataLoaderForEntityType.LoadCoreData();
