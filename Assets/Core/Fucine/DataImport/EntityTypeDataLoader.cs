@@ -31,10 +31,7 @@ namespace Assets.Core.Fucine
         public string CurrentCulture { get; set; }
 
 
-        public string GetBaseFolderForLocalisedData()
-        {
-            return NoonConstants.LOC_FOLDER_PREFIX + CurrentCulture;
-        }
+
 
 
         public EntityTypeDataLoader(Type entityType,string entityFolderName, string currentCulture, ContentImportLog log)
@@ -48,11 +45,9 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void LoadCoreData()
+        public void LoadCoreData(List<string> coreContentFiles, List<string> locContentFiles)
         {
-            var contentFolder = CORE_CONTENT_DIR + EntityFolderName;
-
-            var coreEntitiesLoaded= GetDataForEntityType(contentFolder);
+            var coreEntitiesLoaded= GetDataForEntityType(coreContentFiles, locContentFiles);
             Entities.AddRange(coreEntitiesLoaded);
 
             
@@ -60,45 +55,39 @@ namespace Assets.Core.Fucine
 
         }
 
-        public void LoadModData()
-        {
-            //#IN PROGRESS
-            //get each active mod
-            //load data from it
-            //replace as appropriate
+        //public void LoadModData()
+        //{
+        //    //#IN PROGRESS
+        //    //get each active mod
+        //    //load data from it
+        //    //replace as appropriate
 
-            var moddedContentFolder = MODS_CONTENT_DIR + EntityFolderName; //this won't work: it needs the subfolder for each mod
+        //    var moddedContentFolder = MODS_CONTENT_DIR + EntityFolderName; //this won't work: it needs the subfolder for each mod
 
-            var moddedEntitiesLoaded = GetDataForEntityType(moddedContentFolder);
+        //    var moddedEntitiesLoaded = GetDataForEntityType(moddedContentFolder);
 
-            //  var contentImportForMods = new ContentImportForMods();
-            // contentImportForMods.UpdateEntityDataFromMods(new ArrayList(this.Entities), EntityType);
-        }
+        //    //  var contentImportForMods = new ContentImportForMods();
+        //    // contentImportForMods.UpdateEntityDataFromMods(new ArrayList(this.Entities), EntityType);
+        //}
 
       
 
 
-        public List<EntityData> GetDataForEntityType(string contentFolder)
+        private List<EntityData> GetDataForEntityType(List<string> coreContentFiles,List<string> locContentFiles)
         {
             List<EntityData> entitiesLoaded=new List<EntityData>();
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data further on, if we find matching ids
             if (BaseCulture != CurrentCulture)
             {
-                LoadLocalisedDataForEntityType(contentFolder);
+                LoadLocalisedDataForEntityType(locContentFiles);
             }
 
 
 
-            var coreContentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
-            if (coreContentFiles.Any())
-                coreContentFiles.Sort();
-            else
-                _log.LogProblem("Can't find any " + EntityFolderName + " to import as content");
-
-
             foreach (var contentFile in coreContentFiles)
             {
+                //TODO: filter out only the ones that match the entity type
 
                 using ( StreamReader file = File.OpenText(contentFile))
                 using (JsonTextReader reader = new JsonTextReader(file))
@@ -109,28 +98,34 @@ namespace Assets.Core.Fucine
                         var containerProperty =
                             topLevelObject.Properties()
                                 .First(); //there should be exactly one property, which contains all the relevant entities
-                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
-
-                        var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
-
-
-                        foreach (var eachObject in topLevelArrayList)
+                        //check that the entity in the file matches the tag; if it doesn't, skip this file
+                        //This is probably pretty inefficient, so TODO rework
+                        if(containerProperty.Name.ToLowerInvariant()==EntityFolderName.ToLowerInvariant())
                         {
-                            var eachObjectHashtable = new Hashtable();
-
-                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+                            var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
 
-                            foreach (var eachProperty in ((JObject) eachObject).Properties())
+                            var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+
+
+                            foreach (var eachObject in topLevelArrayList)
                             {
-                                eachObjectHashtable.Add(eachProperty.Name.ToLower(),
-                                    UnpackToken(eachProperty, entityBuilder));
+                                var eachObjectHashtable = new Hashtable();
+
+                                var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+
+
+                                foreach (var eachProperty in ((JObject) eachObject).Properties())
+                                {
+                                    eachObjectHashtable.Add(eachProperty.Name.ToLower(),
+                                        UnpackToken(eachProperty, entityBuilder));
+                                }
+
+                                var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
+
+                                entitiesLoaded.Add(entityData);
                             }
-
-                            var entityData = new EntityData(entityBuilder.UniqueId,eachObjectHashtable);
-
-                            entitiesLoaded.Add(entityData);
                         }
                     }
                     catch (Exception e)
@@ -230,14 +225,9 @@ namespace Assets.Core.Fucine
             }
         }
 
-        private void LoadLocalisedDataForEntityType(string contentFolder)
+        private void LoadLocalisedDataForEntityType(List<string> locContentFiles)
         {
 
-            string locFolder = contentFolder.Replace(NoonConstants.CORE_FOLDER_NAME, GetBaseFolderForLocalisedData());
-
-            var locContentFiles = Directory.GetFiles(locFolder).ToList().FindAll(f => f.EndsWith(".json"));
-            if (locContentFiles.Any())
-                locContentFiles.Sort();
 
 
             foreach (var locContentFile in locContentFiles)
@@ -253,24 +243,27 @@ namespace Assets.Core.Fucine
                         var containerProperty =
                             topLevelObject.Properties()
                                 .First(); //there should be exactly one property, which contains all the relevant entities
-                        var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-                        var topLevelArrayList = (JArray)topLevelObject[EntityFolderName];
-
-
-                        foreach (var eachObject in topLevelArrayList)
+                        //check that the entity in the file matches the tag; if it doesn't, skip this file
+                        //This is probably pretty inefficient, so TODO rework
+                        //also this arrowhead is probably good to refactor with the core entity loading
+                        if (containerProperty.Name.ToLowerInvariant() == EntityFolderName.ToLowerInvariant())
                         {
-                            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+                            var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
-                            foreach (var eachProperty in ((JObject)eachObject).Properties())
+                            var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+
+
+                            foreach (var eachObject in topLevelArrayList)
                             {
-                                var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
+                                var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
-                                RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+                                foreach (var eachProperty in ((JObject) eachObject).Properties())
+                                {
+                                    var propertyBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
 
-
+                                    RegisterLocalisedValues(eachProperty.Value, propertyBuilder);
+                                }
                             }
-
                         }
                     }
                     catch (Exception e)

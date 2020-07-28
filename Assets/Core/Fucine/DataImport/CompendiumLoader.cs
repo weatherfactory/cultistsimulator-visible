@@ -36,6 +36,7 @@ public class CompendiumLoader
 {
     
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+    private static readonly string LOC_CONTENT_DIR = Application.streamingAssetsPath + "/content/core_[culture]/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
     readonly ContentImportLog _log=new ContentImportLog();
@@ -55,11 +56,17 @@ public class CompendiumLoader
     {
         List<string> contentFiles = new List<string>();
         //find all the content files
-        contentFiles.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(".json")));
-        foreach (var subdirectory in Directory.GetDirectories(path))
-            contentFiles.AddRange(GetContentFilesRecursive(subdirectory));
-
+        if(Directory.Exists(path))
+        {
+            contentFiles.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(".json")));
+            foreach (var subdirectory in Directory.GetDirectories(path))
+                contentFiles.AddRange(GetContentFilesRecursive(subdirectory));
+        }
         return contentFiles;
+    }
+    private string GetBaseFolderForLocalisedData(string culture)
+    {
+        return LOC_CONTENT_DIR.Replace("[culture]", culture);
     }
 
 
@@ -73,8 +80,14 @@ public class CompendiumLoader
         //find all the content files
         var coreContentFiles = GetContentFilesRecursive(CORE_CONTENT_DIR);
 
-        //find all the loc files
+        if (coreContentFiles.Any())
+            coreContentFiles.Sort();
 
+        //find all the loc files
+        var locContentPath = GetBaseFolderForLocalisedData(LanguageTable.targetCulture);
+        var locContentFiles = GetContentFilesRecursive(locContentPath);
+            if(locContentFiles.Any())
+                locContentFiles.Sort();
         //find all the mod files
 
 
@@ -101,7 +114,7 @@ public class CompendiumLoader
         foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
         {
             
-                dataLoaderForEntityType.LoadCoreData();
+                dataLoaderForEntityType.LoadCoreData(coreContentFiles,locContentFiles);
              //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dataLoaderForEntityType.Entities)
