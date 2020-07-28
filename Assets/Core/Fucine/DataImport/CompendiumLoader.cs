@@ -51,6 +51,17 @@ public class CompendiumLoader
     }
 
 
+    private List<string> GetContentFilesRecursive(string path)
+    {
+        List<string> contentFiles = new List<string>();
+        //find all the content files
+        contentFiles.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(".json")));
+        foreach (var subdirectory in Directory.GetDirectories(path))
+            contentFiles.AddRange(GetContentFilesRecursive(subdirectory));
+
+        return contentFiles;
+    }
+
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
@@ -59,7 +70,16 @@ public class CompendiumLoader
         var assembly = Assembly.GetExecutingAssembly();
 
 
-        Registry.Retrieve<ModManager>().LoadAllIfActive();
+        //find all the content files
+        var coreContentFiles = GetContentFilesRecursive(CORE_CONTENT_DIR);
+
+        //find all the loc files
+
+        //find all the mod files
+
+
+
+
 
         foreach (Type type in assembly.GetTypes())
         {
@@ -72,11 +92,13 @@ public class CompendiumLoader
             }
         }
 
-
+        //We've identified the entity types: now set the compendium up for these
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
 
 
-       foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
+
+
+        foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
         {
             
                 dataLoaderForEntityType.LoadCoreData();

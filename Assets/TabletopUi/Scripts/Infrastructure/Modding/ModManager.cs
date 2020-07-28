@@ -10,6 +10,10 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
+    /// <summary>
+    /// Handles location, enablement and manifest verification of mods
+    /// Actual entity loading is handled by the entity data loading classes
+    /// </summary>
     public class ModManager
     {
         private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
