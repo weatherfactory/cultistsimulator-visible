@@ -39,7 +39,7 @@ namespace Assets.CS.TabletopUI {
         void Start() {
             var registry = new Registry();
 
-            var modManager = new ModManager(true);
+            var modManager = new ModManager();
             modManager.LoadAllIfActive();
             registry.Register(modManager);
 

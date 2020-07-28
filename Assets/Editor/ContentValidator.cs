@@ -23,7 +23,7 @@ namespace Assets.Editor
 
             NoonUtility.Log("-- Checking content files for errors --");
 
-            new Registry().Register(new ModManager(false));
+            new Registry().Register(new ModManager());
 
             var contentImporter = new CompendiumLoader();
             var messages = contentImporter.PopulateCompendium(new Compendium());

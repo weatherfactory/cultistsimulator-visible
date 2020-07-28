@@ -16,15 +16,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public void ToggleActivation()
         {
             var modManager = Registry.Retrieve<ModManager>();
-            modManager.SetModEnabled(_mod.Id, !_mod.Enabled);
-            UpdateActivationState();
+            _mod.Enabled = !_mod.Enabled;
+            modManager.SetModEnableState(_mod.Id, _mod.Enabled);
+            UpdateEnablementDisplay();
             
-            // Update the compendium content
-            var registry = new Registry();
-            var compendium = new Compendium();
-            registry.Register<ICompendium>(compendium);
-            var contentImporter = new CompendiumLoader();
-            contentImporter.PopulateCompendium(compendium);
         }
         
         public void Initialize(Mod mod)
@@ -32,10 +27,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             _mod = mod;
             title.text = mod.Name + " (" + mod.Version + ")";
             description.text = mod.Description;
-            UpdateActivationState();
+            UpdateEnablementDisplay();
         }
 
-        private void UpdateActivationState()
+        private void UpdateEnablementDisplay()
         {
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
             activationToggleBabel.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");

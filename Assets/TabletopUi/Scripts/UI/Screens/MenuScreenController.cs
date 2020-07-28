@@ -80,9 +80,9 @@ public class MenuScreenController : MonoBehaviour {
 
     GameSaveManager saveGameManager;
 
-#if MODS    
+  
     private ModManager _modManager;
-#endif
+
 
 
     private static readonly MenuDlcEntry.Spec[] DlcEntrySpecs =
@@ -145,9 +145,7 @@ public class MenuScreenController : MonoBehaviour {
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
 
-
-
-
+        
         InitialiseServices();
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
@@ -191,7 +189,7 @@ public class MenuScreenController : MonoBehaviour {
 	{
         var registry = new Registry();
 
-        _modManager = new ModManager(true);
+        _modManager = new ModManager();
         _modManager.LoadAllIfActive();
         registry.Register(_modManager);
         BuildDlcPanel();
@@ -223,8 +221,8 @@ public class MenuScreenController : MonoBehaviour {
 		var compendium = new Compendium();
 		registry.Register<ICompendium>(compendium);
 
-		var contentImporter = new CompendiumLoader();
-		contentImporter.PopulateCompendium(compendium);
+		var compendiumLoader = new CompendiumLoader();
+		compendiumLoader.PopulateCompendium(compendium);
 
 		cultureContentLoaded = LanguageTable.targetCulture;
 	}
@@ -442,12 +440,11 @@ public class MenuScreenController : MonoBehaviour {
 
     public void ShowModsPanel()
     {
-#if MODS
         if (!canTakeInput)
             return;
         
         ShowOverlay(modsPanel);
-#endif
+
     }
 
     public void ShowStartDLCLegacyConfirmPanel(string legacyId)

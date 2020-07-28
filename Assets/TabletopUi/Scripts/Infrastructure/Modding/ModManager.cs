@@ -48,23 +48,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         
         public Dictionary<string, Mod> Mods { get; }
         
-        public bool IsActive { get; set; }
 
-        public ModManager(bool isActive)
+        public ModManager()
         {
             Mods = new Dictionary<string, Mod>();
-            IsActive = isActive;
         }
 
         public void LoadAllIfActive()
         {
             //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
 
-            // Don't do anything if it is currently disabled
-            if (!IsActive)
-            {
-                return;
-            }
             
             Mods.Clear();
 
@@ -122,16 +115,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
                 // Collect the mod's content files
                 // If an error occurs in the process, discard the mod
-                if (!LoadContentDirectory(mod, Path.Combine(modFolder, "content")))
-                {
-                    NoonUtility.Log(
-                        "Encountered errors in content, skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
+                //commented out - not checking until we load the mod
+                //if (!LoadContentDirectory(mod, Path.Combine(modFolder, "content")))
+                //{
+                //    NoonUtility.Log(
+                //        "Encountered errors in content, skipping mod",
+                //        messageLevel: 2);
+                //    continue;
+                //}
 
                 // Collect the mod's images
                 // If an error occurs in the process, discard the mod
+                //commented out - not checking until we load the mod
                 if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
                 {
                     NoonUtility.Log(
@@ -201,12 +196,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             }
         }
 
-        public void SetModEnabled(string modId, bool enabled)
+        public void SetModEnableState(string modId, bool enable)
         {
             if (!Mods.ContainsKey(modId))
                 return;
 
-            Mods[modId].Enabled = enabled;
+            Mods[modId].Enabled = enable;
             SaveEnabledModList();
         }
 
@@ -230,10 +225,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             var categoryContent = new List<Hashtable>();
 
-            if (!IsActive)
-            {
-                return categoryContent;
-            }
             
             foreach (var mod in Mods)
             {
@@ -250,10 +241,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public Sprite GetSprite(string spriteResourceName)
         {
-            if (!IsActive)
-            {
-                return null;
-            }
             
             foreach (var mod in Mods.Values)
             {

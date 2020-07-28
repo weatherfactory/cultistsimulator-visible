@@ -8,3 +8,4 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public DependencyOperator VersionOperator;
         public Version Version;
     }
+}

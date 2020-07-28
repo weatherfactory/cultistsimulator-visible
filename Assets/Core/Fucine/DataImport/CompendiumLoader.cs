@@ -80,7 +80,7 @@ public class CompendiumLoader
         {
             
                 dataLoaderForEntityType.LoadCoreData();
-                dataLoaderForEntityType.LoadModData();
+             //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dataLoaderForEntityType.Entities)
                 {

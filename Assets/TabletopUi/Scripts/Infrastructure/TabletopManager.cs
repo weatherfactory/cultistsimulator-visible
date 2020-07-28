@@ -386,7 +386,7 @@ namespace Assets.CS.TabletopUI {
         private ContentImportLog ImportContent(Registry registry)
         {
             
-            var modManager = new ModManager(true);
+            var modManager = new ModManager();
             registry.Register(modManager);
 
             var compendium = new Compendium();

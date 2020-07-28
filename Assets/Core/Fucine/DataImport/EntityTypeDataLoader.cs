@@ -69,10 +69,10 @@ namespace Assets.Core.Fucine
 
             var moddedContentFolder = MODS_CONTENT_DIR + EntityFolderName; //this won't work: it needs the subfolder for each mod
 
-            var moddedEntitiesLoaded=GetDataForEntityType(moddedContentFolder)
+            var moddedEntitiesLoaded = GetDataForEntityType(moddedContentFolder);
 
-          //  var contentImportForMods = new ContentImportForMods();
-           // contentImportForMods.UpdateEntityDataFromMods(new ArrayList(this.Entities), EntityType);
+            //  var contentImportForMods = new ContentImportForMods();
+            // contentImportForMods.UpdateEntityDataFromMods(new ArrayList(this.Entities), EntityType);
         }
 
       

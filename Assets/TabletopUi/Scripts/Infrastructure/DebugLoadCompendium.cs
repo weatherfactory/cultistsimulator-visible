@@ -17,7 +17,7 @@ public class DebugLoadCompendium : MonoBehaviour
 	private void SetupServices()
 	{
         var registry = new Registry();
-        registry.Register(new ModManager(false));
+        registry.Register(new ModManager());
         var compendium = new Compendium();
         var contentImporter = new CompendiumLoader();
        var messages= contentImporter.PopulateCompendium(compendium);
