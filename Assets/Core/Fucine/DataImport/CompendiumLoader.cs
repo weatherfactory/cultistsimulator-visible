@@ -29,12 +29,105 @@ using UnityEngine.UIElements;
 using UnityEditor;
 #endif
 
+public class LoadedContentFile
+{
+    private readonly string _entityTag;
 
+    /// <summary>
+    /// Path of the original file
+    /// </summary>
+    public string Path { get; private set; }
+    /// <summary>
+    /// JSON.NET object containing json for entities of the tagged type
+    /// </summary>
+    public JProperty EntityContainer { get; private set; }
+
+    /// <summary>
+    /// eg recipes, elements...
+    /// </summary>
+    public string EntityTag => _entityTag.ToLower();
+
+    public LoadedContentFile(string path, JProperty entityContainer, string entityTag)
+    {
+        Path = path;
+        EntityContainer = entityContainer;
+        _entityTag = entityTag;
+    }
+}
+
+public class ContentFileLoader
+{
+    public readonly string ContentFolder;
+    private List<string> _contentFilePaths=new List<string>();
+    private List<LoadedContentFile> _loadedContentFiles=new List<LoadedContentFile>();
+
+
+    private List<string> GetContentFilesRecursive(string path)
+    {
+        List<string> contentFilePaths = new List<string>();
+        //find all the content files
+        if (Directory.Exists(path))
+        {
+            contentFilePaths.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(".json")));
+            foreach (var subdirectory in Directory.GetDirectories(path))
+                contentFilePaths.AddRange(GetContentFilesRecursive(subdirectory));
+        }
+        return contentFilePaths;
+    }
+
+
+    public IEnumerable<LoadedContentFile> GetLoadedContentFilesContainingEntityTag(string entityTag)
+    {
+        IEnumerable<LoadedContentFile> matchingFiles = _loadedContentFiles.Where(lcf => lcf.EntityTag == entityTag.ToLower());
+
+        return matchingFiles;
+    }
+
+    public ContentFileLoader(string contentFolder)
+    {
+        ContentFolder = contentFolder;
+    }
+
+    public void LoadContentFiles()
+    {
+        //find all the content files
+        _contentFilePaths = GetContentFilesRecursive(ContentFolder);
+
+        if (_contentFilePaths.Any())
+            _contentFilePaths.Sort();
+
+        foreach (var contentFilePath in _contentFilePaths)
+        {
+            using (StreamReader file = File.OpenText(contentFilePath))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+
+                var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                var containerProperty =
+                    topLevelObject.Properties().First(); //there should be exactly one property, which contains all the relevant entities
+
+                LoadedContentFile loadedFile=new LoadedContentFile(contentFilePath,containerProperty,containerProperty.Name);
+
+                _loadedContentFiles.Add(loadedFile);
+
+                 }
+
+        }
+    }
+
+
+
+    public List<string> ContentFiles()
+    {
+        return new List<string>(_contentFilePaths);
+    }
+
+}
 
 
 public class CompendiumLoader
 {
-    
+
     private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
     private static readonly string LOC_CONTENT_DIR = Application.streamingAssetsPath + "/content/core_[culture]/";
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
@@ -51,24 +144,7 @@ public class CompendiumLoader
             select match.Groups[1].Value;
     }
 
-
-    private List<string> GetContentFilesRecursive(string path)
-    {
-        List<string> contentFiles = new List<string>();
-        //find all the content files
-        if(Directory.Exists(path))
-        {
-            contentFiles.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(".json")));
-            foreach (var subdirectory in Directory.GetDirectories(path))
-                contentFiles.AddRange(GetContentFilesRecursive(subdirectory));
-        }
-        return contentFiles;
-    }
-    private string GetBaseFolderForLocalisedData(string culture)
-    {
-        return LOC_CONTENT_DIR.Replace("[culture]", culture);
-    }
-
+    
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
@@ -76,22 +152,14 @@ public class CompendiumLoader
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
 
+        var coreContentFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
 
-        //find all the content files
-        var coreContentFiles = GetContentFilesRecursive(CORE_CONTENT_DIR);
+        var locContentFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
 
-        if (coreContentFiles.Any())
-            coreContentFiles.Sort();
+        coreContentFileLoader.LoadContentFiles();
+        locContentFileLoader.LoadContentFiles();
 
-
-        //find all the loc files
-        var locContentPath = GetBaseFolderForLocalisedData(LanguageTable.targetCulture);
-                var locContentFiles = GetContentFilesRecursive(locContentPath);
-                    if(locContentFiles.Any())
-                        locContentFiles.Sort();
-                //find all the mod files
-
-                    
+        
 
         foreach (Type type in assembly.GetTypes())
         {
@@ -107,31 +175,15 @@ public class CompendiumLoader
 
         //We've identified the entity types: now set the compendium up for these
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
-
-        //get containers for all of them, pop em in a dictionary
-        Dictionary<string, JProperty> coreEntityContainers = new Dictionary<string, JProperty>();
-        foreach (var contentFile in coreContentFiles)
-        {
-            using (StreamReader file = File.OpenText(contentFile))
-            using (JsonTextReader reader = new JsonTextReader(file))
-            {
-
-                var topLevelObject = (JObject)JToken.ReadFrom(reader);
-                var containerProperty =
-                    topLevelObject.Properties()
-                        .First(); //there should be exactly one property, which contains all the relevant entities
-                dataLoaders[containerProperty.Name.ToLower()].AddEntityContainer(containerProperty);
-
-            }
-
-
-        }
-
+        
 
         foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders.Values)
         {
+
+            dataLoaderForEntityType.SupplyLoadedContentFiles(coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag));
+
             
-            dataLoaderForEntityType.LoadCoreData(locContentFiles);
+            dataLoaderForEntityType.LoadCoreData();
              //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dataLoaderForEntityType.Entities)

@@ -25,7 +25,7 @@ namespace Assets.Core.Fucine
         public readonly Type EntityType;
         public readonly string EntityTag;
         private readonly ContentImportLog _log;
-        List<JProperty> entityContainers =new List<JProperty>();
+        private List<LoadedContentFile> _contentFiles=new List<LoadedContentFile>();
         public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedTextValues { get; set; }
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
@@ -46,14 +46,14 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void AddEntityContainer(JProperty containerToAdd)
+    public void SupplyLoadedContentFiles(IEnumerable<LoadedContentFile> filesToAdd)
         {
-            entityContainers.Add(containerToAdd);
+            _contentFiles.AddRange(filesToAdd);
         }
 
-        public void LoadCoreData(List<string> locContentFiles)
+        public void LoadCoreData()
         {
-            var coreEntitiesLoaded= GetDataForEntityType(locContentFiles);
+            var coreEntitiesLoaded= GetDataForEntityType();
             Entities.AddRange(coreEntitiesLoaded);
         }
 
@@ -75,25 +75,25 @@ namespace Assets.Core.Fucine
       
 
 
-        private List<EntityData> GetDataForEntityType(List<string> locContentFiles)
+        private List<EntityData> GetDataForEntityType()
         {
             List<EntityData> entitiesLoaded=new List<EntityData>();
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data further on, if we find matching ids
-            if (BaseCulture != CurrentCulture)
+            //if (BaseCulture != CurrentCulture)
+            //{
+            //    LoadLocalisedDataForEntityType(locContentFiles);
+            //}
+
+
+
+            foreach (var contentFile in _contentFiles)
             {
-                LoadLocalisedDataForEntityType(locContentFiles);
-            }
+
+                            var containerBuilder = new FucineUniqueIdBuilder(contentFile.EntityContainer);
 
 
-
-            foreach (var containerProperty in entityContainers)
-            {
-
-                            var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
-
-
-                            var topLevelArrayList = (JArray)containerProperty.Value;
+                            var topLevelArrayList = (JArray)contentFile.EntityContainer.Value;
 
 
                             foreach (var eachObject in topLevelArrayList)
