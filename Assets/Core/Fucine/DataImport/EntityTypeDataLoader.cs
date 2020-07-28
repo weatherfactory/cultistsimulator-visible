@@ -23,8 +23,9 @@ namespace Assets.Core.Fucine
 
 
         public readonly Type EntityType;
-        public readonly string EntityFolderName;
+        public readonly string EntityTag;
         private readonly ContentImportLog _log;
+        List<JProperty> entityContainers =new List<JProperty>();
         public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedTextValues { get; set; }
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
@@ -34,10 +35,10 @@ namespace Assets.Core.Fucine
 
 
 
-        public EntityTypeDataLoader(Type entityType,string entityFolderName, string currentCulture, ContentImportLog log)
+        public EntityTypeDataLoader(Type entityType,string entityTag, string currentCulture, ContentImportLog log)
         {
             EntityType = entityType;
-            EntityFolderName = entityFolderName;
+            EntityTag = entityTag;
             _log = log;
             this.CurrentCulture = currentCulture;
             Entities = new List<EntityData>();
@@ -45,14 +46,15 @@ namespace Assets.Core.Fucine
         }
 
 
-        public void LoadCoreData(List<string> coreContentFiles, List<string> locContentFiles)
+        public void AddEntityContainer(JProperty containerToAdd)
         {
-            var coreEntitiesLoaded= GetDataForEntityType(coreContentFiles, locContentFiles);
+            entityContainers.Add(containerToAdd);
+        }
+
+        public void LoadCoreData(List<string> locContentFiles)
+        {
+            var coreEntitiesLoaded= GetDataForEntityType(locContentFiles);
             Entities.AddRange(coreEntitiesLoaded);
-
-            
- 
-
         }
 
         //public void LoadModData()
@@ -73,7 +75,7 @@ namespace Assets.Core.Fucine
       
 
 
-        private List<EntityData> GetDataForEntityType(List<string> coreContentFiles,List<string> locContentFiles)
+        private List<EntityData> GetDataForEntityType(List<string> locContentFiles)
         {
             List<EntityData> entitiesLoaded=new List<EntityData>();
             //load localised data if we're using a non-default culture.
@@ -85,28 +87,13 @@ namespace Assets.Core.Fucine
 
 
 
-            foreach (var contentFile in coreContentFiles)
+            foreach (var containerProperty in entityContainers)
             {
-                //TODO: filter out only the ones that match the entity type
 
-                using ( StreamReader file = File.OpenText(contentFile))
-                using (JsonTextReader reader = new JsonTextReader(file))
-                {
-                    try
-                    {
-                        var topLevelObject = (JObject)JToken.ReadFrom(reader);
-                        var containerProperty =
-                            topLevelObject.Properties()
-                                .First(); //there should be exactly one property, which contains all the relevant entities
-
-                        //check that the entity in the file matches the tag; if it doesn't, skip this file
-                        //This is probably pretty inefficient, so TODO rework
-                        if(containerProperty.Name.ToLowerInvariant()==EntityFolderName.ToLowerInvariant())
-                        {
                             var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
 
-                            var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+                            var topLevelArrayList = (JArray)containerProperty.Value;
 
 
                             foreach (var eachObject in topLevelArrayList)
@@ -126,15 +113,6 @@ namespace Assets.Core.Fucine
 
                                 entitiesLoaded.Add(entityData);
                             }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        _log.LogProblem("This file broke: " + contentFile + " with error " + e.Message);
-                    }
-
-                   
-                }
             }
 
             return entitiesLoaded;
@@ -246,11 +224,11 @@ namespace Assets.Core.Fucine
                         //check that the entity in the file matches the tag; if it doesn't, skip this file
                         //This is probably pretty inefficient, so TODO rework
                         //also this arrowhead is probably good to refactor with the core entity loading
-                        if (containerProperty.Name.ToLowerInvariant() == EntityFolderName.ToLowerInvariant())
+                        if (containerProperty.Name.ToLowerInvariant() == EntityTag.ToLowerInvariant())
                         {
                             var containerBuilder = new FucineUniqueIdBuilder(containerProperty);
 
-                            var topLevelArrayList = (JArray) topLevelObject[EntityFolderName];
+                            var topLevelArrayList = (JArray) topLevelObject[EntityTag];
 
 
                             foreach (var eachObject in topLevelArrayList)

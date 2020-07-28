@@ -72,7 +72,7 @@ public class CompendiumLoader
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
-        List<EntityTypeDataLoader> dataLoaders=new List<EntityTypeDataLoader>();
+        Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
 
@@ -83,16 +83,15 @@ public class CompendiumLoader
         if (coreContentFiles.Any())
             coreContentFiles.Sort();
 
+
         //find all the loc files
         var locContentPath = GetBaseFolderForLocalisedData(LanguageTable.targetCulture);
-        var locContentFiles = GetContentFilesRecursive(locContentPath);
-            if(locContentFiles.Any())
-                locContentFiles.Sort();
-        //find all the mod files
+                var locContentFiles = GetContentFilesRecursive(locContentPath);
+                    if(locContentFiles.Any())
+                        locContentFiles.Sort();
+                //find all the mod files
 
-
-
-
+                    
 
         foreach (Type type in assembly.GetTypes())
         {
@@ -100,7 +99,8 @@ public class CompendiumLoader
                 (FucineImportable) type.GetCustomAttribute(typeof(FucineImportable), false);
             if (importableAttribute != null)
             {
-                dataLoaders.Add(new EntityTypeDataLoader(type,importableAttribute.TaggedAs, LanguageTable.targetCulture, _log));
+                EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs,LanguageTable.targetCulture,_log);
+                dataLoaders.Add(importableAttribute.TaggedAs.ToLower(),loader);
                 importableEntityTypes.Add(type);
             }
         }
@@ -108,26 +108,43 @@ public class CompendiumLoader
         //We've identified the entity types: now set the compendium up for these
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
 
+        //get containers for all of them, pop em in a dictionary
+        Dictionary<string, JProperty> coreEntityContainers = new Dictionary<string, JProperty>();
+        foreach (var contentFile in coreContentFiles)
+        {
+            using (StreamReader file = File.OpenText(contentFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+
+                var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                var containerProperty =
+                    topLevelObject.Properties()
+                        .First(); //there should be exactly one property, which contains all the relevant entities
+                dataLoaders[containerProperty.Name.ToLower()].AddEntityContainer(containerProperty);
+
+            }
 
 
+        }
 
-        foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders)
+
+        foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders.Values)
         {
             
-                dataLoaderForEntityType.LoadCoreData(coreContentFiles,locContentFiles);
+            dataLoaderForEntityType.LoadCoreData(locContentFiles);
              //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dataLoaderForEntityType.Entities)
-                {
-                    IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dataLoaderForEntityType.EntityType, entityData, _log);
-                    if(!compendiumToPopulate.TryAddEntity(newEntity))
-                        _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
-                }
+            {
+                IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dataLoaderForEntityType.EntityType, entityData, _log);
+                if(!compendiumToPopulate.TryAddEntity(newEntity))
+                    _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
+            }
 
 
-                if (_log.GetMessages().Any(m => m.MessageLevel > 1))
-                    //found a serious problem: bug out and report.
-                    return _log;
+            if (_log.GetMessages().Any(m => m.MessageLevel > 1))
+                //found a serious problem: bug out and report.
+                return _log;
         }
 
 
