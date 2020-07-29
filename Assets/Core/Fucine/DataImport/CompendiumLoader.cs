@@ -116,7 +116,7 @@ public class CompendiumLoader
             dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles);
 
             
-            dl.LoadEntityData();
+            dl.LoadDataFromSuppliedFiles();
              //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dl.Entities)
