@@ -57,6 +57,23 @@ namespace Assets.Core.Fucine.DataImport
         }
 
         /// <summary>
+        /// all the values that we should copy across with extends or similar, excluding meta and mod values
+        /// </summary>
+        /// <returns></returns>
+        public Hashtable GetNonModlyValues()
+        {
+            Hashtable copiableValues = new Hashtable();
+            foreach (string key in ValuesTable.Keys)
+                if (key != NoonConstants.EXTENDS)
+                    copiableValues.Add(key, ValuesTable[key]);
+
+            return copiableValues;
+        }
+
+
+
+
+        /// <summary>
         /// True if we overwrite, false if we add
         /// </summary>
         /// <param name="key"></param>

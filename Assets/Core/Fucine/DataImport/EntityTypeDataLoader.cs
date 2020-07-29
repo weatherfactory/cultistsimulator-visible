@@ -47,20 +47,18 @@ namespace Assets.Core.Fucine
             //"$extend": extends a dictionary with the specified properties.
             //"$remove": removes each element in the list from the original property, which can either be a list or a dictionary.
 
-            //remove all non-copiable values
-
-
-
-
-            EntityData existingEntity;
-            if(coreEntityDataDictionary.TryGetValue(_modData.Id, out existingEntity))
+            
+            
+            if(coreEntityDataDictionary.ContainsKey(_modData.Id))
             {
+                _modData.ValuesTable = _modData.GetNonModlyValues();
                 //    If a mod object id does exist in original data - completely overwrite that entity in data
-                coreEntityDataDictionary[_modData.Id] = _modData;
+                coreEntityDataDictionary[_modData.Id]=_modData;
 
             }
             else
             {
+                _modData.ValuesTable = _modData.GetNonModlyValues();
                 //If a mod object id doesn't exist in original data - create a new entity and add it to data			
                 coreEntityDataDictionary.Add(_modData.Id,_modData);
             }
