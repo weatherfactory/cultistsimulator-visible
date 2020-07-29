@@ -190,7 +190,7 @@ public class MenuScreenController : MonoBehaviour {
         var registry = new Registry();
 
         _modManager = new ModManager();
-        _modManager.LoadAllIfActive();
+        _modManager.CatalogueActiveMods();
         registry.Register(_modManager);
         BuildDlcPanel();
         BuildModsPanel();

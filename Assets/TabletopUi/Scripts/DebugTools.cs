@@ -361,7 +361,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void UpdateCompendiumContent()
     {
-        Registry.Retrieve<ModManager>().LoadAllIfActive();
+        Registry.Retrieve<ModManager>().CatalogueActiveMods();
             
            var existingCompendium = Registry.Retrieve<ICompendium>();
            var compendiumLoader = new CompendiumLoader();

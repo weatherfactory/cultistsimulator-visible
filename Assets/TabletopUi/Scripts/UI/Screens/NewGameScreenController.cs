@@ -40,7 +40,7 @@ namespace Assets.CS.TabletopUI {
             var registry = new Registry();
 
             var modManager = new ModManager();
-            modManager.LoadAllIfActive();
+            modManager.CatalogueActiveMods();
             registry.Register(modManager);
 
             var compendium = new Compendium();

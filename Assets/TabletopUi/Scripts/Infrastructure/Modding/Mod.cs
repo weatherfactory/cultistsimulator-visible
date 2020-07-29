@@ -30,6 +30,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         
         public bool Enabled { get; set; }
 
+        public string Folder { get; set; }
+
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
 
         public Mod(

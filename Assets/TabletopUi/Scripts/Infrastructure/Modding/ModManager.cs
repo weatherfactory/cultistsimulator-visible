@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     {
         private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
 
-        private static readonly string ModsPath = Path.Combine(Application.persistentDataPath, "mods") ;
+        private static readonly string AllModsPath = Path.Combine(Application.persistentDataPath, "mods") ;
 
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt") ;
 
@@ -58,7 +58,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             Mods = new Dictionary<string, Mod>();
         }
 
-        public void LoadAllIfActive()
+        public void CatalogueActiveMods()
         {
             //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
 
@@ -66,14 +66,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             Mods.Clear();
 
             // Check if the mods folder exists
-            if (!Directory.Exists(ModsPath))
+            if (!Directory.Exists(AllModsPath))
             {
-                Directory.CreateDirectory(ModsPath);
-                NoonUtility.Log($"Mods folder not found, creating it at {ModsPath}", messageLevel: 1);
+                Directory.CreateDirectory(AllModsPath);
+                NoonUtility.Log($"Mods folder not found, creating it at {AllModsPath}", messageLevel: 1);
             }
 
             // Load the mod data from the file system
-            foreach (var modFolder in Directory.GetDirectories(ModsPath))
+            foreach (var modFolder in Directory.GetDirectories(AllModsPath))
             {
                 var modId = Path.GetFileName(modFolder);
                 if (modId == null)
@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     NoonUtility.Log("Unexpected null directory name for mod");
                     continue;
                 }
-                NoonUtility.Log("Loading mod " + modId);
+                NoonUtility.Log("Found directory for mod " + modId);
 
                 // Find the mod's manifest and load its data
                 var manifestPath = Path.Combine(modFolder, MOD_MANIFEST_FILE_NAME);
@@ -131,16 +131,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 // Collect the mod's images
                 // If an error occurs in the process, discard the mod
                 //commented out - not checking until we load the mod
-                if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
-                {
-                    NoonUtility.Log(
-                        "Encountered errors in images, skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
+                //if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
+                //{
+                //    NoonUtility.Log(
+                //        "Encountered errors in images, skipping mod",
+                //        messageLevel: 2);
+                //    continue;
+                //}
 
                 // Add the mod to the collection
-                NoonUtility.Log("Loaded mod '" + modId + "'");
+
+
+                mod.Folder = modFolder;
+
+                NoonUtility.Log("Catalogued mod '" + modId + "'");
                 Mods.Add(modId, mod);
             }
             

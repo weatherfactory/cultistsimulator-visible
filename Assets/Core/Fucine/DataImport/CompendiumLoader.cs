@@ -56,11 +56,20 @@ public class CompendiumLoader
         var assembly = Assembly.GetExecutingAssembly();
 
         var coreContentFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
-
         var locContentFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
-
         coreContentFileLoader.LoadContentFiles();
         locContentFileLoader.LoadContentFiles();
+
+
+        List<ContentFileLoader> modContentFileLoaders=new List<ContentFileLoader>();
+        var modManager = Registry.Retrieve<ModManager>();
+        modManager.CatalogueActiveMods();
+        foreach (var mod in modManager.Mods)
+        {
+            var modFileLoader=new ContentFileLoader(mod.Value.Folder);
+            modFileLoader.LoadContentFiles();
+        }
+        
 
         
 
