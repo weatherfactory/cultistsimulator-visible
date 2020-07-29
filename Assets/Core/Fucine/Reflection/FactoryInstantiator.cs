@@ -13,24 +13,24 @@ namespace Assets.Core.Fucine
 {
     public class FactoryInstantiator
     {
-        public static Dictionary<Type, IEntityFactory> CachedEntityFactories = new Dictionary<Type, IEntityFactory>();
-        public static Dictionary<Type,INonEntityFactory> CachedNonEntityFactories=new Dictionary<Type, INonEntityFactory>();
+        public static Dictionary<Type, IImportedEntityFactory> CachedEntityFactories = new Dictionary<Type, IImportedEntityFactory>();
+        public static Dictionary<Type,IFastInvokableObjectFactory> CachedNonEntityFactories=new Dictionary<Type, IFastInvokableObjectFactory>();
 
         public static IEntityWithId CreateEntity(Type T, EntityData importDataForEntity, ContentImportLog log)
         {
-            IEntityFactory entityFactory;
+            IImportedEntityFactory importedEntityFactory;
 
             if (CachedEntityFactories.ContainsKey(T))
-                entityFactory = CachedEntityFactories[T];
+                importedEntityFactory = CachedEntityFactories[T];
             else
             {
-                Type factoryType = typeof(EntityFactory<>);
+                Type factoryType = typeof(ImportedEntityFactory<>);
                 Type factoryTypeConstructed = factoryType.MakeGenericType(T); //we need a generic in order to be able to compile-time type the lamba
-                entityFactory = Activator.CreateInstance(factoryTypeConstructed) as IEntityFactory;
-                CachedEntityFactories.Add(T, entityFactory);
+                importedEntityFactory = Activator.CreateInstance(factoryTypeConstructed) as IImportedEntityFactory;
+                CachedEntityFactories.Add(T, importedEntityFactory);
             }
 
-            return entityFactory.ConstructorFastInvoke(importDataForEntity, log) as IEntityWithId;
+            return importedEntityFactory.ConstructorFastInvoke(importDataForEntity, log) as IEntityWithId;
 
             //uncomment below to use native new() if perf is an issue. It's not showing up as that, though
             //if (T == typeof(BasicVerb))
@@ -66,19 +66,19 @@ namespace Assets.Core.Fucine
 
         public static object CreateObjectWithDefaultConstructor(Type typeToCreate)
         {
-            INonEntityFactory nonEntityFactory;
+            IFastInvokableObjectFactory fastInvokableObjectFactory;
 
             if (CachedNonEntityFactories.ContainsKey(typeToCreate))
-                nonEntityFactory = CachedNonEntityFactories[typeToCreate];
+                fastInvokableObjectFactory = CachedNonEntityFactories[typeToCreate];
             else
             { 
-                Type factoryType = typeof(NonEntityFactory<>);
-                Type factoryTypeConstructed = factoryType.MakeGenericType(typeToCreate); //we need a generic in order to be able to compile-time type the lamba
-                nonEntityFactory = Activator.CreateInstance(factoryTypeConstructed) as INonEntityFactory;
-                CachedNonEntityFactories.Add(typeToCreate,nonEntityFactory);
+                Type factoryType = typeof(FastInvokableObjectFactory<>);
+                Type factoryTypeConstructed = factoryType.MakeGenericType(typeToCreate); //we need a generic in order to be able to compile-time type the lambda
+                fastInvokableObjectFactory = Activator.CreateInstance(factoryTypeConstructed) as IFastInvokableObjectFactory;
+                CachedNonEntityFactories.Add(typeToCreate,fastInvokableObjectFactory);
             }
 
-            return nonEntityFactory.ConstructorFastInvoke();
+            return fastInvokableObjectFactory.ConstructorFastInvoke();
 
         }
 

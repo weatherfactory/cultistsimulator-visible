@@ -58,6 +58,17 @@ public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
 
 private const string PRIMARY_SLOT="primary";
 
+    //if no details are supplied at all, just create a primary slot specification
+    public SlotSpecification()
+    {
+        _id = PRIMARY_SLOT;
+        Label = "";
+        Description = LanguageTable.Get("UI_EMPTYSPACE");
+        Required = new AspectsDictionary();
+        Forbidden = new AspectsDictionary();
+        ActionId = string.Empty;
+    }
+
     public SlotSpecification(string id)
     {
         _id = id;
@@ -71,13 +82,6 @@ private const string PRIMARY_SLOT="primary";
     {
     }
 
-    public static SlotSpecification CreatePrimarySlotSpecification()
-    {
-        var spec=new SlotSpecification(PRIMARY_SLOT);
-        spec.Label = "";
-        spec.Description = LanguageTable.Get("UI_EMPTYSPACE");
-        return spec;
-    }
 
     public SlotMatchForAspects GetSlotMatchForAspects(IAspectsDictionary aspects)
     {

@@ -2,13 +2,19 @@
 
 namespace Assets.Core.Fucine
 {
-    public class NonEntityFactory<T>:INonEntityFactory
+    public interface IFastInvokableObjectFactory
+    {
+        object ConstructorFastInvoke();
+    }
+
+
+    public class FastInvokableObjectFactory<T>:IFastInvokableObjectFactory
     {
 
         private readonly Func<T> _fastInvokeConstructor;
 
 
-        public NonEntityFactory()
+        public FastInvokableObjectFactory()
         {
 
             _fastInvokeConstructor = PrecompiledInvoke.BuildDefaultConstructor<T>();

@@ -10,19 +10,19 @@ using Assets.Core.Interfaces;
 
 namespace Assets.Core.Fucine
 {
-    public interface IEntityFactory
+    public interface IImportedEntityFactory
     {
         object ConstructorFastInvoke(EntityData data, ContentImportLog log);
 
     }
     
-    public class EntityFactory<T>: IEntityFactory where T: AbstractEntity<T>
+    public class ImportedEntityFactory<T>: IImportedEntityFactory where T: AbstractEntity<T>
     {
 
         private readonly Func<EntityData,ContentImportLog,T> _fastInvokeConstructor;
 
 
-        public EntityFactory()
+        public ImportedEntityFactory()
         {
 
             _fastInvokeConstructor = PrecompiledInvoke.BuildEntityConstructor<T>();
@@ -35,8 +35,5 @@ namespace Assets.Core.Fucine
 
     }
 
-    public interface INonEntityFactory
-    {
-        object ConstructorFastInvoke();
-    }
+
 }

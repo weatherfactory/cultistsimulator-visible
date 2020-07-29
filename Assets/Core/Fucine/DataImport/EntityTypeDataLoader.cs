@@ -11,38 +11,75 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Assets.Core.Fucine
+
 {
+
+    public class EntityMod
+    {
+        private readonly EntityData _modData;
+
+        public EntityMod(EntityData modData)
+        {
+            _modData = modData;
+        }
+
+        public void ApplyTo(Dictionary<string, EntityData> coreEntityDataDictionary)
+        {
+            //If a mod object has an 'extends' property
+            //    create an entity with that mod object's id	
+
+            //for each value in that extends property
+
+            //    find the entity with that id
+
+            //    copy across all the values
+
+
+
+            
+
+
+            EntityData existingEntity;
+            if(coreEntityDataDictionary.TryGetValue(_modData.Id, out existingEntity))
+            {
+                //    If a mod object id does exist in original data - completely overwrite that entity in data
+                coreEntityDataDictionary[_modData.Id] = _modData;
+
+            }
+            else
+            {
+                //If a mod object id doesn't exist in original data - create a new entity and add it to data			
+                coreEntityDataDictionary.Add(_modData.Id,_modData);
+            }
+            //    we need to do this for all values, as well
+            //    Check all mod object uniqueis for extends, prepends....etc
+        }
+
+    }
     public class EntityTypeDataLoader
     {
-        private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
-
-        private static readonly string MODS_CONTENT_DIR = Path.Combine(Application.persistentDataPath, "mods");
 
         private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
-
-        private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
 
         public readonly Type EntityType;
         public readonly string EntityTag;
+        public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
+        public string CurrentCulture { get; set; }
+
+
         private readonly ContentImportLog _log;
         private List<LoadedContentFile> _coreContentFiles = new List<LoadedContentFile>();
         private List<LoadedContentFile> _locContentFiles = new List<LoadedContentFile>();
         private List<LoadedContentFile> _modContentFiles = new List<LoadedContentFile>();
-        public List<EntityData> Entities { get; set; }
+        private Dictionary<string,EntityData> _allLoadedEntities { get; set; }
 
         /// <summary>
         /// k uniqueid, v original string from file
         /// </summary>
-        public Dictionary<string, string> LocalisedTextValuesRegistry { get; set; }
+        private Dictionary<string, string> _localisedTextValuesRegistry { get; set; }
 
-        /// <summary>
-        /// k uniqueid, v original string from file
-        /// </summary>
-        public Dictionary<string, string> ModdedValuesRegistry { get; set; }
 
-        public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
-        public string CurrentCulture { get; set; }
 
 
         public EntityTypeDataLoader(Type entityType, string entityTag, string currentCulture, ContentImportLog log)
@@ -51,9 +88,8 @@ namespace Assets.Core.Fucine
             EntityTag = entityTag;
             _log = log;
             this.CurrentCulture = currentCulture;
-            Entities = new List<EntityData>();
-            LocalisedTextValuesRegistry = new Dictionary<string, string>();
-            ModdedValuesRegistry = new Dictionary<string, string>();
+            _allLoadedEntities = new Dictionary<string, EntityData>();
+            _localisedTextValuesRegistry = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -67,14 +103,7 @@ namespace Assets.Core.Fucine
             _modContentFiles.AddRange(modContentFiles);
         }
 
-        public void LoadDataFromSuppliedFiles()
-        {
-            var coreEntitiesLoaded = GetDataForEntityType();
-            Entities.AddRange(coreEntitiesLoaded);
-        }
-
-
-        private List<EntityData> GetDataForEntityType()
+        public void LoadEntityDataFromSuppliedFiles()
         {
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data down in UnpackToken, if we find matching ids
@@ -83,21 +112,41 @@ namespace Assets.Core.Fucine
                 RegisterLocalisedDataForEmendations();
             }
 
+            var coreEntityData = UnpackAndLocaliseData(_coreContentFiles);
+
             if (_modContentFiles.Any())
             {
-                RegisterModDataForEmendations();
+                var moddedEntityData = UnpackAndLocaliseData(_modContentFiles);
+                //any localisation will also apply to the mod string values
+                ApplyModsToCoreData(coreEntityData, moddedEntityData);
             }
 
-            var loadedEntityData = LoadAndReplaceCoreData();
-            return loadedEntityData;
+            _allLoadedEntities = coreEntityData;
+        }
+
+        public List<EntityData> GetLoadedEntityDataAsList()
+        {
+            return _allLoadedEntities.Values.ToList();
         }
 
 
-        private List<EntityData> LoadAndReplaceCoreData()
-        {
-            List<EntityData> allEntityData = new List<EntityData>();
+ 
 
-            foreach (var contentFile in _coreContentFiles)
+        private void ApplyModsToCoreData(Dictionary<string,EntityData> coreEntityData, Dictionary<string, EntityData> moddedEntityData)
+        {
+            foreach(var modData in moddedEntityData.Values)
+            {
+                EntityMod entityMod=new EntityMod(modData);
+                entityMod.ApplyTo(coreEntityData);
+            }
+
+        }
+
+        private Dictionary<string,EntityData> UnpackAndLocaliseData(List<LoadedContentFile> contentFilesToUnpack)
+        {
+            Dictionary<string, EntityData> entityDataCollection = new Dictionary<string, EntityData>();
+
+            foreach (var contentFile in contentFilesToUnpack)
             {
                 var containerBuilder = new FucineUniqueIdBuilder(contentFile.EntityContainer);
 
@@ -116,29 +165,29 @@ namespace Assets.Core.Fucine
                     ) //eg description, but also eg slots - this is why we need to unpack
                     {
                         eachObjectHashtable.Add(eachProperty.Name.ToLower(),
-                            UnpackAndEmendToken(eachProperty, entityBuilder));
+                            UnpackAndLocaliseToken(eachProperty, entityBuilder));
                     }
 
                     //add the just loaded entity data to the list of all entity data, along with its unique id
                     var thisEntityDataItem = new EntityData(entityBuilder.UniqueId, eachObjectHashtable);
 
-                    allEntityData.Add(thisEntityDataItem);
+                    entityDataCollection.Add(thisEntityDataItem.Id,thisEntityDataItem);
                 }
             }
 
-            return allEntityData;
+            return entityDataCollection;
         }
 
         /// <summary>
         /// Unpack the tokens into individual entity data all the way round, and also replace data that's been localised or modded.
         /// </summary>
         /// <returns></returns>
-        private object UnpackAndEmendToken(JToken jToken, FucineUniqueIdBuilder tokenIdBuilder)
+        private object UnpackAndLocaliseToken(JToken jToken, FucineUniqueIdBuilder tokenIdBuilder)
         {
             if (jToken.Type == JTokenType.Property)
             {
                 var propertyBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
-                return UnpackAndEmendToken(((JProperty) jToken).Value, propertyBuilder);
+                return UnpackAndLocaliseToken(((JProperty) jToken).Value, propertyBuilder);
             }
 
             if (jToken.Type == JTokenType.Array)
@@ -147,7 +196,7 @@ namespace Assets.Core.Fucine
                 foreach (var eachItem in (JArray) jToken)
                 {
                     var nextBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
-                    nextList.Add(UnpackAndEmendToken(eachItem, nextBuilder));
+                    nextList.Add(UnpackAndLocaliseToken(eachItem, nextBuilder));
                 }
 
                 return nextList;
@@ -155,6 +204,7 @@ namespace Assets.Core.Fucine
 
             else if (jToken.Type == JTokenType.Object)
             {
+         
                 //create a hashtable to represent the object
                 var subObjectH = new Hashtable();
 
@@ -164,7 +214,7 @@ namespace Assets.Core.Fucine
                 foreach (var eachKVP in (JObject) jToken)
                 {
                     //add each property to that hashtable
-                    subObjectH.Add(eachKVP.Key.ToLower(), UnpackAndEmendToken(eachKVP.Value, subObjectBuilder));
+                    subObjectH.Add(eachKVP.Key.ToLower(), UnpackAndLocaliseToken(eachKVP.Value, subObjectBuilder));
                 }
 
 
@@ -177,14 +227,14 @@ namespace Assets.Core.Fucine
             {
                 if (jToken.Type == JTokenType.String)
                 {
-                    //ASSUMPTION!! Only strings are replaced in loc
+
 
                     string uniqueTokenId = new FucineUniqueIdBuilder(jToken, tokenIdBuilder).UniqueId;
-                    if (CurrentCulture != BaseCulture &&
-                        LocalisedTextValuesRegistry.TryGetValue(uniqueTokenId, out var localisedString))
-                        return localisedString;
+                    if(CurrentCulture != BaseCulture)
+                        return TryReplaceWithLocalisedString(jToken, uniqueTokenId);
                     else
-                        return jToken.ToString();
+                       return jToken.ToString();
+                    
                 }
 
                 else if (jToken.Type == JTokenType.Integer)
@@ -209,6 +259,14 @@ namespace Assets.Core.Fucine
             }
         }
 
+        private object TryReplaceWithLocalisedString(JToken jToken, string uniqueTokenId)
+        {
+            if (_localisedTextValuesRegistry.TryGetValue(uniqueTokenId, out var localisedString))
+                return localisedString;
+            else
+                return jToken.ToString();
+        }
+
         private void RegisterLocalisedDataForEmendations()
         {
             foreach (var locContentFile in _locContentFiles)
@@ -226,7 +284,7 @@ namespace Assets.Core.Fucine
                     {
                         var propertyIdBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
 
-                        RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, locContentFile,LocalisedTextValuesRegistry);
+                        RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, locContentFile,_localisedTextValuesRegistry);
                     }
                 }
             }
@@ -270,24 +328,6 @@ namespace Assets.Core.Fucine
             }
         }
 
-
-        private void RegisterModDataForEmendations()
-        {
-            foreach (var modContentFile in _modContentFiles)
-            {
-                var containerBuilder = new FucineUniqueIdBuilder(modContentFile.EntityContainer);
-                var topLevelArrayList = (JArray) modContentFile.EntityContainer.Value;
-                foreach (var eachObject in topLevelArrayList)
-                {
-                    var entityIdBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
-                    foreach (var eachProperty in ((JObject) eachObject).Properties())
-                    {
-                        var propertyIdBuilder=new FucineUniqueIdBuilder(eachProperty,entityIdBuilder);
-                        RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, modContentFile,ModdedValuesRegistry);
-                    }
-                }
-            }
-        }
 
 
     }

@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
             }
             else
-            primarySlot = BuildSlot("Primary recipe slot",SlotSpecification.CreatePrimarySlotSpecification(), null);
+            primarySlot = BuildSlot("Primary recipe slot",new SlotSpecification(), null);
         }
 
         public void DoReset() {

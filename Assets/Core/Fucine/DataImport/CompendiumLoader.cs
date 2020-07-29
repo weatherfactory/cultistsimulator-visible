@@ -56,22 +56,23 @@ public class CompendiumLoader
         var assembly = Assembly.GetExecutingAssembly();
 
         //retrieve base content for game
-        var coreContentFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
-        coreContentFileLoader.LoadContentFiles(_log);
+        var coreFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
+        coreFileLoader.LoadContentFiles(_log);
 
         //retrieve loc content for current language
-        var locContentFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
-        locContentFileLoader.LoadContentFiles(_log);
+        var locFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
+        locFileLoader.LoadContentFiles(_log);
         
 
         //retrieve contents of all mod files
-        List<ContentFileLoader> modContentFileLoaders=new List<ContentFileLoader>();
+        List<ContentFileLoader> modFileLoaders=new List<ContentFileLoader>();
         var modManager = Registry.Retrieve<ModManager>();
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetAllActiveMods())
         {
             var modFileLoader=new ContentFileLoader(mod.Folder);
             modFileLoader.LoadContentFiles(_log);
+            modFileLoaders.Add(modFileLoader);
         }
         
 
@@ -103,12 +104,12 @@ public class CompendiumLoader
             //for every entity loader:
             //get the content, the loc, and the mod files for that entity type
 
-            var coreContentFilesForEntityForThisEntityType= coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
+            var coreContentFilesForEntityForThisEntityType= coreFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
             var locContentFilesForThisEntityType =
-                locContentFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
+                locFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
 
             var modContentFiles = new List<LoadedContentFile>();
-            foreach(var mcfl in modContentFileLoaders)
+            foreach(var mcfl in modFileLoaders)
                 modContentFiles.AddRange(mcfl.GetLoadedContentFilesContainingEntityTag(dl.EntityTag));
 
             
@@ -116,10 +117,10 @@ public class CompendiumLoader
             dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles);
 
             
-            dl.LoadDataFromSuppliedFiles();
+            dl.LoadEntityDataFromSuppliedFiles();
              //   dataLoaderForEntityType.LoadModData();
 
-            foreach (EntityData entityData in dl.Entities)
+            foreach (EntityData entityData in dl.GetLoadedEntityDataAsList())
             {
                 IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dl.EntityType, entityData, _log);
                 if(!compendiumToPopulate.TryAddEntity(newEntity))
