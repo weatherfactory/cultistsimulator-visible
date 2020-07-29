@@ -17,7 +17,8 @@ namespace Noon
         public const string EXTENDS = "extends";
 
         public const string CORE_FOLDER_NAME = "core";
-        public const string LOC_FOLDER_PREFIX = "core_";
+        public const string LOC_FOLDER_TEMPLATE = "core_[culture]";
+        public const string CONTENT_FOLDER_NAME = "content";
         public const string DEFAULT_CULTURE = "en";
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";

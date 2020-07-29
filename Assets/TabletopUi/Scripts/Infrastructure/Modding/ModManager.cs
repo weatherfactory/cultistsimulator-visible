@@ -110,7 +110,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 if (manifestData == null)
                 {
                     NoonUtility.Log(
-                        "Invalid mod manifest JSON, skipping mod",
+                        "Invalid mod manifest JSON; skipping mod",
                         messageLevel: 2);
                     continue;
                 }
@@ -125,25 +125,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                         NoonUtility.Log(error, messageLevel: 2);
                     }
                     NoonUtility.Log(
-                        "Encountered errors in manifest, skipping mod",
+                        "Encountered errors in manifest; skipping mod",
                         messageLevel: 2);
                     continue;
                 }
 
-                // Collect the mod's content files
-                // If an error occurs in the process, discard the mod
-                //commented out - not checking until we load the mod
-                //if (!LoadContentDirectory(mod, Path.Combine(modFolder, "content")))
-                //{
-                //    NoonUtility.Log(
-                //        "Encountered errors in content, skipping mod",
-                //        messageLevel: 2);
-                //    continue;
-                //}
+                //check the mod has a content directory
+               mod.ContentFolder= Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
+                if(!Directory.Exists(mod.ContentFolder))
+            {
+                    NoonUtility.Log(
+                        mod.Id + " doesn't have a content directory; skipping mod",
+                        messageLevel: 2);
+                    continue;
+                }
 
                 // Collect the mod's images
                 // If an error occurs in the process, discard the mod
                 //commented out - not checking until we load the mod
+                //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
                 //if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
                 //{
                 //    NoonUtility.Log(
@@ -154,8 +154,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
                 // Add the mod to the collection
 
-
-                mod.Folder = modFolder;
 
                 NoonUtility.Log("Catalogued mod '" + modId + "'");
                 _mods.Add(modId, mod);
@@ -274,55 +272,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             return null;
         }
 
-        private bool LoadContentDirectory(Mod mod, string contentDirectoryPath)
-        {
-            // Check if there is a `content` directory first, but don't require one for the mod to be valid
-            if (!Directory.Exists(contentDirectoryPath))
-            {
-                NoonUtility.Log(
-                    "No content directory found; content files must be placed in a 'content' subdirectory",
-                    messageLevel: 1);
-                return true;
-            }
-
-            // Search the directory for content files
-            foreach (var contentFileName in Directory.GetFiles(contentDirectoryPath, "*.json"))
-            {
-                var contentFileData = SimpleJsonImporter.Import(File.ReadAllText(contentFileName));
-                if (contentFileData == null)
-                {
-                    NoonUtility.Log(
-                        "Invalid content file JSON '" + Path.GetFileName(contentFileName) + "'",
-                        messageLevel: 2);
-                    return false;
-                }
-
-                foreach (DictionaryEntry contentEntry in contentFileData)
-                {
-                    var category = contentEntry.Key as string;
-                    var items = contentEntry.Value as ArrayList;
-                    if (items == null)
-                    {
-                        NoonUtility.Log(
-                            "Unexpected type for items in category '" + category + "', should be array",
-                            messageLevel: 1);
-                        continue;
-                    }
-                    if (!_entityCategories.Contains(category))
-                    {
-                        NoonUtility.Log(
-                            "Invalid content category '" + category + "', ignoring",
-                            messageLevel: 1);
-                        continue;
-                    }
-                    mod.AddContent(category, items);
-                }
-            }
-
-            // Search all subdirectories for more content files
-            return Directory.GetDirectories(contentDirectoryPath).All(
-                contentSubDirectoryPath => LoadContentDirectory(mod, contentSubDirectoryPath));
-        }
 
         private bool LoadAllImagesDirectory(Mod mod, string imagesDirectoryPath)
         {

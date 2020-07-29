@@ -39,17 +39,19 @@ namespace Assets.Core.Fucine
                 }
 
             }
-            //If a mod object has an 'extends' property
-            //    create an entity with that mod object's id	
 
-            //for each value in that extends property
+            //"$append": appends a list of items to the original list property.
+            //"$prepend": prepends a list of items to the original list property.
+            //"$plus": adds the specified number to the original number property.
+            //"$minus": subtracts the specified number from the original number property.
+            //"$extend": extends a dictionary with the specified properties.
+            //"$remove": removes each element in the list from the original property, which can either be a list or a dictionary.
 
-            //    find the entity with that id
-
-            //    copy across all the values
+            //remove all non-copiable values
 
 
-            
+
+
             EntityData existingEntity;
             if(coreEntityDataDictionary.TryGetValue(_modData.Id, out existingEntity))
             {
@@ -62,8 +64,7 @@ namespace Assets.Core.Fucine
                 //If a mod object id doesn't exist in original data - create a new entity and add it to data			
                 coreEntityDataDictionary.Add(_modData.Id,_modData);
             }
-            //    we need to do this for all values, as well
-            //    Check all mod object uniqueis for extends, prepends....etc
+       
         }
 
     }

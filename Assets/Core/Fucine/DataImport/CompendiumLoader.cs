@@ -31,8 +31,13 @@ using UnityEditor;
 public class CompendiumLoader
 {
 
-    private static readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
-    private static readonly string LOC_CONTENT_DIR = Application.streamingAssetsPath + "/content/core_[culture]/";
+    private static readonly string CORE_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+        NoonConstants.CONTENT_FOLDER_NAME, NoonConstants.CORE_FOLDER_NAME);
+
+    private static readonly string LOC_CONTENT_DIR = Path.Combine(Application.streamingAssetsPath,
+        NoonConstants.CONTENT_FOLDER_NAME, NoonConstants.LOC_FOLDER_TEMPLATE);
+
+    
     private const string CONST_LEGACIES = "legacies"; //careful: this is specified in the Legacy FucineImport attribute too
     private static readonly Regex DlcLegacyRegex = new Regex(@"DLC_(\w+)_\w+_legacy\.json");
     readonly ContentImportLog _log=new ContentImportLog();
@@ -70,7 +75,7 @@ public class CompendiumLoader
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetAllActiveMods())
         {
-            var modFileLoader=new ContentFileLoader(mod.Folder);
+            var modFileLoader=new ContentFileLoader(mod.ContentFolder);
             modFileLoader.LoadContentFiles(_log);
             modFileLoaders.Add(modFileLoader);
         }
