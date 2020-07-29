@@ -14,6 +14,7 @@ namespace Noon
 
         public const string ID = "id";
         public const string UID = "uid";
+        public const string EXTENDS = "extends";
 
         public const string CORE_FOLDER_NAME = "core";
         public const string LOC_FOLDER_PREFIX = "core_";

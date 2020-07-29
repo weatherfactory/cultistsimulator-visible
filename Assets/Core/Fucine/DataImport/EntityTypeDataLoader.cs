@@ -23,8 +23,22 @@ namespace Assets.Core.Fucine
             _modData = modData;
         }
 
-        public void ApplyTo(Dictionary<string, EntityData> coreEntityDataDictionary)
+        public void ApplyTo(Dictionary<string, EntityData> coreEntityDataDictionary,ContentImportLog log)
         {
+            foreach(var e in _modData.GetEntityIdsToExtend())
+            {
+                if(coreEntityDataDictionary.TryGetValue(e,out var dataToExtendWith))
+                {
+                    var copiableValues = dataToExtendWith.GetCopiableValues();
+                    foreach (var k in copiableValues.Keys)
+                        _modData.OverwriteOrAdd(k, copiableValues[k]);
+                }
+                else
+                {
+                   log.LogWarning($"{_modData.Id} tried to extend from an entity that doesn't exist: {e}" );
+                }
+
+            }
             //If a mod object has an 'extends' property
             //    create an entity with that mod object's id	
 
@@ -35,10 +49,7 @@ namespace Assets.Core.Fucine
             //    copy across all the values
 
 
-
             
-
-
             EntityData existingEntity;
             if(coreEntityDataDictionary.TryGetValue(_modData.Id, out existingEntity))
             {
@@ -137,7 +148,7 @@ namespace Assets.Core.Fucine
             foreach(var modData in moddedEntityData.Values)
             {
                 EntityMod entityMod=new EntityMod(modData);
-                entityMod.ApplyTo(coreEntityData);
+                entityMod.ApplyTo(coreEntityData,_log);
             }
 
         }
