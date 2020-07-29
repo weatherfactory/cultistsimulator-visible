@@ -55,57 +55,73 @@ public class CompendiumLoader
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
 
+        //retrieve base content for game
         var coreContentFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
+        coreContentFileLoader.LoadContentFiles(_log);
+
+        //retrieve loc content for current language
         var locContentFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
-        coreContentFileLoader.LoadContentFiles();
-        locContentFileLoader.LoadContentFiles();
+        locContentFileLoader.LoadContentFiles(_log);
+        
 
-
+        //retrieve contents of all mod files
         List<ContentFileLoader> modContentFileLoaders=new List<ContentFileLoader>();
         var modManager = Registry.Retrieve<ModManager>();
-        modManager.CatalogueActiveMods();
-        foreach (var mod in modManager.Mods)
+        modManager.CatalogueMods();
+        foreach (var mod in modManager.GetAllActiveMods())
         {
-            var modFileLoader=new ContentFileLoader(mod.Value.Folder);
-            modFileLoader.LoadContentFiles();
+            var modFileLoader=new ContentFileLoader(mod.Folder);
+            modFileLoader.LoadContentFiles(_log);
         }
         
 
         
-
+        //what entities need data importing?
         foreach (Type type in assembly.GetTypes())
         {
             FucineImportable importableAttribute =
                 (FucineImportable) type.GetCustomAttribute(typeof(FucineImportable), false);
             if (importableAttribute != null)
             {
+                //for each importable entity:
+                //create a data loader for that entity
                 EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs,LanguageTable.targetCulture,_log);
+                
+                //add the loader and the entity type to collecitons so we can process them in a moment
                 dataLoaders.Add(importableAttribute.TaggedAs.ToLower(),loader);
                 importableEntityTypes.Add(type);
             }
         }
 
-        //We've identified the entity types: now set the compendium up for these
+        //We've identified the entity types: now set the compendium up to store these types
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
         
 
-        foreach (EntityTypeDataLoader dataLoaderForEntityType in dataLoaders.Values)
+        
+        foreach (EntityTypeDataLoader dl in dataLoaders.Values)
         {
+            //for every entity loader:
+            //get the content, the loc, and the mod files for that entity type
 
-            var coreContentFiles= coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag);
-            var locContentFiles =
-                locContentFileLoader.GetLoadedContentFilesContainingEntityTag(dataLoaderForEntityType.EntityTag);
+            var coreContentFilesForEntityForThisEntityType= coreContentFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
+            var locContentFilesForThisEntityType =
+                locContentFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
 
-
-            dataLoaderForEntityType.SupplyContentFiles(coreContentFiles, locContentFiles);
+            var modContentFiles = new List<LoadedContentFile>();
+            foreach(var mcfl in modContentFileLoaders)
+                modContentFiles.AddRange(mcfl.GetLoadedContentFilesContainingEntityTag(dl.EntityTag));
 
             
-            dataLoaderForEntityType.LoadCoreData();
+
+            dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles);
+
+            
+            dl.LoadEntityData();
              //   dataLoaderForEntityType.LoadModData();
 
-            foreach (EntityData entityData in dataLoaderForEntityType.Entities)
+            foreach (EntityData entityData in dl.Entities)
             {
-                IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dataLoaderForEntityType.EntityType, entityData, _log);
+                IEntityWithId newEntity = FactoryInstantiator.CreateEntity(dl.EntityType, entityData, _log);
                 if(!compendiumToPopulate.TryAddEntity(newEntity))
                     _log.LogWarning($"Can't add entity {newEntity.Id} of type {newEntity.GetType()}");
             }

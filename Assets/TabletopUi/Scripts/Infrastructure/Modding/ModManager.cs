@@ -18,9 +18,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     {
         private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
 
-        private static readonly string AllModsPath = Path.Combine(Application.persistentDataPath, "mods") ;
+        private static readonly string AllModsPath = Path.Combine(Application.persistentDataPath, "mods");
 
-        private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt") ;
+        private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
+
+        private Dictionary<string, Mod> _mods { get; }
 
         /// <summary>
         /// TODO: base this on importable types
@@ -49,21 +51,32 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             "icons100/legacies/",
             "icons100/verbs/",
         };
-        
-        public Dictionary<string, Mod> Mods { get; }
-        
+
+
 
         public ModManager()
         {
-            Mods = new Dictionary<string, Mod>();
+            _mods = new Dictionary<string, Mod>();
         }
 
-        public void CatalogueActiveMods()
+        public IEnumerable<Mod> GetAllCataloguedMods()
+        {
+            var cataloguedMods = _mods.Values;
+            return cataloguedMods;
+        }
+
+        public IEnumerable<Mod> GetAllActiveMods()
+        {
+            var activeMods = _mods.Values.Where(m => m.Enabled);
+            return activeMods;
+        }
+
+    public void CatalogueMods()
         {
             //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
 
             
-            Mods.Clear();
+            _mods.Clear();
 
             // Check if the mods folder exists
             if (!Directory.Exists(AllModsPath))
@@ -145,16 +158,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 mod.Folder = modFolder;
 
                 NoonUtility.Log("Catalogued mod '" + modId + "'");
-                Mods.Add(modId, mod);
+                _mods.Add(modId, mod);
             }
             
 
             // Check the dependencies to see if there are any missing or invalid ones
-            foreach (var mod in Mods)
+            foreach (var mod in _mods)
             {
                 foreach (var dependency in mod.Value.Dependencies)
                 {
-                    if (!Mods.ContainsKey(dependency.ModId))
+                    if (!_mods.ContainsKey(dependency.ModId))
                     {
                         NoonUtility.Log(
                             "Dependency '" + dependency.ModId + "' for '" + mod.Key + "' not found ", 
@@ -162,7 +175,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     }
                     else
                     {
-                        var availableVersion = Mods[dependency.ModId].Version;
+                        var availableVersion = _mods[dependency.ModId].Version;
                         bool isVersionValid;
                         switch (dependency.VersionOperator)
                         {
@@ -199,17 +212,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             // Enable all mods that have been marked as enabled
             foreach (var modId in LoadEnabledModList())
             {
-                if (Mods.ContainsKey(modId))
-                    Mods[modId].Enabled = true;
+                if (_mods.ContainsKey(modId))
+                    _mods[modId].Enabled = true;
             }
         }
 
         public void SetModEnableState(string modId, bool enable)
         {
-            if (!Mods.ContainsKey(modId))
+            if (!_mods.ContainsKey(modId))
                 return;
 
-            Mods[modId].Enabled = enable;
+            _mods[modId].Enabled = enable;
             SaveEnabledModList();
         }
 
@@ -222,7 +235,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         {
             File.WriteAllText(
                 ModEnabledListPath, 
-                string.Join("\n", Mods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
+                string.Join("\n", _mods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
         }
 
         public IEnumerable<Hashtable> LoadContentForEntityType(Type forEntityType)
@@ -234,7 +247,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var categoryContent = new List<Hashtable>();
 
             
-            foreach (var mod in Mods)
+            foreach (var mod in _mods)
             {
                 if (!mod.Value.Enabled)
                     continue;
@@ -250,7 +263,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public Sprite GetSprite(string spriteResourceName)
         {
             
-            foreach (var mod in Mods.Values)
+            foreach (var mod in _mods.Values)
             {
                 if (mod.Enabled && mod.Images.ContainsKey(spriteResourceName))
                 {

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.Core.Fucine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -37,7 +39,7 @@ public class ContentFileLoader
         ContentFolder = contentFolder;
     }
 
-    public void LoadContentFiles()
+    public void LoadContentFiles(ContentImportLog log)
     {
         //find all the content files
         _contentFilePaths = GetContentFilesRecursive(ContentFolder);
@@ -47,6 +49,10 @@ public class ContentFileLoader
 
         foreach (var contentFilePath in _contentFilePaths)
         {
+            try
+            {
+
+ 
             using (StreamReader file = File.OpenText(contentFilePath))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
@@ -59,6 +65,12 @@ public class ContentFileLoader
 
                 _loadedContentFiles.Add(loadedFile);
 
+            }
+
+            }
+            catch (Exception e)
+            {
+               log.LogProblem($"Problem in file {contentFilePath}: {e.Message}");
             }
 
         }

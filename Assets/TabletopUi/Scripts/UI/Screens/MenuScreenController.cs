@@ -190,7 +190,7 @@ public class MenuScreenController : MonoBehaviour {
         var registry = new Registry();
 
         _modManager = new ModManager();
-        _modManager.CatalogueActiveMods();
+        _modManager.CatalogueMods();
         registry.Register(_modManager);
         BuildDlcPanel();
         BuildModsPanel();
@@ -481,13 +481,13 @@ public class MenuScreenController : MonoBehaviour {
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry);
         
-        foreach (var mod in _modManager.Mods.Values)
+        foreach (var mod in _modManager.GetAllCataloguedMods())
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
             modEntry.Initialize(mod);
         }
-        modEmptyMessage.enabled = !_modManager.Mods.Any();
+        modEmptyMessage.enabled = !_modManager.GetAllCataloguedMods().Any();
     }
     
     public void CloseCurrentOverlay() {

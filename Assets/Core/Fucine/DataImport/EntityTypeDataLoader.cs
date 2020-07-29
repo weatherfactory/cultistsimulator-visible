@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ namespace Assets.Core.Fucine
         private readonly ContentImportLog _log;
         private List<LoadedContentFile> _coreContentFiles=new List<LoadedContentFile>();
         private List<LoadedContentFile> _locContentFiles = new List<LoadedContentFile>();
+        private List<LoadedContentFile> _modContentFiles= new List<LoadedContentFile>(); 
         public List<EntityData> Entities { get; set; }
         public Dictionary<string,string> LocalisedTextValues { get; set; }
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
@@ -47,13 +49,14 @@ namespace Assets.Core.Fucine
         }
 
 
-    public void SupplyContentFiles(IEnumerable<LoadedContentFile> coreContentFiles,IEnumerable<LoadedContentFile> locContentFiles)
+    public void SupplyContentFiles(IEnumerable<LoadedContentFile> coreContentFiles,IEnumerable<LoadedContentFile> locContentFiles,IEnumerable<LoadedContentFile> modContentFiles)
         {
             _coreContentFiles.AddRange(coreContentFiles);
             _locContentFiles.AddRange(locContentFiles);
+            _modContentFiles.AddRange(modContentFiles);
         }
 
-        public void LoadCoreData()
+        public void LoadEntityData()
         {
             var coreEntitiesLoaded= GetDataForEntityType();
             Entities.AddRange(coreEntitiesLoaded);
