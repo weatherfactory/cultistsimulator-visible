@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
@@ -19,7 +20,7 @@ public class ResourcesManager: MonoBehaviour
 
     public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
-        return GetSprite("icons100/verbs/", verbId);
+        return GetSprite("verbs", verbId);
     }
 
 
@@ -35,7 +36,7 @@ public class ResourcesManager: MonoBehaviour
 
         while (true)
         {
-            var s= GetSprite("icons100/verbs/anim/", verbId + "_" + i, false);
+            var s= GetSprite("verbs\\anim", verbId + "_" + i, false);
             if (s != null)
             {
                 frames.Add(s);
@@ -55,19 +56,19 @@ public class ResourcesManager: MonoBehaviour
 
     public static Sprite GetSpriteForElement(string imageName)
     {
-        return GetSprite("elementArt/", imageName);
+        return GetSprite("elements", imageName);
     }
 
     public static Sprite GetSpriteForAspectInStatusBar(string imageName)
     {
-        return GetSprite("statusbaricons/", imageName);
+        return GetSprite("statusbaricons", imageName);
     }
 
     public static Sprite GetSpriteForElement(string imageName, int animFrame) {
 
         //This doesn't look for the placeholder image: this is intentional (we don't want a flickering pink question mark)
         //but might be a good way to spot missing animations
-        return GetSprite("elementArt/anim/", imageName + "_" + animFrame, false);
+        return GetSprite("elements\\anim", imageName + "_" + animFrame, false);
     }
 
     public static List<Sprite> GetAnimFramesForElement(string imageName)
@@ -82,7 +83,7 @@ public class ResourcesManager: MonoBehaviour
 
         while (true)
         {
-            var s = GetSprite("elementArt/anim/", imageName + "_" + i, false);
+            var s = GetSprite("elements/anim", imageName + "_" + i, false);
             if (s != null)
             {
                 frames.Add(s);
@@ -101,22 +102,22 @@ public class ResourcesManager: MonoBehaviour
 
 
     public static Sprite GetSpriteForCardBack(string backId) {
-        return GetSprite("cardBacks/", backId);
+        return GetSprite("cardbacks/", backId);
     }
 
     public static Sprite GetSpriteForAspect(string imageName)
     {
-        return GetSprite("icons40/aspects/", imageName);
+        return GetSprite("aspects", imageName);
     }
 
     public static Sprite GetSpriteForLegacy(string legacyImage)
     {
-        return GetSprite("icons100/legacies/", legacyImage, false);
+        return GetSprite("legacies", legacyImage, false);
     }
 
     public static Sprite GetSpriteForDlc(string dlcId, bool active)
     {
-        return GetSprite("icons100/dlc/", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
+        return GetSprite("dlc", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
     }
 
     public static Sprite GetSpriteForEnding(string endingImage)
@@ -125,12 +126,12 @@ public class ResourcesManager: MonoBehaviour
 
 		// Try to load localised version from language subfolder first - if none then fall back to normal one - CP
         Sprite spr = GetSprite(
-            "endingArt/" + LanguageTable.targetCulture + "/",
+            "endings\\" + LanguageTable.targetCulture,
             endingImage,
             false);
 		if (spr == null)
 		{
-			spr = GetSprite("endingArt/", endingImage, false);
+			spr = GetSprite("endings", endingImage, false);
 		}
 		
 		return spr;
@@ -170,19 +171,21 @@ public class ResourcesManager: MonoBehaviour
     
     public static Sprite GetSprite(string folder, string file, bool withPlaceholder = true)
     {
+        var spritePath = Path.Combine("images", folder, file);
+
         // Try to find the image in a mod first, in case it overrides an existing one
         var modManager = Registry.Retrieve<ModManager>();
-        var modSprite = modManager.GetSprite(folder + file);
+        var modSprite = modManager.GetSprite(spritePath);
         if (modSprite != null)
         {
             return modSprite;
         }
 
         // Try to load the image from the packed resources next, and show the placeholder if not found
-        var sprite = Resources.Load<Sprite>(folder + file);
+        var sprite = Resources.Load<Sprite>(spritePath);
         if (sprite != null || !withPlaceholder)
             return sprite;
-        return Resources.Load<Sprite>(folder + PLACEHOLDER_IMAGE_NAME);
+        return Resources.Load<Sprite>(spritePath.Replace(file, PLACEHOLDER_IMAGE_NAME));
     }
 }
 

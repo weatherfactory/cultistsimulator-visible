@@ -31,14 +31,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         /// </summary>
         private readonly HashSet<string> _imagesDirectories = new HashSet<string>
         {
-            "burnImages/",
-            "cardBacks/",
-            "elementArt/",
-            "elementArt/anim/",
-            "endingArt/",
-            "icons40/aspects/",
-            "icons100/legacies/",
-            "icons100/verbs/",
+            "aspects",
+            "burns",
+            "cardbacks",
+            "elements",
+            "elements\\anim",
+            "endings",
+            "legacies",
+            "verbs",
+            "verbs\\anim",
         };
 
 
@@ -131,7 +132,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 // If an error occurs in the process, discard the mod
                 //commented out - not checking until we load the mod
                 //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
-                if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
+                if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
                 {
                     NoonUtility.Log(
                         "Encountered errors in images, skipping mod",
@@ -239,17 +240,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
 
 
-        private bool LoadAllImagesDirectory(Mod mod, string imagesDirectoryPath)
+        private bool LoadAllImagesDirectory(Mod mod, string modPath, string imagesFolder)
         {
             // Search all subdirectories for more image files
             return _imagesDirectories.All(
-                imageSubDirectoryPath => LoadImagesDirectory(mod, imagesDirectoryPath, imageSubDirectoryPath));
+                imageSubDirectoryPath => LoadImagesDirectory(mod, modPath,imagesFolder, imageSubDirectoryPath));
         }
 
-        private static bool LoadImagesDirectory(Mod mod, string imagesDirectoryPath, string imagesSubdirectory)
+        private static bool LoadImagesDirectory(Mod mod, string modPath,string imagesFolder, string imagesSubdirectory)
         {
             // Check if the directory exists, otherwise don't try looking for images in it
-            var imagesSubdirectoryPath = Path.Combine(imagesDirectoryPath, imagesSubdirectory);
+            var imagesSubdirectoryPath = Path.Combine(modPath,imagesFolder, imagesSubdirectory);
             if (!Directory.Exists(imagesSubdirectoryPath))
             {
                 return true;
@@ -259,7 +260,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             // This may incur a performance hit - a better system may be needed later
             foreach (var imagePath in Directory.GetFiles(imagesSubdirectoryPath, "*.png"))
             {
-                var fileResourceName = imagesSubdirectory + Path.GetFileNameWithoutExtension(imagePath);
+                var fileResourceName = Path.Combine(imagesFolder, imagesSubdirectory, Path.GetFileNameWithoutExtension(imagePath));
                 NoonUtility.Log("Loading image '" + fileResourceName + "'");
                 var fileData = File.ReadAllBytes(imagePath);
 
