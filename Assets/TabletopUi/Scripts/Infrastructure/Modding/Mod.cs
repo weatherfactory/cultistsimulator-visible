@@ -30,30 +30,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         
         public bool Enabled { get; set; }
 
+        public string ModRootFolder { get; set; }
+
         public string ContentFolder { get; set; }
 
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
 
         public Mod(
-            string id,
-            string name = null,
-            string author = null,
-            Version version = null,
-            string description = null,
-            string descriptionLong = null,
-            List<Dependency> dependencies = null,
-            Dictionary<string, List<Hashtable>> contents = null,
-            Dictionary<string, Sprite> images = null)
+            string id, string modRootFolder)
         {
             Id = id;
-            Name = name;
-            Author = author;
-            Version = version;
-            Description = description;
-            DescriptionLong = descriptionLong;
-            Dependencies = dependencies ?? new List<Dependency>();
-            Contents = contents ?? new Dictionary<string, List<Hashtable>>();
-            Images = images ?? new Dictionary<string, Sprite>();
+            ModRootFolder = modRootFolder;
+
+            Dependencies =  new List<Dependency>();
+            Contents = new Dictionary<string, List<Hashtable>>();
+            Images = new Dictionary<string, Sprite>();
             Enabled = false;
         }
 

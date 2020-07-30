@@ -11,7 +11,7 @@ namespace Noon
 {
     public class NoonConstants
     {
-
+        public const int CULTIST_STEAMWORKS_APP_ID = 718670;
         public const string ID = "id";
         public const string UID = "uid";
         public const string EXTENDS = "extends";

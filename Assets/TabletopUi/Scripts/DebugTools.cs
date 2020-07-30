@@ -16,6 +16,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using Steamworks;
 using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine.UI;
@@ -61,6 +62,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
     public List<int> QueuedRollsList;
 
     public Transform AutoCompletionSuggestionPrefab;
+
+    private CallResult<CreateItemResult_t> r_itemCreated;
+    private CallResult<DeleteItemResult_t> r_itemDeleted;
+    private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;
+
 
     // Indicates the last selected auto-completion suggestion
     // -1 means no previous suggestion was selected
@@ -112,6 +118,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
             if (!CheckDebugSaveExists(i))
                 delButtons[i].interactable = false;
         }
+
+
+        r_itemCreated = CallResult<CreateItemResult_t>.Create(OnWorkshopItemCreated);
+        r_itemDeleted=CallResult<DeleteItemResult_t>.Create(OnWorkshopItemDeleted);
+        r_itemUpdateCompleted = CallResult<SubmitItemUpdateResult_t>.Create(OnWorkshopItemUpdateCompleted);
 
     }
 
@@ -421,15 +432,90 @@ public class DebugTools : MonoBehaviour,IRollOverride
         foreach (var m in log.GetMessages())
             Log(m.Description, m.MessageLevel);
 
+
     }
 
-
-    public void Inbook()
+    private Mod GetModForUpload()
     {
         var modManager = Registry.Retrieve<ModManager>();
         var firstMod = modManager.GetAllActiveMods().First();
-        NoonUtility.Log(firstMod.Name);
+        NoonUtility.Log("first mod active: " + firstMod.Name);
+
+        return firstMod;
     }
+
+    public void Inbook()
+    {
+        //make a call to the API and give it a handle
+             SteamAPICall_t handle = SteamUGC.CreateItem((AppId_t) NoonConstants.CULTIST_STEAMWORKS_APP_ID,
+                 EWorkshopFileType.k_EWorkshopFileTypeCommunity);
+
+             //associate the previously created call result with it
+             r_itemCreated.Set(handle);
+        //and when it's completed, the call result has a delegate that it calls in turn
+    }
+
+
+    private void OnWorkshopItemCreated(CreateItemResult_t callback, bool IOFailure)
+    {
+        Debug.Log(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement);
+        Debug.Log(callback.m_nPublishedFileId); //2182462640
+
+        StartItemUpdate(callback.m_nPublishedFileId);
+    }
+
+    private void StartItemUpdate(PublishedFileId_t callbackPublishedFileId)
+    {
+        UGCUpdateHandle_t updateHandle = SteamUGC.StartItemUpdate((AppId_t) NoonConstants.CULTIST_STEAMWORKS_APP_ID,
+            callbackPublishedFileId);
+
+        var modToUpload = GetModForUpload();
+
+        SteamUGC.SetItemTitle(updateHandle, modToUpload.Name);
+        SteamUGC.SetItemDescription(updateHandle, modToUpload.Description);
+        SteamUGC.SetItemContent(updateHandle, modToUpload.ModRootFolder);
+
+
+        SteamAPICall_t updateCompleteHandle = SteamUGC.SubmitItemUpdate(updateHandle, "update at: " + DateTime.Now);
+        r_itemUpdateCompleted.Set(updateCompleteHandle);
+    }
+
+
+    private void OnWorkshopItemUpdateCompleted(SubmitItemUpdateResult_t callback,bool IOFailure)
+    {
+        if(IOFailure)
+        {
+            NoonUtility.Log("ARKK IO UPDATE FAILURE");
+        }
+        else
+        {
+            NoonUtility.Log("Update completed for item " + callback.m_nPublishedFileId + " with result " + callback.m_eResult);
+        }
+    }
+
+
+    public void Outbook(string publishedFileId)
+    {
+        UInt32 FileId = Convert.ToUInt32(publishedFileId);
+
+        //make a call to the API and give it a handle
+        SteamAPICall_t handle = SteamUGC.DeleteItem((PublishedFileId_t)FileId);
+
+        //associate the previously created call result with it
+        r_itemDeleted.Set(handle);
+        //and when it's completed, the callresult has a delegate that it calls in turn
+    }
+
+    private void OnWorkshopItemDeleted(DeleteItemResult_t pCallback, bool bIOFailure)
+    {
+  
+        Debug.Log(pCallback.m_nPublishedFileId);
+        Debug.Log(pCallback.m_eResult);
+    }
+
+
+
+
 
     void NextTrack()
     {

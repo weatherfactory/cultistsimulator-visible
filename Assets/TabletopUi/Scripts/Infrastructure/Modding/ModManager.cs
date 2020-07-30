@@ -104,7 +104,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 }
 
                 // Initialize the mod with its manifest information
-                var mod = new Mod(modId);
+                var mod = new Mod(modId, modFolder);
+
                 var errors = mod.FromManifest(manifestData);
                 if (errors.Count > 0)
                 {
