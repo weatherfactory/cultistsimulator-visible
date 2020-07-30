@@ -13,59 +13,6 @@ using UnityEngine;
 namespace Assets.Core.Fucine
 
 {
-
-    public class EntityMod
-    {
-        private readonly EntityData _modData;
-
-        public EntityMod(EntityData modData)
-        {
-            _modData = modData;
-        }
-
-        public void ApplyTo(Dictionary<string, EntityData> coreEntityDataDictionary,ContentImportLog log)
-        {
-            foreach(var e in _modData.GetEntityIdsToExtend())
-            {
-                if(coreEntityDataDictionary.TryGetValue(e,out var dataToExtendWith))
-                {
-                    var copiableValues = dataToExtendWith.GetCopiableValues();
-                    foreach (var k in copiableValues.Keys)
-                        _modData.OverwriteOrAdd(k, copiableValues[k]);
-                }
-                else
-                {
-                   log.LogWarning($"{_modData.Id} tried to extend from an entity that doesn't exist: {e}" );
-                }
-
-            }
-
-            //"$append": appends a list of items to the original list property.
-            //"$prepend": prepends a list of items to the original list property.
-            //"$plus": adds the specified number to the original number property.
-            //"$minus": subtracts the specified number from the original number property.
-            //"$extend": extends a dictionary with the specified properties.
-            //"$remove": removes each element in the list from the original property, which can either be a list or a dictionary.
-
-            
-            
-            if(coreEntityDataDictionary.ContainsKey(_modData.Id))
-            {
-                _modData.ValuesTable = _modData.GetNonModlyValues();
-                //    If a mod object id does exist in original data - completely overwrite that entity in data
-                coreEntityDataDictionary[_modData.Id]=_modData;
-
-            }
-            else
-            {
-                _modData.ValuesTable = _modData.GetNonModlyValues();
-                //If a mod object id doesn't exist in original data - create a new entity and add it to data			
-                coreEntityDataDictionary.Add(_modData.Id,_modData);
-            }
-       
-        }
-
-    }
     public class EntityTypeDataLoader
     {
 
@@ -147,7 +94,7 @@ namespace Assets.Core.Fucine
             foreach(var modData in moddedEntityData.Values)
             {
                 EntityMod entityMod=new EntityMod(modData);
-                entityMod.ApplyTo(coreEntityData,_log);
+                entityMod.ApplyModTo(coreEntityData,_log);
             }
 
         }
