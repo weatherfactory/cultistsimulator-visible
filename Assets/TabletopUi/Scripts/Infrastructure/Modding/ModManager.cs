@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Assets.Core.Fucine;
 using Noon;
 using UnityEngine;
@@ -117,14 +118,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 }
 
                 //check the mod has a content directory
-               mod.ContentFolder= Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
-                if(!Directory.Exists(mod.ContentFolder))
+                var candidateContentFolder= Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
+                if (!Directory.Exists(candidateContentFolder))
                 {
                     NoonUtility.Log(
-                        mod.Id + " doesn't have a content directory; skipping mod",
-                        messageLevel: 2);
-                    continue;
+                        mod.Id + " doesn't have a content directory, so we won't try to load it");
                 }
+                else
+                    mod.ContentFolder = candidateContentFolder;
 
                 // Collect the mod's images
                 // If an error occurs in the process, discard the mod
