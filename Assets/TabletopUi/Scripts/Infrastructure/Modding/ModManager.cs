@@ -130,13 +130,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 // If an error occurs in the process, discard the mod
                 //commented out - not checking until we load the mod
                 //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
-                //if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
-                //{
-                //    NoonUtility.Log(
-                //        "Encountered errors in images, skipping mod",
-                //        messageLevel: 2);
-                //    continue;
-                //}
+                if (!LoadAllImagesDirectory(mod, Path.Combine(modFolder, "images")))
+                {
+                    NoonUtility.Log(
+                        "Encountered errors in images, skipping mod",
+                        messageLevel: 2);
+                    continue;
+                }
 
                 // Add the mod to the collection
 
