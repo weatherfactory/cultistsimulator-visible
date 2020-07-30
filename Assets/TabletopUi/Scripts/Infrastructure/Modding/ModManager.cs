@@ -74,8 +74,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     public void CatalogueMods()
         {
             //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
-
-            
             _mods.Clear();
 
             // Check if the mods folder exists
@@ -133,7 +131,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 //check the mod has a content directory
                mod.ContentFolder= Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
                 if(!Directory.Exists(mod.ContentFolder))
-            {
+                {
                     NoonUtility.Log(
                         mod.Id + " doesn't have a content directory; skipping mod",
                         messageLevel: 2);
@@ -236,28 +234,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 string.Join("\n", _mods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
         }
 
-        public IEnumerable<Hashtable> LoadContentForEntityType(Type forEntityType)
-        {
-            FucineImportable importableAttributeForEntityType =
-                (FucineImportable)forEntityType.GetCustomAttribute(typeof(FucineImportable), false);
-
-
-            var categoryContent = new List<Hashtable>();
-
-            
-            foreach (var mod in _mods)
-            {
-                if (!mod.Value.Enabled)
-                    continue;
-                if (!mod.Value.Contents.ContainsKey(importableAttributeForEntityType.TaggedAs)) 
-                    continue;
-                foreach (var entry in mod.Value.Contents[importableAttributeForEntityType.TaggedAs])
-                    categoryContent.Add(entry.DeepClone());
-            }
-
-            return categoryContent;
-        }
-
+       
         public Sprite GetSprite(string spriteResourceName)
         {
             
