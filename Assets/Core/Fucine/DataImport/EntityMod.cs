@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Fucine.DataImport;
 using Noon;
 using OrbCreationExtensions;
@@ -19,42 +20,47 @@ namespace Assets.Core.Fucine
         {
             //check this entitymod for entity ids in 'extends'
             //if there are any, copy values from identified entity/entities entities to this entitymod
-            //if any values overlap, they'll overwrite it
-            foreach(var e in _modData.GetEntityIdsToExtend())
+            //if any values overlap, they're *not* overwritten - either from the initial entity or from successive extensions
+            //this gives the mod entity priority on specifying values
+
+            var entityIdsToExtend = _modData.FlushEntityIdsToExtend();
+
+            if(entityIdsToExtend.Any())
             {
-                if(coreEntitiesDataDictionary.TryGetValue(e,out var dataToExtendWith))
+            
+                foreach(var e in entityIdsToExtend)
                 {
-                    var copiableValues = dataToExtendWith.GetCopiableValues();
-                    foreach (var k in copiableValues.Keys)
-                        _modData.OverwriteOrAdd(k, copiableValues[k]);
+                    if(coreEntitiesDataDictionary.TryGetValue(e,out var dataToExtendWith))
+                    {
+                        foreach (var k in dataToExtendWith.ValuesTable.Keys)
+                            _modData.TryAdd(k, dataToExtendWith.ValuesTable[k]);
+                    }
+                    else
+                    {
+                        log.LogWarning($"{_modData.Id} tried to extend from an entity that doesn't exist: {e}" );
+                    }
                 }
-                else
-                {
-                    log.LogWarning($"{_modData.Id} tried to extend from an entity that doesn't exist: {e}" );
-                }
+
 
             }
-
-            ProcessPropertyOperations(log);
-
-
 
 
             //all mod operations complete. Now either overwrite an existing item with that id, or add a new one 
             if (coreEntitiesDataDictionary.ContainsKey(_modData.Id))
             {
-                _modData.ValuesTable = _modData.GetNonModlyValues();
-                //    If a mod object id does exist in original data - completely overwrite that entity in data
                 coreEntitiesDataDictionary[_modData.Id]=_modData;
-
             }
             else
             {
-                _modData.ValuesTable = _modData.GetNonModlyValues();
                 //If a mod object id doesn't exist in original data - create a new entity and add it to data			
                 coreEntitiesDataDictionary.Add(_modData.Id,_modData);
             }
-       
+
+
+            ProcessPropertyOperations(log);
+
+
+
         }
 
         private void ProcessPropertyOperations(ContentImportLog log)
@@ -63,11 +69,11 @@ namespace Assets.Core.Fucine
             //"$prepend": prepends a list of items to the original list property.
             //"$plus": adds the specified number to the original number property.
             //"$minus": subtracts the specified number from the original number property.
-            //"$extend": extends a dictionary with the specified properties.
+            //"$add": extends a dictionary with the specified properties.
             //"$remove": removes each element in the list from the original property, which can either be a list or a dictionary.
 
 
-            var itemId = _modData.ValuesTable.GetString("id");
+            var itemId = _modData.Id;
             var keys = new ArrayList(_modData.ValuesTable.Keys);
             const char MODSEP = '$';
             foreach (string key in keys)
@@ -134,19 +140,20 @@ namespace Assets.Core.Fucine
                             break;
                         }
 
-                    // extend: add or replace keys in a dictionary
-                    case "extend":
-                        {
-                            var value = _modData.ValuesTable.GetHashtable(propertyToAlterKey);
-                            var newValue = _modData.ValuesTable.GetHashtable(key);
-                            if (value == null || newValue == null)
+                    // add: add or replace keys in a dictionary
+                    case "add":
+                    {
+                        var existingValuesData = _modData.GetEntityDataFromValueTable(propertyToAlterKey);
+                            var newValuesData = _modData.GetEntityDataFromValueTable(key);
+                            if (existingValuesData == null || newValuesData == null)
                             {
                                 log.LogWarning(
                                     "Cannot apply '{operation}' to '" + propertyToAlterKey + "' in '" + itemId + "': invalid type, must be a dictionary");
                                 continue;
                             }
 
-                            value.AddHashtable(newValue, true);
+                            foreach (var newValueKey in newValuesData.ValuesTable.Keys)
+                                existingValuesData.OverwriteOrAdd(newValueKey, newValuesData.ValuesTable[newValueKey]);
 
                             break;
                         }
@@ -154,8 +161,8 @@ namespace Assets.Core.Fucine
                     // remove: removes items from a dictionary or a list
                     case "remove":
                         {
-                            var newValue = _modData.ValuesTable.GetArrayList(key);
-                            if (newValue == null)
+                            var valuesToDelete = _modData.ValuesTable.GetArrayList(key);
+                            if (valuesToDelete == null)
                             {
                                 log.LogWarning(
                                     "Invalid value for '" + key + "' in '" + itemId + "': invalid type, must be a list");
@@ -169,27 +176,27 @@ namespace Assets.Core.Fucine
                                 continue;
                             }
 
-                            object originalPropertyValue = _modData.ValuesTable[propertyToAlterKey];
-                            if (originalPropertyValue.GetType() == typeof(Hashtable))
+                            object originalPropertyValues = _modData.ValuesTable[propertyToAlterKey];
+                            if (originalPropertyValues.GetType() == typeof(EntityData))
                             {
-                                var value = _modData.ValuesTable.GetHashtable(propertyToAlterKey);
-                                foreach (string toDelete in newValue)
+                                var originalValuesHashtable = _modData.GetEntityDataFromValueTable(propertyToAlterKey).ValuesTable;
+                                foreach (string valueToDelete in valuesToDelete)
                                 {
-                                    if (value.ContainsKey(toDelete))
-                                        value.Remove(toDelete);
+                                    if (originalValuesHashtable.ContainsKey(valueToDelete))
+                                        originalValuesHashtable.Remove(valueToDelete);
                                     else
                                         log.LogWarning(
-                                            "Failed to delete '" + toDelete + "' from '" + propertyToAlterKey +
+                                            "Failed to delete '" + valueToDelete + "' from '" + propertyToAlterKey +
                                             "' in '" + itemId + "'");
                                 }
                             }
-                            else if (originalPropertyValue.GetType() == typeof(ArrayList))
+                            else if (originalPropertyValues.GetType() == typeof(ArrayList))
                             {
-                                var value = _modData.ValuesTable.GetArrayList(propertyToAlterKey);
-                                foreach (string toDelete in newValue)
+                                var originalValuesArrayList = _modData.ValuesTable.GetArrayList(propertyToAlterKey);
+                                foreach (string toDelete in valuesToDelete)
                                 {
-                                    if (value.Contains(toDelete))
-                                        value.Remove(toDelete);
+                                    if (originalValuesArrayList.Contains(toDelete))
+                                        originalValuesArrayList.Remove(toDelete);
                                     else
                                         log.LogWarning(
                                             "Failed to delete '" + toDelete + "' from '" + propertyToAlterKey + "' in '" + itemId + "'");

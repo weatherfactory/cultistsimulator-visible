@@ -24,18 +24,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         private Dictionary<string, Mod> _mods { get; }
 
-        /// <summary>
-        /// TODO: base this on importable types
-        /// </summary>
-        private readonly HashSet<string> _entityCategories = new HashSet<string>
-        {
-            "decks",
-            "elements",
-            "endings",
-            "legacies",
-            "recipes",
-            "verbs"
-        };
 
         /// <summary>
         /// TODO: base this on importable type tags

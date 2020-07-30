@@ -29,13 +29,20 @@ namespace Assets.Core.Fucine.DataImport
             get => _uniqueId;
         }
 
-
-
-        public List<string> GetEntityIdsToExtend()
+        /// <summary>
+        /// gets entity ids to extend *and then removes it* so it doesn't show up as an invalid property later
+        /// </summary>
+        /// <returns></returns>
+        public List<string> FlushEntityIdsToExtend()
         {
             if (ValuesTable.ContainsKey(NoonConstants.EXTENDS))
             {
                 var ids = ValuesTable[NoonConstants.EXTENDS] as ArrayList;
+                ValuesTable.Remove(NoonConstants.EXTENDS);
+
+                if(ids==null)
+                    return new List<string>();
+
                 return ids.Cast<string>().ToList();
             }
             else return new List<string>();
@@ -57,19 +64,20 @@ namespace Assets.Core.Fucine.DataImport
         }
 
         /// <summary>
-        /// all the values that we should copy across with extends or similar, excluding meta and mod values
+        /// return true if adding successfully, false if the key's already there
         /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
-        public Hashtable GetNonModlyValues()
+        public bool TryAdd(object key, object value)
         {
-            Hashtable copiableValues = new Hashtable();
-            foreach (string key in ValuesTable.Keys)
-                if (key != NoonConstants.EXTENDS)
-                    copiableValues.Add(key, ValuesTable[key]);
+            if (ValuesTable.ContainsKey(key))
+                return false;
 
-            return copiableValues;
+            ValuesTable.Add(key,value);
+            return true;
+
         }
-
 
 
 
@@ -95,6 +103,15 @@ namespace Assets.Core.Fucine.DataImport
         }
 
         public Hashtable ValuesTable { get; set; }
+
+        public EntityData GetEntityDataFromValueTable(string key)
+        {
+            if (!ValuesTable.ContainsKey(key))
+                return null;
+            else
+                //this will be null if it's not actually EntityData in there
+                return ValuesTable[key] as EntityData;
+        }
 
 
         public EntityData()
