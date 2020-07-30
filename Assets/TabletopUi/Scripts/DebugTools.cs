@@ -15,6 +15,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine.UI;
@@ -420,6 +421,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
         foreach (var m in log.GetMessages())
             Log(m.Description, m.MessageLevel);
 
+    }
+
+
+    public void Inbook()
+    {
+        var modManager = Registry.Retrieve<ModManager>();
+        var firstMod = modManager.GetAllActiveMods().First();
+        NoonUtility.Log(firstMod.Name);
     }
 
     void NextTrack()
