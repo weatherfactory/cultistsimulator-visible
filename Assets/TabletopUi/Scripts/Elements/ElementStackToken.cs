@@ -130,7 +130,7 @@ namespace Assets.CS.TabletopUI {
 
         virtual public bool Decays
 		{
-            get { return _element.Lifetime > 0 ; }
+            get { return _element?.Lifetime > 0 ; }
         }
 
         virtual public int Quantity {
@@ -245,6 +245,11 @@ namespace Assets.CS.TabletopUI {
 
         virtual public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
+            //if we've somehow failed to populate an element, return empty aspects, just to exception-proof ourselves
+            if(_element==null)
+                return new AspectsDictionary();
+
+
 			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			if (!tabletop._enableAspectCaching)
 			{
@@ -331,7 +336,9 @@ namespace Assets.CS.TabletopUI {
             if (_element==null)
 			{
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
-			}
+                this.Retire();
+                return;
+            }
 
             InitialiseIfStackIsNew();
 
@@ -608,7 +615,7 @@ namespace Assets.CS.TabletopUI {
 				return false;
 
             var hlc = Registry.Retrieve<HighlightLocationsController>();
-            hlc.DeactivateMatchingHighlightLocation(_element.Id);
+            hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
             var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
