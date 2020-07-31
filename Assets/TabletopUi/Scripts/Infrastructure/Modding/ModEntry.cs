@@ -10,10 +10,6 @@ using UnityEngine.UI;
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
 
-    public class ModUploadResult
-    {
-
-    }
 
     public class ModEntry : MonoBehaviour
     {
@@ -74,9 +70,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
             
 
-              Task<ModUploadResult> modUploadTask=storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
 
-           var modUploadResult = await modUploadTask;
+           
           uploadToggleText.text = "done!";
     
         }

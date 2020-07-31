@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -64,12 +65,11 @@ return;
         }
 
 
-        public async Task<ModUploadResult> UploadModForCurrentStorefront(Mod modToUpload)
-        {
-            if(_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
-             steamClient.UploadMod(modToUpload);
+        public async Task UploadModForCurrentStorefront(Mod modToUpload)
+        { if(_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
+           steamClient.UploadMod(modToUpload);
+            await Task.Delay(3000);
 
-            return new ModUploadResult();
 
         }
     }
