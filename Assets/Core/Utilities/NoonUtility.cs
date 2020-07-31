@@ -11,10 +11,11 @@ namespace Noon
 {
     public class NoonConstants
     {
-        public const int CULTIST_STEAMWORKS_APP_ID = 718670;
         public const string ID = "id";
         public const string UID = "uid";
         public const string EXTENDS = "extends";
+
+        public const int CULTIST_STEAMWORKS_APP_ID = 718670;
 
         public const string CORE_FOLDER_NAME = "core";
         public const string LOC_FOLDER_TEMPLATE = "core_[culture]";
@@ -77,9 +78,11 @@ namespace Noon
 		private static bool screenLogVisible = false;
 
 
-
-        public static void Log(string message, int messageLevel=0,int verbosityNeeded=0)
+        
+        public static void Log(object messageObject, int messageLevel=0,int verbosityNeeded=0)
         {
+            var message = messageObject.ToString();
+            
 
             if(verbosityNeeded<=CurrentVerbosity)
             {
