@@ -479,7 +479,7 @@ public class MenuScreenController : MonoBehaviour {
     {
         // Clear the list and repopulate with one entry per loaded mod
         foreach (Transform modEntry in modEntries)
-            Destroy(modEntry);
+            Destroy(modEntry.gameObject);
         
         foreach (var mod in _modManager.GetAllCataloguedMods())
         {
