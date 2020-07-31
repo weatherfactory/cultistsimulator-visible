@@ -65,10 +65,10 @@ return;
         }
 
 
-        public async Task UploadModForCurrentStorefront(Mod modToUpload)
+        public async Task UploadModForCurrentStorefront(Mod modToUpload,Action<ModUploadedArgs> modUploadedAction)
         { if(_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
-           steamClient.UploadMod(modToUpload);
-            await Task.Delay(3000);
+           steamClient.UploadMod(modToUpload,modUploadedAction);
+        //    await Task.Delay(3000); this just checks it's actually working asynchronously. I probably don't actually need async cos Steam, anyway!
 
 
         }

@@ -10,6 +10,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SteamworksStorefrontClientProvider : IStoreFrontClientProvider
     {
+        public event EventHandler OnModUploaded;
+      
         private CGameID _gameId;
 
 
@@ -18,6 +20,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;
 
         private static Mod _currentlyUploadingMod=new NullMod();
+
+        private static Action<ModUploadedArgs> ModUploadedAction;
 
         public SteamworksStorefrontClientProvider()
         {
@@ -87,7 +91,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void UploadMod(Mod modToUpload)
+        public void UploadMod(Mod modToUpload,Action<ModUploadedArgs> modUploaded)
         {
             if(SteamworksStorefrontClientProvider._currentlyUploadingMod.IsValid)
             {
@@ -97,6 +101,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
             _currentlyUploadingMod = modToUpload;
+            ModUploadedAction = modUploaded;
 
             //make a call to the API and give it a handle
             SteamAPICall_t handle = SteamUGC.CreateItem(_gameId.AppID(),
@@ -156,6 +161,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
             _currentlyUploadingMod = new NullMod();
+
+            ModUploadedArgs args = new ModUploadedArgs {PublishedFileId = callback.m_nPublishedFileId.ToString()};
+
+            ModUploadedAction(args);
         }
 
 

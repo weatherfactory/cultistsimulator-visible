@@ -10,14 +10,17 @@ using UnityEngine.UI;
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
 
-
+    public class ModUploadedArgs
+    {
+        public string PublishedFileId { get; set; }
+    }
     public class ModEntry : MonoBehaviour
     {
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
 
         public Button uploadButton;
-        public TextMeshProUGUI uploadToggleText;
+        public TextMeshProUGUI uploadText;
         public Babelfish uploadToggleBabel;
 
         public Button activationToggleButton;
@@ -64,16 +67,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
 
 
+        public void ModUploaded(ModUploadedArgs args)
+        {
+            uploadText.text = args.PublishedFileId;
+        }
+
         public async void UploadModToStorefront()
         {
           //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
             var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
-            
 
-            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+            Action<ModUploadedArgs> modUploadedAction = ModUploaded;
+            uploadText.text = "sec...";
+            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod,modUploadedAction);
 
            
-          uploadToggleText.text = "done!";
+          
     
         }
 
