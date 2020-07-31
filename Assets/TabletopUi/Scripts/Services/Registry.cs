@@ -15,7 +15,7 @@ namespace Assets.CS.TabletopUI
 
     public class Registry
     {
-        private static Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
+        private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
         public static T Retrieve<T>() where T: class
         {
