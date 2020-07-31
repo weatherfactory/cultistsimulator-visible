@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
@@ -63,13 +64,12 @@ return;
         }
 
 
-        public void UploadModForCurrentStorefront(Mod modToUpload)
+        public async Task<ModUploadResult> UploadModForCurrentStorefront(Mod modToUpload)
         {
-            var steamClient = _steamClientProvider as SteamworksStorefrontClientProvider;
+            if(_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
+             steamClient.UploadMod(modToUpload);
 
-            if(steamClient!=null)
-
-                steamClient.UploadMod(modToUpload);
+            return new ModUploadResult();
 
         }
     }

@@ -1,29 +1,37 @@
 using System;
+using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
+
+    public class ModUploadResult
+    {
+
+    }
+
     public class ModEntry : MonoBehaviour
     {
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
+
+        public Button uploadButton;
+        public TextMeshProUGUI uploadToggleText;
+        public Babelfish uploadToggleBabel;
+
+        public Button activationToggleButton;
         public TextMeshProUGUI activationToggleText;
         public Babelfish activationToggleBabel;
         
+
         private Mod _mod;
 
-        public void ToggleActivation()
-        {
-            var modManager = Registry.Retrieve<ModManager>();
-            _mod.Enabled = !_mod.Enabled;
-            modManager.SetModEnableState(_mod.Id, _mod.Enabled);
-            UpdateEnablementDisplay();
-            
-        }
+
         
         public void Initialize(Mod mod)
         {
@@ -31,6 +39,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             title.text = mod.Name + " (" + mod.Version + ")";
             description.text = mod.Description;
             UpdateEnablementDisplay();
+
+
+            uploadButton.onClick.AddListener(UploadModToStorefront);
+            activationToggleButton.onClick.AddListener(ToggleActivation);
+            
+
         }
 
         private void UpdateEnablementDisplay()
@@ -43,21 +57,30 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             description.color = newColor;
         }
 
-        public void UploadModToStorefront()
+        public void ToggleActivation()
+        {
+
+            var modManager = Registry.Retrieve<ModManager>();
+            _mod.Enabled = !_mod.Enabled;
+            modManager.SetModEnableState(_mod.Id, _mod.Enabled);
+            UpdateEnablementDisplay();
+
+        }
+
+
+        public async void UploadModToStorefront()
         {
           //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
             var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
-        storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+            
 
-       //    Task<AsyncContentImportResult> resultsTask = Validate();
-       //    AsyncContentImportResult result = await resultsTask;
+              Task<ModUploadResult> modUploadTask=storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
 
+           var modUploadResult = await modUploadTask;
+          uploadToggleText.text = "done!";
+    
         }
 
-        void ModUploadComplete(IAsyncResult result)
-        {
-
-        }
 
     }
 }
