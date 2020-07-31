@@ -8,6 +8,18 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
+    public class NullMod : Mod
+    {
+        public override bool IsValid => false;
+
+        public NullMod(): base("null mod","")
+        {
+
+        }
+
+
+    }
+
     public class Mod
     {
         public string Id { get; set; }
@@ -35,6 +47,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public string ContentFolder { get; set; }
 
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
+
+        public virtual bool IsValid => true;
+
 
         public Mod(
             string id, string modRootFolder)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
 using UnityEngine;
 
@@ -44,13 +45,13 @@ return;
             try
             {
             
-            if (!NoonUtility.AchievementsActive)
-                return;
-            if(_steamClientProvider!=null)
-                _steamClientProvider.SetAchievement(achievementId,setStatus);
+                if (!NoonUtility.AchievementsActive)
+                    return;
+                if(_steamClientProvider!=null)
+                    _steamClientProvider.SetAchievement(achievementId,setStatus);
 
-            if(_gogClientProvider!=null)
-                _gogClientProvider.SetAchievement(achievementId,setStatus);
+                if(_gogClientProvider!=null)
+                    _gogClientProvider.SetAchievement(achievementId,setStatus);
             }
             catch (Exception e)
             {
@@ -59,6 +60,17 @@ return;
                 //throw;
             }
             
+        }
+
+
+        public void UploadModForCurrentStorefront(Mod modToUpload)
+        {
+            var steamClient = _steamClientProvider as SteamworksStorefrontClientProvider;
+
+            if(steamClient!=null)
+
+                steamClient.UploadMod(modToUpload);
+
         }
     }
 }

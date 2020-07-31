@@ -16,6 +16,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private CallResult<DeleteItemResult_t> r_itemDeleted;
         private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;
 
+        private static Mod _currentlyUploadingMod=new NullMod();
+
         public SteamworksStorefrontClientProvider()
         {
             if (!SteamManager.Initialized)
@@ -84,8 +86,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void Inbook()
+        public void UploadMod(Mod modToUpload)
         {
+            if(SteamworksStorefrontClientProvider._currentlyUploadingMod.IsValid)
+            {
+                NoonUtility.Log("Already uploading mod: " + _currentlyUploadingMod.Id);
+                return;
+            }
+
+
+            _currentlyUploadingMod = modToUpload;
+
             //make a call to the API and give it a handle
             SteamAPICall_t handle = SteamUGC.CreateItem(_gameId.AppID(),
                 EWorkshopFileType.k_EWorkshopFileTypeCommunity);
@@ -97,8 +108,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void OnWorkshopItemCreated(CreateItemResult_t callback, bool ioFailure)
         {
-            NoonUtility.Log(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement);
-            NoonUtility.Log(callback.m_nPublishedFileId);
+            if(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement)
+            {
+                NoonUtility.Log("User hasn't accepted Steam Workshop legal agreement; terminating upload");
+                return;
+            }
+            else
+                NoonUtility.Log("User has accepted Steam Workshop legal agreement; continuing upload");
 
             StartItemUpdate(callback.m_nPublishedFileId);
         }
@@ -108,7 +124,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             UGCUpdateHandle_t updateHandle = SteamUGC.StartItemUpdate(_gameId.AppID(),
                 callbackPublishedFileId);
 
-            var modToUpload = GetModForUpload();
+            var modToUpload = _currentlyUploadingMod;
+
+            if (!modToUpload.IsValid)
+            {
+                NoonUtility.Log($"Created fileid for a new mod {callbackPublishedFileId}, but there's no mod to upload, or it's otherwise invalid",1);
+                return;
+            }
 
             SteamUGC.SetItemTitle(updateHandle, modToUpload.Name);
             SteamUGC.SetItemDescription(updateHandle, modToUpload.Description);
@@ -124,16 +146,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             if (IOFailure)
             {
-                NoonUtility.Log("ARKK IO UPDATE FAILURE");
+                NoonUtility.Log($"ARGGKKKK IO UPDATE FAILURE FOR MOD UPLOAD {callback.m_nPublishedFileId}, {_currentlyUploadingMod.Id}");
             }
             else
             {
-                NoonUtility.Log("Update completed for item " + callback.m_nPublishedFileId + " with result " + callback.m_eResult);
+                NoonUtility.Log($"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}");
             }
+
+            _currentlyUploadingMod = new NullMod();
         }
 
 
-        public void Outbook(string publishedFileId)
+        public void DeleteMod(string publishedFileId)
         {
             UInt32 FileId = Convert.ToUInt32(publishedFileId);
 
@@ -152,13 +176,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             NoonUtility.Log(pCallback.m_eResult);
         }
 
-        private Mod GetModForUpload()
-        {
-            var modManager = Registry.Retrieve<ModManager>();
-            var firstMod = modManager.GetAllActiveMods().First();
-            NoonUtility.Log("first mod active: " + firstMod.Name);
-
-            return firstMod;
         }
     }
-}
+

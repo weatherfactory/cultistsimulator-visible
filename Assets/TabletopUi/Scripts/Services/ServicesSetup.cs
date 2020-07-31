@@ -15,10 +15,10 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             var registryAccess=new Registry();
 
-            var storeClientProvider = new StorefrontServicesProvider();
-            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
-            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
-            registryAccess.Register<StorefrontServicesProvider>(storeClientProvider);
+            var storefrontServicesProvider = new StorefrontServicesProvider();
+            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
+            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
+            registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
         }
 
     }

@@ -1,4 +1,6 @@
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TMPro;
 using UnityEngine;
 
@@ -39,5 +41,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             title.color = newColor;
             description.color = newColor;
         }
+
+        public void UploadModToStorefront()
+        {
+            var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
+       storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+
+        }
+
     }
 }
