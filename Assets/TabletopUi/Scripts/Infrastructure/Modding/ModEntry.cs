@@ -26,6 +26,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public Button activationToggleButton;
         public TextMeshProUGUI activationToggleText;
         public Babelfish activationToggleBabel;
+
+        public Image SteamImage;
+        public Image LocalImage;
         
 
         private Mod _mod;
