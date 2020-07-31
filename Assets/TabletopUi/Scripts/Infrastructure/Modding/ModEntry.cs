@@ -1,3 +1,4 @@
+using System;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -44,8 +45,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public void UploadModToStorefront()
         {
+          //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
             var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
-       storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+        storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+
+       //    Task<AsyncContentImportResult> resultsTask = Validate();
+       //    AsyncContentImportResult result = await resultsTask;
+
+        }
+
+        void ModUploadComplete(IAsyncResult result)
+        {
 
         }
 
