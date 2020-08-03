@@ -64,11 +64,14 @@ return;
             
         }
 
-        public void GetSubscribedItems()
+        public List<SubscribedStorefrontMod> GetSubscribedItems()
         {
             
                 if (_steamClientProvider is SteamworksStorefrontClientProvider steamClient)
-                    steamClient.GetSubscribedItems();
+                   return steamClient.GetSubscribedItems();
+                else
+                    return new List<SubscribedStorefrontMod>();
+                
         }
 
         public async Task UploadModForCurrentStorefront(Mod modToUpload,Action<ModUploadedArgs> modUploadedAction)

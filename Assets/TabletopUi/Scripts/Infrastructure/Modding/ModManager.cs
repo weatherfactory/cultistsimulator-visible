@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
-        private Dictionary<string, Mod> _mods { get; }
+        private Dictionary<string, Mod> _cataloguedMods { get; }
 
 
         /// <summary>
@@ -50,18 +50,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public ModManager()
         {
-            _mods = new Dictionary<string, Mod>();
+            _cataloguedMods = new Dictionary<string, Mod>();
         }
 
         public IEnumerable<Mod> GetAllCataloguedMods()
         {
-            var cataloguedMods = _mods.Values;
+            var cataloguedMods = _cataloguedMods.Values;
             return cataloguedMods;
         }
 
         public IEnumerable<Mod> GetAllActiveMods()
         {
-            var activeMods = _mods.Values.Where(m => m.Enabled);
+            var activeMods = _cataloguedMods.Values.Where(m => m.Enabled);
             return activeMods;
         }
 
@@ -70,9 +70,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
 
-            storefrontServicesProvider.GetSubscribedItems();
-
-            _mods.Clear();
+             _cataloguedMods.Clear();
 
             // Check if the mods folder exists
             if (!Directory.Exists(LocalModsPath))
@@ -80,89 +78,33 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 Directory.CreateDirectory(LocalModsPath);
                 NoonUtility.Log($"Mods folder not found, creating it at {LocalModsPath}", messageLevel: 1);
             }
+            var localModDirectories = Directory.GetDirectories(LocalModsPath).ToList();
+            var localMods = CatalogueModsInFolders(localModDirectories,ModInstallType.Local);
 
-            // Load the mod data from the file system
-            foreach (var modFolder in Directory.GetDirectories(LocalModsPath))
+
+            var storefrontModDirectories = storefrontServicesProvider.GetSubscribedItems();
+            var storefrontMods = CatalogueModsInFolders(storefrontModDirectories.Select(smd=>smd.ModRootFolder),ModInstallType.SteamWorkshop);
+
+
+
+            foreach (var lm in localMods)
+                _cataloguedMods.Add(lm.Key,lm.Value);
+
+
+            foreach (var sm in storefrontMods)
             {
-                var modId = Path.GetFileName(modFolder);
-                if (modId == null)
-                {
-                    NoonUtility.Log("Unexpected null directory name for mod");
-                    continue;
-                }
-                NoonUtility.Log("Found directory for mod " + modId);
-
-                // Find the mod's manifest and load its data
-                var manifestPath = Path.Combine(modFolder, MOD_MANIFEST_FILE_NAME);
-                if (!File.Exists(manifestPath))
-                {
-                    NoonUtility.Log(
-                        "Mod manifest not found, skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
-                //TODO: refactor to JSON.NET
-                var manifestData = SimpleJsonImporter.Import(File.ReadAllText(manifestPath));
-                if (manifestData == null)
-                {
-                    NoonUtility.Log(
-                        "Invalid mod manifest JSON; skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
-
-                // Initialize the mod with its manifest information
-                var mod = new Mod(modId, modFolder);
-
-                var errors = mod.FromManifest(manifestData);
-                if (errors.Count > 0)
-                {
-                    foreach (var error in errors)
-                    {
-                        NoonUtility.Log(error, messageLevel: 2);
-                    }
-                    NoonUtility.Log(
-                        "Encountered errors in manifest; skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
-
-                //check the mod has a content directory
-                var candidateContentFolder= Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
-                if (!Directory.Exists(candidateContentFolder))
-                {
-                    NoonUtility.Log(
-                        mod.Id + " doesn't have a content directory, so we won't try to load it");
-                }
+                if(_cataloguedMods.ContainsKey(sm.Key))
+                    NoonUtility.Log($"Duplicate mod id {sm.Key} - not cataloguing duplicate instance of mod");
                 else
-                    mod.ContentFolder = candidateContentFolder;
-
-                // Collect the mod's images
-                // If an error occurs in the process, discard the mod
-                //commented out - not checking until we load the mod
-                //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
-                if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
-                {
-                    NoonUtility.Log(
-                        "Encountered errors in images, skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
-
-                // Add the mod to the collection
-
-
-                NoonUtility.Log("Catalogued mod '" + modId + "'");
-                _mods.Add(modId, mod);
+                    _cataloguedMods.Add(sm.Key,sm.Value);
             }
-            
 
             // Check the dependencies to see if there are any missing or invalid ones
-            foreach (var mod in _mods)
+            foreach (var mod in _cataloguedMods)
             {
                 foreach (var dependency in mod.Value.Dependencies)
                 {
-                    if (!_mods.ContainsKey(dependency.ModId))
+                    if (!_cataloguedMods.ContainsKey(dependency.ModId))
                     {
                         NoonUtility.Log(
                             "Dependency '" + dependency.ModId + "' for '" + mod.Key + "' not found ", 
@@ -170,7 +112,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     }
                     else
                     {
-                        var availableVersion = _mods[dependency.ModId].Version;
+                        var availableVersion = _cataloguedMods[dependency.ModId].Version;
                         bool isVersionValid;
                         switch (dependency.VersionOperator)
                         {
@@ -207,17 +149,101 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             // Enable all mods that have been marked as enabled
             foreach (var modId in LoadEnabledModList())
             {
-                if (_mods.ContainsKey(modId))
-                    _mods[modId].Enabled = true;
+                if (_cataloguedMods.ContainsKey(modId))
+                    _cataloguedMods[modId].Enabled = true;
             }
         }
 
-        public void SetModEnableState(string modId, bool enable)
+    private Dictionary<string, Mod> CatalogueModsInFolders(IEnumerable<string> inFolders,ModInstallType modInstallTypeForLocation)
+    {
+        var theseMods = new Dictionary<string, Mod>();
+
+        foreach (var modFolder in inFolders)
         {
-            if (!_mods.ContainsKey(modId))
+            var modId = Path.GetFileName(modFolder);
+            if (modId == null)
+            {
+                NoonUtility.Log("Unexpected null directory name for mod");
+                continue;
+            }
+
+            NoonUtility.Log("Found directory for mod " + modId);
+
+            // Find the mod's manifest and load its data
+            var manifestPath = Path.Combine(modFolder, MOD_MANIFEST_FILE_NAME);
+            if (!File.Exists(manifestPath))
+            {
+                NoonUtility.Log(
+                    "Mod manifest not found, skipping mod",
+                    messageLevel: 2);
+                continue;
+            }
+
+            //TODO: refactor to JSON.NET
+            var manifestData = SimpleJsonImporter.Import(File.ReadAllText(manifestPath));
+            if (manifestData == null)
+            {
+                NoonUtility.Log(
+                    "Invalid mod manifest JSON; skipping mod",
+                    messageLevel: 2);
+                continue;
+            }
+
+            // Initialize the mod with its manifest information
+            var mod = new Mod(modId, modFolder);
+
+            var errors = mod.FromManifest(manifestData);
+            if (errors.Count > 0)
+            {
+                foreach (var error in errors)
+                {
+                    NoonUtility.Log(error, messageLevel: 2);
+                }
+
+                NoonUtility.Log(
+                    "Encountered errors in manifest; skipping mod",
+                    messageLevel: 2);
+                continue;
+            }
+
+            //check the mod has a content directory
+            var candidateContentFolder = Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
+            if (!Directory.Exists(candidateContentFolder))
+            {
+                NoonUtility.Log(
+                    mod.Id + " doesn't have a content directory, so we won't try to load it");
+            }
+            else
+                mod.ContentFolder = candidateContentFolder;
+
+            // Collect the mod's images
+            // If an error occurs in the process, discard the mod
+            //commented out - not checking until we load the mod
+            //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
+            if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
+            {
+                NoonUtility.Log(
+                    "Encountered errors in images, skipping mod",
+                    messageLevel: 2);
+                continue;
+            }
+
+                // Add the mod to the collection
+                mod.ModInstallType = modInstallTypeForLocation;
+
+                NoonUtility.Log("Catalogued mod '" + modId + "'");
+            theseMods.Add(modId, mod);
+        }
+
+        return theseMods;
+    }
+
+    public void SetModEnableState(string modId, bool enable)
+        {
+            if (!_cataloguedMods.ContainsKey(modId))
                 return;
 
-            _mods[modId].Enabled = enable;
+            _cataloguedMods[modId].Enabled = enable;
             SaveEnabledModList();
         }
 
@@ -230,14 +256,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         {
             File.WriteAllText(
                 ModEnabledListPath, 
-                string.Join("\n", _mods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
+                string.Join("\n", _cataloguedMods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
         }
 
        
         public Sprite GetSprite(string spriteResourceName)
         {
             
-            foreach (var mod in _mods.Values)
+            foreach (var mod in _cataloguedMods.Values)
             {
                 if (mod.Enabled && mod.Images.ContainsKey(spriteResourceName))
                 {

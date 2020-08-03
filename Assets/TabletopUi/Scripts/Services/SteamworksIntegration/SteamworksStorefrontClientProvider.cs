@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
@@ -169,10 +170,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void GetSubscribedItems()
+        public List<SubscribedStorefrontMod> GetSubscribedItems()
         {
-
-            
+    List<SubscribedStorefrontMod> subscribedStorefrontMods=new List<SubscribedStorefrontMod>();     
 
            uint numberOfSubscribedItems=SteamUGC.GetNumSubscribedItems(); //I'm not really sure why this is working without an async call? is it getting it interprocess?
            
@@ -181,26 +181,33 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
            UInt32 numberRetrieved=SteamUGC.GetSubscribedItems(subscribedItems, numberOfSubscribedItems);
 
-           var publishedFileId = subscribedItems[0];
 
-           UInt64 fileSize;
-           string pchFolder;
-           UInt32 pchFolderSize=1024;
-           UInt32 punTimeStamp;
+           var listSubscribedItems = subscribedItems.ToList();
 
-      var installed=SteamUGC.GetItemInstallInfo(publishedFileId, out fileSize,out pchFolder,pchFolderSize,out punTimeStamp);
+           foreach (PublishedFileId_t subscribedItem in listSubscribedItems)
 
-          Debug.Log(pchFolder);
+           {
+
+               UInt64 fileSize;
+               string pchFolder;
+               UInt32 pchFolderSize = 1024;
+               UInt32 punTimeStamp;
+
+               var itemIsInstalled = SteamUGC.GetItemInstallInfo(subscribedItem, out fileSize, out pchFolder,
+                   pchFolderSize, out punTimeStamp);
+               if (itemIsInstalled)
+               {
+
+                     SubscribedStorefrontMod installedMod = new SubscribedStorefrontMod {ModRootFolder = pchFolder};
+                     subscribedStorefrontMods.Add(installedMod);
+               }
+           }
+
+           return subscribedStorefrontMods;
 
         }
 
-        private void OnSubscribedFilesEnumerated(RemoteStorageEnumerateUserSubscribedFilesResult_t subscribedFiles)
-        {
 
-        Debug.Log(subscribedFiles.m_nTotalResultCount);
-
-            
-        }
 
 
         public void DeleteMod(string publishedFileId)

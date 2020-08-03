@@ -8,6 +8,11 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
+    public class SubscribedStorefrontMod
+    {
+        public string ModRootFolder { get; set; }
+    }
+
     public class NullMod : Mod
     {
         public override bool IsValid => false;
@@ -19,6 +24,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
 
     }
+
+    public enum ModInstallType {Unknown=0,Local=1,SteamWorkshop=2}
 
     public class Mod
     {
@@ -50,12 +57,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public virtual bool IsValid => true;
 
+        public ModInstallType ModInstallType { get; set; }
+
 
         public Mod(
             string id, string modRootFolder)
         {
             Id = id;
             ModRootFolder = modRootFolder;
+
+            ModInstallType = ModInstallType.Unknown;
 
             Dependencies =  new List<Dependency>();
             Contents = new Dictionary<string, List<Hashtable>>();
