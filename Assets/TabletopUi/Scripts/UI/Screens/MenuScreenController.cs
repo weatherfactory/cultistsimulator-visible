@@ -481,13 +481,13 @@ public class MenuScreenController : MonoBehaviour {
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry.gameObject);
         
-        foreach (var mod in _modManager.GetAllCataloguedMods())
+        foreach (var mod in _modManager.GetCataloguedMods())
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
             modEntry.Initialize(mod);
         }
-        modEmptyMessage.enabled = !_modManager.GetAllCataloguedMods().Any();
+        modEmptyMessage.enabled = !_modManager.GetCataloguedMods().Any();
     }
     
     public void CloseCurrentOverlay() {

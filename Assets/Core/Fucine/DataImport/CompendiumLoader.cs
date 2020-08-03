@@ -73,7 +73,7 @@ public class CompendiumLoader
         List<ContentFileLoader> modFileLoaders=new List<ContentFileLoader>();
         var modManager = Registry.Retrieve<ModManager>();
         modManager.CatalogueMods();
-        foreach (var mod in modManager.GetAllActiveMods())
+        foreach (var mod in modManager.GetEnabledMods())
         {
             var modFileLoader=new ContentFileLoader(mod.ContentFolder);
             modFileLoader.LoadContentFiles(_log);

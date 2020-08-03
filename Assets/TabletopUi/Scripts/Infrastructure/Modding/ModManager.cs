@@ -53,13 +53,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             _cataloguedMods = new Dictionary<string, Mod>();
         }
 
-        public IEnumerable<Mod> GetAllCataloguedMods()
+        public IEnumerable<Mod> GetCataloguedMods()
         {
             var cataloguedMods = _cataloguedMods.Values;
             return cataloguedMods;
         }
 
-        public IEnumerable<Mod> GetAllActiveMods()
+        public IEnumerable<Mod> GetEnabledMods()
         {
             var activeMods = _cataloguedMods.Values.Where(m => m.Enabled);
             return activeMods;

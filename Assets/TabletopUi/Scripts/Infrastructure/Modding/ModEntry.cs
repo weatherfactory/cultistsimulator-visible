@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
@@ -64,7 +65,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 LocalImage.gameObject.SetActive(false);
                 SteamImage.gameObject.SetActive(false);
                 uploadButton.gameObject.SetActive(false);
-                NoonUtility.Log($"Problematic install type for mod {_mod.Id} {_mod.Name} - {mod.ModInstallType}");
+                NoonUtility.Log($"Problematic install type for mod {_mod.Id} {_mod.Name} - {mod.ModInstallType}",1);
             }
 
 
@@ -83,9 +84,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public void ToggleActivation()
         {
             var modManager = Registry.Retrieve<ModManager>();
-            _mod.Enabled = !_mod.Enabled;
-            modManager.SetModEnableState(_mod.Id, _mod.Enabled);
-            UpdateEnablementDisplay();
+
+            //can't enable two mods with the same name - this would usually be both a local and a Steam version
+            if (!_mod.Enabled && modManager.GetEnabledMods().ToList().Exists(m => m.Name == _mod.Name))
+                NoonUtility.Log($"Can't enable two mods with the same name ({_mod.Name})", 1);
+            else
+            {
+                _mod.Enabled = !_mod.Enabled;
+                modManager.SetModEnableState(_mod.Id, _mod.Enabled);
+                UpdateEnablementDisplay();
+            }
         }
 
 
