@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Assets.Core.Fucine;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
@@ -19,7 +21,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     {
         private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
 
-        private static readonly string AllModsPath = Path.Combine(Application.persistentDataPath, "mods");
+        private static readonly string LocalModsPath = Path.Combine(Application.persistentDataPath, "mods");
+
+        
 
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
@@ -63,18 +67,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
     public void CatalogueMods()
         {
-            //TODO: We need some refactoring here. We want to use the data loading code from EntityTypeDataLoader
+
+            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+
+            storefrontServicesProvider.GetSubscribedItems();
+
             _mods.Clear();
 
             // Check if the mods folder exists
-            if (!Directory.Exists(AllModsPath))
+            if (!Directory.Exists(LocalModsPath))
             {
-                Directory.CreateDirectory(AllModsPath);
-                NoonUtility.Log($"Mods folder not found, creating it at {AllModsPath}", messageLevel: 1);
+                Directory.CreateDirectory(LocalModsPath);
+                NoonUtility.Log($"Mods folder not found, creating it at {LocalModsPath}", messageLevel: 1);
             }
 
             // Load the mod data from the file system
-            foreach (var modFolder in Directory.GetDirectories(AllModsPath))
+            foreach (var modFolder in Directory.GetDirectories(LocalModsPath))
             {
                 var modId = Path.GetFileName(modFolder);
                 if (modId == null)

@@ -5,6 +5,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
 using Steamworks;
+using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -39,8 +40,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             r_itemDeleted = CallResult<DeleteItemResult_t>.Create(OnWorkshopItemDeleted);
             r_itemUpdateCompleted = CallResult<SubmitItemUpdateResult_t>.Create(OnWorkshopItemUpdateCompleted);
 
-            // Fetch the initial list of achievements
-            SteamUserStats.RequestCurrentStats();
+            // Fetch user data
+            //SteamUserStats.RequestCurrentStats();
         }
 
         public void SetAchievement(string achievementId, bool setStatus)
@@ -165,6 +166,40 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             ModUploadedArgs args = new ModUploadedArgs {PublishedFileId = callback.m_nPublishedFileId.ToString()};
 
             ModUploadedAction(args);
+        }
+
+
+        public void GetSubscribedItems()
+        {
+
+            
+
+           uint numberOfSubscribedItems=SteamUGC.GetNumSubscribedItems(); //I'm not really sure why this is working without an async call? is it getting it interprocess?
+           
+
+           PublishedFileId_t[] subscribedItems = new PublishedFileId_t[numberOfSubscribedItems];
+
+           UInt32 numberRetrieved=SteamUGC.GetSubscribedItems(subscribedItems, numberOfSubscribedItems);
+
+           var publishedFileId = subscribedItems[0];
+
+           UInt64 fileSize;
+           string pchFolder;
+           UInt32 pchFolderSize=1024;
+           UInt32 punTimeStamp;
+
+      var installed=SteamUGC.GetItemInstallInfo(publishedFileId, out fileSize,out pchFolder,pchFolderSize,out punTimeStamp);
+
+          Debug.Log(pchFolder);
+
+        }
+
+        private void OnSubscribedFilesEnumerated(RemoteStorageEnumerateUserSubscribedFilesResult_t subscribedFiles)
+        {
+
+        Debug.Log(subscribedFiles.m_nTotalResultCount);
+
+            
         }
 
 
