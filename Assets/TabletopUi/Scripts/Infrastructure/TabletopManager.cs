@@ -361,7 +361,7 @@ namespace Assets.CS.TabletopUI {
             intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Retrieve<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
-            notifier.Initialise();
+
             optionsPanel.InitPreferences(_speedController,true);
         }
 

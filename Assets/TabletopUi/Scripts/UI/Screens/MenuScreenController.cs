@@ -15,8 +15,8 @@ using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;    
-
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TabletopUi.Scripts.Services;
 using TabletopUi.Scripts.UI;
@@ -207,6 +207,9 @@ public class MenuScreenController : MonoBehaviour {
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         currentVersion = metaInfo.VersionNumber;
+
+        var concursum = Registry.Retrieve<Concursum>();
+
     }
 
 	void InitialiseContent()

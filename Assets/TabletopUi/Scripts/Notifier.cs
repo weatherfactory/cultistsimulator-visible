@@ -8,8 +8,11 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using Assets.Core.Entities;
+using UnityEngine.Events;
 
 namespace Assets.CS.TabletopUI {
+
+
 
     public class Notifier : MonoBehaviour, INotifier {
         
@@ -26,11 +29,16 @@ namespace Assets.CS.TabletopUI {
         [Header("Image Burner")]
         [SerializeField] private TabletopImageBurner tabletopBurner;
 
-        public void Initialise() {
+
+
+        public void Start() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
 			saveErrorWindow.gameObject.SetActive(false);
 			saveDeniedWindow.gameObject.SetActive(false);
+
+            Registry.Retrieve<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
+
         }
 
         // Notifications
@@ -40,11 +48,16 @@ namespace Assets.CS.TabletopUI {
         public void PushTextToLog(string text) {
         	notificationLog.AddText(text);
         }
-        
+
+        public void ShowNotificationWindow(NotificationArgs args)
+        {
+            ShowNotificationWindow(args.Title,args.Description,args.DuplicatesAllowed);
+        }
 
         public void ShowNotificationWindow(string title, string description, bool duplicatesAllowed = true) {
        
-            float duration = (title.Length + description.Length) / 7; //average reading speed in English is c. 15 characters a second
+            float duration = (title.Length + description.Length) / 5; //average reading speed in English is c. 15 characters a second
+       
             
             // If no duplicates are allowed, then find any duplicates and hide them
             if (!duplicatesAllowed)

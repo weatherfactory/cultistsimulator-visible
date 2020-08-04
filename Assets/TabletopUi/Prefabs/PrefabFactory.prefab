@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7304243792921196699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7304243792921196564}
+  - component: {fileID: 7304243792921197121}
+  m_Layer: 0
+  m_Name: PrefabFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7304243792921196564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304243792921196699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7304243792921197121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304243792921196699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a43e6dcd5b9354db14cc7360386bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementFrame: {fileID: 114000012559859656, guid: b61b75a0ff5f8434fb2f202cca9514bb,
+    type: 3}
+  SituationToken: {fileID: 114000011782136268, guid: 96f241c6dc7c1460ba6333216ddca33b,
+    type: 3}
+  ElementStackToken: {fileID: 114000012247175884, guid: 6956a1f4fac3a4786a39778dc3cd2f8b,
+    type: 3}
+  SituationWindow: {fileID: 114020662237663214, guid: deb00c042628c48cfa9eef03d318a4ba,
+    type: 3}
+  RecipeSlot: {fileID: 114887034075387412, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  NotificationWindow: {fileID: 114000014022297626, guid: 24926ddfbbe311e45a08a5a61eab67b8,
+    type: 3}
+  DropZoneToken: {fileID: 2656880656757540889, guid: 1156e72892331c64397bcd330e4ea6c6,
+    type: 3}
+  TabletopManager: {fileID: 0}

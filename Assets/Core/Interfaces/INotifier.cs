@@ -5,6 +5,7 @@ using System.Text;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.Core.Interfaces
 {
@@ -12,7 +13,8 @@ namespace Assets.Core.Interfaces
     {
         void PushTextToLog(string text);
         void HideDetails();
-        void ShowNotificationWindow(string title, string description, bool duplicatesAllowed = true);
+        void ShowNotificationWindow(NotificationArgs args);
+        void ShowNotificationWindow(string title,string descirption, bool duplicatesAllowed);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);
