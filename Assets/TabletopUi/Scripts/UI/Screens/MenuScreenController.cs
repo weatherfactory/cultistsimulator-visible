@@ -208,7 +208,7 @@ public class MenuScreenController : MonoBehaviour {
 
         currentVersion = metaInfo.VersionNumber;
 
-        var concursum = Registry.Retrieve<Concursum>();
+
 
     }
 

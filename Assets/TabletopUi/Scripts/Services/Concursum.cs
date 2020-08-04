@@ -31,7 +31,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
     public class Concursum: MonoBehaviour
     {
-
+        //things I really really truly want to be global:
+        //storefront access
+        //notification events
         public ShowNotificationEvent ShowNotificationEvent;
 
         public void Awake()
