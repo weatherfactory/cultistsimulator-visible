@@ -115,6 +115,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             if(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement)
             {
+
+                var concursum = Registry.Retrieve<Concursum>();
+
+                concursum.ShowNotification(new NotificationArgs
+                {
+                    Title = "Steam Workshop Terms",
+                    Description =
+                        "Steam reckons you haven't yet accepted the Steam Workshop terms. You can upload this item, but it'll remain hidden until you've accepted the terms on the Workshop page."
+                });
+
                 NoonUtility.Log("User hasn't accepted Steam Workshop legal agreement; terminating upload");
                 return;
             }
