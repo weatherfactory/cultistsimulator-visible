@@ -109,8 +109,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 return;
             }
 
-            var modManager = Registry.Retrieve<ModManager>();
-            string publishedFileId=modManager.GetPublishedFileIdForMod(_mod);
+            string publishedFileId = GetPublishedFileIdForThisMod();
+
             if (string.IsNullOrEmpty(publishedFileId))
             {
                 uploadButton.gameObject.SetActive(true);
@@ -134,9 +134,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
 
             uploadText.text = "sec...";
-            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+
+            var publishedFileId = Registry.Retrieve<ModManager>().GetPublishedFileIdForMod(_mod);
+
+            if(string.IsNullOrEmpty(GetPublishedFileIdForThisMod()))
+                await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+            else
+                await storefrontServicesProvider.UpdateModForCurrentStorefront(_mod,publishedFileId);
         }
 
+        private string GetPublishedFileIdForThisMod()
+        {
+
+            var modManager = Registry.Retrieve<ModManager>();
+            string publishedFileId = modManager.GetPublishedFileIdForMod(_mod);
+            return publishedFileId;
+        }
 
         public void ModUploaded(ModUploadedArgs args)
         {

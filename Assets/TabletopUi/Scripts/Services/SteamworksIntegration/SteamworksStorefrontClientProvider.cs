@@ -22,6 +22,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private static Mod _currentlyUploadingMod=new NullMod();
 
+        private void SetCurrentlyUploadingMod(Mod mod)
+        {
+            _currentlyUploadingMod = mod;
+        }
+
+        private void ClearCurrentlyUploadingMod()
+        {
+            _currentlyUploadingMod=new NullMod();
+        }
+
 
         public SteamworksStorefrontClientProvider()
         {
@@ -98,8 +108,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return;
             }
 
-
-            _currentlyUploadingMod = modToUpload;
+            SetCurrentlyUploadingMod(modToUpload);
 
             //make a call to the API and give it a handle
             SteamAPICall_t handle = SteamUGC.CreateItem(_gameId.AppID(),
@@ -108,6 +117,35 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //associate the previously created call result with it
             r_itemCreated.Set(handle);
             //and when it's completed, the call result has a delegate that it calls in turn
+
+        }
+
+
+        public void UpdateMod(Mod modToUpdate, string publishedFileId)
+        {
+            if(SteamworksStorefrontClientProvider._currentlyUploadingMod.IsValid)
+            {
+                NoonUtility.Log("Already uploading mod: " + _currentlyUploadingMod.Id);
+                return;
+            }
+
+            try
+            {
+
+                var ulongPublishedFileId = Convert.ToUInt64((publishedFileId));
+
+                SetCurrentlyUploadingMod(modToUpdate);
+
+
+                StartItemUpdate(new PublishedFileId_t(ulongPublishedFileId));
+            }
+        
+            catch (Exception e)
+            {
+                NoonUtility.Log("Disaster! invalid published file id: " + publishedFileId);
+
+            }
+
 
         }
 
@@ -124,9 +162,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Description =
                         "Steam reckons you haven't yet accepted the Steam Workshop terms. You can upload this item, but it'll remain hidden until you've accepted the terms on the Workshop page."
                 });
-
-                NoonUtility.Log("User hasn't accepted Steam Workshop legal agreement; terminating upload");
-                return;
             }
             else
                 NoonUtility.Log("User has accepted Steam Workshop legal agreement; continuing upload");
@@ -159,7 +194,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void OnWorkshopItemUpdateCompleted(SubmitItemUpdateResult_t callback, bool IOFailure)
         {
-            //https://steamcommunity.com/sharedfiles/filedetails/?id=2187389456
 
             if (IOFailure)
             {
@@ -174,13 +208,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Registry.Retrieve<Concursum>().ModUploadedEvent.Invoke(args);
 
 
-            _currentlyUploadingMod = new NullMod();
-
-            var url = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + callback.m_nPublishedFileId;
+           ClearCurrentlyUploadingMod();
 
 
               SteamFriends.ActivateGameOverlayToWebPage($"steam://url/CommunityFilePage/{callback.m_nPublishedFileId}");
-
 
         }
 
@@ -226,8 +257,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-
-
-        }
+    }
     }
 
