@@ -128,6 +128,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
 
 
+        public async void UploadModToStorefront()
+        {
+            //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
+            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+
+            uploadText.text = "sec...";
+            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
+        }
+
+
         public void ModUploaded(ModUploadedArgs args)
         {
             if (args.Mod.Name != _mod.Name)
@@ -139,14 +149,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             SetUploadButtonState();
         }
 
-        public async void UploadModToStorefront()
-        {
-          //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
-            var storefrontServicesProvider=Registry.Retrieve<StorefrontServicesProvider>();
-            Action<ModUploadedArgs> modUploadedAction = ModUploaded;
-            uploadText.text = "sec...";
-            await storefrontServicesProvider.UploadModForCurrentStorefront(_mod,modUploadedAction);
-        }
+
 
 
     }

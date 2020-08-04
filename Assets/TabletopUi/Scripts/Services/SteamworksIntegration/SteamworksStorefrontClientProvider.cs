@@ -15,9 +15,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
       
         private CGameID _gameId;
+        private CSteamID _steamId;
 
         private CallResult<CreateItemResult_t> r_itemCreated;
-        private CallResult<DeleteItemResult_t> r_itemDeleted;
         private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;
 
         private static Mod _currentlyUploadingMod=new NullMod();
@@ -30,13 +30,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             // Cache the GameID for use in the Callbacks
             _gameId = new CGameID(SteamUtils.GetAppID());
-
+            _steamId=new CSteamID();
             
             // Set up Steam callbacks
             Callback<UserStatsReceived_t>.Create(OnUserStatsReceived);
 
             r_itemCreated = CallResult<CreateItemResult_t>.Create(OnWorkshopItemCreated);
-            r_itemDeleted = CallResult<DeleteItemResult_t>.Create(OnWorkshopItemDeleted);
             r_itemUpdateCompleted = CallResult<SubmitItemUpdateResult_t>.Create(OnWorkshopItemUpdateCompleted);
 
             // Fetch user data
@@ -91,7 +90,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void UploadMod(Mod modToUpload,Action<ModUploadedArgs> modUploaded)
+        public void UploadMod(Mod modToUpload)
         {
             if(SteamworksStorefrontClientProvider._currentlyUploadingMod.IsValid)
             {
@@ -150,6 +149,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void OnWorkshopItemUpdateCompleted(SubmitItemUpdateResult_t callback, bool IOFailure)
         {
+            //https://steamcommunity.com/sharedfiles/filedetails/?id=2187389456
+
             if (IOFailure)
             {
                 NoonUtility.Log($"ARGGKKKK IO UPDATE FAILURE FOR MOD UPLOAD {callback.m_nPublishedFileId}, {_currentlyUploadingMod.Id}");
@@ -158,7 +159,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 NoonUtility.Log($"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}");
             }
-
             ModUploadedArgs args = new ModUploadedArgs { Mod=_currentlyUploadingMod, PublishedFileId = callback.m_nPublishedFileId.ToString() };
 
             Registry.Retrieve<Concursum>().ModUploadedEvent.Invoke(args);
@@ -166,7 +166,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             _currentlyUploadingMod = new NullMod();
 
+            var url = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + callback.m_nPublishedFileId;
+
+
+              SteamFriends.ActivateGameOverlayToWebPage($"steam://url/CommunityFilePage/{callback.m_nPublishedFileId}");
+
+
         }
+
+
+        
 
 
         public List<SubscribedStorefrontMod> GetSubscribedItems()
@@ -208,25 +217,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-
-        public void DeleteMod(string publishedFileId)
-        {
-            UInt32 FileId = Convert.ToUInt32(publishedFileId);
-
-            //make a call to the API and give it a handle
-            SteamAPICall_t handle = SteamUGC.DeleteItem((PublishedFileId_t)FileId);
-
-            //associate the previously created call result with it
-            r_itemDeleted.Set(handle);
-            //and when it's completed, the callresult has a delegate that it calls in turn
-        }
-
-        private void OnWorkshopItemDeleted(DeleteItemResult_t pCallback, bool bIOFailure)
-        {
-
-            NoonUtility.Log(pCallback.m_nPublishedFileId);
-            NoonUtility.Log(pCallback.m_eResult);
-        }
 
         }
     }
