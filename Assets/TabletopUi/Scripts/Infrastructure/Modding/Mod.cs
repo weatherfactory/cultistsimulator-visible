@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
+using Noon;
 using OrbCreationExtensions;
 using UnityEngine;
 
@@ -50,6 +52,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public bool Enabled { get; set; }
 
         public string ModRootFolder { get; set; }
+
+        public string PublishedFileIdPath {get {return Path.Combine(ModRootFolder,
+                NoonConstants.WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME);
+            }
+        }
 
         public string ContentFolder { get; set; }
 

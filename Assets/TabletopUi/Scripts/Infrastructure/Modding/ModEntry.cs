@@ -52,19 +52,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             {
                 LocalImage.gameObject.SetActive(true);
                 SteamImage.gameObject.SetActive(false);
-                uploadButton.gameObject.SetActive(true);
+                SetUploadButtonState();
             }
             else if(mod.ModInstallType==ModInstallType.SteamWorkshop)
             {
                 LocalImage.gameObject.SetActive(false);
                 SteamImage.gameObject.SetActive(true);
                 uploadButton.gameObject.SetActive(false);
+                SetUploadButtonState();
             }
             else
             {
                 LocalImage.gameObject.SetActive(false);
                 SteamImage.gameObject.SetActive(false);
-                uploadButton.gameObject.SetActive(false);
+                SetUploadButtonState();
                 NoonUtility.Log($"Problematic install type for mod {_mod.Id} {_mod.Name} - {mod.ModInstallType}",1);
             }
 
@@ -96,10 +97,38 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             }
         }
 
+        public void SetUploadButtonState()
+        {
+            if (_mod.ModInstallType != ModInstallType.Local)
+            {
+                uploadButton.gameObject.SetActive(false);
+                return;
+            }
+
+            var modManager = Registry.Retrieve<ModManager>();
+            string publishedFileId=modManager.GetPublishedFileIdForMod(_mod);
+            if (string.IsNullOrEmpty(publishedFileId))
+            {
+                uploadButton.gameObject.SetActive(true);
+                uploadBabel.SetLocLabel("UI_UPLOAD");
+                uploadText.text = LanguageTable.Get("UI_UPLOAD");
+            }
+            else
+            {
+                uploadButton.gameObject.SetActive(true);
+                uploadBabel.SetLocLabel("UI_UPDATE");
+                uploadText.text = LanguageTable.Get("UI_UPDATE");
+                
+            }
+
+        }
+
 
         public void ModUploaded(ModUploadedArgs args)
         {
-            uploadText.text = args.PublishedFileId;
+            var modManager = Registry.Retrieve<ModManager>();
+            modManager.TryWritePublishedFileId(_mod, args.PublishedFileId);
+            SetUploadButtonState();
         }
 
         public async void UploadModToStorefront()

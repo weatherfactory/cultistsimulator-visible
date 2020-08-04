@@ -22,6 +22,8 @@ namespace Noon
         public const string CONTENT_FOLDER_NAME = "content";
         public const string DEFAULT_CULTURE = "en";
 
+        
+
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
         public const string TOKEN_LAST_TOOL = "#LAST_TOOL#";
@@ -34,6 +36,8 @@ namespace Noon
 
         public const string STOREFRONT_PATH_IN_STREAMINGASSETS = "edition/store.txt";
         public const string CONSCIENCE_PATH_IN_STREAMINGASSETS = "edition/please_buy_our_game.txt";
+
+        public const string WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME = "serapeum.txt";
 
         public const string BIRDWORMSLIDER = "AllowExploits";
 		public const string HIGHCONTRAST = "HighContrast";

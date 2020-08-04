@@ -259,7 +259,47 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 string.Join("\n", _cataloguedMods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
         }
 
-       
+        /// <summary>
+        /// returns false if there's an existing/current file id mismatch
+        /// </summary>
+        /// <param name="publishedMod"></param>
+        /// <param name="fileId"></param>
+        /// <returns></returns>
+        public bool TryWritePublishedFileId(Mod publishedMod, string fileId)
+        {
+
+
+            string existingFileId = GetPublishedFileIdForMod(publishedMod);
+
+                if (string.IsNullOrEmpty(existingFileId))
+                {
+                    //file doesn't exist: create it
+                    File.WriteAllText(publishedMod.PublishedFileIdPath, fileId);
+                    return true;
+                }
+
+                else if (existingFileId != fileId)
+                {
+                    NoonUtility.Log(
+                        $"Upload problem: Mod {publishedMod.Id} {publishedMod.Name} was just uploaded with fileid {fileId} but file id on disk is {existingFileId}. Existing file id not overwritten.");
+                    return false;
+                }
+                else
+                //we don't need to update it
+                    return true;
+
+
+        }
+
+        public string GetPublishedFileIdForMod(Mod modToCheck)
+        {
+            if(!File.Exists(modToCheck.PublishedFileIdPath))
+                return string.Empty;
+
+            string existingFileId = File.ReadAllText(modToCheck.PublishedFileIdPath);
+                return existingFileId;
+        }
+
         public Sprite GetSprite(string spriteResourceName)
         {
             
