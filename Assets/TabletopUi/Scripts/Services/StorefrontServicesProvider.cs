@@ -19,12 +19,12 @@ namespace Assets.TabletopUi.Scripts.Services
 #pragma warning restore 649
         public void InitialiseForStorefrontClientType(StoreClient clientType)
         {
-            if (clientType == StoreClient.Steam)
+            if (clientType == StoreClient.Steam && SteamManager.Initialized)
             {
                 _steamClientProvider=new SteamworksStorefrontClientProvider();
 
             }
-            if (clientType == StoreClient.Gog)
+            if (clientType == StoreClient.Gog && GogGalaxyManager.IsInitialized())
             {
 #if UNITY_STANDALONE_LINUX
 return;

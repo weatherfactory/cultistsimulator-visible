@@ -16,7 +16,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
       
         private CGameID _gameId;
 
-
         private CallResult<CreateItemResult_t> r_itemCreated;
         private CallResult<DeleteItemResult_t> r_itemDeleted;
         private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;
