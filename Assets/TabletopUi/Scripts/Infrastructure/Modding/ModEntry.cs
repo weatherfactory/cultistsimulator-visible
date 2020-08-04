@@ -27,7 +27,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public Image SteamImage;
         public Image LocalImage;
-        
+        public Image PreviewImage;
+
+
 
         private Mod _mod;
 
@@ -40,6 +42,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             title.text = _mod.Name + " (" + mod.Version + ")";
             description.text = _mod.Description;
+            if (_mod.PreviewImage != null)
+                PreviewImage.overrideSprite = _mod.PreviewImage;
+
             UpdateEnablementDisplay();
 
             uploadButton.onClick.AddListener(UploadModToStorefront);

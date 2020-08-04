@@ -171,6 +171,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void StartItemUpdate(PublishedFileId_t callbackPublishedFileId)
         {
+
+
             UGCUpdateHandle_t updateHandle = SteamUGC.StartItemUpdate(_gameId.AppID(),
                 callbackPublishedFileId);
 
@@ -185,6 +187,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             SteamUGC.SetItemTitle(updateHandle, modToUpload.Name);
             SteamUGC.SetItemDescription(updateHandle, modToUpload.Description);
             SteamUGC.SetItemContent(updateHandle, modToUpload.ModRootFolder);
+            SteamUGC.SetItemPreview(updateHandle, modToUpload.PreviewImageFilePath);
 
 
             SteamAPICall_t updateCompleteHandle = SteamUGC.SubmitItemUpdate(updateHandle, "update at: " + DateTime.Now);

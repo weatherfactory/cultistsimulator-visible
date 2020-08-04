@@ -11,6 +11,7 @@ namespace Noon
 {
     public class NoonConstants
     {
+        
         public const string ID = "id";
         public const string UID = "uid";
         public const string EXTENDS = "extends";
@@ -38,6 +39,7 @@ namespace Noon
         public const string CONSCIENCE_PATH_IN_STREAMINGASSETS = "edition/please_buy_our_game.txt";
 
         public const string WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME = "serapeum.txt";
+        public static string WORKSHOP_PREVIEW_IMAGE_FILE_NAME = "preview.png";
 
         public const string BIRDWORMSLIDER = "AllowExploits";
 		public const string HIGHCONTRAST = "HighContrast";

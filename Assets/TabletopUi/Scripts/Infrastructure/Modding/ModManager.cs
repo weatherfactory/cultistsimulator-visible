@@ -319,11 +319,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         {
             // Search all subdirectories for more image files
             return _imagesDirectories.All(
-                imageSubDirectoryPath => LoadImagesDirectory(mod, modPath,imagesFolder, imageSubDirectoryPath));
+                imageSubDirectoryPath => LoadImages(mod, modPath,imagesFolder, imageSubDirectoryPath));
         }
 
-        private static bool LoadImagesDirectory(Mod mod, string modPath,string imagesFolder, string imagesSubdirectory)
+        private static bool LoadImages(Mod mod, string modPath,string imagesFolder, string imagesSubdirectory)
         {
+            Sprite previewSprite = LoadSprite(mod.PreviewImageFilePath);
+            mod.PreviewImage = previewSprite;
+
+
             // Check if the directory exists, otherwise don't try looking for images in it
             var imagesSubdirectoryPath = Path.Combine(modPath,imagesFolder, imagesSubdirectory);
             if (!Directory.Exists(imagesSubdirectoryPath))
@@ -335,34 +339,43 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             // This may incur a performance hit - a better system may be needed later
             foreach (var imagePath in Directory.GetFiles(imagesSubdirectoryPath, "*.png"))
             {
-                var fileResourceName = Path.Combine(imagesFolder, imagesSubdirectory, Path.GetFileNameWithoutExtension(imagePath));
-                NoonUtility.Log("Loading image '" + fileResourceName + "'");
-                var fileData = File.ReadAllBytes(imagePath);
+                Sprite eachSprite;
 
-                // Try to load the image data into a sprite
-                Sprite sprite;
+                var fileResourceName = Path.Combine(imagesFolder, imagesSubdirectory, Path.GetFileNameWithoutExtension(imagePath));
                 try
                 {
-                    var texture = new Texture2D(2, 2);
-                    texture.LoadImage(fileData);
-                    texture.filterMode = FilterMode.Trilinear;
-                    texture.anisoLevel = 9;
-                    texture.mipMapBias = (float) -0.5;
-                    texture.Apply();
-                    sprite = Sprite.Create(
-                        texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                    eachSprite = LoadSprite(imagePath);
                 }
                 catch
                 {
                     NoonUtility.Log(
                         "Invalid image file '" + fileResourceName + "'", 
-                        messageLevel: 2);
+                        2);
                     return false;
                 }
 
-                mod.Images.Add(fileResourceName, sprite);
+                mod.Images.Add(fileResourceName, eachSprite);
             }
             return true;
+        }
+
+        private static Sprite LoadSprite(string imagePath)
+        {
+            Sprite sprite;
+            var fileData = File.ReadAllBytes(imagePath);
+
+            // Try to load the image data into a sprite
+
+
+            var texture = new Texture2D(2, 2);
+            texture.LoadImage(fileData);
+            texture.filterMode = FilterMode.Trilinear;
+            texture.anisoLevel = 9;
+            texture.mipMapBias = (float) -0.5;
+            texture.Apply();
+            sprite = Sprite.Create(
+                texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            return sprite;
         }
     }
 }

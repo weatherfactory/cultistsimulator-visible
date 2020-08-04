@@ -41,6 +41,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public string Description { get; set; }
 
+        public Sprite PreviewImage { get; set; }
+
+        public string PreviewImageFilePath
+        {
+            get { return Path.Combine(ModRootFolder, NoonConstants.WORKSHOP_PREVIEW_IMAGE_FILE_NAME); }
+        }
+
         public string DescriptionLong { get; set; }
 
         public List<Dependency> Dependencies { get; set; }
