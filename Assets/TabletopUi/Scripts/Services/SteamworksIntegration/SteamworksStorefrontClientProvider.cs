@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using Steamworks;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SteamworksStorefrontClientProvider : IStoreFrontClientProvider
     {
-        public event EventHandler OnModUploaded;
       
         private CGameID _gameId;
 
@@ -22,7 +22,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private static Mod _currentlyUploadingMod=new NullMod();
 
-        private static Action<ModUploadedArgs> ModUploadedAction;
 
         public SteamworksStorefrontClientProvider()
         {
@@ -41,7 +40,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             r_itemUpdateCompleted = CallResult<SubmitItemUpdateResult_t>.Create(OnWorkshopItemUpdateCompleted);
 
             // Fetch user data
-            //SteamUserStats.RequestCurrentStats();
+            SteamUserStats.RequestCurrentStats();
         }
 
         public void SetAchievement(string achievementId, bool setStatus)
@@ -102,7 +101,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
             _currentlyUploadingMod = modToUpload;
-            ModUploadedAction = modUploaded;
 
             //make a call to the API and give it a handle
             SteamAPICall_t handle = SteamUGC.CreateItem(_gameId.AppID(),
@@ -161,11 +159,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 NoonUtility.Log($"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}");
             }
 
+            ModUploadedArgs args = new ModUploadedArgs { Mod=_currentlyUploadingMod, PublishedFileId = callback.m_nPublishedFileId.ToString() };
+
+            Registry.Retrieve<Concursum>().ModUploadedEvent.Invoke(args);
+
+
             _currentlyUploadingMod = new NullMod();
 
-            ModUploadedArgs args = new ModUploadedArgs {PublishedFileId = callback.m_nPublishedFileId.ToString()};
-
-            ModUploadedAction(args);
         }
 
 

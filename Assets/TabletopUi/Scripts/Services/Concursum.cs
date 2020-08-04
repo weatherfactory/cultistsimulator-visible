@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,22 +24,36 @@ namespace Assets.TabletopUi.Scripts.Services
         }
     }
 
+    public class ModUploadedArgs
+    {
+        public Mod Mod { get; set; }
+        public string PublishedFileId { get; set; }
+        
+    }
+
     public class ShowNotificationEvent : UnityEvent<NotificationArgs>
     {
 
     }
 
+    public class ModUploadedEvent : UnityEvent<ModUploadedArgs>
+    {
 
-    public class Concursum: MonoBehaviour
+    }
+
+
+    public class Concursum : MonoBehaviour
     {
         //things I really really truly want to be global:
         //storefront access
         //notification events
         public ShowNotificationEvent ShowNotificationEvent;
+        public ModUploadedEvent ModUploadedEvent;
+
 
         public void Awake()
         {
-            var registryAccess=new Registry();
+            var registryAccess = new Registry();
 
             var storefrontServicesProvider = new StorefrontServicesProvider();
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
@@ -49,7 +64,10 @@ namespace Assets.TabletopUi.Scripts.Services
             if (ShowNotificationEvent == null)
                 ShowNotificationEvent = new ShowNotificationEvent();
 
-            var registry=new Registry();
+            if (ModUploadedEvent == null)
+                ModUploadedEvent = new ModUploadedEvent();
+
+            var registry = new Registry();
             registry.Register<Concursum>(this);
 
 
@@ -58,8 +76,13 @@ namespace Assets.TabletopUi.Scripts.Services
         public void ShowNotification(NotificationArgs args)
         {
             ShowNotificationEvent.Invoke(args);
-            Debug.Log("called");
+
         }
 
-    }
+        public void ModUploaded(ModUploadedArgs args)
+        {
+            ModUploadedEvent.Invoke(args);
+        }
+
+}
 }

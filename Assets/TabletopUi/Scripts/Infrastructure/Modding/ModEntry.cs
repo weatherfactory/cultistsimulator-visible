@@ -11,10 +11,7 @@ using UnityEngine.UI;
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 {
 
-    public class ModUploadedArgs
-    {
-        public string PublishedFileId { get; set; }
-    }
+
     public class ModEntry : MonoBehaviour
     {
         public TextMeshProUGUI title;
@@ -38,6 +35,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         
         public void Initialize(Mod mod)
         {
+
             _mod = mod;
 
             title.text = _mod.Name + " (" + mod.Version + ")";
@@ -46,6 +44,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             uploadButton.onClick.AddListener(UploadModToStorefront);
             activationToggleButton.onClick.AddListener(ToggleActivation);
+            var concursum = Registry.Retrieve<Concursum>();
+
+            concursum.ModUploadedEvent.AddListener(ModUploaded);
 
 
             if (mod.ModInstallType == ModInstallType.Local)
@@ -129,7 +130,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public void ModUploaded(ModUploadedArgs args)
         {
+            if (args.Mod.Name != _mod.Name)
+                return;
+
             var modManager = Registry.Retrieve<ModManager>();
+            
             modManager.TryWritePublishedFileId(_mod, args.PublishedFileId);
             SetUploadButtonState();
         }
