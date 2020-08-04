@@ -42,6 +42,21 @@ return;
             }
 
         }
+
+        public bool IsAvailable(StoreClient clientType)
+        {
+            if (clientType == StoreClient.Steam)
+                return _steamClientProvider != null;
+
+            else if (clientType == StoreClient.Gog)
+                return _gogClientProvider != null;
+
+            else
+                return false;
+
+
+        }
+
         public void SetAchievementForCurrentStorefronts(string achievementId, bool setStatus)
         {
             try

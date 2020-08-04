@@ -99,7 +99,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public void SetUploadButtonState()
         {
-            if (_mod.ModInstallType != ModInstallType.Local)
+            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+
+
+            if (_mod.ModInstallType != ModInstallType.Local || !storefrontServicesProvider.IsAvailable(StoreClient.Steam) )
             {
                 uploadButton.gameObject.SetActive(false);
                 return;
