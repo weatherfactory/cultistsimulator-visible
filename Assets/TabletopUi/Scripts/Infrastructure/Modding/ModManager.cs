@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     /// </summary>
     public class ModManager
     {
-        private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
+        private const string MOD_MANIFEST_FILE_NAME = "synopsis.json";
 
         private static readonly string LocalModsPath = Path.Combine(Application.persistentDataPath, "mods");
 

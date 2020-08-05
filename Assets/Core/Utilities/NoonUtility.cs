@@ -38,8 +38,8 @@ namespace Noon
         public const string STOREFRONT_PATH_IN_STREAMINGASSETS = "edition/store.txt";
         public const string CONSCIENCE_PATH_IN_STREAMINGASSETS = "edition/please_buy_our_game.txt";
 
-        public const string WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME = "serapeum.txt";
-        public static string WORKSHOP_PREVIEW_IMAGE_FILE_NAME = "preview.png";
+        public const string WORKSHOP_ITEM_PUBLISHED_ID_FILE_NAME = "serapeum_catalogue_number.txt";
+        public static string WORKSHOP_PREVIEW_IMAGE_FILE_NAME = "cover.png";
 
         public const string BIRDWORMSLIDER = "AllowExploits";
 		public const string HIGHCONTRAST = "HighContrast";

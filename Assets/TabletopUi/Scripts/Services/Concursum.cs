@@ -24,10 +24,12 @@ namespace Assets.TabletopUi.Scripts.Services
         }
     }
 
-    public class ModUploadedArgs
+    public class ModOperationArgs
     {
         public Mod Mod { get; set; }
         public string PublishedFileId { get; set; }
+        public bool Successful { get; set; }
+        public string Message { get; set; }
         
     }
 
@@ -36,7 +38,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
-    public class ModUploadedEvent : UnityEvent<ModUploadedArgs>
+    public class ModOperationEvent : UnityEvent<ModOperationArgs>
     {
 
     }
@@ -48,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Services
         //storefront access
         //notification events
         public ShowNotificationEvent ShowNotificationEvent;
-        public ModUploadedEvent ModUploadedEvent;
+        public ModOperationEvent ModOperationEvent;
 
 
         public void Awake()
@@ -64,8 +66,8 @@ namespace Assets.TabletopUi.Scripts.Services
             if (ShowNotificationEvent == null)
                 ShowNotificationEvent = new ShowNotificationEvent();
 
-            if (ModUploadedEvent == null)
-                ModUploadedEvent = new ModUploadedEvent();
+            if (ModOperationEvent == null)
+                ModOperationEvent = new ModOperationEvent();
 
             var registry = new Registry();
             registry.Register<Concursum>(this);
@@ -79,9 +81,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void ModUploaded(ModUploadedArgs args)
+        public void ModOperation(ModOperationArgs args)
         {
-            ModUploadedEvent.Invoke(args);
+            ModOperationEvent.Invoke(args);
         }
 
 }

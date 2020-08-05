@@ -16,9 +16,7 @@ namespace Assets.Core.Fucine
     public class EntityTypeDataLoader
     {
 
-        private const string MOD_MANIFEST_FILE_NAME = "manifest.json";
-
-
+       
         public readonly Type EntityType;
         public readonly string EntityTag;
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;

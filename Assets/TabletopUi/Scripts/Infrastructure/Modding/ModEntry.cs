@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             activationToggleButton.onClick.AddListener(ToggleActivation);
             var concursum = Registry.Retrieve<Concursum>();
 
-            concursum.ModUploadedEvent.AddListener(ModUploaded);
+            concursum.ModOperationEvent.AddListener(ModOperationEvent);
 
 
             if (mod.ModInstallType == ModInstallType.Local)
@@ -106,7 +106,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public void SetUploadButtonState()
         {
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
-
+            uploadButton.interactable = true;
 
             if (_mod.ModInstallType != ModInstallType.Local || !storefrontServicesProvider.IsAvailable(StoreClient.Steam) )
             {
@@ -138,7 +138,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
 
-            uploadText.text = "sec...";
+            uploadText.text = "...";
+            uploadButton.interactable = false;
 
             var publishedFileId = Registry.Retrieve<ModManager>().GetPublishedFileIdForMod(_mod);
 
@@ -156,14 +157,32 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             return publishedFileId;
         }
 
-        public void ModUploaded(ModUploadedArgs args)
+        public void ModOperationEvent(ModOperationArgs modOperationArgs)
         {
-            if (args.Mod.Name != _mod.Name)
+            if (modOperationArgs.Mod.Name != _mod.Name)
                 return;
 
             var modManager = Registry.Retrieve<ModManager>();
+
             
-            modManager.TryWritePublishedFileId(_mod, args.PublishedFileId);
+
+            if(modOperationArgs.Successful)
+            {
+                modManager.TryWritePublishedFileId(_mod, modOperationArgs.PublishedFileId);
+                NoonUtility.Log(modOperationArgs.Message);
+
+            }
+            else
+                NoonUtility.Log(modOperationArgs.Message,1);
+
+            var notificationArgs=new NotificationArgs();
+            notificationArgs.Title = "Serapeum Response";
+            notificationArgs.Description = modOperationArgs.Message;
+
+            var concursum = Registry.Retrieve<Concursum>();
+            concursum.ShowNotification(notificationArgs);
+
+
             SetUploadButtonState();
         }
 

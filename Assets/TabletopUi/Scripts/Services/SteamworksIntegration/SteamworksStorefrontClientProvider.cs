@@ -110,7 +110,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             SetCurrentlyUploadingMod(modToUpload);
 
-            //make a call to the API and give it a handle
+
+
             SteamAPICall_t handle = SteamUGC.CreateItem(_gameId.AppID(),
                 EWorkshopFileType.k_EWorkshopFileTypeCommunity);
 
@@ -119,6 +120,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //and when it's completed, the call result has a delegate that it calls in turn
 
         }
+
+
 
 
         public void UpdateMod(Mod modToUpdate, string publishedFileId)
@@ -197,23 +200,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void OnWorkshopItemUpdateCompleted(SubmitItemUpdateResult_t callback, bool IOFailure)
         {
+            ModOperationArgs operationArgs = new ModOperationArgs
+            {
+                Successful = true,
+                Mod = _currentlyUploadingMod,
+                PublishedFileId = callback.m_nPublishedFileId.ToString()
+            };
+
 
             if (IOFailure)
             {
-                NoonUtility.Log($"ARGGKKKK IO UPDATE FAILURE FOR MOD UPLOAD {callback.m_nPublishedFileId}, {_currentlyUploadingMod.Id}");
+                operationArgs.Message=$"ARGGKKKK IO UPDATE FAILURE FOR MOD UPLOAD {callback.m_nPublishedFileId}, {_currentlyUploadingMod.Id}";
+                operationArgs.Successful = false;
             }
             else
             {
-                NoonUtility.Log($"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}");
+                operationArgs.Message = $"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}";
             }
-            ModUploadedArgs args = new ModUploadedArgs { Mod=_currentlyUploadingMod, PublishedFileId = callback.m_nPublishedFileId.ToString() };
-
-            Registry.Retrieve<Concursum>().ModUploadedEvent.Invoke(args);
+            
+            Registry.Retrieve<Concursum>().ModOperationEvent.Invoke(operationArgs);
 
 
            ClearCurrentlyUploadingMod();
-
-
+            
               SteamFriends.ActivateGameOverlayToWebPage($"steam://url/CommunityFilePage/{callback.m_nPublishedFileId}");
 
         }
