@@ -30,7 +30,7 @@ namespace TabletopUi.Scripts.UI
             name = "NewStartLegacy_" + spec.Id;
 
             title.text = spec.Legacy.Label;
-            description.text = spec.Legacy.Description;
+         //   description.text = spec.Legacy.Description; //could use for a short description
 
             installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
 
@@ -68,7 +68,7 @@ namespace TabletopUi.Scripts.UI
         {
             if(IsInstalled())
             {
-                _menuScreenController.ShowStartDLCLegacyConfirmPanel(_spec.Id.ToLower());
+                _menuScreenController.ShowStartDLCLegacyConfirmPanel(_spec.Legacy);
             }
 
         }

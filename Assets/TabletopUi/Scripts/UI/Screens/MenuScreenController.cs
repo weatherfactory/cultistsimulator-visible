@@ -446,11 +446,13 @@ public class MenuScreenController : MonoBehaviour {
 
     }
 
-    public void ShowStartDLCLegacyConfirmPanel(string legacyId)
+    public void ShowStartDLCLegacyConfirmPanel(Legacy legacy)
     {
         HideCurrentOverlay();
         StartDLCLegacyConfirm confirmPanelComponent=startDLCLegacyConfirmPanel.GetComponent<StartDLCLegacyConfirm>();
-        confirmPanelComponent.LegacyId = legacyId;
+        confirmPanelComponent.LegacyId = legacy.Id;
+        confirmPanelComponent.TitleText.text = legacy.Label;
+        confirmPanelComponent.DescriptionText.text =$"\"{legacy.Description}\"";
         confirmPanelComponent.msc = this;
 
         ShowOverlay(startDLCLegacyConfirmPanel);
