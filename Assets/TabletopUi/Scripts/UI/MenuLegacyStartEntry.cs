@@ -26,19 +26,26 @@ namespace TabletopUi.Scripts.UI
             _menuScreenController = menuScreenController;
             name = "NewStartLegacy_" + spec.Id;
 
-            title.text = spec.Legacy.Label;
+           bool isInstalled = spec.Legacy != null;
 
-            bool isInstalled = spec.Legacy != null;
+            if (isInstalled)
+            {
+                title.text = spec.Legacy.Label;
+                installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
+                installedImage.gameObject.SetActive(true);
+                notInstalledImage.gameObject.SetActive(false);
+                storeLink.gameObject.SetActive(false);
+            }
+            else
+            {
+                title.text = LanguageTable.Get(spec.LocLabelIfNotInstalled);
+                notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Id);
+                installedImage.gameObject.SetActive(false);
+                notInstalledImage.gameObject.SetActive(true);
+                storeLink.gameObject.SetActive(true);
+            }
 
-            //   description.text = spec.Legacy.Description; //could use for a short description
 
-            installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
-            notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Legacy.Image);
-
-            installedImage.gameObject.SetActive(isInstalled);
-            notInstalledImage.gameObject.SetActive(!isInstalled);
-
-            storeLink.gameObject.SetActive(!isInstalled);
 
             if (spec.Links.TryGetValue(store, out _storeLinkUrl))
             {

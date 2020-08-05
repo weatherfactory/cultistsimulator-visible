@@ -89,6 +89,7 @@ public class MenuScreenController : MonoBehaviour {
     {
         new NewStartLegacySpec(
             "dancer",
+            "UI_DLC_TITLE_DANCER",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871650/Cultist_Simulator_The_Dancer/"},
@@ -100,6 +101,7 @@ public class MenuScreenController : MonoBehaviour {
             null),
         new NewStartLegacySpec(
             "priest",
+            "UI_DLC_TITLE_PRIEST",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871651/Cultist_Simulator_The_Priest/"},
@@ -111,6 +113,7 @@ public class MenuScreenController : MonoBehaviour {
                 null),
         new NewStartLegacySpec(
             "ghoul",
+            "UI_DLC_TITLE_GHOUL",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871900/Cultist_Simulator_The_Ghoul/"},
@@ -123,6 +126,7 @@ public class MenuScreenController : MonoBehaviour {
         ,
         new NewStartLegacySpec(
             "exile",
+            "UI_DLC_TITLE_EXILE",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://weatherfactory.biz/mar-1-edmund/"},
@@ -485,7 +489,7 @@ public class MenuScreenController : MonoBehaviour {
 
         foreach(var remainingLegacy in newStartLegacies)
         {
-            var specForLegacy=new NewStartLegacySpec(remainingLegacy.Id,new Dictionary<Storefront, string>(),false,remainingLegacy );
+            var specForLegacy=new NewStartLegacySpec(remainingLegacy.Id,remainingLegacy.Label, new Dictionary<Storefront, string>(),false,remainingLegacy );
             legacySpecs.Add(specForLegacy);
         }
 
