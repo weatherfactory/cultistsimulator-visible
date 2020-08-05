@@ -63,7 +63,7 @@ public class MenuScreenController : MonoBehaviour {
 
     [Header("DLC & Mods)")]
     public Transform dlcEntries;
-    public MenuDlcEntry dlcEntryPrefab;
+    public MenuLegacyStartEntry LegacyStartEntryPrefab;
     public GameObject dlcUnavailableLabel;
     public GameObject modEntryPrefab;
     public TextMeshProUGUI modEmptyMessage;
@@ -85,9 +85,9 @@ public class MenuScreenController : MonoBehaviour {
 
 
 
-    private static readonly MenuDlcEntry.Spec[] DlcEntrySpecs =
+    private static readonly NewStartLegacySpec[] DlcEntrySpecs =
     {
-        new MenuDlcEntry.Spec(
+        new NewStartLegacySpec(
             "DANCER",
             new Dictionary<Storefront, string>
             {
@@ -96,8 +96,9 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-dancer"},
                 {Storefront.Unknown,"https://www.cultistsimulator.com" }
             },
-            true),
-        new MenuDlcEntry.Spec(
+            true,
+            null),
+        new NewStartLegacySpec(
             "PRIEST",
             new Dictionary<Storefront, string>
             {
@@ -106,8 +107,9 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-priest"},
                 {Storefront.Unknown,"https://www.cultistsimulator.com" }
             },
-            true),
-        new MenuDlcEntry.Spec(
+            true,
+                null),
+        new NewStartLegacySpec(
             "GHOUL",
             new Dictionary<Storefront, string>
             {
@@ -116,9 +118,10 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-the-ghoul"},
                 {Storefront.Unknown,"https://www.cultistsimulator.com" }
             },
-            true)
+            true,
+                null)
         ,
-        new MenuDlcEntry.Spec(
+        new NewStartLegacySpec(
             "EXILE",
             new Dictionary<Storefront, string>
             {
@@ -127,18 +130,11 @@ public class MenuScreenController : MonoBehaviour {
                 {Storefront.Humble, "https://weatherfactory.biz/mar-1-edmund/"},
                 {Storefront.Unknown, "https://weatherfactory.biz/mar-1-edmund/" }
             },
-            false
+            true,
+            null
             )
     };
-    private static readonly MenuDlcEntry.Spec OstSpec = new MenuDlcEntry.Spec(
-        "OST",
-        new Dictionary<Storefront, string>
-        {
-            {Storefront.Steam, "https://store.steampowered.com/app/988320/Cultist_Simulator_Original_Soundtrack/"},
-            {Storefront.Gog, "https://www.gog.com/game/cultist_simulator_original_soundtrack"},
-            {Storefront.Humble, "https://www.humblebundle.com/store/cultist-simulator-original-soundtrack"},
-        },
-        true);
+
     
     void Start() {
         // make sure the screen is black
@@ -192,8 +188,7 @@ public class MenuScreenController : MonoBehaviour {
         _modManager = new ModManager();
         _modManager.CatalogueMods();
         registry.Register(_modManager);
-        BuildDlcPanel();
-        BuildModsPanel();
+        
 
 
 		InitialiseContent();	// Moved content into its own function, so it can happen again after language select if necessary
@@ -208,7 +203,8 @@ public class MenuScreenController : MonoBehaviour {
 
         currentVersion = metaInfo.VersionNumber;
 
-
+        BuildLegacyStartsPanel();
+        BuildModsPanel();
 
     }
 
@@ -461,20 +457,40 @@ public class MenuScreenController : MonoBehaviour {
         
     }
 
-    private void BuildDlcPanel()
+    private void BuildLegacyStartsPanel()
     {
-        var dlc = new HashSet<string>(CompendiumLoader.GetInstalledDlc());
+        var legacies = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>();
+
+        var newStartLegacies = legacies.Where(l => l.NewStart).ToList();
+
         var store = GetCurrentStorefront();
-        var hasAnyDlc = false;
-        foreach (var dlcEntrySpec in DlcEntrySpecs)
+        //var hasAnyDlc = false;
+        //foreach (var dlcEntrySpec in DlcEntrySpecs)
+        //{
+        //    var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
+        //    var hasDlc = dlc.Contains(dlcEntrySpec.Id);
+        //    legacyStartEntry.Initialize(dlcEntrySpec, store, hasDlc,this);
+        //    hasAnyDlc |= hasDlc;
+        //}
+
+        foreach (var newStartLegacy in newStartLegacies)
         {
-            var dlcEntry = Instantiate(dlcEntryPrefab, dlcEntries);
-            var hasDlc = dlc.Contains(dlcEntrySpec.Id);
-            dlcEntry.Initialize(dlcEntrySpec, store, hasDlc,this);
-            hasAnyDlc |= hasDlc;
+            var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
+
+            var legacySpec=new NewStartLegacySpec(newStartLegacy.Id,new Dictionary<Storefront, string>(),true, newStartLegacy);
+
+            legacyStartEntry.Initialize(legacySpec, store, true, this);
         }
 
-        dlcUnavailableLabel.SetActive(store == Storefront.Itch && !hasAnyDlc);
+
+
+        //return from path in Directory.GetFiles(Path.Combine(CORE_CONTENT_DIR, CONST_LEGACIES))
+        //    select Path.GetFileName(path) into fileName
+        //    select DlcLegacyRegex.Match(fileName) into match
+        //    where match.Success
+        //    select match.Groups[1].Value;
+
+
     }
     
 

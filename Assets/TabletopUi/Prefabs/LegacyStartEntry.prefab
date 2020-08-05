@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -246,7 +248,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6025451815768673565}
-        m_MethodName: TryBeginDLC
+        m_MethodName: TryBeginLegacy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -269,7 +271,7 @@ GameObject:
   - component: {fileID: 5805602044794089608}
   - component: {fileID: 6025451815768673565}
   m_Layer: 5
-  m_Name: DLCEntry
+  m_Name: LegacyStartEntry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b1453ea72f4c8393326bad65a0a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 6639340192412978003}
+  title: {fileID: 6639340192412978001}
   installedImage: {fileID: 6639340190732229710}
   notInstalledImage: {fileID: 2411935570916264176}
   storeLink: {fileID: 8196884216796400668}
@@ -423,6 +425,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -563,7 +566,6 @@ GameObject:
   - component: {fileID: 6639340192412978006}
   - component: {fileID: 6639340192412978000}
   - component: {fileID: 6639340192412978001}
-  - component: {fileID: 6639340192412978003}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -613,6 +615,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -709,24 +712,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6639340192412978003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6639340192412978007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: 
-  fontStyle: 0
-  forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
-  forceBold: 0
 --- !u!1 &6639340192597612854
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +773,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

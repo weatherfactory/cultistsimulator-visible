@@ -43,14 +43,7 @@ public class CompendiumLoader
     readonly ContentImportLog _log=new ContentImportLog();
 
 
-    public static IEnumerable<string> GetInstalledDlc()
-    {
-        return from path in Directory.GetFiles(Path.Combine(CORE_CONTENT_DIR, CONST_LEGACIES)) 
-            select Path.GetFileName(path) into fileName 
-            select DlcLegacyRegex.Match(fileName) into match 
-            where match.Success 
-            select match.Groups[1].Value;
-    }
+
 
     
 

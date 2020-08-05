@@ -48,6 +48,10 @@ namespace Assets.Core.Entities
         [FucineValue(false)]
         public bool AvailableWithoutEndingMatch { get; set; }
 
+
+        [FucineValue(false)]
+        public bool NewStart { get; set; }
+
         [FucineAspects(ValidateAsElementId = true)]
         public IAspectsDictionary Effects { get; set; }
 

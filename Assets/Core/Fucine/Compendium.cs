@@ -142,9 +142,6 @@ public class Compendium : ICompendium
 
 
 
-
-
-
     public List<T> GetEntitiesAsList<T>() where T: class, IEntityWithId
     {
         EntityStore entityStore = entityStores[typeof(T)];
