@@ -88,7 +88,7 @@ public class MenuScreenController : MonoBehaviour {
     private static readonly NewStartLegacySpec[] DlcEntrySpecs =
     {
         new NewStartLegacySpec(
-            "DANCER",
+            "dancer",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871650/Cultist_Simulator_The_Dancer/"},
@@ -99,7 +99,7 @@ public class MenuScreenController : MonoBehaviour {
             true,
             null),
         new NewStartLegacySpec(
-            "PRIEST",
+            "priest",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871651/Cultist_Simulator_The_Priest/"},
@@ -110,7 +110,7 @@ public class MenuScreenController : MonoBehaviour {
             true,
                 null),
         new NewStartLegacySpec(
-            "GHOUL",
+            "ghoul",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://store.steampowered.com/app/871900/Cultist_Simulator_The_Ghoul/"},
@@ -122,7 +122,7 @@ public class MenuScreenController : MonoBehaviour {
                 null)
         ,
         new NewStartLegacySpec(
-            "EXILE",
+            "exile",
             new Dictionary<Storefront, string>
             {
                 {Storefront.Steam, "https://weatherfactory.biz/mar-1-edmund/"},
@@ -446,7 +446,7 @@ public class MenuScreenController : MonoBehaviour {
 
     }
 
-    public void ShowStartDLCLegacyConfirmPanel(Legacy legacy)
+    public void ShowStartLegacyConfirmPanel(Legacy legacy)
     {
         HideCurrentOverlay();
         StartDLCLegacyConfirm confirmPanelComponent=startDLCLegacyConfirmPanel.GetComponent<StartDLCLegacyConfirm>();
@@ -466,6 +466,30 @@ public class MenuScreenController : MonoBehaviour {
         var newStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
         var store = GetCurrentStorefront();
+
+        var legacySpecs=new List<NewStartLegacySpec>();
+
+        foreach (var l in newStartLegacies)
+        {
+            var matchingEntrySpec = DlcEntrySpecs.SingleOrDefault(s => s.Id == l.Id);
+
+            if (matchingEntrySpec != null)
+            {
+                matchingEntrySpec.Legacy = l;
+                legacySpecs.Add(matchingEntrySpec);
+            }
+            else
+            {
+                var legacySpec= new NewStartLegacySpec(l.Id, new Dictionary<Storefront, string>(), false, l);
+                legacySpecs.Add(legacySpec);
+            }
+        }
+
+     legacySpecs=legacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
+
+        //iterate over legacies and match to DLC spec
+        //order by DLC spec first
+
         //var hasAnyDlc = false;
         //foreach (var dlcEntrySpec in DlcEntrySpecs)
         //{
@@ -475,12 +499,9 @@ public class MenuScreenController : MonoBehaviour {
         //    hasAnyDlc |= hasDlc;
         //}
 
-        foreach (var newStartLegacy in newStartLegacies)
+        foreach (var legacySpec in legacySpecs)
         {
             var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
-
-            var legacySpec=new NewStartLegacySpec(newStartLegacy.Id,new Dictionary<Storefront, string>(),true, newStartLegacy);
-
             legacyStartEntry.Initialize(legacySpec, store, true, this);
         }
 
