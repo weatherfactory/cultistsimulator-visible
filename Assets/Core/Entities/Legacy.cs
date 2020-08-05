@@ -69,6 +69,11 @@ namespace Assets.Core.Entities
 
         }
 
+        public Legacy()
+        {
+
+        }
+
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
             

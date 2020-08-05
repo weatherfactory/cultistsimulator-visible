@@ -469,40 +469,35 @@ public class MenuScreenController : MonoBehaviour {
 
         var legacySpecs=new List<NewStartLegacySpec>();
 
-        foreach (var l in newStartLegacies)
-        {
-            var matchingEntrySpec = DlcEntrySpecs.SingleOrDefault(s => s.Id == l.Id);
 
-            if (matchingEntrySpec != null)
+        //add legacyspecs for all DLCs. If a DLC is installed, there'll be a matching legacy to include. Otherwise, incllude it anyway with a null legacy to show it's not installed.
+        foreach (var spec in DlcEntrySpecs)
+        {
+            var matchingLegacy = newStartLegacies.SingleOrDefault(l => l.Id == spec.Id);
+
+            if (matchingLegacy != null)
             {
-                matchingEntrySpec.Legacy = l;
-                legacySpecs.Add(matchingEntrySpec);
+                spec.Legacy = matchingLegacy;
+                newStartLegacies.Remove(matchingLegacy);
             }
-            else
-            {
-                var legacySpec= new NewStartLegacySpec(l.Id, new Dictionary<Storefront, string>(), false, l);
-                legacySpecs.Add(legacySpec);
-            }
+            legacySpecs.Add(spec);
         }
 
-     legacySpecs=legacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
+        foreach(var remainingLegacy in newStartLegacies)
+        {
+            var specForLegacy=new NewStartLegacySpec(remainingLegacy.Id,new Dictionary<Storefront, string>(),false,remainingLegacy );
+            legacySpecs.Add(specForLegacy);
+        }
 
-        //iterate over legacies and match to DLC spec
-        //order by DLC spec first
+        
+   
+        legacySpecs=legacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
 
-        //var hasAnyDlc = false;
-        //foreach (var dlcEntrySpec in DlcEntrySpecs)
-        //{
-        //    var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
-        //    var hasDlc = dlc.Contains(dlcEntrySpec.Id);
-        //    legacyStartEntry.Initialize(dlcEntrySpec, store, hasDlc,this);
-        //    hasAnyDlc |= hasDlc;
-        //}
 
         foreach (var legacySpec in legacySpecs)
         {
             var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
-            legacyStartEntry.Initialize(legacySpec, store, true, this);
+            legacyStartEntry.Initialize(legacySpec, store, this);
         }
 
 

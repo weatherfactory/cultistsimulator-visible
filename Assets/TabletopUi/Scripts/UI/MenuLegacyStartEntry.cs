@@ -20,26 +20,26 @@ namespace TabletopUi.Scripts.UI
         private NewStartLegacySpec _spec;
         private string _storeLinkUrl;
         private MenuScreenController _menuScreenController;
-        public void Initialize(NewStartLegacySpec spec, Storefront store, bool isInstalled,MenuScreenController menuScreenController)
+        public void Initialize(NewStartLegacySpec spec, Storefront store, MenuScreenController menuScreenController)
         {
             _spec = spec;
             _menuScreenController = menuScreenController;
             name = "NewStartLegacy_" + spec.Id;
 
             title.text = spec.Legacy.Label;
-         //   description.text = spec.Legacy.Description; //could use for a short description
+
+            bool isInstalled = spec.Legacy != null;
+
+            //   description.text = spec.Legacy.Description; //could use for a short description
 
             installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
-
-           // installedImage.sprite = ResourcesManager.GetSpriteForDlc(spec.Id, true);
-            //notInstalledImage.sprite = ResourcesManager.GetSpriteForDlc(spec.Id, false);
+            notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Legacy.Image);
 
             installedImage.gameObject.SetActive(isInstalled);
             notInstalledImage.gameObject.SetActive(!isInstalled);
 
             storeLink.gameObject.SetActive(!isInstalled);
 
-          //  installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id.ToUpper()}}}\n</i>");
             if (spec.Links.TryGetValue(store, out _storeLinkUrl))
             {
                 if(spec.ReleasedByWf)
