@@ -9,10 +9,12 @@ namespace TabletopUi.Scripts.UI
     public class MenuLegacyStartEntry : MonoBehaviour
     {
         public TextMeshProUGUI title;
+        public TextMeshProUGUI description;
+
         public Image installedImage;
         public Image notInstalledImage;
         public BabelfishTemplate storeLink;
-        public BabelfishTemplate installedLabel;
+        
 
         //private const string DlcTitleLocLabelPrefix = "UI_DLC_TITLE_";
         private const string DlcDescriptionLocLabelPrefix = "UI_DLC_DESCRIPTION_";
@@ -28,6 +30,7 @@ namespace TabletopUi.Scripts.UI
             name = "NewStartLegacy_" + spec.Id;
 
             title.text = spec.Legacy.Label;
+            description.text = spec.Legacy.Description;
 
             installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
 
@@ -37,10 +40,10 @@ namespace TabletopUi.Scripts.UI
             installedImage.gameObject.SetActive(isInstalled);
             notInstalledImage.gameObject.SetActive(!isInstalled);
 
-            installedLabel.gameObject.SetActive(isInstalled);
+            description.gameObject.SetActive(isInstalled);
             storeLink.gameObject.SetActive(!isInstalled);
 
-            installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id.ToUpper()}}}\n</i>");
+          //  installedLabel.SetTemplate($"<i>{{{DlcDescriptionLocLabelPrefix}{spec.Id.ToUpper()}}}\n</i>");
             if (spec.Links.TryGetValue(store, out _storeLinkUrl))
             {
                 if(spec.Released)

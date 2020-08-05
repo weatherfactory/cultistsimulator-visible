@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PLAYDLC_PURGE
+  locLabel: UI_PLAYLEGACY_PURGE
   fontStyle: 2
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   versionAnim: {fileID: 1502385832}
   Subtitle: {fileID: 1405857547}
   dlcEntries: {fileID: 184592374}
-  dlcEntryPrefab: {fileID: 6025451815768673565, guid: 342bfed3f9acc7b4cac5fceb688d53b7,
+  LegacyStartEntryPrefab: {fileID: 6025451815768673565, guid: 342bfed3f9acc7b4cac5fceb688d53b7,
     type: 3}
   dlcUnavailableLabel: {fileID: 1935709696}
   modEntryPrefab: {fileID: 3818379006724680686, guid: 07a0bf5a9456d21469984364e64be14b,
@@ -23105,7 +23105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PLAYDLC_CONFIRM
+  locLabel: UI_PLAYLEGACY_CONFIRM
   fontStyle: 1
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -23130,7 +23130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BEGIN DLC LEGACY
+  m_text: BEGIN A LEGACY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -48349,7 +48349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PLAYDLC_KEEP
+  locLabel: UI_PLAYLEGACY_KEEP
   fontStyle: 2
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -49476,7 +49476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_PLAYDLC_DESC
+  locLabel: UI_PLAYLEGACY_DESC
   fontStyle: 0
   forceFontLanguage: 
   highContrastEnabled: 1

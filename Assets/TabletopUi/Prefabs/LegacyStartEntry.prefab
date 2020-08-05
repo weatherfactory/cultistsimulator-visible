@@ -359,10 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 6639340192412978001}
+  description: {fileID: 6639340192597612848}
   installedImage: {fileID: 6639340190732229710}
   notInstalledImage: {fileID: 2411935570916264176}
   storeLink: {fileID: 8196884216796400668}
-  installedLabel: {fileID: 7897906315632946412}
 --- !u!1 &6639340191481103000
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,9 +723,8 @@ GameObject:
   - component: {fileID: 6639340192597612849}
   - component: {fileID: 6639340192597612851}
   - component: {fileID: 6639340192597612848}
-  - component: {fileID: 7897906315632946412}
   m_Layer: 5
-  m_Name: InstalledLabel
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,22 +869,3 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7897906315632946412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6639340192597612854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592f47f434f0416d83318a1f4ba0f73b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  locLabel: 
-  fontStyle: 0
-  forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
-  forceBold: 0
-  template: 
