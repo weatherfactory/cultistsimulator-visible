@@ -62,7 +62,7 @@ public class MenuScreenController : MonoBehaviour {
     public MenuSubtitle Subtitle;
 
     [Header("DLC & Mods)")]
-    public Transform dlcEntries;
+    public Transform legacyStartEntries;
     public MenuLegacyStartEntry LegacyStartEntryPrefab;
     public GameObject dlcUnavailableLabel;
     public GameObject modEntryPrefab;
@@ -484,8 +484,8 @@ public class MenuScreenController : MonoBehaviour {
     private void BuildLegacyStartsPanel()
     {
 
-        foreach (Transform dlcEntry in dlcEntries)
-            Destroy(dlcEntry.gameObject);
+        foreach (Transform legacyStartEntry in legacyStartEntries)
+            Destroy(legacyStartEntry.gameObject);
 
         var legacies = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>();
 
@@ -522,7 +522,7 @@ public class MenuScreenController : MonoBehaviour {
 
         foreach (var legacySpec in legacySpecs)
         {
-            var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, dlcEntries);
+            var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, legacyStartEntries);
             legacyStartEntry.Initialize(legacySpec, store, this);
         }
 

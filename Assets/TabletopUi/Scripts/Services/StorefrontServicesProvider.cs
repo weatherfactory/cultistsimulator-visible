@@ -24,23 +24,23 @@ namespace Assets.TabletopUi.Scripts.Services
                 _steamClientProvider=new SteamworksStorefrontClientProvider();
 
             }
-            if (clientType == StoreClient.Gog && GogGalaxyManager.IsInitialized())
-            {
+
 #if UNITY_STANDALONE_LINUX
 return;
 #elif UNITY_WEBGL
                 return;
 #else
-              //  if (Application.platform == RuntimePlatform.OSXPlayer)
-                //    return;
-                //we're integrating with GOG again
-
+            //  if (Application.platform == RuntimePlatform.OSXPlayer)
+            //    return;
+            //we're integrating with GOG again
+            if (clientType == StoreClient.Gog && GogGalaxyManager.IsInitialized())
+            {
                 _gogClientProvider = new GOGStorefrontProvider();
                return;
-#endif
+
 
             }
-
+#endif
         }
 
         public bool IsAvailable(StoreClient clientType)

@@ -56,8 +56,6 @@ namespace Assets.TabletopUi.Scripts.Services
     }
 
 
-
-
     public class Concursum : MonoBehaviour
     {
         //things I really really truly want to be global:

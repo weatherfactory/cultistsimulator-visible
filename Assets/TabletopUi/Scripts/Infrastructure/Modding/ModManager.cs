@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
@@ -239,19 +238,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     }
 
     public Mod SetModEnableStateAndReloadContent(string modId, bool enable)
-        {
+    {
+ 
             if (!_cataloguedMods.ContainsKey(modId))
                 return null;
 
-            var compendium=new Compendium();
-            var compendiumLoader = new CompendiumLoader();
-            compendiumLoader.PopulateCompendium(compendium);
-            new Registry().Register<ICompendium>(compendium);
-
-            var modToAlter= _cataloguedMods[modId];
 
             _cataloguedMods[modId].Enabled = enable;
             SaveEnabledModList();
+
+            
+            var compendiumLoader = new CompendiumLoader();
+            var existingCompendium = Registry.Retrieve<ICompendium>();
+            compendiumLoader.PopulateCompendium(existingCompendium);
+            var modToAlter= _cataloguedMods[modId];
+
+       
 
             return modToAlter;
         }

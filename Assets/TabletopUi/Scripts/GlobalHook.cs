@@ -7,8 +7,8 @@ public class GlobalHook : MonoBehaviour
 	void Awake()
 	{
 		// Check if the Global Scene is loaded. If not, yoink it in!
-		GameObject lm = GameObject.Find( "LanguageManager" );
-		if (lm == null)
+		GameObject c = GameObject.Find( "Concursum" );
+		if (c == null)
 		{
 			SceneManager.LoadScene( "Global", LoadSceneMode.Additive );
 		}

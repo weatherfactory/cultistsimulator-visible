@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
@@ -134,13 +136,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public async void UploadModToStorefront()
         {
-            //  AsyncCallback callBack=new AsyncCallback(ModUploadComplete);
+
+            var concursum = Registry.Retrieve<Concursum>();
+
+            if (!File.Exists(_mod.PreviewImageFilePath))
+            {
+                concursum.ShowNotification(new NotificationArgs{Title="Missing preview image",Description = "The mod needs a 100x100 PNG file named 'cover.png'"});
+                return;
+            }
+
             var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
 
             uploadText.text = "...";
+
+            concursum.ShowNotification(new NotificationArgs { Title = "Uploading...", Description = "'I will meditate on the triumph of patience over strength.' Please wait a few moments for your files to upload." });
             uploadButton.interactable = false;
 
             var publishedFileId = Registry.Retrieve<ModManager>().GetPublishedFileIdForMod(_mod);
+
+            
 
             if(string.IsNullOrEmpty(GetPublishedFileIdForThisMod()))
                 await storefrontServicesProvider.UploadModForCurrentStorefront(_mod);
