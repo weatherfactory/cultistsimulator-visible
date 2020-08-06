@@ -164,37 +164,37 @@ namespace Assets.Core.Utility
 
         }
 
-        [MenuItem("Tools/Make Distribution (Humble)")]
-        public static void MakeHumbleDistribution()
-        {
-            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+        //[MenuItem("Tools/Make Distribution (Humble)")]
+        //public static void MakeHumbleDistribution()
+        //{
+        //    BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
 
-            List<BuildOS> OSs=new List<BuildOS>();
-            List<BuildProduct> products=new List<BuildProduct>();
+        //    List<BuildOS> OSs=new List<BuildOS>();
+        //    List<BuildProduct> products=new List<BuildProduct>();
 
-            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
-            OSs.Add(osw);
+        //    BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
+        //    OSs.Add(osw);
 
 
-            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
-            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
-            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
-            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+        //    BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
+        //    BuildProduct perpetualAllDlc=new BuildProduct(env,Product.PERPETUAL_ALLDLC,false);
+        //    BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
+        //    BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
+        //    BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
+        //    BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
 
-            products.Add(vanillaEdition);
-            products.Add(perpetualAllDlc);
-            products.Add(DancerDLC);
-            products.Add(PriestDLC);
-            products.Add(GhoulDLC);
-            products.Add(ExileDLC);
+        //    products.Add(vanillaEdition);
+        //    products.Add(perpetualAllDlc);
+        //    products.Add(DancerDLC);
+        //    products.Add(PriestDLC);
+        //    products.Add(GhoulDLC);
+        //    products.Add(ExileDLC);
 
-            BuildStorefront buildStorefront=new BuildStorefront(Storefront.Humble,OSs,products);
+        //    BuildStorefront buildStorefront=new BuildStorefront(Storefront.Humble,OSs,products);
 
-            MakeDistribution(buildStorefront);
+        //    MakeDistribution(buildStorefront);
 
-        }
+        //}
 
         [MenuItem("Tools/Make Distribution (Itch)")]
         public static void MakeItchDistribution()
