@@ -33,6 +33,13 @@ namespace Assets.TabletopUi.Scripts.Services
         
     }
 
+    public class ContentUpdatedArgs
+    {
+
+        public string Message { get; set; }
+
+    }
+
     public class ShowNotificationEvent : UnityEvent<NotificationArgs>
     {
 
@@ -43,6 +50,13 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
+    public class ContentUpdatedEvent : UnityEvent<ContentUpdatedArgs>
+    {
+
+    }
+
+
+
 
     public class Concursum : MonoBehaviour
     {
@@ -51,6 +65,7 @@ namespace Assets.TabletopUi.Scripts.Services
         //notification events
         public ShowNotificationEvent ShowNotificationEvent;
         public ModOperationEvent ModOperationEvent;
+        public ContentUpdatedEvent ContentUpdatedEvent;
 
 
         public void Awake()
@@ -69,6 +84,10 @@ namespace Assets.TabletopUi.Scripts.Services
             if (ModOperationEvent == null)
                 ModOperationEvent = new ModOperationEvent();
 
+
+            if (ContentUpdatedEvent == null)
+                ContentUpdatedEvent = new ContentUpdatedEvent();
+
             var registry = new Registry();
             registry.Register<Concursum>(this);
 
@@ -84,6 +103,11 @@ namespace Assets.TabletopUi.Scripts.Services
         public void ModOperation(ModOperationArgs args)
         {
             ModOperationEvent.Invoke(args);
+        }
+
+        public void ContentUpdated(ContentUpdatedArgs args)
+        {
+            ContentUpdatedEvent.Invoke(args);
         }
 
 }

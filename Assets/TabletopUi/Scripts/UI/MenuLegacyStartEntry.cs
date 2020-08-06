@@ -45,19 +45,18 @@ namespace TabletopUi.Scripts.UI
                 storeLink.gameObject.SetActive(true);
             }
 
-
-
-            if (spec.Links.TryGetValue(store, out _storeLinkUrl))
+            if (!spec.ReleasedByWf)
             {
-                if(spec.ReleasedByWf)
-                    storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
-                else
-                    storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{ComingSoonLocLabel}}}</u></b></link>");
+                title.color = new Color32(253, 111, 191, 255);
+                title.text += " [MOD]";
             }
+
+
+            if (spec.ReleasedByWf && spec.Links.TryGetValue(store, out _storeLinkUrl))
+                storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
             else
-            {
                 storeLink.gameObject.SetActive(false);
-            }
+            
         }
 
 

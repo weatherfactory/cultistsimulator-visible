@@ -150,8 +150,18 @@ public class MenuScreenController : MonoBehaviour {
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
-        Invoke("UpdateAndShowMenu", 0.1f); 
+        Invoke("UpdateAndShowMenu", 0.1f);
 
+
+        var concursum = Registry.Retrieve<Concursum>();
+
+        concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
+
+    }
+
+    private void OnContentUpdated(ContentUpdatedArgs args)
+    {
+        BuildLegacyStartsPanel();
     }
 
     private static void SetEditionStatus()
@@ -222,13 +232,21 @@ public class MenuScreenController : MonoBehaviour {
 		var registry = new Registry();
 
 		var compendium = new Compendium();
-		registry.Register<ICompendium>(compendium);
+        registry.Register<ICompendium>(compendium);
 
-		var compendiumLoader = new CompendiumLoader();
-		compendiumLoader.PopulateCompendium(compendium);
+        PopulateCompendium();
 
-		cultureContentLoaded = LanguageTable.targetCulture;
+
+        cultureContentLoaded = LanguageTable.targetCulture;
 	}
+
+
+    public void PopulateCompendium()
+    {
+        var compendiumLoader = new CompendiumLoader();
+        compendiumLoader.PopulateCompendium(Registry.Retrieve<ICompendium>());
+
+    }
 
     void UpdateAndShowMenu() {
         bool hasSavegame = saveGameManager.DoesGameSaveExist();
@@ -465,6 +483,10 @@ public class MenuScreenController : MonoBehaviour {
 
     private void BuildLegacyStartsPanel()
     {
+
+        foreach (Transform dlcEntry in dlcEntries)
+            Destroy(dlcEntry.gameObject);
+
         var legacies = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>();
 
         var newStartLegacies = legacies.Where(l => l.NewStart).ToList();

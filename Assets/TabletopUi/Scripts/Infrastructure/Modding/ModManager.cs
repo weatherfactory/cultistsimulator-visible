@@ -174,7 +174,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             if (!File.Exists(manifestPath))
             {
                 NoonUtility.Log(
-                    "Mod manifest not found, skipping mod",
+                    "Mod synopsis not found; skipping mod",
                     messageLevel: 2);
                 continue;
             }
@@ -238,13 +238,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         return theseMods;
     }
 
-    public void SetModEnableState(string modId, bool enable)
+    public Mod SetModEnableStateAndReloadContent(string modId, bool enable)
         {
             if (!_cataloguedMods.ContainsKey(modId))
-                return;
+                return null;
+
+            var compendium=new Compendium();
+            var compendiumLoader = new CompendiumLoader();
+            compendiumLoader.PopulateCompendium(compendium);
+            new Registry().Register<ICompendium>(compendium);
+
+            var modToAlter= _cataloguedMods[modId];
 
             _cataloguedMods[modId].Enabled = enable;
             SaveEnabledModList();
+
+            return modToAlter;
         }
 
         private static IEnumerable<string> LoadEnabledModList()
@@ -362,6 +371,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         private static Sprite LoadSprite(string imagePath)
         {
             Sprite sprite;
+
+            if (!File.Exists(imagePath))
+                return null;
+
             var fileData = File.ReadAllBytes(imagePath);
 
             // Try to load the image data into a sprite

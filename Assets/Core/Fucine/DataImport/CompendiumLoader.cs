@@ -19,6 +19,7 @@ using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using OrbCreationExtensions;
 using Unity.Profiling;
 using UnityEngine.Profiling;
@@ -49,6 +50,7 @@ public class CompendiumLoader
 
     public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
     {
+
         Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
         List<Type> importableEntityTypes=new List<Type>();
         var assembly = Assembly.GetExecutingAssembly();
@@ -133,6 +135,12 @@ public class CompendiumLoader
 
 
         compendiumToPopulate.OnPostImport(_log);
+
+        
+        //notify the rest of the application that content has been updated
+        var concursum = Registry.Retrieve<Concursum>();
+        concursum.ContentUpdated(new ContentUpdatedArgs{Message = "Loaded compendium content."});
+
 
         return _log;
 

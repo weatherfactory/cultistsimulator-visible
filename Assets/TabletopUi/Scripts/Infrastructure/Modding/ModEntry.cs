@@ -97,8 +97,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 NoonUtility.Log($"Can't enable two mods with the same name ({_mod.Name})", 1);
             else
             {
-                _mod.Enabled = !_mod.Enabled;
-                modManager.SetModEnableState(_mod.Id, _mod.Enabled);
+                _mod=modManager.SetModEnableStateAndReloadContent(_mod.Id, !_mod.Enabled);
                 UpdateEnablementDisplay();
             }
         }

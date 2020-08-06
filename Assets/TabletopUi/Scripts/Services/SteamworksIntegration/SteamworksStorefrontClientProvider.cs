@@ -218,7 +218,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 operationArgs.Message = $"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}";
             }
             
-            Registry.Retrieve<Concursum>().ModOperationEvent.Invoke(operationArgs);
+            Registry.Retrieve<Concursum>().ModOperation(operationArgs);
 
 
            ClearCurrentlyUploadingMod();
