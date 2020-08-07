@@ -41,7 +41,10 @@ namespace Assets.Core.Entities
 
         [FucineValue("")]
         public string Image { get; set; }
-        
+
+        [FucineValue("")]
+        public string GameLeatherImage { get; set; }
+
         [FucineValue("")]
         public string FromEnding { get; set; }
 

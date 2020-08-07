@@ -31,6 +31,14 @@ namespace Assets.CS.TabletopUI
 
         public void ShowTabletopFor(Legacy characterActiveLegacy)
         {
+
+            //if (!string.IsNullOrEmpty(characterActiveLegacy.GameLeatherImage))
+            //{
+            //    var leather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
+            //    Cover.sprite = leather;
+            //}
+
+
             if (characterActiveLegacy.Id.ToLower().Contains("exile"))
             {
                 var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
