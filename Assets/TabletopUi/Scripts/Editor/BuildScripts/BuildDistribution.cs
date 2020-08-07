@@ -27,6 +27,10 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
         public void CopyFilesFromEnvironment(BuildEnvironment fromEnvironment)
         {
+            try
+            {
+
+
             string fromDirectory = fromEnvironment.GetProductWithOSBuildPath(_product, _os);
 
             string toDirectory = GetDistributionDestinationPath(fromEnvironment);
@@ -36,7 +40,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
                 fromEnvironment.LogError("Can't find source path: terminating distribution creation -  " + fromDirectory);
                 return;
             }
-            if (Directory.Exists(GetDistributionDestinationPath(fromEnvironment)))
+            if (Directory.Exists(toDirectory))
             {
                 fromEnvironment.Log("Deleting distribution output path: " + toDirectory);
                 Directory.Delete(toDirectory,true);
@@ -75,6 +79,13 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
 
 //            }
+            }
+
+            }
+            catch (Exception e)
+            {
+            NoonUtility.Log(e.Message,2);
+                throw;
             }
 
         }
