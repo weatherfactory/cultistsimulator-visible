@@ -1,5 +1,4 @@
 ﻿#pragma warning disable 0649
-#define ENABLE_ASPECT_CACHING	// Comment out to return to continuous aspect recalc
 
 using System;
 using System.Collections.Generic;
@@ -110,11 +109,8 @@ namespace Assets.CS.TabletopUI {
 
 		// Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
 		[NonSerialized]
-#if ENABLE_ASPECT_CACHING
 		public bool					_enableAspectCaching = true;
-#else
-		public bool					_enableAspectCaching = false;
-#endif
+
 		private AspectsDictionary	_tabletopAspects = null;
 		private AspectsDictionary	_allAspectsExtant = null;
 		private bool				_tabletopAspectsDirty = true;
@@ -221,14 +217,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-       	    #if UNITY_STANDALONE_OSX
-            // Vsync doesn't seem to limit the FPS on the mac so well, so we set it to 0 and force a target framerate (setting it to 0 any other way doesn't work, has to be done in code, apparently in Start not Awake too) - FM
-            QualitySettings.vSyncCount = 0;
-            #else
-            QualitySettings.vSyncCount = 1; // Force VSync on in case user has tried to disable it. No benefit, just burns CPU - CP
-#endif
-
-            SetFrameRateForCurrentGraphicsLevel();
+   Configuration.Setup();
 
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
@@ -428,7 +417,7 @@ namespace Assets.CS.TabletopUI {
                 NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
                 CrossSceneState.SetMetaInfo(metaInfo);
                     //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
-                SetGraphicsLevel(3);
+               Configuration.SetGraphicsLevel(3);
             }
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
@@ -1115,36 +1104,9 @@ namespace Assets.CS.TabletopUI {
 			accessibleCards = on;
 		}
 
-        public static void SetWindowed(bool windowed)
-        {
-            if (windowed)
 
-               Screen.SetResolution(Screen.width,Screen.height,false);
-            else
-                Screen.SetResolution(Screen.width, Screen.height, true);
-            
-        }
 
-        public static void SetResolution(Resolution resolution)
-        {
-            Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
-        }
 
-        public static void SetGraphicsLevel(int level)
-        {
-            QualitySettings.SetQualityLevel(level);
-            SetFrameRateForCurrentGraphicsLevel();
-
-        }
-
-        public static void SetFrameRateForCurrentGraphicsLevel()
-        {
-            int currentLevel = QualitySettings.GetQualityLevel();
-            if (currentLevel > 1)
-                Application.targetFrameRate = 60;
-            else
-                Application.targetFrameRate = 30; //ram down the frame rate for v low quality
-        }
 
         public static bool GetAccessibleCards()
 		{
@@ -1443,5 +1405,6 @@ namespace Assets.CS.TabletopUI {
           NotifyAspectsDirty();
         }
     }
+
 
 }

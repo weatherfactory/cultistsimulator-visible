@@ -14,6 +14,7 @@ using Noon;
 using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Services;
 using TabletopUi.Scripts.Interfaces;
 using UnityEngine.Analytics;
 
@@ -123,7 +124,7 @@ public class OptionsPanel : MonoBehaviour {
         if(deferredResolutionChangeToIndex >=0)
         { 
             NoonUtility.Log("Res to " + getResolutionDescription(availableResolutions[deferredResolutionChangeToIndex]));
-            TabletopManager.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
+            Configuration.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
             deferredResolutionChangeToIndex = -1;
         }
 
@@ -536,7 +537,7 @@ public class OptionsPanel : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(NoonConstants.WINDOWED, value);
 
-        TabletopManager.SetWindowed(value > 0.5f);
+        Configuration.SetWindowed(value > 0.5f);
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
@@ -549,7 +550,7 @@ public class OptionsPanel : MonoBehaviour {
     {
         int g = Convert.ToInt32(value);
         PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
-        TabletopManager.SetGraphicsLevel(g);
+        Configuration.SetGraphicsLevel(g);
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
