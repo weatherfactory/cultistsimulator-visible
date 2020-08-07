@@ -115,9 +115,14 @@ public class ResourcesManager: MonoBehaviour
         return GetSprite("legacies", legacyImage, false);
     }
 
-    public static Sprite GetSpriteForDlc(string dlcId, bool active)
+    //public static Sprite GetSpriteForDlc(string dlcId, bool active)
+    //{
+    //    return GetSprite("dlc", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
+    //}
+
+    public static Sprite GetSpriteForUI(string uiImage)
     {
-        return GetSprite("dlc", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
+        return GetSprite("ui", uiImage, false);
     }
 
     public static Sprite GetSpriteForEnding(string endingImage)

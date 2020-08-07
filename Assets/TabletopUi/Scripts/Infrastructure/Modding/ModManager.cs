@@ -41,8 +41,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             "elements\\anim",
             "endings",
             "legacies",
+            "ui",
             "verbs",
-            "verbs\\anim",
+            "verbs\\anim"
         };
 
 

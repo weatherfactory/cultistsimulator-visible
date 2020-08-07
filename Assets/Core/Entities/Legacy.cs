@@ -43,7 +43,13 @@ namespace Assets.Core.Entities
         public string Image { get; set; }
 
         [FucineValue("")]
-        public string GameLeatherImage { get; set; }
+        public string TableCoverImage { get; set; }
+
+        [FucineValue("")]
+        public string TableSurfaceImage { get; set; }
+
+        [FucineValue("")]
+        public string TableEdgeImage { get; set; }
 
         [FucineValue("")]
         public string FromEnding { get; set; }

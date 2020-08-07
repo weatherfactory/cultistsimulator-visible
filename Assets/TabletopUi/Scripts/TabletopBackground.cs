@@ -12,7 +12,8 @@ namespace Assets.CS.TabletopUI
         public event System.Action onClicked;
 
 #pragma warning disable 649
-        [SerializeField] Image Cover;
+        [SerializeField] private Image Cover;
+            [SerializeField] Image Surface;
         [SerializeField] Image Edge;
 #pragma warning restore 649
 
@@ -32,18 +33,31 @@ namespace Assets.CS.TabletopUI
         public void ShowTabletopFor(Legacy characterActiveLegacy)
         {
 
-            //if (!string.IsNullOrEmpty(characterActiveLegacy.GameLeatherImage))
-            //{
-            //    var leather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
-            //    Cover.sprite = leather;
-            //}
-
-
-            if (characterActiveLegacy.Id.ToLower().Contains("exile"))
+            if (!string.IsNullOrEmpty(characterActiveLegacy.TableCoverImage))
             {
-                var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
-                Cover.sprite = exileLeather;
+                var coverImage = ResourcesManager.GetSpriteForUI(characterActiveLegacy.TableCoverImage);
+                Cover.sprite = coverImage;
             }
+
+            if (!string.IsNullOrEmpty(characterActiveLegacy.TableEdgeImage))
+            {
+                var surfaceImage = ResourcesManager.GetSpriteForUI(characterActiveLegacy.TableSurfaceImage);
+                Surface.sprite = surfaceImage;
+            }
+
+
+            if (!string.IsNullOrEmpty(characterActiveLegacy.TableEdgeImage))
+            {
+                var edgeImage = ResourcesManager.GetSpriteForUI(characterActiveLegacy.TableEdgeImage);
+                Edge.sprite = edgeImage;
+            }
+
+
+            //if (characterActiveLegacy.Id.ToLower().Contains("exile"))
+            //{
+            //    var exileLeather = ResourcesManager.GetSprite("ui/", "table_leather_exile");
+            //    Cover.sprite = exileLeather;
+            //}
         }
 
     }
