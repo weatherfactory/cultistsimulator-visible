@@ -230,6 +230,16 @@ namespace Assets.Core.Fucine
 
                 var topLevelArrayList = (JArray) locContentFile.EntityContainer.Value;
 
+                HashSet<string> localizableKeys=new HashSet<string>
+                {
+                    "id",
+                    "label",
+                    "startdescription",
+                    "description",
+                    "slots",
+                    "drawmessaages"
+                };
+
 
                 foreach (var eachObject in topLevelArrayList)
                 {
@@ -237,9 +247,11 @@ namespace Assets.Core.Fucine
 
                     foreach (var eachProperty in ((JObject) eachObject).Properties())
                     {
-                        var propertyIdBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
-
-                        RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, locContentFile,_localisedTextValuesRegistry);
+                        if(localizableKeys.Contains(eachProperty.Name))
+                        {
+                            var propertyIdBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
+                            RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, locContentFile,_localisedTextValuesRegistry);
+                        }
                     }
                 }
             }
@@ -278,8 +290,7 @@ namespace Assets.Core.Fucine
             else
 
             {
-                _log.LogProblem(
-                    $"Unexpected jtoken type in {currentContentFile.Path}: {jtoken.Type}");
+                    NoonUtility.Log($"Unexpected jtoken type in {currentContentFile.Path}: {jtoken.Type}", 0, VerbosityLevel.SystemChatter);
             }
         }
 

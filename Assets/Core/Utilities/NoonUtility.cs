@@ -66,6 +66,7 @@ namespace Noon
     public enum VerbosityLevel
     {
         Essential=1,
+        Significants=4,
         SystemChatter=8,
         Trivia=10
     }
@@ -74,7 +75,7 @@ namespace Noon
     {
         public static bool UnitTestingMode { get; set; }
 
-        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.SystemChatter);
+        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.Significants);
 
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
