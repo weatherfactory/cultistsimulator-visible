@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Enums;
@@ -125,7 +126,7 @@ namespace Assets.Core.Entities
         [FucineValue((int)PortalEffect.None)]
         public PortalEffect PortalEffect { get; set; }
 
-        [FucineList]
+        [FucineList(Localise=true)]
         public List<SlotSpecification> Slots { get; set; }
 
         [FucineSubEntity(typeof(DeckSpec))]

@@ -77,8 +77,8 @@ namespace Assets.Core.Entities
         [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Aspects { get; set; }
 
-       [FucineList]
-       public List<SlotSpecification> Slots { get; set; }
+        [FucineList(Localise = true)]
+        public List<SlotSpecification> Slots { get; set; }
 
         /// <summary>
         /// Inductions ONLY OCCUR WHEN A RECIPE COMPLETES. This ensures we don't get inductions spamming over and over.

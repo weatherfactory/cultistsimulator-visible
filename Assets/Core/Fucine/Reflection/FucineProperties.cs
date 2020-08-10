@@ -27,10 +27,6 @@ namespace Assets.Core.Fucine
     public abstract class Fucine : System.Attribute
     {
         public object DefaultValue { get; set; }
-
-        /// <summary>
-        /// This property has no effect, but it's a useful marker we may need at some point
-        /// </summary>
         public bool Localise { get; set; }
         public bool ValidateAsElementId { get; set; }
         public Type ObjectType { get; protected set; }

@@ -14,16 +14,13 @@ namespace Assets.Core.Entities
     public class BasicVerb: AbstractEntity<BasicVerb>,IVerb, IEntityWithId
     {
 
-
-
-
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Label { get; set; }
 
         [FucineValue(DefaultValue = ".", Localise = true)]
         public string Description { get; set; }
 
-        [FucineSubEntity(typeof(SlotSpecification))]
+        [FucineSubEntity(typeof(SlotSpecification),Localise = true)]
         public SlotSpecification Slot { get; set; }
 
 

@@ -34,6 +34,8 @@ namespace Assets.Core.Fucine
         /// </summary>
         private Dictionary<string, string> _localisedTextValuesRegistry { get; set; }
 
+        //TODO: get these from Type
+        private HashSet<string> localizableKeys;
 
 
 
@@ -62,8 +64,32 @@ namespace Assets.Core.Fucine
         {
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data down in UnpackToken, if we find matching ids
+
             if (BaseCulture != CurrentCulture && _locContentFiles.Any())
             {
+                localizableKeys = new HashSet<string>();
+
+                var entityTypeProperties = EntityType.GetProperties();
+
+                foreach (var thisProperty in entityTypeProperties)
+                {
+                    if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
+                    {
+                        if (fucineAttribute.Localise)
+                            localizableKeys.Add(thisProperty.Name.ToLower());
+                    }
+                }
+
+                //localizableKeys = new HashSet<string>
+                //{
+                //    "id",
+                //    "label",
+                //    "startdescription",
+                //    "description",
+                //    "slots",
+                //    "drawmessaages"
+                //};
+
                 RegisterLocalisedDataForEmendations();
             }
 
@@ -229,16 +255,6 @@ namespace Assets.Core.Fucine
                 var containerBuilder = new FucineUniqueIdBuilder(locContentFile.EntityContainer);
 
                 var topLevelArrayList = (JArray) locContentFile.EntityContainer.Value;
-
-                HashSet<string> localizableKeys=new HashSet<string>
-                {
-                    "id",
-                    "label",
-                    "startdescription",
-                    "description",
-                    "slots",
-                    "drawmessaages"
-                };
 
 
                 foreach (var eachObject in topLevelArrayList)
