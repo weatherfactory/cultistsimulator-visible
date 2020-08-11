@@ -15,8 +15,6 @@ namespace Assets.Core.Fucine
 {
     public class EntityTypeDataLoader
     {
-
-       
         public readonly Type EntityType;
         public readonly string EntityTag;
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
@@ -73,6 +71,10 @@ namespace Assets.Core.Fucine
 
                 foreach (var thisProperty in entityTypeProperties)
                 {
+                    //Note: this doesn't work quite in the way I intended it. Label and Description on Slots are marked as Localise, but
+                    //the attribute is inspected only for the top level entity. Because the top level entity also has Label and Description marked as localie,
+                    //the slot properties are added to the localisable keys, but this will break if the names are different. Consider explicitly inspecting subproperty attributes
+                    //to see if they're also subentities, when loading the data
                     if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
                     {
                         if (fucineAttribute.Localise)
@@ -80,16 +82,7 @@ namespace Assets.Core.Fucine
                     }
                 }
 
-                //localizableKeys = new HashSet<string>
-                //{
-                //    "id",
-                //    "label",
-                //    "startdescription",
-                //    "description",
-                //    "slots",
-                //    "drawmessaages"
-                //};
-
+         
                 RegisterLocalisedDataForEmendations();
             }
 
@@ -192,10 +185,11 @@ namespace Assets.Core.Fucine
                 var subObjectBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
 
 
-                foreach (var eachKVP in (JObject) jToken)
+                foreach (var subProperty in ((JObject) jToken).Properties())
                 {
+                    var subPropertyIdBuilder=new FucineUniqueIdBuilder(subProperty,subObjectBuilder);
                     //add each property to that hashtable
-                    subObjectH.Add(eachKVP.Key.ToLower(), UnpackAndLocaliseToken(eachKVP.Value, subObjectBuilder));
+                    subObjectH.Add(subProperty.Name.ToLower(), UnpackAndLocaliseToken(subProperty.Value, subPropertyIdBuilder));
                 }
 
 
