@@ -49,27 +49,32 @@ public class CompendiumLoader
         var assembly = Assembly.GetExecutingAssembly();
 
         //retrieve base content for game
-        var coreFileLoader=new ContentFileLoader(CORE_CONTENT_DIR);
-        coreFileLoader.LoadContentFiles(_log);
+        var coreFileLoader=new DataFileLoader(CORE_CONTENT_DIR);
+        coreFileLoader.LoadFilesFromAssignedFolder(_log);
 
         //retrieve loc content for current language
-        var locFileLoader = new ContentFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
-        locFileLoader.LoadContentFiles(_log);
+        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
+        locFileLoader.LoadFilesFromAssignedFolder(_log);
         
 
-        //retrieve contents of all mod files
-        List<ContentFileLoader> modFileLoaders=new List<ContentFileLoader>();
+        //retrieve content mod files
+        List<DataFileLoader> modContentLoaders=new List<DataFileLoader>();
+        List<DataFileLoader> modLocLoaders=new List<DataFileLoader>();
+
         var modManager = Registry.Retrieve<ModManager>();
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetEnabledMods())
         {
-            var modFileLoader=new ContentFileLoader(mod.ContentFolder);
-            modFileLoader.LoadContentFiles(_log);
-            modFileLoaders.Add(modFileLoader);
-        }
-        
+            var modContentLoader=new DataFileLoader(mod.ContentFolder);
+            modContentLoader.LoadFilesFromAssignedFolder(_log);
+            modContentLoaders.Add(modContentLoader);
 
-        
+            var modLocLoader = new DataFileLoader(mod.LocFolder);
+            modLocLoader.LoadFilesFromAssignedFolder(_log);
+            modLocLoaders.Add(modLocLoader);
+        }
+
+
         //what entities need data importing?
         foreach (Type type in assembly.GetTypes())
         {
@@ -90,8 +95,6 @@ public class CompendiumLoader
         //We've identified the entity types: now set the compendium up to store these types
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
         
-
-        
         foreach (EntityTypeDataLoader dl in dataLoaders.Values)
         {
             //for every entity loader:
@@ -101,15 +104,17 @@ public class CompendiumLoader
             var locContentFilesForThisEntityType =
                 locFileLoader.GetLoadedContentFilesContainingEntityTag(dl.EntityTag);
 
-            var modContentFiles = new List<LoadedContentFile>();
-            foreach(var mcfl in modFileLoaders)
+            var modContentFiles = new List<LoadedDataFile>();
+            foreach(var mcfl in modContentLoaders)
                 modContentFiles.AddRange(mcfl.GetLoadedContentFilesContainingEntityTag(dl.EntityTag));
 
-            
+            var modLocFiles = new List<LoadedDataFile>();
+            foreach(var mll in modLocLoaders)
+                modLocFiles.AddRange(mll.GetLoadedContentFilesContainingEntityTag(dl.EntityTag));
 
-            dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles);
-
             
+            dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles,modLocFiles);
+    
             dl.LoadEntityDataFromSuppliedFiles();
              //   dataLoaderForEntityType.LoadModData();
 

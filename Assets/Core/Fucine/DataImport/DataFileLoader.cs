@@ -6,11 +6,11 @@ using Assets.Core.Fucine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-public class ContentFileLoader
+public class DataFileLoader
 {
     public readonly string ContentFolder;
     private List<string> _contentFilePaths=new List<string>();
-    private List<LoadedContentFile> _loadedContentFiles=new List<LoadedContentFile>();
+    private List<LoadedDataFile> _loadedContentFiles=new List<LoadedDataFile>();
 
 
     private List<string> GetContentFilesRecursive(string path)
@@ -27,19 +27,19 @@ public class ContentFileLoader
     }
 
 
-    public IEnumerable<LoadedContentFile> GetLoadedContentFilesContainingEntityTag(string entityTag)
+    public IEnumerable<LoadedDataFile> GetLoadedContentFilesContainingEntityTag(string entityTag)
     {
-        IEnumerable<LoadedContentFile> matchingFiles = _loadedContentFiles.Where(lcf => lcf.EntityTag == entityTag.ToLower());
+        IEnumerable<LoadedDataFile> matchingFiles = _loadedContentFiles.Where(lcf => lcf.EntityTag == entityTag.ToLower());
 
         return matchingFiles;
     }
 
-    public ContentFileLoader(string contentFolder)
+    public DataFileLoader(string contentFolder)
     {
         ContentFolder = contentFolder;
     }
 
-    public void LoadContentFiles(ContentImportLog log)
+    public void LoadFilesFromAssignedFolder(ContentImportLog log)
     {
         //find all the content files
         _contentFilePaths = GetContentFilesRecursive(ContentFolder);
@@ -51,21 +51,19 @@ public class ContentFileLoader
         {
             try
             {
+                using (StreamReader file = File.OpenText(contentFilePath))
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
 
- 
-            using (StreamReader file = File.OpenText(contentFilePath))
-            using (JsonTextReader reader = new JsonTextReader(file))
-            {
+                    var topLevelObject = (JObject)JToken.ReadFrom(reader);
+                    var containerProperty =
+                        topLevelObject.Properties().First(); //there should be exactly one property, which contains all the relevant entities
 
-                var topLevelObject = (JObject)JToken.ReadFrom(reader);
-                var containerProperty =
-                    topLevelObject.Properties().First(); //there should be exactly one property, which contains all the relevant entities
+                    LoadedDataFile loadedFile=new LoadedDataFile(contentFilePath,containerProperty,containerProperty.Name);
 
-                LoadedContentFile loadedFile=new LoadedContentFile(contentFilePath,containerProperty,containerProperty.Name);
+                    _loadedContentFiles.Add(loadedFile);
 
-                _loadedContentFiles.Add(loadedFile);
-
-            }
+                }
 
             }
             catch (Exception e)

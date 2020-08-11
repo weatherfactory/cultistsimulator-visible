@@ -206,27 +206,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 continue;
             }
 
-            //check the mod has a content directory
             var candidateContentFolder = Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
             if (!Directory.Exists(candidateContentFolder))
             {
                 NoonUtility.Log(
-                    mod.Id + " doesn't have a content directory, so we won't try to load it");
+                    mod.Id + " has no content directory");
             }
             else
                 mod.ContentFolder = candidateContentFolder;
 
-            // Collect the mod's images
-            // If an error occurs in the process, discard the mod
-            //commented out - not checking until we load the mod
-            //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
-            if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
+            var candidateLocFolder = Path.Combine(modFolder, NoonConstants.LOC_FOLDER_NAME);
+            if (!Directory.Exists(candidateContentFolder))
             {
-                NoonUtility.Log(
-                    "Encountered errors in images, skipping mod",
-                    messageLevel: 2);
-                continue;
+                NoonUtility.Log(mod.Id + " has no loc directory");
             }
+            else
+            {
+                NoonUtility.Log(mod.Id + " has a loc directory");
+                mod.LocFolder = candidateLocFolder;
+            }
+                // Collect the mod's images
+                // If an error occurs in the process, discard the mod
+                //commented out - not checking until we load the mod
+                //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
+                if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
+                {
+                    NoonUtility.Log(
+                        "Encountered errors in images, skipping mod",
+                        messageLevel: 2);
+                    continue;
+                }
 
                 // Add the mod to the collection
                 mod.ModInstallType = modInstallTypeForLocation;

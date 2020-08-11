@@ -66,6 +66,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
 
         public string ContentFolder { get; set; }
+        public string LocFolder { get; set; }
+
 
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
 
@@ -183,17 +185,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             return errors;
         }
 
-        public void AddContent(string category, ArrayList contents)
-        {
-            if (!Contents.ContainsKey(category))
-            {
-                Contents.Add(category, new List<Hashtable>());
-            }
-            var contentList = Contents[category];
-            foreach (var content in contents)
-            {
-                contentList.Add((Hashtable) content);
-            }
-        }
+        //public void AddContent(string category, ArrayList contents)
+        //{
+        //    if (!Contents.ContainsKey(category))
+        //    {
+        //        Contents.Add(category, new List<Hashtable>());
+        //    }
+        //    var contentList = Contents[category];
+        //    foreach (var content in contents)
+        //    {
+        //        contentList.Add((Hashtable) content);
+        //    }
+        //}
     }
 }

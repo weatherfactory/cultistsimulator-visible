@@ -22,20 +22,17 @@ namespace Assets.Core.Fucine
 
 
         private readonly ContentImportLog _log;
-        private List<LoadedContentFile> _coreContentFiles = new List<LoadedContentFile>();
-        private List<LoadedContentFile> _locContentFiles = new List<LoadedContentFile>();
-        private List<LoadedContentFile> _modContentFiles = new List<LoadedContentFile>();
+        private List<LoadedDataFile> _coreContentFiles = new List<LoadedDataFile>();
+        private List<LoadedDataFile> _modContentFiles = new List<LoadedDataFile>();
+        private List<LoadedDataFile> _coreLocFiles = new List<LoadedDataFile>();
+        private List<LoadedDataFile> _modLocFiles = new List<LoadedDataFile>();
+
         private Dictionary<string,EntityData> _allLoadedEntities { get; set; }
 
         /// <summary>
         /// k uniqueid, v original string from file
         /// </summary>
         private Dictionary<string, string> _localisedTextValuesRegistry { get; set; }
-
-        //TODO: get these from Type
-        private HashSet<string> localizableKeys;
-
-
 
         public EntityTypeDataLoader(Type entityType, string entityTag, string currentCulture, ContentImportLog log)
         {
@@ -50,12 +47,14 @@ namespace Assets.Core.Fucine
         /// <summary>
         /// This can handle being called more than once, although it won't check uniqueness
         /// </summary>
-        public void SupplyContentFiles(IEnumerable<LoadedContentFile> coreContentFiles,
-            IEnumerable<LoadedContentFile> locContentFiles, IEnumerable<LoadedContentFile> modContentFiles)
+        public void SupplyContentFiles(IEnumerable<LoadedDataFile> coreContentFiles,
+            IEnumerable<LoadedDataFile> locContentFiles, IEnumerable<LoadedDataFile> modContentFiles, IEnumerable<LoadedDataFile> modLocFiles)
         {
             _coreContentFiles.AddRange(coreContentFiles);
-            _locContentFiles.AddRange(locContentFiles);
+            _coreLocFiles.AddRange(locContentFiles);
             _modContentFiles.AddRange(modContentFiles);
+            _modLocFiles.AddRange(modLocFiles);
+            
         }
 
         public void LoadEntityDataFromSuppliedFiles()
@@ -63,27 +62,16 @@ namespace Assets.Core.Fucine
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data down in UnpackToken, if we find matching ids
 
-            if (BaseCulture != CurrentCulture && _locContentFiles.Any())
+            if (BaseCulture != CurrentCulture)
             {
-                localizableKeys = new HashSet<string>();
+                var localisableKeysForEntityType = GetLocalisableKeysForEntityType();
 
-                var entityTypeProperties = EntityType.GetProperties();
+                if( _coreLocFiles.Any())
+                   RegisterLocalisedDataForEmendations(_coreLocFiles,localisableKeysForEntityType);
 
-                foreach (var thisProperty in entityTypeProperties)
-                {
-                    //Note: this doesn't work quite in the way I intended it. Label and Description on Slots are marked as Localise, but
-                    //the attribute is inspected only for the top level entity. Because the top level entity also has Label and Description marked as localie,
-                    //the slot properties are added to the localisable keys, but this will break if the names are different. Consider explicitly inspecting subproperty attributes
-                    //to see if they're also subentities, when loading the data
-                    if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
-                    {
-                        if (fucineAttribute.Localise)
-                            localizableKeys.Add(thisProperty.Name.ToLower());
-                    }
-                }
+                if (_modLocFiles.Any())
+                    RegisterLocalisedDataForEmendations(_modLocFiles, localisableKeysForEntityType);
 
-         
-                RegisterLocalisedDataForEmendations();
             }
 
             var coreEntityData = UnpackAndLocaliseData(_coreContentFiles);
@@ -96,6 +84,28 @@ namespace Assets.Core.Fucine
             }
 
             _allLoadedEntities = coreEntityData;
+        }
+
+        private HashSet<string> GetLocalisableKeysForEntityType()
+        {
+            var localizableKeys = new HashSet<string>();
+
+            var entityTypeProperties = EntityType.GetProperties();
+
+            foreach (var thisProperty in entityTypeProperties)
+            {
+                //Note: this doesn't work quite in the way I intended it. Label and Description on Slots are marked as Localise, but
+                //the attribute is inspected only for the top level entity. Because the top level entity also has Label and Description marked as localie,
+                //the slot properties are added to the localisable keys, but this will break if the names are different. Consider explicitly inspecting subproperty attributes
+                //to see if they're also subentities, when loading the data
+                if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
+                {
+                    if (fucineAttribute.Localise)
+                        localizableKeys.Add(thisProperty.Name.ToLower());
+                }
+            }
+
+            return localizableKeys;
         }
 
         public List<EntityData> GetLoadedEntityDataAsList()
@@ -116,7 +126,7 @@ namespace Assets.Core.Fucine
 
         }
 
-        private Dictionary<string,EntityData> UnpackAndLocaliseData(List<LoadedContentFile> contentFilesToUnpack)
+        private Dictionary<string,EntityData> UnpackAndLocaliseData(List<LoadedDataFile> contentFilesToUnpack)
         {
             Dictionary<string, EntityData> entityDataCollection = new Dictionary<string, EntityData>();
 
@@ -242,9 +252,9 @@ namespace Assets.Core.Fucine
                 return jToken.ToString();
         }
 
-        private void RegisterLocalisedDataForEmendations()
+        private void RegisterLocalisedDataForEmendations(List<LoadedDataFile> locFilesToProcess,HashSet<string> localizableKeys)
         {
-            foreach (var locContentFile in _locContentFiles)
+            foreach (var locContentFile in locFilesToProcess)
             {
                 var containerBuilder = new FucineUniqueIdBuilder(locContentFile.EntityContainer);
 
@@ -268,7 +278,7 @@ namespace Assets.Core.Fucine
         }
 
         private void RegisterEmendationValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder,
-            LoadedContentFile currentContentFile,Dictionary<string,string> valuesRegistry)
+            LoadedDataFile currentDataFile,Dictionary<string,string> valuesRegistry)
         {
             if (jtoken.Type == JTokenType.Object)
             {
@@ -277,7 +287,7 @@ namespace Assets.Core.Fucine
                 foreach (JProperty jProperty in ((JObject) jtoken).Properties())
                 {
                     var subPropertyBuilder = new FucineUniqueIdBuilder(jProperty, subObjectBuilder);
-                    RegisterEmendationValues(jProperty.Value, subPropertyBuilder, currentContentFile, valuesRegistry);
+                    RegisterEmendationValues(jProperty.Value, subPropertyBuilder, currentDataFile, valuesRegistry);
                 }
             }
 
@@ -287,20 +297,23 @@ namespace Assets.Core.Fucine
 
                 foreach (var item in ((JArray) jtoken))
                 {
-                    RegisterEmendationValues(item, arrayBuilder, currentContentFile, valuesRegistry);
+                    RegisterEmendationValues(item, arrayBuilder, currentDataFile, valuesRegistry);
                 }
             }
 
             else if (jtoken.Type == JTokenType.String)
             {
                 FucineUniqueIdBuilder builder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
-                valuesRegistry.Add(builder.UniqueId, ((string) jtoken));
+                if (valuesRegistry.ContainsKey(builder.UniqueId))
+                    valuesRegistry[builder.UniqueId] = (string) jtoken;
+                else
+                    valuesRegistry.Add(builder.UniqueId, (string) jtoken);
             }
 
             else
 
             {
-                    NoonUtility.Log($"Unexpected jtoken type in {currentContentFile.Path}: {jtoken.Type}", 0, VerbosityLevel.SystemChatter);
+                    NoonUtility.Log($"Unexpected jtoken type in {currentDataFile.Path}: {jtoken.Type}", 0, VerbosityLevel.SystemChatter);
             }
         }
 

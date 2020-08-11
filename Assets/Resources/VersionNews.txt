@@ -4,6 +4,9 @@ v2020.8.a.2; "The Correspondence of Origin"
 - /images/ui added to modding framework. You can now use tablecoverimage:, tablesurfaceimage:, and tableedge:image on Legacies to customise table appearance.
 - Fixed Chinese loc
 - Fixed Chinese and Russian slot labels, which were showing in English
+- loc files renamed to loc_[culture]
+- loc files are now loaded *after* mods - so if you've extended an entity in your mod, any relevant loc will still apply to it
+- you can now add loc files to a mod (or create a mod consisting only of loc files) - just add loc json files to loc/loc_[culture]
 
 v2020.8.a.1; "The Solution of Memory"
 

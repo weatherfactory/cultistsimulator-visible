@@ -19,8 +19,9 @@ namespace Noon
         public const int CULTIST_STEAMWORKS_APP_ID = 718670;
 
         public const string CORE_FOLDER_NAME = "core";
-        public const string LOC_FOLDER_TEMPLATE = "core_[culture]";
+        public const string LOC_FOLDER_TEMPLATE = "loc_[culture]";
         public const string CONTENT_FOLDER_NAME = "content";
+        public static string LOC_FOLDER_NAME="loc";
         public const string DEFAULT_CULTURE = "en";
 
         

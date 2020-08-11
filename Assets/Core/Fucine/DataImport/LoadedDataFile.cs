@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-public class LoadedContentFile
+public class LoadedDataFile
 {
     private readonly string _entityTag;
 
@@ -18,7 +18,7 @@ public class LoadedContentFile
     /// </summary>
     public string EntityTag => _entityTag.ToLower();
 
-    public LoadedContentFile(string path, JProperty entityContainer, string entityTag)
+    public LoadedDataFile(string path, JProperty entityContainer, string entityTag)
     {
         Path = path;
         EntityContainer = entityContainer;
