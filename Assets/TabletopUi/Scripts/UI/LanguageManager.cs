@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using Noon;
 using TMPro;
 using UnityEngine;
 
@@ -70,8 +71,10 @@ public class LanguageManager : MonoBehaviour
 	{
 		if (_instance)
 		{
-			Debug.LogError("More than one instance of LanguageManager created!");
+			NoonUtility.Log("Awake running on LanguageManager behaviour again",0,VerbosityLevel.SystemChatter);
 		}
+        NoonUtility.Log("Starting Language Maanaager", 0, VerbosityLevel.SystemChatter);
+
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
 
