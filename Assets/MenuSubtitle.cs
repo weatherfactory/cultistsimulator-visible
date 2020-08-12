@@ -10,7 +10,7 @@ public class MenuSubtitle : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI SubtitleTextShadow;
 
-    public void SetText(string text)
+    public void SetLocValue(string text)
     {
 		Babelfish fish = SubtitleText.gameObject.GetComponent<Babelfish>();
 		if (fish)
@@ -23,9 +23,14 @@ public class MenuSubtitle : MonoBehaviour
 			fish.SetLocLabel( text );
 		}
 
-        SubtitleText.text		= LanguageTable.Get(text);
-        SubtitleTextShadow.text = LanguageTable.Get(text);
+        SetText(text);
     }
 
+
+    public void SetText(string text)
+    {
+        SubtitleText.text = text;
+        SubtitleTextShadow.text = text;
+    }
 
 }

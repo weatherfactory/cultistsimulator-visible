@@ -264,15 +264,28 @@ public class MenuScreenController : MonoBehaviour {
 
         //update subtitle text
         SetEditionStatus();
-        if (NoonUtility.PerpetualEdition)
+
+        if (isLegalSaveGame)
         {
-            Subtitle.SetText("UI_PERPETUAL_EDITION");
+            string possibleLegacy = saveGameManager.GetLegacyIdFromSavedGame();
+            var legacy = Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(possibleLegacy);
+            if (legacy != null)
+                Subtitle.SetText(legacy.Label);
         }
         else
-		{
-            Subtitle.SetText("UI_BRING_THE_DAWN");
-		}
+        {
+            
 
+            if (NoonUtility.PerpetualEdition)
+            {
+                Subtitle.SetLocValue("UI_PERPETUAL_EDITION");
+            }
+            else
+		    {
+                Subtitle.SetLocValue("UI_BRING_THE_DAWN");
+               
+            }
+        }
         // Show the purge message if needed
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
         UpdateVersionNumber(!isLegalSaveGame);

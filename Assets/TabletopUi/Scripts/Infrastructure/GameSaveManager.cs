@@ -193,9 +193,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return false;
             }
 
-            if (htSave == null)
-                return false;
-            var htMetaInfo = htSave.GetHashtable(SaveConstants.SAVE_METAINFO);
+            var htMetaInfo = htSave?.GetHashtable(SaveConstants.SAVE_METAINFO);
             if (htMetaInfo == null)
                 return false;
             if (!htMetaInfo.ContainsKey(SaveConstants.SAVE_VERSIONNUMBER))
@@ -208,6 +206,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
            // return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
             return true;
+        }
+
+
+        public string GetLegacyIdFromSavedGame()
+        {
+            Hashtable htSave;
+            string LEGACY_KEY = "activeLegacy";
+            try
+            {
+                htSave = RetrieveHashedSaveFromFile();
+            }
+            catch(Exception e)
+            {
+                Debug.LogError("Failed to load game (see exception for details)");
+                Debug.LogException(e);
+                return "";
+            }
+            if (htSave == null)
+                return string.Empty;
+            var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
+            if (htCharacter == null)
+                return string.Empty;
+            if(!htCharacter.ContainsKey(LEGACY_KEY))
+                return String.Empty;
+
+            return htCharacter[LEGACY_KEY].ToString();
+            
+            
         }
 
         private void HandleSaveError(TabletopTokenContainer tabletop, Character character, int index = 0)

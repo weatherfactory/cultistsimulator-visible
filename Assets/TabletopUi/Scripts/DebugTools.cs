@@ -441,8 +441,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var compendium = Registry.Retrieve<ICompendium>();
 
         var ending = compendium.GetEntityById<Ending>(endingId);
+        if (ending == null)
+            ending = compendium.GetEntitiesAsList<Ending>().First();
 
-        ending.Anim = endingAnimFXName;
+        ending.Anim = ending.Id;
 
         // Get us a random situation that killed us!
         var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
