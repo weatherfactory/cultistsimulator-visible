@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Noon;
 using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
@@ -142,6 +143,7 @@ public class ResourcesManager: MonoBehaviour
 		return spr;
     }
 
+
     public static IEnumerable<AudioClip> GetBackgroundMusic()
     {
         return Resources.LoadAll<AudioClip>("music/background");
@@ -191,6 +193,26 @@ public class ResourcesManager: MonoBehaviour
         if (sprite != null || !withPlaceholder)
             return sprite;
         return Resources.Load<Sprite>(spritePath.Replace(file, PLACEHOLDER_IMAGE_NAME));
+    }
+
+
+    public static Sprite GetSpriteLocalised(string folder, string file, string cultureId)
+    {
+        var spritePath = Path.Combine("images", folder, NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN,cultureId), file);
+
+        // Try to find the image in a mod first, in case it overrides an existing one
+        var modManager = Registry.Retrieve<ModManager>();
+        var modSprite = modManager.GetSprite(spritePath);
+        if (modSprite != null)
+        {
+            return modSprite;
+        }
+
+        // Try to load the image from the packed resources next. Never show the placeholder: we'll fall back to core-loc image if appropriate
+        var sprite = Resources.Load<Sprite>(spritePath);
+        
+            return sprite;
+        
     }
 }
 

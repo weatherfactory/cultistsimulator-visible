@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Noon;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,18 +11,11 @@ using UnityEngine.UI;
 ///
 /// This script switches a UI image according to the current language
 
-[System.Serializable]
-public class SpriteMapping
-{
-	public LanguageManager.eLanguage	language;
-	public Sprite						sprite;
-}
 
 public class BabelfishImage : MonoBehaviour
 {
     [Tooltip("Custom images per language")]
     #pragma warning disable 649
-	[SerializeField] private SpriteMapping[]			sprites = new SpriteMapping[ (int)LanguageManager.eLanguage.maxLanguages ];
     [SerializeField] private bool			            usesOverride;
 #pragma warning restore 649
 
@@ -30,11 +24,7 @@ public class BabelfishImage : MonoBehaviour
     private void Awake()
     {
 		image = gameObject.GetComponent<Image>() as Image;
-		for (int i=0; i<(int)LanguageManager.eLanguage.maxLanguages; i++)
-		{
-			sprites[i].language = (LanguageManager.eLanguage)i;
-		}
-    }
+    }
 
     private void OnEnable()
     {
@@ -59,18 +49,23 @@ public class BabelfishImage : MonoBehaviour
 		for (int i=0; i<(int)LanguageManager.eLanguage.maxLanguages; i++)
 		{
 			// Compare only first two letters of locale code because we can't use "zh-hans" as an enum
-			bool shouldBeActive = (0 == string.Compare( LanguageTable.targetCulture, 0, ((LanguageManager.eLanguage)sprites[i].language).ToString(), 0, 2 ));
-			if (shouldBeActive)
+        if (LanguageTable.targetCulture!=NoonConstants.DEFAULT_CULTURE)
 			{
                 if (usesOverride)
                 {
-				    image.overrideSprite = sprites[i].sprite;
+                    image.overrideSprite =
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageTable.targetCulture);
+                    // image.overrideSprite = sprites[i].sprite;
                 } else
                 {
-                    image.sprite = sprites[i].sprite;
-                }
+                    image.sprite =
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageTable.targetCulture);
+
+					//image.sprite = sprites[i].sprite;
+				}
 				return;
 			}
 		}
     }
+
 }
