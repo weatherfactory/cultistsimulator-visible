@@ -12,9 +12,8 @@ using UnityEngine;
 
 namespace Assets.Core.Entities
 {
-    ///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties#
     [FucineImportable("elements")]
-    public class Element: AbstractEntity<Element>, IEntityWithId
+    public class Element: AbstractEntity<Element>
     {
 
         [FucineValue(DefaultValue = "", Localise = true)]

@@ -170,7 +170,7 @@ public class LanguageTable : MonoBehaviour
 		#endif
 	}
 
-	static public int GetSupportedCultures()
+	static public int GetSupportedCulturesCount()
 	{
 		return cultures.Count;
 	}

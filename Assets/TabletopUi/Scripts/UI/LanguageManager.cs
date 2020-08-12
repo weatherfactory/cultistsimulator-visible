@@ -230,7 +230,7 @@ public class LanguageManager : MonoBehaviour
 		}
 		if (showDebugLanguageSelect)
 		{
-			for (int i=0; i<LanguageTable.GetSupportedCultures(); i++)
+			for (int i=0; i<LanguageTable.GetSupportedCulturesCount(); i++)
 			{
 				if (GUI.Button( new Rect(Screen.width - 400, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
 				{

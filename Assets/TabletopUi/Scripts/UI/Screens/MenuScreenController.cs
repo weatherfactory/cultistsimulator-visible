@@ -40,7 +40,7 @@ public class MenuScreenController : MonoBehaviour {
     public CanvasGroupFader purgeConfirm;
 	public CanvasGroupFader credits;
 	public CanvasGroupFader settings;
-	public CanvasGroupFader language;
+	public CanvasGroupFader languageMenu;
     public CanvasGroupFader versionHints;
     public CanvasGroupFader modsPanel;
     public CanvasGroupFader startDLCLegacyConfirmPanel;
@@ -70,7 +70,10 @@ public class MenuScreenController : MonoBehaviour {
     public Transform modEntries;
 
     [Header("Localisation")]
-    public Button russianLanguageButton;
+    //  public Button russianLanguageButton;
+    public Transform LanguagesAvailable;
+    public GameObject languageChoicePrefab;
+
 
     bool canTakeInput;
     int sceneToLoad;
@@ -219,6 +222,7 @@ public class MenuScreenController : MonoBehaviour {
 
         BuildLegacyStartsPanel();
         BuildModsPanel();
+        BuildLanguagesAvailablePanel();
 
     }
 
@@ -434,7 +438,7 @@ public class MenuScreenController : MonoBehaviour {
 		if (!canTakeInput)
 			return;
 		
-		ShowOverlay(language);
+		ShowOverlay(languageMenu);
 	}
 
 	public void SetLanguage( string lang_code )
@@ -551,6 +555,25 @@ public class MenuScreenController : MonoBehaviour {
             modEntry.Initialize(mod);
         }
         modEmptyMessage.enabled = !_modManager.GetCataloguedMods().Any();
+    }
+
+    private void BuildLanguagesAvailablePanel()
+    {
+        foreach(Transform languageAvailable in LanguagesAvailable)
+            Destroy(languageAvailable.gameObject);
+
+
+
+        foreach (var culture in Registry.Retrieve<ICompendium>().GetEntitiesAsList<Culture>())
+        {
+            var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
+            languageChoice.transform.SetParent(LanguagesAvailable,false);
+            languageChoice.Label.text = culture.Endonym;
+            languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
+            languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
+        }
+
+    
     }
     
     public void CloseCurrentOverlay() {

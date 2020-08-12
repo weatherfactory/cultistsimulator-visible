@@ -66,7 +66,7 @@ namespace Assets.Core.Fucine
             var constructorInfo = typeof(TEntity).GetConstructor(constructorTypeArgs);
 
             if (constructorInfo == null)
-                throw new ApplicationException($"Couldn't find a suitable entity constructor for {typeof(TEntity).Name}");
+                throw new ApplicationException($"Couldn't find a suitable entity constructor for {typeof(TEntity).Name}. This can probably be fixed by adding a  public {typeof(TEntity).Name}(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log) constructor. There is a cleaner way to do this so I don't need an explicit constructor - TODO :)");
 
             var exDataParam = Expression.Parameter(typeof(EntityData), "entitydata");
             var exLogParam = Expression.Parameter(typeof(ContentImportLog), "log");
