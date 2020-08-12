@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
     {
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const string CONST_STREAMING_ASSETS_FOLDER = "StreamingAssets";
-        private const string CONST_CORE_CONTENT_LOCATION = "content/core";
+
 
         public OSId OSId { get; private set; }
         private BuildTarget buildTarget;
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
        else 
            throw new ApplicationException("Unrecognised build target " + target);
            
-       }
+        }
        
 
         public string GetRelativePath()
@@ -75,16 +75,24 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
             if (ExeName.Contains("OSX")) // OSX is cray
                 dataFolderPath= "OSX.app/Contents/Resources/Data";
             else
-               dataFolderPath= ExeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
+                dataFolderPath= ExeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
             return dataFolderPath;
         }
 
         public string GetCoreContentPath( string locale)
         {
-
-            string coreContentPath=NoonUtility.JoinPaths(
-                GetStreamingAssetsPath(),
-                CONST_CORE_CONTENT_LOCATION + (locale != null ? "_" + locale : ""));
+            string coreContentPath;
+            if (string.IsNullOrEmpty(locale))
+                coreContentPath = NoonUtility.JoinPaths(
+                    GetStreamingAssetsPath(),
+                    NoonConstants.CONTENT_FOLDER_NAME,
+                    NoonConstants.CORE_FOLDER_NAME);
+            else
+                coreContentPath = NoonUtility.JoinPaths(
+                    GetStreamingAssetsPath(),
+                    NoonConstants.CONTENT_FOLDER_NAME,
+                    NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, locale));
+                
             return coreContentPath;
         }
 
