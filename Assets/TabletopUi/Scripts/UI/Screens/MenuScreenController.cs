@@ -144,12 +144,15 @@ public class MenuScreenController : MonoBehaviour {
 
     
     void Start() {
+
+        InitialiseServices();
+
         // make sure the screen is black
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
 
         
-        InitialiseServices();
+
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
@@ -286,7 +289,7 @@ public class MenuScreenController : MonoBehaviour {
                
             }
         }
-        // Show the purge message if needed
+        // Show the purge message if we have a valid save game that we might want to purge
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();

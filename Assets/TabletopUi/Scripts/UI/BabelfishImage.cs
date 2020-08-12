@@ -49,8 +49,7 @@ public class BabelfishImage : MonoBehaviour
 		for (int i=0; i<(int)LanguageManager.eLanguage.maxLanguages; i++)
 		{
 			// Compare only first two letters of locale code because we can't use "zh-hans" as an enum
-        if (LanguageTable.targetCulture!=NoonConstants.DEFAULT_CULTURE)
-			{
+
                 if (usesOverride)
                 {
                     image.overrideSprite =
@@ -64,8 +63,7 @@ public class BabelfishImage : MonoBehaviour
 					//image.sprite = sprites[i].sprite;
 				}
 				return;
-			}
-		}
+        }
     }
 
 }

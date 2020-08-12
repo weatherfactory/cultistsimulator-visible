@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
@@ -196,23 +197,33 @@ public class ResourcesManager: MonoBehaviour
     }
 
 
-    public static Sprite GetSpriteLocalised(string folder, string file, string cultureId)
+    public static Sprite GetSpriteLocalised(string folder, string file, string cultureId, bool withPlaceholder = true)
     {
-        var spritePath = Path.Combine("images", folder, NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN,cultureId), file);
+        Sprite spriteToReturn=null;
 
-        // Try to find the image in a mod first, in case it overrides an existing one
-        var modManager = Registry.Retrieve<ModManager>();
-        var modSprite = modManager.GetSprite(spritePath);
-        if (modSprite != null)
+        if (LanguageTable.targetCulture != NoonConstants.DEFAULT_CULTURE)
         {
-            return modSprite;
+
+            var spritePath = Path.Combine("images", folder,
+                NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId), file);
+
+            // Try to find the image in a mod first, in case it overrides an existing one
+            var modManager = Registry.Retrieve<ModManager>();
+            spriteToReturn = modManager.GetSprite(spritePath);
+            if (spriteToReturn != null)
+            {
+                return spriteToReturn;
+            }
+
+            // Try to load the image from the packed resources next. Never show the placeholder: we'll fall back to core-loc image if appropriate
+            spriteToReturn = Resources.Load<Sprite>(spritePath);
         }
 
-        // Try to load the image from the packed resources next. Never show the placeholder: we'll fall back to core-loc image if appropriate
-        var sprite = Resources.Load<Sprite>(spritePath);
-        
-            return sprite;
-        
+        if (spriteToReturn == null)
+            return GetSprite(folder, file, withPlaceholder);
+        else
+            return spriteToReturn;
+
     }
 }
 
