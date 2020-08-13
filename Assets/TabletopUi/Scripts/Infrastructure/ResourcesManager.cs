@@ -132,16 +132,12 @@ public class ResourcesManager: MonoBehaviour
         //just using images from elements for now - LB to sort out rectilinear images if we don't get suitable cards in time
 
 		// Try to load localised version from language subfolder first - if none then fall back to normal one - CP
-        Sprite spr = GetSprite(
-            "endings\\" + LanguageTable.targetCulture,
+     return GetSpriteLocalised(
+            "endings",
             endingImage,
+            LanguageTable.targetCulture,
             false);
-		if (spr == null)
-		{
-			spr = GetSprite("endings", endingImage, false);
-		}
-		
-		return spr;
+
     }
 
 
