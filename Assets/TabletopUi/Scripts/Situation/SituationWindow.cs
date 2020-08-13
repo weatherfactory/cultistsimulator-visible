@@ -81,8 +81,8 @@ namespace Assets.CS.TabletopUI {
 			startButton.onClick.AddListener(HandleStartButton);
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
 
-			buttonDefault = LanguageTable.Get("VERB_START");
-			buttonBusy = LanguageTable.Get("VERB_RUNNING");
+			buttonDefault = LanguageManager.Get("VERB_START");
+			buttonBusy = LanguageManager.Get("VERB_RUNNING");
         }
 
 		void OnDisable() {
@@ -235,7 +235,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayHintRecipeFound(Recipe r)
 		{
-            Title = LanguageTable.Get("UI_HINT") + " " + r.Label;
+            Title = LanguageManager.Get("UI_HINT") + " " + r.Label;
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);

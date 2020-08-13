@@ -18,6 +18,10 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string Exonym { get; set; }
 
+        [FucineValue]
+        public string FontScript { get; set; }
+
+
         [FucineDict]
         public Dictionary<string,string> UILabels { get; set; }
 

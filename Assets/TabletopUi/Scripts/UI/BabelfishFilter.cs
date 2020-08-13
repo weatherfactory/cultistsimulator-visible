@@ -51,7 +51,7 @@ public class BabelfishFilter : MonoBehaviour
 			return;
 		
 		// Compare only first two letters of locale code because we can't use zh-hans as an enum
-		bool shouldBeActive = (0 == string.Compare( LanguageTable.targetCulture, 0, language.ToString(), 0, 2 ));
+		bool shouldBeActive = (0 == string.Compare( LanguageManager.targetCulture, 0, language.ToString(), 0, 2 ));
 		SetActiveAllChildren(transform, shouldBeActive);
     }
 }

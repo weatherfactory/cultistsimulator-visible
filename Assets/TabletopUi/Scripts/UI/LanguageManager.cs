@@ -1,5 +1,8 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Threading;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -67,7 +70,7 @@ public class LanguageManager : MonoBehaviour
         }
     }
 
-	private void Start()
+	public void Initialise()
 	{
 		if (_instance)
 		{
@@ -126,7 +129,7 @@ public class LanguageManager : MonoBehaviour
 		FixFontStyleSlots();
 
 		// force invariant culture to fix Linux save file issues
-		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
         // inform systems and components that the language has been changed (to catch UI that was initialised before this Awake call).
         LanguageChangeHasOccurred();
@@ -161,33 +164,37 @@ public class LanguageManager : MonoBehaviour
     {
 		PlayerPrefs.SetString( CULTURE, lang );
 
-        LanguageTable.LoadCulture( lang );
+        LoadCulture( lang );
 
         // inform systems and components that the language has been changed.
         LanguageChangeHasOccurred();
     }
 
 	public TMP_FontAsset GetFont( eFontStyle fs, string culture )
-	{
+    {
+        var fontscript = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(culture)?.FontScript;
+		
+
 		int style = (int)fs;
 		// determine which language is being used:
-        switch (culture)
+        switch (fontscript)
         {
             case "cjk":
-            case "ko":
-            case "zh":
-			case "zh-hans":
-            case "jp":
                 if (fontStyles[style].fontCJK != null)
                     return fontStyles[style].fontCJK;
                 break;
 
-            case "ru":
+            case "cyrillic":
                 if (fontStyles[style].fontRu != null)
                     return fontStyles[style].fontRu;
                 break;
 
-            default: // fall thru for all other languages; add additional cases if nec.
+			case "latin":
+                if (fontStyles[style].fontEn != null)
+                    return fontStyles[style].fontEn;
+                break;
+
+			default: // fall thru for all other languages; add additional cases if nec.
                 if (fontStyles[style].fontEn != null)
                     return fontStyles[style].fontEn;
                 break;
@@ -208,9 +215,9 @@ public class LanguageManager : MonoBehaviour
         if (!timeStringsUpdated)    // Slightly clumsy one-time lookup of strings, but this way they are guaranteed to be localised on first use and never looked up again
         {
             // One-time lookup of static strings, on first time request only
-            fixedspace = LanguageTable.Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
-            secondsPostfix = LanguageTable.Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
-            timeSeparator = LanguageTable.Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
+            fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
+            secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
+            timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
             timeStringsUpdated = true;
         }
 
@@ -219,4 +226,32 @@ public class LanguageManager : MonoBehaviour
         return fixedspace + s + secondsPostfix;
     }
 
+    public static string targetCulture = NoonConstants.DEFAULT_CULTURE;
+
+    public static void LoadCulture(string newTargetCulture)
+    {
+        targetCulture = newTargetCulture;
+
+    }
+
+    public static string Get(string id)
+    {
+
+        var currentCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(targetCulture);
+
+
+        if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
+            return localisedValue;
+
+        if (currentCulture.Id != NoonConstants.DEFAULT_CULTURE)
+        {
+            var defaultCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(NoonConstants.DEFAULT_CULTURE);
+            if (defaultCulture.UILabels.TryGetValue(id, out string defaultCultureValue))
+                return defaultCultureValue;
+
+        }
+
+
+        return "MISSING_" + id.ToUpper();
+    }
 }

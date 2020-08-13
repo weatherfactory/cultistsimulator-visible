@@ -27,13 +27,13 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += LanguageTable.Get("UI_ASPECTSFORBIDDEN") + problemAspects;
+                description += LanguageManager.Get("UI_ASPECTSFORBIDDEN") + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += LanguageTable.Get("UI_ASPECTSREQUIRED") + problemAspects;
+                description += LanguageManager.Get("UI_ASPECTSREQUIRED") + problemAspects;
             }
 
             return description;
@@ -45,10 +45,10 @@ namespace Assets.Core.Entities
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += LanguageTable.Get("UI_OR");
+                    problemAspects += LanguageManager.Get("UI_OR");
                 problemAspects += compendium.GetEntityById<Element>(problemAspectId).Label;
             }
-			problemAspects += LanguageTable.Get("UI_FULLSTOP");
+			problemAspects += LanguageManager.Get("UI_FULLSTOP");
             return problemAspects;
         }
     }

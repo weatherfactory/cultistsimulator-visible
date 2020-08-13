@@ -38,7 +38,7 @@ namespace TabletopUi.Scripts.UI
             }
             else
             {
-                title.text = LanguageTable.Get(spec.LocLabelIfNotInstalled);
+                title.text = LanguageManager.Get(spec.LocLabelIfNotInstalled);
                 notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Id);
                 installedImage.gameObject.SetActive(false);
                 notInstalledImage.gameObject.SetActive(true);

@@ -231,7 +231,7 @@ public class MenuScreenController : MonoBehaviour {
 
 	void InitialiseContent()
 	{
-		if (cultureContentLoaded.CompareTo(LanguageTable.targetCulture) == 0)	// Bail if we have the correct culture loaded already
+		if (cultureContentLoaded.CompareTo(LanguageManager.targetCulture) == 0)	// Bail if we have the correct culture loaded already
 		{
 			return;
 		}
@@ -244,7 +244,7 @@ public class MenuScreenController : MonoBehaviour {
         PopulateCompendium();
 
 
-        cultureContentLoaded = LanguageTable.targetCulture;
+        cultureContentLoaded = LanguageManager.targetCulture;
 	}
 
 
@@ -587,7 +587,7 @@ public class MenuScreenController : MonoBehaviour {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-          //  languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
+            languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

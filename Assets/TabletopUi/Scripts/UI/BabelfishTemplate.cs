@@ -25,7 +25,7 @@ namespace TabletopUi.Scripts.UI
         {
             if (template != null && tmpText != null)
             {
-                tmpText.text = ParameterPattern.Replace(template, match => LanguageTable.Get(match.Groups[1].Value));
+                tmpText.text = ParameterPattern.Replace(template, match => LanguageManager.Get(match.Groups[1].Value));
             }
         }
     }

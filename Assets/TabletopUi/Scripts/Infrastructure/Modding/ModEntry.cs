@@ -84,7 +84,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         {
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
             activationToggleBabel.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
-            activationToggleText.text = LanguageTable.Get(newLabel);
+            activationToggleText.text = LanguageManager.Get(newLabel);
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
             description.color = newColor;
@@ -121,13 +121,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.SetLocLabel("UI_UPLOAD");
-                uploadText.text = LanguageTable.Get("UI_UPLOAD");
+                uploadText.text = LanguageManager.Get("UI_UPLOAD");
             }
             else
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.SetLocLabel("UI_UPDATE");
-                uploadText.text = LanguageTable.Get("UI_UPDATE");
+                uploadText.text = LanguageManager.Get("UI_UPDATE");
                 
             }
 

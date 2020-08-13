@@ -166,7 +166,7 @@ namespace Assets.CS.TabletopUI {
             if (legacySelected.FromEnding == ending.Id)
 			{
                 //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
-				availableBecause.text = LanguageTable.Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + LanguageTable.Get("LEGACY_BECAUSE_POSTFIX");
+				availableBecause.text = LanguageManager.Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + LanguageManager.Get("LEGACY_BECAUSE_POSTFIX");
 			}
             else
 			{

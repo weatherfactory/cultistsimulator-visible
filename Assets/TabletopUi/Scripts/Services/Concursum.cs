@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Noon;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -58,6 +60,8 @@ namespace Assets.TabletopUi.Scripts.Services
 
     public class Concursum : MonoBehaviour
     {
+        [SerializeField] public LanguageManager languageManager;
+
         //things I really really truly want to be global:
         //storefront access
         //notification events
@@ -74,6 +78,7 @@ namespace Assets.TabletopUi.Scripts.Services
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
             registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
+            
 
 
             if (ShowNotificationEvent == null)
@@ -86,11 +91,25 @@ namespace Assets.TabletopUi.Scripts.Services
             if (ContentUpdatedEvent == null)
                 ContentUpdatedEvent = new ContentUpdatedEvent();
 
-            var registry = new Registry();
-            registry.Register<Concursum>(this);
 
+            registryAccess.Register<Concursum>(this);
+
+            //TODO: make this async
+            registryAccess.Register(new ModManager());
+            registryAccess.Register<ICompendium>(new Compendium());
+
+            var contentImporter = new CompendiumLoader();
+            var log = contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>());
+
+        foreach(var m in log.GetMessages())
+            NoonUtility.Log(m);
+
+
+        languageManager.Initialise();
+        registryAccess.Register<LanguageManager>(languageManager);
 
         }
+
 
         public void ShowNotification(NotificationArgs args)
         {

@@ -53,12 +53,12 @@ public class BabelfishImage : MonoBehaviour
                 if (usesOverride)
                 {
                     image.overrideSprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageTable.targetCulture);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageManager.targetCulture);
                     // image.overrideSprite = sprites[i].sprite;
                 } else
                 {
                     image.sprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageTable.targetCulture);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageManager.targetCulture);
 
 					//image.sprite = sprites[i].sprite;
 				}

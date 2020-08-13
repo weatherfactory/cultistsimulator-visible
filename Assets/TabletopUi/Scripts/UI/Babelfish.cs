@@ -66,7 +66,7 @@ public class Babelfish : MonoBehaviour
 		if (LanguageManager.Instance==null)
 			return;
 		
-		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle, (forceFontLanguage==null || forceFontLanguage.Length==0) ? LanguageTable.targetCulture : forceFontLanguage );
+		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle, (forceFontLanguage==null || forceFontLanguage.Length==0) ? LanguageManager.targetCulture : forceFontLanguage );
 		if (font != null)
 		{
 			tmpText.font = font;
@@ -84,7 +84,7 @@ public class Babelfish : MonoBehaviour
         // Localization label: only applies if set.
         if (locLabel != "")
 		{
-            tmpText.text = LanguageTable.Get(locLabel);
+            tmpText.text = LanguageManager.Get(locLabel);
 		}
 
 		if (highContrastEnabled)
@@ -111,7 +111,7 @@ public class Babelfish : MonoBehaviour
 
 		// Always disable bold for Chinese, since it can make the text
 		// unreadable
-		if (LanguageTable.targetCulture == "zh-hans")
+		if (LanguageManager.targetCulture == "zh-hans")
 		{
 			tmpText.fontStyle &= ~FontStyles.Bold;
 		}

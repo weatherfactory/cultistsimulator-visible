@@ -53,7 +53,7 @@ public class CompendiumLoader
         coreFileLoader.LoadFilesFromAssignedFolder(_log);
 
         //retrieve loc content for current language
-        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageTable.targetCulture));
+        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", LanguageManager.targetCulture));
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
 
@@ -84,7 +84,7 @@ public class CompendiumLoader
             {
                 //for each importable entity:
                 //create a data loader for that entity
-                EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs,LanguageTable.targetCulture,_log);
+                EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs,LanguageManager.targetCulture,_log);
                 
                 //add the loader and the entity type to collecitons so we can process them in a moment
                 dataLoaders.Add(importableAttribute.TaggedAs.ToLower(),loader);

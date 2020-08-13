@@ -117,10 +117,6 @@ public class ResourcesManager: MonoBehaviour
         return GetSprite("legacies", legacyImage, false);
     }
 
-    //public static Sprite GetSpriteForDlc(string dlcId, bool active)
-    //{
-    //    return GetSprite("dlc", $"dlc_{dlcId.ToLower()}" + (active ? string.Empty : "-inactive"), false);
-    //}
 
     public static Sprite GetSpriteForUI(string uiImage)
     {
@@ -135,7 +131,7 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            LanguageTable.targetCulture,
+            LanguageManager.targetCulture,
             false);
 
     }
@@ -197,7 +193,7 @@ public class ResourcesManager: MonoBehaviour
     {
         Sprite spriteToReturn=null;
 
-        if (LanguageTable.targetCulture != NoonConstants.DEFAULT_CULTURE)
+        if (LanguageManager.targetCulture != NoonConstants.DEFAULT_CULTURE)
         {
 
             var spritePath = Path.Combine("images", folder,

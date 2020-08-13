@@ -480,7 +480,7 @@ namespace Assets.CS.TabletopUI {
         private void SetStartingCharacterInfo(Legacy chosenLegacy)
 		{
             Character newCharacter = Registry.Retrieve<Character>();
-            newCharacter.Name = LanguageTable.Get("UI_CLICK_TO_NAME");
+            newCharacter.Name = LanguageManager.Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
         }
@@ -704,11 +704,11 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-	            _notifier.ShowNotificationWindow( LanguageTable.Get("UI_LOADEDTITLE"), LanguageTable.Get("UI_LOADEDDESC"));
+	            _notifier.ShowNotificationWindow( LanguageManager.Get("UI_LOADEDTITLE"), LanguageManager.Get("UI_LOADEDDESC"));
             }
             catch (Exception e)
             {
-                _notifier.ShowNotificationWindow(LanguageTable.Get("UI_LOADFAILEDTITLE"), LanguageTable.Get("UI_LOADFAILEDDESC"));
+                _notifier.ShowNotificationWindow(LanguageManager.Get("UI_LOADFAILEDTITLE"), LanguageManager.Get("UI_LOADFAILEDDESC"));
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }

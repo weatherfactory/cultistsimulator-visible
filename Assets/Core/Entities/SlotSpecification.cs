@@ -63,7 +63,7 @@ private const string PRIMARY_SLOT="primary";
     {
         _id = PRIMARY_SLOT;
         Label = "";
-        Description = LanguageTable.Get("UI_EMPTYSPACE");
+        Description = LanguageManager.Get("UI_EMPTYSPACE");
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;

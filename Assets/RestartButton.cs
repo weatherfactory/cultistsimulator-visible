@@ -21,7 +21,7 @@ public class RestartButton : MonoBehaviour
         if (clickedOnce)
             return true;
         
-        ButtonText.text = LanguageTable.Get( "UI_RESTARTSURE" );
+        ButtonText.text = LanguageManager.Get( "UI_RESTARTSURE" );
         clickedOnce = true;
         StartCoroutine(BrieflyDisable());
         return false;
@@ -43,7 +43,7 @@ public class RestartButton : MonoBehaviour
 
 	public virtual void OnLanguageChanged()
     {
-        ButtonText.text = LanguageTable.Get( "UI_RESTART" );
+        ButtonText.text = LanguageManager.Get( "UI_RESTART" );
     }
 
 }
