@@ -17,7 +17,7 @@ namespace Assets.Core.Fucine
     {
         public readonly Type EntityType;
         public readonly string EntityTag;
-        public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE;
+        public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE_ID;
         public string CurrentCulture { get; set; }
 
 

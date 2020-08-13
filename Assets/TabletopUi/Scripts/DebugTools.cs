@@ -372,7 +372,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
            var compendiumLoader = new CompendiumLoader();
 
            var startImport = DateTime.Now;
-           var log=compendiumLoader.PopulateCompendium(existingCompendium);
+           var log=compendiumLoader.PopulateCompendium(existingCompendium,Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
         foreach(var m in log.GetMessages())
             Log(m.Description,m.MessageLevel);
 

@@ -53,6 +53,7 @@ public class Compendium : ICompendium
         return entityStores[type];
     }
 
+
     /// <summary>
     /// Very forgiving method that accepts strings or collections in a variety of formats to log element  ids for later validation
     /// This could really be very generic and validate any kind of id we like, but I'm leaving that for now until I've taken more of a look at mods

@@ -1,6 +1,7 @@
 ﻿using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using OrbCreationExtensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,12 +51,12 @@ public class BabelfishImage : MonoBehaviour
                 if (usesOverride)
                 {
                     image.overrideSprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, Registry.Retrieve<LanguageManager>().CurrentCulture.Id);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, args.NewCulture.Id);
                     // image.overrideSprite = sprites[i].sprite;
                 } else
                 {
                     image.sprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, Registry.Retrieve<LanguageManager>().CurrentCulture.Id);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, args.NewCulture.Id);
 
 					//image.sprite = sprites[i].sprite;
 				}

@@ -41,7 +41,7 @@ public class CompendiumLoader
     readonly ContentImportLog _log=new ContentImportLog();
 
 
-    public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate)
+    public ContentImportLog PopulateCompendium(ICompendium compendiumToPopulate,string forCultureId)
     {
 
         Dictionary<string,EntityTypeDataLoader> dataLoaders=new Dictionary<string,EntityTypeDataLoader>();
@@ -53,7 +53,7 @@ public class CompendiumLoader
         coreFileLoader.LoadFilesFromAssignedFolder(_log);
 
         //retrieve loc content for current language
-        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", Registry.Retrieve<LanguageManager>().CurrentCulture.Id));
+        var locFileLoader = new DataFileLoader(LOC_CONTENT_DIR.Replace("[culture]", forCultureId));
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
 
@@ -84,7 +84,7 @@ public class CompendiumLoader
             {
                 //for each importable entity:
                 //create a data loader for that entity
-                EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs, Registry.Retrieve<LanguageManager>().CurrentCulture.Id,_log);
+                EntityTypeDataLoader loader=new EntityTypeDataLoader(type,importableAttribute.TaggedAs, forCultureId, _log);
                 
                 //add the loader and the entity type to collecitons so we can process them in a moment
                 dataLoaders.Add(importableAttribute.TaggedAs.ToLower(),loader);

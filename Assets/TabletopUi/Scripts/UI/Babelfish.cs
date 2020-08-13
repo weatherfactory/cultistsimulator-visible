@@ -119,7 +119,7 @@ public class Babelfish : MonoBehaviour
 
 		// Always disable bold for Chinese, since it can make the text
 		// unreadable
-		if (Registry.Retrieve<LanguageManager>().CurrentCulture.Id == "zh-hans")
+		if (!args.NewCulture.BoldAllowed)
 		{
 			tmpText.fontStyle &= ~FontStyles.Bold;
 		}

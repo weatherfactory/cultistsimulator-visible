@@ -46,7 +46,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new CompendiumLoader();
-            contentImporter.PopulateCompendium(compendium);
+            contentImporter.PopulateCompendium(compendium,Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
 
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);

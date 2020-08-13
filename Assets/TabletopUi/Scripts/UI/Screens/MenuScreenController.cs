@@ -211,7 +211,6 @@ public class MenuScreenController : MonoBehaviour {
         
 
 
-		InitialiseContent();	// Moved content into its own function, so it can happen again after language select if necessary
 
         var metaInfo = new MetaInfo(new VersionNumber(Application.version));
         registry.Register<MetaInfo>(metaInfo);
@@ -229,33 +228,8 @@ public class MenuScreenController : MonoBehaviour {
 
     }
 
-	void InitialiseContent()
-	{
-		if (cultureContentLoaded.CompareTo(Registry.Retrieve<LanguageManager>().CurrentCulture.Id) == 0)	// Bail if we have the correct culture loaded already
-		{
-			return;
-		}
-
-		var registry = new Registry();
-
-		var compendium = new Compendium();
-        registry.Register<ICompendium>(compendium);
-
-        PopulateCompendium();
 
 
-        cultureContentLoaded = Registry.Retrieve<LanguageManager>().CurrentCulture.Id;
-	}
-
-
-    public void PopulateCompendium()
-    {
-        var compendiumLoader = new CompendiumLoader();
-        var log=compendiumLoader.PopulateCompendium(Registry.Retrieve<ICompendium>());
-        foreach(var m in log.GetMessages())
-            NoonUtility.Log(m.Description,m.MessageLevel);
-
-    }
 
     void UpdateAndShowMenu() {
         bool hasSavegame = saveGameManager.DoesGameSaveExist();
@@ -586,7 +560,7 @@ public class MenuScreenController : MonoBehaviour {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = Registry.Retrieve<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.Id);
+            languageChoice.Label.font = Registry.Retrieve<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

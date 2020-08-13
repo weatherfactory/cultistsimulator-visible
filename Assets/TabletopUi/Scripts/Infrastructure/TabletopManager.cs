@@ -382,7 +382,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<ICompendium>(compendium);
 
             var contentImporter = new CompendiumLoader();
-            var log=contentImporter.PopulateCompendium(compendium);
+            var log=contentImporter.PopulateCompendium(compendium, Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
 
             return log;
 

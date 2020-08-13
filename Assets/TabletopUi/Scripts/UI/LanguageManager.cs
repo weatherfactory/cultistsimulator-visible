@@ -51,65 +51,28 @@ public class LanguageManager : MonoBehaviour
 	public Color		highContrastLight = Color.white;
 	public Color		highContrastDark = Color.black;
 
-    
-	private bool timeStringsUpdated = false;
+    
     private string fixedspace = "<mspace=1.6em>";    // defaults are overriden by strings.csv
     private string secondsPostfix = "s";
     private string timeSeparator = ".";
 
-    public Culture CurrentCulture;
+    private Culture CurrentCulture;
 
+    public string GetCurrentCultureId()
+    {
+		//there's a chicken and egg situation with LanguageManager and Compendium: hence this
+        if (CurrentCulture == null)
+            return NoonConstants.DEFAULT_CULTURE_ID;
 
-	public void Initialise(ICompendium withCompendium)
+        return CurrentCulture.Id;
+    }
+	public void Initialise(ICompendium withCompendium,string startingCultureId)
 	{
-	
-		DontDestroyOnLoad(this.gameObject);
-		
-		string startingCultureId;
-
-		// Try to auto-detect the culture from the system language first
-	    switch (Application.systemLanguage)
-	    {
-		    case SystemLanguage.Russian:
-			    startingCultureId = "ru";
-			    break;
-		    case SystemLanguage.Chinese:
-			case SystemLanguage.ChineseSimplified:
-			case SystemLanguage.ChineseTraditional:
-			    startingCultureId = "zh-hans";
-			    break;
-		    default:
-			    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
-			    {
-				    case "zh":
-					    startingCultureId = "zh-hans";
-					    break;
-				    case "ru":
-					    startingCultureId = "ru";
-					    break;
-					default:
-						startingCultureId = "en";
-						break;
-			    }
-			    break;
-	    }
-
-	    // If the player has already chosen a culture, use that one instead
-		if (PlayerPrefs.HasKey(NoonConstants.CULTURE_SETTING_KEY))
-		{
-			startingCultureId = PlayerPrefs.GetString(NoonConstants.CULTURE_SETTING_KEY);
-		}
-
-		// If an override is specified, ignore everything else and use that
-		if (Config.Instance.culture != null)
-		{
-			startingCultureId = Config.Instance.culture;
-		}
 
 
-        var startingCulture = withCompendium.GetEntityById<Culture>(startingCultureId);
+		CurrentCulture = withCompendium.GetEntityById<Culture>(startingCultureId);
 
-		if(startingCulture==null)
+		if(CurrentCulture == null)
 			NoonUtility.Log($"Unrecognised culture: {startingCultureId}",2);
 
 		FixFontStyleSlots();
@@ -119,7 +82,7 @@ public class LanguageManager : MonoBehaviour
 
         var concursum = Registry.Retrieve<Concursum>();
 		concursum.CultureChangedEvent.AddListener(CultureChangeHasOccurred);
-		concursum.CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = startingCulture});
+        concursum.CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = CurrentCulture });
     }
 
 
@@ -143,14 +106,13 @@ public class LanguageManager : MonoBehaviour
 		fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
             secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
             timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
-            timeStringsUpdated = true;
 
-	}
+    }
 
 
-	public TMP_FontAsset GetFont( eFontStyle fs, string culture )
+	public TMP_FontAsset GetFont( eFontStyle fs, string fontscript)
     {
-        var fontscript = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(culture)?.FontScript;
+        
 		
 
 		int style = (int)fs;
@@ -198,14 +160,12 @@ public class LanguageManager : MonoBehaviour
     public string Get(string id)
     {
 
-        
-
         if (CurrentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
             return localisedValue;
 
-        if (CurrentCulture.Id != NoonConstants.DEFAULT_CULTURE)
+        if (CurrentCulture.Id != NoonConstants.DEFAULT_CULTURE_ID)
         {
-            var defaultCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(NoonConstants.DEFAULT_CULTURE);
+            var defaultCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(NoonConstants.DEFAULT_CULTURE_ID);
             if (defaultCulture.UILabels.TryGetValue(id, out string defaultCultureValue))
                 return defaultCultureValue;
 

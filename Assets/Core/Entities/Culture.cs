@@ -21,6 +21,9 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string FontScript { get; set; }
 
+        [FucineValue]
+        public bool BoldAllowed { get; set; }
+
 
         [FucineDict]
         public Dictionary<string,string> UILabels { get; set; }

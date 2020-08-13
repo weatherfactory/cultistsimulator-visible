@@ -26,7 +26,7 @@ namespace Assets.Editor
             new Registry().Register(new ModManager());
 
             var contentImporter = new CompendiumLoader();
-            var messages = contentImporter.PopulateCompendium(new Compendium());
+            var messages = contentImporter.PopulateCompendium(new Compendium(), Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
 
             foreach (var p in messages.GetMessages().Where(m=>m.MessageLevel>0))
                 NoonUtility.Log(p.Description, messageLevel: p.MessageLevel);

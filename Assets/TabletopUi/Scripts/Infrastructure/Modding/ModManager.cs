@@ -260,7 +260,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             
             var compendiumLoader = new CompendiumLoader();
             var existingCompendium = Registry.Retrieve<ICompendium>();
-            compendiumLoader.PopulateCompendium(existingCompendium);
+            compendiumLoader.PopulateCompendium(existingCompendium, Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
             var modToAlter= _cataloguedMods[modId];
 
        
