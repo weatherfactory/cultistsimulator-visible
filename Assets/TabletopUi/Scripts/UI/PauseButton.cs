@@ -5,6 +5,7 @@ using OrbCreationExtensions;
 using TMPro;
 using UnityEngine.UI;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 
 public class PauseButton : MonoBehaviour
 {
@@ -18,37 +19,18 @@ public class PauseButton : MonoBehaviour
     private Color _originalColor;
     private Color _flashColor;
 
-    private void OnEnable()
-    {
-        // subscribe to event for language change
-        LanguageManager.LanguageChanged += OnLanguageChanged;
-        _isFlashing = false;
-    }
-
-    private void OnDisable()
-    {
-        LanguageManager.LanguageChanged -= OnLanguageChanged;
-        _isFlashing = false;
-    }
-
-    public void OnLanguageChanged()
-    {
-		// Temp removed because we've settled on language switching ONLY in front end, so this is redundant.
-		//var tabletop = Registry.Retrieve<ITabletopManager>();
-		//SetPausedText( tabletop.IsPaused() );
-	}
 
     public void SetPausedText(bool isPaused)
     {
         if (isPaused)
         {
 			//ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
-			buttonText.text = LanguageManager.Get("UI_UNPAUSE");
+			buttonText.text = Registry.Retrieve<LanguageManager>().Get("UI_UNPAUSE");
         }
         else
         {
 			//ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
-			buttonText.text = LanguageManager.Get("UI_PAUSE");
+			buttonText.text = Registry.Retrieve<LanguageManager>().Get("UI_PAUSE");
         }
     }
 

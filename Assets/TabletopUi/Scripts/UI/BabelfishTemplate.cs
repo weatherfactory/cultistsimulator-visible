@@ -1,4 +1,6 @@
 using System.Text.RegularExpressions;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.UI
@@ -15,9 +17,9 @@ namespace TabletopUi.Scripts.UI
             UpdateTextFromTemplate();
         }
 
-        public override void OnLanguageChanged()
+        public override void OnCultureChanged(CultureChangedArgs args)
         {
-            base.OnLanguageChanged();
+            base.OnCultureChanged(args);
             UpdateTextFromTemplate();
         }
 
@@ -25,7 +27,7 @@ namespace TabletopUi.Scripts.UI
         {
             if (template != null && tmpText != null)
             {
-                tmpText.text = ParameterPattern.Replace(template, match => LanguageManager.Get(match.Groups[1].Value));
+                tmpText.text = ParameterPattern.Replace(template, match => Registry.Retrieve<LanguageManager>().Get(match.Groups[1].Value));
             }
         }
     }

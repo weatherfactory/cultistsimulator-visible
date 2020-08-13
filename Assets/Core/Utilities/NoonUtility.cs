@@ -24,6 +24,7 @@ namespace Noon
         public const string CONTENT_FOLDER_NAME = "content";
         public static string LOC_FOLDER_NAME="loc";
         public const string DEFAULT_CULTURE = "en";
+        public const string CULTURE_SETTING_KEY = "Culture";
 
 
 

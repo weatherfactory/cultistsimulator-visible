@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.CS.TabletopUI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ public class RestartButton : MonoBehaviour
         if (clickedOnce)
             return true;
         
-        ButtonText.text = LanguageManager.Get( "UI_RESTARTSURE" );
+        ButtonText.text = Registry.Retrieve<LanguageManager>().Get( "UI_RESTARTSURE" );
         clickedOnce = true;
         StartCoroutine(BrieflyDisable());
         return false;
@@ -43,7 +44,7 @@ public class RestartButton : MonoBehaviour
 
 	public virtual void OnLanguageChanged()
     {
-        ButtonText.text = LanguageManager.Get( "UI_RESTART" );
+        ButtonText.text = Registry.Retrieve<LanguageManager>().Get( "UI_RESTART" );
     }
 
 }

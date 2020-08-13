@@ -1,3 +1,4 @@
+using Assets.CS.TabletopUI;
 using TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
@@ -38,7 +39,7 @@ namespace TabletopUi.Scripts.UI
             }
             else
             {
-                title.text = LanguageManager.Get(spec.LocLabelIfNotInstalled);
+                title.text = Registry.Retrieve<LanguageManager>().Get(spec.LocLabelIfNotInstalled);
                 notInstalledImage.sprite = ResourcesManager.GetSpriteForLegacy("_" + spec.Id);
                 installedImage.gameObject.SetActive(false);
                 notInstalledImage.gameObject.SetActive(true);

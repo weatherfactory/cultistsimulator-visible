@@ -1,3 +1,4 @@
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace TabletopUi.Scripts.UI
 
         private const string VersionNewsFile = "VersionNews";
 
-        public override void OnLanguageChanged()
+        public override void OnCultureChanged(CultureChangedArgs args)
         {
-            base.OnLanguageChanged();
+            base.OnCultureChanged(args);
             var textAsset = Resources.Load<TextAsset>(VersionNewsFile);
 
             if (textAsset == null)

@@ -1,4 +1,6 @@
-﻿using Noon;
+﻿using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,23 +30,18 @@ public class BabelfishImage : MonoBehaviour
 
     private void OnEnable()
     {
-        // subscribe to event for language change
-        LanguageManager.LanguageChanged += OnLanguageChanged;
+        Registry.Retrieve<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
         
-        // Initialize the component on enable to make sure this object
-        // has the most current language configuration.
-        OnLanguageChanged();
     }
 
     private void OnDisable()
     {
-        LanguageManager.LanguageChanged -= OnLanguageChanged;
+        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+
     }
 
-	public virtual void OnLanguageChanged()
+    public virtual void OnCultureChanged(CultureChangedArgs args)
     {
-		if (LanguageManager.Instance==null)
-			return;
 		
 		for (int i=0; i<(int)LanguageManager.eLanguage.maxLanguages; i++)
 		{
@@ -53,12 +50,12 @@ public class BabelfishImage : MonoBehaviour
                 if (usesOverride)
                 {
                     image.overrideSprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageManager.targetCulture);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, Registry.Retrieve<LanguageManager>().CurrentCulture.Id);
                     // image.overrideSprite = sprites[i].sprite;
                 } else
                 {
                     image.sprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, LanguageManager.targetCulture);
+                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, Registry.Retrieve<LanguageManager>().CurrentCulture.Id);
 
 					//image.sprite = sprites[i].sprite;
 				}

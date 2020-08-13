@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Noon;
 
 namespace Assets.Core.Services
@@ -32,7 +33,7 @@ namespace Assets.Core.Services
 
 			if (previousCharacterName == HistoryBuilder.DEFAULT_CHARACTER_NAME)
 			{
-				previousCharacterName = LanguageManager.Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
+				previousCharacterName = Registry.Retrieve<LanguageManager>().Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
 			}
 
             var lastBook = _compendium.GetEntityById<Element>(lastBookId);

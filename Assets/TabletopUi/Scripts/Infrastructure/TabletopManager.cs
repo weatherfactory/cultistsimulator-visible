@@ -480,7 +480,7 @@ namespace Assets.CS.TabletopUI {
         private void SetStartingCharacterInfo(Legacy chosenLegacy)
 		{
             Character newCharacter = Registry.Retrieve<Character>();
-            newCharacter.Name = LanguageManager.Get("UI_CLICK_TO_NAME");
+            newCharacter.Name = Registry.Retrieve<LanguageManager>().Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
         }
@@ -704,11 +704,11 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-	            _notifier.ShowNotificationWindow( LanguageManager.Get("UI_LOADEDTITLE"), LanguageManager.Get("UI_LOADEDDESC"));
+	            _notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_LOADEDTITLE"), Registry.Retrieve<LanguageManager>().Get("UI_LOADEDDESC"));
             }
             catch (Exception e)
             {
-                _notifier.ShowNotificationWindow(LanguageManager.Get("UI_LOADFAILEDTITLE"), LanguageManager.Get("UI_LOADFAILEDDESC"));
+                _notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_LOADFAILEDTITLE"), Registry.Retrieve<LanguageManager>().Get("UI_LOADFAILEDDESC"));
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }
@@ -1091,7 +1091,8 @@ namespace Assets.CS.TabletopUI {
 		public static void SetHighContrast( bool on )
 		{
 			highContrastMode = on;
-			LanguageManager.LanguageChangeHasOccurred();	// Fire language change to recreate all text, which will also apply contrast adjustments - CP 
+   //         Registry.Retrieve<Concursum>().CultureChangedEvent.Invoke();
+			//LanguageManager.LanguageChangeHasOccurred();	// Fire language change to recreate all text, which will also apply contrast adjustments - CP 
 		}
 
 		public static bool GetHighContrast()

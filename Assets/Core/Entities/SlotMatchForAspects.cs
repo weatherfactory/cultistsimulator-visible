@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Entities
 {
@@ -27,13 +28,13 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += LanguageManager.Get("UI_ASPECTSFORBIDDEN") + problemAspects;
+                description += Registry.Retrieve<LanguageManager>().Get("UI_ASPECTSFORBIDDEN") + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += LanguageManager.Get("UI_ASPECTSREQUIRED") + problemAspects;
+                description += Registry.Retrieve<LanguageManager>().Get("UI_ASPECTSREQUIRED") + problemAspects;
             }
 
             return description;
@@ -45,10 +46,10 @@ namespace Assets.Core.Entities
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += LanguageManager.Get("UI_OR");
+                    problemAspects += Registry.Retrieve<LanguageManager>().Get("UI_OR");
                 problemAspects += compendium.GetEntityById<Element>(problemAspectId).Label;
             }
-			problemAspects += LanguageManager.Get("UI_FULLSTOP");
+			problemAspects += Registry.Retrieve<LanguageManager>().Get("UI_FULLSTOP");
             return problemAspects;
         }
     }

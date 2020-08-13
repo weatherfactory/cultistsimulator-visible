@@ -15,12 +15,19 @@ namespace Assets.CS.TabletopUI
 
     public class Registry
     {
+
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
         public static T Retrieve<T>() where T: class
         {
+
             if (!registered.ContainsKey(typeof(T)))
-                throw new ApplicationException(typeof(T).Name + " wasn't registered");
+            {
+                if(typeof(T)==typeof(Concursum))
+                    registered[typeof(Concursum)] = new Concursum();
+                else
+                    throw new ApplicationException(typeof(T).Name + " wasn't registered");
+            }
             T got = registered[typeof(T)] as T;
       
             return got;

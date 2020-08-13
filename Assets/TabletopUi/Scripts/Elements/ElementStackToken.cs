@@ -925,7 +925,7 @@ namespace Assets.CS.TabletopUI {
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow(LanguageManager.Get("UI_CANTMERGE"), LanguageManager.Get("UI_DECAYS"), false);
+                notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_CANTMERGE"), Registry.Retrieve<LanguageManager>().Get("UI_DECAYS"), false);
             }
         }
 
@@ -1100,7 +1100,7 @@ namespace Assets.CS.TabletopUI {
         // Public so TokenWindow can access this
         public string GetCardDecayTime()
 		{
-			return LanguageManager.GetTimeStringForCurrentLanguage( LifetimeRemaining );
+			return Registry.Retrieve<LanguageManager>().GetTimeStringForCurrentLanguage( LifetimeRemaining );
         }
 
         public void SetCardDecay(float percentage)

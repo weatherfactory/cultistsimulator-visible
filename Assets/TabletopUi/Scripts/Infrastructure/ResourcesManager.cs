@@ -131,7 +131,7 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            LanguageManager.targetCulture,
+            Registry.Retrieve<LanguageManager>().CurrentCulture.Id,
             false);
 
     }
@@ -193,7 +193,7 @@ public class ResourcesManager: MonoBehaviour
     {
         Sprite spriteToReturn=null;
 
-        if (LanguageManager.targetCulture != NoonConstants.DEFAULT_CULTURE)
+        if (Registry.Retrieve<LanguageManager>().CurrentCulture.Id != NoonConstants.DEFAULT_CULTURE)
         {
 
             var spritePath = Path.Combine("images", folder,

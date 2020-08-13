@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Noon;
 
 /// <summary>
@@ -63,7 +64,7 @@ private const string PRIMARY_SLOT="primary";
     {
         _id = PRIMARY_SLOT;
         Label = "";
-        Description = LanguageManager.Get("UI_EMPTYSPACE");
+        Description = Registry.Retrieve<LanguageManager>().Get("UI_EMPTYSPACE");
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;

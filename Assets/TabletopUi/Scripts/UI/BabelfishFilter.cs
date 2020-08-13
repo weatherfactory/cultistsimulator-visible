@@ -1,4 +1,7 @@
-﻿using TMPro;
+﻿using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
+using TMPro;
 using UnityEngine;
 
 /// Localization responder - assumes a singleton centralized manager class (LanguageManager{})
@@ -20,22 +23,19 @@ public class BabelfishFilter : MonoBehaviour
     {
     }
 
-    private void OnEnable()
-    {
-        // subscribe to event for language change
-        LanguageManager.LanguageChanged += OnLanguageChanged;
-        
-        // Initialize the component on enable to make sure this object
-        // has the most current language configuration.
-        OnLanguageChanged();
-    }
+    private void OnEnable()
+    {
+        Registry.Retrieve<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+
+    }
 
     private void OnDisable()
     {
-        LanguageManager.LanguageChanged -= OnLanguageChanged;
+        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+
     }
 
-	private void SetActiveAllChildren(Transform transform, bool value)
+    private void SetActiveAllChildren(Transform transform, bool value)
     {
          foreach (Transform child in transform)
          {
@@ -45,13 +45,11 @@ public class BabelfishFilter : MonoBehaviour
          }
     }
 
-	public virtual void OnLanguageChanged()
+	public virtual void OnCultureChanged(CultureChangedArgs args)
     {
-		if (LanguageManager.Instance==null)
-			return;
-		
+
 		// Compare only first two letters of locale code because we can't use zh-hans as an enum
-		bool shouldBeActive = (0 == string.Compare( LanguageManager.targetCulture, 0, language.ToString(), 0, 2 ));
+		bool shouldBeActive = (0 == string.Compare(args.NewCulture.Id, 0, language.ToString(), 0, 2 ));
 		SetActiveAllChildren(transform, shouldBeActive);
     }
 }

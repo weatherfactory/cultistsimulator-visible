@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -42,6 +43,13 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
+    public class CultureChangedArgs
+    {
+
+        public Culture NewCulture { get; set; }
+
+    }
+
     public class ShowNotificationEvent : UnityEvent<NotificationArgs>
     {
 
@@ -57,58 +65,25 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
-
-    public class Concursum : MonoBehaviour
+    public class CultureChangedEvent : UnityEvent<CultureChangedArgs>
     {
-        [SerializeField] public LanguageManager languageManager;
+
+    }
+
+
+    public class Concursum
+    {
 
         //things I really really truly want to be global:
         //storefront access
         //notification events
-        public ShowNotificationEvent ShowNotificationEvent;
-        public ModOperationEvent ModOperationEvent;
-        public ContentUpdatedEvent ContentUpdatedEvent;
+        public ShowNotificationEvent ShowNotificationEvent = new ShowNotificationEvent();
+        public ModOperationEvent ModOperationEvent=new ModOperationEvent();
+        public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
+        public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
 
 
-        public void Awake()
-        {
-            var registryAccess = new Registry();
 
-            var storefrontServicesProvider = new StorefrontServicesProvider();
-            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
-            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
-            registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
-            
-
-
-            if (ShowNotificationEvent == null)
-                ShowNotificationEvent = new ShowNotificationEvent();
-
-            if (ModOperationEvent == null)
-                ModOperationEvent = new ModOperationEvent();
-
-
-            if (ContentUpdatedEvent == null)
-                ContentUpdatedEvent = new ContentUpdatedEvent();
-
-
-            registryAccess.Register<Concursum>(this);
-
-            //TODO: make this async
-            registryAccess.Register(new ModManager());
-            registryAccess.Register<ICompendium>(new Compendium());
-
-            var contentImporter = new CompendiumLoader();
-            var log = contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>());
-
-        foreach(var m in log.GetMessages())
-            NoonUtility.Log(m);
-
-
-        languageManager.Initialise();
-        registryAccess.Register<LanguageManager>(languageManager);
-
-        }
 
 
         public void ShowNotification(NotificationArgs args)
@@ -122,10 +97,7 @@ namespace Assets.TabletopUi.Scripts.Services
             ModOperationEvent.Invoke(args);
         }
 
-        public void ContentUpdated(ContentUpdatedArgs args)
-        {
-            ContentUpdatedEvent.Invoke(args);
-        }
+
 
 }
 }

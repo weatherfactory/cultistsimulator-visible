@@ -231,7 +231,7 @@ public class MenuScreenController : MonoBehaviour {
 
 	void InitialiseContent()
 	{
-		if (cultureContentLoaded.CompareTo(LanguageManager.targetCulture) == 0)	// Bail if we have the correct culture loaded already
+		if (cultureContentLoaded.CompareTo(Registry.Retrieve<LanguageManager>().CurrentCulture.Id) == 0)	// Bail if we have the correct culture loaded already
 		{
 			return;
 		}
@@ -244,7 +244,7 @@ public class MenuScreenController : MonoBehaviour {
         PopulateCompendium();
 
 
-        cultureContentLoaded = LanguageManager.targetCulture;
+        cultureContentLoaded = Registry.Retrieve<LanguageManager>().CurrentCulture.Id;
 	}
 
 
@@ -464,12 +464,11 @@ public class MenuScreenController : MonoBehaviour {
 		if (!canTakeInput)
 			return;
 
-		if (LanguageManager.Instance)
-		{		
-			LanguageManager.Instance.SetLanguage( lang_code );
-		}
+        var culture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(lang_code);
 
-		HideCurrentOverlay();
+        Registry.Retrieve<Concursum>().CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
+
+        HideCurrentOverlay();
 	}
 
     public void ShowVersionHints() {
@@ -587,7 +586,7 @@ public class MenuScreenController : MonoBehaviour {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
+            languageChoice.Label.font = Registry.Retrieve<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.Id);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

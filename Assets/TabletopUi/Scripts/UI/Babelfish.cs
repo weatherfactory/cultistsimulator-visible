@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
-using Assets.CS.TabletopUI;	// For accessing high contrast mode
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services; // For accessing high contrast mode
 
 /// Localization responder - assumes a singleton centralized manager class (LanguageManager{})
 /// that maintains fields for the font assets for different language sets being parsed
@@ -43,30 +44,37 @@ public class Babelfish : MonoBehaviour
 
     private void OnEnable()
     {
-        // subscribe to event for language change
-        LanguageManager.LanguageChanged += OnLanguageChanged;
+		var concursum=Registry.Retrieve<Concursum>();
+            concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+            
         
-        // Initialize the component on enable to make sure this object
-        // has the most current language configuration.
-        OnLanguageChanged();
     }
 
     private void OnDisable()
     {
-        LanguageManager.LanguageChanged -= OnLanguageChanged;
-    }
+        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+
+	}
 
 	public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
 	{
 		locLabel = label;
 	}
 
-	public virtual void OnLanguageChanged()
-    {
-		if (LanguageManager.Instance==null)
-			return;
-		
-		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle, (forceFontLanguage==null || forceFontLanguage.Length==0) ? LanguageManager.targetCulture : forceFontLanguage );
+	public virtual void OnCultureChanged(CultureChangedArgs args)
+    {
+        var lm = Registry.Retrieve<LanguageManager>();
+
+
+		string fontscript;
+
+
+        if (!string.IsNullOrEmpty(forceFontLanguage))
+            fontscript = forceFontLanguage;
+        else
+            fontscript = args.NewCulture.FontScript;
+
+		TMP_FontAsset font = Registry.Retrieve<LanguageManager>().GetFont( fontStyle, fontscript);
 		if (font != null)
 		{
 			tmpText.font = font;
@@ -74,7 +82,7 @@ public class Babelfish : MonoBehaviour
 
         // If using a specific font material, map the material to the
         // appropriate font texture atlas, then set the font asset's material.
-		Material fontMaterial = LanguageManager.Instance.GetFontMaterial( fontStyle );
+		Material fontMaterial = Registry.Retrieve<LanguageManager>().GetFontMaterial( fontStyle );
         if (fontMaterial != null)
         {
             fontMaterial.SetTexture("_MainTex", tmpText.font.material.mainTexture);
@@ -84,7 +92,7 @@ public class Babelfish : MonoBehaviour
         // Localization label: only applies if set.
         if (locLabel != "")
 		{
-            tmpText.text = LanguageManager.Get(locLabel);
+            tmpText.text = lm.Get(locLabel);
 		}
 
 		if (highContrastEnabled)
@@ -93,8 +101,8 @@ public class Babelfish : MonoBehaviour
 
 			if (TabletopManager.GetHighContrast())
 			{
-				Color light = LanguageManager.Instance.highContrastLight;
-				Color dark = LanguageManager.Instance.highContrastDark;
+				Color light = Registry.Retrieve<LanguageManager>().highContrastLight;
+				Color dark = Registry.Retrieve<LanguageManager>().highContrastDark;
 				light.a = 1.0f;	// ensure color is opaque
 				dark.a = 1.0f;
 				tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
@@ -111,7 +119,7 @@ public class Babelfish : MonoBehaviour
 
 		// Always disable bold for Chinese, since it can make the text
 		// unreadable
-		if (LanguageManager.targetCulture == "zh-hans")
+		if (Registry.Retrieve<LanguageManager>().CurrentCulture.Id == "zh-hans")
 		{
 			tmpText.fontStyle &= ~FontStyles.Bold;
 		}

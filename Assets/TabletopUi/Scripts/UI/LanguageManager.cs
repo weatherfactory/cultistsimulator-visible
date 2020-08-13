@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class FontStyle
 
 public class LanguageManager : MonoBehaviour
 {
-	private const string CULTURE="Culture";
+
 
 	public enum eLanguage
 	{
@@ -50,90 +51,76 @@ public class LanguageManager : MonoBehaviour
 	public Color		highContrastLight = Color.white;
 	public Color		highContrastDark = Color.black;
 
-    // simple singleton declaration
-    private static LanguageManager _instance;
+    
+	private bool timeStringsUpdated = false;
+    private string fixedspace = "<mspace=1.6em>";    // defaults are overriden by strings.csv
+    private string secondsPostfix = "s";
+    private string timeSeparator = ".";
 
-	private static bool timeStringsUpdated = false;
-    private static string fixedspace = "<mspace=1.6em>";    // defaults are overriden by strings.csv
-    private static string secondsPostfix = "s";
-    private static string timeSeparator = ".";
+    public Culture CurrentCulture;
 
-	public static LanguageManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-			{
-				// First init
-			}
-            return _instance;
-        }
-    }
 
-	public void Initialise()
+	public void Initialise(ICompendium withCompendium)
 	{
-		if (_instance)
-		{
-			NoonUtility.Log("Awake running on LanguageManager behaviour again",0,VerbosityLevel.SystemChatter);
-		}
-        NoonUtility.Log("Starting Language Maanaager", 0, VerbosityLevel.SystemChatter);
-
-		_instance = this;
+	
 		DontDestroyOnLoad(this.gameObject);
-
-
-
-		string defaultCulture;
+		
+		string startingCultureId;
 
 		// Try to auto-detect the culture from the system language first
 	    switch (Application.systemLanguage)
 	    {
 		    case SystemLanguage.Russian:
-			    defaultCulture = "ru";
+			    startingCultureId = "ru";
 			    break;
 		    case SystemLanguage.Chinese:
 			case SystemLanguage.ChineseSimplified:
 			case SystemLanguage.ChineseTraditional:
-			    defaultCulture = "zh-hans";
+			    startingCultureId = "zh-hans";
 			    break;
 		    default:
 			    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
 			    {
 				    case "zh":
-					    defaultCulture = "zh-hans";
+					    startingCultureId = "zh-hans";
 					    break;
 				    case "ru":
-					    defaultCulture = "ru";
+					    startingCultureId = "ru";
 					    break;
 					default:
-						defaultCulture = "en";
+						startingCultureId = "en";
 						break;
 			    }
 			    break;
 	    }
 
 	    // If the player has already chosen a culture, use that one instead
-		if (PlayerPrefs.HasKey(CULTURE))
+		if (PlayerPrefs.HasKey(NoonConstants.CULTURE_SETTING_KEY))
 		{
-			defaultCulture = PlayerPrefs.GetString(CULTURE);
+			startingCultureId = PlayerPrefs.GetString(NoonConstants.CULTURE_SETTING_KEY);
 		}
 
 		// If an override is specified, ignore everything else and use that
 		if (Config.Instance.culture != null)
 		{
-			defaultCulture = Config.Instance.culture;
+			startingCultureId = Config.Instance.culture;
 		}
 
-	//	LanguageTable.LoadCulture( defaultCulture );	// Initial load
+
+        var startingCulture = withCompendium.GetEntityById<Culture>(startingCultureId);
+
+		if(startingCulture==null)
+			NoonUtility.Log($"Unrecognised culture: {startingCultureId}",2);
 
 		FixFontStyleSlots();
 
 		// force invariant culture to fix Linux save file issues
 		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-        // inform systems and components that the language has been changed (to catch UI that was initialised before this Awake call).
-        LanguageChangeHasOccurred();
-	}
+        var concursum = Registry.Retrieve<Concursum>();
+		concursum.CultureChangedEvent.AddListener(CultureChangeHasOccurred);
+		concursum.CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = startingCulture});
+    }
 
 
 
@@ -147,28 +134,19 @@ public class LanguageManager : MonoBehaviour
 		}
 	}
 
-	// language change event definition
-	public delegate void LanguageMgrHandler();
-    public static event LanguageMgrHandler LanguageChanged;
-
-    // call this method to properly fire the lang changed event
-    public static void LanguageChangeHasOccurred()
+    public void CultureChangeHasOccurred(CultureChangedArgs args)
     {
-        if (LanguageChanged != null) LanguageChanged();
+        PlayerPrefs.SetString(NoonConstants.CULTURE_SETTING_KEY, args.NewCulture.Id);
+		
+		CurrentCulture = args.NewCulture;
+		
+		fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
+            secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
+            timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
+            timeStringsUpdated = true;
 
-        timeStringsUpdated = false;
 	}
 
-    // Pass standard language codes.
-    public void SetLanguage(string lang)
-    {
-		PlayerPrefs.SetString( CULTURE, lang );
-
-        LoadCulture( lang );
-
-        // inform systems and components that the language has been changed.
-        LanguageChangeHasOccurred();
-    }
 
 	public TMP_FontAsset GetFont( eFontStyle fs, string culture )
     {
@@ -210,40 +188,22 @@ public class LanguageManager : MonoBehaviour
 		return null;
 	}
 
-    public static string GetTimeStringForCurrentLanguage(float time)
+    public string GetTimeStringForCurrentLanguage(float time)
     {
-        if (!timeStringsUpdated)    // Slightly clumsy one-time lookup of strings, but this way they are guaranteed to be localised on first use and never looked up again
-        {
-            // One-time lookup of static strings, on first time request only
-            fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
-            secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
-            timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
-            timeStringsUpdated = true;
-        }
-
-        string s = time.ToString("0.0");
-        s = s.Replace('.', timeSeparator[0]);
-        return fixedspace + s + secondsPostfix;
+        var formattedTime = time.ToString("0.0").Replace('.', timeSeparator[0]);
+        return fixedspace + formattedTime + secondsPostfix;
     }
 
-    public static string targetCulture = NoonConstants.DEFAULT_CULTURE;
 
-    public static void LoadCulture(string newTargetCulture)
-    {
-        targetCulture = newTargetCulture;
-
-    }
-
-    public static string Get(string id)
+    public string Get(string id)
     {
 
-        var currentCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(targetCulture);
+        
 
-
-        if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
+        if (CurrentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
             return localisedValue;
 
-        if (currentCulture.Id != NoonConstants.DEFAULT_CULTURE)
+        if (CurrentCulture.Id != NoonConstants.DEFAULT_CULTURE)
         {
             var defaultCulture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(NoonConstants.DEFAULT_CULTURE);
             if (defaultCulture.UILabels.TryGetValue(id, out string defaultCultureValue))
