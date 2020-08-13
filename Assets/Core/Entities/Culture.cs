@@ -19,7 +19,7 @@ namespace Assets.Core.Entities
         public string Exonym { get; set; }
 
         [FucineDict]
-        public string UILabels { get; set; }
+        public Dictionary<string,string> UILabels { get; set; }
 
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
