@@ -4,11 +4,13 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
@@ -16,10 +18,17 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         [SerializeField]
         public LanguageManager languageManager;
+        private string initialisedAt = null;
+        private History History;
 
 
         public void Awake()
         {
+            
+            if (initialisedAt == null)
+                initialisedAt = DateTime.Now.ToString();
+            else
+                return;
 
             var registryAccess = new Registry();
 
@@ -30,13 +39,40 @@ namespace Assets.TabletopUi.Scripts.Services
             registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
 
 
-
-
             //TODO: make this async
             registryAccess.Register(new ModManager());
             registryAccess.Register<ICompendium>(new Compendium());
+            
+            var startingCultureId = GetStartingCultureId();
+            var contentImporter = new CompendiumLoader();
+            var log = contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>(), startingCultureId);
+            foreach (var m in log.GetMessages())
+                NoonUtility.Log(m);
 
 
+
+            History = Registry.Retrieve<ICompendium>().GetEntitiesAsList<History>().FirstOrDefault();
+            if (History == null)
+            {
+                NoonUtility.Log("No History found: ending Time.");
+                Application.Quit();
+            }
+            else
+            {
+                History.CurrentCultureId = startingCultureId;
+            }
+
+
+
+
+            registryAccess.Register<LanguageManager>(languageManager);
+            languageManager.Initialise(Registry.Retrieve<ICompendium>(),startingCultureId);
+  
+
+        }
+
+        private string GetStartingCultureId()
+        {
             string startingCultureId;
 
             // Try to auto-detect the culture from the system language first
@@ -63,6 +99,7 @@ namespace Assets.TabletopUi.Scripts.Services
                             startingCultureId = "en";
                             break;
                     }
+
                     break;
             }
 
@@ -80,20 +117,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             if (string.IsNullOrEmpty(startingCultureId))
                 startingCultureId = NoonConstants.DEFAULT_CULTURE_ID;
-
-
-
-            var contentImporter = new CompendiumLoader();
-            var log = contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>(),startingCultureId);
-
-            foreach (var m in log.GetMessages())
-                NoonUtility.Log(m);
-
-            registryAccess.Register<LanguageManager>(languageManager);
-            languageManager.Initialise(Registry.Retrieve<ICompendium>(),startingCultureId);
-  
-
+            return startingCultureId;
         }
-
     }
 }

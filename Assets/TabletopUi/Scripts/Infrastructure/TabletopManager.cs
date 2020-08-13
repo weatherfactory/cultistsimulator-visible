@@ -223,20 +223,7 @@ namespace Assets.CS.TabletopUI {
 
             var registry=new Registry();
 
-            var messages=ImportContent(registry).GetMessages();
-
-            if (messages.Any(p=>p.MessageLevel>1))
-            {
-                foreach (var p in messages.Where(p=>p.MessageLevel>1))
-                    NoonUtility.Log(p.Description, p.MessageLevel);
-
-                disabled = true;
-            }
-            else
-            { 
-                foreach(var m in messages)
-                    NoonUtility.Log(m.Description, m.MessageLevel);
-
+           
 
                 //register everything used gamewide
                 SetupServices(registry,_situationBuilder, _tabletop);
@@ -264,7 +251,7 @@ namespace Assets.CS.TabletopUI {
             _initialised = true;
 
             BeginGame(_situationBuilder);
-            }
+            
         }
 
         /// <summary>
@@ -372,22 +359,7 @@ namespace Assets.CS.TabletopUI {
             mapTokenContainer.Initialise();
         }
 
-        private ContentImportLog ImportContent(Registry registry)
-        {
-            
-            var modManager = new ModManager();
-            registry.Register(modManager);
 
-            var compendium = new Compendium();
-            registry.Register<ICompendium>(compendium);
-
-            var contentImporter = new CompendiumLoader();
-            var log=contentImporter.PopulateCompendium(compendium, Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
-
-            return log;
-
-
-        }
 
         private void SetupServices(Registry registry,SituationBuilder builder, TabletopTokenContainer container)
         {
