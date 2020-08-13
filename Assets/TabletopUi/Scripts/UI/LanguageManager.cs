@@ -67,7 +67,7 @@ public class LanguageManager : MonoBehaviour
         }
     }
 
-	private void Awake()
+	private void Start()
 	{
 		if (_instance)
 		{

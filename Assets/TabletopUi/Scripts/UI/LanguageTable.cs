@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using Noon;
 using UnityEngine;
@@ -136,6 +138,12 @@ public class LanguageTable : MonoBehaviour
 
 			// TODO: sort into hash order so we can binary chop the lookup for speed
 		}
+
+        string output=String.Empty;
+		foreach(var t in locTriplets)
+			output+=$"\"{t.GetId()}\": \"{t.GetString().Replace("\n","\\n")}\",\n";
+
+		File.WriteAllText(Path.Combine(Application.persistentDataPath,$"loc_{newTargetCulture}.txt"),output);
 	}
 	
 	static public string Get( string id )

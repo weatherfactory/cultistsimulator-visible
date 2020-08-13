@@ -18,6 +18,9 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string Exonym { get; set; }
 
+        [FucineDict]
+        public string UILabels { get; set; }
+
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {

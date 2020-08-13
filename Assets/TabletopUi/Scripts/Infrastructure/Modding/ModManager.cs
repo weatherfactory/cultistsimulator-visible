@@ -167,7 +167,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 continue;
             }
 
-            NoonUtility.Log("Found directory for mod " + modId);
+            NoonUtility.Log("Found directory for mod " + modId,0,VerbosityLevel.SystemChatter);
 
             // Find the mod's manifest and load its data
             var manifestPath = Path.Combine(modFolder, MOD_MANIFEST_FILE_NAME);
@@ -210,7 +210,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             if (!Directory.Exists(candidateContentFolder))
             {
                 NoonUtility.Log(
-                    mod.Id + " has no content directory");
+                    mod.Id + " has no content directory", 0, VerbosityLevel.SystemChatter);
             }
             else
                 mod.ContentFolder = candidateContentFolder;
@@ -218,11 +218,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var candidateLocFolder = Path.Combine(modFolder, NoonConstants.LOC_FOLDER_NAME);
             if (!Directory.Exists(candidateContentFolder))
             {
-                NoonUtility.Log(mod.Id + " has no loc directory");
+                NoonUtility.Log(mod.Id + " has no loc directory", 0, VerbosityLevel.SystemChatter);
             }
             else
             {
-                NoonUtility.Log(mod.Id + " has a loc directory");
+                NoonUtility.Log(mod.Id + " has a loc directory", 0, VerbosityLevel.SystemChatter);
                 mod.LocFolder = candidateLocFolder;
             }
                 // Collect the mod's images
@@ -240,7 +240,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 // Add the mod to the collection
                 mod.ModInstallType = modInstallTypeForLocation;
 
-                NoonUtility.Log("Catalogued mod '" + modId + "'");
+                NoonUtility.Log("Catalogued mod '" + modId + "'", 0, VerbosityLevel.SystemChatter);
             theseMods.Add(modId, mod);
         }
 

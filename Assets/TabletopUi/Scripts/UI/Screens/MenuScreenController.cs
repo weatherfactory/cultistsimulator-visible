@@ -251,7 +251,9 @@ public class MenuScreenController : MonoBehaviour {
     public void PopulateCompendium()
     {
         var compendiumLoader = new CompendiumLoader();
-        compendiumLoader.PopulateCompendium(Registry.Retrieve<ICompendium>());
+        var log=compendiumLoader.PopulateCompendium(Registry.Retrieve<ICompendium>());
+        foreach(var m in log.GetMessages())
+            NoonUtility.Log(m.Description,m.MessageLevel);
 
     }
 
@@ -585,7 +587,7 @@ public class MenuScreenController : MonoBehaviour {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
+          //  languageChoice.Label.font = LanguageManager.Instance.GetFont(LanguageManager.eFontStyle.Button, culture.Id);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 
