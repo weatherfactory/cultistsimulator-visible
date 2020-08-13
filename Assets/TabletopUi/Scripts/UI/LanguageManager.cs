@@ -68,21 +68,25 @@ public class LanguageManager : MonoBehaviour
     }
 	public void Initialise(ICompendium withCompendium,string startingCultureId)
 	{
-
-
-		CurrentCulture = withCompendium.GetEntityById<Culture>(startingCultureId);
-
-		if(CurrentCulture == null)
-			NoonUtility.Log($"Unrecognised culture: {startingCultureId}",2);
-
+		
 		FixFontStyleSlots();
-
-		// force invariant culture to fix Linux save file issues
+        // force invariant culture to fix Linux save file issues
 		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-
         var concursum = Registry.Retrieve<Concursum>();
-		concursum.CultureChangedEvent.AddListener(CultureChangeHasOccurred);
-        concursum.CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = CurrentCulture });
+        concursum.CultureChangedEvent.AddListener(CultureChangeHasOccurred);
+
+
+
+        var initialiseWithCulture = withCompendium.GetEntityById<Culture>(startingCultureId);
+
+        if (initialiseWithCulture == null)
+            NoonUtility.Log($"Unrecognised culture: {startingCultureId}", 2);
+        else
+            SetCulture(initialiseWithCulture);
+
+
+
+        
     }
 
 
@@ -97,12 +101,20 @@ public class LanguageManager : MonoBehaviour
 		}
 	}
 
+    public void SetCulture(Culture culture)
+    {
+        var concursum = Registry.Retrieve<Concursum>();
+        CurrentCulture = culture;
+        concursum.CultureChangedEvent.Invoke(new CultureChangedArgs { NewCulture = culture });
+	}
+
     public void CultureChangeHasOccurred(CultureChangedArgs args)
     {
         PlayerPrefs.SetString(NoonConstants.CULTURE_SETTING_KEY, args.NewCulture.Id);
-		
-		CurrentCulture = args.NewCulture;
-		
+
+        if (CurrentCulture != args.NewCulture)
+            CurrentCulture = args.NewCulture;
+
 		fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
             secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
             timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
