@@ -121,7 +121,7 @@ public class LanguageManager : MonoBehaviour
 			defaultCulture = Config.Instance.culture;
 		}
 
-		LanguageTable.LoadCulture( defaultCulture );	// Initial load
+	//	LanguageTable.LoadCulture( defaultCulture );	// Initial load
 
 		FixFontStyleSlots();
 
@@ -219,25 +219,4 @@ public class LanguageManager : MonoBehaviour
         return fixedspace + s + secondsPostfix;
     }
 
-#if UNITY_EDITOR
-	bool showDebugLanguageSelect = false;
-
-	void OnGUI()
-	{
-        if (GUI.Button( new Rect(Screen.width - 400, 10, 90, 20), "LANGUAGE"))
-		{
-			showDebugLanguageSelect = !showDebugLanguageSelect;
-		}
-		if (showDebugLanguageSelect)
-		{
-			for (int i=0; i<LanguageTable.GetSupportedCulturesCount(); i++)
-			{
-				if (GUI.Button( new Rect(Screen.width - 400, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
-				{
-					SetLanguage( LanguageTable.GetCultureCode(i) );
-				}
-			}
-		}
-	}
-#endif
 }
