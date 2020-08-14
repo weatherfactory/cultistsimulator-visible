@@ -21,14 +21,20 @@ namespace Assets.CS.TabletopUI
         public static T Get<T>() where T: class
         {
 
+            //if (!registered.ContainsKey(typeof(T)))
+            //{
+            //    if(typeof(T)==typeof(Concursum))
+            //        registered[typeof(Concursum)] = new Concursum();
+            //    else
+            //        throw new ApplicationException(typeof(T).Name + " wasn't registered");
+            //}
+
             if (!registered.ContainsKey(typeof(T)))
-            {
-                if(typeof(T)==typeof(Concursum))
-                    registered[typeof(Concursum)] = new Concursum();
-                else
                     throw new ApplicationException(typeof(T).Name + " wasn't registered");
-            }
-            T got = registered[typeof(T)] as T;
+
+
+
+              T got = registered[typeof(T)] as T;
       
             return got;
         }

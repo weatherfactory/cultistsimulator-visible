@@ -53,7 +53,7 @@ public class SoundManager : AudioManager {
 
 		// make sure we set our instance and don't ever destroy it
 		instance = this;
-		DontDestroyOnLoad(this.gameObject);
+		//DontDestroyOnLoad(this.gameObject);
 
         foreach (SoundCombo sound in sounds) {
             if (soundsMapped.ContainsKey(sound.name)) 
