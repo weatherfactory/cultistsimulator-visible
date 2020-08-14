@@ -90,14 +90,30 @@ namespace Assets.TabletopUi.Scripts.Services
             _config.CultureId = NoonConstants.DEFAULT_CULTURE_ID;
         }
 
+
         public string GetCurrentCultureId()
         {
             return _config.CultureId;
         }
 
+        public bool GetSkipLogo()
+        {
+            return _config.skiplogo;
+        }
+
+        public bool GetKnock()
+        {
+            return _config.knock;
+        }
+
+        public int GetVerbosity()
+        {
+            return _config.verbosity;
+        }
+
         public void SupplyConfig(Config config)
         {
-            _config.CultureId = config.CultureId;
+            _config = config;
         }
 
 

@@ -157,7 +157,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if(callback.m_bUserNeedsToAcceptWorkshopLegalAgreement)
             {
 
-                var concursum = Registry.Retrieve<Concursum>();
+                var concursum = Registry.Get<Concursum>();
 
                 concursum.ShowNotification(new NotificationArgs
                 {
@@ -218,7 +218,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 operationArgs.Message = $"Update completed for item {callback.m_nPublishedFileId}, mod {_currentlyUploadingMod.Id} with result {callback.m_eResult}";
             }
             
-            Registry.Retrieve<Concursum>().ModOperation(operationArgs);
+            Registry.Get<Concursum>().ModOperation(operationArgs);
 
 
            ClearCurrentlyUploadingMod();

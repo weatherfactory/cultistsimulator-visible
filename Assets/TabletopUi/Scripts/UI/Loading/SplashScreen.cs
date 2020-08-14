@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 
 public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 
@@ -38,7 +39,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void DoLoad() {
-		SceneManager.LoadScene(targetSceneName);
+        Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
 	}
 
 }

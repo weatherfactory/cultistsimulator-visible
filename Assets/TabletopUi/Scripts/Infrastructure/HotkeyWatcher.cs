@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
@@ -54,19 +55,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 {
-                    if(Config.OldConfig.Instance.knock)
+                   if(Registry.Get<Concursum>().GetKnock())
                         _debugTools.btnTriggerAchievement.gameObject.SetActive(true);
 
                 }
 
 
-                var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+                var situationsCatalogue = Registry.Get<SituationsCatalogue>();
                 foreach (var sc in situationsCatalogue.GetRegisteredSituations())
                 {
                     if(_debugTools.isActiveAndEnabled && sc.IsOpen)
                         sc.SetEditorActive(true);
                     else
-                    sc.SetEditorActive(false);
+                        sc.SetEditorActive(false);
                 }
             }
 
@@ -96,7 +97,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			{
 				// Check for open situation windows and close them first
 				bool windowWasOpen = false;
-				var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+				var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
 				foreach (var controller in situationControllers) {
 					if (controller.IsOpen) {
@@ -120,7 +121,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				var elementStack = DraggableToken.itemBeingDragged as ElementStackToken;
 				if (elementStack == null || !elementStack.IsInRecipeSlot())
 				{
-					var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+					var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
 					foreach (var controller in situationControllers) {
 						if (controller.IsOpen) {
@@ -133,7 +134,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if ((int)Input.GetAxis("Collect All")>0)
             {
-                var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+                var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
                 foreach (var controller in situationControllers)
                 {
@@ -147,7 +148,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (Input.GetButtonDown("Stack Cards"))
             {
-	            Registry.Retrieve<ITabletopManager>().GroupAllStacks();
+	            Registry.Get<ITabletopManager>().GroupAllStacks();
             }
         }
 

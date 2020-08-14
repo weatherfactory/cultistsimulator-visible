@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services {
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
 
             // build verbs
-            IVerb v = Registry.Retrieve<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
+            IVerb v = Registry.Get<ICompendium>().GetEntityById<BasicVerb>(legacy.StartingVerbId);
                
  
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Services {
         }
 
         public SituationToken CreateTokenWithAttachedControllerAndSituation(SituationCreationCommand situationCreationCommand, string locatorInfo = null) {
-            var situationController = new SituationController(Registry.Retrieve<ICompendium>(), Registry.Retrieve<Character>());
+            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
             var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, locatorInfo);
             newToken.SetParticleSimulationSpace(tableLevel);
 

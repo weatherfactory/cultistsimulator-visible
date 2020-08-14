@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI {
                 _illuminateLibrarian = new IlluminateLibrarian();
 */
             if (CurrentStacksManager == null)
-                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
         }
 
@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void ReturnToTabletop(Context context)
 		{
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
         }
 
         private bool IsOnTabletop()

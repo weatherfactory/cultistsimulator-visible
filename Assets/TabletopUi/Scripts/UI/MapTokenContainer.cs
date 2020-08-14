@@ -20,7 +20,7 @@ namespace Assets.CS.TabletopUI {
             _elementStacksManager = new ElementStacksManager(this, "map");
             _elementStacksManager.EnforceUniqueStacksInThisStackManager = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
 
-            choreo = Registry.Retrieve<Choreographer>();
+            choreo = Registry.Get<Choreographer>();
 
             allSlots = GetComponentsInChildren<DoorSlot>();
 

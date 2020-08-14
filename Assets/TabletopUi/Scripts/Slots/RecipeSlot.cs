@@ -217,12 +217,12 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true, "Didn't match recipe slot values");
                 DraggableToken.itemBeingDragged.ReturnToStartPosition();
 
-                var notifier = Registry.Retrieve<INotifier>();
+                var notifier = Registry.Get<INotifier>();
 
-                var compendium = Registry.Retrieve<ICompendium>();
+                var compendium = Registry.Get<ICompendium>();
 
                 if (notifier != null)
-                    notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+                    notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
             else if (stack.Quantity != 1) {
                 // We're dropping more than one?
@@ -371,7 +371,7 @@ namespace Assets.CS.TabletopUI {
             bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
             bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
-            Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
+            Registry.Get<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
 
         }
         /// <summary>

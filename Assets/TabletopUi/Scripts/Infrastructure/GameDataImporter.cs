@@ -344,7 +344,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
-            return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
+            return Registry.Get<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
         }
 
         private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopTokenContainer tabletop)

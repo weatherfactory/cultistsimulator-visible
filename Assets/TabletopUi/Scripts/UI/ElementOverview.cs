@@ -65,7 +65,7 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
     public void UpdateDisplay()
     {
         // now called from the notification chain in StacksCatalogue
-        var ttm = Registry.Retrieve<ITabletopManager>();
+        var ttm = Registry.Get<ITabletopManager>();
         var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)

@@ -34,7 +34,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         _elementStacksManager = new ElementStacksManager(this, "tabletop");
         _elementStacksManager.EnforceUniqueStacksInThisStackManager = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in
 
-        choreo = Registry.Retrieve<Choreographer>();
+        choreo = Registry.Get<Choreographer>();
         InitialiseListeners();
     }
 
@@ -85,7 +85,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     Vector2 GetFreeTokenPos(DraggableToken incumbent) {
-        var choreo = Registry.Retrieve<Choreographer>();
+        var choreo = Registry.Get<Choreographer>();
         var currentPos = incumbent.RectTransform.anchoredPosition;
 
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
@@ -139,7 +139,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // Situation windows get closed first, then details windows.
         if (DraggableToken.itemBeingDragged == null)
         {
-            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var tabletopManager = Registry.Get<ITabletopManager>();
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else
@@ -177,7 +177,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         }
 
         // Situations on Tabletop
-        var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+        var situations = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sit in situations)
 		{

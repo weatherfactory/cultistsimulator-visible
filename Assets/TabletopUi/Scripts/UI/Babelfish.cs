@@ -44,7 +44,7 @@ public class Babelfish : MonoBehaviour
 
     private void OnEnable()
     {
-		var concursum=Registry.Retrieve<Concursum>();
+		var concursum=Registry.Get<Concursum>();
             concursum.CultureChangedEvent.AddListener(OnCultureChanged);
             
         
@@ -52,7 +52,7 @@ public class Babelfish : MonoBehaviour
 
     private void OnDisable()
     {
-        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
 
 	}
 
@@ -63,7 +63,7 @@ public class Babelfish : MonoBehaviour
 
 	public virtual void OnCultureChanged(CultureChangedArgs args)
     {
-        var lm = Registry.Retrieve<LanguageManager>();
+        var lm = Registry.Get<LanguageManager>();
 
 
 		string fontscript;
@@ -74,7 +74,7 @@ public class Babelfish : MonoBehaviour
         else
             fontscript = args.NewCulture.FontScript;
 
-		TMP_FontAsset font = Registry.Retrieve<LanguageManager>().GetFont( fontStyle, fontscript);
+		TMP_FontAsset font = Registry.Get<LanguageManager>().GetFont( fontStyle, fontscript);
 		if (font != null)
 		{
 			tmpText.font = font;
@@ -82,7 +82,7 @@ public class Babelfish : MonoBehaviour
 
         // If using a specific font material, map the material to the
         // appropriate font texture atlas, then set the font asset's material.
-		Material fontMaterial = Registry.Retrieve<LanguageManager>().GetFontMaterial( fontStyle );
+		Material fontMaterial = Registry.Get<LanguageManager>().GetFontMaterial( fontStyle );
         if (fontMaterial != null)
         {
             fontMaterial.SetTexture("_MainTex", tmpText.font.material.mainTexture);
@@ -101,8 +101,8 @@ public class Babelfish : MonoBehaviour
 
 			if (TabletopManager.GetHighContrast())
 			{
-				Color light = Registry.Retrieve<LanguageManager>().highContrastLight;
-				Color dark = Registry.Retrieve<LanguageManager>().highContrastDark;
+				Color light = Registry.Get<LanguageManager>().highContrastLight;
+				Color dark = Registry.Get<LanguageManager>().highContrastDark;
 				light.a = 1.0f;	// ensure color is opaque
 				dark.a = 1.0f;
 				tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;

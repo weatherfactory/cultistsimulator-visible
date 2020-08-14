@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -95,7 +96,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             FadeToBlack(fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
 
-            SceneManager.LoadScene(SceneNumber.EndScene);
+            Registry.Get<StageHand>().SceneChange(SceneNumber.EndScene);
+
         }
 
         GameObject InstantiateEffect(string effectName, Transform token) {

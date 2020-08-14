@@ -77,7 +77,6 @@ public class MenuScreenController : MonoBehaviour {
 
     bool canTakeInput;
     int sceneToLoad;
-	private string cultureContentLoaded = "none";	// Used to track which culture we have got loaded. If language changes on the Menu screen, we must re-import the content.
     VersionNumber currentVersion;
     CanvasGroupFader currentOverlay;
 
@@ -159,7 +158,7 @@ public class MenuScreenController : MonoBehaviour {
         Invoke("UpdateAndShowMenu", 0.1f);
 
 
-        var concursum = Registry.Retrieve<Concursum>();
+        var concursum = Registry.Get<Concursum>();
 
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
@@ -218,7 +217,7 @@ public class MenuScreenController : MonoBehaviour {
 
 		optionsPanel.InitPreferences(null,false);
 
-        saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+        saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
         currentVersion = metaInfo.VersionNumber;
 
@@ -247,7 +246,7 @@ public class MenuScreenController : MonoBehaviour {
         if (isLegalSaveGame)
         {
             string possibleLegacy = saveGameManager.GetLegacyIdFromSavedGame();
-            var legacy = Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(possibleLegacy);
+            var legacy = Registry.Get<ICompendium>().GetEntityById<Legacy>(possibleLegacy);
             if (legacy != null)
                 Subtitle.SetText(legacy.Label);
         }
@@ -335,9 +334,9 @@ public class MenuScreenController : MonoBehaviour {
             return;
 		
         // Set the legacy to the first in the list; this should be the starting legacy
-        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>().First());
+        CrossSceneState.SetChosenLegacy(Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First());
         // Load directly into the game scene, no legacy select
-        LoadScene(SceneNumber.GameScene);
+        LoadScene(SceneNumber.TabletopScene);
     }
 
     public void ContinueGame()
@@ -347,7 +346,7 @@ public class MenuScreenController : MonoBehaviour {
 		
         if (saveGameManager.IsSavedGameActive()) {
             //back into the game!
-            LoadScene(SceneNumber.GameScene);
+            LoadScene(SceneNumber.TabletopScene);
             return;
         }
 
@@ -375,7 +374,7 @@ public class MenuScreenController : MonoBehaviour {
         canTakeInput = false;
         sceneToLoad = sceneNr;
 
-		if (sceneToLoad == SceneNumber.GameScene)
+		if (sceneToLoad == SceneNumber.TabletopScene)
 			SoundManager.PlaySfx("UIStartGame");
 
         FadeOut();
@@ -383,7 +382,7 @@ public class MenuScreenController : MonoBehaviour {
     }
 
     void LoadSceneDelayed() {
-        SceneManager.LoadScene(sceneToLoad);
+        Registry.Get<StageHand>().SceneChange(sceneToLoad);
     }
 
     public void TryPurgeSave() {
@@ -406,9 +405,9 @@ public class MenuScreenController : MonoBehaviour {
     public void BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(string legacyId)
     {
         saveGameManager.DeleteCurrentSave();
-        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(legacyId));
+        CrossSceneState.SetChosenLegacy(Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId));
         // Load directly into the game scene, no legacy select
-        LoadScene(SceneNumber.GameScene);
+        LoadScene(SceneNumber.TabletopScene);
     }
 
     public void ShowCredits() {
@@ -438,9 +437,9 @@ public class MenuScreenController : MonoBehaviour {
 		if (!canTakeInput)
 			return;
 
-        var culture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(lang_code);
+        var culture = Registry.Get<ICompendium>().GetEntityById<Culture>(lang_code);
 
-        Registry.Retrieve<Concursum>().SetNewCulture(culture);
+        Registry.Get<Concursum>().SetNewCulture(culture);
 
         HideCurrentOverlay();
 	}
@@ -482,7 +481,7 @@ public class MenuScreenController : MonoBehaviour {
         foreach (Transform legacyStartEntry in legacyStartEntries)
             Destroy(legacyStartEntry.gameObject);
 
-        var legacies = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>();
+        var legacies = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>();
 
         var newStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
@@ -555,12 +554,12 @@ public class MenuScreenController : MonoBehaviour {
 
 
 
-        foreach (var culture in Registry.Retrieve<ICompendium>().GetEntitiesAsList<Culture>())
+        foreach (var culture in Registry.Get<ICompendium>().GetEntitiesAsList<Culture>())
         {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = Registry.Retrieve<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
+            languageChoice.Label.font = Registry.Get<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

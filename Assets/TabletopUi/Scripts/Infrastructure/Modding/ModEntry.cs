@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             uploadButton.onClick.AddListener(UploadModToStorefront);
             activationToggleButton.onClick.AddListener(ToggleActivation);
-            var concursum = Registry.Retrieve<Concursum>();
+            var concursum = Registry.Get<Concursum>();
 
             concursum.ModOperationEvent.AddListener(ModOperationEvent);
 
@@ -84,7 +84,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         {
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
             activationToggleBabel.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
-            activationToggleText.text = Registry.Retrieve<LanguageManager>().Get(newLabel);
+            activationToggleText.text = Registry.Get<LanguageManager>().Get(newLabel);
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
             description.color = newColor;
@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public void ToggleActivation()
         {
-            var modManager = Registry.Retrieve<ModManager>();
+            var modManager = Registry.Get<ModManager>();
 
             //can't enable two mods with the same name - this would usually be both a local and a Steam version
             if (!_mod.Enabled && modManager.GetEnabledMods().ToList().Exists(m => m.Name == _mod.Name))
@@ -106,7 +106,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         public void SetUploadButtonState()
         {
-            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
             uploadButton.interactable = true;
 
             if (_mod.ModInstallType != ModInstallType.Local || !storefrontServicesProvider.IsAvailable(StoreClient.Steam) )
@@ -121,13 +121,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.SetLocLabel("UI_UPLOAD");
-                uploadText.text = Registry.Retrieve<LanguageManager>().Get("UI_UPLOAD");
+                uploadText.text = Registry.Get<LanguageManager>().Get("UI_UPLOAD");
             }
             else
             {
                 uploadButton.gameObject.SetActive(true);
                 uploadBabel.SetLocLabel("UI_UPDATE");
-                uploadText.text = Registry.Retrieve<LanguageManager>().Get("UI_UPDATE");
+                uploadText.text = Registry.Get<LanguageManager>().Get("UI_UPDATE");
                 
             }
 
@@ -137,7 +137,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public async void UploadModToStorefront()
         {
 
-            var concursum = Registry.Retrieve<Concursum>();
+            var concursum = Registry.Get<Concursum>();
 
             if (!File.Exists(_mod.PreviewImageFilePath))
             {
@@ -145,14 +145,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                 return;
             }
 
-            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
 
             uploadText.text = "...";
 
             concursum.ShowNotification(new NotificationArgs { Title = "Uploading...", Description = "'I will meditate on the triumph of patience over strength.' Please wait a few moments for your files to upload." });
             uploadButton.interactable = false;
 
-            var publishedFileId = Registry.Retrieve<ModManager>().GetPublishedFileIdForMod(_mod);
+            var publishedFileId = Registry.Get<ModManager>().GetPublishedFileIdForMod(_mod);
 
             
 
@@ -165,7 +165,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         private string GetPublishedFileIdForThisMod()
         {
 
-            var modManager = Registry.Retrieve<ModManager>();
+            var modManager = Registry.Get<ModManager>();
             string publishedFileId = modManager.GetPublishedFileIdForMod(_mod);
             return publishedFileId;
         }
@@ -175,7 +175,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             if (modOperationArgs.Mod.Name != _mod.Name)
                 return;
 
-            var modManager = Registry.Retrieve<ModManager>();
+            var modManager = Registry.Get<ModManager>();
 
             
 
@@ -192,7 +192,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             notificationArgs.Title = "Serapeum Response";
             notificationArgs.Description = modOperationArgs.Message;
 
-            var concursum = Registry.Retrieve<Concursum>();
+            var concursum = Registry.Get<Concursum>();
             concursum.ShowNotification(notificationArgs);
 
 

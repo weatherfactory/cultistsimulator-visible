@@ -160,7 +160,7 @@ namespace Assets.Logic
         private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent,
             IDice dice)
         {
-            ICompendium _compendium = Registry.Retrieve<ICompendium>();
+            ICompendium _compendium = Registry.Get<ICompendium>();
 
             foreach (var eachStack in stacksManager.GetStacks())
             {

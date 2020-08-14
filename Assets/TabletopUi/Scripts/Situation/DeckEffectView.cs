@@ -40,7 +40,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Registry.Retrieve<INotifier>().ShowDeckDetails(deckSpec, quantity);
+        Registry.Get<INotifier>().ShowDeckDetails(deckSpec, quantity);
     }
 
 

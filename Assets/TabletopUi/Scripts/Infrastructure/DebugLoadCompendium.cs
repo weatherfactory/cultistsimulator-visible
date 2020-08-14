@@ -22,7 +22,7 @@ public class DebugLoadCompendium : MonoBehaviour
         var compendium = new Compendium();
         var contentImporter = new CompendiumLoader();
         var messages =
-            contentImporter.PopulateCompendium(compendium, Registry.Retrieve<Concursum>().GetCurrentCultureId());
+            contentImporter.PopulateCompendium(compendium, Registry.Get<Concursum>().GetCurrentCultureId());
        foreach (var m in messages.GetMessages())
            NoonUtility.Log(m.Description, m.MessageLevel);
 

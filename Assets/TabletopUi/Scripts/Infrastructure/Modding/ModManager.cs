@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     public void CatalogueMods()
         {
 
-            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+            var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
 
              _cataloguedMods.Clear();
 
@@ -259,8 +259,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
             
             var compendiumLoader = new CompendiumLoader();
-            var existingCompendium = Registry.Retrieve<ICompendium>();
-            compendiumLoader.PopulateCompendium(existingCompendium, Registry.Retrieve<Concursum>().GetCurrentCultureId());
+            var existingCompendium = Registry.Get<ICompendium>();
+            compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Concursum>().GetCurrentCultureId());
             var modToAlter= _cataloguedMods[modId];
 
        

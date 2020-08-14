@@ -17,9 +17,9 @@ public class StatusBar : MonoBehaviour
 
     public void ChangeCharacterName(string newName)
     {
-        Character currentCharacter = Registry.Retrieve<Character>();
+        Character currentCharacter = Registry.Get<Character>();
         
-        Chronicler chronicler = Registry.Retrieve<Chronicler>();
+        Chronicler chronicler = Registry.Get<Chronicler>();
         if(currentCharacter.Name!=newName)
         { 
             chronicler.CharacterNameChanged(newName);

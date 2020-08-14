@@ -82,9 +82,9 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     public void OnPointerClick(PointerEventData eventData) {
         if(_elementStackToken!=null)
-            Registry.Retrieve<INotifier>().ShowCardElementDetails(_aspect, _elementStackToken);
+            Registry.Get<INotifier>().ShowCardElementDetails(_aspect, _elementStackToken);
         else
-            Registry.Retrieve<INotifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
+            Registry.Get<INotifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
     }
 
     public Vector3 GetNotificationPosition()

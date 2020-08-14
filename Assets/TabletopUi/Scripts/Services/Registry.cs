@@ -18,7 +18,7 @@ namespace Assets.CS.TabletopUI
 
         private static readonly Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
-        public static T Retrieve<T>() where T: class
+        public static T Get<T>() where T: class
         {
 
             if (!registered.ContainsKey(typeof(T)))

@@ -338,7 +338,7 @@ public class OptionsPanel : MonoBehaviour {
         if(restartButton.AttemptRestart())
         {
 
-        Registry.Retrieve<ITabletopManager>().RestartGame();
+        Registry.Get<ITabletopManager>().RestartGame();
         ToggleVisibility();
         }
     }
@@ -348,20 +348,20 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
 
-        var tabletopManager = Registry.Retrieve<ITabletopManager>();
+        var tabletopManager = Registry.Get<ITabletopManager>();
         tabletopManager.SetPausedState(true);
         StartCoroutine(tabletopManager.SaveGameAsync(true, callback: success =>
         {
 	        if (success)
 	        {
-		        SceneManager.LoadScene(SceneNumber.MenuScene);
-	        }
+                Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+            }
 	        else
 	        {
 		        // Save failed, need to let player know there's an issue
 		        // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
 		        ToggleVisibility();
-		        Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+		        Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
 	        }
         }));
 	}
@@ -369,7 +369,7 @@ public class OptionsPanel : MonoBehaviour {
 	// Leave game without saving
 	public void AbandonGame()
 	{
-	    SceneManager.LoadScene(SceneNumber.MenuScene);
+        Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
     }
 
     public void BrowseFiles()
@@ -380,13 +380,13 @@ public class OptionsPanel : MonoBehaviour {
 	    {
 		    if (_isInGame)
 		    {
-			    StartCoroutine(Registry.Retrieve<ITabletopManager>().SaveGameAsync(true, callback: success =>
+			    StartCoroutine(Registry.Get<ITabletopManager>().SaveGameAsync(true, callback: success =>
 			    {
 				    // If a game is active, try to save it, showing an error if that fails
 				    if (!success)
 				    {
 					    ToggleVisibility();
-					    Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+					    Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
 					    OpenInFileBrowser.Open(savePath);
 				    }
 			    }));
@@ -417,15 +417,15 @@ public class OptionsPanel : MonoBehaviour {
 	public void SaveErrorContinue()
 	{
 		// Just close window and resume play
-		Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError( false );
+		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError( false );
 	}
 
 	public void SaveErrorReload()
 	{
 		// Reload last good savegame
-		Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
+		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
 
-		Registry.Retrieve<ITabletopManager>().LoadGame();
+		Registry.Get<ITabletopManager>().LoadGame();
 	}
 
     // public button events
@@ -580,11 +580,11 @@ public class OptionsPanel : MonoBehaviour {
 
         // Inspect time
         inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NOTIFICATIONTIME)) +
-                                         Registry.Retrieve<LanguageManager>().Get("UI_SECONDS_POSTFIX");
+                                         Registry.Get<LanguageManager>().Get("UI_SECONDS_POSTFIX");
 
         // Autosave
 
-        autosaveSliderValue.text = mins + Registry.Retrieve<LanguageManager>().Get("UI_MINUTES_POSTFIX");
+        autosaveSliderValue.text = mins + Registry.Get<LanguageManager>().Get("UI_MINUTES_POSTFIX");
 
         // Snap grid
         int snap = Mathf.RoundToInt(PlayerPrefs.GetFloat(GRIDSNAPSIZE));
@@ -592,43 +592,43 @@ public class OptionsPanel : MonoBehaviour {
         {
             default:
             case 0:
-                snapGridSliderValue.text = Registry.Retrieve<LanguageManager>().Get("UI_SNAP_0");
+                snapGridSliderValue.text = Registry.Get<LanguageManager>().Get("UI_SNAP_0");
                 break;
             case 1:
-                snapGridSliderValue.text = Registry.Retrieve<LanguageManager>().Get("UI_SNAP_1");
+                snapGridSliderValue.text = Registry.Get<LanguageManager>().Get("UI_SNAP_1");
                 break;
             case 2:
-                snapGridSliderValue.text = Registry.Retrieve<LanguageManager>().Get("UI_SNAP_2");
+                snapGridSliderValue.text = Registry.Get<LanguageManager>().Get("UI_SNAP_2");
                 break;
             case 3:
-                snapGridSliderValue.text = Registry.Retrieve<LanguageManager>().Get("UI_SNAP_3");
+                snapGridSliderValue.text = Registry.Get<LanguageManager>().Get("UI_SNAP_3");
                 break;
         }
 
         // Bird/worm
         birdWormSliderValue.text =
-            Registry.Retrieve<LanguageManager>().Get(PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER) > 0 ? "UI_WORM" : "UI_BIRD");
+            Registry.Get<LanguageManager>().Get(PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER) > 0 ? "UI_WORM" : "UI_BIRD");
 
         // High Contrast
         contrastSliderValue.text =
-            Registry.Retrieve<LanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF");
+            Registry.Get<LanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF");
 
         // Accessible Cards
         accessibleCardsSliderValue.text =
-            Registry.Retrieve<LanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF");
+            Registry.Get<LanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF");
 
         if (!_isInGame)
         {
         
 
        resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
-	    windowedValue.text = Registry.Retrieve<LanguageManager>().Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
+	    windowedValue.text = Registry.Get<LanguageManager>().Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
 	        int graphicsLevel =  PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
 	        switch (graphicsLevel)
 	        {
-	            case 1:		graphicsLevelValue.text = Registry.Retrieve<LanguageManager>().Get( "GRAPHICS_LEVEL_1" ); break;
-	            case 2:		graphicsLevelValue.text = Registry.Retrieve<LanguageManager>().Get( "GRAPHICS_LEVEL_2" ); break;
-	            case 3:		graphicsLevelValue.text = Registry.Retrieve<LanguageManager>().Get( "GRAPHICS_LEVEL_3" ); break;
+	            case 1:		graphicsLevelValue.text = Registry.Get<LanguageManager>().Get( "GRAPHICS_LEVEL_1" ); break;
+	            case 2:		graphicsLevelValue.text = Registry.Get<LanguageManager>().Get( "GRAPHICS_LEVEL_2" ); break;
+	            case 3:		graphicsLevelValue.text = Registry.Get<LanguageManager>().Get( "GRAPHICS_LEVEL_3" ); break;
 	        }
 
         }
@@ -720,7 +720,7 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
 
-		var tabletopManager = Registry.Retrieve<ITabletopManager>();
+		var tabletopManager = Registry.Get<ITabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );
     }
 
@@ -732,7 +732,7 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
 
-		var tabletopManager = Registry.Retrieve<ITabletopManager>();
+		var tabletopManager = Registry.Get<ITabletopManager>();
 		tabletopManager.SetGridSnapSize( value );
     }
 

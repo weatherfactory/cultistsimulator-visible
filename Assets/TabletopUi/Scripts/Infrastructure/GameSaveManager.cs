@@ -75,8 +75,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public IEnumerator<bool?> SaveActiveGameAsync(TabletopTokenContainer tabletop, Character character, bool forceBadSave = false, int index = 0)
         {
 	        var allStacks = tabletop.GetElementStacksManager().GetStacks();
-            var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-            var metaInfo = Registry.Retrieve<MetaInfo>();
+            var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+            var metaInfo = Registry.Get<MetaInfo>();
             var allDecks = character.DeckInstances;
 
 			Debug.Assert( currentSituationControllers.Count > 0, "No situation controllers!" );
@@ -255,7 +255,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Analytics.CustomEvent("autosave_corrupt_notified");
                 
             // Pop up warning message
-            Registry.Retrieve<INotifier>().ShowSaveError(true);
+            Registry.Get<INotifier>().ShowSaveError(true);
             saveErrorWarningTriggered = true;
         }
 

@@ -63,7 +63,7 @@ public class LanguageManager : MonoBehaviour
 		FixFontStyleSlots();
         // force invariant culture to fix Linux save file issues
 		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-        var concursum = Registry.Retrieve<Concursum>();
+        var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.AddListener(OnCultureChanged);
 
     }
@@ -142,8 +142,8 @@ public class LanguageManager : MonoBehaviour
 
     public string Get(string id)
     {
-        var compendium = Registry.Retrieve<ICompendium>();
-        var conc = Registry.Retrieve<Concursum>();
+        var compendium = Registry.Get<ICompendium>();
+        var conc = Registry.Get<Concursum>();
 
         var currentCulture = compendium.GetEntityById<Culture>(conc.GetCurrentCultureId());
 

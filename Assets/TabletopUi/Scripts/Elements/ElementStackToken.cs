@@ -250,7 +250,7 @@ namespace Assets.CS.TabletopUI {
                 return new AspectsDictionary();
 
 
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 			if (!tabletop._enableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
@@ -318,7 +318,7 @@ namespace Assets.CS.TabletopUI {
             if (_illuminateLibrarian == null)
                 _illuminateLibrarian = new IlluminateLibrarian();
             if (CurrentStacksManager == null)
-                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                CurrentStacksManager = Registry.Get<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
             //when first created, it should be in Limbo
         }
 
@@ -332,7 +332,7 @@ namespace Assets.CS.TabletopUI {
         /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source)
 		{
-            _element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(elementId);
+            _element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
             if (_element==null)
 			{
 				NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
@@ -342,7 +342,7 @@ namespace Assets.CS.TabletopUI {
 
             InitialiseIfStackIsNew();
 
-            IGameEntityStorage character = Registry.Retrieve<Character>();
+            IGameEntityStorage character = Registry.Get<Character>();
             var dealer = new Dealer(character);
             if (_element.Unique)
                 dealer.IndicateUniqueCardManifested(_element.Id);
@@ -429,7 +429,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
 			{
-                var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+                var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
@@ -457,12 +457,12 @@ namespace Assets.CS.TabletopUI {
 				}
 			}
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false, stackBothSides);	// Never push other cards aside - CP
         }
 
 		public Vector2 GetDropZoneSpawnPos()
 		{
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 			var stackManager = tabletop._tabletop.GetElementStacksManager();
 			var existingStacks = stackManager.GetStacks();
 
@@ -486,7 +486,7 @@ namespace Assets.CS.TabletopUI {
 
 			if (dropZoneObject != null)	// Position card near dropzone
 			{
-				spawnPos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
+				spawnPos = Registry.Get<Choreographer>().GetTablePosForWorldPos(dropZoneObject.transform.position + dropZoneOffset);
 			}
 			
 			return spawnPos;	
@@ -494,7 +494,7 @@ namespace Assets.CS.TabletopUI {
 
 		private DraggableToken CreateDropZone()
 		{
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
 			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
 			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
@@ -537,7 +537,7 @@ namespace Assets.CS.TabletopUI {
 			// Now create an instance of the dropzone prefab parented to this card
 			// This way any unused references are still pointing at the original card data, so no risk of null refs.
 			// It's a bit hacky, but it's now a live project so refactoring the entire codebase to make it safe is high-risk.
-			TabletopManager tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			TabletopManager tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 
 			GameObject zoneobj = GameObject.Instantiate( tabletop._dropZoneTemplate, transform );
 			Transform newcard = zoneobj.transform.Find( "Card" );
@@ -614,10 +614,10 @@ namespace Assets.CS.TabletopUI {
 			if (Defunct)
 				return false;
 
-            var hlc = Registry.Retrieve<HighlightLocationsController>();
+            var hlc = Registry.Get<HighlightLocationsController>();
             hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+            var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
@@ -733,7 +733,7 @@ namespace Assets.CS.TabletopUI {
 
 			// Compile list of valid slots
 			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
-			var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+			var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 			foreach(TabletopUi.SituationController situ in registeredSits)
 			{
 				if (situ.SituationClock.State != SituationState.Complete)
@@ -782,7 +782,7 @@ namespace Assets.CS.TabletopUI {
 					else
 					{
 						//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
-						var choreo = Registry.Retrieve<Choreographer>();
+						var choreo = Registry.Get<Choreographer>();
 						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
 						choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
 						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone,SEND_STACK_TO_SLOT_DURATION);
@@ -794,7 +794,7 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			base.OnPointerEnter(eventData);
-			var tabletopManager = Registry.Retrieve<ITabletopManager>();
+			var tabletopManager = Registry.Get<ITabletopManager>();
 			if (isFront)
 				tabletopManager.SetHighlightedElement(EntityId, Quantity);
 			else
@@ -803,7 +803,7 @@ namespace Assets.CS.TabletopUI {
             if (DraggableToken.itemBeingDragged==null)
             { 
                 //Display any HighlightLocations tagged for this element, unless we're currently dragging something else
-                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                var hlc = Registry.Get<HighlightLocationsController>();
                 hlc.ActivateOnlyMatchingHighlightLocation(_element.Id);
             }
         }
@@ -811,12 +811,12 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			base.OnPointerExit(eventData);
-			Registry.Retrieve<ITabletopManager>().SetHighlightedElement(null);
+			Registry.Get<ITabletopManager>().SetHighlightedElement(null);
 
             //Display any HighlightLocations tagged for this element
             if(DraggableToken.itemBeingDragged!=this)
             { 
-                var hlc = Registry.Retrieve<HighlightLocationsController>();
+                var hlc = Registry.Get<HighlightLocationsController>();
                 hlc.DeactivateMatchingHighlightLocation(_element.Id);
             }
         }
@@ -838,7 +838,7 @@ namespace Assets.CS.TabletopUI {
 				singleClickPending = true;
 
 			    // Add the element name to the debug panel if it's active
-			    Registry.Retrieve<DebugTools>().SetInput(_element.Id);
+			    Registry.Get<DebugTools>().SetInput(_element.Id);
 
 
                 if (isFront)
@@ -855,7 +855,7 @@ namespace Assets.CS.TabletopUI {
 						else
 						{
                             //we need it here as well as on OnPointerEnter because otherwise if you grab and drag it quickly, it can fail to show up because the pointer overtakes the card
-                            var hlc = Registry.Retrieve<HighlightLocationsController>();
+                            var hlc = Registry.Get<HighlightLocationsController>();
                             hlc.DeactivateMatchingHighlightLocation(_element.Id);
                             OnBeginDrag( eventData );
 						}
@@ -925,7 +925,7 @@ namespace Assets.CS.TabletopUI {
 
             if (stackDroppedOn.Decays)
 			{
-                notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_CANTMERGE"), Registry.Retrieve<LanguageManager>().Get("UI_DECAYS"), false);
+                notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_CANTMERGE"), Registry.Get<LanguageManager>().Get("UI_DECAYS"), false);
             }
         }
 
@@ -1032,7 +1032,7 @@ namespace Assets.CS.TabletopUI {
                 // We're dragging this thing? Then return it?
                 if (DraggableToken.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos
-                    lastTablePos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(transform.position);
+                    lastTablePos = Registry.Get<Choreographer>().GetTablePosForWorldPos(transform.position);
                     // Then cancel our drag, which will return us to our new pos
                     DraggableToken.CancelDrag();
                 }
@@ -1100,7 +1100,7 @@ namespace Assets.CS.TabletopUI {
         // Public so TokenWindow can access this
         public string GetCardDecayTime()
 		{
-			return Registry.Retrieve<LanguageManager>().GetTimeStringForCurrentLanguage( LifetimeRemaining );
+			return Registry.Get<LanguageManager>().GetTimeStringForCurrentLanguage( LifetimeRemaining );
         }
 
         public void SetCardDecay(float percentage)

@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new CompendiumLoader();
-            contentImporter.PopulateCompendium(compendium, Registry.Retrieve<Concursum>().GetCurrentCultureId());
+            contentImporter.PopulateCompendium(compendium, Registry.Get<Concursum>().GetCurrentCultureId());
 
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);
@@ -101,10 +101,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 		void ReturnToMenuDelayed() {
-			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 			saveGameManager.SaveInactiveGame(null);
-			SceneManager.LoadScene(SceneNumber.MenuScene);
-		}
+			Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+        }
 
 		public void StartGame() {
 			if (!canInteract)
@@ -119,7 +119,8 @@ namespace Assets.CS.TabletopUI {
 		void StartGameDelayed() {
 			CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
 			CrossSceneState.ClearEnding();
-			SceneManager.LoadScene(SceneNumber.GameScene);
+            Registry.Get<StageHand>().SceneChange(SceneNumber.TabletopScene);
+
 		}
 
 		public void SelectLegacy(int legacy) {
@@ -167,7 +168,7 @@ namespace Assets.CS.TabletopUI {
             if (legacySelected.FromEnding == ending.Id)
 			{
                 //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
-				availableBecause.text = Registry.Retrieve<LanguageManager>().Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + Registry.Retrieve<LanguageManager>().Get("LEGACY_BECAUSE_POSTFIX");
+				availableBecause.text = Registry.Get<LanguageManager>().Get("LEGACY_BECAUSE_PREFIX") + ending.Label.ToUpper() + Registry.Get<LanguageManager>().Get("LEGACY_BECAUSE_POSTFIX");
 			}
             else
 			{

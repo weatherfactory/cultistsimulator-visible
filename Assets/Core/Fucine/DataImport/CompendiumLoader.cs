@@ -61,7 +61,7 @@ public class CompendiumLoader
         List<DataFileLoader> modContentLoaders=new List<DataFileLoader>();
         List<DataFileLoader> modLocLoaders=new List<DataFileLoader>();
 
-        var modManager = Registry.Retrieve<ModManager>();
+        var modManager = Registry.Get<ModManager>();
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetEnabledMods())
         {
@@ -135,7 +135,7 @@ public class CompendiumLoader
 
         
         //notify the rest of the application that content has been updated
-        var concursum = Registry.Retrieve<Concursum>();
+        var concursum = Registry.Get<Concursum>();
         concursum.ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Loaded compendium content."});
 
 

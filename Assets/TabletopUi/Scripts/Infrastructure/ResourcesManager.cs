@@ -132,7 +132,7 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            Registry.Retrieve<Concursum>().GetCurrentCultureId(),
+            Registry.Get<Concursum>().GetCurrentCultureId(),
         false);
 
     }
@@ -175,7 +175,7 @@ public class ResourcesManager: MonoBehaviour
         var spritePath = Path.Combine("images", folder, file);
 
         // Try to find the image in a mod first, in case it overrides an existing one
-        var modManager = Registry.Retrieve<ModManager>();
+        var modManager = Registry.Get<ModManager>();
         var modSprite = modManager.GetSprite(spritePath);
         if (modSprite != null)
         {
@@ -201,7 +201,7 @@ public class ResourcesManager: MonoBehaviour
                 NoonConstants.LOC_FOLDER_TEMPLATE.Replace(NoonConstants.LOC_TOKEN, cultureId), file);
 
             // Try to find the image in a mod first, in case it overrides an existing one
-            var modManager = Registry.Retrieve<ModManager>();
+            var modManager = Registry.Get<ModManager>();
             spriteToReturn = modManager.GetSprite(spritePath);
             if (spriteToReturn != null)
             {

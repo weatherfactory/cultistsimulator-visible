@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             // Display face-up card next to door
 
-            var character=Registry.Retrieve<Character>();
+            var character=Registry.Get<Character>();
             var dealer=new Dealer(character);
 
             string doorDeckId = activeDoor.GetDeckName(0);
@@ -180,13 +180,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void HideMansusMap(Transform effectCenter, IElementStack stack)
         {
-            Registry.Retrieve<ITabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
+            Registry.Get<ITabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }
 
 
 //not currently in use, preserve for quick debug
         public void CloseMap() {
-            Registry.Retrieve<ITabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
+            Registry.Get<ITabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
         }
     }
 }

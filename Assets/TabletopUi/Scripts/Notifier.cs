@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI {
 			saveErrorWindow.gameObject.SetActive(false);
 			saveDeniedWindow.gameObject.SetActive(false);
 
-            Registry.Retrieve<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
+            Registry.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
 
         }
 

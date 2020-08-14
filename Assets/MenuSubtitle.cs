@@ -14,7 +14,7 @@ public class MenuSubtitle : MonoBehaviour
     {
 		Babelfish fish = SubtitleText.gameObject.GetComponent<Babelfish>();
 		if (fish)
-		{
+		{ 
 			fish.SetLocLabel( text );
 		}
 		fish = SubtitleTextShadow.gameObject.GetComponent<Babelfish>();

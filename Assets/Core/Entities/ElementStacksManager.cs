@@ -32,12 +32,12 @@ public class ElementStacksManager : IElementStacksManager {
         _tokenContainer = container;
 
         _stacks = new List<IElementStack>();
-        _catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        _catalogue = Registry.Get<StackManagersCatalogue>();
         _catalogue.RegisterStackManager(this);
     }
 
     public void Deregister() {
-        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        var catalogue = Registry.Get<StackManagersCatalogue>();
         if (catalogue != null)
             catalogue.DeregisterStackManager(this);
     }

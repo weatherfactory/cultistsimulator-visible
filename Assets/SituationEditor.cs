@@ -54,7 +54,7 @@ public class SituationEditor : MonoBehaviour
 
     private bool CheckForIssues(string elementId)
     {
-        var element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(elementId);
+        var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
 
         if (element == null)
         {

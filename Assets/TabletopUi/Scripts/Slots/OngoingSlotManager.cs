@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI {
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
-			countdownText.text = Registry.Retrieve<LanguageManager>().GetTimeStringForCurrentLanguage( timeRemaining );
+			countdownText.text = Registry.Get<LanguageManager>().GetTimeStringForCurrentLanguage( timeRemaining );
             countdownText.richText = true;
         }
 
@@ -96,7 +96,7 @@ namespace Assets.CS.TabletopUI {
             Element element;
 
             foreach (var stack in stacks) {
-                element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(stack.EntityId);
+                element = Registry.Get<ICompendium>().GetEntityById<Element>(stack.EntityId);
 
                 if(!element.IsHidden)
                 { 
@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI {
 
             // Populate those we need
             foreach (var item in deckEffects) {
-                deckSpec = Registry.Retrieve<ICompendium>().GetEntityById<DeckSpec>(item.Key);
+                deckSpec = Registry.Get<ICompendium>().GetEntityById<DeckSpec>(item.Key);
                 deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;

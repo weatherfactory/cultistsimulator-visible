@@ -73,7 +73,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
       public void NotifyStacksChanged()
       {
-          var ttm = Registry.Retrieve<ITabletopManager>();
+          var ttm = Registry.Get<ITabletopManager>();
           var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
 
           foreach(var hl in highlightLocations)

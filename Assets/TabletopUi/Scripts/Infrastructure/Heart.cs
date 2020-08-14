@@ -82,7 +82,7 @@ public class Heart : MonoBehaviour
         {
             beatCounter = 0;
 
-            outstandingSlotsToFill = Registry.Retrieve<ITabletopManager>()
+            outstandingSlotsToFill = Registry.Get<ITabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
     }
@@ -90,7 +90,7 @@ public class Heart : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        var saveTask = Registry.Retrieve<ITabletopManager>().SaveGameAsync(true);
+        var saveTask = Registry.Get<ITabletopManager>().SaveGameAsync(true);
         while (saveTask.MoveNext())
         {
         }
@@ -100,8 +100,8 @@ public class Heart : MonoBehaviour
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        var tabletopManager = Registry.Retrieve<ITabletopManager>();
-        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+        var tabletopManager = Registry.Get<ITabletopManager>();
+        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sc in situationControllers)
         {

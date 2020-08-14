@@ -25,13 +25,13 @@ public class BabelfishFilter : MonoBehaviour
 
     private void OnEnable()
     {
-        Registry.Retrieve<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+        Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
 
     }
 
     private void OnDisable()
     {
-        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
 
     }
 

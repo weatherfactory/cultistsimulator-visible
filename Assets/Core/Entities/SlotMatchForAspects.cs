@@ -28,13 +28,13 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += Registry.Retrieve<LanguageManager>().Get("UI_ASPECTSFORBIDDEN") + problemAspects;
+                description += Registry.Get<LanguageManager>().Get("UI_ASPECTSFORBIDDEN") + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += Registry.Retrieve<LanguageManager>().Get("UI_ASPECTSREQUIRED") + problemAspects;
+                description += Registry.Get<LanguageManager>().Get("UI_ASPECTSREQUIRED") + problemAspects;
             }
 
             return description;
@@ -46,10 +46,10 @@ namespace Assets.Core.Entities
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += Registry.Retrieve<LanguageManager>().Get("UI_OR");
+                    problemAspects += Registry.Get<LanguageManager>().Get("UI_OR");
                 problemAspects += compendium.GetEntityById<Element>(problemAspectId).Label;
             }
-			problemAspects += Registry.Retrieve<LanguageManager>().Get("UI_FULLSTOP");
+			problemAspects += Registry.Get<LanguageManager>().Get("UI_FULLSTOP");
             return problemAspects;
         }
     }

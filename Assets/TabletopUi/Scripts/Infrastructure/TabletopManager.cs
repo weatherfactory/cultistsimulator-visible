@@ -267,9 +267,9 @@ namespace Assets.CS.TabletopUI {
             if (chosenLegacy == null)
             {
                 NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
-                chosenLegacy = Registry.Retrieve<ICompendium>().GetEntitiesAsList<Legacy>().First();
+                chosenLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
                 CrossSceneState.SetChosenLegacy(chosenLegacy);
-                Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
+                Registry.Get<Character>() .ActiveLegacy = chosenLegacy;
             }
 
             if (CrossSceneState.GameState == GameState.Restarting)
@@ -279,7 +279,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
                 bool isSaveCorrupted = false;
                 bool shouldContinueGame;
                 try
@@ -319,8 +319,8 @@ namespace Assets.CS.TabletopUI {
         {
             SetupNewBoard(builder);
             var populatedCharacter =
-                Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
-            Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
+                Registry.Get<Character>(); //should just have been set above, but let's keep this clean
+            Registry.Get<ICompendium>().SupplyLevers(populatedCharacter);
             CrossSceneState.RestartedGame();
         }
 
@@ -334,7 +334,7 @@ namespace Assets.CS.TabletopUI {
 
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
-            intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Retrieve<SituationsCatalogue>());
+            intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Get<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
 
@@ -365,7 +365,7 @@ namespace Assets.CS.TabletopUI {
         {
 
 
-            ICompendium compendium = Registry.Retrieve<ICompendium>();
+            ICompendium compendium = Registry.Get<ICompendium>();
 
 
             Character character;
@@ -434,15 +434,15 @@ namespace Assets.CS.TabletopUI {
 
 
      
-            Character _character = Registry.Retrieve<Character>();
+            Character _character = Registry.Get<Character>();
             if(_character.ActiveLegacy==null)
                 throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
 
             builder.CreateInitialTokensOnTabletop(_character.ActiveLegacy);
 
-            ProvisionStartingElements(_character.ActiveLegacy, Registry.Retrieve<Choreographer>());
+            ProvisionStartingElements(_character.ActiveLegacy, Registry.Get<Choreographer>());
             SetStartingCharacterInfo(_character.ActiveLegacy);
-            StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
+            StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
             DealStartingDecks();
 
@@ -451,15 +451,15 @@ namespace Assets.CS.TabletopUI {
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy)
 		{
-            Character newCharacter = Registry.Retrieve<Character>();
-            newCharacter.Name = Registry.Retrieve<LanguageManager>().Get("UI_CLICK_TO_NAME");
+            Character newCharacter = Registry.Get<Character>();
+            newCharacter.Name = Registry.Get<LanguageManager>().Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
         }
 
         private void DealStartingDecks() {
-            IGameEntityStorage character = Registry.Retrieve<Character>();
-            var compendium = Registry.Retrieve<ICompendium>();
+            IGameEntityStorage character = Registry.Get<Character>();
+            var compendium = Registry.Get<ICompendium>();
             foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>()) {
                 IDeckInstance di = new DeckInstance(ds);
                 character.DeckInstances.Add(di);
@@ -481,7 +481,7 @@ namespace Assets.CS.TabletopUI {
             h.Clear();
             s.DeckInstances = new List<IDeckInstance>();
 
-            foreach (var sc in Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations())
+            foreach (var sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
                 sc.Retire();
 
             foreach (var element in tc.GetElementStacksManager().GetStacks())
@@ -490,14 +490,14 @@ namespace Assets.CS.TabletopUI {
 
         public void PurgeElement(string elementId, int maxToPurge)
         {
-            var compendium = Registry.Retrieve<ICompendium>();
+            var compendium = Registry.Get<ICompendium>();
 
             Element purgedElement = compendium.GetEntityById<Element>(elementId);
             //I don't think MaxToPurge is being usefully decremented here - should return int
 
            _tabletop.GetElementStacksManager().PurgeElement(purgedElement, maxToPurge);
 
-           var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+           var situationsCatalogue = Registry.Get<SituationsCatalogue>();
            foreach (var s in situationsCatalogue.GetRegisteredSituations())
            {
 
@@ -527,7 +527,7 @@ namespace Assets.CS.TabletopUI {
 
         public void HaltVerb(string toHaltId, int maxToHalt)
         {
-            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
             int i = 0;
             //Halt the verb if the actionId matches BEARING IN MIND WILDCARD
 
@@ -565,7 +565,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DeleteVerb(string toDeleteId, int maxToDelete)
         {
-            var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+            var situationsCatalogue = Registry.Get<SituationsCatalogue>();
             int i = 0;
             //Delete the verb if the actionId matches BEARING IN MIND WILDCARD
 
@@ -602,24 +602,23 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void RestartGame() {
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
             CrossSceneState.RestartingGame();
 
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Registry.Get<StageHand>().SceneChange(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void EndGame(Ending ending, SituationController endingSituation)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
-            var ls = new LegacySelector(Registry.Retrieve<ICompendium>());
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            var ls = new LegacySelector(Registry.Get<ICompendium>());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
-            var character = Registry.Retrieve<Character>();
-            var chronicler = Registry.Retrieve<Chronicler>();
+            var character = Registry.Get<Character>();
+            var chronicler = Registry.Get<Chronicler>();
 
-            chronicler.ChronicleGameEnd(Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations(), Registry.Retrieve<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
+            chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
 
 
             CrossSceneState.SetCurrentEnding(ending);
@@ -646,8 +645,8 @@ namespace Assets.CS.TabletopUI {
 #region -- Load / Save GameState -------------------------------
 
         public void LoadGame(int index = 0) {
-            ICompendium compendium = Registry.Retrieve<ICompendium>();
-            IGameEntityStorage storage = Registry.Retrieve<Character>();
+            ICompendium compendium = Registry.Get<ICompendium>();
+            IGameEntityStorage storage = Registry.Get<Character>();
 
             _speedController.SetPausedState(true, false, true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
@@ -666,7 +665,7 @@ namespace Assets.CS.TabletopUI {
 	            StatusBar.UpdateCharacterDetailsView(storage);
 
 				// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
-				var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+				var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 	            foreach (var s in allSituationControllers)
 				{
 					if (s.IsOpen)
@@ -676,17 +675,17 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-	            _notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_LOADEDTITLE"), Registry.Retrieve<LanguageManager>().Get("UI_LOADEDDESC"));
+	            _notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_LOADEDTITLE"), Registry.Get<LanguageManager>().Get("UI_LOADEDDESC"));
             }
             catch (Exception e)
             {
-                _notifier.ShowNotificationWindow(Registry.Retrieve<LanguageManager>().Get("UI_LOADFAILEDTITLE"), Registry.Retrieve<LanguageManager>().Get("UI_LOADFAILEDDESC"));
+                _notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_LOADFAILEDTITLE"), Registry.Get<LanguageManager>().Get("UI_LOADFAILEDDESC"));
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }
             _speedController.SetPausedState(true, false, true);
 
-            _elementOverview.Initialise(storage.ActiveLegacy, Registry.Retrieve<StackManagersCatalogue>(), compendium);
+            _elementOverview.Initialise(storage.ActiveLegacy, Registry.Get<StackManagersCatalogue>(), compendium);
             tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
 
         }
@@ -712,8 +711,8 @@ namespace Assets.CS.TabletopUI {
 			IEnumerator<bool?> saveTask = null;
             try
             {
-	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop, Registry.Retrieve<Character>(), index: index);
+	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop, Registry.Get<Character>(), index: index);
             }
             catch (Exception e)
             {
@@ -768,7 +767,7 @@ namespace Assets.CS.TabletopUI {
 
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
-            var choreo = Registry.Retrieve<Choreographer>();
+            var choreo = Registry.Get<Choreographer>();
             SituationController sit;
 
             foreach (var tokenSlotPair in slotsToFill) {
@@ -871,7 +870,7 @@ namespace Assets.CS.TabletopUI {
             var rnd = new Random();
 
             // Nothing on the table? Look at the Situations.
-            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             // We grab output first
             foreach (var controller in situationControllers) {
@@ -926,7 +925,7 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void CloseAllSituationWindowsExcept(string exceptTokenId) {
-            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var controller in situationControllers) {
                 if (controller.GetTokenId() != exceptTokenId)
@@ -935,7 +934,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public bool IsSituationWindowOpen() {
-	        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+	        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 	        return situationControllers.Any(c => c.IsOpen);
         }
 
@@ -973,7 +972,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DecayStacksInResults(float interval)
         {
-            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var s in situationControllers)
             {
@@ -1111,7 +1110,7 @@ namespace Assets.CS.TabletopUI {
             mansusSituation = situation; // so we can drop the card in the right place
             _mapController.SetupMap(effect);
 
-            var chronicler = Registry.Retrieve<Chronicler>();
+            var chronicler = Registry.Get<Chronicler>();
             chronicler.ChronicleMansusEntry(effect);
 
 			//preMansusTabletopPos = tableScroll.content.anchoredPosition;
@@ -1153,7 +1152,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
-            Registry.Retrieve<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
+            Registry.Get<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
@@ -1240,7 +1239,7 @@ namespace Assets.CS.TabletopUI {
 				else
 					_allAspectsExtant.Clear();
 
-				var allSituations = Registry.Retrieve<SituationsCatalogue>();
+				var allSituations = Registry.Get<SituationsCatalogue>();
 				foreach (var s in allSituations.GetRegisteredSituations())
                 {
                     var stacksInSituation = new List<IElementStack>();

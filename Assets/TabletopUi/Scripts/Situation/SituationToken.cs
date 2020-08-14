@@ -105,7 +105,7 @@ namespace Assets.CS.TabletopUI {
         #region -- Token positioning --------------------------
 
         public override void ReturnToTabletop(Context context) {
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
+            Registry.Get<Choreographer>().ArrangeTokenOnTable(this, context);
         }
 
         /*
@@ -195,7 +195,7 @@ namespace Assets.CS.TabletopUI {
 				countdownBar.color = barColor;
 				countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
 				countdownText.color = barColor;
-				countdownText.text = Registry.Retrieve<LanguageManager>().GetTimeStringForCurrentLanguage( timeRemaining );
+				countdownText.text = Registry.Get<LanguageManager>().GetTimeStringForCurrentLanguage( timeRemaining );
 				countdownText.richText = true;
 			}
 			else
@@ -303,7 +303,7 @@ namespace Assets.CS.TabletopUI {
             }
             else {
                 // Add the current recipe name, if any, to the debug panel if it's active
-                Registry.Retrieve<DebugTools>().SetInput(SituationController.SituationClock.RecipeId);
+                Registry.Get<DebugTools>().SetInput(SituationController.SituationClock.RecipeId);
 
                 if (!SituationController.IsOpen)
                     OpenSituation();

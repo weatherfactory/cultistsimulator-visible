@@ -67,7 +67,7 @@ namespace Assets.TabletopUi {
         }
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, Heart heart, ISituationClock clock = null) {
-            Registry.Retrieve<SituationsCatalogue>().RegisterSituation(this);
+            Registry.Get<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
@@ -155,7 +155,7 @@ namespace Assets.TabletopUi {
         public void Retire() {
             situationWindow.Retire();
             situationToken.Retire();
-            Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
+            Registry.Get<SituationsCatalogue>().DeregisterSituation(this);
         }
 
         #endregion
@@ -225,11 +225,11 @@ namespace Assets.TabletopUi {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
-            var ttm = Registry.Retrieve<ITabletopManager>();
+            var ttm = Registry.Get<ITabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
             RecipeConductor rc = new RecipeConductor(compendium,
-               aspectsInContext, Registry.Retrieve<IDice>(), currentCharacter);
+               aspectsInContext, Registry.Get<IDice>(), currentCharacter);
 
             SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
@@ -266,7 +266,7 @@ namespace Assets.TabletopUi {
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
         {
-            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var tabletopManager = Registry.Get<ITabletopManager>();
             if (endingFlavour != EndingFlavour.None)
                 tabletopManager.SignalImpendingDoom(situationToken);
             else
@@ -287,7 +287,7 @@ namespace Assets.TabletopUi {
             situationWindow.GetResultsStacksManager().AcceptStack(stack, context);
             UpdateTokenResultsCountBadge();
 
-			var tabletop = Registry.Retrieve<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
         }
 
@@ -303,7 +303,7 @@ namespace Assets.TabletopUi {
         /// </summary>
         /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
-            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var tabletopManager = Registry.Get<ITabletopManager>();
 
             //called here in case ongoing slots trigger consumption
             situationWindow.SetSlotConsumptions();
@@ -354,7 +354,7 @@ namespace Assets.TabletopUi {
 
             currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
             var executor = new SituationEffectExecutor(tabletopManager);
-            executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter, Registry.Retrieve<IDice>());
+            executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter, Registry.Get<IDice>());
 
             if (!string.IsNullOrEmpty(command.Recipe.Ending)) {
                 var ending = compendium.GetEntityById<Ending>(command.Recipe.Ending);
@@ -428,7 +428,7 @@ namespace Assets.TabletopUi {
                 // Add a check to see if this is actually running in the game
                 var behaviour = situationToken as MonoBehaviour;
                 if (behaviour != null)
-                    Registry.Retrieve<ITabletopManager>().ShowMansusMap(this, behaviour.transform,
+                    Registry.Get<ITabletopManager>().ShowMansusMap(this, behaviour.transform,
                         currentRecipe.PortalEffect);
             }
         }
@@ -475,7 +475,7 @@ namespace Assets.TabletopUi {
 
         void PerformAspectInduction(Element aspectElement) {
             foreach (var induction in aspectElement.Induces) {
-                var d = Registry.Retrieve<IDice>();
+                var d = Registry.Get<IDice>();
 
                 if (d.Rolld100() <= induction.Chance)
                     CreateRecipeFromInduction(compendium.GetEntityById<Recipe>(induction.Id), aspectElement.Id);
@@ -492,7 +492,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Retrieve<ITabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
+            Registry.Get<ITabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
         }
 
         public void ResetSituation() {
@@ -517,7 +517,7 @@ namespace Assets.TabletopUi {
             IsOpen = true;
             situationToken.DisplayAsOpen();
             situationWindow.Show( targetPosOverride );
-            Registry.Retrieve<ITabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
+            Registry.Get<ITabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
         }
 
 		public void OpenWindow()
@@ -628,7 +628,7 @@ namespace Assets.TabletopUi {
 
             // Get all aspects and find a recipe
             IAspectsDictionary allAspectsInSituation = situationWindow.GetAspectsFromAllSlottedElements();
-            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var tabletopManager = Registry.Get<ITabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
         
             Recipe matchingRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
@@ -666,7 +666,7 @@ namespace Assets.TabletopUi {
             var allAspects = GetAspectsAvailableToSituation(true);
 
             situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
-            ITabletopManager ttm = Registry.Retrieve<ITabletopManager>();
+            ITabletopManager ttm = Registry.Get<ITabletopManager>();
 
             var context = ttm.GetAspectsInContext(allAspects);
 
@@ -698,10 +698,10 @@ namespace Assets.TabletopUi {
 
         public void UpdateSituationDisplayForPossiblePredictedRecipe()
         {
-            ITabletopManager ttm = Registry.Retrieve<ITabletopManager>();
+            ITabletopManager ttm = Registry.Get<ITabletopManager>();
             var context = ttm.GetAspectsInContext(situationWindow.GetAspectsFromAllSlottedAndStoredElements(true));
 
-            RecipeConductor rc = new RecipeConductor(compendium, context, Registry.Retrieve<IDice>(), currentCharacter);
+            RecipeConductor rc = new RecipeConductor(compendium, context, Registry.Get<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
             //Check for possible text refinements based on the aspects in context
@@ -755,7 +755,7 @@ namespace Assets.TabletopUi {
                 return;
 
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var tabletopManager = Registry.Retrieve<ITabletopManager>();
+            var tabletopManager = Registry.Get<ITabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 
 
@@ -782,7 +782,7 @@ namespace Assets.TabletopUi {
             //(which among other things should make the starting slot unavailable
 
             RecipeConductor rc = new RecipeConductor(compendium,
-                aspectsInContext, Registry.Retrieve<IDice>(), currentCharacter); //reusing the aspectsInContext from above
+                aspectsInContext, Registry.Get<IDice>(), currentCharacter); //reusing the aspectsInContext from above
 
             SituationClock.Continue(rc, 0);
 
@@ -815,7 +815,7 @@ namespace Assets.TabletopUi {
         }
 
         private void BurnImageUnderToken(string burnImage) {
-            Registry.Retrieve<INotifier>()
+            Registry.Get<INotifier>()
                 .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }

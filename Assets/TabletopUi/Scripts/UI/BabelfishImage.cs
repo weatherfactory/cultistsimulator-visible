@@ -31,22 +31,18 @@ public class BabelfishImage : MonoBehaviour
 
     private void OnEnable()
     {
-        Registry.Retrieve<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+        Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
         
     }
 
     private void OnDisable()
     {
-        Registry.Retrieve<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
 
     }
 
     public virtual void OnCultureChanged(CultureChangedArgs args)
     {
-		
-		for (int i=0; i<(int)LanguageManager.eLanguage.maxLanguages; i++)
-		{
-			// Compare only first two letters of locale code because we can't use "zh-hans" as an enum
 
                 if (usesOverride)
                 {
@@ -61,7 +57,7 @@ public class BabelfishImage : MonoBehaviour
 					//image.sprite = sprites[i].sprite;
 				}
 				return;
-        }
+        
     }
 
 }

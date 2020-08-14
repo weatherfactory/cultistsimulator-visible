@@ -8,7 +8,7 @@ namespace TabletopUi.Scripts.UI
     {
         public void StackCards()
         {
-            var tabletop = Registry.Retrieve<ITabletopManager>();
+            var tabletop = Registry.Get<ITabletopManager>();
             tabletop.GroupAllStacks();
         }
     }

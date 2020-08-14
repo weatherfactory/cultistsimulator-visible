@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -93,9 +94,9 @@ namespace Assets.CS.TabletopUI
         private void ReturnToMenuInternal()
 		{
             //save on exit, so the player will return here, not begin a new game
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
             saveGameManager.SaveInactiveGame(null);
-            SceneManager.LoadScene(SceneNumber.MenuScene);
+            Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
         }
 
         public void StartNewGame()
@@ -110,13 +111,13 @@ namespace Assets.CS.TabletopUI
         }
 
         private void StartNewGameInternal() {
-            SceneManager.LoadScene(SceneNumber.NewGameScene);
+            Registry.Get<StageHand>().SceneChange(SceneNumber.NewGameScene);
         }
 #if UNITY_EDITOR
 		private void OnGUI()
 		{
 			Rect buttonRect = new Rect(5,5,200,20);
-			var compendium = Registry.Retrieve<ICompendium>();
+			var compendium = Registry.Get<ICompendium>();
             List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
 			foreach (Ending ending in endings)
 			{

@@ -206,7 +206,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         // Re-populate it with updated suggestions
         // Disable the suggestion box if there are no suggestions
-        ICompendium compendium = Registry.Retrieve<ICompendium>();
+        ICompendium compendium = Registry.Get<ICompendium>();
         List<AutoCompletionSuggestion> suggestions = GetElementAutoCompletionSuggestions(compendium, value)
             .Concat(GetRecipeAutoCompletionSuggestions(compendium, value))
             .OrderBy(acs => acs.GetText())
@@ -256,7 +256,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var stackManager = tabletop.GetElementStacksManager();
         var existingStacks = stackManager.GetStacks();
 
-        var element = Registry.Retrieve<ICompendium>().GetEntityById<Element>(elementId);
+        var element = Registry.Get<ICompendium>().GetEntityById<Element>(elementId);
 
         if (element == null) {
             Debug.LogWarning("No Element with ID " + elementId + " found!");
@@ -287,7 +287,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 				ElementStackToken token = stack as ElementStackToken;
 				Vector2 dropPos = token.GetDropZoneSpawnPos();
 				
-	            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
+	            Registry.Get<Choreographer>().ArrangeTokenOnTable(token, debugContext, dropPos, false);	// Never push other cards aside - CP
             }
         }
     }
@@ -295,7 +295,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     void RemoveItem(string itemId)
     {
         //do we have an inactive empty verb with this id?
-       var possibleEmptyVerb= Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationToken.EntityId==itemId);
+       var possibleEmptyVerb= Registry.Get<SituationsCatalogue>().GetRegisteredSituations().FirstOrDefault(s => s.situationToken.EntityId==itemId);
         if(possibleEmptyVerb!=null)
         { if(!possibleEmptyVerb.situationWindow.GetOutputStacks().Any() && !possibleEmptyVerb.IsOngoing)
             possibleEmptyVerb.Retire();
@@ -306,7 +306,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void BeginSituation(string recipeId)
     {
-        var compendium = Registry.Retrieve<ICompendium>();
+        var compendium = Registry.Get<ICompendium>();
         var recipe = compendium.GetEntityById<Recipe>(recipeId.Trim());
         if (recipe!=null)
         {
@@ -315,7 +315,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
-        Registry.Retrieve<ITabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
+        Registry.Get<ITabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);
@@ -323,24 +323,24 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void HaltVerb(string verbId)
     {
-        Registry.Retrieve<ITabletopManager>().HaltVerb(verbId, 1);
+        Registry.Get<ITabletopManager>().HaltVerb(verbId, 1);
 
     }
 
     private void DeleteVerb(string verbId)
     {
-        Registry.Retrieve<ITabletopManager>().DeleteVerb(verbId,1);
+        Registry.Get<ITabletopManager>().DeleteVerb(verbId,1);
     }
 
     private void PurgeElement(string elementId)
     {
-        Registry.Retrieve<ITabletopManager>().PurgeElement(elementId, 1);
+        Registry.Get<ITabletopManager>().PurgeElement(elementId, 1);
     }
 
 
     void BeginLegacy(string legacyId)
     {
-        var l = Registry.Retrieve<ICompendium>().GetEntityById<Legacy>(legacyId);
+        var l = Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
         if (l == null)
             return;
 
@@ -349,13 +349,13 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void TriggerAchievement(string achievementId)
     {
-        var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+        var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
         storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId,true);
     }
 
     void ResetAchievement(string achievementId)
     {
-        var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+        var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
         storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, false);
     }
 
@@ -366,20 +366,20 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void UpdateCompendiumContent()
     {
-        Registry.Retrieve<ModManager>().CatalogueMods();
+        Registry.Get<ModManager>().CatalogueMods();
             
-           var existingCompendium = Registry.Retrieve<ICompendium>();
+           var existingCompendium = Registry.Get<ICompendium>();
            var compendiumLoader = new CompendiumLoader();
 
            var startImport = DateTime.Now;
-           var log=compendiumLoader.PopulateCompendium(existingCompendium,Registry.Retrieve<Concursum>().GetCurrentCultureId());
+           var log=compendiumLoader.PopulateCompendium(existingCompendium,Registry.Get<Concursum>().GetCurrentCultureId());
         foreach(var m in log.GetMessages())
             Log(m.Description,m.MessageLevel);
 
         Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
-        IGameEntityStorage storage = Registry.Retrieve<Character>();
+        IGameEntityStorage storage = Registry.Get<Character>();
         foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
         {
                
@@ -398,7 +398,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void WordCount()
     {
-        var compendium = Registry.Retrieve<ICompendium>();
+        var compendium = Registry.Get<ICompendium>();
         var log=new ContentImportLog();
         compendium.CountWords(log);
         foreach (var m in log.GetMessages())
@@ -408,7 +408,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void FnordCount()
     {
-        var compendium = Registry.Retrieve<ICompendium>();
+        var compendium = Registry.Get<ICompendium>();
         var log = new ContentImportLog();
         compendium.LogFnords(log);
         foreach (var m in log.GetMessages())
@@ -419,7 +419,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     public void ImageCheck()
     {
 
-        var compendium = Registry.Retrieve<ICompendium>();
+        var compendium = Registry.Get<ICompendium>();
         var log = new ContentImportLog();
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
@@ -438,7 +438,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     // to allow access from HotkeyWatcher
     public void EndGame(string endingId)
     {
-        var compendium = Registry.Retrieve<ICompendium>();
+        var compendium = Registry.Get<ICompendium>();
 
         var ending = compendium.GetEntityById<Ending>(endingId);
         if (ending == null)
@@ -447,26 +447,26 @@ public class DebugTools : MonoBehaviour,IRollOverride
         ending.Anim = ending.Id;
 
         // Get us a random situation that killed us!
-        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
         var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];
 
-        Registry.Retrieve<ITabletopManager>().EndGame(ending, deathSit);
+        Registry.Get<ITabletopManager>().EndGame(ending, deathSit);
     }
 
     public void LoadGame()
     {
-        Registry.Retrieve<ITabletopManager>().LoadGame();
+        Registry.Get<ITabletopManager>().LoadGame();
     }
 
     public void SaveGame()
     {
-        var saveTask = Registry.Retrieve<ITabletopManager>().SaveGameAsync(true);
+        var saveTask = Registry.Get<ITabletopManager>().SaveGameAsync(true);
         StartCoroutine(saveTask);
     }
 
     void ResetDecks()
     {
-        var character= Registry.Retrieve<Character>();
+        var character= Registry.Get<Character>();
         foreach(var di in character.DeckInstances)
         {di.Reset();
             Log("Reset " + di.Id + " - now contains ");
@@ -515,7 +515,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void SaveDebugSave(int index)
     {
-        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        ITabletopManager tabletopManager = Registry.Get<ITabletopManager>();
         StartCoroutine(tabletopManager.SaveGameAsync(true, index + 1, success =>
         {
             loadButtons[index].interactable = success;
@@ -527,7 +527,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         if (!CheckDebugSaveExists(index))
             return;
-        ITabletopManager tabletopManager = Registry.Retrieve<ITabletopManager>();
+        ITabletopManager tabletopManager = Registry.Get<ITabletopManager>();
         tabletopManager.LoadGame(index + 1);
     }
 

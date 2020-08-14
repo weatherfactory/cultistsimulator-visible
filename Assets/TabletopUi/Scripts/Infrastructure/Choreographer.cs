@@ -383,7 +383,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
             // We don't have a source token, then get us the first token with the appopriate id.
             else { 
-                var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+                var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
                 existingSituation = registeredSits.Find(sc => sc.situationToken.EntityId == scc.Recipe.ActionId);
             }
 
@@ -418,7 +418,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     endScale: 1f);
             }
             else {
-                Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token, null);
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(token, null);
             }
         }
 

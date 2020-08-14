@@ -67,8 +67,8 @@ namespace Assets.CS.TabletopUI {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
-            SubscribeNotifier(Registry.Retrieve<INotifier>());
-            SubscribeChronicler(Registry.Retrieve<Chronicler>());
+            SubscribeNotifier(Registry.Get<INotifier>());
+            SubscribeChronicler(Registry.Get<Chronicler>());
         }
 
         #region -- Basic Getters ------------------------------------
@@ -185,12 +185,12 @@ namespace Assets.CS.TabletopUI {
 	            lastTablePos = RectTransform.anchoredPosition;
 			}
 
-            RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
+            RectTransform.SetParent(Registry.Get<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
 
             if (useDragOffset) {
                 Vector3 pressPos;
-                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
                 dragOffset = (startPosition + startParent.position) - pressPos;
             }
             else {
@@ -237,7 +237,7 @@ namespace Assets.CS.TabletopUI {
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);

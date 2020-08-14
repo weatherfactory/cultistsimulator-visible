@@ -10,7 +10,6 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
@@ -18,100 +17,97 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         [SerializeField]
         public LanguageManager languageManager;
+        [SerializeField]
+        public StageHand stageHand;
+
         private string initialisedAt = null;
 
 
         public void Awake()
         {
-            
             if (initialisedAt == null)
                 initialisedAt = DateTime.Now.ToString();
             else
+            {
+                NoonUtility.Log("Problem: looks like we're trying to load the master scene twice",2);
                 return;
+            }
+
+            Initialise();
+            LogSystemSettings();
+            LoadFirstScene();
+        }
+
+        private void LogSystemSettings()
+        {
+
+            // log the current system settings
+            string info = "Cultist Simulator Version: " + Application.version + "\n";
+            info += "OS: " + SystemInfo.operatingSystem + "\n";
+            info += "Processor: " + SystemInfo.processorType + " Count: " + SystemInfo.processorCount + "\n";
+            info += "Graphics: " + SystemInfo.graphicsDeviceID + "/" + SystemInfo.graphicsDeviceName + "/" + SystemInfo.graphicsDeviceVendor + "/" + SystemInfo.graphicsDeviceVersion + "/" + SystemInfo.graphicsMemorySize + " Shader: " + SystemInfo.graphicsShaderLevel + "\n";
+            info += "Memory: system - " + SystemInfo.systemMemorySize + " graphics - " + SystemInfo.graphicsMemorySize + "\n";
+
+            NoonUtility.Log(info, 0);
+        }
+
+        private void LoadFirstScene()
+        {
+            if (Registry.Get<Concursum>().GetSkipLogo()) // This will allocate and read in config.ini
+                Registry.Get<StageHand>().SceneChange(SceneNumber.QuoteScene);
+            else
+                Registry.Get<StageHand>().SceneChange(SceneNumber.LogoScene);
+        }
+
+        private void Initialise()
+        {
+            // force invariant culture to fix Linux save file issues
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
 
             var registryAccess = new Registry();
 
             var config = new Config();
             config.ReadFromIniFile();
+
+            registryAccess.Register(new Concursum());
+
+            Registry.Get<Concursum>().SupplyConfig(config);
+
             
-            Registry.Retrieve<Concursum>().SupplyConfig(config);
+            registryAccess.Register<StageHand>(stageHand);
 
 
             var storefrontServicesProvider = new StorefrontServicesProvider();
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
+
             registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
 
 
-            //TODO: make this async
             registryAccess.Register(new ModManager());
             registryAccess.Register<ICompendium>(new Compendium());
-            
-            var startingCultureId = GetStartingCultureId();
-            var contentImporter = new CompendiumLoader();
-            var log = contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>(), startingCultureId);
-            foreach (var m in log.GetMessages())
-                NoonUtility.Log(m);
 
-
-
-
-
-
+            ReloadCompendium(Registry.Get<Concursum>().GetCurrentCultureId());
 
             registryAccess.Register<LanguageManager>(languageManager);
             languageManager.Initialise();
-  
 
+
+            Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
         }
 
-        private string GetStartingCultureId()
+        public void ReloadCompendium(string cultureId)
         {
-            string startingCultureId;
+            var compendiumLoader = new CompendiumLoader();
+            var log = compendiumLoader.PopulateCompendium(Registry.Get<ICompendium>(),cultureId);
+            foreach (var m in log.GetMessages())
+                NoonUtility.Log(m);
+        }
 
-            // Try to auto-detect the culture from the system language first
-            switch (Application.systemLanguage)
-            {
-                case SystemLanguage.Russian:
-                    startingCultureId = "ru";
-                    break;
-                case SystemLanguage.Chinese:
-                case SystemLanguage.ChineseSimplified:
-                case SystemLanguage.ChineseTraditional:
-                    startingCultureId = "zh-hans";
-                    break;
-                default:
-                    switch (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
-                    {
-                        case "zh":
-                            startingCultureId = "zh-hans";
-                            break;
-                        case "ru":
-                            startingCultureId = "ru";
-                            break;
-                        default:
-                            startingCultureId = "en";
-                            break;
-                    }
-
-                    break;
-            }
-
-            // If the player has already chosen a culture, use that one instead
-            if (PlayerPrefs.HasKey(NoonConstants.CULTURE_SETTING_KEY))
-            {
-                startingCultureId = PlayerPrefs.GetString(NoonConstants.CULTURE_SETTING_KEY);
-            }
-
-            // If an override is specified, ignore everything else and use that
-            if (Config.OldConfig.Instance.culture != null)
-            {
-                startingCultureId = Config.OldConfig.Instance.culture;
-            }
-
-            if (string.IsNullOrEmpty(startingCultureId))
-                startingCultureId = NoonConstants.DEFAULT_CULTURE_ID;
-            return startingCultureId;
+        private void OnCultureChanged(CultureChangedArgs args)
+        {
+            ReloadCompendium(args.NewCulture.Id);
         }
     }
 }
