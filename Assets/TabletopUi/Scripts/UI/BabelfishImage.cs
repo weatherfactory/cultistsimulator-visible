@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using OrbCreationExtensions;
@@ -24,9 +25,34 @@ public class BabelfishImage : MonoBehaviour
 
 	private Image image;
 
-    private void Awake()
+    private void Start()
     {
 		image = gameObject.GetComponent<Image>() as Image;
+
+        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+
+        DisplayImageForCulture(currentCulture);
+
+    }
+
+    private void DisplayImageForCulture(Culture culture)
+    {
+        if (usesOverride)
+        {
+            image.overrideSprite =
+                ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, culture.Id);
+            // image.overrideSprite = sprites[i].sprite;
+        }
+        else
+        {
+            image.sprite =
+                ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, culture.Id);
+
+            //image.sprite = sprites[i].sprite;
+        }
+        return;
     }
 
     private void OnEnable()
@@ -43,20 +69,8 @@ public class BabelfishImage : MonoBehaviour
 
     public virtual void OnCultureChanged(CultureChangedArgs args)
     {
+        DisplayImageForCulture(args.NewCulture);
 
-                if (usesOverride)
-                {
-                    image.overrideSprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, args.NewCulture.Id);
-                    // image.overrideSprite = sprites[i].sprite;
-                } else
-                {
-                    image.sprite =
-                        ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, args.NewCulture.Id);
-
-					//image.sprite = sprites[i].sprite;
-				}
-				return;
         
     }
 

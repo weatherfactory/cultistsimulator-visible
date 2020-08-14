@@ -22,11 +22,13 @@ public class Config
     {
         string hackyConfigLocation = Application.persistentDataPath + "/config.ini";
 
-        CultureId = "en";
 
         if (File.Exists(hackyConfigLocation))
         {
             string contents = File.ReadAllText(hackyConfigLocation);
+
+            CultureId = GetStartingCultureId(contents);
+
             if (contents.Contains("skiplogo=1"))
             {
                 skiplogo = true;

@@ -1,16 +1,9 @@
-﻿using TMPro;
+﻿using Assets.Core.Entities;
+using TMPro;
 using UnityEngine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services; // For accessing high contrast mode
 
-/// Localization responder - assumes a singleton centralized manager class (LanguageManager{})
-/// that maintains fields for the font assets for different language sets being parsed
-/// (in this case: CJK, RU, and EN for everything else).
-///
-/// It is expected the LanguageManager defines an event used to indicate a language change has occurred.
-///
-/// You can set the fontStyle to BodyText, Heading or Button (or add new styles) to tell it which font to use.
-/// That way you only have one place to update the font (LanguageManager.cs) and it is reflected throughout the game.
 
 public class Babelfish : MonoBehaviour
 {
@@ -34,13 +27,91 @@ public class Babelfish : MonoBehaviour
     protected TMP_Text	tmpText;       // text mesh pro text object.
 	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
-    private void Awake()
+    private void Start()
     {
         // cache the TMP component on this object
         tmpText = GetComponent<TMP_Text>();
 		defaultColor = tmpText.color;
 		defaultStyle = tmpText.fontStyle;
-    }
+
+        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+
+        SetValuesFromCulture(currentCulture);
+    }
+
+    private void SetValuesFromCulture(Culture culture)
+    {
+
+        var lm = Registry.Get<LanguageManager>();
+
+
+        string fontscript;
+
+
+        if (!string.IsNullOrEmpty(forceFontLanguage))
+            fontscript = forceFontLanguage;
+        else
+            fontscript = culture.FontScript;
+
+        TMP_FontAsset font = Registry.Get<LanguageManager>().GetFont(fontStyle, fontscript);
+        if (font != null)
+        {
+            tmpText.font = font;
+        }
+
+        // If using a specific font material, map the material to the
+        // appropriate font texture atlas, then set the font asset's material.
+        Material fontMaterial = Registry.Get<LanguageManager>().GetFontMaterial(fontStyle);
+        if (fontMaterial != null)
+        {
+            fontMaterial.SetTexture("_MainTex", tmpText.font.material.mainTexture);
+            tmpText.fontMaterial = fontMaterial;
+        }
+
+        // Localization label: only applies if set.
+        if (locLabel != "")
+        {
+            tmpText.text = lm.Get(locLabel);
+        }
+
+        if (highContrastEnabled)
+        {
+            //highContrastBold = true;	// Force all text to go bold
+
+            if (TabletopManager.GetHighContrast())
+            {
+                Color light = Registry.Get<LanguageManager>().highContrastLight;
+                Color dark = Registry.Get<LanguageManager>().highContrastDark;
+                light.a = 1.0f; // ensure color is opaque
+                dark.a = 1.0f;
+                tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
+                if (highContrastBold)
+                    tmpText.fontStyle |= FontStyles.Bold;
+            }
+            else
+            {
+                tmpText.color = defaultColor;
+                if (highContrastBold)
+                    tmpText.fontStyle = defaultStyle;
+            }
+        }
+
+        // Always disable bold for Chinese, since it can make the text
+        // unreadable
+        if (!culture.BoldAllowed)
+        {
+            tmpText.fontStyle &= ~FontStyles.Bold;
+        }
+
+        if (forceBold)
+        {
+            tmpText.fontStyle |= FontStyles.Bold;
+        }
+
+	}
+
 
     private void OnEnable()
     {
@@ -63,70 +134,6 @@ public class Babelfish : MonoBehaviour
 
 	public virtual void OnCultureChanged(CultureChangedArgs args)
     {
-        var lm = Registry.Get<LanguageManager>();
-
-
-		string fontscript;
-
-
-        if (!string.IsNullOrEmpty(forceFontLanguage))
-            fontscript = forceFontLanguage;
-        else
-            fontscript = args.NewCulture.FontScript;
-
-		TMP_FontAsset font = Registry.Get<LanguageManager>().GetFont( fontStyle, fontscript);
-		if (font != null)
-		{
-			tmpText.font = font;
-		}
-
-        // If using a specific font material, map the material to the
-        // appropriate font texture atlas, then set the font asset's material.
-		Material fontMaterial = Registry.Get<LanguageManager>().GetFontMaterial( fontStyle );
-        if (fontMaterial != null)
-        {
-            fontMaterial.SetTexture("_MainTex", tmpText.font.material.mainTexture);
-            tmpText.fontMaterial = fontMaterial;
-        }
-
-        // Localization label: only applies if set.
-        if (locLabel != "")
-		{
-            tmpText.text = lm.Get(locLabel);
-		}
-
-		if (highContrastEnabled)
-		{
-			//highContrastBold = true;	// Force all text to go bold
-
-			if (TabletopManager.GetHighContrast())
-			{
-				Color light = Registry.Get<LanguageManager>().highContrastLight;
-				Color dark = Registry.Get<LanguageManager>().highContrastDark;
-				light.a = 1.0f;	// ensure color is opaque
-				dark.a = 1.0f;
-				tmpText.color = defaultColor.grayscale > 0.5f ? light : dark;
-				if (highContrastBold)
-					tmpText.fontStyle |= FontStyles.Bold;
-			}
-			else
-			{
-				tmpText.color = defaultColor;
-				if (highContrastBold)
-					tmpText.fontStyle = defaultStyle;
-			}
-		}
-
-		// Always disable bold for Chinese, since it can make the text
-		// unreadable
-		if (!args.NewCulture.BoldAllowed)
-		{
-			tmpText.fontStyle &= ~FontStyles.Bold;
-		}
-
-		if (forceBold)
-		{
-			tmpText.fontStyle |= FontStyles.Bold;
-		}
+     SetValuesFromCulture(args.NewCulture);
     }
 }

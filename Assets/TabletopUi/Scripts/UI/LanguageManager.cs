@@ -83,9 +83,7 @@ public class LanguageManager : MonoBehaviour
 
     public void OnCultureChanged(CultureChangedArgs args)
     {
-        PlayerPrefs.SetString(NoonConstants.CULTURE_SETTING_KEY, args.NewCulture.Id);
-        var newCulture = args.NewCulture;
-
+        
 		fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
             secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
             timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
