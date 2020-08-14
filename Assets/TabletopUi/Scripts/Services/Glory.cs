@@ -33,9 +33,10 @@ namespace Assets.TabletopUi.Scripts.Services
                 return;
             }
 
-            Initialise();
+
             LogSystemSettings();
-            LoadFirstScene();
+            Initialise();
+
         }
 
         private void LogSystemSettings()
@@ -51,13 +52,7 @@ namespace Assets.TabletopUi.Scripts.Services
             NoonUtility.Log(info, 0);
         }
 
-        private void LoadFirstScene()
-        {
-            if (Registry.Get<Concursum>().GetSkipLogo()) // This will allocate and read in config.ini
-                Registry.Get<StageHand>().SceneChange(SceneNumber.QuoteScene);
-            else
-                Registry.Get<StageHand>().SceneChange(SceneNumber.LogoScene);
-        }
+
 
         private void Initialise()
         {
@@ -95,6 +90,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
             Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+
+
+            stageHand.LoadFirstScene(Registry.Get<Concursum>().GetSkipLogo());
+
         }
 
         public void ReloadCompendium(string cultureId)
