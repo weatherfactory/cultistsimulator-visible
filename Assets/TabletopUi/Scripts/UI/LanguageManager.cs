@@ -52,7 +52,7 @@ public class LanguageManager : MonoBehaviour
 	public Color		highContrastDark = Color.black;
 
     
-    private string fixedspace = "<mspace=1.6em>";    // defaults are overriden by strings.csv
+    private string fixedspace = "<mspace=1.6em>";   
     private string secondsPostfix = "s";
     private string timeSeparator = ".";
 
@@ -84,9 +84,7 @@ public class LanguageManager : MonoBehaviour
     public void OnCultureChanged(CultureChangedArgs args)
     {
         
-		fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
-            secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
-            timeSeparator = Get("UI_TIME_SEPERATOR");         // '.' for most langs but some prefer ','
+	//actually, we don't need to do anything here currently
 
     }
 
@@ -133,8 +131,17 @@ public class LanguageManager : MonoBehaviour
 
     public string GetTimeStringForCurrentLanguage(float time)
     {
-        var formattedTime = time.ToString("0.0").Replace('.', timeSeparator[0]);
-        return fixedspace + formattedTime + secondsPostfix;
+
+        var fixedspace = Get("UI_FIXEDSPACE");                // Contains rich text fixed spacing size (and <b> for some langs)
+        var secondsPostfix = Get("UI_SECONDS_POSTFIX_SHORT"); // Contains localised abbreviation for seconds, maybe a space and maybe a </b>
+        var timeSeparator = Get("UI_TIME_SEPARATOR");         // '.' for most langs but some prefer ','
+
+
+        var formattedTime = time.ToString("0.0");
+
+        var formatttedTimeWithLocalisedSeparator = formattedTime.Replace(".", timeSeparator);
+
+		return fixedspace + formatttedTimeWithLocalisedSeparator + secondsPostfix;
     }
 
 
