@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Noon;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 public class DebugLoadCompendium : MonoBehaviour
@@ -20,7 +21,8 @@ public class DebugLoadCompendium : MonoBehaviour
         registry.Register(new ModManager());
         var compendium = new Compendium();
         var contentImporter = new CompendiumLoader();
-       var messages= contentImporter.PopulateCompendium(compendium, Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
+        var messages =
+            contentImporter.PopulateCompendium(compendium, Registry.Retrieve<Concursum>().GetCurrentCultureId());
        foreach (var m in messages.GetMessages())
            NoonUtility.Log(m.Description, m.MessageLevel);
 

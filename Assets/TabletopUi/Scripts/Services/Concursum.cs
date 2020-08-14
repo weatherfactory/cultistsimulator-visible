@@ -82,8 +82,30 @@ namespace Assets.TabletopUi.Scripts.Services
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
         public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
 
+        private Config _config;
+
+        public Concursum()
+        {
+            _config=new Config();
+            _config.CultureId = NoonConstants.DEFAULT_CULTURE_ID;
+        }
+
+        public string GetCurrentCultureId()
+        {
+            return _config.CultureId;
+        }
+
+        public void SupplyConfig(Config config)
+        {
+            _config.CultureId = config.CultureId;
+        }
 
 
+        public void SetNewCulture(Culture culture)
+        {
+            _config.CultureId = culture.Id;
+            CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
+        }
 
 
         public void ShowNotification(NotificationArgs args)

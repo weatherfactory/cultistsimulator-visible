@@ -440,7 +440,7 @@ public class MenuScreenController : MonoBehaviour {
 
         var culture = Registry.Retrieve<ICompendium>().GetEntityById<Culture>(lang_code);
 
-        Registry.Retrieve<LanguageManager>().SetCulture(culture);
+        Registry.Retrieve<Concursum>().SetNewCulture(culture);
 
         HideCurrentOverlay();
 	}

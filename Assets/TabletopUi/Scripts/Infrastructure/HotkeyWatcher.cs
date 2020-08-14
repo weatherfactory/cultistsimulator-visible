@@ -54,7 +54,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 {
-                    if(Config.Instance.knock)
+                    if(Config.OldConfig.Instance.knock)
                         _debugTools.btnTriggerAchievement.gameObject.SetActive(true);
 
                 }

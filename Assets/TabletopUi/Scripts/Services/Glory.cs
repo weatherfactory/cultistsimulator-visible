@@ -19,7 +19,6 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField]
         public LanguageManager languageManager;
         private string initialisedAt = null;
-        private History History;
 
 
         public void Awake()
@@ -31,6 +30,11 @@ namespace Assets.TabletopUi.Scripts.Services
                 return;
 
             var registryAccess = new Registry();
+
+            var config = new Config();
+            config.ReadFromIniFile();
+            
+            Registry.Retrieve<Concursum>().SupplyConfig(config);
 
 
             var storefrontServicesProvider = new StorefrontServicesProvider();
@@ -51,22 +55,12 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-            History = Registry.Retrieve<ICompendium>().GetEntitiesAsList<History>().FirstOrDefault();
-            if (History == null)
-            {
-                NoonUtility.Log("No History found: ending Time.");
-                Application.Quit();
-            }
-            else
-            {
-                History.CurrentCultureId = startingCultureId;
-            }
 
 
 
 
             registryAccess.Register<LanguageManager>(languageManager);
-            languageManager.Initialise(Registry.Retrieve<ICompendium>(),startingCultureId);
+            languageManager.Initialise();
   
 
         }
@@ -110,9 +104,9 @@ namespace Assets.TabletopUi.Scripts.Services
             }
 
             // If an override is specified, ignore everything else and use that
-            if (Config.Instance.culture != null)
+            if (Config.OldConfig.Instance.culture != null)
             {
-                startingCultureId = Config.Instance.culture;
+                startingCultureId = Config.OldConfig.Instance.culture;
             }
 
             if (string.IsNullOrEmpty(startingCultureId))

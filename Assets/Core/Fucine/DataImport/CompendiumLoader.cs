@@ -92,8 +92,8 @@ public class CompendiumLoader
             }
         }
 
-        //We've identified the entity types: now set the compendium up to store these types
         compendiumToPopulate.InitialiseForEntityTypes(importableEntityTypes);
+   
         
         foreach (EntityTypeDataLoader dl in dataLoaders.Values)
         {
@@ -116,7 +116,6 @@ public class CompendiumLoader
             dl.SupplyContentFiles(coreContentFilesForEntityForThisEntityType, locContentFilesForThisEntityType,modContentFiles,modLocFiles);
     
             dl.LoadEntityDataFromSuppliedFiles();
-             //   dataLoaderForEntityType.LoadModData();
 
             foreach (EntityData entityData in dl.GetLoadedEntityDataAsList())
             {

@@ -26,7 +26,7 @@ public class SplashAnimation : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		if (Config.Instance.skiplogo)	// This will allocate and read in config.ini
+		if (Config.OldConfig.Instance.skiplogo)	// This will allocate and read in config.ini
 		{
 			SceneManager.LoadScene(SceneNumber.QuoteScene);
 		}

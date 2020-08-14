@@ -8,6 +8,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
@@ -131,8 +132,8 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            Registry.Retrieve<LanguageManager>().GetCurrentCultureId(),
-            false);
+            Registry.Retrieve<Concursum>().GetCurrentCultureId(),
+        false);
 
     }
 

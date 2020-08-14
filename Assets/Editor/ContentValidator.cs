@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Assets.Core;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEditor;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace Assets.Editor
             new Registry().Register(new ModManager());
 
             var contentImporter = new CompendiumLoader();
-            var messages = contentImporter.PopulateCompendium(new Compendium(), Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
+            var messages = contentImporter.PopulateCompendium(new Compendium(), Registry.Retrieve<Concursum>().GetCurrentCultureId());
 
             foreach (var p in messages.GetMessages().Where(m=>m.MessageLevel>0))
                 NoonUtility.Log(p.Description, messageLevel: p.MessageLevel);

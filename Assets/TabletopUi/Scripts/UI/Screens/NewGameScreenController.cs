@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,7 +47,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new CompendiumLoader();
-            contentImporter.PopulateCompendium(compendium,Registry.Retrieve<LanguageManager>().GetCurrentCultureId());
+            contentImporter.PopulateCompendium(compendium, Registry.Retrieve<Concursum>().GetCurrentCultureId());
 
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);
