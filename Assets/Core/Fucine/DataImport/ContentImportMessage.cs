@@ -28,5 +28,10 @@ namespace Assets.Core
             Description = description;
             MessageLevel = 0;
         }
+
+        public override string ToString()
+        {
+            return Description;
+        }
     }
 }

@@ -45,15 +45,20 @@ namespace Assets.Core.Fucine
             }
 
 
-            //all mod operations complete. Now either overwrite an existing item with that id, or add a new one 
+            //all mod operations complete. Now either merge-overwrite an existing item with that id, or add a new one 
             if (coreEntitiesDataDictionary.ContainsKey(_modData.Id))
             {
-                coreEntitiesDataDictionary[_modData.Id]=_modData;
+                var existingEntityDataItem = coreEntitiesDataDictionary[_modData.Id];
+                foreach (string key in _modData.ValuesTable.Keys)
+                    existingEntityDataItem.OverwriteOrAdd(key, _modData.ValuesTable[key]);
+
+
+                coreEntitiesDataDictionary[_modData.Id] = _modData;
             }
             else
             {
                 //If a mod object id doesn't exist in original data - create a new entity and add it to data			
-                coreEntitiesDataDictionary.Add(_modData.Id,_modData);
+                coreEntitiesDataDictionary.Add(_modData.Id, _modData);
             }
 
 

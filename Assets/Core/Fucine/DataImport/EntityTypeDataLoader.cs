@@ -78,8 +78,9 @@ namespace Assets.Core.Fucine
 
             if (_modContentFiles.Any())
             {
-                var moddedEntityData = UnpackAndLocaliseData(_modContentFiles);
                 //any localisation will also apply to the mod string values
+                var moddedEntityData = UnpackAndLocaliseData(_modContentFiles);
+                //moddedEntityData is not directly imported: it's applied to the CoreEntityData, which is then imported.
                 ApplyModsToCoreData(coreEntityData, moddedEntityData);
             }
 
@@ -140,26 +141,42 @@ namespace Assets.Core.Fucine
 
                 foreach (var eachObject in topLevelArrayList)
                 {
-                    var eachObjectHashtable = new Hashtable(); //eg Work verb
-
-                    var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
-
-
-                    foreach (var eachProperty in ((JObject) eachObject).Properties()
-                    ) //eg description, but also eg slots - this is why we need to unpack
-                    {
-                        eachObjectHashtable.Add(eachProperty.Name.ToLower(),
-                            UnpackAndLocaliseToken(eachProperty, entityBuilder));
-                    }
-
-                    //add the just loaded entity data to the list of all entity data, along with its unique id
-                    var thisEntityDataItem = new EntityData(entityBuilder.UniqueId, eachObjectHashtable);
-
-                    entityDataCollection.Add(thisEntityDataItem.Id,thisEntityDataItem);
+                    UnpackObjectDataIntoCollection(eachObject, containerBuilder, entityDataCollection,contentFile);
                 }
             }
 
             return entityDataCollection;
+        }
+
+        private void UnpackObjectDataIntoCollection(JToken eachObject, FucineUniqueIdBuilder containerBuilder,
+            Dictionary<string, EntityData> entityDataCollection, LoadedDataFile contentFile)
+        {
+            var eachObjectHashtable = new Hashtable(); //eg Work verb
+
+            var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
+
+
+            foreach (var eachProperty in ((JObject) eachObject).Properties()
+            ) //eg description, but also eg slots - this is why we need to unpack
+            {
+                eachObjectHashtable.Add(eachProperty.Name.ToLower(),
+                    UnpackAndLocaliseToken(eachProperty, entityBuilder));
+            }
+
+            //add the just loaded entity data to the list of all entity data, along with its unique id
+            var thisEntityDataItem = new EntityData(entityBuilder.UniqueId, eachObjectHashtable);
+
+
+            if(entityDataCollection.ContainsKey(thisEntityDataItem.Id))
+            {
+                _log.LogInfo($"Duplicate entity id {thisEntityDataItem.Id} from {contentFile.Path}: merging them (values in second instance will overwrite first, if they overlap)");
+                var existingEntityDataItem = entityDataCollection[thisEntityDataItem.Id];
+                foreach (string key in thisEntityDataItem.ValuesTable.Keys)
+                    existingEntityDataItem.OverwriteOrAdd(key, thisEntityDataItem.ValuesTable[key]);
+
+            }
+            else
+                entityDataCollection.Add(thisEntityDataItem.Id, thisEntityDataItem);
         }
 
         /// <summary>
