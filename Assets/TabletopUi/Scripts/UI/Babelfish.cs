@@ -2,7 +2,8 @@
 using TMPro;
 using UnityEngine;
 using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Services; // For accessing high contrast mode
+using Assets.TabletopUi.Scripts.Services;
+using UnityEngine.UI; // For accessing high contrast mode
 
 
 public class Babelfish : MonoBehaviour
@@ -27,7 +28,7 @@ public class Babelfish : MonoBehaviour
     protected TMP_Text	tmpText;       // text mesh pro text object.
 	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
-    private void Start()
+    private void OnEnable()
     {
         // cache the TMP component on this object
         tmpText = GetComponent<TMP_Text>();
@@ -39,7 +40,21 @@ public class Babelfish : MonoBehaviour
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 
         SetValuesFromCulture(currentCulture);
+
+        var concursum = Registry.Get<Concursum>();
+        concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+
     }
+
+    private void OnDisable()
+    {
+
+        var concursum = Registry.Get<Concursum>();
+        concursum.CultureChangedEvent.RemoveListener(OnCultureChanged);
+
+    }
+
+
 
     private void SetValuesFromCulture(Culture culture)
     {
@@ -110,8 +125,6 @@ public class Babelfish : MonoBehaviour
             tmpText.fontStyle |= FontStyles.Bold;
         }
 
-        var concursum = Registry.Get<Concursum>();
-        concursum.CultureChangedEvent.AddListener(OnCultureChanged);
 
     }
 

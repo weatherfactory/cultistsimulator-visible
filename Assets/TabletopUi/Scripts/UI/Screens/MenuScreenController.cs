@@ -289,11 +289,16 @@ public class MenuScreenController : MonoBehaviour {
         purgeConfirm.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         versionHints.gameObject.SetActive(false);
-    }
+        modsPanel.gameObject.SetActive(false);
+        languageMenu.gameObject.SetActive(false);
+    startDLCLegacyConfirmPanel.gameObject.SetActive(false);
+
+
+}
 
 #region -- View Changes ------------------------
 
-    void FadeIn() {
+void FadeIn() {
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
         fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
