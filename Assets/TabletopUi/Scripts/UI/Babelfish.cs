@@ -110,22 +110,13 @@ public class Babelfish : MonoBehaviour
             tmpText.fontStyle |= FontStyles.Bold;
         }
 
-	}
+        var concursum = Registry.Get<Concursum>();
+        concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+
+    }
 
 
-    private void OnEnable()
-    {
-		var concursum=Registry.Get<Concursum>();
-            concursum.CultureChangedEvent.AddListener(OnCultureChanged);
-            
-        
-    }
 
-    private void OnDisable()
-    {
-        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
-
-	}
 
 	public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
 	{
