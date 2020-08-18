@@ -56,7 +56,7 @@ public class Babelfish : MonoBehaviour
 
 
 
-    private void SetValuesFromCulture(Culture culture)
+    public void SetValuesFromCulture(Culture culture)
     {
 
         var lm = Registry.Get<LanguageManager>();
@@ -125,10 +125,7 @@ public class Babelfish : MonoBehaviour
             tmpText.fontStyle |= FontStyles.Bold;
         }
 
-
     }
-
-
 
 
 	public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later

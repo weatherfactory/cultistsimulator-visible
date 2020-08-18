@@ -243,24 +243,24 @@ public class MenuScreenController : MonoBehaviour {
         //update subtitle text
         SetEditionStatus();
 
+        Legacy legacyToDisplay = null;
+
         if (isLegalSaveGame)
         {
-            string possibleLegacy = saveGameManager.GetLegacyIdFromSavedGame();
-            var legacy = Registry.Get<ICompendium>().GetEntityById<Legacy>(possibleLegacy);
-            if (legacy != null)
-                Subtitle.SetText(legacy.Label);
+            string possibleLegacyId = saveGameManager.GetLegacyIdFromSavedGame();
+            legacyToDisplay = Registry.Get<ICompendium>().GetEntityById<Legacy>(possibleLegacyId);
         }
+        if (legacyToDisplay != null)
+            Subtitle.SetText(legacyToDisplay.Label);
         else
         {
-            
-
             if (NoonUtility.PerpetualEdition)
             {
-                Subtitle.SetLocValue("UI_PERPETUAL_EDITION");
+                Subtitle.UpdateWithLocValue("UI_PERPETUAL_EDITION");
             }
             else
 		    {
-                Subtitle.SetLocValue("UI_BRING_THE_DAWN");
+                Subtitle.UpdateWithLocValue("UI_BRING_THE_DAWN");
                
             }
         }

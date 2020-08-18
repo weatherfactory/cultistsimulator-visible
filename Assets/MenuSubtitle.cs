@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 
@@ -10,20 +13,27 @@ public class MenuSubtitle : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI SubtitleTextShadow;
 
-    public void SetLocValue(string text)
+    public void UpdateWithLocValue(string text)
     {
-		Babelfish fish = SubtitleText.gameObject.GetComponent<Babelfish>();
-		if (fish)
-		{ 
-			fish.SetLocLabel( text );
-		}
-		fish = SubtitleTextShadow.gameObject.GetComponent<Babelfish>();
-		if (fish)
-		{
-			fish.SetLocLabel( text );
-		}
+        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
 
-        SetText(text);
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+
+
+        Babelfish subfish = SubtitleText.gameObject.GetComponent<Babelfish>();
+		if (subfish)
+		{ 
+			subfish.SetLocLabel(text); 
+            subfish.SetValuesFromCulture(currentCulture);
+        }
+
+        Babelfish shadowfish = SubtitleTextShadow.gameObject.GetComponent<Babelfish>();
+		if (shadowfish)
+		{
+            shadowfish.SetLocLabel(text);
+            shadowfish.SetValuesFromCulture(currentCulture);
+        }
+
     }
 
 
