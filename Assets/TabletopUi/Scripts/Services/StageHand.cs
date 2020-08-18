@@ -35,8 +35,12 @@ namespace Assets.TabletopUi.Scripts.Services
         public void LoadFirstScene(bool skipLogo)
         {
 
-            if(StartingSceneNumber>0 && Application.isEditor)
-                SceneChange(StartingSceneNumber);
+            if (Application.isEditor)
+            {
+                if (StartingSceneNumber > 0)
+                    SceneChange(StartingSceneNumber);
+            }
+            
             else
             {
 

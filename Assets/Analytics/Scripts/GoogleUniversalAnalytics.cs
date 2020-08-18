@@ -5,7 +5,7 @@
 // http://strobotnik.com
 // http://jet.ro
 //
-// $Revision: 1410 $
+// $Revision: 1434 $
 //
 // File version history:
 // 2013-04-26, 1.0.0 - Initial version
@@ -74,6 +74,7 @@
 // 2019-02-11, 1.8.0 - Use UnityWebRequest on Unity 2018.3+.
 // 2019-11-20, 1.8.2 - Added custom user agent construction for Android, after
 //                     default UA change in recent Unity versions.
+// 2020-07-30, 1.8.3 - Minor fix to addCustomHeaders.
 
 #if UNITY_EDITOR
 #define GUA_DEBUG
@@ -521,7 +522,7 @@ public sealed class GoogleUniversalAnalytics
             customHeaders = new Dictionary<string, string>();
             #endif
         }
-        customHeaders.Add(key, value);
+        customHeaders[key] = value;
     }
 
     public bool shouldWarnAboutUsingExampleTrackingProperty()

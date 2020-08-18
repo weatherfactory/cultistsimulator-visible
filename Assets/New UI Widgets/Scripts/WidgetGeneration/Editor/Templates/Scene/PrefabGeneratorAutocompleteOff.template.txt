@@ -1,0 +1,21 @@
+﻿#if UNITY_EDITOR
+namespace {0:WidgetsNamespace}
+{{
+	public partial class {0:PrefabGeneratorClass} : UIWidgets.WidgetGeneration.PrefabGenerator
+	{{
+		void GenerateSceneAutocomplete({0:TestClass} target, UIWidgets.WidgetGeneration.SceneGeneratorHelper helper)
+		{{
+			AddLabel(helper.LabelAutocomplete, "Autocomplete requires at least one field or property of the \"string\" type.");
+		}}
+
+		/// <summary>
+		/// Generate Autocomplete.
+		/// </summary>
+		/// <returns>Autocomplete.</returns>
+		protected override UnityEngine.GameObject GenerateAutocomplete()
+		{{
+			return null;
+		}}
+	}}
+}}
+#endif

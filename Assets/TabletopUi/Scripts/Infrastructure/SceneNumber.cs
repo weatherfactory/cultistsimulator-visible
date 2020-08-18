@@ -9,7 +9,7 @@ public static class SceneNumber
     public const int QuoteScene = 2;
     public const int MenuScene = 3;
     public const int TabletopScene = 4;
-    public const int EndScene = 5;
+    public const int GameOverScene = 5;
     public const int NewGameScene = 6;
 
 }

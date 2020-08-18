@@ -229,6 +229,7 @@ public class Analytics : MonoBehaviour
         if (gua.shouldWarnAboutUsingExampleTrackingProperty())
         {
             GameObject guiWarningGO = new GameObject();
+#if UNITY_2017_2_OR_NEWER
             GameObject canvasGO = new GameObject();
             canvasGO.name = "GUA Warning Canvas";
             Canvas canvas = canvasGO.AddComponent<Canvas>();
@@ -241,13 +242,20 @@ public class Analytics : MonoBehaviour
             if (canvasRT)
                 guiWarning.rectTransform.sizeDelta = canvasRT.sizeDelta;
             guiWarning.transform.position = Vector3.zero;
+#else
+            GUIText guiWarning = guiWarningGO.AddComponent<GUIText>();
+            guiWarning.anchor = TextAnchor.UpperCenter;
+            guiWarning.transform.position = new Vector3(0.5f, 0.9f);
+#endif
             guiWarning.name = "GUA WARNING: Wrong Tracking Property ID";
             guiWarning.text = "GUA WARNING: Wrong analytics Tracking Property ID!"; // USE YOUR ANALYTICS TRACKING PROPERTY ID FROM GOOGLE ANALYTICS
             guiWarning.fontSize = 16;
+	    #if !UNITY_3_5
             guiWarning.color = Color.red;
+	    #endif
             guiWarning.fontStyle = UnityEngine.FontStyle.Bold;
         }
-        
+
         if (PlayerPrefs.HasKey(disableAnalyticsByUserOptOutPrefKey))
         {
             gua.analyticsDisabled = (PlayerPrefs.GetInt(disableAnalyticsByUserOptOutPrefKey, 0) != 0);
@@ -301,27 +309,49 @@ public class Analytics : MonoBehaviour
                 sendSystemInfoEvent(category, "graphicsDeviceVendorID", SystemInfo.graphicsDeviceVendorID.ToString(), SystemInfo.graphicsDeviceVendorID);
                 sendSystemInfoEvent(category, "graphicsDeviceVersion", SystemInfo.graphicsDeviceVersion);
                 sendSystemInfoEvent(category, "graphicsShaderLevel", SystemInfo.graphicsShaderLevel.ToString(), SystemInfo.graphicsShaderLevel);
-
+#               if UNITY_3_5 || UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+                // (graphicsPixelFillrate is not supported on Unity 5.0+)
+                // round down to chunks for label (10-5000 MPix depending on value range)
+                int pixelFillrateChunkSize = 5000;
+                if (SystemInfo.graphicsPixelFillrate < 40000)
+                    pixelFillrateChunkSize = 2000;
+                if (SystemInfo.graphicsPixelFillrate < 10000)
+                    pixelFillrateChunkSize = 1000;
+                else if (SystemInfo.graphicsPixelFillrate < 4000)
+                    pixelFillrateChunkSize = 500;
+                else if (SystemInfo.graphicsPixelFillrate < 1300)
+                    pixelFillrateChunkSize = 100;
+                else if (SystemInfo.graphicsPixelFillrate < 200)
+                    pixelFillrateChunkSize = 20;
+                else if (SystemInfo.graphicsPixelFillrate < 100)
+                    pixelFillrateChunkSize = 10;
+                sendSystemInfoEvent(category, "graphicsPixelFillrate", (pixelFillrateChunkSize * (SystemInfo.graphicsPixelFillrate / pixelFillrateChunkSize)).ToString(), SystemInfo.graphicsPixelFillrate);
+#               else // or Unity 5.0+:
+                // New additions in Unity 5.0+:
                 sendSystemInfoEvent(category, "graphicsMultiThreaded", SystemInfo.graphicsMultiThreaded ? "yes" : "no", SystemInfo.graphicsMultiThreaded ? 1 : 0);
+#               endif // Unity 5.0+
                 sendSystemInfoEvent(category, "deviceType", SystemInfo.deviceType.ToString());
                 // round down to 512 chunks for label
-
+#               if !UNITY_3_5
                 sendSystemInfoEvent(category, "maxTextureSize", (512 * (SystemInfo.maxTextureSize / 512)).ToString(), SystemInfo.maxTextureSize);
                 sendSystemInfoEvent(category, "supports3DTextures", SystemInfo.supports3DTextures ? "yes" : "no", SystemInfo.supports3DTextures ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsComputeShaders", SystemInfo.supportsComputeShaders ? "yes" : "no", SystemInfo.supportsComputeShaders ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsInstancing", SystemInfo.supportsInstancing ? "yes" : "no", SystemInfo.supportsInstancing ? 1 : 0);
                 sendSystemInfoEvent(category, "npotSupport", SystemInfo.npotSupport.ToString());
-
+#               endif
                 sendSystemInfoEvent(category, "supportsShadows", SystemInfo.supportsShadows ? "yes" : "no", SystemInfo.supportsShadows ? 1 : 0);
+#               if UNITY_3_5 || UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4
+                sendSystemInfoEvent(category, "supportsRenderTextures", SystemInfo.supportsRenderTextures ? "yes" : "no", SystemInfo.supportsRenderTextures ? 1 : 0);
+#               endif
                 sendSystemInfoEvent(category, "supportedRenderTargetCount", SystemInfo.supportedRenderTargetCount.ToString(), SystemInfo.supportedRenderTargetCount);
                 sendSystemInfoEvent(category, "deviceModel", SystemInfo.deviceModel);
                 sendSystemInfoEvent(category, "supportsAccelerometer", SystemInfo.supportsAccelerometer ? "yes" : "no", SystemInfo.supportsAccelerometer ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsGyroscope", SystemInfo.supportsGyroscope ? "yes" : "no", SystemInfo.supportsGyroscope ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsLocationService", SystemInfo.supportsLocationService ? "yes" : "no", SystemInfo.supportsLocationService ? 1 : 0);
                 sendSystemInfoEvent(category, "supportsVibration", SystemInfo.supportsVibration ? "yes" : "no", SystemInfo.supportsVibration ? 1 : 0);
-
-               // sendSystemInfoEvent(category, "supportsImageEffects", SystemInfo.supportsImageEffects ? "yes" : "no", SystemInfo.supportsImageEffects ? 1 : 0);
-
+#               if !UNITY_2019_1_OR_NEWER
+                sendSystemInfoEvent(category, "supportsImageEffects", SystemInfo.supportsImageEffects ? "yes" : "no", SystemInfo.supportsImageEffects ? 1 : 0);
+#               endif
                 PlayerPrefs.SetInt(prefKey, getPOSIXTime());
                 PlayerPrefs.Save();
             } // sendSystemInfo
@@ -329,11 +359,18 @@ public class Analytics : MonoBehaviour
 
         if (sendExceptions &&
             (!Application.isEditor || sendExceptionsAlsoFromEditor))
-        { // Unity 5.0+:
+        {
+#           if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5 && !UNITY_4_6 && !UNITY_4_7
+            // Unity 5.0+:
             Application.logMessageReceived += Callback_HandleLog;
+#           else
+            Application.RegisterLogCallback(Callback_HandleLog);
+#           endif
         }
 
+#       if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5 && !UNITY_4_6 && !UNITY_4_7 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 && !UNITY_5_3
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += Callback_SceneLoaded;
+#       endif
 	} // Awake
 
 
@@ -364,6 +401,16 @@ public class Analytics : MonoBehaviour
         }
     }
 
+#   if UNITY_3_5 || UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3
+    void OnLevelWasLoaded(int level)
+    {
+        if (autoSendHitOnSceneLoad == AutoSceneLoadHitOption.Disabled)
+            return;
+        string newActiveSceneName = getActiveSceneName();
+        GoogleUniversalAnalytics gua = GoogleUniversalAnalytics.Instance;
+        gua.sendAppScreenHit(newLevelAnalyticsEventPrefix + newActiveSceneName);
+    }
+#   else
     void Callback_SceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
         if (autoSendHitOnSceneLoad == AutoSceneLoadHitOption.Disabled)
@@ -385,6 +432,7 @@ public class Analytics : MonoBehaviour
             gua.sendAppScreenHit(newLevelAnalyticsEventPrefix + scene.name);
         }
     }
+#   endif
 
     void OnDisable()
     {

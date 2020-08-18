@@ -8,7 +8,8 @@ namespace Assets.CS.TabletopUI
         {
             get
             {
-                return UnityEngine.SystemInfo.operatingSystem.IndexOf("Mac OS") != -1;
+                return Application.platform == RuntimePlatform.OSXPlayer ||
+                       Application.platform == RuntimePlatform.OSXEditor;
             }
         }
  
@@ -16,18 +17,19 @@ namespace Assets.CS.TabletopUI
         {
             get
             {
-                return UnityEngine.SystemInfo.operatingSystem.IndexOf("Windows") != -1;
+                return Application.platform == RuntimePlatform.WindowsPlayer ||
+                       Application.platform == RuntimePlatform.WindowsEditor;
             }
         }
  
         public static bool IsInInLinuxOS
         {
-            get{
-                #if UNITY_STANDALONE_LINUX||UNITY_EDITOR_LINUX
-                        return true;
-                #else
-                        return false;
-                #endif
+            get
+            {
+                return Application.platform == RuntimePlatform.LinuxPlayer ||
+                       Application.platform == RuntimePlatform.LinuxEditor;
+
+
             }
         }
         public static void Test()

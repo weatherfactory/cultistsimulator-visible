@@ -10,6 +10,8 @@ using Noon;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.WSA;
+using Application = UnityEngine.Application;
 using Storefront = TabletopUi.Scripts.Services.Storefront;
 
 namespace Assets.Core.Utility
@@ -20,21 +22,12 @@ namespace Assets.Core.Utility
 
         private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_ROOT = "c:\\builds\\cs\\build_outputs";
+        private const string SCENES_FOLDER = "assets/TabletopUi/Scenes";
         private const string CONST_DLC_FOLDER = "DLC";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets\\edition\\semper.txt";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
 
-        private static readonly string[] Scenes =
-        {
-            "Assets/TabletopUi/Logo.unity",
-            "Assets/TabletopUi/Quote.unity",
-            "Assets/TabletopUi/Menu.unity",
-            "Assets/TabletopUi/Tabletop.unity",
-            "Assets/TabletopUi/GameOver.unity",
-            "Assets/TabletopUi/NewGame.unity",
-            "Assets/TabletopUi/Global.unity",
-        };
 
         private static readonly string[] ContentTypes =
         {
@@ -205,12 +198,25 @@ namespace Assets.Core.Utility
 
             env.DeleteProductWithOSBuildPath(product,os);
 
+
+            if(!Directory.Exists(SCENES_FOLDER))
+                throw new ApplicationException($"Can't find scenes folder {SCENES_FOLDER}: exiting");
+
+            List<string> sceneFilesInFolder = new List<string>();
+            
+            
+            sceneFilesInFolder.AddRange(Directory.GetFiles(SCENES_FOLDER).ToList().FindAll(f=>f.EndsWith(".unity")));
+            foreach(var f in sceneFilesInFolder)
+            {
+                Log("Adding scene to build: "+ f);
+            }
+
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 target = target,
                 locationPathName = NoonUtility.JoinPaths(env.GetProductWithOSBuildPath(product, os), os.ExeName),
-                scenes = Scenes
-            };
+                scenes = sceneFilesInFolder.ToArray()
+        };
             Log("Building " + target + " version to build directory: " + buildPlayerOptions.locationPathName);            
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
