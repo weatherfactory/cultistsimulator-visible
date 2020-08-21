@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
     /// </summary>
     public class ModManager
     {
-        private const string MOD_MANIFEST_FILE_NAME = "synopsis.json";
+        private const string MOD_SYNOPSIS_FILENAME = "synopsis.json";
 
         private static readonly string LocalModsPath = Path.Combine(Application.persistentDataPath, "mods");
 
@@ -27,25 +27,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
         private Dictionary<string, Mod> _cataloguedMods { get; }
-
-
-        /// <summary>
-        /// TODO: base this on importable type tags
-        /// </summary>
-        private readonly HashSet<string> _imagesDirectories = new HashSet<string>
-        {
-            "aspects",
-            "burns",
-            "cardbacks",
-            "elements",
-            "elements\\anim",
-            "endings",
-            "legacies",
-            "ui",
-            "verbs",
-            "verbs\\anim"
-        };
-
 
 
         public ModManager()
@@ -145,7 +126,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     }
                 }
             }
-            
+             
             // Enable all mods that have been marked as enabled
             foreach (var modId in LoadEnabledModList())
             {
@@ -160,91 +141,101 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
         foreach (var modFolder in inFolders)
         {
-            var modId = Path.GetFileName(modFolder);
-            if (modId == null)
+            var cataloguedMod=GetCataloguedMod(modInstallTypeForLocation, modFolder, theseMods);
+
+            if(cataloguedMod.IsValid)
             {
-                NoonUtility.Log("Unexpected null directory name for mod");
-                continue;
-            }
-
-            NoonUtility.Log("Found directory for mod " + modId,0,VerbosityLevel.SystemChatter);
-
-            // Find the mod's manifest and load its data
-            var manifestPath = Path.Combine(modFolder, MOD_MANIFEST_FILE_NAME);
-            if (!File.Exists(manifestPath))
-            {
-                NoonUtility.Log(
-                    "Mod synopsis not found; skipping mod",
-                    messageLevel: 2);
-                continue;
-            }
-
-            //TODO: refactor to JSON.NET
-            var manifestData = SimpleJsonImporter.Import(File.ReadAllText(manifestPath));
-            if (manifestData == null)
-            {
-                NoonUtility.Log(
-                    "Invalid mod manifest JSON; skipping mod",
-                    messageLevel: 2);
-                continue;
-            }
-
-            // Initialize the mod with its manifest information
-            var mod = new Mod(modId, modFolder);
-
-            var errors = mod.FromManifest(manifestData);
-            if (errors.Count > 0)
-            {
-                foreach (var error in errors)
-                {
-                    NoonUtility.Log(error, messageLevel: 2);
-                }
-
-                NoonUtility.Log(
-                    "Encountered errors in manifest; skipping mod",
-                    messageLevel: 2);
-                continue;
-            }
-
-            var candidateContentFolder = Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
-            if (!Directory.Exists(candidateContentFolder))
-            {
-                NoonUtility.Log(
-                    mod.Id + " has no content directory", 0, VerbosityLevel.SystemChatter);
+                theseMods.Add(cataloguedMod.Id, cataloguedMod);
+                NoonUtility.Log(cataloguedMod.CataloguingLog,0,VerbosityLevel.Significants);
             }
             else
-                mod.ContentFolder = candidateContentFolder;
-
-            var candidateLocFolder = Path.Combine(modFolder, NoonConstants.LOC_FOLDER_NAME);
-            if (!Directory.Exists(candidateContentFolder))
-            {
-                NoonUtility.Log(mod.Id + " has no loc directory", 0, VerbosityLevel.SystemChatter);
-            }
-            else
-            {
-                NoonUtility.Log(mod.Id + " has a loc directory", 0, VerbosityLevel.SystemChatter);
-                mod.LocFolder = candidateLocFolder;
-            }
-                // Collect the mod's images
-                // If an error occurs in the process, discard the mod
-                //commented out - not checking until we load the mod
-                //can we have image-only mods? in this case we will need to reconsider the content directory doesn't exist exclusion above
-                if (!LoadAllImagesDirectory(mod, modFolder, "images\\"))
-                {
-                    NoonUtility.Log(
-                        "Encountered errors in images, skipping mod",
-                        messageLevel: 2);
-                    continue;
-                }
-
-                // Add the mod to the collection
-                mod.ModInstallType = modInstallTypeForLocation;
-
-                NoonUtility.Log("Catalogued mod '" + modId + "'", 0, VerbosityLevel.SystemChatter);
-            theseMods.Add(modId, mod);
+               NoonUtility.Log(cataloguedMod.CataloguingLog, 2, VerbosityLevel.Significants);
         }
 
-        return theseMods;
+            return theseMods;
+    }
+
+    private Mod GetCataloguedMod(ModInstallType modInstallTypeForLocation, string modFolder, Dictionary<string, Mod> theseMods)
+    {
+        var modId = Path.GetFileName(modFolder);
+
+        var mod = new Mod(modId, modFolder);
+
+        mod.CataloguingLog = $"Mod id {Path.GetFileName(modFolder)}: ";
+
+            
+
+        // Find the mod's manifest and load its data
+        var synopsisPath = Path.Combine(modFolder, MOD_SYNOPSIS_FILENAME);
+        if (!File.Exists(synopsisPath))
+        {
+            mod.CataloguingLog += "Mod synopsis not found; skipping mod";
+          mod.MarkAsInvalid();
+            return mod;
+        }
+
+        //TODO: refactor to JSON.NET
+        var manifestData = SimpleJsonImporter.Import(File.ReadAllText(synopsisPath));
+        if (manifestData == null)
+        {
+            mod.CataloguingLog += "Invalid mod manifest JSON; skipping mod";
+            mod.MarkAsInvalid();
+            return mod;
+        }
+
+   
+
+        Sprite previewSprite = LoadSprite(mod.PreviewImageFilePath);
+        if (previewSprite == null)
+            mod.CataloguingLog+="has no preview image; can't upload it to Workshop;";
+        else
+            mod.PreviewImage = previewSprite;
+
+
+        var synopsisErrors = mod.PopulateFromSynopsis(manifestData);
+        if (synopsisErrors.Count > 0)
+        {
+            foreach (var error in synopsisErrors)
+            {
+                mod.CataloguingLog += $"error in synopsis: {error}; ";
+            }
+
+            mod.MarkAsInvalid();
+            return mod;
+        }
+        
+        var candidateContentFolder = Path.Combine(modFolder, NoonConstants.CONTENT_FOLDER_NAME);
+
+        if (!Directory.Exists(candidateContentFolder))
+        {
+            mod.CataloguingLog += " has no content directory; ";
+        }
+        else
+            mod.ContentFolder = candidateContentFolder;
+
+        var candidateLocFolder = Path.Combine(modFolder, NoonConstants.LOC_FOLDER_NAME);
+
+        if (!Directory.Exists(candidateContentFolder))
+        {
+
+            mod.CataloguingLog += " has no loc directory; ";
+        }
+        else
+        {
+            mod.CataloguingLog += " has a loc directory; ";
+            mod.LocFolder = candidateLocFolder;
+        }
+
+        if (TryLoadAllImages(mod, modFolder))
+            mod.CataloguingLog += " has a valid images directory; ";
+        else
+            mod.CataloguingLog += " has no valid images directory; ";
+
+
+        mod.ModInstallType = modInstallTypeForLocation;
+            
+
+        return mod;
     }
 
     public Mod SetModEnableStateAndReloadContent(string modId, bool enable)
@@ -336,51 +327,44 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         }
 
 
-        private bool LoadAllImagesDirectory(Mod mod, string modPath, string imagesFolder)
+        private List<string> GetFilesRecursive(string path,string extension)
         {
-            // Search all subdirectories for more image files
-            return _imagesDirectories.All(
-                imageSubDirectoryPath => LoadImages(mod, modPath,imagesFolder, imageSubDirectoryPath));
+            List<string> FilePaths = new List<string>();
+            //find all the content files
+            if (Directory.Exists(path))
+            {
+                FilePaths.AddRange(Directory.GetFiles(path).ToList().FindAll(f => f.EndsWith(extension)));
+                foreach (var subdirectory in Directory.GetDirectories(path))
+                    FilePaths.AddRange(GetFilesRecursive(subdirectory,extension));
+            }
+            return FilePaths;
         }
 
-        private static bool LoadImages(Mod mod, string modPath,string imagesFolder, string imagesSubdirectory)
+
+
+        private bool TryLoadAllImages(Mod mod, string modPath)
         {
-            Sprite previewSprite = LoadSprite(mod.PreviewImageFilePath);
-            mod.PreviewImage = previewSprite;
 
-
-            // Check if the directory exists, otherwise don't try looking for images in it
-            var imagesSubdirectoryPath = Path.Combine(modPath,imagesFolder, imagesSubdirectory);
-            if (!Directory.Exists(imagesSubdirectoryPath))
+            var imagesFolderForMod = Path.Combine(modPath, "images\\");
+            // Search all subdirectories for more image files
+            
+            if (Directory.Exists(imagesFolderForMod))
             {
+                var imageFiles = GetFilesRecursive(imagesFolderForMod, ".png");
+                if (!imageFiles.Any())
+                    return false;
+
+                foreach (var imageFile in imageFiles)
+                    mod.LoadImage(imageFile);
+
                 return true;
             }
-
-            // Load all PNG images into memory
-            // This may incur a performance hit - a better system may be needed later
-            foreach (var imagePath in Directory.GetFiles(imagesSubdirectoryPath, "*.png"))
-            {
-                Sprite eachSprite;
-
-                var fileResourceName = Path.Combine(imagesFolder, imagesSubdirectory, Path.GetFileNameWithoutExtension(imagePath));
-                try
-                {
-                    eachSprite = LoadSprite(imagePath);
-                }
-                catch
-                {
-                    NoonUtility.Log(
-                        "Invalid image file '" + fileResourceName + "'", 
-                        2);
-                    return false;
-                }
-
-                mod.Images.Add(fileResourceName, eachSprite);
-            }
-            return true;
+            else
+                return false;
         }
 
-        private static Sprite LoadSprite(string imagePath)
+
+        private Sprite LoadSprite(string imagePath)
         {
             Sprite sprite;
 
