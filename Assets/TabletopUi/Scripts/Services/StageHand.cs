@@ -10,8 +10,11 @@ namespace Assets.TabletopUi.Scripts.Services
 
     public class StageHand:MonoBehaviour
     {
+        private const int TabletopScene = 4;
+
         public int StartingSceneNumber;
 
+        public bool RestartingGameFlag;
 
         public void SceneChange(int sceneToLoad)
         {
@@ -29,6 +32,19 @@ namespace Assets.TabletopUi.Scripts.Services
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
 
         }
+
+        public void RestartGame()
+        {
+            RestartingGameFlag = true;
+            SceneChange(TabletopScene);
+        }
+
+        public void ClearRestartingGameFlag()
+        {
+            RestartingGameFlag = false;
+        }
+
+
 
         public void LoadFirstScene(bool skipLogo)
         {

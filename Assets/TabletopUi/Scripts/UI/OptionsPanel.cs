@@ -337,9 +337,9 @@ public class OptionsPanel : MonoBehaviour {
 			return;
         if(restartButton.AttemptRestart())
         {
+            ToggleVisibility();
+            Registry.Get<StageHand>().RestartGame();
 
-        Registry.Get<ITabletopManager>().RestartGame();
-        ToggleVisibility();
         }
     }
 

@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         Restarting=1
     }
 
-   public static class CrossSceneState
+   public static class __CrossSceneState
     {
         private static Ending _currentEnding;
         private static List<Legacy> _availableLegacies;

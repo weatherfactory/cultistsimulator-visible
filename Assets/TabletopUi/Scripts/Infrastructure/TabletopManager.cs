@@ -263,18 +263,17 @@ namespace Assets.CS.TabletopUI {
             //this is all a bit post facto and could do with being tidied up
             //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
 			bool shouldStartPaused = false;
-            var chosenLegacy = CrossSceneState.GetChosenLegacy();
-            if (chosenLegacy == null)
-            {
-                NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
-                chosenLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
-                CrossSceneState.SetChosenLegacy(chosenLegacy);
-                Registry.Get<Character>() .ActiveLegacy = chosenLegacy;
-            }
+            //var chosenLegacy = CrossSceneState.GetChosenLegacy();
+            //if (chosenLegacy == null)
+            //{
+            //    NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
+            //    chosenLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
+            //    CrossSceneState.SetChosenLegacy(chosenLegacy);
+            //    Registry.Get<Character>() .ActiveLegacy = chosenLegacy;
+            //}
 
-            if (CrossSceneState.GameState == GameState.Restarting)
+            if(Registry.Get<StageHand>().RestartingGameFlag)
             {
-                CrossSceneState.RestartingGame();
                 BeginNewGame(builder);
             }
             else
@@ -321,7 +320,7 @@ namespace Assets.CS.TabletopUI {
             var populatedCharacter =
                 Registry.Get<Character>(); //should just have been set above, but let's keep this clean
             Registry.Get<ICompendium>().SupplyLevers(populatedCharacter);
-            CrossSceneState.RestartedGame();
+     Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
@@ -333,7 +332,7 @@ namespace Assets.CS.TabletopUI {
                                               OptionsPanel optionsPanel) {
 
             speedController.Initialise(_heart);
-            uiController.Initialise(_speedController, debugTools, _optionsPanel);
+
             intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Get<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
@@ -601,12 +600,6 @@ namespace Assets.CS.TabletopUI {
                 }
         }
 
-        public void RestartGame() {
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-            CrossSceneState.RestartingGame();
-
-            Registry.Get<StageHand>().SceneChange(SceneManager.GetActiveScene().buildIndex);
-        }
 
         public void EndGame(Ending ending, SituationController endingSituation)
 		{

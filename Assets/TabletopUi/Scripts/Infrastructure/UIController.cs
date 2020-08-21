@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public UnityEvent TogglePauseEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
-        private DebugTools _debugTools;
+        public DebugTools _debugTools;
         
 
         public static bool IsInInputField() {
@@ -35,10 +35,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 		private static bool inInputField;
 
-        public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
-        {
-        _debugTools = debugTools;
-        }
 
 		void OnDisable() {
 			inInputField = false;
@@ -61,37 +57,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
                 ToggleDebugEvent.Invoke();
-
-
-                var situationsCatalogue = Registry.Get<SituationsCatalogue>();
-                foreach (var sc in situationsCatalogue.GetRegisteredSituations())
-                {
-                    if(_debugTools.isActiveAndEnabled && sc.IsOpen)
-                        sc.SetEditorActive(true);
-                    else
-                        sc.SetEditorActive(false);
-                }
             }
 
-            try
-            {
-                if (!_debugTools.isActiveAndEnabled)
-                {
-                    //...it's nice to be able to type N and M
 
-                    if (Input.GetKeyDown(KeyCode.N))
-                        SpeedControlEvent.Invoke(GameSpeed.Normal);
+            if (!_debugTools.isActiveAndEnabled)
+            {
+                //...it's nice to be able to type N and M
+
+                if (Input.GetKeyDown(KeyCode.N))
+                    SpeedControlEvent.Invoke(GameSpeed.Normal);
                    
-                    if (Input.GetKeyDown(KeyCode.M))
-                        SpeedControlEvent.Invoke(GameSpeed.Fast);
+                if (Input.GetKeyDown(KeyCode.M))
+                    SpeedControlEvent.Invoke(GameSpeed.Fast);
 
-                }
             }
 
-            catch (Exception e)
-            {
-                NoonUtility.Log("Problem with debug tools: " + e.Message);
-            }
+
 
             if (Input.GetButtonDown("Pause"))
                 TogglePauseEvent.Invoke();
