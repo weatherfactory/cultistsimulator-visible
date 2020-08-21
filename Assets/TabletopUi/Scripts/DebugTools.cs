@@ -67,8 +67,21 @@ public class DebugTools : MonoBehaviour,IRollOverride
     // -1 means no previous suggestion was selected
     private int currentAutoCompletionSuggestion = -1;
 
+    public void Toggle()
+    {
+        Debug.Log(isActiveAndEnabled);
+        gameObject.SetActive(!isActiveAndEnabled);
+    }
+
+
     public void Awake()
     {
+        {
+            if (Registry.Get<Concursum>().GetKnock())
+                btnTriggerAchievement.gameObject.SetActive(true);
+
+        }
+
         autoCompletionBox.gameObject.SetActive(false);
         input.onValueChanged.AddListener(AttemptAutoCompletion);
         btnPlusOne.onClick.AddListener(() => AddCard(input.text));

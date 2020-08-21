@@ -8,6 +8,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class UIController: MonoBehaviour
     {
+        public UnityEvent ToggleDebugEvent;
         private SpeedController _speedController;
         private DebugTools _debugTools;
         private OptionsPanel _optionsPanel;
@@ -53,12 +55,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
-                _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
-                {
-                   if(Registry.Get<Concursum>().GetKnock())
-                        _debugTools.btnTriggerAchievement.gameObject.SetActive(true);
+                ToggleDebugEvent.Invoke();
 
-                }
+
 
 
                 var situationsCatalogue = Registry.Get<SituationsCatalogue>();
