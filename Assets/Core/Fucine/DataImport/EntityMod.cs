@@ -16,7 +16,7 @@ namespace Assets.Core.Fucine
             _modData = modData;
         }
 
-        public void ApplyModTo(Dictionary<string, EntityData> coreEntitiesDataDictionary,ContentImportLog log)
+        public void ApplyModTo(Dictionary<string, EntityData> allCoreEntitiesOfType,ContentImportLog log)
         {
             //check this entitymod for entity ids in 'extends'
             //if there are any, copy values from identified entity/entities entities to this entitymod
@@ -30,7 +30,7 @@ namespace Assets.Core.Fucine
             
                 foreach(var e in entityIdsToExtend)
                 {
-                    if(coreEntitiesDataDictionary.TryGetValue(e,out var dataToExtendWith))
+                    if(allCoreEntitiesOfType.TryGetValue(e,out var dataToExtendWith))
                     {
                         foreach (var k in dataToExtendWith.ValuesTable.Keys)
                             _modData.TryAdd(k, dataToExtendWith.ValuesTable[k]);
@@ -43,32 +43,45 @@ namespace Assets.Core.Fucine
 
 
             }
+            //mod data has now been populated with any values from the original entity.
 
+            
 
+            //1. Merge or overwrite any valid properties. Ignore property-operation properties for now.
+            
             //all mod operations complete. Now either merge-overwrite an existing item with that id, or add a new one 
-            if (coreEntitiesDataDictionary.ContainsKey(_modData.Id))
+            if (allCoreEntitiesOfType.ContainsKey(_modData.Id))
             {
-                var existingEntityDataItem = coreEntitiesDataDictionary[_modData.Id];
-                foreach (string key in _modData.ValuesTable.Keys)
-                    existingEntityDataItem.OverwriteOrAdd(key, _modData.ValuesTable[key]);
+                var mergeDataItem = new EntityData(_modData.UniqueId,allCoreEntitiesOfType[_modData.Id].ValuesTable);
 
+                //1. Apply property operations to the core data.
+                ProcessPropertyOperationsFromEntityMod(log, mergeDataItem);
 
-                coreEntitiesDataDictionary[_modData.Id] = _modData;
+                OverwriteOrAddPropertiesFromEntityMod(mergeDataItem);
+                
+
+                allCoreEntitiesOfType[_modData.Id] = mergeDataItem;
             }
             else
             {
                 //If a mod object id doesn't exist in original data - create a new entity and add it to data			
-                coreEntitiesDataDictionary.Add(_modData.Id, _modData);
+                allCoreEntitiesOfType.Add(_modData.Id, _modData);
             }
 
 
-            ProcessPropertyOperations(log);
+
 
 
 
         }
 
-        private void ProcessPropertyOperations(ContentImportLog log)
+        private void OverwriteOrAddPropertiesFromEntityMod(EntityData mergeDataItem)
+        {
+            foreach (string key in _modData.ValuesTable.Keys)
+                mergeDataItem.OverwriteOrAdd(key, _modData.ValuesTable[key]);
+        }
+
+        private void ProcessPropertyOperationsFromEntityMod(ContentImportLog log,EntityData entityDataToModify)
         {
             //"$append": appends a list of items to the original list property.
             //"$prepend": prepends a list of items to the original list property.
@@ -97,7 +110,7 @@ namespace Assets.Core.Fucine
                 }
 
                 var propertyToAlterKey = splitKey[0];
-                if (!_modData.ValuesTable.ContainsKey(propertyToAlterKey))
+                if (!entityDataToModify.ValuesTable.ContainsKey(propertyToAlterKey))
                 {
                     log.LogWarning(
                         "Unknown property '" + propertyToAlterKey + "' for property '" + key + "' in '" + itemId + "', skipping");
@@ -111,7 +124,7 @@ namespace Assets.Core.Fucine
                     case "append":
                     case "prepend":
                         {
-                            var originalValue = _modData.ValuesTable.GetArrayList(propertyToAlterKey);
+                            var originalValue = entityDataToModify.ValuesTable.GetArrayList(propertyToAlterKey);
                             var newValue = _modData.ValuesTable.GetArrayList(key);
                             if (originalValue == null || newValue == null)
                             {
@@ -141,14 +154,14 @@ namespace Assets.Core.Fucine
                             var newValue = _modData.ValuesTable.GetFloat(key);
 
                             var modifier = operation == "plus" ? 1 : -1;
-                            _modData.ValuesTable[propertyToAlterKey] = value + newValue * modifier;
+                            entityDataToModify.ValuesTable[propertyToAlterKey] = value + newValue * modifier;
                             break;
                         }
 
                     // add: add or replace keys in a dictionary
                     case "add":
                     {
-                        var existingValuesData = _modData.GetEntityDataFromValueTable(propertyToAlterKey);
+                        var existingValuesData = entityDataToModify.GetEntityDataFromValueTable(propertyToAlterKey);
                             var newValuesData = _modData.GetEntityDataFromValueTable(key);
                             if (existingValuesData == null || newValuesData == null)
                             {
@@ -166,7 +179,7 @@ namespace Assets.Core.Fucine
                     // remove: removes items from a dictionary or a list
                     case "remove":
                         {
-                            var valuesToDelete = _modData.ValuesTable.GetArrayList(key);
+                            var valuesToDelete = entityDataToModify.ValuesTable.GetArrayList(key);
                             if (valuesToDelete == null)
                             {
                                 log.LogWarning(
@@ -174,17 +187,17 @@ namespace Assets.Core.Fucine
                                 continue;
                             }
 
-                            if (!_modData.ValuesTable.ContainsKey(propertyToAlterKey))
+                            if (!entityDataToModify.ValuesTable.ContainsKey(propertyToAlterKey))
                             {
                                 log.LogWarning(
                                     "Cannot apply '{operation}' to '" + propertyToAlterKey + "' in '" + itemId + "': failed to find '" + propertyToAlterKey + "'");
                                 continue;
                             }
 
-                            object originalPropertyValues = _modData.ValuesTable[propertyToAlterKey];
+                            object originalPropertyValues = entityDataToModify.ValuesTable[propertyToAlterKey];
                             if (originalPropertyValues.GetType() == typeof(EntityData))
                             {
-                                var originalValuesHashtable = _modData.GetEntityDataFromValueTable(propertyToAlterKey).ValuesTable;
+                                var originalValuesHashtable = entityDataToModify.GetEntityDataFromValueTable(propertyToAlterKey).ValuesTable;
                                 foreach (string valueToDelete in valuesToDelete)
                                 {
                                     if (originalValuesHashtable.ContainsKey(valueToDelete))
@@ -197,7 +210,7 @@ namespace Assets.Core.Fucine
                             }
                             else if (originalPropertyValues.GetType() == typeof(ArrayList))
                             {
-                                var originalValuesArrayList = _modData.ValuesTable.GetArrayList(propertyToAlterKey);
+                                var originalValuesArrayList = entityDataToModify.ValuesTable.GetArrayList(propertyToAlterKey);
                                 foreach (string toDelete in valuesToDelete)
                                 {
                                     if (originalValuesArrayList.Contains(toDelete))

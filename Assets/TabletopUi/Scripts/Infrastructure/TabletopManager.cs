@@ -452,7 +452,7 @@ namespace Assets.CS.TabletopUI {
         private void SetStartingCharacterInfo(Legacy chosenLegacy)
 		{
             Character newCharacter = Registry.Get<Character>();
-            newCharacter.Name = Registry.Get<LanguageManager>().Get("UI_CLICK_TO_NAME");
+            newCharacter.Name = Registry.Get<ILanguageManager>().Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
         }
@@ -675,11 +675,11 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-	            _notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_LOADEDTITLE"), Registry.Get<LanguageManager>().Get("UI_LOADEDDESC"));
+	            _notifier.ShowNotificationWindow(Registry.Get<ILanguageManager>().Get("UI_LOADEDTITLE"), Registry.Get<ILanguageManager>().Get("UI_LOADEDDESC"));
             }
             catch (Exception e)
             {
-                _notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_LOADFAILEDTITLE"), Registry.Get<LanguageManager>().Get("UI_LOADFAILEDDESC"));
+                _notifier.ShowNotificationWindow(Registry.Get<ILanguageManager>().Get("UI_LOADFAILEDTITLE"), Registry.Get<ILanguageManager>().Get("UI_LOADFAILEDDESC"));
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }

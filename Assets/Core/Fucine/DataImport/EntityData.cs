@@ -49,19 +49,19 @@ namespace Assets.Core.Fucine.DataImport
 
         }
 
-        /// <summary>
-        /// all the values that we should copy across with extends or similar, excluding meta and mod values
-        /// </summary>
-        /// <returns></returns>
-        public Hashtable GetCopiableValues()
-        {
-            Hashtable copiableValues=new Hashtable();
-            foreach(string key in ValuesTable.Keys)
-                if(key!=NoonConstants.ID && key!=NoonConstants.EXTENDS)
-                    copiableValues.Add(key,ValuesTable[key]);
+        ///// <summary>
+        ///// all the values that we should copy across with extends or similar, excluding meta and mod values
+        ///// </summary>
+        ///// <returns></returns>
+        //public Hashtable GetCopiableValues()
+        //{
+        //    Hashtable copiableValues=new Hashtable();
+        //    foreach(string key in ValuesTable.Keys)
+        //        if(key!=NoonConstants.ID && key!=NoonConstants.EXTENDS)
+        //            copiableValues.Add(key,ValuesTable[key]);
 
-            return copiableValues;
-        }
+        //    return copiableValues;
+        //}
 
         /// <summary>
         /// return true if adding successfully, false if the key's already there

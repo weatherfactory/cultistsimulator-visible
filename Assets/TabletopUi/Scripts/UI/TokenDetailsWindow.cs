@@ -180,9 +180,9 @@ namespace Assets.CS.TabletopUI {
             ShowImage(null);
             ShowImageDecayTimer(false);
 
-			string slotHeader		= Registry.Get<LanguageManager>().Get("UI_SLOT");
-			string slotUnnamed		= Registry.Get<LanguageManager>().Get("UI_ASPECT");
-			string defaultSlotDesc	= Registry.Get<LanguageManager>().Get("UI_EMPTYSPACE");
+			string slotHeader		= Registry.Get<ILanguageManager>().Get("UI_SLOT");
+			string slotUnnamed		= Registry.Get<ILanguageManager>().Get("UI_ASPECT");
+			string defaultSlotDesc	= Registry.Get<ILanguageManager>().Get("UI_EMPTYSPACE");
 
             ShowText(
                 (string.IsNullOrEmpty(slotSpec.Label) ? slotHeader + slotUnnamed : slotHeader + slotSpec.Label),
@@ -250,7 +250,7 @@ namespace Assets.CS.TabletopUI {
 
         void ShowDeckInfos(int quantity) {
             deckInfos.enabled = quantity > 0;
-            deckInfos.text = quantity > 0 ? Registry.Get<LanguageManager>().Get("UI_UPCOMINGDRAWS") + quantity : null;
+            deckInfos.text = quantity > 0 ? Registry.Get<ILanguageManager>().Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
         public void HighlightSlotIcon(bool isGreedy, bool consumes) {

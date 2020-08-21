@@ -126,7 +126,8 @@ namespace Assets.Core.Entities
                 var e = compendium.GetEntityById<Element>(c);
                 if (e == null)
                 {
-                    throw new ApplicationException("Can't find element '" + c + " from deck id " + Id + "'");
+                    NoonUtility.Log("Can't find element '" + c + " in spec for deck id " + Id + "'",2,VerbosityLevel.Essential);
+                    continue;
                 }
 
                 if (!string.IsNullOrEmpty(e.UniquenessGroup))

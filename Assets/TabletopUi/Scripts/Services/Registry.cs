@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Core;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -30,13 +31,23 @@ namespace Assets.CS.TabletopUI
             //}
 
             if (!registered.ContainsKey(typeof(T)))
-                    throw new ApplicationException(typeof(T).Name + " wasn't registered");
+            {
+
+                NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
+                return null;
+            }
 
 
-
-              T got = registered[typeof(T)] as T;
+            T got = registered[typeof(T)] as T;
       
             return got;
+        }
+
+        public Registry()
+        {
+            if (!registered.ContainsKey(typeof(ILanguageManager)))
+                registered[typeof(ILanguageManager)] = new NullLanguageManager();
+
         }
 
         public void Register<T>(T toRegister) where T: class

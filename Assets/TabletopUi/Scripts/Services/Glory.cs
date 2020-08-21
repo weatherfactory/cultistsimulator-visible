@@ -85,7 +85,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             ReloadCompendium(Registry.Get<Concursum>().GetCurrentCultureId());
 
-            registryAccess.Register<LanguageManager>(languageManager);
+            registryAccess.Register<ILanguageManager>(languageManager);
             languageManager.Initialise();
 
 

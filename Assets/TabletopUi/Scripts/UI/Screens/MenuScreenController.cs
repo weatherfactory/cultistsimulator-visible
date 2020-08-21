@@ -564,7 +564,7 @@ void FadeIn() {
             var languageChoice =Instantiate(languageChoicePrefab).GetComponent<LanguageChoice>();
             languageChoice.transform.SetParent(LanguagesAvailable,false);
             languageChoice.Label.text = culture.Endonym;
-            languageChoice.Label.font = Registry.Get<LanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
+            languageChoice.Label.font = Registry.Get<ILanguageManager>().GetFont(LanguageManager.eFontStyle.Button, culture.FontScript);
             languageChoice.gameObject.GetComponent<Button>().onClick.AddListener(()=>SetLanguage(culture.Id));
         }
 

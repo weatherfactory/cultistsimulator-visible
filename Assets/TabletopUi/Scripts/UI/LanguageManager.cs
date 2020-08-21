@@ -13,6 +13,8 @@ using UnityEngine;
 //
 
 
+
+
 [System.Serializable]
 public class FontStyle
 {
@@ -23,7 +25,45 @@ public class FontStyle
 	public Material			fontMaterial;
 };
 
-public class LanguageManager : MonoBehaviour
+public interface ILanguageManager
+{
+    Color HighContrastLight { get; set; }
+    Color HighContrastDark { get; set; }
+
+    TMP_FontAsset GetFont( LanguageManager.eFontStyle fs, string fontscript);
+    Material GetFontMaterial( LanguageManager.eFontStyle fs );
+    string GetTimeStringForCurrentLanguage(float time);
+    string Get(string id);
+}
+
+public class NullLanguageManager : ILanguageManager
+{
+    public Color HighContrastLight { get; set; }
+
+    public Color HighContrastDark { get; set; }
+
+    public TMP_FontAsset GetFont(LanguageManager.eFontStyle fs, string fontscript)
+    {
+        return null;
+    }
+
+    public Material GetFontMaterial(LanguageManager.eFontStyle fs)
+    {
+        return null;
+    }
+
+    public string GetTimeStringForCurrentLanguage(float time)
+    {
+        return "[neither form nor void]";
+    }
+
+    public string Get(string id)
+    {
+        return "[neither form nor void]";
+    }
+}
+
+public class LanguageManager : MonoBehaviour,ILanguageManager
 {
 
 
@@ -48,8 +88,10 @@ public class LanguageManager : MonoBehaviour
 
 
     public FontStyle[]	fontStyles;
-	public Color		highContrastLight = Color.white;
-	public Color		highContrastDark = Color.black;
+	public Color		HighContrastLight { get; set; }=Color.white;
+
+
+    public Color		HighContrastDark { get; set; }=Color.black;
 
     
     private string fixedspace = "<mspace=1.6em>";   

@@ -222,7 +222,7 @@ namespace Assets.CS.TabletopUI {
                 var compendium = Registry.Get<ICompendium>();
 
                 if (notifier != null)
-                    notifier.ShowNotificationWindow(Registry.Get<LanguageManager>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+                    notifier.ShowNotificationWindow(Registry.Get<ILanguageManager>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
             else if (stack.Quantity != 1) {
                 // We're dropping more than one?
