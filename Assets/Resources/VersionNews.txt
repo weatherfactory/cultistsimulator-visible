@@ -1,5 +1,7 @@
 v2020.8.a.4; "The Mirror and the Lime"
 - images weren't working in some mod /images subfolders. They should now.
+- merge-overwriting entities didn't quite work as advertised (property operations failed when merge-overwriting). This is fixed.
+
 
 v2020.8.a.3; "The Bottled Ink"
 - available languages are now specified by the 'culture' entity in /core/cultures - which you can mod by adding a culture entity to your json.
