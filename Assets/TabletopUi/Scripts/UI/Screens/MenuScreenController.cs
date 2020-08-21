@@ -83,8 +83,6 @@ public class MenuScreenController : MonoBehaviour {
     GameSaveManager saveGameManager;
 
   
-    private ModManager _modManager;
-
 
 
     private static readonly NewStartLegacySpec[] DlcEntrySpecs =
@@ -203,11 +201,7 @@ public class MenuScreenController : MonoBehaviour {
     void InitialiseServices()
 	{
         var registry = new Registry();
-
-        _modManager = new ModManager();
-        _modManager.CatalogueMods();
-        registry.Register(_modManager);
-        
+     
 
 
 
@@ -543,13 +537,13 @@ void FadeIn() {
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry.gameObject);
         
-        foreach (var mod in _modManager.GetCataloguedMods())
+        foreach (var mod in Registry.Get<ModManager>().GetCataloguedMods())
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
             modEntry.Initialize(mod);
         }
-        modEmptyMessage.enabled = !_modManager.GetCataloguedMods().Any();
+        modEmptyMessage.enabled = !Registry.Get<ModManager>().GetCataloguedMods().Any();
     }
 
     private void BuildLanguagesAvailablePanel()
