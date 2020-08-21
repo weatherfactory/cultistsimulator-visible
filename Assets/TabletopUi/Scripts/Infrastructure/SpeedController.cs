@@ -93,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         public void TogglePause() {
-            if (isLocked)
+            if (!isLocked)
 
             SetPausedState(!_heart.IsPaused);
         }

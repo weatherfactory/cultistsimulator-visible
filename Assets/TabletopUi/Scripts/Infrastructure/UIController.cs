@@ -22,10 +22,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class UIController: MonoBehaviour
     {
-        
+        public UnityEvent TogglePauseEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
-        private SpeedController _speedController;
         private DebugTools _debugTools;
         private OptionsPanel _optionsPanel;
 
@@ -37,8 +36,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
         {
-            _speedController=speedController;
-            _optionsPanel = optionsPanel;
+        _optionsPanel = optionsPanel;
             _debugTools = debugTools;
         }
 
@@ -65,8 +63,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ToggleDebugEvent.Invoke();
 
 
-
-
                 var situationsCatalogue = Registry.Get<SituationsCatalogue>();
                 foreach (var sc in situationsCatalogue.GetRegisteredSituations())
                 {
@@ -85,12 +81,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                     if (Input.GetKeyDown(KeyCode.N))
                         SpeedControlEvent.Invoke(GameSpeed.Normal);
-                   //     _speedController.SetNormalSpeed();
-
+                   
                     if (Input.GetKeyDown(KeyCode.M))
                         SpeedControlEvent.Invoke(GameSpeed.Fast);
 
-                    //_speedController.SetFastForward();
                 }
             }
 
@@ -100,7 +94,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
             if (Input.GetButtonDown("Pause"))
-				_speedController.TogglePause();
+                TogglePauseEvent.Invoke();
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{
