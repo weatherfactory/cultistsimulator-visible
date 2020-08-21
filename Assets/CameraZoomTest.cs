@@ -35,15 +35,15 @@ public class CameraZoomTest : MonoBehaviour {
 
     void Update () {
         if (enablePlayerZoom) { 
-			if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !HotkeyWatcher.IsInInputField() && targetZoom > 0f) {
+			if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !UIController.IsInInputField() && targetZoom > 0f) {
 				targetZoom -= 0.1f;
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
-			else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !HotkeyWatcher.IsInInputField() && targetZoom < 1f) {
+			else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !UIController.IsInInputField() && targetZoom < 1f) {
 				targetZoom += 0.1f;
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
-			else if (HotkeyWatcher.IsInInputField() == false) {
+			else if (UIController.IsInInputField() == false) {
 				if ((int)Input.GetAxis("Zoom Level 1")>0)
                     targetZoom = 0f;
 			    if ((int)Input.GetAxis("Zoom Level 2") > 0)

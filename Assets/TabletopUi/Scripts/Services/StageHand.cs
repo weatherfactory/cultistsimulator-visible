@@ -13,7 +13,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public int StartingSceneNumber;
 
 
-        private int currentSceneIndex;
         public void SceneChange(int sceneToLoad)
         {
             //if (currentSceneIndex > 0)
@@ -29,7 +28,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
 
-            currentSceneIndex = sceneToLoad;
         }
 
         public void LoadFirstScene(bool skipLogo)

@@ -172,7 +172,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 	Vector2 GetMousePosFromKeys()
 	{
-		if (HotkeyWatcher.IsInInputField())
+		if (UIController.IsInInputField())
 			return Vector2.zero;
 
 		float y;

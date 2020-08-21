@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         [Header("Controllers")]
         [SerializeField] private TabletopManager _tabletopManager;
         [SerializeField] private SpeedController _speedController;
-        [SerializeField] private HotkeyWatcher _hotkeyWatcher;
+        [SerializeField] private UIController _uiController;
         
         [Header("Visuals")]
         [SerializeField] private Canvas tableCanvas;
@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             rayCaster.enabled = false; // Disable clicks on Screen
 
 			cameraZoom.enablePlayerZoom = false;
-            _hotkeyWatcher.enabled = false; // Disable shortcuts
+            _uiController.enabled = false; // Disable shortcuts
 
             // pause game
             _speedController.SetPausedState(true, false);
@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (!string.IsNullOrEmpty(fxName))
                 InstantiateEffect(fxName, culpableVerb.transform);
 
-            while (time < zoomDuration && !_hotkeyWatcher.IsPressingAbortHotkey()) {
+            while (time < zoomDuration && !_uiController.IsPressingAbortHotkey()) {
                 menuBarCanvasGrp.alpha = 1f - time; // remove lower button bar.
                 tableScroll.content.anchoredPosition = Vector2.Lerp(startPos, targetPos, Easing.Circular.Out((time / zoomDuration)));
                 yield return null;

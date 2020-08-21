@@ -91,7 +91,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         private BackgroundMusic backgroundMusic;
         [SerializeField]
-        private HotkeyWatcher _hotkeyWatcher;
+        private UIController _uiController;
 
         [SerializeField]
         private Notifier _notifier;
@@ -172,7 +172,7 @@ namespace Assets.CS.TabletopUI {
             // Game is structured to minimise Update processing, so keep this lean - CP
             // But some things do have to be updated outside the main gameplay Heart.Beat
             //
-            _hotkeyWatcher.WatchForGameplayHotkeys();
+            _uiController.WatchForGameplayHotkeys();
             _intermittentAnimatableController.CheckForCardAnimations();
 
 			if (_heart.IsPaused)
@@ -235,7 +235,7 @@ namespace Assets.CS.TabletopUI {
                 //we hand off board functions to individual controllers
                 InitialiseSubControllers(
                     _speedController,
-                    _hotkeyWatcher,
+                    _uiController,
                     _intermittentAnimatableController,
                     _mapController,
                     _endGameAnimController,
@@ -325,7 +325,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
-                                              HotkeyWatcher hotkeyWatcher,
+                                              UIController uiController,
                                               IntermittentAnimatableController intermittentAnimatableController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController,
@@ -333,12 +333,12 @@ namespace Assets.CS.TabletopUI {
                                               OptionsPanel optionsPanel) {
 
             speedController.Initialise(_heart);
-            hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
+            uiController.Initialise(_speedController, debugTools, _optionsPanel);
             intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Get<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
 
-            optionsPanel.InitPreferences(_speedController,true);
+            optionsPanel.Initialise(_speedController,true);
         }
 
         private void InitialiseListeners() {

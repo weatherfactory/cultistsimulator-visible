@@ -3023,7 +3023,7 @@ MonoBehaviour:
   StatusBar: {fileID: 1243788745}
   debugTools: {fileID: 589}
   backgroundMusic: {fileID: 677}
-  _hotkeyWatcher: {fileID: 937582878}
+  _uiController: {fileID: 937582878}
   _notifier: {fileID: 594}
   _autosaveNotifier: {fileID: 1985926805}
   _optionsPanel: {fileID: 1747492096}
@@ -24480,7 +24480,7 @@ GameObject:
   - component: {fileID: 937582877}
   - component: {fileID: 937582878}
   m_Layer: 0
-  m_Name: HotkeyWatcher
+  m_Name: UIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40947,7 +40947,7 @@ MonoBehaviour:
   targetPosOffset: {x: 0, y: -150}
   _tabletopManager: {fileID: 600}
   _speedController: {fileID: 1065654874}
-  _hotkeyWatcher: {fileID: 937582878}
+  _uiController: {fileID: 937582878}
   tableCanvas: {fileID: 341}
   cameraZoom: {fileID: 49}
   tableScroll: {fileID: 631}

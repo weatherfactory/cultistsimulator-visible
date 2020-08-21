@@ -14,7 +14,7 @@ using UnityEngine.UI;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
-    public class HotkeyWatcher: MonoBehaviour
+    public class UIController: MonoBehaviour
     {
         private SpeedController _speedController;
         private DebugTools _debugTools;

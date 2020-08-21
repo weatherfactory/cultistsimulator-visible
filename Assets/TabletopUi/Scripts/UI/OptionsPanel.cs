@@ -130,7 +130,7 @@ public class OptionsPanel : MonoBehaviour {
 
     }
 
-    public void InitPreferences( SpeedController spdctrl,bool isInGame)
+    public void Initialise( SpeedController spdctrl,bool isInGame)
 	{
 	    windowGO.SetActive(true); //so we can use tags. SO HACKY
 
