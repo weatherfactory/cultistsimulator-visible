@@ -94,32 +94,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void TogglePause() {
             if (isLocked)
-                return;
 
             SetPausedState(!_heart.IsPaused);
         }
 
-        public void SetNormalSpeed() {
+        public void SetSpeed(GameSpeed speedToSet)
+        {
             if (isLocked)
                 return;
             if (_heart.IsPaused)
                 SetPausedState(false);
 
-            _heart.SetGameSpeed(GameSpeed.Normal);
-            normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
-            fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+            if(speedToSet==GameSpeed.Normal)
+            {
+
+                _heart.SetGameSpeed(GameSpeed.Normal);
+                normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
+                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+            }
+            else if(speedToSet==GameSpeed.Fast)
+            {
+
+                _heart.SetGameSpeed(GameSpeed.Fast);
+                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+                fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
+            }
         }
 
-        public void SetFastForward() {
-            if (isLocked)
-                return;
-            if (_heart.IsPaused)
-                SetPausedState(false);
 
-            _heart.SetGameSpeed(GameSpeed.Fast);
-            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-            fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
-        }
 
     }
 }

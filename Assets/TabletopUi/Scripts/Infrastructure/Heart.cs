@@ -11,7 +11,9 @@ using TabletopUi.Scripts.Interfaces;
 
 
 public enum GameSpeed
-{ Normal,Fast}
+{ Paused=0,
+    Normal=1,
+    Fast=2}
 
 /// <summary>
 /// Top-level object

@@ -14,10 +14,17 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+    [Serializable]
+    public class SpeedControlEvent : UnityEvent<GameSpeed>
+    {
+    }
+
 
     public class UIController: MonoBehaviour
     {
+        
         public UnityEvent ToggleDebugEvent;
+        public SpeedControlEvent SpeedControlEvent;
         private SpeedController _speedController;
         private DebugTools _debugTools;
         private OptionsPanel _optionsPanel;
@@ -31,8 +38,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
         {
             _speedController=speedController;
-            _debugTools = debugTools;
             _optionsPanel = optionsPanel;
+            _debugTools = debugTools;
         }
 
 		void OnDisable() {
@@ -77,10 +84,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     //...it's nice to be able to type N and M
 
                     if (Input.GetKeyDown(KeyCode.N))
-                        _speedController.SetNormalSpeed();
+                        SpeedControlEvent.Invoke(GameSpeed.Normal);
+                   //     _speedController.SetNormalSpeed();
 
                     if (Input.GetKeyDown(KeyCode.M))
-                        _speedController.SetFastForward();
+                        SpeedControlEvent.Invoke(GameSpeed.Fast);
+
+                    //_speedController.SetFastForward();
                 }
             }
 
