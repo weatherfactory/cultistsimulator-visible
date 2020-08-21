@@ -22,11 +22,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public class UIController: MonoBehaviour
     {
+        public UnityEvent ToggleOptionsEvent;
         public UnityEvent TogglePauseEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
         private DebugTools _debugTools;
-        private OptionsPanel _optionsPanel;
+        
 
         public static bool IsInInputField() {
 			return inInputField;
@@ -36,8 +37,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
         {
-        _optionsPanel = optionsPanel;
-            _debugTools = debugTools;
+        _debugTools = debugTools;
         }
 
 		void OnDisable() {
@@ -112,8 +112,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 				if (!windowWasOpen)	// Only summon options if no windows to clear
 				{
-					_optionsPanel.ToggleVisibility();
-				}
+                    ToggleOptionsEvent.Invoke();
+                }
 			}
 
             // Check if the player tried to start a recipe while *not* holding on to a card stack or verb
