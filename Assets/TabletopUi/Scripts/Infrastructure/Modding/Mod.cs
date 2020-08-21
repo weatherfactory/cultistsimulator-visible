@@ -1,11 +1,11 @@
 
+using Noon;
+using OrbCreationExtensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using Noon;
-using OrbCreationExtensions;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
@@ -68,10 +68,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         public string ContentFolder { get; set; }
         public string LocFolder { get; set; }
 
+        public string CataloguingLog { get; set; }
+
 
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
 
-        public virtual bool IsValid => true;
+        public virtual bool IsValid { get; private set; }
+    
 
         public ModInstallType ModInstallType { get; set; }
 
@@ -88,9 +91,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             Contents = new Dictionary<string, List<Hashtable>>();
             Images = new Dictionary<string, Sprite>();
             Enabled = false;
+            IsValid = true;
         }
 
-        public HashSet<string> FromManifest(Hashtable manifest)
+        public void MarkAsInvalid()
+        {
+            IsValid=false;
+        }
+
+        public HashSet<string> PopulateFromSynopsis(Hashtable manifest)
         {
             var errors = new HashSet<string>();
 
@@ -117,6 +126,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     if (!(dependencySpecification is string))
                     {
                         errors.Add("Invalid dependency specification type, should be string");
+                        MarkAsInvalid();
                         continue;
                     }
                     var regex = new Regex(DependencyPattern);
@@ -162,6 +172,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                                 errors.Add(
                                     "Invalid version number '" + match.Groups[3].Value + "' for '" + dependency.ModId + "'");
                                 invalidDependency = true;
+                                MarkAsInvalid();
                             }
                         }
 
@@ -174,28 +185,76 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
                     {
                         errors.Add(
                             "Invalid dependency specification format '" + dependencySpecification + "'");
+                        MarkAsInvalid();
                     }
                 }
             }
             else if (manifest.ContainsKey("dependencies"))
             {
                 errors.Add("Invalid type for 'dependencies', should be array");
+                MarkAsInvalid();
             }
 
             return errors;
         }
 
-        //public void AddContent(string category, ArrayList contents)
-        //{
-        //    if (!Contents.ContainsKey(category))
-        //    {
-        //        Contents.Add(category, new List<Hashtable>());
-        //    }
-        //    var contentList = Contents[category];
-        //    foreach (var content in contents)
-        //    {
-        //        contentList.Add((Hashtable) content);
-        //    }
-        //}
+
+        public bool LoadImage(string imageFilePath)
+        {
+            //need to determine the subfolder tidily, to avoid absolute path problem for image key
+
+            Sprite spriteToLoad;
+
+            
+            //we don't want the absolute root in here, because later we'll match it against relative locations for core images
+            string relativePath = imageFilePath.Replace(ModRootFolder, string.Empty);
+
+            
+            string relativePathWithoutFileExtension = relativePath.Replace(Path.GetFileName(relativePath),
+                Path.GetFileNameWithoutExtension(relativePath));
+
+            string relativePathWithoutLeadingSlash = relativePathWithoutFileExtension.Remove(0, 1);
+
+            try
+            {
+                spriteToLoad = LoadSprite(imageFilePath);
+            }
+            catch
+            {
+                NoonUtility.Log(
+                    "Invalid image file '" + imageFilePath + "'",
+                    2);
+                return false;
+            }
+
+            Images.Add(relativePathWithoutLeadingSlash, spriteToLoad);
+
+            return true;
+        }
+
+        private Sprite LoadSprite(string imagePath)
+        {
+            Sprite sprite;
+
+            if (!File.Exists(imagePath))
+                return null;
+
+            var fileData = File.ReadAllBytes(imagePath);
+
+            // Try to load the image data into a sprite
+
+
+            var texture = new Texture2D(2, 2);
+            texture.LoadImage(fileData);
+            texture.filterMode = FilterMode.Trilinear;
+            texture.anisoLevel = 9;
+            texture.mipMapBias = (float)-0.5;
+            texture.Apply();
+            sprite = Sprite.Create(
+                texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            return sprite;
+        }
+
+
     }
 }
