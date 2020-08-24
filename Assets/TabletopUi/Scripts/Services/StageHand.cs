@@ -45,6 +45,21 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
+        public void MenuScreen()
+        {
+            SceneChange(SceneNumber.MenuScene);
+        }
+
+        public void EndingScreen()
+        {
+            SceneChange(SceneNumber.GameOverScene);
+        }
+
+        public void LegacyChoiceScreen()
+        {
+            SceneChange(SceneNumber.NewGameScene);
+        }
+
 
         public void LoadFirstScene(bool skipLogo)
         {
