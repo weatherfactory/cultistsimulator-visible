@@ -66,17 +66,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
-            Legacy chosenLegacyForCharacter;
+
             if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
             {
                 character.ActiveLegacy = null;
-                character.State = CharacterState.Extinct;
             }
             else
             {
-                chosenLegacyForCharacter = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
-                character.State = CharacterState.Viable;
+                character.ActiveLegacy = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
             }
+
+            var endingTriggeredForCharacterId =
+                TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
+            if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
+                character.EndingTriggered = null;
+            else
+                character.EndingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
 
 
             character.ClearExecutions();

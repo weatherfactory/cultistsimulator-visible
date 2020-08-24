@@ -75,11 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public IEnumerator<bool?> SaveActiveGameAsync(IEnumerable<IElementStack> allStacks, List<SituationController> currentSituationControllers, Character character, bool forceBadSave = false, int index = 0)
         {
-            if(character.State==CharacterState.Unformed)
-                DeleteCurrentSave();
-            else
-            {
-
+    
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
               //  var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
                 var metaInfo = Registry.Get<MetaInfo>();
@@ -159,7 +155,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         yield break;
                     }
                 }
-            }
+           
             yield return true;
         }
 

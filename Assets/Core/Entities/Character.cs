@@ -27,8 +27,21 @@ public enum LegacyEventRecordId
 public class Character
 {
     private string _name="[unnamed]";
-    
-    public CharacterState State { get; set; }
+
+    public CharacterState State
+    {
+        get
+        {
+            if (EndingTriggered != null)
+                return CharacterState.Extinct;
+            if (ActiveLegacy != null)
+                return CharacterState.Viable;
+
+            return CharacterState.Unformed;
+        }
+
+
+    }
     public List<IDeckInstance> DeckInstances { get; set; } = new List<IDeckInstance>();
     private Dictionary<string, string> _futureLegacyEventRecords;
     private Dictionary<string, string> _pastLegacyEventRecords = new Dictionary<string, string>();
@@ -60,15 +73,9 @@ public class Character
 
     public void Reset(Legacy activeLegacy)
     {
-        if (activeLegacy == null)
-            State = CharacterState.Unformed;
-
-        else
-        {
-            State = CharacterState.Viable;
+       
             ActiveLegacy = activeLegacy;
-        }
-
+       
         //otherwise, create a blank slate
         //the history builder will then provide a default value for any empty ones.
         HistoryBuilder hb = new HistoryBuilder();
@@ -85,7 +92,6 @@ public class Character
         {
             recipeExecutions = new Dictionary<string, int>(),
             DeckInstances = new List<IDeckInstance>(),
-            State = CharacterState.Extinct,
             _futureLegacyEventRecords = currentCharacter.GetAllPastLegacyEventRecords(),
 
             // Turn all past records back into future records, to simulate a character whose run ended
@@ -170,7 +176,7 @@ if(string.IsNullOrEmpty(value))
         try
         {
 
-        return  DeckInstances.SingleOrDefault(d => d.Id == id);
+            return  DeckInstances.SingleOrDefault(d => d.Id == id);
         }
         catch (Exception e)
         {

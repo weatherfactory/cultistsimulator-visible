@@ -315,16 +315,14 @@ void FadeIn() {
 
 #region -- User Actions via Scene Buttons ------------------------
 
-    public void StartGame()
+    public void BeginGameWithDefaultLegacy()
 	{
         if (!canTakeInput)
             return;
 
         var defaultLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
-        ResetToLegacy(defaultLegacy);
-		
-        // Load directly into the game scene, no legacy select
-        LoadScene(SceneNumber.TabletopScene);
+        BeginNewSaveWithSpecifiedLegacy(defaultLegacy.Id);
+
     }
 
     public void ContinueGame()
@@ -393,8 +391,7 @@ void FadeIn() {
         var legacy= Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
         ResetToLegacy(legacy);
         
-        // Load directly into the game scene, no legacy select
-        LoadScene(SceneNumber.TabletopScene);
+        Registry.Get<StageHand>().RestartGame();
     }
 
     public void ShowCredits() {

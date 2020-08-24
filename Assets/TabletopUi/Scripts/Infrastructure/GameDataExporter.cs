@@ -86,7 +86,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			else
 			{
 				htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
-				htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
+                htCharacter.Add(SaveConstants.SAVE_CURRENTENDING, character.EndingTriggered.Id);
+                htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
 				htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
 
 				var htExecutions=new Hashtable();
