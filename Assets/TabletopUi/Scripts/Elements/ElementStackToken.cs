@@ -342,7 +342,7 @@ namespace Assets.CS.TabletopUI {
 
             InitialiseIfStackIsNew();
 
-            IGameEntityStorage character = Registry.Get<Character>();
+            Character character = Registry.Get<Character>();
             var dealer = new Dealer(character);
             if (_element.Unique)
                 dealer.IndicateUniqueCardManifested(_element.Id);

@@ -21,7 +21,7 @@ namespace Assets.Core.Services
     
     public class Chronicler
     {
-        private IGameEntityStorage _storage;
+        private Character _storage;
         private ICompendium _compendium;
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
@@ -51,7 +51,7 @@ namespace Assets.Core.Services
 
 
 
-        public Chronicler(IGameEntityStorage storage,ICompendium compendium)
+        public Chronicler(Character storage,ICompendium compendium)
         {
             _storage = storage;
             _compendium = compendium;

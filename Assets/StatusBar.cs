@@ -27,7 +27,7 @@ public class StatusBar : MonoBehaviour
         }
     }
 
-    public void UpdateCharacterDetailsView(IGameEntityStorage storage)
+    public void UpdateCharacterDetailsView(Character storage)
     {
         CharacterName.text = storage.Name;
         CharacterProfession.text = storage.Profession;

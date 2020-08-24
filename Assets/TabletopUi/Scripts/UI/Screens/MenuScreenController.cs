@@ -13,7 +13,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
@@ -80,9 +82,7 @@ public class MenuScreenController : MonoBehaviour {
     VersionNumber currentVersion;
     CanvasGroupFader currentOverlay;
 
-    GameSaveManager saveGameManager;
-
-  
+    
 
 
     private static readonly NewStartLegacySpec[] DlcEntrySpecs =
@@ -200,20 +200,11 @@ public class MenuScreenController : MonoBehaviour {
 
     void InitialiseServices()
 	{
-        var registry = new Registry();
-     
-
-
-
-        var metaInfo = new MetaInfo(new VersionNumber(Application.version));
-        registry.Register<MetaInfo>(metaInfo);
-        CrossSceneState.SetMetaInfo(metaInfo);
-
+        
 		optionsPanel.Initialise(null,false);
 
-        saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-
-        currentVersion = metaInfo.VersionNumber;
+        
+        currentVersion = Registry.Get<MetaInfo>().VersionNumber;
 
         BuildLegacyStartsPanel();
         BuildModsPanel();
@@ -224,28 +215,25 @@ public class MenuScreenController : MonoBehaviour {
 
 
 
-    void UpdateAndShowMenu() {
-        bool hasSavegame = saveGameManager.DoesGameSaveExist();
-        bool isLegalSaveGame = hasSavegame ? saveGameManager.SaveGameHasMatchingVersionNumber(currentVersion) : false;
+    void UpdateAndShowMenu()
+    {
+        
+        var currentCharacter = Registry.Get<Character>();
 
         // Show the buttons as needed
-        newGameButton.gameObject.SetActive(!hasSavegame);
-        continueGameButton.gameObject.SetActive(hasSavegame);
-        continueGameButton.interactable = isLegalSaveGame;
-        purgeButton.gameObject.SetActive(hasSavegame);
+        var savedGameExists = (currentCharacter.State != CharacterState.Unformed);
+
+        newGameButton.gameObject.SetActive(!savedGameExists);
+        continueGameButton.gameObject.SetActive(savedGameExists);
+        purgeButton.gameObject.SetActive(savedGameExists);
 
         //update subtitle text
         SetEditionStatus();
 
-        Legacy legacyToDisplay = null;
 
-        if (isLegalSaveGame)
-        {
-            string possibleLegacyId = saveGameManager.GetLegacyIdFromSavedGame();
-            legacyToDisplay = Registry.Get<ICompendium>().GetEntityById<Legacy>(possibleLegacyId);
-        }
-        if (legacyToDisplay != null)
-            Subtitle.SetText(legacyToDisplay.Label);
+        
+        if (currentCharacter.ActiveLegacy != null)
+            Subtitle.SetText(currentCharacter.ActiveLegacy.Label);
         else
         {
             if (NoonUtility.PerpetualEdition)
@@ -259,8 +247,8 @@ public class MenuScreenController : MonoBehaviour {
             }
         }
         // Show the purge message if we have a valid save game that we might want to purge
-        purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
-        UpdateVersionNumber(!isLegalSaveGame);
+        purgeSaveMessage.gameObject.SetActive(savedGameExists);
+        UpdateVersionNumber();
         HideAllOverlays();
         FadeIn();
 
@@ -268,14 +256,14 @@ public class MenuScreenController : MonoBehaviour {
 		canTakeInput = true;
     }
 
-    void UpdateVersionNumber(bool hasNews) {
+    void UpdateVersionNumber() {
         // Show the current version number
         VersionNumber.text = currentVersion.Version;
 
-        if (hasNews)
-            versionAnim.Play();
-        else
-            versionAnim.Stop();
+       // if (hasNews)
+     //       versionAnim.Play();
+      //  else
+     //       versionAnim.Stop();
     }
 
     void HideAllOverlays() {
@@ -331,9 +319,10 @@ void FadeIn() {
 	{
         if (!canTakeInput)
             return;
+
+        var defaultLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
+        ResetToLegacy(defaultLegacy);
 		
-        // Set the legacy to the first in the list; this should be the starting legacy
-        CrossSceneState.SetChosenLegacy(Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First());
         // Load directly into the game scene, no legacy select
         LoadScene(SceneNumber.TabletopScene);
     }
@@ -343,28 +332,12 @@ void FadeIn() {
         if (!canTakeInput)
             return;
 		
-        if (saveGameManager.IsSavedGameActive()) {
+        if (Registry.Get<Character>().State==CharacterState.Viable) {
             //back into the game!
             LoadScene(SceneNumber.TabletopScene);
             return;
         }
 
-        //we left the game from the game over or legacy screen: go back to choose a legacy.
-        //Retrieve the saved state, and then selectively populate properties in the current state...
-        //this is ugly: it could use appropriate methods
-        var savedCrossSceneState = saveGameManager.RetrieveSavedCrossSceneState();
-
-        //this is essential. If we earlier left the game in the legacy screen, we're about to go back there, 
-        //and we need to retrieve the legacy ids and populate with compendium data
-        if (savedCrossSceneState.AvailableLegacies.Count > 0)
-            CrossSceneState.SetAvailableLegacies(savedCrossSceneState.AvailableLegacies);
-
-        //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
-        if (savedCrossSceneState.CurrentEnding != null)
-            CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
-
-        if (savedCrossSceneState.DefunctCharacter != null)
-            CrossSceneState.SetDefunctCharacter(savedCrossSceneState.DefunctCharacter);
 
         LoadScene(SceneNumber.NewGameScene);
     }
@@ -395,16 +368,31 @@ void FadeIn() {
         if (!canTakeInput)
             return;
 
-        saveGameManager.DeleteCurrentSave();
+        ResetToLegacy(null);
+
+
         currentOverlay = null; // to ensure we can re-open another overlay afterwards
         FadeOut();
         Invoke("UpdateAndShowMenu", fadeDuration);
     }
 
-    public void BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(string legacyId)
+    private void ResetToLegacy(Legacy activeLegacy)
     {
-        saveGameManager.DeleteCurrentSave();
-        CrossSceneState.SetChosenLegacy(Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId));
+        Registry.Get<Character>().Reset(activeLegacy);
+        var saveGameManager =
+            new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+
+        var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(),Registry.Get<Character>());
+        while (saveTask.MoveNext())
+        {
+        }
+    }
+
+    public void BeginNewSaveWithSpecifiedLegacy(string legacyId)
+    {
+        var legacy= Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
+        ResetToLegacy(legacy);
+        
         // Load directly into the game scene, no legacy select
         LoadScene(SceneNumber.TabletopScene);
     }
@@ -518,14 +506,6 @@ void FadeIn() {
             var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, legacyStartEntries);
             legacyStartEntry.Initialize(legacySpec, store, this);
         }
-
-
-
-        //return from path in Directory.GetFiles(Path.Combine(CORE_CONTENT_DIR, CONST_LEGACIES))
-        //    select Path.GetFileName(path) into fileName
-        //    select DlcLegacyRegex.Match(fileName) into match
-        //    where match.Success
-        //    select match.Groups[1].Value;
 
 
     }

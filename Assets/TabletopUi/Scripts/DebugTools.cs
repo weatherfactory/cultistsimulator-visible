@@ -392,7 +392,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         Log("Total time to import: " + (DateTime.Now-startImport));
 
         // Populate current decks with new cards (this will shuffle the deck)
-        IGameEntityStorage storage = Registry.Get<Character>();
+        Character storage = Registry.Get<Character>();
         foreach (var ds in existingCompendium.GetEntitiesAsList<DeckSpec>())
         {
                

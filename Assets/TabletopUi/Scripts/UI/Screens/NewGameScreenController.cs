@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Entities;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
@@ -77,15 +78,27 @@ namespace Assets.CS.TabletopUI {
 		}
 
    
-        void InitLegacyButtons() {
-            for (int i = 0; i < CrossSceneState.GetAvailableLegacies().Count; i++)
+        void InitLegacyButtons()
+        {
+
+            var legaciesAvailable = GetAvailableLegacies();
+          
+
+            for (int i = 0; i < legaciesAvailable.Count; i++)
             {
-                var legacySprite= ResourcesManager.GetSpriteForLegacy(CrossSceneState.GetAvailableLegacies()[i].Image);
+                var legacySprite= ResourcesManager.GetSpriteForLegacy(legaciesAvailable[i].Image);
                 legacyArtwork[i].sprite = legacySprite;
             }
 
             // No button is selected, so start game button starts deactivated
             startGameButton.interactable = false;
+        }
+
+        private List<Legacy> GetAvailableLegacies()
+        {
+            var ls = new LegacySelector(Registry.Get<ICompendium>());
+            var legaciesAvailable = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
+            return legaciesAvailable;
         }
         
         // Exposed for in-scene buttons
@@ -116,9 +129,12 @@ namespace Assets.CS.TabletopUI {
 			Invoke("StartGameDelayed", fadeDuration);
         }
 
-		void StartGameDelayed() {
-			CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
-			CrossSceneState.ClearEnding();
+		void StartGameDelayed()
+        {
+            var chosenLegacy = GetAvailableLegacies()[selectedLegacy];
+            Registry.Get<Character>().ActiveLegacy = chosenLegacy;
+            Registry.Get<Character>().EndingTriggered = null;
+
             Registry.Get<StageHand>().SceneChange(SceneNumber.TabletopScene);
 
 		}
@@ -160,11 +176,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
-            Legacy legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
+            Legacy legacySelected = GetAvailableLegacies()[selectedLegacy];
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;
-            var ending = CrossSceneState.GetCurrentEnding();
+            var ending = Registry.Get<Character>().EndingTriggered;
             if (legacySelected.FromEnding == ending.Id)
 			{
                 //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";

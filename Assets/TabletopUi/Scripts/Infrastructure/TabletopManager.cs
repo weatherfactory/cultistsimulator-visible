@@ -367,32 +367,32 @@ namespace Assets.CS.TabletopUI {
             ICompendium compendium = Registry.Get<ICompendium>();
 
 
-            Character character;
-            if (CrossSceneState.GetChosenLegacy() != null)
-                character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
-            else
-                character = new Character(compendium.GetEntitiesAsList<Legacy>().First());
+         
+            //if (CrossSceneState.GetChosenLegacy() != null)
+            //    character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
+            //else
+            //    character = new Character(compendium.GetEntitiesAsList<Legacy>().First());
 
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
-            var chronicler = new Chronicler(character,compendium);
+            var chronicler = new Chronicler(Registry.Get<Character>(),compendium);
 
             var situationsCatalogue = new SituationsCatalogue();
             var stackManagersCatalogue = new StackManagersCatalogue();
             stackManagersCatalogue.Subscribe(this);
 
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));
-            if(CrossSceneState.GetMetaInfo()==null)
-            {
-                          //We've stated running the scene in the editor, so it hasn't been set in menu screen
-                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
-                CrossSceneState.SetMetaInfo(metaInfo);
-                    //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
-               Configuration.SetGraphicsLevel(3);
-            }
+            //if(CrossSceneState.GetMetaInfo()==null)
+            //{
+            //              //We've stated running the scene in the editor, so it hasn't been set in menu screen
+            //    NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
+            //    CrossSceneState.SetMetaInfo(metaInfo);
+            //        //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
+            //   Configuration.SetGraphicsLevel(3);
+            //}
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
-
+            var character = Registry.Get<Character>();
 
             
 
@@ -401,7 +401,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<ITabletopManager>(this);
             registry.Register<SituationBuilder>(builder);
             registry.Register<INotifier>(_notifier);
-            registry.Register<Character>(character);
+
             registry.Register<Choreographer>(choreographer);
             registry.Register<Chronicler>(chronicler);
             registry.Register<MapController>(_mapController);
@@ -457,7 +457,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void DealStartingDecks() {
-            IGameEntityStorage character = Registry.Get<Character>();
+            Character character = Registry.Get<Character>();
             var compendium = Registry.Get<ICompendium>();
             foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>()) {
                 IDeckInstance di = new DeckInstance(ds);
@@ -476,7 +476,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void ClearGameState(Heart h, IGameEntityStorage s, TabletopTokenContainer tc) {
+        public void ClearGameState(Heart h, Character s, TabletopTokenContainer tc) {
             h.Clear();
             s.DeckInstances = new List<IDeckInstance>();
 
@@ -605,7 +605,6 @@ namespace Assets.CS.TabletopUI {
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
-            var ls = new LegacySelector(Registry.Get<ICompendium>());
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             var character = Registry.Get<Character>();
@@ -613,10 +612,7 @@ namespace Assets.CS.TabletopUI {
 
             chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
 
-
-            CrossSceneState.SetCurrentEnding(ending);
-            CrossSceneState.SetDefunctCharacter(character);
-            CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
+            character.EndingTriggered = ending;
 
             //#if !DEBUG
             saveGameManager.SaveInactiveGame(null);
@@ -639,7 +635,7 @@ namespace Assets.CS.TabletopUI {
 
         public void LoadGame(int index = 0) {
             ICompendium compendium = Registry.Get<ICompendium>();
-            IGameEntityStorage storage = Registry.Get<Character>();
+            Character storage = Registry.Get<Character>();
 
             _speedController.SetPausedState(true, false, true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
@@ -653,8 +649,7 @@ namespace Assets.CS.TabletopUI {
 	            /////
 	            if (storage.ActiveLegacy == null)
 	                storage.ActiveLegacy = compendium.GetEntitiesAsList<Legacy>().First();
-	            /////
-	            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
+	            
 	            StatusBar.UpdateCharacterDetailsView(storage);
 
 				// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
@@ -705,7 +700,7 @@ namespace Assets.CS.TabletopUI {
             try
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop, Registry.Get<Character>(), index: index);
+	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop.GetElementStacksManager().GetStacks(),Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),  Registry.Get<Character>(), index: index);
             }
             catch (Exception e)
             {

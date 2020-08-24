@@ -18,5 +18,7 @@ namespace Assets.Core.Entities
         {
             get { return _versionNumber; }
         }
+
+
     }
 }

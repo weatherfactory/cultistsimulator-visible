@@ -69,92 +69,98 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void DeleteCurrentSave()
         {
-            File.Delete(NoonUtility.GetGameSaveLocation());
+            if(File.Exists(NoonUtility.GetGameSaveLocation()))
+                File.Delete(NoonUtility.GetGameSaveLocation());
         }
 
-        public IEnumerator<bool?> SaveActiveGameAsync(TabletopTokenContainer tabletop, Character character, bool forceBadSave = false, int index = 0)
+        public IEnumerator<bool?> SaveActiveGameAsync(IEnumerable<IElementStack> allStacks, List<SituationController> currentSituationControllers, Character character, bool forceBadSave = false, int index = 0)
         {
-	        var allStacks = tabletop.GetElementStacksManager().GetStacks();
-            var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-            var metaInfo = Registry.Get<MetaInfo>();
-            var allDecks = character.DeckInstances;
+            if(character.State==CharacterState.Unformed)
+                DeleteCurrentSave();
+            else
+            {
 
-			Debug.Assert( currentSituationControllers.Count > 0, "No situation controllers!" );
+              //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
+              //  var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+                var metaInfo = Registry.Get<MetaInfo>();
+                var allDecks = character.DeckInstances;
 
-			// GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
-            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,currentSituationControllers,allDecks,forceBadSave);
 
-			// Universal catch-all. If data is broken, abort save and retry 5 seconds later - assuming problem circumstance has completed - CP
-			// If we fail several of these in a row then something is permanently broken in the data and we should alert user :(
-			if (htSaveTable == null && !forceBadSave)
-			{
-				HandleSaveError(tabletop, character, index);
-				yield return false;	// Something went wrong with the save
-				yield break;
-			}
-			if (forceBadSave)
-			{
-				var postSaveFilePath = NoonUtility.GetErrorSaveLocation(DateTime.Now, "post");
-				System.Threading.Tasks.Task.Run(() => RunSave(postSaveFilePath, htSaveTable)).Wait();
-			}
-			else
-			{
-				// Write the save to a temporary file first, check that it is valid, and only then backup the old save
-				// This is to mitigate some bugs where save files would end up with invalid data written to them
-				var saveFilePath = NoonUtility.GetGameSaveLocation(index);
-				var tempSaveFilePath = NoonUtility.GetTemporaryGameSaveLocation(index);
-				var saveTask = System.Threading.Tasks.Task.Run(() => RunSave(tempSaveFilePath, htSaveTable));
-				while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
-				{
-					yield return null;
-				}
+                // GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
+                var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,currentSituationControllers,allDecks,forceBadSave);
 
-				bool success;
-				if (saveTask.Exception == null)
-				{
-					success = IsSavedGameActive(index, true);
-				}
-				else
-				{
-					Debug.LogError("Failed to save game to temporary save file (see exception for details)");
-					Debug.LogException(saveTask.Exception);
-					success = false;
-				}
+                // Universal catch-all. If data is broken, abort save and retry 5 seconds later - assuming problem circumstance has completed - CP
+                // If we fail several of these in a row then something is permanently broken in the data and we should alert user :(
+                if (htSaveTable == null && !forceBadSave)
+                {
+                    HandleSaveError(allStacks,currentSituationControllers, character, index);
+                    yield return false;	// Something went wrong with the save
+                    yield break;
+                }
+                if (forceBadSave)
+                {
+                    var postSaveFilePath = NoonUtility.GetErrorSaveLocation(DateTime.Now, "post");
+                    System.Threading.Tasks.Task.Run(() => RunSave(postSaveFilePath, htSaveTable)).Wait();
+                }
+                else
+                {
+                    // Write the save to a temporary file first, check that it is valid, and only then backup the old save
+                    // This is to mitigate some bugs where save files would end up with invalid data written to them
+                    var saveFilePath = NoonUtility.GetGameSaveLocation(index);
+                    var tempSaveFilePath = NoonUtility.GetTemporaryGameSaveLocation(index);
+                    var saveTask = System.Threading.Tasks.Task.Run(() => RunSave(tempSaveFilePath, htSaveTable));
+                    while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
+                    {
+                        yield return null;
+                    }
 
-				if (success)
-				{
-					try
-					{
-						BackupSave(index);
-						if (File.Exists(saveFilePath))
-						{
-							File.Delete(saveFilePath);
-						}
+                    bool success;
+                    if (saveTask.Exception == null)
+                    {
+                        success = IsSavedGameActive(index, true);
+                    }
+                    else
+                    {
+                        Debug.LogError("Failed to save game to temporary save file (see exception for details)");
+                        Debug.LogException(saveTask.Exception);
+                        success = false;
+                    }
 
-						File.Move(tempSaveFilePath, saveFilePath);
+                    if (success)
+                    {
+                        try
+                        {
+                            BackupSave(index);
+                            if (File.Exists(saveFilePath))
+                            {
+                                File.Delete(saveFilePath);
+                            }
 
-						if (failedSaveCount > 0)
-						{
-							Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );
-						}
+                            File.Move(tempSaveFilePath, saveFilePath);
 
-						failedSaveCount = 0;
-					}
-					catch (Exception e)
-					{
-						Debug.LogError("Failed to move temporary file (see exception for details)");
-						Debug.LogException(e);
-						success = false;
-					}
-				}
-				if (!success)
-				{
-					HandleSaveError(tabletop, character, index);
-					yield return false;
-					yield break;
-				}
-			}
-			yield return true;
+                            if (failedSaveCount > 0)
+                            {
+                                Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );
+                            }
+
+                            failedSaveCount = 0;
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogError("Failed to move temporary file (see exception for details)");
+                            Debug.LogException(e);
+                            success = false;
+                        }
+                    }
+                    if (!success)
+                    {
+                        HandleSaveError(allStacks,currentSituationControllers, character, index);
+                        yield return false;
+                        yield break;
+                    }
+                }
+            }
+            yield return true;
         }
 
         public Hashtable RetrieveHashedSaveFromFile(int index = 0, bool temp = false)
@@ -166,47 +172,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportHashedSaveToState(TabletopTokenContainer tabletop, IGameEntityStorage storage, Hashtable htSave)
+        public void ImportHashedSaveToState(TabletopTokenContainer tabletop, Character storage, Hashtable htSave)
         {
             dataImporter.ImportSavedGameToState(tabletop, storage, htSave);
         }
 
-        public SavedCrossSceneState RetrieveSavedCrossSceneState()
-        {
-            var htSave = RetrieveHashedSaveFromFile();
-            return dataImporter.ImportCrossSceneState(htSave);
-
-        }
-
-
-        public bool SaveGameHasMatchingVersionNumber(VersionNumber currentVersionNumber)
-        {
-            Hashtable htSave;
-            try
-            {
-                htSave = RetrieveHashedSaveFromFile();
-            }
-            catch (Exception e)
-            {
-	            Debug.LogError("Failed to load game (see exception for details)");
-                Debug.LogException(e);
-                return false;
-            }
-
-            var htMetaInfo = htSave?.GetHashtable(SaveConstants.SAVE_METAINFO);
-            if (htMetaInfo == null)
-                return false;
-            if (!htMetaInfo.ContainsKey(SaveConstants.SAVE_VERSIONNUMBER))
-                return false; //no version number
-
-            string savedVersionString=htMetaInfo[SaveConstants.SAVE_VERSIONNUMBER].ToString();
-
-            //2018.5 is our 1.0 release date. After this, all saves are considered compatible unless we reconsider the decision.
-
-
-           // return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
-            return true;
-        }
 
 
         public string GetLegacyIdFromSavedGame()
@@ -236,7 +206,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
         }
 
-        private void HandleSaveError(TabletopTokenContainer tabletop, Character character, int index = 0)
+        private void HandleSaveError(IEnumerable<IElementStack> stacks, List<SituationController> controllers, Character character, int index = 0)
         {
 	        failedSaveCount++;
 	        if (failedSaveCount != 3) 
@@ -248,7 +218,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	            File.Copy(savePath, NoonUtility.GetErrorSaveLocation(DateTime.Now, "pre"), true);
                 
             // Force a bad save into a different filename
-            var saveTask = SaveActiveGameAsync(tabletop, character, true, index);
+            var saveTask = SaveActiveGameAsync(stacks,controllers, character, true, index);
             while (saveTask.MoveNext())
             {
             }

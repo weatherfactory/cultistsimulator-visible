@@ -21,7 +21,7 @@ namespace TabletopUi.Scripts.Interfaces
         bool IsPaused();
         void SetupNewBoard(SituationBuilder builder);
         void ProvisionStartingElements(Legacy chosenLegacy, Choreographer choreographer);
-        void ClearGameState(Heart h, IGameEntityStorage s, TabletopTokenContainer tc);
+        void ClearGameState(Heart h, Character s, TabletopTokenContainer tc);
         void EndGame(Ending ending, SituationController endingSituation);
         void LoadGame(int index = 0);
         IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null);

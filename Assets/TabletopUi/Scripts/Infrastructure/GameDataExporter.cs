@@ -170,7 +170,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public Hashtable GetHashtableForExtragameState(Legacy withActiveLegacy)
         {
-            return CrossSceneState.GetSaveDataForCrossSceneState(withActiveLegacy);
+            //TODO
+            //var ht = new Hashtable();
+            //var htMetaInfo = new Hashtable { { SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber } };
+            //ht.Add(SaveConstants.SAVE_METAINFO, htMetaInfo);
+            ////TODO
+            //AddMetaInfoToHashtable(ht); //in crosscenestate
+            //TODO
+            //AddCurrentEndingToHashtable(ht); //in crosscenestate
+            //TODO
+            //AddDefunctCharacterToHashtable(ht); //in crosscenestate
+
+            return null;
         }
 
 		private Hashtable GetHashtableForThisStack(IElementStack stack)

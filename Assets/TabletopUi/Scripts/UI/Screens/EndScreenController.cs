@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI
 		{
             FadeIn(durationFadeIn);
 
-            var ending = CrossSceneState.GetCurrentEnding();
+            var ending = Registry.Get<Character>().EndingTriggered;
 
             if (ending == null)
                 ending = Ending.DefaultEnding();

@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToState(TabletopTokenContainer tabletop, IGameEntityStorage storage, Hashtable htSave);
+        void ImportSavedGameToState(TabletopTokenContainer tabletop, Character character, Hashtable htSave);
         SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
@@ -34,53 +34,57 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToState(TabletopTokenContainer tabletop,IGameEntityStorage storage, Hashtable htSave)
+        public void ImportSavedGameToState(TabletopTokenContainer tabletop, Character character, Hashtable htSave)
         {
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
-            ImportCharacter(storage, htCharacter);
+            ImportCharacter(character, htCharacter);
             //update the compendium text with tokens for this character
-            compendium.SupplyLevers(storage);
+            compendium.SupplyLevers(character);
 
-            ImportTabletopElementStacks(tabletop, htElementStacks);
+            if(tabletop!=null)
+            {
+                ImportTabletopElementStacks(tabletop, htElementStacks);
 
-            ImportSituations(tabletop, htSituations);
-
-            ImportDecks(storage, htDecks);
+                ImportSituations(tabletop, htSituations);
+            }
+            ImportDecks(character, htDecks);
 
         }
 
-        private void ImportCharacter(IGameEntityStorage storage, Hashtable htCharacter)
+        private void ImportCharacter(Character character, Hashtable htCharacter)
         {
             if(htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
-                storage.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+                character.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
 
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
-                storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+                character.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
             Legacy chosenLegacyForCharacter;
             if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
-                chosenLegacyForCharacter =
-                    compendium.GetEntitiesAsList<Legacy>()
-                        .First(); //support active legacies for characters who preceded saved active legacies
+            {
+                character.ActiveLegacy = null;
+                character.State = CharacterState.Extinct;
+            }
             else
+            {
                 chosenLegacyForCharacter = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
+                character.State = CharacterState.Viable;
+            }
 
-            storage.ActiveLegacy = chosenLegacyForCharacter;
 
-
-            storage.ClearExecutions();
+            character.ClearExecutions();
             if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
             {
                 var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
                 foreach(var key in htExecutions.Keys)
-                    storage.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
+                    character.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
             }
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
@@ -91,7 +95,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     //var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
                     string value = htPastLevers[key].ToString();
                     if(!string.IsNullOrEmpty(value))
-                        storage.SetOrOverwritePastLegacyEventRecord(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
+                        character.SetOrOverwritePastLegacyEventRecord(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
                 }
             }
@@ -102,15 +106,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var key in htFutureLevers.Keys)
                 {
                   //  var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                    storage.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
+                    character.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
 
                 }
             }
-            
-            // Register the defunct character so that it remains available when switching scenes
-            // This is necessary for game restarts to work correctly.
-            // The actual legacy has been lost but it shouldn't matter, since we're only interested in the levers.
-            CrossSceneState.SetDefunctCharacter(Character.MakeDefunctCharacter(storage));
+
         }
 
 
@@ -174,84 +174,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
 
-			//const bool repair_duplicates = false;	// Disabling this because it seems to be causing issues - CP
-			//if (repair_duplicates)
-			//{
-				//
-				// BEGIN SAVE REPAIR
-				//
-				// Failsafe save repair - we know that the save can sometimes fill with duplicate cards causing massive slowdown. - CP
-				// This looks for identical dupes and removes them, so the savegame is useful again.
-				//float startTime = Time.timeSinceLevelLoad;
-				//int dupeCount = 0;
-				//bool[] dupes = new bool[ elementStackSpecifications.Count() ];	// Alloc and init a bool per card in the list. Allows quick discards.
-				//for ( int n=0; n<dupes.Length; n++)
-				//	dupes[n] = false;
-				//for ( int i=0; i<elementStackSpecifications.Count()-1; i++ )	// Iterate from 0 to all but the last entry
-				//{
-				//	var stackToTest = elementStackSpecifications.ElementAt(i);
-
-				//	// Expecting a LocationInfo of the form "100_0_hashcode" or "Work_hashcode"
-				//	int underscore1 = stackToTest.LocationInfo.IndexOf( '_' );					// Find first underscore
-				//	int underscore2 = stackToTest.LocationInfo.IndexOf( '_', underscore1+1 );	// Find second (optional) underscore
-				//	string locString = stackToTest.LocationInfo.Truncate( underscore2>0?underscore2:underscore1 );	// Trim so we can compare the non-hashcode bit
-
-				//	// Compare current card against all cards after it in the list
-				//	for ( int j=i+1; j<elementStackSpecifications.Count(); j++ )	
-				//	{
-				//		var stackToCompare = elementStackSpecifications.ElementAt(j);
-					
-				//		if (dupes[j])	
-				//			continue;	// Already marked this entry as a dupe - next!
-
-				//		if (stackToTest.ElementId.Equals( stackToCompare.ElementId ) == false)
-				//			continue;	// Different card type - next!
-
-				//		string tempLoc = stackToCompare.LocationInfo.Truncate( locString.Length );
-				//		if (tempLoc.Equals( locString ) == false)
-				//			continue;	// Different position - next!
-
-				//		dupes[j] = true;
-				//		dupeCount++;
-				//	}
-				//}
-
-				//for ( int n=dupes.Length-1; n>=0; n--)
-				//{
-				//	if (dupes[n])
-				//		elementStackSpecifications.RemoveAt( n );
-				//}
-				//float repairTime = Time.timeSinceLevelLoad - startTime;
-				//if(dupeCount > 0)
-				//NoonUtility.Log("Repaired " + dupeCount + " duplicates in " + repairTime + "s",VerbosityLevel.SystemChatter);
-				//
-				// END SAVE REPAIR
-				//
-			//}
-
+	
             foreach (var ess in elementStackSpecifications)
             {
                 tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
             }
 
-            //This code should now be obsolete! everything goes through reprovision. Leaving for the mo in case I missed something
-            //foreach (var locationInfo in htElementStacks.Keys)
-            //{
-            //    var dictionaryElementStacks =
-            //        NoonUtility.HashtableToStringStringDictionary(htElementStacks.GetHashtable(locationInfo));
-
-            //    int quantity;
-            //    var couldParse = Int32.TryParse(dictionaryElementStacks[SaveConstants.SAVE_QUANTITY], out quantity);
-            //    if (!couldParse)
-            //        throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
-            //                                    dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
-
-            //    tabletop.GetElementStacksManager().IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], 
-            //        quantity,Source.Existing(), new Context(Context.ActionSource.Loading), locationInfo.ToString());
-            //}
         }
 
-        private void ImportDecks(IGameEntityStorage storage, Hashtable htDeckInstances)
+        private void ImportDecks(Character storage, Hashtable htDeckInstances)
         {
             foreach (var k in htDeckInstances.Keys)
             {

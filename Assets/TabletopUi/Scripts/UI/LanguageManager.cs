@@ -94,10 +94,6 @@ public class LanguageManager : MonoBehaviour,ILanguageManager
     public Color		HighContrastDark { get; set; }=Color.black;
 
     
-    private string fixedspace = "<mspace=1.6em>";   
-    private string secondsPostfix = "s";
-    private string timeSeparator = ".";
-
 
 	public void Initialise()
 	{

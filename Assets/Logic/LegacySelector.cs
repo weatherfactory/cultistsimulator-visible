@@ -13,7 +13,7 @@ namespace Assets.Logic
     {
         private readonly ICompendium _compendium;
 
-        public List<Legacy> DetermineLegacies(Ending ending, List<IElementStack> stacksAtEnd)
+        public List<Legacy> DetermineLegacies(Ending ending)
         {
             //we always need three legacies.
             int randomLegaciesToDraw = 2;

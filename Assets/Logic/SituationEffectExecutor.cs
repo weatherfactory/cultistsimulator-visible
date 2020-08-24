@@ -24,7 +24,7 @@ namespace Assets.Logic
         }
 
         public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,
-            IGameEntityStorage storage, IDice d)
+            Character storage, IDice d)
         {
             var recipeAspects = command.Recipe.Aspects;
             var cardAspects = stacksManager.GetTotalAspects();
@@ -108,7 +108,7 @@ namespace Assets.Logic
         }
 
         public void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,
-            IGameEntityStorage storage)
+            Character storage)
         {
             var deckIds = command.GetDeckEffects();
             if (deckIds != null && deckIds.Any())

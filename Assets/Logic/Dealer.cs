@@ -11,8 +11,8 @@ namespace Assets.Logic
 {
     public class Dealer
     {
-        private IGameEntityStorage _storage;
-        public Dealer(IGameEntityStorage storage)
+        private Character _storage;
+        public Dealer(Character storage)
         {
             _storage = storage;
         }

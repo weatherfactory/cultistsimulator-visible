@@ -12,6 +12,6 @@ public string LegacyId { get; set; }
 
     public void BeginGameWithRelevantLegacy()
     {
-        msc.BeginNewGameWithSpecifiedLegacyAndPurgeOldSave(LegacyId);
+        msc.BeginNewSaveWithSpecifiedLegacy(LegacyId);
     }
 }

@@ -11,10 +11,10 @@ namespace Assets.Core.Services
     /// </summary>
     public class TokenReplacer
     {
-        private IGameEntityStorage _character;
+        private Character _character;
         private ICompendium _compendium;
         //'token' as in text-to-be-replaced, not as in DraggableToken
-        public TokenReplacer(IGameEntityStorage ch,ICompendium co)
+        public TokenReplacer(Character ch,ICompendium co)
         {
             _character = ch;
             _compendium = co;

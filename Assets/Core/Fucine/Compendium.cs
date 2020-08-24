@@ -19,7 +19,7 @@ public interface ICompendium
     bool TryAddEntity(IEntityWithId entity);
     bool EntityExists<T>(string entityId) where T : class, IEntityWithId;
 
-    void SupplyLevers(IGameEntityStorage populatedCharacter);
+    void SupplyLevers(Character populatedCharacter);
     string GetVerbIconOverrideFromAspects(IAspectsDictionary currentAspects);
 
 
@@ -225,7 +225,7 @@ public class Compendium : ICompendium
     /// if we want to retrieve the actual levered elements.
     /// </summary>
     /// <param name="populatedCharacter"></param>
-    public void SupplyLevers(IGameEntityStorage populatedCharacter)
+    public void SupplyLevers(Character populatedCharacter)
     {
         _pastLevers = populatedCharacter.GetAllPastLegacyEventRecords();
         TokenReplacer tr = new TokenReplacer(populatedCharacter,this);

@@ -69,7 +69,12 @@ namespace Assets.TabletopUi.Scripts.Services
 
             Registry.Get<Concursum>().SupplyConfig(config);
 
-            
+
+
+            var metaInfo = new MetaInfo(new VersionNumber(Application.version));
+            registryAccess.Register<MetaInfo>(metaInfo);
+
+
             registryAccess.Register<StageHand>(stageHand);
 
 
@@ -91,8 +96,32 @@ namespace Assets.TabletopUi.Scripts.Services
 
             Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
 
+            //TODO: async
+            LoadCurrentSave(registryAccess);
 
             stageHand.LoadFirstScene(Registry.Get<Concursum>().GetSkipLogo());
+
+
+        }
+
+        private void LoadCurrentSave(Registry registry)
+        {
+
+
+            Character character=new Character();
+            registry.Register(character);
+
+
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+
+            if (saveGameManager.DoesGameSaveExist())
+            {
+                var htSave = saveGameManager.RetrieveHashedSaveFromFile();
+                saveGameManager.ImportHashedSaveToState(null, character, htSave);
+
+            }
+
+ 
 
         }
 

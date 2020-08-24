@@ -24,18 +24,23 @@ public enum LegacyEventRecordId
 
 }
 
-public class Character:IGameEntityStorage
+public class Character
 {
     private string _name="[unnamed]";
     
     public CharacterState State { get; set; }
-    public List<IDeckInstance> DeckInstances { get; set; }
+    public List<IDeckInstance> DeckInstances { get; set; } = new List<IDeckInstance>();
     private Dictionary<string, string> _futureLegacyEventRecords;
-    private Dictionary<string, string> _pastLegacyEventRecords;
+    private Dictionary<string, string> _pastLegacyEventRecords = new Dictionary<string, string>();
     public Legacy ActiveLegacy { get; set; }
+    public Character PreviousCharacter { get; set; }
 
-    private Dictionary<string, int> recipeExecutions;
-    private string _endingTriggeredId = null;
+    private Dictionary<string, int> recipeExecutions = new Dictionary<string, int>();
+
+    public Character():this(null,null)
+    {
+        
+    }
 
     public Character(Legacy activeLegacy) : this(activeLegacy,null)
     {
@@ -44,31 +49,37 @@ public class Character:IGameEntityStorage
 
     public Character(Legacy activeLegacy, Character previousCharacter)
     {
-        State = CharacterState.Viable;
-        recipeExecutions = new Dictionary<string, int>();
-        DeckInstances = new List<IDeckInstance>();
+        Reset(activeLegacy);
+
         //if we have a previous character, base our past on their future
         if (previousCharacter != null)
         {
             _pastLegacyEventRecords = previousCharacter.GetAllFutureLegacyEventRecords(); //THEIR FUTURE IS OUR PAST
         }
-        //otherwise, create a blank slate
-        else 
-            _pastLegacyEventRecords = new Dictionary<string, string>();
+    }
 
+    public void Reset(Legacy activeLegacy)
+    {
+        if (activeLegacy == null)
+            State = CharacterState.Unformed;
+
+        else
+        {
+            State = CharacterState.Viable;
+            ActiveLegacy = activeLegacy;
+        }
+
+        //otherwise, create a blank slate
         //the history builder will then provide a default value for any empty ones.
         HistoryBuilder hb = new HistoryBuilder();
         _pastLegacyEventRecords = hb.FillInDefaultPast(_pastLegacyEventRecords);
 
         //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<string, string>(_pastLegacyEventRecords);
-
-        ActiveLegacy = activeLegacy;
-
     }
 
     // Turns this character into a defunct character based on the past of the current, active character
-    public static Character MakeDefunctCharacter(IGameEntityStorage currentCharacter)
+    public static Character MakeDefunctCharacter(Character currentCharacter)
     {
         return new Character(null)
         {
@@ -177,10 +188,7 @@ if(string.IsNullOrEmpty(value))
     public string Profession { get ; set; }
 
 
-    public string EndingTriggeredId
-    {
-        get { return _endingTriggeredId; }
-    }
+    public Ending EndingTriggered { get; set; }
 
 
 
@@ -195,6 +203,6 @@ if(string.IsNullOrEmpty(value))
         return new Dictionary<string, string>(_pastLegacyEventRecords);
     }
 
-    
+
 }
 

@@ -6,6 +6,6 @@ using System.Text;
 
     public enum CharacterState
     {
-        Viable,Extinct
+        Viable,Extinct,Unformed
     }
 
