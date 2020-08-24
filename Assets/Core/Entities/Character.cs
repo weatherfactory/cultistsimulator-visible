@@ -42,13 +42,13 @@ public class Character
 
 
     }
-    public List<IDeckInstance> DeckInstances { get; set; } = new List<IDeckInstance>();
+    public List<IDeckInstance> DeckInstances { get; set; } 
     private Dictionary<string, string> _futureLegacyEventRecords;
-    private Dictionary<string, string> _pastLegacyEventRecords = new Dictionary<string, string>();
+    private Dictionary<string, string> _pastLegacyEventRecords;
     public Legacy ActiveLegacy { get; set; }
     public Character PreviousCharacter { get; set; }
 
-    private Dictionary<string, int> recipeExecutions = new Dictionary<string, int>();
+    private Dictionary<string, int> recipeExecutions;
 
     public Character():this(null,null)
     {
@@ -83,6 +83,11 @@ public class Character
 
         //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<string, string>(_pastLegacyEventRecords);
+
+            recipeExecutions= new Dictionary<string, int>();
+
+        DeckInstances = new List<IDeckInstance>();
+
     }
 
     // Turns this character into a defunct character based on the past of the current, active character
