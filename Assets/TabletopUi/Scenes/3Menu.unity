@@ -2136,7 +2136,7 @@ MonoBehaviour:
   optionsPanel: {fileID: 476850260}
   fadeOverlay: {fileID: 2027384887}
   fadeDuration: 0.5
-  purgeSaveMessage: {fileID: 972627038}
+  brokenSaveMessage: {fileID: 972627038}
   VersionNumber: {fileID: 458841803}
   versionAnim: {fileID: 1502385832}
   Subtitle: {fileID: 1405857547}
@@ -2164,6 +2164,7 @@ Transform:
   m_Children:
   - {fileID: 678012480}
   - {fileID: 395819460}
+  - {fileID: 870892056}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2434,7 +2435,7 @@ RectTransform:
   - {fileID: 2027384886}
   - {fileID: 1509276083}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -33858,8 +33859,8 @@ RectTransform:
   - {fileID: 1270204711}
   - {fileID: 104125497}
   - {fileID: 275469639}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 182394259}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -44299,7 +44300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &972627039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44354,9 +44355,9 @@ RectTransform:
   m_Father: {fileID: 893404997}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 525, y: -897.38007}
   m_SizeDelta: {x: 500, y: 105}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &972627042
@@ -55278,7 +55279,7 @@ PrefabInstance:
     - target: {fileID: 7304243792921196564, guid: 29eccfcddd7c3c74ea1dc8232bad828a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7304243792921196564, guid: 29eccfcddd7c3c74ea1dc8232bad828a,
         type: 3}

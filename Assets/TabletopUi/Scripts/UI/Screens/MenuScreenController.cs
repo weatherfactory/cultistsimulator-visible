@@ -56,7 +56,7 @@ public class MenuScreenController : MonoBehaviour {
     public float fadeDuration = 0.25f;
 
     [Header("Hints")]
-    public GameObject purgeSaveMessage;
+    public GameObject brokenSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
    
@@ -246,8 +246,8 @@ public class MenuScreenController : MonoBehaviour {
                
             }
         }
-        // Show the purge message if we have a valid save game that we might want to purge
-        purgeSaveMessage.gameObject.SetActive(savedGameExists);
+        
+        //brokenSaveMessage.gameObject.SetActive(savedGameExists);
         UpdateVersionNumber();
         HideAllOverlays();
         FadeIn();

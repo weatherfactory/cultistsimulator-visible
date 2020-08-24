@@ -107,7 +107,6 @@ namespace Assets.TabletopUi.Scripts.Services
         private void LoadCurrentSave(Registry registry)
         {
 
-
             Character character=new Character();
             registry.Register(character);
 
@@ -121,7 +120,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
             }
 
- 
 
         }
 
