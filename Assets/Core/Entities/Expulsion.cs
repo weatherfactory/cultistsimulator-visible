@@ -18,13 +18,12 @@ namespace Assets.Core.Entities
 
         public Expulsion(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
-            Filter = new AspectsDictionary();
+   
         }
 
         public Expulsion()
         {
-            Limit = 0; //initialised as a blank/default, not imported
-            Filter = new AspectsDictionary();
+
         }
 
 
