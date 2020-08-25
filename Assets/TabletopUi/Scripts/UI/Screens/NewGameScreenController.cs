@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.Logic;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
@@ -115,8 +117,12 @@ namespace Assets.CS.TabletopUI {
 
 		void ReturnToMenuDelayed() {
 			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-			saveGameManager.SaveInactiveGame(null);
-			Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+
+            var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
+            while (saveTask.MoveNext())
+            {
+            }
+            Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
         }
 
 		public void StartGame() {

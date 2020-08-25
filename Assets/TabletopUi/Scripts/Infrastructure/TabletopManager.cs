@@ -614,10 +614,11 @@ namespace Assets.CS.TabletopUI {
 
             character.EndingTriggered = ending;
 
-            //#if !DEBUG
-            saveGameManager.SaveInactiveGame(null);
-            //#endif
 
+            var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
+            while (saveTask.MoveNext())
+            {
+            }
             string animName;
 
             if (string.IsNullOrEmpty(ending.Anim))

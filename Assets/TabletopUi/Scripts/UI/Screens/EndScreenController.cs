@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
@@ -95,7 +97,13 @@ namespace Assets.CS.TabletopUI
 		{
             //save on exit, so the player will return here, not begin a new game
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame(null);
+
+            var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
+            while (saveTask.MoveNext())
+            {
+            }
+
+
             Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
         }
 

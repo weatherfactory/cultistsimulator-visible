@@ -55,17 +55,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 File.Copy  (NoonUtility.GetGameSaveLocation(index), NoonUtility.GetBackupGameSaveLocation(1),true);
 		}
 
-        /// <summary>
-        /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game
-        /// by reloading the tabletop scene - hence withActiveLegacy
-        /// </summary>
-        public void SaveInactiveGame(Legacy withActiveLegacy)
-        {
-            BackupSave();
 
-            var htSaveTable = dataExporter.GetHashtableForExtragameState(withActiveLegacy);
-            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
-        }
+        //public void SaveInactiveGame(Legacy withActiveLegacy)
+        //{
+        //    BackupSave();
+
+        //    //var htSaveTable = dataExporter.GetHashtableForExtragameState(withActiveLegacy);
+        //    var htSaveTable = dataExporter.GetSaveHashTable(withActiveLegacy);
+
+
+        //    File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+        //}
 
         public void DeleteCurrentSave()
         {
