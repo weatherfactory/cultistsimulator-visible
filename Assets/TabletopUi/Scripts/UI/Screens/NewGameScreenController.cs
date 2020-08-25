@@ -138,10 +138,9 @@ namespace Assets.CS.TabletopUI {
 		void StartGameDelayed()
         {
             var chosenLegacy = GetAvailableLegacies()[selectedLegacy];
-            Registry.Get<Character>().ActiveLegacy = chosenLegacy;
-            Registry.Get<Character>().EndingTriggered = null;
+            Registry.Get<Character>().Reset(chosenLegacy,null);
 
-            Registry.Get<StageHand>().SceneChange(SceneNumber.TabletopScene);
+            Registry.Get<StageHand>().RestartGame();
 
 		}
 

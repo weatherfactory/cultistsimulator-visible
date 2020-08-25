@@ -42,6 +42,31 @@ public class Character
 
 
     }
+
+    public string Name
+    {
+        get { return _name; }
+        set { _name = value; }
+    }
+
+    public string Profession { get; set; }
+
+
+    public Ending EndingTriggered { get; set; }
+
+
+
+
+    public Dictionary<string, string> GetAllFutureLegacyEventRecords()
+    {
+        return new Dictionary<string, string>(_futureLegacyEventRecords);
+    }
+
+    public Dictionary<string, string> GetAllPastLegacyEventRecords()
+    {
+        return new Dictionary<string, string>(_pastLegacyEventRecords);
+    }
+
     public List<IDeckInstance> DeckInstances { get; set; } 
     private Dictionary<string, string> _futureLegacyEventRecords;
     private Dictionary<string, string> _pastLegacyEventRecords;
@@ -62,7 +87,7 @@ public class Character
 
     public Character(Legacy activeLegacy, Character previousCharacter)
     {
-        Reset(activeLegacy);
+        Reset(activeLegacy,null);
 
         //if we have a previous character, base our past on their future
         if (previousCharacter != null)
@@ -71,10 +96,11 @@ public class Character
         }
     }
 
-    public void Reset(Legacy activeLegacy)
+    public void Reset(Legacy activeLegacy,Ending endingTriggered)
     {
        
             ActiveLegacy = activeLegacy;
+            EndingTriggered = endingTriggered;
        
         //otherwise, create a blank slate
         //the history builder will then provide a default value for any empty ones.
@@ -190,29 +216,7 @@ if(string.IsNullOrEmpty(value))
         }
     }
 
-    public string Name
-    {
-        get { return _name; }
-        set { _name = value; }
-    }
-
-    public string Profession { get ; set; }
-
-
-    public Ending EndingTriggered { get; set; }
-
-
-
-
-    public Dictionary<string, string> GetAllFutureLegacyEventRecords()
-    {
-        return new Dictionary<string, string>(_futureLegacyEventRecords);
-    }
-
-    public Dictionary<string, string> GetAllPastLegacyEventRecords()
-    {
-        return new Dictionary<string, string>(_pastLegacyEventRecords);
-    }
+ 
 
 
 }

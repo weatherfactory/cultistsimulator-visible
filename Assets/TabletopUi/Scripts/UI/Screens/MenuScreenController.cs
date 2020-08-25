@@ -376,7 +376,7 @@ void FadeIn() {
 
     private void ResetToLegacy(Legacy activeLegacy)
     {
-        Registry.Get<Character>().Reset(activeLegacy);
+        Registry.Get<Character>().Reset(activeLegacy,null);
         var saveGameManager =
             new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 

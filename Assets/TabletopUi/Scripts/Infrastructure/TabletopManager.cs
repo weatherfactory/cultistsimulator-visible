@@ -611,8 +611,8 @@ namespace Assets.CS.TabletopUI {
             var chronicler = Registry.Get<Chronicler>();
 
             chronicler.ChronicleGameEnd(Registry.Get<SituationsCatalogue>().GetRegisteredSituations(), Registry.Get<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
-
-            character.EndingTriggered = ending;
+            character.Reset(null,ending);
+            
 
 
             var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
