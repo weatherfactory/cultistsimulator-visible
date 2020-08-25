@@ -188,10 +188,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     }
                 }
            
-            yield return true;
+                yield return true;
         }
 
-        public Hashtable RetrieveHashedSaveFromFile(int index = 0, bool temp = false)
+        public void LoadTabletopState(TabletopTokenContainer tabletop)
+        {
+            var htSave = RetrieveHashedSaveFromFile();
+            dataImporter.ImportTableState(tabletop,htSave);
+        }
+
+        public Character LoadCharacterState()
+        {
+            var htSave = RetrieveHashedSaveFromFile();
+           return dataImporter.ImportCharacter(htSave);
+        }
+
+
+
+        private Hashtable RetrieveHashedSaveFromFile(int index = 0, bool temp = false)
         {
             string importJson = File.ReadAllText(
 	            temp ? NoonUtility.GetTemporaryGameSaveLocation(index) : NoonUtility.GetGameSaveLocation(index));
@@ -200,10 +214,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportHashedSaveToState(TabletopTokenContainer tabletop, Character storage, Hashtable htSave)
-        {
-            dataImporter.ImportSavedGameToState(tabletop, storage, htSave);
-        }
 
 
 
@@ -234,5 +244,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
 	        File.WriteAllText(saveFilePath, saveData.JsonString());
         }
+
+
     }
 }

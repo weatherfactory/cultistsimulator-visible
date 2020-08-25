@@ -319,6 +319,7 @@ namespace Assets.CS.TabletopUI {
             SetupNewBoard(builder);
             var populatedCharacter =
                 Registry.Get<Character>(); //should just have been set above, but let's keep this clean
+            populatedCharacter.Reset(populatedCharacter.ActiveLegacy,null);
             Registry.Get<ICompendium>().SupplyLevers(populatedCharacter);
      Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
@@ -476,16 +477,16 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void ClearGameState(Heart h, Character s, TabletopTokenContainer tc) {
-            h.Clear();
-            s.DeckInstances = new List<IDeckInstance>();
+        //public void ClearGameState(Heart h, Character s, TabletopTokenContainer tc) {
+        //    h.Clear();
+        //    s.DeckInstances = new List<IDeckInstance>();
 
-            foreach (var sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
-                sc.Retire();
+        //    foreach (var sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
+        //        sc.Retire();
 
-            foreach (var element in tc.GetElementStacksManager().GetStacks())
-                element.Retire(CardVFX.None); //looks daft but pretty on reset
-        }
+        //    foreach (var element in tc.GetElementStacksManager().GetStacks())
+        //        element.Retire(CardVFX.None); //looks daft but pretty on reset
+        //}
 
         public void PurgeElement(string elementId, int maxToPurge)
         {
@@ -636,22 +637,17 @@ namespace Assets.CS.TabletopUI {
 
         public void LoadGame(int index = 0) {
             ICompendium compendium = Registry.Get<ICompendium>();
-            Character storage = Registry.Get<Character>();
-
+            
             _speedController.SetPausedState(true, false, true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
-	            var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
-	            ClearGameState(_heart, storage, _tabletop);
-	            saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
+	            //var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
+	        //    ClearGameState(_heart, character, _tabletop);
+            saveGameManager.LoadTabletopState(_tabletop);
+                //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
 
-	            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
-	            /////
-	            if (storage.ActiveLegacy == null)
-	                storage.ActiveLegacy = compendium.GetEntitiesAsList<Legacy>().First();
-	            
-	            StatusBar.UpdateCharacterDetailsView(storage);
+                StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
 
 				// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
 				var allSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
@@ -674,8 +670,10 @@ namespace Assets.CS.TabletopUI {
             }
             _speedController.SetPausedState(true, false, true);
 
-            _elementOverview.Initialise(storage.ActiveLegacy, Registry.Get<StackManagersCatalogue>(), compendium);
-            tabletopBackground.ShowTabletopFor(storage.ActiveLegacy);
+            var activeLegacy = Registry.Get<Character>().ActiveLegacy;
+
+            _elementOverview.Initialise(activeLegacy, Registry.Get<StackManagersCatalogue>(), compendium);
+            tabletopBackground.ShowTabletopFor(activeLegacy);
 
         }
 

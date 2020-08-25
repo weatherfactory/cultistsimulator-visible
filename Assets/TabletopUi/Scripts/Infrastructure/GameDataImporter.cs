@@ -18,8 +18,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToState(TabletopTokenContainer tabletop, Character character, Hashtable htSave);
-        SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
+        Character ImportCharacter(Hashtable htSave);
+        void ImportTableState(TabletopTokenContainer tabletop,Hashtable htSave);
     }
 
     public class GameDataImporter : IGameDataImporter
@@ -34,54 +34,66 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToState(TabletopTokenContainer tabletop, Character character, Hashtable htSave)
+
+        public void ImportTableState(TabletopTokenContainer tabletop, Hashtable htSave)
         {
-            var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
+
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
-            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
-            ImportCharacter(character, htCharacter);
-            //update the compendium text with tokens for this character
-            compendium.SupplyLevers(character);
-
-            if(tabletop!=null)
+            if (tabletop != null)
             {
                 ImportTabletopElementStacks(tabletop, htElementStacks);
 
                 ImportSituations(tabletop, htSituations);
             }
-            ImportDecks(character, htDecks);
+
 
         }
 
-        private void ImportCharacter(Character character, Hashtable htCharacter)
+        public Character ImportCharacter(Hashtable htSave)
         {
-            if(htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
-                character.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+            
 
+            var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
+            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
-            if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
-                character.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+   
 
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
 
+            Legacy activeLegacy;
+            Ending endingTriggered;
+
+
             if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
             {
-                character.ActiveLegacy = null;
+                activeLegacy = null;
             }
             else
             {
-                character.ActiveLegacy = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
+               activeLegacy = compendium.GetEntityById<Legacy>(chosenLegacyForCharacterId);
             }
 
             var endingTriggeredForCharacterId =
                 TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
             if (string.IsNullOrEmpty(endingTriggeredForCharacterId))
-                character.EndingTriggered = null;
+               endingTriggered = null;
             else
-                character.EndingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
+               endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
+
+            var character = new Character(activeLegacy, endingTriggered);
+
+            character.Reset(activeLegacy,endingTriggered);
+
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
+                character.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
+                character.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
 
             character.ClearExecutions();
@@ -116,63 +128,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 }
             }
 
+
+            compendium.SupplyLevers(character);
+
+
+            ImportDecks(character, htDecks);
+
+
+            return character;
+
         }
 
 
-        public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)
-        {
-            SavedCrossSceneState crossSceneState=new SavedCrossSceneState();
-            
-            //load current ending, if it exists
-            if (htSave.ContainsKey(SaveConstants.SAVE_CURRENTENDING))
-              crossSceneState.CurrentEnding =compendium.GetEntityById<Ending>(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
 
-            //load legacies, if they exist
-            var htLegacies = htSave.GetHashtable(SaveConstants.SAVE_AVAILABLELEGACIES);
-            
-            foreach (var k in htLegacies.Keys)
-            {
-                Legacy l = compendium.GetEntityById<Legacy>(k.ToString());
-                if(l!=null)
-                    crossSceneState.AvailableLegacies.Add(l);
-            }
-
-            //load previous character state, if it exists
-            var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
-            if (htDefunctCharacter != null)
-            {
-                var chosenLegacyForDefunctCharacterId = TryGetStringFromHashtable(htDefunctCharacter, SaveConstants.SAVE_ACTIVELEGACY);
-                Legacy chosenLegacyForDefunctCharacter;
-                if (string.IsNullOrEmpty(chosenLegacyForDefunctCharacterId))
-                    chosenLegacyForDefunctCharacter =
-                        compendium.GetEntitiesAsList<Legacy>()
-                            .First(); //support active legacies for characters who preceded saved active legacies
-                else
-                    chosenLegacyForDefunctCharacter = compendium.GetEntityById<Legacy>(chosenLegacyForDefunctCharacterId);
-
-                Character defunctCharacter=new Character(chosenLegacyForDefunctCharacter);
-
-                if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
-                {
-                    var htFutureLevers = htDefunctCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
-                    foreach (var key in htFutureLevers.Keys)
-                    {
-                        //    var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                        defunctCharacter.SetFutureLegacyEventRecord(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
-
-                    }
-                }
-
-
-                crossSceneState.DefunctCharacter = defunctCharacter;
-
-                
-
-            }
-
-
-            return crossSceneState;
-        }
 
         private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
@@ -187,7 +155,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private void ImportDecks(Character storage, Hashtable htDeckInstances)
+        private void ImportDecks(Character character, Hashtable htDeckInstances)
         {
             foreach (var k in htDeckInstances.Keys)
             {
@@ -214,7 +182,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     for (int i=1;i<=htEachDeck.Count;i++)
                     deckInstance.Add(htEachDeck[i.ToString()].ToString());
 
-                storage.DeckInstances.Add(deckInstance);
+                character.OverwriteDeckInstance(deckInstance);
                 }
             }
 
@@ -222,15 +190,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //But it's possible a deck spec has been added since the game was saved, in a new version of the game.
             //Create and reset any new deckspecs
 
-            foreach (var ds in compendium.GetEntitiesAsList<DeckSpec>())
-            {
-                if (storage.GetDeckInstanceById(ds.Id) == null)
-                {
-                    IDeckInstance di = new DeckInstance(ds);
-                    storage.DeckInstances.Add(di);
-                    di.Reset();
-                }
-            }
+        
         }
 
         private void ImportSituations(TabletopTokenContainer tabletop, Hashtable htSituations)

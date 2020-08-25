@@ -33,7 +33,6 @@ namespace Assets.TabletopUi.Scripts.Services
                 return;
             }
 
-
             LogSystemSettings();
             Initialise();
 
@@ -107,18 +106,15 @@ namespace Assets.TabletopUi.Scripts.Services
         private void LoadCurrentSave(Registry registry)
         {
 
-            Character character=new Character();
-            registry.Register(character);
+            
 
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist())
-            {
-                var htSave = saveGameManager.RetrieveHashedSaveFromFile();
-                saveGameManager.ImportHashedSaveToState(null, character, htSave);
-
-            }
+                registry.Register(saveGameManager.LoadCharacterState());
+            else
+                registry.Register(new Character());
 
 
         }

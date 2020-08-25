@@ -51,9 +51,6 @@ public class MenuScreenController : MonoBehaviour {
 
     [Header("Version News")]
 
-    [Header("Fade Visuals")]
-    public Image fadeOverlay;
-    public float fadeDuration = 0.25f;
 
     [Header("Hints")]
     public GameObject brokenSaveMessage;
@@ -144,18 +141,8 @@ public class MenuScreenController : MonoBehaviour {
 
         InitialiseServices();
 
-        // make sure the screen is black
-        fadeOverlay.gameObject.SetActive(true);
-        fadeOverlay.canvasRenderer.SetAlpha(1f);
 
-        
-
-		canTakeInput = false; // The UpdateAndShowMenu reenables the input
-
-        // We delay the showing to get a proper fade in
-        Invoke("UpdateAndShowMenu", 0.1f);
-
-
+        UpdateAndShowMenu();
         var concursum = Registry.Get<Concursum>();
 
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
@@ -250,9 +237,8 @@ public class MenuScreenController : MonoBehaviour {
         //brokenSaveMessage.gameObject.SetActive(savedGameExists);
         UpdateVersionNumber();
         HideAllOverlays();
-        FadeIn();
 
-		// now we can take input
+        // now we can take input
 		canTakeInput = true;
     }
 
@@ -280,17 +266,7 @@ public class MenuScreenController : MonoBehaviour {
 
 #region -- View Changes ------------------------
 
-void FadeIn() {
-        fadeOverlay.gameObject.SetActive(true);
-        fadeOverlay.canvasRenderer.SetAlpha(1f);
-        fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
-    }
 
-    void FadeOut() {
-        fadeOverlay.gameObject.SetActive(true);
-        fadeOverlay.canvasRenderer.SetAlpha(0f);
-        fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
-    }
 
     void ShowOverlay(CanvasGroupFader overlay) {
 		if (currentOverlay != null)
@@ -332,28 +308,16 @@ void FadeIn() {
 		
         if (Registry.Get<Character>().State==CharacterState.Viable) {
             //back into the game!
-            LoadScene(SceneNumber.TabletopScene);
+            Registry.Get<StageHand>().TabletopScreen();
             return;
         }
 
-
-        LoadScene(SceneNumber.NewGameScene);
+        Registry.Get<StageHand>().LegacyChoiceScreen();
     }
 
-    void LoadScene(int sceneNr) {		
-        canTakeInput = false;
-        sceneToLoad = sceneNr;
 
-		if (sceneToLoad == SceneNumber.TabletopScene)
-			SoundManager.PlaySfx("UIStartGame");
 
-        FadeOut();
-        Invoke("LoadSceneDelayed", fadeDuration);
-    }
 
-    void LoadSceneDelayed() {
-        Registry.Get<StageHand>().SceneChange(sceneToLoad);
-    }
 
     public void TryPurgeSave() {
         if (!canTakeInput)
@@ -370,8 +334,7 @@ void FadeIn() {
 
 
         currentOverlay = null; // to ensure we can re-open another overlay afterwards
-        FadeOut();
-        Invoke("UpdateAndShowMenu", fadeDuration);
+        Registry.Get<StageHand>().MenuScreen();
     }
 
     private void ResetToLegacy(Legacy activeLegacy)

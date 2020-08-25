@@ -39,6 +39,7 @@ namespace Assets.CS.TabletopUI {
 		public float fadeDuration = 0.25f;
 
 		bool canInteract;
+        private List<Legacy> AvailableLegaciesForEnding;
 
         void Start() {
             var registry = new Registry();
@@ -52,12 +53,17 @@ namespace Assets.CS.TabletopUI {
             var contentImporter = new CompendiumLoader();
             contentImporter.PopulateCompendium(compendium, Registry.Get<Concursum>().GetCurrentCultureId());
 
+            var ls = new LegacySelector(Registry.Get<ICompendium>());
+            AvailableLegaciesForEnding = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
+
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);
 
 			FadeIn();
 			SelectLegacy(0);
 			canInteract = true;
+
+    
         }
 
         #if DEBUG
@@ -83,12 +89,12 @@ namespace Assets.CS.TabletopUI {
         void InitLegacyButtons()
         {
 
-            var legaciesAvailable = GetAvailableLegacies();
+   
           
 
-            for (int i = 0; i < legaciesAvailable.Count; i++)
+            for (int i = 0; i < AvailableLegaciesForEnding.Count; i++)
             {
-                var legacySprite= ResourcesManager.GetSpriteForLegacy(legaciesAvailable[i].Image);
+                var legacySprite= ResourcesManager.GetSpriteForLegacy(AvailableLegaciesForEnding[i].Image);
                 legacyArtwork[i].sprite = legacySprite;
             }
 
@@ -96,12 +102,7 @@ namespace Assets.CS.TabletopUI {
             startGameButton.interactable = false;
         }
 
-        private List<Legacy> GetAvailableLegacies()
-        {
-            var ls = new LegacySelector(Registry.Get<ICompendium>());
-            var legaciesAvailable = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);
-            return legaciesAvailable;
-        }
+
         
         // Exposed for in-scene buttons
 
@@ -137,7 +138,7 @@ namespace Assets.CS.TabletopUI {
 
 		void StartGameDelayed()
         {
-            var chosenLegacy = GetAvailableLegacies()[selectedLegacy];
+            var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
             Registry.Get<Character>().Reset(chosenLegacy,null);
 
             Registry.Get<StageHand>().RestartGame();
@@ -181,7 +182,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
-            Legacy legacySelected = GetAvailableLegacies()[selectedLegacy];
+            Legacy legacySelected = AvailableLegaciesForEnding[selectedLegacy];
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;

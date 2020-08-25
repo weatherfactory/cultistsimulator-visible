@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 htDC.Add(SaveConstants.SAVE_NAME,c.Name);
                 
                 var htFutureLevers=new Hashtable();
-                foreach (var record in c.GetAllFutureLegacyEventRecords())
+                foreach (var record in c.GetInProgressHistoryRecords())
                     htFutureLevers.Add(record.Key.ToString(), record.Value);
 
                 htDC.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);

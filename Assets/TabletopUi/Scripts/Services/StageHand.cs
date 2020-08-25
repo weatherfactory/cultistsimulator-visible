@@ -2,6 +2,7 @@
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
@@ -10,7 +11,14 @@ namespace Assets.TabletopUi.Scripts.Services
 
     public class StageHand:MonoBehaviour
     {
+        [Header("Fade Visuals")]
+        public Image fadeOverlay;
+        public float fadeDuration = 0.25f;
+
+
         private const int TabletopScene = 4;
+
+        private int sceneQueuedToLoad = 0;
 
         public int StartingSceneNumber;
 
@@ -26,12 +34,34 @@ namespace Assets.TabletopUi.Scripts.Services
 
             else if (SceneManager.sceneCount==2)
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
-            
 
 
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            if (sceneQueuedToLoad == SceneNumber.TabletopScene)
+                SoundManager.PlaySfx("UIStartGame");
 
+            sceneQueuedToLoad = sceneToLoad;
+
+            Invoke("SceneChangeDelayed", fadeDuration);
+
+            FadeOut();
+
+
+            //// make sure the screen is black
+            //fadeOverlay.gameObject.SetActive(true);
+            //fadeOverlay.canvasRenderer.SetAlpha(1f);
+
+            //// We delay the showing to get a proper fade in
+            //Invoke("UpdateAndShowMenu", 0.1f);
         }
+
+        void SceneChangeDelayed()
+        {
+            SceneManager.LoadScene(sceneQueuedToLoad, LoadSceneMode.Additive);
+        }
+
+ 
+
+
 
         public void RestartGame()
         {
@@ -45,10 +75,32 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
+        void FadeIn()
+        {
+            fadeOverlay.gameObject.SetActive(true);
+            fadeOverlay.canvasRenderer.SetAlpha(1f);
+            fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
+        }
+
+        void FadeOut()
+        {
+            fadeOverlay.gameObject.SetActive(true);
+            fadeOverlay.canvasRenderer.SetAlpha(0f);
+            fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
+        }
+
+
         public void MenuScreen()
         {
             SceneChange(SceneNumber.MenuScene);
         }
+
+
+        public void TabletopScreen()
+        {
+            SceneChange(SceneNumber.TabletopScene);
+        }
+
 
         public void EndingScreen()
         {

@@ -105,14 +105,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
 
 				var htPastLevers = new Hashtable();
-				foreach(var record in character.GetAllPastLegacyEventRecords())
+				foreach(var record in character.GetPreviousCharacterHistoryRecords())
 					htPastLevers.Add(record.Key.ToString(), record.Value);
 
                 htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
 
 
 				var htFutureLevers = new Hashtable();
-				foreach (var record in character.GetAllFutureLegacyEventRecords())
+				foreach (var record in character.GetInProgressHistoryRecords())
 					htFutureLevers.Add(record.Key.ToString(), record.Value);
 
 				htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);

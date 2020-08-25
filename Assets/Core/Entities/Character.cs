@@ -52,84 +52,73 @@ public class Character
     public string Profession { get; set; }
 
 
-    public Ending EndingTriggered { get; set; }
-
-
-
-
-    public Dictionary<string, string> GetAllFutureLegacyEventRecords()
+    public Dictionary<string, string> GetInProgressHistoryRecords()
     {
-        return new Dictionary<string, string>(_futureLegacyEventRecords);
+        return new Dictionary<string, string>(_inProgressHistoryRecords);
     }
 
-    public Dictionary<string, string> GetAllPastLegacyEventRecords()
+    public Dictionary<string, string> GetPreviousCharacterHistoryRecords()
     {
-        return new Dictionary<string, string>(_pastLegacyEventRecords);
+        return new Dictionary<string, string>(_previousCharacterHistoryRecords);
     }
 
     public List<IDeckInstance> DeckInstances { get; set; } 
-    private Dictionary<string, string> _futureLegacyEventRecords;
-    private Dictionary<string, string> _pastLegacyEventRecords;
-    public Legacy ActiveLegacy { get; set; }
-    public Character PreviousCharacter { get; set; }
+    private Dictionary<string, string> _inProgressHistoryRecords;
+    private Dictionary<string, string> _previousCharacterHistoryRecords;
+    public Legacy ActiveLegacy { get; private set; }
+    public Ending EndingTriggered { get; private set; }
 
     private Dictionary<string, int> recipeExecutions;
 
-    public Character():this(null,null)
+
+
+
+    public Character():this(null)
     {
         
     }
 
-    public Character(Legacy activeLegacy) : this(activeLegacy,null)
+    public Character(Legacy activeLegacy) : this(activeLegacy, null)
     {
 
     }
 
-    public Character(Legacy activeLegacy, Character previousCharacter)
+    public Character(Legacy activeLegacy,Ending endingTriggered)
     {
-        Reset(activeLegacy,null);
+        Reset(activeLegacy, endingTriggered);
 
-        //if we have a previous character, base our past on their future
-        if (previousCharacter != null)
-        {
-            _pastLegacyEventRecords = previousCharacter.GetAllFutureLegacyEventRecords(); //THEIR FUTURE IS OUR PAST
-        }
     }
+
 
     public void Reset(Legacy activeLegacy,Ending endingTriggered)
     {
        
             ActiveLegacy = activeLegacy;
             EndingTriggered = endingTriggered;
-       
-        //otherwise, create a blank slate
-        //the history builder will then provide a default value for any empty ones.
-        HistoryBuilder hb = new HistoryBuilder();
-        _pastLegacyEventRecords = hb.FillInDefaultPast(_pastLegacyEventRecords);
 
-        //finally, set our starting future to be our present, ie our past.
-        _futureLegacyEventRecords = new Dictionary<string, string>(_pastLegacyEventRecords);
+            var hb = new HistoryBuilder();
+        if (EndingTriggered!=null)
+            //The game has ended. The current character becomes the previous character.
+            _previousCharacterHistoryRecords = hb.FillInDefaultPast(_inProgressHistoryRecords);
+        else
+        //the game hasn't ended yet. There may be existing prevbious
+            _previousCharacterHistoryRecords = hb.FillInDefaultPast(_previousCharacterHistoryRecords);
+        
+        
+        _inProgressHistoryRecords = new Dictionary<string, string>();
         recipeExecutions= new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
-
-    }
-
-    // Turns this character into a defunct character based on the past of the current, active character
-    public static Character MakeDefunctCharacter(Character currentCharacter)
-    {
-        return new Character(null)
+        
+        //hmm re Compendium
+        foreach (var ds in Registry.Get<ICompendium>().GetEntitiesAsList<DeckSpec>())
         {
-            recipeExecutions = new Dictionary<string, int>(),
-            DeckInstances = new List<IDeckInstance>(),
-            _futureLegacyEventRecords = currentCharacter.GetAllPastLegacyEventRecords(),
+                IDeckInstance di = new DeckInstance(ds);
+                DeckInstances.Add(di);
+                di.Reset();
+        }
 
-            // Turn all past records back into future records, to simulate a character whose run ended
-            _pastLegacyEventRecords = new HistoryBuilder().FillInDefaultPast(new Dictionary<string, string>()),
-            
-            // Load in a default legacy, since it doesn't matter for the defunct character
-            ActiveLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First()
-        };
     }
+
 
     public void ClearExecutions()
     {
@@ -169,24 +158,24 @@ public class Character
     {
 if(string.IsNullOrEmpty(value))
     throw new ApplicationException("Error in LegacyEventRecord overwrite: shouldn't overwrite with an empty value, trying to erase the past for " + id.ToString());
-        if (_pastLegacyEventRecords.ContainsKey(id))
-            _pastLegacyEventRecords[id] = value;
+        if (_previousCharacterHistoryRecords.ContainsKey(id))
+            _previousCharacterHistoryRecords[id] = value;
         else
-            _pastLegacyEventRecords.Add(id, value);
+            _previousCharacterHistoryRecords.Add(id, value);
     }
 
 
     public void SetFutureLegacyEventRecord(string id, string value)
     {
-        if (_futureLegacyEventRecords.ContainsKey(id))
-            _futureLegacyEventRecords[id] = value;
+        if (_inProgressHistoryRecords.ContainsKey(id))
+            _inProgressHistoryRecords[id] = value;
         else
-            _futureLegacyEventRecords.Add(id, value);
+            _inProgressHistoryRecords.Add(id, value);
     }
     public string GetFutureLegacyEventRecord(string forId)
     {
-        if (_futureLegacyEventRecords.ContainsKey(forId))
-            return _futureLegacyEventRecords[forId];
+        if (_inProgressHistoryRecords.ContainsKey(forId))
+            return _inProgressHistoryRecords[forId];
         else
             return null;
     }
@@ -194,8 +183,8 @@ if(string.IsNullOrEmpty(value))
 
     public string GetPastLegacyEventRecord(string forId)
     {
-        if (_pastLegacyEventRecords.ContainsKey(forId))
-            return _pastLegacyEventRecords[forId];
+        if (_previousCharacterHistoryRecords.ContainsKey(forId))
+            return _previousCharacterHistoryRecords[forId];
         else
             return null;
     }
@@ -212,6 +201,25 @@ if(string.IsNullOrEmpty(value))
             NoonUtility.Log(e.Message + " for deck instance id " + id,2);
             throw;
         }
+    }
+
+    public bool OverwriteDeckInstance(IDeckInstance newDeckInstance)
+    {
+        //TODO: this should be a dictionary, obv
+        var existingDeckInstance = DeckInstances.SingleOrDefault(di => di.Id == newDeckInstance.Id);
+
+        if(existingDeckInstance==null)
+        {
+            DeckInstances.Add(newDeckInstance);
+            return false;
+        }
+        else
+        {
+            DeckInstances.Remove(existingDeckInstance);
+            DeckInstances.Add(newDeckInstance);
+            return true;
+        }
+
     }
 
  

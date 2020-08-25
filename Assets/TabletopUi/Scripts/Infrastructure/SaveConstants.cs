@@ -19,10 +19,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static string MARKED_FOR_CONSUMPTION = "markedForConsumption";
         public static string SAVE_ACTIVELEGACY="activeLegacy";
         public static string SAVE_ELIMINATEDCARDS="eliminatedCards";
-        public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";
         public const string SAVE_CURRENTENDING = "currentending";
-        public const string SAVE_AVAILABLELEGACIES = "availablelegacies";
         public const string SAVE_ELEMENTID = "elementId";
         public const string SAVE_QUANTITY = "quantity";
         public const string SAVE_VERBID = "verbId";
