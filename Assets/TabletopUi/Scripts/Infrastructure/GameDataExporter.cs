@@ -91,10 +91,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			{
 				htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
                 if(character.EndingTriggered!=null)
-                htCharacter.Add(SaveConstants.SAVE_CURRENTENDING, character.EndingTriggered.Id);
+                    htCharacter.Add(SaveConstants.SAVE_CURRENTENDING, character.EndingTriggered.Id);
                 htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
                 if(character.ActiveLegacy!=null)
-				htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
+                    htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
 
 				var htExecutions=new Hashtable();
 				foreach (var e in character.GetAllExecutions())
@@ -108,7 +108,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				foreach(var record in character.GetAllPastLegacyEventRecords())
 					htPastLevers.Add(record.Key.ToString(), record.Value);
 
-				 htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
+                htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
 
 
 				var htFutureLevers = new Hashtable();
