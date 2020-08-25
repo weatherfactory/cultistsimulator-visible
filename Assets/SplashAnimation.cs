@@ -29,7 +29,7 @@ public class SplashAnimation : MonoBehaviour
         catch (Exception e)
         {
             NoonUtility.Log(e.Message,0);
-            Registry.Get<StageHand>().SceneChange(SceneNumber.QuoteScene);
+            Registry.Get<StageHand>().QuoteScreen();
             
         
         }
@@ -39,6 +39,6 @@ public class SplashAnimation : MonoBehaviour
 	
 	void EndReached (VideoPlayer p)
     {
-        Registry.Get<StageHand>().SceneChange(SceneNumber.QuoteScene);
+        Registry.Get<StageHand>().QuoteScreen();
     }
 }

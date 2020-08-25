@@ -2134,8 +2134,6 @@ MonoBehaviour:
   modsPanel: {fileID: 1507364684}
   startDLCLegacyConfirmPanel: {fileID: 676880556}
   optionsPanel: {fileID: 476850260}
-  fadeOverlay: {fileID: 0}
-  fadeDuration: 0.5
   brokenSaveMessage: {fileID: 972627038}
   VersionNumber: {fileID: 458841803}
   versionAnim: {fileID: 1502385832}
@@ -65290,7 +65288,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932427286}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1932427290
 Camera:
   m_ObjectHideFlags: 0
@@ -71634,7 +71632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -49.999878}
+  m_AnchoredPosition: {x: 0, y: -49.999756}
   m_SizeDelta: {x: 0, y: -100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2027736749

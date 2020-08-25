@@ -354,7 +354,7 @@ public class OptionsPanel : MonoBehaviour {
         {
 	        if (success)
 	        {
-                Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+                Registry.Get<StageHand>().MenuScreen();
             }
 	        else
 	        {
@@ -369,7 +369,7 @@ public class OptionsPanel : MonoBehaviour {
 	// Leave game without saving
 	public void AbandonGame()
 	{
-        Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+        Registry.Get<StageHand>().MenuScreen();
     }
 
     public void BrowseFiles()

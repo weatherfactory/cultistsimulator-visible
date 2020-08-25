@@ -39,7 +39,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void DoLoad() {
-        Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+        Registry.Get<StageHand>().MenuScreen();
 	}
 
 }

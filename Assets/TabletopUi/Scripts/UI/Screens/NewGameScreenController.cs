@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI {
             while (saveTask.MoveNext())
             {
             }
-            Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+            Registry.Get<StageHand>().MenuScreen();
         }
 
 		public void StartGame() {

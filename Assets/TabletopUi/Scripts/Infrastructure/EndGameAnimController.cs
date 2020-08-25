@@ -96,7 +96,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             FadeToBlack(fadeDuration);
             yield return new WaitForSeconds(fadeDuration);
 
-            Registry.Get<StageHand>().SceneChange(SceneNumber.GameOverScene);
+            Registry.Get<StageHand>().EndingScreen();
 
         }
 

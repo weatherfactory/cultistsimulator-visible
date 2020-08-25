@@ -104,7 +104,7 @@ namespace Assets.CS.TabletopUI
             }
 
 
-            Registry.Get<StageHand>().SceneChange(SceneNumber.MenuScene);
+            Registry.Get<StageHand>().MenuScreen();
         }
 
         public void StartNewGame()
@@ -119,7 +119,7 @@ namespace Assets.CS.TabletopUI
         }
 
         private void StartNewGameInternal() {
-            Registry.Get<StageHand>().SceneChange(SceneNumber.NewGameScene);
+            Registry.Get<StageHand>().LegacyChoiceScreen();
         }
 #if UNITY_EDITOR
 		private void OnGUI()

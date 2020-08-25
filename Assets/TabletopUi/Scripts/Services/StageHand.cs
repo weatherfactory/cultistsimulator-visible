@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public bool RestartingGameFlag;
 
-        public void SceneChange(int sceneToLoad)
+        private void SceneChange(int sceneToLoad)
         {
             //if (currentSceneIndex > 0)
             //    SceneManager.UnloadSceneAsync(currentSceneIndex);
@@ -34,10 +34,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
             else if (SceneManager.sceneCount==2)
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
-
-
-            if (sceneQueuedToLoad == SceneNumber.TabletopScene)
-                SoundManager.PlaySfx("UIStartGame");
 
             sceneQueuedToLoad = sceneToLoad;
 
@@ -57,9 +53,10 @@ namespace Assets.TabletopUi.Scripts.Services
         void SceneChangeDelayed()
         {
             SceneManager.LoadScene(sceneQueuedToLoad, LoadSceneMode.Additive);
+            fadeOverlay.gameObject.SetActive(false);
         }
 
- 
+
 
 
 
@@ -90,6 +87,18 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
+
+        public void LogoScreen()
+        {
+            SceneChange(SceneNumber.LogoScene);
+        }
+
+
+        public void QuoteScreen()
+        {
+            SceneChange(SceneNumber.QuoteScene);
+        }
+
         public void MenuScreen()
         {
             SceneChange(SceneNumber.MenuScene);
@@ -98,6 +107,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void TabletopScreen()
         {
+            SoundManager.PlaySfx("UIStartGame");
             SceneChange(SceneNumber.TabletopScene);
         }
 
