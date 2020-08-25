@@ -12,6 +12,50 @@ using UnityEngine.Analytics;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+    public interface ITableSaveState
+    {
+        IEnumerable<IElementStack> TableStacks { get; }
+        List<SituationController> Situations { get; }
+        bool IsTableActive();
+    }
+
+    public class TableSaveState : ITableSaveState
+    {
+        public IEnumerable<IElementStack> TableStacks { get; private set; }
+        public List<SituationController> Situations { get; private set; }
+        public bool IsTableActive()
+        {
+            return true;
+        }
+
+
+        public TableSaveState(IEnumerable<IElementStack> tableStacks, List<SituationController> situations)
+        {
+            TableStacks = tableStacks;
+            Situations = situations;
+        }
+    }
+
+    public class InactiveTableSaveState : ITableSaveState
+    {
+        public IEnumerable<IElementStack> TableStacks { get; private set; }
+        public List<SituationController> Situations { get; private set; }
+
+        public bool IsTableActive()
+        {
+            return false;
+        }
+
+        public InactiveTableSaveState()
+        {
+            TableStacks = new List<IElementStack>();
+            Situations = new List<SituationController>();
+        }
+
+
+    }
+
+
     public class GameSaveManager
     {
         private readonly IGameDataImporter dataImporter;
@@ -56,16 +100,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 		}
 
 
-        //public void SaveInactiveGame(Legacy withActiveLegacy)
-        //{
-        //    BackupSave();
-
-        //    //var htSaveTable = dataExporter.GetHashtableForExtragameState(withActiveLegacy);
-        //    var htSaveTable = dataExporter.GetSaveHashTable(withActiveLegacy);
-
-
-        //    File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
-        //}
 
         public void DeleteCurrentSave()
         {
@@ -73,23 +107,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 File.Delete(NoonUtility.GetGameSaveLocation());
         }
 
-        public IEnumerator<bool?> SaveActiveGameAsync(IEnumerable<IElementStack> allStacks, List<SituationController> currentSituationControllers, Character character, bool forceBadSave = false, int index = 0)
+        public IEnumerator<bool?> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
         {
     
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
               //  var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
                 var metaInfo = Registry.Get<MetaInfo>();
-                var allDecks = character.DeckInstances;
-
-
+      
                 // GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
-                var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,currentSituationControllers,allDecks,forceBadSave);
+                var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,tableSaveState, character);
 
                 // Universal catch-all. If data is broken, abort save and retry 5 seconds later - assuming problem circumstance has completed - CP
                 // If we fail several of these in a row then something is permanently broken in the data and we should alert user :(
                 if (htSaveTable == null && !forceBadSave)
                 {
-                    HandleSaveError(allStacks,currentSituationControllers, character, index);
+                    HandleSaveError(tableSaveState, character, index);
                     yield return false;	// Something went wrong with the save
                     yield break;
                 }
@@ -150,7 +182,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     }
                     if (!success)
                     {
-                        HandleSaveError(allStacks,currentSituationControllers, character, index);
+                        HandleSaveError(tableSaveState, character, index);
                         yield return false;
                         yield break;
                     }
@@ -175,34 +207,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public string GetLegacyIdFromSavedGame()
-        {
-            Hashtable htSave;
-            string LEGACY_KEY = "activeLegacy";
-            try
-            {
-                htSave = RetrieveHashedSaveFromFile();
-            }
-            catch(Exception e)
-            {
-                Debug.LogError("Failed to load game (see exception for details)");
-                Debug.LogException(e);
-                return "";
-            }
-            if (htSave == null)
-                return string.Empty;
-            var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
-            if (htCharacter == null)
-                return string.Empty;
-            if(!htCharacter.ContainsKey(LEGACY_KEY))
-                return String.Empty;
-
-            return htCharacter[LEGACY_KEY].ToString();
-            
-            
-        }
-
-        private void HandleSaveError(IEnumerable<IElementStack> stacks, List<SituationController> controllers, Character character, int index = 0)
+        private void HandleSaveError(ITableSaveState tableSaveState, Character character, int index = 0)
         {
 	        failedSaveCount++;
 	        if (failedSaveCount != 3) 
@@ -214,7 +219,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	            File.Copy(savePath, NoonUtility.GetErrorSaveLocation(DateTime.Now, "pre"), true);
                 
             // Force a bad save into a different filename
-            var saveTask = SaveActiveGameAsync(stacks,controllers, character, true, index);
+            var saveTask = SaveActiveGameAsync(tableSaveState, character, true, index);
             while (saveTask.MoveNext())
             {
             }

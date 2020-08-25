@@ -109,9 +109,7 @@ public class Character
 
         //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<string, string>(_pastLegacyEventRecords);
-
-            recipeExecutions= new Dictionary<string, int>();
-
+        recipeExecutions= new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
 
     }

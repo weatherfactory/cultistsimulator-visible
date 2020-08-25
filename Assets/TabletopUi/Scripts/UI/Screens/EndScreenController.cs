@@ -98,7 +98,7 @@ namespace Assets.CS.TabletopUI
             //save on exit, so the player will return here, not begin a new game
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
-            var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
+            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(),Registry.Get<Character>());
             while (saveTask.MoveNext())
             {
             }

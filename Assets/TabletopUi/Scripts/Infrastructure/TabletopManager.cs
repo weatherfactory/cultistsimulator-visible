@@ -615,7 +615,7 @@ namespace Assets.CS.TabletopUI {
             
 
 
-            var saveTask = saveGameManager.SaveActiveGameAsync(new List<IElementStack>(), new List<SituationController>(), Registry.Get<Character>());
+            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
             while (saveTask.MoveNext())
             {
             }
@@ -701,7 +701,9 @@ namespace Assets.CS.TabletopUI {
             try
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-	            saveTask = saveGameManager.SaveActiveGameAsync(_tabletop.GetElementStacksManager().GetStacks(),Registry.Get<SituationsCatalogue>().GetRegisteredSituations(),  Registry.Get<Character>(), index: index);
+
+                ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacksManager().GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
+	            saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), index: index);
             }
             catch (Exception e)
             {

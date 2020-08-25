@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -14,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks,bool forceBadSave);
+        Hashtable GetSaveHashTable(MetaInfo metaInfo, ITableSaveState tableSaveState, Character character);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -30,33 +31,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances, bool forceBadSave)
+        public Hashtable GetSaveHashTable(MetaInfo metaInfo, ITableSaveState saveState, Character character)
         {
-			var htMeta = GetHashTableForMetaInfo(metaInfo);
-			var htChar = GetHashTableForCharacter(character);
-			var htStacks = GetHashTableForStacks(stacks);
-			var htSituations = GetHashTableForSituations(situationControllers);
-			var htDecks = GetHashTableForDecks(deckInstances);
+            Hashtable htMeta;
+            Hashtable htChar;
+            Hashtable htDecks;
+            Hashtable htStacks;
+            Hashtable htSituations;
 
-			if (!forceBadSave)
-			{
-#if UNITY_EDITOR
-				if (GameSaveManager.simulateBrokenSave)
-					htSituations.Clear();	// Force failure
-#endif
-				// Do validity checks
-				if (htSituations.Count==0 ||
-					htStacks.Count==0 ||
-					htDecks.Count==0)
-				{
-					AnalyticsReport( false, metaInfo, character, stacks, situationControllers, deckInstances );
-					return null;
-				}
+			htMeta = GetHashTableForMetaInfo(metaInfo);
+            htChar = GetHashTableForCharacter(character);
+            if (character.State==CharacterState.Viable)
+                htDecks = GetHashTableForDecks(character.DeckInstances);
+            else
+            {
+                htDecks = new Hashtable();
+            }
 
-				AnalyticsReport( true, metaInfo, character, stacks, situationControllers, deckInstances );
-			}
+            if(saveState.IsTableActive())
+            {
+             htStacks = GetHashTableForStacks(saveState.TableStacks);
+			 htSituations = GetHashTableForSituations(saveState.Situations);
+            }
+            else
+            {
+                htStacks = new Hashtable();
+                htSituations=new Hashtable();
+            }
 
-			// Build complete hashtable only if all subtables are valid
+
+            // Build complete hashtable only if all subtables are valid
             var htAll = new Hashtable()
             {
                 {SaveConstants.SAVE_METAINFO,			htMeta },
@@ -68,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htAll;
         }
 
-        private object GetHashTableForMetaInfo(MetaInfo metaInfo)
+        private Hashtable GetHashTableForMetaInfo(MetaInfo metaInfo)
         {
             var htMetaInfo=new Hashtable();
             htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER,metaInfo.VersionNumber);
