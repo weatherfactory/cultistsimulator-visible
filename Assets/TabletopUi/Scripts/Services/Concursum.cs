@@ -86,8 +86,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public Concursum()
         {
-            _config=new Config();
-            _config.CultureId = NoonConstants.DEFAULT_CULTURE_ID;
+            _config = new Config {CultureId = NoonConstants.DEFAULT_CULTURE_ID};
         }
 
 

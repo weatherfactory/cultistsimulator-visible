@@ -91,8 +91,6 @@ namespace Assets.CS.TabletopUI {
         private DebugTools debugTools;
         [SerializeField]
         private BackgroundMusic backgroundMusic;
-        [SerializeField]
-        private UIController _uiController;
 
         [SerializeField]
         private Notifier _notifier;
@@ -170,10 +168,6 @@ namespace Assets.CS.TabletopUI {
             if (!_initialised)
                 return; //still setting up
 
-            // Game is structured to minimise Update processing, so keep this lean - CP
-            // But some things do have to be updated outside the main gameplay Heart.Beat
-            //
-            _uiController.WatchForGameplayHotkeys();
             _intermittentAnimatableController.CheckForCardAnimations();
 
 			if (_heart.IsPaused)
@@ -236,11 +230,9 @@ namespace Assets.CS.TabletopUI {
                 //we hand off board functions to individual controllers
                 InitialiseSubControllers(
                     _speedController,
-                    _uiController,
                     _intermittentAnimatableController,
                     _mapController,
                     _endGameAnimController,
-                    _notifier,
                     _optionsPanel
                 );
 
@@ -293,13 +285,13 @@ namespace Assets.CS.TabletopUI {
      
 
             if (!shouldContinueGame || isSaveCorrupted)
-                {
-	                _notifier.ShowSaveError(true);
-	                GameSaveManager.saveErrorWarningTriggered = true;
-                }
+            {
+                _notifier.ShowSaveError(true);
+                GameSaveManager.saveErrorWarningTriggered = true;
+            }
             
-			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
-			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
+            _heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
+            _speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 		}
 
@@ -314,12 +306,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
-                                              UIController uiController,
-                                              IntermittentAnimatableController intermittentAnimatableController,
+            IntermittentAnimatableController intermittentAnimatableController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController,
-                                              Notifier notifier,
-                                              OptionsPanel optionsPanel) {
+            OptionsPanel optionsPanel) {
 
             speedController.Initialise(_heart);
 
@@ -466,16 +456,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        //public void ClearGameState(Heart h, Character s, TabletopTokenContainer tc) {
-        //    h.Clear();
-        //    s.DeckInstances = new List<IDeckInstance>();
-
-        //    foreach (var sc in Registry.Get<SituationsCatalogue>().GetRegisteredSituations())
-        //        sc.Retire();
-
-        //    foreach (var element in tc.GetElementStacksManager().GetStacks())
-        //        element.Retire(CardVFX.None); //looks daft but pretty on reset
-        //}
 
         public void PurgeElement(string elementId, int maxToPurge)
         {

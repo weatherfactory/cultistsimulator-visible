@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			inInputField = false;
 		}
 
-        public void WatchForGameplayHotkeys()
+        public void Update()
         {
             if (!enabled)
                 return;
