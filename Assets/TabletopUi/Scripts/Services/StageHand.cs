@@ -8,7 +8,16 @@ using UnityEngine.UI;
 namespace Assets.TabletopUi.Scripts.Services
 {
 
-
+    public enum SourceForGameState
+    {
+        NewGame=-1,
+        DefaultSave=0,
+        DevSlot1=1,
+        DevSlot2=2,
+        DevSlot3=3,
+        DevSlot4=5,
+        DevSlot5=5
+    }
 
     public class StageHand:MonoBehaviour
     {
@@ -23,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public int StartingSceneNumber;
 
-        public bool RestartingGameFlag;
+        public SourceForGameState SourceForGameState { get; private set; }
 
         async Task FadeOut()
         {
@@ -57,9 +66,6 @@ namespace Assets.TabletopUi.Scripts.Services
             else if (SceneManager.sceneCount==2)
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
 
-     
-
-           // Invoke("SceneChangeDelayed", fadeDuration);
 
            if (withFadeEffect)
            {
@@ -75,30 +81,33 @@ namespace Assets.TabletopUi.Scripts.Services
                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
            }
 
-
-            //// We delay the showing to get a proper fade in
-            //Invoke("UpdateAndShowMenu", 0.1f);
         }
 
 
 
-        public void LoadGameOnTabletop()
+        public void LoadGameOnTabletop(SourceForGameState source)
         {
-
+            SoundManager.PlaySfx("UIStartGame");
+            SourceForGameState = source;
+            SceneChange(TabletopScene, true);
         }
+
+        //public void TabletopScreen()
+        //{
+        //    SoundManager.PlaySfx("UIStartGame");
+        //    SceneChange(SceneNumber.TabletopScene, true);
+        //}
 
         public void RestartGameOnTabletop()
         {
-            RestartingGameFlag = true;
+            SourceForGameState = SourceForGameState.NewGame;
             SceneChange(TabletopScene,true);
         }
 
         public void ClearRestartingGameFlag()
         {
-            RestartingGameFlag = false;
+            SourceForGameState = SourceForGameState.DefaultSave;
         }
-
-
 
 
 
@@ -119,11 +128,7 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-        public void TabletopScreen()
-        {
-            SoundManager.PlaySfx("UIStartGame");
-            SceneChange(SceneNumber.TabletopScene,true);
-        }
+
 
 
         public void EndingScreen()

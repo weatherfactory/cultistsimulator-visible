@@ -252,7 +252,7 @@ namespace Assets.CS.TabletopUI {
             _initialised = true;
 
             
-            if (Registry.Get<StageHand>().RestartingGameFlag)
+            if (Registry.Get<StageHand>().SourceForGameState==SourceForGameState.NewGame)
             {
                 BeginNewGame(_situationBuilder);
             }
@@ -703,7 +703,7 @@ namespace Assets.CS.TabletopUI {
 	            Debug.LogException(e);
             }
 
-            if (wasBeating)
+            if (wasBeating && _heart!=null)
             {
 	            _heart.ResumeBeating();
             }

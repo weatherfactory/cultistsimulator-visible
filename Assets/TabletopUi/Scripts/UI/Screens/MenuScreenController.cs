@@ -142,7 +142,9 @@ public class MenuScreenController : MonoBehaviour {
         InitialiseServices();
 
 
-        UpdateAndShowMenu();
+        //// We delay the showing to get a proper fade in
+        Invoke("UpdateAndShowMenu", 0.1f);
+        
         var concursum = Registry.Get<Concursum>();
 
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
@@ -308,7 +310,7 @@ public class MenuScreenController : MonoBehaviour {
 		
         if (Registry.Get<Character>().State==CharacterState.Viable) {
             //back into the game!
-            Registry.Get<StageHand>().TabletopScreen();
+            Registry.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
             return;
         }
 

@@ -467,7 +467,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void LoadGame()
     {
-        Registry.Get<TabletopManager>().LoadGame();
+        Registry.Get<StageHand>().LoadGameOnTabletop(SourceForGameState.DefaultSave);
     }
 
     public async void SaveGame()
