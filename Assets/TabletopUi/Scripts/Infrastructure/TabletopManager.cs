@@ -199,38 +199,38 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        private void AppealToConscience()
+        {
+            string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
+            if (File.Exists(appealToConscienceLocation))
+            {
+                var content = File.ReadLines(appealToConscienceLocation);
+                DateTime expiry = Convert.ToDateTime(content.First());
+                if (DateTime.Today > expiry)
+                {
+                    _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
+                    return;
+                }
+            }
+        }
+
 
         void Start()
 		{
-
-            //string appealToConscienceLocation = Application.streamingAssetsPath + "/edition/please_buy_our_game.txt";
-            //if (File.Exists(appealToConscienceLocation))
-            //{
-            //    var content = File.ReadLines(appealToConscienceLocation);
-            //    DateTime expiry = Convert.ToDateTime(content.First());
-            //    if(DateTime.Today>expiry)
-            //    { 
-            //        _notifier.ShowNotificationWindow("ERROR - PLEASE UPDATE GAME", @"CRITICAL UPDATE REQUIRED");
-            //    return;
-            //    }
-            //}
-
-
-
-   Configuration.Setup();
+            //AppealToConscience();
+            
+         Configuration.Setup();
 
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
             var registry=new Registry();
 
            
-
                 //register everything used gamewide
                 SetupServices(registry,_situationBuilder, _tabletop);
 
                 // This ensures that we have an ElementStackManager in Limbo & Tabletop
                 InitializeTokenContainers();
-
 
                 //we hand off board functions to individual controllers
                 InitialiseSubControllers(
@@ -250,34 +250,29 @@ namespace Assets.CS.TabletopUI {
 
             _initialised = true;
 
-            BeginGame(_situationBuilder);
             
+            if (Registry.Get<StageHand>().RestartingGameFlag)
+            {
+                BeginNewGame(_situationBuilder);
+            }
+            else
+            {
+                LoadExistingGame(_situationBuilder);
+            }
+
+
         }
 
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
-        private void BeginGame(SituationBuilder builder)
+        private void LoadExistingGame(SituationBuilder builder)
 		{
-            //CHECK LEGACY POPULATED FOR CHARACTERS
-            //this is all a bit post facto and could do with being tidied up
-            //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
-			bool shouldStartPaused = false;
-            //var chosenLegacy = CrossSceneState.GetChosenLegacy();
-            //if (chosenLegacy == null)
-            //{
-            //    NoonUtility.Log("No initial Legacy specified",0,VerbosityLevel.Trivia);
-            //    chosenLegacy = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>().First();
-            //    CrossSceneState.SetChosenLegacy(chosenLegacy);
-            //    Registry.Get<Character>() .ActiveLegacy = chosenLegacy;
-            //}
 
-            if(Registry.Get<StageHand>().RestartingGameFlag)
-            {
-                BeginNewGame(builder);
-            }
-            else
-            {
+			bool shouldStartPaused = false;
+
+
+
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
                 bool isSaveCorrupted = false;
                 bool shouldContinueGame;
@@ -293,22 +288,17 @@ namespace Assets.CS.TabletopUI {
 	                isSaveCorrupted = true;
                 }
 
-                if (shouldContinueGame)
-                {
-                    LoadGame();
-					shouldStartPaused = true;
-                }
-                else
-                {
-                    BeginNewGame(builder);
-                }
+                LoadGame();
+				shouldStartPaused = true;
 
-                if (isSaveCorrupted)
+ 
+
+                if (!shouldContinueGame || isSaveCorrupted)
                 {
 	                _notifier.ShowSaveError(true);
 	                GameSaveManager.saveErrorWarningTriggered = true;
                 }
-            }
+            
 			_heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
 			_speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
