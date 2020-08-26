@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
-using System.Text;
+
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
