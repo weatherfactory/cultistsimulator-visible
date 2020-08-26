@@ -6,6 +6,7 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
 
@@ -91,7 +92,7 @@ public class Heart : MonoBehaviour
 
     async void  OnApplicationQuit()
     {
-        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
         await saveTask;
     }
 

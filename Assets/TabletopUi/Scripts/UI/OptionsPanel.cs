@@ -337,7 +337,7 @@ public class OptionsPanel : MonoBehaviour {
         if(restartButton.AttemptRestart())
         {
             ToggleVisibility();
-            Registry.Get<StageHand>().RestartGameOnTabletop();
+            Registry.Get<StageHand>().NewGameOnTabletop();
 
         }
     }
@@ -349,7 +349,7 @@ public class OptionsPanel : MonoBehaviour {
 
         var tabletopManager = Registry.Get<TabletopManager>();
         tabletopManager.SetPausedState(true);
-        var saveTask = tabletopManager.SaveGameAsync(true);
+        var saveTask = tabletopManager.SaveGameAsync(true, SourceForGameState.DefaultSave);
 
         var success = await saveTask;
 
@@ -382,7 +382,7 @@ public class OptionsPanel : MonoBehaviour {
 	    {
 		    if (_isInGame)
             {
-                var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+                var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true, SourceForGameState.DefaultSave);
 
                 var success = await saveTask;
 
@@ -430,7 +430,7 @@ public class OptionsPanel : MonoBehaviour {
 		// Reload last good savegame
 		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
 
-		Registry.Get<TabletopManager>().LoadGame();
+		Registry.Get<TabletopManager>().LoadGame(SourceForGameState.DefaultSave);
 	}
 
     // public button events

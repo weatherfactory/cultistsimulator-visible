@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine;	// added for debug asserts - CP
@@ -79,9 +80,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return File.Exists(NoonUtility.GetGameSaveLocation());
         }
 
-        public bool IsSavedGameActive(int index = 0, bool temp = false)
+        public bool IsSavedGameActive(SourceForGameState source, bool temp = false)
         {
-            var htSave = RetrieveHashedSaveFromFile(index, temp);
+            var htSave = RetrieveHashedSaveFromFile(source, temp);
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
 
@@ -109,9 +110,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //  public IEnumerator<bool?> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
-        public async Task<bool> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
+        public async Task<bool> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, SourceForGameState source, bool forceBadSave = false)
         {
-    
+
+            int index = (int) source;
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
               //  var currentSituationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
                 var metaInfo = Registry.Get<MetaInfo>();
@@ -152,7 +154,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     bool success;
                     if (saveTask.Exception == null)
                     {
-                        success = IsSavedGameActive(index, true);
+                        success = IsSavedGameActive(source, true);
                     }
                     else
                     {
@@ -197,22 +199,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return true;
         }
 
-        public void LoadTabletopState(TabletopTokenContainer tabletop)
+        public void LoadTabletopState(TabletopTokenContainer tabletop,SourceForGameState source)
         {
-            var htSave = RetrieveHashedSaveFromFile();
+            var htSave = RetrieveHashedSaveFromFile(source);
             dataImporter.ImportTableState(tabletop,htSave);
         }
 
-        public Character LoadCharacterState()
+        public Character LoadCharacterState(SourceForGameState source)
         {
-            var htSave = RetrieveHashedSaveFromFile();
+            var htSave = RetrieveHashedSaveFromFile(source);
            return dataImporter.ImportCharacter(htSave);
         }
 
 
 
-        private Hashtable RetrieveHashedSaveFromFile(int index = 0, bool temp = false)
+        private Hashtable RetrieveHashedSaveFromFile(SourceForGameState source, bool temp = false)
         {
+            var index = (int) source;
+
             string importJson = File.ReadAllText(
 	            temp ? NoonUtility.GetTemporaryGameSaveLocation(index) : NoonUtility.GetGameSaveLocation(index));
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
@@ -235,7 +239,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 	            File.Copy(savePath, NoonUtility.GetErrorSaveLocation(DateTime.Now, "pre"), true);
                 
             // Force a bad save into a different filename
-            var saveTask = SaveActiveGameAsync(tableSaveState, character, true, index);
+            var saveTask = SaveActiveGameAsync(tableSaveState, character, SourceForGameState.DefaultSave,true);
 
             var success = await saveTask;
 

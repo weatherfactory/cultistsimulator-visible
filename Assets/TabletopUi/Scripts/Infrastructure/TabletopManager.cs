@@ -190,7 +190,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				housekeepingTimer = 0.0f;
 
-                var saveTask = SaveGameAsync(true);
+                var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
                 var success = await saveTask;
 
                 if(!success)
@@ -258,7 +258,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-                LoadExistingGame(_situationBuilder);
+                LoadExistingGame(Registry.Get<StageHand>().SourceForGameState);
             }
 
 
@@ -267,7 +267,7 @@ namespace Assets.CS.TabletopUI {
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
-        private void LoadExistingGame(SituationBuilder builder)
+        private void LoadExistingGame(SourceForGameState source)
 		{
 
             bool shouldStartPaused = true;
@@ -278,7 +278,7 @@ namespace Assets.CS.TabletopUI {
                 bool shouldContinueGame;
                 try
                 {
-	                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive();
+	                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive(source);
                 }
                 catch (Exception e)
                 {
@@ -288,8 +288,7 @@ namespace Assets.CS.TabletopUI {
 	                isSaveCorrupted = true;
                 }
 
-
-                LoadGame();
+                LoadGame(source);
 
      
 
@@ -606,7 +605,7 @@ namespace Assets.CS.TabletopUI {
             
 
 
-            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
+            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>(),SourceForGameState.DefaultSave);
             var result = await saveTask;
 
             string animName;
@@ -624,7 +623,7 @@ namespace Assets.CS.TabletopUI {
 
 #region -- Load / Save GameState -------------------------------
 
-        public void LoadGame(int index = 0) {
+        public void LoadGame(SourceForGameState gameStateSource) {
             ICompendium compendium = Registry.Get<ICompendium>();
             
             _speedController.SetPausedState(true, false, true);
@@ -633,7 +632,9 @@ namespace Assets.CS.TabletopUI {
             {
 	            //var htSave = saveGameManager.RetrieveHashedSaveFromFile(index);
 	        //    ClearGameState(_heart, character, _tabletop);
-            saveGameManager.LoadTabletopState(_tabletop);
+            var registry=new Registry();
+           registry.Register(saveGameManager.LoadCharacterState(gameStateSource));
+            saveGameManager.LoadTabletopState(_tabletop,gameStateSource);
                 //saveGameManager.ImportHashedSaveToState(_tabletop, null, htSave);
 
                 StatusBar.UpdateCharacterDetailsView(Registry.Get<Character>());
@@ -666,7 +667,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public async Task<bool> SaveGameAsync(bool withNotification, int index = 0)
+        public async Task<bool> SaveGameAsync(bool withNotification, SourceForGameState source)
 		{
 			if (!IsSafeToAutosave())
             {
@@ -689,7 +690,7 @@ namespace Assets.CS.TabletopUI {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
                 ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacksManager().GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
-                 var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), index: index);
+                 var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
 
                  success = await saveTask;
 

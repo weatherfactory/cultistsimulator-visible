@@ -345,7 +345,7 @@ public class MenuScreenController : MonoBehaviour {
         var saveGameManager =
             new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
-        var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
+        var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>(), SourceForGameState.DefaultSave);
         await saveTask;
 
     }
@@ -355,7 +355,7 @@ public class MenuScreenController : MonoBehaviour {
         var legacy= Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
         ResetToLegacy(legacy);
         
-        Registry.Get<StageHand>().RestartGameOnTabletop();
+        Registry.Get<StageHand>().NewGameOnTabletop();
     }
 
     public void ShowCredits() {

@@ -106,13 +106,11 @@ namespace Assets.TabletopUi.Scripts.Services
         private void LoadCurrentSave(Registry registry)
         {
 
-            
-
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist())
-                registry.Register(saveGameManager.LoadCharacterState());
+                registry.Register(saveGameManager.LoadCharacterState(SourceForGameState.DefaultSave));
             else
                 registry.Register(new Character());
 

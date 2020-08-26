@@ -106,25 +106,36 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         QueuedRollsList=new List<int>();
 
-        for (int i = 0; i < saveButtons.Count; i++)
+        int sbIndex = 1;
+        foreach (var saveButton in saveButtons)
         {
-            var index = i;
-            saveButtons[i].onClick.AddListener(() => SaveDebugSave(index));
+            var index = sbIndex;
+            saveButton.onClick.AddListener(() => SaveDebugSave(index));
+            sbIndex++;
         }
-        for (int i = 0; i < loadButtons.Count; i++)
+
+        int lbIndex = 1;
+        foreach (var loadButton in loadButtons)
         {
-            var index = i;
-            loadButtons[i].onClick.AddListener(() => LoadDebugSave(index));
-            if (!CheckDebugSaveExists(i))
-                loadButtons[i].interactable = false;
+            var index = lbIndex;
+            loadButton.onClick.AddListener((() => LoadDebugSave(index)));
+            if (!CheckDebugSaveExists(lbIndex))
+                loadButton.interactable = false;
+
+            lbIndex++;
         }
-        for (int i = 0; i < delButtons.Count; i++)
+
+        int dbIndex = 1;
+        foreach (var deleteButton in delButtons)
         {
-            var index = i;
-            delButtons[i].onClick.AddListener(() => DeleteDebugSave(index));
-            if (!CheckDebugSaveExists(i))
-                delButtons[i].interactable = false;
+            var index = dbIndex;
+            deleteButton.onClick.AddListener((() => DeleteDebugSave(index)));
+            if (!CheckDebugSaveExists(dbIndex))
+                deleteButton.interactable = false;
+
+            dbIndex++;
         }
+
 
 
 
@@ -472,7 +483,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public async void SaveGame()
     {
-        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
         await saveTask;
     }
 
@@ -518,7 +529,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
             return 0;
         else
         {
-        int result = QueuedRollsList.First();
+            int result = QueuedRollsList.First();
             QueuedRollsList.RemoveAt(0);
             UpdatedQueuedRollsDisplay();
             return result;
@@ -528,12 +539,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
     async void  SaveDebugSave(int index)
     {
         TabletopManager tabletopManager = Registry.Get<TabletopManager>();
-        var task = tabletopManager.SaveGameAsync(true, index + 1);
+        var source = (SourceForGameState) index;
+
+        var task = tabletopManager.SaveGameAsync(true, source);
         var success = await task;
 
         
-            loadButtons[index].interactable = success;
-            delButtons[index].interactable = success;
+            loadButtons[index-1].interactable = success;
+            delButtons[index -1].interactable = success;
         
     }
 
@@ -541,22 +554,22 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         if (!CheckDebugSaveExists(index))
             return;
-        TabletopManager tabletopManager = Registry.Get<TabletopManager>();
-        tabletopManager.LoadGame(index + 1);
-    }
+        SourceForGameState source = (SourceForGameState) index;
+        Registry.Get<StageHand>().LoadGameOnTabletop(source);
+        }
 
     void DeleteDebugSave(int index)
     {
         if (!CheckDebugSaveExists(index))
             return;
-        File.Delete(GetGameSaveLocation(index + 1));
-        loadButtons[index].interactable = false;
-        delButtons[index].interactable = false;
+        File.Delete(GetGameSaveLocation(index));
+        loadButtons[index-1].interactable = false;
+        delButtons[index-1].interactable = false;
     }
 
     private bool CheckDebugSaveExists(int index)
     {
-        return File.Exists(GetGameSaveLocation(index + 1));
+        return File.Exists(GetGameSaveLocation(index));
     }
 }
 

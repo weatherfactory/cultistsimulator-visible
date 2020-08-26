@@ -16,7 +16,12 @@ namespace Assets.TabletopUi.Scripts.Services
         DevSlot2=2,
         DevSlot3=3,
         DevSlot4=5,
-        DevSlot5=5
+        DevSlot5=5,
+        DevSlot6=6,
+        DevSlot7=7,
+        DevSlot8=8,
+        DevSlot9=9,
+        DevSlot10=10
     }
 
     public class StageHand:MonoBehaviour
@@ -98,7 +103,7 @@ namespace Assets.TabletopUi.Scripts.Services
         //    SceneChange(SceneNumber.TabletopScene, true);
         //}
 
-        public void RestartGameOnTabletop()
+        public void NewGameOnTabletop()
         {
             SourceForGameState = SourceForGameState.NewGame;
             SceneChange(TabletopScene,true);

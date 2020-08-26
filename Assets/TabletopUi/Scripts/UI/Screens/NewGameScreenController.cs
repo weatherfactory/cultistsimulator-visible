@@ -119,7 +119,7 @@ namespace Assets.CS.TabletopUI {
         async void  ReturnToMenuDelayed() {
 			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
-            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
+            var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>(), SourceForGameState.DefaultSave);
             await saveTask;
 
             Registry.Get<StageHand>().MenuScreen();
@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
             Registry.Get<Character>().Reset(chosenLegacy,null);
 
-            Registry.Get<StageHand>().RestartGameOnTabletop();
+            Registry.Get<StageHand>().NewGameOnTabletop();
 
 		}
 
