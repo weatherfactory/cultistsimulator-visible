@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
@@ -7,24 +6,15 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    [Serializable]
-    public class SpeedControlEvent : UnityEvent<GameSpeed>
-    {
-    }
-
-
     public class UIController: MonoBehaviour
     {
-        public UnityEvent ToggleOptionsEvent;
-        public UnityEvent TogglePauseEvent;
-        public UnityEvent ToggleDebugEvent;
-        public SpeedControlEvent SpeedControlEvent;
+
+
         public DebugTools _debugTools;
         
 
@@ -55,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
-                ToggleDebugEvent.Invoke();
+              Registry.Get<TabletopManager>().ToggleDebugEvent.Invoke();
             }
 
 
@@ -64,17 +54,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //...it's nice to be able to type N and M
 
                 if (Input.GetKeyDown(KeyCode.N))
-                    SpeedControlEvent.Invoke(GameSpeed.Normal);
+                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(GameSpeed.Normal);
                    
                 if (Input.GetKeyDown(KeyCode.M))
-                    SpeedControlEvent.Invoke(GameSpeed.Fast);
+                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(GameSpeed.Fast);
 
             }
 
 
 
             if (Input.GetButtonDown("Pause"))
-                TogglePauseEvent.Invoke();
+                Registry.Get<TabletopManager>().TogglePauseEvent.Invoke();
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{
@@ -92,7 +82,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 				if (!windowWasOpen)	// Only summon options if no windows to clear
 				{
-                    ToggleOptionsEvent.Invoke();
+                    Registry.Get<TabletopManager>().ToggleOptionsEvent.Invoke();
                 }
 			}
 

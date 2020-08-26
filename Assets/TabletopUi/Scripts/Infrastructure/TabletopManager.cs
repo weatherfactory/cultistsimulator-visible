@@ -24,6 +24,7 @@ using Noon;
 using TabletopUi.Scripts.Elements;
 using UIWidgets.Examples.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
@@ -102,6 +103,12 @@ namespace Assets.CS.TabletopUI {
         private ElementOverview _elementOverview;
 
         private SituationBuilder _situationBuilder;
+
+
+        public UnityEvent ToggleOptionsEvent;
+        public UnityEvent TogglePauseEvent;
+        public UnityEvent ToggleDebugEvent;
+        public SpeedControlEvent SpeedControlEvent;
 
         private bool disabled;
         private bool _initialised;
