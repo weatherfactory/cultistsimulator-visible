@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI {
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
             Registry.Get<Character>().Reset(chosenLegacy,null);
 
-            Registry.Get<StageHand>().RestartGame();
+            Registry.Get<StageHand>().RestartGameOnTabletop();
 
 		}
 

@@ -353,7 +353,7 @@ public class MenuScreenController : MonoBehaviour {
         var legacy= Registry.Get<ICompendium>().GetEntityById<Legacy>(legacyId);
         ResetToLegacy(legacy);
         
-        Registry.Get<StageHand>().RestartGame();
+        Registry.Get<StageHand>().RestartGameOnTabletop();
     }
 
     public void ShowCredits() {

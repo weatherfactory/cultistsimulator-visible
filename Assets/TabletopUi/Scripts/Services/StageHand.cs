@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using System.Threading.Tasks;
+using Assets.CS.TabletopUI;
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,34 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private const int TabletopScene = 4;
 
-        private int sceneQueuedToLoad = 0;
+
 
         public int StartingSceneNumber;
 
         public bool RestartingGameFlag;
 
-        private void SceneChange(int sceneToLoad)
+        async Task FadeOut()
+        {
+            fadeOverlay.gameObject.SetActive(true);
+            fadeOverlay.canvasRenderer.SetAlpha(0f);
+            fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
+            await Task.Delay((int)(fadeDuration * 1000));
+
+        }
+
+
+        async Task FadeIn()
+        {
+            fadeOverlay.gameObject.SetActive(true);
+            fadeOverlay.canvasRenderer.SetAlpha(1f);
+            fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
+            //fadeOverlay.gameObject.SetActive(false);
+            await Task.Delay((int) (fadeDuration*1000));
+        }
+
+
+
+        private async void SceneChange(int sceneToLoad,bool withFadeEffect)
         {
             //if (currentSceneIndex > 0)
             //    SceneManager.UnloadSceneAsync(currentSceneIndex);
@@ -35,35 +57,40 @@ namespace Assets.TabletopUi.Scripts.Services
             else if (SceneManager.sceneCount==2)
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
 
-            sceneQueuedToLoad = sceneToLoad;
+     
 
-            Invoke("SceneChangeDelayed", fadeDuration);
+           // Invoke("SceneChangeDelayed", fadeDuration);
 
-            FadeOut();
+           if (withFadeEffect)
+           {
+               var fadeOutTask = FadeOut();
+               await fadeOutTask;
 
+               SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+               var fadeInTask=FadeIn();
+               await fadeInTask;
+           }
+           else
+           {
+               SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+           }
 
-            //// make sure the screen is black
-            //fadeOverlay.gameObject.SetActive(true);
-            //fadeOverlay.canvasRenderer.SetAlpha(1f);
 
             //// We delay the showing to get a proper fade in
             //Invoke("UpdateAndShowMenu", 0.1f);
         }
 
-        void SceneChangeDelayed()
+
+
+        public void LoadGameOnTabletop()
         {
-            SceneManager.LoadScene(sceneQueuedToLoad, LoadSceneMode.Additive);
-            fadeOverlay.gameObject.SetActive(false);
+
         }
 
-
-
-
-
-        public void RestartGame()
+        public void RestartGameOnTabletop()
         {
             RestartingGameFlag = true;
-            SceneChange(TabletopScene);
+            SceneChange(TabletopScene,true);
         }
 
         public void ClearRestartingGameFlag()
@@ -72,54 +99,41 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-        void FadeIn()
-        {
-            fadeOverlay.gameObject.SetActive(true);
-            fadeOverlay.canvasRenderer.SetAlpha(1f);
-            fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
-        }
-
-        void FadeOut()
-        {
-            fadeOverlay.gameObject.SetActive(true);
-            fadeOverlay.canvasRenderer.SetAlpha(0f);
-            fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
-        }
 
 
 
         public void LogoScreen()
         {
-            SceneChange(SceneNumber.LogoScene);
+            SceneChange(SceneNumber.LogoScene,false);
         }
 
 
         public void QuoteScreen()
         {
-            SceneChange(SceneNumber.QuoteScene);
+            SceneChange(SceneNumber.QuoteScene,false);
         }
 
         public void MenuScreen()
         {
-            SceneChange(SceneNumber.MenuScene);
+            SceneChange(SceneNumber.MenuScene,false);
         }
 
 
         public void TabletopScreen()
         {
             SoundManager.PlaySfx("UIStartGame");
-            SceneChange(SceneNumber.TabletopScene);
+            SceneChange(SceneNumber.TabletopScene,true);
         }
 
 
         public void EndingScreen()
         {
-            SceneChange(SceneNumber.GameOverScene);
+            SceneChange(SceneNumber.GameOverScene,false);
         }
 
         public void LegacyChoiceScreen()
         {
-            SceneChange(SceneNumber.NewGameScene);
+            SceneChange(SceneNumber.NewGameScene,true);
         }
 
 
@@ -129,16 +143,16 @@ namespace Assets.TabletopUi.Scripts.Services
             if (Application.isEditor)
             {
                 if (StartingSceneNumber > 0)
-                    SceneChange(StartingSceneNumber);
+                    SceneChange(StartingSceneNumber,true);
             }
             
             else
             {
 
                 if (skipLogo) // This will allocate and read in config.ini
-                    SceneChange(SceneNumber.QuoteScene);
+                    SceneChange(SceneNumber.QuoteScene,false);
                 else
-                    SceneChange(SceneNumber.LogoScene);
+                    SceneChange(SceneNumber.LogoScene,false);
             }
         }
     }
