@@ -15,6 +15,7 @@ using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Infrastructure.Events;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -109,6 +110,7 @@ namespace Assets.CS.TabletopUI {
         public UnityEvent TogglePauseEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
+        public UILookAtMeEvent UILookAtMeEvent;
 
         private bool disabled;
         private bool _initialised;
@@ -300,7 +302,8 @@ namespace Assets.CS.TabletopUI {
             }
             
             _heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
-            _speedController.SetPausedState(shouldStartPaused, false, true);	// ...but (optionally) pause game while the player gets their bearings.
+            _speedController.SetPausedState(shouldStartPaused, false);	// ...but (optionally) pause game while the player gets their bearings.
+            UILookAtMeEvent.Invoke(typeof(SpeedController));
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 		}
 
@@ -595,7 +598,8 @@ namespace Assets.CS.TabletopUI {
         public void LoadGame(SourceForGameState gameStateSource) {
             ICompendium compendium = Registry.Get<ICompendium>();
             
-            _speedController.SetPausedState(true, false, true);
+            _speedController.SetPausedState(true, false);
+            UILookAtMeEvent.Invoke(typeof(SpeedController));
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
@@ -627,7 +631,8 @@ namespace Assets.CS.TabletopUI {
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }
-            _speedController.SetPausedState(true, false, true);
+            _speedController.SetPausedState(true, false);
+            UILookAtMeEvent.Invoke(typeof(SpeedController));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
 
@@ -1074,7 +1079,8 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("MansusExit");
             
             // Pause the game with a flashing notification
-            _speedController.SetPausedState(true, false, true);
+            _speedController.SetPausedState(true, false);
+            UILookAtMeEvent.Invoke(typeof(SpeedController));
 
             // Put card into the original Situation Results
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new

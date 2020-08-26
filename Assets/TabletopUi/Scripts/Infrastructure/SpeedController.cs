@@ -47,13 +47,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			return _heart.IsPaused;
 		}
 
-		public void SetPausedState(bool pause, bool withSFX = true, bool withFlash = false)
+        public void AttractAttention()
+        {
+            pauseButton.RunFlashAnimation(inactiveSpeedColor);
+        }
+
+        public void SetPausedState(bool pause, bool withSFX = true)
         {
             if (_heart.IsPaused == pause)
             {
                 // No SFX or flash if no change of state - CP
                 withSFX = false;
-                withFlash = false;
             }
 
             if (pause || isLocked)
@@ -67,8 +71,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				if (withSFX)
 					SoundManager.PlaySfx("UIPauseStart");
 
-                if (withFlash)
-                    pauseButton.RunFlashAnimation(inactiveSpeedColor);
             }
             else
 			{
