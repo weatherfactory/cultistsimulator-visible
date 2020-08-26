@@ -56,7 +56,8 @@
                 {
                     "filter": "mortal",
                     "mutate": "forge",
-                    "level": 1
+                    "level": 1,
+					additive:true
                 }
             ],
             "craftable": false
@@ -81,7 +82,8 @@
                 {
                     "filter": "mortal",
                     "mutate": "grail",
-                    "level": 1
+                    "level": 1,
+					additive:true
                 }
             ],
             "craftable": false
@@ -106,7 +108,8 @@
                 {
                     "filter": "mortal",
                     "mutate": "lantern",
-                    "level": 1
+                    "level": 1,					
+					additive:true
                 }
             ],
             "craftable": false
@@ -131,12 +134,14 @@
                 {
                     "filter": "mortal",
                     "mutate": "heart",
-                    "level": 1
+                    "level": 1,					
+					additive:true
                 },
                 {
                     "filter": "mortal",
                     "mutate": "moth",
-                    "level": 1
+                    "level": 1,					
+					additive:true
                 }
             ],
             "craftable": false
