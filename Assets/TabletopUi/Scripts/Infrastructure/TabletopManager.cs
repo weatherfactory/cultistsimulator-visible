@@ -213,12 +213,14 @@ namespace Assets.CS.TabletopUI {
         void Start()
 		{
             //AppealToConscience();
-            
-         Configuration.Setup();
+            var registry = new Registry();
+            registry.Register(this);
+
+            Configuration.Setup();
 
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
-            var registry=new Registry();
+            
 
            
                 //register everything used gamewide
@@ -343,64 +345,44 @@ namespace Assets.CS.TabletopUI {
         private void SetupServices(Registry registry,SituationBuilder builder, TabletopTokenContainer container)
         {
 
-
-            ICompendium compendium = Registry.Get<ICompendium>();
-
-
-         
-            //if (CrossSceneState.GetChosenLegacy() != null)
-            //    character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
-            //else
-            //    character = new Character(compendium.GetEntitiesAsList<Legacy>().First());
+            registry.Register(builder);
 
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
-            var chronicler = new Chronicler(Registry.Get<Character>(),compendium);
+            registry.Register(choreographer);
+
+            var chronicler = new Chronicler(Registry.Get<Character>(), Registry.Get<ICompendium>());
+            registry.Register(chronicler);
 
             var situationsCatalogue = new SituationsCatalogue();
+            registry.Register(situationsCatalogue);
+
             var stackManagersCatalogue = new StackManagersCatalogue();
             stackManagersCatalogue.Subscribe(this);
+            registry.Register(stackManagersCatalogue);
 
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));
-            //if(CrossSceneState.GetMetaInfo()==null)
-            //{
-            //              //We've stated running the scene in the editor, so it hasn't been set in menu screen
-            //    NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",0,VerbosityLevel.SystemChatter);
-            //    CrossSceneState.SetMetaInfo(metaInfo);
-            //        //also the graphics level keeps defaulting to lowest when I run the game in the editor, because it hasn't seen options in the menu
-            //   Configuration.SetGraphicsLevel(3);
-            //}
+            registry.Register(metaInfo);
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
-            var character = Registry.Get<Character>();
-
-            
-
             registry.Register<IDraggableHolder>(draggableHolder);
+
+
             registry.Register<IDice>(new Dice(debugTools));
-            registry.Register<TabletopManager>(this);
-            registry.Register<SituationBuilder>(builder);
+
             registry.Register<INotifier>(_notifier);
 
-            registry.Register<Choreographer>(choreographer);
-            registry.Register<Chronicler>(chronicler);
-            registry.Register<MapController>(_mapController);
-            registry.Register<Limbo>(Limbo);
-            registry.Register<SituationsCatalogue>(situationsCatalogue);
-            registry.Register<StackManagersCatalogue>(stackManagersCatalogue);
-            registry.Register<MetaInfo>(metaInfo);
-
-			registry.Register<DebugTools>(debugTools);
-            registry.Register<HighlightLocationsController>(_highlightLocationsController);
-
+            
+            
+			registry.Register<HighlightLocationsController>(_highlightLocationsController);
             _highlightLocationsController.Initialise(stackManagersCatalogue);
 
 
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
-            _elementOverview.Initialise(character.ActiveLegacy, stackManagersCatalogue,compendium);
-            tabletopBackground.ShowTabletopFor(character.ActiveLegacy);
+            _elementOverview.Initialise(Registry.Get<Character>().ActiveLegacy, stackManagersCatalogue, Registry.Get<ICompendium>());
+            tabletopBackground.ShowTabletopFor(Registry.Get<Character>().ActiveLegacy);
 
 
         }

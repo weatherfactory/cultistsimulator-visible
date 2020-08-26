@@ -7,6 +7,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class Limbo : AbstractTokenContainer {
 
+        public void Awake()
+        {
+            var registry=new Registry();
+            registry.Register(this);
+        }
+
         public override void Initialise() {
             _elementStacksManager = new ElementStacksManager(this, "Limbo");
         }

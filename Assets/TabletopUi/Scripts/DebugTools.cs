@@ -75,6 +75,9 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void Awake()
     {
+        var registry = new Registry();
+        registry.Register(this);
+
         {
             if (Registry.Get<Concursum>().GetKnock())
                 btnTriggerAchievement.gameObject.SetActive(true);
@@ -137,10 +140,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
 
 
-
-
-
     }
+
 
 
 

@@ -20,6 +20,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private ElementStackToken[] cards;
 
+        public void Awake()
+        {
+            var registry=new Registry();
+            registry.Register(this);
+        }
+
         public void Initialise(MapTokenContainer mapTokenContainer, TabletopBackground mapBackground, MapAnimation mapAnimation) {
             mapBackground.gameObject.SetActive(false);
 
