@@ -10,7 +10,6 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +64,7 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
     public void UpdateDisplay()
     {
         // now called from the notification chain in StacksCatalogue
-        var ttm = Registry.Get<ITabletopManager>();
+        var ttm = Registry.Get<TabletopManager>();
         var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)

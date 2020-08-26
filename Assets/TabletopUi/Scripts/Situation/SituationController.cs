@@ -15,7 +15,6 @@ using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -225,7 +224,7 @@ namespace Assets.TabletopUi {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
-            var ttm = Registry.Get<ITabletopManager>();
+            var ttm = Registry.Get<TabletopManager>();
             var aspectsInContext = ttm.GetAspectsInContext(GetAspectsAvailableToSituation(true));
 
             RecipeConductor rc = new RecipeConductor(compendium,
@@ -266,7 +265,7 @@ namespace Assets.TabletopUi {
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
         {
-            var tabletopManager = Registry.Get<ITabletopManager>();
+            var tabletopManager = Registry.Get<TabletopManager>();
             if (endingFlavour != EndingFlavour.None)
                 tabletopManager.SignalImpendingDoom(situationToken);
             else
@@ -287,7 +286,7 @@ namespace Assets.TabletopUi {
             situationWindow.GetResultsStacksManager().AcceptStack(stack, context);
             UpdateTokenResultsCountBadge();
 
-			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
         }
 
@@ -303,7 +302,7 @@ namespace Assets.TabletopUi {
         /// </summary>
         /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
-            var tabletopManager = Registry.Get<ITabletopManager>();
+            var tabletopManager = Registry.Get<TabletopManager>();
 
             //called here in case ongoing slots trigger consumption
             situationWindow.SetSlotConsumptions();
@@ -428,7 +427,7 @@ namespace Assets.TabletopUi {
                 // Add a check to see if this is actually running in the game
                 var behaviour = situationToken as MonoBehaviour;
                 if (behaviour != null)
-                    Registry.Get<ITabletopManager>().ShowMansusMap(this, behaviour.transform,
+                    Registry.Get<TabletopManager>().ShowMansusMap(this, behaviour.transform,
                         currentRecipe.PortalEffect);
             }
         }
@@ -492,7 +491,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Get<ITabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
+            Registry.Get<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
         }
 
         public void ResetSituation() {
@@ -517,7 +516,7 @@ namespace Assets.TabletopUi {
             IsOpen = true;
             situationToken.DisplayAsOpen();
             situationWindow.Show( targetPosOverride );
-            Registry.Get<ITabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
+            Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
         }
 
 		public void OpenWindow()
@@ -628,7 +627,7 @@ namespace Assets.TabletopUi {
 
             // Get all aspects and find a recipe
             IAspectsDictionary allAspectsInSituation = situationWindow.GetAspectsFromAllSlottedElements();
-            var tabletopManager = Registry.Get<ITabletopManager>();
+            var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(allAspectsInSituation);
         
             Recipe matchingRecipe = compendium.GetFirstMatchingRecipe(aspectsInContext,  situationToken.EntityId, currentCharacter, false);
@@ -666,7 +665,7 @@ namespace Assets.TabletopUi {
             var allAspects = GetAspectsAvailableToSituation(true);
 
             situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
-            ITabletopManager ttm = Registry.Get<ITabletopManager>();
+            TabletopManager ttm = Registry.Get<TabletopManager>();
 
             var context = ttm.GetAspectsInContext(allAspects);
 
@@ -698,7 +697,7 @@ namespace Assets.TabletopUi {
 
         public void UpdateSituationDisplayForPossiblePredictedRecipe()
         {
-            ITabletopManager ttm = Registry.Get<ITabletopManager>();
+            TabletopManager ttm = Registry.Get<TabletopManager>();
             var context = ttm.GetAspectsInContext(situationWindow.GetAspectsFromAllSlottedAndStoredElements(true));
 
             RecipeConductor rc = new RecipeConductor(compendium, context, Registry.Get<IDice>(), currentCharacter);
@@ -755,7 +754,7 @@ namespace Assets.TabletopUi {
                 return;
 
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var tabletopManager = Registry.Get<ITabletopManager>();
+            var tabletopManager = Registry.Get<TabletopManager>();
             var aspectsInContext = tabletopManager.GetAspectsInContext(aspects);
 
 
@@ -799,7 +798,7 @@ namespace Assets.TabletopUi {
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, true );
 
 			// Hack to try to repro bug #1253 - CP
-			//var tabletop = Registry.Retrieve<ITabletopManager>();
+			//var tabletop = Registry.Retrieve<TabletopManager>();
 			//tabletop.ForceAutosave();
         }
 

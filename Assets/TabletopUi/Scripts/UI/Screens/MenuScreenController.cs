@@ -337,16 +337,15 @@ public class MenuScreenController : MonoBehaviour {
         Registry.Get<StageHand>().MenuScreen();
     }
 
-    private void ResetToLegacy(Legacy activeLegacy)
+    private async void ResetToLegacy(Legacy activeLegacy)
     {
         Registry.Get<Character>().Reset(activeLegacy,null);
         var saveGameManager =
             new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
         var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
-        while (saveTask.MoveNext())
-        {
-        }
+        await saveTask;
+
     }
 
     public void BeginNewSaveWithSpecifiedLegacy(string legacyId)

@@ -106,7 +106,7 @@ namespace Assets.CS.TabletopUI {
         
         // Exposed for in-scene buttons
 
-        public void ReturnToMenu() {
+        public  void ReturnToMenu() {
 			if (!canInteract)
 				return;
 			
@@ -116,13 +116,12 @@ namespace Assets.CS.TabletopUI {
 			Invoke("ReturnToMenuDelayed", fadeDuration);
         }
 
-		void ReturnToMenuDelayed() {
+        async void  ReturnToMenuDelayed() {
 			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
-            while (saveTask.MoveNext())
-            {
-            }
+            await saveTask;
+
             Registry.Get<StageHand>().MenuScreen();
         }
 

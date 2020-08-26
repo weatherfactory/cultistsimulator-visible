@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
       public void NotifyStacksChanged()
       {
-          var ttm = Registry.Get<ITabletopManager>();
+          var ttm = Registry.Get<TabletopManager>();
           var aspectsInContext = ttm.GetAspectsInContext(new AspectsDictionary());
 
           foreach(var hl in highlightLocations)

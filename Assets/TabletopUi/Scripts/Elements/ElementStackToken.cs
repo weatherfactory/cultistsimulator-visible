@@ -22,7 +22,6 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -250,7 +249,7 @@ namespace Assets.CS.TabletopUI {
                 return new AspectsDictionary();
 
 
-			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			if (!tabletop._enableAspectCaching)
 			{
 				_aspectsDirtyInc = true;
@@ -429,7 +428,7 @@ namespace Assets.CS.TabletopUI {
             }
             else
 			{
-                var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+                var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
@@ -462,7 +461,7 @@ namespace Assets.CS.TabletopUI {
 
 		public Vector2 GetDropZoneSpawnPos()
 		{
-			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stackManager = tabletop._tabletop.GetElementStacksManager();
 			var existingStacks = stackManager.GetStacks();
 
@@ -494,7 +493,7 @@ namespace Assets.CS.TabletopUI {
 
 		private DraggableToken CreateDropZone()
 		{
-			var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+			var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			var stacksManager = tabletop._tabletop.GetElementStacksManager();
 			//var newCard = PrefabFactory.CreateToken<DropZoneToken>(transform.parent);
 			var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
@@ -537,7 +536,7 @@ namespace Assets.CS.TabletopUI {
 			// Now create an instance of the dropzone prefab parented to this card
 			// This way any unused references are still pointing at the original card data, so no risk of null refs.
 			// It's a bit hacky, but it's now a live project so refactoring the entire codebase to make it safe is high-risk.
-			TabletopManager tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+			TabletopManager tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 
 			GameObject zoneobj = GameObject.Instantiate( tabletop._dropZoneTemplate, transform );
 			Transform newcard = zoneobj.transform.Find( "Card" );
@@ -617,7 +616,7 @@ namespace Assets.CS.TabletopUI {
             var hlc = Registry.Get<HighlightLocationsController>();
             hlc.DeactivateMatchingHighlightLocation(_element?.Id);
 
-            var tabletop = Registry.Get<ITabletopManager>() as TabletopManager;
+            var tabletop = Registry.Get<TabletopManager>() as TabletopManager;
 			tabletop.NotifyAspectsDirty();	// Notify tabletop that aspects will need recompiling
             SetStackManager(null);			// Remove it from the StacksManager. It no longer exists in the model.
             
@@ -794,7 +793,7 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			base.OnPointerEnter(eventData);
-			var tabletopManager = Registry.Get<ITabletopManager>();
+			var tabletopManager = Registry.Get<TabletopManager>();
 			if (isFront)
 				tabletopManager.SetHighlightedElement(EntityId, Quantity);
 			else
@@ -811,7 +810,7 @@ namespace Assets.CS.TabletopUI {
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			base.OnPointerExit(eventData);
-			Registry.Get<ITabletopManager>().SetHighlightedElement(null);
+			Registry.Get<TabletopManager>().SetHighlightedElement(null);
 
             //Display any HighlightLocations tagged for this element
             if(DraggableToken.itemBeingDragged!=this)

@@ -15,7 +15,6 @@ using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine.Analytics;
 
 public class OptionsPanel : MonoBehaviour {
@@ -343,15 +342,18 @@ public class OptionsPanel : MonoBehaviour {
         }
     }
 
-	public void LeaveGame()
+	public async void LeaveGame()
 	{
 		if (!_isInGame)
 			return;
 
-        var tabletopManager = Registry.Get<ITabletopManager>();
+        var tabletopManager = Registry.Get<TabletopManager>();
         tabletopManager.SetPausedState(true);
-        StartCoroutine(tabletopManager.SaveGameAsync(true, callback: success =>
-        {
+        var saveTask = tabletopManager.SaveGameAsync(true);
+
+        var success = await saveTask;
+
+
 	        if (success)
 	        {
                 Registry.Get<StageHand>().MenuScreen();
@@ -363,7 +365,7 @@ public class OptionsPanel : MonoBehaviour {
 		        ToggleVisibility();
 		        Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
 	        }
-        }));
+        
 	}
 
 	// Leave game without saving
@@ -372,16 +374,19 @@ public class OptionsPanel : MonoBehaviour {
         Registry.Get<StageHand>().MenuScreen();
     }
 
-    public void BrowseFiles()
+    public async void BrowseFiles()
     {
 	    // Check for the existence of save file before browsing to it, since behaviour is undefined in that case
 	    string savePath = NoonUtility.GetGameSaveLocation();
 	    if (!File.Exists(savePath))
 	    {
 		    if (_isInGame)
-		    {
-			    StartCoroutine(Registry.Get<ITabletopManager>().SaveGameAsync(true, callback: success =>
-			    {
+            {
+                var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+
+                var success = await saveTask;
+
+
 				    // If a game is active, try to save it, showing an error if that fails
 				    if (!success)
 				    {
@@ -389,8 +394,8 @@ public class OptionsPanel : MonoBehaviour {
 					    Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
 					    OpenInFileBrowser.Open(savePath);
 				    }
-			    }));
-			    return;
+
+                    return;
 		    }
 
 		    // Otherwise, just show the directory where the save file would be located
@@ -425,7 +430,7 @@ public class OptionsPanel : MonoBehaviour {
 		// Reload last good savegame
 		Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
 
-		Registry.Get<ITabletopManager>().LoadGame();
+		Registry.Get<TabletopManager>().LoadGame();
 	}
 
     // public button events
@@ -720,7 +725,7 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
 
-		var tabletopManager = Registry.Get<ITabletopManager>();
+		var tabletopManager = Registry.Get<TabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );
     }
 
@@ -732,7 +737,7 @@ public class OptionsPanel : MonoBehaviour {
 		if (!_isInGame)
 			return;
 
-		var tabletopManager = Registry.Get<ITabletopManager>();
+		var tabletopManager = Registry.Get<TabletopManager>();
 		tabletopManager.SetGridSnapSize( value );
     }
 

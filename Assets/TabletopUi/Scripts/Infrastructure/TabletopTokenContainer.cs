@@ -13,7 +13,6 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 
 public class TabletopTokenContainer : AbstractTokenContainer {
 #pragma warning disable 649
@@ -139,7 +138,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // Situation windows get closed first, then details windows.
         if (DraggableToken.itemBeingDragged == null)
         {
-            var tabletopManager = Registry.Get<ITabletopManager>();
+            var tabletopManager = Registry.Get<TabletopManager>();
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else

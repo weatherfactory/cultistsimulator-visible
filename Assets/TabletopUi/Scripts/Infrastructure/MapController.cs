@@ -9,7 +9,6 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.Logic;
-using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -180,13 +179,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void HideMansusMap(Transform effectCenter, IElementStack stack)
         {
-            Registry.Get<ITabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
+            Registry.Get<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }
 
 
 //not currently in use, preserve for quick debug
         public void CloseMap() {
-            Registry.Get<ITabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
+            Registry.Get<TabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
         }
     }
 }

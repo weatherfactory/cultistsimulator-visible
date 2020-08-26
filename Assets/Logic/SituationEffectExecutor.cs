@@ -9,16 +9,15 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using JetBrains.Annotations;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Assets.Logic
 {
     public class SituationEffectExecutor
     {
-        private ITabletopManager _ttm;
+        private TabletopManager _ttm;
 
-        public SituationEffectExecutor(ITabletopManager ttm)
+        public SituationEffectExecutor(TabletopManager ttm)
         {
             _ttm = ttm;
         }
@@ -60,7 +59,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunElementPurges(ISituationEffectCommand command, ITabletopManager ttm)
+        private void RunElementPurges(ISituationEffectCommand command, TabletopManager ttm)
         {
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.
             foreach (var p in command.Recipe.Purge)
@@ -70,7 +69,7 @@ namespace Assets.Logic
         }
 
 
-        private void RunVerbManipulations(ISituationEffectCommand command, ITabletopManager ttm)
+        private void RunVerbManipulations(ISituationEffectCommand command, TabletopManager ttm)
         {
             foreach (var h in command.Recipe.HaltVerb)
                 ttm.HaltVerb(h.Key, h.Value);

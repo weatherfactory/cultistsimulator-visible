@@ -40,44 +40,44 @@ public class ContentWatcher : MonoBehaviour
 #pragma warning restore 649
     // Start is called before the first frame update
 
-    public bool Initialised = false;
-    private bool validationInProgress = false;
+ //   public bool Initialised = false;
+   // private bool validationInProgress = false;
 
     void Initialise()
     {
-        WatcherQueue.Reset();
-        StatusMessages.text="Content Watcher ready at " + DateTime.Now.ToShortTimeString();
-        ValidationMessages.text = String.Empty;
-        validationInProgress = false;
+        //WatcherQueue.Reset();
+        //StatusMessages.text="Content Watcher ready at " + DateTime.Now.ToShortTimeString();
+        //ValidationMessages.text = String.Empty;
+        //validationInProgress = false;
 
-        FileSystemWatcher watcher = new FileSystemWatcher
-        {
-            Path = Application.streamingAssetsPath + "/content/core/",
-            NotifyFilter = NotifyFilters.LastAccess
-                           | NotifyFilters.LastWrite
-                           | NotifyFilters.FileName
-                           | NotifyFilters.DirectoryName,
-            Filter = "*.json",
-            IncludeSubdirectories = true
-        };
+        //FileSystemWatcher watcher = new FileSystemWatcher
+        //{
+        //    Path = Application.streamingAssetsPath + "/content/core/",
+        //    NotifyFilter = NotifyFilters.LastAccess
+        //                   | NotifyFilters.LastWrite
+        //                   | NotifyFilters.FileName
+        //                   | NotifyFilters.DirectoryName,
+        //    Filter = "*.json",
+        //    IncludeSubdirectories = true
+        //};
 
-        watcher.Changed += OnChanged;
-        watcher.Created += OnChanged;
-        watcher.Deleted += OnChanged;
+        //watcher.Changed += OnChanged;
+        //watcher.Created += OnChanged;
+        //watcher.Deleted += OnChanged;
 
-        // Begin watching.
-        watcher.EnableRaisingEvents = true;
-        StatusMessages.text="Watching " + watcher.Path;
-        Initialised = true;
+        //// Begin watching.
+        //watcher.EnableRaisingEvents = true;
+        //StatusMessages.text="Watching " + watcher.Path;
+        //Initialised = true;
     }
 
     // Define the event handlers.
-    private static void OnChanged(object source, FileSystemEventArgs e) =>
-        WatcherQueue.NotifyContentFileChanged($"{e.FullPath} {e.ChangeType}");
+    //private static void OnChanged(object source, FileSystemEventArgs e) =>
+    //    WatcherQueue.NotifyContentFileChanged($"{e.FullPath} {e.ChangeType}");
 
 
-async void Update()
-    {
+//async void Update()
+ //   {
         //if (Application.isPlaying)
         //{
         //    this.gameObject.SetActive(false);
@@ -97,17 +97,17 @@ async void Update()
         //    ValidationMessages.text = result.ContentImportMessages.Aggregate(string.Empty, (current, m) => current + (m.Description + "\n"));
         //    ValidationComplete();
         //}
-    }
+ //   }
 
-private void ValidationBeginning()
-{
-    StatusMessages.text = "Began validation at " + DateTime.Now.ToLongTimeString();
-     ValidationMessages.text = string.Empty;
-    validationInProgress = true;
-}
+//private void ValidationBeginning()
+//{
+//    StatusMessages.text = "Began validation at " + DateTime.Now.ToLongTimeString();
+//     ValidationMessages.text = string.Empty;
+//    validationInProgress = true;
+//}
 
-private void ValidationComplete()
-{
+//private void ValidationComplete()
+//{
 //    WatcherQueue.NeedsRevalidation = false;
 //    validationInProgress = false;
 //    StatusMessages.text += "\n\nCompleted validation at " + DateTime.Now.ToLongTimeString();
@@ -130,7 +130,7 @@ private void ValidationComplete()
 //            result=new AsyncContentImportResult(importantMessages);
         
 //        return result;
-    }
+    //}
 
 }
 

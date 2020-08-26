@@ -7,7 +7,6 @@ using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 
 
 public enum GameSpeed
@@ -84,25 +83,23 @@ public class Heart : MonoBehaviour
         {
             beatCounter = 0;
 
-            outstandingSlotsToFill = Registry.Get<ITabletopManager>()
+            outstandingSlotsToFill = Registry.Get<TabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
     }
 
 
-    void OnApplicationQuit()
+    async void  OnApplicationQuit()
     {
-        var saveTask = Registry.Get<ITabletopManager>().SaveGameAsync(true);
-        while (saveTask.MoveNext())
-        {
-        }
+        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+        await saveTask;
     }
 
     public void AdvanceTime(float intervalThisBeat)
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        var tabletopManager = Registry.Get<ITabletopManager>();
+        var tabletopManager = Registry.Get<TabletopManager>();
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sc in situationControllers)

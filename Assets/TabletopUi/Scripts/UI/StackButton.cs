@@ -1,5 +1,4 @@
 using Assets.CS.TabletopUI;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
 namespace TabletopUi.Scripts.UI
@@ -8,7 +7,7 @@ namespace TabletopUi.Scripts.UI
     {
         public void StackCards()
         {
-            var tabletop = Registry.Get<ITabletopManager>();
+            var tabletop = Registry.Get<TabletopManager>();
             tabletop.GroupAllStacks();
         }
     }

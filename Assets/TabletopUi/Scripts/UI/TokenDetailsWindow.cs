@@ -11,7 +11,6 @@ using System;
 using System.Linq;
 using Assets.Core.Entities;
 using TabletopUi.Scripts.Elements;
-using TabletopUi.Scripts.Interfaces;
 
 namespace Assets.CS.TabletopUI {
     public class TokenDetailsWindow : BaseDetailsWindow {
@@ -316,7 +315,7 @@ namespace Assets.CS.TabletopUI {
 			if (slotSpec.Greedy) // Greedy slots get no possible cards
 				return;
 
-			var tabletop = Registry.Get<ITabletopManager>();
+			var tabletop = Registry.Get<TabletopManager>();
 			tabletop.HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
 		}
     }

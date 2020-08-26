@@ -17,7 +17,6 @@ using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using Steamworks;
-using TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.VR;
@@ -328,7 +327,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
                 verbForNewSituation = new CreatedVerb(recipe.ActionId, recipe.Label, recipe.Description);
 
             SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
-        Registry.Get<ITabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
+        Registry.Get<TabletopManager>().BeginNewSituation(scc,new List<IElementStack>());
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);
@@ -336,18 +335,18 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void HaltVerb(string verbId)
     {
-        Registry.Get<ITabletopManager>().HaltVerb(verbId, 1);
+        Registry.Get<TabletopManager>().HaltVerb(verbId, 1);
 
     }
 
     private void DeleteVerb(string verbId)
     {
-        Registry.Get<ITabletopManager>().DeleteVerb(verbId,1);
+        Registry.Get<TabletopManager>().DeleteVerb(verbId,1);
     }
 
     private void PurgeElement(string elementId)
     {
-        Registry.Get<ITabletopManager>().PurgeElement(elementId, 1);
+        Registry.Get<TabletopManager>().PurgeElement(elementId, 1);
     }
 
 
@@ -463,18 +462,18 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
         var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];
 
-        Registry.Get<ITabletopManager>().EndGame(ending, deathSit);
+        Registry.Get<TabletopManager>().EndGame(ending, deathSit);
     }
 
     public void LoadGame()
     {
-        Registry.Get<ITabletopManager>().LoadGame();
+        Registry.Get<TabletopManager>().LoadGame();
     }
 
-    public void SaveGame()
+    public async void SaveGame()
     {
-        var saveTask = Registry.Get<ITabletopManager>().SaveGameAsync(true);
-        StartCoroutine(saveTask);
+        var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true);
+        await saveTask;
     }
 
     void ResetDecks()
@@ -526,21 +525,23 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
     }
 
-    void SaveDebugSave(int index)
+    async void  SaveDebugSave(int index)
     {
-        ITabletopManager tabletopManager = Registry.Get<ITabletopManager>();
-        StartCoroutine(tabletopManager.SaveGameAsync(true, index + 1, success =>
-        {
+        TabletopManager tabletopManager = Registry.Get<TabletopManager>();
+        var task = tabletopManager.SaveGameAsync(true, index + 1);
+        var success = await task;
+
+        
             loadButtons[index].interactable = success;
             delButtons[index].interactable = success;
-        }));
+        
     }
 
     void LoadDebugSave(int index)
     {
         if (!CheckDebugSaveExists(index))
             return;
-        ITabletopManager tabletopManager = Registry.Get<ITabletopManager>();
+        TabletopManager tabletopManager = Registry.Get<TabletopManager>();
         tabletopManager.LoadGame(index + 1);
     }
 

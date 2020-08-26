@@ -93,15 +93,13 @@ namespace Assets.CS.TabletopUI
             Invoke("ReturnToMenuInternal", durationFadeOut);
         }
 
-        private void ReturnToMenuInternal()
+        private async void ReturnToMenuInternal()
 		{
             //save on exit, so the player will return here, not begin a new game
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
             var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(),Registry.Get<Character>());
-            while (saveTask.MoveNext())
-            {
-            }
+            await saveTask;
 
 
             Registry.Get<StageHand>().MenuScreen();

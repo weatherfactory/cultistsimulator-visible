@@ -145,7 +145,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         
             catch (Exception e)
             {
-                NoonUtility.Log("Disaster! invalid published file id: " + publishedFileId);
+                NoonUtility.Log($"Disaster! invalid published file id:  {publishedFileId} ({e.Message})");
 
             }
 

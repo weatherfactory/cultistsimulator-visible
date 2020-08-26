@@ -18,7 +18,6 @@ using Assets.Core.Enums;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 

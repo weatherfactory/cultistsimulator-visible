@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
@@ -21,14 +22,14 @@ using Assets.TabletopUi.Scripts.UI;
 using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
-using TabletopUi.Scripts.Interfaces;
+using UIWidgets.Examples.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, ITabletopManager,IStacksChangeSubscriber {
+    public class TabletopManager : MonoBehaviour,IStacksChangeSubscriber {
 
         [Header("Game Control")]
         [SerializeField]
@@ -161,7 +162,7 @@ namespace Assets.CS.TabletopUI {
 			return _heart.IsPaused;
 		}
 
-        public void Update()
+        public async void Update()
         {
             if (disabled)
                 return; //we've had to shut down because of a critical error
@@ -188,13 +189,13 @@ namespace Assets.CS.TabletopUI {
 			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
 			{
 				housekeepingTimer = 0.0f;
-				StartCoroutine(SaveGameAsync(true, callback: success =>
-				{
-					if (!success)
-					{
-						housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
-					}
-				}));
+
+                var saveTask = SaveGameAsync(true);
+                var success = await saveTask;
+
+                if(!success)
+                housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
+
 			}
         }
 
@@ -269,11 +270,10 @@ namespace Assets.CS.TabletopUI {
         private void LoadExistingGame(SituationBuilder builder)
 		{
 
-			bool shouldStartPaused = false;
+            bool shouldStartPaused = true;
 
 
-
-                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
                 bool isSaveCorrupted = false;
                 bool shouldContinueGame;
                 try
@@ -288,12 +288,12 @@ namespace Assets.CS.TabletopUI {
 	                isSaveCorrupted = true;
                 }
 
+
                 LoadGame();
-				shouldStartPaused = true;
 
- 
+     
 
-                if (!shouldContinueGame || isSaveCorrupted)
+            if (!shouldContinueGame || isSaveCorrupted)
                 {
 	                _notifier.ShowSaveError(true);
 	                GameSaveManager.saveErrorWarningTriggered = true;
@@ -389,7 +389,7 @@ namespace Assets.CS.TabletopUI {
 
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice(debugTools));
-            registry.Register<ITabletopManager>(this);
+            registry.Register<TabletopManager>(this);
             registry.Register<SituationBuilder>(builder);
             registry.Register<INotifier>(_notifier);
 
@@ -592,7 +592,7 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void EndGame(Ending ending, SituationController endingSituation)
+        public async void EndGame(Ending ending, SituationController endingSituation)
 		{
 			NoonUtility.Log("TabletopManager.EndGame()");
 
@@ -607,9 +607,8 @@ namespace Assets.CS.TabletopUI {
 
 
             var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>());
-            while (saveTask.MoveNext())
-            {
-            }
+            var result = await saveTask;
+
             string animName;
 
             if (string.IsNullOrEmpty(ending.Anim))
@@ -667,13 +666,12 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        public IEnumerator<bool?> SaveGameAsync(bool withNotification, int index = 0, Action<bool> callback = null)
+        public async Task<bool> SaveGameAsync(bool withNotification, int index = 0)
 		{
 			if (!IsSafeToAutosave())
-			{
-				yield return false;
-				yield break;
-			}
+            {
+                return false;
+            }
 
 			bool success = true;	// Assume everything will be OK to begin with...
 
@@ -685,13 +683,16 @@ namespace Assets.CS.TabletopUI {
 				wasBeating = true;
 			}
 
-			IEnumerator<bool?> saveTask = null;
+			
             try
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
                 ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacksManager().GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
-	            saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), index: index);
+                 var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), index: index);
+
+                 success = await saveTask;
+
             }
             catch (Exception e)
             {
@@ -706,21 +707,9 @@ namespace Assets.CS.TabletopUI {
             {
 	            _heart.ResumeBeating();
             }
+            
 
-            if (saveTask != null)
-            {
-	            bool? result;
-	            do
-	            {
-		            yield return null;
-		            bool atEnd = !saveTask.MoveNext();
-		            result = atEnd ? false : saveTask.Current;
-	            } while (result == null);
-
-	            success = result.Value;
-            }
-
-            if (success && withNotification)
+            if (success && withNotification && _autosaveNotifier!=null)
 			{
 				//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 				_autosaveNotifier.SetDuration( 3.0f );
@@ -735,9 +724,7 @@ namespace Assets.CS.TabletopUI {
 				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
 			}
 
-			callback?.Invoke(success);
-
-			yield return success;
+            return true;
         }
 
 #endregion

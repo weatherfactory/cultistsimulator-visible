@@ -6,7 +6,6 @@ using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
-using TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -132,7 +131,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (Input.GetButtonDown("Stack Cards"))
             {
-	            Registry.Get<ITabletopManager>().GroupAllStacks();
+	            Registry.Get<TabletopManager>().GroupAllStacks();
             }
         }
 

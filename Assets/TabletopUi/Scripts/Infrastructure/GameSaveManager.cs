@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -107,7 +108,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 File.Delete(NoonUtility.GetGameSaveLocation());
         }
 
-        public IEnumerator<bool?> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
+        //  public IEnumerator<bool?> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
+        public async Task<bool> SaveActiveGameAsync(ITableSaveState tableSaveState, Character character, bool forceBadSave = false, int index = 0)
         {
     
               //  var allStacks = tabletop.GetElementStacksManager().GetStacks();
@@ -122,13 +124,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 if (htSaveTable == null && !forceBadSave)
                 {
                     HandleSaveError(tableSaveState, character, index);
-                    yield return false;	// Something went wrong with the save
-                    yield break;
+                    return false;	// Something went wrong with the save
+                    
                 }
                 if (forceBadSave)
                 {
                     var postSaveFilePath = NoonUtility.GetErrorSaveLocation(DateTime.Now, "post");
-                    System.Threading.Tasks.Task.Run(() => RunSave(postSaveFilePath, htSaveTable)).Wait();
+                    var writeFileTask=WriteSaveFile(postSaveFilePath, htSaveTable);
+                    await writeFileTask;
+
                 }
                 else
                 {
@@ -136,11 +140,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     // This is to mitigate some bugs where save files would end up with invalid data written to them
                     var saveFilePath = NoonUtility.GetGameSaveLocation(index);
                     var tempSaveFilePath = NoonUtility.GetTemporaryGameSaveLocation(index);
-                    var saveTask = System.Threading.Tasks.Task.Run(() => RunSave(tempSaveFilePath, htSaveTable));
-                    while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
-                    {
-                        yield return null;
-                    }
+                    var saveTask = WriteSaveFile(tempSaveFilePath, htSaveTable);
+
+                    await saveTask;
+
+                    //while (!(saveTask.IsCompleted || saveTask.IsCompleted || saveTask.IsFaulted))
+                    //{
+                    //    return false;
+                    //}
 
                     bool success;
                     if (saveTask.Exception == null)
@@ -183,12 +190,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     if (!success)
                     {
                         HandleSaveError(tableSaveState, character, index);
-                        yield return false;
-                        yield break;
+                        return false;
                     }
                 }
-           
-                yield return true;
+
+                return true;
         }
 
         public void LoadTabletopState(TabletopTokenContainer tabletop)
@@ -217,7 +223,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        private void HandleSaveError(ITableSaveState tableSaveState, Character character, int index = 0)
+        private async void HandleSaveError(ITableSaveState tableSaveState, Character character, int index = 0)
         {
 	        failedSaveCount++;
 	        if (failedSaveCount != 3) 
@@ -230,19 +236,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 
             // Force a bad save into a different filename
             var saveTask = SaveActiveGameAsync(tableSaveState, character, true, index);
-            while (saveTask.MoveNext())
-            {
-            }
+
+            var success = await saveTask;
+
+       if(!success)
+       {
             Analytics.CustomEvent("autosave_corrupt_notified");
                 
             // Pop up warning message
             Registry.Get<INotifier>().ShowSaveError(true);
             saveErrorWarningTriggered = true;
+       }
         }
 
-        private void RunSave(string saveFilePath, Hashtable saveData)
+        private async Task WriteSaveFile(string saveFilePath, Hashtable saveData)
         {
-	        File.WriteAllText(saveFilePath, saveData.JsonString());
+	       var task=Task.Run(()=> File.WriteAllText(saveFilePath, saveData.JsonString()));
+           await task;
         }
 
 
