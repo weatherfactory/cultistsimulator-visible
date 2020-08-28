@@ -78,12 +78,17 @@ public class DebugTools : MonoBehaviour,IRollOverride
         Toggle(); //start by hiding the panel. If it's not enabled at the beginning, this won't run
         var registry = new Registry();
         registry.Register(this);
+        registry.Register<IDice>(new Dice(this));
+
 
         {
             if (Registry.Get<Concursum>().GetKnock())
                 btnTriggerAchievement.gameObject.SetActive(true);
 
         }
+
+
+
 
         autoCompletionBox.gameObject.SetActive(false);
         input.onValueChanged.AddListener(AttemptAutoCompletion);

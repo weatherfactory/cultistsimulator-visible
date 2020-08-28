@@ -34,8 +34,6 @@ namespace Assets.CS.TabletopUI {
     public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber
     {
 
-        [Header("Game Control")] [SerializeField]
-        private Heart _heart;
 
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
@@ -73,12 +71,10 @@ namespace Assets.CS.TabletopUI {
         [Header("Options Bar & Notes")] [SerializeField]
         private StatusBar StatusBar;
 
-        [SerializeField] private DebugTools debugTools;
         [SerializeField] private BackgroundMusic backgroundMusic;
 
         [SerializeField] private Notifier _notifier;
         [SerializeField] private AutosaveWindow _autosaveNotifier;
-        [SerializeField] private OptionsPanel _optionsPanel;
         [SerializeField] private ElementOverview _elementOverview;
 
         private SituationBuilder _situationBuilder;
@@ -212,8 +208,7 @@ namespace Assets.CS.TabletopUI {
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
                 _mapController,
-                _endGameAnimController,
-                _optionsPanel
+                _endGameAnimController
             );
 
             InitialiseListeners();
@@ -293,13 +288,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void InitialiseSubControllers(MapController mapController,
-                                              EndGameAnimController endGameAnimController,
-            OptionsPanel optionsPanel) {
+                                              EndGameAnimController endGameAnimController) {
 
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
-
-            optionsPanel.Initialise(true);
         }
 
         private void InitialiseListeners() {
@@ -347,8 +339,6 @@ namespace Assets.CS.TabletopUI {
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
             registry.Register<IDraggableHolder>(draggableHolder);
 
-
-            registry.Register<IDice>(new Dice(debugTools));
 
             registry.Register<INotifier>(_notifier);
 

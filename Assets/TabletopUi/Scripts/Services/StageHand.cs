@@ -72,19 +72,19 @@ namespace Assets.TabletopUi.Scripts.Services
                 SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1));
 
 
-           if (withFadeEffect)
-           {
-               var fadeOutTask = FadeOut();
-               await fadeOutTask;
+            if (withFadeEffect)
+            {
+                var fadeOutTask = FadeOut();
+                await fadeOutTask;
 
-               SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-               var fadeInTask=FadeIn();
-               await fadeInTask;
-           }
-           else
-           {
-               SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-           }
+                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+                var fadeInTask=FadeIn();
+                await fadeInTask;
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            }
 
         }
 
@@ -133,7 +133,10 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-
+        public bool SceneIsActive(int sceneToCheck)
+        {
+            return SceneManager.GetSceneByBuildIndex(sceneToCheck).isLoaded;
+        }
 
 
         public void EndingScreen()

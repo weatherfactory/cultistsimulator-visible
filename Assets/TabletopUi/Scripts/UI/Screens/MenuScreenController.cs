@@ -190,8 +190,6 @@ public class MenuScreenController : MonoBehaviour {
     void InitialiseServices()
 	{
         
-		optionsPanel.Initialise(false);
-
         
         currentVersion = Registry.Get<MetaInfo>().VersionNumber;
 

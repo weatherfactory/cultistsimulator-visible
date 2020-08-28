@@ -99,11 +99,7 @@ public class OptionsPanel : MonoBehaviour {
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
     private const string GRIDSNAPSIZE = "GridSnapSize";
 
-  
-
-    //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
-    //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
-    private bool _isInGame = true;
+    
     private bool _initialised = false;
 
     private List<GameObject> GameSettingsControls;
@@ -118,6 +114,15 @@ public class OptionsPanel : MonoBehaviour {
             RunAnyDeferredCommands();
     }
 
+
+    private bool IsInGame()
+    {
+        //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
+        //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
+
+        return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
+    }
+
     public void RunAnyDeferredCommands()
     {
         if(deferredResolutionChangeToIndex >=0)
@@ -129,7 +134,7 @@ public class OptionsPanel : MonoBehaviour {
 
     }
 
-    public void Initialise(bool isInGame)
+    public void Start()
 	{
 	    windowGO.SetActive(true); //so we can use tags. SO HACKY
 
@@ -145,9 +150,10 @@ public class OptionsPanel : MonoBehaviour {
         
 
 		windowGO.SetActive(false);
-        _isInGame = isInGame;
 
-        if (!_isInGame)
+
+
+        if (!IsInGame())
         {
             //resolutions!
             int r;
@@ -304,7 +310,7 @@ public class OptionsPanel : MonoBehaviour {
     public void ToggleVisibility() {
 		windowGO.SetActive(!windowGO.activeSelf);
 
-        if (!_isInGame)
+        if (!IsInGame())
 			return;
 
         //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
@@ -324,7 +330,7 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void RestartGame() {
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
         if(restartButton.AttemptRestart())
         {
@@ -336,7 +342,7 @@ public class OptionsPanel : MonoBehaviour {
 
 	public async void LeaveGame()
 	{
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
 
         var tabletopManager = Registry.Get<TabletopManager>();
@@ -372,7 +378,7 @@ public class OptionsPanel : MonoBehaviour {
 	    string savePath = NoonUtility.GetGameSaveLocation();
 	    if (!File.Exists(savePath))
 	    {
-		    if (_isInGame)
+		    if (IsInGame())
             {
                 var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true, SourceForGameState.DefaultSave);
 
@@ -614,7 +620,7 @@ public class OptionsPanel : MonoBehaviour {
         accessibleCardsSliderValue.text =
             Registry.Get<ILanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF");
 
-        if (!_isInGame)
+        if (!IsInGame())
         {
         
 
@@ -675,7 +681,7 @@ public class OptionsPanel : MonoBehaviour {
 		float timer = GetInspectionTimeForValue(value);
 		PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
 
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
 
 		if (aspectDetailsWindow != null)
@@ -697,7 +703,7 @@ public class OptionsPanel : MonoBehaviour {
 		scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
 		PlayerPrefs.SetFloat(SCREENCANVASSIZE, value);
 
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
 
 		screenCanvasScaler.SetTargetScaleFactor(scale);
@@ -714,7 +720,7 @@ public class OptionsPanel : MonoBehaviour {
         // value ranges from 1 to 10 in mins
         PlayerPrefs.SetFloat(AUTOSAVEINTERVAL, value);
 
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
 
 		var tabletopManager = Registry.Get<TabletopManager>();
@@ -726,7 +732,7 @@ public class OptionsPanel : MonoBehaviour {
         // value ranges from 0 to 10
         PlayerPrefs.SetFloat(GRIDSNAPSIZE, value);
 
-		if (!_isInGame)
+		if (!IsInGame())
 			return;
 
 		var tabletopManager = Registry.Get<TabletopManager>();
