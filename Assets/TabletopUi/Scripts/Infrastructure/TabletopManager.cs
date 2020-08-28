@@ -37,7 +37,6 @@ namespace Assets.CS.TabletopUI {
         [Header("Game Control")] [SerializeField]
         private Heart _heart;
 
-        [SerializeField] private IntermittentAnimatableController _intermittentAnimatableController;
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
         [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
@@ -155,11 +154,6 @@ namespace Assets.CS.TabletopUI {
             if (!_initialised)
                 return; //still setting up
 
-            _intermittentAnimatableController.CheckForCardAnimations();
-
-
-
-
             // Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
             if (DraggableToken.itemBeingDragged == null)
                 TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);
@@ -217,7 +211,6 @@ namespace Assets.CS.TabletopUI {
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
-                _intermittentAnimatableController,
                 _mapController,
                 _endGameAnimController,
                 _optionsPanel
@@ -299,13 +292,10 @@ namespace Assets.CS.TabletopUI {
      Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
-        private void InitialiseSubControllers(IntermittentAnimatableController intermittentAnimatableController,
-                                              MapController mapController,
+        private void InitialiseSubControllers(MapController mapController,
                                               EndGameAnimController endGameAnimController,
             OptionsPanel optionsPanel) {
 
-
-            intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Get<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
 
@@ -833,6 +823,11 @@ namespace Assets.CS.TabletopUI {
         }
 
 #endregion
+
+public ElementStacksManager GetTabletopStacksManager()
+{
+    return _tabletop.GetElementStacksManager();
+}
 
 		public void CloseAllDetailsWindows()
 		{
