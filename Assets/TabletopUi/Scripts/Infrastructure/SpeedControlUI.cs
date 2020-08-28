@@ -43,11 +43,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void NormalSpeedButton_OnClick()
         {
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 1,GameSpeed = GameSpeed.Normal,WithSFX = true});
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+
         }
 
         public void FastSpeedButtonOnClick()
         {
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
         }
 
         public void RespondToSpeedControlCommand(SpeedControlEventArgs args)

@@ -31,75 +31,56 @@ using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour,IStacksChangeSubscriber {
+    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber
+    {
 
-        [Header("Game Control")]
-        [SerializeField]
+        [Header("Game Control")] [SerializeField]
         private Heart _heart;
-        [SerializeField]
-        private IntermittentAnimatableController _intermittentAnimatableController;
-        [SerializeField]
-        private EndGameAnimController _endGameAnimController;
 
-        [Header("Tabletop")]
-        [SerializeField]
-        public TabletopTokenContainer _tabletop;
-        [SerializeField]
-        TabletopBackground tabletopBackground;
+        [SerializeField] private IntermittentAnimatableController _intermittentAnimatableController;
+        [SerializeField] private EndGameAnimController _endGameAnimController;
+
+        [Header("Tabletop")] [SerializeField] public TabletopTokenContainer _tabletop;
+        [SerializeField] TabletopBackground tabletopBackground;
 
         [SerializeField] private HighlightLocationsController _highlightLocationsController;
 
-        [SerializeField]
-        private Limbo Limbo;
+        [SerializeField] private Limbo Limbo;
 
-        [Header("Detail Windows")]
-        [SerializeField]
+        [Header("Detail Windows")] [SerializeField]
         private AspectDetailsWindow aspectDetailsWindow;
-        [SerializeField]
-        private TokenDetailsWindow tokenDetailsWindow;
-        [SerializeField] 
-        private CardHoverDetail cardHoverDetail;
 
-        [Header("Mansus Map")]
-        [SerializeField]
+        [SerializeField] private TokenDetailsWindow tokenDetailsWindow;
+        [SerializeField] private CardHoverDetail cardHoverDetail;
+
+        [Header("Mansus Map")] [SerializeField]
         private MapController _mapController;
+
         [SerializeField] [UnityEngine.Serialization.FormerlySerializedAs("mapContainsTokens")]
         public MapTokenContainer mapTokenContainer;
-        [SerializeField]
-        TabletopBackground mapBackground;
-        [SerializeField]
-        MapAnimation mapAnimation;
 
-        [Header("Drag & Window")]
-        [SerializeField]
+        [SerializeField] TabletopBackground mapBackground;
+        [SerializeField] MapAnimation mapAnimation;
+
+        [Header("Drag & Window")] [SerializeField]
         private RectTransform draggableHolderRectTransform;
-        [SerializeField]
-        Transform tableLevelTransform;
-        [SerializeField]
-        Transform windowLevelTransform;
-        [SerializeField]
-		private ScrollRect tableScroll;
-		[SerializeField]
-		public GameObject _dropZoneTemplate;
+
+        [SerializeField] Transform tableLevelTransform;
+        [SerializeField] Transform windowLevelTransform;
+        [SerializeField] private ScrollRect tableScroll;
+        [SerializeField] public GameObject _dropZoneTemplate;
 
 
-        [Header("Options Bar & Notes")]
-        [SerializeField]
+        [Header("Options Bar & Notes")] [SerializeField]
         private StatusBar StatusBar;
 
-        [SerializeField]
-        private DebugTools debugTools;
-        [SerializeField]
-        private BackgroundMusic backgroundMusic;
+        [SerializeField] private DebugTools debugTools;
+        [SerializeField] private BackgroundMusic backgroundMusic;
 
-        [SerializeField]
-        private Notifier _notifier;
-		[SerializeField]
-        private AutosaveWindow _autosaveNotifier;
-        [SerializeField]
-        private OptionsPanel _optionsPanel;
-        [SerializeField]
-        private ElementOverview _elementOverview;
+        [SerializeField] private Notifier _notifier;
+        [SerializeField] private AutosaveWindow _autosaveNotifier;
+        [SerializeField] private OptionsPanel _optionsPanel;
+        [SerializeField] private ElementOverview _elementOverview;
 
         private SituationBuilder _situationBuilder;
 
@@ -108,59 +89,62 @@ namespace Assets.CS.TabletopUI {
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
         public UILookAtMeEvent UILookAtMeEvent;
-        
+
 
         private bool disabled;
         private bool _initialised;
 
-		// Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
-		[NonSerialized]
-		public bool					_enableAspectCaching = true;
+        // Internal cache - if ENABLE_ASPECT_CACHING disabled, if still uses these but recalcs every frame
+        [NonSerialized] public bool _enableAspectCaching = true;
 
-		private AspectsDictionary	_tabletopAspects = null;
-		private AspectsDictionary	_allAspectsExtant = null;
-		private bool				_tabletopAspectsDirty = true;
-		private bool				_allAspectsExtantDirty = true;
+        private AspectsDictionary _tabletopAspects = null;
+        private AspectsDictionary _allAspectsExtant = null;
+        private bool _tabletopAspectsDirty = true;
+        private bool _allAspectsExtantDirty = true;
 
-		public void NotifyAspectsDirty()
-		{
-			_tabletopAspectsDirty = true;
-		}
+        public void NotifyAspectsDirty()
+        {
+            _tabletopAspectsDirty = true;
+        }
 
-		public enum NonSaveableType
-		{
-			Drag,		// Cannot save because held card gets lost
-			Mansus,		// Cannot save by design
-			Greedy,		// Cannot save during Magnet grab (spec fix for #1253)
-			WindowAnim,	// Cannot save during situation window open
-			NumNonSaveableTypes
-		};
-        static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
+        public enum NonSaveableType
+        {
+            Drag, // Cannot save because held card gets lost
+            Mansus, // Cannot save by design
+            Greedy, // Cannot save during Magnet grab (spec fix for #1253)
+            WindowAnim, // Cannot save during situation window open
+            NumNonSaveableTypes
+        };
+
+        static private bool[] isInNonSaveableState = new bool[(int) NonSaveableType.NumNonSaveableTypes];
+
         private SituationController mansusSituation;
-		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
+        //private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
-		public static bool IsInMansus()
-		{
-			return isInNonSaveableState[(int)NonSaveableType.Mansus];
-		}
+        public static bool IsInMansus()
+        {
+            return isInNonSaveableState[(int) NonSaveableType.Mansus];
+        }
 
-		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
-		private float AUTOSAVE_INTERVAL = 300.0f;
-		private static float gridSnapSize = 0.0f;
-		private static bool highContrastMode = false;
-		private static bool accessibleCards = false;
-		private static bool stickyDragMode = false;
-        private List<string> currentDoomTokens=new List<string>();
+        private float
+            housekeepingTimer = 0.0f; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
-		public void ForceAutosave()	// Useful for forcing autosave to happen at tricky moments for debugging - CP
-		{
-			housekeepingTimer = AUTOSAVE_INTERVAL;
-		}
+        private float AUTOSAVE_INTERVAL = 300.0f;
+        private static float gridSnapSize = 0.0f;
+        private static bool highContrastMode = false;
+        private static bool accessibleCards = false;
+        private static bool stickyDragMode = false;
+        private List<string> currentDoomTokens = new List<string>();
 
-		public void ToggleLog()
-		{
-			NoonUtility.ToggleLog();
-		}
+        public void ForceAutosave() // Useful for forcing autosave to happen at tricky moments for debugging - CP
+        {
+            housekeepingTimer = AUTOSAVE_INTERVAL;
+        }
+
+        public void ToggleLog()
+        {
+            NoonUtility.ToggleLog();
+        }
 
 
         public async void Update()
@@ -174,25 +158,27 @@ namespace Assets.CS.TabletopUI {
             _intermittentAnimatableController.CheckForCardAnimations();
 
 
-				_heart.AdvanceTime( 0.0f );		// If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
-	
+            _heart.AdvanceTime(
+                0.0f); // If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
 
-			// Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
-			if (DraggableToken.itemBeingDragged == null)
-				TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );
 
-			housekeepingTimer += Time.deltaTime;
-			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
-			{
-				housekeepingTimer = 0.0f;
+            // Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
+            if (DraggableToken.itemBeingDragged == null)
+                TabletopManager.RequestNonSaveableState(TabletopManager.NonSaveableType.Drag, false);
+
+            housekeepingTimer += Time.deltaTime;
+            if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave()
+            ) // Hold off autsave until it's safe, rather than waiting for the next autosave - CP
+            {
+                housekeepingTimer = 0.0f;
 
                 var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
                 var success = await saveTask;
 
-                if(!success)
-                housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
+                if (!success)
+                    housekeepingTimer = AUTOSAVE_INTERVAL - 5.0f;
 
-			}
+            }
         }
 
 
@@ -213,7 +199,7 @@ namespace Assets.CS.TabletopUI {
 
 
         void Start()
-		{
+        {
             //AppealToConscience();
             var registry = new Registry();
             registry.Register(this);
@@ -222,22 +208,22 @@ namespace Assets.CS.TabletopUI {
 
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
-            
 
-           
-                //register everything used gamewide
-                SetupServices(registry,_situationBuilder, _tabletop);
 
-                // This ensures that we have an ElementStackManager in Limbo & Tabletop
-                InitializeTokenContainers();
 
-                //we hand off board functions to individual controllers
-                InitialiseSubControllers(
-                    _intermittentAnimatableController,
-                    _mapController,
-                    _endGameAnimController,
-                    _optionsPanel
-                );
+            //register everything used gamewide
+            SetupServices(registry, _situationBuilder, _tabletop);
+
+            // This ensures that we have an ElementStackManager in Limbo & Tabletop
+            InitializeTokenContainers();
+
+            //we hand off board functions to individual controllers
+            InitialiseSubControllers(
+                _intermittentAnimatableController,
+                _mapController,
+                _endGameAnimController,
+                _optionsPanel
+            );
 
             InitialiseListeners();
 
@@ -246,8 +232,8 @@ namespace Assets.CS.TabletopUI {
 
             _initialised = true;
 
-            
-            if (Registry.Get<StageHand>().SourceForGameState==SourceForGameState.NewGame)
+
+            if (Registry.Get<StageHand>().SourceForGameState == SourceForGameState.NewGame)
             {
                 BeginNewGame(_situationBuilder);
             }
@@ -263,44 +249,49 @@ namespace Assets.CS.TabletopUI {
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
         private void LoadExistingGame(SourceForGameState source)
-		{
+        {
 
 
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
-                bool isSaveCorrupted = false;
-                bool shouldContinueGame;
-                try
-                {
-	                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive(source);
-                }
-                catch (Exception e)
-                {
-	                Debug.LogError("Failed to load game (see exception for details)");
-	                Debug.LogException(e);
-	                shouldContinueGame = false;
-	                isSaveCorrupted = true;
-                }
+            var saveGameManager =
+                new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
+            bool isSaveCorrupted = false;
+            bool shouldContinueGame;
+            try
+            {
+                shouldContinueGame = saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive(source);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to load game (see exception for details)");
+                Debug.LogException(e);
+                shouldContinueGame = false;
+                isSaveCorrupted = true;
+            }
 
-                LoadGame(source);
+            LoadGame(source);
 
-     
+
 
             if (!shouldContinueGame || isSaveCorrupted)
             {
                 _notifier.ShowSaveError(true);
                 GameSaveManager.saveErrorWarningTriggered = true;
             }
-            
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
             
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = false });
+
+
             UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 
 
-		}
+        }
 
-        private void BeginNewGame(SituationBuilder builder)
+
+
+    private void BeginNewGame(SituationBuilder builder)
         {
             SetupNewBoard(builder);
             var populatedCharacter =
