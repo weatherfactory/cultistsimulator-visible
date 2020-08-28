@@ -65,17 +65,17 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, Heart heart, ISituationClock clock = null) {
+        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, ISituationClock clock = null) {
             Registry.Get<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
-            situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
+            situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
 
 			if (command.SourceToken != null)
 				SoundManager.PlaySfx("SituationTokenCreate");
 
             situationWindow = w;
-            situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
+            situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             SituationClock = clock ?? new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
 

@@ -56,8 +56,7 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] TextMeshProUGUI startButtonText;
 
 		private SituationController situationController;
-		private Heart _heart;
-		private IVerb Verb;
+        private IVerb Verb;
         private bool windowIsWide = false;
 
         public bool IsOpen {
@@ -97,9 +96,8 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
 
-        public void Initialise(IVerb verb, SituationController sc, Heart heart) {
+        public void Initialise(IVerb verb, SituationController sc) {
 			situationController = sc;
-			_heart = heart;
 			Verb = verb;
             name = "Window_" + verb.Id;
             DisplayIcon(verb.Id);

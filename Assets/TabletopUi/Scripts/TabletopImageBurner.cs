@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] AnimationCurve burnAlphaCurve;
 
         bool coroutineRunning = false;
-        string burnImagePath = "burnImages/";
+        string burnImagePath = "burns";
 
         List<Image> imagePool = new List<Image>();
         List<BurnImage> activeImages = new List<BurnImage>();

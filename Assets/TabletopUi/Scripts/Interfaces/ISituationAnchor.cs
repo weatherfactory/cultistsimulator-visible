@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayAsOpen();
         void DisplayAsClosed();
 
-        void Initialise(IVerb verb, SituationController controller, Heart heart);
+        void Initialise(IVerb verb, SituationController controller);
 
         void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots);
         void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);

@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             var window = BuiltSituationWindow(newToken);
 
-            situationController.Initialise(situationCreationCommand, newToken, window, _heart);
+            situationController.Initialise(situationCreationCommand, newToken, window);
 
             return newToken;
         }

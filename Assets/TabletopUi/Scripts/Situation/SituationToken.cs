@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI {
 
 		private bool isNew; // used for sound and SFX purposes
 
-        public void Initialise(IVerb verb, SituationController sc, Heart heart) {
+        public void Initialise(IVerb verb, SituationController sc) {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + EntityId;

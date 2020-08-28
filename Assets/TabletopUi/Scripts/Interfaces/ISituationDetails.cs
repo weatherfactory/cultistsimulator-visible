@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationDetails {
         string Title { get; set; }
 
-        void Initialise(IVerb verb,SituationController controller, Heart heart);
+        void Initialise(IVerb verb,SituationController controller);
 
         void Show( Vector3 targetPosOverride );
         void Hide();
