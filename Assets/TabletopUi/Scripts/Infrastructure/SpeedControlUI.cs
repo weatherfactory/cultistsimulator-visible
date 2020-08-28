@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
-		[SerializeField] private ScrollRectMouseMover scrollRectMover;
+
 #pragma warning restore 649
         
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
@@ -44,7 +44,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 1,GameSpeed = GameSpeed.Normal,WithSFX = true});
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
-
         }
 
         public void FastSpeedButtonOnClick()
