@@ -28,7 +28,7 @@ public class EntityStore
     public bool TryGetById<T>(string entityId, out T entity) where T : class, IEntityWithId
     {
         IEntityWithId retrievedEntity;
-        if(_entities.TryGetValue(entityId, out retrievedEntity))
+        if(entityId!=null && _entities.TryGetValue(entityId, out retrievedEntity))
         {
             entity = retrievedEntity as T;
             return true;
@@ -45,6 +45,8 @@ public class EntityStore
 
     public T GetById<T>(string entityId) where T : class, IEntityWithId
     {
+        if (entityId == null)
+            return null;
         return _entities[entityId] as T;
     }
 
