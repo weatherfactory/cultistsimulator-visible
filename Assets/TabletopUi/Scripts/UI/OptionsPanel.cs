@@ -17,6 +17,17 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine.Analytics;
 
+public class SettingOption
+{
+    public string Id { get; set; }
+    public string TabImage { get; set; }
+    public string Hint { get; set; }
+    public string HintLocId { get; set; }
+    public float MinValue { get; set; }
+    public float  MaxValue { get; set; }
+}
+
+
 public class OptionsPanel : MonoBehaviour {
 
 

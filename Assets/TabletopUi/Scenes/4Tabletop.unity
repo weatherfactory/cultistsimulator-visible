@@ -2998,8 +2998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6dede08ba6a40338d4b3130dc33ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heart: {fileID: 597}
-  _intermittentAnimatableController: {fileID: 1506403065}
   _endGameAnimController: {fileID: 2130193020}
   _tabletop: {fileID: 730}
   tabletopBackground: {fileID: 577}
@@ -3019,11 +3017,9 @@ MonoBehaviour:
   _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
     type: 3}
   StatusBar: {fileID: 1243788745}
-  debugTools: {fileID: 589}
   backgroundMusic: {fileID: 677}
   _notifier: {fileID: 594}
   _autosaveNotifier: {fileID: 1985926805}
-  _optionsPanel: {fileID: 1747492096}
   _elementOverview: {fileID: 1895797520}
   ToggleOptionsEvent:
     m_PersistentCalls:
@@ -14455,7 +14451,6 @@ GameObject:
   m_Component:
   - component: {fileID: 421735898}
   - component: {fileID: 421735900}
-  - component: {fileID: 421735899}
   m_Layer: 5
   m_Name: TMP SubMeshUI [Belgrad SDF Material + ARIAL SDF Atlas]
   m_TagString: Untagged
@@ -14482,34 +14477,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &421735899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421735897}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_fontAsset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_isDefaultMaterial: 0
-  m_padding: 0
-  m_TextComponent: {fileID: 689196555}
-  m_materialReferenceIndex: 1
 --- !u!222 &421735900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19792,7 +19759,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -19805,8 +19772,8 @@ MonoBehaviour:
   m_fontSizeMax: 30
   m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 1025
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -19948,7 +19915,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -19961,8 +19928,8 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 16
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -26680,7 +26647,6 @@ MonoBehaviour:
   pauseButton: {fileID: 617}
   normalSpeedButton: {fileID: 1123572853}
   fastForwardButton: {fileID: 1989268491}
-  scrollRectMover: {fileID: 62}
 --- !u!1 &1066896353
 GameObject:
   m_ObjectHideFlags: 0
@@ -28093,7 +28059,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -28106,8 +28072,8 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 16
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -32049,7 +32015,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -32062,8 +32028,8 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 16
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -34665,7 +34631,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -34678,8 +34644,8 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 16
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -36685,7 +36651,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1779677219}
   - component: {fileID: 1779677221}
-  - component: {fileID: 1779677220}
   m_Layer: 5
   m_Name: TMP SubMeshUI [Belgrad SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
@@ -36712,34 +36677,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1779677220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779677218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_spriteAsset: {fileID: 0}
-  m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_isDefaultMaterial: 0
-  m_padding: 0.5
-  m_TextComponent: {fileID: 1643956081}
-  m_materialReferenceIndex: 1
 --- !u!222 &1779677221
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39260,7 +39197,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -39274,7 +39211,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
-  m_textAlignment: 257
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
