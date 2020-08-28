@@ -1,20 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Net.Security;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-
-public enum GameSpeed
-{ Unspecified=-1,
-    Paused=0,
-    Normal=1,
-    Fast=2}
 
 /// <summary>
 /// Top-level object
@@ -27,56 +23,48 @@ public class Heart : MonoBehaviour
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
 	// Autosave tracking is now done in TabletopManager.Update()
+    private const float BEAT_INTERVAL_SECONDS = 0.05f;
 
 
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
-    private float usualInterval;
-    private GameSpeed CurrentGameSpeed=GameSpeed.Normal;
+    private GameSpeedState gameSpeedState=new GameSpeedState();
 
 
-    public bool IsPaused { get; private set; }
+    
 
-    public void StartBeatingWithDefaultValue()
+
+    public void RespondToSpeedControlCommand(SpeedControlEventArgs args)
     {
-        StartBeating(0.05f);
+        gameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel,args.GameSpeed);
+        if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
+            StopBeating();
+        else
+            StartBeating();
+
     }
-	public void StartBeating(float startingInterval)
+
+
+    public void StartBeating()
 	{
         CancelInvoke(METHODNAME_BEAT);
-        usualInterval = startingInterval;
-        InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
-        IsPaused = false;
-		beatCounter = HOUSEKEEPING_CYCLE_BEATS;	// Force immediate housekeeping check on resume - CP
-	}
+        InvokeRepeating(METHODNAME_BEAT,0, BEAT_INTERVAL_SECONDS);
+        beatCounter = HOUSEKEEPING_CYCLE_BEATS;	// Force immediate housekeeping check on resume - CP
+	} 
 
     public void StopBeating()
     {
         CancelInvoke(METHODNAME_BEAT);
-        IsPaused = true;
     }
-
-    public void ResumeBeating()
-    {
-        StartBeating(usualInterval);
-        IsPaused = false;
-    }
-
-    public void SetGameSpeed(GameSpeed speed)
-    {
-        CurrentGameSpeed = speed;
-    }
-
-    public GameSpeed GetGameSpeed()
-    {
-        return CurrentGameSpeed;
-    }
-
+    
     public void Beat()
     {
-		// Moved this outside AdvanceTime so that the interval parameter is respected (and I can call it with 0 reliably) - CP
-		float beatInterval = usualInterval;
-		if (CurrentGameSpeed == GameSpeed.Fast)
-			beatInterval = usualInterval * 3;
+        float beatInterval;
+        // Moved this outside AdvanceTime so that the interval parameter is respected (and I can call it with 0 reliably) - CP
+        if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Fast)
+			beatInterval = BEAT_INTERVAL_SECONDS * 3;
+        else
+            beatInterval = BEAT_INTERVAL_SECONDS;
+        
 
         AdvanceTime(beatInterval);
         beatCounter++;

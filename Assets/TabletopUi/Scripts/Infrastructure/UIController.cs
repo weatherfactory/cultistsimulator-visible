@@ -54,17 +54,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //...it's nice to be able to type N and M
 
                 if (Input.GetKeyDown(KeyCode.N))
-                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =0 , GameSpeed = GameSpeed.Normal, WithSFX =true });
+                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =1 , GameSpeed = GameSpeed.Normal, WithSFX =true });
 
                 if (Input.GetKeyDown(KeyCode.M))
-                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 0, GameSpeed = GameSpeed.Fast, WithSFX = true});
+                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true});
 
             }
 
 
 
             if (Input.GetButtonDown("Pause"))
-                Registry.Get<TabletopManager>().TogglePauseEvent.Invoke();
+                Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{

@@ -105,7 +105,6 @@ namespace Assets.CS.TabletopUI {
 
 
         public UnityEvent ToggleOptionsEvent;
-        public UnityEvent TogglePauseEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
         public UILookAtMeEvent UILookAtMeEvent;
@@ -163,10 +162,6 @@ namespace Assets.CS.TabletopUI {
 			NoonUtility.ToggleLog();
 		}
 
-		public bool IsPaused()
-		{
-			return _heart.IsPaused;
-		}
 
         public async void Update()
         {
@@ -178,10 +173,9 @@ namespace Assets.CS.TabletopUI {
 
             _intermittentAnimatableController.CheckForCardAnimations();
 
-			if (_heart.IsPaused)
-			{
+
 				_heart.AdvanceTime( 0.0f );		// If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
-			}
+	
 
 			// Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
 			if (DraggableToken.itemBeingDragged == null)
@@ -297,11 +291,10 @@ namespace Assets.CS.TabletopUI {
                 GameSaveManager.saveErrorWarningTriggered = true;
             }
             
-            _heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
             
-            UILookAtMeEvent.Invoke(typeof(SpeedController));
+            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 
 
@@ -598,8 +591,8 @@ namespace Assets.CS.TabletopUI {
 
 
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
-            UILookAtMeEvent.Invoke(typeof(SpeedController));
+                {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
+            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
@@ -633,9 +626,9 @@ namespace Assets.CS.TabletopUI {
             }
 
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+                {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
 
-            UILookAtMeEvent.Invoke(typeof(SpeedController));
+            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
 
@@ -653,13 +646,7 @@ namespace Assets.CS.TabletopUI {
 
 			bool success = true;	// Assume everything will be OK to begin with...
 
-			// Check state so that autosave behaves correctly if called while paused - CP
-			bool wasBeating = false;
-			if (!_heart.IsPaused)
-			{
-		        _heart.StopBeating();
-				wasBeating = true;
-			}
+			SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
 
 			
             try
@@ -681,11 +668,8 @@ namespace Assets.CS.TabletopUI {
 	            Debug.LogException(e);
             }
 
-            if (wasBeating && _heart!=null)
-            {
-	            _heart.ResumeBeating();
-            }
-            
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+
 
             if (success && withNotification && _autosaveNotifier!=null)
 			{
@@ -698,7 +682,7 @@ namespace Assets.CS.TabletopUI {
 			{
                 // only pause if we need to (since it triggers sfx)
                 SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+                    {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
 
 				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
 			}
@@ -1035,7 +1019,7 @@ namespace Assets.CS.TabletopUI {
 
             DraggableToken.CancelDrag();
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 2,GameSpeed=GameSpeed.Paused,WithSFX =false});
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
             RequestNonSaveableState( NonSaveableType.Mansus, true );
 
             SoundManager.PlaySfx("MansusEntry");
@@ -1074,9 +1058,9 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("MansusExit");
 
             // Pause the game with a flashing notification
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =2 , GameSpeed = GameSpeed.Paused, WithSFX = false});
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX = false});
 
-            UILookAtMeEvent.Invoke(typeof(SpeedController));
+            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             // Put card into the original Situation Results
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new

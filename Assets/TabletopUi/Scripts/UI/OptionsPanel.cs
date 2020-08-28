@@ -89,7 +89,7 @@ public class OptionsPanel : MonoBehaviour {
 	private CanvasScaleManager screenCanvasScaler;
 
 
-    SpeedController speedController;
+    SpeedControlUI _speedControlUi;
 
 
     private const string MUSICVOLUME="MusicVolume";
@@ -340,7 +340,7 @@ public class OptionsPanel : MonoBehaviour {
 			return;
 
         var tabletopManager = Registry.Get<TabletopManager>();
-        tabletopManager.SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = false });
+        tabletopManager.SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
         var saveTask = tabletopManager.SaveGameAsync(true, SourceForGameState.DefaultSave);
 
         var success = await saveTask;

@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.CS.TabletopUI;
+using Noon;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class SpeedController:MonoBehaviour
+    public class SpeedControlUI:MonoBehaviour
     {
 #pragma warning disable 649
         [SerializeField] private PauseButton pauseButton;
@@ -16,19 +17,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         [SerializeField] private Button fastForwardButton;
 		[SerializeField] private ScrollRectMouseMover scrollRectMover;
 #pragma warning restore 649
-        private bool isLocked = false;
-        private bool lastPauseState;
+        
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
         private readonly Color inactiveSpeedColor = Color.white;
-        
-        private GameSpeed[] PauseState;
+
+        private GameSpeedState gameSpeedState = new GameSpeedState();
 
 
         public void Start()
         {
             normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-            PauseState=new GameSpeed[3];
-
             }
 
 
@@ -37,76 +35,63 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             pauseButton.RunFlashAnimation(inactiveSpeedColor);
         }
 
-        public void SetPausedState(int CommandPriority, bool pause, bool withSFX = true)
+        public void PauseButton_OnClick()
         {
-            //if (_heart.IsPaused == pause)
-            //{
-            //    // No SFX or flash if no change of state - CP
-            //    withSFX = false;
-            //}
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
+        }
 
-            if (pause || isLocked)
+        public void NormalSpeedButton_OnClick()
+        {
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 1,GameSpeed = GameSpeed.Normal,WithSFX = true});
+        }
+
+        public void FastSpeedButtonOnClick()
+        {
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
+        }
+
+        public void RespondToSpeedControlCommand(SpeedControlEventArgs args)
+        {
+            if(args.WithSFX)
+                SoundManager.PlaySfx("UIPauseStart");
+            else
+                SoundManager.PlaySfx("UIPauseEnd");
+
+
+            gameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel,args.GameSpeed);
+
+
+
+            if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
             {
-           //     _heart.StopBeating();
+                //     _heart.StopBeating();
                 pauseButton.SetPausedText(true);
                 pauseButton.SetColor(activeSpeedColor);
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
-				if (withSFX)
-					SoundManager.PlaySfx("UIPauseStart");
-
             }
-            else
-			{
-				if (withSFX)
-					SoundManager.PlaySfx("UIPauseEnd");
-				
-            //    _heart.ResumeBeating();
+            else 
+            {
+                //    _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.SetColor(inactiveSpeedColor);
 
-                if (PauseState[0] == GameSpeed.Fast)
+                if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Fast)
                 {
                     normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                     fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
                 }
-                else
+                else if(gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Normal)
                 {
                     normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
                     fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
                 }
+                else
+                {
+                    NoonUtility.Log("Unknown effective game speed: " + gameSpeedState.GetEffectiveGameSpeed());
+                }
             }
         }
-
-        public void TogglePause() {
-
-
-            SetPausedState(1,PauseState[1]==GameSpeed.Paused);
-        }
-
-        public void SetSpeed(GameSpeed speedToSet)
-        {
-   
-            if (PauseState[0] == GameSpeed.Paused)
-                SetPausedState(0,false);
-
-            if(speedToSet==GameSpeed.Normal)
-            {
-
-               PauseState[0]= GameSpeed.Normal;
-                normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
-                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-            }
-            else if(speedToSet==GameSpeed.Fast)
-            {
-
-                PauseState[0]=GameSpeed.Fast;
-                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-                fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
-            }
-        }
-
 
 
     }

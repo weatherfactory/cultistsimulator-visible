@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         [Header("Controllers")]
         [SerializeField] private TabletopManager _tabletopManager;
-        [SerializeField] private SpeedController _speedController;
+        [SerializeField] private SpeedControlUI _speedControlUi;
         [SerializeField] private UIController _uiController;
         
         [Header("Visuals")]

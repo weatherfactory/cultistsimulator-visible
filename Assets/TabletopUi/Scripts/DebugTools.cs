@@ -75,6 +75,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void Awake()
     {
+        Toggle(); //start by hiding the panel. If it's not enabled at the beginning, this won't run
         var registry = new Registry();
         registry.Register(this);
 

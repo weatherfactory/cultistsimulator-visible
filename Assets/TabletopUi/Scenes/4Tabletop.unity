@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,7 +1180,6 @@ Transform:
   - {fileID: 191}
   - {fileID: 188}
   - {fileID: 192}
-  - {fileID: 1065654873}
   - {fileID: 193}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1778,17 +1777,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalRotation: {x: -0.13052624, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 32.75342}
+  m_LocalScale: {x: 0.01033166, y: 0.01033166, z: 0.01033166}
   m_Children:
   - {fileID: 350}
-  m_Father: {fileID: 1179197931}
-  m_RootOrder: 1
+  m_Father: {fileID: 1065654873}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.5663452, y: -271.81665}
   m_SizeDelta: {x: 200, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &392
@@ -2395,7 +2394,7 @@ RectTransform:
   m_Children:
   - {fileID: 447}
   m_Father: {fileID: 1179197931}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3041,38 +3040,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TogglePauseEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedController,
-          Assembly-CSharp
-        m_MethodName: TogglePause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  SetPausedStateEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedController,
-          Assembly-CSharp
-        m_MethodName: SetPausedState
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   ToggleDebugEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3092,9 +3059,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedController,
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedControlUI,
           Assembly-CSharp
-        m_MethodName: SetSpeed
+        m_MethodName: RespondToSpeedControlCommand
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 597}
+        m_TargetAssemblyTypeName: Heart, Assembly-CSharp
+        m_MethodName: RespondToSpeedControlCommand
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3294,8 +3273,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: TogglePause
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedControlUI,
+          Assembly-CSharp
+        m_MethodName: PauseButton_OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6873,9 +6853,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &184133422
 MonoBehaviour:
@@ -14571,7 +14551,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16348,7 +16328,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.00017166138}
-  m_SizeDelta: {x: 0, y: 24}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
 MonoBehaviour:
@@ -19537,12 +19517,12 @@ PrefabInstance:
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 149
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
@@ -19562,7 +19542,7 @@ PrefabInstance:
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
@@ -19572,7 +19552,7 @@ PrefabInstance:
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224680757540649412, guid: ac8e5499121cebf458a1a1080fe88880,
         type: 3}
@@ -25661,9 +25641,9 @@ RectTransform:
   m_Father: {fileID: 350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 828.3348, y: -36.997276}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &997746288
@@ -26662,7 +26642,7 @@ GameObject:
   - component: {fileID: 1065654873}
   - component: {fileID: 1065654874}
   m_Layer: 0
-  m_Name: SpeedController
+  m_Name: SpeedControlUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26675,12 +26655,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065654872}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9900513, y: -116.17621, z: -1182.3313}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 187}
-  m_RootOrder: 9
+  m_LocalRotation: {x: 0.13052624, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: -482.8908, y: 15739.887, z: 2248.273}
+  m_LocalScale: {x: 58.073925, y: 58.073925, z: 58.073925}
+  m_Children:
+  - {fileID: 379}
+  - {fileID: 1123572850}
+  - {fileID: 1989268488}
+  m_Father: {fileID: 1179197931}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1065654874
 MonoBehaviour:
@@ -27373,17 +27356,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123572849}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalRotation: {x: -0.13052624, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 32.75342}
+  m_LocalScale: {x: 0.01033166, y: 0.01033166, z: 0.01033166}
   m_Children:
   - {fileID: 678669557}
-  m_Father: {fileID: 1179197931}
-  m_RootOrder: 2
+  m_Father: {fileID: 1065654873}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2.8048706, y: -271.81665}
   m_SizeDelta: {x: 200, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123572851
@@ -27444,8 +27427,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SetNormalSpeed
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedControlUI,
+          Assembly-CSharp
+        m_MethodName: NormalSpeedButton_OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27948,9 +27932,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1678856722}
-  - {fileID: 379}
-  - {fileID: 1123572850}
-  - {fileID: 1989268488}
+  - {fileID: 1065654873}
   - {fileID: 504}
   m_Father: {fileID: 1243788744}
   m_RootOrder: 4
@@ -31714,9 +31696,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1475843658
 MonoBehaviour:
@@ -31760,7 +31742,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -34292,7 +34274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
         type: 3}
@@ -35230,7 +35212,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38982,9 +38964,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1973535021
 MonoBehaviour:
@@ -39028,7 +39010,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -39399,17 +39381,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989268487}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalRotation: {x: -0.13052624, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 32.75342}
+  m_LocalScale: {x: 0.01033166, y: 0.01033166, z: 0.01033166}
   m_Children:
   - {fileID: 786652538}
-  m_Father: {fileID: 1179197931}
-  m_RootOrder: 3
+  m_Father: {fileID: 1065654873}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 5.0433655, y: -271.81665}
   m_SizeDelta: {x: 200, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989268489
@@ -39470,8 +39452,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1065654874}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SetFastForward
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.SpeedControlUI,
+          Assembly-CSharp
+        m_MethodName: FastSpeedButtonOnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40605,7 +40588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosOffset: {x: 0, y: -150}
   _tabletopManager: {fileID: 600}
-  _speedController: {fileID: 1065654874}
+  _speedControlUi: {fileID: 0}
   _uiController: {fileID: 937582878}
   tableCanvas: {fileID: 341}
   cameraZoom: {fileID: 49}
