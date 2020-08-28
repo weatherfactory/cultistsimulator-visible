@@ -53,7 +53,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _uiController.enabled = false; // Disable shortcuts
 
             // pause game
-            _speedController.SetPausedState(true, false);
+          Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX =false });
+
 
             // Abort all interactions
             DraggableToken.draggingEnabled = false; // this SHOULD disable the dragging

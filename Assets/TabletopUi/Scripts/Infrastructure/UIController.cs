@@ -54,10 +54,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //...it's nice to be able to type N and M
 
                 if (Input.GetKeyDown(KeyCode.N))
-                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(GameSpeed.Normal);
-                   
+                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =0 , GameSpeed = GameSpeed.Normal, WithSFX =true });
+
                 if (Input.GetKeyDown(KeyCode.M))
-                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(GameSpeed.Fast);
+                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 0, GameSpeed = GameSpeed.Fast, WithSFX = true});
 
             }
 

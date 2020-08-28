@@ -37,8 +37,6 @@ namespace Assets.CS.TabletopUI {
         [SerializeField]
         private Heart _heart;
         [SerializeField]
-        private SpeedController _speedController;
-        [SerializeField]
         private IntermittentAnimatableController _intermittentAnimatableController;
         [SerializeField]
         private EndGameAnimController _endGameAnimController;
@@ -111,6 +109,7 @@ namespace Assets.CS.TabletopUI {
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
         public UILookAtMeEvent UILookAtMeEvent;
+        
 
         private bool disabled;
         private bool _initialised;
@@ -240,7 +239,6 @@ namespace Assets.CS.TabletopUI {
 
                 //we hand off board functions to individual controllers
                 InitialiseSubControllers(
-                    _speedController,
                     _intermittentAnimatableController,
                     _mapController,
                     _endGameAnimController,
@@ -273,8 +271,6 @@ namespace Assets.CS.TabletopUI {
         private void LoadExistingGame(SourceForGameState source)
 		{
 
-            bool shouldStartPaused = true;
-
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
                 bool isSaveCorrupted = false;
@@ -302,9 +298,13 @@ namespace Assets.CS.TabletopUI {
             }
             
             _heart.StartBeatingWithDefaultValue();								// Init heartbeat duration...
-            _speedController.SetPausedState(shouldStartPaused, false);	// ...but (optionally) pause game while the player gets their bearings.
+
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+            
             UILookAtMeEvent.Invoke(typeof(SpeedController));
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
+
+
 		}
 
         private void BeginNewGame(SituationBuilder builder)
@@ -317,19 +317,17 @@ namespace Assets.CS.TabletopUI {
      Registry.Get<StageHand>().ClearRestartingGameFlag();
         }
 
-        private void InitialiseSubControllers(SpeedController speedController,
-            IntermittentAnimatableController intermittentAnimatableController,
+        private void InitialiseSubControllers(IntermittentAnimatableController intermittentAnimatableController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController,
             OptionsPanel optionsPanel) {
 
-            speedController.Initialise(_heart);
 
             intermittentAnimatableController.Initialise(_tabletop.GetElementStacksManager(),Registry.Get<SituationsCatalogue>());
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
 
-            optionsPanel.Initialise(_speedController,true);
+            optionsPanel.Initialise(true);
         }
 
         private void InitialiseListeners() {
@@ -597,8 +595,10 @@ namespace Assets.CS.TabletopUI {
 
         public void LoadGame(SourceForGameState gameStateSource) {
             ICompendium compendium = Registry.Get<ICompendium>();
-            
-            _speedController.SetPausedState(true, false);
+
+
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
             UILookAtMeEvent.Invoke(typeof(SpeedController));
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
@@ -631,7 +631,10 @@ namespace Assets.CS.TabletopUI {
                 Debug.LogError("Failed to load game (see exception for details)");
                 Debug.LogException(e, this);
             }
-            _speedController.SetPausedState(true, false);
+
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+
             UILookAtMeEvent.Invoke(typeof(SpeedController));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
@@ -693,9 +696,10 @@ namespace Assets.CS.TabletopUI {
 
 			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
 			{
-				bool pauseStateWhenErrorRequested = GetPausedState();
-				if (!pauseStateWhenErrorRequested)			// only pause if we need to (since it triggers sfx)
-					SetPausedState(true);
+                // only pause if we need to (since it triggers sfx)
+                SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                    {ControlPriorityLevel = 0, GameSpeed = GameSpeed.Paused, WithSFX = false});
+
 				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
 			}
 
@@ -963,18 +967,8 @@ namespace Assets.CS.TabletopUI {
 			return true;
 		}
 
-        public void SetPausedState(bool paused) {
-            _speedController.SetPausedState(paused);
-        }
-
-		public bool GetPausedState() {
-            return _speedController.GetPausedState();
-        }
-
-        void LockSpeedController(bool enabled) {
-            _speedController.LockToPause(enabled);
-        }
-
+        
+        
 		public void SetAutosaveInterval( float minutes )
 		{
 			AUTOSAVE_INTERVAL = minutes * 60.0f;
@@ -1040,7 +1034,8 @@ namespace Assets.CS.TabletopUI {
             CloseAllSituationWindowsExcept(null);
 
             DraggableToken.CancelDrag();
-            LockSpeedController(true);
+
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 2,GameSpeed=GameSpeed.Paused,WithSFX =false});
             RequestNonSaveableState( NonSaveableType.Mansus, true );
 
             SoundManager.PlaySfx("MansusEntry");
@@ -1064,7 +1059,7 @@ namespace Assets.CS.TabletopUI {
         public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard)
 		{
             DraggableToken.CancelDrag();
-            LockSpeedController(false);
+
             FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
 
             // Play Normal Music
@@ -1077,9 +1072,10 @@ namespace Assets.CS.TabletopUI {
             _tabletop.Show(true);
             _mapController.ShowMansusMap(origin, false);
             SoundManager.PlaySfx("MansusExit");
-            
+
             // Pause the game with a flashing notification
-            _speedController.SetPausedState(true, false);
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =2 , GameSpeed = GameSpeed.Paused, WithSFX = false});
+
             UILookAtMeEvent.Invoke(typeof(SpeedController));
 
             // Put card into the original Situation Results

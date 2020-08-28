@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,50 +20,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private bool lastPauseState;
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
         private readonly Color inactiveSpeedColor = Color.white;
-        private Heart _heart;
+        
+        private GameSpeed[] PauseState;
 
-        public void Initialise(Heart heart)
+
+        public void Start()
         {
             normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-            _heart = heart;
-        }
+            PauseState=new GameSpeed[3];
 
-        public void LockToPause(bool locked) {
-            isLocked = locked;
-
-            if (locked) { 
-                lastPauseState = _heart.IsPaused;
-                SetPausedState(true);
-            }
-            else {
-                SetPausedState(lastPauseState);
             }
 
-			// We lock, that means we also don't want the player moving the table.
-			scrollRectMover.enabled = !isLocked;
-        }
-
-        public bool GetPausedState()
-        {
-			return _heart.IsPaused;
-		}
 
         public void AttractAttention()
         {
             pauseButton.RunFlashAnimation(inactiveSpeedColor);
         }
 
-        public void SetPausedState(bool pause, bool withSFX = true)
+        public void SetPausedState(int CommandPriority, bool pause, bool withSFX = true)
         {
-            if (_heart.IsPaused == pause)
-            {
-                // No SFX or flash if no change of state - CP
-                withSFX = false;
-            }
+            //if (_heart.IsPaused == pause)
+            //{
+            //    // No SFX or flash if no change of state - CP
+            //    withSFX = false;
+            //}
 
             if (pause || isLocked)
             {
-                _heart.StopBeating();
+           //     _heart.StopBeating();
                 pauseButton.SetPausedText(true);
                 pauseButton.SetColor(activeSpeedColor);
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
@@ -77,11 +62,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				if (withSFX)
 					SoundManager.PlaySfx("UIPauseEnd");
 				
-                _heart.ResumeBeating();
+            //    _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.SetColor(inactiveSpeedColor);
 
-                if (_heart.GetGameSpeed() == GameSpeed.Fast)
+                if (PauseState[0] == GameSpeed.Fast)
                 {
                     normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                     fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
@@ -95,29 +80,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         public void TogglePause() {
-            if (!isLocked)
 
-            SetPausedState(!_heart.IsPaused);
+
+            SetPausedState(1,PauseState[1]==GameSpeed.Paused);
         }
 
         public void SetSpeed(GameSpeed speedToSet)
         {
-            if (isLocked)
-                return;
-            if (_heart.IsPaused)
-                SetPausedState(false);
+   
+            if (PauseState[0] == GameSpeed.Paused)
+                SetPausedState(0,false);
 
             if(speedToSet==GameSpeed.Normal)
             {
 
-                _heart.SetGameSpeed(GameSpeed.Normal);
+               PauseState[0]= GameSpeed.Normal;
                 normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
             }
             else if(speedToSet==GameSpeed.Fast)
             {
 
-                _heart.SetGameSpeed(GameSpeed.Fast);
+                PauseState[0]=GameSpeed.Fast;
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
             }

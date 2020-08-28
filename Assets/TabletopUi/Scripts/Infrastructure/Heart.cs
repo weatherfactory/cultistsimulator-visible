@@ -11,7 +11,8 @@ using Noon;
 
 
 public enum GameSpeed
-{ Paused=0,
+{ Unspecified=-1,
+    Paused=0,
     Normal=1,
     Fast=2}
 

@@ -129,7 +129,7 @@ public class OptionsPanel : MonoBehaviour {
 
     }
 
-    public void Initialise( SpeedController spdctrl,bool isInGame)
+    public void Initialise(bool isInGame)
 	{
 	    windowGO.SetActive(true); //so we can use tags. SO HACKY
 
@@ -147,11 +147,7 @@ public class OptionsPanel : MonoBehaviour {
 		windowGO.SetActive(false);
         _isInGame = isInGame;
 
-
-        if (_isInGame) {
-			speedController = spdctrl;
-        }
-        else
+        if (!_isInGame)
         {
             //resolutions!
             int r;
@@ -317,16 +313,12 @@ public class OptionsPanel : MonoBehaviour {
 
 		// Simplified to use Martin's LockToPause code which handles everything nicely - CP
         if (windowGO.activeInHierarchy)
-		{
+		
 			// now lock the pause so players can't do it manually - this also pauses
-			if (speedController != null)
-				speedController.LockToPause(true);
-		}
+			Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
+		
 		else
-		{
-			if (speedController != null)
-				speedController.LockToPause(false);
-		}
+            Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
 
 		RefreshOptionsText();
     }
@@ -348,7 +340,7 @@ public class OptionsPanel : MonoBehaviour {
 			return;
 
         var tabletopManager = Registry.Get<TabletopManager>();
-        tabletopManager.SetPausedState(true);
+        tabletopManager.SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = false });
         var saveTask = tabletopManager.SaveGameAsync(true, SourceForGameState.DefaultSave);
 
         var success = await saveTask;
