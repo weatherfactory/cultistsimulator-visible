@@ -204,7 +204,7 @@ namespace Assets.CS.TabletopUI {
 
             Configuration.Setup();
 
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 
 
 

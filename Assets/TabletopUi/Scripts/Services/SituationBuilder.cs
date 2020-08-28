@@ -14,12 +14,10 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         private Transform tableLevel;
         private Transform windowLevel;
-		private Heart _heart;
 
-        public SituationBuilder(Transform tableLevel, Transform windowLevel, Heart heart) {
+        public SituationBuilder(Transform tableLevel, Transform windowLevel) {
             this.tableLevel = tableLevel;
             this.windowLevel = windowLevel;
-			this._heart = heart;
         }
 
         public void CreateInitialTokensOnTabletop(Legacy legacy) {
