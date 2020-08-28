@@ -25,57 +25,116 @@ public class Heart : MonoBehaviour
 	// Autosave tracking is now done in TabletopManager.Update()
     private const float BEAT_INTERVAL_SECONDS = 0.05f;
 
-
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private GameSpeedState gameSpeedState=new GameSpeedState();
 
+    private float timerBetweenBeats=0f;
 
-    
+    public void Update()
+    {
+        timerBetweenBeats += Time.deltaTime;
+
+        if (timerBetweenBeats > BEAT_INTERVAL_SECONDS)
+        {
+            timerBetweenBeats -= BEAT_INTERVAL_SECONDS;
+            if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Fast)
+                Beat(BEAT_INTERVAL_SECONDS * 3);
+            else if (gameSpeedState.GetEffectiveGameSpeed()==GameSpeed.Normal)
+                Beat(BEAT_INTERVAL_SECONDS);
+            else if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
+                Beat(0f);
+            else
+               NoonUtility.Log("Unknown game speed state: " + gameSpeedState.GetEffectiveGameSpeed());
+        }
+
+    }
+
+    public void FastForward(float interval)
+    {
+        Beat(interval);
+    }
 
 
     public void RespondToSpeedControlCommand(SpeedControlEventArgs args)
     {
         gameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel,args.GameSpeed);
+
         if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
             StopBeating();
         else
-            StartBeating();
+           StartBeating();
 
+    }
+
+
+    public void StopBeating()
+    {
+        //    CancelInvoke(METHODNAME_BEAT);
+        //do nothing, these days, actually.
     }
 
 
     public void StartBeating()
 	{
-        CancelInvoke(METHODNAME_BEAT);
-        InvokeRepeating(METHODNAME_BEAT,0, BEAT_INTERVAL_SECONDS);
-        beatCounter = HOUSEKEEPING_CYCLE_BEATS;	// Force immediate housekeeping check on resume - CP
-	} 
+        //CancelInvoke(METHODNAME_BEAT);
+        //InvokeRepeating(METHODNAME_BEAT,0, BEAT_INTERVAL_SECONDS);
+        beatCounter = HOUSEKEEPING_CYCLE_BEATS; // Force immediate housekeeping check on resume - CP
 
-    public void StopBeating()
-    {
-        CancelInvoke(METHODNAME_BEAT);
-    }
+    } 
+
     
-    public void Beat()
+    public void Beat(float beatInterval)
     {
-        float beatInterval;
-        // Moved this outside AdvanceTime so that the interval parameter is respected (and I can call it with 0 reliably) - CP
-        if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Fast)
-			beatInterval = BEAT_INTERVAL_SECONDS * 3;
-        else
-            beatInterval = BEAT_INTERVAL_SECONDS;
-        
-
-        AdvanceTime(beatInterval);
         beatCounter++;
 
+
+        DetermineOutstandingSlots(beatInterval);
+        DecayStacksOnTable(beatInterval);
+        DecayStacksInResults(beatInterval);
+        
         if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
         {
             beatCounter = 0;
-
-            outstandingSlotsToFill = Registry.Get<TabletopManager>()
-                .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
+            TryToFillOutstandingSlots();
         }
+    }
+
+    public void DecayStacksOnTable(float beatInterval)
+    {
+        var tabletopManager = Registry.Get<TabletopManager>();
+
+        tabletopManager.DecayStacksOnTable(beatInterval);
+
+    }
+
+    public void DecayStacksInResults(float beatInterval)
+    {
+        var tabletopManager = Registry.Get<TabletopManager>();
+
+        tabletopManager.DecayStacksInResults(beatInterval);
+
+    }
+
+    private void DetermineOutstandingSlots(float beatInterval)
+    {
+        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
+
+        foreach (var sc in situationControllers)
+        {
+            HeartbeatResponse response = sc.ExecuteHeartbeat(beatInterval);
+
+            foreach (var r in response.SlotsToFill)
+            {
+                if (!OutstandingSlotAlreadySaved(r))
+                    outstandingSlotsToFill.Add(r);
+            }
+        }
+    }
+
+    private void TryToFillOutstandingSlots()
+    {
+        outstandingSlotsToFill = Registry.Get<TabletopManager>()
+            .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
     }
 
 
@@ -85,26 +144,6 @@ public class Heart : MonoBehaviour
         await saveTask;
     }
 
-    public void AdvanceTime(float intervalThisBeat)
-    {
-        //foreach existing active recipe window: run beat there
-        //advance timer
-        var tabletopManager = Registry.Get<TabletopManager>();
-        var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
-
-        foreach (var sc in situationControllers)
-        {
-            HeartbeatResponse response = sc.ExecuteHeartbeat(intervalThisBeat);
-
-            foreach (var r in response.SlotsToFill) {
-                if (!OutstandingSlotAlreadySaved(r))
-                    outstandingSlotsToFill.Add(r);
-            }
-        }
-
-        tabletopManager.DecayStacksOnTable(intervalThisBeat);
-        tabletopManager.DecayStacksInResults(intervalThisBeat);
-    }
 
     bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {
         foreach (var item in outstandingSlotsToFill)

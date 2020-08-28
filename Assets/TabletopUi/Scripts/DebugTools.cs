@@ -386,7 +386,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void FastForward(float interval)
     {
-            heart.AdvanceTime(interval);
+            heart.FastForward(interval);
     }
 
     void UpdateCompendiumContent()

@@ -158,8 +158,6 @@ namespace Assets.CS.TabletopUI {
             _intermittentAnimatableController.CheckForCardAnimations();
 
 
-            _heart.AdvanceTime(
-                0.0f); // If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
 
 
             // Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP

@@ -184,7 +184,6 @@ namespace Assets.CS.TabletopUI {
             
             SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
 
-			_heart.AdvanceTime( 0.0f );	// Force a refresh of desktop without actually advancing time, so that new timer will appear on verb token - CP
         }
 
         // Results State
