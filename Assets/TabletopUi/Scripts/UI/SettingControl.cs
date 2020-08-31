@@ -31,13 +31,20 @@ namespace Assets.TabletopUi.Scripts.UI
             Slider.maxValue = boundSetting.MaxValue;
             gameObject.name = "SettingControl_" + boundSetting.Id;
             Slider.SetValueWithoutNotify(boundSetting.DefaultValue);
-            //  Slider.value = setting.DefaultValue;
-            //Slider = setting.DefaultValue;
+
+            SetValueLabel(boundSetting.DefaultValue);
         }
 
         public void OnValueChanged(float newValue)
         {
-            NoonUtility.Log(newValue);
+            SoundManager.PlaySfx("UISliderMove");
+            SetValueLabel(newValue);
+        }
+
+        private void SetValueLabel(float forValue)
+        {
+            boundSetting.ValueLabels.TryGetValue(forValue.ToString(), out var matchingValueLabelString);
+            SliderValueLabel.text = matchingValueLabelString;
         }
     }
 }
