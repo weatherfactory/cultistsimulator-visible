@@ -11,7 +11,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("verbs")]
-    public class BasicVerb: AbstractEntity<BasicVerb>,IVerb, IEntityWithId
+    public class BasicVerb: AbstractEntity<BasicVerb>,IVerb
     {
 
         [FucineValue(DefaultValue = ".", Localise = true)]

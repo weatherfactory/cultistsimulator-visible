@@ -13,7 +13,7 @@ using Assets.Core.Interfaces;
 namespace Assets.Core.Entities
 {
     [FucineImportable("recipes")]
-    public class Recipe : AbstractEntity<Recipe>, IEntityWithId
+    public class Recipe : AbstractEntity<Recipe>
     {
 
         [FucineValue("x")]

@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
@@ -17,30 +19,51 @@ public class Config
 
     public string CultureId { get; set; }
 
+    private Dictionary<string, string> ConfigValues;
+
+
+    /// <summary>
+    /// returns an emmpty string if the value doeesn't exist, or is '0', or 'false' or an empty string
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public string GetConfigValue(string key)
+    {
+        ConfigValues.TryGetValue(key, out string value);
+
+        if (string.IsNullOrEmpty(value) || value == "0" || value == "false" )
+            value = string.Empty;
+        return value;
+    }
+
 
     public void ReadFromIniFile()
     {
-        string hackyConfigLocation = Application.persistentDataPath + "/config.ini";
+        string configLocation = Application.persistentDataPath + "/config.ini";
 
 
-        if (File.Exists(hackyConfigLocation))
+        if (File.Exists(configLocation))
         {
-            string contents = File.ReadAllText(hackyConfigLocation);
 
-            CultureId = GetStartingCultureId(contents);
+            ConfigValues=PopulateConfigValues(configLocation);
 
-            if (contents.Contains("skiplogo=1"))
+
+            CultureId = GetStartingCultureId(GetConfigValue("culture"));
+
+            if (GetConfigValue("skiplogo")!=String.Empty)
             {
                 skiplogo = true;
             }
 
-            if (contents.Contains("verbosity=10")) //yeah I know. Sorry future me
+            if (GetConfigValue("verbosity") == String.Empty)
+                verbosity = (int)VerbosityLevel.Significants;
+            else
             {
-                verbosity = 10;
-                NoonUtility.CurrentVerbosity = 10;
+                int.TryParse(GetConfigValue("verbosity"), out verbosity);
+                NoonUtility.CurrentVerbosity = verbosity;
             }
 
-            if (contents.Contains("knock=1"))
+            if (GetConfigValue("knock")!=String.Empty)
             {
                 knock = true;
             }
@@ -50,24 +73,49 @@ public class Config
         else
         {
 
-            File.WriteAllText(hackyConfigLocation, "skiplogo=0");
+            File.WriteAllText(configLocation, "skiplogo=0");
         }
 
     }
 
+    private Dictionary<string,string> PopulateConfigValues(string hackyConfigLocation)
+    {
+        Dictionary<string, string> dictToPopulate=new Dictionary<string, string>();
+        var lines = File.ReadLines(hackyConfigLocation);
 
-    private string GetStartingCultureId(string withContents)
+        foreach (var line in lines)
+        {
+            if (line.StartsWith("//"))
+                continue;
+
+            try
+            {
+                var splitLine = line.Split('=');
+                dictToPopulate.Add(splitLine[0], splitLine[1]);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Couldn't read config line {line}: {e.Message}", 2);
+            }
+        }
+
+
+        return dictToPopulate;
+    }
+
+
+    private string GetStartingCultureId(string cultureValue)
     {
         //a culture set in config.ini overrides everything
-        if (withContents.Contains("lang=en"))
+        if (cultureValue.Contains("lang=en"))
         {
             return "en";
         }
-        else if (withContents.Contains("lang=ru"))
+        else if (cultureValue.Contains("lang=ru"))
         {
             return "ru";
         }
-        else if (withContents.Contains("lang=zh"))
+        else if (cultureValue.Contains("lang=zh"))
         {
             return "zh-hans";
         }
