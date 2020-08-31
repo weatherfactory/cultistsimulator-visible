@@ -44,7 +44,10 @@ namespace Assets.TabletopUi.Scripts.UI
         private void SetValueLabel(float forValue)
         {
             boundSetting.ValueLabels.TryGetValue(forValue.ToString(), out var matchingValueLabelString);
-            SliderValueLabel.text = matchingValueLabelString;
+            if (!string.IsNullOrEmpty(matchingValueLabelString))
+                SliderValueLabel.text = matchingValueLabelString;
+            else
+                SliderValueLabel.text = forValue.ToString();
         }
     }
 }

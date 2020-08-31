@@ -21,6 +21,9 @@ namespace Assets.Core.Entities
         public string Hint { get; set; }
 
         [FucineValue]
+        public string HintLocId { get; set; }
+
+        [FucineValue]
         public int MinValue { get; set; }
             
         [FucineValue]

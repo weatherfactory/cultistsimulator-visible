@@ -1,7 +1,7 @@
 ﻿{
     "settings": [
 	    {
-		    "id": "volume.music",
+		    "id": "MusicVolume",
 		    "tab": "",
 		    "hint": "Music Volume",
 			"minvalue": 0,
@@ -20,6 +20,91 @@
 "8": "80%",
 "9": "90%",
 "10": "100%"
+
+		    }
+
+	    },
+
+
+	    {
+		    "id": "SoundVolume",
+		    "tab": "",
+		    "hint": "Sound Volume",
+		    "minvalue": 0,
+		    "maxvalue": 10,
+		    "defaultvalue": 7,
+		    "valuelabels": 
+		    {
+			    "0": "0%",
+			    "1": "10%",
+			    "2": "20%",
+			    "3": "30%",
+			    "4": "40%",
+			    "5": "50%",
+			    "6": "60%",
+			    "7": "70%",
+			    "8": "80%",
+			    "9": "90%",
+			    "10": "100%"
+		    }
+
+	    },
+
+	    {
+		    "id": "NotificationTime",
+		    "tab": "",
+		    "hint": "Info Window Duration",
+		    "minvalue": -3,
+		    "maxvalue": 2,
+		    "defaultvalue": 0,
+		    "valuelabels": 
+		    {
+		    }
+
+	    },
+
+	    {
+		    "id": "ScreenCanvasSize",
+		    "tab": "",
+		    "hint": "UI Scaling",
+		    "minvalue": 3,
+		    "maxvalue": 5,
+		    "defaultvalue": 4,
+		    "valuelabels": 
+		    {
+				"3": "75%",
+				"4": "100%",
+				"5": "125%"
+		    }
+
+	    },
+
+	    {
+		    "id": "AutosaveInterval",
+		    "tab": "",
+		    "hint": "Autosave Interval",
+		    "minvalue": 1,
+		    "maxvalue":10 ,
+		    "defaultvalue": 4,
+		    "valuelabels": 
+		    {
+		    }
+
+	    },
+
+	    {
+		    "id": "GridSnapSize",
+		    "tab": "",
+		    "hint": "Grid Snap Size",
+		    "minvalue": 0,
+		    "maxvalue": 3,
+		    "defaultvalue": 0,
+		    "valuelabels": 
+		    {
+				"0": "Off",
+				"1": "1 Card",
+				"2": "½ Card",
+				"3": "¼ Card",
 
 		    }
 

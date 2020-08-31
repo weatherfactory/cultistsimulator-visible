@@ -23,7 +23,7 @@ public class Config
 
 
     /// <summary>
-    /// returns an emmpty string if the value doeesn't exist, or is '0', or 'false' or an empty string
+    /// returns an empty string if the value doeesn't exist, or is '0', or 'false' or an empty string
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
@@ -162,80 +162,3 @@ public class Config
     }
 
 }
-
-
-
-    //public class OldConfig
-    //{
-    //    public bool skiplogo = false;
-    //    public int verbosity = 0;
-    //    public bool knock = false;
-    //    public string culture;
-
-    //    // simple singleton declaration
-    //    private static OldConfig _instance;
-
-    //    public static OldConfig Instance
-    //    {
-    //        get
-    //        {
-    //            if (_instance == null)
-    //            {
-    //                _instance = new OldConfig();
-    //                _instance.Read();
-    //            }
-
-    //            return _instance;
-    //        }
-    //    }
-
-    //    // Use this for initialization
-    //    public void Read()
-    //    {
-    //        string hackyConfigLocation = Application.persistentDataPath + "/config.ini";
-
-    //        if (File.Exists(hackyConfigLocation))
-    //        {
-    //            string contents = File.ReadAllText(hackyConfigLocation);
-    //            if (contents.Contains("skiplogo=1"))
-    //            {
-    //                skiplogo = true;
-    //            }
-
-    //            if (contents.Contains("verbosity=10")) //yeah I know. Sorry future me
-    //            {
-    //                verbosity = 10;
-    //                NoonUtility.CurrentVerbosity = 10;
-    //            }
-
-    //            if (contents.Contains("knock=1"))
-    //            {
-    //                knock = true;
-    //            }
-
-    //            if (contents.Contains("lang=en"))
-    //            {
-    //                culture = "en";
-    //            }
-    //            else if (contents.Contains("lang=ru"))
-    //            {
-    //                culture = "ru";
-    //            }
-    //            else if (contents.Contains("lang=zh"))
-    //            {
-    //                culture = "zh-hans";
-    //            }
-    //            else
-    //            {
-    //                culture = null;
-    //            }
-    //        }
-    //        else
-    //        {
-
-    //            File.WriteAllText(hackyConfigLocation, "skiplogo=0");
-    //        }
-    //    }
-
-//    }
-//}
