@@ -26,6 +26,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;
 		public DropZoneToken DropZoneToken = null;	// Bit of a hack - selection is done by type but I wanted DropZone to be a customised ElementStackToken
+        
 
         [Header("Token Subscribers")]
         [SerializeField] TabletopManager TabletopManager = null;

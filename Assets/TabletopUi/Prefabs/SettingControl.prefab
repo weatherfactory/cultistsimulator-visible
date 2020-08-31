@@ -164,9 +164,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
-        m_MethodName: SetResolutionDeferred
+      - m_Target: {fileID: 813410713}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.UI.SettingControl, Assembly-CSharp
+        m_MethodName: OnValueChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -210,7 +210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -332.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -60, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6175045039480578937
@@ -678,6 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6175045041045041248}
   - component: {fileID: 6175045041045041249}
+  - component: {fileID: 813410713}
   m_Layer: 5
   m_Name: SettingControl
   m_TagString: SystemSetting
@@ -727,3 +728,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &813410713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175045041045041255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc68cf15494afc48b4b7bbd111f9275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SliderHint: {fileID: 6175045039480578936}
+  Slider: {fileID: 6175045039325754615}
+  SliderValueLabel: {fileID: 6175045040246828070}

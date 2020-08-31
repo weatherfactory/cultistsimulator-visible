@@ -22,17 +22,19 @@ namespace Assets.Core.Entities
 
         [FucineValue]
         public int MinValue { get; set; }
-            [FucineValue]
-
+            
+        [FucineValue]
         public int MaxValue { get; set; }
+
+        [FucineValue]
+        public int DefaultValue { get; set; }
 
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
-            NoonUtility.Log("!");
-           //do nowt
+            //
         }
 
 

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.Core.Fucine;
 using Assets.Core.Interfaces;
 using Noon;
@@ -17,6 +18,7 @@ using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.UI;
 using UnityEngine.Analytics;
 
 public class OptionsPanel : MonoBehaviour {
@@ -24,6 +26,7 @@ public class OptionsPanel : MonoBehaviour {
 
 
 	[SerializeField] private GameObject windowGO;
+    [SerializeField] private GameObject SettingControlPrefab;
 
     [Header("Controls")]
     [SerializeField] private Slider musicSlider;
@@ -137,21 +140,33 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void Start()
-	{
-	    windowGO.SetActive(true); //so we can use tags. SO HACKY
+    {
+        var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
-        GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
-	    SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
+
+        foreach (var setting in settings)
+        {
+            var settingControl = Instantiate(SettingControlPrefab,gameObject.transform).GetComponent<SettingControl>();
+            settingControl.Initialise(setting);
+        }
+
+
+
+
+      //  windowGO.SetActive(true); //so we can use tags. SO HACKY
+
+  //      GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
+	 //   SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
       
 
-	    foreach(var c in GameSettingsControls)
-	        c.SetActive(true);
+	 //   foreach(var c in GameSettingsControls)
+	 //       c.SetActive(true);
 
-	    foreach(var c in SystemSettingsControls)
-	        c.SetActive(false);
+	 //   foreach(var c in SystemSettingsControls)
+	 //       c.SetActive(false);
         
 
-		windowGO.SetActive(false);
+		//windowGO.SetActive(false);
 
 
 
