@@ -94,17 +94,6 @@ public class OptionsPanel : MonoBehaviour {
 	private CanvasScaleManager screenCanvasScaler;
 
 
-    SpeedControlUI _speedControlUi;
-
-
-    private const string MUSICVOLUME="MusicVolume";
-    private const string SOUNDVOLUME = "SoundVolume";
-    private const string NOTIFICATIONTIME = "NotificationTime";
-	private const string SCREENCANVASSIZE = "ScreenCanvasSize";
-    private const string AUTOSAVEINTERVAL = "AutosaveInterval";
-    private const string GRIDSNAPSIZE = "GridSnapSize";
-
-    
     private bool _initialised = false;
 
     private List<GameObject> GameSettingsControls;
@@ -220,19 +209,19 @@ public class OptionsPanel : MonoBehaviour {
 	    float value;
 
 
-        if (PlayerPrefs.HasKey(MUSICVOLUME))
-            value = PlayerPrefs.GetFloat(MUSICVOLUME);
-        else
-            value = 10f;
+     //   if (PlayerPrefs.HasKey(NoonConstants.MUSICVOLUME))
+     //       value = PlayerPrefs.GetFloat(NoonConstants.MUSICVOLUME);
+     //   else
+     //       value = 10f;
 
-        SetMusicVolume(value); // this does nothing, since we're disabled but updates the value hint
-        SetMusicVolumeInternal(value);
-        musicSlider.value = value;
+     //   //SetMusicVolume(value); // this does nothing, since we're disabled but updates the value hint
+     ////   SetMusicVolumeInternal(value);
+     //   musicSlider.value = value;
 
         // Loading Sound / Setting default
 
-        if (PlayerPrefs.HasKey(SOUNDVOLUME))
-            value = PlayerPrefs.GetFloat(SOUNDVOLUME);
+        if (PlayerPrefs.HasKey(NoonConstants.SOUNDVOLUME))
+            value = PlayerPrefs.GetFloat(NoonConstants.SOUNDVOLUME);
         else
             value = 10f;
 
@@ -242,8 +231,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Timer / Setting default
 
-        if (PlayerPrefs.HasKey(NOTIFICATIONTIME))
-            value = PlayerPrefs.GetFloat(NOTIFICATIONTIME);
+        if (PlayerPrefs.HasKey(NoonConstants.NOTIFICATIONTIME))
+            value = PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME);
         else
             value = 10f;	// Default to maximum (now 30s)
 
@@ -253,8 +242,8 @@ public class OptionsPanel : MonoBehaviour {
 
 		// Loading Timer / Setting default
 
-		if (PlayerPrefs.HasKey(SCREENCANVASSIZE))
-			value = PlayerPrefs.GetFloat(SCREENCANVASSIZE);
+		if (PlayerPrefs.HasKey(NoonConstants.SCREENCANVASSIZE))
+			value = PlayerPrefs.GetFloat(NoonConstants.SCREENCANVASSIZE);
 		else
 			value = 1f; // Set default scale to 100%
 
@@ -264,8 +253,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Autosave interval default
 
-        if (PlayerPrefs.HasKey(AUTOSAVEINTERVAL))
-            value = PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+        if (PlayerPrefs.HasKey(NoonConstants.AUTOSAVEINTERVAL))
+            value = PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
         else
             value = 5f;
 
@@ -274,8 +263,8 @@ public class OptionsPanel : MonoBehaviour {
         autosaveSlider.value = value;
 
         // Loading Grid Snap Size Slider
-        if (PlayerPrefs.HasKey(GRIDSNAPSIZE))
-            value = PlayerPrefs.GetFloat(GRIDSNAPSIZE);
+        if (PlayerPrefs.HasKey(NoonConstants.GRIDSNAPSIZE))
+            value = PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE);
         else
             value = 1f;
 
@@ -450,15 +439,15 @@ public class OptionsPanel : MonoBehaviour {
 
     // public button events
 
-    public void SetMusicVolume(float volume) {
-        musicSliderValue.text = volume * 10 + "%";
+  //  public void SetMusicVolume(float volume) {
+  //      musicSliderValue.text = volume * 10 + "%";
 
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
+  //      if (gameObject.activeInHierarchy == false)
+  //          return; // don't update anything if we're not visible.
 
-        SetMusicVolumeInternal(volume);
-		SoundManager.PlaySfx("UISliderMove");
-    }
+  //      SetMusicVolumeInternal(volume);
+		//SoundManager.PlaySfx("UISliderMove");
+  //  }
 
     public void SetSoundVolume(float volume) {
         soundSliderValue.text = volume * 10 + "%";
@@ -595,11 +584,11 @@ public class OptionsPanel : MonoBehaviour {
     {
         if (!_initialised)
             return;
-        int mins = (int) PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+        int mins = (int) PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
 
 
         // Inspect time
-        inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NOTIFICATIONTIME)) +
+        inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME)) +
                                          Registry.Get<ILanguageManager>().Get("UI_SECONDS_POSTFIX");
 
         // Autosave
@@ -607,7 +596,7 @@ public class OptionsPanel : MonoBehaviour {
         autosaveSliderValue.text = mins + Registry.Get<ILanguageManager>().Get("UI_MINUTES_POSTFIX");
 
         // Snap grid
-        int snap = Mathf.RoundToInt(PlayerPrefs.GetFloat(GRIDSNAPSIZE));
+        int snap = Mathf.RoundToInt(PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE));
         switch (snap)
         {
             default:
@@ -659,18 +648,18 @@ public class OptionsPanel : MonoBehaviour {
 
     // INTERNAL Setters
 
-    void SetMusicVolumeInternal(float volume) {
-        if (backgroundMusic == null)
-            return;
+    //void SetMusicVolumeInternal(float volume) {
+    //    if (backgroundMusic == null)
+    //        return;
 
-        backgroundMusic.SetVolume(GetClampedVol(volume) * musicVolMax);
-        PlayerPrefs.SetFloat(MUSICVOLUME, volume);
+    //    backgroundMusic.SetVolume(GetClampedVol(volume) * musicVolMax);
+    //    PlayerPrefs.SetFloat(NoonConstants.MUSICVOLUME, volume);
 
-        if (volume == 0f && backgroundMusic.GetMute() == false)
-            backgroundMusic.SetMute(true);
-        else if (volume > 0f && backgroundMusic.GetMute())
-            backgroundMusic.SetMute(false);
-    }
+    //    if (volume == 0f && backgroundMusic.GetMute() == false)
+    //        backgroundMusic.SetMute(true);
+    //    else if (volume > 0f && backgroundMusic.GetMute())
+    //        backgroundMusic.SetMute(false);
+    //}
 
     void SetSoundVolumeInternal(float volume) {
         if (SoundManager.Instance == null)
@@ -679,7 +668,7 @@ public class OptionsPanel : MonoBehaviour {
         float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
 
         audioMixer.SetFloat("masterVol", dbVol);
-        PlayerPrefs.SetFloat(SOUNDVOLUME, volume);
+        PlayerPrefs.SetFloat(NoonConstants.SOUNDVOLUME, volume);
 
         if (volume == 0f && SoundManager.Instance.IsOn())
             SoundManager.Instance.SetVolume(0f);
@@ -696,7 +685,7 @@ public class OptionsPanel : MonoBehaviour {
 	void SetInspectionWindowTimeInternal(float value) {
 		// value ranges from -4 to 1
 		float timer = GetInspectionTimeForValue(value);
-		PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
+		PlayerPrefs.SetFloat(NoonConstants.NOTIFICATIONTIME, value);
 
 		if (!IsInGame())
 			return;
@@ -718,7 +707,7 @@ public class OptionsPanel : MonoBehaviour {
 		// value ranges from 0.5 to 2
 		float scale = GetCanvasScaleForValue(value);
 		scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
-		PlayerPrefs.SetFloat(SCREENCANVASSIZE, value);
+		PlayerPrefs.SetFloat(NoonConstants.SCREENCANVASSIZE, value);
 
 		if (!IsInGame())
 			return;
@@ -735,7 +724,7 @@ public class OptionsPanel : MonoBehaviour {
     void SetAutosaveIntervalInternal(float value)
 	{
         // value ranges from 1 to 10 in mins
-        PlayerPrefs.SetFloat(AUTOSAVEINTERVAL, value);
+        PlayerPrefs.SetFloat(NoonConstants.AUTOSAVEINTERVAL, value);
 
 		if (!IsInGame())
 			return;
@@ -747,7 +736,7 @@ public class OptionsPanel : MonoBehaviour {
     void SetSnapGridInternal(float value)
 	{
         // value ranges from 0 to 10
-        PlayerPrefs.SetFloat(GRIDSNAPSIZE, value);
+        PlayerPrefs.SetFloat(NoonConstants.GRIDSNAPSIZE, value);
 
 		if (!IsInGame())
 			return;

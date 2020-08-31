@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,6 +35,13 @@ namespace Assets.TabletopUi.Scripts.Services
         public bool Successful { get; set; }
         public string Message { get; set; }
         
+    }
+
+    public class ChangeSettingArgs
+    {
+        public string Key { get; set; }
+        public float Value { get; set; }
+
     }
 
     public class ContentUpdatedArgs
@@ -70,6 +78,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
+    public class SettingChangedEvent: UnityEvent<ChangeSettingArgs>
+    {}
+
 
     public class Concursum
     {
@@ -81,6 +92,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public ModOperationEvent ModOperationEvent=new ModOperationEvent();
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
         public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
+        public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
         private Config _config;
 
@@ -110,7 +122,7 @@ namespace Assets.TabletopUi.Scripts.Services
             return _config.verbosity;
         }
 
-        public void SupplyConfig(Config config)
+        public void InitialiseWithConfig(Config config)
         {
             _config = config;
         }
@@ -134,6 +146,12 @@ namespace Assets.TabletopUi.Scripts.Services
         public void ModOperation(ModOperationArgs args)
         {
             ModOperationEvent.Invoke(args);
+        }
+
+        public void ChangeSetting(ChangeSettingArgs args)
+        {
+            _config.PersistSettingValue(args);
+            SettingChangedEvent.Invoke(args);
         }
 
 

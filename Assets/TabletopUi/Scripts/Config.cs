@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +33,7 @@ public class Config
     {
         ConfigValues.TryGetValue(key, out string value);
 
-        if (string.IsNullOrEmpty(value) || value == "0" || value == "false" )
+        if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
             value = string.Empty;
         return value;
     }
@@ -45,25 +47,25 @@ public class Config
         if (File.Exists(configLocation))
         {
 
-            ConfigValues=PopulateConfigValues(configLocation);
+            ConfigValues = PopulateConfigValues(configLocation);
 
 
             CultureId = GetStartingCultureId(GetConfigValue("culture"));
 
-            if (GetConfigValue("skiplogo")!=String.Empty)
+            if (GetConfigValue("skiplogo") != String.Empty)
             {
                 skiplogo = true;
             }
 
             if (GetConfigValue("verbosity") == String.Empty)
-                verbosity = (int)VerbosityLevel.Significants;
+                verbosity = (int) VerbosityLevel.Significants;
             else
             {
                 int.TryParse(GetConfigValue("verbosity"), out verbosity);
                 NoonUtility.CurrentVerbosity = verbosity;
             }
 
-            if (GetConfigValue("knock")!=String.Empty)
+            if (GetConfigValue("knock") != String.Empty)
             {
                 knock = true;
             }
@@ -76,6 +78,19 @@ public class Config
             File.WriteAllText(configLocation, "skiplogo=0");
         }
 
+    }
+
+    public void PersistSettingValue(ChangeSettingArgs args)
+    {
+        PlayerPrefs.SetFloat(args.Key,args.Value);
+    }
+
+    public float GetPersistedSettingValue(Setting setting)
+    {
+        if (PlayerPrefs.HasKey(setting.Id))
+            return PlayerPrefs.GetFloat(setting.Id);
+
+        return setting.DefaultValue;
     }
 
     private Dictionary<string,string> PopulateConfigValues(string hackyConfigLocation)

@@ -64,6 +64,12 @@ namespace Noon
         public const string A_ENDING_MAJORLANTERNVICTORY = "A_ENDING_MAJORLANTERNVICTORY";
 
         public const string A_ENDING_MAJORVICTORYGENERIC = "A_MANSUS_TRICUSPIDGATE";
+        public const string MUSICVOLUME="MusicVolume";
+        public const string SOUNDVOLUME = "SoundVolume";
+        public const string NOTIFICATIONTIME = "NotificationTime";
+        public const string SCREENCANVASSIZE = "ScreenCanvasSize";
+        public const string AUTOSAVEINTERVAL = "AutosaveInterval";
+        public const string GRIDSNAPSIZE = "GridSnapSize";
     }
 
     public enum VerbosityLevel

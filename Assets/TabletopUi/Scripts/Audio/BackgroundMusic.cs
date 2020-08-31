@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
@@ -18,6 +21,10 @@ public class BackgroundMusic : MonoBehaviour {
     private System.Random random;
     private AudioClip currentClip;
 
+    [Header("Settings")]
+    [Tooltip("Music volume goes from 0 to 1")]
+    public float musicVolMax = 0.25f;
+
     // Use this for initialization
     void Awake() {
         backgroundMusic = ResourcesManager.GetBackgroundMusic();
@@ -26,9 +33,30 @@ public class BackgroundMusic : MonoBehaviour {
         random = new System.Random();
     }
 
-    void Start() {
+    void Start()
+    {
+        var musicVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.MUSICVOLUME);
+        if (musicVolumeSetting == null)
+        {
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
+            return;
+        }
+
+        float startingVolume = Registry.Get<Config>().GetPersistedSettingValue(musicVolumeSetting);
+        
+        SetVolume(startingVolume);
+
+        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
+        
         PlayNextClip();
     }
+
+    public void OnSettingChangedEvent(ChangeSettingArgs args)
+    {
+        if (args.Key == NoonConstants.MUSICVOLUME)
+            SetVolume(args.Value);
+    }
+
 
     void Update() {
         if (!audioSource.isPlaying) {
@@ -75,13 +103,28 @@ public class BackgroundMusic : MonoBehaviour {
 
     // Options Control
 
+
+    private void SetVolume(float volume)
+    {
+
+        audioSource.volume = GetClampedVol(volume) * musicVolMax;
+
+        if (volume == 0f && GetMute() == false)
+            SetMute(true);
+        else if (volume > 0f && GetMute())
+            SetMute(false);
+    }
+
+    private float GetClampedVol(float sliderValue)
+    {
+        return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
+    }
+
     public void SetMute(bool mute) {
         audioSource.mute = mute;
     }
 
-    public void SetVolume(float volume) {
-        audioSource.volume = volume;
-    }
+
 
     public bool GetMute() {
         return audioSource.mute;

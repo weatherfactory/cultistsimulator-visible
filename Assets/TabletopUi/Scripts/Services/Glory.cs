@@ -62,11 +62,13 @@ namespace Assets.TabletopUi.Scripts.Services
             var registryAccess = new Registry();
 
             var config = new Config();
+            registryAccess.Register(new Config());
+
             config.ReadFromIniFile();
 
             registryAccess.Register(new Concursum());
 
-            Registry.Get<Concursum>().SupplyConfig(config);
+            Registry.Get<Concursum>().InitialiseWithConfig(config);
 
 
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -24,21 +26,40 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public void Initialise(Setting settingToBind)
         {
+            if(settingToBind==null)
+            {
+                NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
+                return;
+            }
+
             boundSetting = settingToBind;
 
             SliderHint.text = boundSetting.Hint;
             Slider.minValue = boundSetting.MinValue;
             Slider.maxValue = boundSetting.MaxValue;
             gameObject.name = "SettingControl_" + boundSetting.Id;
-            Slider.SetValueWithoutNotify(boundSetting.DefaultValue);
 
-            SetValueLabel(boundSetting.DefaultValue);
+            float startingValue= Registry.Get<Config>().GetPersistedSettingValue(boundSetting);
+            Slider.SetValueWithoutNotify(startingValue);
+            
+            SetValueLabel(startingValue);
+
+
+
         }
 
         public void OnValueChanged(float newValue)
         {
             SoundManager.PlaySfx("UISliderMove");
             SetValueLabel(newValue);
+
+            ChangeSettingArgs args = new ChangeSettingArgs
+            {
+                Key = boundSetting.Id,
+                Value = newValue
+            };
+
+            Registry.Get<Concursum>().ChangeSetting(args);
         }
 
         private void SetValueLabel(float forValue)
