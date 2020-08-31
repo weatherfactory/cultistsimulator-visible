@@ -4,22 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Fucine;
+using Assets.Core.Fucine.DataImport;
 using Assets.Core.Interfaces;
+using Noon;
 
 namespace Assets.Core.Entities
 {
-    [FucineImportable("configcontrols")]
-    public class ConfigControl : AbstractEntity<ConfigControl>
+    [FucineImportable("settings")]
+    public class Setting : AbstractEntity<Setting>
+        { 
+        
+            [FucineValue]
+        public string Tab { get; set; }
+
+        [FucineValue]
+        public string Hint { get; set; }
+
+        [FucineValue]
+        public int MinValue { get; set; }
+            [FucineValue]
+
+        public int MaxValue { get; set; }
+
+        [FucineDict]
+        public Dictionary<string,string> ValueLabels { get; set; }
+
+        protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
-            public string Tab { get; set; }
-            public string Hint { get; set; }
-            public string HintLocId { get; set; }
-            public float MinValue { get; set; }
-            public float MaxValue { get; set; }
-            protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
-            {
-                throw new NotImplementedException();
-            }
+            NoonUtility.Log("!");
+           //do nowt
+        }
+
+
+        public Setting(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
+        {
+
+        }
         }
 
 
