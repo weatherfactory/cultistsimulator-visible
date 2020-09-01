@@ -751,15 +751,15 @@ namespace Assets.CS.TabletopUI {
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
 
-            if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-            {
-                var allowExploits = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
+
+             var allowExploits = Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.BIRDWORMSLIDER);
                 if (allowExploits > 0)
                 {
+                    Debug.Log("exploits on");
                     if (DraggableToken.itemBeingDragged == stack)
                         return false; // don't pull cards being dragged if Worm is set On}
                 }
-            }
+            
 
             return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
@@ -843,7 +843,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void SetHighlightedElement(string elementId, int quantity = 1)
         {
-	        if (!GetAccessibleCards())
+            if(Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.ACCESSIBLECARDS)<0.5f)
 		        return;
 	        if (elementId == null || elementId == "dropzone")
 	        {

@@ -109,7 +109,37 @@
 		    }
 
 	    },
-	 
+
+		  {
+		    "id": "AllowExploits",
+		    "tab": "",
+		    "hint": "Bird/Worm",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": 1,
+		    "valuelabels": 
+		    {
+				"0": "Order",
+				"1": "Anarchy"	
+		    }
+
+	    },
+
+		
+		  {
+		    "id": "AccessibleCards",
+		    "tab": "",
+		    "hint": "Accessible Card Titles",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": 1,
+		    "valuelabels": 
+		    {
+				"0": "Off",
+				"1": "On"	
+		    }
+
+	 }
     ]
 
 }

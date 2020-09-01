@@ -29,26 +29,13 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject SettingControlPrefab;
 
     [Header("Controls")]
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider soundSlider;
-	[SerializeField] private Slider inspectionTimeSlider;
-	[SerializeField] private Slider screenCanvasSizeSlider;
-    [SerializeField] private Slider autosaveSlider;
-	[SerializeField] private Slider	snapGridSlider;
-    [SerializeField] private Slider birdWormSlider;
     [SerializeField] private Slider contrastSlider;
     [SerializeField] private Slider accessibleCardsSlider;
     [SerializeField] private Slider resolutionSlider;
     [SerializeField] private Slider graphicsLevelSlider;
     [SerializeField] private Slider windowedSlider;
 
-    [SerializeField] private TextMeshProUGUI musicSliderValue;
-    [SerializeField] private TextMeshProUGUI soundSliderValue;
-	[SerializeField] private TextMeshProUGUI inspectionTimeSliderValue;
-	[SerializeField] private TextMeshProUGUI screenCanvasSizeSliderValue;
-    [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
-    [SerializeField] private TextMeshProUGUI snapGridSliderValue;
     [SerializeField] private TextMeshProUGUI contrastSliderValue;
     [SerializeField] private TextMeshProUGUI accessibleCardsSliderValue;
 
@@ -568,33 +555,6 @@ public class OptionsPanel : MonoBehaviour {
             return;
         int mins = (int) PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
 
-
-        // Inspect time
-        //inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME)) +
-        //                                 Registry.Get<ILanguageManager>().Get("UI_SECONDS_POSTFIX");
-
-        // Autosave
-
-        autosaveSliderValue.text = mins + Registry.Get<ILanguageManager>().Get("UI_MINUTES_POSTFIX");
-
-        // Snap grid
-        int snap = Mathf.RoundToInt(PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE));
-        switch (snap)
-        {
-            default:
-            case 0:
-                snapGridSliderValue.text = Registry.Get<ILanguageManager>().Get("UI_SNAP_0");
-                break;
-            case 1:
-                snapGridSliderValue.text = Registry.Get<ILanguageManager>().Get("UI_SNAP_1");
-                break;
-            case 2:
-                snapGridSliderValue.text = Registry.Get<ILanguageManager>().Get("UI_SNAP_2");
-                break;
-            case 3:
-                snapGridSliderValue.text = Registry.Get<ILanguageManager>().Get("UI_SNAP_3");
-                break;
-        }
 
         // Bird/worm
         birdWormSliderValue.text =
