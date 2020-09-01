@@ -29,15 +29,9 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject SettingControlPrefab;
 
     [Header("Controls")]
-    [SerializeField] private Slider contrastSlider;
-    [SerializeField] private Slider accessibleCardsSlider;
     [SerializeField] private Slider resolutionSlider;
     [SerializeField] private Slider graphicsLevelSlider;
     [SerializeField] private Slider windowedSlider;
-
-    [SerializeField] private TextMeshProUGUI birdWormSliderValue;
-    [SerializeField] private TextMeshProUGUI contrastSliderValue;
-    [SerializeField] private TextMeshProUGUI accessibleCardsSliderValue;
 
     [SerializeField] private TextMeshProUGUI resolutionValue;
     [SerializeField] private TextMeshProUGUI graphicsLevelValue;
@@ -417,82 +411,8 @@ public class OptionsPanel : MonoBehaviour {
 	}
 
 
-  //  public void SetSoundVolume(float volume) {
-  //      soundSliderValue.text = volume * 10 + "%";
 
-  //      if (gameObject.activeInHierarchy == false)
-  //          return; // don't update anything if we're not visible.
-
-  //      SetSoundVolumeInternal(volume);
-		//SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
-  //  }
-
- //   public void SetInspectionWindowTime(float timer){
-
- //       if (gameObject.activeInHierarchy == false)
- //           return; // don't update anything if we're not visible.
-
- //       SetInspectionWindowTimeInternal(timer);
-	//	RefreshOptionsText();
-	//	SoundManager.PlaySfx("UISliderMove");
-	//}
-
-	//public void SetCanvasScaleSize(float size) {
- //       if(screenCanvasSizeSliderValue!=null)
-	//	    screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
-
-	//	if (gameObject.activeInHierarchy == false)
-	//		return; // don't update anything if we're not visible.
-
-	//	SoundManager.PlaySfx("UISliderMove");
-	//	SetCanvasScaleSizeInternal(size);
-	//}
-
-  //  public void SetAutosaveInterval(float timer) {
-
-  //      if (gameObject.activeInHierarchy == false)
-  //          return; // don't update anything if we're not visible.
-
-  //      SetAutosaveIntervalInternal(timer);
-		//RefreshOptionsText();
-		//SoundManager.PlaySfx("UISliderMove");
-  //  }
-
-    public void SetBirdWorm(float value)
-	{
-        PlayerPrefs.SetInt(NoonConstants.BIRDWORMSLIDER, (int)value);
-		RefreshOptionsText();
-
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-
-		SoundManager.PlaySfx("UISliderMove");
-    }
-
-    public void SetHighContrast(float value)
-	{
-		PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
-		SetHighContrastInternal(value);
-		RefreshOptionsText();
-
-		if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-
-		SoundManager.PlaySfx("UISliderMove");
-    }
-
-    public void SetAccessibleCards(float value)
-    {
-	    PlayerPrefs.SetFloat(NoonConstants.ACCESSIBLECARDS, value);
-	    TabletopManager.SetAccessibleCards(value > 0.5f);
-	    RefreshOptionsText();
-
-	    if (gameObject.activeInHierarchy == false)
-		    return; // don't update anything if we're not visible.
-
-	    SoundManager.PlaySfx("UISliderMove");
-    }
-
+    
 
     public void SetResolutionDeferred(float value)
     {
@@ -539,16 +459,6 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
- //   public void SetSnapGrid(float value)
-	//{
- //       if (gameObject.activeInHierarchy == false)
- //           return; // don't update anything if we're not visible.
-
-	//	SetSnapGridInternal(value);
-	//	RefreshOptionsText();
-	//	SoundManager.PlaySfx("UISliderMove");
- //   }
-
     public void RefreshOptionsText()
     {
         if (!_initialised)
@@ -556,17 +466,7 @@ public class OptionsPanel : MonoBehaviour {
         int mins = (int) PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
 
 
-        // Bird/worm
-        birdWormSliderValue.text =
-            Registry.Get<ILanguageManager>().Get(PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER) > 0 ? "UI_WORM" : "UI_BIRD");
 
-        // High Contrast
-        contrastSliderValue.text =
-            Registry.Get<ILanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST) > 0.5f ? "UI_ON" : "UI_OFF");
-
-        // Accessible Cards
-        accessibleCardsSliderValue.text =
-            Registry.Get<ILanguageManager>().Get(PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS) > 0.5f ? "UI_ON" : "UI_OFF");
 
         if (!IsInGame())
         {
@@ -590,39 +490,6 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-	//
-
-	//void SetCanvasScaleSizeInternal(float value) {
-	//	// value ranges from 0.5 to 2
-	//	float scale = GetCanvasScaleForValue(value);
-	//	scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
-	//	PlayerPrefs.SetFloat(NoonConstants.SCREENCANVASSIZE, value);
-
-	//	if (!IsInGame())
-	//		return;
- //       if(screenCanvasScaler!=null)
-	//	    screenCanvasScaler.SetTargetScaleFactor(scale);
-	//}
-
-	//float GetCanvasScaleForValue(float value) {
-	//	return value * scaleSliderFactor;
-	//}
-
-	//
-
- //   void SetAutosaveIntervalInternal(float value)
-	//{
- //       // value ranges from 1 to 10 in mins
- //       PlayerPrefs.SetFloat(NoonConstants.AUTOSAVEINTERVAL, value);
-
-	//	if (!IsInGame())
-	//		return;
-
-	//	var tabletopManager = Registry.Get<TabletopManager>();
- //       if(tabletopManager!=null)
-	//	    tabletopManager.SetAutosaveInterval( value );
- //   }
-
  //   void SetSnapGridInternal(float value)
 	//{
  //       // value ranges from 0 to 10
@@ -635,12 +502,6 @@ public class OptionsPanel : MonoBehaviour {
 	//	tabletopManager.SetGridSnapSize( value );
  //   }
 
-    void SetHighContrastInternal(float value)
-	{
-        // value ranges from 0 to 1
-        PlayerPrefs.SetFloat(NoonConstants.HIGHCONTRAST, value);
-		TabletopManager.SetHighContrast( value>0f );
-    }
 
     private string getResolutionDescription(Resolution r)
     {

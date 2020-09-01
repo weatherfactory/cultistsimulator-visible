@@ -116,7 +116,7 @@
 		    "hint": "Bird/Worm",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 1,
+		    "defaultvalue": 0,
 		    "valuelabels": 
 		    {
 				"0": "Order",
@@ -132,7 +132,21 @@
 		    "hint": "Accessible Card Titles",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 1,
+		    "defaultvalue": 0,
+		    "valuelabels": 
+		    {
+				"0": "Off",
+				"1": "On"	
+		    }
+
+	 },
+	 		  {
+		    "id": "HighContrast",
+		    "tab": "",
+		    "hint": "High Contrast Mode",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": 0,
 		    "valuelabels": 
 		    {
 				"0": "Off",

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using UnityEngine.UI; // For accessing high contrast mode
 
 
@@ -98,7 +99,7 @@ public class Babelfish : MonoBehaviour
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            if (TabletopManager.GetHighContrast())
+            if (Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.HIGHCONTRAST)>0.5f)
             {
                 Color light = lm.HighContrastLight;
                 Color dark = lm.HighContrastDark;
