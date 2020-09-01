@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine.Audio;
 
@@ -28,6 +31,11 @@ public class SoundManager : AudioManager {
     // Singleton
     private static SoundManager instance = null;
     public static SoundManager Instance { get { return instance; } }
+
+    [Tooltip("Sound volume uses DB ranges ")]
+    public float soundDbMin = -40f;
+    public float soundDbMax = 10f;
+
 
     [SerializeField]
     AudioMixerGroup mixerTarget;
@@ -62,6 +70,51 @@ public class SoundManager : AudioManager {
             soundsMapped[sound.name] = sound;
         }
 
+    }
+
+    void Start()
+    {
+        var soundVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SOUNDVOLUME);
+
+        if (soundVolumeSetting == null)
+        {
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.SOUNDVOLUME);
+            return;
+        }
+
+        float startingVolume = Registry.Get<Config>().GetPersistedSettingValue(soundVolumeSetting);
+
+
+        SetVolumeInDbRange(startingVolume);
+
+        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
+
+    }
+
+    private void OnSettingChangedEvent(ChangeSettingArgs args)
+    {
+        if (args.Key == NoonConstants.SOUNDVOLUME)
+            SetVolumeInDbRange(args.Value);
+    }
+
+    private void SetVolumeInDbRange(float volume)
+    {
+
+        float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
+
+        mixerTarget.audioMixer.SetFloat("masterVol", dbVol);
+
+        if (volume == 0f && SoundManager.Instance.IsOn())
+            SoundManager.Instance.SetVolume(0f);
+        else if (volume > 0f && SoundManager.Instance.IsOn() == false)
+            SoundManager.Instance.SetVolume(1f);
+
+    }
+
+
+    float GetClampedVol(float sliderValue)
+    {
+        return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
     }
 
     // Delivery of Audio Clips & Sources

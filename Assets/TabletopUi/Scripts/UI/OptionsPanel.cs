@@ -67,9 +67,6 @@ public class OptionsPanel : MonoBehaviour {
     [Tooltip("Music volume goes from 0 to 1")]
     public float musicVolMax = 0.25f;
 
-    [Tooltip("Sound volume uses DB ranges ")]
-    public float soundDbMin = -40f;
-    public float soundDbMax = 10f;
 
     [Tooltip("Timer is baseTimer + notches * timePerNotch, with the second notch from the right being 0")]
     public float baseInfoTimer = 10f;
@@ -220,14 +217,14 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Sound / Setting default
 
-        if (PlayerPrefs.HasKey(NoonConstants.SOUNDVOLUME))
-            value = PlayerPrefs.GetFloat(NoonConstants.SOUNDVOLUME);
-        else
-            value = 10f;
+        //if (PlayerPrefs.HasKey(NoonConstants.SOUNDVOLUME))
+        //    value = PlayerPrefs.GetFloat(NoonConstants.SOUNDVOLUME);
+        //else
+        //    value = 10f;
 
-        SetSoundVolume(value); // this does nothing, since we're disabled but updates the value hint
-        SetSoundVolumeInternal(value);
-        soundSlider.value = value;
+        //SetSoundVolume(value); // this does nothing, since we're disabled but updates the value hint
+        //SetSoundVolumeInternal(value);
+        //soundSlider.value = value;
 
         // Loading Timer / Setting default
 
@@ -437,27 +434,16 @@ public class OptionsPanel : MonoBehaviour {
 		Registry.Get<TabletopManager>().LoadGame(SourceForGameState.DefaultSave);
 	}
 
-    // public button events
 
-  //  public void SetMusicVolume(float volume) {
-  //      musicSliderValue.text = volume * 10 + "%";
+  //  public void SetSoundVolume(float volume) {
+  //      soundSliderValue.text = volume * 10 + "%";
 
   //      if (gameObject.activeInHierarchy == false)
   //          return; // don't update anything if we're not visible.
 
-  //      SetMusicVolumeInternal(volume);
-		//SoundManager.PlaySfx("UISliderMove");
+  //      SetSoundVolumeInternal(volume);
+		//SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
   //  }
-
-    public void SetSoundVolume(float volume) {
-        soundSliderValue.text = volume * 10 + "%";
-
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-
-        SetSoundVolumeInternal(volume);
-		SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
-    }
 
     public void SetInspectionWindowTime(float timer){
 
@@ -661,24 +647,21 @@ public class OptionsPanel : MonoBehaviour {
     //        backgroundMusic.SetMute(false);
     //}
 
-    void SetSoundVolumeInternal(float volume) {
-        if (SoundManager.Instance == null)
-            return;
+    //void SetSoundVolumeInternal(float volume) {
+    //    if (SoundManager.Instance == null)
+    //        return;
 
-        float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
+    //    float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
 
-        audioMixer.SetFloat("masterVol", dbVol);
-        PlayerPrefs.SetFloat(NoonConstants.SOUNDVOLUME, volume);
+    //    audioMixer.SetFloat("masterVol", dbVol);
+    //    PlayerPrefs.SetFloat(NoonConstants.SOUNDVOLUME, volume);
 
-        if (volume == 0f && SoundManager.Instance.IsOn())
-            SoundManager.Instance.SetVolume(0f);
-        else if (volume > 0f && SoundManager.Instance.IsOn() == false)
-            SoundManager.Instance.SetVolume(1f);
-    }
+    //    if (volume == 0f && SoundManager.Instance.IsOn())
+    //        SoundManager.Instance.SetVolume(0f);
+    //    else if (volume > 0f && SoundManager.Instance.IsOn() == false)
+    //        SoundManager.Instance.SetVolume(1f);
+    //}
 
-    float GetClampedVol(float sliderValue) {
-        return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
-    }
 
 	//
 
@@ -711,8 +694,8 @@ public class OptionsPanel : MonoBehaviour {
 
 		if (!IsInGame())
 			return;
-
-		screenCanvasScaler.SetTargetScaleFactor(scale);
+        if(screenCanvasScaler!=null)
+		    screenCanvasScaler.SetTargetScaleFactor(scale);
 	}
 
 	float GetCanvasScaleForValue(float value) {
