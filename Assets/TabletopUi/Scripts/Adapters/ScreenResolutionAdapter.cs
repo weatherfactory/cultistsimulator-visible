@@ -10,5 +10,10 @@ namespace Assets.TabletopUi.Scripts.Services
             throw new System.NotImplementedException();
         }
 
+        protected void SetResolution(Resolution resolution)
+        {
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        }
+
     }
 }

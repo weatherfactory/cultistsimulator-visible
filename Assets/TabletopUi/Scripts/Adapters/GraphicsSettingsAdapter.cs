@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-        public void SetGraphicsLevel(float level)
+        protected void SetGraphicsLevel(float level)
         {
             int levelAsInt = (int) level;
             QualitySettings.SetQualityLevel(levelAsInt);
@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void SetFrameRateForCurrentGraphicsLevel(int level)
+        protected void SetFrameRateForCurrentGraphicsLevel(int level)
         {
             
             if (level > 1)
@@ -54,19 +54,6 @@ namespace Assets.TabletopUi.Scripts.Services
                 Application.targetFrameRate = 30; //ram down the frame rate for v low quality
         }
 
-        public static void SetWindowed(bool windowed)
-        {
-            if (windowed)
 
-                Screen.SetResolution(Screen.width, Screen.height, false);
-            else
-                Screen.SetResolution(Screen.width, Screen.height, true);
-
-        }
-
-        public void SetResolution(Resolution resolution)
-        {
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-        }
     }
 }

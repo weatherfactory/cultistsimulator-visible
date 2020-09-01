@@ -134,125 +134,11 @@ public class OptionsPanel : MonoBehaviour {
             resolutionSlider.value = r;
             SetResolutionDeferred(r);
             
-            //windowedness!
-            float w;
-            if (PlayerPrefs.HasKey(NoonConstants.WINDOWED))
-                w = PlayerPrefs.GetFloat(NoonConstants.WINDOWED);
-            else
-            {
-                w = Screen.fullScreen ? 0f : 1f;
-            }
-
-            SetWindowed(w);
-            windowedSlider.value = w;
-
-            //graphics quality!
-            //float g;
-            //if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
-            //    g = PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
-            //else
-            //    g = 3;
-            
-            //SetGraphicsLevel(g);
-            //graphicsLevelSlider.value = g;
+          
         }
 
 
-        // Loading Music / Setting default
-
-	    float value;
-
-
-     //   if (PlayerPrefs.HasKey(NoonConstants.MUSICVOLUME))
-     //       value = PlayerPrefs.GetFloat(NoonConstants.MUSICVOLUME);
-     //   else
-     //       value = 10f;
-
-     //   //SetMusicVolume(value); // this does nothing, since we're disabled but updates the value hint
-     ////   SetMusicVolumeInternal(value);
-     //   musicSlider.value = value;
-
-        // Loading Sound / Setting default
-
-        //if (PlayerPrefs.HasKey(NoonConstants.SOUNDVOLUME))
-        //    value = PlayerPrefs.GetFloat(NoonConstants.SOUNDVOLUME);
-        //else
-        //    value = 10f;
-
-        //SetSoundVolume(value); // this does nothing, since we're disabled but updates the value hint
-        //SetSoundVolumeInternal(value);
-        //soundSlider.value = value;
-
-        // Loading Timer / Setting default
-
-  //      if (PlayerPrefs.HasKey(NoonConstants.NOTIFICATIONTIME))
-  //          value = PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME);
-  //      else
-  //          value = 10f;	// Default to maximum (now 30s)
-
-  //      SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
-  //      SetInspectionWindowTimeInternal(value);
-		//inspectionTimeSlider.value = value;
-
-		// Loading Timer / Setting default
-
-		//if (PlayerPrefs.HasKey(NoonConstants.SCREENCANVASSIZE))
-		//	value = PlayerPrefs.GetFloat(NoonConstants.SCREENCANVASSIZE);
-		//else
-		//	value = 1f; // Set default scale to 100%
-
-		//SetCanvasScaleSize(value); // this does nothing, since we're disabled but updates the value hint
-		//SetCanvasScaleSizeInternal(value);
-
-		//screenCanvasSizeSlider.value = value;
-
-        // Loading Autosave interval default
-
-  //      if (PlayerPrefs.HasKey(NoonConstants.AUTOSAVEINTERVAL))
-  //          value = PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
-  //      else
-  //          value = 5f;
-
-  //      SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
-  //      SetAutosaveIntervalInternal(value);
-  //      autosaveSlider.value = value;
-
-  //      // Loading Grid Snap Size Slider
-  //      if (PlayerPrefs.HasKey(NoonConstants.GRIDSNAPSIZE))
-  //          value = PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE);
-  //      else
-  //          value = 1f;
-
-  //      SetSnapGrid(value);
-		//SetSnapGridInternal(value);
-  //      snapGridSlider.value = value;
-
-  //      // Loading Bird/Worm Slider
-  //      if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-  //          value = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
-  //      else
-  //          value = 0;
-
-  //      SetBirdWorm(value);
-  //      birdWormSlider.value = value;
-
-
-  //      if (PlayerPrefs.HasKey(NoonConstants.HIGHCONTRAST))
-  //          value = PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST);
-  //      else
-  //          value = 0f;
-
-  //      SetHighContrast(value);
-  //      contrastSlider.value = value;
-        
-        
-  //      if (PlayerPrefs.HasKey(NoonConstants.ACCESSIBLECARDS))
-	 //       value = PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS);
-  //      else
-	 //       value = 0f;
-
-  //      SetAccessibleCards(value);
-  //      accessibleCardsSlider.value = value;
+      
 
 	    _initialised = true;
 	}
@@ -392,8 +278,6 @@ public class OptionsPanel : MonoBehaviour {
         int r = Convert.ToInt32(value);
         PlayerPrefs.SetInt(NoonConstants.RESOLUTION,r );
 
-        RefreshOptionsText();
-
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
         else
@@ -404,60 +288,7 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     
-    public void SetWindowed(float value)
-    {
-        PlayerPrefs.SetFloat(NoonConstants.WINDOWED, value);
 
-        GraphicsSettingsAdapter.SetWindowed(value > 0.5f);
-        RefreshOptionsText();
-
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-
-        SoundManager.PlaySfx("UISliderMove");
-    }
-
-    //public void SetGraphicsLevel(float value)
-    //{
-    //    int g = Convert.ToInt32(value);
-    //    PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
-    //    GraphicsSettingsAdapter.SetGraphicsLevel(g);
-    //    RefreshOptionsText();
-
-    //    if (gameObject.activeInHierarchy == false)
-    //        return; // don't update anything if we're not visible.
-
-    //    SoundManager.PlaySfx("UISliderMove");
-    //}
-
-
-
-    public void RefreshOptionsText()
-    {
-        if (!_initialised)
-            return;
-        int mins = (int) PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
-
-
-
-
-        if (!IsInGame())
-        {
-        
-
-       resolutionValue.text = getResolutionDescription(availableResolutions[PlayerPrefs.GetInt(NoonConstants.RESOLUTION)]);
-	    windowedValue.text = Registry.Get<ILanguageManager>().Get( PlayerPrefs.GetFloat(NoonConstants.WINDOWED) > 0.5f ? "UI_ON" : "UI_OFF");
-	        int graphicsLevel =  PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
-	        switch (graphicsLevel)
-	        {
-	            case 1:		graphicsLevelValue.text = Registry.Get<ILanguageManager>().Get( "GRAPHICS_LEVEL_1" ); break;
-	            case 2:		graphicsLevelValue.text = Registry.Get<ILanguageManager>().Get( "GRAPHICS_LEVEL_2" ); break;
-	            case 3:		graphicsLevelValue.text = Registry.Get<ILanguageManager>().Get( "GRAPHICS_LEVEL_3" ); break;
-	        }
-
-        }
-        
-	}
 
 
 
