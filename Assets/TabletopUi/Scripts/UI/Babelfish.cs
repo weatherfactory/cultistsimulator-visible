@@ -2,12 +2,13 @@
 using TMPro;
 using UnityEngine;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine.UI; // For accessing high contrast mode
 
 
-public class Babelfish : MonoBehaviour
+public class Babelfish : MonoBehaviour,ISettingSubscriber
 {
 	[Tooltip("Strings.csv label\n(if null then TextMeshPro string is left alone)")]
     [SerializeField] private string						locLabel;
@@ -27,7 +28,7 @@ public class Babelfish : MonoBehaviour
 	private Color		defaultColor;
 	private FontStyles	defaultStyle;
     protected TMP_Text	tmpText;       // text mesh pro text object.
-	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
+	private bool HighContrastEnabledInGlobalSettings=false;
 
     private void OnEnable()
     {
@@ -45,6 +46,12 @@ public class Babelfish : MonoBehaviour
         var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.AddListener(OnCultureChanged);
 
+        var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
+        if (highContrastSetting != null)
+            highContrastSetting.AddSubscriber(this);
+        else
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
+
     }
 
     private void OnDisable()
@@ -53,6 +60,11 @@ public class Babelfish : MonoBehaviour
         var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.RemoveListener(OnCultureChanged);
 
+        var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
+        if (highContrastSetting != null)
+            highContrastSetting.RemoveSubscriber(this);
+        else
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
     }
 
 
@@ -95,11 +107,31 @@ public class Babelfish : MonoBehaviour
             tmpText.text = lm.Get(locLabel);
         }
 
+        SetFontStyle(culture, lm);
+    }
+
+    public void UpdateValueFromSetting(float newValue)
+    {
+        HighContrastEnabledInGlobalSettings = (newValue > 0.5f);
+        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+        SetValuesFromCulture(currentCulture);
+
+        ILanguageManager lm = Registry.Get<ILanguageManager>();
+
+        if (lm == null)
+            lm = new NullLanguageManager();
+
+        SetFontStyle(currentCulture,lm);
+    }
+
+    private void SetFontStyle(Culture culture, ILanguageManager lm)
+    {
         if (highContrastEnabled)
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            if (Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.HIGHCONTRAST)>0.5f)
+            if (Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.HIGHCONTRAST) > 0.5f)
             {
                 Color light = lm.HighContrastLight;
                 Color dark = lm.HighContrastDark;
@@ -128,11 +160,10 @@ public class Babelfish : MonoBehaviour
         {
             tmpText.fontStyle |= FontStyles.Bold;
         }
-
     }
 
 
-	public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
+    public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
 	{
 		locLabel = label;
 	}
@@ -141,4 +172,6 @@ public class Babelfish : MonoBehaviour
     {
      SetValuesFromCulture(args.NewCulture);
     }
+
+
 }
