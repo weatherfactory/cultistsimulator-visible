@@ -68,9 +68,7 @@ public class OptionsPanel : MonoBehaviour {
     public float musicVolMax = 0.25f;
 
 
-    [Tooltip("Timer is baseTimer + notches * timePerNotch, with the second notch from the right being 0")]
-    public float baseInfoTimer = 10f;
-    public float baseTimePerNotch = 2f;
+
 
 	public float scaleSliderFactor = 0.5f;
 
@@ -228,73 +226,74 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Timer / Setting default
 
-        if (PlayerPrefs.HasKey(NoonConstants.NOTIFICATIONTIME))
-            value = PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME);
-        else
-            value = 10f;	// Default to maximum (now 30s)
+  //      if (PlayerPrefs.HasKey(NoonConstants.NOTIFICATIONTIME))
+  //          value = PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME);
+  //      else
+  //          value = 10f;	// Default to maximum (now 30s)
 
-        SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
-        SetInspectionWindowTimeInternal(value);
-		inspectionTimeSlider.value = value;
+  //      SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
+  //      SetInspectionWindowTimeInternal(value);
+		//inspectionTimeSlider.value = value;
 
 		// Loading Timer / Setting default
 
-		if (PlayerPrefs.HasKey(NoonConstants.SCREENCANVASSIZE))
-			value = PlayerPrefs.GetFloat(NoonConstants.SCREENCANVASSIZE);
-		else
-			value = 1f; // Set default scale to 100%
+		//if (PlayerPrefs.HasKey(NoonConstants.SCREENCANVASSIZE))
+		//	value = PlayerPrefs.GetFloat(NoonConstants.SCREENCANVASSIZE);
+		//else
+		//	value = 1f; // Set default scale to 100%
 
-		SetCanvasScaleSize(value); // this does nothing, since we're disabled but updates the value hint
-		SetCanvasScaleSizeInternal(value);
-		screenCanvasSizeSlider.value = value;
+		//SetCanvasScaleSize(value); // this does nothing, since we're disabled but updates the value hint
+		//SetCanvasScaleSizeInternal(value);
+
+		//screenCanvasSizeSlider.value = value;
 
         // Loading Autosave interval default
 
-        if (PlayerPrefs.HasKey(NoonConstants.AUTOSAVEINTERVAL))
-            value = PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
-        else
-            value = 5f;
+  //      if (PlayerPrefs.HasKey(NoonConstants.AUTOSAVEINTERVAL))
+  //          value = PlayerPrefs.GetFloat(NoonConstants.AUTOSAVEINTERVAL);
+  //      else
+  //          value = 5f;
 
-        SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
-        SetAutosaveIntervalInternal(value);
-        autosaveSlider.value = value;
+  //      SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
+  //      SetAutosaveIntervalInternal(value);
+  //      autosaveSlider.value = value;
 
-        // Loading Grid Snap Size Slider
-        if (PlayerPrefs.HasKey(NoonConstants.GRIDSNAPSIZE))
-            value = PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE);
-        else
-            value = 1f;
+  //      // Loading Grid Snap Size Slider
+  //      if (PlayerPrefs.HasKey(NoonConstants.GRIDSNAPSIZE))
+  //          value = PlayerPrefs.GetFloat(NoonConstants.GRIDSNAPSIZE);
+  //      else
+  //          value = 1f;
 
-        SetSnapGrid(value);
-		SetSnapGridInternal(value);
-        snapGridSlider.value = value;
+  //      SetSnapGrid(value);
+		//SetSnapGridInternal(value);
+  //      snapGridSlider.value = value;
 
-        // Loading Bird/Worm Slider
-        if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-            value = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
-        else
-            value = 0;
+  //      // Loading Bird/Worm Slider
+  //      if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
+  //          value = PlayerPrefs.GetInt(NoonConstants.BIRDWORMSLIDER);
+  //      else
+  //          value = 0;
 
-        SetBirdWorm(value);
-        birdWormSlider.value = value;
+  //      SetBirdWorm(value);
+  //      birdWormSlider.value = value;
 
 
-        if (PlayerPrefs.HasKey(NoonConstants.HIGHCONTRAST))
-            value = PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST);
-        else
-            value = 0f;
+  //      if (PlayerPrefs.HasKey(NoonConstants.HIGHCONTRAST))
+  //          value = PlayerPrefs.GetFloat(NoonConstants.HIGHCONTRAST);
+  //      else
+  //          value = 0f;
 
-        SetHighContrast(value);
-        contrastSlider.value = value;
+  //      SetHighContrast(value);
+  //      contrastSlider.value = value;
         
         
-        if (PlayerPrefs.HasKey(NoonConstants.ACCESSIBLECARDS))
-	        value = PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS);
-        else
-	        value = 0f;
+  //      if (PlayerPrefs.HasKey(NoonConstants.ACCESSIBLECARDS))
+	 //       value = PlayerPrefs.GetFloat(NoonConstants.ACCESSIBLECARDS);
+  //      else
+	 //       value = 0f;
 
-        SetAccessibleCards(value);
-        accessibleCardsSlider.value = value;
+  //      SetAccessibleCards(value);
+  //      accessibleCardsSlider.value = value;
 
 	    _initialised = true;
 	}
@@ -302,7 +301,7 @@ public class OptionsPanel : MonoBehaviour {
     private void OnEnable()
     {
     
-       RefreshOptionsText();
+       //RefreshOptionsText();
     }
 
 	public bool GetVisibility()
@@ -329,7 +328,7 @@ public class OptionsPanel : MonoBehaviour {
 		else
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
 
-		RefreshOptionsText();
+	//	RefreshOptionsText();
     }
 
     public void RestartGame() {
@@ -445,18 +444,19 @@ public class OptionsPanel : MonoBehaviour {
 		//SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
   //  }
 
-    public void SetInspectionWindowTime(float timer){
+ //   public void SetInspectionWindowTime(float timer){
 
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
+ //       if (gameObject.activeInHierarchy == false)
+ //           return; // don't update anything if we're not visible.
 
-        SetInspectionWindowTimeInternal(timer);
-		RefreshOptionsText();
-		SoundManager.PlaySfx("UISliderMove");
-	}
+ //       SetInspectionWindowTimeInternal(timer);
+	//	RefreshOptionsText();
+	//	SoundManager.PlaySfx("UISliderMove");
+	//}
 
 	public void SetCanvasScaleSize(float size) {
-		screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
+        if(screenCanvasSizeSliderValue!=null)
+		    screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
 
 		if (gameObject.activeInHierarchy == false)
 			return; // don't update anything if we're not visible.
@@ -574,8 +574,8 @@ public class OptionsPanel : MonoBehaviour {
 
 
         // Inspect time
-        inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME)) +
-                                         Registry.Get<ILanguageManager>().Get("UI_SECONDS_POSTFIX");
+        //inspectionTimeSliderValue.text = GetInspectionTimeForValue(PlayerPrefs.GetFloat(NoonConstants.NOTIFICATIONTIME)) +
+        //                                 Registry.Get<ILanguageManager>().Get("UI_SECONDS_POSTFIX");
 
         // Autosave
 
@@ -632,57 +632,7 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    // INTERNAL Setters
 
-    //void SetMusicVolumeInternal(float volume) {
-    //    if (backgroundMusic == null)
-    //        return;
-
-    //    backgroundMusic.SetVolume(GetClampedVol(volume) * musicVolMax);
-    //    PlayerPrefs.SetFloat(NoonConstants.MUSICVOLUME, volume);
-
-    //    if (volume == 0f && backgroundMusic.GetMute() == false)
-    //        backgroundMusic.SetMute(true);
-    //    else if (volume > 0f && backgroundMusic.GetMute())
-    //        backgroundMusic.SetMute(false);
-    //}
-
-    //void SetSoundVolumeInternal(float volume) {
-    //    if (SoundManager.Instance == null)
-    //        return;
-
-    //    float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
-
-    //    audioMixer.SetFloat("masterVol", dbVol);
-    //    PlayerPrefs.SetFloat(NoonConstants.SOUNDVOLUME, volume);
-
-    //    if (volume == 0f && SoundManager.Instance.IsOn())
-    //        SoundManager.Instance.SetVolume(0f);
-    //    else if (volume > 0f && SoundManager.Instance.IsOn() == false)
-    //        SoundManager.Instance.SetVolume(1f);
-    //}
-
-
-	//
-
-	void SetInspectionWindowTimeInternal(float value) {
-		// value ranges from -4 to 1
-		float timer = GetInspectionTimeForValue(value);
-		PlayerPrefs.SetFloat(NoonConstants.NOTIFICATIONTIME, value);
-
-		if (!IsInGame())
-			return;
-
-		if (aspectDetailsWindow != null)
-			aspectDetailsWindow.SetTimer(timer);
-
-		if (tokenDetailsWindow != null)
-			tokenDetailsWindow.SetTimer(timer);
-	}
-
-	float GetInspectionTimeForValue(float value) {
-		return baseInfoTimer + value * baseTimePerNotch;
-	}
 
 	//
 

@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using Random = UnityEngine.Random;
 
 namespace Assets.CS.TabletopUI {
     public abstract class BaseDetailsWindow : 
-        AnimatedNoteBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+        AnimatedNoteBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,ISettingSubscriber {
 
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;
@@ -16,6 +19,9 @@ namespace Assets.CS.TabletopUI {
         [Header("Image")]
 		[SerializeField] protected Image artwork;
 		[SerializeField] protected Image artworkPin;
+
+        public float baseInfoTimer = 10f;
+        public float baseTimePerNotch = 2f;
 
         float waitTime = 10f;
         float time;
@@ -38,8 +44,32 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void SetTimer(float time) {
+        public void Start()
+        {
+            var notificationTimeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
+            if (notificationTimeSetting == null)
+            { NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
+                return;
+            }
+
+            notificationTimeSetting.AddSubscriber(this);
+        }
+
+        public void UpdateValueFromSetting(float newValue)
+        {
+            var timeInSeconds = GetInspectionTimeForValue(newValue);
+            SetTimer(timeInSeconds);
+        }
+
+
+        private void SetTimer(float time) {
             waitTime = time;
+        }
+
+
+        float GetInspectionTimeForValue(float value)
+        {
+            return baseInfoTimer + value * baseTimePerNotch;
         }
 
         public void ResetTimer() {
@@ -100,5 +130,7 @@ namespace Assets.CS.TabletopUI {
         {
             _isHoveringOver = false;
         }
+
+
     }
 }
