@@ -68,8 +68,6 @@ public class OptionsPanel : MonoBehaviour {
 
     private bool _initialised = false;
 
-    private List<GameObject> GameSettingsControls;
-    private List<GameObject> SystemSettingsControls;
     private List<Resolution> availableResolutions;
     private int deferredResolutionChangeToIndex=-1;
 
@@ -94,7 +92,7 @@ public class OptionsPanel : MonoBehaviour {
         if(deferredResolutionChangeToIndex >=0)
         { 
             NoonUtility.Log("Res to " + getResolutionDescription(availableResolutions[deferredResolutionChangeToIndex]));
-            Configuration.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
+      //      GraphicsSettingsAdapter.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
             deferredResolutionChangeToIndex = -1;
         }
 
@@ -112,22 +110,6 @@ public class OptionsPanel : MonoBehaviour {
         }
 
 
-
-
-      //  windowGO.SetActive(true); //so we can use tags. SO HACKY
-
-  //      GameSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("GameSetting")) ;
-	 //   SystemSettingsControls = new List<GameObject>(GameObject.FindGameObjectsWithTag("SystemSetting")) ;
-      
-
-	 //   foreach(var c in GameSettingsControls)
-	 //       c.SetActive(true);
-
-	 //   foreach(var c in SystemSettingsControls)
-	 //       c.SetActive(false);
-        
-
-		//windowGO.SetActive(false);
 
 
 
@@ -165,14 +147,14 @@ public class OptionsPanel : MonoBehaviour {
             windowedSlider.value = w;
 
             //graphics quality!
-            float g;
-            if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
-                g = PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
-            else
-                g = 3;
+            //float g;
+            //if (PlayerPrefs.HasKey(NoonConstants.GRAPHICSLEVEL))
+            //    g = PlayerPrefs.GetInt(NoonConstants.GRAPHICSLEVEL);
+            //else
+            //    g = 3;
             
-            SetGraphicsLevel(g);
-            graphicsLevelSlider.value = g;
+            //SetGraphicsLevel(g);
+            //graphicsLevelSlider.value = g;
         }
 
 
@@ -305,7 +287,6 @@ public class OptionsPanel : MonoBehaviour {
 		else
             Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
 
-	//	RefreshOptionsText();
     }
 
     public void RestartGame() {
@@ -387,14 +368,6 @@ public class OptionsPanel : MonoBehaviour {
 		manageSavesWindow.SetActive( open );
     }
 
-    public void SwitchSettingsDisplay(bool showSystemSettings)
-    {
-        foreach(var c in GameSettingsControls)
-            c.SetActive(!showSystemSettings);
-
-        foreach(var c in SystemSettingsControls)
-            c.SetActive(showSystemSettings);
-    }
 
 	public void SaveErrorContinue()
 	{
@@ -435,7 +408,7 @@ public class OptionsPanel : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(NoonConstants.WINDOWED, value);
 
-        Configuration.SetWindowed(value > 0.5f);
+        GraphicsSettingsAdapter.SetWindowed(value > 0.5f);
         RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
@@ -444,18 +417,18 @@ public class OptionsPanel : MonoBehaviour {
         SoundManager.PlaySfx("UISliderMove");
     }
 
-    public void SetGraphicsLevel(float value)
-    {
-        int g = Convert.ToInt32(value);
-        PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
-        Configuration.SetGraphicsLevel(g);
-        RefreshOptionsText();
+    //public void SetGraphicsLevel(float value)
+    //{
+    //    int g = Convert.ToInt32(value);
+    //    PlayerPrefs.SetInt(NoonConstants.GRAPHICSLEVEL, g);
+    //    GraphicsSettingsAdapter.SetGraphicsLevel(g);
+    //    RefreshOptionsText();
 
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
+    //    if (gameObject.activeInHierarchy == false)
+    //        return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("UISliderMove");
-    }
+    //    SoundManager.PlaySfx("UISliderMove");
+    //}
 
 
 

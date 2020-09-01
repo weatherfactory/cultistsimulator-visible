@@ -140,7 +140,7 @@
 		    }
 
 	 },
-	 		  {
+	 		 {
 		    "id": "HighContrast",
 		    "tab": "",
 		    "hint": "High Contrast Mode",
@@ -151,6 +151,34 @@
 		    {
 				"0": "Off",
 				"1": "On"	
+		    }
+},
+			{
+		    "id": "Windowed",
+		    "tab": "",
+		    "hint": "Windowed",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": 1,
+		    "valuelabels": 
+		    {
+				"0": "Off",
+				"1": "On"	
+		    },
+},
+			{
+		    "id": "GraphicsLevel",
+		    "tab": "",
+		    "hint": "Beauty",
+		    "minvalue": 1,
+		    "maxvalue": 3,
+		    "defaultvalue": 3,
+		    "valuelabels": 
+		    {
+				"1": "GRAPHICS_LEVEL_1",
+				"2": "GRAPHICS_LEVEL_2",
+				"3": "GRAPHICS_LEVEL_3",
+				
 		    }
 
 	 }

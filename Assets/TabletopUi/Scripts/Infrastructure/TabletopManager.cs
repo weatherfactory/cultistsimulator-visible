@@ -192,8 +192,7 @@ namespace Assets.CS.TabletopUI {
             var registry = new Registry();
             registry.Register(this);
 
-            Configuration.Setup();
-
+            
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 
 
