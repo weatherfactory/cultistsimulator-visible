@@ -39,10 +39,9 @@ namespace Assets.TabletopUi.Scripts.UI
             Slider.maxValue = boundSetting.MaxValue;
             gameObject.name = "SettingControl_" + boundSetting.Id;
 
-            float startingValue= Registry.Get<Config>().GetPersistedSettingValue(boundSetting);
-            Slider.SetValueWithoutNotify(startingValue);
+            Slider.SetValueWithoutNotify(boundSetting.CurrentValue);
             
-            SetValueLabel(startingValue);
+            SetValueLabel(boundSetting.CurrentValue);
 
 
 

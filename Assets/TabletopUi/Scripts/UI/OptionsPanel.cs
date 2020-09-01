@@ -713,7 +713,8 @@ public class OptionsPanel : MonoBehaviour {
 			return;
 
 		var tabletopManager = Registry.Get<TabletopManager>();
-		tabletopManager.SetAutosaveInterval( value );
+        if(tabletopManager!=null)
+		    tabletopManager.SetAutosaveInterval( value );
     }
 
     void SetSnapGridInternal(float value)

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
-public class BackgroundMusic : MonoBehaviour {
+public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
+{
 
     protected IEnumerable<AudioClip> backgroundMusic;
     protected IEnumerable<AudioClip> impendingDoomMusic;
@@ -42,19 +44,14 @@ public class BackgroundMusic : MonoBehaviour {
             return;
         }
 
-        float startingVolume = Registry.Get<Config>().GetPersistedSettingValue(musicVolumeSetting);
-        
-        SetVolume(startingVolume);
+        musicVolumeSetting.AddSubscriber(this);
 
-        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
-        
         PlayNextClip();
     }
 
-    public void OnSettingChangedEvent(ChangeSettingArgs args)
+    public void UpdateValueFromSetting(float newValue)
     {
-        if (args.Key == NoonConstants.MUSICVOLUME)
-            SetVolume(args.Value);
+        SetVolume(newValue);
     }
 
 

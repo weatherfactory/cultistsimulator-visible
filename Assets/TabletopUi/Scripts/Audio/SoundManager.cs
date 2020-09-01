@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine.Audio;
 
-public class SoundManager : AudioManager {
+public class SoundManager : AudioManager, ISettingSubscriber
+{
 
     [System.Serializable]
     public class SoundCombo {
@@ -81,20 +83,15 @@ public class SoundManager : AudioManager {
             NoonUtility.Log("Missing setting entity: " + NoonConstants.SOUNDVOLUME);
             return;
         }
-
-        float startingVolume = Registry.Get<Config>().GetPersistedSettingValue(soundVolumeSetting);
-
-
-        SetVolumeInDbRange(startingVolume);
-
-        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
+        
+        soundVolumeSetting.AddSubscriber(this);
 
     }
 
-    private void OnSettingChangedEvent(ChangeSettingArgs args)
+
+    public void UpdateValueFromSetting(float newValue)
     {
-        if (args.Key == NoonConstants.SOUNDVOLUME)
-            SetVolumeInDbRange(args.Value);
+        SetVolumeInDbRange(newValue);
     }
 
     private void SetVolumeInDbRange(float volume)

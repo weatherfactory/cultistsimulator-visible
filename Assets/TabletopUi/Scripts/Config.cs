@@ -85,12 +85,12 @@ public class Config
         PlayerPrefs.SetFloat(args.Key,args.Value);
     }
 
-    public float GetPersistedSettingValue(Setting setting)
+    public float? GetPersistedSettingValue(string forId)
     {
-        if (PlayerPrefs.HasKey(setting.Id))
-            return PlayerPrefs.GetFloat(setting.Id);
-
-        return setting.DefaultValue;
+        if (PlayerPrefs.HasKey(forId))
+            return PlayerPrefs.GetFloat(forId);
+        else
+            return null;
     }
 
     private Dictionary<string,string> PopulateConfigValues(string hackyConfigLocation)
