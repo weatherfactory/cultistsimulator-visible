@@ -1,16 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-public class CanvasScaleManager : CanvasScaler {
+public class CanvasScaleManager : CanvasScaler,ISettingSubscriber {
 
 	private float scaleFactorFactor = 1f;
     public float animDuration = 0.1f;
 
     private Canvas canvas;
+
+    private const float MultiplierForSettingValue = 0.25f; //we get a raw value from the setting config; reduce it accordingly
+    private const float MinUIScaleSize = 0.5f;
+
+    private void Start()
+    {
+        var UIScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
+        if (UIScaleSetting == null)
+        {
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE);
+            return;
+        }
+
+        UIScaleSetting.AddSubscriber(this);
+	}
+
+    public void UpdateValueFromSetting(float newValue)
+    {
+        var scale = MultiplierForSettingValue * newValue;
+        scale = Mathf.Max(scale, MinUIScaleSize);
+
+		SetTargetScaleFactor(scale);
+	}
 
 	protected override void OnEnable()
 	{
@@ -104,5 +131,6 @@ public class CanvasScaleManager : CanvasScaler {
 		scaleFactorFactor = Mathf.Max(0.01f, scale);
 		Handle();
     }
+
 
 }

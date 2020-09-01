@@ -68,10 +68,6 @@ public class OptionsPanel : MonoBehaviour {
     public float musicVolMax = 0.25f;
 
 
-
-
-	public float scaleSliderFactor = 0.5f;
-
     [Header("External Ref")]
     [SerializeField]
     private AudioMixer audioMixer;
@@ -454,16 +450,16 @@ public class OptionsPanel : MonoBehaviour {
 	//	SoundManager.PlaySfx("UISliderMove");
 	//}
 
-	public void SetCanvasScaleSize(float size) {
-        if(screenCanvasSizeSliderValue!=null)
-		    screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
+	//public void SetCanvasScaleSize(float size) {
+ //       if(screenCanvasSizeSliderValue!=null)
+	//	    screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
 
-		if (gameObject.activeInHierarchy == false)
-			return; // don't update anything if we're not visible.
+	//	if (gameObject.activeInHierarchy == false)
+	//		return; // don't update anything if we're not visible.
 
-		SoundManager.PlaySfx("UISliderMove");
-		SetCanvasScaleSizeInternal(size);
-	}
+	//	SoundManager.PlaySfx("UISliderMove");
+	//	SetCanvasScaleSizeInternal(size);
+	//}
 
     public void SetAutosaveInterval(float timer) {
 
@@ -636,21 +632,21 @@ public class OptionsPanel : MonoBehaviour {
 
 	//
 
-	void SetCanvasScaleSizeInternal(float value) {
-		// value ranges from 0.5 to 2
-		float scale = GetCanvasScaleForValue(value);
-		scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
-		PlayerPrefs.SetFloat(NoonConstants.SCREENCANVASSIZE, value);
+	//void SetCanvasScaleSizeInternal(float value) {
+	//	// value ranges from 0.5 to 2
+	//	float scale = GetCanvasScaleForValue(value);
+	//	scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
+	//	PlayerPrefs.SetFloat(NoonConstants.SCREENCANVASSIZE, value);
 
-		if (!IsInGame())
-			return;
-        if(screenCanvasScaler!=null)
-		    screenCanvasScaler.SetTargetScaleFactor(scale);
-	}
+	//	if (!IsInGame())
+	//		return;
+ //       if(screenCanvasScaler!=null)
+	//	    screenCanvasScaler.SetTargetScaleFactor(scale);
+	//}
 
-	float GetCanvasScaleForValue(float value) {
-		return value * scaleSliderFactor;
-	}
+	//float GetCanvasScaleForValue(float value) {
+	//	return value * scaleSliderFactor;
+	//}
 
 	//
 

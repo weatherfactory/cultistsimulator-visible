@@ -48,7 +48,7 @@ namespace Assets.CS.TabletopUI {
         {
             var notificationTimeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
             if (notificationTimeSetting == null)
-            { NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
+            { NoonUtility.Log("Missing setting entity: " + NoonConstants.NOTIFICATIONTIME);
                 return;
             }
 
