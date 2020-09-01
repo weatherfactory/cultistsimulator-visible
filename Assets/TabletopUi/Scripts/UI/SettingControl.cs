@@ -23,6 +23,7 @@ namespace Assets.TabletopUi.Scripts.UI
         private TextMeshProUGUI SliderValueLabel;
 
         private Setting boundSetting;
+        private bool _initialisationComplete=false;
 
         public void Initialise(Setting settingToBind)
         {
@@ -35,30 +36,43 @@ namespace Assets.TabletopUi.Scripts.UI
             boundSetting = settingToBind;
 
             SliderHint.text = boundSetting.Hint;
+
+            
+
             Slider.minValue = boundSetting.MinValue;
             Slider.maxValue = boundSetting.MaxValue;
-            gameObject.name = "SettingControl_" + boundSetting.Id;
 
             Slider.SetValueWithoutNotify(boundSetting.CurrentValue);
+
+
+            gameObject.name = "SettingControl_" + boundSetting.Id;
+
             
             SetValueLabel(boundSetting.CurrentValue);
 
-
+            _initialisationComplete = true;
 
         }
 
         public void OnValueChanged(float newValue)
         {
-            SoundManager.PlaySfx("UISliderMove");
-            SetValueLabel(newValue);
-
-            ChangeSettingArgs args = new ChangeSettingArgs
+            //I added this guard clause because otherwise the OnValueChanged event can fire while the slider initial values are being set -
+            //for example, if the minvalue is set to > the default control value of 0. This could be fixed by
+            //adding the listener in code rather than the inspector, but I'm hewing away from that. It could also be 'fixed' by changing the
+            //order of the initialisation steps, but that's half an hour of my time I don't want to lose again next time I fiddle :) - AK
+            if(_initialisationComplete)
             {
-                Key = boundSetting.Id,
-                Value = newValue
-            };
+                SoundManager.PlaySfx("UISliderMove");
+                SetValueLabel(newValue);
 
-            Registry.Get<Concursum>().ChangeSetting(args);
+                ChangeSettingArgs args = new ChangeSettingArgs
+                {
+                    Key = boundSetting.Id,
+                    Value = newValue
+                };
+
+                Registry.Get<Concursum>().ChangeSetting(args);
+            }
         }
 
         private void SetValueLabel(float forValue)

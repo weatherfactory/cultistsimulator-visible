@@ -31,7 +31,7 @@ using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber
+    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber,ISettingSubscriber
     {
 
 
@@ -927,7 +927,9 @@ public ElementStacksManager GetTabletopStacksManager()
 
         
         
-		public void SetAutosaveInterval( float minutes )
+
+
+		protected void SetAutosaveInterval( float minutes )
 		{
 			AUTOSAVE_INTERVAL = minutes * 60.0f;
 		}
@@ -1271,6 +1273,11 @@ public ElementStacksManager GetTabletopStacksManager()
         public void NotifyStacksChanged()
         {
           NotifyAspectsDirty();
+        }
+
+        public void UpdateValueFromSetting(float newValue)
+        {
+            SetAutosaveInterval(newValue);
         }
     }
 

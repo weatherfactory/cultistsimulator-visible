@@ -12,18 +12,23 @@ using UnityEngine.UI;
 public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 
 	private float scaleFactorFactor = 1f;
-    public float animDuration = 0.1f;
-
+    
     private Canvas canvas;
 
     private const float MultiplierForSettingValue = 0.25f; //we get a raw value from the setting config; reduce it accordingly
     private const float MinUIScaleSize = 0.5f;
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        var UIScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
-        if (UIScaleSetting != null)
-			UIScaleSetting.AddSubscriber(this);
+        canvas = GetComponent<Canvas>();
+        base.OnEnable();
+    }
+
+	protected override void Start()
+    {
+        var uiScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
+        if (uiScaleSetting != null)
+			uiScaleSetting.AddSubscriber(this);
 		else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
 
@@ -34,41 +39,18 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
         var scale = MultiplierForSettingValue * newValue;
         scale = Mathf.Max(scale, MinUIScaleSize);
 
-		SetTargetScaleFactor(scale);
+        SetScaleFactorFactor(scale);
 	}
 
-	protected override void OnEnable()
-	{
-		canvas = GetComponent<Canvas>();
-		base.OnEnable();
-	}
 
-	public void SetTargetScaleFactor(float scale, bool doAnim = false) {
-		if (doAnim)
-			enabled = true;
-
-		if (doAnim && enabled && gameObject.activeInHierarchy) {
-			StopAllCoroutines();
-			StartCoroutine(DoScaleAnim(scale));
-		}
-		else {
-			SetScaleFactorFactor(scale);
-		}
-	}
-
-	IEnumerator DoScaleAnim(float targetScale) {
-		float time = 0f;
-		float currentScale = m_ScaleFactor;
-
-		while (time < animDuration) {
-			SetScaleFactorFactor(Mathf.Lerp(currentScale, targetScale, time / animDuration));
-			time += Time.deltaTime;
-			yield return null;
-		}
-
-		SetScaleFactorFactor(targetScale);
-		enabled = false;
-	}
+    // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
+    // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
+    // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
+    void SetScaleFactorFactor(float scale)
+    {
+        scaleFactorFactor = Mathf.Max(0.01f, scale);
+        Handle();
+    }
 
 	// The log base doesn't have any influence on the results whatsoever, as long as the same base is used everywhere.
 	private const float kLogBase = 2;
@@ -122,13 +104,7 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 		SetReferencePixelsPerUnit(m_ReferencePixelsPerUnit);
 	}
 
-    // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
-    // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
-    // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
-    void SetScaleFactorFactor(float scale) {		
-		scaleFactorFactor = Mathf.Max(0.01f, scale);
-		Handle();
-    }
+
 
 
 }

@@ -461,15 +461,15 @@ public class OptionsPanel : MonoBehaviour {
 	//	SetCanvasScaleSizeInternal(size);
 	//}
 
-    public void SetAutosaveInterval(float timer) {
+  //  public void SetAutosaveInterval(float timer) {
 
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
+  //      if (gameObject.activeInHierarchy == false)
+  //          return; // don't update anything if we're not visible.
 
-        SetAutosaveIntervalInternal(timer);
-		RefreshOptionsText();
-		SoundManager.PlaySfx("UISliderMove");
-    }
+  //      SetAutosaveIntervalInternal(timer);
+		//RefreshOptionsText();
+		//SoundManager.PlaySfx("UISliderMove");
+  //  }
 
     public void SetBirdWorm(float value)
 	{
@@ -650,18 +650,18 @@ public class OptionsPanel : MonoBehaviour {
 
 	//
 
-    void SetAutosaveIntervalInternal(float value)
-	{
-        // value ranges from 1 to 10 in mins
-        PlayerPrefs.SetFloat(NoonConstants.AUTOSAVEINTERVAL, value);
+ //   void SetAutosaveIntervalInternal(float value)
+	//{
+ //       // value ranges from 1 to 10 in mins
+ //       PlayerPrefs.SetFloat(NoonConstants.AUTOSAVEINTERVAL, value);
 
-		if (!IsInGame())
-			return;
+	//	if (!IsInGame())
+	//		return;
 
-		var tabletopManager = Registry.Get<TabletopManager>();
-        if(tabletopManager!=null)
-		    tabletopManager.SetAutosaveInterval( value );
-    }
+	//	var tabletopManager = Registry.Get<TabletopManager>();
+ //       if(tabletopManager!=null)
+	//	    tabletopManager.SetAutosaveInterval( value );
+ //   }
 
     void SetSnapGridInternal(float value)
 	{
