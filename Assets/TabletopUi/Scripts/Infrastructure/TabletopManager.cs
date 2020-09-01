@@ -125,7 +125,7 @@ namespace Assets.CS.TabletopUI {
             housekeepingTimer = 0.0f; // Now a float so that we can time autosaves independent of Heart.Beat - CP
 
         private float AUTOSAVE_INTERVAL = 300.0f;
-        private static float gridSnapSize = 0.0f;
+
         private static bool highContrastMode = false;
         private static bool accessibleCards = false;
         private static bool stickyDragMode = false;
@@ -926,32 +926,12 @@ public ElementStacksManager GetTabletopStacksManager()
 		}
 
         
-        
-
 
 		protected void SetAutosaveInterval( float minutes )
 		{
 			AUTOSAVE_INTERVAL = minutes * 60.0f;
 		}
 
-
-		public void SetGridSnapSize( float snapsize )
-		{
-			int snap = Mathf.RoundToInt( snapsize );
-			switch (snap)
-			{
-			default:
-			case 0:		gridSnapSize = 0.0f; break;
-			case 1:		gridSnapSize = 1.0f; break;		// 1 card
-			case 2:		gridSnapSize = 0.5f; break;		// ½ card
-			case 3:		gridSnapSize = 0.25f; break;	// ¼ card
-			}
-		}
-
-		public static float GetGridSnapSize()
-		{
-			return gridSnapSize;
-		}
 
 
 		public static void SetHighContrast( bool on )

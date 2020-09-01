@@ -32,9 +32,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             this.compendium = compendium;
         }
 
-
-
-
         public void ImportTableState(TabletopTokenContainer tabletop, Hashtable htSave)
         {
 

@@ -552,15 +552,15 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    public void SetSnapGrid(float value)
-	{
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
+ //   public void SetSnapGrid(float value)
+	//{
+ //       if (gameObject.activeInHierarchy == false)
+ //           return; // don't update anything if we're not visible.
 
-		SetSnapGridInternal(value);
-		RefreshOptionsText();
-		SoundManager.PlaySfx("UISliderMove");
-    }
+	//	SetSnapGridInternal(value);
+	//	RefreshOptionsText();
+	//	SoundManager.PlaySfx("UISliderMove");
+ //   }
 
     public void RefreshOptionsText()
     {
@@ -663,17 +663,17 @@ public class OptionsPanel : MonoBehaviour {
 	//	    tabletopManager.SetAutosaveInterval( value );
  //   }
 
-    void SetSnapGridInternal(float value)
-	{
-        // value ranges from 0 to 10
-        PlayerPrefs.SetFloat(NoonConstants.GRIDSNAPSIZE, value);
+ //   void SetSnapGridInternal(float value)
+	//{
+ //       // value ranges from 0 to 10
+ //       PlayerPrefs.SetFloat(NoonConstants.GRIDSNAPSIZE, value);
 
-		if (!IsInGame())
-			return;
+	//	if (!IsInGame())
+	//		return;
 
-		var tabletopManager = Registry.Get<TabletopManager>();
-		tabletopManager.SetGridSnapSize( value );
-    }
+	//	var tabletopManager = Registry.Get<TabletopManager>();
+	//	tabletopManager.SetGridSnapSize( value );
+ //   }
 
     void SetHighContrastInternal(float value)
 	{

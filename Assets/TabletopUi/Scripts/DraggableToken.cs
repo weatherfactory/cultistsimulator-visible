@@ -125,7 +125,7 @@ namespace Assets.CS.TabletopUI {
 
 		public virtual void SnapToGrid()
 		{
-			transform.localPosition = Choreographer.SnapToGrid( transform.localPosition );
+			transform.localPosition = Registry.Get<Choreographer>().SnapToGrid( transform.localPosition );
 		}
 
         public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {

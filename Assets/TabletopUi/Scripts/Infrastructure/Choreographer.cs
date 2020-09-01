@@ -6,13 +6,14 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
-    public class Choreographer {
+    public class Choreographer:ISettingSubscriber {
 
         private TabletopTokenContainer _tabletop;
         private SituationBuilder _situationBuilder;
@@ -21,6 +22,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         const float checkPointPerArcLength = 100f;
 
         const float pointGridSize = 100f;
+        private float gridSnapSize = 0.0f;
         const int maxGridIterations = 5;
 
         const float radiusBase = 50f;
@@ -34,7 +36,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _situationBuilder = situationBuilder;
 
             tableRect = tabletop.GetRect();
+
+            var snapGridSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
+            if (snapGridSetting != null)
+                snapGridSetting.AddSubscriber(this);
+            else
+                NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
         }
+
+        
 
         #region -- PUBLIC POSITIONING METHODS ----------------------------
 
@@ -366,6 +376,49 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #endregion
 
+
+
+        public void SetGridSnapSize(float snapsize)
+        {
+            int snap = Mathf.RoundToInt(snapsize);
+            switch (snap)
+            {
+                default:
+                case 0: gridSnapSize = 0.0f; break;
+                case 1: gridSnapSize = 1.0f; break;     // 1 card
+                case 2: gridSnapSize = 0.5f; break;     // ½ card
+                case 3: gridSnapSize = 0.25f; break;    // ¼ card
+            }
+        }
+
+        public float GetGridSnapSize()
+        {
+            return gridSnapSize;
+        }
+
+
+
+        public Vector3 SnapToGrid(Vector3 v)
+        {
+            if (GetGridSnapSize() > 0f)
+            {
+                // Magical maths to snap cards to fractions of approx card dimensions - CP
+                float snap_x = 90.0f * GetGridSnapSize();
+                float snap_y = 130.0f * GetGridSnapSize();
+                float recip_x = 1.0f / snap_x;
+                float recip_y = 1.0f / snap_y;
+                v.x *= recip_x; v.x = (float)Mathf.RoundToInt(v.x); v.x *= snap_x;
+                v.y *= recip_y; v.y = (float)Mathf.RoundToInt(v.y); v.y *= snap_y;
+            }
+            return v;
+        }
+
+        public void UpdateValueFromSetting(float newValue)
+        {
+            SetGridSnapSize(newValue);
+        }
+
+
         public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
@@ -510,19 +563,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #endregion
 
-        public static Vector3 SnapToGrid( Vector3 v )
-        {
-            if (TabletopManager.GetGridSnapSize() > 0f)
-            {
-                // Magical maths to snap cards to fractions of approx card dimensions - CP
-                float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
-                float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
-                float recip_x = 1.0f / snap_x;
-                float recip_y = 1.0f / snap_y;
-                v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
-                v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
-            }
-            return v;
-        }
+
     }
 }
