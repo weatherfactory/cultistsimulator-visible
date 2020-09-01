@@ -82,7 +82,7 @@ public class OptionsPanel : MonoBehaviour {
 
 	[Header("ScreenCanvas")]
 	[SerializeField]
-	private CanvasScaleManager screenCanvasScaler;
+	private CanvasScalableUI screenCanvasScaler;
 
 
     private bool _initialised = false;

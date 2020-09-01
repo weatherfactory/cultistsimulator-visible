@@ -24703,7 +24703,7 @@ GameObject:
   - component: {fileID: 980569406}
   - component: {fileID: 980569409}
   m_Layer: 5
-  m_Name: CanvasScreen
+  m_Name: CanvasScalableUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31686,7 +31686,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -37221,7 +37221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -114.99997, y: 0}
+  m_AnchoredPosition: {x: -115, y: 0}
   m_SizeDelta: {x: -970, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1909590238 stripped
@@ -40128,7 +40128,6 @@ MonoBehaviour:
   manageSavesWindow: {fileID: 0}
   optionsWindow: {fileID: 0}
   musicVolMax: 0.25
-  scaleSliderFactor: 0.25
   audioMixer: {fileID: 24100000, guid: ffd4cf940f0723d4c98e4f8b84043864, type: 2}
   backgroundMusic: {fileID: 677}
   aspectDetailsWindow: {fileID: 0}

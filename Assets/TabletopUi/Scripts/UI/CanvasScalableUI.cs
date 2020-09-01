@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-public class CanvasScaleManager : CanvasScaler,ISettingSubscriber {
+public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 
 	private float scaleFactorFactor = 1f;
     public float animDuration = 0.1f;
@@ -22,13 +22,13 @@ public class CanvasScaleManager : CanvasScaler,ISettingSubscriber {
     private void Start()
     {
         var UIScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
-        if (UIScaleSetting == null)
-        {
-            NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE);
-            return;
-        }
+        if (UIScaleSetting != null)
+			UIScaleSetting.AddSubscriber(this);
+		else
+            NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
+            
 
-        UIScaleSetting.AddSubscriber(this);
+        
 	}
 
     public void UpdateValueFromSetting(float newValue)
