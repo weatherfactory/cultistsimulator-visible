@@ -19,16 +19,14 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
     private const float MultiplierForSettingValue = 0.25f; //we get a raw value from the setting config; reduce it accordingly
     private const float MinUIScaleSize = 0.5f;
 
-    private void Start()
+    protected override void Start()
     {
         var UIScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
         if (UIScaleSetting != null)
 			UIScaleSetting.AddSubscriber(this);
 		else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
-            
 
-        
 	}
 
     public void UpdateValueFromSetting(float newValue)
