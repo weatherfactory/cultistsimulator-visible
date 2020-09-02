@@ -29,16 +29,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject SettingControlPrefab;
 
     [Header("Controls")]
-    [SerializeField] private Slider resolutionSlider;
-    [SerializeField] private Slider graphicsLevelSlider;
-    [SerializeField] private Slider windowedSlider;
-
-    [SerializeField] private TextMeshProUGUI resolutionValue;
-    [SerializeField] private TextMeshProUGUI graphicsLevelValue;
-    [SerializeField] private TextMeshProUGUI windowedValue;
-
     
-
     [SerializeField] private RestartButton restartButton;
 
     [SerializeField] private GameObject manageSavesWindow;
@@ -68,15 +59,7 @@ public class OptionsPanel : MonoBehaviour {
 
     private bool _initialised = false;
 
-    private List<Resolution> availableResolutions;
-    private int deferredResolutionChangeToIndex=-1;
 
-    public void Update()
-    {
-        //eg: we don't want to change  resolution until the mouse button is released
-        if (!Input.GetMouseButton(0))
-            RunAnyDeferredCommands();
-    }
 
 
     private bool IsInGame()
@@ -87,16 +70,7 @@ public class OptionsPanel : MonoBehaviour {
         return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
     }
 
-    public void RunAnyDeferredCommands()
-    {
-        if(deferredResolutionChangeToIndex >=0)
-        { 
-            NoonUtility.Log("Res to " + getResolutionDescription(availableResolutions[deferredResolutionChangeToIndex]));
-      //      GraphicsSettingsAdapter.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
-            deferredResolutionChangeToIndex = -1;
-        }
 
-    }
 
     public void Start()
     {
@@ -116,23 +90,8 @@ public class OptionsPanel : MonoBehaviour {
         if (!IsInGame())
         {
             //resolutions!
-            int r;
-            availableResolutions= new List<Resolution>(Screen.resolutions);
-            resolutionSlider.minValue = 0;
-            resolutionSlider.maxValue = availableResolutions.Count-1;
-            resolutionSlider.wholeNumbers = true;
-            if (PlayerPrefs.HasKey(NoonConstants.RESOLUTION))
-                r = PlayerPrefs.GetInt(NoonConstants.RESOLUTION);
-            else
-            {
-                r = availableResolutions.FindIndex(res =>
-                    res.height == Screen.height && res.width == Screen.width);
-              if(r==-1)
-                  r = availableResolutions.Count / 2;
-            }
-            
-            resolutionSlider.value = r;
-            SetResolutionDeferred(r);
+           
+  
             
           
         }
@@ -273,19 +232,7 @@ public class OptionsPanel : MonoBehaviour {
 
     
 
-    public void SetResolutionDeferred(float value)
-    {
-        int r = Convert.ToInt32(value);
-        PlayerPrefs.SetInt(NoonConstants.RESOLUTION,r );
 
-        if (gameObject.activeInHierarchy == false)
-            return; // don't update anything if we're not visible.
-        else
-        { 
-                deferredResolutionChangeToIndex = r;
-          SoundManager.PlaySfx("UISliderMove");
-        }
-    }
 
     
 
@@ -307,10 +254,6 @@ public class OptionsPanel : MonoBehaviour {
  //   }
 
 
-    private string getResolutionDescription(Resolution r)
-    {
-        string desc = r.width + "\n x \n" + r.height;
-        return desc;
-    }
+
 
 }
