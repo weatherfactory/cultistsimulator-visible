@@ -63,31 +63,26 @@ namespace Assets.TabletopUi.Scripts.UI
     {
 
 
-        public new void Initialise(Setting settingToBind)
-        {
-            //if (strategy.SettingId == NoonConstants.RESOLUTION)
-            //{
-            //    //extremely temporary
-            //    var availableResolutions=Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
-
-            //    var currentResolution = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
-
-            //    var resolutionIndex= availableResolutions.FindIndex(res =>
-            //        res.height == Screen.height && res.width == Screen.width);
-            //    if (resolutionIndex==-1)
-            //        resolutionIndex = availableResolutions.Count / 2;
-            //   Slider.maxValue = availableResolutions.Count - 1;
-            //}
-        }
-
         public override void SetSliderValues(Slider slider)
         {
-            throw new NotImplementedException();
+            var availableResolutions = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
+
+            var currentResolution = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
+
+            var resolutionIndex = availableResolutions.FindIndex(res =>
+                res.height == Screen.height && res.width == Screen.width);
+            if (resolutionIndex == -1)
+                resolutionIndex = availableResolutions.Count / 2;
+            
+            slider.minValue = 0;
+            slider.maxValue = availableResolutions.Count - 1;
+
+            slider.SetValueWithoutNotify(resolutionIndex);
         }
 
         public override string ChangeValue(float newValue)
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
 
     }
@@ -135,11 +130,15 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             if(settingToBind==null)
             {
-                NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
+                NoonUtility.Log("Trying to create a settingControl with a null setting entity");
                 return;
             }
 
-            strategy=new FucineSettingControlStrategy();
+
+            if(settingToBind.Id==NoonConstants.RESOLUTION)
+                strategy=new ResolutionSettingControlStrategy();
+            else
+                strategy = new FucineSettingControlStrategy();
 
             strategy.Initialise(settingToBind);
             strategy.SetSliderValues(Slider);

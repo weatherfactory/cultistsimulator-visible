@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
-    public class ScreenResolutionAdapter: ISettingSubscriber
+    public class ScreenResolutionAdapter: MonoBehaviour, ISettingSubscriber
     {
      
 
