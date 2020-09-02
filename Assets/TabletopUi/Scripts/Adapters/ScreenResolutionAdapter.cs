@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
@@ -8,7 +9,13 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class ScreenResolutionAdapter: MonoBehaviour, ISettingSubscriber
     {
-     
+
+        public void Awake()
+        {
+            var registry=new Registry();
+            registry.Register(this);
+
+        }
 
         public void UpdateValueFromSetting(float newValue)
         {
@@ -30,11 +37,6 @@ namespace Assets.TabletopUi.Scripts.Services
             return Screen.currentResolution;
         }
 
-        public string GetResolutionDescription(Resolution r)
-        {
-            string desc = r.width + "\n x \n" + r.height;
-            return desc;
-        }
 
 
     }
