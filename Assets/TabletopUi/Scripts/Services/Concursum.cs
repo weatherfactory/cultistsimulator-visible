@@ -9,7 +9,6 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 

@@ -25,7 +25,6 @@ namespace Assets.TabletopUi.Scripts.Services
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRAPHICSLEVEL);
 
-
         }
         public void UpdateValueFromSetting(float newValue)
         {

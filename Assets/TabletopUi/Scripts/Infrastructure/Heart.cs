@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Net.Security;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
