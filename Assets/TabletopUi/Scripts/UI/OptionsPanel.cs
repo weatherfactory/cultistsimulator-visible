@@ -35,31 +35,7 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject optionsWindow;
 
-    [Header("Settings")]
-    [Tooltip("Music volume goes from 0 to 1")]
-    public float musicVolMax = 0.25f;
-
-
-    [Header("External Ref")]
-    [SerializeField]
-    private AudioMixer audioMixer;
-    [SerializeField]
-    BackgroundMusic backgroundMusic;
-
-    [Header("Detail Windows")]
-    [SerializeField]
-    private AspectDetailsWindow aspectDetailsWindow;
-    [SerializeField]
-    private TokenDetailsWindow tokenDetailsWindow;
-
-	[Header("ScreenCanvas")]
-	[SerializeField]
-	private CanvasScalableUI screenCanvasScaler;
-
-
-    private bool _initialised = false;
-
-
+	
 
 
     private bool IsInGame()
@@ -83,23 +59,6 @@ public class OptionsPanel : MonoBehaviour {
             settingControl.Initialise(setting);
         }
 
-
-
-
-
-        if (!IsInGame())
-        {
-            //resolutions!
-           
-  
-            
-          
-        }
-
-
-      
-
-	    _initialised = true;
 	}
 
     private void OnEnable()
@@ -108,10 +67,6 @@ public class OptionsPanel : MonoBehaviour {
        //RefreshOptionsText();
     }
 
-	public bool GetVisibility()
-	{
-		return windowGO.activeSelf;
-	}
 
     public void ToggleVisibility() {
 		windowGO.SetActive(!windowGO.activeSelf);
@@ -227,31 +182,6 @@ public class OptionsPanel : MonoBehaviour {
 
 		Registry.Get<TabletopManager>().LoadGame(SourceForGameState.DefaultSave);
 	}
-
-
-
-    
-
-
-
-    
-
-
-
-
-
-
- //   void SetSnapGridInternal(float value)
-	//{
- //       // value ranges from 0 to 10
- //       PlayerPrefs.SetFloat(NoonConstants.GRIDSNAPSIZE, value);
-
-	//	if (!IsInGame())
-	//		return;
-
-	//	var tabletopManager = Registry.Get<TabletopManager>();
-	//	tabletopManager.SetGridSnapSize( value );
- //   }
 
 
 
