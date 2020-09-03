@@ -39,7 +39,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             var snapGridSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
+            {
                 snapGridSetting.AddSubscriber(this);
+                UpdateValueFromSetting(snapGridSetting.CurrentValue);
+            }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
         }

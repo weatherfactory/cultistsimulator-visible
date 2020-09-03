@@ -48,7 +48,10 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
         var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
+        {
             highContrastSetting.AddSubscriber(this);
+            UpdateValueFromSetting(highContrastSetting.CurrentValue);
+        }
         else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
 

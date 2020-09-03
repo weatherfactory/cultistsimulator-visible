@@ -39,7 +39,10 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
     {
         var musicVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.MUSICVOLUME);
         if (musicVolumeSetting != null)
+        {
             musicVolumeSetting.AddSubscriber(this);
+            UpdateValueFromSetting(musicVolumeSetting.CurrentValue);
+        }
         else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
 

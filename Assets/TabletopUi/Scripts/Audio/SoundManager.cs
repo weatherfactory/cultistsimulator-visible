@@ -83,8 +83,12 @@ public class SoundManager : AudioManager, ISettingSubscriber
             NoonUtility.Log("Missing setting entity: " + NoonConstants.SOUNDVOLUME);
             return;
         }
+        else
+        {
+            soundVolumeSetting.AddSubscriber(this);
+            UpdateValueFromSetting(soundVolumeSetting.CurrentValue);
+        }
         
-        soundVolumeSetting.AddSubscriber(this);
 
     }
 

@@ -81,7 +81,6 @@ namespace Assets.Core.Entities
                 NoonUtility.Log($"Trying to add the same subscriber twice to Setting {Id}");
             else
             {
-                subscriber.UpdateValueFromSetting(CurrentValue);
                 _subscribers.Add(subscriber);
             }
         }

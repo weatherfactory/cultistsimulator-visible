@@ -32,7 +32,8 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public abstract void SetSliderValues(Slider slider);
 
-        protected void PersistSettingValue(float newValue)
+        
+        public void OnSliderValueChangeComplete(float newValue)
         {
             ChangeSettingArgs args = new ChangeSettingArgs
             {
@@ -43,19 +44,13 @@ namespace Assets.TabletopUi.Scripts.UI
             Registry.Get<Concursum>().ChangeSetting(args);
         }
 
-        public string ChangeSettingValueAndGetLabel(float newValue)
-        {
-            PersistSettingValue(newValue);
-
-            return GetLabelForValue(newValue);
-        }
 
         public string GetLabelForCurrentValue()
         {
             return GetLabelForValue(boundSetting.CurrentValue);
         }
 
-        protected abstract string GetLabelForValue(float forValue);
+        public abstract string GetLabelForValue(float forValue);
     
     }
 }

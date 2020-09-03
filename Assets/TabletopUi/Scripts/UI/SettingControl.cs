@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         private AbstractSettingControlStrategy strategy;
         private bool _initialisationComplete=false;
-        private int deferredResolutionChangeToIndex = -1;
+        private float? newSettingValueQueued = null;
 
         public void Initialise(Setting settingToBind)
         {
@@ -45,8 +45,7 @@ namespace Assets.TabletopUi.Scripts.UI
             SliderHint.text = strategy.SettingHint;
             SliderValueLabel.text = strategy.GetLabelForCurrentValue();
 
-
-
+            
             gameObject.name = "SettingControl_" + strategy.SettingId;
 
 
@@ -54,7 +53,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         }
 
-        public void OnValueChanged(float newValue)
+        public void OnValueChanged(float changingToValue)
         {
             //I added this guard clause because otherwise the OnValueChanged event can fire while the slider initial values are being set -
             //for example, if the minvalue is set to > the default control value of 0. This could be fixed by
@@ -63,23 +62,10 @@ namespace Assets.TabletopUi.Scripts.UI
             if(_initialisationComplete)
             {
                 SoundManager.PlaySfx("UISliderMove");
-             string newValueLabel=strategy.ChangeSettingValueAndGetLabel(newValue);
-
-             SliderValueLabel.text = newValueLabel;
-
+                newSettingValueQueued = changingToValue;
+                 string newValueLabel=strategy.GetLabelForValue((float)newSettingValueQueued);
+                 SliderValueLabel.text = newValueLabel;
             }
-        }
-
-
-        public void RunAnyDeferredCommands()
-        {
-            if (deferredResolutionChangeToIndex >= 0)
-            {
-                var availableResolutions = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
-                //      GraphicsSettingsAdapter.SetResolution(availableResolutions[deferredResolutionChangeToIndex]);
-                deferredResolutionChangeToIndex = -1;
-            }
-
         }
 
 
@@ -87,25 +73,15 @@ namespace Assets.TabletopUi.Scripts.UI
         public void Update()
         {
             //eg: we don't want to change  resolution until the mouse button is released
-            if (!Input.GetMouseButton(0))
-                RunAnyDeferredCommands();
-        }
-
-    
-
-        public void SetResolutionDeferred(float value)
-        {
-            int r = Convert.ToInt32(value);
-            PlayerPrefs.SetInt(NoonConstants.RESOLUTION, r);
-
-            if (gameObject.activeInHierarchy == false)
-                return; // don't update anything if we're not visible.
-            else
+            if (!Input.GetMouseButton(0) && newSettingValueQueued!=null)
             {
-                deferredResolutionChangeToIndex = r;
-                SoundManager.PlaySfx("UISliderMove");
+                strategy.OnSliderValueChangeComplete((float) newSettingValueQueued);
+                newSettingValueQueued = null;
             }
         }
 
+        
+        }
+
     }
-}
+

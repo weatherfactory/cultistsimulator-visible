@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
@@ -17,9 +18,27 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
+        public void Start()
+        {
+            var registry = new Registry();
+            registry.Register(this);
+
+
+            var resolutionSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.RESOLUTION);
+            if (resolutionSetting != null)
+            {
+                resolutionSetting.AddSubscriber(this);
+                UpdateValueFromSetting(resolutionSetting.CurrentValue);
+            }
+            else
+                NoonUtility.Log("Missing setting entity: " + NoonConstants.RESOLUTION);
+
+
+        }
+
         public void UpdateValueFromSetting(float newValue)
         {
-            throw new System.NotImplementedException();
+            SetResolution(GetAvailableResolutions()[(int)newValue]);
         }
 
         protected void SetResolution(Resolution resolution)

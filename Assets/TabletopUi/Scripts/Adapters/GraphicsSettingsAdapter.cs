@@ -18,7 +18,10 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             var graphicsLevelSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRAPHICSLEVEL);
             if (graphicsLevelSetting != null)
+            {
                 graphicsLevelSetting.AddSubscriber(this);
+                UpdateValueFromSetting(graphicsLevelSetting.CurrentValue);
+            }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRAPHICSLEVEL);
 

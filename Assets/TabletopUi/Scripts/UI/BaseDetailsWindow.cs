@@ -53,6 +53,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             notificationTimeSetting.AddSubscriber(this);
+            UpdateValueFromSetting(notificationTimeSetting.CurrentValue);
         }
 
         public void UpdateValueFromSetting(float newValue)

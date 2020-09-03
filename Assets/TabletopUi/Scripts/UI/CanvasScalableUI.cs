@@ -28,7 +28,10 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
     {
         var uiScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
         if (uiScaleSetting != null)
+        {
 			uiScaleSetting.AddSubscriber(this);
+			UpdateValueFromSetting(uiScaleSetting.CurrentValue);
+        }
 		else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
 

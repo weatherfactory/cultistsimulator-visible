@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.UI
         }
 
 
-        protected override string GetLabelForValue(float forValue)
+        public override string GetLabelForValue(float forValue)
         {
             boundSetting.ValueLabels.TryGetValue(forValue.ToString(), out var matchingValueLabelString);
             if (!string.IsNullOrEmpty(matchingValueLabelString))
