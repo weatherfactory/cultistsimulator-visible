@@ -4,7 +4,7 @@
 
 {
 		    "id": "Windowed",
-		    "tab": "",
+		    "tabid": "visual",
 		    "hint": "Windowed",
 		    "minvalue": 0,
 		    "maxvalue": 1,
@@ -17,7 +17,7 @@
 },
 			{
 		    "id": "GraphicsLevel",
-		    "tab": "",
+		    "tabid": "visual",
 		    "hint": "Beauty",
 		    "minvalue": 1,
 		    "maxvalue": 3,
@@ -35,7 +35,7 @@
 
 	    {
 		    "id": "MusicVolume",
-		    "tab": "",
+		    "tabid": "audio",
 		    "hint": "Music Volume",
 			"minvalue": 0,
 			"maxvalue": 10,
@@ -61,7 +61,7 @@
 
 	    {
 		    "id": "SoundVolume",
-		    "tab": "",
+		    "tabid": "audio",
 		    "hint": "Sound Volume",
 		    "minvalue": 0,
 		    "maxvalue": 10,
@@ -85,7 +85,7 @@
 
 	    {
 		    "id": "NotificationTime",
-		    "tab": "",
+		    "tabid": "gameplay",
 		    "hint": "Info Window Duration",
 		    "minvalue": -3,
 		    "maxvalue": 2,
@@ -98,7 +98,7 @@
 
 	    {
 		    "id": "ScreenCanvasSize",
-		    "tab": "",
+		    "tabid": "visual",
 		    "hint": "UI Scaling",
 		    "minvalue": 3,
 		    "maxvalue": 5,
@@ -114,7 +114,7 @@
 
 	    {
 		    "id": "AutosaveInterval",
-		    "tab": "",
+		    "tabid": "gameplay",
 		    "hint": "Autosave Interval",
 		    "minvalue": 1,
 		    "maxvalue":10 ,
@@ -127,7 +127,7 @@
 
 	    {
 		    "id": "GridSnapSize",
-		    "tab": "",
+		    "tabid": "gameplay",
 		    "hint": "Grid Snap Size",
 		    "minvalue": 0,
 		    "maxvalue": 3,
@@ -145,7 +145,7 @@
 
 		  {
 		    "id": "AllowExploits",
-		    "tab": "",
+		    "tabid": "gameplay",
 		    "hint": "Bird/Worm",
 		    "minvalue": 0,
 		    "maxvalue": 1,
@@ -161,7 +161,7 @@
 		
 		  {
 		    "id": "AccessibleCards",
-		    "tab": "",
+		    "tabid": "visual",
 		    "hint": "Accessible Card Titles",
 		    "minvalue": 0,
 		    "maxvalue": 1,
@@ -175,7 +175,7 @@
 	 },
 	 		 {
 		    "id": "HighContrast",
-		    "tab": "",
+		    "tabid": "visual",
 		    "hint": "High Contrast Mode",
 		    "minvalue": 0,
 		    "maxvalue": 1,

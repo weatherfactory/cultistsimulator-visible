@@ -18,7 +18,7 @@ namespace Assets.Core.Entities
         { 
         
             [FucineValue]
-        public string Tab { get; set; }
+        public string TabId { get; set; }
 
         [FucineValue]
         public string Hint { get; set; }

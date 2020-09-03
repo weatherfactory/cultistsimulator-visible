@@ -19,6 +19,7 @@ using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.UI;
+using UIWidgets;
 using UnityEngine.Analytics;
 
 public class OptionsPanel : MonoBehaviour {
@@ -27,11 +28,14 @@ public class OptionsPanel : MonoBehaviour {
 
 	[SerializeField] private GameObject windowGO;
     [SerializeField] private GameObject SettingControlPrefab;
+    [SerializeField] private GameObject TabControlPrefab;
+    [SerializeField] private Transform TabsHere;
+    [SerializeField] private Transform SettingsHere;
 
-    [Header("Controls")]
+
+	[Header("Controls")]
     
     [SerializeField] private RestartButton restartButton;
-
     [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject optionsWindow;
 
@@ -53,9 +57,25 @@ public class OptionsPanel : MonoBehaviour {
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
 
+        foreach(Transform editTimeTab in TabsHere)
+            Destroy(editTimeTab.gameObject);
+
+        var tabs = settings.Select(s => s.TabId).Distinct();
+        foreach (var tabName in tabs)
+        {
+            var tabComponent = Instantiate(TabControlPrefab, TabsHere).GetComponent<OptionsPanelTab>();
+            tabComponent.Initialise(tabName);
+        }
+
+
+        foreach (Transform editTimeSetting in SettingsHere)
+            Destroy(editTimeSetting.gameObject);
+
+
+
         foreach (var setting in settings)
         {
-            var settingControl = Instantiate(SettingControlPrefab,gameObject.transform).GetComponent<SettingControl>();
+            var settingControl = Instantiate(SettingControlPrefab,SettingsHere).GetComponent<SettingControl>();
             settingControl.Initialise(setting);
         }
 
