@@ -14,18 +14,6 @@ namespace Assets.TabletopUi.Scripts.UI
             slider.SetValueWithoutNotify(boundSetting.CurrentValue);
         }
 
-        public override string ChangeValue(float newValue)
-        {
-            ChangeSettingArgs args = new ChangeSettingArgs
-            {
-                Key = boundSetting.Id,
-                Value = newValue
-            };
-
-            Registry.Get<Concursum>().ChangeSetting(args);
-
-            return GetLabelForValue(newValue);
-        }
 
         protected override string GetLabelForValue(float forValue)
         {

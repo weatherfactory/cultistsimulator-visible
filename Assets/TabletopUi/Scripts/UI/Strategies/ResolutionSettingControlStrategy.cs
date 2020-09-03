@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using System;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,9 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             var availableResolutions = Registry.Get<ScreenResolutionAdapter>().GetAvailableResolutions();
 
-            var currentResolution = Registry.Get<ScreenResolutionAdapter>().GetCurrentResolution();
             
             var resolutionIndex = availableResolutions.FindIndex(res =>
-                res.height == currentResolution.height && res.width == currentResolution.width);
+                res.height == Registry.Get<ScreenResolutionAdapter>().GetScreenHeight() && Registry.Get<ScreenResolutionAdapter>().GetScreenWidth() == res.width);
             //original code used screen.height and screen.width; I half-remember I might have needed to do exactly that
 
 
@@ -25,14 +25,15 @@ namespace Assets.TabletopUi.Scripts.UI
             
             slider.minValue = 0;
             slider.maxValue = availableResolutions.Count - 1;
-
+            
             slider.SetValueWithoutNotify(resolutionIndex);
+
+            if(Math.Abs(resolutionIndex - boundSetting.CurrentValue) > 0.5) //cos floating points
+                PersistSettingValue(resolutionIndex); //if we just calculated the resolution index from the current resolution,
+            //rather than retrieving it from settings, we need to persist it.
+
         }
 
-        public override string ChangeValue(float newValue)
-        {
-            return string.Empty;
-        }
 
         protected override string GetLabelForValue(float forValue)
         {

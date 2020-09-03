@@ -1,4 +1,6 @@
 ﻿using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
@@ -30,7 +32,23 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public abstract void SetSliderValues(Slider slider);
 
-        public abstract string ChangeValue(float newValue);
+        protected void PersistSettingValue(float newValue)
+        {
+            ChangeSettingArgs args = new ChangeSettingArgs
+            {
+                Key = boundSetting.Id,
+                Value = newValue
+            };
+
+            Registry.Get<Concursum>().ChangeSetting(args);
+        }
+
+        public string ChangeSettingValueAndGetLabel(float newValue)
+        {
+            PersistSettingValue(newValue);
+
+            return GetLabelForValue(newValue);
+        }
 
         public string GetLabelForCurrentValue()
         {

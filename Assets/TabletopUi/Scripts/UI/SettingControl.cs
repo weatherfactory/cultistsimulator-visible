@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.UI
             if(_initialisationComplete)
             {
                 SoundManager.PlaySfx("UISliderMove");
-             string newValueLabel=strategy.ChangeValue(newValue);
+             string newValueLabel=strategy.ChangeSettingValueAndGetLabel(newValue);
 
              SliderValueLabel.text = newValueLabel;
 

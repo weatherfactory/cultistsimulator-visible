@@ -32,9 +32,21 @@ namespace Assets.TabletopUi.Scripts.Services
             return new List<Resolution>(Screen.resolutions);
         }
 
-        public Resolution GetCurrentResolution()
+        /// <summary>
+        /// we use Screen.height rather than CurrentResolution.height because Screen.height respects the resolution set in the Editor
+        /// </summary>
+        /// <returns></returns>
+        public int GetScreenHeight()
         {
-            return Screen.currentResolution;
+            return Screen.height;
+        }
+        /// <summary>
+        /// we use Screen.width rather than CurrentResolution.width because Screen.height respects the resolution set in the Editor
+        /// </summary>
+        /// <returns></returns>
+        public int GetScreenWidth()
+        {
+            return Screen.width;
         }
 
 
