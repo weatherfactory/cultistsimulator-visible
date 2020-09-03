@@ -2155,7 +2155,7 @@ MonoBehaviour:
   versionHints: {fileID: 1516159739}
   modsPanel: {fileID: 1507364684}
   startDLCLegacyConfirmPanel: {fileID: 676880556}
-  optionsPanel: {fileID: 114343856806668092}
+  optionsPanel: {fileID: 0}
   brokenSaveMessage: {fileID: 972627038}
   VersionNumber: {fileID: 458841803}
   versionAnim: {fileID: 1502385832}
@@ -9993,7 +9993,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114343856806668092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
         m_MethodName: SetGraphicsLevel
         m_Mode: 0
@@ -15670,7 +15670,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114343856806668092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
         m_MethodName: SetWindowed
         m_Mode: 0
@@ -45822,7 +45822,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114343856806668092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: BrowseFiles
         m_Mode: 1
@@ -62959,7 +62959,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114343856806668092}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
         m_MethodName: SetResolutionDeferred
         m_Mode: 0
@@ -80769,7 +80769,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224021197352680800}
-  - component: {fileID: 114343856806668092}
   - component: {fileID: 114573492299662694}
   m_Layer: 5
   m_Name: SettingsPanel
@@ -80778,27 +80777,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114343856806668092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062203461318226}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb4c6fd9efd22c4b8a048b43436651c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SettingControlPrefab: {fileID: 6175045041045041255, guid: 89aaa29c25c294c4bb3c4e00e7d1c8c7,
-    type: 3}
-  TabControlPrefab: {fileID: 3878855859381347522, guid: 6044edc96bd9867458a41fae64f463e7,
-    type: 3}
-  TabsHere: {fileID: 1585590599}
-  SettingsHere: {fileID: 224021197352680800}
-  restartButton: {fileID: 0}
-  manageSavesWindow: {fileID: 0}
-  optionsWindow: {fileID: 0}
 --- !u!114 &114573492299662694
 MonoBehaviour:
   m_ObjectHideFlags: 0

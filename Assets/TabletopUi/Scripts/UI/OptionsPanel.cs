@@ -38,7 +38,8 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject optionsWindow;
 
-	
+
+    private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
 
 
     private bool IsInGame()
@@ -49,14 +50,25 @@ public class OptionsPanel : MonoBehaviour {
         return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
     }
 
+    private OptionsPanelTab GetCurrentlySelectedTab()
+    {
+        return optionsPanelTabs.Single(t => t.Selected);
+    }
 
 
     public void Start()
     {
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
+        PopulateTabs(settings);
 
-        foreach(Transform editTimeTab in TabsHere)
+        PopulateSettingControls(settings);
+    }
+
+
+    private void PopulateTabs(List<Setting> settings)
+    {
+        foreach (Transform editTimeTab in TabsHere)
             Destroy(editTimeTab.gameObject);
 
         var tabs = settings.Select(s => s.TabId).Distinct();
@@ -64,23 +76,28 @@ public class OptionsPanel : MonoBehaviour {
         {
             var tabComponent = Instantiate(TabControlPrefab, TabsHere).GetComponent<OptionsPanelTab>();
             tabComponent.Initialise(tabName);
+            optionsPanelTabs.Add(tabComponent);
         }
 
+        if (optionsPanelTabs.Any())
+            optionsPanelTabs[0].Select();
+    }
 
+    private void PopulateSettingControls(List<Setting> settings)
+    {
         foreach (Transform editTimeSetting in SettingsHere)
             Destroy(editTimeSetting.gameObject);
 
-
-
         foreach (var setting in settings)
         {
-            var settingControl = Instantiate(SettingControlPrefab,SettingsHere).GetComponent<SettingControl>();
+            var settingControl = Instantiate(SettingControlPrefab, SettingsHere).GetComponent<SettingControl>();
             settingControl.Initialise(setting);
+            if(settingControl.TabId!= GetCurrentlySelectedTab().TabId)
+                settingControl.gameObject.SetActive(false);
         }
+    }
 
-	}
-
-    private void OnEnable()
+    private void OnEnable()
     {
     
        //RefreshOptionsText();

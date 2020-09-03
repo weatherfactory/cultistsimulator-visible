@@ -26,6 +26,11 @@ namespace Assets.TabletopUi.Scripts.UI
         private bool _initialisationComplete=false;
         private float? newSettingValueQueued = null;
 
+        public string TabId
+        {
+            get { return strategy.SettingTabId; }
+        }
+
         public void Initialise(Setting settingToBind)
         {
             if(settingToBind==null)

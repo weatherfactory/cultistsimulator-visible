@@ -29,6 +29,11 @@ namespace Assets.TabletopUi.Scripts.UI
             get { return boundSetting.CurrentValue; }
         }
 
+        public string SettingTabId
+        {
+            get { return boundSetting.TabId; }
+        }
+
 
         public abstract void SetSliderValues(Slider slider);
 
