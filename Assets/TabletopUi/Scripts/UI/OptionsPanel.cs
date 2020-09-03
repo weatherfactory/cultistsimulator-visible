@@ -26,7 +26,6 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-	[SerializeField] private GameObject windowGO;
     [SerializeField] private GameObject SettingControlPrefab;
     [SerializeField] private GameObject TabControlPrefab;
     [SerializeField] private Transform TabsHere;
@@ -89,7 +88,7 @@ public class OptionsPanel : MonoBehaviour {
 
 
     public void ToggleVisibility() {
-		windowGO.SetActive(!windowGO.activeSelf);
+		gameObject.SetActive(!gameObject.activeSelf);
 
         if (!IsInGame())
 			return;
@@ -99,7 +98,7 @@ public class OptionsPanel : MonoBehaviour {
         restartButton.ResetState();
 
 		// Simplified to use Martin's LockToPause code which handles everything nicely - CP
-        if (windowGO.activeInHierarchy)
+        if (gameObject.activeInHierarchy)
 		
 			// now lock the pause so players can't do it manually - this also pauses
 			Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
