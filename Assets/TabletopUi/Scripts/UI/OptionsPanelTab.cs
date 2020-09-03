@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Globalization;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,11 @@ public class OptionsPanelTab : MonoBehaviour
 
     public void Initialise(string tabName)
     {
-        TabText.text = tabName;
+        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+        TextInfo textInfo = cultureInfo.TextInfo;
+
+        TabText.text = textInfo.ToTitleCase(tabName);
+
+        TabImage.sprite=ResourcesManager.GetSprite("ui/tabs", tabName);
     }
 }
