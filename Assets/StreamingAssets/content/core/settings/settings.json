@@ -1,7 +1,14 @@
 ﻿{
     "settings": [
 
-
+	{
+		    "id": "Resolution",
+		    "tabid": "visual",
+		    "hint": "Resolution",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": -1
+},
 {
 		    "id": "Windowed",
 		    "tabid": "visual",
@@ -19,14 +26,14 @@
 		    "id": "GraphicsLevel",
 		    "tabid": "visual",
 		    "hint": "Beauty",
-		    "minvalue": 1,
-		    "maxvalue": 3,
-		    "defaultvalue": 3,
+		    "minvalue": 0,
+		    "maxvalue": 2,
+		    "defaultvalue": 2,
 		    "valuelabels": 
 		    {
-				"1": "GRAPHICS_LEVEL_1",
-				"2": "GRAPHICS_LEVEL_2",
-				"3": "GRAPHICS_LEVEL_3",
+				"0": "GRAPHICS_LEVEL_1",
+				"1": "GRAPHICS_LEVEL_2",
+				"2": "GRAPHICS_LEVEL_3",
 				
 		    }
 

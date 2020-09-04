@@ -16,13 +16,7 @@ public class OptionsPanelTab : MonoBehaviour
     {
         TabId = tabId;
         _parentOptionsPanel = parentOptionsPanel;
-        
-        gameObject.name = "Tab_" + tabId;
-        CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
-        TextInfo textInfo = cultureInfo.TextInfo;
-
-        TabText.text = textInfo.ToTitleCase(tabId);
-
+        TabText.text = tabId;
         TabImage.sprite=ResourcesManager.GetSprite("ui/tabs", tabId);
     }
 

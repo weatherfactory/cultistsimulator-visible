@@ -38,7 +38,13 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void UpdateValueFromSetting(float newValue)
         {
-            SetResolution(GetAvailableResolutions()[(int)newValue]);
+            int index = (int) newValue;
+            //index might be, for instance, -1 if we're relying on a default value. In this case, don't try to set it.
+            if (index >= 0 && index < GetAvailableResolutions().Count)
+            {
+                var resolutionToSet = GetAvailableResolutions()[index];
+                SetResolution(resolutionToSet);
+            }
         }
 
         protected void SetResolution(Resolution resolution)

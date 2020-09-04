@@ -48,7 +48,7 @@ namespace Assets.TabletopUi.Scripts.UI
             strategy.Initialise(settingToBind);
             strategy.SetSliderValues(Slider);
             SliderHint.text = strategy.SettingHint;
-            SliderValueLabel.text = strategy.GetLabelForCurrentValue();
+            SliderValueLabel.text = strategy.GetLabelForValue(Slider.value);
 
             
             gameObject.name = "SettingControl_" + strategy.SettingId;

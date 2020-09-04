@@ -50,11 +50,6 @@ namespace Assets.TabletopUi.Scripts.UI
         }
 
 
-        public string GetLabelForCurrentValue()
-        {
-            return GetLabelForValue(boundSetting.CurrentValue);
-        }
-
         public abstract string GetLabelForValue(float forValue);
     
     }
