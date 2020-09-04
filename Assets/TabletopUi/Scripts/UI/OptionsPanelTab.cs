@@ -10,7 +10,6 @@ public class OptionsPanelTab : MonoBehaviour
     [SerializeField] private TMP_Text TabText;
     
     public string TabId { get; private set; }
-    public bool Selected { get; private set; }
     private OptionsPanel _parentOptionsPanel;
 
     public void Initialise(string tabId,OptionsPanel parentOptionsPanel)
@@ -29,14 +28,16 @@ public class OptionsPanelTab : MonoBehaviour
 
     public void Activate()
     {
-       // Selected = true;
-        gameObject.GetComponent<Button>().Select();
-      _parentOptionsPanel.ShowItemsForTab(this);
+       gameObject.GetComponent<Button>().Select();
+       //without the next line, Unity doesn't highlight the selected buttton, because it's hung up on it already being selected, or something
+       gameObject.GetComponent<Button>().OnSelect(null);
+      _parentOptionsPanel.TabActivated(this);
+      TabImage.color = new Color(1, 1, 1, 1);
 
     }
 
-    public void SwitchAwayFromThisTab()
+    public void Deactivate()
     {
-     //   Selected = false;
+       //
     }
 }

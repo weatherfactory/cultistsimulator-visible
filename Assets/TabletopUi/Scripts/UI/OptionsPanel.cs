@@ -61,9 +61,23 @@ public class OptionsPanel : MonoBehaviour {
         PopulateTabs(settings);
     }
 
-    public void ShowItemsForTab(OptionsPanelTab forTab)
+    public void OnEnable()
     {
-        currentTab = forTab;
+        //because of a quirk of Unity's event / select system, we need to re-highlight the button manually when the menu is opened
+        if(currentTab!=null)
+            currentTab.Activate();
+    }
+
+
+    public void TabActivated(OptionsPanelTab activatedTab)
+    {
+        currentTab = activatedTab;
+
+        foreach (var tab in optionsPanelTabs)
+            if(tab!= currentTab)
+                tab.Deactivate();
+
+        
         foreach (var sc in settingControls)
          if (sc.TabId == currentTab.TabId)
             sc.gameObject.SetActive(true);
