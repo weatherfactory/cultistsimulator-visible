@@ -39,7 +39,9 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private GameObject optionsWindow;
 
 
+    private List<SettingControl> settingControls=new List<SettingControl>();
     private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
+    private OptionsPanelTab currentTab { get; set; }
 
 
     private bool IsInGame()
@@ -50,19 +52,23 @@ public class OptionsPanel : MonoBehaviour {
         return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
     }
 
-    private OptionsPanelTab GetCurrentlySelectedTab()
-    {
-        return optionsPanelTabs.Single(t => t.Selected);
-    }
-
-
     public void Start()
     {
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
-        PopulateTabs(settings);
-
         PopulateSettingControls(settings);
+
+        PopulateTabs(settings);
+    }
+
+    public void ShowItemsForTab(OptionsPanelTab forTab)
+    {
+        currentTab = forTab;
+        foreach (var sc in settingControls)
+         if (sc.TabId == currentTab.TabId)
+            sc.gameObject.SetActive(true);
+         else
+          sc.gameObject.SetActive(false);
     }
 
 
@@ -75,12 +81,12 @@ public class OptionsPanel : MonoBehaviour {
         foreach (var tabName in tabs)
         {
             var tabComponent = Instantiate(TabControlPrefab, TabsHere).GetComponent<OptionsPanelTab>();
-            tabComponent.Initialise(tabName);
+            tabComponent.Initialise(tabName,this);
             optionsPanelTabs.Add(tabComponent);
         }
 
         if (optionsPanelTabs.Any())
-            optionsPanelTabs[0].Select();
+            optionsPanelTabs[0].Activate();
     }
 
     private void PopulateSettingControls(List<Setting> settings)
@@ -92,18 +98,11 @@ public class OptionsPanel : MonoBehaviour {
         {
             var settingControl = Instantiate(SettingControlPrefab, SettingsHere).GetComponent<SettingControl>();
             settingControl.Initialise(setting);
-            if(settingControl.TabId!= GetCurrentlySelectedTab().TabId)
-                settingControl.gameObject.SetActive(false);
+            settingControls.Add(settingControl);
         }
     }
 
-    private void OnEnable()
-    {
-    
-       //RefreshOptionsText();
-    }
-
-
+  
     public void ToggleVisibility() {
 		gameObject.SetActive(!gameObject.activeSelf);
 

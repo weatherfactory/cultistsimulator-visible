@@ -11,10 +11,12 @@ public class OptionsPanelTab : MonoBehaviour
     
     public string TabId { get; private set; }
     public bool Selected { get; private set; }
+    private OptionsPanel _parentOptionsPanel;
 
-    public void Initialise(string tabId)
+    public void Initialise(string tabId,OptionsPanel parentOptionsPanel)
     {
         TabId = tabId;
+        _parentOptionsPanel = parentOptionsPanel;
         
         gameObject.name = "Tab_" + tabId;
         CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
@@ -25,13 +27,16 @@ public class OptionsPanelTab : MonoBehaviour
         TabImage.sprite=ResourcesManager.GetSprite("ui/tabs", tabId);
     }
 
-    public void Select()
+    public void Activate()
     {
-        Selected = true;
+       // Selected = true;
+        gameObject.GetComponent<Button>().Select();
+      _parentOptionsPanel.ShowItemsForTab(this);
+
     }
 
-    public void Deselect()
+    public void SwitchAwayFromThisTab()
     {
-        Selected = false;
+     //   Selected = false;
     }
 }
