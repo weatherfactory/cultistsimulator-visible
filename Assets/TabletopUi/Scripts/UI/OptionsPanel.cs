@@ -35,8 +35,10 @@ public class OptionsPanel : MonoBehaviour {
 	[Header("Controls")]
     
     [SerializeField] private RestartButton restartButton;
+    
 
     [SerializeField] private ButtonWithLabel saveAndExitButton;
+    [SerializeField] private ButtonWithLabel continueButton;
     [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject OverlayWindow;
     
@@ -71,6 +73,8 @@ public class OptionsPanel : MonoBehaviour {
     {
         saveAndExitButton.Initialise(
             Registry.Get<TabletopManager>().SaveAndExitEvent);
+
+        continueButton.Initialise(Registry.Get<TabletopManager>().ToggleOptionsEvent);
     }
 
     public void OnEnable()
