@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {}
 
 
-    public class Concursum
+    public class Concursum:MonoBehaviour
     {
 
         //things I really really truly want to be global:
@@ -95,7 +95,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private Config _config;
 
-        public Concursum()
+        public void Awake()
         {
             _config = new Config {CultureId = NoonConstants.DEFAULT_CULTURE_ID};
         }

@@ -80,6 +80,7 @@ namespace Assets.CS.TabletopUI {
         private SituationBuilder _situationBuilder;
 
 
+        public UnityEvent SaveAndExitEvent;
         public UnityEvent ToggleOptionsEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
@@ -358,7 +359,8 @@ namespace Assets.CS.TabletopUI {
 
  
 
-        #region -- Build / Reset -------------------------------
+
+
 
         public void SetupNewBoard(SituationBuilder builder) {
 
@@ -550,9 +552,9 @@ namespace Assets.CS.TabletopUI {
             _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, animName);
         }
 
-#endregion
 
-#region -- Load / Save GameState -------------------------------
+
+
 
         public void LoadGame(SourceForGameState gameStateSource) {
             ICompendium compendium = Registry.Get<ICompendium>();
@@ -658,9 +660,31 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-#endregion
+        public async void LeaveGame()
+        {
 
-#region -- Greedy Grabbing -------------------------------
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
+
+            var success = await saveTask;
+
+
+            if (success)
+            {
+                Registry.Get<StageHand>().MenuScreen();
+            }
+            else
+            {
+                // Save failed, need to let player know there's an issue
+                // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
+                ToggleOptionsEvent.Invoke();
+                Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+            }
+
+        }
+
+
+        #region -- Greedy Grabbing -------------------------------
 
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();

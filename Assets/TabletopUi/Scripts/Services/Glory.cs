@@ -20,6 +20,8 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField]
         public StageHand stageHand;
 
+        [SerializeField] public Concursum concursum;
+
         private string initialisedAt = null;
 
 
@@ -66,17 +68,18 @@ namespace Assets.TabletopUi.Scripts.Services
 
             config.ReadFromIniFile();
 
-            registryAccess.Register(new Concursum());
+            registryAccess.Register(concursum);
 
-            Registry.Get<Concursum>().InitialiseWithConfig(config);
+            concursum.InitialiseWithConfig(config);
 
-
-
+            
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));
             registryAccess.Register<MetaInfo>(metaInfo);
-
-
+            
             registryAccess.Register<StageHand>(stageHand);
+
+
+            registryAccess.Register<IDice>(new Dice());
 
 
             var storefrontServicesProvider = new StorefrontServicesProvider();
@@ -89,13 +92,13 @@ namespace Assets.TabletopUi.Scripts.Services
             registryAccess.Register(new ModManager());
             registryAccess.Register<ICompendium>(new Compendium());
 
-            ReloadCompendium(Registry.Get<Concursum>().GetCurrentCultureId());
+            ReloadCompendium(concursum.GetCurrentCultureId());
 
             registryAccess.Register<ILanguageManager>(languageManager);
             languageManager.Initialise();
 
 
-            Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+            concursum.CultureChangedEvent.AddListener(OnCultureChanged);
 
             //TODO: async
             LoadCurrentSave(registryAccess);

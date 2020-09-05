@@ -22,7 +22,7 @@ using UnityEngine.UI;
 using UnityEngine.VR;
 using static Noon.NoonUtility;
 
-public class DebugTools : MonoBehaviour,IRollOverride
+public class DebugTools : MonoBehaviour
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
@@ -68,7 +68,6 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     public void Toggle()
     {
-        Debug.Log(isActiveAndEnabled);
         gameObject.SetActive(!isActiveAndEnabled);
     }
 
@@ -78,7 +77,6 @@ public class DebugTools : MonoBehaviour,IRollOverride
         Toggle(); //start by hiding the panel. If it's not enabled at the beginning, this won't run
         var registry = new Registry();
         registry.Register(this);
-        registry.Register<IDice>(new Dice(this));
 
 
         {
@@ -580,11 +578,4 @@ public class DebugTools : MonoBehaviour,IRollOverride
     }
 }
 
-public interface IRollOverride
-{
-    //if at least one override is queued, pop it and return it
-    //if none are queued, return 0
-    // If a contextual recipe is passed, it can affect the dice roll
-    int PopNextOverrideValue(Recipe recipe = null);
 
-}

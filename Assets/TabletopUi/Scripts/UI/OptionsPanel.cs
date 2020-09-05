@@ -35,13 +35,17 @@ public class OptionsPanel : MonoBehaviour {
 	[Header("Controls")]
     
     [SerializeField] private RestartButton restartButton;
+
+    [SerializeField] private ButtonWithLabel saveAndExitButton;
     [SerializeField] private GameObject manageSavesWindow;
-    [SerializeField] private GameObject optionsWindow;
+    [SerializeField] private GameObject OverlayWindow;
+    
 
 
     private List<SettingControl> settingControls=new List<SettingControl>();
     private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
     private OptionsPanelTab currentTab { get; set; }
+
 
 
     private bool IsInGame()
@@ -59,6 +63,14 @@ public class OptionsPanel : MonoBehaviour {
         PopulateSettingControls(settings);
 
         PopulateTabs(settings);
+
+        InitialiseButtons();
+    }
+
+    private void InitialiseButtons()
+    {
+        saveAndExitButton.Initialise(
+            Registry.Get<TabletopManager>().SaveAndExitEvent);
     }
 
     public void OnEnable()
@@ -118,14 +130,14 @@ public class OptionsPanel : MonoBehaviour {
 
   
     public void ToggleVisibility() {
-		gameObject.SetActive(!gameObject.activeSelf);
+		OverlayWindow.SetActive(!OverlayWindow.activeSelf);
 
         if (!IsInGame())
 			return;
 
         //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
         //let's reset it either way
-        restartButton.ResetState();
+      //  restartButton.ResetState();
 
 		// Simplified to use Martin's LockToPause code which handles everything nicely - CP
         if (gameObject.activeInHierarchy)
@@ -149,31 +161,6 @@ public class OptionsPanel : MonoBehaviour {
         }
     }
 
-	public async void LeaveGame()
-	{
-		if (!IsInGame())
-			return;
-
-        var tabletopManager = Registry.Get<TabletopManager>();
-        tabletopManager.SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
-        var saveTask = tabletopManager.SaveGameAsync(true, SourceForGameState.DefaultSave);
-
-        var success = await saveTask;
-
-
-	        if (success)
-	        {
-                Registry.Get<StageHand>().MenuScreen();
-            }
-	        else
-	        {
-		        // Save failed, need to let player know there's an issue
-		        // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-		        ToggleVisibility();
-		        Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
-	        }
-        
-	}
 
 	// Leave game without saving
 	public void AbandonGame()
