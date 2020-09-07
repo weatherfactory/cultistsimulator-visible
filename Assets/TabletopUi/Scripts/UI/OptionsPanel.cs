@@ -71,8 +71,7 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-        saveAndExitButton.Initialise(
-            Registry.Get<TabletopManager>().SaveAndExitEvent);
+        saveAndExitButton.Initialise(Registry.Get<TabletopManager>().SaveAndExitEvent);
 
         continueButton.Initialise(Registry.Get<TabletopManager>().ToggleOptionsEvent);
     }
@@ -141,9 +140,8 @@ public class OptionsPanel : MonoBehaviour {
 
         //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
         //let's reset it either way
-      //  restartButton.ResetState();
+        restartButton.ResetState();
 
-		// Simplified to use Martin's LockToPause code which handles everything nicely - CP
         if (gameObject.activeInHierarchy)
 		
 			// now lock the pause so players can't do it manually - this also pauses
@@ -155,8 +153,8 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void RestartGame() {
-		if (!IsInGame())
-			return;
+
+
         if(restartButton.AttemptRestart())
         {
             ToggleVisibility();
