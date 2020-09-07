@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.UI
         public void Initialise(Sprite sprite, string labelText, UnityEvent eventToTrigger)
         {
             Image.sprite = sprite;
-            Label.text = Label.text;
+            Label.text = labelText;
             Initialise(eventToTrigger);
         }
 

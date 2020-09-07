@@ -15329,7 +15329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000052928925, y: -0.00004386902}
+  m_AnchoredPosition: {x: 0.00004053116, y: 0.000051498413}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -24687,6 +24687,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 138.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6671848927037740596, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1836229256}
+    - target: {fileID: 6671848927037740596, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671848927037740596, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.TabletopUi.Scripts.UI.ButtonWithLabel, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6671848927037740600, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_Name
@@ -34019,6 +34034,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 174318815}
   Label: {fileID: 572009099}
+--- !u!114 &1836229256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1836229261, guid: d7dd4dc93e7af6e489e258c92e502019,
+    type: 3}
+  m_PrefabInstance: {fileID: 1071515759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836229253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58c0ed45af52664dba775a81675597a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1859361944
 PrefabInstance:
   m_ObjectHideFlags: 0
