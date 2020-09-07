@@ -2998,35 +2998,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6dede08ba6a40338d4b3130dc33ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _endGameAnimController: {fileID: 2130193020}
-  _tabletop: {fileID: 730}
-  tabletopBackground: {fileID: 577}
-  _highlightLocationsController: {fileID: 1525472693}
-  Limbo: {fileID: 68}
-  aspectDetailsWindow: {fileID: 566079818}
-  tokenDetailsWindow: {fileID: 114111364633692442}
-  cardHoverDetail: {fileID: 5265435531635378363}
-  _mapController: {fileID: 1698081295}
-  mapTokenContainer: {fileID: 1927212867}
-  mapBackground: {fileID: 1041490181}
-  mapAnimation: {fileID: 1041490182}
-  draggableHolderRectTransform: {fileID: 1610149764}
-  tableLevelTransform: {fileID: 475}
-  windowLevelTransform: {fileID: 392807927}
-  tableScroll: {fileID: 631}
-  _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
-    type: 3}
-  StatusBar: {fileID: 1243788745}
-  backgroundMusic: {fileID: 677}
-  _notifier: {fileID: 594}
-  _autosaveNotifier: {fileID: 1985926805}
-  _elementOverview: {fileID: 1895797520}
-  SaveAndExitEvent:
+  ViewFilesEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 600}
-        m_TargetAssemblyTypeName: Assets.CS.TabletopUI.TabletopManager, Assembly-CSharp
-        m_MethodName: LeaveGame
+      - m_Target: {fileID: 1425097421}
+        m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
+        m_MethodName: BrowseFiles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3042,6 +3019,21 @@ MonoBehaviour:
       - m_Target: {fileID: 1425097421}
         m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
         m_MethodName: ToggleVisibility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SaveAndExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 600}
+        m_TargetAssemblyTypeName: Assets.CS.TabletopUI.TabletopManager, Assembly-CSharp
+        m_MethodName: LeaveGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3110,6 +3102,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _endGameAnimController: {fileID: 2130193020}
+  _tabletop: {fileID: 730}
+  tabletopBackground: {fileID: 577}
+  _highlightLocationsController: {fileID: 1525472693}
+  Limbo: {fileID: 68}
+  aspectDetailsWindow: {fileID: 566079818}
+  tokenDetailsWindow: {fileID: 114111364633692442}
+  cardHoverDetail: {fileID: 5265435531635378363}
+  _mapController: {fileID: 1698081295}
+  mapTokenContainer: {fileID: 1927212867}
+  mapBackground: {fileID: 1041490181}
+  mapAnimation: {fileID: 1041490182}
+  draggableHolderRectTransform: {fileID: 1610149764}
+  tableLevelTransform: {fileID: 475}
+  windowLevelTransform: {fileID: 392807927}
+  tableScroll: {fileID: 631}
+  _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
+    type: 3}
+  StatusBar: {fileID: 1243788745}
+  backgroundMusic: {fileID: 677}
+  _notifier: {fileID: 594}
+  _autosaveNotifier: {fileID: 1985926805}
+  _elementOverview: {fileID: 1895797520}
 --- !u!114 &610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15317,7 +15332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00004053116, y: -0.000639664}
+  m_AnchoredPosition: {x: 0.00004053116, y: -0.0007579196}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -24630,7 +24645,7 @@ PrefabInstance:
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -185.28387
+      value: -185.28418
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -24675,7 +24690,7 @@ PrefabInstance:
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -102.64194
+      value: -102.6416
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}

@@ -137,11 +137,15 @@ public class MenuScreenController : LocalNexus {
             )
     };
 
+    void Awake()
+    {
+        var registry = new Registry();
+        registry.Register(this);
+    }
     
     void Start() {
 
         InitialiseServices();
-
 
         //// We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f);
@@ -190,8 +194,6 @@ public class MenuScreenController : LocalNexus {
 
     void InitialiseServices()
 	{
-        
-        
         currentVersion = Registry.Get<MetaInfo>().VersionNumber;
 
         BuildLegacyStartsPanel();

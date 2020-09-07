@@ -73,13 +73,13 @@ public class OptionsPanel : MonoBehaviour {
     private void InitialiseButtons()
     {
         if(saveAndExitButton!=null)
-            saveAndExitButton.Initialise(Registry.Get<TabletopManager>().SaveAndExitEvent);
+            saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
 
         if (resumeButton != null)
             resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
 
         if(viewFilesButton!=null)
-            viewFilesButton.Initialise(Registry.Get<TabletopManager>().ToggleDebugEvent);
+            viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
     }
 
     public void OnEnable()
@@ -192,8 +192,7 @@ public class OptionsPanel : MonoBehaviour {
 				    // If a game is active, try to save it, showing an error if that fails
 				    if (!success)
 				    {
-					    ToggleVisibility();
-					    Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
+					  Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
 					    OpenInFileBrowser.Open(savePath);
 				    }
 

@@ -184,11 +184,17 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        void Awake()
+        {
+            var registry = new Registry();
+            registry.Register(this);
+        }
+
         void Start()
         {
             //AppealToConscience();
             var registry = new Registry();
-            registry.Register(this);
+            
 
             
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
