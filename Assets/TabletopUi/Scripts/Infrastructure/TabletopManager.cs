@@ -80,10 +80,8 @@ namespace Assets.CS.TabletopUI {
         private SituationBuilder _situationBuilder;
 
 
-        public UnityEvent SaveAndExitEvent;
-        public UnityEvent ToggleDebugEvent;
-        public SpeedControlEvent SpeedControlEvent;
-        public UILookAtMeEvent UILookAtMeEvent;
+
+
 
 
         private bool disabled;
