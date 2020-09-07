@@ -76328,16 +76328,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4057377682757343470}
+      objectReference: {fileID: 182394258}
     - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleVisibility
+      value: CloseCurrentOverlay
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: OptionsPanel, Assembly-CSharp
+      value: MenuScreenController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
