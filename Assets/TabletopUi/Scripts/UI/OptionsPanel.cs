@@ -35,14 +35,14 @@ public class OptionsPanel : MonoBehaviour {
 
 	[Header("Controls")]
     
-    [SerializeField] private RestartButton restartButton;
+
 
     [SerializeField] private ButtonWithLabel resumeButton;
     [SerializeField] private ButtonWithLabel saveAndExitButton;
     [SerializeField] private ButtonWithLabel viewFilesButton;
-    [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject OverlayWindow;
-    
+    [SerializeField] private RestartButton restartButton;
+
 
 
     private List<SettingControl> settingControls=new List<SettingControl>();
@@ -205,11 +205,11 @@ public class OptionsPanel : MonoBehaviour {
         OpenInFileBrowser.Open(savePath);
     }
 
-    public void ManageSaves( bool open )
-	{
-		this.gameObject.SetActive( !open );
-		manageSavesWindow.SetActive( open );
-    }
+ //   public void ManageSaves( bool open )
+	//{
+	//	this.gameObject.SetActive( !open );
+	//	manageSavesWindow.SetActive( open );
+ //   }
 
 
 	public void SaveErrorContinue()
