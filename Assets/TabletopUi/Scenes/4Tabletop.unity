@@ -24817,6 +24817,21 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1425097421}
+    - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVisibility
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsPanel, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -25687,6 +25702,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 15.01
       objectReference: {fileID: 0}
+    - target: {fileID: 7595869506903826617, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_text
+      value: SAVE & EXIT
+      objectReference: {fileID: 0}
     - target: {fileID: 7595869506903826623, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: locLabel
@@ -25896,6 +25916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: locLabel
       value: UI_RESTART
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713522962242268452, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_text
+      value: RESTART
       objectReference: {fileID: 0}
     - target: {fileID: 8713522962242268453, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
