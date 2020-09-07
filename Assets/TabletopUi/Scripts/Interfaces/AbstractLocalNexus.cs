@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
     
 
-   public abstract class LocalNexus : PlayerInput
+   public abstract class LocalNexus : MonoBehaviour
    {
        [SerializeField] public UnityEvent ViewFilesEvent;
        [SerializeField] public UnityEvent ToggleOptionsEvent;

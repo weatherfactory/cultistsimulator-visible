@@ -34,6 +34,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			inInputField = false;
 		}
 
+        public void Input_Pause(InputAction.CallbackContext context)
+        {
+            if (!_debugTools.isActiveAndEnabled)
+            {
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true});
+            }
+        }
+
+
+        public void Input_NormalSpeed(InputAction.CallbackContext context)
+        {
+            if (!_debugTools.isActiveAndEnabled)
+            {
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                    {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = true});
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false});
+            }
+        }
+
+        public void Input_FastSpeed(InputAction.CallbackContext context)
+        {
+            if (!_debugTools.isActiveAndEnabled)
+            {
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            }
+        }
+
         public void Update()
         {
             if (!enabled)
@@ -56,27 +86,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             //...it's nice to be able to type N and M
 
-            if (!_debugTools.isActiveAndEnabled)
-            {
+            //if (!_debugTools.isActiveAndEnabled)
+            //{
 
-                if (Keyboard.current.nKey.wasPressedThisFrame)
-                //if (Input.GetKeyDown(KeyCode.N))
-                {
-                   Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =1 , GameSpeed = GameSpeed.Normal, WithSFX =true });
-                   Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
-                }
-                //if (Input.GetKeyDown(KeyCode.M))
-                if (Keyboard.current.mKey.wasPressedThisFrame)
-                {
-                    Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true});
-                    Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
-                }
-            }
+            //    if (Keyboard.current.nKey.wasPressedThisFrame)
+            //    //if (Input.GetKeyDown(KeyCode.N))
+            //    {
+            //       Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =1 , GameSpeed = GameSpeed.Normal, WithSFX =true });
+            //       Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            //    }
+            //    //if (Input.GetKeyDown(KeyCode.M))
+            //    if (Keyboard.current.mKey.wasPressedThisFrame)
+            //    {
+            //        Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true});
+            //        Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            //    }
+            //}
 
 
 
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
+            //if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            //    Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{
