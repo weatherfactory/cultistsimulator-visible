@@ -3,16 +3,21 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class UIController: MonoBehaviour
+    public class UIController: PlayerInput
     {
+
+        public UnityEvent foo;
 
 
         public DebugTools _debugTools;
@@ -45,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
-              Registry.Get<TabletopManager>().ToggleDebugEvent.Invoke();
+              Registry.Get<LocalNexus>().ToggleDebugEvent.Invoke();
             }
 
 
@@ -54,23 +59,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!_debugTools.isActiveAndEnabled)
             {
 
-                if (Input.GetKeyDown(KeyCode.N))
+                if (Keyboard.current.nKey.wasPressedThisFrame)
+                //if (Input.GetKeyDown(KeyCode.N))
                 {
-                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =1 , GameSpeed = GameSpeed.Normal, WithSFX =true });
-                   Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+                   Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =1 , GameSpeed = GameSpeed.Normal, WithSFX =true });
+                   Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
                 }
-
-                if (Input.GetKeyDown(KeyCode.M))
+                //if (Input.GetKeyDown(KeyCode.M))
+                if (Keyboard.current.mKey.wasPressedThisFrame)
                 {
-                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true});
-                    Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+                    Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true});
+                    Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
                 }
             }
 
 
 
-            if (Input.GetButtonDown("Pause"))
-                Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true });
 
             if (IsPressingAbortHotkey())	// Uses Keycode.Escape by default, for the benefit of anyone trying to search for this in future :)
 			{
@@ -88,7 +94,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 				if (!windowWasOpen)	// Only summon options if no windows to clear
 				{
-                    Registry.Get<TabletopManager>().ToggleOptionsEvent.Invoke();
+                    Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
                 }
 			}
 
@@ -148,7 +154,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public bool IsPressingAbortHotkey()
         {
-            return Input.GetButtonDown("Cancel");
+            return Keyboard.current.escapeKey.wasPressedThisFrame;
+            //   return Input.GetButtonDown("Cancel");
         }
 
     }

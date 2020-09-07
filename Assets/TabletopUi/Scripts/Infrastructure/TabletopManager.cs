@@ -680,7 +680,7 @@ namespace Assets.CS.TabletopUI {
             {
                 // Save failed, need to let player know there's an issue
                 // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-                ToggleOptionsEvent.Invoke();
+                Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
                 Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
             }
 

@@ -1,0 +1,71 @@
+{
+    "name": "Keybindings",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "a5f15f1d-5e94-4ee1-9d08-4ef12d45a01d",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "295541f4-2845-4bbc-a969-f497df13e6e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NormalSpeed",
+                    "type": "Button",
+                    "id": "e49fa150-5679-4be1-b0f6-daff5bf7eb2a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FastForward",
+                    "type": "Button",
+                    "id": "562ce9bb-470f-42be-9374-c8a2faa7a820",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2ea7fe1d-9dba-4bea-ba5a-bed352a58bce",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NormalSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d94e6168-fe03-4fe0-be30-d93c374d940b",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FastForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80ed471a-5b84-4aac-9af3-5a1a272be0b9",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

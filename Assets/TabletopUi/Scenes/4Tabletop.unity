@@ -1181,6 +1181,7 @@ Transform:
   - {fileID: 188}
   - {fileID: 192}
   - {fileID: 193}
+  - {fileID: 522769977}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15344,7 +15345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00004053116, y: -0.0007987227}
+  m_AnchoredPosition: {x: -0.000054836273, y: -0.0009970665}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -15387,6 +15388,80 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &522769976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522769977}
+  - component: {fileID: 522769978}
+  m_Layer: 0
+  m_Name: PlayerInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522769977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522769976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 187}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &522769978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522769976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 85b63ad8e244b024abf5b0f9f91260ef,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 295541f4-2845-4bbc-a969-f497df13e6e6
+    m_ActionName: Default/Pause[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e49fa150-5679-4be1-b0f6-daff5bf7eb2a
+    m_ActionName: Default/NormalSpeed[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 562ce9bb-470f-42be-9374-c8a2faa7a820
+    m_ActionName: Default/FastForward[/Keyboard/m]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Default
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &524415454
 GameObject:
   m_ObjectHideFlags: 0
@@ -24790,7 +24865,7 @@ PrefabInstance:
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -165.28387
+      value: -165.25
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -24850,7 +24925,7 @@ PrefabInstance:
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -92.64194
+      value: -92.75
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -25165,7 +25240,7 @@ PrefabInstance:
     - target: {fileID: 6671848926856241789, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -695.8516
+      value: -695.75
       objectReference: {fileID: 0}
     - target: {fileID: 6671848926856241789, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -30786,7 +30861,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -36345,7 +36420,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
