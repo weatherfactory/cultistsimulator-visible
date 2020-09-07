@@ -72,13 +72,11 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-        if(saveAndExitButton!=null)
-            saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
 
-        if (resumeButton != null)
+            saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
+        
             resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
 
-        if(viewFilesButton!=null)
             viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
     }
 
@@ -178,31 +176,7 @@ public class OptionsPanel : MonoBehaviour {
 
     public async void BrowseFiles()
     {
-	    // Check for the existence of save file before browsing to it, since behaviour is undefined in that case
-	    string savePath = NoonUtility.GetGameSaveLocation();
-	    if (!File.Exists(savePath))
-	    {
-		    if (IsInGame())
-            {
-                var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true, SourceForGameState.DefaultSave);
-
-                var success = await saveTask;
-
-
-				    // If a game is active, try to save it, showing an error if that fails
-				    if (!success)
-				    {
-					  Registry.Get<Assets.Core.Interfaces.INotifier>().ShowSaveError(true);
-					    OpenInFileBrowser.Open(savePath);
-				    }
-
-                    return;
-		    }
-
-		    // Otherwise, just show the directory where the save file would be located
-		    savePath = Path.GetDirectoryName(savePath);
-	    }
-        OpenInFileBrowser.Open(savePath);
+	    OpenInFileBrowser.Open(Application.persistentDataPath);
     }
 
  //   public void ManageSaves( bool open )
