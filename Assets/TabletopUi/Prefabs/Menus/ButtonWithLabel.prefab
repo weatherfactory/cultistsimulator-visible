@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SAVE & EXIT
+  m_text: '- ACTION -'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b925783294fd8cb49862e058e1931f2b, type: 2}
   m_sharedMaterial: {fileID: 21723337095257772, guid: b925783294fd8cb49862e058e1931f2b,
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locLabel: UI_SAVEEXIT
+  locLabel: UI_
   fontStyle: 2
   forceFontLanguage: 
   highContrastEnabled: 1
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 965984f196100e44da2ad587944509d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 964b6b946c399c24f9dda915e0a37ff7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -479,9 +479,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Right: 5
+    m_Top: -5
+    m_Bottom: -5
   m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
@@ -505,6 +505,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 5955534767181054352}
   Label: {fileID: 5955534767052464877}
-  EventToTrigger:
-    m_PersistentCalls:
-      m_Calls: []

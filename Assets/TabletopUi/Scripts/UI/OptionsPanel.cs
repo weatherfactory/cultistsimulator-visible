@@ -17,6 +17,7 @@ using Noon;
 using UnityEngine.Audio;
 using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.UI;
 using UIWidgets;
@@ -35,10 +36,10 @@ public class OptionsPanel : MonoBehaviour {
 	[Header("Controls")]
     
     [SerializeField] private RestartButton restartButton;
-    
 
+    [SerializeField] private ButtonWithLabel resumeButton;
     [SerializeField] private ButtonWithLabel saveAndExitButton;
-    [SerializeField] private ButtonWithLabel continueButton;
+    [SerializeField] private ButtonWithLabel viewFilesButton;
     [SerializeField] private GameObject manageSavesWindow;
     [SerializeField] private GameObject OverlayWindow;
     
@@ -71,9 +72,14 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-        saveAndExitButton.Initialise(Registry.Get<TabletopManager>().SaveAndExitEvent);
+        if(saveAndExitButton!=null)
+            saveAndExitButton.Initialise(Registry.Get<TabletopManager>().SaveAndExitEvent);
 
-        continueButton.Initialise(Registry.Get<TabletopManager>().ToggleOptionsEvent);
+        if (resumeButton != null)
+            resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
+
+        if(viewFilesButton!=null)
+            viewFilesButton.Initialise(Registry.Get<TabletopManager>().ToggleDebugEvent);
     }
 
     public void OnEnable()

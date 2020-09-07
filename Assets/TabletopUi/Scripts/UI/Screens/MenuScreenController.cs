@@ -18,6 +18,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TabletopUi.Scripts.Services;
@@ -25,7 +26,7 @@ using TabletopUi.Scripts.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MenuScreenController : MonoBehaviour {
+public class MenuScreenController : LocalNexus {
 
     // can be used to disable interaction when we start loading into a scene
     public EventSystem eventSystem;

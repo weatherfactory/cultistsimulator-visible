@@ -31,7 +31,7 @@ using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber,ISettingSubscriber
+    public class TabletopManager : LocalNexus, IStacksChangeSubscriber,ISettingSubscriber
     {
 
 
@@ -81,7 +81,6 @@ namespace Assets.CS.TabletopUI {
 
 
         public UnityEvent SaveAndExitEvent;
-        public UnityEvent ToggleOptionsEvent;
         public UnityEvent ToggleDebugEvent;
         public SpeedControlEvent SpeedControlEvent;
         public UILookAtMeEvent UILookAtMeEvent;
@@ -1282,6 +1281,7 @@ public ElementStacksManager GetTabletopStacksManager()
         {
             SetAutosaveInterval(newValue);
         }
+
     }
 
 

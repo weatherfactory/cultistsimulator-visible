@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Assets.Core;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -22,25 +24,30 @@ namespace Assets.CS.TabletopUI
         public static T Get<T>() where T: class
         {
 
-            //if (!registered.ContainsKey(typeof(T)))
-            //{
-            //    if(typeof(T)==typeof(Concursum))
-            //        registered[typeof(Concursum)] = new Concursum();
-            //    else
-            //        throw new ApplicationException(typeof(T).Name + " wasn't registered");
-            //}
-
-            if (!registered.ContainsKey(typeof(T)))
+            if (registered.ContainsKey(typeof(T)))
             {
 
-                NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
-                return null;
+                T matchingTypeInstance = registered[typeof(T)] as T;
+
+                return matchingTypeInstance;
             }
 
+            //looking for an abstract class? find any subclasses.
+            //I originally planned to use interfaces, but Unity events have to be fields, and interfaces can't have fields.
+            if(typeof(T).IsAbstract)
+            {
+                foreach(var candidateType in registered.Keys)
+                    if(candidateType.IsSubclassOf(typeof(T)))
+                    {
+                        T matchingSubtypeInstance = registered[candidateType] as T;
+                        return matchingSubtypeInstance;
+                    }
+                    
+            }
 
-            T got = registered[typeof(T)] as T;
-      
-            return got;
+            NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
+                return null;
+
         }
 
         public Registry()
