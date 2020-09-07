@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class UIController: PlayerInput
+    public class UIController: LocalNexus
     {
 
         public UnityEvent foo;

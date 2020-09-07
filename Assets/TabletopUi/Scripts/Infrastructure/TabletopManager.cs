@@ -28,10 +28,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : LocalNexus, IStacksChangeSubscriber,ISettingSubscriber
+    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber,ISettingSubscriber
     {
 
 
@@ -267,12 +268,12 @@ namespace Assets.CS.TabletopUI {
                 GameSaveManager.saveErrorWarningTriggered = true;
             }
 
-            
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                 { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
 
-            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             _elementOverview.UpdateDisplay(); //show initial correct count of everything we've just loaded
 
 
@@ -563,9 +564,9 @@ namespace Assets.CS.TabletopUI {
             ICompendium compendium = Registry.Get<ICompendium>();
 
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                 {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
-            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+            Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
@@ -598,10 +599,10 @@ namespace Assets.CS.TabletopUI {
                 Debug.LogException(e, this);
             }
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                 {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
 
-            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             var activeLegacy = Registry.Get<Character>().ActiveLegacy;
 
@@ -619,7 +620,7 @@ namespace Assets.CS.TabletopUI {
 
 			bool success = true;	// Assume everything will be OK to begin with...
 
-			SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
+			Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
 
 			
             try
@@ -641,7 +642,7 @@ namespace Assets.CS.TabletopUI {
 	            Debug.LogException(e);
             }
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
 
 
             if (success && withNotification && _autosaveNotifier!=null)
@@ -654,7 +655,7 @@ namespace Assets.CS.TabletopUI {
 			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
 			{
                 // only pause if we need to (since it triggers sfx)
-                SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
 
 				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
@@ -666,7 +667,7 @@ namespace Assets.CS.TabletopUI {
         public async void LeaveGame()
         {
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
             var saveTask = SaveGameAsync(true, SourceForGameState.DefaultSave);
 
             var success = await saveTask;
@@ -1001,7 +1002,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
             DraggableToken.CancelDrag();
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed=GameSpeed.Paused,WithSFX =false});
             RequestNonSaveableState( NonSaveableType.Mansus, true );
 
             SoundManager.PlaySfx("MansusEntry");
@@ -1040,9 +1041,9 @@ public ElementStacksManager GetTabletopStacksManager()
             SoundManager.PlaySfx("MansusExit");
 
             // Pause the game with a flashing notification
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX = false});
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX = false});
 
-            UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
+           Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 
             // Put card into the original Situation Results
 			mansusCard.lastTablePos = null;	// Flush last known desktop position so it's treated as brand new

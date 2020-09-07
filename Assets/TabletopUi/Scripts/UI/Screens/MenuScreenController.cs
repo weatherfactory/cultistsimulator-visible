@@ -137,11 +137,6 @@ public class MenuScreenController : LocalNexus {
             )
     };
 
-    void Awake()
-    {
-        var registry = new Registry();
-        registry.Register(this);
-    }
     
     void Start() {
 

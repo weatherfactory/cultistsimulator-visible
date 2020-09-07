@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -53,7 +54,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _uiController.enabled = false; // Disable shortcuts
 
             // pause game
-          Registry.Get<TabletopManager>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX =false });
+          Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel =3 , GameSpeed = GameSpeed.Paused, WithSFX =false });
 
 
             // Abort all interactions
