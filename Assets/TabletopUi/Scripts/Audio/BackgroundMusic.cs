@@ -49,9 +49,9 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         PlayNextClip();
     }
 
-    public void UpdateValueFromSetting(float newValue)
+    public void UpdateValueFromSetting(object newValue)
     {
-        SetVolume(newValue);
+        SetVolume(newValue is float ? (float) newValue : 0);
     }
 
 

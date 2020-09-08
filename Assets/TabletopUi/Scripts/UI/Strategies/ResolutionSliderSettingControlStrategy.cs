@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-    public class ResolutionSettingControlStrategy : AbstractSettingControlStrategy
+    public class ResolutionSliderSettingControlStrategy : SliderSettingControlStrategy
     {
 
 
@@ -17,7 +17,8 @@ namespace Assets.TabletopUi.Scripts.UI
             slider.minValue = 0;
             slider.maxValue = availableResolutions.Count - 1;
 
-            int candidateSliderValue = (int)boundSetting.CurrentValue;
+            int candidateSliderValue = (boundSetting.CurrentValue is int value ? value : 0);
+
             if(candidateSliderValue == boundSetting.DefaultValue)
             {
                 //if the slider value is still the default value (-1 or other distinctive marker) then resolution has never been intentionally set: find a match for the current resolution

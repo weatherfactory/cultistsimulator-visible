@@ -36,9 +36,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void UpdateValueFromSetting(float newValue)
+        public void UpdateValueFromSetting(object newValue)
         {
-            int index = (int) newValue;
+            int index = (newValue is int value ? value : 0); ;
             //index might be, for instance, -1 if we're relying on a default value. In this case, don't try to set it.
             if (index >= 0 && index < GetAvailableResolutions().Count)
             {

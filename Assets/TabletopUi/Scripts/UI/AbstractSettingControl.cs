@@ -10,14 +10,11 @@ namespace Assets.TabletopUi.Scripts.UI
     {
 
 
-        protected AbstractSettingControlStrategy strategy;
         protected bool _initialisationComplete = false;
         protected float? newSettingValueQueued = null;
 
-        public string TabId
-        {
-            get { return strategy.SettingTabId; }
-        }
+        public abstract string TabId { get; }
+
 
         public abstract void Initialise(Setting settingToBind);
 

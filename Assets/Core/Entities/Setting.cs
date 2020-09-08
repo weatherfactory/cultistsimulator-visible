@@ -35,13 +35,15 @@ namespace Assets.Core.Entities
         [FucineValue]
         public int DefaultValue { get; set; }
 
+        [FucineValue(DefaultValue = "float")]
+        public string DataType { get; set; }
+
 
         
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
 
-        public float CurrentValue { get; private set; }
-        public string CurrentValueString { get; private set; }
+        public object CurrentValue { get; private set; }
 
 
         private List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();
@@ -53,11 +55,34 @@ namespace Assets.Core.Entities
         {
             Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
 
-            var potentialValue= Registry.Get<Config>().GetPersistedSettingValue(Id);
-           if (potentialValue == null)
-               CurrentValue = DefaultValue;
-           else
-               CurrentValue = (float) potentialValue;
+
+            if (DataType == "float")
+            {
+                var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsFloat(Id);
+                if (potentialValue == null)
+                    CurrentValue = DefaultValue;
+                else
+                    CurrentValue = potentialValue;
+            }
+            else if (DataType == "int")
+            {
+                var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsInt(Id);
+                if (potentialValue == null)
+                    CurrentValue = DefaultValue;
+                else
+                    CurrentValue = potentialValue;
+            }
+            else
+            {
+             
+                var potentialValue= Registry.Get<Config>().GetPersistedSettingValueAsString(Id);
+                if (potentialValue == String.Empty)
+                    CurrentValue = DefaultValue;
+                else
+                    CurrentValue = potentialValue;
+
+
+            }
         }
 
 

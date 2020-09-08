@@ -93,9 +93,9 @@ public class SoundManager : AudioManager, ISettingSubscriber
     }
 
 
-    public void UpdateValueFromSetting(float newValue)
+    public void UpdateValueFromSetting(object newValue)
     {
-        SetVolumeInDbRange(newValue);
+        SetVolumeInDbRange(newValue is float ? (float)newValue : 0);
     }
 
     private void SetVolumeInDbRange(float volume)

@@ -37,9 +37,9 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 
 	}
 
-    public void UpdateValueFromSetting(float newValue)
+    public void UpdateValueFromSetting(object newValue)
     {
-        var scale = MultiplierForSettingValue * newValue;
+        var scale = MultiplierForSettingValue * (newValue is float ? (float)newValue : 0); ;
         scale = Mathf.Max(scale, MinUIScaleSize);
 
         SetScaleFactorFactor(scale);

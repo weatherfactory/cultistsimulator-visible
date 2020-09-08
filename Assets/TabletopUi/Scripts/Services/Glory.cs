@@ -63,14 +63,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
             var registryAccess = new Registry();
 
-            var config = new Config();
-            registryAccess.Register(new Config());
-
-            config.ReadFromIniFile();
+            registryAccess.Register(new Config(NoonConstants.DEFAULT_CULTURE_ID));
 
             registryAccess.Register(concursum);
-
-            concursum.InitialiseWithConfig(config);
 
             
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));

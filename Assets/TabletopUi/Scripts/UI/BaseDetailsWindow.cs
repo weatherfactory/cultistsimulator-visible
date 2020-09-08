@@ -56,9 +56,9 @@ namespace Assets.CS.TabletopUI {
             UpdateValueFromSetting(notificationTimeSetting.CurrentValue);
         }
 
-        public void UpdateValueFromSetting(float newValue)
+        public void UpdateValueFromSetting(object newValue)
         {
-            var timeInSeconds = GetInspectionTimeForValue(newValue);
+            var timeInSeconds = GetInspectionTimeForValue((newValue is float ? (float)newValue : 0));
             SetTimer(timeInSeconds);
         }
 

@@ -7,7 +7,8 @@
 		    "hint": "Resolution",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": -1
+		    "defaultvalue": -1,
+		    "datatype": "int"
 },
 {
 		    "id": "Windowed",
@@ -199,7 +200,8 @@
 		    "hint": "Collect All",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 0
+		    "defaultvalue": 0,
+			"datatype": "string"
 	    }
 
     ]

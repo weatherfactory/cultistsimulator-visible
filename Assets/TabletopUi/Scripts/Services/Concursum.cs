@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Services
     public class ChangeSettingArgs
     {
         public string Key { get; set; }
-        public float Value { get; set; }
+        public object Value { get; set; }
 
     }
 
@@ -93,43 +93,34 @@ namespace Assets.TabletopUi.Scripts.Services
         public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
         public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
-        private Config _config;
-
-        public void Awake()
-        {
-            _config = new Config {CultureId = NoonConstants.DEFAULT_CULTURE_ID};
-        }
+        
 
 
         public string GetCurrentCultureId()
         {
-            return _config.CultureId;
+            return Registry.Get<Config>().CultureId;
         }
 
         public bool GetSkipLogo()
         {
-            return _config.skiplogo;
+            return Registry.Get<Config>().skiplogo;
         }
 
         public bool GetKnock()
         {
-            return _config.knock;
+            return Registry.Get<Config>().knock;
         }
 
         public int GetVerbosity()
         {
-            return _config.verbosity;
+            return Registry.Get<Config>().verbosity;
         }
 
-        public void InitialiseWithConfig(Config config)
-        {
-            _config = config;
-        }
 
 
         public void SetNewCulture(Culture culture)
         {
-            _config.CultureId = culture.Id;
+            Registry.Get<Config>().CultureId = culture.Id;
             PlayerPrefs.SetString(NoonConstants.CULTURE_SETTING_KEY, value: culture.Id);
 
             CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
@@ -149,7 +140,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void ChangeSetting(ChangeSettingArgs args)
         {
-            _config.PersistSettingValue(args);
+            Registry.Get<Config>().PersistSettingValue(args);
             SettingChangedEvent.Invoke(args);
         }
 

@@ -10,6 +10,14 @@ public class KeybindSettingControl : AbstractSettingControl
 {
     [SerializeField] public TextMeshProUGUI ActionLabel;
     [SerializeField] public TextMeshProUGUI KeybindValueLabel;
+
+    private SettingControlStrategy strategy;
+
+    public override string TabId
+    {
+        get { return strategy.SettingTabId; }
+    }
+
     // Start is called before the first frame update
     public override void Initialise(Setting settingToBind)
     {
@@ -19,9 +27,10 @@ public class KeybindSettingControl : AbstractSettingControl
             return;
         }
 
-        strategy = new FucineSettingControlStrategy();
+        strategy = new KeybindSettingControlStrategy();
         strategy.Initialise(settingToBind);
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
+        ActionLabel.name = strategy.SettingHint;
         _initialisationComplete = true;
 
     }

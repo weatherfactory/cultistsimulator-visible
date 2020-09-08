@@ -22,6 +22,12 @@ namespace Assets.TabletopUi.Scripts.UI
         [SerializeField]
         private TextMeshProUGUI SliderValueLabel;
 
+        private SliderSettingControlStrategy strategy;
+
+        public override string TabId
+        {
+            get { return strategy.SettingTabId; }
+        }
 
         public override void Initialise(Setting settingToBind)
         {
@@ -31,11 +37,12 @@ namespace Assets.TabletopUi.Scripts.UI
                 return;
             }
 
+            SliderSettingControlStrategy sliderStrategy;
 
             if (settingToBind.Id == NoonConstants.RESOLUTION)
-                strategy = new ResolutionSettingControlStrategy();
+                strategy = new ResolutionSliderSettingControlStrategy();
             else
-                strategy = new FucineSettingControlStrategy();
+                strategy = new FucineSliderSettingControlStrategy();
 
             strategy.Initialise(settingToBind);
             strategy.SetSliderValues(Slider);

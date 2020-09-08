@@ -113,9 +113,9 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         SetFontStyle(culture, lm);
     }
 
-    public void UpdateValueFromSetting(float newValue)
+    public void UpdateValueFromSetting(object newValue)
     {
-        HighContrastEnabledInGlobalSettings = (newValue > 0.5f);
+        HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
         string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
@@ -134,7 +134,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            if (Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.HIGHCONTRAST) > 0.5f)
+            if (Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.HIGHCONTRAST) > 0.5f)
             {
                 Color light = lm.HighContrastLight;
                 Color dark = lm.HighContrastDark;

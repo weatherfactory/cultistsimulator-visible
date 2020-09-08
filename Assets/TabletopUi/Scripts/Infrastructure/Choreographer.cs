@@ -416,9 +416,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return v;
         }
 
-        public void UpdateValueFromSetting(float newValue)
+        public void UpdateValueFromSetting(object newValue)
         {
-            SetGridSnapSize(newValue);
+            SetGridSnapSize(newValue is float ? (float)newValue : 0);
         }
 
 

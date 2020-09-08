@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.UI
 {
-    public class FucineSettingControlStrategy : AbstractSettingControlStrategy
+    public class FucineSliderSettingControlStrategy : SliderSettingControlStrategy
     {
         public override void SetSliderValues(Slider slider)
         {
-
             slider.minValue = boundSetting.MinValue;
             slider.maxValue = boundSetting.MaxValue;
-            slider.SetValueWithoutNotify(boundSetting.CurrentValue);
+            slider.SetValueWithoutNotify(boundSetting.CurrentValue is float ? (float) boundSetting.CurrentValue : 0);
         }
 
 

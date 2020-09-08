@@ -9,7 +9,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISettingSubscriber
     {
-        void UpdateValueFromSetting(float newValue);
+        void UpdateValueFromSetting(object newValue);
 
     }
 }

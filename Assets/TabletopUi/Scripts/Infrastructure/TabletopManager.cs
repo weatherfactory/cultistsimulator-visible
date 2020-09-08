@@ -779,7 +779,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 return false; // don't pull animated cards
 
 
-             var allowExploits = Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.BIRDWORMSLIDER);
+             var allowExploits = Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.BIRDWORMSLIDER);
                 if (allowExploits > 0)
                 {
                     Debug.Log("exploits on");
@@ -870,7 +870,7 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void SetHighlightedElement(string elementId, int quantity = 1)
         {
-            if(Registry.Get<Config>().GetPersistedSettingValue(NoonConstants.ACCESSIBLECARDS)<0.5f)
+            if(Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.ACCESSIBLECARDS)<0.5f)
 		        return;
 	        if (elementId == null || elementId == "dropzone")
 	        {
@@ -1282,9 +1282,9 @@ public ElementStacksManager GetTabletopStacksManager()
           NotifyAspectsDirty();
         }
 
-        public void UpdateValueFromSetting(float newValue)
+        public void UpdateValueFromSetting(object newValue)
         {
-            SetAutosaveInterval(newValue);
+            SetAutosaveInterval(newValue is float ? (float)newValue : 0);
         }
 
     }

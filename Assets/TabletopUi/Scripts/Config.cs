@@ -21,7 +21,14 @@ public class Config
 
     public string CultureId { get; set; }
 
-    private Dictionary<string, string> ConfigValues;
+    private Dictionary<string, string> _configValues;
+
+    public Config(string defauCultureId)
+    {
+        CultureId = defauCultureId;
+        _configValues = new Dictionary<string, string>();
+        ReadFromIniFile();
+    }
 
 
     /// <summary>
@@ -31,23 +38,38 @@ public class Config
     /// <returns></returns>
     public string GetConfigValue(string key)
     {
-        ConfigValues.TryGetValue(key, out string value);
+        _configValues.TryGetValue(key, out string value);
 
         if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
             value = string.Empty;
         return value;
     }
 
+    public string SetConfigValue(string key,string value)
+    {
+        if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
+            value = "0";
+
+        _configValues[key] = value;
+
+        return value;
+    }
+
+
+    private string GetConfigFileLocation()
+    {
+        return Application.persistentDataPath + "/config.ini";
+    }
 
     public void ReadFromIniFile()
     {
-        string configLocation = Application.persistentDataPath + "/config.ini";
+        
 
 
-        if (File.Exists(configLocation))
+        if (File.Exists(GetConfigFileLocation()))
         {
 
-            ConfigValues = PopulateConfigValues(configLocation);
+            _configValues = PopulateConfigValues(GetConfigFileLocation());
 
 
             CultureId = GetStartingCultureId(GetConfigValue("culture"));
@@ -69,40 +91,78 @@ public class Config
             {
                 knock = true;
             }
-
-
         }
         else
         {
-
-            File.WriteAllText(configLocation, "skiplogo=0");
+            SetConfigValue("skiplogo", "0");
+            WriteIniFile();
         }
 
+    }
+
+    private void WriteIniFile()
+    {
+        var output = _configValues.Select(kvp => kvp.Key + "=" + kvp.Value);
+        File.WriteAllLines(GetConfigFileLocation(),output);
     }
 
     public void PersistSettingValue(ChangeSettingArgs args)
     {
-        PlayerPrefs.SetFloat(args.Key,args.Value);
+        SetConfigValue(args.Key, args.Value.ToString());
+        WriteIniFile();
+
     }
 
-    public float? GetPersistedSettingValue(string forId)
+    protected object GetPersistedSettingValue(string forId)
     {
-        if (PlayerPrefs.HasKey(forId))
-            return PlayerPrefs.GetFloat(forId);
-        else
-            return null;
+        return GetConfigValue(forId);
     }
 
-    private Dictionary<string,string> PopulateConfigValues(string hackyConfigLocation)
+    public float? GetPersistedSettingValueAsFloat (string forId)
+    {
+    if(Single.TryParse(GetConfigValue(forId), out Single singleValue))
+        return singleValue;
+    return null;
+    }
+
+    public int? GetPersistedSettingValueAsInt(string forId)
+    {
+        if (Int32.TryParse(GetConfigValue(forId), out int intValue))
+            return intValue;
+        return null;
+    }
+
+    public string GetPersistedSettingValueAsString(string forId)
+    {
+        return GetConfigValue(forId);
+    }
+
+    //public void PersistSettingValue(ChangeSettingArgs args)
+    //{
+    //    if(args.Value is float floatValue)
+    //        PlayerPrefs.SetFloat(args.Key, floatValue);
+    //    else if (args.Value is int intValue)
+    //        PlayerPrefs.SetInt(args.Key, intValue);
+    //    else
+    //        PlayerPrefs.SetString(args.Key,args.Value as string);
+    //}
+
+    //public float? GetPersistedSettingValue(string forId)
+    //{
+    //    if (PlayerPrefs.HasKey(forId))
+    //        return PlayerPrefs.GetFloat(forId);
+    //    else
+    //        return null;
+    //}
+
+    private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {
         Dictionary<string, string> dictToPopulate=new Dictionary<string, string>();
-        var lines = File.ReadLines(hackyConfigLocation);
+        var lines = File.ReadLines(configLocation);
 
         foreach (var line in lines)
         {
-            if (line.StartsWith("//"))
-                continue;
-
+ 
             try
             {
                 var splitLine = line.Split('=');

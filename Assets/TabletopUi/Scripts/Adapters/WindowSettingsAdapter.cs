@@ -22,9 +22,13 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-        public void UpdateValueFromSetting(float newValue)
+        public void UpdateValueFromSetting(object newValue)
         {
-            SetWindowed(newValue>0.5f);
+            if(newValue is float)
+                SetWindowed((float)newValue > 0.5f);
+            else
+              SetWindowed(false);
+
         }
 
 
