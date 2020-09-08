@@ -20,7 +20,7 @@
 		    {
 				"0": "Off",
 				"1": "On"	
-		    },
+		    }
 },
 			{
 		    "id": "GraphicsLevel",
@@ -33,7 +33,7 @@
 		    {
 				"0": "GRAPHICS_LEVEL_1",
 				"1": "GRAPHICS_LEVEL_2",
-				"2": "GRAPHICS_LEVEL_3",
+				"2": "GRAPHICS_LEVEL_3"
 				
 		    }
 
@@ -144,7 +144,7 @@
 				"0": "Off",
 				"1": "1 Card",
 				"2": "½ Card",
-				"3": "¼ Card",
+				"3": "¼ Card"
 
 		    }
 
@@ -192,7 +192,15 @@
 				"0": "Off",
 				"1": "On"	
 		    }
-}
+},
+	    {
+		    "id": "kbcollectall",
+		    "tabid": "keybinds",
+		    "hint": "Collect All",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": 0
+	    }
 
     ]
 

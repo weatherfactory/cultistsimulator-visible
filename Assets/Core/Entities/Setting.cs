@@ -35,10 +35,13 @@ namespace Assets.Core.Entities
         [FucineValue]
         public int DefaultValue { get; set; }
 
+
+        
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
 
         public float CurrentValue { get; private set; }
+        public string CurrentValueString { get; private set; }
 
 
         private List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();

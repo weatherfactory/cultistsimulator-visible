@@ -22,12 +22,14 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.UI;
 using UIWidgets;
 using UnityEngine.Analytics;
+using UnityEngine.InputSystem;
 
 public class OptionsPanel : MonoBehaviour {
 
 
 
-    [SerializeField] private GameObject SettingControlPrefab;
+    [SerializeField] private GameObject sliderSettingSliderControlPrefab;
+    [SerializeField] private GameObject KeybindSettingControlPrefab;
     [SerializeField] private GameObject TabControlPrefab;
     [SerializeField] private Transform TabsHere;
     [SerializeField] private Transform SettingsHere;
@@ -45,7 +47,7 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    private List<SettingControl> settingControls=new List<SettingControl>();
+    private List<AbstractSettingControl> settingControls=new List<AbstractSettingControl>();
     private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
     private OptionsPanelTab currentTab { get; set; }
 
@@ -124,15 +126,25 @@ public class OptionsPanel : MonoBehaviour {
 
     private void PopulateSettingControls(List<Setting> settings)
     {
-        foreach (Transform editTimeSetting in SettingsHere)
-            Destroy(editTimeSetting.gameObject);
+        foreach (Transform editTimeControl in SettingsHere)
+            Destroy(editTimeControl.gameObject);
 
         foreach (var setting in settings)
         {
-            var settingControl = Instantiate(SettingControlPrefab, SettingsHere).GetComponent<SettingControl>();
-            settingControl.Initialise(setting);
-            settingControls.Add(settingControl);
+            if (InputSystem.ListEnabledActions().Any(a => a.name == setting.Id))
+            {
+                var keybindsettingControl = Instantiate(KeybindSettingControlPrefab, SettingsHere).GetComponent<KeybindSettingControl>();
+                keybindsettingControl.Initialise(setting);
+                settingControls.Add(keybindsettingControl);
+            }
+            else
+            {
+                var settingControl = Instantiate(sliderSettingSliderControlPrefab, SettingsHere).GetComponent<SliderSettingControl>();
+                settingControl.Initialise(setting);
+                settingControls.Add(settingControl);
+            }
         }
+
     }
 
   

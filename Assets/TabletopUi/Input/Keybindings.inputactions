@@ -6,7 +6,7 @@
             "id": "a5f15f1d-5e94-4ee1-9d08-4ef12d45a01d",
             "actions": [
                 {
-                    "name": "Pause",
+                    "name": "kbpause",
                     "type": "Button",
                     "id": "295541f4-2845-4bbc-a969-f497df13e6e6",
                     "expectedControlType": "Button",
@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Normal Speed",
+                    "name": "kbNormalSpeed",
                     "type": "Button",
                     "id": "e49fa150-5679-4be1-b0f6-daff5bf7eb2a",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Collect All",
+                    "name": "kbcollectall",
                     "type": "Button",
                     "id": "df10e8a5-e2a5-41cf-bfb8-1e24f0a3dd5b",
                     "expectedControlType": "Button",
@@ -70,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Normal Speed",
+                    "action": "kbNormalSpeed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -92,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "kbpause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -114,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Collect All",
+                    "action": "kbcollectall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
