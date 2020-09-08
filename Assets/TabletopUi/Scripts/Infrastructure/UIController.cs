@@ -17,8 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class UIController: LocalNexus
     {
 
-        public UnityEvent foo;
-
+        
 
         public DebugTools _debugTools;
         
@@ -34,6 +33,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			inInputField = false;
 		}
 
+        
         public void Input_Pause(InputAction.CallbackContext context)
         {
             if (_debugTools.isActiveAndEnabled)
@@ -67,7 +67,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_ToggleDebug(InputAction.CallbackContext context)
         {
+            ToggleDebugEvent.Invoke();
+        }
 
+        public void Input_GroupAllStacks(InputAction.CallbackContext context)
+        {
+            StackCardsEvent.Invoke();
         }
 
         public void Input_StartRecipe(InputAction.CallbackContext context)
@@ -146,23 +151,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 }
 			}
 
-   //         // Check if the player tried to start a recipe while *not* holding on to a card stack or verb
-   //         // This is to ensure the player doesn't drag an item from a recipe slot before attempting to start a
-   //         // situation, which can lead to strange behaviour
-			//if ((int)Input.GetAxis("Start Recipe")>0)
-			//{
-				
-			//}
 
-   //         if ((int)Input.GetAxis("Collect All")>0)
-   //         {
-             
-   //         }
-
-            if (Input.GetButtonDown("Stack Cards"))
-            {
-	            Registry.Get<TabletopManager>().GroupAllStacks();
-            }
         }
 
 		void UpdateInputFieldState() {
@@ -183,7 +172,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public bool IsPressingAbortHotkey()
         {
             return Keyboard.current.escapeKey.wasPressedThisFrame;
-            //   return Input.GetButtonDown("Cancel");
         }
 
     }

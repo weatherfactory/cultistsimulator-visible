@@ -21,7 +21,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
        [SerializeField] public UnityEvent ToggleOptionsEvent;
        [SerializeField] public UnityEvent SaveAndExitEvent;
        [SerializeField] public UnityEvent ToggleDebugEvent;
-       [SerializeField] public SpeedControlEvent SpeedControlEvent;
+       [SerializeField] public UnityEvent StackCardsEvent;
+        [SerializeField] public SpeedControlEvent SpeedControlEvent;
        [SerializeField] public UILookAtMeEvent UILookAtMeEvent;
 
         public void Awake()

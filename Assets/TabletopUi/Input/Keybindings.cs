@@ -27,7 +27,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""NormalSpeed"",
+                    ""name"": ""Normal Speed"",
                     ""type"": ""Button"",
                     ""id"": ""e49fa150-5679-4be1-b0f6-daff5bf7eb2a"",
                     ""expectedControlType"": ""Button"",
@@ -35,7 +35,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""FastSpeed"",
+                    ""name"": ""Fast Speed"",
                     ""type"": ""Button"",
                     ""id"": ""562ce9bb-470f-42be-9374-c8a2faa7a820"",
                     ""expectedControlType"": ""Button"",
@@ -43,7 +43,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""StartRecipe"",
+                    ""name"": ""Start Recipe"",
                     ""type"": ""Button"",
                     ""id"": ""ad2078b0-1f11-4d50-abd9-71aaf89cb2bc"",
                     ""expectedControlType"": ""Button"",
@@ -51,7 +51,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""CollectAll"",
+                    ""name"": ""Collect All"",
                     ""type"": ""Button"",
                     ""id"": ""df10e8a5-e2a5-41cf-bfb8-1e24f0a3dd5b"",
                     ""expectedControlType"": ""Button"",
@@ -59,9 +59,17 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ToggleDebug"",
+                    ""name"": ""Toggle Debug"",
                     ""type"": ""Button"",
                     ""id"": ""9748c843-b882-44c5-a37a-3a0147b3757e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Stack Cards"",
+                    ""type"": ""Button"",
+                    ""id"": ""613ea87a-1750-429b-9d61-e3d6ef847722"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -75,7 +83,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NormalSpeed"",
+                    ""action"": ""Normal Speed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -86,7 +94,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FastSpeed"",
+                    ""action"": ""Fast Speed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -108,7 +116,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""StartRecipe"",
+                    ""action"": ""Start Recipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -119,7 +127,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CollectAll"",
+                    ""action"": ""Collect All"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -130,7 +138,18 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToggleDebug"",
+                    ""action"": ""Toggle Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e7adc8c-6099-4bc2-85ca-32dd3af81d56"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stack Cards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,11 +161,12 @@ public class @Keybindings : IInputActionCollection, IDisposable
         // Default
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_Pause = m_Default.FindAction("Pause", throwIfNotFound: true);
-        m_Default_NormalSpeed = m_Default.FindAction("NormalSpeed", throwIfNotFound: true);
-        m_Default_FastSpeed = m_Default.FindAction("FastSpeed", throwIfNotFound: true);
-        m_Default_StartRecipe = m_Default.FindAction("StartRecipe", throwIfNotFound: true);
-        m_Default_CollectAll = m_Default.FindAction("CollectAll", throwIfNotFound: true);
-        m_Default_ToggleDebug = m_Default.FindAction("ToggleDebug", throwIfNotFound: true);
+        m_Default_NormalSpeed = m_Default.FindAction("Normal Speed", throwIfNotFound: true);
+        m_Default_FastSpeed = m_Default.FindAction("Fast Speed", throwIfNotFound: true);
+        m_Default_StartRecipe = m_Default.FindAction("Start Recipe", throwIfNotFound: true);
+        m_Default_CollectAll = m_Default.FindAction("Collect All", throwIfNotFound: true);
+        m_Default_ToggleDebug = m_Default.FindAction("Toggle Debug", throwIfNotFound: true);
+        m_Default_StackCards = m_Default.FindAction("Stack Cards", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,6 +222,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
     private readonly InputAction m_Default_StartRecipe;
     private readonly InputAction m_Default_CollectAll;
     private readonly InputAction m_Default_ToggleDebug;
+    private readonly InputAction m_Default_StackCards;
     public struct DefaultActions
     {
         private @Keybindings m_Wrapper;
@@ -212,6 +233,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
         public InputAction @StartRecipe => m_Wrapper.m_Default_StartRecipe;
         public InputAction @CollectAll => m_Wrapper.m_Default_CollectAll;
         public InputAction @ToggleDebug => m_Wrapper.m_Default_ToggleDebug;
+        public InputAction @StackCards => m_Wrapper.m_Default_StackCards;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -239,6 +261,9 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @ToggleDebug.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
                 @ToggleDebug.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
                 @ToggleDebug.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
+                @StackCards.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
+                @StackCards.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
+                @StackCards.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -261,6 +286,9 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @ToggleDebug.started += instance.OnToggleDebug;
                 @ToggleDebug.performed += instance.OnToggleDebug;
                 @ToggleDebug.canceled += instance.OnToggleDebug;
+                @StackCards.started += instance.OnStackCards;
+                @StackCards.performed += instance.OnStackCards;
+                @StackCards.canceled += instance.OnStackCards;
             }
         }
     }
@@ -273,5 +301,6 @@ public class @Keybindings : IInputActionCollection, IDisposable
         void OnStartRecipe(InputAction.CallbackContext context);
         void OnCollectAll(InputAction.CallbackContext context);
         void OnToggleDebug(InputAction.CallbackContext context);
+        void OnStackCards(InputAction.CallbackContext context);
     }
 }

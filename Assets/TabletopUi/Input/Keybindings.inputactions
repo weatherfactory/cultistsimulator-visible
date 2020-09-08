@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "NormalSpeed",
+                    "name": "Normal Speed",
                     "type": "Button",
                     "id": "e49fa150-5679-4be1-b0f6-daff5bf7eb2a",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "FastSpeed",
+                    "name": "Fast Speed",
                     "type": "Button",
                     "id": "562ce9bb-470f-42be-9374-c8a2faa7a820",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "StartRecipe",
+                    "name": "Start Recipe",
                     "type": "Button",
                     "id": "ad2078b0-1f11-4d50-abd9-71aaf89cb2bc",
                     "expectedControlType": "Button",
@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "CollectAll",
+                    "name": "Collect All",
                     "type": "Button",
                     "id": "df10e8a5-e2a5-41cf-bfb8-1e24f0a3dd5b",
                     "expectedControlType": "Button",
@@ -46,9 +46,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ToggleDebug",
+                    "name": "Toggle Debug",
                     "type": "Button",
                     "id": "9748c843-b882-44c5-a37a-3a0147b3757e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Stack Cards",
+                    "type": "Button",
+                    "id": "613ea87a-1750-429b-9d61-e3d6ef847722",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -62,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NormalSpeed",
+                    "action": "Normal Speed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -73,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FastSpeed",
+                    "action": "Fast Speed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -95,7 +103,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "StartRecipe",
+                    "action": "Start Recipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -106,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CollectAll",
+                    "action": "Collect All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -117,7 +125,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleDebug",
+                    "action": "Toggle Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e7adc8c-6099-4bc2-85ca-32dd3af81d56",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stack Cards",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
