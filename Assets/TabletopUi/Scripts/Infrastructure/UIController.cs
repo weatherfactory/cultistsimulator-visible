@@ -16,11 +16,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class UIController: LocalNexus
     {
-
+        [SerializeField] private PlayerInput playerInput;
         
 
         public DebugTools _debugTools;
-        
+
+
+        public void Start()
+        {
+            foreach (InputAction action in playerInput.currentActionMap.actions)
+            {
+                var persistedBindingOverridePath= Registry.Get<Config>().GetPersistedSettingValueAsString(action.name);
+             if (!string.IsNullOrEmpty(persistedBindingOverridePath))
+             {
+                    action.ApplyBindingOverride(persistedBindingOverridePath);
+                    var binding = action.name + ":" + Registry.Get<Config>().GetPersistedSettingValueAsString(action.name);
+                           Debug.Log(binding);
+
+             }
+            }
+        }
+
 
         public static bool IsInInputField() {
 			return inInputField;

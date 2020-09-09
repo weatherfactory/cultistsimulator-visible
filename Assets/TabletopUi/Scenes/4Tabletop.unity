@@ -147,7 +147,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1 &18
@@ -785,7 +785,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONS
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1 &117
@@ -11827,6 +11827,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 613ea87a-1750-429b-9d61-e3d6ef847722
     m_ActionName: Default/Stack Cards[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da5aa02a-4834-441a-ab07-bc35c26c9642
+    m_ActionName: Default/kbzoomout
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -15421,7 +15425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000010430813, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0.00001692772, y: 0.0003908407}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -18220,7 +18224,7 @@ MonoBehaviour:
   locLabel: UI_NORMALSPEED
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1001 &678812401
@@ -19660,7 +19664,7 @@ MonoBehaviour:
   locLabel: UI_FASTSPEED
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1 &788429830
@@ -20663,7 +20667,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1001 &836787050
@@ -21394,7 +21398,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 0
   forceBold: 0
 --- !u!1 &875177355
@@ -22554,6 +22558,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  playerInput: {fileID: 202816351}
   _debugTools: {fileID: 589}
 --- !u!1 &980569403
 GameObject:
@@ -25208,6 +25213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057377682944582091, guid: d7dd4dc93e7af6e489e258c92e502019,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4275413130206799244, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -30986,7 +30996,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -36545,7 +36555,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38818,7 +38828,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &5264781275166087238
