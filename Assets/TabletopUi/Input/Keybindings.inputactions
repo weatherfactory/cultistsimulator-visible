@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "kbNormalSpeed",
+                    "name": "kbnormalspeed",
                     "type": "Button",
                     "id": "e49fa150-5679-4be1-b0f6-daff5bf7eb2a",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fast Speed",
+                    "name": "kbfastspeed",
                     "type": "Button",
                     "id": "562ce9bb-470f-42be-9374-c8a2faa7a820",
                     "expectedControlType": "Button",
@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Start Recipe",
+                    "name": "kbstartrecipe",
                     "type": "Button",
                     "id": "ad2078b0-1f11-4d50-abd9-71aaf89cb2bc",
                     "expectedControlType": "Button",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Toggle Debug",
+                    "name": "kbtoggledebug",
                     "type": "Button",
                     "id": "9748c843-b882-44c5-a37a-3a0147b3757e",
                     "expectedControlType": "Button",
@@ -54,9 +54,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Stack Cards",
+                    "name": "kbzoomin",
                     "type": "Button",
                     "id": "613ea87a-1750-429b-9d61-e3d6ef847722",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbzoomout",
+                    "type": "Button",
+                    "id": "da5aa02a-4834-441a-ab07-bc35c26c9642",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -70,7 +78,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "kbNormalSpeed",
+                    "action": "kbnormalspeed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -81,7 +89,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fast Speed",
+                    "action": "kbfastspeed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -103,7 +111,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start Recipe",
+                    "action": "kbstartrecipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -125,7 +133,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toggle Debug",
+                    "action": "kbtoggledebug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -136,7 +144,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Stack Cards",
+                    "action": "kbzoomin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3060b86-7b93-4db4-bca5-efa00865483f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoomout",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

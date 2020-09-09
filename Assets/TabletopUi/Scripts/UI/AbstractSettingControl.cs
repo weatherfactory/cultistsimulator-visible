@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         public abstract void Initialise(Setting settingToBind);
 
-        public abstract void OnValueChanged(float changingToValue);
+//public abstract void OnValueChanged(float changingToValue);
 
 
 

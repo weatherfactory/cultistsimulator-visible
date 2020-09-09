@@ -27,7 +27,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""kbNormalSpeed"",
+                    ""name"": ""kbnormalspeed"",
                     ""type"": ""Button"",
                     ""id"": ""e49fa150-5679-4be1-b0f6-daff5bf7eb2a"",
                     ""expectedControlType"": ""Button"",
@@ -35,7 +35,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fast Speed"",
+                    ""name"": ""kbfastspeed"",
                     ""type"": ""Button"",
                     ""id"": ""562ce9bb-470f-42be-9374-c8a2faa7a820"",
                     ""expectedControlType"": ""Button"",
@@ -43,7 +43,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Start Recipe"",
+                    ""name"": ""kbstartrecipe"",
                     ""type"": ""Button"",
                     ""id"": ""ad2078b0-1f11-4d50-abd9-71aaf89cb2bc"",
                     ""expectedControlType"": ""Button"",
@@ -59,7 +59,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Toggle Debug"",
+                    ""name"": ""kbtoggledebug"",
                     ""type"": ""Button"",
                     ""id"": ""9748c843-b882-44c5-a37a-3a0147b3757e"",
                     ""expectedControlType"": ""Button"",
@@ -67,9 +67,17 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Stack Cards"",
+                    ""name"": ""kbzoomin"",
                     ""type"": ""Button"",
                     ""id"": ""613ea87a-1750-429b-9d61-e3d6ef847722"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""kbzoomout"",
+                    ""type"": ""Button"",
+                    ""id"": ""da5aa02a-4834-441a-ab07-bc35c26c9642"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -83,7 +91,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""kbNormalSpeed"",
+                    ""action"": ""kbnormalspeed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -94,7 +102,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fast Speed"",
+                    ""action"": ""kbfastspeed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -116,7 +124,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Start Recipe"",
+                    ""action"": ""kbstartrecipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -138,7 +146,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Toggle Debug"",
+                    ""action"": ""kbtoggledebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -149,7 +157,18 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Stack Cards"",
+                    ""action"": ""kbzoomin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3060b86-7b93-4db4-bca5-efa00865483f"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbzoomout"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -161,12 +180,13 @@ public class @Keybindings : IInputActionCollection, IDisposable
         // Default
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_kbpause = m_Default.FindAction("kbpause", throwIfNotFound: true);
-        m_Default_kbNormalSpeed = m_Default.FindAction("kbNormalSpeed", throwIfNotFound: true);
-        m_Default_FastSpeed = m_Default.FindAction("Fast Speed", throwIfNotFound: true);
-        m_Default_StartRecipe = m_Default.FindAction("Start Recipe", throwIfNotFound: true);
+        m_Default_kbnormalspeed = m_Default.FindAction("kbnormalspeed", throwIfNotFound: true);
+        m_Default_kbfastspeed = m_Default.FindAction("kbfastspeed", throwIfNotFound: true);
+        m_Default_kbstartrecipe = m_Default.FindAction("kbstartrecipe", throwIfNotFound: true);
         m_Default_kbcollectall = m_Default.FindAction("kbcollectall", throwIfNotFound: true);
-        m_Default_ToggleDebug = m_Default.FindAction("Toggle Debug", throwIfNotFound: true);
-        m_Default_StackCards = m_Default.FindAction("Stack Cards", throwIfNotFound: true);
+        m_Default_kbtoggledebug = m_Default.FindAction("kbtoggledebug", throwIfNotFound: true);
+        m_Default_kbzoomin = m_Default.FindAction("kbzoomin", throwIfNotFound: true);
+        m_Default_kbzoomout = m_Default.FindAction("kbzoomout", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -217,23 +237,25 @@ public class @Keybindings : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Default;
     private IDefaultActions m_DefaultActionsCallbackInterface;
     private readonly InputAction m_Default_kbpause;
-    private readonly InputAction m_Default_kbNormalSpeed;
-    private readonly InputAction m_Default_FastSpeed;
-    private readonly InputAction m_Default_StartRecipe;
+    private readonly InputAction m_Default_kbnormalspeed;
+    private readonly InputAction m_Default_kbfastspeed;
+    private readonly InputAction m_Default_kbstartrecipe;
     private readonly InputAction m_Default_kbcollectall;
-    private readonly InputAction m_Default_ToggleDebug;
-    private readonly InputAction m_Default_StackCards;
+    private readonly InputAction m_Default_kbtoggledebug;
+    private readonly InputAction m_Default_kbzoomin;
+    private readonly InputAction m_Default_kbzoomout;
     public struct DefaultActions
     {
         private @Keybindings m_Wrapper;
         public DefaultActions(@Keybindings wrapper) { m_Wrapper = wrapper; }
         public InputAction @kbpause => m_Wrapper.m_Default_kbpause;
-        public InputAction @kbNormalSpeed => m_Wrapper.m_Default_kbNormalSpeed;
-        public InputAction @FastSpeed => m_Wrapper.m_Default_FastSpeed;
-        public InputAction @StartRecipe => m_Wrapper.m_Default_StartRecipe;
+        public InputAction @kbnormalspeed => m_Wrapper.m_Default_kbnormalspeed;
+        public InputAction @kbfastspeed => m_Wrapper.m_Default_kbfastspeed;
+        public InputAction @kbstartrecipe => m_Wrapper.m_Default_kbstartrecipe;
         public InputAction @kbcollectall => m_Wrapper.m_Default_kbcollectall;
-        public InputAction @ToggleDebug => m_Wrapper.m_Default_ToggleDebug;
-        public InputAction @StackCards => m_Wrapper.m_Default_StackCards;
+        public InputAction @kbtoggledebug => m_Wrapper.m_Default_kbtoggledebug;
+        public InputAction @kbzoomin => m_Wrapper.m_Default_kbzoomin;
+        public InputAction @kbzoomout => m_Wrapper.m_Default_kbzoomout;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -246,24 +268,27 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbpause.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpause;
                 @kbpause.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpause;
                 @kbpause.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpause;
-                @kbNormalSpeed.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbNormalSpeed;
-                @kbNormalSpeed.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbNormalSpeed;
-                @kbNormalSpeed.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbNormalSpeed;
-                @FastSpeed.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFastSpeed;
-                @FastSpeed.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFastSpeed;
-                @FastSpeed.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnFastSpeed;
-                @StartRecipe.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStartRecipe;
-                @StartRecipe.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStartRecipe;
-                @StartRecipe.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStartRecipe;
+                @kbnormalspeed.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbnormalspeed;
+                @kbnormalspeed.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbnormalspeed;
+                @kbnormalspeed.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbnormalspeed;
+                @kbfastspeed.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbfastspeed;
+                @kbfastspeed.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbfastspeed;
+                @kbfastspeed.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbfastspeed;
+                @kbstartrecipe.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstartrecipe;
+                @kbstartrecipe.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstartrecipe;
+                @kbstartrecipe.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstartrecipe;
                 @kbcollectall.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbcollectall;
                 @kbcollectall.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbcollectall;
                 @kbcollectall.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbcollectall;
-                @ToggleDebug.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
-                @ToggleDebug.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
-                @ToggleDebug.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnToggleDebug;
-                @StackCards.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
-                @StackCards.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
-                @StackCards.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnStackCards;
+                @kbtoggledebug.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
+                @kbtoggledebug.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
+                @kbtoggledebug.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
+                @kbzoomin.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomin.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomin.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomout.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
+                @kbzoomout.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
+                @kbzoomout.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -271,24 +296,27 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbpause.started += instance.OnKbpause;
                 @kbpause.performed += instance.OnKbpause;
                 @kbpause.canceled += instance.OnKbpause;
-                @kbNormalSpeed.started += instance.OnKbNormalSpeed;
-                @kbNormalSpeed.performed += instance.OnKbNormalSpeed;
-                @kbNormalSpeed.canceled += instance.OnKbNormalSpeed;
-                @FastSpeed.started += instance.OnFastSpeed;
-                @FastSpeed.performed += instance.OnFastSpeed;
-                @FastSpeed.canceled += instance.OnFastSpeed;
-                @StartRecipe.started += instance.OnStartRecipe;
-                @StartRecipe.performed += instance.OnStartRecipe;
-                @StartRecipe.canceled += instance.OnStartRecipe;
+                @kbnormalspeed.started += instance.OnKbnormalspeed;
+                @kbnormalspeed.performed += instance.OnKbnormalspeed;
+                @kbnormalspeed.canceled += instance.OnKbnormalspeed;
+                @kbfastspeed.started += instance.OnKbfastspeed;
+                @kbfastspeed.performed += instance.OnKbfastspeed;
+                @kbfastspeed.canceled += instance.OnKbfastspeed;
+                @kbstartrecipe.started += instance.OnKbstartrecipe;
+                @kbstartrecipe.performed += instance.OnKbstartrecipe;
+                @kbstartrecipe.canceled += instance.OnKbstartrecipe;
                 @kbcollectall.started += instance.OnKbcollectall;
                 @kbcollectall.performed += instance.OnKbcollectall;
                 @kbcollectall.canceled += instance.OnKbcollectall;
-                @ToggleDebug.started += instance.OnToggleDebug;
-                @ToggleDebug.performed += instance.OnToggleDebug;
-                @ToggleDebug.canceled += instance.OnToggleDebug;
-                @StackCards.started += instance.OnStackCards;
-                @StackCards.performed += instance.OnStackCards;
-                @StackCards.canceled += instance.OnStackCards;
+                @kbtoggledebug.started += instance.OnKbtoggledebug;
+                @kbtoggledebug.performed += instance.OnKbtoggledebug;
+                @kbtoggledebug.canceled += instance.OnKbtoggledebug;
+                @kbzoomin.started += instance.OnKbzoomin;
+                @kbzoomin.performed += instance.OnKbzoomin;
+                @kbzoomin.canceled += instance.OnKbzoomin;
+                @kbzoomout.started += instance.OnKbzoomout;
+                @kbzoomout.performed += instance.OnKbzoomout;
+                @kbzoomout.canceled += instance.OnKbzoomout;
             }
         }
     }
@@ -296,11 +324,12 @@ public class @Keybindings : IInputActionCollection, IDisposable
     public interface IDefaultActions
     {
         void OnKbpause(InputAction.CallbackContext context);
-        void OnKbNormalSpeed(InputAction.CallbackContext context);
-        void OnFastSpeed(InputAction.CallbackContext context);
-        void OnStartRecipe(InputAction.CallbackContext context);
+        void OnKbnormalspeed(InputAction.CallbackContext context);
+        void OnKbfastspeed(InputAction.CallbackContext context);
+        void OnKbstartrecipe(InputAction.CallbackContext context);
         void OnKbcollectall(InputAction.CallbackContext context);
-        void OnToggleDebug(InputAction.CallbackContext context);
-        void OnStackCards(InputAction.CallbackContext context);
+        void OnKbtoggledebug(InputAction.CallbackContext context);
+        void OnKbzoomin(InputAction.CallbackContext context);
+        void OnKbzoomout(InputAction.CallbackContext context);
     }
 }

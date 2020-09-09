@@ -57,7 +57,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
         }
 
-        public override void OnValueChanged(float changingToValue)
+        public void OnValueChanged(float changingToValue)
         {
             //I added this guard clause because otherwise the OnValueChanged event can fire while the slider initial values are being set -
             //for example, if the minvalue is set to > the default control value of 0. This could be fixed by

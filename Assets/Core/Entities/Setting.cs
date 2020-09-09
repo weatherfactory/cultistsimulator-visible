@@ -26,13 +26,13 @@ namespace Assets.Core.Entities
         [FucineValue]
         public string HintLocId { get; set; }
 
-        [FucineValue]
+        [FucineValue(DefaultValue = 0)]
         public int MinValue { get; set; }
             
-        [FucineValue]
+        [FucineValue(DefaultValue=1)]
         public int MaxValue { get; set; }
 
-        [FucineValue]
+        [FucineValue(DefaultValue = -1)]
         public int DefaultValue { get; set; }
 
         [FucineValue(DefaultValue = "float")]

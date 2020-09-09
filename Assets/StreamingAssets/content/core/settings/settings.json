@@ -198,11 +198,17 @@
 		    }
 },
 	    {
+		    "id": "kbpause",
+		    "tabid": "keybinds",
+		    "hint": "Pause",
+		    "defaultvalue": 0,
+		    "datatype": "string"
+	    },
+
+	    {
 		    "id": "kbcollectall",
 		    "tabid": "keybinds",
 		    "hint": "Collect All",
-		    "minvalue": 0,
-		    "maxvalue": 1,
 		    "defaultvalue": 0,
 			"datatype": "string"
 	    }

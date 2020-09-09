@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 public class KeybindSettingControl : AbstractSettingControl
 {
     [SerializeField] public TextMeshProUGUI ActionLabel;
-    [SerializeField] public TextMeshProUGUI KeybindValueLabel;
+    [SerializeField] public TMP_InputField KeybindingValue;
 
     [SerializeField]
     public InputActionAsset inputActionAsset;
@@ -36,29 +36,39 @@ public class KeybindSettingControl : AbstractSettingControl
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
         ActionLabel.text = strategy.SettingHint;
         var action= inputActionAsset.FindAction(strategy.SettingId);
-        KeybindValueLabel.text = action.GetBindingDisplayString();
+        KeybindingValue.text = action.GetBindingDisplayString();
         _initialisationComplete = true;
 
     }
 
-    public void SetNewBinding()
+    public void OnInputSelect()
     {
-        var action= inputActionAsset.FindAction(strategy.SettingId);
-        var rebinding = action.PerformInteractiveRebinding();
-        rebinding.Dispose();
+         inputActionAsset.FindActionMap("Default").Disable();
+        var action = inputActionAsset.FindAction(strategy.SettingId);
+        var rebinding = action.PerformInteractiveRebinding().WithControlsExcluding("mouse");
+        rebinding.OnComplete(r =>
+        {
+            KeybindingValue.text = r.selectedControl.displayName;
+            
+               inputActionAsset.FindActionMap("Default").Enable();
+            r.Dispose();
+        });
+
+
+        rebinding.Start();
     }
 
-    public override void OnValueChanged(float changingToValue)
+    public void OnInputDeselect()
     {
 
-        //if (_initialisationComplete)
-        //{
-        //    SoundManager.PlaySfx("UISliderMove");
-        //    newSettingValueQueued = changingToValue;
-        //    string newValueLabel = strategy.GetLabelForValue((float)newSettingValueQueued);
-        //    SliderValueLabel.text = newValueLabel;
-        //}
     }
+
+    public  void OnValueChanged(string changingToValue)
+    {
+
+
+    }
+
 
     public override void Update()
     {
