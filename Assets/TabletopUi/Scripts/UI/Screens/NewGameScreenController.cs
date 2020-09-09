@@ -51,7 +51,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new CompendiumLoader();
-            contentImporter.PopulateCompendium(compendium, Registry.Get<Concursum>().GetCurrentCultureId());
+            contentImporter.PopulateCompendium(compendium, Registry.Get<Config>().CultureId);
 
             var ls = new LegacySelector(Registry.Get<ICompendium>());
             AvailableLegaciesForEnding = ls.DetermineLegacies(Registry.Get<Character>().EndingTriggered);

@@ -19,7 +19,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     [Tooltip("Force this string to use the font for a specific language (empty by default)")]
     [SerializeField] private string						forceFontLanguage;
 #pragma warning restore 649
-	[SerializeField] private bool						highContrastEnabled = true;
+	[SerializeField] private bool						highContrastPermissibleInContext = true;
 	[SerializeField] private bool						highContrastBold = true;
 
 	[SerializeField] private bool                       forceBold = false;
@@ -37,7 +37,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 		defaultColor = tmpText.color;
 		defaultStyle = tmpText.fontStyle;
 
-        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+        string currentCultureId = Registry.Get<Config>().CultureId;
 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 
@@ -116,7 +116,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     public void UpdateValueFromSetting(object newValue)
     {
         HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
-        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+        string currentCultureId = Registry.Get<Config>().CultureId;
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
 
@@ -130,11 +130,13 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     private void SetFontStyle(Culture culture, ILanguageManager lm)
     {
-        if (highContrastEnabled)
+        if (highContrastPermissibleInContext)
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            if (Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.HIGHCONTRAST) > 0.5f)
+            var highContrastEnabled = Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.HIGHCONTRAST);
+
+            if (highContrastEnabled!=null && highContrastEnabled>0)
             {
                 Color light = lm.HighContrastLight;
                 Color dark = lm.HighContrastDark;

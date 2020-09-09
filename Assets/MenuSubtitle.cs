@@ -15,7 +15,7 @@ public class MenuSubtitle : MonoBehaviour
 
     public void UpdateWithLocValue(string text)
     {
-        string currentCultureId = Registry.Get<Concursum>().GetCurrentCultureId();
+        string currentCultureId = Registry.Get<Config>().CultureId;
 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 

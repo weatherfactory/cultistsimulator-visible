@@ -131,7 +131,7 @@ public class ResourcesManager: MonoBehaviour
      return GetSpriteLocalised(
             "endings",
             endingImage,
-            Registry.Get<Concursum>().GetCurrentCultureId(),
+            Registry.Get<Config>().CultureId,
         false);
 
     }

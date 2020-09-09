@@ -80,7 +80,7 @@ public class DebugTools : MonoBehaviour
 
 
         {
-            if (Registry.Get<Concursum>().GetKnock())
+            if (Registry.Get<Config>().knock)
                 btnTriggerAchievement.gameObject.SetActive(true);
 
         }
@@ -400,7 +400,7 @@ public class DebugTools : MonoBehaviour
            var compendiumLoader = new CompendiumLoader();
 
            var startImport = DateTime.Now;
-           var log=compendiumLoader.PopulateCompendium(existingCompendium,Registry.Get<Concursum>().GetCurrentCultureId());
+           var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().CultureId);
         foreach(var m in log.GetMessages())
             Log(m.Description,m.MessageLevel);
 

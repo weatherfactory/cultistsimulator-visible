@@ -96,27 +96,6 @@ namespace Assets.TabletopUi.Scripts.Services
         
 
 
-        public string GetCurrentCultureId()
-        {
-            return Registry.Get<Config>().CultureId;
-        }
-
-        public bool GetSkipLogo()
-        {
-            return Registry.Get<Config>().skiplogo;
-        }
-
-        public bool GetKnock()
-        {
-            return Registry.Get<Config>().knock;
-        }
-
-        public int GetVerbosity()
-        {
-            return Registry.Get<Config>().verbosity;
-        }
-
-
 
         public void SetNewCulture(Culture culture)
         {

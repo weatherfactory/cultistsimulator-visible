@@ -5,11 +5,15 @@ using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeybindSettingControl : AbstractSettingControl
 {
     [SerializeField] public TextMeshProUGUI ActionLabel;
     [SerializeField] public TextMeshProUGUI KeybindValueLabel;
+
+    [SerializeField]
+    public InputActionAsset inputActionAsset;
 
     private SettingControlStrategy strategy;
 
@@ -30,9 +34,18 @@ public class KeybindSettingControl : AbstractSettingControl
         strategy = new KeybindSettingControlStrategy();
         strategy.Initialise(settingToBind);
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
-        ActionLabel.name = strategy.SettingHint;
+        ActionLabel.text = strategy.SettingHint;
+        var action= inputActionAsset.FindAction(strategy.SettingId);
+        KeybindValueLabel.text = action.GetBindingDisplayString();
         _initialisationComplete = true;
 
+    }
+
+    public void SetNewBinding()
+    {
+        var action= inputActionAsset.FindAction(strategy.SettingId);
+        var rebinding = action.PerformInteractiveRebinding();
+        rebinding.Dispose();
     }
 
     public override void OnValueChanged(float changingToValue)

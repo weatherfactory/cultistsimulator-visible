@@ -87,7 +87,7 @@ namespace Assets.TabletopUi.Scripts.Services
             registryAccess.Register(new ModManager());
             registryAccess.Register<ICompendium>(new Compendium());
 
-            ReloadCompendium(concursum.GetCurrentCultureId());
+            ReloadCompendium(Registry.Get<Config>().CultureId);
 
             registryAccess.Register<ILanguageManager>(languageManager);
             languageManager.Initialise();
@@ -98,7 +98,7 @@ namespace Assets.TabletopUi.Scripts.Services
             //TODO: async
             LoadCurrentSave(registryAccess);
 
-            stageHand.LoadFirstScene(Registry.Get<Concursum>().GetSkipLogo());
+            stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
 
 
         }

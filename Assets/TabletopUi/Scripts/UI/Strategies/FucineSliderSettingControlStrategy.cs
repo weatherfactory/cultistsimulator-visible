@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using System;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine.UI;
 
@@ -10,7 +11,8 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             slider.minValue = boundSetting.MinValue;
             slider.maxValue = boundSetting.MaxValue;
-            slider.SetValueWithoutNotify(boundSetting.CurrentValue is float ? (float) boundSetting.CurrentValue : 0);
+            
+            slider.SetValueWithoutNotify( Convert.ToSingle(boundSetting.CurrentValue));
         }
 
 

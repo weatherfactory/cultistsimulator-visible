@@ -779,8 +779,8 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 return false; // don't pull animated cards
 
 
-             var allowExploits = Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.BIRDWORMSLIDER);
-                if (allowExploits > 0)
+             var allowExploits = Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.BIRDWORMSLIDER);
+                if (allowExploits!=null || allowExploits > 0)
                 {
                     Debug.Log("exploits on");
                     if (DraggableToken.itemBeingDragged == stack)
@@ -870,7 +870,10 @@ public ElementStacksManager GetTabletopStacksManager()
 
         public void SetHighlightedElement(string elementId, int quantity = 1)
         {
-            if(Registry.Get<Config>().GetPersistedSettingValueAsFloat(NoonConstants.ACCESSIBLECARDS)<0.5f)
+            var enableAccessibleCards =
+                Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.ACCESSIBLECARDS);
+
+            if (enableAccessibleCards==null || enableAccessibleCards==0)
 		        return;
 	        if (elementId == null || elementId == "dropzone")
 	        {

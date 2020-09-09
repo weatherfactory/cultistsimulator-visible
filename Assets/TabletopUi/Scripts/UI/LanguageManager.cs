@@ -188,7 +188,7 @@ public class LanguageManager : MonoBehaviour,ILanguageManager
         var compendium = Registry.Get<ICompendium>();
         var conc = Registry.Get<Concursum>();
 
-        var currentCulture = compendium.GetEntityById<Culture>(conc.GetCurrentCultureId());
+        var currentCulture = compendium.GetEntityById<Culture>(Registry.Get<Config>().CultureId);
 
 
         if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
