@@ -36,7 +36,7 @@ public class KeybindSettingControl : AbstractSettingControl
         strategy = new KeybindSettingControlStrategy();
         strategy.Initialise(settingToBind);
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
-        ActionLabel.text = Registry.Get<LanguageManager>().Get(strategy.SettingHint);
+        ActionLabel.GetComponent<Babelfish>().UpdateLocLabel(strategy.SettingHint);
         var action= inputActionAsset.FindAction(strategy.SettingId);
         keybindingInputField.text = action.controls[0].displayName;
         _initialisationComplete = true;
