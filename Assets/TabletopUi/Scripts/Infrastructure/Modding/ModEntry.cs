@@ -83,7 +83,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
         private void UpdateEnablementDisplay()
         {
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
-            activationToggleBabel.SetLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
+            activationToggleBabel.UpdateLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
             activationToggleText.text = Registry.Get<ILocStringProvider>().Get(newLabel);
             var newColor = _mod.Enabled ? Color.white : Color.gray;
             title.color = newColor;
@@ -120,13 +120,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             if (string.IsNullOrEmpty(publishedFileId))
             {
                 uploadButton.gameObject.SetActive(true);
-                uploadBabel.SetLocLabel("UI_UPLOAD");
+                uploadBabel.UpdateLocLabel("UI_UPLOAD");
                 uploadText.text = Registry.Get<ILocStringProvider>().Get("UI_UPLOAD");
             }
             else
             {
                 uploadButton.gameObject.SetActive(true);
-                uploadBabel.SetLocLabel("UI_UPDATE");
+                uploadBabel.UpdateLocLabel("UI_UPDATE");
                 uploadText.text = Registry.Get<ILocStringProvider>().Get("UI_UPDATE");
                 
             }

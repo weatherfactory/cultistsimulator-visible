@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
@@ -185,15 +186,26 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
     public string Get(string id)
     {
+        
         var compendium = Registry.Get<ICompendium>();
         
         var currentCulture = compendium.GetEntityById<Culture>(Registry.Get<Config>().CultureId);
 
+        if (id.StartsWith("$"))
+        {
+            Regex ParameterPattern = new Regex(@"\{(\w+)\}");
+            string templatedVersion = ParameterPattern.Replace(id, match => Get(match.Groups[1].Value));
+            return templatedVersion;
+        }
+        else
+        {
+            if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
+                 return localisedValue;
 
-        if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
-            return localisedValue;
-
-
-        return "MISSING_" + id.ToUpper();
+            return "MISSING_" + id.ToUpper();
+        }
     }
+
+
+
 }

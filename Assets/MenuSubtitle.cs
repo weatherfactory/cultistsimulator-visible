@@ -23,14 +23,14 @@ public class MenuSubtitle : MonoBehaviour
         Babelfish subfish = SubtitleText.gameObject.GetComponent<Babelfish>();
 		if (subfish)
 		{ 
-			subfish.SetLocLabel(text); 
+			subfish.UpdateLocLabel(text); 
             subfish.SetValuesFromCulture(currentCulture);
         }
 
         Babelfish shadowfish = SubtitleTextShadow.gameObject.GetComponent<Babelfish>();
 		if (shadowfish)
 		{
-            shadowfish.SetLocLabel(text);
+            shadowfish.UpdateLocLabel(text);
             shadowfish.SetValuesFromCulture(currentCulture);
         }
 

@@ -5,13 +5,13 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using TabletopUi.Scripts.UI;
 using UnityEngine.UI; // For accessing high contrast mode
 
 
 public class Babelfish : MonoBehaviour,ISettingSubscriber
 {
-	[Tooltip("Strings.csv label\n(if null then TextMeshPro string is left alone)")]
-    [SerializeField] private string						locLabel;
+	[SerializeField] private string						locLabel;
 #pragma warning disable 649
     [Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
 	[SerializeField] private LanguageManager.eFontStyle fontStyle;
@@ -34,14 +34,11 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     {
         // cache the TMP component on this object
         tmpText = GetComponent<TMP_Text>();
+        
 		defaultColor = tmpText.color;
 		defaultStyle = tmpText.fontStyle;
 
-        string currentCultureId = Registry.Get<Config>().CultureId;
 
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
-
-        SetValuesFromCulture(currentCulture);
 
         var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.AddListener(OnCultureChanged);
@@ -71,6 +68,14 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     }
 
 
+    public void SetValuesForCurrentCulture()
+    {
+        string currentCultureId = Registry.Get<Config>().CultureId;
+
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
+
+        SetValuesFromCulture(currentCulture);
+    }
 
     public void SetValuesFromCulture(Culture culture)
     {
@@ -168,9 +173,10 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     }
 
 
-    public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
+    public void UpdateLocLabel( string label )	
 	{
 		locLabel = label;
+        SetValuesForCurrentCulture();
 	}
 
 	public virtual void OnCultureChanged(CultureChangedArgs args)

@@ -46,7 +46,8 @@ namespace Assets.TabletopUi.Scripts.UI
 
             strategy.Initialise(settingToBind);
             strategy.SetSliderValues(Slider);
-            SliderHint.text = Registry.Get<ILocStringProvider>().Get(strategy.SettingHint);
+            SliderHint.GetComponent<Babelfish>().UpdateLocLabel(strategy.SettingHint);
+            
             SliderValueLabel.text = strategy.GetLabelForValue(Slider.value);
 
 
