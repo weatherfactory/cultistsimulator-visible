@@ -20,6 +20,7 @@ public class CameraZoom : MonoBehaviour {
     // Change these to adjust starting zoom
     private float currentZoom = 0.6f; 
     private float targetZoom = 0.6f;
+    private float ongoingZoomIncrement = 0f;
     private const float zoomTolerance = 0.00001f; // snap when this close to target
 
     public bool enablePlayerZoom = true;
@@ -33,33 +34,29 @@ public class CameraZoom : MonoBehaviour {
 
     public void SetTargetZoom(ZoomEventArgs args)
     {
-        targetZoom = args.AbsoluteTargetZoomLevel;
+       if(args.AbsoluteTargetZoomLevel>0)
+           targetZoom = args.AbsoluteTargetZoomLevel;
+       //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
+       //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
+           ongoingZoomIncrement = args.OngoingZoomIncrement;
     }
 
-    void Update () {
-        if (enablePlayerZoom) { 
-			if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !UIController.IsInInputField() && targetZoom > 0f) {
-				targetZoom -= 0.1f;
-				targetZoom = Mathf.Clamp01(targetZoom);
-			}
-			else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !UIController.IsInInputField() && targetZoom < 1f) {
-				targetZoom += 0.1f;
-				targetZoom = Mathf.Clamp01(targetZoom);
-			}
-			//else if (UIController.IsInInputField() == false) {
-			//	if ((int)Input.GetAxis("Zoom Level 1")>0)
-   //                 targetZoom = 0f;
-			//    if ((int)Input.GetAxis("Zoom Level 2") > 0)
-   //                 targetZoom = 0.4f;
-			//    if ((int)Input.GetAxis("Zoom Level 3") > 0)
-   //                 targetZoom = 1f;
-   //             //commented out so I can just use the axis; leaving in case we do want to make keyboard zoom more dramatic
-			////	else if (Input.GetKey(KeyCode.Q))
-			////		targetZoom -= 0.5f * Time.deltaTime;
-			////	else if (Input.GetKey(KeyCode.E))
-			////		targetZoom += 0.5f * Time.deltaTime;
+    void Update ()
+    {
+        if (ongoingZoomIncrement < 0 || ongoingZoomIncrement > 0)
+            targetZoom += ongoingZoomIncrement;
+
+   //     if (enablePlayerZoom) { 
+			//if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !UIController.IsInInputField() && targetZoom > 0f) {
+			//	targetZoom -= 0.1f;
+			//	targetZoom = Mathf.Clamp01(targqetZoom);
 			//}
-        }
+			//else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !UIController.IsInInputField() && targetZoom < 1f) {
+			//	targetZoom += 0.1f;
+			//	targetZoom = Mathf.Clamp01(targetZoom);
+			//}
+
+   //     }
 
         if (targetZoom != currentZoom) {
             if (Mathf.Approximately(targetZoom, currentZoom))

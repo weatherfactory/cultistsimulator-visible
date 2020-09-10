@@ -9,10 +9,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         public static float ZOOM_CLOSE = 0.01f;
         public static float ZOOM_MID = 0.4f;
-        public static float ZOOM_FAR = 11f;
+        public static float ZOOM_FAR = 1f;
+        public static float ZOOM_INCREMENT = 0.025f;
 
 
-        public float RelativeTargetZoomLevel { get; set; }
+        public float OngoingZoomIncrement { get; set; }
 
         public float AbsoluteTargetZoomLevel { get; set; }
     }

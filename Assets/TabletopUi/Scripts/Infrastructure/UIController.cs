@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
@@ -30,8 +31,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
              if (!string.IsNullOrEmpty(persistedBindingOverridePath))
              {
                     action.ApplyBindingOverride(persistedBindingOverridePath);
-                    var binding = action.name + ":" + Registry.Get<Config>().GetPersistedSettingValueAsString(action.name);
-                           Debug.Log(binding);
+                    //var binding = action.name + ":" + Registry.Get<Config>().GetPersistedSettingValueAsString(action.name);
+                    //Debug.Log(binding);
 
              }
             }
@@ -50,15 +51,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 		}
 
 
-        public void Input_ZoomIn(InputAction.CallbackContext context)
+        public void Input_Zoom(InputAction.CallbackContext context)
         {
-            
-         }
+            if(context.performed)
+            {
+            //context.performed=true: it's press-and-release, so *either* the button press minimum actuation has been satisfied, or the actuation's just dropped below that level again.
+            //value!=0 means beginning, value==0 means finished
+             var value=context.ReadValue<Single>();
 
-        public void Input_ZoomOut(InputAction.CallbackContext context)
-        {
+            Debug.Log(context.performed.ToString() + " - " + value );
 
+            ZoomEvent.Invoke(new ZoomEventArgs{OngoingZoomIncrement =ZoomEventArgs.ZOOM_INCREMENT * value });
+            }
         }
+
+   
 
         public void Input_ZoomClose(InputAction.CallbackContext context)
         {

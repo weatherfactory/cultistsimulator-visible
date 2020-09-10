@@ -11815,7 +11815,7 @@ MonoBehaviour:
       - m_Target: {fileID: 937582878}
         m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
           Assembly-CSharp
-        m_MethodName: Input_ZoomIn
+        m_MethodName: Input_Zoom
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11827,23 +11827,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 613ea87a-1750-429b-9d61-e3d6ef847722
     m_ActionName: Default/Stack Cards[/Keyboard/tab]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 937582878}
-        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
-          Assembly-CSharp
-        m_MethodName: Input_ZoomOut
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: da5aa02a-4834-441a-ab07-bc35c26c9642
-    m_ActionName: Default/kbzoomout
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -15505,7 +15488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00001692772, y: 0.000214383}
+  m_AnchoredPosition: {x: 0.00003886223, y: -0.000024020672}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -22640,7 +22623,19 @@ MonoBehaviour:
         m_CallState: 2
   ZoomEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 49}
+        m_TargetAssemblyTypeName: CameraZoom, Assembly-CSharp
+        m_MethodName: SetTargetZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerInput: {fileID: 202816351}
   _debugTools: {fileID: 589}
 --- !u!1 &980569403

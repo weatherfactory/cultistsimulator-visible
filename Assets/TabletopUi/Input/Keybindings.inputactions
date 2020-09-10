@@ -54,17 +54,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "kbzoomin",
+                    "name": "kbzoom",
                     "type": "Button",
                     "id": "613ea87a-1750-429b-9d61-e3d6ef847722",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "kbzoomout",
-                    "type": "Button",
-                    "id": "da5aa02a-4834-441a-ab07-bc35c26c9642",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -170,26 +162,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "8e7adc8c-6099-4bc2-85ca-32dd3af81d56",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
+                    "name": "1D Axis",
+                    "id": "4bae82fb-5fce-4445-81cb-f48f83ef1aa6",
+                    "path": "1DAxis",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
-                    "action": "kbzoomin",
-                    "isComposite": false,
+                    "action": "kbzoom",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "c3060b86-7b93-4db4-bca5-efa00865483f",
-                    "path": "",
+                    "name": "negative",
+                    "id": "eaba08af-f45a-4d69-ae78-a916578b943b",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "kbzoomout",
+                    "action": "kbzoom",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a3995319-49ca-4089-b3c2-783c1640a965",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
