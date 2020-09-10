@@ -21,8 +21,8 @@ public class SituationResults : AbstractTokenContainer {
     [SerializeField] SituationResultsPositioning cardPos;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-    string buttonClearResultsDefault = "[C]ollect All";
-    string buttonClearResultsNone = "Accept [C]";
+    private string buttonClearResultsDefault;
+    private string buttonClearResultsNone;
 
     private SituationController controller;
 
@@ -36,8 +36,8 @@ public class SituationResults : AbstractTokenContainer {
     public void Initialise(SituationController sc) {
         controller = sc;
         _elementStacksManager = new ElementStacksManager(this, "situationresults");
-        buttonClearResultsDefault = Registry.Get<ILocStringProvider>().Get("VERB_COLLECT");
-        buttonClearResultsNone = Registry.Get<ILocStringProvider>().Get("VERB_ACCEPT");
+        buttonClearResultsDefault = "VERB_COLLECT";
+        buttonClearResultsNone = "VERB_ACCEPT";
     }
 
     public void DoReset() {
@@ -98,10 +98,10 @@ public class SituationResults : AbstractTokenContainer {
     }
 
     public void UpdateDumpButtonText() {
-        if (GetOutputStacks().Count() > 0)
-            dumpResultsButtonText.text = buttonClearResultsDefault;
+        if (GetOutputStacks().Any())
+            dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsDefault);
         else
-            dumpResultsButtonText.text = buttonClearResultsNone;
+            dumpResultsButtonText.GetComponent<Babelfish>().UpdateLocLabel(buttonClearResultsNone);
     }
     
 }
