@@ -13,4 +13,5 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class SpeedControlEvent : UnityEvent<SpeedControlEventArgs>
     {
     }
+
 }

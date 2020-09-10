@@ -201,16 +201,42 @@
 		    "id": "kbpause",
 		    "tabid": "keybinds",
 		    "hint": "Pause",
-		    "defaultvalue": 0,
+		    "datatype": "string"
+	    },
+
+	    {
+		    "id": "kbnormalspeed",
+		    "tabid": "keybinds",
+		    "hint": "Speed: Normal",
+		    "datatype": "string"
+	    },
+
+	    {
+		    "id": "kbfastspeed",
+		    "tabid": "keybinds",
+		    "hint": "Speed: Fast",
+		    "datatype": "string"
+	    },
+
+	    {
+		    "id": "kbstartrecipe",
+		    "tabid": "keybinds",
+		    "hint": "Start Recipe",
 		    "datatype": "string"
 	    },
 
 	    {
 		    "id": "kbcollectall",
 		    "tabid": "keybinds",
-		    "hint": "Collect All",
-		    "defaultvalue": 0,
+		    "hint": "Collect Results",
 			"datatype": "string"
+	    },
+
+	    {
+		    "id": "kbstack",
+		    "tabid": "keybinds",
+		    "hint": "Stack Cards",
+		    "datatype": "string"
 	    }
 
     ]

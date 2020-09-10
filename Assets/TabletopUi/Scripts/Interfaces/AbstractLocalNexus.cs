@@ -24,6 +24,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
        [SerializeField] public UnityEvent StackCardsEvent;
         [SerializeField] public SpeedControlEvent SpeedControlEvent;
        [SerializeField] public UILookAtMeEvent UILookAtMeEvent;
+       [SerializeField] public ZoomEvent ZoomEvent;
 
         public void Awake()
         {

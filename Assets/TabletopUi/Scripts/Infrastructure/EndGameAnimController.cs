@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         
         [Header("Visuals")]
         [SerializeField] private Canvas tableCanvas;
-		[SerializeField] private CameraZoomTest cameraZoom;
+		[SerializeField] private CameraZoom cameraZoom;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
         [SerializeField] private Image fadeOverlay;

@@ -11815,7 +11815,7 @@ MonoBehaviour:
       - m_Target: {fileID: 937582878}
         m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
           Assembly-CSharp
-        m_MethodName: Input_GroupAllStacks
+        m_MethodName: Input_ZoomIn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11828,9 +11828,89 @@ MonoBehaviour:
     m_ActionId: 613ea87a-1750-429b-9d61-e3d6ef847722
     m_ActionName: Default/Stack Cards[/Keyboard/tab]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_ZoomOut
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: da5aa02a-4834-441a-ab07-bc35c26c9642
     m_ActionName: Default/kbzoomout
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8a460104-453b-4efc-ad1f-18bfa7bc466c
+    m_ActionName: Default/kbstack[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_ZoomClose
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 87b30b6a-8676-46d2-9e15-49e7b39bffc1
+    m_ActionName: Default/kbzoom1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_ZoomMid
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 075f8238-733d-4111-b646-68420367ac36
+    m_ActionName: Default/kbzoom2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_ZoomFar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: efeeffb0-6904-4036-836b-503c269124cf
+    m_ActionName: Default/kbzoom3[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -15425,7 +15505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00001692772, y: 0.0003908407}
+  m_AnchoredPosition: {x: 0.00001692772, y: 0.000214383}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &512707587
@@ -22558,6 +22638,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ZoomEvent:
+    m_PersistentCalls:
+      m_Calls: []
   playerInput: {fileID: 202816351}
   _debugTools: {fileID: 589}
 --- !u!1 &980569403
@@ -30996,7 +31079,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706259581}
   m_HandleRect: {fileID: 1706259580}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

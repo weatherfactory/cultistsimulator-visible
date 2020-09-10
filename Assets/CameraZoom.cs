@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.CS.TabletopUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 
 [RequireComponent(typeof(Camera))]
-public class CameraZoomTest : MonoBehaviour {
+public class CameraZoom : MonoBehaviour {
 
     public float zoomScaleIn = 2f; // 1 == 100% = pixel perfect zoom
     public float zoomScaleOut = 4f;     // Needs to be smaller than zoomScaleIn to enable zooming
@@ -24,13 +26,14 @@ public class CameraZoomTest : MonoBehaviour {
     Camera zoomCam;
 
     protected void Start() {
-        Init();
-    }
-    
-    private void Init() {
         enabled = true;
         zoomCam = GetComponent<Camera>();
         SetScale(currentZoom);
+    }
+
+    public void SetTargetZoom(ZoomEventArgs args)
+    {
+        targetZoom = args.AbsoluteTargetZoomLevel;
     }
 
     void Update () {
@@ -43,19 +46,19 @@ public class CameraZoomTest : MonoBehaviour {
 				targetZoom += 0.1f;
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
-			else if (UIController.IsInInputField() == false) {
-				if ((int)Input.GetAxis("Zoom Level 1")>0)
-                    targetZoom = 0f;
-			    if ((int)Input.GetAxis("Zoom Level 2") > 0)
-                    targetZoom = 0.4f;
-			    if ((int)Input.GetAxis("Zoom Level 3") > 0)
-                    targetZoom = 1f;
-                //commented out so I can just use the axis; leaving in case we do want to make keyboard zoom more dramatic
-			//	else if (Input.GetKey(KeyCode.Q))
-			//		targetZoom -= 0.5f * Time.deltaTime;
-			//	else if (Input.GetKey(KeyCode.E))
-			//		targetZoom += 0.5f * Time.deltaTime;
-			}
+			//else if (UIController.IsInInputField() == false) {
+			//	if ((int)Input.GetAxis("Zoom Level 1")>0)
+   //                 targetZoom = 0f;
+			//    if ((int)Input.GetAxis("Zoom Level 2") > 0)
+   //                 targetZoom = 0.4f;
+			//    if ((int)Input.GetAxis("Zoom Level 3") > 0)
+   //                 targetZoom = 1f;
+   //             //commented out so I can just use the axis; leaving in case we do want to make keyboard zoom more dramatic
+			////	else if (Input.GetKey(KeyCode.Q))
+			////		targetZoom -= 0.5f * Time.deltaTime;
+			////	else if (Input.GetKey(KeyCode.E))
+			////		targetZoom += 0.5f * Time.deltaTime;
+			//}
         }
 
         if (targetZoom != currentZoom) {

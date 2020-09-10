@@ -49,12 +49,40 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			inInputField = false;
 		}
 
-        
+
+        public void Input_ZoomIn(InputAction.CallbackContext context)
+        {
+            
+         }
+
+        public void Input_ZoomOut(InputAction.CallbackContext context)
+        {
+
+        }
+
+        public void Input_ZoomClose(InputAction.CallbackContext context)
+        {
+            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_CLOSE });
+        }
+
+        public void Input_ZoomMid(InputAction.CallbackContext context)
+        {
+            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_MID });
+        }
+
+        public void Input_ZoomFar(InputAction.CallbackContext context)
+        {
+            ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_FAR });
+        }
+
+
+
+
         public void Input_Pause(InputAction.CallbackContext context)
         {
             if (_debugTools.isActiveAndEnabled)
                 return;
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true});
             
         }
@@ -64,9 +92,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             if (_debugTools.isActiveAndEnabled)
                 return;
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = true});
-                Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
+                SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false});
             
         }
@@ -76,8 +104,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (_debugTools.isActiveAndEnabled)
                 return;
             
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
             
         }
 
@@ -143,7 +171,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
-              Registry.Get<LocalNexus>().ToggleDebugEvent.Invoke();
+              ToggleDebugEvent.Invoke();
             }
 
 
@@ -163,7 +191,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 				if (!windowWasOpen)	// Only summon options if no windows to clear
 				{
-                    Registry.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
+                    ToggleOptionsEvent.Invoke();
                 }
 			}
 

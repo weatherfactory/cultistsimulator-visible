@@ -68,6 +68,38 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "kbstack",
+                    "type": "Button",
+                    "id": "8a460104-453b-4efc-ad1f-18bfa7bc466c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbzoom1",
+                    "type": "Button",
+                    "id": "87b30b6a-8676-46d2-9e15-49e7b39bffc1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbzoom2",
+                    "type": "Button",
+                    "id": "075f8238-733d-4111-b646-68420367ac36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbzoom3",
+                    "type": "Button",
+                    "id": "efeeffb0-6904-4036-836b-503c269124cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -156,6 +188,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "kbzoomout",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2a36043-8e3a-42bb-b3ed-7296222decfa",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbstack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07856149-033d-431d-af0a-1746202e3213",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoom1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c40f44e4-6e13-4590-bdbc-64337237f9d0",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoom2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "878ee3cd-9395-4d4c-a149-de4ac06d2dbf",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoom3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
