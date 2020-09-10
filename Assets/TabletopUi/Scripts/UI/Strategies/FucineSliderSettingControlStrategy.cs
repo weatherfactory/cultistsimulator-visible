@@ -20,7 +20,11 @@ namespace Assets.TabletopUi.Scripts.UI
         {
             boundSetting.ValueLabels.TryGetValue(forValue.ToString(), out var matchingValueLabelString);
             if (!string.IsNullOrEmpty(matchingValueLabelString))
-                return matchingValueLabelString;
+            {
+                var localisedString = Registry.Get<ILocStringProvider>().Get(matchingValueLabelString);
+                return localisedString;
+
+            }
             else
                 return forValue.ToString();
         }

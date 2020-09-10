@@ -25,7 +25,7 @@ public class FontStyle
 	public Material			fontMaterial;
 };
 
-public interface ILanguageManager
+public interface ILocStringProvider
 {
     Color HighContrastLight { get; set; }
     Color HighContrastDark { get; set; }
@@ -36,7 +36,7 @@ public interface ILanguageManager
     string Get(string id);
 }
 
-public class NullLanguageManager : ILanguageManager
+public class NullLocStringProvider : ILocStringProvider
 {
     public Color HighContrastLight { get; set; }
 
@@ -63,7 +63,7 @@ public class NullLanguageManager : ILanguageManager
     }
 }
 
-public class LanguageManager : MonoBehaviour,ILanguageManager
+public class LanguageManager : MonoBehaviour,ILocStringProvider
 {
 
 

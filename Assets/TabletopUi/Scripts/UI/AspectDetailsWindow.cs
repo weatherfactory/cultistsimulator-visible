@@ -52,7 +52,7 @@ namespace Assets.CS.TabletopUI {
         void SetAspect(Element element)
 		{
             ShowImage(ResourcesManager.GetSpriteForAspect(element.Icon));
-            ShowText(Registry.Get<ILanguageManager>().Get("UI_ASPECT") + element.Label, element.Description);
+            ShowText(Registry.Get<ILocStringProvider>().Get("UI_ASPECT") + element.Label, element.Description);
             adjuster.Adjust();
         }
     }

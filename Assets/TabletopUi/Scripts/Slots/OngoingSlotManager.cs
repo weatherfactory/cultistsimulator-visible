@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI {
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
-			countdownText.text = Registry.Get<ILanguageManager>().GetTimeStringForCurrentLanguage( timeRemaining );
+			countdownText.text = Registry.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage( timeRemaining );
             countdownText.richText = true;
         }
 

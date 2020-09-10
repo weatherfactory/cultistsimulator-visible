@@ -33,7 +33,7 @@ namespace Assets.Core.Services
 
 			if (previousCharacterName == HistoryBuilder.DEFAULT_CHARACTER_NAME)
 			{
-				previousCharacterName = Registry.Get<ILanguageManager>().Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
+				previousCharacterName = Registry.Get<ILocStringProvider>().Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
 			}
 
             var lastBook = _compendium.GetEntityById<Element>(lastBookId);

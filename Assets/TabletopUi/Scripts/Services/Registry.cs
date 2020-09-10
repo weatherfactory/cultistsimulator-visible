@@ -57,7 +57,7 @@ namespace Assets.CS.TabletopUI
 
             //fallbacks
             if (!registered.ContainsKey(typeof(LanguageManager)))
-                return new NullLanguageManager() as T;
+                return new NullLocStringProvider() as T;
 
 
             NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);

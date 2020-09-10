@@ -27,7 +27,7 @@ namespace TabletopUi.Scripts.UI
         {
             if (template != null && tmpText != null)
             {
-                tmpText.text = ParameterPattern.Replace(template, match => Registry.Get<ILanguageManager>().Get(match.Groups[1].Value));
+                tmpText.text = ParameterPattern.Replace(template, match => Registry.Get<ILocStringProvider>().Get(match.Groups[1].Value));
             }
         }
     }

@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
             strategy.Initialise(settingToBind);
             strategy.SetSliderValues(Slider);
-            SliderHint.text = Registry.Get<ILanguageManager>().Get(strategy.SettingHint);
+            SliderHint.text = Registry.Get<ILocStringProvider>().Get(strategy.SettingHint);
             SliderValueLabel.text = strategy.GetLabelForValue(Slider.value);
 
 

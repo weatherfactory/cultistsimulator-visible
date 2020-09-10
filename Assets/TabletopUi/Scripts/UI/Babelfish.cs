@@ -75,10 +75,10 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     public void SetValuesFromCulture(Culture culture)
     {
 
-        ILanguageManager lm = Registry.Get<ILanguageManager>();
+        ILocStringProvider lm = Registry.Get<ILocStringProvider>();
 
         if (lm == null)
-            lm = new NullLanguageManager();
+            lm = new NullLocStringProvider();
         
 
         string fontscript;
@@ -120,15 +120,15 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
 
-        ILanguageManager lm = Registry.Get<ILanguageManager>();
+        ILocStringProvider lm = Registry.Get<ILocStringProvider>();
 
         if (lm == null)
-            lm = new NullLanguageManager();
+            lm = new NullLocStringProvider();
 
         SetFontStyle(currentCulture,lm);
     }
 
-    private void SetFontStyle(Culture culture, ILanguageManager lm)
+    private void SetFontStyle(Culture culture, ILocStringProvider lm)
     {
         if (highContrastPermissibleInContext)
         {

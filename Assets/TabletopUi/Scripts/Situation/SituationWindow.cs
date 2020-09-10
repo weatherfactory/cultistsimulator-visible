@@ -80,8 +80,8 @@ namespace Assets.CS.TabletopUI {
 			startButton.onClick.AddListener(HandleStartButton);
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
 
-			buttonDefault = Registry.Get<ILanguageManager>().Get("VERB_START");
-			buttonBusy = Registry.Get<ILanguageManager>().Get("VERB_RUNNING");
+			buttonDefault = Registry.Get<ILocStringProvider>().Get("VERB_START");
+			buttonBusy = Registry.Get<ILocStringProvider>().Get("VERB_RUNNING");
         }
 
 		void OnDisable() {
@@ -232,7 +232,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayHintRecipeFound(Recipe r)
 		{
-            Title = Registry.Get<ILanguageManager>().Get("UI_HINT") + " " + r.Label;
+            Title = Registry.Get<ILocStringProvider>().Get("UI_HINT") + " " + r.Label;
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
