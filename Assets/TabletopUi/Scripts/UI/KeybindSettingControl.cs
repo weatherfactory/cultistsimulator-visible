@@ -37,7 +37,7 @@ public class KeybindSettingControl : AbstractSettingControl
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
         ActionLabel.text = strategy.SettingHint;
         var action= inputActionAsset.FindAction(strategy.SettingId);
-        keybindingInputField.text = action.GetBindingDisplayString();
+        keybindingInputField.text = action.controls[0].displayName;
         _initialisationComplete = true;
 
     }

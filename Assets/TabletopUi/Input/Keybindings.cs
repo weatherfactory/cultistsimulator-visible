@@ -67,12 +67,20 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""kbzoom"",
+                    ""name"": ""kbzoomin"",
                     ""type"": ""Button"",
                     ""id"": ""613ea87a-1750-429b-9d61-e3d6ef847722"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
+                    ""processors"": ""Clamp(min=-1,max=-1)"",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""kbzoomout"",
+                    ""type"": ""Button"",
+                    ""id"": ""8260a3a9-1f24-4daf-a852-c52555d45ddd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""Clamp(min=1,max=1)"",
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""kbstack"",
@@ -175,39 +183,6 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""4bae82fb-5fce-4445-81cb-f48f83ef1aa6"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""kbzoom"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""eaba08af-f45a-4d69-ae78-a916578b943b"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""kbzoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""a3995319-49ca-4089-b3c2-783c1640a965"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""kbzoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""b2a36043-8e3a-42bb-b3ed-7296222decfa"",
                     ""path"": ""<Keyboard>/tab"",
@@ -250,6 +225,28 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""action"": ""kbzoom3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c794339-5993-44fe-85d1-d8d4b1c86121"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbzoomin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ea53a63-4aae-43c9-b52b-af6674dc90b9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbzoomout"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -264,7 +261,8 @@ public class @Keybindings : IInputActionCollection, IDisposable
         m_Default_kbstartrecipe = m_Default.FindAction("kbstartrecipe", throwIfNotFound: true);
         m_Default_kbcollectall = m_Default.FindAction("kbcollectall", throwIfNotFound: true);
         m_Default_kbtoggledebug = m_Default.FindAction("kbtoggledebug", throwIfNotFound: true);
-        m_Default_kbzoom = m_Default.FindAction("kbzoom", throwIfNotFound: true);
+        m_Default_kbzoomin = m_Default.FindAction("kbzoomin", throwIfNotFound: true);
+        m_Default_kbzoomout = m_Default.FindAction("kbzoomout", throwIfNotFound: true);
         m_Default_kbstack = m_Default.FindAction("kbstack", throwIfNotFound: true);
         m_Default_kbzoom1 = m_Default.FindAction("kbzoom1", throwIfNotFound: true);
         m_Default_kbzoom2 = m_Default.FindAction("kbzoom2", throwIfNotFound: true);
@@ -324,7 +322,8 @@ public class @Keybindings : IInputActionCollection, IDisposable
     private readonly InputAction m_Default_kbstartrecipe;
     private readonly InputAction m_Default_kbcollectall;
     private readonly InputAction m_Default_kbtoggledebug;
-    private readonly InputAction m_Default_kbzoom;
+    private readonly InputAction m_Default_kbzoomin;
+    private readonly InputAction m_Default_kbzoomout;
     private readonly InputAction m_Default_kbstack;
     private readonly InputAction m_Default_kbzoom1;
     private readonly InputAction m_Default_kbzoom2;
@@ -339,7 +338,8 @@ public class @Keybindings : IInputActionCollection, IDisposable
         public InputAction @kbstartrecipe => m_Wrapper.m_Default_kbstartrecipe;
         public InputAction @kbcollectall => m_Wrapper.m_Default_kbcollectall;
         public InputAction @kbtoggledebug => m_Wrapper.m_Default_kbtoggledebug;
-        public InputAction @kbzoom => m_Wrapper.m_Default_kbzoom;
+        public InputAction @kbzoomin => m_Wrapper.m_Default_kbzoomin;
+        public InputAction @kbzoomout => m_Wrapper.m_Default_kbzoomout;
         public InputAction @kbstack => m_Wrapper.m_Default_kbstack;
         public InputAction @kbzoom1 => m_Wrapper.m_Default_kbzoom1;
         public InputAction @kbzoom2 => m_Wrapper.m_Default_kbzoom2;
@@ -371,9 +371,12 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbtoggledebug.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
                 @kbtoggledebug.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
                 @kbtoggledebug.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtoggledebug;
-                @kbzoom.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom;
-                @kbzoom.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom;
-                @kbzoom.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom;
+                @kbzoomin.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomin.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomin.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomin;
+                @kbzoomout.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
+                @kbzoomout.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
+                @kbzoomout.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoomout;
                 @kbstack.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstack;
                 @kbstack.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstack;
                 @kbstack.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbstack;
@@ -408,9 +411,12 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbtoggledebug.started += instance.OnKbtoggledebug;
                 @kbtoggledebug.performed += instance.OnKbtoggledebug;
                 @kbtoggledebug.canceled += instance.OnKbtoggledebug;
-                @kbzoom.started += instance.OnKbzoom;
-                @kbzoom.performed += instance.OnKbzoom;
-                @kbzoom.canceled += instance.OnKbzoom;
+                @kbzoomin.started += instance.OnKbzoomin;
+                @kbzoomin.performed += instance.OnKbzoomin;
+                @kbzoomin.canceled += instance.OnKbzoomin;
+                @kbzoomout.started += instance.OnKbzoomout;
+                @kbzoomout.performed += instance.OnKbzoomout;
+                @kbzoomout.canceled += instance.OnKbzoomout;
                 @kbstack.started += instance.OnKbstack;
                 @kbstack.performed += instance.OnKbstack;
                 @kbstack.canceled += instance.OnKbstack;
@@ -435,7 +441,8 @@ public class @Keybindings : IInputActionCollection, IDisposable
         void OnKbstartrecipe(InputAction.CallbackContext context);
         void OnKbcollectall(InputAction.CallbackContext context);
         void OnKbtoggledebug(InputAction.CallbackContext context);
-        void OnKbzoom(InputAction.CallbackContext context);
+        void OnKbzoomin(InputAction.CallbackContext context);
+        void OnKbzoomout(InputAction.CallbackContext context);
         void OnKbstack(InputAction.CallbackContext context);
         void OnKbzoom1(InputAction.CallbackContext context);
         void OnKbzoom2(InputAction.CallbackContext context);

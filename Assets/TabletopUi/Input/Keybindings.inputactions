@@ -54,12 +54,20 @@
                     "interactions": ""
                 },
                 {
-                    "name": "kbzoom",
+                    "name": "kbzoomin",
                     "type": "Button",
                     "id": "613ea87a-1750-429b-9d61-e3d6ef847722",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
+                    "processors": "Clamp(min=-1,max=-1)",
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "kbzoomout",
+                    "type": "Button",
+                    "id": "8260a3a9-1f24-4daf-a852-c52555d45ddd",
+                    "expectedControlType": "Button",
+                    "processors": "Clamp(min=1,max=1)",
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "kbstack",
@@ -162,39 +170,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "4bae82fb-5fce-4445-81cb-f48f83ef1aa6",
-                    "path": "1DAxis",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "kbzoom",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "eaba08af-f45a-4d69-ae78-a916578b943b",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "kbzoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "a3995319-49ca-4089-b3c2-783c1640a965",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "kbzoom",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "b2a36043-8e3a-42bb-b3ed-7296222decfa",
                     "path": "<Keyboard>/tab",
@@ -235,6 +210,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "kbzoom3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c794339-5993-44fe-85d1-d8d4b1c86121",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoomin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ea53a63-4aae-43c9-b52b-af6674dc90b9",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbzoomout",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

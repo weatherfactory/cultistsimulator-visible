@@ -46,17 +46,6 @@ public class CameraZoom : MonoBehaviour {
         if (ongoingZoomIncrement < 0 || ongoingZoomIncrement > 0)
             targetZoom += ongoingZoomIncrement;
 
-   //     if (enablePlayerZoom) { 
-			//if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !UIController.IsInInputField() && targetZoom > 0f) {
-			//	targetZoom -= 0.1f;
-			//	targetZoom = Mathf.Clamp01(targqetZoom);
-			//}
-			//else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !UIController.IsInInputField() && targetZoom < 1f) {
-			//	targetZoom += 0.1f;
-			//	targetZoom = Mathf.Clamp01(targetZoom);
-			//}
-
-   //     }
 
         if (targetZoom != currentZoom) {
             if (Mathf.Approximately(targetZoom, currentZoom))
