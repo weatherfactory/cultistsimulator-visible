@@ -1034,7 +1034,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONS_FE
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &4057377681592446557
@@ -1307,7 +1307,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 30
+  m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -3878,6 +3878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916968374669361679, guid: 6044edc96bd9867458a41fae64f463e7,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3278159685383090979, guid: 6044edc96bd9867458a41fae64f463e7,
         type: 3}
