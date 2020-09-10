@@ -113,6 +113,14 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""mousezoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ec443985-762c-4b71-b39f-ff0cdd06ac93"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Invert,Clamp(min=-5,max=5)"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -247,6 +255,17 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""action"": ""kbzoomout"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faf706a5-a4ea-4104-94c4-c87f1bf0c206"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""mousezoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -267,6 +286,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
         m_Default_kbzoom1 = m_Default.FindAction("kbzoom1", throwIfNotFound: true);
         m_Default_kbzoom2 = m_Default.FindAction("kbzoom2", throwIfNotFound: true);
         m_Default_kbzoom3 = m_Default.FindAction("kbzoom3", throwIfNotFound: true);
+        m_Default_mousezoom = m_Default.FindAction("mousezoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +348,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
     private readonly InputAction m_Default_kbzoom1;
     private readonly InputAction m_Default_kbzoom2;
     private readonly InputAction m_Default_kbzoom3;
+    private readonly InputAction m_Default_mousezoom;
     public struct DefaultActions
     {
         private @Keybindings m_Wrapper;
@@ -344,6 +365,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
         public InputAction @kbzoom1 => m_Wrapper.m_Default_kbzoom1;
         public InputAction @kbzoom2 => m_Wrapper.m_Default_kbzoom2;
         public InputAction @kbzoom3 => m_Wrapper.m_Default_kbzoom3;
+        public InputAction @mousezoom => m_Wrapper.m_Default_mousezoom;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -389,6 +411,9 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbzoom3.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
                 @kbzoom3.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
                 @kbzoom3.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
+                @mousezoom.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
+                @mousezoom.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
+                @mousezoom.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -429,6 +454,9 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbzoom3.started += instance.OnKbzoom3;
                 @kbzoom3.performed += instance.OnKbzoom3;
                 @kbzoom3.canceled += instance.OnKbzoom3;
+                @mousezoom.started += instance.OnMousezoom;
+                @mousezoom.performed += instance.OnMousezoom;
+                @mousezoom.canceled += instance.OnMousezoom;
             }
         }
     }
@@ -447,5 +475,6 @@ public class @Keybindings : IInputActionCollection, IDisposable
         void OnKbzoom1(InputAction.CallbackContext context);
         void OnKbzoom2(InputAction.CallbackContext context);
         void OnKbzoom3(InputAction.CallbackContext context);
+        void OnMousezoom(InputAction.CallbackContext context);
     }
 }

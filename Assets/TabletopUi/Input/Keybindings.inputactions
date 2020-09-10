@@ -100,6 +100,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "mousezoom",
+                    "type": "PassThrough",
+                    "id": "ec443985-762c-4b71-b39f-ff0cdd06ac93",
+                    "expectedControlType": "",
+                    "processors": "Invert,Clamp(min=-5,max=5)",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -232,6 +240,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "kbzoomout",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "faf706a5-a4ea-4104-94c4-c87f1bf0c206",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mousezoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

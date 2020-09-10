@@ -17,6 +17,7 @@ public class CameraZoom : MonoBehaviour {
     public AnimationCurve zoomCurve; // evaluated to provide some easing across the whole zoom range
 
     // ranges from 0 to 1, with 0 zoomed in all the way, 1 zoomed out all the way
+    //SO NB LOWER VALUES ARE LESS DISTANCE, NOT LESS ZOOM
     // Change these to adjust starting zoom
     private float currentZoom = 0.6f; 
     private float targetZoom = 0.6f;

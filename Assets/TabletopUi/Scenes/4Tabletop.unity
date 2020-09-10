@@ -11911,6 +11911,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8260a3a9-1f24-4daf-a852-c52555d45ddd
     m_ActionName: Default/kbzoomout[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_Zoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec443985-762c-4b71-b39f-ff0cdd06ac93
+    m_ActionName: Default/mousezoom[/Mouse/scroll/y,/Mouse/scroll/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
