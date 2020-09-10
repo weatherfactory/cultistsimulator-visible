@@ -18,14 +18,14 @@ namespace Assets.TabletopUi.Scripts.UI
                 input.text = r.selectedControl.displayName;
                 input.DeactivateInputField();
                 inputActionAsset.actionMaps[0].Enable();
-                ChangeSettingArgs args = new ChangeSettingArgs
+                ChangeSettingArgs changeSettingArgs = new ChangeSettingArgs
                 {
                     Key = boundSetting.Id,
                     Value = action.bindings[0].overridePath
                 };
 
-                Registry.Get<Concursum>().ChangeSetting(args);
-
+                Registry.Get<Concursum>().ChangeSetting(changeSettingArgs);
+                Registry.Get<Concursum>().ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Changed a key binding, which might need reflecting in on-screen prompts"});
 
                 r.Dispose();
             });

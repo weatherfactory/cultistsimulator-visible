@@ -83,6 +83,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
     public class Concursum:MonoBehaviour
     {
+        //THIS CLASS LOOKS LIKE PETER VAUGHAN IN FIERCE MODE
 
         //things I really really truly want to be global:
         //storefront access
@@ -109,6 +110,12 @@ namespace Assets.TabletopUi.Scripts.Services
         public void ShowNotification(NotificationArgs args)
         {
             ShowNotificationEvent.Invoke(args);
+
+        }
+
+        public void ContentUpdated(ContentUpdatedArgs args)
+        {
+            ContentUpdatedEvent.Invoke(args);
 
         }
 

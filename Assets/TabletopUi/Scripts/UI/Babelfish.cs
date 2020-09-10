@@ -42,6 +42,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
         var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+        concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
         var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
@@ -59,6 +60,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
         var concursum = Registry.Get<Concursum>();
         concursum.CultureChangedEvent.RemoveListener(OnCultureChanged);
+        concursum.ContentUpdatedEvent.RemoveListener(OnContentUpdated);
 
         var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
@@ -178,6 +180,12 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 		locLabel = label;
         SetValuesForCurrentCulture();
 	}
+
+
+    public virtual void OnContentUpdated(ContentUpdatedArgs args)
+    {
+        SetValuesForCurrentCulture();
+    }
 
 	public virtual void OnCultureChanged(CultureChangedArgs args)
     {

@@ -80,8 +80,8 @@ namespace Assets.CS.TabletopUI {
 			startButton.onClick.AddListener(HandleStartButton);
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
 
-			buttonDefault = Registry.Get<ILocStringProvider>().Get("VERB_START");
-			buttonBusy = Registry.Get<ILocStringProvider>().Get("VERB_RUNNING");
+            buttonDefault = "VERB_START";
+			buttonBusy = "VERB_RUNNING";
         }
 
 		void OnDisable() {
@@ -292,7 +292,7 @@ namespace Assets.CS.TabletopUI {
 
         void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
-			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
+            startButtonText.GetComponent<Babelfish>().UpdateLocLabel(string.IsNullOrEmpty(text) ? buttonDefault : text);
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {

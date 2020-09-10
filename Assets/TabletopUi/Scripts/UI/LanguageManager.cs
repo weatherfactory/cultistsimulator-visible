@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -34,7 +35,7 @@ public interface ILocStringProvider
     TMP_FontAsset GetFont( LanguageManager.eFontStyle fs, string fontscript);
     Material GetFontMaterial( LanguageManager.eFontStyle fs );
     string GetTimeStringForCurrentLanguage(float time);
-    string Get(string id);
+    string Get(string locLabel);
 }
 
 public class NullLocStringProvider : ILocStringProvider
@@ -58,7 +59,7 @@ public class NullLocStringProvider : ILocStringProvider
         return "[neither form nor void]";
     }
 
-    public string Get(string id)
+    public string Get(string locLabel)
     {
         return "[neither form nor void]";
     }
@@ -184,31 +185,63 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
     }
 
 
-    public string Get(string id)
+    public string Get(string locLabel)
     {
         
-        var compendium = Registry.Get<ICompendium>();
+        ;
         
-        var currentCulture = compendium.GetEntityById<Culture>(Registry.Get<Config>().CultureId);
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(Registry.Get<Config>().CultureId);
 
 
-        if (id.StartsWith(NoonConstants.TEMPLATE_MARKER))
-        {
-            string template = id.Substring(1); //slice off the template marker before next step
-
-            Regex ParameterPattern = new Regex(@"\{(\w+)\}");
-            string templatedVersion = ParameterPattern.Replace(template, match => Get(match.Groups[1].Value));
-            return templatedVersion;
-        }
+        if (locLabel.StartsWith(NoonConstants.TEMPLATE_MARKER))
+            return GetTemplatedResult(locLabel);
         else
         {
-            if (currentCulture.UILabels.TryGetValue(id.ToLower(), out string localisedValue))
-                 return localisedValue;
+            if (currentCulture.UILabels.TryGetValue(locLabel.ToLower(), out string localisedValue))
+            {
+                if (localisedValue.StartsWith(NoonConstants.TEMPLATE_MARKER))
+                    return GetTemplatedResult(localisedValue);
+                else
+                    return localisedValue;
+            }
 
-            return "MISSING_" + id.ToUpper();
+
+            return "MISSING_" + locLabel.ToUpper();
         }
     }
 
+    private string GetTemplatedResult(string template)
+    {
+        
+        const string SETTINGMARKER="{SETTING:";
+
+        while (template.Contains(SETTINGMARKER))
+        {
+            int settingIdStartsAt = template.LastIndexOf(SETTINGMARKER, StringComparison.Ordinal) +SETTINGMARKER.Length;
+            int settingIdEndsAt = template.IndexOf("}", settingIdStartsAt, StringComparison.Ordinal);
+            int substringLength = settingIdEndsAt - settingIdStartsAt;
+
+            string settingId= template.Substring(settingIdStartsAt, substringLength);
+
+            Setting setting = Registry.Get<ICompendium>().GetEntityById<Setting>(settingId);
+            if(setting==null)
+                break;
+
+            string toReplace= $"{SETTINGMARKER}{settingId}}}";
+
+            string replacement = $"{setting.GetCurrentValueAsHumanReadableString()}";
+
+            template = template.Replace(toReplace, replacement);
+            
+        }
 
 
+        //if the string contains a token that matches a loc label, replace that token with the value of the loc label.
+        //nb it is possible to pass a loc label that references another loc label, if the first loc label has a $
+        Regex ParameterPattern = new Regex(@"\{(\w+)\}");
+        string templatedResult = ParameterPattern.Replace(template, match => Get(match.Groups[1].Value));
+
+        var resultWithoutMarker = templatedResult.Substring(1); //remove the dollar sign before returning it
+        return resultWithoutMarker;
+    }
 }

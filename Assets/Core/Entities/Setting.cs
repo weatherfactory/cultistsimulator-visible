@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using UnityEngine;
 
 namespace Assets.Core.Entities
 {
@@ -45,6 +46,19 @@ namespace Assets.Core.Entities
 
         public object CurrentValue { get; private set; }
 
+        public string GetCurrentValueAsHumanReadableString()
+        {
+            //currently, this caters only for key bindings.
+            string currentString = CurrentValue.ToString();
+            int lastSlashPosition = currentString.LastIndexOf('/');
+
+            if (lastSlashPosition < 0)
+                return currentString;
+
+            string readableString = currentString.Substring(lastSlashPosition + 1);
+            return readableString;
+        }
+
 
         private List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();
 
@@ -75,6 +89,7 @@ namespace Assets.Core.Entities
             else
             {
              
+ 
                 var potentialValue= Registry.Get<Config>().GetPersistedSettingValueAsString(Id);
                 if (potentialValue == String.Empty)
                     CurrentValue = DefaultValue;
