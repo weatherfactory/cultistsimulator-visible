@@ -89,7 +89,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             ReloadCompendium(Registry.Get<Config>().CultureId);
 
-            registryAccess.Register<ILanguageManager>(languageManager);
+            registryAccess.Register(languageManager);
             languageManager.Initialise();
 
 

@@ -186,8 +186,7 @@ public class LanguageManager : MonoBehaviour,ILanguageManager
     public string Get(string id)
     {
         var compendium = Registry.Get<ICompendium>();
-        var conc = Registry.Get<Concursum>();
-
+        
         var currentCulture = compendium.GetEntityById<Culture>(Registry.Get<Config>().CultureId);
 
 

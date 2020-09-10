@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.UI;
 using Noon;
 using TMPro;
@@ -35,11 +36,10 @@ public class KeybindSettingControl : AbstractSettingControl
         strategy = new KeybindSettingControlStrategy();
         strategy.Initialise(settingToBind);
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
-        ActionLabel.text = strategy.SettingHint;
+        ActionLabel.text = Registry.Get<LanguageManager>().Get(strategy.SettingHint);
         var action= inputActionAsset.FindAction(strategy.SettingId);
         keybindingInputField.text = action.controls[0].displayName;
         _initialisationComplete = true;
-
     }
 
     public void OnInputSelect()

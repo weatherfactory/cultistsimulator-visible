@@ -32,9 +32,19 @@ namespace Assets.CS.TabletopUI
                 return matchingTypeInstance;
             }
 
-            //looking for an abstract class? find any subclasses.
-            //I originally planned to use interfaces, but Unity events have to be fields, and interfaces can't have fields.
-            if(typeof(T).IsAbstract)
+            if (typeof(T).IsInterface)
+            {
+                foreach (var candidateType in registered.Keys)
+                    if (typeof(T).IsAssignableFrom(candidateType))
+                    {
+                        T matchingSubtypeInstance = registered[candidateType] as T;
+                        return matchingSubtypeInstance;
+                    }
+
+            }
+
+
+            if (typeof(T).IsAbstract)
             {
                 foreach(var candidateType in registered.Keys)
                     if(candidateType.IsSubclassOf(typeof(T)))
@@ -45,17 +55,17 @@ namespace Assets.CS.TabletopUI
                     
             }
 
+            //fallbacks
+            if (!registered.ContainsKey(typeof(LanguageManager)))
+                return new NullLanguageManager() as T;
+
+
             NoonUtility.Log(typeof(T).Name + " wasn't registered: returning null",2);
                 return null;
 
         }
 
-        public Registry()
-        {
-            if (!registered.ContainsKey(typeof(ILanguageManager)))
-                registered[typeof(ILanguageManager)] = new NullLanguageManager();
 
-        }
 
         public void Register<T>(T toRegister) where T: class
         {

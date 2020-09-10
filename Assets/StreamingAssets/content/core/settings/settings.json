@@ -4,7 +4,7 @@
 	{
 		    "id": "Resolution",
 		    "tabid": "visual",
-		    "hint": "Resolution",
+		    "hint": "UI_OPT_RESOLUTION",
 		    "minvalue": 0,
 		    "maxvalue": 1,
 		    "defaultvalue": -1,
@@ -13,7 +13,7 @@
 {
 		    "id": "Windowed",
 		    "tabid": "visual",
-		    "hint": "Windowed",
+		    "hint": "UI_OPT_WINDOWED",
 		    "minvalue": 0,
 		    "maxvalue": 1,
 		    "defaultvalue": 1,
@@ -26,7 +26,7 @@
 			{
 		    "id": "GraphicsLevel",
 		    "tabid": "visual",
-		    "hint": "Beauty",
+		    "hint": "UI_OPT_GRAPHICS_LEVEL",
 		    "minvalue": 0,
 		    "maxvalue": 2,
 		    "defaultvalue": 2,
@@ -44,7 +44,7 @@
 	    {
 		    "id": "MusicVolume",
 		    "tabid": "audio",
-		    "hint": "Music Volume",
+		    "hint": "UI_OPT_MUSICVOL",
 			"minvalue": 0,
 			"maxvalue": 10,
 			"defaultvalue": 7,
@@ -70,7 +70,7 @@
 	    {
 		    "id": "SoundVolume",
 		    "tabid": "audio",
-		    "hint": "Sound Volume",
+		    "hint": "UI_OPT_SOUNDVOL",
 		    "minvalue": 0,
 		    "maxvalue": 10,
 		    "defaultvalue": 10,
@@ -94,7 +94,7 @@
 	    {
 		    "id": "NotificationTime",
 		    "tabid": "gameplay",
-		    "hint": "Info Window Duration",
+		    "hint": "UI_OPT_INFODURATION",
 		    "minvalue": -3,
 		    "maxvalue": 2,
 		    "defaultvalue": 0,
@@ -107,7 +107,7 @@
 	    {
 		    "id": "ScreenCanvasSize",
 		    "tabid": "visual",
-		    "hint": "UI Scaling",
+		    "hint": "UI_OPT_UISCALING",
 		    "minvalue": 3,
 		    "maxvalue": 5,
 		    "defaultvalue": 4,
@@ -123,7 +123,7 @@
 	    {
 		    "id": "AutosaveInterval",
 		    "tabid": "gameplay",
-		    "hint": "Autosave Interval",
+		    "hint": "UI_OPT_AUTOSAVEINTERVAL",
 		    "minvalue": 1,
 		    "maxvalue":10 ,
 		    "defaultvalue": 4,
@@ -136,7 +136,7 @@
 	    {
 		    "id": "GridSnapSize",
 		    "tabid": "gameplay",
-		    "hint": "Grid Snap Size",
+		    "hint": "UI_OPT_GRIDSNAPSIZE",
 		    "minvalue": 0,
 		    "maxvalue": 3,
 		    "defaultvalue": 0,
@@ -155,7 +155,7 @@
 		  {
 		    "id": "AllowExploits",
 		    "tabid": "gameplay",
-		    "hint": "Bird/Worm",
+		    "hint": "UI_OPT_BIRDWORM",
 		    "minvalue": 0,
 		    "maxvalue": 1,
 		    "defaultvalue": 0,
@@ -171,7 +171,7 @@
 		  {
 		    "id": "AccessibleCards",
 		    "tabid": "visual",
-		    "hint": "Accessible Card Titles",
+		    "hint": "UI_OPT_ACCESSIBLE_CARDS",
 		    "minvalue": 0,
 		    "maxvalue": 1,
 		    "defaultvalue": 0,
@@ -186,7 +186,7 @@
 	 		 {
 		    "id": "HighContrast",
 		    "tabid": "visual",
-		    "hint": "High Contrast Mode",
+		    "hint": "UI_OPT_CONTRAST",
 		    "minvalue": 0,
 		    "maxvalue": 1,
 		    "datatype": "int",
