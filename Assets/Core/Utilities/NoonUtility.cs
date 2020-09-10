@@ -11,7 +11,9 @@ namespace Noon
 {
     public class NoonConstants
     {
-        
+
+        public const string TEMPLATE_MARKER = "$";
+
         public const string ID = "id";
         public const string UID = "uid";
         public const string EXTENDS = "extends";

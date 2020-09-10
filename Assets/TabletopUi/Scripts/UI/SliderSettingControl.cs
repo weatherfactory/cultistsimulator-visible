@@ -48,7 +48,7 @@ namespace Assets.TabletopUi.Scripts.UI
             strategy.SetSliderValues(Slider);
             SliderHint.GetComponent<Babelfish>().UpdateLocLabel(strategy.SettingHint);
             
-            SliderValueLabel.text = strategy.GetLabelForValue(Slider.value);
+            SliderValueLabel.GetComponent<Babelfish>().UpdateLocLabel(strategy.GetLabelForValue(Slider.value));
 
 
             gameObject.name = "SliderSetting_" + strategy.SettingId;
@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.UI
                 SoundManager.PlaySfx("UISliderMove");
                 newSettingValueQueued = changingToValue;
                 string newValueLabel = strategy.GetLabelForValue((float)newSettingValueQueued);
-                SliderValueLabel.text = newValueLabel;
+                SliderValueLabel.GetComponent<Babelfish>().UpdateLocLabel(newValueLabel);
             }
         }
 

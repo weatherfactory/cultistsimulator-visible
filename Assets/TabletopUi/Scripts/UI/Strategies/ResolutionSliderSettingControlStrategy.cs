@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
             var chosenResolution = availableResolutions[(int)forValue];
 
-            string desc = chosenResolution.width + "\n x \n" + chosenResolution.height;
+            string desc = NoonConstants.TEMPLATE_MARKER + chosenResolution.width + "\n x " + chosenResolution.height;
             return desc;
         }
     }

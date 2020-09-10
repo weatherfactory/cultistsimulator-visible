@@ -191,10 +191,13 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
         
         var currentCulture = compendium.GetEntityById<Culture>(Registry.Get<Config>().CultureId);
 
-        if (id.StartsWith("$"))
+
+        if (id.StartsWith(NoonConstants.TEMPLATE_MARKER))
         {
+            string template = id.Substring(1); //slice off the template marker before next step
+
             Regex ParameterPattern = new Regex(@"\{(\w+)\}");
-            string templatedVersion = ParameterPattern.Replace(id, match => Get(match.Groups[1].Value));
+            string templatedVersion = ParameterPattern.Replace(template, match => Get(match.Groups[1].Value));
             return templatedVersion;
         }
         else
