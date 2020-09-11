@@ -33,10 +33,10 @@ namespace Assets.Core.Entities
         [FucineValue(DefaultValue=1)]
         public int MaxValue { get; set; }
 
-        [FucineValue(DefaultValue = -1)]
-        public int DefaultValue { get; set; }
+        [FucineValue]
+        public string DefaultValue { get; set; }
 
-        [FucineValue(DefaultValue = "float")]
+        [FucineValue]
         public string DataType { get; set; }
 
 
@@ -56,7 +56,7 @@ namespace Assets.Core.Entities
                 return currentString;
 
             string readableString = currentString.Substring(lastSlashPosition + 1);
-            return readableString;
+            return readableString.ToUpperInvariant();
         }
 
 
@@ -70,7 +70,7 @@ namespace Assets.Core.Entities
             Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
 
 
-            if (DataType == "float")
+            if (DataType == nameof(Single))
             {
                 var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsFloat(Id);
                 if (potentialValue == null)
@@ -78,7 +78,7 @@ namespace Assets.Core.Entities
                 else
                     CurrentValue = potentialValue;
             }
-            else if (DataType == "int")
+            else if (DataType == nameof(Int32))
             {
                 var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsInt(Id);
                 if (potentialValue == null)
@@ -88,8 +88,6 @@ namespace Assets.Core.Entities
             }
             else
             {
-             
- 
                 var potentialValue= Registry.Get<Config>().GetPersistedSettingValueAsString(Id);
                 if (potentialValue == String.Empty)
                     CurrentValue = DefaultValue;

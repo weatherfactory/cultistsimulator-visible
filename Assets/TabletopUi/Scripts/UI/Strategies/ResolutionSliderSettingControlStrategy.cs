@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.UI
 
             int candidateSliderValue = (boundSetting.CurrentValue is int value ? value : 0);
 
-            if(candidateSliderValue == boundSetting.DefaultValue)
+            if(candidateSliderValue == int.Parse(boundSetting.DefaultValue))
             {
                 //if the slider value is still the default value (-1 or other distinctive marker) then resolution has never been intentionally set: find a match for the current resolution
                 var resolutionIndex = availableResolutions.FindIndex(res =>

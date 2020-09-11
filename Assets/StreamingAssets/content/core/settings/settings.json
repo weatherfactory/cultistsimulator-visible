@@ -7,8 +7,8 @@
 		    "hint": "UI_OPT_RESOLUTION",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": -1,
-		    "datatype": "int"
+		    "defaultvalue": "-1",
+		    "datatype": "Int32"
 },
 {
 		    "id": "Windowed",
@@ -16,7 +16,8 @@
 		    "hint": "UI_OPT_WINDOWED",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 1,
+		    "defaultvalue": "1",
+			"datatype": "Single",
 		    "valuelabels": 
 		    {
 				"0": "UI_OFF",
@@ -29,7 +30,8 @@
 		    "hint": "UI_OPT_GRAPHICS_LEVEL",
 		    "minvalue": 0,
 		    "maxvalue": 2,
-		    "defaultvalue": 2,
+		    "defaultvalue": "2",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"0": "GRAPHICS_LEVEL_1",
@@ -47,7 +49,8 @@
 		    "hint": "UI_OPT_MUSICVOL",
 			"minvalue": 0,
 			"maxvalue": 10,
-			"defaultvalue": 7,
+			"defaultvalue": "7",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 "0": "$0%",
@@ -73,7 +76,8 @@
 		    "hint": "UI_OPT_SOUNDVOL",
 		    "minvalue": 0,
 		    "maxvalue": 10,
-		    "defaultvalue": 10,
+		    "defaultvalue": "10",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 			    "0": "$0%",
@@ -97,7 +101,8 @@
 		    "hint": "UI_OPT_INFODURATION",
 		    "minvalue": -3,
 		    "maxvalue": 2,
-		    "defaultvalue": 0,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"-3": "$4 {UI_SECONDS_POSTFIX}",
@@ -116,7 +121,8 @@
 		    "hint": "UI_OPT_UISCALING",
 		    "minvalue": 3,
 		    "maxvalue": 5,
-		    "defaultvalue": 4,
+		    "defaultvalue": "4",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"3": "$75%",
@@ -132,7 +138,8 @@
 		    "hint": "UI_OPT_AUTOSAVEINTERVAL",
 		    "minvalue": 1,
 		    "maxvalue":10 ,
-		    "defaultvalue": 4,
+		    "defaultvalue": "4",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"1": "$1 {UI_MINUTES_POSTFIX}",
@@ -156,8 +163,8 @@
 		    "hint": "UI_OPT_GRIDSNAPSIZE",
 		    "minvalue": 0,
 		    "maxvalue": 3,
-		    "defaultvalue": 0,
-			"datatype": "int",
+		    "defaultvalue": "0",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"0": "UI_SNAP_0",
@@ -175,7 +182,8 @@
 		    "hint": "UI_OPT_BIRDWORM",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 0,
+		    "defaultvalue": "0",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"0": "UI_BIRD",
@@ -191,8 +199,8 @@
 		    "hint": "UI_OPT_ACCESSIBLE_CARDS",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "defaultvalue": 0,
-		    "datatype": "int",
+		    "defaultvalue": "0",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
 				"0": "UI_OFF",
@@ -206,8 +214,8 @@
 		    "hint": "UI_OPT_CONTRAST",
 		    "minvalue": 0,
 		    "maxvalue": 1,
-		    "datatype": "int",
-		    "defaultvalue": 0,
+		    "datatype": "Single",
+		    "defaultvalue": "0",
 		    "valuelabels": 
 		    {
 				"0": "UI_OFF",
@@ -218,74 +226,86 @@
 		    "id": "kbpause",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_PAUSE",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/space"
 	    },
 
 	    {
 		    "id": "kbnormalspeed",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_NORMALSPEED",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/n"
 	    },
 
 	    {
 		    "id": "kbfastspeed",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_FASTSPEED",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/m"
 	    },
 
 	    {
 		    "id": "kbstartrecipe",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_STARTRECIPE",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/s"
 	    },
 
 	    {
 		    "id": "kbcollectall",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_COLLECTALL",
-			"datatype": "string"
+			"datatype": "String",
+		    "defaultvalue": "<Keyboard>/c"
 	    },
 
-	    {
-		    "id": "kbstack",
-		    "tabid": "UI_KEYBINDS",
-		    "hint": "UI_KB_STACKCARDS",
-		    "datatype": "string"
-	    },
 
 	    {
 		    "id": "kbzoomin",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_ZOOMIN",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/q"
 	    },
 
 	    {
 		    "id": "kbzoomout",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_ZOOMOUT",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/e"
+	    },
+
+	    {
+		    "id": "kbstack",
+		    "tabid": "UI_KEYBINDS",
+		    "hint": "UI_KB_STACKCARDS",
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/tab"
 	    },
 	    {
 		    "id": "kbzoom1",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_ZOOM1",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/1"
 	    },
 	    {
 		    "id": "kbzoom2",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_ZOOM2",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/2"
 	    },
 	    {
 		    "id": "kbzoom3",
 		    "tabid": "UI_KEYBINDS",
 		    "hint": "UI_KB_ZOOM3",
-		    "datatype": "string"
+		    "datatype": "String",
+		    "defaultvalue": "<Keyboard>/3"
 	    }
 
 

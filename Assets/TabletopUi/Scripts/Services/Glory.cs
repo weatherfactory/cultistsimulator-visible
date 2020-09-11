@@ -36,6 +36,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
 
             LogSystemSettings();
+            //Glory.Initialise needs to be run before anything else... or oyu won't like what happens next.
             Initialise();
 
         }
@@ -63,36 +64,49 @@ namespace Assets.TabletopUi.Scripts.Services
 
             var registryAccess = new Registry();
 
-            registryAccess.Register(new Config(NoonConstants.DEFAULT_CULTURE_ID));
 
+            //load config: this gives us a lot of info that we'll need early
+            registryAccess.Register(new Config(NoonConstants.DEFAULT_CULTURE_ID));            
+            
+            //load concursum: central nexus for event responses
             registryAccess.Register(concursum);
 
-            
+            //right now, this is just the version number
             var metaInfo = new MetaInfo(new VersionNumber(Application.version));
             registryAccess.Register<MetaInfo>(metaInfo);
             
+
+            //stagehand is used to load scenes
             registryAccess.Register<StageHand>(stageHand);
 
-
+        //why here? why not? this whole thing needs fixing
             registryAccess.Register<IDice>(new Dice());
 
-
+            //Set up storefronts: integration with GOG and Steam, so this should come early.
             var storefrontServicesProvider = new StorefrontServicesProvider();
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
             storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
-
             registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
 
-
+            //set up the Mod Manager
             registryAccess.Register(new ModManager());
-            registryAccess.Register<ICompendium>(new Compendium());
 
+            //load Compendium content. We can't do anything with content files until this is in.
+            registryAccess.Register<ICompendium>(new Compendium());
             ReloadCompendium(Registry.Get<Config>().CultureId);
 
+
+            //setting defaults need to be set here, but they may be migrated from somewhere other than config (like PlayerPrefs) or
+            //they may be set from /settings in JSON -so we can only do this once we have the Compendium loaded.
+            //Registry.Get<Config>().MigrateOrSetDefaults(Registry.Get<ICompendium>());
+
+
+            //set up loc services
             registryAccess.Register(languageManager);
             languageManager.Initialise();
 
 
+            //get Concursum to respond to future culture-changed events, but not the initial one
             concursum.CultureChangedEvent.AddListener(OnCultureChanged);
 
             //TODO: async

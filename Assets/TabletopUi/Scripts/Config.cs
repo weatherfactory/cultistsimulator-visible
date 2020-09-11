@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -64,8 +65,6 @@ public class Config
     public void ReadFromIniFile()
     {
         
-
-
         if (File.Exists(GetConfigFileLocation()))
         {
 
@@ -97,6 +96,42 @@ public class Config
             SetConfigValue("skiplogo", "0");
             WriteIniFile();
         }
+
+    }
+
+    public void MigrateOrSetDefaults(ICompendium compendium)
+    {
+        //We've moved storage of Options settings from PlayerPrefs to the config file.
+        //To avoid users losing all their persisted settings, and to set a sensible default, for every options setting:
+        
+
+        foreach (Setting setting in compendium.GetEntitiesAsList<Setting>())
+        {
+            object valueToSet=null;
+            //1. we check in PlayerPref and retrieve the value if it exists
+            if (setting.DataType == "int")
+            {
+                if (PlayerPrefs.HasKey(setting.Id))
+                    valueToSet = PlayerPrefs.GetInt(setting.Id);
+  
+            }
+            else if (setting.DataType == "string")
+            {
+                if (PlayerPrefs.HasKey(setting.Id))
+                    valueToSet = PlayerPrefs.GetString(setting.Id);
+                
+            }
+
+            else if (setting.DataType == "float")
+            {
+                if (PlayerPrefs.HasKey(setting.Id))
+                    valueToSet = PlayerPrefs.GetFloat(setting.Id);
+            }
+
+            Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
+            //2. we set the default if it doesn't. <-- actually, I can take care of this in setting import
+        }
+
 
     }
 
@@ -137,23 +172,6 @@ public class Config
         return GetConfigValue(forId);
     }
 
-    //public void PersistSettingValue(ChangeSettingArgs args)
-    //{
-    //    if(args.Value is float floatValue)
-    //        PlayerPrefs.SetFloat(args.Key, floatValue);
-    //    else if (args.Value is int intValue)
-    //        PlayerPrefs.SetInt(args.Key, intValue);
-    //    else
-    //        PlayerPrefs.SetString(args.Key,args.Value as string);
-    //}
-
-    //public float? GetPersistedSettingValue(string forId)
-    //{
-    //    if (PlayerPrefs.HasKey(forId))
-    //        return PlayerPrefs.GetFloat(forId);
-    //    else
-    //        return null;
-    //}
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {

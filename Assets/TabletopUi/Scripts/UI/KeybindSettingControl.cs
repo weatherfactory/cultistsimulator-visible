@@ -18,6 +18,7 @@ public class KeybindSettingControl : AbstractSettingControl
     public InputActionAsset inputActionAsset;
 
     private KeybindSettingControlStrategy strategy;
+    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
     public override string TabId
     {
@@ -37,18 +38,37 @@ public class KeybindSettingControl : AbstractSettingControl
         strategy.Initialise(settingToBind);
         gameObject.name = "KeybindSetting_" + strategy.SettingId;
         ActionLabel.GetComponent<Babelfish>().UpdateLocLabel(strategy.SettingHint);
-        var action= inputActionAsset.FindAction(strategy.SettingId);
-        keybindingInputField.text = action.controls[0].displayName;
+        keybindingInputField.text = strategy.GetKeybindDisplayValue();
         _initialisationComplete = true;
     }
 
     public void OnInputSelect()
     {
-        keybindingInputField.text=String.Empty;
-        strategy.Rebind(inputActionAsset,keybindingInputField);
+        keybindingInputField.text = String.Empty;
+       rebindingOperation=strategy.Rebind(inputActionAsset, keybindingInputField);
     }
 
+    public void OnValueChanged()
+        {
+            Debug.Log("OnValueChanged");
+        }
 
+        public void OnEndEdit()
+    {
+        Debug.Log("OnEndEdit");
+    }
+
+        public void OnDeselect()
+        {
+            Debug.Log("Deselect");
+        if(rebindingOperation!=null)
+        {
+            rebindingOperation.Cancel();
+            rebindingOperation.Dispose();
+            keybindingInputField.text = strategy.GetKeybindDisplayValue();
+        }
+
+    }
 
 
 
