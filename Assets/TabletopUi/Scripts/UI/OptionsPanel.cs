@@ -131,7 +131,7 @@ public class OptionsPanel : MonoBehaviour {
 
         foreach (var setting in settings)
         {
-            if (setting.DataType==nameof(String))
+            if (setting.DataType==nameof(String)) //currently, only keybinds are strings, all others are sliders
             {
                 var keybindsettingControl = Instantiate(KeybindSettingControlPrefab, SettingsHere).GetComponent<KeybindSettingControl>();
                 keybindsettingControl.Initialise(setting);
