@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private Character OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave)
         {
           var  htCharacter = htSave.GetHashtable("defunctCharacterDetails");
-          if (htCharacter != null) ;
+          
           var endingTriggeredForCharacterId =
               TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
 

@@ -179,7 +179,7 @@ namespace Assets.Core.Fucine
                     // remove: removes items from a dictionary or a list
                     case "remove":
                         {
-                            var valuesToDelete = entityDataToModify.ValuesTable.GetArrayList(key);
+                            var valuesToDelete = _modData.ValuesTable.GetArrayList(key);
                             if (valuesToDelete == null)
                             {
                                 log.LogWarning(

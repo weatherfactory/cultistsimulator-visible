@@ -1,8 +1,12 @@
 v2020.9.b.5
+- burn images now work
+- $remove works again
+
 I've rebuilt the options menu. This mostly meant ripping out and replacing the most horrible code in the game (everyone involved, including me, had just hacked in stuff in a hurry) but it also means
 - you can change key bindings again
 - settings are specified in a JSON entities file, so you can add new ones. This isn't useful at the moment, because there's no easy way to wire them up, but it does open the door to (a) mods with settings (b) mnods that allow you to switch on/off content-driven behaviour.
 - setting values (including keybinds) are now stored in config.ini, not in the Windows registry (or whatever exotic equivalents UnityPlayerPrefs uses in OSX and Linux). There's a one-time migration process that *should* import them painlessly. Let me know if it doesn't.
+
 
 
 v2020.8.a.4; "The Mirror and the Lime"
