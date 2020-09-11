@@ -27,11 +27,13 @@ public class OptionsPanelTab : MonoBehaviour
        gameObject.GetComponent<Button>().OnSelect(null);
       _parentOptionsPanel.TabActivated(this);
       TabImage.color = new Color(1, 1, 1, 1);
+      TabText.color = new Color(1, 1, 1, 1);
 
     }
 
     public void Deactivate()
     {
-       //
+        TabImage.color = new Color(1, 1, 1, 0.5f);
+        TabText.color = new Color(1, 1, 1, 0.5f);
     }
 }
