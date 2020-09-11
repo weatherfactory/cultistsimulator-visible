@@ -131,7 +131,7 @@ public class OptionsPanel : MonoBehaviour {
 
         foreach (var setting in settings)
         {
-            if (InputSystem.ListEnabledActions().Any(a => a.name == setting.Id))
+            if (setting.DataType==nameof(String))
             {
                 var keybindsettingControl = Instantiate(KeybindSettingControlPrefab, SettingsHere).GetComponent<KeybindSettingControl>();
                 keybindsettingControl.Initialise(setting);
