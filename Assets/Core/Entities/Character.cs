@@ -101,7 +101,7 @@ public class Character
             //The game has ended. The current character becomes the previous character.
             _previousCharacterHistoryRecords = hb.FillInDefaultPast(_inProgressHistoryRecords);
         else
-        //the game hasn't ended yet. There may be existing prevbious
+        //the game hasn't ended yet. There may be existing previous
             _previousCharacterHistoryRecords = hb.FillInDefaultPast(_previousCharacterHistoryRecords);
         
         

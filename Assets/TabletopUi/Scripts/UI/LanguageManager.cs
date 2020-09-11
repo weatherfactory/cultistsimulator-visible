@@ -131,10 +131,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
 	public TMP_FontAsset GetFont( eFontStyle fs, string fontscript)
     {
-        
-		
-
-		int style = (int)fs;
+        int style = (int)fs;
 		// determine which language is being used:
         switch (fontscript)
         {

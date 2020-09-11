@@ -48,15 +48,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
+        private Character TryRetrieveOldFormatDefunctCharacter(Hashtable htSave)
+        {
+          var  htCharacter = htSave.GetHashtable("defunctCharacterDetails");
+          if (htCharacter != null) ;
+          var endingTriggeredForCharacterId =
+              TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
+
+          var endingTriggered = compendium.GetEntityById<Ending>(endingTriggeredForCharacterId);
+
+
+          var character = new Character(null, endingTriggered);
+
+          character.Reset(null, endingTriggered);
+
+          return character;
+        }
+
         public Character ImportCharacter(Hashtable htSave)
         {
             
 
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
+            if(htCharacter==null)
+
+                return TryRetrieveOldFormatDefunctCharacter(htSave);
+
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
-
-   
-
+            
 
             var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
 
