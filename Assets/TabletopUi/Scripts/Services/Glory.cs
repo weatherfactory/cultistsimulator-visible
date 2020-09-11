@@ -96,9 +96,10 @@ namespace Assets.TabletopUi.Scripts.Services
             ReloadCompendium(Registry.Get<Config>().CultureId);
 
 
-            //setting defaults need to be set here, but they may be migrated from somewhere other than config (like PlayerPrefs) or
-            //they may be set from /settings in JSON -so we can only do this once we have the Compendium loaded.
-            //Registry.Get<Config>().MigrateOrSetDefaults(Registry.Get<ICompendium>());
+            //setting defaults are set as the compendium is loaded, but they may also need to be
+            //migrated from somewhere other than config (like PlayerPrefs)
+            //so we only run this now, allowing it to overwrite any default values
+         //   Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
 
 
             //set up loc services

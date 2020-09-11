@@ -99,7 +99,7 @@ public class Config
 
     }
 
-    public void MigrateOrSetDefaults(ICompendium compendium)
+    public void MigrateAnySettingValuesInRegistry(ICompendium compendium)
     {
         //We've moved storage of Options settings from PlayerPrefs to the config file.
         //To avoid users losing all their persisted settings, and to set a sensible default, for every options setting:
@@ -108,28 +108,26 @@ public class Config
         foreach (Setting setting in compendium.GetEntitiesAsList<Setting>())
         {
             object valueToSet=null;
-            //1. we check in PlayerPref and retrieve the value if it exists
-            if (setting.DataType == "int")
+            if (setting.DataType == nameof(Int32))
             {
                 if (PlayerPrefs.HasKey(setting.Id))
                     valueToSet = PlayerPrefs.GetInt(setting.Id);
   
             }
-            else if (setting.DataType == "string")
+            else if (setting.DataType == nameof(String))
             {
                 if (PlayerPrefs.HasKey(setting.Id))
                     valueToSet = PlayerPrefs.GetString(setting.Id);
                 
             }
 
-            else if (setting.DataType == "float")
+            else if (setting.DataType == nameof(Single))
             {
                 if (PlayerPrefs.HasKey(setting.Id))
                     valueToSet = PlayerPrefs.GetFloat(setting.Id);
             }
-
+            if(valueToSet!=null)
             Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
-            //2. we set the default if it doesn't. <-- actually, I can take care of this in setting import
         }
 
 

@@ -25,37 +25,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Start()
         {
-            bool setSomeDefaultBindingsForFirstTime = false;
+            //  bool setSomeDefaultBindingsForFirstTime = false;
             foreach (InputAction action in playerInput.currentActionMap.actions)
             {
-                var persistedBindingOverridePath= Registry.Get<Config>().GetPersistedSettingValueAsString(action.name);
-             if (!string.IsNullOrEmpty(persistedBindingOverridePath))
-             {
-                    action.ApplyBindingOverride(persistedBindingOverridePath);
-             }
-             else
-             {
-                 try
-                 {
-
-                     if (Registry.Get<ICompendium>().EntityExists<Setting>(action.name))
-                     {
-                         Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs
-                             {Key = action.name, Value = action.bindings[0].effectivePath});
-                         setSomeDefaultBindingsForFirstTime = true;
-                     }
-                 }
-                 catch (Exception e)
-                 {
-                   NoonUtility.Log("Something went awry with an attempt to change a setting to match a default keybinding: " + e.Message);
-                 }
-             }
-
-             if(setSomeDefaultBindingsForFirstTime)
-                 Registry.Get<Concursum>().ContentUpdated(new ContentUpdatedArgs{Message = "Set a default binding for the first time"});
+                var keyBindSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(action.name);
+                if ( keyBindSetting!=null && !string.IsNullOrEmpty(keyBindSetting.CurrentValue.ToString()))
+                {
+                    action.ApplyBindingOverride(keyBindSetting.CurrentValue.ToString());
+                }
+                else
+                {
+                    NoonUtility.Log("No default found for keybinding: " + action.name);
+                }
             }
         }
-
 
         public static bool IsInInputField() {
 			return inInputField;
