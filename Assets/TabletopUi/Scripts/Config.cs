@@ -108,7 +108,19 @@ public class Config
         foreach (Setting setting in compendium.GetEntitiesAsList<Setting>())
         {
             object valueToSet=null;
-            if (setting.DataType == nameof(Int32))
+            if (setting.Id == NoonConstants.RESOLUTION)
+            {
+                //stored in registry as a float, but assumed now to be an int
+                if (PlayerPrefs.HasKey(setting.Id))
+                    valueToSet = (int)PlayerPrefs.GetFloat(setting.Id);
+
+            }
+             else  if (setting.DataType == nameof(Single))
+            {
+                if (PlayerPrefs.HasKey(setting.Id))
+                    valueToSet = PlayerPrefs.GetFloat(setting.Id);
+            }
+            else if (setting.DataType == nameof(Int32))
             {
                 if (PlayerPrefs.HasKey(setting.Id))
                     valueToSet = PlayerPrefs.GetInt(setting.Id);
@@ -121,13 +133,9 @@ public class Config
                 
             }
 
-            else if (setting.DataType == nameof(Single))
-            {
-                if (PlayerPrefs.HasKey(setting.Id))
-                    valueToSet = PlayerPrefs.GetFloat(setting.Id);
-            }
-            if(valueToSet!=null)
-            Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
+  
+            if(valueToSet!=null) //change and persist the setting to match the migrated value
+                Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
         }
 
 

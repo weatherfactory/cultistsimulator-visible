@@ -99,7 +99,7 @@ namespace Assets.TabletopUi.Scripts.Services
             //setting defaults are set as the compendium is loaded, but they may also need to be
             //migrated from somewhere other than config (like PlayerPrefs)
             //so we only run this now, allowing it to overwrite any default values
-         //   Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
+           Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
 
 
             //set up loc services

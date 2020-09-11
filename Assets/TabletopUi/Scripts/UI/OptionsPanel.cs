@@ -112,7 +112,7 @@ public class OptionsPanel : MonoBehaviour {
         foreach (Transform editTimeTab in TabsHere)
             Destroy(editTimeTab.gameObject);
 
-        var tabs = settings.Select(s => s.TabId).Distinct().Where(t=>!string.IsNullOrEmpty(t));
+        var tabs = settings.Select(s => s.TabId).Distinct().Where(t=>!string.IsNullOrEmpty(t)); //if a tabid is unspecified, that setting isn't editable in options
         foreach (var tabName in tabs)
         {
             var tabComponent = Instantiate(TabControlPrefab, TabsHere).GetComponent<OptionsPanelTab>();
