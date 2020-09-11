@@ -107,35 +107,49 @@ public class Config
 
         foreach (Setting setting in compendium.GetEntitiesAsList<Setting>())
         {
-            object valueToSet=null;
-            if (setting.Id == NoonConstants.RESOLUTION)
+            try
             {
-                //stored in registry as a float, but assumed now to be an int
-                if (PlayerPrefs.HasKey(setting.Id))
-                    valueToSet = (int)PlayerPrefs.GetFloat(setting.Id);
 
-            }
-             else  if (setting.DataType == nameof(Single))
-            {
-                if (PlayerPrefs.HasKey(setting.Id))
-                    valueToSet = PlayerPrefs.GetFloat(setting.Id);
-            }
-            else if (setting.DataType == nameof(Int32))
-            {
-                if (PlayerPrefs.HasKey(setting.Id))
-                    valueToSet = PlayerPrefs.GetInt(setting.Id);
+                object valueToSet=null;
+                if (setting.Id == NoonConstants.RESOLUTION)
+                {
+                    //stored in registry as a float, but assumed now to be an int
+                    if (PlayerPrefs.HasKey(setting.Id))
+                        valueToSet = (int)PlayerPrefs.GetFloat(setting.Id);
+
+                }
+                else  if (setting.DataType == nameof(Single))
+                {
+                    if (PlayerPrefs.HasKey(setting.Id))
+                        valueToSet = PlayerPrefs.GetFloat(setting.Id);
+                }
+                else if (setting.DataType == nameof(Int32))
+                {
+                    if (PlayerPrefs.HasKey(setting.Id))
+                        valueToSet = PlayerPrefs.GetInt(setting.Id);
   
-            }
-            else if (setting.DataType == nameof(String))
-            {
-                if (PlayerPrefs.HasKey(setting.Id))
-                    valueToSet = PlayerPrefs.GetString(setting.Id);
+                }
+                else if (setting.DataType == nameof(String))
+                {
+                    if (PlayerPrefs.HasKey(setting.Id))
+                        valueToSet = PlayerPrefs.GetString(setting.Id);
                 
-            }
+                }
 
   
-            if(valueToSet!=null) //change and persist the setting to match the migrated value
-                Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
+                if(valueToSet!=null) //change and persist the setting to match the migrated value
+                {
+                    Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
+                    NoonUtility.Log($"Imported {setting.Id} from registry with value {valueToSet}");
+                    PlayerPrefs.DeleteKey(setting.Id);
+                    NoonUtility.Log($"Deleted {setting.Id} key from registry");
+                }
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Problem Importing {setting.Id} from registry: " + e.Message );
+            }
         }
 
 
