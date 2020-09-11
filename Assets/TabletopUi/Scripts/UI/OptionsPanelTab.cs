@@ -15,8 +15,7 @@ public class OptionsPanelTab : MonoBehaviour
     public void Initialise(string tabId,OptionsPanel parentOptionsPanel)
     {
         TabId = tabId;
-        _parentOptionsPanel = parentOptionsPanel;
-        TabText.GetComponent<Babelfish>().UpdateLocLabel(tabId);
+        _parentOptionsPanel = parentOptionsPanel; TabText.GetComponent<Babelfish>().UpdateLocLabel(tabId);
         TabImage.sprite=ResourcesManager.GetSprite("ui/tabs", tabId);
     }
 
