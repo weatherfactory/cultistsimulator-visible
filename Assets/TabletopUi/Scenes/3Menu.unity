@@ -715,8 +715,8 @@ MonoBehaviour:
   locLabel: UI_CREDITS
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
+  highContrastPermissibleInContext: 1
+  highContrastBold: 0
   forceBold: 0
 --- !u!1 &55237395
 GameObject:
@@ -846,7 +846,7 @@ MonoBehaviour:
   locLabel: UI_PLAYLEGACY_PURGE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &58569908
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   locLabel: UI_LANGUAGE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!222 &108977478
@@ -1983,10 +1983,16 @@ MonoBehaviour:
   ToggleDebugEvent:
     m_PersistentCalls:
       m_Calls: []
+  StackCardsEvent:
+    m_PersistentCalls:
+      m_Calls: []
   SpeedControlEvent:
     m_PersistentCalls:
       m_Calls: []
   UILookAtMeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ZoomEvent:
     m_PersistentCalls:
       m_Calls: []
   eventSystem: {fileID: 678012479}
@@ -7933,7 +7939,7 @@ MonoBehaviour:
   locLabel: UI_CREDITS_ROLES
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &369761251
@@ -14910,7 +14916,7 @@ MonoBehaviour:
   locLabel: UI_CREDITS_NAMES
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &612091860
@@ -15064,7 +15070,7 @@ MonoBehaviour:
   locLabel: UI_PURGE_KEEP
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &619970101
@@ -15223,7 +15229,7 @@ MonoBehaviour:
   locLabel: UI_CREDITS_TITLE
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &630448416
@@ -21229,7 +21235,7 @@ MonoBehaviour:
   locLabel: UI_DLC_AND_MODS
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &699449130
@@ -26643,7 +26649,7 @@ MonoBehaviour:
   locLabel: UI_MODS_INTRODUCTION
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &824820308
@@ -42506,7 +42512,7 @@ MonoBehaviour:
   locLabel: UI_OPTIONS_FE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1019544761
@@ -42893,8 +42899,8 @@ MonoBehaviour:
   locLabel: UI_PURGE_SAVE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
+  highContrastPermissibleInContext: 1
+  highContrastBold: 0
   forceBold: 0
 --- !u!1 &1061650897
 GameObject:
@@ -43016,7 +43022,7 @@ MonoBehaviour:
   locLabel: UI_LANGUAGE
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1064828979
@@ -43443,7 +43449,7 @@ MonoBehaviour:
   locLabel: UI_MODS_NO_MODS
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1079870539
@@ -44196,7 +44202,7 @@ MonoBehaviour:
   locLabel: UI_PLAYLEGACY_KEEP
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1184225794
@@ -44548,7 +44554,7 @@ MonoBehaviour:
   locLabel: UI_VERSION_NEWS
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1243135594
@@ -44604,7 +44610,7 @@ MonoBehaviour:
   locLabel: UI_PLAYLEGACY_DESC
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1243135597
@@ -49668,7 +49674,7 @@ MonoBehaviour:
   locLabel: UI_VERSION_NEWS_TEXT
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1267088798
@@ -50147,7 +50153,7 @@ MonoBehaviour:
   locLabel: UI_CORRUPTED_SAVE_DESC
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1291901581
@@ -50267,7 +50273,7 @@ MonoBehaviour:
   locLabel: UI_LANGSWITCHNOTES
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1298151203
@@ -50730,7 +50736,7 @@ MonoBehaviour:
   locLabel: UI_VERSION_NEWS_INTRO
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!114 &1381645868
@@ -50975,7 +50981,7 @@ MonoBehaviour:
   locLabel: UI_INSTALLED_MODS
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!222 &1392866907
@@ -51595,8 +51601,8 @@ MonoBehaviour:
   locLabel: UI_BEGIN_GAME
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
+  highContrastPermissibleInContext: 1
+  highContrastBold: 0
   forceBold: 0
 --- !u!1 &1432055249
 GameObject:
@@ -52030,7 +52036,7 @@ MonoBehaviour:
   locLabel: UI_PURGE_CONFIRM
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1502385828
@@ -52524,7 +52530,7 @@ MonoBehaviour:
   locLabel: UI_RESPONSIBILITIES
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1524263861
@@ -58170,7 +58176,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 1
 --- !u!114 &1634584447
@@ -58188,7 +58194,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 1
 --- !u!1 &1651701281
@@ -58700,8 +58706,8 @@ MonoBehaviour:
   locLabel: UI_CONTINUE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
+  highContrastPermissibleInContext: 1
+  highContrastBold: 0
   forceBold: 0
 --- !u!1 &1702584795
 GameObject:
@@ -58898,7 +58904,7 @@ MonoBehaviour:
   locLabel: 
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 1
 --- !u!1 &1719019546
@@ -59052,8 +59058,8 @@ MonoBehaviour:
   locLabel: UI_LEAVE_GAME
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
-  highContrastBold: 1
+  highContrastPermissibleInContext: 1
+  highContrastBold: 0
   forceBold: 0
 --- !u!1001 &1727065008
 PrefabInstance:
@@ -59870,7 +59876,7 @@ MonoBehaviour:
   locLabel: UI_VERSION_NEWS
   fontStyle: 1
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &1907551119
@@ -60459,7 +60465,7 @@ MonoBehaviour:
   locLabel: UI_PURGE_DESC
   fontStyle: 0
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!850595691 &1969774448
@@ -65433,7 +65439,7 @@ MonoBehaviour:
   locLabel: UI_PURGE_PURGE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &2006377712
@@ -65589,7 +65595,7 @@ MonoBehaviour:
   locLabel: UI_CORRUPTED_SAVE_TITLE
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!1 &2020155722
@@ -75672,7 +75678,7 @@ MonoBehaviour:
   locLabel: UI_DLC_AND_MODS
   fontStyle: 2
   forceFontLanguage: 
-  highContrastEnabled: 1
+  highContrastPermissibleInContext: 1
   highContrastBold: 1
   forceBold: 0
 --- !u!222 &2105850820
@@ -76302,7 +76308,7 @@ PrefabInstance:
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -179.35056
+      value: -179
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681283847744, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -76357,7 +76363,7 @@ PrefabInstance:
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -99.67528
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
@@ -76562,7 +76568,7 @@ PrefabInstance:
     - target: {fileID: 6671848926856241789, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -678.05164
+      value: -678
       objectReference: {fileID: 0}
     - target: {fileID: 6671848926856241789, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
