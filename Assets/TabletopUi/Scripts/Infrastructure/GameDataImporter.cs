@@ -48,7 +48,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-        private Character TryRetrieveOldFormatDefunctCharacter(Hashtable htSave)
+        private Character OldFormatSave_TryRetrieveDefunctCharacter(Hashtable htSave)
         {
           var  htCharacter = htSave.GetHashtable("defunctCharacterDetails");
           if (htCharacter != null) ;
@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             if(htCharacter==null)
 
-                return TryRetrieveOldFormatDefunctCharacter(htSave);
+                return OldFormatSave_TryRetrieveDefunctCharacter(htSave);
 
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
             
