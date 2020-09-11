@@ -72,7 +72,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""id"": ""613ea87a-1750-429b-9d61-e3d6ef847722"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""Clamp(min=-1,max=-1)"",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press(behavior=1)""
                 },
                 {
                     ""name"": ""kbzoomout"",
@@ -80,7 +80,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""id"": ""8260a3a9-1f24-4daf-a852-c52555d45ddd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""Clamp(min=1,max=1)"",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press(behavior=1)""
                 },
                 {
                     ""name"": ""kbstack"",

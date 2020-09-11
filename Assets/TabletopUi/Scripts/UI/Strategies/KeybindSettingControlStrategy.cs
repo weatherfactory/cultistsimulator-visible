@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.UI
             rebinding.OnComplete(r =>
             {
                 input.text = r.selectedControl.displayName;
-                input.DeactivateInputField();
+                input.ReleaseSelection();
                 inputActionAsset.actionMaps[0].Enable();
                 ChangeSettingArgs changeSettingArgs = new ChangeSettingArgs
                 {

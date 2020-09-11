@@ -69,21 +69,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 		}
 
 
-        public void Input_Zoom(InputAction.CallbackContext context)
+        public void Input_KeyStartThenRelease_Zoom(InputAction.CallbackContext context)
         {
-            if(context.performed)
-            {
-            //context.performed=true: it's press-and-release, so *either* the button press minimum actuation has been satisfied, or the actuation's just dropped below that level again.
-            //value!=0 means beginning, value==0 means finished
-             var value=context.ReadValue<Single>();
-
-            Debug.Log(context.performed.ToString() + " - " + value );
-
-            ZoomEvent.Invoke(new ZoomEventArgs{OngoingZoomIncrement =ZoomEventArgs.ZOOM_INCREMENT * value });
-            }
+            float value;
+            if (context.started)
+                value = context.ReadValue<Single>();
+            else
+                value = 0;
+            
+            ZoomEvent.Invoke(new ZoomEventArgs{OngoingZoomEffect =value });
         }
 
-   
+        public void Input_ScrollWheel_Zoom(InputAction.CallbackContext context)
+        {
+            ZoomEvent.Invoke(new ZoomEventArgs { OngoingZoomEffect = context.ReadValue<Single>()});
+        }
+
+
+
 
         public void Input_ZoomClose(InputAction.CallbackContext context)
         {
