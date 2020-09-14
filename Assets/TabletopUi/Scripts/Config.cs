@@ -27,7 +27,7 @@ public class Config
     {
         
         _configValues = new Dictionary<string, string>();
-        ReadFromIniFile();
+        PopulateConfigValuesFromIniFile();
 
       if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
         SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,DetermineMostSuitableCultureId());
@@ -52,17 +52,13 @@ public class Config
         return Application.persistentDataPath + "/config.ini";
     }
 
-    public void ReadFromIniFile()
+    public void PopulateConfigValuesFromIniFile()
     {
         
         if (File.Exists(GetConfigFileLocation()))
         {
 
             _configValues = PopulateConfigValues(GetConfigFileLocation());
-
-
-         
-
             if (GetConfigValue("skiplogo") != String.Empty)
             {
                 skiplogo = true;

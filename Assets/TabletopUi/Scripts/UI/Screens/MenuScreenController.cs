@@ -215,10 +215,10 @@ public class MenuScreenController : LocalNexus {
         //update subtitle text
         SetEditionStatus();
 
-
         
         if (currentCharacter.ActiveLegacy != null)
-            Subtitle.SetText(currentCharacter.ActiveLegacy.Label);
+            //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
+            Subtitle.SetText(Registry.Get<ICompendium>().GetEntityById<Legacy>(currentCharacter.ActiveLegacy.Id).Label);
         else
         {
             if (NoonUtility.PerpetualEdition)
@@ -386,6 +386,8 @@ public class MenuScreenController : LocalNexus {
         Registry.Get<Concursum>().SetNewCulture(culture);
 
         HideCurrentOverlay();
+
+        UpdateAndShowMenu();
 	}
 
     public void ShowVersionHints() {
