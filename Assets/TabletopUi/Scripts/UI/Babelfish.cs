@@ -72,7 +72,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     public void SetValuesForCurrentCulture()
     {
-        string currentCultureId = Registry.Get<Config>().CultureId;
+        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 
@@ -123,7 +123,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
     public void UpdateValueFromSetting(object newValue)
     {
         HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
-        string currentCultureId = Registry.Get<Config>().CultureId;
+        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY); 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
         SetValuesFromCulture(currentCulture);
 

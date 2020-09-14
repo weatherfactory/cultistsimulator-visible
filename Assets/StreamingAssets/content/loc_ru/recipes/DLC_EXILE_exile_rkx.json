@@ -1,0 +1,1319 @@
+{
+	"recipes": [
+		{
+			"id": "rkx.spawn.escort",
+			"actionId": "rkx",
+			"label": "Не в одиночку",
+			"startdescription": "Беда не приходит одна. [Ваш Враг всегда будет призывать помощников на битву с вами, только если вы не окажетесь на Краю карты.]",
+			"extantreqs": {
+				"rkx.foe": 1,
+				"rkx.underlings.blocker": -1
+			},
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.first",
+			"actionId": "rkx",
+			"label": "Прямо за спиной",
+			"startdescription": "Он знает меня в лицо, я его тоже.",
+			"effects": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.ahead",
+			"actionId": "rkx",
+			"label": "Считальцы прибыли первыми",
+			"startdescription": "Считальцы догадывались, что я могу здесь появиться. У них уже были шпионы в этом городе.",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"extantreqs": {
+				"rkx.underlings.blocker": -1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.traces",
+			"actionId": "rkx",
+			"label": "Слишком много Следов",
+			"startdescription": "Я оставляю слишком много Следов. Считальцы проследили за мной. [Если на столе больше одной карты Следов, это привлечёт внимание считальцев.]",
+			"extantreqs": {
+				"trace": 2
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.trace",
+			"actionId": "rkx",
+			"label": "Лишь одна ошибка",
+			"startdescription": "Мои действия были осторожными... но недостаточно. [След иногда может привлечь внимание считальцев.]",
+			"extantreqs": {
+				"trace": 1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.arrive.no.trace",
+			"actionId": "rkx",
+			"label": "Считальцы прибыли!",
+			"startdescription": "Мои преследователи здесь. Я всегда стараюсь быть осторожнее. Видимо, это просто невезение. [Иногда считальцы решают обыскать город просто так, даже если нет Следов.]",
+			"extantreqs": {
+				"trace": -1
+			},
+			"effects": {
+				"rkx.scout": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		},
+		{
+			"id": "rkx.selector",
+			"actionId": "rkx",
+			"label": "Поиски",
+			"startdescription": "@#rkx.underboss|Я понимаю, что это значит. В городе появился считалец низкого ранга. Мой враг должен быть рядом.\n#rkx.enforcer|В толпе мелькнуло знакомое лицо — слишком знакомое.\n#rkx.operative|Теперь я умею слушать свои инстинкты, и они мне говорят,что против меня что-то замышляется.\n#|По моей спине и шее бегут мурашки. Кто-то с за мной.@ [Чем больше на столе Следов, тем быстрее ваши преследователи смогут начать действия против вас.]",
+			"deckeffect": {
+				"rkx.events": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underboss.slain"
+				},
+				{
+					"id": "rkx.reckoner.slain"
+				},
+				{
+					"id": "rkx.escort.attack"
+				},
+				{
+					"id": "rkx.underboss.aggressive.obscured"
+				},
+				{
+					"id": "rkx.underboss.aggressive.violent",
+					"chance": 50
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning"
+				},
+				{
+					"id": "rkx.underboss.reinforcements"
+				},
+				{
+					"id": "rkx.underboss.search"
+				},
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				},
+				{
+					"id": "rkx.enforcer.reinforcements"
+				},
+				{
+					"id": "rkx.enforcer.search"
+				},
+				{
+					"id": "rkx.operative.aggressive.obscured"
+				},
+				{
+					"id": "rkx.operative.aggressive"
+				},
+				{
+					"id": "rkx.operative.reinforcements"
+				},
+				{
+					"id": "rkx.operative.search"
+				},
+				{
+					"id": "rkx.scouts.aggressive.reinforcements"
+				},
+				{
+					"id": "rkx.scouts.aggressive.search"
+				},
+				{
+					"id": "rkx.scouts.passive.hesitate"
+				},
+				{
+					"id": "rkx.scouts.passive.leave"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.slain",
+			"actionId": "rkx",
+			"label": "Смерть от ран",
+			"startdescription": "Подручный главаря прикончен.",
+			"requirements": {
+				"rkx.underboss": 1
+			},
+			"extantreqs": {
+				"damage.underling": 4
+			},
+			"purge": {
+				"damage.underling": 5
+			}
+		},
+		{
+			"id": "rkx.reckoner.slain",
+			"actionId": "rkx",
+			"label": "Смерть от ран",
+			"startdescription": "Считалец прикончен.",
+			"requirements": {
+				"rkx.underboss": -1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"damage.underling": 2
+			},
+			"purge": {
+				"damage.underling": 3
+			}
+		},
+		{
+			"id": "rkx.escort.attack",
+			"actionId": "rkx.escort",
+			"label": "Короткая передышка",
+			"startdescription": "Ставленник моего Врага готовится напасть на меня... ",
+			"requirements": {
+				"rkx.enforcer": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.enforcer.aggressive.obscured"
+				},
+				{
+					"id": "rkx.enforcer.aggressive"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Шныряние во тьме",
+			"startdescription": "Считалец-подручный разыскивает меня. Пока меня не нашли. Но мне становится всё сложнее оставаться в тени.",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"effects": {
+				"obscurity": -1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Забвение",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Шныряние во тьме",
+			"startdescription": "Считалец-наёмник шныряет по городу. Пока меня не нашли. Но мне становится всё сложнее оставаться в тени.",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Забвение",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.obscured",
+			"actionId": "rkx",
+			"label": "Шныряние во тьме",
+			"startdescription": "Считалец-тайный агент работает здесь. Пока меня не нашли. Но мне становится всё сложнее оставаться в тени.",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"extantreqs": {
+				"obscurity": 1
+			},
+			"slots": [
+				{
+					"id": "obscurity",
+					"label": "Забвение",
+					"required": {
+						"obscurity": 1
+					},
+					"greedy": true
+				}
+			],
+			"effects": {
+				"obscurity": -1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.violent",
+			"actionId": "rkx",
+			"label": "Враг действует!",
+			"startdescription": "Приспешник главаря нападает на меня напрямую! [Успешные прямые атаки считальцев наносят Ранения. Противостоять им можно с помощью карты защиты. Их также можно подкупить Декадой, но учтите, что приспешники главаря всегда алчны.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Защита",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning",
+			"actionId": "rkx",
+			"label": "Кража или диверсия",
+			"startdescription": "Приспешник главаря забирает моё имущество! [Имущество можно передать,воспользовавшись Связью: с Радикалами, Преступным миром, Правителем или Чиновниками. В ином случае ваше случайное Имущество будет уничтожено. Их также можно подкупить Декадой, но учтите, что приспешники главаря всегда алчны.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Защита",
+					"description": "Используйте Связь: с Радикалами, Преступным миром, Правителем или Чиновниками. В ином случае ваше случайное Имущество будет уничтожено.",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.underboss.cunning"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.defended"
+				}
+			],
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy"
+				},
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.defended",
+			"actionId": "rkx",
+			"label": "Друзья в нужных местах",
+			"startdescription": "Прошу об одолжении. Подручный главаря готовит мне неприятный сюрприз.",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.aggressive.cunning.undefended",
+			"actionId": "rkx",
+			"label": "Отступление",
+			"startdescription": "@#connection|Подручный главаря рассорил меня с союзником.\n#space|Одно из моих владений таинственным образом сгорело дотла.\n#portable|Чего-то не хватает! Кажется, сюда наведался подручный главаря или кто-то из их агентов.\n#|Подручный главаря пытается меня обокрасть.@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Цель",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.reinforcements",
+			"actionId": "rkx",
+			"label": "Усиления!",
+			"startdescription": "Считалец-подручный знает, что я здесь, но против меня пока ничего не предприняли. Это значит только одно: они послали за своим предводителем... [Когда на столе пять карт Следов, может появиться Враг.]",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 5,
+				"rkx.foe": -1
+			},
+			"alt": [
+				{
+					"id": "rkx.foe.arrive",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underboss.search",
+			"actionId": "rkx",
+			"label": "Расширение поисков...",
+			"startdescription": "Считалец-подручный собирает информацию обо мне и каждом моём действии.",
+			"requirements": {
+				"rkx.underboss": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.aggressive",
+			"actionId": "rkx",
+			"label": "Враг действует!",
+			"startdescription": "Ассасин действует против меня! [Успешные прямые атаки считальцев наносят Ранения. Противостоять им можно с помощью карты защиты. Их также можно подкупить Декадой, но учтите, что приспешники главаря всегда алчны.]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.aggressive": 1
+			},
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Защита",
+					"required": {
+						"lore": 1,
+						"weapon": 1,
+						"distraction": 1,
+						"associate": 1,
+						"decade.stolen": 1
+					},
+					"forbidden": {
+						"remnant": 1,
+						"exhausted": 1
+					}
+				}
+			],
+			"warmup": 40,
+			"alt": [
+				{
+					"id": "rkx.bossondeck.attack"
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.underling.distracted"
+				},
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.reinforcements",
+			"actionId": "rkx",
+			"label": "Усиления!",
+			"startdescription": "Считалец-ассасин знает, что я здесь, но против меня пока ничего не предприняли. Это значит только одно: они послали за своим предводителем. [Когда на столе три карты Следов, может появиться Подручный главаря.]",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.enforcer.search",
+			"actionId": "rkx",
+			"label": "Расширение поисков...",
+			"startdescription": "Считалец-ассасин находит всё больше зацепок. Вскоре они могут вызвать подмогу.",
+			"requirements": {
+				"rkx.enforcer": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive",
+			"actionId": "rkx",
+			"label": "Кража или диверсия",
+			"startdescription": "Считалец-тайный агент забирает моё имущество! [Имущество можно передать,воспользовавшись Связью: с Радикалами, Преступным миром, Правителем или Чиновниками. Их также можно подкупить Декадой, но учтите, что приспешники главаря всегда алчны. В ином случае ваше случайное Имущество будет уничтожено.]",
+			"slots": [
+				{
+					"id": "defence",
+					"label": "Защита",
+					"description": "Используйте Связь: с Радикалами, Преступным миром, Правителем или Чиновниками. В ином случае ваше случайное Имущество будет уничтожено.",
+					"required": {
+						"connection.ruler": 1,
+						"connection.underworld": 1,
+						"connection.radicals": 1,
+						"connection.official": 1,
+						"decade.stolen": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.bossondeck.operative"
+				},
+				{
+					"id": "rkx.operative.aggressive.defended"
+				}
+			],
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.aggressive": 1
+			},
+			"warmup": 30,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.greedy",
+					"chance": 30
+				},
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.defended",
+			"actionId": "rkx",
+			"label": "Друзья в нужных местах",
+			"startdescription": "Прошу об одолжении. Тайный агент готовит мне неприятный сюрприз.",
+			"requirements": {
+				"connection": 1
+			},
+			"effects": {
+				"connection": -1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.wounded",
+					"additional": true
+				}
+			],
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.aggressive.undefended",
+			"actionId": "rkx",
+			"label": "Отступление",
+			"startdescription": "@#connection|Считалец-тайный агент рассорил меня с союзником.\n#space|Одно из моих владений таинственным образом сгорело дотла.\n#portable|Чего-то не хватает! Кажется, сюда наведался считалец-тайный агент или кто-то из их других агентов.\n#|Подручный главаря пытается меня обокрасть.@",
+			"slots": [
+				{
+					"id": "asset",
+					"label": "Цель",
+					"required": {
+						"asset": 1
+					},
+					"greedy": true
+				}
+			],
+			"requirements": {
+				"connection.ruler": -1,
+				"connection.underworld": -1,
+				"connection.radicals": -1
+			},
+			"warmup": 10,
+			"effects": {
+				"asset": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.reinforcements",
+			"actionId": "rkx",
+			"label": "Усиления!",
+			"startdescription": "Считалец-тайный агент знает, что я здесь, но пока ничего против меня не предприняли. Это значит только одно: они послали за своим предводителем. [Когда на столе три карты Следов, может появиться Подручный главаря.]",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"extantreqs": {
+				"trace": 3
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.operative.search",
+			"actionId": "rkx",
+			"label": "Расширение поисков...",
+			"startdescription": "Считалец-тайный агент находит всё больше зацепок. Вскоре они могут вызвать подмогу.",
+			"requirements": {
+				"rkx.operative": 1,
+				"rkx.event.passive": 1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 40,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.reinforcements",
+			"actionId": "rkx",
+			"label": "Усиления!",
+			"startdescription": "У считальцев есть доказательства, что я здесь. Они ждут помощь, чтобы выкурить меня отсюда.",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"aspects": {
+				"rkx.promote": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.aggressive.search",
+			"actionId": "rkx",
+			"label": "Расширение поисков...",
+			"startdescription": "Считальцы-доносчики находят всё больше зацепок. Вскоре они могут вызвать подмогу.",
+			"requirements": {
+				"rkx.event.aggressive": 1,
+				"rkx.rank": -1
+			},
+			"alt": [
+				{
+					"id": "spawn.trace",
+					"additional": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.hesitate",
+			"actionId": "rkx",
+			"label": "Нерешительность",
+			"startdescription": "Мои преследователи осторожны, трусят или не уверены в своих доказательствах. Пока они ничего не предприняли.",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": 1
+			},
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.scouts.passive.leave",
+			"actionId": "rkx",
+			"label": "Меня не обнаружили!",
+			"startdescription": "Мои преследователи убедились в том, что меня здесь нет. Конечно, они могут вернуться.",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": -1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"warmup": 50
+		},
+		{
+			"id": "rkx.underling.distracted",
+			"actionId": "rkx",
+			"label": "Успешный отвлекающий манёвр!",
+			"startdescription": "...",
+			"requirements": {
+				"distraction": 1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.attack.success",
+			"actionId": "rkx",
+			"label": "Меня ранили!",
+			"startdescription": "Мои противники меня ранили! Иногда я теряю бдительность.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"alt": [
+				{
+					"id": "spit.underling.attack.success",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"lore": 1,
+							"weapon": 1,
+							"associate": 1
+						}
+					}
+				}
+			],
+			"requirements": {
+				"lore": -1,
+				"weapon": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.success",
+			"actionId": "spit.underling.attack",
+			"label": "Меня ранили!",
+			"startdescription": "Мне нужно время и безопасность, чтобы излечиться.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.underling.attack.failure",
+			"actionId": "rkx",
+			"label": "Мои преследователи: в тупике",
+			"startdescription": "@#lore|Мне удалось сдержать преследователя с помощью своих умений.\n#weapon|Мне удалось сдержать преследователя с помощью оружия.\n#associate|Меня защитил друг.\n#op.cold|Внезапно выпадает снег. Мой преследователь застревает в сугробах.\n#op.heat|Мои преследователи гонялись за мной по полуденному солнцу, пока не обессилели от зноя.\n#op.sea|Преследователи потеряли меня в суматохе порта.\n#op.faith|Обычно считальцы осторожничают в священных местах. Мне удалось воспользоваться этим и улизнуть.\n#op.cats|Полковник — Час, что защищает моего Врага, — никогда не любил кошек. Настороженное отношение к кошкам породило среди моих врагов множество суеверий. Мне удалось ускользнуть, когда мой преследователь замешкался.\n#op.height|Мне удалось скрыться в высотах, куда не каждый осмелиться отправиться — так мои преследователи остались ни с чем.\n#op.horned|Считальцы опасаются Часов. С присутствием Рогатой Секиры тени становятся чётче. Мой преследователь замешкался, и мне удалось ускользнуть.\n#op.wolf|Все боятся Разделённого Волка, и его дыхание чувствуется в этом месте. Мой преследователь заколебался и не стал заходить в тень, чтобы догнать меня. Мне удалось ускользнуть.\n#op.flowermaker|Это место благоухает ароматами Цветочника. Запахи долго сбивали с толку моего преследователя, и мне удалось ускользнуть.\n#ligeian|Здесь чувствуется ненасытность — та, которой считальцы боятся сильнее всего.\n#|...Мне повезло. [Иногда атаки считальцев заканчиваются неудачей.]@",
+			"alt": [
+				{
+					"id": "spit.underling.attack.failure.lore",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"lore": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.weapon",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"weapon": 1
+						}
+					}
+				},
+				{
+					"id": "spit.underling.attack.failure.associate",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"associate": 1
+						}
+					}
+				}
+			],
+			"effects": {
+				"distraction": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			],
+			"warmup": 10
+		},
+		{
+			"id": "spit.underling.attack.failure.lore",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"lore": 1
+			},
+			"label": "Какие-то пустяки",
+			"startdescription": "Мне удалось отбиться от напавшего, но это привлекло ещё больше внимания.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.weapon",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"weapon": 1
+			},
+			"label": "Какие-то пустяки",
+			"startdescription": "Мне удалось отбиться от напавшего, но это привлекло ещё больше внимания.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.attack.failure.associate",
+			"actionId": "spit.underling.attack.failure",
+			"requirements": {
+				"associate": 1
+			},
+			"label": "Друг познаётся в беде",
+			"startdescription": "Мой союзник меня защитил! Это было кстати, но теперь у считальцев больше улик на меня.",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"trace": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "rkx.lookfurtherafield",
+			"actionId": "rkx",
+			"label": "Считальцы продолжают поиски",
+			"startdescription": "Если мои преследователи не могут найти меня здесь, они, должно быть, шастают по другим городам — тем, где мной успели заинтересоваться. [Считальцы иногда ищут не только вас и добираются до Места назначения. Особенно, если вы отправляли туда фонды.]",
+			"requirements": {
+				"rkx.event.passive": 1,
+				"rkx.rank": 1
+			},
+			"extantreqs": {
+				"trace": -1
+			},
+			"slots": [
+				{
+					"id": "destination",
+					"label": "Зацепка?",
+					"required": {
+						"destination": 1
+					},
+					"forbidden": {
+						"rkx.infected": 1
+					},
+					"greedy": true
+				}
+			],
+			"warmup": 50,
+			"linked": [
+				{
+					"id": "rkx.infect.becauseprep",
+					"chance": 70
+				},
+				{
+					"id": "rkx.infect.noprep",
+					"chance": 30
+				},
+				{
+					"id": "rkx.notfollowinglead"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.becauseprep",
+			"actionId": "rkx",
+			"label": "Денежный след",
+			"startdescription": "Мои преследователи отследили цепочку отправленных мной средств.",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.noprep",
+			"actionId": "rkx",
+			"label": "Красная селёдка?",
+			"startdescription": "Мои преследователи сосредоточили внимание на чём-то другом — почему? ",
+			"requirements": {
+				"destination": 1,
+				"cash.sent": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "rkx.infected",
+					"mutationLevel": 1
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.infect.demote"
+				}
+			]
+		},
+		{
+			"id": "rkx.notfollowinglead",
+			"actionId": "rkx",
+			"label": "Считальцы держат позицию",
+			"startdescription": "Мои преследователи убеждены, что я всё ещё здесь.",
+			"alt": [
+				{
+					"id": "spit.uninfected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"destination": 1
+						}
+					}
+				}
+			],
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.infect.demote",
+			"actionId": "rkx",
+			"label": "Считальцев становится меньше",
+			"startdescription": "Теперь в городе меньше считальцев",
+			"aspects": {
+				"rkx.demote": 1
+			},
+			"comments": "If we infected a destination in the previous step, spit the destination out",
+			"alt": [
+				{
+					"id": "spit.infected.destination",
+					"additional": true,
+					"expulsion": {
+						"limit": 1,
+						"filter": {
+							"rkx.infected": 1
+						}
+					}
+				}
+			],
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "spit.infected.destination",
+			"actionId": "spit.infected.destination",
+			"label": "Опасности впереди",
+			"startdescription": "Если я туда отправлюсь, то возможно, обнаружу, что мои преследователи уже там.",
+			"requirements": {
+				"rkx.infected": 1
+			},
+			"warmup": 2
+		},
+		{
+			"id": "spit.uninfected.destination",
+			"actionId": "spit.uninfected.destination",
+			"label": "Отклонённая зацепка",
+			"startdescription": "Мои преследователи убеждены, что я всё ещё здесь. Они решили не отправляться в место назначения.",
+			"warmup": 2
+		},
+		{
+			"id": "spit.underling.wounded",
+			"actionId": "spit.underling.wounded",
+			"label": "Кровавый след",
+			"startdescription": "Преследователь ранен!",
+			"effects": {
+				"wound.underling": 1
+			},
+			"warmup": 1,
+			"linked": [
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.greedy",
+			"actionId": "rkx",
+			"label": "Высокая цена",
+			"startdescription": "«@#rkx.underboss|Будь серьёзнее».\n#rkx.enforcer|«Удваивай».\n#rkx.operative|«Продолжай...»\n#|«Продолжай...»@ [Если добавить ещё одну Декаду, подкуп будет успешным. Если её не будет, преследователи поглотят первую Декаду и продолжат прибывать.]",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"slots": [
+				{
+					"id": "more",
+					"label": "Ещё",
+					"description": "Удваивай, или мне это не интересно.",
+					"required": {
+						"decade.stolen": 1
+					}
+				}
+			],
+			"effects": {
+				"decade.stolen": -1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "rkx.underling.bribe.success"
+				},
+				{
+					"id": "rkx.reset"
+				}
+			]
+		},
+		{
+			"id": "rkx.underling.bribe.success",
+			"actionId": "rkx",
+			"label": "Успешный подкуп",
+			"startdescription": "«@#rkx.underboss|«Мне всегда нравилось иметь с тобой дело. Если со Стариком произойдёт несчастный случай... свяжись со мной».\n#rkx.enforcer|«По рукам. Этого никогда не было».\n#rkx.operative|«А с тобой неплохо иметь дело. Когда Старик наконец поймает тебя... Я помяну тебя».\n#|«Как удачно, что тебя здесь не было, да?»@",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"effects": {
+				"decade.stolen": -1,
+				"rkx.rank": -1,
+				"rkx.event": -1,
+				"trail.false.bribe": 1
+			},
+			"purge": {
+				"damage.underling": 100
+			},
+			"warmup": 10
+		},
+		{
+			"id": "rkx.bossondeck.attack",
+			"actionId": "rkx",
+			"label": "Слишком поздно",
+			"startdescription": "Ни один прислужник не посмеет игнорировать моё присутствие, пока мой Враг здесь.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underling.attack.success",
+					"chance": 70
+				},
+				{
+					"id": "rkx.underling.attack.failure"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.underboss.cunning",
+			"actionId": "rkx",
+			"label": "Слишком поздно",
+			"startdescription": "Ни один прислужник не посмеет игнорировать моё присутствие, пока мой Враг здесь.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.underboss.aggressive.cunning.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.bossondeck.operative",
+			"actionId": "rkx",
+			"label": "Слишком поздно",
+			"startdescription": "Ни один прислужник не посмеет игнорировать моё присутствие, пока мой Враг здесь.",
+			"requirements": {
+				"decade.stolen": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"effects": {
+				"decade.stolen": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.operative.aggressive.undefended"
+				}
+			]
+		},
+		{
+			"id": "rkx.reset",
+			"actionId": "rkx",
+			"label": "Что дальше?",
+			"startdescription": "Что дальше?",
+			"effects": {
+				"rkx.event": -1
+			},
+			"linked": [
+				{
+					"id": "rkx.selector"
+				}
+			]
+		}
+	]
+}

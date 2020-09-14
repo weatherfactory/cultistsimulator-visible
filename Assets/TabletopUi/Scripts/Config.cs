@@ -20,15 +20,18 @@ public class Config
     public bool knock = false;
 
 
-    public string CultureId { get; set; }
 
     private Dictionary<string, string> _configValues;
 
-    public Config(string defauCultureId)
+    public Config()
     {
-        CultureId = defauCultureId;
+        
         _configValues = new Dictionary<string, string>();
         ReadFromIniFile();
+
+      if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
+        SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,DetermineMostSuitableCultureId());
+
     }
 
 
@@ -41,8 +44,6 @@ public class Config
     {
         _configValues.TryGetValue(key, out string value);
 
-        if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
-            value = string.Empty;
         return value;
     }
 
@@ -71,7 +72,7 @@ public class Config
             _configValues = PopulateConfigValues(GetConfigFileLocation());
 
 
-            CultureId = GetStartingCultureId(GetConfigValue("culture"));
+         
 
             if (GetConfigValue("skiplogo") != String.Empty)
             {
@@ -217,31 +218,17 @@ public class Config
     }
 
 
-    private string GetStartingCultureId(string cultureValue)
+    private string DetermineMostSuitableCultureId()
     {
-        //a culture set in config.ini overrides everything
-        if (cultureValue.Contains("lang=en"))
-        {
-            return "en";
-        }
-        else if (cultureValue.Contains("lang=ru"))
-        {
-            return "ru";
-        }
-        else if (cultureValue.Contains("lang=zh"))
-        {
+        
+
+
+        //check for a culture specified in the legacy format
+        string legacyCultureValue = GetConfigValue("lang");
+        if (!string.IsNullOrEmpty(legacyCultureValue) && legacyCultureValue == "zh")
             return "zh-hans";
-        }
-
-
-
-        // If the player has already chosen a culture in Options, use that one 
-        if (PlayerPrefs.HasKey(NoonConstants.CULTURE_SETTING_KEY))
-        {
-            return PlayerPrefs.GetString(NoonConstants.CULTURE_SETTING_KEY);
-        }
-
-
+        if (!string.IsNullOrEmpty(legacyCultureValue))
+            return legacyCultureValue;
 
         // Try to auto-detect the culture from the system language 
         switch (Application.systemLanguage)
@@ -270,7 +257,6 @@ public class Config
 
                 
         }
-
 
     }
 

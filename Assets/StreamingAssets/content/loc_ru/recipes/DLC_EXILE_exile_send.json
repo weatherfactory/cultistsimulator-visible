@@ -1,0 +1,3057 @@
+{
+	"recipes": [
+		{
+			"id": "send.first",
+			"actionId": "send",
+			"label": "Общение",
+			"startdescription": "У меня есть много причин не общаться ни с кем из моей прошлой жизни. Но всё ещё может измениться.",
+			"effects": {
+				"temptation.obscurity": 1
+			},
+			"warmup": 30,
+			"craftable": false
+		},
+		{
+			"id": "send.op.echidna",
+			"actionId": "send",
+			"label": "Преследование Хаимы",
+			"startdescription": "При первом слухе о присутствии Ехидны...",
+			"description": "Что-то не даёт Хаиме уйти.",
+			"slots": [
+				{
+					"id": "chaima",
+					"label": "Хаима",
+					"description": "У Хаимы есть какое-то дело на краю пустыни.",
+					"required": {
+						"ally.huntress": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.echidna.2"
+				}
+			],
+			"requirements": {
+				"op.echidna": 1
+			},
+			"extantreqs": {
+				"ally.huntress": 1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.op.echidna.2",
+			"actionId": "send",
+			"label": "Добыча Хаимы",
+			"startdescription": "При первом слухе о присутствии Ехидны Хаима исчезла в пустыне. Её записка как всегда была немногословна: «На охоте. Не охочусь на Лигений».",
+			"description": "Хаима вернулась и привела собой мужчину необычайной красоты со впалыми глазами. Он был связан. Под его кожей шевелились нечеловеческие мышцы. «Я его нашла», — сказала Хаима.",
+			"requirements": {
+				"ally.huntress": 1
+			},
+			"effects": {
+				"op.echidna": -1,
+				"contact.labhite.fallen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen",
+			"actionId": "send",
+			"label": "Аудиенция у Мадам Матутин?",
+			"startdescription": "Мадам Матутин — так они называют Лигению. Это значит, что она что-то вроде человека, который ест других людей. Ходят слухи, что она знакома с Безымянным Именем Бархата, «в чьей мгле поверженный найдёт утешение». Возможно, именно это мне и нужно.",
+			"description": "Ничего. Я остаюсь ждать на пристани, обдуваемой морским ветром.",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "Подарок",
+					"description": "Что-то, чтобы вызвать интерес Мадам Матутин"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.morgen.pentiment"
+				}
+			],
+			"requirements": {
+				"op.morgen": 1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.morgen.pentiment",
+			"actionId": "send",
+			"label": "Мадам Матутин!",
+			"startdescription": "Мадам Матутин идет по проходу, смеясь. Её смех напоминает пение птиц, и в её глазах тоже есть что-то птичье — блеск чёрных бусин. «Интересно», — щебечет она. — «А есть ли ещё?»",
+			"requirements": {
+				"pentiment": 1
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.ii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.ii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 1
+			},
+			"label": "Подарить Мадам Матутин второй Пентимент",
+			"startdescription": "«Хорошее начало. Полагаю, вы хотите, чтобы я за вас похлопотала. Вам придётся усердно потрудиться ради этого. Что ещё у вас есть?»",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 2
+			},
+			"label": "Подарить Мадам Матутин третий Пентимент",
+			"startdescription": "«Очень хорошо. Продолжайте. Моя Безымянная весьма алчна».",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.iv"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.iv",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 3
+			},
+			"label": "Подарить Мадам Матутин четвёртый Пентимент",
+			"startdescription": "«Да, да. Ещё один? Подойдите поближе. Дайте мне взглянуть на вас».",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.v"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.v",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 4
+			},
+			"label": "Подарить Мадам Матутин пятый Пентимент",
+			"startdescription": "«Мне показалось, что я унюхала что-то редкое. Кровь Земли? Думаю, для одной из ваших кровей я смогу организовать <i>переход</i>. Кое-кто там будет рад увидеться с вами. Но и цена выше. Мне нужно семь».",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vi"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vi",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 5
+			},
+			"label": "Подарить Мадам Матутин шестой Пентимент",
+			"startdescription": "«<i>Ну же</i>, мон ами. Вместе мы сможем это сделать. Осталось немного...»",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.vii"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.vii",
+			"actionId": "send",
+			"requirements": {
+				"pentiment": 6
+			},
+			"label": "Подарить Мадам Матутин седьмой Пентимент",
+			"startdescription": "Мадам Матутин театрально ахает. «Так много! Безымянная будет в восторге! Ещё один — всего один, — и я поверну Ключ. Только для вас».",
+			"slots": [
+				{
+					"id": "pentiment",
+					"label": "Пентимент",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.final"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.final",
+			"requirements": {
+				"pentiment": 7
+			},
+			"actionId": "send",
+			"label": "Врата Вершины",
+			"startdescription": "Мадам Матутин держит драгоценный камень, чёрный и блестящий, как её глаза.«<i>Бон вояж!</i>»",
+			"warmup": 30,
+			"ending": "victoryvelvet"
+		},
+		{
+			"id": "send.op.morgen.pentiment.break",
+			"actionId": "send",
+			"label": "Недостаточно",
+			"startdescription": "«Нет?»",
+			"linked": [
+				{
+					"id": "send.op.morgen.pentiment.break.nothing"
+				},
+				{
+					"id": "send.op.morgen.pentiment.break.flute"
+				}
+			]
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.nothing",
+			"actionId": "send",
+			"label": "Недостаточно",
+			"startdescription": "«Надеюсь, вы не будете тратить моего времени зря. Я уже говорила об этом».",
+			"extantreqs": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.morgen.pentiment.break.flute",
+			"actionId": "send",
+			"label": "Недостаточно",
+			"startdescription": "Морщинка недовольства исказила бледное и совершенное лицо Мадам Матутин. «Недостаточно. Мы можем лучше,<i>ведь так</i>? Когда будете у моря, позовите меня, и я приду. Только один раз. А пока мне не нравится тратить своё время впустую».",
+			"effects": {
+				"curio.morgen": 1
+			}
+		},
+		{
+			"id": "send.op.medusa",
+			"actionId": "send",
+			"label": "Искать что-то Незримое",
+			"startdescription": "Медуза, Лигения. Пил сказал мне однажды: «Возможно, она старейшая в своём роде, что ещё живёт. И она мертва». Так Пил и сказал. Но теперь, на дождливых улицах Буды, под слепыми взглядами статуй я вспоминаю другую вещь, которую мне поведал Пил. Он сказал, что загадка Медузы — это «Что нельзя увидеть?». И по моей коже бегут мурашки.",
+			"description": "Ничего. Плащ не спас меня от дождя, и капли начали стекать по моей шее. Она всё ещё здесь. Если она вообще где-то может быть.",
+			"slots": [
+				{
+					"id": "medusa",
+					"label": "Загадка Медузы",
+					"description": "«Что нельзя увидеть?»",
+					"required": {
+						"moth": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.op.medusa.pentiment"
+				}
+			],
+			"requirements": {
+				"op.medusa": 1
+			},
+			"extantreqs": {
+				"wound.exile.medusa": -1
+			},
+			"comments": "Extantreq shouldn't be necessary because the op card is unique, but leaving it here as a safety measure",
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"effects": {
+				"dread": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.op.medusa.pentiment",
+			"actionId": "send",
+			"label": "Встреча",
+			"startdescription": "Мне удалось найти ответ на загадку Медузы... думаю, и она нашла меня. Конечно, увидеть её не получилось, но целый час был потрачен здесь, в ночи, и над моим сердцем зияет рана, которую мне не излечить.\n\nВот, что случается, когда я отправляюсь на поиски приключений. (Если это и правда была Лигения, почему она меня пощадила? Подозрительно.)",
+			"requirements": {
+				"moth": 1
+			},
+			"effects": {
+				"wound.exile.medusa": 1,
+				"op.medusa": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian",
+			"actionId": "send",
+			"label": "Искать Лигению",
+			"requirements": {
+				"ligeian": 1
+			},
+			"startdescription": "Лигении, как и я, — преступники и бродяги. Но в отличии от меня они прокляты навеки, ибо они пожрали своих детей прямо из утробы. Но возможно, у нас найдётся что-то общее.",
+			"slots": [
+				{
+					"id": "gift",
+					"label": "Подарок",
+					"required": {
+						"remnant": 1,
+						"decade.stolen": 1,
+						"ally": 1,
+						"associate": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"warmup": 30,
+			"craftable": true,
+			"alt": [
+				{
+					"id": "send.ligeian.risk"
+				}
+			],
+			"effects": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"linked": [
+				{
+					"id": "send.ligeian.reward"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.risk",
+			"actionId": "send",
+			"label": "Час Длинной Ложки",
+			"requirements": {
+				"remnant": -1,
+				"decade.stolen": -1,
+				"ally": -1,
+				"associate": -1
+			},
+			"startdescription": "Если обращаться к Лигении без подарка, то лучше надеяться, что она в хорошем расположении духа. [Иногда, но не часто, Лигении в хорошем настроении.]",
+			"linked": [
+				{
+					"id": "send.ligeian.reward",
+					"chance": 30
+				},
+				{
+					"id": "send.ligeian.displeased"
+				}
+			]
+		},
+		{
+			"id": "send.ligeian.reward",
+			"actionId": "send",
+			"label": "«ЛИГЕЙЯ ПОМНИТ»",
+			"startdescription": "@#op.echidna|«Присаживайся. Давай поговорим».\n#op.kleidouchos|«Сегодня я не съела тебя. Чего ты хочешь? Только быстро».\n#op.marinette|«<sprite name=secrethistories>?»\n#op.sulochana|Сулочана глубоко затягивается пряной сигаретой. «Я сегодня снисходительна», мурлычет она. — «Продолжай».@\n\n[Добавить неизвестную слабость Врага, чтобы узнать её природу. Если этого не сделать, Лигения преподнесёт вам подарок или съест Считальца, не оставив следа. При этом Лигении не замечают Доносчиков и не преследуют Врага.]",
+			"slots": [
+				{
+					"id": "advice",
+					"label": "Совет",
+					"description": "Лигении слышат что-то, и оно очень старо.",
+					"required": {
+						"weakness.foe.unknown": 1
+					},
+					"actionId": "send"
+				}
+			],
+			"alt": [
+				{
+					"id": "send.ligeian.revelation"
+				}
+			],
+			"linked": [
+				{
+					"id": "send.ligeian.ravage"
+				},
+				{
+					"id": "send.ligeian.echidna.reward"
+				},
+				{
+					"id": "send.ligeian.kleidouchos.reward"
+				},
+				{
+					"id": "send.ligeian.marinette.reward"
+				},
+				{
+					"id": "send.ligeian.sulochana.reward"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "send.ligeian.revelation",
+			"actionId": "send",
+			"label": "Разведка",
+			"startdescription": "@#op.echidna|«Конечно, я помню его. К тому же, я знала его мать. Когда-то я возлагала на неё большие надежды...»\n#op.kleidouchos|«М-м. Я знаю о твоём Враге».\n#op.marinette|«<sprite name=lantern>».\n#op.sulochana|«О да. Он всё время приходил сюда, ещё до Войны».@",
+			"requirements": {
+				"weakness.foe.unknown": 1
+			},
+			"aspects": {
+				"epiphany": 1
+			},
+			"effects": {
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.ravage",
+			"actionId": "send",
+			"label": "Пей до дна",
+			"startdescription": "@#op.echidna|«У тебя проблемы из-за кого-то вкусного, малыш? Дай Тётушке Э разобраться».\n#op.kleidouchos|«Я высказала свои возражения твоему другу-считальцу».\n#op.marinette|«<sprite name=edge>, <sprite name=edge>, <sprite name=edge>... <sprite name=grail>»\n#op.sulochana|«Это было неосмотрительно с его стороны. Что ж, больше он так делать не будет».@",
+			"extantreqs": {
+				"rkx.rank": 1
+			},
+			"deleteverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"ligeian": -1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "send.ligeian.echidna.reward",
+			"actionId": "send",
+			"label": "Подарок Ехидны",
+			"startdescription": "«Пожалуйста. От той, что на самом деле не должна была передумать».",
+			"requirements": {
+				"op.echidna": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.edge": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.kleidouchos.reward",
+			"actionId": "send",
+			"label": "Подарок Клейдукоса",
+			"startdescription": "«Мне это уже не нужно. А тебе может пригодиться. Только не пей это».",
+			"requirements": {
+				"op.kleidouchos": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"rarity.knock.poison": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.marinette.reward",
+			"actionId": "send",
+			"label": "Подарок Маринетты",
+			"startdescription": "<sprite name=mortal>.",
+			"requirements": {
+				"op.marinette": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"memento.grail": 1,
+				"ligeian": -1
+			},
+			"burnimage": "pentiment"
+		},
+		{
+			"id": "send.ligeian.sulochana.reward",
+			"actionId": "send",
+			"label": "Подарок Сулочаны",
+			"startdescription": "«Я познакомлю тебя кое с кем. Посетители Клуба тебя удивят».",
+			"requirements": {
+				"op.sulochana": 1,
+				"weakness.foe.unknown": -1
+			},
+			"effects": {
+				"connection.official": 1,
+				"connection.holy": 1,
+				"connection.radicals": 1,
+				"ligeian": -1
+			}
+		},
+		{
+			"id": "send.ligeian.displeased",
+			"actionId": "send",
+			"label": "Гнев Лигении",
+			"startdescription": "Скрипящие зубы и перепончатая кожа! Я пытаюсь освободиться из этого кошмара... ",
+			"description": "Я снова на безопасных улицах. Но мне не удалось уйти без последствий. Прохожие на меня оборачиваются, когда я, пошатываясь, иду мимо них.",
+			"effects": {
+				"wound.exile.unstanchable": 1,
+				"trace": 1,
+				"ligeian": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "send.defiance.ascend.colonel",
+			"actionId": "send",
+			"label": "Бесконечная вражда",
+			"startdescription": "Полковник приветствует моё решение и мои способности. Он поручится за меня перед своим врагом, Львокузнецом.",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.colonel": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensioncolonel",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.lionsmith",
+			"actionId": "send",
+			"label": "Бесконечная вражда",
+			"startdescription": "Львокузнец приветствует мою доблесть и силу. Он поручится за меня перед своим врагом, Полковником.",
+			"requirements": {
+				"defiancemarks": 7,
+				"defiance.consecration.lionsmith": 1
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionlionsmith",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.wolf",
+			"actionId": "send",
+			"label": "Бесконечная вражда",
+			"startdescription": "Разделённый Волк оставил на мне свою метку. Я чувствую жар его зловонного дыхания.",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1,
+				"damage.foe": 6
+			},
+			"warmup": 10,
+			"ending": "ascensionwolf",
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.ascend.morewounds.hint",
+			"actionId": "send",
+			"label": "Бесконечная вражда?",
+			"startdescription": "Есть другой способ покончить с этим... и это не конец всему. Мы с Врагом будто части часового механизма и не можем остановить ход своего Совражества. [Можно воззвать к Часу Грани и превратить поединок с Врагом в нечто вечное, но только если враг обездвижен шестью Ранениями.]",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.ascend.moremarks.hint",
+			"actionId": "send",
+			"label": "Бесконечная вражда?",
+			"startdescription": "Должен быть другой способ покончить с этим... и это не будет означать конец всему. [С семью Отметками Непокорности можно добиться другой формы победы, если Враг присутствует.]",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.lureexists.hint",
+			"actionId": "send",
+			"label": "Призыв Непокорности: уже отправлен",
+			"startdescription": "Мой Враг точно знает, где я.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"lure.foe": 1,
+				"domicile": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponalreadysent.hint",
+			"actionId": "send",
+			"label": "Подарок Непокорности: уже отправлен",
+			"startdescription": "Оружие уже отправлено Врагу.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.weaponprofane.hint",
+			"actionId": "send",
+			"label": "Подарок Непокорности: недостаточно",
+			"startdescription": "Осквернённое оружие это не разрубит.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"uq.weapon.profane": 1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.7",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Если я смогу обездвижить Врага, то у меня получится попасть в сердце Совражества. Оказавшись там, я больше никогда не познаю мира.",
+			"requirements": {
+				"defiancemarks": 7
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.6",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Теперь я становлюсь средоточием Совражества. Парочки будут ссориться, проходя мимо меня. Пламя будет разгораться ярче или же потухнет навсегда.",
+			"requirements": {
+				"defiancemarks": 6
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.5",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Проснувшись утром я обнаруживаю, что кто-то написал на зеркале «ЛЮБОВЬ — ЭТО ВОЙНА». Может, я. Даже лучше, если это я. ",
+			"requirements": {
+				"defiancemarks": 5
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.4",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Я помню, как мне казалось, что ничего общего с Совражеством у меня нет, но, конечно, это не так. Каждый Час, каждый смертный, каждая пылинка играют свою роль в вечной Борьбе. Но я сражаюсь с полубессмертным противником на территории всей Европы. Это значит, что у меня В Совражестве роль далеко не второго плана.",
+			"requirements": {
+				"defiancemarks": 4
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.3",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Я начинаю замечать, как закономерна война в мире: деревья борются с ветром, огонь — с дымом, реки — с землёй. Толпа — это постоянная битва идей. Это прекрасно.",
+			"requirements": {
+				"defiancemarks": 3
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.2",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "Мне постоянно снятся ножи. Возможно, это значит, что час Грани меня заметил.",
+			"requirements": {
+				"defiancemarks": 2
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.marks.hint.1",
+			"actionId": "send",
+			"label": "Совражество",
+			"startdescription": "«Совражество» — особенное слово, которое Адепты используют для обозначения Часов Грани и их бесконечного преследования. Как большинство считальцев, я стараюсь этого сторониться.",
+			"requirements": {
+				"defiancemarks": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.defiance.summons",
+			"actionId": "send",
+			"label": "Отправить призыв Непокорности",
+			"startdescription": "Мой почерк на конверте чёткий и уверенный. Рука моя не дрогнула. [Всё Забвение будет уничтожено.]",
+			"description": "Мой Враг скоро будет здесь. А может, он уже здесь. [Ваша Непокорность сейчас сильнее.]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1,
+				"defiance.foesummoned": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.foesummoned",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.summons.again",
+			"actionId": "send",
+			"label": "Отправить призыв Непокорности, снова",
+			"startdescription": "Пусть приходит. Пусть получит то, что ему причитается. [Всё Забвение будет уничтожено.]",
+			"description": "Мой Враг скоро будут здесь. А может, он уже здесь.",
+			"requirements": {
+				"temptation.defiance": 1,
+				"domicile": 1,
+				"lure.foe": -1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "lure.foe",
+					"mutationLevel": 1
+				}
+			],
+			"alt": [
+				{
+					"id": "rkx.foe.arrive.defiance",
+					"additional": true
+				}
+			],
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.foe.defeated": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.defiance.gift",
+			"actionId": "send",
+			"label": "Отправить подарок Непокорности",
+			"startdescription": "Отправлю своему Врагу оружие силы. Это разозлит его <i>по-настоящему</i>.",
+			"description": "Может, он сам откроет посылку. Может, подумает, что это ловушка, и попросит кого-нибудь открыть её. Как бы там ни было, сложно не смеяться, представляя его лицо. [Ваша Непокорность сейчас сильнее.]",
+			"requirements": {
+				"temptation.defiance": 1,
+				"weapon": 1,
+				"defiance.weaponsent": -1,
+				"uq.weapon.profane": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.weaponsent",
+					"mutationLevel": 1
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"weapon": -1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ahead.cash.hint",
+			"actionId": "send",
+			"label": "Отправить наличные?",
+			"startdescription": "Возможно, мне придётся уезжать в спешке. Я могу подготовиться и отправить средства в возможное место назначения. Если я никогда туда не попаду, я всё потеряю.",
+			"requirements": {
+				"cash": 1,
+				"destination": -1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.ahead.cash",
+			"actionId": "send",
+			"label": "Отправить наличные",
+			"startdescription": "Возможно, мне придётся уезжать в спешке. Я могу подготовиться и отправить средства в возможное место назначения. Если я никогда туда не попаду, я всё потеряю.",
+			"description": "Готово. Если мне придётся сбегать — так у меня будет подушка безопасности.",
+			"requirements": {
+				"cash": 1,
+				"destination": 1
+			},
+			"effects": {
+				"cash": -1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "destination",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": 1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.getsentahead.cash.hint",
+			"actionId": "send",
+			"label": "Воспользоваться приготовлениями?",
+			"startdescription": "Как только я прибуду в место назначения, я смогу забрать отправленные наличные.",
+			"requirements": {
+				"domicile": -1,
+				"cash.sent": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.getsentahead.cash",
+			"actionId": "send",
+			"label": "Воспользоваться приготовлениями",
+			"startdescription": "Нужно получить отправленные наличные.",
+			"requirements": {
+				"domicile": 1,
+				"cash.sent": 1
+			},
+			"warmup": 10,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.getsentahead.cash.loop",
+			"actionId": "send",
+			"label": "Готово!",
+			"startdescription": "Наличные отправлены. Я смогу их забрать, как только прибуду в место назначения.",
+			"requirements": {
+				"cash.sent": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "domicile",
+					"mutateAspectId": "cash.sent",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"cash": 1
+			},
+			"linked": [
+				{
+					"id": "send.getsentahead.cash.loop"
+				}
+			]
+		},
+		{
+			"id": "send.victory.hint",
+			"actionId": "send",
+			"label": "Безопасность через Забвение?",
+			"startdescription": "[Если ваше Забвение достигнет 7, отправьте дерзкое сообщение своему Врагу, прежде чем исчезнуть навсегда.]",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "send.victory.obscurity.c.begin",
+			"actionId": "send",
+			"label": "Жизнь с особым наслаждением...",
+			"startdescription": "Всё ли у меня есть? [Если на момент исчезновения у вас всё ещё будет Имущество, стоящее как минимум 30 карт Комфорта, вы побеждаете.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"extantreqs": {
+				"comfort": 20
+			},
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.b.begin",
+			"actionId": "send",
+			"label": "Мирная и спокойная жизнь",
+			"startdescription": "Всё ли у меня есть? [Если на момент исчезновения у вас будет Имущество, стоящее как минимум 30 карт Комфорта, вы побеждаете.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"extantreqs": {
+				"comfort": 10
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Grand",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.a.begin",
+			"actionId": "send",
+			"label": "Жизнь в забвении",
+			"startdescription": "Я буду в безопасности. Достаточно ли мне этого? [Если на момент исчезновения у вас будет Имущество, стоящее как минимум 20 карт Комфорта, вы побеждаете.]",
+			"requirements": {
+				"temptation.obscurity": 1,
+				"obscurity": 7
+			},
+			"warmup": 60,
+			"craftable": true,
+			"signalEndingFlavour": "Pale",
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.c"
+				},
+				{
+					"id": "send.victory.obscurity.b"
+				},
+				{
+					"id": "send.victory.obscurity.a"
+				}
+			]
+		},
+		{
+			"id": "send.victory.obscurity.c",
+			"actionId": "send",
+			"label": "НАСЛАЖДЕНИЕ",
+			"extantreqs": {
+				"comfort": 30
+			},
+			"ending": "obscurityvictoryc"
+		},
+		{
+			"id": "send.victory.obscurity.b",
+			"actionId": "send",
+			"label": "ПОКОЙ",
+			"extantreqs": {
+				"comfort": 20
+			},
+			"ending": "obscurityvictoryb"
+		},
+		{
+			"id": "send.victory.obscurity.a",
+			"actionId": "send",
+			"label": "ТИШИНА",
+			"ending": "obscurityvictorya"
+		},
+		{
+			"id": "send.victory.obscurity.c.foeslain",
+			"actionId": "send",
+			"label": "НАСЛАЖДЕНИЕ",
+			"extantreqs": {
+				"comfort": 30,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorycfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.b.foeslain",
+			"actionId": "send",
+			"label": "ПОКОЙ",
+			"extantreqs": {
+				"comfort": 20,
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictorybfoeslain"
+		},
+		{
+			"id": "send.victory.obscurity.a.foeslain",
+			"actionId": "send",
+			"label": "ТИШИНА",
+			"extantreqs": {
+				"rkx.foe.defeated": 1
+			},
+			"ending": "obscurityvictoryafoeslain"
+		},
+		{
+			"id": "send.labhite.fallen.intro",
+			"actionId": "send",
+			"requirements": {
+				"contact.labhite.fallen": 1
+			},
+			"label": "Решить судьбу падшего Лабита",
+			"startdescription": "Даже если бы Ехидна не развратила лабита, Хаима бы убила его во имя Полковника. И теперь он не просто монстр, а искажённый монстр. Навил, тем временем, взывает к милосердию. «Притворное совершенство, — торжественно говорит он, — есть сильнейшая хворь души. Сошлите его в пустыню, и он снова найдёт солнце».\n\nХаима не впечатлена. Но она уважает вас и своего отца — этого достаточно, чтобы сдержать её, если вы настоите.",
+			"slots": [
+				{
+					"id": "decision",
+					"label": "Решение",
+					"required": {
+						"temptation.defiance": 1,
+						"temptation.obscurity": 1,
+						"rage": 1,
+						"tranquillity": 1
+					}
+				}
+			],
+			"description": "Падший Лабит может ещё ненадолго остаться в своей клетке.",
+			"warmup": 30,
+			"alt": [
+				{
+					"id": "send.labhite.fallen.merciless"
+				},
+				{
+					"id": "send.labhite.fallen.merciful"
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "send.labhite.fallen.merciless",
+			"actionId": "send",
+			"label": "Беспощадность",
+			"startdescription": "«Он предал идеалы Львокузнеца. Ему нельзя жить».",
+			"description": "Хаима забирает Лабита, чтобы завершить дело. Когда она делает подношения Полковнику, она предлагает вам небольшой горшочек с золотом. «Помни», — говорит она.",
+			"requirements": {
+				"choice.merciless": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.edge": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.labhite.fallen.merciful",
+			"actionId": "send",
+			"label": "Прощение",
+			"startdescription": "Он стал тем, о чём Львокузнец не мог и подумать. Кто знает, чем ещё он может стать?",
+			"description": "Хаима пожимает плечами и отворачивается. Навил ведёт вас к краю пустыни. Лабит, что до сих пор не проронил ни слова, поднимает с земли плоский камень, целует его и передаёт его вам. Затем он удаляется в пески и идёт, не оглядываясь.",
+			"requirements": {
+				"choice.merciful": 1
+			},
+			"burnimage": "pentiment",
+			"effects": {
+				"memento.lantern": 1,
+				"contact.labhite.fallen": -1
+			}
+		},
+		{
+			"id": "send.retainer.chat",
+			"actionId": "send",
+			"label": "Уроки",
+			"startdescription": "«Нужно ли говорить о ней?»",
+			"description": "У старика есть что сказать о её красоте, мудрости и <i>силе духа</i>, но я начинаю понимать, что он едва помнит её, помнит только лишь как идею или историю. Я начинаю терять интерес, засматриваясь на мерцающий город, и вспоминаю, как мой Враг научил меня играть в шахматы, мухлевать в картах, забирать жизни и тому, чему я научу <i>его</i>.",
+			"requirements": {
+				"contact.retainer": 1,
+				"associate": 1
+			},
+			"effects": {
+				"grief": 1,
+				"rage": 1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "send.mortal.intro",
+			"actionId": "send",
+			"label": "Назначить первую встречу",
+			"startdescription": "@#contact.barber|Встреча с Зульфиёй, которую называют Брадобреем.\n#contact.delver|Встреча с Орсолиной, «la Scavatrice», что на моём языке значит «Копательница».\n#contact.fivegoer|Встреча с Василем-Пятиходимцем.\n#contact.ghoul|Встреча с Пекарем Доминикасом.\n#contact.huntress|Встреча с Лаллой Хаимой, которую иногда называют Западнёй.\n#contact.smuggler|Встреча с контрабандистом М. Георгиу.\n#contact.visionary|Встреча с художницей Мирейей.\n#contact.vivisectionist|Встреча с Каунтом Джаннингсом, хирургом, дуэлистом и вивисектором.\n#contact.retainer|«Твоя мать была посвящённой в Антеуме. немногие женщины этого удостоились, но её <i>сила духа</i>, скажем, свет, обладал невероятной мощью. Сначала твой отец надеялся купить её свет. Но он полюбил её... а она поняла, кем он был на самом деле. Поэтому, когда день твоего рождения приблизился, она сбежала от него, и поэтому он её преследовал.\n#|Вступление... @",
+			"description": "@#contact.barber|Зульфия с жаром кидается на меня. «Приходи в Лес», — настаивает она. «Принеси мне выпить то, что найдёшь под Узлокрылом».\n#contact.delver|Орсолина приветствует меня крепкими объятиями и выслушивает рассказ о моих бедах. «Конечно, я помогу», — уверяет она. — «Но мне будет непросто пересечь лагуну, когда я в таком состоянии. Я слишком много ела из моря. Но есть кое-что в Палаццо Дарио, что может мне помочь. Палаццо терзают призраки, но, думаю, для нас это не проблема».\n#contact.fivegoer|Василь пожимает мою ладонь. Я чётко помню его мягкое, но при этом сильное рукопожатие. «Конечно, я перед тобой в долгу», — говорит он. — «Но перед кое-кем я в ещё большем долгу. Моя прапрабабушка здесь, в городе, в сопровождении не самых приятных людей. Если ты поможешь мне с этим, я смогу решить твои проблемы».\n#contact.ghoul|Доминикас подаёт мне пряный медовик и квас и мило рассказывает о конкуренте, что раздобыл «приправу», в которой Доминикас так нуждается. Он надеется, что для меня не составит труда её раздобыть, и тогда, конечно, он тоже поможет мне.\n#contact.huntress|Лалла Хаима пообещала убить Весёлого Пирующего, что обитает в канализации Ахена и пожирает солдат и пьяниц. Французская армия в это, конечно, не верит, но среди гумьеров есть сержант, способный учуять творение Львокузнеца по запаху.\n#contact.smuggler|У Георгиу есть предложение. Из замка Тараскон нужно забрать сокровища. Там «есть вероятность встретить монстра». Но он замечает, что там, где нет монстров, мы сами их придумываем. Он начинает проводить параллели с нынешней ситуацией в Европе, но к счастью, нам как раз приносят вино.\n#contact.visionary|Мирейя начинает всхлипывать. «Вас послал сам Господь», — вздыхает она. — «Я кое-что сделала... что-то...». И тут она совсем разрыдалась. Насколько мне удалось понять, она шпионила за культом Громокожи, чтобы написать картину. Они об этом узнали и теперь преследуют её.\n#contact.vivisectionist|Граф Джаннингс цокает каблуками и кланяется. «Я слышал о ваших бедах», — говорит он. — «Мне будет интересно вам помочь. Но сначала разрешите пригласить вас на одно любопытное светское мероприятие. Нет-нет. Я настаиваю».\n#contact.retainer|«Она бы убила себя — и тебя — чем позволила бы ему воспитывать тебя. Но когда в Антеуме узнали, что твой отец — Сын Земли, её убедили родить здесь, в убежище, под знаком сломанного меча. Идём. Я отведу тебя к ней».\n#|...теперь ты знаешь.@",
+			"requirements": {
+				"mortal": 1,
+				"associate": -1,
+				"ally": -1
+			},
+			"aspects": {
+				"mortal.introduce": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "mortal",
+					"mutateAspectId": "associate",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.barber.upgrade",
+			"actionId": "send",
+			"label": "Зульфия быстро ходит, щёлкая пальцами",
+			"startdescription": "«Где же? Где же?!»",
+			"description": "«Стена сделана из множества камней, но ты не забудешь, что мы оба из плоти».",
+			"requirements": {
+				"contact.barber": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Слизь",
+					"required": {
+						"vault.barber.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.delver.upgrade",
+			"actionId": "send",
+			"label": "Орсолина зажгла в своей мастерской лампы — масляные, не электрические.",
+			"startdescription": "«Я признательная за вашу помощь».",
+			"description": "Орсолина пожимает плечами: «Если не сейчас, то когда?»",
+			"requirements": {
+				"contact.delver": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Покраснение",
+					"required": {
+						"vault.delver.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.fivegoer.upgrade",
+			"actionId": "send",
+			"label": "Василь смягчается в ожидании",
+			"startdescription": "«Ну так что? Как у нас идут дела?»",
+			"description": "«Полагаю, древний ужас может ещё немного подождать».",
+			"requirements": {
+				"contact.fivegoer": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Подходимец",
+					"required": {
+						"vault.fivegoer.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.ghoul.upgrade",
+			"actionId": "send",
+			"label": "Доминикас дружелюбно и терпеливо улыбается",
+			"startdescription": "«Мой медовик ещё далёк от идеала».",
+			"description": "«Времени всё меньше. Для нас обоих, ты же знаешь».",
+			"requirements": {
+				"contact.ghoul": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Приправа",
+					"required": {
+						"vault.ghoul.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.huntress.upgrade",
+			"actionId": "send",
+			"label": "Чалла хочет выполнить свой контракт.",
+			"startdescription": "«Мой друг-гумьер начинает беспокоиться. Я думаю, он мало верит в мои способности».",
+			"description": "«У нас мало времени».",
+			"requirements": {
+				"contact.huntress": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Тело",
+					"required": {
+						"vault.huntress.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.smuggler.upgrade",
+			"actionId": "send",
+			"label": "Георгиу хочет покончить с этим",
+			"startdescription": "Всё?",
+			"description": "«Полагаю, могло быть и хуже».",
+			"requirements": {
+				"contact.smuggler": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Реликвия",
+					"required": {
+						"vault.smuggler.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.visionary.upgrade",
+			"actionId": "send",
+			"label": "Мирейя дрожит, будто ручей",
+			"startdescription": "«Они всё ещё там?»",
+			"description": "«Прошу, поторопись».",
+			"requirements": {
+				"contact.visionary": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": " Кожа",
+					"required": {
+						"vault.visionary.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.vivisectionist.upgrade",
+			"actionId": "send",
+			"label": "Джаннингс коротко меня приветствует",
+			"startdescription": "«Ну так что?»",
+			"description": "«Надеюсь, тебе удастся найти время».",
+			"requirements": {
+				"contact.vivisectionist": 1,
+				"associate": 1,
+				"ally": -1
+			},
+			"slots": [
+				{
+					"id": "done",
+					"label": "Шрам после поединка",
+					"required": {
+						"vault.vivisectionist.completed": 1
+					},
+					"greedy": true
+				}
+			],
+			"alt": [
+				{
+					"id": "send.associate.upgraded"
+				}
+			],
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "send.associate.upgraded",
+			"actionId": "send",
+			"label": "Союзник",
+			"requirements": {
+				"vault.completed": 1
+			},
+			"startdescription": "Мы пожимаем руки. [Ваш партнёр теперь ваш Союзник. Он последует за вами, если вы покинете город... только если вы не отправляетесь на последнюю битву на краю карты.]",
+			"description": "@#ally.barber|«Мать прорывается», — непринуждённо говорит Зульфия, ковыряя ногти. — «Ведьма требует, а Сестра растворяется».\n#ally.delver|«<i>In bocca al lupo!</i> Не в прямом смысле, конечно».\n#ally.fivegoer|Из задней комнаты, куда мы отправили Подходимца, доносится звук хлюпающего удара. Василь закатывает глаза. «Семья. Ты же знаешь, как бывает. Дай мне полчаса, я попрощаюсь с ней, как следует, и у неё всё будет в порядке».\n#ally.ghoul|«Четыре украденные специи, и у меня, полагаю, будет украденный год», — добродушно говорит Доминикас, пихая вас локтем.\n#ally.huntress|«Жду с нетерпением нашей совместной охоты».\n#ally.smuggler|«Я в огромном долгу».\n#ally.visionary|«Большое спасибо. Отплачу, чем смогу. Но боюсь, стрелять я не умею».\n#ally.vivisectionist|«Боюсь, теперь тебя сложно не заметить. Но это хорошо. Да, очень хорошо».\n#|...@",
+			"aspects": {
+				"recruiting": 1
+			},
+			"comments": "IMPORTANT - this mutation stops them being removed on departure. The Ally mutation won't protect them from purging, and contact.local isn't a mutation so can't be removed with an xtrigger",
+			"mutations": [
+				{
+					"filterOnAspectId": "contact.local",
+					"mutateAspectId": "contact.local",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"effects": {
+				"vault.completed": -1
+			}
+		},
+		{
+			"id": "send.ally.upgrade",
+			"actionId": "send",
+			"label": "Потенциал, реализованный",
+			"startdescription": "Я могу обсудить с Союзником, что ему удалось узнать. [Это добавит очко к аспекту вашего Союзника.]",
+			"description": "@#ally.barber|«Хмык-хмык. Хмык».\n#ally.delver|«Начинаю чувствовать себя, как раньше».\n#ally.fivegoer|«Ах. <i>Мягко</i>».\n#ally.ghoul|«Опыт — лучшая приправа. Я раньше в это не верил».\n#ally.huntress|«Неплохо, м-м?»\n#ally.smuggler|«Я устал. Думаю, я всегда буду уставшим...»\n#ally.visionary|«Где мой альбом?»\n#ally.vivisectionist|«Да. Очень хорошо».\n#|...@",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1,
+				"experience.exile.ally": 3
+			},
+			"aspects": {
+				"upgrade.exile.ally": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "send.ally.upgrade.hint",
+			"actionId": "send",
+			"label": "Потенциал?",
+			"startdescription": "У моего Союзника есть свои причины путешествовать со мной. Среди них — жажда нового опыта. [Когда ваш Союзник получает три карты Опыта, вы можете увеличить его силу.]",
+			"requirements": {
+				"mortal": 1,
+				"ally": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.end",
+			"actionId": "send",
+			"label": "Дальше дороги нет",
+			"startdescription": "Можно сказать, что это край света.",
+			"requirements": {
+				"end": 1,
+				"domicile": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "send.investigate.description",
+			"actionId": "send",
+			"label": "Отправить?",
+			"description": "@#city.aachen|Мне пришло сообщение из Ахена. Старая приятельница из Марракеша охотится там. Ей требуется моя помощь.\n#city.alexandria|Ещё до протеста против Британцев меня пригласили в Невидимый Серапеум в Александрии. Если мне повезёт, приглашение всё ещё в силе.\n#city.algiers|У моего знакомого контрабандиста, М. Георгиу, есть свои люди в Алжире. Они могут помочь мне попасть туда незаметно.\n#city.amsterdam|За все эти годы мне удалось найти множество сокровищ для близнецов Стегенга из Амстердама. Может, теперь они укроют меня.\n#city.avignon|У знакомого контрабандиста из Авиньона, М. Георгиу, есть для меня предложение.\n#city.baghdad|Перси Стайлс всё ещё в Багдаде, делает то, что должен, для британского правительства на территории Месопотамии. Вероятно, он будет рад меня увидеть.\n#city.budapest|Ходят слухи моя старая подруга Лили развернула свой чёрный рынок в Будапеште.\n#city.candia|Много времени минуло с моей поездки на Крит, он снова мне снится, как и запах боярышника...\n#city.cluj|Дело моей старой подруги Лили в Клуже пострадало, когда Венгрия отдала город, но её имя, возможно, поможет мне найти приют.\n#city.granada|Мне приходилось иметь дела с владелицей галереи в Гранаде. В прошлом году она приглашала меня погостить.\n#city.istanbul|У моего старого боевого товарища Кары Кемаля ещё остались связи в Чёрной Руке. Возможно, его имя откроет мне двери.\n#city.kaunas|Пекарь Доминикас неплохо устроился: у него есть связи с верхушкой Железного Волка в Каунасе. Мы никогда с ним особо не ладили, но он передо мной в долгу, и мне сейчас не стоит привередничать.\n#city.kiev|Ходят слухи, что самая голодная из Лигений обосновалась за границей, в Киеве. Моим преследователям нужно быть осторожнее там, как, впрочем, и мне.\n#city.krakow|Ицхак Ашлаг из Кракова годами получал от меня редкие оккультные рукописи. Он всегда был гостеприимным.\n#city.leningrad|«Афиняне», что продают годы в России, — заклятые враги считальцев. Но мне приходилось напиваться с неким Сушкиным. Надеюсь, меня всё ещё помнят.\n#city.london|Оттавио Бёртон из Лондона просит меня о помощи. Он негодяй, но мы давно знакомы.\n#city.marrakech|Марабут по имени Навил как-то выяснил, что я здесь. В его послании была лишь одна строка: «ПРИДИ В МАРРАКЕШ, ПРИДИ К ПОБЕДЕ».\n#city.meshad|Дряхлая старушка-поэтесса из Мешхеда всегда был моей любимой клиенткой. Она-то уж точно примет меня тепло.\n#city.munich|Граф Готлиб Джаннигс из Мюнхена приглашал меня в свой любимый дуэльный клуб. Я всё ещё могу воспользоваться его предложением.\n#city.nizhny|Сушкину из «Афинян» удалось сохранить свои каналы поставок в Нижнем, но при Советах ему живётся гораздо труднее. Думаю, моя помощь ему не помешает.\n#city.paris|Тётушка Аделин когда-то верховодила в квартале Маре. Сейчас она отошла от дел, но в Париже у неё есть люди, которые могут меня приютить.\n#city.prague|Старой мошеннице из Праги, что называет себя Тётушкой Аделин, может потребоваться моя помощь.\n#city.rostock|У моего человека, графа Джаннигса, есть дом в Ростоке. Я могу пожить там.\n#city.samarkand|Мне доводилось доставлять запрещённые товары магу-джадидисту из Самарканда. Возможно, он меня ещё помнит.\n#city.stalingrad|Преступная группировка Птицеедов не чтит ни людские законы, ни законы Обители. Ходят слухи, что в Сталинграде к ним примкнула Зульфия-Брадобрей. Птицеедов нельзя назвать хорошими людьми. Но Зульфия мне всегда нравилась.\n#city.strasbourg|Хюгелькиндеры из Вогезов иногда принимают человеческое обличье и гуляют по улочкам Страсбурга. Мне доводилось иметь с ними дело. Как и многие другие, они знают, как оставаться незаметными. Возможно, они могут помочь.\n#city.sverdlovsk|Когда-то в Свердловске Брадобрей Зульфия покупала у меня жизнь за драгоценности. Она стала странной и переехала в другой город, но ещё до Гражданской войны она успела меня кое с кем познакомить.\n#city.tiflis|Василь-Пятиходимец уже давно скрывается от считальцев в Тифлисе. Он передо мной в долгу, но вряд ли обрадуется моему визиту.\n#city.tirana|Пока дела ещё не были так плохи, мы вели переговоры с человеком президента Зогу в Тиране. У меня сохранился её адрес.\n#city.tripoli|У меня нет знакомых в Триполи. Я не помню его совсем. Но очень давно, ещё во времена Османской империи, этот город стал местом моего рождения.\n#city.valletta|Мой старый боевой товарищ Кара Кемаль сейчас в изгнании в Валлетте. Война давно закончилась, но именно благодаря мне Кара Кемаль сейчас жив...\n#city.venice|В Венеции я знаю женщину по имени Орсолина. Она не всегда была женщиной. Но в Венеции живёт уже очень давно.\n#city.vienna|Это было в Белом городе. Сейчас его называют «Красной Веной». Сейчас там обитает Лигения, а следы Войны Червей до сих пор видны тем, кто об этом знает. Но если уж мне придётся умереть, то хотелось посмотреть на этот старый город напоследок.\n#wilderness|В этом месте мне никто не поможет, а за дорогами, автомобильными и железными, внимательно следят. Остаётся один вариант: идти напрямик, избегая дорог.\n#end.bornholm|В Балтийском море есть небольшой остров, к которому решит причалить не каждый корабль. Однажды мне довелось там провести лето с кем-то, чьё имя я уже и не вспомню. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.cheko|Далеко в глухой тайге, где бродят тигры, у озера есть хижина. Давно, ещё до Революции, мне доводилось там охотиться. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.ghardaia|Где-то посреди пустыни кеноксом стоят укреплённые поселения. Хаима когда-то нарисовала мне карту этого места. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.messana|В холмах над полузаброшенной деревушкой стоит обитель, где Мирейя однажды провела лето. Мне это показалось отличным убежищем, и по моей просьбе Мирейя показала мне, как добраться туда. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.morbihan|В самой западной точке залива Морбиан, не доходя до открытого моря, расположен любопытный приорат. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.paro|Высоко в горах за пределами России стоит монастырь. В юности мне доводилось в нём бывать. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#end.slettnes|В самой крайней точке Европы есть маяк, где мне впервые удалось почувствовать прикосновение Безымянного Имени. Возможно, Враг не найдёт меня там. А если найдёт, то пришло время сразиться.\n#|Где-то?\n@"
+		},
+		{
+			"id": "send.investigate.aachen",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Ахена",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.alexandria",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Александрии",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.alexandria": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.istanbul",
+					"city.baghdad",
+					"end.messana",
+					"city.candia"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Алжира",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.amsterdam",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Амстердама",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.amsterdam": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.aachen",
+					"city.rostock",
+					"city.london"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.avignon",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Авиньона",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.avignon": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.munich",
+					"city.venice",
+					"city.algiers",
+					"city.granada"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Багдада",
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad": 1
+			},
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.budapest",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Будапешта",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.budapest": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.krakow",
+					"city.cluj",
+					"city.tirana",
+					"city.venice"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.candia",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Кандии-Ираклиона",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Это маловероятно и займёт больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.candia": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tirana",
+					"city.alexandria",
+					"end.messana",
+					"city.tripoli"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.cluj",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Клужа-Напоки",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать. Есть небольшой риск оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.cluj": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kiev",
+					"city.tiflis",
+					"city.istanbul",
+					"city.budapest"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.granada",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Гранады",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.granada": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.strasbourg",
+					"city.avignon",
+					"city.marrakech",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Стамбула",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kaunas",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Каунаса",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kaunas": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.leningrad",
+					"city.krakow",
+					"city.prague",
+					"city.rostock"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Киева",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.krakow",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Кракова",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.krakow": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.kaunas",
+					"city.kiev",
+					"city.budapest",
+					"city.vienna"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Ленинграда",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Лондона",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.marrakech",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Марракеша",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.marrakech": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.granada",
+					"city.algiers",
+					"end.ghardaia",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.meshad",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Мешхеда",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Вам представится мало возможностей, и займёт это больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.meshad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.samarkand",
+					"end.paro",
+					"end.messana",
+					"city.baghdad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Мюнхена",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Нижнего Новгорода",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Вам представится мало возможностей, и займёт это больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"city.sverdlovsk",
+					"city.stalingrad",
+					"city.leningrad"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.paris",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Парижа",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.paris": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.london",
+					"city.aachen",
+					"city.strasbourg",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.prague",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Праги",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.prague": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.rostock",
+					"city.kaunas",
+					"city.vienna",
+					"city.aachen"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.rostock",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Ростока",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.rostock": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.kaunas",
+					"city.prague"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Самарканда",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.strasbourg",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Страсбурга",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.strasbourg": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.paris",
+					"city.aachen",
+					"city.granada",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Сталинграда",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Вам представится мало возможностей, и займёт это больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Свердловска",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Вам представится мало возможностей, и займёт это больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Тифлиса",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tirana",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Тираны",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tirana": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.budapest",
+					"city.istanbul",
+					"city.candia",
+					"city.valletta"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tripoli",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Западного Триполи",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tripoli": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.valletta",
+					"city.candia",
+					"end.ghardaia",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.valletta",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Валетты",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас. Вам представится мало возможностей, и займёт это больше времени.]",
+			"warmup": 60,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.valletta": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.venice",
+					"city.tirana",
+					"city.tripoli",
+					"city.algiers"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.venice",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Венеции",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.venice": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.vienna",
+					"city.budapest",
+					"city.valletta",
+					"city.avignon"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.vienna",
+			"actionId": "send",
+			"label": "Отправить осторожные сообщения из Вены",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Это позволит вам найти место, куда можно сбежать, но оставляет небольшую вероятность оставить Следы. В худшем случае считальцы прибудут туда раньше вас.]",
+			"warmup": 30,
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.vienna": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.prague",
+					"city.krakow",
+					"city.venice",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.aachen.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Аахена",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.aachen.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.algiers.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Алжира",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.algiers.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.avignon",
+					"city.valletta",
+					"city.tripoli",
+					"end.ghardaia",
+					"city.marrakech"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.baghdad.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Багдада",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.baghdad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.tiflis",
+					"city.meshad",
+					"end.messana",
+					"city.alexandria",
+					"city.istanbul"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.istanbul.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Стамбула",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.istanbul.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.cluj",
+					"city.baghdad",
+					"city.alexandria",
+					"city.tirana"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.kiev.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Киева",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.kiev.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.leningrad",
+					"city.stalingrad",
+					"city.cluj",
+					"city.krakow"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.leningrad.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Ленинграда",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.leningrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.slettnes",
+					"city.nizhny",
+					"city.kiev",
+					"city.kaunas"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.london.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Лондона",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.london.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.bornholm",
+					"city.amsterdam",
+					"city.paris",
+					"end.morbihan"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.munich.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Мюнхена",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.munich.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.vienna",
+					"city.avignon",
+					"city.strasbourg"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.nizhny.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Нижнего Новгорода",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.nizhny.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.amsterdam",
+					"city.paris",
+					"city.prague",
+					"city.munich"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.samarkand.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Самарканда",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.samarkand.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.sverdlovsk",
+					"end.paro",
+					"city.meshad",
+					"city.tiflis"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.stalingrad.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Сталинграда",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.stalingrad.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.nizhny",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.kiev"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.sverdlovsk.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Свердловска",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.sverdlovsk.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"end.cheko",
+					"end.paro",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.nizhny"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.tiflis.turmoil",
+			"actionId": "send",
+			"label": "Отправить поспешные сообщения из Тифлиса",
+			"startdescription": "Нужно найти более безопасное место. [Когда город в таком состоянии, гораздо сложнее вступить в контакт незаметно — большой риск оставить Следы.]",
+			"warmup": 30,
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"craftable": true,
+			"requirements": {
+				"temptation.defiance": -1,
+				"domicile.tiflis.turmoil": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.stalingrad",
+					"city.samarkand",
+					"city.baghdad",
+					"city.cluj"
+				],
+				"draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "send.investigate.wilderness",
+			"startdescription": "Если придётся сбегать, лучше отправиться в то место, где у меня есть друг, или по крайней мере старый знакомый. [Дикая местность опасна. Каждый раз, делая это, вы будете получать Ранение.]",
+			"warmup": 30,
+			"aspects": {
+				"tracerisk": 1
+			},
+			"craftable": true,
+			"actionId": "send",
+			"label": "Попытаться вступить в контакт с кем-нибудь где-нибудь",
+			"requirements": {
+				"domicile.wilderness": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.alexandria",
+					"city.algiers",
+					"city.amsterdam",
+					"city.avignon",
+					"city.baghdad",
+					"city.budapest",
+					"city.candia",
+					"city.cluj",
+					"city.granada",
+					"city.istanbul",
+					"city.kaunas",
+					"city.kiev",
+					"city.krakow",
+					"city.leningrad",
+					"city.london",
+					"city.marrakech",
+					"city.meshad",
+					"city.munich",
+					"city.nizhny",
+					"city.paris",
+					"city.prague",
+					"city.rostock",
+					"city.samarkand",
+					"city.stalingrad",
+					"city.strasbourg",
+					"city.sverdlovsk",
+					"city.tiflis",
+					"city.tirana",
+					"city.tripoli",
+					"city.valletta",
+					"city.venice",
+					"city.vienna",
+					"end.bornholm",
+					"end.cheko",
+					"end.ghardaia",
+					"end.messana",
+					"end.morbihan",
+					"end.paro",
+					"end.slettnes"
+				],
+				"draws": 1,
+				"defaultcard": "end.cheko",
+				"resetonexhaustion": false
+			},
+			"effects": {
+				"wound.exile": 1
+			},
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		}
+	]
+}

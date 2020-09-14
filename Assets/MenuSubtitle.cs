@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TMPro;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class MenuSubtitle : MonoBehaviour
 
     public void UpdateWithLocValue(string text)
     {
-        string currentCultureId = Registry.Get<Config>().CultureId;
+        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 

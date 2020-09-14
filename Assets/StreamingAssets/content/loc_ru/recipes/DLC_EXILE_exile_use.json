@@ -1,0 +1,1160 @@
+{
+	"recipes": [
+		{
+			"id": "use.first",
+			"actionId": "use",
+			"label": "Прямо у них под носом",
+			"startdescription": "Мои прежние сообщники ищут меня. Я слышу их присвистывания и пощёлкивания за каждым углом. Неудивительно, зная, что мне удалось украсть. Но с меня было довольно.",
+			"requirements": {
+				"ticket.train": 1
+			},
+			"effects": {
+				"ticket.train": -1
+			},
+			"internaldeck": {
+				"spec": [
+					"city.aachen",
+					"city.prague",
+					"city.munich",
+					"city.london",
+					"city.krakow",
+					"city.avignon",
+					"city.venice",
+					"city.budapest"
+				],
+				" draws": 1,
+				"defaultcard": "wilderness",
+				"resetonexhaustion": false
+			},
+			"alt": [
+				{
+					"id": "rkx.first",
+					"additional": true
+				},
+				{
+					"id": "turn.begin",
+					"additional": true
+				},
+				{
+					"id": "travel.first",
+					"additional": true
+				}
+			],
+			"warmup": 2,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "send.investigate.description"
+				}
+			]
+		},
+		{
+			"id": "use.attack.weapon.underling",
+			"actionId": "use",
+			"label": "Атаковать преследователя",
+			"startdescription": "Прямое нападение на моего преследователя. [Всё Забвение будет уничтожено.]",
+			"comments": "Priority>createdefiance, in case someone is actually under attack from a pursuer",
+			"requirements": {
+				"weapon": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.rank": 1
+			},
+			"slots": [
+				{
+					"id": "with.lore",
+					"label": "Техника",
+					"description": "Атака, в которой используется техника Грани и оружие всегда наносит удар.",
+					"actionId": "use",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.underling.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.underling.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.underling.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.underling",
+			"actionId": "use",
+			"label": "Атаковать преследователя",
+			"comments": "Priority>createdefiance, in case someone is actually under attack from a pursuer",
+			"startdescription": "Использовать технику Грани, чтобы напасть на моего преследователя. [Всё Забвение будет уничтожено.]",
+			"requirements": {
+				"lore": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1,
+				"rkx.rank": 1
+			},
+			"slots": [
+				{
+					"id": "with.weapon",
+					"label": "Оружие",
+					"description": "Атака, в которой используется техника Грани и оружие всегда наносит удар.",
+					"actionId": "use",
+					"required": {
+						"weapon": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.underling.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.underling.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.underling.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.combo",
+			"actionId": "use",
+			"requirements": {
+				"lore": 1,
+				"weapon": 1
+			},
+			"label": "Сталь и тишина",
+			"purge": {
+				"obscurity": 100
+			},
+			"startdescription": "Мне удалось их превзойти. Пришло время сообщить им об этом. [Атака, в которой используется техника Грани и оружие всегда наносит удар.]",
+			"linked": [
+				{
+					"id": "use.attack.underling.hit.combo"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.hit",
+			"actionId": "use",
+			"label": "Ощутимый удар",
+			"startdescription": "Удар нанесён, и я растворяюсь в городе! [Две раны убьют считальца, а четыре раны — подручного главаря.]",
+			"aspects": {
+				"striking.underling": 1,
+				"fatiguing": 1,
+				"tracerisk": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.underboss.slain"
+				},
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.hit.combo",
+			"actionId": "use",
+			"label": "Ощутимый удар",
+			"startdescription": "Удар нанесён, и я растворяюсь в городе! [Две раны убьют считальца, а четыре раны — подручного главаря.]",
+			"comments": "We don't use the base striking aspect because we don't want to generate two wounds",
+			"aspects": {
+				"striking.underling.weapon": 1,
+				"fatiguing": 1,
+				"tracerisk": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.underboss.slain"
+				},
+				{
+					"id": "use.attack.underling.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.underling.miss",
+			"actionId": "use",
+			"label": "Недобрая встреча",
+			"startdescription": "Всё вышло лучше или даже удачнее, чем ожидалось. Мне не удалось причинить им вреда.",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "use.attack.underboss.slain",
+			"actionId": "use",
+			"label": "Мне удалось разделаться с подручным главаря!",
+			"startdescription": "Даже считальцев низкого ранга не так просто убить. Но ведь я всё ещё считаюсь считальцем низкого ранга.",
+			"description": "Даже считальцев низкого ранга не так просто убить. Но ведь я всё ещё считаюсь считальцем низкого ранга. [Меня заметил преследователь. Ещё больше я встречу в пути.]",
+			"extantreqs": {
+				"rkx.underboss": 1,
+				"damage.underling": 4
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"trace": 1,
+				"damage.underling": -1
+			},
+			"purge": {
+				"damage.underling": 100,
+				"obscurity": 100
+			},
+			"burnimage": "reckoner.slain",
+			"warmup": 1
+		},
+		{
+			"id": "use.attack.underling.slain",
+			"actionId": "use",
+			"label": "Мне удалось избавиться от преследователя!",
+			"startdescription": "Считальцы не бессмертны. Мы лишь покупаем время, а потом его тратим. Если этому и требовались доказательства, то сегодня они были получены.",
+			"description": "Считальцы не бессмертны. Мы лишь покупаем время, а потом его тратим. Если этому и требовались доказательства, то сегодня они были получены. [Мне удалось избавиться от преследователя. Но новые уже идут за мной.]",
+			"extantreqs": {
+				"rkx.rank": 1,
+				"damage.underling": 2,
+				"rkx.underboss": -1
+			},
+			"haltverb": {
+				"rkx": 1
+			},
+			"effects": {
+				"trace": 1,
+				"damage.underling": -1
+			},
+			"purge": {
+				"damage.underling": 100,
+				"obscurity": 100
+			},
+			"burnimage": "reckoner.slain",
+			"warmup": 1
+		},
+		{
+			"id": "use.attack.weapon.createdefiance",
+			"actionId": "use",
+			"label": "Священное оружие",
+			"startdescription": "Поговаривали, что моего Врага поразит серебряная пуля. Я видел, как люди пытались, и их попытки успехом не увенчались.",
+			"description": "Считальцы не настолько глупы, чтобы переходить в более высокие уровни Обители. Привлеки они внимание истинного Вечных — или своих господ — их тут же уничтожат. Но мой Враг явно что-то знает о Незримых искусствах. Вероятно, мне тоже стоит о них узнать. [Храбрость привлекает внимание. Это уничтожит текущее Забвение и создаст След.]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"effects": {
+				"temptation.defiance": 1,
+				"trace": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "foe.weaknesses.generate"
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.createdefiance",
+			"actionId": "use",
+			"label": "Смертельное оружие",
+			"startdescription": "Считальцы не настолько глупы, чтобы переходить в более высокие уровни Обители. Привлеки они внимание истинного Вечных — или своих господ — их тут же уничтожат. Но мой Враг боролся и завоёвывал Часы какое-то время. У него есть особая защита. [Храбрость привлекает внимание. Это уничтожит текущее Забвение и создаст След.]",
+			"description": "Мой Враг точно что-то знает о «незримых искусствах». Вероятно, пришло время и мне их изучить.",
+			"requirements": {
+				"lore": 1
+			},
+			"extantreqs": {
+				"temptation.defiance": -1
+			},
+			"effects": {
+				"temptation.defiance": 1,
+				"trace": 1
+			},
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "foe.weaknesses.generate"
+				}
+			]
+		},
+		{
+			"id": "foe.weaknesses.generate",
+			"actionId": "use",
+			"label": "Опасные возможности",
+			"startdescription": "Даже у моего Врага есть слабости, но он их тщательно скрывает. [Узнайте, какие отвлекающие манёвры сработают против вашего Врага, и вы сможете выбрать самую выгодную позицию для боя с ним.]",
+			"deckeffect": {
+				"rkx.weaknesses.environment": 1,
+				"rkx.weaknesses.quirk": 1,
+				"rkx.weaknesses.disfavour": 1
+			}
+		},
+		{
+			"id": "foe.weaknesses.generate.backup",
+			"actionId": "foe.weaknesses.generate.backup",
+			"label": "Опасные возможности",
+			"startdescription": "Даже у моего Врага есть слабости, но он их тщательно скрывает. [Узнайте, какие отвлекающие манёвры сработают против вашего Врага, и вы сможете выбрать самую выгодную позицию для боя с ним.]",
+			"comments": "To be triggered from Defiance use - just in case weaknesses haven't been generated when meeting the Foe",
+			"extantreqs": {
+				"weakness.foe": -1,
+				"weakness.foe.unknown": -1
+			},
+			"deckeffect": {
+				"rkx.weaknesses.environment": 1,
+				"rkx.weaknesses.quirk": 1,
+				"rkx.weaknesses.disfavour": 1
+			}
+		},
+		{
+			"id": "use.attack.weapon.foe",
+			"actionId": "use",
+			"label": "Использовать священное оружие и атаковать Врага",
+			"startdescription": "Выступая против меня, он сам становится мишенью... но непростой. [Атаки оружием обычно, но не всегда, срабатывают. Пока на столе карта Врага, атаковать считальцев ниже рангом нельзя — это уничтожает Забвение.]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"slots": [
+				{
+					"id": "with.lore",
+					"label": "Техника",
+					"description": "Атака, в которой используется техника Грани и оружие всегда наносит удар.",
+					"actionId": "use",
+					"required": {
+						"lore": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.foe.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.foe.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.foe.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.lore.foe",
+			"actionId": "use",
+			"label": "Использовать оружие Грани и атаковать Врага",
+			"startdescription": "Выступая против меня, он сам становится мишенью... но непростой. [Атаки с помощью Легенды обычно, но не всегда, срабатывают. Пока на столе карта Врага, атаковать считальцев ниже рангом нельзя — это уничтожает Забвение.]",
+			"requirements": {
+				"lore": 1,
+				"op": -1
+			},
+			"extantreqs": {
+				"rkx.foe": 1
+			},
+			"slots": [
+				{
+					"id": "with.weapon",
+					"label": "Оружие",
+					"description": "Атака, в которой используется техника Грани и оружие всегда наносит удар.",
+					"actionId": "use",
+					"required": {
+						"weapon": 1
+					},
+					"forbidden": {
+						"uq.weapon.profane": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.attack.foe.combo"
+				}
+			],
+			"purge": {
+				"obscurity": 100
+			},
+			"warmup": 30,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.attack.foe.hit",
+					"chance": 70
+				},
+				{
+					"id": "use.attack.foe.miss",
+					"chance": 100
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.combo",
+			"actionId": "use",
+			"requirements": {
+				"lore": 1,
+				"weapon": 1
+			},
+			"label": "Сталь и тишина",
+			"startdescription": "Такому он меня не учил. [Атака, в которой используется техника Грани и оружие всегда наносит удар.]",
+			"purge": {
+				"obscurity": 100
+			},
+			"linked": [
+				{
+					"id": "use.attack.foe.hit.combo"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.hit",
+			"actionId": "use",
+			"label": "Мне удалось его ранить!",
+			"startdescription": "«Не думай, что это меня остановит...»",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"striking.foe": 1,
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.foe.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.hit.combo",
+			"actionId": "use",
+			"label": "Мне удалось его ранить!",
+			"startdescription": "«Не думай, что это меня остановит...»",
+			"comments": "We don't use the base striking aspect because we don't want to generate two wounds",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"striking.foe.weapon": 1,
+				"fatiguing": 1
+			},
+			"warmup": 10,
+			"linked": [
+				{
+					"id": "use.attack.foe.slain"
+				}
+			]
+		},
+		{
+			"id": "use.attack.foe.miss",
+			"actionId": "use",
+			"label": "Он уклонился от моей атаки... ",
+			"startdescription": "«Мне казалось, я обучил тебя лучше».",
+			"purge": {
+				"obscurity": 100
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 10
+		},
+		{
+			"id": "use.attack.foe.slain",
+			"actionId": "use",
+			"label": "Кровавая победа",
+			"startdescription": "Будто ворота в городской стене, в теле моего Врага зияет семь ран: и все раны перестали кровоточить. Его сердце трепещет в моих окровавленных руках. Он мёртв. Всё кончено. Мои раны затянутся. А мои преследователи погрязнут в распрях в борьбе за территории моего Врага и оставят меня в покое.",
+			"extantreqs": {
+				"damage.foe": 7
+			},
+			"haltverb": {
+				"rkx": 1,
+				"rkx.foe": 1
+			},
+			"burnimage": "foe.slain",
+			"effects": {
+				"trace": 1,
+				"rkx.foe.defeated": 1,
+				"wound.foe": -1
+			},
+			"purge": {
+				"damage.foe": 100,
+				"damage.underling": 100
+			}
+		},
+		{
+			"id": "use.attack.weapon.notarget.hint",
+			"actionId": "use",
+			"label": "Священное оружие?",
+			"startdescription": "Это может сработать против защиты моего Врага. И может, я смогу сразиться с ним, если он останется один — будь у меня вера в то, что я сумею его уничтожить в одной битве. [Вы можете напасть на Врага, когда он прибудет.]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": -1,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.profaneweapon.notarget.hint",
+			"actionId": "use",
+			"label": "Оружие?",
+			"startdescription": "Это не сработает против защиты моего Врага. Как ни прискорбно, но теперь мне придётся стрелять в кого-то другого. [Вы можете напасть на считальцев, когда они прибудут.]",
+			"requirements": {
+				"weapon": 1,
+				"uq.weapon.profane": 1,
+				"op": -1,
+				"connection": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.attack.lore.notarget",
+			"actionId": "use",
+			"label": "Священная техника?",
+			"startdescription": "Мне удалось кое-что узнать о защите, которую использует мой Враг. И может, я смогу сразиться с ним, если он останется один — будь у меня вера в то, что я сумею его сразить в одной битве.",
+			"requirements": {
+				"lore": 1,
+				"edge": 4,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.attack.lore.notarget.notupgraded",
+			"actionId": "use",
+			"label": "Выход найден?",
+			"startdescription": "Мне удалось кое-что узнать больше о защите, которую использует мой Враг. И может, я смогу сразиться с ним, если он останется один — будь у меня вера в то, что я сумею его сразить в одной битве.",
+			"requirements": {
+				"lore": 1,
+				"op": -1,
+				"connection": -1
+			},
+			"extantreqs": {
+				"rkx.foe": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.dawn",
+			"actionId": "use",
+			"label": "Встретить рассвет",
+			"startdescription": "О чём же я думаю?",
+			"requirements": {
+				"op.dawn": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "Искушение",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.dawn": -1,
+				"fascination": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "use.sunset",
+			"actionId": "use",
+			"label": "Смотреть на закат",
+			"startdescription": "О чём же я думаю?",
+			"requirements": {
+				"op.sunset": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "Искушение",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.sunset": -1,
+				"restlessness": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "use.night",
+			"actionId": "use",
+			"label": "Прогуляться по ночным улицам",
+			"startdescription": "О чём же я думаю?",
+			"requirements": {
+				"op.night": 1
+			},
+			"slots": [
+				{
+					"id": "temptation",
+					"label": "Искушение",
+					"required": {
+						"desire": 1
+					}
+				}
+			],
+			"warmup": 10,
+			"alt": [
+				{
+					"id": "tourism.tranquillity"
+				},
+				{
+					"id": "tourism.rage"
+				}
+			],
+			"effects": {
+				"op.night": -1,
+				"dread": 1
+			},
+			"craftable": true
+		},
+		{
+			"id": "tourism.tranquillity",
+			"actionId": "use",
+			"label": "Мирные мысли",
+			"startdescription": " Я уже давно в этом месте. Пришло время начать с чистого листа.",
+			"requirements": {
+				"temptation.obscurity": 1
+			},
+			"effects": {
+				"op": -1,
+				"tranquillity": 1
+			}
+		},
+		{
+			"id": "tourism.rage",
+			"actionId": "use",
+			"label": "Гневные мысли",
+			"startdescription": "Я сжимаю кулаки и чувствую в них силу. Придёт время, и я перестану убегать. Раньше, чем они думают.",
+			"requirements": {
+				"temptation.defiance": 1
+			},
+			"effects": {
+				"op": -1,
+				"rage": 1
+			}
+		},
+		{
+			"id": "use.negotiate.hint",
+			"actionId": "use",
+			"label": "Договориться?",
+			"startdescription": "[Добавить соответствующую Связь.]",
+			"requirements": {
+				"op": 1,
+				"price.connection": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.negotiate",
+			"actionId": "use",
+			"label": "Сделка",
+			"startdescription": "У меня нет времени на то, чтобы сделать всё как следует. К счастью, у меня есть связи, которые позволяют мне сделать это быстро.",
+			"description": "@#licence.medical|«Доброе утро <i>и вам</i>, доктор».\n#licence.import|«Не стоит волноваться о таких мелочах. Уж точно не в кругу друзей».\n#And done.|@",
+			"comments": "The slots on the purchaseable item are what restrict to a relevant connection.",
+			"requirements": {
+				"op": 1,
+				"connection": 1
+			},
+			"aspects": {
+				"negotiation": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.radicals.problem",
+			"actionId": "use",
+			"label": "Купить за годы",
+			"startdescription": "Здесь есть кое-кто, кто принимает платежи исключительно в валюте Пепельного Числа. Но в верхах у меня есть друг, которому это не понравится. [Это подорвёт вашу связь с Правителем.]",
+			"description": "Готово.",
+			"requirements": {
+				"op.connection.radicals": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"extantreqs": {
+				"connection.ruler": 1
+			},
+			"purge": {
+				"connection.ruler": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.ruler.problem",
+			"actionId": "use",
+			"label": "Купить за годы",
+			"startdescription": "Здесь есть кое-кто, кто принимает платежи исключительно в валюте Пепельного Числа. Но среди радикалов у меня есть друзья, которым это не понравится. [Это подорвёт вашу связь с Радикалами.]",
+			"description": "Готово.",
+			"requirements": {
+				"op.connection.ruler": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"extantreqs": {
+				"connection.radicals": 1
+			},
+			"purge": {
+				"connection.radicals": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan",
+			"actionId": "use",
+			"label": "Купить за годы",
+			"startdescription": "Здесь есть кое-кто, кто принимает платежи исключительно в валюте Пепельного Числа.",
+			"description": "Готово.",
+			"requirements": {
+				"op": 1,
+				"price.lifespan.stolen": 1,
+				"lifespan.stolen": "price.lifespan.stolen"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.lifespan.hint",
+			"actionId": "use",
+			"label": "Купить за годы?",
+			"startdescription": "[Добавьте число Лет в соответствии с ценой.]",
+			"requirements": {
+				"op": 1,
+				"price.lifespan.stolen": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.purchase.property.tripoli",
+			"actionId": "use",
+			"label": "Покупка",
+			"startdescription": "Купить что-нибудь полезное.",
+			"description": "Торговец — старик в расшитой ермолке, с морщинистыми щеками, белёсой щетинистой бородой и стародавней печалью в глазах. Мы пожимаем руки в знак совершения сделки. Он сжимает мою ладонь двумя руками, изучает моё лицо. «Да. — говорит он. — Ты принадлежишь ей. Она когда-то сюда приходила. Я надеялся, что и ты когда-нибудь придёшь».",
+			"requirements": {
+				"op": 1,
+				"price": 1,
+				"worth": "price",
+				"purchase.property": 1
+			},
+			"effects": {
+				"contact.retainer": 1
+			},
+			"extantreqs": {
+				"domicile.tripoli": 1,
+				"contact.retainer": -1,
+				"contact.retainer.exhausted": -1
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase",
+			"actionId": "use",
+			"label": "Покупка",
+			"startdescription": "Купить что-нибудь полезное.",
+			"description": "@#townhouse|Хорошее место, чтобы отдохнуть или пригласить гостей, которых я хочу впечатлить. Теперь на меня работает пара осторожных сотрудников, на дверях установлены дополнительные замки, но это вряд ли остановит моих преследователей.\n#villa|Достаточно далеко от города, чтобы в жить в тишине и покое. Хорошее место, чтобы восстановиться, поработать над проектами подальше от любопытных взглядов или позвать гостей, которых я хочу завоевать. Но защищаться, если до этого дойдёт, будет кошмарно.\n#|Готово.@",
+			"requirements": {
+				"op": 1,
+				"price": 1,
+				"worth": "price"
+			},
+			"aspects": {
+				"purchase": 1
+			},
+			"warmup": 10,
+			"craftable": true
+		},
+		{
+			"id": "use.purchase.hint",
+			"actionId": "use",
+			"label": "Купить?",
+			"startdescription": "[Добавьте число предметов особой Ценности в соответствии с ценой.]",
+			"requirements": {
+				"op": 1,
+				"price": 1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.bookofsuns.restore",
+			"actionId": "use",
+			"label": "Восстановить Книгу Солнц",
+			"startdescription": "Что за сообщение здесь было разделено? Как долго эти страницы пролежали во тьме?",
+			"description": "Разделить страницы Книги Солнц заставила алчность, а разрешило бездушие. Выходит, что так.Но в чём на самом деле была причина? Небо перестаёт дышать, когда золотые образы снова складываются в единое целое. Ветер затихает. Или это только кажется. Возможно, мне стоит побольше спать.",
+			"requirements": {
+				"curio.lantern": 3,
+				"cash": 1
+			},
+			"effects": {
+				"curio.lantern": -3,
+				"cash": -1,
+				"rarity.lantern": 1,
+				"fascination": 1
+			},
+			"warmup": 60,
+			"craftable": true,
+			"burnimage": "pentiment",
+			"linked": [
+				{
+					"id": "use.fatiguing"
+				}
+			]
+		},
+		{
+			"id": "use.comfort",
+			"actionId": "use",
+			"label": "Расслабиться",
+			"startdescription": "@#domicile.tripoli|В воздухе этого города или в его мерцании его огней витает что-то знакомое...\n#|Мне пришлось рисковать многим ради этого состояния. Я могу насладиться этими преимуществами.@",
+			"description": "Ничто не вечно. И за это нужно быть благодарным.",
+			"requirements": {
+				"comfort": 1,
+				"price": -1
+			},
+			"effects": {
+				"contentment": "comfort"
+			},
+			"warmup": 60,
+			"craftable": true,
+			"linked": [
+				{
+					"id": "use.fatiguing"
+				}
+			]
+		},
+		{
+			"id": "use.renew.op.sea.curio.morgen.used.hint",
+			"actionId": "use",
+			"label": "«Единожды»",
+			"startdescription": "Долгий дрожащий вопль, что растворяется в воздухе",
+			"requirements": {
+				"op.sea": 1,
+				"curio.morgen": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.renew.op.sea.curio.morgen",
+			"actionId": "use",
+			"label": "Позвать Мадам Матутин",
+			"startdescription": "Длинная резкая нота, словно крик чайки, которая становится громче, как только я перестаю играть на флейте. Флейта трескается по всей длине.",
+			"description": "Это <i>«Сапфир»</i>, яхта Мадам Матутин, скользит по водам гавани, будто белый нож по зелёному стеклу.",
+			"requirements": {
+				"op.sea": 1,
+				"curio.morgen": 1,
+				"uses.remaining": 1
+			},
+			"effects": {
+				"op.morgen": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "curio.morgen",
+					"mutateAspectId": "uses.remaining",
+					"mutationLevel": -1,
+					"additive": true
+				}
+			],
+			"warmup": 60,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.cats",
+			"actionId": "use",
+			"label": "Следовать",
+			"startdescription": "Я изучу это более внимательно. [Это обновит цикл Возможности, если это вам понадобится в дальнейшем.]",
+			"description": "Сюда.",
+			"requirements": {
+				"op.cats": 1
+			},
+			"slots": [
+				{
+					"id": "light",
+					"label": "Свет",
+					"description": "«Когда свечи гаснут, все кошки серы».",
+					"required": {
+						"lantern": 1
+					},
+					"consumes": true
+				}
+			],
+			"alt": [
+				{
+					"id": "use.find.nameless"
+				}
+			],
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.horned.candia",
+			"actionId": "use",
+			"label": "Посетить Капище сов",
+			"startdescription": "У подножия горы Иды в окрестностях минойского Обиталища Дверей стоит огромный боярышник. Когда я там появлюсь, будет поздняя ночь. Цикады в этой местности стрекочут, будто тысячи пил. Но на капище всегда тихо. И мне не хочется разговаривать там громко. Всё это я помню с прошлого раза — в ночь, когда стало известно имя моего отца...",
+			"requirements": {
+				"op.horned": 1
+			},
+			"extantreqs": {
+				"domicile.candia": 1,
+				"memento.knock": -1,
+				"rarity.knock.poison": -1
+			},
+			"linked": [
+				{
+					"id": "use.renew.op.horned.candia.2"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew.op.horned.candia.2",
+			"actionId": "use",
+			"label": "Капище сов",
+			"startdescription": "Совы в боярышнике сверкают блёклыми золотыми глазами. За деревьями мерцает тусклый огонёк. Высокий человек в пиджаке из змеиной кожи зажигает сигарету. Спичечное пламя освещает худощавое, тёмное, до боли знакомое лицо. «Ну здравствуй, — говорит он. — Вот это сюрприз. Полагаю, Двугранная привела тебя сюда не просто так? Она бы не хотела новых диад Грани... Есть что показать мне?»",
+			"slots": [
+				{
+					"id": "reference",
+					"label": "Отсылка",
+					"description": "Место отсылки.",
+					"required": {
+						"pentiment": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "use.renew.op.horned.candia.pentiment"
+				}
+			],
+			"linked": [
+				{
+					"id": "use.renew.op.horned.candia.3"
+				}
+			],
+			"warmup": 30
+		},
+		{
+			"id": "use.renew.op.horned.candia.3",
+			"actionId": "use",
+			"label": "Капище сов",
+			"startdescription": "Незнакомец пожимает плечами. «Неважно. Возможно, тебе это пригодится». Он аккуратно сплёвывает в стеклянный сосуд и плотно закрывает его. «Не говори никому, что я это сделал, — говорит он заговорщицки. — Иначе у меня снова будут неприятности». Он передаёт мне склянку. «Помни, — бросает он через плечо, когда уходит. — Либо этот лев чей-то, либо ничей».",
+			"effects": {
+				"rarity.knock.poison": 1,
+				"op.horned": -1
+			},
+			"warmup": 30
+		},
+		{
+			"id": "use.renew.op.horned.candia.pentiment",
+			"actionId": "use",
+			"label": "Капище сов",
+			"requirements": {
+				"pentiment": 1
+			},
+			"startdescription": "Незнакомец кивает и тушит недокуренную сигарету о пень. Он чистит апельсин. «Со временем всё бывает слишком поздно, — он рассматривает оранжевые дольки в своей руке. — Но пока ещё это не так. Александрос думал, что это важно. Львокузнец — никогда». Он передаёт мне окурок. «Некоторые вещи лучше не говорить, — бросает он через плечо, когда уходит. — Был рад снова увидеться».",
+			"effects": {
+				"memento.knock": 1,
+				"op.horned": -1
+			},
+			"burnimage": "pentiment",
+			"warmup": 30
+		},
+		{
+			"id": "use.rkx.foe.defeated",
+			"actionId": "use",
+			"label": "Начать Новую жизнь",
+			"startdescription": "Пришло время двигаться дальше.Куда бы мне ни захотелось отправиться... теперь у меня есть свобода выбора. [Чем больше у вас Комфорта, тем выше степень победы.]",
+			"requirements": {
+				"rkx.foe.defeated": 1
+			},
+			"linked": [
+				{
+					"id": "send.victory.obscurity.c.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.b.foeslain"
+				},
+				{
+					"id": "send.victory.obscurity.a.foeslain"
+				}
+			],
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.renew",
+			"actionId": "use",
+			"label": "Запас",
+			"startdescription": "Я изучу это более внимательно. [Это обновит цикл Возможности, если это вам понадобится в дальнейшем.]",
+			"description": "Сюда.",
+			"requirements": {
+				"op": 1,
+				"asset": -1,
+				"price": -1,
+				"price.connection": -1,
+				"price.lifespan.stolen": -1
+			},
+			"aspects": {
+				"renewal.exile": 1
+			},
+			"warmup": 30,
+			"craftable": true
+		},
+		{
+			"id": "use.find.nameless",
+			"actionId": "use",
+			"label": "Следовать",
+			"startdescription": "У Бархата, что скрывает тайны, есть Безымянное Имя. В её туманах поверженный найдёт утешение. Это Имя никогда не видели, только лишь иногда — самые серые кошки. [Это поглотит и Возможность, и свет.]",
+			"description": "После заката я бреду по улицам, следуя за серой кошкой.",
+			"requirements": {
+				"lantern": 1
+			},
+			"effects": {
+				"loc.shrine.nameless": 1,
+				"op.cats": -1
+			}
+		},
+		{
+			"id": "use.fatiguing",
+			"label": ".",
+			"actionId": "use",
+			"comments": "Follow-on recipe to fatigue resources and tidy up consumables",
+			"aspects": {
+				"fatiguing": 1
+			}
+		},
+		{
+			"id": "use.connection.official",
+			"actionId": "use",
+			"label": "Возможности",
+			"startdescription": "Я могу обратиться к своим контактам для поиска возможностей. Конечно, нужно будет покрыть их расходы. [Это создаст Возможность приобрести Врачебную лицензию или Лицензию на импорт.]",
+			"description": "Это должно помочь.",
+			"requirements": {
+				"connection.official": 1,
+				"worth": 1
+			},
+			"internaldeck": {
+				"spec": [
+					"op.licence.medical",
+					"op.licence.import"
+				],
+				" draws": 1,
+				"resetonexhaustion": true
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 60,
+			"craftable": true
+		}
+	]
+}

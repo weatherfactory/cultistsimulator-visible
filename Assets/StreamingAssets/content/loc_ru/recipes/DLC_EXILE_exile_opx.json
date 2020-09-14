@@ -1,0 +1,1962 @@
+{
+	"recipes": [
+		{
+			"id": "use.sanatorium.duplicate.hint",
+			"actionId": "use",
+			"label": "Открыть ещё одну лечебницу?",
+			"startdescription": "Хватит и одной.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": 1
+			},
+			"alt": [
+				{
+					"id": "opx.sanatorium.begin",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.doctorspractice.duplicate.hint",
+			"actionId": "use",
+			"label": "Начать новую врачебную практику?",
+			"startdescription": "Хватит и одной.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.doctor": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "Основать новый Культ чудесного исцеления?",
+			"startdescription": "Хватит и одного.",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.flowermaker.duplicate.hint",
+			"actionId": "use",
+			"label": "Основать новый эзотерический культ Цветочника?",
+			"startdescription": "Хватит и одного.",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.horned.duplicate.hint",
+			"actionId": "use",
+			"label": "Основать новый эзотерический культ Рогатой Секиры?",
+			"startdescription": "Хватит и одного.",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.wolf.duplicate.hint",
+			"actionId": "use",
+			"label": "Основать новый эзотерический культ Разделённого Волка?",
+			"startdescription": "Хватит и одного.",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.cultseed.miracles.duplicate.hint",
+			"actionId": "use",
+			"label": "Продолжить новый Культ чудесного исцеления?",
+			"startdescription": "Хватит и одного.",
+			"description": "Прихожане снова собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.import.duplicate.hint",
+			"actionId": "use",
+			"label": "Начать другое предприятие по импорту?",
+			"startdescription": "Хватит и одного.",
+			"description": "Я открываю магазин.",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": "-"
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.counterfeiting.duplicate.hint",
+			"actionId": "use",
+			"label": "Начать другое предприятие по Подделке денег?",
+			"startdescription": "Хватит и одного.",
+			"description": "Прессы почти готовы.",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.smuggling.duplicate.hint",
+			"actionId": "use",
+			"label": "Начать другую операцию по Контрабанде?",
+			"startdescription": "Хватит и одной.",
+			"description": "Всё готово.",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.fights.duplicate.hint",
+			"actionId": "use",
+			"label": "Больше участвовать в Незаконных боях?",
+			"startdescription": "Я ведь серьёзно.",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.betrayal.duplicate.hint",
+			"actionId": "use",
+			"label": "Предать ещё один Мятеж?",
+			"startdescription": "Хватит и одного.",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1
+			},
+			"extantreqs": {
+				"opx.betrayal": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.duplicate.hint",
+			"actionId": "use",
+			"label": "Помочь ещё одному Мятежу?",
+			"startdescription": "Хватит и одного.",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.patronage.duplicate.hint",
+			"actionId": "use",
+			"label": "Просить у Правителя дальнейшего Покровительства?",
+			"startdescription": "Скорее, нет.",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": 1
+			},
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.sanatorium",
+			"actionId": "use",
+			"label": "Открыть Лечебницу",
+			"startdescription": "Однажды мне пришлось лечить богатых вдов. Слухи распространяются быстро. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для управления Лечебницей пригодятся карты с аспектом Сердца.]",
+			"description": "Лечебница открыта.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": 4,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.sanatorium": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.sanatorium.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.sanatorium.doctor.hint",
+			"actionId": "use",
+			"label": "Открыть другую Лечебницу или начать Врачебную практику?",
+			"startdescription": "Чтобы начать врачебную практику, мне понадобится кабинет, а для открытия лечебницы — большое и внушительное здание. Склад или какое-то непривлекательное место мне не подойдут.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 2,
+				"comfort": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"hintonly": true,
+			"craftable": false
+		},
+		{
+			"id": "use.doctorspractice",
+			"actionId": "use",
+			"label": "Начать карьеру врача",
+			"startdescription": "Моё лечение не то,чем кажется... но результат всегда превосходен. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Врачебной практики пригодятся карты с аспектом Сердца.]",
+			"description": "Вы начали карьеру врача.",
+			"requirements": {
+				"licence.medical": 1,
+				"space": 1,
+				"year.stolen": 1,
+				"comfort": 1
+			},
+			"extantreqs": {
+				"opx.doctor": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.doctorspractice.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.medical": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.miracles",
+			"actionId": "use",
+			"label": "Основать другой Культ чудесного исцеления",
+			"startdescription": "Я могу показывать пастве чудесное исцеление. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Культа пригодятся карты с аспектом Мотылька.]",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"connection.holy": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"space": 1,
+							"op.connection.holy": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.flowermaker",
+			"actionId": "use",
+			"label": "Основать эзотерический культ Цветочника",
+			"startdescription": "Явно чувствуется присутствие Цветочника. Я позволю активным прихожанам стремиться к удовольствиям. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Культа пригодятся карты с аспектом Мотылька.]",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.flowermaker": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.flowermaker": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.flowermaker": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.flowermaker.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.horned",
+			"actionId": "use",
+			"label": "Основать эзотерический культ Рогатой Секиры",
+			"startdescription": "Явно чувствуется присутствие Рогатой Секиры. Она привлечёт кого-то из моих прихожан. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Культа пригодятся карты с аспектом Мотылька.]",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.horned": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.horned": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.horned": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.horned.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.wolf",
+			"actionId": "use",
+			"label": "Основать эзотерический культ Разделённого Волка",
+			"startdescription": "Явно чувствуется присутствие Разделённого Волка. На это отзовутся самые жестокие прихожане. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Культа пригодятся карты с аспектом Мотылька.]",
+			"description": "Прихожане собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"op.wolf": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.wolf": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"op.wolf": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.wolf.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.cultseed.miracles",
+			"actionId": "use",
+			"label": "Остаться в Культе чудесного исцеления",
+			"startdescription": "Все счастливы. Нужно довести дело до конца. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Культа пригодятся карты с аспектом Мотылька.]",
+			"description": "Прихожане снова собираются.",
+			"requirements": {
+				"op.miracles.cultseed": 1,
+				"space": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.miracles": -1
+			},
+			"effects": {
+				"year.stolen": -1,
+				"progress.effectiveness": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.miracles.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.miracles.cultseed": 1,
+							"progress.effectiveness": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.import",
+			"actionId": "use",
+			"label": "Начать Сделки по импорту",
+			"startdescription": "Всё законно. Настолько, что становится не по себе. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Для Импорта пригодятся карты с аспектом Фонаря.]",
+			"description": "Я открываю магазин.",
+			"requirements": {
+				"licence.import": 1,
+				"space": 1,
+				"op.sea": 1
+			},
+			"extantreqs": {
+				"opx.import": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.import.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"licence.import": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.counterfeiting",
+			"actionId": "use",
+			"label": "Начать предприятие по Подделке денег",
+			"startdescription": "Пока у меня есть связи и ресурсы, я могу... делать деньги. [Вполне безопасный способ получать наличные. Для Подделки денег пригодятся карты с аспектом Кузницы.]",
+			"description": "Прессы почти готовы.",
+			"requirements": {
+				"connection.underworld": 1,
+				"forge": 6,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.counterfeiting": -1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.counterfeiting.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 4,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1,
+							"forge": 6
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.smuggling",
+			"actionId": "use",
+			"label": "Начать операцию по Контрабанде",
+			"startdescription": "Всё где-то кому-то может пригодиться. [Вполне безопасный способ конвертировать украденную жизнь в наличные. Контрабанда обычно совершается с Неуловимостью, но и приносит немало. Для Контрабанды пригодятся карты с аспектом Мотылька.]",
+			"description": "Всё готово.",
+			"requirements": {
+				"connection.underworld": 1,
+				"op.sea": 1,
+				"space": 1
+			},
+			"extantreqs": {
+				"opx.smuggling": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.smuggling.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"space": 1,
+							"op.sea": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.fights",
+			"actionId": "use",
+			"label": "Участвовать в Незаконных боях",
+			"startdescription": "Отвратительно. Но пока мне доступны годы, я не буду получать непоправимый урон. [Любые проваленные испытания приносят Ранение, которое невозможно исцелить до окончания Операции. Для участия в Незаконных боях пригодятся карты с аспектом Грани.]",
+			"requirements": {
+				"connection.underworld": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.fights": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.fights.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.underworld": 1,
+							"space": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.underworld.hint",
+			"actionId": "use",
+			"label": "Воспользоваться Связью с Преступным миром?",
+			"requirements": {
+				"connection.underworld": 1
+			},
+			"startdescription": "[Добавьте карту Кузни 6 уровня и карту Пространства, чтобы начать Подделку денег; Возможность: морской порт и Пространство — для Контрабанды; Украденный год — для Незаконных боёв.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.radicals.hint",
+			"actionId": "use",
+			"label": "Воспользоваться Связью с Радикалами?",
+			"requirements": {
+				"connection.radicals": 1
+			},
+			"startdescription": "[Используйте Кузню, чтобы помочь Мятежу, или Зиму, чтобы предать его. Доступно только в городах, где есть Волнения.]",
+			"craftable": false,
+			"hintonly": true
+		},
+		{
+			"id": "use.uprising.wolf",
+			"actionId": "use",
+			"label": "Посеять хаос для Разделённого Волка",
+			"startdescription": "Волков бояться — в лес не ходить. Что ж, почему бы и нет. Разве я перед кем-то в долгу? [Это принесёт страдания и разрушения. Будет возможность получить выгоду, а считальцам будет сложнее отследить вас.]",
+			"requirements": {
+				"connection.radicals": 1,
+				"op.wolf": 1,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1,
+							"op.wolf.husk.active": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.betrayal",
+			"actionId": "use",
+			"label": "Предать Мятеж",
+			"startdescription": "Это век революций, и он едва начался. [Будет возможность получить выгоду, и вы заслужите благосклонность местных властей. Для Полковника важно сохранять статус-кво.]",
+			"requirements": {
+				"connection.radicals": 1,
+				"winter": 2,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.betrayal": -1,
+				"opx.uprising": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.betrayal.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.uprising",
+			"actionId": "use",
+			"label": "Помочь Мятежу",
+			"startdescription": "Да, спокойно не будет, но в итоге мир может даже стать лучше. [Будет возможность получить выгоду, а считальцам будет сложнее отследить вас. Львокузнец любит мятежников.]",
+			"comments": "Assumes Radicals add Forge 6",
+			"requirements": {
+				"connection.radicals": 1,
+				"forge": 8,
+				"domicile": 1,
+				"temptation.defiance": 1,
+				"troubled": 1,
+				"turmoil": -1
+			},
+			"extantreqs": {
+				"opx.uprising": -1,
+				"opx.betrayal": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.uprising.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 5,
+						"filter": {
+							"space": 1,
+							"op.connection.radicals": 1,
+							"domicile": 1,
+							"temptation.defiance": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "use.patronage",
+			"actionId": "use",
+			"label": "Принять покровительство",
+			"startdescription": "Правитель желает только одно: больше жизни, и никто, кроме меня, не платит лучше. Но нельзя допустить, чтобы покровитель узнал о моих методах, иначе он начнёт догадываться. [Вполне безопасный способ конвертировать украденную жизнь в наличные.]",
+			"requirements": {
+				"connection.ruler": 1,
+				"year.stolen": 1
+			},
+			"extantreqs": {
+				"opx.patronage": -1
+			},
+			"effects": {
+				"year.stolen": -1
+			},
+			"aspects": {
+				"fatiguing": 1
+			},
+			"warmup": 5,
+			"alt": [
+				{
+					"id": "opx.patronage.setup",
+					"additional": true,
+					"expulsion": {
+						"limit": 3,
+						"filter": {
+							"op.connection.ruler": 1
+						}
+					}
+				}
+			],
+			"craftable": true
+		},
+		{
+			"id": "opx.sanatorium.setup",
+			"actionId": "opx.sanatorium",
+			"label": "Лечебница",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.sanatorium1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.sanatorium.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.setup",
+			"actionId": "opx.doctorspractice",
+			"label": "Врачебная практика",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.doctor1.heart.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.doctorspractice.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.setup",
+			"actionId": "opx.miracles",
+			"label": "Культ чудесного исцеления",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.miracles1.moth.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.miracles.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.setup",
+			"actionId": "opx.flowermaker",
+			"label": "Культ Цветочника",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.flowermaker1.grail.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.flowermaker.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.setup",
+			"actionId": "opx.horned",
+			"label": "Культ Рогатой Секиры",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.horned1.knock.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.horned.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.setup",
+			"actionId": "opx.wolf",
+			"label": "Культ Разделённого Волка",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.wolf1.edge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.wolf.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.import.setup",
+			"actionId": "opx.import",
+			"label": "Сделки по импорту",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.import1.lantern.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.import.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.setup",
+			"actionId": "opx.counterfeiting",
+			"label": "Подделка денег",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.counterfeiting1.forge.winter": 1
+			},
+			"linked": [
+				{
+					"id": "opx.counterfeiting.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.setup",
+			"actionId": "opx.smuggling",
+			"label": "Контрабанда",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.smuggling1.moth.knock": 1
+			},
+			"linked": [
+				{
+					"id": "opx.smuggling.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.setup",
+			"actionId": "opx.fights",
+			"label": "Бои",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.fights1.edge.grail": 1
+			},
+			"linked": [
+				{
+					"id": "opx.fights.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Мятеж",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.uprising1.edge.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.uprising.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.setup",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Предательство",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.betrayal1.winter.heart": 1
+			},
+			"linked": [
+				{
+					"id": "opx.betrayal.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.setup",
+			"actionId": "opx.patronage",
+			"label": "Покровительство",
+			"startdescription": "Подготовка к работе...",
+			"effects": {
+				"ee.patronage1.heart.lantern": 1
+			},
+			"linked": [
+				{
+					"id": "opx.patronage.begin"
+				}
+			]
+		},
+		{
+			"id": "opx.sanatorium.begin",
+			"actionId": "opx.sanatorium",
+			"label": "Лечебница",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.doctorspractice.begin",
+			"actionId": "opx.doctorspractice",
+			"label": "Врачебная практика",
+			"startdescription": "Рабочее время. [Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.miracles.begin",
+			"actionId": "opx.miracles",
+			"label": "Культ чудесного исцеления",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.flowermaker.begin",
+			"actionId": "opx.flowermaker",
+			"label": "Культ Цветочника",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.horned.begin",
+			"actionId": "opx.horned",
+			"label": "Культ Рогатой Секиры",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.wolf.begin",
+			"actionId": "opx.wolf",
+			"label": "Культ Разделённого Волка",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.import.begin",
+			"actionId": "opx.import",
+			"label": "Сделки по импорту",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.counterfeiting.begin",
+			"actionId": "opx.counterfeiting",
+			"label": "Подделка денег",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.smuggling.begin",
+			"actionId": "opx.smuggling",
+			"label": "Контрабанда",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.fights.begin",
+			"actionId": "opx.fights",
+			"label": "Бои",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.uprising.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Мятеж",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.betrayal.begin",
+			"actionId": "opx.uprising.betrayal",
+			"label": "Предательство",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.patronage.begin",
+			"actionId": "opx.patronage",
+			"label": "Покровительство",
+			"startdescription": "[Во время проведения Операции будут возникать Испытания. Если вы сможете добавить карты, соответствующие их Аспекту, Операция будет более скрытной или эффективной. Карты остаются на столе, пока Операция не завершена.]",
+			"warmup": 10,
+			"slots": [
+				{
+					"id": "preparations",
+					"label": "Подготовка",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge",
+			"actionId": "opx.",
+			"label": "Испытание",
+			"startdescription": "@#ee.doctor1.heart.grail|Врачебная практика: излечивать больных или делать уколы молодости старым?\n#ee.doctor2.heart.knock|Врачебная практика: без лишнего шума излечивать больных или сосредоточить на чудесном исцелении раненых?\n#ee.doctor3.heart.forge|Врачебная практика: без лишнего шума излечивать больных или играть на публику?\n#ee.sanatorium1.heart.grail|Лечебница: излечивать больных или делать уколы молодости старым?\n#ee.sanatorium2.heart.knock|Лечебница: без лишнего шума излечивать больных или сосредоточить на чудесном исцелении раненых?\n#ee.sanatorium3.heart.forge|Лечебница: без лишнего шума излечивать больных или играть на публику?\n#ee.miracles1.moth.grail|Культ чудесного исцеления: проповеди или наслаждение?\n#ee.miracles2.moth.lantern|Культ чудесного исцеления: говорить осторожно и многозначно или открыть секреты?\n#ee.miracles3.moth.winter|Культ чудесного исцеления: утешительная ложь или мрачное откровение?\n#ee.flowermaker1.grail.lantern|Культ Цветочника: частные церемонии наслаждения или публичное откровение?\n#ee.flowermaker2.grail.knock|Культ Цветочника: плотнее закрыть бархатные шторы или распахнуть ворота сенсации?\n#ee.flowermaker3.grail.winter|Культ Цветочника: соблазн или благоговение?\n#ee.horned1.knock.winter|Культ Рогатой Секиры: призвать любого, кто бы ни пришёл, или подавлять всё, что не приходит?\n#ee.horned2.knock.forge|Культ Рогатой Секиры: просить помощи у любого, кто бы ни пришёл, или эксплуатировать паству?\n#ee.horned3.knock.lantern|Культ Рогатой Секиры: дверь или фонарь?\n#ee.wolf1.edge.winter|Культ Разделённого Волка: агония или лёд?\n#ee.wolf2.edge.lantern|Культ Разделённого Волка: агония или слепота?\n#ee.wolf3.grail.winter|Культ Разделённого Волка: лёд или кровь?\n#ee.import1.lantern.heart|Сделки по импорту: искать новые возможности или продолжить размеренную работу?\n#ee.import2.lantern.forge|Сделки по импорту: искать новые возможности или совершенствоваться?\n#ee.import3.lantern.winter|Сделки по импорту: искать новые возможности или начать подготовку ?\n#ee.counterfeiting1.forge.winter|Подделка денег: увеличить производство или проявить осторожность?\n#ee.counterfeiting2.forge.moth|Подделка денег: увеличить производство или сосредоточиться на обмане?\n#ee.counterfeiting3.forge.grail|Подделка денег: увеличить производство или откупиться от проблем?\n#ee.smuggling1.moth.knock|Контрабанда: больше маскировки или больше поставок?\n#ee.smuggling2.moth.heart|Контрабанда: больше маскировки или больше осторожности?\n#ee.smuggling3.moth.winter|Контрабанда: скрытно или тихо?\n#ee.fights1.edge.grail|Незаконные бои: бесстрашие или взятка?\n#ee.fights2.edge.moth|Незаконные бои: жёстко или быстро?\n#ee.fights3.edge.forge|Незаконные бои: врукопашную или с оружием?\n#ee.uprising1.edge.heart|Мятеж: слова или пушки?\n#ee.uprising2.edge.heart|Мятеж: слова или пушки?\n#ee.uprising3.edge.heart|Мятеж: слова или пушки?\n#ee.betrayal1.winter.heart|Предательство мятежа: убеждение или убийство?\n#ee.betrayal2.winter.heart|Предательство мятежа: убеждение или убийство?\n#ee.betrayal3.winter.heart|Предательство мятежа: убеждение или убийство?\n#ee.patronage1.heart.lantern|Покровительство: сдержанное или показное?\n#ee.patronage2.heart.lantern|Покровительство: сдержанное или показное?\n#ee.patronage3.heart.lantern|Покровительство: сдержанное или показное?\n#|Испытание ждёт впереди.@\n\n[Совместите Испытание с Гранью, Наковальней, Стуком или Фонарём, чтобы усилить Эффективность. Или же совместите его с Сердцем, Граалем, Мотыльком или Зимой, чтобы усилить Неуловимость.]",
+			"warmup": 60,
+			"requirements": {
+				"complication": 1
+			},
+			"slots": [
+				{
+					"id": "response",
+					"label": "Ответ",
+					"required": {
+						"edge": 1,
+						"forge": 1,
+						"grail": 1,
+						"heart": 1,
+						"knock": 1,
+						"lantern": 1,
+						"moth": 1,
+						"secrethistories": 1,
+						"winter": 1
+					}
+				}
+			],
+			"alt": [
+				{
+					"id": "opx.tryresolve.edge"
+				},
+				{
+					"id": "opx.tryresolve.forge"
+				},
+				{
+					"id": "opx.tryresolve.lantern"
+				},
+				{
+					"id": "opx.tryresolve.knock"
+				},
+				{
+					"id": "opx.tryresolve.grail"
+				},
+				{
+					"id": "opx.tryresolve.heart"
+				},
+				{
+					"id": "opx.tryresolve.moth"
+				},
+				{
+					"id": "opx.tryresolve.secrethistories"
+				},
+				{
+					"id": "opx.tryresolve.winter"
+				}
+			],
+			"linked": [
+				{
+					"id": "opx.challenge.failed"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.edge",
+			"actionId": "opx.",
+			"label": "Яркая Грань",
+			"startdescription": "Меня ждёт испытание с Гранью. Это повысит Эффективность.",
+			"requirements": {
+				"minedge": 1,
+				"edge": "minedge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.forge",
+			"actionId": "opx.",
+			"label": "Молот и наковальня",
+			"startdescription": "Меня ждёт испытание с Кузней. Это повысит Эффективность.",
+			"requirements": {
+				"minforge": 1,
+				"forge": "minforge"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.grail",
+			"actionId": "opx.",
+			"label": "Восторг и его порождения",
+			"startdescription": "Меня ждёт испытание с Граалем. Это повысит Неуловимость.",
+			"requirements": {
+				"mingrail": 1,
+				"grail": "mingrail"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.heart",
+			"actionId": "opx.",
+			"label": "Несмолкающий бой барабанный",
+			"startdescription": "Меня ждёт испытание с Сердцем. Это повысит Неуловимость.",
+			"requirements": {
+				"minheart": 1,
+				"heart": "minheart"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.knock",
+			"actionId": "opx.",
+			"label": "Все раны — это двери",
+			"startdescription": "Меня ждёт испытание со Стуком. Это повысит Эффективность.",
+			"requirements": {
+				"minknock": 1,
+				"knock": "minknock"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.lantern",
+			"actionId": "opx.",
+			"label": "Озарение",
+			"startdescription": "Меня ждёт испытание с Фонарём. Это повысит Эффективность.",
+			"requirements": {
+				"minlantern": 1,
+				"lantern": "minlantern"
+			},
+			"effects": {
+				"progress.effectiveness": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.moth",
+			"actionId": "opx.",
+			"label": "Дым и зеркала",
+			"startdescription": "Меня ждёт испытание с Мотыльком. Это повысит Неуловимость.",
+			"requirements": {
+				"minmoth": 1,
+				"moth": "minmoth"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.secrethistories",
+			"actionId": "opx.",
+			"label": "Не одна история",
+			"startdescription": "Меня ждёт испытание со Скрытыми историями. Это повысит Неуловимость.",
+			"requirements": {
+				"minsecrethistories": 1,
+				"secrethistories": "minsecrethistories"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.tryresolve.winter",
+			"actionId": "opx.",
+			"label": "И сгущается ночь",
+			"startdescription": "Меня ждёт испытание с Зимой. Это повысит Неуловимость.",
+			"requirements": {
+				"minwinter": 1,
+				"winter": "minwinter"
+			},
+			"effects": {
+				"progress.subtlety": 1
+			},
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.challenge.failed",
+			"actionId": "opx.",
+			"label": "Испытание не пройдено!",
+			"startdescription": "Всё могло пойти гораздо лучше.",
+			"aspects": {
+				"failure": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.next"
+				}
+			]
+		},
+		{
+			"id": "opx.next",
+			"actionId": "opx.",
+			"label": "Операция продолжается",
+			"startdescription": "@#opx.doctor|Во время моей Врачебной практики пациенты приходят и уходят.<br><br><i>«Следующий».</i>\n\n#opx.sanatorium|В моей Лечебнице пациенты всё время приходят и уходят.<br><br><i>«Доктор осмотрит вас в палате».</i>\n\n#opx.miracles|Больше адептов для моего Культа чудесного исцеления.<br><br><i>«Возрадуйтесь!»</i>\n\n#opx.flowermaker|Больше ритуалов в моём эзотерическом культе Цветочника.<br><br><i>«Любовь — это закон, но есть и нечто большее».</i>\n\n#opx.horned|Больше ритуалов в моём эзотерическом культе Рогатой Секиры.<br><br><i>«Мы разделим то, что не должно было соединиться».</i>\n\n#opx.wolf|Больше ритуалов в моём эзотерическом культе Разделённого Волка.<br><br><i>«Агония — это ворота мести».</i>\n\n#opx.counterfeiting|Моё предприятие по Подделке денег всё ещё работает.<br><br><i>«Не останавливайся».</i>\n\n#opx.smuggling|Моё предприятие по Контрабанде всё ещё работает.<br><br><i>«Выключить свет!»</i>\n\n#opx.import|Моё предприятие по Импорту всё ещё работает.<br><br><i>«Подпишите здесь».</i>\n\n#opx.fights|Больше незаконных боёв. Всё готово.<br><br><i>«Кто СЛЕДУЮЩИЙ?»</i>\n\n#opx.uprising|Мой мятеж приближается к кульминации.<br><br><i>«Уже скоро».</i>\n\n#opx.betrayal|Я продолжаю предавать местных радикалов...<br><br><i>«Мне нельзя доверять».</i>\n\n\n#opx.patronage|Я пользуюсь всему преимуществами Покровительства.<br><br><i>«Да, меня ждут».</i>\n\n\n@",
+			"aspects": {
+				"next": 1
+			},
+			"warmup": 5,
+			"linked": [
+				{
+					"id": "opx.challenge"
+				},
+				{
+					"id": "opx.end"
+				}
+			]
+		},
+		{
+			"id": "opx.end",
+			"actionId": "opx.",
+			"label": "Операция завершена",
+			"startdescription": "@#opx.doctor|«Ты выглядишь гораздо лучше. Это не может не радовать».\n#opx.sanatorium|«Увидимся в следующем году».\n#opx.miracles|«А сейчас мне пора».\n#opx.flowermaker|«Не забывай меня».\n#opx.horned|«Конец, начало».\n#opx.wolf|«Время пришло».\n#opx.counterfeiting|«Заканчиваем».\n#opx.smuggling|«Завершаем».\n#opx.import|«Мне нужны отчёты».\n#opx.fights|«...уф».\n#opx.uprising|«Мы все так старались приблизить этот день!»\n#opx.betrayal|«Ты найдёшь их по этому адресу...»\n#opx.patronage|«Мне нужно уладить кое-какое дело».@",
+			"warmup": 5,
+			"burnimage": "operation.complete",
+			"aspects": {
+				"fatiguing": 1
+			},
+			"effects": {
+				"cash": "opx.basepayout"
+			},
+			"linked": [
+				{
+					"id": "opx.end.subtlety3"
+				},
+				{
+					"id": "opx.end.subtlety2"
+				},
+				{
+					"id": "opx.end.subtlety1"
+				},
+				{
+					"id": "opx.end.subtlety0"
+				},
+				{
+					"id": "opx.end.effectiveness"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety3",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Операция завершена: Незримое искусство?",
+			"startdescription": "Мои труды — это круги на воде. [Вы получаете три Неуловимости. Вы не только не оставили Следов, но и получили Забвение.]",
+			"requirements": {
+				"progress.subtlety": 3
+			},
+			"effects": {
+				"progress.subtlety": -3,
+				"obscurity": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety2",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Операция завершена: лёгкое касание",
+			"startdescription": "Я действую осторожно. [Вы получаете две карты Неуловимости. Есть небольшой риск оставить След.]",
+			"requirements": {
+				"progress.subtlety": 2
+			},
+			"aspects": {
+				"minortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety1",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Операция завершена: для глаз смотрящего",
+			"startdescription": "Нужно действовать более скрытно. [Вы получаете одну карты Неуловимости. Есть значительный риск оставить След.]",
+			"requirements": {
+				"progress.subtlety": 1
+			},
+			"aspects": {
+				"tracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.subtlety0",
+			"actionId": "opx.",
+			"warmup": 5,
+			"label": "Операция завершена: незавершённые дела",
+			"startdescription": "У меня не было намерений действовать скрытно. [Вы получаете одну карты Неуловимости. Есть серьёзный риск оставить След.]",
+			"aspects": {
+				"majortracerisk": 1
+			},
+			"effects": {
+				"progress.subtlety": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.effectiveness",
+			"actionId": "opx.",
+			"label": "Операция завершена: получение дохода",
+			"startdescription": "У меня отличная цена на годы.",
+			"aspects": {
+				"success": 1
+			},
+			"warmup": 5,
+			"requirements": {
+				"progress.effectiveness": 1
+			},
+			"effects": {
+				"cash": "progress.effectiveness",
+				"progress.effectiveness": -3
+			},
+			"linked": [
+				{
+					"id": "opx.end.effectiveness"
+				},
+				{
+					"id": "opx.end.special.router"
+				}
+			]
+		},
+		{
+			"id": "opx.end.special.router",
+			"actionId": "opx.",
+			"label": "[Особый исход]",
+			"linked": [
+				{
+					"id": "opx.end.uprising"
+				},
+				{
+					"id": "opx.end.betrayal"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising",
+			"actionId": "opx.",
+			"label": "Мятеж!",
+			"startdescription": "Мы всё распланировали, и сегодня всё сгинет в огне.",
+			"description": "Это победа народа, как и всегда.",
+			"aspects": {
+				"uprising": 1
+			},
+			"purge": {
+				"trace": 100,
+				"op": 100,
+				"connection.ruler": 100,
+				"connection.official": 100
+			},
+			"warmup": 30,
+			"requirements": {
+				"opx.uprising.complete": 1
+			},
+			"effects": {
+				"trail.false.exile": 1
+			},
+			"linked": [
+				{
+					"id": "opx.end.uprising.wolf"
+				},
+				{
+					"id": "opx.end.uprising.colonel"
+				},
+				{
+					"id": "opx.end.uprising.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal",
+			"actionId": "opx.",
+			"label": "Мятеж предан!",
+			"startdescription": "Мы всё распланировали, но сегодня всё закончится не так, как ожидалось.",
+			"description": "Порядок восстановлен, и власти будут благодарны.",
+			"requirements": {
+				"opx.betrayal.complete": 1
+			},
+			"effects": {
+				"connection.ruler": 1,
+				"op.connection.radicals": -1
+			},
+			"purge": {
+				"connection.radicals": 100
+			},
+			"warmup": 30,
+			"linked": [
+				{
+					"id": "opx.end.betrayal.colonel"
+				},
+				{
+					"id": "opx.end.betrayal.lionsmith"
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.wolf",
+			"actionId": "opx.",
+			"label": "Пир в огне",
+			"startdescription": "«Когда мы не знаем, кому служим, — сказал однажды Джулиан Косли, — мы служим Разделённому Волку». Но у меня ну было сомнений на этот счёт. [Непокорность повышается. Это можно делать бесконечное число раз.]",
+			"requirements": {
+				"op.wolf.husk.active": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 2,
+					"additive": true
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.colonel",
+			"actionId": "opx.",
+			"label": "Досада Полковника",
+			"startdescription": "Полковнику не нравятся революции. Я упаду в его глазах. [Непокорность снижается.]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.uprising.lionsmith",
+			"actionId": "opx.",
+			"label": "Восхищение Львокузнеца",
+			"startdescription": "Львокузнец приходит в восторг от революций. Я могу получить его благосклонность. [Непокорность повышается.]",
+			"requirements": {
+				"defiance.uprising": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.uprising",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.colonel",
+			"actionId": "opx.",
+			"label": "Удовлетворение Полковника",
+			"startdescription": "Полковник рад, что статус-кво сохранён. Я вырасту в его глазах. [Непокорность повышается.]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.colonel": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": 1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		},
+		{
+			"id": "opx.end.betrayal.lionsmith",
+			"actionId": "opx.",
+			"label": "Ярость Львокузнеца",
+			"startdescription": "Сила Львокузнеца возрастает во время революций. Я могу потерять его благосклонность. [Непокорность снижается.]",
+			"requirements": {
+				"defiance.betrayal": -1,
+				"defiance.consecration.lionsmith": 1
+			},
+			"mutations": [
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiancemarks",
+					"mutationLevel": -1,
+					"additive": true
+				},
+				{
+					"filterOnAspectId": "temptation.defiance",
+					"mutateAspectId": "defiance.betrayal",
+					"mutationLevel": 1,
+					"additive": false
+				}
+			]
+		}
+	]
+}

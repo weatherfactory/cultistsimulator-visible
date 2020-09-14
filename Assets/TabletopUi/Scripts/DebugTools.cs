@@ -400,7 +400,7 @@ public class DebugTools : MonoBehaviour
            var compendiumLoader = new CompendiumLoader();
 
            var startImport = DateTime.Now;
-           var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().CultureId);
+           var log=compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
         foreach(var m in log.GetMessages())
             Log(m.Description,m.MessageLevel);
 

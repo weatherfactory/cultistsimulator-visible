@@ -251,7 +251,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             
             var compendiumLoader = new CompendiumLoader();
             var existingCompendium = Registry.Get<ICompendium>();
-            compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().CultureId);
+            compendiumLoader.PopulateCompendium(existingCompendium, Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
             var modToAlter= _cataloguedMods[modId];
 
        

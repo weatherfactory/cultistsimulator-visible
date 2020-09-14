@@ -49,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         protected void SetResolution(Resolution resolution)
         {
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+               Screen.SetResolution(resolution.width,resolution.height, true);
         }
 
         public List<Resolution> GetAvailableResolutions()
@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Services
         /// <returns></returns>
         public int GetScreenHeight()
         {
-            return Screen.height;
+            return Screen.currentResolution.height;
         }
         /// <summary>
         /// we use Screen.width rather than CurrentResolution.width because Screen.height respects the resolution set in the Editor
@@ -71,7 +71,7 @@ namespace Assets.TabletopUi.Scripts.Services
         /// <returns></returns>
         public int GetScreenWidth()
         {
-            return Screen.width;
+            return Screen.currentResolution.width;
         }
 
 

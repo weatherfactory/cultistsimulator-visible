@@ -100,8 +100,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void SetNewCulture(Culture culture)
         {
-            Registry.Get<Config>().CultureId = culture.Id;
-            PlayerPrefs.SetString(NoonConstants.CULTURE_SETTING_KEY, value: culture.Id);
+            Registry.Get<Config>().SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
 
             CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
         }

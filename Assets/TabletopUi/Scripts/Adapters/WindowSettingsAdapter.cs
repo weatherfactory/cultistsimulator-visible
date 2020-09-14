@@ -35,7 +35,6 @@ namespace Assets.TabletopUi.Scripts.Services
         protected void SetWindowed(bool windowed)
         {
             if (windowed)
-
                 Screen.SetResolution(Screen.width, Screen.height, false);
             else
                 Screen.SetResolution(Screen.width, Screen.height, true);

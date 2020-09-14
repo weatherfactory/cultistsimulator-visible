@@ -27,7 +27,7 @@ namespace Assets.Editor
             new Registry().Register(new ModManager());
 
             var contentImporter = new CompendiumLoader();
-            var messages = contentImporter.PopulateCompendium(new Compendium(), Registry.Get<Config>().CultureId);
+            var messages = contentImporter.PopulateCompendium(new Compendium(), Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
             foreach (var p in messages.GetMessages().Where(m=>m.MessageLevel>0))
                 NoonUtility.Log(p.Description, messageLevel: p.MessageLevel);

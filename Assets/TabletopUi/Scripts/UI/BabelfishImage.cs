@@ -29,7 +29,7 @@ public class BabelfishImage : MonoBehaviour
     {
 		image = gameObject.GetComponent<Image>() as Image;
 
-        string currentCultureId = Registry.Get<Config>().CultureId;
+        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
 
         var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 

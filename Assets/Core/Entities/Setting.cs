@@ -89,7 +89,7 @@ namespace Assets.Core.Entities
             else
             {
                 var potentialValue= Registry.Get<Config>().GetPersistedSettingValueAsString(Id);
-                if (potentialValue == String.Empty)
+                if (string.IsNullOrEmpty(potentialValue))
                     CurrentValue = DefaultValue;
                 else
                     CurrentValue = potentialValue;

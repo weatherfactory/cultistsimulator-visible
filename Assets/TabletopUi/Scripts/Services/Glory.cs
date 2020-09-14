@@ -66,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
             //load config: this gives us a lot of info that we'll need early
-            registryAccess.Register(new Config(NoonConstants.DEFAULT_CULTURE_ID));            
+            registryAccess.Register(new Config());            
             
             //load concursum: central nexus for event responses
             registryAccess.Register(concursum);
@@ -93,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             //load Compendium content. We can't do anything with content files until this is in.
             registryAccess.Register<ICompendium>(new Compendium());
-            ReloadCompendium(Registry.Get<Config>().CultureId);
+            LoadCompendium(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
 
             //setting defaults are set as the compendium is loaded, but they may also need to be
@@ -132,7 +132,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void ReloadCompendium(string cultureId)
+        public void LoadCompendium(string cultureId)
         {
             var compendiumLoader = new CompendiumLoader();
             var log = compendiumLoader.PopulateCompendium(Registry.Get<ICompendium>(),cultureId);
@@ -142,7 +142,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         private void OnCultureChanged(CultureChangedArgs args)
         {
-            ReloadCompendium(args.NewCulture.Id);
+            LoadCompendium(args.NewCulture.Id);
         }
     }
 }
