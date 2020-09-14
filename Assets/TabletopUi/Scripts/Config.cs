@@ -47,17 +47,6 @@ public class Config
         return value;
     }
 
-    public string SetConfigValue(string key,string value)
-    {
-        if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
-            value = "0";
-
-        _configValues[key] = value;
-
-        return value;
-    }
-
-
     private string GetConfigFileLocation()
     {
         return Application.persistentDataPath + "/config.ini";
@@ -95,7 +84,7 @@ public class Config
         else
         {
             SetConfigValue("skiplogo", "0");
-            WriteIniFile();
+            PersistConfigValuesToIniFile();
         }
 
     }
@@ -156,39 +145,52 @@ public class Config
 
     }
 
-    private void WriteIniFile()
+    private void PersistConfigValuesToIniFile()
     {
         var output = _configValues.Select(kvp => kvp.Key + "=" + kvp.Value);
         File.WriteAllLines(GetConfigFileLocation(),output);
     }
 
+
+    private void SetSanitisedConfigValue(string key, string value)
+    {
+        if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
+            value = "0";
+
+        _configValues[key] = value;
+    }
+
+    public void SetConfigValue(string key, string value)
+    {
+        SetSanitisedConfigValue(key, value);
+        PersistConfigValuesToIniFile();
+
+    }
+
+
     public void PersistSettingValue(ChangeSettingArgs args)
     {
-        SetConfigValue(args.Key, args.Value.ToString());
-        WriteIniFile();
+        SetSanitisedConfigValue(args.Key, args.Value.ToString());
+        PersistConfigValuesToIniFile();
 
     }
 
-    protected object GetPersistedSettingValue(string forId)
-    {
-        return GetConfigValue(forId);
-    }
 
-    public float? GetPersistedSettingValueAsFloat (string forId)
+    public float? GetConfigValueAsFloat (string forId)
     {
     if(Single.TryParse(GetConfigValue(forId), out Single singleValue))
         return singleValue;
     return null;
     }
 
-    public int? GetPersistedSettingValueAsInt(string forId)
+    public int? GetConfigValueAsInt(string forId)
     {
         if (Int32.TryParse(GetConfigValue(forId), out int intValue))
             return intValue;
         return null;
     }
 
-    public string GetPersistedSettingValueAsString(string forId)
+    public string GetConfigValueAsString(string forId)
     {
         return GetConfigValue(forId);
     }

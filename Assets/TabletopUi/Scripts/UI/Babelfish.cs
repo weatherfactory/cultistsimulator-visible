@@ -141,7 +141,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         {
             //highContrastBold = true;	// Force all text to go bold
 
-            var highContrastEnabled = Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.HIGHCONTRAST);
+            var highContrastEnabled = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.HIGHCONTRAST);
 
             if (highContrastEnabled!=null && highContrastEnabled>0)
             {

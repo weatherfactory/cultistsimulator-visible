@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
 
             if (DataType == nameof(Single))
             {
-                var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsFloat(Id);
+                var potentialValue = Registry.Get<Config>().GetConfigValueAsFloat(Id);
                 if (potentialValue == null)
                     CurrentValue = DefaultValue;
                 else
@@ -80,7 +80,7 @@ namespace Assets.Core.Entities
             }
             else if (DataType == nameof(Int32))
             {
-                var potentialValue = Registry.Get<Config>().GetPersistedSettingValueAsInt(Id);
+                var potentialValue = Registry.Get<Config>().GetConfigValueAsInt(Id);
                 if (potentialValue == null)
                     CurrentValue = DefaultValue;
                 else
@@ -88,7 +88,7 @@ namespace Assets.Core.Entities
             }
             else
             {
-                var potentialValue= Registry.Get<Config>().GetPersistedSettingValueAsString(Id);
+                var potentialValue= Registry.Get<Config>().GetConfigValueAsString(Id);
                 if (string.IsNullOrEmpty(potentialValue))
                     CurrentValue = DefaultValue;
                 else

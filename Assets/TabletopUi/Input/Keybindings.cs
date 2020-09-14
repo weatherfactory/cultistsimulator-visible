@@ -110,7 +110,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""name"": ""mousezoom"",
                     ""type"": ""PassThrough"",
                     ""id"": ""ec443985-762c-4b71-b39f-ff0cdd06ac93"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": ""Invert,Clamp(min=-5,max=5)"",
                     ""interactions"": """"
                 }

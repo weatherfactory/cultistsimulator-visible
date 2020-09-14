@@ -779,7 +779,7 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
                 return false; // don't pull animated cards
 
 
-             var allowExploits = Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.BIRDWORMSLIDER);
+             var allowExploits = Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
                 if (allowExploits!=null || allowExploits > 0)
                 {
                     Debug.Log("exploits on");
@@ -871,7 +871,7 @@ public ElementStacksManager GetTabletopStacksManager()
         public void SetHighlightedElement(string elementId, int quantity = 1)
         {
             var enableAccessibleCards =
-                Registry.Get<Config>().GetPersistedSettingValueAsInt(NoonConstants.ACCESSIBLECARDS);
+                Registry.Get<Config>().GetConfigValueAsInt(NoonConstants.ACCESSIBLECARDS);
 
             if (enableAccessibleCards==null || enableAccessibleCards==0)
 		        return;
