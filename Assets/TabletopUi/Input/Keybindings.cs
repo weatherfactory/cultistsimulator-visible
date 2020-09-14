@@ -111,7 +111,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""99cab8cd-a576-4545-a7fe-f4d14cb4debc"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""Clamp(min=-5,max=5)"",
+                    ""processors"": ""Clamp(min=1,max=1)"",
                     ""interactions"": """"
                 },
                 {
@@ -119,7 +119,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""9ee541db-f6ad-4eab-9cc7-f09988d2dffa"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""Clamp(min=-5,max=5)"",
+                    ""processors"": ""Clamp(min=-1,max=-1)"",
                     ""interactions"": """"
                 },
                 {
@@ -273,7 +273,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""79396b12-9e0f-48fc-9b02-7414395b1c18"",
                     ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""kbpedestalup"",
@@ -284,7 +284,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""b3def0e3-dba7-4582-a1e9-18ee7449b6a7"",
                     ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""kbpedestaldown"",
@@ -306,7 +306,7 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""c4a03336-1e26-43ba-aabe-0707a028ec17"",
                     ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""kbtruckright"",

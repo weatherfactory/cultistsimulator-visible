@@ -82,6 +82,21 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
         currentPedestalInput = args.CurrentPedestalInput;
     }
 
+    Vector2 GetMousePosFromKeys()
+    {
+        if (UIController.IsInInputField())
+            return Vector2.zero;
+
+        float y;
+        float x;
+
+        y = Input.GetAxis("Vertical");
+
+
+        x = Input.GetAxis("Horizontal");
+
+        return new Vector2(x, y);
+    }
 
 	void Update()
 	{
@@ -94,7 +109,9 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
         // We're pressing a hotkey? Then move!
         if (currentTruckInput < 0 || currentTruckInput > 0 || currentPedestalInput<0 || currentPedestalInput>0)
 		{
-            mousePos = new Vector2(currentTruckInput,currentPedestalInput);
+			Debug.Log($"Truck: {currentTruckInput} Pedestal: {currentPedestalInput} ");
+
+            mousePos = new Vector2(currentTruckInput*15,currentPedestalInput * 15);
             magnitude = 3f;
             pointerEnterEdgeTime = timeout;
         }
@@ -180,20 +197,6 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		}
 	}
 
-	Vector2 GetMousePosFromKeys()
-	{
-		if (UIController.IsInInputField())
-			return Vector2.zero;
 
-		float y;
-		float x;
-
-		y = Input.GetAxis( "Vertical" );
-
-
-		x = Input.GetAxis( "Horizontal" );
-
-		return new Vector2(x, y);
-	}
 
 }

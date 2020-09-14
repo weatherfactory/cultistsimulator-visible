@@ -81,7 +81,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else
                 value = 0;
 
-            Debug.Log(value);
 
             TruckEvent.Invoke(new TruckEventArgs {CurrentTruckInput = value});
         }
@@ -94,9 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else
                 value = 0;
 
-            Debug.Log(value);
-
-            TruckEvent.Invoke(new TruckEventArgs { CurrentTruckInput = value });
+            PedestalEvent.Invoke(new PedestalEventArgs() { CurrentPedestalInput = value });
         }
 
         public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
