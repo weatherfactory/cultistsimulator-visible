@@ -17,6 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class UIController: LocalNexus
     {
+        
         [SerializeField] private PlayerInput playerInput;
         
 
@@ -28,15 +29,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //  bool setSomeDefaultBindingsForFirstTime = false;
             foreach (InputAction action in playerInput.currentActionMap.actions)
             {
-                var keyBindSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(action.name);
-                if ( keyBindSetting!=null && !string.IsNullOrEmpty(keyBindSetting.CurrentValue.ToString()))
+                if (Registry.Get<ICompendium>().EntityExists<Setting>(action.name))
                 {
-                    action.ApplyBindingOverride(keyBindSetting.CurrentValue.ToString());
+                    ApplyExistingKeybindOverrides(action);
                 }
-                else
-                {
-                    NoonUtility.Log("No default found for keybinding: " + action.name);
-                }
+            }
+        }
+
+        private static void ApplyExistingKeybindOverrides(InputAction action)
+        {
+            var keyBindSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(action.name);
+            if (!string.IsNullOrEmpty(keyBindSetting.CurrentValue.ToString()))
+            {
+                action.ApplyBindingOverride(keyBindSetting.CurrentValue.ToString());
+            }
+            else
+            {
+                NoonUtility.Log("Keeping default setting for " + action.name);
             }
         }
 
@@ -52,7 +61,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 		}
 
 
-        public void Input_KeyStartThenRelease_Zoom(InputAction.CallbackContext context)
+        public void Input_Zoom_Key(InputAction.CallbackContext context)
         {
             float value;
             if (context.started)
@@ -60,12 +69,39 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else
                 value = 0;
             
-            ZoomEvent.Invoke(new ZoomEventArgs{OngoingZoomEffect =value });
+            ZoomEvent.Invoke(new ZoomEventArgs{CurrentZoomInput =value });
         }
 
-        public void Input_ScrollWheel_Zoom(InputAction.CallbackContext context)
+
+        public void Input_Truck_Key(InputAction.CallbackContext context)
         {
-            ZoomEvent.Invoke(new ZoomEventArgs { OngoingZoomEffect = context.ReadValue<Single>()});
+            float value;
+            if (context.started)
+                value = context.ReadValue<Single>();
+            else
+                value = 0;
+
+            Debug.Log(value);
+
+            TruckEvent.Invoke(new TruckEventArgs {CurrentTruckInput = value});
+        }
+
+        public void Input_Pedestal_Key(InputAction.CallbackContext context)
+        {
+            float value;
+            if (context.started)
+                value = context.ReadValue<Single>();
+            else
+                value = 0;
+
+            Debug.Log(value);
+
+            TruckEvent.Invoke(new TruckEventArgs { CurrentTruckInput = value });
+        }
+
+        public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
+        {
+            ZoomEvent.Invoke(new ZoomEventArgs { CurrentZoomInput = context.ReadValue<Single>()});
         }
 
 

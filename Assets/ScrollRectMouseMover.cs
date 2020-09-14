@@ -33,6 +33,10 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 	Vector2 marginVect;
 	float magnitude;
 
+    private float currentTruckInput;
+    private float currentPedestalInput;
+
+
 	void Start() {
 		scrollRect = GetComponent<ScrollRect>();
 		// TODO: Disable on touch?
@@ -68,6 +72,17 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		isManualDragActive = false;
 	}
 
+    public void OnTruckEvent(TruckEventArgs args)
+    {
+        currentTruckInput = args.CurrentTruckInput;
+    }
+
+    public void OnPedestalEvent(PedestalEventArgs args)
+    {
+        currentPedestalInput = args.CurrentPedestalInput;
+    }
+
+
 	void Update()
 	{
 		// We are dragging manually? then block this thing and stop
@@ -76,15 +91,15 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 			blockScrolling = true;
 			return;
 		}
-		// We're pressing a hotkey? Then move!
-		if (PressingMoveKey())
+        // We're pressing a hotkey? Then move!
+        if (currentTruckInput < 0 || currentTruckInput > 0 || currentPedestalInput<0 || currentPedestalInput>0)
 		{
-			mousePos = GetMousePosFromKeys();
-			magnitude = 3f;
-			pointerEnterEdgeTime = timeout;
-		}
-		// Pointer is in our rect? Then move
-		else if (Assets.CS.TabletopUI.DraggableToken.itemBeingDragged!=null)
+            mousePos = new Vector2(currentTruckInput,currentPedestalInput);
+            magnitude = 3f;
+            pointerEnterEdgeTime = timeout;
+        }
+        // Pointer is in our rect? Then move
+        else if (Assets.CS.TabletopUI.DraggableToken.itemBeingDragged!=null)
 		{
 			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
 			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
@@ -97,7 +112,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 			return;
 		}
 
-		// We are not in a zone? Then stop doing this and unblock us if needed
+		// We are not in a zone? Then stop doing athis and unblock us if needed
 		if (Mathf.Approximately(magnitude, 0f))
 		{
 			blockScrolling = false; // enable scrolling starting with the next frame
@@ -141,11 +156,6 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		scrollRect.velocity = vector;
 	}
 
-	bool PressingMoveKey()
-	{
-	    return ((int) Input.GetAxis("Horizontal") != 0 || (int) Input.GetAxis("Vertical") != 0);
-	    //	return (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
-	}
 
 	void SetMagnitudeFromMouse() {
 		magnitude = 0f;
@@ -177,24 +187,10 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 		float y;
 		float x;
-		/*
-		if (Input.GetKey(KeyCode.UpArrow))
-			y = 0.5f;
-		else if (Input.GetKey(KeyCode.DownArrow))
-			y = -0.5f;
-		else 
-			y = 0f;
-		*/
+
 		y = Input.GetAxis( "Vertical" );
 
-		/*
-		if (Input.GetKey(KeyCode.RightArrow)) 
-			x = 0.5f;
-		else if (Input.GetKey(KeyCode.LeftArrow)) 
-			x = -0.5f;
-		else 
-			x = 0f;
-		*/
+
 		x = Input.GetAxis( "Horizontal" );
 
 		return new Vector2(x, y);

@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static float ZOOM_FAR = 1f;
 
 
-        public float OngoingZoomEffect { get; set; }
+        public float CurrentZoomInput { get; set; }
 
         public float AbsoluteTargetZoomLevel { get; set; }
     }
@@ -21,4 +21,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class ZoomEvent : UnityEvent<ZoomEventArgs>
     {
     }
+
+    public class TruckEventArgs
+    {
+
+        public float CurrentTruckInput { get; set; }
+
+    }
+
+    [Serializable]
+    public class TruckEvent : UnityEvent<TruckEventArgs>
+    {
+    }
+
+
+    public class PedestalEventArgs
+    {
+
+        public float CurrentPedestalInput { get; set; }
+
+    }
+
+    [Serializable]
+    public class PedestalEvent : UnityEvent<PedestalEventArgs>
+    {
+    }
+
+
 }

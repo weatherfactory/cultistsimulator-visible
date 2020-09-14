@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 341}
   - component: {fileID: 671}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MasterCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11836,7 +11836,7 @@ MonoBehaviour:
       - m_Target: {fileID: 937582878}
         m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
           Assembly-CSharp
-        m_MethodName: Input_ScrollWheel_Zoom
+        m_MethodName: Input_Zoom_Scrollwheel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11848,6 +11848,74 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ec443985-762c-4b71-b39f-ff0cdd06ac93
     m_ActionName: Default/mousezoom[/Mouse/scroll/y,/Mouse/scroll/y]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_Pedestal_Key
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99cab8cd-a576-4545-a7fe-f4d14cb4debc
+    m_ActionName: Default/kbpanup[/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_Pedestal_Key
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ee541db-f6ad-4eab-9cc7-f09988d2dffa
+    m_ActionName: Default/kbpandown[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_Truck_Key
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 04518bf1-5d43-4cb1-aab3-c61ae1fdde63
+    m_ActionName: Default/kbpanleft[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937582878}
+        m_TargetAssemblyTypeName: Assets.TabletopUi.Scripts.Infrastructure.UIController,
+          Assembly-CSharp
+        m_MethodName: Input_Truck_Key
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 875c2103-3f10-4cf0-9c26-0c5121e710b9
+    m_ActionName: Default/kbpanright[/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -22580,7 +22648,37 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 49}
         m_TargetAssemblyTypeName: CameraZoom, Assembly-CSharp
-        m_MethodName: SetTargetZoom
+        m_MethodName: OnZoomEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  TruckEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 62}
+        m_TargetAssemblyTypeName: ScrollRectMouseMover, Assembly-CSharp
+        m_MethodName: OnTruckEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PedestalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 62}
+        m_TargetAssemblyTypeName: ScrollRectMouseMover, Assembly-CSharp
+        m_MethodName: OnPedestalEvent
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36586,7 +36684,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 422685288}
   m_HandleRect: {fileID: 422685287}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

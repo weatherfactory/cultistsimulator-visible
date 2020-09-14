@@ -107,6 +107,38 @@ public class @Keybindings : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""kbpedestalup"",
+                    ""type"": ""Button"",
+                    ""id"": ""99cab8cd-a576-4545-a7fe-f4d14cb4debc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""Clamp(min=-5,max=5)"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""kbpedestaldown"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ee541db-f6ad-4eab-9cc7-f09988d2dffa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""Clamp(min=-5,max=5)"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""kbtruckleft"",
+                    ""type"": ""Button"",
+                    ""id"": ""04518bf1-5d43-4cb1-aab3-c61ae1fdde63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""Clamp(min=-1,max=-1)"",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""kbtruckright"",
+                    ""type"": ""Button"",
+                    ""id"": ""875c2103-3f10-4cf0-9c26-0c5121e710b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""Clamp(min=1,max=1)"",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""mousezoom"",
                     ""type"": ""PassThrough"",
                     ""id"": ""ec443985-762c-4b71-b39f-ff0cdd06ac93"",
@@ -239,6 +271,50 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""79396b12-9e0f-48fc-9b02-7414395b1c18"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbpedestalup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3def0e3-dba7-4582-a1e9-18ee7449b6a7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbpedestaldown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7f01ddb-21e5-44ad-803c-0c2c96994701"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbtruckleft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4a03336-1e26-43ba-aabe-0707a028ec17"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""kbtruckright"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""faf706a5-a4ea-4104-94c4-c87f1bf0c206"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
@@ -266,6 +342,10 @@ public class @Keybindings : IInputActionCollection, IDisposable
         m_Default_kbzoom1 = m_Default.FindAction("kbzoom1", throwIfNotFound: true);
         m_Default_kbzoom2 = m_Default.FindAction("kbzoom2", throwIfNotFound: true);
         m_Default_kbzoom3 = m_Default.FindAction("kbzoom3", throwIfNotFound: true);
+        m_Default_kbpedestalup = m_Default.FindAction("kbpedestalup", throwIfNotFound: true);
+        m_Default_kbpedestaldown = m_Default.FindAction("kbpedestaldown", throwIfNotFound: true);
+        m_Default_kbtruckleft = m_Default.FindAction("kbtruckleft", throwIfNotFound: true);
+        m_Default_kbtruckright = m_Default.FindAction("kbtruckright", throwIfNotFound: true);
         m_Default_mousezoom = m_Default.FindAction("mousezoom", throwIfNotFound: true);
     }
 
@@ -327,6 +407,10 @@ public class @Keybindings : IInputActionCollection, IDisposable
     private readonly InputAction m_Default_kbzoom1;
     private readonly InputAction m_Default_kbzoom2;
     private readonly InputAction m_Default_kbzoom3;
+    private readonly InputAction m_Default_kbpedestalup;
+    private readonly InputAction m_Default_kbpedestaldown;
+    private readonly InputAction m_Default_kbtruckleft;
+    private readonly InputAction m_Default_kbtruckright;
     private readonly InputAction m_Default_mousezoom;
     public struct DefaultActions
     {
@@ -343,6 +427,10 @@ public class @Keybindings : IInputActionCollection, IDisposable
         public InputAction @kbzoom1 => m_Wrapper.m_Default_kbzoom1;
         public InputAction @kbzoom2 => m_Wrapper.m_Default_kbzoom2;
         public InputAction @kbzoom3 => m_Wrapper.m_Default_kbzoom3;
+        public InputAction @kbpedestalup => m_Wrapper.m_Default_kbpedestalup;
+        public InputAction @kbpedestaldown => m_Wrapper.m_Default_kbpedestaldown;
+        public InputAction @kbtruckleft => m_Wrapper.m_Default_kbtruckleft;
+        public InputAction @kbtruckright => m_Wrapper.m_Default_kbtruckright;
         public InputAction @mousezoom => m_Wrapper.m_Default_mousezoom;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
@@ -386,6 +474,18 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbzoom3.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
                 @kbzoom3.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
                 @kbzoom3.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbzoom3;
+                @kbpedestalup.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestalup;
+                @kbpedestalup.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestalup;
+                @kbpedestalup.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestalup;
+                @kbpedestaldown.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestaldown;
+                @kbpedestaldown.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestaldown;
+                @kbpedestaldown.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbpedestaldown;
+                @kbtruckleft.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckleft;
+                @kbtruckleft.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckleft;
+                @kbtruckleft.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckleft;
+                @kbtruckright.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckright;
+                @kbtruckright.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckright;
+                @kbtruckright.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnKbtruckright;
                 @mousezoom.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
                 @mousezoom.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
                 @mousezoom.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMousezoom;
@@ -426,6 +526,18 @@ public class @Keybindings : IInputActionCollection, IDisposable
                 @kbzoom3.started += instance.OnKbzoom3;
                 @kbzoom3.performed += instance.OnKbzoom3;
                 @kbzoom3.canceled += instance.OnKbzoom3;
+                @kbpedestalup.started += instance.OnKbpedestalup;
+                @kbpedestalup.performed += instance.OnKbpedestalup;
+                @kbpedestalup.canceled += instance.OnKbpedestalup;
+                @kbpedestaldown.started += instance.OnKbpedestaldown;
+                @kbpedestaldown.performed += instance.OnKbpedestaldown;
+                @kbpedestaldown.canceled += instance.OnKbpedestaldown;
+                @kbtruckleft.started += instance.OnKbtruckleft;
+                @kbtruckleft.performed += instance.OnKbtruckleft;
+                @kbtruckleft.canceled += instance.OnKbtruckleft;
+                @kbtruckright.started += instance.OnKbtruckright;
+                @kbtruckright.performed += instance.OnKbtruckright;
+                @kbtruckright.canceled += instance.OnKbtruckright;
                 @mousezoom.started += instance.OnMousezoom;
                 @mousezoom.performed += instance.OnMousezoom;
                 @mousezoom.canceled += instance.OnMousezoom;
@@ -446,6 +558,10 @@ public class @Keybindings : IInputActionCollection, IDisposable
         void OnKbzoom1(InputAction.CallbackContext context);
         void OnKbzoom2(InputAction.CallbackContext context);
         void OnKbzoom3(InputAction.CallbackContext context);
+        void OnKbpedestalup(InputAction.CallbackContext context);
+        void OnKbpedestaldown(InputAction.CallbackContext context);
+        void OnKbtruckleft(InputAction.CallbackContext context);
+        void OnKbtruckright(InputAction.CallbackContext context);
         void OnMousezoom(InputAction.CallbackContext context);
     }
 }

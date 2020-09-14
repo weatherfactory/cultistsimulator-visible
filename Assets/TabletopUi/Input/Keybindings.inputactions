@@ -94,6 +94,38 @@
                     "interactions": ""
                 },
                 {
+                    "name": "kbpedestalup",
+                    "type": "Button",
+                    "id": "99cab8cd-a576-4545-a7fe-f4d14cb4debc",
+                    "expectedControlType": "Button",
+                    "processors": "Clamp(min=-5,max=5)",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbpedestaldown",
+                    "type": "Button",
+                    "id": "9ee541db-f6ad-4eab-9cc7-f09988d2dffa",
+                    "expectedControlType": "Button",
+                    "processors": "Clamp(min=-5,max=5)",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbtruckleft",
+                    "type": "Button",
+                    "id": "04518bf1-5d43-4cb1-aab3-c61ae1fdde63",
+                    "expectedControlType": "Button",
+                    "processors": "Clamp(min=-1,max=-1)",
+                    "interactions": ""
+                },
+                {
+                    "name": "kbtruckright",
+                    "type": "Button",
+                    "id": "875c2103-3f10-4cf0-9c26-0c5121e710b9",
+                    "expectedControlType": "Button",
+                    "processors": "Clamp(min=1,max=1)",
+                    "interactions": ""
+                },
+                {
                     "name": "mousezoom",
                     "type": "PassThrough",
                     "id": "ec443985-762c-4b71-b39f-ff0cdd06ac93",
@@ -221,6 +253,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "kbzoomout",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79396b12-9e0f-48fc-9b02-7414395b1c18",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbpedestalup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3def0e3-dba7-4582-a1e9-18ee7449b6a7",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbpedestaldown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7f01ddb-21e5-44ad-803c-0c2c96994701",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbtruckleft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4a03336-1e26-43ba-aabe-0707a028ec17",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "kbtruckright",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

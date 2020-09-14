@@ -21,7 +21,7 @@ public class CameraZoom : MonoBehaviour {
     // Change these to adjust starting zoom
     private float currentZoom = 0.6f; 
     private float targetZoom = 0.6f;
-    private float ongoingZoomEffect = 0f;
+    private float currentZoomInput = 0f;
     public const float ZOOM_BASE_INCREMENT = 0.025f;
     private const float zoomTolerance = 0.00001f; // snap when this close to target
 
@@ -34,24 +34,21 @@ public class CameraZoom : MonoBehaviour {
         SetScale(currentZoom);
     }
 
-    public void SetTargetZoom(ZoomEventArgs args)
+    public void OnZoomEvent(ZoomEventArgs args)
     {
        if(args.AbsoluteTargetZoomLevel>0)
            targetZoom = args.AbsoluteTargetZoomLevel;
        //NB: this result is received when the zoom-increment key is lifted, at which point it'll be set to 0 and stop the zoom continuing
        //if we receive a zoom with an absolute value, that will also reset-and-halt any ongoing zoom effects
-       
-           ongoingZoomEffect = args.OngoingZoomEffect * ZOOM_BASE_INCREMENT;
-           Debug.Log(ongoingZoomEffect);
+      
+           currentZoomInput = args.CurrentZoomInput;
        
     }
 
     void Update ()
     {
-        if (ongoingZoomEffect < 0 || ongoingZoomEffect > 0)
-
-            //modify target zoom
-            SetTargetZoom(targetZoom+ongoingZoomEffect);
+        if (currentZoomInput < 0 || currentZoomInput > 0)
+            SetTargetZoom(targetZoom+currentZoomInput* ZOOM_BASE_INCREMENT);
         
         if (targetZoom != currentZoom) {
             if (Mathf.Approximately(targetZoom, currentZoom))
