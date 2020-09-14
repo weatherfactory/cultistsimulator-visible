@@ -64,7 +64,6 @@ private const string PRIMARY_SLOT="primary";
     {
         _id = PRIMARY_SLOT;
         Label = "";
-        Description = Registry.Get<ILocStringProvider>().Get("UI_EMPTYSPACE");
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
         ActionId = string.Empty;

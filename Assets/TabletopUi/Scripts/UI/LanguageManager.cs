@@ -184,10 +184,9 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
 
     public string Get(string locLabel)
     {
-        
-        
-        
-        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+
+        string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY);
+        var currentCulture = Registry.Get<ICompendium>().GetEntityById<Culture>(currentCultureId);
 
 
         if (locLabel.StartsWith(NoonConstants.TEMPLATE_MARKER))
