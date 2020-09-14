@@ -19,7 +19,6 @@ namespace Assets.CS.TabletopUI {
 #pragma warning disable 649
         [SerializeField] Image background;
         [SerializeField] ParticleSystem particles;
-        [SerializeField] CanvasZoomTest zoom;
 #pragma warning restore 649
         float particleTargetRadius;
 
@@ -70,7 +69,6 @@ namespace Assets.CS.TabletopUI {
 
         IEnumerator DoAnim(float duration, Color colorA, Color colorB, bool shownAtEnd) {
             float time = 0f;
-            zoom.SetTargetZoom(1f);
             isAnimating = true;
 
             while (time < duration) {

@@ -53,8 +53,6 @@ public class CameraZoom : MonoBehaviour {
             //modify target zoom
             SetTargetZoom(targetZoom+ongoingZoomEffect);
         
-
-
         if (targetZoom != currentZoom) {
             if (Mathf.Approximately(targetZoom, currentZoom))
                 currentZoom = targetZoom;
