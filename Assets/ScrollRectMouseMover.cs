@@ -35,9 +35,10 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
     private float currentTruckInput;
     private float currentPedestalInput;
+    private const float KEY_MOVEMENT_EFFECT_MULTIPLIER=6f;
 
 
-	void Start() {
+    void Start() {
 		scrollRect = GetComponent<ScrollRect>();
 		// TODO: Disable on touch?
 
@@ -112,7 +113,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 			Debug.Log($"Truck: {currentTruckInput} Pedestal: {currentPedestalInput} ");
 
             mousePos = new Vector2(currentTruckInput*15,currentPedestalInput * 15);
-            magnitude = 3f;
+            magnitude = KEY_MOVEMENT_EFFECT_MULTIPLIER;
             pointerEnterEdgeTime = timeout;
         }
         // Pointer is in our rect? Then move
