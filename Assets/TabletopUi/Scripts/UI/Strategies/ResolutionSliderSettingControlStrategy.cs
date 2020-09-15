@@ -9,8 +9,6 @@ namespace Assets.TabletopUi.Scripts.UI
 {
     public class ResolutionSliderSettingControlStrategy : SliderSettingControlStrategy
     {
-
-
         public override void SetSliderValues(Slider slider)
         {
 
