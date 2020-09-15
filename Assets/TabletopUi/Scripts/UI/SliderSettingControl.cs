@@ -24,10 +24,33 @@ namespace Assets.TabletopUi.Scripts.UI
 
         private SliderSettingControlStrategy strategy;
 
+        public override string SettingId
+        {
+            get { return strategy.SettingId; }
+        }
+
         public override string TabId
         {
             get { return strategy.SettingTabId; }
         }
+
+
+        public override void SetInteractable(bool interactable)
+        {
+
+
+            if (interactable)
+            {
+                Slider.interactable = true;
+                SliderValueLabel.alpha = (1f);
+            }
+            else
+            {
+                Slider.interactable = false;
+                SliderValueLabel.alpha = (0.3f);
+            }
+        }
+
 
         public override void Initialise(Setting settingToBind)
         {

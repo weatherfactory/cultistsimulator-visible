@@ -1,29 +1,22 @@
 ﻿{
     "settings": [
 
-	{
-		    "id": "Resolution",
+	    {
+		    "id": "ScreenCanvasSize",
 		    "tabid": "UI_VISUAL",
-		    "hint": "UI_OPT_RESOLUTION",
-		    "minvalue": 0,
-		    "maxvalue": 1,
-		    "defaultvalue": "-1",
-		    "datatype": "Int32"
-},
-{
-		    "id": "Windowed",
-		    "tabid": "UI_VISUAL",
-		    "hint": "UI_OPT_WINDOWED",
-		    "minvalue": 0,
-		    "maxvalue": 1,
-		    "defaultvalue": "1",
-			"datatype": "Single",
+		    "hint": "UI_OPT_UISCALING",
+		    "minvalue": 3,
+		    "maxvalue": 5,
+		    "defaultvalue": "4",
+		    "datatype": "Single",
 		    "valuelabels": 
 		    {
-				"0": "UI_OFF",
-				"1": "UI_ON",	
+			    "3": "$75%",
+			    "4": "$100%",
+			    "5": "$125%"
 		    }
-},
+
+	    },
 			{
 		    "id": "GraphicsLevel",
 		    "tabid": "UI_VISUAL",
@@ -41,6 +34,34 @@
 		    }
 
 	 },
+
+	    {
+		    "id": "Windowed",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_WINDOWED",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "1",
+		    "datatype": "Single",
+		    "valuelabels": 
+		    {
+			    "0": "UI_OFF",
+			    "1": "UI_ON",	
+		    }
+	    },
+
+
+	    {
+		    "id": "Resolution",
+		    "tabid": "UI_VISUAL",
+		    "hint": "UI_OPT_RESOLUTION",
+		    "minvalue": 0,
+		    "maxvalue": 1,
+		    "defaultvalue": "-1",
+		    "datatype": "Int32"
+	    },
+
+
 
 
 	    {
@@ -115,22 +136,7 @@
 			
 	    },
 
-	    {
-		    "id": "ScreenCanvasSize",
-		    "tabid": "UI_VISUAL",
-		    "hint": "UI_OPT_UISCALING",
-		    "minvalue": 3,
-		    "maxvalue": 5,
-		    "defaultvalue": "4",
-		    "datatype": "Single",
-		    "valuelabels": 
-		    {
-				"3": "$75%",
-				"4": "$100%",
-				"5": "$125%"
-		    }
 
-	    },
 
 	    {
 		    "id": "AutosaveInterval",

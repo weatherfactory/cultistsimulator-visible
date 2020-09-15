@@ -20,6 +20,11 @@ public class KeybindSettingControl : AbstractSettingControl
     private KeybindSettingControlStrategy strategy;
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
 
+    public override string SettingId
+    {
+        get { return strategy.SettingId; }
+    }
+
     public override string TabId
     {
         get { return strategy.SettingTabId; }
@@ -77,6 +82,8 @@ public class KeybindSettingControl : AbstractSettingControl
 
     }
 
-
-
+    public override void SetInteractable(bool interactable)
+    {
+        throw new NotImplementedException();
+    }
 }

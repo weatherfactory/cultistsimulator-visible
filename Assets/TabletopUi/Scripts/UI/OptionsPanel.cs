@@ -63,6 +63,8 @@ public class OptionsPanel : MonoBehaviour {
 
     public void Start()
     {
+        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChanged);
+
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
         PopulateSettingControls(settings);
@@ -70,7 +72,46 @@ public class OptionsPanel : MonoBehaviour {
         PopulateTabs(settings);
 
         InitialiseButtons();
+
+  
+        DisableResolutionIfWindowed();
+
     }
+
+
+
+    public void OnSettingChanged(ChangeSettingArgs args)
+    {
+        if (args.Key == NoonConstants.WINDOWED)
+        {
+            DisableResolutionIfWindowed();
+        }
+    }
+
+    private void DisableResolutionIfWindowed()
+    {
+
+        try
+        {
+            AbstractSettingControl resolutionSliderControl;
+
+            var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+            resolutionSliderControl = settingControls.SingleOrDefault(sc => sc.SettingId == NoonConstants.RESOLUTION);
+ 
+
+        if(Convert.ToSingle(windowedSetting.CurrentValue)>0 && resolutionSliderControl)
+            resolutionSliderControl.SetInteractable(false);
+        else
+            resolutionSliderControl.SetInteractable(true);
+        }
+        catch (Exception e)
+        {
+            NoonUtility.Log(e.Message, 2);
+            return;
+        }
+    }
+
+
 
     private void InitialiseButtons()
     {
@@ -211,7 +252,6 @@ public class OptionsPanel : MonoBehaviour {
 
 		Registry.Get<TabletopManager>().LoadGame(SourceForGameState.DefaultSave);
 	}
-
 
 
 

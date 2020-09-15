@@ -10,12 +10,12 @@ namespace Assets.TabletopUi.Scripts.UI
     {
         protected bool _initialisationComplete = false;
         protected float? newSettingValueQueued = null;
-    public abstract string TabId { get; }
+        public abstract string SettingId { get; }
+        public abstract string TabId { get; }
         public abstract void Initialise(Setting settingToBind);
         public abstract void Update();
 
 
-
-
+        public abstract void SetInteractable(bool interactable);
     }
 }
