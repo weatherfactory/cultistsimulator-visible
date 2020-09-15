@@ -75,10 +75,7 @@ The game will process this content in this order:
 CONTENT FOR MODS
 ----------------
 
-A mod's content files work just like the base game's content files, except that mod files are always loaded after the base game's "core/" folders (see above)
-
-
-- Mod entities can overwrite or extend base game entities.
+A mod's content files use the same format as the core game's content files, except that mod files are always loaded after the base game's "core/" folders (see above). Of course, you may want to change core content, so there's some additional support for that.
 
 
 Overwriting an entity: Any entity that uses the same ID as a base game entity will overwrite all specified properties for that base entity. Any properties you haven't specified will remain unchanged. For example
