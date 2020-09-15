@@ -49,20 +49,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        public static bool IsInInputField() {
-			return inInputField;
-		}
 
-		private static bool inInputField;
-
-
-		void OnDisable() {
-			inInputField = false;
-		}
 
 
         public void Input_Zoom_Key(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             float value;
             if (context.started)
                 value = context.ReadValue<Single>();
@@ -75,6 +69,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_Truck_Key(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             float value;
             if (context.started)
                 value = context.ReadValue<Single>();
@@ -87,6 +84,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_Pedestal_Key(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             float value;
             if (context.started)
                 value = context.ReadValue<Single>();
@@ -101,21 +101,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             ZoomEvent.Invoke(new ZoomEventArgs { CurrentZoomInput = context.ReadValue<Single>()});
         }
 
-
-
-
+        
         public void Input_ZoomClose(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_CLOSE });
         }
 
         public void Input_ZoomMid(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_MID });
         }
 
         public void Input_ZoomFar(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             ZoomEvent.Invoke(new ZoomEventArgs { AbsoluteTargetZoomLevel = ZoomEventArgs.ZOOM_FAR });
         }
 
@@ -124,6 +131,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_Pause(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             if (_debugTools.isActiveAndEnabled)
                 return;
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -134,6 +144,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_NormalSpeed(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             if (_debugTools.isActiveAndEnabled)
                 return;
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -145,6 +158,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_FastSpeed(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             if (_debugTools.isActiveAndEnabled)
                 return;
             
@@ -160,11 +176,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_GroupAllStacks(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             StackCardsEvent.Invoke();
         }
 
         public void Input_StartRecipe(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
+
             // Check if the player tried to start a recipe while *not* holding on to a card stack or verb
             // This is to ensure the player doesn't drag an item from a recipe slot before attempting to start a
             // situation, which can lead to strange behaviour
@@ -185,6 +208,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
         public void Input_CollectAll(InputAction.CallbackContext context)
         {
+            if (IsEditingText())
+                return;
+
             var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var controller in situationControllers)
@@ -201,17 +227,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Update()
         {
+
             if (!enabled)
                 return;
 
             // Process any debug tools-specific keys first
             if (_debugTools!=null && _debugTools.isActiveAndEnabled && _debugTools.ProcessInput())
-                return;
-
-			UpdateInputFieldState();
-
-			if (IsInInputField())
-				return;
+          
+                if (IsEditingText())
+                    return;
 
 	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
@@ -242,20 +266,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
-		void UpdateInputFieldState() {
+		public bool IsEditingText() {
 			if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
 			{
 			    if (EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null)
-			        inInputField = true;
+			        return true;
 
 			    if (EventSystem.current.currentSelectedGameObject.GetComponent<InputField>() != null)
-			        inInputField = true;
+                    return true;
 
-			}
-			else {
-				inInputField = false;
-			}
-		}
+                return false;
+            }
+			
+                return false;
+        }
 
         public bool IsPressingAbortHotkey()
         {

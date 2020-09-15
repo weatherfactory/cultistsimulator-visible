@@ -83,21 +83,6 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
         currentPedestalInput = args.CurrentPedestalInput;
     }
 
-    Vector2 GetMousePosFromKeys()
-    {
-        if (UIController.IsInInputField())
-            return Vector2.zero;
-
-        float y;
-        float x;
-
-        y = Input.GetAxis("Vertical");
-
-
-        x = Input.GetAxis("Horizontal");
-
-        return new Vector2(x, y);
-    }
 
 	void Update()
 	{
