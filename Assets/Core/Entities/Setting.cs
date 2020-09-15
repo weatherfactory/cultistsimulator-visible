@@ -44,7 +44,37 @@ namespace Assets.Core.Entities
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
 
-        public object CurrentValue { get; private set; }
+        private object _internalCurrentValue;
+        public object CurrentValue
+        {
+            get
+            {
+                if(DataType==nameof(Single))
+                    return Convert.ToSingle(_internalCurrentValue);
+                if (DataType == nameof(Int32))
+                    return Convert.ToInt32(_internalCurrentValue);
+                if (DataType == nameof(String))
+                    return Convert.ToString(_internalCurrentValue);
+                else
+                {
+                    NoonUtility.Log("Unknown setting data type: " + DataType,2);
+                    return null;
+                }
+            }
+        }
+
+        public void OnSettingChangedEvent(ChangeSettingArgs args)
+        {
+            if (args.Key == Id)
+            {
+                _internalCurrentValue = args.Value;
+                foreach (var subscriber in _subscribers)
+                {
+                    subscriber.UpdateValueFromSetting(CurrentValue);
+                }
+            }
+        }
+
 
         public string GetCurrentValueAsHumanReadableString()
         {
@@ -60,7 +90,7 @@ namespace Assets.Core.Entities
         }
 
 
-        private List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();
+        private readonly List<ISettingSubscriber> _subscribers=new List<ISettingSubscriber>();
 
 
         
@@ -74,25 +104,25 @@ namespace Assets.Core.Entities
             {
                 var potentialValue = Registry.Get<Config>().GetConfigValueAsFloat(Id);
                 if (potentialValue == null)
-                    CurrentValue = DefaultValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs{Key=Id,Value =DefaultValue});
                 else
-                    CurrentValue = potentialValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
             }
             else if (DataType == nameof(Int32))
             {
                 var potentialValue = Registry.Get<Config>().GetConfigValueAsInt(Id);
                 if (potentialValue == null)
-                    CurrentValue = DefaultValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = DefaultValue });
                 else
-                    CurrentValue = potentialValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
             }
             else
             {
                 var potentialValue= Registry.Get<Config>().GetConfigValueAsString(Id);
                 if (string.IsNullOrEmpty(potentialValue))
-                    CurrentValue = DefaultValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = DefaultValue });
                 else
-                    CurrentValue = potentialValue;
+                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
 
 
             }
@@ -104,17 +134,7 @@ namespace Assets.Core.Entities
 
         }
 
-        public void OnSettingChangedEvent(ChangeSettingArgs args)
-        {
-            if (args.Key == Id)
-            {
-                CurrentValue = args.Value;
-                foreach (var subscriber in _subscribers)
-                {
-                    subscriber.UpdateValueFromSetting(CurrentValue);
-                }
-            }
-        }
+
 
         public void AddSubscriber(ISettingSubscriber subscriber)
         {
