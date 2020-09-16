@@ -8,7 +8,7 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class WindowSettingsAdapter: MonoBehaviour,ISettingSubscriber
     {
-        private void Initialise()
+        public void Initialise()
         {
             var windowedStateSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
             if (windowedStateSetting != null)

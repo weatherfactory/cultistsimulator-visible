@@ -864,6 +864,10 @@ MonoBehaviour:
   stageHand: {fileID: 1768733093}
   concursum: {fileID: 1256507083}
   SecretHistory: {fileID: 1477282972}
+  screenResolutionAdapter: {fileID: 1955269523}
+  graphicsSettingsAdapter: {fileID: 1393924172}
+  windowSettingsAdapter: {fileID: 1966314239}
+  soundManager: {fileID: 1151989600}
 --- !u!4 &520452514
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,6 +1364,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1149562952}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1151989600 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114937700222485204, guid: 3d901299a57def14ca66ec6931695e22,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954531829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51162aa08f9bd534fb1496ce0e3d6a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1155551980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,7 +2019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeOverlay: {fileID: 2027384887}
   fadeDuration: 0.75
-  StartingSceneNumber: 0
+  StartingSceneNumber: 1
 --- !u!1 &1861084129
 GameObject:
   m_ObjectHideFlags: 0

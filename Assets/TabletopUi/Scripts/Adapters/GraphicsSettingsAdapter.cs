@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class GraphicsSettingsAdapter: MonoBehaviour, ISettingSubscriber
     {
-        private void Initialise()
+        public void Initialise()
         {
             var graphicsLevelSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.GRAPHICSLEVEL);
             if (graphicsLevelSetting != null)

@@ -74,7 +74,7 @@ public class SoundManager : AudioManager, ISettingSubscriber
 
     }
 
-    void Start()
+    public void Initialise()
     {
         var soundVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SOUNDVOLUME);
 

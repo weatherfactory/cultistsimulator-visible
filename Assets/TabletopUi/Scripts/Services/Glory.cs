@@ -27,6 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
+        [SerializeField] private SoundManager soundManager;
 
         private string initialisedAt = null;
 
@@ -60,7 +61,6 @@ namespace Assets.TabletopUi.Scripts.Services
             info += "Memory: system - " + SystemInfo.systemMemorySize + " graphics - " + SystemInfo.graphicsMemorySize + "\n";
 
             NoonUtility.Log(info, 0);
-            NoonUtility.Log(info, 1);
 
         }
 
@@ -89,7 +89,7 @@ namespace Assets.TabletopUi.Scripts.Services
             //stagehand is used to load scenes
             registryAccess.Register<StageHand>(stageHand);
 
-        //why here? why not? this whole thing needs fixing
+            //why here? why not? this whole thing needs fixing
             registryAccess.Register<IDice>(new Dice());
 
             //Set up storefronts: integration with GOG and Steam, so this should come early.
@@ -128,8 +128,13 @@ namespace Assets.TabletopUi.Scripts.Services
             //TODO: async
             LoadCurrentSave(registryAccess);
 
+            //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
             screenResolutionAdapter.Initialise();
+            graphicsSettingsAdapter.Initialise();
+            windowSettingsAdapter.Initialise();
+            soundManager.Initialise();
 
+            //finally, load the first scne and get the ball rolling.
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
 
 
