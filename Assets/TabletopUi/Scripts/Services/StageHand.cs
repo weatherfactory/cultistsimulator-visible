@@ -31,7 +31,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public float fadeDuration = 0.25f;
 
 
-        private const int TabletopScene = 4;
 
 
 
@@ -88,13 +87,16 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-
+        public void LoadInfoScene()
+        {
+           SceneChange(SceneNumber.InfoScene,false);
+        }
 
         public void LoadGameOnTabletop(SourceForGameState source)
         {
             SoundManager.PlaySfx("UIStartGame");
             SourceForGameState = source;
-            SceneChange(TabletopScene, true);
+            SceneChange(SceneNumber.TabletopScene, true);
         }
 
         //public void TabletopScreen()
@@ -106,7 +108,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public void NewGameOnTabletop()
         {
             SourceForGameState = SourceForGameState.NewGame;
-            SceneChange(TabletopScene,true);
+            SceneChange(SceneNumber.TabletopScene, true);
         }
 
         public void ClearRestartingGameFlag()

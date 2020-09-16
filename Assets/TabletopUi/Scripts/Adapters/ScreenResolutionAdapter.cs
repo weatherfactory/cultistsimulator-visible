@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void Start()
+        public void Initialise()
         {
             var registry = new Registry();
             registry.Register(this);

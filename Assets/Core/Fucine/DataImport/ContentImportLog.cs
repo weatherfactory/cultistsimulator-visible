@@ -9,7 +9,12 @@ namespace Assets.Core.Fucine
 {
     public class ContentImportLog
     {
-        private IList<NoonLogMessage> _contentImportMessages= new List<NoonLogMessage>();
+        private List<NoonLogMessage> _contentImportMessages= new List<NoonLogMessage>();
+
+        public bool ImportFailed()
+        {
+            return _contentImportMessages.Exists(m => m.MessageLevel > 1);
+        }
 
         public void LogProblem(string problemDesc)
         {

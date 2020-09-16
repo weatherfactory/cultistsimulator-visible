@@ -11,5 +11,6 @@ public static class SceneNumber
     public const int TabletopScene = 4;
     public const int GameOverScene = 5;
     public const int NewGameScene = 6;
+    public const int InfoScene = 7;
 
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Assets.Core.Fucine;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
@@ -22,6 +23,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
         [SerializeField] public Concursum concursum;
         [SerializeField] public SecretHistory SecretHistory;
+
+        [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
+        [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
+        [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
 
         private string initialisedAt = null;
 
@@ -98,13 +103,18 @@ namespace Assets.TabletopUi.Scripts.Services
 
             //load Compendium content. We can't do anything with content files until this is in.
             registryAccess.Register<ICompendium>(new Compendium());
-            LoadCompendium(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
+            var log=LoadCompendium(Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
+            if (log.ImportFailed())
+            {
+                stageHand.LoadInfoScene();
+                return;
+            }
 
             //setting defaults are set as the compendium is loaded, but they may also need to be
             //migrated from somewhere other than config (like PlayerPrefs)
             //so we only run this now, allowing it to overwrite any default values
-           Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
+            Registry.Get<Config>().MigrateAnySettingValuesInRegistry(Registry.Get<ICompendium>());
 
 
             //set up loc services
@@ -117,6 +127,8 @@ namespace Assets.TabletopUi.Scripts.Services
 
             //TODO: async
             LoadCurrentSave(registryAccess);
+
+            screenResolutionAdapter.Initialise();
 
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);
 
@@ -137,12 +149,14 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void LoadCompendium(string cultureId)
+        public ContentImportLog LoadCompendium(string cultureId)
         {
             var compendiumLoader = new CompendiumLoader();
             var log = compendiumLoader.PopulateCompendium(Registry.Get<ICompendium>(),cultureId);
             foreach (var m in log.GetMessages())
                 NoonUtility.Log(m);
+
+            return log;
         }
 
         private void OnCultureChanged(CultureChangedArgs args)
