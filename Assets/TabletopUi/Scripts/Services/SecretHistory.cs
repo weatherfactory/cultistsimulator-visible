@@ -14,6 +14,17 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         [SerializeField] private GameObject LogMessageEntryPrefab;
         [SerializeField] private Transform logMessageEntriesHere;
+        [SerializeField] private CanvasGroup canvasGroup;
+
+        public bool IsVisible => canvasGroup.alpha > 0f;
+
+        public void SetVisible(bool visible)
+        {
+            if (visible)
+                canvasGroup.alpha = 1f;
+            else
+                canvasGroup.alpha = 0f;
+        }
 
         
         public void AddMessage(NoonLogMessage message)

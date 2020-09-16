@@ -236,10 +236,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
           
                 if (IsEditingText())
                     return;
-
-	        if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
+            if(Keyboard.current.backquoteKey.wasPressedThisFrame || Keyboard.current.quoteKey.wasPressedThisFrame)
+	        //if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             {
               ToggleDebugEvent.Invoke();
+              Registry.Get<Concursum>().ToggleSecretHistory();
             }
 
 

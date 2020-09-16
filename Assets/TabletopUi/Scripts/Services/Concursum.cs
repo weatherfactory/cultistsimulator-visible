@@ -109,6 +109,10 @@ namespace Assets.TabletopUi.Scripts.Services
             NoonUtility.Log(culture.Id);
         }
 
+        public void ToggleSecretHistory()
+        {
+            secretHistory.SetVisible(!secretHistory.IsVisible);
+        }
 
         public void ShowNotification(NotificationArgs args)
         {

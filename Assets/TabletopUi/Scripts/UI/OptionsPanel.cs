@@ -73,7 +73,6 @@ public class OptionsPanel : MonoBehaviour {
 
         InitialiseButtons();
 
-  
         DisableResolutionIfWindowed();
 
     }
@@ -98,7 +97,6 @@ public class OptionsPanel : MonoBehaviour {
             var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
             resolutionSliderControl = settingControls.SingleOrDefault(sc => sc.SettingId == NoonConstants.RESOLUTION);
  
-
         if(Convert.ToSingle(windowedSetting.CurrentValue)>0 && resolutionSliderControl)
             resolutionSliderControl.SetInteractable(false);
         else

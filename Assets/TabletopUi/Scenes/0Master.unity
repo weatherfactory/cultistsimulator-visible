@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 361750805}
   - component: {fileID: 361750804}
   - component: {fileID: 361750803}
+  - component: {fileID: 361750806}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -450,6 +451,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 99
   m_TargetDisplay: 0
+--- !u!225 &361750806
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361750801}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &470808503
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3bb6697842d9f43b6ae1d544ab5322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secretHistory: {fileID: 0}
+  secretHistory: {fileID: 1477282972}
 --- !u!4 &1256507084
 Transform:
   m_ObjectHideFlags: 0
@@ -978,6 +991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LogMessageEntryPrefab: {fileID: 1454517110}
   logMessageEntriesHere: {fileID: 470808504}
+  canvasGroup: {fileID: 361750806}
 --- !u!1 &1768733091
 GameObject:
   m_ObjectHideFlags: 0

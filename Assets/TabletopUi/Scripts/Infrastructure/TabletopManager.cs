@@ -135,10 +135,6 @@ namespace Assets.CS.TabletopUI {
             housekeepingTimer = AUTOSAVE_INTERVAL;
         }
 
-        public void ToggleLog()
-        {
-         //   NoonUtility.ToggleLog();
-        }
 
 
         public async void Update()

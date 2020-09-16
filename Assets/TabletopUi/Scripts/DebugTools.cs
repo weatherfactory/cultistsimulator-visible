@@ -85,9 +85,6 @@ public class DebugTools : MonoBehaviour
 
         }
 
-
-
-
         autoCompletionBox.gameObject.SetActive(false);
         input.onValueChanged.AddListener(AttemptAutoCompletion);
         btnPlusOne.onClick.AddListener(() => AddCard(input.text));
@@ -147,7 +144,10 @@ public class DebugTools : MonoBehaviour
     }
 
 
-
+    public void ToggleVisibleLog()
+    {
+        Registry.Get<Concursum>().ToggleSecretHistory();
+    }
 
     public bool ProcessInput()
     {
@@ -372,7 +372,6 @@ public class DebugTools : MonoBehaviour
         if (l == null)
             return;
 
-
     }
 
     void TriggerAchievement(string achievementId)
@@ -419,9 +418,6 @@ public class DebugTools : MonoBehaviour
             }
         }
 
-           
-
-       
     }
 
     public void WordCount()
@@ -452,10 +448,7 @@ public class DebugTools : MonoBehaviour
         compendium.LogMissingImages(log);
         foreach (var m in log.GetMessages())
             Log(m.Description, m.MessageLevel);
-
-
     }
-
 
 
     void NextTrack()
