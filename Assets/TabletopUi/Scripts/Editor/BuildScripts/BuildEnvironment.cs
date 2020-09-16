@@ -29,7 +29,6 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
         public string GetProductWithOSBuildPath(BuildProduct p, BuildOS o)
         {
             return NoonUtility.JoinPaths(GetBaseBuildsPath(), p.GetRelativePath(), o.OSId.ToString());
-
         }
 
         public void Log(string message)
@@ -49,10 +48,10 @@ namespace Assets.TabletopUi.Scripts.Editor.BuildScripts
 
             if(ProductOSDir.Exists)
             {
-            foreach (var file in ProductOSDir.GetFiles())
-                File.Delete(file.FullName);
-            foreach (var directory in ProductOSDir.GetDirectories())
-                Directory.Delete(directory.FullName, true);
+                foreach (var file in ProductOSDir.GetFiles())
+                    File.Delete(file.FullName);
+                foreach (var directory in ProductOSDir.GetDirectories())
+                    Directory.Delete(directory.FullName, true);
             }
         }
 

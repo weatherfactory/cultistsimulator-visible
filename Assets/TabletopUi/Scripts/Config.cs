@@ -15,9 +15,8 @@ using UnityEngine.SceneManagement;
 
 public class Config
 {
-    public bool skiplogo = false;
-    public int verbosity = 0;
-    public bool knock = false;
+    public bool skiplogo;
+    public bool knock;
 
 
 
@@ -65,12 +64,12 @@ public class Config
             }
 
             if (GetConfigValue("verbosity") == String.Empty)
-                verbosity = (int) VerbosityLevel.Significants;
+                NoonUtility.CurrentVerbosity = (int) VerbosityLevel.Trivia;
             else
             {
-                int.TryParse(GetConfigValue("verbosity"), out verbosity);
-                NoonUtility.CurrentVerbosity = verbosity;
+                int.TryParse(GetConfigValue("verbosity"), out NoonUtility.CurrentVerbosity);
             }
+
 
             if (GetConfigValue("knock") != String.Empty)
             {

@@ -18,6 +18,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public bool IsVisible => canvasGroup.alpha > 0f;
 
+
         public void SetVisible(bool visible)
         {
             if (visible)
@@ -31,7 +32,10 @@ namespace Assets.TabletopUi.Scripts.Services
         {
 
             SecretHistoryLogMessageEntry entry = Instantiate(LogMessageEntryPrefab, logMessageEntriesHere).GetComponent<SecretHistoryLogMessageEntry>();
-            entry.TextComponent.text = message.Description;
+            entry.DisplayMessage(message);
+            //always display the log if an error has occurred
+            if(message.MessageLevel==2)
+                SetVisible(true);
 
         }
 

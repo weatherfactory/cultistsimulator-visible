@@ -21,17 +21,27 @@ namespace Noon
         }
 
         public int MessageLevel { get; private set; }
+        public int VerbosityNeeded { get; private set; }
 
         public NoonLogMessage(string description)
         {
             Description = description;
             MessageLevel = 2;
+            VerbosityNeeded = (int) VerbosityLevel.SystemChatter;
         }
 
         public NoonLogMessage(string description, int messageLevel)
         {
             Description = description;
-            MessageLevel = 0;
+            MessageLevel = messageLevel;
+            VerbosityNeeded = (int) VerbosityLevel.SystemChatter;
+        }
+
+        public NoonLogMessage(string description, int messageLevel,int verbosityNeeded)
+        {
+            Description = description;
+            MessageLevel = messageLevel;
+            VerbosityNeeded = verbosityNeeded;
         }
 
         public override string ToString()
@@ -49,7 +59,6 @@ namespace Noon
         public const string ID = "id";
         public const string UID = "uid";
         public const string EXTENDS = "extends";
-
 
         public const int CULTIST_STEAMWORKS_APP_ID = 718670;
 
@@ -123,7 +132,7 @@ namespace Noon
     {
         public static bool UnitTestingMode { get; set; }
 
-        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.Significants);
+        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.Trivia);
 
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
@@ -136,55 +145,50 @@ namespace Noon
             subscribers.Add(subscriber);
         }
         
-        public static void Log(NoonLogMessage message, int messageLevel=0,int verbosityNeeded=0)
+        public static void Log(NoonLogMessage message)
         {
             if (message == null)
                 message=new NoonLogMessage("Null log message supplied");
 
-            if(verbosityNeeded<=CurrentVerbosity)
+            if(message.VerbosityNeeded <= CurrentVerbosity)
             {
-			
-                    foreach(var s in subscribers)
+                foreach(var s in subscribers)
                         s.AddMessage(message);
 
-		}
+            }
 
-	            //switch between in-Unity and unit testing
-				if(UnitTestingMode)
-					Console.WriteLine(message.Description);
-	            else
-				{
-					string formattedMessage =
-						(verbosityNeeded > 0 ? new String('>', verbosityNeeded) + " " : "") + message.Description;
-		            switch (messageLevel)
-		            {
-			            case 0:
-				            Debug.Log(formattedMessage);
-				            break;
-			            case 1:
-				            Debug.LogWarning(formattedMessage);
-				            break;
-			            case 2:
-				            Debug.LogError(formattedMessage);
-				            break;
-			            default:
-                            Debug.LogError(formattedMessage);
-                            break;
-                            //  throw new ArgumentOutOfRangeException("messageLevel " + messageLevel);
-                    }
+            //switch between in-Unity and unit testing
+            if(UnitTestingMode)
+                Console.WriteLine(message.Description);
+            else
+            {
+                string formattedMessage =
+                    (message.VerbosityNeeded > 0 ? new String('>', message.VerbosityNeeded) + " " : "") + message.Description;
+                switch (message.MessageLevel)
+                {
+                    case 0:
+                        Debug.Log(formattedMessage);
+                        break;
+                    case 1:
+                        Debug.LogWarning(formattedMessage);
+                        break;
+                    case 2:
+                        Debug.LogError(formattedMessage);
+                        break;
+                    default:
+                        Debug.LogError(formattedMessage);
+                        break;
+                    //  throw new ArgumentOutOfRangeException("messageLevel " + messageLevel);
                 }
+            }
             
         }
 
 
-        public static void Log(string message, int messageLevel, VerbosityLevel verbosityNeeded)
+        public static void Log(string description, int messageLevel=0, VerbosityLevel verbosityNeeded=VerbosityLevel.Trivia)
         {
-            Log(message, messageLevel,Convert.ToInt32(verbosityNeeded));
-        }
+            NoonLogMessage message = new NoonLogMessage(description, messageLevel, Convert.ToInt32(verbosityNeeded));
 
-        public static void Log(string description, int messageLevel = 0, int verbosityNeeded = 0)
-        {
-            NoonLogMessage message=new NoonLogMessage(description, messageLevel);
             Log(message);
         }
 
@@ -270,11 +274,48 @@ namespace Noon
         {
             return file.Name != ".dropbox";
         }
-
-
-	
-
+        
     }
 
+    public static class AspectColor
+    {
+        public static Color32 Edge()
+        {
+            return new Color32(215, 221, 73, 255);
+        }
+        public static Color32 Forge()
+        {
+            return new Color32(255, 142, 62, 255);
+        }
+        public static Color32 Grail()
+        {
+            return new Color32(254, 97, 80, 255);
+        }
+        public static Color32 Heart()
+        {
+            return new Color32(254, 126, 139, 255);
+        }
+        public static Color32 Knock()
+        {
+            return new Color32(181, 78, 252, 255);
+        }
+        public static Color32 Lantern()
+        {
+            return new Color32(255, 227, 0, 255);
+        }
+        public static Color32 Moth()
+        {
+            return new Color32(242, 233, 194, 255);
+        }
+        public static Color32 SecretHistories()
+        {
+            return new Color32(255, 0, 144, 255);
+        }
+
+        public static Color32 Winter()
+        {
+            return new Color32(190, 238, 255, 255);
+        }
+    }
 }
 

@@ -55,6 +55,8 @@ namespace Assets.TabletopUi.Scripts.Services
             info += "Memory: system - " + SystemInfo.systemMemorySize + " graphics - " + SystemInfo.graphicsMemorySize + "\n";
 
             NoonUtility.Log(info, 0);
+            NoonUtility.Log(info, 1);
+
         }
 
 
