@@ -15,16 +15,19 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] private GameObject LogMessageEntryPrefab;
         [SerializeField] private Transform logMessageEntriesHere;
         [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private GameObject canvas;
 
-        public bool IsVisible => canvasGroup.alpha > 0f;
+        //public bool IsVisible => canvasGroup.alpha > 0f;
+        public bool IsVisible => canvas.activeInHierarchy;
 
 
         public void SetVisible(bool visible)
         {
-            if (visible)
-                canvasGroup.alpha = 1f;
-            else
-                canvasGroup.alpha = 0f;
+            //if (visible)
+            //    canvasGroup.alpha = 1f;
+            //else
+            //    canvasGroup.alpha = 0f;
+            canvas.SetActive(visible);
         }
 
         
