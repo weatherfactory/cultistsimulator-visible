@@ -4,11 +4,43 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 
 namespace Noon
 {
+    public class NoonLogMessage
+    {
+        private string _description;
+
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value ?? "Unspecified"; }
+        }
+
+        public int MessageLevel { get; private set; }
+
+        public NoonLogMessage(string description)
+        {
+            Description = description;
+            MessageLevel = 2;
+        }
+
+        public NoonLogMessage(string description, int messageLevel)
+        {
+            Description = description;
+            MessageLevel = 0;
+        }
+
+        public override string ToString()
+        {
+            return Description;
+        }
+    }
+
+
     public class NoonConstants
     {
 
@@ -82,6 +114,11 @@ namespace Noon
         Trivia=10
     }
 
+    public interface ILogSubscriber
+    {
+        void AddMessage(NoonLogMessage message);
+    }
+
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
@@ -91,38 +128,34 @@ namespace Noon
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
 
-        private static string[] screenLog;
-		private static int screenLogStart = 0;
-		private static bool screenLogVisible = false;
 
+        private static List<ILogSubscriber> subscribers =new List<ILogSubscriber>();
 
-        
-        public static void Log(object messageObject, int messageLevel=0,int verbosityNeeded=0)
+        public static void Subscribe(ILogSubscriber subscriber)
         {
-            var message = messageObject.ToString();
-            
+            subscribers.Add(subscriber);
+        }
+        
+        public static void Log(NoonLogMessage message, int messageLevel=0,int verbosityNeeded=0)
+        {
+            if (message == null)
+                message=new NoonLogMessage("Null log message supplied");
 
             if(verbosityNeeded<=CurrentVerbosity)
             {
-				if (message != null)
-				{
-					// Store in on-screen log
-					if (screenLog == null)
-					{
-						screenLog = new string[40];
-					}
-					screenLog[screenLogStart++] = message;
-					if (screenLogStart >= screenLog.Count())
-						screenLogStart = 0;
-				}
+			
+                    foreach(var s in subscribers)
+                        s.AddMessage(message);
+
+		}
 
 	            //switch between in-Unity and unit testing
 				if(UnitTestingMode)
-					Console.WriteLine(message);
+					Console.WriteLine(message.Description);
 	            else
 				{
 					string formattedMessage =
-						(verbosityNeeded > 0 ? new String('>', verbosityNeeded) + " " : "") + message;
+						(verbosityNeeded > 0 ? new String('>', verbosityNeeded) + " " : "") + message.Description;
 		            switch (messageLevel)
 		            {
 			            case 0:
@@ -140,13 +173,19 @@ namespace Noon
                             //  throw new ArgumentOutOfRangeException("messageLevel " + messageLevel);
                     }
                 }
-            }
+            
         }
 
 
         public static void Log(string message, int messageLevel, VerbosityLevel verbosityNeeded)
         {
             Log(message, messageLevel,Convert.ToInt32(verbosityNeeded));
+        }
+
+        public static void Log(string description, int messageLevel = 0, int verbosityNeeded = 0)
+        {
+            NoonLogMessage message=new NoonLogMessage(description, messageLevel);
+            Log(message);
         }
 
         public static string GetGameSaveLocation(int index = 0)
@@ -233,22 +272,7 @@ namespace Noon
         }
 
 
-		public static void ToggleLog()
-		{
-			screenLogVisible = !screenLogVisible;
-		}
-
-		public static void DrawLog()
-		{
-			if (!screenLogVisible)
-				return;
-
-			for (int i=0; i<screenLog.Count(); i++)
-			{
-				int idx = (screenLogStart+1+i) % screenLog.Count();
-				GUI.Label( new Rect(0, Screen.height - 60f - (20f * screenLog.Count()) + (20f*i), Screen.width, 20), screenLog[idx]);
-			}
-		}
+	
 
     }
 

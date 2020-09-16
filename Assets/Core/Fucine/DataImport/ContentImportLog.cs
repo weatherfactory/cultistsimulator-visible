@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Noon;
 
 namespace Assets.Core.Fucine
 {
     public class ContentImportLog
     {
-        private IList<ContentImportMessage> _contentImportMessages= new List<ContentImportMessage>();
+        private IList<NoonLogMessage> _contentImportMessages= new List<NoonLogMessage>();
 
         public void LogProblem(string problemDesc)
         {
-            _contentImportMessages.Add(new ContentImportMessage(problemDesc));
+            _contentImportMessages.Add(new NoonLogMessage(problemDesc));
         }
 
         public void LogWarning(string desc)
         {
-            _contentImportMessages.Add(new ContentImportMessage(desc, 1));
+            _contentImportMessages.Add(new NoonLogMessage(desc, 1));
         }
 
         public void LogInfo(string desc)
         {
-            _contentImportMessages.Add(new ContentImportMessage(desc,0));
+            _contentImportMessages.Add(new NoonLogMessage(desc,0));
         }
 
-        public IList<ContentImportMessage> GetMessages()
+        public IList<NoonLogMessage> GetMessages()
         {
-            return new List<ContentImportMessage>(_contentImportMessages);
+            return new List<NoonLogMessage>(_contentImportMessages);
 
         }
     }

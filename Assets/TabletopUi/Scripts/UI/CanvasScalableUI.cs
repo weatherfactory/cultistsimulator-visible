@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
+
 public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 
 	private float scaleFactorFactor = 1f;
@@ -26,15 +26,17 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
 
 	protected override void Start()
     {
-        var uiScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
-        if (uiScaleSetting != null)
+		if(Application.isPlaying) //this is necessary because CanvasScalableUI inherits from CanvasScaler, which is ExecuteAlways.
         {
-			uiScaleSetting.AddSubscriber(this);
-			UpdateValueFromSetting(uiScaleSetting.CurrentValue);
+            var uiScaleSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SCREENCANVASSIZE);
+            if (uiScaleSetting != null)
+            {
+                uiScaleSetting.AddSubscriber(this);
+                UpdateValueFromSetting(uiScaleSetting.CurrentValue);
+            }
+            else
+                NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
         }
-		else
-            NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
-
 	}
 
     public void UpdateValueFromSetting(object newValue)

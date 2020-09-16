@@ -103,6 +103,8 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     private void SetVolume(float volume)
     {
+        if (audioSource == null)
+            return;
 
         audioSource.volume = GetClampedVol(volume) * musicVolMax;
 

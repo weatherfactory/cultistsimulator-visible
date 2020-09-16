@@ -136,16 +136,16 @@ public class ContentWatcher : MonoBehaviour
 
 public class AsyncContentImportResult
 {
-    public List<ContentImportMessage> ContentImportMessages;
+    public List<NoonLogMessage> ContentImportMessages;
 
-    public AsyncContentImportResult(List<ContentImportMessage> messages)
+    public AsyncContentImportResult(List<NoonLogMessage> messages)
     {
         ContentImportMessages = messages.ToList();
     }
 
-    public AsyncContentImportResult(ContentImportMessage message)
+    public AsyncContentImportResult(NoonLogMessage message)
     {
-        ContentImportMessages = new List<ContentImportMessage>{message};
+        ContentImportMessages = new List<NoonLogMessage>{message};
     }
 
 }

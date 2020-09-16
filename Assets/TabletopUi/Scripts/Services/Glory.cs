@@ -21,6 +21,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public StageHand stageHand;
 
         [SerializeField] public Concursum concursum;
+        [SerializeField] public SecretHistory SecretHistory;
 
         private string initialisedAt = null;
 
@@ -34,6 +35,8 @@ namespace Assets.TabletopUi.Scripts.Services
                 NoonUtility.Log("Problem: looks like we're trying to load the master scene twice",2);
                 return;
             }
+
+            NoonUtility.Subscribe(SecretHistory);
 
             LogSystemSettings();
             //Glory.Initialise needs to be run before anything else... or oyu won't like what happens next.

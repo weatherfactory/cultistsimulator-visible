@@ -314,9 +314,6 @@ public class MenuScreenController : LocalNexus {
     }
 
 
-
-
-
     public void TryPurgeSave() {
         if (!canTakeInput)
             return;
@@ -405,7 +402,6 @@ public class MenuScreenController : LocalNexus {
             return;
         
         ShowOverlay(modsPanel);
-
     }
 
     public void ShowStartLegacyConfirmPanel(Legacy legacy)
@@ -423,7 +419,6 @@ public class MenuScreenController : LocalNexus {
 
     private void BuildLegacyStartsPanel()
     {
-
         foreach (Transform legacyStartEntry in legacyStartEntries)
             Destroy(legacyStartEntry.gameObject);
 

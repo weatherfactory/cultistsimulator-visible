@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -88,14 +89,15 @@ namespace Assets.TabletopUi.Scripts.Services
         //things I really really truly want to be global:
         //storefront access
         //notification events
+        //log
         public ShowNotificationEvent ShowNotificationEvent = new ShowNotificationEvent();
         public ModOperationEvent ModOperationEvent=new ModOperationEvent();
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
         public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
         public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
-        
 
+        [SerializeField] private SecretHistory secretHistory;
 
 
         public void SetNewCulture(Culture culture)
@@ -103,6 +105,8 @@ namespace Assets.TabletopUi.Scripts.Services
             Registry.Get<Config>().SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
 
             CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
+
+            NoonUtility.Log(culture.Id);
         }
 
 

@@ -137,7 +137,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ToggleLog()
         {
-            NoonUtility.ToggleLog();
+         //   NoonUtility.ToggleLog();
         }
 
 
@@ -1275,8 +1275,7 @@ public ElementStacksManager GetTabletopStacksManager()
 			}
 			#endif
 #endif
-			// Allowing this in final build to allow users to screengrab errors
-			NoonUtility.DrawLog();
+
 		}
 
 

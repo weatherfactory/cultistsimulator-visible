@@ -79,7 +79,8 @@ public class GogGalaxyManager : MonoBehaviour
         singleton = this;
 
         // We want our GogGalaxyManager Instance to persist across scenes.
-        DontDestroyOnLoad(gameObject);
+//..but it lives in the shared master scene now anyway
+        //DontDestroyOnLoad(gameObject);
 
         if(!isInitialized)
         { 
