@@ -22,6 +22,7 @@ namespace Noon
 
         public int MessageLevel { get; private set; }
         public int VerbosityNeeded { get; private set; }
+        public Exception LoggedException { get; set; }
 
         public NoonLogMessage(string description)
         {
@@ -140,6 +141,7 @@ namespace Noon
 
         private static List<ILogSubscriber> subscribers =new List<ILogSubscriber>();
 
+
         public static void Subscribe(ILogSubscriber subscriber)
         {
             subscribers.Add(subscriber);
@@ -150,7 +152,7 @@ namespace Noon
             if (message == null)
                 message=new NoonLogMessage("Null log message supplied");
 
-            if(message.VerbosityNeeded <= CurrentVerbosity)
+            if(message.VerbosityNeeded <= CurrentVerbosity || CurrentVerbosity==0) //very early in the process - like, at content load - this doesn't seem to be set, because something something static classes
             {
                 foreach(var s in subscribers)
                         s.AddMessage(message);
@@ -274,7 +276,14 @@ namespace Noon
         {
             return file.Name != ".dropbox";
         }
-        
+
+        public static void LogException(Exception exception)
+        {
+            string description = $"{exception.Message}: \n {exception.StackTrace}";
+            NoonLogMessage logMessage=new NoonLogMessage(description ,2,0);
+            logMessage.LoggedException = exception;
+            Log(logMessage);
+        }
     }
 
     public static class AspectColor

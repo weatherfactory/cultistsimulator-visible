@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Commands;
@@ -30,7 +31,9 @@ public class Heart : MonoBehaviour
 
     public void Update()
     {
-        timerBetweenBeats += Time.deltaTime;
+        try
+        {
+            timerBetweenBeats += Time.deltaTime;
 
         if (timerBetweenBeats > BEAT_INTERVAL_SECONDS)
         {
@@ -43,6 +46,12 @@ public class Heart : MonoBehaviour
                 Beat(0f);
             else
                NoonUtility.Log("Unknown game speed state: " + gameSpeedState.GetEffectiveGameSpeed());
+        }
+        }
+        catch (Exception e)
+        {
+            NoonUtility.LogException(e);
+            throw;
         }
 
     }
@@ -83,7 +92,9 @@ public class Heart : MonoBehaviour
     
     public void Beat(float beatInterval)
     {
-        beatCounter++;
+  
+
+   beatCounter++;
 
 
         DetermineOutstandingSlots(beatInterval);
@@ -95,6 +106,9 @@ public class Heart : MonoBehaviour
             beatCounter = 0;
             TryToFillOutstandingSlots();
         }
+
+       
+
     }
 
     public void DecayStacksOnTable(float beatInterval)

@@ -13,10 +13,30 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         [SerializeField] private TextMeshProUGUI TextComponent;
 
+        private NoonLogMessage _message;
+        public int Count { get; private set; }
+
+        public bool TryMatchMessage(NoonLogMessage messageToCheck)
+        {
+            if (_message.Description == messageToCheck.Description)
+            {
+                Count++;
+                DisplayMessage(messageToCheck);
+                return true;
+            }
+
+            return false;
+        }
 
         public void DisplayMessage(NoonLogMessage message)
         {
-            TextComponent.text = message.Description;
+            
+            _message = message;
+
+            if (Count > 0)
+                TextComponent.text = $"({Count}) {message.Description}";
+           else
+                    TextComponent.text = message.Description;
 
             if (message.MessageLevel == 0)
                 TextComponent.color = AspectColor.Knock();
@@ -26,6 +46,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
             else if (message.MessageLevel == 2)
                 TextComponent.color = AspectColor.Forge();
+
+
+            Count++;
+
         }
     }
 }

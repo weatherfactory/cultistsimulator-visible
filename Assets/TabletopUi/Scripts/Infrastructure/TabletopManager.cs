@@ -189,15 +189,15 @@ namespace Assets.CS.TabletopUI {
 
         void Start()
         {
+            try
+            {
+
             //AppealToConscience();
             var registry = new Registry();
             
 
             
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
-
-
-
 
             //register everything used gamewide
             SetupServices(registry, _situationBuilder, _tabletop);
@@ -227,7 +227,11 @@ namespace Assets.CS.TabletopUI {
             {
                 LoadExistingGame(Registry.Get<StageHand>().SourceForGameState);
             }
-
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogException(e);
+            }
 
         }
 
