@@ -30,9 +30,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public Image fadeOverlay;
         public float fadeDuration = 0.25f;
 
-
-
-
+        
 
         public int StartingSceneNumber;
 

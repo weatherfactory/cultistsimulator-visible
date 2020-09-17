@@ -83,9 +83,9 @@ public class MenuScreenController : LocalNexus {
     
 
 
-    private static readonly NewStartLegacySpec[] DlcEntrySpecs =
+    private static readonly StartableLegacySpec[] DlcEntrySpecs =
     {
-        new NewStartLegacySpec(
+        new StartableLegacySpec(
             "dancer",
             "UI_DLC_TITLE_DANCER",
             new Dictionary<Storefront, string>
@@ -97,7 +97,7 @@ public class MenuScreenController : LocalNexus {
             },
             true,
             null),
-        new NewStartLegacySpec(
+        new StartableLegacySpec(
             "priest",
             "UI_DLC_TITLE_PRIEST",
             new Dictionary<Storefront, string>
@@ -109,7 +109,7 @@ public class MenuScreenController : LocalNexus {
             },
             true,
                 null),
-        new NewStartLegacySpec(
+        new StartableLegacySpec(
             "ghoul",
             "UI_DLC_TITLE_GHOUL",
             new Dictionary<Storefront, string>
@@ -122,7 +122,7 @@ public class MenuScreenController : LocalNexus {
             true,
                 null)
         ,
-        new NewStartLegacySpec(
+        new StartableLegacySpec(
             "exile",
             "UI_DLC_TITLE_EXILE",
             new Dictionary<Storefront, string>
@@ -424,38 +424,43 @@ public class MenuScreenController : LocalNexus {
 
         var legacies = Registry.Get<ICompendium>().GetEntitiesAsList<Legacy>();
 
-        var newStartLegacies = legacies.Where(l => l.NewStart).ToList();
+        var allNewStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
         var store = GetCurrentStorefront();
 
-        var legacySpecs=new List<NewStartLegacySpec>();
+        var startableLegacySpecs=new List<StartableLegacySpec>();
 
 
-        //add legacyspecs for all DLCs. If a DLC is installed, there'll be a matching legacy to include. Otherwise, incllude it anyway with a null legacy to show it's not installed.
+        //Look for legacies which match a DLC spec
         foreach (var spec in DlcEntrySpecs)
         {
-            var matchingLegacy = newStartLegacies.SingleOrDefault(l => l.Id == spec.Id);
+            var matchingLegacy = allNewStartLegacies.SingleOrDefault(l => l.Id == spec.Id);
 
+
+            //if a legacy is present, that DLC is installed. Add the legacy to the spec for the startable, and remove it from the list of legacies to match.
             if (matchingLegacy != null)
             {
                 spec.Legacy = matchingLegacy;
-                newStartLegacies.Remove(matchingLegacy);
+                allNewStartLegacies.Remove(matchingLegacy);
             }
-            legacySpecs.Add(spec);
+            
+            startableLegacySpecs.Add(spec);
         }
 
-        foreach(var remainingLegacy in newStartLegacies)
+        //These are legacies which don't match DLCEntries: so they're mods.
+        foreach (var remainingLegacy in allNewStartLegacies)
         {
-            var specForLegacy=new NewStartLegacySpec(remainingLegacy.Id,remainingLegacy.Label, new Dictionary<Storefront, string>(),false,remainingLegacy );
-            legacySpecs.Add(specForLegacy);
+            
+            var specForLegacy=new StartableLegacySpec(remainingLegacy.Id,remainingLegacy.Label, new Dictionary<Storefront, string>(),false,remainingLegacy );
+            startableLegacySpecs.Add(specForLegacy);
         }
 
         
    
-        legacySpecs=legacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
+        startableLegacySpecs=startableLegacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
 
 
-        foreach (var legacySpec in legacySpecs)
+        foreach (var legacySpec in startableLegacySpecs)
         {
             var legacyStartEntry = Instantiate(LegacyStartEntryPrefab, legacyStartEntries);
             legacyStartEntry.Initialize(legacySpec, store, this);

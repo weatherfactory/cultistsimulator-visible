@@ -13,23 +13,22 @@ namespace TabletopUi.Scripts.UI
 
         public Image installedImage;
         public Image notInstalledImage;
-        public BabelfishTemplate storeLink;
+        public TextMeshProUGUI storeLink;
         
 
         private const string PurchaseLocLabel = "UI_DLC_PURCHASE";
         private const string ComingSoonLocLabel = "UI_DLC_COMING_SOON";
-        private NewStartLegacySpec _spec;
+        private StartableLegacySpec _spec;
         private string _storeLinkUrl;
         private MenuScreenController _menuScreenController;
-        public void Initialize(NewStartLegacySpec spec, Storefront store, MenuScreenController menuScreenController)
+        public void Initialize(StartableLegacySpec spec, Storefront store, MenuScreenController menuScreenController)
         {
             _spec = spec;
             _menuScreenController = menuScreenController;
             name = "NewStartLegacy_" + spec.Id;
 
-           bool isInstalled = spec.Legacy != null;
-
-            if (isInstalled)
+           
+            if (spec.Legacy != null)
             {
                 title.text = spec.Legacy.Label;
                 installedImage.sprite = ResourcesManager.GetSpriteForLegacy(spec.Legacy.Image);
@@ -53,8 +52,13 @@ namespace TabletopUi.Scripts.UI
             }
 
 
-            if (spec.ReleasedByWf && spec.Links.TryGetValue(store, out _storeLinkUrl))
-                storeLink.SetTemplate($"<link=\"{_storeLinkUrl}\"><b><u>{{{PurchaseLocLabel}}}</u></b></link>");
+            if (spec.ReleasedByWf && !IsInstalled() && spec.Links.TryGetValue(store, out _storeLinkUrl))
+            {
+                storeLink.gameObject.SetActive(true);
+                string linkText = Registry.Get<LanguageManager>().Get(PurchaseLocLabel);
+                storeLink.text = $"<link=\"{_storeLinkUrl}\"><b><u>{linkText}</u></b></link>";
+
+            }
             else
                 storeLink.gameObject.SetActive(false);
             
@@ -64,7 +68,7 @@ namespace TabletopUi.Scripts.UI
 
         public bool IsInstalled()
         {
-            return installedImage.isActiveAndEnabled;
+            return _spec.Legacy != null;
         }
 
         public void TryBeginLegacy()

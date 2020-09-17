@@ -230,11 +230,6 @@ public class OptionsPanel : MonoBehaviour {
 	    OpenInFileBrowser.Open(Application.persistentDataPath);
     }
 
- //   public void ManageSaves( bool open )
-	//{
-	//	this.gameObject.SetActive( !open );
-	//	manageSavesWindow.SetActive( open );
- //   }
 
 
 	public void SaveErrorContinue()

@@ -52,30 +52,29 @@ public class SoundManager : AudioManager, ISettingSubscriber
     // Used to prevent multiple sounds started in the same frame.
     private List<string> soundsThisFrame = new List<string>();
 
-    // Initalization
 
-    void Awake() {
-		// Instances in scenes were going to are being killed
-        if (Instance != null) {
-			DestroyImmediate(this.gameObject);
+    public void Initialise()
+    {
+        // Instances in scenes were going to are being killed
+        if (Instance != null)
+        {
+            DestroyImmediate(this.gameObject);
             return;
         }
 
-		// make sure we set our instance and don't ever destroy it
-		instance = this;
-		//DontDestroyOnLoad(this.gameObject);
+        // make sure we set our instance and don't ever destroy it
+        instance = this;
+        //DontDestroyOnLoad(this.gameObject);
 
-        foreach (SoundCombo sound in sounds) {
-            if (soundsMapped.ContainsKey(sound.name)) 
+        foreach (SoundCombo sound in sounds)
+        {
+            if (soundsMapped.ContainsKey(sound.name))
                 Debug.LogError("There is already a sound with the name " + sound.name + " in the list. Please check your SoundManager settings!");
 
             soundsMapped[sound.name] = sound;
         }
 
-    }
 
-    public void Initialise()
-    {
         var soundVolumeSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.SOUNDVOLUME);
 
         if (soundVolumeSetting == null)

@@ -4,7 +4,7 @@ using TabletopUi.Scripts.Services;
 
 namespace TabletopUi.Scripts.UI
 {
-    public class NewStartLegacySpec
+    public class StartableLegacySpec
     {
         public string Id { get; }
         public string LocLabelIfNotInstalled { get; }
@@ -13,7 +13,7 @@ namespace TabletopUi.Scripts.UI
         public Legacy Legacy;
         public bool IsOfficial;
 
-        public NewStartLegacySpec(string id, string locLabelIfNotInstalled, Dictionary<Storefront, string> links, bool releasedByWfByWf,Legacy legacy)
+        public StartableLegacySpec(string id, string locLabelIfNotInstalled, Dictionary<Storefront, string> links, bool releasedByWfByWf,Legacy legacy)
         {
             Id = id;
             LocLabelIfNotInstalled = locLabelIfNotInstalled;
