@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Core.Entities;
 using Assets.Core.Enums;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -30,15 +31,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             fadeOverlay.gameObject.SetActive(false);
         }
 
-        public void TriggerEnd(SituationToken culpableVerb, string fxName) {
+        public void TriggerEnd(SituationToken culpableVerb, Ending ending) {
             if (isEnding)
                 return;
 
             isEnding = true;
-            StartCoroutine(DoEndGameAnim(culpableVerb, fxName));
+            StartCoroutine(DoEndGameAnim(culpableVerb, ending));
         }
 
-        IEnumerator DoEndGameAnim(SituationToken culpableVerb, string fxName) {
+        IEnumerator DoEndGameAnim(SituationToken culpableVerb, Ending ending) {
             const float zoomDuration = 5f;
             const float fadeDuration = 2f;
 
@@ -80,8 +81,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             RetireAllStacks(CardVFX.CardBurn);
 
             // (Spawn specific effect based on token, depending on end-game-type)
-            if (!string.IsNullOrEmpty(fxName))
-                InstantiateEffect(fxName, culpableVerb.transform);
+            InstantiateEffect(ending, culpableVerb.transform);
 
             while (time < zoomDuration && !_uiController.IsPressingAbortHotkey()) {
                 menuBarCanvasGrp.alpha = 1f - time; // remove lower button bar.
@@ -102,7 +102,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         }
 
-        GameObject InstantiateEffect(string effectName, Transform token) {
+        GameObject InstantiateEffect(Ending ending, Transform token) {
+
+            string effectName;
+
+            if (string.IsNullOrEmpty(ending.Anim))
+                effectName = "DramaticLight";
+            else
+                effectName = ending.Anim;
+
+
             var prefab = Resources.Load("FX/EndGame/" + effectName);
 
             if (prefab == null)

@@ -465,8 +465,7 @@ public class DebugTools : MonoBehaviour
         if (ending == null)
             ending = compendium.GetEntitiesAsList<Ending>().First();
 
-        ending.Anim = ending.Id;
-
+        
         // Get us a random situation that killed us!
         var situationControllers = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
         var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];

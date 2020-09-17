@@ -48,16 +48,6 @@ namespace Assets.Core.Entities
 
         }
 
-        public Ending(string id, string label, string description,string image,EndingFlavour flavour, string anim,string achievement)
-        {
-            _id = id;
-            Label = label;
-            Description = description;
-            Image = image;
-            Flavour = flavour;
-            Anim = anim;
-            Achievement = achievement;
-        }
 
         private Ending()
         {

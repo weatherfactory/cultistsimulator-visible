@@ -24,6 +24,7 @@ using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
 using UIWidgets.Examples.Tasks;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -355,13 +356,20 @@ namespace Assets.CS.TabletopUI {
             //element overview needs to be initialised with
             // - legacy - in case we're displaying unusual info
             // stacks catalogue - so it can subscribe for notifications re changes
-            _elementOverview.Initialise(Registry.Get<Character>().ActiveLegacy, stackManagersCatalogue, Registry.Get<ICompendium>());
-            tabletopBackground.ShowTabletopFor(Registry.Get<Character>().ActiveLegacy);
+            Legacy legacy = Registry.Get<Character>().ActiveLegacy;
 
+            //this shouldn't happen, but here's a guard clause in case it does.
+            if(legacy==null)
+                Registry.Get<StageHand>().EndingScreen();
+
+            _elementOverview.Initialise(legacy, stackManagersCatalogue, Registry.Get<ICompendium>());
+            tabletopBackground.ShowTabletopFor(legacy);
+
+  
 
         }
 
- 
+
 
 
 
@@ -545,15 +553,10 @@ namespace Assets.CS.TabletopUI {
             var saveTask = saveGameManager.SaveActiveGameAsync(new InactiveTableSaveState(), Registry.Get<Character>(),SourceForGameState.DefaultSave);
             var result = await saveTask;
 
-            string animName;
+        
 
-            if (string.IsNullOrEmpty(ending.Anim))
-                animName = "DramaticLight";
-            else
-                animName = ending.Anim;
-
-            // TODO: Get effect name from ending?
-            _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, animName);
+            
+            _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, ending);
         }
 
 
