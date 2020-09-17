@@ -13,16 +13,30 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationDetails {
+    public interface ISituationView
+    {
+
         string Title { get; set; }
+
+        void Show(Vector3 targetPosOverride);
+        void Hide();
+
+        void DisplayAspects(IAspectsDictionary forAspects);
+        void DisplayStartingRecipeFound(Recipe r);
+    }
+
+    public interface ISituationStorage
+    {
+
+    }
+
+
+    public interface ISituationDetails {
+        
 
         void Initialise(IVerb verb,SituationController controller);
 
-        void Show( Vector3 targetPosOverride );
-        void Hide();
         
-        void DisplayAspects(IAspectsDictionary forAspects);
-        void DisplayStartingRecipeFound(Recipe r);
 
         IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);

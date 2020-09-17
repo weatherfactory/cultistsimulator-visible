@@ -23,6 +23,8 @@ namespace Assets.TabletopUi {
 
         public ISituationAnchor situationToken;
         public ISituationDetails situationWindow;
+        public ISituationView situationWindowAsView;
+        public ISituationStorage situationWindowAsStorage;
         public ISituationClock SituationClock;
 
         private readonly ICompendium compendium;
@@ -65,7 +67,7 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, ISituationClock clock = null) {
+        public void Initialise(SituationCreationCommand command, ISituationAnchor t, SituationWindow w, ISituationClock clock = null) {
             Registry.Get<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
@@ -75,6 +77,8 @@ namespace Assets.TabletopUi {
 				SoundManager.PlaySfx("SituationTokenCreate");
 
             situationWindow = w;
+            situationWindowAsStorage = w;
+            situationWindowAsView = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             SituationClock = clock ?? new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
@@ -114,7 +118,7 @@ namespace Assets.TabletopUi {
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
             if (command.OverrideTitle != null)
-                situationWindow.Title = command.OverrideTitle;
+                situationWindowAsView.Title = command.OverrideTitle;
 
             UpdateSituationDisplayForPossiblePredictedRecipe();
 
@@ -130,7 +134,7 @@ namespace Assets.TabletopUi {
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
             if (command.OverrideTitle != null)
-                situationWindow.Title = command.OverrideTitle;
+                situationWindowAsView.Title = command.OverrideTitle;
 
             //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
             if (command.CompletionCount >= 0)
@@ -159,7 +163,6 @@ namespace Assets.TabletopUi {
 
         #endregion
 
-        #region -- State Getters --------------------
 
         public string GetTokenId() {
             return situationToken.EntityId;
@@ -218,10 +221,7 @@ namespace Assets.TabletopUi {
             return situationWindow.GetStoredStacks();
         }
 
-        #endregion
-
-        #region -- SituationClock Execution (Heartbeat) --------------------
-
+        
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
             var ttm = Registry.Get<TabletopManager>();
@@ -256,7 +256,7 @@ namespace Assets.TabletopUi {
 
             UpdateSituationDisplayForPossiblePredictedRecipe();
 
-            situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
+            situationWindowAsView.DisplayAspects(GetAspectsAvailableToSituation(false));
 
             if (withRecipe.BurnImage != null)
                 BurnImageUnderToken(withRecipe.BurnImage);
@@ -507,15 +507,11 @@ namespace Assets.TabletopUi {
             }
         }
 
-        #endregion
-
-        #region -- SituationClock Window Communication --------------------
-
         public void OpenWindow( Vector3 targetPosOverride )
 		{
             IsOpen = true;
             situationToken.DisplayAsOpen();
-            situationWindow.Show( targetPosOverride );
+            situationWindowAsView.Show( targetPosOverride );
             Registry.Get<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
         }
 
@@ -528,7 +524,7 @@ namespace Assets.TabletopUi {
             IsOpen = false;
             // This comes first so the token doesn't show a glow when it's being closed
             situationWindow.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
-            situationWindow.Hide();
+            situationWindowAsView.Hide();
 
             situationToken.DisplayAsClosed();
         }
@@ -634,13 +630,13 @@ namespace Assets.TabletopUi {
 
             // Update the aspects in the window
             IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
-            situationWindow.DisplayAspects(aspectsNoElementsSelf);
+            situationWindowAsView.DisplayAspects(aspectsNoElementsSelf);
 
             //if we found a recipe, display it, and get ready to activate
             if (matchingRecipe != null) {
 
 
-                situationWindow.DisplayStartingRecipeFound(matchingRecipe);
+                situationWindowAsView.DisplayStartingRecipeFound(matchingRecipe);
                 return;
             }
 
@@ -664,7 +660,7 @@ namespace Assets.TabletopUi {
             var aspectsToDisplayInBottomBar = GetAspectsAvailableToSituation(false);
             var allAspects = GetAspectsAvailableToSituation(true);
 
-            situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
+            situationWindowAsView.DisplayAspects(aspectsToDisplayInBottomBar);
             TabletopManager ttm = Registry.Get<TabletopManager>();
 
             var context = ttm.GetAspectsInContext(allAspects);
@@ -741,9 +737,6 @@ namespace Assets.TabletopUi {
                 situationWindow.TryDecayResults(interval);
         }
 
-        #endregion
-
-        #region -- External Situation Change Methods --------------------
         // letting other things change the situation
 
         public void AttemptActivateRecipe()
@@ -841,8 +834,6 @@ namespace Assets.TabletopUi {
             UpdateSituationDisplayForPossiblePredictedRecipe();
         }
 
-        #endregion
-
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
             if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS)
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
@@ -863,7 +854,7 @@ namespace Assets.TabletopUi {
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.EntityId);
             if (SituationClock != null) {
-                situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);
+                situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindowAsView.Title);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, SituationClock.RecipeId);
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, SituationClock.State);
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, SituationClock.TimeRemaining);
