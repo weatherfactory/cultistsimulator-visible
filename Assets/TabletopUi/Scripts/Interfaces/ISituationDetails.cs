@@ -23,70 +23,46 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayStartingRecipeFound(Recipe r);
+        void UpdateTextForPrediction(RecipePrediction recipePrediction);
+        void DisplayStoredElements();
+        void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour endingFlavour);
+        void DisplayNoRecipeFound();
+        void DisplayIcon(string icon);
+        void DisplayHintRecipeFound(Recipe r);
     }
 
     public interface ISituationStorage
     {
-
-    }
-
-
-    public interface ISituationDetails {
-        
-
-        void Initialise(IVerb verb,SituationController controller);
-
-        
-
-        IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
-        IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
-
         void SetOutput(List<IElementStack> stacks);
         void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
-        void UpdateTextForPrediction(RecipePrediction recipePrediction);
-
-        void DumpAllStartingCardsToDesktop();
-        void DumpAllResultingCardsToDesktop();
+        IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
+        IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
 
         IEnumerable<IElementStack> GetStartingStacks();
         IEnumerable<IElementStack> GetOngoingStacks();
         IEnumerable<IElementStack> GetStoredStacks();
         IEnumerable<IElementStack> GetOutputStacks();
-
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
-        void DisplayStoredElements();
-
         IElementStacksManager GetStorageStacksManager();
         IElementStacksManager GetResultsStacksManager();
-
         IEnumerable<ISituationNote> GetNotes();
-
-        void SetSlotConsumptions();
-
-		IList<RecipeSlot> GetStartingSlots();
+        IList<RecipeSlot> GetStartingSlots();
         IList<RecipeSlot> GetOngoingSlots();
         IRecipeSlot GetUnfilledGreedySlot();
-        IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
-
-        void Retire();
-        void SetComplete();
-
-        void ShowDestinationsForStack(IElementStack stack, bool show);
-
-        void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour endingFlavour);
-        void DisplayNoRecipeFound();
-        void ReceiveTextNote(INotification notification);
-        IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
-        IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
-        void DisplayHintRecipeFound(Recipe r);
         IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool showElementAspects);
         void TryDecayResults(float interval);
 
-		// Added to allow saving of window positions. Better than inserting save code into the SituationDetails IMHO - CP
-		Vector3 Position { get; set; }
-        void SetWindowSize(bool wide);
-        IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null);
-        void DisplayIcon(string icon);
+        void ReceiveTextNote(INotification notification);
+        IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
+        IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
+        void SetSlotConsumptions();
+
+        void DumpAllStartingCardsToDesktop();
+        void DumpAllResultingCardsToDesktop();
+        void Retire();
+        void SetComplete();
     }
+
+
 }

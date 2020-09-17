@@ -21,7 +21,7 @@ using Assets.Core.Services;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
-    public class SituationWindow : MonoBehaviour, ISituationDetails,ISituationView,ISituationStorage {
+    public class SituationWindow : MonoBehaviour,ISituationView,ISituationStorage {
 
         string buttonDefault;
         string buttonBusy;
