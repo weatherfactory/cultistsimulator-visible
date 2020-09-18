@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Services
 #pragma warning disable 649
         [SerializeField] private GameObject LogMessageEntryPrefab;
         [SerializeField] private Transform logMessageEntriesHere;
-        [SerializeField] private CanvasGroup canvasGroup;
+
         [SerializeField] private GameObject canvas;
 #pragma warning restore 649
 
@@ -27,10 +27,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void SetVisible(bool visible)
         {
-            //if (visible)
-            //    canvasGroup.alpha = 1f;
-            //else
-            //    canvasGroup.alpha = 0f;
+
             canvas.SetActive(visible);
         }
 

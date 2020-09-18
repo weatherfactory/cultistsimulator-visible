@@ -864,10 +864,10 @@ MonoBehaviour:
   stageHand: {fileID: 1768733093}
   concursum: {fileID: 1256507083}
   SecretHistory: {fileID: 1477282972}
-  screenResolutionAdapter: {fileID: 1955269523}
-  graphicsSettingsAdapter: {fileID: 1393924172}
-  windowSettingsAdapter: {fileID: 1966314239}
-  soundManager: {fileID: 1151989600}
+  _screenResolutionAdapter: {fileID: 1955269523}
+  _graphicsSettingsAdapter: {fileID: 1393924172}
+  _windowSettingsAdapter: {fileID: 1966314239}
+  _soundManager: {fileID: 1151989600}
 --- !u!4 &520452514
 Transform:
   m_ObjectHideFlags: 0
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3bb6697842d9f43b6ae1d544ab5322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secretHistory: {fileID: 1477282972}
+  _secretHistory: {fileID: 1477282972}
 --- !u!4 &1256507084
 Transform:
   m_ObjectHideFlags: 0

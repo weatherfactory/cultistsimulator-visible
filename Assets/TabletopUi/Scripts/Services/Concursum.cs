@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public string Title { get; set; }
         public string Description { get; set; }
         public bool DuplicatesAllowed { get; set; }
-        
+
 
         public NotificationArgs()
         {
@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public string PublishedFileId { get; set; }
         public bool Successful { get; set; }
         public string Message { get; set; }
-        
+
     }
 
     public class ChangeSettingArgs
@@ -78,11 +78,11 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
-    public class SettingChangedEvent: UnityEvent<ChangeSettingArgs>
-    {}
+    public class SettingChangedEvent : UnityEvent<ChangeSettingArgs>
+    { }
 
 
-    public class Concursum:MonoBehaviour
+    public class Concursum : MonoBehaviour
     {
         //THIS CLASS LOOKS LIKE PETER VAUGHAN IN FIERCE MODE
 
@@ -91,32 +91,27 @@ namespace Assets.TabletopUi.Scripts.Services
         //notification events
         //log
         public ShowNotificationEvent ShowNotificationEvent = new ShowNotificationEvent();
-        public ModOperationEvent ModOperationEvent=new ModOperationEvent();
+        public ModOperationEvent ModOperationEvent = new ModOperationEvent();
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
-        public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
+        public CultureChangedEvent CultureChangedEvent = new CultureChangedEvent();
         public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
 
-        [SerializeField] private SecretHistory _secretHistory;
-
-        public Concursum(SecretHistory secretHistory)
-        {
-            this._secretHistory = secretHistory;
-        }
+        [SerializeField] private SecretHistory secretHistory;
 
 
         public void SetNewCulture(Culture culture)
         {
-            Registry.Get<Config>().SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
+            Registry.Get<Config>().SetConfigValue(NoonConstants.CULTURE_SETTING_KEY, culture.Id);
 
-            CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
+            CultureChangedEvent.Invoke(new CultureChangedArgs { NewCulture = culture });
 
             NoonUtility.Log(culture.Id);
         }
 
         public void ToggleSecretHistory()
         {
-            _secretHistory.SetVisible(!_secretHistory.IsVisible);
+            secretHistory.SetVisible(!secretHistory.IsVisible);
         }
 
         public void ShowNotification(NotificationArgs args)
@@ -144,5 +139,5 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-}
+    }
 }
