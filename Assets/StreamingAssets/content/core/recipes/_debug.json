@@ -2,28 +2,5 @@
 {
 	"recipes": [
 
-{"id": "expulsiontest",
-"label" : "TESTING",
-"startdescription" : "indeed",
-"requirements" : {"apostlelantern.pillar2":1,"influencelanterng":1},
-"actionId" : "dream",
-"warmup" : 15,
-"craftable" : true,
-"alt": [
-{
-"id": "spit.underling.attack.success",
-"additional": true,
-"expulsion": {
-"limit": 3,
-"filter": {
-"lore": 1,
-"weapon": 1,
-"associate": 1,
-"way": 1,
-"influence" :1
-}
-}
-}
-]
-}
+
 ]}
