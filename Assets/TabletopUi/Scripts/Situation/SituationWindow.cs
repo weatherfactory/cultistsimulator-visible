@@ -102,8 +102,8 @@ namespace Assets.CS.TabletopUI {
             name = "Window_" + verb.Id;
             DisplayIcon(verb.Id);
 
-            startingSlots.Initialise(sc);
-            ongoing.Initialise(sc);
+            startingSlots.Initialise(Verb, sc);
+            ongoing.Initialise(Verb,sc);
             results.Initialise(sc);
             storage.Initialise();
 		}

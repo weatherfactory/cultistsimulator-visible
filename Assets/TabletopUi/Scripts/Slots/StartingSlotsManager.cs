@@ -21,11 +21,11 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         protected RecipeSlot primarySlot;
 
-        public override void Initialise(SituationController sc) {
-            base.Initialise(sc);
-
-            var primarySlotSpecification = sc.GetPrimarySlotSpecificationForVerb();
-            if(primarySlotSpecification!=null)
+        public override void Initialise(IVerb verb,SituationController sc) {
+            base.Initialise(verb,sc);
+            
+            var primarySlotSpecification = verb.Slot;
+            if (primarySlotSpecification!=null)
             {
 
                 primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);

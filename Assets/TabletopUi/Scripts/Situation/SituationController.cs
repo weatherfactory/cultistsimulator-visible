@@ -51,10 +51,6 @@ namespace Assets.TabletopUi {
             set { _currentEndingFlavourToSignal = value; }
         }
 
-        public SlotSpecification GetPrimarySlotSpecificationForVerb()
-        {
-            return Situation.Verb.Slot;
-        }
 
         #region -- Construct, Initialize & Retire --------------------
 
@@ -755,7 +751,7 @@ namespace Assets.TabletopUi {
 
             //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
             //as if we're removing items from an unstarted situation
-			Situation.Start();
+			Situation.StartRecipe(recipe);
 
 			// Play the SFX here (not in the clock) so it is only played when we manually start
 			SoundManager.PlaySfx("SituationBegin");

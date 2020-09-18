@@ -236,7 +236,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
              var newToken=Registry.Get<SituationBuilder>().CreateToken(command, locationInfo.ToString());
             var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
             var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-             situationController.Initialise(situation, newToken, newWindow);
+                newToken.Initialise(situation.Verb, situationController);
+                newWindow.Initialise(situation.Verb, situationController);
+                situationController.Initialise(situation, newToken, newWindow);
 
              
 				// Import window state so we can restore the desktop roughly how the player left it - CP

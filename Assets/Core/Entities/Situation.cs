@@ -89,6 +89,12 @@ namespace Assets.Core.Entities {
 			    Complete();
 		}
 
+        public void StartRecipe(Recipe recipe)
+        {
+            currentPrimaryRecipe = recipe;
+    Start();
+        }
+
 		public void Start() {
 			TimeRemaining = currentPrimaryRecipe.Warmup;
 			State = SituationState.FreshlyStarted;

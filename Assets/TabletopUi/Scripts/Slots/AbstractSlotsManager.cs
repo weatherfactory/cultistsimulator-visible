@@ -13,6 +13,8 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
+
+
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
     protected SituationController situationController;
@@ -21,7 +23,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public bool AllowDrag { get { return true; } }
 
-    public virtual void Initialise(SituationController sc) {
+    public virtual void Initialise(IVerb verb,SituationController sc)
+    {
         situationController = sc;
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
@@ -36,22 +39,6 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     }
 
     public virtual IList<RecipeSlot> GetAllSlots() {
-        /*
-        // Old system to generate slots. Was removed for performance issues
-        // Is still here to re-enable in case anything is weird with the slots
-        // - Martin
-
-        var children = GetComponentsInChildren<RecipeSlot>(true);
-        var allSlots = new List<RecipeSlot>(children.Length);
-
-        foreach (var item in children) 
-            if (item.Defunct == false)
-                allSlots.Add(item);
-
-        // Test debug message to see if the slots aren't the same for some reason
-        if (this.allSlots.Count != allSlots.Count)
-            Debug.LogWarning("Both ALL SLOTS are not the same!");
-        */
 
         return validSlots;
     }
