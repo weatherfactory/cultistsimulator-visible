@@ -36,28 +36,28 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         }
 
-        public SituationToken CreateToken(SituationCreationCommand situationCreationCommand, string locatorInfo = null)
+        public SituationController CreateSituation(SituationCreationCommand command)
+        {
+            Situation situation = new Situation(command);
+            var newToken = Registry.Get<SituationBuilder>().CreateToken(command);
+            var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
+            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
+            newToken.Initialise(situation.Verb, situationController);
+            newWindow.Initialise(situation.Verb, situationController);
+            situationController.Initialise(situation, newToken, newWindow);
+
+            return situationController;
+        }
+
+        public SituationToken CreateToken(SituationCreationCommand situationCreationCommandl)
         {
             
-            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, locatorInfo);
+            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, situationCreationCommandl.LocationInfo);
             newToken.SetParticleSimulationSpace(tableLevel);
             return newToken;
         }
 
-        //public SituationToken _OLD(SituationCreationCommand situationCreationCommand, string locatorInfo = null) {
-        //    var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-        //    var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, locatorInfo);
-        //    newToken.SetParticleSimulationSpace(tableLevel);
-
-        //    var window = BuiltSituationWindow(newToken);
-
-        //    situationController.Initialise(situationCreationCommand, newToken, window);
-
-        //    return newToken;
-        //}
-
-
-
+   
         public SituationWindow CreateSituationWindow(Transform  startingPosition) {
             var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
             situationWindow.gameObject.SetActive(false);

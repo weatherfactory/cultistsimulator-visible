@@ -21,7 +21,7 @@ using Object = UnityEngine.Object;
 namespace Assets.TabletopUi {
     public class SituationController : ISituationSubscriber, ISaveable {
 
-        public ISituationAnchor situationToken;
+        public SituationToken situationToken;
         public SituationWindow situationWindow;
         public ISituationView situationWindowAsView;
         public ISituationStorage situationWindowAsStorage;
@@ -59,7 +59,7 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(Situation situation, ISituationAnchor t, SituationWindow w) {
+        public void Initialise(Situation situation, SituationToken t, SituationWindow w) {
             Registry.Get<SituationsCatalogue>().RegisterSituation(this);
             Situation = situation;
             Situation.AddSubscriber(this);

@@ -457,29 +457,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     return;
                 }
             }
-            Situation situation = new Situation(scc);
-            var newToken = Registry.Get<SituationBuilder>().CreateToken(scc);
-            var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
-            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-            newToken.Initialise(situation.Verb,situationController);
-            newWindow.Initialise(situation.Verb, situationController);
-            situationController.Initialise(situation, newToken, newWindow);
+            
+            var situationController = Registry.Get<SituationBuilder>().CreateSituation(scc);
+
 
             //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
             if (withStacksInStorage.Any())
-                newToken.SituationController.StoreStacks(withStacksInStorage);
+                situationController.StoreStacks(withStacksInStorage);
 
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null) {
-                AnimateTokenTo(newToken,
+                AnimateTokenTo(situationController.situationToken,
                     duration: 1f,
                     startPos: scc.SourceToken.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(newToken, scc.SourceToken.RectTransform.anchoredPosition, 3),
+                    endPos: GetFreePosWithDebug(situationController.situationToken, scc.SourceToken.RectTransform.anchoredPosition, 3),
                     startScale: 0f,
                     endScale: 1f);
             }
             else {
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(newToken, null);
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(situationController.situationToken, null);
             }
         }
 

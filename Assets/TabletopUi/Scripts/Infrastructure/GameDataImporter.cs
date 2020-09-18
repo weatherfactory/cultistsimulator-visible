@@ -231,15 +231,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
+                command.LocationInfo = locationInfo.ToString();
 
-             Situation situation= new Situation(command);
-             var newToken=Registry.Get<SituationBuilder>().CreateToken(command, locationInfo.ToString());
-            var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
-            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
-                newToken.Initialise(situation.Verb, situationController);
-                newWindow.Initialise(situation.Verb, situationController);
-                situationController.Initialise(situation, newToken, newWindow);
-
+                var situationController = Registry.Get<SituationBuilder>().CreateSituation(command);
              
 				// Import window state so we can restore the desktop roughly how the player left it - CP
 				situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
