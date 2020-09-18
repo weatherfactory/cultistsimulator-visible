@@ -52,10 +52,9 @@ namespace Assets.CS.TabletopUI {
         [Header("DumpButton")]
         [SerializeField] SituationTokenDumpButton dumpButton;
 
-        [Header("Debug")]
-        [SerializeField] SituationEditor situationEditor;
 
-        private IVerb _verb;
+        private bool _transient=false;
+        private string _entityid;
         private Coroutine animCoroutine;
         private List<Sprite> frames;
 
@@ -63,35 +62,30 @@ namespace Assets.CS.TabletopUI {
             get; private set;
         }
 
-        public bool IsTransient {
-            get { return _verb.Transient; }
-        }
-
-        public SlotSpecification GetPrimarySlotSpecificationForVerb()
+        public bool IsTransient
         {
-            return _verb.Slot;
+            get { return _transient; }
         }
 
+        
 
-        public bool EditorIsActive
+        public override string EntityId
         {
-            get { return situationEditor.isActiveAndEnabled; }
-        }
-
-        public override string EntityId {
-            get { return _verb == null ? null : _verb.Id; }
+            get { return _entityid; }
         }
 
 		private bool isNew; // used for sound and SFX purposes
 
         public void Initialise(IVerb verb, SituationController sc) {
-            _verb = verb;
+            
             SituationController = sc;
+            _entityid = verb.Id;
             name = "Verb_" + EntityId;
 			isNew = true;
 
-            DisplayBaseIcon(verb);
-            SetAsLightweight(verb.Transient);
+            displayIcon(verb.Id);
+            if(verb.Transient)
+                SetTransient();
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
@@ -99,7 +93,6 @@ namespace Assets.CS.TabletopUI {
 
             ongoingSlotImage.gameObject.SetActive(false);
             DisplayStackInMiniSlot(null);
-            situationEditor.Initialise(SituationController);
         }
 
         #region -- Token positioning --------------------------
@@ -134,11 +127,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void DisplayBaseIcon(IVerb v)
-        {
-            displayIcon(v.Id);
-        }
-
+        
         public void DisplayOverrideIcon(string icon)
         {
             displayIcon(icon);
@@ -151,8 +140,10 @@ namespace Assets.CS.TabletopUI {
             artwork.sprite = sprite;
         }
 
-        private void SetAsLightweight(bool lightweight) {
-            tokenBody.overrideSprite = (lightweight ? lightweightSprite : null);
+        private void SetTransient() {
+            _transient = true;
+            tokenBody.overrideSprite = lightweightSprite;
+            
         }
 
         public void DisplayAsOpen() {
@@ -164,12 +155,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         void ShowDumpButton(bool showButton) {
-            dumpButton.gameObject.SetActive(showButton && _verb.Transient);
+            dumpButton.gameObject.SetActive(showButton && _transient);
         }
 
-        public void SetEditorActive(bool active) {
-            situationEditor.gameObject.SetActive(active);
-        }
 
         private void SetTimerVisibility(bool show) {
             // If we're changing the state, change the particles
@@ -303,7 +291,7 @@ namespace Assets.CS.TabletopUI {
             }
             else {
                 // Add the current recipe name, if any, to the debug panel if it's active
-                Registry.Get<DebugTools>().SetInput(SituationController.SituationClock.RecipeId);
+                Registry.Get<DebugTools>().SetInput(SituationController.Situation.RecipeId);
 
                 if (!SituationController.IsOpen)
                     OpenSituation();
@@ -412,9 +400,6 @@ namespace Assets.CS.TabletopUI {
 
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
-
-            if (_verb == null)
-                return false;
 
             return frames.Any();
         }

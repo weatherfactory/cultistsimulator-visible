@@ -97,7 +97,12 @@ namespace Assets.TabletopUi.Scripts.Services
         public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
 
-        [SerializeField] private SecretHistory secretHistory;
+        [SerializeField] private SecretHistory _secretHistory;
+
+        public Concursum(SecretHistory secretHistory)
+        {
+            this._secretHistory = secretHistory;
+        }
 
 
         public void SetNewCulture(Culture culture)
@@ -111,7 +116,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void ToggleSecretHistory()
         {
-            secretHistory.SetVisible(!secretHistory.IsVisible);
+            _secretHistory.SetVisible(!_secretHistory.IsVisible);
         }
 
         public void ShowNotification(NotificationArgs args)

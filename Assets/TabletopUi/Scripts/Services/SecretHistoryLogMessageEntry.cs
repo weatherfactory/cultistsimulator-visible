@@ -11,7 +11,9 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class SecretHistoryLogMessageEntry:MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private TextMeshProUGUI TextComponent;
+#pragma warning restore 649
 
         private NoonLogMessage _message;
         public int Count { get; private set; }

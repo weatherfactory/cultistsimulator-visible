@@ -232,9 +232,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
 
-                var situationAnchor = CreateSituation(command, locationInfo.ToString());
-                var situationController = situationAnchor.SituationController;
+             Situation situation= new Situation(command);
+             var newToken=Registry.Get<SituationBuilder>().CreateToken(command, locationInfo.ToString());
+            var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
+            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
+             situationController.Initialise(situation, newToken, newWindow);
 
+             
 				// Import window state so we can restore the desktop roughly how the player left it - CP
 				situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
 				Vector3 pos = situationController.situationWindow.Position;
@@ -255,9 +259,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
-            return Registry.Get<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
-        }
 
         private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopTokenContainer tabletop)
         {

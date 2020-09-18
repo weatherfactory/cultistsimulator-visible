@@ -15,12 +15,15 @@ namespace Assets.TabletopUi.Scripts.UI
 {
     public class SliderSettingControl: AbstractSettingControl
     {
+#pragma warning disable 649
         [SerializeField]
         private TextMeshProUGUI SliderHint;
         [SerializeField]
         private Slider Slider;
         [SerializeField]
         private TextMeshProUGUI SliderValueLabel;
+#pragma warning restore 649
+
 
         private SliderSettingControlStrategy strategy;
 
@@ -60,7 +63,6 @@ namespace Assets.TabletopUi.Scripts.UI
                 return;
             }
 
-            SliderSettingControlStrategy sliderStrategy;
 
             if (settingToBind.Id == NoonConstants.RESOLUTION)
                 strategy = new ResolutionSliderSettingControlStrategy();

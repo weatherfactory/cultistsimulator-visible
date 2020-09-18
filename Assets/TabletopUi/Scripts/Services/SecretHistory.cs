@@ -12,10 +12,13 @@ namespace Assets.TabletopUi.Scripts.Services
     //and there's likely an asset store thing
     public class SecretHistory:MonoBehaviour,ILogSubscriber
     {
+#pragma warning disable 649
         [SerializeField] private GameObject LogMessageEntryPrefab;
         [SerializeField] private Transform logMessageEntriesHere;
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private GameObject canvas;
+#pragma warning restore 649
+
 
         //public bool IsVisible => canvasGroup.alpha > 0f;
         public bool IsVisible => canvas.activeInHierarchy;

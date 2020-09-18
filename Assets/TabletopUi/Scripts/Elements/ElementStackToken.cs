@@ -735,7 +735,7 @@ namespace Assets.CS.TabletopUI {
 			var registeredSits = Registry.Get<SituationsCatalogue>().GetRegisteredSituations();
 			foreach(TabletopUi.SituationController situ in registeredSits)
 			{
-				if (situ.SituationClock.State != SituationState.Complete)
+				if (situ.Situation.State != SituationState.Complete)
 				{
 					if (situ.IsOngoing)
 					{
@@ -743,7 +743,7 @@ namespace Assets.CS.TabletopUI {
 						var ongoingSlots = situ.GetOngoingSlots();
 						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
 					}
-					else if (!situ.situationToken.IsTransient && situ.SituationClock.State == SituationState.Unstarted)
+					else if (!situ.situationToken.IsTransient && situ.Situation.State == SituationState.Unstarted)
 					{
 						// Look for starting slots (most common case)
 						var startSlots = situ.situationWindow.GetStartingSlots();

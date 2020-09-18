@@ -357,7 +357,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void DumpAllStartingCardsToDesktop() {
-            if (situationController.SituationClock.State == SituationState.Unstarted)
+            if (situationController.Situation.State == SituationState.Unstarted)
                 DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
         }
 

@@ -18,7 +18,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class UIController: LocalNexus
     {
         
+#pragma warning disable 649
         [SerializeField] private PlayerInput playerInput;
+#pragma warning restore 649
         
 
         public DebugTools _debugTools;

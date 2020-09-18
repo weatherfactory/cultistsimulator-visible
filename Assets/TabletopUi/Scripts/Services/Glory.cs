@@ -24,12 +24,19 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] public Concursum concursum;
         [SerializeField] public SecretHistory SecretHistory;
 
-        [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
-        [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
-        [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
-        [SerializeField] private SoundManager soundManager;
+#pragma warning disable 649
+        [SerializeField] private ScreenResolutionAdapter _screenResolutionAdapter;
+        [SerializeField] private GraphicsSettingsAdapter _graphicsSettingsAdapter;
+        [SerializeField] private WindowSettingsAdapter _windowSettingsAdapter;
+        [SerializeField] private SoundManager _soundManager;
+#pragma warning restore 649
 
         private string initialisedAt = null;
+
+        public Glory(ScreenResolutionAdapter screenResolutionAdapter)
+        {
+            this._screenResolutionAdapter = screenResolutionAdapter;
+        }
 
 
         public void Awake()
@@ -129,10 +136,10 @@ namespace Assets.TabletopUi.Scripts.Services
             LoadCurrentSave(registryAccess);
 
             //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
-            screenResolutionAdapter.Initialise();
-            graphicsSettingsAdapter.Initialise();
-            windowSettingsAdapter.Initialise();
-            soundManager.Initialise();
+            _screenResolutionAdapter.Initialise();
+            _graphicsSettingsAdapter.Initialise();
+            _windowSettingsAdapter.Initialise();
+            _soundManager.Initialise();
 
             //finally, load the first scne and get the ball rolling.
             stageHand.LoadFirstScene(Registry.Get<Config>().skiplogo);

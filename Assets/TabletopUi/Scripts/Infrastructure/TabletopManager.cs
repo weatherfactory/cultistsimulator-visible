@@ -435,7 +435,7 @@ namespace Assets.CS.TabletopUI {
            foreach (var s in situationsCatalogue.GetRegisteredSituations())
            {
 
-               if (s.SituationClock.State == SituationState.Unstarted)
+               if (s.Situation.State == SituationState.Unstarted)
                {
                    var slotsToTryPurge = new List<RecipeSlot>(s.situationWindow.GetStartingSlots());
 
@@ -444,7 +444,7 @@ namespace Assets.CS.TabletopUI {
                        slot.TryPurgeElement(purgedElement, maxToPurge);
                }
                //If the situation has finished, purge any matching elements in the results.
-                else if (s.SituationClock.State==SituationState.Complete)
+                else if (s.Situation.State==SituationState.Complete)
                 { 
                    s.situationWindow.GetResultsStacksManager()
                        .PurgeElement(purgedElement, maxToPurge);

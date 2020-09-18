@@ -15,7 +15,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
       
         private CGameID _gameId;
+#pragma warning disable 414
         private CSteamID _steamId;
+#pragma warning restore 414
+
 
         private CallResult<CreateItemResult_t> r_itemCreated;
         private CallResult<SubmitItemUpdateResult_t> r_itemUpdateCompleted;

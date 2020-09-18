@@ -15,8 +15,10 @@ public class GogGalaxyManager : MonoBehaviour
     {
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
     }
+#pragma warning disable 414
+        private bool isInitialized = false;
+#pragma warning restore 414
 
-       private bool isInitialized = false;
 
     public static bool IsInitialized()
        {

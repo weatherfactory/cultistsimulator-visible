@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class OptionsPanelTab : MonoBehaviour
 {
+#pragma warning disable 649
     [SerializeField] private Image TabImage;
     [SerializeField] private TMP_Text TabText;
-    
+#pragma warning restore 649
+
     public string TabId { get; private set; }
     private OptionsPanel _parentOptionsPanel;
 

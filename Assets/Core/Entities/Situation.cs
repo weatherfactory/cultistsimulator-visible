@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
@@ -13,33 +14,57 @@ using JetBrains.Annotations;
 using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
-	public interface ISituationClock {
-		SituationState State { get; set; }
-		float TimeRemaining { get; }
-		float Warmup { get; }
-		string RecipeId { get; }
 
-		IList<SlotSpecification> GetSlotsForCurrentRecipe();
-
-		string GetTitle();
-		string GetStartingDescription();
-		string GetDescription();
-		SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false);
-		RecipePrediction GetPrediction(IRecipeConductor rc);
-		void Beginning(Recipe withRecipe);
-		void Start(Recipe primaryRecipe);
-		void ResetIfComplete();
-		void Halt();
-	}
-
-	public class SituationClock : ISituationClock {
-		public global::SituationState State { get; set; }
-		private Recipe currentPrimaryRecipe { get; set; }
+	public class Situation {
+		public SituationState State { get; set; }
+		public Recipe currentPrimaryRecipe { get; set; }
 		public float TimeRemaining { private set; get; }
 		public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
 		public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
-		private ISituationSubscriber subscriber;
+        public readonly IVerb Verb;
+        private List<ISituationSubscriber> subscribers=new List<ISituationSubscriber>();
+        public DraggableToken SourceToken { get; set; }
+        public string OverrideTitle { get; set; }
+        public int CompletionCount { get; set; }
 
+
+		public Situation(SituationCreationCommand command)
+        {
+            Verb = command.GetBasicOrCreatedVerb();
+            TimeRemaining = command.TimeRemaining ?? 0;
+            State = command.State;
+            currentPrimaryRecipe = command.Recipe;
+            SourceToken = command.SourceToken;
+            OverrideTitle = command.OverrideTitle;
+            CompletionCount = command.CompletionCount;
+        }
+
+
+
+        public Situation()
+        {
+            State = SituationState.Unstarted;
+        }
+
+
+
+		public bool AddSubscriber(ISituationSubscriber subscriber)
+        {
+            if (subscribers.Contains(subscriber))
+                return false;
+
+			subscribers.Add(subscriber);
+            return true;
+        }
+
+        public bool RemoveSubscriber(ISituationSubscriber subscriber)
+        {
+            if (!subscribers.Contains(subscriber))
+                return false;
+
+            subscribers.Remove(subscriber);
+            return true;
+        }
 
 		public IList<SlotSpecification> GetSlotsForCurrentRecipe() {
 			if (currentPrimaryRecipe.Slots.Any())
@@ -49,16 +74,13 @@ namespace Assets.Core.Entities {
 		}
 
 
-		public SituationClock(ISituationSubscriber s) {
-			subscriber = s;
-			State = SituationState.Unstarted;
-		}
 
 		private void Reset() {
 			currentPrimaryRecipe = null;
 			TimeRemaining = 0;
 			State = SituationState.Unstarted;
-			subscriber.ResetSituation();
+			foreach(var subscriber in subscribers)
+			    subscriber.ResetSituation();
 		}
 
 		public void Halt()
@@ -67,9 +89,8 @@ namespace Assets.Core.Entities {
 			    Complete();
 		}
 
-		public void Start(Recipe primaryRecipe) {
-			currentPrimaryRecipe = primaryRecipe;
-			TimeRemaining = primaryRecipe.Warmup;
+		public void Start() {
+			TimeRemaining = currentPrimaryRecipe.Warmup;
 			State = SituationState.FreshlyStarted;
 		}
 
@@ -80,13 +101,6 @@ namespace Assets.Core.Entities {
 		}
 
 
-		public SituationClock(float? timeRemaining, global::SituationState state, Recipe withPrimaryRecipe, ISituationSubscriber s) {
-			subscriber = s;
-			currentPrimaryRecipe = withPrimaryRecipe;
-			TimeRemaining = timeRemaining ?? 0;
-			State = state;
-
-		}
 
 
 		public string GetTitle() {
@@ -146,11 +160,13 @@ namespace Assets.Core.Entities {
 
 		public void Beginning(Recipe withRecipe) {
 			State = SituationState.Ongoing;
+            foreach (var subscriber in subscribers)
 			subscriber.SituationBeginning(withRecipe);
 		}
 
 		private void Ongoing() {
 			State = SituationState.Ongoing;
+            foreach (var subscriber in subscribers)
 			subscriber.SituationOngoing();
 		}
 
@@ -166,7 +182,9 @@ namespace Assets.Core.Entities {
 
 			foreach (var c in recipeExecutionCommands) {
 				ISituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
-				subscriber.SituationExecutingRecipe(ec);
+                foreach (var subscriber in subscribers)
+
+					subscriber.SituationExecutingRecipe(ec);
 			}
 		}
 
@@ -178,7 +196,9 @@ namespace Assets.Core.Entities {
 			if (linkedRecipe!=null) {
 				//send the completion description before we move on
 				INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
-				subscriber.ReceiveAndRefineTextNotification(notification);
+                foreach (var subscriber in subscribers)
+				    subscriber.ReceiveAndRefineTextNotification(notification);
+
 				currentPrimaryRecipe = linkedRecipe;
 				TimeRemaining = currentPrimaryRecipe.Warmup;
 				if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
@@ -198,7 +218,8 @@ namespace Assets.Core.Entities {
 
 		private void Complete() {
 			State = global::SituationState.Complete;
-			subscriber.SituationComplete();
+            foreach (var subscriber in subscribers)
+			    subscriber.SituationComplete();
 			SoundManager.PlaySfx("SituationComplete");
 		}
 

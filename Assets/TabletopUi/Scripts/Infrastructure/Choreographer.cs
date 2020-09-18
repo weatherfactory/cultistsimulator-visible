@@ -445,7 +445,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                if (existingSituation.SituationClock.State == SituationState.Complete && existingSituation.situationToken.IsTransient) {
+                if (existingSituation.Situation.State == SituationState.Complete && existingSituation.situationToken.IsTransient) {
                     //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
                     //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
                     //So nothing happens in this branch except logging.
@@ -457,24 +457,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     return;
                 }
             }
-
-            var token = _situationBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
+            Situation situation = new Situation(scc);
+            var newToken = Registry.Get<SituationBuilder>().CreateToken(scc);
+            var newWindow = Registry.Get<SituationBuilder>().CreateSituationWindow(newToken.transform);
+            var situationController = new SituationController(Registry.Get<ICompendium>(), Registry.Get<Character>());
+            newToken.Initialise(situation.Verb,situationController);
+            newWindow.Initialise(situation.Verb, situationController);
+            situationController.Initialise(situation, newToken, newWindow);
 
             //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
             if (withStacksInStorage.Any())
-                token.SituationController.StoreStacks(withStacksInStorage);
+                newToken.SituationController.StoreStacks(withStacksInStorage);
 
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null) {
-                AnimateTokenTo(token,
+                AnimateTokenTo(newToken,
                     duration: 1f,
                     startPos: scc.SourceToken.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 3),
+                    endPos: GetFreePosWithDebug(newToken, scc.SourceToken.RectTransform.anchoredPosition, 3),
                     startScale: 0f,
                     endScale: 1f);
             }
             else {
-                Registry.Get<Choreographer>().ArrangeTokenOnTable(token, null);
+                Registry.Get<Choreographer>().ArrangeTokenOnTable(newToken, null);
             }
         }
 
