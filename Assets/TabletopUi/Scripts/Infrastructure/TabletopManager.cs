@@ -15,21 +15,14 @@ using Assets.Core.Services;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Infrastructure.Events;
-using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.UI;
 using Assets.TabletopUi.UI;
 using Noon;
 using TabletopUi.Scripts.Elements;
-using UIWidgets.Examples.Tasks;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
 using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
