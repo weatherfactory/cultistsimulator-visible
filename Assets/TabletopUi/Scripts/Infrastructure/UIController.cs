@@ -133,7 +133,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_Pause(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || _debugTools.isActiveAndEnabled || !context.started)
                 return;
 
             if (_debugTools.isActiveAndEnabled)
@@ -146,11 +146,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_NormalSpeed(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() ||_debugTools.isActiveAndEnabled || !context.started)
                 return;
 
-            if (_debugTools.isActiveAndEnabled)
-                return;
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = true});
                 SpeedControlEvent.Invoke(new SpeedControlEventArgs
@@ -160,12 +158,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_FastSpeed(InputAction.CallbackContext context)
         {
-            if (IsEditingText())
+            if (IsEditingText() || _debugTools.isActiveAndEnabled || !context.started)
                 return;
 
-            if (_debugTools.isActiveAndEnabled)
-                return;
-            
             SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
             SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
             
