@@ -20,13 +20,8 @@ namespace Assets.TabletopUi.Scripts.UI
         
         public void OnSliderValueChangeComplete(float newValue)
         {
-            ChangeSettingArgs args = new ChangeSettingArgs
-            {
-                Key = boundSetting.Id,
-                Value = newValue
-            };
-
-            Registry.Get<Concursum>().ChangeSetting(args);
+            boundSetting.CurrentValue = newValue;
+            
         }
 
         public abstract string GetLabelForValue(float forValue);

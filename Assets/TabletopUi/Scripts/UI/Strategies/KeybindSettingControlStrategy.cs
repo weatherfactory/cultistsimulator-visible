@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine.EventSystems;
@@ -25,13 +26,9 @@ namespace Assets.TabletopUi.Scripts.UI
                 
               //  input.OnDeselect(null);
                 inputActionAsset.actionMaps[0].Enable();
-                ChangeSettingArgs changeSettingArgs = new ChangeSettingArgs
-                {
-                    Key = boundSetting.Id,
-                    Value = action.bindings[0].overridePath
-                };
+                
+                boundSetting.CurrentValue = action.bindings[0].overridePath;
 
-                Registry.Get<Concursum>().ChangeSetting(changeSettingArgs);
                 Registry.Get<Concursum>().ContentUpdatedEvent.Invoke(new ContentUpdatedArgs{Message = "Changed a key binding, which might need reflecting in on-screen prompts"});
 
                 EventSystem.current.SetSelectedGameObject(null);

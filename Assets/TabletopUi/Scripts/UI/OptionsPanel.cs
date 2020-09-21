@@ -24,6 +24,22 @@ using UIWidgets;
 using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
+public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
+{
+    private readonly string _settingId;
+    private readonly OptionsPanel _optionsPanel;
+
+    public WindowedSettingObserverForOptionsPanel(OptionsPanel optionsPanel)
+    {
+        _optionsPanel = optionsPanel;
+    }
+
+    public void UpdateValueFromSetting(object newValue)
+    {
+        _optionsPanel.DisableResolutionIfWindowed();
+    }
+}
+
 public class OptionsPanel : MonoBehaviour {
 
 
@@ -63,8 +79,6 @@ public class OptionsPanel : MonoBehaviour {
 
     public void Start()
     {
-        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChanged);
-
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
         PopulateSettingControls(settings);
@@ -73,21 +87,19 @@ public class OptionsPanel : MonoBehaviour {
 
         InitialiseButtons();
 
+        var windowednessObserver=new WindowedSettingObserverForOptionsPanel(this);
+        var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+        if(windowedSetting!=null)
+            windowedSetting.AddSubscriber(windowednessObserver);
+        else
+          NoonUtility.Log("Can't find Windowed Setting");
+
+
         DisableResolutionIfWindowed();
 
     }
 
-
-
-    public void OnSettingChanged(ChangeSettingArgs args)
-    {
-        if (args.Key == NoonConstants.WINDOWED)
-        {
-            DisableResolutionIfWindowed();
-        }
-    }
-
-    private void DisableResolutionIfWindowed()
+    public void DisableResolutionIfWindowed()
     {
 
         try

@@ -44,30 +44,26 @@ namespace Assets.Core.Entities
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
 
-        private object _internalCurrentValue;
+        private object _currentValue;
         public object CurrentValue
         {
             get
             {
                 if(DataType==nameof(Single))
-                    return Convert.ToSingle(_internalCurrentValue);
+                    return Convert.ToSingle(_currentValue);
                 if (DataType == nameof(Int32))
-                    return Convert.ToInt32(_internalCurrentValue);
+                    return Convert.ToInt32(_currentValue);
                 if (DataType == nameof(String))
-                    return Convert.ToString(_internalCurrentValue);
+                    return Convert.ToString(_currentValue);
                 else
                 {
                     NoonUtility.Log("Unknown setting data type: " + DataType,2);
                     return null;
                 }
             }
-        }
-
-        public void OnSettingChangedEvent(ChangeSettingArgs args)
-        {
-            if (args.Key == Id)
+            set
             {
-                _internalCurrentValue = args.Value;
+                _currentValue = value;
                 foreach (var subscriber in _subscribers)
                 {
                     subscriber.UpdateValueFromSetting(CurrentValue);
@@ -97,35 +93,40 @@ namespace Assets.Core.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, ICompendium populatedCompendium)
         {
-            Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChangedEvent);
-
-
+            //if a value for this Setting has been stored in config, set the value accordingly
+            //otherwise, set it to the default value
             if (DataType == nameof(Single))
             {
                 var potentialValue = Registry.Get<Config>().GetConfigValueAsFloat(Id);
                 if (potentialValue == null)
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs{Key=Id,Value =DefaultValue});
+                    CurrentValue = DefaultValue;
                 else
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
+                    CurrentValue = potentialValue;
             }
             else if (DataType == nameof(Int32))
             {
                 var potentialValue = Registry.Get<Config>().GetConfigValueAsInt(Id);
                 if (potentialValue == null)
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = DefaultValue });
+                    CurrentValue = DefaultValue;
                 else
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
+                    CurrentValue = potentialValue;
             }
             else
             {
                 var potentialValue= Registry.Get<Config>().GetConfigValueAsString(Id);
                 if (string.IsNullOrEmpty(potentialValue))
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = DefaultValue });
+                    CurrentValue = DefaultValue;
                 else
-                    Registry.Get<Concursum>().SettingChangedEvent.Invoke(new ChangeSettingArgs { Key = Id, Value = potentialValue });
-
-
+                    CurrentValue = potentialValue;
             }
+
+            //now that the value's been set, create an observer so that the config is updated with any changes to the Setting.
+            //(Don't do it before now or we'd needlessly double-update the config)
+
+            SettingObserverForConfig observer =new SettingObserverForConfig(Id,Registry.Get<Config>());
+
+            AddSubscriber(observer);
+
         }
 
 

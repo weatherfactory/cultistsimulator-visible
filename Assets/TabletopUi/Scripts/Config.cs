@@ -7,18 +7,34 @@ using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+public class SettingObserverForConfig : ISettingSubscriber
+{
+    private readonly string _settingId;
+    private readonly Config _config;
+
+    public SettingObserverForConfig(string settingId, Config config)
+    {
+        _settingId = settingId;
+        _config = config;
+    }
+
+    public void UpdateValueFromSetting(object newValue)
+    {
+        _config.PersistConfigValue(_settingId,newValue.ToString());
+    }
+}
+
 public class Config
 {
     public bool skiplogo;
     public bool knock;
-
-
 
     private Dictionary<string, string> _configValues;
 
@@ -29,7 +45,7 @@ public class Config
         PopulateConfigValuesFromIniFile();
 
       if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
-        SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,DetermineMostSuitableCultureId());
+        PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,DetermineMostSuitableCultureId());
 
     }
 
@@ -58,6 +74,7 @@ public class Config
         {
 
             _configValues = PopulateConfigValues(GetConfigFileLocation());
+
             if (GetConfigValue("skiplogo") != String.Empty)
             {
                 skiplogo = true;
@@ -78,7 +95,7 @@ public class Config
         }
         else
         {
-            SetConfigValue("skiplogo", "0");
+            PersistConfigValue("skiplogo", "0");
             PersistConfigValuesToIniFile();
         }
 
@@ -124,7 +141,8 @@ public class Config
   
                 if(valueToSet!=null) //change and persist the setting to match the migrated value
                 {
-                    Registry.Get<Concursum>().ChangeSetting(new ChangeSettingArgs { Key = setting.Id, Value = valueToSet });
+                    setting.CurrentValue = valueToSet;
+   
                     NoonUtility.Log($"Imported {setting.Id} from registry with value {valueToSet}");
                     PlayerPrefs.DeleteKey(setting.Id);
                     NoonUtility.Log($"Deleted {setting.Id} key from registry");
@@ -147,30 +165,23 @@ public class Config
     }
 
 
-    private void SetSanitisedConfigValue(string key, string value)
+    /// <summary>
+    /// This only saves the value to the connfig. It doesn't update any associated Settings! (which communicate their changes directly to Config)
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    public void PersistConfigValue(string key, string value)
     {
         if (string.IsNullOrEmpty(value) || value == "0" || value == "false")
             value = "0";
 
         _configValues[key] = value;
-    }
 
-    public void SetConfigValue(string key, string value)
-    {
-        SetSanitisedConfigValue(key, value);
         PersistConfigValuesToIniFile();
 
     }
 
-
-    public void PersistSettingValue(ChangeSettingArgs args)
-    {
-        SetSanitisedConfigValue(args.Key, args.Value.ToString());
-        PersistConfigValuesToIniFile();
-
-    }
-
-
+    
     public float? GetConfigValueAsFloat (string forId)
     {
     if(Single.TryParse(GetConfigValue(forId), out Single singleValue))

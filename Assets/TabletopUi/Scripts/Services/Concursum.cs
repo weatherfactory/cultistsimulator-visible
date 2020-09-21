@@ -37,13 +37,6 @@ namespace Assets.TabletopUi.Scripts.Services
         
     }
 
-    public class ChangeSettingArgs
-    {
-        public string Key { get; set; }
-        public object Value { get; set; }
-
-    }
-
     public class ContentUpdatedArgs
     {
 
@@ -78,9 +71,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
     }
 
-    public class SettingChangedEvent: UnityEvent<ChangeSettingArgs>
-    {}
-
 
     public class Concursum:MonoBehaviour
     {
@@ -94,7 +84,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public ModOperationEvent ModOperationEvent=new ModOperationEvent();
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
         public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
-        public SettingChangedEvent SettingChangedEvent = new SettingChangedEvent();
 
 
         [SerializeField] private SecretHistory secretHistory;
@@ -102,7 +91,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public void SetNewCulture(Culture culture)
         {
-            Registry.Get<Config>().SetConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
+            Registry.Get<Config>().PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
 
             CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
 
@@ -131,11 +120,6 @@ namespace Assets.TabletopUi.Scripts.Services
             ModOperationEvent.Invoke(args);
         }
 
-        public void ChangeSetting(ChangeSettingArgs args)
-        {
-            Registry.Get<Config>().PersistSettingValue(args);
-            SettingChangedEvent.Invoke(args);
-        }
 
 
 

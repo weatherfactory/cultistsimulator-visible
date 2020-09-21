@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.Scripts.Services
         protected void SetResolution(Resolution resolution)
         {
                Screen.SetResolution(resolution.width,resolution.height, true);
-               Registry.Get<Config>().PersistSettingValue(new ChangeSettingArgs{Key="ResolutionDescription",Value = resolution.width + "x" + resolution.height});
+               Registry.Get<Config>().PersistConfigValue("ResolutionDescription",resolution.width + "x" + resolution.height);
         }
 
         public List<Resolution> GetAvailableResolutions()
