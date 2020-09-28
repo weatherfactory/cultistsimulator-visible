@@ -32,14 +32,14 @@ public class CanvasScalableUI : CanvasScaler,ISettingSubscriber {
             if (uiScaleSetting != null)
             {
                 uiScaleSetting.AddSubscriber(this);
-                UpdateValueFromSetting(uiScaleSetting.CurrentValue);
+                WhenSettingUpdated(uiScaleSetting.CurrentValue);
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.SCREENCANVASSIZE,2);
         }
 	}
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         var scale = MultiplierForSettingValue * (newValue is float ? (float)newValue : 0); ;
         scale = Mathf.Max(scale, MinUIScaleSize);

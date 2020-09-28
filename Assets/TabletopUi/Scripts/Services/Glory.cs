@@ -129,8 +129,8 @@ namespace Assets.TabletopUi.Scripts.Services
             languageManager.Initialise();
 
 
-            //get Concursum to respond to future culture-changed events, but not the initial one
-            concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+            //respond to future culture-changed events, but not the initial one
+            concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
             //TODO: async
             LoadCurrentSave(registryAccess);

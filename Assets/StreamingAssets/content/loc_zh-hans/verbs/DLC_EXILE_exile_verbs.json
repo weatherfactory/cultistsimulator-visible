@@ -1,0 +1,101 @@
+{
+	"verbs": [
+		{
+			"id": "scout",
+			"label": "勘察",
+			"description": "发现可能性。",
+			"slots": [
+				{
+					"id": "scout",
+					"label": "勘察",
+					"required": {
+						"domicile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "use",
+			"label": "使用",
+			"description": "利用些东西。[处理机会，运行操作，或者将岁月转换为现金。]",
+			"slots": [
+				{
+					"id": "plan",
+					"label": "计划",
+					"required": {
+						"connection": 1,
+						"op": 1,
+						"weapon": 1,
+						"lore": 1,
+						"comfort": 1,
+						"proof": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "travel",
+			"label": "旅行",
+			"atStart": true,
+			"description": "一些旅行是为了拓宽人的眼界：其它的，是为了延长人的生命。",
+			"slots": [
+				{
+					"id": "direction",
+					"label": "目的",
+					"description": "一条路，或它的结束？",
+					"required": {
+						"destination": 1,
+						"location": 1,
+						"ally": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "send",
+			"label": "交流",
+			"description": "送出消息、金钱和其它。要小心。",
+			"slots": [
+				{
+					"id": "send",
+					"label": "送出",
+					"required": {
+						"desire": 1,
+						"domicile": 1,
+						"cash": 1,
+						"mortal": 1,
+						"ligeian": 1
+					},
+					"forbidden": {
+						"exhausted": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "relinquish",
+			"label": "让出",
+			"description": "卖掉；遗弃；根除；投降。",
+			"slots": [
+				{
+					"id": "relinquish",
+					"label": "让出",
+					"required": {
+						"asset": 1,
+						"lifespan.stolen": 1,
+						"trace": 1,
+						"wound.exile": 1
+					}
+				}
+			]
+		},
+		{
+			"id": "time.exile",
+			"label": "时间",
+			"description": "最后的敌人？"
+		}
+	]
+}

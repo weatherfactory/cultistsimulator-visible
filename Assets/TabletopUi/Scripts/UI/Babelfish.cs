@@ -15,60 +15,62 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 #pragma warning disable 649
     [Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
 	[SerializeField] private LanguageManager.eFontStyle fontStyle;
-
     [Tooltip("Force this string to use the font for a specific language (empty by default)")]
     [SerializeField] private string						forceFontLanguage;
 #pragma warning restore 649
 	[SerializeField] private bool						highContrastPermissibleInContext = true;
 	[SerializeField] private bool						highContrastBold = true;
-
-	[SerializeField] private bool                       forceBold = false;
+    [SerializeField] private bool                       forceBold = false;
 
 
 	private Color		defaultColor;
 	private FontStyles	defaultStyle;
-    protected TMP_Text	tmpText;       // text mesh pro text object.
-	private bool HighContrastEnabledInGlobalSettings=false;
+    private TMP_Text _tmpText;
+
+    private bool _initialised = false;
+
+    protected TMP_Text tmpText
+    {
+        get 
+    {
+        if(_tmpText==null)
+            _tmpText = GetComponent<TMP_Text>();
+        return _tmpText;
+    }
+
+    }
+    private bool HighContrastEnabledInGlobalSettings=false;
 
     private void OnEnable()
-    {
-        // cache the TMP component on this object
-        tmpText = GetComponent<TMP_Text>();
-        
-		defaultColor = tmpText.color;
-		defaultStyle = tmpText.fontStyle;
+    {
+        if (!_initialised)
+            Initialise();
+    }
 
-
+    private void Initialise()
+    {
+        defaultColor = tmpText.color;
+        defaultStyle = tmpText.fontStyle;
 
         var concursum = Registry.Get<Concursum>();
-        concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+
+        concursum.ChangingCulture.AddListener(OnCultureChanged);
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
         var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
         if (highContrastSetting != null)
         {
             highContrastSetting.AddSubscriber(this);
-            UpdateValueFromSetting(highContrastSetting.CurrentValue);
+            WhenSettingUpdated(highContrastSetting.CurrentValue);
         }
         else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
 
+
+        _initialised = true;
     }
 
-    private void OnDisable()
-    {
-
-        var concursum = Registry.Get<Concursum>();
-        concursum.CultureChangedEvent.RemoveListener(OnCultureChanged);
-        concursum.ContentUpdatedEvent.RemoveListener(OnContentUpdated);
-
-        var highContrastSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
-        if (highContrastSetting != null)
-            highContrastSetting.RemoveSubscriber(this);
-        else
-            NoonUtility.Log("Missing setting entity: " + NoonConstants.HIGHCONTRAST);
-    }
-
+    
 
     public void SetValuesForCurrentCulture()
     {
@@ -120,7 +122,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         SetFontStyle(culture, lm);
     }
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         HighContrastEnabledInGlobalSettings = ((newValue is float ? (float)newValue : 0) > 0.5f);
         string currentCultureId = Registry.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY); 

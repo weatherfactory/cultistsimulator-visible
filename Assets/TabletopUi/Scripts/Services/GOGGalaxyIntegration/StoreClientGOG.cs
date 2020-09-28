@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Galaxy.Api;
 using Noon;
+using TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -49,6 +50,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
         }
 
+        public Storefront Storefront
+        {
+            get { return Storefront.Gog; }
+        }
     }
 
     

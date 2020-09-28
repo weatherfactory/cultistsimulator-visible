@@ -104,7 +104,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
         // force invariant culture to fix Linux save file issues
 		Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
         var concursum = Registry.Get<Concursum>();
-        concursum.CultureChangedEvent.AddListener(OnCultureChanged);
+        concursum.ChangingCulture.AddListener(OnCultureChanged);
 
     }
 

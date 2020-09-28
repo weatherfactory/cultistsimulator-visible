@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             for (int l = 1; l <=levels; l++)
             {
-                CurrentGameSpeedCommands.Add(l, GameSpeed.Unspecified);
+                CurrentGameSpeedCommands.Add(l, GameSpeed.DeferToNextLowestCommand);
             }
 
             //set base speed to normal as default
@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             //if trying to pause and already paused, then unset the pause but don't explicitly set a speed
             if (speed == GameSpeed.Paused && CurrentGameSpeedCommands[commandPriority] == GameSpeed.Paused)
-                CurrentGameSpeedCommands[commandPriority] = GameSpeed.Unspecified;
+                CurrentGameSpeedCommands[commandPriority] = GameSpeed.DeferToNextLowestCommand;
             else
                 CurrentGameSpeedCommands[commandPriority] = speed;
 
@@ -42,16 +42,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public GameSpeed GetEffectiveGameSpeed()
         {
-            GameSpeed effectiveSpeed=GameSpeed.Unspecified;
+            GameSpeed effectiveSpeed=GameSpeed.DeferToNextLowestCommand;
             foreach (var c in CurrentGameSpeedCommands)
             {
 
-                if (c.Value != GameSpeed.Unspecified)
+                if (c.Value != GameSpeed.DeferToNextLowestCommand)
                     effectiveSpeed = c.Value;
             }
 
             //if everything's unspecified, just treat the game as unpaused and running at normal speed
-            if (effectiveSpeed == GameSpeed.Unspecified)
+            if (effectiveSpeed == GameSpeed.DeferToNextLowestCommand)
                 effectiveSpeed = GameSpeed.Normal;
 
 

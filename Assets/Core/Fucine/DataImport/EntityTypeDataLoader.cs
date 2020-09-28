@@ -330,7 +330,7 @@ namespace Assets.Core.Fucine
             else
 
             {
-                    NoonUtility.Log($"Unexpected jtoken type in {currentDataFile.Path}: {jtoken.Type}", 0, VerbosityLevel.SystemChatter);
+                    //Probably superfluous non-translated json kept from the original.
             }
         }
 

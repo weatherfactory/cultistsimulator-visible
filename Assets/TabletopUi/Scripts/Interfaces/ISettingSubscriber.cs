@@ -9,7 +9,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISettingSubscriber
     {
-        void UpdateValueFromSetting(object newValue);
+        void WhenSettingUpdated(object newValue);
 
     }
 }

@@ -20,13 +20,13 @@ namespace Assets.TabletopUi.Scripts.Services
             if (graphicsLevelSetting != null)
             {
                 graphicsLevelSetting.AddSubscriber(this);
-                UpdateValueFromSetting(graphicsLevelSetting.CurrentValue);
+                WhenSettingUpdated(graphicsLevelSetting.CurrentValue);
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRAPHICSLEVEL);
 
         }
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             
             if (Application.platform == RuntimePlatform.OSXPlayer)

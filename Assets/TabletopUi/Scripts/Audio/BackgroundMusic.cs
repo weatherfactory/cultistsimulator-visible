@@ -41,7 +41,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         if (musicVolumeSetting != null)
         {
             musicVolumeSetting.AddSubscriber(this);
-            UpdateValueFromSetting(musicVolumeSetting.CurrentValue);
+            WhenSettingUpdated(musicVolumeSetting.CurrentValue);
         }
         else
             NoonUtility.Log("Missing setting entity: " + NoonConstants.MUSICVOLUME);
@@ -49,7 +49,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         PlayNextClip();
     }
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         SetVolume(newValue is float ? (float) newValue : 0);
     }

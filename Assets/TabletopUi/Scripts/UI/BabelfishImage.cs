@@ -18,8 +18,8 @@ using UnityEngine.UI;
 
 public class BabelfishImage : MonoBehaviour
 {
-    [Tooltip("Custom images per language")]
     #pragma warning disable 649
+    [Tooltip("If true, uses overrideSprite rather than Sprite")]
     [SerializeField] private bool			            usesOverride;
 #pragma warning restore 649
 
@@ -43,27 +43,24 @@ public class BabelfishImage : MonoBehaviour
         {
             image.overrideSprite =
                 ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, culture.Id);
-            // image.overrideSprite = sprites[i].sprite;
         }
         else
         {
             image.sprite =
                 ResourcesManager.GetSpriteLocalised("ui", image.sprite.name, culture.Id);
-
-            //image.sprite = sprites[i].sprite;
         }
         return;
     }
 
     private void OnEnable()
     {
-        Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+        Registry.Get<Concursum>().AfterChangingCulture.AddListener(OnCultureChanged);
         
     }
 
     private void OnDisable()
     {
-        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+        Registry.Get<Concursum>().AfterChangingCulture.RemoveListener(OnCultureChanged);
 
     }
 

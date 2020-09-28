@@ -1,0 +1,268 @@
+{
+	"legacies": [
+		{
+			"id": "exile",
+			"label": "流亡者",
+			"description": "没人从清算人的主人手里偷东西。然而现在，我偷了。我有我的原因。",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"trace": 7,
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1
+			},
+			"fromEnding": "wintersacrifice",
+			"availableWithoutEndingMatch": true,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorya",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否收取了更丰厚的回报？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorya",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryb",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否收取了丰厚得多的回报？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryb",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryc",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否升得更高？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryc",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictoryafoeslain",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否收取了更丰厚的回报？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictoryafoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorybfoeslain",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否收取了丰厚得多的回报？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorybfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.obscurityvictorycfoeslain",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否升得更高？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "obscurityvictorycfoeslain",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.foecaughtup",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我能否生还？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "foecaughtup",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensioncolonel",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否更自由？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensioncolonel",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionlionsmith",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我是否更平和？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionlionsmith",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.ascensionwolf",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我也是个摧毁者吗？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "ascensionwolf",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		},
+		{
+			"id": "exile.victoryvelvet",
+			"label": "流亡者",
+			"description": "如果过去的事不一样，会发生什么呢？在另一个历史中，我能否遇见我的制造者？",
+			"startdescription": "日落时分。是时候动身了。",
+			"image": "exile",
+			"effects": {
+				"decade.stolen": 7,
+				"year.stolen": 7,
+				"ticket.train": 1,
+				"trace": 7
+			},
+			"fromEnding": "victoryvelvet",
+			"availableWithoutEndingMatch": false,
+			"statusbarelements": [
+				"obscurity",
+				"comfort",
+				"damage.exile",
+				"lifespan.stolen"
+			],
+			"startingVerbId": "use"
+		}
+	]
+}

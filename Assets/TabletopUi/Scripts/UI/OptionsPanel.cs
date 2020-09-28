@@ -24,6 +24,22 @@ using UIWidgets;
 using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
+public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
+{
+    private readonly string _settingId;
+    private readonly OptionsPanel _optionsPanel;
+
+    public WindowedSettingObserverForOptionsPanel(OptionsPanel optionsPanel)
+    {
+        _optionsPanel = optionsPanel;
+    }
+
+    public void WhenSettingUpdated(object newValue)
+    {
+        _optionsPanel.DisableResolutionIfWindowed();
+    }
+}
+
 public class OptionsPanel : MonoBehaviour {
 
 
@@ -47,8 +63,9 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    private List<AbstractSettingControl> settingControls=new List<AbstractSettingControl>();
-    private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
+    private List<AbstractSettingControl> settingControls;
+    private List<OptionsPanelTab> optionsPanelTabs;
+    private bool _initialised = false;
     private OptionsPanelTab currentTab { get; set; }
 
 
@@ -61,9 +78,12 @@ public class OptionsPanel : MonoBehaviour {
         return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
     }
 
-    public void Start()
+
+
+    private void Initialise()
     {
-        Registry.Get<Concursum>().SettingChangedEvent.AddListener(OnSettingChanged);
+        settingControls = new List<AbstractSettingControl>();
+        optionsPanelTabs = new List<OptionsPanelTab>();
 
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
@@ -73,21 +93,19 @@ public class OptionsPanel : MonoBehaviour {
 
         InitialiseButtons();
 
+        var windowednessObserver = new WindowedSettingObserverForOptionsPanel(this);
+        var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
+        if (windowedSetting != null)
+            windowedSetting.AddSubscriber(windowednessObserver);
+        else
+            NoonUtility.Log("Can't find Windowed Setting");
+
         DisableResolutionIfWindowed();
 
+        _initialised = true;
     }
 
-
-
-    public void OnSettingChanged(ChangeSettingArgs args)
-    {
-        if (args.Key == NoonConstants.WINDOWED)
-        {
-            DisableResolutionIfWindowed();
-        }
-    }
-
-    private void DisableResolutionIfWindowed()
+    public void DisableResolutionIfWindowed()
     {
 
         try
@@ -113,16 +131,16 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-
-            saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
-        
-            resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
-
-            viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
+        saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
+        resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
+        viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
     }
 
     public void OnEnable()
     {
+        if(!_initialised)
+            Initialise();
+
         //because of a quirk of Unity's event / select system, we need to re-highlight the button manually when the menu is opened
         if(currentTab!=null)
             currentTab.Activate();
@@ -203,7 +221,7 @@ public class OptionsPanel : MonoBehaviour {
 			Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
 		
 		else
-            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
     }
 

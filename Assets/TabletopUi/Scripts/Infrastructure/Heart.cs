@@ -107,8 +107,6 @@ public class Heart : MonoBehaviour
             TryToFillOutstandingSlots();
         }
 
-       
-
     }
 
     public void DecayStacksOnTable(float beatInterval)
@@ -150,7 +148,7 @@ public class Heart : MonoBehaviour
     }
 
 
-    async void  OnApplicationQuit()
+    public async void  OnApplicationQuit()
     {
         var saveTask = Registry.Get<TabletopManager>().SaveGameAsync(true,SourceForGameState.DefaultSave);
         await saveTask;
