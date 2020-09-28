@@ -1280,7 +1280,7 @@ public ElementStacksManager GetTabletopStacksManager()
           NotifyAspectsDirty();
         }
 
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             SetAutosaveInterval(newValue is float ? (float)newValue : 0);
         }

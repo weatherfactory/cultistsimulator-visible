@@ -34,7 +34,7 @@ public class WindowedSettingObserverForOptionsPanel:ISettingSubscriber
         _optionsPanel = optionsPanel;
     }
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         _optionsPanel.DisableResolutionIfWindowed();
     }
@@ -63,8 +63,9 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    private List<AbstractSettingControl> settingControls=new List<AbstractSettingControl>();
-    private List<OptionsPanelTab> optionsPanelTabs=new List<OptionsPanelTab>();
+    private List<AbstractSettingControl> settingControls;
+    private List<OptionsPanelTab> optionsPanelTabs;
+    private bool _initialised = false;
     private OptionsPanelTab currentTab { get; set; }
 
 
@@ -77,8 +78,17 @@ public class OptionsPanel : MonoBehaviour {
         return Registry.Get<StageHand>().SceneIsActive(SceneNumber.TabletopScene);
     }
 
-    public void Start()
+
+
+    public void OnCultureChanged(CultureChangedArgs args)
     {
+    }
+
+    private void Initialise()
+    {
+        settingControls = new List<AbstractSettingControl>();
+        optionsPanelTabs = new List<OptionsPanelTab>();
+
         var settings = Registry.Get<ICompendium>().GetEntitiesAsList<Setting>();
 
         PopulateSettingControls(settings);
@@ -87,16 +97,16 @@ public class OptionsPanel : MonoBehaviour {
 
         InitialiseButtons();
 
-        var windowednessObserver=new WindowedSettingObserverForOptionsPanel(this);
+        var windowednessObserver = new WindowedSettingObserverForOptionsPanel(this);
         var windowedSetting = Registry.Get<ICompendium>().GetEntityById<Setting>(NoonConstants.WINDOWED);
-        if(windowedSetting!=null)
+        if (windowedSetting != null)
             windowedSetting.AddSubscriber(windowednessObserver);
         else
-          NoonUtility.Log("Can't find Windowed Setting");
-
+            NoonUtility.Log("Can't find Windowed Setting");
 
         DisableResolutionIfWindowed();
 
+        _initialised = true;
     }
 
     public void DisableResolutionIfWindowed()
@@ -125,16 +135,16 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-
-            saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
-        
-            resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
-
-            viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
+        saveAndExitButton.Initialise(Registry.Get<LocalNexus>().SaveAndExitEvent);
+        resumeButton.Initialise(Registry.Get<LocalNexus>().ToggleOptionsEvent);
+        viewFilesButton.Initialise(Registry.Get<LocalNexus>().ViewFilesEvent);
     }
 
     public void OnEnable()
     {
+        if(!_initialised)
+            Initialise();
+
         //because of a quirk of Unity's event / select system, we need to re-highlight the button manually when the menu is opened
         if(currentTab!=null)
             currentTab.Activate();

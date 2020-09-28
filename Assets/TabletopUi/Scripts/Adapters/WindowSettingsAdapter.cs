@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Services
             if (windowedStateSetting != null)
             {
                 windowedStateSetting.AddSubscriber(this);
-                UpdateValueFromSetting(windowedStateSetting.CurrentValue);
+                WhenSettingUpdated(windowedStateSetting.CurrentValue);
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.WINDOWED);
@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Services
         }
 
 
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             if(newValue is float)
                 SetWindowed((float)newValue > 0.5f);

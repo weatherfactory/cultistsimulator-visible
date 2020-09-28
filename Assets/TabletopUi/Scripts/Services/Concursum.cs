@@ -83,7 +83,9 @@ namespace Assets.TabletopUi.Scripts.Services
         public ShowNotificationEvent ShowNotificationEvent = new ShowNotificationEvent();
         public ModOperationEvent ModOperationEvent=new ModOperationEvent();
         public ContentUpdatedEvent ContentUpdatedEvent = new ContentUpdatedEvent();
-        public CultureChangedEvent CultureChangedEvent =new CultureChangedEvent();
+        public CultureChangedEvent BeforeChangingCulture = new CultureChangedEvent();
+        public CultureChangedEvent ChangingCulture =new CultureChangedEvent();
+        public CultureChangedEvent AfterChangingCulture = new CultureChangedEvent();
 
 
         [SerializeField] private SecretHistory secretHistory;
@@ -93,10 +95,13 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             Registry.Get<Config>().PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,culture.Id);
 
-            CultureChangedEvent.Invoke(new CultureChangedArgs{NewCulture = culture});
+            BeforeChangingCulture.Invoke(new CultureChangedArgs { NewCulture = culture });
+            ChangingCulture.Invoke(new CultureChangedArgs{NewCulture = culture});
+            AfterChangingCulture.Invoke(new CultureChangedArgs { NewCulture = culture });
 
-            NoonUtility.Log(culture.Id);
+            NoonUtility.Log($"Changed culture to {culture.Id}");
         }
+
 
         public void ToggleSecretHistory()
         {

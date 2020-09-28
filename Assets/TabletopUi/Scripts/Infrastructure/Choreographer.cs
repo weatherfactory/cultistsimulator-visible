@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (snapGridSetting != null)
             {
                 snapGridSetting.AddSubscriber(this);
-                UpdateValueFromSetting(snapGridSetting.CurrentValue);
+                WhenSettingUpdated(snapGridSetting.CurrentValue);
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
@@ -416,7 +416,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return v;
         }
 
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             SetGridSnapSize(newValue is float ? (float)newValue : 0);
         }

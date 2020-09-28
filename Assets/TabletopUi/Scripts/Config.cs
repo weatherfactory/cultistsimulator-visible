@@ -25,7 +25,7 @@ public class SettingObserverForConfig : ISettingSubscriber
         _config = config;
     }
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         _config.PersistConfigValue(_settingId,newValue.ToString());
     }

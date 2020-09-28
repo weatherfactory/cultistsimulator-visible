@@ -28,7 +28,7 @@ namespace Assets.TabletopUi.Scripts.Services
             if (resolutionSetting != null)
             {
                 resolutionSetting.AddSubscriber(this);
-                UpdateValueFromSetting(resolutionSetting.CurrentValue);
+                WhenSettingUpdated(resolutionSetting.CurrentValue);
             }
             else
                 NoonUtility.Log("Missing setting entity: " + NoonConstants.RESOLUTION);
@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         }
 
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             int index = (newValue is int value ? value : 0); ;
             //index might be, for instance, -1 if we're relying on a default value. In this case, don't try to set it.

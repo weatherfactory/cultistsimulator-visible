@@ -66,7 +66,7 @@ namespace Assets.Core.Entities
                 _currentValue = value;
                 foreach (var subscriber in _subscribers)
                 {
-                    subscriber.UpdateValueFromSetting(CurrentValue);
+                    subscriber.WhenSettingUpdated(CurrentValue);
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace Assets.Core.Entities
         public void AddSubscriber(ISettingSubscriber subscriber)
         {
             if(_subscribers.Contains(subscriber))
-                NoonUtility.Log($"Trying to add the same subscriber twice to Setting {Id}");
+                NoonUtility.Log($"Trying to add the same subscriber twice to Setting {Id}",(int)VerbosityLevel.Trivia);
             else
             {
                 _subscribers.Add(subscriber);

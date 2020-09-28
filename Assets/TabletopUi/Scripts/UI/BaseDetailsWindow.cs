@@ -53,10 +53,10 @@ namespace Assets.CS.TabletopUI {
             }
 
             notificationTimeSetting.AddSubscriber(this);
-            UpdateValueFromSetting(notificationTimeSetting.CurrentValue);
+            WhenSettingUpdated(notificationTimeSetting.CurrentValue);
         }
 
-        public void UpdateValueFromSetting(object newValue)
+        public void WhenSettingUpdated(object newValue)
         {
             var timeInSeconds = GetInspectionTimeForValue((newValue is float ? (float)newValue : 0));
             SetTimer(timeInSeconds);

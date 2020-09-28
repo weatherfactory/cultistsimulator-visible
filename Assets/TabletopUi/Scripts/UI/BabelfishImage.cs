@@ -57,13 +57,13 @@ public class BabelfishImage : MonoBehaviour
 
     private void OnEnable()
     {
-        Registry.Get<Concursum>().CultureChangedEvent.AddListener(OnCultureChanged);
+        Registry.Get<Concursum>().AfterChangingCulture.AddListener(OnCultureChanged);
         
     }
 
     private void OnDisable()
     {
-        Registry.Get<Concursum>().CultureChangedEvent.RemoveListener(OnCultureChanged);
+        Registry.Get<Concursum>().AfterChangingCulture.RemoveListener(OnCultureChanged);
 
     }
 

@@ -85,14 +85,14 @@ public class SoundManager : AudioManager, ISettingSubscriber
         else
         {
             soundVolumeSetting.AddSubscriber(this);
-            UpdateValueFromSetting(soundVolumeSetting.CurrentValue);
+            WhenSettingUpdated(soundVolumeSetting.CurrentValue);
         }
         
 
     }
 
 
-    public void UpdateValueFromSetting(object newValue)
+    public void WhenSettingUpdated(object newValue)
     {
         SetVolumeInDbRange(newValue is float ? (float)newValue : 0);
     }

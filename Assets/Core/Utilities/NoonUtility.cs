@@ -130,9 +130,8 @@ namespace Noon
 
     public class NoonUtility
     {
-        public static bool UnitTestingMode { get; set; }
 
-        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.Trivia);
+        public static int CurrentVerbosity =Convert.ToInt32(VerbosityLevel.SystemChatter);
 
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
@@ -157,30 +156,23 @@ namespace Noon
                         s.AddMessage(message);
 
             }
-
-            //switch between in-Unity and unit testing
-            if(UnitTestingMode)
-                Console.WriteLine(message.Description);
-            else
+            string formattedMessage =
+                (message.VerbosityNeeded > 0 ? new String('>', message.VerbosityNeeded) + " " : "") + message.Description;
+            switch (message.MessageLevel)
             {
-                string formattedMessage =
-                    (message.VerbosityNeeded > 0 ? new String('>', message.VerbosityNeeded) + " " : "") + message.Description;
-                switch (message.MessageLevel)
-                {
-                    case 0:
-                        Debug.Log(formattedMessage);
-                        break;
-                    case 1:
-                        Debug.LogWarning(formattedMessage);
-                        break;
-                    case 2:
-                        Debug.LogError(formattedMessage);
-                        break;
-                    default:
-                        Debug.LogError(formattedMessage);
-                        break;
-                    //  throw new ArgumentOutOfRangeException("messageLevel " + messageLevel);
-                }
+                case 0:
+                    Debug.Log(formattedMessage);
+                    break;
+                case 1:
+                    Debug.LogWarning(formattedMessage);
+                    break;
+                case 2:
+                    Debug.LogError(formattedMessage);
+                    break;
+                default:
+                    Debug.LogError(formattedMessage);
+                    break;
+
             }
             
         }
