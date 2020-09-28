@@ -80,15 +80,18 @@ public class Config
                 skiplogo = true;
             }
 
-            if (GetConfigValue("verbosity") == String.Empty)
+            if (String.IsNullOrEmpty(GetConfigValue("verbosity")))
+            {
                 NoonUtility.CurrentVerbosity = (int) VerbosityLevel.Trivia;
+                PersistConfigValue("verbosity",((int)VerbosityLevel.Trivia).ToString());
+            }
             else
             {
                 int.TryParse(GetConfigValue("verbosity"), out NoonUtility.CurrentVerbosity);
             }
 
 
-            if (GetConfigValue("knock") != String.Empty)
+            if (String.IsNullOrEmpty(GetConfigValue("knock")))
             {
                 knock = true;
             }

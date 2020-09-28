@@ -80,10 +80,6 @@ public class OptionsPanel : MonoBehaviour {
 
 
 
-    public void OnCultureChanged(CultureChangedArgs args)
-    {
-    }
-
     private void Initialise()
     {
         settingControls = new List<AbstractSettingControl>();

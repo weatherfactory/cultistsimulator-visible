@@ -611,22 +611,26 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
 		{
 			if (!IsSafeToAutosave())
             {
+                NoonUtility.Log("Unsafe to autosave: returning", (int)VerbosityLevel.SystemChatter);
                 return false;
+                
             }
 
 			bool success = true;	// Assume everything will be OK to begin with...
 
 			Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs{ControlPriorityLevel = 3,GameSpeed = GameSpeed.Paused,WithSFX = false});
+            NoonUtility.Log("Paused game for saving", (int)VerbosityLevel.SystemChatter);
 
-			
+
             try
             {
 	            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Get<ICompendium>()), new GameDataExporter());
 
                 ITableSaveState tableSaveState=new TableSaveState(_tabletop.GetElementStacksManager().GetStacks(), Registry.Get<SituationsCatalogue>().GetRegisteredSituations());
                  var   saveTask = saveGameManager.SaveActiveGameAsync(tableSaveState,  Registry.Get<Character>(), source);
-
-                 success = await saveTask;
+                 NoonUtility.Log("Beginning save", (int)VerbosityLevel.SystemChatter);
+                success = await saveTask;
+                NoonUtility.Log($"Save status: {success}", (int)VerbosityLevel.SystemChatter);
 
             }
             catch (Exception e)
@@ -639,17 +643,22 @@ Registry.Get<LocalNexus>().UILookAtMeEvent.Invoke(typeof(SpeedControlUI));
             }
 
             Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            NoonUtility.Log("Unpausing game after saving", (int)VerbosityLevel.SystemChatter);
 
 
             if (success && withNotification && _autosaveNotifier!=null)
 			{
-				//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-				_autosaveNotifier.SetDuration( 3.0f );
+                NoonUtility.Log("Displaying autosave notification", (int)VerbosityLevel.SystemChatter);
+
+                //_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+                _autosaveNotifier.SetDuration( 3.0f );
 				_autosaveNotifier.Show();
 			}
 
 			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
 			{
+                NoonUtility.Log("Triggering save error warning", (int)VerbosityLevel.SystemChatter);
+
                 // only pause if we need to (since it triggers sfx)
                 Registry.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false});
