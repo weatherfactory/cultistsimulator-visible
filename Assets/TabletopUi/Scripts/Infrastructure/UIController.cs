@@ -19,8 +19,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         
         [SerializeField] private PlayerInput playerInput;
-        
-
         public DebugTools _debugTools;
 
 
@@ -131,14 +129,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void Input_Pause(InputAction.CallbackContext context)
         {
+            
             if (IsEditingText() || _debugTools.isActiveAndEnabled || !context.started)
                 return;
 
             if (_debugTools.isActiveAndEnabled)
                 return;
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true});
-            
+                {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Paused, WithSFX = true});
+
         }
 
 
@@ -150,8 +149,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = true});
                 SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false});
-            
+                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false});
+
+                //SoundManager.PlaySfx("UIPauseEnd");
+
         }
 
         public void Input_FastSpeed(InputAction.CallbackContext context)
@@ -160,7 +161,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return;
 
             SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.Unspecified, WithSFX = false });
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
             
         }
 
