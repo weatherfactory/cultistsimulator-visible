@@ -82,8 +82,8 @@ public class Config
 
             if (String.IsNullOrEmpty(GetConfigValue("verbosity")))
             {
-                NoonUtility.CurrentVerbosity = (int) VerbosityLevel.Trivia;
-                PersistConfigValue("verbosity",((int)VerbosityLevel.Trivia).ToString());
+                NoonUtility.CurrentVerbosity = (int) VerbosityLevel.SystemChatter;
+                PersistConfigValue("verbosity",((int)VerbosityLevel.SystemChatter).ToString());
             }
             else
             {
