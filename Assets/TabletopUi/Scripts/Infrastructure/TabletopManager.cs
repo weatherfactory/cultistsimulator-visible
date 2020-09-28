@@ -331,9 +331,6 @@ namespace Assets.CS.TabletopUI {
             stackManagersCatalogue.Subscribe(this);
             registry.Register(stackManagersCatalogue);
 
-            var metaInfo = new MetaInfo(new VersionNumber(Application.version));
-            registry.Register(metaInfo);
-
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
             registry.Register<IDraggableHolder>(draggableHolder);
 

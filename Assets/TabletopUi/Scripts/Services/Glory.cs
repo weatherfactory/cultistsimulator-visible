@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Noon;
+using TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services
@@ -88,8 +90,7 @@ namespace Assets.TabletopUi.Scripts.Services
             //load concursum: central nexus for event responses
             registryAccess.Register(concursum);
 
-            //right now, this is just the version number
-            var metaInfo = new MetaInfo(new VersionNumber(Application.version));
+          var metaInfo = new MetaInfo(new VersionNumber(Application.version),GetCurrentStorefront());
             registryAccess.Register<MetaInfo>(metaInfo);
             
 
@@ -101,8 +102,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
             //Set up storefronts: integration with GOG and Steam, so this should come early.
             var storefrontServicesProvider = new StorefrontServicesProvider();
-            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
-            storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
+            if(metaInfo.Storefront==Storefront.Steam)
+                storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
+            if (metaInfo.Storefront == Storefront.Gog)
+                storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
             registryAccess.Register<StorefrontServicesProvider>(storefrontServicesProvider);
 
             //set up the Mod Manager
@@ -174,6 +177,29 @@ namespace Assets.TabletopUi.Scripts.Services
         private void OnCultureChanged(CultureChangedArgs args)
         {
             LoadCompendium(args.NewCulture.Id);
+        }
+
+
+        private  Storefront GetCurrentStorefront()
+        {
+            var storeFilePath = Path.Combine(Application.streamingAssetsPath, NoonConstants.STOREFRONT_PATH_IN_STREAMINGASSETS);
+            if (!File.Exists(storeFilePath))
+            {
+                return Storefront.Unknown;
+            }
+
+            var edition = File.ReadAllText(storeFilePath).Trim().ToUpper();
+            switch (edition)
+            {
+                case "STEAM":
+                    return Storefront.Steam;
+                case "GOG":
+                    return Storefront.Gog;
+                case "HUMBLE":
+                    return Storefront.Humble;
+                default:
+                    return Storefront.Unknown;
+            }
         }
     }
 }

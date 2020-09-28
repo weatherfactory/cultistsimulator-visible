@@ -23,13 +23,14 @@ namespace Assets.Core.Entities
         [FucineSubEntity(typeof(SlotSpecification),Localise = true)]
         public SlotSpecification Slot { get; set; }
 
+        [FucineList(Localise = true)]
+        public List<SlotSpecification> Slots { get; set; }
 
-        public  bool Transient
+        public bool Transient
         {
             get { return false; }
         }
-
-  
+        
 
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {

@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TabletopUi.Scripts.Services;
 
 namespace Assets.Core.Entities
 {
     public class MetaInfo
     {
-        private VersionNumber _versionNumber;
+        public VersionNumber VersionNumber { get; }
+        public Storefront Storefront { get; }
 
-        public MetaInfo(VersionNumber versionNumber)
+        public MetaInfo(VersionNumber versionNumber, Storefront storefront)
         {
-            _versionNumber = versionNumber;
-        }
-
-        public VersionNumber VersionNumber
-        {
-            get { return _versionNumber; }
+            VersionNumber = versionNumber;
+            Storefront = storefront;
         }
 
 

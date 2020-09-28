@@ -147,7 +147,7 @@ public class MenuScreenController : LocalNexus {
 
     private void OnContentUpdated(ContentUpdatedArgs args)
     {
-        BuildLegacyStartsPanel(GetCurrentStorefront());
+        BuildLegacyStartsPanel(Registry.Get<MetaInfo>().Storefront);
     }
 
     private static void SetEditionStatus()
@@ -157,33 +157,13 @@ public class MenuScreenController : LocalNexus {
             NoonUtility.PerpetualEdition = true;
     }
 
-    private static Storefront GetCurrentStorefront()
-    {
-        var storeFilePath = Path.Combine(Application.streamingAssetsPath, NoonConstants.STOREFRONT_PATH_IN_STREAMINGASSETS);
-        if (!File.Exists(storeFilePath))
-        {
-            return Storefront.Unknown;
-        }
 
-        var edition = File.ReadAllText(storeFilePath).Trim().ToUpper();
-        switch (edition)
-        {
-            case "STEAM":
-                return Storefront.Steam;
-            case "GOG":
-                return Storefront.Gog;
-            case "HUMBLE":
-                return Storefront.Humble;
-            default:
-                return Storefront.Unknown;
-        }
-    }
 
     void InitialiseServices()
 	{
         currentVersion = Registry.Get<MetaInfo>().VersionNumber;
 
-        var store = GetCurrentStorefront();
+        var store = Registry.Get<MetaInfo>().Storefront;
 
         BuildLegacyStartsPanel(store);
         BuildModsPanel(store);

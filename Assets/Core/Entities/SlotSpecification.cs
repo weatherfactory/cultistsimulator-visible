@@ -15,7 +15,7 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class SlotSpecification: AbstractEntity<SlotSpecification>, IEntityWithId
+public class SlotSpecification: AbstractEntity<SlotSpecification>
 {
 
     [FucineValue(DefaultValue = "", Localise = true)]

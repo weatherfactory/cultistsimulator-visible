@@ -4,6 +4,16 @@
             "id": "bookshelf",
             "label": "Bookshelf",
             "description": "Up to an arbitrary limit",
+                "slots": [{
+	                "id": "shelf2",
+	                "label": "Shelf 2",
+	                "required": { "text": 1}
+	                },
+	                {
+		                "id": "shelf3",
+		                "label": "Shelf 3",
+		                "required": { "text": 1}
+	                }],
             "slot": {
                 "id": "shelf",
                 "label": "Shelf",

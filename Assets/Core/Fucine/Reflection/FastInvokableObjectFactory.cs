@@ -1,4 +1,5 @@
 ﻿using System;
+using Noon;
 
 namespace Assets.Core.Fucine
 {
@@ -22,7 +23,15 @@ namespace Assets.Core.Fucine
 
         public object ConstructorFastInvoke()
         {
-            return _fastInvokeConstructor();
+            try
+            {
+                return _fastInvokeConstructor();
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Can't use a fastinvokeconstructor. This might mean a FucineSubEntity is missing a parameterless constructor.",2,VerbosityLevel.Essential);
+                throw;
+            }
         }
 
     }

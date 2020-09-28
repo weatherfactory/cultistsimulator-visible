@@ -136,7 +136,7 @@ namespace Assets.Core.Fucine
     [AttributeUsage(AttributeTargets.Property)]
     public class FucineSubEntity : Fucine
     {
-        
+        //anything specified as a FucineSubEntity currently needs a parameterless constructor
         public FucineSubEntity(Type objectType)
         {
             ObjectType = objectType;
