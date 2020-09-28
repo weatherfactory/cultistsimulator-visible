@@ -21,16 +21,16 @@ namespace Assets.TabletopUi.Scripts
                 return;
 
             bool pausedBeforeInteraction = locallyTrackedGameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused;
-            locallyTrackedGameSpeedState.SetGameSpeedCommand(2, GameSpeed.Paused);
+            locallyTrackedGameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel, args.GameSpeed);
 
             bool pausedAfterInteraction = locallyTrackedGameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused;
 
             if (!pausedBeforeInteraction && pausedAfterInteraction)
                 SoundManager.PlaySfx("UIPauseStart");
-
-            if (pausedBeforeInteraction && !pausedAfterInteraction)
+            else if (pausedBeforeInteraction && !pausedAfterInteraction)
                 SoundManager.PlaySfx("UIPauseEnd");
-
+            else
+                SoundManager.PlaySfx("UIButtonClick");
         }
 
     }

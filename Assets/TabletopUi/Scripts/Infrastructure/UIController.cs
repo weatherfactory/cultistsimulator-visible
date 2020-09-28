@@ -145,11 +145,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             if (IsEditingText() ||_debugTools.isActiveAndEnabled || !context.started)
                 return;
-
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = true});
+                    {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = false});
                 SpeedControlEvent.Invoke(new SpeedControlEventArgs
-                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false});
+                    {ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = true});
 
                 //SoundManager.PlaySfx("UIPauseEnd");
 
@@ -160,8 +159,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (IsEditingText() || _debugTools.isActiveAndEnabled || !context.started)
                 return;
 
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = true });
-            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Fast, WithSFX = false });
+            SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = true });
             
         }
 
