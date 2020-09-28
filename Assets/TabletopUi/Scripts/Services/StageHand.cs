@@ -97,11 +97,6 @@ namespace Assets.TabletopUi.Scripts.Services
             SceneChange(SceneNumber.TabletopScene, true);
         }
 
-        //public void TabletopScreen()
-        //{
-        //    SoundManager.PlaySfx("UIStartGame");
-        //    SceneChange(SceneNumber.TabletopScene, true);
-        //}
 
         public void NewGameOnTabletop()
         {
