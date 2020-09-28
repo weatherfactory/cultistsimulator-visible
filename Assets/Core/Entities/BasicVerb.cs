@@ -29,12 +29,7 @@ namespace Assets.Core.Entities
             get { return false; }
         }
 
-        //public BasicVerb(string id, string label, string description)
-        //{
-        //    _id = id;
-        //    Label = label;
-        //    Description = description;
-        //}
+  
 
         public BasicVerb(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
