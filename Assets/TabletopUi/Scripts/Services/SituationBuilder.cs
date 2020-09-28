@@ -29,9 +29,8 @@ namespace Assets.TabletopUi.Scripts.Services {
                
  
                 SituationCreationCommand command = new SituationCreationCommand(v, null, SituationState.Unstarted);
-                var situationToken = CreateToken(command);
-
-                situationToken.transform.localPosition = new Vector3(-700f + sTokenHorizSpace, 200f -(0*sTokenVertiSpace));
+               var controller=CreateSituation(command);
+            controller.situationToken.transform.localPosition = new Vector3(-700f + sTokenHorizSpace, 200f -(0*sTokenVertiSpace));
                 //this is left over from when we sometimes started with multiple verbs in a new legacy; those days might come again ofc, so I'm leaving the formula in
 
         }
