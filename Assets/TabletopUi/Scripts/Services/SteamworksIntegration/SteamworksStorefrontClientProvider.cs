@@ -7,6 +7,7 @@ using Assets.TabletopUi.Scripts.Infrastructure.Modding;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using Steamworks;
+using TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -50,6 +51,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             // Fetch user data
             SteamUserStats.RequestCurrentStats();
+        }
+
+        public Storefront Storefront
+        {
+            get { return Storefront.Steam; }
         }
 
         public void SetAchievement(string achievementId, bool setStatus)

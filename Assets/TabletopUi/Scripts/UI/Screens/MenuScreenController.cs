@@ -48,24 +48,18 @@ public class MenuScreenController : LocalNexus {
     public CanvasGroupFader modsPanel;
     public CanvasGroupFader startDLCLegacyConfirmPanel;
 
-	public OptionsPanel optionsPanel;
-
-    [Header("Version News")]
-
 
     [Header("Hints")]
     public GameObject brokenSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
-   
-
     public MenuSubtitle Subtitle;
 
     [Header("DLC & Mods)")]
     public Transform legacyStartEntries;
     public MenuLegacyStartEntry LegacyStartEntryPrefab;
-    public GameObject dlcUnavailableLabel;
     public GameObject modEntryPrefab;
+    public TextMeshProUGUI steamWorkshopDownloadLink;
     public TextMeshProUGUI modEmptyMessage;
     public Transform modEntries;
 
@@ -153,7 +147,7 @@ public class MenuScreenController : LocalNexus {
 
     private void OnContentUpdated(ContentUpdatedArgs args)
     {
-        BuildLegacyStartsPanel();
+        BuildLegacyStartsPanel(GetCurrentStorefront());
     }
 
     private static void SetEditionStatus()
@@ -180,8 +174,6 @@ public class MenuScreenController : LocalNexus {
                 return Storefront.Gog;
             case "HUMBLE":
                 return Storefront.Humble;
-            case "ITCH":
-                return Storefront.Itch;
             default:
                 return Storefront.Unknown;
         }
@@ -191,8 +183,10 @@ public class MenuScreenController : LocalNexus {
 	{
         currentVersion = Registry.Get<MetaInfo>().VersionNumber;
 
-        BuildLegacyStartsPanel();
-        BuildModsPanel();
+        var store = GetCurrentStorefront();
+
+        BuildLegacyStartsPanel(store);
+        BuildModsPanel(store);
         BuildLanguagesAvailablePanel();
 
     }
@@ -417,7 +411,7 @@ public class MenuScreenController : LocalNexus {
         
     }
 
-    private void BuildLegacyStartsPanel()
+    private void BuildLegacyStartsPanel(Storefront store)
     {
         foreach (Transform legacyStartEntry in legacyStartEntries)
             Destroy(legacyStartEntry.gameObject);
@@ -426,7 +420,8 @@ public class MenuScreenController : LocalNexus {
 
         var allNewStartLegacies = legacies.Where(l => l.NewStart).ToList();
 
-        var store = GetCurrentStorefront();
+
+        steamWorkshopDownloadLink.enabled = store == Storefront.Steam;
 
         var startableLegacySpecs=new List<StartableLegacySpec>();
 
@@ -455,7 +450,6 @@ public class MenuScreenController : LocalNexus {
             startableLegacySpecs.Add(specForLegacy);
         }
 
-        
    
         startableLegacySpecs=startableLegacySpecs.OrderByDescending(ls => ls.ReleasedByWf).ToList();
 
@@ -470,7 +464,7 @@ public class MenuScreenController : LocalNexus {
     }
     
 
-    private void BuildModsPanel()
+    private void BuildModsPanel(Storefront store)
     {
         // Clear the list and repopulate with one entry per loaded mod
         foreach (Transform modEntry in modEntries)
@@ -480,8 +474,10 @@ public class MenuScreenController : LocalNexus {
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);
-            modEntry.Initialize(mod);
+            modEntry.Initialise(mod,store);
         }
+
+        //display 'no mods' if no mods are available to enable
         modEmptyMessage.enabled = !Registry.Get<ModManager>().GetCataloguedMods().Any();
     }
 
@@ -518,13 +514,7 @@ public class MenuScreenController : LocalNexus {
         Application.Quit();
     }
 
-    public void BrowseToSaves()
-    {
-        if (!canTakeInput)
-            return;
-        
-        optionsPanel.BrowseFiles();
-    }
+
 
     public void ShowPromo()
     {

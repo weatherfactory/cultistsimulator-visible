@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
+using TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,13 +35,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
 
 
         private Mod _mod;
+        private Storefront _store;
 
 
         
-        public void Initialize(Mod mod)
+        public void Initialise(Mod mod,Storefront store)
         {
 
             _mod = mod;
+            _store = store;
 
             title.text = _mod.Name + " (" + mod.Version + ")";
             description.text = _mod.Description;
@@ -109,7 +112,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure.Modding
             var storefrontServicesProvider = Registry.Get<StorefrontServicesProvider>();
             uploadButton.interactable = true;
 
-            if (_mod.ModInstallType != ModInstallType.Local || !storefrontServicesProvider.IsAvailable(StoreClient.Steam) )
+            if (_mod.ModInstallType != ModInstallType.Local // can't upload unless it's installed locally
+                || _store != Storefront.Steam //at time of coding, only Steam supports uploads
+        ||   !storefrontServicesProvider.IsAvailable(StoreClient.Steam // and we need to be able to reach Steam
+                ) )
             {
                 uploadButton.gameObject.SetActive(false);
                 return;

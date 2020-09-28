@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Noon;
+using TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -18,6 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public interface IStoreFrontClientProvider
     {
         void SetAchievement(string achievementId, bool setStatus);
+        Storefront Storefront { get; }
     }
 
 
