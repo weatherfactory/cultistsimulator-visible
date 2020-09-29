@@ -2059,7 +2059,6 @@ MonoBehaviour:
   versionHints: {fileID: 1516159739}
   modsPanel: {fileID: 1507364684}
   startDLCLegacyConfirmPanel: {fileID: 676880556}
-  optionsPanel: {fileID: 0}
   brokenSaveMessage: {fileID: 972627038}
   VersionNumber: {fileID: 458841803}
   versionAnim: {fileID: 1502385832}
@@ -76228,6 +76227,7 @@ GameObject:
   - component: {fileID: 2146752553}
   - component: {fileID: 2146752552}
   - component: {fileID: 2146752551}
+  - component: {fileID: 2146752554}
   m_Layer: 5
   m_Name: DescriptionText
   m_TagString: Untagged
@@ -76372,6 +76372,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146752549}
   m_CullTransparentMesh: 0
+--- !u!114 &2146752554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146752549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: 
+  fontStyle: 0
+  forceFontLanguage: 
+  highContrastPermissibleInContext: 1
+  highContrastBold: 1
+  forceBold: 0
 --- !u!1001 &4057377682757343468
 PrefabInstance:
   m_ObjectHideFlags: 0
